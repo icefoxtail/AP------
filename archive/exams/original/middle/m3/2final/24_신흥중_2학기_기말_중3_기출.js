@@ -34,7 +34,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 원 O에서 호 AB를 보는 중심각 AOB=120도는 파란색이고 같은 호를 보는 원주각 APB=x는 주황색이다.",
     "solutionImageCaption": "같은 호 AB를 보는 원주각은 중심각의 절반이므로 ∠APB=120°÷2=60°, 즉 x=60°이다. 정답은 ④이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -65,7 +74,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 보기 ①~⑤의 사각형을 나란히 그려 ①은 ∠A=100°와 ∠C=80°, ②는 ∠BAC=40°와 ∠BDC=50°, ③은 ∠DAC와 ∠DBC가 모두 60°, ④는 60°와 38°, ⑤는 ∠B와 ∠D가 85°임을 각도로 보여 준다.",
     "solutionImageCaption": "①은 ∠A+∠C=180°, ③은 같은 선분 DC를 보는 ∠DAC=∠DBC이므로 원에 내접하고 ②, ④, ⑤는 아니다. 정답 ①, ③.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -100,7 +118,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 원 O에서 ∠AQC=60°가 보는 호 ABC 120°와 ∠BOC=90°가 보는 호 BC 90°를 색으로 구분하고, 두 호의 차인 호 AB 30°와 그 원주각 ∠APB를 같은 색으로 표시한다.",
     "solutionImageCaption": "∠AQC=60°가 보는 호 ABC=120°이고 ∠BOC=90°이므로 호 BC=90°이다. 따라서 호 AB=120°−90°=30°이고, ∠APB는 호 AB의 원주각이므로 15°이다. 정답은 ②이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -135,7 +162,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 원 O에 내접하는 오각형 ABCDE. ∠x(꼭짓점 A)가 보는 호 BCDE는 파랑(2x), ∠y(꼭짓점 D)가 보는 호 CBAE는 주황(2y)이고, 두 호가 겹치는 호 BC는 초록으로 중심각 ∠BOC=70°와 같게 표시되어 있다.",
     "solutionImageCaption": "2x+2y=360°+70°=430°이므로 x+y=215° (정답 ③)",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -170,7 +206,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 지름 AB인 원 O에서 ∠DAB=19°가 보는 호 DB=38°와 같은 길이의 호 CD=38°(둘 다 파랑), 호 AC=104°(주황)와 ∠x=∠ABC를 나타낸 그림.",
     "solutionImageCaption": "∠DAB=19°는 호 DB를 보는 원주각이므로 호 DB=38°이고, D가 호 BC의 중점이므로 호 CD=38°, 호 BC=76°이다. AB가 지름이므로 호 AC=180°−76°=104°이고 ∠ABC는 호 AC를 보는 원주각이므로 x=104°÷2=52°이다. 정답 ⑤.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -205,7 +250,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 한 원 O에서 같은 점에서 그은 두 현이 이루는 원주각 40도, 60도가 보는 호의 중심각은 각각 80도, 120도이고 두 호는 다른 색이다. 호의 길이는 10cm와 x cm이다.",
     "solutionImageCaption": "원주각 40°, 60°가 보는 호의 중심각은 80°, 120°이다. 호의 길이는 중심각에 비례하므로 10:x=80:120=2:3에서 x=15이고 정답은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -240,7 +294,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 원 O의 접선 AT와 현 AB가 이루는 각 BAT=32도와 각 ADB=32도가 같은 파란색이고 각 CDB=36도, 각 CDA=68도, 각 CBA=112도가 표시되어 있다.",
     "solutionImageCaption": "접선과 현의 성질로 x=∠ADB=∠BAT=32°이고 ∠CDA=36°+32°=68°이다. 사각형 ABCD가 원에 내접하므로 y=∠CBA=180°−68°=112°이다. 따라서 y−x=112°−32°=80°이고 정답은 ①이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 8,
@@ -275,7 +338,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 지름 AB=16cm인 원에서 ∠CAB, ∠BCD, ∠BDC가 모두 30°임을 파랑으로, BC=BD=8cm를 초록 눈금으로 보이고 ∠ACB=90°와 ∠CBD=120°를 표시한다.",
     "solutionImageCaption": "BC=BD=8cm이므로 AD=AB+BD=16+8=24cm이다. 정답 ②.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_ISOSCELES_CONVERSE","CC_TRIG_RATIO"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -308,15 +380,18 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-    "crossConceptKeys": [
-      "CC_DIAMETER"
-    ],
-    "difficultyBucket": 4,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_TRIANGLE_SIMILARITY"],
+    "difficultyBucket": 3,
     "solutionImageAlt": "해설 그림: 원 위의 세 점 A, B, C와 C를 지나는 지름 CE를 그려, 직각 ∠ADC·∠CBE와 같은 각 ∠CAB=∠CEB, 닮은 삼각형 ACD와 CEB의 대응변 AC:CE=CD:CB를 색으로 표시한다.",
     "solutionImageCaption": "지름 CE를 그으면 ∠CBE=90°=∠ADC이고, ∠CAB=∠CEB(호 CB의 원주각)이므로 △ACD∽△CEB이다. 12:CE=4:6에서 CE=18 cm이므로 반지름은 9 cm이고 정답은 ②이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -346,7 +421,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 11,
@@ -374,7 +458,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -409,7 +502,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 선수 A와 B의 점수를 각각 점도표로 나타낸 그림. 두 점도표 모두 평균 7에 점선이 있다. A는 중앙값 6.5와 최빈값 6의 파란 점 2개가, B는 중앙값 7.5와 최빈값 8의 파란 점 2개가 표시되어 있다.",
     "solutionImageCaption": "점 하나가 화살 한 발이다. 파란 점은 가장 많이 나온 값(최빈값)이다. A는 작은 순서로 4, 6, 6, 7, 9, 10이어서 평균 7, 중앙값 (6+7)/2=6.5, 최빈값 6이다. B는 4, 6, 7, 8, 8, 9여서 평균 7, 중앙값 (7+8)/2=7.5, 최빈값 8 하나이다. 따라서 ①~④는 옳고, A의 중앙값 6.5와 최빈값 6이 같다는 ⑤가 옳지 않다. 정답은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -437,7 +539,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 14,
@@ -471,7 +582,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 턱걸이 횟수 4, 5, 6, 8, 12, 13의 점도표. 중앙값 7과 평균 8에 점선이 있고 각 점 위에 평균과의 차 -4, -3, -2, 0, +4, +5가 쓰여 있다.",
     "solutionImageCaption": "점 하나가 학생 한 명이다. 중앙값 7(점선)에서 가운데 두 값이 6과 a이므로 a=8이고 평균은 48÷6=8(점선)이다. 그림의 숫자는 편차 -4, -3, -2, 0, 4, 5이고 편차 제곱의 합은 16+9+4+0+16+25=70, 분산은 70÷6이므로 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -499,7 +619,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_QUADRATIC_EQUATION_ROOTS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -527,7 +656,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -562,7 +700,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 예시 산점도. 점들이 왼쪽 아래에서 오른쪽 위로 넓은 띠 모양으로 모여 있어 x가 커질수록 y도 대체로 커진다.",
     "solutionImageCaption": "예: 점들이 오른쪽 위로 모여 있으므로 두 변량은 양의 상관관계이다. 여름철 기온이 높아질수록 냉방비도 대체로 증가하므로 정답은 ②이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -592,7 +739,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 음의 상관관계의 예시 산점도 두 개. ③은 점들이 오른쪽 아래로 넓게 퍼져 있고 ⑤는 내려가는 한 직선 주위에 좁게 모여 있으며 둘 다 오른쪽 아래로 향하는 화살표가 있다.",
     "solutionImageCaption": "예시: ③과 ⑤는 모두 x가 커질수록 y가 작아지는 음의 상관관계이다. ⑤는 점들이 내려가는 한 직선 주위에 더 가깝게 모여 있고 ③은 더 넓게 퍼져 있다. 따라서 음의 상관관계가 가장 강한 것은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 19,
@@ -627,7 +783,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 중간·기말 성적 산점도. 점선 y=x와 x=80, y=80 선이 있고, 중간 80점 이상인 점 4개에 동그라미가, 둘 다 80점 미만인 왼쪽 아래 영역에 옅은 칠이 있다.",
     "solutionImageCaption": "중간 80점 이상인 점은 (80,60),(80,70),(80,80),(90,90)이므로 기말 평균은 (60+70+80+90)/4=75점이다. 따라서 70점이라고 한 ④가 옳지 않다. y=x 위 7개, y>x 5개, 둘 다 80점 미만 14개(70%)로 ①②③⑤는 옳다. 정답은 ④이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": ["COND_RANGE","COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -662,7 +827,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 읽기 점수(가로)와 듣기 점수(세로)의 산점도 15개 점에 점선 x+y=14와 그 위쪽 영역을 옅게 칠한 그림. 영역 안과 선 위의 7개 점 (6,8), (7,8), (8,9), (8,10), (9,5), (9,8), (10,9)에 동그라미가 쳐져 있다.",
     "solutionImageCaption": "평균이 7점 이상이면 x+y≥14이므로 직선 x+y=14 위 또는 그 위쪽의 점 7개를 센다. 따라서 비율은 7/15이고 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_LINEAR_INEQUALITIES"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -670,9 +844,9 @@ window.questionBank = [
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-06",
-    "standardUnit": "원의 성질",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M3-05",
+    "standardUnit": "삼각비",
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -686,13 +860,22 @@ window.questionBank = [
     "solution": "호의 길이의 비는 같은 원에서 중심각의 크기의 비와 같다.\n$5+4+3=12$이므로\n$\\angle AOB=360^\\circ\\times\\dfrac{5}{12}=150^\\circ$\n$\\angle BOC=360^\\circ\\times\\dfrac{4}{12}=120^\\circ$\n$\\angle COA=360^\\circ\\times\\dfrac{3}{12}=90^\\circ$이다.\n$\\triangle AOB$에서 $B$에서 직선 $OA$에 내린 높이는 $5$이므로\n$[\\triangle AOB]=\\dfrac12\\times10\\times5=25$이다.\n$\\triangle BOC$의 중심각을 반으로 나누면 $60^\\circ$인 직각삼각형이 된다. 따라서 $BC=10\\sqrt3$이고 $O$에서 $BC$에 내린 높이는 $5$이므로\n$[\\triangle BOC]=\\dfrac12\\times10\\sqrt3\\times5=25\\sqrt3$이다.\n$\\triangle COA$는 두 직각변의 길이가 모두 $10$이므로\n$[\\triangle COA]=\\dfrac12\\times10\\times10=50$이다.\n따라서\n$[\\triangle ABC]=25+25\\sqrt3+50=75+25\\sqrt3$이다.",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q21-solution-v2.svg",
     "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q21.png",
-    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-    "subUnit": "원주각",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 반지름 10인 원 O에서 세 반지름 OA, OB, OC는 길이가 같고(같은 눈금) 중심각은 ∠AOB=150°, ∠BOC=120°, ∠COA=90°이다. 오른쪽에는 원 안의 세 삼각형이 파랑(AOB), 주황(BOC), 초록(COA)으로 칠해져 있고, 아래에 각 삼각형의 밑변·높이와 넓이식(10×5÷2=25, 10√3×5÷2=25√3, 10×10÷2=50)이 따로 그려져 있다.",
     "solutionImageCaption": "호의 비 5:4:3에서 중심각이 150°, 120°, 90°이고, 세 삼각형의 넓이 25, 25√3, 50을 더하면 △ABC의 넓이는 75+25√3이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_CIRCLE_PROPERTIES","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -722,7 +905,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 점 A에서 원 O에 그은 접선 AB, AC와 접점의 직각 표시, ∠BDC=54°, 중심각 ∠BOC=108°, 파랗게 칠한 사각형 ABOC를 나타낸 그림.",
     "solutionImageCaption": "∠BDC=54°는 호 BC를 보는 원주각이므로 중심각 ∠BOC=108°이고, ∠ABO=∠ACO=90°이므로 사각형 ABOC의 내각의 합 360°에서 ∠BAC=360°−90°−90°−108°=72°이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -751,7 +943,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 세 개의 점도표. (1) 책의 수는 30권이 가로축을 끊은 뒤 멀리 떨어져 있고 평균 점선이 중앙값 점선보다 오른쪽에 있다. (2) USB 용량은 점이 가장 높이 쌓인 값이 파란색이다. (3) 통학 시간은 점들이 고르게 모여 있고 평균 점선이 가운데에 있다.",
     "solutionImageCaption": "점 하나가 자료 하나이다. (1) 30권이 다른 값보다 매우 커서 평균이 중앙값보다 크게 오른쪽으로 끌려가므로 중앙값이 특징을 더 잘 나타낸다. 작은 순서로 3, 3, 4, 5, 5, 6, 7, 7, 8, 30에서 가운데 두 값 5, 6의 평균이 중앙값이다. (2) 파란 점이 가장 많이 나타나는 값(5번)이므로 최빈값이 적절하다. (3) 동떨어진 값이 없어 모든 자료를 반영하는 평균이 적절하고, 합 120을 10으로 나눈다. 따라서 (1) 중앙값 5.5권, (2) 최빈값 4GB, (3) 평균 12분이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -782,6 +983,15 @@ window.questionBank = [
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q24-solution.svg",
     "solutionImageAlt": "해설 그림: 용돈과 저축액의 예시 산점도. 점들이 왼쪽 아래에서 오른쪽 위로 모여 있고 D는 오른쪽 위 끝, E는 비슷한 용돈의 다른 점들보다 아래에 있다.",
     "solutionImageCaption": "예: 점들이 오른쪽 위로 모이므로 양의 상관관계이고, E는 용돈이 비슷한 다른 점보다 아래에 있다. 따라서 (1) 잘못된 것은 ㄴ, ㄷ이고, (2) D는 용돈과 저축액이 모두 많은 편이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "examId": "E014",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "2a37723dbdb26818e07f86df463700b2fdc116e4",
+  "sampled4slotSha256": "1c1145c2cec6f0b27b0ab44801575b1a7be4909bba4de9957b1dc86f8fb83fee",
+  "sampledReviewSha256": "b487087e264c22730f62e68e9ac7322018eab50bba1aa416552fcca7db94440b",
+  "sampledSourcePatchSha256": "f0227b907dbefa5dd69e93f4f6b6f875a1f1380e443ea926363cbafcb0c2477b",
+  "sourcePacketSha256": "b18ad073740da3a648c473069fa9b08cdbc13442613b42481abc1fba723a58a8",
+  "sampled": [
+    9,
+    19,
+    20
+  ],
+  "status": "PASS_AFTER_CONDITION_AND_PRIMARY_LEAF_CORRECTIONS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_690b2af5cbc1878309b361b4ab96b528fcccf3b3cca5a1c5baf6f3405eb3991e",
+      "sourceImageRead": true,
+      "visualStatus": "READ",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 8
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "보조지름을 선택하고 지름에 대한 직각과 같은 호의 원주각으로 AA를 구성한다. 원각 구성 자체가 전략이므로 COMPOSITE080/current168이 적합하다. 수선 CD⊥AB 보완과 닮음 보조축을 확인했다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_e5317ee1417e70956abe2825371bdfb6d71da82f3bda01d36eb9b2aae29992cf",
+      "sourceImageRead": true,
+      "visualStatus": "READ",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 9
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "양의 상관 진술과 함께 y=x, y>x, x≥80의 조건부 평균 및 양쪽80미만의 집계를 실제 그림에서 확인한다. 혼합 상관·분포 해석이므로 current180을 유지하고 상등·범위·부등식 조건 보존이 타당하다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_e6a3b47748cc6c56cc20106953fe7605fef3e2507df4f874068dd646d670a20a",
+      "sourceImageRead": true,
+      "visualStatus": "READ",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 5
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "평균7점이상을 좌표합 x+y≥14로 옮긴 뒤 조건을 만족하는 점의 비율을 구한다. 10점만점과 평균하한이 모두 보존되며 상관판단 없는 단순 조건집계여서 current2022 exactleafgap 처리가 적합하다.",
+      "status": "PASS"
+    }
+  ],
+  "outstanding": [],
+  "scope": "Three independent metadata/4slot samples; no full-exam R1/R2/R3 certification",
+  "followup": "Q9 CD⊥AB 보완, ROOT의 복합 원주각 primary 및 Q20 current2022 parent+exactleaf gap 판정 반영 최종본에 결속. Q19는 실제 상관판단을 포함해180유지."
+}
