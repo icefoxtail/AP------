@@ -1,0 +1,2890 @@
+{
+  "schemaVersion": "m2-s1-meta-review-v1",
+  "examId": "E007",
+  "owner": "A",
+  "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+  "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+  "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "reviewedQuestionCount": 24,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_41cb0d88e130b4752cc58bf43d6ddee479a64ac1ee32f2f39a06cb56be6417dd",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-122",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "순환부분을 맞춰 빼 분수로 변환",
+      "decisiveStep": "100x-x=23으로99x=23.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-122",
+        "rpmPrimaryPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "rpmL3": "순환소수",
+        "rpmL4": "순환소수를 분수로",
+        "level": "하"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "rpmRecordId": "M2-RPM-122",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]"
+      },
+      "fieldReview": {
+        "classification": "순환소수를분수로122 정확.",
+        "binding": "현재 ACTIVE 중2템플릿에 단순순환소수분수변환 exact pair 미확립; 신규절차 제안.",
+        "crossConcept": "거듭제곱10배/약분은 주방법 내부.",
+        "condition": "기약분수는 목표표현조건, 해범위제한 아님.",
+        "integration": "순환부분소거라는 단일 primary.",
+        "difficulty": "두자리 순환소수를99분모로 바꾸는 직접 표준변환.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "순환소수를분수로122 정확. 100x-x=23으로99x=23.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-REPEATING-TO-FRACTION"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두자리 순환소수를99분모로 바꾸는 직접 표준변환."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "b6087ea9ee8c62be6e6eb10b1fe452a3f31501c304087d4396c926e8481d0336"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "7c2e92bbc904d0c35fadc5093c71fd15f72d5903b18931867ea15eecfac5187a"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3c499607afb3d37a4051a0fde3607d3a41f9599116816f0b04e7596a6f27b6eb",
+      "verdict": "UNRESOLVED",
+      "rpmRecordId": "M2-RPM-120",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "약분 후 기약분모의 소인수로 순환소수 판정",
+      "decisiveStep": "기약분모7,13,9인 세분수가 무한순환;10인 둘은 유한.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "하",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-120",
+        "rpmPrimaryPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "rpmL3": "유한소수와 무한소수",
+        "rpmL4": "분모의 소인수 조건",
+        "level": "하",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "rpmRecordId": "M2-RPM-120",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]"
+      },
+      "fieldReview": {
+        "classification": "분모소인수조건120 정확.",
+        "binding": "유한/순환 소수 판정 template가 필요하며 소수값 직접계산과구별.",
+        "crossConcept": "약분은 분모조건판정의 내부.",
+        "condition": "추가 수범위 없음.",
+        "integration": "기약분모 한판정기준 반복.",
+        "difficulty": "5개분수 약분과2·5외 소인수 확인이라는 표준절차.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "분모소인수조건120 정확. 기약분모7,13,9인 세분수가 무한순환;10인 둘은 유한.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-DENOMINATOR-DECIMAL"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "5개분수 약분과2·5외 소인수 확인이라는 표준절차."
+      },
+      "contentDebt": [
+        {
+          "kind": "STEM_CHOICES_ANSWER_SCHEMA_CONFLICT",
+          "observed": "문항은 개수를 묻고 해설은3개를 결론내지만 choices에는 개수선택지가 아니라 판정할 다섯분수가 들어 있다. answer③은 세번째분수-1/13을 가리키게 되어 표시구조가 불일치한다. 원본보기/정답선택지 분리 여부 대조 필요.",
+          "action": "원본 학생표시 수정은 별도 내용검수로 이관; 현 source보존."
+        }
+      ],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "6ccd6e5ef4820e5926f970f5188cc0bd4cc8720f0e4776a6df1d61d3987e65f3"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "895dc56f64d74a843cc96099529aa79c2e206c42d6d4cf75b24f0856ba3968d9"
+          }
+        ]
+      },
+      "unresolvedFields": [
+        "contentDebt"
+      ]
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_8f298cf8263ed8419d43e21ffd7d7479554f6f0c49506924f9926555e5243590",
+      "verdict": "CORRECT",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "유리수·유한소수·순환소수의 포함관계 판정",
+      "decisiveStep": "순환소수는분수표현가능,유리수의소수표현은유한또는순환.",
+      "beforeSource": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": null
+      },
+      "fieldReview": {
+        "classification": "유리수/소수표현관계 일반명제판정은 분수를소수로123이나유한판별119만으로 포괄안됨.",
+        "binding": "유리수분류 명제 template 신규; 기존 일차함수 정의 템플릿과무관.",
+        "crossConcept": "분모81인 보기검증은 동일 소수표현판정 내부.",
+        "condition": "모든은 명제의 전칭 표현이며 입력함수조건키로 억지투영안함.",
+        "integration": "수체계의 포함관계 기준을 각보기에 적용.",
+        "difficulty": "유리수와소수표현의 정의·기본성질 직접대조. 기존2→1 제안.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "유리수/소수표현관계 일반명제판정은 분수를소수로123이나유한판별119만으로 포괄안됨. 순환소수는분수표현가능,유리수의소수표현은유한또는순환.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "RPM_LEAF_GAP",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-RATIONAL-DECIMAL-PROPERTIES"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "유리수와소수표현의 정의·기본성질 직접대조. 기존2→1 제안."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2371d1898a7b5835e548935de787eac7626f511def8ba00b31ba34ddbfffacdb"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "fc533cfb813b5e256b4ba2bf3e0b0fc22ada57a014bb8edd0a9ca7691fc4ffc8"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_420a1dda4c48d5c9371f389e6b3c7b66278981ccfeec6d3719890192cc3e6e7d",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-120",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "분자범위를 정하고 유한소수가 되는 분모인수 소거",
+      "decisiveStep": "2<n<15인 자연수n중11배수는11 하나.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-120",
+        "rpmPrimaryPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "rpmL3": "유한소수와 무한소수",
+        "rpmL4": "분모의 소인수 조건",
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "rpmRecordId": "M2-RPM-120",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]"
+      },
+      "fieldReview": {
+        "classification": "분모의소인수조건120이 답후보를 결정.",
+        "binding": "자연수분자구간과분모소거의결합 template 필요.",
+        "crossConcept": "통분과약수조건은 분모판정 내부.",
+        "condition": "자연수분자와 두분수사이라는 열린범위가 명시됨.",
+        "integration": "분자범위와분모인수확인은 같은 유한소수조건 활용.",
+        "difficulty": "통분하여3..14 범위에서11배수 고르는 표준두단계. 기존3→2 제안.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "분모의소인수조건120이 답후보를 결정. 2<n<15인 자연수n중11배수는11 하나.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-DENOMINATOR-DECIMAL"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "통분하여3..14 범위에서11배수 고르는 표준두단계. 기존3→2 제안."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "7c48824d8e3abdd6540aab67479c89f990e15ea4047fbf9a1ffc6a49fa9c5f6d"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "6d681eb6ce2516db996a1b5ada0e80829163dce61ab04de1f22b7bda8aa4cff4"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_a0ce1744cd42beac8a70f8a989ba073108af1fecf062a7d601027aa803329bc5",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-121",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "순환마디와 나머지로 먼 자리 숫자 결정",
+      "decisiveStep": "9/37의 주기243 길이3,2026≡1이라 b2.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-121",
+        "rpmPrimaryPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "rpmL3": "순환소수",
+        "rpmL4": "순환마디와 표현",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "rpmRecordId": "M2-RPM-121",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]"
+      },
+      "fieldReview": {
+        "classification": "순환마디의 반복을 이용하는121에 귀속; 단순분수변환보다 주기위치가 결정적.",
+        "binding": "순환마디자리번호와목표식평가 템플릿 신규.",
+        "crossConcept": "거듭제곱2³평가는 이미정한값의 부수연산이라 별도CC아님.",
+        "condition": "자리번호와순환마디길이는 대상의 정의이며 별도의 해선택제약은 없다.",
+        "integration": "주기위치추론과값대입은 같은 주기활용 primary.",
+        "difficulty": "소수전개로주기를얻고큰자리번호를환원한뒤a,b목표식평가.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "순환마디의 반복을 이용하는121에 귀속; 단순분수변환보다 주기위치가 결정적. 9/37의 주기243 길이3,2026≡1이라 b2.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-REPEATING-DIGIT-POSITION"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소수전개로주기를얻고큰자리번호를환원한뒤a,b목표식평가."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0b862820b712f6257f9f4652e263c72cced9f454cc1d3bf0d3fe1d2e7f07bd17"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8267bf16860193aab896c4ad5dc4dfbeea563f122b162d57520dcbc973e466f3"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_7463434467b9baff8f506d7a98500e3b9c4c5e85ae43a6589f6aeedb4ebb4608",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-120",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "날짜분수의 기약분모와 허용날짜 범위를 나누어 판정",
+      "decisiveStep": "1월1일은1미만조건으로제외,30날짜중유한소수분모8개를빼22.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-120",
+        "rpmPrimaryPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "rpmL3": "유한소수와 무한소수",
+        "rpmL4": "분모의 소인수 조건",
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "level": "중"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "rpmRecordId": "M2-RPM-120",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]"
+      },
+      "fieldReview": {
+        "classification": "유한소수분모조건120, 날짜는 실제범위제약을 주는소재.",
+        "binding": "날짜범위내 유한/순환개수 판정템플릿 신규.",
+        "crossConcept": "날짜별열거는 분모조건 적용과정.",
+        "condition": "단1보다작은분수 및 월일의 유효범위가 개수를결정.",
+        "integration": "같은 분모조건을날짜제한범위에 적용.",
+        "difficulty": "세학생말을검증하며1미만제한으로전체날짜수를조정하고유한분모집합을센다.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "유한소수분모조건120, 날짜는 실제범위제약을 주는소재. 1월1일은1미만조건으로제외,30날짜중유한소수분모8개를빼22.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-DATE-DECIMAL-COUNT"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "세학생말을검증하며1미만제한으로전체날짜수를조정하고유한분모집합을센다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "4ff983f73295ac107930c3f1e0af09a7db0a6d06399b8eb9dae0aa1312e77ed1"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "e8af5060116f3c44ecae3612339e7ad941c4993bb48a252fba9d23272e85b2e8"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_21efa95e9b625778c8ff053e9ba7d28e4d0f503951c2c6d0af24a4e9f6698a63",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-122",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "비순환부분을 빼서 순환소수의 분수표현 대조",
+      "decisiveStep": "0.12333…=(123-12)/900=37/300.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "하",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-122",
+        "rpmPrimaryPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "rpmL3": "순환소수",
+        "rpmL4": "순환소수를 분수로",
+        "level": "하",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "rpmRecordId": "M2-RPM-122",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]"
+      },
+      "fieldReview": {
+        "classification": "순환소수를분수로122 정확.",
+        "binding": "다양한비순환길이의변환진위판정템플릿 신규.",
+        "crossConcept": "약분/거듭제곱10분모구성은 해당변환내부.",
+        "condition": "추가제약없음.",
+        "integration": "변환공식 반복검증.",
+        "difficulty": "정수부·비순환부있는다섯표현을계산해대조.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "순환소수를분수로122 정확. 0.12333…=(123-12)/900=37/300.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-REPEATING-TO-FRACTION"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "정수부·비순환부있는다섯표현을계산해대조."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "75452b1afb7442bf59fcb7d07f165c5efb9bb65a9b385e3be20d34f6e343dd3b"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ee46423d5b93652a61163b52cecec2baba6274f7b8dd4f31ef687ec66cd7d5d4"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_b91238505a39dbc9d4fc3938193232c16a1c8347c296d77e99242ca15e37f88b",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-121",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두순환소수 숫자조건을 주기위치로 환원하여 세기",
+      "decisiveStep": "a_n3이므로b_n2,주기285714첫자리 n1,7,13,19.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-121",
+        "rpmPrimaryPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "rpmL3": "순환소수",
+        "rpmL4": "순환마디와 표현",
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_UPPER_BOUND"
+        ],
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "rpmRecordId": "M2-RPM-121",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_UPPER_BOUND"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]"
+      },
+      "fieldReview": {
+        "classification": "순환마디121의 반복위치가 핵심.",
+        "binding": "두순환표현합조건과유한자리범위개수 템플릿 신규.",
+        "crossConcept": "자연수위치열거는 주기활용내부.",
+        "condition": "n자연수이며20이하인명시제약.",
+        "integration": "자리조건을한주기의위치로바꾸어반복.",
+        "difficulty": "한쪽숫자가항상3이므로다른쪽의2위치만세는표준주기활용. 기존3→2 제안.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "순환마디121의 반복위치가 핵심. a_n3이므로b_n2,주기285714첫자리 n1,7,13,19.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-REPEATING-DIGIT-POSITION"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한쪽숫자가항상3이므로다른쪽의2위치만세는표준주기활용. 기존3→2 제안."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "106578f25e52f289ee781d20f7e12da913c690326c00d0332fce02ac3658789c"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "10d44d13975d50d16afc21e1285c841c19ab926f780766d2b4bb331e7df8c45c"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_814d4aacc0a0fc6c2060ebd7b8eef05659639172a08d679ba83540fb86c40cd9",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-125",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "같은밑의곱에 지수덧셈 적용하여 오식 판정",
+      "decisiveStep": "x²x³y³y²=x⁵y⁵이므로⑤오류.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-125",
+        "rpmPrimaryPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "rpmL3": "지수법칙",
+        "rpmL4": "거듭제곱의 곱·몫",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "rpmRecordId": "M2-RPM-125",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"식의 계산\",\"단항식의 계산\"]"
+      },
+      "fieldReview": {
+        "classification": "곱·몫 지수법칙125; 틀린보기의핵심은같은밑곱.",
+        "binding": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION/TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS 실제 보기계산진위골격에일치.",
+        "crossConcept": "계수부호등은 주방법내부.",
+        "condition": "추가제약없음.",
+        "integration": "지수법칙 직접대조.",
+        "difficulty": "정답오류는같은밑의지수합을바로확인하면확정. 기존2→1 제안.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "곱·몫 지수법칙125; 틀린보기의핵심은같은밑곱. x²x³y³y²=x⁵y⁵이므로⑤오류.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정답오류는같은밑의지수합을바로확인하면확정. 기존2→1 제안."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "be7dc805ca904e8959d5904ecc877d00d32ca3c0368078cac0cdbf37f3ff7019"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "d396a5f1d428884816579e030cb9475d57bb173a2eb0323767f60ce8ead373d6"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_c40f580591a30f49a44c96f2e2dca34cbacbb4c30d4d0201529590c3e3c82e6d",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-126",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "공통밑으로 바꾼 거듭제곱의 거듭제곱",
+      "decisiveStep": "81=A²이므로81⁴=A⁸.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-126",
+        "rpmPrimaryPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 거듭제곱"
+        },
+        "rpmL3": "지수법칙",
+        "rpmL4": "거듭제곱의 거듭제곱",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 거듭제곱"
+        },
+        "rpmRecordId": "M2-RPM-126",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"식의 계산\",\"단항식의 계산\"]"
+      },
+      "fieldReview": {
+        "classification": "거듭제곱의거듭제곱126 정확.",
+        "binding": "보기연산오류판정템플릿과달리주어진거듭제곱기호로재표현하는template필요.",
+        "crossConcept": "기호A대응은 지수법칙내부.",
+        "condition": "추가제약없음.",
+        "integration": "공통밑의지수법칙 직접 적용.",
+        "difficulty": "81과A를3의거듭제곱으로놓아지수한번비교. 기존2→1 제안.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "거듭제곱의거듭제곱126 정확. 81=A²이므로81⁴=A⁸.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-POWER-REPRESENTATION"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "81과A를3의거듭제곱으로놓아지수한번비교. 기존2→1 제안."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "e564886c0422fd78300f82b0690347ca77c7cd6f8db42452a1d65d164bac05df"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2cf452a02600fe42d55ab3d2443540f49f932f7c074f0acb75a877d63ac7b11d"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_2a8db68ee7490188319a294445c461bee207ef36b0bbfc4d30b4a67a5a555864",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-133",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "다항식을단항식으로나눈뒤 동류항과계수합 정리",
+      "decisiveStep": "첫괄호/3y후뒷괄호빼서-20,11,9계수합0.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-133",
+        "rpmPrimaryPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmL3": "단항식과 다항식의 곱셈·나눗셈",
+        "rpmL4": "다항식을 단항식으로 나누기",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmRecordId": "M2-RPM-133",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]"
+      },
+      "fieldReview": {
+        "classification": "다항식을단항식으로나누기133이선행핵심;뒤에는일반항정리.",
+        "binding": "삼각형넓이/회전체비템플릿과달리순수다항식계산과계수해석 필요.",
+        "crossConcept": "괄호뺄셈과계수합은 계산primary내부.",
+        "condition": "문자분모0아님은 수식정의조건이지만명시되지않아4slot추가안함.",
+        "integration": "나눗셈후정리는 같은계산primary.",
+        "difficulty": "단항식나눗셈과괄호부호처리라는표준다단계. 기존3→2 제안.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "다항식을단항식으로나누기133이선행핵심;뒤에는일반항정리. 첫괄호/3y후뒷괄호빼서-20,11,9계수합0.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-POLYNOMIAL-COEFFICIENT"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "단항식나눗셈과괄호부호처리라는표준다단계. 기존3→2 제안."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2d412adc6dcf128e94d5556b892a093173893ac3776382a7ad8566eb15feb776"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "26373ec8379041a6ba9901ec68a153128d47920803f38fdc6389de44e7b35bf1"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_f6dd83e5a9ae0fc965bddc03167c5e2cf0ab89372637700d1c6dfa80bd58c109",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-131",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "중첩괄호의부호를 풀어 동류항 정리",
+      "decisiveStep": "전개후-x²+12x-20의x계수12와상수-20합.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-131",
+        "rpmPrimaryPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "괄호가 있는 계산"
+        },
+        "rpmL3": "다항식의 덧셈과 뺄셈",
+        "rpmL4": "괄호가 있는 계산",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "괄호가 있는 계산"
+        },
+        "rpmRecordId": "M2-RPM-131",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]"
+      },
+      "fieldReview": {
+        "classification": "괄호가있는계산131 정확.",
+        "binding": "원식오독복원template와달리주어진A,B중첩식정리템플릿 필요.",
+        "crossConcept": "계수/상수항읽기는 primary결과해석.",
+        "condition": "추가제약없음.",
+        "integration": "중첩괄호정리의단일primary.",
+        "difficulty": "음수괄호와대입의표준계산절차.계산길이만으로3부여하지않음.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "괄호가있는계산131 정확. 전개후-x²+12x-20의x계수12와상수-20합.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-POLYNOMIAL-COEFFICIENT"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "음수괄호와대입의표준계산절차.계산길이만으로3부여하지않음."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cd59af4b51c530bf87d410f37c8ff5c1a49510b38669095aefaee38bdf0ec053"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8bc206e4c726e4927294187e7bcb922abb7148049a3c9a2cd59b9f57f64eab90"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "verdict": "CORRECT",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "회전체를원뿔·구로 해석하고 부피공식 합산",
+      "decisiveStep": "삼각형회전은원뿔,반원회전은구이며각부피를합산.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "수와 식",
+        "subUnit": "다항식의 계산",
+        "standardCourse": "중2 수학",
+        "standardUnitOrder": 1
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 4,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "수와 식",
+        "subUnit": "다항식의 계산",
+        "standardCourse": "중2 수학",
+        "standardUnitOrder": 1
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [
+          "CC_EXPONENT_RULES"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "standardUnit": "수와 식",
+        "subUnit": "다항식의 계산",
+        "standardCourse": "중2 수학",
+        "standardUnitOrder": 1,
+        "category": "수학"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [
+          "CC_EXPONENT_RULES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": null,
+        "standardCourse": "중1",
+        "semanticSourceScope": "M1-2",
+        "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+        "targetNamespacePreserved": true
+      },
+      "fieldReview": {
+        "classification": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. Target course/L1/L2 remain the original M2 namespace under Meta Foundation v1 section1.4.1; lower-grade RPM semantic provenance is separate.",
+        "binding": "PT_M1_SOLID_FIGURE_MEASURE broad재사용후보이나 두회전체부피합exacttemplate미확립. 원기둥부피비M2template는도형/목표가다름.",
+        "crossConcept": "문자로된반지름·높이거듭제곱을정리하는지수법칙이보조.",
+        "condition": "양의길이는도형존재상전제이나명시수범위추가안함.",
+        "integration": "회전입체인식과부피식→지수정리합산.",
+        "difficulty": "원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. 삼각형회전은원뿔,반원회전은구이며각부피를합산.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "RPM_LEAF_GAP",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-ROTATION-VOLUME-SUM"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ab85b86dd0d568906659b0c9ae804d2b2a71d574ac3ea1a37dc65484706bad11"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ba5d09d68629862bcb5a7c71c5e8f1e5a5c048666272436c211afd822eff1dfc"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_454d0cfce5246112ec96d47053f41ed5f8d0b8d4a59969119843391e964b0dfa",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-135",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "조건별로 같은이차식을복원하여계수비교",
+      "decisiveStep": "A를두방법으로표현한6x²-8x+4+b와6x²-2ax+9가동일.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 4,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-135",
+        "rpmPrimaryPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "rpmL3": "식의 값과 활용",
+        "rpmL4": "조건식 활용",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "rpmRecordId": "M2-RPM-135",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]"
+      },
+      "fieldReview": {
+        "classification": "조건식활용135가원식복원과계수대응을포괄.",
+        "binding": "오독계산복원template와달리두조건의동일다항식비교 신규템플릿.",
+        "crossConcept": "분배와계수비교는 조건식활용primary내부.",
+        "condition": "이차식이라는차수는주대상정의.분모x0제외를원문에추가안함.",
+        "integration": "동일한식을조건별로표현하는단일primary.",
+        "difficulty": "뺄셈조건과나눗셈조건을각각복원하여계수대응시키는구조적연결. 기존4→3상유지.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "조건식활용135가원식복원과계수대응을포괄. A를두방법으로표현한6x²-8x+4+b와6x²-2ax+9가동일.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-POLYNOMIAL-CONDITION"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "뺄셈조건과나눗셈조건을각각복원하여계수대응시키는구조적연결. 기존4→3상유지."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "522e2ce6e8ce000ad69dab12cfbcb5a61bdeab0ef2524b4acd81cd340c04fd6a"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "e1dfe5831a0c4058a07af9e4745789d3b2f79483c9c0fb52dc42f473e57283f2"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_f77d649baa2048876eb5c573715b65a085b65219d4d7ff2f18e6b7638df513ac",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-133",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두다항식을단항식으로나눠 차와계수합 계산",
+      "decisiveStep": "3x-4y에서5x+3y²를빼계수합-9.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "하",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-133",
+        "rpmPrimaryPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmL3": "단항식과 다항식의 곱셈·나눗셈",
+        "rpmL4": "다항식을 단항식으로 나누기",
+        "level": "하",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmRecordId": "M2-RPM-133",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]"
+      },
+      "fieldReview": {
+        "classification": "다항식을단항식으로나누기133 정확.",
+        "binding": "기하높이template가아닌직접나눗셈과계수합 template필요.",
+        "crossConcept": "동류항/합은나눗셈결과의정리.",
+        "condition": "추가명시제약없음.",
+        "integration": "다항식나눗셈의한풀이축.",
+        "difficulty": "두분수식나눗셈과부호를유지한뺄셈.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "다항식을단항식으로나누기133 정확. 3x-4y에서5x+3y²를빼계수합-9.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-POLYNOMIAL-COEFFICIENT"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "두분수식나눗셈과부호를유지한뺄셈."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "a092c789169f1a7bd32eda45bda5ba3d29d0da2ab953033231670f9137f94eb5"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8eb0aad319962bff6e9c78b404ae407c8d1daa50723d237754307750fd412194"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_670bcb378bf92967e1aa9f534587aec3d9ee0049f4bc6afb3b7689b0e38d226c",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-138",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "이항과양수나눗셈으로기본부등식풀기",
+      "decisiveStep": "2x>-8에서양수2로나누어x>-4.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-138",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "기본형"
+        },
+        "rpmL3": "일차부등식의 풀이",
+        "rpmL4": "기본형",
+        "level": "중",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "기본형"
+        },
+        "rpmRecordId": "M2-RPM-138",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식\"]"
+      },
+      "fieldReview": {
+        "classification": "기본형138 정확.",
+        "binding": "ACTIVE SOLVINGtemplate는다양한소수분수풀이오류찾기이므로단일기본풀이와구별필요.",
+        "crossConcept": "동일부등식성질만사용.",
+        "condition": "추가범위제한없음.",
+        "integration": "기본풀이 primary 하나.",
+        "difficulty": "정수계수이항및양수나눗셈의직접풀이.기존중은상대난도값으로독립유지.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "기본형138 정확. 2x>-8에서양수2로나누어x>-4.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-INEQUALITY-DIRECT"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "정수계수이항및양수나눗셈의직접풀이.기존중은상대난도값으로독립유지."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "85524e9eeb86cbac06f0365c60caa8f1cf14baae6c8f62857cc9a7980aab79d0"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "7238b088cff7619b2254466bb0d8081d5a4fbb6c8209c60383d9b0e0fd213813"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-136",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "부등식동치와음수곱의부등호반전판정",
+      "decisiveStep": "a<b로돌린뒤-3곱하면방향이>로바뀜.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-136",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "rpmL3": "부등식의 성질",
+        "rpmL4": "부등식의 성질",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "rpmRecordId": "M2-RPM-136",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식\"]"
+      },
+      "fieldReview": {
+        "classification": "부등식성질136 정확.",
+        "binding": "ACTIVE PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE/TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES exact.",
+        "crossConcept": "부등식성질의직접반복.",
+        "condition": "a-3<b-3은주어진관계이지수체계제한아님.",
+        "integration": "동일성질확인.",
+        "difficulty": "같은수더하기와음수곱방향이라는기본성질대조. 기존2→1제안.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "부등식성질136 정확. a<b로돌린뒤-3곱하면방향이>로바뀜.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "같은수더하기와음수곱방향이라는기본성질대조. 기존2→1제안."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3c18f378c8e14b7c8480c3c75b629d3c8be8bb28ab9636c4928b42f97012b418"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "357d377f27984d759c5ced9c479b967b738e0a096b1eb4042f73208ae4cb5820"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_a4b3418a5df90ae608ef84ba58fe6f667ea8dabb8c4f0ba10140bb31d04ba3b4",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-141",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "해의최대경계를음수조건과결합하여매개변수범위결정",
+      "decisiveStep": "x≤(2/3)(a+7)의최대해가0보다작아야함.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-141",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmL3": "해의 조건",
+        "rpmL4": "계수 조건",
+        "conditionKeys": [
+          "COND_NEGATIVE"
+        ],
+        "level": "중"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmRecordId": "M2-RPM-141",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NEGATIVE"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식\"]"
+      },
+      "fieldReview": {
+        "classification": "해조건계수조건141 정확.",
+        "binding": "자연수해없음template는범위상한과자연수경계1을비교; 본문모든해음수/경계0이라새template필요.",
+        "crossConcept": "해집합경계판정은계수조건primary내부.",
+        "condition": "모든해가음수라는명시조건이끝점의엄격부등호를결정.",
+        "integration": "부등식해끝점의조건으로a판정.",
+        "difficulty": "해가모두음수라는전칭조건을포함끝점의엄격음수로바꿔야함.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "해조건계수조건141 정확. x≤(2/3)(a+7)의최대해가0보다작아야함.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-NEGATIVE-SOLUTION-PARAMETER"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "해가모두음수라는전칭조건을포함끝점의엄격음수로바꿔야함."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ecd42df0d82f489e6d7c7a8d396120124e6843e1629a5068cd525b650d724f6e"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "046b69c6c7998849650300566231c6e700933a730b17084bd01be68e5e1c0e98"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c",
+      "verdict": "CORRECT",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "복잡한부등식풀이후정수해의최소값결정",
+      "decisiveStep": "x>-15이므로최소정수는-14.",
+      "beforeSource": {
+        "conditionKeys": [],
+        "level": "하",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "conditionKeys": [],
+        "level": null,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "level": "하",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": null
+      },
+      "fieldReview": {
+        "classification": "기본부등식영역의정수해최솟값은해개수140과다르며 WORD143으로강제하지않음.",
+        "binding": "자연수합template와달리정수하한최소값을결정하는template필요.",
+        "crossConcept": "소수분수정리와정수끝점선택은이목적primary내부.",
+        "condition": "정수값중최소라는명시제약.",
+        "integration": "부등식정수하한을구하는단일primary.",
+        "difficulty": "소수분수풀이후엄격경계의최소정수를선택.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "기본부등식영역의정수해최솟값은해개수140과다르며 WORD143으로강제하지않음. x>-15이므로최소정수는-14.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "RPM_LEAF_GAP",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-INTEGER-EXTREME"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "소수분수풀이후엄격경계의최소정수를선택."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "51d941d17a62a319ccb7a514e9edceaafe8145ec75077d36f8c0aa0480574461"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ecae893b1b5ba7a75674fc612211a2712dcb7735ef7688402881ce52c7e643fb"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0",
+      "verdict": "CORRECT",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "각부등식의최소정수해를독립결정하여합최소화",
+      "decisiveStep": "각각x>-4,x>4에서a최소-3,b최소5.",
+      "beforeSource": {
+        "conditionKeys": [],
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "conditionKeys": [],
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": null
+      },
+      "fieldReview": {
+        "classification": "기본부등식해의최소정수유형gap; 서로같은변수동시해교집합은아님.",
+        "binding": "자연수해합/무자연수해templates와다른두독립최소합template필요.",
+        "crossConcept": "독립두하한계산은동일정수최소primary.",
+        "condition": "a,b가각해중정수라는명시조건.",
+        "integration": "같은정수최소절차를각각적용한뒤합산.",
+        "difficulty": "소수계수포함두부등식을풀고각최소정수를더하는표준반복. 기존3→2제안.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "기본부등식해의최소정수유형gap; 서로같은변수동시해교집합은아님. 각각x>-4,x>4에서a최소-3,b최소5.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "RPM_LEAF_GAP",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-INTEGER-EXTREME"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소수계수포함두부등식을풀고각최소정수를더하는표준반복. 기존3→2제안."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "23e2f1f842e5ed7d426d2b6a04f8c9d9a8bb846ded93abde025eff61133433a1"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2a9f8502a5302287b4a530a9af802a092eeb721f4ed582dc11426db8706b4121"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_117afc4615d5f8f40e0bb8935da10e2769340b13b47d8a2c017897fcfb72a00c",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-120",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "단위분수환원과분모소인수/정수범위결합",
+      "decisiveStep": "xy630,3.15<y<6.3중분모조건/자연수x를함께만족y5.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": null,
+        "difficultyBucket": 4,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-120",
+        "rpmPrimaryPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "rpmL3": "유한소수와 무한소수",
+        "rpmL4": "분모의 소인수 조건",
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "rpmRecordId": "M2-RPM-120",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]"
+      },
+      "fieldReview": {
+        "classification": "유한소수분모120;단위분수조건이보조적후보제약.",
+        "binding": "약분후단위분수와분자범위를함께쓰는template필요.",
+        "crossConcept": "곱630과범위판정은분모조건활용의내부.",
+        "condition": "100<x<200의자연수범위명시.",
+        "integration": "단위분수의가능분모를제한해찾는primary.",
+        "difficulty": "xy630,유한분모소인수,자연수범위를세조건으로결합. 표준후보검사로4→3제안,상독립유지.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "유한소수분모120;단위분수조건이보조적후보제약. xy630,3.15<y<6.3중분모조건/자연수x를함께만족y5.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-UNIT-FRACTION-DENOMINATOR"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "xy630,유한분모소인수,자연수범위를세조건으로결합. 표준후보검사로4→3제안,상독립유지."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "c464041ea4abea3908d283729ee79f4119bf91842e9aa350d5b55e3244750449"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "1f9d61d1a7557d50c92e64b7df6c1b7c4e315e737accbe4d886dd533f6cef884"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_8171d41b62f36fba0ba61a42a12330feec6722317af1c011cdf1abc96eac2c91",
+      "verdict": "UNRESOLVED",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "2와5의곱을10거듭제곱으로묶고십진자릿수경계비교",
+      "decisiveStep": "a≥9에서11×2^(a-9)×10⁹,11자리조건10≤11×2^(a-9)<100.",
+      "beforeSource": {
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "상",
+        "difficultyBoundaryFlag": "B34"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "rpmPath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": null
+      },
+      "fieldReview": {
+        "classification": "거듭제곱곱/몫기본leaf125만으로자릿수크기경계와지수범위를담지못해gap.",
+        "binding": "단항식보기계산template보다자릿수경계역추론이추가된template필요.",
+        "crossConcept": "십진자릿수와10거듭제곱의대응은목표유형의핵심이라보조CC로축소안함.",
+        "condition": "a자연수와값의11자리조건을동시만족해야함.",
+        "integration": "2와5를묶을수있는a≥9와a<9를분리.",
+        "difficulty": "십진자릿수범위를만드는2·5묶기와지수조건의경우분류가필요해4유지.3/4경계표본확인필요.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "거듭제곱곱/몫기본leaf125만으로자릿수크기경계와지수범위를담지못해gap. a≥9에서11×2^(a-9)×10⁹,11자리조건10≤11×2^(a-9)<100.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "RPM_LEAF_GAP",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-EXPONENT-DIGIT-COUNT"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "십진자릿수범위를만드는2·5묶기와지수조건의경우분류가필요해4유지.3/4경계표본확인필요."
+      },
+      "contentDebt": [
+        {
+          "kind": "SOLUTION_BOUND_STRICTNESS",
+          "observed": "a<9의최댓값a=8에서는주어진곱이5,500,000,000과같다. 해설의 가장큰경우에도이값보다작다는엄격표현은≤여야한다.11자리가아니라는결론과a9,10,11,12는영향없음.",
+          "action": "내용정오표후속검토; 해설원문수정안함."
+        }
+      ],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2445df9ce5832dd330e90366c3a63943ba579830d7858329c79e618dbd8804b5"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "15c0b986ac6b05a20cc2347290ab510c9f241df648c56bf38d1cc4ccf04e83fd"
+          }
+        ]
+      },
+      "unresolvedFields": [
+        "contentDebt"
+      ]
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_98a3a1d7b2a875d1fff0c408e7abd547c5069866636f60130ea6fe9c48aec23b",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-133",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "넓이를높이로나눠두가로길이합정리",
+      "decisiveStep": "A의몫2x+3y²,B의몫-4y²+7x를합산.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-133",
+        "rpmPrimaryPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmL3": "단항식과 다항식의 곱셈·나눗셈",
+        "rpmL4": "다항식을 단항식으로 나누기",
+        "crossConceptKeys": [
+          "CC_RECTANGLE_AREA"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmRecordId": "M2-RPM-133",
+        "crossConceptKeys": [
+          "CC_RECTANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]"
+      },
+      "fieldReview": {
+        "classification": "다항식단항식나누기133이핵심계산, 직사각형넓이는식설정보조. 원본두높이와L확인.",
+        "binding": "ACTIVE삼각형넓이→높이template는2배넓이/밑변으로구조차이. 직사각형두몫합template필요.",
+        "crossConcept": "넓이=가로×세로를가로=넓이/세로로바꾸는기하관계필수.",
+        "condition": "길이양수는도형존재전제이며새명시조건발명안함.",
+        "integration": "직사각형관계로몫을설정한뒤다항식나눗셈.",
+        "difficulty": "두직사각형의가로=넓이/높이후동류항합이라는표준활용. 기존3→2제안.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "다항식단항식나누기133이핵심계산, 직사각형넓이는식설정보조. 원본두높이와L확인. A의몫2x+3y²,B의몫-4y²+7x를합산.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [
+        "E007-RECTANGLE-WIDTHS"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두직사각형의가로=넓이/높이후동류항합이라는표준활용. 기존3→2제안."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "c9957576252d11eaf6e9081d94553c0ff0a621a88275fd9b16f33eab052e2762"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ba47f4a85b386aee30039a5c9c926a2a0135324b44590cca1ee82ec02a7a2369"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_853f962fcf94cfef5eec13cb28d0323ec78b911c67f9168dc807e4b5a8da048d",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-144",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "왕복시간과체류시간의합을제한시간이하로모델링",
+      "decisiveStep": "x/2+2/3≤2로편도거리상한결정.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "conditionKeys": [],
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-144",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "거리·속력·시간",
+          "l4": "시간 제한"
+        },
+        "rpmL3": "거리·속력·시간",
+        "rpmL4": "시간 제한",
+        "conditionKeys": [
+          "COND_UPPER_BOUND"
+        ],
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": null,
+        "curriculumProvenance": "SOURCE_ABSENT_2022_CORRESPONDENCE_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "거리·속력·시간",
+          "l4": "시간 제한"
+        },
+        "rpmRecordId": "M2-RPM-144",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UPPER_BOUND"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식의 활용\"]"
+      },
+      "fieldReview": {
+        "classification": "속력활용시간제한144 정확.",
+        "binding": "ACTIVE PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED/TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY의왕복+체류시간골격일치.",
+        "crossConcept": "시간단위환산은해당활용primary내부.",
+        "condition": "전체2시간이내라는상한명시.",
+        "integration": "왕복시간제한이라는단일활용primary.",
+        "difficulty": "분을시간으로고치고왕복걷기시간과합하여표준일차부등식을푸는과정. 기존3→2제안.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "속력활용시간제한144 정확. x/2+2/3≤2로편도거리상한결정.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "CURRICULUM_EVIDENCE_DEBT: source/sidecar machine curriculum not established; 2022 correspondence is a separate proposal only"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분을시간으로고치고왕복걷기시간과합하여표준일차부등식을푸는과정. 기존3→2제안."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8d2a8785b302ef844404982321d487b6c075f2df4d685c270a903a5f465d1460"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "1b236da2bcf17f8ec93f4b15892060efef0435c5ab0fc7bae59f47f981edcde6"
+          }
+        ]
+      }
+    }
+  ],
+  "topicSummary": [
+    "M1-07",
+    "M2-01",
+    "M2-02"
+  ],
+  "proposals": [
+    {
+      "id": "E007-REPEATING-TO-FRACTION",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "반복소수부를10거듭제곱배로맞춰소거하거나변환공식으로기약분수표현. ",
+      "parent": "M2-01-REPEATING_DECIMAL",
+      "distinction": "유한소수여부판정과구별.",
+      "supportingQuestionUids": [
+        "qid_v1_41cb0d88e130b4752cc58bf43d6ddee479a64ac1ee32f2f39a06cb56be6417dd",
+        "qid_v1_21efa95e9b625778c8ff053e9ba7d28e4d0f503951c2c6d0af24a4e9f6698a63"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 1,
+          "decisiveStep": "100x-x=23으로99x=23."
+        },
+        {
+          "sourceOrdinal": 7,
+          "decisiveStep": "0.12333…=(123-12)/900=37/300."
+        }
+      ]
+    },
+    {
+      "id": "E007-DENOMINATOR-DECIMAL",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "기약분모의2·5외소인수소거조건으로유한/순환소수판정과가능분자선택.",
+      "parent": "M2-01-REPEATING_DECIMAL",
+      "distinction": "직접소수전개와구별.",
+      "supportingQuestionUids": [
+        "qid_v1_3c499607afb3d37a4051a0fde3607d3a41f9599116816f0b04e7596a6f27b6eb",
+        "qid_v1_420a1dda4c48d5c9371f389e6b3c7b66278981ccfeec6d3719890192cc3e6e7d"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 2,
+          "decisiveStep": "기약분모7,13,9인 세분수가 무한순환;10인 둘은 유한."
+        },
+        {
+          "sourceOrdinal": 4,
+          "decisiveStep": "2<n<15인 자연수n중11배수는11 하나."
+        }
+      ]
+    },
+    {
+      "id": "E007-RATIONAL-DECIMAL-PROPERTIES",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "유리수·유한소수·순환소수·비순환무한소수의포함관계명제판정.",
+      "parent": "2022/M2-1/유리수와 순환소수/유리수와 순환소수/유리수와 소수 표현",
+      "distinction": "개별분수변환이나분모판정하나로모든관계를포괄하지못함.",
+      "supportingQuestionUids": [
+        "qid_v1_8f298cf8263ed8419d43e21ffd7d7479554f6f0c49506924f9926555e5243590"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 3,
+          "decisiveStep": "순환소수는분수표현가능,유리수의소수표현은유한또는순환."
+        }
+      ]
+    },
+    {
+      "id": "E007-REPEATING-DIGIT-POSITION",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "순환마디의주기로자리번호를환원하여특정숫자/범위내개수계산.",
+      "parent": "M2-01-REPEATING_DECIMAL",
+      "distinction": "순환마디자체의기호표현보다위치계산추가.",
+      "supportingQuestionUids": [
+        "qid_v1_a0ce1744cd42beac8a70f8a989ba073108af1fecf062a7d601027aa803329bc5",
+        "qid_v1_b91238505a39dbc9d4fc3938193232c16a1c8347c296d77e99242ca15e37f88b"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 5,
+          "decisiveStep": "9/37의 주기243 길이3,2026≡1이라 b2."
+        },
+        {
+          "sourceOrdinal": 8,
+          "decisiveStep": "a_n3이므로b_n2,주기285714첫자리 n1,7,13,19."
+        }
+      ]
+    },
+    {
+      "id": "E007-DATE-DECIMAL-COUNT",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "유효날짜와분수범위에서유한소수분모를열거하여명제검증.",
+      "parent": "M2-01-REPEATING_DECIMAL",
+      "distinction": "약분여부뿐아니라날짜전체집합제한포함.",
+      "supportingQuestionUids": [
+        "qid_v1_7463434467b9baff8f506d7a98500e3b9c4c5e85ae43a6589f6aeedb4ebb4608"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 6,
+          "decisiveStep": "1월1일은1미만조건으로제외,30날짜중유한소수분모8개를빼22."
+        }
+      ]
+    },
+    {
+      "id": "E007-POWER-REPRESENTATION",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "주어진거듭제곱기호로다른같은밑의거듭제곱을표현.",
+      "parent": "M2-01-EXPONENT_LAW",
+      "distinction": "보기오류판정과달리기호재표현.",
+      "supportingQuestionUids": [
+        "qid_v1_c40f580591a30f49a44c96f2e2dca34cbacbb4c30d4d0201529590c3e3c82e6d"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 10,
+          "decisiveStep": "81=A²이므로81⁴=A⁸."
+        }
+      ]
+    },
+    {
+      "id": "E007-POLYNOMIAL-COEFFICIENT",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "다항식의단항식나눗셈/괄호정리후계수·상수항을읽어요구합계산.",
+      "parent": "M2-01-POLYNOMIAL_OPERATIONS",
+      "distinction": "오독복원이나도형활용과구별.",
+      "supportingQuestionUids": [
+        "qid_v1_2a8db68ee7490188319a294445c461bee207ef36b0bbfc4d30b4a67a5a555864",
+        "qid_v1_f6dd83e5a9ae0fc965bddc03167c5e2cf0ab89372637700d1c6dfa80bd58c109",
+        "qid_v1_f77d649baa2048876eb5c573715b65a085b65219d4d7ff2f18e6b7638df513ac"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 11,
+          "decisiveStep": "첫괄호/3y후뒷괄호빼서-20,11,9계수합0."
+        },
+        {
+          "sourceOrdinal": 12,
+          "decisiveStep": "전개후-x²+12x-20의x계수12와상수-20합."
+        },
+        {
+          "sourceOrdinal": 15,
+          "decisiveStep": "3x-4y에서5x+3y²를빼계수합-9."
+        }
+      ]
+    },
+    {
+      "id": "E007-ROTATION-VOLUME-SUM",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "삼각형과반원의회전으로원뿔과구를인식하고두부피합계산.",
+      "parent": "2022/M1-2/입체도형/입체도형의 겉넓이와 부피",
+      "distinction": "단일원뿔/단일구leaf만으로두입체합을임의한쪽에강제하지않음.",
+      "supportingQuestionUids": [
+        "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 13,
+          "decisiveStep": "삼각형회전은원뿔,반원회전은구이며각부피를합산."
+        }
+      ]
+    },
+    {
+      "id": "E007-POLYNOMIAL-CONDITION",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "서로다른뺄셈·나눗셈조건에서같은다항식을복원해미정계수비교.",
+      "parent": "M2-01-POLYNOMIAL_OPERATIONS",
+      "distinction": "주어진식단순계산과다른조건복원.",
+      "supportingQuestionUids": [
+        "qid_v1_454d0cfce5246112ec96d47053f41ed5f8d0b8d4a59969119843391e964b0dfa"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 14,
+          "decisiveStep": "A를두방법으로표현한6x²-8x+4+b와6x²-2ax+9가동일."
+        }
+      ]
+    },
+    {
+      "id": "E007-INEQUALITY-DIRECT",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "정수계수의단일기본일차부등식직접풀이.",
+      "parent": "M2-02-LINEAR_INEQUALITY",
+      "distinction": "기존다수풀이중오답찾기template와다름.",
+      "supportingQuestionUids": [
+        "qid_v1_670bcb378bf92967e1aa9f534587aec3d9ee0049f4bc6afb3b7689b0e38d226c"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 16,
+          "decisiveStep": "2x>-8에서양수2로나누어x>-4."
+        }
+      ]
+    },
+    {
+      "id": "E007-NEGATIVE-SOLUTION-PARAMETER",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "해집합전체가음수이도록포함상한을0과엄격비교해매개변수범위결정.",
+      "parent": "M2-02-LINEAR_INEQUALITY",
+      "distinction": "자연수해없음의1기준과다른경계.",
+      "supportingQuestionUids": [
+        "qid_v1_a4b3418a5df90ae608ef84ba58fe6f667ea8dabb8c4f0ba10140bb31d04ba3b4"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 18,
+          "decisiveStep": "x≤(2/3)(a+7)의최대해가0보다작아야함."
+        }
+      ]
+    },
+    {
+      "id": "E007-INTEGER-EXTREME",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "기본일차부등식에서허용정수의최소·최대값을결정.",
+      "parent": "2022/M2-1/일차부등식/일차부등식/해의 조건",
+      "distinction": "정수해개수leaf와다르고WORD최소최대정수에순수식문항강제안함.",
+      "supportingQuestionUids": [
+        "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c",
+        "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 19,
+          "decisiveStep": "x>-15이므로최소정수는-14."
+        },
+        {
+          "sourceOrdinal": 20,
+          "decisiveStep": "각각x>-4,x>4에서a최소-3,b최소5."
+        }
+      ]
+    },
+    {
+      "id": "E007-UNIT-FRACTION-DENOMINATOR",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "단위분수환원과유한소수분모및분자범위를결합하여값결정.",
+      "parent": "M2-01-REPEATING_DECIMAL",
+      "distinction": "기약분모판정에단위분수곱조건추가.",
+      "supportingQuestionUids": [
+        "qid_v1_117afc4615d5f8f40e0bb8935da10e2769340b13b47d8a2c017897fcfb72a00c"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 21,
+          "decisiveStep": "xy630,3.15<y<6.3중분모조건/자연수x를함께만족y5."
+        }
+      ]
+    },
+    {
+      "id": "E007-EXPONENT-DIGIT-COUNT",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "2와5인수를10거듭제곱으로묶고십진자릿수범위로미지지수결정.",
+      "parent": "2022/M2-1/식의 계산/단항식의 계산/지수법칙",
+      "distinction": "거듭제곱곱몫단순계산이외자릿수상하한분석.",
+      "supportingQuestionUids": [
+        "qid_v1_8171d41b62f36fba0ba61a42a12330feec6722317af1c011cdf1abc96eac2c91"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 22,
+          "decisiveStep": "a≥9에서11×2^(a-9)×10⁹,11자리조건10≤11×2^(a-9)<100."
+        }
+      ]
+    },
+    {
+      "id": "E007-RECTANGLE-WIDTHS",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "다항식넓이를단항식높이로나누어여러직사각형가로합계산.",
+      "parent": "M2-01-POLYNOMIAL_OPERATIONS",
+      "distinction": "삼각형높이template의2배넓이구조와구별.",
+      "supportingQuestionUids": [
+        "qid_v1_98a3a1d7b2a875d1fff0c408e7abd547c5069866636f60130ea6fe9c48aec23b"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 23,
+          "decisiveStep": "A의몫2x+3y²,B의몫-4y²+7x를합산."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "All24 current source questions,choices,existing solutions read; source imagesQ13,Q23 actually viewed.",
+    "Machine curriculum absent; semantic2022 correspondences only, not inferred from2026filename.",
+    "Q2 choices/answer schema issue and Q22 strict-bound wording retained as contentDebt.",
+    "Q13 proposes actualM1solidmeasurement primary, metadata only, source student text untouched."
+  ],
+  "judgedBy": {
+    "agent": "M2_META_REVIEWER_A",
+    "at": "2026-11-14T09:01:30.907951+00:00"
+  }
+}

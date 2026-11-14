@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E007",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T11:17:03.162341+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E007",
+    "revisionName": "resume-prerequisite-scope-r1",
+    "namespaceRestores": [
+      13
+    ],
+    "semanticScopes": {
+      "13": "M1-2"
+    },
+    "canonicalAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md#1.4.1",
+    "reason": "A lower-prerequisite RPM primary does not authorize changing the target course/L1/L2 namespace. Preserve the existing semantic review and correct only the source/proposal namespace and provenance."
+  },
+  "previousCurrent": {
+    "effectiveReview": "review.json",
+    "fourSlot": "four-slot.json",
+    "sourceWriterDeferred": null
+  },
+  "previousReviewSha256": "ae40bbf4f9f0c245e936b712161ed64fd652128d51f9e1f358373d0e17793733",
+  "previousFourSlotSha256": "ce9ef7fafb8670d9f68ab7a5abefb6c5630d8bcbb0c1c35366f05607b8873497",
+  "acceptedReviewSha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd",
+  "acceptedFourSlotSha256": "17c6677b1c194eaa31b5763a9874570fc1586e851e1a6fa546f84acb882faad1",
+  "reviewedSourceBlob": "1a3299cfa67359c68d770acf842a3419c02c15e3",
+  "finalSourceBlob": "d5e0d4112b9d617c9ac474aa0423c890626dcba9",
+  "changes": [
+    {
+      "sourceOrdinal": 13,
+      "fields": [
+        "standardCourse",
+        "course",
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "category",
+        "subUnitKey",
+        "subUnit"
+      ],
+      "before": {
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "crossConceptKeys": [
+          "CC_EXPONENT_RULES"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "standardUnit": "입체도형의 성질",
+        "subUnit": "입체도형의 측정",
+        "standardCourse": "중1",
+        "standardUnitOrder": 7
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [
+          "CC_EXPONENT_RULES"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "standardUnit": "수와 식",
+        "subUnit": "다항식의 계산",
+        "standardCourse": "중2 수학",
+        "standardUnitOrder": 1,
+        "category": "수학"
+      },
+      "semanticSourceScope": "M1-2",
+      "basis": "Canonical prerequisite namespace correction only; no whole-item semantic rerun."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 13,
+      "field": "standardUnitKey",
+      "before": "M1-07",
+      "after": "M2-01",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "standardUnit",
+      "before": "입체도형의 성질",
+      "after": "수와 식",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "standardUnitOrder",
+      "before": 7,
+      "after": 1,
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "category",
+      "before": "입체도형의 성질",
+      "after": "수학",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "subUnitKey",
+      "before": "M1-07-SOLID_FIGURE_MEASURE",
+      "after": "M2-01-POLYNOMIAL_OPERATIONS",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "subUnit",
+      "before": "입체도형의 측정",
+      "after": "다항식의 계산",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    }
+  ],
+  "evidence": [],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}
