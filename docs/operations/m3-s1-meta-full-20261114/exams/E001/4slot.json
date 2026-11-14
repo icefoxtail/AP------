@@ -1,0 +1,1959 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1final/26_삼산중_1학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "f9e69e79bdcc35a2da885af89714f18f2822aeba",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "meta_a",
+    "owner": "GPT_ROOT_D71839569CD9/A",
+    "assignmentId": "M3-S1-META-FULL",
+    "at": "2026-11-14T08:38:24.786758+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_98f0fbed2fbaa7271d58198c714944bd2cf64dfd13b0fd6bc386dc1ffa1d1bb3",
+      "fingerprints": {
+        "QBODY": "a2a5a5ef74f77b51ab40ad82c4e23d15fa6eb5eb1cc2cafd7c759353e53d955a",
+        "QFULL": "f380496741a9ccbc80f34d5d7d8b425c1e49cdd3f6d965cc51f6995772dc6c59"
+      },
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "등식",
+            "src": "choices",
+            "quote": "$x+3=0$",
+            "termId": 349,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차식",
+            "src": "choices",
+            "quote": "$x^2+2x+1$",
+            "termId": 37,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "대한 이차방정식은",
+            "termId": 65,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 $x$에 대한 이차방정식은",
+            "termId": 132,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "이차방정식은 등식이어야 하며",
+            "termId": 369,
+            "evidenceType": "IMPLIED",
+            "justification": "등식과 2차인 조건이라는 정의로 보기를 판정한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "전개하고 정리하면",
+            "termId": 41,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "x(x-1)=10을 정리한 x²-x-10=0에서 이차항 계수 1을 확인한다.",
+        "condition": "해의 범위를 별도로 제한하는 독립 조건은 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_a6d22a2becf0d6e0bf1e0a660251ddc62b127fb068acc5359862ef58e00d2513",
+      "fingerprints": {
+        "QBODY": "a882ea7422766be2c0569c3a5da7d8718637a64b956bff1d655732c93b52a2ac",
+        "QFULL": "845aba8d09cb7ae22f4c414e209ee191fca9937ca712e92cebf40e21b8638a33"
+      },
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "중근을 갖는 이차방정식",
+            "termId": 65,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "중근을 갖는",
+            "termId": 444,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 중근을 갖는 이차방정식은",
+            "termId": 132,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "(2x+1)^2=0",
+            "termId": 59,
+            "evidenceType": "IMPLIED",
+            "justification": "좌변을 일차식의 제곱으로 나타내어 같은 근의 중복을 읽는다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x-3)(x+3)=0",
+            "termId": 42,
+            "evidenceType": "IMPLIED",
+            "justification": "차의 제곱꼴을 두 인수의 곱으로 바꾸어 서로 다른 근인지 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "4x²+4x+1=(2x+1)²에서 서로 다른 근이 하나인 보기를 고른다.",
+        "condition": "해의 범위를 별도로 제한하는 독립 조건은 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_ef52df614802114e1b3f8e9d386f740a512a11c8c4b47269e4dda5fb590140c5",
+      "fingerprints": {
+        "QBODY": "b7f3faf4f0a3818c009825b81d444be2fbd9a3295c409201c468fa2f07389854",
+        "QFULL": "55be3c865f30333bef6bea42dc4f607170ea3d78d95b570a2a4312d255399c2f"
+      },
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "함수식",
+            "src": "choices",
+            "quote": "$y=(x-1)^2-x^2$",
+            "termId": 332,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수인 것은",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 $y$가",
+            "termId": 132,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "이차함수는 식을",
+            "termId": 369,
+            "evidenceType": "IMPLIED",
+            "justification": "식을 정리했을 때 이차항의 계수가 0이 아닌지 정의를 적용한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "&=x^2-2x+1-x^2",
+            "termId": 41,
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식을 전개해 이차항 상쇄 여부를 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "y=x²+3x의 이차항이 남고 y=(x-1)²-x²는 일차식으로 환원됨을 구별한다.",
+        "condition": "해의 범위를 별도로 제한하는 독립 조건은 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_63aa8fed3a4fe2f8d4a2fe4f332e8973364efc1ed1f1a0879ef600765fc05d3e",
+      "fingerprints": {
+        "QBODY": "d1067971ecc71ed9f466a5322154b4c8535f8e97665d84a1682c122e539422de",
+        "QFULL": "90a46298f2ed8026e9fc1a94a70d473461d3edc131029788aa748ffcbb793a90"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=(x-1)^2+3$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점 좌표",
+            "termId": 311,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "꼭짓점 좌표",
+            "termId": 148,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "$y=a(x-p)^2+q$의 꼭짓점",
+            "termId": 311,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "y=(x-1)²+3에서 꼭짓점 (1,3)을 직접 읽는다.",
+        "condition": "해의 범위를 별도로 제한하는 독립 조건은 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_ce427da59910aa52a751beebfad5db0f8f942ac1fa23cef7bcdc25eececf2acb",
+      "fingerprints": {
+        "QBODY": "1dfec926d83dcef2e808b31e6680a17412323e01f8cb40a947f7f9e6a748044c",
+        "QFULL": "43118e0f7f0f2724d959d23fe9d6a63b0c8b8c4b8aba22326230c4180654e5fe"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$3x^2+ax+b=0$",
+            "termId": 65,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "해가 $x=2/3$ 또는 $x=2$",
+            "termId": 78,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a-b$는",
+            "termId": 61,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "두 근과 최고차항의 계수로 인수형을 만든다.",
+            "termId": 42,
+            "evidenceType": "IMPLIED",
+            "justification": "두 근을 일차인수로 갖는 다항식의 인수형을 구성한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "=(3x-2)(x-2)=3x^2-8x+4",
+            "termId": 41,
+            "evidenceType": "IMPLIED",
+            "justification": "두 일차인수의 곱을 전개한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$a=-8,b=4$",
+            "termId": 696,
+            "evidenceType": "IMPLIED",
+            "justification": "전개한 항과 원래 다항식의 동차 항 계수를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "3(x-2/3)(x-2)=3x²-8x+4와 원래 식을 비교한다.",
+        "condition": "해의 범위를 별도로 제한하는 독립 조건은 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_3aed4f21bac4576910e3b81ec008458268e32de1fdfba4d553133e0d5c8a4ed8",
+      "fingerprints": {
+        "QBODY": "8a7444ee79faf6ff29dcdd8e4b380c30aaaf57a4994da244f5fc042cd31e2c6d",
+        "QFULL": "3c91216ee0060a4ab37819a4d424432d0de8b16f11ecdfd83bf1e5072846a127"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$4x^2-5=0$",
+            "termId": 65,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$는",
+            "termId": 286,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "양수인 해를 $a$",
+            "termId": 78,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "a=\\dfrac{\\sqrt5}{2}",
+            "termId": 22,
+            "evidenceType": "IMPLIED",
+            "justification": "제곱이 알려진 식에서 제곱근을 취한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "각 방정식의 양수인 해만 선택한다.",
+            "termId": 25,
+            "evidenceType": "IMPLIED",
+            "justification": "두 후보 근 중 양의 부호 조건을 만족하는 근만 선택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수인 해를",
+            "termId": 396,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 제곱꼴 방정식에서 양수인 근만 선택하고 합을 구한다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_8883956cc7090ab5ae96e68a13987df8468b88915d1beca506d90881a34c2b81",
+      "fingerprints": {
+        "QBODY": "d22ff4b1977bb1dbeccec54db834eed01d063600f1273796f7f006a738c55fca",
+        "QFULL": "7276d06edc5ad2b35566f7954e56c10f9f540d132efa7b64a5894093d65cd5d2"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$6x^2+5x+k=0$",
+            "termId": 65,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "해가 $x=(-5\\pm\\sqrt{97})/12$",
+            "termId": 78,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$k$는",
+            "termId": 308,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "근의 공식의 판별식 부분을 비교한다.",
+            "termId": 443,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "25-24k=97",
+            "termId": 349,
+            "evidenceType": "IMPLIED",
+            "justification": "같은 해를 나타내는 식의 근호 안 수를 같게 놓는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근의 공식으로 얻은 25-24k를 주어진 97과 같게 둔다.",
+        "condition": "해의 범위를 별도로 제한하는 독립 조건은 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3b96c76da1cf583fbdfece12ad4625037fe65ae76b6384eaec90e203c32f11c7",
+      "fingerprints": {
+        "QBODY": "e6c585c836b31948dccb8bd801a0e24d2d2dbc7c364427d2b82c037b8572bb37",
+        "QFULL": "a262b965dcd9ae769c20e73134bd1f734d792dd8bd0022ec2db9852147c0e291"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=2x^2$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프에 대한 설명",
+            "termId": 107,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은",
+            "termId": 132,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$a>0$이면 아래로 볼록하고",
+            "termId": 25,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$|a|$가 클수록 폭이 좁다.",
+            "termId": 24,
+            "evidenceType": "IMPLIED",
+            "justification": "이차항 계수의 절댓값으로 포물선 폭을 비교한다."
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "$x$축 대칭이다.",
+            "termId": 110,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "y=2x²의 폭은 y=x²보다 좁다는 사실로 거짓 보기를 판정한다.",
+        "condition": "해의 범위를 별도로 제한하는 독립 조건은 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_15ebc0b7c40b1e44ff28b1b0aea54631fd4e9b14033d1901b3e1ab443db915df",
+      "fingerprints": {
+        "QBODY": "1db9570e3974f209eedba4a52ade497ddc650898f4565d00be344e6feceef3a4",
+        "QFULL": "6188c0c0c1c73d9e606720e5cdd11b9e83516e89cb675d6cfad9558081682f11"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=ax^2$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "$(3,1)$을 지날 때",
+            "termId": 148,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$a$는",
+            "termId": 308,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "대칭이동한 식은",
+            "termId": 209,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$(3,1)$을 대입하면",
+            "termId": 53,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "$(3,1)$을 지날 때",
+            "termId": 148,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x축 대칭식 y=-ax²에 (3,1)을 대입하여 계수를 정한다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_d708371507d492c062609c85125836b8fe2bdab9c3e52054a9dd3780e301fe79",
+      "fingerprints": {
+        "QBODY": "513465cfa6153c6eafb31c7979c4f06433d061c5820979f779c242bc890f1805",
+        "QFULL": "b5c6e6a8d7151cf8fb888527a0082d10b0df6015234904114fc636281395f03b"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "아래로 볼록한 이차함수",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프보다 폭이 좁은",
+            "termId": 107,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "이차함수의 개수를",
+            "termId": 129,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$m+n$의 값은",
+            "termId": 286,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "그래프의 방향은 $a$의 부호",
+            "termId": 25,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "절댓값이 큰 계수는",
+            "termId": 24,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "그래프의개형",
+            "src": "stem",
+            "quote": "아래로 볼록한",
+            "termId": 464,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "그래프보다 폭이 좁은",
+            "termId": 28,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "a>0인 4개와 |a|>2인 2개를 별도로 센다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_a360285d016dac10ceb8078a83304dd91fdcbf8a006011e00e92fc4537c15bbf",
+      "fingerprints": {
+        "QBODY": "b744ca52bfcf14b72a28f57a419ebec72317bc987972ea38dc1eb4d9d105e618",
+        "QFULL": "4c26ca1ed989c868975197be706c7c5e279b62bb4ad94899ba5b203fbf20562c"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=ax^2$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "$(3,3)$을 지날 때",
+            "termId": 148,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$a$는",
+            "termId": 308,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "평행이동한 식에",
+            "termId": 210,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "주어진 점을 대입한다.",
+            "termId": 53,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "$(3,3)$을 지날 때",
+            "termId": 148,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "y=a(x-2)²-1에 (3,3)을 대입한다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_92a3bc726563ea4a7135b09d980d9befac56b2c58642ab78edfa9714bb82d216",
+      "fingerprints": {
+        "QBODY": "ff980aa2e8058376df7a123821a6de1351c801400463fa4ae9d3468447b0df45",
+        "QFULL": "318342369cc586037be5cfc86059c033f6947a3228a55f988a9abaf1904be8e9"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=(x+1)^2+2$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축 방향으로 $p$",
+            "termId": 210,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$는",
+            "termId": 286,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "두 그래프의 꼭짓점 좌표 차이가",
+            "termId": 311,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "평행이동량이다.",
+            "termId": 210,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$y=(x+2)^2-3$과 일치한다.",
+            "termId": 349,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "(-1,2)에서 (-2,-3)으로의 변화가 p=-1,q=-5이다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_ffff8d990e6ba0ceace71358f610bdaf92643a6506610dcfccc41bcfb736796c",
+      "fingerprints": {
+        "QBODY": "749d6920a4b92c5ae07ec5fd468307fbdfa3a360c9e349448957915eaa4ca681",
+        "QFULL": "c6e9987632ba0e5ee91af72e5bdc1b1899bc0acc542cab6c15174e1a89a452ad"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=2x^2+12x+k$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점이 $x$축 위에",
+            "termId": 311,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$k$는",
+            "termId": 308,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 바꾸어",
+            "termId": 59,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점의 높이를 확인한다.",
+            "termId": 311,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "좌표축",
+            "src": "stem",
+            "quote": "$x$축 위에 있을 때",
+            "termId": 707,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "y=2(x+3)²+k-18에서 꼭짓점이 x축 위라는 조건을 k-18=0으로 옮긴다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_7ee3c4a75ed845dea85b77f24bb3918ad39cc7b0f8f920674af8f99a164a6822",
+      "fingerprints": {
+        "QBODY": "2682588c5e6c55cdad85e6e751b8e2771282d1c40f1d0397e7d6ce32d78a4538",
+        "QFULL": "588a6a65f313d360e387ad14bb91c5158ac3aeb486f00ff075d5aaa889e1732a"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-\\frac12(x-1)^2+a$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "꼭짓점을 지나는 직선",
+            "termId": 143,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$는",
+            "termId": 286,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "두 그래프의 꼭짓점을 좌표로 나타내고",
+            "termId": 311,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기 공식을 쓴다.",
+            "termId": 150,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "기울기가 1일 때",
+            "termId": 150,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "꼭짓점 (1,a),(b,1)의 기울기 (1-a)/(b-1)=1을 사용한다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_37b7f56711cf9209e1120cd43b350431cc32a817f69403c23ee7c7b4e7ec23de",
+      "fingerprints": {
+        "QBODY": "2d3d392a38ac7cf8806748af4e487510194a2b3ffb305f2b9f5771125f8bb4fc",
+        "QFULL": "e39bcce13d0a7be2ffd6762253ac1b2da5dff4fd81c01aff6415f582ee303bc0"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=x^2+ax+b$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프이고 B는 꼭짓점이다.",
+            "termId": 107,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 ABC",
+            "termId": 158,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 ABC의 넓이는",
+            "termId": 213,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$y=(x+1)(x-3)=x^2-2x-3$",
+            "termId": 42,
+            "evidenceType": "IMPLIED",
+            "justification": "두 x절편에 대응하는 일차인수의 곱으로 함수식을 복원한다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점은 $B=(1,-4)$이다.",
+            "termId": 311,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이는 $\\dfrac12\\times4\\times4=8$",
+            "termId": 213,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원본 그래프의 절편 -1,3으로 식을 정하고 꼭짓점 B=(1,-4)와 밑변 AC=4를 이용한다.",
+        "condition": "해의 범위를 별도로 제한하는 독립 조건은 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_36ad56c7aa1e2eb8ce759d872d0440ea7053368c702e60249a9af660cfc6208a",
+      "fingerprints": {
+        "QBODY": "9f0711f8fd97f3c7bd450bd1652e25205071fd0755cbaee7f15b49752f35abff",
+        "QFULL": "93a27659076882ffdabfa72a906158edd5e30b59d4e3057af8b61e486d2166fa"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-2x^2+4x+5$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a+p+q$는",
+            "termId": 61,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 꼭짓점형을 만든다.",
+            "termId": 59,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$a=-2,p=1,q=7$",
+            "termId": 696,
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형의 세 자리와 목표 표현의 계수·상수를 대응시킨다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "-2x²+4x+5=-2(x-1)²+7의 세 계수를 읽는다.",
+        "condition": "해의 범위를 별도로 제한하는 독립 조건은 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_2a62a7b9ec9baaa3081c30580de1cce616064c9318e623e10f49f74963f956cb",
+      "fingerprints": {
+        "QBODY": "5aec21d4843b88394279561302e92a544028adb634d163e71f9523e671df78a7",
+        "QFULL": "45c53bed2a5d8c1bd6271e996a28cee76f07c5a79e712fbba8b2d2c771a09698"
+      },
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2+20x=125$",
+            "termId": 65,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "도형",
+            "src": "stem",
+            "quote": "도형을 이용하여",
+            "termId": 327,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "양수인 해를 구하는 과정",
+            "termId": 78,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "들어갈 식 또는 값",
+            "termId": 61,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 만들기 위해",
+            "termId": 59,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "(x+10)^2=225",
+            "termId": 22,
+            "evidenceType": "IMPLIED",
+            "justification": "완성한 제곱식에서 길이에 맞는 양의 제곱근을 택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수인 해를",
+            "termId": 396,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "100을 보충하여 (x+10)²=225를 만들고 양수 길이를 택한다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_a2fdf83ed787ef6bad9047d9af2bc8e17bd2428939d33da7bc506d2d83cb718f",
+      "fingerprints": {
+        "QBODY": "08d54c5c4e207e4c74020d1d345f1b505e134148da32d8943f5918c1f05dff26",
+        "QFULL": "72b6fa88a15883fd717e9f95283bd64fc89994e12e567bb10136991e09ade736"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "세 정사각형이 있다.",
+            "termId": 166,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이의 합이 238",
+            "termId": 213,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "가장 작은 한 변은",
+            "termId": 215,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "x^2+(x+3)^2+(x+5)^2=238",
+            "termId": 299,
+            "evidenceType": "IMPLIED",
+            "justification": "세 한 변의 길이를 한 미지수로 나타내 넓이 합 등식을 구성한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x-6)(3x+34)=0",
+            "termId": 42,
+            "evidenceType": "IMPLIED",
+            "justification": "넓이식에서 얻은 이차방정식을 두 일차인수의 곱으로 바꾼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "길이는 양수이므로",
+            "termId": 396,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x²+(x+3)²+(x+5)²=238을 세워 인수분해하고 길이 양수인 근을 선택한다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_27fd5e4ff38b0c56d6ea94a538339c8ec38ae88114ca881de79b9078ce89ac1e",
+      "fingerprints": {
+        "QBODY": "bd965675c1cfffdafe8f6cc500bd0969a59eb776e19dd77b615aac7723bb4556",
+        "QFULL": "031ebd1c3f4d40a63f3cdf5390f2443b40947ef3c5d768d80947e0aa52191c25"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "\\triangle ABO",
+            "termId": 158,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "\\overline{BD}:\\overline{CD}=2:3",
+            "termId": 289,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은",
+            "termId": 286,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "포물선의 대칭",
+            "termId": 110,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형 넓이",
+            "termId": 213,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$BD:CD=2:3$이므로 $CD=3$",
+            "termId": 578,
+            "evidenceType": "IMPLIED",
+            "justification": "한 선분의 길이와 선분비로 다른 길이를 결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "두 점 $B,C$의 $x$좌표는 $1$",
+            "termId": 148,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "점 $A$의 $y$좌표는 점 $B$의 $y$좌표와 같다.",
+            "termId": 349,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "A=(-1,a),B=(1,a)를 써 넓이로 a를 정하고 BD:CD와 C의 음의 y좌표로 b를 정한다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_36fe004f50195dc2ee9a50ed1533dd42d3e3f9091f9d57423937de54f29eaffc",
+      "fingerprints": {
+        "QBODY": "8afe6c2ddc1632e4f7cbb8417788e221270f306b3f14cad6249dc70507f1a154",
+        "QFULL": "308f3a19e041c486497f4f423a17628170ae36943ae686fd83588b37ab569fb0"
+      },
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=ax^2+bx+c$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프에 대해 옳은 것은",
+            "termId": 107,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것은",
+            "termId": 132,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "대칭축이 $x=2$, 한 절편이 $-1$이므로 다른 절편은 $5$",
+            "termId": 110,
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축 양쪽의 x절편까지 거리가 같은 성질을 이용한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$y=a(x+1)(x-5)$",
+            "termId": 42,
+            "evidenceType": "IMPLIED",
+            "justification": "두 x절편을 근으로 갖는 인수형을 세운다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$b=-4a,c=-5a$",
+            "termId": 696,
+            "evidenceType": "IMPLIED",
+            "justification": "인수형을 전개한 계수와 원래 식의 계수를 대응시킨다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$a+2b+3c=-22a>0$",
+            "termId": 25,
+            "evidenceType": "IMPLIED",
+            "justification": "그림에서 a<0을 읽어 대입한 식의 부호를 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "축 x=2와 근 -1에서 다른 근 5를 얻어 b=-4a,c=-5a,a<0으로 진술을 판정한다.",
+        "condition": "해의 범위를 별도로 제한하는 독립 조건은 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2b5071c37dd3a61e324d322f7c281d8e499915dd8821999b8effba383518ed0f",
+      "fingerprints": {
+        "QBODY": "892cc503e63b4dd08606bf0496c28453975f2e63daf875abe3a1fb382d6e34e4",
+        "QFULL": "85587398aff64fe0cce3dd9c025b1bc2d604211d777d025e7427cd4a6574abcc"
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $6x^2+11x-35=0$",
+            "termId": 65,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "이차방정식 $6x^2+11x-35=0$을 풀고",
+            "termId": 78,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(1) 인수분해를 이용한다.",
+            "termId": 42,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "(2) 완전제곱식을 이용한다.",
+            "termId": 59,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "x-2=\\pm\\dfrac{\\sqrt{13}}2",
+            "termId": 22,
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식에 제곱근의 성질을 적용해 두 근을 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "인수분해를 이용하여",
+            "termId": 42,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "완전제곱식을 이용하여",
+            "termId": 59,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "(1)은 (3x-5)(2x+7)=0, (2)는 (x-2)²=13/4를 각각 요구한다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_cd7d4e11e6dfd80a5bd77778be3fffd77fc00703542ea9269543a5115d45e08d",
+      "fingerprints": {
+        "QBODY": "88b4367b11660c88ef4ea3cf3530c68c71f395ef67760de3dc6a7956819af463",
+        "QFULL": "f481d864389f1bb81c54d19ec83b88c9c66ae18193070d40cc90ad1e64bd0b4e"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 모양의 종이",
+            "termId": 165,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형 모양으로 잘라내어",
+            "termId": 166,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "상자의 부피가 $352$",
+            "termId": 219,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "처음 종이의 세로 길이를",
+            "termId": 215,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "$2(x-4)(x+1)=352$",
+            "termId": 219,
+            "evidenceType": "IMPLIED",
+            "justification": "상자의 높이와 밑면 두 변을 곱해 부피 등식을 세운다."
+          },
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "$2(x-4)(x+1)=352$",
+            "termId": 299,
+            "evidenceType": "IMPLIED",
+            "justification": "원래 종이 가로 x로 세 모서리를 표시하여 이차방정식을 만든다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(x-15)(x+12)=0$",
+            "termId": 42,
+            "evidenceType": "IMPLIED",
+            "justification": "이차방정식 좌변을 두 일차인수로 분해한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "무엇을 미지수 $x$로 두는지",
+            "termId": 745,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식을 세워 풀고",
+            "termId": 65,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "길이는 양수이므로",
+            "termId": 396,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원래 가로 x에 대해 상자 세 변 2,x-4,x+1을 구해 2(x-4)(x+1)=352를 세운다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_6c01b9ce62fa87750cb85c966a6f5efbb85195fbe3875161e6f3b3f7251c1b22",
+      "fingerprints": {
+        "QBODY": "aac36c5e0c4f84fe5825790daa7bffda97f584f34087a44a08aee7cc346b7a52",
+        "QFULL": "01125acbc79ec2ee9189a9265a38992eae643ab83d03de3dfad8330c6c9e0bb7"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그림과 같은 그래프",
+            "termId": 107,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수의 식",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "이차함수의 식을 구하고",
+            "termId": 332,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "두 $x$절편으로 인수형을 세우고",
+            "termId": 42,
+            "evidenceType": "IMPLIED",
+            "justification": "두 x절편에 대응하는 일차인수를 곱해 함수식을 구성한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$(0,9)$를 대입하면",
+            "termId": 53,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원본 그림의 -3,3,9를 읽어 y=a(x+3)(x-3)에 (0,9)를 대입한다.",
+        "condition": "해의 범위를 별도로 제한하는 독립 조건은 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_781a90f1be0b2310495e5ab0c46c3f593147a52c4b4b6bb89f22a575d3292336",
+      "fingerprints": {
+        "QBODY": "b933ac2f82f81820e30cdc55aea3776aad74fcc0b37fd81868fbec467f6b56be",
+        "QFULL": "1d23362fc3a99e22cd0234115e7df8aba79ce2dac119ba7356a989ea9d692cb8"
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+bx+c$",
+            "termId": 91,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점의 좌표가 $(2,-3)$",
+            "termId": 311,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "$a$에 대한 식으로 나타내고",
+            "termId": 332,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$a$의 값의 범위",
+            "termId": 308,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$a$의 값의 범위",
+            "termId": 297,
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "이차함수의 식을 꼭짓점형으로 나타내면",
+            "termId": 59,
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점 좌표가 알려졌으므로 완전제곱꼴 a(x-2)²-3을 구성한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "계수를 비교하면",
+            "termId": 696,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "y=a(x-2)^2-3>4a-3",
+            "termId": 654,
+            "evidenceType": "IMPLIED",
+            "justification": "x<0의 제곱 크기와 a의 부호를 이용해 y의 하한을 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제1, 제2, 제4사분면만을 지날 때",
+            "termId": 149,
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "양화",
+            "src": "solution",
+            "quote": "모든 $x<0$에서",
+            "termId": 241,
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "꼭짓점형 a(x-2)²-3에서 b,c를 비교하고 모든 x<0에서 y≥0이 되도록 4a-3≥0을 정한다.",
+        "condition": "명시된 제약 또는 기존 해설에서 실제 근 선택에 사용한 물리적 양수 조건을 기록했다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:38:24.786758+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_CHECKED",
+    "independentReview": "PENDING_ROOT_SAMPLE",
+    "note": "Exact source quotes and semantic item-by-item reading. Official validator result recorded separately; warnings are not padded away."
+  },
+  "reviewedSourceBaseBlob": "b31918e90578a134cc96288ae5b2d0b23fd06056",
+  "independentReview": {
+    "status": "PASS",
+    "author": "meta_a",
+    "reviewer": "GPT_ROOT_D71839569CD9",
+    "sampledOrdinals": [
+      4,
+      16,
+      17
+    ],
+    "basis": "All WARN items q4/q16 plus changed/implied/visual q17; current source and q17 PNG read.",
+    "findings": [
+      {
+        "ordinal": 4,
+        "status": "PASS",
+        "note": "꼭짓점형 좌표 직접 읽기. sparse·단일method WARN가 실제 기본구조와 부합."
+      },
+      {
+        "ordinal": 16,
+        "status": "PASS",
+        "note": "완전제곱 변형과 계수대응이 결정적. goal은 식의값이고 전개 방법어를 goal로 넣지 않음."
+      },
+      {
+        "ordinal": 17,
+        "status": "PASS_WITH_CONTENT_DEBT",
+        "note": "도형보충으로 완전제곱을 만드는 해설과 method 일치. PNG에는 5개 빈칸인데 stem/choices는4개로 전사된 차이를 별도 contentDebt로 기록, 원문보존."
+      }
+    ],
+    "additionalLevelAdjudication": [
+      {
+        "ordinal": 17,
+        "status": "APPROVE_SOURCE_CORRECTION",
+        "from": "상",
+        "to": "중",
+        "note": "도형 재배열과 보충 절차가 제시된 안내형. 독립발상 없이 완전제곱 보정·양의근 선택을 수행, bucket2 B23로 재판정."
+      },
+      {
+        "ordinal": 24,
+        "status": "REVISE_AUTHOR_PROPOSAL",
+        "finalBucket": 4,
+        "note": "모든 x<0의 부호조건 재해석·a부호 경우배제·경계등호 포함이 핵심. 범위를 직접 도출하는 조건구조화로 bucket4 B34 medium, 원래상 유지."
+      }
+    ],
+    "compatibilityAdjudication": [
+      {
+        "ordinal": 19,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "실제PNG와 해설에서 대칭·넓이·선분비·부호를 연결하는 부담. 표준복합형 bucket3와 기존상 인접경계 수용."
+      },
+      {
+        "ordinal": 20,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "PNG 대칭축과 알려진절편으로 숨은 절편을 복원하고 계수식 부호를 결정. bucket3와 기존상 인접경계 수용."
+      }
+    ],
+    "mathematicalVerification": "NOT_PERFORMED",
+    "reviewVersion": "M3-S1-META-FULL-v1"
+  }
+}
