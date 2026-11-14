@@ -238,7 +238,7 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "level": "상",
+    "level": "중",
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
@@ -272,7 +272,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "level": "상",
+    "level": "중",
     "category": "연립일차방정식의 활용",
     "originalCategory": "연립일차방정식의 활용",
     "standardCourse": "중2 수학",
@@ -504,7 +504,7 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "level": "상",
+    "level": "중",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
     "standardCourse": "중2 수학",
@@ -688,14 +688,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$-4$",
     "solution": "$3x-3\\le14+7x$에서 $-4x\\le17$이다.\n음수 $-4$로 나누면 $x\\ge-\\dfrac{17}{4}=-4.25$이다.\n이 범위에 속하는 정수 중 가장 작은 것은 $-4$이다.",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
-    "level": "상",
+    "level": "중",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
     "standardCourse": "중2 수학",
@@ -722,7 +722,7 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "level": "상",
+    "level": "중",
     "category": "연립일차방정식의 활용",
     "originalCategory": "연립일차방정식의 활용",
     "standardCourse": "중2 수학",
@@ -750,7 +750,7 @@ window.questionBank = [
   },
   {
     "id": 24,
-    "level": "상",
+    "level": "중",
     "category": "일차함수",
     "originalCategory": "일차함수",
     "standardCourse": "중2 수학",

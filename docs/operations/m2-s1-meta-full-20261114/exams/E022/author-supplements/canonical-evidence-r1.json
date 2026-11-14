@@ -1,0 +1,609 @@
+{
+  "schemaVersion": "m2-author-canonical-evidence-v1",
+  "examId": "E022",
+  "readOnlyHead": "24a27db803810b7457b8e7711ef012e18984af03",
+  "authorityRefs": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "sha256": "f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638"
+    },
+    {
+      "path": "docs/architecture/JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md",
+      "sha256": "ac4e8d4453fd5bd2d1b62308964ef3f483bdaca494b8702491614e4782e9bd0b"
+    },
+    {
+      "path": "docs/architecture/4slot/term-dictionary-v1.5.json",
+      "sha256": "c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "4a8b9715bafd9b70d0fa66a1f51e7ee03eac3af0272934075007c9c9894f55bd"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "sha256": "e8d40bce41d532c70ae205269b771564c23fca0f077335f07e5449b78a1bd7c2"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+      "sha256": "3dacd35e12f9c49283f7c14f8aa99c61dba1cb9ac14b5e86dee9d2a80d452208"
+    },
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "sha256": "e8db23593ff878de968ced04c011bd1f4de79279d7bab5c733c9ed98899d8551"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39"
+    }
+  ],
+  "globalActiveCounts": {
+    "problemTypes": 433,
+    "templates": 998
+  },
+  "definitionRecords": [
+    {
+      "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "함수의 뜻과 판정",
+      "definition": "함수의 정의에 따라 대응 또는 그래프가 함수인지 판정하는 문제 유형.",
+      "internalSkeleton": null,
+      "internalDescription": "함수의 정의에 따라 대응 또는 그래프가 함수인지 판정하는 문제 유형.",
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "함숫값 계산",
+      "definition": "주어진 함수식·대응·조각조건에서 특정 입력의 함숫값을 구하는 문제 유형.",
+      "internalSkeleton": null,
+      "internalDescription": "주어진 함수식·대응·조각조건에서 특정 입력의 함숫값을 구하는 문제 유형.",
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "일차방정식의 성질·풀이",
+      "definition": "등식의 성질과 이항을 보존하며 일차방정식의 해를 확인하거나 구한다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1"
+    },
+    {
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "상황을 일차방정식으로 나타내기",
+      "definition": "수량 또는 속력·시간·거리 상황의 조건을 일차방정식으로 모델링한다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1"
+    },
+    {
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "연립방정식과 공통근",
+      "definition": "둘 이상의 방정식, 공통근, 대칭 관계를 연립하여 미지수나 매개변수를 정하는 유형.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION"
+    },
+    {
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "평행이동한 일차함수 결정",
+      "definition": "일차함수 그래프를 y축 방향으로 평행이동한 식을 세우고, 그래프가 지나는 점의 좌표를 대입하여 이동량을 결정하는 과제.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "가감법 소거식 선택",
+      "definition": "연립일차방정식을 가감법으로 풀 때 특정 미지수를 소거하기 위해 각 식에 곱할 수와 더하거나 뺄 연산을 선택하는 과제.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "공통해를 이용한 미정계수 결정",
+      "definition": "해가 같은 두 연립일차방정식에서 공통해를 먼저 구하고, 그 해를 다른 식에 대입하여 미정계수를 결정하는 과제.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "소수 계수 연립방정식 풀이",
+      "definition": "소수 계수를 가진 연립일차방정식을 정수 계수로 고쳐 해를 구한 뒤, 그 해로 일차결합의 값을 계산하는 과제.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "물건 수량과 총액으로 단가 결정",
+      "definition": "두 종류 물건의 수량과 총액에 대한 연립일차방정식을 세워 각 물건의 단가를 결정하는 과제.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "가위바위보 계단 문제",
+      "definition": "이긴 사람과 진 사람의 계단 이동량이 서로 반대가 되는 게임 상황을 연립일차방정식으로 모델링하는 과제.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "부등식 성질 적용의 옳고 그름 판별",
+      "definition": "부등식의 양변에 수를 더하거나 곱하고 나눌 때 성질을 옳게 적용한 보기를 찾는 과제.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "일차부등식 판별",
+      "definition": "여러 부등식을 정리했을 때 미지수의 일차식만 남는지 판별하여 일차부등식을 모두 고르는 과제.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+      "templateKey": null,
+      "parentProblemTypeKey": null,
+      "canonicalLabelKo": "일차부등식 풀이 결과 검증",
+      "definition": "여러 일차부등식의 풀이 결과 중 옳지 않은 것을 찾는 과제.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
+      "parentProblemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+      "canonicalLabelKo": "대응이 함수인지 판정",
+      "definition": "`함수의 뜻과 판정` 안에서 '대응이 함수인지 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "internalSkeleton": "대응이 함수인지 판정",
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+      "parentProblemTypeKey": "PT_FUNCTION_VALUE",
+      "canonicalLabelKo": "함숫값 직접 계산",
+      "definition": "`함숫값 계산` 안에서 '함숫값 직접 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+      "internalSkeleton": "함숫값 직접 계산",
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+      "parentProblemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "canonicalLabelKo": "방정식의 해 확인",
+      "definition": "후보 값을 각 방정식에 직접 대입해 등식 성립 여부를 판정한다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_RATE",
+      "parentProblemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "canonicalLabelKo": "속력·시간·거리 관계식",
+      "definition": "속력과 이동 시간으로 거리를 나타내고 이동 차이 조건을 등식으로 세운다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "parentProblemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "canonicalLabelKo": "연립방정식의 직접 해결",
+      "definition": "대입·가감·대칭합으로 연립방정식을 푼다.",
+      "internalSkeleton": "LINEAR_SUBSTITUTION_TO_QUADRATIC_ROOTS",
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "canonicalLabelKo": "공통해 선계산 후 미정계수 결정 절차",
+      "definition": "상수가 모두 주어진 두 식을 먼저 연립해 공통해를 구하고, 그 해를 미정계수가 포함된 나머지 식들에 차례로 대입해 계수를 결정한 뒤 요구된 식의 값을 계산한다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+      "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "canonicalLabelKo": "y축 평행이동량 결정 절차",
+      "definition": "일차함수 식의 상수항에 이동량을 더한 평행이동 식을 세우고, 그래프가 지나는 점의 좌표를 대입해 이동량을 구한다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+      "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+      "canonicalLabelKo": "미지수 소거용 식 선택 절차",
+      "definition": "소거할 미지수의 두 계수를 최소공배수로 같게 만드는 배수를 각 식에 정하고, 계수의 부호가 같으면 빼고 다르면 더하는 식을 구성한다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+      "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "canonicalLabelKo": "소수 계수 정수화 후 일차결합 계산 절차",
+      "definition": "각 식의 양변에 10의 거듭제곱을 곱해 소수 계수를 정수로 고치고 연립방정식을 푼 뒤, 구한 해를 요구된 일차결합에 대입해 값을 계산한다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+      "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+      "canonicalLabelKo": "승패 역관계 연립방정식 절차",
+      "definition": "한 사람의 이긴 횟수와 진 횟수를 다른 사람의 진 횟수와 이긴 횟수로 뒤집어, 각 사람의 계단 이동량에 대한 두 방정식을 세우고 두 식의 합과 차로 두 변수의 합을 구한다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+      "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+      "canonicalLabelKo": "수량·총액 연립방정식 단가 서술 절차",
+      "definition": "두 물건의 단가를 미지수로 놓고 수량과 총액 조건으로 두 방정식을 세운 뒤, 한 변수를 소거해 각 단가를 구하는 과정을 서술한다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "parentProblemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "canonicalLabelKo": "부등식 변형 성질 검증 절차",
+      "definition": "각 보기에서 양변에 같은 수를 더하거나 곱하는 단계를 추적하고, 음수를 곱하거나 나눌 때 부등호 방향이 바뀌는지 확인한다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+      "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+      "canonicalLabelKo": "일차부등식 여부 선별 절차",
+      "definition": "각 부등식의 양변을 정리해 미지수의 최고차항이 소거되는지 확인하고, 일차식만 남는 보기를 모두 선택한다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    },
+    {
+      "problemTypeKey": null,
+      "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+      "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+      "canonicalLabelKo": "분수·소수 계수 일차부등식 검증 절차",
+      "definition": "분수나 소수 계수를 정수로 고친 뒤 이항과 나눗셈을 수행하고, 제시된 해와 비교해 옳지 않은 보기를 찾는다.",
+      "internalSkeleton": null,
+      "internalDescription": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE2"
+    }
+  ],
+  "rpmRecords": [
+    {
+      "id": "M1-RPM-149",
+      "curriculum": "2022",
+      "scope": "M1-1",
+      "rpmPath": {
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이",
+        "l3": "등식과 방정식",
+        "l4": "방정식의 해"
+      },
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "problemTypeLabelKo": "일차방정식의 성질·풀이",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2022",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+      "templateLabelKo": "방정식의 해 확인"
+    },
+    {
+      "id": "M1-RPM-157",
+      "curriculum": "2022",
+      "scope": "M1-1",
+      "rpmPath": {
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용",
+        "l3": "속력·시간·거리",
+        "l4": "마주가기·따라가기"
+      },
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-136",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "부등식의 성질",
+        "l4": "부등식의 성질"
+      },
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-138",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "일차부등식의 풀이",
+        "l4": "기본형"
+      },
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-141",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "해의 조건",
+        "l4": "계수 조건"
+      },
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-142",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식의 활용",
+        "l3": "수량 관계",
+        "l4": "이상·이하 조건"
+      },
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-147",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식의 활용",
+        "l3": "비율·가격·도형",
+        "l4": "도형의 길이·넓이 조건"
+      },
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-148",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식",
+        "l3": "연립방정식의 풀이",
+        "l4": "가감법"
+      },
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-149",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식",
+        "l3": "연립방정식의 풀이",
+        "l4": "대입법"
+      },
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-150",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식",
+        "l3": "해와 계수",
+        "l4": "해가 주어진 연립방정식"
+      },
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-151",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식",
+        "l3": "해와 계수",
+        "l4": "계수 결정"
+      },
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-153",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식",
+        "l3": "복잡한 꼴의 연립방정식",
+        "l4": "분수·소수가 있는 연립방정식"
+      },
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-156",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식의 활용",
+        "l3": "수와 개수",
+        "l4": "두 수 관계"
+      },
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-157",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식의 활용",
+        "l3": "수와 개수",
+        "l4": "개수·가격"
+      },
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "M2-RPM-164",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프",
+        "l3": "일차함수의 뜻",
+        "l4": "함숫값"
+      },
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "problemTypeLabelKo": "함숫값 계산",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+      "templateLabelKo": "함숫값 직접 계산",
+      "bindingStatus": "MISSING"
+    }
+  ],
+  "definitionComparisons": "All recorded proposed families were checked against full actual definitions and internalSkeleton, including the H1 direct-system quadratic skeleton conflict. Only semantic reuse candidates are proposed; no registry mutation or synthetic resolver evidence."
+}
