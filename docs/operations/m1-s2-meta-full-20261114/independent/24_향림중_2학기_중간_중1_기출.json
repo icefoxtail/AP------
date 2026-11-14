@@ -1,6 +1,6 @@
 {
   "schemaVersion": "m1s2-independent-three-sample-v1",
-  "revision": 2,
+  "revision": 3,
   "reviewer": "/root/meta_c",
   "author": "/root/meta_a",
   "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
@@ -20,15 +20,15 @@
     },
     "review": {
       "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/24_향림중_2학기_중간_중1_기출/review.json",
-      "sha256": "9244afa6514f50d6f125d370434d84264d020024841018f934fa309c97cffa23"
+      "sha256": "2f5e3ca71c907a174f0748bdcd7b79188467604f4be298f01f2178bed288368a"
     },
     "raw": {
       "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/24_향림중_2학기_중간_중1_기출/raw.4slot.json",
-      "sha256": "b82f022030e7ebfabf881bd62af95540c4f71cd5a7a8e4a8ef7450c8ea9ec656"
+      "sha256": "c77035786b02322ee293b8c5267a81e32bce4b14d79f81b453a6d7a1f53fa238"
     },
     "compact": {
       "path": "/workspace/scratch/64695b8ede31/agent-a/compact/archive/data/item-4slot/original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.4slot.json",
-      "sha256": "1b4e6e288c73677918089b909eaea5d04a317b52b51b591895a841cba8274bfa"
+      "sha256": "d9f18d14bf6a395b27cb47d32e82f557a6b036c13c5d609e38906d33903fd60c"
     }
   },
   "images": [
@@ -130,5 +130,122 @@
     },
     "candidateQuotes": "EXACT_LITERAL_MATCH",
     "q19TemplateDefinitionProposal": "CONFIRMED"
-  }
+  },
+  "technicalReadbacks": [
+    {
+      "kind": "SECTION10_SAME_QUOTE_PARENT_COMPLETION",
+      "status": "PASS",
+      "sourceBytesUnchanged": true,
+      "semanticVerdictUnchanged": true,
+      "changedSlotsVerified": [
+        {
+          "ordinal": 1,
+          "slot": "method",
+          "candidate": "눈금없는자",
+          "addedParent": "작도",
+          "dictionaryId": 134,
+          "src": "solution",
+          "quote": "눈금 없는 자로는 선분의 길이를 잴 수 없다"
+        },
+        {
+          "ordinal": 4,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "내각의 크기의 합은"
+        },
+        {
+          "ordinal": 5,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "$40^\\circ+60^\\circ+y=180^\\circ$"
+        },
+        {
+          "ordinal": 6,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "오각형의 내각의 합은"
+        },
+        {
+          "ordinal": 14,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "$x=180^\\circ-40^\\circ-40^\\circ"
+        },
+        {
+          "ordinal": 15,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "$\\angle DQP=180^\\circ-90^\\circ-34^\\circ"
+        },
+        {
+          "ordinal": 19,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "$x+55^\\circ+30^\\circ+240^\\circ=360^\\circ$"
+        },
+        {
+          "ordinal": 19,
+          "slot": "method",
+          "candidate": "한점둘레각",
+          "addedParent": "각",
+          "dictionaryId": 174,
+          "src": "solution",
+          "quote": "$360^\\circ-120^\\circ=240^\\circ$"
+        },
+        {
+          "ordinal": 20,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "삼각형의 내각의 합"
+        },
+        {
+          "ordinal": 20,
+          "slot": "method",
+          "candidate": "별끝각의합",
+          "addedParent": "각",
+          "dictionaryId": 174,
+          "src": "solution",
+          "quote": "별의 다섯 끝각의 합은\n$180^\\circ$"
+        },
+        {
+          "ordinal": 22,
+          "slot": "method",
+          "candidate": "삼각형의세변조건",
+          "addedParent": "삼각형",
+          "dictionaryId": 158,
+          "src": "solution",
+          "quote": "가장 긴 변의 길이가 나머지 두 변의 길이의 합보다 작은"
+        }
+      ],
+      "bound": {
+        "sourceGitBlobSha": "47a270b752ad8021cd800bcbc0a970454bac67aa",
+        "sourceSha256": "04682ef4c67a04b31214f6ea138b22baf1ef44cbc06da26cacd739efbcf5fb87",
+        "rawPath": "/workspace/scratch/64695b8ede31/agent-a/reviews/24_향림중_2학기_중간_중1_기출/raw.4slot.json",
+        "rawSha256": "c77035786b02322ee293b8c5267a81e32bce4b14d79f81b453a6d7a1f53fa238",
+        "reviewSha256": "2f5e3ca71c907a174f0748bdcd7b79188467604f4be298f01f2178bed288368a",
+        "compactSha256": "d9f18d14bf6a395b27cb47d32e82f557a6b036c13c5d609e38906d33903fd60c"
+      }
+    }
+  ]
 }
