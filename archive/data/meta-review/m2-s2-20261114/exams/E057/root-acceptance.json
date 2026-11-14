@@ -7,9 +7,9 @@
   "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
   "sourceGitBlobSha": "ebe0997b105eac3dfc975d423351ea91f75ba9f4",
   "sourceSha256": "df4fe7ad9a1930166e44fbd1a9df4233e0efb2a581340991bb0216cc463a1bd7",
-  "reviewSha256": "595a9501573eb4d16481d4236ea3120c352205bc8fdd9d007e22b7f28856076d",
+  "reviewSha256": "e84654c1118e2ad48970f49e6537132b1b88737ec843e4c4566043cf26b61169",
   "fourSlotSha256": "3d7a9bb9ae34b77e285cb7f3c98274b591dd9e2adf32b510e4f719559a0c41dd",
-  "independentSampleSha256": "5d3a428048e629b0891edc78deed6b24d25002ba10e17c3660ebcb96947dab82",
+  "independentSampleSha256": "032f773e940c7480b5b5c04f15cf56093eb12c9600cfc5ae9f774c0dac649189",
   "sampleInputVersionsPreserved": true,
   "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
   "sourceUnchanged": true,
@@ -49,6 +49,23 @@
         11
       ],
       "resolvedRepairs": []
+    },
+    {
+      "scope": "Pinpoint existing ACTIVE concept reuse; only the named item cross-concept, its explanation and obsolete proposal/debt references changed. Existing source, four-slot bytes and every difficulty judgment are unchanged.",
+      "inputReviewSha256": "595a9501573eb4d16481d4236ea3120c352205bc8fdd9d007e22b7f28856076d",
+      "finalReviewSha256": "e84654c1118e2ad48970f49e6537132b1b88737ec843e4c4566043cf26b61169",
+      "priorIndependentSampleSha256": "5d3a428048e629b0891edc78deed6b24d25002ba10e17c3660ebcb96947dab82",
+      "independentSampleSha256": "032f773e940c7480b5b5c04f15cf56093eb12c9600cfc5ae9f774c0dac649189",
+      "reusedFourSlotSampleOrdinals": [
+        13,
+        16,
+        24
+      ],
+      "fourSlotUnchanged": true,
+      "rootIndependentlyRecheckedOrdinal": 13,
+      "decision": "ACCEPT_EXISTING_ACTIVE_KEY",
+      "officialKey": "CC_SUPPLEMENTARY_ANGLES",
+      "reason": "독립 root가 원문·보기·기존정답·해설 및 실제 Q13 그림을 확인했다. 순환하는 세 같은각에서 외각으로 내부삼각형의 대응각을 구성하는 선행 단계는 현재 ACTIVE CC_SUPPLEMENTARY_ANGLES 정의에 정확히 포함된다. 이미 기록한 그림8·9·4와 기존해설6·8·3의 불일치 hold는 그대로 유지한다."
     }
   ],
   "difficultyRechecks": [
@@ -293,6 +310,7 @@
   ],
   "notes": [
     "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
-    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task.",
+    "Exact ACTIVE CC_SUPPLEMENTARY_ANGLES reused after root checked the source, actual figure and registry definition. No new concept registration is needed for the exterior-angle step; prior full review and three-item slot sample are reused."
   ]
 }

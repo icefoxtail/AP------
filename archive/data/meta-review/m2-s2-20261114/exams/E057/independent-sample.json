@@ -6,7 +6,7 @@
   "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
   "sourceGitBlobSha": "ebe0997b105eac3dfc975d423351ea91f75ba9f4",
   "reviewedAt": "2026-11-14",
-  "reviewInputSha256": "050dfedbad90b1c0a3fa751807af62bce3130679c10b2e86b27f144f7b580f56",
+  "reviewInputSha256": "e84654c1118e2ad48970f49e6537132b1b88737ec843e4c4566043cf26b61169",
   "fourSlotInputSha256": "3d7a9bb9ae34b77e285cb7f3c98274b591dd9e2adf32b510e4f719559a0c41dd",
   "sampleOrdinals": [
     13,
@@ -18,7 +18,7 @@
       "sourceOrdinal": 13,
       "questionUid": "qid_v1_90a4ef218e2d68ebb99ba8a8be2c91ddbb52488f8d76df04550ead8c76d3e3fd",
       "verdict": "PASS_WITH_REGISTRATION_AND_SOURCE_DEBT",
-      "metadataReview": "ACTIVE 삼각형닮음APPLICATION과RPM089는외각으로성립한AA를이용해길이를구하는골격에맞는다.외각전처리의exactCC는B-E056-EXTERIOR-ANGLE 재사용debt+SEQUENTIAL로보완되었으며미등록키는after에넣지않았다.",
+      "metadataReview": "ACTIVE 삼각형닮음APPLICATION과 RPM089는 외각으로 성립한 AA를 이용해 길이를 구하는 골격에 맞는다. 외각 전처리는 exact ACTIVE CC_SUPPLEMENTARY_ANGLES로 보완했고 integration SEQUENTIAL이다. 중복 신규 CC 제안은 제거되었다.",
       "fourSlotReview": "외각과AA·대응변방법,세같은각condition은안전한일반원문인용이다.잘못된6·8·3수치인용을채택하지않은4칸을수용한다.",
       "sourceExactRead": true,
       "answersAndSolutionsPresent": true,
@@ -298,10 +298,11 @@
     },
     {
       "ordinal": 13,
-      "reason": "exterior-angle exact CC proposal reuse and SEQUENTIAL added; primary/fourSlot/difficulty unchanged"
+      "reason": "Existing ACTIVE CC_SUPPLEMENTARY_ANGLES contains the exterior-angle theorem; reused exact CC and removed redundant proposal. Primary/fourSlot/difficulty unchanged."
     }
   ],
   "approvalScope": "three independent metadata/four-slot samples plus all21 difficulty exceptions; sourceHold/UNKNOWN and registry debt remain separate",
   "criticalGoalMethodDefects": 0,
-  "fabricatedQuotes": 0
+  "fabricatedQuotes": 0,
+  "rebindNote": "Q13 CC field-only delta independently checked against ACTIVE exact definition; prior source/visual/difficulty evidence is reused."
 }
