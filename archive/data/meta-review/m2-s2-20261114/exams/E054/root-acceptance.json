@@ -1,0 +1,264 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E054",
+  "owner": "C",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "5c9f9b6428af957393968b5808cb7c69d70825ee",
+  "sourceSha256": "442c0ae98821c3407cab0dfbd6e03912f07022399ce0dd3d1f3b1000101c555e",
+  "reviewSha256": "ea3628937a25c718fa53acbea1628c56cfcbc95e4f8047d9c416d23866205880",
+  "fourSlotSha256": "0d34dea32d3a38b9fd4ff3599d0711ec49c543bb0a44e570ae8830d958d75cd1",
+  "independentSampleSha256": "23a0e6e3db969cb1bb6777bcbc03d71f209a2053a4852112c9b0d5b31a636435",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE",
+  "operationalStatus": "REGISTRATION_PENDING",
+  "unresolvedItems": [],
+  "sampleReviewer": "ROOT",
+  "sampleOrdinals": [
+    1,
+    16,
+    21
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "d92b3a6a64a0933702b3d3b36b3d1c2660e7a54ac9bec4e642ea0b12bed8e40c",
+      "finalReviewSha256": "ea3628937a25c718fa53acbea1628c56cfcbc95e4f8047d9c416d23866205880",
+      "independentSampleSha256": "23a0e6e3db969cb1bb6777bcbc03d71f209a2053a4852112c9b0d5b31a636435",
+      "adjudicatedCompatibilityOrdinals": [
+        2,
+        15,
+        20,
+        23,
+        24
+      ],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "각 꼭짓점의 두 접선조각을 같은 길이로 옮기고 전체에서 일부를 빼는 한 단계 해석이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "명시된 반각에서 전체각을 얻고 내각합 후 목표반각을 구하는 정형 연결이다. 원본하와bucket2의 인접 차이를 수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "서로 다른 대각선의 반쪽과 각 대각선의 이등분을 구별하고 마지막 선택지의 빠진 각을 내각합으로 구한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "마름모에 대각선상등 조건을 추가한 표준 정사각형 판정으로 직접 적용형이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "직사각형의 같은 반대각선으로 이등변 밑각을 얻고 여각으로 목표 차를 구한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "주어진 중점과 평행에서 밑변절반을 얻고 명시된 평행사변형 넓이를 두 번 반분하는 정형 관계이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "표시된 높이와 밑변에 높이정리 및 피타고라스를 직접 적용하여 두 미지길이를 얻는 정형 연결이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "정사각형넓이를 변의제곱으로 해석한 뒤 피타고라스와 직각삼각형넓이 공식을 잇는다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "이미 주어진 보조선의 순서대로 평행사변형의각·반각·보각을 전이한다. 횟수가 많아도 숨은 전략선택은 없다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "명시된 닮음 순서에 따라 각·변·넓이비제곱을 대조하는 한 표준 성질판정이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "그림의 부분/전체 길이 대응을 맞춘 뒤 동일비례식을 두 길이에 적용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "세 중점이 명시되어 중점연결길이의 절반 관계를 그대로 세 변에 적용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "27에서12를 빼 대응하는 위 구간을 만든 후 한 평행선비를 적용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "표준 세중선 그림에서 여섯 등적삼각형 중 두 조각을 바로 합한다. 기존중과bucket1의 차이를 별도로 수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "무게중심으로 중점을 정하고 표시된 평행선으로 중점연결절반을 얻은 뒤2:1을 적용한다. 정형 연결이므로2를 수용하되 원본상의 STRONG_CONFLICT를 유지한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "공통 밑변중점과 그어진 중선에서 두1/3비를 대조하여 평행선의1/3길이를 쓰는 정형 연결이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "작은 유한범위의5배수와7배수를 직접 열거하고 겹침없이 합한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "백의자리0불가를 한 번 반영하고 남은 카드수를 차례로 곱한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "같은 후보군에서 역할있는선택과 역할없는선택의 순서유무를 구별해 두 값을 더한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "증명문이 대각선·합동삼각형쌍·한 엇각을 제공하므로 남은 엇각과ASA·대응변 결론을 채우는 정형 증명이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "소문항이 빗변계산과 반지름의 순서를 안내하고 내심에서 나눈 세 삼각형의 넓이합을 표준식으로 쓴다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "닮은 원뿔의 두 모선 길이가 명시되고 소문항이 닮음비→부피비제곱이 아닌 세제곱 적용을 안내하는 직접형이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "접힘이 보존하는 직각을 원래 사각형의 각과 대응시켜 AA쌍을 고르는 선택이 핵심이다. 이후 길이계산은 소문항으로 안내된다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 5,
+      "reason": "등대각선의반쪽이같아생긴이등변삼각형에서밑각을 구하고 직각에서 뺀다.",
+      "metadataJudgmentUnresolved": false
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}

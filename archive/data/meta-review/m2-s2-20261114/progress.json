@@ -7944,9 +7944,10 @@
           "sha256": "1209188699040e8760483c8ca633ab932b7687d7a01bb24b4a198cdb37a3a98f"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "48fd97c2ed1d1bbf8439283dca26cafc324f4a0f"
     },
     {
       "examId": "E054",
@@ -7985,12 +7986,128 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "29079ca085c25276c7ad588d7ef67a0ca6743b2015ee5b3e887a38e73deb9ea1"
+      "uidSetSha256": "29079ca085c25276c7ad588d7ef67a0ca6743b2015ee5b3e887a38e73deb9ea1",
+      "reviewedQuestionCount": 24,
+      "fullyJudgedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "unresolvedOrdinals": [],
+      "sourceHoldQuestionCount": 1,
+      "sourceHoldOrdinals": [
+        5
+      ],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        1,
+        16,
+        21
+      ],
+      "independentReviewer": "ROOT",
+      "topicSummary": [
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 외심과 내심",
+          "ordinals": [
+            1,
+            2,
+            22
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "평행사변형",
+          "ordinals": [
+            3,
+            9,
+            21
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "여러 가지 사각형",
+          "ordinals": [
+            4,
+            5
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선과 선분의 길이의 비",
+          "ordinals": [
+            6,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            7,
+            10,
+            23,
+            24
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            8,
+            11
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            15,
+            16,
+            17
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            18,
+            19,
+            20
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E054/four-slot.json",
+          "sha256": "0d34dea32d3a38b9fd4ff3599d0711ec49c543bb0a44e570ae8830d958d75cd1"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E054/independent-sample.json",
+          "sha256": "23a0e6e3db969cb1bb6777bcbc03d71f209a2053a4852112c9b0d5b31a636435"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E054/mechanical-check.json",
+          "sha256": "df276ce6ad82ada73570fcb171d34c86cfeeb6b9c76675bb68b137a166d0b37c"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E054/review.json",
+          "sha256": "ea3628937a25c718fa53acbea1628c56cfcbc95e4f8047d9c416d23866205880"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E054/root-acceptance.json",
+          "sha256": "d68d144be1c88d344bb322baf820c4655c37e9f122176909dea1217d24285a87"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E055",
@@ -8571,14 +8688,14 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 51,
-    "reviewedQuestions": 1220,
-    "fullyJudgedQuestions": 1205,
+    "reviewedExams": 52,
+    "reviewedQuestions": 1244,
+    "fullyJudgedQuestions": 1229,
     "unresolvedQuestions": 15,
-    "remainingExams": 16,
-    "remainingQuestions": 384
+    "remainingExams": 15,
+    "remainingQuestions": 360
   },
-  "lastVerifiedExamCommit": "e14d2c1686fcdbdd1b79fcc11fb2de2509082a95",
+  "lastVerifiedExamCommit": "48fd97c2ed1d1bbf8439283dca26cafc324f4a0f",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",

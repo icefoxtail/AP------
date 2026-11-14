@@ -1,0 +1,224 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E054",
+  "reviewer": "ROOT",
+  "author": "C",
+  "independent": true,
+  "sourceArchiveFile": "original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "5c9f9b6428af957393968b5808cb7c69d70825ee",
+  "reviewSha256": "d92b3a6a64a0933702b3d3b36b3d1c2660e7a54ac9bec4e642ea0b12bed8e40c",
+  "fourSlotSha256": "0d34dea32d3a38b9fd4ff3599d0711ec49c543bb0a44e570ae8830d958d75cd1",
+  "ordinals": [
+    1,
+    16,
+    21
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_230039b5b0ea10146734affe31996ed9b96e7ce558f6a02f07b1076bb9e4a001",
+      "verdict": "PASS",
+      "reason": "내심과원 given, 두길이의합 goal, 외부점접선상등과전체−부분 method를 실제그림 및 기존해설로 확인했다. ACTIVE 접선길이 PT/TPL 정의는 일치하고 중2 exactbinding/RPMleaf 공백은 후보로 남긴다.",
+      "quotesExact": true,
+      "quoteCount": 7,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_628aed5392a5d7b744d6776237dd0ae5026dcf1f5f302a950b17965d193bcdae",
+      "verdict": "PASS",
+      "reason": "무게중심 given과평행 condition, 두길이합 goal, 중선·중점연결·2:1분할 method가 실제그림 및해설과 일치한다. 무게중심 Primary, 평행선비 CC, 순차통합 및2015 exactbinding을 확인했다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1aec65323b67a1377ca15e06b1b46a47bab4d42539a048255feba31465af3c7b",
+      "verdict": "PASS",
+      "reason": "평행사변형과대각선 given, 대변상등 증명 goal, 엇각→ASA→대응변 method가 실제빈칸과 일치한다. 성질을 이미 사용하는 기존유형과 성질자체의증명을 구별한 신규유형제안을 유지한다.",
+      "quotesExact": true,
+      "quoteCount": 7,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_230039b5b0ea10146734affe31996ed9b96e7ce558f6a02f07b1076bb9e4a001",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "각 꼭짓점의 두 접선조각을 같은 길이로 옮기고 전체에서 일부를 빼는 한 단계 해석이다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_4ae9badf36830ec7eab248aab3a521a1a2d1d852d04201d48694090038095be9",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "명시된 반각에서 전체각을 얻고 내각합 후 목표반각을 구하는 정형 연결이다. 원본하와bucket2의 인접 차이를 수용한다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_33a7c24965a2e1c6cc381586254bcf9c77ae47556ef0c7490de1e888cd699677",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "서로 다른 대각선의 반쪽과 각 대각선의 이등분을 구별하고 마지막 선택지의 빠진 각을 내각합으로 구한다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_88da193b9516993c26ead3c24756799cd422e15a583c7ab23181447ab8194a52",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "마름모에 대각선상등 조건을 추가한 표준 정사각형 판정으로 직접 적용형이다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_d3998bfef5cb06a7fa4f1c95a69a433064b76b872f2fd9da0690d9e5b97b12b8",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "직사각형의 같은 반대각선으로 이등변 밑각을 얻고 여각으로 목표 차를 구한다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_597c1d90502bf1dc6d2e3e9ee64351d37581e18f323506d1a0697cd2a36ff8ef",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "주어진 중점과 평행에서 밑변절반을 얻고 명시된 평행사변형 넓이를 두 번 반분하는 정형 관계이다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_2ca36017950642a1a87aa6cc777af82bce21c9f25beb4bdf199465941a4e959d",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "표시된 높이와 밑변에 높이정리 및 피타고라스를 직접 적용하여 두 미지길이를 얻는 정형 연결이다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f505edd22579cb7240839df51da973833027781da8e3faf16bc3b3bcdacfdb3d",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "정사각형넓이를 변의제곱으로 해석한 뒤 피타고라스와 직각삼각형넓이 공식을 잇는다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_50baddff63b1169d09afc97d0ab24e2ff0ef401ec679095833ff6260b10279bd",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "이미 주어진 보조선의 순서대로 평행사변형의각·반각·보각을 전이한다. 횟수가 많아도 숨은 전략선택은 없다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_8f34f90323c1111974d47bbdbdeadcd5f0b39ad60bbde43d0e8802438a815c95",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "명시된 닮음 순서에 따라 각·변·넓이비제곱을 대조하는 한 표준 성질판정이다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_e491f9d5c2115cfef75fa41717b6bc9692d4e62cb97a73bff84ce2d4738e01f4",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "그림의 부분/전체 길이 대응을 맞춘 뒤 동일비례식을 두 길이에 적용한다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_d350fb3eb4f19c6095c2307dd526e9e4350e0f5c24921f822235fa049bf0c7b6",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "세 중점이 명시되어 중점연결길이의 절반 관계를 그대로 세 변에 적용한다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_9a415c0e9a999bcaed3ceb278cacc3109680f2f2757567e4bb78e17ed6520c7c",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "27에서12를 빼 대응하는 위 구간을 만든 후 한 평행선비를 적용한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_f31255f738adf570fbd46af8334c3af794e1b40e76c0bd39a145a8181f15b052",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "표준 세중선 그림에서 여섯 등적삼각형 중 두 조각을 바로 합한다. 기존중과bucket1의 차이를 별도로 수용한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_628aed5392a5d7b744d6776237dd0ae5026dcf1f5f302a950b17965d193bcdae",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "무게중심으로 중점을 정하고 표시된 평행선으로 중점연결절반을 얻은 뒤2:1을 적용한다. 정형 연결이므로2를 수용하되 원본상의 STRONG_CONFLICT를 유지한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_d4cdaca8700004600c80cd728c21d51350ddee0bb48c2cc41667d76ea26194da",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "공통 밑변중점과 그어진 중선에서 두1/3비를 대조하여 평행선의1/3길이를 쓰는 정형 연결이다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_ef258ab2d03d1b5413cc79e0e96b42303633dcb6e0747dad5404fe53c0e8a3b9",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "작은 유한범위의5배수와7배수를 직접 열거하고 겹침없이 합한다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_6e958cb172db7c68b9c038159544600ad77ddc2525a5dd4cae0a946a5dacf9c0",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "백의자리0불가를 한 번 반영하고 남은 카드수를 차례로 곱한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_0195f0a7c4076f164503f61827844a995b8094286b16f652e90ecc40a5c94523",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "같은 후보군에서 역할있는선택과 역할없는선택의 순서유무를 구별해 두 값을 더한다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_1aec65323b67a1377ca15e06b1b46a47bab4d42539a048255feba31465af3c7b",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "증명문이 대각선·합동삼각형쌍·한 엇각을 제공하므로 남은 엇각과ASA·대응변 결론을 채우는 정형 증명이다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_8fa880f988d841712d44356a69c2251e44e92cf35e0949189a7538116afd71ac",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "소문항이 빗변계산과 반지름의 순서를 안내하고 내심에서 나눈 세 삼각형의 넓이합을 표준식으로 쓴다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_d25e2ec0df1cc426d582d3b960ce44ec948ad594b5b6e3a2b364002bbaa4dba9",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "닮은 원뿔의 두 모선 길이가 명시되고 소문항이 닮음비→부피비제곱이 아닌 세제곱 적용을 안내하는 직접형이다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_929b3ded8f6d5fdf50b7de9877fb68e64b55643114a506782055dd4722fd780d",
+      "bucket": 3,
+      "decision": "ACCEPT",
+      "reason": "접힘이 보존하는 직각을 원래 사각형의 각과 대응시켜 AA쌍을 고르는 선택이 핵심이다. 이후 길이계산은 소문항으로 안내된다."
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "imageEvidenceViewed": [
+    "workers/C/images/E054/montage0.jpg",
+    "workers/C/images/E054/montage1.jpg"
+  ],
+  "notes": [
+    "Focused author-independent source, answer, solution and required image reads cover three four-slot samples and the listed actual changed/boundary/conflict difficulty items. Unchanged normal Q11 was not re-solved.",
+    "Compiled ACTIVE definitions, template parents, exact 2015 bindings and the original versus 2022 path distinction were compared; no shared registry was mutated."
+  ]
+}
