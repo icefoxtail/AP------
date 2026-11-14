@@ -31,10 +31,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 공통인수를 찾아 묶어내어 다항식을 인수분해한다.\\n1단계: 주어진 다항식 $x^3y + x^2y^2$에서 각 항의 공통인수인 $x^2y$를 묶어내면 다음과 같다.\\n$x^3y + x^2y^2 = x^2y(x+y)$\\n2단계: 인수분해된 식 $x^2y(x+y)$의 인수를 찾으면 $x$, $y$, $x^2$, $xy$, $x^2y$, $x+y$, $x(x+y)$, $y(x+y)$, $xy(x+y)$, $x^2y(x+y)$ 등이 있다.\\n3단계: 선택지 중 $xy^2$은 $x^2y(x+y)$의 인수가 될 수 없다. (⑤ $xy+y^2 = y(x+y)$이므로 인수이다.)\\n∴ 정답: ③",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -67,10 +67,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 다항식의 각 항에서 공통인수를 올바르게 묶어내어 인수분해했는지 확인한다.\\n1단계: 각 선택지의 인수분해를 검토한다.\\n① $3ax+6a = 3a(x+2)$이므로 옳지 않다.\\n② $4ab^2-2a^2 = 2a(2b^2-a)$이므로 옳지 않다.\\n③ $x(x+5)+1$은 다항식의 곱의 형태에 상수가 더해진 구조이므로 완전히 인수분해된 형태가 아니다.\\n④ $4x^2y-2x = 2x(2xy-1)$이므로 올바르게 인수분해되었다.\\n⑤ $2a^2x+a^2 = a^2(2x+1)$이므로 옳지 않다.\\n∴ 정답: ④",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -104,10 +104,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 공통인수를 묶어낸 후 완전제곱식의 형태 $a^2-2ab+b^2=(a-b)^2$를 이용하여 인수분해한다.\\n1단계: 주어진 다항식에서 공통인수인 $2$를 묶어낸다.\\n$2x^2-28xy+98y^2 = 2(x^2-14xy+49y^2)$\\n2단계: 괄호 안의 식 $x^2-14xy+49y^2$을 완전제곱식 공식 $a^2-2ab+b^2=(a-b)^2$에 대입하여 인수분해한다.\\n$x^2-2(x)(7y)+(7y)^2 = (x-7y)^2$\\n3단계: 따라서 전체 식은 $2(x-7y)^2$이 되므로 $\\square$ 안에 알맞은 식은 $-7y$이다.\\n∴ 정답: ④",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 4,
@@ -139,10 +139,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 이차식 $Ax^2+Bx+C$가 완전제곱식이 되려면 $B^2-4AC=0$이 성립해야 함을 이용하거나 완전제곱식의 구조를 비교한다.\\n1단계: $4x^2+16x+a$가 완전제곱식이 되려면 $(2x+4)^2 = 4x^2+16x+16$ 구조여야 하므로 $a=16$이다.\\n2단계: $x^2-4x+b$가 완전제곱식이 되려면 $\\left(\\dfrac{-4}{2}\\right)^2 = 4$여야 하므로 $b=4$이다.\\n3단계: $cx^2-8x+16$이 완전제곱식이 되려면 $(kx-4)^2 = k^2x^2-8kx+16$ 구조에서 $-8k=-8 \\implies k=1$이 되므로 $c=k^2=1$이다.\\n4단계: 구하고자 하는 상수들의 합 $a+b+c$를 계산하면 다음과 같다.\\n$16 + 4 + 1 = 21$\\n∴ 정답: ①",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -176,10 +176,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 식을 완전제곱식으로 변형한 후 주어진 문자의 값을 대입하여 식의 값을 계산한다.\\n1단계: 구하고자 하는 식 $a^2-4a+4$를 인수분해하면 다음과 같이 완전제곱식으로 변형된다.\\n$a^2-4a+4 = (a-2)^2$\\n2단계: $a=2-\\sqrt{3}$을 변형된 식에 대입한다.\\n$(2-\\sqrt{3}-2)^2 = (-\\sqrt{3})^2 = 3$\\n∴ 정답: ④",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 6,
@@ -197,7 +197,6 @@ window.questionBank = [
       "다항식",
       "인수분해",
       "제곱의차",
-      "표해석",
       "참거짓",
       "대입",
       "개념"
@@ -213,10 +212,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 제곱의 차 공식 $a^2-b^2=(a+b)(a-b)$를 이용하여 인수분해한다.\\n1단계: 주어진 다항식 $4x^2-y^2$을 각각의 제곱 형태의 차로 표현하면 다음과 같다.\\n$4x^2-y^2 = (2x)^2 - y^2$\\n2단계: 공식 $a=2x$, $b=y$를 대입하여 인수분해를 수행한다.\\n$(2x+y)(2x-y)$\\n∴ 정답: ③",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
@@ -250,10 +249,10 @@ window.questionBank = [
     ],
     "answer": "①, ⑤",
     "solution": "[키포인트] 제곱의 차 공식 전개 패턴을 이해하고, 주어진 상수들의 부호 및 대소 관계를 논리적으로 판정한다.\\n1단계: $(3x+b)(3x-b)$를 전개하면 다음과 같다.\\n$(3x+b)(3x-b) = 9x^2-b^2$\\n2단계: 주어진 다항식 $9x^2+a$와 전개한 식을 비교하면 다음과 같은 관계식이 성립한다.\\n$a = -b^2 \\implies a+b^2 = 0$ (⑤번 참)\\n3단계: $b$는 $0$이 아닌 유리수이므로 $b^2 \\gt 0$이다. 따라서 $a = -b^2 \\lt 0$이 되므로 $a$는 항상 음수이다. (①번 참)\\n4단계: 타 선택지 검증\\n② $b^2 = -a$이므로 거짓이다.\\n③, ④ 만약 $b = -2$이면 $b^2 = 4 \\implies a = -4$이므로 $a \\lt b$이다. 반면 $b = -0.1$이면 $b^2 = 0.01 \\implies a = -0.01$이므로 $a \\gt b$가 된다. 따라서 대소 관계는 $b$의 값에 따라 달라지므로 항상 성립한다고 볼 수 없다.\\n∴ 정답: ①, ⑤",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -270,7 +269,6 @@ window.questionBank = [
       "객관식",
       "다항식",
       "인수분해",
-      "정수조건",
       "조건해석",
       "계산"
     ],
@@ -285,10 +283,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 합이 $-2$이고 곱이 $-15$인 두 정수를 찾아 $x^2+(a+b)x+ab=(x+a)(x+b)$ 공식으로 인수분해한다.\\n1단계: 곱해서 $-15$, 더해서 $-2$가 되는 두 수는 $3$과 $-5$이다.\\n$x^2-2x-15 = (x+3)(x-5)$\\n2단계: 이를 $(x+a)(x+b)$와 비교하면 상수 $a, b$는 각각 $3, -5$ 또는 $-5, 3$이다. 두 수의 합 $a+b$를 구하면 다음과 같다.\\n$3 + (-5) = -2$\\n∴ 정답: ④",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -304,7 +302,6 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "나머지정리",
       "인수분해",
       "전개",
       "계수비교",
@@ -322,10 +319,10 @@ window.questionBank = [
     ],
     "answer": "②, ⑤",
     "solution": "[키포인트] $(bx+c)(dx+e)$를 전개하여 계수를 비교하고, 각 선택지가 항상 성립하는지 확인한다.\\n1단계: $(bx+c)(dx+e)$를 전개하면 다음과 같다.\\n$(bx+c)(dx+e)=bdx^2+(be+cd)x+ce$\\n이를 $3x^2+ax-2$와 비교하면\\n$bd=3$, $be+cd=a$, $ce=-2$이다.\\n2단계: 조건에서 $b,d\\gt0$이므로 $bd=3$이다. 따라서 ②의 $bd=-2$는 옳지 않다.\\n3단계: $ce=-2$이고 $b,d\\gt0$이므로 $bcde=(bd)(ce)=3\\times(-2)=-6$이다. 따라서 $bcde\\lt0$이므로 ⑤의 $bcde\\gt0$은 옳지 않다.\\n4단계: 나머지 선택지를 확인한다.\\n① $bd=3$에서 $(b,d)=(1,3)$ 또는 $(3,1)$이고, $ce=-2$에서 $(c,e)=(1,-2),(-1,2),(2,-1),(-2,1)$이다. 이때 $a=be+cd$가 될 수 있는 값은 $1,-1,5,-5$로 4개이므로 참이다.\\n③ $a=5$일 때 $3x^2+5x-2=(3x-1)(x+2)$이므로 $(x+2)$를 인수로 갖는다. 따라서 참이다.\\n④ 전개식의 일차항 계수 비교에 의해 $be+cd=a$이므로 참이다.\\n결론: 옳지 않은 것은 ②, ⑤이다.\\n∴ 정답: ②, ⑤",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 10,
@@ -343,8 +340,6 @@ window.questionBank = [
       "다항식",
       "인수분해",
       "전개",
-      "조합",
-      "원",
       "계산"
     ],
     "wide": false,
@@ -358,10 +353,10 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 식을 완전히 전개하여 정리한 후, 대각선 인수분해 공식을 이용하여 다시 인수분해한다.\\n1단계: 주어진 다항식을 전개하여 동류항을 정리한다.\\n$(3x+4)(2x-5)-4 = 6x^2-15x+8x-20-4 = 6x^2-7x-24$\\n2단계: 이차식 $6x^2-7x-24$를 대각선 공식을 이용하여 인수분해한다.\\n곱해서 $6$이 되는 수: $2, 3$ / 곱해서 $-24$가 되는 수: $-8, 3$\\n$(2x-3)(3x+8) = 6x^2+16x-9x-24 = 6x^2+7x-24$ (부호 반대)\\n따라서 곱해서 $-24$가 되는 조합을 $8, -3$으로 조정하면:\\n$(2x-3)(3x+8)$에서 크로스 계산 시 $16-9=7$이 되므로, 원래 식 $-7$을 만들려면 $(2x+3)(3x-8)$ 조합이어야 한다.\\n확인: $(2x+3)(3x-8) = 6x^2-16x+9x-24 = 6x^2-7x-24$\\n3단계: 인수분해하여 얻은 두 일차식 인수는 $(2x+3)$과 $(3x-8)$이다. 두 인수의 합을 구한다.\\n$(2x+3) + (3x-8) = 5x-5$\\n∴ 정답: ⑤",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 11,
@@ -380,7 +375,6 @@ window.questionBank = [
       "인수분해",
       "전개",
       "계수비교",
-      "근과계수",
       "정수조건",
       "조건해석"
     ],
@@ -395,10 +389,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 인수분해 전개식의 계수를 비교하여 근과 계수의 관계식 구조를 도출하고, 정수 및 부호 조건을 만족하는 상수쌍을 추적한다.\\n1단계: $(x+a)(x+b) = x^2+(a+b)x+ab$ 이므로 주어진 식과 비교하면 다음과 같다.\\n$a+b = 12$, $ab = k$\\n2단계: 조건에서 $b \\lt 0$인 정수이므로, $a+b=12$를 만족하는 정수 쌍 $(a, b)$를 $b$가 큰 순서(0에 가까운 음수 순서)대로 나열하여 $k=ab$의 값을 구한다.\\n- 1번째로 큰 $b$: $b=-1 \\implies a=13 \\implies k = 13 \\times (-1) = -13$\\n- 2번째로 큰 $b$: $b=-2 \\implies a=14 \\implies k = 14 \\times (-2) = -28$\\n- 3번째로 큰 $b$: $b=-3 \\implies a=15 \\implies k = 15 \\times (-3) = -45$\\n- 4번째로 큰 $b$: $b=-4 \\implies a=16 \\implies k = 16 \\times (-4) = -64$\\n3단계: $b$가 감소할수록 $k=ab$의 값은 더 작은 음수가 되므로, $k$ 값 중 가장 큰 값은 $-13$, 두 번째는 $-28$, 세 번째로 큰 값은 $-45$가 된다.\\n∴ 정답: ②",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -623,9 +617,7 @@ window.questionBank = [
       "제곱근",
       "근호",
       "완전제곱식",
-      "계수비교",
-      "이차방정식",
-      "원"
+      "이차방정식"
     ],
     "wide": false,
     "content": "다음은 완전제곱식을 이용하여 이차방정식 $x^2-5x+2=0$을 푸는 과정이다. ①~⑤에 들어갈 수로 옳은 것을 고르면?<br>$$x^2-5x+2=0$$<br>$$x^2-5x+\\text{①}=-2+\\text{①}$$<br>$$(x-\\text{②})^2=\\text{③}$$<br>$$x-\\text{②}=\\pm\\text{④}$$<br>$$x=\\text{⑤}$$",
@@ -657,9 +649,7 @@ window.questionBank = [
     "tags": [
       "객관식",
       "인수분해",
-      "계수비교",
       "이차방정식",
-      "정수조건",
       "계산"
     ],
     "wide": false,
@@ -695,9 +685,7 @@ window.questionBank = [
       "근호",
       "유리수",
       "계수비교",
-      "이차방정식",
-      "지수",
-      "표해석"
+      "이차방정식"
     ],
     "wide": false,
     "content": "이차방정식 $3x^2-x+A=0$의 해가 $x=\\dfrac{B\\pm\\sqrt{13}}{6}$일 때, $A+B$의 값을 구하면?",
@@ -735,10 +723,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$10x+14y$",
     "solution": "[키포인트] 직사각형의 넓이 공식을 이용하여 다항식을 인수분해하고 가로와 세로의 관계를 통해 둘레의 길이를 구한다.\\n1단계(다항식 인수분해): 직사각형의 넓이를 나타내는 다항식 $6x^2+17xy+12y^2$을 대각선 공식을 이용하여 인수분해한다.\\n$6x^2+17xy+12y^2 = (3x+4y)(2x+3y)$\\n2단계(세로의 길이 구하기): 직사각형의 넓이는 $($가로의 길이$) \\times ($세로의 길이$)$이므로, 가로의 길이가 $3x+4y$일 때 세로의 길이는 인수분해된 인수에 의해 $2x+3y$가 됨을 알 수 있다.\\n3단계(둘레의 길이 구하기): 직사각형의 둘레의 길이는 $2 \\times \\{($가로의 길이$) + ($세로의 길이$)\\}$이므로 식을 대입하여 정리한다.\\n$\\text{둘레의 길이} = 2 \\times \\{(3x+4y) + (2x+3y)\\} = 2(5x+7y) = 10x+14y$\\n∴ 정답: $10x+14y$",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
@@ -753,11 +741,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "나머지정리",
-      "계수비교",
       "이차방정식",
-      "지수",
-      "원",
       "대입"
     ],
     "wide": false,
@@ -789,9 +773,9 @@ window.questionBank = [
     "choices": [],
     "answer": "1살",
     "solution": "[키포인트] 구하고자 하는 대상을 미지수 $x$로 설정하고 문장 조건을 이차방정식으로 세워 문제를 해결한다.\\n1단계(미지수 정하기): 구하고자 하는 올아의 나이를 $x$살이라고 하자. 시아는 올아보다 $6$살이 많으므로 시아의 나이는 $(x+6)$살이 된다. (단, 나이는 자연수이므로 $x \\gt 0$)\\n2단계(식 세우기): 두 사람의 나이를 각각 제곱하여 더한 값이 $50$이므로 다음과 같이 방정식을 세운다.\\n$x^2 + (x+6)^2 = 50$\\n3단계(방정식 풀기): 식을 전개하고 정돈하여 이차방정식의 해를 구한다.\\n$x^2 + x^2 + 12x + 36 = 50 \\implies 2x^2 + 12x - 14 = 0 \\implies x^2 + 6x - 7 = 0$\\n인수분해를 하면 $(x+7)(x-1) = 0$ 이므로 $x=-7$ 또는 $x=1$ 이다.\\n4단계(문제에 맞는 답 쓰기): 나이는 반드시 양수여야 하므로 $x=-7$은 모순이다. 따라서 $x=1$이 되므로 올아의 나이는 $1$살이다.\\n∴ 정답: 1살",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+    "subUnit": "이차방정식의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];
