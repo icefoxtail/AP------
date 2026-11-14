@@ -1,0 +1,41 @@
+[
+  {
+    "kind": "RPM_PUBLISHER_EXACT_LEAF_GAP",
+    "supportingQuestionUids": [
+      "qid_v1_2be27a4324508d19badfbc7eec0fe663cddfccdc17fdb643afec5372d131db9b"
+    ],
+    "originalParent": [
+      "2015",
+      "M3-2",
+      "삼각비",
+      "삼각비의 활용"
+    ],
+    "currentParent": [
+      "2022",
+      "M3-2",
+      "삼각비",
+      "삼각비의 활용"
+    ],
+    "method": "원뿔 축단면에서 삼각비로 높이·반지름을 구한 뒤 원뿔 부피 산출",
+    "existingActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+    "existingActiveTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "newProblemTypeRequired": false,
+    "newTemplateRequired": false,
+    "reason": "원본061~066와 현행149~154에는 평면도형, 높이·거리, 앙각·부각, 보조선, 피타고라스 결합만 있다. 원뿔 부피를 높이·거리 leaf에 exact로 강제하지 않는다.",
+    "owner": "CODEX_RELEASE_OWNER"
+  },
+  {
+    "kind": "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP",
+    "supportingQuestionUids": [
+      "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546"
+    ],
+    "historicalSourceRpm": "M3-RPM-059",
+    "currentExactRpm": "M2-RPM-182",
+    "existingActiveProblemType": "PT_TRIANGLE_ANGLE_BISECTOR",
+    "existingActiveTemplate": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+    "newProblemTypeRequired": false,
+    "newTemplateRequired": false,
+    "reason": "현재 풀이의 결정적 전략은 일반 삼각형의 이등분선으로 대변을 양변의 비로 나누는 정리이다. 원본2015 M2의 이등변 꼭짓각이등분선·평행선 길이비 leaf는 일반 정리와 다르며 원본M3 삼각비 활용도 실제 사용하지 않았다. 현행2022 M2-182는 정확하고 ACTIVE native PT/TPL을 재사용한다.",
+    "owner": "CODEX_RELEASE_OWNER"
+  }
+]

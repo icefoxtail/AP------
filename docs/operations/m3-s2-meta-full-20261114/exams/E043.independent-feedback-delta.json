@@ -1,0 +1,60 @@
+{
+  "examId": "E043",
+  "beforeHashes": {
+    "review.json": "d8209863f2303864c9928514fc48ec06e6ae9fb2f05d23d53354fe61930351df",
+    "source-patch.json": "0772ea0b6239f5ff966ace51f420b2ebb6798ce5f9a6c29f91d60e34a46c1fd3",
+    "E043.4slot.json": "4e791460a2bae1b59984aafbda6b8290b1c077f42b34f037ed243d08fbea1828"
+  },
+  "reviewer": "a",
+  "changes": [
+    {
+      "ordinal": 11,
+      "slot": "given",
+      "add": "각",
+      "reason": "원본 그림의30도 입력을 해설의 정확 재진술에 결속"
+    },
+    {
+      "ordinal": 12,
+      "slot": "goal",
+      "add": "원뿔",
+      "reason": "명시된 부피의 대상"
+    },
+    {
+      "ordinal": 24,
+      "slot": "given",
+      "add": "길이",
+      "reason": "그림의AB=10"
+    },
+    {
+      "ordinal": 24,
+      "slot": "condition",
+      "add": "수선",
+      "reason": "D/E/F의 그림 직각 표시가 주어진 중심거리의 전제"
+    },
+    {
+      "ordinal": 24,
+      "slot": "goal",
+      "add": "원",
+      "reason": "최종 원의 넓이 대상"
+    },
+    {
+      "ordinal": 14,
+      "metadata": "crossConceptKeys/integrationPattern",
+      "before": {
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "after": {
+        "crossConceptKeys": [
+          "CC_RECTANGLE_INSCRIBED_CIRCLE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "activeDefinition": "직사각형 내부에서 변에 접하는 원의 반지름과 접점을 이용하여 도형의 길이 관계를 다루는 상황.",
+      "reason": "높이6→반지름3→접점 위치 복원 뒤 등접선의 합차로 둘레를 구한다. 원본 해설의 선행 전처리에 독립 보조 정의가 정확히 맞는다."
+    }
+  ],
+  "studentContentChanged": false,
+  "numericDifficultyChanged": false,
+  "mainTemplateChanged": false
+}

@@ -1,0 +1,19 @@
+{
+  "examId": "E043",
+  "ordinal": 11,
+  "kind": "REUSE_ACTIVE_CC_WITHDRAW_DEFINITION_GAP",
+  "beforeReviewSha256": "bda3da886f545a648e78ea6020e6c16614905a6e5b3f0b567e945a3cb135869f",
+  "beforePatchSha256": "8450b3f98675b5cfeae533529756024c66db7156954516ca662d2dbd68530841",
+  "beforeCrossConceptKeys": [],
+  "afterCrossConceptKeys": [
+    "CC_SPECIAL_ANGLES"
+  ],
+  "activeDefinition": "30°,45°,60° 등 특수각에 대한 정형화된 삼각비 값과 사칙연산",
+  "inference": "고정30-60-90 변비에서 짧은변과 빗변을 복원하는 실제 전처리는 정형 특수각 삼각비 값 관계와 같은 개념이다. 함수 이름의 문자 유무를 정본에 없는 배제조건으로 만들지 않는다.",
+  "evidenceScope": "Canonical 특수 직각삼각형 지원 예시는 TRIG_APPLICATION/CHAINED 허용을 직접 보여 주며 CC_SPECIAL_ANGLES 허용은 그 예시의 직접 승인이 아닌 정의에 대한 의미 추론이다. Root와 독립 A가 이 범위를 수용했다.",
+  "withdrawnDebt": "CROSS_CONCEPT_DEFINITION_GAP",
+  "primaryMethodUnchanged": "PT_TRIANGLE_ANGLE_BISECTOR / TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+  "fourSlotUnchanged": true,
+  "numericDifficultyUnchanged": true,
+  "sourcePayloadUnchanged": true
+}
