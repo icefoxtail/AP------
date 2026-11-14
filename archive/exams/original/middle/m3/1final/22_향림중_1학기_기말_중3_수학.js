@@ -1118,7 +1118,7 @@ window.questionBank = [
       "$6\\text{ cm}$"
     ],
     "answer": "④",
-    "solution": "두 정사각형 한 변의 길이를 $AP=x$, $BP=8-x$로 둔다.<br>넓이 합이 $34$이므로 $x^2+(8-x)^2=34$.<br>$2x^2-16x+64=34$<br>$x^2-8x+15=0$<br>$(x-3)(x-5)=0$이어서 $x=3$ 또는 $x=5$.<br>단 $AP>BP$이므로 $x>4$. 따라서 $AP=5$ cm, 정답 ④.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q19_solution.svg\" class=\"exam-img\">",
+    "solution": "두 정사각형 한 변의 길이를 $AP=x$, $BP=8-x$로 둔다.<br>넓이 합이 $34$이므로 $x^2+(8-x)^2=34$.<br>$2x^2-16x+64=34$<br>$x^2-8x+15=0$<br>$(x-3)(x-5)=0$이어서 $x=3$ 또는 $x=5$.<br>단 $AP>BP$이므로 $x>4$. 따라서 $AP=5$ cm, 정답 ④.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q19_solution.svg\" class=\"exam-img\" style=\"max-width: 100%; height: auto;\">",
     "sourceQid": 19,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-039",
@@ -1177,7 +1177,7 @@ window.questionBank = [
       "6초 후"
     ],
     "answer": "①",
-    "solution": "출발 후 $t$초라 두면 $OP=2t$, $OQ=12-t$ cm이다.<br>$\\angle POQ=90^\\circ$이므로 삼각형 넓이<br>$\\frac12\\cdot OP\\cdot OQ=\\frac12(2t)(12-t)=t(12-t)$.<br>$t(12-t)=20$에서 $t^2-12t+20=0$<br>$(t-2)(t-10)=0$, 즉 $t=2$ 또는 $10$.<br>점 $P$가 $O$에서 $A$까지 이동하는 데 $\\frac{12}{2}=6$초 걸리므로 $0\\le t\\le6$.<br>$t=10$은 물리적 조건에 맞지 않아 제외한다. 따라서 2초 후, 정답 ①.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q20_solution.svg\" class=\"exam-img\">",
+    "solution": "출발 후 $t$초라 두면 $OP=2t$, $OQ=12-t$ cm이다.<br>$\\angle POQ=90^\\circ$이므로 삼각형 넓이<br>$\\frac12\\cdot OP\\cdot OQ=\\frac12(2t)(12-t)=t(12-t)$.<br>$t(12-t)=20$에서 $t^2-12t+20=0$<br>$(t-2)(t-10)=0$, 즉 $t=2$ 또는 $10$.<br>점 $P$가 $O$에서 $A$까지 이동하는 데 $\\frac{12}{2}=6$초 걸리므로 $0\\le t\\le6$.<br>$t=10$은 물리적 조건에 맞지 않아 제외한다. 따라서 2초 후, 정답 ①.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q20_solution.svg\" class=\"exam-img\" style=\"max-width: 100%; height: auto;\">",
     "sourceQid": 20,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-041",
@@ -1390,7 +1390,7 @@ window.questionBank = [
     "content": "[서술형 4] 다음 그림과 같이 정사각형 모양의 종이의 네 귀퉁이에서 한 변의 길이가 $3\\text{cm}$인 정사각형 모양을 잘라 내어 뚜껑이 없는 직육면체 모양의 선물 상자를 만들었더니 부피가 $300\\text{cm}^3$가 되었다. 처음 정사각형 모양의 종이의 한 변의 길이를 이차방정식을 세워서 구하시오. [5점]<br><br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q24.png\" class=\"exam-img\">",
     "choices": [],
     "answer": "16 cm",
-    "solution": "처음 종이의 한 변을 $L$ cm라 둔다. 네 모서리에서 $3$ cm 정사각형을 자르므로<br>접은 상자의 높이는 $3$ cm, 바닥의 각 변은 $L-6$ cm이다.<br>부피 $=3(L-6)^2=300$<br>$(L-6)^2=100$<br>$L-6=\\pm10$에서 $L=16$ 또는 $L=-4$.<br>처음 길이는 $L>6$이어야 하므로 $L=-4$를 버린다.<br>따라서 처음 종이의 한 변은 $16$ cm이다.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q24_solution.svg\" class=\"exam-img\">",
+    "solution": "처음 종이의 한 변을 $L$ cm라 둔다. 네 모서리에서 $3$ cm 정사각형을 자르므로<br>접은 상자의 높이는 $3$ cm, 바닥의 각 변은 $L-6$ cm이다.<br>부피 $=3(L-6)^2=300$<br>$(L-6)^2=100$<br>$L-6=\\pm10$에서 $L=16$ 또는 $L=-4$.<br>처음 길이는 $L>6$이어야 하므로 $L=-4$를 버린다.<br>따라서 처음 종이의 한 변은 $16$ cm이다.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q24_solution.svg\" class=\"exam-img\" style=\"max-width: 100%; height: auto;\">",
     "sourceQid": 24,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-039",
