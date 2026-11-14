@@ -1,0 +1,674 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E068",
+  "author": "B",
+  "reviewer": "GPT_ROOT_14C2C64E43FB",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS_AND_SCOPED_SUPPLEMENTS",
+  "createdAt": "2026-11-14T15:04:14.900409+00:00",
+  "sourceGitBlobSha": "ccbe5999110d077c337442fe63087eedd49c1122",
+  "sourceSha256": "8de0c5fbf51d3889a0eca69ec8ce25769bcd37b48e4885529d473952263fc57f",
+  "reviewSha256": "68c9b8f906cb62015502fd06164f439fe6f3c08d08e7f32a5862bbbcbd94bfc9",
+  "fourSlotSha256": "32b1f6fcac3c25918acb4c790b8d1185c6387ca47afe40038f0cb846292b0829",
+  "sampleOrdinals": [
+    7,
+    16,
+    23
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 7,
+      "classification": "비순환 첫자리 다음 두자리 반복의 위치를 묻는 실제해설을 RPM121 순환마디와 표현에 대조했다. 분수→소수123은 선행 관련경로다.",
+      "binding": "정본121/123 모두 NO_ACTIVE_MAPPING을 확인했다. 자리숫자의 비라는 실제목표에 새 PT/TPL을 발명하지 않는다.",
+      "crossConcept": "첫자리보정과 반복위치의 홀짝은 이 primary 내부의 자리대응이므로 별도 CC 중복 없음.",
+      "condition": "50번째/60번째는 주어진 목표인덱스이며 새로운 정수조건을 추가하지 않는다.",
+      "integration": "순환마디 위치판정 내부 단계로 NONE.",
+      "difficulty": "독립2/저자2 일치. 첫 비순환자리 보정 후 두 목표자리를 읽는 정형변환.",
+      "fourSlot": "사전559는 DIGIT_PLACE이며 실제 각자리 또는 개수를 포함한다. 분수27·자리559 입력/목표와 실제 홀수680 NAMED, 반복블록429 IMPLIED 설명을 확인했다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "classification": "넓이를 세로길이로 나누어 가로를 얻는 실제 다항식/단항식 몫을 RPM133에 대조했다.",
+      "binding": "이미 읽은 ACTIVE 삼각형높이 template는 넓이2배/밑변 절차여서 실제직사각형과 다르다. 관련후보와 정확한 binding을 구별한다.",
+      "crossConcept": "ACTIVE 기하넓이부피공식 정의의 도형공식을 문자식으로 나타내는 단계가 나눗셈 이전에 필요하다.",
+      "condition": "입력의 문자길이로부터 원문에 없는 부호조건을 새로 쓰지 않는다.",
+      "integration": "직사각형넓이 관계를 길이 몫으로 정리한 뒤 다항식계산의 SEQUENTIAL.",
+      "difficulty": "독립2/저자2 일치. 기하공식과 표준다항식나눗셈의 익숙한 연결이다.",
+      "fourSlot": "직사각형165/세로길이215/넓이213 입력과 가로길이 목표가 일치한다. 실제 해설의 넓이를 세로의 길이로 나누어와 완전한 몫 표현에 따라 다항식나눗셈46의 NAMED 표시만 보완했다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "classification": "음의정수해가 없도록 문자하한을 제한하는 실제 목표는 RPM141 계수조건이다.",
+      "binding": "ACTIVE NO_NATURAL_SOLUTIONS는 상한과 가장 작은 자연수라는 정의다. 실제 하한·가장 큰 음의정수와 방향/도메인이 달라 관련후보만 수용한다.",
+      "crossConcept": "정수경계로 계수범위를 정하는 것은 현재 primary 내부절차다.",
+      "condition": "실제 음의정수라는 제한에 ACTIVE COND_INTEGER와 COND_NEGATIVE 정의를 대조했다.",
+      "integration": "같은 계수조건 primary 내부 NONE.",
+      "difficulty": "독립3/저자3 일치. 해의 하한에서 −1을 배제하는 열린경계를 선택하는 전략이다.",
+      "fourSlot": "일차부등식355 입력과 매개변수308/범위297 목표, 실제음수나눗셈654 IMPLIED+설명 및 정수2 NAMED, 두도메인 조건이 정합하다."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_813accf97d20d1c96867381a072bfd5cabf0f0407870d879a0b71e72c48243dd",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_813accf97d20d1c96867381a072bfd5cabf0f0407870d879a0b71e72c48243dd",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "기약분모의소인수를각분수에직접확인한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "기약분모에서 2와5 이외의 소인수 유무를 각 분수에서 직접 판정한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "각 분수의 기약분모 소인수 정의를 직접판정하는1과 학습중의 B12 인접을 수용한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_681b248784f3c7627d2ca3ea49eee095d59eae54e6fedb2a7007be8c4828c060",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_681b248784f3c7627d2ca3ea49eee095d59eae54e6fedb2a7007be8c4828c060",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "유리수·유한·순환소수의정의를대조한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "유리수와 유한소수/순환소수의 포함관계 직접 판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "소수와 유리수의 포함관계 정의1과 학습중 B12 인접 수용."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_fdcb9f3efec8727c4d5478418cc71a9ec6c0c6b9343dea16495b9c0172592e14",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_fdcb9f3efec8727c4d5478418cc71a9ec6c0c6b9343dea16495b9c0172592e14",
+        "difficulty": "UNKNOWN",
+        "difficultyBoundary": "UNKNOWN",
+        "confidence": "low",
+        "reason": "보기4의0.0312312…와0.03뒤12반복은다르다.보기2도잘못인데기존해설은2만단일정답으로확정하여UNKNOWN."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "순환표기②뿐 아니라④도 전개와 일치하지 않아 단일정답 발문과 충돌"
+      },
+      "decision": "ACCEPT",
+      "reason": "보기4의0.0312312…와0.03뒤12반복은다르다.보기2도잘못인데기존해설은2만단일정답으로확정하여UNKNOWN. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_589361f9e0b926210e38551f6a47dc701416180758161fecdcf092d4f387427d",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_589361f9e0b926210e38551f6a47dc701416180758161fecdcf092d4f387427d",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "비순환1자리와순환2자리의꼬리를맞추는표준차를고른다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "비순환 한자리와 순환두자리를 맞추는10거듭제곱 두 배율 선택"
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진 비순환/순환 자리수의 이동배율 직접대응1과 학습중 B12 인접 수용."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_140c4c982b9275e3294347f5e96146e3f97ecc72ed62a921954d097aa5434d66",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_140c4c982b9275e3294347f5e96146e3f97ecc72ed62a921954d097aa5434d66",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "여러순환소수의분수변환을판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 반복소수를 분수화한 관계와 약분결과를 비교"
+      },
+      "decision": "ACCEPT",
+      "reason": "여러순환소수의분수변환을판정한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_a806990f188f3063fe72f01c10519b8f5893d6e4c3cdd6f5f71000fe129ad994",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_a806990f188f3063fe72f01c10519b8f5893d6e4c3cdd6f5f71000fe129ad994",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "분모에남은소인수조건으로최소곱하는수를정하고기약분수값과곱한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기약분모의7을 없애는 최소자연수와 그 뒤 분수의 곱"
+      },
+      "decision": "ACCEPT",
+      "reason": "분모에남은소인수조건으로최소곱하는수를정하고기약분수값과곱한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_3afefc720371001526d640e316157a8a13bd8b76dd538cd6308e32e926bb8598",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_3afefc720371001526d640e316157a8a13bd8b76dd538cd6308e32e926bb8598",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "비순환앞자리하나를제외하고두자리주기의홀짝을대응한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "나눗셈으로 순환소수를 얻고 비순환첫자리를 보정하여 두 큰자리값 결정"
+      },
+      "decision": "ACCEPT",
+      "reason": "비순환앞자리하나를제외하고두자리주기의홀짝을대응한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_d98f620e57801b38847b3b698b648f5b8815507426d6833eeb4ce6bf5334c124",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_d98f620e57801b38847b3b698b648f5b8815507426d6833eeb4ce6bf5334c124",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "한자리자연수범위에서약분후남는소인수조건을판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한자리자연수 범위에서 약분 후2/5외 소인수가 남는 경우를 선별"
+      },
+      "decision": "ACCEPT",
+      "reason": "한자리자연수범위에서약분후남는소인수조건을판정한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_447bbb99124393e8bb53e108a7a531bb533437736e9f663b831ce59074a7f19e",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_447bbb99124393e8bb53e108a7a531bb533437736e9f663b831ce59074a7f19e",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "곱·몫·거듭제곱지수를혼합한다. 기존음의지수표현은새풀이로바꾸지않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "거듭제곱/곱/몫의 여러 지수법칙을 보기별 비교"
+      },
+      "decision": "ACCEPT",
+      "reason": "곱·몫·거듭제곱지수를혼합한다. 기존음의지수표현은새풀이로바꾸지않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_b7f2e021fc964142bec732b5bdf9ccb18825a04cf8faf1176c54182fcc0240fb",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_b7f2e021fc964142bec732b5bdf9ccb18825a04cf8faf1176c54182fcc0240fb",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "여러지수법칙으로빈칸을각각계산해비교한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "여러지수관계의 빈지수를 구한 후 최소값 비교"
+      },
+      "decision": "ACCEPT",
+      "reason": "여러지수법칙으로빈칸을각각계산해비교한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_4f448d6226b5364cebde8c414092ea3685142fdf08ced63802ac629b7ced7862",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_4f448d6226b5364cebde8c414092ea3685142fdf08ced63802ac629b7ced7862",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "가능한지수가3의배수인불변량을보아불가능성을판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "곱셈나눗셈으로 지수의3배수 불변성을 발견하여 표현불가능성 판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "가능한지수가3의배수인불변량을보아불가능성을판정한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_706abdd72cca0c9239cca4f1a4ee2aa476dad520142dbbfc6c5d99499bb0c9ac",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_706abdd72cca0c9239cca4f1a4ee2aa476dad520142dbbfc6c5d99499bb0c9ac",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "밑2로통일하고A에대한거듭제곱표현으로바꾼다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "밑을2로 통일하고 정의된 거듭제곱A를 대응"
+      },
+      "decision": "ACCEPT",
+      "reason": "독립2/저자1 B12차이. A=4^5와 2^10의 즉시 같은밑 대응을 지수의 합으로 읽는 짧은 직접형이므로 저자1 수용; 독립초기2는 보존한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e32fa67147901e8b428dd5bcfeffe2983d20dc3c8dc0ada4914125975c6a2a89",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_e32fa67147901e8b428dd5bcfeffe2983d20dc3c8dc0ada4914125975c6a2a89",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "계수로a를먼저정하고두문자지수를이어결정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "계수 부호/거듭제곱으로 자연수지수를 정하고 문자별 지수를 연쇄 대응"
+      },
+      "decision": "ACCEPT",
+      "reason": "계수로a를먼저정하고두문자지수를이어결정한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_26f77f66f76e89604e42bf0758cf865ff15b671fb7489cc33fa70bfd91757898",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_26f77f66f76e89604e42bf0758cf865ff15b671fb7489cc33fa70bfd91757898",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "괄호부호와동류항을보기별정리한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "괄호 음수분배와 동류항정리의 여러 보기 비교"
+      },
+      "decision": "ACCEPT",
+      "reason": "괄호부호와동류항을보기별정리한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_0bf28a51d9322442207c66d681638ca3cb5a3431a63179d96b63e5dcaba95f6f",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_0bf28a51d9322442207c66d681638ca3cb5a3431a63179d96b63e5dcaba95f6f",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "중첩괄호를풀어각계수를읽고합한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "중첩괄호를 제거하고 계수와 상수항 합 계산"
+      },
+      "decision": "ACCEPT",
+      "reason": "중첩괄호를풀어각계수를읽고합한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b21fa61e45467fc91149ff71067c63757c363f626b08787bf85fc2d3367556a5",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_b21fa61e45467fc91149ff71067c63757c363f626b08787bf85fc2d3367556a5",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "직사각형넓이를변으로나누는다항식몫이다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "직사각형 넓이를 한 변으로 나누어 다항식/단항식 몫 계산"
+      },
+      "decision": "ACCEPT",
+      "reason": "직사각형넓이를변으로나누는다항식몫이다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_608262675d3b58f00ab53a831ec115309a87bdb8475788cc1d8caf525d4c3a31",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_608262675d3b58f00ab53a831ec115309a87bdb8475788cc1d8caf525d4c3a31",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "이항·전개·소거후일차항존재를판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "전개후 일차항 소거 여부로 일차부등식 정의 판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "이항·전개·소거후일차항존재를판정한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_3dee337aa179abdd38a08ce70eba5fd72e75143207de63f05b85226c36756b0b",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_3dee337aa179abdd38a08ce70eba5fd72e75143207de63f05b85226c36756b0b",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "양수나눗셈과같은수덧셈의부등호보존을직접적용한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "양수로 나누고 같은수 더하기의 부등호 방향 직접 판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "같은양수 나눗셈과 덧셈의 부등호성질 직접판정1과 학습중 B12 인접 수용."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_943ea662c0de69448ef7441b7762e045b7d0c5a2713abb4e50a32c63ebad71b8",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_943ea662c0de69448ef7441b7762e045b7d0c5a2713abb4e50a32c63ebad71b8",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "단순부등식의엄격한경계를풀어대입값중배제한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "기본일차부등식 음수계수 반전 후 경계값 제외"
+      },
+      "decision": "ACCEPT",
+      "reason": "짧은 일차부등식의 음수계수반전과 경계값 판정1/학습중 B12 인접 수용."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_76d58cb4530af7a0eddc5bcfd67e92770e0df11838e242140f4eb9bda127c3ca",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_76d58cb4530af7a0eddc5bcfd67e92770e0df11838e242140f4eb9bda127c3ca",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "소수계수를정수화·전개후음수로나누어방향반전한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소수계수 정수화·분배·이항·음수계수 반전"
+      },
+      "decision": "ACCEPT",
+      "reason": "소수계수를정수화·전개후음수로나누어방향반전한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_7772ed59f786a05ff95700fcfa7309d7dca7b58ea90ab6cf6dbd713c07a6510d",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_7772ed59f786a05ff95700fcfa7309d7dca7b58ea90ab6cf6dbd713c07a6510d",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "총개수의보수관계와가격상한의정수최대를연결한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정해진 총개수와 단가로 비용부등식을 세우고 최대정수 선택"
+      },
+      "decision": "ACCEPT",
+      "reason": "총개수의보수관계와가격상한의정수최대를연결한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_ace53f78f624f817541d200e21d2830db2b42befeb54a010e69f369cefe3294f",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_ace53f78f624f817541d200e21d2830db2b42befeb54a010e69f369cefe3294f",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "잘못곱한결과에서원식을복원하고원래나눗셈을다시수행한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "오류곱셈에서 원다항식 복원 후 본래 나눗셈을 다시 적용해 분모문자식 결과"
+      },
+      "decision": "ACCEPT",
+      "reason": "잘못곱한결과에서원식을복원하고원래나눗셈을다시수행한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_83f39bef255ded98faf545bf66bae69788ba7929277a952d926f7578ca4ff9c7",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_83f39bef255ded98faf545bf66bae69788ba7929277a952d926f7578ca4ff9c7",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "음의정수가없다는조건을-1의배제와엄격경계로옮겨계수범위를정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "계수식으로 표현된 해의 하한과 가장 큰 음의정수−1의 제외조건 연결"
+      },
+      "decision": "ACCEPT",
+      "reason": "음의정수가없다는조건을-1의배제와엄격경계로옮겨계수범위를정한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_472176040d1922a402afc6f605d525527e83d7d2e7d5f7e097955a18716728b3",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_472176040d1922a402afc6f605d525527e83d7d2e7d5f7e097955a18716728b3",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "문장부등식을풀고자연수의유한개수를센다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "문장의 괄호·크지않다를 부등식으로 옮기고 자연수 해의 개수"
+      },
+      "decision": "ACCEPT",
+      "reason": "문장부등식을풀고자연수의유한개수를센다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_6cd979a1423e4d663e4e49facfd678e59c598fa0ca9d44fd800ff9a568034890",
+      "independentInitial": {
+        "sourceOrdinal": 25,
+        "questionUid": "qid_v1_6cd979a1423e4d663e4e49facfd678e59c598fa0ca9d44fd800ff9a568034890",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "이동구간의시간합상한을세워연속거리의최댓값을구한다. 뛰다가와목표걸어간거리의동작명칭혼용은표현부채다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 속력 구간의 거리합과 총시간상한 모델; 뛰다가와 걸어간거리 명칭혼용 부채"
+      },
+      "decision": "ACCEPT",
+      "reason": "이동구간의시간합상한을세워연속거리의최댓값을구한다. 뛰다가와목표걸어간거리의동작명칭혼용은표현부채다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "각 분수의 기약분모 소인수 정의를 직접판정하는1과 학습중의 B12 인접을 수용한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "소수와 유리수의 포함관계 정의1과 학습중 B12 인접 수용."
+    },
+    {
+      "sourceOrdinal": 4,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "주어진 비순환/순환 자리수의 이동배율 직접대응1과 학습중 B12 인접 수용."
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "같은밑으로 바꾸어 주어진 거듭제곱에 직접대응하는1과 학습중 B12 인접 수용."
+    },
+    {
+      "sourceOrdinal": 18,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "같은양수 나눗셈과 덧셈의 부등호성질 직접판정1과 학습중 B12 인접 수용."
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "짧은 일차부등식의 음수계수반전과 경계값 판정1/학습중 B12 인접 수용."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 3,
+      "decision": "ACCEPT_UNKNOWN",
+      "reason": "실제②/④ 순환표기의 전개불일치로 단일답 발문이 충돌한다. 원보기/해설 수정 없이 UNKNOWN."
+    },
+    {
+      "sourceOrdinal": 25,
+      "decision": "ACCEPT_CONDITIONAL_LOW",
+      "reason": "첫구간 뛰다가와 목표 걸어간거리의 명칭혼용을 원문대로 보존한다."
+    }
+  ],
+  "initialSnapshot": {
+    "path": "/workspace/scratch/14c2c64e43fb/root/independent/E068/initial.json",
+    "sha256": "db516d71fd3cf8766cc46bdbc0d9445135903657490bbc107422bd90893ff137"
+  },
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "actualReading": {
+    "contentQuestions": 25,
+    "existingSolutions": 25,
+    "images": []
+  },
+  "canonicalEvidenceRead": [
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "archive/data/meta-foundation/compiled/concept_registry.json",
+    "archive/data/meta-foundation/compiled/condition_registry.json",
+    "docs/architecture/4slot/term-dictionary-v1.5.json"
+  ],
+  "notes": [
+    "Root actual25 source/solutions read and initial numbers frozen before author comparison; no images.",
+    "One narrow evidenceType refinement; actual source contradiction3 and wording25 retained. No new solution or global quality PASS."
+  ],
+  "acceptedSupplements": [
+    {
+      "path": "/workspace/scratch/14c2c64e43fb/root/independent/E068/accepted-four-slot.json",
+      "sha256": "91d043ff85ffe9e8d9194794196f43d12c808c68200a48ab2d5faceacba98711"
+    }
+  ]
+}

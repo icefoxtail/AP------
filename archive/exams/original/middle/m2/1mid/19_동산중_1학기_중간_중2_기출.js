@@ -818,8 +818,8 @@ window.questionBank = [
     "wide": false,
     "solution": "$-2(x-5a)\\le7a+3$\n$-2x+10a\\le7a+3$\n$-2x\\le-3a+3$\n양변을 $-2$로 나누면\n$x\\ge\\frac{3a-3}{2}$\n이 부등식을 만족하는 음의 정수가 존재하지 않으려면 해의 최솟값이 $-1$보다 커야 하므로\n$\\frac{3a-3}{2}>-1$\n$3a-3>-2$\n$3a>1$\n$a>\\frac{1}{3}$\n따라서 $a$의 범위는 $a>\\frac{1}{3}$입니다.",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -849,8 +849,8 @@ window.questionBank = [
     "wide": false,
     "solution": "어떤 수를 $x$라 하면\n$5(x-3)\\le2x+3$\n$5x-15\\le2x+3$\n$3x\\le18$\n$x\\le6$\n자연수는 $1,2,3,4,5,6$이므로 개수는 $6$개입니다.",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
