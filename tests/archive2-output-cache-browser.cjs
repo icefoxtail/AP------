@@ -1000,7 +1000,13 @@ async function runCase(browser, server, fixture, name, work, params = {}, initia
     report.cases.push({ name, pass: true, ...evidence });
     console.log(JSON.stringify({ name, pass: true }));
   } catch (error) {
-    const failure = { name, pass: false, error: P.safeError(error) };
+    const safe = P.safeError(error);
+    // Playwright wraps page.evaluate exceptions, so preserve only recognized
+    // fixed assertion identifiers; never persist page content or stack traces.
+    for (const code of ['RETAINED_ANSWER_NOT_VISIBLE_BEFORE_CANCEL', 'RETAINED_ANSWER_NOT_VISIBLE_AFTER_CANCEL', 'QA_LAYOUT_GETTER_UNAVAILABLE', 'QA_IMAGE_DECODE_UNAVAILABLE']) {
+      if (String(error?.message || '').includes(code)) { safe.diagnosticCode = code; break; }
+    }
+    const failure = { name, pass: false, error: safe };
     report.cases.push(failure);
     console.log(JSON.stringify(failure));
   } finally { await session?.close(); writeReport(); }
