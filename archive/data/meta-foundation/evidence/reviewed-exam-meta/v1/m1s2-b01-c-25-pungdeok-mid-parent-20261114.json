@@ -1,12 +1,12 @@
 {
-  "schemaVersion": "archive-basic-parent-correction-request-v1",
+  "schemaVersion": "archive-basic-scope-rebind-registration-v1",
   "requestId": "m1s2-b01-c-25-pungdeok-mid-parent-20261114",
+  "requestSha256": "0291e56669dda6ed9e2f1afd05f88605bfdd80582410884ac4be2b5395144c96",
   "examUid": "25_풍덕중_2학기_중간_중1_기출",
   "sourceArchiveFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
-  "expectedSourceBlobSha1": "ba372dca25302f43b0dbcab43adf2f149a54efe8",
-  "previousSourceCommit": "4ab7aff127f4b19e10f60e4b495def70b48f3049",
+  "sourceBlobSha1": "ba372dca25302f43b0dbcab43adf2f149a54efe8",
   "previousSourceBlobSha1": "86bca8a3dd0e131c33ae4ab4ad824e9dbbd7893e",
-  "expectedQuestionCount": 25,
+  "sourceRawSha256": "08bc00030d422c5a1f83957fccbf20d94cb7b0210a8e916c4d00aef7ca2ab348",
   "approval": {
     "type": "BASIC_PARENT_CORRECTION",
     "metadataReviewed": true,
@@ -22,7 +22,11 @@
       }
     ]
   },
-  "items": [
+  "metadataRegistrationStatus": "BASIC_PARENT_CORRECTED",
+  "metadataValuesChanged": true,
+  "consumerSearchStatus": "NOT_RUN",
+  "totalRebound": 9,
+  "applied": [
     {
       "questionUid": "qid_v1_47cb73a1241614cca22266607cb5e70d22abba7f201ef6f8c44ca5ce9e1fd5c3",
       "sourceOrdinal": 7,
@@ -46,24 +50,24 @@
         "subUnitKey": "M1-05-POSITION_RELATION",
         "subUnit": "위치 관계"
       },
-      "basicParent": {
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "nextLink": {
         "grade": "중1",
         "curriculumKey": "2022",
         "courseKey": "M1-2",
+        "sourceFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 7,
+        "sourceFingerprint": "9d79353ac78a4cd54e6f45f466f365f1b0b2dcb0c24ac150d777f6087fe21dd2",
         "L1": "기본 도형",
-        "L2": "위치 관계"
-      },
-      "reason": "B01-C existing review, limited to the canonical parent and current source fingerprint",
-      "evidenceRefs": [
-        {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-c-25-pungdeok-mid-parent-20261114.review.json",
-          "sha256": "3a615ef84b1aaa72d26829672406e06c798c11a4bbb58c32cbd9acd18e4d4975"
-        },
-        {
-          "path": "docs/operations/m1s2-meta-b01-c-20261114/c2_4-adjudication.json",
-          "sha256": "6c1b529aa76b54ff70cd5310cd5c36e6acbe8178b10e073724ef3e46848cd831"
-        }
-      ]
+        "L2": "위치 관계",
+        "reason": "BASIC_PARENT_CORRECTION m1s2-b01-c-25-pungdeok-mid-parent-20261114: B01-C existing review, limited to the canonical parent and current source fingerprint",
+        "sourceBodyFingerprint": "0cfbed9bdb36f19decb267c862aebd9dadb28edb0ff4174d5ab50e60afee607e"
+      }
     },
     {
       "questionUid": "qid_v1_1ff700cb6b6266931a5bac977761ffa91cb06e2fe323f81dea82614853643fb5",
@@ -88,24 +92,24 @@
         "subUnitKey": "M1-05-POSITION_RELATION",
         "subUnit": "위치 관계"
       },
-      "basicParent": {
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "nextLink": {
         "grade": "중1",
         "curriculumKey": "2022",
         "courseKey": "M1-2",
+        "sourceFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 8,
+        "sourceFingerprint": "2f2b0681e18a3244d74d197061bd7fa8309cd87dc46491fae9ba996da24a9819",
         "L1": "기본 도형",
-        "L2": "위치 관계"
-      },
-      "reason": "B01-C existing review, limited to the canonical parent and current source fingerprint",
-      "evidenceRefs": [
-        {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-c-25-pungdeok-mid-parent-20261114.review.json",
-          "sha256": "3a615ef84b1aaa72d26829672406e06c798c11a4bbb58c32cbd9acd18e4d4975"
-        },
-        {
-          "path": "docs/operations/m1s2-meta-b01-c-20261114/c2_4-adjudication.json",
-          "sha256": "6c1b529aa76b54ff70cd5310cd5c36e6acbe8178b10e073724ef3e46848cd831"
-        }
-      ]
+        "L2": "위치 관계",
+        "reason": "BASIC_PARENT_CORRECTION m1s2-b01-c-25-pungdeok-mid-parent-20261114: B01-C existing review, limited to the canonical parent and current source fingerprint",
+        "sourceBodyFingerprint": "b4fdf86ac332f69093350da8070a75797c9a32f971d72b23a1e512f68956f901"
+      }
     },
     {
       "questionUid": "qid_v1_24fd1763ea4b4a3947702fc0c6cd3edd7d34302fbc328da37a96d3b02ded17aa",
@@ -130,24 +134,24 @@
         "subUnitKey": "M1-05-POSITION_RELATION",
         "subUnit": "위치 관계"
       },
-      "basicParent": {
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "nextLink": {
         "grade": "중1",
         "curriculumKey": "2022",
         "courseKey": "M1-2",
+        "sourceFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 9,
+        "sourceFingerprint": "b3c25618fc8e2d86bd77ae7be7fa595556b340fc2c14fedb8cb1befc073f0b68",
         "L1": "기본 도형",
-        "L2": "위치 관계"
-      },
-      "reason": "B01-C existing review, limited to the canonical parent and current source fingerprint",
-      "evidenceRefs": [
-        {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-c-25-pungdeok-mid-parent-20261114.review.json",
-          "sha256": "3a615ef84b1aaa72d26829672406e06c798c11a4bbb58c32cbd9acd18e4d4975"
-        },
-        {
-          "path": "docs/operations/m1s2-meta-b01-c-20261114/c2_4-adjudication.json",
-          "sha256": "6c1b529aa76b54ff70cd5310cd5c36e6acbe8178b10e073724ef3e46848cd831"
-        }
-      ]
+        "L2": "위치 관계",
+        "reason": "BASIC_PARENT_CORRECTION m1s2-b01-c-25-pungdeok-mid-parent-20261114: B01-C existing review, limited to the canonical parent and current source fingerprint",
+        "sourceBodyFingerprint": "b2f3f0933fff34de610281a40c51612b5e07e77dee716dc5e51e9a69f86739f3"
+      }
     },
     {
       "questionUid": "qid_v1_9207cb96f9a04f687e10d7567228c6b7ef3de0617b7a2fd924d759e75b4450e9",
@@ -172,24 +176,24 @@
         "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
         "subUnit": "작도와 합동"
       },
-      "basicParent": {
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "nextLink": {
         "grade": "중1",
         "curriculumKey": "2022",
         "courseKey": "M1-2",
+        "sourceFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 12,
+        "sourceFingerprint": "00e344d13f32f684c9b06d824477862f193f22fd803afb9ff62207ba7b4b9f7a",
         "L1": "기본 도형",
-        "L2": "작도와 합동"
-      },
-      "reason": "B01-C existing review, limited to the canonical parent and current source fingerprint",
-      "evidenceRefs": [
-        {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-c-25-pungdeok-mid-parent-20261114.review.json",
-          "sha256": "3a615ef84b1aaa72d26829672406e06c798c11a4bbb58c32cbd9acd18e4d4975"
-        },
-        {
-          "path": "docs/operations/m1s2-meta-b01-c-20261114/c2_4-adjudication.json",
-          "sha256": "6c1b529aa76b54ff70cd5310cd5c36e6acbe8178b10e073724ef3e46848cd831"
-        }
-      ]
+        "L2": "작도와 합동",
+        "reason": "BASIC_PARENT_CORRECTION m1s2-b01-c-25-pungdeok-mid-parent-20261114: B01-C existing review, limited to the canonical parent and current source fingerprint",
+        "sourceBodyFingerprint": "005c579a2f711c626d981f6d7a9a556b02c486332c714a0510b6654628f5e3ce"
+      }
     },
     {
       "questionUid": "qid_v1_1ccf9efd4287e19ca192d5a90e39cec133c7d5288f0d7ac0c3750a53bacb0bae",
@@ -214,24 +218,24 @@
         "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
         "subUnit": "작도와 합동"
       },
-      "basicParent": {
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "nextLink": {
         "grade": "중1",
         "curriculumKey": "2022",
         "courseKey": "M1-2",
+        "sourceFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 13,
+        "sourceFingerprint": "450e090915aaa05adaeb6bb22a875049c40ddf0f28af1306de884c28d9adccb9",
         "L1": "기본 도형",
-        "L2": "작도와 합동"
-      },
-      "reason": "B01-C existing review, limited to the canonical parent and current source fingerprint",
-      "evidenceRefs": [
-        {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-c-25-pungdeok-mid-parent-20261114.review.json",
-          "sha256": "3a615ef84b1aaa72d26829672406e06c798c11a4bbb58c32cbd9acd18e4d4975"
-        },
-        {
-          "path": "docs/operations/m1s2-meta-b01-c-20261114/c2_4-adjudication.json",
-          "sha256": "6c1b529aa76b54ff70cd5310cd5c36e6acbe8178b10e073724ef3e46848cd831"
-        }
-      ]
+        "L2": "작도와 합동",
+        "reason": "BASIC_PARENT_CORRECTION m1s2-b01-c-25-pungdeok-mid-parent-20261114: B01-C existing review, limited to the canonical parent and current source fingerprint",
+        "sourceBodyFingerprint": "a5f15f7867cebd7bcf8bcf1f849e4bf490ef1d24c9880a0a37d574e64e155a55"
+      }
     },
     {
       "questionUid": "qid_v1_071c3fa97ae4b2f1c50e2370592c811c3fb4720f23722dce1924b7f8c5c79951",
@@ -256,24 +260,24 @@
         "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
         "subUnit": "작도와 합동"
       },
-      "basicParent": {
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "nextLink": {
         "grade": "중1",
         "curriculumKey": "2022",
         "courseKey": "M1-2",
+        "sourceFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 14,
+        "sourceFingerprint": "808683346b79c6ba933634ea85d8d1496995a5951a2b275258b26a53bbf69107",
         "L1": "기본 도형",
-        "L2": "작도와 합동"
-      },
-      "reason": "B01-C existing review, limited to the canonical parent and current source fingerprint",
-      "evidenceRefs": [
-        {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-c-25-pungdeok-mid-parent-20261114.review.json",
-          "sha256": "3a615ef84b1aaa72d26829672406e06c798c11a4bbb58c32cbd9acd18e4d4975"
-        },
-        {
-          "path": "docs/operations/m1s2-meta-b01-c-20261114/c2_4-adjudication.json",
-          "sha256": "6c1b529aa76b54ff70cd5310cd5c36e6acbe8178b10e073724ef3e46848cd831"
-        }
-      ]
+        "L2": "작도와 합동",
+        "reason": "BASIC_PARENT_CORRECTION m1s2-b01-c-25-pungdeok-mid-parent-20261114: B01-C existing review, limited to the canonical parent and current source fingerprint",
+        "sourceBodyFingerprint": "7fee9d6b4cb5e633c7b75096a761cc3db7fa48c27b1baed4f08a0dd3e040493f"
+      }
     },
     {
       "questionUid": "qid_v1_63a390e6889b62a859e2c193e26f5d9bda8ea5375641e8406e3cb0f54db53c16",
@@ -298,24 +302,24 @@
         "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
         "subUnit": "작도와 합동"
       },
-      "basicParent": {
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "nextLink": {
         "grade": "중1",
         "curriculumKey": "2022",
         "courseKey": "M1-2",
+        "sourceFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 15,
+        "sourceFingerprint": "3e36b5e4f4dd1bf905e6325bb3cbcad8948f80fafade6b0cc226e558f946f9c7",
         "L1": "기본 도형",
-        "L2": "작도와 합동"
-      },
-      "reason": "B01-C existing review, limited to the canonical parent and current source fingerprint",
-      "evidenceRefs": [
-        {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-c-25-pungdeok-mid-parent-20261114.review.json",
-          "sha256": "3a615ef84b1aaa72d26829672406e06c798c11a4bbb58c32cbd9acd18e4d4975"
-        },
-        {
-          "path": "docs/operations/m1s2-meta-b01-c-20261114/c2_4-adjudication.json",
-          "sha256": "6c1b529aa76b54ff70cd5310cd5c36e6acbe8178b10e073724ef3e46848cd831"
-        }
-      ]
+        "L2": "작도와 합동",
+        "reason": "BASIC_PARENT_CORRECTION m1s2-b01-c-25-pungdeok-mid-parent-20261114: B01-C existing review, limited to the canonical parent and current source fingerprint",
+        "sourceBodyFingerprint": "3dc4bff37715a6a3115071a1b8e57ee8fbc30f514c211fc98ddb265f692d54dd"
+      }
     },
     {
       "questionUid": "qid_v1_2fcbe680f1843075b13daf3845a31e708fa2d95ab3e4b4def3c683faf27f4656",
@@ -340,24 +344,24 @@
         "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
         "subUnit": "작도와 합동"
       },
-      "basicParent": {
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "nextLink": {
         "grade": "중1",
         "curriculumKey": "2022",
         "courseKey": "M1-2",
+        "sourceFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 16,
+        "sourceFingerprint": "286b03710126507e7d47eb7be0256157ab80e3b03e3bebcc88af6e47ab230f8b",
         "L1": "기본 도형",
-        "L2": "작도와 합동"
-      },
-      "reason": "B01-C existing review, limited to the canonical parent and current source fingerprint",
-      "evidenceRefs": [
-        {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-c-25-pungdeok-mid-parent-20261114.review.json",
-          "sha256": "3a615ef84b1aaa72d26829672406e06c798c11a4bbb58c32cbd9acd18e4d4975"
-        },
-        {
-          "path": "docs/operations/m1s2-meta-b01-c-20261114/c2_4-adjudication.json",
-          "sha256": "6c1b529aa76b54ff70cd5310cd5c36e6acbe8178b10e073724ef3e46848cd831"
-        }
-      ]
+        "L2": "작도와 합동",
+        "reason": "BASIC_PARENT_CORRECTION m1s2-b01-c-25-pungdeok-mid-parent-20261114: B01-C existing review, limited to the canonical parent and current source fingerprint",
+        "sourceBodyFingerprint": "880a9632bfb40c9b36bf0f8cb4334733218f18bb2f19d9fb7c56a8bdf882cd2c"
+      }
     },
     {
       "questionUid": "qid_v1_a34b33f7d3333afc9db814d0c3bcca1bfaa23ccc4debfb6fc83fe7d2f8bfa52a",
@@ -382,28 +386,24 @@
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "subUnit": "다각형과 원"
       },
-      "basicParent": {
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "nextLink": {
         "grade": "중1",
         "curriculumKey": "2022",
         "courseKey": "M1-2",
+        "sourceFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+        "sourceOrdinal": 19,
+        "sourceFingerprint": "f3645c993eefb987f85be68a9f462537f987d70c90925b90db182b8862b11b03",
         "L1": "평면도형",
-        "L2": "원과 부채꼴"
-      },
-      "reason": "B01-C existing review, limited to the canonical parent and current source fingerprint",
-      "evidenceRefs": [
-        {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-c-25-pungdeok-mid-parent-20261114.review.json",
-          "sha256": "3a615ef84b1aaa72d26829672406e06c798c11a4bbb58c32cbd9acd18e4d4975"
-        },
-        {
-          "path": "docs/operations/m1s2-meta-b01-c-20261114/c2_4-adjudication.json",
-          "sha256": "6c1b529aa76b54ff70cd5310cd5c36e6acbe8178b10e073724ef3e46848cd831"
-        }
-      ]
+        "L2": "원과 부채꼴",
+        "reason": "BASIC_PARENT_CORRECTION m1s2-b01-c-25-pungdeok-mid-parent-20261114: B01-C existing review, limited to the canonical parent and current source fingerprint",
+        "sourceBodyFingerprint": "352da37950b52e556ad6554aa0271e540dfcfd37399bfe1fdb1b7a6fbfa2ba9b"
+      }
     }
-  ],
-  "difficultyEvidence": {
-    "path": ".archive-meta-register/evidence/m1s2-b01-c-25-pungdeok-mid-difficulty.json",
-    "sha256": "f42db88b19d8824684a241d534eec32612e3d2550dcdb1d14d4a56ebd2ef9b8c"
-  }
+  ]
 }
