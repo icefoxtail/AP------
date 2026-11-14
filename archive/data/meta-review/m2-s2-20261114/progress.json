@@ -453,12 +453,104 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": null,
       "sourceReviewStatus": [
         "create_pending"
       ],
-      "uidSetSha256": "fddef194de19d9ef0e97cf16cea7f4a0240c44e2fad5dfb0da251910b5a92f62"
+      "uidSetSha256": "fddef194de19d9ef0e97cf16cea7f4a0240c44e2fad5dfb0da251910b5a92f62",
+      "reviewedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 0,
+      "sourceHoldOrdinals": [],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        8,
+        14,
+        19
+      ],
+      "independentReviewer": "B",
+      "topicSummary": [
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "평행사변형",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            23
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "여러 가지 사각형",
+          "ordinals": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 성질",
+          "ordinals": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            21
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 외심과 내심",
+          "ordinals": [
+            15,
+            16,
+            17,
+            18,
+            22
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            19,
+            20,
+            24
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E004/four-slot.json",
+          "sha256": "8b097adf8a07629e00b633c22fce5c31f665f33c1c673bc3a60730b4545ff3a8"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E004/independent-sample.json",
+          "sha256": "d0bf31070b39bf5e2205b8d2180b8f3dda38bcce1e007a6519dd602d1312ab18"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E004/mechanical-check.json",
+          "sha256": "85ce517d8eb1e135e21b78579e7af68c3858af38629df44c0a40c7c1d86d7251"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E004/review.json",
+          "sha256": "55fe7958fcfeedb8fb38814bcdd943ef9ef341721d8b97909007cc51e5c11ffb"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E004/root-acceptance.json",
+          "sha256": "b4a7394673b22087c3e2623fc8e742503efaf5ecfdc20e581e0ded4b6af11c4f"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK"
     },
     {
       "examId": "E005",
@@ -640,12 +732,13 @@
           "sha256": "0aa8cc00d19d8c7ef3286e4521e6944f858b42b19bc49ade3387d8ca77c6e88b"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "sourceHoldQuestionCount": 2,
       "sourceHoldOrdinals": [
         17,
         23
-      ]
+      ],
+      "remoteCommit": "8e1f00b08ff01fbaba68f8273197152d815a8125"
     },
     {
       "examId": "E007",
@@ -3337,11 +3430,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 4,
-    "reviewedQuestions": 94,
+    "reviewedExams": 5,
+    "reviewedQuestions": 118,
     "unresolvedQuestions": 0,
-    "remainingExams": 63,
-    "remainingQuestions": 1510
+    "remainingExams": 62,
+    "remainingQuestions": 1486
   },
-  "lastVerifiedExamCommit": "f8df645113abc854c91741f010cf55937307ff2e"
+  "lastVerifiedExamCommit": "8e1f00b08ff01fbaba68f8273197152d815a8125"
 }

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E004",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "b4a8cc6a1bda1ab1e647b40316c3c41e9c0a97e9",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "94bbd09bd8513d640a7b37df6952bced081bfcbb5e69e2dacf1436af664a8982",
+  "fourSlotInputSha256": "650c6148ef06160237015e430d1a79016ca9325064ec986f811e3b15819effa1",
+  "sampleOrdinals": [
+    8,
+    14,
+    19
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_b6e231c39c8d3815d4116aea246406b81c8f3279ab6caca3d85d041c1d903a3a",
+      "verdict": "PASS",
+      "metadataReview": "RPM201/PT_QUADRILATERAL_PROPERTIES/TPL_SPECIAL_QUADRILATERALS는 성질을 비교하여 마름모 판정의 빠진 이웃 조건을 찾는 실제 과제와 일치한다.",
+      "fourSlotReview": "발문·보기·해설의 모든 인용을 실제 대조했다. 주어진 사각형과 판정 목표, 평행사변형/마름모 방법은 타당하다.",
+      "difficultyReview": "직접 정의 확인을 넘어 같은 두 변이 대변일 가능성을 구별하는 해석 1회가 있어 bucket2. legacy하와 인접 경계는 독립 수용(BORDERLINE_ACCEPTABLE).",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 4,
+      "imageViewed": null
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_b7af638d46df7d67148898afcbc38f2e027bf8b553feeb77470402199dce2b65",
+      "verdict": "PASS_WITH_EVIDENCE_REFINEMENT",
+      "metadataReview": "RHA 합동→직각변 합→피타고라스 제곱합→대칭식으로 곱→넓이 순차 구조. RPM181/PT_RIGHT_TRIANGLE_CONGRUENCE/TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE과 CC_PYTHAGOREAN/CC_TWO_VARIABLE_SQUARE_SUM_IDENTITY/CC_TRIANGLE_AREA, SEQUENTIAL 모두 타당.",
+      "fourSlotReview": "거듭제곱 인용은 정확하나 결정적인 방법은 합과 제곱합에서 곱을 구하는 곱셈공식/대칭식이다. 사전에 있는 곱셈공식 또는 대칭식으로 method를 구체화 권고. 다른 인용과 goal/method는 타당.",
+      "difficultyReview": "주어진 합을 대응변 합으로 옮긴 뒤 제곱합과 연결하는 복합 구조 선택이 필요하여 bucket4/상 타당.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E004/14.png"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_4c3c6a8816838082caa89b0de54e590e7149574d94416b81e51b5a9773c2ba80",
+      "verdict": "PASS",
+      "metadataReview": "닮음비와 대응각을 주풀이로 하고 높이/빗변의 절반 관계로 각을 복원하는 CC를 추가하는 판정은 타당. 현행 CC_SPECIAL_ANGLES는 삼각비, 정육각형 관련 CC는 정육각형 전용이므로 일반 30도-반빗변 CC 제안 필요.",
+      "fourSlotReview": "닮음비, 직각삼각형 IMPLIED의 구체 정당화, 평행 method가 실제 그림과 해설에 맞고 모든 quote가 정확하다.",
+      "difficultyReview": "닮음 대응 이외에 높이를 읽어 30도 관계를 선택하는 한 단계가 있어 bucket3. source상 인접 경계는 독립 수용(BORDERLINE_ACCEPTABLE).",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E004/19.png"
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}
