@@ -3,6 +3,8 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
+import { canonicalJson, safePath } from '../pipeline-core/canonical.mjs';
 
 const archive = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const repo = path.resolve(archive, '..');
@@ -24,6 +26,78 @@ const gitBlob = (content) => crypto.createHash('sha1')
   .update('blob ' + Buffer.byteLength(content) + '\0').update(content).digest('hex');
 const requireAssert = (cond, reason) => { if (!cond) throw new Error('LEGACY_REVIEW_BIND_FAIL: ' + reason); };
 const normalized = (v) => JSON.stringify(v);
+const rebindDir = path.join(archive, 'data/legacy-similar-visual-rebind');
+const visualFields = new Set(['image', 'imageSize', 'visualAsset']);
+
+function loadQuestions(code, sourceFile) {
+  const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
+  vm.runInNewContext(code.toString('utf8'), scope, { filename: sourceFile, timeout: 3000 });
+  const questions = scope.window.questionBank;
+  return Array.isArray(questions) ? JSON.parse(JSON.stringify(questions)) : null;
+}
+
+function protectedQuestion(question) {
+  return Object.fromEntries(Object.entries(question).filter(([key]) => !visualFields.has(key)).map(([key, value]) => {
+    if (key !== 'visualSpec' || !value || typeof value !== 'object') return [key, value];
+    const { assetRef, ...protectedSpec } = value;
+    return [key, protectedSpec];
+  }));
+}
+
+export function verifyVisualRebindQuestions(ledger, oldQuestions, questions, figureRows, readAsset) {
+  requireAssert(Array.isArray(oldQuestions) && oldQuestions.length === questions.length,
+    'visual rebind question count ' + ledger.sourceFile);
+  const figures = new Map();
+  for (const figure of figureRows) {
+    requireAssert(Number.isSafeInteger(figure.qid) && !figures.has(figure.qid) &&
+      typeof figure.assetSha256 === 'string' && /^[a-f0-9]{64}$/.test(figure.assetSha256),
+      'visual rebind unique qid ' + ledger.sourceFile);
+    figures.set(figure.qid, figure);
+  }
+  const reviewedQids = new Set(figures.keys());
+  for (const [index, question] of questions.entries()) {
+    const previous = oldQuestions[index];
+    const reviewed = ledger.questions[index];
+    const figure = figures.get(Number(reviewed.qid));
+    requireAssert(sourceHash(previous) === reviewed.sourceFingerprint &&
+      bodyHash(previous) === reviewed.sourceBodyFingerprint, 'visual rebind old reviewed fingerprint q' + reviewed.qid);
+    if (!figure) {
+      requireAssert(canonicalJson(previous) === canonicalJson(question), 'unlisted visual rebind q' + reviewed.qid);
+      continue;
+    }
+    requireAssert(canonicalJson(protectedQuestion(previous)) === canonicalJson(protectedQuestion(question)),
+      'visual rebind protected fields q' + reviewed.qid);
+    const expectedFolder = 'assets/images/' + path.posix.basename(ledger.sourceFile, '.js') + '/';
+    requireAssert(typeof question.image === 'string' && question.image.startsWith(expectedFolder) &&
+      question.image.endsWith('.svg') && !question.image.slice(expectedFolder.length).includes('/') &&
+      previous.image !== question.image && figure.asset === question.image &&
+      (!Object.hasOwn(question, 'visualAsset') || question.visualAsset === question.image) &&
+      (!Object.hasOwn(question.visualSpec ?? {}, 'assetRef') || question.visualSpec.assetRef === question.image),
+      'visual rebind SVG reference q' + reviewed.qid);
+    requireAssert(sha(readAsset(figure.asset)) === figure.assetSha256, 'visual rebind asset bytes q' + reviewed.qid);
+    figures.delete(Number(reviewed.qid));
+  }
+  requireAssert(figures.size === 0, 'visual rebind unknown qid ' + ledger.sourceFile);
+  return reviewedQids;
+}
+
+function readVisualRebind(name, ledger, code, questions) {
+  const receiptPath = path.join(rebindDir, name.replace(/\.review\.json$/, '.json'));
+  if (!fs.existsSync(receiptPath)) return null;
+  const receipt = json(receiptPath);
+  requireAssert(receipt.schemaVersion === 'JS_ARCHIVE_LEGACY_SIMILAR_VISUAL_REBIND_V1' &&
+    receipt.sourceFile === ledger.sourceFile && receipt.reviewLedger === name &&
+    receipt.previousGitBlobSha === ledger.sourceGitBlobSha &&
+    receipt.currentGitBlobSha === gitBlob(code) && Array.isArray(receipt.figures) &&
+    receipt.figures.length > 0, 'visual rebind receipt ' + name);
+  requireAssert(/^[a-f0-9]{40}$/.test(ledger.sourceGitBlobSha), 'reviewed Git blob ' + name);
+  const oldCode = execFileSync('git', ['cat-file', 'blob', ledger.sourceGitBlobSha], { cwd: repo, maxBuffer: 8 * 1024 * 1024 });
+  requireAssert(gitBlob(oldCode) === ledger.sourceGitBlobSha, 'reviewed source bytes ' + name);
+  const oldQuestions = loadQuestions(oldCode, ledger.sourceFile);
+  const reviewedQids = verifyVisualRebindQuestions(ledger, oldQuestions, questions, receipt.figures,
+    asset => fs.readFileSync(safePath(archive, asset)));
+  return { reviewedQids, evidenceRef: path.relative(repo, receiptPath).replaceAll('\\', '/') };
+}
 function verifyMaster(row, master, taxonomy, bindings, conditions) {
   const scope = master.records.find((r) => r.curriculum === row.rpmCurriculum &&
     r.scope === row.rpmCourse && r.majorUnit === row.rpmL1 && r.midUnit === row.rpmL2);
@@ -75,15 +149,15 @@ export function applyReviewedLegacySimilarLedgers() {
     const sourceFile = pathOf(ledger.sourceFile);
     requireAssert(sourceFile.startsWith('similar/') && !sourceFile.includes('..'), 'source path ' + name);
     const code = fs.readFileSync(path.join(archive, 'exams', sourceFile));
-    requireAssert(gitBlob(code).toLowerCase() === ledger.sourceGitBlobSha.toLowerCase(), 'whole JS frozen blob ' + name);
-    const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
-    vm.createContext(scope);
-    vm.runInContext(code.toString('utf8'), scope, { filename: sourceFile, timeout: 3000 });
-    const questions = scope.window.questionBank;
+    const questions = loadQuestions(code, sourceFile);
     requireAssert(Array.isArray(questions) && questions.length === ledger.questions.length, 'question count ' + name);
     requireAssert(ledger.questions.every((row, i) => Number(row.qid) === i + 1 &&
       Number(row.sourceOrdinal) === i + 1), 'ordinal exact order ' + name);
+    const frozen = gitBlob(code).toLowerCase() === ledger.sourceGitBlobSha.toLowerCase();
+    const rebind = frozen ? null : readVisualRebind(name, ledger, code, questions);
+    requireAssert(frozen || rebind, 'whole JS frozen blob ' + name);
     for (const row of ledger.questions) {
+      const visualRebind = rebind?.reviewedQids.has(Number(row.qid)) ? rebind.evidenceRef : null;
       const q = questions[row.sourceOrdinal - 1];
       const id = identityByUid.get(row.questionUid), meta = metadataByUid.get(row.questionUid);
       requireAssert(id && meta && q && Number(q.id) === Number(row.qid) &&
@@ -93,19 +167,21 @@ export function applyReviewedLegacySimilarLedgers() {
       requireAssert(!touched.has(row.questionUid), 'duplicate UID ' + row.questionUid);
       touched.add(row.questionUid);
       requireAssert(q.answer === row.independentAnswer, 'reviewed answer changed q' + row.qid);
-      requireAssert(row.sourceFingerprint === sourceHash(q) && row.sourceBodyFingerprint === bodyHash(q),
+      const sourceFingerprint = sourceHash(q);
+      const contentFingerprint = bodyHash(q);
+      requireAssert(visualRebind || row.sourceFingerprint === sourceFingerprint && row.sourceBodyFingerprint === contentFingerprint,
         'frozen per-item content/solution digest q' + row.qid);
       requireAssert(q.standardUnitKey === row.standardUnitKey && q.subUnitKey === row.subUnitKey &&
         q.standardUnit === row.standardUnit && q.subUnit === row.subUnit, 'physical canonical unit mismatch q' + row.qid);
       requireAssert([meta.sourceFingerprint, row.sourceFingerprint].includes(row.oldSourceFingerprint) ||
-        meta.sourceFingerprint === row.sourceFingerprint, 'unrecognized prior fingerprint q' + row.qid);
+        [row.sourceFingerprint, sourceFingerprint].includes(meta.sourceFingerprint), 'unrecognized prior fingerprint q' + row.qid);
       requireAssert([meta.contentFingerprint, row.sourceBodyFingerprint].includes(row.oldSourceBodyFingerprint) ||
-        meta.contentFingerprint === row.sourceBodyFingerprint, 'unrecognized prior body fingerprint q' + row.qid);
+        [row.sourceBodyFingerprint, contentFingerprint].includes(meta.contentFingerprint), 'unrecognized prior body fingerprint q' + row.qid);
       const canonicalSelection = verifyMaster(row, master, taxonomy, bindings, conditions);
       const patch = {
         ...canonicalSelection,
-        sourceFingerprint: row.sourceFingerprint,
-        contentFingerprint: row.sourceBodyFingerprint,
+        sourceFingerprint,
+        contentFingerprint,
         standardCourse: q.standardCourse, standardUnitKey: row.standardUnitKey, standardUnit: row.standardUnit,
         subUnitKey: row.subUnitKey, subUnit: row.subUnit,
         curriculumKey: row.rpmCurriculum, courseKey: row.rpmCourse,
@@ -137,15 +213,15 @@ export function applyReviewedLegacySimilarLedgers() {
           template: row.templateKey ? 'approved_reviewed' : 'manual_review_pending',
           difficulty: 'approved_reviewed',
         },
-        approvalEvidence: [...new Set([...(meta.approvalEvidence || []), 'archive/data/legacy-similar-reviewed/' + name])],
+        approvalEvidence: [...new Set([...(meta.approvalEvidence || []), 'archive/data/legacy-similar-reviewed/' + name, ...(visualRebind ? [visualRebind] : [])])],
       };
       if (normalized(Object.fromEntries(Object.keys(patch).map((k) => [k, meta[k]]))) !== normalized(patch)) {
         Object.assign(meta, patch);
         updated++;
       }
-      if (id.sourceFingerprint !== row.sourceFingerprint) {
-        requireAssert(id.sourceFingerprint === row.oldSourceFingerprint, 'identity old fingerprint q' + row.qid);
-        id.sourceFingerprint = row.sourceFingerprint;
+      if (id.sourceFingerprint !== sourceFingerprint) {
+        requireAssert([row.oldSourceFingerprint, row.sourceFingerprint].includes(id.sourceFingerprint), 'identity old fingerprint q' + row.qid);
+        id.sourceFingerprint = sourceFingerprint;
         updated++;
       }
     }
