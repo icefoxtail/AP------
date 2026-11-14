@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E023",
+  "examiner": "C",
+  "author": "B",
+  "sourceArchiveFile": "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+  "reviewSha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+  "fourSlotSha256": "5a0a1795a0c8cad9cf5f9785ded3d65179f2ff440f91d355a1704aef9e02e7db",
+  "ordinals": [
+    9,
+    21,
+    22
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_35fcd0ff2cc375c91a9eb9fb17403ead0eb314de34654e3cbf861f6169c6c34e",
+      "verdict": "PASS",
+      "reason": "삼각형의 세 변을 정해진 제곱 비교식에 직접 대입하여 둔각을 판정한다. 현행 PT_M2_PYTHAGOREAN_RELATION과 TPL_M2_PYTHAGOREAN_CONVERSE는 길이·직각 여부·넓이 및 직각 여부 판정으로 정의되어 예각/둔각 분류 목표를 포괄하지 않는다. RPM104는 정확하며 NEW_PT 구별 기준이 타당하다. 새 둔각삼각형 term 후보와 같은 goal의 부모 삼각형, 판정은 올바르고 method의 IMPLIED 근거는 실제 제곱 부등식이다.",
+      "repairs": [],
+      "imageViewed": false,
+      "quotesExact": true,
+      "quoteCount": 6,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "bucket": 1,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "선택지마다 고정된 제곱 비교식에 바로 대입하는 직접 적용으로1."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+      "verdict": "PASS",
+      "reason": "그림의 직각 A, 중선 AD 및 GD=10, AC=36을 확인했다. 결정 연결은 중선 길이를 빗변 중점의 세 꼭짓점 등거리로 옮기는 것으로 TPL_TRIANGLE_CIRCUMCENTER 정의의 빗변 중점 관계와 일치한다. 무게중심 중선2:1과 피타고라스가 외심 주개념 밖의 선행/후행 보조 개념이다. 기존 CC_CENTROID와 CC_TRIANGLE_CENTROID는 좌표 평균/좌표 관계로 한정되어 비좌표 중선2:1 CC 공백 제안이 타당하다. 4칸 외심 IMPLIED는 같은 거리라는 원문에 근거한다.",
+      "repairs": [],
+      "imageViewed": true,
+      "quotesExact": true,
+      "quoteCount": 7,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "bucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "중선비를 외심 빗변중점 관계로 연결한 뒤 피타고라스에 전달하는 성질 선택으로3."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2a08a678b57f869ada8d4d7113d3295348e6b5140f7cfe8974a0f606203f644f",
+      "verdict": "PASS",
+      "reason": "그림의 AB9, AD12와 AE가 BD에 수직인 표식을 확인했다. 제곱관계로 새 밑변 BD를 보충한 후 동일한 삼각형의 넓이를 두 밑변으로 표현해 높이를 복원하는 것이 결정적이다. PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA는 다항식 넓이를 밑변으로 나누는 과제, TPL_DISTANCE_AREA_APPLICATION은 거리에서 넓이/넓이극값으로 가는 반대 목표, M1 좌표삼각형넓이는 좌표 입력, MG 등적변형은 평행조건 찾기여서 exact 대안이 아니다. NEW_PT/RPM 공백과 CC_PYTHAGOREAN의 분리가 타당하다. 4칸 목표 길이와 넓이 method 구별도 정확하다.",
+      "repairs": [],
+      "imageViewed": true,
+      "quotesExact": true,
+      "quoteCount": 7,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "bucket": 3,
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "대각선 보충 후 같은 삼각형의 밑변을 바꾸는 전략 선택으로3."
+      }
+    }
+  ],
+  "overallStatus": "PASS",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "선정 문항의 실제 발문·보기·정답·기존 해설과 Q21/22 그림을 읽었다. 정의의 목표 방향까지 compiled ACTIVE taxonomy와 CC를 대조했다. 저자 산출물 직접 수정 및 새로운 학생 source 수학 검수는 하지 않았다."
+  ]
+}
