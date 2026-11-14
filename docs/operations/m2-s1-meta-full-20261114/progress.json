@@ -19,10 +19,10 @@
     "existingFourSlotCount": 24,
     "canonicalUidCount": 1780
   },
-  "reviewedExams": 40,
-  "reviewedQuestions": 953,
-  "remainingExams": 35,
-  "remainingQuestions": 827,
+  "reviewedExams": 41,
+  "reviewedQuestions": 974,
+  "remainingExams": 34,
+  "remainingQuestions": 806,
   "nextAction": "Continue remaining disjoint exam queues and actual author-independent checks; publish and remote-verify one exam at a time.",
   "registrationStatus": "NOT_RUN",
   "mainMergeStatus": "NOT_AUTHORIZED",
@@ -6991,8 +6991,107 @@
       "solutionCount": 21,
       "existingFourSlotCount": 0,
       "existingFourSlotRef": null,
-      "status": "QUEUED",
-      "reviewedQuestionCount": 0
+      "status": "REVIEWED_RELEASE_PENDING",
+      "reviewedQuestionCount": 21,
+      "fullyJudgedQuestionCount": 21,
+      "finalSourceBlob": "61e92c85009e8256b4a1a3fd59c1339aaa829dc4",
+      "sourceFieldEditCount": 72,
+      "artifactDir": "docs/operations/m2-s1-meta-full-20261114/exams/E050",
+      "currentArtifactIndex": "docs/operations/m2-s1-meta-full-20261114/exams/E050/CURRENT.json",
+      "independentReviewer": "GPT_ROOT_14C2C64E43FB",
+      "independentSampleOrdinals": [
+        9,
+        13,
+        19
+      ],
+      "rpmGapOrdinals": [
+        2
+      ],
+      "registrationPendingOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "contentDebtOrdinals": [
+        7,
+        9,
+        11
+      ],
+      "unresolved": [],
+      "requiredEvidenceDebt": [],
+      "topicSummary": [
+        {
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "count": 5,
+          "ordinals": [
+            3,
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "count": 2,
+          "ordinals": [
+            8,
+            20
+          ]
+        },
+        {
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "count": 6,
+          "ordinals": [
+            1,
+            4,
+            5,
+            9,
+            10,
+            19
+          ]
+        },
+        {
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "count": 6,
+          "ordinals": [
+            2,
+            6,
+            7,
+            15,
+            16,
+            18
+          ]
+        },
+        {
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "count": 2,
+          "ordinals": [
+            17,
+            21
+          ]
+        }
+      ],
+      "nextAction": "CODEX_RESOLVE_NAMED_DEBTS_AND_REGISTER",
+      "localWorkStatus": "AUTHOR_AND_INDEPENDENT_BYTES_PRESERVED"
     },
     {
       "examId": "E051",
@@ -7370,8 +7469,8 @@
       "reviewedQuestionCount": 0
     }
   ],
-  "fullyJudgedQuestions": 781,
-  "updatedAt": "2026-11-14T14:19:58.223862+00:00",
+  "fullyJudgedQuestions": 802,
+  "updatedAt": "2026-11-14T14:25:55.831843+00:00",
   "verifiedExamPublications": [
     {
       "examId": "E001",
@@ -7584,21 +7683,21 @@
     }
   ],
   "awcr": {
-    "latestVerifiedRevision": 12,
-    "fileId": "1pNGxgqIBrlOGaLk_O7aplvEtMpQIKNjR",
-    "rawSha256": "282be1bdb537fcfbbf604b622ddf52b20d97766b0ccbafed9b30daa25bc63b36",
+    "latestVerifiedRevision": 13,
+    "fileId": "1Q59OQZOttJSx02FiilhMRyS0_fuChApF",
+    "rawSha256": "f467063ccb98f3e9682aa879552b08587bb0439bff29ef7f9ff651032b8ae641",
     "rawReadbackVerified": true,
     "nextAction": "Append immutable next revision after meaningful completed units."
   },
   "pendingAmendmentsReference": "docs/operations/m2-s1-meta-full-20261114/PENDING_AMENDMENTS.json",
   "localRecoveryReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json",
   "workingSnapshot": {
-    "inspectedAndRemotelyPreservedQuestions": 953,
-    "independentThreeItemSamples": 120,
+    "inspectedAndRemotelyPreservedQuestions": 974,
+    "independentThreeItemSamples": 123,
     "unresolvedMarkedQuestions": 172,
-    "rpmGapQuestions": 156,
-    "registrationPendingQuestions": 941,
-    "contentDebtQuestions": 42,
+    "rpmGapQuestions": 157,
+    "registrationPendingQuestions": 962,
+    "contentDebtQuestions": 45,
     "requiredMethodEvidenceDebtQuestions": 144,
     "interpretation": "Counts overlap. Reviewed means the bounded review and its named debts were preserved, not full quality PASS or registration. The current publication becomes remotely preserved only after CAS push and remote HEAD readback."
   },
@@ -8966,6 +9065,37 @@
       ],
       "verifiedAt": "2026-11-14T14:16:51.693544+00:00",
       "method": "GitHub connector exact staged tree and commit; non-force expected parent update; remote ref and commit readback; exact SHA local object import."
+    },
+    {
+      "label": "E034",
+      "commitSha": "9c311a4a8cb1963b4aa9df0f7023cc2d2226856f",
+      "parentSha": "3ec31cb98570fdbc5710397b73ca1b9141690e64",
+      "treeSha": "fc2ec13d2a3ceebfb5a7ae4fe79a3edb8620be5a",
+      "remoteHeadVerified": true,
+      "files": [
+        "archive/exams/original/middle/m2/1final/22_매산중_1학기_기말_중2_수학.js",
+        "docs/operations/m2-s1-meta-full-20261114/HANDOFF.md",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/CURRENT.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/accepted-review.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/author-four-slot.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/author-supplements/asset-evidence.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/author-supplements/author-manifest-r2.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/author-supplements/content-only.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/author-supplements/difficulty-content-first-freeze.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/author-supplements/four-slot.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/author-supplements/mechanical-r2.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/author-supplements/review.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/four-slot.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/independent-supplements/E034.initial.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/independent.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/review.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/root-review.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/source-writer-deferred.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E034/validation.json",
+        "docs/operations/m2-s1-meta-full-20261114/progress.json"
+      ],
+      "verifiedAt": "2026-11-14T14:20:10.579867+00:00",
+      "method": "GitHub connector exact staged tree and commit; non-force expected parent update; remote ref and commit readback; exact SHA local object import."
     }
   ],
   "workerHistory": [
@@ -9023,6 +9153,28 @@
       "author": "B",
       "reviewer": "ROOT_14C2C64E43FB",
       "basis": "C confirmed no content read. Root actually read26 existing solutions and1 image, froze current-pass snapshot, compared26difficulty and sample9/22/26 with exact supplemental corrections."
+    },
+    {
+      "examId": "E050",
+      "author": "B",
+      "reviewer": "ROOT_14C2C64E43FB",
+      "basis": "Root read actual21solutions, onePNG and5inlineSVG renderings, independently froze21difficulty, reviewed sample9/13/19 and exact narrow term supplements."
     }
-  ]
+  ],
+  "currentIndependentReviewRouting": {
+    "A_author": "B_independent",
+    "C_author": "A_independent",
+    "B_author_remaining": "ROOT_14C2C64E43FB_independent",
+    "remainingBExamIds": [
+      "E053",
+      "E056",
+      "E059",
+      "E062",
+      "E065",
+      "E068",
+      "E071",
+      "E074"
+    ],
+    "basis": "Root actual review assistance to keep all three disjoint authors advancing; no fictitious additional reviewer."
+  }
 }

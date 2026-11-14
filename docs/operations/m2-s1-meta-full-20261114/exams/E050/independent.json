@@ -1,0 +1,584 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E050",
+  "author": "B",
+  "reviewer": "GPT_ROOT_14C2C64E43FB",
+  "independent": true,
+  "status": "ACCEPT_WITH_NARROW_SUPPLEMENT_AND_NAMED_DEBTS",
+  "createdAt": "2026-11-14T14:25:54.805832+00:00",
+  "sourceGitBlobSha": "7c2c001f2210839a5ee562473d72a60cd3ac5cda",
+  "sourceSha256": "9df23af29b3bfda408bfbfc3a2235ca58cdd6f4d7af9de4d60b1fdacc2056170",
+  "reviewSha256": "a3df0c2e012e3e465e06d04101a02f8ce4b80b582eea34b193a8628003e17338",
+  "fourSlotSha256": "0780387cd451708c2607bf4d2802ccdc4640dec026795e76b4cedcd0ac8b0a30",
+  "sampleOrdinals": [
+    9,
+    13,
+    19
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 9,
+      "classification": "실제2022 RPM124 조건을 만족하는 유리수와122 순환소수→분수의 부모를 확인했다. 두 오독의 서로 다른 성분을 복원하는124를 수용한다.",
+      "binding": "실제 source2022를 보존하되 scoped ACTIVE binding과 genuine resolver증거는 미확정으로 남긴다. 단순분수변환만으로 전체 복원 조건을 검증했다고 보지 않는다.",
+      "crossConcept": "분수변환과 성분비교는 이 유리수조건 primary의 내부 절차로 추가CC를 중복하지 않는다.",
+      "condition": "원분수기약과 잘못읽은 분자/분모의 대상은 실제 literal로 보존한다. 두 오독분수의 기약형을 원성분으로 동일시한 해설전제는 원문부채로 남긴다.",
+      "integration": "한 유리수조건 복원 primary의 내부 흐름으로 NONE 수용.",
+      "difficulty": "독립3/B23/low와 저자3/low 일치. 전제부채가 해결되었다는 판단은 아니다.",
+      "fourSlot": "분수 명칭 및 표준변환식이 있어 method NAMED 보완을 수용했다. 일반제약을 OPEN_SENTENCE 조건394로 쓰지 않고 실제 분모581/분자582 오독 인용으로 교체한 exactcandidate가 맞다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "classification": "실제2022 M1-RPM214 원기둥 경로와 부모M1-07을 확인했다. 선수 원기둥 경로는 보존하고 기존source M2-01 및target L1/L2와 혼동하지 않은 분리를 수용한다.",
+      "binding": "ACTIVE M1 표준측정template는 수치공식 대입이고 M2원기둥비template는 회전축해석을 포함한다. 실제 캔의 문자부피비와 차이가 있어 둘중하나를 exact로 강제하지 않는다.",
+      "crossConcept": "실제 ACTIVE CC_MONOMIAL_DIVISION 정의를 읽고 두 부피식의 공통인수와 문자지수를 약분하는 기존해설과 대조했다.",
+      "condition": "반지름/높이는 실제 입력이며 없는 부호범위를 새로 추가하지 않는다.",
+      "integration": "두 원기둥부피식이 단항식 몫 계산의 입력으로 넘어가므로 SEQUENTIAL 수용.",
+      "difficulty": "두 표준부피식과 약분을 연결하는2/B23로 독립과 저자 일치.",
+      "fourSlot": "실제 두 캔 그림의 a,b 반지름/높이를 확인했다. given 원기둥·반지름·높이와 goal 부피비가 맞고 표준 V_A=πa²b를 NAMED로 고친 후보를 수용한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "classification": "실제 분수변환 산출물을 유한소수 조건에 이어 최소자연수를 구하는 RPM124가 전체 목표를 포괄한다.122와120은 관련 내부단계다.",
+      "binding": "원source2022에 따른 canonical path를 보존하고 실제 등록/VERIFIED_FINAL은 미확정으로 남긴다.",
+      "crossConcept": "분모소인수와 약분은 선택 유리수조건 primary 내부로 중복CC를 넣지 않는다.",
+      "condition": "자연수A 제한과 유한소수가 되도록 하는 실제 제약을 보존했고 ACTIVE COND_NATURAL 의미에 부합한다.",
+      "integration": "선택 primary 전체에 포함되는 유리수조건의 단계연결이므로 NONE 수용.",
+      "difficulty": "분수변환의 결과를 분모소인수 조건으로 이어 최소배수를 정하는3/B23로 독립3과 일치한다.",
+      "fourSlot": "두 필수goal인 기약분수와 최소자연수 모두 남겼고 실제 등식차/소인수/자연수 method 인용을 대조했다. 존재하지 않는 추가풀이를 만들지 않는다."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_76e8c67f95933bc484fdf131eb02568d76d2c5f5abc64065d4e779b353ec8ff4",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_76e8c67f95933bc484fdf131eb02568d76d2c5f5abc64065d4e779b353ec8ff4",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "반복되는 최소 숫자블록을 직접 읽는다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "실제 반복블록을 각 보기의 순환마디 표기와 직접 대조한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "순환마디를 직접 읽는 정의 적용1이며 학습중의 표기 숙련과 B12 인접으로 수용한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_eec24cf1fabe7dd0e2c209f2c13856b943db564c741d010b58e69f1fad196cd5",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_eec24cf1fabe7dd0e2c209f2c13856b943db564c741d010b58e69f1fad196cd5",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "양변정리 후 차수·등호·미지수 유무를 판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "식을 정리한 뒤 일차부등식인지 판정하며 상수식과 방정식을 구분한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "양변정리 후 차수·등호·미지수 유무를 판정한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0aad98a7fad44ab29a816c5a857c5bbb3f6265b74cf27d6767632cdb90e03062",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_0aad98a7fad44ab29a816c5a857c5bbb3f6265b74cf27d6767632cdb90e03062",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "단항식 곱몫과 거듭제곱을 보기별로 계산한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "단항식의 곱셈과 나눗셈 지수법칙을 여러 보기에서 확인한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "단항식 곱몫과 거듭제곱을 보기별로 계산한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_3d02ec8ae5771750408d7901b74b63961fac1c313463d695a9d1acbb77cad14a",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_3d02ec8ae5771750408d7901b74b63961fac1c313463d695a9d1acbb77cad14a",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "분모의 부족한5인수를 지수로 바로 맞춘다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "분모를 10의 거듭제곱으로 만드는 부족한 소인수 개수의 직접 적용이다."
+      },
+      "decision": "ACCEPT",
+      "reason": "분모에 부족한 소인수를 직접 맞추는1이며 학습중과 B12 인접으로 수용한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_5cc50ad4c0d12c6d10cc625ed710497ed9a41777f1d698998a664bd6d4c4e019",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_5cc50ad4c0d12c6d10cc625ed710497ed9a41777f1d698998a664bd6d4c4e019",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "유리수·유한소수·순환소수의 기본 정의와 분모소인수를 판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "기약분모의 소인수 조건과 순환소수 분류 정의를 직접 구별한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "유리수·순환소수의 기본 정의를 구별하는1이며 학습중과 B12 인접으로 수용한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_fd2cf9ad39fcaa172746b7da8376925f60a96787fdd5a12698c28f29229c188e",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_fd2cf9ad39fcaa172746b7da8376925f60a96787fdd5a12698c28f29229c188e",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "부등식을 풀고 보기의 수를 해범위와 비교한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "괄호 일차부등식을 풀고 주어진 수의 해집합 소속을 판단한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "부등식을 풀고 보기의 수를 해범위와 비교한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_48e2cccdd167683e98ba18543f6c2a376b25ec632f52bb969fd9e940f513a488",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_48e2cccdd167683e98ba18543f6c2a376b25ec632f52bb969fd9e940f513a488",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "기본부등식해와 실제 수직선 열린끝점/방향을 대응한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "일차부등식의 해를 열린 점과 왼쪽 방향의 실제 SVG 수직선으로 대응한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "기본부등식해와 실제 수직선 열린끝점/방향을 대응한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_d3d5d4d0236ddf47e2d2ec0e2fa2ec10893a396537a6f3da486a2da105aef210",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_d3d5d4d0236ddf47e2d2ec0e2fa2ec10893a396537a6f3da486a2da105aef210",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "중첩괄호를 안에서부터 풀고 동류항을 모은다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "세 겹 괄호를 안쪽부터 풀고 부호를 보존하며 동류항을 모은다."
+      },
+      "decision": "ACCEPT",
+      "reason": "중첩괄호를 안에서부터 풀고 동류항을 모은다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_734b45f2f62c92f213cff2d1590ecca2e2c21f09956dd4221cdb6eee5f0e1a2e",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_734b45f2f62c92f213cff2d1590ecca2e2c21f09956dd4221cdb6eee5f0e1a2e",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "잘못 읽은 두 순환소수를 분수로 바꾸어 서로 다른 성분을 복원한다. 다만 잘못읽은 분수가 기약이라는 가정으로 원분자/분모를 직접 동일시하는 해설의 암묵전제가 있다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "잘못 본 분모와 분자를 두 순환소수에서 분리 복원하여 원분수를 조합한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "잘못 읽은 두 순환소수를 분수로 바꾸어 서로 다른 성분을 복원한다. 다만 잘못읽은 분수가 기약이라는 가정으로 원분자/분모를 직접 동일시하는 해설의 암묵전제가 있다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_f46e55177a0876fa91c18b814a95a7f3a5d83dcc71a146a745b2346c9145fc9f",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_f46e55177a0876fa91c18b814a95a7f3a5d83dcc71a146a745b2346c9145fc9f",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "비순환부분 한 자리를 제외하고 순환마디 길이로 나눈 나머지를 쓴다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "비순환 앞자리 하나를 제외하고 주기5 나머지로 지정 소수자리를 찾는다."
+      },
+      "decision": "ACCEPT",
+      "reason": "비순환부분 한 자리를 제외하고 순환마디 길이로 나눈 나머지를 쓴다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "같은밑으로지수를합쳐 역수의지수와 일차관계를 세운다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "거듭제곱의 곱과 몫을 한 밑으로 정리한 뒤 지수를 같게 둔다."
+      },
+      "decision": "ACCEPT",
+      "reason": "같은밑으로지수를합쳐 역수의지수와 일차관계를 세운다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_fb231e3feb4409cbb8baf2db79295b830424a4a75046bf295260576c38f40b3e",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_fb231e3feb4409cbb8baf2db79295b830424a4a75046bf295260576c38f40b3e",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "복합나눗셈의 미지식을 놓아 곱관계로 변형한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "이중 나눗셈의 빈칸을 문자로 놓고 역연산하여 복원한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "복합나눗셈의 미지식을 놓아 곱관계로 변형한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_601c10f61fe55a4f0550bacce238ebf3c01ecc6c18d693511ffe385189bef3c0",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_601c10f61fe55a4f0550bacce238ebf3c01ecc6c18d693511ffe385189bef3c0",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "실제 두 원기둥의 반지름/높이를 교환해 부피비를 단항식으로 약분한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 원기둥 부피를 각각 표현한 뒤 비에서 공통인수를 약분한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "실제 두 원기둥의 반지름/높이를 교환해 부피비를 단항식으로 약분한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_9af6cd558befb01447ad73c6f325857940a595e801f8eb20fe82eab489fdfbfa",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_9af6cd558befb01447ad73c6f325857940a595e801f8eb20fe82eab489fdfbfa",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "같은밑의60제곱을 주어진10제곱의6제곱으로 바꾼다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "밑9를3으로 바꾸어 같은 거듭제곱 묶음을 A로 치환한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "같은밑의60제곱을 주어진10제곱의6제곱으로 바꾼다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_9df1eca5d0c22a90aca720b006484fe3aecccaac90d9e0f4a1129140496ba3ba",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_9df1eca5d0c22a90aca720b006484fe3aecccaac90d9e0f4a1129140496ba3ba",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "두 부등식해의 경계가 같다는 조건으로 미정계수를 구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 부등식을 각각 풀어 같은 해의 경계로 매개변수를 정한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "두 부등식해의 경계가 같다는 조건으로 미정계수를 구한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_661c4ae0fd71b2986702643358ae91be3ba32a1c2ef0dc9666f71bece1ddb917",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_661c4ae0fd71b2986702643358ae91be3ba32a1c2ef0dc9666f71bece1ddb917",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "주어진 풀이단계마다 적용한 부등식 성질을 연결한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 풀이 단계에 쓰인 양수 곱셈·이항·음수 나눗셈 성질을 대응한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진 풀이단계마다 적용한 부등식 성질을 연결한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_2ec505ef78c1f3fc55082e219588d2bde488fddf9fc5cb6adab89a40f894ee6c",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_2ec505ef78c1f3fc55082e219588d2bde488fddf9fc5cb6adab89a40f894ee6c",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "총트럭8대의두종류 용량을 부등식으로 세워 최소자연수를 고른다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "차량 총대수로 작은 차 수를 표현하고 적재량 하한 뒤 최소정수를 고른다."
+      },
+      "decision": "ACCEPT",
+      "reason": "총트럭8대의두종류 용량을 부등식으로 세워 최소자연수를 고른다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_f1e81ea932b4b265dd317a108e4100a20b8a511a1911f65bbb7570ea136064bd",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_f1e81ea932b4b265dd317a108e4100a20b8a511a1911f65bbb7570ea136064bd",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "자연수해3개라는 조건의 열린닫힌 경계를 계수범위로 옮긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "자연수 해가 정확히3개가 되도록 열린 경계와 정수 사이 범위를 정한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "자연수해3개라는 조건의 열린닫힌 경계를 계수범위로 옮긴다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_68d296dc4f7beba306a3ba6283c2c83f81c0cdd8319d2f3208e2feb6fb2166ca",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_68d296dc4f7beba306a3ba6283c2c83f81c0cdd8319d2f3208e2feb6fb2166ca",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "순환소수 분수변환의 산출물에 분모소인수 조건을 이어 최소곱을 구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "혼합순환소수를 분수로 고친 산출물에서 유한소수용 최소 자연수 인수를 구한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "순환소수 분수변환의 산출물에 분모소인수 조건을 이어 최소곱을 구한다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e08caecb7a849f55fb179e738c749b4648a904de89e55445a6080f1bf82ba148",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_e08caecb7a849f55fb179e738c749b4648a904de89e55445a6080f1bf82ba148",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "다항식을 단항식으로 나누고 상수배해 동류항을 모은다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분수식의 단항식 나눗셈과 다항식 전개를 차례로 수행해 동류항을 정리한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "다항식을 단항식으로 나누고 상수배해 동류항을 모은다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_92b1fa2a6b0795c0b3c5f4a822bc7e395867ef55ed593bb3b69a00c82e005f27",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_92b1fa2a6b0795c0b3c5f4a822bc7e395867ef55ed593bb3b69a00c82e005f27",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "왕복의 다른 거리·속력을 시간상한에 연결하는 표준 부등식모델이다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "돌아오는 거리의 증가를 반영한 왕복 시간 부등식으로 최대거리를 구한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "왕복의 다른 거리·속력을 시간상한에 연결하는 표준 부등식모델이다. 실제 기존해설과 저자 판단을 대조했으며 독립 숫자가 일치한다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "순환마디를 직접 읽는 정의 적용1이며 학습중의 표기 숙련과 B12 인접으로 수용한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "분모에 부족한 소인수를 직접 맞추는1이며 학습중과 B12 인접으로 수용한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "유리수·순환소수의 기본 정의를 구별하는1이며 학습중과 B12 인접으로 수용한다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 7,
+      "decision": "ACCEPT_ACTUAL_SVG_AND_NARROW_METHOD_COVERAGE",
+      "reason": "실제5SVG에서 열린3 왼쪽이 정답과 일치하며 해설은 부등식풀이와 정답까지만 명시한다. method에 없는 수직선설명 인용을 만들지 않은 범위보존을 수용한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "ACCEPT_ORIGINAL_SOLUTION_NEGATIVE_EXPONENT",
+      "reason": "현재 기존해설의 음의지수 표현을 실제읽고 보존한다. 새중등풀이를 써서 원해설을 대체하지 않는다."
+    }
+  ],
+  "acceptedSupplements": [
+    {
+      "path": "/workspace/scratch/14c2c64e43fb/workers/B/E050.accepted-four-slot-candidate.json",
+      "sha256": "0fc69ecae9e97447b831e69bc9823353e468dae1def4c0230f172135476b4195"
+    },
+    {
+      "path": "/workspace/scratch/14c2c64e43fb/workers/B/E050.independent-semantic-supplement.json",
+      "sha256": "5eb03d8e840b97dde400ea2f37c5f04ccdacc5718d9dca0ef40b2ce2212be08b"
+    }
+  ],
+  "initialSnapshot": {
+    "path": "/workspace/scratch/14c2c64e43fb/root/independent/E050/initial.json",
+    "sha256": "569e31668627a5f4b1e87bf15e3dc4b1a1df2709d66f57019977745991bc0d66"
+  },
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "actualReading": {
+    "allStems": 21,
+    "existingSolutions": 21,
+    "actualImages": [
+      "workers/B/assets/E050-q13-q13.png",
+      "workers/B/assets/E050-q7-choice1.png",
+      "workers/B/assets/E050-q7-choice2.png",
+      "workers/B/assets/E050-q7-choice3.png",
+      "workers/B/assets/E050-q7-choice4.png",
+      "workers/B/assets/E050-q7-choice5.png"
+    ],
+    "inlineSvgChoices": 5,
+    "numericComparisons": 21
+  },
+  "canonicalEvidenceRead": [
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "archive/data/meta-foundation/compiled/concept_registry.json",
+    "docs/architecture/4slot/term-dictionary-v1.5.json"
+  ],
+  "notes": [
+    "Root actual reviewer, separate from B author;21 original solution reads and6renderedimages completed before numeric comparison.",
+    "No original solution rewriting; old source2022 and M2target remain intact while M1prerequisite semantics and registration debt stay separate."
+  ]
+}

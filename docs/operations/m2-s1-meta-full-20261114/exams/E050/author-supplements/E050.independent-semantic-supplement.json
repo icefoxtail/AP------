@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "m2-author-narrow-semantic-supplement-v1",
+  "examId": "E050",
+  "status": "ROOT_ACCEPTANCE_REQUIRED",
+  "createdAt": "2026-11-14T14:23:22.307258+00:00",
+  "originalReviewSha256": "a3df0c2e012e3e465e06d04101a02f8ce4b80b582eea34b193a8628003e17338",
+  "originalFourSlotSha256": "0780387cd451708c2607bf4d2802ccdc4640dec026795e76b4cedcd0ac8b0a30",
+  "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E050.accepted-four-slot-candidate.json",
+  "acceptedFourSlotSha256": "0fc69ecae9e97447b831e69bc9823353e468dae1def4c0230f172135476b4195",
+  "changes": [
+    {
+      "sourceOrdinal": 9,
+      "term": "분수",
+      "before": {
+        "term": "분수",
+        "termId": 27,
+        "src": "solution",
+        "quote": "$0.40\\dot{8}=(408-40)/900=368/900=92/225$",
+        "evidenceType": "IMPLIED",
+        "justification": "혼합순환소수를 분수식으로 바꾼다."
+      },
+      "after": {
+        "term": "분수",
+        "termId": 27,
+        "src": "solution",
+        "quote": "$0.40\\dot{8}=(408-40)/900=368/900=92/225$",
+        "evidenceType": "NAMED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "term": "원기둥",
+      "before": {
+        "term": "원기둥",
+        "termId": 711,
+        "src": "solution",
+        "quote": "$V_A=\\pi a^2b$",
+        "evidenceType": "IMPLIED",
+        "justification": "반지름과 높이를 원기둥 부피 공식에 대입한다."
+      },
+      "after": {
+        "term": "원기둥",
+        "termId": 711,
+        "src": "solution",
+        "quote": "$V_A=\\pi a^2b$",
+        "evidenceType": "NAMED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "slot": "condition",
+      "before": [
+        {
+          "term": "조건",
+          "termId": 394,
+          "src": "stem",
+          "quote": "연이는 분모를 잘못 보아서 $0.40\\dot{8}$이라 하였고, 황이는 분자를 잘못 보아서 $0.4\\dot{8}$이라 하였다."
+        }
+      ],
+      "after": [
+        {
+          "term": "분모",
+          "termId": 581,
+          "src": "stem",
+          "quote": "분모를 잘못 보아서"
+        },
+        {
+          "term": "분자",
+          "termId": 582,
+          "src": "stem",
+          "quote": "분자를 잘못 보아서"
+        }
+      ],
+      "reason": "dictionary 조건394 OPEN_SENTENCE의 정의와 다른 단순 제한 의미를 제거하고 실제 잘못 읽은 대상인 분자·분모로 표시한다."
+    }
+  ],
+  "invariants": [
+    "Original author/review/freeze/source/answer/solution/UID/order unchanged. No numerical or classification change."
+  ]
+}
