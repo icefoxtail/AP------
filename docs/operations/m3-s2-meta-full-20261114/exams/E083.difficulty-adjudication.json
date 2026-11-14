@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "M3S2_TARGETED_DIFFICULTY_ADJUDICATION_v1",
+  "examId": "E083",
+  "reviewer": "GPT_ROOT_00FBAC4C0777",
+  "reviewedAt": "2026-11-14T11:35:18.724437+00:00",
+  "sourceReviewMode": "Independent peer source-only review frozen before comparison. Root compared actual source/figures on disputed decisions and original 3 source-first samples.",
+  "independentReviewRef": "E083.difficulty-independent.json",
+  "independentReviewSha256": "753fea9f6c5b0b2568207bdf8ce671642f8f6fed28bcdb01da03cb92a5ff7b7c",
+  "items": [
+    {
+      "ordinal": 2,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "삼각형내각합으로비를실제각으로한번변환하면특수값대입이정해진다. 익숙한한번의전처리로2이며각을처음부터받는단순값대입1과구별한다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 3,
+      "status": "RESOLVED",
+      "authorBucketBefore": 1,
+      "independentBucket": 2,
+      "finalBucket": 1,
+      "reason": "단위사분원 정의와 sin증가·cos감소를 직접 확인한다. 독립검토2/B12와의 경계 의견은 보존하되 추가관계 구성 없이 틀린 증감문장을 고르는1을 유지한다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 5,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 2,
+      "finalBucket": 3,
+      "reason": "독립2/B23 의견을 검토했지만 원본에는 수선이 없다. 중3 유효풀이에서 C의 수선을 선택한 뒤 AH3·CH3√3을 구하고 다른 삼각형의 BH6으로 CB²63을 구성한다. E066Q12와 같은 새보조선+두삼각형 전환이어서3/B23 유지.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 6,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 2,
+      "reason": "원본에 수선 AH가 이미 있어 BH=√3h,HC=h를 합산한 (√3+1)h=12의 고정경로이다. E067Q7과 같은 구조로2/B23.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 8,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "중심O와현중점·반지름선이이미그려져있고미지반지름x도지정되어있다. OM을x−3으로표현하는한번의전처리뒤피타고라스방정식이정해진다. 새로운중심복원이나보조도형선택이없어2 B23이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 12,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "주어진중심각을바로반으로하면안되고A가포함되지않는호를한번선택한다. 이익숙한호선택전처리뒤정리는직접이므로2다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 13,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 2,
+      "finalBucket": 3,
+      "reason": "독립2/B23 의견을 검토했지만 원본에 BC가 없어 원주각을 만들 새 현을 선택해야 한다. 호분율→두원주각→외각을 연결하며, 중3에서 교차현각공식을 무증명으로 가정하지 않는 실제 풀이를 기준으로3/B23 유지.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 18,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "길이만제시된교차현그림에서대응삼각형을선택하고같은호의원주각을찾아비례식을구성해야한다. 그뒤의일차계산보다이관계선택이핵심이므로3 B23이다. 같은수치만있는현의곱공식문제로자동축소하지않는다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 20,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "기존해설의보조점N·두피타고라스식소거는필수아니다. 두호의같음을사용하여△MPB와△MBQ의직접닮음을선택하면한비례식으로끝난다. 표준원주각+닮음의관계선택부담으로3이며복잡한조건구조화4의필수성은없다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 24,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "세길이의곱을바로주어진공식으로보면2에가깝지만,실제원의각근거에서각을맞추고서로다른두할선의부분·전체를대응시키는관계구성이필요하다. 식세우기와답이분리된형식은이선택을제거하지않아3 B23이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 25,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "접선조각을미지수하나로표현하여직각삼각형의세변식으로바꾸는모델선택이핵심이다. 이차방정식의두근중단순부등식으로하나를고르는것은표준결합범위이며복잡한경우분기나범위구조화가없어3이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    }
+  ]
+}

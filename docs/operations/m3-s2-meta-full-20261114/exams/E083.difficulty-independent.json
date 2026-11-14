@@ -1,0 +1,169 @@
+{
+  "examId": "E083",
+  "sourceArchiveFile": "original/middle/m3/2final/15_왕의중_2학기_기말_중3_수학.js",
+  "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+  "reviewedAt": "2026-11-14T11:24:15.002291+00:00",
+  "scope": "11 source-only independent difficulty rechecks; no other author/legacy judgments or resolver read; not R1/R2/R3",
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_ae06f0135e3418203bdb7929f416775e26617ba4c9282e58243046767ff5aea6",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyConfidence": "high",
+      "decisiveStep": "각의비2:1:3에서단위각30°를구하므로A60°,B30°이다. sinB+tanA=1/2+√3=(1+2√3)/2.",
+      "reason": "삼각형내각합으로비를실제각으로한번변환하면특수값대입이정해진다. 익숙한한번의전처리로2이며각을처음부터받는단순값대입1과구별한다.",
+      "assetsRead": []
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_cb33224931a0ceadd35f213c7d297d506be95e9c6760cfd2c41b037e5992d487",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "x가작아지면높이AC=sinx는작아지고밑변BC=cosx는커지므로⑤가거짓이다. sinx<cosx는0<x<45에서성립하고DE=tanx도단위접선그림과맞는다.",
+      "reason": "단위사분원의변길이를삼각비에대응하고각변화에따른두길이의반대변화를판정한다. 기본성질직접판정1에가깝지만그림과범위진술을한번연결하는부담을반영하여2 B12로동결한다.",
+      "assetsRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q03.png",
+          "status": "INSPECTED"
+        }
+      ]
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_dd57a0d72fcbe438dcd091c20c42228e77062686b6b14c53deef2b29a9326765",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "C에서AB에수선을내리면AH=6cos60=3,CH=6sin60=3√3,BH=9−3=6이다. CB²=6²+(3√3)²=63,CB=3√7.",
+      "reason": "두변과끼인60°가주어진기본길이문제에서수선을내려특수각삼각형과피타고라스를쓰는정형경로다. 보조선은있지만방법선택이거의고정되어2를택하며,수선선택을강하게보는평가와의경계B23을표시한다.",
+      "assetsRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q05.png",
+          "status": "INSPECTED"
+        }
+      ]
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_c5dfb97f1891fc3888e7057819ea13110d9999bdbd79a4913090cd5846d43ba0",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "h=AH로두면45°삼각형에서HC=h,30°삼각형에서BH=√3h이다. BC=12이므로(1+√3)h=12,h=6√3−6.",
+      "reason": "공통높이h로좌우의밑변을동시에표현하여밑변합조건에넣어야한다. 단순한삼각비수치대입이아닌변수표현·식구성의선택이있어3으로본다.",
+      "assetsRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q06.png",
+          "status": "INSPECTED"
+        }
+      ]
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_1860d0a9e596a101016c42139217d6ecd482209e87a3137ed9eea78f6728db95",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "M은현AB의중점이므로OM⊥AB이다. 그림의중심O와C-M-O위치에서OM=x−3,OA=x,AM4이므로x²=(x−3)²+16,6x=25.",
+      "reason": "중심O와현중점·반지름선이이미그려져있고미지반지름x도지정되어있다. OM을x−3으로표현하는한번의전처리뒤피타고라스방정식이정해진다. 새로운중심복원이나보조도형선택이없어2 B23이다.",
+      "assetsRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q08.png",
+          "status": "INSPECTED"
+        }
+      ]
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_b6713a158c0b9923900232f1bc2540d47f3de86fef783d5d358b49ebe3434680",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyConfidence": "high",
+      "decisiveStep": "A가작은호BC위이므로목표원주각이보는호는큰호360−160=200°이다. x=200/2=100°.",
+      "reason": "주어진중심각을바로반으로하면안되고A가포함되지않는호를한번선택한다. 이익숙한호선택전처리뒤정리는직접이므로2다.",
+      "assetsRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q12.png",
+          "status": "INSPECTED"
+        }
+      ]
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_e03211990134a6a606e7ccc8672a7ec22492f83d57302ecf2fbd7a8417c935b1",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "호AB의중심각72°,호CD의중심각60°이므로대응원주각36°,30°이다. CB를연결한△BPC의외각x는36+30=66°.",
+      "reason": "비율로주어진두호를각으로바꾸고교차현각에대응하는원주각둘의합을구하는표준틀이다. 알려진호와목표각의대응이그림에직접드러나며별도미지각연립이나케이스선택이없어2 B23으로본다.",
+      "assetsRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q13.png",
+          "status": "INSPECTED"
+        }
+      ]
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_6d04d1568ef3791bd954c42358954ad494445ceb20136818678bc51cc14ebd7a",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "AC와DB를이어△APC와△DPB를보면맞꼭지각과같은호AD의원주각으로AA닮음이다. AP/DP=PC/PB에서6/3=4/x,x=2.",
+      "reason": "길이만제시된교차현그림에서대응삼각형을선택하고같은호의원주각을찾아비례식을구성해야한다. 그뒤의일차계산보다이관계선택이핵심이므로3 B23이다. 같은수치만있는현의곱공식문제로자동축소하지않는다.",
+      "assetsRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q18.png",
+          "status": "INSPECTED"
+        }
+      ]
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_28ed8f1b2acea0f67ca4c8bb9f2c98a1ae710b025bf4963ddb3078c040c4e057",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyConfidence": "high",
+      "decisiveStep": "M-P-Q이므로△MPB와△MBQ의M각은같다. ∠MBP는호MA,∠MQB는호MB를보고두호가같으므로두각도같다. AA닮음에서MP/MB=MB/MQ이므로BM²=3×(3+5)=24,BM=2√6.",
+      "reason": "기존해설의보조점N·두피타고라스식소거는필수아니다. 두호의같음을사용하여△MPB와△MBQ의직접닮음을선택하면한비례식으로끝난다. 표준원주각+닮음의관계선택부담으로3이며복잡한조건구조화4의필수성은없다.",
+      "assetsRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q20.png",
+          "status": "INSPECTED"
+        }
+      ]
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_79c6a5d01f892965a443cad4c20fcd91af662f3a83c55d4a3277921345ebd95c",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "PB=5+7=12,PD=4+x이다. 같은P각과내접각의보각관계로△PAC∼△PDB를잡으면PA·PB=PC·PD,5×12=4(4+x),x=11.",
+      "reason": "세길이의곱을바로주어진공식으로보면2에가깝지만,실제원의각근거에서각을맞추고서로다른두할선의부분·전체를대응시키는관계구성이필요하다. 식세우기와답이분리된형식은이선택을제거하지않아3 B23이다.",
+      "assetsRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/s04.png",
+          "status": "INSPECTED"
+        }
+      ]
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_21d63a9e9bc6b47608c3cb9c22a5e9943b3118b1b7e9240958605d52b3a7b24c",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyConfidence": "high",
+      "decisiveStep": "등접선으로AP=AR=x,BP=BQ=10−x,직각C에서CQ=CR=r=2이다. 따라서AC=x+2,BC=12−x이고10²=(x+2)²+(12−x)²→(x−4)(x−6)=0. AP>BP로x>5여서x6.",
+      "reason": "접선조각을미지수하나로표현하여직각삼각형의세변식으로바꾸는모델선택이핵심이다. 이차방정식의두근중단순부등식으로하나를고르는것은표준결합범위이며복잡한경우분기나범위구조화가없어3이다.",
+      "assetsRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/s05.png",
+          "status": "INSPECTED"
+        }
+      ]
+    }
+  ]
+}

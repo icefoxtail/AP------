@@ -1,0 +1,2192 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/15_왕의중_2학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "360f8bd3c72672b968bd3c622cc2c34c929b3afc",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "author_b",
+    "at": "2026-11-14T11:10:58.199432+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_2a72eeb5302460c6fc84ee114586a012c5b2aaebf67bdcc371102e280e7776fb",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3e36b840a8538e1008a13933436f81ba3cff49f6cc7ff2675d32972a615ae823"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bbf0c5b1fc374b2f720b984a81466596963cc3c576e8c42b7335750af09b01b9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "△ABC에서 ∠A=90°"
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "DE ⟂ BC"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 쓰면",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변을 구한 뒤 표시각 x를 B의 여각으로 바꾸어 코사인을 사인의 비로 읽는다."
+          },
+          {
+            "term": "여각",
+            "src": "solution",
+            "quote": "x와 ∠B는 서로 여각",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변을 구한 뒤 표시각 x를 B의 여각으로 바꾸어 코사인을 사인의 비로 읽는다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "cos x=sin∠B=AC/BC=5/13",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변을 구한 뒤 표시각 x를 B의 여각으로 바꾸어 코사인을 사인의 비로 읽는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "∠A=90°"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "빗변을 구한 뒤 표시각 x를 B의 여각으로 바꾸어 코사인을 사인의 비로 읽는다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_ae06f0135e3418203bdb7929f416775e26617ba4c9282e58243046767ff5aea6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5ea5e5b5327eb8f7d02ca8a2c98f9846d296fc8f44106a12777bc553f16bbcbc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5e884cbe08eca2bac16593aab6627c51f779796bd346a6bc55d5990287e59d22"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle \\mathrm{ABC}$"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "2 : 1 : 3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\sin\\mathrm{B} + \\tan\\mathrm{A}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형의 내각의 합은 180°",
+            "evidenceType": "IMPLIED",
+            "justification": "비의 합6으로180°를 나누어30°,60°를 정한 다음 특수각의 비를 계산한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "sin B+tan A=sin30°+tan60°",
+            "evidenceType": "IMPLIED",
+            "justification": "비의 합6으로180°를 나누어30°,60°를 정한 다음 특수각의 비를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "비의 합6으로180°를 나누어30°,60°를 정한 다음 특수각의 비를 계산한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_cb33224931a0ceadd35f213c7d297d506be95e9c6760cfd2c41b037e5992d487",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f4df34e0c7ac9152b6e2129043e7bde70251f17ae50275e2fd3094fd5f37243e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "83267a7273f6cc07a6221f4cc88693a508de3e251508e2346653ca7ac4340a8f"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $1$인 사분원"
+          },
+          {
+            "term": "사인",
+            "src": "choices",
+            "quote": "\\sin x"
+          },
+          {
+            "term": "코사인",
+            "src": "choices",
+            "quote": "\\cos x"
+          },
+          {
+            "term": "탄젠트",
+            "src": "choices",
+            "quote": "\\tan x"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "삼각비에 대한 다음 설명"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "sin x는 높이 AC, cos x는 밑변 BC",
+            "evidenceType": "IMPLIED",
+            "justification": "단위사분원에서 두 직각변의 증감을 각의 변화와 대응시켜⑤를 배제한다."
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "cos x는 1에 가까워져 커진다.",
+            "evidenceType": "IMPLIED",
+            "justification": "단위사분원에서 두 직각변의 증감을 각의 변화와 대응시켜⑤를 배제한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0^\\circ < x < 90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "단위사분원에서 두 직각변의 증감을 각의 변화와 대응시켜⑤를 배제한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_fc104847bb2e46b183e1a975913f348c950866eed5c358b82f6aee8446701d02",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dab92d83a0717dee5478ef1dd7f019268cfd032ca558f4b639ca3a5688b4363e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2ace554bdfdb8be56336b1d6ea4ea7df962e9a4c4ae22fdcae6baedd513b8a86"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "$\\sin 10^\\circ$"
+          },
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos 60^\\circ$"
+          },
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$\\tan 45^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "큰 것부터 차례로 나열"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "tan60°>tan45°=1",
+            "evidenceType": "IMPLIED",
+            "justification": "1과1/2의 기준값을 두고 각 삼각비의 범위와 증감으로 크기를 연결한다."
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "각이 커질수록 커지고",
+            "evidenceType": "IMPLIED",
+            "justification": "1과1/2의 기준값을 두고 각 삼각비의 범위와 증감으로 크기를 연결한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "sin70°<1=tan45°",
+            "evidenceType": "IMPLIED",
+            "justification": "1과1/2의 기준값을 두고 각 삼각비의 범위와 증감으로 크기를 연결한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "0°와 90° 사이"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "1과1/2의 기준값을 두고 각 삼각비의 범위와 증감으로 크기를 연결한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_dd57a0d72fcbe438dcd091c20c42228e77062686b6b14c53deef2b29a9326765",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1c8bef8dd52d6a611dfd4946bb14fd0a2245baca3d5c2c889cd7bf672c6df68d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aeeaf026579543ee847e8d61ef5c53617466dc7075afc4badea6479df825c0f5"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle \\mathrm{ABC}$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{CA}}=6$, $\\overline{\\mathrm{AB}}=9$"
+          },
+          {
+            "term": "끼인각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{A}=60^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{CB}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "보조선",
+            "src": "solution",
+            "quote": "C에서 AB에 수선을 내려",
+            "evidenceType": "IMPLIED",
+            "justification": "수선으로 주어진60°를 직각삼각형의 길이비로 바꾼 뒤 다른 삼각형에서 피타고라스를 적용한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "30°–60°–90° 삼각형의 변의 비",
+            "evidenceType": "IMPLIED",
+            "justification": "수선으로 주어진60°를 직각삼각형의 길이비로 바꾼 뒤 다른 삼각형에서 피타고라스를 적용한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "CB²=BH²+CH²",
+            "evidenceType": "IMPLIED",
+            "justification": "수선으로 주어진60°를 직각삼각형의 길이비로 바꾼 뒤 다른 삼각형에서 피타고라스를 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "수선으로 주어진60°를 직각삼각형의 길이비로 바꾼 뒤 다른 삼각형에서 피타고라스를 적용한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_c5dfb97f1891fc3888e7057819ea13110d9999bdbd79a4913090cd5846d43ba0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0b98f184f6b2f23501ba9ed6bd10c29ab903c3a20522c931b8c59fbce6dec0c3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "53ea183eb0269d94beca78819ede8f349173b9c02bdae5f6da9ca70e0c90e5e1"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle \\mathrm{ABC}$"
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "AH ⟂ BC"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "BH=12−HC"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AH}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각이등변삼각형",
+            "src": "solution",
+            "quote": "∠C=45°인 직각삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "45°로HC=AH를 먼저 세우고 나머지밑변12−AH를 탄젠트 식에 넣어 높이를 구한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "tan30°=AH/BH",
+            "evidenceType": "IMPLIED",
+            "justification": "45°로HC=AH를 먼저 세우고 나머지밑변12−AH를 탄젠트 식에 넣어 높이를 구한다."
+          },
+          {
+            "term": "등식의성질",
+            "src": "solution",
+            "quote": "12=(√3+1)AH",
+            "evidenceType": "IMPLIED",
+            "justification": "45°로HC=AH를 먼저 세우고 나머지밑변12−AH를 탄젠트 식에 넣어 높이를 구한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "12(√3−1)/2=6√3−6",
+            "evidenceType": "IMPLIED",
+            "justification": "45°로HC=AH를 먼저 세우고 나머지밑변12−AH를 탄젠트 식에 넣어 높이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "AH ⟂ BC"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "45°로HC=AH를 먼저 세우고 나머지밑변12−AH를 탄젠트 식에 넣어 높이를 구한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_376c873d683c6cd6d2872696e1885f653fe3a93cb4ee961887a02c0201c75dda",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2f771a56454bd537bfc2347ed4d3ae6ea6fa2e80eaa99d06c8734bfe50dcbfd6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fb7cc253dd57e79f1b29af4950eba2297803eac44fb0e8c29dd4f0b43fc0b6ea"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "$\\square\\mathrm{ABCD}$"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "AD=CD=2√3cm"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이를 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "△ABC는 정삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선AC를 공유하는 두 삼각형의 반밑변과 높이를 구한 뒤 넓이를 더한다. 해설은 높이에 피타고라스를 사용한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "높이=√(6²−3²)",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선AC를 공유하는 두 삼각형의 반밑변과 높이를 구한 뒤 넓이를 더한다. 해설은 높이에 피타고라스를 사용한다."
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "꼭짓점각을 이등분",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선AC를 공유하는 두 삼각형의 반밑변과 높이를 구한 뒤 넓이를 더한다. 해설은 높이에 피타고라스를 사용한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이=9√3+3√3=12√3cm²",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선AC를 공유하는 두 삼각형의 반밑변과 높이를 구한 뒤 넓이를 더한다. 해설은 높이에 피타고라스를 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "대각선AC를 공유하는 두 삼각형의 반밑변과 높이를 구한 뒤 넓이를 더한다. 해설은 높이에 피타고라스를 사용한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_1860d0a9e596a101016c42139217d6ecd482209e87a3137ed9eea78f6728db95",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5a421fdc2a8ec5cba04ff60102f7107ccb453df3e0cc7983e62af64fb50e8ce6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0e0d2005aaa3b363f2bdbc3d0b3ac1f0d28af3ff7a41493f405562747a705cab"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원의 반지름"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AM}}=\\overline{\\mathrm{BM}}$"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "현 AB의 중점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$6x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "중심에서 현의 중점에 그은 선분 OM은 AB에 수직",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 중점과 중심을 연결해 직각삼각형을 얻고 반지름x와 거리x−3을 한 식에 놓는다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "x²=(x−3)²+4²",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 중점과 중심을 연결해 직각삼각형을 얻고 반지름x와 거리x−3을 한 식에 놓는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "현의 중점과 중심을 연결해 직각삼각형을 얻고 반지름x와 거리x−3을 한 식에 놓는다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_3e07df76b970253d469d1724c964d05b828072bce17d7e862192730b2283d6d8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f51ceee8a4fc7350517f2478fce5b0eb176e340ec943ef495814617f4b8d01ef"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "03774c033518f2cec3dbc0ef05ea4261b8b5fdf846ff80f8022a165966649550"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "각 원에 대한 성질"
+          },
+          {
+            "term": "사각형",
+            "src": "solution",
+            "quote": "원에 접하는 사각형"
+          },
+          {
+            "term": "접점",
+            "src": "choices",
+            "quote": "접점이면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "성질로 바르지 않은"
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "마주 보는 각의 합이 항상 180°인 것은 아니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "보각 관계를 보장하는 내접 조건과 접선길이 관계를 보장하는 외접 조건을 구별한다. 목표는 명제의 진위이다."
+          },
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "마주 보는 변의 길이의 합이 같지만",
+            "evidenceType": "IMPLIED",
+            "justification": "보각 관계를 보장하는 내접 조건과 접선길이 관계를 보장하는 외접 조건을 구별한다. 목표는 명제의 진위이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "외접",
+            "src": "solution",
+            "quote": "원에 접하는 사각형"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "보각 관계를 보장하는 내접 조건과 접선길이 관계를 보장하는 외접 조건을 구별한다. 목표는 명제의 진위이다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_0879dc94586121402538bd51be7193eae497aadd9e5d02e58b8028662529251c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "629359dc67a1139a72501b5d0e567dad346e3d922a749dfd5112121dee40e49c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b79416d2fb35cb672410bc14a8a3aa4ff10dad77ade187ce1ef88620ce07cf78"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "직사각형은 원에 내접할 수 있고"
+          },
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "가로 1 cm, 세로 2 cm의 직사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "성질로 바르지 않은"
+          }
+        ],
+        "method": [
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "두 합이 다르므로 항상 같다는 ③은 옳지 않다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원에 내접하는1×2직사각형을 반례로 주어 대변합이 항상 같다는 주장을 배제한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "AB+CD=1+1=2 cm\nAD+BC=2+2=4 cm",
+            "evidenceType": "IMPLIED",
+            "justification": "원에 내접하는1×2직사각형을 반례로 주어 대변합이 항상 같다는 주장을 배제한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "solution",
+            "quote": "원에 내접할 수 있고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원에 내접하는1×2직사각형을 반례로 주어 대변합이 항상 같다는 주장을 배제한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_2f68180cd5f5ad2a5e5c7cbb9bd83bf7f5f5bcb69f66efd36fdd770ad28a5a0d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c7a691d7b252400de285ec56157e0b36c5fdee71f8ddb2b3ecf5426385ba6fb7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "63e0a64bc36053a3ea7d267e22b687b64d7222955b40be46e479125915414444"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "$\\square\\mathrm{ABCD}$"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "3 : 5"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AD}}=14\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{CD}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 조각을 같은 항끼리 재배열하여 대변합24를 구하고5/8을 취한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "AD+BC=14+10=24 cm",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 조각을 같은 항끼리 재배열하여 대변합24를 구하고5/8을 취한다."
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "CD는 합 24 cm의 5/8",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 조각을 같은 항끼리 재배열하여 대변합24를 구하고5/8을 취한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "원에 외접하고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선 조각을 같은 항끼리 재배열하여 대변합24를 구하고5/8을 취한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_b6713a158c0b9923900232f1bc2540d47f3de86fef783d5d358b49ebe3434680",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f09e6f7a7ee217fffe83ec7860a7db4afb63356574d2b48d1cd5fd239371454c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3781ef4066d09eff4debdbdb8295ee64f4358ffdc99da1abad579d033fb0293c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 위의 점"
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{BOC}=160^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{A}=x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "큰 호 BC=360°−160°=200°",
+            "evidenceType": "IMPLIED",
+            "justification": "A가 놓인 작은 호를 제외한 큰 호를 선택한 뒤 원주각은 그 중심각의 절반임을 적용한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "∠A=200°÷2=100°",
+            "evidenceType": "IMPLIED",
+            "justification": "A가 놓인 작은 호를 제외한 큰 호를 선택한 뒤 원주각은 그 중심각의 절반임을 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "A가 놓인 작은 호를 제외한 큰 호를 선택한 뒤 원주각은 그 중심각의 절반임을 적용한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e03211990134a6a606e7ccc8672a7ec22492f83d57302ecf2fbd7a8417c935b1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e86e7965e02f5895f07beb8230d42a0214ada698858fa27245ca6efe993c6674"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "324c7b1c36121b7cf40d5eaeb6e0cd5ba06d535117ce4ec4bdc22f954eb545fe"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BD}}$의 교점"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "원둘레 길이의 $\\frac{1}{5}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{APB}=x$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례",
+            "src": "solution",
+            "quote": "호 AB=360°×1/5=72°",
+            "evidenceType": "IMPLIED",
+            "justification": "두 호의 원주각을 구하고 P에서의 외각을 두 내각합으로 표현한다."
+          },
+          {
+            "term": "보조선",
+            "src": "solution",
+            "quote": "CB를 그으면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 호의 원주각을 구하고 P에서의 외각을 두 내각합으로 표현한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "∠ACB=72°÷2=36°",
+            "evidenceType": "IMPLIED",
+            "justification": "두 호의 원주각을 구하고 P에서의 외각을 두 내각합으로 표현한다."
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "∠APB는 △BPC의 P에서의 외각",
+            "evidenceType": "IMPLIED",
+            "justification": "두 호의 원주각을 구하고 P에서의 외각을 두 내각합으로 표현한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 호의 원주각을 구하고 P에서의 외각을 두 내각합으로 표현한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_240dd5367518b1b1b4c233cd5a430c41ca273ba4b12b211c50e03a75c33af275",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3460736196c6a06379c3366cb607799e1fe48c009d6dd9796f02ea0103bf4957"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fcd43eecc2f5bb18758508ee9ae75fff23e659dd2ef49f75ba457eb5427d6703"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 위의 점"
+          },
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{CD}}$는 원의 지름"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{ABC}=120^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{ACD}=x$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "∠ABC가 보는 호 ADC의 크기는 두 배",
+            "evidenceType": "IMPLIED",
+            "justification": "120°가 보는 큰 호에서 지름의 반원을 빼어 남은 호AD의 원주각을 구한다. 접선AT는 주어졌지만 결정 경로에서 사용하지 않았다."
+          },
+          {
+            "term": "반원",
+            "src": "solution",
+            "quote": "CD는 지름이므로 호 CD=180°",
+            "evidenceType": "IMPLIED",
+            "justification": "120°가 보는 큰 호에서 지름의 반원을 빼어 남은 호AD의 원주각을 구한다. 접선AT는 주어졌지만 결정 경로에서 사용하지 않았다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "호 AD=240°−180°=60°",
+            "evidenceType": "IMPLIED",
+            "justification": "120°가 보는 큰 호에서 지름의 반원을 빼어 남은 호AD의 원주각을 구한다. 접선AT는 주어졌지만 결정 경로에서 사용하지 않았다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "120°가 보는 큰 호에서 지름의 반원을 빼어 남은 호AD의 원주각을 구한다. 접선AT는 주어졌지만 결정 경로에서 사용하지 않았다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ad569cc43619acdf592562431274f0ffa00e03d1e9f05c2d512c2bd805466f88",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f7085a9b59c0d9e269970fde7fec4f167fafef9ccda3ef4cce30df2d11bbb154"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "09d91e26091e1b9fef72ece7e9291100ce22d9606cc21b9ceb0d93b25cec784e"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원의 접선"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "$\\overparen{\\mathrm{AC}}=\\overparen{\\mathrm{BC}}$"
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{CAT}=55^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{C}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현 AC가 이루는 각으로 ∠ABC=55°",
+            "evidenceType": "IMPLIED",
+            "justification": "접현각으로 B를 정하고 같은 호의 현이 같은 길이임을 이용해A=B를 얻는다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "현 AC=현 BC",
+            "evidenceType": "IMPLIED",
+            "justification": "접현각으로 B를 정하고 같은 호의 현이 같은 길이임을 이용해A=B를 얻는다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "∠C=180°−55°−55°=70°",
+            "evidenceType": "IMPLIED",
+            "justification": "접현각으로 B를 정하고 같은 호의 현이 같은 길이임을 이용해A=B를 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "원의 접선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접현각으로 B를 정하고 같은 호의 현이 같은 길이임을 이용해A=B를 얻는다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b1be8d6f7368365dc3c28bb8adcee35f9da0417245a20f6aed01295e4971616e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fd908fc1ebdf6147333a7a930e8d91e8e7b644b115bab2057d06280c665e0e96"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7e324ecfde3ab32558030c34e2f2a109fa0da7ae993e458df63d73f01b86fa3f"
+        }
+      ],
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "네 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}, \\mathrm{D}$"
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "∠ADB=∠ACB=55°"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "한 원 위에 있는 것을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "∠XDB=180°−80°−50°=50°",
+            "evidenceType": "IMPLIED",
+            "justification": "가·나에서는 숨은 각을 구하고 다는 같은현의 같은각, 라는 대각합으로 공원조건을 확인한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "두 각이 같은 현 AB를 보므로",
+            "evidenceType": "IMPLIED",
+            "justification": "가·나에서는 숨은 각을 구하고 다는 같은현의 같은각, 라는 대각합으로 공원조건을 확인한다."
+          },
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "85°+95°=180°",
+            "evidenceType": "IMPLIED",
+            "justification": "가·나에서는 숨은 각을 구하고 다는 같은현의 같은각, 라는 대각합으로 공원조건을 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "가·나에서는 숨은 각을 구하고 다는 같은현의 같은각, 라는 대각합으로 공원조건을 확인한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_7d058d46a920a523d6488dd232f2444392bacee3732564947f92d84e3e2e0731",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f1c439224cb523ef05ca644d0bc8c24c6433bc7e01455def9b90b63ca21b93ca"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ab763df2e75fa33ab78f685e7ea8e8ad42f0bb2d2403e5d8c01b23781b0c7df4"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "원 위의 점"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "연장선의 교점"
+          },
+          {
+            "term": "외각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{P}=23^\\circ$, $\\angle\\mathrm{Q}=41^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{C}=x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "∠A+∠C=180°, ∠B+∠D=180°",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부삼각형의 내각합을 사각형 내각의 보각으로 표현하고 연립하여 A와C를 정한다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "∠A+∠D=203°",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부삼각형의 내각합을 사각형 내각의 보각으로 표현하고 연립하여 A와C를 정한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "∠A+∠B=221°와 ∠A−∠B=23°",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부삼각형의 내각합을 사각형 내각의 보각으로 표현하고 연립하여 A와C를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "일직선",
+            "src": "solution",
+            "quote": "PA는 AB의 연장선이고 PD는 CD의 연장선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 외부삼각형의 내각합을 사각형 내각의 보각으로 표현하고 연립하여 A와C를 정한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_6d04d1568ef3791bd954c42358954ad494445ceb20136818678bc51cc14ebd7a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aa81bd1f39965040c8198de5d01161d0e2a915f269b19accd382b041bebb41b5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0f96cbdb043d3c7251521e33786d385ed5dfa3fbce261a58249aa38f48010370"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$의 교점"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AP}}=6\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{BP}}=x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "맞꼭지각",
+            "src": "solution",
+            "quote": "∠APC=∠DPB는 맞꼭지각",
+            "evidenceType": "IMPLIED",
+            "justification": "두 각의 같음으로 닮음을 세운 뒤6/3=4/x의 대응비를 적용한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "두 원주각은 같은 호 AD",
+            "evidenceType": "IMPLIED",
+            "justification": "두 각의 같음으로 닮음을 세운 뒤6/3=4/x의 대응비를 적용한다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "△APC∼△DPB",
+            "evidenceType": "IMPLIED",
+            "justification": "두 각의 같음으로 닮음을 세운 뒤6/3=4/x의 대응비를 적용한다."
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "AP/DP=PC/PB",
+            "evidenceType": "IMPLIED",
+            "justification": "두 각의 같음으로 닮음을 세운 뒤6/3=4/x의 대응비를 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 각의 같음으로 닮음을 세운 뒤6/3=4/x의 대응비를 적용한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_bd4b81a925d9636569b9cde5dd38bb05fe1e03d7f68565dd908ec43dd518d7c2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bc40c25e2f8135909156f6811f688eec5ac53731d8d2a727496ee4857149f2f1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d64918f5d03f5e0db32e00de9d5e9d8e212d5e13c682651761ee7f6519291f31"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "$\\square\\mathrm{ABCD}$가 원에 내접"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AB}}=10\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AC}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "AP²+6²=10²",
+            "evidenceType": "IMPLIED",
+            "justification": "P의 직각으로AP를 구한 뒤 원주각 닮음으로PC를 얻고 두 선분을 합친다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 호 BC를 보는 원주각",
+            "evidenceType": "IMPLIED",
+            "justification": "P의 직각으로AP를 구한 뒤 원주각 닮음으로PC를 얻고 두 선분을 합친다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "△APB∼△DPC",
+            "evidenceType": "IMPLIED",
+            "justification": "P의 직각으로AP를 구한 뒤 원주각 닮음으로PC를 얻고 두 선분을 합친다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "AC=AP+PC=8+3=11 cm",
+            "evidenceType": "IMPLIED",
+            "justification": "P의 직각으로AP를 구한 뒤 원주각 닮음으로PC를 얻고 두 선분을 합친다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "∠APB=90°"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "P의 직각으로AP를 구한 뒤 원주각 닮음으로PC를 얻고 두 선분을 합친다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_28ed8f1b2acea0f67ca4c8bb9f2c98a1ae710b025bf4963ddb3078c040c4e057",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "05caa6a64134ff48f608d3337437eca18cf3ffeaf3ed753f683f6b49f82b449b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2f66f84aaab46e354499d312646d7740b918f5762aa02dfd24f85488ca774b84"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "그림의 원에서"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "$\\overparen{\\mathrm{AM}}=\\overparen{\\mathrm{BM}}$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{PM}}=3\\text{ cm}$, $\\overline{\\mathrm{PQ}}=5\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{BM}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "△APQ와 △MPB",
+            "evidenceType": "IMPLIED",
+            "justification": "원문 해설의 실제 경로를 기록했다: 닮음으로AP·PB를 정하고 등변삼각형의 중점수선에서 두 제곱식을 빼 높이를 소거한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "호 AM을 보는 원주각",
+            "evidenceType": "IMPLIED",
+            "justification": "원문 해설의 실제 경로를 기록했다: 닮음으로AP·PB를 정하고 등변삼각형의 중점수선에서 두 제곱식을 빼 높이를 소거한다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "△AMB는 이등변삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "원문 해설의 실제 경로를 기록했다: 닮음으로AP·PB를 정하고 등변삼각형의 중점수선에서 두 제곱식을 빼 높이를 소거한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "BM²=MN²+BN², PM²=MN²+PN²",
+            "evidenceType": "IMPLIED",
+            "justification": "원문 해설의 실제 경로를 기록했다: 닮음으로AP·PB를 정하고 등변삼각형의 중점수선에서 두 제곱식을 빼 높이를 소거한다."
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "((a+b)²−(a−b)²)/4=ab",
+            "evidenceType": "IMPLIED",
+            "justification": "원문 해설의 실제 경로를 기록했다: 닮음으로AP·PB를 정하고 등변삼각형의 중점수선에서 두 제곱식을 빼 높이를 소거한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원문 해설의 실제 경로를 기록했다: 닮음으로AP·PB를 정하고 등변삼각형의 중점수선에서 두 제곱식을 빼 높이를 소거한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_be91d2de92cddc2bc37fd702c5265039acccffd1180c554251ce541242d82ca3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "91ef89639f8f5c48f65baa5d9cb0ea95af6885b72fd8d55b32669d64e51867f1"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{BC}}=20$"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{A}=30^\\circ$, $\\angle\\mathrm{DBC}=45^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AD}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "tan30°=BC/CA",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각비로CA를 구하라는 발문 요구를 반영하고45°삼각형의CD를 빼서AD를 구한다."
+          },
+          {
+            "term": "직각이등변삼각형",
+            "src": "solution",
+            "quote": "CD=BC=20 cm",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각비로CA를 구하라는 발문 요구를 반영하고45°삼각형의CD를 빼서AD를 구한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "AD=AC−CD",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각비로CA를 구하라는 발문 요구를 반영하고45°삼각형의CD를 빼서AD를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "∠ACB=90°"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각비로CA를 구하라는 발문 요구를 반영하고45°삼각형의CD를 빼서AD를 구한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_3630ea0897715a1882063f30d0473c6215a675ab11ef0f5f828a113ec774a18b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "44bf4ee95c2db12237ace15b27717f4f7a376fa2b505742453cab827c21ecdef"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\mathrm{ABC}$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{BC}}=6\\sqrt{2}\\text{ cm}$"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{B}=45^\\circ$, $\\angle\\mathrm{C}=75^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "삼각형의 둘레"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "∠A=180°−45°−75°=60°",
+            "evidenceType": "IMPLIED",
+            "justification": "보조수선으로45°·60° 직각삼각형을 만들어 AB,AC를 삼각비로 복원하고 둘레와 넓이에 재사용한다."
+          },
+          {
+            "term": "보조선",
+            "src": "solution",
+            "quote": "C에서 AB에 수선 CH를 내린다.",
+            "evidenceType": "IMPLIED",
+            "justification": "보조수선으로45°·60° 직각삼각형을 만들어 AB,AC를 삼각비로 복원하고 둘레와 넓이에 재사용한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "CH=6√2×sin45°",
+            "evidenceType": "IMPLIED",
+            "justification": "보조수선으로45°·60° 직각삼각형을 만들어 AB,AC를 삼각비로 복원하고 둘레와 넓이에 재사용한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이=1/2×AB×CH",
+            "evidenceType": "IMPLIED",
+            "justification": "보조수선으로45°·60° 직각삼각형을 만들어 AB,AC를 삼각비로 복원하고 둘레와 넓이에 재사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "보조수선으로45°·60° 직각삼각형을 만들어 AB,AC를 삼각비로 복원하고 둘레와 넓이에 재사용한다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_c6bda5a967fc9d9a39b1ce6342e9266b17e30bf0646537e79886d270d1928f53",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b2ff822b4ae02edb6e117a1ee3ca36815e535a1ce0870e05ff3834cbf31dba98"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\mathrm{ABC}$"
+          },
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$는 접점"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AB}}=7\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{BF}}=x$의 값"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "변 $\\mathrm{AC}$에 대하여 등식"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 조각을 x,7−x,8−x로 나타내 AC의 길이 등식을 세운다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "5=(7−x)+(8−x)",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 조각을 x,7−x,8−x로 나타내 AC의 길이 등식을 세운다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "원에 외접하고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선 조각을 x,7−x,8−x로 나타내 AC의 길이 등식을 세운다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_79c6a5d01f892965a443cad4c20fcd91af662f3a83c55d4a3277921345ebd95c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "28bb78b3c3ee34d1d32fb035ec8954ce30c7a1563d70d6b0a98b7cf79a434937"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "solution",
+            "quote": "ABCD는 원에 내접하므로"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "연장선의 교점"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AB}}=7\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{CD}}=x$의 값"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$x$에 관한 등식"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "∠BAC+∠BDC=180°",
+            "evidenceType": "IMPLIED",
+            "justification": "점의 순서로 전체할선길이를 더하고 보각 관계로 닮음을 세워 외부×전체 길이의 비례식을 얻는다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "△PAC∼△PDB",
+            "evidenceType": "IMPLIED",
+            "justification": "점의 순서로 전체할선길이를 더하고 보각 관계로 닮음을 세워 외부×전체 길이의 비례식을 얻는다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "PB=PA+AB=5+7=12",
+            "evidenceType": "IMPLIED",
+            "justification": "점의 순서로 전체할선길이를 더하고 보각 관계로 닮음을 세워 외부×전체 길이의 비례식을 얻는다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "5×12=4×(4+x)",
+            "evidenceType": "IMPLIED",
+            "justification": "점의 순서로 전체할선길이를 더하고 보각 관계로 닮음을 세워 외부×전체 길이의 비례식을 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "일직선",
+            "src": "solution",
+            "quote": "P-A-B 순서"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "점의 순서로 전체할선길이를 더하고 보각 관계로 닮음을 세워 외부×전체 길이의 비례식을 얻는다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_21d63a9e9bc6b47608c3cb9c22a5e9943b3118b1b7e9240958605d52b3a7b24c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dd2f18269c9d2eba79500a547c01b39c8aaf9334f0532a9efce7e11ca904108d"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "∠C=90°"
+          },
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "접점이다"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름 $\\overline{\\mathrm{OQ}}=2\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AP}}=x$의 길이"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "세 변에 관한 등식"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "AP=AR=x, BP=BQ=10−x",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름이 직각꼭짓점의 접선 조각2가 되어 세 변이 정해진다. 이차방정식의 두 근을 AP>BP 조건으로 걸러낸다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "10²=(x+2)²+(12−x)²",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름이 직각꼭짓점의 접선 조각2가 되어 세 변이 정해진다. 이차방정식의 두 근을 AP>BP 조건으로 걸러낸다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "0=(x−4)(x−6)",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름이 직각꼭짓점의 접선 조각2가 되어 세 변이 정해진다. 이차방정식의 두 근을 AP>BP 조건으로 걸러낸다."
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "x>10−x, 즉 x>5",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름이 직각꼭짓점의 접선 조각2가 되어 세 변이 정해진다. 이차방정식의 두 근을 AP>BP 조건으로 걸러낸다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "원에 외접하고"
+          },
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "∠C=90°"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AP}} > \\overline{\\mathrm{BP}}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "반지름이 직각꼭짓점의 접선 조각2가 되어 세 변이 정해진다. 이차방정식의 두 근을 AP>BP 조건으로 걸러낸다.",
+        "condition": "수치·도형의 주어진 관계는 given 인용에 보존하고, 별도의 범위·직각 등 풀이 제한은 condition에 기록했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "judgedBy": {
+        "agent": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED",
+        "reviewedBy": "author_b",
+        "at": "2026-11-14T11:10:58.199432+00:00",
+        "scope": "Source stem, choices, existing solution and actual assets; no independent peer review claimed."
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "allItemsRead": true,
+    "goalsAreTargets": true,
+    "methodCompletenessRead": true,
+    "specificStructuresRead": true,
+    "conditionsRead": true,
+    "freshSourceJudgment": true,
+    "notAnIndependentReview": true
+  }
+}

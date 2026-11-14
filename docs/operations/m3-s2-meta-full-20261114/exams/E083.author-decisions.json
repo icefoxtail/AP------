@@ -1,0 +1,1192 @@
+{
+  "examId": "E083",
+  "sourceArchiveFile": "original/middle/m3/2final/15_왕의중_2학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "360f8bd3c72672b968bd3c622cc2c34c929b3afc",
+  "author": "author_b",
+  "judgedAt": "2026-11-14T11:09:27.821333+00:00",
+  "freshFreeze": true,
+  "existingTargetMetadataViewed": false,
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_2a72eeb5302460c6fc84ee114586a012c5b2aaebf67bdcc371102e280e7776fb",
+      "primaryMethod": "여각인 두 각의 코사인·사인 관계와 직각삼각형의 빗변을 이용한다.",
+      "decisiveStep": "BC=13이고 x+B=90°이므로 cosx=sinB=5/13이다.",
+      "rpmRecordId": "M3-RPM-144",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "피타고라스로 빗변을 보충하고 직각인 DE와 BC에서 여각을 확인한다. 여각 삼각비는 Primary이다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 표시각을 큰 삼각형 각으로 옮긴다. 2단계: 익숙한 여각 전환과 빗변 보충 뒤 정의를 적용한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q01.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q1-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "△ABC에서 ∠A=90°이므로 피타고라스 정리를 쓰면\nBC²=12²+5²=144+25=169\nBC=13\nDE ⟂ BC이므로 x와 ∠B는 서로 여각이다. 따라서 cos x=sin∠B=AC/BC=5/13이다.",
+        "interpretation": "BC=13이고 x+B=90°이므로 cosx=sinB=5/13이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "AB12,AC5,A90→BC13. DB는BA방향,DE⊥BC이므로 x=90−B. cosx=sinB=5/13=①. 두 도형 확인.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_ae06f0135e3418203bdb7929f416775e26617ba4c9282e58243046767ff5aea6",
+      "primaryMethod": "내각비를 실제 각도로 바꿔 특수각 삼각비를 계산한다.",
+      "decisiveStep": "각비2:1:3에서 A60°,B30°,C90°이므로 합은1/2+√3이다.",
+      "rpmRecordId": "M3-RPM-146",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "내각합180을 비율로 나눈 뒤 특수각 계산을 한다. 별도 각범위 분기 없음.",
+      "level": "하",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "difficultyReason": "학습수준 하: 비례배분과 특수각값의 기본 연결. 2단계: 각비를 각도로 바꾸는 전처리가 필요하다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q2-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "∠A:∠B:∠C=2:1:3이고 삼각형의 내각의 합은 180°이므로\n∠A=180°×2/6=60°, ∠B=180°×1/6=30°, ∠C=180°×3/6=90°\nsin B+tan A=sin30°+tan60°\n=1/2+√3\n=(1+2√3)/2",
+        "interpretation": "각비2:1:3에서 A60°,B30°,C90°이므로 합은1/2+√3이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "전체비6, 한몫30°. A60,B30→sinB+tanA=1/2+√3=(1+2√3)/2=②.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_cb33224931a0ceadd35f213c7d297d506be95e9c6760cfd2c41b037e5992d487",
+      "primaryMethod": "사분원에서 사인·코사인의 선분 의미와 각이 작아질 때의 변화를 비교한다.",
+      "decisiveStep": "x가 감소하면 높이 AC는 감소하지만 밑변 BC는 증가하여⑤가 거짓이다.",
+      "rpmRecordId": "M3-RPM-144",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "단위원 삼각비 관계와 증감은 Primary 안에서 확인한다. 0<x<90의 범위가 증감·부호 판단을 보장한다.",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "difficultyReason": "학습수준 하: 사인과 코사인의 기본 증감을 안다. 1단계: 각감소와 두 선분의 변화를 직접 대응한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q03.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q3-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "그림의 단위원에서 sin x는 높이 AC, cos x는 밑변 BC에 해당한다. x가 0°에 가까워지면 sin x는 0에 가까워져 작아지고, cos x는 1에 가까워져 커진다. 그러므로 sin x와 cos x가 모두 작아진다는 ⑤가 옳지 않다.",
+        "interpretation": "x가 감소하면 높이 AC는 감소하지만 밑변 BC는 증가하여⑤가 거짓이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "AB=BD1,AC=sinx,BC=cosx,DE=tanx. x<45→sin<cos; x감소 시sin↓cos↑. 틀린⑤ 확인.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_fc104847bb2e46b183e1a975913f348c950866eed5c358b82f6aee8446701d02",
+      "primaryMethod": "특수각의 기준값과 삼각비의 증감을 이용하여 서로 다른 비의 크기를 비교한다.",
+      "decisiveStep": "tan60>1=tan45>sin70>1/2=cos60>sin10이다.",
+      "rpmRecordId": "M3-RPM-144",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [
+        "CC_SPECIAL_ANGLES"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "특수각1,1/2를 비교 기준으로 써 삼각비 관계를 정한다. 각들이0°~90° 안이라 단조성과 범위0~1을 사용한다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 다른 종류 삼각비 사이에 공통 기준을 놓는다. 2단계: 알려진1과1/2에 대조하는 표준 비교이다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q4-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "탄젠트는 0°와 90° 사이에서 각이 커질수록 커지고, 사인은 커지며, 코사인은 작아진다.\n따라서 tan60°>tan45°=1이다.\nsin70°>sin60°=√3/2>1/2=cos60°이다.\nsin70°<1=tan45°이다.\nsin10°<sin30°=1/2=cos60°이다.\n그러므로 큰 것부터 ㉤, ㉢, ㉣, ㉡, ㉠ 순이다.",
+        "interpretation": "tan60>1=tan45>sin70>1/2=cos60>sin10이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "tan60√3>tan45=1; sin70∈(√3/2,1); cos60=1/2; sin10<sin30=1/2. ㉤㉢㉣㉡㉠=④.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_dd57a0d72fcbe438dcd091c20c42228e77062686b6b14c53deef2b29a9326765",
+      "primaryMethod": "C에서 밑변에 수선을 내려 특수각의 직각삼각형과 피타고라스를 연결한다.",
+      "decisiveStep": "AH=3,CH=3√3,BH=6이므로 CB²=36+27=63이다.",
+      "rpmRecordId": "M3-RPM-154",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "특수각 길이와 피타고라스의 결합 자체가 Primary L4이다. 별도의 CC 중복과 수제한은 없다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "학습수준 중: 수선으로 두 직각삼각형을 만든다. 3단계: 보조선을 선택하여 주어진 끼인각을 길이로 바꾸고 다른 변을 구한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q05.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q5-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "C에서 AB에 수선을 내려 발을 H라 하자. △ACH는 ∠A=60°, ∠H=90°이고 AC=6인 직각삼각형이다. 30°–60°–90° 삼각형의 변의 비를 쓰면\nAH=3\nCH=3√3\nBH=AB−AH=9−3=6\n직각삼각형 BCH에서\nCB²=BH²+CH²\n=6²+(3√3)²\n=36+27=63\nCB=√63=3√7",
+        "interpretation": "AH=3,CH=3√3,BH=6이므로 CB²=36+27=63이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "AC6,A60→AH6cos60=3,CH6sin60=3√3. BH9−3=6. BC√(36+27)=3√7=③.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_c5dfb97f1891fc3888e7057819ea13110d9999bdbd79a4913090cd5846d43ba0",
+      "primaryMethod": "높이를 x로 놓고45° 삼각형의 밑변도 x로 나타내 탄젠트 방정식을 푼다.",
+      "decisiveStep": "HC=AH=x, BH=12−x, tan30=x/(12−x)에서 x=6√3−6이다.",
+      "rpmRecordId": "M3-RPM-149",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_RIGHT_TRIANGLE",
+        "CC_LINEAR_EQUATIONS",
+        "CC_RADICAL_RATIONALIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "45°의 등변성으로 길이를 하나의 변수로 통일하고 삼각비에서 얻은 일차식을 풀어 유리화한다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "학습수준 중: 높이가 밑변 분할까지 결정한다는 구조를 잡는다. 3단계: 두 삼각형을 같은 미지수 방정식으로 결합한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q06.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q6-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "AH ⟂ BC이므로 △AHC는 ∠H=90°, ∠C=45°인 직각삼각형이다. 따라서 HC=AH라고 두면\nBH=12−HC=12−AH\n△ABH에서 tan30°=AH/BH이므로\n1/√3=AH/(12−AH)\n12−AH=√3·AH\n12=(√3+1)AH\nAH=12/(√3+1)\n=12(√3−1)/2=6√3−6",
+        "interpretation": "HC=AH=x, BH=12−x, tan30=x/(12−x)에서 x=6√3−6이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "HC=x,BH12−x. x/(12−x)=1/√3→(√3+1)x12→x12/(√3+1)=6√3−6=④;0<x<12 만족.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_376c873d683c6cd6d2872696e1885f653fe3a93cb4ee961887a02c0201c75dda",
+      "primaryMethod": "대각선으로 나눈 정삼각형과 이등변삼각형의 높이를 피타고라스로 구한다.",
+      "decisiveStep": "AC=6이고 두 높이가3√3,√3이어서 넓이합12√3이다.",
+      "rpmRecordId": "M3-RPM-150",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "도형 성질로 밑변6과 반밑변3을 정한 뒤 피타고라스로 두 높이를 얻는다. 최종 다각형 넓이가 Primary이다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 한 대각선을 공유하는 두 삼각형의 구조를 읽는다. 3단계: 분할 전략 및 등변성·높이를 결합한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q07.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q7-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "AB=BC=6cm, ∠B=60°이므로 △ABC는 정삼각형이므로 AC=6cm이다. 정삼각형의 높이는 밑변을 반으로 나누므로\n높이=√(6²−3²)=√27=3√3cm\n△ABC의 넓이=1/2·6·3√3=9√3cm²\n△ADC에서 AD=CD=2√3cm이고 ∠D=120°이다. D에서 AC에 내린 높이를 DE라 하면 이등변삼각형의 꼭짓점각을 이등분하므로 ∠ADE=60°이고 AE=AC/2=3cm이다. 직각삼각형 ADE에서\nDE=√(AD²−AE²)\n=√((2√3)²−3²)\n=√(12−9)=√3cm\n△ADC의 넓이=1/2·6·√3=3√3cm²\n사각형 ABCD의 넓이=9√3+3√3=12√3cm²",
+        "interpretation": "AC=6이고 두 높이가3√3,√3이어서 넓이합12√3이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "ABC는6,6,끼인각60이라 정삼각형; h√(36−9)=3√3. ADC의h√(12−9)=√3. 6(3√3+√3)/2=12√3=③.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_1860d0a9e596a101016c42139217d6ecd482209e87a3137ed9eea78f6728db95",
+      "primaryMethod": "현의 중점과 원의 중심을 이은 수선을 이용해 반지름 방정식을 세운다.",
+      "decisiveStep": "OM=x−3,AM=4,OA=x인 직각삼각형에서 x²=(x−3)²+16이다.",
+      "rpmRecordId": "M3-RPM-156",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "현의 수직이등분선 위에 중심이 있다는 Primary로 직각을 확보하고 피타고라스를 적용한다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "학습수준 중: 중심에서 현까지의 거리를 x−3으로 나타낸다. 2단계: 표준 현-반지름 직각삼각형에서 한 방정식을 세운다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q08.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q8-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "AM=BM이므로 M은 현 AB의 중점이고, 중심에서 현의 중점에 그은 선분 OM은 AB에 수직이다. 반지름을 x라 하면 OC=x이고 CM=3이므로 OM=x−3이다. 직각삼각형 OMA에서\nOA²=OM²+AM²\nx²=(x−3)²+4²\nx²=x²−6x+9+16\n6x=25\n따라서 6x=25cm이다.",
+        "interpretation": "OM=x−3,AM=4,OA=x인 직각삼각형에서 x²=(x−3)²+16이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "AM=BM4→OM⊥AB. O,M,C순으로OCx,MC3→OMx−3. x²=(x−3)²+16→6x25=②; x25/6>3.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_3e07df76b970253d469d1724c964d05b828072bce17d7e862192730b2283d6d8",
+      "primaryMethod": "외접사각형과 내접사각형의 조건을 구별하여 대각합 주장을 판단한다.",
+      "decisiveStep": "대각합180°는 내접사각형의 성질이며 외접만으로는 보장되지 않는다.",
+      "rpmRecordId": "M3-RPM-165",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_CIRCUMSCRIBED_POLYGON",
+        "CC_COUNTEREXAMPLE_CONDITION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "crossConditionRationale": "결정적 거짓 명제는 대각의 보각을 외접 조건에 잘못 적용한 것이다. 외접 조건과 보각의 충분조건을 구별한다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 내접·외접의 서로 다른 성질을 구분한다. 2단계: 조건의 종류를 한 번 해석하여 익숙한 정리의 적용 가능성을 판정한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q09.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q9-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "원에 접하는 사각형은 마주 보는 변의 길이의 합이 같지만, 마주 보는 각의 합이 항상 180°인 것은 아니다. 따라서 바르지 않은 설명은 ④이다.",
+        "interpretation": "대각합180°는 내접사각형의 성질이며 외접만으로는 보장되지 않는다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "①중심수선이 현이등분,②등거리현 같음,③그림의 같은호 중심각/원주각관계,⑤접선길이 같음 모두 참. 비정사각 마름모는 내접원 있으나 대각합 일반180아님→④.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_0879dc94586121402538bd51be7193eae497aadd9e5d02e58b8028662529251c",
+      "primaryMethod": "내접사각형에 접선의 대변합 성질을 적용할 수 있는지 반례로 판단한다.",
+      "decisiveStep": "1×2 직사각형은 원에 내접하지만 두 대변합이2와4로 달라③이 거짓이다.",
+      "rpmRecordId": "M3-RPM-160",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_COUNTEREXAMPLE_CONDITION",
+        "CC_RECTANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "crossConditionRationale": "결정적 주장은 접선 조건에서 생기는 대변합 관계이다. 내접이라는 다른 조건 아래 반례를 구성하여 부당한 전이를 배제한다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 성질이 성립하는 가정을 구별한다. 2단계: 친숙한 직사각형 한 반례로 진술을 확인한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q10.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q10-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "원 위의 점 A, B, C, D를 꼭짓점으로 하는 가로 1 cm, 세로 2 cm의 직사각형을 생각한다.\n직사각형은 원에 내접할 수 있고, AB=CD=1 cm, AD=BC=2 cm이다.\nAB+CD=1+1=2 cm\nAD+BC=2+2=4 cm\n두 합이 다르므로 항상 같다는 ③은 옳지 않다.",
+        "interpretation": "1×2 직사각형은 원에 내접하지만 두 대변합이2와4로 달라③이 거짓이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "그림①지름각90,②같은호각같음,④접현각,⑤내접사각형 외각=대각 참. 1×2직사각형의 대변합2≠4이므로③만 거짓.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_2f68180cd5f5ad2a5e5c7cbb9bd83bf7f5f5bcb69f66efd36fdd770ad28a5a0d",
+      "primaryMethod": "접선 조각을 재배열하여 대변합을 구하고3:5로 나눈다.",
+      "decisiveStep": "AB+CD=AD+BC=24이므로 CD=24·5/8=15이다.",
+      "rpmRecordId": "M3-RPM-160",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "접선 성질에서 대변합과 비례배분을 구하는 Primary 내부 절차다. 추가 정수나 부호 조건 없음.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 외접사각형의 대변합을 적용한다. 2단계: 합과 비에서 길이를 복원한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q11.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q11-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "접점을 차례로 E∈AB, F∈BC, G∈CD, H∈DA라 하자.\n같은 점에서 원에 그은 두 접선의 길이는 같으므로 AE=AH, BE=BF, CF=CG, DG=DH이다.\nAB+CD=(AE+BE)+(CG+DG)\n=(AH+BF)+(CF+DH)\n=(AH+HD)+(BF+FC)\n=AD+BC=14+10=24 cm\nAB:CD=3:5이므로 CD는 합 24 cm의 5/8이다.\nCD=24×5/8=15 cm.",
+        "interpretation": "AB+CD=AD+BC=24이므로 CD=24·5/8=15이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "동일꼭짓점접선쌍 합으로 AB+CD24; 전체비8 중CD5→15=⑤.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_b6713a158c0b9923900232f1bc2540d47f3de86fef783d5d358b49ebe3434680",
+      "primaryMethod": "각 A가 보는 호가 주어진 작은 호의 반대편 큰 호임을 확인한다.",
+      "decisiveStep": "큰 호의 중심각은360−160=200°이므로 x=100°이다.",
+      "rpmRecordId": "M3-RPM-163",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "같은 호를 정확히 선택하는 중심각-원주각 Primary이다. 별도 보조개념이나 수범위 제한 없음.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "difficultyReason": "학습수준 중: 꼭짓점이 놓인 호와 바라보는 호를 구별한다. 2단계: 전체360°에서 작은 호를 빼는 전처리이다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q12.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q12-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "A가 놓인 작은 호 BC의 중심각은 160°이다.\n∠A가 보는 큰 호 BC=360°−160°=200°\n∠A=200°÷2=100°",
+        "interpretation": "큰 호의 중심각은360−160=200°이므로 x=100°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "A는160° 작은호BC위. A가 보는 반대호200°→원주각100°=③. 원그림·해설 강조호 확인.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_e03211990134a6a606e7ccc8672a7ec22492f83d57302ecf2fbd7a8417c935b1",
+      "primaryMethod": "호 길이의 원둘레 비를 원주각으로 바꾸고 교차점의 외각을 구한다.",
+      "decisiveStep": "호AB72°,CD60°에서 원주각36°,30°를 얻어 x=66°로 더한다.",
+      "rpmRecordId": "M3-RPM-168",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_SUPPLEMENTARY_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "여러 원주각의 결합은 Primary이고 삼각형 외각이 두 원격내각 합이라는 성질을 마지막에 사용한다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "학습수준 중: 보조현 CB를 선택하여 교차각을 삼각형 외각으로 만든다. 3단계: 떨어진 두 호 정보를 하나의 각합으로 연결한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q13.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q13-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "호 AB=360°×1/5=72°이다.\n호 CD=360°×1/6=60°이다.\nCB를 그으면, ∠ACB는 호 AB를 보는 원주각이므로 ∠ACB=72°÷2=36°이다.\n∠CBD는 호 CD를 보는 원주각이므로 ∠CBD=60°÷2=30°이다.\nP는 AC 위에 있고, B-P-D가 한 직선이므로 △BPC에서 ∠BCP=36°, ∠PBC=30°이다.\n∠APB는 △BPC의 P에서의 외각이므로 외각의 성질에 따라\n∠APB=∠BCP+∠PBC=36°+30°=66°.",
+        "interpretation": "호AB72°,CD60°에서 원주각36°,30°를 얻어 x=66°로 더한다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "원둘레의1/5→72°,1/6→60°. CB를그려∠BCP36,∠PBC30; P외각APB=66°=②.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_240dd5367518b1b1b4c233cd5a430c41ca273ba4b12b211c50e03a75c33af275",
+      "primaryMethod": "지름의 반원과 원주각이 보는 큰 호를 구별하여 남은 호를 찾는다.",
+      "decisiveStep": "∠ABC120°가 보는 호ADC240°에서 반원CD180°를 빼면 호AD60°이다.",
+      "rpmRecordId": "M3-RPM-164",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "반원과 원주각의 기본 관계로 끝난다. 그림의 접선은 이 해법에서 사용하지 않아 CC나 제한으로 과잉 기록하지 않는다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 큰 호에서 반원을 떼어내는 구조이다. 2단계: 2배·180°차·절반이라는 표준 각 추적이다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q14.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q14-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "∠ABC가 보는 호 ADC의 크기는 두 배이다.\n호 ADC=2×120°=240°\nCD는 지름이므로 호 CD=180°\n호 AD=240°−180°=60°\n∠ACD는 호 AD에 대한 원주각이다.\n∠ACD=60°÷2=30°",
+        "interpretation": "∠ABC120°가 보는 호ADC240°에서 반원CD180°를 빼면 호AD60°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "A,D,C를지나는호240, CD는지름이라D→C중 A없는반원180. AD호60, C원주각30°=③. 대각보각으로D60,A90,C30도 일치.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_ad569cc43619acdf592562431274f0ffa00e03d1e9f05c2d512c2bd805466f88",
+      "primaryMethod": "접현각을 원주각으로 옮기고 같은 호의 두 현이 만드는 이등변삼각형을 사용한다.",
+      "decisiveStep": "B=55°이고 AC=BC이므로 A=55°, C=70°이다.",
+      "rpmRecordId": "M3-RPM-167",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "접현각 Primary 뒤 같은 호의 현으로 등변 밑각과 삼각형 내각합을 적용한다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 접현각과 호의 같음을 각각 각 조건으로 옮긴다. 2단계: 친숙한 정리를 순차 적용하면 된다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q15.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q15-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "접선과 현 AC가 이루는 각으로 ∠ABC=55°이다.\n호 AC=호 BC이므로 현 AC=현 BC이다.\n따라서 ∠A=∠B=55°\n∠C=180°−55°−55°=70°",
+        "interpretation": "B=55°이고 AC=BC이므로 A=55°, C=70°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "∠CAT55=∠ABC. 호AC=BC→현AC=BC→A=B55. C180−110=70°=②.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_b1be8d6f7368365dc3c28bb8adcee35f9da0417245a20f6aed01295e4971616e",
+      "primaryMethod": "같은 현에 대한 각의 같음 또는 대각합180°를 네 그림에서 확인한다.",
+      "decisiveStep": "가와 나의 숨은 각이 각각50°,30°이고 다는55°=55°, 라는85°+95°=180°이다.",
+      "rpmRecordId": "M3-RPM-166",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM",
+        "CC_SUPPLEMENTARY_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "공원조건 자체는 Primary이다. 두 교차삼각형의 숨은 각을 내각합과 보각으로 준비한다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 여러 공원 판별 기준을 구별한다. 2단계: 각 그림의 짧은 각 계산 뒤 기준을 적용한다; 보기 네 개로 상향하지 않는다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q16.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q16-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "가에서 AD와 BC의 교점을 X라 하자.\n교차점의 이웃한 각이 180°−100°=80°이다. 삼각형 XBD에서\n∠XDB=180°−80°−50°=50°\n따라서 ∠ADB=∠ACB=50°이고, 두 각이 같은 현 AB를 보므로 가는 한 원 위에 있다.\n나에서 AC와 BD의 교점을 X라 하자.\n∠AXD=90°, ∠DAX=60°이므로\n∠ADX=180°−90°−60°=30°\n따라서 ∠ADB=∠ACB=30°이고 두 각이 같은 현 AB를 보므로 나는 한 원 위에 있다.\n다에서는 ∠ADB=∠ACB=55°로 두 각이 같은 현 AB를 본다. 따라서 다도 한 원 위에 있다.\n라에서는 마주 보는 각의 합이\n85°+95°=180°\n이므로 라도 한 원 위에 있다.\n따라서 네 경우가 모두 해당하므로 ⑤이다.",
+        "interpretation": "가와 나의 숨은 각이 각각50°,30°이고 다는55°=55°, 라는85°+95°=180°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "가:교차이웃각80,B50→D50=C50. 나:직각교차와A60→D30=C30. 다:ADB=ACB55(원그림 확대확인). 라:B85+C95=180. 모두해당⑤.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_7d058d46a920a523d6488dd232f2444392bacee3732564947f92d84e3e2e0731",
+      "primaryMethod": "두 외부 삼각형의 각합과 내접사각형 대각합을 연립한다.",
+      "decisiveStep": "A+D203,A+B221,B+D180에서 A122를 얻어 C58°이다.",
+      "rpmRecordId": "M3-RPM-165",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM",
+        "CC_SUPPLEMENTARY_ANGLES",
+        "CC_SIMULTANEOUS_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "crossConditionRationale": "외부각 두 조건과 내접대각 보각 관계가 함께 있어야 하나의 내각이 결정된다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 보각으로 표시한 외부 삼각형 관계를 결합한다. 3단계: 세 각식을 선별해 연립하는 구조이다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q17.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q17-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "사각형 ABCD는 원에 내접하므로 ∠A+∠C=180°, ∠B+∠D=180°이다.\n△PAD에서 PA는 AB의 연장선이고 PD는 CD의 연장선이므로\n∠PAD=180°−∠A, ∠PDA=180°−∠D이다.\n삼각형의 내각의 합을 쓰면\n(180°−∠A)+(180°−∠D)+23°=180°\n∠A+∠D=203°이다.\n△QAB에서 QA는 AD의 연장선이고 QB는 BC의 연장선이므로\n∠QAB=180°−∠A, ∠QBA=180°−∠B이다.\n삼각형의 내각의 합을 쓰면\n(180°−∠A)+(180°−∠B)+41°=180°\n∠A+∠B=221°이다.\n∠D=180°−∠B이므로 ∠A+∠D=203°에 대입하면 ∠A−∠B=23°이다.\n∠A+∠B=221°와 ∠A−∠B=23°에서 ∠A=122°이다.\n∠A+∠C=180°이므로 x=∠C=58°.",
+        "interpretation": "A+D203,A+B221,B+D180에서 A122를 얻어 C58°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "PAD각합→A+D203. QAB각합→A+B221. B+D180→A−B23. 2A244→A122,C58°=④. 도형방향 확인.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_6d04d1568ef3791bd954c42358954ad494445ceb20136818678bc51cc14ebd7a",
+      "primaryMethod": "같은 호의 원주각과 맞꼭지각으로 닮음을 만든다.",
+      "decisiveStep": "△APC∼△DPB에서 AP·PB=DP·PC=12이므로 x=2이다.",
+      "rpmRecordId": "M3-RPM-162",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_VERTICAL_ANGLES",
+        "CC_TRIANGLE_SIMILARITY_AA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "원주각에 맞꼭지각을 보태 닮음비로 변환한다. 길이의 추가 수조건은 없다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "학습수준 중: 교차 현의 대응삼각형을 고른다. 3단계: 각의 같음을 비례식으로 연결하는 선택이 필요하다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q18.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q18-solution-v2.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "△APC와 △DPB에서 ∠APC=∠DPB는 맞꼭지각이다.\n∠ACP=∠ACD이고 ∠DBP=∠DBA이며, 두 원주각은 같은 호 AD를 본다.\n따라서 △APC∼△DPB이다.\n닮음비에서 AP/DP=PC/PB이므로 AP×PB=DP×PC이다.\n6×x=3×4\n6x=12\nx=2 cm.",
+        "interpretation": "△APC∼△DPB에서 AP·PB=DP·PC=12이므로 x=2이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "두각일치로 AP/DP=PC/PB. 6/3=4/x→6x12→x2cm=②. v2해설도형 대응변도 확인.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_bd4b81a925d9636569b9cde5dd38bb05fe1e03d7f68565dd908ec43dd518d7c2",
+      "primaryMethod": "직각삼각형에서 AP를 구하고 원주각 닮음으로 PC를 구한다.",
+      "decisiveStep": "AP=8, AP·PC=DP·PB=24이므로 PC=3,AC=11이다.",
+      "rpmRecordId": "M3-RPM-162",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_SIMILARITY_AA",
+        "CC_VERTICAL_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "피타고라스 전처리 뒤 원주각과 맞꼭지각으로 닮음비를 세운다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 길이 계산 두 단계를 연결한다. 3단계: 직각 정보로 한 변을 보충한 후 닮음의 대응비를 선택한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q19.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q19-solution-v2.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "∠APB=90°이므로 △APB에서 피타고라스 정리를 쓰면\nAP²+BP²=AB²\nAP²+6²=10²\nAP²=64\nAP=8 cm이다.\n△APB와 △DPC에서 ∠APB=∠DPC는 맞꼭지각이고, ∠PAB=∠PDC는 같은 호 BC를 보는 원주각이다.\n따라서 △APB∼△DPC이다.\n닮음비에서 AP/DP=PB/PC이므로 AP×PC=DP×PB이다.\n8×PC=4×6\nPC=3 cm\nP는 A와 C 사이에 있으므로 AC=AP+PC=8+3=11 cm.",
+        "interpretation": "AP=8, AP·PC=DP·PB=24이므로 PC=3,AC=11이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "P직각표시 있음. AP√(100−36)=8. AP/DP=PB/PC→8/4=6/PC→PC3. AC8+3=11=①.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_28ed8f1b2acea0f67ca4c8bb9f2c98a1ae710b025bf4963ddb3078c040c4e057",
+      "primaryMethod": "같은 호와 같은 두 호의 원주각을 이용해 겹치는 두 삼각형의 닮음을 찾는다.",
+      "decisiveStep": "△MPB∼△MBQ에서 MB²=MP·MQ=3·8=24이다.",
+      "rpmRecordId": "M3-RPM-162",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_SIMILARITY_AA",
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "원주각이 만드는 닮음이 핵심이다. 기존 해설의 경로에서는 등변 중점수선과 피타고라스 차가 보조로 사용되며 그 계산도 독립 확인했다.",
+      "level": "상",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "difficultyReason": "학습수준 상: 동일호 조건으로 겹치는 닮음쌍을 찾아야 한다. 3단계: 적절한 삼각형 선택 후 한 비례식으로 해결 가능하며 기존 긴 해설의 길이로4를 부여하지 않는다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q20.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q20-solution-v2.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "△APQ와 △MPB에서 ∠APQ=∠MPB는 맞꼭지각이다.\n∠AQP와 ∠MBP는 모두 호 AM을 보는 원주각이므로 두 삼각형은 닮음이다.\n닮음비에서 AP/MP=PQ/PB이므로 AP×PB=MP×PQ=3×5=15이다.\n호 AM=호 BM이므로 현 AM=현 BM이다. 따라서 △AMB는 이등변삼각형이다.\nAB 위의 중점을 N이라 하면 MN⊥AB이다. AP=a, PB=b라 두면\nBN=(a+b)/2, PN=|a−b|/2이다.\n피타고라스 정리로 BM²=MN²+BN², PM²=MN²+PN²이다.\n두 식을 빼면 BM²−PM²=BN²−PN²\n=((a+b)²−(a−b)²)/4=ab=AP×PB=15이다.\nBM²=PM²+15=3²+15=24\nBM=2√6 cm.",
+        "interpretation": "△MPB∼△MBQ에서 MB²=MP·MQ=3·8=24이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "기존풀이: AP·PB15, BM²−PM²=ab15→BM²24. 별도검산: ∠PMB=QMB,∠MBP=MBA=MQB(같은호AM,BM)→MP/MB=MB/MQ. MQ3+5=8→BM√24=2√6=⑤.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_be91d2de92cddc2bc37fd702c5265039acccffd1180c554251ce541242d82ca3",
+      "primaryMethod": "두 특수각 직각삼각형에서 CA와 CD를 구한 뒤 차를 낸다.",
+      "decisiveStep": "CA=20/tan30=20√3, CD=20이므로 AD=20√3−20이다.",
+      "rpmRecordId": "M3-RPM-148",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_RIGHT_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "삼각비 길이 Primary 뒤45° 직각이등변 성질로 CD를 얻는다. 발문의 삼각비 사용 요구는 해결 방법 요구이며 수제약은 아니다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 공통BC를 두 삼각형에서 사용한다. 2단계: 주어진 삼각비와45° 성질을 직접 결합해 뺀다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/s01.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q21-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "∠ACB=90°, ∠A=30°이므로 tan30°=BC/CA.\n1/√3=20/CA.\nCA=20√3 cm.\n∠BCD=90°, ∠DBC=45°이므로 ∠BDC=45°.\n따라서 △BCD는 직각이등변삼각형이고 CD=BC=20 cm.\nAD=AC−CD=20√3−20 cm.",
+        "interpretation": "CA=20/tan30=20√3, CD=20이므로 AD=20√3−20이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "C90,A30→tan30=20/CA→CA20√3. DBC45,C90→CD20. D는CA위→AD20√3−20. 요구 중간값도 일치.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_3630ea0897715a1882063f30d0473c6215a675ab11ef0f5f828a113ec774a18b",
+      "primaryMethod": "수선 CH로 삼각형을45°·60° 직각삼각형으로 나누어 변과 넓이를 계산한다.",
+      "decisiveStep": "CH=BH=6, AH=2√3, AC=4√3에서 둘레와 넓이를 구한다.",
+      "rpmRecordId": "M3-RPM-149",
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM",
+        "CC_PERIMETER"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "내각합으로A60을 준비하고 삼각비 높이·넓이 Primary를 쓴 뒤 세 변 합을 구한다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 주어지지 않은 수선을 선택해 두 특수각 삼각형을 구성한다. 3단계: 길이 복원과 둘레·넓이를 연결한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/s02.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q22-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "∠A=180°−45°−75°=60°이다.\nC에서 AB에 수선 CH를 내린다.\n△BCH에서 sin45°=CH/BC이므로\nCH=6√2×sin45°=6√2×(√2/2)=6 cm이다.\ntan45°=CH/BH=1이므로 BH=6 cm이다.\n△ACH에서 ∠ACH=90°−60°=30°이다.\ntan30°=AH/CH이므로 AH=6×(1/√3)=2√3 cm이다.\nsin30°=AH/AC=1/2이므로 AC=2AH=4√3 cm이다.\nAB=AH+HB=2√3+6 cm이다.\n(1) 둘레=AB+BC+CA\n=(2√3+6)+6√2+4√3\n=6+6√2+6√3 cm\n(2) 넓이=1/2×AB×CH\n=1/2×(2√3+6)×6\n=18+6√3 cm².",
+        "interpretation": "CH=BH=6, AH=2√3, AC=4√3에서 둘레와 넓이를 구한다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "A60, CH=6√2sin45=6,BH6. AH=6tan30=2√3,AC=4√3. AB6+2√3,둘레6+6√2+6√3,면적(6+2√3)6/2=18+6√3. 전답일치.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_c6bda5a967fc9d9a39b1ce6342e9266b17e30bf0646537e79886d270d1928f53",
+      "primaryMethod": "같은 꼭짓점의 접선 조각을 x로 나타내 AC의 길이 방정식을 세운다.",
+      "decisiveStep": "5=(7−x)+(8−x)이므로 x=5이다.",
+      "rpmRecordId": "M3-RPM-160",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "접선 조각과 전체 변의 합은 Primary 내부이다. 별도 정수 제한이나 해 선택이 없다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 중: 세 변에 공통인 접선 조각을 문자로 표현한다. 2단계: 표준 접선길이 모형의 일차식 하나이다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/s03.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q23-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "같은 점에서 원에 그은 두 접선의 길이는 같으므로\nBD=BF=x, AD=AE, CE=CF이다.\nAB=AD+DB이므로 AD=7−x이다.\nBC=BF+FC이므로 CF=8−x이다.\nAC=AE+EC=AD+CF이다.\n5=(7−x)+(8−x)\n5=15−2x\n2x=10\nx=5 cm.",
+        "interpretation": "5=(7−x)+(8−x)이므로 x=5이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "BD=BFx,AE=AD7−x,EC=CF8−x. AC5=15−2x→x5. 양접선조각2,3,5로 모든변7,8,5 확인.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_79c6a5d01f892965a443cad4c20fcd91af662f3a83c55d4a3277921345ebd95c",
+      "primaryMethod": "외부 두 할선의 삼각형에서 내접각의 보각 관계로 닮음을 세운다.",
+      "decisiveStep": "PA·PB=PC·PD에서5·12=4(4+x)이므로 x=11이다.",
+      "rpmRecordId": "M3-RPM-165",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_SIMILARITY_AA",
+        "CC_SUPPLEMENTARY_ANGLES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "내접 원주각의 보각을 외각으로 옮겨 닮음비를 얻는다. P-A-B와P-C-D의 순서가 덧셈을 정한다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "학습수준 중: 외부 길이와 전체 할선 길이를 구분한다. 3단계: 보각을 통한 닮음과 길이합을 함께 표현한다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/s04.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q24-solution-v2.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "P-A-B 순서이므로 PB=PA+AB=5+7=12 cm이다.\nP-C-D 순서이므로 PD=PC+CD=4+x cm이다.\n△PAC와 △PDB에서 ∠APC=∠DPB는 같은 두 직선이 이루는 각이다.\nAP와 AB는 반대 방향이므로 ∠PAC=180°−∠BAC이다.\nABCD는 원에 내접하므로 ∠BAC+∠BDC=180°이다. 따라서 ∠BDC=180°−∠BAC이다.\nP-C-D 순서이므로 D에서 DP와 DC는 같은 방향이다. 따라서 ∠PDB=∠BDC이다.\n그러므로 ∠PAC=∠PDB이다.\n두 각이 같으므로 △PAC∼△PDB이다.\n닮음비에서 PA/PD=PC/PB이므로 PA×PB=PC×PD이다.\n5×12=4×(4+x)\n60=16+4x\n44=4x\nx=11 cm.",
+        "interpretation": "PA·PB=PC·PD에서5·12=4(4+x)이므로 x=11이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "PB12,PD4+x. A,D가 chordBC반대쪽에 있으므로 BAC+BDC180; PAC=BDC=PDB, P공통각→PAC∼PDB.5(12)=4(4+x)→x11. 원그림점순서확인.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_21d63a9e9bc6b47608c3cb9c22a5e9943b3118b1b7e9240958605d52b3a7b24c",
+      "primaryMethod": "접선길이와 반지름으로 세 변을 x로 표현한 뒤 피타고라스 방정식의 두 근을 조건으로 고른다.",
+      "decisiveStep": "AC=x+2,BC=12−x이므로100=(x+2)²+(12−x)², 근4,6 중x>5여서6이다.",
+      "rpmRecordId": "M3-RPM-160",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_QUADRATIC_EQUATIONS",
+        "CC_ISOSCELES_RIGHT_TRIANGLE"
+      ],
+      "conditionKeys": [
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "직각에서접점거리2를 얻고 피타고라스로 이차방정식을 만든다. AP>BP라는 실제 부등식이 두 근 중6을 고른다.",
+      "level": "상",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습수준 상: 반지름을 접선 조각으로 바꾸고 근의 선택 조건까지 처리한다. 3단계: 표준 접선·직각·이차방정식·범위 선택의 연쇄다.",
+      "imageRead": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/s05.png",
+          "status": "DIRECTLY_READ"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_왕의중_2학기_기말_중3_수학/q25-solution.svg",
+          "status": "DIRECTLY_READ"
+        }
+      ],
+      "solutionEvidence": {
+        "quote": "AP=AR=x, BP=BQ=10−x.\n∠C=90°이고 CO는 각의 이등분선이므로 ∠OCQ=45°이다.\nOQ ⟂ CQ이므로 △OCQ는 45°-45°-90° 삼각형이고 CQ=OQ=2 cm이다.\n같은 점 C에서 그은 두 접선의 길이는 같으므로 CR=CQ=2 cm.\nAB=AP+PB=x+(10−x)=10 cm.\nAC=AR+RC=x+2 cm.\nBC=BQ+QC=(10−x)+2=12−x cm.\nAB²=AC²+BC².\n10²=(x+2)²+(12−x)².\n100=2x²−20x+148.\n0=2x²−20x+48.\n0=x²−10x+24.\n0=(x−4)(x−6).\nx=4 또는 6.\nAP>BP이므로 x>10−x, 즉 x>5.\nx=6 cm.",
+        "interpretation": "AC=x+2,BC=12−x이므로100=(x+2)²+(12−x)², 근4,6 중x>5여서6이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FOR_METADATA_ROUTING",
+        "independentlyChecked": true,
+        "checkedBy": "author_b",
+        "computation": "C90,내심각이등분 및접선수직→CQ=CR2. APx,BP10−x→직각변x+2,12−x. 정리 x²−10x+24=0→4,6. x>10−x→x>5→6; 변8,6,10으로검산.",
+        "scope": "Existing solution decisive mathematical steps and final answer checked; not new R1/R2/R3 blind certification."
+      },
+      "debts": [],
+      "choiceTableUsed": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "curriculum": "2022",
+        "reason": "Actual decisive step matched to locked canonical leaf; original-year leaf retained where current table has no equally precise leaf."
+      }
+    }
+  ]
+}

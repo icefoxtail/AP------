@@ -1,0 +1,182 @@
+{
+  "examId": "E083",
+  "sourceArchiveFile": "original/middle/m3/2final/15_왕의중_2학기_기말_중3_수학.js",
+  "basis": "Definitions/internalSkeleton from official resolver candidates read after independent source judgment freeze. No PT/TPL guessing or direct registry writes.",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_2a72eeb5302460c6fc84ee114586a012c5b2aaebf67bdcc371102e280e7776fb",
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "빗변을 보충하고 여각의 코사인·사인 관계로 비를 직접 변환한다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_ae06f0135e3418203bdb7929f416775e26617ba4c9282e58243046767ff5aea6",
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "reason": "내각비로30°,60°를 정한 뒤 특수각 삼각비를 직접 계산하는 유형이다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_cb33224931a0ceadd35f213c7d297d506be95e9c6760cfd2c41b037e5992d487",
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "결정적 진술은 각이 감소할 때 사인·코사인이 어떻게 변하는지이다. BASIC_RELATION의 정의·골격은 변각관계를 비로 직접 변환하거나 한 비에서 다른 비를 계산하는 것이며, 단위원의 증감판정 골격을 명시하지 않아 동일시하지 않는다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_fc104847bb2e46b183e1a975913f348c950866eed5c358b82f6aee8446701d02",
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "sin10,sin70처럼 비특수각과 특수각의 값을 단조성 및0~1 범위로 정렬한다. BASIC_RELATION의 직접비변환도 특수각값만의 계산도 결정적 크기비교를 덮지 못하므로 삼각비증감·비교형이 필요하다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_dd57a0d72fcbe438dcd091c20c42228e77062686b6b14c53deef2b29a9326765",
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "특수각삼각형의 변비로AH,CH를 정한 뒤 다른 직각삼각형의 피타고라스로 목표CB를 산출한다. 중간길이→다른 도형량의 계산으로 이어가는 골격에 부합한다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_c5dfb97f1891fc3888e7057819ea13110d9999bdbd79a4913090cd5846d43ba0",
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "연결된30°와45° 직각삼각형에서 공통높이AH를 한 변수의 탄젠트식으로 직접 구한다. 넓이·둘레로 넘기는 후속목표가 없어서 DIRECT를 고른다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_376c873d683c6cd6d2872696e1885f653fe3a93cb4ee961887a02c0201c75dda",
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "두 공식후보는 삼각비 계산을 요구한다. 실제 기존 해설과 fresh핵심풀이에는 정삼각형·이등변삼각형의 반밑변과 피타고라스 높이만 있고 삼각비 계산을 사용하지 않았다. 같은 숫자의 다른시험 풀이를 보고 삼각비 골격으로 치환하지 않는다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_1860d0a9e596a101016c42139217d6ecd482209e87a3137ed9eea78f6728db95",
+      "status": "FIT",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "reason": "현AB의 중점M과 중심O를 이은 선이 수직임을 사용하여 반지름방정식의 직각을 만든다. 정의가 목표량을 제한하지 않아6x를 구하는 것도 부합한다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_3e07df76b970253d469d1724c964d05b828072bce17d7e862192730b2283d6d8",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "외접 조건에 내접사각형 대각합을 적용할 수 있는지 판단하는 leaf가 RPM_ONLY이다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_0879dc94586121402538bd51be7193eae497aadd9e5d02e58b8028662529251c",
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "목표는 접선길이가 아니라 내접사각형에도 대변합조건이 성립한다는 진술을 반례로 배제하는 것이다. TM_TANGENT_LENGTH는 실제로 외부점의 접선길이를 구하는 유형이므로 대상이 다르다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_2f68180cd5f5ad2a5e5c7cbb9bd83bf7f5f5bcb69f66efd36fdd770ad28a5a0d",
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "외접사각형 전체 변CD를 대변합과3:5비로 결정한다. 외부점에서 접점까지의 접선길이 자체를 구하는 골격과 다른 대변합 유형이 필요하다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_b6713a158c0b9923900232f1bc2540d47f3de86fef783d5d358b49ebe3434680",
+      "status": "FIT",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "reason": "A가 보는 큰호의 중심각200°를 고르고 원주각을 절반으로 계산한다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_e03211990134a6a606e7ccc8672a7ec22492f83d57302ecf2fbd7a8417c935b1",
+      "status": "FIT",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "reason": "서로 다른 두 호의 원주각36°,30°를 만든 뒤 교차현의 외각으로 결합하여 목표각66°를 얻는다. 복수 원의 각관계 연쇄골격에 맞는다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_240dd5367518b1b1b4c233cd5a430c41ca273ba4b12b211c50e03a75c33af275",
+      "status": "FIT",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "reason": "원주각120°와 지름의180°를 호크기 관계로 옮겨 목표원주각30°를 계산한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_ad569cc43619acdf592562431274f0ffa00e03d1e9f05c2d512c2bd805466f88",
+      "status": "FIT",
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "reason": "접현각55°를 원주각으로 옮긴 뒤 같은호·현과 등변밑각으로 목표각을 구한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_b1be8d6f7368365dc3c28bb8adcee35f9da0417245a20f6aed01295e4971616e",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "동일현을 보는 같은각 및 대각합으로 네점의 공원조건을 판정하는 leaf에 후보가 없다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_7d058d46a920a523d6488dd232f2444392bacee3732564947f92d84e3e2e0731",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "내접사각형 대각합과 두 외부각을 연립하는 leaf에 후보가 없다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_6d04d1568ef3791bd954c42358954ad494445ceb20136818678bc51cc14ebd7a",
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "반환후보 CENTER_ARC는 배수관계로 목표각을 구한다. 실제는 원주각·맞꼭지각→AA닮음→교차현 길이비로 목표BP를 구하여 대상골격이 다르다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_bd4b81a925d9636569b9cde5dd38bb05fe1e03d7f68565dd908ec43dd518d7c2",
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "피타고라스로AP를 보충한 뒤 원주각 닮음으로PC를 얻어 전체현AC를 계산한다. 목표각 배수계산만을 규정한 반환후보와 다르다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_28ed8f1b2acea0f67ca4c8bb9f2c98a1ae710b025bf4963ddb3078c040c4e057",
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "같은 두 호의 원주각을 이용한 겹친삼각형 닮음으로 MB²=MP·MQ를 구하는 길이 문제이다. 기존 해설 역시 닮음과제곱식차가 핵심이며 각의 수치배수 계산이 아니라 CENTER_ARC 후보로 강제하지 않는다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_be91d2de92cddc2bc37fd702c5265039acccffd1180c554251ce541242d82ca3",
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "공통BC를 가진 두 직각삼각형에서CA,CD를 직접 구해 목표AD를 산출한다. 연결된 직각삼각형 측정이라는 정의에 맞는다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_3630ea0897715a1882063f30d0473c6215a675ab11ef0f5f828a113ec774a18b",
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "삼각비로 중간높이와AB,AC를 만든 뒤 둘레와넓이로 연결하는 정의의 대표적 골격이다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_c6bda5a967fc9d9a39b1ce6342e9266b17e30bf0646537e79886d270d1928f53",
+      "status": "FIT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "reason": "목표BF는 원밖의B에서 접점F까지의 접선길이이다. 접선조각의 같음과 세변의 합으로 x를 결정하여 정의에 정확히 맞는다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_79c6a5d01f892965a443cad4c20fcd91af662f3a83c55d4a3277921345ebd95c",
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "외부할선의 AA닮음과 외부×전체 길이의 곱으로CD를 구하지만 반환leaf는 RPM_ONLY이다. 의미상 각의보각을 이용하며 단순각계산 템플릿을 임의부여하지 않는다."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_21d63a9e9bc6b47608c3cb9c22a5e9943b3118b1b7e9240958605d52b3a7b24c",
+      "status": "FIT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "reason": "목표AP는 원밖의A에서 접점P까지의 접선길이이다. 직각·반지름으로 세변을 세우고 피타고라스/이차방정식·부등식으로 그 접선길이를 결정하는 보조단계는CC·Condition에 보존한다."
+    }
+  ]
+}
