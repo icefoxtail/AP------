@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "examId": "E017",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "f332a0afeb83026442445ce7d1a6e216fd415670",
+  "sampled4slotSha256": "e6ffda360dfb649e718eca118fcd5746cefe9b98354d6320fb7f4b0f66eff21b",
+  "sampledReviewSha256": "31d08e9e3e27e8a8f04dd535e3ca36f950020df6dcf2513a4d8640d586514d99",
+  "sampledSourcePatchSha256": "36d22d3ab9148414bf151d29f46b48af2c46c5c74d265a5dbce663e590c45789",
+  "sourcePacketSha256": "e417d4fe7209a2b1d9050b3e9612c22261f9128eca0bcc4f253477ac2cb53f06",
+  "sampled": [
+    1,
+    15,
+    16
+  ],
+  "status": "PASS_AFTER_INTEGRATION_CORRECTION",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_abc338d8026a2f8896d67ffb7bbed0e806f1e22c2170583dba4fd518211682ce",
+      "sourceImageRead": true,
+      "visualStatus": "READ",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 6
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "내접원 반지름과 변의 수직관계로 접선을, 외접원 위 두 점을 이은 선분의 정의로 현을 식별한다. 두 정의는 독립 확인이므로 NONE으로 보완된 최종본이 적절하다. 적은 용어 WARN은 간결한 정의 구조를 반영한다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_2416c0ced14f4d79c071c7dbc380d2ea53fe97cb96b92166d898ed03cd7dfa4b",
+      "sourceImageRead": true,
+      "visualStatus": "READ",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 6
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "공통 Q14의 실제그림과 원주각30도 조건도 함께 읽었다. 중심각60도로 전처리한 뒤 지름30에서 원주를 구해60/360 비례로 호의 길이를 구하므로 M1 RPM089/current202와 sector-measure 재사용이 타당하다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_62f17a8816fa5773a9db3fd751edf6333eb77b0a02c9e1e44630dfb8c504ada0",
+      "sourceImageRead": true,
+      "visualStatus": "READ",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 6
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "그림의58도 원주각→호BC,112도 내부 교차현각→호AD,원주각 x로 전달된다. COMPOSITE080/current168 및 기존 두현이이루는각 후보의 완결된 실제 인용이 맞다.",
+      "status": "PASS"
+    }
+  ],
+  "outstanding": [],
+  "scope": "Three independent metadata/4slot samples; no full-exam R1/R2/R3 certification",
+  "followup": "Q1 독립 정의의 확인을 SEQUENTIAL→NONE으로 교정한 finalmetadata에 결속. Q15 공통그림 Q14의 조건도 실독."
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "id": "B-E017-TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE_INVERSE_MEASURE",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE_INVERSE_MEASURE",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "definition": "접점 반지름과 접선의 직각삼각형에서 주어진 접선 길이 등을 이용해 반지름·중심거리·외부 높이를 구한다.",
+    "internalSkeleton": "접점 직각 → 반지름·접선·중심거리 대응 → 피타고라스 식 → 목표 길이 복원",
+    "distinguishFrom": {
+      "TM_TANGENT_LENGTH": "기존 TPL의 목표는 접선 길이이며 이 후보는 접선 길이를 입력으로 받아 다른 기하량을 복원한다.",
+      "TM_TANGENCY_CONDITION": "이미 접함이 주어진 뒤 길이를 산출하는 구조로, 접함 여부나 조건을 판정하는 구조와 구별한다."
+    },
+    "supportOrdinals": [
+      8,
+      12
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_08ccde892c7adec61737c2833c097e2802a40f49d96939d2c2b4e4579033ca1e",
+      "qid_v1_5755f9c9d9c997f02a3d2d5e1befdc73bbad8a76491197d968d5fb5ec62d79fc"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "notRegistered": true
+  },
+  {
+    "id": "B-E017-CC_PLANE_ROTATIONAL_SYMMETRY",
+    "kind": "NEW_CC",
+    "proposedKey": "CC_PLANE_ROTATIONAL_SYMMETRY",
+    "parentProblemTypeKey": null,
+    "definition": "평면도형을 한 점 주위로 일정 각만큼 회전했을 때 자기 자신과 겹치는 성질을 구조 해석에 이용한다.",
+    "internalSkeleton": "구성 규칙의 반복 → 회전 후 대응 → 도형의 일치",
+    "distinguishFrom": {
+      "CC_POLYHEDRON_COLORING_ROTATION": "입체 면 색칠의 중복 계산용이며 일반 평면 회전 대칭이 아니다.",
+      "CC_CONCENTRIC_ROTATIONAL_COLORING": "원형 영역 색칠의 경우의 수 중복 계산용이며 일반 평면 회전 대칭이 아니다."
+    },
+    "supportOrdinals": [
+      21
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_8d1a53a9d3d783e278bd7a58f45ccd737a46e48e44102b99044ff73275b7c523"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "exactMatch": false
+    },
+    "notRegistered": true
+  },
+  {
+    "id": "B-E017-REUSE-CC_POLYGON_INTERIOR_ANGLE_SUM",
+    "kind": "NEW_CROSSCONCEPT",
+    "proposedKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+    "definition": "다른 primary의 보조 단계에서 단순 다각형의 내각합 (n−2)×180도를 이용해 필요한 각을 복원한다.",
+    "internalSkeleton": "다각형 식별 → 내각합에서 알려진 각 차감",
+    "distinguishFrom": {
+      "CC_TRIANGLE_ANGLE_SUM": "삼각형만을 명시하는 기존 키로 사각형 내각합360도를 투영하지 않는다.",
+      "CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY": "입체 꼭짓점의 면각합 제한과 다르다."
+    },
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      17
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_e0879785596d4546903e64f8b93577645ae4350d983805937dc66d18787d74c2"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "exactMatch": false
+    },
+    "sourceWritePolicy": "제안 키는 등록 전 source/inbox에 넣지 않는다.",
+    "reuseCandidateFrom": "worker-outputs/b/E011/proposals.json",
+    "notRegistered": true
+  },
+  {
+    "id": "B-E017-REUSE-TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "definition": "원에 내접하는 사각형의 대각의 합180도 또는 외각과 내대각이 같다는 관계로 미지각이나 각의 결합값을 정한다.",
+    "internalSkeleton": "대각 쌍을 정한다 → 보각식을 쓴다 → 목표 각 또는 결합값을 구한다.",
+    "distinguishFrom": {
+      "TPL_CIRCLE_ANGLE_COMPOSITE": "원주각·중심각 여러 관계의 연쇄 대신 내접사각형의 대각 관계 자체가 결정 원리다."
+    },
+    "supportOrdinals": [
+      23
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_26ba5f84c88b65529515252ee9a59dea9045f235aa88303f93ef47b8c8808074"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ],
+    "reuseCandidateFrom": "worker-outputs/b/E005/proposals.json",
+    "notRegistered": true
+  }
+]
