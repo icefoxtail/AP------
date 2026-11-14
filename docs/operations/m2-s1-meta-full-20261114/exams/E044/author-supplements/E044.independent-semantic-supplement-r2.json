@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "m2-author-narrow-semantic-supplement-v1",
+  "examId": "E044",
+  "status": "ROOT_ACCEPTANCE_REQUIRED",
+  "createdAt": "2026-11-14T14:09:20.715864+00:00",
+  "originalReviewSha256": "13e67acddb28bfaf1167290894e9ec86889e5f71e4acb85d21c43450a486c70e",
+  "originalFourSlotSha256": "65204cb2cef923e33162f1813cde083496368a6a9bde857983373fa6ae90b496",
+  "priorCandidateSha256": "8e5f908a028b5ba664667bf2fecddf71a81ec6921d8a8b086d2f0daa5df4829f",
+  "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E044.accepted-four-slot-candidate-r2.json",
+  "acceptedFourSlotSha256": "3ba481f3c71f14eea7a7295d456e1ffc09c2f5cac26ba4bfa946ff87a607c971",
+  "basis": "Root additionalQ13check: the40minutes is elapsedtime, not fully represented by generic값 alone. Retain same-slot값131 and declare dictionary candidate경과시간 with definition,parent,usedIn reused from independently acceptedE038 concept.",
+  "changes": [
+    {
+      "sourceOrdinal": 13,
+      "slot": "given",
+      "add": {
+        "term": "경과시간",
+        "src": "stem",
+        "quote": "$40$분 만에",
+        "status": "CANDIDATE",
+        "parent": "값"
+      }
+    }
+  ],
+  "reviewItemUpdates": [
+    {
+      "sourceOrdinal": 13,
+      "registrationDebtAdd": [
+        "FOUR_SLOT_CANDIDATE_ELAPSED_TIME_PENDING"
+      ],
+      "reason": "Explicit elapsed-time candidate declared, not registered dictionary term."
+    }
+  ],
+  "invariants": [
+    "Original review/four/freeze and earliercandidate/supplement immutable.",
+    "Q1/Q11 NAMED corrections retained; no source edits; numericdifficulty unchanged."
+  ]
+}

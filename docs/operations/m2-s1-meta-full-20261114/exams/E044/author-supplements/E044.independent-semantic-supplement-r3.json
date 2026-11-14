@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "m2-author-narrow-semantic-supplement-v1",
+  "examId": "E044",
+  "status": "ROOT_ACCEPTANCE_REQUIRED",
+  "createdAt": "2026-11-14T14:10:06.128308+00:00",
+  "priorCandidateSha256": "3ba481f3c71f14eea7a7295d456e1ffc09c2f5cac26ba4bfa946ff87a607c971",
+  "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E044.accepted-four-slot-candidate-r3.json",
+  "acceptedFourSlotSha256": "beee6068a0f29d265371ad8cf3476edf4576c037e58c4b154511339d02eb8865",
+  "changes": [
+    {
+      "candidate": "경과시간",
+      "field": "note",
+      "before": "시작 이후 지난 시간을 일수로 묻는 실제 목표이며 retired 상황의 시간 alias를 피한다. 등록 전후를 구별하고 같은goal의값parent를 함께 둔다.",
+      "after": "기준 시점 이후 흐른 시간의 양. 이 문항에서는 주어진 40분이며 given의 값 parent와 함께 사용한다. 사전등록 전 CANDIDATE이다."
+    }
+  ],
+  "invariants": [
+    "All prior files immutable. Only candidate note adjusted from earlier goal/day context to actual given40minutes."
+  ]
+}

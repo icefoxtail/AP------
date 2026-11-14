@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "m2-author-narrow-semantic-supplement-v1",
+  "examId": "E044",
+  "status": "ROOT_ACCEPTANCE_REQUIRED",
+  "createdAt": "2026-11-14T14:07:44.929018+00:00",
+  "originalReviewSha256": "13e67acddb28bfaf1167290894e9ec86889e5f71e4acb85d21c43450a486c70e",
+  "originalFourSlotSha256": "65204cb2cef923e33162f1813cde083496368a6a9bde857983373fa6ae90b496",
+  "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E044.accepted-four-slot-candidate.json",
+  "acceptedFourSlotSha256": "8e5f908a028b5ba664667bf2fecddf71a81ec6921d8a8b086d2f0daa5df4829f",
+  "changes": [
+    {
+      "sourceOrdinal": 1,
+      "term": "부등식",
+      "before": {
+        "term": "부등식",
+        "termId": 63,
+        "src": "solution",
+        "quote": "'작지 않다'는 '크거나 같다",
+        "evidenceType": "IMPLIED",
+        "justification": "문장의 비교 관계를 부등호 및 등호 포함 여부로 옮긴다."
+      },
+      "after": {
+        "term": "부등식",
+        "termId": 63,
+        "src": "solution",
+        "quote": "'작지 않다'는 '크거나 같다",
+        "evidenceType": "NAMED"
+      },
+      "basis": "Actual existing solution explicitly names 부등식."
+    },
+    {
+      "sourceOrdinal": 11,
+      "term": "변환",
+      "before": {
+        "term": "변환",
+        "termId": 304,
+        "src": "solution",
+        "quote": "정수 계수로 변형한 뒤 푼다.",
+        "evidenceType": "IMPLIED",
+        "justification": "소수와 분수 식에 각각10,15를 곱한다."
+      },
+      "after": {
+        "term": "변환",
+        "termId": 304,
+        "src": "solution",
+        "quote": "정수 계수로 변형한 뒤 푼다.",
+        "evidenceType": "NAMED"
+      },
+      "basis": "Dictionary 변환304 lists 변형 as canonical synonym; actual quoted solution says 정수 계수로 변형."
+    }
+  ],
+  "invariants": [
+    "Original author review/four-slot/freeze unchanged; source content, solutions, figures, UID, order unchanged.",
+    "Only explicit method evidenceType corrected to NAMED; no semantic/difficulty changes."
+  ]
+}

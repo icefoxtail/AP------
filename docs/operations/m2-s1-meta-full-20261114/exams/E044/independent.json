@@ -1,0 +1,652 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E044",
+  "author": "B",
+  "reviewer": "GPT_ROOT_14C2C64E43FB",
+  "independent": true,
+  "status": "ACCEPT_WITH_NARROW_SUPPLEMENT_AND_NAMED_DEBTS",
+  "createdAt": "2026-11-14T14:10:57.080711+00:00",
+  "sourceGitBlobSha": "b0d95ab4443345e8b872aa4e36004c01740f95ea",
+  "sourceSha256": "99b020f0bfda50dd8408bfc9ebb8ff209c1cfb7375d1f0b219e9510b7acf8780",
+  "reviewSha256": "13e67acddb28bfaf1167290894e9ec86889e5f71e4acb85d21c43450a486c70e",
+  "fourSlotSha256": "65204cb2cef923e33162f1813cde083496368a6a9bde857983373fa6ae90b496",
+  "sampleOrdinals": [
+    6,
+    13,
+    19
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 6,
+      "classification": "실제 분수·소수 계수의 일차부등식 풀이가 RPM139에 부합하고 수직선137은 출력과 관련된 보조 경로다. 2022의 canonical 부모와 target namespace를 구별한다.",
+      "binding": "ACTIVE PT_M2_LINEAR_INEQUALITY_SOLVING 및 TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK는 여러 풀이의 오답 판정을 정의한다. 현재 수직선 선택과 차이가 있어 후보로만 두고 exact binding을 유보한 판단을 수용한다.",
+      "crossConcept": "계수 정수화, 부등호 반전과 수직선 표현은 이 풀이 내부이며 별도 외부 CC를 중복하지 않는다.",
+      "condition": "명시된 부등식 자체는 입력이며 별도 자연수/정수 해 제약을 만들지 않는다.",
+      "integration": "단일 부등식 풀이 과정으로 NONE 수용.",
+      "difficulty": "분수·소수 정수화와 해의 수직선 표현을 연결하는 정형2. 독립2와 일치.",
+      "fourSlot": "실제 그림의 열린3 오른쪽 표시를 확인했다. given 일차부등식, goal 해·수직선, method 정수화·부등식성질·수직선 literal 및 IMPLIED 정수화 근거가 맞다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "classification": "실제 해설은 순차 두 구간의 거리와 시간을 두 변수로 모델링한다. 정본158 마주가기·따라가기 및159 강물·기차와 구별되는 exact leaf gap을 수용한다.",
+      "binding": "해설의 두 거리 모델이 명시되어 한 변수 모델이나 추격 TPL로 강제하지 않은 보류가 타당하다. resolver VERIFIED_FINAL은 미수행 상태로 남긴다.",
+      "crossConcept": "거리/시간 관계와 가감법은 이 모델의 내부 단계이며 별도 중복 CC가 없다.",
+      "condition": "전체 거리와 시간은 입력이다. 문항에 없는 정수제약을 만들지 않는다.",
+      "integration": "하나의 두 변수 모델을 실행하는 구조로 NONE을 수용한다.",
+      "difficulty": "단위 통일 후 두 선형 조건을 세우는 전형적 활용2/B23이며 독립2와 일치한다.",
+      "fourSlot": "실제40분 given을 값131만으로 접지 않도록 경과시간 후보를 같은 칸에 보완한 r3를 직접 확인했다. 후보 note가40분 입력과 일치하고 usedIn/parent가 정확하다. 연립식·시간변환·가감법의 실제 해설 근거도 확인했다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "classification": "기울기·절편·점 소속·평행이동을 함께 판정하여 RPM166 하나에 강제하지 않은 다중 leaf 유보를 수용한다.",
+      "binding": "실제 ACTIVE PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES와 TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH는 식 변환·사분면도 포함하며 현재 평행이동 보기와 차이가 있다. exact binding 유보가 맞다.",
+      "crossConcept": "단일 primary 미확정에 종속된 CC=null을 확인했다. 빈 배열의 확정으로 바꾸지 않는다.",
+      "condition": "보기의 수치·점을 별도 해선택 제약으로 발명하지 않는다.",
+      "integration": "단일 primary 유보에 따라 null 미판정 보존.",
+      "difficulty": "기본 성질의 다중 점검 numeric2를 독립2와 함께 수용하고 학습하의 인접 호환성을 실제 내용으로 판정했다.",
+      "fourSlot": "given 일차함수·그래프, goal 그래프 판정, method 기울기·절편·이동·대입이 실제 전체 해설에 있고 모든 literal을 대조했다."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_0661f73c39292533a9057caea30b063f8ed958142534c0d92a328656296bebca",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_0661f73c39292533a9057caea30b063f8ed958142534c0d92a328656296bebca",
+        "difficulty": 1,
+        "difficultyBoundary": "STABLE",
+        "confidence": "high",
+        "reason": "작지 않다의 등호 포함 여부를 직접 판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "일상 문장의 이상·이하·초과를 한 부등호에 대응시키는 직접 판정이다."
+      },
+      "decision": "ACCEPT",
+      "reason": "작지 않다의 등호 포함 여부를 직접 판정한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0f3fc6deda5a31f788590bc9ee1543900329e9cedf36af80e222660bd15f157b",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_0f3fc6deda5a31f788590bc9ee1543900329e9cedf36af80e222660bd15f157b",
+        "difficulty": 1,
+        "difficultyBoundary": "STABLE",
+        "confidence": "high",
+        "reason": "제시된 값의 대입으로 참거짓을 직접 판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 주어진 수를 대입하여 참거짓을 비교하는 직접 소속 판정이다."
+      },
+      "decision": "ACCEPT",
+      "reason": "제시된 값의 대입으로 참거짓을 직접 판정한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_f26fca4c93cd747127661c4892886470234d4a6a14431df7285cab438be71146",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_f26fca4c93cd747127661c4892886470234d4a6a14431df7285cab438be71146",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "음수 배의 부등호 반전을 직접 적용한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "음수를 곱할 때 부등호 방향 변화와 상수 덧셈 성질을 판정한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "음수 배의 부등호 반전을 직접 적용한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_2e794ccc469c9f2def63321f1b2635aa624c42873cf3f4c8eef3ea5c861f55c8",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_2e794ccc469c9f2def63321f1b2635aa624c42873cf3f4c8eef3ea5c861f55c8",
+        "difficulty": 2,
+        "difficultyBoundary": "STABLE",
+        "confidence": "high",
+        "reason": "전개와 이항 후 차수 소거를 확인한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "식을 전개하여 이차항 소거 여부와 등식 여부를 구분한 뒤 개수를 세어야 한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "전개와 이항 후 차수 소거를 확인한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_e1c7c51b32a15742466ded0fe0fb846a310e963e82351ab61555ae117d0058cb",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_e1c7c51b32a15742466ded0fe0fb846a310e963e82351ab61555ae117d0058cb",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "한 차례 이항과 음수 나눗셈으로 범위를 얻는다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한 단계 이항과 음수 계수 나눗셈으로 기본 일차부등식을 푼다."
+      },
+      "decision": "ACCEPT",
+      "reason": "한 차례 이항과 음수 나눗셈으로 범위를 얻는다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_ddfc75db18d706c5d984ba07512d710b102f0565be4c56f72a106b80157ffb22",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_ddfc75db18d706c5d984ba07512d710b102f0565be4c56f72a106b80157ffb22",
+        "difficulty": 2,
+        "difficultyBoundary": "STABLE",
+        "confidence": "high",
+        "reason": "소수·분수 계수 정수화 후 부등식 풀이와 수직선 표현을 연결한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분수·소수를 정수화하고 부등식을 정리한 뒤 열린 끝점과 방향을 수직선에 연결한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "소수·분수 계수 정수화 후 부등식 풀이와 수직선 표현을 연결한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_66339db77faff0c67b1688454e81d3074448cf6ac82a49b929cf5bac3b6fe66c",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_66339db77faff0c67b1688454e81d3074448cf6ac82a49b929cf5bac3b6fe66c",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "두 부등식의 해를 각각 구해 경계값을 같게 둔다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 부등식을 각각 표준 해 형태로 바꾸고 경계값 일치를 이용하여 매개변수를 결정한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "두 부등식의 해를 각각 구해 경계값을 같게 둔다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_ccdb4b0fcb393e6053daf42477ed8c17bad5406d333ea4b32c91cc2c05b789c6",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_ccdb4b0fcb393e6053daf42477ed8c17bad5406d333ea4b32c91cc2c05b789c6",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "정리한 식의 차수와 남는 미지수 수를 구별한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "두 미지수의 일차식인지 판단하면서 양변에서 미지수가 소거되는 경우를 제외한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "식 정리 후 x 소거를 확인하는 친숙한 정의 판정이므로 기존 학습하와 numeric2의 B12 인접 관계를 수용한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_43400ba8ccb2b493c54c8f27f2c3050a61137a952ddf837bb4d77dcfd73cb1f6",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_43400ba8ccb2b493c54c8f27f2c3050a61137a952ddf837bb4d77dcfd73cb1f6",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "알려진 순서쌍을 각 식에 대입한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "주어진 순서쌍이 각 연립방정식의 두 식을 동시에 만족하는지 대입한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "두 식에 알려진 순서쌍을 반복 대입하는 직접 판정이며 기존 학습중과 numeric1의 B12 인접 관계를 수용한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_ad3b658a8ebc780d4841f5e3a867434fe177b92fb6b0a8ccd82db5b6be02e46b",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_ad3b658a8ebc780d4841f5e3a867434fe177b92fb6b0a8ccd82db5b6be02e46b",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "소거하려는 문자의 계수를 최소공배수로 맞춘다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 x계수의 최소공배수로 지정된 미지수가 소거되는 배수와 뺄셈을 선택한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "소거하려는 문자의 계수를 최소공배수로 맞춘다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_ea8c4ff864248497ba39fd99b07db5571ad34af757cd8ec9322ea3e6d53befd5",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_ea8c4ff864248497ba39fd99b07db5571ad34af757cd8ec9322ea3e6d53befd5",
+        "difficulty": 2,
+        "difficultyBoundary": "STABLE",
+        "confidence": "high",
+        "reason": "계수 정수화 후 가감법과 요구식 계산을 한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소수와 분수의 두 식을 각각 정수화하여 가감한 뒤 두 해의 차를 산출한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "계수 정수화 후 가감법과 요구식 계산을 한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_8160bacfa73107a31d5388202a68259b51a5045f72948d396c8be92a4ccbde04",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_8160bacfa73107a31d5388202a68259b51a5045f72948d396c8be92a4ccbde04",
+        "difficulty": 2,
+        "difficultyBoundary": "STABLE",
+        "confidence": "high",
+        "reason": "관계 y=2x를 이용해 해를 구하고 미지계수에 대입한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 미지수의 추가 비례관계로 해를 정하고 매개변수 계수에 역대입한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "관계 y=2x를 이용해 해를 구하고 미지계수에 대입한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_255663540ccc286df7da1c538fa399448d6d0a8d067ac2ef72b951c9fe9a78df",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_255663540ccc286df7da1c538fa399448d6d0a8d067ac2ef72b951c9fe9a78df",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "거리와 시간의 두 조건을 표준 연립식으로 번역한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "전체 거리와 전체 시간의 두 조건을 두 미지수에 대응시키고 서로 다른 속력을 시간식으로 번역한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "거리와 시간의 두 조건을 표준 연립식으로 번역한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_876c4f827a8799bc9d6edeb3c720ba864a5fda2de645a6c28ac146cb694c029a",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_876c4f827a8799bc9d6edeb3c720ba864a5fda2de645a6c28ac146cb694c029a",
+        "difficulty": 1,
+        "difficultyBoundary": "STABLE",
+        "confidence": "high",
+        "reason": "한 입력에 출력이 유일한지 정의로 판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한 입력에 출력이 하나인지 직접 확인하는 함수 정의 판정이다."
+      },
+      "decision": "ACCEPT",
+      "reason": "한 입력에 출력이 유일한지 정의로 판정한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_3fa250dfc34aa38b859d6be72d545a09d51414e5ef5424ed739c5abf9249b1a1",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_3fa250dfc34aa38b859d6be72d545a09d51414e5ef5424ed739c5abf9249b1a1",
+        "difficulty": 1,
+        "difficultyBoundary": "STABLE",
+        "confidence": "high",
+        "reason": "함숫값 두 개를 대입 계산해 더한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "함수식에 두 수를 대입하여 값의 합을 계산한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "함숫값 두 개를 대입 계산해 더한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_33a363c6d0a1914c76ad25c4251579452856100e08e9c40084d7ba30e39c3d8f",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_33a363c6d0a1914c76ad25c4251579452856100e08e9c40084d7ba30e39c3d8f",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "세로 평행이동식 작성 후 좌표를 대입한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 수직 이동으로 상수항을 바꾼 뒤 점의 좌표를 대입한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "세로 평행이동식 작성 후 좌표를 대입한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_a5de0d8fb83427c071771ba4cb17381ea678321117ba814821ca26279bc33572",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_a5de0d8fb83427c071771ba4cb17381ea678321117ba814821ca26279bc33572",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "각 식에 y=0을 넣어 절편을 비교한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "다섯 식에 y=0을 대입하여 다른 x절편 하나를 찾는다."
+      },
+      "decision": "ACCEPT",
+      "reason": "각 식에 y=0을 넣어 절편을 비교한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_701fa52b3cf00c9407fde2156d8d30dc54a985ded3be81a324eaf7cf39050b32",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_701fa52b3cf00c9407fde2156d8d30dc54a985ded3be81a324eaf7cf39050b32",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "실제 그래프의 두 절편을 읽고 기울기를 계산한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제 그래프의 두 절편을 읽고 기울기와 y절편 계수를 정한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "실제 그래프의 두 절편을 읽고 기울기를 계산한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_5356e476136f50c68c9f08c099791fc3ddad19dbc11d6fd3a7d57a311f0e82ef",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_5356e476136f50c68c9f08c099791fc3ddad19dbc11d6fd3a7d57a311f0e82ef",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "점 대입과 절편·기울기·평행이동의 기본 성질을 병렬 판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "점의 소속·기울기·두 절편·평행이동을 같은 함수식에 대조하는 다중 성질 판정이다."
+      },
+      "decision": "ACCEPT",
+      "reason": "성질별 점검은 여러 개지만 각 단계가 직접적이므로 기존 학습하와 numeric2의 인접 관계를 수용한다. 저자의 B23는 다중성질 경계 표지로 보존한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_7f5d76cf6d24832959bc9ca1de35a8a83f1f278e20e87c78f7262f7e7ac1cd81",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_7f5d76cf6d24832959bc9ca1de35a8a83f1f278e20e87c78f7262f7e7ac1cd81",
+        "difficulty": 1,
+        "difficultyBoundary": "STABLE",
+        "confidence": "high",
+        "reason": "증가량 비를 직접 구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 x와 y의 증가량 비로 기울기를 바로 산출한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "증가량 비를 직접 구한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1554811ec6e62874443dc420e0fb4252a3f65e4279e3c1dd3c06bd30127c073a",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_1554811ec6e62874443dc420e0fb4252a3f65e4279e3c1dd3c06bd30127c073a",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "일차부등식 풀이 결과를 수직선에 표시한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기본 일차부등식의 해를 구한 뒤 닫힌 끝점과 방향으로 수직선에 나타낸다."
+      },
+      "decision": "ACCEPT",
+      "reason": "일차부등식 풀이 결과를 수직선에 표시한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_af6f6a004ef158304151a714664ccb9a9c299a28a230d0a925f9580fa258ad93",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_af6f6a004ef158304151a714664ccb9a9c299a28a230d0a925f9580fa258ad93",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "계수가 같은 항을 바로 소거해 해를 구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 식을 한 번 빼서 한 미지수를 정하고 나머지를 대입한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "계수가 같은 항을 바로 소거해 해를 구한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_3c4c0ef6d1822587fcbf40608c243d2465b4d3f83afd2709f24fa11dd7af9ebc",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_3c4c0ef6d1822587fcbf40608c243d2465b4d3f83afd2709f24fa11dd7af9ebc",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "편수와 금액의 표준 두 식을 세워 연립방정식을 푼다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "개수합과 요금합을 연립방정식으로 표현하는 안내된 소문항 후 그 해를 구한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "편수와 금액의 표준 두 식을 세워 연립방정식을 푼다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_a34dd926bbebe44733ec9bc8421e99b688f5d9bea46e0d6ae0c5e89c80bc173e",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_a34dd926bbebe44733ec9bc8421e99b688f5d9bea46e0d6ae0c5e89c80bc173e",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "두 절편을 구해 좌표평면에 직선으로 연결한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "직선식의 두 절편을 구하고 두 점을 실제 좌표평면에 표시하여 잇는다."
+      },
+      "decision": "ACCEPT",
+      "reason": "두 절편을 구해 좌표평면에 직선으로 연결한다. 독립 초기 숫자와 저작 숫자가 일치하고 실제 해설의 절차를 재대조하였다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 8,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "식 정리 후 x 소거를 확인하는 친숙한 정의 판정이므로 기존 학습하와 numeric2의 B12 인접 관계를 수용한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "두 식에 알려진 순서쌍을 반복 대입하는 직접 판정이며 기존 학습중과 numeric1의 B12 인접 관계를 수용한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "성질별 점검은 여러 개지만 각 단계가 직접적이므로 기존 학습하와 numeric2의 인접 관계를 수용한다. 저자의 B23는 다중성질 경계 표지로 보존한다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "ACCEPT_NAMED_SUPPLEMENT",
+      "reason": "실제 해설 전체에 부등식 명칭이 존재하므로 NAMED가 맞다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "ACCEPT_NAMED_SUPPLEMENT",
+      "reason": "실제 quote 변형은 사전 변환304의 동의어이므로 NAMED가 맞다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "decision": "ACCEPT_GIVEN_ELAPSED_TIME_CANDIDATE",
+      "reason": "40분 입력과 동일한 경과시간 후보 및 값 parent를 같은given에 보존한 r3를 확인했다."
+    }
+  ],
+  "acceptedSupplements": [
+    {
+      "path": "/workspace/scratch/14c2c64e43fb/workers/B/E044.accepted-four-slot-candidate-r3.json",
+      "sha256": "beee6068a0f29d265371ad8cf3476edf4576c037e58c4b154511339d02eb8865"
+    },
+    {
+      "path": "/workspace/scratch/14c2c64e43fb/workers/B/E044.independent-semantic-supplement-r3.json",
+      "sha256": "6aaddd747d96fc5af12af7eb2084a09008b54a40128ccb3b790f6256383a07f9"
+    }
+  ],
+  "initialSnapshot": {
+    "path": "/workspace/scratch/14c2c64e43fb/root/independent/E044/initial.json",
+    "sha256": "4dcc1d7a3243835ab29284af183fc4763048a78325297faddd4094459813200a"
+  },
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "actualReading": {
+    "allStems": 24,
+    "existingSolutions": 24,
+    "actualImages": [
+      "workers/B/assets/E044-q6-q06.png",
+      "workers/B/assets/E044-q18-q18.png",
+      "workers/B/assets/E044-q21-s01.png",
+      "workers/B/assets/E044-q24-s04.png"
+    ],
+    "numericComparison": 24
+  },
+  "canonicalEvidenceRead": [
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "docs/architecture/4slot/term-dictionary-v1.5.json",
+    "docs/architecture/JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md"
+  ],
+  "notes": [
+    "Root is the actual independent reviewer for B E044; no fictitious fourth subagent.",
+    "Full24 actual content and solutions plus4images were read before author numeric comparison; current-pass snapshot does not assert absence of earlier exposure.",
+    "No source content or solutions changed. Source curriculum absent, exact RPM gaps and registration/resolver debts remain."
+  ]
+}
