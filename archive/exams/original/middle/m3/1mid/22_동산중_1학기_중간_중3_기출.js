@@ -129,7 +129,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
+    "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_동산중_1학기_중간_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에 변의 길이가 6m와 3m인 직사각형, 오른쪽에 한 변이 s인 정사각형을 그리고 같은 넓이를 파란색으로 묶었다.",
+    "solutionImageCaption": "넓이 보존으로 s²=6×3=18이고 s>0이므로 s=3√2 m이다. 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -383,7 +387,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING",
-    "solutionImage": "assets/images/22_동산중_1학기_중간_중3_수학/q06_solution.svg"
+    "solutionImage": "assets/images/22_동산중_1학기_중간_중3_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 모눈에서 C-D의 다리 길이 2와 1, A-D의 다리 길이 1과 2를 표시하고, 두 √5 빗변을 D 중심으로 P와 Q에 옮긴다.",
+    "solutionImageCaption": "CD=AD=√5이고 PD=CD, DQ=AD이다. P,D,Q가 일직선이므로 PQ=2√5이다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -510,7 +517,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": ["COND_NATURAL_NUMBER","COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
+    "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_동산중_1학기_중간_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 10을 열린 끝점, 17을 닫힌 끝점으로 표시하고 그 사이의 자연수 위치를 나타냈다.",
+    "solutionImageCaption": "10<x≤17이므로 자연수 x는 11부터 17까지 7개이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -1450,7 +1461,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
+    "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_동산중_1학기_중간_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 3, 2√2+1, 4를 순서대로 표시하고 3에서 2√2+1까지의 구간을 소수 부분으로 나타낸다.",
+    "solutionImageCaption": "a=3, b=2√2−2이므로 a−b=5−2√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1507,7 +1522,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": ["COND_NATURAL_NUMBER","COND_RANGE"],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
+    "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/22_동산중_1학기_중간_중3_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: N(20) 줄에는 자연수 1~4, N(50) 줄에는 자연수 1~7을 표시했다.",
+    "solutionImageCaption": "N(20)=4, N(50)=7이므로 N(20)+N(50)=11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

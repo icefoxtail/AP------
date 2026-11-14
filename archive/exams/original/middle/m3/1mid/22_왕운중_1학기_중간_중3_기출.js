@@ -216,7 +216,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_왕운중_1학기_중간_중3_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 무리수 경계를 같은 단위의 수직선에 표시했다. 첫째 줄은 왼쪽 경계에서 시작하고 둘째 줄은 오른쪽 경계에서 끝난다. 아래에는 정수 눈금이 있다.",
+    "solutionImageCaption": "2<√7<3이므로 4<7−√7<5이고, 3<√10<4이므로 7<4+√10<8이다. 가능한 정수 부분은 4,5,6,7이므로 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -324,7 +328,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_왕운중_1학기_중간_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 0을 포함하고 64/5를 제외하는 정수 x의 해 구간을 수직선에 표시한다.",
+    "solutionImageCaption": "0≤x<64/5=12.8이므로 정수 해는 0부터 12까지 13개이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -678,7 +686,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_왕운중_1학기_중간_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 1부터 20까지에서 f(x)=0,1,2,3,4인 입력의 빈도를 점도표로 나타낸다.",
+    "solutionImageCaption": "f(x)=1,2,3,4의 빈도는 각각 3,5,7,4이므로 합은 3+10+21+16=50이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
