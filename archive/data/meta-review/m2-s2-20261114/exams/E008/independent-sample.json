@@ -56,12 +56,17 @@
     {
       "sourceOrdinal": 24,
       "questionUid": "qid_v1_677635b64a18059cfac192079c22842d239628580db6cbc622fc7152f3e0bf50",
-      "verdict": "PASS",
+      "verdict": "REPAIR",
       "quotesExact": true,
       "quoteCount": 6,
       "fourSlotCriticalDefect": false,
-      "reason": "한 바퀴5칸과 화살표 A→B→C→D를 시각 확인했다. 목표 정점은 합의 나머지로 바뀌고 두 합의 순서쌍을 나누어 세므로 4칸 method·확률 primary·REINTERPRETATION 및 bucket3이 모두 타당. 현행 CC_PERIODICITY는 함수반복, CC_UNITS_DIGIT_PERIODICITY는 거듭제곱 일의자리, CC_PARITY_MODULAR_ARITHMETIC은 홀짝·제곱의 나머지에 한정되어 순환경로 새CC 제안은 필요하다.",
-      "repairs": [],
+      "reason": "실제 정오각형의 변을 따라 5를 주기로 이동하고 나머지 3인 합의 순서쌍을 세는 풀이이다. 현행 ACTIVE CC_POLYGON_VERTEX_MOTION이 정다각형 꼭짓점의 주기 이동·나머지·위치 추적을 정확히 포괄한다. 앞선 PERIODICITY 계열 검색만으로 기존키 부재라고 쓴 판단을 철회한다. 4칸과 난도는 그대로 적합하다.",
+      "repairs": [
+        {
+          "field": "crossConceptKeys / cyclic CC proposal",
+          "repair": "기존 CC_POLYGON_VERTEX_MOTION 사용. 동일 의미의 신규 CC 제안은 철회."
+        }
+      ],
       "imageViewed": "workers/B/images/E008-24.png"
     }
   ],
@@ -71,10 +76,17 @@
   "independent": true,
   "registryRead": [
     "concept_registry.json: MODULAR/REMAINDER/PERIODIC/CYCLIC 관련 전체 정의",
-    "taxonomy_registry.json: distinct value/result 관련 이름 및 기존 제안 후보 실제 정의"
+    "taxonomy_registry.json: distinct value/result 관련 이름 및 기존 제안 후보 실제 정의",
+    "concept_registry.json: ACTIVE CC_POLYGON_VERTEX_MOTION exact definition and supporting evidence"
   ],
   "notes": [
     "저자 파일을 직접 수정하지 않음. Q2 채택 경로와 기존 해설 경로의 차이는 기록상 분리 필요.",
-    "전체 시험지 독립 수학 검수로 확장하지 않음."
-  ]
+    "전체 시험지 독립 수학 검수로 확장하지 않음.",
+    "후속 실제 registry 정의 재검색에서 CC_POLYGON_VERTEX_MOTION을 확인하여 Q24 신규 CC 필요 판단을 정정. 기존 검사한 저자 파일 SHA를 보존하여 어느 버전의 제안을 검토했는지 유지한다."
+  ],
+  "supersedes": {
+    "path": "archive/data/meta-review/m2-s2-20261114/exams/E008/independent-sample.json",
+    "sha256": "f6fccbb69c0235f74fefefe2fa5f1f41228170ed93a04b3413f10894d7878052",
+    "reason": "현행 CC_POLYGON_VERTEX_MOTION 정의 검색 누락을 바로잡아 신규 CC 필요 판단 철회"
+  }
 }

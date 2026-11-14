@@ -1947,7 +1947,9 @@
         "curriculum": "2015",
         "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
         "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
-        "crossConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_NUMBER_LINE_COORDINATE_SHIFT"
+        ],
         "conditionKeys": [],
         "integrationPattern": "REINTERPRETATION",
         "subUnitKey": "M2-08-PROBABILITY_BASIC",
@@ -1970,7 +1972,7 @@
       "fieldReview": {
         "classification": "확률의 활용 / 연속 시행: 점이동을 시행횟수 식으로 바꾸는 선택이 필요하여 bucket3으로 본다.",
         "binding": "PT_PROBABILITY_REPEATED_TRIALS / TPL_INDEPENDENT_TRIAL_PROBABILITY의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
-        "crossConcept": "독립시행 횟수의 계수 자체는 primary에 포함. 이동을 일차식으로 나타내는 외부 연결의 exact CC가 없어 제안.",
+        "crossConcept": "앞뒤 이동의 총거리를 기준좌표에 더하고 빼 최종위치를 표현하는 ACTIVE 수직선좌표이동을 성공횟수 결정에 사용한다.",
         "condition": "도형의 주어진 관계는 4칸 condition에 보존. 별도 값의 허용범위를 제한하는 canonical 조건은 없어 conditionKeys=[] 유지.",
         "integration": "REINTERPRETATION: 점이동을 시행횟수 식으로 바꾸는 선택이 필요하여 bucket3으로 본다.",
         "difficulty": "점이동을 시행횟수 식으로 바꾸는 선택이 필요하여 bucket3으로 본다.",
@@ -1978,12 +1980,9 @@
       },
       "reason": "점이동을 시행횟수 식으로 바꾸는 선택이 필요하여 bucket3으로 본다.",
       "registrationDebt": [
-        "CC 등록대기: 이동거리의 일차식 모델링",
         "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
       ],
-      "proposalRefs": [
-        "B-E008-CC-MOVE-EQUATION"
-      ],
+      "proposalRefs": [],
       "finalDifficulty": {
         "level": "중",
         "difficultyBucket": 3,
@@ -2576,7 +2575,9 @@
         "curriculum": "2015",
         "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
         "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
-        "crossConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_POLYGON_VERTEX_MOTION"
+        ],
         "conditionKeys": [
           "COND_RANGE"
         ],
@@ -2601,7 +2602,7 @@
       "fieldReview": {
         "classification": "확률의 활용 / 경우를 나누어 구하는 확률: 순환이동을 합의 합동류로 바꾸는 핵심 전환이 있어 bucket3으로 본다.",
         "binding": "PT_PROBABILITY_PROPERTIES_APPLICATION / TPL_PROBABILITY_BASIC_COUNT_RATIO의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
-        "crossConcept": "합의 나머지로 순환위치를 정하는 exact CC가 현 registry에 없어 신규 제안.",
+        "crossConcept": "정다각형의 꼭짓점수를 주기로 하는 모듈러 위치추적의 ACTIVE 정의가 오각형 이동과 정확히 일치한다.",
         "condition": "눈합2..12 범위에서 나머지3인 두 합을 선택하므로 COND_RANGE.",
         "integration": "REINTERPRETATION: 순환이동을 합의 합동류로 바꾸는 핵심 전환이 있어 bucket3으로 본다.",
         "difficulty": "순환이동을 합의 합동류로 바꾸는 핵심 전환이 있어 bucket3으로 본다.",
@@ -2609,12 +2610,9 @@
       },
       "reason": "순환이동을 합의 합동류로 바꾸는 핵심 전환이 있어 bucket3으로 본다.",
       "registrationDebt": [
-        "CC 등록대기: 순환경로의 나머지",
         "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
       ],
-      "proposalRefs": [
-        "B-E008-CC-CYCLIC"
-      ],
+      "proposalRefs": [],
       "finalDifficulty": {
         "level": "중",
         "difficultyBucket": 3,
@@ -2705,21 +2703,6 @@
       ]
     },
     {
-      "proposalId": "B-E008-CC-MOVE-EQUATION",
-      "type": "CC",
-      "name": "상반된 이동의 횟수 일차식 모델링",
-      "definition": "전체 시행횟수와 두 방향의 이동량을 이용해 목표 위치를 한 방향의 시행횟수에 관한 일차식으로 바꾼다.",
-      "parent": "ALGEBRA",
-      "distinction": "단순한 확률계산 또는 좌표거리공식과 달리 사건을 성립시키는 성공횟수를 먼저 정한다.",
-      "supportingQuestionUids": [
-        "qid_v1_b242f768d82f1e35bf388919c719635e2416b98d58ed6131fc6ff6b99b61d02a"
-      ],
-      "reviewedCandidates": [
-        "CC_LINEAR_EQUATIONS",
-        "CC_LINEAR_EQUATION_SOLUTION"
-      ]
-    },
-    {
       "proposalId": "B-E008-RPM-AREA",
       "type": "RPM_LEAF_GAP",
       "name": "피타고라스 정리의 넓이 관계",
@@ -2734,22 +2717,6 @@
         "M2-RPM-105"
       ],
       "reuseProposal": "B-E005-RPM-PYTH-AREA"
-    },
-    {
-      "proposalId": "B-E008-CC-CYCLIC",
-      "type": "CC",
-      "name": "순환경로의 이동량과 나머지",
-      "definition": "일정한 길이로 닫힌 경로에서 이동량을 한 바퀴 길이로 나눈 나머지에 대응하는 위치를 결정한다.",
-      "parent": "NUMBER / GEOMETRY",
-      "distinction": "함수합성 주기나 거듭제곱 일의자리 주기와 달리 물리적 경로 이동의 누적량을 합동류로 바꾼다.",
-      "supportingQuestionUids": [
-        "qid_v1_677635b64a18059cfac192079c22842d239628580db6cbc622fc7152f3e0bf50"
-      ],
-      "reviewedCandidates": [
-        "CC_PERIODICITY",
-        "CC_UNITS_DIGIT_PERIODICITY",
-        "CC_PARITY_MODULAR_ARITHMETIC"
-      ]
     },
     {
       "id": "B-E008-CENTROID-MEDIAN-LENGTH",
@@ -2846,6 +2813,18 @@
         5
       ],
       "note": "ROOT freeze 해제 승인 후 단순 중선비 계산을 APPLICATION에 넓혀 붙인 오류를 수리. 다른 무게중심 문항은 넓이 또는 다른 도형성질 결합을 실제 재확인."
+    },
+    {
+      "type": "ACTIVE_CC_REUSE_REPAIR",
+      "ordinals": [
+        18,
+        24
+      ],
+      "reviewers": [
+        "ROOT",
+        "B"
+      ],
+      "note": "ROOT freeze 해제 승인 후 한국어 label·definition와 현재 ACTIVE key를 대조하여 중복 신규CC 제안/등록부채를 철회하고 기존키를 재사용. 학생내용 및4칸불변."
     }
   ]
 }
