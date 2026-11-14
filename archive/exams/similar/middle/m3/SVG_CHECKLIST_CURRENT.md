@@ -19,6 +19,7 @@
 | 시험지 | 문항별 문제 그림 (P) | 문항별 해설 그림 (S) | 근거 / 남은 일 |
 |---|---|---|---|
 | 21 신흥중 1학기 중간 (Q1–23; candidate) | Q5,Q8,Q19 NEED; Q1–4,Q6–7,Q9–18,Q20–23 EXEMPT | Q5,Q8,Q19 NEED; Q1–4,Q6–7,Q9–18,Q20–23 EXEMPT | Q5/Q8 conditions were stated from Docs plans. Q19 states a new explicit tile arrangement; it is not presented as the source drawing. SVG and screen review incomplete; see exam checklist. |
+| 21_연향중_1학기_중간_중3_유사 (Q1–24; candidate) | Q11,Q14 NEED; others EXEMPT | Q11,Q14 NEED; others EXEMPT | Q11 states gapless squares on one baseline in increasing size order; Q14 states all cuboid dimensions and x>3/2. Figures still aid understanding; SVG/render incomplete. See exam checklist. |
 | 22 향림중 1학기 중간 (Q1–24; 후보) | Q3,Q7 `NEED`; 나머지 `EXEMPT` | Q3,Q7 `NEED`; 나머지 `EXEMPT` | Q3은 무리수 분류로, Q7은 좌표·점 위치를 발문에 명시했다. Q21 원본 10×6 표는 JS 본문에 보존되어 별도 SVG는 불필요. Q3·Q7 그림은 유익할 수 있으나 미제작. R1/R2 독립 검산 완료; 화면/SVG 미실행. |
 | 24 신흥중 2학기 기말 (Q1–24) | Q1–24 `EXEMPT` | Q1–24 `EXEMPT` | 시험지별 계획 파일에 모두 EXEMPT. 렌더링 검수는 하지 않음. |
 | 24 왕운중 2학기 기말 (Q1–23) | Q1,6,7,9,10,12,14,15,22 `NEED`; Q2–5,8,11,13,16–21,23 `EXEMPT` | Q1–23 `EXEMPT`* | 문제 그림 9개 계획은 `UNSUPPORTED`로 엔진 제작 미완. Q1의 원문 문제에는 해설이 인용하는 수치 그림이 빠져 있다. |

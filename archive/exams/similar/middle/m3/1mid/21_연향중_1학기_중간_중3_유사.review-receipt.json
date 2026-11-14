@@ -1,0 +1,91 @@
+{
+  "examUid": "21_연향중_1학기_중간_중3_유사",
+  "sourceDocumentId": "1a8bkbeIr70d4ix_LEV6gE8gvK5HvLkN9MEN0fhg--7M",
+  "sourceDocumentRevisionId": "AHj4eMSOLKvMZrTNdxxisMVmn4RvmlQi9QDiBG40qhaXhTp2V9OSrDRdmjuGW-NWnZ_6sO-UDbVxboApxPg2f67hR_tBydpJ2CWl5RyebRo",
+  "sourceArchiveFile": "archive/exams/original/middle/m3/1mid/21_연향중_1학기_중간_중3_기출.js",
+  "sourceArchiveBlobSha1": "1002aa5fa441667411a2689111899b9ca9830880",
+  "candidateJsBlobSha1": "22826490f0881f98e719d664bc8e1a63806c29a8",
+  "questionCount": 24,
+  "scoreTotal": 100,
+  "overallVerdict": "INCOMPLETE: Q11/Q14 visuals, Meta registration, 4-slot independent review, and generic validator remain open",
+  "changes": [
+    {
+      "question": 11,
+      "change": "그림 의존 발문을 세 정사각형의 밑변을 한 직선에 맞춰 간격 없이 크기순으로 붙이는 배치로 구체화하고 둘레 설명을 단계화; 정답④ 유지."
+    },
+    {
+      "question": 14,
+      "change": "그림 의존 발문에 세 변 길이와 x>3/2를 명시; 정답① 유지."
+    },
+    {
+      "question": 17,
+      "change": "보기②·③이 원식과 동치였으므로 다른 식으로 바꾸고 네 오답을 전개 검산; ⑤만 정답."
+    },
+    {
+      "question": 21,
+      "change": "Aligned math malformed single-backslash row separators corrected to TeX row breaks; calculation and answer 1/9 unchanged."
+    },
+    {
+      "question": 16,
+      "change": "R1 found choices ② x-y and ③ 3x-3y were both common factors; changed only ③ to 3x-2y and clarified both expressions share x-y. Answer ② retained."
+    }
+  ],
+  "independentMathReview": {
+    "status": "R1_PASS_24_WITH_TARGETED_Q16_RERUN_AND_R2_PASS_24_FINAL_INPUT",
+    "reason": "R1 independently froze Q1-24 on candidate blob e95f806d6ec81d3386d476baf0ac806b591f2646; after only Q16 option ③ changed, a fresh blind Q16 delta review on final blob 22826490f0881f98e719d664bc8e1a63806c29a8 confirmed unique ②. R2 independently checked all 24 solutions on the final blob and found no required math corrections.",
+    "reports": [
+      {
+        "review": "R1 blind freeze Q1-24 before Q16 repair",
+        "path": "/workspace/r1-21-yeonhyang-freeze.json",
+        "sha256": "86d026d524b952c835b7cd256cd4c593845a41d335dd7654c68a98d371c81e30",
+        "candidateBlob": "e95f806d6ec81d3386d476baf0ac806b591f2646"
+      },
+      {
+        "review": "R1 blind Q16 delta after option repair",
+        "path": "/workspace/r1-21-yeonhyang-q16-review.json",
+        "sha256": "bfd61b33e5d89aa0e908b41d50bf346d0965613023cfde9e30f3806da3cddc2a",
+        "candidateBlob": "22826490f0881f98e719d664bc8e1a63806c29a8"
+      },
+      {
+        "review": "R2 student-view review Q1-24 final blob",
+        "path": "/workspace/r2-21-yeonhyang-review.json",
+        "sha256": "69f069d998cb44dace25fa61695a67a93b19f56ef82a4fea240a159e72091abb",
+        "candidateBlob": "22826490f0881f98e719d664bc8e1a63806c29a8"
+      }
+    ]
+  },
+  "metadata": {
+    "status": "UNCLASSIFIED_UNREGISTERED",
+    "reason": "문서 후보 메타 보존. 공식 Resolver·등록 미실행."
+  },
+  "fourSlot": {
+    "status": "EVIDENCE_DEBT",
+    "reason": "문서의 4칸 후보를 보존했으나 문항별 인용·단계 정합 독립 검수 미완."
+  },
+  "visualReview": {
+    "status": "NOT_RENDERED",
+    "reason": "Q11·Q14 문제/해설 그림 NEED로 기록; SVG·render·screen 미실행."
+  },
+  "checks": {
+    "nodeSyntax": "PASS",
+    "candidateTableCheck": "PASS: 1 file, 0 tables, 0 FAIL",
+    "gitDiffCheck": "PASS",
+    "draftHarness": "FAIL: 26 plan/image/engine-evidence errors across Q11/Q14 problem/solution plans; no SVG/assets/render created by scope",
+    "genericValidator": "NOT_RUN",
+    "questionCountAndPoints": "PASS: 24 questions, 100 points",
+    "creatorReview": "CREATE self-check 24/24; not independent R1/R2",
+    "sourceImagePresence": "NOT_VERIFIED; Docs text only; no images opened. R2 could not compare Q11/Q14 against source illustrations.",
+    "independentMathReview": "R1 blind Q1-24 PASS on pre-Q16-repair blob; fresh blind R1 Q16 PASS on final blob; R2 student-view math/solution review PASS 24/24 on final blob."
+  },
+  "openItems": [
+    "Q11 and Q14 need problem/solution SVG assets and render; no images were opened, and none were created/rendered by scope.",
+    "Meta Resolver/registration not run; candidate metadata remains unregistered.",
+    "24-item 4-slot evidence review not run; statuses remain EVIDENCE_DEBT/NOT_RUN.",
+    "Generic structural validator NOT_RUN."
+  ],
+  "creatorReview": {
+    "status": "CREATE_SELF_CHECK_COMPLETE",
+    "scope": "24/24 questions, keys, supplied solution calculations, 100-point total",
+    "reason": "Q11 perimeter recomputed after stating gapless increasing squares; Q14 surface-area expansion checked; Q17 option expansions checked and ambiguous distractors corrected; Q21 ordered dice pairs checked. This is CREATE self-check, not independent review."
+  }
+}
