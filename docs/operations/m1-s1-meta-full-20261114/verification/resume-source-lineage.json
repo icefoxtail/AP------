@@ -1,0 +1,2827 @@
+{
+  "schemaVersion": "m1-s1-resume-lineage-audit-v1",
+  "generatedAt": "2026-11-14T13:36:59.201Z",
+  "workKey": "M1-S1-META-FULL",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "baselineMain": "8c3b8fe05348d7235546d7d2d9ec063029d19e4d",
+  "observedWorkHead": "224ff191e94788d0e8ad310e359fe5204e27fb73",
+  "latestMain": "83273a9744fd306ca5a03182b01298205bf84de8",
+  "sweepCommit": "e853086c37753bf50362bcc1ccf9378f4d20fac3",
+  "sweepParent": "f8d5e3755aa25ffd83d62bd93936e9ddebfd3cf5",
+  "method": "Replay official QFULL content/choices/answer/solution/image serialization against exact Git versions; compare only the 286 target metadata/identity rows.",
+  "status": "LINEAGE_AND_TARGET_DRIFT_CHECKS_PASSED",
+  "notAnApproval": true,
+  "registryWritePerformed": false,
+  "summary": {
+    "targetQuestions": 286,
+    "solvedQuestions": 93,
+    "registeredHashesReproducedAtSweepParent": 93,
+    "currentRegisteredQfullMismatches": 93,
+    "solutionOnlyQfullChanges": 93,
+    "postSweepSolutionDeltaCount": 3,
+    "sourceOnlyQuestions": 193
+  },
+  "sharedTargetRecordComparison": [
+    {
+      "path": "archive/data/question_metadata.json",
+      "beforeCount": 286,
+      "afterCount": 286,
+      "beforeTargetSha256": "54db33f42c4fb3a574272df0134e6441be3a6587ea85f06c8b6e922c96695172",
+      "afterTargetSha256": "54db33f42c4fb3a574272df0134e6441be3a6587ea85f06c8b6e922c96695172",
+      "changedUids": []
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "beforeCount": 286,
+      "afterCount": 286,
+      "beforeTargetSha256": "1da3d6429fb8c2c473af9394ac1634c4e1d7a1b01455dbbc26ae2d4735a8c7b7",
+      "afterTargetSha256": "1da3d6429fb8c2c473af9394ac1634c4e1d7a1b01455dbbc26ae2d4735a8c7b7",
+      "changedUids": []
+    }
+  ],
+  "exams": [
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "questionCount": 23,
+      "sourceOnly": false,
+      "currentRawSha256": "a50439631c24f0de8d8a920ca98a4df2999dc77001cce43090a842ba448d42c6",
+      "currentBlobSha1": "8435cb85d90fceeac758b9e46883edb9d8a8efed",
+      "baselineRawSha256": "dad9ad4d5c06e1a4a2491ff5ea7f031565ed9cca97cb59052daf24b8b9492610",
+      "latestMainRawSha256": "dad9ad4d5c06e1a4a2491ff5ea7f031565ed9cca97cb59052daf24b8b9492610",
+      "targetSourceDriftSinceBaseline": false,
+      "status": "LINEAGE_RECONCILED_APPROVAL_NOT_GRANTED",
+      "items": [
+        {
+          "ordinal": 1,
+          "questionUid": "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c",
+          "registeredQfull": "61466dd045b7f3d68dbcc9114960e1a3b37504052d3acde244d7c2e94742fac7",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "61466dd045b7f3d68dbcc9114960e1a3b37504052d3acde244d7c2e94742fac7",
+          "sweepQfull": "9ad44202d4f73b3d195ef4f118e1cdeebd99d1aaabbabd190c52943e61a193ca",
+          "currentQfull": "9ad44202d4f73b3d195ef4f118e1cdeebd99d1aaabbabd190c52943e61a193ca",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "da277e77e5ed87a05f12ad11bdb0c44e33eb44a5137c3c87999a58b8ade5f93b",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 2,
+          "questionUid": "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb",
+          "registeredQfull": "ca710f936d18b7ab015b842a3e810ba508459fb43b874c5cb8428d510d87499d",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "ca710f936d18b7ab015b842a3e810ba508459fb43b874c5cb8428d510d87499d",
+          "sweepQfull": "23c0f1450689c615585d6dfced5943b7241eac559723b6128871217237ca2c1c",
+          "currentQfull": "23c0f1450689c615585d6dfced5943b7241eac559723b6128871217237ca2c1c",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "f3c0a94e77e30005674d930e3278211c082d51eb2a1db21c9a220d13a3c6f2a5",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 3,
+          "questionUid": "qid_v1_aceb4afaef2ea2aae836b5151e1eaaee074acc6653b586fedc2ff792423f225f",
+          "registeredQfull": "ac8a5f6ddc5ff15e6a502f42c7103db542eae124e7b72b0530755742b1ccd857",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "ac8a5f6ddc5ff15e6a502f42c7103db542eae124e7b72b0530755742b1ccd857",
+          "sweepQfull": "4fc68ab6a388ae50eab8aac47a9a6d806f70090c67e8d764a796601458297253",
+          "currentQfull": "4fc68ab6a388ae50eab8aac47a9a6d806f70090c67e8d764a796601458297253",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "545d6708e3e7cd5c3b5d88762f42a5f3739ecb69a87c30e21e89e955523161fc",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 4,
+          "questionUid": "qid_v1_b90c407c17be832b547e966febc3b1118c945cb3b75b1e4cf42de18f98a48c7f",
+          "registeredQfull": "1101854acd7fa3d459ff95cf1593bafdf466a21bc05aaefd6adfe1a98d1705b7",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "1101854acd7fa3d459ff95cf1593bafdf466a21bc05aaefd6adfe1a98d1705b7",
+          "sweepQfull": "63ab9649c0792890395d66b96813482a6393cdb447a241cdd376d30ecd4ea973",
+          "currentQfull": "63ab9649c0792890395d66b96813482a6393cdb447a241cdd376d30ecd4ea973",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "978b7e64b600ce5052fc68e3b69784e106e512f332cb04210e2169f42c1dc4c4",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 5,
+          "questionUid": "qid_v1_857098e9fa0fa6ef17a0437a5b518c4d6a5be84011c0125738c8a56ef60cc205",
+          "registeredQfull": "78e882e68e8ecb969c12327ef1c57931e6c42cf5a79217efb8e5be0c7386f30a",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "78e882e68e8ecb969c12327ef1c57931e6c42cf5a79217efb8e5be0c7386f30a",
+          "sweepQfull": "9f3f27ec64404d9a17431dbe3f3709116ef0a79e8495c0c6346fc19667962f61",
+          "currentQfull": "9f3f27ec64404d9a17431dbe3f3709116ef0a79e8495c0c6346fc19667962f61",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "0c47dfd0ea88d9f8c8f83cf9f5e8cae91dedc81cb18a1137117c95969258491b",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 6,
+          "questionUid": "qid_v1_e5b6802b71d2b6aa92f27203eeb6b8a3dbcd5134c474b88d44683a12d1ee3cc1",
+          "registeredQfull": "6c194b7c615b27c67398028cbb2cc513a36e9e4131929d602a3de73b9fb42860",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "6c194b7c615b27c67398028cbb2cc513a36e9e4131929d602a3de73b9fb42860",
+          "sweepQfull": "bdf5bab8464a861d9dbad8bae5fa28e7d59ada43a930bf885148b1c1623cb2f9",
+          "currentQfull": "bdf5bab8464a861d9dbad8bae5fa28e7d59ada43a930bf885148b1c1623cb2f9",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "795e5c52cdae7895f4da2ea76614738b187d01a8989b32fae3a992563dc33b61",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 7,
+          "questionUid": "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17",
+          "registeredQfull": "b7a7f82193885d8efaecd0644a98179deab2521c5d1489a9b83f9d6961e81f55",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "b7a7f82193885d8efaecd0644a98179deab2521c5d1489a9b83f9d6961e81f55",
+          "sweepQfull": "19e5f575bad8cadf2b07f80974eef67f26ca5c3741b54e284c140d57e6bad81f",
+          "currentQfull": "19e5f575bad8cadf2b07f80974eef67f26ca5c3741b54e284c140d57e6bad81f",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "c015b810dfe4bd82e4870481215482ddfaa325a986292713b0651a0da3ebba70",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 8,
+          "questionUid": "qid_v1_e59f822a160a15684a3d4472c6506c8cab2094e8fd7b7094274ced8164e912eb",
+          "registeredQfull": "dcdc84809cb9607da8c08d42be617f5b1ea210f5feb1ed43a499ac2275cf1d68",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "dcdc84809cb9607da8c08d42be617f5b1ea210f5feb1ed43a499ac2275cf1d68",
+          "sweepQfull": "0d09fe2dbedae2a1d1353c5ccabe25fc41efdd3b61b497e8404257fed8a697ab",
+          "currentQfull": "0d09fe2dbedae2a1d1353c5ccabe25fc41efdd3b61b497e8404257fed8a697ab",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "f74144219783ef87930ca8fa1ef6f21d5f142a596a845b1b395227456674573a",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "OFF_TOPIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 9,
+          "questionUid": "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f",
+          "registeredQfull": "743b33cab744503f97125b4a5542e628e1d20b9cc4f4c69d8e57c683885922a6",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "743b33cab744503f97125b4a5542e628e1d20b9cc4f4c69d8e57c683885922a6",
+          "sweepQfull": "cee7d26b6b2ec22f03b5c2092049ebea2a651df00d68396fa089e28ddbb64af9",
+          "currentQfull": "cee7d26b6b2ec22f03b5c2092049ebea2a651df00d68396fa089e28ddbb64af9",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "8287df3d2781734439a757c394bf64ae2338a2e9ae6b45d31f05d54020e75e34",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 10,
+          "questionUid": "qid_v1_a6df586db995581b452b568267388ee1dbb74117098ba780212e1ce8bb49cde2",
+          "registeredQfull": "e270ba06403ca75db061773e210dc163d0228edea2ba02e255655d485d380502",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "e270ba06403ca75db061773e210dc163d0228edea2ba02e255655d485d380502",
+          "sweepQfull": "3d129735526b81e63c75ce9be83777f28af5c748c250a73249ba515625a7833a",
+          "currentQfull": "3d129735526b81e63c75ce9be83777f28af5c748c250a73249ba515625a7833a",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "30d6aa4e2691c9c9b649c9d97c34bb850db0c2657ac5cff40a1d992188f2d3f3",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 11,
+          "questionUid": "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f",
+          "registeredQfull": "c951b720eaa80c89869fbd4ec247cbc2fc30e4072818888a175e8a6ddcfd7d18",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "c951b720eaa80c89869fbd4ec247cbc2fc30e4072818888a175e8a6ddcfd7d18",
+          "sweepQfull": "c9fe3c9bd54d9894aa96b112d825cddf4ebc08a9cbf27ec542fd83da6e403f55",
+          "currentQfull": "c9fe3c9bd54d9894aa96b112d825cddf4ebc08a9cbf27ec542fd83da6e403f55",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "cbed92ad4ee405ef00fc75419ad78b429979190ccf1b5cd57d2e8048553f676f",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 12,
+          "questionUid": "qid_v1_5efe4ce5a066bd5db3518a969b170b7e1db7a1b4d3aa83c55af132f76c09f805",
+          "registeredQfull": "d6694712a0ec906ae48ee03832339ca4e833ed1a1f566cda94d5d226800fd36b",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "d6694712a0ec906ae48ee03832339ca4e833ed1a1f566cda94d5d226800fd36b",
+          "sweepQfull": "b1e72d3654793ae9220a5340c405e1f0b5dda3b924a6b33c02654d5cdc0906bf",
+          "currentQfull": "b1e72d3654793ae9220a5340c405e1f0b5dda3b924a6b33c02654d5cdc0906bf",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "34f90feb685f4f9ad6f9953e465258535158297fa1ef1d95875a3464676e7a72",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 13,
+          "questionUid": "qid_v1_7230b9c55a8e2617748e92e90e8bf2af6148434c13b81fd84c95389bfada9e4a",
+          "registeredQfull": "7f41cb8e0117069d2e8ad738b099b9f6e5b1ab955260f2aa03f2d59f317e0566",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "7f41cb8e0117069d2e8ad738b099b9f6e5b1ab955260f2aa03f2d59f317e0566",
+          "sweepQfull": "0567d534c15a60299fbb506aba80aee5f078448b36842226299d1e811ae68d9d",
+          "currentQfull": "0567d534c15a60299fbb506aba80aee5f078448b36842226299d1e811ae68d9d",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "9a681296c786c0d65b62a301ff5030e8577cf64ce6c089aee116e599548456c6",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "MISLEADING_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 14,
+          "questionUid": "qid_v1_408b1406613bf0cd05e2ba7a1fb3232ea81bb032001c9e78bb14a58927811f72",
+          "registeredQfull": "d4d7132dc95b596e65d69b48338ee8e6217dfa2ac17b364f48b5d8e3c1a74c24",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "d4d7132dc95b596e65d69b48338ee8e6217dfa2ac17b364f48b5d8e3c1a74c24",
+          "sweepQfull": "cf071486017066f7d12566bef4fcd02727f047fb6023bb99ae537ead9d29e4ef",
+          "currentQfull": "cf071486017066f7d12566bef4fcd02727f047fb6023bb99ae537ead9d29e4ef",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "87258611e6ad0cd1f58b5eb19dff8fea86086c546870dbdb0fa1eb5679fcf510",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 15,
+          "questionUid": "qid_v1_1289da23e9da2528aabc4e0febc9b86150d9057cc2ed3683b9d9efc27f2ed7f3",
+          "registeredQfull": "6b571ab66a5e796bbfb6345b41fffa00742a00261b9d29c0efc5ae2cfeaec0e2",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "6b571ab66a5e796bbfb6345b41fffa00742a00261b9d29c0efc5ae2cfeaec0e2",
+          "sweepQfull": "8ea643baa1286ca4964eb9375d0b49c54123f42e1b1adc0a30f9787dbadd1f74",
+          "currentQfull": "8ea643baa1286ca4964eb9375d0b49c54123f42e1b1adc0a30f9787dbadd1f74",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "3ef29346e7d09ae2281f8fa50811e8762c75cb760d7769f4fc4ebae0c3f28ddd",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 16,
+          "questionUid": "qid_v1_1c933c43526ab46d73371168ba8a41c0f2a8465bca8de007ffcd2221a33b289a",
+          "registeredQfull": "9ab4f62847916fb9a0c8fe97a1944e72beac73677b48f6f0da8ae9193d76ac93",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "9ab4f62847916fb9a0c8fe97a1944e72beac73677b48f6f0da8ae9193d76ac93",
+          "sweepQfull": "2a653d4f144c6db18bb66b7b5e8ba628442e9a1dc80841610dd6a08ab16e1ef2",
+          "currentQfull": "2a653d4f144c6db18bb66b7b5e8ba628442e9a1dc80841610dd6a08ab16e1ef2",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "4be8ed5c4377ba72c523cd7386556803edf56ec93afdab2f25ef14a4f45aefa8",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 17,
+          "questionUid": "qid_v1_74d4d68e5cd8ec512c16efaf5e7434667cb34eb3cc689aba1b57595e332b7ca3",
+          "registeredQfull": "bf0901d6d23ff455a6e0e7ca3e36d95c747825ebc9c67c25ee83f873ab079915",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "bf0901d6d23ff455a6e0e7ca3e36d95c747825ebc9c67c25ee83f873ab079915",
+          "sweepQfull": "b57133af91a7337106347ee4f7ff42d247c37f7140345b36598ab17283b945d3",
+          "currentQfull": "b57133af91a7337106347ee4f7ff42d247c37f7140345b36598ab17283b945d3",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "cc4755ccf8be5cf1715d2117bba8d19607dc233371e6c985d07377e1f2a3557e",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 18,
+          "questionUid": "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc",
+          "registeredQfull": "c6909778d99f79f119771ad730c8d50990e41df72a20f5a0463da4ff4096ce0c",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "c6909778d99f79f119771ad730c8d50990e41df72a20f5a0463da4ff4096ce0c",
+          "sweepQfull": "b1a32eea4fd4b77c31f41a97a5e6c53f5b011b3d7fe360a0f4f913add474d2d0",
+          "currentQfull": "b1a32eea4fd4b77c31f41a97a5e6c53f5b011b3d7fe360a0f4f913add474d2d0",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "e885ebf7397cd61a2870c33ac17f2d89c80c9b0aee572ba2f1b658fd378723fd",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "OFF_TOPIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 19,
+          "questionUid": "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6",
+          "registeredQfull": "95a69266218d36b22c5d449cf8758e859af9c195706fc43c5b0fe2d23045be8d",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "95a69266218d36b22c5d449cf8758e859af9c195706fc43c5b0fe2d23045be8d",
+          "sweepQfull": "83c1116ecba3009fe342728402f7c3a5d06046dfa9cb83979103c386839d711c",
+          "currentQfull": "83c1116ecba3009fe342728402f7c3a5d06046dfa9cb83979103c386839d711c",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "f44a73c031641e00f50418d530e91745dba716543c2db2cf14543aa43a0be4cc",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 20,
+          "questionUid": "qid_v1_573a827f1d9204561710ae964c0fc75af34d1d870a437d5f2bee29531eabf8b4",
+          "registeredQfull": "3c7f9ba5610b4e4164f605cb4252ac575cea7fd553e1561adf26b1f9874d543b",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "3c7f9ba5610b4e4164f605cb4252ac575cea7fd553e1561adf26b1f9874d543b",
+          "sweepQfull": "bfeb205601c58632ab30dab63d39804d19015767457fee1c19a87115a9f28b4a",
+          "currentQfull": "bfeb205601c58632ab30dab63d39804d19015767457fee1c19a87115a9f28b4a",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "cca51b14edd70c12f95dafcc53466f990b0dd3f5c43b03ec376942a23f0431c6",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 21,
+          "questionUid": "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6",
+          "registeredQfull": "349d4e4e8b6d16aca5eb695ad294066a2ed4782bce67453e14e9088a84ad57fb",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "349d4e4e8b6d16aca5eb695ad294066a2ed4782bce67453e14e9088a84ad57fb",
+          "sweepQfull": "4953e435c2cb516ecd61027c8b81bbd05c82c1eb5548d3ca7f33ee562b5ccce1",
+          "currentQfull": "4953e435c2cb516ecd61027c8b81bbd05c82c1eb5548d3ca7f33ee562b5ccce1",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "24201b5a2eb1b833add59f10c463d372c6336c25c3201297267db6b6f7d5020b",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 22,
+          "questionUid": "qid_v1_8bebcc6498ee3c67f0f667c0026994659471a518190591839829c1e495f3507a",
+          "registeredQfull": "1f2d6359c03e1e56330ba00c267a5928c365557fec9de8c8534df53ac49926e1",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "1f2d6359c03e1e56330ba00c267a5928c365557fec9de8c8534df53ac49926e1",
+          "sweepQfull": "0393f5797370d804e2167b17f40877bb998b165077825cd07427a4b6db1ffccb",
+          "currentQfull": "0393f5797370d804e2167b17f40877bb998b165077825cd07427a4b6db1ffccb",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "b331bd4550fbd808f388c5717354467bcdbba12437bcefc8fce031988863ee64",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 23,
+          "questionUid": "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3",
+          "registeredQfull": "8e0565e4e94e637164d02963f8a20abe9eeb84253480550ebf678c1d951d0673",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "8e0565e4e94e637164d02963f8a20abe9eeb84253480550ebf678c1d951d0673",
+          "sweepQfull": "ad8077b3f3092e53d0070df2f4aac4203fe23f42a2f1b8e3fc4d9aa9a086a51a",
+          "currentQfull": "ad8077b3f3092e53d0070df2f4aac4203fe23f42a2f1b8e3fc4d9aa9a086a51a",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "873121e122a74b1df4c916fe17971df49f7a871acd421f16984b71af4b958e67",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js",
+      "questionCount": 24,
+      "sourceOnly": true,
+      "currentRawSha256": "f04adc72d2f74fcdf1277464823e2661480b96dc88da25bb8f458adfa71311b3",
+      "currentBlobSha1": "3f280a62cbe273a347f5fec051bfa040feafc1df",
+      "baselineRawSha256": "f04adc72d2f74fcdf1277464823e2661480b96dc88da25bb8f458adfa71311b3",
+      "latestMainRawSha256": "f04adc72d2f74fcdf1277464823e2661480b96dc88da25bb8f458adfa71311b3",
+      "targetSourceDriftSinceBaseline": false,
+      "solutionStatus": "SOURCE_ONLY_NO_VERIFIED_METHOD_EVIDENCE",
+      "nonemptySolutionOrdinals": [],
+      "nonemptyAnswerOrdinals": [],
+      "registrationCurrentMatches": 24,
+      "sourceFingerprintCaveat": "Legacy QFULL uses content; this source uses question. Raw source SHA and question field hashes in preserved review remain necessary."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1final/19_동산중_1학기_기말_중1_수학.js",
+      "questionCount": 25,
+      "sourceOnly": true,
+      "currentRawSha256": "16fa4ce4c1ee2312ca707da1064049fdff1508b6da3fa7c6007bcfe5daf8ce4c",
+      "currentBlobSha1": "7713112dd12755cfe79c9cce7bb129eca1b70891",
+      "baselineRawSha256": "16fa4ce4c1ee2312ca707da1064049fdff1508b6da3fa7c6007bcfe5daf8ce4c",
+      "latestMainRawSha256": "16fa4ce4c1ee2312ca707da1064049fdff1508b6da3fa7c6007bcfe5daf8ce4c",
+      "targetSourceDriftSinceBaseline": false,
+      "solutionStatus": "SOURCE_ONLY_NO_VERIFIED_METHOD_EVIDENCE",
+      "nonemptySolutionOrdinals": [],
+      "nonemptyAnswerOrdinals": [],
+      "registrationCurrentMatches": 25,
+      "sourceFingerprintCaveat": "Legacy QFULL uses content; this source uses question. Raw source SHA and question field hashes in preserved review remain necessary."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1final/19_연향중_1학기_기말_중1_수학.js",
+      "questionCount": 23,
+      "sourceOnly": true,
+      "currentRawSha256": "cf608ff7be165d0828cbc19f85ed3d83fcbcf8fb3a7baba492cd6b480a4abd97",
+      "currentBlobSha1": "41599518ea6690c26003fb3f211e16ee9bc25fbb",
+      "baselineRawSha256": "cf608ff7be165d0828cbc19f85ed3d83fcbcf8fb3a7baba492cd6b480a4abd97",
+      "latestMainRawSha256": "cf608ff7be165d0828cbc19f85ed3d83fcbcf8fb3a7baba492cd6b480a4abd97",
+      "targetSourceDriftSinceBaseline": false,
+      "solutionStatus": "SOURCE_ONLY_NO_VERIFIED_METHOD_EVIDENCE",
+      "nonemptySolutionOrdinals": [],
+      "nonemptyAnswerOrdinals": [],
+      "registrationCurrentMatches": 23,
+      "sourceFingerprintCaveat": "Legacy QFULL uses content; this source uses question. Raw source SHA and question field hashes in preserved review remain necessary."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1final/19_왕운중_1학기_기말_중1_수학.js",
+      "questionCount": 24,
+      "sourceOnly": true,
+      "currentRawSha256": "19396c58c1273b3d184d0b9eaf21478bc71d1c7c852ed4b9e0f9ec7f55bd6cca",
+      "currentBlobSha1": "da8ce6e86b320e1a147eb5facef971f14db694a9",
+      "baselineRawSha256": "19396c58c1273b3d184d0b9eaf21478bc71d1c7c852ed4b9e0f9ec7f55bd6cca",
+      "latestMainRawSha256": "19396c58c1273b3d184d0b9eaf21478bc71d1c7c852ed4b9e0f9ec7f55bd6cca",
+      "targetSourceDriftSinceBaseline": false,
+      "solutionStatus": "SOURCE_ONLY_NO_VERIFIED_METHOD_EVIDENCE",
+      "nonemptySolutionOrdinals": [],
+      "nonemptyAnswerOrdinals": [],
+      "registrationCurrentMatches": 24,
+      "sourceFingerprintCaveat": "Legacy QFULL uses content; this source uses question. Raw source SHA and question field hashes in preserved review remain necessary."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+      "questionCount": 23,
+      "sourceOnly": false,
+      "currentRawSha256": "d63b3ac4134a1b4adec3b8cc9bd8721ec906ab8d00c30dd91aaa42d6d34e216d",
+      "currentBlobSha1": "46f3f493c46c0ef76f29b032a8381483ba651a51",
+      "baselineRawSha256": "6fb9bc5278ab8715ea217f5b181db6d21eefeac75ab458c2eab58b6729bcc99b",
+      "latestMainRawSha256": "6fb9bc5278ab8715ea217f5b181db6d21eefeac75ab458c2eab58b6729bcc99b",
+      "targetSourceDriftSinceBaseline": false,
+      "status": "LINEAGE_RECONCILED_APPROVAL_NOT_GRANTED",
+      "items": [
+        {
+          "ordinal": 1,
+          "questionUid": "qid_v1_fb9bed8b3445e25cde4c9f65855f66c7308980d769d86e26da7607569ad49f6d",
+          "registeredQfull": "eec7584ef6e1e8500fdd29738e3f10db9b24dd26c53bcac490215ebbe30c6ac5",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "eec7584ef6e1e8500fdd29738e3f10db9b24dd26c53bcac490215ebbe30c6ac5",
+          "sweepQfull": "b4fb54757c00d62aaa49ec89640853d3660852f415e6df8f154476ddc45f5a84",
+          "currentQfull": "b4fb54757c00d62aaa49ec89640853d3660852f415e6df8f154476ddc45f5a84",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "366de602d575f1e5394f40dd4391bf2c31cff94fdfc980535d42c64f3f0167f5",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 2,
+          "questionUid": "qid_v1_7bc34e10bd0a5bfb541eb48706d88c5027f2c5caad1145d003206b53a8ae792a",
+          "registeredQfull": "7f58f3e8111725959617c224e1b1f92c27b3af907ae898ce228c86ee6580a74b",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "7f58f3e8111725959617c224e1b1f92c27b3af907ae898ce228c86ee6580a74b",
+          "sweepQfull": "9e4966ae84e1cb4dea310a9ff98e400e7b1bc3ea02dccf3efddc233a33f2b0ea",
+          "currentQfull": "9e4966ae84e1cb4dea310a9ff98e400e7b1bc3ea02dccf3efddc233a33f2b0ea",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "ae1bd0a870f431b2cbf6eb4f29f0cb9c344ffc1445950f0548ef9c2f128f4618",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 3,
+          "questionUid": "qid_v1_a562ab4c8b6d22f240fc71f9b2a3b84c348ee3d3101092001fce1a1f40c1e381",
+          "registeredQfull": "3f07a3ef0f7a4b425691d068f35d973f4dd1154e4f4c3f937d12d3bab91b423e",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "3f07a3ef0f7a4b425691d068f35d973f4dd1154e4f4c3f937d12d3bab91b423e",
+          "sweepQfull": "60e5e8a9c0bbc223cbe951927150492593c37e02983eecb9bebdf405432f9544",
+          "currentQfull": "60e5e8a9c0bbc223cbe951927150492593c37e02983eecb9bebdf405432f9544",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "4d94409e13ccbd9917b7e79cbf82d773e0f6a2d6970868b824d305ae702b74d6",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 4,
+          "questionUid": "qid_v1_8d9cda25fe1e3f201e768645f4f76ac88c91fead674d17cef2decda2845cfc2b",
+          "registeredQfull": "ba577f2912897c543646376369b80a93c2aa57c1a8a0afde024564ffa490ba6b",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "ba577f2912897c543646376369b80a93c2aa57c1a8a0afde024564ffa490ba6b",
+          "sweepQfull": "b79f667d456c88308b9de7b5df2353ba5ed02183b92631555874dd0d11a07fc1",
+          "currentQfull": "b79f667d456c88308b9de7b5df2353ba5ed02183b92631555874dd0d11a07fc1",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "3665a63d03e9ebc746005f5025fd63dca261dac7b82696984b38207cc8c91b41",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 5,
+          "questionUid": "qid_v1_b4475d3f516df4ae69b21504a246224731bfdd510be6b7ef1691d9072a0b062f",
+          "registeredQfull": "7d8c4a0df23252bfc73a6a9df8ac364ca01eb20280078ab49ad6174596610c5e",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "7d8c4a0df23252bfc73a6a9df8ac364ca01eb20280078ab49ad6174596610c5e",
+          "sweepQfull": "ac5755bddbd534515374db43072b79a7333e99419edfb123930e1a004fe21bf9",
+          "currentQfull": "ac5755bddbd534515374db43072b79a7333e99419edfb123930e1a004fe21bf9",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "c2b096186128407d1f0e9e266b7a6066bb301be2285ef75b3e76c4b768221428",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 6,
+          "questionUid": "qid_v1_802b80e3505ebf59254a0a4f1e1ba3e855838dcaca1c9212a964fbc1de61302b",
+          "registeredQfull": "e11d9a1b80cfa54029f8f4fbd7edcd8340b1dca6e93caea660e2a357aa454e83",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "e11d9a1b80cfa54029f8f4fbd7edcd8340b1dca6e93caea660e2a357aa454e83",
+          "sweepQfull": "cce5cae2143b648fc0064609533ec6ae9d657442829ec13b79dd851aaaf6339d",
+          "currentQfull": "cce5cae2143b648fc0064609533ec6ae9d657442829ec13b79dd851aaaf6339d",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "0b952a240ac5c7bb264dde3509d77acfd3d7a7d00eb1ad95bcbb6faed9f5e67c",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 7,
+          "questionUid": "qid_v1_93d23f09e6b4ba421810c56393949ce5910e7d0c7bf416ed78ea055842f93c2e",
+          "registeredQfull": "447bf2800d1c2a289b9d05eb7f6529c1e875221fcab5dc5fd4ec59b9929fe3a2",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "447bf2800d1c2a289b9d05eb7f6529c1e875221fcab5dc5fd4ec59b9929fe3a2",
+          "sweepQfull": "62b35f25a2d31cf9dc6185ad6d16d06932f522ab8f7e3f1af33fdc72a5a56720",
+          "currentQfull": "62b35f25a2d31cf9dc6185ad6d16d06932f522ab8f7e3f1af33fdc72a5a56720",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "a0f7dd1d217b6ec88b1629e5f434cee014dcf2fc2c37555af3cc30dce0411879",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 8,
+          "questionUid": "qid_v1_ecbcbe41b488e96a38999cb4d6db411fb3581e3172aba6a70ddeb55cb5ba3f83",
+          "registeredQfull": "023bac643122a106dceef2a7d6c60d17d98e7a525ed71289b09d45b5f994d0fa",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "023bac643122a106dceef2a7d6c60d17d98e7a525ed71289b09d45b5f994d0fa",
+          "sweepQfull": "4410b28bc1993a8ffffa51670648d15628ebe3f43aa7011222ad62549b14c63e",
+          "currentQfull": "4410b28bc1993a8ffffa51670648d15628ebe3f43aa7011222ad62549b14c63e",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "d60b82984dcb72955e00b528622ac79320b16a339e654f918d576b6c1f9a4ebc",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 9,
+          "questionUid": "qid_v1_d55faa7a9477ef5bb4314ca9dc280dc967b764095d94a6f0225348a467232cb8",
+          "registeredQfull": "d7898abbff9adb663bc785853705c8ac6983fd8c0199ca9cdb0f5292c19051aa",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "d7898abbff9adb663bc785853705c8ac6983fd8c0199ca9cdb0f5292c19051aa",
+          "sweepQfull": "23017318c32f27f09d8407de759f15b1d3c308e7030324ce484651b5c442b705",
+          "currentQfull": "23017318c32f27f09d8407de759f15b1d3c308e7030324ce484651b5c442b705",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "2268e54cbf5b77ebd83b8a234d6d35013db3010ac9f9ef72675fe8599d2a8a77",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "OFF_TOPIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 10,
+          "questionUid": "qid_v1_3b9eddec458d80a5ab7f07d8636a6e7ebcc405aaa1b63d0a8af6fd439164bd5b",
+          "registeredQfull": "098fa97a26c42ffcfdcce1a52027edfdc081dc8c64fa47efc7ce46cb07371077",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "098fa97a26c42ffcfdcce1a52027edfdc081dc8c64fa47efc7ce46cb07371077",
+          "sweepQfull": "c165b43f14eae8b85071f5fe870e2ab274f6d7cd7803a19cb1346dbf35b49cb2",
+          "currentQfull": "c165b43f14eae8b85071f5fe870e2ab274f6d7cd7803a19cb1346dbf35b49cb2",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "ba968e50ca1f3903f1e6ffb96259e37b5b199a77b71954cbef5648bec06cb88d",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 11,
+          "questionUid": "qid_v1_6ce2fa03238108560bf64b8a2d06f27d093602a2acfb67a757a8ad76a03799df",
+          "registeredQfull": "2430202e98ca7012cd0867ae9882c73c53ca8875f24c1ab41257409ff41f415e",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "2430202e98ca7012cd0867ae9882c73c53ca8875f24c1ab41257409ff41f415e",
+          "sweepQfull": "2e6907a12b75e3a0536c7f5f5d667d2e0e4dc1a1447b9a09a36823c9499cc4f7",
+          "currentQfull": "2e6907a12b75e3a0536c7f5f5d667d2e0e4dc1a1447b9a09a36823c9499cc4f7",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "bd8f68ea04b3652ea9e8a3111bfd1110c99f5e574cc2cd43f3ad5adf586e3846",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_SOLUTION_LOW_CONTRAST_IMAGE",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 12,
+          "questionUid": "qid_v1_8bc9c811cc835ba1a24e54bcaa41ef5a7ecdc296581e61f368e82898ff5d0412",
+          "registeredQfull": "116f93647060599025fb9887a34874498139384f2b959a55a296ea9c59da3d70",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "116f93647060599025fb9887a34874498139384f2b959a55a296ea9c59da3d70",
+          "sweepQfull": "70e4760e675d9f295d9c79e7c277dbb17980f1f7df55fbb8afa93a2899f9e536",
+          "currentQfull": "70e4760e675d9f295d9c79e7c277dbb17980f1f7df55fbb8afa93a2899f9e536",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "be881d2178f0d13243a93a49f722323494c12b69aa351b93c96f73d068ccdec3",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 13,
+          "questionUid": "qid_v1_f703ac681cae516e503795efe9109a721cef8bec802a4d9d7e927934e5d3aad1",
+          "registeredQfull": "7f9b9794458b3da3cbe0da791c64d7a7931d57ad31960db1e2167a6c948c2b50",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "7f9b9794458b3da3cbe0da791c64d7a7931d57ad31960db1e2167a6c948c2b50",
+          "sweepQfull": "167fd95fb20eec151b4c20ceff790e37bfa495434605211d6e2b176337731279",
+          "currentQfull": "167fd95fb20eec151b4c20ceff790e37bfa495434605211d6e2b176337731279",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "965cb8b0910990c42c67ec5c439a7c0b3bc5b202df4cfb0d90bab4df455ff09a",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 14,
+          "questionUid": "qid_v1_d8845483a88e1059b9d3c92b2cf18014832e6c031bd7a277276f4145f005768e",
+          "registeredQfull": "865957f29c1890ebe417a05d61d8b6bb39bde317707c65825f8a0767d378849b",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "865957f29c1890ebe417a05d61d8b6bb39bde317707c65825f8a0767d378849b",
+          "sweepQfull": "7ff077f02a7f0363588afb0e958b0b6f97ffdc45255dc60c6b1778b63d4e7502",
+          "currentQfull": "7ff077f02a7f0363588afb0e958b0b6f97ffdc45255dc60c6b1778b63d4e7502",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "0b4412835289bfba9222a5ac3c38384f0ab5e3df050fe28e4d9dc986fee5ded5",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 15,
+          "questionUid": "qid_v1_91d784a517b8189453143963b36c0b7149367677da0d197a245ec46ed12543b7",
+          "registeredQfull": "45c16a1651e64386c5c38cd92a89331eb2dc08b5fbcc2686419c9770d2cef756",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "45c16a1651e64386c5c38cd92a89331eb2dc08b5fbcc2686419c9770d2cef756",
+          "sweepQfull": "dfcccdc20812a207f9c2d50f8572b1d486dcf08a28bfcf3f026e83c72ed09f68",
+          "currentQfull": "dfcccdc20812a207f9c2d50f8572b1d486dcf08a28bfcf3f026e83c72ed09f68",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "371ab80396e1dd90bde06125fbf40a2d3d48a59cc80a09901a152868bdb8ab00",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 16,
+          "questionUid": "qid_v1_30823040895108b3b727e7e169e1ce127c777f2f3e89ecf21e0ffd8dacd84408",
+          "registeredQfull": "8bfb3f865b0af0e55582410a8f3d672e57352b509b76f2a5e68ecbba4728817b",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "8bfb3f865b0af0e55582410a8f3d672e57352b509b76f2a5e68ecbba4728817b",
+          "sweepQfull": "19763b7f9c41c6efda52f5472cf99e8690ab25b31f7796a613f5fe7d767a1011",
+          "currentQfull": "19763b7f9c41c6efda52f5472cf99e8690ab25b31f7796a613f5fe7d767a1011",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "c849eaeb3ec5ff7b80214798f0c3acd0790cbb763c696942df11c362f7375b3d",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 17,
+          "questionUid": "qid_v1_7eb78c9d22a62c22f6eb68880a569bf6a5c074bf0c09ddcfa5a41d33a38afff6",
+          "registeredQfull": "cbbeae108a1f2a971f3434f3c715eef97ed0e2e12d839261ea58bb9525030d6e",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "cbbeae108a1f2a971f3434f3c715eef97ed0e2e12d839261ea58bb9525030d6e",
+          "sweepQfull": "f6840d5fc61c0b4501a4694fc9be29e97d191bcf887b363bc4b08f6f51978286",
+          "currentQfull": "f6840d5fc61c0b4501a4694fc9be29e97d191bcf887b363bc4b08f6f51978286",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "911d4e6ef91c93e580f353538d082906d3dde9f93475a7812322ea10963b3ea6",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 18,
+          "questionUid": "qid_v1_96b8eb92791789902a541107aae7a2f503b2e2340b0faeeed63c6d2de1876e23",
+          "registeredQfull": "f3d6282ff81493ff7c26695273bd5049022e22b42151f04642a638282edf1f06",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "f3d6282ff81493ff7c26695273bd5049022e22b42151f04642a638282edf1f06",
+          "sweepQfull": "b4059d22ea751b0f61903d807865ab3afff99bc8748f084f74127a74cfbaedab",
+          "currentQfull": "b4059d22ea751b0f61903d807865ab3afff99bc8748f084f74127a74cfbaedab",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "f9a810fa418e7f9869b2be7f40e44f98595da719ba4f7872e06e4f0fa77619f2",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 19,
+          "questionUid": "qid_v1_523e6ed7bac116437727b292456c3a9ce638332418cf7e4c97f93fab031e81c6",
+          "registeredQfull": "4f321f9866c20d88547c43d3e31a26bf476d3f9e3663fc8cf12ab11001f09c0c",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "4f321f9866c20d88547c43d3e31a26bf476d3f9e3663fc8cf12ab11001f09c0c",
+          "sweepQfull": "e45ecbb5bb9877bfbbb2d722c180f77cd760925fca9743119d7f298bdd6530ed",
+          "currentQfull": "e45ecbb5bb9877bfbbb2d722c180f77cd760925fca9743119d7f298bdd6530ed",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "bc4c16fb69950c3cd73952c0d31934431ae65fd78981181b51647e48122446ef",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 20,
+          "questionUid": "qid_v1_c1f3347c7e55101c4b4d70ec5f5b28950e953b0856a54e21afe24a53e9ea5fa3",
+          "registeredQfull": "e3dddd3953c4c9477a1b00ec6a8690b060458ddd16ce4c010d41083e53a3f6a2",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "e3dddd3953c4c9477a1b00ec6a8690b060458ddd16ce4c010d41083e53a3f6a2",
+          "sweepQfull": "669f04fd3a5c0de3380145bb04e42d78bed84e9762604ee86dad4083cf64a1b5",
+          "currentQfull": "669f04fd3a5c0de3380145bb04e42d78bed84e9762604ee86dad4083cf64a1b5",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "ce4b01b378f72531b85d542f2044d4718ef89aeaa884e6c428fb26710897d419",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 21,
+          "questionUid": "qid_v1_64ee6f6702673bd6a7e1c0f0f2cd07cde1a0c8a1fb36fa00fc7bbd7660f03e2c",
+          "registeredQfull": "45a1cbcfff2f5ad652d32b743720f03c5ec747df81f1e04b8fa68b813fd3beac",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "45a1cbcfff2f5ad652d32b743720f03c5ec747df81f1e04b8fa68b813fd3beac",
+          "sweepQfull": "e239257006d4379471baa48aa2e3464237a1f78186cdb3d1b5ca791e3c459740",
+          "currentQfull": "e239257006d4379471baa48aa2e3464237a1f78186cdb3d1b5ca791e3c459740",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "b0041d71eed3912772c108c07094257498f6896183588692d3cdd95989b65c3d",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "OFF_TOPIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 22,
+          "questionUid": "qid_v1_ea0679c1bff8365296d389a47b4662aaa60ce5793cf0781ab19240a01d7c314e",
+          "registeredQfull": "ba54919e45550afb73b4d9f701859572446f2a7542e315b7b4ef7f0fb2326e44",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "ba54919e45550afb73b4d9f701859572446f2a7542e315b7b4ef7f0fb2326e44",
+          "sweepQfull": "aceb31a03559c00f0fdac6b5873fb4f4a1e97591a2e97e07f6636e2c32cfd609",
+          "currentQfull": "aceb31a03559c00f0fdac6b5873fb4f4a1e97591a2e97e07f6636e2c32cfd609",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "92ee173c6199d523b4b7976740dd21e65dc2d887b42068ef0db0e84ddcbf05dd",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 23,
+          "questionUid": "qid_v1_29286050acd6007c79e14d04a9f99ced3cbf322212cfb1047ba58ea51cd5381c",
+          "registeredQfull": "6b2ccabbcc82ab4541029e9531ad37e1a16f6b66c0d770da0d8797745df34c92",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "6b2ccabbcc82ab4541029e9531ad37e1a16f6b66c0d770da0d8797745df34c92",
+          "sweepQfull": "b7fcc37092a56f40e493010d60d94a3d2df3c4320a07a594e6977b9e6293ec51",
+          "currentQfull": "b7fcc37092a56f40e493010d60d94a3d2df3c4320a07a594e6977b9e6293ec51",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "dfd4effd6b79f45bf44f342001b18ff1cc306086d715551683eac854cd596b23",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B01_19_연향중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js",
+      "questionCount": 24,
+      "sourceOnly": false,
+      "currentRawSha256": "58a9474391a24420f37ddeffe824923d221f316a1ef7ed4361b9361eb0df4bc6",
+      "currentBlobSha1": "638c458733cd72f5fb859633b31bba175fd2d506",
+      "baselineRawSha256": "905f240f4182368a94ec033316a638f0815e51553f4fc1064c4008a558d5334b",
+      "latestMainRawSha256": "905f240f4182368a94ec033316a638f0815e51553f4fc1064c4008a558d5334b",
+      "targetSourceDriftSinceBaseline": false,
+      "status": "LINEAGE_RECONCILED_APPROVAL_NOT_GRANTED",
+      "items": [
+        {
+          "ordinal": 1,
+          "questionUid": "qid_v1_7994be197a1b8b0003d66fa187642f5f54415a04a495ce3f4a7669da83da2940",
+          "registeredQfull": "fafa4064f3aadd13c87dabff84e9b239496134f91703fe223daa91b42042bb93",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "fafa4064f3aadd13c87dabff84e9b239496134f91703fe223daa91b42042bb93",
+          "sweepQfull": "1e052c87edd664154790fc925a56706e6667b10c9de38de6e0e416f308d9ee0b",
+          "currentQfull": "1e052c87edd664154790fc925a56706e6667b10c9de38de6e0e416f308d9ee0b",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "dc5719e067cf21975e251f55b31926038646bc2429fd714052ed73374af36bb3",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 2,
+          "questionUid": "qid_v1_c2105252f573de05ead0f47fc8482d1903829db0ddba92aaac269be28d35f393",
+          "registeredQfull": "c5353228a5c8a8f5bdbc730aba1ae31b3324d608c715a68bf2b530a5e8e6fcba",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "c5353228a5c8a8f5bdbc730aba1ae31b3324d608c715a68bf2b530a5e8e6fcba",
+          "sweepQfull": "9b618d458a2c1f5159ab9ae27b39057a8695f758e7319dfa735beff157179e2f",
+          "currentQfull": "9b618d458a2c1f5159ab9ae27b39057a8695f758e7319dfa735beff157179e2f",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "c84cb710de89cd5bab371228dd665293461df0c2b947a8238fc975c122e9176e",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 3,
+          "questionUid": "qid_v1_2f3257280a8470181a81973e3d241d51086b31824f2ad04a682496573d2a5c51",
+          "registeredQfull": "6e72f5a1d8014f2fee052b48f5df5c2e07484028991a8895fa1480ce10c18fd5",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "6e72f5a1d8014f2fee052b48f5df5c2e07484028991a8895fa1480ce10c18fd5",
+          "sweepQfull": "21b76417be99839b5964d95af6fbf66b9feb8957df46f38b55a6bef9c9cedbd7",
+          "currentQfull": "21b76417be99839b5964d95af6fbf66b9feb8957df46f38b55a6bef9c9cedbd7",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "d11a00e45fa4fa942adc00757b48a6e2ae31f6b0f26256be2369821f33faabf7",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 4,
+          "questionUid": "qid_v1_25636ec750043598635a0126412a7130115fc43914dbc31ef289b643d4b8206b",
+          "registeredQfull": "a2b03f670768d5d32afdc9c34c590b1fa80f1107e0022471c93c01beed2c049f",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "a2b03f670768d5d32afdc9c34c590b1fa80f1107e0022471c93c01beed2c049f",
+          "sweepQfull": "fdbbc1e394f69cb2cd8a2a8f587f008d073dbba5dd9aa75176f1ec5aded1d31d",
+          "currentQfull": "fdbbc1e394f69cb2cd8a2a8f587f008d073dbba5dd9aa75176f1ec5aded1d31d",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "cc13bd99ed96df9f8d23358972e73682dc8ba199227b7f39e228fe4b6bad6daa",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 5,
+          "questionUid": "qid_v1_9cd86345a6822baf307175e1dce3b4f5e6280a462c5526a8d115e90d5d5bac01",
+          "registeredQfull": "e378948b1bc2716986169e5ce85a64bc2ff2ae7b277ed96e257954ca3e3b1eec",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "e378948b1bc2716986169e5ce85a64bc2ff2ae7b277ed96e257954ca3e3b1eec",
+          "sweepQfull": "656b15807fdc53fdd1b9d29bef8af9dc8af4dbe4d7b98e52c077dabceab1b905",
+          "currentQfull": "656b15807fdc53fdd1b9d29bef8af9dc8af4dbe4d7b98e52c077dabceab1b905",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "877a8e50454c7abde22fc3c775ff556c34f2250614ba8b692aced7764ab320d0",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 6,
+          "questionUid": "qid_v1_6bc636bbbfedd0e50c3d18cb68bbe50364939e372b8af3a14193ed066d883809",
+          "registeredQfull": "028430317e05e8a348c2b2e9a952e0922128f12da20c7ac0d55f456ccc0e1094",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "028430317e05e8a348c2b2e9a952e0922128f12da20c7ac0d55f456ccc0e1094",
+          "sweepQfull": "bf1d2466c08223d36fccf0b8b90ba9b9e2938e99931c98f13daadcb4f53d0b36",
+          "currentQfull": "bf1d2466c08223d36fccf0b8b90ba9b9e2938e99931c98f13daadcb4f53d0b36",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "2fa49f28c8e496872ca49d8ed0184b1dc3dfa65babd6c28673a601f2f0e94acc",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 7,
+          "questionUid": "qid_v1_a6f2a90b06edebd146078fc946b7474f130d357bcce6c834fb850cb0b4e9d9d3",
+          "registeredQfull": "64bd2c82c6cf969af3a304812d04185dc4698de51a427c9b5dcb289716ac45da",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "64bd2c82c6cf969af3a304812d04185dc4698de51a427c9b5dcb289716ac45da",
+          "sweepQfull": "8f8b2d4521ef532b4c349fafb041d577347be192d1a080a0e9b79cf0654bf3e4",
+          "currentQfull": "8f8b2d4521ef532b4c349fafb041d577347be192d1a080a0e9b79cf0654bf3e4",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "cc4f609e7edd56ac428732b5c50caa780577e616875ced257f5da492b1033307",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 8,
+          "questionUid": "qid_v1_79584db57d20285e8c16d62e84acfcb485b884c33e748e3e31a909df45d6f046",
+          "registeredQfull": "83604db982131e746ace242adf556dd9d3decf001eb8847a66ef1d10fdcc61e1",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "83604db982131e746ace242adf556dd9d3decf001eb8847a66ef1d10fdcc61e1",
+          "sweepQfull": "d6efe3980d5b662e8580e601308bc2cf8f4f4ec21fcece735b0b6952dd1d1312",
+          "currentQfull": "d6efe3980d5b662e8580e601308bc2cf8f4f4ec21fcece735b0b6952dd1d1312",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "dc1cb0dc32db772365cf258862cc66bebbd32f68333246e66b2d2bfbee354006",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 9,
+          "questionUid": "qid_v1_6cd2b86156ffe8f7e964da51a40a50b5961aaec4f7b96b9892cf4bbc101b253c",
+          "registeredQfull": "8883ff8a95147b558cb11668e33dff74b29e1446709a28855b9fe578d9902e80",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "8883ff8a95147b558cb11668e33dff74b29e1446709a28855b9fe578d9902e80",
+          "sweepQfull": "035160b693b42158d6770cd1807f81ec8ffa949b883399ccdf06be29926e387a",
+          "currentQfull": "035160b693b42158d6770cd1807f81ec8ffa949b883399ccdf06be29926e387a",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "af84a646d5a7355adf7b11bc82fd4f48a6ea9d533b53b4fca9a055432c924914",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 10,
+          "questionUid": "qid_v1_ae204ecf6206ea478f89ef3996e71897dbfcb908862df24d0fbbea9e42bdd25e",
+          "registeredQfull": "2e4bd0fb4c83e32b78e049c1169ca687319eacc3e6296225b5ca601a46e5c8de",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "2e4bd0fb4c83e32b78e049c1169ca687319eacc3e6296225b5ca601a46e5c8de",
+          "sweepQfull": "b4c41b57ec54ed5d7a39856c48d76f2f5cfc578728b6b9dc510669bffd3079c9",
+          "currentQfull": "b4c41b57ec54ed5d7a39856c48d76f2f5cfc578728b6b9dc510669bffd3079c9",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "0c317f63ae73c5771bd7b47475d05f3ef571865b559315ddcebdfe312533863e",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 11,
+          "questionUid": "qid_v1_a6c7aa339c1cde9262257628f499a9d3da40cf1b836503baed70988ee62a5faf",
+          "registeredQfull": "7236e21e6e5f7ede06b8eb4e6b0746ec6e98a966d697bba5b232731caf1d8d7a",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "7236e21e6e5f7ede06b8eb4e6b0746ec6e98a966d697bba5b232731caf1d8d7a",
+          "sweepQfull": "d09423c853d384f18a2c652b0efeade50714afd23787b0fa29891b4b5feeba29",
+          "currentQfull": "d09423c853d384f18a2c652b0efeade50714afd23787b0fa29891b4b5feeba29",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "746287e619f7123e64908e7620adfc710bc6b66ddac298460d3cc20f0c582832",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 12,
+          "questionUid": "qid_v1_4dea314439a6a3b2aa87f27bca2dcf91ef8756d52a92ba57f9507bbb229f243c",
+          "registeredQfull": "9b417bfa41986f09c6b26eb2a6bef6c839367d38ff8f97a4eb4f512ee7685829",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "9b417bfa41986f09c6b26eb2a6bef6c839367d38ff8f97a4eb4f512ee7685829",
+          "sweepQfull": "181fd3953930138dc384260ad3635f73ae636757760bf7d9e3ca07fb02459053",
+          "currentQfull": "181fd3953930138dc384260ad3635f73ae636757760bf7d9e3ca07fb02459053",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "b321e807786239b52295732764a0f934697fef80a58f35f5916b38547aabdfd8",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 13,
+          "questionUid": "qid_v1_801d28ec02001c2cc13082b23918d09c5e522e63f8017d9d3aa9408d7966c974",
+          "registeredQfull": "8e45870c14a934773d78c5603cb09dbb2c19ad81a380fb7959ab99bd37ac4a13",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "8e45870c14a934773d78c5603cb09dbb2c19ad81a380fb7959ab99bd37ac4a13",
+          "sweepQfull": "8b9e296df5dcdf1c30a7235e89aca77af73f5076bcd8acf889b2d5a13d7c078b",
+          "currentQfull": "8b9e296df5dcdf1c30a7235e89aca77af73f5076bcd8acf889b2d5a13d7c078b",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "8f3f36c8c9ecafcbb000204ebabd11d5eaaef486710b582449862ccec5cbae57",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 14,
+          "questionUid": "qid_v1_e72d5960d8a95f87d7b9d05482cad9878d4a1c0fb1bc1f706183d47491f81e06",
+          "registeredQfull": "4caed616a69eef09f9c6a83a381354107fbc82bfc6d2539be06a19c836221a35",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "4caed616a69eef09f9c6a83a381354107fbc82bfc6d2539be06a19c836221a35",
+          "sweepQfull": "56d1d5b28dc00ff72b120dac9bb09191e9c39d188992e260d5fa3f7d090a774a",
+          "currentQfull": "56d1d5b28dc00ff72b120dac9bb09191e9c39d188992e260d5fa3f7d090a774a",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "e490bf12b258dc31be51801242938e158b52e6a5325e53a88e7f1b72d24b6265",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 15,
+          "questionUid": "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3",
+          "registeredQfull": "d542db93ade5b9e0b681b90c70c939973c462241c6714e754bb342f528b6f808",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "d542db93ade5b9e0b681b90c70c939973c462241c6714e754bb342f528b6f808",
+          "sweepQfull": "fcf2f8b90ff08ec826a39e9b84febfdd22bc7d6ed9fdcbe213978c3a09394cf5",
+          "currentQfull": "fcf2f8b90ff08ec826a39e9b84febfdd22bc7d6ed9fdcbe213978c3a09394cf5",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "d90241547c6147f58e644a3ffb09fb458aa87c37d77bc34027e85d33b7cce329",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 16,
+          "questionUid": "qid_v1_60eb0dda897e286683d9da9e5f2852f4614eb596b43a319bb4df266288409b03",
+          "registeredQfull": "75dadaaf42ce594bc7982bcb926771897c3c6b07a2ea6ba0a6509a03b277a38b",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "75dadaaf42ce594bc7982bcb926771897c3c6b07a2ea6ba0a6509a03b277a38b",
+          "sweepQfull": "c292a1adc11ffd5db793032964b86db57c9c5fdca919d41fbc931d9d0a5f32eb",
+          "currentQfull": "c292a1adc11ffd5db793032964b86db57c9c5fdca919d41fbc931d9d0a5f32eb",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "9fe4452f75d7cfecc262a317fb645f3640409367287f78a2feeb64276b99fb42",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 17,
+          "questionUid": "qid_v1_dc5e6e04949ddb1077e0a7f06eebe29a56b35167246b43caa225e008c2c3995f",
+          "registeredQfull": "47379eccd59f0924a46256fd3aa95d54193cf54755bee7be1539ecddd2999161",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "47379eccd59f0924a46256fd3aa95d54193cf54755bee7be1539ecddd2999161",
+          "sweepQfull": "1a8f7768b52668095cbc35285f9f70c1d2e4b207b378be38ecaeb5104785b80c",
+          "currentQfull": "1a8f7768b52668095cbc35285f9f70c1d2e4b207b378be38ecaeb5104785b80c",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "128f7919d3fc697d3967a45fd03179aec6cb5534fe1d0d4806f8221b2aa82a9b",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "OFF_TOPIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 18,
+          "questionUid": "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f",
+          "registeredQfull": "f5b49d96f9b9a17fb79585bfd3d2e2b6d62caf925be081415bf6f4a5f3c9f8b3",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "f5b49d96f9b9a17fb79585bfd3d2e2b6d62caf925be081415bf6f4a5f3c9f8b3",
+          "sweepQfull": "eedf9b2ecbdeafc453e99f44a6cd91c8084e8d3314394177920b5c87af1bcb68",
+          "currentQfull": "eedf9b2ecbdeafc453e99f44a6cd91c8084e8d3314394177920b5c87af1bcb68",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "2e601f3dc7f6376e3631718565a3226a0d6f113ae08c08d262a0a629db275d8b",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 19,
+          "questionUid": "qid_v1_679c2264cfddf934106cfe3471ff7d436a47e55231b36b4851aac7e55b2d8355",
+          "registeredQfull": "e93e9808e8cc87434c527f90e21ed740e17c2c7eb052e02ccd259311c993bf35",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "e93e9808e8cc87434c527f90e21ed740e17c2c7eb052e02ccd259311c993bf35",
+          "sweepQfull": "e1f5abb12b3c8e4555cd44b28a19a3b253156982bbb29e3aac3214a774970fd2",
+          "currentQfull": "e1f5abb12b3c8e4555cd44b28a19a3b253156982bbb29e3aac3214a774970fd2",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "8056a46e642e56ceb85e6055f0bb40321ce80c3181c76cc89f0cd2960fc4f36d",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 20,
+          "questionUid": "qid_v1_d269008218cd19d91814a439dfa20438a05cd0f0ec3cbe5e3cfb614d629231a8",
+          "registeredQfull": "3955513393c59e1c2df903dff45cf118f1b1012d9456e9dd5b4aebcf084f6050",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "3955513393c59e1c2df903dff45cf118f1b1012d9456e9dd5b4aebcf084f6050",
+          "sweepQfull": "345ff290ee6f6ef1c27075ceb9df4cabd6b20ec5fb94cdfdcfb55f2284580d9c",
+          "currentQfull": "345ff290ee6f6ef1c27075ceb9df4cabd6b20ec5fb94cdfdcfb55f2284580d9c",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "e3cf41110bfc666c8c37c87670743271d614196461693ece00c809e6d64007c8",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 21,
+          "questionUid": "qid_v1_7304a4c8a49ab4eeb07277c5c7a537f60eb58ab4b620ea5f5a6002b252ac2147",
+          "registeredQfull": "1849d2bc20cf2ca76cd5a44734421441291ff7b46ca74f4c1e548259bc76a77c",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "1849d2bc20cf2ca76cd5a44734421441291ff7b46ca74f4c1e548259bc76a77c",
+          "sweepQfull": "0d0741eeb73f9e85d847dca4988eb6eb98537908f82069f80ada6bcb36eaba0a",
+          "currentQfull": "0d0741eeb73f9e85d847dca4988eb6eb98537908f82069f80ada6bcb36eaba0a",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "2660ed4a2c7a6f4f2de06663c1cbb3f3a3012f8a07684dd7deb1504927798bb4",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 22,
+          "questionUid": "qid_v1_95cda2403680d62e0019fbe0b7599743e8c55855ac75face03d0b85aa4c5fdbb",
+          "registeredQfull": "dbba5062952653123ea997830488291ec5b7114fc33b00310e6f04d79f0c606e",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "dbba5062952653123ea997830488291ec5b7114fc33b00310e6f04d79f0c606e",
+          "sweepQfull": "d74ac5f24af69c0411e5e242458d226ff8e28b55c84449289ad08b451083adb9",
+          "currentQfull": "d74ac5f24af69c0411e5e242458d226ff8e28b55c84449289ad08b451083adb9",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "e75ee82a6c04d82f7c9e4dede63f9fe5f4a94c7253340ba3be4278a4b23c2bec",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 23,
+          "questionUid": "qid_v1_bccedcb814a339234aed0562db801fe5e9ebb7c5b1ae0832ed5ac55cc32f0360",
+          "registeredQfull": "c515e2c147bc726979cd662a8dd95a53a47e7884d08a03aded00e505c5f71c04",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "c515e2c147bc726979cd662a8dd95a53a47e7884d08a03aded00e505c5f71c04",
+          "sweepQfull": "c6d69a38551b4223e82f86d2159fb11dce31fa38863a416337a9c01bc82ff10e",
+          "currentQfull": "c6d69a38551b4223e82f86d2159fb11dce31fa38863a416337a9c01bc82ff10e",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "f77cffbb57bcdb06b0f43a133577d3a3d938ec33419028d2ae506d435a944802",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 24,
+          "questionUid": "qid_v1_542dd8bfcd425fd0ce55d3a2e09c22d8fc0f81d9d55cc84f041995b36e55f536",
+          "registeredQfull": "04769997e9870af79b5deca15f23b74649dd860280bb8174668f6fac23d7192a",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "04769997e9870af79b5deca15f23b74649dd860280bb8174668f6fac23d7192a",
+          "sweepQfull": "5be0714c92826efc1e6d067dcb790b9c87fdc40340835bb19add393d5ba3d27a",
+          "currentQfull": "45eecfc10f9b4367388f2a02c421d4de55583017211a90140663002569d74a64",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "587be0e60bbdfef8e748bcbed00c43cab441fa08c9bedb518de5a35cddd58117",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B02_19_왕운중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+      "questionCount": 23,
+      "sourceOnly": false,
+      "currentRawSha256": "65678eeab75184088f58349691a49630ecc095991223c8965a1f5ae719ba281e",
+      "currentBlobSha1": "26b69bd2751802229408e1693db4638986260b58",
+      "baselineRawSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+      "latestMainRawSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+      "targetSourceDriftSinceBaseline": false,
+      "status": "LINEAGE_RECONCILED_APPROVAL_NOT_GRANTED",
+      "items": [
+        {
+          "ordinal": 1,
+          "questionUid": "qid_v1_fc4098d1eff6104b0950659695efef9c3076ecad71f4e9aadd80fcf8a8ce4e8a",
+          "registeredQfull": "38accfc006550e1ee619855fa0e68c1fb50a1335aa444d416b7f5d1f938656c3",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "38accfc006550e1ee619855fa0e68c1fb50a1335aa444d416b7f5d1f938656c3",
+          "sweepQfull": "278f008af6a0b08a6fa325641d5ebf098285f6127d53a5d36250f842ca03396a",
+          "currentQfull": "278f008af6a0b08a6fa325641d5ebf098285f6127d53a5d36250f842ca03396a",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "ab2d5d26b33527c669a4f9c20b5c6f1ef8af0d02f26cbd17af935b5e55789e8b",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 2,
+          "questionUid": "qid_v1_1a7d1046d7d38f49634ac7e68697b7697eb557d4a1094a298cba054beade06bf",
+          "registeredQfull": "b619dd2f11521fdf016ffdfb2c6fa1ee6998d1745c816d73b02ce7870694ba0a",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "b619dd2f11521fdf016ffdfb2c6fa1ee6998d1745c816d73b02ce7870694ba0a",
+          "sweepQfull": "139ba5a8d9e6657f04e9f222c93ab57602f7b5cfadfc8a626cb588d519d84f84",
+          "currentQfull": "139ba5a8d9e6657f04e9f222c93ab57602f7b5cfadfc8a626cb588d519d84f84",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "a8caf2bed9f06ca30fb2866007a9cfe751f1f42a0e047faec4a5fc67710c5755",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 3,
+          "questionUid": "qid_v1_60f05e97fa1ebb848371f9c9bd71c4fe8aeefa20ea5f480693a7e7f80d648d18",
+          "registeredQfull": "2f1b4f838c620fd4d0efb40a007454da7ba5a4e392889b77acdcf6f640acdb79",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "2f1b4f838c620fd4d0efb40a007454da7ba5a4e392889b77acdcf6f640acdb79",
+          "sweepQfull": "20cfc8f61363e47426c4b7753418fa6937bdda9dbfbac04b24ba472822a2ceae",
+          "currentQfull": "20cfc8f61363e47426c4b7753418fa6937bdda9dbfbac04b24ba472822a2ceae",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "139f456888f29f0bf087ad9385f9b24b9ab536b173308a11b064e453089ed8bd",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "OFF_TOPIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 4,
+          "questionUid": "qid_v1_6ccfd85913bfbfde6991db51bff9cff756edd595f6a4358027c2bfcc512c356c",
+          "registeredQfull": "1cc9acf1fbe72da3fba76d3744ba711a3cb179d1863ee03ec34aa407726b1ea6",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "1cc9acf1fbe72da3fba76d3744ba711a3cb179d1863ee03ec34aa407726b1ea6",
+          "sweepQfull": "14b7591585831304af10c7b523a6dcc921c140cb0b24babd5d3474ea79379570",
+          "currentQfull": "14b7591585831304af10c7b523a6dcc921c140cb0b24babd5d3474ea79379570",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "03a30d249a00765178c8a91b97c4b45c6bd02806ac0f7a5162fffbba301d1b22",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 5,
+          "questionUid": "qid_v1_4555cc4a494be087f4dafe1bf7c6511a8303188434c8fee7dddf69b85c583fc9",
+          "registeredQfull": "850f26cf49b3f6704bf3511ec2faf99fd945d72b3a86d385e0a1881d066d219b",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "850f26cf49b3f6704bf3511ec2faf99fd945d72b3a86d385e0a1881d066d219b",
+          "sweepQfull": "7b2c16309e95bf764d31f2d1e5396f6fb15175e002cb59e8284ab481f7cab328",
+          "currentQfull": "120756d651c44dacb9b2ae31b0a6bb0510f2de39dd4e3f765cc06d1ba9cc256f",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "3214d3f079058275fc9233942a4bd049698fac1d9930e7308c34c2190635d3e0",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 6,
+          "questionUid": "qid_v1_98e44785dea1cb6479cccb60916b46d17256ab0c8d146ec0841e25fc68342c72",
+          "registeredQfull": "fab2cefc5892b077bb70fc26a7d5b6098adf0da1e92e49790342818ce70cf2db",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "fab2cefc5892b077bb70fc26a7d5b6098adf0da1e92e49790342818ce70cf2db",
+          "sweepQfull": "c068361d5bb7bc20629f5fdcf66dbd7a0342393328a90be1fd4f637e5110ea9b",
+          "currentQfull": "c068361d5bb7bc20629f5fdcf66dbd7a0342393328a90be1fd4f637e5110ea9b",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "6c8b8914ece3affc74d7d808114be4c168958da44ec6c7df808f731f7cb4e8ee",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 7,
+          "questionUid": "qid_v1_711187344f26b98478398d4c35a26ac272e9d632bb46545ed4abb85280e38d15",
+          "registeredQfull": "989cae149d9ab420e06597c9121d21cb7c7cfd6d027fd5de03c6f1ac4e71889a",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "989cae149d9ab420e06597c9121d21cb7c7cfd6d027fd5de03c6f1ac4e71889a",
+          "sweepQfull": "79e403949154736b6a27a7a305bf120987e364affebf9f8de99f2e6897908042",
+          "currentQfull": "79e403949154736b6a27a7a305bf120987e364affebf9f8de99f2e6897908042",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "f08de588598f14fa1cb43881ef813b97b970bad6bfd540c4556d0ba12bc094a5",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 8,
+          "questionUid": "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
+          "registeredQfull": "99dd83970fa12f6052e67f214cb8bcf8d108bf581d9c6d2aa15b666df475b6bc",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "99dd83970fa12f6052e67f214cb8bcf8d108bf581d9c6d2aa15b666df475b6bc",
+          "sweepQfull": "3c4e668d08170edff73642ef754e054fb127f391aaeec767f98661b6e1b58e13",
+          "currentQfull": "3c4e668d08170edff73642ef754e054fb127f391aaeec767f98661b6e1b58e13",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "0907a87d690994a16e4a8d7e9f69db3c62ee1568f4360da8e02505dc55d30c8a",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 9,
+          "questionUid": "qid_v1_a5d117cecc01b7f6b4f63f68edca8cbac7956aec455374dc6da41ae22dbc489e",
+          "registeredQfull": "41825cbd7327a6d02c12a7ec7644739fd3bb95a1daea1fb172b417867dd0e102",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "41825cbd7327a6d02c12a7ec7644739fd3bb95a1daea1fb172b417867dd0e102",
+          "sweepQfull": "0bf2a77d80adb9336cbcb8bac0c33797e36fe62facbe6e124336459489dd22fd",
+          "currentQfull": "0bf2a77d80adb9336cbcb8bac0c33797e36fe62facbe6e124336459489dd22fd",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "c2811b4aed3c6059a2ee6f27c2a3825dfb2097d7c3df402a6e6de3501165b0fe",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 10,
+          "questionUid": "qid_v1_a399c29e9f590efc99606127d7d66baa48ac37b5f93d28a480612e2dccc30a8f",
+          "registeredQfull": "0741a46c6b7358602369822fae2d55766111f84e70551a97559c7967e0448187",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "0741a46c6b7358602369822fae2d55766111f84e70551a97559c7967e0448187",
+          "sweepQfull": "a68b8d86ff23ea7bdda372e87af9877da44f23048bcd5251a1e616e9dfad0a23",
+          "currentQfull": "a68b8d86ff23ea7bdda372e87af9877da44f23048bcd5251a1e616e9dfad0a23",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "39aa4d660821ef35aa6841d8629febdada0991b83a04267218a732c2f734be13",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 11,
+          "questionUid": "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
+          "registeredQfull": "6d975cff6d1382536cbbf7cc32a460807d39e587944ddeb55688f64ec5745404",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "6d975cff6d1382536cbbf7cc32a460807d39e587944ddeb55688f64ec5745404",
+          "sweepQfull": "2efe01ffdaac42955188c1cf5bae542099297c0a390c0db7ed41cc9c9683d237",
+          "currentQfull": "2efe01ffdaac42955188c1cf5bae542099297c0a390c0db7ed41cc9c9683d237",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "e5b2c303e775fb6ad59cc4e051883974e9904b3d3c9493ad86c610e5156dd0b1",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 12,
+          "questionUid": "qid_v1_9f472bd636d77e4196026bb15168aaf2f276e76b753aa7aee398ccda1f4ebd4d",
+          "registeredQfull": "69e87c9ce94c7af0fc6605a7d3061780dcfa6d0f3dbaf544186ae7b441c25f48",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "69e87c9ce94c7af0fc6605a7d3061780dcfa6d0f3dbaf544186ae7b441c25f48",
+          "sweepQfull": "8b14afd19621bb5d1b1fcc93b23773e9686fccf7a2f8bd89d1b4bb2b53801f01",
+          "currentQfull": "8b14afd19621bb5d1b1fcc93b23773e9686fccf7a2f8bd89d1b4bb2b53801f01",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "1267d01c6df2a1235f6e1575ece6ece21fedf35cd3849203f4479ee56ba1c110",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "MISLEADING_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 13,
+          "questionUid": "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
+          "registeredQfull": "6648051f760f6d192b3cdd379e5d056a3456927e9af9f0933f77c55c652b36ea",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "6648051f760f6d192b3cdd379e5d056a3456927e9af9f0933f77c55c652b36ea",
+          "sweepQfull": "9e083db06a47cf426825c99c15d54467fbbc3e64bcd27f1b0275ad35974a0262",
+          "currentQfull": "9e083db06a47cf426825c99c15d54467fbbc3e64bcd27f1b0275ad35974a0262",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "8dc88453ea27b358ea42291eaec8a3f503098e8266f97ee9689ed51b74f0c6a8",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 14,
+          "questionUid": "qid_v1_bdbd7a8ea6c6c046b655356a4485ade991ee950fc819c4735afe418abe91dbb1",
+          "registeredQfull": "13d65e0bde14ce231b0b21d505281edf261bf49b791f7fb6933cc13dbef4e545",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "13d65e0bde14ce231b0b21d505281edf261bf49b791f7fb6933cc13dbef4e545",
+          "sweepQfull": "780e93c9d796d3f92efc3515bd609256b09877a1a869e0c5a4c44e3b79a68f97",
+          "currentQfull": "780e93c9d796d3f92efc3515bd609256b09877a1a869e0c5a4c44e3b79a68f97",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "74a448a084ab505edd3bf16e6b3293a894d5850b4983dd9350eff7129e06e7c1",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "OFF_TOPIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 15,
+          "questionUid": "qid_v1_c1e6363f20354cdc84211fb85f4ebbedf89e01fae5fe4a32c8931c428a605538",
+          "registeredQfull": "83b2e59772c01f412d82f195ebf97546021369651fb9348005c6babbbc0f22e3",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "83b2e59772c01f412d82f195ebf97546021369651fb9348005c6babbbc0f22e3",
+          "sweepQfull": "513cfc85b56cb9f5c8bf6a34eeae812a89b8c58b280c95eb00743c9b65dbf861",
+          "currentQfull": "513cfc85b56cb9f5c8bf6a34eeae812a89b8c58b280c95eb00743c9b65dbf861",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "59caa57b9f535a5883078b1c64803416d05d2fb8709a234493659886c112804f",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 16,
+          "questionUid": "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+          "registeredQfull": "d3bdde430ede77550fa7062967d38844f7a5c225041a0ad81cf0fa6ef2f40935",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "d3bdde430ede77550fa7062967d38844f7a5c225041a0ad81cf0fa6ef2f40935",
+          "sweepQfull": "480fcc87f13410e8ea088a7b81474d2c783c8c18e4bbc22f12bb726d3fbc1ac0",
+          "currentQfull": "480fcc87f13410e8ea088a7b81474d2c783c8c18e4bbc22f12bb726d3fbc1ac0",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "7e69852270ef36f821b3578347d34f50dab181a2a07300ec69e252391e832459",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 17,
+          "questionUid": "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
+          "registeredQfull": "582d4fe7fa4162f340793d119d38d1f9e34c784ab1ee831be56b1d30b3780cf6",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "582d4fe7fa4162f340793d119d38d1f9e34c784ab1ee831be56b1d30b3780cf6",
+          "sweepQfull": "cca987320c43c06f09955b788b9f5ae93729d323204580c9c48e490fe26080db",
+          "currentQfull": "cca987320c43c06f09955b788b9f5ae93729d323204580c9c48e490fe26080db",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "1329002bf1ce827bb0b1bac4a40094c6101fcf9a0bd1152a5312873169cd5e58",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 18,
+          "questionUid": "qid_v1_4d09d473364d760de50e45fa5291afcec751de6e0752002ae2e80531dfa3bec5",
+          "registeredQfull": "a949802ef2736570d424212665bd803e784e49d1c098a0a4ac78ad195bf7053d",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "a949802ef2736570d424212665bd803e784e49d1c098a0a4ac78ad195bf7053d",
+          "sweepQfull": "9519224990b4b14497181bb33ab308f53b8e51e5bee9d36f4ca18ccaee3166cb",
+          "currentQfull": "cbe949e6f5a99e1786a8001a7a6118c31af223610e650beb2b602b100f426a5c",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "ef475bf000c790875dde2071ada05ed027b84cd3f907cc4488433630ff6b1184",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 19,
+          "questionUid": "qid_v1_2bb1489bc8575f9701588dd552e935e59ef7c312aabf935c069a55bc5179a845",
+          "registeredQfull": "b98102f5dc8db6aa7df8aeb0a103b536546f8b18f2916de4304505a4f62fd11c",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "b98102f5dc8db6aa7df8aeb0a103b536546f8b18f2916de4304505a4f62fd11c",
+          "sweepQfull": "e5c39ee12f2e108c5355d03a64d3c714aba35c17d4b0f7594f066f7e72c253df",
+          "currentQfull": "e5c39ee12f2e108c5355d03a64d3c714aba35c17d4b0f7594f066f7e72c253df",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "a841349b4221eb649c01c3a4eac95ebb7244c6eeccfa3279c368cc0f8afc2563",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 20,
+          "questionUid": "qid_v1_b2d8165ee6fc5a23c24ae6fd9d8f6eaf87a62cc3ba2e403d694133418927c25c",
+          "registeredQfull": "6d84d4c1adae937459f7ff6282351340f6ae94f157b266d8526f3f56b892066a",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "6d84d4c1adae937459f7ff6282351340f6ae94f157b266d8526f3f56b892066a",
+          "sweepQfull": "48e1967c171c5bdc2e7f511cbd25a77295551ee5562ea309b65ea7243320fb05",
+          "currentQfull": "48e1967c171c5bdc2e7f511cbd25a77295551ee5562ea309b65ea7243320fb05",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "9f078447069b4451d50e8017399d1f4073c5e2a587b649fd56c7a4e4c8708f4a",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "OFF_TOPIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 21,
+          "questionUid": "qid_v1_ef871cfcb5e9ce188d31bd47d591e21ba17e831fff682d2ba9021019e222446b",
+          "registeredQfull": "033605df2698c07cfda96819a564d9e3bff1e082e412f557d5b537be7088634d",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "033605df2698c07cfda96819a564d9e3bff1e082e412f557d5b537be7088634d",
+          "sweepQfull": "d095050da6ca414d88bcb76f73d135414479b3eb395e63e400d47d353fb6a55e",
+          "currentQfull": "d095050da6ca414d88bcb76f73d135414479b3eb395e63e400d47d353fb6a55e",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "b228751bfbaccf21a7567509a04dbbee93f517ef148ab85f783d8db3d4918149",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 22,
+          "questionUid": "qid_v1_b182921ff94589b7a7c8f478025828f8c95b1658ac1d8cdecd716ba25c75b245",
+          "registeredQfull": "be81e94cc5063eddbdb27235c113347d91df07c57f0ff7bd517662a81fd543f8",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "be81e94cc5063eddbdb27235c113347d91df07c57f0ff7bd517662a81fd543f8",
+          "sweepQfull": "f14d2f206ac962d9f844d715946f175e74f4952774a3faf19f5d149d5ec6c4c5",
+          "currentQfull": "f14d2f206ac962d9f844d715946f175e74f4952774a3faf19f5d149d5ec6c4c5",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "f20231bb52e574980f9a06024759123b505de8d5ef4e7c1c83564ad8f97e37fe",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        },
+        {
+          "ordinal": 23,
+          "questionUid": "qid_v1_47eb037217d578118c516cfa620e960e122966b05df0531f47874902d3b80788",
+          "registeredQfull": "00637783bbc4cc545fa0c5d4108d43761624440a97647b0ac4107852d4d65d44",
+          "registeredMatchesSweepParent": true,
+          "sweepParentQfull": "00637783bbc4cc545fa0c5d4108d43761624440a97647b0ac4107852d4d65d44",
+          "sweepQfull": "86d6fa0072d266180890db905f181f021d6eb494fbe1f234338bccc1647c45ca",
+          "currentQfull": "86d6fa0072d266180890db905f181f021d6eb494fbe1f234338bccc1647c45ca",
+          "changedQfullFieldsAtSweep": [
+            "solution"
+          ],
+          "changedQfullFieldsSinceSweep": [],
+          "changedQfullFieldsFromRegisteredVersion": [
+            "solution"
+          ],
+          "solutionSha256": "ffda244b549e6e1d140899fb86a9f1a62098c5f0ae1e7d0a5fea6d4c31d07954",
+          "registeredReviewStatus": "reviewed_hold",
+          "registeredMetadataApprovalType": null,
+          "registeredHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+          "approvalEvidenceRefs": [
+            "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+            "archive/_generated/intelligence/phase1/middle1-foundation/batches/B03_19_팔마중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+          ],
+          "conclusion": "LINEAGE_RECONCILED_CURRENT_VERSION_APPROVAL_PENDING",
+          "nextAction": "Reuse this lineage and prior item metadata review; attach actual final-solution approval matching current bytes. Never set VERIFIED_FINAL or reviewed_pass from fingerprint reconciliation alone."
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/17_금당중_1학기_중간_중1_수학.js",
+      "questionCount": 25,
+      "sourceOnly": true,
+      "currentRawSha256": "1a878286f1d479a2f3f58f37de40184de9f596dd05f3d90cfafd5b1f060b4a9a",
+      "currentBlobSha1": "76531f23979e1670aedce8b34b88a9e8b17c6537",
+      "baselineRawSha256": "1a878286f1d479a2f3f58f37de40184de9f596dd05f3d90cfafd5b1f060b4a9a",
+      "latestMainRawSha256": "1a878286f1d479a2f3f58f37de40184de9f596dd05f3d90cfafd5b1f060b4a9a",
+      "targetSourceDriftSinceBaseline": false,
+      "solutionStatus": "SOURCE_ONLY_NO_VERIFIED_METHOD_EVIDENCE",
+      "nonemptySolutionOrdinals": [],
+      "nonemptyAnswerOrdinals": [],
+      "registrationCurrentMatches": 25,
+      "sourceFingerprintCaveat": "Legacy QFULL uses content; this source uses question. Raw source SHA and question field hashes in preserved review remain necessary."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/17_매산중_1학기_중간_중1_수학.js",
+      "questionCount": 24,
+      "sourceOnly": true,
+      "currentRawSha256": "b2d2ad1d75315f06d7496d244bb563728f2e03223c007450088b1d17eeb9c343",
+      "currentBlobSha1": "3cee19be7a4c1c993d299d4138729b8479c1140c",
+      "baselineRawSha256": "b2d2ad1d75315f06d7496d244bb563728f2e03223c007450088b1d17eeb9c343",
+      "latestMainRawSha256": "b2d2ad1d75315f06d7496d244bb563728f2e03223c007450088b1d17eeb9c343",
+      "targetSourceDriftSinceBaseline": false,
+      "solutionStatus": "SOURCE_ONLY_NO_VERIFIED_METHOD_EVIDENCE",
+      "nonemptySolutionOrdinals": [],
+      "nonemptyAnswerOrdinals": [],
+      "registrationCurrentMatches": 24,
+      "sourceFingerprintCaveat": "Legacy QFULL uses content; this source uses question. Raw source SHA and question field hashes in preserved review remain necessary."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/17_삼산중_1학기_중간_중1_수학.js",
+      "questionCount": 24,
+      "sourceOnly": true,
+      "currentRawSha256": "d0afd2d8727c07a724dfb3bbd628396add756aaac7b52fb1987868f6dd7120a5",
+      "currentBlobSha1": "559db58665a8773f179d57acd9e1a0226387b11d",
+      "baselineRawSha256": "d0afd2d8727c07a724dfb3bbd628396add756aaac7b52fb1987868f6dd7120a5",
+      "latestMainRawSha256": "d0afd2d8727c07a724dfb3bbd628396add756aaac7b52fb1987868f6dd7120a5",
+      "targetSourceDriftSinceBaseline": false,
+      "solutionStatus": "SOURCE_ONLY_NO_VERIFIED_METHOD_EVIDENCE",
+      "nonemptySolutionOrdinals": [],
+      "nonemptyAnswerOrdinals": [],
+      "registrationCurrentMatches": 24,
+      "sourceFingerprintCaveat": "Legacy QFULL uses content; this source uses question. Raw source SHA and question field hashes in preserved review remain necessary."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/16_연향중_1학기_중간_중1_수학.js",
+      "questionCount": 24,
+      "sourceOnly": true,
+      "currentRawSha256": "1029c285ed903c2153621edf56415e21e692cea3f17de5588fc855f6a32c9f34",
+      "currentBlobSha1": "7e6a0fb42fa48072c0d62627636174abe6b0e22f",
+      "baselineRawSha256": "1029c285ed903c2153621edf56415e21e692cea3f17de5588fc855f6a32c9f34",
+      "latestMainRawSha256": "1029c285ed903c2153621edf56415e21e692cea3f17de5588fc855f6a32c9f34",
+      "targetSourceDriftSinceBaseline": false,
+      "solutionStatus": "SOURCE_ONLY_NO_VERIFIED_METHOD_EVIDENCE",
+      "nonemptySolutionOrdinals": [],
+      "nonemptyAnswerOrdinals": [],
+      "registrationCurrentMatches": 24,
+      "sourceFingerprintCaveat": "Legacy QFULL uses content; this source uses question. Raw source SHA and question field hashes in preserved review remain necessary."
+    }
+  ],
+  "failures": []
+}
