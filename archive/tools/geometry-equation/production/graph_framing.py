@@ -1306,7 +1306,7 @@ def _fit_logarithmic_affine_overview(plan):
 TRIG_INTERVAL_MAX_PERIODS=12
 TRIG_INTERVAL_MAX_CROSSINGS=40
 
-TRIG_LINE_ROW_KEYS={'id','y','x','slope','intercept','intersectionCount','color','endCrossing','perPi'}
+TRIG_LINE_ROW_KEYS={'id','y','x','slope','intercept','intersectionCount','intersectionMarker','color','endCrossing','perPi'}
 TRIG_LINE_COLORS=('BLUE','WARM','GREEN','ROSE','VIOLET')   # the colour-group palette of the function curves and overlay lines (visual_engine/palette.py)
 
 def trig_level(value,code):
@@ -1332,13 +1332,15 @@ def trig_line_specs(plan,code='TRIG_LINE'):
         count=row.get('intersectionCount')
         if isinstance(count,bool) or not isinstance(count,int) or not 0<=count<=TRIG_INTERVAL_MAX_CROSSINGS:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_INVALID:'+row['id'])
         if set(row)-TRIG_LINE_ROW_KEYS:raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+        marker=row.get('intersectionMarker')
+        if 'intersectionMarker' in row and marker!='OPEN':raise ValueError('TRIG_LINE_INTERSECTION_MARKER_INVALID:'+row['id'])
         color=row.get('color')
         if color is not None and color not in TRIG_LINE_COLORS:raise ValueError('TRIG_LINE_COLOR_INVALID:'+row['id'])
         end_crossing=row.get('endCrossing')
         if end_crossing is not None and not isinstance(end_crossing,bool):raise ValueError('TRIG_LINE_END_CROSSING_INVALID:'+row['id'])
         per_pi=row.get('perPi')
         if per_pi is not None and (not isinstance(per_pi,bool) or 'slope' not in row):raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])   # perPi: the slope is measured per pi of x (y=2x/(n*pi) is slope 2/n per pi)
-        common={'id':row['id'],'claim':count,'color':color,'endCrossing':end_crossing is True,'vertical':False,'perPi':per_pi is True}
+        common={'id':row['id'],'claim':count,'marker':marker,'color':color,'endCrossing':end_crossing is True,'vertical':False,'perPi':per_pi is True}
         if 'x' in row:
             if 'y' in row or 'slope' in row or 'intercept' in row:raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])
             if count>1:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_INVALID:'+row['id'])
@@ -1627,6 +1629,7 @@ def _fit_trigonometric_interval_v2(plan,spec):
             if line['perPi']:row['perPi']=True
             if line['color'] is not None:row['color']=line['color']
             if line['endCrossing']:row['endCrossing']=True
+            if line['marker'] is not None:row['intersectionMarker']=line['marker']
             rows.append(row)
         if plan.get('keyPoints') is True:
             key_rows=trig_key_points(spec,lo,hi,states);ys.extend(float(Fraction(row['y'])) for row in key_rows)

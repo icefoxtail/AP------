@@ -258,17 +258,25 @@ def _produce(plan):
         if not isinstance(features,dict) or features.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_FEATURES_v2' or not isinstance(interval,dict) or not isinstance(interval_policy,dict):raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
         factor=math.pi if features.get('axisUnit')=='PI' else 1.0;radius=float(policy['markerRadiusIntrinsicPx'])
         xmin,xmax,ymin,ymax=plan['viewport']
+        open_dots=[]
+        def draw_intersections(row,tone):
+            opened=row.get('intersectionMarker')=='OPEN'
+            if opened:
+                dot_look=f'fill="#fff" stroke="{tone or "black"}" stroke-width="1.8" data-state="OPEN"'
+            else:
+                dot_look=f'fill="{tone}" stroke="{tone}"' if tone else 'fill="#111" stroke="black"'
+            target=open_dots if opened else curves
+            for k,point in enumerate(row['intersections'],1):
+                cx,cy=vp.screen((point['x'],point['y']))
+                target.append(f'<circle id="intersection-{row["id"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" {dot_look}/>')
         for row in features['lines']:
             tone=PALETTE[row['color']]['line'] if row.get('color') else None
             stroke_look=f'stroke="{tone}" stroke-width="2.4"' if tone else 'stroke="black"'
-            dot_look=f'fill="{tone}" stroke="{tone}"' if tone else 'fill="#111" stroke="black"'
             if row['kind']=='VERTICAL':
                 vx=float(Fraction(row['x']))*factor
                 a,b=vp.screen((vx,ymin)),vp.screen((vx,ymax))
                 curves.append(f'<line id="line-{row["id"]}" data-role="line" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" {stroke_look}/>')
-                for k,point in enumerate(row['intersections'],1):
-                    cx,cy=vp.screen((point['x'],point['y']))
-                    curves.append(f'<circle id="intersection-{row["id"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" {dot_look}/>')
+                draw_intersections(row,tone)
                 continue
             slope=float(Fraction(row['slope']))/(math.pi if row.get('perPi') else 1.0)
             try:intercept=float(Fraction(row['intercept']))
@@ -279,9 +287,7 @@ def _produce(plan):
                 if not left<right:raise ValueError('TRIG_LINE_OUTSIDE_VIEW:'+row['id'])
                 a,b=vp.screen((left,slope*left+intercept)),vp.screen((right,slope*right+intercept))
             curves.append(f'<line id="line-{row["id"]}" data-role="line" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" {stroke_look}/>')
-            for k,point in enumerate(row['intersections'],1):
-                cx,cy=vp.screen((point['x'],point['y']))
-                curves.append(f'<circle id="intersection-{row["id"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" {dot_look}/>')
+            draw_intersections(row,tone)
         for row in features.get('keyPoints',[]):
             at=vp.screen((float(Fraction(row['x']))*factor,float(Fraction(row['y']))))
             curves.append(f'<circle id="trig-{row["id"]}" data-role="trig-key-point" data-feature-kind="{row["kind"]}" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
@@ -292,6 +298,7 @@ def _produce(plan):
         for endpoint in interval['endpoints']:
             cx,cy=vp.screen((float(Fraction(endpoint['x'])),float(Fraction(endpoint['y']))))
             curves.append(f'<circle id="interval-endpoint-{endpoint["side"].lower()}" data-role="interval-endpoint" data-state="{endpoint["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="{float(interval_policy["markerRadiusIntrinsicPx"]):.12g}" fill="{"#fff" if endpoint["state"]=="OPEN" else "#111"}" stroke="black" stroke-width="1"/>')
+        curves.extend(open_dots)
     region_fills=[];region_labels=[]
     if plan['family']=='polynomial' and plan.get('graphRegionFeatures') is not None:
         region_fills,region_labels=_region_parts(plan['graphRegionFeatures'],vp)

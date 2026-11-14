@@ -291,6 +291,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 정답지: `ops/golden/item154trigabslines`(`y=2|sin2x|`과 세 직선), `item155trigpiticks`(`cosx<−√3/2`, 근호 수평선과 솎은 π 눈금), `item156trigq15color`(색 있는 선, `full`).
 
+**엄격부등식의 교점.** 사인·코사인의 구간형 그림에서 기준선과 만나는 점이 해에 포함되지 않을 때 해당 `referenceLines` 행에 `"intersectionMarker":"OPEN"`을 더한다. 엔진이 같은 교점을 계산해 열린 원으로 표시한다. `intersectionCount`에는 그 교점도 센다. 옵션을 생략하면 기존처럼 채운 점을 그린다. `accessibilityDescription`은 plan 최상위에 한 줄로 써서 SVG 설명에 두 교점의 포함 여부와 곡선·기준선 관계를 전한다.
+
 ### 3-8. 중학교 평면도형: 각·선분·호 표식이 있는 축 없는 그림 (`PLANE_FIGURE_v1`, `planeMarks`)
 
 - **plan 최상위 `caption`은 필수다.** 평면도형·좌표 도형(`construction-spike-v1`)도 `caption`(한 문장, 정답·숨긴 점 이름 없이)이 있어야 하고, 없으면 `SPEC_ERROR`/`PLAN_CAPTION_REQUIRED`(path `caption`)로 거절된다. 숨긴 점(`hiddenPointNames`)의 이름을 caption에 쓰면 `HIDDEN_POINT_NAMED_IN_TEXT:<id>`이다. publish.json의 caption(풀이 요약+정답)과는 별개다. 이유: 금당고 14개 그림이 caption 없이 `NON_JSON_VALUE`(spec.title 미정의)로 거절됐다.

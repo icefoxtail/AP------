@@ -4019,12 +4019,14 @@ def _trig_v2_interval_expected(plan):
         steps=max(4000,int(1600*max(1e-9,(x1-x0)/period_radians)))
         for row in plan.get('referenceLines') or []:
             if not isinstance(row,dict) or not isinstance(row.get('id'),str):raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+            marker=row.get('intersectionMarker')
+            if 'intersectionMarker' in row and marker!='OPEN':raise ValueError('TRIG_LINE_INTERSECTION_MARKER_INVALID:'+row['id'])
             color=row.get('color')
             if color is not None and color not in GRAPH_COLOR_LINES:raise ValueError('TRIG_LINE_COLOR_INVALID:'+row['id'])
             if 'x' in row:   # x=c: the one place the curve meets it, when c is inside the interval
                 at=_piecewise_rational(row['x'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']);xr=float(at)*(math.pi if axis_unit=='PI' else 1.0)
                 inside=(xr>x0+1e-12 if states[0]=='OPEN' else xr>=x0-1e-12) and (xr<x1-1e-12 if states[1]=='OPEN' else xr<=x1+1e-12)
-                lines.append({'id':row['id'],'kind':'VERTICAL','at':at,'slope':None,'intercept':None,'claim':row.get('intersectionCount'),'x':[xr] if inside else [],'color':color,'endCrossing':row.get('endCrossing') is True})
+                lines.append({'id':row['id'],'kind':'VERTICAL','at':at,'slope':None,'intercept':None,'claim':row.get('intersectionCount'),'x':[xr] if inside else [],'color':color,'intersectionMarker':marker,'endCrossing':row.get('endCrossing') is True})
                 continue
             if 'y' in row:slope=Fraction(0);intercept=_trig_v2_level(row['y'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
             else:slope=_piecewise_rational(row.get('slope'),'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']);intercept=_piecewise_rational(row.get('intercept'),'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
@@ -4047,7 +4049,7 @@ def _trig_v2_interval_expected(plan):
             eps=mpmath.mpf(10)**-12
             kept=[r for r in unique if (r>lo_f+eps if states[0]=='OPEN' else r>=lo_f-eps) and (r<hi_f-eps if states[1]=='OPEN' else r<=hi_f+eps)]
             if row.get('endCrossing') is not True and any((states[0]=='CLOSED' and abs(r-lo_f)<=eps) or (states[1]=='CLOSED' and abs(r-hi_f)<=eps) for r in kept):raise ValueError('TRIG_LINE_THROUGH_INTERVAL_END:'+row['id'])
-            lines.append({'id':row['id'],'kind':'HORIZONTAL' if 'y' in row else 'SLANTED','at':None,'slope':slope,'perPi':per_pi,'intercept':intercept,'claim':row.get('intersectionCount'),'x':[float(r) for r in kept],'color':color,'endCrossing':row.get('endCrossing') is True})
+            lines.append({'id':row['id'],'kind':'HORIZONTAL' if 'y' in row else 'SLANTED','at':None,'slope':slope,'perPi':per_pi,'intercept':intercept,'claim':row.get('intersectionCount'),'x':[float(r) for r in kept],'color':color,'intersectionMarker':marker,'endCrossing':row.get('endCrossing') is True})
     if plan.get('keyPoints') is not None and not isinstance(plan.get('keyPoints'),bool):raise ValueError('INVALID_TRIG_KEY_POINTS')
     if plan.get('keyPoints') is True and function not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
     key_rows=_trig_v2_key_rows(spec,lo,hi,states) if plan.get('keyPoints') is True else []
@@ -4055,6 +4057,8 @@ def _trig_v2_interval_expected(plan):
     ticks=_trig_v2_tick_multiples(plan,kind,x0,x1)
     f=S.lambdify(x,expression,'mpmath')
     features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'axisUnit':axis_unit,'amplitude':str(a),'midline':str(c),'sourceInterval':{'kind':kind,'lo':str(lo),'hi':str(hi),'states':states},'lines':[({'id':row['id'],'kind':row['kind'],'x':str(row['at']),'intersections':[{'x':point,'y':float(f(mpmath.mpf(point)))} for point in row['x']]} if row['kind']=='VERTICAL' else {'id':row['id'],'kind':row['kind'],'slope':str(row['slope']),'intercept':str(row['intercept']),'intersections':[{'x':point,'y':float(row['slope'])/(math.pi if row['perPi'] else 1)*point+float(row['intercept'])} for point in row['x']]}) for row in lines],'keyPoints':key_rows,'poles':pole_rows}
+    for feature,line in zip(features['lines'],lines):
+        if line['intersectionMarker']=='OPEN':feature['intersectionMarker']='OPEN'
     if spec['absolute']:features['absolute']=True;features['cusps']=_trig_v2_cusp_rows(spec,lo,hi)
     policy={'schemaVersion':'TRIGONOMETRIC_INTERVAL_POLICY_v2','markerRadiusIntrinsicPx':3.2,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':40,'minimumAmplitudeCssPx':20,'minimumPoleApproachGapCssPx':2}
     pole_boundaries={pole['boundary'] for pole in pole_rows if 'boundary' in pole}
@@ -4209,6 +4213,7 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
                     except (ValueError,TypeError):level_same=False
                     if frozen[index].get('slope')!=str(row['slope']) or not level_same or frozen[index].get('kind')!=row['kind'] or (frozen[index].get('perPi') is True)!=row['perPi']:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
                 if frozen[index].get('color')!=row['color']:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
+                if frozen[index].get('intersectionMarker')!=row['intersectionMarker']:errors.append('TRIG_INTERSECTION_MARKER_INVENTORY_MISMATCH:'+row['id'])
             node=line_nodes.get('line-'+row['id'])
             if node is None:errors.append('TRIG_LINE_MISSING:'+row['id'])
             else:
@@ -4222,12 +4227,25 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
                         if xs and not (min(p1[0],p2[0])<=min(xs)+x_tol and max(p1[0],p2[0])>=max(xs)-x_tol):errors.append('TRIG_LINE_DOES_NOT_SPAN_CROSSINGS:'+row['id'])
                     errors.extend(_ov_color_errors(node,row['color'],'TRIG_LINE_COLOR_MISMATCH:'+row['id']))
                 except (TypeError,ValueError):errors.append('TRIG_LINE_INVALID:'+row['id'])
-            dots=[node_id for node_id in circles if node_id and node_id.startswith('intersection-'+row['id']+'-')]
+            dots=[node for node in root.iter() if node.tag.split('}')[-1]=='circle' and (node.get('id') or '').startswith('intersection-'+row['id']+'-')]
             if len(dots)!=count:errors.append('TRIG_INTERSECTION_DOT_COUNT_MISMATCH:'+row['id'])
             for k,(tx,ty) in enumerate(zip(xs,ys),1):
-                got=read_circle('intersection-'+row['id']+'-'+str(k))
-                if got is None or abs(got[0]-tx)*xscale>.35 or abs(got[1]-ty)*yscale>.35:errors.append('TRIG_INTERSECTION_DOT_MISSING:'+row['id']+'-'+str(k))
-                elif row['color'] is not None:errors.extend(_ov_dot_look_errors(got[2],False,row['color'],'TRIG_INTERSECTION_DOT_COLOR_MISMATCH:'+row['id']+'-'+str(k)))
+                ident=row['id']+'-'+str(k)
+                got=read_circle('intersection-'+ident)
+                if got is None or not all(map(math.isfinite,got[:2])) or abs(got[0]-tx)*xscale>.35 or abs(got[1]-ty)*yscale>.35:
+                    errors.append('TRIG_INTERSECTION_DOT_MISSING:'+ident)
+                    continue
+                dot=got[2];opened=row['intersectionMarker']=='OPEN'
+                code=('TRIG_INTERSECTION_DOT_MARKER_MISMATCH:' if opened or row['color'] is None else 'TRIG_INTERSECTION_DOT_COLOR_MISMATCH:')+ident
+                errors.extend(_ov_dot_look_errors(dot,opened,row['color'],code))
+                if opened:
+                    radius=float(dot.get('r','nan'))
+                    if (not math.isfinite(radius) or abs(radius-want['policy']['markerRadiusIntrinsicPx'])>1e-6
+                        or dot.get('data-role')!='point' or any(dot.get(attr) is not None for attr in
+                        ('display','visibility','opacity','fill-opacity','stroke-opacity','style','transform','clip-path','mask'))):
+                        errors.append(code)
+                    elif 2*radius*transform['displayScale']<3:
+                        unsupported.append('TRIG_INTERSECTION_OPEN_MARKER_BELOW_PROFILE_FLOOR:'+ident)
             all_marks.extend(zip(xs,ys));detail.append({'id':row['id'],'kind':row['kind'],'crossings':count,'x':xs})
         for row in want['cusps']:
             xc=float(Fraction(row['x']))*(math.pi if want['axisUnit']=='PI' else 1.0)
