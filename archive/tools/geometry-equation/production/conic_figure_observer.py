@@ -13,6 +13,7 @@ curve points, intersections and feet of perpendiculars from the authored plan wi
   * every drawn name (point, line, segment length) must be the plan's text, inside the canvas, next to its
     owner (or joined to it by a leader that starts at the name and ends on the owner).
 """
+from collections import Counter
 import hashlib
 import math
 import re
@@ -883,6 +884,9 @@ def audit(plan,svg):
 
     # --- names ------------------------------------------------------------------------------------------------------------------------------
     coordinate_ids={raw.get('id') for raw in (plan.get('points') or []) if isinstance(raw,dict) and raw.get('coordinates') is True}
+    if arch_frame is not None:
+        ids=Counter(element.get('id') for element in elements if element.get('id'))
+        if any(count>1 for count in ids.values()):errors.append('PARABOLIC_ARCH_DUPLICATE_ID')
     label_elements={}
     for element in elements:
         if element.get('data-label-role')=='point' and element.get('data-point'): label_elements[element.get('data-point')]=element
@@ -890,6 +894,9 @@ def audit(plan,svg):
         if not wanted: continue
         element=label_elements.get(pid)
         if element is None: errors.append('LABEL_MISSING:%s'%pid);continue
+        if arch_frame is not None and (element.get('id')!='label-point-'+pid
+            or element.get('data-owner')!='ellipse-point-'+pid or ids['point-'+pid]!=1):
+            errors.append('PARABOLIC_ARCH_POINT_LABEL_OWNER_MISMATCH:'+pid)
         shown=element.get('data-tex') if element.get('data-tex') is not None else element.get('data-text')
         if pid in coordinate_ids:
             if not _coordinate_label_matches(shown,pid,points[pid]): errors.append('LABEL_COORDINATES_MISMATCH:%s:%s'%(pid,shown))
@@ -912,7 +919,7 @@ def audit(plan,svg):
     for pid in label_elements:
         if pid not in points or arch_frame is not None and not labels[pid]:errors.append('LABEL_UNDECLARED:%s'%pid)
     if arch_frame is not None:
-        expected=set('point-'+pid for pid,wanted in labels.items() if wanted)|set(
+        expected=set('label-point-'+pid for pid,wanted in labels.items() if wanted)|set(
             'measure-'+row['id'] for row in segments if row.get('label'))
         got=[element.get('id') for element in elements if element.get('data-label-kind')]
         if len(got)!=len(expected) or set(got)!=expected:errors.append('PARABOLIC_ARCH_UNDECLARED_LABEL')

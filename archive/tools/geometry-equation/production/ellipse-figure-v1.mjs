@@ -840,9 +840,10 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy,sto
   }
   for(const item of placed){
     const box=item.box;
+    const labelId=model.arch&&item.role==='point'?'label-'+item.key:item.key;
     const extra=item.role==='point'?` data-point="${esc(item.pointId)}"`:item.role==='line'?` data-line="${esc(item.lineId)}"`:item.role==='curve'?` data-curve-id="${esc(item.curveId)}"`:` data-segment="${esc(item.segmentId)}"`;
     const role=item.role==='point'?'point':item.role==='line'?'line':item.role==='curve'?'curve':'measure';
-    body+=`<g data-layer="90"><g id="${item.key}" data-label-kind="COORDINATE_LABEL" data-label-role="${role}" data-priority="0" data-font-px="${font}" data-owner="ellipse-${item.key}"${extra} data-tex="${esc(item.text)}" data-fragment-sha="${item.fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${item.fragment.svg}</g></g>`;
+    body+=`<g data-layer="90"><g id="${labelId}" data-label-kind="COORDINATE_LABEL" data-label-role="${role}" data-priority="0" data-font-px="${font}" data-owner="ellipse-${item.key}"${extra} data-tex="${esc(item.text)}" data-fragment-sha="${item.fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${item.fragment.svg}</g></g>`;
     lineage.fragmentSha256s[item.key]=item.fragment.fragmentSha256;
   }
   const names=model.arch?`<title id="visual-title">${esc(plan.caption??'포물선 모양 조형물')}</title><desc id="visual-desc">${esc(plan.accessibilityDescription??'포물선 호의 양 끝은 지면에 닿고, 지면에서 시작하는 선분은 호에 접한다.')}</desc>`:'';
