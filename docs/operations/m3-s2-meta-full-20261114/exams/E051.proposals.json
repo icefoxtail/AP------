@@ -1,0 +1,363 @@
+[
+  {
+    "id": "C-E051-15",
+    "kind": "NEW_TEMPLATE",
+    "nameKo": "편차표 복원 후 원자료 산포도 진술 검토",
+    "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "supportOrdinals": [
+      15
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_f4bab175d2c3dfa9cc2aeb0269a0f833a11bc9598daff1665f8a819d76149538"
+    ],
+    "actualMethod": "편차합0으로D의 편차를 구하고 알려진D의 앉은키에서 평균을 복원한다. 각 원자료와 평균 아래의 개수·두 학생의 차를 보기에 대조한다.",
+    "distinction": "편차 정의와 합 성질을 실제 자료 진술에 적용하는 ACTIVE 부모는 재사용한다. 부호를 거꾸로 쓴 진술만 찾는 기존 IDENTIFY_FALSE TPL과 달리 누락 편차·평균을 복원해 수치·순위·개수 진술을 감사하므로 기존 원자료 산포도 진술검토 후보의 복원 입력 분기로 인계한다.",
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E005.proposals.json",
+        "sha256": "20a0590d2373d844a3ed18e497fbe5f4b82ac4d140c19c4d0e0f354df694e413",
+        "selector": "B-E005-TPL_M3_RAW_DATA_DISPERSION_CLAIM_AUDIT",
+        "existingProposal": {
+          "id": "B-E005-TPL_M3_RAW_DATA_DISPERSION_CLAIM_AUDIT",
+          "kind": "NEW_TPL",
+          "proposedKey": "TPL_M3_RAW_DATA_DISPERSION_CLAIM_AUDIT",
+          "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+          "definition": "개별 변량을 표시한 그래프나 자료에서 평균·분산·표준편차를 계산하고 여러 자료의 수치·대소 진술을 판정한다.",
+          "internalSkeleton": "개별값을 읽는다 → 평균과 편차제곱 평균을 구한다 → 표준편차·편차합 진술과 비교한다.",
+          "distinguishFrom": {
+            "TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS": "도수 막대의 밀집 모양만으로 비교하는 문제와 다르다.",
+            "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE": "계급값·도수 가중치가 주어진 도수분포표 계산과 다르다."
+          },
+          "supportOrdinals": [
+            15
+          ],
+          "supportingQuestionUids": [
+            "qid_v1_6c3e82ef29bf06c634c8d39c104adaf4073eac2588ca6da76db5b96bd98de25c"
+          ],
+          "globalActiveSearch": {
+            "searchedAllActive": true,
+            "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "exactMatch": false
+          },
+          "requiredChanges": [
+            "정식 registryChanges",
+            "지원문항 RPM 잎 crosswalk 연결",
+            "원본2015·현행2022 exact binding 검증"
+          ]
+        }
+      }
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "C-E051-16",
+    "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+    "nameKo": "완전한 유한 자료의 분산·표준편차 직접 계산",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      16,
+      25
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_0ac00d9b58143a40125d4b95a136e75ee5d5e02a12a589479a31011e76d66efe",
+      "qid_v1_8948da0f438d1e5e831e35e7a1e46a5e9fe8cb4cd7594fe7c76aecb594ec21dc"
+    ],
+    "actualMethod": "완전한 다섯 자료의 평균16을 구하고 편차 제곱의 평균48 및 그 제곱근으로 표준편차를 직접 계산한다. / 기호 자료 네 개의 평균식을a+2로 정리하고 각 변량에서 평균을 빼 공통a를 소거한다. 얻은 수치 편차−3,0,1,2로 분산을 계산한다.",
+    "distinction": "E032·E045의 완전한 유한 원자료 직접 산포도 후보 재사용. 미지편차·도수표 가중·확률변수 모델의 좁은 ACTIVE 정의로 대체하지 않는다. / 완전한 유한 자료의 직접 산포도 후보를 재사용하며 기호 자료 입력의 평균·편차 전처리를 근거에 남긴다. 변환 전 통계량에서 새 통계량을 구하는 linear transformation 문제나 미지편차 복원으로 강제하지 않는다.",
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E032.proposals.json",
+        "sha256": "a4c09ba1b729852f51df0d464ef9bb6efc71172272d06e96673bcc201038cb1a",
+        "selector": "원자료의 분산·표준편차 직접 계산",
+        "existingProposal": {
+          "type": "REUSE_CANDIDATE_PT_TPL",
+          "nameKo": "원자료의 분산·표준편차 직접 계산",
+          "definition": "완전한 유한자료에서 평균·편차·편차제곱평균·표준편차를 직접 계산한다.",
+          "distinction": "미지편차 복원·도수분포 가중계산·확률변수 모델이 없는 기본 원자료 계산이다.",
+          "parentProblemTypeKey": null,
+          "supportOrdinals": [
+            22
+          ],
+          "supportingQuestionUids": [
+            "qid_v1_ee1f13e625dbbceaa53719dcc0ff1dc4de65323d3e314c0a5c300db4623a4f80"
+          ],
+          "nearestTemplates": [
+            "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+            "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+            "TPL_VARIANCE_STANDARD_DEVIATION"
+          ],
+          "searchedGlobalActive": true,
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+          "relatedProposal": "worker-outputs/a/E022/proposals.json ordinal18; a/E025 ordinal24; b/E023 TPL_FINITE_DATA_STANDARD_DEVIATION"
+        }
+      }
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "C-E051-17",
+    "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+    "nameKo": "자료 추가 후 평균과 분산",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      17
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_7b7760c03a291a5ce0dd3dcc4e0586902717c6a7496245c275103ba54e071ab9"
+    ],
+    "actualMethod": "원래 평균6과분산10에서 세 자료의 합18 및 편차제곱합30을 구하고,3과9를 더해도 평균6임을 확인한 뒤 새 편차 제곱을 합산한다.",
+    "distinction": "E044 자료 추가 후 평균과 분산 후보를 재사용한다. 이번에는 추가값이 기존 평균을 중심으로 대칭이어서 평균 이동 보정이0인 분기이며 개별 원자료 복원은 필요하지 않다.",
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E044.proposals.json",
+        "sha256": "403aa498f89a4582eb878a3d57185bc6dd2b819eb65f87723d03ab595f7e1a9a",
+        "selector": "ROOT-E044-6",
+        "existingProposal": {
+          "id": "ROOT-E044-6",
+          "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+          "nameKo": "자료 추가 후 평균과 분산",
+          "definition": "기존 자료의 평균·분산에서 합과 제곱합을 복원하고 추가 자료를 포함한 새 평균과 분산을 구한다.",
+          "distinction": "모든 변량의 선형변환·미지편차 한 값 복원과 다르다. 자료 추가 제안과 통계조건추론 parent 제안을 재사용한다.",
+          "parentProblemTypeKey": null,
+          "supportOrdinals": [
+            17
+          ],
+          "supportingQuestionUids": [
+            "qid_v1_ef9e0ab757f09d042977070b6d877df80864816aaa863a08318febb6df36e7f2"
+          ],
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+          "sourceNewStringKeyInserted": false,
+          "reuses": [
+            {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E004.proposals.json",
+              "sha256": "7f21619d7cc3dcce92ff17509c10b960e240234062aca838855c46af87dd636c",
+              "selector": "Q24"
+            },
+            {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E008.proposals.json",
+              "sha256": "dbf79ccd8604593df595220c1e49436213126b2949efebad08d094574fa7bc67",
+              "selector": "B-E008-REUSE-CANDIDATE-PT_M3_STATISTICAL_CONSTRAINT_INFERENCE"
+            }
+          ]
+        }
+      }
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "C-E051-18",
+    "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+    "nameKo": "공통 평균을 갖는 집단의 분산 합성",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      18
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_957b8d0e18582a2d6fbd098f26cff6f51ccce26c6b8d810155a8b2f8bef3f706"
+    ],
+    "actualMethod": "두 반의 평균7이 같음을 이용해 각 반 표준편차 제곱에 학생 수를 곱한 편차제곱합20과60을 합치고 전체30명으로 나눈 뒤 제곱근을 정리한다.",
+    "distinction": "E03425·E02423 공통 평균 집단의 분산 합성 후보 재사용. 도수표의 개별 변량 가중계산이나 전체자료의 선형변환과 다르다.",
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+        "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501",
+        "selector": "공통 평균을 갖는 집단의 분산 합성",
+        "existingProposal": {
+          "ordinal": 25,
+          "questionUid": "qid_v1_23d51282f0586ab9f9e83cad07d8a0a004fa251c5bcec6f637e9338a78d64ac2",
+          "type": "NEW_PT_TPL_PROPOSAL",
+          "nameKo": "공통 평균을 갖는 집단의 분산 합성",
+          "definition": "같은 평균인 두 자료 집단의 크기와 분산으로 편차 제곱합을 더하여 합친 집단의 분산·표준편차를 구한다.",
+          "distinction": "편차 합0에서 미지 편차를 복원하는 기존 부모와 다르며, 평균이 다른 집단의 추가 평균이동 보정은 별도 분기다.",
+          "parent": null,
+          "nearestTemplates": [
+            "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+          ],
+          "searchedGlobalActive": true,
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+          "relatedProposal": "c/E024 Q23 공통평균 분산합성 제안"
+        }
+      }
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "C-E051-19",
+    "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+    "nameKo": "평균·분산 조건의 자료 합과 곱 추론",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      19
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_d9f4e454342fd0aed6b8e7a2b854008e3fd91c286fc8351d243c042c7f99630f"
+    ],
+    "actualMethod": "평균으로a+b=5를 구하고 분산으로두 미지 편차의 제곱합5를 만든다. 완전제곱식 전개로 편차의 곱을 얻어a+b를 다시 대입해ab를 정한다.",
+    "distinction": "E03419 평균·분산 조건의 자료 합과 곱 추론 후보 재사용. 편차합0에서 미지편차 하나를 구하는 native 정의와 방향·목표가 다르다.",
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+        "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501",
+        "selector": "평균·분산 조건의 자료 합과 곱 추론",
+        "existingProposal": {
+          "ordinal": 19,
+          "questionUid": "qid_v1_fd5404eccb4d1b0708c1cb2f1809afbe9d89257c8d58a08d39a78d4b4f9a146e",
+          "type": "NEW_PT_TPL_PROPOSAL",
+          "nameKo": "평균·분산 조건의 자료 합과 곱 추론",
+          "definition": "평균·분산으로 미지 자료의 합과 제곱합을 표현하고 대칭 항등식으로 요구된 합·곱·제곱합을 결정한다.",
+          "distinction": "미지 편차 합0 뒤 분산을 구하는 기존 dispersion PT와 목표·방향이 다르므로 좁은 부모를 재사용하지 않는다.",
+          "parent": null,
+          "nearestTemplates": [
+            "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+          ],
+          "searchedGlobalActive": true,
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+          "relatedProposal": "c/E006 Q17 semantic-amendment 및 c/E036 Q20과 동일 제안 가족"
+        }
+      }
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "C-E051-20",
+    "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+    "nameKo": "상황과 음의 상관관계 산점도 대응",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      20
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_c151a803362e0f15a9bfc38009dec16eab1ce028938b26ed145cb0174fe77faa"
+    ],
+    "actualMethod": "하강 산점도의 음의 상관 방향을 읽고 위도·기온과 이동거리·남은 연료의 실제 변수 경향에 대응하여 두 진술을 선택한다.",
+    "distinction": "E024 상황과 음의 상관관계 산점도 대응 후보를 재사용한다. 개별 좌표 집계나 확률변수의 분포 유형과 다르다.",
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E024.proposals.json",
+        "sha256": "8e0bef1f853c82d4e4b69d11ed6d4a8aef28cb689cfd2713c30d70660ae3882d",
+        "selector": "상황과 음의 상관관계 산점도 대응",
+        "existingProposal": {
+          "type": "REUSE_PENDING_PT_TPL_PROPOSAL",
+          "nameKo": "상황과 음의 상관관계 산점도 대응",
+          "reuseDefinition": "한 변량 증가에 다른 변량이 감소하는 상황을 음의 상관관계 분포로 읽는다.",
+          "distinguishingCriterion": "좌표 조건으로 개별 점을 세지 않고 전체 방향을 판정한다.",
+          "parentScope": "M3 통계/상관관계",
+          "priorProposalRef": "worker-outputs/c/E006/proposals.json",
+          "supportingQuestionUids": [
+            "qid_v1_2ab65f3570dac8cd2635ee24ca7ba407363811801ee2650ba245cab1be893627"
+          ],
+          "globalActiveSearch": {
+            "searchedGlobalActive": true,
+            "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+            "exactFitFound": false
+          },
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+        }
+      }
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "C-E051-21",
+    "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+    "nameKo": "산점도 좌표 조건 집계",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      21
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_aef0cb49de0b29b821ecbe8e3e287ff3b69a254894c3985a6846c682be64585e"
+    ],
+    "actualMethod": "2학기y가1학기x보다 큰 점을y=x 위에서8개 골라 전체20명에 대한 비율을 계산한다.",
+    "distinction": "E04719·E024 산점도 좌표 조건 집계 후보를 재사용한다. 전체 분포의 상관 방향이 아니라 개별 점의 좌표 대소·비율이 주목적이다.",
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E047.proposals.json",
+        "sha256": "cb70b8436932be72dfd79523213fa6167da27f2ae162b8abcd7651587d5f022b",
+        "selector": "C-E047-19",
+        "existingProposal": {
+          "id": "C-E047-19",
+          "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+          "nameKo": "산점도 좌표 조건 집계",
+          "parentProblemTypeKey": null,
+          "supportOrdinals": [
+            19,
+            20
+          ],
+          "supportingQuestionUids": [
+            "qid_v1_295b26bf234a5049d035c11b924863e911bf18c0275b8865ad67f33e570834aa",
+            "qid_v1_c2e3794b87bdff50a36cc8d73b7249be79ec77031d3772ac83356b5375f0eab3"
+          ],
+          "definitionOrReuseScope": "산점도에서 사회x가 과학y보다 큰 점, 즉y=x 아래의 점6개를 고른 뒤 전체15개에 대한 비율을 구한다. / 사회 점수85 이상인8명을 기준집단으로 정한 다음 그 안에서 과학 점수90 이상인5명을 세어 조건부 집단의 비율5/8을 구한다.",
+          "distinction": "E024 산점도 좌표 조건 집계 후보를 재사용한다. 전체 분포의 상관 방향이나 확률변수 분포가 아니며 실제 개별 점의 비교와 비율이다. / E024 산점도 좌표 조건 집계 후보의 하한·부분집단 비율 분기를 재사용한다. 경우별 풀이 분기가 아니므로 기존4칸 경우분류를 실제 원소개수·부분집합으로 보정한다.",
+          "reuses": [
+            {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E024.proposals.json",
+              "sha256": "8e0bef1f853c82d4e4b69d11ed6d4a8aef28cb689cfd2713c30d70660ae3882d",
+              "selector": "산점도 좌표 조건 집계",
+              "existingDefinition": {
+                "type": "REUSE_PENDING_PT_TPL_PROPOSAL",
+                "nameKo": "산점도 좌표 조건 집계",
+                "reuseDefinition": "두 좌표의 같음·대소·범위 조건을 만족하는 점을 선택하여 개수·비율을 구한다.",
+                "distinguishingCriterion": "상관 방향 해석·산점도 작성과 구분한다.",
+                "parentScope": "M3 통계/산점도",
+                "priorProposalRef": "worker-outputs/c/E006/proposals.json",
+                "supportingQuestionUids": [
+                  "qid_v1_859b36d699e39203d1d28c467ab43ef088751db7c2eb9a511f7b599693bf7f11"
+                ],
+                "globalActiveSearch": {
+                  "searchedGlobalActive": true,
+                  "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+                  "exactFitFound": false
+                },
+                "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+              },
+              "existingSupportingQuestionUids": [
+                "qid_v1_859b36d699e39203d1d28c467ab43ef088751db7c2eb9a511f7b599693bf7f11"
+              ]
+            }
+          ],
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+          "sourceNewStringKeyInserted": false
+        }
+      }
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "C-E051-RPM2022-21",
+    "kind": "RPM_2022_LEAF_GAP",
+    "supportOrdinals": [
+      21
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_aef0cb49de0b29b821ecbe8e3e287ff3b69a254894c3985a6846c682be64585e"
+    ],
+    "effectiveParent": {
+      "key": "[\"2022\",\"M3-2\",\"통계\",\"상자그림과 산점도\"]",
+      "parentKey": "[\"2022\",\"M3-2\",\"통계\",\"상자그림과 산점도\"]",
+      "unitKey": "RPM22-M3-L1-07",
+      "grade": "중3",
+      "gradeKey": "M3",
+      "curriculumKey": "2022",
+      "courseKey": "M3-2",
+      "L1": "통계",
+      "L2": "상자그림과 산점도",
+      "label": "상자그림과 산점도",
+      "order": 16,
+      "orderInUnit": 2,
+      "legacyUnitKeys": [
+        "M22-3-07"
+      ]
+    },
+    "reason": "주어진 산점도의 좌표 비교 조건으로 점을 세어 비율을 계산한다.178 산점도 작성·179 상관 해석·180 분포와 상관 종합해석의 정확 leaf가 아니다. E04719/20과 같은 판정이다.",
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]

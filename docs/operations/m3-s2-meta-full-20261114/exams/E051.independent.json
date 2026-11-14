@@ -1,0 +1,201 @@
+{
+  "examId": "E051",
+  "author": "c",
+  "reviewer": "root",
+  "sourceBlob": "dee83edefc57d027a2fe5faa220278517a84b4d2",
+  "sourceRawSha256": "832b5c33d8aeb14c76c78d9481cf44841cd80f75a7677b489eb5a3fa5a88f9c1",
+  "sourcePacketSha256": "324eefb43a61a47cd05a531d7aadf0eb0951ba79b5715fcf2f68660dad42adf8",
+  "sampled4slotSha256": "c5a2542c38ae52c8b8ebecd06ba05d3285dbf0615e764601cd827d23e021c042",
+  "sampledReviewSha256": "24a00f5011e7e72ba8bfdd8cbe2fd1ea3bd1dec182a9b349f0d1c39e3d86cd22",
+  "sampledSourcePatchSha256": "99ded179750012c24fef436ba3716fafba9e474c16f90dc80c644d76956150d6",
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "sampled": [
+    7,
+    8,
+    24
+  ],
+  "status": "PASS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_c9e1e19597544e112520ced20fc4dad420d66cc6dfa4c7e11fd97d75b33fc485",
+      "sourceImageRead": true,
+      "existingSolutionRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 7
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "P에서 그은 두 접선의 목표각이 primary이므로 RPM073/161 원과 직선 문맥이 맞다. 115도 원주각의 큰 호를 작은 호130도로 바꾸는 선행 관계는 CC_INSCRIBED_ANGLE에 분리한다. GLOBAL COMPOSITE의 복수 원각·접선 관계 정의를 재사용하고 길이 전용 TM_TANGENT_LENGTH를 쓰지 않는다. given 접선·원주각, goal 각, method 원주각/중심각 및 기존 caption의 두 접점 직각, condition 접함을 모두 실제 그림과 해설에서 확인했다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_6d37f0450b83b3dd61eb3b5fc21386400581b91d985fc95a1e4ebeee314fae0b",
+      "sourceImageRead": true,
+      "existingSolutionRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 11
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "지름 AB의 직각 원주각과 ATP30도의 접현각을 조합하여 ABT의 각을 정한다. 기존 해설의 sin30/sin60 길이 계산과 삼각형 넓이는 보조 개념이며, 넓이까지 포함하는 ACTIVE COMPOSITE skeleton을 재사용하는 것이 유효하다. given의 지름·접선·AB길이와 보완한30도 각, goal 삼각형 넓이, method 원주각·접현각·삼각비·넓이, condition 접함을 실제 원본과 현재 해설 도형에서 확인했다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_c76dc6a7ee4be407767714bbabdac24a825890784b60e247585da2885ca04fc6",
+      "sourceImageRead": true,
+      "existingSolutionRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 11
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본 줄기와 잎에서12개 자료와 두 동률 최빈값15/20을 확인했다. goal에는 소문항의 평균·중앙값·최빈값뿐 아니라 최종 A+B−C를 위한 식의값과차가 함께 있다. method의 줄기와잎 읽기→세 대푯값 계산→최빈값의 합은 기존 해설과 정확히 결속된다. ACTIVE ALL_STATISTICS_COMBINATION의 정의·골격과 일치하며 원본2015 평균/중앙값/최빈값 근거와2022 M1 대푯값 대응을 분리한다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    }
+  ],
+  "outstanding": [],
+  "assetByteChecks": [
+    {
+      "ordinal": 4,
+      "kind": "image",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q04.png",
+      "gitBlob": "9e81d6c442c5c23062bb2dfe10a1db24ff7164e2",
+      "sha256": "53a267bee2eca21e6f0d0bd7e2bfd29a59771de00af52792b378b289032b1411"
+    },
+    {
+      "ordinal": 4,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q4-solution.svg",
+      "gitBlob": "ec2081652e5516e232e808da4e63a891d35d4c1e",
+      "sha256": "7dddfdb1268ddf926b961fb8390f3dbd9ea779432be3d9db6342ef2014793ac2"
+    },
+    {
+      "ordinal": 5,
+      "kind": "image",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q05.png",
+      "gitBlob": "43982bb842b21359f5b66f2ab1b8d1c15bd46288",
+      "sha256": "92fa2fff911889d3307d446a97fe2e2d772d6bc5c206f56ab05bb8dfa3501418"
+    },
+    {
+      "ordinal": 5,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q5-solution.svg",
+      "gitBlob": "fb6ea93ff480ddc29a10185141556a7c7790a65e",
+      "sha256": "584bafd6104cbfc5d6b58ba006ebdbc005d98c1097163bd83da243f006bed2ae"
+    },
+    {
+      "ordinal": 6,
+      "kind": "image",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q06-clean.svg",
+      "gitBlob": "e91fee72925e85279fe1c59824077ba47751038f",
+      "sha256": "fd3293037dd23586dcc604c07de0e002c62d1fa45f6cfad8753de02a982c9021"
+    },
+    {
+      "ordinal": 6,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q6-solution.svg",
+      "gitBlob": "d67cf5f7f91ec2248c5c5e6aba3ac17876c2f859",
+      "sha256": "2251ca3216441d07ee5b037e16c171130592bcb9b68ef93de0e39286094f93d7"
+    },
+    {
+      "ordinal": 7,
+      "kind": "image",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q07.png",
+      "gitBlob": "e5975cf47bc707b62cd33f679de7725b13c8c05f",
+      "sha256": "fed0f4a7011d6c10e14a8b7b38322c38b7d554ae12af912aef4bb5e07eebe23e"
+    },
+    {
+      "ordinal": 7,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q7-solution.svg",
+      "gitBlob": "5f9df86642eed79a971758fe6982dd4d22f016d8",
+      "sha256": "eabe2c18fdcc9ae9a3cd6bc2039682777de7380d8a611f4396e9f6aa6072bdc7"
+    },
+    {
+      "ordinal": 8,
+      "kind": "image",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q08.png",
+      "gitBlob": "bdd6e86c29104bb606df590e7bc0ea4a133457a2",
+      "sha256": "c7658967b68ca3bd33d1ab7f376f042539211c5775e6e63f4ec0d41cd722eed3"
+    },
+    {
+      "ordinal": 8,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q8-solution.svg",
+      "gitBlob": "5bc94a90ada511d6a2d0760de71f11cdee9cfeaf",
+      "sha256": "411800bc4c5d6d88aee0ca1cd128c351eed4048d71c84dcd9cff06a552d0f3f5"
+    },
+    {
+      "ordinal": 9,
+      "kind": "image",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q09.png",
+      "gitBlob": "a7c583b444f067772cd05cc21335a755ff592d73",
+      "sha256": "41c89ca6c54069f31c9812a5d18b9656aa47cc4479a09594802f0b9d0e049e84"
+    },
+    {
+      "ordinal": 9,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q9-solution.svg",
+      "gitBlob": "5758a7ff21cf46c3d544d39569f77af05af16f5b",
+      "sha256": "ece1e97792bfd08d13ed7bf0b7f9969a166448d14f46f6bcd10d81232663e324"
+    },
+    {
+      "ordinal": 18,
+      "kind": "image",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q18.png",
+      "gitBlob": "15985ad0274e2bef03c9f335d5ce4c4e5e3e1b2d",
+      "sha256": "c6a5afd3843c14deb40e0201885bb5e4b7471e756bd87992c48e6a4e285ac09a"
+    },
+    {
+      "ordinal": 21,
+      "kind": "image",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q21.png",
+      "gitBlob": "5c3838d59ce641dc3fbdf647965f2b34f846b0d9",
+      "sha256": "8bbb9442bcaf4c587a496c4607bda6252bbebdfc56b15551cd3d557d02821fdd"
+    },
+    {
+      "ordinal": 21,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q21-solution.svg",
+      "gitBlob": "0ca1e19b21e7b4e3389ce1b3f35c87c4f759b56e",
+      "sha256": "800d667303f2a116c3fcc13948edd9cf3b8d05809a5aada63ad5d96580c855fc"
+    },
+    {
+      "ordinal": 24,
+      "kind": "image",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q24.png",
+      "gitBlob": "7b7b4b6870f25d79f70161ad027f775c227662f3",
+      "sha256": "411d2258af481eb04f95c141da6e3d33a89cb2360864617f6f6abea0f706c2f6"
+    },
+    {
+      "ordinal": 24,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_팔마중_2학기_기말_중3_기출/q24-solution.svg",
+      "gitBlob": "e555938f3e5c1c7f3daf46287b4d6642c2b577b3",
+      "sha256": "001a5a010430aa98b53e5a6ea4badc25009d1b3d37ccfc914c32025eddb398b6"
+    }
+  ],
+  "sourceCaveats": [],
+  "scope": "Root actual source/answer/existing-solution/image reading of3 samples plus identified changed or exceptional numeric difficulties. New mathematical R1/R2/R3 not performed. Prior same-version Q4 mathematical evidence is preserved; no new mathematical verification is inferred.",
+  "authorFeedbackEvidence": {
+    "path": "worker-outputs/c/E051/root-feedback-corrections.json",
+    "sha256": "6ce9e249a22ebd7bcfc36db2befc9f982a400a7c4ef3ce43d319fd42de110c46"
+  }
+}

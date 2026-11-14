@@ -1,0 +1,63 @@
+{
+  "examId": "E051",
+  "existingArtifactPath": "archive/data/item-4slot/original/middle/m3/2final/21_팔마중_2학기_기말_중3_기출.4slot.json",
+  "existingArtifactSha256": "e583d0849d46d67f8d3734b7158432d6ab24735952badedb94048b973965413c",
+  "existingSourceBlob": "dee83edefc57d027a2fe5faa220278517a84b4d2",
+  "currentSourceBlob": "dee83edefc57d027a2fe5faa220278517a84b4d2",
+  "currentSourceRawSha256": "832b5c33d8aeb14c76c78d9481cf44841cd80f75a7677b489eb5a3fa5a88f9c1",
+  "status": "EXACT_SAME_SOURCE_BYTES_CURRENT_REVIEW_PERFORMED",
+  "all25ExistingRecordsRead": true,
+  "priorIndependentQ4": {
+    "purpose": "Q04 current-main QFULL/method independent recheck; do not reapply PR #1593 JS",
+    "reviewedAt": "2026-11-10",
+    "reviewer": "GPT-6",
+    "scope": "Q04 QFULL/method and 25/25 normalized QBODY parity",
+    "sourceCommitSha": "46b4752bc0ac5a338911716b952454cd3eb40440",
+    "sourceGitBlobSha": "dee83edefc57d027a2fe5faa220278517a84b4d2",
+    "qbodySha256": "08d6b80456233155c34bd98374ae2108e88ec1b2befb2fbc43cfada753173144",
+    "qfullSha256": "44f7bb55e7518a6e6e70a63f4b5c423a06aa52837d099e3d064a1ef1b17856b0",
+    "priorReviewedSourceGitBlobSha": "0e3392c3f552451740c8b987d1217d9632265871",
+    "priorReviewedQfullSha256": "1e38b8c1e819a53aa7dc53ea383a715542cd5ae99f087e904bc6a3ebf67bf572",
+    "methodTermIds": [
+      200,
+      174
+    ],
+    "methodCandidate": "원내현교각",
+    "methodEvidence": [
+      {
+        "term": "원주각",
+        "termId": 200,
+        "quote": "$2\\times34^\\circ=68^\\circ$이다.",
+        "evidenceType": "IMPLIED",
+        "reason": "주어진 원주각 34°에 대한 호 AB의 크기는 68°"
+      },
+      {
+        "term": "원내현교각",
+        "quote": "그 각과 맞꼭지각이 마주 보는 두 호의 합의 절반이다.",
+        "evidenceType": "NAMED",
+        "reason": "두 현의 내부 교점에서 ∠DPC=(호 AB+호 CD)/2"
+      },
+      {
+        "term": "각",
+        "termId": 174,
+        "quote": "두 현 $AC$, $BD$의 교점에서 $D$와 $C$ 쪽에 있는 각",
+        "evidenceType": "IMPLIED",
+        "reason": "그림의 x가 D·C 방향의 내부 교각임을 명시"
+      }
+    ],
+    "geometricCheck": "호 AB=2×34°=68°, 호 CD=136°, 내부교각 x=(68°+136°)/2=102°=④",
+    "q04SlotsUnchanged": true,
+    "other24SlotRecordsUnchanged": true,
+    "studentBodyParity": "25/25 equivalent after legacy LaTeX-backslash and escaped-newline normalization; other 24 answers unchanged",
+    "verdict": "PASS"
+  },
+  "priorQ4MethodExactQuotesVerified": true,
+  "candidateAliasUpdate": {
+    "before": "원내현교각",
+    "after": "원내부에서만나는두현의각",
+    "sameMathematicalDefinition": true,
+    "sameSlotParent": "각"
+  },
+  "priorReviewReuseScope": "기존 같은 판본의 Q4 QFULL/method 독립근거는 유효하다. 이번 root 새 표본7/8/24와 난도 판정을 대신하지 않는다. 과거 PR의 JS 변경을 재적용하지 않는다.",
+  "newMathematicalVerification": false
+}
