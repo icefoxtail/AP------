@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E076",
+  "author": "m3_c",
+  "reviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2final/18_연향중_2학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "2718154f43046aadf4760d8d8c14624dc5e9e041",
+  "targetReviewSha256": "3623c2acad3c6116e695d3c8b63a17f4802b2695a93655218b30ffbdd5192740",
+  "target4slotSha256": "8a55364bdbbb3dc909935e8a0240bad5cb6e40784cd36dd0be0c86026f4c2e42",
+  "sampledSourcePatchSha256": "843ddaa99805b0c346056088dcd41a5a1e9d1dc6375113a234e5338ac8b6e846",
+  "sampleOrdinals": [
+    4,
+    16,
+    20
+  ],
+  "sampleRule": "Root-selected current-source samples cover distinct methods and nontrivial conditions; original full review is not repeated.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_13aba6a19fa189b2d16543f921b0617834fcefcfdfa575ab9f4f13edc757e65a",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "반원 원본에서 지름AB,CD수선과x=∠DCB를 확인했다. 지름의 원주각→빗변에 내린 수선의 닮음으로12k→피타고라스로15k→cos값4/5로 이어진다. TRIG_RATIO_GEOMETRIC_DERIVATION TPL과 원주각·직각삼각형닮음·Pythagoras CC가 결정경로를 담으며 비 조건이 4칸에도 보존된다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_2ee1c09a991abd30ddd113d0330d462b2e6446d7435d7134e529cf098d7d2a74",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "현재 source SVG의 X-D-B, X-A-Y 순서와 두 접선 및 C의 호 위치를 직접 확인했다. 삼각형각으로60,등접선으로x60,접점반지름직각과 중심각으로 호DAB170을 복원하여y85를 얻는다. CIRCLE_ANGLE_COMPOSITE,이등변 CC와순차연결 및4칸의 순서조건이 정확하다.",
+      "quotesChecked": 13,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_1d85e1af44605f8d8363016f27c65c2c688212c4a419b7ae1126f52bac7722b0",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본에서 P-A-B 순서, AB9,PT6,BT8을 확인했다. 접선·할선 곱으로 외부길이3을 고른 후 접현각 AA닮음으로AT4를 구하는 실제 풀이와 4칸의 이차식/양수선택/접현각/닮음이 일치한다. 정확 leaf/TPL 공백을 일반 접선거리와 혼동하지 않고 명시등록보류한 것을 수용한다.",
+      "quotesChecked": 10,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 21,
+      "type": "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA",
+      "reason": "왼쪽 AB 숫자7이 그림 가장자리에서 잘렸지만 본문에 AB7이 명시됨."
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "8bd5a34b21da7b7145d35bf2c7540e6649bdaa541229193d04e8406e73386617"
+}

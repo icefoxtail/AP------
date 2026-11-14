@@ -1,0 +1,1661 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/18_연향중_2학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "2718154f43046aadf4760d8d8c14624dc5e9e041",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT6_ASTRA_M3_C_9D4541661C34",
+    "run": "M3S2_FULL_20261114",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "인 직각삼각형 $\\mathrm{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리로 나머지 변을 구하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "각 $A$의 맞은편 변은 $BC$",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 각에 대한 변의 비를 비교한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "\\tan A=\\dfrac{BC}{AC}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{C}=90^\\circ"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "피타고라스 정리로 한 변을 정하고 각에 대한 삼각비를 계산해 보기와 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_2d5b09f848fe81e62440a8da381ced378e42d14dc9abe3e8513a9f2e7a0d709c"
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사인",
+            "src": "choices",
+            "quote": "\\sin 45^\\circ + \\cos 30^\\circ"
+          },
+          {
+            "term": "코사인",
+            "src": "choices",
+            "quote": "\\cos 60^\\circ \\div \\sin 30^\\circ"
+          },
+          {
+            "term": "탄젠트",
+            "src": "choices",
+            "quote": "\\tan 60^\\circ \\div \\cos 30^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "그 값이 가장 작은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "다섯 보기의 값을 비교한다",
+            "evidenceType": "IMPLIED",
+            "justification": "특수각 삼각비 값을 각 보기에 적용한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "이 중 가장 작은 값은 $-1$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 특수각의 삼각비를 계산해 다섯 값의 대소를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_f1bdc6086589bc73708a0aa141dcfae53fe939d233f6752c045b954c5f740011"
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "한 변의 길이가 1인 정사각형"
+          },
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "반지름이 1인 사분원의 호 AC"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "직선 BC에 내린 수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "QC/PR의 값과 같은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "$BQ=BP\\cos40^\\circ",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$BR=\\dfrac{BC}{\\cos40^\\circ}",
+            "evidenceType": "IMPLIED",
+            "justification": "두 직각삼각형의 빗변과 이웃변의 비를 쓴다."
+          },
+          {
+            "term": "여각",
+            "src": "solution",
+            "quote": "\\cos40^\\circ=\\sin50^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 여각인 각의 사인과 코사인이 같다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "직선 BC에 내린 수선의 발"
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "A, B, C, D의 순서로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "단위 길이와 두 직각삼각형의 코사인으로 두 선분을 구하고 비를 여각의 사인으로 바꾼다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_03853a8b19f27c39c878d7ba2ecfe5017a4acf607cee02324bcdadad8c458fcb"
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "반원",
+            "src": "solution",
+            "quote": "$AB$는 반원의 지름이므로"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{DB}}=16:9"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "\\cos x$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "반원의 지름이므로 $\\angle ACB=90^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "지름을 보는 원주각이 직각이다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "직각삼각형의 닮음을 이용하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$CB^2=CD^2+DB^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "수선으로 얻은 직각삼각형의 빗변을 구한다."
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "\\cos x=\\dfrac{CD}{CB}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{DB}}=16:9"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지름의 원주각과 빗변에 내린 높이의 닮음, 피타고라스 정리로 코사인을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_13aba6a19fa189b2d16543f921b0617834fcefcfdfa575ab9f4f13edc757e65a"
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "올려본각",
+            "src": "stem",
+            "quote": "송신탑의 양끝을 올려다본 각"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "$100\\text{ m}$ 떨어진"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "송신탑의 높이"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "$AC=BC\\tan45^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$AD=AC-DC$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 높이의 차로 송신탑의 높이를 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 올려본 각의 탄젠트로 각각 지면에서의 높이를 구하고 차를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "산 위 송신탑",
+      "questionUid": "qid_v1_88055dfdd26b00f22ecd41f6c073f09daa97de220a5b697fc6a718ac3c8b343d"
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 ABC와 DBC에서"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "두 선분 AC와 BD의 교점을 E"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 EBC의 넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "$BC=CD\\tan60^\\circ",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "E에서 BC에 내린 수선의 발을 H",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "$BC=BH+CH=(\\sqrt3+1)EH",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 높이로 표현한 두 부분 구간을 더해 하나의 높이를 결정한다. 독립적인 두 미지수 연립계는 아니다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형 EBC의 넓이는",
+            "evidenceType": "IMPLIED",
+            "justification": "밑변과 수선의 길이를 이용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "∠BAC=90°, ∠BCD=90°"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "60도 탄젠트로 밑변을 구하고 교점에서 내린 수선과 두 탄젠트 관계로 높이를 정해 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_b4902972a81d468f1770a3065b04390c752ec38e58506b32378393d184998749"
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이가 $12\\text{ cm}$인 실"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "추의 높이의 차는?"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "추의 높이의 차는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "$OH=OB\\cos30^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$AH=OA-OH$",
+            "evidenceType": "IMPLIED",
+            "justification": "끈의 길이에서 수직 성분을 뺀다."
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "$B$에서 수직선 $OA$에 내린 수선",
+            "evidenceType": "IMPLIED",
+            "justification": "추 높이 차를 읽기 위해 수직 성분을 만드는 보조선이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "일정",
+            "src": "stem",
+            "quote": "길이가 $12\\text{ cm}$인 실"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "코사인으로 끈의 수직 성분을 정하고 전체 길이에서 빼 높이 차를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "진자의 높이 차",
+      "questionUid": "qid_v1_7a1f776d1471829dce49b2ad6b9a42ddf3da374babd3fc910ffda620fff66bc0"
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "그림의 원 $\\mathrm{O}$에서"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "현에 내린 수선은 현을 이등분한다"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이가 5일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 값은?(3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분",
+            "src": "solution",
+            "quote": "현에 내린 수선은 현을 이등분한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 현은 중심에서 같은 거리에",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 같은 거리에 있는 현의 길이가 같다."
+          },
+          {
+            "term": "현과중심의거리",
+            "src": "solution",
+            "quote": "두 현은 중심에서 같은 거리에",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AM^2=OA^2-OM^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름과 현까지 거리로 반현을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등거리",
+            "src": "stem",
+            "quote": "\\mathrm{ON}}=3$이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "중심에서 내린 수선으로 현을 이등분하고 피타고라스 정리와 현의 중심거리로 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_53db369ec020aa5929036aae59f4c34c89e84b6d330102e0f4a3b4d87308f3ca"
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 모양의 종이를 접어서"
+          },
+          {
+            "term": "접기",
+            "src": "stem",
+            "quote": "종이를 접어서 접혀진 부분의 호"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "의 크기를 구하면?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "접기",
+            "src": "solution",
+            "quote": "접는 선 $AB$에 수직이고",
+            "evidenceType": "IMPLIED",
+            "justification": "접는 선이 대응점 사이 선분을 수직이등분한다."
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "접는 선에서 이등분된다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "\\cos\\angle AOM=\\dfrac{OM}{OA}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "작은 호 $AB$의 중심각은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "작은 호 $AB$에 대한 원주각이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "원의 중심 $\\mathrm{O}$를 지나도록"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접기의 수직이등분으로 중심거리를 구하고 코사인과 중심각·원주각 관계를 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "원형 종이 접기",
+      "questionUid": "qid_v1_0b014c11a5d4b058a300b157f968258f29fb0f6a1938213129e722940ac52eeb"
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "두 현 $\\mathrm{AB, CD}$가"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "\\overgroup{\\mathrm{AC}}"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이가 6인 원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "의 크기를 구하면?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주",
+            "src": "solution",
+            "quote": "원의 둘레는 $12\\pi$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$360^\\circ\\times\\dfrac{3\\pi}{12\\pi}",
+            "evidenceType": "IMPLIED",
+            "justification": "호 길이의 합과 원둘레의 비로 중심각 합을 구한다."
+          },
+          {
+            "term": "원안의두현이이루는각",
+            "src": "solution",
+            "quote": "원 안에서 두 현이 만날 때 생기는 각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "중심각 합의 절반이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 현의 교각은 마주 보는 호의 중심각 합의 절반이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원둘레에 대한 호 길이의 비로 중심각 합을 구하고 현의 교각 정리를 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_b1235cf4df3c1c9ace4f1fa69e4945d3a7642dba256d347c9a86bb2e4bac061e"
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "의 중점이다"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "의 중점이다"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "$R$은 $AB$와 $MP$의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "의 크기를 구하면?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원안의두현이이루는각",
+            "src": "solution",
+            "quote": "두 현의 각의 성질을",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 현의 각의 성질을",
+            "evidenceType": "IMPLIED",
+            "justification": "교각으로 서로 마주 보는 두 호의 합을 얻는다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "$2t+u+v=360^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 호에서 해당 호의 합을 구한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "호 $MAP$에 대한 원주각이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "의 중점이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "호 중점과 현의 교각으로 호의 합을 정하고 원주각에 대응하는 호를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_d5c5e02886a136111d381773567222e524ef4abacf684fcbffa85c2ec21fd49e"
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "가 원 $\\mathrm{O}$에 외접할 때"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "가 원 $\\mathrm{O}$에 외접할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x$의 값은?(3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외접사각형의대변의합",
+            "src": "solution",
+            "quote": "두 쌍의 대변 길이의 합이 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사각형",
+            "src": "solution",
+            "quote": "원에 외접하는 사각형의 두 쌍",
+            "evidenceType": "IMPLIED",
+            "justification": "외접사각형에서 대변의 합이 같다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$4+(3x+1)=5+(x+4)$",
+            "evidenceType": "IMPLIED",
+            "justification": "변의 길이를 대변 합에 넣어 일차방정식을 푼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "가 원 $\\mathrm{O}$에 외접할 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "외접사각형의 접선 길이로 대변의 합 관계를 세우고 일차방정식을 푼다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4c49ca0509fc4f8b75e8470d9dd242fb9fe7219daee69dc02f7eedac212bd048"
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "한 원 위의 점이 A, B, D, C"
+          },
+          {
+            "term": "할선",
+            "src": "stem",
+            "quote": "원 밖의 점 P를 지나는 두 할선"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "작은 호 AC와 작은 호 BD"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "∠BQD의 크기는?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 호 AC에 대한 원주각은 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례",
+            "src": "solution",
+            "quote": "원주각이 보는 호의 길이에 비례한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형의외각",
+            "src": "solution",
+            "quote": "삼각형의 외각의 성질에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "삼각형의 외각의 성질에서",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 외각이 이웃하지 않은 내각의 합임을 두 번 이용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "A, B, D, C 순서로"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "길이의 비가 1:3이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "같은 호의 원주각과 호 길이 비를 쓰고 두 삼각형의 외각 성질로 각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_ab777fc66b173b6409627e47ac0b326f46751f78ebf8bd0e8bdcb941d2b3ee80"
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "다음 그림의 $\\square\\mathrm{ABCD}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "중 원에 내접하는 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "중 원에 내접하는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "한 쌍의 대각의 합은 $180^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 현 $BC$를 보는",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현을 보는 원주각의 크기를 비교한다."
+          },
+          {
+            "term": "할선",
+            "src": "solution",
+            "quote": "현의 교점이나 할선이 주어진 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "할선의 길이 곱을 비교한다."
+          },
+          {
+            "term": "방멱정리",
+            "src": "solution",
+            "quote": "선분의 곱도 확인할 수 있다",
+            "evidenceType": "IMPLIED",
+            "justification": "할선과 교차 현의 부분 길이 곱으로 내접 여부를 배제한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "현의 교점이나 할선이 주어진 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "두 현의 곱이 같은 조건을 살핀다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "같은 현의 원주각, 교차 현과 할선의 곱, 내접사각형의 대각 관계를 각 도형에 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4fcc3e6c6d4cfc76de09b72cc95b796b368de563a6cc82aac81f56c5147b421b"
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "는 원 $\\mathrm{O}$의 접선이고"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "와 현 $\\mathrm{AD}$는 평행"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "의 크기를 구하면?(3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현 $CA$가 이루는 각은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "그 현에 대한 원주각과 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "엇각은 같다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "와 현 $\\mathrm{AD}$는 평행"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "는 원 $\\mathrm{O}$의 접선이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접현각과 원주각을 같게 놓고 접선에 평행한 현의 엇각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_98d179caac9011aaa59144dda363b9d24bd55246c1cf0757b66b6c33a3375ea6"
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "선분 YB도 원에 B에서 접한다"
+          },
+          {
+            "term": "할선",
+            "src": "stem",
+            "quote": "직선 X-D-B는 원과 D, B"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 위의 점은 D, C, B, A 순서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "x+y의 크기는?(5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형의내각의합",
+            "src": "solution",
+            "quote": "삼각형 XAB에서",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형의 세 각의 합으로 접점의 각을 정한다."
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형 XAB에서",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 내각의 합을 사용한다."
+          },
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형 YAB에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "접점에서 반지름과 접선은 수직이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "호 DA에 대한 원주각이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "호 DAB에 대한 중심각은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "선분 YB도 원에 B에서 접한다"
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "원 위의 점은 D, C, B, A 순서"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "삼각형의 각과 접선 길이로 접선 사이 각을 구하고 반지름의 직각 및 중심각·원주각으로 다른 각을 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_2ee1c09a991abd30ddd113d0330d462b2e6446d7435d7134e529cf098d7d2a74"
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "인 이등변삼각형 $\\mathrm{ABC}$"
+          },
+          {
+            "term": "반원",
+            "src": "stem",
+            "quote": "를 지름으로 하는 반원"
+          },
+          {
+            "term": "할선",
+            "src": "solution",
+            "quote": "두 할선 $ADB$, $AEC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는?(5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "반원의 지름이므로 $\\angle BDC=90^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "지름을 보는 원주각은 직각이다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "밑변을 이등분하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점에서 밑변으로 내린 수선은 밑변을 이등분한다."
+          },
+          {
+            "term": "방멱정리",
+            "src": "solution",
+            "quote": "$AD\\cdot AB=AE\\cdot AC$",
+            "evidenceType": "IMPLIED",
+            "justification": "외부점에서 두 할선의 부분 길이 곱이 같다."
+          },
+          {
+            "term": "할선",
+            "src": "solution",
+            "quote": "두 할선 $ADB$, $AEC$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "\\mathrm{CB}}=20$인"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지름을 보는 직각과 이등변삼각형의 높이로 밑변을 이등분하고 두 할선의 곱을 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_c59919cbca8eeac7a3d7d1056745dedc96debd9e8e3388346f30777f77bbaf23"
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "할선",
+            "src": "stem",
+            "quote": "의 할선 $\\mathrm{AB, CD}$가"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "\\mathrm{OE}}\\perp\\overline{\\mathrm{CD}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "방멱정리",
+            "src": "solution",
+            "quote": "$PA\\cdot PB=PC\\cdot PD$",
+            "evidenceType": "IMPLIED",
+            "justification": "외부점에서 두 할선의 부분과 전체 길이의 곱을 같게 둔다."
+          },
+          {
+            "term": "할선",
+            "src": "solution",
+            "quote": "두 할선이 원 밖의 점 $P$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현의수직이등분",
+            "src": "solution",
+            "quote": "현에 내린 수선은 현을 이등분하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "현에 내린 수선은 현을 이등분하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 내린 수선이 현을 이등분한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "\\mathrm{OE}}\\perp\\overline{\\mathrm{CD}}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "외부 할선의 곱으로 현의 길이를 구한 뒤 중심에서 내린 수선이 현을 이등분함을 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_fe72231199a4937b7db5e7e5e4448a9c1b7010bcadd5598046ae1f7469e6c666"
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "의 지름의 길이는 $12\\text{ cm}$"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "\\mathrm{BC}}\\perp\\overline{\\mathrm{AH}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하면?(5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "지름을 보는 원주각이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "직각삼각형 $AHC$와 $ABD$는 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "\\dfrac{AH}{AB}=\\dfrac{AC}{AD}",
+            "evidenceType": "IMPLIED",
+            "justification": "닮은 직각삼각형의 대응변 비를 이용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "\\mathrm{BC}}\\perp\\overline{\\mathrm{AH}}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지름과 같은 현의 원주각으로 직각삼각형의 닮음을 얻고 대응변의 비를 사용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_dcf7b1fe7bee0d759d1e03cb09ee5047b08351574f02db9a1bf8dad9c8a1f148"
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "는 원의 접선이고"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "\\mathrm{AB}}=9\\text{ cm}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하면?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선과할선정리",
+            "src": "solution",
+            "quote": "접선과 할선의 길이 관계에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "접선과 할선의 길이 관계에서",
+            "evidenceType": "IMPLIED",
+            "justification": "접선의 제곱과 할선의 두 부분의 곱을 같게 둔다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$x^2+9x-36=0$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현이 이루는 각의 성질로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "\\triangle PTA\\sim\\triangle PBT",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "는 원의 접선이고"
+          },
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "길이는 양수이므로 $x=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "이차방정식의 두 근 중 음의 길이를 배제하는 실제 해 선택 조건이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선과 할선 관계로 외부 부분을 구하고 접현각을 이용한 삼각형의 닮음으로 변을 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_1d85e1af44605f8d8363016f27c65c2c688212c4a419b7ae1126f52bac7722b0"
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형 $\\mathrm{ABCD}$에서"
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선 $BD$를 기준으로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "$BD=AD\\sin60^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "$C$에서 직선 $BD$에 내린 수선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "두 삼각형으로 나누어 넓이를 더한다",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 밑변인 대각선과 두 높이로 삼각형의 넓이를 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{ABD}=90^\\circ"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "대각선의 길이와 다른 꼭짓점의 높이를 각각 사인으로 구해 두 삼각형의 넓이를 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_c29f546b9bf41072b36d957cc63697915c1be0ff6b69f39e51d9e17843faa2b9"
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "인 원 $\\mathrm{O}$ 위의 점"
+          },
+          {
+            "term": "접기",
+            "src": "stem",
+            "quote": "원을 접었을 때"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "\\mathrm{PQ}}=\\overline{\\mathrm{MQ}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접기",
+            "src": "solution",
+            "quote": "접어서 $P$와 $O$가 겹쳐지므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "$PO$의 수직이등분선이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AM^2=OA^2-OM^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름과 중심거리로 수직인 현의 반쪽을 정한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "밑변을 $PQ$로 보면",
+            "evidenceType": "IMPLIED",
+            "justification": "중점으로 구한 밑변과 수선의 길이로 삼각형 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "\\mathrm{PQ}}=\\overline{\\mathrm{MQ}}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접는 선이 반지름의 수직이등분선인 관계와 피타고라스 정리로 높이를 구하고 삼각형 넓이를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "원형 종이 접기",
+      "questionUid": "qid_v1_2dfbde34e97a7c4c3fe020a9738aa4c9eb3ae85a6deebb0a521da1436bf21c7a"
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "은 원 $\\mathrm{O}$의 접선이고"
+          },
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "는 원 $\\mathrm{O}$의 지름이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "의 크기를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현 $BC$가 이루는 각의 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "지름이므로 $\\angle ABC=90^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "지름에 대한 원주각은 직각이다."
+          },
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "엇각에서 $\\angle BAD",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "호 $AD$에 대한 중심각은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원안의두현이이루는각",
+            "src": "solution",
+            "quote": "원 안에서 두 현이 이루는 각의 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "원 안에서 두 현이 이루는 각의 성질",
+            "evidenceType": "IMPLIED",
+            "justification": "교각은 대응하는 두 호의 중심각 합의 절반이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "\\mathrm{AD}} // \\mathrm{TT'}"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "은 원 $\\mathrm{O}$의 접선이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접현각과 원주각, 평행선 엇각을 사용해 두 호의 중심각을 구하고 현의 교각을 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_319b08515f122a06f7d3d2e0055bf4330aa83473128aab717be4fa12242bddbc"
+    }
+  ],
+  "candidates": [
+    {
+      "term": "현의수직이등분",
+      "en": "PERPENDICULAR_FROM_CENTER_TO_CHORD",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "원의 중심에서 현에 내린 수선은 현을 이등분한다.",
+      "usedIn": [
+        8,
+        18
+      ]
+    },
+    {
+      "term": "현과중심의거리",
+      "en": "CHORD_DISTANCE_FROM_CENTER",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "중심에서 같은 거리에 있는 두 현의 길이는 같다.",
+      "usedIn": [
+        8
+      ]
+    },
+    {
+      "term": "원안의두현이이루는각",
+      "en": "INTERSECTING_CHORD_ANGLE",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "원 안에서 두 현의 각은 마주 보는 두 호의 중심각 합의 절반이다.",
+      "usedIn": [
+        10,
+        11,
+        23
+      ]
+    },
+    {
+      "term": "외접사각형의대변의합",
+      "en": "TANGENTIAL_QUADRILATERAL_SIDE_SUM",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "사각형",
+      "note": "원의 외접사각형에서 마주 보는 변의 길이의 합은 같다.",
+      "usedIn": [
+        12
+      ]
+    },
+    {
+      "term": "삼각형의외각",
+      "en": "TRIANGLE_EXTERIOR_ANGLE",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "외각",
+      "note": "삼각형의 한 외각은 이웃하지 않는 두 내각의 합과 같다.",
+      "usedIn": [
+        13
+      ]
+    },
+    {
+      "term": "삼각형의내각의합",
+      "en": "TRIANGLE_INTERIOR_ANGLE_SUM",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "삼각형",
+      "note": "삼각형의 세 내각의 합은 180도이다.",
+      "usedIn": [
+        16
+      ]
+    },
+    {
+      "term": "방멱정리",
+      "en": "POWER_OF_A_POINT",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "할선",
+      "note": "한 점을 지나는 두 할선에서 부분 길이 곱이 같다.",
+      "usedIn": [
+        14,
+        17,
+        18
+      ]
+    },
+    {
+      "term": "접선과할선정리",
+      "en": "TANGENT_SECANT_THEOREM",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "접선",
+      "note": "접선 길이의 제곱은 할선의 바깥 부분과 전체 길이의 곱이다.",
+      "usedIn": [
+        20
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 192,
+    "quotesNotFound": 0,
+    "notes": "직접 본문·선택지·기존 해설을 읽고 각 문항의 분류·난도·4칸 의미를 판정했다. 기존 4칸은 현 버전과 대조 후 재사용/수정. 독립 검증은 root 담당으로 아직 미완료."
+  }
+}
