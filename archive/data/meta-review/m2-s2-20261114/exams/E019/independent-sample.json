@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E019",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "6cba660830fb8c387e5c7b39e119cc7ea8350343",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "877cb7b088d0ea74f82dc2dbc5ce8a9fa1f59fb62ce68ebfc628f117e35da4a8",
+  "fourSlotInputSha256": "baa076b51ae298a14e0cdc91cec61d53c7ccbfaee9b6771b0232f5a7791eb261",
+  "sampleOrdinals": [
+    15,
+    18,
+    22
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_05daec14579c8b0ad326ad3ba39d161c8ff6564afc7d2ba08840126422e57601",
+      "verdict": "REPAIR",
+      "metadataReview": "RPM068 및 외심/빗변중점 PT/TPL은 원 반지름을 삼각형 빗변으로 전달하는 결정 단계에 맞는다. 목표는 실제로 삼각형 넓이이다. 다만 그림45도와 직각으로 B45도를 얻고 AC=BC로 바꾸는 별도 결정 단계가 있으며 이는 ACTIVE CC_ISOSCELES_CONVERSE 정의에 정확하다. 기존 CC 원넓이·피타고라스·삼각형넓이에 이를 추가해야 한다.",
+      "fourSlotReview": "현재 넓이 goal·외심·피타고라스 method와 인용 타당. 두 직각변이 같아지는 이유를 빠뜨리지 않도록 이등변 역성질을 IMPLIED로 추가하고 실제 45도 그림 조건도 quote/근거로 보강 권고.",
+      "difficultyReview": "길이체계 전환과 등변조건의 제곱량→넓이 연결이 있는 bucket3/상 인접 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E019/15.png"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_b1f42e39aee464c5f72e0cdbab9f91dcd4a31d67b9e5c2c23d46d84f849c4d6c",
+      "verdict": "REPAIR",
+      "metadataReview": "한 이등분선과 평행선으로 새 두각 동등을 만들어 이등변을 판정하는 RPM062/ISO_CONVERSE가 맞다. 기존 MG 두 이등분선 겹침 선분형과 입력구조가 다르다. CC_PARALLEL_LINE_ANGLES와 CC_QUADRILATERAL_PROPERTIES는 적절하지만, Primary 등각→등변 골격 밖에서 그 등각을 만드는 각이등분선 조건도 필수이므로 CC_ANGLE_BISECTOR 추가 권고. ACTIVE 정의는 Primary 밖에서 결정 경로에 실제 필요한 경우 기록하도록 명시한다.",
+      "fourSlotReview": "그림에서 E-B-C 일직선 순서, D의 등각표시, AD4/CD6 확인. 길이 goal·엇각/이등변 method·각이등분선 condition 정확인용 모두 타당.",
+      "difficultyReview": "같은각을 먼저 만들고 등변으로 바꿔 차를 구하는 정형2단계 bucket2/중 유지 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 5,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E019/18.png"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_615edb4d04c6389f7a3caf3bdb6d7c9f92269cc6a20313d92b662ad1cc827a1f",
+      "verdict": "PASS",
+      "metadataReview": "직선그래프의 영역넓이가 아니라 실제 이동 도형의 넓이-시간 함수를 구성한다. 기존 그래프넓이/이동그래프교점/기온 모델 PT와 달라 NEW_PT/RPMgap 타당. CC_SPEED_DISTANCE_TIME는 이동량 입력, 일반 사다리꼴넓이는 확률밀도 전용 CC와 달라 별도제안 타당. 변수시간의 공통이동구간을 제한하는 COND_RANGE도 실제로 작용한다.",
+      "fourSlotReview": "실제 그림의 가로18/높이8과 두 이동방향 확인. 세 소문항 목표 길이/관계식/시간을 모두 보존했고 모든 인용 정확. 범위 quote는 solution에 실제 존재한다.",
+      "difficultyReview": "남은 길이와 이동량을 구별하여 면적식을 구성하는 bucket3, medium/B34 인접 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 9,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E019/22.png"
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}
