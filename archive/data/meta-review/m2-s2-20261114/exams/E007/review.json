@@ -1720,7 +1720,9 @@
         "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
         "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
         "subUnitKey": "M2-08-PROBABILITY_BASIC",
-        "crossConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_POLYGON_VERTEX_MOTION"
+        ],
         "conditionKeys": [
           "COND_RANGE"
         ],
@@ -1731,7 +1733,7 @@
       "fieldReview": {
         "classification": "확률 > 확률 > 확률의 활용 > 경우를 나누어 구하는 확률: 순환 경로의 이동 합을 분류한 확률",
         "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
-        "crossConcept": "순환 도형의 나머지/주기 관계가 필수이나 현행 CC_PERIODICITY는 함수합성 정의이므로 정확한 CC 등록을 제안한다.",
+        "crossConcept": "확률 primary 밖에서 다각형의 꼭짓점 이동을 변의 개수6을 주기로 추적하는 CC_POLYGON_VERTEX_MOTION의 정확한 ACTIVE 정의를 사용한다.",
         "condition": "COND_RANGE: 두 주사위 합2~12의 후보 제한으로4,10만 남고16은 제외된다.",
         "integration": "6칸을 돌면 같은 점임을 사용해 목표 도착 합4와10을 구하고 각 합의 순서쌍을 합친다.",
         "difficulty": "한 바퀴 더 도는 경우를 빠뜨리지 않고 주사위 범위 안의 합을 찾아야 한다.",
@@ -1744,9 +1746,7 @@
           "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
         }
       ],
-      "proposalRefs": [
-        "E007-CYCLIC"
-      ],
+      "proposalRefs": [],
       "finalDifficulty": {
         "level": "상",
         "difficultyBucket": 3,
@@ -2020,21 +2020,6 @@
       ]
     },
     {
-      "id": "E007-CYCLIC",
-      "type": "CC",
-      "name": "순환 도형의 이동과 나머지",
-      "definition": "n개의 꼭짓점 또는 칸을 순환하는 이동에서 n칸 이동하면 원위치로 돌아오는 성질로 같은 도착점의 이동량을 분류한다.",
-      "parent": "정수의 나머지 / 순환 이동",
-      "distinguishingCriteria": "함수합성 주기나 복소수 거듭제곱 주기의 정의와 별개의 유한 순환 경로.",
-      "existingCandidatesReviewed": [
-        "CC_PERIODICITY",
-        "CC_PERIODIC_FUNCTION"
-      ],
-      "supportingQuestionUids": [
-        "qid_v1_ebe9e108b62b2286b7acd08cc9283fcf364e023225dad3bc7f5af5d989d34d6d"
-      ]
-    },
-    {
       "id": "E007-PT-PROB-PROPERTIES",
       "type": "NEW_PT",
       "name": "확률의 기본 성질 진위 판정",
@@ -2148,6 +2133,13 @@
         22
       ],
       "note": "ROOT actual 발문·보기·해설 독립 재독으로 현재 bucket와 source level의 인접 경계 수용. q12/20 medium/B34 유지."
+    },
+    {
+      "type": "EXISTING_CC_REUSE",
+      "ordinals": [
+        22
+      ],
+      "note": "ROOT가 freeze 해제를 허용한 중복 정의 대조. CC_POLYGON_VERTEX_MOTION의 한국어 label/definition이 정확히 일치하여 E007-CYCLIC 제안을 철회하고 기존 canonical key를 선택함. 학생 원문 및 4칸은 불변."
     }
   ]
 }
