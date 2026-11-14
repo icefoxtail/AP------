@@ -320,3 +320,79 @@
     overflow-wrap: anywhere !important;
   }
 }
+
+
+/* A direct problem sheet with an SVG needs a readable question column on phones.
+   Keep the A4 layout used during pagination and native printing. */
+@media screen and (max-width: 640px) {
+  html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"]
+    #print-area:has(.q-box:not(.sol-box) :is(.q-content, .q-image-wrap, .choice-text) :is(svg:not(mjx-container svg, .katex svg), img[src*=".svg" i], img[src^="data:image/svg+xml" i])) {
+    box-sizing: border-box;
+    width: calc(100vw - 16px);
+    max-width: none;
+    margin: 8px auto;
+    padding: 0;
+    gap: 14px;
+    align-items: stretch;
+    transform: none;
+
+    .page {
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100%;
+      height: auto !important;
+      min-height: 0;
+      margin: 0;
+      padding: 14px 12px;
+      overflow: visible;
+    }
+    .page-body, .ap-equal-slot-grid, .ap-equal-slot {
+      height: auto !important;
+      min-height: 0;
+      overflow: visible;
+    }
+    .page-exam-frame { inset: 8px; }
+    .page-header.page-header--exam {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 8px;
+    }
+    .page-header-title { overflow-wrap: anywhere; }
+    .page-header-meta-right { flex-wrap: wrap; }
+    .grid-container {
+      grid-template-columns: minmax(0, 1fr) !important;
+      height: auto !important;
+      flex: 0 0 auto;
+    }
+    .grid-container::after { display: none; }
+    .grid-col { height: auto; padding: 0; overflow: visible; }
+    .ap-equal-slot .ap-slot-content {
+      display: flow-root;
+      position: static !important;
+      inset: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      overflow: visible;
+      transform: none !important;
+    }
+    .q-box {
+      box-sizing: border-box;
+      display: flow-root;
+      flex: 0 0 auto !important;
+      height: auto !important;
+      min-height: 0;
+      max-width: 100%;
+      padding: 12px 0 !important;
+      overflow: visible;
+    }
+    .page > div[style*="bottom: 15mm"] {
+      position: static !important;
+      align-self: center;
+      margin-top: 12px;
+    }
+    .q-box :is(.q-content, .q-image-wrap, .choice-text) :is(svg:not(mjx-container svg, .katex svg), img[src*=".svg" i], img[src^="data:image/svg+xml" i]) {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+}
