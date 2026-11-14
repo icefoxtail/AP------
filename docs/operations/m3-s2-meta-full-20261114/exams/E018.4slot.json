@@ -1,0 +1,1394 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "39e091f8f9d9473c8ad3903551b32ede25c0994c",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "worker-c",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_954be49e1e053d508d60781531de7ccb89f04f7cd4ef8c6db03bae68b97a5bef",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기가 같은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "각 보기의 비를",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 예각을 공유하는 직각삼각형에서 각 변의 역할을 대응시켜 보기의 비를 사인·코사인·탄젠트로 해석한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "크기가 같은"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "같은 예각을 공유하는 직각삼각형에서 각 변의 역할을 대응시켜 보기의 비를 사인·코사인·탄젠트로 해석한다.",
+        "method": "같은 예각을 공유하는 직각삼각형에서 각 변의 역할을 대응시켜 보기의 비를 사인·코사인·탄젠트로 해석한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_23fa4eedbf072a82187690d158fa97fe25eacc83226a3b98619129d11156bf6d",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$AB=4$, $BC=\\sqrt7$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\cos B\\times\\tan B$"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스로 누락 직각변을 복원하고 코사인과 탄젠트의 정의에 넣어 곱한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\cos B=\\dfrac{BC}{AB}",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스로 누락 직각변을 복원하고 코사인과 탄젠트의 정의에 넣어 곱한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "피타고라스로 누락 직각변을 복원하고 코사인과 탄젠트의 정의에 넣어 곱한다.",
+        "method": "피타고라스로 누락 직각변을 복원하고 코사인과 탄젠트의 정의에 넣어 곱한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_b4876493b7e531af2f809f4cc17ba44f87b6b22108806266a49aaa522556a24c",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "choices",
+            "quote": "$\\sin0^\\circ+\\cos0^\\circ=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "계산이 옳은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "특수각의 삼각비 값",
+            "evidenceType": "IMPLIED",
+            "justification": "특수각의 삼각비 값을 대입해 다섯 식의 등식이 성립하는지 직접 확인한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "정확히 대입",
+            "evidenceType": "IMPLIED",
+            "justification": "특수각의 삼각비 값을 대입해 다섯 식의 등식이 성립하는지 직접 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "특수각의 삼각비 값을 대입해 다섯 식의 등식이 성립하는지 직접 확인한다.",
+        "method": "특수각의 삼각비 값을 대입해 다섯 식의 등식이 성립하는지 직접 확인한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_de675307d366fac5f87e13b3be648813d2f8731c1694460b0c8aeabf2142beb9",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "사분원"
+          },
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "삼각비의 표"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos46^\\circ$"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\cos x=\\dfrac{OB}{OA}",
+            "evidenceType": "IMPLIED",
+            "justification": "단위원의 가로길이를 코사인으로 읽어 표의 각을 찾고 여각의 사인 열로 목표 코사인을 구한다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "$\\cos46^\\circ=\\sin44^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "단위원의 가로길이를 코사인으로 읽어 표의 각을 찾고 여각의 사인 열로 목표 코사인을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "단위원의 가로길이를 코사인으로 읽어 표의 각을 찾고 여각의 사인 열로 목표 코사인을 구한다.",
+        "method": "단위원의 가로길이를 코사인으로 읽어 표의 각을 찾고 여각의 사인 열로 목표 코사인을 구한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_6e6d932b80a529f928dec28ea55b6925956ecf2423851fd069f9c077c1c569a5",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$\\tan A=2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\cos A-\\sin A$"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "evidenceType": "IMPLIED",
+            "justification": "탄젠트로 두 직각변의 비를 2:1로 두고 빗변을 피타고라스로 구하여 코사인과 사인의 차를 계산한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\cos A=\\dfrac{1}{\\sqrt5}$",
+            "evidenceType": "IMPLIED",
+            "justification": "탄젠트로 두 직각변의 비를 2:1로 두고 빗변을 피타고라스로 구하여 코사인과 사인의 차를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "탄젠트로 두 직각변의 비를 2:1로 두고 빗변을 피타고라스로 구하여 코사인과 사인의 차를 계산한다.",
+        "method": "탄젠트로 두 직각변의 비를 2:1로 두고 빗변을 피타고라스로 구하여 코사인과 사인의 차를 계산한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b1302a27a5035b7ae0a6bea743c24076fe5d75f079e36fcce037aa71579c1924",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "$\\angle ABC=\\angle BCD=90^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$BD$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\tan60^\\circ=\\dfrac{BC}{AB}$",
+            "evidenceType": "IMPLIED",
+            "justification": "60도 삼각형에서 탄젠트로 공유 변을 구하고 45도 직각이등변삼각형의 빗변으로 연결한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "evidenceType": "IMPLIED",
+            "justification": "60도 삼각형에서 탄젠트로 공유 변을 구하고 45도 직각이등변삼각형의 빗변으로 연결한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle ABC=\\angle BCD=90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "60도 삼각형에서 탄젠트로 공유 변을 구하고 45도 직각이등변삼각형의 빗변으로 연결한다.",
+        "method": "60도 삼각형에서 탄젠트로 공유 변을 구하고 45도 직각이등변삼각형의 빗변으로 연결한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_c50d6b573fa518ccbfca333378e99c0ae61b538d165091f7c1c2e8895cd9b08b",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "정사면체",
+            "src": "stem",
+            "quote": "정사면체"
+          },
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "evidenceType": "IMPLIED",
+            "justification": "밑면 정삼각형 중선의 길이와 무게중심의 2:1 비로 수선의 발까지 거리를 구한 뒤 입체 단면에서 피타고라스로 높이를 구한다. 탄젠트는 한 보기의 확인에만 쓰인다."
+          },
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "꼭짓점 쪽에서 $2:1$로 나눈다",
+            "evidenceType": "IMPLIED",
+            "justification": "밑면 정삼각형 중선의 길이와 무게중심의 2:1 비로 수선의 발까지 거리를 구한 뒤 입체 단면에서 피타고라스로 높이를 구한다. 탄젠트는 한 보기의 확인에만 쓰인다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\tan x^\\circ=\\dfrac{AH}{DH}",
+            "evidenceType": "IMPLIED",
+            "justification": "밑면 정삼각형 중선의 길이와 무게중심의 2:1 비로 수선의 발까지 거리를 구한 뒤 입체 단면에서 피타고라스로 높이를 구한다. 탄젠트는 한 보기의 확인에만 쓰인다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "밑면에 내린 수선"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "밑면 정삼각형 중선의 길이와 무게중심의 2:1 비로 수선의 발까지 거리를 구한 뒤 입체 단면에서 피타고라스로 높이를 구한다. 탄젠트는 한 보기의 확인에만 쓰인다.",
+        "method": "밑면 정삼각형 중선의 길이와 무게중심의 2:1 비로 수선의 발까지 거리를 구한 뒤 입체 단면에서 피타고라스로 높이를 구한다. 탄젠트는 한 보기의 확인에만 쓰인다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_1092068cb60241198f084a7833ae7dc350f5610f20e848eaa0fe9eb54b7642ff",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$AB$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "$B$에서 $AC$에 수선",
+            "evidenceType": "IMPLIED",
+            "justification": "내각의 합으로 45도를 찾고 B에서 AC에 수선을 선택하여 60도와 45도 직각삼각형으로 목표 변을 연결한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$BD=BC\\sin60^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "내각의 합으로 45도를 찾고 B에서 AC에 수선을 선택하여 60도와 45도 직각삼각형으로 목표 변을 연결한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "내각의 합으로 45도를 찾고 B에서 AC에 수선을 선택하여 60도와 45도 직각삼각형으로 목표 변을 연결한다.",
+        "method": "내각의 합으로 45도를 찾고 B에서 AC에 수선을 선택하여 60도와 45도 직각삼각형으로 목표 변을 연결한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_9f6d97bddf206cfeca068b1c95be9afad4b599440e3c4aafe1f3f6d676df2382",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$\\sin A:\\cos A:\\tan A$"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "각의 이등분선",
+            "evidenceType": "IMPLIED",
+            "justification": "내심의 각 이등분선과 내각 합으로 A=30도를 얻어 특수각의 세 삼각비를 같은 배수의 비로 바꾼다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "특수각의 삼각비",
+            "evidenceType": "IMPLIED",
+            "justification": "내심의 각 이등분선과 내각 합으로 A=30도를 얻어 특수각의 세 삼각비를 같은 배수의 비로 바꾼다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "내심의 각 이등분선과 내각 합으로 A=30도를 얻어 특수각의 세 삼각비를 같은 배수의 비로 바꾼다.",
+        "method": "내심의 각 이등분선과 내각 합으로 A=30도를 얻어 특수각의 세 삼각비를 같은 배수의 비로 바꾼다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_5d3ed32e4aa8d38ff3f13f914223f2dff58e31cde58394c450fe81b0ee26ef70",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\dfrac12\\times8\\times5\\times\\sin60^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "직각이등변삼각형에서 공통 대각선을 구하고 두 변과 끼인각의 사인으로 나머지 삼각형 넓이를 구해 합한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "넓이를 더한다",
+            "evidenceType": "IMPLIED",
+            "justification": "직각이등변삼각형에서 공통 대각선을 구하고 두 변과 끼인각의 사인으로 나머지 삼각형 넓이를 구해 합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "직각이등변삼각형에서 공통 대각선을 구하고 두 변과 끼인각의 사인으로 나머지 삼각형 넓이를 구해 합한다.",
+        "method": "직각이등변삼각형에서 공통 대각선을 구하고 두 변과 끼인각의 사인으로 나머지 삼각형 넓이를 구해 합한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_861c4adf5ccda2b04d1f2b53a995f023a6f6cba1ae3e87eee366099e647fb26d",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ADF$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\tan30^\\circ=\\dfrac{DF}{AD}$",
+            "evidenceType": "IMPLIED",
+            "justification": "겹친 작은 삼각형의 밑변을 큰 45도 삼각형에서 정하고 30도 탄젠트로 높이를 얻어 넓이를 구한다."
+          },
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$\\dfrac12\\times AD\\times DF",
+            "evidenceType": "IMPLIED",
+            "justification": "겹친 작은 삼각형의 밑변을 큰 45도 삼각형에서 정하고 30도 탄젠트로 높이를 얻어 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "$\\angle B=\\angle D=90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "겹친 작은 삼각형의 밑변을 큰 45도 삼각형에서 정하고 30도 탄젠트로 높이를 얻어 넓이를 구한다.",
+        "method": "겹친 작은 삼각형의 밑변을 큰 45도 삼각형에서 정하고 30도 탄젠트로 높이를 얻어 넓이를 구한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_ff15593956c46b8fc01ab4948a4b790346051eff2a6aedd0a953d0e004cd13b6",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "$90\\,\\mathrm{m}$"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "올려본각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "탑의 높이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\tan60^\\circ=\\dfrac{h}{AD}=\\sqrt3$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 관측점 사이에 탑이 있어 양쪽 수평거리 합을 90으로 놓고 같은 미지 높이를 두 탄젠트 식에서 소거한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$\\dfrac{h}{\\sqrt3}+h=90$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 관측점 사이에 탑이 있어 양쪽 수평거리 합을 90으로 놓고 같은 미지 높이를 두 탄젠트 식에서 소거한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "$AD+DB=90$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "두 관측점 사이에 탑이 있어 양쪽 수평거리 합을 90으로 놓고 같은 미지 높이를 두 탄젠트 식에서 소거한다.",
+        "method": "두 관측점 사이에 탑이 있어 양쪽 수평거리 합을 90으로 놓고 같은 미지 높이를 두 탄젠트 식에서 소거한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_32c8608ad82c5fafe0d02cc716756c9a42b7cf1d8a4a44de9bc6a06676ab9463",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos x^\\circ$"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "evidenceType": "IMPLIED",
+            "justification": "두 중점을 잇는 이등변삼각형의 넓이를 구한 뒤 다른 밑변의 높이로 환산하고 피타고라스로 코사인의 분자를 복원한다."
+          },
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$6=\\dfrac12\\cdot BN\\cdot MH$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 중점을 잇는 이등변삼각형의 넓이를 구한 뒤 다른 밑변의 높이로 환산하고 피타고라스로 코사인의 분자를 복원한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\cos x^\\circ=\\dfrac{BH}{BM}$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 중점을 잇는 이등변삼각형의 넓이를 구한 뒤 다른 밑변의 높이로 환산하고 피타고라스로 코사인의 분자를 복원한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "중점을 각각"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "두 중점을 잇는 이등변삼각형의 넓이를 구한 뒤 다른 밑변의 높이로 환산하고 피타고라스로 코사인의 분자를 복원한다.",
+        "method": "두 중점을 잇는 이등변삼각형의 넓이를 구한 뒤 다른 밑변의 높이로 환산하고 피타고라스로 코사인의 분자를 복원한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_b26012318f59fa9a19a6aab59d304fdce44d6936e22913161d448ccdf3d5513a",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "두 현"
+          },
+          {
+            "term": "지름",
+            "src": "solution",
+            "quote": "$AB$는 지름"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$CD$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "현을 이등분",
+            "evidenceType": "IMPLIED",
+            "justification": "지름의 합에서 반지름과 중심거리를 정하고 현의 수직이등분으로 반현을 피타고라스에서 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$CM=\\sqrt{OC^2-OM^2}",
+            "evidenceType": "IMPLIED",
+            "justification": "지름의 합에서 반지름과 중심거리를 정하고 현의 수직이등분으로 반현을 피타고라스에서 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "수직으로 만난다"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "지름의 합에서 반지름과 중심거리를 정하고 현의 수직이등분으로 반현을 피타고라스에서 구한다.",
+        "method": "지름의 합에서 반지름과 중심거리를 정하고 현의 수직이등분으로 반현을 피타고라스에서 구한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_7bf434c68e3a8321f3e77ea9866f4be6b7a8de45351278820911568719a0d740",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "두 현"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 현의 길이는 같고",
+            "evidenceType": "IMPLIED",
+            "justification": "중심거리가 같은 두 현의 길이를 옮기고 반현과 30도 코사인으로 반지름을 구한다."
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "현을 이등분",
+            "evidenceType": "IMPLIED",
+            "justification": "중심거리가 같은 두 현의 길이를 옮기고 반현과 30도 코사인으로 반지름을 구한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\cos30^\\circ=\\dfrac{AP}{AO}",
+            "evidenceType": "IMPLIED",
+            "justification": "중심거리가 같은 두 현의 길이를 옮기고 반현과 30도 코사인으로 반지름을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "거리가 같을 때"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "중심거리가 같은 두 현의 길이를 옮기고 반현과 30도 코사인으로 반지름을 구한다.",
+        "method": "중심거리가 같은 두 현의 길이를 옮기고 반현과 30도 코사인으로 반지름을 구한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_54a487e541c2014b57841aa0e5805f0a6d6c100bccfdddfece82e9dc0d7195ea",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "두 현"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$x$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 현의 길이는 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 같은 거리에 있는 두 현이 같아 이등변삼각형이 되므로 꼭지각에서 두 밑각을 구한다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 같은 거리에 있는 두 현이 같아 이등변삼각형이 되므로 꼭지각에서 두 밑각을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "거리가 같고"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "중심에서 같은 거리에 있는 두 현이 같아 이등변삼각형이 되므로 꼭지각에서 두 밑각을 구한다.",
+        "method": "중심에서 같은 거리에 있는 두 현이 같아 이등변삼각형이 되므로 꼭지각에서 두 밑각을 구한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_16c6e9acbbb92665f42ec7cdb9097faecafe8d116f7001de42440ec6b537db5a",
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선"
+          },
+          {
+            "term": "지름",
+            "src": "solution",
+            "quote": "$A$, $O$, $C$는 한 직선 위"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "알맞은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "직각삼각형이므로 합동",
+            "evidenceType": "IMPLIED",
+            "justification": "접점의 수직과 같은 접선 길이로 두 쌍의 직각삼각형 합동을 보여 중심의 두 각을 각각 반으로 나누고 합한다."
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "$\\angle BOP=\\dfrac12\\angle AOB$",
+            "evidenceType": "IMPLIED",
+            "justification": "접점의 수직과 같은 접선 길이로 두 쌍의 직각삼각형 합동을 보여 중심의 두 각을 각각 반으로 나누고 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "접점"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "접점의 수직과 같은 접선 길이로 두 쌍의 직각삼각형 합동을 보여 중심의 두 각을 각각 반으로 나누고 합한다.",
+        "method": "접점의 수직과 같은 접선 길이로 두 쌍의 직각삼각형 합동을 보여 중심의 두 각을 각각 반으로 나누고 합한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_c422d9f951827804f4dbd3755d7433887e39c63eb040d0bd7e8850c8be213ab3",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$BE$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형의 높이에서 반지름을 얻고 피타고라스로 짧은 변 조각을 구한 뒤 양끝 접선 길이를 가로 길이 한 변수로 표현해 합한다."
+          },
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형의 높이에서 반지름을 얻고 피타고라스로 짧은 변 조각을 구한 뒤 양끝 접선 길이를 가로 길이 한 변수로 표현해 합한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$2w-17=13$",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형의 높이에서 반지름을 얻고 피타고라스로 짧은 변 조각을 구한 뒤 양끝 접선 길이를 가로 길이 한 변수로 표현해 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "세 변과 접한다"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "직사각형의 높이에서 반지름을 얻고 피타고라스로 짧은 변 조각을 구한 뒤 양끝 접선 길이를 가로 길이 한 변수로 표현해 합한다.",
+        "method": "직사각형의 높이에서 반지름을 얻고 피타고라스로 짧은 변 조각을 구한 뒤 양끝 접선 길이를 가로 길이 한 변수로 표현해 합한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_8ade55894bec14e81d3bdd214fdce2a4f6c1406be813f1f7d9ddcd68978a65e3",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "$OA=6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$PO=\\sqrt",
+            "evidenceType": "IMPLIED",
+            "justification": "접점 수직으로 길이와 특수각을 구하고 접선 삼각형의 합에서 중심각 120도의 부채꼴 넓이를 빼어 진술을 판정한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\sin\\angle APO",
+            "evidenceType": "IMPLIED",
+            "justification": "접점 수직으로 길이와 특수각을 구하고 접선 삼각형의 합에서 중심각 120도의 부채꼴 넓이를 빼어 진술을 판정한다."
+          },
+          {
+            "term": "부채꼴",
+            "src": "solution",
+            "quote": "부채꼴 $OAB$의 넓이는",
+            "evidenceType": "IMPLIED",
+            "justification": "접점 수직으로 길이와 특수각을 구하고 접선 삼각형의 합에서 중심각 120도의 부채꼴 넓이를 빼어 진술을 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "접점"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "접점 수직으로 길이와 특수각을 구하고 접선 삼각형의 합에서 중심각 120도의 부채꼴 넓이를 빼어 진술을 판정한다.",
+        "method": "접점 수직으로 길이와 특수각을 구하고 접선 삼각형의 합에서 중심각 120도의 부채꼴 넓이를 빼어 진술을 판정한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_a308d97d263607ab55e48378fd6a11b1b4bba9267b95c1f56f0600a16572ea8b",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "현"
+          },
+          {
+            "term": "동심원",
+            "src": "solution",
+            "quote": "두 동심원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "현을 이등분",
+            "evidenceType": "IMPLIED",
+            "justification": "작은 원 반지름이 현까지 거리임을 이용해 피타고라스로 두 반지름 제곱의 차를 직접 구하고 고리 넓이에 대입한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "evidenceType": "IMPLIED",
+            "justification": "작은 원 반지름이 현까지 거리임을 이용해 피타고라스로 두 반지름 제곱의 차를 직접 구하고 고리 넓이에 대입한다."
+          },
+          {
+            "term": "원의넓이공식",
+            "src": "solution",
+            "quote": "$\\pi R^2-\\pi r^2=\\pi(R^2-r^2)",
+            "evidenceType": "IMPLIED",
+            "justification": "작은 원 반지름이 현까지 거리임을 이용해 피타고라스로 두 반지름 제곱의 차를 직접 구하고 고리 넓이에 대입한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "solution",
+            "quote": "작은 원에 접하므로"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "작은 원 반지름이 현까지 거리임을 이용해 피타고라스로 두 반지름 제곱의 차를 직접 구하고 고리 넓이에 대입한다.",
+        "method": "작은 원 반지름이 현까지 거리임을 이용해 피타고라스로 두 반지름 제곱의 차를 직접 구하고 고리 넓이에 대입한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_c12f9fcda8c6522021a9902d12ddb0a1dd5b8a9772dabab979891ed6297a7a1f",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "$\\sin24^\\circ=0.41$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$x+y$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\sin24^\\circ=\\dfrac{x}{10}$",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변에 주어진 사인·코사인 값을 곱해 두 직각변을 각각 구한 뒤 합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "빗변에 주어진 사인·코사인 값을 곱해 두 직각변을 각각 구한 뒤 합한다.",
+        "method": "빗변에 주어진 사인·코사인 값을 곱해 두 직각변을 각각 구한 뒤 합한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_c70d30edca03dce3ae98aeeaea2e0de04c0a4113903f23a65cc8ec90edd32148",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$\\tan15^\\circ$"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "두 각이 같은 삼각형에서 빗변 길이를 복원하고 30도 삼각형의 변을 구해 15도 탄젠트의 비로 환산한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\tan15^\\circ=\\dfrac{AC}{BC}",
+            "evidenceType": "IMPLIED",
+            "justification": "두 각이 같은 삼각형에서 빗변 길이를 복원하고 30도 삼각형의 변을 구해 15도 탄젠트의 비로 환산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "위치",
+            "src": "solution",
+            "quote": "$B$, $D$, $C$는 한 직선 위"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "두 각이 같은 삼각형에서 빗변 길이를 복원하고 30도 삼각형의 변을 구해 15도 탄젠트의 비로 환산한다.",
+        "method": "두 각이 같은 삼각형에서 빗변 길이를 복원하고 30도 삼각형의 변을 구해 15도 탄젠트의 비로 환산한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_d4d9b6d64a756eab8ff48b23f5d8b3bbbd6c5fc667ee3ffaeb59346394b6da42",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원의 중심"
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "원호 위"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중심",
+            "src": "stem",
+            "quote": "원의 중심을 찾는 방법"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳게 말한 사람"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "현의 수직이등분선",
+            "evidenceType": "IMPLIED",
+            "justification": "조각의 호 위에 세 점을 잡고 서로 다른 두 현의 수직이등분선 교점을 중심으로 구성한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "조각의 호 위에 세 점을 잡고 서로 다른 두 현의 수직이등분선 교점을 중심으로 구성한다.",
+        "method": "조각의 호 위에 세 점을 잡고 서로 다른 두 현의 수직이등분선 교점을 중심으로 구성한다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_46ab34ae26c3cec936b7abd2382de3456af57eb89ded7017b2f3fb1c213b6573",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "동심원",
+            "src": "stem",
+            "quote": "중심이 같고 반지름의 길이가 서로 다른 두 원"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "$AB\\perp OM$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "어두운 부분의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "현 $AB$의 중점",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 원의 반현을 피타고라스로 구하고 공통 현의 안쪽 조각을 빼서 작은 원 반지름을 복원한 뒤 두 원 넓이를 뺀다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AM=\\sqrt{OA^2-OM^2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 원의 반현을 피타고라스로 구하고 공통 현의 안쪽 조각을 빼서 작은 원 반지름을 복원한 뒤 두 원 넓이를 뺀다."
+          },
+          {
+            "term": "원의넓이공식",
+            "src": "solution",
+            "quote": "$\\pi\\cdot OA^2-\\pi\\cdot OD^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 원의 반현을 피타고라스로 구하고 공통 현의 안쪽 조각을 빼서 작은 원 반지름을 복원한 뒤 두 원 넓이를 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$AB\\perp OM$"
+          },
+          {
+            "term": "위치",
+            "src": "solution",
+            "quote": "$D$는 $M$과 $B$ 사이"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "큰 원의 반현을 피타고라스로 구하고 공통 현의 안쪽 조각을 빼서 작은 원 반지름을 복원한 뒤 두 원 넓이를 뺀다.",
+        "method": "큰 원의 반현을 피타고라스로 구하고 공통 현의 안쪽 조각을 빼서 작은 원 반지름을 복원한 뒤 두 원 넓이를 뺀다.",
+        "condition": "명시 제한은 해당 슬롯에만 반영했다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "worker-c"
+    }
+  ],
+  "candidates": [
+    {
+      "en": [
+        "TRIANGLE_AREA_FORMULA"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "넓이",
+      "note": "밑변과 높이 또는 두 변과 끼인각의 사인으로 삼각형 넓이를 산출하는 결정 방법. 기존 넓이 용어는 목표량이므로 공식 적용과 구분한다.",
+      "term": "삼각형넓이공식",
+      "usedIn": [
+        {
+          "sourceOrdinal": 11,
+          "slot": "method"
+        },
+        {
+          "sourceOrdinal": 13,
+          "slot": "method"
+        }
+      ]
+    },
+    {
+      "en": [
+        "CIRCLE_AREA_FORMULA"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "원",
+      "note": "반지름 r에서 원의 넓이 πr²를 산출한다. 둘레를 뜻하는 원주와 구분한다.",
+      "term": "원의넓이공식",
+      "usedIn": [
+        {
+          "sourceOrdinal": 20,
+          "slot": "method"
+        },
+        {
+          "sourceOrdinal": 24,
+          "slot": "method"
+        }
+      ]
+    }
+  ],
+  "selfCheck": {
+    "allQuestionsRead": true,
+    "allSolutionDecisionStepsRead": true,
+    "quotesVerifiedAgainstExactSource": true,
+    "independentSample": "PENDING_A",
+    "studentPayloadPreserved": true
+  }
+}

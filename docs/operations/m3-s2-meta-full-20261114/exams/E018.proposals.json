@@ -1,0 +1,136 @@
+[
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "삼각비표·근삿값·역조회로 값을 비교하거나 각을 찾는다.",
+    "distinguishingCriterion": "단위원의 가로길이를 코사인으로 읽어 표의 각을 찾고 여각의 사인 열로 목표 코사인을 구한다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_de675307d366fac5f87e13b3be648813d2f8731c1694460b0c8aeabf2142beb9"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_PENDING_NEW_CC",
+    "nameKo": "무게중심의 중선 2:1 비",
+    "reuseDefinition": "삼각형의 무게중심이 중선을 꼭짓점에서 2:1로 나누는 길이 관계를 사용한다.",
+    "distinguishingCriterion": "기존 CC_CENTROID/CC_TRIANGLE_CENTROID는 좌표 평균 정의로 이 비좌표 중선 길이와 다르다.",
+    "parentScope": "삼각형의 무게중심",
+    "priorProposalRef": "worker-outputs/b/E002/proposals.json",
+    "supportingQuestionUids": [
+      "qid_v1_c50d6b573fa518ccbfca333378e99c0ae61b538d165091f7c1c2e8895cd9b08b"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "접기 대칭이나 입체도형의 길이·겉넓이 계산에 직각삼각형의 제곱 관계를 적용한다.",
+    "distinguishingCriterion": "밑면 정삼각형 중선의 길이와 무게중심의 2:1 비로 수선의 발까지 거리를 구한 뒤 입체 단면에서 피타고라스로 높이를 구한다. 탄젠트는 한 보기의 확인에만 쓰인다.",
+    "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+    "rpmRecordId": "M2-RPM-106",
+    "supportingQuestionUids": [
+      "qid_v1_c50d6b573fa518ccbfca333378e99c0ae61b538d165091f7c1c2e8895cd9b08b"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+    "distinguishingCriterion": "두 중점을 잇는 이등변삼각형의 넓이를 구한 뒤 다른 밑변의 높이로 환산하고 피타고라스로 코사인의 분자를 복원한다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_32c8608ad82c5fafe0d02cc716756c9a42b7cf1d8a4a44de9bc6a06676ab9463"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선의 합동으로 중심각 이등분 증명",
+    "reuseDefinition": "같은 외부점의 두 접선과 반지름이 만드는 직각삼각형의 합동을 이용해 중심각 이등분을 보이고 각의 합을 구한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "distinguishingCriterion": "TM_TANGENT_LENGTH와 달리 목표가 각·증명 빈칸이고 원주각·접현각은 사용하지 않는다.",
+    "supportingQuestionUids": [
+      "qid_v1_16c6e9acbbb92665f42ec7cdb9097faecafe8d116f7001de42440ec6b537db5a"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 조각 합으로 외접 직사각형 변 복원",
+    "reuseDefinition": "직사각형의 세 변에 접하는 원과 추가 접선에서 같은 접선 길이를 이용해 미지 변의 선형식을 세운다.",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "distinguishingCriterion": "하나의 외부점부터 접점까지인 접선 길이 산출과 달리 원 밖 두 점의 접선 조각과 직사각형 전체 변을 연결한다.",
+    "supportingQuestionUids": [
+      "qid_v1_c422d9f951827804f4dbd3755d7433887e39c63eb040d0bd7e8850c8be213ab3"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "중심각·반지름·호의 길이의 비례로 부채꼴의 호 길이·넓이를 구하거나 부채꼴이 포함된 합성도형의 둘레·넓이를 계산.",
+    "distinguishingCriterion": "접점 수직으로 길이와 특수각을 구하고 접선 삼각형의 합에서 중심각 120도의 부채꼴 넓이를 빼어 진술을 판정한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "rpmRecordId": "M3-RPM-073",
+    "supportingQuestionUids": [
+      "qid_v1_8ade55894bec14e81d3bdd214fdce2a4f6c1406be813f1f7d9ddcd68978a65e3"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+    "distinguishingCriterion": "두 각이 같은 삼각형에서 빗변 길이를 복원하고 30도 삼각형의 변을 구해 15도 탄젠트의 비로 환산한다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_c70d30edca03dce3ae98aeeaea2e0de04c0a4113903f23a65cc8ec90edd32148"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]
