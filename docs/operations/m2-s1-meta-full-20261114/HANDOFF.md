@@ -4,7 +4,7 @@
 
 **RUNNING / ACTIVE_OWNER**. owner `GPT_ROOT_14C2C64E43FB`. taskId `d200021a-924b-42a5-ad31-a53818575c78`. 같은 브랜치 `review/m2-s1-meta-full-20261114`에서 세 작업자가 분리된 시험지 큐를 연속 처리한다.
 
-전체 **75시험지 / 1,780문항** 중 **50시험지 / 1,188문항**의 검토 패킷을 보존했다. 잔여는 **25시험지 / 592문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
+전체 **75시험지 / 1,780문항** 중 **51시험지 / 1,213문항**의 검토 패킷을 보존했다. 잔여는 **24시험지 / 567문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
 
 이번 인수 시 원격 보존된 25시험지/592문항과 완료된 7건의 좁은 보정을 재사용했다. E022·E027·E032의 미원격 작성본 및 E035 난도 동결본은 이전 작업 폴더에서 실제 바이트와 SHA를 확인하여 복구했다. 이전 writer 종료 여부는 확인되지 않았으며 사용자 직접 인수 지시에 따라 독립 작업 폴더에서 재개했다. 원격 HEAD 사전 확인과 non-force 출판으로 동시 변경을 감지한다. LOCAL_RECOVERY.json의 과거 회수 실패 기록과 이번 실제 회수는 별개다.
 
@@ -20,7 +20,7 @@
 
 ## 현재 집계와 한계
 
-독립 3문항 표본 150개, 명시 미판정 250문항, RPM leaf 공백 200문항, 등록 부채 1176문항, 내용 부채 59문항, 필수 method 근거 부채 214문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=938은 전체 품질 PASS가 아니다.
+독립 3문항 표본 153개, 명시 미판정 252문항, RPM leaf 공백 207문항, 등록 부채 1201문항, 내용 부채 64문항, 필수 method 근거 부채 214문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=961은 전체 품질 PASS가 아니다.
 
 최초 인벤토리의 기존 해설은 1,386문항, 빈 해설은394문항이다. 해설 없는 문항에 새 풀이를 만들어 method 근거를 채우지 않는다. 실제 method가 비어 있는 source-only 항목은 native validator 실패와 필수 근거 부채를 그대로 남긴다. 공식 resolver의 genuine VERIFIED_FINAL 증거가 없는 경우 NOT_RUN을 유지한다.
 
@@ -39,7 +39,7 @@
 
 ## AWCR 최신 검증
 
-**revision 14**, fileId `1Wb3y0SjAmM_F6uHEpJ3DS_0uisD-o7z6`, raw SHA-256 `73de95ec72ed1b3d3941ef83aae7a7d3f24a483611e7641d9e2ea895d072cc08`. raw readback 검증을 마쳤다. checkpoint는 안전 metadata만 포함하며 quality=UNKNOWN이다. 다음 revision은 이 실제 raw SHA를 parent로 사용한다.
+**revision 15**, fileId `1t8JfXVciQfGBwNU3ea_mtm0QNZZ5gz98`, raw SHA-256 `2eba1930788417a5e25f810d8b2214dba20e29b8456b236cb28cd5ec2dd595f2`. raw readback 검증을 마쳤다. checkpoint는 안전 metadata만 포함하며 quality=UNKNOWN이다. 다음 revision은 이 실제 raw SHA를 parent로 사용한다.
 
 ## 이번 재개의 원격 출판 기록
 
@@ -101,6 +101,7 @@
 | E040 | `fb524e670305d6ac1bb62894c61cb3b733c9dcc6` |
 | E045 | `f71bfd048a42026dd667636107a19997cb4ce237` |
 | E059 | `2eec976ab2745b60bc4be88b89911b0353aa8629` |
+| E043 | `64d95b98c9a357e4367bf7b8638c14bcc55c8723` |
 
 현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
 
@@ -114,10 +115,10 @@
 | M2-01-REPEATING_DECIMAL | 113 |
 | M2-02-LINEAR_INEQUALITY | 117 |
 | M2-02-LINEAR_INEQUALITY_WORD | 38 |
-| M2-03-SIMULTANEOUS_LINEAR_EQUATION | 208 |
-| M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD | 63 |
-| M2-04-LINEAR_FUNCTION_BASIC | 266 |
-| M2-04-LINEAR_FUNCTION_EQUATION | 131 |
+| M2-03-SIMULTANEOUS_LINEAR_EQUATION | 215 |
+| M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD | 65 |
+| M2-04-LINEAR_FUNCTION_BASIC | 277 |
+| M2-04-LINEAR_FUNCTION_EQUATION | 136 |
 | M2-05-QUADRILATERAL_PROPERTIES | 26 |
 | M2-05-TRIANGLE_PROPERTIES | 22 |
 | M2-07-PYTHAGOREAN_THEOREM | 2 |

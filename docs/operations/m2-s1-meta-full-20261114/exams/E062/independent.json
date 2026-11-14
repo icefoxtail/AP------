@@ -1,0 +1,663 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E062",
+  "author": "B",
+  "reviewer": "GPT_ROOT_14C2C64E43FB",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS_AND_SCOPED_SUPPLEMENTS",
+  "createdAt": "2026-11-14T14:51:12.471084+00:00",
+  "sourceGitBlobSha": "aeaf081b8e3f7b07b7b266d1ce34e177f5b1fea0",
+  "sourceSha256": "0effca48a96d5a30bc2ad736cc47c632848b2931569f6b1d87d7e9076c5aae18",
+  "reviewSha256": "d13db783cf77a9782837b518690937ac68ff2fbd6437ccd3202f575ece276510",
+  "fourSlotSha256": "7071bef5c2d2eace2578f8d22c76620e797b127d8411890d3867e0116591d556",
+  "sampleOrdinals": [
+    5,
+    23,
+    25
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 5,
+      "classification": "수치 두 식에서 공통해를 얻은 뒤 미정계수 두 식으로 넘어가는 실제 기존해설을 M2-RPM-151 해와 계수/계수 결정 경로와 대조했다.",
+      "binding": "ACTIVE 공통해 PT와 FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION 정의의 선계산 후 대입 절차가 부합한다. RPM record 자체 NO_ACTIVE_MAPPING이므로 정확한 scoped binding과 VERIFIED_FINAL은 미확정이다.",
+      "crossConcept": "두 번의 연립과 대입은 선택한 공통해 계수결정 primary의 내부 절차로 별도 CC를 중복하지 않는다.",
+      "condition": "해가 같다는 관계는 실제 조건이며 별도 부호·범위를 창작하지 않는다.",
+      "integration": "선택 primary의 내부 순차 계산이므로 외부 통합 NONE을 수용한다.",
+      "difficulty": "공통해와 계수복원은 정형적 연립의 반복으로 독립2/저자2 일치. 비정규 원래 학습라벨 중하 대신 실제절차에 따른 중 제안을 수용한다.",
+      "fourSlot": "입력 연립일차방정식568, 목표 매개변수308/곱287, 실제 해설 연립 및 대입53 NAMED와 공통해78 조건을 실제 인용·정본으로 확인했다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "classification": "실제 만화의 4/9kcal,95분,505kcal는 운동시간 합과 가중열량 합이다. RPM156 두수관계와157 개수가격은 관련경로이며 정확한 시간열량 leafgap을 보존한다.",
+      "binding": "정본 RPM156/157의 NO_ACTIVE_MAPPING을 직접 확인했다. 가격개수라는 명칭만으로 시간열량을 exact binding하지 않는다.",
+      "crossConcept": "두 시간 변수의 선형 합 모델과 연립풀이 내부 절차이며 별도 고차 개념을 CC로 추가하지 않는다.",
+      "condition": "시간/열량 수치는 주어진 입력이다. 본문에 없는 정수성·부호 제한을 추가하지 않는다.",
+      "integration": "두 표준 선형 모델을 연립하는 primary 내부 절차로 NONE 수용.",
+      "difficulty": "독립2/저자2 일치. 시간합과 열량합의 익숙한 모델화로 판단한다.",
+      "fourSlot": "미지수745 입력·목표와 실제 시간 목표의 경과시간 후보 및 같은 goal 값131 parent를 확인했다. 기존해설의 연립일차방정식568·가감법434는 실제 명칭 NAMED다."
+    },
+    {
+      "sourceOrdinal": 25,
+      "classification": "기존해설의 대칭중심을 통과하는 다섯 직선 구성과 RPM177 조건식결정을 대조했다. 부분도형 넓이분할 TPL과 실제 중심 전략은 정확히 같지 않아 leafgap 수용.",
+      "binding": "ACTIVE PT_AREA_BISECTING_LINE과 TPL_AREA_BISECT_POLYGON 실제정의를 읽었다. 넓이 이등분 부모는 관련되지만 중심전략 exact template와 target binding은 유보한다.",
+      "crossConcept": "넓이 이등분 직선이라는 선택 primary의 중심/선분중점 내부 성질을 별도 함수대칭 CC에 강제하지 않는다.",
+      "condition": "넓이 이등분은 발문의 명시적 요구이며 실제 사각형 위치를 해설의 다른 좌표로 대체하지 않는다.",
+      "integration": "대칭중심을 이용하는 이등분 primary 내부 절차로 조건부 NONE을 수용한다.",
+      "difficulty": "그림의 실제 중심과 기존해설 중심이 달라 low를 유지한다. 중심 전략 선택 후 다섯 식을 구성하는 구조3은 독립·저자 일치다.",
+      "fourSlot": "직사각형165 입력, 직선방정식436/이등분선177 목표, 실제해설 중점188과 직선방정식436 NAMED를 정본과 확인했다. 내용 좌표 오류를 메타 수정으로 은폐하지 않는다."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_74254ad7162181c5492a28ed2ff5867de45e65dbdacfd0fd9cc8ce39dccd5fff",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_74254ad7162181c5492a28ed2ff5867de45e65dbdacfd0fd9cc8ce39dccd5fff",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "자연수범위로 한변수의 유한후보를 정해 순서쌍을 센다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "자연수 조건으로 한방정식의 순서쌍을 유한 열거"
+      },
+      "decision": "ACCEPT",
+      "reason": "자연수 순서쌍을 유한하게 열거하는 정형 절차2와 학습하의 B12 인접을 수용한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_a235f526cb01347e279fa8da0be04471b6dae55f0693c338ee9ac20f797d9f55",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_a235f526cb01347e279fa8da0be04471b6dae55f0693c338ee9ac20f797d9f55",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "명시된기존해설은 대입법으로 두변수를 구하고 합한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한변수를정리해대입하고 두해성분 합계산"
+      },
+      "decision": "ACCEPT",
+      "reason": "명시된기존해설은 대입법으로 두변수를 구하고 합한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_5c30cd9afdf9683b7e3d171368b561c3b4aad9112fedc413a64e0014c03de379",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_5c30cd9afdf9683b7e3d171368b561c3b4aad9112fedc413a64e0014c03de379",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "소거할계수의 공배수와 부호를 선택한다. 단 해설의4·5모두x소거라는 진술은4에대해 틀리다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소거변수의 계수최소공배수로 배수와가감선택"
+      },
+      "decision": "ACCEPT",
+      "reason": "독립2/저자1 경계차이. 실제 요구는 연립해 전체가 아니라 소거할 계수의 배수와 더하기/빼기 선택뿐이므로 직접 규칙 적용1을 수용한다. 기존 해설의 보기④ 설명 오류는 별도 low 부채다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_62b5e5984280ddc94fd0339bae7ffceee81b3ad632196cfe55e0c893a180e247",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_62b5e5984280ddc94fd0339bae7ffceee81b3ad632196cfe55e0c893a180e247",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "계수가온전한 두식을 연립하고 나머지식에 대입한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "세식의공통해를 수치두식에서 먼저구해계수대입"
+      },
+      "decision": "ACCEPT",
+      "reason": "계수가온전한 두식을 연립하고 나머지식에 대입한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_6082cf8d68a79c3476b8c2ebf276d38999b3513c751161a09ea4bb1be3a6d5b6",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_6082cf8d68a79c3476b8c2ebf276d38999b3513c751161a09ea4bb1be3a6d5b6",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "공통해를 먼저구하고 계수에관한 두번째 연립식을 푼다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두연립의 공통해와 미정계수연립을 순차풀이"
+      },
+      "decision": "ACCEPT",
+      "reason": "공통해를 먼저구하고 계수에관한 두번째 연립식을 푼다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_abe829bea5bd5ff10b6ac245e30753db7cad2a3a6f6392e014eba52127104013",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_abe829bea5bd5ff10b6ac245e30753db7cad2a3a6f6392e014eba52127104013",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "분수·소수계수 정수화후 소거하고 해의곱을 구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분수·소수계수 정수화 후가감법"
+      },
+      "decision": "ACCEPT",
+      "reason": "분수·소수계수 정수화후 소거하고 해의곱을 구한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_1dfba2ac51d32ef41f2869c9be319e32b4f9ef1853add37affd7b41fbbda94c2",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_1dfba2ac51d32ef41f2869c9be319e32b4f9ef1853add37affd7b41fbbda94c2",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "단위를 맞춰 거리합·시간합의 표준모델을 고른다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "구간별속력과거리·시간의단위통일 후모델선택"
+      },
+      "decision": "ACCEPT",
+      "reason": "단위를 맞춰 거리합·시간합의 표준모델을 고른다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_25bc82ce833c30d9f540542b7a7a3a85865dccbb5cde352d0ae17c260e038f6d",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_25bc82ce833c30d9f540542b7a7a3a85865dccbb5cde352d0ae17c260e038f6d",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "평행불일치의 계수비조건을 직접 적용한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "해가없기위한계수비동일·상수항비다름 확인"
+      },
+      "decision": "ACCEPT",
+      "reason": "독립1/저자2 경계차이. 실제 미정계수에서 계수비 같음과 상수항비 다름을 함께 정리하는 익숙한 변형2를 수용한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_81ffbf9fb221b42a3f4e579174194a217f031525bcab4197932a387197ebfc4b",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_81ffbf9fb221b42a3f4e579174194a217f031525bcab4197932a387197ebfc4b",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "한입력의 한출력이라는 함수정의를 판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "입력마다 하나의출력인 함수정의 판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "한입력의 한출력이라는 함수정의를 판정한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_fc809cb9cfd8b709e2bf5422317ab95c185c09d35131d5f8fd39d29b8407c446",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_fc809cb9cfd8b709e2bf5422317ab95c185c09d35131d5f8fd39d29b8407c446",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "상황관계식과 일차함수의 정의를 대조한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "생활관계들을 일차식·반비례식으로 구별"
+      },
+      "decision": "ACCEPT",
+      "reason": "독립1/저자2 경계차이. 다섯 생활관계를 식으로 옮겨 일차형과 반비례형을 비교하므로 익숙한 표현변환2를 수용한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_248985e4abdbeba9caebe7980b220f67438d7b888bd5be409eff48574a52aa56",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_248985e4abdbeba9caebe7980b220f67438d7b888bd5be409eff48574a52aa56",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "일차방정식을 함수꼴로 바꾸고 수직이동한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "표준형정리 후수직이동량을 상수항에반영"
+      },
+      "decision": "ACCEPT",
+      "reason": "일반형을 표준형으로 정리하고 상수항 이동을 반영하는 두 익숙한 단계2와 학습하의 B12 인접을 수용한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_10e2d5367979590042202fff896f58a2d5c3afd9f1950196463692d948b7a422",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_10e2d5367979590042202fff896f58a2d5c3afd9f1950196463692d948b7a422",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "두 함숫값을 직접 구해 합한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두함숫값 직접대입 후합"
+      },
+      "decision": "ACCEPT",
+      "reason": "두 함숫값을 직접 구해 합한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_6e6767a1326181cca865572b86180175ca20773b8b117ec1087dcf646127ddeb",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_6e6767a1326181cca865572b86180175ca20773b8b117ec1087dcf646127ddeb",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "절편·기울기·위치관계·증가량 진술을 판정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "증가량·사분면·교점·원점통과 성질을 비교"
+      },
+      "decision": "ACCEPT",
+      "reason": "절편·기울기·위치관계·증가량 진술을 판정한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_785177fab567013bf7332f21caa851a891cf095715d3679a9ee9891cb03ed750",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_785177fab567013bf7332f21caa851a891cf095715d3679a9ee9891cb03ed750",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "실제그림절편은x=2,y=-3이나alt와해설은x=-3,y=2로바뀌었다. 그래프에서식결정구조2만low로보존한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림의두절편으로기울기·식구성하는구조.실제그림과alt해설절편충돌"
+      },
+      "decision": "ACCEPT",
+      "reason": "실제그림절편은x=2,y=-3이나alt와해설은x=-3,y=2로바뀌었다. 그래프에서식결정구조2만low로보존한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_84f52aef4724552871a9629cca552bf9e9efc4def6a9502fe0631247d8e8ac1d",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_84f52aef4724552871a9629cca552bf9e9efc4def6a9502fe0631247d8e8ac1d",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "축절편과기울기의 정의를 직접 대입한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기울기와두절편을 직접계산·순서대로나열"
+      },
+      "decision": "ACCEPT",
+      "reason": "축절편과기울기의 정의를 직접 대입한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_aa808cd2027f8ab066c183f66f4888a234423b55b290ddce50c196203437751d",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_aa808cd2027f8ab066c183f66f4888a234423b55b290ddce50c196203437751d",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "평행기울기를 읽고 한점대입으로 절편을 정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행기울기고정후주어진점으로절편결정"
+      },
+      "decision": "ACCEPT",
+      "reason": "평행기울기를 읽고 한점대입으로 절편을 정한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_bf11097ae190ec36aec56d104174ea2039e171ae64a2b3b4aa58d88f102e440b",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_bf11097ae190ec36aec56d104174ea2039e171ae64a2b3b4aa58d88f102e440b",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "초기압력과 단위증가율의 선형관계에 수심을 대입한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "수심당압력변화율과초기값으로일차모델대입"
+      },
+      "decision": "ACCEPT",
+      "reason": "초기압력과 단위증가율의 선형관계에 수심을 대입한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_6ba0b3be07d134a371726211b6b87bb4cd792fc2160f141fb884c81a4b2717fc",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_6ba0b3be07d134a371726211b6b87bb4cd792fc2160f141fb884c81a4b2717fc",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "수평선의 고정y좌표를 읽는다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "x축평행직선의y좌표상수식"
+      },
+      "decision": "ACCEPT",
+      "reason": "수평선의 고정y좌표를 읽는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_486bab48e90725d25a703dd852150916be0908add7f084be08f020d9fded8b57",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_486bab48e90725d25a703dd852150916be0908add7f084be08f020d9fded8b57",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "실제(0,-2),(6,2)를지나는직선의식과 계수비교를 연결한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림두점에서직선식을구해일차방정식계수비교"
+      },
+      "decision": "ACCEPT",
+      "reason": "실제(0,-2),(6,2)를지나는직선의식과 계수비교를 연결한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d062d14f7a9aacd6efd277424caa6daa4e19c6a3d25d54ecadd420ea139bb4a3",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_d062d14f7a9aacd6efd277424caa6daa4e19c6a3d25d54ecadd420ea139bb4a3",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "두선교점을 구해 세번째식에 대입한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두직선교점에셋째직선의계수식을대입"
+      },
+      "decision": "ACCEPT",
+      "reason": "두선교점을 구해 세번째식에 대입한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_5d3ae1e4b02cf8673e544b5f07cd23773e5029b731675aa85badc2dc4d67d056",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_5d3ae1e4b02cf8673e544b5f07cd23773e5029b731675aa85badc2dc4d67d056",
+        "difficulty": "UNKNOWN",
+        "difficultyBoundary": "UNKNOWN",
+        "confidence": "low",
+        "reason": "실제그림의 두선은x10에서만나지않는다. 해설은서로모순되는 A/B좌표와기울기를바꾸며10을주장하여 수치난도유보."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "reason": "기존해설은그림에없는10분교점을전제하고기울기·좌표를수차례바꿔확정함"
+      },
+      "decision": "ACCEPT",
+      "reason": "실제그림의 두선은x10에서만나지않는다. 해설은서로모순되는 A/B좌표와기울기를바꾸며10을주장하여 수치난도유보. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_868722f71cd75571e4b1756ee238122594152c74ac022115dda1926c6c8e922b",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_868722f71cd75571e4b1756ee238122594152c74ac022115dda1926c6c8e922b",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "기울기·절편의 부호를 보기별 여러직선꼴에서 판단한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "표준형·수직선·수평선의부호로사분면통과비교"
+      },
+      "decision": "ACCEPT",
+      "reason": "기울기·절편의 부호를 보기별 여러직선꼴에서 판단한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9df2c3e2833ff743323987745fca841dc800e2fe2deed81232e5e2216b48743d",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_9df2c3e2833ff743323987745fca841dc800e2fe2deed81232e5e2216b48743d",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "실제만화의 분당열량과 시간합을 연립모델로 푼다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제만화시간합·열량합으로연립모델"
+      },
+      "decision": "ACCEPT",
+      "reason": "실제만화의 분당열량과 시간합을 연립모델로 푼다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_28d6c3a252a32ec7f58f7649d51e51a6cb92d0ef3550ac811cb645e23e66eb1b",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_28d6c3a252a32ec7f58f7649d51e51a6cb92d0ef3550ac811cb645e23e66eb1b",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "실제세직선의기울기동일/차이에 따른 평행·교차를 설명한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제세직선기울기와절편으로평행/교차관계설명"
+      },
+      "decision": "ACCEPT",
+      "reason": "실제세직선의기울기동일/차이에 따른 평행·교차를 설명한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_64b62553a4e8248d02d4c86f7dacfcb636a498b2acb39b641cac15c02455da77",
+      "independentInitial": {
+        "sourceOrdinal": 25,
+        "questionUid": "qid_v1_64b62553a4e8248d02d4c86f7dacfcb636a498b2acb39b641cac15c02455da77",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "대칭중심을통과하는직선의면적이등분성질을방정식5개로옮긴다. 실제중심(1,2)와기존해설(4,3)이충돌하므로 구조3low만보존한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "직사각형대칭중심을이용한넓이이등분직선다섯개구성.실제그림좌표와해설충돌"
+      },
+      "decision": "ACCEPT",
+      "reason": "대칭중심을통과하는직선의면적이등분성질을방정식5개로옮긴다. 실제중심(1,2)와기존해설(4,3)이충돌하므로 구조3low만보존한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "자연수 순서쌍을 유한하게 열거하는 정형 절차2와 학습하의 B12 인접을 수용한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "일반형을 표준형으로 정리하고 상수항 이동을 반영하는 두 익숙한 단계2와 학습하의 B12 인접을 수용한다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 3,
+      "decision": "ACCEPT_LOW_WITH_SOURCE_EXPLANATION_DEBT",
+      "reason": "보기④는 실제로 x도 소거되지 않는 해설 설명 오류를 저자 부채에 명시했다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "decision": "ACCEPT_CONDITIONAL_LOW",
+      "reason": "단일방정식 전체 해집합과 연립해의 동일성이라는 문자적 문제를 실제 기존해설의 공통 한 해 관례로 분리해 기록했다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "ACCEPT_CONDITIONAL_LOW",
+      "reason": "실제 그림 x절편2/y절편−3과 해설의 반대 좌표 충돌을 실제 이미지에서 확인했으며 새 답을 쓰지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_UNKNOWN",
+      "reason": "실제 그림에서 x10 교점이 없고 기존해설의 입력점과 기울기가 바뀐다. 독립/저자 UNKNOWN이며 원자료 교정까지 유보한다."
+    }
+  ],
+  "initialSnapshot": {
+    "path": "/workspace/scratch/14c2c64e43fb/root/independent/E062/initial.json",
+    "sha256": "2f63255d65355e7917753c0ca385d1bd0926e1107a50d45b34912d7030d32671"
+  },
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "actualReading": {
+    "contentQuestions": 25,
+    "existingSolutions": 25,
+    "images": [
+      "workers/B/assets/E062-q14-q14.png",
+      "workers/B/assets/E062-q19-q19.png",
+      "workers/B/assets/E062-q21-q21.png",
+      "workers/B/assets/E062-q23-s01.png",
+      "workers/B/assets/E062-q24-s02.png",
+      "workers/B/assets/E062-q25-s03.png"
+    ]
+  },
+  "canonicalEvidenceRead": [
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "docs/architecture/4slot/term-dictionary-v1.5.json"
+  ],
+  "notes": [
+    "Actual root independent read of25 source questions and25 existing solutions plus6 PNGs was frozen before author proposal comparison.",
+    "All25 final numeric judgments compared; three detailed axis samples read against actual canonical definitions. No global quality PASS or new solutions."
+  ]
+}
