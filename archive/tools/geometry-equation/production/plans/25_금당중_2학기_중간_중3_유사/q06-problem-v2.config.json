@@ -1,0 +1,213 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/25_금당중_2학기_중간_중3_유사.js",
+  "questionId": 6,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "C",
+          "B",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "ac",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "cb",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "ab",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "ad",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "rightC",
+            "refs": [
+              "A",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "angleB",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "style": "ARC",
+              "value": 30,
+              "label": "30",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "base",
+              "ownerSegment": "cb",
+              "text": "6√3",
+              "factRole": "GIVEN",
+              "side": "RIGHT"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 615,
+          "height": 395
+        },
+        "caption": "직각삼각형 ABC에서 각 A의 이등분선과 변 BC가 만나는 점 D",
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 35,
+        "displayScale": 0.45,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}
