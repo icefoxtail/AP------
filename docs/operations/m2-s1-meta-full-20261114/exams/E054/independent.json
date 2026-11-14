@@ -1,0 +1,822 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E054",
+  "author": "C",
+  "reviewer": "A",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T15:08:38.690622+00:00",
+  "sourceGitBlobSha": "d0f25a2201e42598cf8bcfcfd62cc84a0f6cde41",
+  "sourceSha256": "ae91ebc2107c5011310633cc3307081818f421ec53988057a5e667ec98ead7f0",
+  "reviewSha256": "b614c121c680d004acb4d4a406c717b7e08db2164bfbd43fd7980d4430797cb6",
+  "fourSlotSha256": "d5fc22ec68d4e91157fe998bff9e198f3534a2ead0b7547e9c4ea13f284b600f",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/A/independent/E054/difficulty-content-first-freeze.json",
+  "initialFreezeSha256": "76aeb5768dcafbf1903d85a274806319c628e4caae92112be127f5182f9e1c59",
+  "actualAssets": [
+    {
+      "sourceOrdinal": 7,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E054/assets/q07.png",
+      "sha256": "6131a8ae021575ba12e08b60521b9835c6efe2c6a0f5bf50b113ae11eed84cb3",
+      "actualImageOpened": true,
+      "observation": "원뿔의 밑면 반지름 3ab² 실제 확인."
+    },
+    {
+      "sourceOrdinal": 14,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E054/assets/q14.png",
+      "sha256": "06026e9c8732fea828144eed37de979f76ebc7cd830a860018594cb4dddc71f2",
+      "actualImageOpened": true,
+      "observation": "엘리베이터와 상자를 든 사람의 상황 그림; 수치판정은 명시 본문 사용."
+    },
+    {
+      "sourceOrdinal": 12,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E054/assets/q12_1.png",
+      "sha256": "c92139fe31bec10b49389454f18bc342bfdf4209643f2128b025588b88787c9d",
+      "actualImageOpened": true,
+      "observation": "2 닫힌점 왼쪽"
+    },
+    {
+      "sourceOrdinal": 12,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E054/assets/q12_2.png",
+      "sha256": "b00c7fd28f33997fe25f3cbb0f79a1fc2c100880ae302a699c81452dab1e8c39",
+      "actualImageOpened": true,
+      "observation": "2 닫힌점 오른쪽"
+    },
+    {
+      "sourceOrdinal": 12,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E054/assets/q12_3.png",
+      "sha256": "d8440ebb873bbc1af276c23f12e749fe4ee5e3194d6501f1e35b11b3aeaf39a0",
+      "actualImageOpened": true,
+      "observation": "3 열린점 왼쪽"
+    },
+    {
+      "sourceOrdinal": 12,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E054/assets/q12_4.png",
+      "sha256": "2e026096f296941ec9e7b5eae9c2056aa7456263391d7ba5e235ab0f4657ae5a",
+      "actualImageOpened": true,
+      "observation": "3 닫힌점 오른쪽"
+    },
+    {
+      "sourceOrdinal": 12,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E054/assets/q12_5.png",
+      "sha256": "214129f71a7b208955147b08d781cd8e8020383fd117cb0d04b39c79c1436d10",
+      "actualImageOpened": true,
+      "observation": "3 열린점 오른쪽"
+    }
+  ],
+  "sampleOrdinals": [
+    7,
+    15,
+    23
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 7,
+      "verdict": "ACCEPT_WITH_EXPLICIT_DEBTS",
+      "fieldReview": {
+        "classification": "실제 반지름3ab²와 부피9πa⁶b⁶의 높이 복원은 단항식 몫010.",
+        "binding": "정본010, ACTIVE 원뿔부피 CC 및 M1 기본입체 수치대입/삼각형 다항식높이 후보의 범위를 실제 읽음. scoped binding 미확립 보존.",
+        "crossConcept": "CC_CONE_VOLUME의 1/3 밑넓이×높이가 대수 몫에 앞선 외부 입력.",
+        "condition": "그림 반지름을 확인했으며 추가 수제한은 만들지 않음.",
+        "integration": "원뿔공식→높이분리→단항식몫 SEQUENTIAL 수용.",
+        "difficulty": "숫자2 일치; 공식적용과 문자지수정리의 정형 두 단계.",
+        "fourSlot": "원뿔/반지름/부피 given, 높이 goal, 실제공식과몫 method literal 확인."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "verdict": "ACCEPT_WITH_EXPLICIT_DEBTS",
+      "fieldReview": {
+        "classification": "하나의 일차방정식에서 자연수 순서쌍을 세는 실제목표로 RPM leaf gap. 연립식해확인032로 강제하지 않음.",
+        "binding": "현재 canonical 자연수해개수는 일차부등식의 한 미지수 범위이므로 직접exact를 주장하지 않는 결론 수용.",
+        "crossConcept": "자연수범위와 일대일 대응은 이 primary의 내부구조로 별도CC 없음.",
+        "condition": "x와y 둘다 자연수인 명시조건 보존.",
+        "integration": "한 primary 내 한변수 표현과 후보 계수로 NONE.",
+        "difficulty": "독립2와저자2 일치.",
+        "fourSlot": "단일방정식 given, 순서쌍/개수 goal, 실제 대입·부등식·개수 method, 자연수condition literal 확인."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "verdict": "ACCEPT_WITH_EXPLICIT_DEBTS",
+      "fieldReview": {
+        "classification": "왕복시간 제한으로 최대거리 계산은026.",
+        "binding": "ACTIVE 왕복시간template의 머무름시간 요소를 실제 정의에서 확인. 현재는 머무름없는 related variant로 한정.",
+        "crossConcept": "왕복 시간관계와 단위환산이 현재 속력활용 primary 내부라 CC[] 수용.",
+        "condition": "실제70분 상한이며 r2 경과시간후보와 같은칸 값131 parent 결속 확인.",
+        "integration": "단일 왕복부등식 내부순서 NONE.",
+        "difficulty": "숫자2 일치; 정형 왕복식과 m→km 환산.",
+        "fourSlot": "r2양방향60/80속력 모두포함, 최대거리goal, 실제모형method;654는양수240곱의IMPLIED정당화로 좁은보완확인."
+      }
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_31d2d758dd057d2bcf33564911e54a11d0368ca257a30cdea0381a2a03ae791a",
+      "initialIndependent": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_31d2d758dd057d2bcf33564911e54a11d0368ca257a30cdea0381a2a03ae791a",
+        "actualStemSha256": "8a5ef3ded64b3e6e2d2a3b0e4885128f8e847fddcc7fdff9541d0065e01a4ac8",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "분모12를 나누어 순환6의 소수 표기를 고르는 짧은 변환."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분자를 분모로 나누고 되풀이되는 한자리 숫자를 표시한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "분모12를 나누어 순환6의 소수 표기를 고르는 짧은 변환."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c7e63b92a7ed10d86b106dad8d288c672d2d8d9944fdf7ef120c4c10b4622016",
+      "initialIndependent": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_c7e63b92a7ed10d86b106dad8d288c672d2d8d9944fdf7ef120c4c10b4622016",
+        "actualStemSha256": "b56e03f8c19e03f2c7f555825a0099e8ca257ba61bc31c5041c3a5ca75048642",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "네 분수의 기약분모에서2,5 외 소인수 유무를 확인."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "네 분수를 각각 약분해 분모의2·5 이외 소인수를 비교한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "네 분수의 기약분모에서2,5 외 소인수 유무를 확인. 독립1/저자2는 복수판정 또는 짧은 연계의 B12 경계로 저자2 유지 수용."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_257def4fde0c747759e709fa629fcd18c348e0d8f6bef69d00d77b3b752d4bea",
+      "initialIndependent": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_257def4fde0c747759e709fa629fcd18c348e0d8f6bef69d00d77b3b752d4bea",
+        "actualStemSha256": "9afb0279633d3b5cd97c49ffa283f5266fcf78aa98b862c50477b7d16ff8d0bf",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "단순순환90의 분수화와 서로소분자분모 합은 짧은 정형연결."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "순환마디를99분의90으로 바꾸어 약분한 뒤 분모·분자 합을 구한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "단순순환90의 분수화와 서로소분자분모 합은 짧은 정형연결. 독립1/저자2는 복수판정 또는 짧은 연계의 B12 경계로 저자2 유지 수용."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_c859a20e7f831ef20f4e606e1b6596954e05c2bd75a7a2250e085e161a82ad51",
+      "initialIndependent": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_c859a20e7f831ef20f4e606e1b6596954e05c2bd75a7a2250e085e161a82ad51",
+        "actualStemSha256": "0e3fc4c35f56f369c6f9a429a505174d03497cdcc1f8dd52d6a732577e82908f",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "분모2⁴5⁶에서 부족한2의 지수를 맞춰 소수 자릿수를 정한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분모의2와5의 지수를 맞춰10의 거듭제곱으로 만들고 유한소수 자릿수를 읽는다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "분모2⁴5⁶에서 부족한2의 지수를 맞춰 소수 자릿수를 정한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_421f01c260416b7aed108a7d4fb5bb28f8b8e7034c3bbde3f3b6359ffadc779d",
+      "initialIndependent": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_421f01c260416b7aed108a7d4fb5bb28f8b8e7034c3bbde3f3b6359ffadc779d",
+        "actualStemSha256": "9c4e365cee4b1932fb4ed7e9d317478c5134d8825df9ee87ede039835c5a9b3d",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "지수법칙 다섯 진술을 각 한두 연산으로 대조하는 정형보기."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "곱·몫·동류항의 덧셈과 거듭제곱을 구별해 여러 진술을 판정한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "지수법칙 다섯 진술을 각 한두 연산으로 대조하는 정형보기. 독립1/저자2는 복수판정 또는 짧은 연계의 B12 경계로 저자2 유지 수용."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_e4e9cf8b2b5c837a9296f730525752c0dc6f37adc74c0b53c4bcb482007d2fd1",
+      "initialIndependent": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_e4e9cf8b2b5c837a9296f730525752c0dc6f37adc74c0b53c4bcb482007d2fd1",
+        "actualStemSha256": "4c608e03d3dccb5181dca30160a2523daad64d6f9d75e688523288889234f0d0",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "곱 반복을 거듭제곱으로 바꾸고 밑2로 통일한 지수정리."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "같은 거듭제곱의 반복 합을 묶고 밑을2로 통일한 다음 지수 차를 구한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "곱 반복을 거듭제곱으로 바꾸고 밑2로 통일한 지수정리."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_a3afc7179bc5c7c724f3434fa3489fce3f7b283eeaea6283d80f2702d5539128",
+      "initialIndependent": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_a3afc7179bc5c7c724f3434fa3489fce3f7b283eeaea6283d80f2702d5539128",
+        "actualStemSha256": "1717b6e7eed154fd6dc46af7fb7105794c5416cb203c073563709f6754e3d7cc",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "실제 반지름과 부피에서 원뿔공식을 적용한 뒤 단항식 몫으로 높이 복원."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제 원뿔 그림과 부피공식에서 높이를 분리한 뒤 단항식의 몫을 계산한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "실제 반지름과 부피에서 원뿔공식을 적용한 뒤 단항식 몫으로 높이 복원."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_20649e05a6c21273a513883ab801c96650cc206ef93174a99eed4f9dca2d7ef2",
+      "initialIndependent": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_20649e05a6c21273a513883ab801c96650cc206ef93174a99eed4f9dca2d7ef2",
+        "actualStemSha256": "8fce30bbcb406bcacead77771dc11861ebe8c30f0c5a6fb4e063eb8af6076d14",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "분배·동류항·곱몫을 포함한 독립 다섯 계산의 정확성 비교."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "다항식의 덧뺄셈·분배·나눗셈 결과를 보기마다 정리해 비교한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "분배·동류항·곱몫을 포함한 독립 다섯 계산의 정확성 비교."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_776eafb04fc6616db5bfc6c477be824c12d5120aec6f39aa27561bbd95f813c2",
+      "initialIndependent": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_776eafb04fc6616db5bfc6c477be824c12d5120aec6f39aa27561bbd95f813c2",
+        "actualStemSha256": "919587a0d49a6d3cb5c27fa25c51b4b17b1c349fb6b036ac29f30cd24e603a20",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "서로 다른 다항식의 몫에서 두 계수를 추출해 차를 계산."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 다항식 나눗셈을 먼저 계산하고 뺄셈에서 계수를 추출한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "서로 다른 다항식의 몫에서 두 계수를 추출해 차를 계산."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_045f1fab51ebc85f67f652c855cbd034c2b1e3c4f7ddb9267336c7dc8cb120e3",
+      "initialIndependent": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_045f1fab51ebc85f67f652c855cbd034c2b1e3c4f7ddb9267336c7dc8cb120e3",
+        "actualStemSha256": "d8fb9c8c5fc34482429a96ac0123a3f9dbba2cc7bf211679dc37fcfa38b6def5",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "각 한단계 선형 부등식의 해를 비교하며 음수곱 부호방향 확인."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "다섯 기본형 일차부등식의 부등호 방향과 한 경계값을 비교한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "각 한단계 선형 부등식의 해를 비교하며 음수곱 부호방향 확인."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_ecab2ac740dab102ecc060930b41af0246c99a6605e147e1b24bd90bff23e78d",
+      "initialIndependent": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_ecab2ac740dab102ecc060930b41af0246c99a6605e147e1b24bd90bff23e78d",
+        "actualStemSha256": "e1a18e5333deca796be9972fae23d6b2310453091e82e8c495fa462b1d785e80",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "증가하는 일차식에 하한을 옮기는 부등식 성질."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 하한에 양수를 곱하고 상수를 더해 식의 범위를 바로 얻는다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "증가하는 일차식에 하한을 옮기는 부등식 성질."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_d291e726c0b72e3ded2a2b076e97525f91f8f454de9cf4d21c85c4e90f0b197c",
+      "initialIndependent": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_d291e726c0b72e3ded2a2b076e97525f91f8f454de9cf4d21c85c4e90f0b197c",
+        "actualStemSha256": "e114aab88d06e71d4132bd1b7dbb788911f3179390505bc54f94dfcc7b427fde",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "선형 부등식 x>3과 실제 선택지 열린점3 오른쪽⑤를 대응."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "간단한 일차부등식을 풀고 실제 수직선의 열린3·오른쪽 방향과 대조한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "선형 부등식 x>3과 실제 선택지 열린점3 오른쪽⑤를 대응."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_6ea5161b5a9bc4c6504d711b0561318c15c04130d1e23b844972c15405bec644",
+      "initialIndependent": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_6ea5161b5a9bc4c6504d711b0561318c15c04130d1e23b844972c15405bec644",
+        "actualStemSha256": "f5bfeb98a858a454d4e7fb3390e353b4f730d88af6d0c5d5285adf284a587213",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "소수계수 부등식을 정리하고 자연수 후보 개수를 센다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소수계수를 없애 부등식을 풀고 자연수 해1~7을 센다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "소수계수 부등식을 정리하고 자연수 후보 개수를 센다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_60b68e6dd56614be53080857d2d31ad0ade84336d884c5c237d4b21557835140",
+      "initialIndependent": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_60b68e6dd56614be53080857d2d31ad0ade84336d884c5c237d4b21557835140",
+        "actualStemSha256": "f52950d70eb358e98d088ecc285e5a9895e5a473e58183f9806ba284b643c0df",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "사람70과 상자30x를 최대500과 비교하는 모형 선택."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "사람 무게와 상자수 비례무게의 합을 한도 이하로 나타내는 식만 선택한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "사람70과 상자30x를 최대500과 비교하는 모형 선택."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_78d3e9f4e0e5320a58079944f45b3028ba5e2d092c87082da0302a78d5cc9f94",
+      "initialIndependent": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_78d3e9f4e0e5320a58079944f45b3028ba5e2d092c87082da0302a78d5cc9f94",
+        "actualStemSha256": "e8338d185020631392459997d5df03e910aa7eb79668fb376359583997898b7a",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "두 자연수의 일차관계에서 한 변수 범위를 만들고 대응순서쌍 수를 센다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 자연수 관계에서 한 변수를 표현하고 나머지의 유한 후보수를 센다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "두 자연수의 일차관계에서 한 변수 범위를 만들고 대응순서쌍 수를 센다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_3f8efc1544d24d99881b8c983be26a476fd3531a3e8e25611fe85ec45d5434b8",
+      "initialIndependent": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_3f8efc1544d24d99881b8c983be26a476fd3531a3e8e25611fe85ec45d5434b8",
+        "actualStemSha256": "9f0d7beaf8511496c5527253495ac5eec4bba70578c0af50162131dd3b7994de",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "주어진 한 좌표로 다른 좌표를 구한 뒤 계수복원과 합."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 해의 일부를 첫식에 대입해 나머지해를 정하고 둘째식 계수를 정한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "주어진 한 좌표로 다른 좌표를 구한 뒤 계수복원과 합."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_e3d5553894bbcfe7aa97b96714dd4f9a22014ee217192d2457c24a4e1313cb3d",
+      "initialIndependent": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_e3d5553894bbcfe7aa97b96714dd4f9a22014ee217192d2457c24a4e1313cb3d",
+        "actualStemSha256": "d507ea3a8a35516ebb60ab796abd701818c596805eb2c3f1dbe0cfd0aa6098f7",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "소거·대입·괄호·소수의 다섯 연립식을 각각 풀어 다른 해 비교."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "다섯 연립식의 해를 각각 정형 소거·대입으로 구해 다른 한 쌍을 찾는다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "소거·대입·괄호·소수의 다섯 연립식을 각각 풀어 다른 해 비교."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_39148dd43a423ab3b5891242cda533feeac7ea34636ab5a2b76de25d9e3813ee",
+      "initialIndependent": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_39148dd43a423ab3b5891242cda533feeac7ea34636ab5a2b76de25d9e3813ee",
+        "actualStemSha256": "a48abd309a96b380623f4a942002765152883d2f8ca26c49806abb0bade61fe5",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "주어진 해를 두 식에 넣어 계수연립을 풀고 곱을 계산."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 해를 넣어 두 계수의 연립식을 만들고 풀어 곱을 구한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "주어진 해를 두 식에 넣어 계수연립을 풀고 곱을 계산."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_4ba2687f4a71022510991188f55357921f973d9961ba7342800490ba32e395fd",
+      "initialIndependent": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_4ba2687f4a71022510991188f55357921f973d9961ba7342800490ba32e395fd",
+        "actualStemSha256": "2bc50942c59cd5615e00e9ce3900ae4d85bd1663569ea0ed838ea68333c62ebe",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "해의 차를 별도 식에 대입하여 두 값을 복원한 다음 계수 계산."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "x-y=3 관계를 분수식에 직접 대입해 두해를 먼저 얻고 상수식을 계산한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "해의 차를 별도 식에 대입하여 두 값을 복원한 다음 계수 계산."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_f4f72f4442835a1af5ea51e0a75439873683233c16b89349fe5d5380bfba8c55",
+      "initialIndependent": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_f4f72f4442835a1af5ea51e0a75439873683233c16b89349fe5d5380bfba8c55",
+        "actualStemSha256": "c5a5c7832735659a4f59b70982f7edccdbef0becf1b7dba1a857f2f5019c6458",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "승패와 위아래 이동을 두 독립식으로 표현하여 모형 고르기."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "승리와 패배가 뒤바뀌는 두 사람의 위치변화를 각각 연립식으로 표현한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "승패와 위아래 이동을 두 독립식으로 표현하여 모형 고르기."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_6ffeb0746693f9badd6a72e0607e6694d0b65deee9e2320619ea2072cc41bd3e",
+      "initialIndependent": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_6ffeb0746693f9badd6a72e0607e6694d0b65deee9e2320619ea2072cc41bd3e",
+        "actualStemSha256": "aa6feda4bd0ddf34d0cb178d46e1ea3d24e78f7896b8010675469013d487836a",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "기약분모에7,11을 없애는 최소자연수77 결정."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "유한소수 분모에 남을 수 없는 두소수7·11의 최소공배수를 찾는다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "기약분모에7,11을 없애는 최소자연수77 결정."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2d02775f6b60ab566cf5215957fb62b7bb51b4b0d04cceda63ac0a2065d09bac",
+      "initialIndependent": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_2d02775f6b60ab566cf5215957fb62b7bb51b4b0d04cceda63ac0a2065d09bac",
+        "actualStemSha256": "859a3d32a2cbd32ab320a4a5b94c3c19ecc1768bc3b727c53b2cfcdf6db2b328",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "다항식분배와 단항식 나눗셈을 결합하고 동류항 정리."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분배와 다항식 나눗셈을 각각 처리하고 동류항을 모은다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "다항식분배와 단항식 나눗셈을 결합하고 동류항 정리."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_66de057559a1a75f47ccefaf55b91c6493cda600446e5ee830e738d9ef115aff",
+      "initialIndependent": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_66de057559a1a75f47ccefaf55b91c6493cda600446e5ee830e738d9ef115aff",
+        "actualStemSha256": "6f85a9e29d16f79a5dff6d9255f4ce41e156d0e94885969622461cf091542ca3",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "왕복의 두 시간 합을 거리의 식으로 만들고 제한거리 단위환산."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "왕복시간 합에 한도를 적용하는 정형모델을 풀고 m를km로 환산한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "왕복의 두 시간 합을 거리의 식으로 만들고 제한거리 단위환산."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_8471580e9db84a65efdf1bdbbff1e2357928bd332a6feee6aa095ed00bf73536",
+      "initialIndependent": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_8471580e9db84a65efdf1bdbbff1e2357928bd332a6feee6aa095ed00bf73536",
+        "actualStemSha256": "99429fc6900b3d5a8708feb95f0a502e6da3cfebb1764780a5f2f30cb3f883b4",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "해 좌표의 비례관계를 한 식에 넣어 복원하고 다른 식의 계수 결정."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "p로 표현된 두좌표를 첫식에 넣고 결정한 해를 둘째식에 넣어 매개계수를 구한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "해 좌표의 비례관계를 한 식에 넣어 복원하고 다른 식의 계수 결정."
+    }
+  ],
+  "adjacentMismatchAdjudication": [],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 4,
+      "decision": "ACCEPT",
+      "reason": "005 실제 분수→소수 자릿수 목표 수용"
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "ACCEPT",
+      "reason": "독립 지수곱몫/거듭제곱/반복합의 복수leaf null 종속축 수용"
+    },
+    {
+      "sourceOrdinal": 8,
+      "decision": "ACCEPT",
+      "reason": "다항식 독립연산 복수leaf/null 정합"
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "ACCEPT",
+      "reason": "실제5수직선 모두확인;⑤열린3오른쪽"
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "ACCEPT",
+      "reason": "최대수 상황이지만 요구는부등식모형선택024; r2 70/30kg모두포함"
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT",
+      "reason": "주어진해성분과계수복원033수용"
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT",
+      "reason": "소거/대입/소수계수 독립보기의 단일primary유보수용"
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT",
+      "reason": "해사이차로매개상수 결정033"
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT",
+      "reason": "두 승패횟수의 모형 선택038; r2이동규칙/최종위치/두횟수 모두포함"
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT",
+      "reason": "비례형해를대입하는 계수복원033"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "notes": [
+    "Actual24 existing solutions and7 images independently read before C comparison. Q12 actual⑤ open3/right matches solution.",
+    "r2 supplements limited to factual inputs Q14/Q20/Q23 and Q23 implied method evidence. No source or numeric changes.",
+    "Unknown curriculum, multi-leaf unresolved5/8/17 and genuine resolver debt preserved."
+  ]
+}
