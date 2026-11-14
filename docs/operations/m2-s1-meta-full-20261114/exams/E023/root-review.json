@@ -1,0 +1,1250 @@
+{
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E023",
+  "owner": "GPT_ROOT_59E0F5BD3A77",
+  "createdAt": "2026-11-14T11:44:01.243617+00:00",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "rootJudgment": {
+    "examId": "E023",
+    "reviewPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E023.review.json",
+    "fourSlotPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E023.4slot.json",
+    "independentPath": "/workspace/scratch/59e0f5bd3a77/workers/C/cross/E023.independent-review.json",
+    "rootDecision": "ACCEPT_AUTHOR_WITH_EXPLICIT_DEBTS_AND_SCOPED_OVERRIDES",
+    "acceptIndependentAdjacentMismatch": [
+      2,
+      5,
+      12
+    ],
+    "reviewOverrides": [
+      {
+        "sourceOrdinal": 10,
+        "after": {
+          "level": "중",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "reason": "Root directly read the current source and existing solution; independent learning-level adjudication accepted: 공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+      },
+      {
+        "sourceOrdinal": 20,
+        "after": {
+          "level": "중",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "reason": "Root directly read the current source and existing solution; independent learning-level adjudication accepted: a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+      },
+      {
+        "sourceOrdinal": 23,
+        "after": {
+          "level": "중",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "reason": "Root directly read the current source and existing solution; independent learning-level adjudication accepted: 의도한 최소·최대 경계 해석 아래 음수배 방향 반전과 상수 덧셈의 구간 변환은2/B12다. 발문 비유일성은 내용 부채로 분리한다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+      },
+      {
+        "sourceOrdinal": 6,
+        "after": {
+          "difficultyConfidence": "low"
+        },
+        "reason": "v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified unjustified irreducibility of the misread fractions. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+      },
+      {
+        "sourceOrdinal": 23,
+        "after": {
+          "difficultyConfidence": "low"
+        },
+        "reason": "v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified missing tight-boundary conditions in the statement. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+      }
+    ],
+    "reviewItemUpdates": [
+      {
+        "sourceOrdinal": 12,
+        "merge": {
+          "semanticDecision": {
+            "rpmPath": {
+              "majorUnit": "소인수분해",
+              "midUnit": "최대공약수와 최소공배수",
+              "l3": "공약수와 최대공약수",
+              "l4": "공약수 조건으로 수 찾기"
+            },
+            "semanticSourceScope": "M1-1",
+            "targetNamespace": {
+              "curriculum": "2015",
+              "standardCourse": "중2 수학",
+              "standardUnitKey": "M2-01",
+              "subUnitKey": "M2-01-EXPONENT_LAW"
+            },
+            "targetNamespacePreserved": true,
+            "prerequisitePathRole": "Complete canonical prerequisite source path, original M2 target separately retained; no fabricated hybrid RPM path."
+          }
+        },
+        "reason": "Correct path structure only; prerequisite semantic determination and original M2 source target are retained under foundation §1.4.1."
+      },
+      {
+        "sourceOrdinal": 14,
+        "merge": {
+          "semanticDecision": {
+            "rpmPath": {
+              "majorUnit": "입체도형",
+              "midUnit": "입체도형의 겉넓이와 부피",
+              "l3": "기둥의 겉넓이와 부피",
+              "l4": "각기둥"
+            },
+            "semanticSourceScope": "M1-2",
+            "targetNamespace": {
+              "curriculum": "2015",
+              "standardCourse": "중2 수학",
+              "standardUnitKey": "M2-01",
+              "subUnitKey": "M2-01-EXPONENT_LAW"
+            },
+            "targetNamespacePreserved": true,
+            "prerequisitePathRole": "Complete canonical prerequisite source path, original M2 target separately retained; no fabricated hybrid RPM path."
+          }
+        },
+        "reason": "Correct path structure only; prerequisite semantic determination and original M2 source target are retained under foundation §1.4.1."
+      }
+    ],
+    "authorSupplementPaths": [
+      "/workspace/scratch/59e0f5bd3a77/workers/B/E023.difficulty-blind-freeze.json",
+      "/workspace/scratch/59e0f5bd3a77/workers/B/E023.source-overlap.json"
+    ],
+    "rootSourceReads": [
+      6,
+      10,
+      12,
+      14,
+      20,
+      23,
+      1,
+      8,
+      11,
+      15,
+      21
+    ],
+    "notes": [
+      "2015 explicit source curriculum preserved; every current UID and solution bound independently despite known near-duplicate content exposure.",
+      "B disclosed prior E016 exposure; this is not relabeled fully blind evidence. Original current-source freeze and overlap receipt are retained.",
+      "Q3/Q18 canonical leaf gaps remain named proposals, with no invented leaf or shared registration.",
+      "Student content, solutions, answers and identities remain unchanged."
+    ],
+    "rootDifficultyRechecks": [
+      1,
+      8,
+      11,
+      15,
+      21
+    ],
+    "rootSemanticJudgments": [
+      {
+        "sourceOrdinal": 1,
+        "axis": "difficulty",
+        "decision": "ACCEPT_AFTER_ROOT_INDEPENDENT_SOURCE_RECHECK",
+        "reason": "The conversion chain explicitly specifies equalizing the denominator to2^3·5^3; applying the fraction multiplier and then the requested numerical expression is a familiar preprocessing sequence supporting2/high/B12.",
+        "actualEvidence": "Root read current E023 stem, choices and existing solution directly, separately from author."
+      },
+      {
+        "sourceOrdinal": 8,
+        "axis": "difficulty",
+        "decision": "ACCEPT_AFTER_ROOT_INDEPENDENT_SOURCE_RECHECK",
+        "reason": "The displayed power-of-power and quotient forms directly specify the exponent operations and a single linear blank. Retain1/high/B12; no hidden structure or strategy choice is needed.",
+        "actualEvidence": "Root read current E023 stem, choices and existing solution directly, separately from author."
+      },
+      {
+        "sourceOrdinal": 11,
+        "axis": "difficulty",
+        "decision": "ACCEPT_AFTER_ROOT_INDEPENDENT_SOURCE_RECHECK",
+        "reason": "Both monomial powers are directly displayed. Read two exponent totals by the elementary power/product laws and add them; retain1/high/B12 rather than inflating for repeated arithmetic.",
+        "actualEvidence": "Root read current E023 stem, choices and existing solution directly, separately from author."
+      },
+      {
+        "sourceOrdinal": 15,
+        "axis": "difficulty",
+        "decision": "ACCEPT_AFTER_ROOT_INDEPENDENT_SOURCE_RECHECK",
+        "reason": "Pairing2 and5 to form powers of10 is the familiar place-value conversion for trailing zeros. The remaining factor25 directly gives two leading digits; retain2/medium/B23 with the ordinary representation step acknowledged.",
+        "actualEvidence": "Root read current E023 stem, choices and existing solution directly, separately from author."
+      },
+      {
+        "sourceOrdinal": 21,
+        "axis": "difficulty",
+        "decision": "ACCEPT_AFTER_ROOT_INDEPENDENT_SOURCE_RECHECK",
+        "reason": "The requested subparts explicitly guide recurring-decimal conversion then least three-digit denominator multiple. Under the supplied structure this is the standard denominator divisibility sequence, supporting2/medium/B23.",
+        "actualEvidence": "Root read current E023 stem, choices and existing solution directly, separately from author."
+      }
+    ]
+  },
+  "sampleReviewer": "C",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 2,
+      "independentDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "약분 후 남은 분모 소인수를 확인하는 한 번의 전처리가 있어2/B12를 수용하며 legacy하와 인접 허용한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "반복 점 표기를 실제 소수전개로 해석해 처음 다른 자리로 비교하는 표준 절차2이다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "independentDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "합을(a+b)/9로 바꾸어 소수 후보와 순서 조건을 결합하여(3,2)를 고르는 구조 선택이 있어3/B23이다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "명시된 오독 성분을 보존한다는 의도 아래 두 순환소수 변환 후 분수 성분을 복원하는 표준2다. 해설의 기약성 단정 부채는 별도이다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "순환소수/유리수 성질을 판정하고 기약성 없는 분모 조건에는3/6의 약분 반례를 쓰는 익숙한 조건 점검2다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "independentDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "지수곱 조건을 공약수 조건으로 재표현하고 합 최소를 d최대로 전환하므로3/B23이다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "밑넓이와 부피의 표준 관계로 높이를 역산하고 단항식 몫을 정리하는2다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "잘못 뺀 식의 결과에서 A를 복원하고 원래 덧셈을 적용하는 명시된 역연산2다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "두 다항식을 단항식으로 각각 나누고 동류항을 정리한 뒤 0인 이차항 계수를 읽는 익숙한2다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "의도한 최소·최대 경계 해석 아래 음수배 방향 반전과 상수 덧셈의 구간 변환은2/B12다. 발문 비유일성은 내용 부채로 분리한다."
+    }
+  ],
+  "targetedSemanticChecks": [],
+  "scopedOverrides": [
+    {
+      "sourceOrdinal": 2,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "basis": "Root directly read the current source and existing solution; independent learning-level adjudication accepted: 공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "legacyLevelCompatibility",
+      "before": "STRONG_CONFLICT",
+      "after": "NORMAL",
+      "basis": "Root directly read the current source and existing solution; independent learning-level adjudication accepted: 공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "basis": "Root directly read the current source and existing solution; independent learning-level adjudication accepted: a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "legacyLevelCompatibility",
+      "before": "STRONG_CONFLICT",
+      "after": "NORMAL",
+      "basis": "Root directly read the current source and existing solution; independent learning-level adjudication accepted: a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "basis": "Root directly read the current source and existing solution; independent learning-level adjudication accepted: 의도한 최소·최대 경계 해석 아래 음수배 방향 반전과 상수 덧셈의 구간 변환은2/B12다. 발문 비유일성은 내용 부채로 분리한다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "legacyLevelCompatibility",
+      "before": "STRONG_CONFLICT",
+      "after": "NORMAL",
+      "basis": "Root directly read the current source and existing solution; independent learning-level adjudication accepted: 의도한 최소·최대 경계 해석 아래 음수배 방향 반전과 상수 덧셈의 구간 변환은2/B12다. 발문 비유일성은 내용 부채로 분리한다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "low",
+      "basis": "v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified unjustified irreducibility of the misread fractions. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "low",
+      "basis": "v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified missing tight-boundary conditions in the statement. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    },
+    {
+      "sourceOrdinal": 12,
+      "merge": {
+        "semanticDecision": {
+          "rpmPath": {
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수",
+            "l3": "공약수와 최대공약수",
+            "l4": "공약수 조건으로 수 찾기"
+          },
+          "semanticSourceScope": "M1-1",
+          "targetNamespace": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-01",
+            "subUnitKey": "M2-01-EXPONENT_LAW"
+          },
+          "targetNamespacePreserved": true,
+          "prerequisitePathRole": "Complete canonical prerequisite source path, original M2 target separately retained; no fabricated hybrid RPM path."
+        }
+      },
+      "reason": "Correct path structure only; prerequisite semantic determination and original M2 source target are retained under foundation §1.4.1."
+    },
+    {
+      "sourceOrdinal": 14,
+      "merge": {
+        "semanticDecision": {
+          "rpmPath": {
+            "majorUnit": "입체도형",
+            "midUnit": "입체도형의 겉넓이와 부피",
+            "l3": "기둥의 겉넓이와 부피",
+            "l4": "각기둥"
+          },
+          "semanticSourceScope": "M1-2",
+          "targetNamespace": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-01",
+            "subUnitKey": "M2-01-EXPONENT_LAW"
+          },
+          "targetNamespacePreserved": true,
+          "prerequisitePathRole": "Complete canonical prerequisite source path, original M2 target separately retained; no fabricated hybrid RPM path."
+        }
+      },
+      "reason": "Correct path structure only; prerequisite semantic determination and original M2 source target are retained under foundation §1.4.1."
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 1,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "분수를소수로표현하는2015leaf005이다. 분자75,분모1000,C0.075에서A+B×C150이다. 주어진십진분수변환틀에서분자75,분모1000,소수0.075를읽는정형계산."
+    },
+    {
+      "sourceOrdinal": 2,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "유한소수인지순환소수인지판별하는001이다. ③은약분뒤분모에3이남고나머지는2,5뿐이다. 약분후분모소인수가2,5뿐인지판별하며③의3잔존을확인한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2
+      },
+      "reason": "순환표현003을이용하지만최종소수대소비교의exactRPMleaf는확인되지않았다. ③0.83<0.888…만참이다. 순환표기를실제소수전개로읽어처음다른자리에서비교한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "after": {
+        "integrationPattern": "NONE"
+      },
+      "reason": "주기2의반복표현을읽는003을사용하며원거리자리읽기template는미확정이다. 34번째5,35번째4의곱20이다. 38/11의주기2를읽고34/35의짝홀자리를대응하는표준자리추적."
+    },
+    {
+      "sourceOrdinal": 5,
+      "after": {
+        "crossConceptKeys": [
+          "CC_INTEGER_PARAMETER_ANALYSIS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "조건을만족하는유리수006이다. a+b5,한자리소수a>b에서3,2이고차1/9이다. 대칭두자리순환소수합을a+b로바꾸고소수·순서조건으로한쌍을선택한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "오독조건의유리수복원006이다. 분수약분후성분을원래성분으로단정한해설전제는내용부채다. 기존해설은7/12의분자와6/11의분모를결합해7/11로읽는다. v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified unjustified irreducibility of the misread fractions. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    },
+    {
+      "sourceOrdinal": 7,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "소수표현의성질과유한소수판정001이다. 현재명제와변경선택지를실제대조했다. ㄴㅂㅇ참,ㅈ은3/6→1/2반례로거짓이다. 정의판정과기약분수조건누락의약분반례를확인하는익숙한개념검사."
+    },
+    {
+      "sourceOrdinal": 8,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "거듭제곱의거듭제곱008이며007의몫법칙이선행정리다. 20−3x=14에서x2이다. 중첩지수와몫법칙을직접읽어20−3x14의빈칸을계산한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "after": {
+        "integrationPattern": "NONE"
+      },
+      "reason": "동일밑으로통일한거듭제곱008이다. 9^x=(3^x)^2=(3a)^2=9a²이다. 3^x=3a로표준밑통일후제곱하여표현한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "after": {
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "거듭제곱의곱·몫007을공통인수의형태로정리한다. 13·3^n351에서3^n27,n3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: 공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 11,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "단항식곱셈009이며중첩지수008은정리단계다. x16y13에서a+b29이다. 각문자의중첩지수와곱지수를직접계산하고합한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "after": {
+        "crossConceptKeys": [
+          "CC_EXPONENT_RULES"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "곱지수제약을공약수최대화로읽는2015 M1-RPM008을prerequisiteL3/L4로재사용한다. targetM2-01및단항식L1/L2보존. d가32,24,40의공약수이며최대8일때합12이다. 곱지수조건을d의공약수로재해석하고합최소를d최대로바꾸는전략이필요."
+    },
+    {
+      "sourceOrdinal": 13,
+      "after": {
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "NONE"
+      },
+      "reason": "단항식혼합011이다. 계수8×7/4=14,x지수3+4−3=4,y12이다. 계수와문자별지수를순서대로정리하는단항식혼합계산."
+    },
+    {
+      "sourceOrdinal": 14,
+      "after": {
+        "crossConceptKeys": [
+          "CC_MONOMIAL_DIVISION"
+        ]
+      },
+      "reason": "각기둥측정2015M1-RPM100의L3/L4를prerequisite재사용하고sourceM2-01지수법칙targetnamespace를유지한다. 밑넓이4a4b2로부피8a5b3을나누어2ab이다. 정사각형밑넓이와부피공식의역산후문자몫정리의익숙한연결."
+    },
+    {
+      "sourceOrdinal": 15,
+      "after": {
+        "crossConceptKeys": [
+          "CC_PLACE_VALUE"
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "지수법칙007뒤십진자릿값을해석한다. 25×10¹³은25뒤0이13개여서15자리이다. 2와5를10으로짝짓고25뒤0개수를읽는익숙한자릿수변환."
+    },
+    {
+      "sourceOrdinal": 16,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "오류결과조건식에서원래식을복원하는017이다. A−3x+3y+4를원래덧셈에넣어−x+4y+5이다. 잘못된뺄셈에서A를복원하고원래덧셈을계산하는명시역연산."
+    },
+    {
+      "sourceOrdinal": 17,
+      "after": {
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "다항식을단항식으로나누는015이며영계수읽기는최종출력이다. 두몫8x−4x²,−x+4x²의합7x에서a0,b7이다. 항별단항식나눗셈후두몫을정리하고0인계수까지읽는다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "after": {
+        "integrationPattern": "NONE"
+      },
+      "reason": "해의정의에따른대입판정이지전체해집합계산020이아니다. exactleaf미확정을남긴다. x1에서①3<5만참이다. 주어진x1을대입한참거짓직접판정."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "integrationPattern": "NONE"
+      },
+      "reason": "2015부등식성질018을직접적용한다. ②만−a≥−b이므로다른네개의≤방향과다르다. a≤b를복원한뒤양수배/같은수덧셈과음수배를비교한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "after": {
+        "conditionKeys": [
+          "COND_RANGE",
+          "COND_NEGATIVE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "음수배의대소반전018이며함수그래프가제시되지않았다. 최대는x−11에서4로a−1/3,최소는x3에서−2/3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 21,
+      "after": {
+        "crossConceptKeys": [
+          "CC_INTEGER_PARAMETER_ANALYSIS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "조건을만족하는유리수006의분수화·자연수배수제약연결이다. 44/15와곱해자연수인A는15의배수,최소세자리105이다. 순환소수기약분수화와세자리최소분모배수선택의표준연결."
+    },
+    {
+      "sourceOrdinal": 22,
+      "after": {
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "NONE"
+      },
+      "reason": "거듭제곱의거듭제곱008의지수조건이다. 3^b9에서b2,2b=c로4,ab6으로a3이다. 계수3^b와지수2b,ab를순차비교하는직접조건계산."
+    },
+    {
+      "sourceOrdinal": 23,
+      "after": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "부등식성질018이의도된방법이나a,b를최적경계라고지정하지않은원문내용부채를남긴다. 의도한최적경계7/2,11/2에서4ab77이다. v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified missing tight-boundary conditions in the statement. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 1,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "분수를소수로표현하는2015leaf005이다. 분자75,분모1000,C0.075에서A+B×C150이다. 주어진십진분수변환틀에서분자75,분모1000,소수0.075를읽는정형계산."
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "분수를소수로표현하는2015leaf005이다. 분자75,분모1000,C0.075에서A+B×C150이다. 주어진십진분수변환틀에서분자75,분모1000,소수0.075를읽는정형계산."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "유한소수인지순환소수인지판별하는001이다. ③은약분뒤분모에3이남고나머지는2,5뿐이다. 약분후분모소인수가2,5뿐인지판별하며③의3잔존을확인한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "유한소수인지순환소수인지판별하는001이다. ③은약분뒤분모에3이남고나머지는2,5뿐이다. 약분후분모소인수가2,5뿐인지판별하며③의3잔존을확인한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "유한소수인지순환소수인지판별하는001이다. ③은약분뒤분모에3이남고나머지는2,5뿐이다. 약분후분모소인수가2,5뿐인지판별하며③의3잔존을확인한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "유한소수인지순환소수인지판별하는001이다. ③은약분뒤분모에3이남고나머지는2,5뿐이다. 약분후분모소인수가2,5뿐인지판별하며③의3잔존을확인한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "유한소수인지순환소수인지판별하는001이다. ③은약분뒤분모에3이남고나머지는2,5뿐이다. 약분후분모소인수가2,5뿐인지판별하며③의3잔존을확인한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "순환표현003을이용하지만최종소수대소비교의exactRPMleaf는확인되지않았다. ③0.83<0.888…만참이다. 순환표기를실제소수전개로읽어처음다른자리에서비교한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "순환표현003을이용하지만최종소수대소비교의exactRPMleaf는확인되지않았다. ③0.83<0.888…만참이다. 순환표기를실제소수전개로읽어처음다른자리에서비교한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "주기2의반복표현을읽는003을사용하며원거리자리읽기template는미확정이다. 34번째5,35번째4의곱20이다. 38/11의주기2를읽고34/35의짝홀자리를대응하는표준자리추적."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "crossConceptKeys",
+      "before": [],
+      "after": [
+        "CC_INTEGER_PARAMETER_ANALYSIS"
+      ],
+      "reason": "조건을만족하는유리수006이다. a+b5,한자리소수a>b에서3,2이고차1/9이다. 대칭두자리순환소수합을a+b로바꾸고소수·순서조건으로한쌍을선택한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "reason": "조건을만족하는유리수006이다. a+b5,한자리소수a>b에서3,2이고차1/9이다. 대칭두자리순환소수합을a+b로바꾸고소수·순서조건으로한쌍을선택한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "조건을만족하는유리수006이다. a+b5,한자리소수a>b에서3,2이고차1/9이다. 대칭두자리순환소수합을a+b로바꾸고소수·순서조건으로한쌍을선택한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "조건을만족하는유리수006이다. a+b5,한자리소수a>b에서3,2이고차1/9이다. 대칭두자리순환소수합을a+b로바꾸고소수·순서조건으로한쌍을선택한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "조건을만족하는유리수006이다. a+b5,한자리소수a>b에서3,2이고차1/9이다. 대칭두자리순환소수합을a+b로바꾸고소수·순서조건으로한쌍을선택한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "조건을만족하는유리수006이다. a+b5,한자리소수a>b에서3,2이고차1/9이다. 대칭두자리순환소수합을a+b로바꾸고소수·순서조건으로한쌍을선택한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "오독조건의유리수복원006이다. 분수약분후성분을원래성분으로단정한해설전제는내용부채다. 기존해설은7/12의분자와6/11의분모를결합해7/11로읽는다. v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified unjustified irreducibility of the misread fractions. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyBoundaryFlag",
+      "before": "SOURCE_UNRESOLVED",
+      "after": "B23",
+      "reason": "오독조건의유리수복원006이다. 분수약분후성분을원래성분으로단정한해설전제는내용부채다. 기존해설은7/12의분자와6/11의분모를결합해7/11로읽는다. v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified unjustified irreducibility of the misread fractions. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "소수표현의성질과유한소수판정001이다. 현재명제와변경선택지를실제대조했다. ㄴㅂㅇ참,ㅈ은3/6→1/2반례로거짓이다. 정의판정과기약분수조건누락의약분반례를확인하는익숙한개념검사."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "difficultyConfidence",
+      "before": "low",
+      "after": "high",
+      "reason": "소수표현의성질과유한소수판정001이다. 현재명제와변경선택지를실제대조했다. ㄴㅂㅇ참,ㅈ은3/6→1/2반례로거짓이다. 정의판정과기약분수조건누락의약분반례를확인하는익숙한개념검사."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "difficultyBoundaryFlag",
+      "before": "SOURCE_UNRESOLVED",
+      "after": "B12",
+      "reason": "소수표현의성질과유한소수판정001이다. 현재명제와변경선택지를실제대조했다. ㄴㅂㅇ참,ㅈ은3/6→1/2반례로거짓이다. 정의판정과기약분수조건누락의약분반례를확인하는익숙한개념검사."
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "거듭제곱의거듭제곱008이며007의몫법칙이선행정리다. 20−3x=14에서x2이다. 중첩지수와몫법칙을직접읽어20−3x14의빈칸을계산한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "거듭제곱의거듭제곱008이며007의몫법칙이선행정리다. 20−3x=14에서x2이다. 중첩지수와몫법칙을직접읽어20−3x14의빈칸을계산한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "동일밑으로통일한거듭제곱008이다. 9^x=(3^x)^2=(3a)^2=9a²이다. 3^x=3a로표준밑통일후제곱하여표현한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "reason": "거듭제곱의곱·몫007을공통인수의형태로정리한다. 13·3^n351에서3^n27,n3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: 공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "거듭제곱의곱·몫007을공통인수의형태로정리한다. 13·3^n351에서3^n27,n3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: 공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "reason": "거듭제곱의곱·몫007을공통인수의형태로정리한다. 13·3^n351에서3^n27,n3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: 공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 2,
+      "reason": "거듭제곱의곱·몫007을공통인수의형태로정리한다. 13·3^n351에서3^n27,n3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: 공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "거듭제곱의곱·몫007을공통인수의형태로정리한다. 13·3^n351에서3^n27,n3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: 공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "거듭제곱의곱·몫007을공통인수의형태로정리한다. 13·3^n351에서3^n27,n3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: 공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "단항식곱셈009이며중첩지수008은정리단계다. x16y13에서a+b29이다. 각문자의중첩지수와곱지수를직접계산하고합한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "단항식곱셈009이며중첩지수008은정리단계다. x16y13에서a+b29이다. 각문자의중첩지수와곱지수를직접계산하고합한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "crossConceptKeys",
+      "before": [],
+      "after": [
+        "CC_EXPONENT_RULES"
+      ],
+      "reason": "곱지수제약을공약수최대화로읽는2015 M1-RPM008을prerequisiteL3/L4로재사용한다. targetM2-01및단항식L1/L2보존. d가32,24,40의공약수이며최대8일때합12이다. 곱지수조건을d의공약수로재해석하고합최소를d최대로바꾸는전략이필요."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "reason": "곱지수제약을공약수최대화로읽는2015 M1-RPM008을prerequisiteL3/L4로재사용한다. targetM2-01및단항식L1/L2보존. d가32,24,40의공약수이며최대8일때합12이다. 곱지수조건을d의공약수로재해석하고합최소를d최대로바꾸는전략이필요."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "곱지수제약을공약수최대화로읽는2015 M1-RPM008을prerequisiteL3/L4로재사용한다. targetM2-01및단항식L1/L2보존. d가32,24,40의공약수이며최대8일때합12이다. 곱지수조건을d의공약수로재해석하고합최소를d최대로바꾸는전략이필요."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "곱지수제약을공약수최대화로읽는2015 M1-RPM008을prerequisiteL3/L4로재사용한다. targetM2-01및단항식L1/L2보존. d가32,24,40의공약수이며최대8일때합12이다. 곱지수조건을d의공약수로재해석하고합최소를d최대로바꾸는전략이필요."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "곱지수제약을공약수최대화로읽는2015 M1-RPM008을prerequisiteL3/L4로재사용한다. targetM2-01및단항식L1/L2보존. d가32,24,40의공약수이며최대8일때합12이다. 곱지수조건을d의공약수로재해석하고합최소를d최대로바꾸는전략이필요."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "곱지수제약을공약수최대화로읽는2015 M1-RPM008을prerequisiteL3/L4로재사용한다. targetM2-01및단항식L1/L2보존. d가32,24,40의공약수이며최대8일때합12이다. 곱지수조건을d의공약수로재해석하고합최소를d최대로바꾸는전략이필요."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_NONZERO"
+      ],
+      "reason": "단항식혼합011이다. 계수8×7/4=14,x지수3+4−3=4,y12이다. 계수와문자별지수를순서대로정리하는단항식혼합계산."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "단항식혼합011이다. 계수8×7/4=14,x지수3+4−3=4,y12이다. 계수와문자별지수를순서대로정리하는단항식혼합계산."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "crossConceptKeys",
+      "before": [
+        "CC_SOLID_VOLUME"
+      ],
+      "after": [
+        "CC_MONOMIAL_DIVISION"
+      ],
+      "reason": "각기둥측정2015M1-RPM100의L3/L4를prerequisite재사용하고sourceM2-01지수법칙targetnamespace를유지한다. 밑넓이4a4b2로부피8a5b3을나누어2ab이다. 정사각형밑넓이와부피공식의역산후문자몫정리의익숙한연결."
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "crossConceptKeys",
+      "before": [],
+      "after": [
+        "CC_PLACE_VALUE"
+      ],
+      "reason": "지수법칙007뒤십진자릿값을해석한다. 25×10¹³은25뒤0이13개여서15자리이다. 2와5를10으로짝짓고25뒤0개수를읽는익숙한자릿수변환."
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "지수법칙007뒤십진자릿값을해석한다. 25×10¹³은25뒤0이13개여서15자리이다. 2와5를10으로짝짓고25뒤0개수를읽는익숙한자릿수변환."
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "지수법칙007뒤십진자릿값을해석한다. 25×10¹³은25뒤0이13개여서15자리이다. 2와5를10으로짝짓고25뒤0개수를읽는익숙한자릿수변환."
+    },
+    {
+      "sourceOrdinal": 16,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "오류결과조건식에서원래식을복원하는017이다. A−3x+3y+4를원래덧셈에넣어−x+4y+5이다. 잘못된뺄셈에서A를복원하고원래덧셈을계산하는명시역연산."
+    },
+    {
+      "sourceOrdinal": 16,
+      "field": "difficultyConfidence",
+      "before": "low",
+      "after": "medium",
+      "reason": "오류결과조건식에서원래식을복원하는017이다. A−3x+3y+4를원래덧셈에넣어−x+4y+5이다. 잘못된뺄셈에서A를복원하고원래덧셈을계산하는명시역연산."
+    },
+    {
+      "sourceOrdinal": 16,
+      "field": "difficultyBoundaryFlag",
+      "before": "SOURCE_ASSET_UNRESOLVED",
+      "after": "B23",
+      "reason": "오류결과조건식에서원래식을복원하는017이다. A−3x+3y+4를원래덧셈에넣어−x+4y+5이다. 잘못된뺄셈에서A를복원하고원래덧셈을계산하는명시역연산."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_NONZERO"
+      ],
+      "reason": "다항식을단항식으로나누는015이며영계수읽기는최종출력이다. 두몫8x−4x²,−x+4x²의합7x에서a0,b7이다. 항별단항식나눗셈후두몫을정리하고0인계수까지읽는다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "다항식을단항식으로나누는015이며영계수읽기는최종출력이다. 두몫8x−4x²,−x+4x²의합7x에서a0,b7이다. 항별단항식나눗셈후두몫을정리하고0인계수까지읽는다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "difficultyConfidence",
+      "before": "low",
+      "after": "high",
+      "reason": "다항식을단항식으로나누는015이며영계수읽기는최종출력이다. 두몫8x−4x²,−x+4x²의합7x에서a0,b7이다. 항별단항식나눗셈후두몫을정리하고0인계수까지읽는다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "difficultyBoundaryFlag",
+      "before": "SOURCE_ASSET_UNRESOLVED",
+      "after": "NONE",
+      "reason": "다항식을단항식으로나누는015이며영계수읽기는최종출력이다. 두몫8x−4x²,−x+4x²의합7x에서a0,b7이다. 항별단항식나눗셈후두몫을정리하고0인계수까지읽는다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "해의정의에따른대입판정이지전체해집합계산020이아니다. exactleaf미확정을남긴다. x1에서①3<5만참이다. 주어진x1을대입한참거짓직접판정."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "2015부등식성질018을직접적용한다. ②만−a≥−b이므로다른네개의≤방향과다르다. a≤b를복원한뒤양수배/같은수덧셈과음수배를비교한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_RANGE",
+        "COND_NEGATIVE"
+      ],
+      "reason": "음수배의대소반전018이며함수그래프가제시되지않았다. 최대는x−11에서4로a−1/3,최소는x3에서−2/3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "음수배의대소반전018이며함수그래프가제시되지않았다. 최대는x−11에서4로a−1/3,최소는x3에서−2/3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "reason": "음수배의대소반전018이며함수그래프가제시되지않았다. 최대는x−11에서4로a−1/3,최소는x3에서−2/3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 2,
+      "reason": "음수배의대소반전018이며함수그래프가제시되지않았다. 최대는x−11에서4로a−1/3,최소는x3에서−2/3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "음수배의대소반전018이며함수그래프가제시되지않았다. 최대는x−11에서4로a−1/3,최소는x3에서−2/3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "음수배의대소반전018이며함수그래프가제시되지않았다. 최대는x−11에서4로a−1/3,최소는x3에서−2/3이다. Root directly read the current source and existing solution; independent learning-level adjudication accepted: a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다. This is an assessment of standard learning demands, not a conversion from numeric bucket."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "crossConceptKeys",
+      "before": [],
+      "after": [
+        "CC_INTEGER_PARAMETER_ANALYSIS"
+      ],
+      "reason": "조건을만족하는유리수006의분수화·자연수배수제약연결이다. 44/15와곱해자연수인A는15의배수,최소세자리105이다. 순환소수기약분수화와세자리최소분모배수선택의표준연결."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "reason": "조건을만족하는유리수006의분수화·자연수배수제약연결이다. 44/15와곱해자연수인A는15의배수,최소세자리105이다. 순환소수기약분수화와세자리최소분모배수선택의표준연결."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "조건을만족하는유리수006의분수화·자연수배수제약연결이다. 44/15와곱해자연수인A는15의배수,최소세자리105이다. 순환소수기약분수화와세자리최소분모배수선택의표준연결."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "조건을만족하는유리수006의분수화·자연수배수제약연결이다. 44/15와곱해자연수인A는15의배수,최소세자리105이다. 순환소수기약분수화와세자리최소분모배수선택의표준연결."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_NONZERO"
+      ],
+      "reason": "거듭제곱의거듭제곱008의지수조건이다. 3^b9에서b2,2b=c로4,ab6으로a3이다. 계수3^b와지수2b,ab를순차비교하는직접조건계산."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "거듭제곱의거듭제곱008의지수조건이다. 3^b9에서b2,2b=c로4,ab6으로a3이다. 계수3^b와지수2b,ab를순차비교하는직접조건계산."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_RANGE"
+      ],
+      "reason": "부등식성질018이의도된방법이나a,b를최적경계라고지정하지않은원문내용부채를남긴다. 의도한최적경계7/2,11/2에서4ab77이다. v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified missing tight-boundary conditions in the statement. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "부등식성질018이의도된방법이나a,b를최적경계라고지정하지않은원문내용부채를남긴다. 의도한최적경계7/2,11/2에서4ab77이다. v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified missing tight-boundary conditions in the statement. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "reason": "부등식성질018이의도된방법이나a,b를최적경계라고지정하지않은원문내용부채를남긴다. 의도한최적경계7/2,11/2에서4ab77이다. v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified missing tight-boundary conditions in the statement. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 2,
+      "reason": "부등식성질018이의도된방법이나a,b를최적경계라고지정하지않은원문내용부채를남긴다. 의도한최적경계7/2,11/2에서4ab77이다. v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified missing tight-boundary conditions in the statement. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "low",
+      "reason": "부등식성질018이의도된방법이나a,b를최적경계라고지정하지않은원문내용부채를남긴다. 의도한최적경계7/2,11/2에서4ab77이다. v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified missing tight-boundary conditions in the statement. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "부등식성질018이의도된방법이나a,b를최적경계라고지정하지않은원문내용부채를남긴다. 의도한최적경계7/2,11/2에서4ab77이다. v1.3 §9 low applies to source/solution mismatch suspicion or incomplete solution context. The actual author, independent reviewer and root identified missing tight-boundary conditions in the statement. Intended numeric2 is retained conditionally with explicit recheck and content debt; uncertainty is not a reason to inflate difficulty."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "reviewedSourceBlob": "9c140a832669140f072411cdb03d68463a112b3e",
+  "finalSourceBlob": "9ce1e4b210e5154f782c5748b4baa1498550990f",
+  "reviewSha256": "f2f48cb29300bc0ee6c5b91304e4fd48ade9362b02da6b2dbbee7a7a09d16620",
+  "acceptedReviewSha256": "adf040953322400813e97fa0636c9c1efd072e8c1904ee3b15d5c17c5e0e8ea3",
+  "independentSha256": "237b11ef47c2f6e079cf5f8a02639d56cc94b5691bb953f56a0c6d7b8b43ad29",
+  "reviewedFourSlotSha256": "7b634a0f0245e3e4c2daeb16e7d633d02c7d795f455ef517381c312cd2e4d8a4",
+  "finalFourSlotSha256": "efc84d5998a06376f6aed89c8aac171173d8f109a4627f5d6cdcfef8a03385bf",
+  "independentSupplements": [],
+  "fourSlotRebind": {
+    "transformation": "sourceGitBlobSha and only the explicitly recorded scopedOverrides; author bytes preserved separately.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "notes": [
+    "Root consumed actual source-bound author and independent evidence. Semantics are not inferred from static validator PASS.",
+    "No main merge, shared registry/metadata write, production inbox or deployment."
+  ],
+  "authorSupplements": [
+    {
+      "file": "author-supplements/E023.difficulty-blind-freeze.json",
+      "sha256": "6f9bde977c8aae81a6166a6c9da31a9e064ce7101a1800749367465edfd3297a"
+    },
+    {
+      "file": "author-supplements/E023.source-overlap.json",
+      "sha256": "1f1290d351bcb3ea614950f34ac8b1580361d582d41e0ac9790d177d911bdac2"
+    }
+  ]
+}

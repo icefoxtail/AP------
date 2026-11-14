@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E023",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "reviewer": "M2-S1-META-FULL/C",
+  "at": "2026-11-14T11:37:33.934409+00:00",
+  "sourceGitBlobSha": "9c140a832669140f072411cdb03d68463a112b3e",
+  "sourceSha256": "7c90cc67f6e282f8cb3cf1219e7824de17ce54cfc658737c366c9579498ea85d",
+  "reviewedAuthorArtifacts": {
+    "reviewPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E023.review.json",
+    "reviewSha256": "f2f48cb29300bc0ee6c5b91304e4fd48ade9362b02da6b2dbbee7a7a09d16620",
+    "fourSlotPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E023.4slot.json",
+    "fourSlotSha256": "7b634a0f0245e3e4c2daeb16e7d633d02c7d795f455ef517381c312cd2e4d8a4"
+  },
+  "status": "ACCEPT_WITH_NARROW_DIFFICULTY_AMENDMENTS",
+  "scope": {
+    "sevenAxisSampleOrdinals": [
+      6,
+      12,
+      23
+    ],
+    "additionalClassificationOrdinals": [
+      14
+    ],
+    "difficultyOrdinals": [
+      2,
+      3,
+      5,
+      6,
+      7,
+      10,
+      12,
+      14,
+      16,
+      17,
+      20,
+      23
+    ],
+    "priorExamsNotRepeated": true,
+    "currentExamTextOnly": "All requested current E023 stems/choices/solutions actually read; no figures referenced by these questions."
+  },
+  "samples": [
+    {
+      "sourceOrdinal": 6,
+      "status": "ACCEPT_WITH_EXISTING_CONTENT_DEBT",
+      "classification": "현재 원문이 명시한2015의 조건 유리수006이다. 원래 분수는 기약이라고 명시되어 있지만 오독한 두 분수까지 기약이라는 전제는 없다. 이를 구별한 author 판단이 맞다.",
+      "binding": "기존 exact scoped projection을 임의 활성화하지 않은 상태를 수용한다.",
+      "crossConcept": "순환소수 변환과 보존 성분 복원은 이 primary 안의 표준 절차다.",
+      "condition": "원래 분수의 기약성만4slot에 보존하고 두 오독 분수의 기약성을 임의 추가하지 않았다.",
+      "integration": "한 복원 primary 내부의 절차로 NONE을 수용한다.",
+      "fourSlot": "NAMED 분수식과 IMPLIED 복원의 명시적 근거는 현재 E023의 긴 해설에 실제 존재한다. 질문UID와 두 fingerprints 및 정확 인용을 확인했다.",
+      "contentDebt": "원래14/33(기약)에서 분모24오독으로14/24=7/12, 분자18오독으로18/33=6/11을 얻는 반례가 실제 성립한다. 선택지 중 의도답7/11은 유효하나 약분 결과만으로 원분자7·원분모11을 단정할 수 없다는 설명 부채를 보존한다. 정답/해설은 수정하지 않는다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "status": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "classification": "2015 M1-RPM008의 공약수 조건 수 찾기가 결정 단계이며 M2 target L1/L2를 보존한 prerequisite 재사용이다. 현재 M2-RPM008의 지수곱은 보조 단계다.",
+      "binding": "실제 GCD/LCM exponent constraint PT/TPL은 소인수 지수의 min/max를 동시에 맞추는 정의이다. 본문 공통 곱지수의 공약수 최대화와 다르다는 caveat를 수용한다.",
+      "crossConcept": "CC_EXPONENT_RULES의 실제 기본 지수 곱 성질이 ad32,bd24,cd40을 도출하는 보조 개념으로 타당하다.",
+      "condition": "모든 a,b,c,d가 자연수라는 조건으로 d가 세 수의 양의 공약수가 되어 최대8을 정할 수 있다.",
+      "integration": "지수 조건→공약수 최대화→합 최소의 SEQUENTIAL을 수용한다.",
+      "fourSlot": "gcd 표준식은 해설에 직접 있어 NAMED, 생략된 지수곱은 현재 결과값을 설명하는 IMPLIED+근거로 적절하다. 해설 압축 부채를 보존한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "status": "ACCEPT_WITH_LEGACY_LEVEL_CORRECTION_AND_CONTENT_DEBT",
+      "classification": "2015 부등식 성질018의 의도된 구간 변환이다. 발문만으로 최적 경계를 강제하지 않는다는 단서는 분류와 별도로 보존한다.",
+      "binding": "RPM_ONLY semantic과 projection 미확정을 구별한 상태를 수용한다.",
+      "crossConcept": "음수배/상수 덧셈/끝점 대입은 같은 primary 내부의 조작이다.",
+      "condition": "COND_RANGE 실제 정의가 주어진 x의 폐구간에 맞는다. a,b의 tight boundary 조건을 발명하지 않는다.",
+      "integration": "NONE 수용.",
+      "fourSlot": "전체 해설에 실제 음수배의 방향 반전 표준식과 끝점값 대입이 있어 NAMED이며 정확 인용·UID/fingerprints를 확인했다.",
+      "contentDebt": "a=3,b=6도 모든 x∈[−1,3]에 조건을 만족하나4ab72로77과 다르다. 의도 답77은 a7/2,b11/2를 최적 경계로 해석할 때만 정해진다는 부채를 수용한다."
+    }
+  ],
+  "additionalClassificationReview": [
+    {
+      "sourceOrdinal": 14,
+      "status": "ACCEPT",
+      "reason": "2015 M1-RPM100 각기둥 측정 L3/L4를 M2-01/EXPONENT_LAW target 아래 재사용하였다. 원본문자식의 밑넓이4a^4b^2, 부피8a^5b^3에서 높이2ab라는 실제 해설과 일치한다. CC_MONOMIAL_DIVISION의 실제 정의는 필요한 보조 계산이다. TPL_M1_SOLID_FIGURE_STANDARD_MEASURE는 수치 대입 정의여서 문자 역산을 exact로 확정하지 않은 caveat가 타당하다. 양의 기하량/0아닌 밑넓이만 전제하고 별도 parameter positivity 키를 강제로 붙이지 않았다."
+    }
+  ],
+  "difficultyReview": [
+    {
+      "sourceOrdinal": 2,
+      "independentDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "약분 후 남은 분모 소인수를 확인하는 한 번의 전처리가 있어2/B12를 수용하며 legacy하와 인접 허용한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "반복 점 표기를 실제 소수전개로 해석해 처음 다른 자리로 비교하는 표준 절차2이다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "independentDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "합을(a+b)/9로 바꾸어 소수 후보와 순서 조건을 결합하여(3,2)를 고르는 구조 선택이 있어3/B23이다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "명시된 오독 성분을 보존한다는 의도 아래 두 순환소수 변환 후 분수 성분을 복원하는 표준2다. 해설의 기약성 단정 부채는 별도이다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "순환소수/유리수 성질을 판정하고 기약성 없는 분모 조건에는3/6의 약분 반례를 쓰는 익숙한 조건 점검2다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "공통3^n을 묶어13·3^n=351로 만드는 표준 지수법칙 역산2이며 복잡한 경우 분석이 없다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "independentDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "지수곱 조건을 공약수 조건으로 재표현하고 합 최소를 d최대로 전환하므로3/B23이다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "밑넓이와 부피의 표준 관계로 높이를 역산하고 단항식 몫을 정리하는2다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "잘못 뺀 식의 결과에서 A를 복원하고 원래 덧셈을 적용하는 명시된 역연산2다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "두 다항식을 단항식으로 각각 나누고 동류항을 정리한 뒤 0인 이차항 계수를 읽는 익숙한2다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "a<0가 주어져 최대와 최소를 주는 끝점이 정해지고 두 번 대입하여 계수를 얻는 정형2다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "의도한 최소·최대 경계 해석 아래 음수배 방향 반전과 상수 덧셈의 구간 변환은2/B12다. 발문 비유일성은 내용 부채로 분리한다."
+    }
+  ],
+  "verification": {
+    "actualSourceReadbackSha256": "7c90cc67f6e282f8cb3cf1219e7824de17ce54cfc658737c366c9579498ea85d",
+    "sampleUidFingerprintQuoteProblems": [],
+    "nativeValidationPath": "/workspace/scratch/59e0f5bd3a77/workers/C/cross/E023.native-validation.json",
+    "items": 23,
+    "quotes": 120,
+    "fail": 0,
+    "warn": 11,
+    "warningReview": "직접 계산·정의 판단의 적은 용어 수를 불필요하게 채우지 않았다.",
+    "officialResolver": "NOT_RUN_EVIDENCE_INCOMPLETE"
+  },
+  "processDisclosure": "Current source and author judgments were visible during this independent review. No fresh blind claim. The author disclosed prior E016 stem exposure; E023 source solutions, UIDs and changed Q6/Q7 choices were read directly for this review."
+}
