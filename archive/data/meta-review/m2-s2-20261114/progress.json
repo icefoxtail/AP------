@@ -3279,12 +3279,94 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/23_이수중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "13b1e386f60d238f45ae490dd984d2d1f0f774131a556fcbe77efd91c82b460e"
+      "uidSetSha256": "13b1e386f60d238f45ae490dd984d2d1f0f774131a556fcbe77efd91c82b460e",
+      "reviewedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 1,
+      "sourceHoldOrdinals": [
+        20
+      ],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        9,
+        21,
+        19
+      ],
+      "independentReviewer": "A",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            21
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            22,
+            23,
+            24
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E024/four-slot.json",
+          "sha256": "1e6a0f09b61d407a46b11111cb9ea782832b329f3edb1cbe6b64211171e33b8e"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E024/independent-sample.json",
+          "sha256": "a1aafa499c0c78fe0ad6a4104e21fa58b59c77752d563bca09d9adfba95822fa"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E024/mechanical-check.json",
+          "sha256": "3dc5a619003206f141508af9a12132afb0030149b90e6aaab7b1a25337822ed5"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E024/review.json",
+          "sha256": "c6813c370014429f47b12d4c7ed8e6477b31c780814f720d13428989f9da649f"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E024/root-acceptance.json",
+          "sha256": "686f94c07b8765843620da1cdbf78e2fcbd5891a3929a038580047730ee7807a"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK"
     },
     {
       "examId": "E025",
@@ -3482,7 +3564,8 @@
           "sha256": "a99c03e3c41e01b231227110194f1552b655a394f09c937431450f104983f43d"
         }
       },
-      "remoteSaveState": "PENDING_READBACK"
+      "remoteSaveState": "VERIFIED",
+      "remoteCommit": "43df030a2384ed163bb2a03494f4654814fd4329"
     },
     {
       "examId": "E027",
@@ -5297,11 +5380,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 23,
-    "reviewedQuestions": 547,
+    "reviewedExams": 24,
+    "reviewedQuestions": 571,
     "unresolvedQuestions": 0,
-    "remainingExams": 44,
-    "remainingQuestions": 1057
+    "remainingExams": 43,
+    "remainingQuestions": 1033
   },
-  "lastVerifiedExamCommit": "ad2fe3b954674e02d6badca385f9b5dde5a1e74c"
+  "lastVerifiedExamCommit": "43df030a2384ed163bb2a03494f4654814fd4329"
 }

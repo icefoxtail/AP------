@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "m2-s2-meta-independent-sample-v1",
+  "examId": "E024",
+  "author": "C",
+  "reviewer": "A",
+  "sourceArchiveFile": "original/middle/m2/2final/23_이수중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "11a18514bb29f72e0111b38d382f0402f691d414",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewSha256": "ebfb48ae868009bd42f0ffdeeb74d8d57af7592984e0baa8013fcb9aec2ec407",
+  "fourSlotSha256": "1e6a0f09b61d407a46b11111cb9ea782832b329f3edb1cbe6b64211171e33b8e",
+  "ordinals": [
+    9,
+    21,
+    19
+  ],
+  "overallConclusion": "PRIMARY_ADJUDICATION_REQUIRED",
+  "items": [
+    {
+      "sourceOrdinal": 9,
+      "conclusion": "PASS",
+      "reason": "현 수정본 PT_H1_COUNTING_PRINCIPLE_GENERAL은 정의에 일반적인 경우의 수를 포함하므로 단일 조건의 유한 후보 직접 열거도 부모 의미에 들어간다. 기존 DIRECT_CASE의 합·곱 골격과 달라 B-E023-DIRECT-ENUMERATION NEW_TPL 및 정확한 RPM leaf 공백을 재사용하는 판단을 지지한다. PT_DIVISOR_COUNT는 약수 개수가 정확히3인 자연수의 개수라는 다른 목표이다. 약수 CC와 자연수/1~20 범위/20을 나누어떨어지게 하는 후보 제한은 실제 사용된다. COND_DIVISIBILITY 대상은 카드값d 자체가20의 배수라는 뜻이 아니라 20%d=0임을 현재 reason대로 보존해야 한다. 4칸 열거 명칭과 약수·범위 근거가 exact이며 하/1 직접형을 지지한다.",
+      "questionUid": "qid_v1_e7924cf387c36055b9126fe4a82ac6e1f9a5951e4bd1e3e2f67879d5ab6e4bb0"
+    },
+    {
+      "sourceOrdinal": 21,
+      "conclusion": "PRIMARY_ADJUDICATION_REQUIRED",
+      "reason": "현재 그림에서 반지름8과 모선17은 직접 읽지만 높이h는 주어지지 않았고 발문도h를 풀이과정에 쓰도록 요구한다. 기존 해설은 h²+8²=17²로 h를 먼저 정하고 마지막에 부피 공식을 대입한다. M1 STANDARD_MEASURE의 정의는 기본 원뿔의 겉넓이·부피 공식에 수치를 대입하는 단계와 맞으며 Pyth CC를 결합하는 표현은 가능하다. 다만 현 binding 이유는 M2 COMPOSITE의 부피 미명시만 배제했고, 실제 결정 단계와 일치하는 M2 SIDE_LENGTH의 나머지 한 변이나 높이 제곱관계 정의를 비교하지 않았다. 독립 판단은 미지 높이 결정이 핵심이므로 M2 Pyth 길이 primary + CC_CONE_VOLUME를 우선 지지한다. A-E013 Q21은 수치만 다른 동일 회전원뿔에서 M2-RPM105/SIDE_LENGTH로 동결되어 있어 root가 두 사례를 같은 기준으로 adjudicate해야 한다. 이 경계 외에 4칸의 Pyth·원뿔·회전·부피 역할과 exact 인용, SEQUENTIAL 및 bucket3/medium/B23는 타당하다.",
+      "questionUid": "qid_v1_2d94042b9e6fc226e2988cb52c7310fece2e4bd2a674f7aaba14457e6c2866a6"
+    },
+    {
+      "sourceOrdinal": 19,
+      "conclusion": "PASS_WITH_WORDING_FIX",
+      "reason": "실제 표의25/15/30/10권에서 전체80과 서로 배타적인 세계사15/고전문학30의 합45를 구성한다. RPM116 사건의 합과 ACTIVE EVENT_RELATION_COMPLEMENT_ADDITION 정의, 기본확률 subunit, 별도CC 없음/NONE이 맞다. 네 범주에서 전체와 목표 두 범주를 구분하는 하/2 인접 경계도 medium/B12로 수용한다. 4칸의 두 IMPLIED 방법은 실제 해설의 합과 비 계산에서 근거를 확인했고 exact 인용이다. 다만 decisiveStep/classification/reason의 전체 인원수는 전체 책의 수로 고치면 된다.",
+      "questionUid": "qid_v1_ef35d32d6e2d3d56fe92d9d35f439bd8e785b6315451bcae80e485e08db64045"
+    }
+  ],
+  "freshMathematicalReverification": false,
+  "authorFilesModified": false,
+  "exactQuoteCheck": "PASS"
+}
