@@ -2,11 +2,12 @@
 
 - workKey: `M1-S1-META-FULL`
 - taskId: `ef319e48-5efb-4d99-a4ac-5ded7ac1d74d`
-- previous root owner: `GPT_ROOT_75DAEF2BA0F3`
+- current root owner: `GPT_ROOT_42DE8B02EF57`
+- previous root owner: `GPT_ROOT_75DAEF2BA0F3` (CLOSED)
 - branch: `review/m1-s1-meta-full-20261114`
-- state: `PAUSED_WITH_REMAINING / RESUME_READY`
-- writer state: `CLOSED` (root and META_A/B/C)
-- handoff: `OFFERED` to `CODEX_LOCAL`; exact task acceptance must be recorded before writing
+- state: `RUNNING / ACTIVE_OWNER`
+- writer state: `OPEN` (current root and META_RESUME_A/B/C); previous writers remain CLOSED
+- handoff: `ACCEPTED` by CHATGPT_RESUME under current user instruction; AWCR r4 raw readback verified
 - progress: `docs/operations/m1-s1-meta-full-20261114/progress.json`
 - handoff: `docs/operations/m1-s1-meta-full-20261114/HANDOFF.md`
 - remaining: `docs/operations/m1-s1-meta-full-20261114/REMAINING.md`

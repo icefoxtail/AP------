@@ -2,11 +2,11 @@
   "schemaVersion": "m1-s1-full-review-progress-v1",
   "workKey": "M1-S1-META-FULL",
   "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
-  "owner": "GPT_ROOT_75DAEF2BA0F3",
+  "owner": "GPT_ROOT_42DE8B02EF57",
   "branch": "review/m1-s1-meta-full-20261114",
   "baselineMain": "8c3b8fe05348d7235546d7d2d9ec063029d19e4d",
-  "stage": "PAUSED_WITH_REMAINING",
-  "resumeState": "RESUME_READY",
+  "stage": "RUNNING",
+  "resumeState": "ACTIVE_OWNER",
   "mainMergeAuthorized": false,
   "registrationAuthorized": false,
   "deploymentAuthorized": false,
@@ -769,7 +769,7 @@
       "writerState": "CLOSED"
     }
   ],
-  "nextAction": "CODEX_ACCEPT_EXACT_TASK_HANDOFF_REVIEW_REMAINING_EVIDENCE_AND_DEFINITION_GAPS",
+  "nextAction": "RESOLVE_ONLY_REMAINING_EVIDENCE_DEFINITIONS_AND_HANDOFF",
   "authorityRefs": [
     {
       "path": "AGENTS.md",
@@ -805,16 +805,16 @@
     }
   ],
   "awcr": {
-    "revision": 2,
-    "fileId": "1p7F9QUGNsNU0jwTZf5_0qsWY4AFG0w0L",
-    "rawSha256": "171f2f1e7510967f96d98691225c85a1718434a26a445e0512c843144e1a68c5"
+    "revision": 4,
+    "fileId": "1TkZmWOaOc8TQ6ZN3IMjCAlOvN88fMDj5",
+    "rawSha256": "483710a553e80847e7b925605dd8efd348c622feac88d87ce68cc45c8ae606ee"
   },
   "initialVerification": {
     "canonicalUidJoinCount": 286,
     "uniqueUids": 286,
     "sourceOnlyMethodPolicy": "PROPOSE_SEPARATELY_DO_NOT_INVENT_SOLUTION_EVIDENCE"
   },
-  "updatedAt": "2026-11-14T08:53:38.696228+00:00",
+  "updatedAt": "2026-11-14T13:28:41.356875+00:00",
   "reviewedExamCount": 12,
   "reviewedQuestionCount": 286,
   "remoteReceipts": [
@@ -927,7 +927,7 @@
       "method": "GitHub create_tree/create_commit + compare-and-swap fast-forward update_ref; git fetch/ls-remote readback and tree equality"
     }
   ],
-  "writerState": "CLOSED",
+  "writerState": "OPEN",
   "unstartedExamCount": 0,
   "unreadQuestionCount": 0,
   "latestMainObservation": {
@@ -1008,12 +1008,15 @@
     "qualityStatus": "NOT_A_FULL_SEMANTIC_OR_RELEASE_PASS"
   },
   "handoff": {
-    "status": "OFFERED",
-    "audienceRole": "CODEX_LOCAL",
+    "status": "ACCEPTED",
+    "audienceRole": "CHATGPT_RESUME",
     "expectedTaskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
     "formerOwner": "GPT_ROOT_75DAEF2BA0F3",
-    "allWorkerWritesClosed": true,
-    "newOwnerMustRecordAcceptance": true
+    "predecessorRevision": 3,
+    "predecessorRawSha256": "feaa56ec1d0eb4c8bf43a1cc495822129a3c7dfcbd04b71e0e84d02b7994d672",
+    "allPreviousWorkerWritesClosed": true,
+    "acceptanceBasis": "CURRENT_USER_DIRECTED_PRO_RESUME",
+    "previousOfferedAudience": "CODEX_LOCAL"
   },
   "externalReceiptPolicy": "The final commit cannot contain its own SHA. The final remote HEAD and next immutable AWCR revision are recorded in Notion/AWCR after push/readback. The embedded AWCR revision is the last pre-final verified checkpoint.",
   "remaining": [
@@ -1163,5 +1166,26 @@
     "gap-index.json": "fc9d67203265cb8de31f43e0807aca4e180c79408ca971876fced0cc3ed8c0bf",
     "topics.json": "f6a58c3c9ce7d6a941989cb595ce78b10f2055bc4c2850272c60d027c7de6a41",
     "TOPICS.md": "d8e6ef105ba498122c40f3b7597733ea2ab4f1d8332581a7ff9b8dce3903f7a5"
-  }
+  },
+  "previousOwner": "GPT_ROOT_75DAEF2BA0F3",
+  "resumeWorkers": [
+    {
+      "owner": "META_RESUME_A",
+      "state": "OPEN",
+      "examCount": 4,
+      "questionCount": 94
+    },
+    {
+      "owner": "META_RESUME_B",
+      "state": "OPEN",
+      "examCount": 4,
+      "questionCount": 95
+    },
+    {
+      "owner": "META_RESUME_C",
+      "state": "OPEN",
+      "examCount": 4,
+      "questionCount": 97
+    }
+  ]
 }
