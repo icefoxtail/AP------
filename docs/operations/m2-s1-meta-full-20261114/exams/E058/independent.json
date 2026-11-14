@@ -1,0 +1,683 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E058",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T15:20:15.721991+00:00",
+  "sourceGitBlobSha": "ec1618a0fe7f90ba57fdb2c854b8153b46cdcc92",
+  "reviewSha256": "047be1195bb041c4d6f08a4c7e92cb37e2a6cc43e4e694b0754127b5d81b5e36",
+  "fourSlotSha256": "1337b0c3f9eddf064f7e3c717270ea5ac679709077d38ff346d057ba6d342dc0",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/B/independent/E058.initial.json",
+  "initialFreezeSha256": "ccc7e239dc1636bd239bcc0c8ae962f4b123adfae6c8ac2e1bc533ad16794482",
+  "sampleOrdinals": [
+    8,
+    13,
+    23
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 8,
+      "classification": "2022 RPM128 단항식 나눗셈. 직육면체의 밑넓이로 부피를 나누는 문자계수 몫이 목표높이를 결정한다.",
+      "binding": "실제 RPM128 L1~4와 ACTIVE M1_SOLID_FIGURE_STANDARD_MEASURE 및 부모를 직접 읽었다. TPL 수치대입과 현재 문자높이 역산의 범위차이 때문에 related후보만 유지.",
+      "crossConcept": "ACTIVE CC_GEOMETRIC_AREA_VOLUME_FORMULA의 실제정의가 직육면체 밑넓이·부피 공식을 몫의 입력으로 만드는 외부 기하단계와 대응한다.",
+      "condition": "실제그림의5ab/3ab를 확인하고 발문에 없는 수범위는 추가하지 않았다.",
+      "integration": "기하공식 입력을 단항식 몫에 넘기는 SEQUENTIAL.",
+      "difficulty": "독립2/B23와 저자2/B23 일치. 공식 역산과 표준 약분의 정형구조.",
+      "fourSlot": "직육면체·길이·부피 given, 높이goal, 실제 표준부피공식과 약분 NAMED literal을 확인했다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "classification": "2022 RPM141 해조건에서 계수조건. 자연수해5개를 열린·닫힌 매개경계로 바꾸고 최솟값을 선택한다.",
+      "binding": "실제 RPM141 L1~4를 읽었고 정확 target scoped PT/TPL·genuine resolver 미등록 부채 유지.",
+      "crossConcept": "기본 일차변형과 자연수경계는 primary의 내부 과정이라 CC 중복 없음.",
+      "condition": "ACTIVE COND_NATURAL_NUMBER 실제정의의 해선택 제한과 정확히 대응하며 수의개수는 literal5개를 보존.",
+      "integration": "단일 계수조건 내부 절차라 NONE.",
+      "difficulty": "독립2/B23와 저자2/B23 일치. source상에서 현재중2 제안은 자연수 한계경계의 정형판정으로 수용.",
+      "fourSlot": "일차부등식given, 매개변수최솟값goal, 실제 자연수열거·이중범위 NAMED, 자연수5개조건을 확인."
+    },
+    {
+      "sourceOrdinal": 23,
+      "classification": "2022 RPM139 분수계수 일차부등식. 최소공배수로 분모를 제거한 뒤 해를 수직선에 표현하는 목표.",
+      "binding": "실제 RPM139 L1~4를 확인. 수직선137은 후속표현이며 결정적인 분수부등식풀이139를 유지; 정확등록은 미확정.",
+      "crossConcept": "같은 해를 표준수직선으로 표현하는 것은 내부 후속과정이라 외부 CC 없음.",
+      "condition": "답안의 서술/그리기 형식 요구를 별도 수학적 해제한으로 만들지 않음.",
+      "integration": "한 풀이의 연속표현으로 NONE.",
+      "difficulty": "독립2/B12와 저자2/B23의 수치일치, 분모제거·부등호반전·표현까지의 저자경계 보존.",
+      "fourSlot": "해집합·수직선 두 목표와 실제 최소공배수/이항/수직선 NAMED 인용 확인. 새 해설이나 그림을 생성하지 않았다."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_716ba3d4c23c460cdb2de80b627336b6fee789999c1f34313ab7c086eb82fe15",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "순환마디의 최소 반복블록과 시작위치의 직접대조"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "순환마디 정의의 직접대조",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 1
+      },
+      "decision": "ACCEPT",
+      "reason": "순환마디의 최소 반복블록과 시작위치의 직접대조"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_49f5869fd5ef1db0e120723687efbaeabd8aca3790924fdd64d620fe2598e0f6",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "기약분수 분모의 소인수2/5 여부를 판정"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "약분한분모2·5 판정",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 2
+      },
+      "decision": "ACCEPT",
+      "reason": "기약분수 분모의 소인수2/5 여부를 판정"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_e7a8a580ce2f3cceaafe1643018af07f8c6e935aca255e5c1fb08be8be64be9d",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "제공된 순환소수의 반복주기와100번째자리의 나머지 대응"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "6자리 반복마디의 나머지 위치",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 3
+      },
+      "decision": "ACCEPT",
+      "reason": "제공된 순환소수의 반복주기와100번째자리의 나머지 대응; 주어진 반복표현/변환과정의 짧은 단계이므로 1/2 경계에서 저자1 수용."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_b789b63ec1cb28780c5e22f9168fa43d9dadbe2ae485a0244f8c201104c4bf3f",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "유리수·유한소수·순환소수의 포함관계 직접판정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "유리수 포함관계 정의판정",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 4
+      },
+      "decision": "ACCEPT",
+      "reason": "유리수·유한소수·순환소수의 포함관계 직접판정"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_9f4c7152c9702e3a45ec4b3ecff5c6960612a455d83a8de69335c5407beca814",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "여러 독립 지수법칙의 보기별 적용과 비교"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "여러 지수법칙을 적용한 독립계산 검산",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 5
+      },
+      "decision": "ACCEPT",
+      "reason": "여러 독립 지수법칙의 보기별 적용과 비교"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_79ec63b88495a8a69ad696e47378d36505b15f71b40913e0e8d48a20c4bc6dea",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "단항식 거듭제곱의 계수와 문자지수를 순서대로 대응"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "단항식거듭제곱의 계수·지수 비교",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 6
+      },
+      "decision": "ACCEPT",
+      "reason": "단항식 거듭제곱의 계수와 문자지수를 순서대로 대응"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_bcc02f56ecea677967932bdc1e1be86e3141eaffc411bca1daaf7c0546195ae5",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "두 다항식의 단순 뺄셈과 동류항 정리"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "단순괄호 제거와 동류항정리",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 7
+      },
+      "decision": "ACCEPT",
+      "reason": "두 다항식의 단순 뺄셈과 동류항 정리"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_a1ab259d6737d3ed79ae946d254af710a8e191910a579032b2514126b516e5ae",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "실제 직육면체의 두 밑변5ab/3ab를 확인하고 부피를 밑넓이로 나누는 정형 높이역산"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "실제 직육면체부피÷밑넓이의 단항식 몫",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 8
+      },
+      "decision": "ACCEPT",
+      "reason": "실제 직육면체의 두 밑변5ab/3ab를 확인하고 부피를 밑넓이로 나누는 정형 높이역산"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_6ad5001b193f55b20a871e2dd6ddbd1bcb26e22ac48bd8b2a533ef4094d07e35",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "곱·중첩거듭제곱과 몫을 정리하여 빈 단항식 복원"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "세 분수단항식의 거듭제곱·혼합연산 뒤 빈식복원",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 9
+      },
+      "decision": "ACCEPT",
+      "reason": "곱·중첩거듭제곱과 몫을 정리하여 빈 단항식 복원; 세 분수단항식 거듭제곱·역수·빈식복원을 연결하는 2/3 인접B23에서 저자3 수용."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_58f877cf27d7e596f43d1d4964cb2c719473c5d85a08a8430849a27047b485da",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "각 문장의 관계를 부등식으로 옮기며 사각형 둘레의 두배를 구별"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "여러 수량문장의 부등식화와 둘레공식 점검",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 10
+      },
+      "decision": "ACCEPT",
+      "reason": "각 문장의 관계를 부등식으로 옮기며 사각형 둘레의 두배를 구별"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_187431a3c28bb840199ca600d92b7a15afd5f6f6f8b6b184e3f3c8832d1305d4",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "일차부등식의 직접해와 보기 대입판정"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "기본부등식 범위와 다섯값 직접비교",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 11
+      },
+      "decision": "ACCEPT",
+      "reason": "일차부등식의 직접해와 보기 대입판정"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_51b6ee88e8df4c593c2e28ed36f3e1896b9ff3a5aad3d72cc4215001e6b95d77",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "대소관계에서 양변에 동일연산할 때 부등호방향 직접판정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "부등호 방향의 기본성질 적용",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 12
+      },
+      "decision": "ACCEPT",
+      "reason": "대소관계에서 양변에 동일연산할 때 부등호방향 직접판정"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_f633a784773874edc057fe2d50f52318c08e7d7bda3b359626b86beb21851698",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "자연수해가 정확히5개라는 조건을 매개경계의 구간으로 바꿔 최솟값 선택"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "자연수해5개의 열린닫힌 경계에서 계수최솟값",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 13
+      },
+      "decision": "ACCEPT",
+      "reason": "자연수해가 정확히5개라는 조건을 매개경계의 구간으로 바꿔 최솟값 선택"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_18f536605da0807a8e75d21036a7c7b1cd863b589e4157a2b2b798ff573287a1",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "왕복 서로 다른 속력과 체류시간의 단위를 통일하여 시간상한에 연결"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "왕복시간+머무름의 상한거리 모델",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 14
+      },
+      "decision": "ACCEPT",
+      "reason": "왕복 서로 다른 속력과 체류시간의 단위를 통일하여 시간상한에 연결"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_1188e56e08d5b75f1395c57d1aeabd9b59fe9d0ff492d947061356caba6dce1f",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "동류항정리 후 두미지수 일차방정식 정의판정"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "정리후 두미지수·일차성 정의판정",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 15
+      },
+      "decision": "ACCEPT",
+      "reason": "동류항정리 후 두미지수 일차방정식 정의판정"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_c39111c73f89259add204c55196ff7e7a5eb7cf288e10ca1be82639ab723aaf1",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "주어진순서쌍을 각 일차방정식에 직접대입"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "주어진 순서쌍 대입 등식판정",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 16
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진순서쌍을 각 일차방정식에 직접대입"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_43e07462573f64c4b5bfbe656afc5b5e0668d6b335e4974ba556f0c7d62d21b4",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "알려진 두 관계에서 공통해를 구하고 남은 미정계수 복원"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "계수없는 두 식 공통해 후 매개상수 대입",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 17
+      },
+      "decision": "ACCEPT",
+      "reason": "알려진 두 관계에서 공통해를 구하고 남은 미정계수 복원"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_21eb8043504993e62ac9e17e23bd620546b4f0239ba25c8398fda3028a848c31",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "소수·분수 계수 정수화 후 가감하여 해계산"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "소수·분수계수 정수화 후 가감법",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 18
+      },
+      "decision": "ACCEPT",
+      "reason": "소수·분수 계수 정수화 후 가감하여 해계산"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_05df62fd0622f760df230cd8e16bb662c0bf2b3bbb8dbbf6891f87a8178a0ba4",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "계수비와 상수비를 비교하여 일치/무수히많은해 상태선택"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "계수·상수비로 무수히많은 해 판정",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 19
+      },
+      "decision": "ACCEPT",
+      "reason": "계수비와 상수비를 비교하여 일치/무수히많은해 상태선택"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_1d12ad5e458a2d0d9e9e724cc6e2f3466151827b04ac614c8227e33830faad82",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "두 품목 총금액과 가격차의 표준 연립모델"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "총금액과 단가차의 정형연립모델",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 20
+      },
+      "decision": "ACCEPT",
+      "reason": "두 품목 총금액과 가격차의 표준 연립모델"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_db09649f2ddc0b579a815f973d4fed885ccfe8fee8b4bb0b24941b63ed9e9400",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "지정된 순환소수 배율차와 약분의 빈칸을 순차복원"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "제시된 순환소수분수화 과정의 빈칸",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 21
+      },
+      "decision": "ACCEPT",
+      "reason": "지정된 순환소수 배율차와 약분의 빈칸을 순차복원; 주어진 반복표현/변환과정의 짧은 단계이므로 1/2 경계에서 저자1 수용."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_e872310516e425ecd059a766251d464403272be3da28520f8f6ddb1f67f0b0bf",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "잘못 더한 결과에서 다항식을 복원한 후 원래 뺄셈계산"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "잘못더함에서 어떤식복원 후 바른차",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 22
+      },
+      "decision": "ACCEPT",
+      "reason": "잘못 더한 결과에서 다항식을 복원한 후 원래 뺄셈계산"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8b211a32f464172c5841b123dec5ee5360426f5fd8fde87e366f509080cb7ef9",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "분수계수 부등식의 양변정리와 수직선 해집합 표현"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "분모제거 부등식과 닫힌수직선 왼쪽 표현",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 23
+      },
+      "decision": "ACCEPT",
+      "reason": "분수계수 부등식의 양변정리와 수직선 해집합 표현"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_a4d4d96437e4fa44c7188b4e94cf8f979c22f09d7589213cb75b5961a404d2e2",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "기본 두 일차방정식의 직접 가감법; 제공된 대입법은 별도 경우분기가 아닌 대안"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "두식 가감법의 짧은연립해, 별도대입 대안존재",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 24
+      },
+      "decision": "ACCEPT",
+      "reason": "기본 두 일차방정식의 직접 가감법; 제공된 대입법은 별도 경우분기가 아닌 대안"
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 3,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "6자리 반복마디의 나머지 위치; source학습level과 현재수치의 인접호환을 실제내용으로 독립 승인."
+    },
+    {
+      "sourceOrdinal": 4,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "유리수 포함관계 정의판정; source학습level과 현재수치의 인접호환을 실제내용으로 독립 승인."
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "여러 지수법칙을 적용한 독립계산 검산; source학습level과 현재수치의 인접호환을 실제내용으로 독립 승인."
+    },
+    {
+      "sourceOrdinal": 10,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "여러 수량문장의 부등식화와 둘레공식 점검; source학습level과 현재수치의 인접호환을 실제내용으로 독립 승인."
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "부등호 방향의 기본성질 적용; source학습level과 현재수치의 인접호환을 실제내용으로 독립 승인."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "제시된 순환소수분수화 과정의 빈칸; source학습level과 현재수치의 인접호환을 실제내용으로 독립 승인."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "두식 가감법의 짧은연립해, 별도대입 대안존재; source학습level과 현재수치의 인접호환을 실제내용으로 독립 승인."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 5,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 9,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 10,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 15,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 18,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 22,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "requiredMethodEvidenceDebt": 0,
+  "nativeMethodFailures": 0,
+  "notes": [
+    "24 actual stems/choices/existing solutions and Q8 actual cuboid figure read. Initial difficulty snapshot precedes author comparisons; previously disclosed13/14 values recorded.",
+    "R2 Q17 linear-system method568 and Q19 actual target system568 are exact original literals and accepted.",
+    "Q5 independent exponent leaves retain primary/CC/integration null; Q4/Q10/Q15/Q16 exact leaf gaps remain.",
+    "Actual ACTIVE round-trip, unit-price, restore-polynomial definitions/parents and reused common-system/no-solution definitions compared. Q19 infinitely-many solution is not exact no-solution binding. Q24 supplied elimination primary and substitution alternative are not CASE_BRANCH.",
+    "Source curriculum missing remains proposal; target binding/genuine resolver not inferred. Source, answer, solution, UID and figures unchanged."
+  ]
+}

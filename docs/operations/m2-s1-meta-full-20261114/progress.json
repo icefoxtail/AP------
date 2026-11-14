@@ -19,10 +19,10 @@
     "existingFourSlotCount": 24,
     "canonicalUidCount": 1780
   },
-  "reviewedExams": 66,
-  "reviewedQuestions": 1572,
-  "remainingExams": 9,
-  "remainingQuestions": 208,
+  "reviewedExams": 67,
+  "reviewedQuestions": 1596,
+  "remainingExams": 8,
+  "remainingQuestions": 184,
   "nextAction": "Continue remaining disjoint exam queues and actual author-independent checks; publish and remote-verify one exam at a time.",
   "registrationStatus": "NOT_RUN",
   "mainMergeStatus": "NOT_AUTHORIZED",
@@ -10370,8 +10370,132 @@
       "solutionCount": 24,
       "existingFourSlotCount": 0,
       "existingFourSlotRef": null,
-      "status": "QUEUED",
-      "reviewedQuestionCount": 0
+      "status": "REVIEWED_RELEASE_PENDING",
+      "reviewedQuestionCount": 24,
+      "fullyJudgedQuestionCount": 23,
+      "finalSourceBlob": "d6c0c266d1ad637f00a3381e7229f9990f04e6fd",
+      "sourceFieldEditCount": 124,
+      "artifactDir": "docs/operations/m2-s1-meta-full-20261114/exams/E058",
+      "currentArtifactIndex": "docs/operations/m2-s1-meta-full-20261114/exams/E058/CURRENT.json",
+      "independentReviewer": "B",
+      "independentSampleOrdinals": [
+        8,
+        13,
+        23
+      ],
+      "rpmGapOrdinals": [
+        4,
+        10,
+        15,
+        16
+      ],
+      "registrationPendingOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "contentDebtOrdinals": [],
+      "unresolved": [
+        {
+          "sourceOrdinal": 5,
+          "questionUid": "qid_v1_9f4c7152c9702e3a45ec4b3ecff5c6960612a455d83a8de69335c5407beca814",
+          "reasons": [
+            "META_ONLY_UNRESOLVED"
+          ]
+        }
+      ],
+      "requiredEvidenceDebt": [],
+      "topicSummary": [
+        {
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "count": 4,
+          "ordinals": [
+            5,
+            6,
+            8,
+            9
+          ]
+        },
+        {
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "count": 2,
+          "ordinals": [
+            7,
+            22
+          ]
+        },
+        {
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "count": 5,
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            21
+          ]
+        },
+        {
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "count": 4,
+          "ordinals": [
+            11,
+            12,
+            13,
+            23
+          ]
+        },
+        {
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "count": 2,
+          "ordinals": [
+            10,
+            14
+          ]
+        },
+        {
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "count": 6,
+          "ordinals": [
+            15,
+            16,
+            17,
+            18,
+            19,
+            24
+          ]
+        },
+        {
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "count": 1,
+          "ordinals": [
+            20
+          ]
+        }
+      ],
+      "nextAction": "CODEX_RESOLVE_NAMED_DEBTS_AND_REGISTER",
+      "localWorkStatus": "AUTHOR_AND_INDEPENDENT_BYTES_PRESERVED"
     },
     {
       "examId": "E059",
@@ -12778,8 +12902,8 @@
       "reviewedQuestionCount": 0
     }
   ],
-  "fullyJudgedQuestions": 1187,
-  "updatedAt": "2026-11-14T15:21:29.937482+00:00",
+  "fullyJudgedQuestions": 1210,
+  "updatedAt": "2026-11-14T15:22:27.168385+00:00",
   "verifiedExamPublications": [
     {
       "examId": "E001",
@@ -13001,11 +13125,11 @@
   "pendingAmendmentsReference": "docs/operations/m2-s1-meta-full-20261114/PENDING_AMENDMENTS.json",
   "localRecoveryReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json",
   "workingSnapshot": {
-    "inspectedAndRemotelyPreservedQuestions": 1572,
-    "independentThreeItemSamples": 198,
-    "unresolvedMarkedQuestions": 385,
-    "rpmGapQuestions": 277,
-    "registrationPendingQuestions": 1560,
+    "inspectedAndRemotelyPreservedQuestions": 1596,
+    "independentThreeItemSamples": 201,
+    "unresolvedMarkedQuestions": 386,
+    "rpmGapQuestions": 281,
+    "registrationPendingQuestions": 1584,
     "contentDebtQuestions": 101,
     "requiredMethodEvidenceDebtQuestions": 329,
     "interpretation": "Counts overlap. Reviewed means the bounded review and its named debts were preserved, not full quality PASS or registration. The current publication becomes remotely preserved only after CAS push and remote HEAD readback."
@@ -15090,6 +15214,30 @@
         "docs/operations/m2-s1-meta-full-20261114/progress.json"
       ],
       "verifiedAt": "2026-11-14T15:20:31.998620+00:00",
+      "method": "GitHub connector exact staged tree and commit; non-force expected parent update; remote ref and commit readback; exact SHA local object import."
+    },
+    {
+      "label": "E069",
+      "commitSha": "ff0f3cced1fb9374cc59b227983b66a2cbac9379",
+      "parentSha": "697342690ca3e3170579f7ebc5a5413005900e46",
+      "treeSha": "0d82b7c2f08a04d3c893fd76eb8197e446cca15f",
+      "remoteHeadVerified": true,
+      "files": [
+        "docs/operations/m2-s1-meta-full-20261114/HANDOFF.md",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E069/CURRENT.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E069/accepted-review.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E069/author-four-slot.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E069/author-supplements/blind-initial.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E069/four-slot.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E069/independent-supplements/initial.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E069/independent.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E069/review.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E069/root-review.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E069/source-writer-deferred.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E069/validation.json",
+        "docs/operations/m2-s1-meta-full-20261114/progress.json"
+      ],
+      "verifiedAt": "2026-11-14T15:21:37.035561+00:00",
       "method": "GitHub connector exact staged tree and commit; non-force expected parent update; remote ref and commit readback; exact SHA local object import."
     }
   ],
