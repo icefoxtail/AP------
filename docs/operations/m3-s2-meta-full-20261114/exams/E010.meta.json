@@ -8,8 +8,8 @@
   "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
   "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
   "sourceBeforeBlob": "fb98c338bfcdcb20e62b12026e07e2a443f8cccf",
-  "sourceAfterBlob": "6b4fa9787bf1878cc30ee80f5e3c8172493d0c1d",
-  "sourceAfterSha256": "630a74d3b2599d0146822b7f5d21a00cdc53d0a40081142a56b58a99dfbefd0c",
+  "sourceAfterBlob": "f3c6b051095f057f99d3cd8b6d5e8ad6c9829cca",
+  "sourceAfterSha256": "f2ffc17ea99cae705cbf51c46113261d74ef50eb4b0954f49a7ab91b5b1cb173",
   "questionCount": 24,
   "uidDigest": "4e66652f712149097e873ff3a5727a1e9ef3fa7d976c82c4dfdc088f42d81433",
   "authorRawReviewSha256": "02c4c98afd29b61bdd5fb3bd0dfd8bc07520e339d56b7b056ed607591dbc9d9a",
@@ -25,7 +25,7 @@
   "artifactRefs": {
     "sourcePatch": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E010.source-patch.json",
-      "sha256": "96858f9ab5a7b434cfd12d9903839ecfec130386ea4c9977665cdfcc2aa3ac62"
+      "sha256": "04ee744f1b5d12ae880c024e16821891f58e3ab5802b6b40ab82da5a904c22b3"
     },
     "fourSlot": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
@@ -42,6 +42,10 @@
     "difficultyAdjudication": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E010.difficulty-adjudication.json",
       "sha256": "7474b4a69f5defbd0d076811a1dffc54f4990842d7be3438d8827cd2ecae4463"
+    },
+    "displayLabelCorrection": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E010.display-label-correction.json",
+      "sha256": "e12f521132df567e9a00cd5660c9668c5715f2602d453ccd9e16726bea76ee2a"
     }
   },
   "items": [
@@ -2912,7 +2916,7 @@
       "after": {
         "standardCourse": "중2 수학",
         "standardUnitKey": "M2-05",
-        "standardUnit": "삼각형의 성질",
+        "standardUnit": "도형의 성질",
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
@@ -3883,6 +3887,14 @@
   "operationalRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
   "mainMerge": "NOT_RUN_USER_EXCLUDED",
   "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
-  "semanticPayloadSha256": "6330266285e7c0a8501b0a059c0f949fdcc43c2bdb48960f6695963f600b87c8",
-  "independentFinalStatus": "PASS"
+  "semanticPayloadSha256": "d7ed5a6cadf19429428c74eb196dfb0a6f56a0bedc54e896c20e991048c9db39",
+  "independentFinalStatus": "PASS",
+  "rootCorrection": {
+    "kind": "CANONICAL_DISPLAY_LABEL_ONLY",
+    "artifact": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E010.display-label-correction.json",
+      "sha256": "e12f521132df567e9a00cd5660c9668c5715f2602d453ccd9e16726bea76ee2a"
+    },
+    "originalAuthorReviewUnchanged": true
+  }
 }
