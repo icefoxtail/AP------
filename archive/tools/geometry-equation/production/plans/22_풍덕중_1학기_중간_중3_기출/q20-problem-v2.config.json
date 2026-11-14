@@ -1,0 +1,166 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js",
+  "questionId": 20,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "24"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "24"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "ab",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "bc",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "cd",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "da",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "givenWidth",
+              "ownerSegment": "da",
+              "text": "24",
+              "unit": "cm",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "givenHeight",
+              "ownerSegment": "cd",
+              "text": "x",
+              "unit": "cm",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 590,
+          "height": 355
+        },
+        "caption": "가로 24센티미터와 세로 x센티미터인 직사각형 ABCD",
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 34,
+        "displayScale": 0.45,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}
