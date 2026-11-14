@@ -1,0 +1,499 @@
+{
+  "schemaVersion": "binding-course-correction-v2-independent-code-review-v1",
+  "owner": "/root/main_receipt",
+  "status": "INDEPENDENT_STATIC_REVIEW_COMPLETE_NO_BLOCKING_FINDINGS",
+  "createdAtUtc": "2026-11-13T20:42:58.905837+00:00",
+  "implementationReviewed": true,
+  "implementationWorktree": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge",
+  "baselineMain": "bf35b7e13417b033ee167117d567a9f0262712d6",
+  "scope": {
+    "operation": "One existing MIDDLE1 binding standardCourse spelling correction, preserving existing approvals across derived sources",
+    "bindingPointer": "/bindings/154",
+    "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+    "expectedAffectedUids": [
+      "qid_v1_13e2eac8fb571a990e58082dd8da83a4e8e903655c974e591bcd17cc6a822522",
+      "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2",
+      "qid_v1_63b7882e55688be203b1ad8541fae9d3c18e60e6678a855ea676afdeab51497b",
+      "qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac",
+      "qid_v1_d94fa7d473fa39559b5a1313bb6169d669806c4ff8226d1adff023029cbc88eb"
+    ],
+    "expectedAffectedCount": 5,
+    "expectedSourceCount": 2,
+    "dongsanOrdinals": [
+      11,
+      12,
+      13,
+      14
+    ],
+    "pungdeokOrdinal": 20,
+    "runtimeConsumerScope": "All MIDDLE1 runtime records, including unrelated and non-approved consumers"
+  },
+  "baselineFiles": [
+    {
+      "path": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "rawSha256": "4abbb404fed6bf73c142b2c4aa17f818eec327588e6ec306d61fdc496fd1ed4a"
+    },
+    {
+      "path": "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+      "rawSha256": "41ab37b94358320dfa1a4704ac87029b3f2c1ce2527f216c8a6108d97532dbcd"
+    },
+    {
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "rawSha256": "8a217ce01fa7c774214f17f069b0ac68e0b1e319d0b147b8273eb215579b9b43"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "rawSha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1"
+    },
+    {
+      "path": "archive/tools/meta-foundation/compile-meta-foundation.mjs",
+      "rawSha256": "742cac9a4abf22c3efaf1aa6759e285c9229e9a6c769b7bdec162eb82a93caa5"
+    },
+    {
+      "path": "archive/tools/meta-foundation/active-registry.mjs",
+      "rawSha256": "fb92f3db9c869183cf04415f9a1d678c60ba52a7ad1ec995beb57e77bdf402ed"
+    },
+    {
+      "path": "tools/ci/register-reviewed-meta-requests.mjs",
+      "rawSha256": "a232676743daf46f670011f1a83c2b5b1aadff4238a6f093a8b3541aea4d6d51"
+    },
+    {
+      "path": "tools/ci/reviewed-meta-register-pass.sh",
+      "rawSha256": "e42a9e08e3a76484dbb1dc07360f32c0a3d1ef5426a2fd7c907c9df3f7244cf0"
+    },
+    {
+      "path": "tools/ci/collect-reviewed-consumer-refusals.mjs",
+      "rawSha256": "15d2cd0dd98685378448c5c89acb61f477c72b647b3a4d326497f27c5c250392"
+    },
+    {
+      "path": "tools/ci/verify-registered-consumer-approval.sh",
+      "rawSha256": "a15700fece5adb325e8e4b53e232b02d8edb3367c4f91548d7ddc6b4f330e8ff"
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "rawSha256": "e64c3db00788dd7c5bf64b53c53c013b303eb2fd202b17c9d0ebde3431e4fb7c"
+    },
+    {
+      "path": "tools/ci/archive-main-auto-meta-pass.sh",
+      "rawSha256": "01319ae3672a5d974bcd9a32fc4ded4091c0402c1ffce42bfa5e3fe3d10c6524"
+    },
+    {
+      "path": ".github/workflows/archive-main-auto-meta.yml",
+      "rawSha256": "b113c3db65c760d1886547b0c809b35a970c7ba1ed1de85103bdb8f714a66aa8"
+    },
+    {
+      "path": "tests/archive-binding-course-correction.test.mjs",
+      "rawSha256": "30ac1ca9cb47eb3306422391fa03673335d937e742d9f58aec66323265bde5fe"
+    },
+    {
+      "path": "docs/operations/binding-course-correction-v1.md",
+      "rawSha256": "adf3df195f3ea19461bc5dbdbec2fd7ad0c26649b900be8462a6d3828350d53a"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-dongsan-binding-course-scope.json",
+      "rawSha256": "b52bff377b492e4aa9ae4ea9812102513751b9ff73e01c0742b1086c70c661a8"
+    }
+  ],
+  "flowRead": [
+    {
+      "stage": "Dispatch",
+      "path": "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+      "observation": "Current dispatcher recognizes only binding correction request-v1; v2 must be explicitly dispatched without relaxing ordinary reviewed-exam-v2."
+    },
+    {
+      "stage": "Apply and projection",
+      "path": "tools/ci/reviewed-meta-register-pass.sh",
+      "observation": "Schema detection enables the dedicated tests; another schema list invokes --verify-projection before shared consumer collection. Both must include v2."
+    },
+    {
+      "stage": "Consumer unit and source bind",
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "observation": "Current correction unit has one source/expectedBlob and uses preservation, not normal newly-approved checkRow. v2 must bind every derived source while preserving that approval-free path."
+    },
+    {
+      "stage": "Per-request refusal",
+      "path": "tools/ci/collect-reviewed-consumer-refusals.mjs",
+      "observation": "Exactly one exam summary per request path is required. Failure.exam must map to exactly that request; two sources must not become two summaries for one request."
+    },
+    {
+      "stage": "Final consumer after all lanes",
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "observation": "Reviewed finalCommands invokes the shared consumer wrapper after derived lanes converge; actual persisted SHA is provided by the writer/push helper rather than the wrapper’s historical post-push label."
+    },
+    {
+      "stage": "Receipt replay",
+      "path": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "observation": "Existing receipt verifier reconstructs pre-correction documents, regenerates compiled/index output sets and compares protected raw files plus full runtime records and consumer snapshots."
+    }
+  ],
+  "invariants": [
+    "Only literal standardCourse 中1 수학 -> 중1 수학 in one existing ACTIVE MIDDLE1 binding; preserve every other row/field/status/count/PT/TPL/support UID.",
+    "Derive exact impacted UID closure from both old/new tuple metadata matches, all runtime matches and binding supporting UIDs. Request inputs cannot whitelist away external consumers.",
+    "Every affected UID must already have correctly spelled source/meta/runtime tuple, matching identity, existing approved status and SHA-bound compact accepted R2 proof/index. No missing or old-spelling metadata migration.",
+    "Derive a sorted exact source set from affected consumers and bind each source raw SHA256, Git blob SHA1, question denominator and source-specific ordinal/question-number/curriculum/classification.",
+    "Preserve all source/metadata/identity/proof/index bytes and the entire MIDDLE1 runtime records array; only version envelope and deterministic compiled/index outputs can change.",
+    "Compare the real resolved/page semantic snapshot of all MIDDLE1 runtime UIDs before and after. Existing missing approvals stay missing; selection and pending reasons stay equal.",
+    "Keep one request summary with 5 preserved UIDs and 2 separately verified sources, so existing refusal collector remains exact and fail-closed.",
+    "Preserve v1 single-source rejection and ordinary reviewed-exam-v2 external approved-consumer signature guard.",
+    "Version-specific strict request/receipt shapes must reject unknown schema, extra approval/items/registryChanges, manipulated sets/hashes and receipt collisions.",
+    "Write failures restore every planned output; raw input changes during async consumer read are refused before writes."
+  ],
+  "designRisksNotYetImplementationFindings": [
+    {
+      "id": "R1",
+      "risk": "Keeping v1 single-source precheck can bind only DongSan while omitting Pungdeok source bytes or metadata/proof provenance.",
+      "requiredEvidence": "Derived source snapshots appear in the request and exact beforeFiles set; final preservation checks every source snapshot."
+    },
+    {
+      "id": "R2",
+      "risk": "Model-provided sources or preservedConsumers could narrow impact closure and bypass external approved consumers.",
+      "requiredEvidence": "Registrar derives closure independently from live files and compares exact request arrays, rejecting omissions/additions/relabelled source ordinal pairs."
+    },
+    {
+      "id": "R3",
+      "risk": "Two source summaries for one request break existing collector; second-source failures under the wrong exam key become non-isolatable.",
+      "requiredEvidence": "One consumer summary per request, all source checks associated with that summary; 5 UID denominator retained."
+    },
+    {
+      "id": "R4",
+      "risk": "Receipt replay could trust a self-declared source/protected-file list and conceal a second-source or approval mutation.",
+      "requiredEvidence": "Strict source set and hash linkage from request, exact output/protected sets regenerated, and all source/proof bytes verified."
+    },
+    {
+      "id": "R5",
+      "risk": "Using fresh approval semantics for the correction promotes pending state or hides changes on runtime UIDs outside the five directly affected rows.",
+      "requiredEvidence": "Unchanged captureBindingCourseConsumers scope and fields; correction verification always preservation with approvalCreated false."
+    },
+    {
+      "id": "R6",
+      "risk": "A broad schema predicate or a relaxed foreign-exam guard changes old routes.",
+      "requiredEvidence": "Explicit v1/v2 enums, v1 foreign rejection still exercised, ordinary v2 source file identical or unchanged external guard proved by diff."
+    }
+  ],
+  "focusedTestRequirements": [
+    {
+      "id": "T1",
+      "case": "Positive multi-source correction",
+      "expect": "Builder derives 5 approved UIDs in 2 sources, write changes one course field plus pack/runtime envelope/compiled/index/receipt, all normal files and runtime records unchanged; verify/replay succeed with no new approval."
+    },
+    {
+      "id": "T2",
+      "case": "Missing/extra consumer and source set",
+      "expect": "Remove Pungdeok UID/source or add an unrelated UID/source; independently recomputed closure rejects before writes."
+    },
+    {
+      "id": "T3",
+      "case": "Second-source provenance",
+      "expect": "Stale raw/blob/count, source tuple/question number/curriculum mismatch, identity mismatch, unapproved metadata/runtime or compact R2 proof/index mismatch for source 2 is rejected."
+    },
+    {
+      "id": "T4",
+      "case": "Source/ordinal swap and unsafe source",
+      "expect": "A preserved UID from source 2 cannot be relabelled as same ordinal in source 1; duplicates, non-M1/non-original/unsafe paths fail closed."
+    },
+    {
+      "id": "T5",
+      "case": "Post-write protection and full-pack consumer drift",
+      "expect": "Second source/proof/runtime/metadata mutation or changed unrelated MIDDLE1 selection/approval/pending state fails verify; omitted protected refs or forged output hashes fail."
+    },
+    {
+      "id": "T6",
+      "case": "Write rollback and concurrency",
+      "expect": "Existing v1 rollback, pre-write raw-input drift and deterministic receipt reconstruction coverage remains; include source 2 in protected inputs."
+    },
+    {
+      "id": "T7",
+      "case": "Legacy and guard preservation",
+      "expect": "Current v1 foreign-exam rejection still passes; normal reviewed-exam-v2 external approved UID guard remains unchanged and continues refusing direct shared binding mutation."
+    },
+    {
+      "id": "T8",
+      "case": "Dispatch/Consumer/collector reachability",
+      "expect": "v2 is recognized by dispatcher, writer schema gate and deriveUnit; one request report checks 5 UIDs/2 sources; source-2 preservation failure is attributable to the single request; global failures remain fatal."
+    }
+  ],
+  "notExecuted": [
+    "Any tests by this reviewer",
+    "Consumer rebuild by this reviewer",
+    "Source/native/code edits by this reviewer",
+    "Git/index/remote mutations",
+    "Actual-main registration or publication",
+    "Mathematical R1/R2/R3 or FINAL QA"
+  ],
+  "feedbackSentToImplementer": [
+    "Derived union and per-source binding/proofs/full-runtime preservation requirements",
+    "One request summary constraint of collect-reviewed-consumer-refusals; no two-summary expansion"
+  ],
+  "nextAction": "Root verifies its real isolated post-build Consumer preservation and the protected output set, then persists the code/evidence through the authorized PR path. Bind subsequent actual request/receipt/main SHA separately. Re-open this code review only if one of the frozen seven files changes.",
+  "previousRevisionRawSha256": "33f9217eee47b93d86fee798b16878d20ad7540331e71c3f771c11a6aea9a15f",
+  "completedAtUtc": "2026-11-13T20:54:26.115633+00:00",
+  "implementationBinding": {
+    "worktree": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge",
+    "baseHead": "bf35b7e13417b033ee167117d567a9f0262712d6",
+    "committed": false,
+    "published": false,
+    "implementationReport": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/implementation-report.json",
+      "rawSha256": "cfc035fdf750db8cb61842f410b5a59fa0823236395d02673aefd36cbe33eb0b"
+    },
+    "patch": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/binding-course-correction-v2.patch",
+      "rawSha256": "7f101ea6ea9c28b1776b96b244bfdcea38f6cbe10b610b3e3f69642d6c587f48"
+    },
+    "files": [
+      {
+        "path": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+        "rawSha256": "44d356cd06ecf48a3a3bf2d0dfa828336fc4ed95a021f61006a99d3b44e45ace",
+        "bytes": 36002
+      },
+      {
+        "path": "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+        "rawSha256": "ccba13a19ce5f62ece21f59078670cee6e4666a883cd06c537cf684d173421a3",
+        "bytes": 22419
+      },
+      {
+        "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+        "rawSha256": "308d71c196e4fb70cf7917ffbc2523c44579ad220b4782d83032d6245bf75591",
+        "bytes": 32064
+      },
+      {
+        "path": "tools/ci/reviewed-meta-register-pass.sh",
+        "rawSha256": "9c65aa43a5521368dbc7b700c6a915e13a27ba3e6fbcfed4ab12713ae77a5215",
+        "bytes": 9524
+      },
+      {
+        "path": "tests/archive-binding-course-correction.test.mjs",
+        "rawSha256": "9210af6b4fb162ec80f17d3307d7ddb26fa7f84c4f886c18b2e9a0d9287f3e78",
+        "bytes": 38223
+      },
+      {
+        "path": "docs/operations/binding-course-correction-v1.md",
+        "rawSha256": "2f3e7f544119c113a3a657c5bf5685fb1f94e56ff8aa3930be3ba8c28c610cd9",
+        "bytes": 8116
+      },
+      {
+        "path": "docs/operations/binding-course-correction-v2.md",
+        "rawSha256": "b12af9027d3a93b39484b73760f0fa9e4d77b53b3da9e97c6eedb9bc7503ffb9",
+        "bytes": 6000
+      }
+    ],
+    "finalFilesMatchImplementerFrozenManifest": true
+  },
+  "findings": [],
+  "reviewConclusion": "Frozen seven-file implementation has no blocking code findings in the inspected scope. It preserves the ordinary approval route and adds a strict multi-source, one-binding preservation route. This is a code review conclusion, not live consumer, mathematical FINAL, production registration or main-merge approval evidence.",
+  "concreteDiffReview": [
+    {
+      "id": "C1",
+      "path": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "anchor": "facts(), affected closure and per-UID approval/provenance checks",
+      "conclusion": "Metadata old/new tuple union, all runtime tuple matches and existing support UIDs determine the set. Metadata, identity, runtime, correct spelling, ACTIVE PT/TPL and indexed accepted R2 proof must already agree. Every consumer source must be an original M1 exam; no external UID is silently excluded."
+    },
+    {
+      "id": "C2",
+      "path": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "anchor": "facts() sourceSnapshots and beforeFiles; builder V2; validateRequest()",
+      "conclusion": "Sources are derived from preserved rows, sorted and read through the same guarded cache before asynchronous Consumer loading. Raw SHA256/blob SHA1/full source denominator and each source UID set are bound. Full metadata/identity ordinal coverage and affected source tuple/curriculum/question-number matching are checked. Caller-supplied source/UID allowlists and extra fields are rejected."
+    },
+    {
+      "id": "C3",
+      "path": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "anchor": "checkReceiptFiles() registered:true closure at lines 400–410",
+      "conclusion": "Replay first binds the strict request/receipt source arrays and reconstructed one-field/version/derived output state, then re-derives actual sources and preserved consumers from the corrected binding. Joint request/receipt omission of source 2 or its protected source/proof files is rejected."
+    },
+    {
+      "id": "C4",
+      "path": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "anchor": "captureBindingCourseConsumers(), plan(), final raw-input guard, write rollback",
+      "conclusion": "Full MIDDLE1 runtime records and resolved/page semantic snapshots remain the preservation denominator. No new approval is created. Existing output-only scope, exactly one patch increment, deterministic compile/index reconstruction, raw-input concurrency refusal and rollback are retained."
+    },
+    {
+      "id": "C5",
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "anchor": "deriveUnit() V2 branch; sourceBindings loop; correction preservation branch",
+      "conclusion": "One requestId yields one collector unit containing all affected UIDs, with source-specific ordinals preserved. Every derived source blob is checked before the existing whole-pack preservation verifier; source-2 failures retain the request attribution. V2 source filenames reject backslash/NUL before normalization or reads. Legacy units use the same single-source fallback binding as before."
+    },
+    {
+      "id": "C6",
+      "path": "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs; tools/ci/reviewed-meta-register-pass.sh",
+      "anchor": "explicit binding v1/v2 schema dispatch, dedicated test activation and --verify-projection list",
+      "conclusion": "Both schema variants enter the same narrow correction registrar and existing projection/final consumer gates. No collector skip, ordinary approval exception or schema-prefix wildcard was added."
+    },
+    {
+      "id": "C7",
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "anchor": "ordinary v2 out-of-scope approved consumer signature guard",
+      "conclusion": "File raw SHA256 is identical to the pre-implementation baseline. The independent correction route does not edit the existing approval/foreign-consumer guard.",
+      "rawSha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1"
+    },
+    {
+      "id": "C8",
+      "path": "tests/archive-binding-course-correction.test.mjs; docs/operations/binding-course-correction-v1.md; docs/operations/binding-course-correction-v2.md",
+      "anchor": "5 affected UIDs/2 source/6 runtime fixture and explicit documentation limits",
+      "conclusion": "Tests exercise the real registrar/compiler/dispatch/aggregate gate with an explicitly synthetic Consumer. V1 cases remain; source-2 provenance, omission/extra/unknown/unapproved input, replay concealment, rollback, unrelated runtime state, attribution and unsafe normalization are covered. Docs preserve single-source v1 and distinguish code fixtures from actual operation."
+    }
+  ],
+  "preImplementationRiskResolutions": [
+    {
+      "risk": "R1",
+      "status": "CLOSED_IN_DIFF",
+      "evidence": [
+        "C1",
+        "C2",
+        "C5"
+      ]
+    },
+    {
+      "risk": "R2",
+      "status": "CLOSED_IN_DIFF_AND_FOCUSED_NEGATIVES",
+      "evidence": [
+        "C1",
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "risk": "R3",
+      "status": "CLOSED_IN_DIFF_AND_ACTUAL_ROUTING_FIXTURE",
+      "evidence": [
+        "C5",
+        "C8"
+      ]
+    },
+    {
+      "risk": "R4",
+      "status": "CLOSED_IN_DIFF_AND_JOINT_OMISSION_NEGATIVES",
+      "evidence": [
+        "C3",
+        "C4"
+      ]
+    },
+    {
+      "risk": "R5",
+      "status": "CLOSED_IN_DIFF_AND_FULL_FIXTURE_RUNTIME_COMPARISON",
+      "evidence": [
+        "C4",
+        "C8"
+      ]
+    },
+    {
+      "risk": "R6",
+      "status": "CLOSED_IN_DIFF_LEGACY_CASES_AND_UNCHANGED_ORDINARY_GUARD_HASH",
+      "evidence": [
+        "C6",
+        "C7",
+        "C8"
+      ]
+    }
+  ],
+  "reusedObservedTestEvidence": {
+    "reviewerExecutedTests": [],
+    "dedicatedFinal": {
+      "command": [
+        "node",
+        "--test",
+        "--test-concurrency=1",
+        "tests/archive-binding-course-correction.test.mjs"
+      ],
+      "startedAt": "2026-11-13T20:51:36.714253+00:00",
+      "finishedAt": "2026-11-13T20:51:40.163615+00:00",
+      "exitCode": 0,
+      "tests": 66,
+      "passed": 66,
+      "failed": 0,
+      "skipped": 0,
+      "logRawSha256": "eab9fd77517334653cabc8f4c96674ed9a0ebff740940b4df3e023285d1121b0",
+      "coversFinalV2SourceRegexAndNegativeCase": true
+    },
+    "legacyConsumerAssignmentMarker": {
+      "passed": 1,
+      "evidence": "consumer-routing-regression.log; direct-regressions.json",
+      "reuseReason": "The later regex guard is inside the V2 correction deriveUnit branch only; ordinary assignment route unchanged."
+    },
+    "legacyConsumerSourceBinding": {
+      "initialOutcome": "One failure: four SOURCE_UNREADABLE errors caused by sparse checkout missing an existing immutable Geumdang fixture source. Initial failure log is retained.",
+      "fixturePath": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_확률과통계.js",
+      "fixtureMainSha": "bf35b7e13417b033ee167117d567a9f0262712d6",
+      "fixtureGitBlobSha1": "dcd56049115e51047412d2a7e29b917181db7935",
+      "fixtureRawSha256": "043548f9c0742f42c725dba864642ad0fc1195b8b6b77428d4bbd6fcaec2de08",
+      "reviewerComparedRestoredFileWithExactGitBlob": true,
+      "retryCommand": [
+        "node",
+        "--test",
+        "--test-concurrency=1",
+        "--test-name-pattern=^bindings:",
+        "tests/archive-changed-uid-consumer-approval.test.mjs"
+      ],
+      "retryStartedAt": "2026-11-13T20:49:54.059174+00:00",
+      "retryFinishedAt": "2026-11-13T20:49:58.056420+00:00",
+      "retryExitCode": 0,
+      "retryPassed": 1,
+      "retryFailed": 0,
+      "retryLogRawSha256": "acc6d61eb22a0b1c182d16bb63b23320a79eac9247595b9bc40614244102f5ad"
+    },
+    "refusalCollector": {
+      "passed": 2,
+      "failed": 0,
+      "exitCode": 0,
+      "logRawSha256": "64af3bc7a740d2f59426d7408a6e5caf4e25b98c9a5fa036b69ebac32f38ca7d"
+    },
+    "artifactRefs": [
+      {
+        "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/focused-tests.json",
+        "rawSha256": "81efd3e36136b7626e11191ce7851c676a18d6562f34cccfed7745053f31d5d7",
+        "bytes": 309
+      },
+      {
+        "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/focused-tests.log",
+        "rawSha256": "f14f10de5d45765fae4dbc8d1c521246a9be253120e1b7edadd30faa06ced592",
+        "bytes": 4757
+      },
+      {
+        "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/focused-tests-final.json",
+        "rawSha256": "05018460ecd879699432b64f5c5483b6142e6d0743cbdd5ff81eaadf60cec370",
+        "bytes": 351
+      },
+      {
+        "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/focused-tests-final.log",
+        "rawSha256": "eab9fd77517334653cabc8f4c96674ed9a0ebff740940b4df3e023285d1121b0",
+        "bytes": 4756
+      },
+      {
+        "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/direct-regressions.json",
+        "rawSha256": "e12fae2641e72b7faf2645e422ba90e92d801493e59b7d47bb8208da553574e5",
+        "bytes": 855
+      },
+      {
+        "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/consumer-routing-regression.log",
+        "rawSha256": "423b9fb0f830ea4cda19aad7d90531872616826f5ad977eb073929ec8df4c697",
+        "bytes": 1729
+      },
+      {
+        "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/consumer-refusal-regression.log",
+        "rawSha256": "64af3bc7a740d2f59426d7408a6e5caf4e25b98c9a5fa036b69ebac32f38ca7d",
+        "bytes": 324
+      },
+      {
+        "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/consumer-source-binding-retry.json",
+        "rawSha256": "7940b38531f206bd0ea9a6b6da8165fe1ce309374335f7956e5b2d54ef4c605e",
+        "bytes": 459
+      },
+      {
+        "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/consumer-source-binding-retry.log",
+        "rawSha256": "acc6d61eb22a0b1c182d16bb63b23320a79eac9247595b9bc40614244102f5ad",
+        "bytes": 251
+      },
+      {
+        "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge/.tmp/binding-course-bridge/test-fixture-materialization.json",
+        "rawSha256": "431bf42a80aedfac7643d7a3dc282a7ab0ee18ed0f510e80b7d21b4cce285bc9",
+        "bytes": 420
+      }
+    ],
+    "testEvidenceLimits": "The correction fixtures use a synthetic Consumer dependency. Generic legacy source/assignment regressions and collector tests are limited route checks. They do not certify the production two-source/659-runtime preserved state."
+  },
+  "rootReportedOperationProgressNotIndependentlyCertifiedHere": {
+    "builderDryWrite": "Root reported 5 UID / 2 source / 659 runtime builder, dry-run and isolated write success.",
+    "build": "Root is completing exact-main sparse Python build inputs after preserving the initial setup-failure log.",
+    "productionApplied": false,
+    "thisReviewDoesNotConvertTheseReportsToOperationalPass": true
+  }
+}

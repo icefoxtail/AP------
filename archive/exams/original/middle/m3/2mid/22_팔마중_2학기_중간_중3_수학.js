@@ -194,7 +194,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q03.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q03.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 변 BD를 기준으로 분리한 두 직각삼각형 ABD와 BCD. 두 45° 각은 초록색으로 묶이고, 변 길이는 각 선분에 붙여 표시했다.",
+    "solutionImageCaption": "△ABD에서 AD=2√6, △BCD에서 BC=4이므로 AD×BC=8√6. 답: 8√6, ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -444,7 +448,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q07.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q07.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체 속 삼각형 EGC와 같은 이름으로 분리한 평면 직각삼각형 EGC. EG는 파랑, CG는 주황으로 나타냈다.",
+    "solutionImageCaption": "sin x/cos x=tan x=CG/EG=5/(5√2)=√2/2. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -511,7 +519,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q08.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q08.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 OPQ와 Q에서 OP에 내린 수선 H. 두 직각삼각형 OHQ, PHQ를 색으로 구분하고 OP=8 m, OQ=12 m, ∠O=60°를 표시했다.",
+    "solutionImageCaption": "OH=6 m, QH=6√3 m, PH=2 m이므로 PQ²=2²+(6√3)²=112. 답: 4√7 m, ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -574,7 +586,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q09.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q09.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에 보조선 BD를 그려 두 직각삼각형으로 나눈 그림. 파랑은 45° 두 각, 주황은 다른 삼각형을 표시한다.",
+    "solutionImageCaption": "△BCD에서 BD=90/√2=45√2 m. △ABD에서 AB=2BD/√3=30√6 m. 답: 30√6 m, ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -637,7 +653,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q10.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q10.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 지면 위의 두 관측점 A, B, 건물 발 C, 꼭대기 D. A의 시선 각은 45°, B의 시선 각은 60°이고 CD는 수직이다.",
+    "solutionImageCaption": "tan45°=h/(x+180), tan60°=h/x이므로 x=90(1+√3), h=90(3+√3) m. 답: 90(3+√3) m, ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -704,7 +724,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q11.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q11.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 대각선 AC와 BD의 교각은 60°이고, 두 대각선으로 나뉜 △ABC와 △ACD를 서로 다른 색으로 구분했다.",
+    "solutionImageCaption": "대각선 전체는 AC=8 cm, BD=5√3 cm이고 그 교각은 60°이다. 넓이=1/2·AC·BD·sin60°=30 cm². 답: 30 cm², ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -771,7 +795,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q12.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q12.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 대각선 BD, 변 위의 E와 F, 이등변삼각형 EBF. BE와 BF에 같은 눈금이 있고 B의 각 분할을 색으로 구분했다.",
+    "solutionImageCaption": "BE=BF=t에서 (1/2)t²sin30°=3/2이므로 t=√6. ∠ABE=30°이므로 AB=t cos30°=3√2/2 cm. 정사각형의 넓이는 AB²=9/2 cm². 답: 9/2 cm², ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -838,7 +866,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q13.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q13.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원의 세 현에 내린 중심 수선은 파랑 한 눈금으로 같다. 수선이 각 현을 이등분하며 같은 주황 두 눈금의 여섯 반현 중 AD는 3 cm이다.",
+    "solutionImageCaption": "중심에서 같은 거리의 현 세 개는 길이가 같고, 각 수선은 현을 반으로 나눈다. AD=3 cm이므로 세 변은 각각 6 cm, 둘레는 18 cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -968,7 +1000,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q15.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q15.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O에서 내린 같은 두 수선 OM과 ON은 파랑 한 눈금이며 두 수선 사이 보라 각은 110도이다. 주황 호 AB가 원주각 ACB와 중심각 AOB의 공통 호이다.",
+    "solutionImageCaption": "같은 현 AB와 BC에 대응하는 중심각은 같다. OM과 ON이 각 중심각을 반으로 나누므로 ∠AOB=∠MON=110°이다. 같은 호 AB를 보는 ∠ACB는 55°이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1035,7 +1071,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q16.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q16.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 원 O, 접는 선 AB와 중점 M, 반사된 중심 O′ 및 A와 B를 잇는 접힌 원호. OM과 MO′ 및 AM과 MB에 같은 눈금을 표시했다.",
+    "solutionImageCaption": "OO′=8 cm이므로 OM=4 cm. 직각삼각형 OMA에서 AM=4√3 cm, 따라서 AB=8√3 cm. 답: 8√3 cm, ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1098,7 +1138,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q17.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q17.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원과 접점 D, E, F. 파랑·주황·초록 표식은 각 꼭짓점에서 같은 길이의 접선 쌍을 나타낸다.",
+    "solutionImageCaption": "AD=AF=3 cm, BD=BE=7 cm, CE=CF=6 cm이므로 BC=BE+EC=13 cm. 답: 13, ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1161,7 +1205,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q18.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q18.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 패널은 삼각형 ABC의 내접원과 접점 E,F,G, 두 번째는 B 부근의 P,Q와 PQ의 접점 T를 확대해 나타낸다. 각 접선 길이 쌍을 색과 눈금으로 구분했다.",
+    "solutionImageCaption": "BE=BF=(6+7−9)/2=2 cm이다. PB+PQ+BQ=BE+BF=4 cm. 답: 4 cm, ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1228,7 +1276,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q19.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q19.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형 ABCD, 네 접점과 C·D의 직각 표시. 같은 꼭짓점에서 그은 접선 길이를 색으로 구분했다.",
+    "solutionImageCaption": "A에서의 접선 길이를 u라 두면 AB=u+4, AD=u+2, BC=6, CD=4이다. (u+4)^2=(4−u)^2+16에서 u=1, 따라서 AB=5. 답: 5, ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1295,7 +1347,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q20.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q20.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O와 점 A, B, C, 현의 중점 P·Q, 수선 OP·OQ 및 연하게 칠한 삼각형 OPQ. 같은 반지름·반현·삼각형 변을 색과 눈금으로 구분했다.",
+    "solutionImageCaption": "△OAB와 △OBC는 정삼각형이므로 ∠POQ=60°, OP=OQ=3√3. 넓이=1/2·OP·OQ·sin60°=27√3/4. 답: 27√3/4, ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1362,7 +1418,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q21.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q21.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=24의 중점 C에서 만나는 두 원, P 접선과 현 AQ·중점 H, 색칠한 △AOQ. 같은 반지름과 현의 두 반을 색으로 구분했다.",
+    "solutionImageCaption": "AB=24, C는 중점이다. O′P=6, AO′=18이므로 sin∠O′AP=1/3; AQ=8√2. 넓이=8√2. 답: 8√2, ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1419,7 +1479,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/s01.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/s01.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 수선 AH로 나뉜 두 직각삼각형 △ABH·△ACH, AB=4 cm, B의 30°와 C의 60°.",
+    "solutionImageCaption": "(1) △ABH에서 AH=2 cm. (2) △ACH에서 AC=4√3/3 cm. 답: (1) 2 cm, (2) 4√3/3 cm.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1534,7 +1598,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/s03.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/s03.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 접는 선 AC가 있는 삼각형 ABC와 밑변에 내린 수선 AH. 왼쪽에 테이프 폭 2 cm를 별도 구간으로 표시하고, 같은 눈금으로 AH와 연결했다.",
+    "solutionImageCaption": "∠ACB=67.5°이다. AH=2 cm, AB=BC=2√2 cm이므로 △ABC의 넓이는 2√2 cm². 답: (1) 67.5°, (2) 2√2 cm².",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -1599,6 +1667,10 @@ window.questionBank = [
     "additionalImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/s04_1.png",
       "assets/images/22_팔마중_2학기_중간_중3_수학/s04_2.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 위에는 서로 떨어진 세 원호 조각과 두 현의 수직이등분선, 아래에는 원호 AB와 현 AB, 수선 CM 및 현 아래 중심 O를 나타낸다.",
+    "solutionImageCaption": "(1) 중심은 서로 다른 두 현의 수직이등분선의 교점이다. (2) r=10 cm. 답: (1) 원의 중심은 두 현의 수직이등분선의 교점, (2) 10 cm.",
+    "solutionImageSize": "full"
   }
 ];

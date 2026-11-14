@@ -795,7 +795,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_향림중_1학기_기말_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선의 축 위 꼭짓점 V와 서로 다른 두 높이를 나타낸다. 따뜻한 색의 위쪽 가로선은 곡선과 두 번, 초록색 아래쪽 가로선은 한 번도 만나지 않으며 x축은 꼭짓점에서만 만난다.",
+    "solutionImageCaption": "완전제곱으로 (x−7)²=48−3m이다. 오른쪽이 양수이면 교점이 두 개, 0이면 꼭짓점에서 한 개, 음수이면 없다. 중근은 48−3m=0일 때이므로 m=16, ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1027,7 +1031,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "solutionImage": "assets/images/22_향림중_1학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 a가 1/2의 오른쪽과 3/2의 왼쪽에 놓인다. a의 점 위치는 구간 안 예시이다.",
+    "solutionImageCaption": "왼쪽 거리 |a−1/2|=a−1/2에서 오른쪽 거리 |a−3/2|=3/2−a를 빼면 2a−2이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1090,7 +1098,11 @@ window.questionBank = [
       "COND_NATURAL_NUMBER",
       "COND_RANGE"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "solutionImage": "assets/images/22_향림중_1학기_기말_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 주사위 두 눈 x,y를 열과 행에 놓고 각 칸에 (x−1)(y−3)를 적었다. 양의 완전제곱수에 해당하는 칸이 강조된다.",
+    "solutionImageCaption": "자연수인 제곱근은 양의 완전제곱수에 대응한다. 해당 눈은 (2,4), (5,4), (3,5), (4,6)이다. 확률은 4/36=1/9이며 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1118,7 +1130,10 @@ window.questionBank = [
       "$6\\text{ cm}$"
     ],
     "answer": "④",
-    "solution": "두 정사각형 한 변의 길이를 $AP=x$, $BP=8-x$로 둔다.<br>넓이 합이 $34$이므로 $x^2+(8-x)^2=34$.<br>$2x^2-16x+64=34$<br>$x^2-8x+15=0$<br>$(x-3)(x-5)=0$이어서 $x=3$ 또는 $x=5$.<br>단 $AP>BP$이므로 $x>4$. 따라서 $AP=5$ cm, 정답 ④.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q19_solution.svg\" class=\"exam-img\">",
+    "solution": "두 정사각형 한 변의 길이를 $AP=x$, $BP=8-x$로 둔다.<br>넓이 합이 $34$이므로 $x^2+(8-x)^2=34$.<br>$2x^2-16x+64=34$<br>$x^2-8x+15=0$<br>$(x-3)(x-5)=0$이어서 $x=3$ 또는 $x=5$.<br>단 $AP>BP$이므로 $x>4$. 따라서 $AP=5$ cm, 정답 ④.",
+    "solutionImage": "assets/images/22_향림중_1학기_기말_중3_수학/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 길이가 실제 답과 다른 모식도이다. A에서 P까지의 파란 정사각형과 P에서 B까지의 주황 정사각형을 연결하고, 밑변을 x와 8−x로 나눈다.",
+    "solutionImageSize": "full",
     "sourceQid": 19,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-039",
@@ -1149,7 +1164,8 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "solutionImageCaption": "길이의 관계를 나타낸 모식도이다. 두 넓이의 합으로 x²+(8−x)²=34이다. x는 3 또는 5이고, AP>BP이므로 AP=5 cm이다. 정답은 ④이다."
   },
   {
     "id": 20,
@@ -1177,7 +1193,10 @@ window.questionBank = [
       "6초 후"
     ],
     "answer": "①",
-    "solution": "출발 후 $t$초라 두면 $OP=2t$, $OQ=12-t$ cm이다.<br>$\\angle POQ=90^\\circ$이므로 삼각형 넓이<br>$\\frac12\\cdot OP\\cdot OQ=\\frac12(2t)(12-t)=t(12-t)$.<br>$t(12-t)=20$에서 $t^2-12t+20=0$<br>$(t-2)(t-10)=0$, 즉 $t=2$ 또는 $10$.<br>점 $P$가 $O$에서 $A$까지 이동하는 데 $\\frac{12}{2}=6$초 걸리므로 $0\\le t\\le6$.<br>$t=10$은 물리적 조건에 맞지 않아 제외한다. 따라서 2초 후, 정답 ①.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q20_solution.svg\" class=\"exam-img\">",
+    "solution": "출발 후 $t$초라 두면 $OP=2t$, $OQ=12-t$ cm이다.<br>$\\angle POQ=90^\\circ$이므로 삼각형 넓이<br>$\\frac12\\cdot OP\\cdot OQ=\\frac12(2t)(12-t)=t(12-t)$.<br>$t(12-t)=20$에서 $t^2-12t+20=0$<br>$(t-2)(t-10)=0$, 즉 $t=2$ 또는 $10$.<br>점 $P$가 $O$에서 $A$까지 이동하는 데 $\\frac{12}{2}=6$초 걸리므로 $0\\le t\\le6$.<br>$t=10$은 물리적 조건에 맞지 않아 제외한다. 따라서 2초 후, 정답 ①.",
+    "solutionImage": "assets/images/22_향림중_1학기_기말_중3_수학/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 삼각형의 두 직각변은 OP=2t cm, OQ=12−t cm이고, 정사각형 한 변은 12 cm이다.",
+    "solutionImageSize": "full",
     "sourceQid": 20,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-041",
@@ -1210,7 +1229,8 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "solutionImageCaption": "넓이는 (1/2)(2t)(12−t)=20이다. 해는 2와 10이지만 P의 이동은 0≤t≤6이므로 2초 후이다. 정답은 ①이다."
   },
   {
     "id": 21,
@@ -1387,10 +1407,13 @@ window.questionBank = [
       "RPM_CANDIDATE"
     ],
     "wide": false,
-    "content": "[서술형 4] 다음 그림과 같이 정사각형 모양의 종이의 네 귀퉁이에서 한 변의 길이가 $3\\text{cm}$인 정사각형 모양을 잘라 내어 뚜껑이 없는 직육면체 모양의 선물 상자를 만들었더니 부피가 $300\\text{cm}^3$가 되었다. 처음 정사각형 모양의 종이의 한 변의 길이를 이차방정식을 세워서 구하시오. [5점]<br><br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q24.png\" class=\"exam-img\">",
+    "content": "[서술형 4] 다음 그림과 같이 정사각형 모양의 종이의 네 귀퉁이에서 한 변의 길이가 $3\\text{cm}$인 정사각형 모양을 잘라 내어 뚜껑이 없는 직육면체 모양의 선물 상자를 만들었더니 부피가 $300\\text{cm}^3$가 되었다. 처음 정사각형 모양의 종이의 한 변의 길이를 이차방정식을 세워서 구하시오. [5점]<br><br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q24_question-v2.svg\" class=\"exam-img\">",
     "choices": [],
     "answer": "16 cm",
-    "solution": "처음 종이의 한 변을 $L$ cm라 둔다. 네 모서리에서 $3$ cm 정사각형을 자르므로<br>접은 상자의 높이는 $3$ cm, 바닥의 각 변은 $L-6$ cm이다.<br>부피 $=3(L-6)^2=300$<br>$(L-6)^2=100$<br>$L-6=\\pm10$에서 $L=16$ 또는 $L=-4$.<br>처음 길이는 $L>6$이어야 하므로 $L=-4$를 버린다.<br>따라서 처음 종이의 한 변은 $16$ cm이다.<br><img src=\"assets/images/22_향림중_1학기_기말_중3_수학/q24_solution.svg\" class=\"exam-img\">",
+    "solution": "처음 종이의 한 변을 $L$ cm라 둔다. 네 모서리에서 $3$ cm 정사각형을 자르므로<br>접은 상자의 높이는 $3$ cm, 바닥의 각 변은 $L-6$ cm이다.<br>부피 $=3(L-6)^2=300$<br>$(L-6)^2=100$<br>$L-6=\\pm10$에서 $L=16$ 또는 $L=-4$.<br>처음 길이는 $L>6$이어야 하므로 $L=-4$를 버린다.<br>따라서 처음 종이의 한 변은 $16$ cm이다.",
+    "solutionImage": "assets/images/22_향림중_1학기_기말_중3_수학/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 종이에서 네 귀퉁이를 잘라낸 전개도이다. 파란 밑면은 한 변이 L−6 cm이고 주황 네 면을 접어 올려 높이 3 cm인 상자를 만든다.",
+    "solutionImageSize": "full",
     "sourceQid": 24,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-039",
@@ -1421,6 +1444,7 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "solutionImageCaption": "한 변 L cm의 종이에서 3 cm씩 양쪽을 빼면 밑면의 한 변은 L−6 cm이다. 3(L−6)²=300에서 L>6이므로 처음 종이의 한 변은 16 cm이다."
   }
 ];

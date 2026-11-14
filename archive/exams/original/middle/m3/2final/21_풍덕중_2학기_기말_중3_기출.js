@@ -962,7 +962,7 @@ window.questionBank = [
       "원의 성질",
       "원주각"
     ],
-    "image": "assets/images/21_풍덕중_2학기_기말_중3_기출/q22-clean.svg",
+    "image": "assets/images/21_풍덕중_2학기_기말_중3_기출/q22-problem-v2.svg",
     "level": "하",
     "category": "원의 성질",
     "originalCategory": "원의 성질",

@@ -40,14 +40,23 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:8d267a2da2cf5df95d2afa444aaaddb2408bffedfb9525d8b17614d7ecebe384",
       "difficultyEvidenceSha": "sha256:dc38ed5ae6e7f4443039ba927dc55bd0605b01d9311c145b877149047c9585b1",
       "solutionImageAlt": "해설 그림: 원 O 안에 중심각 40°인 부채꼴과 중심각 80°인 부채꼴이 색칠되어 있고, 두 부채꼴의 호에 각각 길이 10cm와 x cm가 표시된 그림.",
       "solutionImageCaption": "같은 원에서 호의 길이는 중심각에 비례하므로 10 : x = 40 : 80이다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-089",
+      "rpmPrimaryPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "원과 부채꼴",
+        "l3": "원과 부채꼴의 기본",
+        "l4": "부채꼴의 호의 길이"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "DIRECT_ACTIVE"
     },
     {
       "id": 2,
@@ -88,14 +97,23 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:30d352b1e3eb8724aeed71bac42ead0f57eee4104b0de37cbceb84c05d8fdd38",
       "difficultyEvidenceSha": "sha256:a663210f5eece54ef0f1b1c11e3e00bc0423cc363dfb9b965033fcc5600cb7fc",
       "solutionImageAlt": "해설 그림: 반지름 6cm, 중심각 150°인 부채꼴. 굵게 그린 호에 길이 5π cm, 색칠한 부채꼴 안에 넓이 15π를 표시해 호의 길이와 넓이를 구분한 그림.",
       "solutionImageCaption": "굵은 호는 호의 길이 5π, 색칠한 부분은 넓이 15π를 나타낸다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-091",
+      "rpmPrimaryPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "원과 부채꼴",
+        "l3": "부채꼴의 넓이",
+        "l4": "호의 길이와 넓이 관계"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "DIRECT_ACTIVE"
     },
     {
       "id": 3,
@@ -132,11 +150,20 @@ window.questionBank = [
       "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:59999ec53c3f5f52e6dab267578f839bb1768c6667929f0b4a2f76e4bfa0e536",
-      "difficultyEvidenceSha": "sha256:25c31ca9349331aae236c474db9c1501d66093a97f0f5899e4d6fc92e78efc75"
+      "difficultyEvidenceSha": "sha256:25c31ca9349331aae236c474db9c1501d66093a97f0f5899e4d6fc92e78efc75",
+      "rpmPrimaryRecordId": "M1-RPM-097",
+      "rpmPrimaryPath": {
+        "majorUnit": "입체도형",
+        "midUnit": "다면체와 회전체",
+        "l3": "정다면체",
+        "l4": "면·모서리·꼭짓점 관계"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "DIRECT_ACTIVE"
     },
     {
       "id": 4,
@@ -177,14 +204,23 @@ window.questionBank = [
       "templateKey": "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:c741b6ded5d322e212f84bb68878ab8a86de0000319104892414051b829dbaae",
       "difficultyEvidenceSha": "sha256:c9881ce2f324c010353fe7316610f2e84fc3b0a8837f5e345eeafaa3f63ff2cb",
       "solutionImageAlt": "원기둥 위에 반구가 붙은 회전체의 축단면: 반원 반지름 6 cm, 직사각형 너비와 높이 12 cm",
       "solutionImageCaption": "직사각형 넓이와 반원 넓이를 더해 축단면을 구한다.",
-      "solutionImageSize": "large"
+      "solutionImageSize": "large",
+      "rpmPrimaryRecordId": "M1-RPM-099",
+      "rpmPrimaryPath": {
+        "majorUnit": "입체도형",
+        "midUnit": "다면체와 회전체",
+        "l3": "회전체",
+        "l4": "회전체의 단면"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 5,
@@ -223,16 +259,27 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q5-solution-v2.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_SOLID_OF_REVOLUTION"
+      ],
       "conditionKeys": [],
-      "integrationPattern": "DEEP_COMPOSITE",
+      "integrationPattern": "SEQUENTIAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:4ab3fe1bd84f3e6a69ac884fa734c1d2859d641c7b3010ad5d71d21c77455486",
       "difficultyEvidenceSha": "sha256:2e81880b7812f73b76318cf668437a3e468339acaead59b094d70c07b7e22509",
       "solutionImageAlt": "해설 그림: 왼쪽 위에는 가로 3cm, 세로 8cm인 직사각형이 회전축 l에서 1cm 떨어져 있고, 오른쪽 위에는 회전축 l을 포함한 단면인 직사각형 두 개(오른쪽 직사각형의 가로 3cm, 축에서 바깥 끝까지 4cm)가 있으며, 아래에는 바깥 반지름 4cm, 안쪽 반지름 1cm인 고리 모양의 면이 색칠되어 있다.",
       "solutionImageCaption": "직사각형을 축 l에서 1cm 떨어뜨려 회전시키면 속이 빈 원기둥이 생기고, 위아래 면은 고리 모양이다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-101",
+      "rpmPrimaryPath": {
+        "majorUnit": "입체도형",
+        "midUnit": "입체도형의 겉넓이와 부피",
+        "l3": "기둥의 겉넓이와 부피",
+        "l4": "원기둥"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 6,
@@ -273,14 +320,23 @@ window.questionBank = [
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:2161aaddc24abaf7cbe979f1a57163305a87413da42f5c80539c4b0f4945a2e9",
       "difficultyEvidenceSha": "sha256:9b7e030166456afaa79e4613ccd1f4da97c78aa0768f9e00134572b50faf1e75",
       "solutionImageAlt": "해설 그림: 왼쪽은 윗변 2cm, 아랫변 5cm, 높이 4cm, 빗변 5cm인 직각사다리꼴 밑면(넓이 14로 색칠)이고, 오른쪽은 그 사다리꼴을 밑면으로 하고 높이가 10cm인 사각기둥이다.",
       "solutionImageCaption": "밑넓이 14인 사다리꼴 밑면에 기둥의 높이 10을 곱해 부피를 구한다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-100",
+      "rpmPrimaryPath": {
+        "majorUnit": "입체도형",
+        "midUnit": "입체도형의 겉넓이와 부피",
+        "l3": "기둥의 겉넓이와 부피",
+        "l4": "각기둥"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 7,
@@ -321,14 +377,23 @@ window.questionBank = [
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d40f861ffb5622efa7113b18772e8675459b03eb910b96fd8d1deb4ea6d05b7f",
       "difficultyEvidenceSha": "sha256:e726bcb16f786c3bc3cc901e97ed7c2c447e3a4baf6e87525c348a6ddb011f83",
       "solutionImageAlt": "밑면 한 변 6 cm, 옆면 삼각형 높이 8 cm인 정사각뿔",
       "solutionImageCaption": "정사각형 밑넓이와 네 삼각형 옆넓이를 더한다.",
-      "solutionImageSize": "large"
+      "solutionImageSize": "large",
+      "rpmPrimaryRecordId": "M1-RPM-102",
+      "rpmPrimaryPath": {
+        "majorUnit": "입체도형",
+        "midUnit": "입체도형의 겉넓이와 부피",
+        "l3": "뿔의 겉넓이와 부피",
+        "l4": "각뿔"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 8,
@@ -365,8 +430,10 @@ window.questionBank = [
       "difficultyBoundaryFlag": "B34",
       "legacyLevelCompatibility": "NORMAL",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
-      "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
-      "crossConceptKeys": [],
+      "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
+      "crossConceptKeys": [
+        "CC_SQUARE_PROPERTIES"
+      ],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
       "l3Disposition": "EXISTING_L3_REUSE",
@@ -376,7 +443,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q8-solution.svg",
       "solutionImageAlt": "해설 그림: 정팔면체 속 가운데 정사각형(서로 수직인 두 대각선 12cm), 그 정사각형을 이루는 직각이등변삼각형 하나(직각을 낀 두 변 6cm), 높이 6cm·밑면 12cm인 사각뿔의 옆모습을 나란히 보인 그림.",
       "solutionImageCaption": "가운데 정사각형의 두 대각선 12cm는 수직이고, 한 사각뿔의 높이는 6cm이다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": null,
+      "rpmPrimaryPath": {
+        "majorUnit": "입체도형",
+        "midUnit": "입체도형의 겉넓이와 부피",
+        "l3": "복합입체도형",
+        "l4": "붙인 입체"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "EVIDENCE_DEBT"
     },
     {
       "id": 9,
@@ -408,15 +484,15 @@ window.questionBank = [
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "solution": "구의 $\\dfrac14$을 잘라 냈으므로 남은 부분은 구의 $\\dfrac34$이다.\n구의 겉넓이는 $4\\pi\\times3^2=36\\pi$이므로 남은 곡면의 넓이는 $27\\pi$이다.\n두 절단면은 각각 반지름 3인 반원이므로 넓이의 합은 $9\\pi$이다.\n따라서 $x=27\\pi+9\\pi=36\\pi$이다.\n구의 부피는 $\\dfrac43\\pi\\times3^3=36\\pi$이므로 남은 부피는 $y=27\\pi$이다.\n따라서 $x+y=63\\pi$이고 정답은 ③이다.",
-      "difficultyBucket": 4,
+      "difficultyBucket": 3,
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
-      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DEEP_COMPOSITE",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d19c64599af11f6cc5cee999cc6129eb1b002420cda45a612285df68fc7fae1c",
@@ -424,7 +500,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q9-solution.svg",
       "solutionImageAlt": "해설 그림: 반지름 3cm인 구에서 1/4을 잘라 낸 입체를 그린 그림이다. 세로 반원과 가로 반원 모양의 절단면 두 개가 색칠되어 드러나 있고, 두 절단면은 서로 수직이어서 가운데 직각 표시가 있으며, 가로 반원의 반지름 3cm가 표시되어 있다.",
       "solutionImageCaption": "구의 1/4을 잘라 낸 입체에는 반지름 3인 반원 모양의 절단면 두 개가 서로 수직으로 생긴다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-106",
+      "rpmPrimaryPath": {
+        "majorUnit": "입체도형",
+        "midUnit": "입체도형의 겉넓이와 부피",
+        "l3": "복합입체도형",
+        "l4": "잘라낸 입체"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 10,
@@ -456,15 +541,15 @@ window.questionBank = [
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "solution": "쇠구슬을 모두 꺼냈을 때 줄어드는 물의 부피는 쇠구슬 5개의 전체 부피와 같다.\n쇠구슬의 반지름은 $6\\rm\\,cm$이므로 한 개의 부피는\n$\\dfrac43\\pi\\times6^3=288\\pi\\rm\\,cm^3$\n5개의 부피는 $1440\\pi\\rm\\,cm^3$이다.\n물통의 반지름은 $12\\rm\\,cm$이므로 밑넓이는 $144\\pi\\rm\\,cm^2$이다.\n줄어드는 높이를 $h$라 하면\n$144\\pi h=1440\\pi$\n$h=10$\n따라서 정답은 ①이다.",
-      "difficultyBucket": 4,
+      "difficultyBucket": 3,
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
-      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "INTERDEPENDENT",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:db3114a341841bbc1ae6d8c15a7c39d5c8dd6d5e7b56d885e38b2cab46665e75",
@@ -472,7 +557,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q10-solution.svg",
       "solutionImageAlt": "해설 그림: 밑면의 반지름 12cm, 높이 40cm인 원기둥 모양의 물통 안에 지름 12cm인 쇠구슬 5개가 아래에 2개, 그 위에 2개, 맨 위에 1개로 쌓여 있는 그림이다. 물통의 윗면 반지름 12cm와 높이 40cm가 표시되어 있다.",
       "solutionImageCaption": "쇠구슬 5개가 물통 안에 2개, 2개, 1개씩 쌓여 있다. 구슬을 모두 꺼내면 구슬 5개의 부피만큼 물이 줄어든다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-105",
+      "rpmPrimaryPath": {
+        "majorUnit": "입체도형",
+        "midUnit": "입체도형의 겉넓이와 부피",
+        "l3": "구",
+        "l4": "구의 부피"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 11,
@@ -481,7 +575,7 @@ window.questionBank = [
       "originalCategory": "통계",
       "standardCourse": "중1 수학",
       "standardUnitKey": "M1-08",
-      "standardUnit": "자료의 정리와 해석",
+      "standardUnit": "통계",
       "standardUnitOrder": 8,
       "questionType": "객관식",
       "layoutTag": "grid",
@@ -500,8 +594,8 @@ window.questionBank = [
         "28명"
       ],
       "answer": "①",
-      "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "subUnit": "자료의 해석",
+      "subUnitKey": "M1-08-DATA_ORGANIZATION",
+      "subUnit": "자료의 정리",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "solution": "줄기와 잎 그림에서 잎 하나는 이용자 한 명을 뜻한다.\n각 줄기의 잎의 개수는 $2,4,5,4,3,2$개이다.\n따라서 전체 이용자 수는\n$2+4+5+4+3+2=20$명이다.\n정답은 ①이다.",
@@ -509,11 +603,11 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
-      "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:48e87eb6a0bcf8f51ba234854ad43a48225c4e86e68d14efa1a21579bc9313ff",
@@ -521,7 +615,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q11-solution.svg",
       "solutionImageAlt": "해설 그림: 도서관 이용자의 나이를 나타낸 줄기와 잎 그림이다. 줄기 1~6마다 잎을 괄호로 묶어 잎의 개수 2, 4, 5, 4, 3, 2를 아래에 썼다.",
       "solutionImageCaption": "줄기마다 잎의 개수를 센 줄기와 잎 그림",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-108",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "도수분포",
+        "l4": "도수분포표"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 12,
@@ -530,7 +633,7 @@ window.questionBank = [
       "originalCategory": "통계",
       "standardCourse": "중1 수학",
       "standardUnitKey": "M1-08",
-      "standardUnit": "자료의 정리와 해석",
+      "standardUnit": "통계",
       "standardUnitOrder": 8,
       "questionType": "객관식",
       "layoutTag": "grid",
@@ -548,8 +651,8 @@ window.questionBank = [
         "60대"
       ],
       "answer": "②",
-      "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "subUnit": "자료의 해석",
+      "subUnitKey": "M1-08-DATA_ORGANIZATION",
+      "subUnit": "자료의 정리",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "solution": "각 연령대의 이용자 수는 해당 줄기의 잎의 개수로 비교한다.\n20대는 4명, 30대는 5명, 40대는 4명, 50대는 3명, 60대는 2명이다.\n가장 많은 연령대는 5명인 30대이다.\n따라서 정답은 ②이다.",
@@ -557,11 +660,11 @@ window.questionBank = [
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
-      "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d6d2951324c96cbcaa7482c433639153546f0a2365f13ccaeb4d8f2c1155aa7f",
@@ -569,7 +672,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q12-solution.svg",
       "solutionImageAlt": "해설 그림: 같은 줄기와 잎 그림에서 20대~60대 줄기마다 잎의 개수 4, 5, 4, 3, 2를 쓰고, 잎이 가장 많은 30대 줄기의 잎 다섯 개를 동그라미로 표시했다.",
       "solutionImageCaption": "연령대별 잎의 개수를 비교한 줄기와 잎 그림",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-108",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "도수분포",
+        "l4": "도수분포표"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 13,
@@ -603,14 +715,23 @@ window.questionBank = [
       "difficultyBoundaryFlag": "B12",
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+      "templateKey": null,
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "CASE_BRANCH",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:9ac2d64c7eb7386d5070ce731affbb61ac29402420f4c425a03d5f3779b15945",
-      "difficultyEvidenceSha": "sha256:32bf016408dd27dabc0f157d02beffecb1b009949d44356d8f230de9d99f4cb3"
+      "difficultyEvidenceSha": "sha256:32bf016408dd27dabc0f157d02beffecb1b009949d44356d8f230de9d99f4cb3",
+      "rpmPrimaryRecordId": null,
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "도수분포",
+        "l4": "도수분포표"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "EVIDENCE_DEBT"
     },
     {
       "id": 14,
@@ -650,11 +771,20 @@ window.questionBank = [
       "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d2a39f7a9f987d3601d94b046acd15b4c3b4ea16bd9f266782ce22acb1bfd45e",
-      "difficultyEvidenceSha": "sha256:a0fe5eac42b4d4f4c26a874843fc9322f35bf683325b75abce840c90bf667567"
+      "difficultyEvidenceSha": "sha256:a0fe5eac42b4d4f4c26a874843fc9322f35bf683325b75abce840c90bf667567",
+      "rpmPrimaryRecordId": "M1-RPM-108",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "도수분포",
+        "l4": "도수분포표"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 15,
@@ -693,8 +823,10 @@ window.questionBank = [
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
       "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
       "crossConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:296415b08f569fa0ec2cf719814d7e047ef542cef7480c62aa779d73cbe8b2ac",
@@ -702,7 +834,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q15-solution.svg",
       "solutionImageAlt": "해설 그림: 밝기(럭스)별 도수를 나타낸 히스토그램. 보이는 막대의 도수는 4, 6, 5, 2이고, 찢어져 보이지 않는 두 계급은 점선 테두리로 나타냈다. 16~18럭스 계급에는 2x, 20~22럭스 계급에는 x가 적혀 있고, 아래 괄호에 전체 50개가 표시되어 있다.",
       "solutionImageCaption": "히스토그램에서 보이는 도수 4, 6, 5, 2와, 점선으로 나타낸 16~18럭스의 2x개, 20~22럭스의 x개를 묶어 전체 50개로 나타냈다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": null,
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "도수분포",
+        "l4": "히스토그램·도수분포다각형"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "EVIDENCE_DEBT"
     },
     {
       "id": 16,
@@ -737,12 +878,14 @@ window.questionBank = [
       "difficultyBucket": 3,
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevelCompatibility": "NORMAL",
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
       "crossConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "CASE_BRANCH",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:9d3797504924bb738b941422b5c7af245988b2c91853df3f22ab8b0c12dea543",
@@ -750,7 +893,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q16-solution.svg",
       "solutionImageAlt": "해설 그림: 자유투 성공 횟수 도수분포다각형이다. 많은 쪽에서 11~13회 계급(3명)을 큰 점으로, 9~11회 계급(10명)을 동그라미로 표시하고 두 계급의 합 13명을 괄호로 묶었다.",
       "solutionImageCaption": "많은 쪽에서 3명, 13명까지 센 도수분포다각형",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-109",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "도수분포",
+        "l4": "히스토그램·도수분포다각형"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 17,
@@ -785,12 +937,14 @@ window.questionBank = [
       "difficultyBucket": 3,
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevelCompatibility": "NORMAL",
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
       "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
       "crossConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:3209df5bcd96e7619160e1b9a271671fd6152fc7965de01270d586a2fef1e1b9",
@@ -798,7 +952,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q17-solution.svg",
       "solutionImageAlt": "해설 그림: 오래 매달리기 기록 도수분포다각형이다. 기록이 큰 쪽의 60~70초(2명)를 큰 점으로, 50~60초(4명)를 동그라미로 표시하고 합 6명을 괄호로 묶었다.",
       "solutionImageCaption": "상위 6명을 채우는 두 계급을 표시한 도수분포다각형",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-109",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "도수분포",
+        "l4": "히스토그램·도수분포다각형"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 18,
@@ -837,8 +1000,10 @@ window.questionBank = [
       "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
       "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
       "crossConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:d8cbbaf70bd00d082b4f67bd7dba4a5f1885099ebcc42ebbc3d3363bcf8fdf32",
@@ -846,7 +1011,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q18-solution.svg",
       "solutionImageAlt": "해설 그림: 수학공부 시간의 상대도수 분포 다각형이다. 60분 이상인 세 계급(0.35, 0.15, 0.10)을 동그라미로 표시하고 합 0.60을 괄호로 묶었다.",
       "solutionImageCaption": "60분 이상 세 계급의 상대도수 합을 나타낸 그림",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-110",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "상대도수",
+        "l4": "상대도수 계산"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 19,
@@ -878,15 +1052,15 @@ window.questionBank = [
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "solution": "수영 회원은 50명, 볼링 회원은 40명이므로 상대도수가 비슷해도 실제 회원 수는 다를 수 있다.\n① 그래프에서 볼링 30대의 상대도수는 $0.25$이므로 $40\\times0.25=10$명으로 맞다.\n② 계급은 6개이고 계급의 크기는 10이므로 맞다.\n③ 40대의 상대도수는 두 집단이 거의 같은 수준이지만 전체 회원 수는 수영이 50명, 볼링이 40명이다. 실제 인원으로 바꾸면 수영 40대 회원 수가 볼링 40대 회원 수보다 많으므로 이 설명은 옳지 않다.\n④ 높은 연령대에서는 수영의 상대도수가 전반적으로 더 높으므로 맞다.\n⑤ 40세 이상 50세 미만의 상대도수는 볼링이 수영보다 높으므로 맞다.\n따라서 정답은 ③이다.",
-      "difficultyBucket": 4,
+      "difficultyBucket": 3,
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B34",
-      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
       "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "CASE_BRANCH",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:9215990d279c93b95d45fb058f8d5679d91ce3ced3c3773ce294af65a2f507b2",
@@ -894,7 +1068,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q19-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 수영 회원 50명(실선, 범례 수영(50명))과 볼링 회원 40명(점선, 범례 볼링(40명))의 연령별 상대도수분포다각형. 40대의 두 점 0.28과 0.3, 볼링 30대의 점 0.25에 동그라미를 쳐 두었다.",
       "solutionImageCaption": "수영 회원 50명, 볼링 회원 40명의 연령별 상대도수분포다각형에서 40대와 볼링 30대의 점을 짚은 그림",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-112",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "자료 해석",
+        "l4": "그래프 비교"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 20,
@@ -921,20 +1104,22 @@ window.questionBank = [
         "120명"
       ],
       "answer": "③",
-      "subUnitKey": "M1-08-DATA_ORGANIZATION",
-      "subUnit": "자료의 정리",
+      "subUnitKey": "M1-08-DATA_INTERPRETATION",
+      "subUnit": "자료의 해석",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "solution": "상대도수의 합은 1이다.\n그래프에서 보이는 상대도수의 합은\n$0.12+0.16+0.20+0.08+0.04=0.60$\n따라서 보이지 않는 50kg 이상 55kg 미만 계급의 상대도수는\n$1-0.60=0.40$\n전체 200명 중 학생 수는\n$200\\times0.40=80$명이다.\n따라서 정답은 ③이다.",
-      "difficultyBucket": 3,
+      "difficultyBucket": 2,
       "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
       "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
       "crossConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:f39d6f4aca9fd5c965f643d2d262f896180d2105a9cda2cde60e9c64f8edcd09",
@@ -942,7 +1127,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q20-solution-v2.svg",
       "solutionImageAlt": "해설 그림: 전체 학생 200명의 몸무게 상대도수분포다각형이다. 보이는 점의 상대도수 0.12, 0.16, 0.2, 0.08, 0.04가 적혀 있고, 이 다섯 계급을 한 괄호로 묶어 합 0.6을 적었으며, 50kg 이상 55kg 미만 계급은 찢어져 보이지 않아 물음표 괄호로 표시했다.",
       "solutionImageCaption": "전체 200명의 몸무게 상대도수분포다각형에서 보이는 계급의 상대도수 합과 찢어져 보이지 않는 50kg 이상 55kg 미만 계급을 나타낸 그림",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": null,
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "상대도수",
+        "l4": "상대도수 계산"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "EVIDENCE_DEBT"
     },
     {
       "id": 21,
@@ -975,7 +1169,10 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA",
+        "CC_INCLUSION_EXCLUSION"
+      ],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
       "l3Disposition": "EXISTING_L3_REUSE",
@@ -985,7 +1182,16 @@ window.questionBank = [
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q21-solution.svg",
       "solutionImageAlt": "해설 그림: 한 변이 20cm인 정사각형 안의 큰 사분원 호와 두 반원 호. 큰 호에 10π cm, 렌즈 모양의 두 호에 각각 5π cm를 표시하고, 위쪽 색칠한 부분과 아래쪽 렌즈 모양 안에 넓이 50π-100을 각각 적어 두 넓이가 같음을 보인 그림.",
       "solutionImageCaption": "굵은 호의 길이와 두 색칠한 부분의 넓이 50π-100이 같음을 한 그림에 나타냈다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+      "rpmPrimaryRecordId": "M1-RPM-093",
+      "rpmPrimaryPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "원과 부채꼴",
+        "l3": "복합도형",
+        "l4": "부채꼴을 포함한 넓이"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "DIRECT_ACTIVE"
     },
     {
       "id": 22,
@@ -1015,20 +1221,29 @@ window.questionBank = [
       "difficultyBucket": 3,
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevelCompatibility": "NORMAL",
       "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q22-solution.svg",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
-      "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:0fa0b5fd1ab9d3c30feff67662ab7e3267257d1d1f16fd342f9c075ece2920d3",
       "difficultyEvidenceSha": "sha256:0f9fe5c819a83d380eda6a272f9a566a1a385b98a15ca5d3a917d4b22bc475cd",
       "solutionImageAlt": "윗면 한 변 4 cm와 아랫면 한 변 6 cm인 사각뿔대의 전개도; 옆면은 높이 3 cm인 네 사다리꼴",
       "solutionImageCaption": "두 밑면과 네 사다리꼴 옆면의 넓이를 합해 112 cm²를 구한다.",
-      "solutionImageSize": "large"
+      "solutionImageSize": "large",
+      "rpmPrimaryRecordId": "M1-RPM-102",
+      "rpmPrimaryPath": {
+        "majorUnit": "입체도형",
+        "midUnit": "입체도형의 겉넓이와 부피",
+        "l3": "뿔의 겉넓이와 부피",
+        "l4": "각뿔"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     },
     {
       "id": 23,
@@ -1058,16 +1273,25 @@ window.questionBank = [
       "difficultyBucket": 3,
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevelCompatibility": "NORMAL",
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+      "templateKey": null,
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:ba20c08df05970d180a1e465045ac96b97669fa65b88809e1b9eac960ae0cc72",
-      "difficultyEvidenceSha": "sha256:e99a95665abec2892387232307254b8bafd34cb6ca04e0a1f1f9281f0f5d19ad"
+      "difficultyEvidenceSha": "sha256:e99a95665abec2892387232307254b8bafd34cb6ca04e0a1f1f9281f0f5d19ad",
+      "rpmPrimaryRecordId": null,
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "도수분포",
+        "l4": "도수분포표"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "EVIDENCE_DEBT"
     },
     {
       "id": 24,
@@ -1097,15 +1321,26 @@ window.questionBank = [
       "difficultyBucket": 3,
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevelCompatibility": "NORMAL",
       "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
       "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
       "crossConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:b9b9e8a39cec791713d38b0de605a4e6e6e26ead0e73597970494f468582031c",
-      "difficultyEvidenceSha": "sha256:940b4d5e5e9a914edacf1bbca76336bc24b103a30d0110faf125dcc8652c60d2"
+      "difficultyEvidenceSha": "sha256:940b4d5e5e9a914edacf1bbca76336bc24b103a30d0110faf125dcc8652c60d2",
+      "rpmPrimaryRecordId": "M1-RPM-110",
+      "rpmPrimaryPath": {
+        "majorUnit": "통계",
+        "midUnit": "자료의 정리와 해석",
+        "l3": "상대도수",
+        "l4": "상대도수 계산"
+      },
+      "rpmScope": "M1-2",
+      "rpmCrosswalkStatus": "FAMILY_ACTIVE"
     }
   ];

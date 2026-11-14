@@ -717,11 +717,11 @@ window.questionBank = [
     "category": "인수분해",
     "content": "$x^2$의 계수가 2인 어떤 이차식을 민준이는 상수항을 잘못 보고 $(x-2)(2x-3)$으로 인수분해 하였고, 민서는 일차항의 계수를 잘못 보고 $(x+3)(2x+1)$로 인수분해 하였다. 처음 이차식을 바르게 인수분해 한 것은?",
     "choices": [
-      "$(x-3)(2x-1)",
-      "$(x+3)(2x-1)",
-      "$(x+3)(2x+1)",
-      "$(x-3)(2x+1)",
-      "$(x+3)(2x-2)"
+      "$(x-3)(2x-1)$",
+      "$(x+3)(2x-1)$",
+      "$(x+3)(2x+1)$",
+      "$(x-3)(2x+1)$",
+      "$(x+3)(2x-2)$"
     ],
     "answer": "1",
     "solution": "민준이는 상수항만 잘못 보았으므로\n$(x-2)(2x-3)=2x^2-7x+6$에서 원래 식의 일차항은 $-7x$이다.\n민서는 일차항의 계수만 잘못 보았으므로\n$(x+3)(2x+1)=2x^2+7x+3$에서 원래 식의 상수항은 3이다.\n따라서 원래 식은 $2x^2-7x+3=(2x-1)(x-3)$이다.\n$\\therefore$ ①",
@@ -750,7 +750,7 @@ window.questionBank = [
   {
     "id": 20,
     "category": "제곱근과 실수",
-    "content": "다음 그림과 같이 가로의 길이가 $24cm$, 세로의 길이가 $xcm$인 직사각형 $ABCD$와 넓이가 같은 정사각형이 있다. 직사각형과 정사각형의 각 변의 길이는 모두 자연수일 때, 넓이가 가장 작은 정사각형의 한 변의 길이를 구하면?<div style=\"text-align:center; margin:12px 0;\"><svg width=\"300\" height=\"120\" viewBox=\"0 0 300 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"30\" width=\"120\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"80\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">24cm</text><text x=\"10\" y=\"63\" text-anchor=\"middle\" font-size=\"12\">xcm</text><text x=\"80\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">직사각형 ABCD</text><rect x=\"200\" y=\"30\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"230\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">한 변</text><text x=\"230\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">정사각형</text></svg></div>",
+    "content": "다음 그림과 같이 가로의 길이가 $24cm$, 세로의 길이가 $xcm$인 직사각형 $ABCD$와 넓이가 같은 정사각형이 있다. 직사각형과 정사각형의 각 변의 길이는 모두 자연수일 때, 넓이가 가장 작은 정사각형의 한 변의 길이를 구하면?<div style=\"text-align:center; margin:12px 0;\"><img src=\"assets/images/22_풍덕중_1학기_중간_중3_기출/q20-problem-v2.svg\" alt=\"가로 24센티미터와 세로 x센티미터인 직사각형 ABCD\"></div>",
     "choices": [
       "12",
       "10",

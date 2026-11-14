@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "M1S2_CROSS_WORKER_SAMPLE_v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "reviewer": "GPT_ROOT_54CB21AF3005_A/A1",
+  "author": "A2",
+  "exam": "archive/exams/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+  "sourceGitBlobSha": "9d635c26109d3c088e55bd0529884611457d0433",
+  "sampleOrdinals": [
+    13,
+    18,
+    22
+  ],
+  "sourceRead": "All three stems/choices/existing answers/solutions directly read. Q13 and Q22 original PNG directly inspected. No exam-wide second review performed.",
+  "items": [
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+      "fourSlotVerdict": "PASS",
+      "reason": "오각기둥은 주어진 소재이고 목표가 모서리/평면의 위치관계 판정이라는 점을 정확히 구별했다. 꼬인 위치·평행·수직 방법이 보기 판정의 결정 단계를 덮으며 인용이 해당 현재 해설과 일치한다.",
+      "goalMethodWrong": false,
+      "fabricatedQuote": false
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_fdc2c11452f888f0c7e935b40eee4f284b64de7f0344a354b368d8fd841da5f6",
+      "fourSlotVerdict": "PASS_WITH_DECLARED_DICTIONARY_GAP",
+      "reason": "세 막대를 선택해 가장 긴 변과 나머지 두 변의 합을 비교하고 가능 조합을 열거하는 핵심이 정확하다. 한 개씩의 막대와 합동인 삼각형을 하나로 세는 조건을 보존했다. 사전의 삼각부등식(TRIGONOMETRIC_INEQUALITY)을 오용하지 않고 정확한 후보 용어를 선언한 처리가 타당하다.",
+      "goalMethodWrong": false,
+      "fabricatedQuote": false
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_dbd2626d30b8c1157df867b00f5eddc5e4f528aad38fd308424ea68bd9e31af2",
+      "fourSlotVerdict": "PASS_WITH_MINOR_CORRECTION",
+      "reason": "주어진 일직선/외부 점 조건과 개수 목표 및 열거 방법이 맞다. 다만 goal에 직선과 최종 합이 빠져 있으므로 보강하고, method 중복불허(id375, 동의어 많아야1)는 선택 제약 의미가 강해 대상의 동일성으로 중복 계산을 없애는 현재 단계에는 정의/열거가 더 정확하다.",
+      "goalMethodWrong": false,
+      "fabricatedQuote": false,
+      "suggestedSlotCorrections": {
+        "goal": [
+          {
+            "term": "직선",
+            "termId": 143,
+            "src": "stem",
+            "quote": "직선의 개수"
+          },
+          {
+            "term": "반직선",
+            "termId": 145,
+            "src": "stem",
+            "quote": "반직선의 개수"
+          },
+          {
+            "term": "선분",
+            "termId": 144,
+            "src": "stem",
+            "quote": "선분의 개수"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "직선의 개수"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+b+c$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "termId": 369,
+            "src": "solution",
+            "quote": "같은 선분을 두 번씩",
+            "evidenceType": "IMPLIED",
+            "justification": "직선은 같은 지지직선, 반직선은 시작점과 방향, 선분은 같은 두 끝점이라는 대상 동일성 정의로 중복을 구분한다."
+          },
+          {
+            "term": "열거",
+            "termId": 294,
+            "src": "solution",
+            "quote": "$l,PA,PB,PC,PD$",
+            "evidenceType": "IMPLIED",
+            "justification": "일직선 위 대상과 외부 점 연결 대상을 나누어 실제 가능한 직선과 반직선을 빠짐없이 열거한다."
+          }
+        ]
+      },
+      "difficultyIndependentVerdict": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "level": "상",
+        "levelAction": "KEEP",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "직선/반직선/선분의 동일성 차이를 선택해 세 가지 익숙한 계수 규칙을 적용하는 표준 문항이다. 한 외부 점과 네 공선점 조건은 명시되어 있고 비정형 조건 재적용·후보 제거·복합범위 분기는 없다. 따라서 기존4보다3이 적절하며 세 대상 구별 부담에 의한 기존 상 level은 인접 경계로 보존 가능하다."
+      }
+    }
+  ],
+  "summary": {
+    "sampleSize": 3,
+    "coreGoalMethodFailures": 0,
+    "fabricatedQuoteCount": 0,
+    "minorCorrections": [
+      22
+    ],
+    "dictionaryGaps": [
+      18
+    ],
+    "sampleGate": "PASS",
+    "difficultyRecheck": "Q22 4→3 SUPPORTED; level 상 KEEP BORDERLINE_ACCEPTABLE"
+  }
+}

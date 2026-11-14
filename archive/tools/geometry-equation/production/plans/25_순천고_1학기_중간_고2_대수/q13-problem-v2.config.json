@@ -1,0 +1,263 @@
+{
+  "sourcePath": "archive/exams/original/high/h2/1mid/25_순천고_1학기_중간_고2_대수.js",
+  "questionId": 13,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-108",
+                    "denominator": "85"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "231",
+                    "denominator": "85"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "108",
+                    "denominator": "85"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "231",
+                    "denominator": "85"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-72",
+                    "denominator": "85"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "154",
+                    "denominator": "85"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "72",
+                    "denominator": "85"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "154",
+                    "denominator": "85"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "outer",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "inner",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "oc",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "ca",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "od",
+            "refs": [
+              "O",
+              "D"
+            ]
+          },
+          {
+            "id": "db",
+            "refs": [
+              "D",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "outerArc",
+              "circle": "outer",
+              "center": "O",
+              "from": "B",
+              "to": "A",
+              "side": "CCW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "innerArc",
+              "circle": "inner",
+              "center": "O",
+              "from": "D",
+              "to": "C",
+              "side": "CCW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "regions": [
+            {
+              "id": "annular",
+              "fill": "MEDIUM",
+              "factRole": "GIVEN",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "B",
+                    "steps": [
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "O",
+                          "side": "CCW"
+                        }
+                      },
+                      {
+                        "to": "C"
+                      },
+                      {
+                        "to": "D",
+                        "arc": {
+                          "center": "O",
+                          "side": "CW"
+                        }
+                      },
+                      {
+                        "to": "B"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 470,
+          "height": 420
+        },
+        "caption": "중심 O인 두 부채꼴과 두 원호 사이의 색칠 영역",
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 23,
+        "displayScale": 0.52,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

@@ -2515,9 +2515,9 @@ scen.problem = `**[숫자를 바꾼 문제]** 목표 항을 $a_4 = ${tA4}$, 기�
   for (const sc of lessonScenes) {
     const original={question:sc.question,reviewTop:sc.reviewTop,steps:sc.steps,view:sc.view,draw:sc.draw};
     sc.question=(s,lab)=>lsqActive(s)?s.lsqQuestion||lessonSource.question(sc.id):typeof original.question==='function'?original.question(s,lab):original.question;
-    sc.reviewTop=(s,lab)=>lsqActive(s)?'':original.reviewTop(s,lab);
+    sc.reviewTop=(s,lab)=>lsqActive(s)?'':typeof original.reviewTop==='function'?original.reviewTop(s,lab):original.reviewTop;
     sc.steps=(s,lab)=>lsqActive(s)?['조건 확인','핵심 관계','식 세우기','계산과 결론']:(typeof original.steps==='function'?original.steps(s,lab):original.steps);
-    sc.view=(s,lab)=>lsqActive(s)?{}:original.view(s,lab);
+    sc.view=(s,lab)=>lsqActive(s)?{}:typeof original.view==='function'?original.view(s,lab):original.view;
     sc.draw=(b,s,v,lab)=>{
       if (!lsqActive(s)) {
         if (b._sqLessonView) {

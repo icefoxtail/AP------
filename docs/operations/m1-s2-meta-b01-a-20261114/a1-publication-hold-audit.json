@@ -1,0 +1,315 @@
+{
+  "schemaVersion": "m1s2-independent-publication-hold-audit-v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "reviewer": "GPT_ROOT_54CB21AF3005_A_A1",
+  "auditedAt": "2026-11-14T01:00:38Z",
+  "status": "PASS_SCOPED_HOLD_INTEGRITY_WITH_PUBLICATION_DEFERRED",
+  "scope": "Q13 parent publication hold integrity, exact a4-to-current source delta, current source/evidence binding, unchanged assigned 95 compact items, and CI budget dependency. No new mathematical review or test suite.",
+  "baselineCommit": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+  "localHeadAtAudit": "09f970ab2bbbb78ce9ad1d10cecd4aa3db9aecdb",
+  "remoteBranchAtAudit": {
+    "branch": "review/m1-s2-meta-b01-a-20261114",
+    "head": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+    "finalCommitPushPending": true,
+    "mainMergeConfirmed": false,
+    "newRequiredCiResultConfirmed": false
+  },
+  "question": {
+    "examNumber": 3,
+    "sourcePath": "archive/exams/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+    "sourceOrdinal": 13,
+    "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+    "semanticDecision": "GAP",
+    "existingGapType": "RPM_LEAF_GAP",
+    "semanticCorrectionPublished": false,
+    "responsibleRole": "COORDINATOR_ONLY"
+  },
+  "findings": [],
+  "sourceDelta": {
+    "status": "PASS",
+    "changedQuestionCount": 1,
+    "changedFieldCount": 5,
+    "protectedPayloadChangesVsA4": 0,
+    "other94QuestionObjectsUnchanged": true,
+    "sourceFiles": [
+      {
+        "exam": 1,
+        "path": "archive/exams/original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+        "countBefore": 23,
+        "countAfter": 23,
+        "byteEqual": true,
+        "currentBlob": "58499a15b018c4bc13d4e90c9dd630f6a458fe2b",
+        "currentSha256": "8cc308a21291e188aa5648f9fd39e6a33b0e2b96c4084474aad37c3755ead85e",
+        "changedQuestions": []
+      },
+      {
+        "exam": 2,
+        "path": "archive/exams/original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+        "countBefore": 24,
+        "countAfter": 24,
+        "byteEqual": true,
+        "currentBlob": "3b592f8f9c5e04fdf152dc47fed7b5d916937829",
+        "currentSha256": "a7f82ce246d8c76f61043837887795bf823f94b4c456bbbed71d43e703625443",
+        "changedQuestions": []
+      },
+      {
+        "exam": 3,
+        "path": "archive/exams/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+        "countBefore": 24,
+        "countAfter": 24,
+        "byteEqual": false,
+        "currentBlob": "5ea211ca5907ad3706105b7f88f593fbc511c151",
+        "currentSha256": "6cc54bc6f90556abde5937530f491ca81fdbd20300d671afb1f2137110b440b6",
+        "changedQuestions": [
+          {
+            "ordinal": 13,
+            "fields": {
+              "standardUnit": {
+                "before": "기본도형",
+                "after": "입체도형의 성질"
+              },
+              "standardUnitKey": {
+                "before": "M1-05",
+                "after": "M1-07"
+              },
+              "standardUnitOrder": {
+                "before": 5,
+                "after": 7
+              },
+              "subUnit": {
+                "before": "위치 관계",
+                "after": "입체도형"
+              },
+              "subUnitKey": {
+                "before": "M1-05-POSITION_RELATION",
+                "after": "M1-07-SOLID_FIGURE"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "exam": 4,
+        "path": "archive/exams/original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js",
+        "countBefore": 24,
+        "countAfter": 24,
+        "byteEqual": true,
+        "currentBlob": "654aa51206cc7eed297cf3c75acc221f1209b25d",
+        "currentSha256": "f6fbfe5c1872e2c381e927c727f9b60d67102108390364497e2e890437705698",
+        "changedQuestions": []
+      }
+    ]
+  },
+  "mainAndCorrectionBinding": {
+    "status": "PASS",
+    "mainCommit": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+    "mainSourceBlobFromRemoteBytes": "9d635c26109d3c088e55bd0529884611457d0433",
+    "mainFields": {
+      "standardUnitKey": "M1-07",
+      "standardUnit": "입체도형의 성질",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M1-07-SOLID_FIGURE",
+      "subUnit": "입체도형"
+    },
+    "currentFieldsMatchHold": true,
+    "mainFieldsMatchHold": true,
+    "a4FieldsMatchCorrection": true,
+    "integrationPattern": "NONE",
+    "pt": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "tpl": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
+    "holdSha256": "29058c14d7cf4c20de82b068c782ba44cd2f28c15f287f965cd05e7b570f2dd9",
+    "confirmedCorrectionPreservedAt": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+    "confirmedCorrectionFields": {
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "subUnit": "위치 관계"
+    },
+    "sourcePublicationBlob": "5ea211ca5907ad3706105b7f88f593fbc511c151",
+    "sourcePublicationSha256": "6cc54bc6f90556abde5937530f491ca81fdbd20300d671afb1f2137110b440b6",
+    "note": "The retained M1-07 values are an explicit publication hold, not a correct semantic classification. Existing valid PT/TPL keys and Integration NONE remain; no new key or binding is claimed necessary."
+  },
+  "fourSlot": {
+    "status": "PASS",
+    "totalItems": 95,
+    "allItemsUnchangedVsA4": true,
+    "files": [
+      {
+        "exam": 1,
+        "path": "archive/data/item-4slot/original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.4slot.json",
+        "count": 23,
+        "itemsUnchanged": true,
+        "changedTopLevelFields": [],
+        "sourceGitBlobSha": "58499a15b018c4bc13d4e90c9dd630f6a458fe2b",
+        "evidence": {
+          "branch": "review/m1-s2-meta-b01-a-20261114",
+          "commit": "27a263a24bb36ea0153e981cadc401a52cf55f6e",
+          "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.4slot.json"
+        },
+        "sha256": "de3b76c87474d941dc19173698977aa453a1d2c6d4536c483fa6263519690dae"
+      },
+      {
+        "exam": 2,
+        "path": "archive/data/item-4slot/original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.4slot.json",
+        "count": 24,
+        "itemsUnchanged": true,
+        "changedTopLevelFields": [],
+        "sourceGitBlobSha": "3b592f8f9c5e04fdf152dc47fed7b5d916937829",
+        "evidence": {
+          "branch": "review/m1-s2-meta-b01-a-20261114",
+          "commit": "8837bbab7db868a9552eb372dbcea7a06a56b5ee",
+          "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.4slot.json"
+        },
+        "sha256": "c6d8f6901c5b84fed946f29bc06f25bcbba6e785d89f1983f136c0fdcda01574"
+      },
+      {
+        "exam": 3,
+        "path": "archive/data/item-4slot/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.4slot.json",
+        "count": 24,
+        "itemsUnchanged": true,
+        "changedTopLevelFields": [
+          "evidence",
+          "reviewedBy",
+          "sourceGitBlobSha"
+        ],
+        "sourceGitBlobSha": "5ea211ca5907ad3706105b7f88f593fbc511c151",
+        "evidence": {
+          "branch": "review/m1-s2-meta-b01-a-20261114",
+          "commit": "09f970ab2bbbb78ce9ad1d10cecd4aa3db9aecdb",
+          "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.4slot.json"
+        },
+        "sha256": "26772f7b2f974a116735b73ad66bb0c882bb652ad21766e752e5967ff844bf54"
+      },
+      {
+        "exam": 4,
+        "path": "archive/data/item-4slot/original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.4slot.json",
+        "count": 24,
+        "itemsUnchanged": true,
+        "changedTopLevelFields": [],
+        "sourceGitBlobSha": "654aa51206cc7eed297cf3c75acc221f1209b25d",
+        "evidence": {
+          "branch": "review/m1-s2-meta-b01-a-20261114",
+          "commit": "36d18b5e2ad45381854d38a1061e500a76dd9193",
+          "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.4slot.json"
+        },
+        "sha256": "f04f8f02e13860353b6391ffe7ce7b643092f9797f541af2e108f850727e5feb"
+      }
+    ],
+    "exam3RawEvidence": {
+      "commit": "09f970ab2bbbb78ce9ad1d10cecd4aa3db9aecdb",
+      "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.4slot.json",
+      "blob": "710f1cd810f075cf126eac4d0c3236753dded8f9",
+      "sha256": "f3763cfd51005ab6c8e71eea1f5780f44b6015eb15fa95bf4bc8bf434e0676b5",
+      "remoteContentEqualsLocalCommitContent": true,
+      "sourceBinding": {
+        "sourceArchiveFile": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+        "sourceGitBlobSha": "5ea211ca5907ad3706105b7f88f593fbc511c151"
+      },
+      "itemCount": 24,
+      "itemsUnchangedVsPriorEvidence": true,
+      "changedTopLevelFieldsVsPriorEvidence": [
+        "sourceGitBlobSha"
+      ],
+      "a4IsAncestor": true,
+      "historyParents": [
+        "a4e8b1c6972161e71262bef93e434a0bb8021b97"
+      ]
+    },
+    "note": "Exam3 compact only updates source binding, historical evidence reference, and reviewedBy agent from A_A1 to A; sample ordinals 13/18/22 and all 24 items remain unchanged. Remote history object is readable, but final branch push remains root's pending step."
+  },
+  "difficultyR2": {
+    "status": "PASS_REUSED_OFFICIAL_DRYRUN_AND_VERIFIED_BINDING",
+    "dryrunPath": "docs/operations/m1-s2-meta-b01-a-20261114/root-exam3.difficulty-r2-dryrun.json",
+    "dryrunSha256": "f67349d5f1efde6ee35a481c0ea175dc8d52b8d7dea63409af10402e040ac3ac",
+    "requestPath": ".archive-meta-register/inbox/m1s2-b01-a-exam3-difficulty-20261114-r2.json",
+    "requestSha256Matches": true,
+    "evidencePath": ".archive-meta-register/evidence/m1s2-b01-a-exam3-difficulty-20261114-r2.json",
+    "evidenceSha256Matches": true,
+    "sourceBlob": "5ea211ca5907ad3706105b7f88f593fbc511c151",
+    "recordedResult": "PASS",
+    "recordedSummary": {
+      "total": 2,
+      "APPLY": 2,
+      "ALREADY_REGISTERED": 0,
+      "SKIP_INVALID": 0,
+      "CONFLICT": 0,
+      "VERIFIED": 0,
+      "changedFields": 5,
+      "written": false,
+      "staleSourceBinding": 0
+    },
+    "ordinals": [
+      15,
+      22
+    ],
+    "questionUids": [
+      "qid_v1_bdb9d3bbc904d9ae1bc39e408002ef43155c4f853dee344645c378b4b9a20270",
+      "qid_v1_dbd2626d30b8c1157df867b00f5eddc5e4f528aad38fd308424ea68bd9e31af2"
+    ],
+    "reviewedCorrectionRowsUnchanged": true,
+    "changedLeafPathsFromR1": [
+      "/gemini/latestBlobSha",
+      "/gemini/requestId",
+      "/reviewedCorrection/evidencePath",
+      "/reviewedCorrection/evidenceSha256"
+    ],
+    "reexecuted": false
+  },
+  "consistencyEvidence": {
+    "path": "docs/operations/m1-s2-meta-b01-a-20261114/q13-publication-consistency-verification.json",
+    "sha256": "31a4db0807cc16d61587462c3bb6472628813ac264447f28b0850b180ea83792",
+    "reusedRootOfficialScopedResult": true,
+    "compared": 95,
+    "beforeMismatchCount": 1,
+    "beforeMismatchOrdinal": 13,
+    "afterMismatchCount": 0,
+    "reexecuted": false,
+    "semanticCorrectionPublished": false,
+    "fullCiPassClaimed": false
+  },
+  "workflowBudget": {
+    "status": "PASS_SCOPED_BEHAVIOR_DELTA",
+    "path": ".github/workflows/ci.yml",
+    "sameAfterRestoringTimeout": true,
+    "before": 15,
+    "after": 30,
+    "beforeSha256": "f9623dc55da2f6be477cd8e025455752bd8aef71598749253caa24a19685fda1",
+    "afterSha256": "b3a4d12a59f1183243816f85a310079b67cdcf1472cb187a0b141696bbca30cf",
+    "explanatoryCommentAlsoChanged": true,
+    "triggersPermissionsConcurrencyCommandsGatesUnchanged": true,
+    "testsOrAssertionsChanged": false,
+    "evidence": {
+      "path": "docs/operations/m1-s2-meta-b01-a-20261114/ci-budget-verification.json",
+      "sha256": "6ee586c2b5c64c344f3ac82d39bf1b626d504a5a69a847d4a42e0b534e440eba"
+    },
+    "otherOwnerOverlap": {
+      "pr": 956,
+      "head": "2464f200c8dedba00918f254206b876df9c7d07c",
+      "branch": "codex/archive-only-ci-paths",
+      "actualPatchRead": true,
+      "patchScope": "Only on.push.paths and on.pull_request.paths are added at lines 3-14.",
+      "ourPatchScope": "jobs.test.timeout-minutes 15 to 30 near line 51, plus explanatory comment.",
+      "sameFile": true,
+      "overlappingHunk": false,
+      "otherBranchModified": false
+    },
+    "cancellationReason": "Elapsed 917 seconds and 15-minute budget are consistent with timeout; authoritative annotation unavailable. Separate Q13 assertion is handled by explicit publication hold."
+  },
+  "pending": {
+    "root": "Integrate this audit, finish current reports, remove raw duplicates from final tree while preserving commit 09f970, commit/push to dedicated branch, verify remote SHA, and await required CI on the new HEAD before merge.",
+    "coordinator": "Provide the official evidence-bound parent/fingerprint transition for metadata, identity and runtime; then publish the five confirmed M1-05 source parent fields and verify unchanged unified consistency test.",
+    "reporting": "Keep Q13 parent publication hold separate from semantic review completion, four-slot processing, main merge, registration and deployment."
+  },
+  "excludedFromThisAudit": [
+    "Root's in-progress README/final counts/coordinator updates",
+    "Full source mathematical rereview",
+    "New Chrome/Pages checks",
+    "New test suite execution",
+    "Final remote push, required CI completion, main merge, Consumer and deployment completion"
+  ],
+  "mutationsByReviewer": [
+    "Created only docs/operations/m1-s2-meta-b01-a-20261114/a1-publication-hold-audit.json"
+  ],
+  "gitMutationsByReviewer": false
+}

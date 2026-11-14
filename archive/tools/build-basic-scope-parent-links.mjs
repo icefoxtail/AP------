@@ -245,7 +245,26 @@ for (const item of catalog.records) {
     throw new Error(`Conflicting META_PIPELINE_AUDIT source parent: ${item.questionUid}`);
   sourceParentByUid.set(item.questionUid, { ...prior, ...link });
 }
+// An explicit parent correction supersedes the old UID assignment for this
+// source and ordinal. The reviewed-link loop below still checks every join.
+const correctedSourceLinks = new Map(records.filter(row => {
+  const requestId = /^BASIC_PARENT_CORRECTION ([A-Za-z0-9][A-Za-z0-9_-]{0,100}): /.exec(row.reason || '')?.[1];
+  if (!requestId) return false;
+  const receipt = JSON.parse(read(`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${requestId}.json`));
+  const { assignmentFingerprint, ...overridden } = row;
+  return receipt.requestId === requestId && receipt.metadataRegistrationStatus === 'BASIC_PARENT_CORRECTED' &&
+    receipt.sourceArchiveFile === row.sourceFile && receipt.applied.some(entry =>
+      JSON.stringify(entry.nextLink) === JSON.stringify(overridden));
+}).map(row => [`${core.normalizeFile(row.sourceFile)}#${Number(row.sourceOrdinal)}`, row]));
+function supersedesAssignment(reviewed, prior) {
+  return reviewed && prior && (reviewed.curriculumKey !== prior.curriculumKey ||
+    core.normalizeCourseIdentity(reviewed.courseKey) !== core.normalizeCourseIdentity(prior.courseKey) ||
+    reviewed.L1 !== prior.L1 || reviewed.L2 !== prior.L2);
+}
+
 for (const link of existingParentLinks.sourceParents || []) {
+  const reviewed = correctedSourceLinks.get(`${core.normalizeFile(link.sourceFile)}#${Number(link.sourceOrdinal)}`);
+  if (reviewed?.assignmentFingerprint === link.assignmentFingerprint && supersedesAssignment(reviewed, link)) continue;
   const item = currentByUid.get(link.questionUid);
   const identity = identityByUid[link.questionUid];
   if (!item || !identity || identity.status !== 'VERIFIED') continue;
@@ -352,7 +371,11 @@ for (const [sourceKey, link] of reviewedLinksBySource) {
     core.normalizeCourseIdentity(parent.courseKey) === core.normalizeCourseIdentity(link.courseKey) &&
     parent.L1 === link.L1 && parent.L2 === link.L2);
   if (!bodyFingerprintMatches || !identityMatches || !metadataReviewed || !namespaceMatches ||
-      !canonicalParent || existingAssignments.length !== 0 || !String(link.reason || '').trim()) continue;
+      !canonicalParent || !String(link.reason || '').trim()) continue;
+  const replacesExisting = correctedSourceLinks.get(sourceKey) === link && existingAssignments.length === 1 &&
+    existingAssignments[0].assignmentFingerprint === assignmentFingerprint &&
+    supersedesAssignment(link, existingAssignments[0]);
+  if (existingAssignments.length && !replacesExisting) continue;
 
   const metadataTaxonomy = item.unverifiedTaxonomy || {};
   const joinedLink = {
@@ -369,7 +392,9 @@ for (const [sourceKey, link] of reviewedLinksBySource) {
     L2: link.L2,
   };
   const existing = sourceParentByUid.get(item.questionUid);
-  if (existing && JSON.stringify(existing) !== JSON.stringify(joinedLink))
+  if (existing && JSON.stringify(existing) !== JSON.stringify(joinedLink) &&
+      !(correctedSourceLinks.get(sourceKey) === link && existing.assignmentFingerprint === assignmentFingerprint &&
+        (replacesExisting || !supersedesAssignment(link, existing))))
     throw new Error(`Conflicting canonical source parents: ${item.questionUid}`);
   sourceParentByUid.set(item.questionUid, joinedLink);
 }

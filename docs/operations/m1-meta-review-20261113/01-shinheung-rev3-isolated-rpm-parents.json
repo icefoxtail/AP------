@@ -1,0 +1,459 @@
+{
+  "schemaVersion": "existing-exam-actual-parent-projection-audit-v1",
+  "observedAt": "2026-11-13T14:00:13.877Z",
+  "scope": "ISOLATED_REPRODUCTION_NOT_OPERATIONAL",
+  "worktreeClean": false,
+  "status": "PASS",
+  "mainSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+  "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+  "sourceSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+  "helperSha256": "21a4e9ace8ffb70a747fefa5726b98a6f85fce404b5fafa16b2fef7844549af7",
+  "questionCount": 24,
+  "exactLeafCount": 22,
+  "rpmOnlyDebtOrdinals": [
+    8,
+    10
+  ],
+  "parentCounts": {
+    "기본 도형 / 기본 도형": 4,
+    "기본 도형 / 위치 관계": 4,
+    "기본 도형 / 작도와 합동": 6,
+    "평면도형 / 다각형": 4,
+    "평면도형 / 원과 부채꼴": 5,
+    "unresolved: LEGACY_PARENT_AMBIGUOUS": 1
+  },
+  "path": "digest-checked loadResolvedConsumerCatalog -> RPMMiddleToc.resolveRecord + Archive2UnifiedUnits.classify",
+  "actualRpmSolutionResolver": "NOT_RUN_UNVERIFIED_SOLUTION",
+  "fullR1R2R3Rerun": false,
+  "rows": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_d6bbf87bf0397aa29c28dd495d9c84c4bc2b33eac4873c56a7c5aa247eafdc31",
+      "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+      "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\",\"점·선·면\",\"직선·반직선·선분\"]"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_e914cbbda8bdf9cbca6a70473c7e3c9c1e93350d313a97a6da59072b8ccda284",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+      "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "위치 관계",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\",\"평행선과 각\",\"동위각·엇각\"]"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_d89b5d5e9371abb2582e2607f667325d633faa2fd2656aacfc2cb300d1d1a0f2",
+      "problemTypeKey": "PT_LINE_RELATION",
+      "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "위치 관계",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\",\"평면에서의 위치 관계\",\"두 직선의 위치 관계\"]"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_97f9ad6aabd1e324eec3450d0c25addf60efd4ca77f5ea5cdd2962a808dcf4d1",
+      "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+      "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\",\"기본 작도\",\"선분·각의 이동\"]"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_6a2e9c320796f57d28232cd1f9ebfda5e29f4eb50926e74c0cc339d2eae8e593",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "평면도형",
+        "L2": "다각형",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "평면도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\",\"삼각형·다각형의 각\",\"변·대각선 개수\"]"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_7b207e1ef1d35ff559f5fd6d11c98f5def0051a6fba9651d4ba092f792784e17",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "평면도형",
+        "L2": "원과 부채꼴",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "평면도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\",\"원과 부채꼴의 기본\",\"부채꼴의 호의 길이\"]"
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_c351e938ee7ccf461cb5141b2f81cf2fe0691f760d645b339462fd94bbed890a",
+      "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+      "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\",\"점·선·면\",\"두 점 사이의 거리와 중점\"]"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_b6c658fe81fb556f0b50dd0a137ae096115f366d679b1e1afd05b3346cb72b27",
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_PERPENDICULAR_AND_SKEW_EDGE_COUNTS",
+      "rpmExactLeafExpected": false,
+      "rpmParentStatus": "LEGACY_PARENT_AMBIGUOUS",
+      "rpmParentReason": "LEGACY_SUBUNIT_HAS_MULTIPLE_PARENTS",
+      "rpmParent": null,
+      "granularity": null,
+      "classificationIndexParentStatus": "LEGACY_PARENT_AMBIGUOUS",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": null
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_7383467201a34f11b4bcf2f850550ed903fe15dc84b34f15db25712094fccff8",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+      "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "위치 관계",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\",\"평행선과 각\",\"동위각·엇각\"]"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_d47f3ed83f1c4b59063a208d4fa43128aedd4985161b81e7853068df7d0af269",
+      "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+      "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+      "rpmExactLeafExpected": false,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "courseKey": "M1-2"
+      },
+      "granularity": "PARENT",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": null
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_c5e54a9e9f5143af4e69c0637ca79755aca2e0ead620199853f76287f82cb5b1",
+      "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+      "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\",\"삼각형의 작도\",\"세 변 조건\"]"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_04ff9b066524c2ffdad5d559f03de2bff4129b1ab303b756d850608585d0da2b",
+      "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+      "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\",\"삼각형의 합동\",\"SAS 합동\"]"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_2cf0069ab9b9afaa64e02a03436d1ca0c60c3188c4314bc3bfd22f1b135e2d95",
+      "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+      "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_SHARED_SIDE_EXTENSION_AUDIT",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "평면도형",
+        "L2": "다각형",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "평면도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\",\"다각형의 내각과 외각\",\"정다각형의 각\"]"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_444e22172000b4cde0a859d8e727a75b44096ab6ff000a86410da1c87f9b494d",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "평면도형",
+        "L2": "다각형",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "평면도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\",\"다각형의 내각과 외각\",\"정다각형의 각\"]"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_fba10cd79c78e131b33c9b8b44799e6585838df323d81eb4b22f9af5a0a786b1",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "평면도형",
+        "L2": "원과 부채꼴",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "평면도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\",\"원과 부채꼴의 기본\",\"부채꼴의 호의 길이\"]"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_c7e5d37effec38dafc5a9f4c1cc24fc969d5d04059bb629972e00276e2c7f3a2",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "평면도형",
+        "L2": "원과 부채꼴",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "평면도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\",\"부채꼴의 넓이\",\"중심각을 이용한 넓이\"]"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_649d55ab303ead8530d7334f7bf0d24194e631e5ac0191d2ba99dddfaf2f2eb4",
+      "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+      "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "위치 관계",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\",\"공간에서의 위치 관계\",\"직선과 평면의 위치 관계\"]"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_7b6ffc097c4b1406b5cee2111ebb8986751ffe11d939b413e0f90e0da85945e7",
+      "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+      "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\",\"삼각형의 합동\",\"SAS 합동\"]"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_c4734e15ce731560fe8bfd5c52b47434248d820a881b48fc6941d9010096bcf6",
+      "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
+      "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "평면도형",
+        "L2": "다각형",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "평면도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\",\"삼각형·다각형의 각\",\"각의 크기 계산\"]"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_73d4da5316f252d9835ecaa3d66a8b1eb09a4d7ed5c6aa07e8d20327466ec136",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "평면도형",
+        "L2": "원과 부채꼴",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "평면도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\",\"복합도형\",\"부채꼴을 포함한 넓이\"]"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_3d9462aa63a14abe817fdd1b002390991d3d1a189b5d056fc38bfc85dabb5c07",
+      "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+      "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\",\"점·선·면\",\"두 점 사이의 거리와 중점\"]"
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_df32ee2e668d920b4718216a37e3012094fd902f9fd558a5bdb60c17042c20a3",
+      "problemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+      "templateKey": "TPL_M1_STRAIGHT_ANGLE_PARTITION_ADJACENT_RATIO_SUM",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\",\"각\",\"각의 크기\"]"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_c50c53350f4116c7e321c140a0aca9b17f0c3fae2696b4be588a002fe3606cb7",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "평면도형",
+        "L2": "원과 부채꼴",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "평면도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\",\"복합도형\",\"부채꼴을 포함한 넓이\"]"
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_20cf7db610d665dde2c04cf24f0f2b245236974a3aedeb514d7ddaab05271454",
+      "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+      "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+      "rpmExactLeafExpected": true,
+      "rpmParentStatus": "EXACT",
+      "rpmParentReason": "",
+      "rpmParent": {
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "courseKey": "M1-2"
+      },
+      "granularity": "LEAF",
+      "classificationIndexParentStatus": "EXACT",
+      "classificationIndexUnit": "기본 도형",
+      "baseLeafKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\",\"삼각형의 합동\",\"SAS 합동\"]"
+    }
+  ],
+  "failures": []
+}

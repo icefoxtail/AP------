@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "m1s2-independent-three-sample-v1",
+  "revision": 3,
+  "reviewer": "/root/meta_c",
+  "author": "/root/meta_a",
+  "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+  "sampled": [
+    18,
+    19,
+    20
+  ],
+  "readOrder": "SOURCE_CONTENT_SOLUTION_AND_ORIGINAL_IMAGES_BEFORE_AUTHOR_SLOTS",
+  "scope": "THREE_QUESTIONS_METADATA_SEMANTICS_NOT_R1_R2",
+  "status": "ACCEPTED_AFTER_MINOR_CORRECTIONS",
+  "boundInputs": {
+    "source": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/sources/archive/exams/original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+      "sha256": "04682ef4c67a04b31214f6ea138b22baf1ef44cbc06da26cacd739efbcf5fb87",
+      "gitBlobSha": "47a270b752ad8021cd800bcbc0a970454bac67aa"
+    },
+    "review": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/24_향림중_2학기_중간_중1_기출/review.json",
+      "sha256": "2f5e3ca71c907a174f0748bdcd7b79188467604f4be298f01f2178bed288368a"
+    },
+    "raw": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/24_향림중_2학기_중간_중1_기출/raw.4slot.json",
+      "sha256": "c77035786b02322ee293b8c5267a81e32bce4b14d79f81b453a6d7a1f53fa238"
+    },
+    "compact": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/compact/archive/data/item-4slot/original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.4slot.json",
+      "sha256": "d9f18d14bf6a395b27cb47d32e82f557a6b036c13c5d609e38906d33903fd60c"
+    }
+  },
+  "images": [
+    {
+      "ordinal": 18,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/hyangrim24-q18-image.png",
+      "sha256": "c044bbe337307f7d362c551ea6db5fd36dd1b3329f4b1eaf2f7c2641ce36480f",
+      "actualView": true
+    },
+    {
+      "ordinal": 19,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/hyangrim24-q19-image.png",
+      "sha256": "2f412cf5083797028d4e97b9c3b96bcc40529c764e4e089aad853e239c824a87",
+      "actualView": true
+    },
+    {
+      "ordinal": 20,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/hyangrim24-q20-image.png",
+      "sha256": "2387b4cd44c331c1f61525892e4af8f227572c07c8d741ac9c1b5953226a1f7e",
+      "actualView": true
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_656d726654c8e83093c55334c07dd6857b35ecbe20e2d3fe2878d5bc467fe7bd",
+      "metadataVerdict": "ACCEPT_EXISTING_GLOBAL_PT_TPL_WITH_EXACT_BINDING_AND_RPM_DEBT",
+      "reason": "일곱 명의 고정된 참가자 중 무순서 두 사람의 선택과 경기의 일대일 대응이다. ACTIVE TPL_COMBINATION_SELECTION의 정의와 일치하며 원순열은 아니다. 중1 시험지에 출제된 M2 경우의 수 분류의 유효 binding은 별도 정본 부채로 보존한다.",
+      "difficultyVerdict": "KEEP_BUCKET2_LEVEL_LOW_BORDERLINE_ACCEPTABLE",
+      "difficultyReason": "경기를 두 사람의 선택으로 해석하고 양방향 중복을 보정하는 익숙한 한 번의 모델 해석이다. 하/2 인접 예외는 기존 level 보존 원칙으로 수용한다.",
+      "fourSlotVerdict": "ACCEPT_SINGLE_METHOD_AFTER_REREAD",
+      "fourSlotReason": "조합 한 용어가 두 사람의 무순서 선택이라는 결정 절차 전부를 표현한다. 원탁은 배열을 구하는 대상이 아니므로 given집단이 적절하고 중복불허 조건도 명시했다.",
+      "requiredMetadataChange": {
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_8fd3c9e74df936eeabc207ad02f66d0857fc61e35826cbf9040cd22dee3647bd",
+      "metadataVerdict": "ACCEPT_EXISTING_FAMILY_WITH_DEFINITION_AND_BINDING_DEBT",
+      "reason": "실제 원그림은 내부각120도인 작은 삼각형과 바깥55도·30도의 오목 사각형을 만든다. 현 TPL의 내부점·한 바퀴 각 관계와 공유 골격은 같고 지원UID가 일치한다. 부모의 이등변 제한 및 TPL의 두 삼각형 한정 문구를 일반화하는 것이 적절하다.",
+      "difficultyVerdict": "KEEP_BUCKET3_LEVEL_HIGH_BORDERLINE_ACCEPTABLE",
+      "difficultyReason": "120도를240도의 오목각으로 보아 사각형 내각합을 적용하는 도형 재구성 한 번이 중심이다. 상/3 인접 예외를 수용한다.",
+      "fourSlotVerdict": "ACCEPTED_AFTER_MINOR_CORRECTION",
+      "definitionProposal": "삼각형 안팎의 공통 각 또는 오목한 사각형을 재구성하고 내부점 주변의 한 바퀴 각 관계와 내각합으로 목표각을 결정한다.",
+      "requiredMetadataChange": {
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "completedFourSlotChanges": [
+        {
+          "slot": "method",
+          "before": "합",
+          "afterCandidate": "한점둘레각",
+          "quoteSource": "solution",
+          "quote": "$360^\\circ-120^\\circ=240^\\circ$",
+          "reason": "실제 연산은 차이며 일반 합은 결정 개념을 가린다. 한 점 주위 각의 합360도라는 기하 성질을 정확한 후보로 표현한다."
+        }
+      ]
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_2e6f3d78946fb4d3a06f2b7e575bde646f48d22d8b66dddb67ff1ea425795b86",
+      "metadataVerdict": "ACCEPT_EXISTING_ALIAS_AND_UID_REUSE_WITH_DEFINITION_NORMALIZATION",
+      "reason": "실제 별의 다섯 끝 삼각형마다 목표 밑각 두 개가 있다. 5×180에서 별의 다섯 끝각합180을 제외하는 해법이고 turning-angle 계산은 사용하지 않는다. FIVE_TIP_TRIANGLES_TEN_BASE_ANGLES alias와 지원UID가 정확히 일치해 기존 COMPOSITE_ANGLE_SUM을 유지하는 판단을 수용한다. 정다각형 조건은 요구하지 않는다.",
+      "difficultyVerdict": "KEEP_BUCKET4_BOUNDARY_B34",
+      "difficultyReason": "다섯 삼각형의 내각합에 포함된 열 목표각과 다섯 끝각을 구별하는 구조 선택으로4/B34를 보존한다. 깊은 융합이나 단순 단계수로5를 부여하지 않는다.",
+      "fourSlotVerdict": "ACCEPTED_AFTER_MINOR_CORRECTION",
+      "completedFourSlotChanges": [
+        {
+          "slot": "method",
+          "before": "차",
+          "afterCandidate": "별끝각의합",
+          "quoteSource": "solution",
+          "quote": "별의 다섯 끝각의 합은\n$180^\\circ$",
+          "reason": "단순 뺄셈이 아닌 별의 다섯 끝각합180이라는 필수 성질을 표시해야 결정단계가 덮인다. 분할과 내각의합은 그대로 적절하다."
+        }
+      ]
+    }
+  ],
+  "registryNotes": [
+    {
+      "ordinals": [
+        19,
+        20
+      ],
+      "status": "EXACT_NATIVE_CROSSWALK_GAP_ALREADY_DISCLOSED",
+      "note": "M1-RPM-084의 mapped PT는 TRIANGLE_ANGLE_CONDITION이고 두 현재 native PT/TPL과 다르다. 공식 path 재사용과 exact native mapping의 등록대기를 구별해야 하며 FAMILY_ACTIVE를 native exact PASS로 사용하지 않는다."
+    }
+  ],
+  "readback": {
+    "sourceBlob": "47a270b752ad8021cd800bcbc0a970454bac67aa",
+    "compatibilityConfirmed": [
+      18,
+      19
+    ],
+    "correctedMethods": {
+      "19": "한점둘레각",
+      "20": "별끝각의합"
+    },
+    "candidateQuotes": "EXACT_LITERAL_MATCH",
+    "q19TemplateDefinitionProposal": "CONFIRMED"
+  },
+  "technicalReadbacks": [
+    {
+      "kind": "SECTION10_SAME_QUOTE_PARENT_COMPLETION",
+      "status": "PASS",
+      "sourceBytesUnchanged": true,
+      "semanticVerdictUnchanged": true,
+      "changedSlotsVerified": [
+        {
+          "ordinal": 1,
+          "slot": "method",
+          "candidate": "눈금없는자",
+          "addedParent": "작도",
+          "dictionaryId": 134,
+          "src": "solution",
+          "quote": "눈금 없는 자로는 선분의 길이를 잴 수 없다"
+        },
+        {
+          "ordinal": 4,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "내각의 크기의 합은"
+        },
+        {
+          "ordinal": 5,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "$40^\\circ+60^\\circ+y=180^\\circ$"
+        },
+        {
+          "ordinal": 6,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "오각형의 내각의 합은"
+        },
+        {
+          "ordinal": 14,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "$x=180^\\circ-40^\\circ-40^\\circ"
+        },
+        {
+          "ordinal": 15,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "$\\angle DQP=180^\\circ-90^\\circ-34^\\circ"
+        },
+        {
+          "ordinal": 19,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "$x+55^\\circ+30^\\circ+240^\\circ=360^\\circ$"
+        },
+        {
+          "ordinal": 19,
+          "slot": "method",
+          "candidate": "한점둘레각",
+          "addedParent": "각",
+          "dictionaryId": 174,
+          "src": "solution",
+          "quote": "$360^\\circ-120^\\circ=240^\\circ$"
+        },
+        {
+          "ordinal": 20,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "삼각형의 내각의 합"
+        },
+        {
+          "ordinal": 20,
+          "slot": "method",
+          "candidate": "별끝각의합",
+          "addedParent": "각",
+          "dictionaryId": 174,
+          "src": "solution",
+          "quote": "별의 다섯 끝각의 합은\n$180^\\circ$"
+        },
+        {
+          "ordinal": 22,
+          "slot": "method",
+          "candidate": "삼각형의세변조건",
+          "addedParent": "삼각형",
+          "dictionaryId": 158,
+          "src": "solution",
+          "quote": "가장 긴 변의 길이가 나머지 두 변의 길이의 합보다 작은"
+        }
+      ],
+      "bound": {
+        "sourceGitBlobSha": "47a270b752ad8021cd800bcbc0a970454bac67aa",
+        "sourceSha256": "04682ef4c67a04b31214f6ea138b22baf1ef44cbc06da26cacd739efbcf5fb87",
+        "rawPath": "/workspace/scratch/64695b8ede31/agent-a/reviews/24_향림중_2학기_중간_중1_기출/raw.4slot.json",
+        "rawSha256": "c77035786b02322ee293b8c5267a81e32bce4b14d79f81b453a6d7a1f53fa238",
+        "reviewSha256": "2f5e3ca71c907a174f0748bdcd7b79188467604f4be298f01f2178bed288368a",
+        "compactSha256": "d9f18d14bf6a395b27cb47d32e82f557a6b036c13c5d609e38906d33903fd60c"
+      }
+    }
+  ]
+}

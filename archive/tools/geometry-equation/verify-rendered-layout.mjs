@@ -211,11 +211,22 @@ function segmentDistance(a,b) {
 function ownerLeaderClearance(label,leader,geometry,tickIntersection,scale) {
   const clearance=6*scale+.25,allowedOwnerIds=new Set([label.tickOwner,`${label.tickAxis}-axis`]),rows=[],errors=[];
   if(leader?.points?.length!==2)return{status:'FAIL',clearanceCssPx:clearance,checks:[],errors:['LEADER_GEOMETRY_INVALID']};
+  const [start,end]=leader.points;
   for(const other of geometry.filter(value=>value.id!==leader.id&&value.id!==leader.ownerLabelId)){
     let minimum=Infinity,intersections=[];
-    if(other.kind==='point'||other.kind==='circle'){
-      const center=other.at,rad=other.kind==='point'?other.radius:0;
-      minimum=Math.max(0,pointSegmentDistance(center,leader.points[0],leader.points[1])-rad);
+    let circleStartOnly=false;
+    if(other.kind==='circle'){
+      const center=other.at,radius=other.radius;
+      const minimumRadius=pointSegmentDistance(center,start,end);
+      const maximumRadius=Math.max(Math.hypot(start[0]-center[0],start[1]-center[1]),Math.hypot(end[0]-center[0],end[1]-center[1]));
+      minimum=Math.max(0,minimumRadius-radius,radius-maximumRadius);
+      const dx=tickIntersection[0]-center[0],dy=tickIntersection[1]-center[1];
+      const tolerance=.001*scale+1e-4;  // producer coordinates plus Chrome SVG float rounding
+      circleStartOnly=Math.abs(Math.hypot(dx,dy)-radius)<=tolerance
+        &&Math.hypot(start[0]-tickIntersection[0],start[1]-tickIntersection[1])<=tolerance
+        &&dx*(end[0]-start[0])+dy*(end[1]-start[1])>=0;
+    }else if(other.kind==='point'){
+      minimum=Math.max(0,pointSegmentDistance(other.at,start,end)-other.radius);
     }else if(Array.isArray(other.points)&&other.points.length>=2){
       for(let index=1;index<other.points.length;index++){
         const segment=[other.points[index-1],other.points[index]];
@@ -226,7 +237,7 @@ function ownerLeaderClearance(label,leader,geometry,tickIntersection,scale) {
     }
     // A dot drawn exactly on this tick, and a dashed approach guide that ends on it, belong to the tick the leader names (the leader may touch the guide only at its start). A drawn line or segment running over this tick (the segment y=-5 over the tick -5) is the tick's own ground, touched only at the start too.
     const nearTick=point=>Array.isArray(point)&&Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])<=1*scale+.25;
-    const owner=allowedOwnerIds.has(other.id)||((other.kind==='point'||other.kind==='circle')&&nearTick(other.at))||(/-guide-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.some(nearTick))||(/^(overlay-(line|guide)|trig-pole|line)-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(other.kind==='line'&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(/^[fg]-piece-\d+/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25));
+    const owner=allowedOwnerIds.has(other.id)||circleStartOnly||(other.kind==='point'&&nearTick(other.at))||(/-guide-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.some(nearTick))||(/^(overlay-(line|guide)|trig-pole|line)-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(other.kind==='line'&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(/^[fg]-piece-\d+/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25));
     if(owner){
       if(intersections.some(point=>Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])>1*scale+.25))errors.push('LEADER_OWNER_ENDPOINT_CROSSING:'+other.id);
     }else if(minimum<=clearance)errors.push('LEADER_NEAR_GEOMETRY:'+leader.id+':'+other.id);

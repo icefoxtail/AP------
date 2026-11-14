@@ -1,0 +1,349 @@
+{
+  "schemaVersion": "m1-shinheung-classification-audit-ledger-v1",
+  "owner": "GPT_ROOT_BF50408FB63B",
+  "sourceArchiveFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+  "questionCount": 24,
+  "auditCounts": {
+    "KEEP": 9,
+    "CORRECT": 10,
+    "TYPE_GAP": 5
+  },
+  "actualRegistrationApplied": false,
+  "mathFinalQaPerformed": false,
+  "originalSourceReviewRepeated": false,
+  "auditMeaning": "KEEP/CORRECT/TYPE_GAP describe the independent comparison against the original metadata, not the number of changes after the preceding owner registration. Current source values and final approval are bound separately.",
+  "historicalReview": {
+    "libraryFileId": "libfile_f27c84df1fc08191bd65409ee9543544",
+    "version": 1,
+    "sha256": "0064bd8ae8a0c8ed6761f92ae144dd3944165c567a9eb43fe778f5869ef56063"
+  },
+  "currentSourceSha256": "2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56",
+  "currentApprovalRef": {
+    "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+    "sha256": "af9ca64b73bcf0be8e0bb3918ff929ebca1491f3589b401aea1efa20e9d9557d"
+  },
+  "remainingOfficialRpmLeafGaps": [
+    8,
+    10
+  ],
+  "auxiliaryConceptDefinitionGap": {
+    "sourceOrdinal": 4,
+    "officialKey": null,
+    "meaningKo": "동위각의 크기가 같으면 두 직선이 평행하다는 역방향 판정",
+    "evidencePath": "docs/operations/m1-s2-meta-closeout-20261113-bf/02-shinheung-auxiliary-review.json"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_d6bbf87bf0397aa29c28dd495d9c84c4bc2b33eac4873c56a7c5aa247eafdc31",
+      "independentClassificationDecision": "KEEP",
+      "earlierCandidateDecision": "KEEP",
+      "independentReasonKo": "반직선은 시작점과 뻗는 방향이 모두 같을 때 일치한다. 현재 반직선·직선·선분 및 객체 동일성 분류를 유지하며 M1 exact binding 부족만 별도 처리한다.",
+      "currentApprovedSourceMetadataSha256": "5399512942c52f545fd5fd40e558a24c3f7e3dd6838309d42d390a3756d5281d",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 1
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_e914cbbda8bdf9cbca6a70473c7e3c9c1e93350d313a97a6da59072b8ccda284",
+      "independentClassificationDecision": "CORRECT",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "주어진 각을 평행선의 동위각·엇각으로 옮기고 이웃각의 보각 관계를 적용해 두 각의 차를 구한다. 위치 식별 뒤 각의 합을 구하는 기존 POSITIONAL_ANGLE_SUM보다 공식 DIRECT_TRANSFER가 맞고, 해당 alias TRANSFER_TWO_OBTUSE_ANGLES_THEN_SUBTRACT도 이 방법을 명시한다.",
+      "currentApprovedSourceMetadataSha256": "1f0999a00947101a25f3a0633c0e8564c1a1e10233180aa94a0fa02d92c54c71",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 2
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_d89b5d5e9371abb2582e2607f667325d633faa2fd2656aacfc2cb300d1d1a0f2",
+      "independentClassificationDecision": "KEEP",
+      "earlierCandidateDecision": "KEEP",
+      "independentReasonKo": "같은 평면의 직선 쌍에 대해 평행·수직·교점·수선의 발을 판단한다. 사다리꼴 성질의 증명이나 좌표계산이 아니므로 기존 RPM179와 직선 위치 관계 종합 PT/TPL의 의미를 유지한다.",
+      "currentApprovedSourceMetadataSha256": "bfad3dd11fc7f2e44411960da2483865b5f7506068379722de2755f7464e7989",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 3
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_97f9ad6aabd1e324eec3450d0c25addf60efd4ca77f5ea5cdd2962a808dcf4d1",
+      "independentClassificationDecision": "CORRECT",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "같은 반지름의 원호와 같은 현의 길이를 옮겨 각을 복사하는 작도 순서가 핵심이다. 평행의 역은 결과를 설명하는 보조 원리이므로 RPM178 평행선 조건에서 RPM185 선분·각의 이동으로 옮기고 기존 각 복사 작도 TPL을 재사용한다.",
+      "currentApprovedSourceMetadataSha256": "7641ef50c5a938049734ad1f4c322e89787264377d0b9253fbbb9159797a080b",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 4
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_6a2e9c320796f57d28232cd1f9ebfda5e29f4eb50926e74c0cc339d2eae8e593",
+      "independentClassificationDecision": "KEEP",
+      "earlierCandidateDecision": "KEEP",
+      "independentReasonKo": "한 꼭짓점에서 가능한 대각선 수로 변 수를 정한 뒤 전체 대각선 수를 중복 없이 센다. RPM198과 기존 DIAGONAL_FORMULA의 대각선 개수 관계에 해당한다.",
+      "currentApprovedSourceMetadataSha256": "b497bf3491a8d6c8c964c150ca975a2c08c0fde947fc229b02e5cd9966370b9b",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 5
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_7b207e1ef1d35ff559f5fd6d11c98f5def0051a6fba9651d4ba092f792784e17",
+      "independentClassificationDecision": "KEEP",
+      "earlierCandidateDecision": "KEEP",
+      "independentReasonKo": "같은 원에서 두 중심각의 비와 두 호의 길이의 비가 같음을 적용한다. RPM202와 공식 SECTOR_MEASURE의 호 길이 비례 정의가 정확하며, 현재 검토문의 전체 원 둘레를 먼저 쓰는 설명은 실제 결정 단계로 고쳐 적는다.",
+      "currentApprovedSourceMetadataSha256": "8ccb34f053e43ef7f1afa06be40a9596cbe1a37cd140944c6a99a56fd1510584",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 6
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_c351e938ee7ccf461cb5141b2f81cf2fe0691f760d645b339462fd94bbed890a",
+      "independentClassificationDecision": "CORRECT",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "두 중점으로 생긴 반쪽 길이를 주어진 인접 선분의 비와 연결한다. RPM174는 맞고 비어 있던 native PT/TPL은 이미 ACTIVE인 선분비·중점 공식 유형으로 보완할 수 있어 새 의미 유형은 필요 없다.",
+      "currentApprovedSourceMetadataSha256": "e67f8207cedd30c9257f5031da7fb843022c38f21ea9b5972b0640dfe55d74c2",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 7
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_b6c658fe81fb556f0b50dd0a137ae096115f366d679b1e1afd05b3346cb72b27",
+      "independentClassificationDecision": "TYPE_GAP",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "비교하는 대상은 공간의 두 모서리 직선이므로 직선–평면 관계인 RPM181을 배정하면 의미가 다르다. 수직으로 만나는 모서리와 꼬인 모서리를 각각 세어 합하는 정확 TPL도 이 고정 main의 공식 taxonomy에는 없어, 기존 PT는 참고하되 새 제안 TPL을 ACTIVE라고 쓰지 않는다.",
+      "currentApprovedSourceMetadataSha256": "447d4ea14eb853d72b18801337e27dedad71544ae1f1e49cc11504bd64e2e947",
+      "rpmLeafDisposition": "NULL_HOLD_OFFICIAL_TYPE_GAP",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 8
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_7383467201a34f11b4bcf2f850550ed903fe15dc84b34f15db25712094fccff8",
+      "independentClassificationDecision": "CORRECT",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "꺾인 점을 지나는 보조 평행선으로 방향각을 옮겨 두 목표 각의 합을 나타내고 중간 각을 소거한다. 공식 BENT_LINE의 평행선 사이 꺾인 선 각 이동 구조와 일치하며, RPM177의 새 부모는 위치 관계다.",
+      "currentApprovedSourceMetadataSha256": "614bb8185e6f2b90cde1fc28c17f2a774bbdeec7847b71e8bfac88854ee27481",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 9
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_d47f3ed83f1c4b59063a208d4fa43128aedd4985161b81e7853068df7d0af269",
+      "independentClassificationDecision": "TYPE_GAP",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "여러 보기의 SSS 존재조건·SAS·ASA·SSA·세 각 조건을 비교하여 삼각형의 존재와 유일성을 판단한다. 공식 UNIQUE_TRIANGLE_DATA는 유지할 수 있지만 RPM190 한 변과 양 끝각 조건 하나로 좁힐 수 없어 exact RPM leaf만 공백으로 남긴다.",
+      "currentApprovedSourceMetadataSha256": "3ca1660a3b5893a21a6af5c198ffd48785e5f4d86a3e17155c0636006795930f",
+      "rpmLeafDisposition": "NULL_HOLD_OFFICIAL_TYPE_GAP",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 10
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_c5e54a9e9f5143af4e69c0637ca79755aca2e0ead620199853f76287f82cb5b1",
+      "independentClassificationDecision": "CORRECT",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "둘레와 최소변 조건을 만족하는 자연수 세 변을 정렬하고 삼각형 부등식으로 가능한 조합을 센다. 유일한 작도조건 선택과 목적이 달라 기존 ACTIVE INTEGER_PERIMETER_CASES로 고친다.",
+      "currentApprovedSourceMetadataSha256": "93a60fb75f8eed5fb130bb72786dc905bb863d95900c4244562150c9af4b99c8",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 11
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_04ff9b066524c2ffdad5d559f03de2bff4129b1ab303b756d850608585d0da2b",
+      "independentClassificationDecision": "CORRECT",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "정삼각형의 같은 변과 끼인각을 이용해 보조 삼각형의 SAS 합동을 만든 뒤 대응 순서와 대응변·대응각을 판정한다. 추가 합동조건을 선택하는 문제가 아니므로 기존 ACTIVE EQUILATERAL_SAS_TRANSFER를 재사용하며 구체 예시 수치 차이만으로 새 TPL을 만들지 않는다.",
+      "currentApprovedSourceMetadataSha256": "d34325ebf8809a756bf5c022fc41f82e03e6ed6a2c4c520828790f8b2c8e9dc6",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 12
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_2cf0069ab9b9afaa64e02a03436d1ca0c60c3188c4314bc3bfd22f1b135e2d95",
+      "independentClassificationDecision": "TYPE_GAP",
+      "earlierCandidateDecision": "CORRECT",
+      "independentReasonKo": "정오각형·정팔각형의 종류가 이미 주어져 있다. 내각·외각과 공유 변 끝점의 한 바퀴 각, 빈 사각형의 내각합을 쓰므로 RPM200의 정다각형 찾기를 RPM196으로 교정한다. 기존 TPL은 삼각형·정사각형·정오각형 배치에 의존한다고 명시하여 이 배치의 정확한 풀이 골격으로 확정할 수 없다.",
+      "currentApprovedSourceMetadataSha256": "283eafe4ca0cc531819a26bfecff0761242fb5579c51af1ad6aafc477daa144a",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 13
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_444e22172000b4cde0a859d8e727a75b44096ab6ff000a86410da1c87f9b494d",
+      "independentClassificationDecision": "KEEP",
+      "earlierCandidateDecision": "KEEP",
+      "independentReasonKo": "한 바퀴의 각을 외각으로 나누어 변 수를 정한 뒤 내각의 합을 구한다. 현재 정다각형 각 L4와 각·변 수 관계 TPL이 이 결정 구조를 포함한다.",
+      "currentApprovedSourceMetadataSha256": "5648941aa3b668433eb31581756bc8ae52f2baa5c4e2aa87e4005eb38bc64bc4",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 14
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_fba10cd79c78e131b33c9b8b44799e6585838df323d81eb4b22f9af5a0a786b1",
+      "independentClassificationDecision": "KEEP",
+      "earlierCandidateDecision": "KEEP",
+      "independentReasonKo": "평행선·같은 반지름으로 중심각 관계를 만든 뒤 같은 원의 호 길이비를 중심각비로 바꾼다. 목표가 각이어도 결정적인 비례는 호 길이 관계이므로 RPM202와 부채꼴 TPL을 유지한다.",
+      "currentApprovedSourceMetadataSha256": "47e0f79b09c11b45624e475627f0eddb73363269d508b5d071402ca191af8d92",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 15
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_c7e5d37effec38dafc5a9f4c1cc24fc969d5d04059bb629972e00276e2c7f3a2",
+      "independentClassificationDecision": "KEEP",
+      "earlierCandidateDecision": "KEEP",
+      "independentReasonKo": "같은 반지름과 이등변삼각형의 각 관계로 중심각을 정한 뒤 부채꼴 넓이식에 적용한다. RPM203의 중심각을 이용한 넓이와 현재 TPL이 맞는다.",
+      "currentApprovedSourceMetadataSha256": "3bfb1afc198ca03d497a719f9f5569b85295db7f1bd96f861fefc5fe00c6192f",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 16
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_649d55ab303ead8530d7334f7bf0d24194e631e5ac0191d2ba99dddfaf2f2eb4",
+      "independentClassificationDecision": "CORRECT",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "꼬인 위치의 반례와 평행·수직의 보장 조건을 대조하는 여러 공간 명제 판정이다. ACTIVE LINE_PLANE_CLAIM_AUDIT 정의가 이 방법을 포함하므로 유형 부재가 아니라 RPM181의 정확한 연결 결손이다.",
+      "currentApprovedSourceMetadataSha256": "dc7b6d9d10e8b33ba31805c9ff9fa395da97ec18ab40213deac164dde6aa71b8",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 17
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7b6ffc097c4b1406b5cee2111ebb8986751ffe11d939b413e0f90e0da85945e7",
+      "independentClassificationDecision": "CORRECT",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "두 정삼각형의 같은 변·60도 각으로 보조 삼각형의 SAS 합동을 얻고 대응각을 옮겨 각의 합을 정리한다. 합동 조건 목록을 고르는 TPL보다 기존 EQUILATERAL_SAS_TRANSFER의 결정 단계가 정확하다.",
+      "currentApprovedSourceMetadataSha256": "c1bd03fb7850c7edcccfd852ab00270c55d6f931432dc081f03b3c809a25c01a",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 18
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_c4734e15ce731560fe8bfd5c52b47434248d820a881b48fc6941d9010096bcf6",
+      "independentClassificationDecision": "TYPE_GAP",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "교차점의 맞꼭지각을 보조각으로 두고 삼각형·사각형의 부분 각합을 더해 보조각을 소거한다. 삼각형 세 외각합 TPL이나 정다각형 아래의 고정 네 삼각형 각합 TPL은 실제 풀이 골격과 다르다. RPM197은 유지한다.",
+      "currentApprovedSourceMetadataSha256": "9120a95d38fb75f547bc7b9ebcc82cfafbac8cbcb269e8eaaf07955b633baa96",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 19
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_73d4da5316f252d9835ecaa3d66a8b1eb09a4d7ed5c6aa07e8d20327466ec136",
+      "independentClassificationDecision": "KEEP",
+      "earlierCandidateDecision": "KEEP",
+      "independentReasonKo": "울타리 모서리까지 쓴 끈 길이를 뺀 나머지를 반지름으로 여러 부채꼴 넓이를 더한다. 기존 TPL 정의와 지원 사례에도 장애물 모서리를 돌아가는 부채꼴 영역이 포함되어 있다.",
+      "currentApprovedSourceMetadataSha256": "540fd989170bf385bcf10019422fbf3f491cfb2ef0ba5ce396251494ff7429f7",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 20
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_3d9462aa63a14abe817fdd1b002390991d3d1a189b5d056fc38bfc85dabb5c07",
+      "independentClassificationDecision": "CORRECT",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "인접 두 선분을 비로 표현하고 각각 중점의 절반 길이를 합해 두 중점 사이 길이의 비를 만든다. RATIO_AND_MIDPOINT의 중점·비·길이 덧셈 방법과 ACTIVE TWO_MIDPOINTS_WITH_SEGMENT_LENGTH_RATIO 별칭을 함께 대조하여 재사용한다.",
+      "currentApprovedSourceMetadataSha256": "64950a4fb4ab47e75f4d76626e2fe6d0917c403624c2199e78b57c5254f9183a",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 21
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_df32ee2e668d920b4718216a37e3012094fd902f9fd558a5bdb60c17042c20a3",
+      "independentClassificationDecision": "TYPE_GAP",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "인접각들을 비·등분 관계로 나타내어 합을 평각과 같게 둔다. 삼각형·맞꼭지각·수직 조건이 없어 VERTICAL_ANGLE_TRANSFER나 수직쌍을 전제하는 ANGLE_RATIO를 대신 붙이지 않는다. RPM175 각의 크기는 유지한다.",
+      "currentApprovedSourceMetadataSha256": "8c15e34356d262c4b6b323c3f22d0be575885615a94135322407be6355c1f19b",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 22
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_c50c53350f4116c7e321c140a0aca9b17f0c3fae2696b4be588a002fe3606cb7",
+      "independentClassificationDecision": "KEEP",
+      "earlierCandidateDecision": "KEEP",
+      "independentReasonKo": "같은 반지름으로 정삼각형을 알아내어 중심각을 정하고 두 부채꼴의 중첩 영역 둘레·넓이를 계산한다. 복합 넓이 RPM206과 길이·넓이를 함께 허용하는 현재 TPL을 유지하고 RPM205는 보조 의미이다.",
+      "currentApprovedSourceMetadataSha256": "84b2554c8702417f6a93cb2926019cdf8917431589350db568afbdac3e45ee54",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 23
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_20cf7db610d665dde2c04cf24f0f2b245236974a3aedeb514d7ddaab05271454",
+      "independentClassificationDecision": "CORRECT",
+      "earlierCandidateDecision": "TYPE_GAP",
+      "independentReasonKo": "정삼각형의 같은 변과 주어진 같은 부분선분으로 SAS 합동을 보인 뒤 대응각을 목표 삼각형으로 옮긴다. 기존 EQUILATERAL_SAS_TRANSFER가 이 결정 구조를 포함한다.",
+      "currentApprovedSourceMetadataSha256": "42835fa2d2b1a06586e0868dff63d8f2d01bd688e1545fd747a591de10fa54ba",
+      "rpmLeafDisposition": "OFFICIAL_EXISTING_LEAF",
+      "approvalPointer": {
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+        "sourceOrdinal": 24
+      }
+    }
+  ]
+}

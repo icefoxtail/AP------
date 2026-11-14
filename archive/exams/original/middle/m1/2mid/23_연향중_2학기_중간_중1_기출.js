@@ -87,7 +87,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 직선 l 위의 네 점 A, B, C, D에 대해, 선분 AB, 직선 AC와 BD(직선 l 전체), 반직선 AB(A에서 오른쪽), 반직선 BA(B에서 왼쪽)를 네 칸에 나누어 빨간색으로 강조한 그림.",
     "solutionImageCaption": "선분 AB·BA, 반직선 AB·BA, 직선 AC·BD가 뻗는 모양",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": "M1-RPM-060",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "점·선·면",
+      "l4": "직선·반직선·선분"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 3,
@@ -134,7 +143,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 선분 AB 위에 점 A, N, M, B가 차례로 있고, AB는 16 cm, AM과 MB는 각각 8 cm이며 AN과 NM에는 같은 길이 눈금이 있는 그림.",
     "solutionImageCaption": "M은 AB의 중점, N은 AM의 중점이므로 AN=NM이다",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "점·선·면",
+      "l4": "두 점 사이의 거리와 중점"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 4,
@@ -182,9 +200,9 @@ window.questionBank = [
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -205,8 +223,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "직육면체에서 AB와 BC는 꼭짓점 B에서 만나는 서로 수직인 모서리이다. 따라서 A에서 직선 BC에 내린 수선은 AB이고 수선의 발은 B이다.",
-    "subUnitKey": "M1-07-SOLID_FIGURE",
-    "subUnit": "입체도형",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_PERPENDICULAR_FOOT_ON_SOLID_EDGE",
@@ -221,7 +239,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 직육면체에서 모서리 AB와 BC를 빨간색으로 강조하고 꼭짓점 B의 직각 표시를 나타낸 그림",
     "solutionImageCaption": "점 A에서 직선 BC에 내린 수선은 모서리 AB이고 B에서 직각을 이룬다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "위치 관계",
+      "l3": "수직과 거리",
+      "l4": "수선과 수선의 발"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 6,
@@ -229,9 +256,9 @@ window.questionBank = [
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -249,8 +276,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "공간에서 두 직선의 위치 관계는 한 점에서 만남, 일치, 평행, 꼬인 위치의 네 가지이다. ‘포함된다’는 두 직선의 위치 관계가 아니므로 ④이다.",
-    "subUnitKey": "M1-07-SOLID_FIGURE",
-    "subUnit": "입체도형",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
@@ -269,9 +296,9 @@ window.questionBank = [
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -292,8 +319,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "선분 AB와 만나거나 AB와 평행한 선분은 꼬인 위치가 아니다.\n그림의 선분을 이 기준으로 확인하면 AB와 만나지도 평행하지도 않고 같은 평면에도 놓이지 않는 선분이 7개 남는다.\n따라서 ③이다.",
-    "subUnitKey": "M1-07-SOLID_FIGURE",
-    "subUnit": "입체도형",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
@@ -301,10 +328,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 오각기둥에서 선분 AB와 만나는 모서리, 평행한 모서리 FG, 꼬인 위치의 모서리를 세 그림으로 나누어 빨간색으로 강조한 그림",
     "solutionImageCaption": "AB와 만나는 모서리, 평행한 모서리, 꼬인 위치의 모서리를 구분해 보인다.",
@@ -355,7 +382,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 그림은 평각 AOB 위의 반직선 OC, OD, OE가 만드는 네 각을 4t, t, u, 4u로 표시하고, 오른쪽 그림은 반직선 OC와 OE를 강조해 ∠COE를 t+u로 표시한 그림.",
     "solutionImageCaption": "평각을 4t, t, u, 4u로 나누고 ∠COE는 t+u",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "각",
+      "l4": "각의 크기"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 9,
@@ -363,9 +399,9 @@ window.questionBank = [
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -383,8 +419,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "한 평면에 수직인 두 직선은 서로 평행하고(ㄱ), 한 직선에 평행한 두 직선도 서로 평행하다(ㄴ).\n한 평면에 평행하거나 한 직선에 수직인 것만으로는 평행을 보장하지 않는다.\n따라서 ㄱ, ㄴ인 ①이다.",
-    "subUnitKey": "M1-07-SOLID_FIGURE",
-    "subUnit": "입체도형",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
@@ -395,7 +431,16 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "위치 관계",
+      "l3": "공간에서의 위치 관계",
+      "l4": "직선과 평면의 위치 관계"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 10,
@@ -433,17 +478,28 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_STRAIGHT_ANGLE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B23",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q10-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 두 평행선 l, m 사이에 꺾인 선이 있고, 꺾인 점마다 l, m과 평행한 보조선(점선)을 그어 엇각을 같은 색 호로 표시한 그림. 각 35°, β, γ, 130°, 30°, 150°와 x, y가 적혀 있다.",
     "solutionImageCaption": "각 꺾인 점을 지나 l, m과 평행한 보조선을 그어 엇각 35°, β, γ, 30°를 표시했다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "평행선과 각",
+      "l4": "동위각·엇각"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 11,
@@ -478,7 +534,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -486,7 +542,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 각 AOB 안에 O를 중심으로 한 호가 변 OA, OB와 C, D에서 만나고, O′X 위에 O′를 중심으로 같은 반지름의 호와 F, E를 잡아 반지름 OC=OD=O′E=O′F와 현 CD=FE를 같은 눈금으로 표시하며 두 각이 같음을 나타낸 그림.",
     "solutionImageCaption": "같은 반지름과 같은 현의 길이로 각을 옮겨 ∠XO′E=∠AOB",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "기본 작도",
+      "l4": "선분·각의 이동"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 12,
@@ -520,13 +585,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_INEQUALITY",
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
-    "difficultyBucket": 4,
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -565,7 +633,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
@@ -573,7 +641,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 점 O에서 뻗은 두 반직선 위에 A, B와 C, D가 있고, 왼쪽은 삼각형 AOD, 오른쪽은 삼각형 COB의 변을 빨갛게 강조하며 OA=OC는 눈금 두 개, AB=CD는 눈금 한 개, 공통각 ∠O를 표시한 그림.",
     "solutionImageCaption": "OA=OC, AB=CD이고 ∠O가 공통인 두 삼각형",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 합동",
+      "l4": "SAS 합동"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 14,
@@ -614,7 +691,7 @@ window.questionBank = [
     "templateKey": "TPL_TRIANGLE_AREA_FROM_SQUARE_EQUILATERAL_POSITION_CORE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
@@ -662,7 +739,7 @@ window.questionBank = [
     "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
@@ -678,9 +755,9 @@ window.questionBank = [
     "category": "기본도형",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-05",
-    "standardUnit": "기본도형",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -701,15 +778,15 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "왼쪽 삼각형의 교점 각은 180°−40°−35°=105°이다.\n교차하는 두 직선의 맞꼭지각은 같으므로 오른쪽 삼각형의 교점 각도 105°이다.\n따라서 x+27°+105°=180°에서 x=48°이고 ②이다.",
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
     "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -717,7 +794,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 두 삼각형이 한 점에서 꼭짓점이 마주 보며 겹쳐 있고, 왼쪽 삼각형의 각 40°, 35°, 오른쪽 삼각형의 각 27°와 x가 표시되며 교점에서 맞꼭지각 105°와 105°가 같은 호로 표시된 그림.",
     "solutionImageCaption": "교점의 맞꼭지각 105°와 105°",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "각의 크기 계산"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 17,
@@ -752,19 +838,28 @@ window.questionBank = [
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
-    "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_COMPOSITE_ANGLE_SUM",
+    "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
+    "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
+    "difficultyBucket": 4,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 선분이 세 곳에서 서로 만나는 도형에 각 a부터 k까지가 표시되어 있고, 세 교점마다 만들어지는 삼각형의 각이 빨강, 파랑, 초록 호로 구분되고 맞꼭지각이 같은 색의 호로 표시된 그림.",
     "solutionImageCaption": "세 교점의 삼각형과 맞꼭지각",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "각의 크기 계산"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 18,
@@ -804,7 +899,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
@@ -812,7 +907,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 한 변을 공유하는 정팔각형과 정오각형이 있고, 두 도형의 변을 연장해 만든 사각형이 색칠되어 세 내각 45°, 72°, 117°와 구하는 각 x가 표시된 그림.",
     "solutionImageCaption": "연장선이 만드는 사각형의 내각 45°, 72°, 117°와 x",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "다각형의 내각과 외각",
+      "l4": "정다각형의 각"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 19,
@@ -847,7 +951,17 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+    "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_DISTINCT_CATEGORY_SELECTION"
+    ],
+    "integrationPattern": "NONE",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 20,
@@ -885,7 +999,12 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
-    "crossConceptKeys": ["CC_SQUARE"],
+    "crossConceptKeys": [
+      "CC_SQUARE",
+      "CC_ANGLE_BISECTOR",
+      "CC_PERPENDICULAR_BISECTOR",
+      "CC_ISOSCELES_TRIANGLE"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 5,
@@ -895,7 +1014,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 정사각형 ABCD에서 CD를 D 쪽으로 연장해 DG=BE인 점 G를 잡고, 합동인 삼각형 ABE와 ADG, 직각이등변삼각형 AEG를 점선으로 나타내며 ∠EAF=45°, ∠AFE=80°, ∠AGF=55°를 표시한 그림.",
     "solutionImageCaption": "DG=BE로 △ABE≡△ADG, △AEG는 직각이등변삼각형",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 합동",
+      "l4": "SAS 합동"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 21,
@@ -921,15 +1049,15 @@ window.questionBank = [
     "choices": [],
     "answer": "$15$",
     "solution": "AD⊥FC이므로 ∠AOF=90°이다.\n직선 BOE의 위쪽 각을 합하면 (x+20°)+90°+(3x+10°)=180°이다.\n따라서 4x+120=180, x=15이다.",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -937,7 +1065,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q21-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 세 직선 AD, BE, CF가 점 O에서 만나는 그림. 직선 BE 위의 평각에 180°가 적혀 있고, ∠BOA=x+20°, ∠FOE=3x+10°가 표시되어 있으며 ∠AOF에는 직각 표시가 있다.",
     "solutionImageCaption": "직선 BE 위에서 이웃한 세 각 ∠BOA=(x+20)°, ∠AOF=90°, ∠FOE=(3x+10)°의 합이 평각 180°이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "각",
+      "l4": "각의 크기"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 22,
@@ -979,7 +1116,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾인 선에서 꺾인 두 점마다 보조 평행선을 긋고 엇각 40°, 50°, 30°를 같은 색 호로 짝지어 보이며 x가 40°와 50°로 나뉘는 그림",
     "solutionImageCaption": "보조 평행선을 그으면 엇각 40°, 50°, 30°가 생기고 x는 40°와 50°로 나뉜다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "평행선과 각",
+      "l4": "동위각·엇각"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 23,
@@ -1008,7 +1154,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -1026,9 +1174,9 @@ window.questionBank = [
     "category": "기본도형",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-05",
-    "standardUnit": "기본도형",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
+    "standardUnitOrder": 6,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1043,15 +1191,15 @@ window.questionBank = [
     "choices": [],
     "answer": "$20^\\circ$",
     "solution": "오른쪽 꼭짓점의 외각이 4x+40°이므로 내각은 180°−(4x+40°)=140°−4x이다.\n삼각형의 내각의 합으로 (85°−2x)+75°+(140°−4x)=180°이므로 6x=120, x=20이다.",
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
     "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -1059,6 +1207,15 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q24-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형의 세 내각 85-2x°, 75°, 140-4x°와 꼭짓점 C의 외각 4x+40°를 나타낸 그림",
     "solutionImageCaption": "꼭짓점 C의 외각이 (4x+40)°이므로 내각은 (140-4x)°이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "각의 크기 계산"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   }
 ];

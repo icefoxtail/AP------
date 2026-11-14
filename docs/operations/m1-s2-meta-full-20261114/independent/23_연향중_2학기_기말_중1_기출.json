@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "m1-s2-independent-sample-review-v1",
+  "reviewer": "meta-a",
+  "author": "meta-c",
+  "revision": 2,
+  "sourceArchiveFile": "original/middle/m1/2final/23_연향중_2학기_기말_중1_기출.js",
+  "candidateSourceBlob": "500deda821ab7b84f67ab745f84ddbbd3e04457e",
+  "candidateSourceRawSha256": "e440563dee5a5ebf9ed9c853e498ddd800910a35ed3bdc03cd54921601de6a3c",
+  "raw4slotSha256": "d76435d639c6925c6f24b2d2aaf0cbea47dcf7b18af9cce8050581ed58a8f851",
+  "authorReviewSha256": "f68208a6b7af0a4633c9d03c317d0e82ce85d4ceb31b4348ed94d64e8144882b",
+  "sampled": [
+    8,
+    13,
+    23
+  ],
+  "status": "ACCEPTED_AFTER_MINOR_CORRECTIONS",
+  "directReads": [
+    "current content/choices/solution",
+    "Q8/Q23 current Git original PNGs",
+    "official PT/TPL definitions including numerical-frequency/graph/stem-leaf alternatives",
+    "CC_SQUARE_PROPERTIES whole definition",
+    "author raw4slot/review/new-template proposals"
+  ],
+  "figureEvidence": [
+    {
+      "ordinal": 8,
+      "gitPath": "archive/assets/images/23_연향중_2학기_기말_중1_기출/q8.png",
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/23-yeonhyang-final-images/q8.png",
+      "sha256": "b08f8f9d7b93ee93470f56fdb5e0f8e52b4802d491428d0b8b8c8819b3be9265"
+    },
+    {
+      "ordinal": 23,
+      "gitPath": "archive/assets/images/23_연향중_2학기_기말_중1_기출/q23.png",
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/23-yeonhyang-final-images/q23.png",
+      "sha256": "65b123d4c46ff4f190eaadb2f92fc4d3b8985149709f3250971c2f7907464752"
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 8,
+      "verdict": "ACCEPT_EXISTING_TEMPLATE_REUSE",
+      "meaning": "실제 구 내부 정팔면체 원그림을 확인했다. 공통 정사각형의 대각선이 구의 지름이고 위아래 사각뿔 높이가 반지름임을 해석한 다음 두 부피를 합한다. 기본 입체 공식 한 번의 적용보다 COMPOSITE_VOLUME_SUM이 정확하다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "compatibility": "NORMAL"
+      },
+      "native": "ACTIVE PT_M1_SOLID_FIGURE_MEASURE / TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM의 구성요소별 부피 합 정의와 일치한다. 2015 RPM107의 의미 경로와 새 TPL의 exact projection 공백은 별개로 남겨야 한다.",
+      "ccIntegration": "CC_SQUARE_PROPERTIES가 대각선의 같은 길이·수직이등분까지 실제 정의에 포함한다. 밑넓이 복원 후 부피합으로 이어지는 SEQUENTIAL 수용.",
+      "fourSlotCorrections": [
+        {
+          "slot": "goal",
+          "term": "정팔면체",
+          "src": "stem",
+          "quote": "정팔면체의 부피",
+          "reason": "구와 정팔면체 중 실제 목표 입체를 명시한다."
+        }
+      ],
+      "questionUid": "qid_v1_b36de57507c901372f5224a1f7d7b5130bfe365d98f3b3d34cf24eb0aaaad602",
+      "fourSlotFinalVerdict": "ACCEPT_CORRECTIONS_READ_BACK"
+    },
+    {
+      "ordinal": 13,
+      "verdict": "ACCEPT_NEW_TEMPLATE_AND_ADJACENT_DIFFICULTY",
+      "meaning": "수치표 누락값 계산 없이 계급·계급크기·도수·표의 정의 및 계급이 많을수록 무조건 유리하다는 진술의 부적절함을 판단한다. 기존 FREQUENCY_AUDIT의 특정 구간 도수합과 CUMULATIVE_CUTOFF의 누적순위 골격은 해당하지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B12",
+        "compatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "native": "기존 PT 아래 DEFINITION_CLAIM_AUDIT 제안과 parent 정의 일반화가 타당하다. binding 누락만으로 해결되는 경우가 아니며 새 PT는 필요 없다.",
+      "fourSlotCorrections": [
+        {
+          "slot": "goal",
+          "term": "도수분포표",
+          "src": "stem",
+          "quote": "도수분포표에 대한",
+          "reason": "판정 대상이 되는 통계 정리 개념을 명시한다."
+        },
+        {
+          "slot": "method",
+          "term": "분포",
+          "src": "solution",
+          "quote": "계급의 개수를 지나치게 많이 하면 자료가 너무 잘게 나뉘어 전체 분포를 파악하기 불편할 수 있으므로",
+          "evidenceType": "IMPLIED",
+          "justification": "계급을 지나치게 잘게 나누면 전체 분포 파악이 어려워진다는 원리로 결정적 오진술⑤를 배제한다."
+        }
+      ],
+      "questionUid": "qid_v1_ce941f802d1b8eb3c57b4e2c510ebf7a51dcba2dd8f0aa4ceeb081db9e7cf1a6",
+      "fourSlotFinalVerdict": "ACCEPT_CORRECTIONS_READ_BACK"
+    },
+    {
+      "ordinal": 23,
+      "verdict": "ACCEPT_NEW_RECLASSIFICATION_TEMPLATE",
+      "meaning": "원그림의 20개 원자료와 60~80만 너비20인 표 및 잘못된 부분 설명·다시 작성 요구를 직접 읽었다. 잘못 묶인 구간을 너비10으로 재설정하고 원자료를 다시 세므로, 정해진 구간에 줄기잎 자료를 옮기는 기존 TPL과 구조가 다르다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "compatibility": "NORMAL"
+      },
+      "native": "RAW_DATA_CLASS_WIDTH_REPAIR 제안을 수용한다. 합계에서 빈칸 도수를 역산하거나 막대그래프를 그리는 TPL로 대체하지 않는다.",
+      "integration": "NONE 수용: 현재 자료 재분류 primary 내에서 완결된다.",
+      "fourSlotCorrections": [
+        {
+          "slot": "goal",
+          "term": "계급의크기",
+          "src": "solution",
+          "quote": "계급의 크기는 일정해야 한다",
+          "reason": "원그림의 잘못된 부분 서술 요구를 표 작성과 함께 담는다. 현행 dictionary alias는 계급과 같은 id418이며 분리 제안은 정본 담당에 남긴다."
+        }
+      ],
+      "questionUid": "qid_v1_e0d96fd992b45f6ad0aa8ddf38041ad48f4a982c4b5f9a7af3794a8dfedeb66a",
+      "fourSlotFinalVerdict": "ACCEPT_CORRECTIONS_READ_BACK"
+    }
+  ],
+  "sourceModified": false,
+  "mathFullR1R2Performed": false,
+  "finalReadback": {
+    "actualCorrections": [
+      {
+        "ordinal": 8,
+        "slot": "goal",
+        "term": "정팔면체",
+        "src": "stem",
+        "quote": "정팔면체의 부피"
+      },
+      {
+        "ordinal": 13,
+        "slot": "goal",
+        "term": "도수분포표",
+        "src": "stem",
+        "quote": "도수분포표에 대한"
+      },
+      {
+        "ordinal": 13,
+        "slot": "method",
+        "term": "분포",
+        "src": "solution",
+        "quote": "계급의 개수를 지나치게 많이 하면 자료가 너무 잘게 나뉘어 전체 분포를 파악하기 불편할 수 있으므로",
+        "evidenceType": "NAMED"
+      },
+      {
+        "ordinal": 23,
+        "slot": "goal",
+        "term": "계급",
+        "src": "solution",
+        "quote": "계급의 크기는 일정해야"
+      }
+    ],
+    "protectedFieldChanges": [],
+    "q13Compatibility": "BORDERLINE_ACCEPTABLE",
+    "semanticConclusionsRetained": true,
+    "methodEvidenceDisposition": "Q13 분포의 원문 인용에 실제 명칭이 있으므로 작성자의 NAMED도 유효하다.",
+    "q23GoalDisposition": "계급의크기는 현행 사전 계급 id418의 동의어이므로 goal 계급과 정확 인용으로 동일 목표가 보존되었다.",
+    "authorDifficultySupplement": "root의 Q3/9/10/14/15/19 난도 보조결과는 작성 review.independentDifficulty에 별도 결속되어 있으며 A의 3표본 검토 범위와 구별한다."
+  }
+}

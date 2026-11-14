@@ -1,0 +1,1861 @@
+{
+  "schemaVersion": "palma-source-and-plan-independent-check-v1",
+  "recordedAt": "2026-11-13T18:48:43.748903+00:00",
+  "status": "CANDIDATE_STRUCTURE_AND_PRESERVATION_PASS_NOT_APPLIED",
+  "baselineMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+  "source": {
+    "path": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+    "rawSha256": "9a5e79c37b15d4e19054166b3eed5541df76992f39166518ac147aed18360861",
+    "blobSha1": "a366f180ffe4b8495bb79fcc362ef1e0ff4618ca"
+  },
+  "candidate": {
+    "path": ".tmp/m1-meta-review/03-palma-source-candidate.js",
+    "rawSha256": "1fa5adbc46ef6180400a4666c4328bb2d2b6655d059e660291ccf550803332c7",
+    "executableVmQuestionCount": 24
+  },
+  "inputs": [
+    {
+      "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/03-palma-native-registration-plan.json",
+      "sha256": "42b247724e3f76889f249bc9afc9d23937083f8bcdfcfa605efda5c9db35af60"
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/03-palma-crosswalk-plan.json",
+      "sha256": "f9d0589290dc0d4f2d177d8a4116e4647064f005b765df2a44214d7b9b21adca"
+    },
+    {
+      "path": ".tmp/m1-meta-review/03-palma-source-candidate-delta.json",
+      "sha256": "15b4e15b2611f6700f2c016a78361283557867ff08bf5699f14dfeb0a5a4f5cf"
+    },
+    {
+      "path": ".tmp/m1-meta-review/03-palma-figure-manifest-main738.json",
+      "sha256": "4c4898be66ca98a620e2677f032ca84d8e7c4d8c42ea4c56b8f8b91ef3514d47"
+    },
+    {
+      "path": ".tmp/m1-meta-review/03-palma-crosswalk-candidate.json",
+      "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc"
+    },
+    {
+      "path": ".tmp/m1-meta-review/03-palma-parents-candidate.json",
+      "sha256": "53668c1203032e1b87c05eca8ae2303ad0c8cc011f0cd949284cf5394b00e7de"
+    }
+  ],
+  "ledgerIndependentCheck": {
+    "path": ".tmp/m1-meta-review/03-palma-ledger-independent-check.json",
+    "sha256": "f603ffdeb76df11b1cddde9f29dbd695921bc5077e10c82d53a891d152df1b3d",
+    "revision": 2
+  },
+  "counts": {
+    "questions": 24,
+    "allSourceMetadataChangedQuestions": 24,
+    "nativeClassificationChangedQuestions": 14,
+    "protectedPayloadIdenticalQuestions": 24,
+    "externalAssets": 37,
+    "exactNativeRegistryChanges": 7,
+    "newProblemTypes": 1,
+    "newTemplates": 3,
+    "newBindings": 3,
+    "existingBindingsReused": 21,
+    "oldCrosswalkRowsPreserved": 260,
+    "newExactCrosswalkRows": 13,
+    "resultCrosswalkRows": 273,
+    "exactRpmLeaves": 19,
+    "rpmDebtQuestions": 5,
+    "discrepancies": 0
+  },
+  "checks": {
+    "input_hash_docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json": true,
+    "input_hash_docs/operations/m1-meta-review-20261113/03-palma-native-registration-plan.json": true,
+    "input_hash_docs/operations/m1-meta-review-20261113/03-palma-crosswalk-plan.json": true,
+    "input_hash_.tmp/m1-meta-review/03-palma-source-candidate.js": true,
+    "input_hash_.tmp/m1-meta-review/03-palma-figure-manifest-main738.json": true,
+    "baseline_source_matches_reviewed_hash": true,
+    "candidate_hash_matches_delta": true,
+    "24_executable_questions": true,
+    "vm_title_and_other_window_fields_preserved": true,
+    "delta_whitelist_contains_only_classification_and_annotation": true,
+    "counts_match_24_14_19_5": true,
+    "only_metadata_representation_difference_is_q19_empty_string": true,
+    "exact_37_actual_assets_preserved": true,
+    "add_only_registry_0": true,
+    "add_only_registry_1": true,
+    "add_only_registry_2": true,
+    "add_only_registry_3": true,
+    "add_only_registry_4": true,
+    "add_only_registry_5": true,
+    "add_only_registry_6": true,
+    "exact_7_unique_registry_changes": true,
+    "registry_evidence_{\"problemTypeKey\": \"PT_M1_STAR_POLYGON_ANGLE_SUM\"}": true,
+    "registry_evidence_{\"templateKey\": \"TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_TRIANGLE_ANGLE_CHASE\"}": true,
+    "registry_evidence_{\"templateKey\": \"TPL_M1_POLYGON_ANGLE_AND_COUNT_DIRECT_INTERIOR_EXTERIOR_TOTALS\"}": true,
+    "registry_evidence_{\"templateKey\": \"TPL_M1_STAR_POLYGON_ANGLE_SUM_TURNING_ANGLE_TOTAL\"}": true,
+    "registry_evidence_{\"curriculum\": \"2022\", \"problemTypeKey\": \"PT_M1_STAR_POLYGON_ANGLE_SUM\", \"standardCourse\": \"\\uc9111 \\uc218\\ud559\", \"standardUnitKey\": \"M1-06\", \"subUnitKey\": \"M1-06-POLYGON_CIRCLE\"}": true,
+    "registry_evidence_{\"curriculum\": \"2022\", \"problemTypeKey\": \"PT_M1_TRIANGLE_ANGLE_CHASE\", \"standardCourse\": \"\\uc9111 \\uc218\\ud559\", \"standardUnitKey\": \"M1-06\", \"subUnitKey\": \"M1-06-POLYGON_CIRCLE\"}": true,
+    "registry_evidence_{\"curriculum\": \"2022\", \"problemTypeKey\": \"PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA\", \"standardCourse\": \"\\uc9111 \\uc218\\ud559\", \"standardUnitKey\": \"M1-05\", \"subUnitKey\": \"M1-05-CONSTRUCTION_CONGRUENCE\"}": true,
+    "new_pt_definition_exact": true,
+    "new_tpl_definition_TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_TRIANGLE_ANGLE_CHASE": true,
+    "new_tpl_definition_TPL_M1_POLYGON_ANGLE_AND_COUNT_DIRECT_INTERIOR_EXTERIOR_TOTALS": true,
+    "new_tpl_definition_TPL_M1_STAR_POLYGON_ANGLE_SUM_TURNING_ANGLE_TOTAL": true,
+    "planned_native_binding_parent_q1": true,
+    "planned_native_binding_parent_q2": true,
+    "planned_native_binding_parent_q3": true,
+    "planned_native_binding_parent_q4": true,
+    "planned_native_binding_parent_q5": true,
+    "planned_native_binding_parent_q6": true,
+    "planned_native_binding_parent_q7": true,
+    "planned_native_binding_parent_q8": true,
+    "planned_native_binding_parent_q9": true,
+    "planned_native_binding_parent_q10": true,
+    "planned_native_binding_parent_q11": true,
+    "planned_native_binding_parent_q12": true,
+    "planned_native_binding_parent_q13": true,
+    "planned_native_binding_parent_q14": true,
+    "planned_native_binding_parent_q15": true,
+    "planned_native_binding_parent_q16": true,
+    "planned_native_binding_parent_q17": true,
+    "planned_native_binding_parent_q18": true,
+    "planned_native_binding_parent_q19": true,
+    "planned_native_binding_parent_q20": true,
+    "planned_native_binding_parent_q21": true,
+    "planned_native_binding_parent_q22": true,
+    "planned_native_binding_parent_q23": true,
+    "planned_native_binding_parent_q24": true,
+    "crosswalk_candidate_hash": true,
+    "parent_candidate_hash": true,
+    "260_old_crosswalk_rows_unchanged_and_exact_13_append": true,
+    "13_appends_exactly_cover_reviewed_gaps": true,
+    "planned_crosswalk_exact_q1": true,
+    "planned_crosswalk_exact_q2": true,
+    "planned_crosswalk_exact_q3": true,
+    "planned_crosswalk_exact_q4": true,
+    "planned_crosswalk_exact_q5": true,
+    "planned_crosswalk_exact_q7": true,
+    "planned_crosswalk_exact_q9": true,
+    "planned_crosswalk_exact_q10": true,
+    "planned_crosswalk_exact_q11": true,
+    "planned_crosswalk_exact_q15": true,
+    "planned_crosswalk_exact_q16": true,
+    "planned_crosswalk_exact_q17": true,
+    "planned_crosswalk_exact_q18": true,
+    "planned_crosswalk_exact_q19": true,
+    "planned_crosswalk_exact_q20": true,
+    "planned_crosswalk_exact_q21": true,
+    "planned_crosswalk_exact_q22": true,
+    "planned_crosswalk_exact_q23": true,
+    "planned_crosswalk_exact_q24": true,
+    "official_parent_and_all_326_leaf_meanings_preserved": true,
+    "planned_official_parent_link_q1": true,
+    "planned_official_parent_link_q2": true,
+    "planned_official_parent_link_q3": true,
+    "planned_official_parent_link_q4": true,
+    "planned_official_parent_link_q5": true,
+    "planned_official_parent_link_q7": true,
+    "planned_official_parent_link_q9": true,
+    "planned_official_parent_link_q10": true,
+    "planned_official_parent_link_q11": true,
+    "planned_official_parent_link_q15": true,
+    "planned_official_parent_link_q16": true,
+    "planned_official_parent_link_q17": true,
+    "planned_official_parent_link_q18": true,
+    "planned_official_parent_link_q19": true,
+    "planned_official_parent_link_q20": true,
+    "planned_official_parent_link_q21": true,
+    "planned_official_parent_link_q22": true,
+    "planned_official_parent_link_q23": true,
+    "planned_official_parent_link_q24": true,
+    "source_and_plan_inputs_unchanged_during_audit": true
+  },
+  "discrepancies": [],
+  "changedFieldCounts": {
+    "canonicalBindingStatus": 24,
+    "conceptClusterKey": 9,
+    "crossConceptKeys": 4,
+    "curriculum": 24,
+    "decisiveStep": 24,
+    "integrationPattern": 4,
+    "metaNullReason": 5,
+    "primaryMethod": 24,
+    "problemTypeKey": 4,
+    "rpmCrosswalkStatus": 24,
+    "rpmPrimaryPath": 24,
+    "rpmPrimaryRecordId": 24,
+    "rpmSemanticStatus": 5,
+    "runtimeMaterializationStatus": 24,
+    "standardUnit": 3,
+    "standardUnitKey": 3,
+    "standardUnitOrder": 3,
+    "subUnit": 9,
+    "subUnitKey": 9,
+    "tagConfidence": 24,
+    "tagStatus": 2,
+    "templateKey": 6
+  },
+  "nativeChangedOrdinals": [
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    16,
+    17,
+    19,
+    20,
+    21,
+    24
+  ],
+  "rpmDebtOrdinals": [
+    6,
+    8,
+    12,
+    13,
+    14
+  ],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_aeac61cf463b156ee3a77b9a0bf56197226b0f30293b013e4a435086e8a0bbd4",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "634e987e69aa0ca0ff4b432da5c9befd6a4efb31ab988d1bd284e9c9063f40d5",
+      "protectedPayloadAfterSha256": "634e987e69aa0ca0ff4b432da5c9befd6a4efb31ab988d1bd284e9c9063f40d5",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_9b4acc2d19a0bf5b24044439b7a93d16cc01ed5491d251519cc48235ff223db8",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence",
+        "tagStatus"
+      ],
+      "protectedPayloadSha256": "e314097f11c2f88d427ad425071aeed33eebd6f5633af6f066825c237500d357",
+      "protectedPayloadAfterSha256": "e314097f11c2f88d427ad425071aeed33eebd6f5633af6f066825c237500d357",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_dca5b1495c2fdb8706ba4ee7b2620c8703bc1467a10a19d8c165a07b3464a976",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "2d87412134fffd9816a5973f75e178818102735c1baf751dc821c7206694adeb",
+      "protectedPayloadAfterSha256": "2d87412134fffd9816a5973f75e178818102735c1baf751dc821c7206694adeb",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_ad89956ceb68957e2871b30660000826f0e00d6ebb4a1a1e1b5c03261aff25a7",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "0585cf2304b1d1cc805aa8e7826cb9193f7a31fdf9e2c1cba4b3c26b8953f6f9",
+      "protectedPayloadAfterSha256": "0585cf2304b1d1cc805aa8e7826cb9193f7a31fdf9e2c1cba4b3c26b8953f6f9",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_df3befa3fc3ac768ecd2db63406ae2b97508965f814eff8565d7901660ecb74e",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "662be4d48612c4f20e4acb748f5e9f0e435c7e96818b37f8c13cd70b1516a149",
+      "protectedPayloadAfterSha256": "662be4d48612c4f20e4acb748f5e9f0e435c7e96818b37f8c13cd70b1516a149",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "conceptClusterKey",
+        "curriculum",
+        "decisiveStep",
+        "metaNullReason",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "rpmSemanticStatus",
+        "runtimeMaterializationStatus",
+        "standardUnit",
+        "standardUnitKey",
+        "standardUnitOrder",
+        "subUnit",
+        "subUnitKey",
+        "tagConfidence",
+        "templateKey"
+      ],
+      "protectedPayloadSha256": "fb95d7a5b3d25887e84ad75e7ab9fd707d04bf99e8195144ab94b927f5f492ea",
+      "protectedPayloadAfterSha256": "fb95d7a5b3d25887e84ad75e7ab9fd707d04bf99e8195144ab94b927f5f492ea",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "debt_null_hold_preserved": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_6a23d2b43c9a6f7c1a1c175c6bb121d0a9f8c623f12711e85f5ab8c798abc556",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "problemTypeKey",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence",
+        "templateKey"
+      ],
+      "protectedPayloadSha256": "2f42521d70dc215896521041c0abff4079ab0d2ed236d5c300b3e9d18e569d7a",
+      "protectedPayloadAfterSha256": "2f42521d70dc215896521041c0abff4079ab0d2ed236d5c300b3e9d18e569d7a",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "conceptClusterKey",
+        "curriculum",
+        "decisiveStep",
+        "metaNullReason",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "rpmSemanticStatus",
+        "runtimeMaterializationStatus",
+        "standardUnit",
+        "standardUnitKey",
+        "standardUnitOrder",
+        "subUnit",
+        "subUnitKey",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "ddcfe080c883f523a50d27aae05f7af69bf65b12dcac5b6b9fd4479e241584c8",
+      "protectedPayloadAfterSha256": "ddcfe080c883f523a50d27aae05f7af69bf65b12dcac5b6b9fd4479e241584c8",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "debt_null_hold_preserved": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_690710e7ac7ec4e05e9fc07e1a1f468bb8147e84a5427104e530607a1f962e42",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "b464d0c63da8a1c197d5f1c57a6cd2a0267d0a0e364f48405615dba9670f9673",
+      "protectedPayloadAfterSha256": "b464d0c63da8a1c197d5f1c57a6cd2a0267d0a0e364f48405615dba9670f9673",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_9b6c9e1f6b039fc6c4335114abd1392fd7ee680a60d038c0cda3f9a896ee7102",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "conceptClusterKey",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "subUnit",
+        "subUnitKey",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "97c4452fbbc51581bc7309fdef3bbbcd3afde8d6deca70041f6102946ec1820a",
+      "protectedPayloadAfterSha256": "97c4452fbbc51581bc7309fdef3bbbcd3afde8d6deca70041f6102946ec1820a",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_5394e91945cd93b47b3a1306dd912ec5c2b51d2621fae8dec5cda82bbd64c205",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "conceptClusterKey",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "problemTypeKey",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "subUnit",
+        "subUnitKey",
+        "tagConfidence",
+        "templateKey"
+      ],
+      "protectedPayloadSha256": "3e241239dfd7889560d0bc744f122972f10ec8342b80c0efe02cd1fcde0df3bd",
+      "protectedPayloadAfterSha256": "3e241239dfd7889560d0bc744f122972f10ec8342b80c0efe02cd1fcde0df3bd",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_af907e6247a0fd85a870e048c96666ec886ef2d1057b98c14d958c1fdea72ce9",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "conceptClusterKey",
+        "curriculum",
+        "decisiveStep",
+        "metaNullReason",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "rpmSemanticStatus",
+        "runtimeMaterializationStatus",
+        "subUnit",
+        "subUnitKey",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "92ac7db79625fc3292d608d062af5611f526ed9f9f44651a323fbb23a553af15",
+      "protectedPayloadAfterSha256": "92ac7db79625fc3292d608d062af5611f526ed9f9f44651a323fbb23a553af15",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "debt_null_hold_preserved": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_f68009c211068d63c42d9641a37dcc7826e42d90dc8001fc7f74e03db9a51ac4",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "conceptClusterKey",
+        "crossConceptKeys",
+        "curriculum",
+        "decisiveStep",
+        "integrationPattern",
+        "metaNullReason",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "rpmSemanticStatus",
+        "runtimeMaterializationStatus",
+        "subUnit",
+        "subUnitKey",
+        "tagConfidence",
+        "tagStatus"
+      ],
+      "protectedPayloadSha256": "240758662dbfffa74dd90b892a046434129439105c80d1380385a35643733b0e",
+      "protectedPayloadAfterSha256": "240758662dbfffa74dd90b892a046434129439105c80d1380385a35643733b0e",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "debt_null_hold_preserved": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_eabe9270f247372c1649ff25c772e848daf06c69f7e6dfa889d21cb1f5ded39d",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "conceptClusterKey",
+        "curriculum",
+        "decisiveStep",
+        "metaNullReason",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "rpmSemanticStatus",
+        "runtimeMaterializationStatus",
+        "subUnit",
+        "subUnitKey",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "93865578c5d464c1972fff1e18f2dd0dd6a17451f1dde759ab017264f36fb7e9",
+      "protectedPayloadAfterSha256": "93865578c5d464c1972fff1e18f2dd0dd6a17451f1dde759ab017264f36fb7e9",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "debt_null_hold_preserved": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_a49a108502b32e9910d324e69bd4b50fe60d4732208de0275e0f40e284af6676",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "4eb5dbee9df3578a99c79eb5554ef803d163bea6c54e04b4324a7119f99f2493",
+      "protectedPayloadAfterSha256": "4eb5dbee9df3578a99c79eb5554ef803d163bea6c54e04b4324a7119f99f2493",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_24a00b1861775852d97237d6ff2bab7fbf8b523fde92649c50d5bb6aeab4fc2f",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "crossConceptKeys",
+        "curriculum",
+        "decisiveStep",
+        "integrationPattern",
+        "primaryMethod",
+        "problemTypeKey",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence",
+        "templateKey"
+      ],
+      "protectedPayloadSha256": "e666e5fbb173dd63bfd4d477e39fc4cf1105669264bdb2b72ba95a99eb952c33",
+      "protectedPayloadAfterSha256": "e666e5fbb173dd63bfd4d477e39fc4cf1105669264bdb2b72ba95a99eb952c33",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_8ddd54f26e647cf88c553a1f15133ae63dea7b6233caaa68e0194f88351c273b",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence",
+        "templateKey"
+      ],
+      "protectedPayloadSha256": "a9abcb6393656dae83a1b9dbfea19e9c4fe41f1654d4fbdf939db00ac5ab20a8",
+      "protectedPayloadAfterSha256": "a9abcb6393656dae83a1b9dbfea19e9c4fe41f1654d4fbdf939db00ac5ab20a8",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_3ffc1c4b696a4ef7c2ba59b1d37004134fc05ff0ce0212d0b55acd689ff8fce7",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "f16cc2425297b61a07ea5b88faad4980ba7ef0c559f268f2e0895ae6005fb448",
+      "protectedPayloadAfterSha256": "f16cc2425297b61a07ea5b88faad4980ba7ef0c559f268f2e0895ae6005fb448",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "problemTypeKey",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence",
+        "templateKey"
+      ],
+      "protectedPayloadSha256": "9e3548ec0a77724bf66ea685196badf863b300e8a5ba1b4168d457717285eb95",
+      "protectedPayloadAfterSha256": "9e3548ec0a77724bf66ea685196badf863b300e8a5ba1b4168d457717285eb95",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_5ff9229265ef4aef481e014c3565592c9726b89f9ff8d2714b81fe3e3b097064",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "crossConceptKeys",
+        "curriculum",
+        "decisiveStep",
+        "integrationPattern",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "dfe58e858e698026630a5f063ba939a8d4efde6beadefff88a7fa5b7063a36a3",
+      "protectedPayloadAfterSha256": "dfe58e858e698026630a5f063ba939a8d4efde6beadefff88a7fa5b7063a36a3",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_b7a4e9fe41cebbe2f68649f03fbb6c7fde5a0ac4ff88c2b9ff08a3bce63966eb",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "conceptClusterKey",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "standardUnit",
+        "standardUnitKey",
+        "standardUnitOrder",
+        "subUnit",
+        "subUnitKey",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "37ac1c08e8c68c407b1821354549d46d81ee3d8625dc2b7c2663c719890fc76f",
+      "protectedPayloadAfterSha256": "37ac1c08e8c68c407b1821354549d46d81ee3d8625dc2b7c2663c719890fc76f",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_4fde7f4e5f3ba55ede413c85c7e48572ee8b2c26bf5add8a27cf71bac14fd139",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "08f620d3da44ef1a5aaf938e4c19595f02719bfe3b1ca069420dbf43af5d3635",
+      "protectedPayloadAfterSha256": "08f620d3da44ef1a5aaf938e4c19595f02719bfe3b1ca069420dbf43af5d3635",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_2222cce621e720b3998c49bb63edb0c8ddb93f85655114d1630ec3daf7b9f832",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "curriculum",
+        "decisiveStep",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "2ba83106f0b6a2f74d85186e09cd04919c6082286060108de875ca2af54ba086",
+      "protectedPayloadAfterSha256": "2ba83106f0b6a2f74d85186e09cd04919c6082286060108de875ca2af54ba086",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_175a477a1b54c46883e3a4dc79848a6308d2f6b6d8adedd2445b0c7fad15e67f",
+      "changedFields": [
+        "canonicalBindingStatus",
+        "conceptClusterKey",
+        "crossConceptKeys",
+        "curriculum",
+        "decisiveStep",
+        "integrationPattern",
+        "primaryMethod",
+        "rpmCrosswalkStatus",
+        "rpmPrimaryPath",
+        "rpmPrimaryRecordId",
+        "runtimeMaterializationStatus",
+        "subUnit",
+        "subUnitKey",
+        "tagConfidence"
+      ],
+      "protectedPayloadSha256": "05ef8ef43ea5e3d3cec5dd3ee8eca2b97f116fc51c14e5d45e7d8446dde8f2dc",
+      "protectedPayloadAfterSha256": "05ef8ef43ea5e3d3cec5dd3ee8eca2b97f116fc51c14e5d45e7d8446dde8f2dc",
+      "sourceReviewStatus": {
+        "before": "create_pending",
+        "after": "create_pending"
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "checks": {
+        "ordinal_uid_binding_preserved": true,
+        "protected_normal_and_all_unlisted_fields_identical": true,
+        "only_whitelisted_fields_changed": true,
+        "all_native_fields_match_final_ledger": true,
+        "reviewed_course_and_order_exact": true,
+        "rpm_record_path_match_ledger": true,
+        "method_annotations_match_ledger": true,
+        "metadata_tag_states_consistent": true,
+        "exact_rpm_annotation_is_candidate_only": true,
+        "no_math_review_flags_added_or_changed": true,
+        "delta_ordinal_uid_and_fields_match": true,
+        "ledger_before_is_exact_source_basis": true
+      }
+    }
+  ],
+  "assets": [
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q01.png",
+      "uses": [
+        {
+          "ordinal": 1,
+          "field": "image"
+        }
+      ],
+      "sha256": "591bb82776e45c314119065c8273e40db2832011511547b2e66a9ffb6a6eb6ec",
+      "blobSha1": "e290a7e2a9043703df7ead858f7769ed14de34b9",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q1-solution.svg",
+      "uses": [
+        {
+          "ordinal": 1,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "b68790d64cca2420321eb51a17d869ec1f9e099f6d56feed786d2b4c4934bcd0",
+      "blobSha1": "bd4bed87b4b53a0f46dd3474aed6d531aec538d6",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q2-solution.svg",
+      "uses": [
+        {
+          "ordinal": 2,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "91b689e9aea98171f2a07afb94452fed97a7640619637257098abc049175ce74",
+      "blobSha1": "37abf6ab410be75bd10caf5d87086146224a343f",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q03.png",
+      "uses": [
+        {
+          "ordinal": 3,
+          "field": "image"
+        }
+      ],
+      "sha256": "70b338e308ecdb29d685f3c4d04a86d32cfa1cad0834a2d6c946e5d54f105727",
+      "blobSha1": "aa4537f2fbd80bb258bb375bf7e994539c95a4ad",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q3-solution.svg",
+      "uses": [
+        {
+          "ordinal": 3,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "516c3064fe39e2f7380b651f7210238b6097d898da36e1173595a91cb4674760",
+      "blobSha1": "39da34b82f79a8ff60d915c372df76537cb4f962",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q04.png",
+      "uses": [
+        {
+          "ordinal": 4,
+          "field": "image"
+        }
+      ],
+      "sha256": "12d7d314d5b21d0ef7b69770466af5aafd08c690efc75178b9f9abf41d1f87d9",
+      "blobSha1": "b2420d997f01be796df288cf8156e4f84ec05c7c",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q4-solution.svg",
+      "uses": [
+        {
+          "ordinal": 4,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "3a5db3efe080ba11560594fafa9c5efa4574948fb0adc4d4b7180b904ffc2ecb",
+      "blobSha1": "f163d32a99182c6bc483d9533820960db044a428",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q05.png",
+      "uses": [
+        {
+          "ordinal": 5,
+          "field": "image"
+        }
+      ],
+      "sha256": "db7ca03c206adf9e50659ee83af9e61285f7c9cc8bdfa05a6d49af4a13767df0",
+      "blobSha1": "8ea85407315d9c478c1c1dea009012c9dc13a148",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q5-solution.svg",
+      "uses": [
+        {
+          "ordinal": 5,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "892c6a57fb19a26a8f22b5dedb47dda54af443a101bae72001c01688ef356248",
+      "blobSha1": "6e778a2051a0e910b528d54c6aa142f3b17af17f",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q06.png",
+      "uses": [
+        {
+          "ordinal": 6,
+          "field": "image"
+        }
+      ],
+      "sha256": "cd4ebed8ffcfc6b14748e476f2706b1a674ec2756d324bb166e1b5a1e4f835b4",
+      "blobSha1": "42ccd1c715d2c0d3ac22fcc7da7fc8c985d190b3",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q6-solution.svg",
+      "uses": [
+        {
+          "ordinal": 6,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "84eb59837e4f41dba12b0e12c10e73558bb7b8dc3cdec1c05cab4193216dfbd6",
+      "blobSha1": "cdfcf3d3064473bbb7fe2dbe5f459c529b4d3564",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q7-solution.svg",
+      "uses": [
+        {
+          "ordinal": 7,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "9b65d2f92df223918f344a0cf22cc904d4cf03825a7de2d97fe7d85c24f60d3d",
+      "blobSha1": "1ff4e9e98cd8c05c11105e4825f316a14dbb58b9",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q08.png",
+      "uses": [
+        {
+          "ordinal": 8,
+          "field": "image"
+        }
+      ],
+      "sha256": "e4c14889a582b5b5f1ae53e51901e7f86fe355be391175a10eb22f8da49282ee",
+      "blobSha1": "42907f74d6680726fe46470e3ee380a8ccbfac83",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q8-solution.svg",
+      "uses": [
+        {
+          "ordinal": 8,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "11d0a239010ed64792107a4c09edeeaf3ad55e6f93e6befdeab3424c249555d4",
+      "blobSha1": "6e6f8ed4778001758efb97be5bbbbe08d181b4cd",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q09.png",
+      "uses": [
+        {
+          "ordinal": 9,
+          "field": "image"
+        }
+      ],
+      "sha256": "d3e953a1c8b8c62aa529ca5d243b1f5a438a5fbeee972540599a67cd011d3870",
+      "blobSha1": "0cead9c8cc346fab9fe67166b5d5b416da7520b1",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q9-solution.svg",
+      "uses": [
+        {
+          "ordinal": 9,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "933df6fe33a460b86ffe43606c86c0d1c27eb4bafb9ab591f7d2328d09d96d08",
+      "blobSha1": "410ef22738dea2f9db8e65d8d4042754b81fa5b1",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q10.png",
+      "uses": [
+        {
+          "ordinal": 10,
+          "field": "image"
+        }
+      ],
+      "sha256": "21cd346bfa799230787c82e2cecf9e396d8f76eab80d56e48bfa964b6131547d",
+      "blobSha1": "e99229887b1cda08d7a40d5f668c1193bd680245",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q10-solution.svg",
+      "uses": [
+        {
+          "ordinal": 10,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "242e87b91d057edd0464c550e32da95c0b8b7867f5b8ca7582d02a3e666cb9b8",
+      "blobSha1": "b43165e70d41a591225fad7a3eed048e92465a89",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q11.png",
+      "uses": [
+        {
+          "ordinal": 11,
+          "field": "image"
+        }
+      ],
+      "sha256": "4d28005896f8b25963e94bd71fa26b32e4bf7491828e8485b7ee532a9a441f04",
+      "blobSha1": "a1893bc0af88e57fd7d40555b7ac995d90dcd9d8",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q11-solution.svg",
+      "uses": [
+        {
+          "ordinal": 11,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "40081fa4361a7bfa588d43f442a8a7fb8517ce93ce70b9daf03e7f26df3af161",
+      "blobSha1": "93e9e6b1f934fc1c2563ef3c9efb53801e778fcd",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q12-solution.svg",
+      "uses": [
+        {
+          "ordinal": 12,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "e3db88c756ef55d00d0deb143a5f11608eec2ab5b13dc84c1c84a73d92fc903e",
+      "blobSha1": "3c55759101a88191cefc897bc158e2ed1475d326",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q13.png",
+      "uses": [
+        {
+          "ordinal": 13,
+          "field": "image"
+        }
+      ],
+      "sha256": "8a20320138e0e70a1fc9f4f3c73a4551bc93838ea6b41d0f71090110a4f3defe",
+      "blobSha1": "1371b12dfebf4447cc6c8174cfb3eff5e76e08d1",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q13-solution.svg",
+      "uses": [
+        {
+          "ordinal": 13,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "1f1422396ff9f63ef57dfd315d9db64f7d30daa4621b2ab0cac1239a3b0cd40c",
+      "blobSha1": "8ed5e48e8c45f3e937853caed5054e8f826af705",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q14.png",
+      "uses": [
+        {
+          "ordinal": 14,
+          "field": "image"
+        }
+      ],
+      "sha256": "f2816d16420637f5de1e405dba5580739b552b5d0e45e72d15cfc1bab86c1564",
+      "blobSha1": "887cebac8fb52d18eeb045e20a6d9e97a5d83883",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q14-solution.svg",
+      "uses": [
+        {
+          "ordinal": 14,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "1f0d69a6b080fb1e10317623f25371fcb3ec00cd82f2b26caecaf134763676bb",
+      "blobSha1": "b41b4448360f36e5a50f575318ff869db6e38262",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q16.png",
+      "uses": [
+        {
+          "ordinal": 16,
+          "field": "image"
+        }
+      ],
+      "sha256": "91946f17fec58127c365ad5f0101f87313263c77f06dc4a6febaa899ef05af6b",
+      "blobSha1": "ec3913d35306bad5d9f26fc30b33194227db05cb",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q16-solution.svg",
+      "uses": [
+        {
+          "ordinal": 16,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "83a61bfe84ca6a4d05137155cff0a5d01a490b6c026e8b1b6c62257c28a74b3c",
+      "blobSha1": "c529ffea287bc1a8d68a24d01f6c696ebc918d4a",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q19.png",
+      "uses": [
+        {
+          "ordinal": 19,
+          "field": "image"
+        }
+      ],
+      "sha256": "5c0f24a453a788a2f84f77faaf1be622b3fa8946c9f2d38686abc46da0713bdc",
+      "blobSha1": "a59603937cd95a8a5dddb7e740e34121d5ebfe21",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q19-solution.svg",
+      "uses": [
+        {
+          "ordinal": 19,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "adf3e38f720e44b50c24b65a15e6fe0f2d74ab2a7f081bf9e2cdb1ae1062b7ed",
+      "blobSha1": "052b7ee2b0d51369c08aa101b3a73cf5cf9d193d",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q20.png",
+      "uses": [
+        {
+          "ordinal": 20,
+          "field": "image"
+        }
+      ],
+      "sha256": "b267450ff0d54d51a55964cc3e3e5565eabf6bfb8e3ad17d43dadc408046e8c4",
+      "blobSha1": "ffb2df049ac14e331311a6fe4ab0de9b3479d5f0",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q20-solution.svg",
+      "uses": [
+        {
+          "ordinal": 20,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "8188b0978dd7a685dadec87cca99a1c60548ca289646bee26bd987bbfda2b5d1",
+      "blobSha1": "d711d8f48dc184f1e7f192fb09cbe018e1e3a945",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q21.png",
+      "uses": [
+        {
+          "ordinal": 21,
+          "field": "image"
+        }
+      ],
+      "sha256": "b3fb98e078316ae7b63593d55b7f208ef4dc2731bbacbb0975f184cc69be0a5b",
+      "blobSha1": "4f28b4f6388372ec82a51c1c5d54627e1dc846cd",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q21-solution.svg",
+      "uses": [
+        {
+          "ordinal": 21,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "f8ba01bafa3139730c9bd077bde320731171a243328d65db5254c8f4b14af404",
+      "blobSha1": "a4dbfc60844c007cffdd6e899390dccc0dd61c2e",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q22.png",
+      "uses": [
+        {
+          "ordinal": 22,
+          "field": "image"
+        }
+      ],
+      "sha256": "1b56087a66cbce5a2e132be4fe7bb51bef9bbf5d08124f04bbd3ad6b16aeea6e",
+      "blobSha1": "3bd3193b95d4bbb31230e13942749dccf0358139",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q22-solution.svg",
+      "uses": [
+        {
+          "ordinal": 22,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "d5d7bb53271be89aa592c4e593bbfbcf48687ada547254bdffb590e6f2fe11ff",
+      "blobSha1": "c190d35e847bed53f0dc844b51bc78b48abe0520",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q24.png",
+      "uses": [
+        {
+          "ordinal": 24,
+          "field": "image"
+        }
+      ],
+      "sha256": "81b2f363b46c2c469e5835f057f41f4eceae54100295d9a1767f097481997dc8",
+      "blobSha1": "8a366bde1020046d7c72c76aa199e735bd468de2",
+      "actualMainAndLocalBytesMatchManifest": true
+    },
+    {
+      "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q24-solution.svg",
+      "uses": [
+        {
+          "ordinal": 24,
+          "field": "solutionImage"
+        }
+      ],
+      "sha256": "6047432233f7ae8eabf8c0406bf025e850e30d28958c3fa4c3d026fd45922f91",
+      "blobSha1": "893bb043369e0e882d37708ab2bb4825ddfac33a",
+      "actualMainAndLocalBytesMatchManifest": true
+    }
+  ],
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "problemTypes",
+      "match": {
+        "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM"
+      },
+      "beforeAbsent": true,
+      "supportingQuestionUids": [
+        "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_TRIANGLE_ANGLE_CHASE"
+      },
+      "beforeAbsent": true,
+      "supportingQuestionUids": [
+        "qid_v1_24a00b1861775852d97237d6ff2bab7fbf8b523fde92649c50d5bb6aeab4fc2f"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIRECT_INTERIOR_EXTERIOR_TOTALS"
+      },
+      "beforeAbsent": true,
+      "supportingQuestionUids": [
+        "qid_v1_8ddd54f26e647cf88c553a1f15133ae63dea7b6233caaa68e0194f88351c273b"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_STAR_POLYGON_ANGLE_SUM_TURNING_ANGLE_TOTAL"
+      },
+      "beforeAbsent": true,
+      "supportingQuestionUids": [
+        "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM"
+      },
+      "beforeAbsent": true,
+      "supportingQuestionUids": [
+        "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE"
+      },
+      "beforeAbsent": true,
+      "supportingQuestionUids": [
+        "qid_v1_b7a4e9fe41cebbe2f68649f03fbb6c7fde5a0ac4ff88c2b9ff08a3bce63966eb"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA"
+      },
+      "beforeAbsent": true,
+      "supportingQuestionUids": [
+        "qid_v1_175a477a1b54c46883e3a4dc79848a6308d2f6b6d8adedd2445b0c7fad15e67f"
+      ]
+    }
+  ],
+  "formalRequestBoundary": {
+    "Q19": {
+      "questionUid": "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f",
+      "sourceBeforeTemplateKey": null,
+      "semanticLedgerBeforeTemplateKey": null,
+      "currentMetadataBeforeTemplateKey": "",
+      "formalRequestBeforeMustEqual": "",
+      "guardWaiver": false
+    },
+    "candidateStatusAnnotations": "Candidate metadata tags express the reviewed metadata decision only; no actual registration or math approval is inferred.",
+    "debtParentRefs": "Q6/Q8/Q12/Q13/Q14 require only the exact official parent reference, with null RPM leaf and HOLD preserved.",
+    "nextRequiredVerification": "Official isolated exact24 request/register/projection/final Consumer verification and necessary direct-impact preservation remain root-owned gates."
+  },
+  "boundaries": {
+    "sourceApplied": false,
+    "canonicalApplied": false,
+    "approvalChanged": false,
+    "registrationExecuted": false,
+    "actualConsumerChecked": false,
+    "mathQaPerformed": false,
+    "R1R2R3Rerun": false,
+    "figureRereadPerformed": false,
+    "gitIndexOrApiMutation": false,
+    "rawQuestionAnswerSolutionInReport": false,
+    "normalSourceFieldsAndScoresPreserved": true,
+    "difficultyPreserved": true,
+    "sourceReviewStatusPreserved": true
+  },
+  "protectedPayloadHashAlgorithm": "SHA256 of UTF-8 JSON with lexicographically sorted object keys, no extra whitespace, and all source fields except the exact allowed metadata whitelist."
+}

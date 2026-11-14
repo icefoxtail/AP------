@@ -45,6 +45,15 @@ class ArcColorTests(unittest.TestCase):
         self.assertNotIn(BLUE_LINE,self.node('arcCD'))
     def test_observer_accepts_the_genuine_figure(self):
         self.assertEqual(self.audit()['errors'],[])
+    def test_dashed_arc_style_is_observed(self):
+        objects = [arc_object('arcAB', 'A', 'B', dash=True), arc_object('arcCD', 'C', 'D')]
+        marks = {'arcs': [arc_row('arcAB', 'A', 'B', dashed=True), arc_row('arcCD', 'C', 'D')]}
+        svg = build(spec(objects))['svg']
+        self.assertIn('stroke-dasharray="6 4"', svg)
+        self.assertEqual(self.audit(svg=svg, marks=marks)['errors'], [])
+        tampered = svg.replace(' stroke-dasharray="6 4"', '', 1)
+        self.assertIn('ARC_DASH_MISMATCH:arcAB', self.audit(svg=tampered, marks=marks)['errors'])
+
     def test_tampered_stroke_colour_is_caught(self):
         tag=self.node('arcAB');wrong=self.svg.replace(tag,tag.replace('stroke="'+BLUE_LINE+'"','stroke="#111"'))
         self.assertNotEqual(wrong,self.svg);self.assertIn('ARC_COLOR_MISMATCH',self.codes(svg=wrong))

@@ -50,6 +50,7 @@ export const TECHNICAL_INPUTS = Object.freeze({
     'archive/output-metadata-loader.js', 'archive/common-fast-runtime.js',
     'archive/screen-runtime.js', 'archive/screen-runtime-adapter.js',
     'tools/check-archive2-runtime.cjs', 'tools/check-archive2-finder-filter-browser.cjs',
+    'tools/check-archive-rpm-middle-browser.cjs',
     'tools/check-archive-content-browser.mjs', 'tests/archive-original-exam-access.browser.cjs',
     'tests/archive2-solution-loading-browser.cjs', 'tests/archive2-output-comparison-references.json',
     'tests/fixtures/archive2-output-browser-smoke.html', 'tests/fixtures/archive2-pdf-readiness-browser-smoke.html',

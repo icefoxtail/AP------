@@ -128,6 +128,25 @@ test('G5b: a vertical overlay line through the tick belongs to the tick and may 
   const beside=make();beside.geometry.push({id:'overlay-line-k',kind:'line',role:'line',points:[[112,20],[112,300]],client:{x:112,y:20,width:1,height:280},strokeWidthPx:1,paintOrder:1});
   assert.ok(analyzeRenderedLayout(beside).errors.includes('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL:tick-x--3-label'));
 });
+test('a tick leader may leave its exact circle-axis intersection but may not enter or brush a near circle',()=>{
+  const inspect=(center,radius)=>{
+    const c=tickCapture({id:'tick-x-6',value:6,point:[100,160],box:{x:121,y:132,width:14,height:12}});
+    const label=c.labels[0];
+    label.tickCalloutSchema='TICK_LABEL_OWNER_LEADER_v1';
+    label.value='6';
+    const leaderId=label.id+'-owner-leader',client={x:100,y:144,width:21,height:16};
+    c.geometry.push({id:leaderId,kind:'leader',role:'leader',ownerLabelId:label.id,tickOwner:'tick-x-6',tickAxis:'x',tickValue:'6',
+      points:[[100,160],[121,144]],client,strokeWidthPx:.8,strokeColor:'rgb(102, 102, 102)',markerStart:'',markerEnd:'',paintOrder:2,
+      visibilityEvidence:visibleGeometryMeasurement(leaderId,client)});
+    c.geometry.push({id:'circle',kind:'circle',at:center,radius,
+      client:{x:center[0]-radius,y:center[1]-radius,width:radius*2,height:radius*2},strokeWidthPx:1});
+    return analyzeRenderedLayout(c).tickLabelEvidence[0].ownerLeader;
+  };
+  assert.equal(inspect([65,160],35).status,'PASS');
+  for(const [center,radius] of [[[135,160],35],[[65,160],34],[[112,155],8]]){
+    assert.ok(inspect(center,radius).errors.includes('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL'));
+  }
+});
 test('cubic reproduction with x=-2 label moved to the upper-right panel fails',()=>{const r=analyzeRenderedLayout(tickCapture({box:{x:182.3,y:32,width:14,height:12}}));assert.ok(r.errors.includes('TICK_LABEL_ALONG_AXIS_MISALIGNMENT:tick-x--2-label'));});
 test('normal quartic tick label placement passes',()=>{const c=tickCapture({id:'tick-x-3',value:3,point:[300,200],box:{x:293,y:212,width:14,height:12}});assert.equal(analyzeRenderedLayout(c).status,'PASS');});
 test('adjacent-tick confusion fails even when owner metadata names a real tick',()=>{const second={id:'tick-x--1',kind:'tick',axis:'x',value:'-1',points:[[70,156],[70,164]],client:{x:70,y:156,width:0,height:8},strokeWidthPx:0};const c=tickCapture({box:{x:63,y:172,width:14,height:12},extraTicks:[second]});const r=analyzeRenderedLayout(c);assert.ok(r.errors.includes('TICK_LABEL_ALONG_AXIS_MISALIGNMENT:tick-x--2-label'));});

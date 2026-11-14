@@ -23,7 +23,7 @@ function canvas() {
   return { width: 1000, height: 650, getContext: () => context, addEventListener() {}, getBoundingClientRect: () => ({ left: 0, top: 0, width: 1000, height: 650 }) };
 }
 
-export async function load() {
+export async function load({ katex } = {}) {
   let context;
   const ready = [];
   const element = (tag) => tag === 'canvas' ? canvas() : { tagName: tag.toUpperCase(), dataset: {}, style: { setProperty() {} }, classList: { add() {}, remove() {}, toggle() {} }, setAttribute() {}, addEventListener() {}, querySelector() { return null; }, querySelectorAll() { return []; }, append() {} };
@@ -38,6 +38,7 @@ export async function load() {
   sandbox.Math = Object.create(Math);
   sandbox.Math.random = () => ((seed = (1664525 * seed + 1013904223) >>> 0) / 4294967296);
   sandbox.window = sandbox;
+  if (katex) sandbox.katex = katex;
   context = vm.createContext(sandbox);
   for (const filename of ['apl-core.js', 'apl-board.js']) vm.runInContext(fs.readFileSync(path.join(root, 'kit', filename), 'utf8'), context, { filename });
   let definition;
@@ -80,6 +81,7 @@ export async function load() {
     finally { board._text = original; board.path = originalPath; board.handle = originalHandle; }
   };
   lab.api = context.APL_PH;
+  lab.renderMath = html => context.APLab.renderMath(html);
   lab.setViewportWidth = width => { context.innerWidth = width; };
   return lab;
 }

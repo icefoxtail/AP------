@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "m1-s2-independent-sample-review-v1",
+  "reviewer": "meta-a",
+  "author": "meta-b",
+  "sourceArchiveFile": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+  "candidateSourceBlob": "f5764827a48ff4f644a3afd46aad2322d180074f",
+  "candidateSourceRawSha256": "70970f333a678c360b37c02ea8da5e0aead694d5747835c730b5b2ab8a488e0d",
+  "raw4slotSha256": "9e17e9fda2d18c8b276d5e1f6280851e2864c0fe27299916460088897cf0d147",
+  "sampled": [
+    6,
+    19,
+    23
+  ],
+  "status": "PASS_THREE_SAMPLES_AFTER_MINOR_CORRECTIONS",
+  "directRead": [
+    "source content+solution+choices",
+    "author review",
+    "full raw 4slot",
+    "current images Q6 and Q19"
+  ],
+  "items": [
+    {
+      "ordinal": 6,
+      "meaning": "정육면체에서 모서리·면의 교차/포함/평행/꼬임을 구분한다. 공간 직선쌍 leaf 공백을 인접 평면 leaf로 채우지 않는 판단에 동의.",
+      "native": "KEEP",
+      "fourSlot": "PASS_AFTER_CORRECTION",
+      "slotCorrections": [
+        {
+          "action": "move",
+          "from": "condition",
+          "to": "given",
+          "term": "모서리",
+          "reason": "도형 구성요소는 주어진 대상이지 제약이 아니다."
+        },
+        {
+          "action": "add",
+          "slot": "goal",
+          "term": "위치관계",
+          "src": "stem",
+          "quote": "정육면체에 대한 설명",
+          "reason": "판정 대상은 공간 모서리·면의 위치 관계이다."
+        }
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "level": "하",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "boundary": "NONE",
+        "reason": "주어진 입체도에서 모서리 방향·면 포함 관계를 한 번 해석하는 익숙한 기초 판정. 기본적인 하와 bucket2 인접차이를 독립 재검 후 허용."
+      }
+    },
+    {
+      "ordinal": 19,
+      "meaning": "별 경로가 두 번 회전하는 위상을 먼저 인식하고 표시각과 바깥쪽 회전각의 보각 관계로 합을 결정한다.",
+      "native": "KEEP",
+      "fourSlot": "PASS_AFTER_CORRECTION",
+      "slotCorrections": [
+        {
+          "action": "remove",
+          "slot": "condition",
+          "term": "개수",
+          "reason": "두 번 회전은 해설에서 찾아낸 구조이며 발문이 부과한 개수 제한이 아니다. 핵심 method 회전각에 이미 표현됨."
+        }
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "level": "중",
+        "confidence": "medium",
+        "boundary": "B34",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "단순 다각형 외각합을 바로 적용할 수 없고 자기교차 경로의 회전횟수를 새로 인식해야 한다. 3/4 경계를 인정하며 4 제안 및 기존 중 보존을 독립 수용."
+      }
+    },
+    {
+      "ordinal": 23,
+      "meaning": "한 꼭짓점에서의 대각선·삼각형 수를 같은 n의 기본 일차식으로 옮기고 내각·외각 공식을 직접 적용한다.",
+      "native": "KEEP",
+      "fourSlot": "PASS_AFTER_CORRECTION",
+      "slotCorrections": [
+        {
+          "action": "remove",
+          "slot": "condition",
+          "term": "양화",
+          "reason": "대각선을 모두 그린다는 구성 지시가 변수에 대한 보편 명제 제약은 아니다. given 대각선과 method 분할에 이미 반영됨."
+        },
+        {
+          "action": "add",
+          "slot": "method",
+          "term": "내각",
+          "src": "solution",
+          "quote": "정다각형의 한 내각은 (15−2)×180°÷15=156°이다.",
+          "evidenceType": "NAMED",
+          "reason": "외각뿐 아니라 내각 계산도 명시된 소목표이므로 방법에 함께 담는다."
+        }
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "level": "상",
+        "confidence": "high",
+        "boundary": "NONE",
+        "compatibility": "STRONG_CONFLICT",
+        "reason": "두 개수식이 문장에서 직접 지정되고 연립/조건 분기/탐색/비정형 발상 없이 한 일차방정식 후 정형 각 공식을 적용한다. 4보다2가 맞다는 독립 결론. 원래 상은 별도 level 변경을 요구하지 않고 historical STRONG_CONFLICT로 보존 가능."
+      }
+    }
+  ],
+  "criteria": "현행 4칸 계약의 결정적 method/goal 오류 2표본 또는 조작 인용 기준에 해당하지 않음. 제안한 경미한 슬롯 위치 수정 이후 표본 완료 결속 권고.",
+  "sourceModified": false,
+  "mathFullR1R2Performed": false,
+  "correctionReadback": {
+    "previousCandidateBlob": "0e96dca2ac7b36fb6161279b41a9c4f116d7ed61",
+    "allRequestedSlotCorrectionsReadAndConfirmed": true,
+    "scope": [
+      6,
+      19,
+      23
+    ]
+  }
+}

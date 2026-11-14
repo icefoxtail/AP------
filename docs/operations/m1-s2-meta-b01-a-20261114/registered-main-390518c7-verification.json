@@ -1,0 +1,661 @@
+{
+  "schemaVersion": "m1s2-registered-main-operational-verification-v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "preparedBy": "A1",
+  "preparedAtUtc": "2026-11-14T02:31:28+00:00",
+  "operation": "SUMMARIZE_EXISTING_FIXED_SNAPSHOT_EVIDENCE",
+  "newSourceExecution": false,
+  "newTestsRun": false,
+  "remoteMutation": false,
+  "anchors": {
+    "repository": "icefoxtail/AP------",
+    "reviewBranch": "review/m1-s2-meta-b01-a-20261114",
+    "originalReviewHead": "8009126543b80ff8abebaac5225c90207f343444",
+    "originalPrNumber": 1974,
+    "originalPrUrl": "https://github.com/icefoxtail/AP------/pull/1974",
+    "originalMainMergeSha": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+    "registeredMainSha": "390518c7fc34a8c742ba190163b478acb09da39f",
+    "scope": "The original review head, squash merge, and writer-generated registered snapshot are distinct. Later moving main revisions are outside this report."
+  },
+  "statusSeparation": {
+    "originalReviewPr": "MERGED",
+    "registrationWriterAtH": "REGISTRATION_PARTIAL",
+    "registrationReady": true,
+    "publishable": true,
+    "reviewedConsumerTargets": "39_OF_41_FINAL_APPLIED_AND_PASSED",
+    "fullNativeRegistrationClaim": "EXAM_2_ONLY_24_TARGETS",
+    "all95FullNativeRegistration": "NOT_CLAIMED",
+    "semanticLaneAtH": "NEEDS_REGISTRATION",
+    "fourSlotAssignedRows": "95_OF_95_REGISTERED",
+    "registeredSiteUnitConsistency": "95_OF_95_MATCHED",
+    "pagesDeploymentAtH": "SUCCESS_WITH_LIVE_RECEIPT_MATCH",
+    "originalMainCi": "FAILURE_334_PASS_2_FAIL",
+    "wholeMainCiRerunAfterRegistration": "NOT_RUN_BY_THIS_VERIFICATION",
+    "followupQ22OperationalRegistration": "PENDING"
+  },
+  "inputEvidence": [
+    {
+      "localEvidencePath": "/workspace/scratch/54cb21af3005/main-registration-with-data-390518c7.json",
+      "sha256": "ab97ba942cbf570649483e7a746228fd0215b671af8cf65fae6c94df3c9467a1",
+      "bytes": 51638,
+      "verification": "READ_BACK_HASH_MATCH",
+      "origin": "REUSED_EXISTING_EXECUTION_OR_DIRECT_OBSERVATION"
+    },
+    {
+      "localEvidencePath": "/workspace/scratch/54cb21af3005/registered-scope-units-result-390518c7.json",
+      "sha256": "cb2c8b715f04e6b8ca79159c130a78dfff260649eb6173861d96a1d10cb4026a",
+      "bytes": 79182,
+      "verification": "READ_BACK_HASH_MATCH",
+      "origin": "REUSED_EXISTING_EXECUTION_OR_DIRECT_OBSERVATION"
+    },
+    {
+      "localEvidencePath": "/workspace/scratch/54cb21af3005/registered-data-binding-390518c7.json",
+      "sha256": "f37790a9a03be858b5ac03c1f67321f162b83f41e6adca84699b0a367c3ce043",
+      "bytes": 700,
+      "verification": "READ_BACK_HASH_MATCH",
+      "origin": "REUSED_EXISTING_EXECUTION_OR_DIRECT_OBSERVATION"
+    },
+    {
+      "localEvidencePath": "/workspace/scratch/54cb21af3005/live-archive-release.json",
+      "sha256": "7f2bf74f420e708d461a822543ec33979ddd1ae7fb8179d9d1dd81bda2fa5a8d",
+      "bytes": 538,
+      "verification": "READ_BACK_HASH_MATCH",
+      "origin": "REUSED_EXISTING_EXECUTION_OR_DIRECT_OBSERVATION"
+    },
+    {
+      "localEvidencePath": "/workspace/scratch/54cb21af3005/followup-q22/q22-H-direct-observations.json",
+      "sha256": "71fc29b98fdb9e7099a622ed7d48447552f9039a53c44bebc45e99605ac30f19",
+      "bytes": 11340,
+      "verification": "READ_BACK_HASH_MATCH",
+      "origin": "REUSED_EXISTING_EXECUTION_OR_DIRECT_OBSERVATION"
+    }
+  ],
+  "stableRemoteEvidence": {
+    "registrationArtifact": {
+      "runId": 43542017034,
+      "artifactId": 14092928495,
+      "name": "archive-main-registration-43542017034-1",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43542017034/artifacts/14092928495",
+      "sizeBytes": 283671,
+      "zipSha256": "1440114af92c74fa9dd011ca557c20a635ff657329b50c9f78b27842f1b98814",
+      "entryCount": 53
+    },
+    "registeredDataCommit": "390518c7fc34a8c742ba190163b478acb09da39f",
+    "registeredDataBindings": [
+      {
+        "path": "archive/data/question_metadata.json",
+        "gitBlobSha1": "ccbc433b902a788783c5c97ee28b49e3bafc4278",
+        "sha256": "2ad760a19d2a8ca2e4110d8fd04e9c25aed63c18b3fd5950c46bf632ad18b849",
+        "bytes": 70081587,
+        "gitApiMatch": true,
+        "sitePackageInventoryMatch": true
+      },
+      {
+        "path": "archive/data/item-4slot-index.json",
+        "gitBlobSha1": "e414f35204a24e995eaf2b057a5bf8fa9779f1a7",
+        "sha256": "c2dc8862968a330d8395361aa03cfa5b2cab04967600eb34c7965213f24456e8",
+        "bytes": 7181154,
+        "gitApiMatch": true,
+        "sitePackageInventoryMatch": true
+      }
+    ]
+  },
+  "mainWriter": {
+    "runId": 43542017034,
+    "jobId": 132284490908,
+    "conclusion": "success",
+    "workflowHeadSha": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+    "persistLog": {
+      "result": "PUSHED",
+      "attempts": 1,
+      "mainSha": "390518c7fc34a8c742ba190163b478acb09da39f",
+      "registeredSha": "390518c7fc34a8c742ba190163b478acb09da39f",
+      "evidence": "Completed registration job log, single Archive registration writer persist result",
+      "observedUtcTime": "02:07:27",
+      "observedCalendarDate": "UNKNOWN"
+    },
+    "prepareReport": {
+      "origin": "ZIP",
+      "path": "report.json",
+      "sha256": "4e138c97d1d181e22ba5e7eb482028ed76c99f3d27e452b7ba7a170c0d32557d",
+      "bytes": 6767
+    },
+    "persistedReport": {
+      "origin": "ZIP",
+      "path": "persisted/report.json",
+      "sha256": "814e6c3866087d0b96d0850b870cbcd61b0ce06c5b65abf04eef2a1c61da1685",
+      "bytes": 2500
+    },
+    "persistedStatus": "REGISTRATION_PARTIAL",
+    "persistedLaneStates": [
+      {
+        "id": "reviewed",
+        "status": "VERIFIED_REUSED",
+        "needed": false
+      },
+      {
+        "id": "semantic",
+        "status": "NEEDS_REGISTRATION",
+        "needed": true
+      },
+      {
+        "id": "shared",
+        "status": "VERIFIED_REUSED",
+        "needed": false
+      },
+      {
+        "id": "generated",
+        "status": "VERIFIED_REUSED",
+        "needed": false
+      },
+      {
+        "id": "studentIndexes",
+        "status": "VERIFIED_REUSED",
+        "needed": false
+      },
+      {
+        "id": "fourSlot",
+        "status": "VERIFIED_REUSED",
+        "needed": false
+      }
+    ],
+    "pagesDispatch": {
+      "observed": true,
+      "conclusion": "success",
+      "dispatchedRunId": 43544532971,
+      "registeredMainSha": "390518c7fc34a8c742ba190163b478acb09da39f"
+    },
+    "sourceMutationObservedInPrepare": 0,
+    "scopeNote": "Required-lane publishability and successful persistence do not imply that every reviewed request or the semantic lane completed."
+  },
+  "reviewedRegistration": {
+    "requestedTargets": 41,
+    "requestedBasis": "Exam 1 difficulty 9 + Exam 2 native 24 + Exam 3 difficulty 2 + Exam 4 difficulty 6",
+    "preflight": {
+      "requestsWithObservedCounts": 4,
+      "targetDenominatorObserved": 41,
+      "counts": {
+        "changed": 41,
+        "checked": 41,
+        "passed": 40,
+        "skippedUnchanged": 0
+      },
+      "coverage": "COMPLETE_41_TARGET_COUNTS",
+      "doesNotIndependentlyProvePersistedSnapshot": true
+    },
+    "final": {
+      "requestsWithObservedCounts": 3,
+      "targetDenominatorObserved": 39,
+      "counts": {
+        "changed": 39,
+        "checked": 39,
+        "passed": 39,
+        "skippedUnchanged": 0
+      },
+      "coverage": "PARTIAL_COUNTS",
+      "doesNotIndependentlyProvePersistedSnapshot": true
+    },
+    "requests": [
+      {
+        "examNumber": 1,
+        "requestId": "m1s2-b01-a-exam1-difficulty-20261114-r1",
+        "kind": "difficulty5",
+        "requestedTargets": 9,
+        "finalApplied": true,
+        "finalConsumer": {
+          "status": "PASS",
+          "checked": 9,
+          "passed": 9
+        },
+        "persistedHRequestedFieldsMatch": true,
+        "evidencePointer": "main-registration-with-data-390518c7.json#/requests/0"
+      },
+      {
+        "examNumber": 2,
+        "requestId": "m1s2-b01-a-exam2-native-20261114-r3",
+        "kind": "native-v2",
+        "requestedTargets": 24,
+        "finalApplied": true,
+        "finalConsumer": {
+          "status": "PASS",
+          "checked": 24,
+          "passed": 24
+        },
+        "persistedHRequestedFieldsMatch": true,
+        "evidencePointer": "main-registration-with-data-390518c7.json#/requests/1"
+      },
+      {
+        "examNumber": 3,
+        "requestId": "m1s2-b01-a-exam3-difficulty-20261114-r2",
+        "kind": "difficulty5",
+        "requestedTargets": 2,
+        "finalApplied": false,
+        "finalConsumer": {
+          "status": "NOT_INCLUDED_AFTER_REQUEST_REJECTION",
+          "checked": "UNKNOWN",
+          "passed": "UNKNOWN"
+        },
+        "persistedHRequestedFieldsMatch": false,
+        "evidencePointer": "main-registration-with-data-390518c7.json#/requests/2"
+      },
+      {
+        "examNumber": 4,
+        "requestId": "m1s2-b01-a-exam4-difficulty-20261114-r1",
+        "kind": "difficulty5",
+        "requestedTargets": 6,
+        "finalApplied": true,
+        "finalConsumer": {
+          "status": "PASS",
+          "checked": 6,
+          "passed": 6
+        },
+        "persistedHRequestedFieldsMatch": true,
+        "evidencePointer": "main-registration-with-data-390518c7.json#/requests/3"
+      }
+    ],
+    "acceptedFinalTargets": 39,
+    "acceptedNativeTargets": 24,
+    "acceptedDifficultyOnlyTargets": 15,
+    "storedHBinding": "The final Consumer counts are paired with independently fetched H metadata whose Git blob and SHA256 match the actual Pages package inventory.",
+    "exam2NativeReceipt": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-a-exam2-native-20261114-r3.json",
+      "requestSha256": "2b4a3546109b0f7c22395dd09295573a2b43a2f0af188596af6e8b113cdc84bd",
+      "status": "REGISTERED",
+      "totalQuestions": 24,
+      "identityRecords": 24,
+      "fingerprintRepairs": 24,
+      "registryChangeCount": 0,
+      "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+      "consumerSearchStatus": "NOT_RUN"
+    },
+    "finalLogEvidence": {
+      "path": "reviewedFinal-1.log",
+      "sha256": "d3686d82bcaa45f9b953db9eb599b93f1fde95ffc76a5a2d64ca116b3eb7fb85"
+    },
+    "finalAppliedEvidence": {
+      "path": "native/archive-meta-register-pass/applied.txt",
+      "sha256": "da34237cf1f5e2fc4e19224d595e01b789366389f4b1e1d923b2a920a144ce6d"
+    },
+    "exam3R2Rejection": {
+      "requestId": "m1s2-b01-a-exam3-difficulty-20261114-r2",
+      "wholeRequestTargets": 2,
+      "status": "REJECTED_AT_CONSUMER_VERIFY",
+      "stage": "consumer-verify",
+      "requestSha256": "9068d9f777f06babaf6ed46c509cb920ee3c6d29971a95e20dcb02761d3e9bec",
+      "recordPath": ".archive-meta-register/rejected/m1s2-b01-a-exam3-difficulty-20261114-r2.rejection.json",
+      "recordSha256": "7126e70e482ab1031336af98b2467ab7852755daa7016c9d731e39abf8a8f6e7",
+      "cause": "METADATA_CONFLICT at Exam 3 Q15: problemTypeKey, templateKey, integrationPattern",
+      "q22InitialPreflight": "PASS_WITHIN_2_TARGET_PREFLIGHT_BUT_WHOLE_REQUEST_REJECTED",
+      "decisiveLog": {
+        "path": "reviewed-1.log",
+        "sha256": "bd83b21cfab188b58dcd44f36f0404c549f95b5f0f1cd89d48c723798c37673f",
+        "lines": [
+          1988,
+          1989,
+          1990,
+          1992,
+          1993,
+          1994,
+          2853
+        ]
+      },
+      "emptyFinalRoundMarkerTrap": {
+        "finalRejectedTxtEmpty": true,
+        "finalPendingTxtEmpty": true,
+        "emptyFileSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "interpretation": "Markers belong to the last replay round. Empty rejected.txt is not evidence that the earlier whole-request rejection did not occur."
+      }
+    }
+  },
+  "fourSlot95": {
+    "registeredMainSha": "390518c7fc34a8c742ba190163b478acb09da39f",
+    "expectedFiles": 4,
+    "expectedRows": 95,
+    "registeredRowsObserved": 95,
+    "uniqueUidsObserved": 95,
+    "pendingTargetRowsObserved": 0,
+    "indexInputDigest": "b3d8517e0cfe6081715b76ce053debb49760c6e423654c6d96ddc21941d4441a",
+    "indexShaMatchesVerification": true,
+    "indexInputDigestMatchesVerification": true,
+    "indexSha256": "c2dc8862968a330d8395361aa03cfa5b2cab04967600eb34c7965213f24456e8",
+    "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+    "files": [
+      {
+        "examNumber": 1,
+        "expectedRows": 23,
+        "sourceBlobSha1": "58499a15b018c4bc13d4e90c9dd630f6a458fe2b",
+        "exactTargetUidRowsMatch": true,
+        "missingUids": 0,
+        "unexpectedUids": 0,
+        "duplicateUids": 0,
+        "path": "archive/data/item-4slot/original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.4slot.json",
+        "sha256": "de3b76c87474d941dc19173698977aa453a1d2c6d4536c483fa6263519690dae",
+        "status": "REGISTERED"
+      },
+      {
+        "examNumber": 2,
+        "expectedRows": 24,
+        "sourceBlobSha1": "3b592f8f9c5e04fdf152dc47fed7b5d916937829",
+        "exactTargetUidRowsMatch": true,
+        "missingUids": 0,
+        "unexpectedUids": 0,
+        "duplicateUids": 0,
+        "path": "archive/data/item-4slot/original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.4slot.json",
+        "sha256": "c6d8f6901c5b84fed946f29bc06f25bcbba6e785d89f1983f136c0fdcda01574",
+        "status": "REGISTERED"
+      },
+      {
+        "examNumber": 3,
+        "expectedRows": 24,
+        "sourceBlobSha1": "5ea211ca5907ad3706105b7f88f593fbc511c151",
+        "exactTargetUidRowsMatch": true,
+        "missingUids": 0,
+        "unexpectedUids": 0,
+        "duplicateUids": 0,
+        "path": "archive/data/item-4slot/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.4slot.json",
+        "sha256": "26772f7b2f974a116735b73ad66bb0c882bb652ad21766e752e5967ff844bf54",
+        "status": "REGISTERED"
+      },
+      {
+        "examNumber": 4,
+        "expectedRows": 24,
+        "sourceBlobSha1": "654aa51206cc7eed297cf3c75acc221f1209b25d",
+        "exactTargetUidRowsMatch": true,
+        "missingUids": 0,
+        "unexpectedUids": 0,
+        "duplicateUids": 0,
+        "path": "archive/data/item-4slot/original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.4slot.json",
+        "sha256": "f04f8f02e13860353b6391ffe7ce7b643092f9797f541af2e108f850727e5feb",
+        "status": "REGISTERED"
+      }
+    ],
+    "verifyArtifactEvidence": {
+      "origin": "ZIP",
+      "path": "native/archive-four-slot/verify.json",
+      "sha256": "2a22fe4ec7673f2119169c95decc3e24fd9a495092cbe1211dc1f787b1051c11",
+      "bytes": 619001
+    },
+    "hLastVerificationEvidence": {
+      "origin": "SEPARATELY_FETCHED_JSON",
+      "path": ".archive-meta-register/auto/4slot/last-verification.json",
+      "sha256": "da293a4c9a73fa48d3febcfb66f351e31fa9e4eed1c1233755ba990e49421c2c",
+      "bytes": 620,
+      "declaredSnapshotRef": "390518c7fc34a8c742ba190163b478acb09da39f"
+    },
+    "interpretation": "The assignment-specific 95 exact UID rows are verified separately from global index totals. Four-slot registration does not approve native PT/TPL, semantic gaps, or dictionary candidate terms."
+  },
+  "originalMainCiAndNarrowPostRegistrationChecks": {
+    "originalRun": {
+      "runId": 43542017090,
+      "jobId": 132284529030,
+      "headSha": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+      "conclusion": "failure",
+      "passed": 334,
+      "failed": 2,
+      "knownFail": 0,
+      "total": 336
+    },
+    "originalFailures": [
+      {
+        "testFile": "tests/archive2-unified-units.test.js",
+        "subtest": 3,
+        "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#3",
+        "actual": "RPM22-M1-L1-06",
+        "expected": "RPM22-M1-L1-05",
+        "error": "ERR_ASSERTION"
+      },
+      {
+        "testFile": "tests/meta-foundation-derivative-runtime.test.js",
+        "error": "Runtime source-readiness outputs stale: archive/data/meta-foundation/runtime/runtime-bridge-receipt.json"
+      }
+    ],
+    "registeredScopeUnits": {
+      "status": "PASS",
+      "counts": {
+        "expected": 95,
+        "catalogRows": 95,
+        "catalogUniqueAssignedUids": 95,
+        "questionIndexRows": 95,
+        "joined": 95,
+        "compared": 95,
+        "matched": 95,
+        "unplaced": 0,
+        "unclassified": 0,
+        "mismatched": 0
+      },
+      "focusExam1Q3": {
+        "examNumber": 1,
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_4bb877da6e4bb5441e18c36687a9f0bbc01eab3d19cac457cc3cb7ef799342b8",
+        "identity": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js#3",
+        "status": "PASS",
+        "actualUnitKey": "RPM22-M1-L1-06",
+        "expectedUnitKey": "RPM22-M1-L1-06"
+      },
+      "issuesCount": 0,
+      "mismatchCount": 0,
+      "canonicalInput": {
+        "resolverVersion": "1.1.0",
+        "projectionVersion": "archive2-canonical-v1:9f9d43c73b82bf71909835433342c08a47a6de1623c86b83786576a5398379d5",
+        "resolvedIndexVersion": "archive2-canonical-v1:9f9d43c73b82bf71909835433342c08a47a6de1623c86b83786576a5398379d5",
+        "manifestFileCount": 142,
+        "fetchedInputCount": 97,
+        "digestValidation": "OFFICIAL_LOADER_PASSED"
+      },
+      "helperSha256": "86c75fa500117fd664725c4ff362bbd5cd3b06740edc9b04d7e83ad61c218e5c",
+      "helperInputFileCount": 106,
+      "actualSiteInventoryBinding": {
+        "status": "ROOT_VERIFIED",
+        "matchedHelperInputFiles": 106,
+        "allInputHashesMatchInventory": true,
+        "evidence": "Root compared all 106 existing helper input files with the downloaded Pages site package inventory; reused without rerunning the helper."
+      },
+      "fullPackageDigestRecomputedByHelper": false,
+      "scopeLimit": "Only the 95 assigned unit comparisons on actual registered site bytes are PASS. For Exam 1 Q3, both actual and current registered expected unit are RPM22-M1-L1-06; this does not certify a semantic correction to M1-05 or turn the earlier main CI run green."
+    },
+    "sourceReadiness": {
+      "status": "PREPARED_SNAPSHOT_CHECK_PASS_WITH_VERIFIED_H_DIGEST_REUSE",
+      "command": "node refresh-runtime-source-readiness.mjs --check",
+      "artifactLog": {
+        "path": "shared/archive-registration-build.log",
+        "commandLine": 364,
+        "statusLine": 366,
+        "modeLine": 367,
+        "catalogVersionLine": 368,
+        "joinMismatchCountLine": 374,
+        "changedFilesLine": 375,
+        "completedLine": 405,
+        "archiveRegistrationSyncPassLine": 407
+      },
+      "duplicateLog": {
+        "path": "shared-1.log",
+        "commandLine": 391,
+        "statusLine": 393,
+        "modeLine": 394,
+        "joinMismatchCountLine": 401,
+        "changedFilesLine": 402
+      },
+      "mode": "--check",
+      "checkStatus": "PASS",
+      "combinedCatalogJoinMismatchCount": 0,
+      "changedFiles": [],
+      "prepareInputSha": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+      "persistedInputSha": "390518c7fc34a8c742ba190163b478acb09da39f",
+      "prepareSharedStatus": "VERIFIED",
+      "persistedSharedStatus": "VERIFIED_REUSED",
+      "inputDigest": "ffca34afe4a467dec10c99c149f94aa8f6c40fd3ef26580124bc904a88a2a3e9",
+      "outputDigest": "dde1dfad0a98d156a811430c62d2ba1053959350a56689e9b7b573f365b74f55",
+      "verifiedPrepareAndPersistedDigestsEqual": true,
+      "scopeLimit": "The official --check executed on the prepared registration snapshot. H reused the identical verified shared state by input/output digest. A separate refresh invocation at H and a full derivative-test rerun are not claimed."
+    },
+    "historicalMainCiRunRemains": "FAILURE"
+  },
+  "pagesDeployment": {
+    "runId": 43544532971,
+    "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43544532971",
+    "workflowHeadSha": "390518c7fc34a8c742ba190163b478acb09da39f",
+    "event": "workflow_dispatch",
+    "conclusion": "success",
+    "build": {
+      "jobId": 132292620630,
+      "conclusion": "success",
+      "needed": true,
+      "archiveNeeded": true,
+      "status": "VALIDATE"
+    },
+    "deploy": {
+      "jobId": 132294844363,
+      "conclusion": "success",
+      "pagesBuildVersion": "390518c7fc34a8c742ba190163b478acb09da39f",
+      "artifactId": 14093282839,
+      "pageUrl": "https://icefoxtail.github.io/AP------/",
+      "reportedSuccessUtcTime": "02:15:15",
+      "reportedSuccessCalendarDate": "UNKNOWN"
+    },
+    "artifacts": [
+      {
+        "id": 14093507457,
+        "name": "archive-pages-release-evidence-43544532971-1",
+        "sizeBytes": 1026686,
+        "apiSha256": "495a090201f96ca9842ccbaccd684f48ba46d18ef1881edff546083a2e7521fb",
+        "downloadedSha256MatchesApi": "ROOT_VERIFIED",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/43544532971/artifacts/14093507457"
+      },
+      {
+        "id": 14093282839,
+        "name": "github-pages",
+        "sizeBytes": 123397733,
+        "apiSha256": "ee78b7c754e6a3fcf631d40fb076868626fc80f624a9291ecab0c61436da34d6",
+        "downloadedSha256MatchesApi": "ROOT_VERIFIED",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/43544532971/artifacts/14093282839"
+      }
+    ],
+    "releaseReceipt": {
+      "schemaVersion": "ARCHIVE_PAGES_RELEASE_V1",
+      "registeredMainSHA": "390518c7fc34a8c742ba190163b478acb09da39f",
+      "packageDigest": "f12951143a26653fed8452dbe2149c2d515bade59af0b974f136c6c0bbb6d52c",
+      "externalDependencyDigest": "69a0a38e4b60fafcdef46790df80e15479262006b65ebcca881023e6867e2012",
+      "validatorDigest": "4f7fa5cd4005e1d488f7739cbc617046002e52efabf0e64e0dadd9128be9cd2d",
+      "archiveValidationDigest": "657d3a0115ceaf50331e9235b01641359d51fd26e2d19b5462ea2d5d352e9d71",
+      "fileCount": 15035,
+      "totalBytes": 528684739,
+      "releaseGate": "RELEASE_GATE_PASS"
+    },
+    "liveGet": {
+      "status": "SUCCESS_ROOT_OBSERVED",
+      "url": "https://icefoxtail.github.io/AP------/_archive-release.json",
+      "responseSha256": "7f2bf74f420e708d461a822543ec33979ddd1ae7fb8179d9d1dd81bda2fa5a8d",
+      "responseBytes": 538,
+      "registeredMainShaMatchesH": true,
+      "digestsMatchArtifactReceipt": true,
+      "releaseGate": "RELEASE_GATE_PASS",
+      "reusedExistingResponse": true
+    },
+    "scopeLimit": "Successful deployment and a matching live release receipt identify the deployed snapshot. They do not close unresolved semantic/native registration requests."
+  },
+  "pendingSpecificWork": {
+    "exam3Q15": {
+      "questionUid": "qid_v1_bdb9d3bbc904d9ae1bc39e408002ef43155c4f853dee344645c378b4b9a20270",
+      "sourceOrdinal": 15,
+      "reviewedSource": {
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "storedMetadataAtH": {
+        "problemTypeKey": "",
+        "templateKey": "",
+        "integrationPattern": "NONE"
+      },
+      "storedReviewStatus": "reviewed_hold",
+      "storedMetadataStatus": "source_hold",
+      "storedMiddle1RuntimeAtH": {
+        "problemTypeKey": "",
+        "templateKey": "",
+        "integrationPattern": "NONE",
+        "reviewStatus": "reviewed_hold",
+        "sha256": "70019b6e60237ec671555f5903eec33d1335f201b810fb6bf11bfeeb3e27aa45",
+        "manifestShaMatch": true
+      },
+      "status": "HOLD_METADATA_RUNTIME_TRANSITION_REQUIRED",
+      "sourceCorrection": "PRESERVED",
+      "owner": "COORDINATOR_ONLY",
+      "nextAction": "기존 HOLD metadata/runtime과 검토 완료 source 간 충돌을 공식 메타 전환 경로로 해소한다. 원본 source의 DIRECT_TRANSFER 및 SEQUENTIAL 교정은 유지한다.",
+      "approvedRuntimeConflictClaim": false
+    },
+    "exam3Q22": {
+      "questionUid": "qid_v1_dbd2626d30b8c1157df867b00f5eddc5e4f528aad38fd308424ea68bd9e31af2",
+      "sourceOrdinal": 22,
+      "followupRequestId": "m1s2-b01-a-exam3-difficulty-20261114-r3",
+      "operationalRegistration": "PENDING",
+      "alreadyAppliedAtH": false,
+      "consumerSuccessForecast": "NOT_MADE",
+      "proposedChange": {
+        "difficultyBucket": {
+          "from": 4,
+          "to": 3
+        },
+        "legacyLevelCompatibility": {
+          "from": "NORMAL",
+          "to": "BORDERLINE_ACCEPTABLE"
+        }
+      },
+      "scopeLimit": "The standalone follow-up must complete its own PR, required checks, merge, official writer, and persisted Consumer observation. No full-native or canonical assignment claim follows from this numeric request."
+    }
+  },
+  "questionJsonBank": {
+    "runId": 43542017094,
+    "jobId": 132284491041,
+    "headSha": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+    "conclusion": "failure",
+    "aggregateStatus": "PARTIAL_FAILURE",
+    "error": "EXPORTER_FAILED:2",
+    "discovered": 1577,
+    "exported": 1576,
+    "failed": 1,
+    "questionsExported": 30666,
+    "examDatabaseMetadataMissing": 12,
+    "generatedConsumerRows": 1536,
+    "activationCommitted": false,
+    "lastGoodAvailable": true,
+    "lastGoodSnapshot": "5c508ba02701a223100eb2cbdee0bbfa8093c318ab883125ded272e0cfd86fd8",
+    "failedSourcePath": "UNKNOWN",
+    "individualAssignedFileFullExporterStatus": "UNKNOWN",
+    "artifact": {
+      "id": 14091274224,
+      "name": "archive-pages-question-json-sync-evidence-43542017094-1",
+      "sizeBytes": 3233,
+      "apiSha256": "d4ad66a8fa3b4fd2341ed10ecdce848c665fc5a6553dd234626f5be6e8859d57"
+    },
+    "assignedSourceParseRoundtrip": {
+      "status": "PASS_REUSED_A2_EXECUTION",
+      "sourceRef": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+      "sourceFiles": 4,
+      "questions": 95,
+      "perFileCounts": [
+        23,
+        24,
+        24,
+        24
+      ],
+      "passedFiles": 4,
+      "failedFiles": 0,
+      "toolResultChunk": "623458",
+      "exitCode": 0,
+      "resultFile": "UNAVAILABLE",
+      "exporterSha256": "99d079946290094f8b8633c03651d715585f72de60bc894683161458492ce28f",
+      "method": "Existing public resolveQuestionArray/cloneJsonValue with the official VM settings; source parse and JSON roundtrip only.",
+      "fullRunExportInvoked": false,
+      "sourceMetadataEnvelopeExportClaim": false,
+      "newRunInThisReport": false
+    },
+    "scopeLimit": "Assigned-source parse/roundtrip success does not prove whole-bank export or activation success, and does not identify the one failing file."
+  },
+  "unresolvedInterpretationLimits": [
+    "The 39 final accepted targets are not all 41 requested targets and are not all 95 questions with full native registration.",
+    "The H writer status is REGISTRATION_PARTIAL and its semantic lane still needs registration.",
+    "Existing coordinator-only native, binding, RPM, dictionary and publication-hold debts remain governed by the already saved handoff; this report does not reassess or close them.",
+    "The original main CI failure remains a historical failure. Narrow post-registration checks are separately identified.",
+    "Local evidence reports are reused and hashed here. Remote artifact/commit references anchor durable data; this JSON is not an additional deployment or write to common data."
+  ]
+}

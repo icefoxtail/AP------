@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "existing-exam-canonical-parent-repair-evidence-v1",
+  "reviewedAt": "2026-11-13T13:53:57.332162+00:00",
+  "reviewedBy": "GPT_ROOT_933015CD0A4F",
+  "scope": "METADATA_PARENT_LINK_ONLY",
+  "baselineMain": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+  "sourceRawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+  "sourceBlobSha1": "a8de75bc9cc2b6a4479866d75b8ebec637404a04",
+  "sourceBytesChanged": false,
+  "problemAnswerSolutionImageUidScoreDifficultyChanges": 0,
+  "semanticReviewReused": {
+    "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+    "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+  },
+  "reproduction": {
+    "path": "docs/operations/m1-meta-review-20261113/01-shinheung-rev2-parent-reproduction.json",
+    "sha256": "d9a86cf58f149c56f37878f6af93c263f23f1c381a1ef1a4cc04e34d1bf4d976",
+    "scope": "ISOLATED_UNCOMMITTED_NOT_OPERATIONAL",
+    "checked": 24,
+    "passedBeforeFix": 22,
+    "failedOrdinals": [
+      5,
+      8
+    ],
+    "reason": "canonical_parent_missing"
+  },
+  "q5": {
+    "mathematicalDecision": "KEEP",
+    "existingFamilyIdPreserved": "M1-RPM-198",
+    "sourceRpmPrimaryRecordIdPreserved": "M1-RPM-198",
+    "nativePtTplPreserved": true,
+    "rpmPathPreserved": true,
+    "existingExactRowCountBefore": 0,
+    "addedExactCrosswalkRow": {
+      "id": "M1-RPM-198-DIAGONAL-FORMULA-20261113",
+      "curriculum": "2022",
+      "scope": "M1-2",
+      "rpmPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "변·대각선 개수"
+      },
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "standardCourse": "중1 수학",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "problemTypeLabelKo": "다각형의 각·대각선과 변 수 관계",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 대각선 공식",
+      "ownerPack": "MIDDLE1",
+      "bindingOwnerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "ownerPack": "MIDDLE1"
+      }
+    },
+    "targetParent": {
+      "L1": "평면도형",
+      "L2": "다각형"
+    },
+    "basis": "The frozen semantic review and existing FAMILY198 candidate already select DIAGONAL_FORMULA; an exact reference exposes that same native type under the existing canonical parent."
+  },
+  "q8": {
+    "targetParentRef": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "curriculum": "2022",
+      "scope": "M1-2",
+      "majorUnit": "기본 도형",
+      "midUnit": "위치 관계"
+    },
+    "nativeBeforeParent": {
+      "L1": "기본도형",
+      "L2": "위치 관계"
+    },
+    "nativeSubunitLabelEqualsCanonicalMidUnit": true,
+    "rpmLeafAdded": false,
+    "rpmNullHoldEvidenceDebtPreserved": true,
+    "basis": "The existing ACTIVE native subunit label equals the locked canonical midUnit; only the canonical parent is bound."
+  },
+  "preservation": {
+    "existingCrosswalkRowsUnchanged": 244,
+    "exactRowsAdded": 1,
+    "parentAuthorityOnlyChangedOneLeafReferenceId": true,
+    "counts": {
+      "L1": 24,
+      "L2": 54,
+      "baseL3": 155,
+      "baseL4": 326
+    },
+    "nativeRegistryChangeDefinitionsUnchanged": 17,
+    "sourceQuestionCount": 24,
+    "rpmOnlyDebtOrdinals": [
+      8,
+      10
+    ],
+    "fullR1R2R3Rerun": false,
+    "mathFinalQaPerformed": false,
+    "productionGuardChanged": false
+  },
+  "currentEvidence": {
+    "crosswalk": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "sha256": "f43c66b50f9b7bb188114f6105cc173ad1e5895f0aa403a902e27510738fb8da"
+    },
+    "parentAuthority": {
+      "path": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "sha256": "d9ea3abe0d6760a675f93ddba26707c58abccbbb3c922095234b9dcc2936df65"
+    },
+    "lockedMaster": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+    }
+  },
+  "validationState": "REPAIR_EVIDENCE_READY_NOT_YET_REV3_REGISTERED_OR_CONSUMER_VERIFIED"
+}

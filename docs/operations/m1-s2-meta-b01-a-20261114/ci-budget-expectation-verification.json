@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "m1s2-ci-budget-expectation-v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "checkedAt": "2026-11-14T01:22:05.694316+00:00",
+  "baseHead": "2c9949b1dd600689b01198e22a53068a7cb814d8",
+  "failureEvidence": {
+    "runId": 43538098031,
+    "jobId": 132271939295,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43538098031/job/132271939295",
+    "runConclusion": "failure",
+    "registrationPreparation": "success",
+    "fullSuiteFileCounts": {
+      "pass": 335,
+      "fail": 1,
+      "knownFail": 0,
+      "total": 336
+    },
+    "existingQuarantinedFiles": 8,
+    "onlyBlockingFile": "tests/ci-signal-hygiene.test.mjs",
+    "failedSubtest": "ci.yml: scoped execution retains the existing blocking gates for their affected inputs",
+    "failedExpectedLiteral": "timeout-minutes: 15",
+    "previousQ13UnifiedClassificationTest": "PASS"
+  },
+  "change": {
+    "path": "tests/ci-signal-hygiene.test.mjs",
+    "beforeSha256": "a09bd3ecd217232d4a2c6f2692ba01fc41523b19ccc679b8f6e22b57d6751c78",
+    "afterSha256": "252c052441d19b56ece3dfd778162b3db14a1f15af5b28858128e7ebed4bb583",
+    "exactReplacementOnly": true,
+    "from": "timeout-minutes: 15",
+    "to": "timeout-minutes: 30",
+    "rationale": "Keep the existing finite-budget configuration assertion aligned with the reviewed 30 minute CI execution budget. The completed full suite exceeded the former 15 minute job budget. All gate and test-selection assertions are preserved.",
+    "studentPayloadOrMetadataChanges": 0
+  },
+  "verification": {
+    "command": "node --test tests/ci-signal-hygiene.test.mjs",
+    "exitCode": 0,
+    "tests": 19,
+    "pass": 19,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 1798.707011,
+    "fullRequiredCI": "PENDING_NEW_HEAD"
+  },
+  "ownerOverlap": {
+    "reviewer": "A1",
+    "openPrCount": 72,
+    "otherPrsChecked": 71,
+    "exactPathOverlap": [],
+    "unresolved": 0
+  },
+  "independentDiffReview": {
+    "reviewer": "A1",
+    "baseHead": "2c9949b1dd600689b01198e22a53068a7cb814d8",
+    "changedLiteralCount": 1,
+    "gatesAssertionsTestSelectionRemoved": 0,
+    "findings": []
+  },
+  "latestMainRechecked": "0f638ef02303919e82136e4671d0f9f70db436b1"
+}

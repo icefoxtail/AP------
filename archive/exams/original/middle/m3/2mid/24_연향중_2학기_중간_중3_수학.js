@@ -136,7 +136,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠B=120°인 삼각형 ABC, BC 연장선 위 H와 60° 직각삼각형, 높이 AH.",
+    "solutionImageCaption": "AH=6sin60°=3√3 cm이므로 넓이는 1/2×5×3√3=15√3/2 cm²이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -200,7 +204,10 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q6-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 수선 AD와 작은 직각삼각형 ADC, x각과 ∠B의 같은 호.",
+    "solutionImageCaption": "x=∠B이므로 tan x=AC/AB=2√3/2=√3이다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -296,7 +303,10 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q9-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 나무 높이 h, 밑점 H, 45°·60° 관측각, BH=h와 CH=h/√3, BC=12m.",
+    "solutionImageCaption": "h+h/√3=12이므로 h=6(3−√3) m이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -328,7 +338,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD와 밑변 BC에 내린 수선 AH, ∠B=45° 및 변 길이.",
+    "solutionImageCaption": "BC=6√2 cm, AH=7√2/2 cm이므로 넓이는 BC×AH=42 cm²이다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -361,7 +375,10 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q11-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 나무, 관찰자의 눈높이 1.5m, 수평거리 50m, 38° 시선과 눈높이 위 증가분 39m.",
+    "solutionImageCaption": "눈높이 위 증가는 50×0.78=39 m이고 전체 높이는 39+1.5=40.5 m이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -457,7 +474,10 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q14-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반지름 7 cm인 원, 길이 8 cm인 현 AB, 현의 중점 M과 중심 O에서 내린 수선 OM.",
+    "solutionImageCaption": "직각삼각형 OAM에서 OM=√(7²−4²)=√33 cm이다. 정답: ⑤",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -589,7 +609,10 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q18-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 접점 T에서 반지름 OT와 접선 PT가 직각인 도형, PA=6 cm와 30° 각.",
+    "solutionImageCaption": "OA=OT=r, PO=6+r이고 sin30°=r/(r+6)에서 r=6이다. 따라서 PT=6√3 cm. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -622,7 +645,10 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q19-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 내접원과 세 접점 D, E, F가 보인다. 같은 꼭짓점의 두 접선은 같은 색과 같은 개수의 눈금으로 표시했다. A는 파란색 한 눈금, B는 주황색 두 눈금, C는 초록색 세 눈금이다.",
+    "solutionImageCaption": "CF=CE=8−5/2=11/2 cm이다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -709,7 +735,10 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q22-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: △ABD의 연장선 높이 2 cm와 △BCD의 높이 3√3 cm를 각각 표시한 두 패널.",
+    "solutionImageCaption": "[△ABD]=2√3 cm², [△BCD]=12√3 cm²이므로 전체 넓이는 14√3 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -736,6 +765,9 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q23-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 동심원, 현 AB와 중심 수선 OM, M-D-B 순서 및 DB=√2 cm.",
+    "solutionImageCaption": "MB=√(6²−2²)=4√2이므로 MD=3√2, OD=√(2²+(3√2)²)=√22 cm이다.",
+    "solutionImageSize": "full"
   }
 ];
