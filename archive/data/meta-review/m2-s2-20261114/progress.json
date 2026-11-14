@@ -4573,9 +4573,10 @@
           "sha256": "24f32d0c09f942c4fc4f22892fd4dcc0223f62be465a55dedf6a9fb29d711753"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "39d6b25789a1c97f75b8a22464be228d612b1e8d"
     },
     {
       "examId": "E032",
@@ -5120,13 +5121,117 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/21_왕운중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         "CREATE_REPAIR_APPLIED",
         "CREATE_READY"
       ],
-      "uidSetSha256": "75db38549410461966bad5dfb619f91e6097d3a4ad6eba0d3528a4c32f5aaefb"
+      "uidSetSha256": "75db38549410461966bad5dfb619f91e6097d3a4ad6eba0d3528a4c32f5aaefb",
+      "reviewedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 3,
+      "sourceHoldOrdinals": [
+        2,
+        3,
+        20
+      ],
+      "changedQuestionCount": 19,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        3,
+        7,
+        18
+      ],
+      "independentReviewer": "A",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            8,
+            18,
+            22
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선과 선분의 길이의 비",
+          "ordinals": [
+            4,
+            9,
+            10,
+            23
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            7,
+            15
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            11
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            12,
+            14,
+            16,
+            17,
+            19,
+            20,
+            21,
+            24
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "평행사변형",
+          "ordinals": [
+            13
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E036/four-slot.json",
+          "sha256": "5000f7e7b2fdbaf36f0707da8109cb59f1d85ca71c6775fe7cfc121dba41ee49"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E036/independent-sample.json",
+          "sha256": "c5851ce6c20fdb467ce0c1ade25e0c68edc2f78bc0dcc889d295d609509a4604"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E036/mechanical-check.json",
+          "sha256": "ed0e1789d661b96c850602735b5b3303f2a8a27702ced57fc600cdcd2ac83d46"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E036/review.json",
+          "sha256": "e7c92a4faf448aa10b307b67ce41cce59958697dc0a490044b9a1a56d6423719"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E036/root-acceptance.json",
+          "sha256": "0faa3cb7d2ea4e941165b7d827edf75dfabd9f815330b729902194cbdcaa83d5"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E037",
@@ -6504,11 +6609,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 34,
-    "reviewedQuestions": 807,
+    "reviewedExams": 35,
+    "reviewedQuestions": 831,
     "unresolvedQuestions": 0,
-    "remainingExams": 33,
-    "remainingQuestions": 797
+    "remainingExams": 32,
+    "remainingQuestions": 773
   },
-  "lastVerifiedExamCommit": "add370e66a89570762812eb85dff4b6624c46296"
+  "lastVerifiedExamCommit": "39d6b25789a1c97f75b8a22464be228d612b1e8d"
 }
