@@ -881,7 +881,11 @@ window.questionBank = [
       "subConcept": "중심거리와 현의 길이",
       "conditionsUsed": "AB⊥OD, BC⊥OE, AC⊥OF, OD=OE=OF, AB=6cm.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 내접한 삼각형 ABC에서 OD, OE, OF는 세 현에 각각 수직이며 같은 길이로 표시된다. 세 현은 다른 색의 같은 길이 표식을 갖는다.",
+    "solutionImageCaption": "세 현은 원 O의 중심에서 같은 거리이므로 서로 길이가 같다. AB=6cm에서 삼각형 ABC는 한 변이 6cm인 정삼각형이다. 외접반지름은 6/√3=2√3cm이므로 원의 넓이는 12πcm², 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

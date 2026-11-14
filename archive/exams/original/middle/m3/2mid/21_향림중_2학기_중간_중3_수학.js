@@ -112,7 +112,11 @@ window.examData = {
         "$a<0,\\ p>0,\\ q<0$"
       ],
       "answer": "④",
-      "solution": "그래프가 아래로 열리므로 $a<0$이다. 꼭짓점은 $y$축의 왼쪽에 있고 $x$좌표가 $-p$이므로 $p>0$이며, 꼭짓점의 $y$좌표 $q>0$이다. 따라서 ④이다."
+      "solution": "그래프가 아래로 열리므로 $a<0$이다. 꼭짓점은 $y$축의 왼쪽에 있고 $x$좌표가 $-p$이므로 $p>0$이며, 꼭짓점의 $y$좌표 $q>0$이다. 따라서 ④이다.",
+      "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 대표 포물선 개형은 아래로 열리고 꼭짓점은 y축 왼쪽이며 x축 위쪽에 있다. 실제 계수나 수치 좌표를 주장하는 그림은 아니다.",
+      "solutionImageCaption": "아래로 열리므로 a<0, 꼭짓점 x좌표 −p<0이므로 p>0, 꼭짓점 y좌표 q>0이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -140,7 +144,11 @@ window.examData = {
         "$y=3(x+1)^2-2$"
       ],
       "answer": "④",
-      "solution": "$x$축에 대칭인 그래프는 $y$의 부호를 바꾼 것이므로 $y=-[-3(x-1)^2+2]=3(x-1)^2-2$이다. 따라서 ④이다."
+      "solution": "$x$축에 대칭인 그래프는 $y$의 부호를 바꾼 것이므로 $y=-[-3(x-1)^2+2]=3(x-1)^2-2$이다. 따라서 ④이다.",
+      "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 파란 원래 포물선 f(x)=−3(x−1)²+2와 주황 x축 대칭 포물선 g(x)를 비교한다. 두 곡선은 x축을 기준으로 서로 반대쪽에 놓인다.",
+      "solutionImageCaption": "x축 대칭은 y의 부호를 바꾸므로 구하는 식은 y=3(x−1)²−2이다. 답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
