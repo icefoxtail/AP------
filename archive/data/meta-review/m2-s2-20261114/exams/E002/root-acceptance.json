@@ -7,7 +7,7 @@
   "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
   "sourceGitBlobSha": "03f52e43d9fcab780926cd27404d7cc157cbacae",
   "sourceSha256": "08f2cda2ea8d9e686a628d0567bd2b6d9b0f95799e88db419ad6d301333d6c6c",
-  "reviewSha256": "39c97e1fc10a6cb8cf1a0537a3a564926fc5050d61e4b5d4fa791c91f6643049",
+  "reviewSha256": "08ed63b7d7cff227ee123f6489da1d98d294f65870cdbc3aabc6a92d3d2df82d",
   "fourSlotSha256": "4766949bcce4f75368946c2802f7a8ab655be755b990beb1c37b8b7a46be6414",
   "independentSampleSha256": "005bb580f32fef948a7e5295f20535253714572526372cccefd59a5af63c9de2",
   "sampleInputVersionsPreserved": true,
@@ -48,6 +48,10 @@
     {
       "ordinal": 22,
       "resolution": "The ACTIVE semantic center template explicitly includes equal distances; the angle-only incenter template is a poor fit for the radius-area calculation."
+    },
+    {
+      "ordinal": 5,
+      "resolution": "Reuse the existing ACTIVE CC_ISOSCELES_CONVERSE, whose Korean definition exactly states that two equal interior angles imply two equal sides. Withdraw the duplicate proposed concept."
     }
   ],
   "difficultyRechecks": [
@@ -144,6 +148,7 @@
     }
   ],
   "notes": [
-    "Specified solution methods are retained in four-slot conditions; they do not require broadening the canonical value-restriction Condition registry."
+    "Specified solution methods are retained in four-slot conditions; they do not require broadening the canonical value-restriction Condition registry.",
+    "Targeted post-publication existing-concept correction; the original sample and earlier commit remain preserved."
   ]
 }
