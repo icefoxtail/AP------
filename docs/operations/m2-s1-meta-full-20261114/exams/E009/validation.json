@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "m2-s1-mechanical-check-v1",
+  "examId": "E009",
+  "sourceBlob": "a1ad1dce4f166a0beac29247801ebbe07ddca0be",
+  "sourceSha256": "a2e6f12b42cb170bdb340895f4fde201f6da0afc69bb6a90faee7ea9f74e8c66",
+  "reviewSha256": "b4f7da6a33092047f7615a24b7b7201a163336058d1c0065866ae4aa6c7eee92",
+  "fourSlotSha256": "1baaf668649d280ecae70f6702a87c5222c8a85218a1db562a6c67588eebc5b9",
+  "questionCount": 23,
+  "structuralStatus": "PASS",
+  "fourSlotStatus": "PASS_STATIC_ONLY",
+  "fail": [],
+  "warn": [
+    "#3 only 4 distinct terms",
+    "#6 only 4 distinct terms"
+  ],
+  "requiredEvidenceDebt": [],
+  "keyDebt": [],
+  "changedOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "difficultyRecheckOrdinals": [
+    4,
+    5,
+    6,
+    12,
+    14,
+    18,
+    21
+  ],
+  "compatibilityAdjustments": [],
+  "sourceOnlyOrdinals": [],
+  "fourSlotCounts": {
+    "items": 23,
+    "examItems": 23,
+    "quotes": 168,
+    "fail": 0,
+    "warn": 2
+  },
+  "semanticApproval": "NOT_A_MACHINE_VERDICT",
+  "reviewedSourceBlob": "a1ad1dce4f166a0beac29247801ebbe07ddca0be",
+  "finalSourceBlob": "e6c34e611a22373144ab3a91c3c7aa55d2f7c9d5",
+  "finalSourceSha256": "4115a0aedeff63284ee245a380f91c7a6e094ee971475dbe60b521b78be1a57d",
+  "finalFourSlotSha256": "d58461ab762b85c61ac9e4ad0b6dc3416cf36f7c6a5f1ec366e17bbcc5536a95",
+  "finalFourSlotValidation": {
+    "fail": [],
+    "warn": [
+      "#3 only 4 distinct terms",
+      "#6 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 23,
+      "examItems": 23,
+      "quotes": 168
+    }
+  },
+  "sourceSyntax": "PASS_VM_AND_JSON",
+  "sourceContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "uidOrderPreservation": "PASS",
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_8c0d81da13c08e6c27baf1f1e0215c12e9f04bcc54a2dc8eada2ce7f4c626882",
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "분모 제거와 가감, 다른 해 대입, 차 계산의 연결로 숫자2를 제안하되 기존하와1/2경계를 명시한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_8c0d81da13c08e6c27baf1f1e0215c12e9f04bcc54a2dc8eada2ce7f4c626882",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "분모 제거와 가감, 다른 해 대입, 차 계산의 연결로 숫자2를 제안하되 기존하와1/2경계를 명시한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_8c0d81da13c08e6c27baf1f1e0215c12e9f04bcc54a2dc8eada2ce7f4c626882",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "분모 제거와 가감, 다른 해 대입, 차 계산의 연결로 숫자2를 제안하되 기존하와1/2경계를 명시한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_8c0d81da13c08e6c27baf1f1e0215c12e9f04bcc54a2dc8eada2ce7f4c626882",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "분모 제거와 가감, 다른 해 대입, 차 계산의 연결로 숫자2를 제안하되 기존하와1/2경계를 명시한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_f669b5d0b884cfe6f31307e6c7b756ae765ce9278cc9b76024c9e0b1f9ce1afb",
+      "field": "level",
+      "before": "하",
+      "after": "중",
+      "reason": "해 좌표를 계수의 식 두 개로 옮기고 배수를 맞춰 소거하며 분수곱을 구한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_f669b5d0b884cfe6f31307e6c7b756ae765ce9278cc9b76024c9e0b1f9ce1afb",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "해 좌표를 계수의 식 두 개로 옮기고 배수를 맞춰 소거하며 분수곱을 구한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_f669b5d0b884cfe6f31307e6c7b756ae765ce9278cc9b76024c9e0b1f9ce1afb",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "해 좌표를 계수의 식 두 개로 옮기고 배수를 맞춰 소거하며 분수곱을 구한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_cd35d032d09752e30287a1ada3759343db8b2c3060e8273710d48bed6c738dc3",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "작년 수를 변수로 삼아 총수와 순증감을 식으로 세운 뒤 올해값으로 다시 바꾸어야 한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_470511c9c916f4322e73e0b17ae4601a70c7a7e13b372c7c67a0965f92d63d3c",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "수직 이동량을 상수항에 반영한 뒤 점을 대입해 원식의 미지계수를 결정하는 두 단계이다. E004Q9 및 E003Q11의 같은 구조와 독립 비교하여 숫자2로 정정하고 기존하와의 인접 경계는 별도 허용 재검 대상으로 남긴다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_470511c9c916f4322e73e0b17ae4601a70c7a7e13b372c7c67a0965f92d63d3c",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "수직 이동량을 상수항에 반영한 뒤 점을 대입해 원식의 미지계수를 결정하는 두 단계이다. E004Q9 및 E003Q11의 같은 구조와 독립 비교하여 숫자2로 정정하고 기존하와의 인접 경계는 별도 허용 재검 대상으로 남긴다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_470511c9c916f4322e73e0b17ae4601a70c7a7e13b372c7c67a0965f92d63d3c",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "수직 이동량을 상수항에 반영한 뒤 점을 대입해 원식의 미지계수를 결정하는 두 단계이다. E004Q9 및 E003Q11의 같은 구조와 독립 비교하여 숫자2로 정정하고 기존하와의 인접 경계는 별도 허용 재검 대상으로 남긴다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_9d385ee53fd1daf75ae94d28a4ccddb162aa8c0f6c2a8dc0c52e591d269ae438",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "한 식에서 기울기를 읽고 x절편을 한 번 계산하면 정답 문장을 판별할 수 있다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_d60c89d8ab148db7aeede601c63b55657ab91f3d1681b3670caa6b8772f3d899",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "절편 두 값과 교점 한 개를 구하여 단순 삼각형 공식에 대입하는 표준 응용이다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "가격이 바뀐 것이 아니라 두 물건의 개수가 뒤바뀐 상황을 두 총액식으로 표현해야 한다."
+    }
+  ]
+}

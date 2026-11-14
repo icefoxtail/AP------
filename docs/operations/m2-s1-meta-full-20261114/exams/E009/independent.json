@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E009",
+  "author": "C",
+  "reviewer": "A",
+  "independent": true,
+  "sourceGitBlobSha": "a1ad1dce4f166a0beac29247801ebbe07ddca0be",
+  "reviewSha256": "b4f7da6a33092047f7615a24b7b7201a163336058d1c0065866ae4aa6c7eee92",
+  "fourSlotSha256": "1baaf668649d280ecae70f6702a87c5222c8a85218a1db562a6c67588eebc5b9",
+  "sampleOrdinals": [
+    5,
+    8,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_f669b5d0b884cfe6f31307e6c7b756ae765ce9278cc9b76024c9e0b1f9ce1afb",
+      "status": "PASS",
+      "findings": "일차방정식의두해를대입해a,b연립식으로옮긴후곱을구한다. goal곱/상수, method대입/연립/가감 분리적합. 실제sourcebucket2와중앙metadata의raw문자열하를구분보존함을확인.",
+      "quoteCheck": "All submitted sample literal quotes checked against existing stem/solution",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_82414dd0e9204aaa0641cd5200fc982a77dd4b54fc589be1d9efb279a5700061",
+      "status": "PASS",
+      "findings": "원본q8.png실제확인:질량합x+y=㉠,용질합(㉡)x+(10/100)y=㉢. ㉢은8/100자체가아닌500×8/100=40. goal틀린빈칸판정과 농도·모델링·연립방법이정확히구분된다.",
+      "quoteCheck": "All submitted sample literal quotes checked against existing stem/solution",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_bd4b9b5cf9186cab80e336a9a97d8ed2c6b534e1393b5855a4af3fe0b0bb7882",
+      "status": "PASS",
+      "findings": "선형f함숫값을연속대입한뒤반비례g의입력을역산한다. given반비례,goal상수b,method대입/함숫값/비례식으로일치. 일차함수함숫값leaf만으로g입력역산을강제하지않는gap판정수용.",
+      "quoteCheck": "All submitted sample literal quotes checked against existing stem/solution",
+      "goalMethodInversion": false
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "status": "PASS_AFTER_SCOPED_ADJUDICATION",
+  "at": "2026-11-14T09:03:53.240584+00:00",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_8c0d81da13c08e6c27baf1f1e0215c12e9f04bcc54a2dc8eada2ce7f4c626882",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "분모4제거후가감·재대입·해의차로표준연결. 하/2 B12도정합."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_f669b5d0b884cfe6f31307e6c7b756ae765ce9278cc9b76024c9e0b1f9ce1afb",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두좌표를미정계수연립식으로바꾸고소거하는추가모델단계라중/2독립판정수용."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_cd35d032d09752e30287a1ada3759343db8b2c3060e8273710d48bed6c738dc3",
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "작년남녀를복원후올해남학생으로다시환산하는단계. 2/3경계관리3수용,중/3 compatibility는NORMAL."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_470511c9c916f4322e73e0b17ae4601a70c7a7e13b372c7c67a0965f92d63d3c",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "Q12하/2B12/BORDERLINE_ACCEPTABLE로E004Q9/E003Q11과동일한이동식+점대입구조경계를적용한수정확인."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_9d385ee53fd1daf75ae94d28a4ccddb162aa8c0f6c2a8dc0c52e591d269ae438",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "주어진함수식에서y0을대입해x절편4를직접구하면정답확정."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_d60c89d8ab148db7aeede601c63b55657ab91f3d1681b3670caa6b8772f3d899",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "주어진절편두값과간단한교점식에서삼각형공식적용. 중/2B23수용."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "가격변화가아닌개수맞바꿈을두총액차로표현하는모델과정. 2/3경계3수용,중/3 compatibility는NORMAL."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_cd35d032d09752e30287a1ada3759343db8b2c3060e8273710d48bed6c738dc3",
+      "decision": "ACCEPT",
+      "reason": "두집단증감률로전체변화를모델링하므로WORD/161."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_416ddeffbb31781870d78a0dd923f5810f49350b65dddb9e36d2c47af8d6bf04",
+      "decision": "ACCEPT",
+      "reason": "두점으로직선식을정하고세번째좌표관계추출이므로BASIC/170."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_d60c89d8ab148db7aeede601c63b55657ab91f3d1681b3670caa6b8772f3d899",
+      "decision": "ACCEPT",
+      "reason": "두직선교점과축으로둘러싼넓이이므로EQUATION/176."
+    }
+  ],
+  "metadataAnomalies": [
+    {
+      "sourceOrdinal": 5,
+      "beforeSourceDifficultyBucket": 2,
+      "beforeMetadataDifficultyBucket": "하",
+      "preservedRawBefore": true
+    }
+  ],
+  "requestedAdjudication": [],
+  "revision": 2,
+  "previousReceipt": {
+    "path": "/workspace/scratch/6f3d37eea78a/workers/A/cross/E009.sample.json",
+    "sha256": "cd9465eb6e92caa334b47408c606b05ba7c70719c674da35226a8fa24127c703"
+  },
+  "priorInputHashes": {
+    "reviewSha256": "8e3bb59f99f73ca58411f8bdfce6458136b44031cc635ef1102ab6fb375ce93d",
+    "fourSlotSha256": "9ffced7126dfc5fdc76036fb02348f2bb810e7a8d746d33938299e006fa1f276"
+  },
+  "scopedRevisionReview": "Read actual finalQ6/Q12/Q21 level/bucket/boundary/compatibility and all3sample slot entries; Q12boundary resolved, Q6/Q21NORMAL corrected. Sample term/quote/fingerprints still match prior source read. No source alteration or fresh solve."
+}

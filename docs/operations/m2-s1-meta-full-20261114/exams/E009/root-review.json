@@ -1,0 +1,163 @@
+{
+  "sampleReviewer": "A",
+  "sampleFile": "E009.sample-revision2.json",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 4,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "분모4제거후가감·재대입·해의차로표준연결. 하/2 B12도정합.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 5,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두좌표를미정계수연립식으로바꾸고소거하는추가모델단계라중/2독립판정수용.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "작년남녀를복원후올해남학생으로다시환산하는단계. 2/3경계관리3수용,중/3 compatibility는NORMAL.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 12,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "Q12하/2B12/BORDERLINE_ACCEPTABLE로E004Q9/E003Q11과동일한이동식+점대입구조경계를적용한수정확인.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 14,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "주어진함수식에서y0을대입해x절편4를직접구하면정답확정.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 18,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "주어진절편두값과간단한교점식에서삼각형공식적용. 중/2B23수용.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 21,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "가격변화가아닌개수맞바꿈을두총액차로표현하는모델과정. 2/3경계3수용,중/3 compatibility는NORMAL.",
+      "independentReviewer": "A"
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_cd35d032d09752e30287a1ada3759343db8b2c3060e8273710d48bed6c738dc3",
+      "decision": "ACCEPT",
+      "reason": "두집단증감률로전체변화를모델링하므로WORD/161."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_416ddeffbb31781870d78a0dd923f5810f49350b65dddb9e36d2c47af8d6bf04",
+      "decision": "ACCEPT",
+      "reason": "두점으로직선식을정하고세번째좌표관계추출이므로BASIC/170."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_d60c89d8ab148db7aeede601c63b55657ab91f3d1681b3670caa6b8772f3d899",
+      "decision": "ACCEPT",
+      "reason": "두직선교점과축으로둘러싼넓이이므로EQUATION/176."
+    }
+  ],
+  "semanticOverrides": [],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 4,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "분모 제거와 가감, 다른 해 대입, 차 계산의 연결로 숫자2를 제안하되 기존하와1/2경계를 명시한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "after": {
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "해 좌표를 계수의 식 두 개로 옮기고 배수를 맞춰 소거하며 분수곱을 구한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "after": {
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "작년 수를 변수로 삼아 총수와 순증감을 식으로 세운 뒤 올해값으로 다시 바꾸어야 한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "after": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "수직 이동량을 상수항에 반영한 뒤 점을 대입해 원식의 미지계수를 결정하는 두 단계이다. E004Q9 및 E003Q11의 같은 구조와 독립 비교하여 숫자2로 정정하고 기존하와의 인접 경계는 별도 허용 재검 대상으로 남긴다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "after": {
+        "difficultyBucket": 1
+      },
+      "reason": "한 식에서 기울기를 읽고 x절편을 한 번 계산하면 정답 문장을 판별할 수 있다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "after": {
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "절편 두 값과 교점 한 개를 구하여 단순 삼각형 공식에 대입하는 표준 응용이다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "after": {
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "가격이 바뀐 것이 아니라 두 물건의 개수가 뒤바뀐 상황을 두 총액식으로 표현해야 한다."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "notes": [
+    "Root read and accepted the author-independent focused report; item-by-item semantic reasons remain in author and independent files. Mechanical serialization does not decide classification.",
+    "Only explicit existing source metadata fields are minimally changed; shared registry, runtime, metadata projection and production inbox remain untouched.",
+    "Unsupported/missing source fields and unresolved evidence stay in the source-bound small proposal packet for Codex; no unknowns are silently filled."
+  ],
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E009",
+  "owner": "GPT_ROOT_6F3D37EEA78A",
+  "reviewedSourceBlob": "a1ad1dce4f166a0beac29247801ebbe07ddca0be",
+  "finalSourceBlob": "e6c34e611a22373144ab3a91c3c7aa55d2f7c9d5",
+  "reviewSha256": "b4f7da6a33092047f7615a24b7b7201a163336058d1c0065866ae4aa6c7eee92",
+  "independentSha256": "1565017501e8e90fda35efbcc424016b4233c2b611feaa152b50955e4e1eab59",
+  "reviewedFourSlotSha256": "1baaf668649d280ecae70f6702a87c5222c8a85218a1db562a6c67588eebc5b9",
+  "finalFourSlotSha256": "d58461ab762b85c61ac9e4ad0b6dc3416cf36f7c6a5f1ec366e17bbcc5536a95",
+  "fourSlotRebind": {
+    "transformation": "Replace the unique sourceGitBlobSha string only; every item/quote/slot and dictionary binding is byte-identical.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "createdAt": "2026-11-14T09:04:36.778441+00:00",
+  "independentHistory": [
+    {
+      "file": "docs/operations/m2-s1-meta-full-20261114/exams/E009/independent-history/E009.sample.json",
+      "sha256": "cd9465eb6e92caa334b47408c606b05ba7c70719c674da35226a8fa24127c703"
+    }
+  ]
+}
