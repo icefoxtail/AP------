@@ -1585,9 +1585,9 @@
     }
   ],
   "raw4slot": {
-    "url": "https://drive.google.com/file/d/17RzU3lolIEApIdGFFaGj9YkN2OMRNLRd/view?usp=drivesdk",
-    "fileId": "17RzU3lolIEApIdGFFaGj9YkN2OMRNLRd",
-    "sha256": "57fe4d9cd78cfc53f6bdfabd13d7901028feaa7ff5c4d4e167b0e564266db1fa",
+    "url": "https://drive.google.com/file/d/1vFsSPmzF-sOJqYLdPdexcskYaQjTKQhH/view?usp=drivesdk",
+    "fileId": "1vFsSPmzF-sOJqYLdPdexcskYaQjTKQhH",
+    "sha256": "e844fa29af1e2d8c2444b62154fcbbf939adf9d96c40e5f84cd8b7a078ce887b",
     "readbackVerified": true,
     "originalSourceBlob": "6deb8328fecdeae6008a0611d36f937ad3ec4a67",
     "protectedPayloadSame": true
@@ -1595,15 +1595,16 @@
   "independent": [
     {
       "path": "docs/operations/m1-s2-meta-full-20261114/independent/25_동산중_2학기_중간_중1_수학.json",
-      "sha256": "97c8e3d838b611b39164f1d0df4525e360da7ba2df83d49eef6dfa42685a7395",
+      "sha256": "b0eee3a02351b4a0f75c4233632615c41a595fe4e3d2dbd70a6f7da8ba3efc32",
       "reviewer": "meta-a",
       "status": "PASS_THREE_SAMPLES_AFTER_MINOR_CORRECTIONS"
     }
   ],
   "independentInputBinding": {
-    "status": "EXACT_RAW_SHA",
-    "reviewedRawSha256": "57fe4d9cd78cfc53f6bdfabd13d7901028feaa7ff5c4d4e167b0e564266db1fa",
-    "currentRawSha256": "57fe4d9cd78cfc53f6bdfabd13d7901028feaa7ff5c4d4e167b0e564266db1fa"
+    "status": "EXACT_RAW_SHA_AFTER_PARENT_TAG_TECHNICAL_READBACK",
+    "reviewedRawSha256": "e844fa29af1e2d8c2444b62154fcbbf939adf9d96c40e5f84cd8b7a078ce887b",
+    "currentRawSha256": "e844fa29af1e2d8c2444b62154fcbbf939adf9d96c40e5f84cd8b7a078ce887b",
+    "originalSemanticVerdictsRetained": true
   },
   "validation": {
     "syntax": "PASS",
@@ -1623,13 +1624,12 @@
         "#17 only 4 distinct terms",
         "#18 only 3 distinct terms",
         "#19 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
-        "#23 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
-        "#23 only 4 distinct terms"
+        "#23 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)"
       ],
       "stats": {
         "items": 24,
         "examItems": 24,
-        "quotes": 150
+        "quotes": 151
       }
     },
     "compactParity": "PASS",
@@ -1638,5 +1638,22 @@
   "scopeLimits": [
     "No full mathematical R1/R2/R3 performed.",
     "Shared registration, main merge and deployment are outside this stage."
+  ],
+  "raw4slotHistory": [
+    {
+      "url": "https://drive.google.com/file/d/17RzU3lolIEApIdGFFaGj9YkN2OMRNLRd/view?usp=drivesdk",
+      "fileId": "17RzU3lolIEApIdGFFaGj9YkN2OMRNLRd",
+      "sha256": "57fe4d9cd78cfc53f6bdfabd13d7901028feaa7ff5c4d4e167b0e564266db1fa",
+      "readbackVerified": true,
+      "originalSourceBlob": "6deb8328fecdeae6008a0611d36f937ad3ec4a67",
+      "protectedPayloadSame": true
+    }
+  ],
+  "fourSlotTechnicalFollowups": [
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/followups/4slot-parent-supplement/25_동산중_2학기_중간_중1_수학.json",
+      "changes": 1,
+      "sourceUnchanged": true
+    }
   ]
 }

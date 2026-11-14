@@ -5,7 +5,7 @@
   "sourceArchiveFile": "original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
   "candidateSourceBlob": "a984b1302f3595b09284378987a3127d14e2a52a",
   "candidateSourceRawSha256": "0b5eb488096c46fe55271cfb34c06affa6cf2f5aafd3ac744d669d4047d3aa93",
-  "raw4slotSha256": "57fe4d9cd78cfc53f6bdfabd13d7901028feaa7ff5c4d4e167b0e564266db1fa",
+  "raw4slotSha256": "e844fa29af1e2d8c2444b62154fcbbf939adf9d96c40e5f84cd8b7a078ce887b",
   "sampled": [
     8,
     9,
@@ -89,11 +89,39 @@
   "sourceModified": false,
   "mathFullR1R2Performed": false,
   "authorReviewSha256AtReadback": "1c46fcecfa5828d0eb2b603a98df3df9690f051c748a440c63dce9276afa3772",
-  "revision": 2,
+  "revision": 3,
   "finalReadback": {
     "sourceBytesUnchanged": true,
     "Q8": "goal 서로소 with exact stem quote verified",
     "Q19": "given 유리수, goal 연산 exact quotes verified; DEFINITION_NORMALIZATION_REUSE proposal for existing PT/TPL directly read",
     "unresolvedSampleDefects": 0
-  }
+  },
+  "authorReviewSha256": "14a48285b00df37168bf6199670a2ccb3dadfd24606de9dfb4db5d18934c0f10",
+  "compactSha256": "9483c7f1bf09fce60b1a4bace5f0fc5df547f6ff5aad80edd42c8e79314e17db",
+  "technicalReadbacks": [
+    {
+      "contract": "4slot §10 candidate parent same slot",
+      "beforeBinding": {
+        "candidateSourceBlob": "a984b1302f3595b09284378987a3127d14e2a52a",
+        "candidateSourceRawSha256": "0b5eb488096c46fe55271cfb34c06affa6cf2f5aafd3ac744d669d4047d3aa93",
+        "raw4slotSha256": "57fe4d9cd78cfc53f6bdfabd13d7901028feaa7ff5c4d4e167b0e564266db1fa",
+        "authorReviewSha256": null
+      },
+      "sourceUnchanged": true,
+      "semanticConclusionsRetained": true,
+      "changesDirectlyVerified": [
+        {
+          "exam": "25_동산중_2학기_중간_중1_수학",
+          "ordinal": 23,
+          "slot": "method",
+          "candidate": "역연산",
+          "parent": "연산",
+          "parentDictionaryId": 33,
+          "src": "solution",
+          "quote": "잘못 계산한 식을 먼저 세워 어떤 수를 구한"
+        }
+      ],
+      "status": "ACCEPTED"
+    }
+  ]
 }
