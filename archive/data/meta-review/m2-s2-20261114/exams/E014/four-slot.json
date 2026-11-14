@@ -1,0 +1,1552 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "1ebe6a730db27067dca29a38b4c5f4b4be61d992",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT_META_B",
+    "at": "2026-11-14",
+    "mode": "actual-item-read"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_38648119a7cfd40c88704b2ac057158b9cff04df390338d3abcec8126182bc8f",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f8fd2bb5a4322656d671ba283a4b0efd43348bfe5b3ab1371b919bb69c670150"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "509859de7f1a92b7b2f4268edaf196d0ccb44e8522cc0eadc73fabe4102f010b"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "닮음비가 $3:1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비는 대응하는 변의 길이의 비와 같다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$3:1$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "두 대응변을 3으로 나눈 뒤 이미 주어진 변과 합한다.",
+      "reasons": {
+        "review": "주어진 닮음비를 바로 적용하는 직접 계산이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_ac4b1e15bc214e9bf15040ae0bc244703d15a0123d96f8e5867296ca6acb39e6",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "70a4147479986638a483c8de0565438dd26fc2e9fbfc3b383cb85947a2fc01b2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1e36fb7a232bf7d4da363ba4794c25217485dabb239cc11a8459c692630baaed"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "도형",
+            "src": "stem",
+            "quote": "닮은 도형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "항상 닮은 도형이라고 할 수 없는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응각",
+            "src": "solution",
+            "quote": "서로 대응하는 각이라는 보장",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "꼭지각이고 다른 삼각형에서는 밑각",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "같은 한 각이 꼭지각인지 밑각인지에 따라 모양이 달라지는 반례를 고른다.",
+      "reasons": {
+        "review": "대응각이라는 한정 조건을 해석하는 표준적인 반례 선택이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_69e8e806a6dbb7c913710ef88977575f0df80c0350e5d3b2505e2975c112430d",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "62114ed40370df4ba930c43896dbfa77bc7bb0c32de061001600ca78b96cdf25"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4026330e634aa57fb740e2bdc23e2a9c12f1ce744a48747f1d1330938d9a464a"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "점 $M$은 $\\overline{AB}$의 중점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x+y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "두 변의 중점을 이은 선분은 나머지 한 변과 평행하고 길이는 그 변의 절반",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{MN}\\parallel\\overline{BC}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "한 변의 중점과 평행조건에서 다른 중점과 중점연결선의 반비를 얻는다.",
+      "reasons": {
+        "review": "그림의 부분길이를 중점 조건으로 변환하여 두 길이를 더한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_30911c662dbb9da6dd2ee544347ee0c8a0366688572ac46f42270954f61e758e",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "99bedbfd094c3430a02eeb9c9737f54d8e1e0150a7a7efa43c6ca09ff40bd9bb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "385fc48d348426746476958e79b433d8c07ff74896426a7ae5c80ac8d6cbaa51"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "입체도형",
+            "src": "solution",
+            "quote": "닮은 입체도형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "큰 삼각기둥의 부피는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "부피의 비는 닮음비의 세제곱",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부피비",
+            "src": "solution",
+            "quote": "부피의 비는 $1:8$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "서로 닮은 도형"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "길이비1대2를 부피비1대8로 바꾸어 큰 부피를 구한다.",
+      "reasons": {
+        "review": "길이비를 부피비로 한 번 전환해야 하므로 bucket2로 보강하며 legacy하는 독립 재검 대상이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_7e311e740cbeb63ce1a756cd34e9483f2538819e7af575aa8e7c13781ad0f161",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b795d5ca53a1817bfc6ed5bcddb57a928585da5ef10f721aa95b4051a54ea54a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8c712218fc8c51f92635517dc14ee66c4f207ac83676c8e044efcbad8fe95ab"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "닮는다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$\\dfrac{AC}{AC+3}=\\dfrac23$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{BC}\\parallel\\overline{DE}$"
+          },
+          {
+            "term": "일직선",
+            "src": "stem",
+            "quote": "연장선 위의 점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "AB를 차로 구해 같은 비를 BC와 AC에 각각 적용하고 둘레를 구한다.",
+      "reasons": {
+        "review": "부분과 전체를 바꾸어 표현하는 비례식 선택이 필요하다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "52a1974a2eaf54b1ddf92e4ccfe97c023f813d72e2b61dbe9d697d8d97b9760e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1a445102d7ba59c62a4c0ae77bfaeb656b11e33b3408013ae8ded41c1e526cd5"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{EC}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "두 평행선 조건을 차례로 사용",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$\\dfrac{AE}{AC}=\\dfrac{AD}{AB}=\\dfrac35$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{DE}\\parallel\\overline{BC}$, $\\overline{DF}\\parallel\\overline{BE}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "AF/AE=AD/AB=AE/AC로 공통비를 전달해 EC를 분리한다.",
+      "reasons": {
+        "review": "두 쌍의 삼각형에 걸쳐 같은 비를 찾아 연결해야 한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "15548d55e5e22bf38af2a0449a7b274f804dd2c41437f6490001764e9ecb3388"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b34838816052b83f8b978be9e77df2744ab8eed32d9eadb48a971510e6c18e05"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "점 $G$가 $\\triangle ABC$의 무게중심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중선",
+            "src": "solution",
+            "quote": "각 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이가 같은 여섯 작은 삼각형",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "서로 다른 중선을 혼동한 길이 주장과 2대1의 전체·부분 혼동을 찾아낸다.",
+      "reasons": {
+        "review": "표준 무게중심 성질의 대상과 분모를 구별하는 판정이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_b54475bafe0fc231fa7c803607535b73330eb03bdf3742fb94b0e2668834e480",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d2153927b9b553d2f3b6685e84f4e8551c26526d975172d98bef951f1d1055d3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c8cb9876c2931dbea7015505f6e8a70fef9422b0ffb88d0f372d8579f7048183"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "점 $G$는 $\\triangle ABC$의 무게중심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{EF}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "무게중심의 $2:1$ 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "중점연결정리",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{DA}\\parallel\\overline{EF}$"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "$\\overline{DE}=\\overline{EC}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "AG에서 AD전체를 구하고 DC중점 E의 평행선 길이를 반으로 계산한다.",
+      "reasons": {
+        "review": "한 도형에서 익숙한 두 비를 차례로 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_ba90c2bc8fd5d7e8585402b17acb189f82ff980e47309fea04cb0fa5e4f56be6",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a1ed29bd540a8975710aaa03b29ae1a8f7b682720cd11fa3c7a2a290eb6c18c5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c751cdba5326c38ae1c9cdcd89e9d8d664a5edd156ed453df64d18282e4115f"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "점 $G$가 $\\triangle ABC$의 무게중심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle GDE$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "중점연결선 $DE$",
+            "evidenceType": "IMPLIED",
+            "justification": "중점을 잇는 선분의 평행성과 높이가 절반인 성질을 사용한다."
+          },
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "무게중심의 $2:1$ 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이비는 $\\dfrac h2:\\dfrac h6=3:1$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "같은 밑변에 대한 높이 h/2와 h/6을 구성해 넓이비3대1을 얻는다.",
+      "reasons": {
+        "review": "기준 높이를 두 분수로 나타내 차를 선택해야 하므로 bucket3이며 기존4보다 부담이 작다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_73c08c74f83de93f9bdd52128ae2312e88624e354a4a97d1a96a17809aebf4a6",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2cf56432369d63c7b5d3a9490a66a58f62f04f24cc249b5f00d7a10ef8bf7760"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8d9392f53d9b0cc1223e536e39718aa5c9bcab79aeebf4500f24385434ef7744"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{DC'}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접기",
+            "src": "solution",
+            "quote": "접기 전후에 대응하는 점까지의 거리는 같고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접기",
+            "src": "stem",
+            "quote": "꼭짓점 $C$가 $\\overline{AD}$ 위의 점 $C'$에 오도록 접었을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "접힌 BC의 길이를 빗변으로 옮겨 AC를 구하고 전체 AD에서 뺀다.",
+      "reasons": {
+        "review": "접기 대응길이를 한 번 확인하면 정형 피타고라스 계산으로 끝난다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_2bde5cfc3397edb41708e8560a9f80a267dc05eedb4af7258c4146de77f93390",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "96b5fb2342027f4294aa1687d0e5666c51f33b906abdb6a1a0c545a626ee3b2a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7e7c54ad7067a83b7ecfe6f6c3267cc50f06ff0ebda2c9e5c29e0674d76b1a2c"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "두 직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x+y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 차례로 적용한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "첫 삼각형의 직각변 x를 두 번째에 넣어 y를 구한다.",
+      "reasons": {
+        "review": "같은 정리를 두 번 순차 적용하는 표준형이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_42756250959b91402f97ac30faf5d236aa47c47fc591884ea6fb3edfe35abe73",
+      "format": "옳은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0fac6380ca3f738826c3884baabe7e8559fabef575d413ab13a851d4e06c8694"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2013795c1471aca5ee74efe2d3bbcc15470d40bcb2cbd26eed470af310bdc128"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "미지수가 2개인 일차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "일차방정식인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "차수",
+            "src": "solution",
+            "quote": "각 미지수의 차수가 $1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "등호가 있는 식이어야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등호를 포함한 식인지 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "등호와 두 변수의 차수1을 모두 갖춘 식을 고른다.",
+      "reasons": {
+        "review": "정의의 조건을 보기에서 직접 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_fb53ae76d1d6eeb1e07c9e03837d475fb132a4b0792061d191eef2bf55928b18",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cc310911aa95a5adbc2f6cdb07289bcb53c3ef253f44d1a93289a4d30f968090"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c052d7a2bb47bfe9ad95b74ec1facc9a26cf6a3cbb33f31d1203a96651a7b55f"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식 $4x+3y=19$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "순서쌍 $(x,y)$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "자연수 $x$의 가능한 범위를 먼저 정한 뒤",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=1$이면 $y=5$",
+            "evidenceType": "IMPLIED",
+            "justification": "가능한 x값을 차례로 대입해 y의 자연수 여부를 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $x$와 $y$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "가능한 x범위를 제한하고 대응 y가 자연수인 순서쌍을 센다.",
+      "reasons": {
+        "review": "범위를 먼저 구하고 작은 후보를 점검하는 익숙한 제한 해 탐색이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_3457078b36211a1489d5c4523a545b0a3a7543c487ca85968722fd4af605e51b",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8ae1a84100ef5b58214b54f2f8306f52488d17ff7340a603d99fc5b382816ff"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bdba9b629864568e5afac17638e85d9f247e50f605b712d9c69a19df56f247ce"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "두 순서쌍"
+          },
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식 $ax+3y=8$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+p$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "각각 대입해 계수를 결정한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "계수를 결정한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "모두 일차방정식 $ax+3y=8$의 해"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "첫 순서쌍으로 계수를 결정하고 다음 순서쌍으로 좌표값을 정한다.",
+      "reasons": {
+        "review": "두 번의 대입 순서가 주어져 있어 bucket2이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_2edcfc8ddfc30e559de855e4f040d8c2d66b9f593f978607c420defec40587dc",
+      "format": "옳은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8429dbeed7d277cbc53bdf0fa1a603d9374fa45b98017391faab8201e6e75a1b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "270db8b16dca48f59748e38168f31d3f6d91ad1d85799c31148bcbd067057986"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "다음 연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "해가 $x=1$, $y=-1$인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "두 식에 모두 대입해야 한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "$x=1$, $y=-1$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "각 후보의 두 식에 동시에 대입해 둘 다 성립하는 시스템을 고른다.",
+      "reasons": {
+        "review": "주어진 수를 직접 대입해 참인 식을 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_8a7d40c5255442ae4759bf43b5b0de1e79562230f9107ff03530d549083b466c",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "de4f2882dd329deed2f8cb55b8b110dba0f057d338f6438e20dc2d68936d27ea"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0283b6c50a8f275115d0cf60622278897643aa0614ab74c6c9b0f2ad2d0aed00"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "풀면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "괄호를 풀고 동류항을 정리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "둘째 식에서 첫째 식을 빼면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 식의 같은 x계수를 소거한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "괄호를 풀어 표준형 두 식으로 정리한 다음 공통 x항을 소거한다.",
+      "reasons": {
+        "review": "괄호와 이항 정리 뒤 가감하는 정형 절차이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_5a89b8ba4ff48d475b8ba0c578b8f459d9ee0385a92da71f9faa724e39786479",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7930d8a5fb8d564add4f3b3179233a004f2c865f0e9df492612de8b6e5791fca"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3511e0c0365ed731cddc21fbe0c26dd61829a1a279e4e3bc9f12399498d331ff"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "두 식을 더하면 $4x=4$",
+            "evidenceType": "IMPLIED",
+            "justification": "a 없는 두 식에서 y를 소거해 공통해를 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "남은 식에 대입한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "일차방정식 $3x-2y=-1$을 만족시킬 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "a가 없는 두 식을 연립해 x,y를 구한 뒤 남은 식에 대입한다.",
+      "reasons": {
+        "review": "어떤 두 식을 먼저 쓸지 정하면 표준 가감과 대입으로 끝난다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_cd8595c2450cc744e0462719e23e67a7b9f2fd78cb54db125b56ed71e86c4048",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f20bd3dd7d8c4e0e7f3d78ea330c889c9a68bc5e22011c99e027d80bb3129753"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2d87affd898a28db3b8a482fe15cb1a947267f3c3902114d0e9705858c880fa1"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등식의성질",
+            "src": "solution",
+            "quote": "소수와 분수의 계수를 없애면",
+            "evidenceType": "IMPLIED",
+            "justification": "각 식의 양변에 같은 수를 곱해 정수계수로 바꾼다."
+          },
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "두 식을 더하면 $7x=14$",
+            "evidenceType": "IMPLIED",
+            "justification": "정수계수 두 식을 더하여 y를 소거한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "각 식에10과6을 곱해 정수계수로 만들고 y를 소거한다.",
+      "reasons": {
+        "review": "분모와 소수 처리 후 정형 가감법을 쓰는 계산형이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_74db45b14609526f7edd9dad08e110d8d8c0d6af7c4564c45851fb402e4aa3c6",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bcfe8a56309c68109a7cac93db444af7ba9a812914dfe0262cc316ea7ed06d91"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "143c3878959cad5bd1b4c070e038ee630eba3506ea994242bd792d117e331411"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "이동",
+            "src": "stem",
+            "quote": "한 계단 올라가고, 진 사람은 두 계단 내려가기로 했다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "전체 횟수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "$w-2l=-1$, 철우는 $l-2w=-4$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입법",
+            "src": "solution",
+            "quote": "둘째 식에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "비긴 경우는 없었다고 한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "한 사람의 승수와 패수를 다른 사람 식에 뒤집어 넣어 총경기를 구한다.",
+      "reasons": {
+        "review": "두 사람의 승패 대응과 음의 이동량을 식으로 구성해야 한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_a4ff064d0bb53736e2008ad159d35fbffbb96089164d4391b2883cd573c93093",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e87eb589ab76170cb6e6cd0167ec26dbe5cef76bf8873e80f2767c1b18cee63e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3770f7643f68811af8e45cf6a6cd420676486fd0e5648f096eb65ca0a1522c09"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "처음 연립방정식의 해는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "원래 계수를 복원한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "잘못 얻은 해를 대입해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$a$, $b$를 바꾸어 놓고"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "잘못된 해를 교환된 계수식에 넣어 a,b를 복원한 뒤 원래 연립식을 다시 푼다.",
+      "reasons": {
+        "review": "바뀐 계수의 역할을 역으로 복원하고 두 번의 연립 구조를 관리해야 한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_90ac5a7fb6467664db6d68da40147e06aa2f5041c0748f21375327f18abcad90",
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6ee2d10e4f7c96a058c5fb31b0ca7a26bbfe6495ba8a99264be7e3c26bb9f1a6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "afea3acb13a42e168ffc65db51d4c0beef624c729982b55a94265fc48876fe53"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "보기의 함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "$f(3)=7$를 만족시키는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=3$을 직접 대입",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "함수값을 비교한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "네 식에3을 넣어 함수값7인 두 식을 찾는다.",
+      "reasons": {
+        "review": "함수값의 뜻을 직접 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_5e2041681f37e0e221edc5419aedfb576a0cfeee8769004702c48cf5791726f2",
+      "format": "소문항 묶음",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "927f9783a0b7ee28f8f62b70db81010f73730e94d6be86055e2e875d3f74ad74"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "51703de4bf46470c24f8169c8e900cde4873a5bb649bda8b5474f4fe77065975"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음조건",
+            "src": "stem",
+            "quote": "닮음조건을 쓰시오."
+          },
+          {
+            "term": "닮음비",
+            "src": "stem",
+            "quote": "닮음비를 쓰시오."
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{EO}$의 길이를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$EO:CD=5:8$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "대각선 $\\overline{BD}$의 중점을 $O$"
+          },
+          {
+            "term": "수직",
+            "src": "stem",
+            "quote": "$\\overline{BD}$에 수직인 직선"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "DOE와 BCD의 대응을 찾아 DO대BC 비를 EO대CD에 옮긴다.",
+      "reasons": {
+        "review": "겹친 도형에서 대응 삼각형과 꼭짓점 순서를 선택해야 한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_343e7824d8a9451a5260291db013aa2946bbb7efd679d973f3b92f47b8387f32",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3f21150fce43faf005e2820b00fd2f574d392a070d75932e5b5e2bad49e3e9aa"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aa266d4123ce0905e2a8e0063a0e79c062dbad16df0f1412272416015d11d654"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "사다리꼴 $ABCD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{PQ}$의 길이를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "두 쌍의 닮은 삼각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$EQ:BC=2:3$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{AD}\\parallel\\overline{EF}\\parallel\\overline{BC}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "서로 다른 꼭짓점을 기준으로 EP와 EQ를 구해 그림의 점순서대로 뺀다.",
+      "reasons": {
+        "review": "분할점을 공유하는 두 비를 선택하고 겹치는 구간의 차를 구성한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_c118faa664dc8384876d4f590e9b5682a392683e13079fe9f42af294accd2e4f",
+      "format": "소문항 묶음",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "87ffa889c7a2a2fd6bda37dc5a201775cc83324437f2499fed6e3aa445b73dda"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e183f7cc01c8ed2287164fcda3c7c1b3d55bee36632e4d6c40ac609df4bacf69"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "문제의 뜻에 맞는 연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "연립방정식을 세우시오."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "가격을 각각 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 구매 상황을 연립방정식으로 나타낸다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "두 식을 빼면 $2x=2400$",
+            "evidenceType": "IMPLIED",
+            "justification": "단가 하나의 계수를 같게 한 뒤 소거한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "수량 곱과 총액의 두 식을 세워 단가를 가감법으로 결정한다.",
+      "reasons": {
+        "review": "미지수 지정과 목표가 제시된 전형적인 가격 문제이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_b42607f6957f8c1a99ab7da17c6a2263fe20f3dc257792573638b37cb636dc61",
+      "format": "소문항 묶음",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3fc35432e3191828c6cf4b1a0b1ec01f7c99beb4e90c5ea8f065b9caccfbd924"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6431bab3433418703b74719945e3e1c328e0f3282c39935702c08eb8b163cad9"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "네 일차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "공통인 해를 구하시오."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$ab$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "더하면 $-x=-4$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 식에3과5를 곱해 y항을 소거한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "둘째·셋째 식에 대입한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "한 쌍의 공통인 해"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "매개변수 없는 두 식을 먼저 풀고 나머지 식에 공통해를 넣는다.",
+      "reasons": {
+        "review": "네 식에서 사용할 순서를 선택하고 두 계수를 회수하는 단계 구성이 필요하다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "sourceRead": true,
+    "allItemsRead": true,
+    "independentFullExamReview": false,
+    "independentReviewStatus": "PENDING_ROOT_CROSS_REVIEW"
+  }
+}

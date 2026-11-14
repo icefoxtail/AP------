@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E014",
+  "examiner": "C",
+  "author": "B",
+  "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "1ebe6a730db27067dca29a38b4c5f4b4be61d992",
+  "reviewSha256": "c28950b7ab13749ba563b4070e16e3b0333ef4c613d638551dcbe6f88b3dc622",
+  "fourSlotSha256": "28d5b34f2901aa8675a21ab846ed083488dbba7290a47403032fdf5628032aa2",
+  "ordinals": [
+    12,
+    15,
+    25
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 12,
+      "verdict": "PASS",
+      "reason": "실제 다섯 식은 등호 유무, 미지수 개수, 일차성으로 정의를 확인하는 과제다. 현행 M2 RPM030~037은 연립 풀이·해·계수이며 RPM054는 그래프여서 정의 판정 leaf가 없다는 판단에 동의한다. PT_M1_LINEAR_EQUATION_SOLVING은 해 확인·계산, PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM은 변형과 그래프 목표여서 NEW_PT/RPM_LEAF_GAP 구별이 구체적이다. 4칸 given 일차방정식은 후보 판정 대상이며 이미 참이라고 단정한 표현이 아니다.",
+      "repairs": [],
+      "imageViewed": null,
+      "questionUid": "qid_v1_42756250959b91402f97ac30faf5d236aa47c47fc591884ea6fb3edfe35abe73",
+      "fourSlotCriticalDefect": false,
+      "quotesExact": true,
+      "quoteCount": 4,
+      "inspectedRpmRecordId": null
+    },
+    {
+      "sourceOrdinal": 15,
+      "verdict": "PASS",
+      "reason": "주어진 순서쌍을 각 후보의 두 식 모두에 대입해 시스템의 동시 성립을 확인한다. 미지수·매개변수를 연립해 구하는 PT_H1_SYSTEM_EQUATION/TPL_H1_SYSTEM_DIRECT와 목표가 다르며, 단일식의 해 확인을 중심으로 하는 M1 유형으로 억지 연결하지 않는 NEW_PT 제안은 타당하다. RPM032 해가 주어진 연립방정식, 직접 대입 bucket1, 4칸 goal 판정 및 주어진 해 condition이 모두 맞다.",
+      "repairs": [],
+      "imageViewed": null,
+      "questionUid": "qid_v1_2edcfc8ddfc30e559de855e4f040d8c2d66b9f593f978607c420defec40587dc",
+      "fourSlotCriticalDefect": false,
+      "quotesExact": true,
+      "quoteCount": 4,
+      "inspectedRpmRecordId": "M2-RPM-032"
+    },
+    {
+      "sourceOrdinal": 25,
+      "verdict": "PASS",
+      "reason": "네 식 중 매개변수가 없는 첫째·넷째 식을 선택해 공통해를 먼저 구하고 나머지 두 식의 계수를 복원한다. ACTIVE 공통해 템플릿의 정의와 순서가 정확히 맞는다. 식 선택과 단계 연결은 필요하지만 익숙한 가감·대입이어서 bucket3에 동의한다. 4칸 두 목표와 가감법 IMPLIED 인용 및 공통해 조건도 정확하다.",
+      "repairs": [],
+      "imageViewed": null,
+      "difficultyIndependentRecheck": {
+        "bucket": 3,
+        "legacy": "상",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "네 식에서 순서를 선택하는 전략은 필요하나 비표준 조건 결합이나 어려운 발상은 요구하지 않는다."
+      },
+      "questionUid": "qid_v1_b42607f6957f8c1a99ab7da17c6a2263fe20f3dc257792573638b37cb636dc61",
+      "fourSlotCriticalDefect": false,
+      "quotesExact": true,
+      "quoteCount": 6,
+      "inspectedRpmRecordId": "M2-RPM-033"
+    }
+  ],
+  "overallStatus": "PASS",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "저자 파일 직접 수정 없음. 실제 발문·보기·해설 및 표시한 원본 그림과 현행 ACTIVE 정의를 대조했다. 전체 수학 독립 재검수로 확장하지 않음."
+  ]
+}
