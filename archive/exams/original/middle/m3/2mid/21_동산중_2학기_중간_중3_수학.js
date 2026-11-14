@@ -1940,7 +1940,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_FAMILY_ACTIVE; selected family template fits the decisive operation"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD에서 E는 AD의 중점, F는 C 가까운 CD 삼등분점이다. 삼각형 BEF와 나머지 세 직각삼각형을 색으로 나누었다.",
+    "solutionImageCaption": "삼각형 BEF의 넓이와 두 변 길이로 sin x를 구하면 √2/2이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
