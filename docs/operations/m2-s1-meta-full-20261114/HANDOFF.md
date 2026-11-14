@@ -124,6 +124,7 @@
 | E064 | `7ef5219ac0350dec9ac615f33be860ad323b5a36` |
 | E060 | `c66bdc4034c22ffb28fd15d6079667a0dae5ea17` |
 | E075 | `611a0e0edaa35f543b90e5a6ca1364905c960e9d` |
+| E053-unknown-compatibility | `8e5a98ca793541a31815285e3ed3cdfe5ddf065b` |
 
 현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
 

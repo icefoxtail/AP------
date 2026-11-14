@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E062",
+  "rootReviewer": "GPT_ROOT_14C2C64E43FB",
+  "at": "2026-11-14T15:34:17.072420+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E062",
+    "revisionName": "unknown-legacy-compatibility-r1",
+    "difficultyOverrides": [
+      {
+        "sourceOrdinal": 21,
+        "after": {
+          "legacyLevelCompatibility": "UNKNOWN"
+        },
+        "reason": "기존해설은그림에없는10분교점을전제하고기울기·좌표를수차례바꿔확정함 기존 원문·독립판정의 UNKNOWN을 그대로 재사용한다. difficulty v1.3 §4에서 비교불가는 legacyLevelCompatibility UNKNOWN이므로 잘못 남은 STRONG_CONFLICT 상태표시만 정합화한다."
+      }
+    ],
+    "evidencePaths": [
+      {
+        "path": "/workspace/scratch/14c2c64e43fb/m2-meta/docs/operations/m2-s1-meta-full-20261114/exams/E062/root-review.json",
+        "role": "REUSED_ACTUAL_INDEPENDENT_UNKNOWN_ADJUDICATION"
+      }
+    ],
+    "reviewTopUpdates": {
+      "compatibilityNormalization": "UNKNOWN numeric cannot be assigned strong numeric mismatch. Reused existing source-bound independent UNKNOWN; no new numeric decision or whole review."
+    }
+  },
+  "previousCurrent": {
+    "effectiveReview": "accepted-review.json",
+    "authorEvidence": "review.json",
+    "authorFourSlot": "author-four-slot.json",
+    "fourSlot": "four-slot.json",
+    "originalIndependent": "independent.json",
+    "scopedAdjudication": "root-review.json",
+    "validation": "validation.json",
+    "sourceWriterDeferred": "source-writer-deferred.json",
+    "currentSourceGitBlobSha": "d4ef3b06eef401e568096a14ab7ba815cfcf4856",
+    "currentFourSlotSha256": "4c53ea221921428c17a95b8b9a6b3e7722b7d097e9302d04f54b4ea7fecf3b3f",
+    "registrationStatus": "NOT_RUN"
+  },
+  "previousReviewSha256": "8e93657117da9cfc024bdd3aafed29c6f0a60b1db126535c95414f9957e2cd0a",
+  "previousFourSlotSha256": "4c53ea221921428c17a95b8b9a6b3e7722b7d097e9302d04f54b4ea7fecf3b3f",
+  "acceptedReviewSha256": "aa144dd5bc383f7cb695e4aa22572d8ae48c5d9ee82849b94a67b76152d6f566",
+  "acceptedFourSlotSha256": "4c53ea221921428c17a95b8b9a6b3e7722b7d097e9302d04f54b4ea7fecf3b3f",
+  "reviewedSourceBlob": "d4ef3b06eef401e568096a14ab7ba815cfcf4856",
+  "finalSourceBlob": "d4ef3b06eef401e568096a14ab7ba815cfcf4856",
+  "changes": [
+    {
+      "sourceOrdinal": 21,
+      "before": {
+        "level": "중",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "reason": "기존해설은그림에없는10분교점을전제하고기울기·좌표를수차례바꿔확정함"
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "기존해설은그림에없는10분교점을전제하고기울기·좌표를수차례바꿔확정함 기존 원문·독립판정의 UNKNOWN을 그대로 재사용한다. difficulty v1.3 §4에서 비교불가는 legacyLevelCompatibility UNKNOWN이므로 잘못 남은 STRONG_CONFLICT 상태표시만 정합화한다.",
+        "authorReason": "기존해설은그림에없는10분교점을전제하고기울기·좌표를수차례바꿔확정함"
+      },
+      "basis": "기존해설은그림에없는10분교점을전제하고기울기·좌표를수차례바꿔확정함 기존 원문·독립판정의 UNKNOWN을 그대로 재사용한다. difficulty v1.3 §4에서 비교불가는 legacyLevelCompatibility UNKNOWN이므로 잘못 남은 STRONG_CONFLICT 상태표시만 정합화한다."
+    }
+  ],
+  "sourceFieldEdits": [],
+  "evidence": [
+    {
+      "file": "evidence/root-review.json",
+      "sha256": "456c27760d9d0701ccceef59bae30f9ce208da5d47fb3ff20b33ca6dacc9b636",
+      "role": "REUSED_ACTUAL_INDEPENDENT_UNKNOWN_ADJUDICATION"
+    }
+  ],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}
