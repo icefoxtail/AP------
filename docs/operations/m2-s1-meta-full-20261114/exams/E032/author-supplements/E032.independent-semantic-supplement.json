@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "m2-s1-meta-author-supplement.v1",
+  "examId": "E032",
+  "status": "AUTHOR_ACCEPTED_C_NARROW_SEMANTIC_REVIEW",
+  "originalReviewSha256": "5ab38142661fa50093efb667b79773cf5f8eff77e98d8f9d41d993aceb12b348",
+  "originalFourSlotSha256": "10301a5d81fbc55dc586d37be01520c06fd81cf30978eebfa23b0ef480536609",
+  "independentInitialSha256": "42653359d8750a8991c2a808b6b7ac376d5e7cf5968ede4aab208e572ad3fbbc",
+  "at": "2026-11-14T13:39:13.627566+00:00",
+  "patches": [
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_a343f51dbd1c56ffd2640275755658b14600cb1c45ff350cb42ed63a63c4e092",
+      "fourSlotPatch": {
+        "goal": [
+          {
+            "term": "미지수",
+            "termId": 745,
+            "src": "stem",
+            "quote": "두 자연수 $x, y$"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$x+y$"
+          }
+        ]
+      },
+      "reason": "미지수 두 값이 조건으로 결정된 후 합을 요구하는 실제 목표를 추가한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_5ec07c3febf460780f11aef1f9fcc5e90215573acd6b0aa862e0686c0b8802d5",
+      "fourSlotPatch": {
+        "given": [
+          {
+            "term": "이차식",
+            "termId": 37,
+            "src": "stem",
+            "quote": "-4x^2 + \\frac{x}{3} - 5"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳은 것을 고르면?"
+          },
+          {
+            "term": "항",
+            "termId": 51,
+            "src": "choices",
+            "quote": "항이 2개이다."
+          },
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "choices",
+            "quote": "$x$의 계수는 $\\frac{1}{3}$이다."
+          },
+          {
+            "term": "상수항",
+            "termId": 697,
+            "src": "choices",
+            "quote": "상수항은 5이다."
+          },
+          {
+            "term": "차수",
+            "termId": 431,
+            "src": "choices",
+            "quote": "이 다항식은 일차식이다."
+          }
+        ]
+      },
+      "reason": "차수가2인 주어진 식을 구체화하고 선택지가 묻는 항·계수·상수항·차수의 판정 목표를 명시한다. 참이라고 단정하지 않는다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_01980d1abb417dc0c5cee54ee75378e4ab1aa1ad6bb6b4efbb5f71719bc9c2fe",
+      "difficultyPatch": {
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "숫자bucket2는 최초동결과 동일하게 보존하고 오류판단·수정의 부가부담을 B23 경계로 표기한다."
+    }
+  ],
+  "invariants": [
+    "원 저작·4slot·난도freeze 파일 불변",
+    "숫자난도와 primary 분류 불변",
+    "source-only24 빈method 및 nativeFAIL24 보존"
+  ]
+}
