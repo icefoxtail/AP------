@@ -144,6 +144,22 @@ class VennTamper(unittest.TestCase):
         result=self.audit(venn_svg())
         self.assertEqual(result['status'],'PASS',result['errors'])
 
+    def test_frameless_keeps_circles_and_checks_shade_and_exterior(self):
+        import re
+        plan={**VENN_PLAN,'showUniverse':False,'shade':None}
+        original=venn_svg(shade_full=False)
+        svg=original.replace('data-kind="VENN"','data-kind="VENN" width="400" height="300" viewBox="0 0 400 300"')
+        svg=re.sub(r'<rect id="universal"[^>]+/>','',svg)
+        svg=re.sub(r'<g id="universal-name"[^>]+/>','',svg)
+        svg=svg.replace('ry="70" fill="none"','ry="70" fill="none" stroke="#111" stroke-width="1.4"')
+        valid=self.audit(svg,plan)
+        self.assertEqual(valid['status'],'PASS',valid['errors'])
+        self.assertIn('SD_UNIVERSAL_RECT_UNEXPECTED',self.audit(svg.replace('</svg>','<g><rect fill="none" stroke="black"/></g></svg>'),plan)['errors'])
+        self.assertIn('SD_UNIVERSAL_LABEL_UNEXPECTED',self.audit(svg.replace('</svg>',label('extra','extra',(20,20,12,14),'U')+'</svg>'),plan)['errors'])
+        self.assertIn('SD_SET_NOT_A_CIRCLE:A',self.audit(svg.replace('cx="120" cy="170" rx="70" ry="70"','cx="120" cy="170" rx="70" ry="65"'),plan)['errors'])
+        with self.assertRaisesRegex(ValueError,'SD_HIDDEN_UNIVERSE_OUTSIDE_SHADE'):
+            self.audit(svg,{**plan,'shade':'(A∪B)^c'})
+
     def test_a_wrong_region_shaded_and_a_missing_shade_are_caught(self):
         result=self.audit(venn_svg(),{**VENN_PLAN,'shade':'A'})
         self.assertEqual(result['status'],'FAIL')

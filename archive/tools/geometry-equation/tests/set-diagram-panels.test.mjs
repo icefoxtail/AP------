@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {assetIdentity} from '../production/contracts.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {solveDiagram,setDiagramSize,FIGURE_CAPABILITY} from '../production/set-diagram-v1.mjs';
-import {compositePanels,compositePanelLayout,composeCompositeCandidate,compositeStackSize} from '../production/composite-candidate-svg-v1.mjs';
+import {compositePanels,compositePanelLayout,compositePanelBytes,composeCompositeCandidate,compositeStackSize} from '../production/composite-candidate-svg-v1.mjs';
 
 const plain={kind:'VENN',sets:[{id:'A'},{id:'B'}],elements:[{text:'9',in:['A']}],shade:'A∩B'};
 const setPanel=(shade,caption)=>({caption:{text:caption},plan:{capability:FIGURE_CAPABILITY,diagram:{kind:'VENN',sets:[{id:'A'},{id:'B'}],shade}}});
@@ -53,6 +53,27 @@ test('four Venn panels compose as one 2x2 composite whose panel bytes pass the s
     assert.equal(composed.panels.length,4);
     assert.ok(composed.panels.every(item=>item.staticAudit.status==='PASS'&&item.renderedLayout.status==='PASS'));
     assert.match(composed.svg,/data-composite="composite-panels-v1"/);
+  }finally{await browser.close();}
+});
+
+test('five frameless three-set options keep their independently audited shade atoms',async()=>{
+  const options=['A∪B','(A∩B)∪(A∩C)∪(B∩C)','A','(A∩C)∪(B∩C)','(B-A)∪(A∩C)'].map((shade,index)=>({
+    caption:{math:String(index+1)},
+    plan:{capability:FIGURE_CAPABILITY,diagram:{kind:'VENN',sets:[{id:'A'},{id:'B'},{id:'C'}],shade,showUniverse:false}},
+  }));
+  const browser=await launchBrowser();
+  try{
+    const result=await composeSet(options,browser);
+    assert.equal(result.status,'COMPOSED',JSON.stringify(result.detail));
+    assert.ok(result.panels.every(panel=>panel.staticAudit.status==='PASS'&&panel.renderedLayout.status==='PASS'));
+    const svgs=compositePanelBytes(result.svg).map(panel=>panel.bytes.toString('utf8'));
+    assert.equal(svgs.length,5);
+    const expected=[[1,2,3,5,6,7],[3,5,6,7],[1,3,5,7],[5,6,7],[2,5,6,7]];
+    for(const [index,svg] of svgs.entries()){
+      assert.doesNotMatch(svg,/data-role="universal"|id="universal-name"/);
+      assert.equal([...svg.matchAll(/<ellipse id="set-[A-C]" data-role="set"/g)].length,3);
+      assert.deepEqual([...svg.matchAll(/<path id="shade-(\d+)"/g)].map(hit=>Number(hit[1])),expected[index]);
+    }
   }finally{await browser.close();}
 });
 

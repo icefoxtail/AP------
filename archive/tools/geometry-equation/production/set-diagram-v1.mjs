@@ -129,7 +129,10 @@ const countNameTex=(name,count)=>`n(${name})=${count}`;
 
 // --- exact regions: the atomic cells of 1-3 sets -------------------------------------------------------------------------------------------
 function solveVenn(venn){
-  onlyKeys(venn,['kind','sets','elements','shade','subset','disjoint','universe','countStyle','labelGap'],'SET_DIAGRAM_PLAN_INVALID');
+  onlyKeys(venn,['kind','sets','elements','shade','subset','disjoint','universe','countStyle','labelGap','showUniverse'],'SET_DIAGRAM_PLAN_INVALID');
+  if(venn.showUniverse!==undefined&&typeof venn.showUniverse!=='boolean')bad('SET_SHOW_UNIVERSE_INVALID');
+  const hideUniverse=venn.showUniverse===false;
+  if(hideUniverse&&venn.universe!==undefined)bad('SET_HIDDEN_UNIVERSE_DECLARED');
   if(!Array.isArray(venn.sets)||venn.sets.length<1||venn.sets.length>3)bad(venn.sets?.length>3?'SET_COUNT_UNSUPPORTED':'SET_DIAGRAM_PLAN_INVALID');
   const sets=venn.sets.map(raw=>{
     onlyKeys(raw,['id','name','count','countUnit'],'SET_DIAGRAM_PLAN_INVALID');
@@ -199,6 +202,7 @@ function solveVenn(venn){
       if(!Array.isArray(raw.in)||raw.in.length>n||new Set(raw.in).size!==raw.in.length)bad('SET_ELEMENT_INVALID');
       for(const id of raw.in)if(!ids.includes(id))bad('SET_ELEMENT_SET_UNKNOWN');
       let mask=0;for(const id of raw.in)mask|=1<<ids.indexOf(id);
+      if(hideUniverse&&mask===0)bad('SET_HIDDEN_UNIVERSE_OUTSIDE_ELEMENT');
       if(!cellPossible(mask))bad('SET_ELEMENT_REGION_EMPTY');
       const key=text+'|'+raw.in.join(',');
       if(seen.has(key))bad('SET_ELEMENT_DUPLICATE');
@@ -209,6 +213,7 @@ function solveVenn(venn){
   let shade=null;
   if(venn.shade!==undefined&&venn.shade!==null){
     const parsed=parseShade(venn.shade,ids);
+    if(hideUniverse&&parsed.fn(0))bad('SET_HIDDEN_UNIVERSE_OUTSIDE_SHADE');
     const selected=[];
     for(let mask=0;mask<cellCount;mask++)if(parsed.fn(mask))selected.push(mask);
     if(!selected.length||(disjoint||chain)&&!selected.some(cellPossible))bad('SET_SHADE_EMPTY');
@@ -220,7 +225,7 @@ function solveVenn(venn){
     cells.push({mask,region:members.length?members.join('∩'):'OUTSIDE',members,shade:shade?shade.cells.includes(mask):false,
       elements:elements.filter(e=>e.cell===mask).map(e=>e.index)});
   }
-  return {schemaVersion:MODEL_VERSION,kind:'VENN',layout:subset?'SUBSET':chain?'CHAIN':disjoint?'DISJOINT':'OVERLAP',sets,subset,...(chain?{chain}:{}),...(disjoint?{disjoint}:{}),elements,cells,shade,...(universe?{universe}:{}),...(countStyle?{countStyle}:{}),...(labelGap?{labelGap}:{})};
+  return {schemaVersion:MODEL_VERSION,kind:'VENN',layout:subset?'SUBSET':chain?'CHAIN':disjoint?'DISJOINT':'OVERLAP',sets,subset,...(chain?{chain}:{}),...(disjoint?{disjoint}:{}),elements,cells,shade,...(hideUniverse?{showUniverse:false}:{}),...(universe?{universe}:{}),...(countStyle?{countStyle}:{}),...(labelGap?{labelGap}:{})};
 }
 // A mapping element is a short Hangul/alphanumeric text (up to 4 characters, as always) or, since G17, a signed number, a fraction or a short root
 // (-2, 1/2, -1/2, √2, 2√3; up to 6 characters). The typed hyphen-minus is shown as the real minus sign U+2212; the figure writes it as a math label.
@@ -691,7 +696,7 @@ const elementLabel=(id,role,owner,value,ax,ay,x,y,extra={})=>value.math?math(id,
 function vennSpec(model,layout){
   const prims=[],labels=[];
   const {rect:U,circles,size}=layout;
-  prims.push(rect('universal','universal','universal',U.x,U.y,U.w,U.h,{},20));
+  if(model.showUniverse!==false)prims.push(rect('universal','universal','universal',U.x,U.y,U.w,U.h,{},20));
   model.sets.forEach((set,index)=>{
     const c=circles[index];
     prims.push(ellipse(`set-${set.id}`,'set','set',c.cx,c.cy,c.r,c.r,{set:set.id},25));
@@ -706,7 +711,7 @@ function vennSpec(model,layout){
   }
   const style=model.countStyle??'paren',universe=model.universe;
   // U (40명) in the corner: the headcount is a separate text label set right after the name (resolveVenn); n(U)=40 replaces the name instead
-  labels.push(universe&&style==='n'
+  if(model.showUniverse!==false)labels.push(universe&&style==='n'
     ?math('universal-name','universal-name','universal',countNameTex('U',universe.count),countNameTex('U',universe.count),'start','middle',U.x+12,U.y+13,{})
     :math('universal-name','universal-name','universal','U','U','start','middle',U.x+12,U.y+13,{}));
   if(universe){
