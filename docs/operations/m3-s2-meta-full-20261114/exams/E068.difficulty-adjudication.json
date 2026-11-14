@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "m3-s2-independent-difficulty-adjudication-v1",
+  "examId": "E068",
+  "sourceGitBlobSha": "a19ba813f6a7574b2d7f0fb4b98d8033285c8795",
+  "reviewer": "root",
+  "author": "m3_b",
+  "authority": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+  "items": [
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_716b16f1b9d69fcce743bdcc32b3b8db95754aeae9805028944436d6bdbe781e",
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "historicalLevel": "중",
+      "reason": "주어진 빗변4√3과대각30을 sin30에직접대입한다. 추가조건해석없는 공식확인1.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "mathematicalQualityPASSClaimed": false
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_54ddd6a222646ee6c1e70e78e7614b9121b0377f46024d4286497c9416094ae0",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "historicalLevel": "상",
+      "reason": "A-B-H 순서에 따라 공통높이h와 거리차1000을식으로묶어 h/(1000+h)=tan30을 세운다. 공통변수 관계선택3이며 역사상은보존. embedded그림오류는 별도출고HOLD.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "mathematicalQualityPASSClaimed": false
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_0207ab23652bd16f4ebca91d26cc63a4cbe7502c28eb4ba636e22255a9a53ad2",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "historicalLevel": "하",
+      "reason": "반지름과중심거리로반현을피타고라스로 구한후 현이등분으로2배한다. 한차례길이복원전처리2,하와인접경계허용.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "mathematicalQualityPASSClaimed": false
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_a18ea5d106574c733dab6f3b940d24f937a353eea11676412fc0eca0f9b78385",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "historicalLevel": "하",
+      "reason": "같은호AQ의원주각32와지름의원주각90을연결하여 QRB를차로구한다. 중심각목표가아닌실제원주각목표와두성질의정형연결2를확인했다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "mathematicalQualityPASSClaimed": false
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_cc18f35b3ef758cbb2929991e1e6b15951826ca76bc2a6cf93949fe836df4967",
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "historicalLevel": "중",
+      "reason": "원내접사각형대각보충성을곧바로180−85에적용한다. 직접성질확인1.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "mathematicalQualityPASSClaimed": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_dbd11854fc16f5ffe4acbdabba4fa8cdf7b018e21c70b1ff9591508d554ceeaf",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "historicalLevel": "하",
+      "reason": "3·4의두직각변에서빗변5를먼저복원하고C기준삼각비세개를대응한다. 길이복원한번의전처리2를수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "mathematicalQualityPASSClaimed": false
+    }
+  ],
+  "sourceQualityHolds": [
+    {
+      "ordinal": 1,
+      "type": "AUTHOR_RECORDED_EMBEDDED_IMAGE_VERSION_CONFLICT",
+      "release": "HOLD_SOURCE_QA"
+    },
+    {
+      "ordinal": 7,
+      "type": "AUTHOR_RECORDED_EMBEDDED_IMAGE_VERSION_CONFLICT",
+      "release": "HOLD_SOURCE_QA"
+    },
+    {
+      "ordinal": 11,
+      "type": "EMBEDDED_IMAGE_ANGLE_LOCATION_CONFLICT",
+      "release": "HOLD_SOURCE_QA",
+      "reason": "본문embedded SVG45도가 H측에 표시되는 반면 current-v2와텍스트는 B각45이다. root도독립확인."
+    }
+  ]
+}

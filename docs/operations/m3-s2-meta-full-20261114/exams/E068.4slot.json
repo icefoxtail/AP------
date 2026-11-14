@@ -1,0 +1,1537 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/19_동산여중_2학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "a19ba813f6a7574b2d7f0fb4b98d8033285c8795",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT6_ASTRA_M3_B_9D4541661C34",
+    "run": "M3S2_FULL_20261114",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "삼각형 $ADE$에서"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "\\overline{BC} \\parallel \\overline{DE}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "$\\sin A$를 나타내는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "$BC\\parallel DE$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$BC^2=AB^2-AC^2=5^2-4^2=9$",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 변의 제곱 관계를 사용한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "맞은편 변은 $BC$, 빗변은 $AB$",
+            "evidenceType": "IMPLIED",
+            "justification": "맞은편 변과 빗변의 비로 사인을 정한다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "\\triangle ABC\\sim\\triangle AED",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "\\overline{BC} \\parallel \\overline{DE}"
+          },
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "\\angle ADE=90^\\circ"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행에서 직각을 얻고 피타고라스 정리와 삼각비를 이용하며 닮음으로 선택지를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_76631b67088d80eddb8b4409470ff4a79625e01a9166d65b493b5bd7c55c4010"
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$15^2+8^2=225+64=289=17^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "세 변의 제곱 관계로 직각과 빗변을 확인한다."
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "이웃한 변은 AC, 빗변은 AB",
+            "evidenceType": "IMPLIED",
+            "justification": "이웃변과 빗변의 비로 코사인을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$에서"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "변의 제곱 관계로 직각을 확인하고 코사인을 정의에 따라 판별한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9b66f9efe0f7a193e974a298e4ee9386d7c1a8eab17f82cab04d5510a7940a5a"
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "| 삼각비 | $30^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "| $\\cos A$ |"
+          },
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "| $\\tan A$ |"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "특수각 표에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "\\dfrac{1}{\\sqrt3}=\\dfrac{\\sqrt3}{3}",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 근호를 유리화한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "특수각의 삼각비를 읽고 탄젠트 값의 분모를 유리화한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4c536fd465904c47aef45321343a329fc8126dec2ade4ff2c06eafbee129849f"
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "사인",
+            "src": "choices",
+            "quote": "\\sin 60^\\circ - \\cos 60^\\circ"
+          },
+          {
+            "term": "코사인",
+            "src": "choices",
+            "quote": "\\sin 60^\\circ - \\cos 60^\\circ"
+          },
+          {
+            "term": "탄젠트",
+            "src": "choices",
+            "quote": "\\tan 30^\\circ < \\tan 60^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\tan30^\\circ=\\dfrac{\\sqrt3}{3}",
+            "evidenceType": "IMPLIED",
+            "justification": "특수각 삼각비를 각 식에 대입한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "<\\sqrt3=\\tan60^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 탄젠트 값을 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "(정답 2개)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "특수각 삼각비를 각각 구해 등식과 부등식을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_3cb470e80bf91bec37eb6af8c56be0748593aeafb76ae84b556fc4568c083217"
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "\\sin30^\\circ=\\dfrac{BC}{AB}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\sin30^\\circ=\\dfrac{BC}{AB}",
+            "evidenceType": "IMPLIED",
+            "justification": "30도에 대한 맞은편 변과 빗변의 비를 쓴다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "\\angle C=90^\\circ"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "30도 사인을 빗변과 맞은편 변의 비로 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_716b16f1b9d69fcce743bdcc32b3b8db95754aeae9805028944436d6bdbe781e"
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "다음 삼각비의 표를 이용하여"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "\\sin x = 0.2419"
+          },
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "\\cos y = 0.9781"
+          }
+        ],
+        "goal": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "\\tan \\dfrac{x+y}{2}"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "표에서 $\\sin14^\\circ=0.2419$",
+            "evidenceType": "IMPLIED",
+            "justification": "사인과 코사인의 값을 표에서 역으로 읽어 각을 정한다."
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "\\dfrac{14^\\circ+12^\\circ}{2}=13^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "두 각의 평균을 구해 표에서 탄젠트를 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "삼각비표에서 두 각을 읽고 그 평균의 탄젠트를 다시 읽는다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_5feb63ab4350bdfcb6744663a93e326ebdb36ac5e929ceb2b6e691b5d223744e"
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "\\angle BAC=90^\\circ"
+          },
+          {
+            "term": "직각이등변삼각형",
+            "src": "stem",
+            "quote": "\\angle BDC=45^\\circ, \\angle DCB=90^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$BC=DC=\\sqrt3$",
+            "evidenceType": "IMPLIED",
+            "justification": "45도 두 각의 대변이 같다."
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "$AB=BC\\cos60^\\circ",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$AB=BC\\cos60^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "60도에 인접한 변을 빗변과 코사인의 곱으로 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "\\angle BAC=90^\\circ"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직각이등변삼각형에서 공통 빗변을 정한 뒤 60도 코사인을 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_1af4900aa1b36fd0927189e02ce4a6d0783da87408beb9e648b8d0bf3f4b24dc"
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "그림의 $\\triangle ABC$에서"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "\\overline{AH} \\perp \\overline{BC}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "\\tan60^\\circ=\\dfrac{AH}{BH}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\tan60^\\circ=\\dfrac{AH}{HC}",
+            "evidenceType": "IMPLIED",
+            "justification": "두 직각삼각형에서 높이와 밑변의 비를 사용한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이는 $\\dfrac12\\cdot BC\\cdot AH",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형의 밑변과 높이로 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "\\overline{AH} \\perp \\overline{BC}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 직각삼각형의 탄젠트로 높이와 밑변을 구하고 넓이 공식을 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_62a8abdce1276a8718a3d13598daf8bdd52f8c96eab57ffaa8660b6ee57128b2"
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정육각형",
+            "src": "stem",
+            "quote": "원에 내접하는 정육각형의 넓이는"
+          },
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "지름의 길이가 $12\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "정육각형의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "정삼각형 6개로 나뉜다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "한 변은 반지름과 같은 6 cm",
+            "evidenceType": "IMPLIED",
+            "justification": "원에 내접하는 정육각형의 변은 반지름과 같다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$6\\cdot9\\sqrt3=54\\sqrt3$",
+            "evidenceType": "IMPLIED",
+            "justification": "정삼각형 여섯 개의 넓이를 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원에 내접하는 정육각형"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "변이 반지름과 같은 정삼각형 여섯 개로 나누어 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_981cb679132d00293832b5a0c837c87b445a0c353b701a0ace6cbca3b51f1bf1"
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "올려본각",
+            "src": "stem",
+            "quote": "꼭대기를 올려다 본 각의 크기가"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "떨어진 $A$지점에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "이 건축물의 높이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "\\tan60^\\circ=\\dfrac{h}{5\\sqrt3}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\tan60^\\circ=\\dfrac{h}{5\\sqrt3}",
+            "evidenceType": "IMPLIED",
+            "justification": "수평거리와 높이 차의 비로 탄젠트를 세운다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "눈높이 1.4 m를 더하면",
+            "evidenceType": "IMPLIED",
+            "justification": "관측자 눈높이를 구한 높이 차에 더한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "앙각의 탄젠트로 높이 차를 구해 눈높이를 더한다."
+      },
+      "steps": [],
+      "scenarioNote": "건축물 높이 관측",
+      "questionUid": "qid_v1_9a0ae607d7296992914ba60cdbd0f9bd3f9c9d16b5e248f0a6582e965b8da227"
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "올려본각",
+            "src": "stem",
+            "quote": "\\angle CAH=30^\\circ"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "\\overline{AB}=1000\\text{ m}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "산의 높이 $\\overline{CH}$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "\\tan45^\\circ=\\dfrac{CH}{BH}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\tan30^\\circ=\\dfrac{CH}{AH}",
+            "evidenceType": "IMPLIED",
+            "justification": "두 직각삼각형의 탄젠트로 높이와 거리를 연결한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "\\dfrac{1000}{\\sqrt3-1}=500(\\sqrt3+1)",
+            "evidenceType": "IMPLIED",
+            "justification": "켤레식을 이용해 분모의 근호를 없앤다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "A, B, H가 이 순서로 놓이고 $CH=h$라 두자. $\\triangle BCH$에서 $\\tan45^\\circ=\\dfrac{CH}{BH}=1$이므로 $BH=h$이다.\n따라서 $AH=AB+BH=1000+h$이다. $\\triangle ACH$에서 $\\tan30^\\circ=\\dfrac{CH}{AH}=\\dfrac{h}{1000+h}=\\dfrac1{\\sqrt3}$이다.\n$\\sqrt3h=1000+h$이므로 $(\\sqrt3-1)h=1000$, $h=\\dfrac{1000}{\\sqrt3-1}=500(\\sqrt3+1)$ m이다.\n산의 높이는 $500(\\sqrt3+1)$ m이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 시선이 공유하는 높이를 하나의 미지수로 결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "일직선",
+            "src": "stem",
+            "quote": "A, B, H가 이 순서로 한 직선 위에"
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "A, B, H가 이 순서로 한 직선 위에"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "가까운 지점의 탄젠트로 밑변을 높이로 두고 먼 지점의 탄젠트로 방정식을 세운다."
+      },
+      "steps": [],
+      "scenarioNote": "산 높이 측량",
+      "questionUid": "qid_v1_54ddd6a222646ee6c1e70e78e7614b9121b0377f46024d4286497c9416094ae0"
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "choices",
+            "quote": "원에 그은 접선은 1개이다"
+          },
+          {
+            "term": "현",
+            "src": "choices",
+            "quote": "같은 거리에 있는 두 현의 길이"
+          },
+          {
+            "term": "원주각",
+            "src": "choices",
+            "quote": "한 호에 대한 원주각의 크기는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "접선은 2개이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "같은 거리에 있는 두 현은 길이가 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서의 거리가 같은 현의 길이를 비교한다."
+          },
+          {
+            "term": "현과중심의거리",
+            "src": "solution",
+            "quote": "같은 거리에 있는 두 현은 길이가 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현의수직이등분",
+            "src": "solution",
+            "quote": "현에 내린 수선은 현을 이등분하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각은 중심각의 절반이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "접선 개수, 중심거리와 현의 수직이등분, 원주각의 성질로 각 진술을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_2acb4b4ed86afee242e650b89b1ba6efbe4701b907e844a859e6b2c15e99ff7d"
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "두 현 $AB, CD$에 내린 수선"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이가 $5\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현의수직이등분",
+            "src": "solution",
+            "quote": "현에 내린 수선은 현을 이등분하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "현에 내린 수선은 현을 이등분하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선의 발은 현의 중점이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "두 현 $AB, CD$에 내린 수선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직각삼각형에서 반현을 구하고 중심에서 내린 수선이 현을 이등분함을 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_0207ab23652bd16f4ebca91d26cc63a4cbe7502c28eb4ba636e22255a9a53ad2"
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "는 원 $O$의 지름이고"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "현 CD의 중점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분",
+            "src": "solution",
+            "quote": "M은 현 CD의 중점이다",
+            "evidenceType": "IMPLIED",
+            "justification": "중심을 지나는 지름이 현에 수직이므로 그 현을 이등분한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "M은 현 CD의 중점이다",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선이 현을 이등분한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$CM=\\sqrt{OC^2-OM^2}",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 두 변으로 나머지 변을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "\\overline{AB}\\perp\\overline{CD}"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지름의 중점으로 중심거리를 구하고 수직이등분과 피타고라스 정리를 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9dd28051f0fffdb009943779d5cee670e325e6152c46f0221ff4aea8ff55045c"
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\angle APQ=32^\\circ$이다. $\\angle QRB=x$의 크기는? (3점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q15.png\" alt=\"원주각과 중심각\" /></div>"
+          },
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\angle APQ=32^\\circ$이다. $\\angle QRB=x$의 크기는? (3점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q15.png\" alt=\"원주각과 중심각\" /></div>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\angle APQ=32^\\circ$이다. $\\angle QRB=x$의 크기는? (3점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q15.png\" alt=\"원주각과 중심각\" /></div>"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$\\angle APQ$와 $\\angle ARQ$는 같은 호 AQ를 보는 원주각이므로 $\\angle ARQ=\\angle APQ=32^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 호 AQ의 두 원주각을 대응한다."
+          },
+          {
+            "term": "지름",
+            "src": "solution",
+            "quote": "$\\overline{AB}$가 지름이므로 반원을 보는 원주각 $\\angle ARB=90^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름 AB에 대한 원주각을90°로 정해 목표각의 차를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "같은 호에 대한 중심각이 원주각의 두 배임을 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a18ea5d106574c733dab6f3b940d24f937a353eea11676412fc0eca0f9b78385"
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "는 원 $O$의 지름이고"
+          },
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "\\angle APC=30^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 호 AC를 보는 원주각이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "\\sin30^\\circ=\\dfrac{AC}{AB}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "\\cos30^\\circ=\\dfrac{BC}{AB}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "직각삼각형 ABC에서",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 변의 비를 이용해 두 길이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "지름과 같은 호의 원주각으로 직각삼각형 각을 정한 후 사인과 코사인으로 변을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a6226a34a57aa94f0225e268be701dc20987a3c03844a93cb8db307d84279749"
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "점 A, B, C, D는 원 $O$ 위에 있다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle BAD$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "마주 보는 두 각의 합은 $180^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "마주 보는 두 각의 합은 $180^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "내접사각형의 대각이 보각이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "점 A, B, C, D는 원 $O$ 위에 있다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원에 내접한 사각형에서 마주 보는 내각의 합을 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_cc18f35b3ef758cbb2929991e1e6b15951826ca76bc2a6cf93949fe836df4967"
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "는 지름이고"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "\\sin A + \\cos A"
+          },
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "\\sin A + \\cos A"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 값은? (4점)"
+          },
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "다음 그림의 원 $O$에서 $\\overline{AB}$는 지름이고, $\\overline{AB}=10, \\overline{BC}=6$일 때, $\\sin A + \\cos A$의 값은? (4점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q18.svg\" alt=\"q18 도형\" /></div>"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "AB가 지름이므로 $\\angle ACB=90^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "지름에 대한 원주각은 직각이다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\sin A=\\dfrac{BC}{AB}",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형에서 변의 비로 사인과 코사인을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "지름을 보는 직각과 피타고라스 정리로 변을 구한 뒤 삼각비를 더한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_de0d8064dd18ecbbb64ae33d080691c0046c7c9be699071a2c4342c6c8efe896"
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "는 원 $O$의 두 접선이고"
+          },
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "$A,B$는 접점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "중심각 $x=\\angle AOB$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "반지름은 접선에 수직이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사각형",
+            "src": "solution",
+            "quote": "사각형 AOBP의 내각의 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "두 직각과 접선 사이의 각을 사각형 내각의 합에 넣는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "는 원 $O$의 두 접선이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선과 반지름의 수직 및 사각형 내각의 합으로 중심각을 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a56ebdd90b8fa6b667304a4737747552e15fb5efb442c3d0998573b8b394b6d3"
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "\\triangle ABC$의 내접원이고"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "\\triangle ABC$의 내접원이고"
+          },
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "각 변 위의 접점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "접선의길이",
+            "src": "stem",
+            "quote": "\\overline{CF}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립일차방정식",
+            "src": "solution",
+            "quote": "$u+v=7$, $v+t=9$, $u+t=8$",
+            "evidenceType": "IMPLIED",
+            "justification": "세 변의 접선 길이 관계로 연립일차방정식을 세운다."
+          },
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "두 번째와 세 번째 식을 더하고 첫 번째를 빼면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "\\triangle ABC$의 내접원이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 꼭짓점에서 그은 두 접선의 길이를 같게 놓고 세 식을 가감한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_5c66e6373f46466f99f0d4c75f3a9603833b709dbd56db379b2c0425b4be4740"
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "원 $O$의 지름은"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "원에 접하는 접선이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle APT$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "PT는 T에서의 접선이므로 $OT\\perp PT$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형의내각의합",
+            "src": "solution",
+            "quote": "삼각형 APT의 내각의 합은 $180^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형 APT의 내각의 합은 $180^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "직각과 주어진 각을 내각의 합에서 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "원에 접하는 접선이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지름과 접선이 수직이어서 생기는 직각과 삼각형의 내각의 합을 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_ed99d78e8e9c1c8a4ea2f2b0cf627aad1d2dcfdcbd4e1498cd72ded9e88b7d1c"
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이와 $\\angle C$"
+          },
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "삼각비의 값을 각각 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "맞은편 변은 AB=3, 이웃한 변은 BC=4",
+            "evidenceType": "IMPLIED",
+            "justification": "맞은편 변, 이웃변, 빗변의 비로 사인·코사인·탄젠트를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "\\angle B=90^\\circ"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "피타고라스 정리로 빗변을 구하고 세 삼각비를 변의 비로 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_dbd11854fc16f5ffe4acbdabba4fa8cdf7b018e21c70b1ff9591508d554ceeaf"
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "반지름의 길이가 1인 사분원"
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "점 A의 좌표는 그림에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "\\sin 57^\\circ, \\cos 57^\\circ"
+          },
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "\\sin 57^\\circ, \\cos 57^\\circ"
+          },
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "\\tan 57^\\circ$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "단위원",
+            "src": "solution",
+            "quote": "반지름이 1인 단위원에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "가로좌표가 코사인, 세로좌표가 사인",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "$x=1$인 접선과 만날 때 높이",
+            "evidenceType": "IMPLIED",
+            "justification": "단위원의 접선과 반직선의 교점 높이로 탄젠트 값을 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "단위원 위 좌표로 사인과 코사인을, 접선과 반직선의 교점 높이로 탄젠트를 읽는다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_c5ebca06a00cb406799ddfd2ff88494681452d8c6fdef4f4ed7749eea1dc3aed"
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선의 방정식에 대하여"
+          },
+          {
+            "term": "x절편",
+            "src": "stem",
+            "quote": "$x$절편이 $-2$이고"
+          },
+          {
+            "term": "이루는각",
+            "src": "stem",
+            "quote": "$x$축과 이루는 각의 크기가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "기울기를 구하여라"
+          },
+          {
+            "term": "y절편",
+            "src": "stem",
+            "quote": "$y$절편을 구하여라"
+          },
+          {
+            "term": "직선의방정식",
+            "src": "stem",
+            "quote": "직선의 방정식을 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "기울기 m은 x축과 이루는 각의 탄젠트",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$y=mx+b$에 대입하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직선의방정식",
+            "src": "solution",
+            "quote": "$y=\\sqrt3x+2\\sqrt3$",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 기울기와 절편으로 직선의 방정식을 쓴다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "통과",
+            "src": "solution",
+            "quote": "x절편 $(-2,0)$을 지나므로"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각의 탄젠트로 기울기를 구하고 x절편을 대입하여 y절편과 직선의 식을 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_d9a4b292fa2b1a49d8cbc4fec3005669ccd0d75be54d371a3a632278d348632c"
+    },
+    {
+      "sourceOrdinal": 25,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "동심원",
+            "src": "stem",
+            "quote": "중심이 모두 점 $O$이고"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "큰 원의 현 $\\overline{AB}$"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이가 각각 $8\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "접함",
+            "src": "solution",
+            "quote": "현 AB가 작은 원에 접하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현의수직이등분",
+            "src": "solution",
+            "quote": "현의 중점 M을 잡으면",
+            "evidenceType": "IMPLIED",
+            "justification": "중심과 접점을 이은 수선은 큰 원의 현을 이등분한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "현의 중점 M을 잡으면",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선의 발은 중점이다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AM=\\sqrt{OA^2-OM^2}",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형에서 두 반지름의 제곱 차로 반현을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "작은 원과 접할 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접점에 내린 반지름으로 중심거리를 정하고 현의 이등분과 피타고라스 정리를 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_f88b12430faf71aac3180a3733b5a13e0ab4b7dade57e39ad98c7a841ecdf96f"
+    }
+  ],
+  "candidates": [
+    {
+      "term": "현의수직이등분",
+      "en": "PERPENDICULAR_FROM_CENTER_TO_CHORD",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "원의 중심에서 현에 내린 수선은 현을 이등분한다.",
+      "usedIn": [
+        12,
+        13,
+        14,
+        25
+      ]
+    },
+    {
+      "term": "현과중심의거리",
+      "en": "CHORD_DISTANCE_FROM_CENTER",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "원의 중심에서 같은 거리에 있는 현의 길이는 같다.",
+      "usedIn": [
+        12
+      ]
+    },
+    {
+      "term": "삼각형의내각의합",
+      "en": "TRIANGLE_INTERIOR_ANGLE_SUM",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "삼각형",
+      "note": "삼각형의 세 내각의 합은 180도이다.",
+      "usedIn": [
+        21
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 25,
+    "quotesChecked": 173,
+    "quotesNotFound": 0,
+    "notes": "직접 본문·선택지·기존 해설을 읽고 각 문항의 분류·난도·4칸 의미를 판정했다. 기존 4칸은 현 버전과 대조 후 재사용/수정. 독립 검증은 root 담당으로 아직 미완료."
+  }
+}

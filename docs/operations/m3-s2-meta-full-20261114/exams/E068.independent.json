@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E068",
+  "author": "m3_b",
+  "reviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2final/19_동산여중_2학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "a19ba813f6a7574b2d7f0fb4b98d8033285c8795",
+  "targetReviewSha256": "225d78c9bc07b45eda148fbde2d35a0dad284adfab99f4a3a01ddf6328e47329",
+  "target4slotSha256": "9f4d3747f07521a68e878b5f7c8aaf3b73394f654315e82928b534ff061f6335",
+  "sampledSourcePatchSha256": "e3bd09305b8e8dac06b153d3d2a081e78b295bc43d4816c7bf69254b53a1858a",
+  "sampleOrdinals": [
+    3,
+    12,
+    24
+  ],
+  "sampleRule": "Root-selected current-source samples cover distinct methods and nontrivial conditions; original full review is not repeated.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_4c536fd465904c47aef45321343a329fc8126dec2ade4ff2c06eafbee129849f",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "특수각 표의 cos60과tan30 값을 대응하는 직접적 삼각비 확인이다. 본문/해설의 cos 및tan goal과 특수각·유리화 method를 확인했으며 ACTIVE special-angle TPL 및 별도CC 없는 NONE을 수용한다. exact2022 binding 등록부채와 의미재사용을 구분했다.",
+      "quotesChecked": 5,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_2acb4b4ed86afee242e650b89b1ba6efbe4701b907e844a859e6b2c15e99ff7d",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "접선개수와 현의수직이등분·중심거리·원주각 성질을 참거짓으로 비교하는 항목이다. 접선1개 진술의 거짓과 모든 나머지 진술의 판단을 4칸 method/CC가 포괄한다. 두접선 길이계산 TPL을 억지로 넣지 않은 null 및 named 신규template 요청을 수용했다.",
+      "quotesChecked": 9,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_d9a4b292fa2b1a49d8cbc4fec3005669ccd0d75be54d371a3a632278d348632c",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "그림의 x절편−2와 양의 기울기 각60에서 tan기울기를 구해 y절편과직선식을 순차 결정한다. 실제 그림의 기준방향과 텍스트를 확인했고, 4칸이 세 하위goal 및tan/대입/직선방정식 method를 모두 기록한다. CC_LINE_EQUATION과SEQUENTIAL, exact publisher leaf 보류가 정확하다.",
+      "quotesChecked": 10,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 1,
+      "type": "AUTHOR_RECORDED_EMBEDDED_IMAGE_VERSION_CONFLICT",
+      "release": "HOLD_SOURCE_QA"
+    },
+    {
+      "ordinal": 7,
+      "type": "AUTHOR_RECORDED_EMBEDDED_IMAGE_VERSION_CONFLICT",
+      "release": "HOLD_SOURCE_QA"
+    },
+    {
+      "ordinal": 11,
+      "type": "EMBEDDED_IMAGE_ANGLE_LOCATION_CONFLICT",
+      "release": "HOLD_SOURCE_QA",
+      "reason": "본문embedded SVG45도가 H측에 표시되는 반면 current-v2와텍스트는 B각45이다. root도독립확인."
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "10f852e7f8630c499a46cdef2558b6d4e8c27b9bc2d657eb3c9d09f5a0a195df"
+}
