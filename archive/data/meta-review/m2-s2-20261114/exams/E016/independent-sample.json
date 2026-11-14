@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E016",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "452058115a64e46a1873baaeb4540e77ea2e10e5",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "837ea5a1ced18dde191af6fd9eef8ea5ad24499d78f324b0b6dc9c8ce7b2c0be",
+  "fourSlotInputSha256": "9f74519e58fdd4290b52247f89d8cc0e47fbd42ef1699ac1a38c0592562cdae0",
+  "sampleOrdinals": [
+    11,
+    13,
+    21
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_77d55d70ddb1e6a4618172db7a8504ebbb7e216d79e4e35e7809c6bf9a6968dd",
+      "verdict": "PASS",
+      "metadataReview": "정답은 이등변 밑각70도를 내심 반각35도로 바꾸면 결정된다. 그림에 외심이 있어도 기존 해설의 결정 골격은 내심이므로 RPM066/PT_TRIANGLE_CENTERS/TPL_TRIANGLE_INCENTER 및 CC_ISOSCELES_TRIANGLE, SEQUENTIAL 타당.",
+      "fourSlotReview": "실제 그림의 같은변 표식과 C각40도 확인. 판정 목표와 이등변·각이등분선 방법은 정확 인용으로 지지된다.",
+      "difficultyReview": "정형적인 밑각→반각 두 단계로 bucket2/중 타당.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 5,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E016/11.png"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_70f2ec5f290db3f13c7e5535db5ff95a3489dc92d515732b81832486fbcc86b5",
+      "verdict": "PASS",
+      "metadataReview": "등각으로 OA=OB를 먼저 얻는 CC_ISOSCELES_CONVERSE는 대각선 이등분 Primary 밖의 별도 입력이다. RPM073 및 평행사변형 성질 PT/TPL에 따라 두 전체 대각선으로 확장하는 SEQUENTIAL 판정 타당.",
+      "fourSlotReview": "그림의 두 대각선과 교점, 실제 등각 조건 및 해설을 대조했다. 판정·대각선·이등변 방법 인용 모두 타당. method의 이등변삼각형 인용은 명칭 전체까지 포함하도록 보강 가능하지만 critical 결함은 없다.",
+      "difficultyReview": "등각→등변을 한 번 해석한 뒤 전체 두배로 전달하는 bucket2/중 타당.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 5,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E016/13.png"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_7b4fb51db266430f5b14e3d97220ccb9772d9598c7ee1029c85150268b3b51af",
+      "verdict": "NEEDS_DEFINITION_REVIEW",
+      "metadataReview": "현재 TPL_QUADRILATERAL_PROPERTIES는 변·각·대각선 성질을 이용한다고 정의한다. 이 문항은 대변동등 성질을 입력으로 쓰지 않고 그 성질 자체를 평행선의 두 엇각과 공통변 ASA로 증명한다. 목표와 전략 방향이 달라 표준 증명을 기존 이용 TPL의 내부로 볼 명시적 근거가 필요하다. 평행사변형의 대변동등 증명 exact NEW_PT/TPL 또는 M1 ASA 선수 leaf 의미를 검토할 것을 권고한다. PT_M1_CONGRUENCE_DATA_TRANSFER는 목표각을 구하는 정의여서 단순 대체 불가. 정확 증명 Primary를 정한다면 ASA는 그 내부 골격이므로 CC를 중복 추가할 필요는 없다.",
+      "fourSlotReview": "증명 goal, 대각선·엇각·합동조건·대응변 method가 실제 해설의 결정 단계를 모두 보존한다. source 그림과 모든 quote 확인.",
+      "difficultyReview": "알려진 표준 증명을 대각선1개로 설명하는 bucket2/중 자체는 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E016/21.png"
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}
