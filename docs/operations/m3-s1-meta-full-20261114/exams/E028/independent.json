@@ -1,0 +1,214 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E028",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-14",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "aac68f9a0c7ed891938af0c7647b0d03e764da13",
+  "inputHashes": {
+    "reviewSha256": "99d3c06bf87e091213e5fccfe3508fb78108b73fc58beced862ee5aed634c1f6",
+    "fourSlotSha256": "6c90d40e061eed8e920282d46b66ed10db39077eb2c9149299cdd8ef8e65fd8e"
+  },
+  "sampledOrdinals": [
+    1,
+    12,
+    24
+  ],
+  "additionalReviewedOrdinals": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    25
+  ],
+  "basis": "WARN/IMPLIED 또는 난도 경계 우선 표본과 source 변경·불확실·예외의 실제 stem/choices/기존solution 및4칸을 직접 읽음. 아래 문항별 의미판정과 명시된 그림만 독립확인.",
+  "findings": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_1220fe767cf0c85ddf4a2a9fd3220f5010eef97aaa2615a673fe6cca3de0881b",
+      "status": "PASS",
+      "note": "근호값과 그 수의 제곱근을 구별하는 중첩 해석. 하2 및 기존근호 정의leaf 수용."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_1150f8ad197f606dcfc3156938351a0e5afdcbe8f858119bcea0440a38d81090",
+      "status": "PASS",
+      "note": "실수의 수직선 대응·조밀성과 유리무리수 관계 판정. exactleafgap 수용."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_c8629cfe72b0bd8eb69bc11c6c497eccdd12616d3eb34cc8ffdf6cdf6a6df049",
+      "status": "PASS",
+      "note": "근호값을 먼저 구하고 양·음 제곱근을 계산. Primary 안 과정이라 NONE 적합."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_a3d43818b166e748da1c2e07ae362f7934605e393ba02bfce9053c922a25f586",
+      "status": "PASS",
+      "note": "원본PNG에서A=-2,C=1 및1×1,2×1 직각삼각형 확인. 반지름의 합으로PQ 결정, 피타고라스 보조·bucket3 수용."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_3a79200a5d2cec48299bf4b606db3acaefc8b234789d3cb224fbdf61e04a9139",
+      "status": "PASS",
+      "note": "겹친 근호·바깥 부호·제곱을 순서대로 계산. 제곱근 성질 부단원·bucket2 타당."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_6077e0eefcb84837694c7c2b0221ff8ee8887189ae0a168add1ac97ec33cf548",
+      "status": "PASS",
+      "note": "0.28을7/25로 바꿔 근호의 몫 계산. NONE 적합."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_9196af17016e5ca4e9dd925ef8ba57fa2cfdcd762ec6a9e69f6c3350e8ab1241",
+      "status": "PASS",
+      "note": "양의 근호범위를 제곱해19<x≤28의 자연수 개수 계산. 자연수·범위 조건과bucket2 수용."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_7e17ddf1bdd23d62f18ba62507639eece2425bd3dee92a55d19a3852951072f8",
+      "status": "PASS",
+      "note": "주어진x=√2를 대입해 동류근호 정리. 추가CC 없음 타당."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_d82c3bbf3d37d30ae98a9fc2394fc806792bd9cf2952f27748011d06347b0c1b",
+      "status": "PASS",
+      "note": "10의 짝수 제곱배를 근호 밖으로 꺼내 근삿값 자릿수 적용. bucket2 수용."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_0a37961ef610b8a1cb54a7f61c105d6583bb3a4cc21383c8210520b7924625e3",
+      "status": "PASS",
+      "note": "정수부분4를4≤√(2N)<5로 해석해 자연수 열거. exact 정수부분gap 수용."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_caf8ef796080d9c31f55a1a739975cb1ab2a77bc86b6d094f2e5554dbc5f1e92",
+      "status": "PASS",
+      "note": "곱셈·나눗셈·동류항의 정해진 순서. primary 내부절차 NONE 적합."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_92ad8b7fa0db2df00502ea17e315948c48ec70d6888ee080f3e4b0dc99bb6bf6",
+      "status": "PASS",
+      "note": "양수에서a,b를 근호 안으로 옮겨 주어진ab 대입. 저자 수정 후2/medium/B23 확인."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_a3f6988ce62e17489454d93d19dab6e9d055ac841dcf12d433da370b5b5ad345",
+      "status": "PASS",
+      "note": "반복되는x−y를 한 문자로 보아 전개하고 계수합. 표준 전처리2 수용."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_62fd3c071843caa40de454bc99ba01022adbfa6b5402ddf8556d4571cd782240",
+      "status": "PASS",
+      "note": "제곱식·합차식과 공통인수를 보기마다 대조. 추가CC없이 NONE 수용."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_9740625aab56800481144a38fc11b7c58df4ff8de9a033decd73aec8fea13447",
+      "status": "PASS",
+      "note": "차와 곱을 제곱공식에 바로 대입해 목표식 계산. bucket2 수용."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_b61f14c599c3eb2fcc4e150520c87edc71549f3b1f275b0fff21bd4adc669f2d",
+      "status": "PASS",
+      "note": "유리수 결과가 무리수항 계수0을 요구함. 부모013과 유리수조건 exactgap 분리·bucket3 수용."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_fe67bdffbd178f5b989b8a7d9b065d3347a96c7b7e34371d2ca48511ac05e19b",
+      "status": "PASS",
+      "note": "이미 주어진 세 인수와 그 조합을 확인하며 거짓후보는 계수비교로 배제. bucket2 수용."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_1d922e25ec5403becfe1f2f1952ce1aa94b5c64df07a477993e9a86f1e69b137",
+      "status": "PASS",
+      "note": "분자 공통인수2 추출 후 완전제곱식·약분. bucket2, NONE 타당."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_48569305fd75d7dbf9f2466c4fd2551f251fcbd74f556ee8d5f84168a2b63468",
+      "status": "PASS",
+      "note": "완전제곱식 중간항의±두 부호를 적용해 k의 합. 중2·CASE_BRANCH→NONE 수용."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_b1d167d1cea65a99728a21a31492941530237406953ae741ee3642b37120cdcc",
+      "status": "PASS",
+      "note": "인수분해한 수의 약수 여부가 목표. 저자 수정 후026은 부모맥락, 정확한 약수판정gap 확인. bucket2 수용."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_1165784d4ebd285f8125fc5f6baf61f0c88e9088f366d5f3ee522ce421271cd9",
+      "status": "PASS",
+      "note": "제곱차를 합과차의곱으로 바꿔 켤레값 대입. 인수분해 부단원 교정 적합."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_e664f428a5a24f1d29f4119fe57aa4aaf6a423c4569a7319258e333b199c7587",
+      "status": "PASS",
+      "note": "부호를 묶어a²−(b−c)²를 발견하는 단계적 인수분해. bucket3 수용."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_3d3b8d62d41ef425e066c63e6d6f640647fa5a133d858bc5569f65d83dcc99ef",
+      "status": "PASS",
+      "note": "인접제곱수로 정수부분7과 소수부분을 구해 식에대입. 중2·exactgap 수용."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_f4064598d75c938c5ef24700749f8dc13271b0516e24a000f5e2acc5212e38c2",
+      "status": "PASS",
+      "note": "발문 지정 유리화 후 주어진 다항식에 대입하는 정형계산. 저자 수정2/medium/B23 확인."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_ddc90ba52a4fef9441cf65495e964df02180b2a04e41994adfcfbdfaad8b66ee",
+      "status": "PASS_WITH_DEBT",
+      "note": "원본PNG의 오른쪽 꼭짓점·경계 잘림 실제 확인, 해설SVG도 현Git 없음. 기존해설의 일반배치/퇴화 해석은 원본 승인 불가. 저자 수정UNKNOWN 및 sourcepatch 보류 확인."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E028/04-content-1.png",
+      "sha256": "6b6d1145e014e39fe27b3922b3d185ab30332ab3ce312e33a8bd91df2275dc10",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E028/25-content-1.png",
+      "sha256": "3ae822780d4af3eb142405562b16b7032a6a265c24cdbf18529f4ab747cba0a7",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
