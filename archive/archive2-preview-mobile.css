@@ -326,7 +326,7 @@
    Keep the A4 layout used during pagination and native printing. */
 @media screen and (max-width: 640px) {
   html:not([data-archive2-context]):has(#qpp-display)[data-ap-render-ready="true"]
-    #print-area:has(.q-box:not(.sol-box) :is(.q-content, .q-image-wrap, .choice-text) :is(svg:not(mjx-container svg, .katex svg), img[src*=".svg" i], img[src^="data:image/svg+xml" i])) {
+    #print-area:has(.page-exam-frame):has(.q-box :is(.q-content, .q-image-wrap, .choice-text) :is(svg:not(mjx-container svg, .katex svg), img[src*=".svg" i], img[src^="data:image/svg+xml" i])) {
     box-sizing: border-box;
     width: calc(100vw - 16px);
     max-width: none;
