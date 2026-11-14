@@ -101,6 +101,22 @@ test('the engine derives every atomic region and the truth of the set expression
     ['0:A','0:D','1:B','1:D','2:A','2:B','2:C','3:D','4:A','4:B','5:C']);
 });
 
+test('a problem Venn labels U above a shaded universal rectangle', async () => {
+  const diagram = { ...venn2, elements: [], universeLabelOutside: true };
+  const source = plan(diagram);
+  const model = checkSetDiagramPlan(source);
+  const identity = assetIdentity('palma-q11|11', 'PROBLEM_VISUAL', 'choice-5');
+  const composed = await composeSetDiagramFigure({
+    plan: source, model, identity, typographyPolicy: { baseFontPx: 40, displayScale: 0.292 }
+  });
+  assert.equal(composed.status, 'COMPOSED', JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status, 'PASS');
+  assert.equal(composed.renderedLayout.status, 'PASS');
+  const shifted = bumpLabel(composed.svg, 'universal-name', 0, 30);
+  const observed = await pythonWorker({ diagram, svg: shifted }, { script: observer });
+  assert.ok(observed.result.errors.includes('SD_UNIVERSAL_LABEL_OUTSIDE_PLACE'));
+});
+
 test('set figures that cannot be drawn faithfully are refused with their codes',()=>{
   refuse({kind:'VENN',sets:[{id:'A'},{id:'B'},{id:'C'},{id:'D'}]},'SET_COUNT_UNSUPPORTED');
   refuse({kind:'MEMBERSHIP_TABLE',sets:[{id:'A'},{id:'B'},{id:'C'},{id:'D'},{id:'E'}],elements:[{text:'1',in:[]}]},'SET_COUNT_UNSUPPORTED');
