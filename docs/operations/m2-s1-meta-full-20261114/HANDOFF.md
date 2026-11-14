@@ -4,7 +4,7 @@
 
 **RUNNING / ACTIVE_OWNER**. owner `GPT_ROOT_14C2C64E43FB`. taskId `d200021a-924b-42a5-ad31-a53818575c78`. 같은 브랜치 `review/m2-s1-meta-full-20261114`에서 세 작업자가 분리된 시험지 큐를 연속 처리한다.
 
-전체 **75시험지 / 1,780문항** 중 **74시험지 / 1,760문항**의 검토 패킷을 보존했다. 잔여는 **1시험지 / 20문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
+전체 **75시험지 / 1,780문항** 중 **75시험지 / 1,780문항**의 검토 패킷을 보존했다. 잔여는 **0시험지 / 0문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
 
 이번 인수 시 원격 보존된 25시험지/592문항과 완료된 7건의 좁은 보정을 재사용했다. E022·E027·E032의 미원격 작성본 및 E035 난도 동결본은 이전 작업 폴더에서 실제 바이트와 SHA를 확인하여 복구했다. 이전 writer 종료 여부는 확인되지 않았으며 사용자 직접 인수 지시에 따라 독립 작업 폴더에서 재개했다. 원격 HEAD 사전 확인과 non-force 출판으로 동시 변경을 감지한다. LOCAL_RECOVERY.json의 과거 회수 실패 기록과 이번 실제 회수는 별개다.
 
@@ -20,7 +20,7 @@
 
 ## 현재 집계와 한계
 
-독립 3문항 표본 222개, 명시 미판정 437문항, RPM leaf 공백 313문항, 등록 부채 1748문항, 내용 부채 122문항, 필수 method 근거 부채 374문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=1323은 전체 품질 PASS가 아니다.
+독립 3문항 표본 225개, 명시 미판정 457문항, RPM leaf 공백 316문항, 등록 부채 1768문항, 내용 부채 124문항, 필수 method 근거 부채 394문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=1323은 전체 품질 PASS가 아니다.
 
 최초 인벤토리의 기존 해설은 1,386문항, 빈 해설은394문항이다. 해설 없는 문항에 새 풀이를 만들어 method 근거를 채우지 않는다. 실제 method가 비어 있는 source-only 항목은 native validator 실패와 필수 근거 부채를 그대로 남긴다. 공식 resolver의 genuine VERIFIED_FINAL 증거가 없는 경우 NOT_RUN을 유지한다.
 
@@ -127,6 +127,7 @@
 | E053-unknown-compatibility | `8e5a98ca793541a31815285e3ed3cdfe5ddf065b` |
 | E062-unknown-compatibility | `a835ce36b9f1fd47cca482737b4bf271f051b81e` |
 | E067 | `167f07c7fa93dee81c2dbd055c1145481281fbb4` |
+| E070 | `cf3010676a236462a8086e24e2a5a34c41756813` |
 
 현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
 
@@ -135,11 +136,11 @@
 | subUnitKey | 문항 수 |
 |---|---:|
 | M1-07-SOLID_FIGURE_MEASURE | 2 |
-| M2-01-EXPONENT_LAW | 161 |
-| M2-01-POLYNOMIAL_OPERATIONS | 123 |
-| M2-01-REPEATING_DECIMAL | 196 |
-| M2-02-LINEAR_INEQUALITY | 205 |
-| M2-02-LINEAR_INEQUALITY_WORD | 71 |
+| M2-01-EXPONENT_LAW | 165 |
+| M2-01-POLYNOMIAL_OPERATIONS | 127 |
+| M2-01-REPEATING_DECIMAL | 201 |
+| M2-02-LINEAR_INEQUALITY | 210 |
+| M2-02-LINEAR_INEQUALITY_WORD | 73 |
 | M2-03-SIMULTANEOUS_LINEAR_EQUATION | 290 |
 | M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD | 87 |
 | M2-04-LINEAR_FUNCTION_BASIC | 333 |

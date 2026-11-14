@@ -1,0 +1,1382 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/1mid/19_청주금천중_1학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "9e842f6c63b7aeadf6f125af4d8326c2dfcb9fe9",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+    "at": "2026-11-14T15:39:35.639634+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_5dd275dfdc0a6f4a73ef651b94ead51705d41686f374b14e18c7c82b50844695",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e5cc2ea19c6d0e909ee533a9ac99e77a114f854e4acc7bc63d09f682682377a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "db4c38e47d1cc6c7c48d567a0162d24689bd305a199b6ab14e17306ce73dcd08"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "$0.5\\dot{1}$"
+          },
+          {
+            "term": "등식",
+            "termId": 349,
+            "src": "stem",
+            "quote": "$\\fbox{3}x=\\fbox{4} \\qquad \\therefore x=\\fbox{5}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "$\\square$ 안에 들어갈 수"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "순환소수 소거과정의 빈수치검토",
+        "classification": "비순환한자리뒤한자리순환의10배/100배소거과정이주어져그빈값을검토하는122. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_31c954c887a6b2952f1da800c8c639d207ea6b9f51c583f2a0d6d5b2a4ab077a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "106b7150094784e47b66226eeb55c0f3cd208af852993daa2d67cf2f98318517"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ffa74d5c9bb15d85ab419839fc331066a48c274608a5494b9a29a0d52a14d4a9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "termId": 27,
+            "src": "stem",
+            "quote": "$\\frac{a}{140}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분자",
+            "termId": 582,
+            "src": "stem",
+            "quote": "$a$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "배수",
+            "termId": 12,
+            "src": "stem",
+            "quote": "$a$는 11의 배수"
+          },
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "두 자리의 자연수"
+          },
+          {
+            "term": "자릿수",
+            "termId": 559,
+            "src": "stem",
+            "quote": "두 자리"
+          },
+          {
+            "term": "유한소수",
+            "termId": 426,
+            "src": "stem",
+            "quote": "유한소수이다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "분모의 소인수조건과 분자선택",
+        "classification": "분모140에서유한소수조건을확인한뒤명시11배수/두자리자연수후보와대조하는120. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "a의두자리자연수/11배수/유한소수요건이명시. 배수는원문제약으로기록하고별도임의conditionKey발명없음."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_018e0e82477a06a6576549223f14177eaa03780db1f9d8e7ce38088d5b909d9c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0bd68dc0523715682ea70870e65ddaf920a22b6600ee757c1e9fb87627d351c0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9a91d758fff91d2ca6b9ccff8e37306dc1dfe66aa249397180828647a17e85fd"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "순환소수에 대한 설명"
+          },
+          {
+            "term": "유리수",
+            "termId": 3,
+            "src": "choices",
+            "quote": "무한소수는 유리수가 아니다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "순환소수에 대한 설명"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "유리수와 소수 표현의 포함관계",
+        "classification": "개별유한판별보다유리수/순환/무한의포함관계진술을검토하는정의leafgap. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_a2317d6b63ff5f95e2636df685f3028b417e840630ab09f2c745df9c92791190",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aa327bf2c01b2a8f4912bf78f27fa11d3bf1d5e0060323d0d9f6255ef0da49c0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2ab955e367de8c4fd720b3db4622c15bf8343b043ead0a7bcbf18d9c97906d3c"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "choices",
+            "quote": "$2.042042\\cdots = 2.0\\dot{4}\\dot{2}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "순환소수의 표현"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "순환마디의 점표기",
+        "classification": "무한소수의반복마디에점이맞는지대조하는121. 실제①과②의불일치가겹쳐단일선택응답이확정되지않는다. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_MULTIPLE_INVALID_CHOICES: ①의반복전개042와표시된42주기가다르고②는정수부분에순환점이있다. 옳지않은것단일선택발문인데두불일치가있고원정답없음. UNKNOWN/low;원문표기나새정답을수정하지않음."
+      ]
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_7433e90f5052d2415df3b01dd52c6d2340ccc75e67c1ee322c4afb96a3f52734",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "218f8267048d28af3fe8a645aabd2ca20c455b9669af5daa4af3eafc5ad7678b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "80851db0d17a2b330e66dff1084d7f5ef11cf256768b8074b2be41efb7bd418d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "choices",
+            "quote": "$\\left(\\frac{b^2}{a^3}\\right)^3 = \\frac{b^6}{a^9}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳은 것은?"
+          },
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "choices",
+            "quote": "$(2ab^2)^3 = 6a^3b^6$"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "지수법칙과 계수거듭제곱의 독립보기",
+        "classification": "125곱몫/126거듭제곱및계수거듭제곱의독립진술이병렬로있어singleprimary미판정. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_3d41ddcf213beebb6522581a36ba33e90f81da8f7c1115eb109cfa2ad0c9e5d0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b3b529d12a412b05a4ca9f9ca146beb2f772df9985aac2ef6c2589b7fc8117ca"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d3ee5887081bbd09ac5d99528e29bbdaea322889450c4bf173e3721d7e796d87"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "choices",
+            "quote": "$\\frac{10x^3y^2-8xy}{2xy}=5x^2y-4$"
+          },
+          {
+            "term": "단항식",
+            "termId": 430,
+            "src": "choices",
+            "quote": "$4x^3y^5 \\times (-xy)^2 = -4x^5y^7$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳은 것은?"
+          },
+          {
+            "term": "연산",
+            "termId": 33,
+            "src": "choices",
+            "quote": "$(4x^2-8xy)\\div (-2x) = -2x-4y$"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "단항식과 다항식 연산의 독립보기",
+        "classification": "단항곱몫127/128과분배132/다항몫133이독립보기로있어단일primary미판정. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_5c6071e9208a563d67e9398fc409563dc5c02eaa961da605db5c9da5222a1a8c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eafdf5b0eb0f5af72bc13fb42a76387d051dd1effc557cb17ded7cebd90c69db"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "94a66451c10f8d4b8ba1a791c9a6b34951f6de04cc6c8d89a2763dd3367fc535"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$\\frac{2x^2-3x+2}{3}-\\frac{x^2-2x+3}{2}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$\\frac{2x^2-3x+2}{3}-\\frac{x^2-2x+3}{2}$"
+          },
+          {
+            "term": "연산",
+            "termId": 33,
+            "src": "stem",
+            "quote": "간단히 하면?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "분수계수 다항식차",
+        "classification": "분수다항식두개의차에서통분/괄호정리/동류항을결합하는131. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_2ee4c66c85be234e74f7691d555d1953a1967ae65312767dd3e82a65c38c6a9f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e35fc35a7c840f93596903a877ac04b76ef215292bf48fc7e8de51b2c922ad5a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "38c66236141b3755c2f5a0fc6e53c1b99bd9ee20c5699b9be7e4d737228bd584"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$x^2+2x+1$에서 어떤 식을 빼야 할 것을 잘못하여 더했더니 $-2x^2+5x+7$"
+          },
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "stem",
+            "quote": "$ax^2+bx+c$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "stem",
+            "quote": "수 $a, b, c$"
+          },
+          {
+            "term": "곱",
+            "termId": 287,
+            "src": "stem",
+            "quote": "$abc$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "연산",
+            "termId": 33,
+            "src": "stem",
+            "quote": "빼야 할 것을 잘못하여 더했더니"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "오산복원과 바른결과 계수곱",
+        "classification": "더한결과에서어떤식을복원하고바른뺄셈결과의세계수를구하는135. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_12a2012cda93bb9f173c56e263f7db5f97818ae551ec6ac938c4bc8c90ab041a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e06ab0701782d3433a50102375bf7bc26f4b56b6693946be31f04bab9af0ffc8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "72adfe99593b8ba48785e123e8226bdab7698f259a8f1cfec439210df1a1aeb3"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "stem",
+            "quote": "$\\frac{4^5+4^5}{27^3+27^3+27^3}\\times \\frac{3^7+3^7}{8^3+8^3+8^3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "연산",
+            "termId": 33,
+            "src": "stem",
+            "quote": "간단히 하면?"
+          },
+          {
+            "term": "식의값",
+            "termId": 61,
+            "src": "stem",
+            "quote": "$\\frac{4^5+4^5}{27^3+27^3+27^3}\\times \\frac{3^7+3^7}{8^3+8^3+8^3}$"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "반복합을 묶은 거듭제곱 곱몫",
+        "classification": "반복합은같은수를몇번더하는정형전처리이고2와3의거듭제곱곱몫을정리하는125가주된계산. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_79767e0ad47ad7c15c7b1588a6b36c3f6138ef6d0d59c74bf39ac4f29c38fa0f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7891799d871321a7e9de17e5d096cc7d89589a53ad3f19a5d2c40552d77a5144"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b824ee7cde3bd3b11a445c6da45e58a1c832f182a175bf2760da5924eebb81c6"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등식",
+            "termId": 349,
+            "src": "stem",
+            "quote": "$(-3x^A y^2)^2 \\times \\frac{8}{3}x^3y^B \\div (-2x^2y^2)^3 = Cx^3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "수 $A, B, C$"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$A+B+C$의 값"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "단항식 혼합에서 세 계수지수",
+        "classification": "거듭제곱/곱몫을정리한후문자지수A,B와수치계수C를대조하는129. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_8d35351ae26737a17ad5e7ec313fe4b1ac0da8c3a6304cb8b3c4a2f0c815f4e8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f43df03ecdd4bb3d346e91bdb5786452e565cd4f4e10950434610ae1d5edb0eb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9f77db66a600d5336c1a3de86e19a7bdee873168dae3e9253a86e1276c2636ce"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "choices",
+            "quote": "$2x-1 \\ge 2x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "일차부등식이 아닌 것"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "일차부등식의 차수정의",
+        "classification": "양변정리후일차항이남는지판별하며계수가소거된부등식을제외하는definitiongap. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_d2ce7e09e99942f63b5747df6ed25dd6f43535c99d1fd58ebdff8b3d2afa2967",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e95e7fc491031af236e851ff9f69f1582064252a3ff6dd4c15c2de8104a02c71"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c4a167c3a6663b2e5c8d995976783d5f280e0fec6ed210235acf017bd22f066"
+        }
+      ],
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "stem",
+            "quote": "$a<b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "옳지 않은 것의 개수"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "양수",
+            "termId": 396,
+            "src": "stem",
+            "quote": "$a, b$는 양수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "양수 대소관계의 역수와 곱변환",
+        "classification": "양수a<b조건으로음수배/양수곱/역수변환진술을검토하는136. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_9d30f43022cc1243bc64978c8d71c83b3443e18f79119febf8d3c5e8e459e630",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6a0c3d36c8533c393d34a9d75ba4d90d139dc53ab410bf1b5d73aa717d22664e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3ffc41e5ea4653a93f38df37cf978f677684ae4a505881c0a43c7d73979036c8"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "$x+8 > 4x-1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "자연수 $x$의 값"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "값들의 합"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "만족시키는 자연수 $x$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "자연수해의 합",
+        "classification": "해범위에속하는자연수의합이목표로140정수해개수와구별하는leafgap. 실제ACTIVE합template존재. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_aed177b07b8397a5194f41aa3560701329514ca26d163364b26e77b02fcce8d1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "02c6b4e2bf9eed50d2f0fd1a7503ef4aaff1ba58ab65c45543df0ec607ca2d7e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a82b9405c19a792223a6143dfbaf2f390c94805c3940fdd6c5e89ef407035be7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "$\\frac{x-1}{2} < \\frac{x+1}{3}$, &nbsp;&nbsp;&nbsp;&nbsp; $0.21x-0.7 < a-0.13x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "수 $a$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해가 같을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "분수소수 부등식의 동일해경계",
+        "classification": "두부등식의해가같다는조건에서계수a를정하는141. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_9d3763eab8be0c4c189722a8ec671f5a10dc24501eea1bd159b933660a984edc",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "848ee3a9847eb860973372b8140983752c17c960e6f4d13790f7933376c5797f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7948c05ba11a2146b83a8413cc68a97ac78a5afadcb9c1df7c530104632f234d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "속력",
+            "termId": 704,
+            "src": "stem",
+            "quote": "갈 때는 시속 $9\\text{km}$로 달리고, 돌아올 때는 시속 $6\\text{km}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "최대 몇 $\\text{km}$ 떨어진 지점"
+          },
+          {
+            "term": "최댓값",
+            "termId": 127,
+            "src": "stem",
+            "quote": "최대"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "1시간 30분 이내"
+          },
+          {
+            "term": "경과시간",
+            "src": "stem",
+            "quote": "1시간 30분 이내",
+            "candidate": true
+          },
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "갈 때와 올 때의 거리는 같다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "왕복 총시간의 거리상한",
+        "classification": "같은거리를서로다른두속력으로왕복하는총시간한계144. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_8d5918a5726c089678c2933ff32f53d19d5da9feb42faff987d60f0999bcf654",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "termId": 27,
+            "src": "stem",
+            "quote": "$\\frac{5}{14}$와 $\\frac{11}{66}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "$A$의 값"
+          },
+          {
+            "term": "최솟값",
+            "termId": 128,
+            "src": "stem",
+            "quote": "가장 작은 수"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "자연수 $A$"
+          },
+          {
+            "term": "유한소수",
+            "termId": 426,
+            "src": "stem",
+            "quote": "모두 유한소수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두분모 조건을 동시에 없애는 최소배수",
+        "classification": "두분수의약분된분모소인수조건이primary120이고동시에충족하는최소A는공배수최소선택을추가한다. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1cafe17c82675d93eeee4af2bfabf7e23f3b9c5304f4d9b67ea5319fc49c6eae",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "stem",
+            "quote": "$2^{16}\\times 3\\times 5^{13}$"
+          },
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "$n$자리의 자연수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자릿수",
+            "termId": 559,
+            "src": "stem",
+            "quote": "$n$자리"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "각 자리의 숫자의 합은 $a$"
+          },
+          {
+            "term": "식의값",
+            "termId": 61,
+            "src": "stem",
+            "quote": "$a+n$의 값"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "거듭제곱 결합과 자릿값읽기",
+        "classification": "2와5를같은지수로묶어10의거듭제곱을만든후십진자릿값으로n및자리숫자합을읽는125. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_c37667d92e870e33afdcd4c19af0d8cfc5d01167394d7d742649c7bdc2e0db61",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$2x-\\{3y+(8y^2-6xy)\\div 4y\\}$"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "$x=\\frac{12}{7}, y=\\frac{1}{5}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "연산",
+            "termId": 33,
+            "src": "stem",
+            "quote": "주어진 식을 계산하시오."
+          },
+          {
+            "term": "식의값",
+            "termId": 61,
+            "src": "stem",
+            "quote": "주어진 식의 값을 구하시오."
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "괄호식 정리와 주어진 값대입",
+        "classification": "소문항1의다항몫/괄호는2의최종식값134를위한준비. 외부CC대입을중복하지않음. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_75bf387ff01067c0d4b6b9037bf12ab53d30642007ae5962b8243777416f1d48",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "$7x-5 < a-bx$"
+          },
+          {
+            "term": "수직선",
+            "termId": 295,
+            "src": "stem",
+            "quote": "수직선 위에 나타내면 다음 그림"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$b-a$의 값"
+          },
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "stem",
+            "quote": "$b-a$"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "수직선해에서 계수차 결정",
+        "classification": "실제열린1왼쪽의해조건에서계수부호와경계를연결해개별a,b가아닌차를구하는141. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_77f5faea25535964b60730bb96a9dc2fddcfcf3e2f0f0cd88e0e5404a2dd23cf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "비율",
+            "termId": 650,
+            "src": "stem",
+            "quote": "원가의 $30\\%$의 이익을 붙여서 정가를 정하였다. 이 전자 제품의 정가에서 $20\\%$를 할인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "원가는 얼마 이상"
+          },
+          {
+            "term": "금액",
+            "src": "stem",
+            "quote": "원가는 얼마 이상",
+            "candidate": true
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "1500원 이상"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "원가 가산후 할인과 실제이익",
+        "classification": "원가에대한30퍼센트가산정가와그정가의20퍼센트할인을거친실제이익하한146. 기존정답/해설없는source-only구조제안이며method빈칸을유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:39:35.639634+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "원문조사 이익의1500원은그대로보존하고문맥의이익하한목표로만조건부해석. 원문문자수정없음."
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "term": "경과시간",
+      "en": [
+        "ELAPSED_TIME"
+      ],
+      "synonyms": [
+        "소요시간"
+      ],
+      "kind": "대상",
+      "parent": "값",
+      "note": "왕복시간한계. condition값parent동반.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 15,
+          "slot": "condition",
+          "quote": "1시간 30분 이내"
+        }
+      ]
+    },
+    {
+      "term": "금액",
+      "en": [
+        "MONETARY_AMOUNT"
+      ],
+      "synonyms": [
+        "가격",
+        "요금"
+      ],
+      "kind": "대상",
+      "parent": "값",
+      "note": "원가의수치하한목표. same-slot값parent동반.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 20,
+          "slot": "goal",
+          "quote": "원가는 얼마 이상"
+        }
+      ]
+    }
+  ],
+  "selfCheck": {
+    "status": "SELF_CHECKED",
+    "scope": "Actual per-question semantic judgments; existing solutions only. Native receipt separate.",
+    "independentReview": "PENDING"
+  }
+}
