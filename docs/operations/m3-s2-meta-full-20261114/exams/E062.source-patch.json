@@ -1,0 +1,483 @@
+[
+  {
+    "ordinal": 1,
+    "questionUid": "qid_v1_5a8c3e2e43d9b6a57f3dc25c15d22335f83c52cf52eed57d6cac203548aeaf44",
+    "before": {
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "빗변 AC=5를 구한 뒤 sin x=AB/AC=4/5로 계산한다."
+    },
+    "after": {
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "그림의 두직각변4,3에서 빗변5를 구한 뒤 x의대변4를 사인정의에 대응한다."
+    }
+  },
+  {
+    "ordinal": 2,
+    "questionUid": "qid_v1_15617350c8aaed7dc3d030bf28e05d2672924c7725476931d674bc13cf752c2b",
+    "before": {
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "첫 직각삼각형에서 AH=2√3을 구하고, 45° 직각삼각형에서 AC=AH√2=2√6이다."
+    },
+    "after": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "decisiveStep": "왼쪽30° 삼각형의 빗변4로 공유높이2√3을 구하고 오른쪽45° 삼각형의 빗변을 복원한다."
+    }
+  },
+  {
+    "ordinal": 3,
+    "questionUid": "qid_v1_5300613045922cdf08133246c6a049c4d9831a8db384af602c4825c938160392",
+    "before": {
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "높이 AH=8sin60°=4√3을 구해 넓이 1/2·10·AH를 계산한다."
+    },
+    "after": {
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "두변8,10과끼인각60°가 주어져 높이8sin60을 넓이식에 직접 넣는다. 공통높이의 두미지식은 없어 SHARED_HEIGHT가 아니다."
+    }
+  },
+  {
+    "ordinal": 4,
+    "questionUid": "qid_v1_0ce02354a6f3a219349c78ce32042c2f9d8113720e8e7c2620123b6f437d4b91",
+    "before": {
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "평행사변형 높이 4√3과 MC=5를 사용해 삼각형 넓이를 10√3으로 구한다."
+    },
+    "after": {
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_POLYGON_AREA"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "decisiveStep": "평행사변형에서 대변10과중점으로 목표밑변5를 정하고 변8·60°의 높이4√3을 연결한다."
+    }
+  },
+  {
+    "ordinal": 5,
+    "questionUid": "qid_v1_3c652fe0ab834f6add3b82610386de748cf6c7c7d5d967df1344ea20fd0db9a6",
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "BH=2AH이므로 tan∠BAH=2, 그리고 x=∠BAH−45°를 탄젠트 차 공식에 넣어 1/3을 얻는다."
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_PYTHAGOREAN"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "같은길이BC=CH와45°에서 AC√2k를 얻고 B에서 AC연장선에 내리는 별도수선으로 목표각의 이웃변과대변을 구성한다."
+    }
+  },
+  {
+    "ordinal": 6,
+    "questionUid": "qid_v1_23ae438219cf9837ebb1c68a150ab983fcd8cd095268c0516a88454eec46aa51",
+    "before": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "원주각",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "지름이 만든 반원 180°를 호의 비 3:1로 나누어 ∠BOC=45°를 얻는다."
+    },
+    "after": {
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-06",
+      "standardUnit": "평면도형의 성질",
+      "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "subUnit": "평면도형의 측정",
+      "difficultyConfidence": "high",
+      "decisiveStep": "지름의 반원180°를 호의비3:1에 따라 나누고 호BC의45°를 대응중심각으로 읽는다. 원주각을 사용하지 않는다."
+    }
+  },
+  {
+    "ordinal": 7,
+    "questionUid": "qid_v1_3f88e6629538f85ae973d4026f0665ff4826121ab4012b604c507db95e96f23e",
+    "before": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "같은 원에서 중심각 40°<80°이므로 대응하는 현의 길이는 AB<CD이다."
+    },
+    "after": {
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-06",
+      "standardUnit": "평면도형의 성질",
+      "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "subUnit": "평면도형의 측정",
+      "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "같은원의 작은중심각40°<80°를 대응작은호와현의 길이순서에 연결하여 AB<CD를 판정한다."
+    }
+  },
+  {
+    "ordinal": 8,
+    "questionUid": "qid_v1_5adbca56fdd21d94509e05f69e7544f5ce633bf4a401d6d0fe4633499fa21290",
+    "before": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "두 원의 중심거리와 외접 조건을 세워 작은 반지름을 구한다."
+    },
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용",
+      "problemTypeKey": "PT_TWO_CIRCLES",
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "두원이 변과서로 접하는 배치에서 중심차20−r,10−r와 중심거리10+r를 구성하고 피타고라스 이차방정식의 작은근을 고른다. 원밖한점의 접선길이와 다른 풀이이므로 기존 TM_TANGENT_LENGTH를 제거한다."
+    }
+  },
+  {
+    "ordinal": 9,
+    "questionUid": "qid_v1_e4b0cd0f3ee512bef48dfb2ed78e155cd2b0c9a0ff206b4591d825aa4f14f8e9",
+    "before": {
+      "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "세 변이 같은 원의 접선이므로 BP=BT, CQ=CT가 둘레에서 상쇄되어 AB+BC+CA=AP+AQ=30cm이다."
+    },
+    "after": {
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "decisiveStep": "중심거리17·반지름8로 접선15를 구하고 세외부점의 같은접선길이를 둘레합에서 소거한다. 기존 접선방정식 TPL을 길이TPL로 바로잡는다."
+    }
+  },
+  {
+    "ordinal": 10,
+    "questionUid": "qid_v1_3c82e9843f468b3acaf75223fc04292b89dc801b0a08c61640cd7af20ebd09f3",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "decisiveStep": "접선 사각형에서 AB−AD=2, 직교 대각선에서 AB²−AD²=9²−7²=32이므로 합은 16이다."
+    },
+    "after": {
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "decisiveStep": "외접사각형의 마주변합에서 x−y2를 얻고 직교대각선의 네피타고라스를 더빼 x²−y²32를 얻어 두식을 인수분해로 결합한다."
+    }
+  },
+  {
+    "ordinal": 11,
+    "questionUid": "qid_v1_56f8bf277b7cd8ab68dda3ad8f22c4b8d6bf3ebf6b9c2f427a941ad00cd7cb3f",
+    "before": {
+      "templateKey": "TM_TANGENCY_CONDITION",
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "접선 길이 BF=2로 반지름 2와 높이 4를 얻고, 사다리꼴의 경사변에 피타고라스 정리를 적용해 x=4/5."
+    },
+    "after": {
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "직각꼭짓점의 접선구간2로 반지름과평행변높이4를 정하고 DI5+x와두밑변차5−x로 피타고라스식을 세운다."
+    }
+  },
+  {
+    "ordinal": 12,
+    "questionUid": "qid_v1_d267bbd637cfa2b930042abaa379773da85ee2eac4c3a464b8635e84ef39a29b",
+    "before": {
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "호 ACB=108°, 호 CB=64°이므로 호 AC=44°이고 원주각 x=22°이다."
+    },
+    "after": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "decisiveStep": "중심각108°의 호에서 원주각32°에 대응하는 호64°를 빼고 남은호44°의 원주각22°를 구한다."
+    }
+  },
+  {
+    "ordinal": 13,
+    "questionUid": "qid_v1_2da177ca5b9cb8afe1667075f4d385cb8e12ee2b55d59adb58e30c56a9b5022a",
+    "before": {
+      "integrationPattern": "NONE",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "외부 할선각 50°로 같은 호 t=115°를 구하고, 나머지 호 AD=15°의 원주각 x=7.5°를 계산한다."
+    },
+    "after": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "세같은호를 t로 두어 외부할선각50°의 호차조건과 전체호360°로 t115°를 얻고 남은호15°의 원주각을 구한다."
+    }
+  },
+  {
+    "ordinal": 14,
+    "questionUid": "qid_v1_827475201b014f8ce261e1c202bef810d2c7449a127567369c26debd4325cf20",
+    "before": {
+      "integrationPattern": "NONE",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "∠AOB=136°, tangent-chord ∠CAD=84°로 arc AC=168°; remaining arc BC=56° gives tangent-chord angle 28°."
+    },
+    "after": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "두접선각44°로 접점중심각136°를 얻고 접현각84°의 호168°를 제외한 호56°의 접현각을 구한다."
+    }
+  },
+  {
+    "ordinal": 15,
+    "questionUid": "qid_v1_95879d5e66d40316343145bb6971df8d1c3d98b3f1e14c25dc925646a9168735",
+    "before": {
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "두 원주각이 보는 호의 합에는 전체 360°와 CD 86°가 한 번 더 들어가므로 합은 223°이다."
+    },
+    "after": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "decisiveStep": "내접오각형의 두원주각이 보는 호를 더하면 전체원360°에 CD호86°가 한번 더해짐을 세어 합223°를 구한다."
+    }
+  },
+  {
+    "ordinal": 16,
+    "questionUid": "qid_v1_bd09cd951ebfc04f98d262c2d40952e71bd6dd7d7734d117a9d2bdeb9c49ade5",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "difficultyConfidence": "medium",
+      "decisiveStep": "자료 중심을 대표하는 한 수는 대푯값이고, 보기에서 평균이 그 역할을 한다."
+    },
+    "after": {
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+      "difficultyConfidence": "high",
+      "decisiveStep": "대푯값의 정의에 해당하는 평균을 산포도·개별변량·계급값과 구별한다."
+    }
+  },
+  {
+    "ordinal": 17,
+    "questionUid": "qid_v1_634c6f83971a786ab1989ef4524acccc78b4211718ce5f9cffc0951406328470",
+    "before": {
+      "problemTypeKey": null,
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "x+y+z=3m을 대입하면 평균 편차가 0이다."
+    },
+    "after": {
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "decisiveStep": "평균m에서 x+y+z3m을 얻고 중심화한 세값의 합0을 공통분모a로 나누어 평균0을 확인한다. 상수의 이동까지 포함하여 k배만을 다루는 TPL의 범위를 넘는다."
+    }
+  },
+  {
+    "ordinal": 18,
+    "questionUid": "qid_v1_ea4cd35bc2952d4793a5d1f77d59c2cac29a50543caa2862136901ca242147da",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "평균 조건으로 a+b=1, 최빈값 2 조건으로 (a,b)=(-1,2)를 얻어 정렬한 네 번째 값을 2로 정한다."
+    },
+    "after": {
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "평균으로a+b1을 정하고 최빈값2가 되도록 두누락값중 하나를2로 두며a<b와합으로 값을 확정한 뒤 중앙값을 읽는다."
+    }
+  },
+  {
+    "ordinal": 19,
+    "questionUid": "qid_v1_fdfbca8fae540bf48874a0dbc7fc61ba4f19491f7e39c4e30aa83edd69adb8b1",
+    "before": {
+      "problemTypeKey": null,
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "각 집단 평균에 인원수를 곱해 총점 3120과 총원 39를 구하면 가중평균은 80이다."
+    },
+    "after": {
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "decisiveStep": "각수준의 인원수와평균을 곱해 점수합을 복원하고 총인원으로 나누어 전체평균을 얻는다. 하나의자료 평균·중앙값·최빈값 결합TPL과는 다르다."
+    }
+  },
+  {
+    "ordinal": 20,
+    "questionUid": "qid_v1_b15896ce344cd49498b2eba6483ee09615691dffe8440f34fb3a216c7267b855",
+    "before": {
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "분산으로 제곱합 54를 구하고, (x+y+z)²에서 빼 pair-product sum 45, 그 평균 15를 얻는다."
+    },
+    "after": {
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_EXPANSION"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "평균으로변량합12,표준편차로분산2와제곱합54를 얻고 (x+y+z)²의전개에서 쌍곱합45를 구해 평균을 낸다. 확률변수의분산TPL은 재사용하지 않는다."
+    }
+  },
+  {
+    "ordinal": 21,
+    "questionUid": "qid_v1_ea932e6e3fe714c96f0beb4e34da7d55e8bc7469ee52466c656a4c2f8b73d50a",
+    "before": {
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "decisiveStep": "AB=8, ∠B=60°에서 높이 AH=4√3을 구해 밑변 10과 곱한다."
+    },
+    "after": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "decisiveStep": "공통높이h에 대한 두밑변길이를 h/√3,h로 두고 합10으로 높이를 구한 뒤 넓이를 계산한다."
+    }
+  },
+  {
+    "ordinal": 22,
+    "questionUid": "qid_v1_ae3585a7429e524954746a7584b4611c2ba8e9d8c82ac5528c706992d524ac53",
+    "before": {
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "E, F에서 생기는 두 외부 삼각형과 내접사각형의 마주 보는 각의 합 180°로 네 각을 결정한다."
+    },
+    "after": {
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM",
+        "CC_SUPPLEMENTARY_ANGLES"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "두외부삼각형의 내각합으로 A+D215,C+D225를 얻고 내접사각형의대각합180과 연립하여 네각을 구한다."
+    }
+  },
+  {
+    "ordinal": 23,
+    "questionUid": "qid_v1_61dae35cf93049aa89ed8cf64014831d3f79d532ac5adcf0480b2d2a58d48a10",
+    "before": {
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "decisiveStep": "OA=OB, 공통 OP, 접선-반지름 직각으로 RHS 합동을 얻어 PA=PB를 결론낸다."
+    },
+    "after": {
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "decisiveStep": "접점직각·공통빗변·반지름같음의 RHS합동을 완성하여 대응접선길이 같음을 증명한다. 수치접선길이 TPL과구분한다."
+    }
+  },
+  {
+    "ordinal": 24,
+    "questionUid": "qid_v1_00748d54b9b2b08f9ccb42963fa6c082473d75a20ed6a103bb1f96b271d16423",
+    "before": {
+      "integrationPattern": "NONE",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "decisiveStep": "각 두 수 집단의 합·제곱합을 분산 정의로 구한 뒤 네 수의 제곱평균−전체평균²을 계산한다."
+    },
+    "after": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "decisiveStep": "두집단의 평균·분산을 각각합과제곱합으로 바꾸어 전체평균11과제곱평균257/2를 복원하여 분산을 구한다. 평균이다른 집단분산을 단순평균하지 않는다."
+    }
+  }
+]

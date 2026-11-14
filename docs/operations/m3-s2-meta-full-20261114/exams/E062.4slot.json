@@ -1,0 +1,1770 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "5deb89cf9a41117c4e43c348415c4db0b5b0f29a",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "m3_a",
+    "run": "M3S2_FULL_20261114",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_5a8c3e2e43d9b6a57f3dc25c15d22335f83c52cf52eed57d6cac203548aeaf44",
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "그림의 직각삼각형 $ABC$에서 $\\sin x$의 값으로 옳은 것은? (3점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림의 직각삼각형 $ABC$에서 $\\sin x$의 값으로 옳은 것은? (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "그림의 직각삼각형 $ABC$에서 $\\sin x$의 값으로 옳은 것은? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형 $ABC$에서 빗변은 $AC$이다.\n피타고라스 정리에 따라\n$AC=\\sqrt{AB^2+BC^2}=\\sqrt{4^2+3^2}=5$이다.\n각 $x$의 맞은편 변은 $AB=4$이므로\n$\\sin x=\\dfrac{AB}{AC}=\\dfrac45$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 두직각변4,3에서 빗변5를 구한 뒤 x의대변4를 사인정의에 대응한다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "직각삼각형 $ABC$에서 빗변은 $AC$이다.\n피타고라스 정리에 따라\n$AC=\\sqrt{AB^2+BC^2}=\\sqrt{4^2+3^2}=5$이다.\n각 $x$의 맞은편 변은 $AB=4$이므로\n$\\sin x=\\dfrac{AB}{AC}=\\dfrac45$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 두직각변4,3에서 빗변5를 구한 뒤 x의대변4를 사인정의에 대응한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "그림의 두직각변4,3에서 빗변5를 구한 뒤 x의대변4를 사인정의에 대응한다.",
+        "method": "그림의 두직각변4,3에서 빗변5를 구한 뒤 x의대변4를 사인정의에 대응한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "그림의 두직각변4,3에서 빗변5를 구한 뒤 x의대변4를 사인정의에 대응한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_15617350c8aaed7dc3d030bf28e05d2672924c7725476931d674bc13cf752c2b",
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$의 길이는? (4점)"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$의 길이는? (4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$의 길이는? (4점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$의 길이는? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$의 길이는? (4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$의 길이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "직각삼각형 $ABH$에서 $AB=4$이고 $\\angle BAH=30^\\circ$이다.\n따라서\n$BH=4\\sin30^\\circ=2$,\n$AH=4\\cos30^\\circ=2\\sqrt3$이다.\n직각삼각형 $AHC$에서 $\\angle HAC=45^\\circ$이므로\n$AC=\\dfrac{AH}{\\cos45^\\circ}=\\dfrac{2\\sqrt3}{\\sqrt2/2}=2\\sqrt6$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "왼쪽30° 삼각형의 빗변4로 공유높이2√3을 구하고 오른쪽45° 삼각형의 빗변을 복원한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "직각삼각형 $ABH$에서 $AB=4$이고 $\\angle BAH=30^\\circ$이다.\n따라서\n$BH=4\\sin30^\\circ=2$,\n$AH=4\\cos30^\\circ=2\\sqrt3$이다.\n직각삼각형 $AHC$에서 $\\angle HAC=45^\\circ$이므로\n$AC=\\dfrac{AH}{\\cos45^\\circ}=\\dfrac{2\\sqrt3}{\\sqrt2/2}=2\\sqrt6$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "왼쪽30° 삼각형의 빗변4로 공유높이2√3을 구하고 오른쪽45° 삼각형의 빗변을 복원한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "왼쪽30° 삼각형의 빗변4로 공유높이2√3을 구하고 오른쪽45° 삼각형의 빗변을 복원한다.",
+        "method": "왼쪽30° 삼각형의 빗변4로 공유높이2√3을 구하고 오른쪽45° 삼각형의 빗변을 복원한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "왼쪽30° 삼각형의 빗변4로 공유높이2√3을 구하고 오른쪽45° 삼각형의 빗변을 복원한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_5300613045922cdf08133246c6a049c4d9831a8db384af602c4825c938160392",
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\triangle ABC$의 넓이는? (4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\triangle ABC$의 넓이는? (4점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\triangle ABC$의 넓이는? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\triangle ABC$의 넓이는? (4점)"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\triangle ABC$의 넓이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "점 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n직각삼각형 $ABH$에서\n$AH=AB\\sin60^\\circ=8\\cdot\\dfrac{\\sqrt3}{2}=4\\sqrt3$이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot BC\\cdot AH=\\dfrac12\\cdot10\\cdot4\\sqrt3=20\\sqrt3\\rm\\,m^2$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두변8,10과끼인각60°가 주어져 높이8sin60을 넓이식에 직접 넣는다. 공통높이의 두미지식은 없어 SHARED_HEIGHT가 아니다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "점 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n직각삼각형 $ABH$에서\n$AH=AB\\sin60^\\circ=8\\cdot\\dfrac{\\sqrt3}{2}=4\\sqrt3$이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot BC\\cdot AH=\\dfrac12\\cdot10\\cdot4\\sqrt3=20\\sqrt3\\rm\\,m^2$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두변8,10과끼인각60°가 주어져 높이8sin60을 넓이식에 직접 넣는다. 공통높이의 두미지식은 없어 SHARED_HEIGHT가 아니다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두변8,10과끼인각60°가 주어져 높이8sin60을 넓이식에 직접 넣는다. 공통높이의 두미지식은 없어 SHARED_HEIGHT가 아니다.",
+        "method": "두변8,10과끼인각60°가 주어져 높이8sin60을 넓이식에 직접 넣는다. 공통높이의 두미지식은 없어 SHARED_HEIGHT가 아니다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두변8,10과끼인각60°가 주어져 높이8sin60을 넓이식에 직접 넣는다. 공통높이의 두미지식은 없어 SHARED_HEIGHT가 아니다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_0ce02354a6f3a219349c78ce32042c2f9d8113720e8e7c2620123b6f437d4b91",
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "다음 평행사변형 $ABCD$에서 $M$이 밑변의 중점일 때, $\\triangle AMC$의 넓이는? (4점)"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "다음 평행사변형 $ABCD$에서 $M$이 밑변의 중점일 때, $\\triangle AMC$의 넓이는? (4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 평행사변형 $ABCD$에서 $M$이 밑변의 중점일 때, $\\triangle AMC$의 넓이는? (4점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 평행사변형 $ABCD$에서 $M$이 밑변의 중점일 때, $\\triangle AMC$의 넓이는? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 평행사변형 $ABCD$에서 $M$이 밑변의 중점일 때, $\\triangle AMC$의 넓이는? (4점)"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 평행사변형 $ABCD$에서 $M$이 밑변의 중점일 때, $\\triangle AMC$의 넓이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "평행사변형에서 $BC=AD=10$이다.\n직각삼각형의 높이를 구하면\n$h=AB\\sin60^\\circ=8\\cdot\\dfrac{\\sqrt3}{2}=4\\sqrt3$이다.\n$M$은 $BC$의 중점이므로 $MC=5$이다.\n따라서\n$[\\triangle AMC]=\\dfrac12\\cdot MC\\cdot h=\\dfrac12\\cdot5\\cdot4\\sqrt3=10\\sqrt3\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형에서 대변10과중점으로 목표밑변5를 정하고 변8·60°의 높이4√3을 연결한다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "평행사변형에서 $BC=AD=10$이다.\n직각삼각형의 높이를 구하면\n$h=AB\\sin60^\\circ=8\\cdot\\dfrac{\\sqrt3}{2}=4\\sqrt3$이다.\n$M$은 $BC$의 중점이므로 $MC=5$이다.\n따라서\n$[\\triangle AMC]=\\dfrac12\\cdot MC\\cdot h=\\dfrac12\\cdot5\\cdot4\\sqrt3=10\\sqrt3\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형에서 대변10과중점으로 목표밑변5를 정하고 변8·60°의 높이4√3을 연결한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "평행사변형에서 $BC=AD=10$이다.\n직각삼각형의 높이를 구하면\n$h=AB\\sin60^\\circ=8\\cdot\\dfrac{\\sqrt3}{2}=4\\sqrt3$이다.\n$M$은 $BC$의 중점이므로 $MC=5$이다.\n따라서\n$[\\triangle AMC]=\\dfrac12\\cdot MC\\cdot h=\\dfrac12\\cdot5\\cdot4\\sqrt3=10\\sqrt3\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형에서 대변10과중점으로 목표밑변5를 정하고 변8·60°의 높이4√3을 연결한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "평행사변형에서 대변10과중점으로 목표밑변5를 정하고 변8·60°의 높이4√3을 연결한다.",
+        "method": "평행사변형에서 대변10과중점으로 목표밑변5를 정하고 변8·60°의 높이4√3을 연결한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "평행사변형에서 대변10과중점으로 목표밑변5를 정하고 변8·60°의 높이4√3을 연결한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_3c652fe0ab834f6add3b82610386de748cf6c7c7d5d967df1344ea20fd0db9a6",
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림은 $\\triangle ABC$의 꼭짓점 $A$에서 밑변의 연장선에 수선의 발을 내린 모양이다. $\\angle BAC=x$, $\\angle ACH=45^\\circ$이고 $\\overline{BC}=\\overline{CH}$일 때, $\\tan x$의 값은? (5점)"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "다음 그림은 $\\triangle ABC$의 꼭짓점 $A$에서 밑변의 연장선에 수선의 발을 내린 모양이다. $\\angle BAC=x$, $\\angle ACH=45^\\circ$이고 $\\overline{BC}=\\overline{CH}$일 때, $\\tan x$의 값은? (5점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림은 $\\triangle ABC$의 꼭짓점 $A$에서 밑변의 연장선에 수선의 발을 내린 모양이다. $\\angle BAC=x$, $\\angle ACH=45^\\circ$이고 $\\overline{BC}=\\overline{CH}$일 때, $\\tan x$의 값은? (5점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림은 $\\triangle ABC$의 꼭짓점 $A$에서 밑변의 연장선에 수선의 발을 내린 모양이다. $\\angle BAC=x$, $\\angle ACH=45^\\circ$이고 $\\overline{BC}=\\overline{CH}$일 때, $\\tan x$의 값은? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "다음 그림은 $\\triangle ABC$의 꼭짓점 $A$에서 밑변의 연장선에 수선의 발을 내린 모양이다. $\\angle BAC=x$, $\\angle ACH=45^\\circ$이고 $\\overline{BC}=\\overline{CH}$일 때, $\\tan x$의 값은? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$AH\\perp BH$이고 $\\angle ACH=45^\\circ$이므로 직각삼각형 $AHC$는 직각이등변삼각형이다.\n$BC=CH=AH=k$라 하면 $AC=\\sqrt2\\,k$이다.\n점 $B$에서 직선 $AC$에 내린 수선의 발을 $D$라 하자. $D$는 $C$의 연장선 위에 있고, $\\angle BCD$와 $\\angle ACH$는 맞꼭지각이므로 $\\angle BCD=45^\\circ$이다.\n따라서 직각삼각형 $BCD$도 직각이등변삼각형이어서\n$BD=CD=\\dfrac{BC}{\\sqrt2}=\\dfrac{k}{\\sqrt2}$이다.\n그러므로\n$AD=AC+CD=\\sqrt2\\,k+\\dfrac{k}{\\sqrt2}=\\dfrac{3k}{\\sqrt2}$이다.\n직각삼각형 $ABD$에서 $x=\\angle BAD$이므로\n$\\tan x=\\dfrac{BD}{AD}=\\dfrac{k/\\sqrt2}{3k/\\sqrt2}=\\dfrac13$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은길이BC=CH와45°에서 AC√2k를 얻고 B에서 AC연장선에 내리는 별도수선으로 목표각의 이웃변과대변을 구성한다."
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "$AH\\perp BH$이고 $\\angle ACH=45^\\circ$이므로 직각삼각형 $AHC$는 직각이등변삼각형이다.\n$BC=CH=AH=k$라 하면 $AC=\\sqrt2\\,k$이다.\n점 $B$에서 직선 $AC$에 내린 수선의 발을 $D$라 하자. $D$는 $C$의 연장선 위에 있고, $\\angle BCD$와 $\\angle ACH$는 맞꼭지각이므로 $\\angle BCD=45^\\circ$이다.\n따라서 직각삼각형 $BCD$도 직각이등변삼각형이어서\n$BD=CD=\\dfrac{BC}{\\sqrt2}=\\dfrac{k}{\\sqrt2}$이다.\n그러므로\n$AD=AC+CD=\\sqrt2\\,k+\\dfrac{k}{\\sqrt2}=\\dfrac{3k}{\\sqrt2}$이다.\n직각삼각형 $ABD$에서 $x=\\angle BAD$이므로\n$\\tan x=\\dfrac{BD}{AD}=\\dfrac{k/\\sqrt2}{3k/\\sqrt2}=\\dfrac13$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은길이BC=CH와45°에서 AC√2k를 얻고 B에서 AC연장선에 내리는 별도수선으로 목표각의 이웃변과대변을 구성한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AH\\perp BH$이고 $\\angle ACH=45^\\circ$이므로 직각삼각형 $AHC$는 직각이등변삼각형이다.\n$BC=CH=AH=k$라 하면 $AC=\\sqrt2\\,k$이다.\n점 $B$에서 직선 $AC$에 내린 수선의 발을 $D$라 하자. $D$는 $C$의 연장선 위에 있고, $\\angle BCD$와 $\\angle ACH$는 맞꼭지각이므로 $\\angle BCD=45^\\circ$이다.\n따라서 직각삼각형 $BCD$도 직각이등변삼각형이어서\n$BD=CD=\\dfrac{BC}{\\sqrt2}=\\dfrac{k}{\\sqrt2}$이다.\n그러므로\n$AD=AC+CD=\\sqrt2\\,k+\\dfrac{k}{\\sqrt2}=\\dfrac{3k}{\\sqrt2}$이다.\n직각삼각형 $ABD$에서 $x=\\angle BAD$이므로\n$\\tan x=\\dfrac{BD}{AD}=\\dfrac{k/\\sqrt2}{3k/\\sqrt2}=\\dfrac13$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은길이BC=CH와45°에서 AC√2k를 얻고 B에서 AC연장선에 내리는 별도수선으로 목표각의 이웃변과대변을 구성한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "$AH\\perp BH$이고 $\\angle ACH=45^\\circ$이므로 직각삼각형 $AHC$는 직각이등변삼각형이다.\n$BC=CH=AH=k$라 하면 $AC=\\sqrt2\\,k$이다.\n점 $B$에서 직선 $AC$에 내린 수선의 발을 $D$라 하자. $D$는 $C$의 연장선 위에 있고, $\\angle BCD$와 $\\angle ACH$는 맞꼭지각이므로 $\\angle BCD=45^\\circ$이다.\n따라서 직각삼각형 $BCD$도 직각이등변삼각형이어서\n$BD=CD=\\dfrac{BC}{\\sqrt2}=\\dfrac{k}{\\sqrt2}$이다.\n그러므로\n$AD=AC+CD=\\sqrt2\\,k+\\dfrac{k}{\\sqrt2}=\\dfrac{3k}{\\sqrt2}$이다.\n직각삼각형 $ABD$에서 $x=\\angle BAD$이므로\n$\\tan x=\\dfrac{BD}{AD}=\\dfrac{k/\\sqrt2}{3k/\\sqrt2}=\\dfrac13$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은길이BC=CH와45°에서 AC√2k를 얻고 B에서 AC연장선에 내리는 별도수선으로 목표각의 이웃변과대변을 구성한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "같은길이BC=CH와45°에서 AC√2k를 얻고 B에서 AC연장선에 내리는 별도수선으로 목표각의 이웃변과대변을 구성한다.",
+        "method": "같은길이BC=CH와45°에서 AC√2k를 얻고 B에서 AC연장선에 내리는 별도수선으로 목표각의 이웃변과대변을 구성한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "같은길이BC=CH와45°에서 AC√2k를 얻고 B에서 AC연장선에 내리는 별도수선으로 목표각의 이웃변과대변을 구성한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_23ae438219cf9837ebb1c68a150ab983fcd8cd095268c0516a88454eec46aa51",
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이다. $\\overset{\\frown}{AC}:\\overset{\\frown}{BC}=3:1$일 때, $\\angle BOC$의 크기를 구하면? (3점)"
+          },
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이다. $\\overset{\\frown}{AC}:\\overset{\\frown}{BC}=3:1$일 때, $\\angle BOC$의 크기를 구하면? (3점)"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이다. $\\overset{\\frown}{AC}:\\overset{\\frown}{BC}=3:1$일 때, $\\angle BOC$의 크기를 구하면? (3점)"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이다. $\\overset{\\frown}{AC}:\\overset{\\frown}{BC}=3:1$일 때, $\\angle BOC$의 크기를 구하면? (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이다. $\\overset{\\frown}{AC}:\\overset{\\frown}{BC}=3:1$일 때, $\\angle BOC$의 크기를 구하면? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "반원",
+            "src": "solution",
+            "quote": "$AB$는 지름이므로 호 $ACB$의 크기는 $180^\\circ$이다.\n호 $AC:BC=3:1$이므로 호 $BC$는 반원의 $\\dfrac14$이다.\n따라서\n$\\angle BOC=\\overset{\\frown}{BC}=180^\\circ\\cdot\\dfrac14=45^\\circ$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름의 반원180°를 호의비3:1에 따라 나누고 호BC의45°를 대응중심각으로 읽는다. 원주각을 사용하지 않는다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$AB$는 지름이므로 호 $ACB$의 크기는 $180^\\circ$이다.\n호 $AC:BC=3:1$이므로 호 $BC$는 반원의 $\\dfrac14$이다.\n따라서\n$\\angle BOC=\\overset{\\frown}{BC}=180^\\circ\\cdot\\dfrac14=45^\\circ$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름의 반원180°를 호의비3:1에 따라 나누고 호BC의45°를 대응중심각으로 읽는다. 원주각을 사용하지 않는다."
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "$AB$는 지름이므로 호 $ACB$의 크기는 $180^\\circ$이다.\n호 $AC:BC=3:1$이므로 호 $BC$는 반원의 $\\dfrac14$이다.\n따라서\n$\\angle BOC=\\overset{\\frown}{BC}=180^\\circ\\cdot\\dfrac14=45^\\circ$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름의 반원180°를 호의비3:1에 따라 나누고 호BC의45°를 대응중심각으로 읽는다. 원주각을 사용하지 않는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "지름의 반원180°를 호의비3:1에 따라 나누고 호BC의45°를 대응중심각으로 읽는다. 원주각을 사용하지 않는다.",
+        "method": "지름의 반원180°를 호의비3:1에 따라 나누고 호BC의45°를 대응중심각으로 읽는다. 원주각을 사용하지 않는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "지름의 반원180°를 호의비3:1에 따라 나누고 호BC의45°를 대응중심각으로 읽는다. 원주각을 사용하지 않는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_3f88e6629538f85ae973d4026f0665ff4826121ab4012b604c507db95e96f23e",
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 중심각 $\\angle AOB=40^\\circ$, $\\angle COD=80^\\circ$일 때,\n옳은 것은? (4점)"
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "다음 그림에서 중심각 $\\angle AOB=40^\\circ$, $\\angle COD=80^\\circ$일 때,\n옳은 것은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림에서 중심각 $\\angle AOB=40^\\circ$, $\\angle COD=80^\\circ$일 때,\n옳은 것은? (4점)"
+          },
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "다음 그림에서 중심각 $\\angle AOB=40^\\circ$, $\\angle COD=80^\\circ$일 때,\n옳은 것은? (4점)"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 그림에서 중심각 $\\angle AOB=40^\\circ$, $\\angle COD=80^\\circ$일 때,\n옳은 것은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "두 중심각의 크기는\n$\\angle AOB=40^\\circ,\\quad \\angle COD=80^\\circ$이다.\n각 중심각에 대응하는 작은 호의 크기는 각각\n$\\overset{\\frown}{AB}=40^\\circ,\\quad \\overset{\\frown}{CD}=80^\\circ$이다.\n같은 원에서 중심각이 큰 쪽의 현이 더 길다.\n$40^\\circ<80^\\circ$이므로\n$\\overline{AB}<\\overline{CD}$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은원의 작은중심각40°<80°를 대응작은호와현의 길이순서에 연결하여 AB<CD를 판정한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 중심각의 크기는\n$\\angle AOB=40^\\circ,\\quad \\angle COD=80^\\circ$이다.\n각 중심각에 대응하는 작은 호의 크기는 각각\n$\\overset{\\frown}{AB}=40^\\circ,\\quad \\overset{\\frown}{CD}=80^\\circ$이다.\n같은 원에서 중심각이 큰 쪽의 현이 더 길다.\n$40^\\circ<80^\\circ$이므로\n$\\overline{AB}<\\overline{CD}$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은원의 작은중심각40°<80°를 대응작은호와현의 길이순서에 연결하여 AB<CD를 판정한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "두 중심각의 크기는\n$\\angle AOB=40^\\circ,\\quad \\angle COD=80^\\circ$이다.\n각 중심각에 대응하는 작은 호의 크기는 각각\n$\\overset{\\frown}{AB}=40^\\circ,\\quad \\overset{\\frown}{CD}=80^\\circ$이다.\n같은 원에서 중심각이 큰 쪽의 현이 더 길다.\n$40^\\circ<80^\\circ$이므로\n$\\overline{AB}<\\overline{CD}$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은원의 작은중심각40°<80°를 대응작은호와현의 길이순서에 연결하여 AB<CD를 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "같은원의 작은중심각40°<80°를 대응작은호와현의 길이순서에 연결하여 AB<CD를 판정한다.",
+        "method": "같은원의 작은중심각40°<80°를 대응작은호와현의 길이순서에 연결하여 AB<CD를 판정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "같은원의 작은중심각40°<80°를 대응작은호와현의 길이순서에 연결하여 AB<CD를 판정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_5adbca56fdd21d94509e05f69e7544f5ce633bf4a401d6d0fe4633499fa21290",
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$는 가로의 길이가 $30\\rm\\,cm$, 세로의 길이가 $20\\rm\\,cm$인 직사각형 $ABCD$에 내접하는 가장 큰 원이고, 원 $O\\prime$는 그 나머지 부분에 내접하는 가장 큰 원이다. 원 $O\\prime$의 반지름의 길이를 구하면? (4점)"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$는 가로의 길이가 $30\\rm\\,cm$, 세로의 길이가 $20\\rm\\,cm$인 직사각형 $ABCD$에 내접하는 가장 큰 원이고, 원 $O\\prime$는 그 나머지 부분에 내접하는 가장 큰 원이다. 원 $O\\prime$의 반지름의 길이를 구하면? (4점)"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$는 가로의 길이가 $30\\rm\\,cm$, 세로의 길이가 $20\\rm\\,cm$인 직사각형 $ABCD$에 내접하는 가장 큰 원이고, 원 $O\\prime$는 그 나머지 부분에 내접하는 가장 큰 원이다. 원 $O\\prime$의 반지름의 길이를 구하면? (4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$는 가로의 길이가 $30\\rm\\,cm$, 세로의 길이가 $20\\rm\\,cm$인 직사각형 $ABCD$에 내접하는 가장 큰 원이고, 원 $O\\prime$는 그 나머지 부분에 내접하는 가장 큰 원이다. 원 $O\\prime$의 반지름의 길이를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$는 가로의 길이가 $30\\rm\\,cm$, 세로의 길이가 $20\\rm\\,cm$인 직사각형 $ABCD$에 내접하는 가장 큰 원이고, 원 $O\\prime$는 그 나머지 부분에 내접하는 가장 큰 원이다. 원 $O\\prime$의 반지름의 길이를 구하면? (4점)"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$는 가로의 길이가 $30\\rm\\,cm$, 세로의 길이가 $20\\rm\\,cm$인 직사각형 $ABCD$에 내접하는 가장 큰 원이고, 원 $O\\prime$는 그 나머지 부분에 내접하는 가장 큰 원이다. 원 $O\\prime$의 반지름의 길이를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심",
+            "src": "solution",
+            "quote": "큰 원의 반지름은 직사각형의 세로 길이의 절반이다.\n큰 원의 반지름은 $20\\div2=10$cm이다.\n작은 원의 반지름을 $r$cm라 하자.\n두 원의 중심의 가로 차는 $20-r$cm,\n세로 차는 $10-r$cm이다.\n두 원은 서로 접하므로 중심 사이 거리는 $10+r$cm이다.\n피타고라스 정리를 적용하면\n$(20-r)^2+(10-r)^2=(10+r)^2$이다.\n왼쪽을 전개하면\n$400-40r+r^2+100-20r+r^2=100+20r+r^2$이다.\n정리하면\n$r^2-80r+400=0$이다.\n근의 공식을 적용하면\n$r=\\dfrac{80\\pm\\sqrt{(-80)^2-4\\cdot1\\cdot400}}{2}$\n$=\\dfrac{80\\pm\\sqrt{4800}}2$\n$=40\\pm20\\sqrt3$이다.\n반지름은 10cm보다 작으므로\n$r=40-20\\sqrt3$cm이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두원이 변과서로 접하는 배치에서 중심차20−r,10−r와 중심거리10+r를 구성하고 피타고라스 이차방정식의 작은근을 고른다. 원밖한점의 접선길이와 다른 풀이이므로 기존 TM_TANGENT_LENGTH를 제거한다."
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "큰 원의 반지름은 직사각형의 세로 길이의 절반이다.\n큰 원의 반지름은 $20\\div2=10$cm이다.\n작은 원의 반지름을 $r$cm라 하자.\n두 원의 중심의 가로 차는 $20-r$cm,\n세로 차는 $10-r$cm이다.\n두 원은 서로 접하므로 중심 사이 거리는 $10+r$cm이다.\n피타고라스 정리를 적용하면\n$(20-r)^2+(10-r)^2=(10+r)^2$이다.\n왼쪽을 전개하면\n$400-40r+r^2+100-20r+r^2=100+20r+r^2$이다.\n정리하면\n$r^2-80r+400=0$이다.\n근의 공식을 적용하면\n$r=\\dfrac{80\\pm\\sqrt{(-80)^2-4\\cdot1\\cdot400}}{2}$\n$=\\dfrac{80\\pm\\sqrt{4800}}2$\n$=40\\pm20\\sqrt3$이다.\n반지름은 10cm보다 작으므로\n$r=40-20\\sqrt3$cm이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두원이 변과서로 접하는 배치에서 중심차20−r,10−r와 중심거리10+r를 구성하고 피타고라스 이차방정식의 작은근을 고른다. 원밖한점의 접선길이와 다른 풀이이므로 기존 TM_TANGENT_LENGTH를 제거한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "큰 원의 반지름은 직사각형의 세로 길이의 절반이다.\n큰 원의 반지름은 $20\\div2=10$cm이다.\n작은 원의 반지름을 $r$cm라 하자.\n두 원의 중심의 가로 차는 $20-r$cm,\n세로 차는 $10-r$cm이다.\n두 원은 서로 접하므로 중심 사이 거리는 $10+r$cm이다.\n피타고라스 정리를 적용하면\n$(20-r)^2+(10-r)^2=(10+r)^2$이다.\n왼쪽을 전개하면\n$400-40r+r^2+100-20r+r^2=100+20r+r^2$이다.\n정리하면\n$r^2-80r+400=0$이다.\n근의 공식을 적용하면\n$r=\\dfrac{80\\pm\\sqrt{(-80)^2-4\\cdot1\\cdot400}}{2}$\n$=\\dfrac{80\\pm\\sqrt{4800}}2$\n$=40\\pm20\\sqrt3$이다.\n반지름은 10cm보다 작으므로\n$r=40-20\\sqrt3$cm이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두원이 변과서로 접하는 배치에서 중심차20−r,10−r와 중심거리10+r를 구성하고 피타고라스 이차방정식의 작은근을 고른다. 원밖한점의 접선길이와 다른 풀이이므로 기존 TM_TANGENT_LENGTH를 제거한다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "큰 원의 반지름은 직사각형의 세로 길이의 절반이다.\n큰 원의 반지름은 $20\\div2=10$cm이다.\n작은 원의 반지름을 $r$cm라 하자.\n두 원의 중심의 가로 차는 $20-r$cm,\n세로 차는 $10-r$cm이다.\n두 원은 서로 접하므로 중심 사이 거리는 $10+r$cm이다.\n피타고라스 정리를 적용하면\n$(20-r)^2+(10-r)^2=(10+r)^2$이다.\n왼쪽을 전개하면\n$400-40r+r^2+100-20r+r^2=100+20r+r^2$이다.\n정리하면\n$r^2-80r+400=0$이다.\n근의 공식을 적용하면\n$r=\\dfrac{80\\pm\\sqrt{(-80)^2-4\\cdot1\\cdot400}}{2}$\n$=\\dfrac{80\\pm\\sqrt{4800}}2$\n$=40\\pm20\\sqrt3$이다.\n반지름은 10cm보다 작으므로\n$r=40-20\\sqrt3$cm이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두원이 변과서로 접하는 배치에서 중심차20−r,10−r와 중심거리10+r를 구성하고 피타고라스 이차방정식의 작은근을 고른다. 원밖한점의 접선길이와 다른 풀이이므로 기존 TM_TANGENT_LENGTH를 제거한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두원이 변과서로 접하는 배치에서 중심차20−r,10−r와 중심거리10+r를 구성하고 피타고라스 이차방정식의 작은근을 고른다. 원밖한점의 접선길이와 다른 풀이이므로 기존 TM_TANGENT_LENGTH를 제거한다.",
+        "method": "두원이 변과서로 접하는 배치에서 중심차20−r,10−r와 중심거리10+r를 구성하고 피타고라스 이차방정식의 작은근을 고른다. 원밖한점의 접선길이와 다른 풀이이므로 기존 TM_TANGENT_LENGTH를 제거한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두원이 변과서로 접하는 배치에서 중심차20−r,10−r와 중심거리10+r를 구성하고 피타고라스 이차방정식의 작은근을 고른다. 원밖한점의 접선길이와 다른 풀이이므로 기존 TM_TANGENT_LENGTH를 제거한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_e4b0cd0f3ee512bef48dfb2ed78e155cd2b0c9a0ff206b4591d825aa4f14f8e9",
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AP}$, $\\overline{AQ}$는 원 $O$의 접선이고 $\\overline{OP}=8\\rm\\,cm$, $\\overline{OA}=17\\rm\\,cm$일 때, $\\triangle ABC$의 둘레의 길이는? (4점)"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AP}$, $\\overline{AQ}$는 원 $O$의 접선이고 $\\overline{OP}=8\\rm\\,cm$, $\\overline{OA}=17\\rm\\,cm$일 때, $\\triangle ABC$의 둘레의 길이는? (4점)"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AP}$, $\\overline{AQ}$는 원 $O$의 접선이고 $\\overline{OP}=8\\rm\\,cm$, $\\overline{OA}=17\\rm\\,cm$일 때, $\\triangle ABC$의 둘레의 길이는? (4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AP}$, $\\overline{AQ}$는 원 $O$의 접선이고 $\\overline{OP}=8\\rm\\,cm$, $\\overline{OA}=17\\rm\\,cm$일 때, $\\triangle ABC$의 둘레의 길이는? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AP}$, $\\overline{AQ}$는 원 $O$의 접선이고 $\\overline{OP}=8\\rm\\,cm$, $\\overline{OA}=17\\rm\\,cm$일 때, $\\triangle ABC$의 둘레의 길이는? (4점)"
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AP}$, $\\overline{AQ}$는 원 $O$의 접선이고 $\\overline{OP}=8\\rm\\,cm$, $\\overline{OA}=17\\rm\\,cm$일 때, $\\triangle ABC$의 둘레의 길이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "반지름과 접선은 접점에서 수직이므로 $\\triangle OPA$는 직각삼각형이다.\n피타고라스 정리에 따라\n$AP^2=OA^2-OP^2=17^2-8^2=225$\n$AP=15\\rm\\,cm$이다.\n한 점에서 원에 그은 두 접선의 길이는 같으므로\n$AQ=AP=15\\rm\\,cm$이다.\n그림에서 $BC$도 원에 접하는 직선이다. 접점을 $T$라 하자.\n점 $B$에서 그은 두 접선의 길이가 같아\n$BP=BT$이고, 점 $C$에서도\n$CQ=CT$이다.\n그림의 점 순서에 따라\n$AB=AP-BP,\\quad AC=AQ-CQ,\\quad BC=BT+TC=BP+CQ$이다.\n따라서\n$AB+BC+CA=(AP-BP)+(BP+CQ)+(AQ-CQ)$\n$=AP+AQ=15+15=30\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심거리17·반지름8로 접선15를 구하고 세외부점의 같은접선길이를 둘레합에서 소거한다. 기존 접선방정식 TPL을 길이TPL로 바로잡는다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "반지름과 접선은 접점에서 수직이므로 $\\triangle OPA$는 직각삼각형이다.\n피타고라스 정리에 따라\n$AP^2=OA^2-OP^2=17^2-8^2=225$\n$AP=15\\rm\\,cm$이다.\n한 점에서 원에 그은 두 접선의 길이는 같으므로\n$AQ=AP=15\\rm\\,cm$이다.\n그림에서 $BC$도 원에 접하는 직선이다. 접점을 $T$라 하자.\n점 $B$에서 그은 두 접선의 길이가 같아\n$BP=BT$이고, 점 $C$에서도\n$CQ=CT$이다.\n그림의 점 순서에 따라\n$AB=AP-BP,\\quad AC=AQ-CQ,\\quad BC=BT+TC=BP+CQ$이다.\n따라서\n$AB+BC+CA=(AP-BP)+(BP+CQ)+(AQ-CQ)$\n$=AP+AQ=15+15=30\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심거리17·반지름8로 접선15를 구하고 세외부점의 같은접선길이를 둘레합에서 소거한다. 기존 접선방정식 TPL을 길이TPL로 바로잡는다."
+          },
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "반지름과 접선은 접점에서 수직이므로 $\\triangle OPA$는 직각삼각형이다.\n피타고라스 정리에 따라\n$AP^2=OA^2-OP^2=17^2-8^2=225$\n$AP=15\\rm\\,cm$이다.\n한 점에서 원에 그은 두 접선의 길이는 같으므로\n$AQ=AP=15\\rm\\,cm$이다.\n그림에서 $BC$도 원에 접하는 직선이다. 접점을 $T$라 하자.\n점 $B$에서 그은 두 접선의 길이가 같아\n$BP=BT$이고, 점 $C$에서도\n$CQ=CT$이다.\n그림의 점 순서에 따라\n$AB=AP-BP,\\quad AC=AQ-CQ,\\quad BC=BT+TC=BP+CQ$이다.\n따라서\n$AB+BC+CA=(AP-BP)+(BP+CQ)+(AQ-CQ)$\n$=AP+AQ=15+15=30\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심거리17·반지름8로 접선15를 구하고 세외부점의 같은접선길이를 둘레합에서 소거한다. 기존 접선방정식 TPL을 길이TPL로 바로잡는다."
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "반지름과 접선은 접점에서 수직이므로 $\\triangle OPA$는 직각삼각형이다.\n피타고라스 정리에 따라\n$AP^2=OA^2-OP^2=17^2-8^2=225$\n$AP=15\\rm\\,cm$이다.\n한 점에서 원에 그은 두 접선의 길이는 같으므로\n$AQ=AP=15\\rm\\,cm$이다.\n그림에서 $BC$도 원에 접하는 직선이다. 접점을 $T$라 하자.\n점 $B$에서 그은 두 접선의 길이가 같아\n$BP=BT$이고, 점 $C$에서도\n$CQ=CT$이다.\n그림의 점 순서에 따라\n$AB=AP-BP,\\quad AC=AQ-CQ,\\quad BC=BT+TC=BP+CQ$이다.\n따라서\n$AB+BC+CA=(AP-BP)+(BP+CQ)+(AQ-CQ)$\n$=AP+AQ=15+15=30\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심거리17·반지름8로 접선15를 구하고 세외부점의 같은접선길이를 둘레합에서 소거한다. 기존 접선방정식 TPL을 길이TPL로 바로잡는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "중심거리17·반지름8로 접선15를 구하고 세외부점의 같은접선길이를 둘레합에서 소거한다. 기존 접선방정식 TPL을 길이TPL로 바로잡는다.",
+        "method": "중심거리17·반지름8로 접선15를 구하고 세외부점의 같은접선길이를 둘레합에서 소거한다. 기존 접선방정식 TPL을 길이TPL로 바로잡는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "중심거리17·반지름8로 접선15를 구하고 세외부점의 같은접선길이를 둘레합에서 소거한다. 기존 접선방정식 TPL을 길이TPL로 바로잡는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_3c82e9843f468b3acaf75223fc04292b89dc801b0a08c61640cd7af20ebd09f3",
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\square ABCD$가 원 $O$에 외접하고, 두 대각선이 직교하고 있다. $\\overline{BC}=9$, $\\overline{CD}=7$일 때, $\\overline{AB}+\\overline{AD}$의 값은? (4점)"
+          },
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\square ABCD$가 원 $O$에 외접하고, 두 대각선이 직교하고 있다. $\\overline{BC}=9$, $\\overline{CD}=7$일 때, $\\overline{AB}+\\overline{AD}$의 값은? (4점)"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\square ABCD$가 원 $O$에 외접하고, 두 대각선이 직교하고 있다. $\\overline{BC}=9$, $\\overline{CD}=7$일 때, $\\overline{AB}+\\overline{AD}$의 값은? (4점)"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\square ABCD$가 원 $O$에 외접하고, 두 대각선이 직교하고 있다. $\\overline{BC}=9$, $\\overline{CD}=7$일 때, $\\overline{AB}+\\overline{AD}$의 값은? (4점)"
+          },
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\square ABCD$가 원 $O$에 외접하고, 두 대각선이 직교하고 있다. $\\overline{BC}=9$, $\\overline{CD}=7$일 때, $\\overline{AB}+\\overline{AD}$의 값은? (4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\square ABCD$가 원 $O$에 외접하고, 두 대각선이 직교하고 있다. $\\overline{BC}=9$, $\\overline{CD}=7$일 때, $\\overline{AB}+\\overline{AD}$의 값은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\square ABCD$가 원 $O$에 외접하고, 두 대각선이 직교하고 있다. $\\overline{BC}=9$, $\\overline{CD}=7$일 때, $\\overline{AB}+\\overline{AD}$의 값은? (4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\square ABCD$가 원 $O$에 외접하고, 두 대각선이 직교하고 있다. $\\overline{BC}=9$, $\\overline{CD}=7$일 때, $\\overline{AB}+\\overline{AD}$의 값은? (4점)"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\square ABCD$가 원 $O$에 외접하고, 두 대각선이 직교하고 있다. $\\overline{BC}=9$, $\\overline{CD}=7$일 때, $\\overline{AB}+\\overline{AD}$의 값은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "$AB=x$, $AD=y$라 하자.\n원에 외접하는 사각형이므로 마주 보는 변의 합이 같다.\n$x+CD=BC+y$\n$x+7=9+y$\n$x-y=2$이다.\n두 대각선의 교점을 $E$라 하자(원의 중심 $O$와는 다른 점이다).\n두 대각선이 직교하므로 교점 $E$에서 생기는 네 삼각형은 모두 직각삼각형이다.\n각 삼각형에 피타고라스 정리를 적용하면\n$AB^2=AE^2+BE^2$,\n$BC^2=BE^2+CE^2$,\n$CD^2=CE^2+DE^2$,\n$AD^2=DE^2+AE^2$이다.\n따라서\n$AB^2+CD^2=BC^2+AD^2$이다.\n이를 $x,y$로 쓰면\n$x^2+7^2=9^2+y^2$\n$x^2-y^2=81-49=32$\n$(x-y)(x+y)=32$이다.\n$x-y=2$이므로\n$2(x+y)=32$\n$x+y=16$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외접사각형의 마주변합에서 x−y2를 얻고 직교대각선의 네피타고라스를 더빼 x²−y²32를 얻어 두식을 인수분해로 결합한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AB=x$, $AD=y$라 하자.\n원에 외접하는 사각형이므로 마주 보는 변의 합이 같다.\n$x+CD=BC+y$\n$x+7=9+y$\n$x-y=2$이다.\n두 대각선의 교점을 $E$라 하자(원의 중심 $O$와는 다른 점이다).\n두 대각선이 직교하므로 교점 $E$에서 생기는 네 삼각형은 모두 직각삼각형이다.\n각 삼각형에 피타고라스 정리를 적용하면\n$AB^2=AE^2+BE^2$,\n$BC^2=BE^2+CE^2$,\n$CD^2=CE^2+DE^2$,\n$AD^2=DE^2+AE^2$이다.\n따라서\n$AB^2+CD^2=BC^2+AD^2$이다.\n이를 $x,y$로 쓰면\n$x^2+7^2=9^2+y^2$\n$x^2-y^2=81-49=32$\n$(x-y)(x+y)=32$이다.\n$x-y=2$이므로\n$2(x+y)=32$\n$x+y=16$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외접사각형의 마주변합에서 x−y2를 얻고 직교대각선의 네피타고라스를 더빼 x²−y²32를 얻어 두식을 인수분해로 결합한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$AB=x$, $AD=y$라 하자.\n원에 외접하는 사각형이므로 마주 보는 변의 합이 같다.\n$x+CD=BC+y$\n$x+7=9+y$\n$x-y=2$이다.\n두 대각선의 교점을 $E$라 하자(원의 중심 $O$와는 다른 점이다).\n두 대각선이 직교하므로 교점 $E$에서 생기는 네 삼각형은 모두 직각삼각형이다.\n각 삼각형에 피타고라스 정리를 적용하면\n$AB^2=AE^2+BE^2$,\n$BC^2=BE^2+CE^2$,\n$CD^2=CE^2+DE^2$,\n$AD^2=DE^2+AE^2$이다.\n따라서\n$AB^2+CD^2=BC^2+AD^2$이다.\n이를 $x,y$로 쓰면\n$x^2+7^2=9^2+y^2$\n$x^2-y^2=81-49=32$\n$(x-y)(x+y)=32$이다.\n$x-y=2$이므로\n$2(x+y)=32$\n$x+y=16$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외접사각형의 마주변합에서 x−y2를 얻고 직교대각선의 네피타고라스를 더빼 x²−y²32를 얻어 두식을 인수분해로 결합한다."
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "$AB=x$, $AD=y$라 하자.\n원에 외접하는 사각형이므로 마주 보는 변의 합이 같다.\n$x+CD=BC+y$\n$x+7=9+y$\n$x-y=2$이다.\n두 대각선의 교점을 $E$라 하자(원의 중심 $O$와는 다른 점이다).\n두 대각선이 직교하므로 교점 $E$에서 생기는 네 삼각형은 모두 직각삼각형이다.\n각 삼각형에 피타고라스 정리를 적용하면\n$AB^2=AE^2+BE^2$,\n$BC^2=BE^2+CE^2$,\n$CD^2=CE^2+DE^2$,\n$AD^2=DE^2+AE^2$이다.\n따라서\n$AB^2+CD^2=BC^2+AD^2$이다.\n이를 $x,y$로 쓰면\n$x^2+7^2=9^2+y^2$\n$x^2-y^2=81-49=32$\n$(x-y)(x+y)=32$이다.\n$x-y=2$이므로\n$2(x+y)=32$\n$x+y=16$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외접사각형의 마주변합에서 x−y2를 얻고 직교대각선의 네피타고라스를 더빼 x²−y²32를 얻어 두식을 인수분해로 결합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "외접사각형의 마주변합에서 x−y2를 얻고 직교대각선의 네피타고라스를 더빼 x²−y²32를 얻어 두식을 인수분해로 결합한다.",
+        "method": "외접사각형의 마주변합에서 x−y2를 얻고 직교대각선의 네피타고라스를 더빼 x²−y²32를 얻어 두식을 인수분해로 결합한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "외접사각형의 마주변합에서 x−y2를 얻고 직교대각선의 네피타고라스를 더빼 x²−y²32를 얻어 두식을 인수분해로 결합한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_56f8bf277b7cd8ab68dda3ad8f22c4b8d6bf3ebf6b9c2f427a941ad00cd7cb3f",
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$는 $\\square ABID$에 내접하고, $\\overline{AD}=7$, $\\overline{BF}=2$일 때, $x$의 값은? (4점)"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$는 $\\square ABID$에 내접하고, $\\overline{AD}=7$, $\\overline{BF}=2$일 때, $x$의 값은? (4점)"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$는 $\\square ABID$에 내접하고, $\\overline{AD}=7$, $\\overline{BF}=2$일 때, $x$의 값은? (4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$는 $\\square ABID$에 내접하고, $\\overline{AD}=7$, $\\overline{BF}=2$일 때, $x$의 값은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "접선의길이",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$는 $\\square ABID$에 내접하고, $\\overline{AD}=7$, $\\overline{BF}=2$일 때, $x$의 값은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "$AB\\perp BI$이므로 원의 중심은 두 변이 이루는 직각의 이등분선 위에 있다.\n원의 접점 $F$에서 $BI$에 내린 반지름은 수선이므로\n$\\triangle BOF$는 직각이등변삼각형이다.\n따라서 $BF=OF$이고\n$OF=r=BF=2$이다.\n평행한 두 밑변 $AD$, $BI$ 사이의 높이는 원의 지름이므로\n$2r=4$이다.\n꼭짓점 $A$에서도 $AB\\perp AD$이므로 $AH=r=2$이다.\n따라서\n$DH=AD-AH=7-2=5$이다.\n$x=FI$라 하면 접선의 길이는 한 점에서 같으므로\n$GI=FI=x$,\n$DG=DH=5$이다.\n따라서\n$DI=DG+GI=5+x$,\n$BI=BF+FI=2+x$이다.\n$AD$와 $BI$의 수평 차는\n$AD-BI=7-(2+x)=5-x$이다.\n높이가 4인 직각삼각형에서 빗변은 $DI=5+x$이므로\n$(5+x)^2=(5-x)^2+4^2$이다.\n전개하고 정리하면\n$25+10x+x^2=25-10x+x^2+16$\n$20x=16$\n$x=\\dfrac45$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각꼭짓점의 접선구간2로 반지름과평행변높이4를 정하고 DI5+x와두밑변차5−x로 피타고라스식을 세운다."
+          },
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "$AB\\perp BI$이므로 원의 중심은 두 변이 이루는 직각의 이등분선 위에 있다.\n원의 접점 $F$에서 $BI$에 내린 반지름은 수선이므로\n$\\triangle BOF$는 직각이등변삼각형이다.\n따라서 $BF=OF$이고\n$OF=r=BF=2$이다.\n평행한 두 밑변 $AD$, $BI$ 사이의 높이는 원의 지름이므로\n$2r=4$이다.\n꼭짓점 $A$에서도 $AB\\perp AD$이므로 $AH=r=2$이다.\n따라서\n$DH=AD-AH=7-2=5$이다.\n$x=FI$라 하면 접선의 길이는 한 점에서 같으므로\n$GI=FI=x$,\n$DG=DH=5$이다.\n따라서\n$DI=DG+GI=5+x$,\n$BI=BF+FI=2+x$이다.\n$AD$와 $BI$의 수평 차는\n$AD-BI=7-(2+x)=5-x$이다.\n높이가 4인 직각삼각형에서 빗변은 $DI=5+x$이므로\n$(5+x)^2=(5-x)^2+4^2$이다.\n전개하고 정리하면\n$25+10x+x^2=25-10x+x^2+16$\n$20x=16$\n$x=\\dfrac45$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각꼭짓점의 접선구간2로 반지름과평행변높이4를 정하고 DI5+x와두밑변차5−x로 피타고라스식을 세운다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AB\\perp BI$이므로 원의 중심은 두 변이 이루는 직각의 이등분선 위에 있다.\n원의 접점 $F$에서 $BI$에 내린 반지름은 수선이므로\n$\\triangle BOF$는 직각이등변삼각형이다.\n따라서 $BF=OF$이고\n$OF=r=BF=2$이다.\n평행한 두 밑변 $AD$, $BI$ 사이의 높이는 원의 지름이므로\n$2r=4$이다.\n꼭짓점 $A$에서도 $AB\\perp AD$이므로 $AH=r=2$이다.\n따라서\n$DH=AD-AH=7-2=5$이다.\n$x=FI$라 하면 접선의 길이는 한 점에서 같으므로\n$GI=FI=x$,\n$DG=DH=5$이다.\n따라서\n$DI=DG+GI=5+x$,\n$BI=BF+FI=2+x$이다.\n$AD$와 $BI$의 수평 차는\n$AD-BI=7-(2+x)=5-x$이다.\n높이가 4인 직각삼각형에서 빗변은 $DI=5+x$이므로\n$(5+x)^2=(5-x)^2+4^2$이다.\n전개하고 정리하면\n$25+10x+x^2=25-10x+x^2+16$\n$20x=16$\n$x=\\dfrac45$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각꼭짓점의 접선구간2로 반지름과평행변높이4를 정하고 DI5+x와두밑변차5−x로 피타고라스식을 세운다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$AB\\perp BI$이므로 원의 중심은 두 변이 이루는 직각의 이등분선 위에 있다.\n원의 접점 $F$에서 $BI$에 내린 반지름은 수선이므로\n$\\triangle BOF$는 직각이등변삼각형이다.\n따라서 $BF=OF$이고\n$OF=r=BF=2$이다.\n평행한 두 밑변 $AD$, $BI$ 사이의 높이는 원의 지름이므로\n$2r=4$이다.\n꼭짓점 $A$에서도 $AB\\perp AD$이므로 $AH=r=2$이다.\n따라서\n$DH=AD-AH=7-2=5$이다.\n$x=FI$라 하면 접선의 길이는 한 점에서 같으므로\n$GI=FI=x$,\n$DG=DH=5$이다.\n따라서\n$DI=DG+GI=5+x$,\n$BI=BF+FI=2+x$이다.\n$AD$와 $BI$의 수평 차는\n$AD-BI=7-(2+x)=5-x$이다.\n높이가 4인 직각삼각형에서 빗변은 $DI=5+x$이므로\n$(5+x)^2=(5-x)^2+4^2$이다.\n전개하고 정리하면\n$25+10x+x^2=25-10x+x^2+16$\n$20x=16$\n$x=\\dfrac45$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각꼭짓점의 접선구간2로 반지름과평행변높이4를 정하고 DI5+x와두밑변차5−x로 피타고라스식을 세운다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "직각꼭짓점의 접선구간2로 반지름과평행변높이4를 정하고 DI5+x와두밑변차5−x로 피타고라스식을 세운다.",
+        "method": "직각꼭짓점의 접선구간2로 반지름과평행변높이4를 정하고 DI5+x와두밑변차5−x로 피타고라스식을 세운다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "직각꼭짓점의 접선구간2로 반지름과평행변높이4를 정하고 DI5+x와두밑변차5−x로 피타고라스식을 세운다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_d267bbd637cfa2b930042abaa379773da85ee2eac4c3a464b8635e84ef39a29b",
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle AOB=108^\\circ$, $\\angle CDB=32^\\circ$일 때, $\\angle x$의 크기는? (4점)"
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle AOB=108^\\circ$, $\\angle CDB=32^\\circ$일 때, $\\angle x$의 크기는? (4점)"
+          },
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle AOB=108^\\circ$, $\\angle CDB=32^\\circ$일 때, $\\angle x$의 크기는? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle AOB=108^\\circ$, $\\angle CDB=32^\\circ$일 때, $\\angle x$의 크기는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "$\\angle AOB=108^\\circ$이므로 호 $ACB$의 크기는 $108^\\circ$이다.\n$\\angle CDB=32^\\circ$가 보는 호 $CB$는\n$2\\cdot32^\\circ=64^\\circ$이다.\n따라서 호 $AC$의 크기는\n$108^\\circ-64^\\circ=44^\\circ$이다.\n$\\angle AEC$는 호 $AC$에 대한 원주각이므로\n$x=\\dfrac{44^\\circ}{2}=22^\\circ$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심각108°의 호에서 원주각32°에 대응하는 호64°를 빼고 남은호44°의 원주각22°를 구한다."
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "$\\angle AOB=108^\\circ$이므로 호 $ACB$의 크기는 $108^\\circ$이다.\n$\\angle CDB=32^\\circ$가 보는 호 $CB$는\n$2\\cdot32^\\circ=64^\\circ$이다.\n따라서 호 $AC$의 크기는\n$108^\\circ-64^\\circ=44^\\circ$이다.\n$\\angle AEC$는 호 $AC$에 대한 원주각이므로\n$x=\\dfrac{44^\\circ}{2}=22^\\circ$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심각108°의 호에서 원주각32°에 대응하는 호64°를 빼고 남은호44°의 원주각22°를 구한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$\\angle AOB=108^\\circ$이므로 호 $ACB$의 크기는 $108^\\circ$이다.\n$\\angle CDB=32^\\circ$가 보는 호 $CB$는\n$2\\cdot32^\\circ=64^\\circ$이다.\n따라서 호 $AC$의 크기는\n$108^\\circ-64^\\circ=44^\\circ$이다.\n$\\angle AEC$는 호 $AC$에 대한 원주각이므로\n$x=\\dfrac{44^\\circ}{2}=22^\\circ$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심각108°의 호에서 원주각32°에 대응하는 호64°를 빼고 남은호44°의 원주각22°를 구한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$\\angle AOB=108^\\circ$이므로 호 $ACB$의 크기는 $108^\\circ$이다.\n$\\angle CDB=32^\\circ$가 보는 호 $CB$는\n$2\\cdot32^\\circ=64^\\circ$이다.\n따라서 호 $AC$의 크기는\n$108^\\circ-64^\\circ=44^\\circ$이다.\n$\\angle AEC$는 호 $AC$에 대한 원주각이므로\n$x=\\dfrac{44^\\circ}{2}=22^\\circ$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심각108°의 호에서 원주각32°에 대응하는 호64°를 빼고 남은호44°의 원주각22°를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "중심각108°의 호에서 원주각32°에 대응하는 호64°를 빼고 남은호44°의 원주각22°를 구한다.",
+        "method": "중심각108°의 호에서 원주각32°에 대응하는 호64°를 빼고 남은호44°의 원주각22°를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "중심각108°의 호에서 원주각32°에 대응하는 호64°를 빼고 남은호44°의 원주각22°를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_2da177ca5b9cb8afe1667075f4d385cb8e12ee2b55d59adb58e30c56a9b5022a",
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$ 위에 $\\overset{\\frown}{AB}=\\overset{\\frown}{BC}=\\overset{\\frown}{CD}$인 점 $A,B,C,D$를 잡아 $\\overline{AB}$와 $\\overline{CD}$의 연장선의 교점을 $E$라고 하자. $\\angle AED=50^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$ 위에 $\\overset{\\frown}{AB}=\\overset{\\frown}{BC}=\\overset{\\frown}{CD}$인 점 $A,B,C,D$를 잡아 $\\overline{AB}$와 $\\overline{CD}$의 연장선의 교점을 $E$라고 하자. $\\angle AED=50^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "등거리",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$ 위에 $\\overset{\\frown}{AB}=\\overset{\\frown}{BC}=\\overset{\\frown}{CD}$인 점 $A,B,C,D$를 잡아 $\\overline{AB}$와 $\\overline{CD}$의 연장선의 교점을 $E$라고 하자. $\\angle AED=50^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$ 위에 $\\overset{\\frown}{AB}=\\overset{\\frown}{BC}=\\overset{\\frown}{CD}$인 점 $A,B,C,D$를 잡아 $\\overline{AB}$와 $\\overline{CD}$의 연장선의 교점을 $E$라고 하자. $\\angle AED=50^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$ 위에 $\\overset{\\frown}{AB}=\\overset{\\frown}{BC}=\\overset{\\frown}{CD}$인 점 $A,B,C,D$를 잡아 $\\overline{AB}$와 $\\overline{CD}$의 연장선의 교점을 $E$라고 하자. $\\angle AED=50^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$ 위에 $\\overset{\\frown}{AB}=\\overset{\\frown}{BC}=\\overset{\\frown}{CD}$인 점 $A,B,C,D$를 잡아 $\\overline{AB}$와 $\\overline{CD}$의 연장선의 교점을 $E$라고 하자. $\\angle AED=50^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "같은 크기의 호 $AB,BC,CD$를 각각 $t$라 하자.\n두 할선이 원 밖에서 만날 때\n$\\angle AED=\\dfrac12(\\overset{\\frown}{BC}-\\overset{\\frown}{AD})$이다.\n따라서\n$50^\\circ=\\dfrac12\\{t-(360^\\circ-3t)\\}$\n$100^\\circ=4t-360^\\circ$\n$t=115^\\circ$이다.\n호 $AD$의 작은 쪽 크기는\n$360^\\circ-3t=15^\\circ$이다.\n$\\angle ACD$는 이 호에 대한 원주각이므로\n$x=\\dfrac{15^\\circ}{2}=7.5^\\circ$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세같은호를 t로 두어 외부할선각50°의 호차조건과 전체호360°로 t115°를 얻고 남은호15°의 원주각을 구한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 크기의 호 $AB,BC,CD$를 각각 $t$라 하자.\n두 할선이 원 밖에서 만날 때\n$\\angle AED=\\dfrac12(\\overset{\\frown}{BC}-\\overset{\\frown}{AD})$이다.\n따라서\n$50^\\circ=\\dfrac12\\{t-(360^\\circ-3t)\\}$\n$100^\\circ=4t-360^\\circ$\n$t=115^\\circ$이다.\n호 $AD$의 작은 쪽 크기는\n$360^\\circ-3t=15^\\circ$이다.\n$\\angle ACD$는 이 호에 대한 원주각이므로\n$x=\\dfrac{15^\\circ}{2}=7.5^\\circ$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세같은호를 t로 두어 외부할선각50°의 호차조건과 전체호360°로 t115°를 얻고 남은호15°의 원주각을 구한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "같은 크기의 호 $AB,BC,CD$를 각각 $t$라 하자.\n두 할선이 원 밖에서 만날 때\n$\\angle AED=\\dfrac12(\\overset{\\frown}{BC}-\\overset{\\frown}{AD})$이다.\n따라서\n$50^\\circ=\\dfrac12\\{t-(360^\\circ-3t)\\}$\n$100^\\circ=4t-360^\\circ$\n$t=115^\\circ$이다.\n호 $AD$의 작은 쪽 크기는\n$360^\\circ-3t=15^\\circ$이다.\n$\\angle ACD$는 이 호에 대한 원주각이므로\n$x=\\dfrac{15^\\circ}{2}=7.5^\\circ$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세같은호를 t로 두어 외부할선각50°의 호차조건과 전체호360°로 t115°를 얻고 남은호15°의 원주각을 구한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "같은 크기의 호 $AB,BC,CD$를 각각 $t$라 하자.\n두 할선이 원 밖에서 만날 때\n$\\angle AED=\\dfrac12(\\overset{\\frown}{BC}-\\overset{\\frown}{AD})$이다.\n따라서\n$50^\\circ=\\dfrac12\\{t-(360^\\circ-3t)\\}$\n$100^\\circ=4t-360^\\circ$\n$t=115^\\circ$이다.\n호 $AD$의 작은 쪽 크기는\n$360^\\circ-3t=15^\\circ$이다.\n$\\angle ACD$는 이 호에 대한 원주각이므로\n$x=\\dfrac{15^\\circ}{2}=7.5^\\circ$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세같은호를 t로 두어 외부할선각50°의 호차조건과 전체호360°로 t115°를 얻고 남은호15°의 원주각을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "세같은호를 t로 두어 외부할선각50°의 호차조건과 전체호360°로 t115°를 얻고 남은호15°의 원주각을 구한다.",
+        "method": "세같은호를 t로 두어 외부할선각50°의 호차조건과 전체호360°로 t115°를 얻고 남은호15°의 원주각을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "세같은호를 t로 두어 외부할선각50°의 호차조건과 전체호360°로 t115°를 얻고 남은호15°의 원주각을 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_827475201b014f8ce261e1c202bef810d2c7449a127567369c26debd4325cf20",
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overrightarrow{PA}$, $\\overrightarrow{PB}$는 원 $O$의 접선이다. $\\angle APB=44^\\circ$, $\\angle CAD=84^\\circ$일 때,\n$\\angle CBE$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overrightarrow{PA}$, $\\overrightarrow{PB}$는 원 $O$의 접선이다. $\\angle APB=44^\\circ$, $\\angle CAD=84^\\circ$일 때,\n$\\angle CBE$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overrightarrow{PA}$, $\\overrightarrow{PB}$는 원 $O$의 접선이다. $\\angle APB=44^\\circ$, $\\angle CAD=84^\\circ$일 때,\n$\\angle CBE$의 크기를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overrightarrow{PA}$, $\\overrightarrow{PB}$는 원 $O$의 접선이다. $\\angle APB=44^\\circ$, $\\angle CAD=84^\\circ$일 때,\n$\\angle CBE$의 크기를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "두 접선이 이루는 각과 두 접점에 대한 중심각의 합은 $180^\\circ$이다.\n따라서\n$\\angle AOB=180^\\circ-44^\\circ=136^\\circ$이다.\n접선과 현 $AC$가 이루는 각이 $84^\\circ$이므로, 그에 대응하는 호 $AC$는\n$2\\cdot84^\\circ=168^\\circ$이다.\n원의 전체 호의 합은 $360^\\circ$이므로\n$\\overset{\\frown}{BC}=360^\\circ-136^\\circ-168^\\circ=56^\\circ$이다.\n접선과 현 $BC$가 이루는 각은 호 $BC$에 대한 원주각과 같으므로\n$\\angle CBE=\\dfrac{56^\\circ}{2}=28^\\circ$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두접선각44°로 접점중심각136°를 얻고 접현각84°의 호168°를 제외한 호56°의 접현각을 구한다."
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "두 접선이 이루는 각과 두 접점에 대한 중심각의 합은 $180^\\circ$이다.\n따라서\n$\\angle AOB=180^\\circ-44^\\circ=136^\\circ$이다.\n접선과 현 $AC$가 이루는 각이 $84^\\circ$이므로, 그에 대응하는 호 $AC$는\n$2\\cdot84^\\circ=168^\\circ$이다.\n원의 전체 호의 합은 $360^\\circ$이므로\n$\\overset{\\frown}{BC}=360^\\circ-136^\\circ-168^\\circ=56^\\circ$이다.\n접선과 현 $BC$가 이루는 각은 호 $BC$에 대한 원주각과 같으므로\n$\\angle CBE=\\dfrac{56^\\circ}{2}=28^\\circ$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두접선각44°로 접점중심각136°를 얻고 접현각84°의 호168°를 제외한 호56°의 접현각을 구한다."
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "두 접선이 이루는 각과 두 접점에 대한 중심각의 합은 $180^\\circ$이다.\n따라서\n$\\angle AOB=180^\\circ-44^\\circ=136^\\circ$이다.\n접선과 현 $AC$가 이루는 각이 $84^\\circ$이므로, 그에 대응하는 호 $AC$는\n$2\\cdot84^\\circ=168^\\circ$이다.\n원의 전체 호의 합은 $360^\\circ$이므로\n$\\overset{\\frown}{BC}=360^\\circ-136^\\circ-168^\\circ=56^\\circ$이다.\n접선과 현 $BC$가 이루는 각은 호 $BC$에 대한 원주각과 같으므로\n$\\angle CBE=\\dfrac{56^\\circ}{2}=28^\\circ$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두접선각44°로 접점중심각136°를 얻고 접현각84°의 호168°를 제외한 호56°의 접현각을 구한다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "두 접선이 이루는 각과 두 접점에 대한 중심각의 합은 $180^\\circ$이다.\n따라서\n$\\angle AOB=180^\\circ-44^\\circ=136^\\circ$이다.\n접선과 현 $AC$가 이루는 각이 $84^\\circ$이므로, 그에 대응하는 호 $AC$는\n$2\\cdot84^\\circ=168^\\circ$이다.\n원의 전체 호의 합은 $360^\\circ$이므로\n$\\overset{\\frown}{BC}=360^\\circ-136^\\circ-168^\\circ=56^\\circ$이다.\n접선과 현 $BC$가 이루는 각은 호 $BC$에 대한 원주각과 같으므로\n$\\angle CBE=\\dfrac{56^\\circ}{2}=28^\\circ$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두접선각44°로 접점중심각136°를 얻고 접현각84°의 호168°를 제외한 호56°의 접현각을 구한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "두 접선이 이루는 각과 두 접점에 대한 중심각의 합은 $180^\\circ$이다.\n따라서\n$\\angle AOB=180^\\circ-44^\\circ=136^\\circ$이다.\n접선과 현 $AC$가 이루는 각이 $84^\\circ$이므로, 그에 대응하는 호 $AC$는\n$2\\cdot84^\\circ=168^\\circ$이다.\n원의 전체 호의 합은 $360^\\circ$이므로\n$\\overset{\\frown}{BC}=360^\\circ-136^\\circ-168^\\circ=56^\\circ$이다.\n접선과 현 $BC$가 이루는 각은 호 $BC$에 대한 원주각과 같으므로\n$\\angle CBE=\\dfrac{56^\\circ}{2}=28^\\circ$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두접선각44°로 접점중심각136°를 얻고 접현각84°의 호168°를 제외한 호56°의 접현각을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두접선각44°로 접점중심각136°를 얻고 접현각84°의 호168°를 제외한 호56°의 접현각을 구한다.",
+        "method": "두접선각44°로 접점중심각136°를 얻고 접현각84°의 호168°를 제외한 호56°의 접현각을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두접선각44°로 접점중심각136°를 얻고 접현각84°의 호168°를 제외한 호56°의 접현각을 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_95879d5e66d40316343145bb6971df8d1c3d98b3f1e14c25dc925646a9168735",
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림과 같이 오각형 $ABCDE$가 원 $O$에 내접하고, $\\angle COD=86^\\circ$일 때,\n$\\angle B+\\angle E$의 크기를 구하면?"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "다음 그림과 같이 오각형 $ABCDE$가 원 $O$에 내접하고, $\\angle COD=86^\\circ$일 때,\n$\\angle B+\\angle E$의 크기를 구하면?"
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 오각형 $ABCDE$가 원 $O$에 내접하고, $\\angle COD=86^\\circ$일 때,\n$\\angle B+\\angle E$의 크기를 구하면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 오각형 $ABCDE$가 원 $O$에 내접하고, $\\angle COD=86^\\circ$일 때,\n$\\angle B+\\angle E$의 크기를 구하면?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "다음 그림과 같이 오각형 $ABCDE$가 원 $O$에 내접하고, $\\angle COD=86^\\circ$일 때,\n$\\angle B+\\angle E$의 크기를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "오각형이 원에 내접하므로 $\\angle B$와 $\\angle E$는 원주각이다.\n원 위의 점 순서에 따라\n$\\angle B=\\dfrac12\\left(\\overset{\\frown}{AE}+\\overset{\\frown}{ED}+\\overset{\\frown}{DC}\\right)$,\n$\\angle E=\\dfrac12\\left(\\overset{\\frown}{DC}+\\overset{\\frown}{CB}+\\overset{\\frown}{BA}\\right)$이다.\n두 괄호를 더하면 원 전체의 호가 한 번씩 더해지고, 호 $CD$는 한 번 더 포함된다.\n따라서\n$\\angle B+\\angle E=\\dfrac12\\left(360^\\circ+\\overset{\\frown}{CD}\\right)$\n$=\\dfrac12(360^\\circ+86^\\circ)$\n$=223^\\circ$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내접오각형의 두원주각이 보는 호를 더하면 전체원360°에 CD호86°가 한번 더해짐을 세어 합223°를 구한다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "오각형이 원에 내접하므로 $\\angle B$와 $\\angle E$는 원주각이다.\n원 위의 점 순서에 따라\n$\\angle B=\\dfrac12\\left(\\overset{\\frown}{AE}+\\overset{\\frown}{ED}+\\overset{\\frown}{DC}\\right)$,\n$\\angle E=\\dfrac12\\left(\\overset{\\frown}{DC}+\\overset{\\frown}{CB}+\\overset{\\frown}{BA}\\right)$이다.\n두 괄호를 더하면 원 전체의 호가 한 번씩 더해지고, 호 $CD$는 한 번 더 포함된다.\n따라서\n$\\angle B+\\angle E=\\dfrac12\\left(360^\\circ+\\overset{\\frown}{CD}\\right)$\n$=\\dfrac12(360^\\circ+86^\\circ)$\n$=223^\\circ$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내접오각형의 두원주각이 보는 호를 더하면 전체원360°에 CD호86°가 한번 더해짐을 세어 합223°를 구한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "오각형이 원에 내접하므로 $\\angle B$와 $\\angle E$는 원주각이다.\n원 위의 점 순서에 따라\n$\\angle B=\\dfrac12\\left(\\overset{\\frown}{AE}+\\overset{\\frown}{ED}+\\overset{\\frown}{DC}\\right)$,\n$\\angle E=\\dfrac12\\left(\\overset{\\frown}{DC}+\\overset{\\frown}{CB}+\\overset{\\frown}{BA}\\right)$이다.\n두 괄호를 더하면 원 전체의 호가 한 번씩 더해지고, 호 $CD$는 한 번 더 포함된다.\n따라서\n$\\angle B+\\angle E=\\dfrac12\\left(360^\\circ+\\overset{\\frown}{CD}\\right)$\n$=\\dfrac12(360^\\circ+86^\\circ)$\n$=223^\\circ$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내접오각형의 두원주각이 보는 호를 더하면 전체원360°에 CD호86°가 한번 더해짐을 세어 합223°를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "내접오각형의 두원주각이 보는 호를 더하면 전체원360°에 CD호86°가 한번 더해짐을 세어 합223°를 구한다.",
+        "method": "내접오각형의 두원주각이 보는 호를 더하면 전체원360°에 CD호86°가 한번 더해짐을 세어 합223°를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "내접오각형의 두원주각이 보는 호를 더하면 전체원360°에 CD호86°가 한번 더해짐을 세어 합223°를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_bd09cd951ebfc04f98d262c2d40952e71bd6dd7d7734d117a9d2bdeb9c49ade5",
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "자료 전체의 특징이나 중심경향을 하나의 수로 나타낸 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대푯값",
+            "src": "stem",
+            "quote": "자료 전체의 특징이나 중심경향을 하나의 수로 나타낸 값은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "자료 전체의 특징이나 중심경향을 하나의 수로 나타낸 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대푯값",
+            "src": "solution",
+            "quote": "자료 전체의 특징이나 중심 경향을 대표하는 하나의 수를 대푯값이라 한다.\n보기 중 이에 해당하는 것은 평균이다.\n분산과 표준편차는 자료의 흩어진 정도를 나타내고, 변량은 자료의 각 값이며, 계급값은 계급의 가운데 값이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대푯값의 정의에 해당하는 평균을 산포도·개별변량·계급값과 구별한다."
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "자료 전체의 특징이나 중심 경향을 대표하는 하나의 수를 대푯값이라 한다.\n보기 중 이에 해당하는 것은 평균이다.\n분산과 표준편차는 자료의 흩어진 정도를 나타내고, 변량은 자료의 각 값이며, 계급값은 계급의 가운데 값이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대푯값의 정의에 해당하는 평균을 산포도·개별변량·계급값과 구별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "대푯값의 정의에 해당하는 평균을 산포도·개별변량·계급값과 구별한다.",
+        "method": "대푯값의 정의에 해당하는 평균을 산포도·개별변량·계급값과 구별한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "대푯값의 정의에 해당하는 평균을 산포도·개별변량·계급값과 구별한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_634c6f83971a786ab1989ef4524acccc78b4211718ce5f9cffc0951406328470",
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "세 개의 변량 $x,y,z$의 평균이 $m$일 때, $\\dfrac{x-m}{a}$, $\\dfrac{y-m}{a}$, $\\dfrac{z-m}{a}$의 평균은? (4점)"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "세 개의 변량 $x,y,z$의 평균이 $m$일 때, $\\dfrac{x-m}{a}$, $\\dfrac{y-m}{a}$, $\\dfrac{z-m}{a}$의 평균은? (4점)"
+          },
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "세 개의 변량 $x,y,z$의 평균이 $m$일 때, $\\dfrac{x-m}{a}$, $\\dfrac{y-m}{a}$, $\\dfrac{z-m}{a}$의 평균은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "세 개의 변량 $x,y,z$의 평균이 $m$일 때, $\\dfrac{x-m}{a}$, $\\dfrac{y-m}{a}$, $\\dfrac{z-m}{a}$의 평균은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "세 변량의 평균이 $m$이므로\n$x+y+z=3m$이다.\n세 식의 평균은\n$\\dfrac13\\left(\\dfrac{x-m}{a}+\\dfrac{y-m}{a}+\\dfrac{z-m}{a}\\right)$\n$=\\dfrac{x+y+z-3m}{3a}$\n$=\\dfrac{3m-3m}{3a}=0$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균m에서 x+y+z3m을 얻고 중심화한 세값의 합0을 공통분모a로 나누어 평균0을 확인한다. 상수의 이동까지 포함하여 k배만을 다루는 TPL의 범위를 넘는다."
+          },
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "세 변량의 평균이 $m$이므로\n$x+y+z=3m$이다.\n세 식의 평균은\n$\\dfrac13\\left(\\dfrac{x-m}{a}+\\dfrac{y-m}{a}+\\dfrac{z-m}{a}\\right)$\n$=\\dfrac{x+y+z-3m}{3a}$\n$=\\dfrac{3m-3m}{3a}=0$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균m에서 x+y+z3m을 얻고 중심화한 세값의 합0을 공통분모a로 나누어 평균0을 확인한다. 상수의 이동까지 포함하여 k배만을 다루는 TPL의 범위를 넘는다."
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "세 변량의 평균이 $m$이므로\n$x+y+z=3m$이다.\n세 식의 평균은\n$\\dfrac13\\left(\\dfrac{x-m}{a}+\\dfrac{y-m}{a}+\\dfrac{z-m}{a}\\right)$\n$=\\dfrac{x+y+z-3m}{3a}$\n$=\\dfrac{3m-3m}{3a}=0$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균m에서 x+y+z3m을 얻고 중심화한 세값의 합0을 공통분모a로 나누어 평균0을 확인한다. 상수의 이동까지 포함하여 k배만을 다루는 TPL의 범위를 넘는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "평균m에서 x+y+z3m을 얻고 중심화한 세값의 합0을 공통분모a로 나누어 평균0을 확인한다. 상수의 이동까지 포함하여 k배만을 다루는 TPL의 범위를 넘는다.",
+        "method": "평균m에서 x+y+z3m을 얻고 중심화한 세값의 합0을 공통분모a로 나누어 평균0을 확인한다. 상수의 이동까지 포함하여 k배만을 다루는 TPL의 범위를 넘는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "평균m에서 x+y+z3m을 얻고 중심화한 세값의 합0을 공통분모a로 나누어 평균0을 확인한다. 상수의 이동까지 포함하여 k배만을 다루는 TPL의 범위를 넘는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ea4cd35bc2952d4793a5d1f77d59c2cac29a50543caa2862136901ca242147da",
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "다음 자료의 평균이 $1$이고, 최빈값이 $2$일 때, 중앙값을 구하면? (단, $a,b$는 정수이고 $a<b$이다.) (4점)\\n자료: $2,\\ b,\\ -3,\\ 6,\\ 5,\\ a,\\ -4$"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "다음 자료의 평균이 $1$이고, 최빈값이 $2$일 때, 중앙값을 구하면? (단, $a,b$는 정수이고 $a<b$이다.) (4점)\\n자료: $2,\\ b,\\ -3,\\ 6,\\ 5,\\ a,\\ -4$"
+          },
+          {
+            "term": "최빈값",
+            "src": "stem",
+            "quote": "다음 자료의 평균이 $1$이고, 최빈값이 $2$일 때, 중앙값을 구하면? (단, $a,b$는 정수이고 $a<b$이다.) (4점)\\n자료: $2,\\ b,\\ -3,\\ 6,\\ 5,\\ a,\\ -4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "다음 자료의 평균이 $1$이고, 최빈값이 $2$일 때, 중앙값을 구하면? (단, $a,b$는 정수이고 $a<b$이다.) (4점)\\n자료: $2,\\ b,\\ -3,\\ 6,\\ 5,\\ a,\\ -4$"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "자료가 7개이고 평균이 1이므로 전체 합은\n$1\\cdot7=7$이다.\n고정된 다섯 수의 합은\n$2+(-3)+6+5+(-4)=6$이다.\n따라서\n$a+b=7-6=1$이다.\n자료에 2는 이미 한 번 있다.\n나머지 고정된 수는 서로 다르므로 최빈값이 2가 되려면 $a$ 또는 $b$ 중 하나가 2여야 한다.\n$a=2$이면 $b=-1$이 되어 $a<b$와 모순이다.\n따라서 $b=2$이고\n$a=1-2=-1$이다.\n자료를 작은 순서대로 쓰면\n$-4,-3,-1,2,2,5,6$이다.\n가운데 네 번째 값이 중앙값이므로\n중앙값은 2이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로a+b1을 정하고 최빈값2가 되도록 두누락값중 하나를2로 두며a<b와합으로 값을 확정한 뒤 중앙값을 읽는다."
+          },
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "자료가 7개이고 평균이 1이므로 전체 합은\n$1\\cdot7=7$이다.\n고정된 다섯 수의 합은\n$2+(-3)+6+5+(-4)=6$이다.\n따라서\n$a+b=7-6=1$이다.\n자료에 2는 이미 한 번 있다.\n나머지 고정된 수는 서로 다르므로 최빈값이 2가 되려면 $a$ 또는 $b$ 중 하나가 2여야 한다.\n$a=2$이면 $b=-1$이 되어 $a<b$와 모순이다.\n따라서 $b=2$이고\n$a=1-2=-1$이다.\n자료를 작은 순서대로 쓰면\n$-4,-3,-1,2,2,5,6$이다.\n가운데 네 번째 값이 중앙값이므로\n중앙값은 2이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로a+b1을 정하고 최빈값2가 되도록 두누락값중 하나를2로 두며a<b와합으로 값을 확정한 뒤 중앙값을 읽는다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "자료가 7개이고 평균이 1이므로 전체 합은\n$1\\cdot7=7$이다.\n고정된 다섯 수의 합은\n$2+(-3)+6+5+(-4)=6$이다.\n따라서\n$a+b=7-6=1$이다.\n자료에 2는 이미 한 번 있다.\n나머지 고정된 수는 서로 다르므로 최빈값이 2가 되려면 $a$ 또는 $b$ 중 하나가 2여야 한다.\n$a=2$이면 $b=-1$이 되어 $a<b$와 모순이다.\n따라서 $b=2$이고\n$a=1-2=-1$이다.\n자료를 작은 순서대로 쓰면\n$-4,-3,-1,2,2,5,6$이다.\n가운데 네 번째 값이 중앙값이므로\n중앙값은 2이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로a+b1을 정하고 최빈값2가 되도록 두누락값중 하나를2로 두며a<b와합으로 값을 확정한 뒤 중앙값을 읽는다."
+          },
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "자료가 7개이고 평균이 1이므로 전체 합은\n$1\\cdot7=7$이다.\n고정된 다섯 수의 합은\n$2+(-3)+6+5+(-4)=6$이다.\n따라서\n$a+b=7-6=1$이다.\n자료에 2는 이미 한 번 있다.\n나머지 고정된 수는 서로 다르므로 최빈값이 2가 되려면 $a$ 또는 $b$ 중 하나가 2여야 한다.\n$a=2$이면 $b=-1$이 되어 $a<b$와 모순이다.\n따라서 $b=2$이고\n$a=1-2=-1$이다.\n자료를 작은 순서대로 쓰면\n$-4,-3,-1,2,2,5,6$이다.\n가운데 네 번째 값이 중앙값이므로\n중앙값은 2이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로a+b1을 정하고 최빈값2가 되도록 두누락값중 하나를2로 두며a<b와합으로 값을 확정한 뒤 중앙값을 읽는다."
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "자료가 7개이고 평균이 1이므로 전체 합은\n$1\\cdot7=7$이다.\n고정된 다섯 수의 합은\n$2+(-3)+6+5+(-4)=6$이다.\n따라서\n$a+b=7-6=1$이다.\n자료에 2는 이미 한 번 있다.\n나머지 고정된 수는 서로 다르므로 최빈값이 2가 되려면 $a$ 또는 $b$ 중 하나가 2여야 한다.\n$a=2$이면 $b=-1$이 되어 $a<b$와 모순이다.\n따라서 $b=2$이고\n$a=1-2=-1$이다.\n자료를 작은 순서대로 쓰면\n$-4,-3,-1,2,2,5,6$이다.\n가운데 네 번째 값이 중앙값이므로\n중앙값은 2이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로a+b1을 정하고 최빈값2가 되도록 두누락값중 하나를2로 두며a<b와합으로 값을 확정한 뒤 중앙값을 읽는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "다음 자료의 평균이 $1$이고, 최빈값이 $2$일 때, 중앙값을 구하면? (단, $a,b$는 정수이고 $a<b$이다.) (4점)\\n자료: $2,\\ b,\\ -3,\\ 6,\\ 5,\\ a,\\ -4$"
+          },
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "다음 자료의 평균이 $1$이고, 최빈값이 $2$일 때, 중앙값을 구하면? (단, $a,b$는 정수이고 $a<b$이다.) (4점)\\n자료: $2,\\ b,\\ -3,\\ 6,\\ 5,\\ a,\\ -4$"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "평균으로a+b1을 정하고 최빈값2가 되도록 두누락값중 하나를2로 두며a<b와합으로 값을 확정한 뒤 중앙값을 읽는다.",
+        "method": "평균으로a+b1을 정하고 최빈값2가 되도록 두누락값중 하나를2로 두며a<b와합으로 값을 확정한 뒤 중앙값을 읽는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "평균으로a+b1을 정하고 최빈값2가 되도록 두누락값중 하나를2로 두며a<b와합으로 값을 확정한 뒤 중앙값을 읽는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_fdfbca8fae540bf48874a0dbc7fc61ba4f19491f7e39c4e30aa83edd69adb8b1",
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "상, 중, 하 3수준으로 수준별 이동수업을 하는 어느 학급의 중간고사 수학 성적이다. 이 학급 수학 과목의 평균은? (4점)"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "상, 중, 하 3수준으로 수준별 이동수업을 하는 어느 학급의 중간고사 수학 성적이다. 이 학급 수학 과목의 평균은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "상, 중, 하 3수준으로 수준별 이동수업을 하는 어느 학급의 중간고사 수학 성적이다. 이 학급 수학 과목의 평균은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "수준별 학생 수와 평균을 곱해 전체 점수의 합을 구한다.\n$12\\cdot90=1080$,\n$15\\cdot80=1200$,\n$12\\cdot70=840$이다.\n전체 점수의 합은\n$1080+1200+840=3120$이고 학생 수는\n$12+15+12=39$명이다.\n따라서 평균은\n$\\dfrac{3120}{39}=80$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각수준의 인원수와평균을 곱해 점수합을 복원하고 총인원으로 나누어 전체평균을 얻는다. 하나의자료 평균·중앙값·최빈값 결합TPL과는 다르다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "수준별 학생 수와 평균을 곱해 전체 점수의 합을 구한다.\n$12\\cdot90=1080$,\n$15\\cdot80=1200$,\n$12\\cdot70=840$이다.\n전체 점수의 합은\n$1080+1200+840=3120$이고 학생 수는\n$12+15+12=39$명이다.\n따라서 평균은\n$\\dfrac{3120}{39}=80$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각수준의 인원수와평균을 곱해 점수합을 복원하고 총인원으로 나누어 전체평균을 얻는다. 하나의자료 평균·중앙값·최빈값 결합TPL과는 다르다."
+          },
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "수준별 학생 수와 평균을 곱해 전체 점수의 합을 구한다.\n$12\\cdot90=1080$,\n$15\\cdot80=1200$,\n$12\\cdot70=840$이다.\n전체 점수의 합은\n$1080+1200+840=3120$이고 학생 수는\n$12+15+12=39$명이다.\n따라서 평균은\n$\\dfrac{3120}{39}=80$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각수준의 인원수와평균을 곱해 점수합을 복원하고 총인원으로 나누어 전체평균을 얻는다. 하나의자료 평균·중앙값·최빈값 결합TPL과는 다르다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "각수준의 인원수와평균을 곱해 점수합을 복원하고 총인원으로 나누어 전체평균을 얻는다. 하나의자료 평균·중앙값·최빈값 결합TPL과는 다르다.",
+        "method": "각수준의 인원수와평균을 곱해 점수합을 복원하고 총인원으로 나누어 전체평균을 얻는다. 하나의자료 평균·중앙값·최빈값 결합TPL과는 다르다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "각수준의 인원수와평균을 곱해 점수합을 복원하고 총인원으로 나누어 전체평균을 얻는다. 하나의자료 평균·중앙값·최빈값 결합TPL과는 다르다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_b15896ce344cd49498b2eba6483ee09615691dffe8440f34fb3a216c7267b855",
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "세 수 $x,y,z$의 평균이 $4$, 표준편차가 $\\sqrt2$일 때, 세 수 $xy,yz,zx$의 평균은? (5점)"
+          },
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "세 수 $x,y,z$의 평균이 $4$, 표준편차가 $\\sqrt2$일 때, 세 수 $xy,yz,zx$의 평균은? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "세 수 $x,y,z$의 평균이 $4$, 표준편차가 $\\sqrt2$일 때, 세 수 $xy,yz,zx$의 평균은? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "평균이 $4$이므로\n$x+y+z=12$이다.\n표준편차가 $\\sqrt2$이므로 분산은 $2$이다.\n분산 정의에서\n$\\dfrac{x^2+y^2+z^2}{3}-4^2=2$\n이므로\n$x^2+y^2+z^2=54$이다.\n따라서\n$xy+yz+zx=\\dfrac{(x+y+z)^2-(x^2+y^2+z^2)}2$\n$=\\dfrac{144-54}{2}=45$이다.\n구하는 평균은\n$\\dfrac{xy+yz+zx}{3}=\\dfrac{45}{3}=15$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로변량합12,표준편차로분산2와제곱합54를 얻고 (x+y+z)²의전개에서 쌍곱합45를 구해 평균을 낸다. 확률변수의분산TPL은 재사용하지 않는다."
+          },
+          {
+            "term": "제곱합",
+            "src": "solution",
+            "quote": "평균이 $4$이므로\n$x+y+z=12$이다.\n표준편차가 $\\sqrt2$이므로 분산은 $2$이다.\n분산 정의에서\n$\\dfrac{x^2+y^2+z^2}{3}-4^2=2$\n이므로\n$x^2+y^2+z^2=54$이다.\n따라서\n$xy+yz+zx=\\dfrac{(x+y+z)^2-(x^2+y^2+z^2)}2$\n$=\\dfrac{144-54}{2}=45$이다.\n구하는 평균은\n$\\dfrac{xy+yz+zx}{3}=\\dfrac{45}{3}=15$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로변량합12,표준편차로분산2와제곱합54를 얻고 (x+y+z)²의전개에서 쌍곱합45를 구해 평균을 낸다. 확률변수의분산TPL은 재사용하지 않는다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "평균이 $4$이므로\n$x+y+z=12$이다.\n표준편차가 $\\sqrt2$이므로 분산은 $2$이다.\n분산 정의에서\n$\\dfrac{x^2+y^2+z^2}{3}-4^2=2$\n이므로\n$x^2+y^2+z^2=54$이다.\n따라서\n$xy+yz+zx=\\dfrac{(x+y+z)^2-(x^2+y^2+z^2)}2$\n$=\\dfrac{144-54}{2}=45$이다.\n구하는 평균은\n$\\dfrac{xy+yz+zx}{3}=\\dfrac{45}{3}=15$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로변량합12,표준편차로분산2와제곱합54를 얻고 (x+y+z)²의전개에서 쌍곱합45를 구해 평균을 낸다. 확률변수의분산TPL은 재사용하지 않는다."
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "평균이 $4$이므로\n$x+y+z=12$이다.\n표준편차가 $\\sqrt2$이므로 분산은 $2$이다.\n분산 정의에서\n$\\dfrac{x^2+y^2+z^2}{3}-4^2=2$\n이므로\n$x^2+y^2+z^2=54$이다.\n따라서\n$xy+yz+zx=\\dfrac{(x+y+z)^2-(x^2+y^2+z^2)}2$\n$=\\dfrac{144-54}{2}=45$이다.\n구하는 평균은\n$\\dfrac{xy+yz+zx}{3}=\\dfrac{45}{3}=15$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로변량합12,표준편차로분산2와제곱합54를 얻고 (x+y+z)²의전개에서 쌍곱합45를 구해 평균을 낸다. 확률변수의분산TPL은 재사용하지 않는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "평균으로변량합12,표준편차로분산2와제곱합54를 얻고 (x+y+z)²의전개에서 쌍곱합45를 구해 평균을 낸다. 확률변수의분산TPL은 재사용하지 않는다.",
+        "method": "평균으로변량합12,표준편차로분산2와제곱합54를 얻고 (x+y+z)²의전개에서 쌍곱합45를 구해 평균을 낸다. 확률변수의분산TPL은 재사용하지 않는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "평균으로변량합12,표준편차로분산2와제곱합54를 얻고 (x+y+z)²의전개에서 쌍곱합45를 구해 평균을 낸다. 확률변수의분산TPL은 재사용하지 않는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ea932e6e3fe714c96f0beb4e34da7d55e8bc7469ee52466c656a4c2f8b73d50a",
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "[서술형 1] 다음 그림에서 $\\triangle ABC$의 넓이를 구하여라. (풀이 과정을 자세히 쓰시오.) (5점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "[서술형 1] 다음 그림에서 $\\triangle ABC$의 넓이를 구하여라. (풀이 과정을 자세히 쓰시오.) (5점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "[서술형 1] 다음 그림에서 $\\triangle ABC$의 넓이를 구하여라. (풀이 과정을 자세히 쓰시오.) (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "[서술형 1] 다음 그림에서 $\\triangle ABC$의 넓이를 구하여라. (풀이 과정을 자세히 쓰시오.) (5점)"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "[서술형 1] 다음 그림에서 $\\triangle ABC$의 넓이를 구하여라. (풀이 과정을 자세히 쓰시오.) (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "점 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n직각삼각형 $ABH$에서\n$\\tan60^\\circ=\\dfrac{AH}{BH}$이므로 $BH=\\dfrac{AH}{\\sqrt3}$이다.\n직각삼각형 $ACH$에서 $\\angle ACH=45^\\circ$이므로 $CH=AH$이다.\n$BC=BH+CH=10$이므로\n$\\dfrac{AH}{\\sqrt3}+AH=10$\n$AH=\\dfrac{10\\sqrt3}{\\sqrt3+1}=5(3-\\sqrt3)$cm이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot10\\cdot5(3-\\sqrt3)=25(3-\\sqrt3)\\rm\\,cm^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통높이h에 대한 두밑변길이를 h/√3,h로 두고 합10으로 높이를 구한 뒤 넓이를 계산한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "점 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n직각삼각형 $ABH$에서\n$\\tan60^\\circ=\\dfrac{AH}{BH}$이므로 $BH=\\dfrac{AH}{\\sqrt3}$이다.\n직각삼각형 $ACH$에서 $\\angle ACH=45^\\circ$이므로 $CH=AH$이다.\n$BC=BH+CH=10$이므로\n$\\dfrac{AH}{\\sqrt3}+AH=10$\n$AH=\\dfrac{10\\sqrt3}{\\sqrt3+1}=5(3-\\sqrt3)$cm이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot10\\cdot5(3-\\sqrt3)=25(3-\\sqrt3)\\rm\\,cm^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통높이h에 대한 두밑변길이를 h/√3,h로 두고 합10으로 높이를 구한 뒤 넓이를 계산한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "점 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n직각삼각형 $ABH$에서\n$\\tan60^\\circ=\\dfrac{AH}{BH}$이므로 $BH=\\dfrac{AH}{\\sqrt3}$이다.\n직각삼각형 $ACH$에서 $\\angle ACH=45^\\circ$이므로 $CH=AH$이다.\n$BC=BH+CH=10$이므로\n$\\dfrac{AH}{\\sqrt3}+AH=10$\n$AH=\\dfrac{10\\sqrt3}{\\sqrt3+1}=5(3-\\sqrt3)$cm이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot10\\cdot5(3-\\sqrt3)=25(3-\\sqrt3)\\rm\\,cm^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통높이h에 대한 두밑변길이를 h/√3,h로 두고 합10으로 높이를 구한 뒤 넓이를 계산한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "점 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n직각삼각형 $ABH$에서\n$\\tan60^\\circ=\\dfrac{AH}{BH}$이므로 $BH=\\dfrac{AH}{\\sqrt3}$이다.\n직각삼각형 $ACH$에서 $\\angle ACH=45^\\circ$이므로 $CH=AH$이다.\n$BC=BH+CH=10$이므로\n$\\dfrac{AH}{\\sqrt3}+AH=10$\n$AH=\\dfrac{10\\sqrt3}{\\sqrt3+1}=5(3-\\sqrt3)$cm이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot10\\cdot5(3-\\sqrt3)=25(3-\\sqrt3)\\rm\\,cm^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통높이h에 대한 두밑변길이를 h/√3,h로 두고 합10으로 높이를 구한 뒤 넓이를 계산한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "점 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n직각삼각형 $ABH$에서\n$\\tan60^\\circ=\\dfrac{AH}{BH}$이므로 $BH=\\dfrac{AH}{\\sqrt3}$이다.\n직각삼각형 $ACH$에서 $\\angle ACH=45^\\circ$이므로 $CH=AH$이다.\n$BC=BH+CH=10$이므로\n$\\dfrac{AH}{\\sqrt3}+AH=10$\n$AH=\\dfrac{10\\sqrt3}{\\sqrt3+1}=5(3-\\sqrt3)$cm이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot10\\cdot5(3-\\sqrt3)=25(3-\\sqrt3)\\rm\\,cm^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통높이h에 대한 두밑변길이를 h/√3,h로 두고 합10으로 높이를 구한 뒤 넓이를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "공통높이h에 대한 두밑변길이를 h/√3,h로 두고 합10으로 높이를 구한 뒤 넓이를 계산한다.",
+        "method": "공통높이h에 대한 두밑변길이를 h/√3,h로 두고 합10으로 높이를 구한 뒤 넓이를 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "공통높이h에 대한 두밑변길이를 h/√3,h로 두고 합10으로 높이를 구한 뒤 넓이를 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ae3585a7429e524954746a7584b4611c2ba8e9d8c82ac5528c706992d524ac53",
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "[서술형 2] 다음 그림과 같이 원에 내접하는 $\\square ABCD$의 변의 연장선의 교점을 각각 $E,F$라 한다. $\\square ABCD$의 내각의 크기를 구하는 과정을 모두 쓰시오. (단, $\\angle E=35^\\circ$, $\\angle F=45^\\circ$) (풀이 과정을 자세히 쓰시오.) (5점)"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "[서술형 2] 다음 그림과 같이 원에 내접하는 $\\square ABCD$의 변의 연장선의 교점을 각각 $E,F$라 한다. $\\square ABCD$의 내각의 크기를 구하는 과정을 모두 쓰시오. (단, $\\angle E=35^\\circ$, $\\angle F=45^\\circ$) (풀이 과정을 자세히 쓰시오.) (5점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "[서술형 2] 다음 그림과 같이 원에 내접하는 $\\square ABCD$의 변의 연장선의 교점을 각각 $E,F$라 한다. $\\square ABCD$의 내각의 크기를 구하는 과정을 모두 쓰시오. (단, $\\angle E=35^\\circ$, $\\angle F=45^\\circ$) (풀이 과정을 자세히 쓰시오.) (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "내각",
+            "src": "stem",
+            "quote": "[서술형 2] 다음 그림과 같이 원에 내접하는 $\\square ABCD$의 변의 연장선의 교점을 각각 $E,F$라 한다. $\\square ABCD$의 내각의 크기를 구하는 과정을 모두 쓰시오. (단, $\\angle E=35^\\circ$, $\\angle F=45^\\circ$) (풀이 과정을 자세히 쓰시오.) (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "평각",
+            "src": "solution",
+            "quote": "원 밖의 점 $E$에서 두 할선이 만나므로 삼각형 $EAD$를 본다.\n$\\angle EAD=180^\\circ-\\angle A$,\n$\\angle ADE=180^\\circ-\\angle D$이다.\n삼각형의 내각의 합을 쓰면\n$35^\\circ+(180^\\circ-\\angle A)+(180^\\circ-\\angle D)=180^\\circ$\n$\\angle A+\\angle D=215^\\circ$이다.\n점 $F$에서 만나는 두 할선으로 삼각형 $FCD$를 보면\n$\\angle FDC=180^\\circ-\\angle D$,\n$\\angle DCF=180^\\circ-\\angle C$이다.\n따라서\n$45^\\circ+(180^\\circ-\\angle D)+(180^\\circ-\\angle C)=180^\\circ$\n$\\angle C+\\angle D=225^\\circ$이다.\n사각형이 원에 내접하므로 마주 보는 각의 합은 $180^\\circ$이다.\n$\\angle A+\\angle C=180^\\circ$,\n$\\angle B+\\angle D=180^\\circ$이다.\n앞의 두 식을 더하고 $\\angle A+\\angle C=180^\\circ$를 빼면\n$2\\angle D=215^\\circ+225^\\circ-180^\\circ=260^\\circ$이다.\n따라서\n$\\angle D=130^\\circ$,\n$\\angle A=215^\\circ-130^\\circ=85^\\circ$,\n$\\angle C=225^\\circ-130^\\circ=95^\\circ$,\n$\\angle B=180^\\circ-130^\\circ=50^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두외부삼각형의 내각합으로 A+D215,C+D225를 얻고 내접사각형의대각합180과 연립하여 네각을 구한다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "원 밖의 점 $E$에서 두 할선이 만나므로 삼각형 $EAD$를 본다.\n$\\angle EAD=180^\\circ-\\angle A$,\n$\\angle ADE=180^\\circ-\\angle D$이다.\n삼각형의 내각의 합을 쓰면\n$35^\\circ+(180^\\circ-\\angle A)+(180^\\circ-\\angle D)=180^\\circ$\n$\\angle A+\\angle D=215^\\circ$이다.\n점 $F$에서 만나는 두 할선으로 삼각형 $FCD$를 보면\n$\\angle FDC=180^\\circ-\\angle D$,\n$\\angle DCF=180^\\circ-\\angle C$이다.\n따라서\n$45^\\circ+(180^\\circ-\\angle D)+(180^\\circ-\\angle C)=180^\\circ$\n$\\angle C+\\angle D=225^\\circ$이다.\n사각형이 원에 내접하므로 마주 보는 각의 합은 $180^\\circ$이다.\n$\\angle A+\\angle C=180^\\circ$,\n$\\angle B+\\angle D=180^\\circ$이다.\n앞의 두 식을 더하고 $\\angle A+\\angle C=180^\\circ$를 빼면\n$2\\angle D=215^\\circ+225^\\circ-180^\\circ=260^\\circ$이다.\n따라서\n$\\angle D=130^\\circ$,\n$\\angle A=215^\\circ-130^\\circ=85^\\circ$,\n$\\angle C=225^\\circ-130^\\circ=95^\\circ$,\n$\\angle B=180^\\circ-130^\\circ=50^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두외부삼각형의 내각합으로 A+D215,C+D225를 얻고 내접사각형의대각합180과 연립하여 네각을 구한다."
+          },
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "원 밖의 점 $E$에서 두 할선이 만나므로 삼각형 $EAD$를 본다.\n$\\angle EAD=180^\\circ-\\angle A$,\n$\\angle ADE=180^\\circ-\\angle D$이다.\n삼각형의 내각의 합을 쓰면\n$35^\\circ+(180^\\circ-\\angle A)+(180^\\circ-\\angle D)=180^\\circ$\n$\\angle A+\\angle D=215^\\circ$이다.\n점 $F$에서 만나는 두 할선으로 삼각형 $FCD$를 보면\n$\\angle FDC=180^\\circ-\\angle D$,\n$\\angle DCF=180^\\circ-\\angle C$이다.\n따라서\n$45^\\circ+(180^\\circ-\\angle D)+(180^\\circ-\\angle C)=180^\\circ$\n$\\angle C+\\angle D=225^\\circ$이다.\n사각형이 원에 내접하므로 마주 보는 각의 합은 $180^\\circ$이다.\n$\\angle A+\\angle C=180^\\circ$,\n$\\angle B+\\angle D=180^\\circ$이다.\n앞의 두 식을 더하고 $\\angle A+\\angle C=180^\\circ$를 빼면\n$2\\angle D=215^\\circ+225^\\circ-180^\\circ=260^\\circ$이다.\n따라서\n$\\angle D=130^\\circ$,\n$\\angle A=215^\\circ-130^\\circ=85^\\circ$,\n$\\angle C=225^\\circ-130^\\circ=95^\\circ$,\n$\\angle B=180^\\circ-130^\\circ=50^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두외부삼각형의 내각합으로 A+D215,C+D225를 얻고 내접사각형의대각합180과 연립하여 네각을 구한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "원 밖의 점 $E$에서 두 할선이 만나므로 삼각형 $EAD$를 본다.\n$\\angle EAD=180^\\circ-\\angle A$,\n$\\angle ADE=180^\\circ-\\angle D$이다.\n삼각형의 내각의 합을 쓰면\n$35^\\circ+(180^\\circ-\\angle A)+(180^\\circ-\\angle D)=180^\\circ$\n$\\angle A+\\angle D=215^\\circ$이다.\n점 $F$에서 만나는 두 할선으로 삼각형 $FCD$를 보면\n$\\angle FDC=180^\\circ-\\angle D$,\n$\\angle DCF=180^\\circ-\\angle C$이다.\n따라서\n$45^\\circ+(180^\\circ-\\angle D)+(180^\\circ-\\angle C)=180^\\circ$\n$\\angle C+\\angle D=225^\\circ$이다.\n사각형이 원에 내접하므로 마주 보는 각의 합은 $180^\\circ$이다.\n$\\angle A+\\angle C=180^\\circ$,\n$\\angle B+\\angle D=180^\\circ$이다.\n앞의 두 식을 더하고 $\\angle A+\\angle C=180^\\circ$를 빼면\n$2\\angle D=215^\\circ+225^\\circ-180^\\circ=260^\\circ$이다.\n따라서\n$\\angle D=130^\\circ$,\n$\\angle A=215^\\circ-130^\\circ=85^\\circ$,\n$\\angle C=225^\\circ-130^\\circ=95^\\circ$,\n$\\angle B=180^\\circ-130^\\circ=50^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두외부삼각형의 내각합으로 A+D215,C+D225를 얻고 내접사각형의대각합180과 연립하여 네각을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두외부삼각형의 내각합으로 A+D215,C+D225를 얻고 내접사각형의대각합180과 연립하여 네각을 구한다.",
+        "method": "두외부삼각형의 내각합으로 A+D215,C+D225를 얻고 내접사각형의대각합180과 연립하여 네각을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두외부삼각형의 내각합으로 A+D215,C+D225를 얻고 내접사각형의대각합180과 연립하여 네각을 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_61dae35cf93049aa89ed8cf64014831d3f79d532ac5adcf0480b2d2a58d48a10",
+      "sourceOrdinal": 23,
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "[서술형 3] 원 밖에 있는 한 점 $P$에서 원 $O$에 그을 수 있는 접선은 2개가 있을 때, 두 접선의 길이는 같다는 것을 증명하는 과정이다. 다음에 알맞은 기호를 쓰시오. (5점)\\n(가정) $\\overline{PA},\\overline{PB}$는 원의 접선\\n(결론) $\\overline{PA}=\\overline{PB}$\\n(증명) $\\triangle PAO$와 $\\triangle PBO$에서\\n① $\\underline{\\hspace{2cm}}$ (R)\\n② $\\underline{\\hspace{2cm}}$ (H)\\n③ $\\underline{\\hspace{2cm}}$ (S)\\n④ $\\underline{\\hspace{2cm}}$ (RHS 합동)\\n따라서 ⑤ $\\underline{\\hspace{2cm}}$"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "[서술형 3] 원 밖에 있는 한 점 $P$에서 원 $O$에 그을 수 있는 접선은 2개가 있을 때, 두 접선의 길이는 같다는 것을 증명하는 과정이다. 다음에 알맞은 기호를 쓰시오. (5점)\\n(가정) $\\overline{PA},\\overline{PB}$는 원의 접선\\n(결론) $\\overline{PA}=\\overline{PB}$\\n(증명) $\\triangle PAO$와 $\\triangle PBO$에서\\n① $\\underline{\\hspace{2cm}}$ (R)\\n② $\\underline{\\hspace{2cm}}$ (H)\\n③ $\\underline{\\hspace{2cm}}$ (S)\\n④ $\\underline{\\hspace{2cm}}$ (RHS 합동)\\n따라서 ⑤ $\\underline{\\hspace{2cm}}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "접선의길이",
+            "src": "stem",
+            "quote": "[서술형 3] 원 밖에 있는 한 점 $P$에서 원 $O$에 그을 수 있는 접선은 2개가 있을 때, 두 접선의 길이는 같다는 것을 증명하는 과정이다. 다음에 알맞은 기호를 쓰시오. (5점)\\n(가정) $\\overline{PA},\\overline{PB}$는 원의 접선\\n(결론) $\\overline{PA}=\\overline{PB}$\\n(증명) $\\triangle PAO$와 $\\triangle PBO$에서\\n① $\\underline{\\hspace{2cm}}$ (R)\\n② $\\underline{\\hspace{2cm}}$ (H)\\n③ $\\underline{\\hspace{2cm}}$ (S)\\n④ $\\underline{\\hspace{2cm}}$ (RHS 합동)\\n따라서 ⑤ $\\underline{\\hspace{2cm}}$"
+          },
+          {
+            "term": "관계",
+            "src": "stem",
+            "quote": "[서술형 3] 원 밖에 있는 한 점 $P$에서 원 $O$에 그을 수 있는 접선은 2개가 있을 때, 두 접선의 길이는 같다는 것을 증명하는 과정이다. 다음에 알맞은 기호를 쓰시오. (5점)\\n(가정) $\\overline{PA},\\overline{PB}$는 원의 접선\\n(결론) $\\overline{PA}=\\overline{PB}$\\n(증명) $\\triangle PAO$와 $\\triangle PBO$에서\\n① $\\underline{\\hspace{2cm}}$ (R)\\n② $\\underline{\\hspace{2cm}}$ (H)\\n③ $\\underline{\\hspace{2cm}}$ (S)\\n④ $\\underline{\\hspace{2cm}}$ (RHS 합동)\\n따라서 ⑤ $\\underline{\\hspace{2cm}}$"
+          },
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "[서술형 3] 원 밖에 있는 한 점 $P$에서 원 $O$에 그을 수 있는 접선은 2개가 있을 때, 두 접선의 길이는 같다는 것을 증명하는 과정이다. 다음에 알맞은 기호를 쓰시오. (5점)\\n(가정) $\\overline{PA},\\overline{PB}$는 원의 접선\\n(결론) $\\overline{PA}=\\overline{PB}$\\n(증명) $\\triangle PAO$와 $\\triangle PBO$에서\\n① $\\underline{\\hspace{2cm}}$ (R)\\n② $\\underline{\\hspace{2cm}}$ (H)\\n③ $\\underline{\\hspace{2cm}}$ (S)\\n④ $\\underline{\\hspace{2cm}}$ (RHS 합동)\\n따라서 ⑤ $\\underline{\\hspace{2cm}}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "접선과 반지름은 접점에서 수직이므로\n$\\angle PAO=\\angle PBO=90^\\circ$이다.\n두 삼각형의 빗변은 공통이어서 $PO=PO$이고, 반지름이므로 $OA=OB$이다.\n따라서 직각삼각형 $PAO$와 $PBO$는 빗변과 한 변이 각각 같아\n$\\triangle PAO\\cong\\triangle PBO$ (RHS)이다.\n그러므로 대응변의 길이는 같아\n$PA=PB$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접점직각·공통빗변·반지름같음의 RHS합동을 완성하여 대응접선길이 같음을 증명한다. 수치접선길이 TPL과구분한다."
+          },
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "접선과 반지름은 접점에서 수직이므로\n$\\angle PAO=\\angle PBO=90^\\circ$이다.\n두 삼각형의 빗변은 공통이어서 $PO=PO$이고, 반지름이므로 $OA=OB$이다.\n따라서 직각삼각형 $PAO$와 $PBO$는 빗변과 한 변이 각각 같아\n$\\triangle PAO\\cong\\triangle PBO$ (RHS)이다.\n그러므로 대응변의 길이는 같아\n$PA=PB$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접점직각·공통빗변·반지름같음의 RHS합동을 완성하여 대응접선길이 같음을 증명한다. 수치접선길이 TPL과구분한다."
+          },
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "접선과 반지름은 접점에서 수직이므로\n$\\angle PAO=\\angle PBO=90^\\circ$이다.\n두 삼각형의 빗변은 공통이어서 $PO=PO$이고, 반지름이므로 $OA=OB$이다.\n따라서 직각삼각형 $PAO$와 $PBO$는 빗변과 한 변이 각각 같아\n$\\triangle PAO\\cong\\triangle PBO$ (RHS)이다.\n그러므로 대응변의 길이는 같아\n$PA=PB$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접점직각·공통빗변·반지름같음의 RHS합동을 완성하여 대응접선길이 같음을 증명한다. 수치접선길이 TPL과구분한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "접점직각·공통빗변·반지름같음의 RHS합동을 완성하여 대응접선길이 같음을 증명한다. 수치접선길이 TPL과구분한다.",
+        "method": "접점직각·공통빗변·반지름같음의 RHS합동을 완성하여 대응접선길이 같음을 증명한다. 수치접선길이 TPL과구분한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "접점직각·공통빗변·반지름같음의 RHS합동을 완성하여 대응접선길이 같음을 증명한다. 수치접선길이 TPL과구분한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_00748d54b9b2b08f9ccb42963fa6c082473d75a20ed6a103bb1f96b271d16423",
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "[서술형 4] $a,b$의 평균이 $10$이고 분산이 $4$, $c,d$의 평균이 $12$이고 분산이 $9$일 때 $a,b,c,d$의 분산은? (풀이 과정을 자세히 쓰시오.) (5점)"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "[서술형 4] $a,b$의 평균이 $10$이고 분산이 $4$, $c,d$의 평균이 $12$이고 분산이 $9$일 때 $a,b,c,d$의 분산은? (풀이 과정을 자세히 쓰시오.) (5점)"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "[서술형 4] $a,b$의 평균이 $10$이고 분산이 $4$, $c,d$의 평균이 $12$이고 분산이 $9$일 때 $a,b,c,d$의 분산은? (풀이 과정을 자세히 쓰시오.) (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "[서술형 4] $a,b$의 평균이 $10$이고 분산이 $4$, $c,d$의 평균이 $12$이고 분산이 $9$일 때 $a,b,c,d$의 분산은? (풀이 과정을 자세히 쓰시오.) (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "$a,b$의 평균이 $10$이므로 $a+b=20$이다.\n분산이 $4$이므로\n$\\dfrac{a^2+b^2}{2}-10^2=4$\n$\\dfrac{a^2+b^2}{2}=104$\n$a^2+b^2=208$이다.\n같은 방법으로 $c,d$에 대하여\n$c+d=24$,\n$\\dfrac{c^2+d^2}{2}-12^2=9$\n$c^2+d^2=306$이다.\n네 수의 평균은\n$\\dfrac{20+24}{4}=11$이고 제곱의 평균은\n$\\dfrac{208+306}{4}=\\dfrac{257}{2}$이다.\n따라서 네 수의 분산은\n$\\dfrac{257}{2}-11^2=\\dfrac{257-242}{2}=\\dfrac{15}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두집단의 평균·분산을 각각합과제곱합으로 바꾸어 전체평균11과제곱평균257/2를 복원하여 분산을 구한다. 평균이다른 집단분산을 단순평균하지 않는다."
+          },
+          {
+            "term": "제곱합",
+            "src": "solution",
+            "quote": "$a,b$의 평균이 $10$이므로 $a+b=20$이다.\n분산이 $4$이므로\n$\\dfrac{a^2+b^2}{2}-10^2=4$\n$\\dfrac{a^2+b^2}{2}=104$\n$a^2+b^2=208$이다.\n같은 방법으로 $c,d$에 대하여\n$c+d=24$,\n$\\dfrac{c^2+d^2}{2}-12^2=9$\n$c^2+d^2=306$이다.\n네 수의 평균은\n$\\dfrac{20+24}{4}=11$이고 제곱의 평균은\n$\\dfrac{208+306}{4}=\\dfrac{257}{2}$이다.\n따라서 네 수의 분산은\n$\\dfrac{257}{2}-11^2=\\dfrac{257-242}{2}=\\dfrac{15}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두집단의 평균·분산을 각각합과제곱합으로 바꾸어 전체평균11과제곱평균257/2를 복원하여 분산을 구한다. 평균이다른 집단분산을 단순평균하지 않는다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "$a,b$의 평균이 $10$이므로 $a+b=20$이다.\n분산이 $4$이므로\n$\\dfrac{a^2+b^2}{2}-10^2=4$\n$\\dfrac{a^2+b^2}{2}=104$\n$a^2+b^2=208$이다.\n같은 방법으로 $c,d$에 대하여\n$c+d=24$,\n$\\dfrac{c^2+d^2}{2}-12^2=9$\n$c^2+d^2=306$이다.\n네 수의 평균은\n$\\dfrac{20+24}{4}=11$이고 제곱의 평균은\n$\\dfrac{208+306}{4}=\\dfrac{257}{2}$이다.\n따라서 네 수의 분산은\n$\\dfrac{257}{2}-11^2=\\dfrac{257-242}{2}=\\dfrac{15}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두집단의 평균·분산을 각각합과제곱합으로 바꾸어 전체평균11과제곱평균257/2를 복원하여 분산을 구한다. 평균이다른 집단분산을 단순평균하지 않는다."
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "$a,b$의 평균이 $10$이므로 $a+b=20$이다.\n분산이 $4$이므로\n$\\dfrac{a^2+b^2}{2}-10^2=4$\n$\\dfrac{a^2+b^2}{2}=104$\n$a^2+b^2=208$이다.\n같은 방법으로 $c,d$에 대하여\n$c+d=24$,\n$\\dfrac{c^2+d^2}{2}-12^2=9$\n$c^2+d^2=306$이다.\n네 수의 평균은\n$\\dfrac{20+24}{4}=11$이고 제곱의 평균은\n$\\dfrac{208+306}{4}=\\dfrac{257}{2}$이다.\n따라서 네 수의 분산은\n$\\dfrac{257}{2}-11^2=\\dfrac{257-242}{2}=\\dfrac{15}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두집단의 평균·분산을 각각합과제곱합으로 바꾸어 전체평균11과제곱평균257/2를 복원하여 분산을 구한다. 평균이다른 집단분산을 단순평균하지 않는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두집단의 평균·분산을 각각합과제곱합으로 바꾸어 전체평균11과제곱평균257/2를 복원하여 분산을 구한다. 평균이다른 집단분산을 단순평균하지 않는다.",
+        "method": "두집단의 평균·분산을 각각합과제곱합으로 바꾸어 전체평균11과제곱평균257/2를 복원하여 분산을 구한다. 평균이다른 집단분산을 단순평균하지 않는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두집단의 평균·분산을 각각합과제곱합으로 바꾸어 전체평균11과제곱평균257/2를 복원하여 분산을 구한다. 평균이다른 집단분산을 단순평균하지 않는다."
+      ],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 24,
+    "quotesChecked": 201,
+    "quotesNotFound": 0,
+    "notes": "各문항 실제 본문·해설 및 도형을 읽어 의미 결정. 기존 수학 검증을 재사용하며 새 풀이나 수학 R1/R2/R3를 작성하지 않았다."
+  }
+}

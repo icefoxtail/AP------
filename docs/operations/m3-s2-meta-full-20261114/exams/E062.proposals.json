@@ -1,0 +1,120 @@
+[
+  {
+    "type": "CIRCLE_PACKING_TANGENCY_RADIUS_TEMPLATE_GAP",
+    "ordinal": 8,
+    "questionUid": "qid_v1_5adbca56fdd21d94509e05f69e7544f5ce633bf4a401d6d0fe4633499fa21290",
+    "supportingQuestionUids": [
+      "qid_v1_5adbca56fdd21d94509e05f69e7544f5ce633bf4a401d6d0fe4633499fa21290"
+    ],
+    "problemTypeKey": "PT_TWO_CIRCLES",
+    "rpmRecordId": "M2-RPM-105",
+    "reason": "두원이 변과서로 접하는 배치에서 중심차20−r,10−r와 중심거리10+r를 구성하고 피타고라스 이차방정식의 작은근을 고른다. 원밖한점의 접선길이와 다른 풀이이므로 기존 TM_TANGENT_LENGTH를 제거한다.",
+    "registrationStatus": "CODEX_REGISTRATION_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "candidateNameKo": "두 원과 직사각형의 접함을 중심거리로 변환하여 반지름 구하기",
+    "nextAction": "해당 UID의 풀이골격과 공식 사전 정의를 대조하여 Codex 담당이 exact template 또는 leaf를 등록·연결한다."
+  },
+  {
+    "type": "CENTERED_SCALED_DATA_MEAN_TEMPLATE_GAP",
+    "ordinal": 17,
+    "questionUid": "qid_v1_634c6f83971a786ab1989ef4524acccc78b4211718ce5f9cffc0951406328470",
+    "supportingQuestionUids": [
+      "qid_v1_634c6f83971a786ab1989ef4524acccc78b4211718ce5f9cffc0951406328470"
+    ],
+    "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "rpmRecordId": "M3-RPM-083",
+    "reason": "평균m에서 x+y+z3m을 얻고 중심화한 세값의 합0을 공통분모a로 나누어 평균0을 확인한다. 상수의 이동까지 포함하여 k배만을 다루는 TPL의 범위를 넘는다.",
+    "registrationStatus": "CODEX_REGISTRATION_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "candidateNameKo": "평균으로 중심화하고 상수배한 자료의 평균",
+    "nextAction": "해당 UID의 풀이골격과 공식 사전 정의를 대조하여 Codex 담당이 exact template 또는 leaf를 등록·연결한다."
+  },
+  {
+    "type": "GROUPED_WEIGHTED_MEAN_TEMPLATE_GAP",
+    "ordinal": 19,
+    "questionUid": "qid_v1_fdfbca8fae540bf48874a0dbc7fc61ba4f19491f7e39c4e30aa83edd69adb8b1",
+    "supportingQuestionUids": [
+      "qid_v1_fdfbca8fae540bf48874a0dbc7fc61ba4f19491f7e39c4e30aa83edd69adb8b1"
+    ],
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "rpmRecordId": "M3-RPM-081",
+    "reason": "각수준의 인원수와평균을 곱해 점수합을 복원하고 총인원으로 나누어 전체평균을 얻는다. 하나의자료 평균·중앙값·최빈값 결합TPL과는 다르다.",
+    "registrationStatus": "CODEX_REGISTRATION_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "candidateNameKo": "집단별 인원과 평균으로 전체평균 구하기",
+    "nextAction": "해당 UID의 풀이골격과 공식 사전 정의를 대조하여 Codex 담당이 exact template 또는 leaf를 등록·연결한다."
+  },
+  {
+    "type": "VARIANCE_TO_PAIRWISE_PRODUCT_MEAN_TEMPLATE_GAP",
+    "ordinal": 20,
+    "questionUid": "qid_v1_b15896ce344cd49498b2eba6483ee09615691dffe8440f34fb3a216c7267b855",
+    "supportingQuestionUids": [
+      "qid_v1_b15896ce344cd49498b2eba6483ee09615691dffe8440f34fb3a216c7267b855"
+    ],
+    "problemTypeKey": null,
+    "rpmRecordId": "M3-RPM-084",
+    "reason": "평균으로변량합12,표준편차로분산2와제곱합54를 얻고 (x+y+z)²의전개에서 쌍곱합45를 구해 평균을 낸다. 확률변수의분산TPL은 재사용하지 않는다.",
+    "registrationStatus": "CODEX_REGISTRATION_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "candidateNameKo": "분산과 평균에서 쌍곱 자료의 평균 구하기",
+    "nextAction": "해당 UID의 풀이골격과 공식 사전 정의를 대조하여 Codex 담당이 exact template 또는 leaf를 등록·연결한다."
+  },
+  {
+    "type": "TANGENT_EQUALITY_RHS_PROOF_TEMPLATE_GAP",
+    "ordinal": 23,
+    "questionUid": "qid_v1_61dae35cf93049aa89ed8cf64014831d3f79d532ac5adcf0480b2d2a58d48a10",
+    "supportingQuestionUids": [
+      "qid_v1_61dae35cf93049aa89ed8cf64014831d3f79d532ac5adcf0480b2d2a58d48a10"
+    ],
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "rpmRecordId": "M3-RPM-071",
+    "reason": "접점직각·공통빗변·반지름같음의 RHS합동을 완성하여 대응접선길이 같음을 증명한다. 수치접선길이 TPL과구분한다.",
+    "registrationStatus": "CODEX_REGISTRATION_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "candidateNameKo": "접점직각과 RHS 합동으로 두접선 길이 같음 증명",
+    "nextAction": "해당 UID의 풀이골격과 공식 사전 정의를 대조하여 Codex 담당이 exact template 또는 leaf를 등록·연결한다."
+  },
+  {
+    "type": "POOLED_UNEQUAL_MEAN_VARIANCE_TEMPLATE_GAP",
+    "ordinal": 24,
+    "questionUid": "qid_v1_00748d54b9b2b08f9ccb42963fa6c082473d75a20ed6a103bb1f96b271d16423",
+    "supportingQuestionUids": [
+      "qid_v1_00748d54b9b2b08f9ccb42963fa6c082473d75a20ed6a103bb1f96b271d16423"
+    ],
+    "problemTypeKey": null,
+    "rpmRecordId": "M3-RPM-084",
+    "reason": "두집단의 평균·분산을 각각합과제곱합으로 바꾸어 전체평균11과제곱평균257/2를 복원하여 분산을 구한다. 평균이다른 집단분산을 단순평균하지 않는다.",
+    "registrationStatus": "CODEX_REGISTRATION_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "candidateNameKo": "서로 다른 평균을 가진 집단의 통합분산",
+    "nextAction": "해당 UID의 풀이골격과 공식 사전 정의를 대조하여 Codex 담당이 exact template 또는 leaf를 등록·연결한다."
+  },
+  {
+    "type": "CURRENT_2022_RPM_EXACT_LEAF_GAP",
+    "ordinal": 16,
+    "questionUid": "qid_v1_bd09cd951ebfc04f98d262c2d40952e71bd6dd7d7734d117a9d2bdeb9c49ade5",
+    "supportingQuestionUids": [
+      "qid_v1_bd09cd951ebfc04f98d262c2d40952e71bd6dd7d7734d117a9d2bdeb9c49ade5"
+    ],
+    "effectiveParentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+    "reason": "대푯값의 정의에 해당하는 통계량을 식별하는 exact leaf가 없다. 평균계산221이나 자료상황에 맞는대푯값선택225와 구분하여 정의판정 후보로 인계한다.",
+    "registrationStatus": "CODEX_LEAF_LINK_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "candidateNameKo": "대푯값의 정의에 해당하는 통계량을 식별하는 exact leaf가 없다. 평균계산221이나 자료상황에 맞는대푯값선택225와 구분하여 정의판정 후보로 인계한다.",
+    "nextAction": "해당 UID의 풀이골격과 공식 사전 정의를 대조하여 Codex 담당이 exact template 또는 leaf를 등록·연결한다."
+  },
+  {
+    "type": "CURRENT_2022_RPM_EXACT_LEAF_GAP",
+    "ordinal": 18,
+    "questionUid": "qid_v1_ea4cd35bc2952d4793a5d1f77d59c2cac29a50543caa2862136901ca242147da",
+    "supportingQuestionUids": [
+      "qid_v1_ea4cd35bc2952d4793a5d1f77d59c2cac29a50543caa2862136901ca242147da"
+    ],
+    "effectiveParentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+    "reason": "평균·최빈값·순서조건으로 누락값을 복원하고 중앙값을 구하는 복합 exact leaf가 없다. 관련성분222/223/224 및 ACTIVE자료복원TPL을 보존한다.",
+    "registrationStatus": "CODEX_LEAF_LINK_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "candidateNameKo": "평균·최빈값·순서조건으로 누락값을 복원하고 중앙값을 구하는 복합 exact leaf가 없다. 관련성분222/223/224 및 ACTIVE자료복원TPL을 보존한다.",
+    "nextAction": "해당 UID의 풀이골격과 공식 사전 정의를 대조하여 Codex 담당이 exact template 또는 leaf를 등록·연결한다."
+  }
+]
