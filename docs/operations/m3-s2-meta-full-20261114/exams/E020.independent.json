@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "examId": "E020",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "6df728c32e1aa3678310f80e803bc4284a223d35",
+  "sampled4slotSha256": "6974f9246d6112ac7775881b791e57b003344450428a06ff33b7902097c61f99",
+  "sampledReviewSha256": "7f455bd0a68807a30e0ef1268c0f0e516c514fdce659d541098d01ea803df0dd",
+  "sampledSourcePatchSha256": "e6f42b6ebb88d70018b99d4f1438f0dab4ce008e639becb296d4f8c2c7589d4a",
+  "sourcePacketSha256": "f87b2643e88260fd6cbe878e0083b8af18d92e8f11394a2ecbc2d02a578eb73d",
+  "sampled": [
+    16,
+    18,
+    20
+  ],
+  "status": "PASS_AFTER_TEMPLATE_SCOPE_CORRECTION",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_cf508756ee75298ff7a497d8fab531106eca4845540fce0b75cfb04534ecf7ea",
+      "sourceImageRead": true,
+      "solutionImageRead": true,
+      "visualStatus": "READ_CURRENT_VERSION",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 8
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "접선과 반지름의 두 직각으로 작은 중심각140°를 구하고 색칠한 큰 부채꼴220°를 선택한다. 주어진 반지름6에서 부채꼴 넓이를 구하므로 prior M1 RPM090/current203 및 SECTOR_MEASURE 재사용이 맞으며 접선은 필수 보조축이다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_28fb24a44fbf78f0da2338d268023fd3875c45b06febd11e5f38afda58a0dba3",
+      "sourceImageRead": true,
+      "solutionImageRead": true,
+      "visualStatus": "READ_CURRENT_VERSION",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 7
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "접점 직각삼각형에서 sin30°=r/(r+6)으로 반지름을 복원하고 cos30°로 목표 접선길이를 직접 구한다. 도형의 원 외형보다 실제 삼각비 측정 구조에 따라 M3 RPM059/current147을 둔 것이 타당하다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_4a923994fe76f51cb5594ec3a6211727c5e25748b87876dc9b61ec0c1ba9806d",
+      "sourceImageRead": true,
+      "solutionImageRead": true,
+      "visualStatus": "READ_CURRENT_VERSION",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 10
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "등접선으로 두 변을 r+6,r+9로 표현하고 피타고라스의 이차식에서 양수근을 택해 원넓이를 구한다. 목표가 접선길이가 아니므로 TM_TANGENT_LENGTH를 제거한 최종본에 동의하며, PT_CIRCLE_TANGENT 하 정확한 역산·원넓이 TPL 등록 공백을 별도로 남겼다. ROOT의 bucket3/B34/NORMAL 재판정은 정형 연결이라는 실제 풀이 구조와 맞다.",
+      "status": "PASS"
+    }
+  ],
+  "outstanding": [],
+  "scope": "Three independent metadata/4slot samples; no full-exam R1/R2/R3 certification",
+  "visualEvidence": [
+    "worker-outputs/c/E020-samples.jpg",
+    "worker-outputs/c/E020-sample-solutions.jpg"
+  ],
+  "difficultyReceipt": {
+    "path": "/workspace/scratch/9c9d44bb632b/root-validation/E020.difficulty-adjudication.json",
+    "sha256": "77ff0985b5b5c49cb81df2b9ea298363f828239be98698a06d6cedb6c82ac5cd"
+  },
+  "followup": "Q20 TM_TANGENT_LENGTH 제거 및 정확 TPL 제안 분리, ROOT 난이도3 최종본에 결속."
+}

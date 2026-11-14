@@ -36,7 +36,14 @@ window.questionBank = [
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
     "primaryMethod": "직각삼각형에서 각 C의 이웃변과 빗변을 확인하여 코사인 정의 적용",
-    "decisiveStep": "BC=3은 이웃변이고 AC=5는 빗변이므로 cos C=3/5"
+    "decisiveStep": "BC=3은 이웃변이고 AC=5는 빗변이므로 cos C=3/5",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -71,7 +78,14 @@ window.questionBank = [
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
     "primaryMethod": "특수각 삼각비의 정확한 값을 선택지별로 대입해 참·거짓을 판정",
-    "decisiveStep": "②의 두 항이 각각 1/2이므로 합이 1이며 다른 선택지의 등식은 성립하지 않음"
+    "decisiveStep": "②의 두 항이 각각 1/2이므로 합이 1이며 다른 선택지의 등식은 성립하지 않음",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 3,
@@ -104,7 +118,16 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q3-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q3-solution.svg",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": ["CC_COMPLEMENTARY_ANGLE_TRIG"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -136,7 +159,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_SUPPLEMENTARY_ANGLES","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 5,
@@ -167,7 +199,16 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q5-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q5-solution.svg",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -200,7 +241,16 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q6-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q6-solution.svg",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_RIGHT_TRIANGLE_SIMILARITY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -230,7 +280,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -263,7 +322,16 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q8-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q8-solution.svg",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_ISOSCELES_CONVERSE","CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -296,7 +364,16 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q9-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q9-solution.svg",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+    "crossConceptKeys": ["CC_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 10,
@@ -328,7 +405,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_PARALLELOGRAM_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -361,7 +447,16 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q11-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q11-solution.svg",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -391,7 +486,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+    "crossConceptKeys": ["CC_ABSOLUTE_VALUE_SIMPLIFY"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 13,
@@ -424,7 +528,16 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q13-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q13-solution.svg",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_DISTANCE_FORMULA","CC_PYTHAGOREAN","CC_ISOSCELES_TRIANGLE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -457,7 +570,16 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q14-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q14-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 15,
@@ -490,16 +612,25 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q15-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q15-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
-    "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-06",
-    "standardUnit": "원의 성질",
+    "standardCourse": "중1 수학",
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -519,11 +650,20 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "접점에서 반지름은 접선에 수직이므로\n$OA\\perp PA$, $OB\\perp PB$이다.\n따라서 사각형 $OAPB$의 내각의 합을 이용하면\n$\\angle AOB+90^\\circ+40^\\circ+90^\\circ=360^\\circ$\n$\\angle AOB=140^\\circ$이다.\n\n색칠한 큰 부채꼴의 중심각은\n$360^\\circ-140^\\circ=220^\\circ$이다.\n따라서 넓이는\n$\\dfrac{220}{360}\\times\\pi\\times6^2$\n$=22\\pi\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q16.png",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+    "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q16-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q16-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -556,7 +696,16 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q17-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q17-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_CIRCLE_CIRCUMFERENCE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 18,
@@ -564,9 +713,9 @@ window.questionBank = [
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-06",
-    "standardUnit": "원의 성질",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M3-05",
+    "standardUnit": "삼각비",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -585,11 +734,20 @@ window.questionBank = [
     "answer": "②",
     "solution": "접점 $T$에서 반지름 $OT$는 접선 $PT$에 수직이므로\n$\\triangle PTO$는 직각삼각형이다.\n반지름을 $r$라 하면 $AO=OT=r$이고\n$PO=PA+AO=6+r$이다.\n\n$\\sin30^\\circ=\\dfrac{OT}{PO}$이므로\n$\\dfrac12=\\dfrac{r}{r+6}$\n$r+6=2r$\n$r=6$이다.\n따라서 $PO=12$이다.\n\n그러므로\n$PT=PO\\cos30^\\circ=12\\times\\dfrac{\\sqrt3}{2}=6\\sqrt3\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q18.png",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q18-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q18-solution.svg",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY","CC_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -622,7 +780,16 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q19-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q19-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_LENGTH",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -655,7 +822,15 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q20-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q20-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_QUADRATIC_EQUATION_ROOTS","CC_CIRCLE_CIRCUMFERENCE"],
+    "conditionKeys": ["COND_POSITIVE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -682,7 +857,16 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q21-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q21-solution.svg",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_RIGHT_TRIANGLE_SIMILARITY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -709,7 +893,16 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q22-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q22-solution.svg",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_SUPPLEMENTARY_ANGLES","CC_TRIANGLE_AREA","CC_POLYGON_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -736,6 +929,15 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q23-solution.svg"
+    "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q23-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   }
 ];

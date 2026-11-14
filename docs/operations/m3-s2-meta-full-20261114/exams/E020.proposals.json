@@ -1,0 +1,102 @@
+[
+  {
+    "id": "B-E020-REUSE-COND_SPECIFIED_APPROXIMATIONS",
+    "kind": "NEW_CONDITION",
+    "proposedKey": "COND_SPECIFIED_APPROXIMATIONS",
+    "definition": "계산에 사용할 근삿값이 문제에서 지정되어 있어 실제 정확값이나 다른 반올림값 대신 그 수치로 계산해야 한다.",
+    "internalSkeleton": "지정 근삿값 확인 → 동일 수치로 대입 → 결과 비교",
+    "distinguishFrom": {
+      "COND_RANGE": "허용 변수 구간이 아니라 수치 계산의 대입값을 고정한다."
+    },
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      11
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_cd253142b9b146b73dad00fade31e4c3529bc3aa65e7c235deb347f29ec452e2"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/condition_registry.json",
+      "exactMatch": false
+    },
+    "sourceWritePolicy": "제안 키는 등록 전 source/inbox에 넣지 않는다.",
+    "reuseCandidateFrom": "worker-outputs/b/E011/proposals.json",
+    "notRegistered": true
+  },
+  {
+    "id": "B-E020-REUSE-CC_POLYGON_INTERIOR_ANGLE_SUM",
+    "kind": "NEW_CROSSCONCEPT",
+    "proposedKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+    "definition": "다른 primary의 보조 단계에서 단순 다각형의 내각합 (n−2)×180도를 이용해 필요한 각을 복원한다.",
+    "internalSkeleton": "다각형 식별 → 내각합에서 알려진 각 차감",
+    "distinguishFrom": {
+      "CC_TRIANGLE_ANGLE_SUM": "삼각형만을 명시하는 기존 키로 사각형 내각합360도를 투영하지 않는다.",
+      "CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY": "입체 꼭짓점의 면각합 제한과 다르다."
+    },
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      16
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_cf508756ee75298ff7a497d8fab531106eca4845540fce0b75cfb04534ecf7ea"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "exactMatch": false
+    },
+    "sourceWritePolicy": "제안 키는 등록 전 source/inbox에 넣지 않는다.",
+    "reuseCandidateFrom": "worker-outputs/b/E011/proposals.json",
+    "notRegistered": true
+  },
+  {
+    "id": "B-E020-EXISTING_ACTIVE_CONNECTIONS",
+    "kind": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+    "existingTemplates": [
+      "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION"
+    ],
+    "supportOrdinals": [
+      6,
+      12,
+      13,
+      21
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_53db40513556246bee82e8e2d41a6268023050dd427fcba4528f9e485646ed69",
+      "qid_v1_7eeb01ba3f5211af0cd83d88eb9ff18a7182136c0d234f178915aba3f3efaffe",
+      "qid_v1_535340b50cb29b21db6d369bcbfd4e81701a42c10196f5c4fe516391cc61fc02",
+      "qid_v1_c9c3f23437c9db41e99e412f28cbb7eee2b6442dbf996d59307708b4fb862366"
+    ],
+    "definition": "GLOBAL ACTIVE의 기하 유도·식 정리 TPL은 이미 등록되어 있으며 원본RPM055/056 및 current2022단일 BASIC 연결과 exact 의미 연결은 분리한다. 신규 TPL 등록이 아니다."
+  },
+  {
+    "id": "B-E020-TPL_CIRCLE_TANGENT_RADIUS_TO_AREA",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_CIRCLE_TANGENT_RADIUS_TO_AREA",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "definition": "접선 등길이와 접점 수직관계로 직각삼각형의 변을 내접반지름으로 표현하고 피타고라스 식에서 반지름을 정해 원의 넓이를 구한다.",
+    "internalSkeleton": "등접선·접점직각 → 변의 r 표현 → 피타고라스 식의 양수근 → 원넓이",
+    "distinguishFrom": {
+      "TM_TANGENT_LENGTH": "접선 길이 자체가 최종 목표인 기존 정의와 달리 반지름을 매개로 원의 면적까지 연결한다."
+    },
+    "supportOrdinals": [
+      20
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_4a923994fe76f51cb5594ec3a6211727c5e25748b87876dc9b61ec0c1ba9806d"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "relatedProposal": {
+      "path": "worker-outputs/c/E003/proposals.json",
+      "nameKo": "접선 관계에서 원 넓이 복원",
+      "note": "동일 목표 가족의 후보와 등록 단계에서 병합 검토하되 이번 반지름 이차식 골격을 지원 근거로 남긴다."
+    },
+    "notRegistered": true
+  }
+]

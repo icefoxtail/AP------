@@ -1,0 +1,1437 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "6df728c32e1aa3678310f80e803bc4284a223d35",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT6_ASTRA_REVIEW_B",
+    "run": "M3S2_FULL_20261114",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_6dac34cd5ac8e0481c6decd00e3711f597b449b2eb13766679602fcabc2b1cda",
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AC}=5$, $\\overline{BC}=3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos C$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "직각삼각형에서 각 $C$를 기준으로 변의 역할을 먼저 정한다.\n직각은 $B$에 있으므로\n$AC=5$는 빗변이고\n$BC=3$은 각 $C$에 이웃한 변이다.\n코사인은\n$\\cos C=\\dfrac{\\text{이웃한 변}}{\\text{빗변}}$이므로\n$\\cos C=\\dfrac{BC}{AC}\n=\\dfrac35$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각B를 기준으로 AC가 빗변이고 BC가 C의 이웃변임을 확인하여 코사인 정의의 비를 바로 읽는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "직각은 $B$에 있으므로"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "직각B를 기준으로 AC가 빗변이고 BC가 C의 이웃변임을 확인하여 코사인 정의의 비를 바로 읽는다.",
+        "method": "직각B를 기준으로 AC가 빗변이고 BC가 C의 이웃변임을 확인하여 코사인 정의의 비를 바로 읽는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "직각B를 기준으로 AC가 빗변이고 BC가 C의 이웃변임을 확인하여 코사인 정의의 비를 바로 읽는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_f082c7f54847431451ab99767e3604118fa14ac2d0b973c935d6c065b735c04d",
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "특수각의 삼각비를 각 보기에 대입한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "특수각의 삼각비를 각 보기에 대입한다.\n① $\\dfrac{\\sqrt3}{2}\\times\\sqrt3=\\dfrac32$이므로 거짓이다.\n② $\\dfrac12+\\dfrac12=1$이므로 참이다.\n③ $1\\div\\dfrac{\\sqrt2}{2}=\\sqrt2$이므로 거짓이다.\n④ $\\dfrac{\\sqrt3}{2}\\times\\dfrac{\\sqrt3}{2}=\\dfrac34$이므로 거짓이다.\n⑤ $\\sqrt3-\\dfrac{\\sqrt2}{2}=\\dfrac{2\\sqrt3-\\sqrt2}{2}$이므로 주어진 값과 다르다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 선택지의30·45·60도 특수각 삼각비를 그대로 대입하여 곱·합·몫·차의 진술을 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "각 선택지의30·45·60도 특수각 삼각비를 그대로 대입하여 곱·합·몫·차의 진술을 판정한다.",
+        "method": "각 선택지의30·45·60도 특수각 삼각비를 그대로 대입하여 곱·합·몫·차의 진술을 판정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "각 선택지의30·45·60도 특수각 삼각비를 그대로 대입하여 곱·합·몫·차의 진술을 판정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_bca86464734ae48b1e5ec2915661dcf0c964a45649b060f8854a467d6494f708",
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $1$인 사분원"
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "가로 좌표는 약 $0.74$, 세로 좌표는 약 $0.67$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "그림에서 $42^\\circ$에 해당하는 점의 가로 좌표는 약 $0.74$, 세로 좌표는 약 $0.67$이다.\n따라서\n$\\cos42^\\circ\\approx0.74$, $\\sin42^\\circ\\approx0.67$이다.\n또 $48^\\circ=90^\\circ-42^\\circ$이므로\n$\\sin48^\\circ=\\cos42^\\circ\\approx0.74$\n$\\cos48^\\circ=\\sin42^\\circ\\approx0.67$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "탄젠트는\n$\\tan42^\\circ=\\dfrac{\\sin42^\\circ}{\\cos42^\\circ}\\approx\\dfrac{0.67}{0.74}\\approx0.91$\n이므로 약 $0.90$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다.",
+        "method": "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_bc5e0d801f3b417aa0cb403613ab0193caee55fd6ee4d16021c66a9f9759b06f",
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AB}=6\\,\\mathrm{cm}$, $\\overline{BC}=5\\,\\mathrm{cm}$"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle B=120^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\angle B=120^\\circ$이므로 변 $BC$의 연장선과 $BA$가 이루는 예각은 $60^\\circ$이다.\n점 $A$에서 직선 $BC$에 내린 높이를 $h$라 하면\n$h=6\\sin60^\\circ=6\\times\\dfrac{\\sqrt3}{2}=3\\sqrt3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "120도의 바깥 예각60도를 사용해 높이를 sin60으로 정하고 밑변5와 결합하여 삼각형 넓이를 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "따라서 $\\triangle ABC$의 넓이는\n$\\dfrac12\\times5\\times3\\sqrt3=\\dfrac{15\\sqrt3}{2}\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "120도의 바깥 예각60도를 사용해 높이를 sin60으로 정하고 밑변5와 결합하여 삼각형 넓이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "120도의 바깥 예각60도를 사용해 높이를 sin60으로 정하고 밑변5와 결합하여 삼각형 넓이를 구한다.",
+        "method": "120도의 바깥 예각60도를 사용해 높이를 sin60으로 정하고 밑변5와 결합하여 삼각형 넓이를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "120도의 바깥 예각60도를 사용해 높이를 sin60으로 정하고 밑변5와 결합하여 삼각형 넓이를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_91b48e3a670f50a6620eddacf9af2b18e0c7794ab1163939ac782d8957a565d8",
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "$\\sin A=\\dfrac23$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$\\tan A$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\sin A=\\dfrac{BC}{AC}=\\dfrac23$이므로\n$BC=2k$, $AC=3k$로 두자.",
+            "evidenceType": "IMPLIED",
+            "justification": "사인의 비2:3을 직각삼각형의 맞은편 변과 빗변에 대응시키고 남은 변을 피타고라스로 구해 탄젠트 비로 바꾼다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형 $ABC$에서\n$AB^2=AC^2-BC^2$\n$=(3k)^2-(2k)^2$\n$=5k^2$\n이므로 $AB=\\sqrt5k$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "사인의 비2:3을 직각삼각형의 맞은편 변과 빗변에 대응시키고 남은 변을 피타고라스로 구해 탄젠트 비로 바꾼다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "따라서\n$\\tan A=\\dfrac{BC}{AB}=\\dfrac{2k}{\\sqrt5k}=\\dfrac{2\\sqrt5}{5}$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "사인의 비2:3을 직각삼각형의 맞은편 변과 빗변에 대응시키고 남은 변을 피타고라스로 구해 탄젠트 비로 바꾼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0^\\circ\\lt\\angle A\\lt90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "사인의 비2:3을 직각삼각형의 맞은편 변과 빗변에 대응시키고 남은 변을 피타고라스로 구해 탄젠트 비로 바꾼다.",
+        "method": "사인의 비2:3을 직각삼각형의 맞은편 변과 빗변에 대응시키고 남은 변을 피타고라스로 구해 탄젠트 비로 바꾼다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "사인의 비2:3을 직각삼각형의 맞은편 변과 빗변에 대응시키고 남은 변을 피타고라스로 구해 탄젠트 비로 바꾼다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_53db40513556246bee82e8e2d41a6268023050dd427fcba4528f9e485646ed69",
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$"
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "$AD\\perp BC$이고 $\\angle BAC=90^\\circ$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$\\tan x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "$AD\\perp BC$이고 $\\angle BAC=90^\\circ$이다.\n$\\angle ADC=\\angle BAC=90^\\circ$, $\\angle ACD$는 공통이므로\n$\\triangle ADC\\sim\\triangle ABC$이다.\n따라서\n$\\angle DAC=\\angle ABC$이므로 $x=\\angle B$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변에 내린 수선으로 생긴 작은 직각삼각형과 큰 삼각형의 AA닮음에서 x=B를 정하고 알려진 두 변의 비로 tan을 구한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\triangle ABC$에서\n$\\tan x=\\tan B=\\dfrac{AC}{AB}=\\dfrac{2\\sqrt3}{2}=\\sqrt3$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변에 내린 수선으로 생긴 작은 직각삼각형과 큰 삼각형의 AA닮음에서 x=B를 정하고 알려진 두 변의 비로 tan을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "빗변에 내린 수선으로 생긴 작은 직각삼각형과 큰 삼각형의 AA닮음에서 x=B를 정하고 알려진 두 변의 비로 tan을 구한다.",
+        "method": "빗변에 내린 수선으로 생긴 작은 직각삼각형과 큰 삼각형의 AA닮음에서 x=B를 정하고 알려진 두 변의 비로 tan을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "빗변에 내린 수선으로 생긴 작은 직각삼각형과 큰 삼각형의 AA닮음에서 x=B를 정하고 알려진 두 변의 비로 tan을 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ea5d42b90e7b81ab4b878475cbbf77af95a9031e3de6101047f33d81dbab69f8",
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$\\angle A:\\angle B:\\angle C=1:2:3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\sin A+\\tan B\\times\\sin C$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "세 각을 각각 $a$, $2a$, $3a$라 하면\n$a+2a+3a=180^\\circ$\n$6a=180^\\circ$\n$a=30^\\circ$이다.\n따라서\n$\\angle A=30^\\circ$, $\\angle B=60^\\circ$, $\\angle C=90^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 내각합에 비1:2:3을 적용해30·60·90도를 정한 뒤 해당 특수각 삼각비를 식에 대입한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "그러므로\n$\\sin A+\\tan B\\times\\sin C$\n$=\\dfrac12+\\sqrt3\\times1$\n$=\\dfrac{1+2\\sqrt3}{2}$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 내각합에 비1:2:3을 적용해30·60·90도를 정한 뒤 해당 특수각 삼각비를 식에 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "삼각형 내각합에 비1:2:3을 적용해30·60·90도를 정한 뒤 해당 특수각 삼각비를 식에 대입한다.",
+        "method": "삼각형 내각합에 비1:2:3을 적용해30·60·90도를 정한 뒤 해당 특수각 삼각비를 식에 대입한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "삼각형 내각합에 비1:2:3을 적용해30·60·90도를 정한 뒤 해당 특수각 삼각비를 식에 대입한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_dda144a88b0d2464c2a75a16dad3cd548ff789565eea548bf5072e06b0911463",
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{BC}=20$"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle B=30^\\circ$, $\\angle C=105^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AC}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "보조선",
+            "src": "solution",
+            "quote": "먼저\n$\\angle A=180^\\circ-30^\\circ-105^\\circ=45^\\circ$이다.\n점 $C$에서 $AB$에 내린 수선의 발을 $H$라 하자.",
+            "evidenceType": "IMPLIED",
+            "justification": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\triangle BCH$에서\n$CH=BC\\sin30^\\circ=20\\times\\dfrac12=10$이다.\n또 $\\angle CAH=45^\\circ$, $\\angle AHC=90^\\circ$이므로\n$\\triangle ACH$는 직각이등변삼각형이다.\n따라서 $AH=CH=10$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다."
+          },
+          {
+            "term": "직각이등변삼각형",
+            "src": "solution",
+            "quote": "$\\triangle BCH$에서\n$CH=BC\\sin30^\\circ=20\\times\\dfrac12=10$이다.\n또 $\\angle CAH=45^\\circ$, $\\angle AHC=90^\\circ$이므로\n$\\triangle ACH$는 직각이등변삼각형이다.\n따라서 $AH=CH=10$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "그러므로\n$AC=\\sqrt{AH^2+CH^2}$\n$=\\sqrt{10^2+10^2}$\n$=10\\sqrt2$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다.",
+        "method": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_a879ad5fcdf38165002e06b94bb1e3d602db90a32384be81c1f09339b7799eb0",
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "각각 $45^\\circ$, $60^\\circ$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{BC}=12\\,\\mathrm{m}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "이 나무의 높이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\triangle ABH$에서\n$\\tan45^\\circ=\\dfrac{h}{BH}=1$\n이므로 $BH=h$이다.\n$\\triangle ACH$에서\n$\\tan60^\\circ=\\dfrac{h}{CH}=\\sqrt3$\n이므로 $CH=\\dfrac{h}{\\sqrt3}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "양쪽 관측점 사이의 나무 높이를 공통미지수로 놓고 각 거리 h와 h/√3의 합이12라는 식으로 높이를 정한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "따라서\n$h+\\dfrac{h}{\\sqrt3}=12$\n$(\\sqrt3+1)h=12\\sqrt3$\n$h=\\dfrac{12\\sqrt3}{\\sqrt3+1}$\n$=6(3-\\sqrt3)$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "양쪽 관측점 사이의 나무 높이를 공통미지수로 놓고 각 거리 h와 h/√3의 합이12라는 식으로 높이를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "위치관계",
+            "src": "solution",
+            "quote": "$H$는 $B$, $C$ 사이에 있으므로 $BH+CH=12$이다."
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "양쪽 관측점 사이의 나무 높이를 공통미지수로 놓고 각 거리 h와 h/√3의 합이12라는 식으로 높이를 정한다.",
+        "method": "양쪽 관측점 사이의 나무 높이를 공통미지수로 놓고 각 거리 h와 h/√3의 합이12라는 식으로 높이를 정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "양쪽 관측점 사이의 나무 높이를 공통미지수로 놓고 각 거리 h와 h/√3의 합이12라는 식으로 높이를 정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_9085daae1976da47ba5f2e7cdd228aa87af076292981d26101827622ab38feca",
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AB}=7$, $\\overline{AD}=6\\sqrt2$"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle B=45^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$BC$를 밑변으로 잡고, 점 $A$에서 직선 $BC$에 내린 높이를 $h$라 하자.\n$\\angle B=45^\\circ$이고 $AB=7$이므로\n직각삼각형에서\n$\\sin45^\\circ=\\dfrac{h}{AB}\n=\\dfrac{h}{7}$이다.\n따라서\n$h=7\\sin45^\\circ\n=7\\times\\dfrac{\\sqrt2}{2}\n=\\dfrac{7\\sqrt2}{2}$이다.\n그러므로 평행사변형 $ABCD$의 넓이는",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형의 대변으로 밑변을 정하고 sin45로 높이를 계산하여 밑변과 높이의 곱으로 넓이를 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$BC\\times h\n=6\\sqrt2\\times\\dfrac{7\\sqrt2}{2}\n=42$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형의 대변으로 밑변을 정하고 sin45로 높이를 계산하여 밑변과 높이의 곱으로 넓이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "평행사변형의 대변으로 밑변을 정하고 sin45로 높이를 계산하여 밑변과 높이의 곱으로 넓이를 구한다.",
+        "method": "평행사변형의 대변으로 밑변을 정하고 sin45로 높이를 계산하여 밑변과 높이의 곱으로 넓이를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "평행사변형의 대변으로 밑변을 정하고 sin45로 높이를 계산하여 밑변과 높이의 곱으로 넓이를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_cd253142b9b146b73dad00fade31e4c3529bc3aa65e7c235deb347f29ec452e2",
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "$50\\,\\mathrm{m}$ 떨어진 지점"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "각의 크기가 $38^\\circ$"
+          },
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "눈높이가 $1.5\\,\\mathrm{m}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "이 나무의 높이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "사람의 눈높이에서 나무 꼭대기까지의 높이를 $h$라 하자.\n수평거리가 $50\\,\\mathrm{m}$이므로\n$\\tan38^\\circ=\\dfrac{h}{50}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수평거리50과 주어진 tan38 근삿값으로 눈높이 위 높이를 구한 뒤 눈높이1.5를 더한다."
+          },
+          {
+            "term": "높이",
+            "src": "solution",
+            "quote": "나무 전체의 높이는 눈높이 $1.5\\,\\mathrm{m}$를 더하여\n$39+1.5=40.5\\,\\mathrm{m}$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수평거리50과 주어진 tan38 근삿값으로 눈높이 위 높이를 구한 뒤 눈높이1.5를 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "근삿값",
+            "src": "stem",
+            "quote": "$\\sin38^\\circ=0.62$, $\\cos38^\\circ=0.79$, $\\tan38^\\circ=0.78$로 계산한다."
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "수평거리50과 주어진 tan38 근삿값으로 눈높이 위 높이를 구한 뒤 눈높이1.5를 더한다.",
+        "method": "수평거리50과 주어진 tan38 근삿값으로 눈높이 위 높이를 구한 뒤 눈높이1.5를 더한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "수평거리50과 주어진 tan38 근삿값으로 눈높이 위 높이를 구한 뒤 눈높이1.5를 더한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_7eeb01ba3f5211af0cd83d88eb9ff18a7182136c0d234f178915aba3f3efaffe",
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{(\\sin x-\\cos x)^2}+\\sqrt{(\\sin x+\\cos x)^2}=\\dfrac85$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$\\tan x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$\\sqrt{a^2}=|a|$이므로 주어진 식은\n$|\\sin x-\\cos x|+|\\sin x+\\cos x|=\\dfrac85$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 각의 구간으로 sin−cos와 sin+cos의 부호를 정해 두 절댓값을 풀고 sin값을 얻은 뒤 예각의 cos와 tan으로 변환한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$45^\\circ<x<90^\\circ$이므로 $\\sin x>\\cos x>0$이다.\n따라서\n$|\\sin x-\\cos x|=\\sin x-\\cos x$\n$|\\sin x+\\cos x|=\\sin x+\\cos x$이다.\n\n그러므로\n$2\\sin x=\\dfrac85$\n$\\sin x=\\dfrac45$이다.\n예각이므로\n$\\cos x=\\sqrt{1-\\sin^2x}=\\sqrt{1-\\dfrac{16}{25}}=\\dfrac35$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 각의 구간으로 sin−cos와 sin+cos의 부호를 정해 두 절댓값을 풀고 sin값을 얻은 뒤 예각의 cos와 tan으로 변환한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "따라서\n$\\tan x=\\dfrac{\\sin x}{\\cos x}=\\dfrac{4/5}{3/5}=\\dfrac43$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 각의 구간으로 sin−cos와 sin+cos의 부호를 정해 두 절댓값을 풀고 sin값을 얻은 뒤 예각의 cos와 tan으로 변환한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$45^\\circ\\lt x\\lt90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "주어진 각의 구간으로 sin−cos와 sin+cos의 부호를 정해 두 절댓값을 풀고 sin값을 얻은 뒤 예각의 cos와 tan으로 변환한다.",
+        "method": "주어진 각의 구간으로 sin−cos와 sin+cos의 부호를 정해 두 절댓값을 풀고 sin값을 얻은 뒤 예각의 cos와 tan으로 변환한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "주어진 각의 구간으로 sin−cos와 sin+cos의 부호를 정해 두 절댓값을 풀고 sin값을 얻은 뒤 예각의 cos와 tan으로 변환한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_535340b50cb29b21db6d369bcbfd4e81701a42c10196f5c4fe516391cc61fc02",
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "$A(-1,-1)$, $B(-4,1)$, $C(1,2)$"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\sin B\\times\\cos B$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "먼저 좌표를 이용하여 세 변의 길이를 확인한다.\n$A(-1,-1)$, $B(-4,1)$이므로\n$AB^2=(-1+4)^2+(-1-1)^2\n=3^2+(-2)^2\n=13$이다.\n또\n$AC^2=(1+1)^2+(2+1)^2\n=2^2+3^2\n=13$이다.\n그리고\n$BC^2=(1+4)^2+(2-1)^2\n=5^2+1^2\n=26$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "따라서\n$AB=AC$이고\n$AB^2+AC^2=13+13=26=BC^2$이다.\n그러므로 $\\triangle ABC$는 $\\angle A=90^\\circ$인 직각이등변삼각형이다.\n따라서\n$\\angle B=45^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다."
+          },
+          {
+            "term": "직각이등변삼각형",
+            "src": "solution",
+            "quote": "따라서\n$AB=AC$이고\n$AB^2+AC^2=13+13=26=BC^2$이다.\n그러므로 $\\triangle ABC$는 $\\angle A=90^\\circ$인 직각이등변삼각형이다.\n따라서\n$\\angle B=45^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "이제\n$\\sin B\\times\\cos B\n=\\sin45^\\circ\\times\\cos45^\\circ$\n$=\\dfrac{\\sqrt2}{2}\\times\\dfrac{\\sqrt2}{2}$\n$=\\dfrac12$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다.",
+        "method": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_9c12caea8ebcfde4230f8fe3065e9a5acb9275ae4f719b49191a95d6b847cadd",
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $7\\,\\mathrm{cm}$인 원"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "원의 중심 $O$에서 현 $AB$에 내린 수선의 발을 $M$이라 하자.\n중심에서 현에 내린 수선은 현을 이등분하므로\n$AM=BM=4\\,\\mathrm{cm}$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "중심 $O$와 현 $AB$ 사이의 거리"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "원의 중심 $O$에서 현 $AB$에 내린 수선의 발을 $M$이라 하자.\n중심에서 현에 내린 수선은 현을 이등분하므로\n$AM=BM=4\\,\\mathrm{cm}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 절반4와 반지름7을 직각삼각형에 대응하여 중심에서 현까지의 거리를 피타고라스로 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형 $OAM$에서\n$OM^2=OA^2-AM^2$\n$=7^2-4^2$\n$=49-16=33$이다.\n따라서\n$OM=\\sqrt{33}\\,\\mathrm{cm}$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 절반4와 반지름7을 직각삼각형에 대응하여 중심에서 현까지의 거리를 피타고라스로 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "현의 절반4와 반지름7을 직각삼각형에 대응하여 중심에서 현까지의 거리를 피타고라스로 구한다.",
+        "method": "현의 절반4와 반지름7을 직각삼각형에 대응하여 중심에서 현까지의 거리를 피타고라스로 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "현의 절반4와 반지름7을 직각삼각형에 대응하여 중심에서 현까지의 거리를 피타고라스로 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_7d0633cc3d175ee66d91fbb31a920fc7c55febc7f80c3f0f2babe2907460005f",
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "중심에서 현 $AB$에 내린 수선"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AB}=12\\,\\mathrm{cm}$, $\\overline{AC}=3\\sqrt5\\,\\mathrm{cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{OM}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "중심에서 현 $AB$에 내린 수선은 현을 이등분하므로\n$AM=BM=6\\,\\mathrm{cm}$이다.\n또 $MC\\perp AB$이므로 $\\triangle AMC$는 직각삼각형이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AC^2=AM^2+MC^2$\n$(3\\sqrt5)^2=6^2+MC^2$\n$45=36+MC^2$\n$MC=3\\,\\mathrm{cm}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$OM=x$라 하면 $OC=x+3$이고 $OA=OC$이다.\n직각삼각형 $OAM$에서\n$OA^2=x^2+6^2$이므로\n$(x+3)^2=x^2+36$\n$x^2+6x+9=x^2+36$\n$6x=27$\n$x=\\dfrac92$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다.",
+        "method": "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_cf508756ee75298ff7a497d8fab531106eca4845540fce0b75cfb04534ecf7ea",
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "$PA$, $PB$는 원 $O$의 접선"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle APB=40^\\circ$"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "$\\overline{OA}=6\\,\\mathrm{cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "색칠한 부분의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "접점에서 반지름은 접선에 수직이므로\n$OA\\perp PA$, $OB\\perp PB$이다.\n따라서 사각형 $OAPB$의 내각의 합을 이용하면\n$\\angle AOB+90^\\circ+40^\\circ+90^\\circ=360^\\circ$\n$\\angle AOB=140^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접점 두 직각과 사각형 내각합으로 작은 중심각140도를 정하고 색칠한 큰 부채꼴220도를 선택하여 넓이를 구한다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "접점에서 반지름은 접선에 수직이므로\n$OA\\perp PA$, $OB\\perp PB$이다.\n따라서 사각형 $OAPB$의 내각의 합을 이용하면\n$\\angle AOB+90^\\circ+40^\\circ+90^\\circ=360^\\circ$\n$\\angle AOB=140^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접점 두 직각과 사각형 내각합으로 작은 중심각140도를 정하고 색칠한 큰 부채꼴220도를 선택하여 넓이를 구한다."
+          },
+          {
+            "term": "부채꼴",
+            "src": "solution",
+            "quote": "색칠한 큰 부채꼴의 중심각은\n$360^\\circ-140^\\circ=220^\\circ$이다.\n따라서 넓이는\n$\\dfrac{220}{360}\\times\\pi\\times6^2$\n$=22\\pi\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접점 두 직각과 사각형 내각합으로 작은 중심각140도를 정하고 색칠한 큰 부채꼴220도를 선택하여 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "$PA$, $PB$는 원 $O$의 접선이고 두 점 $A$, $B$는 접점이다."
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "접점 두 직각과 사각형 내각합으로 작은 중심각140도를 정하고 색칠한 큰 부채꼴220도를 선택하여 넓이를 구한다.",
+        "method": "접점 두 직각과 사각형 내각합으로 작은 중심각140도를 정하고 색칠한 큰 부채꼴220도를 선택하여 넓이를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "접점 두 직각과 사각형 내각합으로 작은 중심각140도를 정하고 색칠한 큰 부채꼴220도를 선택하여 넓이를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_a233514de1b9181236d8408e8a7a58f36f01cb09fccf5a8bc6a391093de34591",
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "원의 일부분"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "점 $M$은 $\\overline{AB}$의 중점"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AB}=12\\,\\mathrm{m}$, $\\overline{CM}=4\\,\\mathrm{m}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "이 원의 둘레의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "원의 중심을 $O$, 반지름을 $r$라 하자.\n$M$은 현 $AB$의 중점이므로\n$AM=BM=6\\,\\mathrm{m}$이고 $OM\\perp AB$이다.\n또 $CM=4\\,\\mathrm{m}$이므로 $OM=r-4$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 중점으로 반현6과 중심거리r−4를 잡아 반지름의 피타고라스 식을 푼 뒤 원주를 계산한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형 $OAM$에서\n$r^2=(r-4)^2+6^2$\n$r^2=r^2-8r+16+36$\n$8r=52$\n$r=\\dfrac{13}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 중점으로 반현6과 중심거리r−4를 잡아 반지름의 피타고라스 식을 푼 뒤 원주를 계산한다."
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "따라서 원의 둘레는\n$2\\pi r=2\\pi\\times\\dfrac{13}{2}=13\\pi\\,\\mathrm{m}$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 중점으로 반현6과 중심거리r−4를 잡아 반지름의 피타고라스 식을 푼 뒤 원주를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "현의 중점으로 반현6과 중심거리r−4를 잡아 반지름의 피타고라스 식을 푼 뒤 원주를 계산한다.",
+        "method": "현의 중점으로 반현6과 중심거리r−4를 잡아 반지름의 피타고라스 식을 푼 뒤 원주를 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "현의 중점으로 반현6과 중심거리r−4를 잡아 반지름의 피타고라스 식을 푼 뒤 원주를 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_28fb24a44fbf78f0da2338d268023fd3875c45b06febd11e5f38afda58a0dba3",
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "$PT$는 원 $O$의 접선"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle TPO=30^\\circ$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{PA}=6\\,\\mathrm{cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{PT}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "접점 $T$에서 반지름 $OT$는 접선 $PT$에 수직이므로\n$\\triangle PTO$는 직각삼각형이다.\n반지름을 $r$라 하면 $AO=OT=r$이고\n$PO=PA+AO=6+r$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접점 직각삼각형의 반지름r과 중심거리r+6을 sin30에 대응해 r을 복원한 뒤 cos30으로 접선 길이를 구한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\sin30^\\circ=\\dfrac{OT}{PO}$이므로\n$\\dfrac12=\\dfrac{r}{r+6}$\n$r+6=2r$\n$r=6$이다.\n따라서 $PO=12$이다.\n\n그러므로\n$PT=PO\\cos30^\\circ=12\\times\\dfrac{\\sqrt3}{2}=6\\sqrt3\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접점 직각삼각형의 반지름r과 중심거리r+6을 sin30에 대응해 r을 복원한 뒤 cos30으로 접선 길이를 구한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$\\sin30^\\circ=\\dfrac{OT}{PO}$이므로\n$\\dfrac12=\\dfrac{r}{r+6}$\n$r+6=2r$\n$r=6$이다.\n따라서 $PO=12$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접점 직각삼각형의 반지름r과 중심거리r+6을 sin30에 대응해 r을 복원한 뒤 cos30으로 접선 길이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "접점 직각삼각형의 반지름r과 중심거리r+6을 sin30에 대응해 r을 복원한 뒤 cos30으로 접선 길이를 구한다.",
+        "method": "접점 직각삼각형의 반지름r과 중심거리r+6을 sin30에 대응해 r을 복원한 뒤 cos30으로 접선 길이를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "접점 직각삼각형의 반지름r과 중심거리r+6을 sin30에 대응해 r을 복원한 뒤 cos30으로 접선 길이를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_6a11709254ffde50e3c47450e742c80e45cb9fa58af1340714f14e60bd1e601d",
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원 $O$는 $\\triangle ABC$의 내접원"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AB}=6\\,\\mathrm{cm}$, $\\overline{BC}=9\\,\\mathrm{cm}$, $\\overline{AC}=8\\,\\mathrm{cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{CF}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "한 점에서 원에 그은 두 접선의 길이는 같으므로\n$AD=AF$, $BD=BE$, $CE=CF$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$BC=BE+EC=9$이므로\n$(6-x)+(8-x)=9$\n$14-2x=9$\n$2x=5$\n$x=\\dfrac52$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "점 $D$, $E$, $F$는 접점이다."
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다.",
+        "method": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_4a923994fe76f51cb5594ec3a6211727c5e25748b87876dc9b61ec0c1ba9806d",
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$의 내접원"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{BE}=6\\,\\mathrm{cm}$, $\\overline{CE}=9\\,\\mathrm{cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "원 $O$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "한 점에서 원에 그은 두 접선의 길이는 같으므로\n$BD=BE=6$, $CF=CE=9$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다."
+          },
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "접점에서 반지름은 각 변에 수직이므로 $OD\\perp AB$, $OF\\perp AC$이다.\n또 $\\angle A=90^\\circ$이므로 사각형 $ADOF$는 직사각형이다.\n$OD=OF=r$이므로 $AD=AF=r$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "따라서\n$AB=r+6$, $AC=r+9$, $BC=6+9=15$이다.\n직각삼각형 $ABC$에서\n$(r+6)^2+(r+9)^2=15^2$\n$2r^2+30r+117=225$\n$r^2+15r-54=0$\n$(r+18)(r-3)=0$이다.\n길이는 양수이므로 $r=3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "따라서\n$AB=r+6$, $AC=r+9$, $BC=6+9=15$이다.\n직각삼각형 $ABC$에서\n$(r+6)^2+(r+9)^2=15^2$\n$2r^2+30r+117=225$\n$r^2+15r-54=0$\n$(r+18)(r-3)=0$이다.\n길이는 양수이므로 $r=3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "따라서 원의 넓이는\n$\\pi r^2=9\\pi\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "길이는 양수이므로 $r=3$이다."
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다.",
+        "method": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_c9c3f23437c9db41e99e412f28cbb7eee2b6442dbf996d59307708b4fb862366",
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "한 모서리의 길이가 $8$인 정육면체"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "점 $D$에서 $\\overline{BH}$에 내린 수선의 발을 $N$"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle NDH=x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\sin x-\\cos x+\\tan x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "정육면체의 한 모서리가 $8$이므로 면의 대각선은\n$BD=\\sqrt{8^2+8^2}=8\\sqrt2$이다.\n또 $BD\\perp DH$이고 $DH=8$이므로\n$BH=\\sqrt{BD^2+DH^2}$\n$=\\sqrt{(8\\sqrt2)^2+8^2}$\n$=8\\sqrt3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "$DN\\perp BH$이므로\n$\\angle DNH=\\angle BDH=90^\\circ$이고 $\\angle DHN$은 공통이다.\n따라서 $\\triangle DNH\\sim\\triangle DBH$이므로\n$x=\\angle NDH=\\angle DBH$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "직각삼각형 $DBH$에서\n$\\sin x=\\dfrac{DH}{BH}=\\dfrac8{8\\sqrt3}=\\dfrac{\\sqrt3}{3}$\n$\\cos x=\\dfrac{BD}{BH}=\\dfrac{8\\sqrt2}{8\\sqrt3}=\\dfrac{\\sqrt6}{3}$\n$\\tan x=\\dfrac{DH}{BD}=\\dfrac8{8\\sqrt2}=\\dfrac{\\sqrt2}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "점 $D$에서 $\\overline{BH}$에 내린 수선의 발을 $N$"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다.",
+        "method": "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_bb994a1c383fcfa316a376ca6eb1c7511a95ccc859f97f4b245052b20e498f47",
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형 $ABCD$"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$\\angle BAD=150^\\circ$이므로 $AD$와 직선 $AB$가 이루는 예각은 $30^\\circ$이다.\n$D$에서 직선 $AB$에 내린 높이는\n$4\\sin30^\\circ=2\\,\\mathrm{cm}$이다.\n따라서\n$[\\triangle ABD]=\\dfrac12\\times2\\sqrt3\\times2=2\\sqrt3\\,\\mathrm{cm}^2$이다.\n\n$\\triangle BCD$에서 $D$에서 $BC$에 내린 높이는\n$6\\sin60^\\circ=3\\sqrt3\\,\\mathrm{cm}$이다.\n따라서\n$[\\triangle BCD]=\\dfrac12\\times8\\times3\\sqrt3=12\\sqrt3\\,\\mathrm{cm}^2$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "사각형 $ABCD$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "보조선",
+            "src": "solution",
+            "quote": "대각선 $BD$를 그으면 사각형이 $\\triangle ABD$와 $\\triangle BCD$로 나뉜다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선으로 사각형을 나누고 각각의 끼인각에서 sin30과sin60으로 높이를 구해 두 삼각형 넓이를 합한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\angle BAD=150^\\circ$이므로 $AD$와 직선 $AB$가 이루는 예각은 $30^\\circ$이다.\n$D$에서 직선 $AB$에 내린 높이는\n$4\\sin30^\\circ=2\\,\\mathrm{cm}$이다.\n따라서\n$[\\triangle ABD]=\\dfrac12\\times2\\sqrt3\\times2=2\\sqrt3\\,\\mathrm{cm}^2$이다.\n\n$\\triangle BCD$에서 $D$에서 $BC$에 내린 높이는\n$6\\sin60^\\circ=3\\sqrt3\\,\\mathrm{cm}$이다.\n따라서\n$[\\triangle BCD]=\\dfrac12\\times8\\times3\\sqrt3=12\\sqrt3\\,\\mathrm{cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선으로 사각형을 나누고 각각의 끼인각에서 sin30과sin60으로 높이를 구해 두 삼각형 넓이를 합한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "그러므로\n$[ABCD]=2\\sqrt3+12\\sqrt3=14\\sqrt3\\,\\mathrm{cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선으로 사각형을 나누고 각각의 끼인각에서 sin30과sin60으로 높이를 구해 두 삼각형 넓이를 합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "대각선으로 사각형을 나누고 각각의 끼인각에서 sin30과sin60으로 높이를 구해 두 삼각형 넓이를 합한다.",
+        "method": "대각선으로 사각형을 나누고 각각의 끼인각에서 sin30과sin60으로 높이를 구해 두 삼각형 넓이를 합한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "대각선으로 사각형을 나누고 각각의 끼인각에서 sin30과sin60으로 높이를 구해 두 삼각형 넓이를 합한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_7ca94a922fb227f7079923725c0bbb5a4c399011e7961d4b3cc517f3129c27bf",
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "동심원",
+            "src": "stem",
+            "quote": "중심이 같고 반지름의 길이가 서로 다른 두 원"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$\\overline{AB}\\perp\\overline{OM}$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{OA}=6\\,\\mathrm{cm}$, $\\overline{OM}=2\\,\\mathrm{cm}$, $\\overline{DB}=\\sqrt2\\,\\mathrm{cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{OD}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "$OA=OB=6\\,\\mathrm{cm}$이고 $OM\\perp AB$이다.\n중심에서 현에 내린 수선은 현을 이등분하므로 $M$은 $AB$의 중점이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 원의 반지름과 중심거리에서 반현MB를 구하고 DB를 빼 작은 원의 반현MD를 얻은 뒤 같은 높이OM의 직각삼각형으로 작은 반지름을 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형 $OMB$에서\n$MB^2=OB^2-OM^2$\n$=6^2-2^2$\n$=32$\n이므로 $MB=4\\sqrt2\\,\\mathrm{cm}$이다.\n\n점 $D$는 $M$과 $B$ 사이에 있고 $DB=\\sqrt2\\,\\mathrm{cm}$이므로\n$MD=MB-DB=4\\sqrt2-\\sqrt2=3\\sqrt2\\,\\mathrm{cm}$이다.\n$OM\\perp AB$이고 $M,D,B$가 한 직선 위에 있으므로 $OM\\perp MD$이다.\n\n따라서 직각삼각형 $OMD$에서\n$OD^2=OM^2+MD^2$\n$=2^2+(3\\sqrt2)^2$\n$=4+18=22$이다.\n그러므로 $OD=\\sqrt{22}\\,\\mathrm{cm}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 원의 반지름과 중심거리에서 반현MB를 구하고 DB를 빼 작은 원의 반현MD를 얻은 뒤 같은 높이OM의 직각삼각형으로 작은 반지름을 구한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "점 $D$는 $M$과 $B$ 사이에 있고 $DB=\\sqrt2\\,\\mathrm{cm}$이므로\n$MD=MB-DB=4\\sqrt2-\\sqrt2=3\\sqrt2\\,\\mathrm{cm}$이다.\n$OM\\perp AB$이고 $M,D,B$가 한 직선 위에 있으므로 $OM\\perp MD$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 원의 반지름과 중심거리에서 반현MB를 구하고 DB를 빼 작은 원의 반현MD를 얻은 뒤 같은 높이OM의 직각삼각형으로 작은 반지름을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "위치관계",
+            "src": "solution",
+            "quote": "점 $D$는 $M$과 $B$ 사이에 있고 $DB=\\sqrt2\\,\\mathrm{cm}$이므로"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "큰 원의 반지름과 중심거리에서 반현MB를 구하고 DB를 빼 작은 원의 반현MD를 얻은 뒤 같은 높이OM의 직각삼각형으로 작은 반지름을 구한다.",
+        "method": "큰 원의 반지름과 중심거리에서 반현MB를 구하고 DB를 빼 작은 원의 반현MD를 얻은 뒤 같은 높이OM의 직각삼각형으로 작은 반지름을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "큰 원의 반지름과 중심거리에서 반현MB를 구하고 DB를 빼 작은 원의 반현MD를 얻은 뒤 같은 높이OM의 직각삼각형으로 작은 반지름을 구한다."
+      ],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 147,
+    "quotesNotFound": 0,
+    "notes": "各문항 실제 본문·해설 및 도형을 읽어 의미 결정. 기존 수학 검증을 재사용하며 새 풀이나 수학 R1/R2/R3를 작성하지 않았다."
+  }
+}
