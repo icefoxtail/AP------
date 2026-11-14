@@ -928,7 +928,7 @@ window.questionBank = [
       "도형",
       "삼각형과 원"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q22-clean.svg",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q22-problem-v2.svg",
     "decisiveStep": "이등변삼각형의 높이에서 넓이를 구한 뒤 외접반지름 공식을 쓰는 단계",
     "questionType": "서술형",
     "layoutTag": "grid",

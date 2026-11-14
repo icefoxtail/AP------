@@ -1,0 +1,225 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2final/21_왕운중_2학기_기말_중3_기출.js",
+  "questionId": 22,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-15",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-9",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-9",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "rational",
+                  "numerator": "15",
+                  "denominator": "2"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C"
+        ],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "ab",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "ac",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "bc",
+            "refs": [
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "eqSides",
+              "count": 1,
+              "segments": [
+                "ab",
+                "ac"
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "givenBC",
+              "ownerSegment": "bc",
+              "text": "12",
+              "unit": "cm",
+              "labelKind": "MATH",
+              "factRole": "GIVEN"
+            }
+          ],
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "circ",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "givenAC",
+              "from": "C",
+              "to": "A",
+              "label": "3√5",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "BAR",
+              "offset": 1,
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 600
+        },
+        "caption": "외접원에 내접한 이등변삼각형 ABC",
+        "sourceQuote": "외접원의 반지름의 길이를 구하는 풀이과정과 답",
+        "sourceConditions": [
+          {
+            "id": "isoscelesSides",
+            "condition": "AB=AC=3√5 cm",
+            "mappedTo": "AB and AC expression labels plus equal-length mark"
+          },
+          {
+            "id": "baseLength",
+            "condition": "BC=12 cm",
+            "mappedTo": "BC expression label"
+          },
+          {
+            "id": "circumcircle",
+            "condition": "ABC is inscribed in its circumcircle",
+            "mappedTo": "A, B, C lie on displayed circle"
+          }
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 41,
+        "displayScale": 0.45,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}
