@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "examId": "E011",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "3ce2bba7ebb5621a034323c7515715de4e5a76c0",
+  "sampled4slotSha256": "75cc898b2e2c6f770ef46c7ac7a5fd29b50400b409fb30a6f4d7cd8720003676",
+  "sampledReviewSha256": "ea9cf6fbdc1a741eb8802143a3132a155c89c320628c8b597442a957c84823e5",
+  "sourcePacketSha256": "f9290a86d0e502860df3a6737de1eb9f097bef7a137a45f567d7a22cc805edcc",
+  "sampled": [
+    7,
+    16,
+    18
+  ],
+  "status": "PASS_AFTER_METADATA_LEAF_REFINEMENT",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_020eec100424bc478eabae41c66b091d4bf1c17939e7a07be556532478e2f1b0",
+      "sourceImageRead": false,
+      "visualStatus": "NOT_PRESENT",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 4
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "0도·45도의 기준값과 사인·탄젠트의 단조성으로 일반각 값의 순서를 결정한다. 두 용어뿐인 WARN은 실제 간결한 구조를 반영하며 일반각 비교 TPL gap 분리가 타당하다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_8121df11cf45bc2a3dbf232a0dd1d0dbde082755afa7ec207d1e4ce1bcf20c6b",
+      "sourceImageRead": true,
+      "visualStatus": "READ",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 7
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원의 점이 중심과 겹치는 접기를 반지름의 수직이등분으로 바꾸어 중심거리 r/2를 얻고 현의 반을 피타고라스로 구한다. 핵심 접기 조건이 given의 exact 문장에 보존되어 있다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_d7ce3475089d18b48ccbd53fa0d1caae84b7b52a823178a5803750ae14cfac31",
+      "sourceImageRead": true,
+      "visualStatus": "READ",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 7
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "접선-반지름 직각과 두 접선의 대칭으로 30도를 복원하고 탄젠트 길이를 두 삼각형의 넓이에 연결한다. 삼각비 CHAINED 재사용 및 다각형 넓이 RPM062/current150 정밀화가 적합하다.",
+      "status": "PASS"
+    }
+  ],
+  "outstanding": [],
+  "scope": "Three independent metadata/4slot samples; no full-exam R1/R2/R3 certification",
+  "followup": "Q18 leaf062/current150로 최종 넓이 목표와 일치시킨 author 최종본 결속. 슬롯 변경 없음."
+}
