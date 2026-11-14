@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E011",
+  "examiner": "C",
+  "author": "B",
+  "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "dffa2e04eb25a16b620816ef4bc06a51ba81acd5",
+  "reviewSha256": "9498ab59e853dbd8e0a6073c4e6fa7dc3305b4b7e6b2535b595d10755ed104c0",
+  "fourSlotSha256": "156992982b48157c7ee3e13b58bff95c78adbd0507ac14cb80e189dd38e674b3",
+  "ordinals": [
+    9,
+    23,
+    24
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 9,
+      "verdict": "PASS",
+      "reason": "발문과 그림 및 이미 완성된 증명 조건을 확인했다. 빈칸은 직각·같은 빗변·같은 예각을 RHA라는 설명에 대응시키는 직접 확인이다. 합동을 새로 구성하는 문제와 구별되므로 bucket1에 동의한다. goal 합동조건과 method 합동조건은 역할이 서로 달라 중복 경고가 결함은 아니다.",
+      "repairs": [],
+      "imageViewed": "workers/C/images/E011/9.png",
+      "difficultyIndependentRecheck": {
+        "bucket": 1,
+        "legacy": "중",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "빈칸 앞뒤에 필요한 세 조건과 합동 결론이 이미 주어져 있어 이름을 확인한다."
+      },
+      "questionUid": "qid_v1_3fcc44938912568f8136ed7e3467ec33b6937bf93587acc4af6ad7f5c69369fb",
+      "fourSlotCriticalDefect": false,
+      "quotesExact": true,
+      "quoteCount": 4,
+      "inspectedRpmRecordId": "M2-RPM-071"
+    },
+    {
+      "sourceOrdinal": 23,
+      "verdict": "REPAIR",
+      "reason": "실제 그래프의 두 점과 기울기·절편 결정 후 연립으로 교점을 얻는 구조를 확인했다. 원본 시험지가 2학기라는 이유로 1학기 primary를 배제할 이유가 없다. RPM056 교점과 연립방정식 및 ACTIVE intersection 후보는 적합하지만 CC_SIMULTANEOUS_LINEAR_EQUATIONS는 primaryL4 자체와 중복한다. 먼저 두 직선식을 만드는 별도 작업은 기울기·절편 개념으로 기록하는 것이 정확하다.",
+      "repairs": [
+        {
+          "field": "after.crossConceptKeys",
+          "replace": [
+            "CC_SLOPE_AND_INTERCEPT"
+          ],
+          "reason": "연립은 교점과 연립방정식 primary의 핵심 골격. 그래프의 점에서 두 식을 먼저 정하는 입력 작업이 별도 보조 개념."
+        }
+      ],
+      "imageViewed": "workers/B/images/E011-23.png",
+      "questionUid": "qid_v1_9549de6dcae441fa62b29252cbe4c99d8eef48b32cf6097a2a0e5cfb7e51713a",
+      "fourSlotCriticalDefect": false,
+      "quotesExact": true,
+      "quoteCount": 6,
+      "inspectedRpmRecordId": "M2-RPM-056"
+    },
+    {
+      "sourceOrdinal": 24,
+      "verdict": "PASS",
+      "reason": "중점에 따른 같은 빗변, 수선의 직각, 같은 다른 변이 발문에 모두 직접 제공된다. RHS 후 대응변을 옮겨 두 선분을 더하는 한 번의 익숙한 전환이므로 bucket2가 맞다. goal 증명·길이, method RHS와 condition 중점·수선의발의 역할과 인용은 적합하다. 역사 level 상과의 STRONG_CONFLICT는 보존한다.",
+      "repairs": [],
+      "imageViewed": "workers/B/images/E011-24.png",
+      "difficultyIndependentRecheck": {
+        "bucket": 2,
+        "legacy": "상",
+        "compatibility": "STRONG_CONFLICT",
+        "reason": "보조선·합동쌍 탐색 없이 조건을 RHS에 대응시키고 길이 합을 계산한다."
+      },
+      "questionUid": "qid_v1_1ebbad7ce98e6ba9e27dfc3ec5893095633653ab3fcc94c198a8df3f9fa73950",
+      "fourSlotCriticalDefect": false,
+      "quotesExact": true,
+      "quoteCount": 7,
+      "inspectedRpmRecordId": "M2-RPM-070"
+    }
+  ],
+  "overallStatus": "REPAIR",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "저자 파일 직접 수정 없음. 실제 발문·보기·해설 및 표시한 원본 그림과 현행 ACTIVE 정의를 대조했다. 전체 수학 독립 재검수로 확장하지 않음."
+  ]
+}
