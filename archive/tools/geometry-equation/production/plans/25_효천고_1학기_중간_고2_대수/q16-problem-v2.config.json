@@ -1,0 +1,636 @@
+{
+  "figures": [
+    {
+      "slot": "body",
+      "typography": {
+        "baseFontPx": 24,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 12,
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1"
+      },
+      "plan": {
+        "caption": "사분원호의 등분점과 반지름 위에 내린 수선",
+        "mathPlan": {
+          "realization": {
+            "unit": "source-length",
+            "reflectionEquivalent": false,
+            "recipeId": "PLANE_FIGURE_v1"
+          },
+          "nodes": [
+            {
+              "args": {
+                "coordinates": [
+                  {
+                    "value": "0",
+                    "kind": "integer"
+                  },
+                  {
+                    "value": "0",
+                    "kind": "integer"
+                  }
+                ]
+              },
+              "id": "O",
+              "factRole": "GIVEN",
+              "inputs": [],
+              "op": "SOURCE_POINT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {
+                "coordinates": [
+                  {
+                    "value": "1",
+                    "kind": "integer"
+                  },
+                  {
+                    "value": "0",
+                    "kind": "integer"
+                  }
+                ]
+              },
+              "id": "Pend",
+              "factRole": "GIVEN",
+              "inputs": [],
+              "op": "SOURCE_POINT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {
+                "coordinates": [
+                  {
+                    "value": "0",
+                    "kind": "integer"
+                  },
+                  {
+                    "value": "1",
+                    "kind": "integer"
+                  }
+                ]
+              },
+              "id": "Q",
+              "factRole": "GIVEN",
+              "inputs": [],
+              "op": "SOURCE_POINT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {},
+              "id": "lOP",
+              "factRole": "GIVEN",
+              "inputs": [
+                "O",
+                "Pend"
+              ],
+              "op": "LINE_THROUGH",
+              "outputType": "LINE"
+            },
+            {
+              "args": {
+                "radius": {
+                  "value": "1",
+                  "kind": "integer"
+                }
+              },
+              "id": "c",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "O"
+              ],
+              "op": "CIRCLE_CENTER_RADIUS",
+              "outputType": "CIRCLE"
+            },
+            {
+              "args": {
+                "angleDeg": {
+                  "value": "10",
+                  "kind": "integer"
+                },
+                "length": {
+                  "value": "1",
+                  "kind": "integer"
+                },
+                "turn": "CCW"
+              },
+              "id": "P1",
+              "factRole": "GIVEN",
+              "inputs": [
+                "O",
+                "Pend"
+              ],
+              "op": "POLAR_POINT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {},
+              "id": "Q1",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "P1",
+                "lOP"
+              ],
+              "op": "PERPENDICULAR_FOOT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {
+                "angleDeg": {
+                  "value": "20",
+                  "kind": "integer"
+                },
+                "length": {
+                  "value": "1",
+                  "kind": "integer"
+                },
+                "turn": "CCW"
+              },
+              "id": "P2",
+              "factRole": "GIVEN",
+              "inputs": [
+                "O",
+                "Pend"
+              ],
+              "op": "POLAR_POINT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {},
+              "id": "Q2",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "P2",
+                "lOP"
+              ],
+              "op": "PERPENDICULAR_FOOT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {
+                "angleDeg": {
+                  "value": "30",
+                  "kind": "integer"
+                },
+                "length": {
+                  "value": "1",
+                  "kind": "integer"
+                },
+                "turn": "CCW"
+              },
+              "id": "P3",
+              "factRole": "GIVEN",
+              "inputs": [
+                "O",
+                "Pend"
+              ],
+              "op": "POLAR_POINT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {},
+              "id": "Q3",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "P3",
+                "lOP"
+              ],
+              "op": "PERPENDICULAR_FOOT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {
+                "angleDeg": {
+                  "value": "40",
+                  "kind": "integer"
+                },
+                "length": {
+                  "value": "1",
+                  "kind": "integer"
+                },
+                "turn": "CCW"
+              },
+              "id": "P4",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "O",
+                "Pend"
+              ],
+              "op": "POLAR_POINT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {},
+              "id": "Q4",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "P4",
+                "lOP"
+              ],
+              "op": "PERPENDICULAR_FOOT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {
+                "angleDeg": {
+                  "value": "50",
+                  "kind": "integer"
+                },
+                "length": {
+                  "value": "1",
+                  "kind": "integer"
+                },
+                "turn": "CCW"
+              },
+              "id": "P5",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "O",
+                "Pend"
+              ],
+              "op": "POLAR_POINT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {},
+              "id": "Q5",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "P5",
+                "lOP"
+              ],
+              "op": "PERPENDICULAR_FOOT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {
+                "angleDeg": {
+                  "value": "60",
+                  "kind": "integer"
+                },
+                "length": {
+                  "value": "1",
+                  "kind": "integer"
+                },
+                "turn": "CCW"
+              },
+              "id": "P6",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "O",
+                "Pend"
+              ],
+              "op": "POLAR_POINT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {},
+              "id": "Q6",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "P6",
+                "lOP"
+              ],
+              "op": "PERPENDICULAR_FOOT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {
+                "angleDeg": {
+                  "value": "70",
+                  "kind": "integer"
+                },
+                "length": {
+                  "value": "1",
+                  "kind": "integer"
+                },
+                "turn": "CCW"
+              },
+              "id": "P7",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "O",
+                "Pend"
+              ],
+              "op": "POLAR_POINT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {},
+              "id": "Q7",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "P7",
+                "lOP"
+              ],
+              "op": "PERPENDICULAR_FOOT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {
+                "angleDeg": {
+                  "value": "80",
+                  "kind": "integer"
+                },
+                "length": {
+                  "value": "1",
+                  "kind": "integer"
+                },
+                "turn": "CCW"
+              },
+              "id": "P8",
+              "factRole": "GIVEN",
+              "inputs": [
+                "O",
+                "Pend"
+              ],
+              "op": "POLAR_POINT",
+              "outputType": "POINT"
+            },
+            {
+              "args": {},
+              "id": "Q8",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "inputs": [
+                "P8",
+                "lOP"
+              ],
+              "op": "PERPENDICULAR_FOOT",
+              "outputType": "POINT"
+            },
+            {
+              "id": "LQ3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "75",
+                    "denominator": "100"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-1",
+                    "denominator": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "LQ2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "92",
+                    "denominator": "100"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-1",
+                    "denominator": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "LQ1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "119",
+                    "denominator": "100"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-3",
+                    "denominator": "16"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ],
+          "schemaVersion": "construction-spike-v1"
+        },
+        "newVisualInformation": [],
+        "displaySegments": [
+          {
+            "id": "baseOP",
+            "refs": [
+              "O",
+              "Pend"
+            ]
+          },
+          {
+            "id": "radial1",
+            "refs": [
+              "O",
+              "P1"
+            ]
+          },
+          {
+            "id": "projection1",
+            "dashed": true,
+            "refs": [
+              "P1",
+              "Q1"
+            ]
+          },
+          {
+            "id": "radial2",
+            "refs": [
+              "O",
+              "P2"
+            ]
+          },
+          {
+            "id": "projection2",
+            "dashed": true,
+            "refs": [
+              "P2",
+              "Q2"
+            ]
+          },
+          {
+            "id": "radial3",
+            "refs": [
+              "O",
+              "P3"
+            ]
+          },
+          {
+            "id": "projection3",
+            "dashed": true,
+            "refs": [
+              "P3",
+              "Q3"
+            ]
+          },
+          {
+            "id": "radial8",
+            "refs": [
+              "O",
+              "P8"
+            ]
+          },
+          {
+            "id": "projection8",
+            "dashed": true,
+            "refs": [
+              "P8",
+              "Q8"
+            ]
+          },
+          {
+            "id": "labelQ3",
+            "refs": [
+              "Q3",
+              "LQ3"
+            ]
+          },
+          {
+            "id": "labelQ2",
+            "refs": [
+              "Q2",
+              "LQ2"
+            ]
+          },
+          {
+            "id": "labelQ1",
+            "refs": [
+              "Q1",
+              "LQ1"
+            ]
+          },
+          {
+            "id": "baseOQ",
+            "refs": [
+              "O",
+              "Q"
+            ]
+          }
+        ],
+        "sourceConditions": [
+          {
+            "id": "quarter-circle",
+            "mappedTo": "CIRCLE_CENTER_RADIUS(c)",
+            "condition": "center O, radius 1, quarter-circle arc from P to Q"
+          },
+          {
+            "id": "nine-equal-arcs",
+            "mappedTo": "POLAR_POINT angles 10,20,...,80 degrees, CCW from OP",
+            "condition": "P_1 through P_8 divide arc PQ into nine equal arcs, in order from P to Q"
+          },
+          {
+            "id": "feet",
+            "mappedTo": "PERPENDICULAR_FOOT(P_i,lOP)",
+            "condition": "Q_i is the perpendicular foot from P_i to OP"
+          }
+        ],
+        "pointNames": {
+          "P1": "P_1",
+          "P3": "P_3",
+          "Q8": "Q_8",
+          "P2": "P_2",
+          "P8": "P_8",
+          "LQ3": "Q_3",
+          "LQ2": "Q_2",
+          "LQ1": "Q_1"
+        },
+        "displayPoints": [
+          "O",
+          "Pend",
+          "Q",
+          "P1",
+          "Q1",
+          "P2",
+          "Q2",
+          "P3",
+          "Q3",
+          "P4",
+          "Q4",
+          "P5",
+          "Q5",
+          "P6",
+          "Q6",
+          "P7",
+          "Q7",
+          "P8",
+          "Q8",
+          "LQ3",
+          "LQ2",
+          "LQ1"
+        ],
+        "planeMarks": {
+          "arcs": [
+            {
+              "circle": "c",
+              "side": "MINOR",
+              "center": "O",
+              "id": "quarterArcPQ",
+              "to": "Q",
+              "from": "Pend"
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "endpointP",
+              "at": [
+                1.22,
+                0.12
+              ],
+              "text": "P",
+              "anchor": "CENTER",
+              "labelKind": "MATH",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "radiusOP",
+              "at": [
+                0.52,
+                -0.1
+              ],
+              "text": "1",
+              "anchor": "CENTER",
+              "labelKind": "MATH",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "capability": "construction-spike-v1",
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 600
+        },
+        "hiddenPointNames": [
+          "Q5",
+          "Q4",
+          "P7",
+          "P4",
+          "Q7",
+          "P5",
+          "P6",
+          "Q6",
+          "Q1",
+          "Q2",
+          "Q3",
+          "Pend"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displayCircles": []
+      }
+    }
+  ],
+  "questionId": 16,
+  "sourcePath": "archive/exams/original/high/h2/1mid/25_효천고_1학기_중간_고2_대수.js"
+}
