@@ -265,7 +265,11 @@ window.examData = {
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "오른쪽 그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{ON}}\\perp\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{OM}}\\perp\\overline{\\mathrm{AB}}$이고 $\\overline{\\mathrm{ON}}=\\overline{\\mathrm{OM}}=3$, $\\overline{\\mathrm{AB}}=6$일 때, $\\overline{\\mathrm{OC}}$의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q07.png\" />"
+      "content": "오른쪽 그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{ON}}\\perp\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{OM}}\\perp\\overline{\\mathrm{AB}}$이고 $\\overline{\\mathrm{ON}}=\\overline{\\mathrm{OM}}=3$, $\\overline{\\mathrm{AB}}=6$일 때, $\\overline{\\mathrm{OC}}$의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q07.png\" />",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 현 AB의 반쪽 AM=MB=3, 중심거리 OM=3이며 OM은 AB에 수직이다. 같은 중심거리 ON도 표시한다.",
+      "solutionImageCaption": "직각삼각형 OMA에서 OA=√(3²+3²)=3√2이므로 OC=3√2이다. 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
@@ -687,6 +691,7 @@ window.examData = {
     },
     {
       "id": 19,
+      "solutionReminderImagePolicy": "STRIP_INLINE",
       "score": 7.0,
       "question": "서술형1. 아래 그림과 같이 직각삼각형 $\\mathrm{ABC}$의 꼭짓점 $\\mathrm{C}$에서 변 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{D}$라 하고, 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$라고 하자. $\\angle\\mathrm{ACD}=x^\\circ$, $\\angle\\mathrm{DCE}=y^\\circ$라고 할 때, $\\sin x^\\circ - \\sin y^\\circ + 2\\tan y^\\circ$의 값을 구하시오.<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/s01.png\" />",
       "choices": [],
@@ -747,7 +752,11 @@ window.examData = {
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "서술형2. 오른쪽 그림에서 원 $\\mathrm{O}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내접원이고, 세 점 $\\mathrm{D, E, F}$는 접점이다. $\\overline{\\mathrm{BE}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{CE}}=9\\,\\mathrm{cm}$일 때, 다음에 답하시오.<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/s02.png\" /><br>(1) 원 $\\mathrm{O}$의 반지름의 길이를 구하시오. (3점)<br>(2) $\\triangle\\mathrm{OBC}$의 둘레의 길이를 구하시오. (3점)"
+      "content": "서술형2. 오른쪽 그림에서 원 $\\mathrm{O}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내접원이고, 세 점 $\\mathrm{D, E, F}$는 접점이다. $\\overline{\\mathrm{BE}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{CE}}=9\\,\\mathrm{cm}$일 때, 다음에 답하시오.<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/s02.png\" /><br>(1) 원 $\\mathrm{O}$의 반지름의 길이를 구하시오. (3점)<br>(2) $\\triangle\\mathrm{OBC}$의 둘레의 길이를 구하시오. (3점)",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 내접원 접점 D,E,F를 표시하고 같은 꼭짓점에서 나온 접선 길이 쌍을 같은 색 눈금으로 묶었다. BE=6cm, CE=9cm.",
+      "solutionImageCaption": "BC=15cm이고 AD=AF=x라 두면 (x+6)²+(x+9)²=15²에서 x=3cm이다. 따라서 원의 반지름은 3cm이다. OB=3√5cm, OC=3√10cm이므로 △OBC의 둘레는 15+3√5+3√10cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 21,

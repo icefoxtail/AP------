@@ -335,7 +335,11 @@ window.questionBank = [
       "subConcept": "직선 절편과 sin·cos·tan",
       "conditionsUsed": "기울기 1/2, 점 (−2,3), 축 절편 A·B.",
       "integrationPatternExplanation": "절편으로 직각삼각형을 만들어 기본 삼각비를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: P(−2,3)을 지나는 직선이 x축의 A=(−8,0), y축의 B=(0,4)와 만나고, OAB 직각삼각형에서 각 a와 b를 표시한다.",
+    "solutionImageCaption": "직선은 y=1/2x+4이므로 A=(−8,0), B=(0,4)이다. AB=4√5, AO=8, BO=4에서 cos a=sin b=2√5/5, tan b=2이다. 따라서 cos a−sin b+tan b=2, 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -717,7 +721,11 @@ window.questionBank = [
       "subConcept": "직각삼각형의 높이와 삼각비",
       "conditionsUsed": "∠A=90°, AD⊥BC, AB=√7, AC=3.",
       "integrationPatternExplanation": "빗변 분할 관계로 두 삼각비를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AD가 빗변 BC에 수직이고, x/y가 A의 직각을 나눈다. 두 색 삼각형의 대응각 표식을 나타낸다.",
+    "solutionImageCaption": "BC=4, BD=7/4, DC=9/4, AD=3√7/4이다. sin x=√7/4, tan y=3/√7이므로 sin x·tan y=3/4. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

@@ -1490,7 +1490,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: C에서 직각인 삼각형 ABC에서 빗변 AB=100, ∠B=70°이며 AC 길이는 숫자로 표시하지 않았다.",
+    "solutionImageCaption": "sin70°=0.9397이므로 AC=100·0.9397=93.97이다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
