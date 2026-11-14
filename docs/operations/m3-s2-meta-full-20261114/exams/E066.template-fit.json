@@ -1,0 +1,134 @@
+{
+  "examId": "E066",
+  "author": "GPT_AUTHOR_C_00FBAC4C0777",
+  "afterFreezeSha256": "f94cea0848d71a2b98896c58c2e5965e029f8858992fa5303e11dcec513fcc73",
+  "at": "2026-11-14T11:06:19.761652+00:00",
+  "items": [
+    {
+      "ordinal": 1,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "tan에서 직각변 비와 sin을 복원하고 여각cos로 변환하므로 한 삼각비에서 다른 삼각비로의 기본 변환이다."
+    },
+    {
+      "ordinal": 2,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "닮음으로 확보한 세 변을 각A,B의 삼각비 정의에 대응하여 진위를 판정한다."
+    },
+    {
+      "ordinal": 3,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "A90°를 알아내면 AC=4tan30°의 직접 목표 길이 계산이다."
+    },
+    {
+      "ordinal": 4,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "실제 절차는 삼각비표에서 수치에 대응하는 각의 역검색이다. BASIC_RELATION의 변·각 관계 변환을 하지 않는다. 필요한 정의: 삼각비표 행·열을 읽어 각 또는 근삿값을 찾기."
+    },
+    {
+      "ordinal": 5,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "단위사분원에서 sin,cos,tan의 정의와 여각관계를 표현 선분으로 바꾼다."
+    },
+    {
+      "ordinal": 6,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "reason": "30° 직각삼각형과15°가 같은 두 각의 관계를 이용해15°의 삼각비 값을 정확히 계산한다. 후보 internalSkeleton의 특수각 관계로 삼각비 결정에 부합한다."
+    },
+    {
+      "ordinal": 7,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "단위길이의 높이에서 sin과cos,tan 및58°의여각을 변환한다."
+    },
+    {
+      "ordinal": 8,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "빗변20과55°에서AC=20sin55°를 직접 계산한다. 공통 미지량에 대한 두 식이나 연립이 없어 SHARED_HEIGHT는 부적합하다."
+    },
+    {
+      "ordinal": 9,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "목표는 길이·넓이가 아닌sinx이고, 기존 넓이를 두 방식으로 써 sin을 역산한다. DIRECT_MEASURE는 목표량이 다르고 CHAINED_MEASURE는 삼각비→다른 도형량 순서라 역방향이다. 필요한 정의: 동일 넓이의 두 표현으로 미지 삼각비를 역산."
+    },
+    {
+      "ordinal": 10,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "삼각비로 외부 높이BH를 구한 뒤 두 삼각형 넓이의 합으로 연결한다. 목표가 넓이이며 단순 직접길이 측정과 구별된다."
+    },
+    {
+      "ordinal": 11,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "높이를s sin60°로 표현한 뒤 마름모 넓이식에 연결하여 s를 역산한다. 삼각비 중간길이→다른 도형량의 조건 연결이라는 skeleton에 부합한다."
+    },
+    {
+      "ordinal": 12,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "연결된 두 직각삼각형에서 투영 길이를 구하고 최종 거리AC를 산출한다. 후보 skeleton은 연결된 직각삼각형도 허용하며 공통 미지량 두식 연립은 없다."
+    },
+    {
+      "ordinal": 13,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "접선길이15는 이미 주어져 있고 목표는OP,넓이,합동 등 다중 명제이다. TM_TANGENT_LENGTH의 접선 자체 길이 산출과 다르다. 필요한 정의: 두 접선과 반지름의 성질을 이용한 길이·넓이·합동 명제 종합판정."
+    },
+    {
+      "ordinal": 14,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "접선조각6,3을 합해9와높이차3을 만들지만 최종목표는지름AB이다. 필요한 정의: 평행한 지름끝 접선과 공통접선에서 접선조각·피타고라스로 지름 또는반지름 복원."
+    },
+    {
+      "ordinal": 15,
+      "status": "FIT",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "reason": "반현6과 중심거리r−3으로 반지름을 복원한다. 후보가 현길이 자체뿐 아니라 현의 길이 조건을 이용하는 경우를 명시적으로 포함하므로 원주 후처리도 허용된다."
+    },
+    {
+      "ordinal": 16,
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "공식후보가없다. 필요한 정의: 두접선의교각과반지름직각으로중심각을구한뒤이등변삼각형의각결정."
+    },
+    {
+      "ordinal": 17,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "현길이를산출하거나수치조건으로다른량을구하지않고정리의동일원전제와진위를판정한다. 필요한정의: 원의현·중심거리·수직이등분선·접선의성질명제판정및적용범위."
+    },
+    {
+      "ordinal": 18,
+      "status": "FIT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "reason": "최종x는외부점B에서접점E까지의접선길이BE이며같은접선조각과구간합차로직접산출한다."
+    },
+    {
+      "ordinal": 19,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "세변으로B의sin,cos,tan을계산하고C90°의삼각비및분모0의정의를확인한다."
+    },
+    {
+      "ordinal": 20,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "넓이에서높이를복원한뒤삼각비로AB,BD를구하고다른직각삼각형의AC로연결한다. 삼각비결과를다른도형량의계산에이어간다는skeleton에부합한다."
+    },
+    {
+      "ordinal": 21,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "목표는내접원반지름과중심을포함한삼각형둘레이다. 접선길이계산전용후보와달리접선조각을r로두는피타고라스방정식과추가빗변계산이필요하다. 필요한정의: 직각삼각형내접원의접선조각으로반지름을복원하고연결도형량계산."
+    }
+  ]
+}

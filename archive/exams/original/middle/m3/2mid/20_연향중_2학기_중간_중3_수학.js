@@ -32,7 +32,15 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -67,7 +75,15 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_RIGHT_TRIANGLE_SIMILARITY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -102,7 +118,15 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 4,
@@ -135,7 +159,14 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -171,7 +202,15 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_PARALLEL_LINE_ANGLES"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -206,7 +245,15 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_ISOSCELES_CONVERSE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 7,
@@ -241,7 +288,15 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -271,12 +326,20 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "사다리 길이 20m는 직각삼각형의 빗변이고, 구하려는 높이는 55°의 맞은편 변이다. 따라서 $AC=20\\sin55^\\circ=20\\times0.8192=16.384$m이다. 정답은 ⑤이다.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/q08.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 9,
@@ -306,12 +369,18 @@ window.questionBank = [
     "answer": "②",
     "solution": "$AC=AD+DC=2$cm, $BC=1$cm이므로 직각삼각형 $ABC$에서 $AB=\\sqrt{2^2+1^2}=\\sqrt5$cm이다. 또 직각삼각형 $BCD$에서 $BD=\\sqrt{1^2+1^2}=\\sqrt2$cm. $\\triangle ABD$의 넓이는 밑변 $AD=1$cm, 높이 $BC=1$cm를 이용해 $\\frac{1}{2}$cm²이다(점 $B$에서 직선 $AD$까지의 거리가 $BC=1$). 한편 넓이는 $\\frac12 AB\\cdot BD\\sin x$이므로 $\\frac12=\\frac12\\cdot\\sqrt5\\cdot\\sqrt2\\sin x$. 따라서 $\\sin x=1/\\sqrt{10}=\\sqrt{10}/10$, 정답은 ②이다.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/q09.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -341,12 +410,20 @@ window.questionBank = [
     "answer": "①",
     "solution": "대각선 $BD$로 사각형을 나누면 $\\triangle ABD$와 $\\triangle BCD$의 넓이의 합이다. $\\triangle ABD$에서 $AB=\\sqrt{13}$, $AD=2$, $\\angle BAD=150^\\circ$이다. $AD$를 $A$ 쪽으로 연장해 점 $E$를 잡고, $B$에서 직선 $AE$에 내린 수선의 발을 $H$라 하자. $\\angle BAE=30^\\circ$이므로 직각삼각형 $ABH$에서 $BH=AB\\sin30^\\circ=\\frac{\\sqrt{13}}2$이다. 따라서 $\\triangle ABD$의 넓이는 $\\frac12\\cdot AD\\cdot BH=\\frac12\\cdot2\\cdot\\frac{\\sqrt{13}}2=\\frac{\\sqrt{13}}2$이다. $\\triangle BCD$에서 $BC=6$, $CD=4$, $\\angle BCD=60^\\circ$이므로 넓이는 $\\frac12\\cdot6\\cdot4\\cdot\\sin60^\\circ=6\\sqrt3$이다. 두 넓이의 합은 $\\frac{\\sqrt{13}}2+6\\sqrt3\\;(\\mathrm{cm}^2)$이므로 정답은 ①이다.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/q10.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_STRAIGHT_ANGLE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 11,
@@ -376,12 +453,20 @@ window.questionBank = [
     "answer": "④",
     "solution": "마름모의 한 변을 $s$라 하자. $AB$를 $A$를 지나 연장해 점 $E$를 잡고, $D$에서 직선 $AE$에 내린 수선의 발을 $H$라 하자. $\\angle BAD=120^\\circ$이므로 $\\angle DAE=60^\\circ$이다. 직각삼각형 $ADH$에서 높이 $DH=AD\\sin60^\\circ=s\\sin60^\\circ=\\frac{\\sqrt3}{2}s$이다. 따라서 마름모의 넓이는 밑변과 높이의 곱으로 $AB\\cdot DH=s\\cdot\\frac{\\sqrt3}{2}s=\\frac{\\sqrt3}{2}s^2$이다. $\\frac{\\sqrt3}{2}s^2=9\\sqrt3$에서 $s^2=18$이다. 길이는 양수이므로 $s=3\\sqrt2$cm, 정답은 ④이다.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/q11.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_STRAIGHT_ANGLE"],
+    "conditionKeys": ["COND_POSITIVE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -412,12 +497,20 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "$A$에서 $BC$에 수선 $AD$를 내린다. 직각삼각형 $ABD$에서 $AB=5$m, $\\angle B=60^\\circ$이므로 $AD=AB\\sin60^\\circ=5\\sqrt3/2$m, $BD=AB\\cos60^\\circ=\\frac{5}{2}$m이다. 따라서 $DC=BC-BD=12-\\frac{5}{2}=\\frac{19}{2}$m이다. 직각삼각형 $ADC$에서 피타고라스 정리를 적용하면 $AC^2=AD^2+DC^2=(5\\sqrt3/2)^2+(\\frac{19}{2})^2=\\frac{75+361}{4}=109$이다. 거리는 양수이므로 $AC=\\sqrt{109}$m, 정답은 ⑤이다.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/q12.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": ["COND_POSITIVE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 13,
@@ -450,7 +543,16 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_TRIANGLE_AREA","CC_TRIANGLE_CONGRUENCE_RHS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_CIRCLE_TANGENT"
   },
   {
     "id": 14,
@@ -483,7 +585,16 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": ["COND_POSITIVE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_CIRCLE_TANGENT"
   },
   {
     "id": 15,
@@ -516,7 +627,17 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_CIRCLE_CIRCUMFERENCE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH"
   },
   {
     "id": 16,
@@ -549,7 +670,15 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -580,7 +709,16 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION"
   },
   {
     "id": 18,
@@ -613,7 +751,17 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_LENGTH"
   },
   {
     "id": 19,
@@ -642,8 +790,16 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": ["COND_NONZERO"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -667,12 +823,20 @@ window.questionBank = [
     "answer": "(1) AB=4 cm; (2) AC=√21 cm",
     "solution": "밑변 $BC=5$cm에 대한 높이를 $AD$라 하면 넓이로부터 $\\frac12\\cdot5\\cdot AD=5\\sqrt3$이므로 $AD=2\\sqrt3$cm. 직각삼각형 $ABD$에서 $\\angle B=60^\\circ$이므로 $AD=AB\\sin60^\\circ$에서 $AB=4$cm이고 $BD=AB\\cos60^\\circ=2$cm. 따라서 $DC=5-2=3$cm. 직각삼각형 $ADC$에서 $AC=\\sqrt{(2\\sqrt3)^2+3^2}=\\sqrt{21}$cm.",
     "image": "assets/images/20_연향중_2학기_중간_중3_수학/s02.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
+    "conditionKeys": ["COND_POSITIVE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 21,
@@ -699,6 +863,15 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_ANGLE_BISECTOR","CC_PYTHAGOREAN","CC_QUADRATIC_EQUATION_ROOTS"],
+    "conditionKeys": ["COND_POSITIVE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_CIRCLE_TANGENT"
   }
 ];

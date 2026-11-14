@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "M3S2_TARGETED_DIFFICULTY_ADJUDICATION_v1",
+  "examId": "E066",
+  "reviewer": "GPT_ROOT_00FBAC4C0777",
+  "reviewedAt": "2026-11-14T11:23:02.209726+00:00",
+  "sourceReviewMode": "Independent peer read source-only packet and actual required figures before author comparison; root additionally reread Q3,Q5,Q13,Q15,Q21 and resolved disagreements.",
+  "independentReviewRef": "E066.difficulty-independent.json",
+  "independentReviewSha256": "7108294a16d86c542f91395381a353edc635ee6395c3202faf102b7a8d3c9f7f",
+  "items": [
+    {
+      "ordinal": 2,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "도형의 C직각과 빗변수선으로 큰 삼각형의 A가 작은 BCD의 C각과 같음을 옮기면 tanA=BD/DC=9/12=3/4이다. 기존 해설처럼 전체변을 모두 복원하지 않아도 되는 표준 닮음 전처리이므로2단계이며, 대응각 선택이 있어B23.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 3,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 1,
+      "reason": "독립 B판정2/B12와 root·작성자 최종1/B12가 경계에서 다르다. 이미 주어진 두 특수각의 합으로 직각을 즉시 확인하고 AC=4tan30°를 바로 적용하므로 별도 접근 선택이 없는1로 정리한다. 경계B12를 남기고 장문해설 길이는 배제한다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 5,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "단위 사분원의 두 직각삼각형에서 분모1을 구별하고 y=z, x+z=90°를 적용한다. 여각 대응과 역수 tan z=1/DE는 익숙한 그림 해석이며 보기 개수는 반복 작업이므로 bucket2/B23이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 6,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "DCE에서 DC=√3,DE2를 구한 뒤 BDE의 나머지각이15°임을 알아 BD=DE로 놓아야 한다. 이등변 구조를 선택해 BC=2+√3를 만든 다음tan15와 유리화를 연결하는3단계이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 7,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "그림의 높이0.53은 sin32, 접선높이0.62는 tan32이다. cos32≈√(1−0.53²)≈0.85를 보충하고58°의 여각비로 옮긴다. 알려진 값을 읽고 한 비를 복원하는2단계이며 다답형으로 올리지 않는다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 8,
+      "status": "RESOLVED",
+      "authorBucketBefore": 1,
+      "independentBucket": 1,
+      "finalBucket": 1,
+      "reason": "빗변20과 맞은편 높이의 관계 AC=20sin55를 직접 쓰면20·0.8192=16.384이다. 그림과 발문에 각·삼각비값이 모두 있어 선택해야 할 보조선이나 조건 변환이 없는1단계이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 10,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "대각선BD로 나누어 둔각150° 쪽은 외부 수선과30°를, 반대쪽은60°를 사용한다. 두 삼각형의 넓이를 만드는 분할·높이 선택이 필요하므로3단계이나 이후 계산이 표준적이라B23.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 11,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "마름모 한 변s의 높이를 s·sin60로 놓으면 넓이(√3/2)s²=9√3에서 s=3√2다. 같은 변 두 개와60°로 넓이식을 세우는 표준 역산으로2단계이며, 높이 표현 선택을 감안해B23.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 12,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "A에서BC로 수선을 내려 AD=5√3/2,BD5/2를 구하고 나머지밑변19/2와 높이에 피타고라스를 적용한다. 직접 삼각비 한 번으로 AC를 얻을 수 없어 보조선·분할·피타고라스의3단계이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 13,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "접선-반지름 수직을 먼저 확인하면8,15,17 직각삼각형, 넓이60, 두삼각형합동을 각각 판정할 수 있다. 한 표준 도형성질에서 익숙한 계산을 이어가는2단계이며 복수정답 자체로 올리지 않는다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 14,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "같은점접선 길이로 DC=6+3=9를 얻은 뒤 두 평행접선의 높이차3과 지름AB가 직각삼각형의 두 직각변임을 구성해야 한다. AB²=9²−3²라는 기하모형 선택이 필요하여3단계이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 15,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "반지름 r와 중심-현 거리 r−3으로 r²=(r−3)²+36을 세워 r=15/2, 둘레15π를 얻는다. 표준식 하나의 적용이므로 bucket2/B23이며 기존 level 상은 보존해 STRONG_CONFLICT를 명시한다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 19,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "AB=√(3²+4²)=5를 보충하여 B의 세 삼각비를 읽고90°의 sin1,cos0,tan정의불가를 쓴다. 정의와 짧은 피타고라스 전처리의2단계이며 서술·소문항수로 높이지 않는다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 20,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "넓이에서 높이2√3를 역산하고60° 삼각비로AB4·BD2를 정한 뒤 DC3과 피타고라스로AC√21을 얻는다. 넓이→길이→다른삼각형으로 옮기는3단계이며 모두 표준 절차라B23.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 21,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "직각과접선으로 두직각변r+4,r+6을 만든 뒤 피타고라스 이차식의 양근r2를 고르고 접점E의 두직각삼각형에서OB2√5,OC2√10을 구한다. 접선조각 모델링·근선택·둘레계산의 연결은3단계이며 계산량만으로4로 올리지 않는다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    }
+  ]
+}
