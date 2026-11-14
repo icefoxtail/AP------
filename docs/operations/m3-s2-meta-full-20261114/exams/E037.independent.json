@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E037",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "12c1218abecd83ea04a5dbb84a535641fb1465fb",
+  "sourceSha256": "621f2ba6cfbae4d38908ddc97c92c5746e94fdf0b3952baf77705025d95f2d8a",
+  "inputSha256": "8abaa737995d77b7d4c9f28a093e41e20e305b826a7459c6d473ef5d67ab8e81",
+  "artifactHashes": {
+    "review.json": "859c21ade3c4947f1076ded2def16e32eb3175f2ecbb6dd287eec2b9840c0af7",
+    "source-patch.json": "fe356bd616c63ec61605e46fb570c59da6ae379b4523dc7ce165a3480604886c",
+    "E037.4slot.json": "48fdb1c4bb3081f0f05950f0e7a81d311ed96486cafd56b1edee7eb1b2f35fd9",
+    "difficulty-change-review.json": "d7b73c29ba6326edbe0e3118becc1a93fdcb6e106bb09a05fd0b4286f3ee1954"
+  },
+  "sampleOrdinals": [
+    14,
+    21,
+    25
+  ],
+  "items": [
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_ddf802d6f906c881323a38f5f28bbee9a4890b8324af0e62cea9131d74cd0d36",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS_AFTER_TARGETED_CORRECTION",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 8,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "AD=DC라는 원문과 등변 표시에서 이등변삼각형 ADC의 15도 밑각을 얻고, DBC의 30도 변비를 공통 길이 d로 나타내 큰 삼각형의 탄젠트로 연결하는 실제 해설을 확인했다. 최종 목표가 tan15의 값이므로 기하 관계를 먼저 복원하는 ACTIVE TPL_TRIG_RATIO_GEOMETRIC_DERIVATION이 적합하고 길이·넓이 목표의 APPLICATION과 구별된다. 독립 확인에서 빠진 최종 켤레 유리화를 지적했으며, 수정본의 유리화 method와 ACTIVE 보조 CC는 1/(2+√3)=2−√3이라는 실제 식에 정확히 결속되어 있다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalEmbeddedImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_동산중_2학기_중간_중3_수학/q14.png"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_de5a38af7124f67b1bfd13ed94220c22a999d0df990e709da0607377d101ffc4",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 8,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "원본 그림의 CM 수선 표시, AM=6, CM=2와 현 중점 M을 읽었다. 현의 수직이등분선 위에 중심을 두고 반지름을 d+2로 표현한 뒤 피타고라스 관계를 세운다. 양변의 d²이 소거되어 일차방정식으로 끝나는 실제 해설과 method 세 항목이 맞는다. source의 이전 난도 이유에 있던 이차식 해결 표현을 정형 전처리와 일차식으로 보정한 것도 타당하다. 호가 그려졌다는 이유로 원주각으로 분류하지 않고 중심거리와 현의 길이 RPM069/157 및 기존 현 길이 관계 TPL을 재사용한 판단을 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalEmbeddedImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_동산중_2학기_중간_중3_수학/q21.png"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_c78ea2d9256ce591b9677d1d40f0bc92533d3da1c02f610aee4d57a390c7076c",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 8,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "현재 원문이 x,y를 AB,AD 두 변으로 순서 무관하게 정의하고 두 대각선의 직교를 명시하는 것을 확인했다. 등접선에서 u−v=3을 얻고 네 직각삼각형의 피타고라스 관계를 묶어 u²−v²=45를 만든 뒤 합차공식으로 목표합을 분리한다. 4칸의 외접·수선 조건과 접선길이·피타고라스·합차공식 방법이 결속되어 있다. 중복인 접함 CC를 제거하고 실제 보조 차의 제곱 인수분해 CC를 넣은 판단, 서로 다른 조건을 같은 미지수 합차로 맞물리는 DEEP_COMPOSITE 및 기존 bucket4 보존을 수용한다. GLOBAL PT/TPL 재사용과 기존 ACTIVE 문맥 binding의 owner 불일치를 기록한 canonical crosswalk 정합화 대기를 구분하며 임의 신규키나 새 수학검증을 요구하지 않는다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalEmbeddedImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_동산중_2학기_중간_중3_수학/s03.png"
+      ],
+      "newMathematicalVerification": false
+    }
+  ],
+  "status": "PASS_AFTER_TARGETED_CORRECTION",
+  "separateDifficultyRef": "/workspace/scratch/6538df266481/worker-outputs/a/independent/E037.difficulty.json",
+  "separateDifficultySha256": "331cb96cb14ed9a73e012dc0ca1d8bab3ec90708b000fc1cf03d657985d250c7",
+  "scope": "Three non-author four-slot and metadata semantic samples with current source and original embedded images. No new R1/R2/R3.",
+  "newMathematicalVerification": false,
+  "exactQuoteCheckCount": 24,
+  "sampled4slotSha256": "48fdb1c4bb3081f0f05950f0e7a81d311ed96486cafd56b1edee7eb1b2f35fd9",
+  "sampledReviewSha256": "859c21ade3c4947f1076ded2def16e32eb3175f2ecbb6dd287eec2b9840c0af7",
+  "sampledSourcePatchSha256": "fe356bd616c63ec61605e46fb570c59da6ae379b4523dc7ce165a3480604886c",
+  "sourceByteVerification": "INPUT_BASELINE_SHA256_MATCH",
+  "correctionReceipts": [
+    {
+      "ordinal": 14,
+      "change": "유리화 method와 실제 보조 CC 추가",
+      "status": "CONFIRMED"
+    },
+    {
+      "ordinal": 25,
+      "change": "실제 ACTIVE 문맥 binding과 canonical owner mismatch 정합화 대기의 구별",
+      "status": "CLARIFIED"
+    }
+  ]
+}

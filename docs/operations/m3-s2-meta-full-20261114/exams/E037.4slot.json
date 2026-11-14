@@ -1,0 +1,1611 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_동산중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "12c1218abecd83ea04a5dbb84a535641fb1465fb",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT6_ASTRA_REVIEW_C",
+    "run": "M3S2_FULL_20261114",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_c604b314ad2b0e00680fe353ef077b6d95c61119bfe5a95adcd2026edee0c70f",
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "그림에서 점 $A$, $B$는 각각 이차함수 $y = \\dfrac{1}{2}x^2 + 1$과 $y = \\dfrac{1}{2}x^2 - 3$의 그래프 위의 점이다. $\\overline{AB}$가 $y$축과 평행할 때, $\\overline{AB}$의 길이를 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q01.png\" alt=\"문제 1번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "그림에서 점 $A$, $B$는 각각 이차함수 $y = \\dfrac{1}{2}x^2 + 1$과 $y = \\dfrac{1}{2}x^2 - 3$의 그래프 위의 점이다. $\\overline{AB}$가 $y$축과 평행할 때, $\\overline{AB}$의 길이를 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q01.png\" alt=\"문제 1번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림에서 점 $A$, $B$는 각각 이차함수 $y = \\dfrac{1}{2}x^2 + 1$과 $y = \\dfrac{1}{2}x^2 - 3$의 그래프 위의 점이다. $\\overline{AB}$가 $y$축과 평행할 때, $\\overline{AB}$의 길이를 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q01.png\" alt=\"문제 1번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "두 점 A, B의 x좌표가 같으므로 AB는 두 함수값의 차이다. \\((\\frac12x^2+1)-(\\frac12x^2-3)=4\\)이므로 길이는 4이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 점이 y축과 평행하므로 같은 x에서 두 함수값을 빼면 공통 이차항이 소거되고 수직 평행이동량4가 남는다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "두 점 A, B의 x좌표가 같으므로 AB는 두 함수값의 차이다. \\((\\frac12x^2+1)-(\\frac12x^2-3)=4\\)이므로 길이는 4이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 점이 y축과 평행하므로 같은 x에서 두 함수값을 빼면 공통 이차항이 소거되고 수직 평행이동량4가 남는다."
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "두 점 A, B의 x좌표가 같으므로 AB는 두 함수값의 차이다. \\((\\frac12x^2+1)-(\\frac12x^2-3)=4\\)이므로 길이는 4이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 점이 y축과 평행하므로 같은 x에서 두 함수값을 빼면 공통 이차항이 소거되고 수직 평행이동량4가 남는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "그림에서 점 $A$, $B$는 각각 이차함수 $y = \\dfrac{1}{2}x^2 + 1$과 $y = \\dfrac{1}{2}x^2 - 3$의 그래프 위의 점이다. $\\overline{AB}$가 $y$축과 평행할 때, $\\overline{AB}$의 길이를 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q01.png\" alt=\"문제 1번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두 점이 y축과 평행하므로 같은 x에서 두 함수값을 빼면 공통 이차항이 소거되고 수직 평행이동량4가 남는다.",
+        "method": "두 점이 y축과 평행하므로 같은 x에서 두 함수값을 빼면 공통 이차항이 소거되고 수직 평행이동량4가 남는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두 점이 y축과 평행하므로 같은 x에서 두 함수값을 빼면 공통 이차항이 소거되고 수직 평행이동량4가 남는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_686e19ad41d6881ea48d47d0d06a98e550b1d62582c5f64c31462fb7fa7f734f",
+      "sourceOrdinal": 2,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = \\dfrac{2}{3}(x-4)^2$의 그래프에 대한 설명 중 틀린 것을 찾으면? (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "이차함수 $y = \\dfrac{2}{3}(x-4)^2$의 그래프에 대한 설명 중 틀린 것을 찾으면? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "\\(y=\\frac23(x-4)^2\\)는 \\(y=\\frac23x^2\\)의 그래프를 x축의 양의 방향으로 4만큼 옮긴 것이다. 따라서 x축 방향으로 −4만큼 옮겼다는 ④가 틀렸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형의 x−4를 x축 양의 방향4 이동으로 읽어 음의 방향이라는 진술만 배제한다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "\\(y=\\frac23(x-4)^2\\)는 \\(y=\\frac23x^2\\)의 그래프를 x축의 양의 방향으로 4만큼 옮긴 것이다. 따라서 x축 방향으로 −4만큼 옮겼다는 ④가 틀렸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형의 x−4를 x축 양의 방향4 이동으로 읽어 음의 방향이라는 진술만 배제한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "꼭짓점형의 x−4를 x축 양의 방향4 이동으로 읽어 음의 방향이라는 진술만 배제한다.",
+        "method": "꼭짓점형의 x−4를 x축 양의 방향4 이동으로 읽어 음의 방향이라는 진술만 배제한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "꼭짓점형의 x−4를 x축 양의 방향4 이동으로 읽어 음의 방향이라는 진술만 배제한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_a1d4525e9784f170d1e22ce9d86b7a77e34f6dd021206cf0824e2f0fb0ae75cc",
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = -2x^2 + 8x - 3$을 $y = a(x-p)^2 + q$의 꼴로 고칠 때, $a + p + q$의 값을 구하면? (4점)"
+          },
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "이차함수 $y = -2x^2 + 8x - 3$을 $y = a(x-p)^2 + q$의 꼴로 고칠 때, $a + p + q$의 값을 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "이차함수 $y = -2x^2 + 8x - 3$을 $y = a(x-p)^2 + q$의 꼴로 고칠 때, $a + p + q$의 값을 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "\\(-2x^2+8x-3=-2(x^2-4x)-3=-2(x-2)^2+5\\)이다. 따라서 \\(a=-2,p=2,q=5\\)이고 \\(a+p+q=5\\)이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형에서−2를 묶고 완전제곱식으로 바꿔 a=−2,p=2,q=5를 읽어 합을 계산한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "\\(-2x^2+8x-3=-2(x^2-4x)-3=-2(x-2)^2+5\\)이다. 따라서 \\(a=-2,p=2,q=5\\)이고 \\(a+p+q=5\\)이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형에서−2를 묶고 완전제곱식으로 바꿔 a=−2,p=2,q=5를 읽어 합을 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "일반형에서−2를 묶고 완전제곱식으로 바꿔 a=−2,p=2,q=5를 읽어 합을 계산한다.",
+        "method": "일반형에서−2를 묶고 완전제곱식으로 바꿔 a=−2,p=2,q=5를 읽어 합을 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "일반형에서−2를 묶고 완전제곱식으로 바꿔 a=−2,p=2,q=5를 읽어 합을 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_93e84daeb76d3612b6b4772d67c1ff75a935ae70a8a757b63ac5ed617d0c489a",
+      "sourceOrdinal": 4,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "다음 중 $y = -\\dfrac{2}{3}(x+4)^2 - 5$의 그래프에 대한 설명으로 틀린 것을 찾으면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 $y = -\\dfrac{2}{3}(x+4)^2 - 5$의 그래프에 대한 설명으로 틀린 것을 찾으면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점형 \\(y=-\\frac23(x+4)^2-5\\)의 축은 \\(x=-4\\)이다. 보기 ④의 \\(x=4\\)만 부호가 반대이므로 틀렸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형 x+4에서 대칭축 x=−4를 직접 읽고 부호가 반대인 진술을 찾는다."
+          },
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "꼭짓점형 \\(y=-\\frac23(x+4)^2-5\\)의 축은 \\(x=-4\\)이다. 보기 ④의 \\(x=4\\)만 부호가 반대이므로 틀렸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형 x+4에서 대칭축 x=−4를 직접 읽고 부호가 반대인 진술을 찾는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "꼭짓점형 x+4에서 대칭축 x=−4를 직접 읽고 부호가 반대인 진술을 찾는다.",
+        "method": "꼭짓점형 x+4에서 대칭축 x=−4를 직접 읽고 부호가 반대인 진술을 찾는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "꼭짓점형 x+4에서 대칭축 x=−4를 직접 읽고 부호가 반대인 진술을 찾는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_5070aa2bc774cc66c70857a01352577df68cf0e35fafd678f258d1632f11c79d",
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = ax^2 + bx$에서 $a < 0$, $b > 0$일 때, 꼭짓점은 제 몇 사분면에 있는지 구하면? (4점)"
+          },
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "이차함수 $y = ax^2 + bx$에서 $a < 0$, $b > 0$일 때, 꼭짓점은 제 몇 사분면에 있는지 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "이차함수 $y = ax^2 + bx$에서 $a < 0$, $b > 0$일 때, 꼭짓점은 제 몇 사분면에 있는지 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점의 x좌표는 \\(-\\frac b{2a}\\)로, \\(a<0,b>0\\)이면 양수이다. 꼭짓점의 y좌표는 \\( -\\frac{b^2}{4a}\\)이며 \\(a<0\\)이므로 양수이다. 꼭짓점은 제1사분면에 있다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 a<0,b>0을 꼭짓점 좌표−b/(2a),−b²/(4a)에 적용하여 두 좌표가 양수임을 판단하고 제1사분면에 대응한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "꼭짓점의 x좌표는 \\(-\\frac b{2a}\\)로, \\(a<0,b>0\\)이면 양수이다. 꼭짓점의 y좌표는 \\( -\\frac{b^2}{4a}\\)이며 \\(a<0\\)이므로 양수이다. 꼭짓점은 제1사분면에 있다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 a<0,b>0을 꼭짓점 좌표−b/(2a),−b²/(4a)에 적용하여 두 좌표가 양수임을 판단하고 제1사분면에 대응한다."
+          },
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "꼭짓점의 x좌표는 \\(-\\frac b{2a}\\)로, \\(a<0,b>0\\)이면 양수이다. 꼭짓점의 y좌표는 \\( -\\frac{b^2}{4a}\\)이며 \\(a<0\\)이므로 양수이다. 꼭짓점은 제1사분면에 있다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 a<0,b>0을 꼭짓점 좌표−b/(2a),−b²/(4a)에 적용하여 두 좌표가 양수임을 판단하고 제1사분면에 대응한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "이차함수 $y = ax^2 + bx$에서 $a < 0$, $b > 0$일 때, 꼭짓점은 제 몇 사분면에 있는지 구하면? (4점)"
+          },
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "이차함수 $y = ax^2 + bx$에서 $a < 0$, $b > 0$일 때, 꼭짓점은 제 몇 사분면에 있는지 구하면? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "주어진 a<0,b>0을 꼭짓점 좌표−b/(2a),−b²/(4a)에 적용하여 두 좌표가 양수임을 판단하고 제1사분면에 대응한다.",
+        "method": "주어진 a<0,b>0을 꼭짓점 좌표−b/(2a),−b²/(4a)에 적용하여 두 좌표가 양수임을 판단하고 제1사분면에 대응한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "주어진 a<0,b>0을 꼭짓점 좌표−b/(2a),−b²/(4a)에 적용하여 두 좌표가 양수임을 판단하고 제1사분면에 대응한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_7c4470d8987c610fe15bae6a740e4ea2ceb09c1ca8d5b29a8b9d8e2e3c5c0946",
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = -3x^2$의 그래프를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $-5$만큼 평행이동하면 이차함수 $y = -3x^2 + ax + b$의 그래프와 일치한다. 이때 $a - b$의 값을 구하면? (단, $a, b$는 상수) (4점)"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "이차함수 $y = -3x^2$의 그래프를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $-5$만큼 평행이동하면 이차함수 $y = -3x^2 + ax + b$의 그래프와 일치한다. 이때 $a - b$의 값을 구하면? (단, $a, b$는 상수) (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "이차함수 $y = -3x^2$의 그래프를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $-5$만큼 평행이동하면 이차함수 $y = -3x^2 + ax + b$의 그래프와 일치한다. 이때 $a - b$의 값을 구하면? (단, $a, b$는 상수) (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "왼쪽 2, 아래 5만큼 옮기면 \\(y=-3(x+2)^2-5=-3x^2-12x-17\\)이다. 따라서 \\(a=-12,b=-17\\)이고 \\(a-b=5\\)이다. 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "왼쪽2·아래5 평행이동을−3(x+2)²−5로 쓰고 전개한 일반형에서 두 계수를 비교한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "왼쪽 2, 아래 5만큼 옮기면 \\(y=-3(x+2)^2-5=-3x^2-12x-17\\)이다. 따라서 \\(a=-12,b=-17\\)이고 \\(a-b=5\\)이다. 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "왼쪽2·아래5 평행이동을−3(x+2)²−5로 쓰고 전개한 일반형에서 두 계수를 비교한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "왼쪽 2, 아래 5만큼 옮기면 \\(y=-3(x+2)^2-5=-3x^2-12x-17\\)이다. 따라서 \\(a=-12,b=-17\\)이고 \\(a-b=5\\)이다. 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "왼쪽2·아래5 평행이동을−3(x+2)²−5로 쓰고 전개한 일반형에서 두 계수를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "왼쪽2·아래5 평행이동을−3(x+2)²−5로 쓰고 전개한 일반형에서 두 계수를 비교한다.",
+        "method": "왼쪽2·아래5 평행이동을−3(x+2)²−5로 쓰고 전개한 일반형에서 두 계수를 비교한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "왼쪽2·아래5 평행이동을−3(x+2)²−5로 쓰고 전개한 일반형에서 두 계수를 비교한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_f2721da21ad48fdef9649b9c08980c1181c22caf8efcf6e0cc56088a91056a0f",
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $a + b + c$의 값을 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q07.png\" alt=\"문제 7번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $a + b + c$의 값을 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q07.png\" alt=\"문제 7번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $a + b + c$의 값을 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q07.png\" alt=\"문제 7번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "그래프의 꼭짓점은 \\((-2,-4)\\), y절편은 4이다. \\(f(x)=a(x+2)^2-4\\)라 두면 \\(f(0)=4a-4=4\\)이므로 \\(a=2\\). 그러면 \\(a+b+c=f(1)=2\\cdot 3^2-4=14\\)이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 꼭짓점(−2,−4)으로 꼭짓점형을 세우고 y절편4를 대입해 이차항 계수를 정한 후 a+b+c=f(1)을 읽는다."
+          },
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "그래프의 꼭짓점은 \\((-2,-4)\\), y절편은 4이다. \\(f(x)=a(x+2)^2-4\\)라 두면 \\(f(0)=4a-4=4\\)이므로 \\(a=2\\). 그러면 \\(a+b+c=f(1)=2\\cdot 3^2-4=14\\)이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 꼭짓점(−2,−4)으로 꼭짓점형을 세우고 y절편4를 대입해 이차항 계수를 정한 후 a+b+c=f(1)을 읽는다."
+          },
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "그래프의 꼭짓점은 \\((-2,-4)\\), y절편은 4이다. \\(f(x)=a(x+2)^2-4\\)라 두면 \\(f(0)=4a-4=4\\)이므로 \\(a=2\\). 그러면 \\(a+b+c=f(1)=2\\cdot 3^2-4=14\\)이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 꼭짓점(−2,−4)으로 꼭짓점형을 세우고 y절편4를 대입해 이차항 계수를 정한 후 a+b+c=f(1)을 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "그림의 꼭짓점(−2,−4)으로 꼭짓점형을 세우고 y절편4를 대입해 이차항 계수를 정한 후 a+b+c=f(1)을 읽는다.",
+        "method": "그림의 꼭짓점(−2,−4)으로 꼭짓점형을 세우고 y절편4를 대입해 이차항 계수를 정한 후 a+b+c=f(1)을 읽는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "그림의 꼭짓점(−2,−4)으로 꼭짓점형을 세우고 y절편4를 대입해 이차항 계수를 정한 후 a+b+c=f(1)을 읽는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_606971aca98c4db7fd54b70f7b597e0e510e94eee82c01dfae40aa9dd1e80e0e",
+      "sourceOrdinal": 8,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "그림은 축의 식이 $x = -1$, 한 $x$절편이 $1$인 이차함수 $y = ax^2 + bx + c$의 그래프이다. 다음 중 틀린 것을 찾으면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q08.png\" alt=\"문제 8번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "축",
+            "src": "stem",
+            "quote": "그림은 축의 식이 $x = -1$, 한 $x$절편이 $1$인 이차함수 $y = ax^2 + bx + c$의 그래프이다. 다음 중 틀린 것을 찾으면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q08.png\" alt=\"문제 8번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "x절편",
+            "src": "stem",
+            "quote": "그림은 축의 식이 $x = -1$, 한 $x$절편이 $1$인 이차함수 $y = ax^2 + bx + c$의 그래프이다. 다음 중 틀린 것을 찾으면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q08.png\" alt=\"문제 8번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "그림은 축의 식이 $x = -1$, 한 $x$절편이 $1$인 이차함수 $y = ax^2 + bx + c$의 그래프이다. 다음 중 틀린 것을 찾으면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q08.png\" alt=\"문제 8번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "축이 \\(x=-1\\)이고 한 근이 1이므로 대칭인 다른 근은 −3이다. 따라서 \\(f(x)=a(x-1)(x+3)\\), \\(a<0\\)이다. \\(4a-2b+c=f(-2)=a(-3)(1)=-3a>0\\)이므로 이를 음수라고 한 ③이 틀렸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축−1과 한 근1로 다른 근−3을 복원하고 가중계수식4a−2b+c를 f(−2)로 읽어 두 근 사이의 함숫값 부호와 비교한다."
+          },
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "축이 \\(x=-1\\)이고 한 근이 1이므로 대칭인 다른 근은 −3이다. 따라서 \\(f(x)=a(x-1)(x+3)\\), \\(a<0\\)이다. \\(4a-2b+c=f(-2)=a(-3)(1)=-3a>0\\)이므로 이를 음수라고 한 ③이 틀렸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축−1과 한 근1로 다른 근−3을 복원하고 가중계수식4a−2b+c를 f(−2)로 읽어 두 근 사이의 함숫값 부호와 비교한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "축이 \\(x=-1\\)이고 한 근이 1이므로 대칭인 다른 근은 −3이다. 따라서 \\(f(x)=a(x-1)(x+3)\\), \\(a<0\\)이다. \\(4a-2b+c=f(-2)=a(-3)(1)=-3a>0\\)이므로 이를 음수라고 한 ③이 틀렸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축−1과 한 근1로 다른 근−3을 복원하고 가중계수식4a−2b+c를 f(−2)로 읽어 두 근 사이의 함숫값 부호와 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "대칭축−1과 한 근1로 다른 근−3을 복원하고 가중계수식4a−2b+c를 f(−2)로 읽어 두 근 사이의 함숫값 부호와 비교한다.",
+        "method": "대칭축−1과 한 근1로 다른 근−3을 복원하고 가중계수식4a−2b+c를 f(−2)로 읽어 두 근 사이의 함숫값 부호와 비교한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "대칭축−1과 한 근1로 다른 근−3을 복원하고 가중계수식4a−2b+c를 f(−2)로 읽어 두 근 사이의 함숫값 부호와 비교한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_6f61057113447cb7f89ae8ecc3403037cef8be751bcc1f7282bd7b89e297c663",
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = -x^2 - 3ax - 2a$의 그래프는 $x < -3$일 때 $x$값이 증가하면 $y$값도 증가하고, $x > -3$일 때 $x$값이 증가하면 $y$값은 감소한다고 한다. 이때 $a$값을 구하면? (4점)"
+          },
+          {
+            "term": "증가감소",
+            "src": "stem",
+            "quote": "이차함수 $y = -x^2 - 3ax - 2a$의 그래프는 $x < -3$일 때 $x$값이 증가하면 $y$값도 증가하고, $x > -3$일 때 $x$값이 증가하면 $y$값은 감소한다고 한다. 이때 $a$값을 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "src": "stem",
+            "quote": "이차함수 $y = -x^2 - 3ax - 2a$의 그래프는 $x < -3$일 때 $x$값이 증가하면 $y$값도 증가하고, $x > -3$일 때 $x$값이 증가하면 $y$값은 감소한다고 한다. 이때 $a$값을 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "이 함수는 아래로 열린 포물선이고 꼭짓점의 x좌표는 증가에서 감소로 바뀌는 경계 −3이다. \\(y=-x^2-3ax-2a\\)의 꼭짓점 x좌표는 \\(-\\frac{-3a}{2(-1)}=-\\frac{3a}{2}\\)이므로 \\(-\\frac{3a}{2}=-3\\), \\(a=2\\)이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "증가에서 감소로 바뀌는 경계−3을 꼭짓점의 x좌표로 읽어−3a/2=−3이라는 계수식을 만든다."
+          },
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "이 함수는 아래로 열린 포물선이고 꼭짓점의 x좌표는 증가에서 감소로 바뀌는 경계 −3이다. \\(y=-x^2-3ax-2a\\)의 꼭짓점 x좌표는 \\(-\\frac{-3a}{2(-1)}=-\\frac{3a}{2}\\)이므로 \\(-\\frac{3a}{2}=-3\\), \\(a=2\\)이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "증가에서 감소로 바뀌는 경계−3을 꼭짓점의 x좌표로 읽어−3a/2=−3이라는 계수식을 만든다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "이 함수는 아래로 열린 포물선이고 꼭짓점의 x좌표는 증가에서 감소로 바뀌는 경계 −3이다. \\(y=-x^2-3ax-2a\\)의 꼭짓점 x좌표는 \\(-\\frac{-3a}{2(-1)}=-\\frac{3a}{2}\\)이므로 \\(-\\frac{3a}{2}=-3\\), \\(a=2\\)이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "증가에서 감소로 바뀌는 경계−3을 꼭짓점의 x좌표로 읽어−3a/2=−3이라는 계수식을 만든다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "증가에서 감소로 바뀌는 경계−3을 꼭짓점의 x좌표로 읽어−3a/2=−3이라는 계수식을 만든다.",
+        "method": "증가에서 감소로 바뀌는 경계−3을 꼭짓점의 x좌표로 읽어−3a/2=−3이라는 계수식을 만든다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "증가에서 감소로 바뀌는 경계−3을 꼭짓점의 x좌표로 읽어−3a/2=−3이라는 계수식을 만든다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_889a8661f3fa49264885e5a094555fcb4ee7091ddfeeca250a213afeaf836da9",
+      "sourceOrdinal": 10,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "그림은 $\\angle C = 90^\\circ$인 직각삼각형에서 $\\angle A, \\angle B, \\angle C$의 대변의 길이를 각각 $a, b, c$라고 할 때, 다음 중 틀린 것을 찾으면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q10.png\" alt=\"문제 10번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "변",
+            "src": "stem",
+            "quote": "그림은 $\\angle C = 90^\\circ$인 직각삼각형에서 $\\angle A, \\angle B, \\angle C$의 대변의 길이를 각각 $a, b, c$라고 할 때, 다음 중 틀린 것을 찾으면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q10.png\" alt=\"문제 10번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "그림은 $\\angle C = 90^\\circ$인 직각삼각형에서 $\\angle A, \\angle B, \\angle C$의 대변의 길이를 각각 $a, b, c$라고 할 때, 다음 중 틀린 것을 찾으면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q10.png\" alt=\"문제 10번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\(\\angle C=90^\\circ\\)이므로 \\(c\\)는 빗변이고 A의 맞은편 변은 \\(a\\), B의 맞은편 변은 \\(b\\)이다. 따라서 \\(\\tan A=\\frac ab\\)이며 \\(\\frac cb\\)가 아니다. 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각C의 대변c가 빗변임을 고정하고 A의 맞은편a와 이웃변b의 비가 tanA임을 정의로 대조한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "\\(\\angle C=90^\\circ\\)이므로 \\(c\\)는 빗변이고 A의 맞은편 변은 \\(a\\), B의 맞은편 변은 \\(b\\)이다. 따라서 \\(\\tan A=\\frac ab\\)이며 \\(\\frac cb\\)가 아니다. 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각C의 대변c가 빗변임을 고정하고 A의 맞은편a와 이웃변b의 비가 tanA임을 정의로 대조한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "그림은 $\\angle C = 90^\\circ$인 직각삼각형에서 $\\angle A, \\angle B, \\angle C$의 대변의 길이를 각각 $a, b, c$라고 할 때, 다음 중 틀린 것을 찾으면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q10.png\" alt=\"문제 10번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "직각C의 대변c가 빗변임을 고정하고 A의 맞은편a와 이웃변b의 비가 tanA임을 정의로 대조한다.",
+        "method": "직각C의 대변c가 빗변임을 고정하고 A의 맞은편a와 이웃변b의 비가 tanA임을 정의로 대조한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "직각C의 대변c가 빗변임을 고정하고 A의 맞은편a와 이웃변b의 비가 tanA임을 정의로 대조한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_202ef1e925c5cf592e826c64f89597a8563fe9356d86c53a52f3f4a56ac1a6eb",
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "그림과 같이 $\\angle C = 90^\\circ$인 직각삼각형에서 $\\overline{BC} = 4$, $\\overline{AC} = 3$이다. 변 $BC$ 위의 점 $D$에서 변 $AB$에 내린 수선의 발을 $E$라고 할 때, $\\cos x$의 값을 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q11.png\" alt=\"문제 11번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "그림과 같이 $\\angle C = 90^\\circ$인 직각삼각형에서 $\\overline{BC} = 4$, $\\overline{AC} = 3$이다. 변 $BC$ 위의 점 $D$에서 변 $AB$에 내린 수선의 발을 $E$라고 할 때, $\\cos x$의 값을 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q11.png\" alt=\"문제 11번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "그림과 같이 $\\angle C = 90^\\circ$인 직각삼각형에서 $\\overline{BC} = 4$, $\\overline{AC} = 3$이다. 변 $BC$ 위의 점 $D$에서 변 $AB$에 내린 수선의 발을 $E$라고 할 때, $\\cos x$의 값을 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q11.png\" alt=\"문제 11번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형 ABC에서 \\(AB=\\sqrt{3^2+4^2}=5\\)이다. 작은 직각삼각형 BDE와 큰 삼각형 BAC는 \\(\\angle BED=\\angle BCA=90^\\circ\\), \\(\\angle DBE=\\angle ABC\\)이므로 닮음이다. 따라서 \\(\\angle BDE=\\angle BAC\\), 즉 그림의 \\(x=\\angle A\\)에 대응한다. 그러므로 \\(\\cos x=\\cos A=\\frac{AC}{AB}=\\frac35\\)이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 삼각형의 빗변5를 피타고라스로 얻고 두 직각삼각형의 AA 닮음으로 x와A의 각을 대응시켜 cosA=AC/AB를 계산한다."
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "직각삼각형 ABC에서 \\(AB=\\sqrt{3^2+4^2}=5\\)이다. 작은 직각삼각형 BDE와 큰 삼각형 BAC는 \\(\\angle BED=\\angle BCA=90^\\circ\\), \\(\\angle DBE=\\angle ABC\\)이므로 닮음이다. 따라서 \\(\\angle BDE=\\angle BAC\\), 즉 그림의 \\(x=\\angle A\\)에 대응한다. 그러므로 \\(\\cos x=\\cos A=\\frac{AC}{AB}=\\frac35\\)이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 삼각형의 빗변5를 피타고라스로 얻고 두 직각삼각형의 AA 닮음으로 x와A의 각을 대응시켜 cosA=AC/AB를 계산한다."
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "직각삼각형 ABC에서 \\(AB=\\sqrt{3^2+4^2}=5\\)이다. 작은 직각삼각형 BDE와 큰 삼각형 BAC는 \\(\\angle BED=\\angle BCA=90^\\circ\\), \\(\\angle DBE=\\angle ABC\\)이므로 닮음이다. 따라서 \\(\\angle BDE=\\angle BAC\\), 즉 그림의 \\(x=\\angle A\\)에 대응한다. 그러므로 \\(\\cos x=\\cos A=\\frac{AC}{AB}=\\frac35\\)이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 삼각형의 빗변5를 피타고라스로 얻고 두 직각삼각형의 AA 닮음으로 x와A의 각을 대응시켜 cosA=AC/AB를 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "그림과 같이 $\\angle C = 90^\\circ$인 직각삼각형에서 $\\overline{BC} = 4$, $\\overline{AC} = 3$이다. 변 $BC$ 위의 점 $D$에서 변 $AB$에 내린 수선의 발을 $E$라고 할 때, $\\cos x$의 값을 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q11.png\" alt=\"문제 11번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "그림과 같이 $\\angle C = 90^\\circ$인 직각삼각형에서 $\\overline{BC} = 4$, $\\overline{AC} = 3$이다. 변 $BC$ 위의 점 $D$에서 변 $AB$에 내린 수선의 발을 $E$라고 할 때, $\\cos x$의 값을 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q11.png\" alt=\"문제 11번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "큰 삼각형의 빗변5를 피타고라스로 얻고 두 직각삼각형의 AA 닮음으로 x와A의 각을 대응시켜 cosA=AC/AB를 계산한다.",
+        "method": "큰 삼각형의 빗변5를 피타고라스로 얻고 두 직각삼각형의 AA 닮음으로 x와A의 각을 대응시켜 cosA=AC/AB를 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "큰 삼각형의 빗변5를 피타고라스로 얻고 두 직각삼각형의 AA 닮음으로 x와A의 각을 대응시켜 cosA=AC/AB를 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_cffc61f8b140a52ccbd49c883f033748a63535aef18f922665b3befcf8325493",
+      "sourceOrdinal": 12,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "다음 그림은 반지름의 길이가 $1$인 사분원이다. 다음 삼각비의 값을 변의 길이로 나타낸 것 중 틀린 것은? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q12.png\" alt=\"문제 12번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "다음 그림은 반지름의 길이가 $1$인 사분원이다. 다음 삼각비의 값을 변의 길이로 나타낸 것 중 틀린 것은? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q12.png\" alt=\"문제 12번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 그림은 반지름의 길이가 $1$인 사분원이다. 다음 삼각비의 값을 변의 길이로 나타낸 것 중 틀린 것은? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q12.png\" alt=\"문제 12번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "반지름의 길이가 1이므로 OA=OD=1이다. 그림에서 x는 직각삼각형 ODC의 각이므로 \\(\\tan x=\\frac{CD}{OD}=CD\\)이고, y와 z는 평행선과 한 직선에서 같은 각이다. 따라서 \\(\\sin x=\\frac{AB}{OA}=AB\\), \\(\\sin z=\\sin y=\\frac{OB}{OA}=OB\\), \\(\\cos y=\\frac{AB}{OA}=AB\\)도 맞다. 그러나 \\(\\tan z\\)는 직각삼각형 ODC에서 \\(\\frac{OD}{CD}=\\frac1{CD}\\)이므로 OD 하나와 같지 않다. 따라서 틀린 것은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름1의 두 직각삼각형에서 각x와여각y,z에 대응하는 분자·분모를 확인하고 tanz는1/CD이지OD 자체가 아님을 판정한다."
+          },
+          {
+            "term": "여각",
+            "src": "solution",
+            "quote": "반지름의 길이가 1이므로 OA=OD=1이다. 그림에서 x는 직각삼각형 ODC의 각이므로 \\(\\tan x=\\frac{CD}{OD}=CD\\)이고, y와 z는 평행선과 한 직선에서 같은 각이다. 따라서 \\(\\sin x=\\frac{AB}{OA}=AB\\), \\(\\sin z=\\sin y=\\frac{OB}{OA}=OB\\), \\(\\cos y=\\frac{AB}{OA}=AB\\)도 맞다. 그러나 \\(\\tan z\\)는 직각삼각형 ODC에서 \\(\\frac{OD}{CD}=\\frac1{CD}\\)이므로 OD 하나와 같지 않다. 따라서 틀린 것은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름1의 두 직각삼각형에서 각x와여각y,z에 대응하는 분자·분모를 확인하고 tanz는1/CD이지OD 자체가 아님을 판정한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "반지름의 길이가 1이므로 OA=OD=1이다. 그림에서 x는 직각삼각형 ODC의 각이므로 \\(\\tan x=\\frac{CD}{OD}=CD\\)이고, y와 z는 평행선과 한 직선에서 같은 각이다. 따라서 \\(\\sin x=\\frac{AB}{OA}=AB\\), \\(\\sin z=\\sin y=\\frac{OB}{OA}=OB\\), \\(\\cos y=\\frac{AB}{OA}=AB\\)도 맞다. 그러나 \\(\\tan z\\)는 직각삼각형 ODC에서 \\(\\frac{OD}{CD}=\\frac1{CD}\\)이므로 OD 하나와 같지 않다. 따라서 틀린 것은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름1의 두 직각삼각형에서 각x와여각y,z에 대응하는 분자·분모를 확인하고 tanz는1/CD이지OD 자체가 아님을 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "다음 그림은 반지름의 길이가 $1$인 사분원이다. 다음 삼각비의 값을 변의 길이로 나타낸 것 중 틀린 것은? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q12.png\" alt=\"문제 12번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "반지름1의 두 직각삼각형에서 각x와여각y,z에 대응하는 분자·분모를 확인하고 tanz는1/CD이지OD 자체가 아님을 판정한다.",
+        "method": "반지름1의 두 직각삼각형에서 각x와여각y,z에 대응하는 분자·분모를 확인하고 tanz는1/CD이지OD 자체가 아님을 판정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "반지름1의 두 직각삼각형에서 각x와여각y,z에 대응하는 분자·분모를 확인하고 tanz는1/CD이지OD 자체가 아님을 판정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_a064a8d2ca05830b970a4946797090e23b172f1c5b062b5e17bd80fd26180ecc",
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "$\\tan 30^\\circ \\times \\sin 60^\\circ + \\cos 0^\\circ \\times \\sin 90^\\circ - 2\\sin 45^\\circ \\times \\cos 45^\\circ$의 값을 구하면? (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\tan 30^\\circ \\times \\sin 60^\\circ + \\cos 0^\\circ \\times \\sin 90^\\circ - 2\\sin 45^\\circ \\times \\cos 45^\\circ$의 값을 구하면? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\(\\tan30^\\circ\\sin60^\\circ=\\frac1{\\sqrt3}\\cdot\\frac{\\sqrt3}2=\\frac12\\), \\(\\cos0^\\circ\\sin90^\\circ=1\\), \\(2\\sin45^\\circ\\cos45^\\circ=1\\)이다. 합은 \\(\\frac12+1-1=\\frac12\\)이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "30·45·60도 및0·90도의 알려진 삼각비 값을 각 곱에 대입하고 주어진 식을 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "30·45·60도 및0·90도의 알려진 삼각비 값을 각 곱에 대입하고 주어진 식을 계산한다.",
+        "method": "30·45·60도 및0·90도의 알려진 삼각비 값을 각 곱에 대입하고 주어진 식을 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "30·45·60도 및0·90도의 알려진 삼각비 값을 각 곱에 대입하고 주어진 식을 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ddf802d6f906c881323a38f5f28bbee9a4890b8324af0e62cea9131d74cd0d36",
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "그림은 각 $B$가 직각인 $\\triangle ABC$에서 $\\overline{AD} = \\overline{DC}$이고 $\\angle CDB = 30^\\circ$일 때, $\\tan 15^\\circ$의 값을 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q14.png\" alt=\"문제 14번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "그림은 각 $B$가 직각인 $\\triangle ABC$에서 $\\overline{AD} = \\overline{DC}$이고 $\\angle CDB = 30^\\circ$일 때, $\\tan 15^\\circ$의 값을 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q14.png\" alt=\"문제 14번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "그림은 각 $B$가 직각인 $\\triangle ABC$에서 $\\overline{AD} = \\overline{DC}$이고 $\\angle CDB = 30^\\circ$일 때, $\\tan 15^\\circ$의 값을 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q14.png\" alt=\"문제 14번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "\\(AD=DC=d\\)이고 A, D, B가 한 직선 위이므로 \\(\\angle ADC=150^\\circ\\). 이등변삼각형 ADC의 밑각은 각각 15°여서 \\(\\angle A=15^\\circ\\)이다. 직각삼각형 DBC에서 \\(\\angle CDB=30^\\circ\\), 빗변 \\(DC=d\\)이므로 \\(BC=\\frac d2, DB=\\frac{\\sqrt3d}2\\). 따라서 \\(AB=AD+DB=d+\\frac{\\sqrt3d}2\\), \\(\\tan15^\\circ=\\frac{BC}{AB}=\\frac1{2+\\sqrt3}=2-\\sqrt3\\)이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "AD=DC인 이등변삼각형의 꼭짓각150에서 밑각15를 얻고30도 직각삼각형의 변들을 d로 나타내어 큰 삼각형의 tan15 비로 연결한다. 마지막 1/(2+√3)은 분모의 켤레를 곱해 유리화한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\(AD=DC=d\\)이고 A, D, B가 한 직선 위이므로 \\(\\angle ADC=150^\\circ\\). 이등변삼각형 ADC의 밑각은 각각 15°여서 \\(\\angle A=15^\\circ\\)이다. 직각삼각형 DBC에서 \\(\\angle CDB=30^\\circ\\), 빗변 \\(DC=d\\)이므로 \\(BC=\\frac d2, DB=\\frac{\\sqrt3d}2\\). 따라서 \\(AB=AD+DB=d+\\frac{\\sqrt3d}2\\), \\(\\tan15^\\circ=\\frac{BC}{AB}=\\frac1{2+\\sqrt3}=2-\\sqrt3\\)이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "AD=DC인 이등변삼각형의 꼭짓각150에서 밑각15를 얻고30도 직각삼각형의 변들을 d로 나타내어 큰 삼각형의 tan15 비로 연결한다. 마지막 1/(2+√3)은 분모의 켤레를 곱해 유리화한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "\\(AD=DC=d\\)이고 A, D, B가 한 직선 위이므로 \\(\\angle ADC=150^\\circ\\). 이등변삼각형 ADC의 밑각은 각각 15°여서 \\(\\angle A=15^\\circ\\)이다. 직각삼각형 DBC에서 \\(\\angle CDB=30^\\circ\\), 빗변 \\(DC=d\\)이므로 \\(BC=\\frac d2, DB=\\frac{\\sqrt3d}2\\). 따라서 \\(AB=AD+DB=d+\\frac{\\sqrt3d}2\\), \\(\\tan15^\\circ=\\frac{BC}{AB}=\\frac1{2+\\sqrt3}=2-\\sqrt3\\)이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "AD=DC인 이등변삼각형의 꼭짓각150에서 밑각15를 얻고30도 직각삼각형의 변들을 d로 나타내어 큰 삼각형의 tan15 비로 연결한다. 마지막 1/(2+√3)은 분모의 켤레를 곱해 유리화한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "\\(AD=DC=d\\)이고 A, D, B가 한 직선 위이므로 \\(\\angle ADC=150^\\circ\\). 이등변삼각형 ADC의 밑각은 각각 15°여서 \\(\\angle A=15^\\circ\\)이다. 직각삼각형 DBC에서 \\(\\angle CDB=30^\\circ\\), 빗변 \\(DC=d\\)이므로 \\(BC=\\frac d2, DB=\\frac{\\sqrt3d}2\\). 따라서 \\(AB=AD+DB=d+\\frac{\\sqrt3d}2\\), \\(\\tan15^\\circ=\\frac{BC}{AB}=\\frac1{2+\\sqrt3}=2-\\sqrt3\\)이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "AD=DC인 이등변삼각형의 꼭짓각150에서 밑각15를 얻고30도 직각삼각형의 변들을 d로 나타내어 큰 삼각형의 tan15 비로 연결한다. 마지막 1/(2+√3)은 분모의 켤레를 곱해 유리화한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "그림은 각 $B$가 직각인 $\\triangle ABC$에서 $\\overline{AD} = \\overline{DC}$이고 $\\angle CDB = 30^\\circ$일 때, $\\tan 15^\\circ$의 값을 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q14.png\" alt=\"문제 14번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "AD=DC인 이등변삼각형의 꼭짓각150에서 밑각15를 얻고30도 직각삼각형의 변들을 d로 나타내어 큰 삼각형의 tan15 비로 연결한다. 마지막 1/(2+√3)은 분모의 켤레를 곱해 유리화한다.",
+        "method": "AD=DC인 이등변삼각형의 꼭짓각150에서 밑각15를 얻고30도 직각삼각형의 변들을 d로 나타내어 큰 삼각형의 tan15 비로 연결한다. 마지막 1/(2+√3)은 분모의 켤레를 곱해 유리화한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "AD=DC인 이등변삼각형의 꼭짓각150에서 밑각15를 얻고30도 직각삼각형의 변들을 d로 나타내어 큰 삼각형의 tan15 비로 연결한다. 마지막 1/(2+√3)은 분모의 켤레를 곱해 유리화한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_8453ec1b65a1b8276703040d2ca8bdf86b91a7387797df07230eb8ae016c3dcd",
+      "sourceOrdinal": 15,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "그림과 같이 반지름이 $1$인 사분원에서 삼각비의 값이 틀린 것을 찾으면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q15.png\" alt=\"문제 15번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "그림과 같이 반지름이 $1$인 사분원에서 삼각비의 값이 틀린 것을 찾으면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q15.png\" alt=\"문제 15번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "그림과 같이 반지름이 $1$인 사분원에서 삼각비의 값이 틀린 것을 찾으면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q15.png\" alt=\"문제 15번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "여각",
+            "src": "solution",
+            "quote": "여각 관계로 \\(\\sin58^\\circ=\\cos32^\\circ\\), \\(\\cos58^\\circ=\\sin32^\\circ\\)이므로 ①~④는 서로 맞는다. \\(\\tan32^\\circ=\\frac{\\sin32^\\circ}{\\cos32^\\circ}\\approx\\frac{0.5299}{0.8480}\\approx0.625\\)이지 1.6003이 아니므로 ⑤가 틀렸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 단위원 좌표값과58·32도의 여각 관계로 사인·코사인을 대응시키고 tan32를 그 두 값의 비로 확인한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "여각 관계로 \\(\\sin58^\\circ=\\cos32^\\circ\\), \\(\\cos58^\\circ=\\sin32^\\circ\\)이므로 ①~④는 서로 맞는다. \\(\\tan32^\\circ=\\frac{\\sin32^\\circ}{\\cos32^\\circ}\\approx\\frac{0.5299}{0.8480}\\approx0.625\\)이지 1.6003이 아니므로 ⑤가 틀렸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 단위원 좌표값과58·32도의 여각 관계로 사인·코사인을 대응시키고 tan32를 그 두 값의 비로 확인한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "여각 관계로 \\(\\sin58^\\circ=\\cos32^\\circ\\), \\(\\cos58^\\circ=\\sin32^\\circ\\)이므로 ①~④는 서로 맞는다. \\(\\tan32^\\circ=\\frac{\\sin32^\\circ}{\\cos32^\\circ}\\approx\\frac{0.5299}{0.8480}\\approx0.625\\)이지 1.6003이 아니므로 ⑤가 틀렸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 단위원 좌표값과58·32도의 여각 관계로 사인·코사인을 대응시키고 tan32를 그 두 값의 비로 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "그림과 같이 반지름이 $1$인 사분원에서 삼각비의 값이 틀린 것을 찾으면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q15.png\" alt=\"문제 15번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "그림의 단위원 좌표값과58·32도의 여각 관계로 사인·코사인을 대응시키고 tan32를 그 두 값의 비로 확인한다.",
+        "method": "그림의 단위원 좌표값과58·32도의 여각 관계로 사인·코사인을 대응시키고 tan32를 그 두 값의 비로 확인한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "그림의 단위원 좌표값과58·32도의 여각 관계로 사인·코사인을 대응시키고 tan32를 그 두 값의 비로 확인한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_9f127f9b8cf214ff5ea4cefdea57eeb2f5fa63d9b441f91903f66512631a76e6",
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "다음 그림의 $\\triangle ABC$에서 $\\angle C = 90^\\circ$, $\\angle B = 30^\\circ$, $\\overline{AB} = 4$이고, $\\angle A$의 이등분선이 $\\overline{BC}$와 만나는 점을 $D$라 할 때, $\\overline{CD}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q16.png\" alt=\"문제 16번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "이등분선",
+            "src": "stem",
+            "quote": "다음 그림의 $\\triangle ABC$에서 $\\angle C = 90^\\circ$, $\\angle B = 30^\\circ$, $\\overline{AB} = 4$이고, $\\angle A$의 이등분선이 $\\overline{BC}$와 만나는 점을 $D$라 할 때, $\\overline{CD}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q16.png\" alt=\"문제 16번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림의 $\\triangle ABC$에서 $\\angle C = 90^\\circ$, $\\angle B = 30^\\circ$, $\\overline{AB} = 4$이고, $\\angle A$의 이등분선이 $\\overline{BC}$와 만나는 점을 $D$라 할 때, $\\overline{CD}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q16.png\" alt=\"문제 16번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\(AB=4\\)가 빗변이고 \\(\\angle B=30^\\circ\\)이므로 \\(AC=2,BC=2\\sqrt3\\)이다. A의 각의 이등분선에 의해 \\(BD:DC=AB:AC=4:2=2:1\\)이다. 따라서 \\(DC=\\frac{BC}{3}=\\frac{2\\sqrt3}{3}\\)이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "30도 직각삼각형의 변을 먼저 구하고 각의 이등분선 정리로BD:DC=2:1을 세워 목표 밑변 조각을 얻는다."
+          },
+          {
+            "term": "각의이등분선정리",
+            "src": "solution",
+            "quote": "\\(AB=4\\)가 빗변이고 \\(\\angle B=30^\\circ\\)이므로 \\(AC=2,BC=2\\sqrt3\\)이다. A의 각의 이등분선에 의해 \\(BD:DC=AB:AC=4:2=2:1\\)이다. 따라서 \\(DC=\\frac{BC}{3}=\\frac{2\\sqrt3}{3}\\)이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "30도 직각삼각형의 변을 먼저 구하고 각의 이등분선 정리로BD:DC=2:1을 세워 목표 밑변 조각을 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "이등분선",
+            "src": "stem",
+            "quote": "다음 그림의 $\\triangle ABC$에서 $\\angle C = 90^\\circ$, $\\angle B = 30^\\circ$, $\\overline{AB} = 4$이고, $\\angle A$의 이등분선이 $\\overline{BC}$와 만나는 점을 $D$라 할 때, $\\overline{CD}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q16.png\" alt=\"문제 16번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "30도 직각삼각형의 변을 먼저 구하고 각의 이등분선 정리로BD:DC=2:1을 세워 목표 밑변 조각을 얻는다.",
+        "method": "30도 직각삼각형의 변을 먼저 구하고 각의 이등분선 정리로BD:DC=2:1을 세워 목표 밑변 조각을 얻는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "30도 직각삼각형의 변을 먼저 구하고 각의 이등분선 정리로BD:DC=2:1을 세워 목표 밑변 조각을 얻는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_9911063c75aed878d7e3e84f617e44c855c4cc6e44c76473af2371f8546dabfa",
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "그림과 같은 삼각형 $ABC$에서 $\\overline{AC} = 12$, $\\angle BAC = 75^\\circ$, $\\angle ACB = 60^\\circ$일 때, $\\overline{BC}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q17.png\" alt=\"문제 17번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "그림과 같은 삼각형 $ABC$에서 $\\overline{AC} = 12$, $\\angle BAC = 75^\\circ$, $\\angle ACB = 60^\\circ$일 때, $\\overline{BC}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q17.png\" alt=\"문제 17번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림과 같은 삼각형 $ABC$에서 $\\overline{AC} = 12$, $\\angle BAC = 75^\\circ$, $\\angle ACB = 60^\\circ$일 때, $\\overline{BC}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q17.png\" alt=\"문제 17번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "\\(\\angle B=180^\\circ-75^\\circ-60^\\circ=45^\\circ\\). A에서 BC에 내린 수선의 발을 H라 하면 \\(\\triangle AHC\\)에서 \\(AC=12\\), \\(\\angle C=60^\\circ\\)이므로 \\(AH=6\\sqrt3,CH=6\\). \\(\\triangle ABH\\)는 45°-45°-90° 직각삼각형이라 \\(BH=AH=6\\sqrt3\\). 따라서 \\(BC=BH+CH=6(\\sqrt3+1)\\)이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 내각의 합으로B=45를 구하고A에서 수선을 내려60도 삼각형의 높이와 밑변을 얻은 뒤45도 삼각형의 같은 길이를 연결해 BC를 합한다."
+          },
+          {
+            "term": "보조선",
+            "src": "solution",
+            "quote": "\\(\\angle B=180^\\circ-75^\\circ-60^\\circ=45^\\circ\\). A에서 BC에 내린 수선의 발을 H라 하면 \\(\\triangle AHC\\)에서 \\(AC=12\\), \\(\\angle C=60^\\circ\\)이므로 \\(AH=6\\sqrt3,CH=6\\). \\(\\triangle ABH\\)는 45°-45°-90° 직각삼각형이라 \\(BH=AH=6\\sqrt3\\). 따라서 \\(BC=BH+CH=6(\\sqrt3+1)\\)이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 내각의 합으로B=45를 구하고A에서 수선을 내려60도 삼각형의 높이와 밑변을 얻은 뒤45도 삼각형의 같은 길이를 연결해 BC를 합한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\(\\angle B=180^\\circ-75^\\circ-60^\\circ=45^\\circ\\). A에서 BC에 내린 수선의 발을 H라 하면 \\(\\triangle AHC\\)에서 \\(AC=12\\), \\(\\angle C=60^\\circ\\)이므로 \\(AH=6\\sqrt3,CH=6\\). \\(\\triangle ABH\\)는 45°-45°-90° 직각삼각형이라 \\(BH=AH=6\\sqrt3\\). 따라서 \\(BC=BH+CH=6(\\sqrt3+1)\\)이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 내각의 합으로B=45를 구하고A에서 수선을 내려60도 삼각형의 높이와 밑변을 얻은 뒤45도 삼각형의 같은 길이를 연결해 BC를 합한다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "\\(\\angle B=180^\\circ-75^\\circ-60^\\circ=45^\\circ\\). A에서 BC에 내린 수선의 발을 H라 하면 \\(\\triangle AHC\\)에서 \\(AC=12\\), \\(\\angle C=60^\\circ\\)이므로 \\(AH=6\\sqrt3,CH=6\\). \\(\\triangle ABH\\)는 45°-45°-90° 직각삼각형이라 \\(BH=AH=6\\sqrt3\\). 따라서 \\(BC=BH+CH=6(\\sqrt3+1)\\)이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 내각의 합으로B=45를 구하고A에서 수선을 내려60도 삼각형의 높이와 밑변을 얻은 뒤45도 삼각형의 같은 길이를 연결해 BC를 합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "세 내각의 합으로B=45를 구하고A에서 수선을 내려60도 삼각형의 높이와 밑변을 얻은 뒤45도 삼각형의 같은 길이를 연결해 BC를 합한다.",
+        "method": "세 내각의 합으로B=45를 구하고A에서 수선을 내려60도 삼각형의 높이와 밑변을 얻은 뒤45도 삼각형의 같은 길이를 연결해 BC를 합한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "세 내각의 합으로B=45를 구하고A에서 수선을 내려60도 삼각형의 높이와 밑변을 얻은 뒤45도 삼각형의 같은 길이를 연결해 BC를 합한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ad2027eed23adcd1cb656bb69d36d834b40acaf974f451bf4a3355620a74994f",
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "폭이 각각 $5$, $6$으로 일정한 두 종이 테이프를 그림과 같이 $45^\\circ$로 겹쳐져 있을 때, 겹쳐진 사각형 $ABCD$의 둘레의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q18.png\" alt=\"문제 18번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "폭이 각각 $5$, $6$으로 일정한 두 종이 테이프를 그림과 같이 $45^\\circ$로 겹쳐져 있을 때, 겹쳐진 사각형 $ABCD$의 둘레의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q18.png\" alt=\"문제 18번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "폭이 각각 $5$, $6$으로 일정한 두 종이 테이프를 그림과 같이 $45^\\circ$로 겹쳐져 있을 때, 겹쳐진 사각형 $ABCD$의 둘레의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q18.png\" alt=\"문제 18번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "각 테이프의 폭은 겹친 평행사변형의 한 쌍의 대변 사이 수직거리다. 두 방향 사이 각이 45°이므로 폭 5에 대응하는 변의 길이는 \\(5/\\sin45^\\circ=5\\sqrt2\\), 폭 6에 대응하는 변은 \\(6\\sqrt2\\)이다. 둘레는 \\(2(5\\sqrt2+6\\sqrt2)=22\\sqrt2\\)이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "테이프의 폭을 대변 사이 수직거리로 해석하고45도의 사인으로 각 변 길이를 복원한 뒤 겹친 평행사변형의 둘레로 결합한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "각 테이프의 폭은 겹친 평행사변형의 한 쌍의 대변 사이 수직거리다. 두 방향 사이 각이 45°이므로 폭 5에 대응하는 변의 길이는 \\(5/\\sin45^\\circ=5\\sqrt2\\), 폭 6에 대응하는 변은 \\(6\\sqrt2\\)이다. 둘레는 \\(2(5\\sqrt2+6\\sqrt2)=22\\sqrt2\\)이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "테이프의 폭을 대변 사이 수직거리로 해석하고45도의 사인으로 각 변 길이를 복원한 뒤 겹친 평행사변형의 둘레로 결합한다."
+          },
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "각 테이프의 폭은 겹친 평행사변형의 한 쌍의 대변 사이 수직거리다. 두 방향 사이 각이 45°이므로 폭 5에 대응하는 변의 길이는 \\(5/\\sin45^\\circ=5\\sqrt2\\), 폭 6에 대응하는 변은 \\(6\\sqrt2\\)이다. 둘레는 \\(2(5\\sqrt2+6\\sqrt2)=22\\sqrt2\\)이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "테이프의 폭을 대변 사이 수직거리로 해석하고45도의 사인으로 각 변 길이를 복원한 뒤 겹친 평행사변형의 둘레로 결합한다."
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "각 테이프의 폭은 겹친 평행사변형의 한 쌍의 대변 사이 수직거리다. 두 방향 사이 각이 45°이므로 폭 5에 대응하는 변의 길이는 \\(5/\\sin45^\\circ=5\\sqrt2\\), 폭 6에 대응하는 변은 \\(6\\sqrt2\\)이다. 둘레는 \\(2(5\\sqrt2+6\\sqrt2)=22\\sqrt2\\)이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "테이프의 폭을 대변 사이 수직거리로 해석하고45도의 사인으로 각 변 길이를 복원한 뒤 겹친 평행사변형의 둘레로 결합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "테이프의 폭을 대변 사이 수직거리로 해석하고45도의 사인으로 각 변 길이를 복원한 뒤 겹친 평행사변형의 둘레로 결합한다.",
+        "method": "테이프의 폭을 대변 사이 수직거리로 해석하고45도의 사인으로 각 변 길이를 복원한 뒤 겹친 평행사변형의 둘레로 결합한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "테이프의 폭을 대변 사이 수직거리로 해석하고45도의 사인으로 각 변 길이를 복원한 뒤 겹친 평행사변형의 둘레로 결합한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_a8539b01d9086642cb33189d331681408c0e1a03b760a05f046a79a260e584f0",
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{AB} = 4$, $\\overline{BC} = 6$, $\\angle ABC = 60^\\circ$인 $\\triangle ABC$의 넓이와 $\\overline{EF} = 4\\sqrt3$, $\\angle EFD = 120^\\circ$인 $\\triangle DEF$의 넓이가 같을 때, $\\overline{DF}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q19.png\" alt=\"문제 19번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{AB} = 4$, $\\overline{BC} = 6$, $\\angle ABC = 60^\\circ$인 $\\triangle ABC$의 넓이와 $\\overline{EF} = 4\\sqrt3$, $\\angle EFD = 120^\\circ$인 $\\triangle DEF$의 넓이가 같을 때, $\\overline{DF}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q19.png\" alt=\"문제 19번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{AB} = 4$, $\\overline{BC} = 6$, $\\angle ABC = 60^\\circ$인 $\\triangle ABC$의 넓이와 $\\overline{EF} = 4\\sqrt3$, $\\angle EFD = 120^\\circ$인 $\\triangle DEF$의 넓이가 같을 때, $\\overline{DF}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q19.png\" alt=\"문제 19번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "\\(\\triangle ABC\\)에서 C에서 AB에 내린 높이는 \\(BC\\sin60^\\circ=6\\cdot\\frac{\\sqrt3}{2}=3\\sqrt3\\)이므로 넓이는 \\(\\frac12\\cdot4\\cdot3\\sqrt3=6\\sqrt3\\)이다. \\(\\triangle DEF\\)에서 직선 EF를 F 너머로 연장하고, 점 D에서 이 직선에 내린 수선의 발을 H라 하자. \\(\\angle DFH=180^\\circ-120^\\circ=60^\\circ\\)이므로 직각삼각형 DFH에서 \\(DH=DF\\sin60^\\circ=x\\cdot\\frac{\\sqrt3}{2}\\)이다. 따라서 넓이는 \\(\\frac12\\cdot4\\sqrt3\\cdot\\frac{\\sqrt3x}{2}=3x\\)이다. 두 넓이가 같으므로 \\(3x=6\\sqrt3\\), \\(x=2\\sqrt3\\)이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 삼각형 각각에 수선을 내려60도 사인으로 높이를 나타내고, 둘째의120도는 연장선의60도로 바꾼 뒤 두 넓이의 같음을 미지변 일차식으로 쓴다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\(\\triangle ABC\\)에서 C에서 AB에 내린 높이는 \\(BC\\sin60^\\circ=6\\cdot\\frac{\\sqrt3}{2}=3\\sqrt3\\)이므로 넓이는 \\(\\frac12\\cdot4\\cdot3\\sqrt3=6\\sqrt3\\)이다. \\(\\triangle DEF\\)에서 직선 EF를 F 너머로 연장하고, 점 D에서 이 직선에 내린 수선의 발을 H라 하자. \\(\\angle DFH=180^\\circ-120^\\circ=60^\\circ\\)이므로 직각삼각형 DFH에서 \\(DH=DF\\sin60^\\circ=x\\cdot\\frac{\\sqrt3}{2}\\)이다. 따라서 넓이는 \\(\\frac12\\cdot4\\sqrt3\\cdot\\frac{\\sqrt3x}{2}=3x\\)이다. 두 넓이가 같으므로 \\(3x=6\\sqrt3\\), \\(x=2\\sqrt3\\)이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 삼각형 각각에 수선을 내려60도 사인으로 높이를 나타내고, 둘째의120도는 연장선의60도로 바꾼 뒤 두 넓이의 같음을 미지변 일차식으로 쓴다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\(\\triangle ABC\\)에서 C에서 AB에 내린 높이는 \\(BC\\sin60^\\circ=6\\cdot\\frac{\\sqrt3}{2}=3\\sqrt3\\)이므로 넓이는 \\(\\frac12\\cdot4\\cdot3\\sqrt3=6\\sqrt3\\)이다. \\(\\triangle DEF\\)에서 직선 EF를 F 너머로 연장하고, 점 D에서 이 직선에 내린 수선의 발을 H라 하자. \\(\\angle DFH=180^\\circ-120^\\circ=60^\\circ\\)이므로 직각삼각형 DFH에서 \\(DH=DF\\sin60^\\circ=x\\cdot\\frac{\\sqrt3}{2}\\)이다. 따라서 넓이는 \\(\\frac12\\cdot4\\sqrt3\\cdot\\frac{\\sqrt3x}{2}=3x\\)이다. 두 넓이가 같으므로 \\(3x=6\\sqrt3\\), \\(x=2\\sqrt3\\)이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 삼각형 각각에 수선을 내려60도 사인으로 높이를 나타내고, 둘째의120도는 연장선의60도로 바꾼 뒤 두 넓이의 같음을 미지변 일차식으로 쓴다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "\\(\\triangle ABC\\)에서 C에서 AB에 내린 높이는 \\(BC\\sin60^\\circ=6\\cdot\\frac{\\sqrt3}{2}=3\\sqrt3\\)이므로 넓이는 \\(\\frac12\\cdot4\\cdot3\\sqrt3=6\\sqrt3\\)이다. \\(\\triangle DEF\\)에서 직선 EF를 F 너머로 연장하고, 점 D에서 이 직선에 내린 수선의 발을 H라 하자. \\(\\angle DFH=180^\\circ-120^\\circ=60^\\circ\\)이므로 직각삼각형 DFH에서 \\(DH=DF\\sin60^\\circ=x\\cdot\\frac{\\sqrt3}{2}\\)이다. 따라서 넓이는 \\(\\frac12\\cdot4\\sqrt3\\cdot\\frac{\\sqrt3x}{2}=3x\\)이다. 두 넓이가 같으므로 \\(3x=6\\sqrt3\\), \\(x=2\\sqrt3\\)이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 삼각형 각각에 수선을 내려60도 사인으로 높이를 나타내고, 둘째의120도는 연장선의60도로 바꾼 뒤 두 넓이의 같음을 미지변 일차식으로 쓴다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{AB} = 4$, $\\overline{BC} = 6$, $\\angle ABC = 60^\\circ$인 $\\triangle ABC$의 넓이와 $\\overline{EF} = 4\\sqrt3$, $\\angle EFD = 120^\\circ$인 $\\triangle DEF$의 넓이가 같을 때, $\\overline{DF}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q19.png\" alt=\"문제 19번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두 삼각형 각각에 수선을 내려60도 사인으로 높이를 나타내고, 둘째의120도는 연장선의60도로 바꾼 뒤 두 넓이의 같음을 미지변 일차식으로 쓴다.",
+        "method": "두 삼각형 각각에 수선을 내려60도 사인으로 높이를 나타내고, 둘째의120도는 연장선의60도로 바꾼 뒤 두 넓이의 같음을 미지변 일차식으로 쓴다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두 삼각형 각각에 수선을 내려60도 사인으로 높이를 나타내고, 둘째의120도는 연장선의60도로 바꾼 뒤 두 넓이의 같음을 미지변 일차식으로 쓴다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_1a6094e525fe4e3de039dd44ed9273df5be58d4327690d6526e5c2c09df414b6",
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 두 개의 그림에서 $x + y$의 값을 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q20.png\" alt=\"문제 20번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 두 개의 그림에서 $x + y$의 값을 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q20.png\" alt=\"문제 20번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "다음 두 개의 그림에서 $x + y$의 값을 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q20.png\" alt=\"문제 20번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "첫째 그림의 직각 표시에서 \\(OM\\perp AB\\)이므로 중심에서 현에 내린 수선은 현을 이등분한다. 따라서 반현은 \\(24\\div2=12\\)이고, 직각삼각형 OMA에서 \\(x^2=OM^2+AM^2=5^2+12^2=169\\), 즉 \\(x=13\\)이다. 둘째 그림에서 \\(OM=4, AM=5\\)이므로 반지름의 제곱은 \\(OA^2=4^2+5^2=41\\)이다. 또 \\(ON\\perp CD\\)이므로 N은 현 CD의 중점이고 \\(ND=10\\div2=5\\). 직각삼각형 OND에서 \\(y^2=ON^2=41-5^2=16\\), 따라서 \\(y=4\\)이다. 그러므로 \\(x+y=17\\)이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 중심 수선이 현을 이등분한다는 성질로 반현을 정하고 두 그림 각각에서 피타고라스로 반지름 또는 중심거리를 구하여 합한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "첫째 그림의 직각 표시에서 \\(OM\\perp AB\\)이므로 중심에서 현에 내린 수선은 현을 이등분한다. 따라서 반현은 \\(24\\div2=12\\)이고, 직각삼각형 OMA에서 \\(x^2=OM^2+AM^2=5^2+12^2=169\\), 즉 \\(x=13\\)이다. 둘째 그림에서 \\(OM=4, AM=5\\)이므로 반지름의 제곱은 \\(OA^2=4^2+5^2=41\\)이다. 또 \\(ON\\perp CD\\)이므로 N은 현 CD의 중점이고 \\(ND=10\\div2=5\\). 직각삼각형 OND에서 \\(y^2=ON^2=41-5^2=16\\), 따라서 \\(y=4\\)이다. 그러므로 \\(x+y=17\\)이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 중심 수선이 현을 이등분한다는 성질로 반현을 정하고 두 그림 각각에서 피타고라스로 반지름 또는 중심거리를 구하여 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "다음 두 개의 그림에서 $x + y$의 값을 구하면? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q20.png\" alt=\"문제 20번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "각 중심 수선이 현을 이등분한다는 성질로 반현을 정하고 두 그림 각각에서 피타고라스로 반지름 또는 중심거리를 구하여 합한다.",
+        "method": "각 중심 수선이 현을 이등분한다는 성질로 반현을 정하고 두 그림 각각에서 피타고라스로 반지름 또는 중심거리를 구하여 합한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "각 중심 수선이 현을 이등분한다는 성질로 반현을 정하고 두 그림 각각에서 피타고라스로 반지름 또는 중심거리를 구하여 합한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_de5a38af7124f67b1bfd13ed94220c22a999d0df990e709da0607377d101ffc4",
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "그림에서 $\\stackrel{\\frown}{AB}$는 원의 일부분이다. 점 $M$은 $\\overline{AB}$의 중점이고, $\\overline{AM} = 6$, $\\overline{CM} = 2$일 때, 이 원의 반지름의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q21.png\" alt=\"문제 21번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "그림에서 $\\stackrel{\\frown}{AB}$는 원의 일부분이다. 점 $M$은 $\\overline{AB}$의 중점이고, $\\overline{AM} = 6$, $\\overline{CM} = 2$일 때, 이 원의 반지름의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q21.png\" alt=\"문제 21번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "그림에서 $\\stackrel{\\frown}{AB}$는 원의 일부분이다. 점 $M$은 $\\overline{AB}$의 중점이고, $\\overline{AM} = 6$, $\\overline{CM} = 2$일 때, 이 원의 반지름의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q21.png\" alt=\"문제 21번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "M은 현 AB의 중점이고 \\(CM\\perp AB\\)이므로 CM은 AB의 수직이등분선이다. 원의 중심 O도 현 AB의 수직이등분선 위에 있으므로 O, M, C는 한 직선 위에 있다. \\(OM=d\\)라 두면 반지름 \\(OC=d+2\\)이다. 직각삼각형 OMA에서 \\((d+2)^2=d^2+6^2\\)이므로 \\(4d=32\\), \\(d=8\\). 따라서 반지름은 \\(OC=d+2=10\\)이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 중점에서 올린 수직선 위에 중심이 있음을 이용해 반지름을d+2로 쓰고 반현6과 중심거리d의 피타고라스 식에서 d를 정한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "M은 현 AB의 중점이고 \\(CM\\perp AB\\)이므로 CM은 AB의 수직이등분선이다. 원의 중심 O도 현 AB의 수직이등분선 위에 있으므로 O, M, C는 한 직선 위에 있다. \\(OM=d\\)라 두면 반지름 \\(OC=d+2\\)이다. 직각삼각형 OMA에서 \\((d+2)^2=d^2+6^2\\)이므로 \\(4d=32\\), \\(d=8\\). 따라서 반지름은 \\(OC=d+2=10\\)이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 중점에서 올린 수직선 위에 중심이 있음을 이용해 반지름을d+2로 쓰고 반현6과 중심거리d의 피타고라스 식에서 d를 정한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "M은 현 AB의 중점이고 \\(CM\\perp AB\\)이므로 CM은 AB의 수직이등분선이다. 원의 중심 O도 현 AB의 수직이등분선 위에 있으므로 O, M, C는 한 직선 위에 있다. \\(OM=d\\)라 두면 반지름 \\(OC=d+2\\)이다. 직각삼각형 OMA에서 \\((d+2)^2=d^2+6^2\\)이므로 \\(4d=32\\), \\(d=8\\). 따라서 반지름은 \\(OC=d+2=10\\)이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 중점에서 올린 수직선 위에 중심이 있음을 이용해 반지름을d+2로 쓰고 반현6과 중심거리d의 피타고라스 식에서 d를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "그림에서 $\\stackrel{\\frown}{AB}$는 원의 일부분이다. 점 $M$은 $\\overline{AB}$의 중점이고, $\\overline{AM} = 6$, $\\overline{CM} = 2$일 때, 이 원의 반지름의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q21.png\" alt=\"문제 21번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "그림에서 $\\stackrel{\\frown}{AB}$는 원의 일부분이다. 점 $M$은 $\\overline{AB}$의 중점이고, $\\overline{AM} = 6$, $\\overline{CM} = 2$일 때, 이 원의 반지름의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q21.png\" alt=\"문제 21번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "현의 중점에서 올린 수직선 위에 중심이 있음을 이용해 반지름을d+2로 쓰고 반현6과 중심거리d의 피타고라스 식에서 d를 정한다.",
+        "method": "현의 중점에서 올린 수직선 위에 중심이 있음을 이용해 반지름을d+2로 쓰고 반현6과 중심거리d의 피타고라스 식에서 d를 정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "현의 중점에서 올린 수직선 위에 중심이 있음을 이용해 반지름을d+2로 쓰고 반현6과 중심거리d의 피타고라스 식에서 d를 정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_63673949de359343403aff98b417335699cd00a0308bbb88ab02de85d85db04a",
+      "sourceOrdinal": 22,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{AB}$는 반원 $O$의 지름이고, $\\overline{AC}, \\overline{BD}, \\overline{CD}$는 반원에 접한다. $\\overline{AC} = 4$, $\\overline{BD} = 9$일 때, 반원 $O$의 지름 $\\overline{AB}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q22.png\" alt=\"문제 22번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{AB}$는 반원 $O$의 지름이고, $\\overline{AC}, \\overline{BD}, \\overline{CD}$는 반원에 접한다. $\\overline{AC} = 4$, $\\overline{BD} = 9$일 때, 반원 $O$의 지름 $\\overline{AB}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q22.png\" alt=\"문제 22번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{AB}$는 반원 $O$의 지름이고, $\\overline{AC}, \\overline{BD}, \\overline{CD}$는 반원에 접한다. $\\overline{AC} = 4$, $\\overline{BD} = 9$일 때, 반원 $O$의 지름 $\\overline{AB}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q22.png\" alt=\"문제 22번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{AB}$는 반원 $O$의 지름이고, $\\overline{AC}, \\overline{BD}, \\overline{CD}$는 반원에 접한다. $\\overline{AC} = 4$, $\\overline{BD} = 9$일 때, 반원 $O$의 지름 $\\overline{AB}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q22.png\" alt=\"문제 22번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "CD의 접점을 T라 하면 점 C에서 그은 두 접선 길이가 같아 \\(CT=CA=4\\), 점 D에서 그은 두 접선 길이가 같아 \\(TD=DB=9\\)이다. 따라서 \\(CD=CT+TD=13\\)이다. A와 B에서의 접선은 지름 AB에 수직이어서 C와 D 사이의 높이 차는 \\(9-4=5\\), 수평거리는 \\(AB\\)이다. 따라서 \\(AB^2+5^2=13^2\\), \\(AB=12\\)이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부점의 등접선으로 접선CD를4+9로 구하고 두 수직 접선 높이의 차5를 사용해 지름을 직각삼각형의 나머지 변으로 계산한다."
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "CD의 접점을 T라 하면 점 C에서 그은 두 접선 길이가 같아 \\(CT=CA=4\\), 점 D에서 그은 두 접선 길이가 같아 \\(TD=DB=9\\)이다. 따라서 \\(CD=CT+TD=13\\)이다. A와 B에서의 접선은 지름 AB에 수직이어서 C와 D 사이의 높이 차는 \\(9-4=5\\), 수평거리는 \\(AB\\)이다. 따라서 \\(AB^2+5^2=13^2\\), \\(AB=12\\)이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부점의 등접선으로 접선CD를4+9로 구하고 두 수직 접선 높이의 차5를 사용해 지름을 직각삼각형의 나머지 변으로 계산한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "CD의 접점을 T라 하면 점 C에서 그은 두 접선 길이가 같아 \\(CT=CA=4\\), 점 D에서 그은 두 접선 길이가 같아 \\(TD=DB=9\\)이다. 따라서 \\(CD=CT+TD=13\\)이다. A와 B에서의 접선은 지름 AB에 수직이어서 C와 D 사이의 높이 차는 \\(9-4=5\\), 수평거리는 \\(AB\\)이다. 따라서 \\(AB^2+5^2=13^2\\), \\(AB=12\\)이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부점의 등접선으로 접선CD를4+9로 구하고 두 수직 접선 높이의 차5를 사용해 지름을 직각삼각형의 나머지 변으로 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{AB}$는 반원 $O$의 지름이고, $\\overline{AC}, \\overline{BD}, \\overline{CD}$는 반원에 접한다. $\\overline{AC} = 4$, $\\overline{BD} = 9$일 때, 반원 $O$의 지름 $\\overline{AB}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q22.png\" alt=\"문제 22번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두 외부점의 등접선으로 접선CD를4+9로 구하고 두 수직 접선 높이의 차5를 사용해 지름을 직각삼각형의 나머지 변으로 계산한다.",
+        "method": "두 외부점의 등접선으로 접선CD를4+9로 구하고 두 수직 접선 높이의 차5를 사용해 지름을 직각삼각형의 나머지 변으로 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두 외부점의 등접선으로 접선CD를4+9로 구하고 두 수직 접선 높이의 차5를 사용해 지름을 직각삼각형의 나머지 변으로 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_08d5b468c240179d2ddd9f441886fdea73a07cec4bc4a510a0b1b13f1314060b",
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "그림은 이차함수 $y = -2x^2 + 4x + 16$의 그래프이다. 꼭짓점을 $A$, $x$축과의 교점을 $B, C$라고 할 때, $\\triangle ABC$의 넓이를 구하여라. (7점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s01.png\" alt=\"서술형 1번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "그림은 이차함수 $y = -2x^2 + 4x + 16$의 그래프이다. 꼭짓점을 $A$, $x$축과의 교점을 $B, C$라고 할 때, $\\triangle ABC$의 넓이를 구하여라. (7점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s01.png\" alt=\"서술형 1번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "x절편",
+            "src": "stem",
+            "quote": "그림은 이차함수 $y = -2x^2 + 4x + 16$의 그래프이다. 꼭짓점을 $A$, $x$축과의 교점을 $B, C$라고 할 때, $\\triangle ABC$의 넓이를 구하여라. (7점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s01.png\" alt=\"서술형 1번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "그림은 이차함수 $y = -2x^2 + 4x + 16$의 그래프이다. 꼭짓점을 $A$, $x$축과의 교점을 $B, C$라고 할 때, $\\triangle ABC$의 넓이를 구하여라. (7점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s01.png\" alt=\"서술형 1번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "\\(y=-2x^2+4x+16=-2(x-1)^2+18\\)이므로 꼭짓점 A의 높이는 18이다. x절편은 \\(-2x^2+4x+16=0\\), 즉 \\(x^2-2x-8=(x-4)(x+2)=0\\)에서 −2와 4이므로 \\(BC=6\\). 따라서 \\(\\triangle ABC\\)의 넓이는 \\(\\frac12\\cdot6\\cdot18=54\\)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱형으로 꼭짓점 높이18을 구하고 인수분해로 두 x절편을 얻어 그 거리6을 밑변으로 삼각형 넓이를 계산한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "\\(y=-2x^2+4x+16=-2(x-1)^2+18\\)이므로 꼭짓점 A의 높이는 18이다. x절편은 \\(-2x^2+4x+16=0\\), 즉 \\(x^2-2x-8=(x-4)(x+2)=0\\)에서 −2와 4이므로 \\(BC=6\\). 따라서 \\(\\triangle ABC\\)의 넓이는 \\(\\frac12\\cdot6\\cdot18=54\\)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱형으로 꼭짓점 높이18을 구하고 인수분해로 두 x절편을 얻어 그 거리6을 밑변으로 삼각형 넓이를 계산한다."
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "\\(y=-2x^2+4x+16=-2(x-1)^2+18\\)이므로 꼭짓점 A의 높이는 18이다. x절편은 \\(-2x^2+4x+16=0\\), 즉 \\(x^2-2x-8=(x-4)(x+2)=0\\)에서 −2와 4이므로 \\(BC=6\\). 따라서 \\(\\triangle ABC\\)의 넓이는 \\(\\frac12\\cdot6\\cdot18=54\\)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱형으로 꼭짓점 높이18을 구하고 인수분해로 두 x절편을 얻어 그 거리6을 밑변으로 삼각형 넓이를 계산한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\(y=-2x^2+4x+16=-2(x-1)^2+18\\)이므로 꼭짓점 A의 높이는 18이다. x절편은 \\(-2x^2+4x+16=0\\), 즉 \\(x^2-2x-8=(x-4)(x+2)=0\\)에서 −2와 4이므로 \\(BC=6\\). 따라서 \\(\\triangle ABC\\)의 넓이는 \\(\\frac12\\cdot6\\cdot18=54\\)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱형으로 꼭짓점 높이18을 구하고 인수분해로 두 x절편을 얻어 그 거리6을 밑변으로 삼각형 넓이를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "완전제곱형으로 꼭짓점 높이18을 구하고 인수분해로 두 x절편을 얻어 그 거리6을 밑변으로 삼각형 넓이를 계산한다.",
+        "method": "완전제곱형으로 꼭짓점 높이18을 구하고 인수분해로 두 x절편을 얻어 그 거리6을 밑변으로 삼각형 넓이를 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "완전제곱형으로 꼭짓점 높이18을 구하고 인수분해로 두 x절편을 얻어 그 거리6을 밑변으로 삼각형 넓이를 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_b32152a74906eb3a44888a0a515d27416802bc24bca97bc22e886acc4ac39418",
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "그림과 같이 $\\overline{AD} = 3$, $\\overline{CD} = 6$, $\\angle ADB = 30^\\circ$, $\\angle DBC = 60^\\circ$인 사각형 $ABCD$의 넓이를 구하여라. (7점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s02.png\" alt=\"서술형 2번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "그림과 같이 $\\overline{AD} = 3$, $\\overline{CD} = 6$, $\\angle ADB = 30^\\circ$, $\\angle DBC = 60^\\circ$인 사각형 $ABCD$의 넓이를 구하여라. (7점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s02.png\" alt=\"서술형 2번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "그림과 같이 $\\overline{AD} = 3$, $\\overline{CD} = 6$, $\\angle ADB = 30^\\circ$, $\\angle DBC = 60^\\circ$인 사각형 $ABCD$의 넓이를 구하여라. (7점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s02.png\" alt=\"서술형 2번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "\\(\\triangle BCD\\)에서 \\(\\angle C=90^\\circ\\), \\(\\angle B=60^\\circ\\)이므로 \\(\\angle D=30^\\circ\\)이다. 30°-60°-90° 삼각형에서 \\(CD=6\\)은 60°의 대변이므로 \\(BC=2\\sqrt3\\), \\(BD=4\\sqrt3\\). 따라서 \\(\\triangle BCD\\)의 넓이는 \\(\\frac12\\cdot6\\cdot2\\sqrt3=6\\sqrt3\\)이다. \\(\\triangle ABD\\)에서 A에서 DB에 내린 높이는 \\(AD\\sin30^\\circ=3\\cdot\\frac12=\\frac32\\)이므로 넓이는 \\(\\frac12\\cdot4\\sqrt3\\cdot\\frac32=3\\sqrt3\\)이다. 두 넓이의 합은 \\(9\\sqrt3\\)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선BD로 사각형을 나누고 직각삼각형BCD에서 삼각비로BD와BC를 구한 뒤BD를 공유하는 다른 삼각형의 높이3sin30을 얻어 두 넓이를 합한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\(\\triangle BCD\\)에서 \\(\\angle C=90^\\circ\\), \\(\\angle B=60^\\circ\\)이므로 \\(\\angle D=30^\\circ\\)이다. 30°-60°-90° 삼각형에서 \\(CD=6\\)은 60°의 대변이므로 \\(BC=2\\sqrt3\\), \\(BD=4\\sqrt3\\). 따라서 \\(\\triangle BCD\\)의 넓이는 \\(\\frac12\\cdot6\\cdot2\\sqrt3=6\\sqrt3\\)이다. \\(\\triangle ABD\\)에서 A에서 DB에 내린 높이는 \\(AD\\sin30^\\circ=3\\cdot\\frac12=\\frac32\\)이므로 넓이는 \\(\\frac12\\cdot4\\sqrt3\\cdot\\frac32=3\\sqrt3\\)이다. 두 넓이의 합은 \\(9\\sqrt3\\)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선BD로 사각형을 나누고 직각삼각형BCD에서 삼각비로BD와BC를 구한 뒤BD를 공유하는 다른 삼각형의 높이3sin30을 얻어 두 넓이를 합한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\(\\triangle BCD\\)에서 \\(\\angle C=90^\\circ\\), \\(\\angle B=60^\\circ\\)이므로 \\(\\angle D=30^\\circ\\)이다. 30°-60°-90° 삼각형에서 \\(CD=6\\)은 60°의 대변이므로 \\(BC=2\\sqrt3\\), \\(BD=4\\sqrt3\\). 따라서 \\(\\triangle BCD\\)의 넓이는 \\(\\frac12\\cdot6\\cdot2\\sqrt3=6\\sqrt3\\)이다. \\(\\triangle ABD\\)에서 A에서 DB에 내린 높이는 \\(AD\\sin30^\\circ=3\\cdot\\frac12=\\frac32\\)이므로 넓이는 \\(\\frac12\\cdot4\\sqrt3\\cdot\\frac32=3\\sqrt3\\)이다. 두 넓이의 합은 \\(9\\sqrt3\\)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선BD로 사각형을 나누고 직각삼각형BCD에서 삼각비로BD와BC를 구한 뒤BD를 공유하는 다른 삼각형의 높이3sin30을 얻어 두 넓이를 합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "대각선BD로 사각형을 나누고 직각삼각형BCD에서 삼각비로BD와BC를 구한 뒤BD를 공유하는 다른 삼각형의 높이3sin30을 얻어 두 넓이를 합한다.",
+        "method": "대각선BD로 사각형을 나누고 직각삼각형BCD에서 삼각비로BD와BC를 구한 뒤BD를 공유하는 다른 삼각형의 높이3sin30을 얻어 두 넓이를 합한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "대각선BD로 사각형을 나누고 직각삼각형BCD에서 삼각비로BD와BC를 구한 뒤BD를 공유하는 다른 삼각형의 높이3sin30을 얻어 두 넓이를 합한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_c78ea2d9256ce591b9677d1d40f0bc92533d3da1c02f610aee4d57a390c7076c",
+      "sourceOrdinal": 25,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "그림에서 $\\square ABCD$는 원 $O$에 외접하고 두 대각선이 직교한다. $\\overline{BC} = 9$, $\\overline{CD} = 6$, $x$와 $y$는 선분 $AB$와 $AD$의 길이이며, 대응 순서는 무관하다. $x+y$의 값을 구하여라. (6점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s03.png\" alt=\"서술형 3번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "그림에서 $\\square ABCD$는 원 $O$에 외접하고 두 대각선이 직교한다. $\\overline{BC} = 9$, $\\overline{CD} = 6$, $x$와 $y$는 선분 $AB$와 $AD$의 길이이며, 대응 순서는 무관하다. $x+y$의 값을 구하여라. (6점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s03.png\" alt=\"서술형 3번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "그림에서 $\\square ABCD$는 원 $O$에 외접하고 두 대각선이 직교한다. $\\overline{BC} = 9$, $\\overline{CD} = 6$, $x$와 $y$는 선분 $AB$와 $AD$의 길이이며, 대응 순서는 무관하다. $x+y$의 값을 구하여라. (6점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s03.png\" alt=\"서술형 3번 그림\" style=\"max-width: 250px;\">"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "접점에서 같은 외부점에 그은 두 접선의 길이는 같으므로 각 꼭짓점에서 접점까지의 길이를 각각 a,b,c,d라 놓으면 AB=a+b, BC=b+c, CD=c+d, AD=d+a이다. 따라서 AB+CD=BC+AD이다. 두 미지 변을 \\(u=AB, v=AD\\)라 두면 \\(u+6=9+v\\), 즉 \\(u-v=3\\)이다. 대각선의 교점을 P라 하자. 두 대각선이 직교하므로 네 삼각형에 피타고라스 정리를 쓰면 \\(AB^2+CD^2=(AP^2+BP^2)+(CP^2+DP^2)=(BP^2+CP^2)+(AP^2+DP^2)=BC^2+AD^2\\). 따라서 \\(u^2-v^2=9^2-6^2=45\\). \\((u-v)(u+v)=45\\)와 \\(u-v=3\\)에서 \\(u+v=15\\). x,y는 이 두 변의 길이이므로 \\(x+y=15\\)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등접선으로 대변합의 관계u−v=3을 얻고 직교하는 두 대각선이 만드는 네 직각삼각형에서 제곱합 관계u²−v²=45를 구한 뒤 합차곱으로 목표u+v를 분리한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "접점에서 같은 외부점에 그은 두 접선의 길이는 같으므로 각 꼭짓점에서 접점까지의 길이를 각각 a,b,c,d라 놓으면 AB=a+b, BC=b+c, CD=c+d, AD=d+a이다. 따라서 AB+CD=BC+AD이다. 두 미지 변을 \\(u=AB, v=AD\\)라 두면 \\(u+6=9+v\\), 즉 \\(u-v=3\\)이다. 대각선의 교점을 P라 하자. 두 대각선이 직교하므로 네 삼각형에 피타고라스 정리를 쓰면 \\(AB^2+CD^2=(AP^2+BP^2)+(CP^2+DP^2)=(BP^2+CP^2)+(AP^2+DP^2)=BC^2+AD^2\\). 따라서 \\(u^2-v^2=9^2-6^2=45\\). \\((u-v)(u+v)=45\\)와 \\(u-v=3\\)에서 \\(u+v=15\\). x,y는 이 두 변의 길이이므로 \\(x+y=15\\)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등접선으로 대변합의 관계u−v=3을 얻고 직교하는 두 대각선이 만드는 네 직각삼각형에서 제곱합 관계u²−v²=45를 구한 뒤 합차곱으로 목표u+v를 분리한다."
+          },
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "접점에서 같은 외부점에 그은 두 접선의 길이는 같으므로 각 꼭짓점에서 접점까지의 길이를 각각 a,b,c,d라 놓으면 AB=a+b, BC=b+c, CD=c+d, AD=d+a이다. 따라서 AB+CD=BC+AD이다. 두 미지 변을 \\(u=AB, v=AD\\)라 두면 \\(u+6=9+v\\), 즉 \\(u-v=3\\)이다. 대각선의 교점을 P라 하자. 두 대각선이 직교하므로 네 삼각형에 피타고라스 정리를 쓰면 \\(AB^2+CD^2=(AP^2+BP^2)+(CP^2+DP^2)=(BP^2+CP^2)+(AP^2+DP^2)=BC^2+AD^2\\). 따라서 \\(u^2-v^2=9^2-6^2=45\\). \\((u-v)(u+v)=45\\)와 \\(u-v=3\\)에서 \\(u+v=15\\). x,y는 이 두 변의 길이이므로 \\(x+y=15\\)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등접선으로 대변합의 관계u−v=3을 얻고 직교하는 두 대각선이 만드는 네 직각삼각형에서 제곱합 관계u²−v²=45를 구한 뒤 합차곱으로 목표u+v를 분리한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "그림에서 $\\square ABCD$는 원 $O$에 외접하고 두 대각선이 직교한다. $\\overline{BC} = 9$, $\\overline{CD} = 6$, $x$와 $y$는 선분 $AB$와 $AD$의 길이이며, 대응 순서는 무관하다. $x+y$의 값을 구하여라. (6점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s03.png\" alt=\"서술형 3번 그림\" style=\"max-width: 250px;\">"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "그림에서 $\\square ABCD$는 원 $O$에 외접하고 두 대각선이 직교한다. $\\overline{BC} = 9$, $\\overline{CD} = 6$, $x$와 $y$는 선분 $AB$와 $AD$의 길이이며, 대응 순서는 무관하다. $x+y$의 값을 구하여라. (6점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s03.png\" alt=\"서술형 3번 그림\" style=\"max-width: 250px;\">"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "등접선으로 대변합의 관계u−v=3을 얻고 직교하는 두 대각선이 만드는 네 직각삼각형에서 제곱합 관계u²−v²=45를 구한 뒤 합차곱으로 목표u+v를 분리한다.",
+        "method": "등접선으로 대변합의 관계u−v=3을 얻고 직교하는 두 대각선이 만드는 네 직각삼각형에서 제곱합 관계u²−v²=45를 구한 뒤 합차곱으로 목표u+v를 분리한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "등접선으로 대변합의 관계u−v=3을 얻고 직교하는 두 대각선이 만드는 네 직각삼각형에서 제곱합 관계u²−v²=45를 구한 뒤 합차곱으로 목표u+v를 분리한다."
+      ],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [
+    {
+      "en": [
+        "PERPENDICULAR_FROM_CENTER_BISECTS_CHORD"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "원의 중심에서 현에 내린 수선이 현을 이등분하며 현의 수직이등분선이 중심을 지난다는 성질의 적용.",
+      "term": "현의수직이등분성질",
+      "usedIn": [
+        20
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 25,
+    "quotesChecked": 164,
+    "quotesNotFound": 0,
+    "notes": "各문항 실제 본문·해설 및 도형을 읽어 의미 결정. 기존 수학 검증을 재사용하며 새 풀이나 수학 R1/R2/R3를 작성하지 않았다."
+  }
+}

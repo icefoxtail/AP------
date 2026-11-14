@@ -1,0 +1,42 @@
+[
+  {
+    "type": "NEW_PT_AND_TPL_PROPOSAL",
+    "nameKo": "계수 부호에서 꼭짓점 좌표의 부호와 사분면 판정",
+    "definition": "주어진 이차함수 계수의 부호를 꼭짓점의 두 좌표식에 적용하여 꼭짓점이 위치하는 사분면을 결정한다.",
+    "distinction": "주어진 그래프에서 계수 부호를 읽는 방향과 반대이며 그래프 전체가 지나는 사분면을 구하는 문제와도 다르다. 부모의 방향성 정의 확장 여부를 출고 담당이 확인한다.",
+    "supportOrdinals": [
+      5
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_5070aa2bc774cc66c70857a01352577df68cf0e35fafd678f258d1632f11c79d"
+    ],
+    "nearestTemplates": [
+      "TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH",
+      "TPL_M3_IDENTIFY_PARABOLA_PASSING_THROUGH_THIRD_QUADRANT"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "candidateExistingParentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+    "parentScopeReview": "ACTIVE 계수부호 PT의 정의는 그래프 특징에서 계수 부호를 읽는 방향이다. 현재 역방향 입력은 정식 범위 확장 또는 신규 PT가 필요한지 출고 담당이 판단하며 source PT/TPL null은 보존한다."
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "축과 한 근으로 계수식의 함숫값 부호 판정",
+    "definition": "축과 한 근에서 다른 근을 복원하고 계수의 선형 결합을 특정 함수값으로 바꾸어 근 사이·밖의 부호를 판정한다.",
+    "distinction": "한 점의 교점식을 읽거나 볼록성·꼭짓점만으로 판단하는 골격보다 근구간과 함수값 대응을 필요로 한다.",
+    "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+    "supportOrdinals": [
+      8
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_606971aca98c4db7fd54b70f7b597e0e510e94eee82c01dfae40aa9dd1e80e0e"
+    ],
+    "nearestTemplates": [
+      "TPL_M3_EVALUATE_EXPRESSIONS_FROM_PARABOLA_GRAPH_AND_INTERCEPTS",
+      "TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "worker-outputs/b/E029/proposals.json TPL_QUADRATIC_ROOT_INTERVAL_COEFFICIENT_EXPRESSION_SIGNS"
+  }
+]

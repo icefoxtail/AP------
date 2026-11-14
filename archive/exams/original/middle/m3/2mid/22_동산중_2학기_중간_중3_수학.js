@@ -41,25 +41,20 @@ window.questionBank =[
     "grade": "M3",
     "semanticSourceScope": "M3-1",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "rpmPrimaryId": "M3-RPM-045",
-    "rpmPrimaryPath": {
-      "majorUnit": "이차함수",
-      "midUnit": "이차함수와 그 그래프",
-      "l3": "y=ax²의 그래프",
-      "l4": "그래프의 모양"
-    },
-    "rpmL3": "y=ax²의 그래프",
-    "rpmL4": "그래프의 모양",
+    "rpmPrimaryId": "M3-RPM-049",
+    "rpmPrimaryPath": {"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"꼭짓점형","l4":"평행이동"},
+    "rpmL3": "꼭짓점형",
+    "rpmL4": "평행이동",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+    "templateKey": "TPL_M3_FIND_VERTICAL_DISTANCE_BETWEEN_PARALLEL_PARABOLAS",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "metaEvidenceDebt": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -69,28 +64,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q01.png"
     ],
-    "projectionStatus": "PROJECTION_BINDING_PENDING",
-    "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-    "nullReason": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-045",
-      "rpmPrimaryPath": {
-        "majorUnit": "이차함수",
-        "midUnit": "이차함수와 그 그래프",
-        "l3": "y=ax²의 그래프",
-        "l4": "그래프의 모양"
-      },
-      "rpmL3": "y=ax²의 그래프",
-      "rpmL4": "그래프의 모양",
-      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-      "integrationPattern": "NONE"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-049","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"꼭짓점형","l4":"평행이동"},"rpmL3":"꼭짓점형","rpmL4":"평행이동","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_M3_QUADRATIC_FUNCTION_TRANSLATION","templateKey":"TPL_M3_FIND_VERTICAL_DISTANCE_BETWEEN_PARALLEL_PARABOLAS","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","integrationPattern":"NONE"}
   },
   {
     "id": 2,
@@ -122,10 +100,10 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "평행이동의 부호를 꼭짓점 좌표와 대조하는 단일 개념 판별.",
     "primaryMethod": "평행이동 방향 해석",
     "decisiveStep": "옮기는 방향은 x축의 양의 방향 4.",
@@ -146,39 +124,22 @@ window.questionBank =[
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "metaEvidenceDebt": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "metaEvidenceDebt": "EXACT_ACTIVE_BINDING_MISSING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
     "sourceAssetGitBlobs": [],
     "sourceAssetPaths": [],
     "projectionStatus": "PROJECTION_BINDING_PENDING",
-    "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-    "nullReason": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "projectionReason": "GLOBAL ACTIVE 정의는 재사용할 수 있으나 현재 canonical crosswalk에서 해당 원본2015 문맥의 정확한 ACTIVE binding 공백이 확인된다. 기존 PROJECTION_REUSE 주장과 별도로 binding 등록 대기로 기록한다.",
+    "nullReason": "EXACT_ACTIVE_BINDING_MISSING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-049",
-      "rpmPrimaryPath": {
-        "majorUnit": "이차함수",
-        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
-        "l3": "꼭짓점형",
-        "l4": "평행이동"
-      },
-      "rpmL3": "꼭짓점형",
-      "rpmL4": "평행이동",
-      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-      "integrationPattern": "NONE"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-049","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"꼭짓점형","l4":"평행이동"},"rpmL3":"꼭짓점형","rpmL4":"평행이동","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_FUNCTION_GRAPH_TRANSFORM","templateKey":"TPL_FUNCTION_GRAPH_TRANSLATION","projectionStatus":"PROJECTION_BINDING_PENDING","projectionReason":"GLOBAL ACTIVE 정의는 재사용할 수 있으나 현재 canonical crosswalk에서 해당 원본2015 문맥의 정확한 ACTIVE binding 공백이 확인된다. 기존 PROJECTION_REUSE 주장과 별도로 binding 등록 대기로 기록한다.","integrationPattern":"NONE"}
   },
   {
     "id": 3,
@@ -234,46 +195,22 @@ window.questionBank =[
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_QUADRATIC_FUNCTION",
-      "CC_VERTEX"
-    ],
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+    "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "integrationPattern": "NONE",
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
     "sourceAssetGitBlobs": [],
     "sourceAssetPaths": [],
-    "projectionStatus": "PROJECTION_BINDING_PENDING",
-    "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-    "nullReason": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-051",
-      "rpmPrimaryPath": {
-        "majorUnit": "이차함수",
-        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
-        "l3": "일반형",
-        "l4": "완전제곱식 변형"
-      },
-      "rpmL3": "일반형",
-      "rpmL4": "완전제곱식 변형",
-      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-      "crossConceptKeys": [
-        "CC_QUADRATIC_FUNCTION",
-        "CC_VERTEX"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-051","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"일반형","l4":"완전제곱식 변형"},"rpmL3":"일반형","rpmL4":"완전제곱식 변형","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM","templateKey":"TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","crossConceptKeys":[],"integrationPattern":"NONE"}
   },
   {
     "id": 4,
@@ -305,10 +242,10 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "꼭짓점형의 축과 보기의 부호를 확인.",
     "primaryMethod": "꼭짓점형 그래프의 축 판별",
     "decisiveStep": "축은 x=-4.",
@@ -329,46 +266,22 @@ window.questionBank =[
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_QUADRATIC_FUNCTION",
-      "CC_VERTEX"
-    ],
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+    "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_OF_TRANSLATED_PARABOLA",
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "integrationPattern": "NONE",
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
     "sourceAssetGitBlobs": [],
     "sourceAssetPaths": [],
-    "projectionStatus": "PROJECTION_BINDING_PENDING",
-    "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-    "nullReason": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-050",
-      "rpmPrimaryPath": {
-        "majorUnit": "이차함수",
-        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
-        "l3": "꼭짓점형",
-        "l4": "꼭짓점·축"
-      },
-      "rpmL3": "꼭짓점형",
-      "rpmL4": "꼭짓점·축",
-      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-      "crossConceptKeys": [
-        "CC_QUADRATIC_FUNCTION",
-        "CC_VERTEX"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-050","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"꼭짓점형","l4":"꼭짓점·축"},"rpmL3":"꼭짓점형","rpmL4":"꼭짓점·축","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_M3_QUADRATIC_FUNCTION_PROPERTIES","templateKey":"TPL_M3_IDENTIFY_FALSE_PROPERTY_OF_TRANSLATED_PARABOLA","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","crossConceptKeys":[],"integrationPattern":"NONE"}
   },
   {
     "id": 5,
@@ -400,9 +313,9 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "꼭짓점 x좌표와 y좌표의 부호를 각각 계수 조건에서 판단.",
     "primaryMethod": "계수 부호로 꼭짓점 사분면 판별",
@@ -426,15 +339,12 @@ window.questionBank =[
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_QUADRATIC_FUNCTION",
-      "CC_VERTEX"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [
       "COND_NEGATIVE",
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
@@ -445,32 +355,7 @@ window.questionBank =[
     "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
     "nullReason": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-053",
-      "rpmPrimaryPath": {
-        "majorUnit": "이차함수",
-        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
-        "l3": "그래프와 계수",
-        "l4": "그래프 위치"
-      },
-      "rpmL3": "그래프와 계수",
-      "rpmL4": "그래프 위치",
-      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-      "crossConceptKeys": [
-        "CC_QUADRATIC_FUNCTION",
-        "CC_VERTEX"
-      ],
-      "conditionKeys": [
-        "COND_NEGATIVE",
-        "COND_POSITIVE"
-      ],
-      "integrationPattern": "INTERDEPENDENT"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-053","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"그래프 위치"},"rpmL3":"그래프와 계수","rpmL4":"그래프 위치","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":null,"templateKey":null,"projectionStatus":"PROJECTION_BINDING_PENDING","projectionReason":"No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.","crossConceptKeys":[],"conditionKeys":["COND_NEGATIVE","COND_POSITIVE"],"integrationPattern":"NONE"}
   },
   {
     "id": 6,
@@ -502,9 +387,9 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "평행이동을 꼭짓점형으로 쓰고 전개하여 계수 차를 계산.",
     "primaryMethod": "평행이동 후 식 전개",
@@ -526,44 +411,22 @@ window.questionBank =[
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_QUADRATIC_FUNCTION"
-    ],
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "integrationPattern": "NONE",
+    "metaEvidenceDebt": "EXACT_ACTIVE_BINDING_MISSING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
     "sourceAssetGitBlobs": [],
     "sourceAssetPaths": [],
     "projectionStatus": "PROJECTION_BINDING_PENDING",
-    "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-    "nullReason": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "projectionReason": "GLOBAL ACTIVE 정의는 재사용할 수 있으나 현재 canonical crosswalk에서 해당 원본2015 문맥의 정확한 ACTIVE binding 공백이 확인된다. 기존 PROJECTION_REUSE 주장과 별도로 binding 등록 대기로 기록한다.",
+    "nullReason": "EXACT_ACTIVE_BINDING_MISSING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-049",
-      "rpmPrimaryPath": {
-        "majorUnit": "이차함수",
-        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
-        "l3": "꼭짓점형",
-        "l4": "평행이동"
-      },
-      "rpmL3": "꼭짓점형",
-      "rpmL4": "평행이동",
-      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-      "crossConceptKeys": [
-        "CC_QUADRATIC_FUNCTION"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-049","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"꼭짓점형","l4":"평행이동"},"rpmL3":"꼭짓점형","rpmL4":"평행이동","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_FUNCTION_GRAPH_TRANSFORM","templateKey":"TPL_FUNCTION_GRAPH_TRANSLATION","projectionStatus":"PROJECTION_BINDING_PENDING","projectionReason":"GLOBAL ACTIVE 정의는 재사용할 수 있으나 현재 canonical crosswalk에서 해당 원본2015 문맥의 정확한 ACTIVE binding 공백이 확인된다. 기존 PROJECTION_REUSE 주장과 별도로 binding 등록 대기로 기록한다.","crossConceptKeys":[],"integrationPattern":"NONE"}
   },
   {
     "id": 7,
@@ -595,9 +458,9 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "그래프에서 꼭짓점과 절편을 읽어 계수를 복원한 뒤 함숫값 계산.",
     "primaryMethod": "그래프에서 이차함수 계수 복원",
@@ -606,28 +469,20 @@ window.questionBank =[
     "grade": "M3",
     "semanticSourceScope": "M3-1",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "rpmPrimaryId": "M3-RPM-053",
-    "rpmPrimaryPath": {
-      "majorUnit": "이차함수",
-      "midUnit": "이차함수 y=ax²+bx+c의 그래프",
-      "l3": "그래프와 계수",
-      "l4": "그래프 위치"
-    },
+    "rpmPrimaryId": "M3-RPM-054",
+    "rpmPrimaryPath": {"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"조건으로 식 구하기"},
     "rpmL3": "그래프와 계수",
-    "rpmL4": "그래프 위치",
+    "rpmL4": "조건으로 식 구하기",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_QUADRATIC_FUNCTION",
-      "CC_VERTEX"
-    ],
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+    "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "integrationPattern": "NONE",
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -637,32 +492,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q07.png"
     ],
-    "projectionStatus": "PROJECTION_BINDING_PENDING",
-    "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-    "nullReason": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-053",
-      "rpmPrimaryPath": {
-        "majorUnit": "이차함수",
-        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
-        "l3": "그래프와 계수",
-        "l4": "그래프 위치"
-      },
-      "rpmL3": "그래프와 계수",
-      "rpmL4": "그래프 위치",
-      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-      "crossConceptKeys": [
-        "CC_QUADRATIC_FUNCTION",
-        "CC_VERTEX"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-054","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"조건으로 식 구하기"},"rpmL3":"그래프와 계수","rpmL4":"조건으로 식 구하기","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM","templateKey":"TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","crossConceptKeys":[],"integrationPattern":"NONE"}
   },
   {
     "id": 8,
@@ -694,9 +528,9 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "축과 한 근으로 다른 근·계수 부호를 정하고 각 대수식을 그래프 값으로 해석.",
     "primaryMethod": "축·근·함숫값으로 보기 판별",
@@ -718,17 +552,12 @@ window.questionBank =[
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_QUADRATIC_FUNCTION",
-      "CC_VERTEX"
-    ],
-    "conditionKeys": [
-      "COND_NEGATIVE"
-    ],
-    "integrationPattern": "INTERDEPENDENT",
-    "metaEvidenceDebt": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "metaEvidenceDebt": "EXACT_TEMPLATE_REGISTRATION_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -738,35 +567,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q08.png"
     ],
-    "projectionStatus": "PROJECTION_BINDING_PENDING",
-    "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-    "nullReason": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "EXACT_TEMPLATE_REGISTRATION_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-053",
-      "rpmPrimaryPath": {
-        "majorUnit": "이차함수",
-        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
-        "l3": "그래프와 계수",
-        "l4": "그래프 위치"
-      },
-      "rpmL3": "그래프와 계수",
-      "rpmL4": "그래프 위치",
-      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-      "crossConceptKeys": [
-        "CC_QUADRATIC_FUNCTION",
-        "CC_VERTEX"
-      ],
-      "conditionKeys": [
-        "COND_NEGATIVE"
-      ],
-      "integrationPattern": "INTERDEPENDENT"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-053","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"그래프 위치"},"rpmL3":"그래프와 계수","rpmL4":"그래프 위치","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS","templateKey":null,"projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"NONE"}
   },
   {
     "id": 9,
@@ -798,9 +603,9 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "증감 경계와 꼭짓점 x좌표를 대응시켜 매개변수 계산.",
     "primaryMethod": "증감과 꼭짓점 축 연결",
@@ -809,59 +614,30 @@ window.questionBank =[
     "grade": "M3",
     "semanticSourceScope": "M3-1",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "rpmPrimaryId": "M3-RPM-046",
-    "rpmPrimaryPath": {
-      "majorUnit": "이차함수",
-      "midUnit": "이차함수와 그 그래프",
-      "l3": "y=ax²의 그래프",
-      "l4": "대칭축·증감"
-    },
-    "rpmL3": "y=ax²의 그래프",
-    "rpmL4": "대칭축·증감",
+    "rpmPrimaryId": "M3-RPM-054",
+    "rpmPrimaryPath": {"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"조건으로 식 구하기"},
+    "rpmL3": "그래프와 계수",
+    "rpmL4": "조건으로 식 구하기",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_QUADRATIC_FUNCTION",
-      "CC_VERTEX"
-    ],
+    "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "integrationPattern": "NONE",
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
     "sourceAssetGitBlobs": [],
     "sourceAssetPaths": [],
-    "projectionStatus": "PROJECTION_BINDING_PENDING",
-    "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-    "nullReason": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-046",
-      "rpmPrimaryPath": {
-        "majorUnit": "이차함수",
-        "midUnit": "이차함수와 그 그래프",
-        "l3": "y=ax²의 그래프",
-        "l4": "대칭축·증감"
-      },
-      "rpmL3": "y=ax²의 그래프",
-      "rpmL4": "대칭축·증감",
-      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-      "crossConceptKeys": [
-        "CC_QUADRATIC_FUNCTION",
-        "CC_VERTEX"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-054","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"조건으로 식 구하기"},"rpmL3":"그래프와 계수","rpmL4":"조건으로 식 구하기","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_H1_QUADRATIC_RECONSTRUCTION","templateKey":"TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","crossConceptKeys":[],"integrationPattern":"NONE"}
   },
   {
     "id": 10,
@@ -914,7 +690,7 @@ window.questionBank =[
     "rpmL3": "삼각비의 뜻",
     "rpmL4": "sin·cos·tan",
     "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비의 활용",
+    "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_TRIG_RATIO",
@@ -997,27 +773,20 @@ window.questionBank =[
     "grade": "M3",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "rpmPrimaryId": "M3-RPM-059",
-    "rpmPrimaryPath": {
-      "majorUnit": "삼각비",
-      "midUnit": "삼각비",
-      "l3": "삼각비와 길이",
-      "l4": "직각삼각형의 변"
-    },
-    "rpmL3": "삼각비와 길이",
-    "rpmL4": "직각삼각형의 변",
+    "rpmPrimaryId": "M3-RPM-055",
+    "rpmPrimaryPath": {"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},
+    "rpmL3": "삼각비의 뜻",
+    "rpmL4": "sin·cos·tan",
     "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비의 활용",
+    "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "crossConceptKeys": [
-      "CC_RIGHT_TRIANGLE"
-    ],
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_TRIANGLE_SIMILARITY_AA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": null,
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -1027,32 +796,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q11.png"
     ],
-    "projectionStatus": "PROJECTION_REUSE",
-    "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
-    "nullReason": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-059",
-      "rpmPrimaryPath": {
-        "majorUnit": "삼각비",
-        "midUnit": "삼각비",
-        "l3": "삼각비와 길이",
-        "l4": "직각삼각형의 변"
-      },
-      "rpmL3": "삼각비와 길이",
-      "rpmL4": "직각삼각형의 변",
-      "subUnitKey": "M3-05-TRIG_RATIO",
-      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-      "projectionStatus": "PROJECTION_REUSE",
-      "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
-      "problemTypeOwnerPack": "MIDDLE_GEOMETRY",
-      "crossConceptKeys": [
-        "CC_RIGHT_TRIANGLE"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_GEOMETRIC_DERIVATION","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_PYTHAGOREAN","CC_TRIANGLE_SIMILARITY_AA"],"integrationPattern":"SEQUENTIAL"}
   },
   {
     "id": 12,
@@ -1084,9 +832,9 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "사분원 그림의 여러 직각삼각형에서 변/변 관계를 구별.",
     "primaryMethod": "단위원 사분원에서 삼각비를 변으로 표시",
@@ -1105,7 +853,7 @@ window.questionBank =[
     "rpmL3": "삼각비의 뜻",
     "rpmL4": "sin·cos·tan",
     "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비의 활용",
+    "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_TRIG_RATIO",
@@ -1177,10 +925,10 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "특수각 삼각비의 값 대입과 기본 연산.",
     "primaryMethod": "특수각 삼각비 계산",
     "decisiveStep": "1/2+1-1=1/2.",
@@ -1198,7 +946,7 @@ window.questionBank =[
     "rpmL3": "특수각의 삼각비",
     "rpmL4": "특수각 계산",
     "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비의 활용",
+    "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_TRIG_RATIO",
@@ -1266,10 +1014,10 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "상",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "이등변삼각형의 각과 30-60-90 구조를 결합해 tan15°를 유도.",
     "primaryMethod": "이등변삼각형과 30-60-90 구조",
     "decisiveStep": "tan15°=BC/AB=1/(2+√3)=2-√3.",
@@ -1277,27 +1025,20 @@ window.questionBank =[
     "grade": "M3",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "rpmPrimaryId": "M3-RPM-058",
-    "rpmPrimaryPath": {
-      "majorUnit": "삼각비",
-      "midUnit": "삼각비",
-      "l3": "특수각의 삼각비",
-      "l4": "특수각 계산"
-    },
-    "rpmL3": "특수각의 삼각비",
-    "rpmL4": "특수각 계산",
+    "rpmPrimaryId": "M3-RPM-055",
+    "rpmPrimaryPath": {"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},
+    "rpmL3": "삼각비의 뜻",
+    "rpmL4": "sin·cos·tan",
     "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비의 활용",
+    "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
-    "crossConceptKeys": [
-      "CC_RIGHT_TRIANGLE"
-    ],
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLES","CC_TRIANGLE_ANGLE_SUM","CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
-    "metaEvidenceDebt": null,
+    "integrationPattern": "SEQUENTIAL",
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -1307,32 +1048,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q14.png"
     ],
-    "projectionStatus": "PROJECTION_REUSE",
-    "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
-    "nullReason": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-058",
-      "rpmPrimaryPath": {
-        "majorUnit": "삼각비",
-        "midUnit": "삼각비",
-        "l3": "특수각의 삼각비",
-        "l4": "특수각 계산"
-      },
-      "rpmL3": "특수각의 삼각비",
-      "rpmL4": "특수각 계산",
-      "subUnitKey": "M3-05-TRIG_RATIO",
-      "problemTypeKey": "PT_TRIG_RATIO",
-      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
-      "projectionStatus": "PROJECTION_REUSE",
-      "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
-      "problemTypeOwnerPack": "MIDDLE_GEOMETRY",
-      "crossConceptKeys": [
-        "CC_RIGHT_TRIANGLE"
-      ],
-      "integrationPattern": "INTERDEPENDENT"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_GEOMETRIC_DERIVATION","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_ISOSCELES_TRIANGLES","CC_TRIANGLE_ANGLE_SUM","CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"],"integrationPattern":"SEQUENTIAL"}
   },
   {
     "id": 15,
@@ -1368,32 +1088,27 @@ window.questionBank =[
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "difficultyReason": "여각 관계와 삼각비 수치표의 상호관계 확인.",
-    "primaryMethod": "여각의 삼각비 및 표의 수치 판별",
+    "difficultyReason": "중·2 유지: 여각으로각을 바꾸고 탄젠트의 비를 읽는 기존 관계 해석은 유효하다.58·32도는 특수각값 대입으로 분류하지 않는다.",
+    "primaryMethod": "그림의 단위원 좌표값과58·32도의 여각 관계로 사인·코사인을 대응시키고 tan32를 그 두 값의 비로 확인한다.",
     "decisiveStep": "tan32°≈0.625.",
     "curriculum": "2015",
     "grade": "M3",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "rpmPrimaryId": "M3-RPM-058",
-    "rpmPrimaryPath": {
-      "majorUnit": "삼각비",
-      "midUnit": "삼각비",
-      "l3": "특수각의 삼각비",
-      "l4": "특수각 계산"
-    },
-    "rpmL3": "특수각의 삼각비",
-    "rpmL4": "특수각 계산",
+    "rpmPrimaryId": "M3-RPM-056",
+    "rpmPrimaryPath": {"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"삼각비의 관계"},
+    "rpmL3": "삼각비의 뜻",
+    "rpmL4": "삼각비의 관계",
     "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비의 활용",
+    "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "metaEvidenceDebt": null,
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -1403,29 +1118,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q15.png"
     ],
-    "projectionStatus": "PROJECTION_REUSE",
-    "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
-    "nullReason": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-058",
-      "rpmPrimaryPath": {
-        "majorUnit": "삼각비",
-        "midUnit": "삼각비",
-        "l3": "특수각의 삼각비",
-        "l4": "특수각 계산"
-      },
-      "rpmL3": "특수각의 삼각비",
-      "rpmL4": "특수각 계산",
-      "subUnitKey": "M3-05-TRIG_RATIO",
-      "problemTypeKey": "PT_TRIG_RATIO",
-      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
-      "projectionStatus": "PROJECTION_REUSE",
-      "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
-      "problemTypeOwnerPack": "MIDDLE_GEOMETRY",
-      "integrationPattern": "NONE"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-056","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"삼각비의 관계"},"rpmL3":"삼각비의 뜻","rpmL4":"삼각비의 관계","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_BASIC_RELATION","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","integrationPattern":"NONE"}
   },
   {
     "id": 16,
@@ -1468,28 +1165,20 @@ window.questionBank =[
     "grade": "M3",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "rpmPrimaryId": "M3-RPM-060",
-    "rpmPrimaryPath": {
-      "majorUnit": "삼각비",
-      "midUnit": "삼각비",
-      "l3": "삼각비와 길이",
-      "l4": "각을 이용한 길이"
-    },
-    "rpmL3": "삼각비와 길이",
-    "rpmL4": "각을 이용한 길이",
-    "subUnitKey": "M3-05-TRIG_RATIO",
+    "rpmPrimaryId": "M3-RPM-065",
+    "rpmPrimaryPath": {"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"복합도형","l4":"보조선 활용"},
+    "rpmL3": "복합도형",
+    "rpmL4": "보조선 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "crossConceptKeys": [
-      "CC_RIGHT_TRIANGLE",
-      "CC_ANGLE_BISECTOR"
-    ],
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_ANGLE_BISECTOR_THEOREM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": null,
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -1499,33 +1188,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q16.png"
     ],
-    "projectionStatus": "PROJECTION_REUSE",
-    "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
-    "nullReason": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-060",
-      "rpmPrimaryPath": {
-        "majorUnit": "삼각비",
-        "midUnit": "삼각비",
-        "l3": "삼각비와 길이",
-        "l4": "각을 이용한 길이"
-      },
-      "rpmL3": "삼각비와 길이",
-      "rpmL4": "각을 이용한 길이",
-      "subUnitKey": "M3-05-TRIG_RATIO",
-      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-      "projectionStatus": "PROJECTION_REUSE",
-      "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
-      "problemTypeOwnerPack": "MIDDLE_GEOMETRY",
-      "crossConceptKeys": [
-        "CC_RIGHT_TRIANGLE",
-        "CC_ANGLE_BISECTOR"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-065","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"복합도형","l4":"보조선 활용"},"rpmL3":"복합도형","rpmL4":"보조선 활용","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_ANGLE_BISECTOR_THEOREM"],"integrationPattern":"SEQUENTIAL"}
   },
   {
     "id": 17,
@@ -1557,10 +1224,10 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "상",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "보조선을 설정해 30-60-90과 45-45-90 삼각형으로 분해.",
     "primaryMethod": "보조선으로 직각삼각형 두 개 구성",
     "decisiveStep": "BC=BH+HC=6√3+6.",
@@ -1568,27 +1235,20 @@ window.questionBank =[
     "grade": "M3",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "rpmPrimaryId": "M3-RPM-060",
-    "rpmPrimaryPath": {
-      "majorUnit": "삼각비",
-      "midUnit": "삼각비",
-      "l3": "삼각비와 길이",
-      "l4": "각을 이용한 길이"
-    },
-    "rpmL3": "삼각비와 길이",
-    "rpmL4": "각을 이용한 길이",
-    "subUnitKey": "M3-05-TRIG_RATIO",
+    "rpmPrimaryId": "M3-RPM-065",
+    "rpmPrimaryPath": {"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"복합도형","l4":"보조선 활용"},
+    "rpmL3": "복합도형",
+    "rpmL4": "보조선 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "crossConceptKeys": [
-      "CC_RIGHT_TRIANGLE"
-    ],
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": null,
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -1598,32 +1258,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q17.png"
     ],
-    "projectionStatus": "PROJECTION_REUSE",
-    "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
-    "nullReason": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-060",
-      "rpmPrimaryPath": {
-        "majorUnit": "삼각비",
-        "midUnit": "삼각비",
-        "l3": "삼각비와 길이",
-        "l4": "각을 이용한 길이"
-      },
-      "rpmL3": "삼각비와 길이",
-      "rpmL4": "각을 이용한 길이",
-      "subUnitKey": "M3-05-TRIG_RATIO",
-      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-      "projectionStatus": "PROJECTION_REUSE",
-      "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
-      "problemTypeOwnerPack": "MIDDLE_GEOMETRY",
-      "crossConceptKeys": [
-        "CC_RIGHT_TRIANGLE"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    },
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-065","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"복합도형","l4":"보조선 활용"},"rpmL3":"복합도형","rpmL4":"보조선 활용","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_TRIANGLE_ANGLE_SUM"],"integrationPattern":"SEQUENTIAL"},
     "choiceRepairs": [
       {
         "choiceIndex": 2,
@@ -1666,10 +1305,10 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "상",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "교차 테이프의 수직 폭을 45°를 이용해 평행사변형 변 길이로 변환.",
     "primaryMethod": "교차 테이프의 폭과 45°",
     "decisiveStep": "변 길이는 폭을 sin45°로 나눈다.",
@@ -1692,9 +1331,7 @@ window.questionBank =[
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [
-      "CC_RIGHT_TRIANGLE"
-    ],
+    "crossConceptKeys": ["CC_PARALLELOGRAMS"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaEvidenceDebt": null,
@@ -1711,28 +1348,7 @@ window.questionBank =[
     "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-065",
-      "rpmPrimaryPath": {
-        "majorUnit": "삼각비",
-        "midUnit": "삼각비의 활용",
-        "l3": "복합도형",
-        "l4": "보조선 활용"
-      },
-      "rpmL3": "복합도형",
-      "rpmL4": "보조선 활용",
-      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-      "projectionStatus": "PROJECTION_REUSE",
-      "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
-      "problemTypeOwnerPack": "MIDDLE_GEOMETRY",
-      "crossConceptKeys": [
-        "CC_RIGHT_TRIANGLE"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-065","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"복합도형","l4":"보조선 활용"},"rpmL3":"복합도형","rpmL4":"보조선 활용","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_PARALLELOGRAMS"],"integrationPattern":"SEQUENTIAL"}
   },
   {
     "id": 19,
@@ -1769,7 +1385,7 @@ window.questionBank =[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 삼각형의 넓이 공식을 적용해 미지 변을 비교.",
-    "primaryMethod": "사인 넓이 공식의 등식",
+    "primaryMethod": "두 삼각형 각각에 수선을 내려60도 사인으로 높이를 나타내고, 둘째의120도는 연장선의60도로 바꾼 뒤 두 넓이의 같음을 미지변 일차식으로 쓴다.",
     "decisiveStep": "6√3=3DF.",
     "curriculum": "2015",
     "grade": "M3",
@@ -1789,13 +1405,13 @@ window.questionBank =[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": null,
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "crossConceptKeys": [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "metaEvidenceDebt": "ACTIVE_FAMILY_TEMPLATE_UNRESOLVED",
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -1805,32 +1421,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q19.png"
     ],
-    "projectionStatus": "PROJECTION_BINDING_PENDING",
-    "projectionReason": "An ACTIVE family-level PT binding exists, but the question does not uniquely justify a listed template; template remains null.",
-    "nullReason": "FAMILY_ACTIVE_TEMPLATE_UNRESOLVED",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-061",
-      "rpmPrimaryPath": {
-        "majorUnit": "삼각비",
-        "midUnit": "삼각비의 활용",
-        "l3": "평면도형",
-        "l4": "삼각형의 높이·넓이"
-      },
-      "rpmL3": "평면도형",
-      "rpmL4": "삼각형의 높이·넓이",
-      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "An ACTIVE family-level PT binding exists, but the question does not uniquely justify a listed template; template remains null.",
-      "problemTypeOwnerPack": "MIDDLE_GEOMETRY",
-      "crossConceptKeys": [
-        "CC_TRIANGLE_AREA"
-      ],
-      "integrationPattern": "INTERDEPENDENT"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-061","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"평면도형","l4":"삼각형의 높이·넓이"},"rpmL3":"평면도형","rpmL4":"삼각형의 높이·넓이","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_TRIANGLE_AREA"],"integrationPattern":"INTERDEPENDENT"}
   },
   {
     "id": 20,
@@ -1862,9 +1457,9 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 원의 현과 중심 거리에서 각각 직각삼각형을 만들어 반지름/거리 계산.",
     "primaryMethod": "현의 수직이등분과 피타고라스",
@@ -1883,18 +1478,15 @@ window.questionBank =[
     "rpmL3": "원의 중심과 현",
     "rpmL4": "중심거리와 현의 길이",
     "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원의 성질",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN",
-      "CC_RIGHT_TRIANGLE"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": null,
+    "metaEvidenceDebt": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -1904,42 +1496,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q20.png"
     ],
-    "projectionStatus": "PROJECTION_REUSE",
-    "projectionReason": "The current global-active cross-pack rule accepts the exact ACTIVE 2015 M3 binding in MIDDLE_GEOMETRY although canonical PT owner is GEOMETRY_EQUATIONS; the exact question meaning and exact PT/template were checked.",
-    "nullReason": null,
+    "projectionStatus": "PROJECTION_BINDING_PENDING",
+    "projectionReason": "GLOBAL ACTIVE PT/TPL과 원본2015 문맥의 MIDDLE_GEOMETRY ACTIVE binding 1건이 존재한다. canonical PT 소유 pack GEOMETRY_EQUATIONS와 binding 소유 pack의 불일치 때문에 crosswalk가 DIRECT_BINDING_GAP로 남아 있어 연결 정합화가 필요하다. binding 자체의 부재를 뜻하지 않으며 공식 Resolver의 신규 완료는 주장하지 않는다.",
+    "nullReason": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-069",
-      "rpmPrimaryPath": {
-        "majorUnit": "원의 성질",
-        "midUnit": "원과 직선",
-        "l3": "원의 중심과 현",
-        "l4": "중심거리와 현의 길이"
-      },
-      "rpmL3": "원의 중심과 현",
-      "rpmL4": "중심거리와 현의 길이",
-      "subUnitKey": "M3-06-CIRCLE_LINE",
-      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-      "projectionStatus": "PROJECTION_REUSE",
-      "projectionReason": "The current global-active cross-pack rule accepts the exact ACTIVE 2015 M3 binding in MIDDLE_GEOMETRY although canonical PT owner is GEOMETRY_EQUATIONS; the exact question meaning and exact PT/template were checked.",
-      "problemTypeOwnerPack": "GEOMETRY_EQUATIONS",
-      "bindingOwnerPack": "MIDDLE_GEOMETRY",
-      "bindingStatus": "ACTIVE",
-      "bindingUnitTuple": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_LINE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      },
-      "crossPackPolicyReference": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md §1.4 rule 5; §2.3",
-      "crossConceptKeys": [
-        "CC_PYTHAGOREAN",
-        "CC_RIGHT_TRIANGLE"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-069","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 중심과 현","l4":"중심거리와 현의 길이"},"rpmL3":"원의 중심과 현","rpmL4":"중심거리와 현의 길이","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_LINE_RELATION","templateKey":"TM_CIRCLE_CHORD_LENGTH","projectionStatus":"PROJECTION_BINDING_PENDING","projectionReason":"GLOBAL ACTIVE PT/TPL과 원본2015 문맥의 MIDDLE_GEOMETRY ACTIVE binding 1건이 존재한다. canonical PT 소유 pack GEOMETRY_EQUATIONS와 binding 소유 pack의 불일치 때문에 crosswalk가 DIRECT_BINDING_GAP로 남아 있어 연결 정합화가 필요하다. binding 자체의 부재를 뜻하지 않으며 공식 Resolver의 신규 완료는 주장하지 않는다.","problemTypeOwnerPack":"GEOMETRY_EQUATIONS","bindingOwnerPack":"MIDDLE_GEOMETRY","bindingStatus":"ACTIVE","bindingUnitTuple":{"curriculum":"2015","standardUnitKey":"M3-06","subUnitKey":"M3-06-CIRCLE_LINE","ownerPack":"MIDDLE_GEOMETRY"},"crossPackPolicyReference":"docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md §1.4 rule 5; §2.3","crossConceptKeys":["CC_PYTHAGOREAN"],"integrationPattern":"SEQUENTIAL"}
   },
   {
     "id": 21,
@@ -1971,39 +1532,31 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "difficultyReason": "현의 중점에서 반지름 수직 성질과 sagitta를 이용해 2차식 해결.",
+    "difficultyReason": "중 유지·2: 활꼴 높이2를 반지름과 중심거리의 차로 읽는 정형 전처리이다. 제곱항이 소거되어 일차식으로 끝나므로3의 추가 전략이 없다.",
     "primaryMethod": "현의 중점과 원의 반지름",
     "decisiveStep": "(d+2)^2=d^2+6^2에서 d=8, r=10.",
     "curriculum": "2015",
     "grade": "M3",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "rpmPrimaryId": "M3-RPM-067",
-    "rpmPrimaryPath": {
-      "majorUnit": "원의 성질",
-      "midUnit": "원과 직선",
-      "l3": "원의 중심과 현",
-      "l4": "중심에서 현에 내린 수선"
-    },
+    "rpmPrimaryId": "M3-RPM-069",
+    "rpmPrimaryPath": {"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 중심과 현","l4":"중심거리와 현의 길이"},
     "rpmL3": "원의 중심과 현",
-    "rpmL4": "중심에서 현에 내린 수선",
+    "rpmL4": "중심거리와 현의 길이",
     "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원의 성질",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-    "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN",
-      "CC_RIGHT_TRIANGLE"
-    ],
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": null,
+    "metaEvidenceDebt": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
     "sourceMode": "AUDITED_REPAIR",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -2013,42 +1566,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q21.png"
     ],
-    "projectionStatus": "PROJECTION_REUSE",
-    "projectionReason": "The current global-active cross-pack rule accepts the exact ACTIVE 2015 M3 binding in MIDDLE_GEOMETRY although canonical PT owner is GEOMETRY_EQUATIONS; the exact question meaning and exact PT/template were checked.",
-    "nullReason": null,
+    "projectionStatus": "PROJECTION_BINDING_PENDING",
+    "projectionReason": "GLOBAL ACTIVE PT/TPL과 원본2015 문맥의 MIDDLE_GEOMETRY ACTIVE binding 1건이 존재한다. canonical PT 소유 pack GEOMETRY_EQUATIONS와 binding 소유 pack의 불일치 때문에 crosswalk가 DIRECT_BINDING_GAP로 남아 있어 연결 정합화가 필요하다. binding 자체의 부재를 뜻하지 않으며 공식 Resolver의 신규 완료는 주장하지 않는다.",
+    "nullReason": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-067",
-      "rpmPrimaryPath": {
-        "majorUnit": "원의 성질",
-        "midUnit": "원과 직선",
-        "l3": "원의 중심과 현",
-        "l4": "중심에서 현에 내린 수선"
-      },
-      "rpmL3": "원의 중심과 현",
-      "rpmL4": "중심에서 현에 내린 수선",
-      "subUnitKey": "M3-06-CIRCLE_LINE",
-      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
-      "projectionStatus": "PROJECTION_REUSE",
-      "projectionReason": "The current global-active cross-pack rule accepts the exact ACTIVE 2015 M3 binding in MIDDLE_GEOMETRY although canonical PT owner is GEOMETRY_EQUATIONS; the exact question meaning and exact PT/template were checked.",
-      "problemTypeOwnerPack": "GEOMETRY_EQUATIONS",
-      "bindingOwnerPack": "MIDDLE_GEOMETRY",
-      "bindingStatus": "ACTIVE",
-      "bindingUnitTuple": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_LINE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      },
-      "crossPackPolicyReference": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md §1.4 rule 5; §2.3",
-      "crossConceptKeys": [
-        "CC_PYTHAGOREAN",
-        "CC_RIGHT_TRIANGLE"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    },
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-069","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 중심과 현","l4":"중심거리와 현의 길이"},"rpmL3":"원의 중심과 현","rpmL4":"중심거리와 현의 길이","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_LINE_RELATION","templateKey":"TM_CIRCLE_CHORD_LENGTH","projectionStatus":"PROJECTION_BINDING_PENDING","projectionReason":"GLOBAL ACTIVE PT/TPL과 원본2015 문맥의 MIDDLE_GEOMETRY ACTIVE binding 1건이 존재한다. canonical PT 소유 pack GEOMETRY_EQUATIONS와 binding 소유 pack의 불일치 때문에 crosswalk가 DIRECT_BINDING_GAP로 남아 있어 연결 정합화가 필요하다. binding 자체의 부재를 뜻하지 않으며 공식 Resolver의 신규 완료는 주장하지 않는다.","problemTypeOwnerPack":"GEOMETRY_EQUATIONS","bindingOwnerPack":"MIDDLE_GEOMETRY","bindingStatus":"ACTIVE","bindingUnitTuple":{"curriculum":"2015","standardUnitKey":"M3-06","subUnitKey":"M3-06-CIRCLE_LINE","ownerPack":"MIDDLE_GEOMETRY"},"crossPackPolicyReference":"docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md §1.4 rule 5; §2.3","crossConceptKeys":["CC_PYTHAGOREAN"],"integrationPattern":"SEQUENTIAL"},
     "auditStatus": "AUDITED_REPAIR",
     "repairKind": "MINIMAL_TRANSCRIPTION_CORRECTION",
     "replacementReason": "Image shows AM=6 and no D; original JS AD=6 is a source transcription error."
@@ -2083,10 +1605,10 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "상",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "외부 접선의 접선 길이 같음으로 CD를 구한 뒤 접선 삼각형의 피타고라스 관계 적용.",
     "primaryMethod": "접선 길이와 직각삼각형",
     "decisiveStep": "CD=4+9=13, AB²+5²=13².",
@@ -2104,18 +1626,15 @@ window.questionBank =[
     "rpmL3": "원의 접선",
     "rpmL4": "한 점에서 그은 두 접선",
     "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원의 성질",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN",
-      "CC_TANGENCY"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": null,
+    "metaEvidenceDebt": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -2125,42 +1644,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/q22.png"
     ],
-    "projectionStatus": "PROJECTION_REUSE",
-    "projectionReason": "The current global-active cross-pack rule accepts the exact ACTIVE 2015 M3 binding in MIDDLE_GEOMETRY although canonical PT owner is GEOMETRY_EQUATIONS; the exact question meaning and exact PT/template were checked.",
-    "nullReason": null,
+    "projectionStatus": "PROJECTION_BINDING_PENDING",
+    "projectionReason": "GLOBAL ACTIVE PT/TPL과 원본2015 문맥의 MIDDLE_GEOMETRY ACTIVE binding 1건이 존재한다. canonical PT 소유 pack GEOMETRY_EQUATIONS와 binding 소유 pack의 불일치 때문에 crosswalk가 DIRECT_BINDING_GAP로 남아 있어 연결 정합화가 필요하다. binding 자체의 부재를 뜻하지 않으며 공식 Resolver의 신규 완료는 주장하지 않는다.",
+    "nullReason": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-071",
-      "rpmPrimaryPath": {
-        "majorUnit": "원의 성질",
-        "midUnit": "원과 직선",
-        "l3": "원의 접선",
-        "l4": "한 점에서 그은 두 접선"
-      },
-      "rpmL3": "원의 접선",
-      "rpmL4": "한 점에서 그은 두 접선",
-      "subUnitKey": "M3-06-CIRCLE_LINE",
-      "problemTypeKey": "PT_CIRCLE_TANGENT",
-      "templateKey": "TM_TANGENT_LENGTH",
-      "projectionStatus": "PROJECTION_REUSE",
-      "projectionReason": "The current global-active cross-pack rule accepts the exact ACTIVE 2015 M3 binding in MIDDLE_GEOMETRY although canonical PT owner is GEOMETRY_EQUATIONS; the exact question meaning and exact PT/template were checked.",
-      "problemTypeOwnerPack": "GEOMETRY_EQUATIONS",
-      "bindingOwnerPack": "MIDDLE_GEOMETRY",
-      "bindingStatus": "ACTIVE",
-      "bindingUnitTuple": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_LINE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      },
-      "crossPackPolicyReference": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md §1.4 rule 5; §2.3",
-      "crossConceptKeys": [
-        "CC_PYTHAGOREAN",
-        "CC_TANGENCY"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-071","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 접선","l4":"한 점에서 그은 두 접선"},"rpmL3":"원의 접선","rpmL4":"한 점에서 그은 두 접선","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_LENGTH","projectionStatus":"PROJECTION_BINDING_PENDING","projectionReason":"GLOBAL ACTIVE PT/TPL과 원본2015 문맥의 MIDDLE_GEOMETRY ACTIVE binding 1건이 존재한다. canonical PT 소유 pack GEOMETRY_EQUATIONS와 binding 소유 pack의 불일치 때문에 crosswalk가 DIRECT_BINDING_GAP로 남아 있어 연결 정합화가 필요하다. binding 자체의 부재를 뜻하지 않으며 공식 Resolver의 신규 완료는 주장하지 않는다.","problemTypeOwnerPack":"GEOMETRY_EQUATIONS","bindingOwnerPack":"MIDDLE_GEOMETRY","bindingStatus":"ACTIVE","bindingUnitTuple":{"curriculum":"2015","standardUnitKey":"M3-06","subUnitKey":"M3-06-CIRCLE_LINE","ownerPack":"MIDDLE_GEOMETRY"},"crossPackPolicyReference":"docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md §1.4 rule 5; §2.3","crossConceptKeys":["CC_PYTHAGOREAN"],"integrationPattern":"SEQUENTIAL"}
   },
   {
     "id": 23,
@@ -2210,16 +1698,12 @@ window.questionBank =[
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_QUADRATIC_FUNCTION",
-      "CC_VERTEX",
-      "CC_TRIANGLE_AREA"
-    ],
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -2229,33 +1713,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/s01.png"
     ],
-    "projectionStatus": "PROJECTION_BINDING_PENDING",
-    "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-    "nullReason": "M3_EXACT_BINDING_GAP_NOT_SEMANTIC_HOLD",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-053",
-      "rpmPrimaryPath": {
-        "majorUnit": "이차함수",
-        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
-        "l3": "그래프와 계수",
-        "l4": "그래프 위치"
-      },
-      "rpmL3": "그래프와 계수",
-      "rpmL4": "그래프 위치",
-      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
-      "crossConceptKeys": [
-        "CC_QUADRATIC_FUNCTION",
-        "CC_VERTEX",
-        "CC_TRIANGLE_AREA"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-053","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"그래프 위치"},"rpmL3":"그래프와 계수","rpmL4":"그래프 위치","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_H1_QUADRATIC_GRAPH_INTERSECTION","templateKey":"TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","crossConceptKeys":["CC_TRIANGLE_AREA"],"integrationPattern":"SEQUENTIAL"}
   },
   {
     "id": 24,
@@ -2281,10 +1743,10 @@ window.questionBank =[
     ],
     "wide": false,
     "level": "상",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "사각형을 두 삼각형으로 나누고 특수직각삼각형의 변과 삼각형 넓이를 합산.",
     "primaryMethod": "삼각형 분할과 넓이 합",
     "decisiveStep": "넓이 BCD=6√3, ABD=3√3.",
@@ -2292,28 +1754,20 @@ window.questionBank =[
     "grade": "M3",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "rpmPrimaryId": "M3-RPM-061",
-    "rpmPrimaryPath": {
-      "majorUnit": "삼각비",
-      "midUnit": "삼각비의 활용",
-      "l3": "평면도형",
-      "l4": "삼각형의 높이·넓이"
-    },
+    "rpmPrimaryId": "M3-RPM-062",
+    "rpmPrimaryPath": {"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"평면도형","l4":"다각형의 길이·넓이"},
     "rpmL3": "평면도형",
-    "rpmL4": "삼각형의 높이·넓이",
+    "rpmL4": "다각형의 길이·넓이",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_RIGHT_TRIANGLE",
-      "CC_TRIANGLE_AREA"
-    ],
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "metaEvidenceDebt": "ACTIVE_FAMILY_TEMPLATE_UNRESOLVED",
+    "metaEvidenceDebt": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -2323,33 +1777,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/s02.png"
     ],
-    "projectionStatus": "PROJECTION_BINDING_PENDING",
-    "projectionReason": "An ACTIVE family-level PT binding exists, but the question does not uniquely justify a listed template; template remains null.",
-    "nullReason": "FAMILY_ACTIVE_TEMPLATE_UNRESOLVED",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "projectionReason": "현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.",
+    "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-061",
-      "rpmPrimaryPath": {
-        "majorUnit": "삼각비",
-        "midUnit": "삼각비의 활용",
-        "l3": "평면도형",
-        "l4": "삼각형의 높이·넓이"
-      },
-      "rpmL3": "평면도형",
-      "rpmL4": "삼각형의 높이·넓이",
-      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-      "templateKey": null,
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
-      "projectionReason": "An ACTIVE family-level PT binding exists, but the question does not uniquely justify a listed template; template remains null.",
-      "problemTypeOwnerPack": "MIDDLE_GEOMETRY",
-      "crossConceptKeys": [
-        "CC_RIGHT_TRIANGLE",
-        "CC_TRIANGLE_AREA"
-      ],
-      "integrationPattern": "SEQUENTIAL"
-    }
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-062","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"평면도형","l4":"다각형의 길이·넓이"},"rpmL3":"평면도형","rpmL4":"다각형의 길이·넓이","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_TRIANGLE_AREA"],"integrationPattern":"SEQUENTIAL"}
   },
   {
     "id": 25,
@@ -2396,18 +1828,15 @@ window.questionBank =[
     "rpmL3": "원의 접선",
     "rpmL4": "한 점에서 그은 두 접선",
     "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원의 성질",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN",
-      "CC_TANGENCY"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_DIFFERENCE_OF_SQUARES_FACTORIZATION"],
     "conditionKeys": [],
     "integrationPattern": "DEEP_COMPOSITE",
-    "metaEvidenceDebt": null,
+    "metaEvidenceDebt": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
     "sourceMode": "AUDITED_REPAIR",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "f8684170b5a7678e6b9b6911d8ab8a972907f0b7",
@@ -2417,42 +1846,11 @@ window.questionBank =[
     "sourceAssetPaths": [
       "archive/assets/images/22_동산중_2학기_중간_중3_수학/s03.png"
     ],
-    "projectionStatus": "PROJECTION_REUSE",
-    "projectionReason": "The current global-active cross-pack rule accepts the exact ACTIVE 2015 M3 binding in MIDDLE_GEOMETRY although canonical PT owner is GEOMETRY_EQUATIONS; the exact question meaning and exact PT/template were checked.",
-    "nullReason": null,
+    "projectionStatus": "PROJECTION_BINDING_PENDING",
+    "projectionReason": "GLOBAL ACTIVE PT/TPL과 원본2015 문맥의 MIDDLE_GEOMETRY ACTIVE binding 1건이 존재한다. canonical PT 소유 pack GEOMETRY_EQUATIONS와 binding 소유 pack의 불일치 때문에 crosswalk가 DIRECT_BINDING_GAP로 남아 있어 연결 정합화가 필요하다. binding 자체의 부재를 뜻하지 않으며 공식 Resolver의 신규 완료는 주장하지 않는다.",
+    "nullReason": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
     "semanticStatus": "FINAL",
-    "meaningMeta": {
-      "semanticStatus": "FINAL",
-      "rpmPrimaryId": "M3-RPM-071",
-      "rpmPrimaryPath": {
-        "majorUnit": "원의 성질",
-        "midUnit": "원과 직선",
-        "l3": "원의 접선",
-        "l4": "한 점에서 그은 두 접선"
-      },
-      "rpmL3": "원의 접선",
-      "rpmL4": "한 점에서 그은 두 접선",
-      "subUnitKey": "M3-06-CIRCLE_LINE",
-      "problemTypeKey": "PT_CIRCLE_TANGENT",
-      "templateKey": "TM_TANGENT_LENGTH",
-      "projectionStatus": "PROJECTION_REUSE",
-      "projectionReason": "The current global-active cross-pack rule accepts the exact ACTIVE 2015 M3 binding in MIDDLE_GEOMETRY although canonical PT owner is GEOMETRY_EQUATIONS; the exact question meaning and exact PT/template were checked.",
-      "problemTypeOwnerPack": "GEOMETRY_EQUATIONS",
-      "bindingOwnerPack": "MIDDLE_GEOMETRY",
-      "bindingStatus": "ACTIVE",
-      "bindingUnitTuple": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_LINE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      },
-      "crossPackPolicyReference": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md §1.4 rule 5; §2.3",
-      "crossConceptKeys": [
-        "CC_PYTHAGOREAN",
-        "CC_TANGENCY"
-      ],
-      "integrationPattern": "DEEP_COMPOSITE"
-    },
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-071","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 접선","l4":"한 점에서 그은 두 접선"},"rpmL3":"원의 접선","rpmL4":"한 점에서 그은 두 접선","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_LENGTH","projectionStatus":"PROJECTION_BINDING_PENDING","projectionReason":"GLOBAL ACTIVE PT/TPL과 원본2015 문맥의 MIDDLE_GEOMETRY ACTIVE binding 1건이 존재한다. canonical PT 소유 pack GEOMETRY_EQUATIONS와 binding 소유 pack의 불일치 때문에 crosswalk가 DIRECT_BINDING_GAP로 남아 있어 연결 정합화가 필요하다. binding 자체의 부재를 뜻하지 않으며 공식 Resolver의 신규 완료는 주장하지 않는다.","problemTypeOwnerPack":"GEOMETRY_EQUATIONS","bindingOwnerPack":"MIDDLE_GEOMETRY","bindingStatus":"ACTIVE","bindingUnitTuple":{"curriculum":"2015","standardUnitKey":"M3-06","subUnitKey":"M3-06-CIRCLE_LINE","ownerPack":"MIDDLE_GEOMETRY"},"crossPackPolicyReference":"docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md §1.4 rule 5; §2.3","crossConceptKeys":["CC_PYTHAGOREAN","CC_DIFFERENCE_OF_SQUARES_FACTORIZATION"],"integrationPattern":"DEEP_COMPOSITE"},
     "auditStatus": "AUDITED_REPAIR",
     "repairKind": "MINIMAL_CONDITION_CLARIFICATION",
     "replacementReason": "The source scan crops the x/y marks. The candidate explicitly states x,y are the two remaining sides AB and AD, in either order; this makes the answer-free input uniquely solvable and the requested sum is order-independent."
