@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "m2-s2-meta-independent-sample-v1",
+  "examId": "E009",
+  "author": "C",
+  "reviewer": "A",
+  "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "3d24557242c83e3f047cecb9ed9697d9a28dd66f",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewSha256": "d85ee27d4e595f8b95e00463dd7bc92e1d991cdba2fd0642b966583916ac85b5",
+  "fourSlotSha256": "91da38d794e98987fcb9113b82dfa8f4d08f7b14e4eea6e07c13e5bc540f380c",
+  "ordinals": [
+    12,
+    20,
+    24
+  ],
+  "overallConclusion": "MINOR_4SLOT_REVISION_REQUIRED",
+  "items": [
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_f110b0ce75244df6dbe0a3672288ee256ef0a25277371ea17d28a42178e7aee0",
+      "conclusion": "PASS",
+      "reason": "실제 분류도와 발문·해설을 대조했다. 대각선 이등분,대각선 길이 동등,평행변 조건으로 각 분기의 결과 사각형을 가르는 것이 RPM082/사각형 계통도 PT·TPL의 단계별 충분조건 골격과 일치한다. 객관식 빈칸과 서술형의 출력 차이로 새 의미를 만들 필요는 없다. Primary 내부 조건 판정이므로 CC없음/NONE, 4칸 goal성립조건과 method판정의 역할이 적합하다. 2/3 경계이나 다단계 분기 역추적을 근거로3 판단은 가능하다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e107431c40dcf228ada6fc3fa0c32ed658c49edaa044bf72cb2153649c8f3d81",
+      "conclusion": "PASS_WITH_EVIDENCE_REFINEMENT",
+      "reason": "실제 경로 그림은 집-학교2개,학교-도서관3개,직행2개를 보인다. 경유 단계의 곱과 배타적 직행의 합이 primary이며 새 CC없음이 맞다. 같은 지점 재방문 금지는 허용 후보 경로를 제한하므로 정확한 운영 Condition 제안이 의미가 있다. 기존 자릿수 중복/끝자리제한으로 대체하면 안 된다. 4칸 중복불허 조건과 goal개수는 정확하다.",
+      "requestedRefinement": "method 합의법칙 quote 두 경우는 서로 겹치지 않으므로에는 명칭/공식이 없으므로 evidenceType을 IMPLIED로 바꾸고 배타적인 두 경우를 합한다는 justification을 추가하거나, 전체6+2=8 공식까지 exact quote를 넓히기."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_e29f99cb82ec526660f02a841ec71e1776e52198b9cde253e41bee5dc5aa8b41",
+      "conclusion": "MINOR_4SLOT_REVISION_REQUIRED",
+      "reason": "지도와 실제 발문·해설을 읽었다. 세 지점 등거리를 두 수직이등분선 교점으로 찾는 외심 정의/작도는 RPM064·TPL_TRIANGLE_CIRCUMCENTER와 정확히 일치한다. 독립 CC나 canonical수범위 Condition은 없다. 그러나 발문은 용어·방법·성질 한 가지의 서술을 요구하며 증명 과제라고 부르지는 않는다.",
+      "requiredCorrection": "4칸 goal 증명은 사전의 성질(term305)로 바꾸고 quote 성질을 사용. 점 goal은 유지 가능.",
+      "difficultyIndependentRecheck": {
+        "recommendedDifficultyBucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "reason": "생활 지도에서 등거리 상황을 외심으로 번역하는 한 단계 뒤 표준 작도와 정의를 설명한다. 문항 번호·배점·서술 형식을 제외하면4단계 사고 부담은 보이지 않는다. bucket2 판단에 동의하며 학습level도중 쪽이 자연스럽지만 historical상 보존 여부는 ROOT 최종 adjudication 대상으로 남긴다. 상/2의 강충돌 표시를 인접수용으로 덮지 않는다."
+      }
+    }
+  ],
+  "freshMathematicalReverification": false,
+  "authorFilesModified": false
+}
