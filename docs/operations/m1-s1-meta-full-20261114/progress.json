@@ -901,7 +901,22 @@
         "registeredCurrentQfullMatches": 24
       },
       "appliedSourceItemCount": 0,
-      "writerState": "CLOSED"
+      "writerState": "CLOSED",
+      "residualReview": {
+        "status": "RESIDUAL_DECISIONS_RECORDED_PENDING_SHARED_PROPOSAL_BINDING",
+        "author": "META_B",
+        "items": 24,
+        "artifacts": {
+          "residual-review.json": "docs/operations/m1-s1-meta-full-20261114/exams/16_연향중_1학기_중간_중1_수학/residual-review.json",
+          "registration-proposals.json": "docs/operations/m1-s1-meta-full-20261114/exams/16_연향중_1학기_중간_중1_수학/registration-proposals.json",
+          "external-proposal-references.json": "docs/operations/m1-s1-meta-full-20261114/exams/16_연향중_1학기_중간_중1_수학/external-proposal-references.json",
+          "validation.json": "docs/operations/m1-s1-meta-full-20261114/exams/16_연향중_1학기_중간_중1_수학/validation.json",
+          "residual-checks.json": "docs/operations/m1-s1-meta-full-20261114/exams/16_연향중_1학기_중간_중1_수학/residual-checks.json"
+        },
+        "sourceEdits": 0,
+        "sourceSha256": "1029c285ed903c2153621edf56415e21e692cea3f17de5588fc855f6a32c9f34",
+        "reusedIndependentSamples": 3
+      }
     }
   ],
   "nextAction": "RESOLVE_ONLY_REMAINING_EVIDENCE_DEFINITIONS_AND_HANDOFF",
@@ -952,7 +967,7 @@
     "uniqueUids": 286,
     "sourceOnlyMethodPolicy": "PROPOSE_SEPARATELY_DO_NOT_INVENT_SOLUTION_EVIDENCE"
   },
-  "updatedAt": "2026-11-14T13:58:01.489576+00:00",
+  "updatedAt": "2026-11-14T14:01:09.354571+00:00",
   "reviewedExamCount": 12,
   "reviewedQuestionCount": 286,
   "remoteReceipts": [
@@ -1326,8 +1341,8 @@
       "questionCount": 97
     }
   ],
-  "residualExamCount": 11,
-  "residualQuestionCount": 262,
+  "residualExamCount": 12,
+  "residualQuestionCount": 286,
   "resumeRemoteReceipts": [
     {
       "unit": "source-lineage-and-targeted-original-evidence",
@@ -1382,6 +1397,11 @@
     {
       "unit": "previous-residual-exam",
       "remoteHead": "5f3167b025bde9752faf633fc2c4080f8bcd31ab",
+      "remoteReadback": "EXACT_TREE_AND_REF_VERIFIED"
+    },
+    {
+      "unit": "previous-residual-exam",
+      "remoteHead": "e4d9a4f623969996b97061b79e18dd6667b2142e",
       "remoteReadback": "EXACT_TREE_AND_REF_VERIFIED"
     }
   ]

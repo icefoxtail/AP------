@@ -1,0 +1,3757 @@
+{
+  "schemaVersion": "m1-s1-residual-registration-proposals-v1",
+  "exam": "16_연향중_1학기_중간_중1_수학",
+  "status": "PROPOSAL_ONLY_NOT_ACTIVE",
+  "policy": "Add-only candidates; no existing semantic definition edits, key deletion, source projection or locked crosswalk overwrite. Canonical key existence/collision check and official schema assembly remain with registrar.",
+  "registryBaselineSha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+  "proposals": [
+    {
+      "proposalId": "B16_ABS_DISTANCE",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_H1_ABSOLUTE_INTEGER_DISTANCE_RANGE_CONSTRAINTS",
+      "canonicalLabelKo": "절댓값·거리·정수범위의 공동 제약",
+      "definition": "정수의 절댓값에서 가능한 부호 후보를 만들고 범위와 기준점 거리 및 서로다름 조건의 교집합으로 허용 정수 관계를 결정한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "nearestExistingKeys": [
+        "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+        "TPL_H1_ABSOLUTE_DIRECT_INTERVAL"
+      ],
+      "differenceFromNearest": "같은 절댓값의 한 쌍만 복원하는 골격과 다르다. ACTIVE 전역 부모의 거리해석을 통한 해집합 결정에 포함되므로 새 부모를 만들지 않는다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_3b5d89166faa8a73c1c1e4167e1a9e1daec8517dd704dead0445093ea682b8bb"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 8,
+          "questionUid": "qid_v1_3b5d89166faa8a73c1c1e4167e1a9e1daec8517dd704dead0445093ea682b8bb"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "절댓값의 두 부호 후보",
+        "범위와 기준점 거리로 필터",
+        "정수·서로다름·대소관계 결합"
+      ],
+      "parentEvidence": {
+        "kind": "ACTIVE",
+        "definition": "절댓값을 구간별로 풀거나 거리 해석을 이용해 해집합을 구하는 유형.",
+        "ownerPack": "H1_FOUNDATION",
+        "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+      }
+    },
+    {
+      "proposalId": "B16_ADDITION_LAW_BLANKS",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_OPERATION_LAW_MATCHING_ADDITION_PAIR_GROUPING",
+      "canonicalLabelKo": "덧셈의 순서·묶음과 빈칸",
+      "definition": "제시된 연속합 계산 과정에서 항의 순서를 바꾼 단계와 묶음을 바꾼 단계를 덧셈 교환·결합법칙에 대응하고 같은 합의 쌍을 이용한 빈칸을 채운다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": "PT_M1_OPERATION_LAW_MATCHING",
+      "nearestExistingKeys": [
+        "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_CORE"
+      ],
+      "differenceFromNearest": "잘못된 곱셈 법칙명 하나를 고르는 과제와 달리 덧셈 변형의 법칙명과 짝 묶음 값의 빈칸을 요구한다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_bdf57dcfb0a758b021b3549871462984dfc2cc0afc5934c3503ac8b7111ad170"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 13,
+          "questionUid": "qid_v1_bdf57dcfb0a758b021b3549871462984dfc2cc0afc5934c3503ac8b7111ad170"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "항 재배열과 묶음 구별",
+        "교환·결합 대응",
+        "이미 제시된 쌍 구조의 개수·합"
+      ],
+      "parentEvidence": {
+        "kind": "SHARED_A_DRAFT",
+        "path": "/workspace/scratch/42de8b02ef57/worker-a/17_매산중_1학기_중간_중1_수학/registration-proposals.json",
+        "sha256": "b85c444effa62a2c9645c716e24426cf21785519c44999c97fa862a27ff74897",
+        "key": "PT_M1_OPERATION_LAW_MATCHING",
+        "definition": "계산식의 두 연속 단계 사이에서 바뀐 순서·묶음·항별 곱을 비교하여 교환·결합·분배법칙의 사용을 확인하거나 해당 법칙 이름을 고른다."
+      }
+    },
+    {
+      "proposalId": "B16_CONTEXT_CONSTRUCT",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_CONTEXT_QUANTITY_EXPRESSION_CONSTRUCTION",
+      "canonicalLabelKo": "상황의 수량식 구성과 평가",
+      "definition": "문장 또는 대화에서 미지 수량 사이의 관계를 따라 문자식을 직접 구성하고 필요한 합을 정리하거나 주어진 수를 대입하여 수량을 구한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": null,
+      "nearestExistingKeys": [
+        "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION"
+      ],
+      "differenceFromNearest": "기존 부모의 주어진 번역을 검증하는 목표·혼합 오답 선택 자식과 달리 여러 관계의 문자식을 순서대로 생성한 뒤 전체 합과 대입값을 요구한다.",
+      "exclusions": [
+        "이미 제시된 여러 문자식의 옳고 그름만 판정",
+        "미지수의 값을 구하기 위한 방정식 모델링"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_aec6efb9551263f18b6961aa0177273d36e14a43afc72c45ee7d5d17acf62d01"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 24,
+          "questionUid": "qid_v1_aec6efb9551263f18b6961aa0177273d36e14a43afc72c45ee7d5d17acf62d01"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "선행 수량을 문자식으로 생성",
+        "앞선 수량에 의존한 후속 식",
+        "전체 합과 동류항 정리",
+        "지정값 대입"
+      ],
+      "proposedTemplateKey": "TPL_M1_CONTEXT_QUANTITY_EXPRESSION_CONSTRUCTION_CORE",
+      "templateDefinition": "문장 또는 대화에서 미지 수량 사이의 관계를 따라 문자식을 직접 구성하고 필요한 합을 정리하거나 주어진 수를 대입하여 수량을 구한다."
+    },
+    {
+      "proposalId": "B16_DISTRIBUTIVE_BLANKS",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_OPERATION_LAW_MATCHING_DISTRIBUTIVE_BLANKS",
+      "canonicalLabelKo": "분배법칙의 수와 이름 빈칸",
+      "definition": "한 수를 편리한 기준수와 차로 바꾼 뒤 곱을 차의 각 항에 분배하는 제시 과정에서 빠진 수와 적용 법칙명을 확인한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": "PT_M1_OPERATION_LAW_MATCHING",
+      "nearestExistingKeys": [
+        "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_CORE"
+      ],
+      "differenceFromNearest": "잘못 붙인 법칙명 선택이 아니라 주어진 분배법칙 변형의 수·명칭 빈칸 완성이다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_cc67e1d2236c04d0d809f9390c0e9fba8747a4a6e3e214effcb7b6f679d30c85"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 19,
+          "questionUid": "qid_v1_cc67e1d2236c04d0d809f9390c0e9fba8747a4a6e3e214effcb7b6f679d30c85"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "기준수-차의 동치",
+        "각 항에 공통인수 분배",
+        "빈칸과 법칙명 연결"
+      ],
+      "parentEvidence": {
+        "kind": "SHARED_A_DRAFT",
+        "path": "/workspace/scratch/42de8b02ef57/worker-a/17_매산중_1학기_중간_중1_수학/registration-proposals.json",
+        "sha256": "b85c444effa62a2c9645c716e24426cf21785519c44999c97fa862a27ff74897",
+        "key": "PT_M1_OPERATION_LAW_MATCHING",
+        "definition": "계산식의 두 연속 단계 사이에서 바뀐 순서·묶음·항별 곱을 비교하여 교환·결합·분배법칙의 사용을 확인하거나 해당 법칙 이름을 고른다."
+      }
+    },
+    {
+      "proposalId": "B16_DIVISOR_MEMBERSHIP",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_DIVISOR_EXPONENT_REASONING_MEMBERSHIP_SELECT",
+      "canonicalLabelKo": "소인수 지수로 약수 후보 선택",
+      "definition": "주어진 자연수를 소인수분해하고 각 후보의 소인수 지수가 원수의 지수를 넘지 않는지 확인하여 요청한 수만큼의 약수 후보를 고른다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": "PT_M1_DIVISOR_EXPONENT_REASONING",
+      "nearestExistingKeys": [
+        "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+        "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE"
+      ],
+      "differenceFromNearest": "원수가 이미 인수분해된 입력과 약수 아닌 하나 선택을 필수로 요구하지 않는다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_6cb416d39b4b5c8ad6e97c605972922221f3156a193243480a816cad0b6e92d0"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 9,
+          "questionUid": "qid_v1_6cb416d39b4b5c8ad6e97c605972922221f3156a193243480a816cad0b6e92d0"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "원수 소인수분해",
+        "후보의 소인수 포함·지수 상한",
+        "요청한 약수 후보 선택"
+      ],
+      "parentEvidence": {
+        "kind": "SHARED_B_DRAFT",
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+        "key": "PT_M1_DIVISOR_EXPONENT_REASONING",
+        "definition": "자연수의 소인수별 허용 지수로 약수를 구성하거나 약수 개수를 구하고, 주어진 약수 개수·구조 조건을 만족하는 인수 또는 지수를 결정한다."
+      }
+    },
+    {
+      "proposalId": "B16_GCD_LCM_BOTH",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_GCD_LCM_VALUE_EVALUATION_BOTH_DIRECT",
+      "canonicalLabelKo": "최대공약수와 최소공배수 병렬 계산",
+      "definition": "주어진 여러 자연수의 각 소인수 지수에서 최솟값과 최댓값을 각각 취해 최대공약수와 최소공배수를 모두 구한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": "PT_M1_GCD_LCM_VALUE_EVALUATION",
+      "nearestExistingKeys": [
+        "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT"
+      ],
+      "differenceFromNearest": "미지 지수 복원이나 두 결과의 비 산출이 아니라 두 직접 계산 결과를 병렬로 요구한다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 2,
+          "questionUid": "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "주어진 인수분해의 소인수별 지수 대응",
+        "최솟값의 곱과 최댓값의 곱을 각각 구성"
+      ],
+      "parentEvidence": {
+        "kind": "SHARED_B_DRAFT",
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+        "key": "PT_M1_GCD_LCM_VALUE_EVALUATION",
+        "definition": "주어진 자연수들의 소인수 지수에 최솟값·최댓값 규칙을 적용하여 최대공약수 또는 최소공배수와 그 관계식의 값을 구한다."
+      }
+    },
+    {
+      "proposalId": "B16_LAP_RETURN",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_SIMULTANEOUS_PERIODIC_EVENT_START_RETURN_LAPS",
+      "canonicalLabelKo": "출발점 첫 동시귀환의 바퀴 수",
+      "definition": "두 사람이 각자의 일정한 한 바퀴 시간으로 순환할 때 처음 함께 출발점에 돌아오는 시간을 최소공배수로 구하고, 그 시간을 지정 사람의 주기로 나누어 바퀴 수를 구한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+      "nearestExistingKeys": [
+        "TPL_LCM_APPLICATION_GEAR_CYCLE"
+      ],
+      "differenceFromNearest": "첫 추월 위치나 기어 맞물림이 아닌 출발점 동시귀환이며 최종 목표는 지정 사람의 회전 수이다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_8df73d6d0f1d4da09830a85e28ec5a7eb133aa2fea45c2f079508c0b8bbc2bdc"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 4,
+          "questionUid": "qid_v1_8df73d6d0f1d4da09830a85e28ec5a7eb133aa2fea45c2f079508c0b8bbc2bdc"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "각 한 바퀴 시간",
+        "최소공배수로 공동 귀환시간",
+        "지정 사람 주기로 나누어 바퀴 수"
+      ],
+      "parentEvidence": {
+        "kind": "SHARED_B_DRAFT",
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+        "key": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+        "definition": "서로 다른 정수 주기로 반복되는 둘 이상의 현상이 함께 발생하는 시각이나 횟수를 공배수 조건으로 결정한다."
+      }
+    },
+    {
+      "proposalId": "B16_LEAF_GCD_LCM_BOTH",
+      "kind": "RPM_LEAF",
+      "proposedKey": null,
+      "canonicalLabelKo": "최대공약수와 최소공배수 함께 구하기",
+      "definition": "기존 gcd와 lcm 직접계산 leaf를 각각 보조로 유지하되 두 결과를 동등하게 요구하는 문항을 한쪽만의 exact leaf로 선언하지 않는다. 기존 최대공약수와 최소공배수 L2 아래 병렬계산 가지를 제안한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": null,
+      "nearestExistingKeys": [
+        "M1-RPM-007",
+        "M1-RPM-009",
+        "M1-RPM-120",
+        "M1-RPM-122"
+      ],
+      "differenceFromNearest": "기존 gcd와 lcm 직접계산 leaf를 각각 보조로 유지하되 두 결과를 동등하게 요구하는 문항을 한쪽만의 exact leaf로 선언하지 않는다. 기존 최대공약수와 최소공배수 L2 아래 병렬계산 가지를 제안한다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 2,
+          "questionUid": "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e"
+        }
+      ],
+      "proposedParentPaths": [
+        {
+          "parentPath": {
+            "curriculum": "2015",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수"
+          },
+          "nearestRecordIds": [
+            "M1-RPM-007",
+            "M1-RPM-009"
+          ],
+          "parentEvidence": {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+            "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc",
+            "recordIds": [
+              "M1-RPM-007",
+              "M1-RPM-009"
+            ]
+          },
+          "effective2022ParentAuthority": null,
+          "proposedNewL3": "최대공약수·최소공배수의 계산",
+          "proposedL4": "최대공약수와 최소공배수 함께 구하기"
+        },
+        {
+          "parentPath": {
+            "curriculum": "2022",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수"
+          },
+          "nearestRecordIds": [
+            "M1-RPM-120",
+            "M1-RPM-122"
+          ],
+          "parentEvidence": {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+            "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc",
+            "recordIds": [
+              "M1-RPM-120",
+              "M1-RPM-122"
+            ]
+          },
+          "effective2022ParentAuthority": {
+            "path": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+            "sha256": "53668c1203032e1b87c05eca8ae2303ad0c8cc011f0cd949284cf5394b00e7de"
+          },
+          "proposedNewL3": "최대공약수·최소공배수의 계산",
+          "proposedL4": "최대공약수와 최소공배수 함께 구하기"
+        }
+      ],
+      "curriculumCandidates": [
+        "2015",
+        "2022"
+      ],
+      "lockedCrosswalkAction": "DO_NOT_MODIFY_LOCKED_ROW; prepare owner-approved successor/additive mapping",
+      "exactExistingLeaf": false
+    },
+    {
+      "proposalId": "B16_LEAF_INEQUALITY_LANGUAGE",
+      "kind": "RPM_LEAF",
+      "proposedKey": null,
+      "canonicalLabelKo": "범위 문장과 부등호의 대응",
+      "definition": "정해진 두 수의 대소 계산이 아니라 초과·미만·이상·이하 문장을 경계 포함을 보존한 부등식으로 나타내는 목표이다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": null,
+      "nearestExistingKeys": [
+        "M1-RPM-016",
+        "M1-RPM-129"
+      ],
+      "differenceFromNearest": "정해진 두 수의 대소 계산이 아니라 초과·미만·이상·이하 문장을 경계 포함을 보존한 부등식으로 나타내는 목표이다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_774206932c337f83cf0c2b1d56fc96ccb16f9b7b6b6d93adfc676c20c8f96284"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 7,
+          "questionUid": "qid_v1_774206932c337f83cf0c2b1d56fc96ccb16f9b7b6b6d93adfc676c20c8f96284"
+        }
+      ],
+      "proposedParentPaths": [
+        {
+          "parentPath": {
+            "curriculum": "2015",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수직선과 대소 관계"
+          },
+          "nearestRecordIds": [
+            "M1-RPM-016"
+          ],
+          "parentEvidence": {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+            "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc",
+            "recordIds": [
+              "M1-RPM-016"
+            ]
+          },
+          "effective2022ParentAuthority": null,
+          "proposedNewL3": null,
+          "proposedL4": "범위 문장과 부등호의 대응"
+        },
+        {
+          "parentPath": {
+            "curriculum": "2022",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수직선과 대소 관계"
+          },
+          "nearestRecordIds": [
+            "M1-RPM-129"
+          ],
+          "parentEvidence": {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+            "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc",
+            "recordIds": [
+              "M1-RPM-129"
+            ]
+          },
+          "effective2022ParentAuthority": {
+            "path": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+            "sha256": "53668c1203032e1b87c05eca8ae2303ad0c8cc011f0cd949284cf5394b00e7de"
+          },
+          "proposedNewL3": null,
+          "proposedL4": "범위 문장과 부등호의 대응"
+        }
+      ],
+      "curriculumCandidates": [
+        "2015",
+        "2022"
+      ],
+      "lockedCrosswalkAction": "DO_NOT_MODIFY_LOCKED_ROW; prepare owner-approved successor/additive mapping",
+      "exactExistingLeaf": false
+    },
+    {
+      "proposalId": "B16_LEAF_NUMERIC_DIAGRAM",
+      "kind": "RPM_LEAF",
+      "proposedKey": null,
+      "canonicalLabelKo": "숫자 도식의 산술 규칙 찾기",
+      "definition": "명시된 수식을 계산하는 leaf와 달리 예시 숫자 도식에서 위치별 관계를 먼저 찾는 과제이다. 현재 승인된 의도규칙 근거가 없어 후보 leaf 상태만 유지한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": null,
+      "nearestExistingKeys": [
+        "M1-RPM-025",
+        "M1-RPM-026",
+        "M1-RPM-138",
+        "M1-RPM-139"
+      ],
+      "differenceFromNearest": "명시된 수식을 계산하는 leaf와 달리 예시 숫자 도식에서 위치별 관계를 먼저 찾는 과제이다. 현재 승인된 의도규칙 근거가 없어 후보 leaf 상태만 유지한다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_7d0e148c1ace2bcda3c87790fd9da71028c425c53491e51b6bdd5cf7737fc2d2"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 11,
+          "questionUid": "qid_v1_7d0e148c1ace2bcda3c87790fd9da71028c425c53491e51b6bdd5cf7737fc2d2"
+        }
+      ],
+      "proposedParentPaths": [
+        {
+          "parentPath": {
+            "curriculum": "2015",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산"
+          },
+          "nearestRecordIds": [
+            "M1-RPM-025",
+            "M1-RPM-026"
+          ],
+          "parentEvidence": {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+            "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc",
+            "recordIds": [
+              "M1-RPM-025",
+              "M1-RPM-026"
+            ]
+          },
+          "effective2022ParentAuthority": null,
+          "proposedNewL3": "수식 규칙",
+          "proposedL4": "숫자 도식의 산술 규칙 찾기"
+        },
+        {
+          "parentPath": {
+            "curriculum": "2022",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산"
+          },
+          "nearestRecordIds": [
+            "M1-RPM-138",
+            "M1-RPM-139"
+          ],
+          "parentEvidence": {
+            "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+            "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc",
+            "recordIds": [
+              "M1-RPM-138",
+              "M1-RPM-139"
+            ]
+          },
+          "effective2022ParentAuthority": {
+            "path": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+            "sha256": "53668c1203032e1b87c05eca8ae2303ad0c8cc011f0cd949284cf5394b00e7de"
+          },
+          "proposedNewL3": "수식 규칙",
+          "proposedL4": "숫자 도식의 산술 규칙 찾기"
+        }
+      ],
+      "curriculumCandidates": [
+        "2015",
+        "2022"
+      ],
+      "lockedCrosswalkAction": "DO_NOT_MODIFY_LOCKED_ROW; prepare owner-approved successor/additive mapping",
+      "exactExistingLeaf": false
+    },
+    {
+      "proposalId": "B16_LINEAR_AUDIT",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_LINEAR_EXPRESSION_MIXED_OPERATION_AUDIT",
+      "canonicalLabelKo": "일차식 덧뺄셈·스칼라 연산 검산",
+      "definition": "일차식의 덧셈·뺄셈과 수의 곱셈·나눗셈 등식들을 분배와 동류항 정리로 검산하여 옳은 계산을 판정한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "nearestExistingKeys": [
+        "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+        "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION"
+      ],
+      "differenceFromNearest": "signed-sum 하나나 scalar 하나만의 입력으로 전체 혼합 보기의 검산을 대표하지 않는다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_7d7abdbe2cb5ad7afc838976b50eb0b902cb8f9bdcf0c945e10ec11bb67ecc1f"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 14,
+          "questionUid": "qid_v1_7d7abdbe2cb5ad7afc838976b50eb0b902cb8f9bdcf0c945e10ec11bb67ecc1f"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "연산별 부호·분수계수 적용",
+        "동류항 정리",
+        "제시 결과와 비교"
+      ],
+      "parentEvidence": {
+        "kind": "ACTIVE",
+        "definition": "일차식의 항, 계수, 상수항을 판별하고 동류항과 분수 계수를 정리한다.",
+        "ownerPack": "MIDDLE1",
+        "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+      }
+    },
+    {
+      "proposalId": "B16_NESTED_TWO_QUOTIENT",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_TWO_NESTED_QUOTIENT",
+      "canonicalLabelKo": "두 중첩괄호 수식의 값과 몫",
+      "definition": "중첩된 괄호와 분수 사칙연산으로 주어진 두 수식을 각각 연산 순서에 맞춰 계산한 뒤 두 결과의 몫을 구한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+      "nearestExistingKeys": [
+        "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER"
+      ],
+      "differenceFromNearest": "거듭제곱 뒤 음수 뺄셈인 기존 자식과 다르다. 실제 거듭제곱을 만들지 않고 두 수식 평가→몫의 구조를 명시한다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_ad310d4a20e547863386e0ce515e5f696516cd578e1e9b74b4379caf60ba8d71"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 23,
+          "questionUid": "qid_v1_ad310d4a20e547863386e0ce515e5f696516cd578e1e9b74b4379caf60ba8d71"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "각 식의 안쪽 괄호부터 평가",
+        "곱나눗셈·덧뺄셈 순서",
+        "두 결과의 몫"
+      ],
+      "parentEvidence": {
+        "kind": "SHARED_B_DRAFT",
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+        "key": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+        "definition": "정수와 유리수로 이루어진 수식에서 부호, 거듭제곱, 괄호 및 사칙연산의 순서를 적용하거나 유효한 연산법칙으로 변형하여 수식의 값을 구한다."
+      }
+    },
+    {
+      "proposalId": "B16_NUMBER_DIAGRAM",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_NUMERIC_DIAGRAM_RELATION_INFERENCE",
+      "canonicalLabelKo": "숫자 도식의 산술 규칙 추론",
+      "definition": "여러 예시의 같은 위치에 놓인 수 사이에서 간단한 산술 관계의 후보를 찾고 예시에 공통으로 맞는지 확인한 뒤 해당 후보 규칙에 따라 빈칸을 복원한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": null,
+      "nearestExistingKeys": [
+        "PT_M1_POWER_BASE_EXPONENT_EVALUATION",
+        "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS"
+      ],
+      "differenceFromNearest": "정해진 반복곱 또는 명시된 등합 조건과 달리 도식의 위치별 연산 관계를 먼저 추론한다. 유한 예시만으로 규칙의 수학적 유일성을 주장하지 않는다.",
+      "exclusions": [
+        "출제 의도·풀이 근거 없이 특정 규칙을 확정",
+        "고등 수열의 일반항"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_7d0e148c1ace2bcda3c87790fd9da71028c425c53491e51b6bdd5cf7737fc2d2"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 11,
+          "questionUid": "qid_v1_7d0e148c1ace2bcda3c87790fd9da71028c425c53491e51b6bdd5cf7737fc2d2"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "위치별 수 관계 후보",
+        "두 예시에 공동 적용",
+        "후보 규칙으로 빈 위치 복원"
+      ],
+      "proposedTemplateKey": "TPL_M1_NUMERIC_DIAGRAM_RELATION_INFERENCE_CORE",
+      "templateDefinition": "여러 예시의 같은 위치에 놓인 수 사이에서 간단한 산술 관계의 후보를 찾고 예시에 공통으로 맞는지 확인한 뒤 해당 후보 규칙에 따라 빈칸을 복원한다."
+    },
+    {
+      "proposalId": "B16_RANK",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_RATIONAL_LIST_RANK_SELECTION",
+      "canonicalLabelKo": "유리수 목록의 지정 순위",
+      "definition": "명시된 유한 유리수 목록을 부호와 정확한 크기에 따라 정렬하여 지정한 순위의 원소를 선택한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": null,
+      "nearestExistingKeys": [
+        "PT_M1_RATIONAL_VALUE_COMPARISON",
+        "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
+        "TPL_M1_RATIONAL_VALUE_COMPARISON_EVALUATE_AND_RANK"
+      ],
+      "differenceFromNearest": "기존 부모는 극값 선택, 기존 자식은 계산식 평가를 요구한다. 이미 주어진 수의 중간 순위는 둘과 다르다.",
+      "exclusions": [
+        "최댓값·최솟값만 선택",
+        "통계 그림의 순위 읽기"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_03fed56f33d9618208f3481a657e522ae2371bb7920dd0586cc551c42184515c"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 6,
+          "questionUid": "qid_v1_03fed56f33d9618208f3481a657e522ae2371bb7920dd0586cc551c42184515c"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "양수·0·음수 분리",
+        "분수 크기 비교와 음수 역순",
+        "요청 순위 선택"
+      ],
+      "proposedTemplateKey": "TPL_M1_RATIONAL_LIST_RANK_SELECTION_CORE",
+      "templateDefinition": "명시된 유한 유리수 목록을 부호와 정확한 크기에 따라 정렬하여 지정한 순위의 원소를 선택한다."
+    },
+    {
+      "proposalId": "B16_RECIPROCAL_QUOTIENT",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_QUOTIENT",
+      "canonicalLabelKo": "역수 관계로 복원한 수의 몫",
+      "definition": "주어진 수 또는 그 역수 관계에서 두 수를 복원한 뒤 요청한 몫을 계산한다. 대분수는 먼저 가분수로 바꾸며 역수 복원과 나눗셈의 역수곱을 구별한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": "PT_M1_RECIPROCAL_RELATION",
+      "nearestExistingKeys": [
+        "TPL_M1_RECOVER_VALUE_BY_INVERSE_OPERATION_RECIPROCAL_RELATION",
+        "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
+      ],
+      "differenceFromNearest": "복원 후 합·곱과 최종 연산이 다르고 오계산 복원도 아니다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_617ae4a87c271d4659511918492240ff57cb41ae751ede3b1e820825e407f72f"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 15,
+          "questionUid": "qid_v1_617ae4a87c271d4659511918492240ff57cb41ae751ede3b1e820825e407f72f"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "수 표현 통일",
+        "곱1의 역수 관계로 값 복원",
+        "몫을 역수곱으로 계산"
+      ],
+      "parentEvidence": {
+        "kind": "SHARED_B_DRAFT",
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+        "key": "PT_M1_RECIPROCAL_RELATION",
+        "definition": "0이 아닌 두 수의 곱이 1인 역수 관계로 수를 복원하고 그 수의 부호·수체계 성질 또는 요청한 식의 값을 결정한다."
+      }
+    },
+    {
+      "proposalId": "B16_REMAINDER_GCD",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_COMMON_DIVISOR_REMAINDER_RECOVERY",
+      "canonicalLabelKo": "나머지를 뺀 공약수로 제수 복원",
+      "definition": "여러 수를 같은 자연수로 나눈 나머지가 주어질 때 각각의 나머지를 빼어 공약수 조건을 만들고, 나머지보다 큰 제수 조건을 유지해 요구한 최댓값을 구한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+      "nearestExistingKeys": [
+        "PT_M1_GCD_DIVISOR_APPLICATION"
+      ],
+      "differenceFromNearest": "물건을 같은 인원에게 나누는 서사를 요구하지 않고 제수의 나머지 조건을 직접 사용한다.",
+      "exclusions": [],
+      "supportingQuestionUids": [
+        "qid_v1_78d77b00afb9c2e2fcef43307e6ceef9deb1d69a03e0ab2ea86bb66e1726cd8d"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 3,
+          "questionUid": "qid_v1_78d77b00afb9c2e2fcef43307e6ceef9deb1d69a03e0ab2ea86bb66e1726cd8d"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "각 피제수-해당 나머지",
+        "공약수 및 제수>각 나머지",
+        "최대공약수 후보의 조건 확인"
+      ],
+      "parentEvidence": {
+        "kind": "SHARED_A_DRAFT",
+        "path": "/workspace/scratch/42de8b02ef57/worker-a/23_동산중_1학기_중간_중1_기출/registration-proposals.json",
+        "sha256": "05caad379fdad93ca37da24c26791dfe34cae4c2759a23f81dc6d2deae22c356",
+        "key": "PT_M1_COMMON_DIVISOR_CONDITION",
+        "definition": "여러 정수에 대한 나눗셈의 정수성 또는 나머지 조건을 같은 미지 자연수의 공약수 조건으로 바꾸어 허용값의 최댓값·개수·집합을 결정한다. 직접 같은 수의 물건을 배분하는 상황 없이도 분모 또는 제수의 역할을 식으로 해석한다."
+      }
+    },
+    {
+      "proposalId": "B16_SHARED_A_COND_PAIRWISE_DISTINCT_NUMBERS",
+      "kind": "EXTERNAL_CONDITION_REFERENCE",
+      "proposedKey": "COND_PAIRWISE_DISTINCT_NUMBERS",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-a/23_동산중_1학기_중간_중1_기출/registration-proposals.json",
+      "definitionAuthoritySha256": "05caad379fdad93ca37da24c26791dfe34cae4c2759a23f81dc6d2deae22c356",
+      "authorityRecord": "A-DISTINCT-COND",
+      "supportingQuestionUids": [
+        "qid_v1_3b5d89166faa8a73c1c1e4167e1a9e1daec8517dd704dead0445093ea682b8bb"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 8,
+          "questionUid": "qid_v1_3b5d89166faa8a73c1c1e4167e1a9e1daec8517dd704dead0445093ea682b8bb"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_A_PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-a/23_동산중_1학기_중간_중1_기출/registration-proposals.json",
+      "definitionAuthoritySha256": "05caad379fdad93ca37da24c26791dfe34cae4c2759a23f81dc6d2deae22c356",
+      "authorityRecord": "A-NOTATION",
+      "supportingQuestionUids": [
+        "qid_v1_80da6c947c59171fc95693c7754ba549072376af63992f688519452f9eba2b9d"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 17,
+          "questionUid": "qid_v1_80da6c947c59171fc95693c7754ba549072376af63992f688519452f9eba2b9d"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_A_PT_M1_COMMON_DIVISOR_CONDITION",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-a/23_동산중_1학기_중간_중1_기출/registration-proposals.json",
+      "definitionAuthoritySha256": "05caad379fdad93ca37da24c26791dfe34cae4c2759a23f81dc6d2deae22c356",
+      "authorityRecord": "A-COMMON-DIVISOR",
+      "supportingQuestionUids": [
+        "qid_v1_78d77b00afb9c2e2fcef43307e6ceef9deb1d69a03e0ab2ea86bb66e1726cd8d"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 3,
+          "questionUid": "qid_v1_78d77b00afb9c2e2fcef43307e6ceef9deb1d69a03e0ab2ea86bb66e1726cd8d"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_A_PT_M1_COMMON_MULTIPLE_CONDITION",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_COMMON_MULTIPLE_CONDITION",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-a/17_매산중_1학기_중간_중1_수학/registration-proposals.json",
+      "definitionAuthoritySha256": "b85c444effa62a2c9645c716e24426cf21785519c44999c97fa862a27ff74897",
+      "authorityRecord": "A-COMMON-MULTIPLE",
+      "supportingQuestionUids": [
+        "qid_v1_7dc6a6977c4cf62e19d225b3638903a2a1ad03834acc3e62e065e1a5562bd9b0"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 22,
+          "questionUid": "qid_v1_7dc6a6977c4cf62e19d225b3638903a2a1ad03834acc3e62e065e1a5562bd9b0"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_A_PT_M1_OPERATION_LAW_MATCHING",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_OPERATION_LAW_MATCHING",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-a/17_매산중_1학기_중간_중1_수학/registration-proposals.json",
+      "definitionAuthoritySha256": "b85c444effa62a2c9645c716e24426cf21785519c44999c97fa862a27ff74897",
+      "authorityRecord": "A-OPERATION-LAW",
+      "supportingQuestionUids": [
+        "qid_v1_bdf57dcfb0a758b021b3549871462984dfc2cc0afc5934c3503ac8b7111ad170",
+        "qid_v1_cc67e1d2236c04d0d809f9390c0e9fba8747a4a6e3e214effcb7b6f679d30c85"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 13,
+          "questionUid": "qid_v1_bdf57dcfb0a758b021b3549871462984dfc2cc0afc5934c3503ac8b7111ad170"
+        },
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 19,
+          "questionUid": "qid_v1_cc67e1d2236c04d0d809f9390c0e9fba8747a4a6e3e214effcb7b6f679d30c85"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_A_TPL_M1_COMMON_MULTIPLE_SHARED_REMAINDER_BOUND",
+      "kind": "EXTERNAL_TEMPLATE_REFERENCE",
+      "proposedKey": "TPL_M1_COMMON_MULTIPLE_SHARED_REMAINDER_BOUND",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-a/17_매산중_1학기_중간_중1_수학/registration-proposals.json",
+      "definitionAuthoritySha256": "b85c444effa62a2c9645c716e24426cf21785519c44999c97fa862a27ff74897",
+      "authorityRecord": "A-COMMON-REMAINDER",
+      "supportingQuestionUids": [
+        "qid_v1_7dc6a6977c4cf62e19d225b3638903a2a1ad03834acc3e62e065e1a5562bd9b0"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 22,
+          "questionUid": "qid_v1_7dc6a6977c4cf62e19d225b3638903a2a1ad03834acc3e62e065e1a5562bd9b0"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_A_TPL_M1_NUMBER_SYSTEM_ASSERTION_AUDIT_LIST",
+      "kind": "EXTERNAL_TEMPLATE_REFERENCE",
+      "proposedKey": "TPL_M1_NUMBER_SYSTEM_ASSERTION_AUDIT_LIST",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-a/17_매산중_1학기_중간_중1_수학/registration-proposals.json",
+      "definitionAuthoritySha256": "b85c444effa62a2c9645c716e24426cf21785519c44999c97fa862a27ff74897",
+      "authorityRecord": "A-NUMSYS-LIST",
+      "supportingQuestionUids": [
+        "qid_v1_00122e9d234335307c6e0d71eb06985e839ee6e97861ae000a2582fecb7ff7dc"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 5,
+          "questionUid": "qid_v1_00122e9d234335307c6e0d71eb06985e839ee6e97861ae000a2582fecb7ff7dc"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_A_TPL_M1_NUMERIC_SUBSTITUTION_SIGNED_POWER_ABSOLUTE",
+      "kind": "EXTERNAL_TEMPLATE_REFERENCE",
+      "proposedKey": "TPL_M1_NUMERIC_SUBSTITUTION_SIGNED_POWER_ABSOLUTE",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-a/17_매산중_1학기_중간_중1_수학/registration-proposals.json",
+      "definitionAuthoritySha256": "b85c444effa62a2c9645c716e24426cf21785519c44999c97fa862a27ff74897",
+      "authorityRecord": "A-DIRECT-NONLINEAR-SUBSTITUTION",
+      "supportingQuestionUids": [
+        "qid_v1_7d3d11d607496b47df3b89aaf59bc7957bb1b2adc28ceb1a1344ed208cf28b24"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 18,
+          "questionUid": "qid_v1_7d3d11d607496b47df3b89aaf59bc7957bb1b2adc28ceb1a1344ed208cf28b24"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_C_INEQUALITY_PARENT",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_INEQUALITY_PHRASE_TRANSLATION",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-c/17_금당중_1학기_중간_중1_수학/residual-review.json",
+      "definitionAuthoritySha256": "7277390fb3447b34d71fa4dbe9dfa138f8adba147c4e53df62c38bc3e9ca4f7e",
+      "authorityRecord": "ENDPOINT_LANGUAGE_AUDIT.parentEvidence",
+      "supportingQuestionUids": [
+        "qid_v1_774206932c337f83cf0c2b1d56fc96ccb16f9b7b6b6d93adfc676c20c8f96284"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 7,
+          "questionUid": "qid_v1_774206932c337f83cf0c2b1d56fc96ccb16f9b7b6b6d93adfc676c20c8f96284"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_C_INEQUALITY_TPL",
+      "kind": "EXTERNAL_TEMPLATE_REFERENCE",
+      "proposedKey": "TPL_M1_INEQUALITY_PHRASE_TRANSLATION_ENDPOINT_LANGUAGE_AUDIT",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-c/17_금당중_1학기_중간_중1_수학/residual-review.json",
+      "definitionAuthoritySha256": "7277390fb3447b34d71fa4dbe9dfa138f8adba147c4e53df62c38bc3e9ca4f7e",
+      "authorityRecord": "ENDPOINT_LANGUAGE_AUDIT",
+      "supportingQuestionUids": [
+        "qid_v1_774206932c337f83cf0c2b1d56fc96ccb16f9b7b6b6d93adfc676c20c8f96284"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 7,
+          "questionUid": "qid_v1_774206932c337f83cf0c2b1d56fc96ccb16f9b7b6b6d93adfc676c20c8f96284"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_OPERATION_LAW_LEAF",
+      "kind": "RPM_LEAF",
+      "proposedKey": null,
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-a/23_동산중_1학기_중간_중1_기출/registration-proposals.json",
+      "definitionAuthoritySha256": "05caad379fdad93ca37da24c26791dfe34cae4c2759a23f81dc6d2deae22c356",
+      "authorityRecord": "A-LEAF-OPERATION-LAW",
+      "supportingQuestionUids": [
+        "qid_v1_bdf57dcfb0a758b021b3549871462984dfc2cc0afc5934c3503ac8b7111ad170",
+        "qid_v1_cc67e1d2236c04d0d809f9390c0e9fba8747a4a6e3e214effcb7b6f679d30c85"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 13,
+          "questionUid": "qid_v1_bdf57dcfb0a758b021b3549871462984dfc2cc0afc5934c3503ac8b7111ad170"
+        },
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 19,
+          "questionUid": "qid_v1_cc67e1d2236c04d0d809f9390c0e9fba8747a4a6e3e214effcb7b6f679d30c85"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_POLY_LEAF",
+      "kind": "RPM_LEAF",
+      "proposedKey": null,
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/leaf-proposals.json",
+      "definitionAuthoritySha256": "923940f3dd832c5b34ea405089441d5bff192ef7af9b8840a39996ebcd7f2964",
+      "authorityRecord": "LEAF_B_POLYNOMIAL_STRUCTURE",
+      "supportingQuestionUids": [
+        "qid_v1_4d9b67cc2879447a511085a249d14859edc4a3fed8872a151fef17864e9efeda"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 20,
+          "questionUid": "qid_v1_4d9b67cc2879447a511085a249d14859edc4a3fed8872a151fef17864e9efeda"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_PT_M1_DIVISOR_EXPONENT_REASONING",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_DIVISOR_EXPONENT_REASONING",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "definitionAuthoritySha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+      "authorityRecord": "PROP_PT_M1_DIVISOR_EXPONENT_REASONING",
+      "supportingQuestionUids": [
+        "qid_v1_6cb416d39b4b5c8ad6e97c605972922221f3156a193243480a816cad0b6e92d0"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 9,
+          "questionUid": "qid_v1_6cb416d39b4b5c8ad6e97c605972922221f3156a193243480a816cad0b6e92d0"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_PT_M1_EVALUATED_EXPRESSION_COMPARISON",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_EVALUATED_EXPRESSION_COMPARISON",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "definitionAuthoritySha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+      "authorityRecord": "PROP_PT_M1_EVALUATED_EXPRESSION_COMPARISON",
+      "supportingQuestionUids": [
+        "qid_v1_d1e2a5e562749c0630c616f45e1a6afbe7abf2daa0d09d40a18ac15ccabc22ff"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 12,
+          "questionUid": "qid_v1_d1e2a5e562749c0630c616f45e1a6afbe7abf2daa0d09d40a18ac15ccabc22ff"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_PT_M1_GCD_LCM_VALUE_EVALUATION",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_GCD_LCM_VALUE_EVALUATION",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "definitionAuthoritySha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+      "authorityRecord": "PROP_PT_M1_GCD_LCM_VALUE_EVALUATION",
+      "supportingQuestionUids": [
+        "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 2,
+          "questionUid": "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "definitionAuthoritySha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+      "authorityRecord": "PROP_PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+      "supportingQuestionUids": [
+        "qid_v1_00122e9d234335307c6e0d71eb06985e839ee6e97861ae000a2582fecb7ff7dc"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 5,
+          "questionUid": "qid_v1_00122e9d234335307c6e0d71eb06985e839ee6e97861ae000a2582fecb7ff7dc"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "definitionAuthoritySha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+      "authorityRecord": "PROP_PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+      "supportingQuestionUids": [
+        "qid_v1_7d3d11d607496b47df3b89aaf59bc7957bb1b2adc28ceb1a1344ed208cf28b24"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 18,
+          "questionUid": "qid_v1_7d3d11d607496b47df3b89aaf59bc7957bb1b2adc28ceb1a1344ed208cf28b24"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_PT_M1_POLYNOMIAL_STRUCTURE",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_POLYNOMIAL_STRUCTURE",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "definitionAuthoritySha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+      "authorityRecord": "PROP_PT_M1_POLYNOMIAL_STRUCTURE",
+      "supportingQuestionUids": [
+        "qid_v1_4d9b67cc2879447a511085a249d14859edc4a3fed8872a151fef17864e9efeda"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 20,
+          "questionUid": "qid_v1_4d9b67cc2879447a511085a249d14859edc4a3fed8872a151fef17864e9efeda"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "definitionAuthoritySha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+      "authorityRecord": "PROP_PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+      "supportingQuestionUids": [
+        "qid_v1_ad310d4a20e547863386e0ce515e5f696516cd578e1e9b74b4379caf60ba8d71"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 23,
+          "questionUid": "qid_v1_ad310d4a20e547863386e0ce515e5f696516cd578e1e9b74b4379caf60ba8d71"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_PT_M1_RECIPROCAL_RELATION",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_RECIPROCAL_RELATION",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "definitionAuthoritySha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+      "authorityRecord": "PROP_PT_M1_RECIPROCAL_RELATION",
+      "supportingQuestionUids": [
+        "qid_v1_617ae4a87c271d4659511918492240ff57cb41ae751ede3b1e820825e407f72f"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 15,
+          "questionUid": "qid_v1_617ae4a87c271d4659511918492240ff57cb41ae751ede3b1e820825e407f72f"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "definitionAuthoritySha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+      "authorityRecord": "PROP_PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+      "supportingQuestionUids": [
+        "qid_v1_8df73d6d0f1d4da09830a85e28ec5a7eb133aa2fea45c2f079508c0b8bbc2bdc"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 4,
+          "questionUid": "qid_v1_8df73d6d0f1d4da09830a85e28ec5a7eb133aa2fea45c2f079508c0b8bbc2bdc"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_TPL_M1_EVALUATED_EXPRESSION_COMPARISON_EQUALITY_AUDIT",
+      "kind": "EXTERNAL_TEMPLATE_REFERENCE",
+      "proposedKey": "TPL_M1_EVALUATED_EXPRESSION_COMPARISON_EQUALITY_AUDIT",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "definitionAuthoritySha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+      "authorityRecord": "PROP_TPL_M1_EVALUATED_EXPRESSION_COMPARISON_EQUALITY_AUDIT",
+      "supportingQuestionUids": [
+        "qid_v1_d1e2a5e562749c0630c616f45e1a6afbe7abf2daa0d09d40a18ac15ccabc22ff"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 12,
+          "questionUid": "qid_v1_d1e2a5e562749c0630c616f45e1a6afbe7abf2daa0d09d40a18ac15ccabc22ff"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SHARED_TPL_M1_POLYNOMIAL_STRUCTURE_TERM_COEFFICIENT_AUDIT",
+      "kind": "EXTERNAL_TEMPLATE_REFERENCE",
+      "proposedKey": "TPL_M1_POLYNOMIAL_STRUCTURE_TERM_COEFFICIENT_AUDIT",
+      "owner": "EXISTING_SHARED_DRAFT_OWNER",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "definitionAuthority": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "definitionAuthoritySha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+      "authorityRecord": "PROP_TPL_M1_POLYNOMIAL_STRUCTURE_TERM_COEFFICIENT_AUDIT",
+      "supportingQuestionUids": [
+        "qid_v1_4d9b67cc2879447a511085a249d14859edc4a3fed8872a151fef17864e9efeda"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 20,
+          "questionUid": "qid_v1_4d9b67cc2879447a511085a249d14859edc4a3fed8872a151fef17864e9efeda"
+        }
+      ],
+      "operation": "REUSE_EXISTING_DRAFT_WITH_NEW_SUPPORT_UID"
+    },
+    {
+      "proposalId": "B16_SQUARE_MULTIPLIER",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_PERFECT_SQUARE_MULTIPLIER_RANGE",
+      "canonicalLabelKo": "범위 내 제곱수 승수의 전체 집계",
+      "definition": "고정 자연수에 곱해 완전제곱수가 되게 하는 자연수 승수를 소인수 지수의 짝홀 조건으로 나타내고 주어진 유한 범위에서 모두 찾아 합 또는 개수를 구한다.",
+      "registrationStatus": "UNREGISTERED_PROPOSAL",
+      "owner": "META_B_RESUME_16_ADDENDUM",
+      "operation": "ADD_ONLY",
+      "parentProblemTypeKey": null,
+      "nearestExistingKeys": [
+        "PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE"
+      ],
+      "differenceFromNearest": "최소 보완인수만 구하는 기존 유형과 달리 그 인수에 제곱수를 곱한 전체 후보의 범위 제한과 집계가 필수이다.",
+      "exclusions": [
+        "최소 승수 한 개만 구하기",
+        "완전제곱 몫을 만드는 제수의 최솟값"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_f83ba0d1887686d2f2fcc32d4ec67a9cca7417d411f58be6e8624ad26500f737"
+      ],
+      "supportingItems": [
+        {
+          "exam": "16_연향중_1학기_중간_중1_수학",
+          "ordinal": 10,
+          "questionUid": "qid_v1_f83ba0d1887686d2f2fcc32d4ec67a9cca7417d411f58be6e8624ad26500f737"
+        }
+      ],
+      "internalSkeletonDraft": [
+        "홀수 지수 보완인수",
+        "보완인수×자연수 제곱",
+        "상한에 맞는 후보",
+        "요청 집계"
+      ],
+      "proposedTemplateKey": "TPL_M1_PERFECT_SQUARE_MULTIPLIER_RANGE_CORE",
+      "templateDefinition": "고정 자연수에 곱해 완전제곱수가 되게 하는 자연수 승수를 소인수 지수의 짝홀 조건으로 나타내고 주어진 유한 범위에서 모두 찾아 합 또는 개수를 구한다."
+    }
+  ],
+  "exactConnectionRequests": [
+    {
+      "questionUid": "qid_v1_b1b9b4f24a62724d1a5206d65bde5562ac27e821df7b45d297eea353d59478ec",
+      "ordinal": 1,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+        "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_PRIME_COMPOSITE_CLAIM_AUDIT",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [
+          {
+            "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "supportingItemCount": 1,
+            "supportingQuestionUids": [
+              "qid_v1_7bc34e10bd0a5bfb541eb48706d88c5027f2c5caad1145d003206b53a8ae792a"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1"
+          },
+          {
+            "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "supportingItemCount": 2,
+            "supportingQuestionUids": [
+              "qid_v1_3315df648ddacba7f64f5def3cf1ede2a056f231b780235215d1cd25cc819676",
+              "qid_v1_a963094adf9788f1c9c9a4ccc3db7b332994cf9732ab623da1ece66e0ba10443"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-01",
+                "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+                "supportingItemCount": 1,
+                "supportingQuestionUids": [
+                  "qid_v1_7bc34e10bd0a5bfb541eb48706d88c5027f2c5caad1145d003206b53a8ae792a"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_b1b9b4f24a62724d1a5206d65bde5562ac27e821df7b45d297eea353d59478ec"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+                "curriculum": "2022",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-01",
+                "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+                "supportingItemCount": 2,
+                "supportingQuestionUids": [
+                  "qid_v1_3315df648ddacba7f64f5def3cf1ede2a056f231b780235215d1cd25cc819676",
+                  "qid_v1_a963094adf9788f1c9c9a4ccc3db7b332994cf9732ab623da1ece66e0ba10443"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_b1b9b4f24a62724d1a5206d65bde5562ac27e821df7b45d297eea353d59478ec"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-002",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소수와 합성수",
+            "l4": "소수의 성질 활용",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-115",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소수와 합성수",
+            "l4": "소수의 성질 활용",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-002",
+            "existingExactActiveRecordIds": [
+              "M1-RPM-002"
+            ],
+            "action": "REUSE_EXACT_ACTIVE_CONNECTION",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-115",
+            "existingExactActiveRecordIds": [
+              "M1-RPM-115"
+            ],
+            "action": "REUSE_EXACT_ACTIVE_CONNECTION",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e",
+      "ordinal": 2,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_GCD_LCM_VALUE_EVALUATION",
+        "templateKey": "TPL_M1_GCD_LCM_VALUE_EVALUATION_BOTH_DIRECT",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_GCD_LCM_VALUE_EVALUATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_GCD_LCM_VALUE_EVALUATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_GCD_LCM_VALUE_EVALUATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-GCD_LCM"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [],
+        "exactConnectionChecks": [],
+        "newLeafProposalRefs": [
+          "B16_LEAF_GCD_LCM_BOTH"
+        ],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": true
+      }
+    },
+    {
+      "questionUid": "qid_v1_78d77b00afb9c2e2fcef43307e6ceef9deb1d69a03e0ab2ea86bb66e1726cd8d",
+      "ordinal": 3,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+        "templateKey": "TPL_M1_COMMON_DIVISOR_REMAINDER_RECOVERY",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_78d77b00afb9c2e2fcef43307e6ceef9deb1d69a03e0ab2ea86bb66e1726cd8d"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_78d77b00afb9c2e2fcef43307e6ceef9deb1d69a03e0ab2ea86bb66e1726cd8d"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-GCD_LCM"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-008",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수",
+            "l3": "공약수와 최대공약수",
+            "l4": "공약수 조건으로 수 찾기",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-121",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수",
+            "l3": "공약수와 최대공약수",
+            "l4": "공약수 조건으로 수 찾기",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-008",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-121",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_8df73d6d0f1d4da09830a85e28ec5a7eb133aa2fea45c2f079508c0b8bbc2bdc",
+      "ordinal": 4,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+        "templateKey": "TPL_M1_SIMULTANEOUS_PERIODIC_EVENT_START_RETURN_LAPS",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_8df73d6d0f1d4da09830a85e28ec5a7eb133aa2fea45c2f079508c0b8bbc2bdc"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_8df73d6d0f1d4da09830a85e28ec5a7eb133aa2fea45c2f079508c0b8bbc2bdc"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-GCD_LCM"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-012",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수",
+            "l3": "최대공약수·최소공배수의 활용",
+            "l4": "주기·배열·묶음 문제",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-125",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수",
+            "l3": "최대공약수·최소공배수의 활용",
+            "l4": "주기·배열·묶음 문제",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-012",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-125",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_00122e9d234335307c6e0d71eb06985e839ee6e97861ae000a2582fecb7ff7dc",
+      "ordinal": 5,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+        "templateKey": "TPL_M1_NUMBER_SYSTEM_ASSERTION_AUDIT_LIST",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_00122e9d234335307c6e0d71eb06985e839ee6e97861ae000a2582fecb7ff7dc"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_00122e9d234335307c6e0d71eb06985e839ee6e97861ae000a2582fecb7ff7dc"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-014",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수 체계",
+            "l4": "정수와 유리수의 포함 관계",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-127",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수 체계",
+            "l4": "정수와 유리수의 포함 관계",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-014",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-127",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_03fed56f33d9618208f3481a657e522ae2371bb7920dd0586cc551c42184515c",
+      "ordinal": 6,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_RATIONAL_LIST_RANK_SELECTION",
+        "templateKey": "TPL_M1_RATIONAL_LIST_RANK_SELECTION_CORE",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_M1_RATIONAL_LIST_RANK_SELECTION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_03fed56f33d9618208f3481a657e522ae2371bb7920dd0586cc551c42184515c"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_M1_RATIONAL_LIST_RANK_SELECTION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_03fed56f33d9618208f3481a657e522ae2371bb7920dd0586cc551c42184515c"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_RATIONAL_LIST_RANK_SELECTION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-016",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수직선과 대소 관계",
+            "l4": "유리수의 대소 비교",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-129",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수직선과 대소 관계",
+            "l4": "유리수의 대소 비교",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-016",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-129",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_774206932c337f83cf0c2b1d56fc96ccb16f9b7b6b6d93adfc676c20c8f96284",
+      "ordinal": 7,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_INEQUALITY_PHRASE_TRANSLATION",
+        "templateKey": "TPL_M1_INEQUALITY_PHRASE_TRANSLATION_ENDPOINT_LANGUAGE_AUDIT",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_M1_INEQUALITY_PHRASE_TRANSLATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_774206932c337f83cf0c2b1d56fc96ccb16f9b7b6b6d93adfc676c20c8f96284"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_M1_INEQUALITY_PHRASE_TRANSLATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_774206932c337f83cf0c2b1d56fc96ccb16f9b7b6b6d93adfc676c20c8f96284"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_INEQUALITY_PHRASE_TRANSLATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [],
+        "exactConnectionChecks": [],
+        "newLeafProposalRefs": [
+          "B16_LEAF_INEQUALITY_LANGUAGE"
+        ],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": true
+      }
+    },
+    {
+      "questionUid": "qid_v1_3b5d89166faa8a73c1c1e4167e1a9e1daec8517dd704dead0445093ea682b8bb",
+      "ordinal": 8,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_H1_ABSOLUTE_INTEGER_DISTANCE_RANGE_CONSTRAINTS",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "H1_FOUNDATION",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_3b5d89166faa8a73c1c1e4167e1a9e1daec8517dd704dead0445093ea682b8bb"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "H1_FOUNDATION",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_3b5d89166faa8a73c1c1e4167e1a9e1daec8517dd704dead0445093ea682b8bb"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "standardCourse": "중1 수학",
+          "ownerPack": "H1_FOUNDATION",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-018",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "절댓값",
+            "l4": "절댓값 조건으로 수 찾기",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-131",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "절댓값",
+            "l4": "절댓값 조건으로 수 찾기",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-018",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-131",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_6cb416d39b4b5c8ad6e97c605972922221f3156a193243480a816cad0b6e92d0",
+      "ordinal": 9,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_DIVISOR_EXPONENT_REASONING",
+        "templateKey": "TPL_M1_DIVISOR_EXPONENT_REASONING_MEMBERSHIP_SELECT",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_DIVISOR_EXPONENT_REASONING",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_6cb416d39b4b5c8ad6e97c605972922221f3156a193243480a816cad0b6e92d0"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_DIVISOR_EXPONENT_REASONING",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_6cb416d39b4b5c8ad6e97c605972922221f3156a193243480a816cad0b6e92d0"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_DIVISOR_EXPONENT_REASONING",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-004",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "소인수분해를 이용한 약수의 구조",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-117",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "소인수분해를 이용한 약수의 구조",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-004",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-117",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_f83ba0d1887686d2f2fcc32d4ec67a9cca7417d411f58be6e8624ad26500f737",
+      "ordinal": 10,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_PERFECT_SQUARE_MULTIPLIER_RANGE",
+        "templateKey": "TPL_M1_PERFECT_SQUARE_MULTIPLIER_RANGE_CORE",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_PERFECT_SQUARE_MULTIPLIER_RANGE",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_f83ba0d1887686d2f2fcc32d4ec67a9cca7417d411f58be6e8624ad26500f737"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_PERFECT_SQUARE_MULTIPLIER_RANGE",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_f83ba0d1887686d2f2fcc32d4ec67a9cca7417d411f58be6e8624ad26500f737"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_PERFECT_SQUARE_MULTIPLIER_RANGE",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-006",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "약수의 개수",
+            "l4": "조건을 만족하는 자연수 찾기",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-119",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "약수의 개수",
+            "l4": "조건을 만족하는 자연수 찾기",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-006",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-119",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_7d0e148c1ace2bcda3c87790fd9da71028c425c53491e51b6bdd5cf7737fc2d2",
+      "ordinal": 11,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_NUMERIC_DIAGRAM_RELATION_INFERENCE",
+        "templateKey": "TPL_M1_NUMERIC_DIAGRAM_RELATION_INFERENCE_CORE",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_NUMERIC_DIAGRAM_RELATION_INFERENCE",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_7d0e148c1ace2bcda3c87790fd9da71028c425c53491e51b6bdd5cf7737fc2d2"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_NUMERIC_DIAGRAM_RELATION_INFERENCE",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_7d0e148c1ace2bcda3c87790fd9da71028c425c53491e51b6bdd5cf7737fc2d2"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_NUMERIC_DIAGRAM_RELATION_INFERENCE",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [],
+        "exactConnectionChecks": [],
+        "newLeafProposalRefs": [
+          "B16_LEAF_NUMERIC_DIAGRAM"
+        ],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": true
+      }
+    },
+    {
+      "questionUid": "qid_v1_d1e2a5e562749c0630c616f45e1a6afbe7abf2daa0d09d40a18ac15ccabc22ff",
+      "ordinal": 12,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_EVALUATED_EXPRESSION_COMPARISON",
+        "templateKey": "TPL_M1_EVALUATED_EXPRESSION_COMPARISON_EQUALITY_AUDIT",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_EVALUATED_EXPRESSION_COMPARISON",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_d1e2a5e562749c0630c616f45e1a6afbe7abf2daa0d09d40a18ac15ccabc22ff"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_EVALUATED_EXPRESSION_COMPARISON",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_d1e2a5e562749c0630c616f45e1a6afbe7abf2daa0d09d40a18ac15ccabc22ff"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_EVALUATED_EXPRESSION_COMPARISON",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-026",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "혼합 계산",
+            "l4": "거듭제곱이 포함된 혼합 계산",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-139",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "혼합 계산",
+            "l4": "거듭제곱이 포함된 혼합 계산",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-026",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-139",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_bdf57dcfb0a758b021b3549871462984dfc2cc0afc5934c3503ac8b7111ad170",
+      "ordinal": 13,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_OPERATION_LAW_MATCHING",
+        "templateKey": "TPL_M1_OPERATION_LAW_MATCHING_ADDITION_PAIR_GROUPING",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_OPERATION_LAW_MATCHING",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_bdf57dcfb0a758b021b3549871462984dfc2cc0afc5934c3503ac8b7111ad170"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_OPERATION_LAW_MATCHING",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_bdf57dcfb0a758b021b3549871462984dfc2cc0afc5934c3503ac8b7111ad170"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_OPERATION_LAW_MATCHING",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [],
+        "exactConnectionChecks": [],
+        "newLeafProposalRefs": [
+          "B16_SHARED_OPERATION_LAW_LEAF"
+        ],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": true
+      }
+    },
+    {
+      "questionUid": "qid_v1_7d7abdbe2cb5ad7afc838976b50eb0b902cb8f9bdcf0c945e10ec11bb67ecc1f",
+      "ordinal": 14,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_MIXED_OPERATION_AUDIT",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [
+          {
+            "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+            "curriculum": "2022",
+            "standardCourse": "中1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "supportingItemCount": 5,
+            "supportingQuestionUids": [
+              "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+              "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+              "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+              "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+              "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_7d7abdbe2cb5ad7afc838976b50eb0b902cb8f9bdcf0c945e10ec11bb67ecc1f"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+            "status": "EXACT_COURSE_BINDING_GAP",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [
+              {
+                "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+                "curriculum": "2022",
+                "standardCourse": "中1 수학",
+                "standardUnitKey": "M1-03",
+                "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+                "supportingItemCount": 5,
+                "supportingQuestionUids": [
+                  "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+                  "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+                  "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+                  "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+                  "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "sameUnitCourseNames": [
+              "中1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_7d7abdbe2cb5ad7afc838976b50eb0b902cb8f9bdcf0c945e10ec11bb67ecc1f"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-03",
+          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-034",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "일차식의 계산",
+            "l4": "괄호가 있는 일차식 계산",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-147",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "일차식의 계산",
+            "l4": "괄호가 있는 일차식 계산",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-034",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-147",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_617ae4a87c271d4659511918492240ff57cb41ae751ede3b1e820825e407f72f",
+      "ordinal": 15,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_RECIPROCAL_RELATION",
+        "templateKey": "TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_QUOTIENT",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RECIPROCAL_RELATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_617ae4a87c271d4659511918492240ff57cb41ae751ede3b1e820825e407f72f"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RECIPROCAL_RELATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_617ae4a87c271d4659511918492240ff57cb41ae751ede3b1e820825e407f72f"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_RECIPROCAL_RELATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-024",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "곱셈과 나눗셈",
+            "l4": "곱셈·나눗셈 혼합",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-137",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "곱셈과 나눗셈",
+            "l4": "곱셈·나눗셈 혼합",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-024",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-137",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_3c61ff122146cb69a0ad625ed60fb7e115c3950769d750d0d2894266ead589b6",
+      "ordinal": 16,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [
+          {
+            "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "supportingItemCount": 5,
+            "supportingQuestionUids": [
+              "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6",
+              "qid_v1_523e6ed7bac116437727b292456c3a9ce638332418cf7e4c97f93fab031e81c6",
+              "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+              "qid_v1_96b8eb92791789902a541107aae7a2f503b2e2340b0faeeed63c6d2de1876e23",
+              "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1"
+          },
+          {
+            "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+            "curriculum": "2022",
+            "standardCourse": "中1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "supportingItemCount": 3,
+            "supportingQuestionUids": [
+              "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3",
+              "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072",
+              "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-03",
+                "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+                "supportingItemCount": 5,
+                "supportingQuestionUids": [
+                  "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6",
+                  "qid_v1_523e6ed7bac116437727b292456c3a9ce638332418cf7e4c97f93fab031e81c6",
+                  "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+                  "qid_v1_96b8eb92791789902a541107aae7a2f503b2e2340b0faeeed63c6d2de1876e23",
+                  "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_3c61ff122146cb69a0ad625ed60fb7e115c3950769d750d0d2894266ead589b6"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+            "status": "EXACT_COURSE_BINDING_GAP",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [
+              {
+                "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+                "curriculum": "2022",
+                "standardCourse": "中1 수학",
+                "standardUnitKey": "M1-03",
+                "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+                "supportingItemCount": 3,
+                "supportingQuestionUids": [
+                  "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3",
+                  "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072",
+                  "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "sameUnitCourseNames": [
+              "中1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_3c61ff122146cb69a0ad625ed60fb7e115c3950769d750d0d2894266ead589b6"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-03",
+          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-027",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "문자의 사용",
+            "l4": "문자로 수량 나타내기",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-140",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "문자의 사용",
+            "l4": "문자로 수량 나타내기",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-027",
+            "existingExactActiveRecordIds": [
+              "M1-RPM-027"
+            ],
+            "action": "REUSE_EXACT_ACTIVE_CONNECTION",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-140",
+            "existingExactActiveRecordIds": [
+              "M1-RPM-140"
+            ],
+            "action": "REUSE_EXACT_ACTIVE_CONNECTION",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_80da6c947c59171fc95693c7754ba549072376af63992f688519452f9eba2b9d",
+      "ordinal": 17,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_OPERATION_NOTATION_CORE",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_80da6c947c59171fc95693c7754ba549072376af63992f688519452f9eba2b9d"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_80da6c947c59171fc95693c7754ba549072376af63992f688519452f9eba2b9d"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-03",
+          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-028",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "문자의 사용",
+            "l4": "곱셈·나눗셈 기호 생략",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-141",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "문자의 사용",
+            "l4": "곱셈·나눗셈 기호 생략",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-028",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-141",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_7d3d11d607496b47df3b89aaf59bc7957bb1b2adc28ceb1a1344ed208cf28b24",
+      "ordinal": 18,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+        "templateKey": "TPL_M1_NUMERIC_SUBSTITUTION_SIGNED_POWER_ABSOLUTE",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_7d3d11d607496b47df3b89aaf59bc7957bb1b2adc28ceb1a1344ed208cf28b24"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_7d3d11d607496b47df3b89aaf59bc7957bb1b2adc28ceb1a1344ed208cf28b24"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-03",
+          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-029",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "식의 값",
+            "l4": "대입하여 식의 값 구하기",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-142",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "식의 값",
+            "l4": "대입하여 식의 값 구하기",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-029",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-142",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_cc67e1d2236c04d0d809f9390c0e9fba8747a4a6e3e214effcb7b6f679d30c85",
+      "ordinal": 19,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_OPERATION_LAW_MATCHING",
+        "templateKey": "TPL_M1_OPERATION_LAW_MATCHING_DISTRIBUTIVE_BLANKS",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_OPERATION_LAW_MATCHING",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_cc67e1d2236c04d0d809f9390c0e9fba8747a4a6e3e214effcb7b6f679d30c85"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_OPERATION_LAW_MATCHING",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_cc67e1d2236c04d0d809f9390c0e9fba8747a4a6e3e214effcb7b6f679d30c85"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_OPERATION_LAW_MATCHING",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [],
+        "exactConnectionChecks": [],
+        "newLeafProposalRefs": [
+          "B16_SHARED_OPERATION_LAW_LEAF"
+        ],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": true
+      }
+    },
+    {
+      "questionUid": "qid_v1_4d9b67cc2879447a511085a249d14859edc4a3fed8872a151fef17864e9efeda",
+      "ordinal": 20,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_POLYNOMIAL_STRUCTURE",
+        "templateKey": "TPL_M1_POLYNOMIAL_STRUCTURE_TERM_COEFFICIENT_AUDIT",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_POLYNOMIAL_STRUCTURE",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_4d9b67cc2879447a511085a249d14859edc4a3fed8872a151fef17864e9efeda"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_POLYNOMIAL_STRUCTURE",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_4d9b67cc2879447a511085a249d14859edc4a3fed8872a151fef17864e9efeda"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_POLYNOMIAL_STRUCTURE",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-03",
+          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [],
+        "exactConnectionChecks": [],
+        "newLeafProposalRefs": [
+          "B16_SHARED_POLY_LEAF"
+        ],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": true
+      }
+    },
+    {
+      "questionUid": "qid_v1_38a1340b08c69570194c2e59620b9f507298de8240f62318fd3240509b510280",
+      "ordinal": 21,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [
+          {
+            "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+            "curriculum": "2022",
+            "standardCourse": "中1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "supportingItemCount": 5,
+            "supportingQuestionUids": [
+              "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+              "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+              "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+              "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+              "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_38a1340b08c69570194c2e59620b9f507298de8240f62318fd3240509b510280"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+            "status": "EXACT_COURSE_BINDING_GAP",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [
+              {
+                "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+                "curriculum": "2022",
+                "standardCourse": "中1 수학",
+                "standardUnitKey": "M1-03",
+                "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+                "supportingItemCount": 5,
+                "supportingQuestionUids": [
+                  "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+                  "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+                  "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+                  "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+                  "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "sameUnitCourseNames": [
+              "中1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_38a1340b08c69570194c2e59620b9f507298de8240f62318fd3240509b510280"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-03",
+          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-034",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "일차식의 계산",
+            "l4": "괄호가 있는 일차식 계산",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-147",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "일차식의 계산",
+            "l4": "괄호가 있는 일차식 계산",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-034",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-147",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_7dc6a6977c4cf62e19d225b3638903a2a1ad03834acc3e62e065e1a5562bd9b0",
+      "ordinal": 22,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_COMMON_MULTIPLE_CONDITION",
+        "templateKey": "TPL_M1_COMMON_MULTIPLE_SHARED_REMAINDER_BOUND",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_COMMON_MULTIPLE_CONDITION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_7dc6a6977c4cf62e19d225b3638903a2a1ad03834acc3e62e065e1a5562bd9b0"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_COMMON_MULTIPLE_CONDITION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_7dc6a6977c4cf62e19d225b3638903a2a1ad03834acc3e62e065e1a5562bd9b0"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_COMMON_MULTIPLE_CONDITION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-GCD_LCM"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-011",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수",
+            "l3": "최대공약수·최소공배수의 활용",
+            "l4": "나누어떨어짐 조건",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-124",
+            "scope": "M1-1",
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수",
+            "l3": "최대공약수·최소공배수의 활용",
+            "l4": "나누어떨어짐 조건",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-011",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-124",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_ad310d4a20e547863386e0ce515e5f696516cd578e1e9b74b4379caf60ba8d71",
+      "ordinal": 23,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+        "templateKey": "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_TWO_NESTED_QUOTIENT",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_ad310d4a20e547863386e0ce515e5f696516cd578e1e9b74b4379caf60ba8d71"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_ad310d4a20e547863386e0ce515e5f696516cd578e1e9b74b4379caf60ba8d71"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-02",
+          "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-025",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "혼합 계산",
+            "l4": "괄호가 있는 혼합 계산",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-138",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "혼합 계산",
+            "l4": "괄호가 있는 혼합 계산",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-025",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-138",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    },
+    {
+      "questionUid": "qid_v1_aec6efb9551263f18b6961aa0177273d36e14a43afc72c45ee7d5d17acf62d01",
+      "ordinal": 24,
+      "canonicalCandidate": {
+        "problemTypeKey": "PT_M1_CONTEXT_QUANTITY_EXPRESSION_CONSTRUCTION",
+        "templateKey": "TPL_M1_CONTEXT_QUANTITY_EXPRESSION_CONSTRUCTION_CORE",
+        "problemTypeStatus": "UNREGISTERED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_PROPOSAL",
+        "sourceProjection": "NOT_APPLIED; official Resolver only"
+      },
+      "binding": {
+        "sourceCurriculum": "UNKNOWN",
+        "sourceCurriculumOrigin": "UNKNOWN; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_CONTEXT_QUANTITY_EXPRESSION_CONSTRUCTION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_aec6efb9551263f18b6961aa0177273d36e14a43afc72c45ee7d5d17acf62d01"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_CONTEXT_QUANTITY_EXPRESSION_CONSTRUCTION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_aec6efb9551263f18b6961aa0177273d36e14a43afc72c45ee7d5d17acf62d01"
+            ],
+            "applyGuard": "SOURCE_CURRICULUM_EVIDENCE_REQUIRED"
+          }
+        ],
+        "candidateBinding": {
+          "problemTypeKey": "PT_M1_CONTEXT_QUANTITY_EXPRESSION_CONSTRUCTION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
+          "standardUnitKey": "M1-03",
+          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
+        "sourceOnlyGuard": true
+      },
+      "rpm": {
+        "existingComparisonsReused": [
+          {
+            "curriculum": "2015",
+            "recordId": "M1-RPM-027",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "문자의 사용",
+            "l4": "문자로 수량 나타내기",
+            "exactSemanticLeaf": true
+          },
+          {
+            "curriculum": "2022",
+            "recordId": "M1-RPM-140",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "문자의 사용",
+            "l4": "문자로 수량 나타내기",
+            "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-027",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-140",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          }
+        ],
+        "newLeafProposalRefs": [],
+        "operation": "Add approved exact PT/TPL mapping only after semantic registry exists; preserve existing DIRECT and LOCKED rows",
+        "noExactLeafClaim": false
+      }
+    }
+  ],
+  "author": "META_B_RESUME_HANDOVER_FROM_META_A",
+  "createdAt": "2026-11-14T13:57:28.764659+00:00",
+  "frozenBRegistryModified": false,
+  "externalReferencePolicy": "원래 워커의 실제 파일·키·SHA를 고정한다. 대표키 alias 통합은 root index에서 수행하고 원시 워커 기록은 바꾸지 않는다."
+}
