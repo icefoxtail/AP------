@@ -39,7 +39,7 @@ from ellipse_figure import exact_scalar,_value,_text,MODEL_VERSION,CAPABILITY,PO
 
 LINE_ID=re.compile(r"^[A-Za-z][A-Za-z0-9_]{0,7}$")
 TOP_KEYS={'capability','conic','conics','points','segments','polygons','lines','caption',
-          'sourceConditions','newVisualInformation','sourceQuote'}
+          'sourceConditions','newVisualInformation','sourceQuote','arch','accessibilityDescription'}
 CONIC_KEYS={'kind','vertex','p','axis'}
 HYPERBOLA_KEYS={'kind','center','aSquared','bSquared','transverse'}
 CIRCLE_KEYS={'kind','center','rSquared'}
@@ -708,6 +708,35 @@ def produce(plan):
         if not isinstance(raw.get('id'),str) or not raw['id']: _fail('ELLIPSE_POLYGON_INVALID')
         polygons.append({'id':raw['id'],'points':members,'fill':fill})
 
+    arch=None
+    if 'arch' in plan:
+        raw=plan['arch']
+        if (not isinstance(raw,dict) or set(raw)!={'ground','laser'}
+            or any(not isinstance(raw[key],str) or not raw[key] for key in ('ground','laser'))
+            or raw['ground']==raw['laser'] or multi or par['kind']!='PARABOLA' or par['axis']!='Y' or not _negative(par['p'])):
+            _fail('PARABOLIC_ARCH_INVALID')
+        if any(raw.get('coordinates') is True for raw in raw_points) or any(not raw.get('hidden') for raw in raw_lines):
+            _fail('PARABOLIC_ARCH_COORDINATE_CUES')
+        by_segment={segment['id']:segment for segment in segments}
+        if len(by_segment)!=len(segments) or any(key not in by_segment for key in raw.values()):
+            _fail('PARABOLIC_ARCH_SEGMENT_REQUIRED')
+        ground,laser=(by_segment[raw[key]] for key in ('ground','laser'))
+        a,b=(resolved[ground[key]] for key in ('from','to'))
+        if ground['dashed'] or not _negative(a[0]-b[0]) or not _is_zero(a[1]-b[1]) or any(
+            not _is_zero(_residual(par,*point)) for point in (a,b)
+        ):
+            _fail('PARABOLIC_ARCH_GROUND_INVALID')
+        contact=next((point for point in raw_points if point['id']==laser['from']),{})
+        tx,ty=resolved[laser['from']]
+        cx,cy=resolved[laser['to']]
+        if (laser['dashed'] or contact.get('kind')!='TANGENT_FROM' or contact.get('from')!=laser['to']
+            or not _is_zero(cy-a[1]) or not (_negative(cx-a[0]) or _negative(b[0]-cx))
+            or not _negative(a[0]-tx) or not _negative(tx-b[0]) or not _negative(a[1]-ty)):
+            _fail('PARABOLIC_ARCH_LASER_INVALID')
+        arch={'from':_value(a[0]),'to':_value(b[0]),'contactX':_value(tx)}
+    elif 'accessibilityDescription' in plan:
+        _fail('ELLIPSE_PLAN_INVALID')
+
     points=[]
     for raw in raw_points:
         pid=raw['id'];px,py=resolved[pid]
@@ -745,4 +774,5 @@ def produce(plan):
     if multi: model['conics']=[dict(_conic_public(one),id=cid) for cid,one in curves.items()]
     else: model['conic']=_conic_public(par)
     model.update({'points':points,'segments':segments,'polygons':polygons,'lines':lines_public,'bbox':bbox})
+    if arch is not None: model['arch']=arch
     return model
