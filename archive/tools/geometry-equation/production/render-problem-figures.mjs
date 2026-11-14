@@ -5,6 +5,7 @@ import { pythonWorker } from './worker.mjs';
 import { composeConstructionCandidate } from './construction-candidate-svg-v1.mjs';
 import { checkSetDiagramPlan, composeSetDiagramFigure, solveDiagram } from './set-diagram-v1.mjs';
 import { captionText, compositePanels, composeCompositeCandidate, isSetPanel } from './composite-candidate-svg-v1.mjs';
+import { composeEllipseFigure, solveEllipseFigure } from './ellipse-figure-v1.mjs';
 import { loadBank } from '../build-visual-render-matrix.mjs';
 import { repoRoot, launchBrowser } from '../visual-browser-runtime.mjs';
 
@@ -23,7 +24,7 @@ for (const { slot, plan, typography } of config.figures) {
   if (seen.has(slot)) throw Error('Duplicate slot: ' + slot);
   seen.add(slot);
   if (!plan?.capability) throw Error('Missing figure plan: ' + slot);
-  if (!['set-diagram-figure-v1', 'composite-panels-v1'].includes(plan.capability)
+  if (!['set-diagram-figure-v1', 'composite-panels-v1', 'ellipse-figure-v1'].includes(plan.capability)
     && !plan.graphPlan && !plan.mathPlan) throw Error('Unsupported problem figure plan: ' + plan.capability);
   if (plan.capability === 'set-diagram-figure-v1') checkSetDiagramPlan(plan);
   if (typeof typography?.baseFontPx !== 'number' || typeof typography?.displayScale !== 'number') throw Error('Typography is required: ' + slot);
@@ -48,6 +49,9 @@ async function composeProblem(plan, identity, typographyPolicy, browser) {
   const context = { identity, typographyPolicy, browser };
   if (plan.capability === 'set-diagram-figure-v1') {
     return composeSetDiagramFigure({ ...context, plan, model: checkSetDiagramPlan(plan) });
+  }
+  if (plan.capability === 'ellipse-figure-v1') {
+    return composeEllipseFigure({ ...context, plan, model: await solveEllipseFigure(plan) });
   }
   if (plan.capability === 'composite-panels-v1') {
     const panels = [];
