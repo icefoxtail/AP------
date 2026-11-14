@@ -270,7 +270,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "1에서 9까지의 아홉 개의 자연수를 모두 사용하여 $3 \\times 3$ 격자의 9개 빈칸을 모두 채우려고 한다. 정가운데 칸에는 홀수를 넣고, 회전하여 일치하는 것은 같은 것으로 볼 때, 숫자를 채우는 경우의 수가 $7! \\cdot n$이다. $n$의 값은?<br><svg viewBox=\"0 0 300 300\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"100\" y1=\"50\" x2=\"100\" y2=\"250\" stroke=\"#000\" stroke-width=\"2\"/>\n  <line x1=\"200\" y1=\"50\" x2=\"200\" y2=\"250\" stroke=\"#000\" stroke-width=\"2\"/>\n  <line x1=\"50\" y1=\"100\" x2=\"250\" y2=\"100\" stroke=\"#000\" stroke-width=\"2\"/>\n  <line x1=\"50\" y1=\"200\" x2=\"250\" y2=\"200\" stroke=\"#000\" stroke-width=\"2\"/>\n  <rect x=\"50\" y=\"50\" width=\"200\" height=\"200\" stroke=\"#000\" fill=\"none\" stroke-width=\"2\"/>\n</svg>",
+    "content": "1에서 9까지의 아홉 개의 자연수를 모두 사용하여 $3 \\times 3$ 격자의 9개 빈칸을 모두 채우려고 한다. 정가운데 칸에는 홀수를 넣고, 회전하여 일치하는 것은 같은 것으로 볼 때, 숫자를 채우는 경우의 수가 $7! \\cdot n$이다. $n$의 값은?<br><img src=\"assets/images/25_제일고_1학기_중간_고2_확률과통계_유형확인/q10-problem-v2.svg\" style=\"display:block; margin:8px auto; width:230px; max-width:100%; height:auto; max-height:190px; object-fit:contain\" alt=\"같은 크기의 아홉 칸으로 나뉜 3×3 격자\">",
     "choices": [
       "① $6$",
       "② $8$",
