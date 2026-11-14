@@ -31,7 +31,7 @@ window.questionBank = [
     "sourceQid": 1,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-001",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
@@ -160,8 +160,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_POSITIVE", "COND_NEGATIVE"],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
   },
   {
     "id": 4,
@@ -193,9 +193,9 @@ window.questionBank = [
     "sourceQid": 4,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-002",
-    "difficultyBucket": 1,
-    "difficultyConfidence": "UNKNOWN",
-    "difficultyBoundaryFlag": "UNKNOWN",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "sourceIdentityKey": "22_신흥중_1학기_중간_중3_수학:q4",
     "provenance": {
@@ -248,8 +248,8 @@ window.questionBank = [
     "sourceMode": "AUDITED_REPAIR",
     "primaryRpmRef": "M3-RPM-002",
     "difficultyBucket": 3,
-    "difficultyConfidence": "UNKNOWN",
-    "difficultyBoundaryFlag": "UNKNOWN",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "UNKNOWN",
     "sourceIdentityKey": "22_신흥중_1학기_중간_중3_수학:q5",
     "provenance": {
@@ -275,7 +275,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": ["CC_SQUARE", "CC_NUMBER_DIVISOR_MULTIPLE"],
+    "crossConceptKeys": ["CC_PRIME_FACTORIZATION_SQUARE", "CC_SQUARE_AREA"],
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
@@ -332,10 +332,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE"
   },
   {
     "id": 7,
@@ -421,7 +419,7 @@ window.questionBank = [
     "sourceQid": 8,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-004",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
@@ -443,7 +441,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "NONE"
   },
   {
     "id": 9,
@@ -475,7 +473,7 @@ window.questionBank = [
     "sourceQid": 9,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-004",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
@@ -499,7 +497,7 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "NONE"
   },
   {
     "id": 10,
@@ -585,9 +583,9 @@ window.questionBank = [
     "sourceQid": 11,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-003",
-    "difficultyBucket": 1,
-    "difficultyConfidence": "UNKNOWN",
-    "difficultyBoundaryFlag": "UNKNOWN",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "sourceIdentityKey": "22_신흥중_1학기_중간_중3_수학:q11",
     "provenance": {
@@ -639,7 +637,7 @@ window.questionBank = [
     "sourceQid": 12,
     "sourceMode": "AUDITED_REPAIR",
     "primaryRpmRef": "M3-RPM-005",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
@@ -711,7 +709,7 @@ window.questionBank = [
     "sourceQid": 13,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-004",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
@@ -733,7 +731,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "NONE"
   },
   {
     "id": 14,
@@ -786,8 +784,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_RANGE", "COND_INTEGER"],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_INTEGER", "COND_RANGE"],
+    "integrationPattern": "NONE"
   },
   {
     "id": 15,
@@ -819,7 +817,7 @@ window.questionBank = [
     "sourceQid": 15,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-007",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
@@ -833,15 +831,15 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "NONE"
   },
   {
     "id": 16,
@@ -927,7 +925,7 @@ window.questionBank = [
     "sourceQid": 17,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-008",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
@@ -949,7 +947,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "NONE"
   },
   {
     "id": 18,
@@ -981,7 +979,7 @@ window.questionBank = [
     "sourceQid": 18,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-014",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
@@ -1003,7 +1001,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "NONE"
   },
   {
     "id": 19,
@@ -1073,9 +1071,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": ["CC_SQUARE"],
+    "crossConceptKeys": ["CC_SQUARE_AREA", "CC_GEOMETRIC_AREA_VOLUME_FORMULA"],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 20,
@@ -1161,7 +1159,7 @@ window.questionBank = [
     "sourceQid": 21,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-030",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
@@ -1236,7 +1234,7 @@ window.questionBank = [
   {
     "id": 23,
     "score": 5,
-    "level": "상",
+    "level": "중",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -1257,7 +1255,7 @@ window.questionBank = [
     "sourceQid": 23,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-002",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
@@ -1278,11 +1276,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE",
-      "COND_NEGATIVE"
-    ],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE"
   },
   {
     "id": 24,
@@ -1308,7 +1303,7 @@ window.questionBank = [
     "sourceQid": 24,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-011",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
@@ -1329,8 +1324,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "conditionKeys": ["COND_RATIONAL"],
+    "integrationPattern": "NONE"
   },
   {
     "id": 25,
@@ -1356,7 +1351,7 @@ window.questionBank = [
     "sourceQid": 25,
     "sourceMode": "ORIGINAL",
     "primaryRpmRef": "M3-RPM-033",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
