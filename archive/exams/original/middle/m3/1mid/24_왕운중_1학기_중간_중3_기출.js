@@ -658,7 +658,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/24_왕운중_1학기_중간_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 모식도이며 a의 값은 정해져 있지 않으므로 그림에 표시한 길이 및 넓이 관계를 읽는다. 두 패널에서 주황색 A 직사각형을 그림1의 오른쪽에서 그림2의 아래쪽으로 옮긴다. 그림2의 모서리에는 한 변 2인 빈 정사각형이 남는다.",
+    "solutionImageCaption": "모식도이며 a의 값은 정해져 있지 않으므로 그림에 표시한 길이 및 넓이 관계를 읽는다. 표시된 a−2와 2의 길이 관계 및 A의 넓이 보존으로 (a+2)(a−2)=a²−2²이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -767,6 +771,10 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/24_왕운중_1학기_중간_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각을 이루는 두 변의 길이 1과 2√6, 빗변 길이 5를 표시한 직각삼각형.",
+    "solutionImageCaption": "계수 비교로 a=3, b=2이므로 삼각형의 넓이는 ½×1×2√6=√6이다. 답: √6.",
+    "solutionImageSize": "full"
   }
 ];
