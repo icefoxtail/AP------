@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "m2-s1-scoped-amendment-v1",
+  "examId": "E004",
+  "reconstructedBy": "M2_META_REVIEWER_A_RESUME_59E0F5BD3A77",
+  "createdAt": "2026-11-14T10:41:56.957555+00:00",
+  "reconstructionStatus": "NEW_EVIDENCE_FROM_REMOTE_SOURCE_NOT_OLD_BYTES",
+  "sourceArchiveFile": "original/middle/m2/1final/26_왕의중_1학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "e119850a3b621efe0509d1340a0bc6b92de0a0fc",
+  "originalReviewSha256": "3d5b55fe16c11383e6465d22fccb8dde754a90352290b6e1ea8613976e091064",
+  "originalFourSlotSha256": "72a578fad375d81832a5091544790f3cb13d316c11b25ceba686be82dd21645a",
+  "originalIndependentSha256": "2152672873679d35f942f9189ff51c28e2bbd8633c8ee371a1608626a03a07c1",
+  "pendingDecisionsReused": true,
+  "itemChanges": [
+    {
+      "sourceOrdinal": 20,
+      "field": "finalDifficulty.legacyLevelCompatibility",
+      "before": "STRONG_CONFLICT",
+      "after": "NORMAL"
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "after.legacyLevelCompatibility",
+      "before": "STRONG_CONFLICT",
+      "after": "NORMAL"
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 20,
+      "after": {
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "reason": "Independently accepted current level 하 / numeric 1 are normal under v1.3 section 11; preserve historical STRONG_CONFLICT in original author evidence."
+    }
+  ],
+  "fourSlotChanges": [
+    {
+      "sourceOrdinal": 18,
+      "action": "ADD",
+      "slot": "condition",
+      "atom": {
+        "term": "조건",
+        "termId": 394,
+        "src": "stem",
+        "quote": "$b\\ne0$"
+      }
+    }
+  ],
+  "candidateChanges": [
+    {
+      "term": "0이아님",
+      "beforeParent": "실수",
+      "afterParent": "조건"
+    }
+  ],
+  "actualFocusedRead": [
+    {
+      "sourceOrdinal": 18,
+      "sourceQuote": "(단, $b\\ne0$)",
+      "dictionaryEntry": {
+        "termId": 394,
+        "ko": "조건",
+        "en": "OPEN_SENTENCE"
+      },
+      "reason": "Explicit nonzero predicate in source restricts b; no real-number domain is stated. Existing candidate is retained and registered predicate parent is added in the same condition slot."
+    },
+    {
+      "sourceOrdinal": 20,
+      "sourceQuote": "B에서는 1분에 3 L씩",
+      "existingSolutionQuote": "B는 분당 3 L, A는 분당 1 L씩 줄어들어",
+      "reason": "Current accepted 하/1 is retained. Only compatibility label aligns; historical strong conflict stays in author/root evidence."
+    }
+  ],
+  "unmodifiedEvidencePolicy": "Original author and independent files are not overwritten. This artifact is new reconstruction of the two adjudicated scopes, not recovery of reported old bytes.",
+  "registrationStatus": "NOT_RUN",
+  "sourceContentChanged": false
+}

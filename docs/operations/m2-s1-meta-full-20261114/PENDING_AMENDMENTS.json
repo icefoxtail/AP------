@@ -1,7 +1,7 @@
 {
   "schemaVersion": "m2-s1-pending-adjudications-v1",
   "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
-  "status": "PENDING_APPLICATION_ENVIRONMENT_UNAVAILABLE",
+  "status": "APPLYING",
   "scope": "Preserve the already reviewed scoped decisions; do not alter student content or shared registries. Recheck source/artifact hashes, apply one exam at a time, run native validators, publish and read remote HEAD.",
   "completed": [
     {
@@ -153,9 +153,9 @@
     {
       "examId": "E004",
       "sourceArchiveFile": "original/middle/m2/1final/26_왕의중_1학기_기말_중2_기출.js",
-      "applicationStatus": "NOT_APPLIED",
+      "applicationStatus": "APPLIED_VALIDATED_REMOTE_COMMIT_IN_CURRENT_PUBLICATION",
       "rootAdjudicatedInSession": true,
-      "postChangeNativeValidation": "NOT_RUN",
+      "postChangeNativeValidation": "PASS",
       "changes": [
         {
           "ordinals": [
@@ -185,7 +185,10 @@
           "path": "workers/A/E004.candidate-parent-amendment.json",
           "sha256": "b171b19e367b50e70584dae3253fdb17a5b95dd902b80bf7cebdcea64e47a8d2"
         }
-      ]
+      ],
+      "currentArtifactIndex": "docs/operations/m2-s1-meta-full-20261114/exams/E004/CURRENT.json",
+      "appliedBy": "GPT_ROOT_59E0F5BD3A77",
+      "appliedAt": "2026-11-14T10:49:17.426542+00:00"
     },
     {
       "examId": "E005",
