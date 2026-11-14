@@ -370,7 +370,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "content": "$\\left(\\frac{-2y^a}{3x^2}\\right)^b = \\frac{cy^{12}}{27x^d}$일 때, 정수 $a, b, c, d$에 대하여 $a+b+c+d$의 값은? (단, $x\\ne0$이고, $b$는 주어진 등식을 만족시키는 양의 정수 중 최댓값이다.)",
+    "content": "$\\left(\\frac{-2y^a}{3x^2}\\right)^b = \\frac{cy^{12}}{27x^d}$일 때, 정수 $a, b, c, d$에 대하여 $a+b+c+d$의 값은? (단, 모든 양수 $x,y$에 대하여 등식이 성립하며, $b$는 가능한 양의 정수 중 최댓값이다.)",
     "choices": [
       "① $-1$",
       "② $1$",
