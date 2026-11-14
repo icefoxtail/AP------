@@ -1,0 +1,1780 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/1final/21_풍덕중_1학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "b9b7073b63d004a43822e51034bf4b8d16e2197e",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+    "at": "2026-11-14T14:38:34.188416+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_7dcae05b64b29555f9eaa4bd751f3bd899cc35f885d361b749c2cdf21cdfa158",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7f8c047347611df6cd7f3023d67852bfb42c7ae22ed5716c4e40d1a36e4330b8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5e76ba5eda81aed95b057a420f1809570fd887d43a0208d7cf1e6f00929b86ad"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$2(x-y+1)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "알맞은 식"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "괄호 있는 다항식의 빈 식 복원",
+        "classification": "식의역연산후괄호를풀어동류항으로정리하는구조. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_92f6fc163443c354a404a6396250927ac225d188d40169c4162b5b289665a7c3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "df07e579dc6e07613af4bfdcfc90e90838ea8d56483cd6fd5dc06ddade15f4fd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "be5fdd3307c73f19c80d435eb89dd6f62cd134e82a963d1a46844b05b33b2d5b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "choices",
+            "quote": "$x^2+2x-3-2x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차식",
+            "termId": 37,
+            "src": "stem",
+            "quote": "$x$에 대한 이차식"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "x에 대한 이차식 정의 판정",
+        "classification": "정리후x에대한최고차수2인지구별하는정의과제. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_e3da9e05ca494c818e4372ca78d72a1436fb2f7eb5e14a2a77d9d0b13393e1f9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "db99184209c15cc7d2c769dffe41fd8287047b9a15d969531aa7ab5b9e890aa4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "058b2dd80481a051b68ba664a85be23a96e5671f557abf428d0b3705635486e7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$(-x^2+x+1)+2(x^2-3x+2)=Ax^2+Bx+C$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "stem",
+            "quote": "$A+B+C$의 값"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$A+B+C$의 값"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "다항식의 계수합",
+        "classification": "전개정리와x=1의식값활용이가능한구조로원해설없이실제주방법을하나로확정하지않는다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_f4975b88b13d5f120dfa2dc9ce25e9951aa31f0faded6277b8954e10c478e1b5",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "269f1e0fde386a2614d5be86f59e7bda27adc98cd411f4efe15ce7cb714cbb49"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c2d6844470fca011cc7221a8cd1cf331de454c4f7821bf09fd9e972a5e17cb42"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원기둥",
+            "termId": 711,
+            "src": "stem",
+            "quote": "원기둥"
+          },
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "밑넓이가 $3x$"
+          },
+          {
+            "term": "부피",
+            "termId": 219,
+            "src": "stem",
+            "quote": "$6x^2-12xy$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "termId": 218,
+            "src": "stem",
+            "quote": "원기둥의 높이"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "원기둥 높이의 다항식 나눗셈",
+        "classification": "주어진부피/밑넓이로높이를정하는다항식÷단항식구조. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_445af3284b563f4fd7e54ef4165e6281e5f4be72ea4605827b70c8f76c52eae4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aac8b879d2be3b1307a13e8ed44ccdfabd7c42094837d57a404eedfd248ceb6a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4cdf014a4a1e43c0ee8b1ccfb74dab4791938efa48018c0e09de16f592ecd985"
+        }
+      ],
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "choices",
+            "quote": "x+3 > 20"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "stem",
+            "quote": "문장을 부등식으로 나타낸 것"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳은 것"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "문장과 부등식 모델 비교",
+        "classification": "속력·가격·금액·수의문장을엄격/비엄격부등식으로바르게번역했는지판정한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_01966fb26e964186dea84814871b4f4e75e7699bab9c5b0ef6bd987ef7e1bf89",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "89a331cbee977286a875aa83f700db3b9c371207b71e0066ebb8ee0d18b87ca3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cb4012456a314480d6eb27362a61ad072ee5a8b082b594c3838b6212a82276d3"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "choices",
+            "quote": "$a-3 < b-3$이면 $a < b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          },
+          {
+            "term": "부등식의성질",
+            "termId": 654,
+            "src": "choices",
+            "quote": "$-2a > -2b$ 이면 $a < b$"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "부등식 변형의 성질",
+        "classification": "양수/음수곱셈나눗셈과덧셈변형의방향보존을비교한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_ce6543ce056478ba8d5e9ed36ecdb7a826186bf1667903eb362c71acaed28c59",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "979a78b9a7c3b35440c703080da4c49b96203b1fa477d7e1a23a95515d0ed5ea"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "40f84b4c69b5683b80d3bd0e80fb6b9fa4a39ff03dac5700398c529ac86dd72f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "$x+2 > 3x-4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해의 개수"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "해의 개수"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "$x$의 값이 자연수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "자연수 부등식 해의 개수",
+        "classification": "일차부등식해범위에서자연수를세는구조. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3adb00f249059e4d1230bd06293cdd6d6b0601e73ef308b6980fc8e0224c9fb3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "89a1459004c159fe74d89e4e1042424c975fb67561b13d73b77472fa5b240f51"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b56c88e991afabcd164784429abcd8c50b4c713cfd7c608e7b372fe823bfbeb0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "일차부등식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "일차부등식의 해가 $x \\le -1$인 것은"
+          },
+          {
+            "term": "해집합",
+            "termId": 83,
+            "src": "stem",
+            "quote": "$x \\le -1$"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "지정된 해와 여러 부등식의 비교",
+        "classification": "기본형과분수·소수형이독립보기로주어져단일leaf유보하며목표해와보기관계에내용부채가있다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_86005e09760c4eaab6141fc6e30f92d98f56fe864801ea5055c026b1b4681069",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dca8325aa1fb9e870888376544985b650de6a0c386016d2791fad3c2d5d42ac5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d314f13032447e94ba7e106869f900819cdb4101334f2a6c48081987734e321c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "두 일차부등식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "해집합",
+            "termId": 83,
+            "src": "stem",
+            "quote": "해가 서로 같을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 부등식의 동일한 해 경계",
+        "classification": "두해집합이같아지는매개계수조건을정한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_c0650193b85fa2bf12cc5f6c78ecad5f6203200da3c81f6591ea3b14ea17782d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "94bf83ddb7a61fe4da9156f246f87654c3683952bdc2cc38547e47eb379424c0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ec7b3e0045805402689c1cfeb6d650f5eabf415e873093f347d98bd815b9ba26"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "$\\frac{1}{5}(x+a) \\le 3.6-0.5x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "수 $a$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "정수",
+            "termId": 2,
+            "src": "stem",
+            "quote": "가장 큰 정수가 $4$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "최대정수해로 계수 경계",
+        "classification": "분수소수부등식의최대정수해조건을계수허용범위에적용하는구조. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_667d0795c02137ec58677ba3b58efdad58bd09048602e1d50a55ae2089062a48",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "780c910558d61806899e460656ff20b8539277e1425436a9808e497198b44b41"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cd8864ee5a0c27cf23f492df68753c8ccc21b33a7ee836efc2b71ee28317217b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$x+y$의 값"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$x+y$"
+          },
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$x+y$"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "평행사변형 대변과 대각",
+        "classification": "실제그림의대변5와대각65도를목표길이/각에대응한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_8b765e48026eac1a69c5919568795b35f9324626678ca40130ccb5ee71e4b70f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e95e7fc491031af236e851ff9f69f1582064252a3ff6dd4c15c2de8104a02c71"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c4a167c3a6663b2e5c8d995976783d5f280e0fec6ed210235acf017bd22f066"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "다음 사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형은 모두"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "몇 개인가"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "여러 사각형의 평행사변형 판정",
+        "classification": "실제여섯그림의변·각·대각선조건이독립으로존재하여192/193을단일강제하지않는다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_db5249110c96408f8b5e5c34dfc6774b2c34c4348923a519c81fcaef9812c439",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7761ab31c79fa1ad263e6843511dc5674036824d083ed7863deff58b4d8a3002"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2fa0f866651580b7a730335ee2b548d0e6da3e8a62eca8dd4459ba7f107ba40c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{\\text{AB}}=7, \\overline{\\text{BC}}=10$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{\\text{DE}}$의 길이"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "termId": 717,
+            "src": "stem",
+            "quote": "$\\angle\\text{B}$의 이등분선"
+          },
+          {
+            "term": "직선",
+            "termId": 143,
+            "src": "stem",
+            "quote": "연장선"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "각이등분선과 연장변 길이",
+        "classification": "평행선각과각이등분으로같은길이를만든후연장부분의차를구하는구조. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_10ced0ce2d30ef09a13a669e8bf12751388f918f6ef4e8a159fc2f8ec89e0feb",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "582486c1420c99f40408128879f746d1b51cdc4abbd4196e4ccb27a8fe41cf2c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "70fa44089c9722545c89f84f215124d161c72fe6ecaa95dbf0651b43e1439725"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{\\text{BF}}=4, \\overline{\\text{FE}}=6$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{\\text{AO}}$와 $\\overline{\\text{BO}}$의 길이"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "길이의 합"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{\\text{BC}}=\\overline{\\text{CE}}, \\overline{\\text{DC}}=\\overline{\\text{CF}}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 평행사변형의 대각선 중점",
+        "classification": "확장한평행사변형의대변과원래도형대각선의중점성질을연결한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_f7c4deaa227b5a64bbc76f88ee3f8c970c9e5b0732059023f124eadc04de1f4b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c288032a3c1c126e693447327968edeb963365f24da5c049e613c78706a4fcb9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7686288cd47ca8c0246a10bb247dc157379655b4b8c49954a893e22b850727d5"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "어떤 사각형"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "termId": 717,
+            "src": "stem",
+            "quote": "네 내각의 이등분선"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "각이등분선으로 만들어진 직사각형 분류",
+        "classification": "평행사변형이웃각의이등분선교각을이용해새사각형의종류를정한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_0b053045999ddfcc4913ccadb97ff9dfe86f8b3355eb71b481fa5f6f6939f1c8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "00ffd2c3369166f8fd32ba1dd11569f5d3e13a7ac89119b45068993ab2f40d84"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5b036305d1d76558cf7f982c29b2f8c79507d04ad50943720be8fbefd3c4e62b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "termId": 164,
+            "src": "stem",
+            "quote": "마름모"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$x+y$의 값"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$x+y$의 값"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "마름모 대각선 직각과 반각",
+        "classification": "실제그림의x는대각선교각이고y는대각에해당하는반각이다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_3c17a375be64f5f2df657d8ac5719f5678776ea211057e6e1663fe6777e9313e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1fd22541a6dc5c01b4fb6c199c57bc504af195e91bfc52ade5f3aecff9fa6b4f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f43978fcb8fb68d9824095556946f0d5cd8457127e233ae8ac1d5fe58a1058cb"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "사각형의 각변"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "생긴 사각형"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳게 짝지어진"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "중점",
+            "termId": 188,
+            "src": "stem",
+            "quote": "각변의 중점을 차례로 연결"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "변의 중점을 연결한 사각형 분류",
+        "classification": "원래도형대각선에대응하는중점연결변으로새도형을분류하는구조. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_2b9a5534c29289faeab4008704b61cf34aed2c50a1792cfd7b1f53a4e4e48048",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c288032a3c1c126e693447327968edeb963365f24da5c049e613c78706a4fcb9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7686288cd47ca8c0246a10bb247dc157379655b4b8c49954a893e22b850727d5"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "choices",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "사각형은"
+          },
+          {
+            "term": "대각선",
+            "termId": 310,
+            "src": "stem",
+            "quote": "두 대각선이 서로 이등분 하지 않는"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "사각형의 대각선 이등분 성질 비교",
+        "classification": "도형별두대각선이서로이등분하는지의보편성질을비교한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_d28c29776ff462384027a08753a8cb6610bf3983a060fc2a8d88e849e6e97684",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eb7b04d00cff32394b379ec1facc631a1237a996c3524079ba1e8aa9a2354e76"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e5f3f183de488c20b541eb0267cbeb5c82a52c1db6487e4180ce5ffe118301ff"
+        }
+      ],
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "여러 가지 사각형 사이의 관계"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성립조건",
+            "termId": 141,
+            "src": "stem",
+            "quote": "알맞은 조건을 모두"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "사각형 포함관계의 추가조건",
+        "classification": "실제흐름도의각이동에서필요한특수사각형충분조건을판정한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_f5789c30b08c32b40bf66e7b4fda8b07ed181b69f3cdcabdc684e68b79407f40",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "97100b7f27f44de5dd740b5330d0ef44d85af67e8272107baa0dca316d5293ce"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c8b00d25ef4bd1bc192b4b5af243c213dc697d15d3c7693290b542bd68d5c812"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "stem",
+            "quote": "두 대각선이 만나는 점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "termId": 305,
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          },
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle\\text{ABD}=\\angle\\text{CBD}=\\angle\\text{DAC}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "등각 조건으로 특수사각형 판정 후 성질",
+        "classification": "주어진세각동일조건으로특수평행사변형을정한후여러변/각/대각선성질을판정한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e15b5748ba4f6e145eded404a8fec71b61ddb48f5ade76a9496f951921a8deb1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2442bae7a012dea2a2a76ca4895ebd7903b65c055b29d17fe5ab7fe3adb3d4d4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5826d60a8fb1bf120336f2f3e20feb5aead2ffdba9fcc295ef018a77c9394c53"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "$\\square\\text{ABED}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "넓이는"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "stem",
+            "quote": "$l // m$, $\\overline{\\text{AE}} // \\overline{\\text{DC}}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "평행 관계를 이용한 사각형 넓이",
+        "classification": "실제평행띠높이와평행사변형ADEC의변대응으로ABED넓이를구한다. 목표도형은일반사다리꼴이어서194평행사변형넓이로강제하지않는다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_7664d7aae43d991848b8c329c79ff6b37646f3ed01a90909338cc86d40567e76",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a76bd994d688ec7e240d3ab2df7dba6af596048b31bc15e25ee00a51b5712f16"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1da1e8c17cee0d22775fb7855f0a4c2f117fe7fc59a7fb353359031081d00183"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "termId": 167,
+            "src": "stem",
+            "quote": "사다리꼴"
+          },
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "$\\triangle\\text{DBC}=27\\text{ cm}^2$"
+          },
+          {
+            "term": "비율",
+            "termId": 650,
+            "src": "stem",
+            "quote": "$\\overline{\\text{OD}}:\\overline{\\text{OB}}=1:2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "$\\triangle\\text{ABO}$의 넓이"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "stem",
+            "quote": "$\\overline{\\text{AD}} // \\overline{\\text{BC}}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "사다리꼴의 대각선비와 넓이비",
+        "classification": "대각선분할비와공통높이의삼각형넓이관계로목표넓이를정한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_bff3cb1b154d390274bb8b3d8b2ae1bca5d9fa3cec91701d8cd5f45538d857ad",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차식",
+            "termId": 36,
+            "src": "stem",
+            "quote": "$A=2x-4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "$A$의 값의 범위"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "stem",
+            "quote": "$x \\ge 3$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "부등식의 양의 일차변환",
+        "classification": "x하한을양수배와상수차로A범위에대응한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_b1d85f4cc2f7b218fef6c0353a58ac3310d27c9d169adb0dbc0481e6d2ba1db7",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "속력",
+            "termId": 704,
+            "src": "stem",
+            "quote": "시속 $3\\text{ km}$"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "책을 고르는 시간은 10분"
+          },
+          {
+            "term": "경과시간",
+            "src": "stem",
+            "quote": "책을 고르는 시간은 10분",
+            "candidate": true
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "최대 몇 $\\text{km}$ 떨어져"
+          },
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "일차부등식을 세우고 풀이"
+          },
+          {
+            "term": "해집합",
+            "termId": 83,
+            "src": "stem",
+            "quote": "일차부등식을 세우고 풀이하시오"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "1시간의 여유"
+          },
+          {
+            "term": "경과시간",
+            "src": "stem",
+            "quote": "1시간의 여유",
+            "candidate": true
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "왕복시간 상한과 최대거리",
+        "classification": "왕복이동시간과책고르기시간합을기차출발전여유시간이하로제한한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_6d5195f04277e648ae94fc2a3cdedefa115809a7c731b72a61fb0df052bf8a73",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "$\\square\\text{ABCD}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형이 되는 조건"
+          },
+          {
+            "term": "성립조건",
+            "termId": 141,
+            "src": "stem",
+            "quote": "어떤 조건을 만족하는지"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "다섯 제시조건의 평행사변형 충분성",
+        "classification": "변/각/대각선의다섯독립조건에대해어떤충분조건인지또는불충분인지각각쓴다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 26,
+      "questionUid": "qid_v1_cf9eec7d7ae463e04c5f5c2c614a9d4a1b5bca778ff12e62ddc43b390fae682e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "어떤 사각형"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{\\text{AB}}=\\overline{\\text{BC}}$"
+          },
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle\\text{A}=90^\\circ"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "평행사변형의 추가조건과 특수도형",
+        "classification": "같은이웃변/같은대각선/직각추가를각각구별해특수사각형을판정한다. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    },
+    {
+      "sourceOrdinal": 27,
+      "questionUid": "qid_v1_0f61ce1b1c02cba6cd2c09394df4b9aa6d5a6f22f522d42a5211e23c248ae11a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "어떤 사각형"
+          },
+          {
+            "term": "성질",
+            "termId": 305,
+            "src": "stem",
+            "quote": "성질 두 가지"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "중점",
+            "termId": 188,
+            "src": "stem",
+            "quote": "중점은 $\\text{M}$"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{\\text{MB}}=\\overline{\\text{MC}}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "중점과 등거리로 특수사각형 판정",
+        "classification": "AD중점과MB=MC를이용하여특수사각형종류와그성질두가지를묻는구조. 원해설없는source 구조의조건부제안이다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:38:34.188416+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED_WITH_SOURCE_ONLY_METHOD_DEBT"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "term": "경과시간",
+      "en": [
+        "ELAPSED_TIME"
+      ],
+      "synonyms": [
+        "소요시간",
+        "걸린시간"
+      ],
+      "kind": "대상",
+      "parent": "값",
+      "note": "책을 고르는 지속시간과 출발 전 여유시간. 각 슬롯 값131을 상위어로 유지하며 실제 원문만 인용한다.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 24,
+          "slot": "given",
+          "quote": "책을 고르는 시간은 10분"
+        },
+        {
+          "sourceOrdinal": 24,
+          "slot": "condition",
+          "quote": "1시간의 여유"
+        }
+      ]
+    }
+  ],
+  "selfCheck": {
+    "status": "SELF_CHECKED",
+    "scope": "Actual per-question semantic judgments; existing solutions only. Native receipt separate.",
+    "independentReview": "PENDING"
+  }
+}
