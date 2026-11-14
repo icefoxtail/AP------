@@ -1,0 +1,107 @@
+[
+  {
+    "ordinal": 8,
+    "questionUid": "qid_v1_5401f00834a7aaa8d21cd98292a0176a777369796f75cd3585d805039c87b2e7",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "합동인 마름모의 끼인각과 사인넓이 합",
+    "definition": "합동 도형이 한 점 둘레를 채우는 각을 구하고 마름모의 ab sinθ 넓이를 계산하여 선택된 조각의 넓이를 합한다.",
+    "distinction": "직각삼각형의 직접 길이 측정이나 삼각비로 중간길이를 만들어 넓이로 가는 골격이 아니다. GLOBAL 두변끼인각 삼각형 넓이TPL은 삼각형을 대상으로 한다.",
+    "parent": "PT_TRIG_RATIO_APPLICATION",
+    "nearestTemplates": [
+      "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "TPL_H22A_05_TRIANGLE_AREA_113"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 11,
+    "questionUid": "qid_v1_d7fec583bac81e84c5727580bcf4e401d8dba87bfee8ebcb2fea77391ee23890",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 등길이와 평행 길이차로 원의 넓이",
+    "definition": "지름 양끝의 평행 접선에서 두 길이의 합·차로 직각삼각형을 구성해 반지름제곱을 구하고 원 또는 반원의 넓이를 계산한다.",
+    "distinction": "TM_TANGENT_LENGTH의 목표 접선길이가 아니라 지름 또는 반지름제곱을 역산한 뒤 넓이를 구한다.",
+    "parent": "PT_CIRCLE_TANGENT",
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "a/E028 Q20의 같은 전처리 골격과 후속목표 분기"
+  },
+  {
+    "ordinal": 12,
+    "questionUid": "qid_v1_aec444d7f251786d3d5ee4d5f5ed0a48a16da1be8ffb131080186e16e0c41aa3",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 등길이로 삼각형 둘레의 조각 합",
+    "definition": "외접하는 원에 그은 여러 접선의 같은 길이 조각을 교체해 삼각형 둘레를 알려진 접선 길이의 합으로 계산한다.",
+    "distinction": "직접 목표 접선 한 개의 길이와 달리 전체 둘레의 조각 합을 재구성한다.",
+    "parent": "PT_CIRCLE_TANGENT",
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "a/E019 Q24의 접선→둘레 제안"
+  },
+  {
+    "ordinal": 13,
+    "questionUid": "qid_v1_29d1d071c92184711e96cbbcd9e2cc4bdffa5de06775bb0c7e66de491875d749",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "동일 외부점 접선의 길이와 각 성질 진술 판정",
+    "definition": "각 외부점의 접선 등길이·반지름·각이등분 성질을 구분해 복수 진술의 성립 여부를 판단한다.",
+    "distinction": "목표 접선길이를 계산하는 것이 아니라 여러 길이·각 진술의 일반 성립성을 판정한다.",
+    "parent": "PT_CIRCLE_TANGENT",
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 17,
+    "questionUid": "qid_v1_49fe6f43168ceb5e690744b48aea25eb5f8b8b3b2c5e7adb290ae7a7446a9b91",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "내접사각형의 대각과 외각 계산",
+    "definition": "원에 내접한 사각형의 대각 합180도와 한 변의 연장선 각을 이용해 목표각을 계산한다.",
+    "distinction": "CENTER_ARC의 중심각·원주각 배각 대입이나 여러 원각 관계의 COMPOSITE와 구별되는 내접사각형 단일정리 골격이다.",
+    "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "c/E033 Q4 내접사각형 각 분기"
+  },
+  {
+    "ordinal": 19,
+    "questionUid": "qid_v1_4220d2886651ba4286315f32694f3db3bafe122768a39617b468bebbadb468a5",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "특수 사각형의 원 내접 항상성 판정",
+    "definition": "특수 사각형의 각 성질을 내접사각형의 대각 보각 조건과 대조하여 항상 원에 내접하는지 판정한다.",
+    "distinction": "특정 수치의 각 계산 또는 중심각·원주각 비례가 아닌 도형종류별 성립성 판단이다.",
+    "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 20,
+    "questionUid": "qid_v1_6d897acd0b1fd2bee1ad47363707d4ea47e9dbe4395a467d484e4bfa6df3d4da",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "원 내부 두 현의 교점각에서 호길이 합",
+    "definition": "원 내부에서 교차하는 두 현의 각과 마주 보는 두 호 각도합의 관계를 직접 적용해 호길이 합 또는 교점각을 구한다.",
+    "distinction": "기존 해설은 원주각·닮음 증명을 다시 전개하지 않는다. GLOBAL ACTIVE CHORD/INTERSECTION/ANGLE/교차현/두현각 검색에서 정확TPL을 찾지 못했다.",
+    "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]

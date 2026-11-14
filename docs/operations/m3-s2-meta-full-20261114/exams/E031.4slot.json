@@ -1,0 +1,1878 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "2e826c7310030f669862137e9fc6188c0cde56ea",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "review_a:manual-full-exam-semantic-review",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "인 직각삼각형 $ABC$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "$\\angle A$를 기준으로 빗변은 $AC=b$, 이웃한 변은 $AB=c$이다.<br>따라서 $\\cos A=\\dfrac{c}{b}$이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기준각 A의 이웃변c와 빗변b를 구별해 코사인 정의에 맞는 등식을 고른다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\angle A$를 기준으로 빗변은 $AC=b$, 이웃한 변은 $AB=c$이다.<br>따라서 $\\cos A=\\dfrac{c}{b}$이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기준각 A의 이웃변c와 빗변b를 구별해 코사인 정의에 맞는 등식을 고른다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle B=90^\\circ$인"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "기준각의 이웃변과 빗변을 구별해 코사인의 정의와 대조한다."
+      },
+      "steps": [],
+      "scenarioNote": "기준각 A의 이웃변c와 빗변b를 구별해 코사인 정의에 맞는 등식을 고른다.",
+      "questionUid": "qid_v1_f7ada0a57ec4aa02f4dbb6f16e28fb60d17c3421a23bff850378a67e6fb2c83d",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "601e76e0654621f369a0bc9b1c13bfeeb9157fc46e259171a96266bcca446ce9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "59d2032b0b53868402d0e9354e590f0fbfcf5bc9084b928d5e1fde713f071a00"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "인 원뿔이 있다"
+          },
+          {
+            "term": "모선",
+            "src": "stem",
+            "quote": "의 길이가 $20\\rm\\,cm$인 원뿔"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "원뿔의 높이를 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "직각삼각형 $ABO$에서 $AB=20$, $\\angle ABO=60^\\circ$이고 높이는 $AO$이다.<br>$AO=AB\\sin60^\\circ=20\\cdot\\dfrac{\\sqrt3}{2}=10\\sqrt3$이므로 높이는 $10\\sqrt3\\rm\\,cm$이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원뿔의 축단면에 이미 주어진 직각삼각형에서 모선20과 sin60으로 높이AO를 직접 구한다."
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $ABO$에서 $AB=20$, $\\angle ABO=60^\\circ$이고 높이는 $AO$이다.<br>$AO=AB\\sin60^\\circ=20\\cdot\\dfrac{\\sqrt3}{2}=10\\sqrt3$이므로 높이는 $10\\sqrt3\\rm\\,cm$이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원뿔의 축단면에 이미 주어진 직각삼각형에서 모선20과 sin60으로 높이AO를 직접 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원뿔 축을 포함한 직각삼각형에서 주어진 모선과 각의 사인으로 높이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "원뿔의 축단면에 이미 주어진 직각삼각형에서 모선20과 sin60으로 높이AO를 직접 구한다.",
+      "questionUid": "qid_v1_b80c2821aa690cb62996294b6bc7c7c877df8ccd23ab84b43a8545bbe812a8cf",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "032f2a17918943f51e4012da3d10b0f29d67e74a8c75f698575365aba8acc3da"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "87d9da48deb3e4df673cbebfb0890d282f1c7678381db6beec7112d6123ddf12"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "올려본각",
+            "src": "stem",
+            "quote": "올려다본 각의 크기가 $40^\\circ$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림자의 길이는 $50\\rm\\,m$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "나무의 높이를 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "나무의 높이를 $h$라 하면 $\\tan40^\\circ=\\dfrac{h}{50}$이다.<br>$0.8=\\dfrac{h}{50}$이므로 $h=40$. 따라서 높이는 $40\\rm\\,m$이고 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수평 그림자50과 주어진 tan40=0.8로 나무 높이h를 직접 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 나무의 그림자의 길이는 $50\\rm\\,m$이고, 그림자의 끝 $A$ 지점에서 나무의 꼭대기 $B$ 지점을 올려다본 각의 크기가 $40^\\circ$일 때, 나무의 높이를 구한 것은? (단, $\\tan40^\\circ=0.8$로 계산한다.) (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "올려본각의 탄젠트를 높이와 그림자 길이의 비로 나타낸다."
+      },
+      "steps": [],
+      "scenarioNote": "수평 그림자50과 주어진 tan40=0.8로 나무 높이h를 직접 계산한다.",
+      "questionUid": "qid_v1_3b0a5e1338bbe0eed541cf545e7618acb61f6760f6c2f22e04b9fc3666b9070f",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "52f913755b5080a7b4832d5947d2deb5c032083f196ee891f53a2f6244681c39"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7210f1c1e6d6d8061297cdb73ceab10fe12dde700f0362d11b946fadabdeec7e"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "올려본각",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 은행과 병원이 $70\\rm\\,m$만큼 떨어져 있다. 은행의 꼭대기 $A$ 지점에서 병원의 꼭대기 $B$ 지점을 올려다보는 각의 크기가 $60^\\circ$이고, 병원의 아랫부분 $C$ 지점을 내려다보는 각의 크기가 $45^\\circ$일 때, 병원의 높이를 구한 것은? (4점)"
+          },
+          {
+            "term": "내려본각",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 은행과 병원이 $70\\rm\\,m$만큼 떨어져 있다. 은행의 꼭대기 $A$ 지점에서 병원의 꼭대기 $B$ 지점을 올려다보는 각의 크기가 $60^\\circ$이고, 병원의 아랫부분 $C$ 지점을 내려다보는 각의 크기가 $45^\\circ$일 때, 병원의 높이를 구한 것은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "병원의 높이를 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "은행 꼭대기 $A$에서 병원까지의 수평거리는 $70\\rm\\,m$이다.<br>아래로 $45^\\circ$ 내려다보므로 $A$의 높이는 $70\\tan45^\\circ=70\\rm\\,m$이다.<br>또 $A$에서 $B$를 $60^\\circ$ 올려다보므로 $B$는 $A$보다 $70\\tan60^\\circ=70\\sqrt3\\rm\\,m$ 높다.<br>따라서 병원의 높이는 $70+70\\sqrt3\\rm\\,m$이고 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 수평거리70에서 관측점 아래 높이와 위 높이를 각각 tan45·tan60으로 구해 더한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "은행 꼭대기 $A$에서 병원까지의 수평거리는 $70\\rm\\,m$이다.<br>아래로 $45^\\circ$ 내려다보므로 $A$의 높이는 $70\\tan45^\\circ=70\\rm\\,m$이다.<br>또 $A$에서 $B$를 $60^\\circ$ 올려다보므로 $B$는 $A$보다 $70\\tan60^\\circ=70\\sqrt3\\rm\\,m$ 높다.<br>따라서 병원의 높이는 $70+70\\sqrt3\\rm\\,m$이고 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 수평거리70에서 관측점 아래 높이와 위 높이를 각각 tan45·tan60으로 구해 더한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 각의 탄젠트와 수평거리로 관측점 위아래 높이를 구하여 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "공통 수평거리70에서 관측점 아래 높이와 위 높이를 각각 tan45·tan60으로 구해 더한다.",
+      "questionUid": "qid_v1_73b9b29319bc88b9f76e834a21cf3bc29f336e480ea8474b3ddfd5be4c8b7334",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "79cff2e944b10ac98b3f8034d488fec8e540902d91c4bb426b09a7a7b8326bd8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "155ff0bb5bf4d32ded78ec302cd6aec5bf798b19ccbf5822f9d71781de4a8ac2"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "올려본각",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 $30\\rm\\,m$ 떨어진 두 지점 $B,C$에서 건물의 꼭대기 $A$ 지점을 올려다본 각의 크기가 각각 $30^\\circ$, $45^\\circ$일 때, 건물의 높이를 구한 것은? (5점)"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 $30\\rm\\,m$ 떨어진 두 지점 $B,C$에서 건물의 꼭대기 $A$ 지점을 올려다본 각의 크기가 각각 $30^\\circ$, $45^\\circ$일 때, 건물의 높이를 구한 것은? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "건물의 높이를 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "건물의 높이를 $h$, 가까운 점 $C$에서 건물 밑까지의 거리를 $x$라 하자.<br>$\\tan45^\\circ=\\dfrac{h}{x}$이므로 $h=x$이다.<br>먼 점 $B$에서는 거리가 $x+30$이므로 $\\tan30^\\circ=\\dfrac{h}{x+30}$이다.<br>$\\dfrac1{\\sqrt3}=\\dfrac{x}{x+30}$에서 $x=15(\\sqrt3+1)$이다.<br>따라서 높이는 $15(\\sqrt3+1)\\rm\\,m$이고 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "가까운 점의 거리x와 건물높이h를 같은 값으로 두고 먼 점의 거리x+30과 tan30 식을 연결해 높이를 구한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "건물의 높이를 $h$, 가까운 점 $C$에서 건물 밑까지의 거리를 $x$라 하자.<br>$\\tan45^\\circ=\\dfrac{h}{x}$이므로 $h=x$이다.<br>먼 점 $B$에서는 거리가 $x+30$이므로 $\\tan30^\\circ=\\dfrac{h}{x+30}$이다.<br>$\\dfrac1{\\sqrt3}=\\dfrac{x}{x+30}$에서 $x=15(\\sqrt3+1)$이다.<br>따라서 높이는 $15(\\sqrt3+1)\\rm\\,m$이고 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "가까운 점의 거리x와 건물높이h를 같은 값으로 두고 먼 점의 거리x+30과 tan30 식을 연결해 높이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 관측 지점의 수평거리 차를 이용해 각각 탄젠트 식을 세우고 연립한다."
+      },
+      "steps": [],
+      "scenarioNote": "가까운 점의 거리x와 건물높이h를 같은 값으로 두고 먼 점의 거리x+30과 tan30 식을 연결해 높이를 구한다.",
+      "questionUid": "qid_v1_68f8cd80062fd52f3edc8219559cbfb3d84aa14e690766bfceaa9441141cafec",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "983cc64c550b5c491250b91164973b643105a37f48c015522172cb279a0ecc6c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c6878edc7cc55cb2903cc680825f275ad2162c0f2d3a0be22acb7e111040171e"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 넓이를"
+          },
+          {
+            "term": "끼인각",
+            "src": "solution",
+            "quote": "그 사이각 $\\angle B=30^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이를 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "두 변 $AB=12\\rm\\,cm$, $BC=8\\rm\\,cm$와 그 사이각 $\\angle B=30^\\circ$를 이용한다.<br>$[\\triangle ABC]=\\dfrac12\\cdot12\\cdot8\\cdot\\sin30^\\circ=24\\rm\\,cm^2$이다.<br>따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 두 변12와8 및 끼인각30도를 삼각형 사인넓이식에 직접 대입한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "두 변 $AB=12\\rm\\,cm$, $BC=8\\rm\\,cm$와 그 사이각 $\\angle B=30^\\circ$를 이용한다.<br>$[\\triangle ABC]=\\dfrac12\\cdot12\\cdot8\\cdot\\sin30^\\circ=24\\rm\\,cm^2$이다.<br>따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 두 변12와8 및 끼인각30도를 삼각형 사인넓이식에 직접 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 변과 끼인각의 사인을 이용해 삼각형 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "주어진 두 변12와8 및 끼인각30도를 삼각형 사인넓이식에 직접 대입한다.",
+      "questionUid": "qid_v1_861ca0026e01c9157133ffdcb9c47c8a1c0b48baff37646485885d2bdb073790",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6d67950bf50d7e3c0d2a622456a79463e305354e1568ea6d72ffe03e6348ba9c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0fa301b62111af64b18a45e4a89ee82cd0fbef2739a6d578b525aa46f53c48a2"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "오른쪽 삼각형 $ABC$의 넓이를 구한 것은? (4점)"
+          },
+          {
+            "term": "끼인각",
+            "src": "solution",
+            "quote": "두 변 $BC=8\\rm\\,cm$, $CA=10\\rm\\,cm$와 그 사이각 $\\angle C=120^\\circ$를 이용한다."
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "두 변 $BC=8\\rm\\,cm$, $CA=10\\rm\\,cm$와 그 사이각 $\\angle C=120^\\circ$를 이용한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이를 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "두 변 $BC=8\\rm\\,cm$, $CA=10\\rm\\,cm$와 그 사이각 $\\angle C=120^\\circ$를 이용한다.<br>$[\\triangle ABC]=\\dfrac12\\cdot8\\cdot10\\cdot\\sin120^\\circ=20\\sqrt3\\rm\\,cm^2$이다.<br>따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 두 변8과10 및 끼인각120도를 삼각형 사인넓이식에 직접 대입한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "두 변 $BC=8\\rm\\,cm$, $CA=10\\rm\\,cm$와 그 사이각 $\\angle C=120^\\circ$를 이용한다.<br>$[\\triangle ABC]=\\dfrac12\\cdot8\\cdot10\\cdot\\sin120^\\circ=20\\sqrt3\\rm\\,cm^2$이다.<br>따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 두 변8과10 및 끼인각120도를 삼각형 사인넓이식에 직접 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 변과 둔각의 사인으로 삼각형 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "주어진 두 변8과10 및 끼인각120도를 삼각형 사인넓이식에 직접 대입한다.",
+      "questionUid": "qid_v1_d1086ae360a89dbbbbf250902596402a4b32e395a270183eeb7263afc65de432",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8125a8e5cf2008ab5432e6dcc71e230c96540f36f58648e1d737461064e0da3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "abbb268b7bee774095e9bfcf96d10e0d1eb1eb395cc8edcf4b484561145c4f92"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "합동인 마름모 모양의 종이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "색칠한 부분의 넓이를 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "합동인 마름모 $6$개가 한 점 둘레를 빈틈없이 이루므로 그 점에서 각 마름모의 각은 $60^\\circ$이다.<br>한 마름모의 넓이는 $6^2\\sin60^\\circ=18\\sqrt3\\rm\\,cm^2$이다.<br>색칠된 마름모는 $3$개이므로 넓이는 $3\\cdot18\\sqrt3=54\\sqrt3\\rm\\,cm^2$이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 점 둘레의 합동인 마름모6개에서 끼인각60도를 구하고 한 마름모의 사인넓이를 계산해 색칠한3개의 넓이를 합한다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "합동인 마름모 $6$개가 한 점 둘레를 빈틈없이 이루므로 그 점에서 각 마름모의 각은 $60^\\circ$이다.<br>한 마름모의 넓이는 $6^2\\sin60^\\circ=18\\sqrt3\\rm\\,cm^2$이다.<br>색칠된 마름모는 $3$개이므로 넓이는 $3\\cdot18\\sqrt3=54\\sqrt3\\rm\\,cm^2$이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 점 둘레의 합동인 마름모6개에서 끼인각60도를 구하고 한 마름모의 사인넓이를 계산해 색칠한3개의 넓이를 합한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "합동인 마름모 $6$개가 한 점 둘레를 빈틈없이 이루므로 그 점에서 각 마름모의 각은 $60^\\circ$이다.<br>한 마름모의 넓이는 $6^2\\sin60^\\circ=18\\sqrt3\\rm\\,cm^2$이다.<br>색칠된 마름모는 $3$개이므로 넓이는 $3\\cdot18\\sqrt3=54\\sqrt3\\rm\\,cm^2$이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 점 둘레의 합동인 마름모6개에서 끼인각60도를 구하고 한 마름모의 사인넓이를 계산해 색칠한3개의 넓이를 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "합동인 마름모 모양의 종이"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "합동 마름모 여섯 개가 이루는 각으로 60도를 찾고 사인으로 한 넓이를 정해 세 개를 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "한 점 둘레의 합동인 마름모6개에서 끼인각60도를 구하고 한 마름모의 사인넓이를 계산해 색칠한3개의 넓이를 합한다.",
+      "questionUid": "qid_v1_5401f00834a7aaa8d21cd98292a0176a777369796f75cd3585d805039c87b2e7",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a3d7fc8047a11573cbd34b3cf568736327e93ddab6fcb6d6db5fc1841354b50d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "40068eac07043a9e4611f1160b1540bff4090a9c90a61f86c037c77ff3cbe9cc"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "길이가 $8\\rm\\,cm$인 현의 절반"
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "원의 반지름은 $5\\rm\\,cm$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "$x$의 값을 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "원의 반지름은 $5\\rm\\,cm$이고, 길이가 $8\\rm\\,cm$인 현의 절반은 $4\\rm\\,cm$이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 $x^2+4^2=5^2$이다.<br>$x=3$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 수직이등분으로 반현4를 정하고 반지름5와 피타고라스에서 중심거리x를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "원의 반지름은 $5\\rm\\,cm$이고, 길이가 $8\\rm\\,cm$인 현의 절반은 $4\\rm\\,cm$이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 $x^2+4^2=5^2$이다.<br>$x=3$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 수직이등분으로 반현4를 정하고 반지름5와 피타고라스에서 중심거리x를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "중심에서 현에 내린 수선이 현을 이등분하므로 직각삼각형의 변 길이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "현의 수직이등분으로 반현4를 정하고 반지름5와 피타고라스에서 중심거리x를 구한다.",
+      "questionUid": "qid_v1_67b0bcca5a05a41ba083429d2bd9074e93e919795187bebe7f93f6714243a29f",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "012a8b0564a8a3022076776310dc30ad20a7062a64a4b0c628b19ceb208db582"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1081f21d655f44e897c27d66e8d8abe35deda3b6939095865618b4f5dd9172de"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "오른쪽 원 $O$는 사각형 $ABCD$의 내접원이고 네 점 $P,Q,R,S$는 접점이다. $\\overline{AD}=10\\rm\\,cm$, $\\overline{DC}=15\\rm\\,cm$, $\\overline{BC}=16\\rm\\,cm$, $\\overline{BP}=5\\rm\\,cm$일 때, $\\overline{AP}$의 길이를 구한 것은? (4점)"
+          },
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "오른쪽 원 $O$는 사각형 $ABCD$의 내접원이고 네 점 $P,Q,R,S$는 접점이다. $\\overline{AD}=10\\rm\\,cm$, $\\overline{DC}=15\\rm\\,cm$, $\\overline{BC}=16\\rm\\,cm$, $\\overline{BP}=5\\rm\\,cm$일 때, $\\overline{AP}$의 길이를 구한 것은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "한 점에서 같은 원에 그은 두 접선의 길이는 같다.<br>$BP=BQ=5$이고 $BC=16$이므로 $CQ=11$, 따라서 $CR=11$이다.<br>$DC=15$이므로 $DR=4$, 따라서 $DS=4$이다.<br>$AD=10$이므로 $AS=10-4=6$이고 $AP=AS=6$이다.<br>따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 꼭짓점에서 같은 접선길이를 차례로 옮기고 전체변에서 빼어 마지막 접선AP를 구한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "한 점에서 같은 원에 그은 두 접선의 길이는 같다.<br>$BP=BQ=5$이고 $BC=16$이므로 $CQ=11$, 따라서 $CR=11$이다.<br>$DC=15$이므로 $DR=4$, 따라서 $DS=4$이다.<br>$AD=10$이므로 $AS=10-4=6$이고 $AP=AS=6$이다.<br>따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 꼭짓점에서 같은 접선길이를 차례로 옮기고 전체변에서 빼어 마지막 접선AP를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "사각형 $ABCD$의 내접원이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "같은 점에서 그은 접선 길이를 각 꼭짓점에서 연쇄적으로 옮겨가며 주어진 변을 분할한다."
+      },
+      "steps": [],
+      "scenarioNote": "각 꼭짓점에서 같은 접선길이를 차례로 옮기고 전체변에서 빼어 마지막 접선AP를 구한다.",
+      "questionUid": "qid_v1_0ab2d2baa06b4ee782b3cd9b80e7a3f504ca448d7d269de8079b11153bb213aa",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "93d8da939b2e0a43dd401e5251a2c30b39396f456aea44d19fff55c3634b293a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "925564663e458495509cf4d6e4f9362a33dde3fd2498a81bd1dfe9757a817b74"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 사각형 $ABCD$는 $\\angle A=90^\\circ$, $\\angle B=90^\\circ$인 사다리꼴이고, $\\overline{AB}$는 반원 $O$의 지름이다. $\\overline{CD}$가 점 $P$에서 반원 $O$에 접하고, $\\overline{AD}=10\\rm\\,cm$, $\\overline{BC}=3\\rm\\,cm$일 때, 반원 $O$의 넓이를 구한 것은? (5점)"
+          },
+          {
+            "term": "반원",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 사각형 $ABCD$는 $\\angle A=90^\\circ$, $\\angle B=90^\\circ$인 사다리꼴이고, $\\overline{AB}$는 반원 $O$의 지름이다. $\\overline{CD}$가 점 $P$에서 반원 $O$에 접하고, $\\overline{AD}=10\\rm\\,cm$, $\\overline{BC}=3\\rm\\,cm$일 때, 반원 $O$의 넓이를 구한 것은? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "반원 $O$의 넓이를 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "$AD$와 $BC$는 반원의 양 끝점에서 그은 접선이므로, 점 $D$에서 접점까지의 길이는 $DA=DP=10$, 점 $C$에서는 $CB=CP=3$이다.<br>따라서 $DC=DP+PC=13$이다.<br>$AB$를 지름이라 하면 $AB=2r$이고, $D$와 $C$의 높이 차는 $10-3=7$이므로 $DC^2=(2r)^2+7^2$이다.<br>$13^2=4r^2+49$에서 $r^2=30$이다.<br>반원의 넓이는 $\\dfrac12\\pi r^2=15\\pi\\rm\\,cm^2$이므로 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부점의 접선 등길이로 사다리꼴 빗변13을 만들고 평행변 차7과 지름의 피타고라스 관계에서 반원 넓이를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AD$와 $BC$는 반원의 양 끝점에서 그은 접선이므로, 점 $D$에서 접점까지의 길이는 $DA=DP=10$, 점 $C$에서는 $CB=CP=3$이다.<br>따라서 $DC=DP+PC=13$이다.<br>$AB$를 지름이라 하면 $AB=2r$이고, $D$와 $C$의 높이 차는 $10-3=7$이므로 $DC^2=(2r)^2+7^2$이다.<br>$13^2=4r^2+49$에서 $r^2=30$이다.<br>반원의 넓이는 $\\dfrac12\\pi r^2=15\\pi\\rm\\,cm^2$이므로 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부점의 접선 등길이로 사다리꼴 빗변13을 만들고 평행변 차7과 지름의 피타고라스 관계에서 반원 넓이를 구한다."
+          },
+          {
+            "term": "원의넓이공식",
+            "src": "solution",
+            "quote": "$AD$와 $BC$는 반원의 양 끝점에서 그은 접선이므로, 점 $D$에서 접점까지의 길이는 $DA=DP=10$, 점 $C$에서는 $CB=CP=3$이다.<br>따라서 $DC=DP+PC=13$이다.<br>$AB$를 지름이라 하면 $AB=2r$이고, $D$와 $C$의 높이 차는 $10-3=7$이므로 $DC^2=(2r)^2+7^2$이다.<br>$13^2=4r^2+49$에서 $r^2=30$이다.<br>반원의 넓이는 $\\dfrac12\\pi r^2=15\\pi\\rm\\,cm^2$이므로 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부점의 접선 등길이로 사다리꼴 빗변13을 만들고 평행변 차7과 지름의 피타고라스 관계에서 반원 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 사각형 $ABCD$는 $\\angle A=90^\\circ$, $\\angle B=90^\\circ$인 사다리꼴이고, $\\overline{AB}$는 반원 $O$의 지름이다. $\\overline{CD}$가 점 $P$에서 반원 $O$에 접하고, $\\overline{AD}=10\\rm\\,cm$, $\\overline{BC}=3\\rm\\,cm$일 때, 반원 $O$의 넓이를 구한 것은? (5점)"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 사각형 $ABCD$는 $\\angle A=90^\\circ$, $\\angle B=90^\\circ$인 사다리꼴이고, $\\overline{AB}$는 반원 $O$의 지름이다. $\\overline{CD}$가 점 $P$에서 반원 $O$에 접하고, $\\overline{AD}=10\\rm\\,cm$, $\\overline{BC}=3\\rm\\,cm$일 때, 반원 $O$의 넓이를 구한 것은? (5점)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선의 길이로 빗변을 얻고 직각삼각형에서 지름을 구해 반원 넓이를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 외부점의 접선 등길이로 사다리꼴 빗변13을 만들고 평행변 차7과 지름의 피타고라스 관계에서 반원 넓이를 구한다.",
+      "questionUid": "qid_v1_d7fec583bac81e84c5727580bcf4e401d8dba87bfee8ebcb2fea77391ee23890",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "04950964fcdc4ab31e5b7d040c10e5e19bad2df79308c3ce27f3f43cb2c8e0a7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "12783ea2b923d3c153b953ded930895368bb1bda4dc728e8fca79876a9909d70"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 점 $A,B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점이다. 직선 $PA$ 위의 점 $C$에서 원 $O$에 그은 접선이 직선 $PB$와 만나는 점을 $D$, 접점을 $E$라고 하자. $\\overline{PC}=8\\rm\\,cm$, $\\overline{CA}=3\\rm\\,cm$일 때, 삼각형 $PCD$의 둘레의 길이를 구한 것은? (4점)"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 점 $A,B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점이다. 직선 $PA$ 위의 점 $C$에서 원 $O$에 그은 접선이 직선 $PB$와 만나는 점을 $D$, 접점을 $E$라고 하자. $\\overline{PC}=8\\rm\\,cm$, $\\overline{CA}=3\\rm\\,cm$일 때, 삼각형 $PCD$의 둘레의 길이를 구한 것은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "삼각형 $PCD$의 둘레의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "$P,C,A$가 한 직선 위에 있고 $PC=8$, $CA=3$이므로 $PA=11$이다.<br>점 $P$에서 그은 두 접선의 길이는 같아 $PB=PA=11$이다.<br>또 점 $C$에서는 $CE=CA=3$, 점 $D$에서는 $DE=DB$이다.<br>삼각형 $PCD$의 둘레는 $PC+CD+DP=8+(CE+ED)+DP=8+3+(DB+DP)$이다.<br>$DB+DP=PB=11$이므로 둘레는 $22\\rm\\,cm$이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 외부점의 두 접선 등길이로 둘레의 조각을 합쳐 PA+PB=22로 바꾼다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "$P,C,A$가 한 직선 위에 있고 $PC=8$, $CA=3$이므로 $PA=11$이다.<br>점 $P$에서 그은 두 접선의 길이는 같아 $PB=PA=11$이다.<br>또 점 $C$에서는 $CE=CA=3$, 점 $D$에서는 $DE=DB$이다.<br>삼각형 $PCD$의 둘레는 $PC+CD+DP=8+(CE+ED)+DP=8+3+(DB+DP)$이다.<br>$DB+DP=PB=11$이므로 둘레는 $22\\rm\\,cm$이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 외부점의 두 접선 등길이로 둘레의 조각을 합쳐 PA+PB=22로 바꾼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 점 $A,B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점이다. 직선 $PA$ 위의 점 $C$에서 원 $O$에 그은 접선이 직선 $PB$와 만나는 점을 $D$, 접점을 $E$라고 하자. $\\overline{PC}=8\\rm\\,cm$, $\\overline{CA}=3\\rm\\,cm$일 때, 삼각형 $PCD$의 둘레의 길이를 구한 것은? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "한 점에서 그은 접선 길이가 같음을 이용해 삼각형 둘레를 두 접선 부분의 합으로 바꾼다."
+      },
+      "steps": [],
+      "scenarioNote": "세 외부점의 두 접선 등길이로 둘레의 조각을 합쳐 PA+PB=22로 바꾼다.",
+      "questionUid": "qid_v1_aec444d7f251786d3d5ee4d5f5ed0a48a16da1be8ffb131080186e16e0c41aa3",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6ff4015f0e22573982a169bb908b9499a52ff513a1b86f606e5b29552f2c2404"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5013aa0bb1909dfe1adcb57278f0db83e1dabc197ba0a3a469d23b3db8f69ad6"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AD}$, $\\overline{BC}$, $\\overline{AF}$는 각각 점 $D,E,F$에서 원 $O$에 접한다. 옳지 않은 것은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "점 $B$에서 원에 그은 두 접선의 길이는 $BD=BE$, 점 $C$에서는 $CE=CF$이다.<br>따라서 $BC=BE+EC=BD+CF$가 성립한다.<br>또 $OD=OF$는 반지름이고, 중심과 외부점을 이은 선은 두 접선 사이의 각을 이등분하므로 $\\angle OCE=\\angle OCF$, $\\angle BOD=\\angle BOE$도 성립한다.<br>하지만 $AB=AC$는 일반적으로 성립하지 않는다. 따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부점에서 그은 접선 등길이와 중심을 이은 선의 각이등분 성질을 선택지별로 대조해 일반적으로 보장되지 않는 AB=AC를 배제한다."
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "점 $B$에서 원에 그은 두 접선의 길이는 $BD=BE$, 점 $C$에서는 $CE=CF$이다.<br>따라서 $BC=BE+EC=BD+CF$가 성립한다.<br>또 $OD=OF$는 반지름이고, 중심과 외부점을 이은 선은 두 접선 사이의 각을 이등분하므로 $\\angle OCE=\\angle OCF$, $\\angle BOD=\\angle BOE$도 성립한다.<br>하지만 $AB=AC$는 일반적으로 성립하지 않는다. 따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부점에서 그은 접선 등길이와 중심을 이은 선의 각이등분 성질을 선택지별로 대조해 일반적으로 보장되지 않는 AB=AC를 배제한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AD}$, $\\overline{BC}$, $\\overline{AF}$는 각각 점 $D,E,F$에서 원 $O$에 접한다. 옳지 않은 것은? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "같은 점에서의 접선 길이와 각 이등분 성질을 사용해 각 보기를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "외부점에서 그은 접선 등길이와 중심을 이은 선의 각이등분 성질을 선택지별로 대조해 일반적으로 보장되지 않는 AB=AC를 배제한다.",
+      "questionUid": "qid_v1_29d1d071c92184711e96cbbcd9e2cc4bdffa5de06775bb0c7e66de491875d749",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ad48d1115b45ed5537a5d30a6830104c659929104c460652f60d5aa41c8870bb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f10687e6fcb10f21bfe6f3958212d04ca9f32d24fad98ad889389c4050497a0d"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "두 변이 반지름인 이등변삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$x$의 값을 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$52^\\circ$가 있는 원주점과 중심 $O$, 아래쪽 원주점을 이으면 두 변이 반지름인 이등변삼각형이 된다.<br>두 밑각이 각각 $52^\\circ$이므로 그 삼각형의 중심각은 $180^\\circ-52^\\circ-52^\\circ=76^\\circ$이다.<br>$x$는 이 중심각과 일직선 위의 각이므로 $x=180^\\circ-76^\\circ=104^\\circ$이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 반지름인 두 변의 이등변삼각형에서 중심의 내각76도를 구한 뒤 평각에서 빼104도를 구한다. 실제 해설은 원주각 정리를 사용하지 않는다."
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "$52^\\circ$가 있는 원주점과 중심 $O$, 아래쪽 원주점을 이으면 두 변이 반지름인 이등변삼각형이 된다.<br>두 밑각이 각각 $52^\\circ$이므로 그 삼각형의 중심각은 $180^\\circ-52^\\circ-52^\\circ=76^\\circ$이다.<br>$x$는 이 중심각과 일직선 위의 각이므로 $x=180^\\circ-76^\\circ=104^\\circ$이다. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 반지름인 두 변의 이등변삼각형에서 중심의 내각76도를 구한 뒤 평각에서 빼104도를 구한다. 실제 해설은 원주각 정리를 사용하지 않는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평각",
+            "src": "solution",
+            "quote": "$x$는 이 중심각과 일직선 위의 각이므로 $x=180^\\circ-76^\\circ=104^\\circ$이다. 정답은 ④이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "반지름을 두 변으로 하는 이등변삼각형에서 중심각을 정한 뒤 일직선 위 이웃각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "같은 반지름인 두 변의 이등변삼각형에서 중심의 내각76도를 구한 뒤 평각에서 빼104도를 구한다. 실제 해설은 원주각 정리를 사용하지 않는다.",
+      "questionUid": "qid_v1_3886728ad51d4fca8635de4529a0ea07512c8157b0c8c229db62fec7b203a011",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a0d929d8f705cdd5d7ba95dc23091975c154f2976c6f3921279aa5e3e708f725"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cae8fd43f1f190927b0ecbc27fc474b35180e1573c4281c1556fcc089337ff35"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "solution",
+            "quote": "중심 $O$를 지나는 현은 지름이므로"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$43^\\circ$인 원주각과 같은 현을 보는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$x$의 값을 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "그림에서 $43^\\circ$인 원주각과 같은 현을 보는 원주각도 $43^\\circ$이다.<br>또 중심 $O$를 지나는 현은 지름이므로 그 지름을 보는 원주각은 $90^\\circ$이다.<br>따라서 남은 각은 $x=180^\\circ-90^\\circ-43^\\circ=47^\\circ$이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현의 원주각43도와 지름을 보는 직각90도를 각각 옮긴 뒤 삼각형의 남은 각을 구한다."
+          },
+          {
+            "term": "지름",
+            "src": "solution",
+            "quote": "그림에서 $43^\\circ$인 원주각과 같은 현을 보는 원주각도 $43^\\circ$이다.<br>또 중심 $O$를 지나는 현은 지름이므로 그 지름을 보는 원주각은 $90^\\circ$이다.<br>따라서 남은 각은 $x=180^\\circ-90^\\circ-43^\\circ=47^\\circ$이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현의 원주각43도와 지름을 보는 직각90도를 각각 옮긴 뒤 삼각형의 남은 각을 구한다."
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "그림에서 $43^\\circ$인 원주각과 같은 현을 보는 원주각도 $43^\\circ$이다.<br>또 중심 $O$를 지나는 현은 지름이므로 그 지름을 보는 원주각은 $90^\\circ$이다.<br>따라서 남은 각은 $x=180^\\circ-90^\\circ-43^\\circ=47^\\circ$이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현의 원주각43도와 지름을 보는 직각90도를 각각 옮긴 뒤 삼각형의 남은 각을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "같은 현을 보는 원주각과 지름이 만드는 직각을 사용해 삼각형의 남은 각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "같은 현의 원주각43도와 지름을 보는 직각90도를 각각 옮긴 뒤 삼각형의 남은 각을 구한다.",
+      "questionUid": "qid_v1_49a511a44facb52cfa57f39e2009726929b5d75bc2b665325d1dc410aa772d5c",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6ec6e7819f19e9069de6235f584010aeb87b7dbbc185f6457b26fda11e838fcd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1442c875ab3d3439fef905ad968a9d3eb2f7fa26280b1003f1208d598bef422c"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "직선 $AT$는 원 $O$의 접선이고"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "접선과 현이 이루는 각은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$x,y$의 값을 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현이 이루는 각은 그 현이 만드는 원주각과 같다.<br>현 $AB$와 접선 $AT$가 이루는 각 $x$는 $\\angle ACB=72^\\circ$와 같으므로 $x=72$이다.<br>또 현 $AC$와 접선이 이루는 $71^\\circ$는 $\\angle ABC=y$와 같으므로 $y=71$이다.<br>따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 두 현에 접현각 정리를 각각 바로 적용하여 x=72,y=71을 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "직선 $AT$는 원 $O$의 접선이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 현에 대한 접현각과 각각의 원주각을 대응시킨다."
+      },
+      "steps": [],
+      "scenarioNote": "서로 다른 두 현에 접현각 정리를 각각 바로 적용하여 x=72,y=71을 얻는다.",
+      "questionUid": "qid_v1_ea9b4bb9dc3be6109ca8d0b9e6b419273dbade4037bef9f5db79b9e21f97ea52",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ccf4b51f10e2e34c753c3d4545d527f04ee1752582cda2277d168e59fc6e5244"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fb1ec7242ccc8eea556f00d3f3586aa689aa8fc901b4e48df481a187a4e8feb3"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "사각형 $ABCD$가 원에 내접할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$x,y$의 값을 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이다.<br>$x+110^\\circ=180^\\circ$이므로 $x=70^\\circ$이다.<br>$y$는 $x$와 한 직선 위의 이웃한 각이므로 $y=180^\\circ-70^\\circ=110^\\circ$이다.<br>따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내접사각형의 대각 합180도로 x를 정하고 그 외각의 평각 관계로 y를 구한다."
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이다.<br>$x+110^\\circ=180^\\circ$이므로 $x=70^\\circ$이다.<br>$y$는 $x$와 한 직선 위의 이웃한 각이므로 $y=180^\\circ-70^\\circ=110^\\circ$이다.<br>따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내접사각형의 대각 합180도로 x를 정하고 그 외각의 평각 관계로 y를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "사각형 $ABCD$가 원에 내접할 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "내접사각형의 대각 합으로 x를 구하고 일직선 위의 이웃각으로 y를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "내접사각형의 대각 합180도로 x를 정하고 그 외각의 평각 관계로 y를 구한다.",
+      "questionUid": "qid_v1_49fe6f43168ceb5e690744b48aea25eb5f8b8b3b2c5e7adb290ae7a7446a9b91",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0960057928abbfd3ecea2e0c37edb74fa54da0ddc2c787b353cc19f48882f6cd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "87a7933ad4a2ff24f3994ddc96cc8c137b1775cda8502fbee31807bebf6831af"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "오른쪽 오각형 $ABCDE$는 원 $O$에 내접하고 $\\angle A=122^\\circ$, $\\angle DOE=70^\\circ$일 때, $\\angle BCD$의 크기를 구한 것은? (5점)"
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "오른쪽 오각형 $ABCDE$는 원 $O$에 내접하고 $\\angle A=122^\\circ$, $\\angle DOE=70^\\circ$일 때, $\\angle BCD$의 크기를 구한 것은? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "의 크기를 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$\\angle A=122^\\circ$가 보는 호 $BCDE$의 크기는 $244^\\circ$이다.<br>중심각 $\\angle DOE=70^\\circ$이므로 호 $DE$의 크기는 $70^\\circ$이다.<br>따라서 호 $BCD$의 크기는 $244^\\circ-70^\\circ=174^\\circ$이다.<br>$\\angle BCD$가 보는 반대쪽 호 $BAED$의 크기는 $360^\\circ-174^\\circ=186^\\circ$이므로 $\\angle BCD=\\dfrac{186^\\circ}{2}=93^\\circ$이다.<br>따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각122도를 호244도로 바꿔 중심각70도의 호를 빼고 반대쪽 호의 나머지186도를 반으로 나눈다."
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "$\\angle A=122^\\circ$가 보는 호 $BCDE$의 크기는 $244^\\circ$이다.<br>중심각 $\\angle DOE=70^\\circ$이므로 호 $DE$의 크기는 $70^\\circ$이다.<br>따라서 호 $BCD$의 크기는 $244^\\circ-70^\\circ=174^\\circ$이다.<br>$\\angle BCD$가 보는 반대쪽 호 $BAED$의 크기는 $360^\\circ-174^\\circ=186^\\circ$이므로 $\\angle BCD=\\dfrac{186^\\circ}{2}=93^\\circ$이다.<br>따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각122도를 호244도로 바꿔 중심각70도의 호를 빼고 반대쪽 호의 나머지186도를 반으로 나눈다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "$\\angle A=122^\\circ$가 보는 호 $BCDE$의 크기는 $244^\\circ$이다.<br>중심각 $\\angle DOE=70^\\circ$이므로 호 $DE$의 크기는 $70^\\circ$이다.<br>따라서 호 $BCD$의 크기는 $244^\\circ-70^\\circ=174^\\circ$이다.<br>$\\angle BCD$가 보는 반대쪽 호 $BAED$의 크기는 $360^\\circ-174^\\circ=186^\\circ$이므로 $\\angle BCD=\\dfrac{186^\\circ}{2}=93^\\circ$이다.<br>따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각122도를 호244도로 바꿔 중심각70도의 호를 빼고 반대쪽 호의 나머지186도를 반으로 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "오른쪽 오각형 $ABCDE$는 원 $O$에 내접하고 $\\angle A=122^\\circ$, $\\angle DOE=70^\\circ$일 때, $\\angle BCD$의 크기를 구한 것은? (5점)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 원주각과 중심각에서 호를 정하고 남은 반대편 호의 절반으로 목표 각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "원주각122도를 호244도로 바꿔 중심각70도의 호를 빼고 반대쪽 호의 나머지186도를 반으로 나눈다.",
+      "questionUid": "qid_v1_b6fa817d0ffd6c5ed50f45b6e889e5096911709c1a3e568e922bb126c6d22083",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f0fc5fd8afcedccdca2e6d6504a31c3a129526d72ca45f0811564888f0886d02"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "799aa301743c8ce6e559c2fbfd0d1128bea4b6d0e3542204f39ac417b8c2f50a"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "등변사다리꼴",
+            "src": "solution",
+            "quote": "등변사다리꼴은 한 밑변의 두 각이"
+          },
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "직사각형은 네 각이 모두"
+          },
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "일반 마름모도 마주 보는 두 각이"
+          },
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "일반 평행사변형은 마주 보는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "보기에서 모두 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "사각형이 원에 내접하려면 마주 보는 두 각의 합이 $180^\\circ$이어야 한다.<br>ㄱ. 등변사다리꼴은 한 밑변의 두 각이 같고 같은 옆변에 있는 두 각의 합이 $180^\\circ$이므로, 마주 보는 두 각의 합도 $180^\\circ$이다. 따라서 항상 원에 내접한다.<br>ㄴ. 일반 평행사변형은 마주 보는 두 각이 같지만 그 합이 항상 $180^\\circ$인 것은 아니므로 항상 원에 내접하는 것은 아니다.<br>ㄷ. 일반 마름모도 마주 보는 두 각이 같지만 그 합이 항상 $180^\\circ$인 것은 아니므로 항상 원에 내접하는 것은 아니다.<br>ㄹ. 직사각형은 네 각이 모두 $90^\\circ$이므로 마주 보는 두 각의 합이 $180^\\circ$이다. 따라서 항상 원에 내접한다.<br>따라서 항상 원에 내접하는 것은 ㄱ, ㄹ이고 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원 내접의 대각 보각 조건을 등변사다리꼴·평행사변형·마름모·직사각형의 각 성질에 각각 대조하여 항상 성립하는 두 도형을 고른다."
+          },
+          {
+            "term": "사각형",
+            "src": "solution",
+            "quote": "사각형이 원에 내접하려면 마주 보는 두 각의 합이 $180^\\circ$이어야 한다.<br>ㄱ. 등변사다리꼴은 한 밑변의 두 각이 같고 같은 옆변에 있는 두 각의 합이 $180^\\circ$이므로, 마주 보는 두 각의 합도 $180^\\circ$이다. 따라서 항상 원에 내접한다.<br>ㄴ. 일반 평행사변형은 마주 보는 두 각이 같지만 그 합이 항상 $180^\\circ$인 것은 아니므로 항상 원에 내접하는 것은 아니다.<br>ㄷ. 일반 마름모도 마주 보는 두 각이 같지만 그 합이 항상 $180^\\circ$인 것은 아니므로 항상 원에 내접하는 것은 아니다.<br>ㄹ. 직사각형은 네 각이 모두 $90^\\circ$이므로 마주 보는 두 각의 합이 $180^\\circ$이다. 따라서 항상 원에 내접한다.<br>따라서 항상 원에 내접하는 것은 ㄱ, ㄹ이고 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원 내접의 대각 보각 조건을 등변사다리꼴·평행사변형·마름모·직사각형의 각 성질에 각각 대조하여 항상 성립하는 두 도형을 고른다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "항상 원에 내접하는 사각형"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 사각형의 대각의 합이 항상 180도인지 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "원 내접의 대각 보각 조건을 등변사다리꼴·평행사변형·마름모·직사각형의 각 성질에 각각 대조하여 항상 성립하는 두 도형을 고른다.",
+      "questionUid": "qid_v1_4220d2886651ba4286315f32694f3db3bafe122768a39617b468bebbadb468a5",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "056dbb066a7293cb05dc4d5ce7ac283b5c0843ba292def065290363dc8a16efb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f151f4862ee50766b06047b2da83837504ec1551e1e494142c11b21c6a0fbb52"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 반지름의 길이가 $15\\rm\\,cm$인 원 $O$의 두 현 $AC$, $BD$의 교점을 $E$라고 하자. $\\angle AED=60^\\circ$일 때, $\\wideparen{AD}+\\wideparen{BC}$의 값을 구한 것은? (5점)"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 반지름의 길이가 $15\\rm\\,cm$인 원 $O$의 두 현 $AC$, $BD$의 교점을 $E$라고 하자. $\\angle AED=60^\\circ$일 때, $\\wideparen{AD}+\\wideparen{BC}$의 값을 구한 것은? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "$\\wideparen{AD}+\\wideparen{BC}$의 값"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\wideparen{AD}+\\wideparen{BC}$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "원내부에서만나는두현의각",
+            "src": "solution",
+            "quote": "원 안에서 두 현이 만날 때 그 교점에서 생기는 각의 크기는 마주 보는 두 호의 크기 합의 절반이다.<br>$\\angle AED=60^\\circ$이므로 호 $AD$와 호 $BC$의 각도 합은 $120^\\circ$이다.<br>반지름이 $15\\rm\\,cm$이므로 원의 둘레는 $30\\pi\\rm\\,cm$이다.<br>따라서 두 호의 길이 합은 $\\dfrac{120}{360}\\cdot30\\pi=10\\pi\\rm\\,cm$이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 현의 교점각이 마주 보는 두 호의 각도합의 절반임을 적용하여120도를 구하고 원둘레에 비례시켜 호길이 합을 계산한다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "원 안에서 두 현이 만날 때 그 교점에서 생기는 각의 크기는 마주 보는 두 호의 크기 합의 절반이다.<br>$\\angle AED=60^\\circ$이므로 호 $AD$와 호 $BC$의 각도 합은 $120^\\circ$이다.<br>반지름이 $15\\rm\\,cm$이므로 원의 둘레는 $30\\pi\\rm\\,cm$이다.<br>따라서 두 호의 길이 합은 $\\dfrac{120}{360}\\cdot30\\pi=10\\pi\\rm\\,cm$이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 현의 교점각이 마주 보는 두 호의 각도합의 절반임을 적용하여120도를 구하고 원둘레에 비례시켜 호길이 합을 계산한다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "원 안에서 두 현이 만날 때 그 교점에서 생기는 각의 크기는 마주 보는 두 호의 크기 합의 절반이다.<br>$\\angle AED=60^\\circ$이므로 호 $AD$와 호 $BC$의 각도 합은 $120^\\circ$이다.<br>반지름이 $15\\rm\\,cm$이므로 원의 둘레는 $30\\pi\\rm\\,cm$이다.<br>따라서 두 호의 길이 합은 $\\dfrac{120}{360}\\cdot30\\pi=10\\pi\\rm\\,cm$이다. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 현의 교점각이 마주 보는 두 호의 각도합의 절반임을 적용하여120도를 구하고 원둘레에 비례시켜 호길이 합을 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "교차 현의 각으로 호의 중심각 합을 정하고 원주에 대한 비로 두 호 길이의 합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 현의 교점각이 마주 보는 두 호의 각도합의 절반임을 적용하여120도를 구하고 원둘레에 비례시켜 호길이 합을 계산한다.",
+      "questionUid": "qid_v1_6d897acd0b1fd2bee1ad47363707d4ea47e9dbe4395a467d484e4bfa6df3d4da",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a49fec52c28095707d7affcfc7c996ab0355f603edcb4803f1f3d00653ae86c2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "468279604ebc99d6fd475750ed1cb1e8a23cf81d3ec7c99594e4b787692e6e2a"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$에 대해"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하는 풀이 과정과 답"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "직각삼각형 $ABC$에서 $AB=16\\rm\\,cm$은 빗변이고 $\\angle A=30^\\circ$이다.<br>$\\cos30^\\circ=\\dfrac{AC}{AB}$이므로 $AC=16\\cdot\\dfrac{\\sqrt3}{2}=8\\sqrt3\\rm\\,cm$이다.<br>따라서 $AC=8\\sqrt3\\rm\\,cm$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변16과 주어진30도에서 cos30으로 이웃한 변AC를 직접 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "직각삼각형에서 30도의 코사인으로 빗변과 이웃변을 연결한다."
+      },
+      "steps": [],
+      "scenarioNote": "빗변16과 주어진30도에서 cos30으로 이웃한 변AC를 직접 계산한다.",
+      "questionUid": "qid_v1_70424d218e8b0702bbddf425a372b1fed363f69fc0173af9ed514954b481b832",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "28322fd56f5e145163a214c86a93669e3b619554570116a91c056987530bc117"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2d991966b614904bbd753bcfe1ca75e88a28d196e25a1325fba17370f1260d2e"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "[수준별1-②] 아래 그림과 같이 한 모서리의 길이가 $6$인 정육면체를 세 꼭짓점 $B,C,D$를 지나는 평면으로 잘라서 만든 삼각뿔의 꼭짓점 $A$에서 면 $BCD$에 내린 수선의 발을 $H$라고 하자. $\\angle BAH=a^\\circ$일 때, 이 삼각뿔의 부피를 $a^\\circ$를 이용하여 구하는 풀이 과정과 답을 쓰시오. (5점)"
+          },
+          {
+            "term": "각뿔",
+            "src": "stem",
+            "quote": "[수준별1-②] 아래 그림과 같이 한 모서리의 길이가 $6$인 정육면체를 세 꼭짓점 $B,C,D$를 지나는 평면으로 잘라서 만든 삼각뿔의 꼭짓점 $A$에서 면 $BCD$에 내린 수선의 발을 $H$라고 하자. $\\angle BAH=a^\\circ$일 때, 이 삼각뿔의 부피를 $a^\\circ$를 이용하여 구하는 풀이 과정과 답을 쓰시오. (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "[수준별1-②] 아래 그림과 같이 한 모서리의 길이가 $6$인 정육면체를 세 꼭짓점 $B,C,D$를 지나는 평면으로 잘라서 만든 삼각뿔의 꼭짓점 $A$에서 면 $BCD$에 내린 수선의 발을 $H$라고 하자. $\\angle BAH=a^\\circ$일 때, 이 삼각뿔의 부피를 $a^\\circ$를 이용하여 구하는 풀이 과정과 답을 쓰시오. (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "정육면체의 한 모서리가 $6$이므로 $BC,CD,DB$는 각각 한 면의 대각선으로 길이가 $6\\sqrt2$이다.<br>따라서 $\\triangle BCD$는 한 변이 $6\\sqrt2$인 정삼각형이고 넓이는 $\\dfrac{\\sqrt3}{4}(6\\sqrt2)^2=18\\sqrt3$이다.<br>$AH\\perp$ 면 $BCD$이므로 $\\triangle ABH$는 $H$에서 직각이고 $AB=6$이다.<br>$\\angle BAH=a^\\circ$이므로 $\\cos a^\\circ=\\dfrac{AH}{AB}$에서 $AH=6\\cos a^\\circ$이다.<br>따라서 삼각뿔의 부피는 $\\dfrac13\\cdot18\\sqrt3\\cdot6\\cos a^\\circ=36\\sqrt3\\cos a^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체의 면대각선으로 밑면 정삼각형 넓이를 정하고 주어진 수선·각에서 cos a로 높이AH를 표현한 뒤 삼각뿔 부피식에 대입한다."
+          },
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "정육면체의 한 모서리가 $6$이므로 $BC,CD,DB$는 각각 한 면의 대각선으로 길이가 $6\\sqrt2$이다.<br>따라서 $\\triangle BCD$는 한 변이 $6\\sqrt2$인 정삼각형이고 넓이는 $\\dfrac{\\sqrt3}{4}(6\\sqrt2)^2=18\\sqrt3$이다.<br>$AH\\perp$ 면 $BCD$이므로 $\\triangle ABH$는 $H$에서 직각이고 $AB=6$이다.<br>$\\angle BAH=a^\\circ$이므로 $\\cos a^\\circ=\\dfrac{AH}{AB}$에서 $AH=6\\cos a^\\circ$이다.<br>따라서 삼각뿔의 부피는 $\\dfrac13\\cdot18\\sqrt3\\cdot6\\cos a^\\circ=36\\sqrt3\\cos a^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체의 면대각선으로 밑면 정삼각형 넓이를 정하고 주어진 수선·각에서 cos a로 높이AH를 표현한 뒤 삼각뿔 부피식에 대입한다."
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "정육면체의 한 모서리가 $6$이므로 $BC,CD,DB$는 각각 한 면의 대각선으로 길이가 $6\\sqrt2$이다.<br>따라서 $\\triangle BCD$는 한 변이 $6\\sqrt2$인 정삼각형이고 넓이는 $\\dfrac{\\sqrt3}{4}(6\\sqrt2)^2=18\\sqrt3$이다.<br>$AH\\perp$ 면 $BCD$이므로 $\\triangle ABH$는 $H$에서 직각이고 $AB=6$이다.<br>$\\angle BAH=a^\\circ$이므로 $\\cos a^\\circ=\\dfrac{AH}{AB}$에서 $AH=6\\cos a^\\circ$이다.<br>따라서 삼각뿔의 부피는 $\\dfrac13\\cdot18\\sqrt3\\cdot6\\cos a^\\circ=36\\sqrt3\\cos a^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체의 면대각선으로 밑면 정삼각형 넓이를 정하고 주어진 수선·각에서 cos a로 높이AH를 표현한 뒤 삼각뿔 부피식에 대입한다."
+          },
+          {
+            "term": "각뿔부피공식",
+            "src": "solution",
+            "quote": "정육면체의 한 모서리가 $6$이므로 $BC,CD,DB$는 각각 한 면의 대각선으로 길이가 $6\\sqrt2$이다.<br>따라서 $\\triangle BCD$는 한 변이 $6\\sqrt2$인 정삼각형이고 넓이는 $\\dfrac{\\sqrt3}{4}(6\\sqrt2)^2=18\\sqrt3$이다.<br>$AH\\perp$ 면 $BCD$이므로 $\\triangle ABH$는 $H$에서 직각이고 $AB=6$이다.<br>$\\angle BAH=a^\\circ$이므로 $\\cos a^\\circ=\\dfrac{AH}{AB}$에서 $AH=6\\cos a^\\circ$이다.<br>따라서 삼각뿔의 부피는 $\\dfrac13\\cdot18\\sqrt3\\cdot6\\cos a^\\circ=36\\sqrt3\\cos a^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체의 면대각선으로 밑면 정삼각형 넓이를 정하고 주어진 수선·각에서 cos a로 높이AH를 표현한 뒤 삼각뿔 부피식에 대입한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "[수준별1-②] 아래 그림과 같이 한 모서리의 길이가 $6$인 정육면체를 세 꼭짓점 $B,C,D$를 지나는 평면으로 잘라서 만든 삼각뿔의 꼭짓점 $A$에서 면 $BCD$에 내린 수선의 발을 $H$라고 하자. $\\angle BAH=a^\\circ$일 때, 이 삼각뿔의 부피를 $a^\\circ$를 이용하여 구하는 풀이 과정과 답을 쓰시오. (5점)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정육면체 면대각선으로 정삼각형 밑넓이를 구하고 코사인으로 높이를 정해 삼각뿔 부피를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "정육면체의 면대각선으로 밑면 정삼각형 넓이를 정하고 주어진 수선·각에서 cos a로 높이AH를 표현한 뒤 삼각뿔 부피식에 대입한다.",
+      "questionUid": "qid_v1_f26021a209da10baa794e5e28af8c27bce173504c4e62e430327426db91635b7",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0e288d6d27998c8c698ed3c075091f1c59839edce73eff3babad766d847b39ad"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "577a96cc36d29837da09374ffed8ed8e999ea4db35bccad6fd1cceeebb4a2c5b"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "term": "원내부에서만나는두현의각",
+      "en": "ANGLE_OF_INTERSECTING_CHORDS",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "각",
+      "note": "원 내부에서 교차하는 두 현이 이루는 각은 대응하는 두 호의 크기 합의 절반이다.",
+      "usedIn": [
+        20
+      ]
+    },
+    {
+      "term": "현의수직이등분성질",
+      "en": [
+        "PERPENDICULAR_FROM_CENTER_BISECTS_CHORD"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "원의 중심에서 현에 내린 수선이 현을 이등분하며 현의 수직이등분선이 중심을 지난다는 성질의 적용.",
+      "usedIn": [
+        "qid_v1_67b0bcca5a05a41ba083429d2bd9074e93e919795187bebe7f93f6714243a29f"
+      ]
+    },
+    {
+      "term": "원의넓이공식",
+      "en": [
+        "CIRCLE_AREA_FORMULA"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "원",
+      "note": "반지름 r에서 원의 넓이 πr²를 산출한다. 둘레를 뜻하는 원주와 구분한다.",
+      "usedIn": [
+        "qid_v1_d7fec583bac81e84c5727580bcf4e401d8dba87bfee8ebcb2fea77391ee23890"
+      ]
+    },
+    {
+      "term": "각뿔부피공식",
+      "en": "Pyramid volume formula",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "부피",
+      "note": "밑넓이와 밑면에 수직인 높이의 곱을3으로 나누어 각뿔의 부피를 구한다.",
+      "usedIn": [
+        "qid_v1_f26021a209da10baa794e5e28af8c27bce173504c4e62e430327426db91635b7"
+      ]
+    }
+  ],
+  "selfCheck": {
+    "allItemsRead": true,
+    "historicalEvidenceShaVerified": true,
+    "studentPayloadAllMatches": false,
+    "independentReview": "PENDING",
+    "changedItemsManuallyRevalidated": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_f7ada0a57ec4aa02f4dbb6f16e28fb60d17c3421a23bff850378a67e6fb2c83d",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q1-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_b80c2821aa690cb62996294b6bc7c7c877df8ccd23ab84b43a8545bbe812a8cf",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q2-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_3b0a5e1338bbe0eed541cf545e7618acb61f6760f6c2f22e04b9fc3666b9070f",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q3-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_73b9b29319bc88b9f76e834a21cf3bc29f336e480ea8474b3ddfd5be4c8b7334",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q4-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_68f8cd80062fd52f3edc8219559cbfb3d84aa14e690766bfceaa9441141cafec",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q5-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_861ca0026e01c9157133ffdcb9c47c8a1c0b48baff37646485885d2bdb073790",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q6-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_d1086ae360a89dbbbbf250902596402a4b32e395a270183eeb7263afc65de432",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q7-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_5401f00834a7aaa8d21cd98292a0176a777369796f75cd3585d805039c87b2e7",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q8-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_67b0bcca5a05a41ba083429d2bd9074e93e919795187bebe7f93f6714243a29f",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q9-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_0ab2d2baa06b4ee782b3cd9b80e7a3f504ca448d7d269de8079b11153bb213aa",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q10-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_d7fec583bac81e84c5727580bcf4e401d8dba87bfee8ebcb2fea77391ee23890",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q11-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_aec444d7f251786d3d5ee4d5f5ed0a48a16da1be8ffb131080186e16e0c41aa3",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q12-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_29d1d071c92184711e96cbbcd9e2cc4bdffa5de06775bb0c7e66de491875d749",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q13-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_3886728ad51d4fca8635de4529a0ea07512c8157b0c8c229db62fec7b203a011",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q14-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_49a511a44facb52cfa57f39e2009726929b5d75bc2b665325d1dc410aa772d5c",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q15-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_ea9b4bb9dc3be6109ca8d0b9e6b419273dbade4037bef9f5db79b9e21f97ea52",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q16-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_49fe6f43168ceb5e690744b48aea25eb5f8b8b3b2c5e7adb290ae7a7446a9b91",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q17-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_b6fa817d0ffd6c5ed50f45b6e889e5096911709c1a3e568e922bb126c6d22083",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q18-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_4220d2886651ba4286315f32694f3db3bafe122768a39617b468bebbadb468a5",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q19-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_6d897acd0b1fd2bee1ad47363707d4ea47e9dbe4395a467d484e4bfa6df3d4da",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q20-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_70424d218e8b0702bbddf425a372b1fed363f69fc0173af9ed514954b481b832",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q21-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_f26021a209da10baa794e5e28af8c27bce173504c4e62e430327426db91635b7",
+        "review": {
+          "type": "SOLUTION_SVG_ADDED_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "solutionImage/Size/Alt/Caption 추가, 기존 학생 텍스트·정답·해설·원문그림은 동일",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "addedSolutionAssetActuallyInspected": "assets/images/22_매산중_2학기_기말_중3_기출/q22-solution.svg",
+          "evidence": "reuse-version-check.json"
+        }
+      }
+    ]
+  },
+  "reuseEvidence": {
+    "branch": "work/4slot-annotate-v1",
+    "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+    "path": "archive-work/4slot-annotate-v1/out/original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.4slot.json",
+    "originalSha256": "dd8368ac25669092f8150ed53ec661217af2a8f446f86087c2230f8b6605a02b",
+    "importDelta": {
+      "baseSourceGitBlobSha": "4b6ba3d9b8ed7ece3dba3ad7b7d694260c1b5aff",
+      "authoringSnapshot": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+      "reviewRecord": {
+        "branch": "ops/4slot-bulk-publish-20261105",
+        "commit": "ee358bec56c10d828747edfa9db315b19a9e5f5c",
+        "path": "tools/4slot/bulk-delta-overrides.json",
+        "sha256": "0ea424264025971d832e610700f94acf029701ebe20d8530e5d1af3e42d5551d"
+      }
+    }
+  }
+}
