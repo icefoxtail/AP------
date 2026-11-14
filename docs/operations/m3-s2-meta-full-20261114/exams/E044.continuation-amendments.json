@@ -1,0 +1,70 @@
+{
+  "examId": "E044",
+  "kind": "CANONICAL_INTEGRATION_ENUM_CORRECTION",
+  "authority": "archive/data/meta-foundation/canonical/metadata_rules.json",
+  "ruleDefinition": "SEQUENTIAL: A 결과 후 B, C를 순차 적용",
+  "beforeArtifactHashes": {
+    "review.json": "9e78a286e0162f9172f0da4654596f29ed8861db7cc169fd0613a3577c99071c",
+    "source-patch.json": "68988b62087ca1c8a0bf4bea464f66ef7de60672439d080cb93763a3aa95d7d4",
+    "E044.4slot.json": "6852ed821be9f1f2c067d9741d1b177a610e9ee1ff70f115d216856a8a492443"
+  },
+  "changes": [
+    {
+      "ordinal": 4,
+      "before": "CHAINED",
+      "after": "SEQUENTIAL",
+      "reason": "반지름이 같은 이등변삼각형과 외각 관계로 원주각이 중심각의 절반이라는 증명의 빈칸을 대조한다."
+    },
+    {
+      "ordinal": 5,
+      "before": "CHAINED",
+      "after": "SEQUENTIAL",
+      "reason": "접선현각으로 ABD를 정하고 삼각형 내각합, 내접사각형의 대각 보각, 다시 삼각형 내각합을 순차 결합하여 두 각의 합을 구한다."
+    },
+    {
+      "ordinal": 7,
+      "before": "CHAINED",
+      "after": "SEQUENTIAL",
+      "reason": "원주각과 중심각, 접점수직, 같은 점의 등접선, 이등변삼각형과 접현각을 연결해 주어진 다섯 각·길이 진술을 확인한다."
+    },
+    {
+      "ordinal": 8,
+      "before": "CHAINED",
+      "after": "SEQUENTIAL",
+      "reason": "접선과 평행한 현에서 엇각을 구한 뒤 접선현각과 같은 원주각에 연결하여 두 각의 같음을 판정한다."
+    },
+    {
+      "ordinal": 13,
+      "before": "PARALLEL",
+      "after": "SEQUENTIAL",
+      "reason": "도수로 가중합과 평균을 구한 결과를 편차 제곱의 가중평균에 순차 적용한다. 다른 기본 진술은 각각 확인한다."
+    },
+    {
+      "ordinal": 17,
+      "before": "CHAINED",
+      "after": "SEQUENTIAL",
+      "reason": "기존 평균과 분산으로 세 미지 자료의 합과 제곱합을 복원하고 두 수가 추가된 자료의 평균을 구해 편차 제곱식을 전개한다."
+    },
+    {
+      "ordinal": 22,
+      "before": "PARALLEL",
+      "after": "SEQUENTIAL",
+      "reason": "산점도 좌표를 한 변량 자료와 조건별 인원으로 읽은 다음 중앙값·최빈값과 백분율 정의를 순차 적용한다."
+    },
+    {
+      "ordinal": 23,
+      "before": "CHAINED",
+      "after": "SEQUENTIAL",
+      "reason": "정오각형 중심각의 절반으로 원주각을 구하는 방법과 내각을 같은 세 원주각으로 나누는 방법을 각각 제시된 방향에 따라 전개한다."
+    },
+    {
+      "ordinal": 25,
+      "before": "CHAINED",
+      "after": "SEQUENTIAL",
+      "reason": "매개변수로 평균과 편차를 표현하여 주어진 분산에서 이차방정식을 세우고 양수 조건에 맞는 근을 선택한다."
+    }
+  ],
+  "studentFieldsChanged": false,
+  "fourSlotChanged": false,
+  "difficultyChanged": false
+}

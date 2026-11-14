@@ -1,0 +1,305 @@
+{
+  "examId": "E044",
+  "author": "root",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "048f36894705f8e6623bc94017c0fe6a3ed3d362",
+  "sourceRawSha256": "4d1adae198bb40a24918bc2672449a7c2acf25ad79a09f339636ca2da0ea14a1",
+  "sourcePacketSha256": "5c600ffdbe2c33f2dec1cb314a246f958ff202b8233cbc1c672bc2264566ab1d",
+  "sampled4slotSha256": "6852ed821be9f1f2c067d9741d1b177a610e9ee1ff70f115d216856a8a492443",
+  "sampledReviewSha256": "4f5f96402064ac29376de637164294d308d6aa5b1e14fdf3bcefe828d79b39fb",
+  "sampledSourcePatchSha256": "028fd5f89144f75e905f99a91ea26664f0f71d24b26f277f8a9b8c1f6bcd63b5",
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "sampled": [
+    6,
+    22,
+    24
+  ],
+  "status": "PASS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_f0dd3cd427fa0a1e716dd34cf896da0270703cb25bf097edc9370917a476c050",
+      "sourceImageRead": true,
+      "solutionImageRead": true,
+      "visualStatus": "READ_CURRENT_SOURCE_AND_SOLUTION_IMAGES",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 6
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본의 서로 다른 C,P가 AB의 같은 쪽이라는 조건과 기존 해설 도형을 직접 확인했다. goal의 성립조건·판정은 네 점이 한 원 위에 놓일 조건을 고르는 목표이며, method의 원주각 같음과 내접사각형 대각 보각은 두 독립 진술의 판정이다. 정답2개를 단일 계산으로 축소하지 않았다. 여러 각 관계를 연쇄해 하나의 목표각을 구하는 ACTIVE COMPOSITE 정의와 다르므로 기존 PT 재사용·공원조건 진술용 TPL 공백을 구분하는 판단이 타당하다. 같은 쪽·서로 다름은 발문과 인용에 보존되어 있다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_50576707415164c134ea03937d2ae50aca3e916d481062999494eedd7f49b414",
+      "sourceImageRead": true,
+      "solutionImageRead": true,
+      "visualStatus": "READ_CURRENT_SOURCE_AND_SOLUTION_IMAGES",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 6
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본 산점도의 국어/영어 축과10개 점, 기존 해설의 중앙값·복수 최빈값·좌표 비교 인원 비율을 직접 읽었다. given 산점도, goal 진술 판정, method 최빈값·중앙값·범위·비율은 실제 역할에 맞다. 각각의 선지에서 비교하는70점·20점 조건을 전체 문제의 독립 해 제한으로 덧붙이지 않은 것도 타당하다. 상관 방향을 판단하는 문제가 아니므로2015의 산점도 읽기를 유지하고2022 상자그림과 산점도 부모의 exact leaf 공백을 따로 남긴 판단을 current179/180 정의와 대조하여 수용한다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_ac582e7d10312c13cb17650a7eb1009c7bae07fb3601e22f62ee7969af41bd72",
+      "sourceImageRead": false,
+      "solutionImageRead": true,
+      "visualStatus": "NO_SOURCE_IMAGE_READ_CURRENT_SOLUTION_IMAGE",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 10
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "발문은 완전한 여섯 원자료에서 중앙값·최빈값·분산·표준편차 네 양을 구하도록 요청한다. goal에 네 양이 모두 남아 있고 method에는 정렬·최빈도·평균·편차제곱평균·제곱근 계산이 실제 인용으로 결속되어 있다. 결측값 복원이나 통계량 변화 조건을 새로 추가하지 않았다. 실제 source와 해설그림의 원자료 구조에는 도수표 변환이 필수적이지 않으므로 도수표 분산 TPL을 그대로 억지 부여하지 않고 원자료 직접 산출의 등록 공백을 기록하는 판단을 수용한다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    }
+  ],
+  "outstanding": [],
+  "additionalSemanticChecks": [
+    {
+      "ordinal": 4,
+      "status": "ACCEPT",
+      "reason": "실제 source proof는 OA=OP, 이등변의 밑각, 외각=두 내각합을 이용해 원주각 관계를 증명하는 빈칸이다. ACTIVE CENTER_ARC internalSkeleton은 알려진 배수 관계로 목표각 계산이므로 증명의 조건 선택을 완전히 덮지 않는다. 기존 PT 유지·증명용 TPL 공백을 수용한다. CC_SUPPLEMENTARY_ANGLES 정의에 삼각형 외각=이웃하지 않는 두 내각합이 명시되어 있어 현재 보조 CC도 정확하다."
+    },
+    {
+      "ordinal": 13,
+      "status": "ACCEPT",
+      "reason": "원본은 점수1~5의 도수4,3,2,1,0 표이다. 각 점수에 해당 도수를 곱해 평균과 편차제곱평균을 계산하므로 ACTIVE PT_M3_DISPERSION_FREQUENCY_TABLE/TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE의 가중평균 골격에 직접 맞는다. 중앙값·최빈값과 편차합0 진술은 별도 병렬 보조개념이다."
+    },
+    {
+      "ordinal": 18,
+      "status": "ACCEPT",
+      "reason": "원자료 수치 계산 없이 편차의 부호와 절댓값, 분산·표준편차 정의, 편차평균0의 진술을 판정한다. 2015 RPM083의 편차 주제는 유지 가능하나2022 169는 편차 계산,170은 편차합,171/172는 수치 계산으로 일반 정의판정 전체를 exact로 덮지 않는다. 현행 산포도 부모+leaf 공백과 기존 PT 통계개념 판정의 native TPL 공백 분리를 수용한다."
+    }
+  ],
+  "scope": "Three independent metadata/4slot samples plus requested targeted Q4/Q13/Q18 meaning checks; no full-exam R1/R2/R3 certification",
+  "visualEvidence": [
+    "worker-outputs/root/E044/assets/image-sheet-0.png",
+    "worker-outputs/root/E044/assets/image-sheet-1.png",
+    "worker-outputs/root/E044/assets/image-sheet-2.png",
+    "worker-outputs/root/E044/assets/solutionImage-sheet-0.png",
+    "worker-outputs/root/E044/assets/solutionImage-sheet-1.png",
+    "worker-outputs/root/E044/assets/solutionImage-sheet-2.png"
+  ],
+  "assetByteChecks": [
+    {
+      "ordinal": 2,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q02.png",
+      "blob": "abecad5c1030590c33e73fbd7c7fcd5ac0751e8f",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 2,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q2-solution.svg",
+      "blob": "f11de5df5249e1a16a84059c359d6ce65f0dbeed",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 3,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q03-r1.png",
+      "blob": "0cd407fbcc306f3a45c8ad062a923b992af731e3",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 3,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q3-solution.svg",
+      "blob": "0ce795e60fb6e4fbe30e9fa06d38efc54444d05c",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 4,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q04-r1.png",
+      "blob": "371bc64b45f7c45cc5907af70d919b7dc2b7230e",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 4,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q4-solution.svg",
+      "blob": "9f6aa3085baed6d1344e1741661accffeded9d50",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 5,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q05-r2.png",
+      "blob": "776076209dcb0353c06deb55c0bf8c19444f847d",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 5,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q5-solution.svg",
+      "blob": "055d85f26075161c6d097147c225a3b91048147b",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 6,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q06.png",
+      "blob": "ec31d47924a7a3e0a8362a84ddd346bcc4ec97cd",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 6,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q6-solution.svg",
+      "blob": "5e917e5e21513410904115cd57ed838dd5339649",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 7,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q07.png",
+      "blob": "68bc3e03655a48a531d52faf7ff13a06fc2f912b",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 7,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q7-solution.svg",
+      "blob": "796a79a71b36c9c06c1b2e80b008c6f1d5d0fee4",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 12,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q12.png",
+      "blob": "4977a95244efafd5cd124eda34860f752ef4b09b",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 13,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q13-r1.png",
+      "blob": "9171f9eba29c1ac256a2747585ffc7d2310d3ee6",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 13,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q13-solution.svg",
+      "blob": "b668424679916c8130f68afc2c232d321817c251",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 14,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q14-r1.png",
+      "blob": "6c406cafb662af07fbb8ea6950879a9e76faeeb3",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 16,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q16-r1.png",
+      "blob": "285f1426bbf5adbfab1a17810960542b3e069795",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 22,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q22-r1.png",
+      "blob": "6403bb7f31d4623f594d9c3b4327173ad5159932",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 22,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q22-solution.svg",
+      "blob": "5c33af076c4e3295022cac8211df4c1325d0c1c1",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 23,
+      "field": "image",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q23.png",
+      "blob": "8898b54348013b725671ce85945509fcaf3f77d6",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 23,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q23-solution.svg",
+      "blob": "8878d2d1b5276ca8c6df70972dea95a55e2694f9",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 24,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_금당중_2학기_기말_중3_기출/q24-solution.svg",
+      "blob": "fffcc2613451f2a91dd7482e716b37aee8a1cb50",
+      "bytesMatchCurrentBranch": true
+    }
+  ],
+  "definitionRefs": [
+    "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "archive/data/meta-foundation/compiled/concept_registry.json",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+    "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json"
+  ],
+  "priorReceiptSha256": "3f582449f8ea56e4edc967835d0974b2d26d22c29e1218e6d010de123f6c8fc1",
+  "priorSampledArtifactHashes": {
+    "review.json": "9e78a286e0162f9172f0da4654596f29ed8861db7cc169fd0613a3577c99071c",
+    "source-patch.json": "68988b62087ca1c8a0bf4bea464f66ef7de60672439d080cb93763a3aa95d7d4",
+    "E044.4slot.json": "6852ed821be9f1f2c067d9741d1b177a610e9ee1ff70f115d216856a8a492443"
+  },
+  "continuationDeltaReview": {
+    "status": "PASS",
+    "kind": "CANONICAL_INTEGRATION_ENUM_DELTA_REVIEW",
+    "author": "root",
+    "reviewer": "c",
+    "amendmentPath": "worker-outputs/root/E044/continuation-amendments.json",
+    "amendmentSha256": "a550621a3c7efaef61c4b3d3e8a4211779f137b0ee649567d9122b537b0f9f2e",
+    "ordinals": [
+      4,
+      5,
+      7,
+      8,
+      13,
+      17,
+      22,
+      23,
+      25
+    ],
+    "authority": "archive/data/meta-foundation/canonical/metadata_rules.json",
+    "acceptedEnum": "SEQUENTIAL",
+    "reviewBasis": "각 Q4/5/7/8/13/17/22/23/25의 기존 발문·해설에서 선행 결과를 후행 계산·판정에 사용하는 관계를 확인하였다. Q13은 도수 가중평균을 편차제곱 계산에 사용하고, Q22는 산점도 좌표를 변량·조건별 인원으로 읽은 뒤 중앙값·최빈값·백분율을 적용한다. 여러 진술이 독립이어도 실제 핵심 적용의 선후 의존성을 지우지 않는다. Q23 두 제시 방법 각각은 도형 각을 복원한 후 목표각으로 이어지는 구조이다. 비정식 CHAINED/PARALLEL 대신 정의가 맞는 SEQUENTIAL을 수용한다.",
+    "reverseDeltaSourcePatchSha256": "68988b62087ca1c8a0bf4bea464f66ef7de60672439d080cb93763a3aa95d7d4",
+    "reverseDeltaMatchesPreviouslyReviewedPatch": true,
+    "fourSlotUnchanged": true,
+    "difficultyFieldsUnchanged": true,
+    "studentFieldsUnchanged": true,
+    "originalSamplesReused": [
+      6,
+      22,
+      24
+    ],
+    "newMathematicalVerification": false
+  }
+}
