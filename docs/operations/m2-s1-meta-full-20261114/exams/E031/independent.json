@@ -1,0 +1,695 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E031",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T14:09:20.682152+00:00",
+  "sourceGitBlobSha": "72cf4be120a8f266d3bbe882fa3a63155e769e14",
+  "reviewSha256": "d121d5b1fda1cb358cde028a1e352ea30997154c67782b68c6e278245b099107",
+  "fourSlotSha256": "48cd56f9f527bf59901675caa87d388c95f08d68d16ee07e4c4da7df8583623c",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/B/independent/E031.initial.json",
+  "initialFreezeSha256": "53a73887cff339600e98b2780fc8abfe79db5d23beb3ccbf1c0dd544c794eefb",
+  "sampleOrdinals": [
+    12,
+    18,
+    22
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 12,
+      "classification": "정본 M2-RPM178 밑각·꼭짓각과 실제 네 등선분의 연쇄 이등변구조가 부합하는 조건부판정이다.",
+      "binding": "ACTIVE ISOSCELES_BASE_ANGLES와 M1 연쇄각추적 정의를 직접읽었다. M1후보를 참고만두고 source namespace를 옮기지 않았고 verified-final binding도 주장하지 않는다.",
+      "crossConcept": "반복된 이등변각관계는 같은 primary 내부라 CC[] 조건부 수용.",
+      "condition": "동일 네선분이 실제그림 표시와 일치하며 별도수범위조건을 만들지 않았다.",
+      "integration": "단일 이등변관계를 여러번 쓰는 구조로 NONE 제안은 타당하다.",
+      "difficulty": "독립2/저자3의 B23 차이는 연쇄횟수와 조건연결 정도에서 생긴 인접차다. 저자3low를 보존하며 solution근거부채는 유지한다.",
+      "fourSlot": "실제 삼각형·주어진각·목표각·같은네길이 literal이 모두일치. 해설없어method[] 유지."
+    },
+    {
+      "sourceOrdinal": 18,
+      "classification": "M2-RPM188의 외접원·내접원 활용/반지름·각계산으로 실제외심·내심 각차목표를 포괄한다.",
+      "binding": "공식 ACTIVE TPL_TRIANGLE_CENTERS_COMBINED 정의는 두중심의 각·거리관계를 함께쓰므로 현재후보수용. 실제해설과targetbinding부채 별도.",
+      "crossConcept": "두중심 결합이 primaryTPL 내부여서 같은외심/내심CC를 중복하지 않은 점수용.",
+      "condition": "같은삼각형의 두중심과80도 입력이실제그림과일치, 없는부호범위추가없음.",
+      "integration": "선택복합중심TPL 내부단계이므로 별도외부통합NONE 제안수용.",
+      "difficulty": "독립2B23와저자2B23 일치, low 유지.",
+      "fourSlot": "외심·내심·주어진각, 목표각과차가실제literal에결속되고method빈칸은보존된다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "classification": "문자변길이를 이용한두원기둥 부피비의 공식 M2-01 모델 및 혼합계산129를 원문구조의조건부제안으로 수용한다.",
+      "binding": "공식 ACTIVE PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO 및 TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE의 실제정의를 읽었다. 두회전축/두부피/공통인수약분이포함되어 현목표와직접맞는다. source-only verifiedbinding은여전히미확정.",
+      "crossConcept": "공식TPL 정의에 원기둥부피와단항식비가함께포함되어 geometryCC중복을피한판정수용.",
+      "condition": "실제이미지는직사각형과직각표시, 문장의두회전축이조건이다. 원문에없는부호조건을도입하지않는다.",
+      "integration": "등록후보자체가전체결합을포함하므로 NONE이외부통합없음을뜻한다.",
+      "difficulty": "독립3/저자2는 B23 인접차이고 소문항이두부피와비를안내한다. 저자2low조건부제안보존수용.",
+      "fourSlot": "r2는부피goal을두부피공통문장으로넓혔으며회전축이사전회전체172동의어임을확인했다. 실제literal모두일치, method[]유지."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_174e545c3738cc0ae72fb3822e8cde315fa9e9b6f88d203a0ffe42aafe301396",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "reason": "순환마디 최소표기 관례와 같은 실수의 비최소표현을 구별해야 하여 복수 보기 해석 가능성이 있다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "reason": "보기①의 비최소 순환마디 표기와③의 반복 시작점 표기가 동치수인지 관례상 표현오류인지 원답·해설이 없어 확정 못한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 1,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "순환마디 최소표기 관례와 같은 실수의 비최소표현을 구별해야 하여 복수 보기 해석 가능성이 있다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_dc7abfe297b2872f6ef1c147ad517f06f3cb085705e9ab22f5210d809cf5fc36",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "기약분수의 분모조건과 제한된 분자범위를 함께 사용한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "기약분모 조건과 a의 짧은 범위를 결합하는 표준 조건 판정으로 source-only2를 제안한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 2,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "기약분수의 분모조건과 제한된 분자범위를 함께 사용한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_67a7f99fbcb7af44dfa0f052cf9434d849ee59509ffc510d10f972ad8afbab1b",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "기약화와 분모10거듭제곱화를 차례로 빈칸에 대응한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "약분과 10의 거듭제곱 분모 만들기를 안내된 빈칸에 대응하는 정형 전처리이다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 3,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "기약화와 분모10거듭제곱화를 차례로 빈칸에 대응한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_cdb6d7c655384e84e6e7a856ed8c278710ebb64e6c0cea6d7c278203cdaf6db5",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "비순환자리와 순환마디 길이에 맞는 두 배수를 선택한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "배수의 차에 맞는 비순환부·순환부 길이를 선택하는 표준 변환 이해이다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 4,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "비순환자리와 순환마디 길이에 맞는 두 배수를 선택한다.; 배수선택을직접식별하는1과순환부분구조를변환하는2의B12인접차, 저자값을 유지하되 source-only/low 및 등록보류를 보존한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_e0e4f4ffeb80b0f2d51d3a2d2110d26c325a0874791194ba49bb8d3ff0115756",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "나머지로 먼 자릿수를 찾고 같은 구간의 특정숫자횟수를 합한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "주기6의 자리와 출현횟수를 두 번 읽는 정형 주기 문제이다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 5,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "나머지로 먼 자릿수를 찾고 같은 구간의 특정숫자횟수를 합한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_0d4178811f7695bbafd480a5ba1b7f2d021f50bf621b815693f0c16a383fc4eb",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "같은 밑의 지수로 바꾸고 거듭제곱 지수를 비교한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "밑을3으로 통일한 거듭제곱의 거듭제곱 직접 적용이다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 6,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "같은 밑의 지수로 바꾸고 거듭제곱 지수를 비교한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_bdb20a6afd87a150c909e4c81bb72d56b205c4e822e635c39683dd565ac9090e",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "곱·나눗셈·거듭제곱을 같은 밑으로 정리해 다섯 값을 비교한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "공통 밑의 지수법칙을 각 보기에 바로 적용하여 비교한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 7,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "곱·나눗셈·거듭제곱을 같은 밑으로 정리해 다섯 값을 비교한다.; 병렬보기연산을기본1또는정리2로판단한B12인접차, 저자값을 유지하되 source-only/low 및 등록보류를 보존한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_24c906cd7bb4a524e9d4e139f5fc3ffe5d97ba353b6361d02093530e8d2a5f66",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "2와5를10으로 묶고1이상10미만 계수범위를 맞춘다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "2와5를 묶어10의 거듭제곱과 한자리수 계수를 분리한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 8,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "2와5를10으로 묶고1이상10미만 계수범위를 맞춘다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_fc16b52f3a4bcafc0b5de83b3a8ae0fcb17562d71c433f1d253d49426e035729",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "단항식 곱나눗셈의 부호와 지수법칙을 보기별 검토한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "기본 단항식 연산과 음수의 짝수 거듭제곱 부호를 판정한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 9,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "단항식 곱나눗셈의 부호와 지수법칙을 보기별 검토한다.; 기본단항식부호판정과여러보기정리의B12인접차, 저자값을 유지하되 source-only/low 및 등록보류를 보존한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8dda12026c0a9ab4e879e4abdf81d7f366737713c14eb0c631105c7fdb6babb",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "연속 단항식 나눗셈과 거듭제곱을 정리해 세 자연수 지수를 읽는다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "연속 나눗셈을 정리한 뒤 문자 지수와 계수를 대응한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 10,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "연속 단항식 나눗셈과 거듭제곱을 정리해 세 자연수 지수를 읽는다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_6738777a454891ef012985bd7080115b6a014ffc5c2192ce8389a4b0e8956675",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "reason": "본문에서 이미x=130으로 주면서 x를묻고 실제그림의130은외각이므로 원문과그림조건이충돌한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "reason": "본문은 x=130도이면서 x를 묻고 실제 그림은 C외각130도와 A꼭짓각x이다. 서로 다른 주어진 대상을 합치지 않고 난도 유보한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 11,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "본문에서 이미x=130으로 주면서 x를묻고 실제그림의130은외각이므로 원문과그림조건이충돌한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_76dbee9b9583a44c19697c34c22ac0363ea745f1cc77a18674220572f104c11c",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "이어지는 세 이등변삼각형의 밑각과 외각 관계를 연결한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "연결된 세 이등변삼각형의 밑각·외각 관계를 여러 번 연결해야 한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 12,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "이어지는 세 이등변삼각형의 밑각과 외각 관계를 연결한다.; 연속이등변각추적의정형2와조건연결3사이B23차, 저자값을 유지하되 source-only/low 및 등록보류를 보존한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_40c220471a0367dfda6829fc0d63c5e867ac9076e038df0c91c8c3f698ce60e2",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "밑각을 얻고 내외각 이등분선으로 만들어진 삼각형의 목표각을 결정한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "이등변 밑각과 내각·외각 이등분 조건을 연결하는 학습된 각 계산이다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 13,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "밑각을 얻고 내외각 이등분선으로 만들어진 삼각형의 목표각을 결정한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_252b34f5565095908f6aa06790c00991a0cefb0e1036539e57c3b3297a93192a",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "오른각 도형에 RHA/RHS 조건과 각만 같은 비합동조건을 비교한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "직각삼각형 두 도형에서 길이 없이 각만 같은 조건을 구별한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 14,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "오른각 도형에 RHA/RHS 조건과 각만 같은 비합동조건을 비교한다.; 길이없는각조건직접구별1과여러합동조건비교2의B12차, 저자값을 유지하되 source-only/low 및 등록보류를 보존한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_fdd9fcc0fbfe227841ed0a786fc78c3496c6f09ca026ae9b7366247b3b9856b0",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "그림의AB=AE와 두직각을 바탕으로 합동삼각형과 각 분할을 연결한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "실제 그림의 수선·같은 길이를 읽어 두 직각삼각형 관계와 각을 연결한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 15,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "그림의AB=AE와 두직각을 바탕으로 합동삼각형과 각 분할을 연결한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_86992df8c76ec26669c2b2026bdc47109c28b1a4db8ee15401023ed3450084c9",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "외심의 같은반지름·수선발·합동과 내심 성질을 구별한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "외심의 반지름과 수직이등분선 성질에 맞는 두 보기를 구별한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 16,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "외심의 같은반지름·수선발·합동과 내심 성질을 구별한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_9e578a2e3861d3ca6952ed3db29a5d7264cc3529370afcfd5ae28688854c9750",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "외심으로만든 이등변삼각형의 각관계를 이어목표각을 판단한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "외심에서 꼭짓점까지 같은 길이를 이용해 나뉜 각을 연결한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 17,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "외심으로만든 이등변삼각형의 각관계를 이어목표각을 판단한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_2a3aaafd58111e6660a1decaeb1129245bac805d3c976faad80f63725c326c09",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "외심각과내심각 두관계를 동시에 적용한 차를 요구한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "외심과 내심의 각 관계를 각각 적용하여 두 각의 차를 구한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 18,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "외심각과내심각 두관계를 동시에 적용한 차를 요구한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_3f05bfe6079b78eed070117a558cf977ec011179e4ed757ecfd4e047dc50e52a",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "한점에서그은 두접선길이의 같음을 세꼭짓점에 연결한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "접점까지의 같은 길이를 세 변에 이어 적용하는 정형 내접원 문제이다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 19,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "한점에서그은 두접선길이의 같음을 세꼭짓점에 연결한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_7d400b3c0b53bb35b75ab45cef7fc461cb1731609f10748388254db05af0bb54",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "reason": "둘레24인 삼각형의 최대넓이보다48이 크므로 도형실현성 부채로 난도를확정하지 않는다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "reason": "둘레24cm와 넓이48cm²의 삼각형 실현 가능성에 의문이 있고 원답·해설이 없다. 공식대입 난도로 확정하지 않는다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 20,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "둘레24인 삼각형의 최대넓이보다48이 크므로 도형실현성 부채로 난도를확정하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_a569fccaeae7825bd7b8d3575bf042eaaf0c1a5694412d4534ed41879cd3b14b",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "지정된 반복부분 소거로 두소수를 분수화하고 분자·분모오독정보를 복원해 다시 소수화한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두 순환소수 변환과 잘못 읽은 분자/분모의 역할 복원이 이어지는 소문항 구조이다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 21,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "지정된 반복부분 소거로 두소수를 분수화하고 분자·분모오독정보를 복원해 다시 소수화한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_b74d475459002c200af2c5271e3e612d1967866f28f6200e3c749f856a087d9d",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "서로다른 회전축에서 반지름·높이를 구별한 두원기둥부피와 단항식 비를 결합한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두 회전축마다 반지름과 높이를 구별해 원기둥 부피와 비를 만드는 정형 결합이다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 22,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "서로다른 회전축에서 반지름·높이를 구별한 두원기둥부피와 단항식 비를 결합한다.; 안내된원기둥부피비2와두표현결합3의B23차, 저자값을 유지하되 source-only/low 및 등록보류를 보존한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_212fdf8896b84215b5dfb17d6e5ed9ad159dd7705939292237bd3c689582e3d6",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "실제그림의 빗변7·50도/40도 정보를 대응시켜 RHA합동을 판별한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "실제 도형의 빗변·예각을 맞추어 합동쌍과 합동조건을 서술한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 23,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "실제그림의 빗변7·50도/40도 정보를 대응시켜 RHA합동을 판별한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_70d26f5a16b140c5ffd5fe5f17be3bfa4a467d77263bfc3c8adc5ef08c37f02f",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "삼각형각비를 각도로 바꾼 뒤 외심의 이등변각관계로 목표각비를 결정한다."
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "각의 비로 세 각을 구한 뒤 외심의 이등변삼각형 관계를 연결한다.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 24,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_NAMED_DEBTS",
+      "reason": "삼각형각비를 각도로 바꾼 뒤 외심의 이등변각관계로 목표각비를 결정한다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "ACCEPT_R2_WITH_RETAINED_DEBTS",
+      "reason": "비최소순환마디와표기관례모호성UNKNOWN유지"
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "ACCEPT_R2_WITH_RETAINED_DEBTS",
+      "reason": "본문x=130과실제그림외각130충돌UNKNOWN유지"
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_R2_WITH_RETAINED_DEBTS",
+      "reason": "둘레24와넓이48의실현성부채UNKNOWN유지"
+    },
+    {
+      "sourceOrdinal": 9,
+      "decision": "ACCEPT_R2_WITH_RETAINED_DEBTS",
+      "reason": "primary불명에종속된CC/intnull과설명이r2에서일치"
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "ACCEPT_R2_WITH_RETAINED_DEBTS",
+      "reason": "RHS/RHA복수합동primary유보와CC/intnull설명일치"
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT_R2_WITH_RETAINED_DEBTS",
+      "reason": "실제PNG 빗변7과50도/40도대응의RHA구조확인"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "criticalGoalMethodDefectInterpretation": "No additional unreported semantic defects after r2. Existing absent-solution method evidence failures are separately counted as24 and remain unresolved, not passed.",
+  "fabricatedQuotes": 0,
+  "requiredMethodEvidenceDebtOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "notes": [
+    "기존해설빈칸24로methodnativeFAIL24를그대로보존한다. 완전한4칸/품질PASS 주장이아니다.",
+    "r2는모든reviewScope/fieldReview.fourSlot의기존해설열람claim을실제source-only경계로바로잡았다.",
+    "독립초기snapshot과13그림SHA재사용,원문정답해설그림수정없음."
+  ]
+}
