@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "GLOBAL_ACTIVE_DEFINITION_REVIEW_v1",
+  "examId": "E029",
+  "status": "READ_ONLY_DEFINITION_AND_SKELETON_INSPECTION",
+  "entries": [
+    {
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+      "canonicalLabelKo": "포물선과 도형의 융합",
+      "definition": "포물선 위의 점과 축 위의 점이 만드는 삼각형·사각형의 넓이·둘레 조건으로 계수나 좌표를 결정한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTICAL_SEGMENT_MINIMUM",
+      "canonicalLabelKo": "포물선과 직선 사이 수직 선분의 최솟값",
+      "definition": "같은 x에서 두 그래프의 y좌표 차를 이차함수로 세우고 완전제곱꼴로 최솟값을 구한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+      "canonicalLabelKo": "직선의 계수와 그래프",
+      "definition": "직선의 계수 부호에서 기울기와 절편의 부호를 판정하여 그래프를 고른다.",
+      "internalSkeleton": "직선의 계수 부호에서 기울기와 절편의 부호를 판정하여 그래프를 고른다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+      "canonicalLabelKo": "함숫값 직접 계산",
+      "definition": "`함숫값 계산` 안에서 '함숫값 직접 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+      "internalSkeleton": "함숫값 직접 계산",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "canonicalLabelKo": "삼각비 연쇄 측정",
+      "definition": "삼각비로 중간 길이·각을 만든 뒤 넓이·둘레·부피·직선식 등으로 연결한다.",
+      "internalSkeleton": "삼각비 계산 결과를 다른 도형량·대상량의 계산으로 이어간다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "canonicalLabelKo": "삼각비로 직접 길이·높이·거리 구하기",
+      "definition": "삼각비로 목표 길이·높이·거리·기본 측정값을 직접 구한다.",
+      "internalSkeleton": "한 개 또는 연결된 직각삼각형에서 목표 측정값을 바로 산출한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "canonicalLabelKo": "공통 높이·거리 측량",
+      "definition": "두 관측점·두 각에서 공통 높이·거리를 공유하는 식을 세운다.",
+      "internalSkeleton": "공통 미지량에 대한 두 삼각비 식을 세워 연립한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "canonicalLabelKo": "삼각비 식의 대수적 정리",
+      "definition": "삼각비 식의 변형·부호·범위·항등 관계를 정리한다.",
+      "internalSkeleton": "삼각비 항등식과 범위 조건으로 식을 단순화한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "canonicalLabelKo": "삼각비의 기본 관계",
+      "definition": "삼각비 정의와 한 삼각비에서 다른 삼각비로의 변환을 이용한다.",
+      "internalSkeleton": "직각삼각형의 변·각 관계를 삼각비 식으로 직접 변환한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "canonicalLabelKo": "도형에서 삼각비 값 유도",
+      "definition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+      "internalSkeleton": "도형의 길이 관계를 먼저 복원하고 최종 삼각비 값으로 연결한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "canonicalLabelKo": "특수각의 삼각비",
+      "definition": "특수각의 삼각비 값을 직접 계산·비교·판정한다.",
+      "internalSkeleton": "특수각 관계를 사용해 삼각비 또는 각을 결정한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "canonicalLabelKo": "삼각비표의 조회",
+      "definition": "삼각비표·근삿값·역조회로 값을 비교하거나 각을 찾는다.",
+      "internalSkeleton": "표의 값과 주어진 조건을 대응시켜 삼각비·각을 결정한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "canonicalLabelKo": "접기·입체도형과 피타고라스",
+      "definition": "접기 대칭이나 입체도형의 길이·겉넓이 계산에 직각삼각형의 제곱 관계를 적용한다.",
+      "internalSkeleton": "문항 조건에서 직각삼각형 확인 → a²+b²=c² 또는 역 적용 → 목표 길이·넓이 확정",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "canonicalLabelKo": "조건·도형을 이차함수로 모델링",
+      "definition": "넓이·길이·이익 등 목표량을 이차식으로 나타내 극값을 구한다.",
+      "internalSkeleton": "TWO_GRAPH_VERTICAL_GAP_TO_QUADRILATERAL_AREA_MAX",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "canonicalLabelKo": "이차식의 근과 부호 구간",
+      "definition": "근 또는 인수분해를 이용해 이차식의 부호와 해구간을 정한다.",
+      "internalSkeleton": "ROOT_INTERVAL_TO_COEFFICIENTS",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+      "canonicalLabelKo": "두 변과 끼인각",
+      "definition": "2022 대수 삼각형의 넓이의 두 변과 끼인각 풀이 분기. RPM H2-M1-RPM-113 정본 계승.",
+      "internalSkeleton": "삼각형의 넓이 → 두 변과 끼인각",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH",
+      "canonicalLabelKo": "그래프 개형으로 옳지 않은 설명 찾기",
+      "definition": "주어진 포물선의 볼록성과 꼭짓점 위치로 각 설명의 참·거짓을 판정해 옳지 않은 것을 고른다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_M3_CALCULATE_TRIANGLE_AREA_FROM_VERTEX_AND_Y_INTERCEPT",
+      "canonicalLabelKo": "꼭짓점·y절편·원점 삼각형 넓이",
+      "definition": "표준형으로 꼭짓점 A를 구하고 y절편 B를 구해 OB를 밑변, A의 x좌표를 높이로 넓이를 계산한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+      "canonicalLabelKo": "서술형: 일반형을 표준형으로 변형",
+      "definition": "3으로 묶어 완전제곱식을 만들고 상수를 조정해 표준형을 쓴 뒤 꼭짓점을 답한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+      "canonicalLabelKo": "꼭짓점·y절편으로 계수 결정",
+      "definition": "y=a(x-2)^2-1에 y절편 (0, 3)을 대입해 a=1을 얻고 a+p+q를 계산한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS",
+      "canonicalLabelKo": "세 점 대입 연립으로 계수 결정",
+      "definition": "y절편에서 c를 먼저 얻고 나머지 두 점으로 a, b 연립방정식을 풀어 식을 완성한다.",
+      "status": "ACTIVE"
+    }
+  ]
+}

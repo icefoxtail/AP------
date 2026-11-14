@@ -1,7 +1,7 @@
 {
   "schemaVersion": "m3-s2-meta-branch-review-v1",
   "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
-  "owner": "GPT_ROOT_9C9D44BB632B",
+  "owner": "GPT_ROOT_6538DF266481",
   "branch": "review/m3-s2-meta-full-20261114",
   "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
   "state": "IN_PROGRESS",
@@ -1392,7 +1392,34 @@
       "uidDigest": "b6260bce551f17b664d9d18142fa4a4a4c12d04fc5d9a433e4577a8cf7dd5a09",
       "existing4slotPath": null,
       "existing4slotSourceBlob": null,
-      "state": "ASSIGNED"
+      "state": "BRANCH_REVIEW_COMPLETE",
+      "reviewedQuestionCount": 24,
+      "decisions": {
+        "CORRECT": 24
+      },
+      "sourceAfterBlob": "2f5d2777413631b1080d0c852e38b03d7c46b426",
+      "sourceAfterSha256": "3ed5838f13c8afa9f0ba8d3e94fd105f214861a29c858f48130cf0be56d678c3",
+      "sourceChangedQuestionCount": 24,
+      "sourceChangedFieldCount": 212,
+      "metadataRef": "docs/operations/m3-s2-meta-full-20261114/exams/E029.meta.json",
+      "metadataSha256": "3ef941fb82c738490d8ce892f504ec997c5dd5b8e74295c781e35a3ced742152",
+      "verificationRef": "docs/operations/m3-s2-meta-full-20261114/exams/E029.verification.json",
+      "verificationSha256": "aa78e1911e8f69c9dd020d76306f0434595a6c8b1d19852cabcfbcbb136f6ac7",
+      "independentSampleOrdinals": [
+        15,
+        18,
+        24
+      ],
+      "independentSampleStatus": "PASS",
+      "fourSlotMode": "NEW_FULL_EVIDENCE",
+      "fourSlotJudgments": {
+        "AUTHORED": 24
+      },
+      "fourSlotValidatorFail": 0,
+      "fourSlotValidatorWarnings": 13,
+      "activeFieldSchemaDebtCount": 7,
+      "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+      "commitParent": "5156f97e0e646eb0cadef99264592225fe2168aa"
     },
     {
       "id": "E030",
@@ -2537,12 +2564,31 @@
   "mainMerge": "NOT_RUN_USER_EXCLUDED",
   "deployment": "NOT_RUN_USER_EXCLUDED",
   "rollup": {
-    "branchReviewedExams": 31,
-    "branchReviewedQuestions": 733,
-    "remainingExams": 52,
-    "remainingQuestions": 1225,
-    "independentSamples": 93,
-    "latestPreparedExam": "E031",
+    "branchReviewedExams": 32,
+    "branchReviewedQuestions": 757,
+    "remainingExams": 51,
+    "remainingQuestions": 1201,
+    "independentSamples": 96,
+    "latestPreparedExam": "E029",
     "mainMerge": "NOT_RUN_USER_EXCLUDED"
+  },
+  "ownerHistory": [
+    {
+      "owner": "GPT_ROOT_9C9D44BB632B",
+      "throughRemoteHead": "5156f97e0e646eb0cadef99264592225fe2168aa",
+      "branchReviewedExams": 31,
+      "branchReviewedQuestions": 733
+    }
+  ],
+  "continuation": {
+    "reason": "USER_DIRECTED_EXACT_TASK_CONTINUATION",
+    "resumedRemoteHead": "5156f97e0e646eb0cadef99264592225fe2168aa",
+    "verifiedLatestMain": "e9cdc120e2a7d7b26b2bac01306191276b8fbcc1",
+    "latestMainTargetConflictCount": 0,
+    "previousCompletedExamsReused": 31,
+    "previousCompletedQuestionsReused": 733,
+    "previousIndependentSamplesReused": 93,
+    "awcrAcceptedRevision": 46,
+    "awcrAcceptedRawSha256": "511b457a7aaf2906c425335e06f2e836dbe2d44830ba8be70c5eca51b549a2b1"
   }
 }

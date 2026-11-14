@@ -1,0 +1,97 @@
+{
+  "examId": "E029",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "41178b6bb9d54d28c97ee1fa14f644dc13938801",
+  "sourceRawSha256": "630b105eff8e73c532411bd8628c005b1941a82bc97e14a610f3c936c35c0ad8",
+  "sourcePacketSha256": "2a882d1e46f8ee8a4f7226c0db93bf0248806b0bfdc26ef01b2596559de18b95",
+  "sampled4slotSha256": "01c918df71dd5e57ddd59e3bf188b46e3a3b1fd38eb3dbef86ae14e8bc13daec",
+  "sampledReviewSha256": "52e81396acfa2f2f6fb2c24758655ef71b30084dfd23937935063b2ed19a2872",
+  "sampledSourcePatchSha256": "f244391967c5649e301f921fd1503edc9f0c07617a4537253d446daa560dd164",
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "sampled": [
+    15,
+    18,
+    24
+  ],
+  "status": "PASS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_045258e80e04dec0d8573c86fcdd48baeb4897d4d2f06c09122fa7fb6df0a612",
+      "sourceImageRead": true,
+      "solutionImageRead": false,
+      "visualStatus": "READ_CURRENT_SOURCE_IMAGE_NO_SOLUTION_IMAGE_PRESENT",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 8
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본 그림에서 왼쪽 세로 경계 x=1이 직접 표시되고 음영이 그 경계에서 교점Q까지 두 포물선 사이에 한정됨을 확인했다. 따라서 COND_RANGE는 실제 지정된 유한 영역 조건으로 유효하다. 숫자3은 교점에서 도출되므로 4칸 condition에 숫자 구간을 새 전제로 쓰지 않고 method 범위에 둔 수정도 타당하다. 평면 영역의 세로 길이 보존은 등적변형에 해당하며 입체 단면 용어를 제거한 수정, exact leaf 공백과 넓이 골격 후보 분리 모두 수용한다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_87d642f96c333830e43c7762b33ea9889245c5021f52284a095c8d84f9a1e3eb",
+      "sourceImageRead": true,
+      "solutionImageRead": false,
+      "visualStatus": "READ_CURRENT_SOURCE_IMAGE_NO_SOLUTION_IMAGE_PRESENT",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 7
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본 직사각형의15·9 및 D가E로 접히는 배치를 읽었다. 현재 해설은 AE=AD와FE=FD를 두 피타고라스 식으로 연결하며 삼각비를 사용하지 않는다. given 직사각형·접기, goal길이, method접기·등거리·피타고라스, condition접기 모두 실제 역할과 일치한다. CC_PAPER_FOLDING_SIMILARITY의 ACTIVE 정의는 이름과 달리 대응선분 등거리의 직각삼각형 모델링이어서 사용 가능하고 M2피타고라스 비교 경로도 타당하다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_3790c11315df0ebacdd1eff21b1643595c1ea717d43243fae488870ce69fcf6b",
+      "sourceImageRead": true,
+      "solutionImageRead": false,
+      "visualStatus": "READ_CURRENT_SOURCE_IMAGE_NO_SOLUTION_IMAGE_PRESENT",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 9
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "정육면체의 모서리2·AD의 중점M·목표각FMG를 그림에서 확인했다. 면대각선과 직각으로FM=GM을 구한 뒤 높이의 넓이와 두변끼인각의 넓이를 같게 놓아 사인을 얻는 현재 해설을 4칸이 빠짐없이 담는다. 파생 수직성은 method로 옮기고 실제 발문 중점만condition에 둔 수정이 타당하다. 평면/입체 길이를 복원한 뒤 삼각비를 구하는 ACTIVE GEOMETRIC_DERIVATION 정의와 맞는다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    }
+  ],
+  "outstanding": [],
+  "scope": "Three independent metadata/4slot samples; no full-exam R1/R2/R3 certification",
+  "visualEvidence": [
+    "worker-outputs/b/E029/images-1.png",
+    "worker-outputs/b/E029/images-2.png"
+  ],
+  "conditionKeyReview": {
+    "ordinal": 15,
+    "key": "COND_RANGE",
+    "decision": "KEEP",
+    "imageEvidence": "원본 q15 그림에 x=1 경계가 직접 표시되고 색칠한 영역이 그 선부터 교점Q까지로 한정되어 있다. 오른쪽 숫자3은 식에서 구하지만 구간의 제한 자체는 문제 그림이 지정한다.",
+    "slotDistinction": "4slot condition은 명시적 꼭짓점 조건을 유지하고 구간 숫자 산출은 method에 기록한다."
+  },
+  "finalBindingReview": {
+    "previousHashes": {
+      "sampled4slotSha256": "01c918df71dd5e57ddd59e3bf188b46e3a3b1fd38eb3dbef86ae14e8bc13daec",
+      "sampledReviewSha256": "94c7f945f02865bec83c1fe1c5f22b1dcb368b37589ac09eaa2379527490406b",
+      "sampledSourcePatchSha256": "fba022047c42fe10ab08a39f1bc89076bc3775db43e6363de618e2a3355dedd3"
+    },
+    "changedScope": "11 legacyLevelCompatibility values BORDERLINE_REVIEW -> BORDERLINE_ACCEPTABLE and independent receipt references only; author bucket, historical level, sample slots and student source unchanged",
+    "status": "REBOUND_AFTER_INDEPENDENT_DIFFICULTY_ACCEPTANCE",
+    "independentDifficultyRef": "worker-outputs/c/independent/E029.difficulty.json"
+  }
+}
