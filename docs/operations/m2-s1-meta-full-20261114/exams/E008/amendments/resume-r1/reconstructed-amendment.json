@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "m2-s1-scoped-amendment-v1",
+  "examId": "E008",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "author": "GPT_ROOT_59E0F5BD3A77_WORKER_B",
+  "createdAt": "2026-11-14T10:43:13.013324+00:00",
+  "sourceArchiveFile": "original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "eefed60edcff1d7e6f031477335d74703d847e38",
+  "recoveryStatus": "RECONSTRUCTED_FROM_REMOTE_AUTHORITY_NOT_OLD_BYTE_RECOVERY",
+  "originalEvidence": {
+    "reviewSha256": "00970ad30c23ea7bc809636679f7c4fc3ff10b6ba42097a5908bebaa821bd6c3",
+    "independentSha256": "b61e12030cab0e804f3af26039883f4a05bb96fe0133f5977d4fb2c383d5c3a0",
+    "rootReviewSha256": "30460ec14b25dfca5406e45cdcbbcef7ddabcb88ba63df66bd64a255e7704a09",
+    "fourSlotSha256": "391ca012c667cd867e55e85c5bc0bab3cbeb9a9959c179b303328255be27e5e3",
+    "pendingAmendmentsSha256": "189188d53d6b516cbef39af17087b8d54198f1eb9cc8d26e33f5d68a089b05d6"
+  },
+  "itemChanges": [
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_93f597f8393a1f0ff0cf78318ccdcb827003555f0ceb1aa5bccbd6d74df386ad",
+      "field": "finalDifficulty.difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_93f597f8393a1f0ff0cf78318ccdcb827003555f0ceb1aa5bccbd6d74df386ad",
+      "field": "finalDifficulty.difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_93f597f8393a1f0ff0cf78318ccdcb827003555f0ceb1aa5bccbd6d74df386ad",
+      "field": "finalDifficulty.reason",
+      "before": "잘못된 결과→원식→정상계산의 두 역방향 관계를 구별해야 하므로3유지,2/3 경계 표시.",
+      "after": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary.",
+      "reason": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_93f597f8393a1f0ff0cf78318ccdcb827003555f0ceb1aa5bccbd6d74df386ad",
+      "field": "after.difficultyBucket",
+      "before": null,
+      "after": 2,
+      "reason": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_93f597f8393a1f0ff0cf78318ccdcb827003555f0ceb1aa5bccbd6d74df386ad",
+      "field": "after.difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_93f597f8393a1f0ff0cf78318ccdcb827003555f0ceb1aa5bccbd6d74df386ad",
+      "field": "after.legacyLevelCompatibility",
+      "before": null,
+      "after": "NORMAL",
+      "reason": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_93f597f8393a1f0ff0cf78318ccdcb827003555f0ceb1aa5bccbd6d74df386ad",
+      "field": "fieldReview.difficulty",
+      "before": "잘못된 결과→원식→정상계산의 두 역방향 관계를 구별해야 하므로3유지,2/3 경계 표시.",
+      "after": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary.",
+      "reason": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary."
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 12,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reason": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary."
+    }
+  ],
+  "proposalChanges": [],
+  "fourSlotChanges": [],
+  "notes": [
+    "Original author and independent packets remain immutable; only the specifically preserved pending adjudications are reconstructed. New evidence is not claimed identical to missing old local files.",
+    "Official resolver/shared registration/main/deployment are NOT_RUN. No student content changes.",
+    "Confidence medium is a NEW explicit judgment in this resumed session, not a recovered value from the unavailable prior amendment. B23 is retained; worker C must independently review this changed confidence/bucket packet."
+  ]
+}

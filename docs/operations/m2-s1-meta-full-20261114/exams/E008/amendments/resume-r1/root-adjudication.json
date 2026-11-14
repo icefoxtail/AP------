@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E008",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T10:51:34.514376+00:00",
+  "decision": "ACCEPT_SCOPED_AMENDMENT_REUSING_PRIOR_ADJUDICATION",
+  "previousRootEvidence": "../../root-review.json",
+  "originalReviewSha256": "00970ad30c23ea7bc809636679f7c4fc3ff10b6ba42097a5908bebaa821bd6c3",
+  "originalIndependentSha256": "b61e12030cab0e804f3af26039883f4a05bb96fe0133f5977d4fb2c383d5c3a0",
+  "reconstructedEvidenceSha256": "a61dbe8788958d7e354aaaf7c146ed2a9f6d3f0cd82e03bbb88b0abe75916cd8",
+  "acceptedReviewSha256": "050ecd55ac9f74f5cc64dc08514e7676ba61ad6b6af2879d30545b328faebeca",
+  "acceptedFourSlotSha256": "c9d6352a373188fa1fdcf894f2941b905d8b538ee39f4505ac23b0abc62925fb",
+  "reviewedSourceBlob": "eefed60edcff1d7e6f031477335d74703d847e38",
+  "finalSourceBlob": "e4c9198baf56c4fc8d79ea954ddd3cff1c7ec83a",
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 12,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "The statement explicitly says multiplication was replaced by division. Undo that single known erroneous operation then perform the specified multiplication: a standard inverse-operation procedure with no branch or strategy search. Bucket 2; preserve B23 for the prior disputed boundary."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "independentEvidencePolicy": "Reuse original three-item sample and documented pending root decisions. Only newly judged E008Q12 confidence has a fresh worker C independent receipt.",
+  "newIndependentEvidence": "independent-q12.json",
+  "registrationStatus": "NOT_RUN",
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL"
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "m2-s1-scoped-independent-amendment-review-v1",
+  "examId": "E008",
+  "reviewer": "M2-S1-META-FULL/worker_c",
+  "author": "worker_b",
+  "at": "2026-11-14T10:43:54.990058+00:00",
+  "sourceGitBlobSha": "eefed60edcff1d7e6f031477335d74703d847e38",
+  "authorAmendmentSha256": "a61dbe8788958d7e354aaaf7c146ed2a9f6d3f0cd82e03bbb88b0abe75916cd8",
+  "sourceOrdinal": 12,
+  "questionUid": "qid_v1_93f597f8393a1f0ff0cf78318ccdcb827003555f0ceb1aa5bccbd6d74df386ad",
+  "decision": "ACCEPT",
+  "finalDifficulty": {
+    "level": "중",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
+  },
+  "reason": "발문이 오류 연산을 나눗셈, 올바른 연산을 곱셈으로 명시한다. 기존 해설은 나눈 수를 곱해 원식을 복원한 뒤 같은 수를 다시 곱하는 표준 역연산 절차이며 표현·전략 선택이나 별도 경우 분류가 없다. 규칙 §4.2의 익숙한 풀이 틀→실행에 해당하므로 숫자2가 우세하다. 두 단계의 역방향 해석으로 인접3 주장 여지가 있었던 이력을 B23와 medium으로 보존한다. 중/2는 정상 짝이므로 NORMAL이다.",
+  "actualEvidenceRead": [
+    "E008 Q12 current stem, choices and existing solution",
+    "difficultyBucket v1.3 Bucket2/3,section4.2,section9",
+    "new worker B E008 amendment"
+  ],
+  "oldEvidenceRecoveryClaim": false,
+  "fullExamReReview": false,
+  "studentContentChanged": false
+}
