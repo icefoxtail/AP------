@@ -2477,7 +2477,7 @@
       "verdict": "CORRECT",
       "primaryMethod": "곱셈공식·분배법칙으로 전개식 비교",
       "decisiveStep": "(x−2)(x+3)=x²+x−6",
-      "reason": "source 분류/level가 누락되어 실제 문항에 따라 보완한다. 기본 전개식의 옳고 그름을 직접 확인한다.",
+      "reason": "source 분류/level가 누락되어 실제 문항에 따라 보완한다. 기본 전개식의 옳고 그름을 직접 확인한다. 추가 정본182의 여러 곱셈공식 비교·판별이 실제 다중 항등식 대조 목표와 정확히 일치함을 확인하여 native leaf를 교정한다.",
       "sourceChanges": {
         "standardCourse": "중3",
         "standardUnitKey": "M3-02",
@@ -2490,8 +2490,8 @@
       "decision": {
         "standardUnitKey": "M3-02",
         "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-        "rpmRecordId": "M3-RPM-017",
-        "rpm2022RecordId": "M3-RPM-109",
+        "rpmRecordId": "M3-RPM-182",
+        "rpm2022RecordId": null,
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -2549,9 +2549,24 @@
         {
           "kind": "CURRICULUM_FIELD_MISSING",
           "reason": "source/registered에 curriculum 값이 없다. 2026학년 중3 원본의2015 native 경로와2022 counterpart를 구분 제안하며 임의 machine curriculum을 쓰지 않는다."
+        },
+        {
+          "kind": "RPM_2022_LEAF_GAP",
+          "reason": "native2015 M3-RPM-182 여러 곱셈공식 비교·판별과 같은2022 전용 leaf가 현재 crosswalk에는 없어 근접한 한 공식 또는 식의 값 leaf로 강제하지 않는다."
         }
       ],
       "stemEvidenceSha256": "2c12e368729765a755918734ff9cbe841d26e7343ffcc4bc1745e897d3f9b2e3",
+      "adjudication": [
+        {
+          "reviewer": "meta_b",
+          "scope": "canonical182 follow-up",
+          "before": {
+            "rpmRecordId": "M3-RPM-017",
+            "rpm2022RecordId": "M3-RPM-109"
+          },
+          "reason": "기존001~054 범위 밖의 실제 current canonical 추가 leaf182를 읽고 해당 두 문항만 정정."
+        }
+      ],
       "before": {
         "source": {},
         "registered": {
@@ -2598,8 +2613,8 @@
       "after": {
         "standardUnitKey": "M3-02",
         "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-        "rpmRecordId": "M3-RPM-017",
-        "rpm2022RecordId": "M3-RPM-109",
+        "rpmRecordId": "M3-RPM-182",
+        "rpm2022RecordId": null,
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -2615,17 +2630,10 @@
           "majorUnit": "다항식의 곱셈과 인수분해",
           "midUnit": "다항식의 곱셈",
           "l3": "곱셈공식",
-          "l4": "두 일차식의 곱"
+          "l4": "여러 곱셈공식 비교·판별"
         },
-        "rpm2022EffectivePath": {
-          "curriculumKey": "2022",
-          "courseKey": "M3-1",
-          "L1": "다항식의 곱셈과 인수분해",
-          "L2": "다항식의 곱셈",
-          "L3": "곱셈공식",
-          "L4": "두 일차식의 곱"
-        },
-        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+        "rpm2022EffectivePath": null,
+        "rpm2022ParentAuthority": null,
         "legacyLevelCompatibility": "NORMAL"
       },
       "fingerprints": {
@@ -4567,6 +4575,12 @@
       "kind": "TEMPLATE_SCOPE_GAP",
       "reason": "해당 PT 정의는 의미상 후보이나 현재 세부 TPL 중 이 문항의 결정 골격과 직접 일치하는 값을 확정하지 않았다.",
       "problemTypeKey": "PT_M3_POLY_FACTORIZATION"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_ef82c5fe36d097e2c8c8c2a045a49fb39dab193d6566c286dda22bb6178bc602",
+      "kind": "RPM_2022_LEAF_GAP",
+      "reason": "다항식의 곱셈/곱셈공식/여러 곱셈공식 비교·판별의 native182 대응2022 leaf 확장 필요."
     }
   ],
   "assetReview": [
@@ -5299,6 +5313,7 @@
     "owner": "GPT_ROOT_D71839569CD9",
     "semanticReviewer": "meta_b",
     "independentReviewer": "GPT_ROOT_D71839569CD9",
+    "integratedBy": "GPT_ROOT_D71839569CD9",
     "reviewScope": "METADATA_ONLY",
     "mathematicalVerification": "NOT_PERFORMED",
     "sharedRegistration": "NOT_PERFORMED"

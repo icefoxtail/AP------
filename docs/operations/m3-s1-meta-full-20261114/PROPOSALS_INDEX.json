@@ -3033,8 +3033,8 @@
       "examKey": "E005",
       "ordinal": 14,
       "questionUid": "qid_v1_ef82c5fe36d097e2c8c8c2a045a49fb39dab193d6566c286dda22bb6178bc602",
-      "nativeRpm": "M3-RPM-017",
-      "rpm2022": "M3-RPM-109",
+      "nativeRpm": "M3-RPM-182",
+      "rpm2022": null,
       "debts": [
         {
           "kind": "CONTENT_FIELD_ABSENT",
@@ -3047,6 +3047,10 @@
         {
           "kind": "CURRICULUM_FIELD_MISSING",
           "reason": "source/registered에 curriculum 값이 없다. 2026학년 중3 원본의2015 native 경로와2022 counterpart를 구분 제안하며 임의 machine curriculum을 쓰지 않는다."
+        },
+        {
+          "kind": "RPM_2022_LEAF_GAP",
+          "reason": "native2015 M3-RPM-182 여러 곱셈공식 비교·판별과 같은2022 전용 leaf가 현재 crosswalk에는 없어 근접한 한 공식 또는 식의 값 leaf로 강제하지 않는다."
         }
       ],
       "projection": {
@@ -7158,6 +7162,16 @@
         "kind": "TEMPLATE_SCOPE_GAP",
         "reason": "해당 PT 정의는 의미상 후보이나 현재 세부 TPL 중 이 문항의 결정 골격과 직접 일치하는 값을 확정하지 않았다.",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION"
+      }
+    },
+    {
+      "examKey": "E005",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_ef82c5fe36d097e2c8c8c2a045a49fb39dab193d6566c286dda22bb6178bc602",
+        "kind": "RPM_2022_LEAF_GAP",
+        "reason": "다항식의 곱셈/곱셈공식/여러 곱셈공식 비교·판별의 native182 대응2022 leaf 확장 필요."
       }
     },
     {
