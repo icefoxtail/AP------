@@ -1,0 +1,687 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E061",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T15:26:47.374765+00:00",
+  "sourceGitBlobSha": "98901e820cbdaa99551ac9251845779d34026ad0",
+  "reviewSha256": "b763299fe3c6a6dc436bcbf235207d659958ab86a07828d582a739550381c274",
+  "fourSlotSha256": "a7bfac3e4e2f7e6e576b06085e4b1c17fe846a4475fe5ce3ac8cbab2b782d2fe",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/B/independent/E061.initial.json",
+  "initialFreezeSha256": "66c054aac66f70ccf33a5790d34fb280e489a0ad2b1a5b445467c897254ace55",
+  "sampleOrdinals": [
+    10,
+    17,
+    23
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 10,
+      "classification": "2022 RPM128 단항식 나눗셈. 삼각형 넓이식에서 높이를 고립한 뒤 단항식의 계수·문자 몫을 계산하는 핵심이다.",
+      "binding": "ACTIVE TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA 및 부모의 실제 정의를 읽었다. 현 입력은 단항식이며 다항식넓이 후보와 범위를 구별하고 정확 scoped binding/resolver는 유보.",
+      "crossConcept": "ACTIVE CC_TRIANGLE_AREA는 밑변과 높이로 넓이를 구하는 정의이다. 넓이식에서 몫의 입력을 만드는 외부 기하단계로 수용.",
+      "condition": "발문에 없는 문자값 범위를 추가하지 않았다.",
+      "integration": "삼각형넓이식→높이의 단항식몫으로 SEQUENTIAL.",
+      "difficulty": "독립2/B23와 저자2 수치일치. 정형공식 역산으로 실제내용상 저자판정을 수용.",
+      "fourSlot": "삼각형/넓이/밑변길이 given, 높이goal, 실제 표준넓이공식과 문자몫 method를 확인. 원해설 음의지수표현도 그대로 보존."
+    },
+    {
+      "sourceOrdinal": 17,
+      "classification": "같은 외점에서 원에 그은 접선길이가 같은 성질로 세 조각을 대응시키는 목표. RPM187 내심-변거리나188 반지름을 강제하지 않고 exactleafgap 수용.",
+      "binding": "실제 ACTIVE TM_TANGENT_LENGTH 및 PT_CIRCLE_TANGENT 정의를 읽고 외부점 접선길이 목표와 대응시켰다. 현 중등문항의 scoped binding은 미등록.",
+      "crossConcept": "동접선길이 결정 후 별도 전체둘레22를 사용하는 CC_PERIMETER는 가장자리 한바퀴 길이의 실제정의와 일치.",
+      "condition": "실제 렌더그림의 D/E/F 접점과 AD4/DB5, 발문의 둘레22를 확인. 원문에 없는 조건을 추가하지 않음.",
+      "integration": "접선길이 대응→둘레식으로 SEQUENTIAL.",
+      "difficulty": "독립2/B23와 저자2/B23 일치. 정형 동접선 대응과 둘레식의 두단계 연결.",
+      "fourSlot": "내심/둘레/선분 given, EC길이 goal, 실제 접선길이 같음·둘레·일차식 NAMED 모두 literal 확인."
+    },
+    {
+      "sourceOrdinal": 23,
+      "classification": "2022 RPM188 외접원·내접원 활용의 반지름 계산. 직각삼각형 외접반지름과 넓이분할을 이용하는 내접반지름의 복수목표를 수용.",
+      "binding": "실제 RPM188/189 구분과 ACTIVE TRIANGLE_CENTERS_COMBINED/CIRCUMCENTER/INCENTER 및 부모 정의를 읽었다. 반지름목표188과 관련후보를 보존하며 genuine binding을 주장하지 않음.",
+      "crossConcept": "직각삼각형 중심의 반지름을 위한 넓이공식은 선택 radius/center primary 내부 단계이므로 중복 CC 없음.",
+      "condition": "직각C와 세변20/12/16을 실제 그림 및 발문으로 확인. 별도 부호조건을 새로 만들지 않았다.",
+      "integration": "두 중심의 표준반지름 측정이 선택 primary 내부인 NONE.",
+      "difficulty": "독립2/B23와 저자2/B23 일치. 두 표준측정이 나란히 주어진 정형 복합목표.",
+      "fourSlot": "직각삼각형과 세변길이 given, r2 외접/내접을 구별한 반지름goal, 실제 외심·넓이·내접반지름 method 인용 확인."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_e75b0803052a60127cb0ec05c3b618b1e7eb9e08fdb2e1b281a2a82c678ae55b",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "반복마디의 양끝 점표기와 실제반복의 직접대조"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "순환마디와 점표기의 직접 대응 판정.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 1
+      },
+      "decision": "ACCEPT",
+      "reason": "반복마디의 양끝 점표기와 실제반복의 직접대조"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_4ed5e6b5a4deea711f469b32bec7a1d7e2b22fa4705993ce026a0420d450c080",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "약분한 분모 소인수2/5 여부의 직접판정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "네 분수의 약분 후 분모 소인수로 유한 여부 확인.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 2
+      },
+      "decision": "ACCEPT",
+      "reason": "약분한 분모 소인수2/5 여부의 직접판정"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_d52b9edf51ad5ae16ba529cd5694868e1c29e0273359a18b886b76626138150a",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "제한된 자연수후보에서2/5외인수를 고른뒤 분자7약분예외를 제거"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "10이하 자연수 후보에서 분모 소인수와 분자7의 약분예외를 함께 걸러 합한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 3
+      },
+      "decision": "ACCEPT",
+      "reason": "제한된 자연수후보에서2/5외인수를 고른뒤 분자7약분예외를 제거"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_4b20bdd76e0b1d1e589713e29bb813e0601f59ec8c1a7d1c4b7a3b304facbbc1",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "지정된 순환부분을 같은위치로 맞추는10배/1000배 선택"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "비순환 한자리와 두자리 주기를 맞춘 소거식 선택.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 4
+      },
+      "decision": "ACCEPT",
+      "reason": "지정된 순환부분을 같은위치로 맞추는10배/1000배 선택"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_4a5297e3d47743c1a36d8bd82bfc2efe121d6018ae35f8b0a2addb31a9af3928",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "유리수·유한소수·순환소수의 포함관계 직접판정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "유리수·유한·순환소수의 포함관계 정의 판정.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 5
+      },
+      "decision": "ACCEPT",
+      "reason": "유리수·유한소수·순환소수의 포함관계 직접판정"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_7c9db7a155aa597ad0b72b3d40c41ddb81907fdf3833d958acec0a67b743de1b",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "지수법칙의 여러 독립보기 판정과 참인개수"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "다섯 독립 지수연산과 서로 다른 밑 a,b의 거듭제곱 곱을 구별한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 6
+      },
+      "decision": "ACCEPT",
+      "reason": "지수법칙의 여러 독립보기 판정과 참인개수"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_23237178706a095227bee8f5da6ff8fed47211a295a62f6aa10981913705c2c9",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "소인수의 거듭제곱으로 바꾸고 주어진 A의 거듭제곱에 대응"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "81을3의 거듭제곱으로 바꿔 주어진A 거듭제곱의 역수로 표시.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 7
+      },
+      "decision": "ACCEPT",
+      "reason": "소인수의 거듭제곱으로 바꾸고 주어진 A의 거듭제곱에 대응"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_b6e3bd3032b009742ffee5b5e43548e37d4f9bd063133824665d551570e63992",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "두 지수관계에서 a를 먼저정한뒤 b,c 연결"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "두 지수조건을 순서대로 연결해 세 자연수 지수를 결정하고 합한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 8
+      },
+      "decision": "ACCEPT",
+      "reason": "두 지수관계에서 a를 먼저정한뒤 b,c 연결"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_33c7f08ded5c8fa96043e841201466361777bed299e6fdf148ce294537401f11",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "첫 보기의 명시적 음수계수 곱을 직접판정하여 틀린계산 선택"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "기존해설의 잘못된 첫보기 계수부호 판정은 직접 곱셈. 다른 보기 검증은 별도 축약이다.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 9
+      },
+      "decision": "ACCEPT",
+      "reason": "첫 보기의 명시적 음수계수 곱을 직접판정하여 틀린계산 선택"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_7df30e516b73e02f431fbc9c5687aa878ce835016702fd4de9fa9df4887381d1",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "삼각형넓이공식을 높이에 관해 정리한 단항식 몫"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "삼각형 넓이공식에서 높이를 분리해 문자지수의 몫으로 계산.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 10
+      },
+      "decision": "ACCEPT",
+      "reason": "삼각형넓이공식을 높이에 관해 정리한 단항식 몫"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_6dc78147b75fc71f0eb1eba45354cd6bc3aa12950fbc011fb9798fd686e20eb1",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "실제외각130을 내각으로바꾸고 같은밑각과 내각합 연결"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "실제130도 외각으로 밑각과 꼭지각을 구하는 짧은 연계.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 11
+      },
+      "decision": "ACCEPT",
+      "reason": "실제외각130을 내각으로바꾸고 같은밑각과 내각합 연결; 외각과 같은밑각의 짧은연계 또는 주어진세변의 직접제곱비교로1/2 인접에서 저자1 수용."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_c961f1a5ee08148d71e1e1b8cd0df068707114f8d57392581a5b42bf5031898e",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "각이등분과 이등변의 양방향 성질로 두 작은삼각형의 각·변을 연쇄판정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "이등변 성질과 이등분선으로 각을 연쇄 결정하고 작은 삼각형의 동변까지 판정.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 12
+      },
+      "decision": "ACCEPT",
+      "reason": "각이등분과 이등변의 양방향 성질로 두 작은삼각형의 각·변을 연쇄판정"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e6e5b219302e1e478af4fff3d2d2420ffb39df305d63b334c5b9a8eb00982428",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "직각두변6/8의 피타고라스 직접적용"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "실제 직각삼각형6/8의 제곱합과 양의 빗변 길이.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 13
+      },
+      "decision": "ACCEPT",
+      "reason": "직각두변6/8의 피타고라스 직접적용"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_c258d30fa3538a217be79750363f8ec49fc3ba5d2a5007dba0341fe1fb1e9eb9",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "빗변위 정사각형 넓이에서 직각변위 넓이를 빼는 직접대응"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "정사각형의 넓이합 관계46−25만 적용.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 14
+      },
+      "decision": "ACCEPT",
+      "reason": "빗변위 정사각형 넓이에서 직각변위 넓이를 빼는 직접대응"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_bd3aab7e5d981ad5f29b6f39680e53b026f06225d1d962de884539341c24404c",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "다섯 세변조합에서 최대변 제곱과 나머지제곱합 비교"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "가장 긴 변의 제곱과 나머지 제곱합의 직접 비교.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 15
+      },
+      "decision": "ACCEPT",
+      "reason": "다섯 세변조합에서 최대변 제곱과 나머지제곱합 비교; 외각과 같은밑각의 짧은연계 또는 주어진세변의 직접제곱비교로1/2 인접에서 저자1 수용."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_8c4d512391fa87f2de53eb61fde93ce1dbcb9e8c52262e6ed1298fe139f893dd",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "주어진 내심중심각과 꼭지각의 표준관계 직접대입"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "명시 내심각110에 기본 내심각 공식을 역적용.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 16
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진 내심중심각과 꼭지각의 표준관계 직접대입"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1e14830f7d3da2ba126516173df01de9bfcd5a749ed4e590a4763714fdd6d6c2",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "같은외점의 접선길이와 실제둘레를 연결하여 남은 접선길이 결정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "실제 세 접점의 동접선길이를 둘레식에 연결해 미지길이 구하기.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 17
+      },
+      "decision": "ACCEPT",
+      "reason": "같은외점의 접선길이와 실제둘레를 연결하여 남은 접선길이 결정"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_47270ba1ad4ca5a05e0b5932b65002380c116d650b4e427ce4bee974f32dc615",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "외심에서 같은반지름의 이등변각을 연결하고 내각합 적용"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "외심의 세 반지름 같음으로 세 이등변 각을 연결한 내각합.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 18
+      },
+      "decision": "ACCEPT",
+      "reason": "외심에서 같은반지름의 이등변각을 연결하고 내각합 적용"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_cc1765f4aa91f0ca0526977af75ba971f043b1783aece3f8fe51d03fa6413438",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "두일차부등식의 해경계 일치로 계수 결정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "두 부등식을 각각 정리하고 같은 해 경계를 비교하여 계수 복원.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 19
+      },
+      "decision": "ACCEPT",
+      "reason": "두일차부등식의 해경계 일치로 계수 결정"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d263b796e661da93d9dc42c1519a0f064c1fe87d40f95c80a12e45d1e0cd7ffe",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "실제 흐름그림의 삼각형정의·직각합동·외심·피타고라스 명제를 순차판정; 한변과한예각 대응 미명시의 관례 부채"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "서로 다른 삼각형 성질을 판정해 실제 흐름도 경로를 추적. 한변의 대응 여부가 생략된 명제는 기존해설 해석에 조건부.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 20
+      },
+      "decision": "ACCEPT_WITH_SOURCE_CONVENTION_DEBT",
+      "reason": "실제 흐름그림의 삼각형정의·직각합동·외심·피타고라스 명제를 순차판정; 한변과한예각 대응 미명시의 관례 부채"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_f7652b262ebbed3c32b5f83427baaab693d4091d7a77442fe757fc1f916ddfa0",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "6자리 순환마디와100번째자리의 나머지 대응"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "6자리 주기와100÷6의 나머지로 목표 숫자 및 주기를 답하는 두 단계.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 21
+      },
+      "decision": "ACCEPT",
+      "reason": "6자리 순환마디와100번째자리의 나머지 대응"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_f381aece0158702dac54a3ae19c8cdf89551189692ada38bb71ffd4ee96dabf4",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "잘못된 곱셈에서 단항식을 복원하고 원래나눗셈 수행"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "잘못된 곱에서 단항식A를 복원하고 바른 몫을 다시 계산.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 22
+      },
+      "decision": "ACCEPT",
+      "reason": "잘못된 곱셈에서 단항식을 복원하고 원래나눗셈 수행"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_d51fcaa9d38ad85c26bcccf8e01fa07e14299e7aca2728d32c5b129fd2bb9c4e",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "직각삼각형 외접반지름과 넓이분할에 따른 내접반지름의 두 표준측정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "외접원 반지름과 내접원 반지름을 각각 중심/넓이 성질로 결정하는 정형 복합목표.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 23
+      },
+      "decision": "ACCEPT",
+      "reason": "직각삼각형 외접반지름과 넓이분할에 따른 내접반지름의 두 표준측정"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_8f01c7918a339e4600d1a572b93e0b43e4fb0efc1306cf8bc6641f7983e803d2",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "세점등거리의 외심을 수직이등분선교점으로 서술; 세나무 비공선성은 명시되지 않은 가정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "세 꼭짓점에서 같은 거리인 외심의 정의와 수직이등분선 작도를 연결. 삼각형 배치를 원풀이가 가정한 조건부 판단.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 24
+      },
+      "decision": "ACCEPT_WITH_SOURCE_CONVENTION_DEBT",
+      "reason": "세점등거리의 외심을 수직이등분선교점으로 서술; 세나무 비공선성은 명시되지 않은 가정"
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "순환마디와 점표기의 직접 대응 판정.; source중과 현재1의 인접 학습호환을 실제 현재내용에 근거해 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "네 분수의 약분 후 분모 소인수로 유한 여부 확인.; source중과 현재1의 인접 학습호환을 실제 현재내용에 근거해 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "비순환 한자리와 두자리 주기를 맞춘 소거식 선택.; source중과 현재1의 인접 학습호환을 실제 현재내용에 근거해 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "유리수·유한·순환소수의 포함관계 정의 판정.; source중과 현재1의 인접 학습호환을 실제 현재내용에 근거해 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "기존해설의 잘못된 첫보기 계수부호 판정은 직접 곱셈. 다른 보기 검증은 별도 축약이다.; source중과 현재1의 인접 학습호환을 실제 현재내용에 근거해 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "실제130도 외각으로 밑각과 꼭지각을 구하는 짧은 연계.; source중과 현재1의 인접 학습호환을 실제 현재내용에 근거해 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "실제 직각삼각형6/8의 제곱합과 양의 빗변 길이.; source중과 현재1의 인접 학습호환을 실제 현재내용에 근거해 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "정사각형의 넓이합 관계46−25만 적용.; source중과 현재1의 인접 학습호환을 실제 현재내용에 근거해 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "가장 긴 변의 제곱과 나머지 제곱합의 직접 비교.; source중과 현재1의 인접 학습호환을 실제 현재내용에 근거해 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "명시 내심각110에 기본 내심각 공식을 역적용.; source중과 현재1의 인접 학습호환을 실제 현재내용에 근거해 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "세 꼭짓점에서 같은 거리인 외심의 정의와 수직이등분선 작도를 연결. 삼각형 배치를 원풀이가 가정한 조건부 판단.; source중과 현재1의 인접 학습호환을 실제 현재내용에 근거해 독립 승인한다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 6,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 9,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 15,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 18,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 22,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "requiredMethodEvidenceDebt": 0,
+  "nativeMethodFailures": 0,
+  "notes": [
+    "24 actual stems/choices/existing solutions and all8 actual figures read before initial freeze/author comparison. Current low debts disclosed in request recorded honestly.",
+    "R2 Q6 repeated-sum wording corrected to distinct-base exponent comparison, Q6/Q20 core goal objects and Q23 inner/outer circle targets added as actual literals. Immutable original difficulty snapshot preserved.",
+    "Q14 actual explicit square-area standard equation supports NAMED by 4slot contract§8. Q15 strict inequality converse remains IMPLIED with justification.",
+    "Q20 correspondence convention and Q24 noncollinear three-tree assumption remain low; Q9 original solution explains only false first option, retained as original coverage note.",
+    "Source curriculum missing and official scoped registration/resolver gaps remain. No source/answer/solution/figure edits or qualityPASS inference."
+  ]
+}
