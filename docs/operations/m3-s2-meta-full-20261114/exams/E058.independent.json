@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E058",
+  "author": "m3_a",
+  "reviewer": "m3_b",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_왕운중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "03cda16046807d43a8cc68a5f97007966148546c",
+  "targetReviewSha256": "18dcbf89291aaad8e58a9a8a9b484fb7b3937b12f2b5841817c20016cad3bad0",
+  "target4slotSha256": "a3a885355379149b04630702c65bbe8cd7a049ce16194ce7d1061b201c7d22bb",
+  "sampledSourcePatchSha256": "4925b39ec1b6297e8a9c5fa328203d9e2719e313f19e3ea8c6cf7e2849ae671b",
+  "sampleOrdinals": [
+    14,
+    18,
+    23
+  ],
+  "sampleRule": "Independent reviewer m3_b read current source and required figures before author semantic decisions; selected radical sign, shared-height and area-derived trigonometric ratio samples.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_3da423226291ac0cb297301205430e190c4e18ddf7232b702b271871ed71611f",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본 식에서 특수각값1을 대입하고 제곱근을 절댓값으로 바꿔 같은 두 항의 차0을 구함을 확인했다. 범위0<x<45와 절댓값의 부호해제가 본문/해설에 근거하며 TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION·RADICAL_ABSOLUTE_VALUE와 4칸 방법/조건이 맞는다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_384797bce6a0acc615b830b705860b3763f2a7793619f74cc94f392d116e7630",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본 도형의 밑각35°/65°와 내부수선H, 밑변10을 직접 확인했다. 공통높이h로 두 밑변분할을 나타내고 합10으로 묶은 뒤 여각탄젠트 역수관계로 표현하므로 SHARED_HEIGHT가 정확하다. 4칸의 높이문자식 목표와 탄젠트·여각·역수 방법에 결정적 누락이 없다.",
+      "quotesChecked": 10,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_c083c2366bb9ffbf13e8659a5739c31a2725cc765cffd5cadf6c77c6c9f6ac9e",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본의 C직각 및 AD=DC=BC3, 목표각ABD 표시를 직접 확인했다. 현해설은 Pyth로AB/BD를 얻은 뒤 같은삼각형의 두 넓이식에서 보조높이DE를 구하므로 GEOMETRIC_DERIVATION 및 Pyth/삼각형넓이 CC가 정확하다. 차각공식으로 태깅하지 않았으며 4칸의 수선·넓이·사인 순서가 실제풀이와 일치한다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "7709247db8ce3a74fa96cd47b59c9a351049027d4f388024587ae6d061e2dfce"
+}

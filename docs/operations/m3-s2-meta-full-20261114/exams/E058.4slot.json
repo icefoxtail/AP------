@@ -1,0 +1,1621 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_왕운중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "03cda16046807d43a8cc68a5f97007966148546c",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "m3_a",
+    "run": "M3S2_FULL_20261114",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_ce93e507036c0ccff931e988e001c0213c4423d048c07306cb3c02d6c7cd0839",
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "아래 직각삼각형 $\\mathrm{ABC}$에서 $\\sin B$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q01.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "아래 직각삼각형 $\\mathrm{ABC}$에서 $\\sin B$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q01.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "아래 직각삼각형 $\\mathrm{ABC}$에서 $\\sin B$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q01.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "[풀이] 그림에서 ∠C=90°, AC=3, BC=2, AB=√13입니다. ∠B에 대해 마주 보는 변은 AC이고 빗변은 AB이므로 sin B=AC/AB=3/√13입니다. 따라서 정답은 ②입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 대변AC3과 빗변AB√13을 사인 정의에 바로 대응한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "그림의 대변AC3과 빗변AB√13을 사인 정의에 바로 대응한다.",
+        "method": "그림의 대변AC3과 빗변AB√13을 사인 정의에 바로 대응한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "그림의 대변AC3과 빗변AB√13을 사인 정의에 바로 대응한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_93a11b253fe88316f5b0a1ee08c72f820c4b84615dc345b25da02c71376ed183",
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "$\\sin A = \\frac{12}{13}$일 때, $\\cos A \\times \\tan A$의 값은?<br>(단, $0^\\circ < A < 90^\\circ$)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\sin A = \\frac{12}{13}$일 때, $\\cos A \\times \\tan A$의 값은?<br>(단, $0^\\circ < A < 90^\\circ$)"
+          },
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$\\sin A = \\frac{12}{13}$일 때, $\\cos A \\times \\tan A$의 값은?<br>(단, $0^\\circ < A < 90^\\circ$)"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$\\sin A = \\frac{12}{13}$일 때, $\\cos A \\times \\tan A$의 값은?<br>(단, $0^\\circ < A < 90^\\circ$)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "[풀이] 0°<A<90°이므로 cos A>0입니다. sin A=12/13에서 cos A=√(1−(12/13)²)=5/13입니다. tan A=(12/13)/(5/13)=12/5이므로 cos A·tan A=(5/13)(12/5)=12/13입니다. 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "예각 범위에서 sin으로 cos,tan을 표현해 cosA·tanA가 sinA와 같음을 확인한다. 기존해설의 두 비 계산은 같은 기본관계의 직접 적용이다."
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "[풀이] 0°<A<90°이므로 cos A>0입니다. sin A=12/13에서 cos A=√(1−(12/13)²)=5/13입니다. tan A=(12/13)/(5/13)=12/5이므로 cos A·tan A=(5/13)(12/5)=12/13입니다. 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "예각 범위에서 sin으로 cos,tan을 표현해 cosA·tanA가 sinA와 같음을 확인한다. 기존해설의 두 비 계산은 같은 기본관계의 직접 적용이다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "[풀이] 0°<A<90°이므로 cos A>0입니다. sin A=12/13에서 cos A=√(1−(12/13)²)=5/13입니다. tan A=(12/13)/(5/13)=12/5이므로 cos A·tan A=(5/13)(12/5)=12/13입니다. 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "예각 범위에서 sin으로 cos,tan을 표현해 cosA·tanA가 sinA와 같음을 확인한다. 기존해설의 두 비 계산은 같은 기본관계의 직접 적용이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$\\sin A = \\frac{12}{13}$일 때, $\\cos A \\times \\tan A$의 값은?<br>(단, $0^\\circ < A < 90^\\circ$)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "예각 범위에서 sin으로 cos,tan을 표현해 cosA·tanA가 sinA와 같음을 확인한다. 기존해설의 두 비 계산은 같은 기본관계의 직접 적용이다.",
+        "method": "예각 범위에서 sin으로 cos,tan을 표현해 cosA·tanA가 sinA와 같음을 확인한다. 기존해설의 두 비 계산은 같은 기본관계의 직접 적용이다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "예각 범위에서 sin으로 cos,tan을 표현해 cosA·tanA가 sinA와 같음을 확인한다. 기존해설의 두 비 계산은 같은 기본관계의 직접 적용이다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_24e0c397bfec53613e59f3362d90365fa0cf40b79196004f9285b6336bd8eda9",
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "[풀이] 각 보기의 값을 계산합니다. ① 1, ② 1, ③ 0, ④ √3/2, ⑤ sin45°cos45°−tan60°cos60°=1/2−√3/2=(1−√3)/2입니다. ⑤만 음수이고 다른 값은 0 이상이므로 가장 작습니다. 정답은 ⑤입니다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "다음 중 값이 가장 작은 것은?"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "다음 중 값이 가장 작은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "[풀이] 각 보기의 값을 계산합니다. ① 1, ② 1, ③ 0, ④ √3/2, ⑤ sin45°cos45°−tan60°cos60°=1/2−√3/2=(1−√3)/2입니다. ⑤만 음수이고 다른 값은 0 이상이므로 가장 작습니다. 정답은 ⑤입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "표준각 값을 각각 계산하면⑤만 음수이므로 최솟값을 선택한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "[풀이] 각 보기의 값을 계산합니다. ① 1, ② 1, ③ 0, ④ √3/2, ⑤ sin45°cos45°−tan60°cos60°=1/2−√3/2=(1−√3)/2입니다. ⑤만 음수이고 다른 값은 0 이상이므로 가장 작습니다. 정답은 ⑤입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "표준각 값을 각각 계산하면⑤만 음수이므로 최솟값을 선택한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "[풀이] 각 보기의 값을 계산합니다. ① 1, ② 1, ③ 0, ④ √3/2, ⑤ sin45°cos45°−tan60°cos60°=1/2−√3/2=(1−√3)/2입니다. ⑤만 음수이고 다른 값은 0 이상이므로 가장 작습니다. 정답은 ⑤입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "표준각 값을 각각 계산하면⑤만 음수이므로 최솟값을 선택한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "표준각 값을 각각 계산하면⑤만 음수이므로 최솟값을 선택한다.",
+        "method": "표준각 값을 각각 계산하면⑤만 음수이므로 최솟값을 선택한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "표준각 값을 각각 계산하면⑤만 음수이므로 최솟값을 선택한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_e9e054cb9ca8ee41521ffbb65f8f88a99efc4a358b4286fc6fc4615fb66f5a2f",
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = -\\frac{3}{4}x^2 + 3x - 9$의 그래프에 대한 설명으로 옳은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "이차함수 $y = -\\frac{3}{4}x^2 + 3x - 9$의 그래프에 대한 설명으로 옳은 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "이차함수 $y = -\\frac{3}{4}x^2 + 3x - 9$의 그래프에 대한 설명으로 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[풀이] y=−(3/4)x²+3x−9=−(3/4)(x−2)²−6이므로 꼭짓점은 (2,−6), 최댓값은 −6입니다. x²의 계수가 음수이므로 그래프는 위로 볼록합니다. 최댓값도 −6이므로 그래프 전체가 x축 아래에 있어 제1, 2사분면을 지나지 않습니다. x=0을 대입하면 y=−9이므로 y절편은 (0,−9)입니다. 또 y=−(3/4)x²의 꼭짓점 (0,0)을 오른쪽으로 2, 아래로 6 옮겨야 이 그래프가 되므로, x축 방향으로 −2만큼 옮겼다는 설명도 맞지 않습니다. 따라서 옳은 것은 ②입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "[풀이] y=−(3/4)x²+3x−9=−(3/4)(x−2)²−6이므로 꼭짓점은 (2,−6), 최댓값은 −6입니다. x²의 계수가 음수이므로 그래프는 위로 볼록합니다. 최댓값도 −6이므로 그래프 전체가 x축 아래에 있어 제1, 2사분면을 지나지 않습니다. x=0을 대입하면 y=−9이므로 y절편은 (0,−9)입니다. 또 y=−(3/4)x²의 꼭짓점 (0,0)을 오른쪽으로 2, 아래로 6 옮겨야 이 그래프가 되므로, x축 방향으로 −2만큼 옮겼다는 설명도 맞지 않습니다. 따라서 옳은 것은 ②입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다."
+          },
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "[풀이] y=−(3/4)x²+3x−9=−(3/4)(x−2)²−6이므로 꼭짓점은 (2,−6), 최댓값은 −6입니다. x²의 계수가 음수이므로 그래프는 위로 볼록합니다. 최댓값도 −6이므로 그래프 전체가 x축 아래에 있어 제1, 2사분면을 지나지 않습니다. x=0을 대입하면 y=−9이므로 y절편은 (0,−9)입니다. 또 y=−(3/4)x²의 꼭짓점 (0,0)을 오른쪽으로 2, 아래로 6 옮겨야 이 그래프가 되므로, x축 방향으로 −2만큼 옮겼다는 설명도 맞지 않습니다. 따라서 옳은 것은 ②입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다."
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "[풀이] y=−(3/4)x²+3x−9=−(3/4)(x−2)²−6이므로 꼭짓점은 (2,−6), 최댓값은 −6입니다. x²의 계수가 음수이므로 그래프는 위로 볼록합니다. 최댓값도 −6이므로 그래프 전체가 x축 아래에 있어 제1, 2사분면을 지나지 않습니다. x=0을 대입하면 y=−9이므로 y절편은 (0,−9)입니다. 또 y=−(3/4)x²의 꼭짓점 (0,0)을 오른쪽으로 2, 아래로 6 옮겨야 이 그래프가 되므로, x축 방향으로 −2만큼 옮겼다는 설명도 맞지 않습니다. 따라서 옳은 것은 ②입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다."
+          },
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "[풀이] y=−(3/4)x²+3x−9=−(3/4)(x−2)²−6이므로 꼭짓점은 (2,−6), 최댓값은 −6입니다. x²의 계수가 음수이므로 그래프는 위로 볼록합니다. 최댓값도 −6이므로 그래프 전체가 x축 아래에 있어 제1, 2사분면을 지나지 않습니다. x=0을 대입하면 y=−9이므로 y절편은 (0,−9)입니다. 또 y=−(3/4)x²의 꼭짓점 (0,0)을 오른쪽으로 2, 아래로 6 옮겨야 이 그래프가 되므로, x축 방향으로 −2만큼 옮겼다는 설명도 맞지 않습니다. 따라서 옳은 것은 ②입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다.",
+        "method": "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_4d0a85b5ce2c3062d86754f51266ca321c77f20c4516d4a1d884219f98f73e85",
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = -5x^2 - 20x - 7$의 그래프에서 $x$의 값이 증가할 때 $y$의 값은 증가하는 $x$의 값의 범위는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "증가감소",
+            "src": "stem",
+            "quote": "이차함수 $y = -5x^2 - 20x - 7$의 그래프에서 $x$의 값이 증가할 때 $y$의 값은 증가하는 $x$의 값의 범위는?"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "이차함수 $y = -5x^2 - 20x - 7$의 그래프에서 $x$의 값이 증가할 때 $y$의 값은 증가하는 $x$의 값의 범위는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[풀이] y=−5x²−20x−7=−5(x+2)²+13이므로 대칭축은 x=−2입니다. 아래로 열린 포물선은 꼭짓점의 왼쪽에서 x가 증가할 때 y도 증가하므로 증가 범위는 x<−2입니다. 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "−5(x+2)²+13으로 축x=−2와 아래로 열린 개형을 읽고 축 왼쪽의 증가구간을 선택한다. 원점축 y=ax²만의 증감RPM046으로 제한하지 않는다."
+          },
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "[풀이] y=−5x²−20x−7=−5(x+2)²+13이므로 대칭축은 x=−2입니다. 아래로 열린 포물선은 꼭짓점의 왼쪽에서 x가 증가할 때 y도 증가하므로 증가 범위는 x<−2입니다. 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "−5(x+2)²+13으로 축x=−2와 아래로 열린 개형을 읽고 축 왼쪽의 증가구간을 선택한다. 원점축 y=ax²만의 증감RPM046으로 제한하지 않는다."
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "[풀이] y=−5x²−20x−7=−5(x+2)²+13이므로 대칭축은 x=−2입니다. 아래로 열린 포물선은 꼭짓점의 왼쪽에서 x가 증가할 때 y도 증가하므로 증가 범위는 x<−2입니다. 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "−5(x+2)²+13으로 축x=−2와 아래로 열린 개형을 읽고 축 왼쪽의 증가구간을 선택한다. 원점축 y=ax²만의 증감RPM046으로 제한하지 않는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "−5(x+2)²+13으로 축x=−2와 아래로 열린 개형을 읽고 축 왼쪽의 증가구간을 선택한다. 원점축 y=ax²만의 증감RPM046으로 제한하지 않는다.",
+        "method": "−5(x+2)²+13으로 축x=−2와 아래로 열린 개형을 읽고 축 왼쪽의 증가구간을 선택한다. 원점축 y=ax²만의 증감RPM046으로 제한하지 않는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "−5(x+2)²+13으로 축x=−2와 아래로 열린 개형을 읽고 축 왼쪽의 증가구간을 선택한다. 원점축 y=ax²만의 증감RPM046으로 제한하지 않는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_4c1ad061f6bef713a269b7815faf4467815d5094af6803bbb9721d6e6d300443",
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "아래 그림과 같이 기울기가 $\\frac{1}{2}$이고 점 $(-2, 3)$을 지나는 직선이 $x$축, $y$축과 만나는 점을 각각 $\\mathrm{A, B}$라 하자. $\\angle\\mathrm{BAO} = a^\\circ$, $\\angle\\mathrm{ABO} = b^\\circ$라고 할 때, $\\cos a^\\circ - \\sin b^\\circ + \\tan b^\\circ$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q06.png\" />"
+          },
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "아래 그림과 같이 기울기가 $\\frac{1}{2}$이고 점 $(-2, 3)$을 지나는 직선이 $x$축, $y$축과 만나는 점을 각각 $\\mathrm{A, B}$라 하자. $\\angle\\mathrm{BAO} = a^\\circ$, $\\angle\\mathrm{ABO} = b^\\circ$라고 할 때, $\\cos a^\\circ - \\sin b^\\circ + \\tan b^\\circ$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q06.png\" />"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "아래 그림과 같이 기울기가 $\\frac{1}{2}$이고 점 $(-2, 3)$을 지나는 직선이 $x$축, $y$축과 만나는 점을 각각 $\\mathrm{A, B}$라 하자. $\\angle\\mathrm{BAO} = a^\\circ$, $\\angle\\mathrm{ABO} = b^\\circ$라고 할 때, $\\cos a^\\circ - \\sin b^\\circ + \\tan b^\\circ$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q06.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "아래 그림과 같이 기울기가 $\\frac{1}{2}$이고 점 $(-2, 3)$을 지나는 직선이 $x$축, $y$축과 만나는 점을 각각 $\\mathrm{A, B}$라 하자. $\\angle\\mathrm{BAO} = a^\\circ$, $\\angle\\mathrm{ABO} = b^\\circ$라고 할 때, $\\cos a^\\circ - \\sin b^\\circ + \\tan b^\\circ$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q06.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "아래 그림과 같이 기울기가 $\\frac{1}{2}$이고 점 $(-2, 3)$을 지나는 직선이 $x$축, $y$축과 만나는 점을 각각 $\\mathrm{A, B}$라 하자. $\\angle\\mathrm{BAO} = a^\\circ$, $\\angle\\mathrm{ABO} = b^\\circ$라고 할 때, $\\cos a^\\circ - \\sin b^\\circ + \\tan b^\\circ$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q06.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "[풀이] 기울기 1/2인 직선이 (−2,3)을 지나므로 y−3=(1/2)(x+2), 즉 y=(1/2)x+4입니다. 따라서 A=(−8,0), B=(0,4), AB=√(8²+4²)=4√5입니다. ∠BAO=a에서 cos a=AO/AB=2√5/5입니다. ∠ABO=b에서 sin b=AO/AB=2√5/5, tan b=AO/BO=2입니다. 따라서 cos a−sin b+tan b=2입니다. 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "[풀이] 기울기 1/2인 직선이 (−2,3)을 지나므로 y−3=(1/2)(x+2), 즉 y=(1/2)x+4입니다. 따라서 A=(−8,0), B=(0,4), AB=√(8²+4²)=4√5입니다. ∠BAO=a에서 cos a=AO/AB=2√5/5입니다. ∠ABO=b에서 sin b=AO/AB=2√5/5, tan b=AO/BO=2입니다. 따라서 cos a−sin b+tan b=2입니다. 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "[풀이] 기울기 1/2인 직선이 (−2,3)을 지나므로 y−3=(1/2)(x+2), 즉 y=(1/2)x+4입니다. 따라서 A=(−8,0), B=(0,4), AB=√(8²+4²)=4√5입니다. ∠BAO=a에서 cos a=AO/AB=2√5/5입니다. ∠ABO=b에서 sin b=AO/AB=2√5/5, tan b=AO/BO=2입니다. 따라서 cos a−sin b+tan b=2입니다. 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다."
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "[풀이] 기울기 1/2인 직선이 (−2,3)을 지나므로 y−3=(1/2)(x+2), 즉 y=(1/2)x+4입니다. 따라서 A=(−8,0), B=(0,4), AB=√(8²+4²)=4√5입니다. ∠BAO=a에서 cos a=AO/AB=2√5/5입니다. ∠ABO=b에서 sin b=AO/AB=2√5/5, tan b=AO/BO=2입니다. 따라서 cos a−sin b+tan b=2입니다. 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다.",
+        "method": "한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_4493bef5e268d49311cae431a1f4e9b7ca8bffd905971970a27d362c62d04672",
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "(7~8번) 아래 삼각비의 표를 이용하여 다음 물음에 답하시오.<br><table border=\"1\" style=\"border-collapse:collapse; text-align:center;\"><tr><th>각도</th><th>사인(sin)</th><th>코사인(cos)</th><th>탄젠트(tan)</th></tr><tr><td>$43^\\circ$</td><td>0.6820</td><td>0.7314</td><td>0.9325</td></tr><tr><td>$44^\\circ$</td><td>0.6947</td><td>0.7193</td><td>0.9657</td></tr><tr><td>$45^\\circ$</td><td>0.7071</td><td>0.7071</td><td>1.0000</td></tr><tr><td>$46^\\circ$</td><td>0.7193</td><td>0.6947</td><td>1.0355</td></tr></table><br>7. $\\sin x^\\circ = 0.7071$, $\\tan y^\\circ = 1.0355$를 만족하는 $x, y$에 대하여 $x+y$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "(7~8번) 아래 삼각비의 표를 이용하여 다음 물음에 답하시오.<br><table border=\"1\" style=\"border-collapse:collapse; text-align:center;\"><tr><th>각도</th><th>사인(sin)</th><th>코사인(cos)</th><th>탄젠트(tan)</th></tr><tr><td>$43^\\circ$</td><td>0.6820</td><td>0.7314</td><td>0.9325</td></tr><tr><td>$44^\\circ$</td><td>0.6947</td><td>0.7193</td><td>0.9657</td></tr><tr><td>$45^\\circ$</td><td>0.7071</td><td>0.7071</td><td>1.0000</td></tr><tr><td>$46^\\circ$</td><td>0.7193</td><td>0.6947</td><td>1.0355</td></tr></table><br>7. $\\sin x^\\circ = 0.7071$, $\\tan y^\\circ = 1.0355$를 만족하는 $x, y$에 대하여 $x+y$의 값은?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "(7~8번) 아래 삼각비의 표를 이용하여 다음 물음에 답하시오.<br><table border=\"1\" style=\"border-collapse:collapse; text-align:center;\"><tr><th>각도</th><th>사인(sin)</th><th>코사인(cos)</th><th>탄젠트(tan)</th></tr><tr><td>$43^\\circ$</td><td>0.6820</td><td>0.7314</td><td>0.9325</td></tr><tr><td>$44^\\circ$</td><td>0.6947</td><td>0.7193</td><td>0.9657</td></tr><tr><td>$45^\\circ$</td><td>0.7071</td><td>0.7071</td><td>1.0000</td></tr><tr><td>$46^\\circ$</td><td>0.7193</td><td>0.6947</td><td>1.0355</td></tr></table><br>7. $\\sin x^\\circ = 0.7071$, $\\tan y^\\circ = 1.0355$를 만족하는 $x, y$에 대하여 $x+y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "[풀이] 표에서 sin45°=0.7071이므로 x=45입니다. tan46°=1.0355이므로 y=46입니다. 따라서 x+y=45+46=91이고 정답은 ④입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 sin값과 tan값을 표에서 역조회하여 각45°,46°의 합을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "주어진 sin값과 tan값을 표에서 역조회하여 각45°,46°의 합을 구한다.",
+        "method": "주어진 sin값과 tan값을 표에서 역조회하여 각45°,46°의 합을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "주어진 sin값과 tan값을 표에서 역조회하여 각45°,46°의 합을 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_15c13c00603678eae39924e2c8358b7034d6e7d5470d2f40b93e3e87a7502d19",
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $y-x$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q08.png\" />"
+          },
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $y-x$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q08.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $y-x$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q08.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $y-x$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q08.png\" />"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $y-x$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q08.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "[풀이] 표에서 sin43°=0.6820, cos43°=0.7314입니다. 꼭대기 각 43°에서 밑변 x는 맞은편 변이고 높이 y는 이웃한 변이며, 빗변은 100입니다. 따라서 x=100sin43°=68.20, y=100cos43°=73.14입니다. 그러므로 y−x=73.14−68.20=4.94이고 정답은 ②입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변100과43°에 표의 사인·코사인을 바로 대입해 두 직각변의 차를 구한다."
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "[풀이] 표에서 sin43°=0.6820, cos43°=0.7314입니다. 꼭대기 각 43°에서 밑변 x는 맞은편 변이고 높이 y는 이웃한 변이며, 빗변은 100입니다. 따라서 x=100sin43°=68.20, y=100cos43°=73.14입니다. 그러므로 y−x=73.14−68.20=4.94이고 정답은 ②입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변100과43°에 표의 사인·코사인을 바로 대입해 두 직각변의 차를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "빗변100과43°에 표의 사인·코사인을 바로 대입해 두 직각변의 차를 구한다.",
+        "method": "빗변100과43°에 표의 사인·코사인을 바로 대입해 두 직각변의 차를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "빗변100과43°에 표의 사인·코사인을 바로 대입해 두 직각변의 차를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_6e6a111fe32aa7d4ba30e4b70bc5872ab06cc1aa10e3797ef43d6a94bbe15c7f",
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=35^\\circ$, $\\overline{\\mathrm{AC}}=10$일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이는?<br>(단, $\\sin 35^\\circ = 0.57$, $\\cos 35^\\circ = 0.82$, $\\tan 35^\\circ = 0.70$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q09.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=35^\\circ$, $\\overline{\\mathrm{AC}}=10$일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이는?<br>(단, $\\sin 35^\\circ = 0.57$, $\\cos 35^\\circ = 0.82$, $\\tan 35^\\circ = 0.70$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q09.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=35^\\circ$, $\\overline{\\mathrm{AC}}=10$일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이는?<br>(단, $\\sin 35^\\circ = 0.57$, $\\cos 35^\\circ = 0.82$, $\\tan 35^\\circ = 0.70$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q09.png\" />"
+          },
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=35^\\circ$, $\\overline{\\mathrm{AC}}=10$일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이는?<br>(단, $\\sin 35^\\circ = 0.57$, $\\cos 35^\\circ = 0.82$, $\\tan 35^\\circ = 0.70$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q09.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=35^\\circ$, $\\overline{\\mathrm{AC}}=10$일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이는?<br>(단, $\\sin 35^\\circ = 0.57$, $\\cos 35^\\circ = 0.82$, $\\tan 35^\\circ = 0.70$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q09.png\" />"
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=35^\\circ$, $\\overline{\\mathrm{AC}}=10$일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이는?<br>(단, $\\sin 35^\\circ = 0.57$, $\\cos 35^\\circ = 0.82$, $\\tan 35^\\circ = 0.70$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q09.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "[풀이] AC=10은 빗변입니다. AB=10cos35°=10(0.82)=8.2, BC=10sin35°=10(0.57)=5.7입니다. 둘레는 8.2+5.7+10=23.9입니다. 정답은 ④입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변10과35°에서 두직각변을 직접 구하고 세변을 합해둘레를 얻는다. 최종둘레 연결을 CHAINED로 보존한다."
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "[풀이] AC=10은 빗변입니다. AB=10cos35°=10(0.82)=8.2, BC=10sin35°=10(0.57)=5.7입니다. 둘레는 8.2+5.7+10=23.9입니다. 정답은 ④입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변10과35°에서 두직각변을 직접 구하고 세변을 합해둘레를 얻는다. 최종둘레 연결을 CHAINED로 보존한다."
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "[풀이] AC=10은 빗변입니다. AB=10cos35°=10(0.82)=8.2, BC=10sin35°=10(0.57)=5.7입니다. 둘레는 8.2+5.7+10=23.9입니다. 정답은 ④입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변10과35°에서 두직각변을 직접 구하고 세변을 합해둘레를 얻는다. 최종둘레 연결을 CHAINED로 보존한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "빗변10과35°에서 두직각변을 직접 구하고 세변을 합해둘레를 얻는다. 최종둘레 연결을 CHAINED로 보존한다.",
+        "method": "빗변10과35°에서 두직각변을 직접 구하고 세변을 합해둘레를 얻는다. 최종둘레 연결을 CHAINED로 보존한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "빗변10과35°에서 두직각변을 직접 구하고 세변을 합해둘레를 얻는다. 최종둘레 연결을 CHAINED로 보존한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_77511ad744d910710014b6204471283cc1957a18f71e5b88acf2400a0bcf9d0b",
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "다음 $\\square\\mathrm{ABCD}$의 넓이는?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q10.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 $\\square\\mathrm{ABCD}$의 넓이는?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q10.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 $\\square\\mathrm{ABCD}$의 넓이는?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q10.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "다음 $\\square\\mathrm{ABCD}$의 넓이는?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q10.png\" />"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 $\\square\\mathrm{ABCD}$의 넓이는?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q10.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "[풀이] 대각선 AC로 사각형을 △ABC와 △ADC로 나눕니다. △ABC에서 밑변을 BC로 잡으면 높이는 AB sin60°=9√3/2 cm이므로 넓이는 (1/2)·12·(9√3/2)=27√3 cm²입니다. △ADC에서 밑변을 DC로 잡습니다. DC를 D의 바깥쪽으로 연장하면 DA와 연장선이 이루는 각은 30°이므로 A에서 DC의 직선까지의 높이는 AD sin30°=3√3/2 cm입니다. 따라서 △ADC의 넓이는 (1/2)·6·(3√3/2)=9√3/2 cm²입니다. 두 넓이의 합은 63√3/2 cm²이고 정답은 ④입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "[풀이] 대각선 AC로 사각형을 △ABC와 △ADC로 나눕니다. △ABC에서 밑변을 BC로 잡으면 높이는 AB sin60°=9√3/2 cm이므로 넓이는 (1/2)·12·(9√3/2)=27√3 cm²입니다. △ADC에서 밑변을 DC로 잡습니다. DC를 D의 바깥쪽으로 연장하면 DA와 연장선이 이루는 각은 30°이므로 A에서 DC의 직선까지의 높이는 AD sin30°=3√3/2 cm입니다. 따라서 △ADC의 넓이는 (1/2)·6·(3√3/2)=9√3/2 cm²입니다. 두 넓이의 합은 63√3/2 cm²이고 정답은 ④입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[풀이] 대각선 AC로 사각형을 △ABC와 △ADC로 나눕니다. △ABC에서 밑변을 BC로 잡으면 높이는 AB sin60°=9√3/2 cm이므로 넓이는 (1/2)·12·(9√3/2)=27√3 cm²입니다. △ADC에서 밑변을 DC로 잡습니다. DC를 D의 바깥쪽으로 연장하면 DA와 연장선이 이루는 각은 30°이므로 A에서 DC의 직선까지의 높이는 AD sin30°=3√3/2 cm입니다. 따라서 △ADC의 넓이는 (1/2)·6·(3√3/2)=9√3/2 cm²입니다. 두 넓이의 합은 63√3/2 cm²이고 정답은 ④입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다."
+          },
+          {
+            "term": "평각",
+            "src": "solution",
+            "quote": "[풀이] 대각선 AC로 사각형을 △ABC와 △ADC로 나눕니다. △ABC에서 밑변을 BC로 잡으면 높이는 AB sin60°=9√3/2 cm이므로 넓이는 (1/2)·12·(9√3/2)=27√3 cm²입니다. △ADC에서 밑변을 DC로 잡습니다. DC를 D의 바깥쪽으로 연장하면 DA와 연장선이 이루는 각은 30°이므로 A에서 DC의 직선까지의 높이는 AD sin30°=3√3/2 cm입니다. 따라서 △ADC의 넓이는 (1/2)·6·(3√3/2)=9√3/2 cm²입니다. 두 넓이의 합은 63√3/2 cm²이고 정답은 ④입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다.",
+        "method": "대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_b6fa81043e7ff233a156ee631d0b27fb04ee88372ad797577449ce71339072c7",
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$\\tan(x+15^\\circ) = 1$일 때, $\\cos x \\times \\sin 2x$의 값은?<br>(단, $0^\\circ < x < 75^\\circ$)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\tan(x+15^\\circ) = 1$일 때, $\\cos x \\times \\sin 2x$의 값은?<br>(단, $0^\\circ < x < 75^\\circ$)"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "$\\tan(x+15^\\circ) = 1$일 때, $\\cos x \\times \\sin 2x$의 값은?<br>(단, $0^\\circ < x < 75^\\circ$)"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$\\tan(x+15^\\circ) = 1$일 때, $\\cos x \\times \\sin 2x$의 값은?<br>(단, $0^\\circ < x < 75^\\circ$)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "[풀이] 15°<x+15°<90°이고 이 범위에서 tan θ=1인 각은 45°이므로 x=30°입니다. cos x·sin2x=cos30°·sin60°=(√3/2)(√3/2)=3/4입니다. 정답은 ⑤입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 열린범위에서 tan(x+15)=1의각45°를 유일하게 골라 x30을 정하고 cos30sin60을 계산한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "[풀이] 15°<x+15°<90°이고 이 범위에서 tan θ=1인 각은 45°이므로 x=30°입니다. cos x·sin2x=cos30°·sin60°=(√3/2)(√3/2)=3/4입니다. 정답은 ⑤입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 열린범위에서 tan(x+15)=1의각45°를 유일하게 골라 x30을 정하고 cos30sin60을 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$\\tan(x+15^\\circ) = 1$일 때, $\\cos x \\times \\sin 2x$의 값은?<br>(단, $0^\\circ < x < 75^\\circ$)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "주어진 열린범위에서 tan(x+15)=1의각45°를 유일하게 골라 x30을 정하고 cos30sin60을 계산한다.",
+        "method": "주어진 열린범위에서 tan(x+15)=1의각45°를 유일하게 골라 x30을 정하고 cos30sin60을 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "주어진 열린범위에서 tan(x+15)=1의각45°를 유일하게 골라 x30을 정하고 cos30sin60을 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_e891912b9535ae6d0581ff382665e79490cb9f28ee6e63acffb7a8a6620a9275",
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "세 내각의 비가 $\\angle\\mathrm{A} : \\angle\\mathrm{B} : \\angle\\mathrm{C} = 1 : 2 : 3$인 직각삼각형 $\\mathrm{ABC}$에서 $\\cos C - \\tan B + \\sin A$의 값은?"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "세 내각의 비가 $\\angle\\mathrm{A} : \\angle\\mathrm{B} : \\angle\\mathrm{C} = 1 : 2 : 3$인 직각삼각형 $\\mathrm{ABC}$에서 $\\cos C - \\tan B + \\sin A$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "세 내각의 비가 $\\angle\\mathrm{A} : \\angle\\mathrm{B} : \\angle\\mathrm{C} = 1 : 2 : 3$인 직각삼각형 $\\mathrm{ABC}$에서 $\\cos C - \\tan B + \\sin A$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "[풀이] 세 각의 비가 1:2:3이고 합이 180°이므로 A=30°, B=60°, C=90°입니다. cos C−tan B+sin A=0−√3+1/2=1/2−√3입니다. 정답은 ⑤입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세내각의 비1:2:3을 합180에 배분해30°,60°,90°를 만들고 삼각비식을 계산한다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "[풀이] 세 각의 비가 1:2:3이고 합이 180°이므로 A=30°, B=60°, C=90°입니다. cos C−tan B+sin A=0−√3+1/2=1/2−√3입니다. 정답은 ⑤입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세내각의 비1:2:3을 합180에 배분해30°,60°,90°를 만들고 삼각비식을 계산한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "[풀이] 세 각의 비가 1:2:3이고 합이 180°이므로 A=30°, B=60°, C=90°입니다. cos C−tan B+sin A=0−√3+1/2=1/2−√3입니다. 정답은 ⑤입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세내각의 비1:2:3을 합180에 배분해30°,60°,90°를 만들고 삼각비식을 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "세내각의 비1:2:3을 합180에 배분해30°,60°,90°를 만들고 삼각비식을 계산한다.",
+        "method": "세내각의 비1:2:3을 합180에 배분해30°,60°,90°를 만들고 삼각비식을 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "세내각의 비1:2:3을 합180에 배분해30°,60°,90°를 만들고 삼각비식을 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ef48ae8d28a927c39679f77d0433e3a1ab0cdee6f72710bc5865e847bb82dcde",
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "아래 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}} \\perp \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AB}}=\\sqrt{7}$, $\\overline{\\mathrm{AC}}=3$일 때, $\\sin x^\\circ \\times \\tan y^\\circ$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q13.png\" />"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "아래 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}} \\perp \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AB}}=\\sqrt{7}$, $\\overline{\\mathrm{AC}}=3$일 때, $\\sin x^\\circ \\times \\tan y^\\circ$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q13.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "아래 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}} \\perp \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AB}}=\\sqrt{7}$, $\\overline{\\mathrm{AC}}=3$일 때, $\\sin x^\\circ \\times \\tan y^\\circ$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q13.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "아래 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}} \\perp \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AB}}=\\sqrt{7}$, $\\overline{\\mathrm{AC}}=3$일 때, $\\sin x^\\circ \\times \\tan y^\\circ$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q13.png\" />"
+          },
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "아래 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}} \\perp \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AB}}=\\sqrt{7}$, $\\overline{\\mathrm{AC}}=3$일 때, $\\sin x^\\circ \\times \\tan y^\\circ$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q13.png\" />"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "아래 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}} \\perp \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AB}}=\\sqrt{7}$, $\\overline{\\mathrm{AC}}=3$일 때, $\\sin x^\\circ \\times \\tan y^\\circ$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q13.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "[풀이] AB²+AC²=7+9=16이므로 피타고라스 정리에 따라 BC=4입니다. AD를 그어 생긴 작은 직각삼각형들은 △ABC와 닮음입니다. △ABD∼△CBA에서 AB/BC=BD/AB=AD/AC이므로 BD=AB²/BC=7/4, AD=AB·AC/BC=3√7/4입니다. △ACD∼△BCA에서 AC/BC=DC/AC이므로 DC=AC²/BC=9/4입니다. x=∠BAD이므로 sin x=BD/AB=(7/4)/√7=√7/4이고, y=∠DAC이므로 tan y=DC/AD=(9/4)/(3√7/4)=3/√7입니다. 따라서 sin x·tan y=3/4이므로 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변4를 구하고 주어진 높이AD의 닮음관계로 작은 삼각형의 길이를 복원해 sinx·tany를 구한다. 목표가 삼각비식이므로 CHAINED길이측정에서 교정한다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "[풀이] AB²+AC²=7+9=16이므로 피타고라스 정리에 따라 BC=4입니다. AD를 그어 생긴 작은 직각삼각형들은 △ABC와 닮음입니다. △ABD∼△CBA에서 AB/BC=BD/AB=AD/AC이므로 BD=AB²/BC=7/4, AD=AB·AC/BC=3√7/4입니다. △ACD∼△BCA에서 AC/BC=DC/AC이므로 DC=AC²/BC=9/4입니다. x=∠BAD이므로 sin x=BD/AB=(7/4)/√7=√7/4이고, y=∠DAC이므로 tan y=DC/AD=(9/4)/(3√7/4)=3/√7입니다. 따라서 sin x·tan y=3/4이므로 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변4를 구하고 주어진 높이AD의 닮음관계로 작은 삼각형의 길이를 복원해 sinx·tany를 구한다. 목표가 삼각비식이므로 CHAINED길이측정에서 교정한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "[풀이] AB²+AC²=7+9=16이므로 피타고라스 정리에 따라 BC=4입니다. AD를 그어 생긴 작은 직각삼각형들은 △ABC와 닮음입니다. △ABD∼△CBA에서 AB/BC=BD/AB=AD/AC이므로 BD=AB²/BC=7/4, AD=AB·AC/BC=3√7/4입니다. △ACD∼△BCA에서 AC/BC=DC/AC이므로 DC=AC²/BC=9/4입니다. x=∠BAD이므로 sin x=BD/AB=(7/4)/√7=√7/4이고, y=∠DAC이므로 tan y=DC/AD=(9/4)/(3√7/4)=3/√7입니다. 따라서 sin x·tan y=3/4이므로 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변4를 구하고 주어진 높이AD의 닮음관계로 작은 삼각형의 길이를 복원해 sinx·tany를 구한다. 목표가 삼각비식이므로 CHAINED길이측정에서 교정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "빗변4를 구하고 주어진 높이AD의 닮음관계로 작은 삼각형의 길이를 복원해 sinx·tany를 구한다. 목표가 삼각비식이므로 CHAINED길이측정에서 교정한다.",
+        "method": "빗변4를 구하고 주어진 높이AD의 닮음관계로 작은 삼각형의 길이를 복원해 sinx·tany를 구한다. 목표가 삼각비식이므로 CHAINED길이측정에서 교정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "빗변4를 구하고 주어진 높이AD의 닮음관계로 작은 삼각형의 길이를 복원해 sinx·tany를 구한다. 목표가 삼각비식이므로 CHAINED길이측정에서 교정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_3da423226291ac0cb297301205430e190c4e18ddf7232b702b271871ed71611f",
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "$0^\\circ < x < 45^\\circ$일 때, $\\sqrt{(2\\sin 30^\\circ - \\tan x)^2} - \\sqrt{(\\tan x - \\tan 45^\\circ)^2}$을 간단히 하면?"
+          },
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$0^\\circ < x < 45^\\circ$일 때, $\\sqrt{(2\\sin 30^\\circ - \\tan x)^2} - \\sqrt{(\\tan x - \\tan 45^\\circ)^2}$을 간단히 하면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$0^\\circ < x < 45^\\circ$일 때, $\\sqrt{(2\\sin 30^\\circ - \\tan x)^2} - \\sqrt{(\\tan x - \\tan 45^\\circ)^2}$을 간단히 하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "[풀이] 2sin30°=1, tan45°=1이고 0°<x<45°이므로 0<tan x<1입니다. 두 제곱근은 각각 |1−tan x|와 |tan x−1|로 모두 1−tan x입니다. 차는 0이므로 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "특수각값1을 넣어 두근호를 |1−tanx|,|tanx−1|로 바꾸고 범위의 부호조건으로 같은식을 얻어 차를 정리한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "[풀이] 2sin30°=1, tan45°=1이고 0°<x<45°이므로 0<tan x<1입니다. 두 제곱근은 각각 |1−tan x|와 |tan x−1|로 모두 1−tan x입니다. 차는 0이므로 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "특수각값1을 넣어 두근호를 |1−tanx|,|tanx−1|로 바꾸고 범위의 부호조건으로 같은식을 얻어 차를 정리한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "[풀이] 2sin30°=1, tan45°=1이고 0°<x<45°이므로 0<tan x<1입니다. 두 제곱근은 각각 |1−tan x|와 |tan x−1|로 모두 1−tan x입니다. 차는 0이므로 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "특수각값1을 넣어 두근호를 |1−tanx|,|tanx−1|로 바꾸고 범위의 부호조건으로 같은식을 얻어 차를 정리한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0^\\circ < x < 45^\\circ$일 때, $\\sqrt{(2\\sin 30^\\circ - \\tan x)^2} - \\sqrt{(\\tan x - \\tan 45^\\circ)^2}$을 간단히 하면?"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "특수각값1을 넣어 두근호를 |1−tanx|,|tanx−1|로 바꾸고 범위의 부호조건으로 같은식을 얻어 차를 정리한다.",
+        "method": "특수각값1을 넣어 두근호를 |1−tanx|,|tanx−1|로 바꾸고 범위의 부호조건으로 같은식을 얻어 차를 정리한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "특수각값1을 넣어 두근호를 |1−tanx|,|tanx−1|로 바꾸고 범위의 부호조건으로 같은식을 얻어 차를 정리한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_757cbe4bc2cd3085fce4669cc9122560da1c0aea71eefa6908bbab581a929fed",
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "올려본각",
+            "src": "stem",
+            "quote": "그림과 같이 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 하늘에 떠 있는 열기구를 올려본각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다. 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$ 사이의 거리가 $100\\,\\text{m}$일 때, 지면에서 열기구까지의 높이는?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q15.png\" />"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "그림과 같이 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 하늘에 떠 있는 열기구를 올려본각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다. 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$ 사이의 거리가 $100\\,\\text{m}$일 때, 지면에서 열기구까지의 높이는?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q15.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "그림과 같이 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 하늘에 떠 있는 열기구를 올려본각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다. 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$ 사이의 거리가 $100\\,\\text{m}$일 때, 지면에서 열기구까지의 높이는?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q15.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "[풀이] 열기구에서 지면에 내린 수선의 발을 D라 하고 AD=x m, 높이를 h m이라 둡니다. 그림에서 D는 A와 B 사이에 있으므로 BD=100−x입니다. ∠A=45°에서 tan45°=h/x=1이므로 h=x입니다. ∠B=60°에서 tan60°=h/(100−x)=√3이므로 h=√3(100−x)입니다. 따라서 x=√3(100−x), (1+√3)x=100√3, x=h=100√3/(1+√3)=50(3−√3) m입니다. 정답은 ②입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수선의 발이두 관측점 사이에 있어 두수평거리의 합100을 공통높이h의 두탄젠트식과 연결한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "[풀이] 열기구에서 지면에 내린 수선의 발을 D라 하고 AD=x m, 높이를 h m이라 둡니다. 그림에서 D는 A와 B 사이에 있으므로 BD=100−x입니다. ∠A=45°에서 tan45°=h/x=1이므로 h=x입니다. ∠B=60°에서 tan60°=h/(100−x)=√3이므로 h=√3(100−x)입니다. 따라서 x=√3(100−x), (1+√3)x=100√3, x=h=100√3/(1+√3)=50(3−√3) m입니다. 정답은 ②입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수선의 발이두 관측점 사이에 있어 두수평거리의 합100을 공통높이h의 두탄젠트식과 연결한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "[풀이] 열기구에서 지면에 내린 수선의 발을 D라 하고 AD=x m, 높이를 h m이라 둡니다. 그림에서 D는 A와 B 사이에 있으므로 BD=100−x입니다. ∠A=45°에서 tan45°=h/x=1이므로 h=x입니다. ∠B=60°에서 tan60°=h/(100−x)=√3이므로 h=√3(100−x)입니다. 따라서 x=√3(100−x), (1+√3)x=100√3, x=h=100√3/(1+√3)=50(3−√3) m입니다. 정답은 ②입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수선의 발이두 관측점 사이에 있어 두수평거리의 합100을 공통높이h의 두탄젠트식과 연결한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "수선의 발이두 관측점 사이에 있어 두수평거리의 합100을 공통높이h의 두탄젠트식과 연결한다.",
+        "method": "수선의 발이두 관측점 사이에 있어 두수평거리의 합100을 공통높이h의 두탄젠트식과 연결한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "수선의 발이두 관측점 사이에 있어 두수평거리의 합100을 공통높이h의 두탄젠트식과 연결한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_a684721262238aeb828b874929ba9d69e98cac40e2afad6b07b110f4e9418013",
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "반원",
+            "src": "stem",
+            "quote": "아래 그림과 같은 반원 $\\mathrm{O}$에서 $\\overline{\\mathrm{AC}}=2$, $\\angle\\mathrm{AOC}=30^\\circ$, $\\angle\\mathrm{ACB}=90^\\circ$일 때, $\\tan x$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q16.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "아래 그림과 같은 반원 $\\mathrm{O}$에서 $\\overline{\\mathrm{AC}}=2$, $\\angle\\mathrm{AOC}=30^\\circ$, $\\angle\\mathrm{ACB}=90^\\circ$일 때, $\\tan x$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q16.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "아래 그림과 같은 반원 $\\mathrm{O}$에서 $\\overline{\\mathrm{AC}}=2$, $\\angle\\mathrm{AOC}=30^\\circ$, $\\angle\\mathrm{ACB}=90^\\circ$일 때, $\\tan x$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q16.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "아래 그림과 같은 반원 $\\mathrm{O}$에서 $\\overline{\\mathrm{AC}}=2$, $\\angle\\mathrm{AOC}=30^\\circ$, $\\angle\\mathrm{ACB}=90^\\circ$일 때, $\\tan x$의 값은?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q16.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "[풀이] △ACO는 C에서 직각이고 ∠AOC=30°입니다. sin30°=AC/AO=2/AO이므로 반지름 AO=OB=4입니다. tan30°=AC/OC=2/OC이므로 OC=2√3입니다. C,O,B가 한 직선 위이므로 CB=2√3+4입니다. △ACB에서 tan x=AC/CB=2/(2√3+4)=1/(2+√3)=2−√3입니다. 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다."
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "[풀이] △ACO는 C에서 직각이고 ∠AOC=30°입니다. sin30°=AC/AO=2/AO이므로 반지름 AO=OB=4입니다. tan30°=AC/OC=2/OC이므로 OC=2√3입니다. C,O,B가 한 직선 위이므로 CB=2√3+4입니다. △ACB에서 tan x=AC/CB=2/(2√3+4)=1/(2+√3)=2−√3입니다. 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다."
+          },
+          {
+            "term": "일직선",
+            "src": "solution",
+            "quote": "[풀이] △ACO는 C에서 직각이고 ∠AOC=30°입니다. sin30°=AC/AO=2/AO이므로 반지름 AO=OB=4입니다. tan30°=AC/OC=2/OC이므로 OC=2√3입니다. C,O,B가 한 직선 위이므로 CB=2√3+4입니다. △ACB에서 tan x=AC/CB=2/(2√3+4)=1/(2+√3)=2−√3입니다. 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "[풀이] △ACO는 C에서 직각이고 ∠AOC=30°입니다. sin30°=AC/AO=2/AO이므로 반지름 AO=OB=4입니다. tan30°=AC/OC=2/OC이므로 OC=2√3입니다. C,O,B가 한 직선 위이므로 CB=2√3+4입니다. △ACB에서 tan x=AC/CB=2/(2√3+4)=1/(2+√3)=2−√3입니다. 정답은 ③입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다.",
+        "method": "30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_f286abd795449daf74361ac44667f45ea481396ad681be94e0a48e11c97350b7",
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 조건을 모두 만족시킬 때, $a+b+c$의 값은?<br><div style=\"border:1px solid #000; padding:8px; margin:6px 0;\">(가) $f(-4)=f(2)$<br>(나) 꼭짓점은 직선 $y=3x+5$ 위에 있다.<br>(다) 이차함수 $y=-2x^2$의 그래프를 평행이동하여 완전히 포갤 수 있다.</div>"
+          },
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 조건을 모두 만족시킬 때, $a+b+c$의 값은?<br><div style=\"border:1px solid #000; padding:8px; margin:6px 0;\">(가) $f(-4)=f(2)$<br>(나) 꼭짓점은 직선 $y=3x+5$ 위에 있다.<br>(다) 이차함수 $y=-2x^2$의 그래프를 평행이동하여 완전히 포갤 수 있다.</div>"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 조건을 모두 만족시킬 때, $a+b+c$의 값은?<br><div style=\"border:1px solid #000; padding:8px; margin:6px 0;\">(가) $f(-4)=f(2)$<br>(나) 꼭짓점은 직선 $y=3x+5$ 위에 있다.<br>(다) 이차함수 $y=-2x^2$의 그래프를 평행이동하여 완전히 포갤 수 있다.</div>"
+          },
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 조건을 모두 만족시킬 때, $a+b+c$의 값은?<br><div style=\"border:1px solid #000; padding:8px; margin:6px 0;\">(가) $f(-4)=f(2)$<br>(나) 꼭짓점은 직선 $y=3x+5$ 위에 있다.<br>(다) 이차함수 $y=-2x^2$의 그래프를 평행이동하여 완전히 포갤 수 있다.</div>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 조건을 모두 만족시킬 때, $a+b+c$의 값은?<br><div style=\"border:1px solid #000; padding:8px; margin:6px 0;\">(가) $f(-4)=f(2)$<br>(나) 꼭짓점은 직선 $y=3x+5$ 위에 있다.<br>(다) 이차함수 $y=-2x^2$의 그래프를 평행이동하여 완전히 포갤 수 있다.</div>"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 조건을 모두 만족시킬 때, $a+b+c$의 값은?<br><div style=\"border:1px solid #000; padding:8px; margin:6px 0;\">(가) $f(-4)=f(2)$<br>(나) 꼭짓점은 직선 $y=3x+5$ 위에 있다.<br>(다) 이차함수 $y=-2x^2$의 그래프를 평행이동하여 완전히 포갤 수 있다.</div>"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "[풀이] f(−4)=f(2)이므로 대칭축은 두 x값의 중점 x=−1입니다. 평행이동 조건에서 a=−2입니다. 꼭짓점은 y=3x+5 위에 있으므로 꼭짓점의 y좌표는 3(−1)+5=2입니다. 따라서 f(x)=−2(x+1)²+2=−2x²−4x이고 (a,b,c)=(−2,−4,0)입니다. a+b+c=−6이므로 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다."
+          },
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "[풀이] f(−4)=f(2)이므로 대칭축은 두 x값의 중점 x=−1입니다. 평행이동 조건에서 a=−2입니다. 꼭짓점은 y=3x+5 위에 있으므로 꼭짓점의 y좌표는 3(−1)+5=2입니다. 따라서 f(x)=−2(x+1)²+2=−2x²−4x이고 (a,b,c)=(−2,−4,0)입니다. a+b+c=−6이므로 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다."
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "[풀이] f(−4)=f(2)이므로 대칭축은 두 x값의 중점 x=−1입니다. 평행이동 조건에서 a=−2입니다. 꼭짓점은 y=3x+5 위에 있으므로 꼭짓점의 y좌표는 3(−1)+5=2입니다. 따라서 f(x)=−2(x+1)²+2=−2x²−4x이고 (a,b,c)=(−2,−4,0)입니다. a+b+c=−6이므로 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "[풀이] f(−4)=f(2)이므로 대칭축은 두 x값의 중점 x=−1입니다. 평행이동 조건에서 a=−2입니다. 꼭짓점은 y=3x+5 위에 있으므로 꼭짓점의 y좌표는 3(−1)+5=2입니다. 따라서 f(x)=−2(x+1)²+2=−2x²−4x이고 (a,b,c)=(−2,−4,0)입니다. a+b+c=−6이므로 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[풀이] f(−4)=f(2)이므로 대칭축은 두 x값의 중점 x=−1입니다. 평행이동 조건에서 a=−2입니다. 꼭짓점은 y=3x+5 위에 있으므로 꼭짓점의 y좌표는 3(−1)+5=2입니다. 따라서 f(x)=−2(x+1)²+2=−2x²−4x이고 (a,b,c)=(−2,−4,0)입니다. a+b+c=−6이므로 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다.",
+        "method": "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_384797bce6a0acc615b830b705860b3763f2a7793619f74cc94f392d116e7630",
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, 다음 중 $\\overline{\\mathrm{AH}}$의 길이를 나타내는 식은?<br>(단, $\\overline{\\mathrm{BC}}=10$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q18.png\" />"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, 다음 중 $\\overline{\\mathrm{AH}}$의 길이를 나타내는 식은?<br>(단, $\\overline{\\mathrm{BC}}=10$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q18.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, 다음 중 $\\overline{\\mathrm{AH}}$의 길이를 나타내는 식은?<br>(단, $\\overline{\\mathrm{BC}}=10$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q18.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, 다음 중 $\\overline{\\mathrm{AH}}$의 길이를 나타내는 식은?<br>(단, $\\overline{\\mathrm{BC}}=10$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q18.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, 다음 중 $\\overline{\\mathrm{AH}}$의 길이를 나타내는 식은?<br>(단, $\\overline{\\mathrm{BC}}=10$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q18.png\" />"
+          },
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, 다음 중 $\\overline{\\mathrm{AH}}$의 길이를 나타내는 식은?<br>(단, $\\overline{\\mathrm{BC}}=10$)<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q18.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "[풀이] AH=h라 두면 △ABH에서 tan35°=h/BH이므로 BH=h/tan35°입니다. △AHC에서도 HC=h/tan65°입니다. BC=BH+HC=10이므로 10=h(1/tan35°+1/tan65°)입니다. △ABH의 예각은 35°와 55°의 여각 관계이므로 tan55°=BH/h=1/tan35°이고, 마찬가지로 1/tan65°=tan25°입니다. 따라서 h=10/(tan55°+tan25°)이고 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통높이h에 대해 두수평거리 h/tan35와h/tan65를 더해10으로 두고 여각의탄젠트 역수관계로 요구식을 표현한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "[풀이] AH=h라 두면 △ABH에서 tan35°=h/BH이므로 BH=h/tan35°입니다. △AHC에서도 HC=h/tan65°입니다. BC=BH+HC=10이므로 10=h(1/tan35°+1/tan65°)입니다. △ABH의 예각은 35°와 55°의 여각 관계이므로 tan55°=BH/h=1/tan35°이고, 마찬가지로 1/tan65°=tan25°입니다. 따라서 h=10/(tan55°+tan25°)이고 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통높이h에 대해 두수평거리 h/tan35와h/tan65를 더해10으로 두고 여각의탄젠트 역수관계로 요구식을 표현한다."
+          },
+          {
+            "term": "여각",
+            "src": "solution",
+            "quote": "[풀이] AH=h라 두면 △ABH에서 tan35°=h/BH이므로 BH=h/tan35°입니다. △AHC에서도 HC=h/tan65°입니다. BC=BH+HC=10이므로 10=h(1/tan35°+1/tan65°)입니다. △ABH의 예각은 35°와 55°의 여각 관계이므로 tan55°=BH/h=1/tan35°이고, 마찬가지로 1/tan65°=tan25°입니다. 따라서 h=10/(tan55°+tan25°)이고 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통높이h에 대해 두수평거리 h/tan35와h/tan65를 더해10으로 두고 여각의탄젠트 역수관계로 요구식을 표현한다."
+          },
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "[풀이] AH=h라 두면 △ABH에서 tan35°=h/BH이므로 BH=h/tan35°입니다. △AHC에서도 HC=h/tan65°입니다. BC=BH+HC=10이므로 10=h(1/tan35°+1/tan65°)입니다. △ABH의 예각은 35°와 55°의 여각 관계이므로 tan55°=BH/h=1/tan35°이고, 마찬가지로 1/tan65°=tan25°입니다. 따라서 h=10/(tan55°+tan25°)이고 정답은 ①입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통높이h에 대해 두수평거리 h/tan35와h/tan65를 더해10으로 두고 여각의탄젠트 역수관계로 요구식을 표현한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "공통높이h에 대해 두수평거리 h/tan35와h/tan65를 더해10으로 두고 여각의탄젠트 역수관계로 요구식을 표현한다.",
+        "method": "공통높이h에 대해 두수평거리 h/tan35와h/tan65를 더해10으로 두고 여각의탄젠트 역수관계로 요구식을 표현한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "공통높이h에 대해 두수평거리 h/tan35와h/tan65를 더해10으로 두고 여각의탄젠트 역수관계로 요구식을 표현한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_c01ccc2861f47de887ec98eaa0e52c0d4c61c39603b1593ad3ae44d4760e9d7a",
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "단답형 1. 아래 그림에서 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이고 $\\overline{\\mathrm{AC}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=9\\,\\mathrm{cm}$, $\\angle\\mathrm{C}=60^\\circ$일 때, $\\triangle\\mathrm{ABG}$의 넓이를 구하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/sa01.png\" />"
+          },
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "단답형 1. 아래 그림에서 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이고 $\\overline{\\mathrm{AC}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=9\\,\\mathrm{cm}$, $\\angle\\mathrm{C}=60^\\circ$일 때, $\\triangle\\mathrm{ABG}$의 넓이를 구하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/sa01.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "단답형 1. 아래 그림에서 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이고 $\\overline{\\mathrm{AC}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=9\\,\\mathrm{cm}$, $\\angle\\mathrm{C}=60^\\circ$일 때, $\\triangle\\mathrm{ABG}$의 넓이를 구하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/sa01.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "단답형 1. 아래 그림에서 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이고 $\\overline{\\mathrm{AC}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=9\\,\\mathrm{cm}$, $\\angle\\mathrm{C}=60^\\circ$일 때, $\\triangle\\mathrm{ABG}$의 넓이를 구하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/sa01.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "단답형 1. 아래 그림에서 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이고 $\\overline{\\mathrm{AC}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=9\\,\\mathrm{cm}$, $\\angle\\mathrm{C}=60^\\circ$일 때, $\\triangle\\mathrm{ABG}$의 넓이를 구하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/sa01.png\" />"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "단답형 1. 아래 그림에서 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이고 $\\overline{\\mathrm{AC}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=9\\,\\mathrm{cm}$, $\\angle\\mathrm{C}=60^\\circ$일 때, $\\triangle\\mathrm{ABG}$의 넓이를 구하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/sa01.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "[풀이] A에서 BC에 내린 수선의 발을 H라 하면 △AHC에서 AH=AC sin60°=3√3 cm입니다. 따라서 △ABC의 넓이는 (1/2)·BC·AH=(1/2)·9·3√3=27√3/2 cm²입니다. 무게중심 G는 C에서 변 AB로 내린 중선을 2:1로 나누므로 G와 AB 사이 높이는 C와 AB 사이 높이의 1/3입니다. 같은 밑변 AB를 쓰는 △ABG의 넓이는 △ABC의 1/3, 즉 9√3/2 cm²입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[풀이] A에서 BC에 내린 수선의 발을 H라 하면 △AHC에서 AH=AC sin60°=3√3 cm입니다. 따라서 △ABC의 넓이는 (1/2)·BC·AH=(1/2)·9·3√3=27√3/2 cm²입니다. 무게중심 G는 C에서 변 AB로 내린 중선을 2:1로 나누므로 G와 AB 사이 높이는 C와 AB 사이 높이의 1/3입니다. 같은 밑변 AB를 쓰는 △ABG의 넓이는 △ABC의 1/3, 즉 9√3/2 cm²입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다."
+          },
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "[풀이] A에서 BC에 내린 수선의 발을 H라 하면 △AHC에서 AH=AC sin60°=3√3 cm입니다. 따라서 △ABC의 넓이는 (1/2)·BC·AH=(1/2)·9·3√3=27√3/2 cm²입니다. 무게중심 G는 C에서 변 AB로 내린 중선을 2:1로 나누므로 G와 AB 사이 높이는 C와 AB 사이 높이의 1/3입니다. 같은 밑변 AB를 쓰는 △ABG의 넓이는 △ABC의 1/3, 즉 9√3/2 cm²입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다."
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "[풀이] A에서 BC에 내린 수선의 발을 H라 하면 △AHC에서 AH=AC sin60°=3√3 cm입니다. 따라서 △ABC의 넓이는 (1/2)·BC·AH=(1/2)·9·3√3=27√3/2 cm²입니다. 무게중심 G는 C에서 변 AB로 내린 중선을 2:1로 나누므로 G와 AB 사이 높이는 C와 AB 사이 높이의 1/3입니다. 같은 밑변 AB를 쓰는 △ABG의 넓이는 △ABC의 1/3, 즉 9√3/2 cm²입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다.",
+        "method": "두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_93097404998120fda04cdbb5c65ea7dc8b892f09273abb03c2106ed4f55e4765",
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "올려본각",
+            "src": "stem",
+            "quote": "단답형 2. 그림과 같이 $60\\,\\text{m}$ 떨어진 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$에서 이 산의 꼭대기 $\\mathrm{A}$ 지점을 올려본각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다. 이 산의 높이를 구하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/sa02.png\" />"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "단답형 2. 그림과 같이 $60\\,\\text{m}$ 떨어진 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$에서 이 산의 꼭대기 $\\mathrm{A}$ 지점을 올려본각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다. 이 산의 높이를 구하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/sa02.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "단답형 2. 그림과 같이 $60\\,\\text{m}$ 떨어진 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$에서 이 산의 꼭대기 $\\mathrm{A}$ 지점을 올려본각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다. 이 산의 높이를 구하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/sa02.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "[풀이] 산의 발을 D라 하고 CD=x m, AD=h m이라 둡니다. ∠C=60°에서 h=x tan60°=√3x입니다. ∠B=45°, BC=60 m이므로 BD=60+x이고 h=BD입니다. 따라서 √3x=60+x, x=60/(√3−1)=30(√3+1), h=√3x=30(3+√3) m입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은쪽 관측점에서 수평거리x와x+60을 공통높이의두 탄젠트식에 넣어 연립한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "[풀이] 산의 발을 D라 하고 CD=x m, AD=h m이라 둡니다. ∠C=60°에서 h=x tan60°=√3x입니다. ∠B=45°, BC=60 m이므로 BD=60+x이고 h=BD입니다. 따라서 √3x=60+x, x=60/(√3−1)=30(√3+1), h=√3x=30(3+√3) m입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은쪽 관측점에서 수평거리x와x+60을 공통높이의두 탄젠트식에 넣어 연립한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "[풀이] 산의 발을 D라 하고 CD=x m, AD=h m이라 둡니다. ∠C=60°에서 h=x tan60°=√3x입니다. ∠B=45°, BC=60 m이므로 BD=60+x이고 h=BD입니다. 따라서 √3x=60+x, x=60/(√3−1)=30(√3+1), h=√3x=30(3+√3) m입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은쪽 관측점에서 수평거리x와x+60을 공통높이의두 탄젠트식에 넣어 연립한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "같은쪽 관측점에서 수평거리x와x+60을 공통높이의두 탄젠트식에 넣어 연립한다.",
+        "method": "같은쪽 관측점에서 수평거리x와x+60을 공통높이의두 탄젠트식에 넣어 연립한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "같은쪽 관측점에서 수평거리x와x+60을 공통높이의두 탄젠트식에 넣어 연립한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_e2d305f4f083789e07602b52ceb759edcf63988b78fbf001453b9f09214da589",
+      "sourceOrdinal": 21,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "서술형 1. 다음 그림과 같이 이차함수 $y=-\\frac{1}{2}x^2-2x+k$의 그래프의 꼭짓점을 $\\mathrm{A}$, $y$축과의 교점을 $\\mathrm{B}$라 하자.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss01.png\" /><br>(1) 이차함수 $y=a(x-p)^2+q$의 꼴로 변형하시오. [3점]<br>(※변형 과정을 모두 서술하시오.)<br>(2) 꼭짓점 $\\mathrm{A}$의 좌표를 구하시오. [1점]<br>(3) $\\triangle\\mathrm{AOB}$의 넓이는 $4$일 때, 상수 $k$의 값을 구하시오. [2점]"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "서술형 1. 다음 그림과 같이 이차함수 $y=-\\frac{1}{2}x^2-2x+k$의 그래프의 꼭짓점을 $\\mathrm{A}$, $y$축과의 교점을 $\\mathrm{B}$라 하자.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss01.png\" /><br>(1) 이차함수 $y=a(x-p)^2+q$의 꼴로 변형하시오. [3점]<br>(※변형 과정을 모두 서술하시오.)<br>(2) 꼭짓점 $\\mathrm{A}$의 좌표를 구하시오. [1점]<br>(3) $\\triangle\\mathrm{AOB}$의 넓이는 $4$일 때, 상수 $k$의 값을 구하시오. [2점]"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "서술형 1. 다음 그림과 같이 이차함수 $y=-\\frac{1}{2}x^2-2x+k$의 그래프의 꼭짓점을 $\\mathrm{A}$, $y$축과의 교점을 $\\mathrm{B}$라 하자.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss01.png\" /><br>(1) 이차함수 $y=a(x-p)^2+q$의 꼴로 변형하시오. [3점]<br>(※변형 과정을 모두 서술하시오.)<br>(2) 꼭짓점 $\\mathrm{A}$의 좌표를 구하시오. [1점]<br>(3) $\\triangle\\mathrm{AOB}$의 넓이는 $4$일 때, 상수 $k$의 값을 구하시오. [2점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "서술형 1. 다음 그림과 같이 이차함수 $y=-\\frac{1}{2}x^2-2x+k$의 그래프의 꼭짓점을 $\\mathrm{A}$, $y$축과의 교점을 $\\mathrm{B}$라 하자.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss01.png\" /><br>(1) 이차함수 $y=a(x-p)^2+q$의 꼴로 변형하시오. [3점]<br>(※변형 과정을 모두 서술하시오.)<br>(2) 꼭짓점 $\\mathrm{A}$의 좌표를 구하시오. [1점]<br>(3) $\\triangle\\mathrm{AOB}$의 넓이는 $4$일 때, 상수 $k$의 값을 구하시오. [2점]"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "서술형 1. 다음 그림과 같이 이차함수 $y=-\\frac{1}{2}x^2-2x+k$의 그래프의 꼭짓점을 $\\mathrm{A}$, $y$축과의 교점을 $\\mathrm{B}$라 하자.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss01.png\" /><br>(1) 이차함수 $y=a(x-p)^2+q$의 꼴로 변형하시오. [3점]<br>(※변형 과정을 모두 서술하시오.)<br>(2) 꼭짓점 $\\mathrm{A}$의 좌표를 구하시오. [1점]<br>(3) $\\triangle\\mathrm{AOB}$의 넓이는 $4$일 때, 상수 $k$의 값을 구하시오. [2점]"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "서술형 1. 다음 그림과 같이 이차함수 $y=-\\frac{1}{2}x^2-2x+k$의 그래프의 꼭짓점을 $\\mathrm{A}$, $y$축과의 교점을 $\\mathrm{B}$라 하자.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss01.png\" /><br>(1) 이차함수 $y=a(x-p)^2+q$의 꼴로 변형하시오. [3점]<br>(※변형 과정을 모두 서술하시오.)<br>(2) 꼭짓점 $\\mathrm{A}$의 좌표를 구하시오. [1점]<br>(3) $\\triangle\\mathrm{AOB}$의 넓이는 $4$일 때, 상수 $k$의 값을 구하시오. [2점]"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "서술형 1. 다음 그림과 같이 이차함수 $y=-\\frac{1}{2}x^2-2x+k$의 그래프의 꼭짓점을 $\\mathrm{A}$, $y$축과의 교점을 $\\mathrm{B}$라 하자.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss01.png\" /><br>(1) 이차함수 $y=a(x-p)^2+q$의 꼴로 변형하시오. [3점]<br>(※변형 과정을 모두 서술하시오.)<br>(2) 꼭짓점 $\\mathrm{A}$의 좌표를 구하시오. [1점]<br>(3) $\\triangle\\mathrm{AOB}$의 넓이는 $4$일 때, 상수 $k$의 값을 구하시오. [2점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[풀이] (1) y=−(1/2)x²−2x+k=−(1/2)(x²+4x)+k=−(1/2){(x+2)²−4}+k=−(1/2)(x+2)²+k+2입니다. (2) 꼭짓점은 A=(−2,k+2)입니다. (3) 그림에서 B=(0,k)는 O보다 위에 있으므로 k>0입니다. △AOB의 밑변 OB는 k, y축에서 A까지의 거리는 2이므로 넓이는 (1/2)·k·2=k입니다. 넓이가 4이므로 k=4이고 A=(−2,6)입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다."
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "[풀이] (1) y=−(1/2)x²−2x+k=−(1/2)(x²+4x)+k=−(1/2){(x+2)²−4}+k=−(1/2)(x+2)²+k+2입니다. (2) 꼭짓점은 A=(−2,k+2)입니다. (3) 그림에서 B=(0,k)는 O보다 위에 있으므로 k>0입니다. △AOB의 밑변 OB는 k, y축에서 A까지의 거리는 2이므로 넓이는 (1/2)·k·2=k입니다. 넓이가 4이므로 k=4이고 A=(−2,6)입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[풀이] (1) y=−(1/2)x²−2x+k=−(1/2)(x²+4x)+k=−(1/2){(x+2)²−4}+k=−(1/2)(x+2)²+k+2입니다. (2) 꼭짓점은 A=(−2,k+2)입니다. (3) 그림에서 B=(0,k)는 O보다 위에 있으므로 k>0입니다. △AOB의 밑변 OB는 k, y축에서 A까지의 거리는 2이므로 넓이는 (1/2)·k·2=k입니다. 넓이가 4이므로 k=4이고 A=(−2,6)입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "[풀이] (1) y=−(1/2)x²−2x+k=−(1/2)(x²+4x)+k=−(1/2){(x+2)²−4}+k=−(1/2)(x+2)²+k+2입니다. (2) 꼭짓점은 A=(−2,k+2)입니다. (3) 그림에서 B=(0,k)는 O보다 위에 있으므로 k>0입니다. △AOB의 밑변 OB는 k, y축에서 A까지의 거리는 2이므로 넓이는 (1/2)·k·2=k입니다. 넓이가 4이므로 k=4이고 A=(−2,6)입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "그림에서 B=(0,k)는 O보다 위에 있으므로 k>0입니다."
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다.",
+        "method": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_de7f6688202c3e939e55376b2a7b5d5660d99cfa7f7b2837658789543b1d893d",
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "서술형 2. 그림과 같이 모선의 길이가 $4\\,\\mathrm{cm}$이고 모선과 밑면이 이루는 각의 크기가 $60^\\circ$인 원뿔이 있다. 이 원뿔의 부피를 구하고 그 풀이과정을 모두 서술하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss02.png\" />"
+          },
+          {
+            "term": "모선",
+            "src": "stem",
+            "quote": "서술형 2. 그림과 같이 모선의 길이가 $4\\,\\mathrm{cm}$이고 모선과 밑면이 이루는 각의 크기가 $60^\\circ$인 원뿔이 있다. 이 원뿔의 부피를 구하고 그 풀이과정을 모두 서술하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss02.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "서술형 2. 그림과 같이 모선의 길이가 $4\\,\\mathrm{cm}$이고 모선과 밑면이 이루는 각의 크기가 $60^\\circ$인 원뿔이 있다. 이 원뿔의 부피를 구하고 그 풀이과정을 모두 서술하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss02.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "서술형 2. 그림과 같이 모선의 길이가 $4\\,\\mathrm{cm}$이고 모선과 밑면이 이루는 각의 크기가 $60^\\circ$인 원뿔이 있다. 이 원뿔의 부피를 구하고 그 풀이과정을 모두 서술하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss02.png\" />"
+          },
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "서술형 2. 그림과 같이 모선의 길이가 $4\\,\\mathrm{cm}$이고 모선과 밑면이 이루는 각의 크기가 $60^\\circ$인 원뿔이 있다. 이 원뿔의 부피를 구하고 그 풀이과정을 모두 서술하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss02.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "단면",
+            "src": "solution",
+            "quote": "[풀이] 원뿔의 축을 포함하는 단면을 보면 모선 4 cm, 높이, 밑면 반지름이 직각삼각형을 이룹니다. 모선의 밑면 위 정사영은 반지름이므로 모선과 반지름 사이의 각은 60°입니다. 따라서 r=4cos60°=2 cm, h=4sin60°=2√3 cm입니다. 부피는 (1/3)πr²h=(1/3)π·2²·2√3=8√3π/3 cm³입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "[풀이] 원뿔의 축을 포함하는 단면을 보면 모선 4 cm, 높이, 밑면 반지름이 직각삼각형을 이룹니다. 모선의 밑면 위 정사영은 반지름이므로 모선과 반지름 사이의 각은 60°입니다. 따라서 r=4cos60°=2 cm, h=4sin60°=2√3 cm입니다. 부피는 (1/3)πr²h=(1/3)π·2²·2√3=8√3π/3 cm³입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다."
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "[풀이] 원뿔의 축을 포함하는 단면을 보면 모선 4 cm, 높이, 밑면 반지름이 직각삼각형을 이룹니다. 모선의 밑면 위 정사영은 반지름이므로 모선과 반지름 사이의 각은 60°입니다. 따라서 r=4cos60°=2 cm, h=4sin60°=2√3 cm입니다. 부피는 (1/3)πr²h=(1/3)π·2²·2√3=8√3π/3 cm³입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다."
+          },
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "[풀이] 원뿔의 축을 포함하는 단면을 보면 모선 4 cm, 높이, 밑면 반지름이 직각삼각형을 이룹니다. 모선의 밑면 위 정사영은 반지름이므로 모선과 반지름 사이의 각은 60°입니다. 따라서 r=4cos60°=2 cm, h=4sin60°=2√3 cm입니다. 부피는 (1/3)πr²h=(1/3)π·2²·2√3=8√3π/3 cm³입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다.",
+        "method": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_c083c2366bb9ffbf13e8659a5739c31a2725cc765cffd5cadf6c77c6c9f6ac9e",
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "서술형 3. 아래 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{DC}}=\\overline{\\mathrm{BC}}=3\\,\\mathrm{cm}$이고 $\\angle\\mathrm{ABD}=x^\\circ$라고 할 때, $\\sin x^\\circ$의 값을 구하고 그 풀이과정을 모두 서술하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss03.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "서술형 3. 아래 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{DC}}=\\overline{\\mathrm{BC}}=3\\,\\mathrm{cm}$이고 $\\angle\\mathrm{ABD}=x^\\circ$라고 할 때, $\\sin x^\\circ$의 값을 구하고 그 풀이과정을 모두 서술하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss03.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "서술형 3. 아래 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{DC}}=\\overline{\\mathrm{BC}}=3\\,\\mathrm{cm}$이고 $\\angle\\mathrm{ABD}=x^\\circ$라고 할 때, $\\sin x^\\circ$의 값을 구하고 그 풀이과정을 모두 서술하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss03.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "서술형 3. 아래 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{DC}}=\\overline{\\mathrm{BC}}=3\\,\\mathrm{cm}$이고 $\\angle\\mathrm{ABD}=x^\\circ$라고 할 때, $\\sin x^\\circ$의 값을 구하고 그 풀이과정을 모두 서술하시오.<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/ss03.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "[풀이] A,D,C는 한 직선 위이고 AD=DC=BC=3이므로 AC=6입니다. △ABC와 △DBC가 C에서 직각이므로 AB=√(6²+3²)=3√5, BD=√(3²+3²)=3√2입니다. D에서 AB에 내린 수선의 발을 E라 하면 △ABD의 넓이는 (1/2)·AD·BC=9/2이고, 밑변 AB로 계산하면 (1/2)·AB·DE입니다. 따라서 DE=9/AB=3/√5입니다. △BDE는 E에서 직각이고 ∠DBE=x이므로 sin x=DE/BD=(3/√5)/(3√2)=1/√10=√10/10입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다."
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "[풀이] A,D,C는 한 직선 위이고 AD=DC=BC=3이므로 AC=6입니다. △ABC와 △DBC가 C에서 직각이므로 AB=√(6²+3²)=3√5, BD=√(3²+3²)=3√2입니다. D에서 AB에 내린 수선의 발을 E라 하면 △ABD의 넓이는 (1/2)·AD·BC=9/2이고, 밑변 AB로 계산하면 (1/2)·AB·DE입니다. 따라서 DE=9/AB=3/√5입니다. △BDE는 E에서 직각이고 ∠DBE=x이므로 sin x=DE/BD=(3/√5)/(3√2)=1/√10=√10/10입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[풀이] A,D,C는 한 직선 위이고 AD=DC=BC=3이므로 AC=6입니다. △ABC와 △DBC가 C에서 직각이므로 AB=√(6²+3²)=3√5, BD=√(3²+3²)=3√2입니다. D에서 AB에 내린 수선의 발을 E라 하면 △ABD의 넓이는 (1/2)·AD·BC=9/2이고, 밑변 AB로 계산하면 (1/2)·AB·DE입니다. 따라서 DE=9/AB=3/√5입니다. △BDE는 E에서 직각이고 ∠DBE=x이므로 sin x=DE/BD=(3/√5)/(3√2)=1/√10=√10/10입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "[풀이] A,D,C는 한 직선 위이고 AD=DC=BC=3이므로 AC=6입니다. △ABC와 △DBC가 C에서 직각이므로 AB=√(6²+3²)=3√5, BD=√(3²+3²)=3√2입니다. D에서 AB에 내린 수선의 발을 E라 하면 △ABD의 넓이는 (1/2)·AD·BC=9/2이고, 밑변 AB로 계산하면 (1/2)·AB·DE입니다. 따라서 DE=9/AB=3/√5입니다. △BDE는 E에서 직각이고 ∠DBE=x이므로 sin x=DE/BD=(3/√5)/(3√2)=1/√10=√10/10입니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다.",
+        "method": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다."
+      ],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 179,
+    "quotesNotFound": 0,
+    "notes": "各문항 실제 본문·해설 및 도형을 읽어 의미 결정. 기존 수학 검증을 재사용하며 새 풀이나 수학 R1/R2/R3를 작성하지 않았다."
+  }
+}

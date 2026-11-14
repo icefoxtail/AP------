@@ -1,0 +1,904 @@
+[
+  {
+    "ordinal": 1,
+    "questionUid": "qid_v1_ce93e507036c0ccff931e988e001c0213c4423d048c07306cb3c02d6c7cd0839",
+    "before": {
+      "subUnit": "삼각비의 뜻과 관계",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "level": null,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "하위: 직각삼각형에서 주어진 변으로 한 삼각비를 바로 계산한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 뜻",
+        "subConcept": "sin 값 읽기",
+        "conditionsUsed": "∠C=90°, AC=3, BC=2, AB=√13.",
+        "integrationPatternExplanation": "기본 삼각비를 직접 적용한다."
+      }
+    },
+    "after": {
+      "subUnit": "삼각비",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "level": "하",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "세변이 주어진 정의 직접 적용1이다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 뜻",
+        "subConcept": "sin·cos·tan",
+        "conditionsUsed": "∠C=90°, AC=3, BC=2, AB=√13.",
+        "integrationPatternExplanation": "그림의 대변AC3과 빗변AB√13을 사인 정의에 바로 대응한다."
+      }
+    }
+  },
+  {
+    "ordinal": 2,
+    "questionUid": "qid_v1_93a11b253fe88316f5b0a1ee08c72f820c4b84615dc345b25da02c71376ed183",
+    "before": {
+      "subUnit": "삼각비의 뜻과 관계",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "level": null,
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "하위: 예각 조건으로 cos의 부호를 정해 기본 삼각비를 대입한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 관계",
+        "subConcept": "sin·cos·tan 관계",
+        "conditionsUsed": "0°<A<90°이므로 cos A>0.",
+        "integrationPatternExplanation": "한 각의 기본 삼각비를 서로 연결한다."
+      }
+    },
+    "after": {
+      "subUnit": "삼각비",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "level": "하",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "한 삼각비의 기본 관계로 같은 값을 표현하는1이다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 뜻",
+        "subConcept": "삼각비의 관계",
+        "conditionsUsed": "0°<A<90°이므로 cos A>0.",
+        "integrationPatternExplanation": "예각 범위에서 sin으로 cos,tan을 표현해 cosA·tanA가 sinA와 같음을 확인한다. 기존해설의 두 비 계산은 같은 기본관계의 직접 적용이다."
+      }
+    }
+  },
+  {
+    "ordinal": 3,
+    "questionUid": "qid_v1_24e0c397bfec53613e59f3362d90365fa0cf40b79196004f9285b6336bd8eda9",
+    "before": {
+      "subUnit": "삼각비의 뜻과 관계",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "level": null,
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중하위: 다섯 특수각 식을 계산해 값을 비교한다.",
+      "semanticMeta": {
+        "primaryConcept": "특수각의 삼각비",
+        "subConcept": "특수각 식 비교",
+        "conditionsUsed": "30°,45°,60°의 삼각비.",
+        "integrationPatternExplanation": "특수각 값을 계산해 비교한다."
+      }
+    },
+    "after": {
+      "subUnit": "삼각비",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "level": "하",
+      "difficultyBucket": 1,
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "특수각 직접계산과 부호비교1이다.",
+      "semanticMeta": {
+        "primaryConcept": "특수각의 삼각비",
+        "subConcept": "특수각 계산",
+        "conditionsUsed": "30°,45°,60°의 삼각비.",
+        "integrationPatternExplanation": "표준각 값을 각각 계산하면⑤만 음수이므로 최솟값을 선택한다."
+      }
+    }
+  },
+  {
+    "ordinal": 4,
+    "questionUid": "qid_v1_e9e054cb9ca8ee41521ffbb65f8f88a99efc4a358b4286fc6fc4615fb66f5a2f",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "NONE",
+      "level": null,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중하위: 꼭짓점형과 그래프 성질을 구별한다.",
+      "semanticMeta": {
+        "primaryConcept": "이차함수와 그래프",
+        "subConcept": "꼭짓점과 그래프 성질",
+        "conditionsUsed": "a<0, 꼭짓점 (2,−6).",
+        "integrationPatternExplanation": "한 이차함수의 그래프 성질을 분류한다."
+      }
+    },
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "완전제곱식 한 전처리 후 표준 그래프성질 판정2이다.",
+      "semanticMeta": {
+        "primaryConcept": "그래프와 계수",
+        "subConcept": "그래프 위치",
+        "conditionsUsed": "a<0, 꼭짓점 (2,−6).",
+        "integrationPatternExplanation": "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다."
+      }
+    }
+  },
+  {
+    "ordinal": 5,
+    "questionUid": "qid_v1_4d0a85b5ce2c3062d86754f51266ca321c77f20c4516d4a1d884219f98f73e85",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "NONE",
+      "level": null,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "rpmPrimaryKey": "M3-RPM-046",
+      "difficultyReason": "중하위: 대칭축과 열린 방향으로 증가 구간을 판정한다.",
+      "semanticMeta": {
+        "primaryConcept": "이차함수와 그래프",
+        "subConcept": "대칭축과 증가 구간",
+        "conditionsUsed": "y=−5(x+2)²+13, 아래로 열린 그래프.",
+        "integrationPatternExplanation": "대칭축과 열린 방향으로 증가 구간을 판정한다."
+      }
+    },
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryKey": "M3-RPM-053",
+      "difficultyReason": "완전제곱식 후 증가방향 읽기2이다.",
+      "semanticMeta": {
+        "primaryConcept": "그래프와 계수",
+        "subConcept": "그래프 위치",
+        "conditionsUsed": "y=−5(x+2)²+13, 아래로 열린 그래프.",
+        "integrationPatternExplanation": "−5(x+2)²+13으로 축x=−2와 아래로 열린 개형을 읽고 축 왼쪽의 증가구간을 선택한다. 원점축 y=ax²만의 증감RPM046으로 제한하지 않는다."
+      }
+    }
+  },
+  {
+    "ordinal": 6,
+    "questionUid": "qid_v1_4c1ad061f6bef713a269b7815faf4467815d5094af6803bbb9721d6e6d300443",
+    "before": {
+      "subUnit": "삼각비의 뜻과 관계",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "level": null,
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중간: 직선 절편으로 삼각형을 만든 뒤 삼각비를 계산·소거한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 뜻",
+        "subConcept": "직선 절편과 sin·cos·tan",
+        "conditionsUsed": "기울기 1/2, 점 (−2,3), 축 절편 A·B.",
+        "integrationPatternExplanation": "절편으로 직각삼각형을 만들어 기본 삼각비를 계산한다."
+      }
+    },
+    "after": {
+      "subUnit": "삼각비",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "직선식·절편의 정형 복원 후 삼각비값2이다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 뜻",
+        "subConcept": "sin·cos·tan",
+        "conditionsUsed": "기울기 1/2, 점 (−2,3), 축 절편 A·B.",
+        "integrationPatternExplanation": "한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다."
+      }
+    }
+  },
+  {
+    "ordinal": 7,
+    "questionUid": "qid_v1_4493bef5e268d49311cae431a1f4e9b7ca8bffd905971970a27d362c62d04672",
+    "before": {
+      "subUnit": "삼각비의 뜻과 관계",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "level": null,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "하위: 표에서 두 각을 읽어 더한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 뜻",
+        "subConcept": "삼각비 표에서 각 읽기",
+        "conditionsUsed": "표의 sin·tan 값.",
+        "integrationPatternExplanation": "표에서 대응하는 각을 읽는다."
+      }
+    },
+    "after": {
+      "subUnit": "삼각비",
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "level": "하",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "표의 두 값 직접 역조회1이다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 뜻",
+        "subConcept": "sin·cos·tan",
+        "conditionsUsed": "표의 sin·tan 값.",
+        "integrationPatternExplanation": "주어진 sin값과 tan값을 표에서 역조회하여 각45°,46°의 합을 구한다."
+      }
+    }
+  },
+  {
+    "ordinal": 8,
+    "questionUid": "qid_v1_15c13c00603678eae39924e2c8358b7034d6e7d5470d2f40b93e3e87a7502d19",
+    "before": {
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "level": null,
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중하위: 표의 sin·cos 값으로 두 길이의 차를 구한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비와 길이",
+        "subConcept": "삼각비로 두 변 계산",
+        "conditionsUsed": "빗변 100, 꼭대기 각 43°, 표의 sin·cos 값.",
+        "integrationPatternExplanation": "두 변을 구해 차를 계산한다."
+      }
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "하",
+      "difficultyBucket": 1,
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "명시된 각의 제공값을 직접 길이식에 넣는1이다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비와 길이",
+        "subConcept": "각을 이용한 길이",
+        "conditionsUsed": "빗변 100, 꼭대기 각 43°, 표의 sin·cos 값.",
+        "integrationPatternExplanation": "빗변100과43°에 표의 사인·코사인을 바로 대입해 두 직각변의 차를 구한다."
+      }
+    }
+  },
+  {
+    "ordinal": 9,
+    "questionUid": "qid_v1_6e6a111fe32aa7d4ba30e4b70bc5872ab06cc1aa10e3797ef43d6a94bbe15c7f",
+    "before": {
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "level": null,
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중하위: 두 삼각비로 변을 근사하고 둘레를 합한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비와 길이",
+        "subConcept": "직각삼각형 변 계산",
+        "conditionsUsed": "빗변 10, 각 35°, 주어진 근삿값.",
+        "integrationPatternExplanation": "두 변을 근사하고 둘레를 합한다."
+      }
+    },
+    "after": {
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "level": "하",
+      "difficultyBucket": 1,
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "필요값이 모두 주어져 공식 직접 적용 뒤 합하는1이다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비와 길이",
+        "subConcept": "각을 이용한 길이",
+        "conditionsUsed": "빗변 10, 각 35°, 주어진 근삿값.",
+        "integrationPatternExplanation": "빗변10과35°에서 두직각변을 직접 구하고 세변을 합해둘레를 얻는다. 최종둘레 연결을 CHAINED로 보존한다."
+      }
+    }
+  },
+  {
+    "ordinal": 10,
+    "questionUid": "qid_v1_77511ad744d910710014b6204471283cc1957a18f71e5b88acf2400a0bcf9d0b",
+    "before": {
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "level": null,
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중간: 사각형을 두 삼각형으로 나눠 넓이를 합한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 활용",
+        "subConcept": "사각형 넓이",
+        "conditionsUsed": "AB=9, BC=12, ∠B=60°, AD=3√3, DC=6, ∠D=150°.",
+        "integrationPatternExplanation": "두 삼각형 넓이를 구해 사각형 넓이로 합한다."
+      }
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "사각형의 표준 분할과 높이계산의2이다.",
+      "semanticMeta": {
+        "primaryConcept": "평면도형",
+        "subConcept": "다각형의 길이·넓이",
+        "conditionsUsed": "AB=9, BC=12, ∠B=60°, AD=3√3, DC=6, ∠D=150°.",
+        "integrationPatternExplanation": "대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다."
+      }
+    }
+  },
+  {
+    "ordinal": 11,
+    "questionUid": "qid_v1_b6fa81043e7ff233a156ee631d0b27fb04ee88372ad797577449ce71339072c7",
+    "before": {
+      "subUnit": "삼각비의 뜻과 관계",
+      "crossConceptKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "level": null,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중하위: 범위로 각을 정한 뒤 특수각 삼각비를 곱한다.",
+      "semanticMeta": {
+        "primaryConcept": "특수각의 삼각비",
+        "subConcept": "특수각 조건식",
+        "conditionsUsed": "0°<x<75°, tan(x+15°)=1.",
+        "integrationPatternExplanation": "범위로 x를 결정한 뒤 특수각 곱을 계산한다."
+      }
+    },
+    "after": {
+      "subUnit": "삼각비",
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "특수각의 역조회와식대입을 연결하는2이다.",
+      "semanticMeta": {
+        "primaryConcept": "특수각의 삼각비",
+        "subConcept": "특수각 계산",
+        "conditionsUsed": "0°<x<75°, tan(x+15°)=1.",
+        "integrationPatternExplanation": "주어진 열린범위에서 tan(x+15)=1의각45°를 유일하게 골라 x30을 정하고 cos30sin60을 계산한다."
+      }
+    }
+  },
+  {
+    "ordinal": 12,
+    "questionUid": "qid_v1_e891912b9535ae6d0581ff382665e79490cb9f28ee6e63acffb7a8a6620a9275",
+    "before": {
+      "subUnit": "삼각비의 뜻과 관계",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "level": null,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "rpmPrimaryKey": "M3-RPM-057",
+      "difficultyReason": "중하위: 내각비로 각을 구하고 특수각 값을 대입한다.",
+      "semanticMeta": {
+        "primaryConcept": "특수각의 삼각비",
+        "subConcept": "내각비와 특수각",
+        "conditionsUsed": "세 각의 합 180°, 비 1:2:3.",
+        "integrationPatternExplanation": "내각비로 각을 정하고 삼각비를 대입한다."
+      }
+    },
+    "after": {
+      "subUnit": "삼각비",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "level": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryKey": "M3-RPM-058",
+      "difficultyReason": "각의 비를 특수각으로 바꾸는 한 전처리2이다.",
+      "semanticMeta": {
+        "primaryConcept": "특수각의 삼각비",
+        "subConcept": "특수각 계산",
+        "conditionsUsed": "세 각의 합 180°, 비 1:2:3.",
+        "integrationPatternExplanation": "세내각의 비1:2:3을 합180에 배분해30°,60°,90°를 만들고 삼각비식을 계산한다."
+      }
+    }
+  },
+  {
+    "ordinal": 13,
+    "questionUid": "qid_v1_ef48ae8d28a927c39679f77d0433e3a1ab0cdee6f72710bc5865e847bb82dcde",
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "level": null,
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "rpmPrimaryKey": "M3-RPM-065",
+      "difficultyReason": "중간: 빗변에 내린 높이와 두 삼각비를 연결한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 활용",
+        "subConcept": "직각삼각형의 높이와 삼각비",
+        "conditionsUsed": "∠A=90°, AD⊥BC, AB=√7, AC=3.",
+        "integrationPatternExplanation": "빗변 분할 관계로 두 삼각비를 구한다."
+      }
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_RIGHT_TRIANGLE_SIMILARITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryKey": "M3-RPM-055",
+      "difficultyReason": "그려진 직각삼각형 닮음의 정형 길이비 전달2이다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 뜻",
+        "subConcept": "sin·cos·tan",
+        "conditionsUsed": "∠A=90°, AD⊥BC, AB=√7, AC=3.",
+        "integrationPatternExplanation": "빗변4를 구하고 주어진 높이AD의 닮음관계로 작은 삼각형의 길이를 복원해 sinx·tany를 구한다. 목표가 삼각비식이므로 CHAINED길이측정에서 교정한다."
+      }
+    }
+  },
+  {
+    "ordinal": 14,
+    "questionUid": "qid_v1_3da423226291ac0cb297301205430e190c4e18ddf7232b702b271871ed71611f",
+    "before": {
+      "subUnit": "삼각비의 뜻과 관계",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "crossConceptKeys": null,
+      "integrationPattern": "NONE",
+      "level": null,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "rpmPrimaryKey": "M3-RPM-058",
+      "difficultyReason": "중하위: 범위 조건으로 제곱근 안의 부호를 결정한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 관계",
+        "subConcept": "범위와 절댓값",
+        "conditionsUsed": "0°<x<45°, 0<tan x<1.",
+        "integrationPatternExplanation": "범위가 제곱근 안의 부호를 정한다."
+      }
+    },
+    "after": {
+      "subUnit": "삼각비",
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_ABSOLUTE_VALUE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryKey": "M3-RPM-056",
+      "difficultyReason": "근호·절댓값 전환과주어진삼각비 범위의 정형 결합2이다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 뜻",
+        "subConcept": "삼각비의 관계",
+        "conditionsUsed": "0°<x<45°, 0<tan x<1.",
+        "integrationPatternExplanation": "특수각값1을 넣어 두근호를 |1−tanx|,|tanx−1|로 바꾸고 범위의 부호조건으로 같은식을 얻어 차를 정리한다."
+      }
+    }
+  },
+  {
+    "ordinal": 15,
+    "questionUid": "qid_v1_757cbe4bc2cd3085fce4669cc9122560da1c0aea71eefa6908bbab581a929fed",
+    "before": {
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "level": null,
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중상위: 두 관측점의 거리와 같은 높이를 연립한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 활용",
+        "subConcept": "두 지점의 앙각과 공통 높이",
+        "conditionsUsed": "두 지점 거리 100m, 앙각 45°,60°.",
+        "integrationPatternExplanation": "같은 높이를 두 관측점의 거리와 연결한다."
+      }
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "공통높이 미지량과거리합을 세우는표준 전략3이다.",
+      "semanticMeta": {
+        "primaryConcept": "측정 문제",
+        "subConcept": "앙각·부각",
+        "conditionsUsed": "두 지점 거리 100m, 앙각 45°,60°.",
+        "integrationPatternExplanation": "수선의 발이두 관측점 사이에 있어 두수평거리의 합100을 공통높이h의 두탄젠트식과 연결한다."
+      }
+    }
+  },
+  {
+    "ordinal": 16,
+    "questionUid": "qid_v1_a684721262238aeb828b874929ba9d69e98cac40e2afad6b07b110f4e9418013",
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "level": null,
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "rpmPrimaryKey": "M3-RPM-065",
+      "difficultyReason": "중간: 반지름과 중심선 길이를 구하고 tan을 계산한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 활용",
+        "subConcept": "반원과 tan",
+        "conditionsUsed": "AC=2, ∠AOC=30°, ∠ACB=90°, C-O-B 일직선.",
+        "integrationPatternExplanation": "반지름과 중심선 길이를 구한 뒤 삼각비를 계산한다."
+      }
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryKey": "M3-RPM-055",
+      "difficultyReason": "동일반지름과일직선의 길이를 전달하는정형2이다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 뜻",
+        "subConcept": "sin·cos·tan",
+        "conditionsUsed": "AC=2, ∠AOC=30°, ∠ACB=90°, C-O-B 일직선.",
+        "integrationPatternExplanation": "30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다."
+      }
+    }
+  },
+  {
+    "ordinal": 17,
+    "questionUid": "qid_v1_f286abd795449daf74361ac44667f45ea481396ad681be94e0a48e11c97350b7",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": null,
+      "level": null,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중간: 대칭·계수·꼭짓점 조건으로 식을 결정한다.",
+      "semanticMeta": {
+        "primaryConcept": "이차함수와 그래프",
+        "subConcept": "대칭축·꼭짓점으로 계수 결정",
+        "conditionsUsed": "f(−4)=f(2), 꼭짓점은 y=3x+5 위, y=−2x²의 평행이동.",
+        "integrationPatternExplanation": "대칭축·계수·꼭짓점을 차례로 정해 일반형을 얻는다."
+      }
+    },
+    "after": {
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "level": "중",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "독립세조건을 축·계수·꼭짓점으로 배분하여 식을 복원하는전략3이다.",
+      "semanticMeta": {
+        "primaryConcept": "그래프와 계수",
+        "subConcept": "조건으로 식 구하기",
+        "conditionsUsed": "f(−4)=f(2), 꼭짓점은 y=3x+5 위, y=−2x²의 평행이동.",
+        "integrationPatternExplanation": "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다."
+      }
+    }
+  },
+  {
+    "ordinal": 18,
+    "questionUid": "qid_v1_384797bce6a0acc615b830b705860b3763f2a7793619f74cc94f392d116e7630",
+    "before": {
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "level": null,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중간: 같은 높이를 두 밑각에 연결하고 여각 관계를 쓴다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 활용",
+        "subConcept": "삼각형 높이와 여각",
+        "conditionsUsed": "BC=10, ∠B=35°, ∠C=65°, AH⊥BC.",
+        "integrationPatternExplanation": "같은 높이를 두 밑각에 연결하고 여각을 쓴다."
+      }
+    },
+    "after": {
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "공통미지량모델과여각표현변환을 선택하는3이다.",
+      "semanticMeta": {
+        "primaryConcept": "평면도형",
+        "subConcept": "삼각형의 높이·넓이",
+        "conditionsUsed": "BC=10, ∠B=35°, ∠C=65°, AH⊥BC.",
+        "integrationPatternExplanation": "공통높이h에 대해 두수평거리 h/tan35와h/tan65를 더해10으로 두고 여각의탄젠트 역수관계로 요구식을 표현한다."
+      }
+    }
+  },
+  {
+    "ordinal": 19,
+    "questionUid": "qid_v1_c01ccc2861f47de887ec98eaa0e52c0d4c61c39603b1593ad3ae44d4760e9d7a",
+    "before": {
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_CENTROID",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "level": null,
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중간: 삼각비로 넓이를 구하고 무게중심 비를 적용한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 활용",
+        "subConcept": "무게중심과 넓이",
+        "conditionsUsed": "AC=6, BC=9, ∠C=60°, G는 무게중심.",
+        "integrationPatternExplanation": "삼각비로 전체 넓이를 구하고 무게중심 높이 비를 결합한다."
+      }
+    },
+    "after": {
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_CENTROID"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "기본넓이값을 무게중심의정해진 비로 전달하는2이다.",
+      "semanticMeta": {
+        "primaryConcept": "평면도형",
+        "subConcept": "삼각형의 높이·넓이",
+        "conditionsUsed": "AC=6, BC=9, ∠C=60°, G는 무게중심.",
+        "integrationPatternExplanation": "두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다."
+      }
+    }
+  },
+  {
+    "ordinal": 20,
+    "questionUid": "qid_v1_93097404998120fda04cdbb5c65ea7dc8b892f09273abb03c2106ed4f55e4765",
+    "before": {
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "level": null,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중간: 공통 높이로 두 관측 삼각형의 tan 관계를 세운다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 활용",
+        "subConcept": "산 높이와 두 관측점",
+        "conditionsUsed": "BC=60m, ∠B=45°, ∠C=60°.",
+        "integrationPatternExplanation": "공통 높이를 두 직각삼각형에서 표현한다."
+      }
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "관측위치에 맞는 거리차모델을 세우는 표준전략3이다.",
+      "semanticMeta": {
+        "primaryConcept": "측정 문제",
+        "subConcept": "앙각·부각",
+        "conditionsUsed": "BC=60m, ∠B=45°, ∠C=60°.",
+        "integrationPatternExplanation": "같은쪽 관측점에서 수평거리x와x+60을 공통높이의두 탄젠트식에 넣어 연립한다."
+      }
+    }
+  },
+  {
+    "ordinal": 21,
+    "questionUid": "qid_v1_e2d305f4f083789e07602b52ceb759edcf63988b78fbf001453b9f09214da589",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE",
+        "CC_QUADRATIC_FUNCTION",
+        "CC_VERTEX"
+      ],
+      "level": null,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "rpmPrimaryKey": "M3-RPM-051",
+      "difficultyReason": "중간: 완전제곱식·꼭짓점·넓이·그림의 부호 정보를 연결한다.",
+      "semanticMeta": {
+        "primaryConcept": "이차함수와 그래프",
+        "subConcept": "완전제곱·꼭짓점·넓이",
+        "conditionsUsed": "y=−1/2x²−2x+k, B는 y축 교점이며 그림에서 O 위.",
+        "integrationPatternExplanation": "꼭짓점형으로 바꾸고 넓이로 k를 결정한다."
+      }
+    },
+    "after": {
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "level": "중",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryKey": "M3-RPM-053",
+      "difficultyReason": "그래프좌표를 넓이조건의 방정식으로 바꾸는전략3이다.",
+      "semanticMeta": {
+        "primaryConcept": "그래프와 계수",
+        "subConcept": "그래프 위치",
+        "conditionsUsed": "y=−1/2x²−2x+k, B는 y축 교점이며 그림에서 O 위.",
+        "integrationPatternExplanation": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다."
+      }
+    }
+  },
+  {
+    "ordinal": 22,
+    "questionUid": "qid_v1_de7f6688202c3e939e55376b2a7b5d5660d99cfa7f7b2837658789543b1d893d",
+    "before": {
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "level": null,
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중간: 단면 삼각비로 반지름과 높이를 구해 부피를 계산한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 활용",
+        "subConcept": "원뿔 단면과 부피",
+        "conditionsUsed": "모선 4cm, 모선과 밑면의 각 60°.",
+        "integrationPatternExplanation": "단면 삼각비로 r·h를 구한 뒤 부피를 계산한다."
+      }
+    },
+    "after": {
+      "crossConceptKeys": [
+        "CC_CONE_VOLUME"
+      ],
+      "conditionKeys": [],
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "표준축단면이 명시된 모선각의정형부피연결2이다.",
+      "semanticMeta": {
+        "primaryConcept": "복합도형",
+        "subConcept": "보조선 활용",
+        "conditionsUsed": "모선 4cm, 모선과 밑면의 각 60°.",
+        "integrationPatternExplanation": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다."
+      }
+    }
+  },
+  {
+    "ordinal": 23,
+    "questionUid": "qid_v1_c083c2366bb9ffbf13e8659a5739c31a2725cc765cffd5cadf6c77c6c9f6ac9e",
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "level": null,
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "rpmPrimaryKey": "M3-RPM-066",
+      "difficultyReason": "중상위: 두 삼각형을 만들고 넓이 표현을 같게 둔다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 활용",
+        "subConcept": "두 삼각형의 넓이와 sin",
+        "conditionsUsed": "AD=DC=BC=3cm, ∠C=90°, x=∠ABD.",
+        "integrationPatternExplanation": "피타고라스 관계와 넓이 공식 두 표현을 결합한다."
+      }
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryKey": "M3-RPM-055",
+      "difficultyReason": "넓이같음을 이용해 목표비에 필요한 보조높이를 선택하는전략3이다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비의 뜻",
+        "subConcept": "sin·cos·tan",
+        "conditionsUsed": "AD=DC=BC=3cm, ∠C=90°, x=∠ABD.",
+        "integrationPatternExplanation": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다."
+      }
+    }
+  }
+]
