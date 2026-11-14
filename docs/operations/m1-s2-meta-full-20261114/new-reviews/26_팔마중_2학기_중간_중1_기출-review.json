@@ -1,0 +1,1665 @@
+{
+  "schemaVersion": "m1-s2-exam-review-handoff-v1",
+  "author": "META_B",
+  "sourceArchiveFile": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+  "sourcePath": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+  "baselineMain": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "baselineSourceBlob": "2b8411c03707eaa39fdf0159e3de448d459da181",
+  "sourceBlob": "37ea0edbc9cf0ca64eebe8e123d71a977183b004",
+  "sourceSha256": "a5f24d7f62c74dc0cf166883c27242b81c6ac4033a1383912fef53fbb67820a8",
+  "questionCount": 24,
+  "reviewScope": "RPM_PRIMARY_NATIVE_AUXILIARY_LEVEL_DIFFICULTY_4SLOT",
+  "topics": {
+    "맞꼭지각과 평각": [
+      1
+    ],
+    "반직선의 동일성": [
+      2
+    ],
+    "수선과 점·직선 거리": [
+      3
+    ],
+    "각의 비와 직각": [
+      4
+    ],
+    "연속 중점과 선분 길이": [
+      5
+    ],
+    "공간 모서리·면 위치관계": [
+      6
+    ],
+    "한 평면의 세 직선 관계": [
+      7
+    ],
+    "꼬인 모서리 개수": [
+      8
+    ],
+    "평행선의 각 이동": [
+      9
+    ],
+    "각의 이동 작도": [
+      10
+    ],
+    "삼각형 작도 순서": [
+      11
+    ],
+    "삼각형 결정조건 비교": [
+      12
+    ],
+    "합동의 대응변·대응각": [
+      13
+    ],
+    "삼각형 합동 보완조건": [
+      14
+    ],
+    "다각형 대각선 수": [
+      15
+    ],
+    "정오각형 대각선 각 추적": [
+      16
+    ],
+    "내각·외각의 총합": [
+      17
+    ],
+    "내각·외각의 비로 정다각형 찾기": [
+      18
+    ],
+    "별다각형 회전각의 합": [
+      19
+    ],
+    "평행선 각의 비와 삼각형": [
+      20
+    ],
+    "삼각형 외각과 평각": [
+      21
+    ],
+    "맞꼭지각 일차식": [
+      22
+    ],
+    "분할 개수식과 정다각형 각": [
+      23
+    ],
+    "정사각형 겹침과 합동 넓이": [
+      24
+    ]
+  },
+  "reusedEvidence": {
+    "semanticPath": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+    "closeoutPath": "docs/operations/m1-meta-review-20261113/03-palma-operational-closeout.json",
+    "sourceBlobMatched": "2b8411c03707eaa39fdf0159e3de448d459da181",
+    "sourceSha256Matched": "1fa5adbc46ef6180400a4666c4328bb2d2b6655d059e660291ccf550803332c7",
+    "scope": "24문항의 RPM·native·CC·조건·integration 판정 재사용; 기존 본문/해설 전24개를 현재 판본에서 직접 읽고 4칸과 난이도를 보완",
+    "exactNativeBindings": 24
+  },
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_aeac61cf463b156ee3a77b9a0bf56197226b0f30293b013e4a435086e8a0bbd4",
+      "topic": "맞꼭지각과 평각",
+      "primaryReason": "맞꼭지각으로 주어진 각을 옮기고 평각의 나머지 각을 빼므로 기존 ANGLE_TRANSFER와 RPM176을 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "L3": "각",
+          "L4": "맞꼭지각"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "기본 도형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "도형에서 곧바로 보이는 맞꼭지각·이웃각 직접 적용으로 전략 선택이 없으므로 2→1.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_9b4acc2d19a0bf5b24044439b7a93d16cc01ed5491d251519cc48235ff223db8",
+      "topic": "반직선의 동일성",
+      "primaryReason": "시점과 향하는 방향이 같은 반직선을 고르는 정의 판정으로 native와 RPM173을 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+        "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "L3": "점·선·면",
+          "L4": "직선·반직선·선분"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "기본 도형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "동일 반직선 정의가 발문에 직접 주어지고 점순서에 적용하는 확인형이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_dca5b1495c2fdb8706ba4ee7b2620c8703bc1467a10a19d8c165a07b3464a976",
+      "topic": "수선과 점·직선 거리",
+      "primaryReason": "직각 표시를 수선·수선의 발·거리 정의에 대조한다. RPM184의 base 위치관계 표기는 보존하고 effective 기본도형 부모를 사용한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK",
+        "templateKey": "TPL_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK_CORE",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "위치 관계",
+          "L3": "수직과 거리",
+          "L4": "점과 직선 사이의 거리"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "기본 도형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "거리와 비스듬한 변을 구별하는 한 번의 정의 해석이며 비정형 전략 선택이 없다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_ad89956ceb68957e2871b30660000826f0e00d6ebb4a1a1e1b5c03261aff25a7",
+      "topic": "각의 비와 직각",
+      "primaryReason": "직각에 겹친 첫 비 조건으로 부분각을 정한 뒤 두 번째 비를 적용한다. ANGLE_RATIO와 RPM175를 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "L3": "각",
+          "L4": "각의 크기"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "기본 도형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "각의 겹침을 식으로 나타내는 선택과 두 비 관계의 순차 연결이 핵심이어서 표준3을 유지한다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {}
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_df3befa3fc3ac768ecd2db63406ae2b97508965f814eff8565d7901660ecb74e",
+      "topic": "연속 중점과 선분 길이",
+      "primaryReason": "각 중점이 나누는 기준 구간을 순서대로 갱신하는 CHAINED_MIDPOINT를 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "L3": "점·선·면",
+          "L4": "두 점 사이의 거리와 중점"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "기본 도형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 2,
+        "reason": "구간의 절반과 선분 합을 순차 적용하는 익숙한 변형이다. 기존 하와2의 인접 불일치는 독립재검 대기.",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "independentStatus": "ACCEPTED",
+        "independentReview": "root-review/26_팔마중_2학기_중간_중1_기출-difficulty-independent.json#Q5"
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_ACCEPTABLE"
+        }
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+      "topic": "공간 모서리·면 위치관계",
+      "primaryReason": "정육면체 모서리·면의 포함·평행·교차·꼬임을 실제 배치로 판정하며 다면체 개수 공식과 구분한다.",
+      "axes": {
+        "rpmL1L4": "GAP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "RPM_LEAF_GAP",
+        "basePath": null,
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "위치 관계"
+        },
+        "note": "공간에서 두 직선의 관계·꼬인 모서리 판정은 native exact 등록 완료이나 locked RPM에는 이 뜻을 온전히 담는 leaf가 없다."
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 2,
+        "reason": "공간 그림의 대응 방향을 한 번 읽는 기초 해석이며 기존2 유지, legacy 하 경계재검.",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "independentStatus": "ACCEPTED",
+        "independentReview": "agent-a/cross/26_팔마중_2학기_중간_중1_기출-independent.json#Q6"
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "NATIVE_EXACT_RPM_LEAF_DEBT",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_ACCEPTABLE"
+        }
+      }
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_6a23d2b43c9a6f7c1a1c175c6bb121d0a9f8c623f12711e85f5ab8c798abc556",
+      "topic": "한 평면의 세 직선 관계",
+      "primaryReason": "동일평면에서 수직·평행의 전이를 검사하는 COPLANAR_POSITION_IMPLICATION exact 정의에 부합한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+        "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_COPLANAR_POSITION_IMPLICATION",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "위치 관계",
+          "L3": "평면에서의 위치 관계",
+          "L4": "두 직선의 위치 관계"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "위치 관계"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "동일평면 조건 아래 익숙한 수직·평행 전이를 각 보기마다 직접 적용한다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+      "topic": "꼬인 모서리 개수",
+      "primaryReason": "육각기둥의 모서리를 자신·만남·평행·꼬임으로 나누고 제외하여 세므로 native SKEW_EDGE_COUNT를 유지한다.",
+      "axes": {
+        "rpmL1L4": "GAP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "RPM_LEAF_GAP",
+        "basePath": null,
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "위치 관계"
+        },
+        "note": "공간에서 두 직선의 관계·꼬인 모서리 판정은 native exact 등록 완료이나 locked RPM에는 이 뜻을 온전히 담는 leaf가 없다."
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "전체 모서리에서 겹치지 않는 제외군을 구조화해야 하므로 표준3을 유지한다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "NATIVE_EXACT_RPM_LEAF_DEBT",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {}
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_690710e7ac7ec4e05e9fc07e1a1f468bb8147e84a5427104e530607a1f962e42",
+      "topic": "평행선의 각 이동",
+      "primaryReason": "두 평행쌍에서 동위각 이동과 평각의 보충만 필요하며 독립 CC가 없어 NONE을 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "L3": "평행선과 각",
+          "L4": "동위각·엇각"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "위치 관계"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 2,
+        "reason": "평행쌍을 따라 각을 한 번 옮기고 평각을 적용하는 익숙한 변형이다. 하와2는 재검대기.",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "independentStatus": "ACCEPTED",
+        "independentReview": "root-review/26_팔마중_2학기_중간_중1_기출-difficulty-independent.json#Q9"
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_ACCEPTABLE"
+        }
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_9b6c9e1f6b039fc6c4335114abd1392fd7ee680a60d038c0cda3f9a896ee7102",
+      "topic": "각의 이동 작도",
+      "primaryReason": "같은 반지름의 호와 현 길이를 확보한 뒤 새 반직선을 그리는 선행관계로 순서를 고른다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "작도와 합동",
+          "L3": "기본 작도",
+          "L4": "선분·각의 이동"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "작도와 합동"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "익숙한 각복사 절차의 선행관계 확인이며 구조적 발상 부담은 없다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_5394e91945cd93b47b3a1306dd912ec5c2b51d2621fae8dec5cda82bbd64c205",
+      "topic": "삼각형 작도 순서",
+      "primaryReason": "각을 놓을 끝점의 확정 여부를 검사하므로 ASA_VERTEX_DEPENDENCY를 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+        "templateKey": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "작도와 합동",
+          "L3": "삼각형의 작도",
+          "L4": "한 변과 양 끝각 조건"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "작도와 합동"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 2,
+        "reason": "한 변 양 끝각의 기본 작도에서 두 각의 위치가 먼저 결정되는지 읽는 표준 초입이다.",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "independentStatus": "ACCEPTED",
+        "independentReview": "root-review/26_팔마중_2학기_중간_중1_기출-difficulty-independent.json#Q11"
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_ACCEPTABLE"
+        }
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_af907e6247a0fd85a870e048c96666ec886ef2d1057b98c14d958c1fdea72ce9",
+      "topic": "삼각형 결정조건 비교",
+      "primaryReason": "삼각형 존재와 유일성, AAA·SSA의 한계를 함께 비교하므로 UNIQUE_TRIANGLE_DATA를 유지한다.",
+      "axes": {
+        "rpmL1L4": "GAP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "RPM_LEAF_GAP",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "작도와 합동",
+          "L3": "",
+          "L4": ""
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "작도와 합동"
+        },
+        "note": "합동의 대응 또는 여러 결정조건을 비교하는 native exact 유형은 등록 완료이나 개별 SSS/SAS/ASA leaf로 의미를 왜곡하지 않고 RPM leaf debt로 유지한다."
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "조건 조합마다 존재·유일성을 재확인하고 모호한 SSA를 배제해야 하는 표준 판정형이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "NATIVE_EXACT_RPM_LEAF_DEBT",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {}
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_f68009c211068d63c42d9641a37dcc7826e42d90dc8001fc7f74e03db9a51ac4",
+      "topic": "합동의 대응변·대응각",
+      "primaryReason": "합동 순서로 대응요소를 정하고 삼각형 내각합을 보완하므로 데이터전달 PT/TPL과 추가 CC_TRIANGLE_ANGLE_SUM을 유지한다.",
+      "axes": {
+        "rpmL1L4": "GAP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "RPM_LEAF_GAP",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "작도와 합동",
+          "L3": "",
+          "L4": ""
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "작도와 합동"
+        },
+        "note": "합동의 대응 또는 여러 결정조건을 비교하는 native exact 유형은 등록 완료이나 개별 SSS/SAS/ASA leaf로 의미를 왜곡하지 않고 RPM leaf debt로 유지한다."
+      },
+      "integrationReason": "주분류 외 실제 필요한 개념을 해설의 결정 단계와 대조하여 유지하였다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "합동 기호의 순서와 한 삼각형의 내각합을 직접 연결하는 표준 초입이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "NATIVE_EXACT_RPM_LEAF_DEBT",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_eabe9270f247372c1649ff25c772e848daf06c69f7e6dfa889d21cb1f5ded39d",
+      "topic": "삼각형 합동 보완조건",
+      "primaryReason": "주어진 두 대응변에 끼인각 또는 세 번째 대응변을 보완하는 조건을 고르며 criterion-selection을 유지한다.",
+      "axes": {
+        "rpmL1L4": "GAP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "RPM_LEAF_GAP",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "작도와 합동",
+          "L3": "",
+          "L4": ""
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "작도와 합동"
+        },
+        "note": "합동의 대응 또는 여러 결정조건을 비교하는 native exact 유형은 등록 완료이나 개별 SSS/SAS/ASA leaf로 의미를 왜곡하지 않고 RPM leaf debt로 유지한다."
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "두 변에 추가할 표준 SSS/SAS 조건을 직접 구분하는 기본 변형이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "NATIVE_EXACT_RPM_LEAF_DEBT",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_a49a108502b32e9910d324e69bd4b50fe60d4732208de0275e0f40e284af6676",
+      "topic": "다각형 대각선 수",
+      "primaryReason": "한 꼭짓점 대각선 수와 전체 대각선의 중복계산을 직접 적용하는 native DIAGONAL_FORMULA를 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형",
+          "L3": "삼각형·다각형의 각",
+          "L4": "변·대각선 개수"
+        },
+        "effectiveParent": {
+          "L1": "평면도형",
+          "L2": "다각형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "주어진 변12에 n−3과 n(n−3)/2를 대입하는 직접 공식형이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_24a00b1861775852d97237d6ff2bab7fbf8b523fde92649c50d5bb6aeab4fc2f",
+      "topic": "정오각형 대각선 각 추적",
+      "primaryReason": "정오각형 내각에서 이등변삼각형 밑각·SSS대응각·교점삼각형을 연쇄 연결한다. CC_ISOSCELES_TRIANGLE/CC_TRIANGLE_CONGRUENCE와 SEQUENTIAL을 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_TRIANGLE_ANGLE_CHASE",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형",
+          "L3": "다각형의 내각과 외각",
+          "L4": "정다각형의 각"
+        },
+        "effectiveParent": {
+          "L1": "평면도형",
+          "L2": "다각형"
+        }
+      },
+      "integrationReason": "주분류 외 실제 필요한 개념을 해설의 결정 단계와 대조하여 유지하였다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "reason": "대각선 교점에 필요한 보조삼각형과 대응각을 선택해 여러 관계를 구조화해야 한다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {}
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_8ddd54f26e647cf88c553a1f15133ae63dea7b6233caaa68e0194f88351c273b",
+      "topic": "내각·외각의 총합",
+      "primaryReason": "주어진 변 수의 내각합과 고정 외각합을 각각 대입하므로 DIRECT_INTERIOR_EXTERIOR_TOTALS를 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIRECT_INTERIOR_EXTERIOR_TOTALS",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형",
+          "L3": "다각형의 내각과 외각",
+          "L4": "내각의 합"
+        },
+        "effectiveParent": {
+          "L1": "평면도형",
+          "L2": "다각형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "두 총합 공식을 그대로 적용하는 직접 확인형이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_3ffc1c4b696a4ef7c2ba59b1d37004134fc05ff0ce0212d0b55acd689ff8fce7",
+      "topic": "내각·외각의 비로 정다각형 찾기",
+      "primaryReason": "이웃한 내각과 외각의 보각관계에 비를 배분해 외각을 구하고 변수를 정한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형",
+          "L3": "정다각형",
+          "L4": "조건으로 정다각형 찾기"
+        },
+        "effectiveParent": {
+          "L1": "평면도형",
+          "L2": "다각형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "각의 비를180°에 배분한 뒤360°를 한 외각으로 나누는 익숙한 변형이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f",
+      "topic": "별다각형 회전각의 합",
+      "primaryReason": "닫힌 별경로의 회전횟수와 꼭짓점 보각을 연결하는 TURNING_ANGLE_TOTAL 정의가 정확하다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM",
+        "templateKey": "TPL_M1_STAR_POLYGON_ANGLE_SUM_TURNING_ANGLE_TOTAL",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형",
+          "L3": "삼각형·다각형의 각",
+          "L4": "각의 크기 계산"
+        },
+        "effectiveParent": {
+          "L1": "평면도형",
+          "L2": "다각형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 4,
+        "reason": "단순 외각합360°와 달리 경로가 두 번 감긴다는 비정형 구조를 먼저 인식해야 하므로4를 제안하며 독립재검한다.",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "independentStatus": "ACCEPTED",
+        "independentReview": "agent-a/cross/26_팔마중_2학기_중간_중1_기출-independent.json#Q19"
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 4
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        },
+        "difficultyBoundaryFlag": {
+          "before": "NONE",
+          "after": "B34"
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_ACCEPTABLE"
+        }
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_5ff9229265ef4aef481e014c3565592c9726b89f9ff8d2714b81fe3e3b097064",
+      "topic": "평행선 각의 비와 삼각형",
+      "primaryReason": "평행선의 동측내각 보각으로 부분각합을 정한 뒤 삼각형 내각합을 결합하므로 CC_TRIANGLE_ANGLE_SUM과 SEQUENTIAL을 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_ANGLE_RATIO",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "L3": "평행선과 각",
+          "L4": "동위각·엇각"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "위치 관계"
+        }
+      },
+      "integrationReason": "주분류 외 실제 필요한 개념을 해설의 결정 단계와 대조하여 유지하였다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "목표각을 구하기 위해 개별각 대신 x+y를 선택해 두 비와 내각합을 결합한다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {}
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_b7a4e9fe41cebbe2f68649f03fbb6c7fde5a0ac4ff88c2b9ff08a3bce63966eb",
+      "topic": "삼각형 외각과 평각",
+      "primaryReason": "삼각형 외각·보각·다른 삼각형 내각합을 순서대로 적용하는 EXTERIOR_ANGLE_EQUATION을 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형",
+          "L3": "삼각형·다각형의 각",
+          "L4": "각의 크기 계산"
+        },
+        "effectiveParent": {
+          "L1": "평면도형",
+          "L2": "다각형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "외각성질을 사용하라고 지정되어 있고 나머지 각추적이 직선적이므로2.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_4fde7f4e5f3ba55ede413c85c7e48572ee8b2c26bf5add8a27cf71bac14fd139",
+      "topic": "맞꼭지각 일차식",
+      "primaryReason": "평각으로 y, 맞꼭지각의 일차식으로 x를 구하는 ANGLE_EQUATION을 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "L3": "각",
+          "L4": "맞꼭지각"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "기본 도형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "직각·평각과 맞꼭지각을 직접 식으로 옮기는 익숙한 전처리이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_2222cce621e720b3998c49bb63edb0c8ddb93f85655114d1630ec3daf7b9f832",
+      "topic": "분할 개수식과 정다각형 각",
+      "primaryReason": "n−3 및 n−2로 개수 관계를 세우는 PARTITION_TO_DIAGONALS 정의에 맞고 결과의 내각·외각 계산도 주분류 내부이다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형",
+          "L3": "삼각형·다각형의 각",
+          "L4": "변·대각선 개수"
+        },
+        "effectiveParent": {
+          "L1": "평면도형",
+          "L2": "다각형"
+        }
+      },
+      "integrationReason": "주분류 자체의 성질과 연산은 추가 CC로 중복 태깅하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 2,
+        "reason": "두 기본 개수식을 합한 일차방정식 뒤 각공식을 적용하며 경우분기·비정형 구조가 없어4→2. legacy 상과 강충돌 독립재검 필요.",
+        "compatibility": "STRONG_CONFLICT",
+        "independentStatus": "ACCEPTED",
+        "independentReview": "agent-a/cross/26_팔마중_2학기_중간_중1_기출-independent.json#Q23"
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 4,
+          "after": 2
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "STRONG_CONFLICT"
+        }
+      }
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_175a477a1b54c46883e3a4dc79848a6308d2f6b6d8adedd2445b0c7fad15e67f",
+      "topic": "정사각형 겹침과 합동 넓이",
+      "primaryReason": "중심의 등거리와 대각선45°·수직 방향으로 ASA합동을 보이고 등적변형한 넓이를 구한다. native와3 CC/SEQUENTIAL을 유지한다.",
+      "axes": {
+        "rpmL1L4": "KEEP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+        "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "작도와 합동",
+          "L3": "삼각형의 합동",
+          "L4": "ASA 합동"
+        },
+        "effectiveParent": {
+          "L1": "기본 도형",
+          "L2": "작도와 합동"
+        }
+      },
+      "integrationReason": "주분류 외 실제 필요한 개념을 해설의 결정 단계와 대조하여 유지하였다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "reason": "숨은 합동삼각형을 선택해 빼고 더하는 넓이를 상쇄하는 비정형 구조화가 중심이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": true,
+      "registrationFingerprintGate": "MATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+      "sourceChanges": {}
+    }
+  ],
+  "proposals": [],
+  "contentDebt": [],
+  "raw4slot": {
+    "url": "https://drive.google.com/file/d/14PBS2j_SzWaiK07--LvcR952jAonLi2B/view?usp=drivesdk",
+    "fileId": "14PBS2j_SzWaiK07--LvcR952jAonLi2B",
+    "sha256": "a2d8e7db34ad3cedad4388d4f5427e0c8bd3421ab2c24a1725f224c37d2e3749",
+    "readbackVerified": true,
+    "originalSourceBlob": "37ea0edbc9cf0ca64eebe8e123d71a977183b004",
+    "protectedPayloadSame": true
+  },
+  "independent": [
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/independent/26_팔마중_2학기_중간_중1_기출.json",
+      "sha256": "2b1de13bed4a1d75136d153072547562bcfa9e8b0a3b3710cf17390b3100a63e",
+      "reviewer": "meta-a",
+      "status": "PASS_THREE_SAMPLES_AFTER_MINOR_CORRECTIONS"
+    },
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/independent/26_팔마중_2학기_중간_중1_기출-supplement-1.json",
+      "sha256": "d3210e8f51499c511ec7318c0f1f8125712730354fd86c4f0b9741f4907f26e6",
+      "reviewer": "GPT_ROOT_64695B8EDE31",
+      "status": "REVIEWED"
+    }
+  ],
+  "independentInputBinding": {
+    "status": "RAW_SOURCE_BLOB_FIELD_ONLY_REBOUND",
+    "reviewedRawSha256": "9e17e9fda2d18c8b276d5e1f6280851e2864c0fe27299916460088897cf0d147",
+    "currentRawSha256": "a2d8e7db34ad3cedad4388d4f5427e0c8bd3421ab2c24a1725f224c37d2e3749",
+    "priorSourceBlob": "f5764827a48ff4f644a3afd46aad2322d180074f",
+    "allQuotedItemsByteEquivalent": true
+  },
+  "validation": {
+    "syntax": "PASS",
+    "uidOrder": "PASS",
+    "protectedFieldChanges": 0,
+    "changedQuestions": 18,
+    "raw4slot": {
+      "fail": [],
+      "warn": [
+        "#1 only 4 distinct terms",
+        "#14 goal only 방법 terms",
+        "#15 only 4 distinct terms"
+      ],
+      "stats": {
+        "items": 24,
+        "examItems": 24,
+        "quotes": 182
+      }
+    },
+    "compactParity": "PASS",
+    "sourceBlobRebinding": "EXACT"
+  },
+  "scopeLimits": [
+    "No full mathematical R1/R2/R3 performed.",
+    "Shared registration, main merge and deployment are outside this stage."
+  ]
+}
