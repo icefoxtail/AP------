@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "m2-author-narrow-semantic-supplement-v1",
+  "examId": "E047",
+  "status": "ROOT_ACCEPTANCE_REQUIRED",
+  "createdAt": "2026-11-14T14:13:57.410718+00:00",
+  "originalReviewSha256": "01c063372640665ce0e0f412e5c486ced7220c22e1dc8973e2fd9d2a477020ac",
+  "originalFourSlotSha256": "00472e7fff324fd63f9b351f127e25a5d130f2d2c5fefe104c30add6e3062784",
+  "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E047.accepted-four-slot-candidate.json",
+  "acceptedFourSlotSha256": "cab3ee131de4e79960f64291af1c170c48e33c7f6d5139845bba13786c7f99b6",
+  "changes": [
+    {
+      "sourceOrdinal": 22,
+      "term": "합",
+      "before": {
+        "term": "합",
+        "termId": 286,
+        "src": "solution",
+        "quote": "(거리의 합) = (둘레 $1$바퀴)",
+        "evidenceType": "IMPLIED",
+        "justification": "반대방향첫만남의거리합을세운다."
+      },
+      "after": {
+        "term": "합",
+        "termId": 286,
+        "src": "solution",
+        "quote": "(거리의 합) = (둘레 $1$바퀴)",
+        "evidenceType": "NAMED"
+      }
+    },
+    {
+      "sourceOrdinal": 26,
+      "term": "미지수",
+      "before": {
+        "term": "미지수",
+        "termId": 745,
+        "src": "solution",
+        "quote": "십의 자리 숫자를 $x$, 일의 자리 숫자를 $y$로 놓고",
+        "evidenceType": "NAMED"
+      },
+      "after": {
+        "term": "미지수",
+        "termId": 745,
+        "src": "solution",
+        "quote": "십의 자리 숫자를 $x$, 일의 자리 숫자를 $y$로 놓고",
+        "evidenceType": "IMPLIED",
+        "justification": "해설이미지수라는명칭없이십의자리숫자와일의자리숫자를각각x,y로놓는단계를수행한다."
+      }
+    }
+  ],
+  "reviewOverrides": [
+    {
+      "sourceOrdinal": 4,
+      "after": {
+        "difficultyConfidence": "low"
+      },
+      "reason": "원문에서a,b가최적경계임을명시하지않은범위관례부채와confidence를일치시킨다. 숫자2/중/B12유지."
+    }
+  ],
+  "reviewItemUpdates": [
+    {
+      "sourceOrdinal": 22,
+      "merge": {
+        "after": {
+          "conditionKeys": [
+            "COND_INEQUALITY_CONSTRAINT"
+          ]
+        },
+        "semanticDecision": {
+          "conditionKeys": [
+            "COND_INEQUALITY_CONSTRAINT"
+          ],
+          "conditionDefinitions": [
+            {
+              "conditionKey": "COND_INEQUALITY_CONSTRAINT",
+              "definition": "둘 이상의 변수 사이에 제시된 대소 관계를 만족하는 값만 해 또는 경우로 인정한다.",
+              "status": "ACTIVE"
+            }
+          ]
+        },
+        "fieldReview": {
+          "condition": "A>B조건이거리차의방향과같은방향에서추월하는해의라벨을선택한다. ACTIVE변수사이부등식조건정의를실제읽고수용한다."
+        }
+      },
+      "reason": "A와B속력의대소관계가모델에서한변수의차방향을확정하고서로바뀐해를배제한다."
+    }
+  ],
+  "invariants": [
+    "All original author bytes/freeze/source unchanged; only named narrow evidence andcondition/confidence supplement."
+  ]
+}
