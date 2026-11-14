@@ -4,6 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {assetIdentity} from '../production/contracts.mjs';
 import fs from 'node:fs';
+import {validateSvgStudentLanguage} from '../../svg-language-contract.cjs';
 import {solveEllipseFigure,composeEllipseFigure,renderEllipseSvg,auditEllipseSvg,stopCurveLeaderShort,CURVE_LEADER_STOP,ellipseFigureSize,ellipseFigureSpec,ellipseLabelObstacles,placeLabels,validateEllipseFigurePlan,FIGURE_CAPABILITY} from '../production/ellipse-figure-v1.mjs';
 
 const identity=assetIdentity('22_매산고_1학기_중간_고2_기하와벡터_기출|18','SOLUTION_VISUAL','decisive-relation');
@@ -592,6 +593,13 @@ test('parabolic arch shows only the physical arc and its finite ground tangent',
   const {svg,spec}=await renderEllipseSvg({plan,model,identity,typographyPolicy:policy});
   assert.deepEqual(model.arch,{from:{exact:'-2',value:-2},to:{exact:'2',value:2},contactX:{exact:'1',value:1}});
   assert.deepEqual(spec.labels.map(label=>label.text),['A','B','C','h']);
+  assert.deepEqual(spec.labels.slice(0,3).map(label=>label.key),['point-A','point-B','point-C']);
+  for(const pid of ['A','B','C']){
+    assert.match(svg,new RegExp('<circle id="point-'+pid+'" data-role="point" data-point="'+pid+'"'));
+    assert.match(svg,new RegExp('<g id="label-point-'+pid+'"[^>]+data-owner="ellipse-point-'+pid+'" data-point="'+pid+'"'));
+  }
+  const language=validateSvgStudentLanguage(svg);
+  assert.equal(language.status,'PASS',JSON.stringify(language.errors));
   assert.doesNotMatch(svg,/data-role="(?:axis|axis-head|tick)"|id="point-T"|id="point-D"|id="line-base"/);
   assert.match(svg,/<desc id="visual-desc">포물선 호의 양 끝이 지면과 만나고, C에서 출발한 선분은 호에 접한다.<\/desc>/);
   const audit=await auditEllipseSvg({plan,svg});
@@ -605,7 +613,10 @@ test('parabolic arch shows only the physical arc and its finite ground tangent',
     [svg.replace('</desc>','</desc><line data-role="axis" x1="1" x2="2" y1="1" y2="1"/>'),'PARABOLIC_ARCH_COORDINATE_CUES'],
     [svg.replace('</desc>','</desc><g id="formula" data-label-kind="EQUATION_LABEL"/>'),'PARABOLIC_ARCH_UNDECLARED_LABEL'],
     [svg.replace(plan.accessibilityDescription,'설명 변경'),'PARABOLIC_ARCH_ACCESSIBLE_NAME_MISMATCH'],
-    [svg.replace(/(<g id="point-B"[^>]+transform="translate\()([\d.]+)/,(_,prefix,x)=>prefix+String(Number(x)-20)),
+    [svg.replace('id="label-point-A"','id="point-A"'),'PARABOLIC_ARCH_DUPLICATE_ID'],
+    [svg.replace('data-owner="ellipse-point-A" data-point="A"','data-owner="ellipse-point-B" data-point="A"'),
+      'PARABOLIC_ARCH_POINT_LABEL_OWNER_MISMATCH:A'],
+    [svg.replace(/(<g id="label-point-B"[^>]+transform="translate\()([\d.]+)/,(_,prefix,x)=>prefix+String(Number(x)-20)),
       'PARABOLIC_ARCH_GROUND_LABEL_DISPLACED:B'],
   ];
   for(const [changed,code] of bad){
