@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "m1-s2-independent-sample-review-v1",
+  "reviewer": "meta-a",
+  "author": "meta-c",
+  "sourceArchiveFile": "original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js",
+  "candidateSourceBlob": "92c9580da4d07090df5963967de4e51bc2682ffa",
+  "candidateSourceRawSha256": "67f373bdadb94197e65b3b23d08160653eef48573dffbd4acb1596385478b905",
+  "raw4slotSha256": "4a31da3941dac81fc1babcadcbe4135fdcdcd295b3d5bfc8c799c507bc3f798a",
+  "authorReviewSha256": "cfdef6eb0d667a58786f94533c04827f147cca9a8b3c46b2600ea1ea5c3587ee",
+  "sampled": [
+    4,
+    15,
+    23
+  ],
+  "status": "PASS_THREE_SAMPLES_AFTER_MINOR_CORRECTIONS",
+  "directReads": [
+    "current candidate content/choices/solution",
+    "all three original PNGs from current Git",
+    "official PT/TPL definitions and sibling alternatives",
+    "author raw4slot/review/proposals"
+  ],
+  "figureEvidence": [
+    {
+      "n": 4,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/24-yeonhyang-final-images/q4.png",
+      "sha256": "44fc5c1b35093591ca9528a2f358cdd439b589d4abaaa01e70708dee5cab3d99",
+      "gitPath": "archive/assets/images/24_연향중_2학기_기말_중1_기출/q4.png"
+    },
+    {
+      "n": 15,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/24-yeonhyang-final-images/q15.png",
+      "sha256": "03db14e41a3420ec67c13d8eb0b30735c92a708ce972bd39fab2c651ec565c46",
+      "gitPath": "archive/assets/images/24_연향중_2학기_기말_중1_기출/q15.png"
+    },
+    {
+      "n": 23,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/24-yeonhyang-final-images/q23.png",
+      "sha256": "a6e0b2a0318815e701e457e4013bd468df1e862637310e84ba7779ae4cdf344c",
+      "gitPath": "archive/assets/images/24_연향중_2학기_기말_중1_기출/q23.png"
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 4,
+      "verdict": "ACCEPT_EXISTING_TYPE_REUSE_WITH_DOCUMENTED_DEFINITION_DEBT",
+      "meaning": "고정 원형 자리의 학생을 꼭짓점에 대응하면 자신과 양옆을 뺀 악수 쌍은 비인접 꼭짓점쌍과 일대일이다. n(n-3)/2의 정확한 구조이므로 대각선 공식 기존 TPL 재사용을 수용한다. 원형 배열 순열이 아니며 일반 모든 두 사람 선택과도 제외 조건이 다르다.",
+      "native": "현재 PT/TPL 문장에 각으로 n을 먼저 정하는 사례 제한이 있어 C의 정의 일반화 proposal은 필요하고 타당하다.",
+      "difficulty": "중/2 유지",
+      "fourSlotCorrections": [
+        {
+          "slot": "given",
+          "operation": "ADD or replace generic 개수",
+          "term": "집단",
+          "src": "stem",
+          "quote": "$8$명의 학생",
+          "reason": "주어진 수학적 대상은 고정된 여덟 사람 집단이다. 원과 개수만으로 두면 상황의 대상이 충분히 드러나지 않는다."
+        }
+      ]
+    },
+    {
+      "ordinal": 15,
+      "verdict": "ACCEPT_DIFFICULTY_WITH_SMALL_METADATA_COMPLETIONS",
+      "difficulty": "상/3, confidence medium, B34 유지; BORDERLINE_ACCEPTABLE",
+      "meaning": "반지름 절반으로 한 구의 부피가1/8임을 얻어 개수를 정하고, 그 개수에 작은 구의 겉넓이를 곱해 전체 겉넓이비를 구한다. 두 측정량의 거듭제곱 관계를 구별해 순차 연결하는 표준 확장으로 bucket3이 타당하다.",
+      "native": "기존 SOLID_FIGURE_MEASURE/VOLUME_CONSERVATION의 핵심 부피등식은 재사용 가능하나 실제로 녹이거나 옮기지는 않는다. 별도 정의 정비 proposal에 명시된 부피등식에서 개수·치수 결정 후 후속 측정량으로 연결하는 범위를 기록해야 한다.",
+      "integrationRecommendation": "NONE: §8 primary taxonomy만으로 해결에 해당. 구의 부피/겉넓이 계산은 SOLID_FIGURE_MEASURE 내부이며 단순 계산의 순서만으로 SEQUENTIAL을 부여하지 않는다.",
+      "fourSlotCorrections": [
+        {
+          "slot": "goal",
+          "operation": "ADD",
+          "term": "개수",
+          "src": "stem",
+          "quote": "구 $a$개",
+          "reason": "a의 실제 목표가 작은 구의 개수임을 명시한다."
+        },
+        {
+          "slot": "goal",
+          "operation": "ADD",
+          "term": "겉넓이",
+          "src": "stem",
+          "quote": "겉넓이의 합",
+          "reason": "b가 나타내는 비의 실제 측정 대상은 합계 겉넓이이다."
+        }
+      ],
+      "definitionProposal": {
+        "kind": "ACTIVE_TEMPLATE_DEFINITION_NORMALIZATION",
+        "parentProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "existingTemplateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "definition": "입체 사이의 부피 보존 또는 주어진 부피의 같음을 등식으로 나타내 미지 개수·치수를 정하고 필요한 후속 측정량을 계산한다.",
+        "distinction": "부피 등식의 핵심을 보존하되 물리적 이동·녹임이 반드시 등장해야 한다는 제한을 제거한다."
+      }
+    },
+    {
+      "ordinal": 23,
+      "verdict": "ACCEPT_EXISTING_NET_TEMPLATE_REUSE",
+      "meaning": "원본 그림에 잘라낸 원뿔 모선5, 남은 모선5와 두 높이4가 모두 표시되어 있다. 추가 닮음 추론 없이 전체 모선10을 얻고, 밑면 원주와 전개도 호 길이의 일치로 중심각216 및 고리부채꼴 면적을 구한다.",
+      "native": "NET_MEASURE의 원주-호 대응 골격 재사용 및 원뿔대 포함 정의 일반화 proposal을 수용한다. FRUSTUM_SURFACE는 사다리꼴 옆면의 각뿔대여서 이전키 유지가 더 부정확하다.",
+      "difficulty": "상/4, medium B34 유지; 전개도 구성과 호 대응까지 요구",
+      "integration": "NONE 수용: 전개도 측정 primary의 내부 구조, 별도 닮음 CC 불필요",
+      "fourSlot": "PASS: 전개도/겉넓이 목표 및 원뿔대·호·축이 실제 특수 구조를 반영한다."
+    }
+  ],
+  "sourceModified": false,
+  "mathFullR1R2Performed": false,
+  "revision": 2,
+  "finalReadback": {
+    "changesDirectlyVerified": [
+      "Q4 given 집단",
+      "Q15 goal 개수·겉넓이",
+      "Q15 NONE and BORDERLINE_ACCEPTABLE",
+      "volume equality generalization proposal"
+    ],
+    "unresolvedSampleDefects": 0
+  }
+}
