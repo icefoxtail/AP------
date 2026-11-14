@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E008",
+  "examiner": "C",
+  "author": "B",
+  "sourceGitBlobSha": "9c94459ff2cb47b35124dde317b2740c2209b8cd",
+  "reviewSha256": "b64874928fdd7cb0d10be2fdfdd70ad5702aa229746012e9964667a016377918",
+  "fourSlotSha256": "f86df5e1994cee62e4f34f6ee38d7e0d346ae91a1da72a25caeac93f324824c8",
+  "ordinals": [
+    2,
+    12,
+    24
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_d92b55d7318b8e8f359c2261548c4332b8440a17cd9119378a716bffd2a24550",
+      "verdict": "REPAIR",
+      "quotesExact": true,
+      "quoteCount": 7,
+      "fourSlotCriticalDefect": false,
+      "reason": "그림의 FE∥GC, A/F/G 및 A/E/C 공선 관계가 명확하다. 평행선비를 작은 삼각형 AFE와 큰 AGC에 직접 쓰는 primary 및 bucket2 판단은 타당. 다만 기존 해설에는 각의 이등분선정리가 실제 사용되므로 현재 슬롯이 선택한 단축 경로라는 점을 분리 기록하고, condition의 일반 이등분선을 각이등분선으로 구체화한다.",
+      "repairs": [
+        {
+          "field": "slots.condition term 이등분선",
+          "repair": "각이등분선",
+          "quote": "$\\angle BAC$의 이등분선일 때"
+        },
+        {
+          "field": "reasons.method",
+          "repair": "평행선비만으로 필요한 목표가 결정되는 경로를 채택. 기존 해설의 각의 이등분선정리 경로는 별도 보조 경로이며 actual source에는 존재함을 기록."
+        }
+      ],
+      "imageViewed": "workers/B/images/E008-02.png"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_d2166d16084d91f47d3495bf24ee7c83721f0bf0691fac6df62bbf2dde93f515",
+      "verdict": "REPAIR",
+      "quotesExact": true,
+      "quoteCount": 5,
+      "fourSlotCriticalDefect": false,
+      "reason": "같은 선택쌍을 다르게 세는 것이 아니라 서로 다른 선택에서 같은 금액이 발생하여 결과집합을 합친다. PT_M2_BASIC_COUNTING_CASE_SPLIT의 배타적 경우 합산 및 TPL_H1_COUNTING_DIRECT_CASE 정의로는 겹치는 금액 제거를 대표하지 못하므로 NEW_PT 제안은 타당. 각 동전 최대3개라는 명시 상한은 4칸 condition에 보강 필요.",
+      "repairs": [
+        {
+          "field": "slots.condition",
+          "add": {
+            "term": "범위",
+            "src": "stem",
+            "quote": "100원짜리 동전 3개, 50원짜리 동전 3개"
+          }
+        }
+      ],
+      "imageViewed": null
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_677635b64a18059cfac192079c22842d239628580db6cbc622fc7152f3e0bf50",
+      "verdict": "PASS",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "fourSlotCriticalDefect": false,
+      "reason": "한 바퀴5칸과 화살표 A→B→C→D를 시각 확인했다. 목표 정점은 합의 나머지로 바뀌고 두 합의 순서쌍을 나누어 세므로 4칸 method·확률 primary·REINTERPRETATION 및 bucket3이 모두 타당. 현행 CC_PERIODICITY는 함수반복, CC_UNITS_DIGIT_PERIODICITY는 거듭제곱 일의자리, CC_PARITY_MODULAR_ARITHMETIC은 홀짝·제곱의 나머지에 한정되어 순환경로 새CC 제안은 필요하다.",
+      "repairs": [],
+      "imageViewed": "workers/B/images/E008-24.png"
+    }
+  ],
+  "overallStatus": "REPAIR",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "registryRead": [
+    "concept_registry.json: MODULAR/REMAINDER/PERIODIC/CYCLIC 관련 전체 정의",
+    "taxonomy_registry.json: distinct value/result 관련 이름 및 기존 제안 후보 실제 정의"
+  ],
+  "notes": [
+    "저자 파일을 직접 수정하지 않음. Q2 채택 경로와 기존 해설 경로의 차이는 기록상 분리 필요.",
+    "전체 시험지 독립 수학 검수로 확장하지 않음."
+  ]
+}
