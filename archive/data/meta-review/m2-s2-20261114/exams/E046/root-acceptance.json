@@ -1,0 +1,473 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E046",
+  "owner": "A",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "92d0b2d321e5b36d64cad1a66c7a71dbeee9384e",
+  "sourceSha256": "939a819ea85a287139e603c924891452881d1dfadfe49d5227d67e4c762df803",
+  "reviewSha256": "d734ef7d7684c7c3f904212c4aa0e60a80682f70fddea4fefc33b9264db4893e",
+  "fourSlotSha256": "6afbcd718e88d91c02c3e714ebda41acbafbb5d8665c593a1829731e3011635c",
+  "independentSampleSha256": "3f55f3606d7488a58a6fab2873cc40171f1e90aaa0288f96d30c9badbd960ebc",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_0d87a02b59f98a9f543e1be29489a0bc43e7febd4017d67d9bcba9b27fb62bf9",
+      "fields": [
+        "밑변 길이",
+        "최종 메타 및 난도 확정",
+        "difficultyBucket",
+        "level"
+      ]
+    }
+  ],
+  "sampleReviewer": "B",
+  "sampleOrdinals": [
+    9,
+    14,
+    18
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "d734ef7d7684c7c3f904212c4aa0e60a80682f70fddea4fefc33b9264db4893e",
+      "finalReviewSha256": "d734ef7d7684c7c3f904212c4aa0e60a80682f70fddea4fefc33b9264db4893e",
+      "independentSampleSha256": "3f55f3606d7488a58a6fab2873cc40171f1e90aaa0288f96d30c9badbd960ebc",
+      "adjudicatedCompatibilityOrdinals": [],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "관계의 입력·출력을 읽고 같은입력에 출력이하나인지를 비교하는 단순조건해석이 있어2/중 B12를 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "주어진 일차식에 두 지정수를 대입하고 일차결합만 계산하므로1/하를 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "상수·역수·이차식과 일차식의 정의를 직접대조하므로1/하를 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "x절편을 y=0으로 바꿔 계수에 대입하는 전처리 한 번이라2/중 B12를 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "실제그래프의 두절편에서 기울기를 읽어 x계수a와 대응한다. 그림판독 뒤 직접대입의2/중을 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "각 선행직선의 서로다른 축절편을 구해 두점직선식에 전달하는2/중을 수용한다. 다만 발문이주는 목표기울기는−3/2인데 모든보기는양수인 sourceHold를 별도유지한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_WITH_SOURCE_HOLD",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "감소방향과 음의y절편을 읽고 상수항−b에서 b의부호를 뒤집는 전처리로2/중을 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "명시된두점에서 직선식을 세우는 표준공식 직접적용이라1/하 후보를 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "100곡까지의 기본요금과 추가요금을 구분해 초과개수만500원으로 환산하므로2/중이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "교점의 x좌표와 y축절편의차를 밑변·높이로 사용한다. 선택이없는 표준그래프넓이 전처리이므로2/중이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "각 연립식의 상수항까지 같은배수인지를 직접대조한다. 미지계수추론이나 소거분기가 없어1/하이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "교점의한좌표를 알려진식에 넣고 그결과를 다른식의계수에 전달하는2/중이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "두직선교점의 y값을 수평선식 y=상수로 옮기는 익숙한순차구조라2/중이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 14,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "그림하단의 필수BC길이가 잘려 x를 정할 수 없다. 최종UNKNOWN을 유지하고 복원후1/하 후보를 승인값과 분리한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_UNRESOLVED",
+      "proposedLevel": "하",
+      "candidateLevelApproved": false
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "등변밑각44°와 외각의반68°를 차례로옮겨 목표각을 계산하는 표준추론이라2/중이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "본문과선지5장을 모두 보았다. 빗변10과예각40에 50°의여각을 맞추는 표준RHA 전처리로2/중이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "ADC와ADM의RHA와 M중점의수직이등분선 등거리라는 두 근거를 선택해 여러명제를 판단하므로3/중 B23이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "회전된 두수선삼각형의RHA를 찾아 AD↔BE,BD↔CE로 길이를옮긴 후 사다리꼴넓이를 구하므로3/중 B23이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "복원그림의 중심각110°에서 꼭지각을 직접정하는 외심기본성질이므로1/하이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "내심등거리·각이등분과 보장되지않는 합동을 구별하는2/중이다. 복원그림의 내심/수심처럼보이는 위상은 별도원본대조사항으로 남겼다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_WITH_SOURCE_HOLD",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "이등변·RHS·내외심의 기본진술을 정의에 직접대조하므로1/하이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "두원의둘레를 반지름R,r로바꾸고 빗변2R·내접반지름관계를 조합하여 넓이로옮기므로3/중 B23이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "수직이동을 상수항+3으로 고친 후 주어진점을 대입하는 전처리로2/중이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "기울기고정직선을 두끝점에 대입해 닫힌범위의 양경계를 구한다. 익숙한선분경계해석이므로2/중 B12이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 25,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "두시간·수위자료에서 선형변화율과초기수위를 정하고 목표높이에 역대입하는 표준모형으로2/중이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 26,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "외심등거리로 A각을복원하고 중심각과호길이를 순차대입한다. 기본전처리와 후속공식의2/중이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_CANDIDATE_FROM_STEM",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 1,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 2,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 3,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 4,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 5,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 6,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다. B 독립 읽기에서 첫 그래프의 x절편(-2,0),둘째 그래프의 y절편(0,-3)을 잇는 직선은 기울기 -3/2여야 하나 다섯 보기의 기울기가 모두 양수임을 확인했다. 학생 조건에 맞는 정답 보기가 없으며 source 선택지 복구가 필요하다. 메타·난도 골격 판단과 원문 선택지 품질 판정을 분리한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 7,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 8,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 9,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 10,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 11,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 12,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 13,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 14,
+      "reason": "q14 그림의 BC 아래 길이 표기가 하단에서 잘려 있고 발문에도 길이가 없다. x+y의 x를 정할 필수 근거가 결손이다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 15,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 16,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 17,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 18,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 19,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 20,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다. 복원그림에서 C-I-D,B-I-F,A-I-E가 각각 한 직선처럼 그려지고 D,E,F에 수선 표시가 있어 일반적인 내심과 수심 구성이 겹쳐 보인다. 그림의 정확한 위상 관계 원본 대조가 필요하며 이 시각 신호만으로 원문 오류를 확정하지 않는다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 21,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 22,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 23,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 24,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 25,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 26,
+      "reason": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "metadataJudgmentUnresolved": false
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}

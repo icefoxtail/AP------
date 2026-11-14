@@ -1,0 +1,3899 @@
+{
+  "schemaVersion": "m2-s2-meta-review-v1",
+  "examId": "E046",
+  "owner": "A",
+  "sourceArchiveFile": "original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "92d0b2d321e5b36d64cad1a66c7a71dbeee9384e",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewedQuestionCount": 26,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_7cdeb15bcdba6dacd7731a272138ae88ed7edc037375ce2e1058feb3131e243d",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "입력마다 출력의 유일성 판정",
+      "decisiveStep": "자연수에 대응하는 약수·나머지와 둘레에 대응하는 넓이·속력에 대응하는 거리를 각각 유일성으로 비교한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": ""
+      },
+      "after": {
+        "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
+        "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프 > 함수의 뜻과 판정 > None: 입력마다 출력의 유일성 판정",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "일상 관계의 입력과 출력을 구별한 뒤 하나의 입력에서 출력이 하나인지 판단한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "자연수에 대응하는 약수·나머지와 둘레에 대응하는 넓이·속력에 대응하는 거리를 각각 유일성으로 비교한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "definition": "함수의 정의에 따라 대응 또는 그래프가 함수인지 판정하는 문제 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "일상 관계의 입력과 출력을 구별한 뒤 하나의 입력에서 출력이 하나인지 판단한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "자연수에 대응하는 약수·나머지와 둘레에 대응하는 넓이·속력에 대응하는 거리를 각각 유일성으로 비교한다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E046-RPM-FUNCTION-MAPPING"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "일상 관계의 입력과 출력을 구별한 뒤 하나의 입력에서 출력이 하나인지 판단한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "일상 관계의 입력과 출력을 구별한 뒤 하나의 입력에서 출력이 하나인지 판단한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "함수의 뜻과 판정",
+          "l4": null
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "함수의 뜻과 판정",
+          "l4": null
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": ""
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_6da0adff2a1a88c971de606d2f11fbeefdf4d2dd2a3545c3f9db24ee4e9a3191",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-046",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "지정된 입력의 함숫값 대입",
+      "decisiveStep": "두 지정 입력의 함숫값을 각각 평가하고 요구한 일차결합을 계산한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyConfidence": "high"
+      },
+      "after": {
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프(1) > 일차함수의 뜻 > 함숫값: 지정된 입력의 함숫값 대입",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "주어진 함수식에 두 수를 직접 대입하는 반복이다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "두 지정 입력의 함숫값을 각각 평가하고 요구한 일차결합을 계산한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_FUNCTION_VALUE",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "definition": "주어진 함수식·대응·조각조건에서 특정 입력의 함숫값을 구하는 문제 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "주어진 함수식에 두 수를 직접 대입하는 반복이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "주어진 함수식에 두 수를 직접 대입하는 반복이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "하",
+        "reason": "주어진 함수식에 두 수를 직접 대입하는 반복이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-046",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-164",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyConfidence": "high"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_a0a4651bdeb4350d4500b4945ce9a5755a624e7bab81581c9bd146e444040119",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-047",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "일차함수 정의 판별",
+      "decisiveStep": "x의 일차식이며 x의 계수가 0이 아닌지 각 식을 비교한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyConfidence": "high"
+      },
+      "after": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프(1) > 일차함수의 뜻 > 일차함수 판별: 일차함수 정의 판별",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "상수·역수·이차식과 일차식을 정의에 직접 대조한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "x의 일차식이며 x의 계수가 0이 아닌지 각 식을 비교한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "상수·역수·이차식과 일차식을 정의에 직접 대조한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E046-LINEAR-FUNCTION-DEFINITION"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "상수·역수·이차식과 일차식을 정의에 직접 대조한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "하",
+        "reason": "상수·역수·이차식과 일차식을 정의에 직접 대조한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-047",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 뜻",
+          "l4": "일차함수 판별"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "일차함수 판별"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-165",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyConfidence": "high"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_f4f96526aefc26b131085aa32b472c7e2bdcbb0f45a8e20ba657e103fba2b334",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-048",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "x절편 좌표와 기울기로 y절편 결정",
+      "decisiveStep": "x절편을 y=0인 점으로 읽어 주어진 기울기의 식에 넣고 상수항을 정한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": ""
+      },
+      "after": {
+        "templateKey": "TPL_LINE_POINT_SLOPE",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프(1) > 일차함수의 그래프 > 기울기·절편: x절편 좌표와 기울기로 y절편 결정",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "x절편을 좌표로 바꾸는 한 번의 해석 후 계수를 결정한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "x절편을 y=0인 점으로 읽어 주어진 기울기의 식에 넣고 상수항을 정한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "definition": "주어진 점, 기울기, 평행·수직 조건 또는 선행 계산으로 얻은 정보를 이용하여 직선의 방정식을 결정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "x절편을 좌표로 바꾸는 한 번의 해석 후 계수를 결정한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "x절편을 좌표로 바꾸는 한 번의 해석 후 계수를 결정한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "x절편을 좌표로 바꾸는 한 번의 해석 후 계수를 결정한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-048",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-166",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": ""
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_573a4f268e264e1c815db1563584b8440e3dd6db58fda7ac965f4ff2ed6bbac8",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-048",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "그래프의 기울기 판독과 계수 대응",
+      "decisiveStep": "실제 그래프의 두 절편에서 기울기를 읽고 y=ax-1의 x계수와 같은 값으로 대응한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프(1) > 일차함수의 그래프 > 기울기·절편: 그래프의 기울기 판독과 계수 대응",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "그래프에서 두 점을 읽어 기울기로 바꾸는 과정이 선행된다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "실제 그래프의 두 절편에서 기울기를 읽고 y=ax-1의 x계수와 같은 값으로 대응한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "definition": "대칭성·위치관계·그래프의 형태 등 함수 그래프의 성질을 판정하는 문제 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "그래프에서 두 점을 읽어 기울기로 바꾸는 과정이 선행된다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "그래프에서 두 점을 읽어 기울기로 바꾸는 과정이 선행된다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "그래프에서 두 점을 읽어 기울기로 바꾸는 과정이 선행된다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-048",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-166",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/5.png",
+            "sha256": "23f30e9645974b4b802f0ba45c448178d09619a993a7a3fc3449992035f244d2"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b079f012abed58889db380322bc7079b81e54d958aa8cbcd72f2da1269c63f28",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-052",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 선행 직선의 축 위 교점으로 목표 직선 결정",
+      "decisiveStep": "첫 직선의 x절편과 둘째 직선의 y절편을 좌표로 정해 두 점을 지나는 직선을 세운다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "after": {
+        "templateKey": "TPL_LINE_MULTI_CONDITION",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프(2) > 식 구하기 > 두 점으로 식 구하기: 두 선행 직선의 축 위 교점으로 목표 직선 결정",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "축 위에서 만남을 절편 좌표로 바꾸고 두 점식에 적용하는 표준 전처리이다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "첫 직선의 x절편과 둘째 직선의 y절편을 좌표로 정해 두 점을 지나는 직선을 세운다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "definition": "주어진 점, 기울기, 평행·수직 조건 또는 선행 계산으로 얻은 정보를 이용하여 직선의 방정식을 결정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "축 위에서 만남을 절편 좌표로 바꾸고 두 점식에 적용하는 표준 전처리이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "축 위에서 만남을 절편 좌표로 바꾸고 두 점식에 적용하는 표준 전처리이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "축 위에서 만남을 절편 좌표로 바꾸고 두 점식에 적용하는 표준 전처리이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-052",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(2)",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-170",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다. B 독립 읽기에서 첫 그래프의 x절편(-2,0),둘째 그래프의 y절편(0,-3)을 잇는 직선은 기울기 -3/2여야 하나 다섯 보기의 기울기가 모두 양수임을 확인했다. 학생 조건에 맞는 정답 보기가 없으며 source 선택지 복구가 필요하다. 메타·난도 골격 판단과 원문 선택지 품질 판정을 분리한다.",
+      "sourceContentStatus": "SOURCE_NO_MATCHING_CHOICE_AND_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [],
+        "sourceChoiceConsistency": "NO_MATCHING_CHOICE"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_3f5d553442b5337725ad5ad6998cc30d019a1114f14b8c4cddbdc5c68cd99e2c",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-048",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "그래프의 감소와 y절편 부호 판독",
+      "decisiveStep": "그림에서 감소 방향과 음의 y절편을 읽고 식의 -b 부호를 b의 부호로 바꾼다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프(1) > 일차함수의 그래프 > 기울기·절편: 그래프의 감소와 y절편 부호 판독",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "그래프의 부호를 읽은 뒤 상수항이 -b라는 한 번의 부호 해석이 필요하다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "그림에서 감소 방향과 음의 y절편을 읽고 식의 -b 부호를 b의 부호로 바꾼다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "definition": "대칭성·위치관계·그래프의 형태 등 함수 그래프의 성질을 판정하는 문제 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "그래프의 부호를 읽은 뒤 상수항이 -b라는 한 번의 부호 해석이 필요하다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "그래프의 부호를 읽은 뒤 상수항이 -b라는 한 번의 부호 해석이 필요하다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "그래프의 부호를 읽은 뒤 상수항이 -b라는 한 번의 부호 해석이 필요하다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-048",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-166",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/7.png",
+            "sha256": "ee0c62a67aa1fe2efddfb50cc107b8efb0fbea6f7654c968ca289bbac963e881"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_624143ccac40227df0ce1e80e7c726e5eef67272affa4b4a0b9617f05394cd9c",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-052",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 점의 좌표 차로 직선식 결정",
+      "decisiveStep": "두 점에서 기울기를 구한 뒤 한 점을 대입해 상수항을 정한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "templateKey": "TPL_LINE_TWO_POINTS",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프(2) > 식 구하기 > 두 점으로 식 구하기: 두 점의 좌표 차로 직선식 결정",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "주어진 두 점을 두 점 직선식의 표준 절차에 바로 사용한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "두 점에서 기울기를 구한 뒤 한 점을 대입해 상수항을 정한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "definition": "주어진 점, 기울기, 평행·수직 조건 또는 선행 계산으로 얻은 정보를 이용하여 직선의 방정식을 결정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "주어진 두 점을 두 점 직선식의 표준 절차에 바로 사용한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "주어진 두 점을 두 점 직선식의 표준 절차에 바로 사용한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "하",
+        "reason": "주어진 두 점을 두 점 직선식의 표준 절차에 바로 사용한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-052",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(2)",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-170",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c7f87886eb0793d85692df35b30d2bcf1ee485acd84e7633a54f58451e86c8ab",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M1-RPM-048",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "기본요금과 초과 개수의 일차방정식",
+      "decisiveStep": "100곡을 넘는 곡 수에만 단가를 곱해 기본요금에 더하는 한 미지수 식을 세운다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "문자와 식 > 일차방정식의 활용 > 생활 속 관계식 > 요금·가격: 기본요금과 초과 개수의 일차방정식",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "무료 기준곡 수와 기본요금을 전체 개수에서 분리해 요금식을 구성해야 한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "100곡을 넘는 곡 수에만 단가를 곱해 기본요금에 더하는 한 미지수 식을 세운다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "definition": "수량 또는 속력·시간·거리 상황의 조건을 일차방정식으로 모델링한다.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "무료 기준곡 수와 기본요금을 전체 개수에서 분리해 요금식을 구성해야 한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "무료 기준곡 수와 기본요금을 전체 개수에서 분리해 요금식을 구성해야 한다."
+      },
+      "semanticSourceScope": "M1-1 선수 일차방정식 요금·가격",
+      "semanticScopeRelation": "시험지의 M2 소속과 UID는 유지하되 함수식 작성이 명시되지 않은 요금의 유일한 개수 결정을 실제 M1 요금방정식 선수 범위로 판정했다.",
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "무료 기준곡 수와 기본요금을 전체 개수에서 분리해 요금식을 구성해야 한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M1-RPM-048",
+        "effectivePath": {
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 활용",
+          "l3": "생활 속 관계식",
+          "l4": "요금·가격"
+        },
+        "basePath": {
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 활용",
+          "l3": "생활 속 관계식",
+          "l4": "요금·가격"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M1-RPM-161",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_02ba342085d4412c88c9345646c21892176c610700d3d55fcb923164ed4dcd21",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-058",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 직선 교점과 y축 절편의 삼각형 넓이",
+      "decisiveStep": "두 직선의 교점과 y축의 두 절편을 찾아 수직 밑변 길이와 수평 높이로 넓이를 정한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "after": {
+        "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 넓이: 두 직선 교점과 y축 절편의 삼각형 넓이",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "두 직선의 교점을 한 번 구한 뒤 좌표의 차를 삼각형 밑변·높이로 읽는다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "두 직선의 교점과 y축의 두 절편을 찾아 수직 밑변 길이와 수평 높이로 넓이를 정한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "definition": "함수 그래프와 점·선·거리·넓이·격자점 등 도형적 관계를 함께 분석하는 문제 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "두 직선의 교점을 한 번 구한 뒤 좌표의 차를 삼각형 밑변·높이로 읽는다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두 직선의 교점을 한 번 구한 뒤 좌표의 차를 삼각형 밑변·높이로 읽는다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "두 직선의 교점을 한 번 구한 뒤 좌표의 차를 삼각형 밑변·높이로 읽는다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-058",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-176",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_6338f5ec367bf7df1e9ecc12b4bbf8ef243411abdadf381ddcd7fe6f12837dbc",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-036",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 일차방정식의 동일성으로 무수히 많은 해 판정",
+      "decisiveStep": "각 연립식의 두 식이 상수항까지 동일한 비례배인지 비교한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2
+      },
+      "after": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "standardCourse": "중2 수학",
+        "standardUnit": "연립일차방정식",
+        "subUnit": "연립일차방정식",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1
+      },
+      "fieldReview": {
+        "classification": "연립일차방정식 > 연립일차방정식 > 해가 특수한 연립방정식 > 해가 없거나 무수히 많은 경우: 두 일차방정식의 동일성으로 무수히 많은 해 판정",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "수치가 단순한 식 두 개의 계수와 상수항을 직접 비교한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "각 연립식의 두 식이 상수항까지 동일한 비례배인지 비교한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "수치가 단순한 식 두 개의 계수와 상수항을 직접 비교한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E046-INFINITE-SOLUTIONS"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "수치가 단순한 식 두 개의 계수와 상수항을 직접 비교한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "하",
+        "reason": "수치가 단순한 식 두 개의 계수와 상수항을 직접 비교한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-036",
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "해가 없거나 무수히 많은 경우"
+        },
+        "basePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "해가 없거나 무수히 많은 경우"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-154",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_b83966c3fcf825feab1a03a4d5e7efe6f2a9158028e16714f6e97a932342e858",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-056",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "교점의 한 좌표 대입으로 나머지 좌표와 계수 결정",
+      "decisiveStep": "교점의 x좌표를 알려진 식에 넣어 y를 구하고 그 점을 다른 식에 대입해 a를 정한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": ""
+      },
+      "after": {
+        "templateKey": "",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 일차방정식의 관계 > 두 직선의 관계 > 교점과 연립방정식: 교점의 한 좌표 대입으로 나머지 좌표와 계수 결정",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "공통 교점의 의미로 알려진 식에서 다른 식으로 계산 결과를 한 번 전달한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "교점의 x좌표를 알려진 식에 넣어 y를 구하고 그 점을 다른 식에 대입해 a를 정한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "definition": "두 함수 또는 함수와 직선·절댓값 그래프의 교점 개수·위치·접함 조건을 구하는 문제 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "공통 교점의 의미로 알려진 식에서 다른 식으로 계산 결과를 한 번 전달한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E046-INTERSECTION-COEFFICIENT"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "공통 교점의 의미로 알려진 식에서 다른 식으로 계산 결과를 한 번 전달한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "공통 교점의 의미로 알려진 식에서 다른 식으로 계산 결과를 한 번 전달한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-056",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-174",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": ""
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_28f7b9c3c87ceca8615e522d22ddee7eae2c1c4d65771a1d9d4b9f519ba8211b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-055",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 직선 교점 후 수평선 방정식",
+      "decisiveStep": "주어진 두 직선의 교점 y좌표를 구하고 x축과 평행한 직선의 일정한 y값으로 사용한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": ""
+      },
+      "after": {
+        "templateKey": "TPL_LINE_MULTI_CONDITION",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "crossConceptKeys": [
+          "CC_LINEAR_SYSTEM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 일차방정식의 관계 > 방정식과 그래프 > x축·y축에 평행한 직선: 두 직선 교점 후 수평선 방정식",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "목표 수평선의 점을 얻기 위해 별도 두 직선을 연립하는 계산이 필수이다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "주어진 두 직선의 교점 y좌표를 구하고 x축과 평행한 직선의 일정한 y값으로 사용한다.",
+        "difficulty": "먼저 교점을 구한 뒤 수평선의 좌표 조건을 적용하는 익숙한 순차 절차이다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "주어진 두 직선의 교점 y좌표를 구하고 x축과 평행한 직선의 일정한 y값으로 사용한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "definition": "주어진 점, 기울기, 평행·수직 조건 또는 선행 계산으로 얻은 정보를 이용하여 직선의 방정식을 결정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "먼저 교점을 구한 뒤 수평선의 좌표 조건을 적용하는 익숙한 순차 절차이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "먼저 교점을 구한 뒤 수평선의 좌표 조건을 적용하는 익숙한 순차 절차이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "먼저 교점을 구한 뒤 수평선의 좌표 조건을 적용하는 익숙한 순차 절차이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-055",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "x축·y축에 평행한 직선"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "x축·y축에 평행한 직선"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-173",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": ""
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_0d87a02b59f98a9f543e1be29489a0bc43e7febd4017d67d9bcba9b27fb62bf9",
+      "verdict": "UNRESOLVED",
+      "rpmRecordId": "M2-RPM-061",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "꼭짓각 이등분선의 밑변 이등분과 밑각 관계",
+      "decisiveStep": "밑각68도와 꼭짓각 이등분으로 목표각을 정할 수 있지만 필요한 밑변 길이는 실제 그림에서 잘려 x는 확정되지 않는다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 이등변삼각형의 성질 > 꼭짓각의 이등분선: 꼭짓각 이등분선의 밑변 이등분과 밑각 관계",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "완전한 밑변 길이가 복원되면 등변삼각형의 각·중점 성질 직접 적용 후보이다. 현재 필수 길이 결손으로 최종 난도는 보류한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "밑각68도와 꼭짓각 이등분으로 목표각을 정할 수 있지만 필요한 밑변 길이는 실제 그림에서 잘려 x는 확정되지 않는다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "완전한 밑변 길이가 복원되면 등변삼각형의 각·중점 성질 직접 적용 후보이다. 현재 필수 길이 결손으로 최종 난도는 보류한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "필수 밑변 길이가 원본 그림 하단에서 잘려 x+y의 확정적 난도 및 완전 메타 판정을 보류한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "하",
+        "reason": "완전한 밑변 길이가 복원되면 등변삼각형의 각·중점 성질 직접 적용 후보이다. 현재 필수 길이 결손으로 최종 난도는 보류한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-061",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "이등변삼각형의 성질",
+          "l4": "꼭짓각의 이등분선"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "꼭짓각의 이등분선"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-178",
+        "projectionApplied": false
+      },
+      "sourceHold": "q14 그림의 BC 아래 길이 표기가 하단에서 잘려 있고 발문에도 길이가 없다. x+y의 x를 정할 필수 근거가 결손이다.",
+      "sourceContentStatus": "SOURCE_VISUAL_CROPPED_REQUIRED_LENGTH",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "unresolvedFields": [
+        "밑변 길이",
+        "최종 메타 및 난도 확정",
+        "difficultyBucket",
+        "level"
+      ],
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/14.png",
+            "sha256": "74ab74f75551b4d23858e8d651293dbbf245262ef4fe702f56984e193c52912e"
+          }
+        ]
+      },
+      "candidateDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "완전한 밑변 길이가 복원되면 등변삼각형의 각·중점 성질 직접 적용 후보이다. 현재 필수 길이 결손으로 최종 난도는 보류한다."
+      },
+      "metadataRegistrationStatus": "BLOCKED_SOURCE_EVIDENCE",
+      "candidateAfter": {
+        "difficultyBoundaryFlag": "NONE"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_82252c89c8d25376c1701b669d8eaf35a611616f487dd0c2bdbb9268ec16b8ad",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-060",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "등변삼각형의 밑각과 내·외각 이등분선 연결",
+      "decisiveStep": "같은 밑각을 정한 뒤 내각 이등분과 외각 이등분으로 삼각형 BCD의 각을 연결한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "after": {
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [
+          "CC_ANGLE_BISECTOR"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 이등변삼각형의 성질 > 밑각: 등변삼각형의 밑각과 내·외각 이등분선 연결",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "등변삼각형의 밑각 관계에 내각·외각 반각을 추가로 적용하여 목표각을 얻어야 한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "같은 밑각을 정한 뒤 내각 이등분과 외각 이등분으로 삼각형 BCD의 각을 연결한다.",
+        "difficulty": "밑각 관계에서 외각과 반각을 순차로 읽는 표준 각도 추론이다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "같은 밑각을 정한 뒤 내각 이등분과 외각 이등분으로 삼각형 BCD의 각을 연결한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "밑각 관계에서 외각과 반각을 순차로 읽는 표준 각도 추론이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "밑각 관계에서 외각과 반각을 순차로 읽는 표준 각도 추론이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "밑각 관계에서 외각과 반각을 순차로 읽는 표준 각도 추론이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-060",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-178",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/15.png",
+            "sha256": "be2dfbdc819be2eb18dbb2a3c84bab387a075c645204b45e953c3cf1715ea70c"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_21e378fa0356cee10d47972b8d172287a578765476d38db989b63c7095b3d308",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-071",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "직각삼각형의 빗변·예각 합동 판정",
+      "decisiveStep": "본문과 선지5개의 실제 그림에서 빗변10과 예각40 또는 그 여각50을 대응시킨다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "after": {
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 직각삼각형의 합동 > RHA: 직각삼각형의 빗변·예각 합동 판정",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "각 표기의 대응을 읽고 50도가 주어진 보기를 여각으로 전처리해 RHA를 확인한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "본문과 선지5개의 실제 그림에서 빗변10과 예각40 또는 그 여각50을 대응시킨다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "각 표기의 대응을 읽고 50도가 주어진 보기를 여각으로 전처리해 RHA를 확인한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "각 표기의 대응을 읽고 50도가 주어진 보기를 여각으로 전처리해 RHA를 확인한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "각 표기의 대응을 읽고 50도가 주어진 보기를 여각으로 전처리해 RHA를 확인한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-071",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-181",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/16.png",
+            "sha256": "9d876c7e6a6bbf98eae3bd52e9f81ce60aec4774f69a5c723c795975ed23129b"
+          },
+          {
+            "path": "workers/A/tmp/E046/16_1.png",
+            "sha256": "a8d6c03ac1fe33b987edecb64615feea0e585c5fef2b7eb2430ce2b75f49b134"
+          },
+          {
+            "path": "workers/A/tmp/E046/16_2.png",
+            "sha256": "7e73c1dfc3d1f0e4d612860dd21bedaaaab084ca21eacb7e01c0bc46cd9f7e7e"
+          },
+          {
+            "path": "workers/A/tmp/E046/16_3.png",
+            "sha256": "43cf7c7e4eed5bb60776b7df72db27135f2ebd6694891f18ed334045295a295c"
+          },
+          {
+            "path": "workers/A/tmp/E046/16_4.png",
+            "sha256": "a0e6caea1dec5a8a3dc1b0a6fd5cd70736fdfc2f11d9b0a0253ed81e1959c69b"
+          },
+          {
+            "path": "workers/A/tmp/E046/16_5.png",
+            "sha256": "8b64c29ba8d92e5e4196bda42a589318c66116615a047cbe631ca763443744ff"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_160d793ca6fe000522dbd713efe95ea7520433374d981f41d63707ac29258f28",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-071",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "RHA 합동과 수직이등분선 등거리 결합",
+      "decisiveStep": "각이등분선과 두 직각으로 ADC,ADM의 RHA를 확인하고 M이 AB 중점인 수직이등분선 조건을 추가해 선지들을 판정한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": ""
+      },
+      "after": {
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [
+          "CC_PERPENDICULAR_BISECTOR"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 직각삼각형의 합동 > RHA: RHA 합동과 수직이등분선 등거리 결합",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "RHA 결과 이외에 D가 AB의 수직이등분선 위라는 등거리 조건을 사용해야 AD=BD와 각 관계까지 검토된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "각이등분선과 두 직각으로 ADC,ADM의 RHA를 확인하고 M이 AB 중점인 수직이등분선 조건을 추가해 선지들을 판정한다.",
+        "difficulty": "두 보조삼각형의 합동 결과와 별도의 수직이등분선 등거리를 연결해 각·변 주장을 검토한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "각이등분선과 두 직각으로 ADC,ADM의 RHA를 확인하고 M이 AB 중점인 수직이등분선 조건을 추가해 선지들을 판정한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "두 보조삼각형의 합동 결과와 별도의 수직이등분선 등거리를 연결해 각·변 주장을 검토한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두 보조삼각형의 합동 결과와 별도의 수직이등분선 등거리를 연결해 각·변 주장을 검토한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "두 보조삼각형의 합동 결과와 별도의 수직이등분선 등거리를 연결해 각·변 주장을 검토한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-071",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-181",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": ""
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/17.png",
+            "sha256": "356a1582890a3f07949b153dd8fb265ac80e554d59cc1ad40331ee021cb49d5b"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_43ec334d5673152892288b212794b85fb8ef763f2bb01a1db8f8c1482f1574b9",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-071",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "직각이등변삼각형의 수선 투영 RHA와 넓이",
+      "decisiveStep": "B가 직선 l 위인 실제 그림에서 ABD와 BCE의 빗변·예각 대응을 찾아 밑변 길이를 옮긴 뒤 사다리꼴 넓이로 연결한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B34"
+      },
+      "after": {
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 직각삼각형의 합동 > RHA: 직각이등변삼각형의 수선 투영 RHA와 넓이",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "합동 밖의 사다리꼴 넓이 공식이 필수이나 현행 CC_TRAPEZOIDAL_AREA_PROPERTY는 확률밀도함수 전용이라 사용하지 않고 CC 후보를 제안한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "B가 직선 l 위인 실제 그림에서 ABD와 BCE의 빗변·예각 대응을 찾아 밑변 길이를 옮긴 뒤 사다리꼴 넓이로 연결한다.",
+        "difficulty": "회전한 두 수선 삼각형의 합동을 찾아 길이를 옮기고 사다리꼴 넓이에 사용하는 구조 선택이 필요하다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "B가 직선 l 위인 실제 그림에서 ABD와 BCE의 빗변·예각 대응을 찾아 밑변 길이를 옮긴 뒤 사다리꼴 넓이로 연결한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "회전한 두 수선 삼각형의 합동을 찾아 길이를 옮기고 사다리꼴 넓이에 사용하는 구조 선택이 필요하다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E046-TRAPEZOID-AREA-CC"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "회전한 두 수선 삼각형의 합동을 찾아 길이를 옮기고 사다리꼴 넓이에 사용하는 구조 선택이 필요하다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "회전한 두 수선 삼각형의 합동을 찾아 길이를 옮기고 사다리꼴 넓이에 사용하는 구조 선택이 필요하다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-071",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-181",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B34"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/18.png",
+            "sha256": "9f78243f48290cfd5ddf5eca53bf20ee55b2970f34f2eca27c7938412a0d5640"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_b0cc64f66f34a01b5b06515107ecd344ed178fcdacd872622c258560348083a3",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-065",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "외심의 중심각과 꼭지각 관계",
+      "decisiveStep": "실제 복원그림의 중심각 BOC와 이에 대응하는 A각을 외심 관계로 읽는다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 외심 > 외심의 위치·각: 외심의 중심각과 꼭지각 관계",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "그림의 중심각을 대응 꼭지각으로 직접 바꾸는 기본 성질 적용이다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "실제 복원그림의 중심각 BOC와 이에 대응하는 A각을 외심 관계로 읽는다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "그림의 중심각을 대응 꼭지각으로 직접 바꾸는 기본 성질 적용이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "그림의 중심각을 대응 꼭지각으로 직접 바꾸는 기본 성질 적용이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "하",
+        "reason": "그림의 중심각을 대응 꼭지각으로 직접 바꾸는 기본 성질 적용이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-065",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-185",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/19.png",
+            "sha256": "0fab9a0dc17c78a7081f82dd36bae4a87b0669e10827a52f91d186a8b5645d30"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_04cfbfd5fff0aab24b89da03afadab3cc9be4a57c22388f3b5ce1fdf8f00887a",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-067",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "내심의 등거리·각이등분 성질 진위 판정",
+      "decisiveStep": "내심에서 세 변까지의 수선거리와 각이등분 성질을 비교하고 서로 다른 꼭짓점의 직각삼각형 합동이 보장되는지 구별한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 내심 > 내심과 거리: 내심의 등거리·각이등분 성질 진위 판정",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "참인 등거리·반각과 보장되지 않는 합동을 구분하는 한 번의 조건 해석이 필요하다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "내심에서 세 변까지의 수선거리와 각이등분 성질을 비교하고 서로 다른 꼭짓점의 직각삼각형 합동이 보장되는지 구별한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "참인 등거리·반각과 보장되지 않는 합동을 구분하는 한 번의 조건 해석이 필요하다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "참인 등거리·반각과 보장되지 않는 합동을 구분하는 한 번의 조건 해석이 필요하다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "참인 등거리·반각과 보장되지 않는 합동을 구분하는 한 번의 조건 해석이 필요하다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-067",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "내심과 거리"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "내심과 거리"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-187",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다. 복원그림에서 C-I-D,B-I-F,A-I-E가 각각 한 직선처럼 그려지고 D,E,F에 수선 표시가 있어 일반적인 내심과 수심 구성이 겹쳐 보인다. 그림의 정확한 위상 관계 원본 대조가 필요하며 이 시각 신호만으로 원문 오류를 확정하지 않는다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/20.png",
+            "sha256": "5d9bd704e8bc46637987c5edf29b887fe0f6439d5a7b260d93d5fea555eb95b7"
+          }
+        ],
+        "visualTopologyReview": "IN_CENTER_ORTHOCENTER_ALIGNMENT_REVIEW_REQUIRED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_7d44d8050bb50cc8cc54a80e8249bde0c85915537fc5d401870727e76d483a0e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "삼각형 여러 기본 성질의 진위 판정",
+      "decisiveStep": "등변삼각형,직각삼각형 합동,내심 위치,직각삼각형 외심의 각 진술을 각 정의와 성질에 대조한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 삼각형 기본 성질의 종합 판정 > None: 삼각형 여러 기본 성질의 진위 판정",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "주어진 문장들이 각 기본 성질을 직접 묻고 새로운 구성이나 숨은 조건은 요구하지 않는다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "등변삼각형,직각삼각형 합동,내심 위치,직각삼각형 외심의 각 진술을 각 정의와 성질에 대조한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "주어진 문장들이 각 기본 성질을 직접 묻고 새로운 구성이나 숨은 조건은 요구하지 않는다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "등변삼각형,직각삼각형 합동,내심 위치,직각삼각형 외심의 각 진술을 각 정의와 성질에 대조한다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E046-TRIANGLE-PROPERTY-AUDIT"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "주어진 문장들이 각 기본 성질을 직접 묻고 새로운 구성이나 숨은 조건은 요구하지 않는다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "하",
+        "reason": "주어진 문장들이 각 기본 성질을 직접 묻고 새로운 구성이나 숨은 조건은 요구하지 않는다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "삼각형 기본 성질의 종합 판정",
+          "l4": null
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "삼각형 기본 성질의 종합 판정",
+          "l4": null
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_a399a62366462b694b82bef6fec9aaea7b8f8213c113150a08d346bd8b491099",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-069",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 원의 둘레를 반지름으로 바꿔 직각삼각형 넓이 결정",
+      "decisiveStep": "외접원·내접원 둘레에서 R,r을 구한 뒤 빗변=2R와 내심의 넓이·반둘레 관계를 연결한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B34"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 외접원·내접원 활용 > 외심·내심을 이용한 복합도형: 두 원의 둘레를 반지름으로 바꿔 직각삼각형 넓이 결정",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "주어진 두 원의 둘레를 반지름으로 먼저 환산해야 중심 성질을 사용할 수 있다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "외접원·내접원 둘레에서 R,r을 구한 뒤 빗변=2R와 내심의 넓이·반둘레 관계를 연결한다.",
+        "difficulty": "둘레에서 반지름으로 표현을 바꾸고 두 중심 관계로 변의 합과 넓이를 연결한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "외접원·내접원 둘레에서 R,r을 구한 뒤 빗변=2R와 내심의 넓이·반둘레 관계를 연결한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "둘레에서 반지름으로 표현을 바꾸고 두 중심 관계로 변의 합과 넓이를 연결한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "둘레에서 반지름으로 표현을 바꾸고 두 중심 관계로 변의 합과 넓이를 연결한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "둘레에서 반지름으로 표현을 바꾸고 두 중심 관계로 변의 합과 넓이를 연결한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-069",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "외심·내심을 이용한 복합도형"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "외심·내심을 이용한 복합도형"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-189",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B34"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/22.png",
+            "sha256": "c539c722092c19196107e6c00ca172e085b0a174890e44c6a7f7bfba8ac264b2"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_89ce2f1e07df93c9648f927f3aa540f16af3a71cfc84ee491b1ad8591d110147",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "직선의 수직 평행이동 후 통과점 조건",
+      "decisiveStep": "y축 방향 이동량을 상수항에 더한 식에 지정된 점을 대입해 기울기 계수를 정한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "templateKey": "TT_LINE_TRANSLATION_EQUATION",
+        "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프 > 그래프의 평행이동 > None: 직선의 수직 평행이동 후 통과점 조건",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "이동을 식으로 한 번 바꾸고 좌표를 대입하는 표준 절차이다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "y축 방향 이동량을 상수항에 더한 식에 지정된 점을 대입해 기울기 계수를 정한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "definition": "직선을 평행이동한 뒤 직선의 방정식이나 매개변수, 평행·수직·교점·접선 조건을 구하는 문제유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "이동을 식으로 한 번 바꾸고 좌표를 대입하는 표준 절차이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "y축 방향 이동량을 상수항에 더한 식에 지정된 점을 대입해 기울기 계수를 정한다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E046-RPM-VERTICAL-TRANSLATION"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "이동을 식으로 한 번 바꾸고 좌표를 대입하는 표준 절차이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "이동을 식으로 한 번 바꾸고 좌표를 대입하는 표준 절차이다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "그래프의 평행이동",
+          "l4": null
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "그래프의 평행이동",
+          "l4": null
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_fbaeb79fea323b8c9db925de29b39faa9601e559b72667f1c54f10826f43cde6",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "선분 양 끝점을 지나는 경계 직선",
+      "decisiveStep": "기울기를 고정하고 A와 B를 각각 지나는 상수항을 경계로 구하여 끝점 포함 범위를 정한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "after": {
+        "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+        "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > None: 선분 양 끝점을 지나는 경계 직선",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "한 선분과 만남을 두 끝점 통과라는 익숙한 경계 조건으로 바꾸며 추가 경우 분할이 없다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "기울기를 고정하고 A와 B를 각각 지나는 상수항을 경계로 구하여 끝점 포함 범위를 정한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "definition": "직선의 교점 존재 여부·위치, 선분·그래프·사분면과의 만남 또는 통과 조건을 구하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "한 선분과 만남을 두 끝점 통과라는 익숙한 경계 조건으로 바꾸며 추가 경우 분할이 없다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "기울기를 고정하고 A와 B를 각각 지나는 상수항을 경계로 구하여 끝점 포함 범위를 정한다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E046-RPM-SEGMENT-RANGE"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "한 선분과 만남을 두 끝점 통과라는 익숙한 경계 조건으로 바꾸며 추가 경우 분할이 없다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "한 선분과 만남을 두 끝점 통과라는 익숙한 경계 조건으로 바꾸며 추가 경우 분할이 없다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": null
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": null
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/24.png",
+            "sha256": "7b9e35b69b419f89ac36b543e338de8d760037e047902b9b89b166bf4b6ccdaf"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_e771fd31370858c473c495e7b602c1c48835f4da77710961b2ffdd1eadbd2424",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-059",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 시간·높이 관측으로 수위의 일차모형과 목표 시간",
+      "decisiveStep": "일정 유입량과 직육면체의 일정 밑면으로 수위가 시간의 일차함수임을 읽고 두 관측값으로 식을 정한 뒤 목표 높이에 대응하는 시간을 구한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "after": {
+        "templateKey": "",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "standardCourse": "중2 수학",
+        "standardUnit": "일차함수와 그래프",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 조건에 따른 식 결정: 두 시간·높이 관측으로 수위의 일차모형과 목표 시간",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "관측 두 점으로 표준 일차모형을 세우고 그 식을 한 번 역대입한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "일정 유입량과 직육면체의 일정 밑면으로 수위가 시간의 일차함수임을 읽고 두 관측값으로 식을 정한 뒤 목표 높이에 대응하는 시간을 구한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "definition": "주어진 점, 기울기, 평행·수직 조건 또는 선행 계산으로 얻은 정보를 이용하여 직선의 방정식을 결정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "관측 두 점으로 표준 일차모형을 세우고 그 식을 한 번 역대입한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E046-TANK-MODEL"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "관측 두 점으로 표준 일차모형을 세우고 그 식을 한 번 역대입한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "관측 두 점으로 표준 일차모형을 세우고 그 식을 한 번 역대입한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-059",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "조건에 따른 식 결정"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "조건에 따른 식 결정"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-177",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/25.png",
+            "sha256": "331ce16910200e1af5a040c24bfb7c1f1515f6b3f9a23ec93cbe877744b6a681"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 26,
+      "questionUid": "qid_v1_b8b0107adef9caa7fa9292ffc28b1a8ef8d0f63fb7ce7db4f9110537a57d1ef7",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-065",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "외심 반지름 등거리로 중심각 복원 후 호 길이",
+      "decisiveStep": "등거리 반지름으로 A각의 두 부분을 읽고 BOC 중심각을 정하여 반지름9의 부채꼴 호 길이와 연결한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B34"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 외심 > 외심의 위치·각: 외심 반지름 등거리로 중심각 복원 후 호 길이",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "외심 각 관계 밖에 중심각 비례에 따른 호 길이 공식이 필요하다. 현행 CC_CIRCLE_SECTOR_AREA는 넓이 전용이므로 호 길이 CC를 제안하고 해당 키는 쓰지 않는다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "등거리 반지름으로 A각의 두 부분을 읽고 BOC 중심각을 정하여 반지름9의 부채꼴 호 길이와 연결한다.",
+        "difficulty": "익숙한 외심 각 관계로 중심각을 복원하고 호 길이 공식에 순차 대입한다.",
+        "fourSlot": "원본 답·해설이 비어 있음을 확인했다. 실제 발문·선지·필요한 원본 그림에서 주어진 것과 목표를 읽고 방법은 명시된 조건에 대한 IMPLIED 후보로 한정했다."
+      },
+      "reason": "등거리 반지름으로 A각의 두 부분을 읽고 BOC 중심각을 정하여 반지름9의 부채꼴 호 길이와 연결한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_ASSIGNMENT_PENDING",
+          "reason": "익숙한 외심 각 관계로 중심각을 복원하고 호 길이 공식에 순차 대입한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E046-ARC-LENGTH-CC"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "익숙한 외심 각 관계로 중심각을 복원하고 호 길이 공식에 순차 대입한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "익숙한 외심 각 관계로 중심각을 복원하고 호 길이 공식에 순차 대입한다. 원본과 pending metadata에 level이 없어 이 값은 실제 요구 학습 부담을 읽은 신규 후보이며 승인값 복원이 아니다.",
+        "status": "ABSENT_IN_FROZEN_SOURCE_AND_METADATA",
+        "rawSourceLevel": null,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-065",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-185",
+        "projectionApplied": false
+      },
+      "sourceHold": "원본 answer와 solution이 모두 빈 문자열이다. 실제 기존 답·해설을 읽거나 검증할 수 없으며, 이 항의 방법과 메타는 발문·선지·직접 읽은 그림에 결속한 후보이다.",
+      "sourceContentStatus": "SOURCE_ANSWER_SOLUTION_ABSENT",
+      "conditionalMetadataJudgment": "CANDIDATE_FROM_STEM_CHOICES_AND_VISUALS_WITHOUT_ORIGINAL_ANSWER_OR_SOLUTION",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "standardCourse": null,
+        "standardUnit": null,
+        "subUnit": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": null,
+        "difficultyBoundaryFlag": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "standardCourse": "",
+        "standardUnit": "",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B34"
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerPresent": false,
+        "solutionPresent": false,
+        "solutionRead": false,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E046/26.png",
+            "sha256": "4e7a35067858ec0a1b2de44d6f03fa33889457938b9d5d1b31d10a7fa00f9aa1"
+          }
+        ]
+      }
+    }
+  ],
+  "topicSummary": [
+    {
+      "rpmL1": "일차함수",
+      "rpmL2": "일차함수와 그 그래프",
+      "ordinals": [
+        1,
+        23
+      ]
+    },
+    {
+      "rpmL1": "일차함수",
+      "rpmL2": "일차함수와 그 그래프(1)",
+      "ordinals": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ]
+    },
+    {
+      "rpmL1": "일차함수",
+      "rpmL2": "일차함수와 그 그래프(2)",
+      "ordinals": [
+        6,
+        8
+      ]
+    },
+    {
+      "rpmL1": "문자와 식",
+      "rpmL2": "일차방정식의 활용",
+      "ordinals": [
+        9
+      ]
+    },
+    {
+      "rpmL1": "일차함수",
+      "rpmL2": "일차함수와 일차방정식의 관계",
+      "ordinals": [
+        10,
+        12,
+        13,
+        24,
+        25
+      ]
+    },
+    {
+      "rpmL1": "연립일차방정식",
+      "rpmL2": "연립일차방정식",
+      "ordinals": [
+        11
+      ]
+    },
+    {
+      "rpmL1": "삼각형의 성질",
+      "rpmL2": "삼각형의 성질",
+      "ordinals": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        21
+      ]
+    },
+    {
+      "rpmL1": "삼각형의 성질",
+      "rpmL2": "삼각형의 외심과 내심",
+      "ordinals": [
+        19,
+        20,
+        22,
+        26
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "A-E046-RPM-FUNCTION-MAPPING",
+      "type": "RPM_LEAF_GAP",
+      "name": "대응의 함수 판정",
+      "definition": "일상 또는 수량 관계에서 하나의 입력에 출력이 하나로 정해지는지 판정한다.",
+      "parent": "M2 일차함수의 뜻",
+      "distinguishingCriteria": "함숫값 계산과 일차함수 여부 판정 이전의 함수 정의 자체를 묻는다.",
+      "existingCandidatesReviewed": [
+        "M2-RPM-046",
+        "M2-RPM-047"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_7cdeb15bcdba6dacd7731a272138ae88ed7edc037375ce2e1058feb3131e243d"
+      ]
+    },
+    {
+      "id": "A-E046-LINEAR-FUNCTION-DEFINITION",
+      "type": "NEW_PT_TPL",
+      "name": "일차함수의 단독 판별",
+      "definition": "식이 y=ax+b,a≠0 꼴인지 비교하여 일차함수인 것을 고른다.",
+      "parent": "M2-RPM-047",
+      "distinguishingCriteria": "함수 개수와 일차함수 개수를 함께 세는 현행 PT/TPL과 달리 일차함수 정의 하나만 판정한다.",
+      "existingCandidatesReviewed": [
+        "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+        "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a0a4651bdeb4350d4500b4945ce9a5755a624e7bab81581c9bd146e444040119"
+      ]
+    },
+    {
+      "id": "A-E046-INFINITE-SOLUTIONS",
+      "type": "NEW_PT_TPL",
+      "name": "주어진 연립방정식의 무수히 많은 해 판정",
+      "definition": "수치가 주어진 두 식의 계수와 상수항의 공통 배수 여부를 비교하여 동일한 식인 연립방정식을 고른다.",
+      "parent": "M2-RPM-036",
+      "distinguishingCriteria": "미지 계수를 결정하는 무해 조건 유형과 다르고 목표는 주어진 식의 해 상태 판정이다.",
+      "existingCandidatesReviewed": [
+        "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+        "PT_H1_SYSTEM_EQUATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_6338f5ec367bf7df1e9ecc12b4bbf8ef243411abdadf381ddcd7fe6f12837dbc"
+      ]
+    },
+    {
+      "id": "A-E046-INTERSECTION-COEFFICIENT",
+      "type": "NEW_TPL",
+      "name": "교점 한 좌표를 통한 미지 계수 결정",
+      "definition": "두 직선 교점의 한 좌표를 계수가 알려진 식에 대입하고 얻은 다른 좌표를 미지 계수 식에 대입한다.",
+      "parent": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "distinguishingCriteria": "두 계수가 모두 주어진 교점 직접 계산,한 직선의 두 별도 점을 순차 대입하는 현행 TPL과 다르다.",
+      "existingCandidatesReviewed": [
+        "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_b83966c3fcf825feab1a03a4d5e7efe6f2a9158028e16714f6e97a932342e858"
+      ]
+    },
+    {
+      "id": "A-E046-TRAPEZOID-AREA-CC",
+      "type": "NEW_CC",
+      "name": "평행한 두 변과 높이로 사다리꼴 넓이",
+      "definition": "평행한 두 변 길이의 합에 그 사이 거리를 곱한 절반으로 평면 사다리꼴의 넓이를 계산한다.",
+      "parent": "평면도형의 넓이",
+      "distinguishingCriteria": "현행 CC_TRAPEZOID는 대상 정의만,CC_TRAPEZOIDAL_AREA_PROPERTY는 확률밀도함수의 전체넓이1에 한정된다.",
+      "existingCandidatesReviewed": [
+        "CC_TRAPEZOID",
+        "CC_TRAPEZOIDAL_AREA_PROPERTY"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_43ec334d5673152892288b212794b85fb8ef763f2bb01a1db8f8c1482f1574b9"
+      ]
+    },
+    {
+      "id": "A-E046-TRIANGLE-PROPERTY-AUDIT",
+      "type": "RPM_PT_TPL_GAP",
+      "name": "삼각형 기본 성질 종합 진위",
+      "definition": "등변삼각형의 성질,직각삼각형 합동,내심·외심의 위치를 각각 직접 판정한다.",
+      "parent": "M2 삼각형의 성질",
+      "distinguishingCriteria": "한 중심의 성질 또는 한 합동 골격으로 모든 선지를 정당화할 수 없고 문제 목표가 독립 기본명제들의 참거짓 비교이다.",
+      "existingCandidatesReviewed": [
+        "TPL_TRIANGLE_CENTERS_SEMANTIC",
+        "TPL_ISOSCELES_BASE_ANGLES",
+        "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_7d44d8050bb50cc8cc54a80e8249bde0c85915537fc5d401870727e76d483a0e"
+      ]
+    },
+    {
+      "id": "A-E046-RPM-VERTICAL-TRANSLATION",
+      "type": "RPM_LEAF_GAP",
+      "name": "일차함수 수직이동식의 계수 결정",
+      "definition": "일차함수를 수직이동한 식에 통과점을 대입하여 계수를 구한다.",
+      "parent": "M2 일차함수와 그 그래프",
+      "distinguishingCriteria": "현행 RPM049 그래프 그리기나 050 평행·일치는 이동량을 식에 반영하는 결정을 정확히 구분하지 않는다.",
+      "existingCandidatesReviewed": [
+        "M2-RPM-049",
+        "M2-RPM-050"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_89ce2f1e07df93c9648f927f3aa540f16af3a71cfc84ee491b1ad8591d110147"
+      ]
+    },
+    {
+      "id": "A-E046-RPM-SEGMENT-RANGE",
+      "type": "RPM_LEAF_GAP",
+      "name": "매개변수 직선과 선분의 교차 범위",
+      "definition": "주어진 선분의 양 끝점을 지나는 경계 직선으로 매개변수의 닫힌 구간을 구한다.",
+      "parent": "M2 일차함수 그래프 활용",
+      "distinguishingCriteria": "교점 직접 계산 또는 조건에 따른 단일 식 결정이 아니라 선분과 만나는 매개변수 범위이다.",
+      "existingCandidatesReviewed": [
+        "M2-RPM-056",
+        "M2-RPM-059"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_fbaeb79fea323b8c9db925de29b39faa9601e559b72667f1c54f10826f43cde6"
+      ]
+    },
+    {
+      "id": "A-E046-TANK-MODEL",
+      "type": "NEW_TPL",
+      "name": "두 관측으로 일정 수위 증가 모형과 목표 시간",
+      "definition": "일정 유입량의 직육면체 수조에서 두 시간·수위 관측으로 일차식을 세우고 목표 수위가 되는 시간을 역으로 구한다.",
+      "parent": "PT_LINE_EQUATION",
+      "distinguishingCriteria": "단순 두 점 직선식 이후 시간 목표까지 포함하며,현행 온도·고도 TPL의 구체 모형을 수조에 임의 확대하지 않는다.",
+      "existingCandidatesReviewed": [
+        "TPL_LINE_TWO_POINTS",
+        "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_e771fd31370858c473c495e7b602c1c48835f4da77710961b2ffdd1eadbd2424"
+      ]
+    },
+    {
+      "id": "A-E046-ARC-LENGTH-CC",
+      "type": "NEW_CC",
+      "name": "반지름과 중심각으로 호의 길이",
+      "definition": "원 둘레에 중심각/360의 비율을 곱해 부채꼴의 호 길이를 구한다.",
+      "parent": "원과 부채꼴",
+      "distinguishingCriteria": "현재 CC_CIRCLE_SECTOR_AREA는 부채꼴 넓이만 정의하며 CC_CIRCLE_CIRCUMFERENCE는 원 전체의 둘레·넓이이다.",
+      "existingCandidatesReviewed": [
+        "CC_CIRCLE_SECTOR_AREA",
+        "CC_CIRCLE_CIRCUMFERENCE"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_b8b0107adef9caa7fa9292ffc28b1a8ef8d0f63fb7ce7db4f9110537a57d1ef7"
+      ]
+    }
+  ],
+  "notes": [
+    "전26항 발문·선지,원본의 빈 answer/solution/level을 각각 확인했다. 원본 답·해설 읽기를 완료했다고 주장하지 않는다.",
+    "본문그림13개와 Q16선지5개를 실제 열어 읽었다. q19/q20는 frozen source가 지시하는 restored-20261105 파일을 읽었다.",
+    "Q14 밑변 길이의 잘린 하단은 복원하지 않고 UNRESOLVED로 남긴다. 전항의 하중상 값은 신규 제안이고 원본 누락을 단순 bucket 환산으로 채우지 않았다.",
+    "source/정답/해설/공통 registry는 변경하지 않았고 공식 Resolver 등록 또는 독립 수학 검증 승인으로 주장하지 않는다."
+  ],
+  "sourceEvidenceSummary": {
+    "answerMissing": 26,
+    "solutionMissing": 26,
+    "levelMissing": 26,
+    "visualInsufficientOrdinals": [
+      14
+    ],
+    "methodEvidencePolicy": "발문·선지·actual 그림에서 읽은 방법 후보만 IMPLIED로 기록"
+  }
+}

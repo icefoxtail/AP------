@@ -1,0 +1,1606 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "92d0b2d321e5b36d64cad1a66c7a71dbeee9384e",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "/root/m2_a",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_7cdeb15bcdba6dacd7731a272138ae88ed7edc037375ce2e1058feb3131e243d",
+      "fingerprints": {
+        "QBODY": "4e80ee36b4d0c023312206a1df81b41d15159929a925d6efa5b05215a190e733",
+        "QFULL": "513f6a0516345dfc2af0cf45a32472ce6e19dba0a3575f07c24a527842042cf3"
+      },
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수인 것을"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "모두 고른 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수인 것을",
+            "evidenceType": "IMPLIED",
+            "justification": "각 관계를 입력 하나에 출력 하나인 함수의 정의로 판정하는 방법을 발문에서 읽었다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $x$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "입력마다 출력의 유일성 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "자연수에 대응하는 약수·나머지와 둘레에 대응하는 넓이·속력에 대응하는 거리를 각각 유일성으로 비교한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_6da0adff2a1a88c971de606d2f11fbeefdf4d2dd2a3545c3f9db24ee4e9a3191",
+      "fingerprints": {
+        "QBODY": "15a29519e5e9ff56aeed97358609151428858d71508d98a9e8ad5d26a9e07100",
+        "QFULL": "816bb07c645fc95050ba23b86c87cf253abeaa95c9b5360d65492c8bfc91e727"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x) = -x + 3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(-2) + 3f(1)$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "$f(-2) + 3f(1)$",
+            "evidenceType": "IMPLIED",
+            "justification": "함수 기호의 괄호 안 입력을 정의식의 x에 각각 대입해야 한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "지정된 입력의 함숫값 대입",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "두 지정 입력의 함숫값을 각각 평가하고 요구한 일차결합을 계산한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_a0a4651bdeb4350d4500b4945ce9a5755a624e7bab81581c9bd146e444040119",
+      "fingerprints": {
+        "QBODY": "ebd015913299d48a293bdcb69a354b1331b2f68b5ca49e272ccaa845be760600",
+        "QFULL": "557fb716d9cec60257c9993d3e67d4dae143cfae4f5ce8ac79456d94ae4bc84d"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수인 것은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "일차함수인 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수인 것은",
+            "evidenceType": "IMPLIED",
+            "justification": "일차함수 y=ax+b, a≠0의 정의로 보기 식을 분류하는 방법이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "일차함수 정의 판별",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "x의 일차식이며 x의 계수가 0이 아닌지 각 식을 비교한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_f4f96526aefc26b131085aa32b472c7e2bdcbb0f45a8e20ba657e103fba2b334",
+      "fingerprints": {
+        "QBODY": "826e666f3ab7410b0eb844ba7b45a76ebb37cacc10158c87c5ea94d66ce82726",
+        "QFULL": "baa4a350bf633a98ed8b6fc36553a6705a035fc636cb2470a32dbc3f2e88d672"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y = -2x + b$"
+          },
+          {
+            "term": "x절편",
+            "src": "stem",
+            "quote": "$x$절편이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "y절편",
+            "src": "stem",
+            "quote": "$y$절편을 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "$x$절편이 $\\dfrac{5}{2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "x절편의 좌표 (5/2,0)을 주어진 직선식에 대입하는 방법이다."
+          },
+          {
+            "term": "y절편",
+            "src": "stem",
+            "quote": "$y$절편을 구하면",
+            "evidenceType": "IMPLIED",
+            "justification": "일차함수의 상수항 b가 y절편인 성질을 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "x절편 좌표와 기울기로 y절편 결정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "x절편을 y=0인 점으로 읽어 주어진 기울기의 식에 넣고 상수항을 정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_573a4f268e264e1c815db1563584b8440e3dd6db58fda7ac965f4ff2ed6bbac8",
+      "fingerprints": {
+        "QBODY": "594f2103c00cd57937eb94cc7414cc812673f7797283d69cce0b7b76096565b8",
+        "QFULL": "6aa4cd21b0bb42727243c63a8651c43f827046661b7c7cab0e7863aa71a104ef"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수의 그래프"
+          },
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "기울기가 서로 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "기울기가 서로 같을 때",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 그림의 (0,3),(1,0)을 읽어 변화량의 비를 구하고 그 기울기를 a로 옮긴다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "그래프의 기울기 판독과 계수 대응",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "실제 그래프의 두 절편에서 기울기를 읽고 y=ax-1의 x계수와 같은 값으로 대응한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b079f012abed58889db380322bc7079b81e54d958aa8cbcd72f2da1269c63f28",
+      "fingerprints": {
+        "QBODY": "50f45c2b9df21feb1c5a38d2c2105f99efebf446ca2c84ebbe9e5d21e080d845",
+        "QFULL": "f88894ed9cb76d145004e8b92d010b54de534166ff7e51453fe95a9ea280edce"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y = \\dfrac{1}{2}x + 1$"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "$x$축에서 만나고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수의 식을 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "x절편",
+            "src": "stem",
+            "quote": "$x$축에서 만나고",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 그래프의 y=0인 점을 읽는다."
+          },
+          {
+            "term": "y절편",
+            "src": "stem",
+            "quote": "$y$축에서 만나는",
+            "evidenceType": "IMPLIED",
+            "justification": "둘째 그래프의 x=0인 점을 읽는다."
+          },
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "만나는 직선을 그래프로 하는",
+            "evidenceType": "IMPLIED",
+            "justification": "그 두 점의 좌표 차로 기울기를 구해 목표 식을 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "두 선행 직선의 축 위 교점으로 목표 직선 결정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "첫 직선의 x절편과 둘째 직선의 y절편을 좌표로 정해 두 점을 지나는 직선을 세운다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_3f5d553442b5337725ad5ad6998cc30d019a1114f14b8c4cddbdc5c68cd99e2c",
+      "fingerprints": {
+        "QBODY": "713eced2d6e502bcb4896d52bfcef90cd574d6dadb8a651d22619d08632a01af",
+        "QFULL": "aa920463da62586bf539faa401949664937a3fa5d0fbf714187fbaed744513c7"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y = ax - b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "$a$와 $b$의 부호"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "그래프가 오른쪽 그림과 같을 때",
+            "evidenceType": "IMPLIED",
+            "justification": "오른쪽 아래로 내려가는 실제 그래프에서 음의 기울기를 읽는다."
+          },
+          {
+            "term": "y절편",
+            "src": "stem",
+            "quote": "$y = ax - b$",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 음의 y절편이 -b이므로 b의 부호를 반대로 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "그래프의 감소와 y절편 부호 판독",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "그림에서 감소 방향과 음의 y절편을 읽고 식의 -b 부호를 b의 부호로 바꾼다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_624143ccac40227df0ce1e80e7c726e5eef67272affa4b4a0b9617f05394cd9c",
+      "fingerprints": {
+        "QBODY": "568013f6a6a19a5bacf1cab11ba4bb879e155c9989e0eff8ae731252f3937024",
+        "QFULL": "7a8029a845bdbb51d4a169d3934ff30bb5c623b0144ebc2162f2bd0e9c41b423"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "두 점 $(1, 1)$, $(4, -2)$"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "지나는 직선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수의 식을 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "두 점 $(1, 1)$, $(4, -2)$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 점의 y좌표 차와 x좌표 차의 비로 기울기를 정한다."
+          },
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "지나는 직선",
+            "evidenceType": "IMPLIED",
+            "justification": "그 직선 위의 한 점을 y=ax+b에 대입해 상수항을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "두 점의 좌표 차로 직선식 결정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "두 점에서 기울기를 구한 뒤 한 점을 대입해 상수항을 정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c7f87886eb0793d85692df35b30d2bcf1ee485acd84e7633a54f58451e86c8ab",
+      "fingerprints": {
+        "QBODY": "0fcc1e52321ee6dbc5cc7e06b743e7925e04de1ff9f1772f67f25437a55311fd",
+        "QFULL": "673a79c830300d63273437220f6abc90065c110d33a442d8d1228891883c731b"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "기본요금 7000원"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "100곡까지"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "음악 파일은 몇 곡"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "100곡을 초과하는 경우 1곡당 500원씩",
+            "evidenceType": "IMPLIED",
+            "justification": "총 곡 수를 미지수로 두고 7000+500(총 곡 수-100)=11000으로 모델링한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "100곡을 초과하는 경우"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "기본요금과 초과 개수의 일차방정식",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "100곡을 넘는 곡 수에만 단가를 곱해 기본요금에 더하는 한 미지수 식을 세운다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_02ba342085d4412c88c9345646c21892176c610700d3d55fcb923164ed4dcd21",
+      "fingerprints": {
+        "QBODY": "89d31af76e280f082d343fccd42461ba6de113a35ac93aa765f50312cf9844f3",
+        "QFULL": "c9e392a5a907408ae217bae7f8c5025cbad0cc4e32c0321e47ce4c17665ff02c"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "세 직선"
+          },
+          {
+            "term": "도형",
+            "src": "stem",
+            "quote": "둘러싸인 도형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "도형의 넓이를 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "세 직선 $y = -x - 3$, $y = \\dfrac{1}{4}x + 2$, $x = 0$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 비수직 직선을 연립해 공통 교점을 구한다."
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "둘러싸인 도형의 넓이",
+            "evidenceType": "IMPLIED",
+            "justification": "x=0 위 절편 차가 밑변, 교점의 x좌표 절댓값이 높이인 삼각형이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "두 직선 교점과 y축 절편의 삼각형 넓이",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "두 직선의 교점과 y축의 두 절편을 찾아 수직 밑변 길이와 수평 높이로 넓이를 정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_6338f5ec367bf7df1e9ecc12b4bbf8ef243411abdadf381ddcd7fe6f12837dbc",
+      "fingerprints": {
+        "QBODY": "fc1b3c13b0e385a4a7165315ba964774314c6baad6661f178826175b8dd1f5e8",
+        "QFULL": "57b9460ba87e8caf7228589ed9b278f05543d226b1ad63b395f13b6b9fd21307"
+      },
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "다음 연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "해가 무수히 많은 것을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례",
+            "src": "stem",
+            "quote": "해가 무수히 많은",
+            "evidenceType": "IMPLIED",
+            "justification": "미지수 계수와 상수항이 모두 같은 배수일 때 두 식이 일치한다는 조건을 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "두 일차방정식의 동일성으로 무수히 많은 해 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "각 연립식의 두 식이 상수항까지 동일한 비례배인지 비교한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_b83966c3fcf825feab1a03a4d5e7efe6f2a9158028e16714f6e97a932342e858",
+      "fingerprints": {
+        "QBODY": "4a7e48efed83bd3399d198837c0a0224efb5c349f773aa95e380d7db0a5cd813",
+        "QFULL": "39aea25d9b4c3d75a9ac4eaa14c2986b6e67b2296c40c953dfd6fccb22c5086c"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "그래프의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "교점의 $x$좌표가 3",
+            "evidenceType": "IMPLIED",
+            "justification": "x=3을 계수가 완전한 두 번째 식에 대입하고 나온 y를 첫 번째 식에 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "교점의 한 좌표 대입으로 나머지 좌표와 계수 결정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "교점의 x좌표를 알려진 식에 넣어 y를 구하고 그 점을 다른 식에 대입해 a를 정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_28f7b9c3c87ceca8615e522d22ddee7eae2c1c4d65771a1d9d4b9f519ba8211b",
+      "fingerprints": {
+        "QBODY": "c1af8fafd2a0280d68b2b41fb971822879e474087ee0aebde4398728d55f10e7",
+        "QFULL": "f13c83613ff98739014388cb9ebd5dec162682e1dda537fec12c427ac8589a2c"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 직선"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점을 지나고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "직선의 방정식은"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "두 직선 $2x - y - 3 = 0$, $x - 3y + 1 = 0$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 식을 동시에 만족하는 교점 좌표를 정한다."
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$x$축에 평행한",
+            "evidenceType": "IMPLIED",
+            "justification": "수평선의 y좌표가 일정하다는 성질로 식을 세운다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$x$축에 평행한"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "두 직선 교점 후 수평선 방정식",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "주어진 두 직선의 교점 y좌표를 구하고 x축과 평행한 직선의 일정한 y값으로 사용한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_0d87a02b59f98a9f543e1be29489a0bc43e7febd4017d67d9bcba9b27fb62bf9",
+      "fingerprints": {
+        "QBODY": "dc15ecde1c7ba6929f8f3ae8387f3f5f7add6d0ced22b2cf73b0ae0ba42a0da9",
+        "QFULL": "427522b8109c1c32ff4b5d104abcdeccbf218e07447e808f02627b5e83d14531"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선과"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이를 $x"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기를 $y"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "이등분선과 $\\overline{\\text{BC}}$의 교점",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓각 이등분선이 밑변을 이등분하는 성질을 적용할 후보이다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 그림의 68도 밑각에서 꼭짓각과 그 절반을 구할 후보이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선과"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "꼭짓각 이등분선의 밑변 이등분과 밑각 관계",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "밑각68도와 꼭짓각 이등분으로 목표각을 정할 수 있지만 필요한 밑변 길이는 실제 그림에서 잘려 x는 확정되지 않는다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "PARTIAL_SOURCE_EVIDENCE",
+      "unresolvedFields": [
+        "필수 밑변 길이",
+        "답과 해설"
+      ]
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_82252c89c8d25376c1701b669d8eaf35a611616f487dd0c2bdbb9268ec16b8ad",
+      "fingerprints": {
+        "QBODY": "588c906dff58c4b6e3065d2d44541026605cfe398d80d203f06bac8179fe883e",
+        "QFULL": "0b940286dd6926c0a858bc9d8483df2f5a70ecfb2b1719e1a17f3f34bd1dda05"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "외각의 이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{BDC}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 두 밑각을 먼저 확정하는 방법이다."
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선과 $\\angle\\text{C}$의 외각의 이등분선",
+            "evidenceType": "IMPLIED",
+            "justification": "내각과 외각을 각각 반으로 나누어 목표 삼각형의 두 각을 읽는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "외각의 이등분선"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "등변삼각형의 밑각과 내·외각 이등분선 연결",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "같은 밑각을 정한 뒤 내각 이등분과 외각 이등분으로 삼각형 BCD의 각을 연결한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_21e378fa0356cee10d47972b8d172287a578765476d38db989b63c7095b3d308",
+      "fingerprints": {
+        "QBODY": "a2e87c0caf9c52c4db030fcec8f67a28f406982bc7641dbbe37adbe79705d0a0",
+        "QFULL": "efed90245cd7d3b90ba35f459ff061636a2de19253005dea96132da950a03cd0"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "그림의 삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "합동인 삼각형"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "고르면"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "stem",
+            "quote": "합동인 삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "본문은 빗변10,예각40,직각 표시이며 선지⑤는 빗변10,예각50,직각이므로 여각을 읽어 RHA 조건으로 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "직각삼각형의 빗변·예각 합동 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "본문과 선지5개의 실제 그림에서 빗변10과 예각40 또는 그 여각50을 대응시킨다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_160d793ca6fe000522dbd713efe95ea7520433374d981f41d63707ac29258f28",
+      "fingerprints": {
+        "QBODY": "c3de34623f954cca4403192d09136bd4e53f8b48ac0a4de9459435f8e9b825a6",
+        "QFULL": "dd08e09582d45719effe104abc44ce3ca71ff52bba26e206f96973382bbe9a62"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "내린 수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "stem",
+            "quote": "이등분선이 $\\overline{\\text{BC}}$와 만나는 점",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 빗변 AD와 A의 반각, 두 직각을 사용하여 두 삼각형의 RHA를 확인하는 후보이다."
+          },
+          {
+            "term": "수직이등분선",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AM}} = \\overline{\\text{BM}}$",
+            "evidenceType": "IMPLIED",
+            "justification": "수선의 발 M이 AB의 중점이어서 D가 AB의 수직이등분선 위에 있다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선이"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AM}} = \\overline{\\text{BM}}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "RHA 합동과 수직이등분선 등거리 결합",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "각이등분선과 두 직각으로 ADC,ADM의 RHA를 확인하고 M이 AB 중점인 수직이등분선 조건을 추가해 선지들을 판정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_43ec334d5673152892288b212794b85fb8ef763f2bb01a1db8f8c1482f1574b9",
+      "fingerprints": {
+        "QBODY": "0c43c872698cd605c90fd42c28831a366ffd6bc03bbd862000bed7f6a34900e7",
+        "QFULL": "a01d9d6bdf8c3ca8f014d614b9212642d4aff5243f8b854a9c13e19a5ee94c91"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각이등변삼각형",
+            "src": "stem",
+            "quote": "직각이등변삼각형"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "내린 수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이를 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "stem",
+            "quote": "직각이등변삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 그림의 AB=BC,AD⊥l,CE⊥l과 B의 직각에서 ABD와 BCE의 RHA 대응을 읽는다."
+          },
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "사각형 $\\text{ADEC}$의 넓이",
+            "evidenceType": "IMPLIED",
+            "justification": "AD와CE는 같은 직선에 수직이라 서로 평행하고 전이된 밑변 합이 두 평행변 사이 거리이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "직각이등변삼각형의 수선 투영 RHA와 넓이",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "B가 직선 l 위인 실제 그림에서 ABD와 BCE의 빗변·예각 대응을 찾아 밑변 길이를 옮긴 뒤 사다리꼴 넓이로 연결한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_b0cc64f66f34a01b5b06515107ecd344ed178fcdacd872622c258560348083a3",
+      "fingerprints": {
+        "QBODY": "a9e7f81f4ec1776bb980f8744e92f14df14f4a55842a0ac355ed63019724587c",
+        "QFULL": "65b26d25ef6bd85fb6399d73ec27eed88751fdee2d95b6ae631d3bf56fe24418"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{BAC}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심일 때",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 q19 복원그림의 BOC=110도에 대응하는 A각을 외심 반지름 관계로 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "외심의 중심각과 꼭지각 관계",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "실제 복원그림의 중심각 BOC와 이에 대응하는 A각을 외심 관계로 읽는다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_04cfbfd5fff0aab24b89da03afadab3cc9be4a57c22388f3b5ce1fdf8f00887a",
+      "fingerprints": {
+        "QBODY": "3b37bb4673f8ed052cf659ed5476822b9c7fb44776b17f5a3297b36b6ba36a90",
+        "QFULL": "9f68843f7cf915b9c84c4a09f5d57e5e87e4ae9888558929eac970df8fc095c0"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심일 때",
+            "evidenceType": "IMPLIED",
+            "justification": "변까지의 등거리와 세 각의 이등분 성질로 보기를 검토한다."
+          },
+          {
+            "term": "합동조건",
+            "src": "stem",
+            "quote": "옳지 않은 것은",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 그림과 선지의 IDA,IDB는 한 변 ID만 공통이며 같은 빗변이나 대응각은 일반적으로 보장되지 않는 점을 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "내심의 등거리·각이등분 성질 진위 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "내심에서 세 변까지의 수선거리와 각이등분 성질을 비교하고 서로 다른 꼭짓점의 직각삼각형 합동이 보장되는지 구별한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_7d44d8050bb50cc8cc54a80e8249bde0c85915537fc5d401870727e76d483a0e",
+      "fingerprints": {
+        "QBODY": "75b938261945ab0c741265387102b6572b727d6c84ab6ea5cec352efc8228822",
+        "QFULL": "2aa83ee661ffc3620ad48c0a6abc5827f2dbcbf09af8d2fc3f10b80fe298c990"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형에 대한 설명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "choices",
+            "quote": "이등변삼각형은 두 밑각의 크기가 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기본 밑각 성질을 검토한다."
+          },
+          {
+            "term": "합동조건",
+            "src": "choices",
+            "quote": "두 직각삼각형은 서로 합동이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변12와 다른 한 변5를 주어 RHS 합동을 검토한다."
+          },
+          {
+            "term": "내심",
+            "src": "choices",
+            "quote": "둔각삼각형의 내심은 삼각형의 외부에 있다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내심의 위치가 삼각형 종류와 무관하게 내부인지 정의로 판정한다."
+          },
+          {
+            "term": "외심",
+            "src": "choices",
+            "quote": "직각삼각형의 외심은 빗변의 중점과 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형 외심 위치의 기본 성질을 검토한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "삼각형 여러 기본 성질의 진위 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "등변삼각형,직각삼각형 합동,내심 위치,직각삼각형 외심의 각 진술을 각 정의와 성질에 대조한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_a399a62366462b694b82bef6fec9aaea7b8f8213c113150a08d346bd8b491099",
+      "fingerprints": {
+        "QBODY": "93f62667619a372b06838ebdf1f6fd10cbe95085859f6c93c300aab716bf18b5",
+        "QFULL": "c7b5e619c804481a8e0285cfecbcd6a8f7b7a34a94b5dd5c69e21461afe1e4b6"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "외접원",
+            "src": "stem",
+            "quote": "외접원과 내접원의 둘레"
+          },
+          {
+            "term": "내접원",
+            "src": "stem",
+            "quote": "외접원과 내접원의 둘레"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이는"
+          }
+        ],
+        "method": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레가 각각 $17\\pi$, $6\\pi$",
+            "evidenceType": "IMPLIED",
+            "justification": "원 둘레 2πr 관계로 두 반지름을 복원한다."
+          },
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외접원과 내접원",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형 외접원 지름이 빗변인 성질을 적용한다."
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "외접원과 내접원",
+            "evidenceType": "IMPLIED",
+            "justification": "내접반지름과 반둘레의 곱이 삼각형 넓이이며 직각삼각형의 변 합 관계로 반둘레를 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "두 원의 둘레를 반지름으로 바꿔 직각삼각형 넓이 결정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "외접원·내접원 둘레에서 R,r을 구한 뒤 빗변=2R와 내심의 넓이·반둘레 관계를 연결한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_89ce2f1e07df93c9648f927f3aa540f16af3a71cfc84ee491b1ad8591d110147",
+      "fingerprints": {
+        "QBODY": "9e66da8fdd20c3bad93cd845ab5b8104ce215b7c235783cbe192c393e845c9ec",
+        "QFULL": "d12daf5314ba73d832edda6fbe52bccd2086bdf1b6e38522ae3a443089878372"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y = ax$"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "3만큼 평행이동"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "상수 $a$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$y$축 방향으로 3만큼 평행이동",
+            "evidenceType": "IMPLIED",
+            "justification": "수직 이동한 식의 상수항이 3이라는 해석이다."
+          },
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "점 $(2, 5)$를 지날 때",
+            "evidenceType": "IMPLIED",
+            "justification": "이동한 직선식에 점의 좌표를 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "직선의 수직 평행이동 후 통과점 조건",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "y축 방향 이동량을 상수항에 더한 식에 지정된 점을 대입해 기울기 계수를 정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_fbaeb79fea323b8c9db925de29b39faa9601e559b72667f1c54f10826f43cde6",
+      "fingerprints": {
+        "QBODY": "99ab5286699ef353e1974ce021a43cb1a3693ed187ccfc276235bd19047dcce5",
+        "QFULL": "d95736c7b5d97007136cbf549e4d1c327c4eaa5fd86fdacb76a3c9ab589bb98e"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $\\text{AB}$"
+          },
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y = 3x + b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "값의 범위를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 끝점을 지나는 직선의 b값이 선분과 만나는 매개변수의 경계이다."
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "선분 $\\text{AB}$와 만나도록",
+            "evidenceType": "IMPLIED",
+            "justification": "끝점의 포함을 보존하여 두 경계값 사이 구간을 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "선분 $\\text{AB}$와 만나도록"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "선분 양 끝점을 지나는 경계 직선",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "기울기를 고정하고 A와 B를 각각 지나는 상수항을 경계로 구하여 끝점 포함 범위를 정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_e771fd31370858c473c495e7b602c1c48835f4da77710961b2ffdd1eadbd2424",
+      "fingerprints": {
+        "QBODY": "1f1d6309ad95cb28732602eb30247385d46e779b7050c5ca527049e7df43da88",
+        "QFULL": "5cf6c1cf6ffc5b24ec98ce71c8aec7cbfe896c1788908d7731fb034fa7438af4"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직육면체",
+            "src": "stem",
+            "quote": "직육면체 모양의 수조"
+          },
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "물의 높이를 $y"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "몇 분 후"
+          },
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "식을 세워 풀이 과정"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$",
+            "evidenceType": "IMPLIED",
+            "justification": "관측 두 점의 높이 변화량을 시간 변화량으로 나누어 일정 증가율을 정한다."
+          },
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "시간당 일정한 양",
+            "evidenceType": "IMPLIED",
+            "justification": "직육면체 밑면이 일정하므로 시간에 따른 수위가 일차식이다."
+          },
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "물의 높이가 $90\\text{ cm}$",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 일차식의 y값에 목표 높이를 대입하여 시간을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "두 시간·높이 관측으로 수위의 일차모형과 목표 시간",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "일정 유입량과 직육면체의 일정 밑면으로 수위가 시간의 일차함수임을 읽고 두 관측값으로 식을 정한 뒤 목표 높이에 대응하는 시간을 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    },
+    {
+      "sourceOrdinal": 26,
+      "questionUid": "qid_v1_b8b0107adef9caa7fa9292ffc28b1a8ef8d0f63fb7ce7db4f9110537a57d1ef7",
+      "fingerprints": {
+        "QBODY": "b60b9948bc52d659e62a9fe144ad5edad027f49236420bdf952ef998c0d6624f",
+        "QFULL": "c5d6eea7b387ca62146683c9733d409a9b1a5c729b15e837dceaaf2deabc5735"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심이다"
+          },
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "부채꼴 $\\text{BOC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "호의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심이다",
+            "evidenceType": "IMPLIED",
+            "justification": "OA=OB=OC에서 밑각을 옮겨 A각을 읽고 대응 중심각을 정한다."
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "부채꼴 $\\text{BOC}$의 호의 길이",
+            "evidenceType": "IMPLIED",
+            "justification": "호 길이는 원 둘레에서 중심각이 360도 중 차지하는 비율로 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "외심 반지름 등거리로 중심각 복원 후 호 길이",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "sourceEvidence": "answer/solution은 원본에 없다. 실제 발문·선지·그림에서 직접 읽은 입력과 목표에 결속한 IMPLIED 방법 후보이며 기존 정답·해설과의 일치가 검증된 것은 아니다."
+      },
+      "steps": [
+        "등거리 반지름으로 A각의 두 부분을 읽고 BOC 중심각을 정하여 반지름9의 부채꼴 호 길이와 연결한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "CANDIDATE_SOURCE_WITHOUT_SOLUTION"
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "allItemsRead": true,
+    "exactQuotesChecked": true,
+    "sourceContentUnchanged": true,
+    "semanticReviewBy": "/root/m2_a",
+    "independentSampleReview": "PENDING_ROOT_ASSIGNMENT"
+  }
+}
