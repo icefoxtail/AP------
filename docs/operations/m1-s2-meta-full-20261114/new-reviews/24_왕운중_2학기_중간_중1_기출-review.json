@@ -2137,9 +2137,9 @@
     }
   ],
   "raw4slot": {
-    "url": "https://drive.google.com/file/d/1-aEQ8rVwZR-33MS_ZiXf91z7KzJEOgUN/view?usp=drivesdk",
-    "fileId": "1-aEQ8rVwZR-33MS_ZiXf91z7KzJEOgUN",
-    "sha256": "4425685a960ec7a6142c80304307b3628c184d2d6018c4c42f80c5c0ee22da2c",
+    "url": "https://drive.google.com/file/d/1Kt47FhnWxpPWYFgwEHAha1G3ITlg4Y0k/view?usp=drivesdk",
+    "fileId": "1Kt47FhnWxpPWYFgwEHAha1G3ITlg4Y0k",
+    "sha256": "661f6ec92fc415628e75fbfa22e008e759c8082f580d60be835dc29e79386817",
     "readbackVerified": true,
     "originalSourceBlob": "1c8c41c3150e0eafcf43902d78d3d5ec5857b0a4",
     "protectedPayloadSame": true
@@ -2147,7 +2147,7 @@
   "independent": [
     {
       "path": "docs/operations/m1-s2-meta-full-20261114/independent/24_왕운중_2학기_중간_중1_기출.json",
-      "sha256": "2ba6d187c91e637051f03989bcfc8399e61996a7214040333d6eaf49da698094",
+      "sha256": "992adbc25f332ce8842bb307b55fc32c0f048cb8fe9893617fe61ea487edc43f",
       "reviewer": "/root/meta_b",
       "status": "ACCEPTED_AFTER_MINOR_CORRECTIONS"
     },
@@ -2159,9 +2159,10 @@
     }
   ],
   "independentInputBinding": {
-    "status": "SAMPLE_SCOPE_REVIEWED",
-    "reviewedRawSha256": null,
-    "currentRawSha256": "4425685a960ec7a6142c80304307b3628c184d2d6018c4c42f80c5c0ee22da2c"
+    "status": "EXACT_RAW_SHA_AFTER_PARENT_TAG_TECHNICAL_READBACK",
+    "reviewedRawSha256": "661f6ec92fc415628e75fbfa22e008e759c8082f580d60be835dc29e79386817",
+    "currentRawSha256": "661f6ec92fc415628e75fbfa22e008e759c8082f580d60be835dc29e79386817",
+    "originalSemanticVerdictsRetained": true
   },
   "validation": {
     "syntax": "PASS",
@@ -2173,7 +2174,6 @@
       "warn": [
         "#2 method has 1 term",
         "#8 only 4 distinct terms",
-        "#13 only 4 distinct terms",
         "#15 only 4 distinct terms",
         "#17 only 4 distinct terms",
         "#21 only 4 distinct terms"
@@ -2181,7 +2181,7 @@
       "stats": {
         "items": 23,
         "examItems": 23,
-        "quotes": 162
+        "quotes": 167
       }
     },
     "compactParity": "PASS",
@@ -2190,5 +2190,22 @@
   "scopeLimits": [
     "No full mathematical R1/R2/R3 performed.",
     "Shared registration, main merge and deployment are outside this stage."
+  ],
+  "raw4slotHistory": [
+    {
+      "url": "https://drive.google.com/file/d/1-aEQ8rVwZR-33MS_ZiXf91z7KzJEOgUN/view?usp=drivesdk",
+      "fileId": "1-aEQ8rVwZR-33MS_ZiXf91z7KzJEOgUN",
+      "sha256": "4425685a960ec7a6142c80304307b3628c184d2d6018c4c42f80c5c0ee22da2c",
+      "readbackVerified": true,
+      "originalSourceBlob": "1c8c41c3150e0eafcf43902d78d3d5ec5857b0a4",
+      "protectedPayloadSame": true
+    }
+  ],
+  "fourSlotTechnicalFollowups": [
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/followups/4slot-parent-supplement/24_왕운중_2학기_중간_중1_기출.json",
+      "changes": 5,
+      "sourceUnchanged": true
+    }
   ]
 }
