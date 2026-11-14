@@ -44,6 +44,7 @@ $\\angle x=130^\\circ-70^\\circ=60^\\circ$이다.
 
 그러므로 $\\angle y-\\angle x=70^\\circ-60^\\circ=10^\\circ$이다.
 따라서 정답은 ⑤이다.`,
+    "imageSize": "full",
     "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q01.svg"
   },
   {
@@ -1002,6 +1003,7 @@ $\\dfrac{6}{3-6c}=\\dfrac12$이므로
 $12=3-6c$, $-6c=9$, $c=-\\dfrac32$이다.
 
 따라서 정답은 ③이다.`,
+    "imageSize": "full",
     "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q20.svg"
   },
   {
@@ -1171,6 +1173,7 @@ $180^\\circ-2\\times72^\\circ=36^\\circ$이다.
 
 $AD\\parallel BC$이므로 점 $I$에서 표시된 $\\angle x$도 $36^\\circ$이다.
 따라서 $\\angle x=36^\\circ$이다.`,
+    "imageSize": "full",
     "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q24.svg"
   }
 ];
