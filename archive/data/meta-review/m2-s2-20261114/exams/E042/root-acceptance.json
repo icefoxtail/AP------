@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E042",
+  "owner": "C",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "d8a640686dbe55d42feed753de2db3251cdf9fad",
+  "sourceSha256": "2022adc28e2e83f2ce7b81df3e7fb542c1fc0f357775309c618fe60c0a713585",
+  "reviewSha256": "7f89f00020163133118fbdd7dc0753c007b4c9d1b72886480194b1a5dbd697c4",
+  "fourSlotSha256": "cd1b97ce7313d06f636406a9b853db36bcc90c2399757a2ea4930748df0924e6",
+  "independentSampleSha256": "924ff2867fe881c3b0f09f5534e41f3b6de2725f76d4d2692425b5e7c30c05db",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_4ceb0bdbddacfe4d9737f943b966a542e296123fa20cdae9498e7cfbc2accfac",
+      "fields": [
+        "학생본문의 필수 도형/증명 조건",
+        "최종 RPM/PT/TPL의 확정",
+        "난이도 두 축 확정",
+        "difficultyBucket",
+        "level"
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_f738345d75348c9f769b8120c8aeb7b384dbea0fe8606a2e0e2c13c822bbc7d5",
+      "fields": [
+        "학생본문의 필수 도형/증명 조건",
+        "최종 RPM/PT/TPL의 확정",
+        "난이도 두 축 확정",
+        "difficultyBucket",
+        "level"
+      ]
+    }
+  ],
+  "sampleReviewer": "A",
+  "sampleOrdinals": [
+    3,
+    16,
+    24
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "4a4a7339fdb98046ed3f6c03086fbcaecbf94e3710405c4d23cecd18f8696fdc",
+      "finalReviewSha256": "607ab8060b97bad5b2e01e2a34d00d1e4f32599d20d3b7efe5178cc4f8154ec6",
+      "independentSampleSha256": "924ff2867fe881c3b0f09f5534e41f3b6de2725f76d4d2692425b5e7c30c05db",
+      "adjudicatedCompatibilityOrdinals": [
+        1,
+        2,
+        8,
+        10,
+        15,
+        16,
+        18,
+        19,
+        21
+      ],
+      "resolvedRepairs": []
+    },
+    {
+      "scope": "Technical packet corrections only after root mechanical gate",
+      "fields": [
+        "owner exact assignment",
+        "Q3/Q7 unresolved field identifiers",
+        "Q24 preserve noncanonical raw level and separate approved candidate"
+      ],
+      "fourSlotUnchanged": true,
+      "finalReviewSha256": "7f89f00020163133118fbdd7dc0753c007b4c9d1b72886480194b1a5dbd697c4"
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "항상 참이라는 진술을 둔각 이등변삼각형의 반례로 배제해야 하므로 단순 정의 재생에서 한 단계 해석이 추가된다. bucket2와 기존 학습수준 하를 경계값으로 수용한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "다섯 그림의 직각·중점 표시를 외심의 수직이등분선 정의에 직접 대응시킨다. 별도 조건 추론이 없어 bucket1을 수용하고 기존 중은 보존 가능한 인접 경계로 확인한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 3,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "번호 붙은 증명본문이 없어 학생이 검토할 주장 자체를 확인할 수 없다. 하/1은 기존 해설모델의 후보에 한정하고 최종 UNKNOWN 유지가 적절하다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_UNKNOWN_HOLD"
+    },
+    {
+      "ordinal": 7,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "실제 그림에서 8cm는 AO 부근,14cm는 우측이며 AB 숫자도 잘려 있어 해설의 OD=8,AC=14를 확정하지 못한다. 후보 하/1과 최종 UNKNOWN을 분리한 hold가 적절하다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_UNKNOWN_HOLD"
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "명시된 A 각을 외심각·내심각의 두 기본 관계에 그대로 대입해 지정된 결합값을 계산한다. 숨은 각 복원이나 전략 선택이 없으므로 bucket1 수용, 기존 중은 인접 경계로 보존한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "주어진 각이 두 반지름 삼각형에 분산되어 있어 먼저 꼭지각으로 옮기고 중심각·밑각을 잇는다. 익숙한 한 구조 해석이 필요하므로 bucket2를 수용한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "정삼각형의 같은 변과 60도에서 보조 삼각형의 합동을 두 차례 선택해 대변 같음, 평행사변형 판정, 대각선 성질로 연결한다. 관계 선택이 핵심이어서 중/bucket3 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "세 변이 주어졌지만 내접반지름을 먼저 산출한 뒤 전체 삼각형 넓이에서 원의 넓이를 빼야 한다. 표준 절차를 한 번 연결하므로 bucket2, 기존 하는 경계로 수용한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "두 정삼각형에서 대응변과 같은 끼인각을 먼저 읽어야 SAS를 선택할 수 있다. 직접 명시된 합동조건의 명칭 재생보다 한 단계 높아 bucket2, 기존 하는 경계로 수용한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "다섯 사각형의 표준 대변·대각선 성질을 세 목록에 적용해 개수를 집계할 뿐 비정형 추론이나 추가 제약은 없다. bucket1과 기존 중의 인접 경계를 수용한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "접기 대응각과 띠의 평행선 엇각을 연결해 이등변삼각형을 인식해야 한다. 한 번의 구조 해석 후 기본 각 계산이므로 bucket2, 기존 하는 경계로 수용한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "문장에 F의 분할비와 연장선 교점 E가 명시되어 잘린 그림을 복원할 수 있다. 바깥 두 삼각형의 AA 닮음에서 높이비를 얻어 밑변비와 넓이에 연결하므로 중/bucket3 수용. 그림 결함은 별도 유지한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "마름모 반대각선을 두 배하고 수직인 두 대각선 곱의 절반을 구하는 직접 성질 적용이다. 성질 서술 요구가 새로운 전략을 추가하지 않으므로 bucket1과 기존 중의 경계를 수용한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "반지름 합차 연립 결과를 직각삼각형의 외심·내심 관계와 둘레에 연결한다. 원본 중상은 허용 수준이 아니고 두 관계 선택의 학습 부담을 독립적으로 읽어 중/bucket3 제안을 수용한다. 그림·해설 명명 불일치는 남긴다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중"
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "ROOT read the actual stem, choices, existing solution and source figure: identify the standard RHA correspondence, transfer the two sides and combine them in the specified trapezoid area formula. The prescribed two targets fit bucket2/B23."
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 3,
+      "reason": "기존 해설모델에 의한 후보이며 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 7,
+      "reason": "기존 해설모델에 의한 후보이며 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 9,
+      "reason": "직각삼각형의 내접반지름8을 계산하여 들어가는 공의 반지름 경계와 비교한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 16,
+      "reason": "정삼각형에서 같은 두 변과60도 보충 관계의 같은 끼인각을 찾아 SAS를 고른다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 17,
+      "reason": "B=2b,C=2c로 두고 목표각 합을360-3(b+c)로 합쳐 구한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 20,
+      "reason": "ADF와ECF의 AA 닮음에서 높이의 비2:3을 얻어 DF의3:5 비와 곱한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 23,
+      "reason": "접힌 꼭지각x가 원래 밑각의 일부임을 이용하여(180-x)/2=x+15를 세운다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 24,
+      "reason": "반지름 합차에서R,r을 구하고 빗변2R와 두 직각변 합2R+2r를 합친다.",
+      "metadataJudgmentUnresolved": false
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}
