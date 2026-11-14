@@ -93,7 +93,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 수선 CD가 있는 원래 직각삼각형과, 파란 각·주황 각이 각각 대응하도록 같은 방향으로 놓은 두 작은 직각삼각형이다.",
+    "solutionImageCaption": "닮음에서 AD=16cm, AB=25cm, AC=20cm를 얻는다. 따라서 cos A=4/5. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -313,7 +317,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 직선은 x축과 y축을 모두 지난다. x절편 −6에서 양의 x축 방향과 직선이 이루는 예각을 주황으로 표시한다.",
+    "solutionImageCaption": "기울기는 tan30°이고 x절편은 −6이다. 일차함수는 y=(√3/3)x+2√3. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -345,7 +353,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 둔각 삼각형에서 밑변을 연장하고 수선 CH를 내려 만든 직각삼각형과 60도 보각을 나타낸다.",
+    "solutionImageCaption": "높이는 √3 cm이다. 삼각형의 넓이는 3√3/2 cm². 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -505,7 +517,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 내접원 접점 D, E, F와 각 꼭짓점에서 원에 그은 두 접선을 표시한다. 같은 색 눈금은 같은 접선 길이다.",
+    "solutionImageCaption": "접선 길이의 관계로 BD=BE=4, CF=CE=3이므로 BC=7cm. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -537,7 +553,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 10cm인 원에서 원주점과 중심을 잇는 선분을 수직이등분하는 현 AB를 나타낸다.",
+    "solutionImageCaption": "현 AB의 중심까지 거리는 5이고, 반지름은 10이다. 따라서 AB=10√3. 정답 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -569,7 +589,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 색 눈금은 중심 O에서 현까지의 같은 거리와 같은 길이의 두 현, 같은 크기의 밑각을 나타낸다.",
+    "solutionImageCaption": "이등변삼각형 ABC에서 ∠A=70°이고, 사각형 AMON의 다른 두 각은 직각이다. 따라서 ∠MON=110°. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -634,7 +658,10 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q20-solution.svg"
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반원 지름과 높이가 다른 두 평행 접선, 다른 접점을 잇는 접선으로 만든 직각삼각형을 보인다. 같은 길이는 색과 같은 수의 눈금으로 묶는다.",
+    "solutionImageCaption": "같은 점에서 그은 접선 길이와 직각삼각형 DHC를 이용한다. AB의 길이는 4√10 cm. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -660,7 +687,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 손에서 연까지의 50m 사선과 지면에 나란한 기준선, 두 직각 및 손 위로 30m인 높이선이 보인다.",
+    "solutionImageCaption": "손높이 위 수직 상승은 30m이고 손높이는 1.6m이다. 지면에서 연까지의 높이는 31.6m.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -687,7 +718,10 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q22-solution.svg"
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 접힌 종이의 직각삼각형 AHC와 HC 위의 점 B를 표시한다. 파란 같은 길이 눈금은 AB=BC를 나타낸다.",
+    "solutionImageCaption": "AH=3cm, HC=4cm, AC=5cm 및 AB=BC 관계로 각 a를 계산한다. sin a=24/25.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -713,7 +747,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 큰 반원 안의 원과 오른쪽 작은 반원이 접한다. 세 중심 O, P, Q를 이은 직각삼각형에서 OQ는 20−r이다.",
+    "solutionImageCaption": "내접·외접 관계로 중심 사이 거리를 구해 PQ=50/3.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -739,6 +777,10 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 원기둥 단면에서 주황 한 눈금의 같은 두 접선 길이와 파란 큰 호가 실의 경로를 이룬다. 두 접점은 직각이고 점 P 쪽 중심각은 120도이다.",
+    "solutionImageCaption": "중심에서 점 P까지는 8+8=16 cm이다. 두 접선 길이는 각각 8√3 cm이고, 큰 호의 중심각은 240°이다. 두 접선과 큰 호의 길이를 더하면 16√3+32π/3 cm이다.",
+    "solutionImageSize": "full"
   }
 ];

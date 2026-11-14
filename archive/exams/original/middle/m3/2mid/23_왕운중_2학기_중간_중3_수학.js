@@ -91,7 +91,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선의 대칭축 x=2와 꼭짓점 (2,−5)를 표시한다.",
+    "solutionImageCaption": "꼭짓점은 (2,−5)이므로 p+q=−3이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -151,7 +155,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 파랑 포물선의 꼭짓점은 x축에 닿고, x=1 점선이 이 꼭짓점을 지난다.",
+    "solutionImageCaption": "꼭짓점의 y좌표가 a+1이므로 a+1=0이다. 따라서 a=−1이며 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -181,7 +189,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선의 꼭짓점 (2,3)과 y절편 (0,1), 두 점 사이의 곡선이 보인다.",
+    "solutionImageCaption": "1=4a+3에서 a=−1/2이고, 전개하면 b=2, c=1이다. 따라서 abc=−1이며 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -208,7 +220,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선의 열림 방향, 대칭축과 y절편의 위치를 비교한다.",
+    "solutionImageCaption": "새 그래프는 위로 열리고 대칭축은 y축 왼쪽, y절편은 x축 아래에 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -337,7 +353,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 대각선 AC와 높이 AH가 표시된 사각형 ABCD. △ABC는 파랑, △ADC는 주황이며 AD와 DC에는 같은 눈금이 있다.",
+    "solutionImageCaption": "AH=4sin60°=2√3cm이므로 △ABC의 넓이는 8√3cm²이다. AC²=AH²+CH²=48이고 AD=DC, ∠D=90°이므로 △ADC의 넓이는 12cm²이다. 합은 12+8√3cm²이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -370,7 +390,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 1인 사분원에서 중심각 x와 직각삼각형 OAB의 이웃변 OB를 파랑으로 강조한다.",
+    "solutionImageCaption": "OA=1이므로 cos x=OB/OA=OB이다. 따라서 길이가 같은 선분은 OB이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -403,7 +427,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 단위원에서 cos x와 OB를 대응하고, 아래 패널은 직각삼각형에서 x와 z의 합이 90°임을 보인다.",
+    "solutionImageCaption": "OA=1이므로 OB=cos x이고, x+z=90°에서 sin z=cos x이다. 따라서 sin z=OB이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -435,7 +463,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AB=20cm, ∠A=30°, C 직각, D는 AC의 중점이다. AD=DC이고 x=∠BDC이다.",
+    "solutionImageCaption": "BC=10cm, CD=5√3cm이므로 tan∠BDC=10/(5√3)=2√3/3이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -467,7 +499,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선 사이의 영역과 세로 길이가 같은 삼각형을 같은 파랑으로 표시한다.",
+    "solutionImageCaption": "같은 x에서의 세로 길이가 12−4x로 같으므로 넓이도 같다. 삼각형의 밑변이 2, 높이가 8이어서 넓이는 8이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -499,7 +535,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 축 x=1/2에 대칭인 두 근과 x=0, 1, 1/3에서 그래프가 x축의 위아래 어느 쪽에 있는지 표시한다.",
+    "solutionImageCaption": "x=1/3에서 함수값은 양수이므로 a+3b+9c>0이다. 옳지 않은 것은 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -531,7 +571,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 눈 점 A는 지면에서 1.6 m, 수평 AB는 10 m이다. B 위 깃대 부분은 h, 시선 AT와 수평의 각은 32°다.",
+    "solutionImageCaption": "tan32°=h/10이므로 h=10×0.63=6.3 m이다. 전체 높이는 6.3+1.6=7.9 m이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -563,7 +607,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 길이 AD와 AE는 파랑 한 눈금, FD와 FE는 주황 두 눈금으로 구별한다.",
+    "solutionImageCaption": "AD=AE이므로 BE=12 cm, EC=3 cm이다. FC=t라 하면 FD=FE에서 (9−t)²=t²+9이다. 따라서 FC=4 cm이고 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -623,7 +671,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형의 중심 O와 아래쪽 변의 중점 M을 이었다. 파란 OB는 외접원 반지름 R, 주황 OM은 내접원 반지름 r이다. 직각삼각형 OBM은 각 B가 30도이다.",
+    "solutionImageCaption": "sin 30°=OM/OB=r/R=1/2이므로 R=2r이다. 두 원의 넓이 차에서 r=2 cm, R=4 cm를 얻고, 정삼각형의 넓이는 12√3 cm²이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -649,7 +701,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 삼각형 ABC의 외부 수선 H와 주황 보조 직각삼각형 AHC. ∠CAB=120°, ∠CAH=60°, CH=2√3 cm.",
+    "solutionImageCaption": "CH=4sin60°=2√3 cm이다. [△ABC]=½×8×2√3=8√3 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -673,7 +729,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표 (0,2), (1,5), (2,6)을 포물선 위의 주황 점으로 표시한다.",
+    "solutionImageCaption": "세 좌표를 대입하면 c=2, a+b=3, 2a+b=2이다. 따라서 y=−x²+4x+2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -699,7 +759,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 나무 꼭대기 A에서 밑동 D로 수직 높이 h를 내린다. B의 45° 삼각형에서 BD=x와 AD=h는 파란색 같은 눈금이고, C의 30° 삼각형은 DC=40−x이다.",
+    "solutionImageCaption": "tan45°=h/x에서 h=x이고 tan30°=h/(40−x)에서 40−x=√3h이다. 따라서 h=20(√3−1) m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -725,6 +789,10 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 정육면체의 AD 중점 M과 주황 선분 FM·GM이 푸른 단면을 이룬다. 오른쪽 이등변삼각형 FMG의 밑변은 2 cm이며, 중점 N에서 MN과 FG가 수직이다.",
+    "solutionImageCaption": "정육면체에서 FM=GM=3 cm이다. △FMG의 밑변 FG=2 cm, 중점 N에서 MN=√(3²−1²)=2√2 cm이다. 두 넓이를 같게 두면 2√2=(1/2)·3·3·sin x이므로 sin x=4√2/9이다.",
+    "solutionImageSize": "full"
   }
 ];
