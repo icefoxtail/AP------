@@ -6,8 +6,8 @@
   "branch": "review/m2-s1-meta-full-20261114",
   "createdAt": "2026-11-14T08:34:21.789Z",
   "schemaVersion": "m2-s1-meta-progress-v1",
-  "status": "RUNNING",
-  "resumeState": "RUNNING",
+  "status": "PAUSED_WITH_REMAINING",
+  "resumeState": "RESUME_READY",
   "sourceScope": [
     "archive/exams/original/middle/m2/1mid/",
     "archive/exams/original/middle/m2/1final/"
@@ -23,7 +23,7 @@
   "reviewedQuestions": 286,
   "remainingExams": 63,
   "remainingQuestions": 1494,
-  "nextAction": "CONTINUE_THREE_REVIEWER_QUEUES",
+  "nextAction": "RECOVER_RUNTIME_RECONCILE_SAME_BRANCH_APPLY_PENDING_AMENDMENTS_THEN_CONTINUE_E013_E014_E015",
   "registrationStatus": "NOT_RUN",
   "mainMergeStatus": "NOT_AUTHORIZED",
   "deploymentStatus": "NOT_RUN",
@@ -1506,7 +1506,9 @@
       "existingFourSlotCount": 0,
       "existingFourSlotRef": null,
       "status": "QUEUED",
-      "reviewedQuestionCount": 0
+      "reviewedQuestionCount": 0,
+      "localWorkStatus": "PARTIAL_READ_NO_FINAL_ARTIFACT",
+      "localWorkReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json"
     },
     {
       "examId": "E014",
@@ -1521,7 +1523,9 @@
       "existingFourSlotCount": 0,
       "existingFourSlotRef": null,
       "status": "QUEUED",
-      "reviewedQuestionCount": 0
+      "reviewedQuestionCount": 0,
+      "localWorkStatus": "AUTHOR_ARTIFACT_LOCAL_ONLY_INDEPENDENT_NOT_STARTED",
+      "localWorkReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json"
     },
     {
       "examId": "E015",
@@ -1536,7 +1540,9 @@
       "existingFourSlotCount": 0,
       "existingFourSlotRef": null,
       "status": "QUEUED",
-      "reviewedQuestionCount": 0
+      "reviewedQuestionCount": 0,
+      "localWorkStatus": "PARTIAL_READ_INITIAL_STRUCTURE_LOCAL_ONLY",
+      "localWorkReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json"
     },
     {
       "examId": "E016",
@@ -1566,7 +1572,9 @@
       "existingFourSlotCount": 0,
       "existingFourSlotRef": null,
       "status": "QUEUED",
-      "reviewedQuestionCount": 0
+      "reviewedQuestionCount": 0,
+      "localWorkStatus": "PARTIAL_READ_NO_FINAL_ARTIFACT",
+      "localWorkReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json"
     },
     {
       "examId": "E018",
@@ -2440,7 +2448,7 @@
     }
   ],
   "fullyJudgedQuestions": 280,
-  "updatedAt": "2026-11-14T09:24:40.190438+00:00",
+  "updatedAt": "2026-11-14 09:28:31 UTC",
   "verifiedExamPublications": [
     {
       "examId": "E001",
@@ -2533,6 +2541,15 @@
       "verifiedAt": "2026-11-14T09:21:18.364831+00:00"
     },
     {
+      "examId": "E011",
+      "commitSha": "e2ede46f3f369d27fe3c86aa085fc08b89a3c5c3",
+      "parentSha": "dcb078c7c6f9e2650dcd81c690e51fd3b5d6886c",
+      "treeSha": "dccffbd8adc49e5421e75800f412b97e39771ee4",
+      "remoteHeadVerified": true,
+      "method": "GitHub connector branch-ref commit readback after runtime unavailable; native local fast-forward NOT_REVERIFIED",
+      "verifiedAt": "2026-11-14 09:28:31 UTC"
+    },
+    {
       "examId": "E012",
       "commitSha": "e8b0571a8e95cfb4860beffea0efd80ee395d95a",
       "parentSha": "5fbd67a5385cd24bb3f37609ed0883b1768b508b",
@@ -2552,5 +2569,139 @@
       "method": "GitHub connector tree/commit/update_ref with expected previous HEAD; native git ls-remote readback; exact local fast-forward",
       "verifiedAt": "2026-11-14T09:24:29.652876+00:00"
     }
-  ]
+  ],
+  "writerState": "STOPPED",
+  "pause": {
+    "reason": "EXECUTION_ENVIRONMENT_UNAVAILABLE",
+    "observedError": "exec-server transport disconnected; failed to resume exec-server session; recovery timed out",
+    "at": "2026-11-14 09:28:31 UTC",
+    "allThreeWritersStopped": true,
+    "remoteReadbackBeforeControlCommit": "e2ede46f3f369d27fe3c86aa085fc08b89a3c5c3",
+    "localFilesystemCurrentState": "UNAVAILABLE_NOT_REVERIFIED",
+    "qualityStatus": "FULL_SCOPE_NOT_COMPLETE",
+    "releaseStatus": "NOT_READY"
+  },
+  "workerStates": [
+    {
+      "owner": "A",
+      "status": "STOPPED_CONFIRMED_BY_WORKER",
+      "scope": [
+        "E001",
+        "E004",
+        "E007",
+        "E010",
+        "E013",
+        "E016",
+        "E019",
+        "E022",
+        "E025",
+        "E028",
+        "E031",
+        "E034",
+        "E037",
+        "E040",
+        "E043",
+        "E046",
+        "E049",
+        "E052",
+        "E055",
+        "E058",
+        "E061",
+        "E064",
+        "E067",
+        "E070",
+        "E073"
+      ]
+    },
+    {
+      "owner": "B",
+      "status": "STOPPED_CONFIRMED_BY_WORKER",
+      "scope": [
+        "E002",
+        "E005",
+        "E008",
+        "E011",
+        "E014",
+        "E017",
+        "E020",
+        "E023",
+        "E026",
+        "E029",
+        "E032",
+        "E035",
+        "E038",
+        "E041",
+        "E044",
+        "E047",
+        "E050",
+        "E053",
+        "E056",
+        "E059",
+        "E062",
+        "E065",
+        "E068",
+        "E071",
+        "E074"
+      ]
+    },
+    {
+      "owner": "C",
+      "status": "STOPPED_CONFIRMED_BY_WORKER",
+      "scope": [
+        "E003",
+        "E006",
+        "E009",
+        "E012",
+        "E015",
+        "E018",
+        "E021",
+        "E024",
+        "E027",
+        "E030",
+        "E033",
+        "E036",
+        "E039",
+        "E042",
+        "E045",
+        "E048",
+        "E051",
+        "E054",
+        "E057",
+        "E060",
+        "E063",
+        "E066",
+        "E069",
+        "E072",
+        "E075"
+      ]
+    }
+  ],
+  "awcr": {
+    "latestVerifiedRevision": 3,
+    "fileId": "1IgFl6xaKIUV1YrlqMuO4act4NvbaSeqq",
+    "rawSha256": "c9658b393deb5952a121a976fa28b10b19d106116007bb0006493b0e0a57b4ec",
+    "rawReadbackVerified": true,
+    "latestVerifiedSummary": "9 exams /214 questions; IN_PROGRESS",
+    "pauseRevisionStatus": "SAVE_INCOMPLETE_ENVIRONMENT_UNAVAILABLE",
+    "nextAction": "After runtime recovery, reread bootstrap and exact task latest checkpoint, append next immutable revision and verify raw bytes; do not overwrite revision3."
+  },
+  "pendingAmendmentsReference": "docs/operations/m2-s1-meta-full-20261114/PENDING_AMENDMENTS.json",
+  "localRecoveryReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json",
+  "workingSnapshot": {
+    "inspectedAndRemotelyPreservedQuestions": 286,
+    "independentThreeItemSamples": 36,
+    "unresolvedMarkedQuestions": 6,
+    "rpmGapQuestions": 61,
+    "registrationPendingQuestions": 274,
+    "contentDebtQuestions": 10,
+    "interpretation": "Overlapping counts from current committed reviews; pending amendments may change them. fullyJudgedQuestions is an artifact-level counter, not a full-quality/release PASS."
+  },
+  "mainReadbackAtPause": {
+    "sha": "d3b8b0a33c295780e8d425cb9faa91b475e1681d",
+    "aheadOfLockedBaseBy": 17,
+    "changedFileCount": 49,
+    "targetSourceOverlapCount": 0,
+    "canonicalRuleOrCompiledRegistryOverlap": [],
+    "action": "Read-only comparison. No merge/rebase/reset performed; original review base remains locked."
+  }
 }

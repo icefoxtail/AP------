@@ -1,0 +1,424 @@
+{
+  "schemaVersion": "m2-s1-pending-adjudications-v1",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "status": "PENDING_APPLICATION_ENVIRONMENT_UNAVAILABLE",
+  "scope": "Preserve the already reviewed scoped decisions; do not alter student content or shared registries. Recheck source/artifact hashes, apply one exam at a time, run native validators, publish and read remote HEAD.",
+  "completed": [
+    {
+      "examId": "E001",
+      "commitSha": "dcb078c7c6f9e2650dcd81c690e51fd3b5d6886c",
+      "changes": [
+        "Q7 compatibility NORMAL",
+        "Q21 nonzero candidate parent 조건 and same-condition-slot parent atom",
+        "Existing Q21 integration SEQUENTIAL root override materialized in accepted-review.json"
+      ],
+      "currentIndex": "docs/operations/m2-s1-meta-full-20261114/exams/E001/CURRENT.json"
+    }
+  ],
+  "items": [
+    {
+      "examId": "E002",
+      "sourceArchiveFile": "original/middle/m2/1final/26_신흥중_1학기_기말_중2_기출.js",
+      "applicationStatus": "NOT_APPLIED",
+      "rootAdjudicatedInSession": true,
+      "postChangeNativeValidation": "NOT_RUN",
+      "changes": [
+        {
+          "ordinals": [
+            18,
+            19,
+            20
+          ],
+          "field": "finalDifficulty.legacyLevelCompatibility",
+          "to": "BORDERLINE_ACCEPTABLE",
+          "reason": "Retain independently accepted legacy상/numeric3; correct compatibility label only."
+        },
+        {
+          "ordinals": [
+            7
+          ],
+          "field": "PT/TPL candidate",
+          "to": {
+            "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+            "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
+            "semanticStatus": "EXISTING_REUSE",
+            "activationStatus": "HOLD_M2_BINDING_AND_GENUINE_RESOLVER"
+          },
+          "reason": "Root and B read actual generic definition/internalSkeleton; withdraw unconditional new-template claim while retaining RPM leaf gap."
+        },
+        {
+          "ordinals": [
+            19
+          ],
+          "field": "PT/TPL candidate",
+          "to": {
+            "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+            "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+            "semanticStatus": "EXISTING_REUSE_CANDIDATE_ALTERNATE_DERIVATION_REVIEW",
+            "activationStatus": "HOLD"
+          },
+          "reason": "Existing solution obtains intersection-coordinate interval; existing template states boundary-line method. Same endpoint constraints support scoped candidate review, not unconditional exact-binding PASS."
+        }
+      ],
+      "evidence": [
+        {
+          "path": "workers/B/E002.Q7-generic-reuse-amendment.json",
+          "status": "LOCAL_FILE_UNAVAILABLE"
+        },
+        {
+          "path": "workers/B/E002.Q19-segment-candidate-amendment.json",
+          "status": "LOCAL_FILE_UNAVAILABLE"
+        },
+        {
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E002/review.json",
+          "sha256": "b749a5be93f53bd29dfabe0aa7ce24f214b13bcd3c809aa5574e78a171b58361",
+          "status": "REMOTE_ORIGINAL_EVIDENCE"
+        }
+      ]
+    },
+    {
+      "examId": "E003",
+      "sourceArchiveFile": "original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.js",
+      "applicationStatus": "NOT_APPLIED",
+      "rootAdjudicatedInSession": true,
+      "postChangeNativeValidation": "NOT_RUN",
+      "changes": [
+        {
+          "ordinals": [
+            8,
+            18,
+            23,
+            24
+          ],
+          "field": "finalDifficulty.legacyLevelCompatibility",
+          "to": "BORDERLINE_ACCEPTABLE",
+          "reason": "Accepted legacy상/numeric3; root directly reread Q24 and retained numeric3 for complete parallel/common-intersection alternatives."
+        },
+        {
+          "ordinals": [
+            15
+          ],
+          "field": "RPM",
+          "to": {
+            "rpmRecordId": null,
+            "rpmDecision": "RPM_LEAF_GAP",
+            "preservedSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC"
+          },
+          "reason": "Final quadrant decision from transformed coefficient signs exceeds the intermediate slope/intercept leaf166; propose quadrant graph-properties leaf."
+        },
+        {
+          "ordinals": [
+            23
+          ],
+          "field": "RPM and PT/TPL",
+          "to": {
+            "rpmRecordId": null,
+            "rpmDecision": "RPM_LEAF_GAP",
+            "preservedSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+            "problemTypeCandidate": "PT_LINE_EQUATION",
+            "templateCandidate": "TPL_LINE_MULTI_CONDITION",
+            "semanticStatus": "EXISTING_REUSE"
+          },
+          "reason": "Recover different preserved components from separate misread graphs. Two-point leaf170 describes intermediate graphs; existing multi-condition template already covers final reconstruction. Withdraw new-template proposal C-E003-MISREAD-RECOVERY; scoped binding/resolver stay pending."
+        },
+        {
+          "ordinals": [
+            7,
+            8,
+            21,
+            22
+          ],
+          "field": "method.evidenceType",
+          "to": "IMPLIED",
+          "terms": [
+            "Q7 해석",
+            "Q8 모델링",
+            "Q21 모델링",
+            "Q22 모델링"
+          ],
+          "reason": "Actual inferred interpretation/modeling. Seven other proposed NAMED-to-IMPLIED conversions were withdrawn under contract section8 and must remain NAMED."
+        }
+      ],
+      "evidence": [
+        {
+          "path": "workers/C/E003.amendment-revision2.json",
+          "sha256": "c75110d45a949fea4b769cea79a1015ec08f62438167f9ff950df9882a4399a3"
+        },
+        {
+          "path": "workers/A/cross/E003.amendment-revision2.sample.json",
+          "sha256": "2e2ff1f9277c4770017f8b148b5bba836a1a1354c5cd1f104f733139280fdc89"
+        }
+      ]
+    },
+    {
+      "examId": "E004",
+      "sourceArchiveFile": "original/middle/m2/1final/26_왕의중_1학기_기말_중2_기출.js",
+      "applicationStatus": "NOT_APPLIED",
+      "rootAdjudicatedInSession": true,
+      "postChangeNativeValidation": "NOT_RUN",
+      "changes": [
+        {
+          "ordinals": [
+            20
+          ],
+          "field": "finalDifficulty.legacyLevelCompatibility",
+          "to": "NORMAL",
+          "reason": "Approved numeric1/level하 correction restored a normal current pair; historical strong conflict stays in original evidence."
+        },
+        {
+          "ordinals": [
+            18
+          ],
+          "field": "four-slot candidate parent",
+          "to": {
+            "term": "0이아님",
+            "parent": "조건",
+            "termId": 394,
+            "slot": "condition",
+            "action": "Add parent in same slot using the existing explicit nonzero quote"
+          },
+          "reason": "OPEN_SENTENCE parent is supported; do not infer an unmentioned real-number domain."
+        }
+      ],
+      "evidence": [
+        {
+          "path": "workers/A/E004.candidate-parent-amendment.json",
+          "sha256": "b171b19e367b50e70584dae3253fdb17a5b95dd902b80bf7cebdcea64e47a8d2"
+        }
+      ]
+    },
+    {
+      "examId": "E005",
+      "sourceArchiveFile": "original/middle/m2/1final/26_팔마중_1학기_기말_중2_기출.js",
+      "applicationStatus": "NOT_APPLIED",
+      "rootAdjudicatedInSession": true,
+      "postChangeNativeValidation": "NOT_RUN",
+      "changes": [
+        {
+          "ordinals": [
+            16,
+            20
+          ],
+          "field": "finalDifficulty.legacyLevelCompatibility",
+          "to": "BORDERLINE_ACCEPTABLE",
+          "reason": "C already independently accepted legacy상/numeric3; align label without changing numerical difficulty."
+        }
+      ],
+      "evidence": []
+    },
+    {
+      "examId": "E006",
+      "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+      "applicationStatus": "NOT_APPLIED",
+      "rootAdjudicatedInSession": true,
+      "postChangeNativeValidation": "NOT_RUN",
+      "changes": [
+        {
+          "ordinals": [
+            23
+          ],
+          "field": "finalDifficulty.legacyLevelCompatibility",
+          "to": "NORMAL",
+          "reason": "Accepted 중/numeric3; B23 alone does not imply legacy mismatch."
+        },
+        {
+          "field": "method.evidenceType",
+          "to": "NAMED",
+          "atoms": [
+            {
+              "sourceOrdinal": 1,
+              "term": "무한소수"
+            },
+            {
+              "sourceOrdinal": 2,
+              "term": "무한소수"
+            },
+            {
+              "sourceOrdinal": 3,
+              "term": "순환마디"
+            },
+            {
+              "sourceOrdinal": 4,
+              "term": "순환마디"
+            },
+            {
+              "sourceOrdinal": 6,
+              "term": "순환마디"
+            },
+            {
+              "sourceOrdinal": 6,
+              "term": "합"
+            },
+            {
+              "sourceOrdinal": 7,
+              "term": "약분"
+            },
+            {
+              "sourceOrdinal": 8,
+              "term": "지수법칙"
+            },
+            {
+              "sourceOrdinal": 8,
+              "term": "거듭제곱"
+            },
+            {
+              "sourceOrdinal": 9,
+              "term": "지수법칙"
+            },
+            {
+              "sourceOrdinal": 9,
+              "term": "계수비교"
+            },
+            {
+              "sourceOrdinal": 10,
+              "term": "지수법칙"
+            },
+            {
+              "sourceOrdinal": 11,
+              "term": "계수"
+            },
+            {
+              "sourceOrdinal": 13,
+              "term": "다항식의나눗셈"
+            },
+            {
+              "sourceOrdinal": 13,
+              "term": "분배법칙"
+            },
+            {
+              "sourceOrdinal": 14,
+              "term": "분수"
+            },
+            {
+              "sourceOrdinal": 14,
+              "term": "차"
+            },
+            {
+              "sourceOrdinal": 15,
+              "term": "부등식"
+            },
+            {
+              "sourceOrdinal": 18,
+              "term": "음수"
+            },
+            {
+              "sourceOrdinal": 19,
+              "term": "일차부등식"
+            },
+            {
+              "sourceOrdinal": 20,
+              "term": "일차부등식"
+            },
+            {
+              "sourceOrdinal": 21,
+              "term": "차"
+            },
+            {
+              "sourceOrdinal": 22,
+              "term": "약분"
+            },
+            {
+              "sourceOrdinal": 23,
+              "term": "부피"
+            },
+            {
+              "sourceOrdinal": 23,
+              "term": "분배법칙"
+            },
+            {
+              "sourceOrdinal": 24,
+              "term": "일차부등식"
+            },
+            {
+              "sourceOrdinal": 17,
+              "term": "부등식의성질"
+            },
+            {
+              "sourceOrdinal": 18,
+              "term": "부등식의성질"
+            }
+          ],
+          "reason": "Contract section8 allows a name OR its standard formula in the whole existing solution; short quote need not repeat the name. C proposed26, A independently reviewed them, and root accepted A’s additional Q17/Q18 standard-law prose after direct reread, resolving the earlier scoped disagreement. Preserve terms/quotes; remove now-unneeded IMPLIED justifications. Other true inferred modeling remains IMPLIED."
+        }
+      ],
+      "evidence": [
+        {
+          "path": "workers/C/E006.label-amendment.json",
+          "sha256": "7c4cc682faf02d032ae2794b0ea913ab04e38385efb42ee3eec5726dd8ada7d0"
+        },
+        {
+          "path": "workers/A/cross/E006.label-amendment.sample.json",
+          "sha256": "7f5780eae1705148d1deaf9699ab7cbcbdf8ee947ea5494cf9a3fb3385725b6b"
+        },
+        {
+          "path": "workers/A/cross/E006.evidence-label-recheck.json",
+          "sha256": "057f8500294d31652d6065f514b092f9b2d9315045381c62b7e90bd44b335397"
+        }
+      ]
+    },
+    {
+      "examId": "E008",
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.js",
+      "applicationStatus": "NOT_APPLIED",
+      "rootAdjudicatedInSession": true,
+      "postChangeNativeValidation": "NOT_RUN",
+      "changes": [
+        {
+          "ordinals": [
+            12
+          ],
+          "field": "difficulty",
+          "to": {
+            "difficultyBucket": 2,
+            "difficultyBoundaryFlag": "B23",
+            "legacyLevelCompatibility": "NORMAL",
+            "level": "중"
+          },
+          "reason": "Root read actual source and existing solution and compared E006Q12/E012Q23. Undoing one known erroneous operation then applying the stated correct operation is a standard procedure. Author B and independent C accepted2 and explicitly withdrew the former3 judgment. Confirm exact confidence field in recovered author packet; do not invent it."
+        }
+      ],
+      "evidence": [
+        {
+          "path": "workers/B/E008.Q12-difficulty-amendment.json",
+          "sha256": "b797979cfd009c844bc72ad552eb5317df35373b369595a7930e69458e762644"
+        },
+        {
+          "path": "workers/C/cross/E008.Q12-amendment-review.json",
+          "sha256": "aeb1b1eaf7c74380b68a5b63d7a9c38a269e82db929b84a18f7eb4386b72f2af"
+        }
+      ]
+    },
+    {
+      "examId": "E009",
+      "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+      "applicationStatus": "NOT_APPLIED",
+      "rootAdjudicatedInSession": true,
+      "postChangeNativeValidation": "NOT_RUN",
+      "changes": [
+        {
+          "ordinals": [
+            8
+          ],
+          "field": "four-slot method",
+          "to": {
+            "term": "비율",
+            "termId": 650,
+            "src": "solution",
+            "evidenceType": "NAMED",
+            "action": "Add the registered parent in the same method slot as candidate 농도"
+          },
+          "reason": "Root read the existing solution that explicitly names the concentration ratio, and dictionary650. Preserve the existing concentration candidate and every other atom."
+        }
+      ],
+      "evidence": []
+    }
+  ],
+  "notes": [
+    "These are durable root decision summaries, not reconstructed byte-identical copies of unavailable local author files.",
+    "Raw local hashes must be checked on recovery. If unavailable, reconstruct only these narrow changes from actual committed source/registry evidence and clearly identify newly created evidence; never forge old reviewer hashes.",
+    "Apply supported existing source fields only. Missing/unsupported fields remain source-bound proposals; common registry, generated metadata, runtime and production inbox remain untouched.",
+    "The exact candidate parent rule requires a registered parent atom in the SAME slot.",
+    "BORDERLINE_REVIEW is a valid author-stage enum; transition only after independent adjudication. STRONG_CONFLICT can remain historical after documented adjudication under Difficulty5 v1.3 section11.3.",
+    "Do not blanket-convert formulas to IMPLIED; contract section8 explicitly includes standard formulas."
+  ]
+}
