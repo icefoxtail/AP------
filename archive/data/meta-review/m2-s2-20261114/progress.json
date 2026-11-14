@@ -3628,9 +3628,10 @@
           "sha256": "ce6100aa929455b6d5c6d772e8ebaa94837612ad88e488d8c64e69d60c32b9ae"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "78d8abd6c7c955a17c5407697735c4576004259f"
     },
     {
       "examId": "E026",
@@ -4386,12 +4387,109 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "894d544a9ca53c8362b17a20be6b5e9e2d9d74e7a5b09dbee4bd28d37da503d1"
+      "uidSetSha256": "894d544a9ca53c8362b17a20be6b5e9e2d9d74e7a5b09dbee4bd28d37da503d1",
+      "reviewedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 2,
+      "sourceHoldOrdinals": [
+        19,
+        21
+      ],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        1,
+        8,
+        21
+      ],
+      "independentReviewer": "C",
+      "topicSummary": [
+        {
+          "rpmL1": "일차부등식과 연립일차방정식",
+          "rpmL2": "연립일차방정식",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            9,
+            10
+          ]
+        },
+        {
+          "rpmL1": "일차부등식과 연립일차방정식",
+          "rpmL2": "연립일차방정식의 활용",
+          "ordinals": [
+            5,
+            24
+          ]
+        },
+        {
+          "rpmL1": "일차함수",
+          "rpmL2": "일차함수와 일차방정식의 관계",
+          "ordinals": [
+            6,
+            7,
+            8,
+            23
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            22
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E032/four-slot.json",
+          "sha256": "f8e57070725a5f27b938a299d63ee8b89044193630163a6266648234a549e207"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E032/independent-sample.json",
+          "sha256": "bbce280a96ed18661ba46e7b765e47ce972878aa873a25405b296b228048dc56"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E032/mechanical-check.json",
+          "sha256": "cc30c025c527320e989daf0fea479912705de0d09b79cbfed4e97f33f7e211ff"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E032/review.json",
+          "sha256": "6b59e0e5323c5fc96d240824d4f5455c1ac65f5d1ac66fa8b6610f57fd1bcecd"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E032/root-acceptance.json",
+          "sha256": "53e45ae07c96c71b2d8d883c7b175810883802404b6cd2a0c78261f5c433e7fa"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E033",
@@ -5943,11 +6041,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 29,
-    "reviewedQuestions": 691,
+    "reviewedExams": 30,
+    "reviewedQuestions": 715,
     "unresolvedQuestions": 0,
-    "remainingExams": 38,
-    "remainingQuestions": 913
+    "remainingExams": 37,
+    "remainingQuestions": 889
   },
-  "lastVerifiedExamCommit": "e87f64bf9c0aaab3a45ddcb92b6a4a8fa23560b3"
+  "lastVerifiedExamCommit": "78d8abd6c7c955a17c5407697735c4576004259f"
 }

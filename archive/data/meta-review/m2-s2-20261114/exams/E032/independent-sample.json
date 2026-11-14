@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E032",
+  "examiner": "C",
+  "author": "B",
+  "sourceArchiveFile": "original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "1adf00294a487568daa25188da713dbe84f67dfa",
+  "reviewSha256": "4ee6497113c20915b770117d65827cb97135b753919a7834ef1d6b3686c4d3d2",
+  "fourSlotSha256": "ee7749c134489eb35f6330c00fab74e6c938d059572e77d6afcb6e9c9b816d94",
+  "ordinals": [
+    1,
+    8,
+    21
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_ccf8a2c874822c2b93602bbe252cbeb955635519573ceca8345b6c9abdb9880c",
+      "verdict": "REPAIR",
+      "reason": "원문의 두 빈 표와 자연수 조건을 직접 읽었다. 대입/가감으로 식을 소거하는 골격이 아니라 각 식의 자연수 해를 표에 채워 공통 순서쌍을 고르는 구조이다. PT_H1_SYSTEM_EQUATION은 연립으로 미지수를 정하는 상위 의미라 재사용 가능하고, 기존 DIRECT와 BRANCH_COMMON_ROOT에는 표 조회 골격이 없다. RPM032는 해가 주어지는 역방향이므로 새 해표 leaf 및 NEW_TPL 제안이 타당하다. 다만 given 순서쌍 인용은 해설에서 새로 계산된 값이어서 입력으로는 원문의 자연수 x열 또는 제시된 후보를 인용하는 것이 정확하다.",
+      "repairs": [
+        {
+          "field": "4slot.given",
+          "instruction": "해설에서 구한 자연수 순서쌍을 주어진 것으로 인용한 항목은 제거하거나 실제 stem의 자연수 입력/표 x열 또는 choices의 후보 쌍 인용으로 보강할 것."
+        }
+      ],
+      "imageViewed": false,
+      "quotesExact": true,
+      "quoteCount": 6,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "NORMAL",
+        "accepted": true
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_0b0ded199812fb3c7239aced43b22e5979dd61f61d2ea6d44b91ea50c7b55077",
+      "verdict": "PASS",
+      "reason": "그림과 원문 좌표의 x고정 수직선/y고정 수평선 위치를 확인했다. 기존 GRAPH_PROPERTIES PT는 일차방정식 그래프의 설명 진위라는 목표에 맞지만 현행 TPL은 일차함수꼴로 고친 기울기·절편·사분면 검사라 수직선x2를 포함하는 골격에는 맞지 않는다. 부모 재사용과 축평행좌표고정 NEW_TPL, 공식 RPM055 판단이 정확하다. 4칸의 목표판정과 IMPLIED 좌표대입 근거도 수용한다.",
+      "repairs": [],
+      "imageViewed": true,
+      "quotesExact": true,
+      "quoteCount": 4,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 1,
+        "legacyLevelCompatibility": "NORMAL",
+        "accepted": true
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e7693d013cc210173c6e26a5d78a5c806e5b76ca1850825dfdb10778b02222b3",
+      "verdict": "REPAIR",
+      "reason": "원문의 중단점수 A2/B1과 먼저3승 조건을 읽었다. 다음 판 승리와 다음 판 패배 뒤 승리의 종료 경로를 나누는 반복확률 primary 및 승리확률에 따른 전체 상금 분배 CC_RATIO_AND_PROPORTION 정의가 정확히 맞는다. 기존 해설의 판별독립 가정은 sourceHold로 분리되어 있고 4칸 IMPLIED에 이를 명시한다. bucket3/상 인접 수용. 다만 given의 확률은 입력 확률값이 아니라 구할 가능성을 언급한 문장이므로 시행/게임 입력으로 보강하고, 세 번째 목표는 비례배분 방법명이 아니라 받을 상금의 값으로 표기하는 것이 정확하다.",
+      "repairs": [
+        {
+          "field": "4slot.given",
+          "instruction": "확률 계산을 요구하는 가능성 문구 대신 실제 주사위 게임/연속 시행과 중단 점수 입력을 사전 용어로 인용할 것."
+        },
+        {
+          "field": "4slot.goal",
+          "instruction": "세 번째 소문항 비례배분 항목을 받을 상금의 값으로 정밀화. 비례배분은 method에 유지하고 확률 목표는 첫 두 소문항에 유지."
+        },
+        {
+          "field": "4slot.method",
+          "instruction": "여사건은 수식만 인용하므로 IMPLIED로 바꾸고 B의 승리를 A 승리의 여사건으로 계산한다는 justification을 기록할 것."
+        }
+      ],
+      "imageViewed": false,
+      "quotesExact": true,
+      "quoteCount": 10,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "accepted": true
+      }
+    }
+  ],
+  "overallStatus": "REPAIR",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "실제 발문·표·선지·기존 해설과 Q8 그림 및 관련 ACTIVE 정의를 대조했다. 메타 핵심 결정은 수용하고 given 출처·세 번째 goal의 양 명칭·NAMED 분류만 소형 정밀화한다. sourceHold는 원문 변경과 별도이며 source 수학 독립 검증을 추가하지 않았다."
+  ]
+}
