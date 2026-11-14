@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "m2-s2-meta-independent-sample-v1",
+  "examId": "E018",
+  "author": "C",
+  "reviewer": "A",
+  "sourceArchiveFile": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "8b7afb588404afcc0377fa1c078afb2f6c8a68f5",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewSha256": "5a686495f53eb574efaaf244561cc5fafd61ee3776a4ee3f0885561fec49fa9a",
+  "fourSlotSha256": "289a67384aacc393cf233313b84be49aef1320e74dfefdfc51c8abf13bae0b56",
+  "ordinals": [
+    10,
+    19,
+    24
+  ],
+  "overallConclusion": "PASS",
+  "items": [
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_c1a371f9126afcca271cbbb653a7571a579d4035360639b7ea40e76813ac2331",
+      "conclusion": "PASS",
+      "reason": "실제 그림의38도와 목표각 위치를 확인했다. 현재 해설은 직사각형 두 반쪽의 대변·공통변·직각으로 SAS를 만들고 대응각을 이동하므로 선수 M1 SAS/data transfer 분류가 정확하다. 기존 SQUARE_CONGRUENCE_TRANSFER는 정사각형과 추가 같은길이 입력에 한정되고 PARALLELOGRAM_MIDPOINT_AUDIT는 중점 성질 판정 목표여서 직사각형 입력의 NEW_TPL 구별 근거가 타당하다. 현행 PT만 선택하고 미등록 TPL키를 after에 넣지 않았다. 직각 등의 직사각형 성질을 외부 입력으로 기록한 CC,4칸 IMPLIED합동 및 대응각 근거,중/2 판단을 지지한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_cbce79d66d044679031372d0ff5232970943ba595f1ea3cf7155ec62d5625ef1",
+      "conclusion": "PASS_STRONG_CONFLICT_RETAINED",
+      "reason": "실제 그림과 발문·해설을 대조했다. 이미 주어진 수선의90도에서 작은 삼각형의 나머지각을 구해28도를 더한 후 평행사변형 이웃각의 보각으로 옮기는 정형 흐름이다. 중점 표시를 별도 어려운 전략으로 과대평가할 이유가 없어 bucket2 medium/B23가 타당하다. 원문상과2의 관계는 운영규칙상 STRONG_CONFLICT이므로 인접수용으로 덮지 않는 현재 처리에 동의한다. CC_TRIANGLE_ANGLE_SUM은 평행사변형 주분류 전에 별도의 DCP 삼각형 각을 공급하므로 중복이 아니며4칸 인용도 정확하다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_3e3632da90a08a2aea2595516ff497d8f10ece7b3f3774c1a985bd816eb6f69b",
+      "conclusion": "PASS",
+      "reason": "발문이 직각삼각형 합동을 활용하도록 지정하고 기존 해설은 보조 수선E를 도입하여 공통빗변AD와 반각으로 RHA를 만든다. 그러므로 각이등분선 대변비 공식을 쓰는 다른 해결책으로 primary를 바꾸면 실제 지정 방법을 잃는다. RHA가 정한 두 같은 길이를 이용한 피타고라스식과 넓이의 입력은 CC_TRIANGLE_AREA/CC_PYTHAGOREAN 및 SEQUENTIAL로 정확히 분리되어 있다. 후자는 빗변계산에만 제한되지 않는 세 변 관계의 ACTIVE 정의다. 4칸에 method지정이 condition으로 보존되고 actual RHA·피타고라스 인용은 정확하다. 새 보조선과 제곱항 소거까지 이어지는4 판단을 지지한다."
+    }
+  ],
+  "exactQuotesChecked": 18,
+  "freshMathematicalReverification": false,
+  "authorFilesModified": false
+}
