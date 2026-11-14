@@ -7372,9 +7372,10 @@
           "sha256": "7ec9af90c3ffbef0b270d550ac7ebd9130a11e527e3962182307eb344c9a281f"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "44c2cdce39b825638aae4521574ac62aa9506efb"
     },
     {
       "examId": "E049",
@@ -7594,12 +7595,118 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "f95e86980762b83764ac22cc9c6025fbeee9b6da44c6d101c06a3994227cf9c8"
+      "uidSetSha256": "f95e86980762b83764ac22cc9c6025fbeee9b6da44c6d101c06a3994227cf9c8",
+      "reviewedQuestionCount": 24,
+      "fullyJudgedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "unresolvedOrdinals": [],
+      "sourceHoldQuestionCount": 3,
+      "sourceHoldOrdinals": [
+        3,
+        11,
+        18
+      ],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        11,
+        17,
+        23
+      ],
+      "independentReviewer": "C",
+      "topicSummary": [
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "평행사변형",
+          "ordinals": [
+            1,
+            3
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "여러 가지 사각형",
+          "ordinals": [
+            2,
+            4,
+            5,
+            6,
+            17
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            7,
+            8,
+            9,
+            21,
+            22
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선 사이의 선분의 길이의 비",
+          "ordinals": [
+            10,
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            15,
+            23
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            16,
+            18,
+            19,
+            20,
+            24
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E050/four-slot.json",
+          "sha256": "2c5626f1e832b151185010463c1fc57169e828a05949af02e17554687ce975a5"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E050/independent-sample.json",
+          "sha256": "8deec5b22324c5e17dbfaff9687504d0e22a39e3ce7be4e62bfc7cd618f748b6"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E050/mechanical-check.json",
+          "sha256": "d58c8c2afafa238eaf259fd5dc0040d1bedef7ba792ad35f521e83f53f13fe04"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E050/review.json",
+          "sha256": "e4c64078c45c979b2c2cdcbef48fd32dd86ac0982f67a419fe456c0f708fad07"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E050/root-acceptance.json",
+          "sha256": "70caf742bc6b4ab1ac1d6a4e8a3d5f136fe3194dea3ba9c99c64a0e4230222da"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E051",
@@ -8357,14 +8464,14 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 49,
-    "reviewedQuestions": 1171,
-    "fullyJudgedQuestions": 1156,
+    "reviewedExams": 50,
+    "reviewedQuestions": 1195,
+    "fullyJudgedQuestions": 1180,
     "unresolvedQuestions": 15,
-    "remainingExams": 18,
-    "remainingQuestions": 433
+    "remainingExams": 17,
+    "remainingQuestions": 409
   },
-  "lastVerifiedExamCommit": "3c487eed91cdbdad1e1a574eb931aefb7e39ad2a",
+  "lastVerifiedExamCommit": "44c2cdce39b825638aae4521574ac62aa9506efb",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",
