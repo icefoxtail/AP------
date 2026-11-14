@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E033",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "165891f33f344f5867b7fbc200653c5f762de70e",
+  "artifactHashes": {
+    "review.json": "28d5fb418531b92f3ba1fdcccc29bc3beb049e717b51fe6c20ffe7fe59dfe619",
+    "E033.4slot.json": "b5a151f6d39ef94771810b01023d6f820a21d7ba36dae2a4277536349522f2a3",
+    "source-patch.json": "1ec602daa53ff852e9f3bc0508486e27c3c2b85621eb4529e8bb39f370313b44"
+  },
+  "sampleOrdinals": [
+    12,
+    17,
+    20
+  ],
+  "items": [
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_a26422b90913af4a2d3b8008f25fd35950f71cfe4e2bd440c0f9e70de872679a",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "평균에2배+1, 표준편차에2배만 적용하는 실제 변환과 두 결과의 합 목표가 모두 정확히 인용됐다. PT의 선형변환 범위와 세부TPL gap 구분이 타당하다.",
+      "assetsInspected": []
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_4876803d3aa2310a95422cc3c68fde54c16eee62b29aa09ed4d89beca0efd243",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "실제 해설이 음의 상관 추세를 명시하고 표시점 E의 상대 위치를 그 추세와 연결한다. 보완된 상관관계 method와 기존좌표 method가 실제 전체해설을 담으며 current180의 분포·상관 종합 해석이 타당하다. 원본 산점도를 직접 확인했다.",
+      "assetsInspected": [
+        "assets/images/22_연향중_2학기_기말_중3_기출/q17.png"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_a6d11d179ed446ffa82bc1ff992cd57f1d8e8b4cc0340693ed8f87b6b53b2728",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "문자자료의 평균·편차로 분산 방정식을 구성하고 인수분해한 두 근 중 양수만 선택하는 실제 풀이를 모두 기록했다. 양수 condition과 COND_POSITIVE, 보조 이차방정식 CC가 실제 제한·방법에 맞다.",
+      "assetsInspected": []
+    }
+  ],
+  "status": "PASS_AFTER_CORRELATION_METHOD_AND_CURRENT_LEAF_CORRECTION",
+  "rootAdjudicationRefs": [
+    {
+      "path": "/workspace/scratch/9c9d44bb632b/root-validation/E033.difficulty-adjudication.json",
+      "sha256": "d2f7d23687aabdc9963607ad63e280d47a2d566311746128f07ce7b2570b5085"
+    },
+    {
+      "path": "/workspace/scratch/9c9d44bb632b/root-validation/E033.primary-adjudication.json",
+      "sha256": "a16c47ddf8eb51f8c257d85219be06d38425fd0870fd453ca393e1e30b2738ed"
+    }
+  ],
+  "scope": "Metadata/4slot semantic review only; no new mathematical R1/R2/R3"
+}

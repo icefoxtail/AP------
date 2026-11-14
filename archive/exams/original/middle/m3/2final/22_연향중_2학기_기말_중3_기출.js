@@ -36,7 +36,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O의 중심각 AOB와, 점 C를 포함하지 않는 큰 호 AB 및 원주각 x를 보여 주는 그림",
     "solutionImageCaption": "파란 중심각 ∠AOB=100°이므로 점 C를 포함하지 않는 큰 호 AB(주황)는 360°−100°=260°이다. 원주각 x는 이 큰 호의 절반이다. 정답은 130°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -73,7 +80,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 반원 O의 지름 AB와 접선 BP에서 각 α가 같은 두 각, 그리고 각의 이등분선 PD와 맞꼭지각 110°를 두 그림으로 보여 주는 그림",
     "solutionImageCaption": "∠CAB=α라 하면 AB가 지름이므로 ∠ACB=90°이고 접선과 현의 각으로 ∠CBP=α(빨강)이다. 따라서 ∠APB=90°−α이고 PD가 이를 이등분한다. 맞꼭지각 ∠BEP=∠CED=110°를 삼각형 BEP에 쓰면 α=50°이다. 정답은 50°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_ANGLE_BISECTOR_PROPERTY","CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 3,
@@ -110,7 +124,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 두 접선의 각, 중심각 AOB와 같은 작은 호 AB를 보는 원주각 x를 보여 주는 그림",
     "solutionImageCaption": "접점에서 반지름은 접선에 수직이므로 사각형 O, A, P, B에서 ∠AOB=180°−40°=140°(파랑)이므로 작은 호 AB(주황)도 140°이다. 원주각 x(빨강)는 이 호의 중심각의 절반이다. 정답은 70°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -143,11 +164,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "templateKey": null,
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 A, B, C, D와 연장선의 교점 P, 마주 보는 각 쌍과 각 x를 보여 주는 그림",
     "solutionImageCaption": "내접사각형의 마주 보는 각의 합은 180°이므로 ∠BAD=180°−105°=75°이다(파랑 쌍). 삼각형 ABP의 두 각이 75°, 80°이므로 나머지 각 x는 180°−75°−80°=25°이다. 정답은 25°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -180,11 +208,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 접선 PT, 현 TC·TA와 같은 크기의 각 쌍, 삼각형 PCT의 각 x를 보여 주는 그림",
     "solutionImageCaption": "∠ABT=112°(파랑)이므로 접선과 현의 각과 원에 내접한 사각형의 성질로 ∠PCT=112°이다. 접선 PT와 현 TC가 이루는 각 ∠PTC는 ∠CAT와 같은 36°(초록)이다. 삼각형 PCT에서 x=180°−112°−36°=32°이다. 정답은 32°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 6,
@@ -221,7 +256,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 지름 AB, 접선 CP, 30°로 같은 세 각과 변 BC를 보여 주는 그림",
     "solutionImageCaption": "AB가 지름이므로 ∠ACB=90°이고 ∠BAC=30°, AB=10에서 BC=5이다. 접선과 현의 각으로 ∠BCP=30°이고 삼각형 BCP에서 ∠BPC=30°이므로(초록, 같은 크기) BP=BC이다. 정답은 5이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_TRIG_RATIO","CC_ISOSCELES_CONVERSE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -249,7 +291,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -277,7 +328,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -305,7 +365,15 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -333,7 +401,15 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -363,7 +439,15 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -391,7 +475,15 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 13,
@@ -427,7 +519,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 두 차례 점수의 산점도에서 2차 점수가 1차 점수보다 높은 학생의 점을 직선 y=x 위쪽에서 주황색으로 표시한 그림",
     "solutionImageCaption": "2차 점수가 1차 점수보다 높은 조건은 y>x이다. 동점인 경계선을 제외하고 위쪽의 주황색 점에 동그라미를 치면 7개이다. 정답은 7명이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -462,7 +561,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 두 차례 점수의 산점도에서 두 점수의 합이 36 이상인 점을 직선 x+y=36 위쪽에서 주황색으로 표시한 그림",
     "solutionImageCaption": "두 점수의 평균이 18점 이상이면 x+y≥36이다. 경계선 위와 위쪽의 주황색 점에 동그라미를 치면 6개이고 전체 20명 중 30%이다. 정답은 30%이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_MEAN","CC_LINEAR_INEQUALITIES"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -497,7 +603,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 청결도와 안전성 산점도에서 청결도가 2 이하인 점을 직선 x=2 왼쪽에서 주황색으로 표시한 그림",
     "solutionImageCaption": "청결도가 2점 이하인 주황색 점은 7개이고 안전성 점수는 4, 2, 1, 2, 3, 4, 5이다. 합 21을 7로 나누면 평균이 나온다. 정답은 3점이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -528,7 +641,14 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -559,7 +679,14 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 18,
@@ -587,7 +714,14 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -619,7 +753,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 공통접선과 두 원에서 접선과 현의 각을 쓰는 큰 원 그림, E에서 작은 원에 그은 같은 길이의 두 접선을 쓰는 작은 원 그림",
     "solutionImageCaption": "큰 원에서 접선과 현의 각으로 ∠EAC=∠CBA=30°(초록)이고 y=∠BCA=∠BAT'=70°(파랑)이다. 삼각형 AEC에서 ∠AEC=40°이다. E에서 작은 원에 그은 두 접선의 길이가 같으므로 EA=ED이고 ∠EAD=70°이어서 x=∠CAD=70°−30°이다. 정답은 30°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 20,
@@ -644,7 +785,14 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": ["CC_QUADRATIC_EQUATION"],
+    "conditionKeys": ["COND_POSITIVE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 21,
@@ -675,6 +823,13 @@ window.questionBank = [
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 수학·영어 점수 산점도에서 모두 90점 이상인 점(파랑), 두 점수의 차가 가장 큰 점(주황), 수학 점수가 더 높은 점(초록)을 세 그림으로 나누어 보여 주는 그림",
     "solutionImageCaption": "수학 점수와 영어 점수가 모두 90점 이상인 파란 점은 3개이다. 두 점수의 차가 가장 큰 점은 주황 점, 수학 30점 영어 70점이다. 수학 점수가 영어 점수보다 높은 초록 점(x>y)은 5개이므로 20명 중 25%이다. 정답은 a=3, b=30, c=25이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_RANGE","COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
