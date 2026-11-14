@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "similar-exam-candidate-review-receipt-v1",
+  "examUid": "22_향림중_1학기_중간_중3_유사",
+  "source": {
+    "documentId": "1nIzcS8we28HNoa7X9PvGY6mnFD1cTgp8zafCvRxj3LE",
+    "revisionId": "AHj4eMQC5ICyGkIHHO3QYWlUlkdpj1KygBig0hlRXPDDAM-0w80kchIl8s0m4sJBD6tCW3DMTV0Gfmpvrnawidp2g7SDC1t2WTAkIHkZcE4",
+    "title": "22_향림중_1학기_중간_중3_유사_일체형.md",
+    "questionCount": 24,
+    "totalScore": 100,
+    "sourceArchiveFile": "archive/exams/original/middle/m3/1mid/22_향림중_1학기_중간_중3_수학.js",
+    "sourceBlobSha1": "07d0f60051d0f8c400936f3bace2eb4a2af85a4e",
+    "paragraphCount": 432,
+    "tables": 1,
+    "tableSize": "10x6",
+    "inlineImages": 0
+  },
+  "candidateJs": "archive/exams/similar/middle/m3/1mid/22_향림중_1학기_중간_중3_유사.js",
+  "candidateBlobSha1": "c1961fcb80a33bcd78095a9e9c52e40525638344",
+  "authoringStatus": "R1_R2_MATH_PASS; FORMAT_FIXES_APPLIED; VISUAL_AND_PLAN_DEBT; METADATA_EVIDENCE_DEBT",
+  "sourceAudit": {
+    "sameExamCandidateOnAccumulationBase": false,
+    "sourceOriginalPathVerified": true,
+    "sourceDocRevisionMatched": true,
+    "mdSourcePathResolved": "MD sourceArchiveFile omits the archive/exams/ prefix; resolved exact suffix to actual path archive/exams/original/middle/m3/1mid/22_향림중_1학기_중간_중3_수학.js",
+    "contentCorrections": [
+      {
+        "qid": 1,
+        "kind": "formatting",
+        "before": "Q1 list separators arrived as vertical-tab controls in the Docs text extraction.",
+        "after": "Normalized the separators to ordinary line breaks.",
+        "reason": "Preserves the five listed statements and prevents control-character display."
+      },
+      {
+        "qid": 3,
+        "kind": "missing-figure-repair",
+        "before": "Stem refers to a shaded figure absent from the native Doc and source JS asset record.",
+        "after": "Rephrased as a direct irrational-number classification count; retained the seven values and key.",
+        "reason": "Makes the candidate answerable without an unavailable diagram; student benefit diagram remains a pending visual item."
+      },
+      {
+        "qid": 7,
+        "kind": "missing-figure-repair",
+        "before": "Stem depends on a grid figure absent from the Doc; the solution states A,D,B coordinates and P/Q side ordering.",
+        "after": "Made the coordinates and left/right placement explicit in the stem and cleaned punctuation artifacts in answer choices.",
+        "reason": "Restores all information needed to determine the unique pair; retains the source variation values."
+      },
+      {
+        "qid": 19,
+        "kind": "formatting",
+        "before": "The custom operation symbol was surrounded by stray semicolons.",
+        "after": "Removed the delimiter artifacts while keeping the defined operation symbol.",
+        "reason": "Formatting correction only."
+      },
+      {
+        "qid": "3,5,7,9,10,16,17,22,23,24",
+        "kind": "formatting",
+        "before": "aligned math environments used a single backslash-space between rows",
+        "after": "replaced row separators with TeX double-backslash row breaks",
+        "reason": "Independent R2 flagged malformed/misaligned TeX separators. Mathematical content unchanged; no render claim."
+      }
+    ],
+    "openVisuals": [
+      "Q03 and Q07 may benefit from diagrams; candidate is textually self-contained after repair; no SVG/render created."
+    ],
+    "tableConversion": [
+      "Q21: native 10x6 Google Docs table transcribed cell-by-cell into AP Table Engine pipe format."
+    ],
+    "metadataRepairs": [
+      {
+        "qids": [
+          8,
+          9,
+          10,
+          17,
+          23
+        ],
+        "before": "Legacy PT_RADICAL_EXPRESSION / TPL_RADICAL_EXPRESSION_SIMPLIFY from Doc candidate metadata",
+        "after": "Mapped q8/q9 to TPL_M3_RADICAL_MIXED_OPERATION; q10 to TPL_M3_RADICAL_MIXED_OPERATION; q17/q23 to TPL_M3_RADICAL_RATIONALIZATION, all under PT_M3_RADICAL_CALCULATION. Original Doc values retained in unclassified sidecar.",
+        "reason": "Draft harness rejected the legacy values as unregistered in the M3 course pack."
+      }
+    ]
+  },
+  "mathReview": {
+    "status": "R1_R2_MATH_PASS_24_OF_24; FORMAT_FIXES_AND_CANONICAL_METADATA_DELTA_REVIEWED",
+    "r1": {
+      "status": "PASS",
+      "coverage": "Final math content reviewed on blob 26fdef... after TeX row-break repairs; all 24 answers and solution chains checked against source. Subsequent final change affected only q8/q9 template metadata.",
+      "evidence": "archive/exams/similar/middle/m3/1mid/22_향림중_1학기_중간_중3_유사.R1-final-delta.json",
+      "sha256": "8a4c24d68efe74a8fef37eadf83093aa13bde425bcc7b89d958e30ca88c0cb88",
+      "reviewedCandidateBlob": "26fdef3067514ee4e012ea059e4ab017bee55bdd"
+    },
+    "r2": {
+      "status": "PASS_MATH_FORMAT_TAXONOMY_DELTA",
+      "coverage": "All 24 keys and solutions independently reviewed on earlier bound blob; final delta checked TeX separators, active taxonomy keys, and template parent mapping.",
+      "evidence": [
+        "archive/exams/similar/middle/m3/1mid/22_향림중_1학기_중간_중3_유사.R2-math-review.json",
+        "archive/exams/similar/middle/m3/1mid/22_향림중_1학기_중간_중3_유사.R2-format-taxonomy-delta.json"
+      ],
+      "sha256": [
+        "8930b4a32cbbfa36e78b7faa6e280a91e3d598239370b30b8d7b541b7b4a94ec",
+        "b374dc2d18a4e30a623fe62843f3fbf7b828eb1d4d53259069b85cd51db128c1"
+      ],
+      "reviewedCandidateBlob": "26fdef3067514ee4e012ea059e4ab017bee55bdd",
+      "taxonomyDeltaEvidence": "archive/exams/similar/middle/m3/1mid/22_향림중_1학기_중간_중3_유사.R2-final-taxonomy-delta.json",
+      "taxonomyDeltaSha256": "8478433cb1a5adb6c1bae9a5911d6d4f41f189f0ef53468476de55dee98ffa25",
+      "taxonomyDeltaCandidateBlob": "c1961fcb80a33bcd78095a9e9c52e40525638344",
+      "finalFindings": "Q8/Q9 use the closer active TPL_M3_RADICAL_MIXED_OPERATION; both parent type bindings verified in MIDDLE3 and compiled registries."
+    },
+    "deltaNote": "The final post-R1 math edit was limited to q8/q9 templateKey metadata; R2 verified those final mappings. Math content and answer keys unchanged."
+  },
+  "metadataReview": {
+    "status": "UNREVIEWED_EVIDENCE_DEBT",
+    "candidateRows": 24,
+    "resolverStatus": "NOT_RUN",
+    "fourSlotStatus": "UNREVIEWED_24",
+    "registrationStatus": "NOT_SUBMITTED"
+  },
+  "visualReview": {
+    "status": "PARTIAL_PLAN_ONLY: Q3/Q7 diagram benefit recorded; no author plan files, assets, renders, or screen review created",
+    "problemNeed": [
+      3,
+      7
+    ],
+    "solutionNeed": [
+      3,
+      7
+    ],
+    "problemPresent": [],
+    "solutionPresent": [],
+    "createdAssets": [],
+    "renderedItems": []
+  },
+  "checks": {
+    "nodeSyntax": "PASS: node --check",
+    "tableParser": "PASS: 1 native table represented; 0 FAIL",
+    "genericHarness": "FAIL: only missing author plans directory archive/exams/similar/middle/m3/1mid/22_향림중_1학기_중간_중3_유사_plans; taxonomy errors resolved.",
+    "remoteCommit": "PENDING push/readback",
+    "qualityPreflight": "NOT_RUN: Golden/Negative calibration evidence not available; not claimed"
+  }
+}
