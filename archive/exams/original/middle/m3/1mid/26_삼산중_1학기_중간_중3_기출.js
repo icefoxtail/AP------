@@ -19,7 +19,6 @@ window.questionBank = [
       "무리수",
       "유리수",
       "순환소수",
-      "표해석",
       "수직선"
     ],
     "wide": false,
@@ -33,10 +32,10 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "실수의 기본 성질을 보기마다 확인한다.\n① 0의 제곱근은 0 한 개이므로 거짓이다.\n② 무한소수 중 순환소수는 유리수이므로 거짓이다.\n③ 실수에는 양수와 음수뿐 아니라 0도 있으므로 거짓이다.\n④ $\\sqrt4=2$처럼 근호를 써도 유리수인 경우가 있으므로 거짓이다.\n⑤ 모든 실수는 수직선 위의 한 점으로 나타낼 수 있으므로 참이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -69,10 +68,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "제곱근의 성질을 이용해 각 보기를 계산한다.\n① $(\\sqrt5)^2=5$\n② $\\sqrt{(-7)^2}=\\sqrt{49}=7$\n③ $\\sqrt{0.001}\\times\\sqrt{10}=\\sqrt{0.01}=0.1$\n④ $\\sqrt{144}-(-\\sqrt3)^2=12-3=9$\n⑤ $\\sqrt{(-0.05)^2}\\times(\\sqrt8)^2=0.05\\times8=0.4$\n옳은 것은 ③뿐이므로 정답은 ③이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -106,10 +105,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$\\sqrt7$과 $\\sqrt{19}$의 크기를 기준으로 비교한다.\n$\\sqrt7\\approx2.65$, $\\sqrt{19}\\approx4.36$이다.\n① $3$, ② $\\sqrt{15}\\approx3.87$, ④ $\\sqrt7+1\\approx3.65$, ⑤ $2\\sqrt6-1\\approx3.90$은 두 수 사이에 있다.\n③ $\\sqrt5+3\\approx5.24$는 $\\sqrt{19}$보다 크다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 같은 눈금에서 7과 19는 열린 경계이다. 다섯 보기의 양수를 제곱한 값을 여러 줄로 나누어 표시했다.",
     "solutionImageCaption": "보기는 모두 양수이므로 제곱해 7과 19 사이인지 확인한다. 제곱값 9, 15, 8+2√7, 25−4√6은 그 사이에 있고, 14+6√5는 19보다 크다. 정답은 ③이다.",
@@ -489,9 +488,7 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "인수분해",
       "전개",
-      "계수비교",
       "조건해석",
       "계산"
     ],
@@ -562,9 +559,7 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "인수분해",
       "곱셈공식",
-      "정수조건",
       "참거짓",
       "오류판별",
       "대입"
@@ -603,7 +598,6 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "인수분해",
       "전개",
       "도형",
       "사각형",
@@ -646,9 +640,7 @@ window.questionBank = [
       "다항식",
       "인수분해",
       "계수비교",
-      "조합",
       "정수조건",
-      "오류판별",
       "조건해석"
     ],
     "wide": false,
@@ -662,10 +654,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$6x^2+x-15=(3x+5)(2x-3)$이다. 가운데 항은 $-9x+10x=x$로 맞는다.\n두 인수의 합은 $(3x+5)+(2x-3)=5x+2$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -699,10 +691,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$x^2+9x+k=(x+a)(x+b)=x^2+(a+b)x+ab$이므로 $a+b=9$, $k=ab$이다.\n자연수 쌍은 $(1,8),(2,7),(3,6),(4,5)$이고 $k$는 $8,14,18,20$이다.\n최솟값과 최댓값의 합은 $8+20=28$이므로 정답은 ①이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -718,7 +710,6 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "인수정리",
       "인수분해",
       "공통인수",
       "자연수조건",
@@ -736,10 +727,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$x+c$가 공통인수이므로 $x=-c$를 대입하면 $c(a-c)=24$, $c(c-b)=16$이다.\n따라서 $c$는 24와 16의 공약수 $1,2,4,8$ 중 하나이다.\n$b=c-\\frac{16}{c}$가 자연수가 되는 것은 $c=8$뿐이고 이때 $b=6$이다.\n또 $a=8+\\frac{24}{8}=11$이다.\n따라서 $a-b+c=13$이고 정답은 ③이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
@@ -760,10 +751,10 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) 4\\n(2) 17",
     "solution": "(1) $5<\\sqrt{31}<6$, $9<\\sqrt{83}<10$이므로 조건을 만족하는 자연수 $a$는 $6,7,8,9$의 4개이다.\n\n(2) $\\sqrt{17}$보다 크거나 같은 자연수는 5부터 시작한다. 정확히 4개가 되려면 $5,6,7,8$만 포함되어야 하므로 $8<\\sqrt b\\le9$이다.\n따라서 $64<b\\le81$이고 자연수 $b$는 65부터 81까지 총 17개이다.\n\n따라서 (1) 4, (2) 17이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 첫 소문항의 근호 경계와 자연수 눈금, 둘째 소문항의 √b 경계 및 5~8 자연수 위치를 나타낸 수직선.",
     "solutionImageCaption": "(1) 자연수 a는 6,7,8,9의 4개이다. (2) 8<√b≤9이므로 자연수 b는 65부터 81까지 17개이다. 정답: (1) 4, (2) 17.",
@@ -812,10 +803,10 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) (x+5)(x+15)\\n(2) 5600",
     "solution": "(1) 곱해서 75, 더해서 20이 되는 두 수는 5와 15이므로 $x^2+20x+75=(x+5)(x+15)$이다.\n\n(2) $x=65$를 대입하면 $65^2+20\\times65+75=(65+5)(65+15)=70\\times80=5600$이다.\n\n따라서 (1) $(x+5)(x+15)$, (2) 5600이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 24,
