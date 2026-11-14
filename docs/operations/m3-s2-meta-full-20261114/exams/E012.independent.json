@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E012",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "330eda85a130339d8bb1427468c05ba52d9c893d",
+  "artifactHashes": {
+    "review.json": "0c1a8bdf665cd9ce504f2d59fb47edf7d937361e3c16987e24d2d9d731a7ec63",
+    "E012.4slot.json": "06abf1b11d5830ac1f08fb93f37067cae4ddedd7b96c8d9f9e9b5250e09c7129",
+    "source-patch.json": "22f5ddfe38875294b3f5354ee12584f0f3f95258c80aa06b9fe279feaafb60aa"
+  },
+  "sampleOrdinals": [
+    4,
+    11,
+    12
+  ],
+  "items": [
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_9636e5f1f521f5e8aebfbe82a8e744aa4fa8d4593fc9bedccba11692d21e67c3",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "sin과cos 열을 역조회하는 방법과 각이라는 목표가 정확하다. 단일 삼각비 method는 실제 표 역조회를 justification에서 설명하여 충분하다.",
+      "assetsInspected": []
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_92b13ad02eb38a3298d946d6b4d38e45bffb39c50974272174814424f27891d1",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "밑변과 넓이만으로 높이를 역산하며 삼각비를 사용하지 않는 경계를 정확히 구별했다. 기존 source envelope와 RPM leaf gap 분리도 적절하다. 넓이 수량 대신 삼각형넓이공식 후보 leaf가 실제 결정 방법을 명시하도록 보완됐다.",
+      "assetsInspected": [
+        "assets/images/25_왕운중_2학기_중간_중3_수학/q11.png"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_f7be4418352cb51897eabfaa23709be51702d4aad8cf0789fcb89ba5cef54193",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "정육각형 중심거리에서cos30°로 반지름을 구한 뒤 원에서 다각형 넓이를 빼는 삼각비 활용 주분류가 타당하다. 전체 원넓이에 맞게 CC_CIRCLE_CIRCUMFERENCE로 수정되어 부채꼴 CC의 범위 과용이 해소됐다.",
+      "assetsInspected": [
+        "assets/images/25_왕운중_2학기_중간_중3_수학/q12.png"
+      ]
+    }
+  ],
+  "status": "PASS_AFTER_REQUESTED_CORRECTIONS",
+  "scope": "Metadata/4slot semantic review only; no new mathematical R1/R2/R3"
+}

@@ -1,0 +1,123 @@
+[
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "삼각비표·근삿값·역조회로 값을 비교하거나 각을 찾는다.",
+    "distinguishingCriterion": "삼각비표의 사인 열과 코사인 열에서 주어진 값의 행을 각각 역조회하여 각을 읽는다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_9636e5f1f521f5e8aebfbe82a8e744aa4fa8d4593fc9bedccba11692d21e67c3"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "삼각비 식의 변형·부호·범위·항등 관계를 정리한다.",
+    "distinguishingCriterion": "예각 삼각비의 부호·범위를 사용해 근호 안 제곱식의 절댓값을 올바른 부호로 풀어 식을 정리한다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+    "rpmRecordId": "M3-RPM-056",
+    "supportingQuestionUids": [
+      "qid_v1_354f9b83e5e54324890fc7911aa431354d76bca337c76a9be346e03b1a1cb475"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "삼각비표·근삿값·역조회로 값을 비교하거나 각을 찾는다.",
+    "distinguishingCriterion": "사분원의 가로·세로 투영을 코사인·사인으로 읽고 여각 관계와 두 비의 몫으로 각 보기의 참거짓을 판단한다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+    "rpmRecordId": "M3-RPM-056",
+    "supportingQuestionUids": [
+      "qid_v1_0dd10b5dcfcf58ed72d73eef59124cd4bb850f9a5b84a47edb1aca14dd2921e1"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "RPM_PRIOR_SCOPE_AND_NEW_TPL_REVIEW",
+    "nameKo": "기본 삼각형 넓이에서 높이 역산",
+    "reuseDefinition": "넓이 S와 밑변 b가 주어지고 수직 높이 h를 2S/b로 구한다.",
+    "distinguishingCriterion": "삼각비나 각을 사용하지 않는다. 삼각비 활용 leaf를 시험 단원만으로 부여하면 실제 결정방법을 오표기한다.",
+    "parentScope": "선행 기본 도형 넓이: 현재 RPM 중학 full leaf 정확 대응 미발견; source 시험단원 보존",
+    "globalActiveNearMatchesRejected": [
+      "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "TPL_M1_COORD_TRIANGLE_AREA_DIRECT"
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_92b13ad02eb38a3298d946d6b4d38e45bffb39c50974272174814424f27891d1"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "현 수직이등분 증명의 합동 조건 검토",
+    "reuseDefinition": "중심에서 현에 내린 수선의 양쪽 직각삼각형에서 반지름과 공통변을 확인해 RHS 합동 증명의 누락·오류를 판정한다.",
+    "distinguishingCriterion": "현의 수직이등분 결과를 쓰는 TM_CIRCLE_CHORD_PERP_BISECTOR와 달리 정리의 증명 조건 자체를 검사한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "supportingQuestionUids": [
+      "qid_v1_9ad76dfea4ad1b70be3eef74afcce9beef5f032f0db3fc039c6e15e14ccee4cc"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+    "distinguishingCriterion": "빗변의 중점이 외심이라는 성질로 BM을 얻고 평행·닮음으로 BH를 복원한 다음 작은 직각삼각형의 사인을 읽는다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_3da247cda73b23960952fca24f1c30f747772d5e7048cd724fdcfbc9bc68b63e"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+    "distinguishingCriterion": "30도 삼각형의 두 직각변을 구하고 45도 방향의 수평 성분을 합해 빗변의 수평 투영과 연결하여 sin75를 유도한다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_5821bb29aeb617cfb7aeef38bebf72df7c3cb1fcb2aad0bb5574c322917625c7"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]
