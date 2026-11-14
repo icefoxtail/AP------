@@ -1,0 +1,242 @@
+{
+  "sampleReviewer": "A",
+  "sampleFile": "E012.sample-revision2.json",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 3,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "약분을 선행하여 남는소인수와 사라지는7을 구별하는 전처리이므로2. source하와 인접허용 가능.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 5,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "순환부분이 같은 두 배수식을 빼는 안내된 표준절차.2/B12 적합.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "약분 뒤7이 소거되는 예외와 한자리자연수 후보를 함께 확인하므로3/B23 허용.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 7,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "두 잘못읽기에서 보존된 서로다른 성분을 결합하는 조건해석구조3. 내용전제충돌은 별도debt.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 10,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "2와5를10거듭제곱으로 묶는 표현선택 후 자릿수·숫자합을 해석하므로3. 상과 인접불일치 허용 가능.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 12,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "괄호음수처리→동류항정리→계수와상수항읽기의 표준전처리라2. source하와 인접허용 가능.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "한부등식을 정리한 해의 끝점을 같게두는 익숙한 역문제로2. 기존상의강한충돌은 역사로 유지하고 root판정 필요.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "왕복시간과머문시간의합≤60이라는 즉시결정되는 정형전략이고 E007Q24의같은template와 일치. 두속력만 다를뿐 추가접근선택없어2/B23 권고. Revision2: author corrected to2 and exact final bytes independently checked.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 23,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "원식복원후바른뺄셈은 E006Q12와동형이며 여기단변수로 더단순. 익숙한역연산전처리이므로 source2 유지/B23 권고. Revision2: author corrected to2 and exact final bytes independently checked.",
+      "independentReviewer": "A"
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT",
+      "reason": "문장활용이아닌 괄호일차부등식직접풀이이므로 sidecarWORD→기본교정."
+    },
+    {
+      "sourceOrdinal": 18,
+      "decision": "ACCEPT",
+      "reason": "순수식부등식의자연수해합이므로 sidecarWORD→기본교정."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT",
+      "reason": "5/7의순환마디주기로100자리안특정숫자개수계산이므로 sidecarPOLYNOMIAL→REPEATING교정."
+    },
+    {
+      "sourceOrdinal": 22,
+      "decision": "ACCEPT",
+      "reason": "각뿔부피공식으로높이를구하는실제M1각뿔215 primary; 문자의지수는계산에서그대로남는다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT",
+      "reason": "예산과포장비/개당가격을이용한최대자연수수량의문장활용으로 sidecar기본→WORD교정."
+    },
+    {
+      "sourceOrdinal": 10,
+      "decision": "ACCEPT",
+      "reason": "CC_PLACE_VALUE 실제definition은자리숫자×자리단위의값. 125×10^7를십진자리로해석하는보조개념에맞으며SEQUENTIAL결합합당."
+    }
+  ],
+  "semanticOverrides": [],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 3,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "약분을 먼저 하여 제거되는7과 남는3을 구별해야 한다. E006Q5와 같은 전처리 구조로 숫자2, 기존하는 유지한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "after": {
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "비순환 한 자리와 두 자리 순환부를 구별하고 두 배수의 차를 확인하는 익숙한 변형이다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "after": {
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "약분 전 소인수만 보면7을 잘못 포함하므로 원식 약분과 x별 소인수·상쇄 여부를 함께 확인한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "after": {
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "서로 다른 오류에서 보존되는 성분을 구별하여 결합해야 한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "after": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "긴 수를 전개하지 않고2와5의 지수7을 묶는 표현 선택 뒤 자릿수와 숫자합을 함께 해석한다. 복합 분기 없이 표준3, 기존상은 별도로 보존한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "부호를 반대로 풀고 동류항을 모은 다음 요구한 두 계수만 읽는 전처리 과정이다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT"
+      },
+      "reason": "부등식을 한 번 정리하고 경계를 직접 비교하는 익숙한 역문제이다. 숫자2 판정은 source4와 다르며 기존상은 강한 충돌로 보존하여 독립 판정을 요청한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT"
+      },
+      "reason": "서로 다른 두 속력의 이동시간과 머문10분을60분 상한에 합치는 정형 모델로 방법이 바로 결정된다. 독립검토 A가 E007Q24와 비교하여2를 권고했고 C가 수용했다. 기존상은 자동 변경하지 않아 상/2 강한 충돌을 root 판정 대상으로 보존한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "after": {
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "standardUnitOrder": 7,
+        "category": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정"
+      },
+      "reason": "실제 결정 단계는 각뿔 부피와 높이의 관계이며 source EXPONENT를 M1 입체도형 측정으로 고친다. 문자 지수는 변하지 않고 계수만 나눈다. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 23,
+      "after": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "잘못 더한 식을 결과에서 빼어 원식을 구하고 다시 같은 식을 빼는 명확한 표준 역절차이다. 독립검토 A가 E006Q12와 비교했고 C가 수용하여 초기3 제안을 철회하고 기존2를 유지한다."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "notes": [
+    "Root read and accepted the author-independent focused report; item-by-item semantic reasons remain in author and independent files. Mechanical serialization does not decide classification.",
+    "Only explicit existing source metadata fields are minimally changed; shared registry, runtime, metadata projection and production inbox remain untouched.",
+    "Unsupported/missing source fields and unresolved evidence stay in the source-bound small proposal packet for Codex; no unknowns are silently filled."
+  ],
+  "strongConflictAdjudication": [
+    {
+      "sourceOrdinal": 19,
+      "decision": "KEEP_NUMERIC_2_AND_HISTORICAL_LEVEL",
+      "level": "상",
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "reason": "Root reread full stem and existing solution: standard inequality isolation then equality of solution endpoints, with no additional strategy selection. Independent A agrees with numeric2. Existing level is retained under v1.3 section11.3; no table-derived level change."
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "KEEP_NUMERIC_2_AND_HISTORICAL_LEVEL",
+      "level": "상",
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "reason": "Root reread full stem and existing solution: the same distance divided by two stated speeds plus a fixed shopping time gives one standard time-budget inequality. Independent A and author C agree with numeric2 after comparison. Existing level remains historical under v1.3 section11.3."
+    }
+  ],
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E012",
+  "owner": "GPT_ROOT_6F3D37EEA78A",
+  "reviewedSourceBlob": "9e37215e0f0c7516c1a9c319a20e34d2166bc0cb",
+  "finalSourceBlob": "b750a4ccba7e4e555fa6b412963054fbfb3718e9",
+  "reviewSha256": "0a7a6a680925d4ccbcfdc6311df195f1989b8035724bc064be8599710a7ebea4",
+  "independentSha256": "12a669794bbb26b74e6d1cd4c570740d1b138312e12f21c878b734605aac7d2d",
+  "reviewedFourSlotSha256": "99916d23dd9cb96081184cb79bf0da8da90e4601d253c9406465d76026755fa6",
+  "finalFourSlotSha256": "ed7fe5f1cf6a5f8ec333386f8124f7a038fd87fd02f09ddf7b9b1da8096047e0",
+  "fourSlotRebind": {
+    "transformation": "Replace the unique sourceGitBlobSha string only; every item/quote/slot and dictionary binding is byte-identical.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "createdAt": "2026-11-14T09:22:41.815345+00:00",
+  "independentHistory": [
+    {
+      "file": "docs/operations/m2-s1-meta-full-20261114/exams/E012/independent-history/E012.sample.json",
+      "sha256": "a99ba99d8a06302e07a4b2d96e0da2d563ba010a071b621e1a36e4ae83e1d9d3"
+    }
+  ]
+}

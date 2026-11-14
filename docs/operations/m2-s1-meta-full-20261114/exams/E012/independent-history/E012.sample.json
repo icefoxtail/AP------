@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E012",
+  "author": "C",
+  "reviewer": "A",
+  "independent": true,
+  "sourceGitBlobSha": "9e37215e0f0c7516c1a9c319a20e34d2166bc0cb",
+  "reviewSha256": "855f77f155a01ff068424270647e1995f5feddfe343db6372ad7872d1103cf97",
+  "fourSlotSha256": "1bd0e8812e2854a98d17587ca1cf37c1bc05e398b1c8fdc03e8031495ca7c849",
+  "sampleOrdinals": [
+    7,
+    19,
+    22
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_dd2eb65486cf398e96e74ceb250ace14c9dd1aabada9d3da7d6a204d2c8e82bf",
+      "status": "PASS_WITH_NOTE",
+      "findings": "원래 기약분수 goal과 분자·분모 오독의 보존성분 method가 구분된다. 두 순환소수의 실제 분수식과 인용은 원문에 있다. 현주가 분모를 잘못 보았다는 전제와 기존결론8/45가 일치한다는 충돌은 실제 contentDebt로 인정한다. 메타 evidence 검토만으로 내용PASS로 바꾸지 않는다.",
+      "sourceRead": "Full stem,choices,existing solution and submitted metadata/4slots; Q19/Q22 actualsolutionimages viewed. No new R2 solve.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_f57c21bc4dac13b9602499b4ec00973627e7b00a00fc4aec195c498a61a7c7d7",
+      "status": "PASS_WITH_NOTE",
+      "findings": "해집합 경계가 같다는 조건을 상수a의 등식으로 옮기는 역문제. goal상수/결정, method부등식성질/등식의 방향은 적합하다. actual solutionSVG의 두 경계점도 확인하였다. 숫자2는 수용하되 legacy상과의강한충돌은 root adjudication이 필요하다. method등식 literal자체가표준식이므로NAMED label권고.",
+      "sourceRead": "Full stem,choices,existing solution and submitted metadata/4slots; Q19/Q22 actualsolutionimages viewed. No new R2 solve.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_809cb3036c94b90363e149bed71e3166ba930391a15cfc6ba7654794bd6a37f9",
+      "status": "PASS",
+      "findings": "사각뿔이라는 대상·직사각형밑넓이·부피가given, 높이가goal, 부피공식과높이역산이method이다. 실제solutionSVG24×36밑면과h를 확인. 문자지수는변하지않으므로 지수법칙primary보다M1각뿔215가 정확하며 PT_M1_SOLID_FIGURE_MEASURE/TPL_M1_SOLID_FIGURE_STANDARD_MEASURE 실제정의의 각뿔부피 수치대입을 재사용할수있다.",
+      "sourceRead": "Full stem,choices,existing solution and submitted metadata/4slots; Q19/Q22 actualsolutionimages viewed. No new R2 solve.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 3,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "reason": "약분을 선행하여 남는소인수와 사라지는7을 구별하는 전처리이므로2. source하와 인접허용 가능."
+    },
+    {
+      "sourceOrdinal": 5,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "reason": "순환부분이 같은 두 배수식을 빼는 안내된 표준절차.2/B12 적합."
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "recommendedBucket": 3,
+      "reason": "약분 뒤7이 소거되는 예외와 한자리자연수 후보를 함께 확인하므로3/B23 허용."
+    },
+    {
+      "sourceOrdinal": 7,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "recommendedBucket": 3,
+      "reason": "두 잘못읽기에서 보존된 서로다른 성분을 결합하는 조건해석구조3. 내용전제충돌은 별도debt."
+    },
+    {
+      "sourceOrdinal": 10,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "recommendedBucket": 3,
+      "reason": "2와5를10거듭제곱으로 묶는 표현선택 후 자릿수·숫자합을 해석하므로3. 상과 인접불일치 허용 가능."
+    },
+    {
+      "sourceOrdinal": 12,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "reason": "괄호음수처리→동류항정리→계수와상수항읽기의 표준전처리라2. source하와 인접허용 가능."
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "reason": "한부등식을 정리한 해의 끝점을 같게두는 익숙한 역문제로2. 기존상의강한충돌은 역사로 유지하고 root판정 필요."
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "decision": "HOLD",
+      "recommendedBucket": 2,
+      "reason": "왕복시간과머문시간의합≤60이라는 즉시결정되는 정형전략이고 E007Q24의같은template와 일치. 두속력만 다를뿐 추가접근선택없어2/B23 권고."
+    },
+    {
+      "sourceOrdinal": 23,
+      "difficultyBucket": 3,
+      "decision": "HOLD",
+      "recommendedBucket": 2,
+      "reason": "원식복원후바른뺄셈은 E006Q12와동형이며 여기단변수로 더단순. 익숙한역연산전처리이므로 source2 유지/B23 권고."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT",
+      "reason": "문장활용이아닌 괄호일차부등식직접풀이이므로 sidecarWORD→기본교정."
+    },
+    {
+      "sourceOrdinal": 18,
+      "decision": "ACCEPT",
+      "reason": "순수식부등식의자연수해합이므로 sidecarWORD→기본교정."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT",
+      "reason": "5/7의순환마디주기로100자리안특정숫자개수계산이므로 sidecarPOLYNOMIAL→REPEATING교정."
+    },
+    {
+      "sourceOrdinal": 22,
+      "decision": "ACCEPT",
+      "reason": "각뿔부피공식으로높이를구하는실제M1각뿔215 primary; 문자의지수는계산에서그대로남는다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT",
+      "reason": "예산과포장비/개당가격을이용한최대자연수수량의문장활용으로 sidecar기본→WORD교정."
+    },
+    {
+      "sourceOrdinal": 10,
+      "decision": "ACCEPT",
+      "reason": "CC_PLACE_VALUE 실제definition은자리숫자×자리단위의값. 125×10^7를십진자리로해석하는보조개념에맞으며SEQUENTIAL결합합당."
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "status": "SCOPED_CORRECTION_REQUESTED",
+  "rawAnomalies": [
+    {
+      "sourceOrdinal": 19,
+      "sourceBucket": 4,
+      "metadataBucket": "상"
+    },
+    {
+      "sourceOrdinal": 20,
+      "sourceBucket": 4,
+      "metadataBucket": "상"
+    }
+  ],
+  "at": "2026-11-14T09:20:52.938141+00:00"
+}

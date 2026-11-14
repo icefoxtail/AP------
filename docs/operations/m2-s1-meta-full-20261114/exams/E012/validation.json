@@ -1,0 +1,344 @@
+{
+  "schemaVersion": "m2-s1-mechanical-check-v1",
+  "examId": "E012",
+  "sourceBlob": "9e37215e0f0c7516c1a9c319a20e34d2166bc0cb",
+  "sourceSha256": "12c065b00b4946dba823fa25dee375055803466f3854b38649d38bb97e08d8dd",
+  "reviewSha256": "0a7a6a680925d4ccbcfdc6311df195f1989b8035724bc064be8599710a7ebea4",
+  "fourSlotSha256": "99916d23dd9cb96081184cb79bf0da8da90e4601d253c9406465d76026755fa6",
+  "questionCount": 24,
+  "structuralStatus": "PASS",
+  "fourSlotStatus": "PASS_STATIC_ONLY",
+  "fail": [],
+  "warn": [
+    "#4 only 3 distinct terms",
+    "#8 only 3 distinct terms",
+    "#11 only 4 distinct terms",
+    "#15 only 3 distinct terms",
+    "#16 only 3 distinct terms",
+    "#16 method has 1 term",
+    "#18 only 4 distinct terms"
+  ],
+  "requiredEvidenceDebt": [],
+  "keyDebt": [],
+  "changedOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "difficultyRecheckOrdinals": [
+    3,
+    5,
+    6,
+    7,
+    10,
+    12,
+    19,
+    20,
+    23
+  ],
+  "compatibilityAdjustments": [],
+  "sourceOnlyOrdinals": [],
+  "fourSlotCounts": {
+    "items": 24,
+    "examItems": 24,
+    "quotes": 148,
+    "fail": 0,
+    "warn": 7
+  },
+  "semanticApproval": "NOT_A_MACHINE_VERDICT",
+  "reviewedSourceBlob": "9e37215e0f0c7516c1a9c319a20e34d2166bc0cb",
+  "finalSourceBlob": "b750a4ccba7e4e555fa6b412963054fbfb3718e9",
+  "finalSourceSha256": "9d0fcf2fada93e1b9d15e415045dd326d946097faaa18353aebbdc010ab921f1",
+  "finalFourSlotSha256": "ed7fe5f1cf6a5f8ec333386f8124f7a038fd87fd02f09ddf7b9b1da8096047e0",
+  "finalFourSlotValidation": {
+    "fail": [],
+    "warn": [
+      "#4 only 3 distinct terms",
+      "#8 only 3 distinct terms",
+      "#11 only 4 distinct terms",
+      "#15 only 3 distinct terms",
+      "#16 only 3 distinct terms",
+      "#16 method has 1 term",
+      "#18 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 24,
+      "examItems": 24,
+      "quotes": 148
+    }
+  },
+  "sourceSyntax": "PASS_VM_AND_JSON",
+  "sourceContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "uidOrderPreservation": "PASS",
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_5f589358b7d4a27d4f1a916fd879d9797096c6d0d3e349d1185467c527d53ec8",
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "약분을 먼저 하여 제거되는7과 남는3을 구별해야 한다. E006Q5와 같은 전처리 구조로 숫자2, 기존하는 유지한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_5f589358b7d4a27d4f1a916fd879d9797096c6d0d3e349d1185467c527d53ec8",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "약분을 먼저 하여 제거되는7과 남는3을 구별해야 한다. E006Q5와 같은 전처리 구조로 숫자2, 기존하는 유지한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_5f589358b7d4a27d4f1a916fd879d9797096c6d0d3e349d1185467c527d53ec8",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "약분을 먼저 하여 제거되는7과 남는3을 구별해야 한다. E006Q5와 같은 전처리 구조로 숫자2, 기존하는 유지한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_5f589358b7d4a27d4f1a916fd879d9797096c6d0d3e349d1185467c527d53ec8",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "약분을 먼저 하여 제거되는7과 남는3을 구별해야 한다. E006Q5와 같은 전처리 구조로 숫자2, 기존하는 유지한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_cb076ee6a41bb7b64480235a371dbfad58c92118057f081fc3f26fa94ebe418c",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "비순환 한 자리와 두 자리 순환부를 구별하고 두 배수의 차를 확인하는 익숙한 변형이다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_f9eae02d56bb52b8cfa79edac166942e6b1dcce9b3e3ff3c273c37d41d49aa7f",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "약분 전 소인수만 보면7을 잘못 포함하므로 원식 약분과 x별 소인수·상쇄 여부를 함께 확인한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_dd2eb65486cf398e96e74ceb250ace14c9dd1aabada9d3da7d6a204d2c8e82bf",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "서로 다른 오류에서 보존되는 성분을 구별하여 결합해야 한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_638d5f23141abbb95236ada562e3e844e8c4375f5a14e48a80ad311fbfd572a9",
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "긴 수를 전개하지 않고2와5의 지수7을 묶는 표현 선택 뒤 자릿수와 숫자합을 함께 해석한다. 복합 분기 없이 표준3, 기존상은 별도로 보존한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_638d5f23141abbb95236ada562e3e844e8c4375f5a14e48a80ad311fbfd572a9",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "긴 수를 전개하지 않고2와5의 지수7을 묶는 표현 선택 뒤 자릿수와 숫자합을 함께 해석한다. 복합 분기 없이 표준3, 기존상은 별도로 보존한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_638d5f23141abbb95236ada562e3e844e8c4375f5a14e48a80ad311fbfd572a9",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "긴 수를 전개하지 않고2와5의 지수7을 묶는 표현 선택 뒤 자릿수와 숫자합을 함께 해석한다. 복합 분기 없이 표준3, 기존상은 별도로 보존한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_638d5f23141abbb95236ada562e3e844e8c4375f5a14e48a80ad311fbfd572a9",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "긴 수를 전개하지 않고2와5의 지수7을 묶는 표현 선택 뒤 자릿수와 숫자합을 함께 해석한다. 복합 분기 없이 표준3, 기존상은 별도로 보존한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_0a850dd997b8c790a5669025a51321f9dc06d1e4f93d9b1326ca65dd03d0a1ee",
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "부호를 반대로 풀고 동류항을 모은 다음 요구한 두 계수만 읽는 전처리 과정이다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_0a850dd997b8c790a5669025a51321f9dc06d1e4f93d9b1326ca65dd03d0a1ee",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "부호를 반대로 풀고 동류항을 모은 다음 요구한 두 계수만 읽는 전처리 과정이다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_0a850dd997b8c790a5669025a51321f9dc06d1e4f93d9b1326ca65dd03d0a1ee",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "부호를 반대로 풀고 동류항을 모은 다음 요구한 두 계수만 읽는 전처리 과정이다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_0a850dd997b8c790a5669025a51321f9dc06d1e4f93d9b1326ca65dd03d0a1ee",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "부호를 반대로 풀고 동류항을 모은 다음 요구한 두 계수만 읽는 전처리 과정이다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_f57c21bc4dac13b9602499b4ec00973627e7b00a00fc4aec195c498a61a7c7d7",
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 2,
+      "reason": "부등식을 한 번 정리하고 경계를 직접 비교하는 익숙한 역문제이다. 숫자2 판정은 source4와 다르며 기존상은 강한 충돌로 보존하여 독립 판정을 요청한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_f57c21bc4dac13b9602499b4ec00973627e7b00a00fc4aec195c498a61a7c7d7",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "부등식을 한 번 정리하고 경계를 직접 비교하는 익숙한 역문제이다. 숫자2 판정은 source4와 다르며 기존상은 강한 충돌로 보존하여 독립 판정을 요청한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_f57c21bc4dac13b9602499b4ec00973627e7b00a00fc4aec195c498a61a7c7d7",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "부등식을 한 번 정리하고 경계를 직접 비교하는 익숙한 역문제이다. 숫자2 판정은 source4와 다르며 기존상은 강한 충돌로 보존하여 독립 판정을 요청한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_f57c21bc4dac13b9602499b4ec00973627e7b00a00fc4aec195c498a61a7c7d7",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "STRONG_CONFLICT",
+      "reason": "부등식을 한 번 정리하고 경계를 직접 비교하는 익숙한 역문제이다. 숫자2 판정은 source4와 다르며 기존상은 강한 충돌로 보존하여 독립 판정을 요청한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_3f997e94a953ff3efd9893e67688eba0688837c91c9b2fd9ff7bfc686f0c9442",
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 2,
+      "reason": "서로 다른 두 속력의 이동시간과 머문10분을60분 상한에 합치는 정형 모델로 방법이 바로 결정된다. 독립검토 A가 E007Q24와 비교하여2를 권고했고 C가 수용했다. 기존상은 자동 변경하지 않아 상/2 강한 충돌을 root 판정 대상으로 보존한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_3f997e94a953ff3efd9893e67688eba0688837c91c9b2fd9ff7bfc686f0c9442",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "서로 다른 두 속력의 이동시간과 머문10분을60분 상한에 합치는 정형 모델로 방법이 바로 결정된다. 독립검토 A가 E007Q24와 비교하여2를 권고했고 C가 수용했다. 기존상은 자동 변경하지 않아 상/2 강한 충돌을 root 판정 대상으로 보존한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_3f997e94a953ff3efd9893e67688eba0688837c91c9b2fd9ff7bfc686f0c9442",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "서로 다른 두 속력의 이동시간과 머문10분을60분 상한에 합치는 정형 모델로 방법이 바로 결정된다. 독립검토 A가 E007Q24와 비교하여2를 권고했고 C가 수용했다. 기존상은 자동 변경하지 않아 상/2 강한 충돌을 root 판정 대상으로 보존한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_3f997e94a953ff3efd9893e67688eba0688837c91c9b2fd9ff7bfc686f0c9442",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "STRONG_CONFLICT",
+      "reason": "서로 다른 두 속력의 이동시간과 머문10분을60분 상한에 합치는 정형 모델로 방법이 바로 결정된다. 독립검토 A가 E007Q24와 비교하여2를 권고했고 C가 수용했다. 기존상은 자동 변경하지 않아 상/2 강한 충돌을 root 판정 대상으로 보존한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_809cb3036c94b90363e149bed71e3166ba930391a15cfc6ba7654794bd6a37f9",
+      "field": "standardUnitKey",
+      "before": "M2-01",
+      "after": "M1-07",
+      "reason": "실제 결정 단계는 각뿔 부피와 높이의 관계이며 source EXPONENT를 M1 입체도형 측정으로 고친다. 문자 지수는 변하지 않고 계수만 나눈다. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_809cb3036c94b90363e149bed71e3166ba930391a15cfc6ba7654794bd6a37f9",
+      "field": "standardUnit",
+      "before": "수와 식",
+      "after": "입체도형의 성질",
+      "reason": "실제 결정 단계는 각뿔 부피와 높이의 관계이며 source EXPONENT를 M1 입체도형 측정으로 고친다. 문자 지수는 변하지 않고 계수만 나눈다. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_809cb3036c94b90363e149bed71e3166ba930391a15cfc6ba7654794bd6a37f9",
+      "field": "standardUnitOrder",
+      "before": 1,
+      "after": 7,
+      "reason": "실제 결정 단계는 각뿔 부피와 높이의 관계이며 source EXPONENT를 M1 입체도형 측정으로 고친다. 문자 지수는 변하지 않고 계수만 나눈다. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_809cb3036c94b90363e149bed71e3166ba930391a15cfc6ba7654794bd6a37f9",
+      "field": "category",
+      "before": "서답형 2",
+      "after": "입체도형의 성질",
+      "reason": "실제 결정 단계는 각뿔 부피와 높이의 관계이며 source EXPONENT를 M1 입체도형 측정으로 고친다. 문자 지수는 변하지 않고 계수만 나눈다. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_809cb3036c94b90363e149bed71e3166ba930391a15cfc6ba7654794bd6a37f9",
+      "field": "subUnitKey",
+      "before": "M2-01-EXPONENT_LAW",
+      "after": "M1-07-SOLID_FIGURE_MEASURE",
+      "reason": "실제 결정 단계는 각뿔 부피와 높이의 관계이며 source EXPONENT를 M1 입체도형 측정으로 고친다. 문자 지수는 변하지 않고 계수만 나눈다. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_809cb3036c94b90363e149bed71e3166ba930391a15cfc6ba7654794bd6a37f9",
+      "field": "subUnit",
+      "before": "지수법칙",
+      "after": "입체도형의 측정",
+      "reason": "실제 결정 단계는 각뿔 부피와 높이의 관계이며 source EXPONENT를 M1 입체도형 측정으로 고친다. 문자 지수는 변하지 않고 계수만 나눈다. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_ff87290caf692b34978cc4afd21fcf1798270c2770f0067230e52bc61ed0add4",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "잘못 더한 식을 결과에서 빼어 원식을 구하고 다시 같은 식을 빼는 명확한 표준 역절차이다. 독립검토 A가 E006Q12와 비교했고 C가 수용하여 초기3 제안을 철회하고 기존2를 유지한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_ff87290caf692b34978cc4afd21fcf1798270c2770f0067230e52bc61ed0add4",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "잘못 더한 식을 결과에서 빼어 원식을 구하고 다시 같은 식을 빼는 명확한 표준 역절차이다. 독립검토 A가 E006Q12와 비교했고 C가 수용하여 초기3 제안을 철회하고 기존2를 유지한다."
+    }
+  ]
+}
