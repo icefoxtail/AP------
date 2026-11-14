@@ -1,0 +1,366 @@
+{
+  "examId": "E049",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "01097e0e2b9bde16439470fe83ff3e1d5fc57612",
+  "sourceRawSha256": "4ed3f7aa3808e689f1ff327ad6e13b73e48e7f0b8547fe954b104e5b46b67ee1",
+  "sourcePacketSha256": "22924d79492e846d3ab164954c3906b7f89cc82372bfb82e159a37d6d4a20a7f",
+  "sampled4slotSha256": "a924e18b481e24f78067e55d79217c42eb89783cf109c25dbdf6448551d4a15b",
+  "sampledReviewSha256": "13ecf31428e2158f28faef4959bc8b501cc5e34bdba191d96e27acc4e0114dcb",
+  "sampledSourcePatchSha256": "a8737edd60df038c1d11169bcdb79bd956f31fad6cbd0aa04b5947056cc8d773",
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "sampled": [
+    15,
+    20,
+    22
+  ],
+  "status": "PASS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_9e8f6f759eaefd7f448e55a5350513461e5bd125d0705ce701e680b7e43d2e5c",
+      "sourceImageRead": true,
+      "existingSolutionRead": true,
+      "sourceSolutionImageRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 10
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "현재 원본과 해설 그림에서 지름AB, 호BC의 반원 대비1/3, B의 접선BD와 반지름OB를 확인했다. 실제 해설은 호에서 중심각60도를 정하고 등반지름 삼각형OBC를 정삼각형으로 본 뒤 접점직각에서60도를 뺀다. given의 지름·접선·호, goal 각, method 중심각·정삼각형·수선·반지름·접선 및 condition 접함이 각각 현재 근거에 결속된다. 원주각이나 접현각 대응을 사용했다고 적지 않은 것이 맞다. 원과직선073/161 분류와 기존 접점수직-반지름각 후보 재사용을 수용한다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_19fdae9fc0f07002f81fae418d069596c3b0042df1da4060c178a1c0cb06ffd8",
+      "sourceImageRead": true,
+      "existingSolutionRead": true,
+      "sourceSolutionImageRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 10
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "현재 원본의 C직각, 각A이등분선과BD10/CD6 및 내접원 관계를 읽었다. 기존 해설은 각이등분선 정리로 두 변의 비를 얻고 피타고라스로 세 변을 정한 뒤 내접반지름을 구한다. given의 직각삼각형·각이등분선·원·길이, goal 원/반지름, method 각이등분선정리·피타고라스·등접선에서 유도되는 반지름식, condition 내접이 일치한다. CENTERS_SEMANTIC의 실제 지원 두 문항을 현재 JS로 읽어 내접반지름 계산 범위를 확인했다. M2-068/188 의미경로와 원본M3 machine 경로를 분리하고2022 연결만 대기하는 판단이 타당하다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_df0d572b86b671ec55d9b1a01bcfc8e698cacb59cd1c80fca3b3a8c0006ad495",
+      "sourceImageRead": true,
+      "existingSolutionRead": true,
+      "sourceSolutionImageRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 11
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "현재 원본 그림과 해설 그림에서 같은 두 변3√5, 밑변12, 높이의 중점M, 원의 중심O 및 반지름OB를 확인했다. 기존 본문은 높이→넓이→R=abc/(4K), 기존 caption은 AM3·BM6→OM=R−3→직각삼각형 거리식이라는 두 실제 경로를 가진다. source를 고치거나 새 경로를 만들지 않고 caption의 원과직선069/157·TM_CIRCLE_CHORD_LENGTH를 primary로 재사용한 판단을 수용한다. 4칸의 본문 사인법칙/넓이 인용은 실제 기존 풀이로 보존되고 caption 경로는 exact sidecar로 결속되어 있다. given 이등변삼각형·원·길이, goal 원/반지름 및 추가된 condition 외접도 실제 발문에 정확하다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    }
+  ],
+  "outstanding": [],
+  "sourceCaveats": [],
+  "visualEvidence": [
+    "worker-outputs/b/E049/original-0.png",
+    "worker-outputs/b/E049/original-1.png",
+    "worker-outputs/b/E049/original-2.png",
+    "worker-outputs/b/E049/solution-0.png",
+    "worker-outputs/b/E049/solution-1.png",
+    "worker-outputs/b/E049/solution-2.png"
+  ],
+  "assetByteChecks": [
+    {
+      "ordinal": 8,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q08.png",
+      "gitBlob": "7f5fb9dc775dd262cbf030bacf7528835994dd2b",
+      "sha256": "af7e8b0914a397240d5c5301e3e1ea4e8fc898a46c3eb612f5b71e14fb918e75",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 8,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q8-solution.svg",
+      "gitBlob": "6b877b8455ba077e2b3bc6ac13f231a9aa65eebb",
+      "sha256": "2bfee0bbfc20f778453a998cb667306be5b5530dc89044dbb7324c40f693aaee",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 9,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q09.png",
+      "gitBlob": "605b098d5d7cacce0a8e553b221189074b5ed36a",
+      "sha256": "8cb0d72998fd4838e302992475868ee012c6f272212461b5889805c56d191b9b",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 9,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q9-solution.svg",
+      "gitBlob": "da62fcf55805e87449a607aba65d37c44ec810f2",
+      "sha256": "da0372ebbce88d4bc3c52dcb9f81d4bd95df9213694b4d418ec4c34b776902ec",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 10,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q10.png",
+      "gitBlob": "f0e063a8ad217581ab7afee0db8ce29eccfef9e5",
+      "sha256": "39cfdde81a228bf657e0b6e14a2c6d15ef2b0bf2835288de9c0dff95f2133865",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 10,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q10-solution.svg",
+      "gitBlob": "6203c1408438b07a1f57e39c24cdcedef0706c02",
+      "sha256": "ce43a7f06c805eb7c08ad96a056fd6579308ce932ef8fb66bee80dfd7317b4a6",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 11,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q11-solution.svg",
+      "gitBlob": "acab41f7c6aab5997d2ba0bd8125db4ca051d83a",
+      "sha256": "cfe66095f7ae772a99e97259096248ef68fb1150a9c925ab646606b515e215ca",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 12,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q12.png",
+      "gitBlob": "c0b4b4ab51758cef17678d818b7555b7176f24a0",
+      "sha256": "0c896998563e6e0f4af0408b796c957e134086c8f5312b959f32fd9fbf082b52",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 14,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q14.png",
+      "gitBlob": "c1a562f6ee83e8ead8491ca5b4f8dcb920657321",
+      "sha256": "17e07104a88ef6674614f300f8d688edece6d355cec44c138b97ee69b9a3a44d",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 14,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q14-solution.svg",
+      "gitBlob": "2bea2cdf4ec45c6a7336d270d5b5931dd0299ce2",
+      "sha256": "398ab5436ed5d9d01ee281e3a17233e935315f686f0da9770780d972669a5c4b",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 15,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q15.png",
+      "gitBlob": "99227f162da21caf8c375d23a90a1718b676417f",
+      "sha256": "f7d56790608014dc03314b3553f60ce9a648f44683f0fe1c4a02ec7618f8bdbb",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 15,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q15-solution.svg",
+      "gitBlob": "71be2973f64be9ae7ed4f98502831f0b4a68cc15",
+      "sha256": "f9d6465bbc345fed0bb0c9dae68f5129dd37630dcfd5e6284f2dd591fd4cb2e1",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 17,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q17.png",
+      "gitBlob": "45f17afbc3ef620cd6d2b590e5d9d629370f1187",
+      "sha256": "dbba49c0db28c2466d744668c92789e20f14b429065b6c97eb2784f4d33d76dc",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 17,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q17-solution.svg",
+      "gitBlob": "a40fa01c43156071d4525eb259edb3e9c94aaff7",
+      "sha256": "200541afaa9cdc9b41ce2c9efdb02b49687ca4e567fc1dddfa567a0f78703e52",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 19,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q19.png",
+      "gitBlob": "3e114257a6637d0b9e2a09e502dbc7c2d6ac1d47",
+      "sha256": "e71d2798f22e19c4860a1b0a3fe0fb55d17b1700ff45212faeaac39defc079fe",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 19,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q19-solution.svg",
+      "gitBlob": "844743cfa5f07ae64e0f2026d62049173ca24c58",
+      "sha256": "14f373a8fe596847844545aa9bb83cda8f9e6ffcaa806e6c4675e8e50d54c02e",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 20,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q20.png",
+      "gitBlob": "2d0c26a685dadee42b2bd4c14faca69567ed0410",
+      "sha256": "dcce917bbe4ab1e75168efa878c721f18baa5813a1f3389fc5ea33082d377140",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 20,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q20-solution.svg",
+      "gitBlob": "c75f496a338d0c184587546cb02edf0998e9cadc",
+      "sha256": "b2d1d19e7a252a64f2a60cfdec9d26c7cde485ef7d3b7aeec31cc6b51812b626",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 21,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q21.png",
+      "gitBlob": "95d70625e357c4578e6c500e60df5423c597abac",
+      "sha256": "0eb614c529a40ce0506ea1612c80170f3189c313405c6707d8a56662fadc11d3",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 22,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q22-clean.svg",
+      "gitBlob": "f0f1862bc67fa59d785308d67a0e869d975034d1",
+      "sha256": "e1163db0f3ef5327ad785f3124514b8d16109c73e45ed0aabcd5dd422570f723",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 22,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q22-solution.svg",
+      "gitBlob": "65f2bdc3ca744d5e0193576a1a418a3b7ce69284",
+      "sha256": "b6eb246584131396174fc5b9960f1ddd8253d74dc00c20fe019f3b54fdba271c",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 23,
+      "field": "image",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q23.png",
+      "gitBlob": "783f7a473f3cda26690795a664b6a3b561e261cd",
+      "sha256": "7ed3866bc6e1f534fb5f03036ccc6d34882bc7d18be1f1993612991ad0308f82",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 23,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q23-solution.svg",
+      "gitBlob": "f2997dc3cb51cdca2decf481ea310a3d0f333841",
+      "sha256": "21e282150ef1167c3f19d21e2453e88dfc7f853fdca983f2856d94bafc4a592c",
+      "matchesCurrentBranch": true
+    }
+  ],
+  "definitionRefs": [
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+    },
+    {
+      "path": "worker-outputs/b/E049/global-boundary-evidence.json",
+      "sha256": "50adccefc4a37202b5c6e9b5f27167057ef2b70af87ff1e54eb966dfe7c9cf2f"
+    }
+  ],
+  "activeDefinitionsRead": [
+    {
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "parentProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "status": "ACTIVE",
+      "definition": "원과 직선이 만드는 현의 길이를 구하거나 현의 길이 조건을 이용하는 유형.",
+      "internalSkeleton": "원과 직선이 만드는 현의 길이를 구하거나 현의 길이 조건을 이용하는 유형."
+    },
+    {
+      "templateKey": "TM_TANGENT_LENGTH",
+      "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "status": "ACTIVE",
+      "definition": "원 밖의 점에서 원에 그은 접선의 길이를 구하는 유형.",
+      "internalSkeleton": "원 밖의 점에서 원에 그은 접선의 길이를 구하는 유형."
+    },
+    {
+      "templateKey": "TM_TANGENCY_CONDITION",
+      "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "status": "ACTIVE",
+      "definition": "원의 중심에서 직선까지의 거리와 반지름의 관계 등으로 접함 조건을 구하거나 판정하는 유형.",
+      "internalSkeleton": "원의 중심에서 직선까지의 거리와 반지름의 관계 등으로 접함 조건을 구하거나 판정하는 유형."
+    },
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "status": "ACTIVE",
+      "definition": "접선-현각과 원주각·호 관계를 이용한다.",
+      "internalSkeleton": "접선·현·호·원주각 관계를 대응시켜 목표각을 구한다."
+    },
+    {
+      "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "parentProblemTypeKey": "PT_TRIANGLE_CENTERS",
+      "status": "ACTIVE",
+      "definition": "내심·외심·중심 관련 성질을 목표에 맞게 적용한다.",
+      "internalSkeleton": "중심의 정의·등거리·각 관계 중 필요한 성질을 적용한다."
+    },
+    {
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "parentProblemTypeKey": "PT_TRIANGLE_CENTERS",
+      "status": "ACTIVE",
+      "definition": "내심과 각의 이등분선 관계를 이용한다.",
+      "internalSkeleton": "내심이 만드는 각 이등분선과 내심각 관계를 적용한다."
+    }
+  ],
+  "supportingSourceChecks": [
+    {
+      "questionUid": "qid_v1_1fe640371ed53750b26b3c317c36c27b0da8f82b275504fe20831cbad80f0c34",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+      "ordinal": 20,
+      "sha256": "2a0280aa0cbe8bf06ae4b2cc749a45c3e3dc5dc852a4c9c3fb11403fc18a7ef3",
+      "registeredSupportingUid": true,
+      "actualSourceStemAnswerExistingSolutionRead": true,
+      "quotedSolutionExactlyMatchesCurrentSource": true
+    },
+    {
+      "questionUid": "qid_v1_6156ed8395ca83e7cf028b580468717996b8a899ed9a2f4fd935e1eb46f868fc",
+      "sourcePath": "archive/exams/original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+      "ordinal": 21,
+      "sha256": "5eaa9cc8355f6070c1468fdc7b1e20edec09cb8def1ce0849cbef4a9b89ab706",
+      "registeredSupportingUid": true,
+      "actualSourceStemAnswerExistingSolutionRead": true,
+      "quotedSolutionExactlyMatchesCurrentSource": true
+    }
+  ],
+  "acceptedAuthorDelta": {
+    "path": "worker-outputs/b/E049/q22-circumscription-delta.json",
+    "sha256": "e11ea2f2ea5db15b25a53826d0a7a594e8745f51385460ba4dcf407e08e23948",
+    "reverseRestoresPrior4slotExactly": true
+  },
+  "scope": "독립4칸3표본·역사난도예외12건 및 표본15 숫자변경의 의미 검토. 새 R1/R2/R3나 출처 전체 수학검증 완료를 주장하지 않는다.",
+  "acceptedNarrowCrossConceptDelta": {
+    "authorDeltaPath": "worker-outputs/b/E049/q22-isosceles-cc-delta.json",
+    "authorDeltaSha256": "894b084823c8933817021fc8e1d7f3ccdb6d4cda7e5a7cb13b5b568a8717638d",
+    "reviewer": "c",
+    "ordinal": 22,
+    "before": "CC_ISOSCELES_TRIANGLE",
+    "after": "CC_ISOSCELES_TRIANGLES",
+    "canonicalDefinitionActuallyRead": true,
+    "reason": "본문의 이등변 높이=중선 전처리는 두 밑각·내각합만 명시하는 단수 CC보다 일반 두 변 같음 구조의 복수 CC가 정확하다. 기존 표본의 기하 판단과 학생 풀이·4칸·난도는 그대로 유효하다.",
+    "reverseKeyAndOneRationaleSentenceRestoresPriorReviewAndPatchShaExactly": true,
+    "priorIndependentReceiptSha256": "209048cba7ece46082cdfd7c43becb5d563c4e9b9ed48e44b394805b34a6ceae",
+    "allSampleAndDifficultyJudgmentsReusedUnchanged": true
+  }
+}

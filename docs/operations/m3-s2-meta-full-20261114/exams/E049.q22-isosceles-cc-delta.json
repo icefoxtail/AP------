@@ -1,0 +1,123 @@
+{
+  "examId": "E049",
+  "ordinals": [
+    22
+  ],
+  "author": "b",
+  "requestedBy": "root",
+  "scope": "One CrossConcept key replacement, with actual definition/source evidence; primary and all student payload unchanged.",
+  "before": {
+    "review": "affd191b47c1b91f31a2086fa0d2336719a415955a8a641414800aa0d7b3bf2e",
+    "patch": "99107be87b201b32d2cf630c1657df57f34ad3458df35d20a4216bc7f95a57be",
+    "slot": "a924e18b481e24f78067e55d79217c42eb89783cf109c25dbdf6448551d4a15b"
+  },
+  "after": {
+    "review": "13ecf31428e2158f28faef4959bc8b501cc5e34bdba191d96e27acc4e0114dcb",
+    "patch": "a8737edd60df038c1d11169bcdb79bd956f31fad6cbd0aa04b5947056cc8d773",
+    "slot": "a924e18b481e24f78067e55d79217c42eb89783cf109c25dbdf6448551d4a15b"
+  },
+  "definitionBefore": {
+    "conceptKey": "CC_ISOSCELES_TRIANGLE",
+    "canonicalLabelKo": "이등변삼각형의 성질",
+    "definition": "두 변의 길이가 같은 삼각형에서 두 밑각의 크기가 같고 세 내각의 합이 180도인 성질",
+    "aliases": [],
+    "supportingQuestionUids": [
+      "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f"
+    ],
+    "supportingItemCount": 1,
+    "sourceUnits": [
+      "M1-05"
+    ],
+    "legacyKeys": [],
+    "status": "ACTIVE",
+    "evidenceProvenance": [
+      {
+        "source": "META_PIPELINE_AUDIT",
+        "questionUid": "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f",
+        "sourceOrdinal": 22,
+        "classificationRationale": "직사각형 종이접기에서 평행선의 엇각과 접은 각의 크기 보존을 이용해 이등변삼각형의 밑각을 구하는 MIDDLE1 정본 유형 (원본 타 학년 키 PT_MOVE_FOLDING_REFLECTION을 MIDDLE1 정본으로 격리 보정)",
+        "decisiveEvidence": "접은 각과 엇각 성질로 GE=GF인 이등변삼각형 △EGF에서 ∠EGF=120°이므로 ∠GFE=(180°-120°)/2=30°",
+        "auditPackageRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+          "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+        }
+      }
+    ],
+    "taxonomyRefs": [
+      "PT_M1_PARALLEL_ANGLE_TRANSFER"
+    ],
+    "curriculumRefs": [
+      "2015:중1 수학:M1-05"
+    ],
+    "ownerConceptShard": "PLANE_GEOMETRY"
+  },
+  "definitionAfter": {
+    "conceptKey": "CC_ISOSCELES_TRIANGLES",
+    "canonicalLabelKo": "이등변삼각형",
+    "definition": "두 변의 길이가 같은 삼각형.",
+    "aliases": [],
+    "status": "ACTIVE",
+    "supportingQuestionUids": [
+      "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+      "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1"
+    ],
+    "supportingItemCount": 2,
+    "sourceUnits": [
+      "M2-05"
+    ],
+    "legacyKeys": [],
+    "evidenceProvenance": [
+      {
+        "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+        "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+        "sourceOrdinal": 12,
+        "classificationRationale": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT/TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+        "decisiveEvidence": "3단계: $EF=BE-BF=6-3=3\\text{cm}$.",
+        "auditPackageRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+          "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+        },
+        "correctiveReviewRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+          "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+        }
+      },
+      {
+        "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+        "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+        "sourceOrdinal": 18,
+        "classificationRationale": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION/TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES bound at M2-05/M2-05-QUADRILATERAL_PROPERTIES; original audit assignment preserved in originalAssignment.",
+        "decisiveEvidence": "3단계: 마름모이면서 직사각형이므로 정사각형이다. 정답은 ⑤이다.",
+        "auditPackageRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+          "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+        },
+        "correctiveReviewRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+          "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+        }
+      }
+    ],
+    "taxonomyRefs": [
+      "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+      "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION"
+    ],
+    "curriculumRefs": [
+      "2015:중2-2:M2-05"
+    ],
+    "ownerConceptShard": "PLANE_GEOMETRY"
+  },
+  "sourceEvidence": {
+    "src": "solution",
+    "quote": "밑변의 수선은 밑변을 이등분한다"
+  },
+  "reason": "현재 해설의 이등변삼각형 높이=중선이 중심거리/반현 경로에 필요하다. 단수 ACTIVE는 두 밑각 같음과 내각합으로 제한되어 이 사례와 맞지 않는다. 복수 ACTIVE의 두 변이 같은 삼각형 범위로 재사용한다.",
+  "unchanged": {
+    "fourSlot": true,
+    "difficultyAll23": true,
+    "rpm": true,
+    "primaryTemplate": true,
+    "other22Items": true,
+    "studentPayload": true
+  }
+}

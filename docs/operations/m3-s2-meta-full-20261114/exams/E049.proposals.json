@@ -1,0 +1,236 @@
+[
+  {
+    "type": "REUSE_CANDIDATE_TPL",
+    "ordinal": 1,
+    "questionUid": "qid_v1_7ae6377d57a88422d83e30874b22f461c031118dabf3df52f3f122e3238df488",
+    "supportingQuestionUids": [
+      "qid_v1_7ae6377d57a88422d83e30874b22f461c031118dabf3df52f3f122e3238df488"
+    ],
+    "nameKo": "원주각 성질 진술 판정",
+    "definition": "원주각·중심각·호·현의 대응 성질을 진술별로 대조하여 잘못된 비례 주장을 판정한다.",
+    "distinguishingCriterion": "기존 원구성요소 정의 audit의 확정 지원 문항은 M1 기본 원요소이고 이 문항에는 중심각과 원주각의 정리도 명시된다. E035Q4·E045Q1의 같은 현 비례 오개념 판정 가족을 재사용한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "nearestActiveTemplates": [
+      "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+    ],
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E035.proposals.json",
+        "sha256": "c07c87867a1c4834c07d8e66013e9fcf236c68bea7583e2e914f62a8ba475088",
+        "selector": "원주각 성질 진술 판정/E035 Q4"
+      }
+    ],
+    "globalActiveSearch": {
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactWholeItemFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "REUSE_CANDIDATE_TPL",
+    "ordinal": 2,
+    "questionUid": "qid_v1_7e323419cc565fd5885d2d45b0e0df54c68a51ea96ffe4c43fbe40b3fa84e000",
+    "supportingQuestionUids": [
+      "qid_v1_7e323419cc565fd5885d2d45b0e0df54c68a51ea96ffe4c43fbe40b3fa84e000"
+    ],
+    "nameKo": "자료 목적에 맞는 대푯값 선택",
+    "definition": "극단값의 영향과 자료의 사용 목적을 읽어 평균 등 대푯값의 적절성을 판정한다.",
+    "distinguishingCriterion": "E044Q12의 자료 목적·극단값 민감도 후보에 같은 평균 부적절성 지원 UID를 추가한다. 대표값 수치 계산이나 정의 진술의 목록 판정으로 바꾸지 않는다.",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "nearestActiveTemplates": [
+      "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT"
+    ],
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E044.proposals.json",
+        "sha256": "403aa498f89a4582eb878a3d57185bc6dd2b819eb65f87723d03ab595f7e1a9a",
+        "selector": "ROOT-E044-3"
+      }
+    ],
+    "globalActiveSearch": {
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactWholeItemFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "REUSE_CANDIDATE_PT_AND_TPL",
+    "ordinal": 5,
+    "questionUid": "qid_v1_fac6b2aef731fd85052894f2b47eb88398cf7ddd5b81ec9b4f23c690bcd6a162",
+    "supportingQuestionUids": [
+      "qid_v1_fac6b2aef731fd85052894f2b47eb88398cf7ddd5b81ec9b4f23c690bcd6a162"
+    ],
+    "nameKo": "산점도 좌표 비교와 진술 판정",
+    "definition": "두 변량 산점도의 점을 좌표대소·동일값·범위로 집계하고 상관 방향 및 전체 수 진술을 판정한다.",
+    "distinguishingCriterion": "동일한 두 수치의 대응 점을 읽는 골격이며 도수분포 막대·꺾은선그래프나 대푯값 계산과 다르다.",
+    "parentProblemTypeKey": null,
+    "nearestActiveTemplates": [],
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E035.proposals.json",
+        "sha256": "c07c87867a1c4834c07d8e66013e9fcf236c68bea7583e2e914f62a8ba475088",
+        "selector": "E035 Q25"
+      },
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E044.proposals.json",
+        "sha256": "403aa498f89a4582eb878a3d57185bc6dd2b819eb65f87723d03ab595f7e1a9a",
+        "selector": "산점도 여러 진술 검토"
+      }
+    ],
+    "globalActiveSearch": {
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactWholeItemFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "REUSE_CANDIDATE_TPL",
+    "ordinal": 6,
+    "questionUid": "qid_v1_9ee50440f9c73cf511c973ff24ac9727785a5ddb77a123f950b323a499945be1",
+    "supportingQuestionUids": [
+      "qid_v1_9ee50440f9c73cf511c973ff24ac9727785a5ddb77a123f950b323a499945be1"
+    ],
+    "nameKo": "원자료의 대푯값·산포도 수치 진술 판정",
+    "definition": "유한 원자료의 평균·중앙값·최빈값·편차·분산을 정의대로 산출하여 수치 진술을 확인한다.",
+    "distinguishingCriterion": "ACTIVE 편차 부호를 거꾸로 서술한 것을 찾는 exact TPL로 편차 최댓값·대표값·분산 수치 진술 전체를 강제하지 않는다.",
+    "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "nearestActiveTemplates": [
+      "TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE"
+    ],
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E044.proposals.json",
+        "sha256": "403aa498f89a4582eb878a3d57185bc6dd2b819eb65f87723d03ab595f7e1a9a",
+        "selector": "원자료 그래프의 산포도 진술 검토"
+      },
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E035.proposals.json",
+        "sha256": "c07c87867a1c4834c07d8e66013e9fcf236c68bea7583e2e914f62a8ba475088",
+        "selector": "통계 정의 진술 판정"
+      }
+    ],
+    "globalActiveSearch": {
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactWholeItemFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "REUSE_CANDIDATE_PT_AND_TPL",
+    "ordinal": 12,
+    "questionUid": "qid_v1_e00fdb34aaf3b5eb4a0698e96eec27f37902d01673f289e516617beda709def6",
+    "supportingQuestionUids": [
+      "qid_v1_e00fdb34aaf3b5eb4a0698e96eec27f37902d01673f289e516617beda709def6"
+    ],
+    "nameKo": "동일 평균 집단의 통합 분산",
+    "definition": "평균이 같은 집단의 인원수와 분산에서 편차제곱합을 합쳐 전체 분산 및 평균을 구한다.",
+    "distinguishingCriterion": "원자료의 값·도수 표가 아니라 집단 요약통계의 공통 평균을 이용한다. E024Q23/E026Q20의 합성 표준편차 후보에서 제곱근 전 분산 목표 분기다.",
+    "parentProblemTypeKey": null,
+    "nearestActiveTemplates": [
+      "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE"
+    ],
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E024.proposals.json",
+        "sha256": "8e0bef1f853c82d4e4b69d11ed6d4a8aef28cb689cfd2713c30d70660ae3882d",
+        "selector": "동일 평균 두 집단의 통합 표준편차"
+      },
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E026.proposals.json",
+        "sha256": "ff5a30a84c9c5bd14d764f5649a86a1475a6aac71a468679137a3417b4eae7e7",
+        "selector": "Q20"
+      }
+    ],
+    "globalActiveSearch": {
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactWholeItemFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "REUSE_CANDIDATE_TPL",
+    "ordinal": 15,
+    "questionUid": "qid_v1_9e8f6f759eaefd7f448e55a5350513461e5bd125d0705ce701e680b7e43d2e5c",
+    "supportingQuestionUids": [
+      "qid_v1_9e8f6f759eaefd7f448e55a5350513461e5bd125d0705ce701e680b7e43d2e5c"
+    ],
+    "nameKo": "접점 수직과 반지름 삼각형의 각",
+    "definition": "접점 반지름과 접선의 수직을 반지름의 동일 길이 및 알려진 중심각과 연결하여 각을 정한다.",
+    "distinguishingCriterion": "TM_TANGENCY_CONDITION의 접함조건 판정도, 접현각을 원주각에 대응하는 TANGENT_CHORD도 아니다. E005Q4와 E015의 확정된 후보 골격을 그대로 재사용한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "nearestActiveTemplates": [
+      "TM_TANGENCY_CONDITION",
+      "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+    ],
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E005.proposals.json",
+        "sha256": "20a0590d2373d844a3ed18e497fbe5f4b82ac4d140c19c4d0e0f354df694e413",
+        "selector": "B-E005-TPL_CIRCLE_TANGENT_RADIUS_ANGLE"
+      },
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.proposals.json",
+        "sha256": "07c0264d3dac9a31a4fe8557ea3d05e6fdfc7c99668853709b7da85a07d5a674",
+        "selector": "접점의 수직과 반지름 삼각형으로 각 추론"
+      }
+    ],
+    "globalActiveSearch": {
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactWholeItemFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "REUSE_CANDIDATE_TPL",
+    "ordinal": 17,
+    "questionUid": "qid_v1_78c61d7335f2089bb364047a89aef2a9589c46d36d57586563ea81e2954e5a5e",
+    "supportingQuestionUids": [
+      "qid_v1_78c61d7335f2089bb364047a89aef2a9589c46d36d57586563ea81e2954e5a5e"
+    ],
+    "nameKo": "내접사각형의 대각 조건으로 각 결정",
+    "definition": "사각형의 마주 보는 두 각의 합이180도라는 조건을 적용하여 각이나 조건값을 구한다.",
+    "distinguishingCriterion": "두 삼각형의 내각합은 원주각 정리 밖의 보조이고 실제 원관계는 공원성 대각합 하나이다. E035Q3의 내접사각형 각 후보에서 원에 내접할 조건을 정하는 분기를 재사용한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "nearestActiveTemplates": [
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E035.proposals.json",
+        "sha256": "c07c87867a1c4834c07d8e66013e9fcf236c68bea7583e2e914f62a8ba475088",
+        "selector": "내접사각형의 각/E035 Q3"
+      }
+    ],
+    "globalActiveSearch": {
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactWholeItemFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "CONDITION_DEFINITION_GAP_REUSE_REQUEST",
+    "ordinal": 5,
+    "questionUid": "qid_v1_fac6b2aef731fd85052894f2b47eb88398cf7ddd5b81ec9b4f23c690bcd6a162",
+    "supportingQuestionUids": [
+      "qid_v1_fac6b2aef731fd85052894f2b47eb88398cf7ddd5b81ec9b4f23c690bcd6a162"
+    ],
+    "definition": "산점도에서 중복되는 점이 없어 표시된 점 개수가 관측 대상 수와 일치한다.",
+    "nearestActiveCondition": "COND_PAIRWISE_DISTINCT_POINTS",
+    "reason": "현재 ACTIVE는 한 점 일치에 따른 공선성 판정 변화까지 명시하여 산점도 집계의 중복 없음과 정확 범위가 다르다. 원문·4칸 condition 중복불허는 보존하고 임의 조건키를 넣지 않는다.",
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]

@@ -1,0 +1,141 @@
+{
+  "examId": "E049",
+  "registrySha": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+  "definitions": [
+    {
+      "key": "TM_CIRCLE_CHORD_LENGTH",
+      "status": "ACTIVE",
+      "parent": "PT_CIRCLE_LINE_RELATION",
+      "definition": "원과 직선이 만드는 현의 길이를 구하거나 현의 길이 조건을 이용하는 유형.",
+      "internalSkeleton": "원과 직선이 만드는 현의 길이를 구하거나 현의 길이 조건을 이용하는 유형.",
+      "owner": "GEOMETRY_EQUATIONS"
+    },
+    {
+      "key": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "status": "ACTIVE",
+      "parent": "PT_TRIANGLE_CENTERS",
+      "definition": "내심·외심·중심 관련 성질을 목표에 맞게 적용한다.",
+      "internalSkeleton": "중심의 정의·등거리·각 관계 중 필요한 성질을 적용한다.",
+      "owner": "MIDDLE_GEOMETRY"
+    },
+    {
+      "key": "TPL_TRIANGLE_INCENTER",
+      "status": "ACTIVE",
+      "parent": "PT_TRIANGLE_CENTERS",
+      "definition": "내심과 각의 이등분선 관계를 이용한다.",
+      "internalSkeleton": "내심이 만드는 각 이등분선과 내심각 관계를 적용한다.",
+      "owner": "MIDDLE_GEOMETRY"
+    },
+    {
+      "key": "TM_TANGENT_LENGTH",
+      "status": "ACTIVE",
+      "parent": "PT_CIRCLE_TANGENT",
+      "definition": "원 밖의 점에서 원에 그은 접선의 길이를 구하는 유형.",
+      "internalSkeleton": "원 밖의 점에서 원에 그은 접선의 길이를 구하는 유형.",
+      "owner": "GEOMETRY_EQUATIONS"
+    },
+    {
+      "key": "TM_TANGENCY_CONDITION",
+      "status": "ACTIVE",
+      "parent": "PT_CIRCLE_TANGENT",
+      "definition": "원의 중심에서 직선까지의 거리와 반지름의 관계 등으로 접함 조건을 구하거나 판정하는 유형.",
+      "internalSkeleton": "원의 중심에서 직선까지의 거리와 반지름의 관계 등으로 접함 조건을 구하거나 판정하는 유형.",
+      "owner": "GEOMETRY_EQUATIONS"
+    },
+    {
+      "key": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "status": "ACTIVE",
+      "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+      "definition": "접선-현각과 원주각·호 관계를 이용한다.",
+      "internalSkeleton": "접선·현·호·원주각 관계를 대응시켜 목표각을 구한다.",
+      "owner": "MIDDLE_GEOMETRY"
+    },
+    {
+      "key": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "status": "ACTIVE",
+      "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+      "definition": "중심각·반지름·호의 길이의 비례로 부채꼴의 호 길이·넓이를 구하거나 부채꼴이 포함된 합성도형의 둘레·넓이를 계산.",
+      "internalSkeleton": null,
+      "owner": "MIDDLE_GEOMETRY"
+    },
+    {
+      "key": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+      "status": "ACTIVE",
+      "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+      "definition": "원의 중심, 반지름, 현, 호, 활꼴, 부채꼴의 정의와 같은 원에서의 대응 성질을 진술별로 확인한다.",
+      "internalSkeleton": null,
+      "owner": "MIDDLE_GEOMETRY"
+    },
+    {
+      "key": "TPL_H22A_05_SINE_LAW_109",
+      "status": "ACTIVE",
+      "parent": "PT_H22A_05_SINE_LAW",
+      "definition": "2022 대수 사인법칙의 외접원 반지름 풀이 분기. RPM H2-M1-RPM-109 정본 계승.",
+      "internalSkeleton": "사인법칙 → 외접원 반지름",
+      "owner": "ALGEBRA_2022"
+    }
+  ],
+  "q20InradiusReuse": {
+    "selectedTemplate": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+    "supportingItems": [
+      {
+        "questionUid": "qid_v1_1fe640371ed53750b26b3c317c36c27b0da8f82b275504fe20831cbad80f0c34",
+        "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 20,
+        "currentSourceSha256": "2a0280aa0cbe8bf06ae4b2cc749a45c3e3dc5dc852a4c9c3fb11403fc18a7ef3",
+        "currentSourceBlob": "2967d50ce1181ebd2191c66920b25766ef5ec49a",
+        "registeredSupportingUid": true,
+        "currentSourceActuallyRead": true,
+        "existingSolution": "먼저 빗변의 길이를 구한다.\n$AB=\\sqrt{9^2+12^2}=\\sqrt{225}=15\\,\\mathrm{cm}$이다.\n\n$\\triangle ABC$의 넓이는\n$\\dfrac12\\cdot9\\cdot12=54\\,\\mathrm{cm}^2$이다.\n\n내접원의 반지름을 $r$라 하자.\n세 변을 밑변으로 하고 높이가 모두 $r$인 세 삼각형의 넓이를 더하면\n$54=\\dfrac12r(9+12+15)$이다.\n\n$54=18r$\n$r=3\\,\\mathrm{cm}$이다.\n\n따라서 정답은 ①이다.",
+        "methodObserved": "직각삼각형 두 변→Pyth→공통 내접반지름을 높이로 하는 넓이식"
+      },
+      {
+        "questionUid": "qid_v1_6156ed8395ca83e7cf028b580468717996b8a899ed9a2f4fd935e1eb46f868fc",
+        "sourcePath": "archive/exams/original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 21,
+        "currentSourceSha256": "5eaa9cc8355f6070c1468fdc7b1e20edec09cb8def1ce0849cbef4a9b89ab706",
+        "currentSourceBlob": "eeb9a23bd002822a49d4da32efb95f29a0e14207",
+        "registeredSupportingUid": true,
+        "currentSourceActuallyRead": true,
+        "existingSolution": "[키포인트] 접점에서 같은 점까지 그은 접선의 길이는 같고, 직각삼각형의 피타고라스 정리를 쓴다.\n$AF=AD=2\\rm\\,cm$, $CF=CE=3\\rm\\,cm$이다. $BD=BE=t\\rm\\,cm$라 두면\n$AB=AD+DB=t+2$, $BC=BE+EC=t+3$이다. 또 $AC=AF+FC=2+3=5\\rm\\,cm$이다.\n$\\angle B=90^\\circ$이므로 피타고라스 정리에 따라\n$(t+2)^2+(t+3)^2=5^2$이다.\n전개하면 $t^2+4t+4+t^2+6t+9=25$이고, 정리하면 $2t^2+10t-12=0$, 즉 $t^2+5t-6=0$이다.\n인수분해하면 $(t+6)(t-1)=0$이므로 $t=-6$ 또는 $t=1$이다. 길이 $t$는 음수가 될 수 없으므로 $t=1$이다.\n따라서 $AB=3\\rm\\,cm$, $BC=4\\rm\\,cm$, $AC=5\\rm\\,cm$이다. 이 직각삼각형의 넓이는 $\\dfrac{3\\times4}{2}=6\\rm\\,cm^2$이고, 반둘레는 $\\dfrac{3+4+5}{2}=6\\rm\\,cm$이다. 내접원의 반지름은 넓이를 반둘레로 나눈 값이므로 $r=\\dfrac66=1\\rm\\,cm$이다.\n원의 둘레는 $2\\pi r=2\\pi\\times1=2\\pi\\rm\\,cm$이다. 따라서 구하는 길이는 $2\\pi\\rm\\,cm$이다.",
+        "methodObserved": "등접선·Pyth→세 변·반둘레→내접반지름→원의 둘레"
+      }
+    ],
+    "scopeDecision": "ACTIVE 지원문항의 실제 내접반지름 계산과 정의·등거리 성질을 확인하여 세 변과 내접반지름 관계를 재사용한다. 단지 내심각을 구하는 TPL로 강제하지 않는다."
+  },
+  "q22Routes": {
+    "primary": {
+      "field": "solutionImageCaption",
+      "exactQuote": "밑변 BC의 절반은 6cm, 높이 AM은 3cm이다. 외심 O는 높이 AM의 연장선 위에 있고 분홍색 OB가 외접원의 반지름 R이다. 직각삼각형 OMB에서 R²=6²+(R−3)²으로 R을 구할 수 있다. 정답은 15/2cm이다.",
+      "figureAlt": "해설 그림: 원 O 안에 이등변삼각형 ABC가 있고, 파란색으로 표시한 AB와 AC는 길이가 같다. 점 M은 밑변 BC의 중점으로 BC는 12로 적혀 있으며 AM은 BC와 직각으로 만난다. 분홍색 선분 OB는 외접원의 반지름 R로 적혀 있다.",
+      "methodScope": "기존 그림·caption에 이미 있는 중심거리와 반현 피타고라스 경로",
+      "rootDecision": "두 실제 경로를 보존하고 기존 정본 primary와 직접 일치하는 유효 경로를 재사용. 학년 기대만으로 선택하지 않음."
+    },
+    "alternative": {
+      "field": "solution",
+      "exactQuote": "외접원의 반지름 R=abc/(4K)이므로",
+      "actualRoute": "이등변 높이·넓이→외접반지름 공식",
+      "activeAlternativeProblemType": "PT_H22A_05_SINE_LAW",
+      "activeAlternativeTemplate": "TPL_H22A_05_SINE_LAW_109",
+      "alternativeCrossConceptKeys": [
+        "CC_SINE_LAW"
+      ],
+      "notWrittenAsPrimary": true,
+      "newSolutionWritten": false
+    },
+    "sourceAndCaptionPreserved": true,
+    "newSolutionWritten": false
+  },
+  "q15Scope": {
+    "selectedRpm": "M3-RPM-073",
+    "existingCandidateRef": "docs/operations/m3-s2-meta-full-20261114/exams/E005.proposals.json#B-E005-TPL_CIRCLE_TANGENT_RADIUS_ANGLE",
+    "reason": "실제 해설은 중심각→정삼각형→접점수직이며 접현각·원주각 대응도 접함조건 판정도 아니다."
+  },
+  "q23TangentReuse": {
+    "sourceAuditPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+    "sourceAuditSha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab",
+    "rootEstablishedScope": "TM_TANGENT_LENGTH에는 단일 접선 조각 목표 제한이 없다. 실제 접선 네트워크의 길이 전달과 합차·Pyth 연계를 재사용한다."
+  },
+  "newR1R2R3": false,
+  "registryWrites": false
+}
