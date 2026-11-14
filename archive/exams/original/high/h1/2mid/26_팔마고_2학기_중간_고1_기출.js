@@ -825,7 +825,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 5,
-    "image": "assets/images/26_팔마고_2학기_중간_고1_기출/q18.svg",
+    "image": "assets/images/26_팔마고_2학기_중간_고1_기출/q18-problem-v2.svg",
     "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q18-solution-v3.svg",
     "solutionImageAlt": "해설 그림: 사분원의 호 위 한 위치의 P와 점 A(−1,2), 원점 대칭점 A′(1,−2), 점 Q가 있다. 선분 PQ의 중점 M은 (2분의 1,−1)이고, 길이가 4로 같은 OP와 A′Q는 파란색이며 삼각형 A′QP는 주황색으로 칠해져 있다.",
     "solutionImageCaption": "예: P의 두 좌표가 같은 위치를 잡았다. 무게중심 조건에서 PQ의 중점은 일정하고 A′Q=4이며, 넓이의 최댓값과 최솟값의 곱은 4√5이다. 정답은 ②이다.",
