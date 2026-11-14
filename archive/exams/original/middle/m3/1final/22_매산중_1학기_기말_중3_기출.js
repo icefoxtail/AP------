@@ -222,7 +222,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 두 일차식의 곱을 전개해 $x$의 계수를 비교한다.\n$(x+3)(x+5)=x^2+5x+3x+15=x^2+8x+15$이다.\n따라서 $x^2+ax+15$의 $x$ 계수는 $a=8$이고 정답은 ③이다.",
-    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "인수분해",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
@@ -576,7 +576,7 @@ window.questionBank = [
       "note": "RPM classification is preserved separately; no active PT/TPL key is fabricated."
     },
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_NONZERO"],
     "crossConditionMetaStatus": "UNRESOLVED_ACTIVE_REGISTRY_READBACK_NOT_RUN",
     "sourceEvidence": {
       "sourceMode": "ORIGINAL",
@@ -744,11 +744,11 @@ window.questionBank = [
     "solution": "[키포인트] 제곱한 식이 11이면 제곱하기 전 식은 $\\pm\\sqrt{11}$이다.\n$(x+3)^2=11$이므로 $x+3=\\pm\\sqrt{11}$이다.\n따라서 $x=-3\\pm\\sqrt{11}$이므로 정답은 ①이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "sourceMode": "ORIGINAL",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "difficultyReason": "Use the standard square-root method.",
     "rpmPrimaryClassification": {
       "status": "RPM_ONLY",
@@ -872,9 +872,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] $\\sqrt{u^2}=|u|$이며 절댓값은 부호를 보고 푼다.\n주어진 식은 $|x+3|-|x+4|$이다.\n$-4<x<-3$이므로 $x+3<0$, $x+4>0$이다.\n따라서 $|x+3|=-(x+3)$, $|x+4|=x+4$이다.\n결과는 $-(x+3)-(x+4)=-2x-7$이므로 정답은 ②이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "근호를 포함한 식의 계산",
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "sourceMode": "ORIGINAL",
     "difficultyBoundaryFlag": "NONE",
@@ -900,8 +900,8 @@ window.questionBank = [
       "tplKey": null,
       "note": "RPM classification is preserved separately; no active PT/TPL key is fabricated."
     },
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": ["CC_PERFECT_SQUARE"],
+    "conditionKeys": ["COND_RANGE"],
     "crossConditionMetaStatus": "UNRESOLVED_ACTIVE_REGISTRY_READBACK_NOT_RUN",
     "sourceEvidence": {
       "sourceMode": "ORIGINAL",
@@ -966,7 +966,7 @@ window.questionBank = [
       "note": "RPM classification is preserved separately; no active PT/TPL key is fabricated."
     },
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_INTEGER"],
     "crossConditionMetaStatus": "UNRESOLVED_ACTIVE_REGISTRY_READBACK_NOT_RUN",
     "sourceEvidence": {
       "sourceMode": "ORIGINAL",
@@ -1134,7 +1134,7 @@ window.questionBank = [
     "solution": "[키포인트] 각 선택지를 대입하여 실제 두 근을 판정한다.\nㄱ. $m=-7$: $x^2-6x-7=(x-7)(x+1)=0$, 두 근은 7과 $-1$이다. 모두 자연수는 아니므로 거짓.\nㄴ. $m=3$: $(x-3)^2=6$이므로 $x=3\\pm\\sqrt6$, 두 근 모두 무리수이다. 참.\nㄷ. $m=9$: $(x-3)^2=0$이므로 $x=3$인 중근을 갖는다. 참.\n따라서 ㄴ, ㄷ을 선택한 정답은 ④이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "sourceMode": "ORIGINAL",
     "difficultyBoundaryFlag": "NONE",
@@ -1227,7 +1227,7 @@ window.questionBank = [
       "note": "RPM classification is preserved separately; no active PT/TPL key is fabricated."
     },
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "crossConditionMetaStatus": "UNRESOLVED_ACTIVE_REGISTRY_READBACK_NOT_RUN",
     "sourceEvidence": {
       "sourceMode": "ORIGINAL",
@@ -1292,7 +1292,7 @@ window.questionBank = [
       "note": "RPM classification is preserved separately; no active PT/TPL key is fabricated."
     },
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER", "COND_INTEGER"],
     "crossConditionMetaStatus": "UNRESOLVED_ACTIVE_REGISTRY_READBACK_NOT_RUN",
     "sourceEvidence": {
       "sourceMode": "ORIGINAL",
@@ -1412,8 +1412,8 @@ window.questionBank = [
       "tplKey": null,
       "note": "RPM classification is preserved separately; no active PT/TPL key is fabricated."
     },
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": ["CC_RECTANGLE_AREA", "CC_SQUARE_AREA"],
+    "conditionKeys": ["COND_POSITIVE"],
     "crossConditionMetaStatus": "UNRESOLVED_ACTIVE_REGISTRY_READBACK_NOT_RUN",
     "sourceEvidence": {
       "sourceMode": "ORIGINAL",
@@ -1533,8 +1533,8 @@ window.questionBank = [
       "tplKey": null,
       "note": "RPM classification is preserved separately; no active PT/TPL key is fabricated."
     },
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": ["CC_RECTANGLE_AREA"],
+    "conditionKeys": ["COND_POSITIVE"],
     "crossConditionMetaStatus": "UNRESOLVED_ACTIVE_REGISTRY_READBACK_NOT_RUN",
     "sourceEvidence": {
       "sourceMode": "ORIGINAL",
