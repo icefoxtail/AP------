@@ -1,0 +1,111 @@
+{
+  "sourcePath": "archive/exams/original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js",
+  "questionId": 20,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "sourceQuote": "좌표평면에서 이등변삼각형 OAB, A의 y=x에 대한 대칭점 C, 선분 AB와 두 직선의 교점 D,E",
+        "graphPlan": {
+          "family": "multi-curve",
+          "viewport": [
+            -0.5,
+            2.5,
+            -0.5,
+            2.5
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "curves": [
+            {
+              "id": "l",
+              "kind": "LINE",
+              "coefficients": [
+                "0",
+                "1"
+              ],
+              "label": "y=x"
+            },
+            {
+              "id": "m",
+              "kind": "LINE",
+              "coefficients": [
+                "0",
+                "2"
+              ],
+              "label": "y=2x"
+            }
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "O",
+                "x": "0",
+                "y": "0"
+              },
+              {
+                "id": "A",
+                "x": "2",
+                "y": "1"
+              },
+              {
+                "id": "B",
+                "x": "0",
+                "y": "2"
+              },
+              {
+                "id": "C",
+                "x": "1",
+                "y": "2"
+              },
+              {
+                "id": "D",
+                "x": "4/3",
+                "y": "4/3"
+              },
+              {
+                "id": "E",
+                "x": "4/5",
+                "y": "8/5"
+              }
+            ],
+            "segments": [
+              {
+                "id": "oa",
+                "from": "O",
+                "to": "A"
+              },
+              {
+                "id": "ab",
+                "from": "A",
+                "to": "B"
+              }
+            ]
+          },
+          "plotHeightLimit": 320
+        },
+        "caption": "이등변삼각형과 두 직선의 교점",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "이등변삼각형 OAB, 점 C는 A의 y=x 대칭점이며 y=2x 위, D,E는 선분 AB와 두 직선의 교점",
+            "mappedTo": [
+              "graphPlan.curves",
+              "graphPlan.overlays"
+            ]
+          }
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 22,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

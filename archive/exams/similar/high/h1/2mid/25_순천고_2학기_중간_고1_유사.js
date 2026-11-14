@@ -397,13 +397,14 @@ window.questionBank = [
     "solution": "[키포인트] 색칠된 영역을 원소의 포함 조건으로 읽어 집합 연산으로 표현한다.\n조건 정리: 벤다이어그램에서 색칠된 부분은 $A$ 안에 있으면서 $B$ 또는 $C$에도 속하는 영역이다.\n풀이 방향: ‘A 안’은 교집합으로, ‘B 또는 C’는 합집합으로 바꾸어 식을 세운다.\n정석 풀이:\n1. 색칠된 영역은 먼저 $A$ 안으로 제한된다.\n2. 그중 $B$ 또는 $C$에 속하는 부분은 $B\\cup C$이다.\n3. 따라서 색칠된 영역은 $A\\cap(B\\cup C)$이고, 이는 첫 번째 선택지이다.\n핵심 확인: $A$ 밖의 영역은 제외되고 $A\\cap B$와 $A\\cap C$ 두 영역은 모두 포함되므로 $A\\cap(B\\cup C)$가 정확하다.\n따라서 정답은 ①이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_순천고_2학기_중간_고1_유사/q11.svg",
+    "image": "assets/images/25_순천고_2학기_중간_고1_유사/q11-problem-v1.svg",
+    "imageSize": "tall",
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_유사/q11-solution.svg",
     "solutionImageAlt": "A 안에서 B 또는 C에 속하는 영역을 표시한 유사 문항 Venn diagram",
     "solutionImageCaption": "색칠 영역 = A∩(B∪C)",
     "solutionImageSize": "full",
     "imageStatus": "reviewed_pass",
-    "visualAsset": "assets/images/25_순천고_2학기_중간_고1_유사/q11.svg",
+    "visualAsset": "assets/images/25_순천고_2학기_중간_고1_유사/q11-problem-v1.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -416,7 +417,7 @@ window.questionBank = [
         "shade"
       ],
       "essentialVisualFacts": "three overlapping circles A,B,C; shade exactly A∩(B∪C)",
-      "assetRef": "assets/images/25_순천고_2학기_중간_고1_유사/q11.svg"
+      "assetRef": "assets/images/25_순천고_2학기_중간_고1_유사/q11-problem-v1.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
@@ -671,21 +672,21 @@ window.questionBank = [
     "solution": "[키포인트] 무게중심으로 꼭짓점 좌표를 구한 뒤 직선과 점 사이의 거리 공식을 적용한다.\n조건 정리: 무게중심 $G(2,3)$, $B(0,-2)$, $C(4,10)$에서 $A$의 좌표와 직선 $BC$까지의 거리를 구한다.\n풀이 방향: 무게중심 공식으로 $A$를 먼저 구하고, $BC$의 방정식을 세워 점과 직선 사이의 거리 공식을 사용한다.\n정석 풀이:\n1. $G=\\dfrac{A+B+C}{3}$이므로\n$A=3G-B-C=(6,9)-(0,-2)-(4,10)=(2,1)$이다.\n2. $B(0,-2)$, $C(4,10)$을 지나는 직선의 기울기는 $\\dfrac{10-(-2)}{4-0}=3$이다. 따라서 $BC$의 방정식은 $y=3x-2$, 즉 $3x-y-2=0$이다.\n3. 점 $A(2,1)$에서 이 직선까지의 거리는\n$h=\\dfrac{|3\\times2-1-2|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{3}{\\sqrt{10}}$이다.\n핵심 확인: $A=(2,1)$을 무게중심 식에 다시 넣으면 $\\frac{A+B+C}{3}=(2,3)$이고, $A$는 $BC$ 위에 있지 않아 높이가 양수이다.\n따라서 구하는 값은 $\\dfrac{3}{\\sqrt{10}}$이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_순천고_2학기_중간_고1_유사/q18.svg",
+    "image": "assets/images/25_순천고_2학기_중간_고1_유사/q18-problem-v1.svg",
+    "imageSize": "tall",
     "imageStatus": "reviewed_pass",
-    "visualAsset": "assets/images/25_순천고_2학기_중간_고1_유사/q18.svg",
+    "visualAsset": "assets/images/25_순천고_2학기_중간_고1_유사/q18-problem-v1.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
-      "type": "coordinate_triangle_centroid_altitude",
+      "type": "coordinate_triangle_centroid",
       "renderer": "deterministic-svg",
       "semanticRoles": [
-        "centroid",
-        "altitude",
-        "line"
+        "triangle",
+        "centroid"
       ],
-      "essentialVisualFacts": "G=(2,3), B=(0,-2), C=(4,10), A=(2,1), BC:y=3x-2, altitude length 3/sqrt(10)",
-      "assetRef": "assets/images/25_순천고_2학기_중간_고1_유사/q18.svg"
+      "essentialVisualFacts": "triangle ABC; B=(0,-2), C=(4,10), centroid G=(2,3)",
+      "assetRef": "assets/images/25_순천고_2학기_중간_고1_유사/q18-problem-v1.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"

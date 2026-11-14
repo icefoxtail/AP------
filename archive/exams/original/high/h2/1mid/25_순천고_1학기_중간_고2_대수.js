@@ -448,7 +448,7 @@ window.questionBank = [
     "solutionImageCaption": "sector_annulus",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
-    "content": "아래 그림과 같은 두 부채꼴 AOB, COD에 대하여 $\\overset{\\frown}{\\text{AB}}=2\\pi$, $\\overset{\\frown}{\\text{CD}}=\\frac{4}{3}\\pi$이다. 색칠한 부분의 넓이가 $5\\pi$일 때, $\\angle\\text{AOB}$의 크기는? (4.3점)<br><div class='flex justify-center my-4'><svg width='200' height='180' viewBox='0 0 200 180' xmlns='http://www.w3.org/2000/svg'><path d='M 100 160 L 170 48 A 140 140 0 0 0 30 48 Z' fill='none' stroke='#000' stroke-width='1.5'/><path d='M 147 85 A 93 93 0 0 0 53 85 L 30 48 A 140 140 0 0 0 170 48 Z' fill='gray' fill-opacity='0.2'/><path d='M 147 85 A 93 93 0 0 0 53 85' fill='none' stroke='#000' stroke-width='1.5'/><text x='95' y='175' font-family='serif' font-size='14'>O</text><text x='175' y='45' font-family='serif' font-size='14'>A</text><text x='15' y='45' font-family='serif' font-size='14'>B</text><text x='152' y='90' font-family='serif' font-size='14'>C</text><text x='38' y='90' font-family='serif' font-size='14'>D</text></svg></div>",
+    "content": "아래 그림과 같은 두 부채꼴 AOB, COD에 대하여 $\\overset{\\frown}{\\text{AB}}=2\\pi$, $\\overset{\\frown}{\\text{CD}}=\\frac{4}{3}\\pi$이다. 색칠한 부분의 넓이가 $5\\pi$일 때, $\\angle\\text{AOB}$의 크기는? (4.3점)<br><div class='flex justify-center my-4'><img src=\"assets/images/25_순천고_1학기_중간_고2_대수/q13-problem-v2.svg\" style=\"display:block; margin:8px auto; width:245px; max-width:100%; height:auto; max-height:195px; object-fit:contain\" alt=\"중심 O를 공유하는 두 부채꼴의 원호 사이가 색칠된 그림\"></div>",
     "choices": [
       "$\\frac{\\pi}{9}$",
       "$\\frac{\\pi}{6}$",

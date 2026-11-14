@@ -1238,7 +1238,7 @@ window.questionBank = [
       "접선 조건으로 길이 구하기"
     ],
     "wide": true,
-    "content": "【서술형 3】 다음 그림에서 원 $\\mathrm{O}$는 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AC}} = 8\\,\\text{cm}$, $\\overline{\\mathrm{BC}} = 10\\,\\text{cm}$일 때, $\\overline{\\mathrm{OC}}$의 길이를 구하시오. (8점)<br><img src=\"assets/images/21_신흥중_2학기_중간_중3_수학/q23_diagram_RECONSTRUCTED.svg\" />",
+    "content": "【서술형 3】 다음 그림에서 원 $\\mathrm{O}$는 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AC}} = 8\\,\\text{cm}$, $\\overline{\\mathrm{BC}} = 10\\,\\text{cm}$일 때, $\\overline{\\mathrm{OC}}$의 길이를 구하시오. (8점)<br><img src=\"assets/images/21_신흥중_2학기_중간_중3_수학/q23-problem-v2.svg\" />",
     "choices": [],
     "answer": "2√10 cm",
     "solution": "피타고라스 정리로 $AB=\\sqrt{10^2-8^2}=6$cm입니다. 원의 반지름을 $r$이라 하면, 내심에서 세 변까지의 거리는 모두 $r$이므로 삼각형 넓이는 $\\frac12 r(6+8+10)=12r$입니다. 삼각형 넓이 $\\frac12\\cdot6\\cdot8=24\\,\\text{cm}^2$와 같으므로 $12r=24$, $r=2$cm입니다. 각 A가 직각이므로 O는 두 직각변에서 각각 2cm 떨어져 있습니다. C에서 O까지의 직각 성분은 $8-2=6$cm와 2cm이므로 $OC=\\sqrt{6^2+2^2}=2\\sqrt{10}\\,\\text{cm}$입니다.",
