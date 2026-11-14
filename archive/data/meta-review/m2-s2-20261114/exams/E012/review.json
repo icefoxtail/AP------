@@ -1482,7 +1482,7 @@
         "classification": "확률의 활용 / 경우를 나누어 구하는 확률: 눈의 같음 제외와 같은 기울기의 평행·일치 조건을 분리하여 허용 순서쌍을 센다.",
         "binding": "ACTIVE 정의와 현행 crosswalk 대조. 표시한 definitionMatch는 등록키의 의미 후보이며 공식 Resolver 실행 영수증을 대신하지 않음.",
         "crossConcept": "주풀이 밖의 필수 보조 개념: 두 직선의 교점",
-        "condition": "서로 다른 기울기를 갖는 두 직선의 한 점 교차 판정에 a-b≠0이 필요하여 COND_NONZERO를 붙인다. 이는 a 또는 b 각각이 비영이라는 뜻이 아니다. 같은 직선이 겹치는 경우의 원본 만남 해석은 별도 보존한다.",
+        "condition": "(가)의 a/b≠1은 주사위 눈 b가 자연수이므로 a≠b, 즉 a-b≠0인 서로 다른 두 눈의 값 제한이다. COND_NONZERO의 대상은 차 a-b이며 a,b 각각의 비영이나 (나)의 두 기울기 차가 아니다. (나)의 두 직선 기울기는2와a이고, 같은 직선이 만나는 경우를 포함하는 원본 해석은 그대로 보존한다.",
         "integration": "보조 개념 결과를 주방법 또는 최종 목표에 순차 연결함.",
         "difficulty": "두 제한의 겹침과 기울기가 같은 예외를 관리.",
         "fourSlot": "실제 발문·해설과 필요한 그림을 읽고 항목별 용어/인용 검토. 독립 표본 승인 전."
@@ -2278,6 +2278,7 @@
     "ROOT 독립 검토: Q1·5 중/1 B12 medium 인접 난도 수용, Q10 표준 높이 닮음의 bucket2 수용.",
     "A 표본 및 ROOT의 COND_NONZERO 정의 확인에 따라 Q17 조건을 a-b≠0 대상으로 정밀화. 기존 일치 직선도 만남으로 세는 source 해석과 별도이며 수학 원문은 변경하지 않는다.",
     "Q19의 순환 이동 신규 CC 제안을 철회하고 실제 ACTIVE CC_POLYGON_VERTEX_MOTION으로 수정. 앞선 검색의 누락을 후속 registry 재조회에서 발견했으며 ROOT에 즉시 통보했다.",
-    "후속 정정: 실제 로컬 제안ID C-E012-CC-CYCLIC도 proposalRefs/proposals에서 완전히 제거했다. ACTIVE 키 재사용만 남기며 신규등록 대기 수집에 포함하지 않는다."
+    "후속 정정: 실제 로컬 제안ID C-E012-CC-CYCLIC도 proposalRefs/proposals에서 완전히 제거했다. ACTIVE 키 재사용만 남기며 신규등록 대기 수집에 포함하지 않는다.",
+    "Q17 condition 설명만 ROOT 지적에 따라 (가) a/b≠1에서 유도한 a-b≠0에 정확히 결속했다. 기존 CC/Condition 키·(나) 같은 직선 포함 해석·source·난도는 유지. 이전 SHA 28b629b514fad3e719dc2c360b949353f1fa2ceb744442795c74d75eacde88ce"
   ]
 }
