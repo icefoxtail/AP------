@@ -2254,8 +2254,8 @@
     {
       "sourceOrdinal": 25,
       "questionUid": "qid_v1_b421e9722c10ae9352bdc3b96c83d2463b4169c1bdbf7f743977bcca04912e4b",
-      "verdict": "CORRECT",
-      "rpmRecordId": "M2-RPM-074",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M1-RPM-079",
       "rpmDecision": "CORRECT",
       "primaryMethod": "대각선 SAS 합동으로 평행사변형 증명",
       "decisiveStep": "대각선AC를 그어 SAS 합동을 얻고 대응엇각으로 두번째 평행쌍을 증명한다.",
@@ -2306,41 +2306,42 @@
       },
       "after": {
         "curriculum": "2015",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
-        "crossConceptKeys": [
-          "CC_TRIANGLE_CONGRUENCE_SAS",
-          "CC_PARALLEL_LINE_ANGLES"
-        ],
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "SEQUENTIAL",
+        "integrationPattern": "NONE",
         "difficultyBucket": 3,
         "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-        "rpmL1": "사각형의 성질",
-        "rpmL2": "평행사변형",
-        "rpmL3": "평행사변형의 판정",
-        "rpmL4": "변·각 조건",
+        "rpmL1": "기본 도형",
+        "rpmL2": "작도와 합동",
+        "rpmL3": "삼각형의 합동",
+        "rpmL4": "SAS 합동",
         "rpmPrimaryPath": {
-          "majorUnit": "사각형의 성질",
-          "midUnit": "평행사변형",
-          "l3": "평행사변형의 판정",
-          "l4": "변·각 조건"
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동"
         }
       },
       "fieldReview": {
-        "classification": "평행사변형의 판정 / 변·각 조건: 보조대각선을 선택해 합동에서 평행으로 이어지는 두논증을 구성한다.",
-        "binding": "PT_QUADRILATERAL_PROPERTIES / TPL_QUADRILATERAL_CRITERIA의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
-        "crossConcept": "평행사변형판정의 증명을 구성하는 SAS합동 및 엇각의역을 실제 사용.",
+        "classification": "발문이 보조선·합동·평행사변형 설명을 각각 요구하여 알려진 판정조건을 단순 적용하는 목표가 아니다. 대각선 SAS로 나머지 평행쌍을 도출하는 판정조건 증명 골격이다. 공식 M1-RPM079 SAS 선수 primary로 기록하고 source의 M2 소속을 보존한다.",
+        "binding": "NEW_PT 평행사변형 판정조건의 증명과 한 쌍의 대변 평행·동등에서 대각선 SAS를 쓰는 exact TPL 등록 대기. 기존 TPL_QUADRILATERAL_CRITERIA는 주어진 조건으로 평행사변형임을 판정하는 의미여서 해당 조건 자체 증명으로 확장하지 않는다.",
+        "crossConcept": "새 proof Primary의 내부 골격이 SAS 합동과 대응 엇각으로 평행을 도출하는 것이므로 CC_TRIANGLE_CONGRUENCE_SAS/CC_PARALLEL_LINE_ANGLES 중복을 제거한다.",
         "condition": "도형의 주어진 관계는 4칸 condition에 보존. 별도 값의 허용범위를 제한하는 canonical 조건은 없어 conditionKeys=[] 유지.",
-        "integration": "SEQUENTIAL: 보조대각선을 선택해 합동에서 평행으로 이어지는 두논증을 구성한다.",
+        "integration": "NONE: 보조선→SAS→대응각→평행은 제안 증명형 Primary의 단일 표준 골격이다.",
         "difficulty": "보조대각선을 선택해 합동에서 평행으로 이어지는 두논증을 구성한다.",
         "fourSlot": "실제 발문·해설의 용어와 정확한 인용을 대조하여 4칸 작성."
       },
       "reason": "보조대각선을 선택해 합동에서 평행으로 이어지는 두논증을 구성한다.",
       "registrationDebt": [
-        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음",
+        "NEW_PT/NEW_TPL: 평행사변형 판정조건의 증명 및 한 쌍 대변 평행·동등의 SAS 증명",
+        "LOWER_GRADE_PREREQUISITE: M1-RPM079 SAS 선수 의미와 source M2 소속의 exact binding 등록 대기"
       ],
-      "proposalRefs": [],
+      "proposalRefs": [
+        "B-E011-PARALLELOGRAM-CRITERION-PROOF"
+      ],
       "finalDifficulty": {
         "level": "상",
         "difficultyBucket": 3,
@@ -2348,7 +2349,9 @@
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
         "reason": "보조대각선을 선택해 합동에서 평행으로 이어지는 두논증을 구성한다."
-      }
+      },
+      "semanticSourceScope": "M1-2",
+      "scopeDecision": "LOWER_GRADE_PREREQUISITE"
     }
   ],
   "topicSummary": [
@@ -2406,8 +2409,7 @@
         15,
         16,
         17,
-        22,
-        25
+        22
       ]
     },
     {
@@ -2417,6 +2419,13 @@
         19,
         20,
         21
+      ]
+    },
+    {
+      "rpmL1": "기본 도형",
+      "rpmL2": "작도와 합동",
+      "ordinals": [
+        25
       ]
     }
   ],
@@ -2487,6 +2496,27 @@
         "TPL_QUADRILATERAL_PROPERTIES",
         "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
         "B-E002-TPL-AREA-PARTITION"
+      ]
+    },
+    {
+      "id": "B-E011-PARALLELOGRAM-CRITERION-PROOF",
+      "type": "NEW_PT",
+      "name": "평행사변형 판정조건의 증명",
+      "definition": "주어진 변·각·대각선 조건에서 보조선과 합동 또는 평행선의 각 관계를 통해 두 쌍의 대변이 평행함을 도출하여 판정조건 자체를 증명한다.",
+      "parent": "사각형의 성질 / 증명; 실제 결정 단계의 선수 RPM 별도",
+      "proposedTemplateName": "한 쌍 대변의 평행·동등에서 대각선 SAS로 평행사변형 증명",
+      "proposedTemplateDefinition": "평행하고 같은 길이인 한 쌍 대변과 공통 대각선의 SAS 합동을 보이고 대응 엇각의 동등으로 나머지 대변의 평행을 증명한다.",
+      "distinguishingCriteria": "E016의 기본성질 증명은 평행사변형→대변동등 방향, 본 제안은 별도 조건→평행사변형 방향이다. 기존 TPL_QUADRILATERAL_CRITERIA는 이미 알려진 조건을 판정에 적용하므로 주어진 합동 설명을 대체할 수 없다.",
+      "existingCandidatesReviewed": [
+        "PT_QUADRILATERAL_PROPERTIES",
+        "TPL_QUADRILATERAL_CRITERIA",
+        "PT_M1_CONGRUENCE_DATA_TRANSFER"
+      ],
+      "ordinals": [
+        25
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_b421e9722c10ae9352bdc3b96c83d2463b4169c1bdbf7f743977bcca04912e4b"
       ]
     }
   ],
@@ -2569,6 +2599,13 @@
         24
       ],
       "note": "두 독립 검토자 모두 bucket2를 수용. 원문level상은 보존하고 STRONG_CONFLICT를 역사충돌로 유지."
+    },
+    {
+      "type": "ROOT_AUTHORIZED_FROZEN_REPAIR",
+      "ordinals": [
+        25
+      ],
+      "reason": "ROOT 승인으로 이용/증명 목표 경계를 교정. 새 증명형 PT/TPL 공백과 공식 M1 SAS 선수 의미, source M2 보존. 난도3/상 ACCEPTABLE 및 4칸 불변."
     }
   ]
 }
