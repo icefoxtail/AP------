@@ -262,3 +262,158 @@
 | Q23 | `EXEMPT` | `EXEMPT` | 수와 식의 계산·전개·인수분해가 중심이며 문제와 풀이가 텍스트·수식으로 완결되어 추가 도식의 학습 이득이 확인되지 않음.
 | Q24 | `EXEMPT` | `EXEMPT` | 수와 식의 계산·전개·인수분해가 중심이며 문제와 풀이가 텍스트·수식으로 완결되어 추가 도식의 학습 이득이 확인되지 않음.
 | Q25 | `NEED` | `NEED` | 두 원의 8등분 조각을 나란히 보이면 한 조각 넓이 차의 1/8 관계를 파악하기 쉽다. 그림 자산·렌더 미완.
+
+# 22 풍덕중 중3 1학기 중간 유사 — SVG/도식 인계 체크리스트
+
+- Source Doc: `1QvctH-loYppqz_9hOQJMnGxYK56vuaULu2vgdjbLf1o` revision `AHj4eMQ4ELrwIe-OCfve34eMS4eyh2CGKVx0jSKy6bj9gSHOu2tqBpi5wm7KzXOf56iP59E1f6cqOrNQnQlWtvBaxVbcLBP_K0U9sXJw9zA`
+- Source archive: `archive/exams/original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js` (branch blob `cfa2bf6373f18ec4150d424927dcf17204fcab44`)
+- Candidate JS blob SHA-1: `4caaf5d6612b488f31dc31f9501291fe3688a376`
+- Google Docs table API found one native 6×7 table for Q10; its cell sequence is retained in the candidate as a TeX array.
+- Q20 has a source SVG-plan paragraph, but no final image asset or rendered validation is included. SVG creation and screen review were not run by scope.
+
+| Item | Problem visual | Solution visual | Rationale / remaining |
+|---|---|---|---|
+| Q01 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q02 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q03 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q04 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q05 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q06 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q07 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q08 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q09 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q10 | NEED | NEED | A square-root approximation table is essential data for comparing lookup access; preserve its native 6x7 structure (rendered as TeX array). Asset not created; visual status remains pending.
+| Q11 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q12 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q13 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q14 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q15 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q16 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q17 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q18 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q19 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q20 | NEED | NEED | The prompt explicitly refers to a rectangle and equal-area square; a diagram helps students map side lengths to equal areas. The Doc includes SVG plan code but no rendered asset is included in the candidate. Asset not created; visual status remains pending.
+
+# 22 풍덕중 중3 1학기 중간 유사 — SVG/도식 인계 체크리스트
+
+- Source Doc: `1QvctH-loYppqz_9hOQJMnGxYK56vuaULu2vgdjbLf1o` revision `AHj4eMQ4ELrwIe-OCfve34eMS4eyh2CGKVx0jSKy6bj9gSHOu2tqBpi5wm7KzXOf56iP59E1f6cqOrNQnQlWtvBaxVbcLBP_K0U9sXJw9zA`
+- Source archive: `archive/exams/original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js` (branch blob `cfa2bf6373f18ec4150d424927dcf17204fcab44`)
+- Candidate JS blob SHA-1: `61d7db63c9473cd4b1a8976a370ff26d0273c874`
+- Google Docs table API found one native 6×7 table for Q10; its cell sequence is retained in the candidate as a TeX array.
+- Q20 has a source SVG-plan paragraph, but no final image asset or rendered validation is included. SVG creation and screen review were not run by scope.
+
+| Item | Problem visual | Solution visual | Rationale / remaining |
+|---|---|---|---|
+| Q01 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q02 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q03 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q04 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q05 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q06 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q07 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q08 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q09 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q10 | NEED | NEED | A square-root approximation table is essential data for comparing lookup access; preserve its native 6x7 structure (rendered as TeX array). Asset not created; visual status remains pending.
+| Q11 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q12 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q13 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q14 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q15 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q16 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q17 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q18 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q19 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q20 | NEED | NEED | The prompt explicitly refers to a rectangle and equal-area square; a diagram helps students map side lengths to equal areas. The Doc includes SVG plan code but no rendered asset is included in the candidate. Asset not created; visual status remains pending.
+
+# 22 풍덕중 중3 1학기 중간 유사 — SVG/도식 인계 체크리스트
+
+- Source Doc: `1QvctH-loYppqz_9hOQJMnGxYK56vuaULu2vgdjbLf1o` revision `AHj4eMQ4ELrwIe-OCfve34eMS4eyh2CGKVx0jSKy6bj9gSHOu2tqBpi5wm7KzXOf56iP59E1f6cqOrNQnQlWtvBaxVbcLBP_K0U9sXJw9zA`
+- Source archive: `archive/exams/original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js` (branch blob `cfa2bf6373f18ec4150d424927dcf17204fcab44`)
+- Candidate JS blob SHA-1: `1453406220c6251efd1daff1cdc05542b5c36f68`
+- Google Docs table API found one native 6×7 table for Q10; its cell sequence is retained in the candidate as a TeX array.
+- Q20 has a source SVG-plan paragraph, but no final image asset or rendered validation is included. SVG creation and screen review were not run by scope.
+
+| Item | Problem visual | Solution visual | Rationale / remaining |
+|---|---|---|---|
+| Q01 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q02 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q03 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q04 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q05 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q06 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q07 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q08 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q09 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q10 | NEED | NEED | A square-root approximation table is essential data for comparing lookup access; preserve its native 6x7 structure (rendered as TeX array). Asset not created; visual status remains pending.
+| Q11 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q12 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q13 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q14 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q15 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q16 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q17 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q18 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q19 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q20 | NEED | NEED | The prompt explicitly refers to a rectangle and equal-area square; a diagram helps students map side lengths to equal areas. The Doc includes SVG plan code but no rendered asset is included in the candidate. Asset not created; visual status remains pending.
+
+# 22 풍덕중 중3 1학기 중간 유사 — SVG/도식 인계 체크리스트
+
+- Source Doc: `1QvctH-loYppqz_9hOQJMnGxYK56vuaULu2vgdjbLf1o` revision `AHj4eMQ4ELrwIe-OCfve34eMS4eyh2CGKVx0jSKy6bj9gSHOu2tqBpi5wm7KzXOf56iP59E1f6cqOrNQnQlWtvBaxVbcLBP_K0U9sXJw9zA`
+- Source archive: `archive/exams/original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js` (branch blob `cfa2bf6373f18ec4150d424927dcf17204fcab44`)
+- Candidate JS blob SHA-1: `1ec292e1cac348059e130c1eb65d5c7933a2c378`
+- Google Docs table API found one native 6×7 table for Q10; its cell sequence is retained in the candidate as a TeX array.
+- Q20 has a source SVG-plan paragraph, but no final image asset or rendered validation is included. SVG creation and screen review were not run by scope.
+
+| Item | Problem visual | Solution visual | Rationale / remaining |
+|---|---|---|---|
+| Q01 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q02 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q03 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q04 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q05 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q06 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q07 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q08 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q09 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q10 | NEED | NEED | A square-root approximation table is essential data for comparing lookup access; preserve its native 6x7 structure (rendered as TeX array). Asset not created; visual status remains pending.
+| Q11 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q12 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q13 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q14 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q15 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q16 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q17 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q18 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q19 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q20 | NEED | NEED | The prompt explicitly refers to a rectangle and equal-area square; a diagram helps students map side lengths to equal areas. The Doc includes SVG plan code but no rendered asset is included in the candidate. Asset not created; visual status remains pending.
+
+# 22 풍덕중 중3 1학기 중간 유사 — SVG/도식 인계 체크리스트
+
+- Source Doc: `1QvctH-loYppqz_9hOQJMnGxYK56vuaULu2vgdjbLf1o` revision `AHj4eMQ4ELrwIe-OCfve34eMS4eyh2CGKVx0jSKy6bj9gSHOu2tqBpi5wm7KzXOf56iP59E1f6cqOrNQnQlWtvBaxVbcLBP_K0U9sXJw9zA`
+- Source archive: `archive/exams/original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js` (branch blob `cfa2bf6373f18ec4150d424927dcf17204fcab44`)
+- Candidate JS blob SHA-1: `1ec292e1cac348059e130c1eb65d5c7933a2c378`
+- Google Docs table API found one native 6×7 table for Q10; its cell sequence is retained in the candidate as an AP Table Engine pipe table.
+- Q20 has a source SVG-plan paragraph, but no final image asset or rendered validation is included. SVG creation and screen review were not run by scope.
+
+| Item | Problem visual | Solution visual | Rationale / remaining |
+|---|---|---|---|
+| Q01 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q02 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q03 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q04 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q05 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q06 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q07 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q08 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q09 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q10 | NEED | NEED | A square-root approximation table is essential data for comparing lookup access; preserve its native 6x7 structure (rendered as TeX array). Asset not created; visual status remains pending.
+| Q11 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q12 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q13 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q14 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q15 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q16 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q17 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q18 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q19 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q20 | NEED | NEED | The prompt explicitly refers to a rectangle and equal-area square; a diagram helps students map side lengths to equal areas. The Doc includes SVG plan code but no rendered asset is included in the candidate. Asset not created; visual status remains pending.

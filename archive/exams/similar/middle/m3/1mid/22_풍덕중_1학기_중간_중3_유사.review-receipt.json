@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "similar-exam-candidate-review-receipt-v1",
+  "examUid": "22_풍덕중_1학기_중간_중3_유사",
+  "source": {
+    "documentId": "1QvctH-loYppqz_9hOQJMnGxYK56vuaULu2vgdjbLf1o",
+    "revisionId": "AHj4eMQ4ELrwIe-OCfve34eMS4eyh2CGKVx0jSKy6bj9gSHOu2tqBpi5wm7KzXOf56iP59E1f6cqOrNQnQlWtvBaxVbcLBP_K0U9sXJw9zA",
+    "title": "22_풍덕중_1학기_중간_중3_유사_일체형.md",
+    "questionCount": 20,
+    "totalScore": 100,
+    "sourceArchiveFile": "archive/exams/original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js",
+    "sourceBlobSha1": "cfa2bf6373f18ec4150d424927dcf17204fcab44",
+    "paragraphCount": 363,
+    "tables": 1,
+    "tableSize": "6x7"
+  },
+  "candidateJs": "archive/exams/similar/middle/m3/1mid/22_풍덕중_1학기_중간_중3_유사.js",
+  "candidateBlobSha1": "4caaf5d6612b488f31dc31f9501291fe3688a376",
+  "authoringStatus": "CREATE_DRAFT; R1_MATH_REVIEW_PASS; R2_MATH_REVIEW_PASS; VISUAL_PENDING; METADATA_EVIDENCE_DEBT",
+  "sourceAudit": {
+    "sameExamCandidateOnAccumulationBase": false,
+    "sourceOriginalPathVerified": true,
+    "contentCorrections": [
+      {
+        "qid": 2,
+        "kind": "formatting",
+        "before": "comparison options used literal `;\\square;` separators",
+        "after": "removed stray semicolons while preserving the comparison blank",
+        "reason": "R2 identified a student-visible conversion artifact; mathematical content and answers unchanged."
+      },
+      {
+        "qid": 7,
+        "kind": "formatting",
+        "before": "vertical-tab between two algebraic identities",
+        "after": "normal line break",
+        "reason": "R2 identified an invalid control character; mathematical content and answers unchanged."
+      }
+    ],
+    "openVisuals": [
+      "Q20 SVG plan exists in Doc, but final asset/render not validated or created."
+    ],
+    "tableConversion": [
+      "Q10: native 6x7 Docs table transcribed cell-by-cell from Google Drive table API into AP Table Engine pipe format."
+    ]
+  },
+  "mathReview": {
+    "status": "R1_AND_R2_PASS_MATH; FORMATTING_ONLY_FOLLOWUP",
+    "r1": {
+      "status": "PASS",
+      "all20AnswersMatched": true,
+      "all20SolutionsReviewed": true,
+      "evidence": "/workspace/r1-22-pungdeok-comparison.json",
+      "sha256": "f0b362dbb1d5ac489cac8dd0e971186603894bcbc9b65e172237d0652ffb4782"
+    },
+    "r2": {
+      "status": "PASS",
+      "all20AnswersAndSolutionsChecked": true,
+      "evidence": "/workspace/r2-22-pungdeok-review.json",
+      "sha256": "c0166eac8608abc9a09e7557e68ddced9edd761fbd8e2bba50f65a5b4aaffe0b"
+    },
+    "followup": "After math review, only Q2 stray punctuation and Q7 control-character line break were repaired. No mathematical content changed."
+  },
+  "metadataReview": {
+    "status": "UNREVIEWED_EVIDENCE_DEBT",
+    "candidateRows": 20,
+    "resolverStatus": "NOT_RUN",
+    "4slotStatus": "UNREVIEWED_20",
+    "registrationStatus": "NOT_SUBMITTED"
+  },
+  "visualReview": {
+    "status": "NOT_RUN_BY_SCOPE",
+    "problemNeed": [
+      10,
+      20
+    ],
+    "solutionNeed": [
+      10,
+      20
+    ],
+    "createdAssets": [],
+    "renderedItems": []
+  },
+  "checks": {
+    "nodeSyntax": "PASS: node --check",
+    "tableParser": "PASS: 1 table detected, 0 FAIL",
+    "genericHarness": "FAIL: draft gate found only missing author plans directory archive/exams/similar/middle/m3/1mid/22_풍덕중_1학기_중간_중3_유사_plans; not waived or synthesized",
+    "remoteCommit": "PENDING push/readback"
+  }
+}
