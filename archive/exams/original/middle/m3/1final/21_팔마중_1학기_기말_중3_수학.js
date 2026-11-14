@@ -143,15 +143,13 @@ window.questionBank = [
       "templateKey"
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
-    "crossConceptKeys": [
-      "CC_ROOTS_COEFFICIENTS"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 1,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 4,
@@ -196,12 +194,12 @@ window.questionBank = [
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 5,
@@ -298,12 +296,12 @@ window.questionBank = [
       "templateKey"
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_MULTIPLICATION_FORMULAS"],
     "conditionKeys": [
       "COND_NONZERO"
     ],
-    "integrationPattern": "NONE",
-    "difficultyBucket": 2,
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
@@ -354,7 +352,7 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -450,7 +448,7 @@ window.questionBank = [
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_RATIONAL"],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
@@ -502,10 +500,10 @@ window.questionBank = [
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -551,9 +549,7 @@ window.questionBank = [
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "conditionKeys": ["COND_POSITIVE", "COND_RATIONAL"],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
@@ -607,7 +603,7 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -805,10 +801,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 17,
@@ -854,7 +850,7 @@ window.questionBank = [
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1059,7 +1055,7 @@ window.questionBank = [
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1145,10 +1141,8 @@ window.questionBank = [
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1192,7 +1186,7 @@ window.questionBank = [
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1238,9 +1232,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   }
 ];
