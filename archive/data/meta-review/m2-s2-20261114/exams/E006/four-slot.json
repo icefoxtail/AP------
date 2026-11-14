@@ -1,0 +1,1232 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "e639c0def5984911d76ca624c50f5407fe824604",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "C / current-source semantic reread with exact prior evidence reuse",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC\\sim\\triangle DEF$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "$\\triangle DEF$의 둘레의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "대응하는 변의 길이의 비는 닮음비와 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "둘레는 $10+8+6=24",
+            "evidenceType": "IMPLIED",
+            "justification": "세 대응변의 길이를 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "$\\triangle ABC\\sim\\triangle DEF$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "닮음비로 대응변을 구하고 둘레를 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_92a9b78ed8d175e8b4f366d95b2d09cdf2df713df5ba8183ee11d401f7df6fa8"
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{BC}\\parallel\\overline{DE}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "\\parallel\\overline{DE}$인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행선과선분의길이의비",
+            "src": "solution",
+            "quote": "대응하는 두 선분의 길이의 비가 같아야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "대응하는 선분의 비가 같을 때 평행임을 판정한다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$AD:AB=2:6=1:3$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "교점을 기준으로 대응 선분의 비를 비교해 평행을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_456d73e6a2578c5999276080557acee53cf464a21fb0adb57e1f06e2f4a30118"
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$의 점 $B$"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "내린 수선의 발을 $D$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{DC}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "$\\angle A$가 공통이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "직각과 공통각이 각각 같아 AA 닮음이다."
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "$AB:AC=AD:AB$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "빗변에 내린 높이로 생기는 닮음에서 전체 빗변을 정하고 부분을 뺀다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_77bdb41803d8e38bf819ade572a121911b9ef1bf783541203c671df15ec0985f"
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "원기둥",
+            "src": "choices",
+            "quote": "높이가 다른 원기둥"
+          },
+          {
+            "term": "부채꼴",
+            "src": "choices",
+            "quote": "두 부채꼴"
+          },
+          {
+            "term": "구",
+            "src": "choices",
+            "quote": "두 구"
+          },
+          {
+            "term": "정육면체",
+            "src": "choices",
+            "quote": "정육면체"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "choices",
+            "quote": "두 이등변삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "할 수 없는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "모든 비와 각이 같아야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "도형의 대응 각과 길이 비로 닮음을 비교한다."
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "반지름과 높이의 비가 달라질 수 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "비가 달라지는 경우를 들어 항상 닮지 않음을 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 도형에서 비나 각이 변할 수 있는지와 닮음조건을 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_47bef6dc41ad02ca963e72d60e56880bf22e4ef03f260d4f7bbdb8b1d8bf775b"
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "사다리꼴 $ABCD$에서"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "두 대각선의 교점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{PQ}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "$\\triangle CPQ\\sim\\triangle CAD$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "$AP:PC=AD:BC=4:8=1:2$",
+            "evidenceType": "IMPLIED",
+            "justification": "평행한 밑변과 대각선이 만드는 닮음의 대응비를 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "\\parallel\\overline{PQ}\\parallel"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "대각선의 교점이 나누는 비를 구하고 평행선이 만드는 닮음비를 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_62838ae36c190edab501d68ec5a6418356618896240fc1a2eac576fea187452f"
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사면체",
+            "src": "stem",
+            "quote": "정사면체를 높이가 삼등분"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "입체도형 (다)의 부피는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부피비",
+            "src": "solution",
+            "quote": "부피의 비는 닮음비의 세제곱이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "(가)+(나)의 부피는",
+            "evidenceType": "IMPLIED",
+            "justification": "전체와 누적 부분 부피의 차로 각 층의 부피를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "밑면에 평행한 두 평면"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "닮은 정사면체의 부피비를 세제곱하여 절단된 층의 차를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_24ab42c5f0e1186703cb09c5869513ccd793bff5f3c8232dc14a59a59e7d7810"
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "$\\triangle GBC$의 무게중심이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AG}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "무게중심은 중선을 꼭짓점 쪽에서 $2:1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례",
+            "src": "solution",
+            "quote": "$AG:GD=2:1$",
+            "evidenceType": "IMPLIED",
+            "justification": "중첩된 두 삼각형에 중선의 비를 연속 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "같은 중선 위의 두 무게중심에 2대1 비를 차례로 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a9dc7e54d336fe53592c53fec8f9d485f4c8cb9c297ef667e6b9a2153103f893"
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$에서"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "$\\overline{BC},\\overline{CD}$의 중점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "오각형 $PMCNQ$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "$\\triangle APD\\sim\\triangle MPB$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "오각형 $PMCNQ$의 넓이는",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선 아래 삼각형에서 양쪽 삼각형을 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "$\\overline{BC},\\overline{CD}$의 중점이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행과 중점으로 대각선의 분할비를 구한 뒤 삼각형 넓이를 빼어 오각형을 얻는다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9484d043f81b1656008d720515835c722bc55356d927de9833796572470fb14b"
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "원에 내접하는 직사각형 $ABCD$"
+          },
+          {
+            "term": "반원",
+            "src": "stem",
+            "quote": "각 변을 지름으로 하는 반원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "어두운 부분의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 이용하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "네 반원의 넓이의 합이 외접원의 넓이와 같아진다",
+            "evidenceType": "IMPLIED",
+            "justification": "반원 넓이의 합과 외접원의 넓이를 비교한다."
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "겹치는 부분이 서로 상쇄되어",
+            "evidenceType": "IMPLIED",
+            "justification": "공통으로 포함되는 부분을 빼 색칠 영역을 직사각형 넓이와 대응시킨다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원에 내접하는 직사각형"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "대각선의 제곱 관계로 네 반원과 외접원의 넓이를 같게 하여 공통 영역을 소거한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_6e391c87ec064258ea1ebdcfa50c3437e99bbc6a66c420b67b2001b987413924"
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$의 세 변"
+          },
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "한 변으로 하는 정사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ACG$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리로 $AC$를 구하고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "$\\triangle ACM\\sim\\triangle CBA$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "높이는 $CM=\\dfrac{18}{5}",
+            "evidenceType": "IMPLIED",
+            "justification": "정사각형 변을 밑변으로 하고 수선의 발까지 거리를 높이로 쓴다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "직각삼각형의 변과 닮음으로 투영 길이를 구하고 삼각형 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_0eec9969fef909c52533d2dfc5839814365284cdce32a6490aa9923d0c63ce87"
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "두 눈의 수의 차가 $2$ 또는 $4$"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "동시에 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순서쌍",
+            "src": "solution",
+            "quote": "순서쌍으로 센다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "눈의 차가 $2$인 경우는",
+            "evidenceType": "IMPLIED",
+            "justification": "차가 2와 4인 경우를 나누어 각각 센다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "두 경우는 겹치지 않으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 겹치지 않는 경우의 수를 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 두 개의 주사위"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "서로 다른 주사위의 순서쌍을 차별로 나누어 세고 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 주사위",
+      "questionUid": "qid_v1_390ecd771302444f0cd24c796e540bbc66940a9f0d1fd25cfbdc457c9c07d780"
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자릿수",
+            "src": "stem",
+            "quote": "두 자리 정수를 만들 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "짝수가 되는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "자리제한",
+            "src": "solution",
+            "quote": "십의 자리에는 $0$이 올 수 없고",
+            "evidenceType": "IMPLIED",
+            "justification": "십의 자리에는 0이 올 수 없고 일의 자리는 짝수이다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙에 따라 $4\\times3=12$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중복허용",
+            "src": "stem",
+            "quote": "같은 수를 반복하여 사용해도 된다"
+          },
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "짝수가 되는 경우의 수는?"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "두 자리 정수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "십의 자리와 짝수인 일의 자리의 선택 수를 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_f757ff18a35d5ea0e85c8f7835cf155abf8b1e4bfefa0f1d940d83f10dc8e9ab"
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분할",
+            "src": "stem",
+            "quote": "네 부분으로 나누어진 도형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "칠하는 방법은 몇 가지인가?"
+          }
+        ],
+        "method": [
+          {
+            "term": "배정",
+            "src": "solution",
+            "quote": "$B$의 색은 $4$가지이다",
+            "evidenceType": "IMPLIED",
+            "justification": "구별되는 각 영역에 색을 배정한다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$4\\times3\\times2\\times2=48$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "인접",
+            "src": "stem",
+            "quote": "서로 이웃한 지역은 다른 색"
+          },
+          {
+            "term": "중복허용",
+            "src": "stem",
+            "quote": "같은 색은 몇 번 칠해도 좋으나"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "인접한 두 영역을 먼저 정한 뒤 나머지 영역의 색 선택 수를 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "네 구역 색칠",
+      "questionUid": "qid_v1_f68c0134e44f19ff3cc3c8532a2468379cf618e6132eeec03df18a1a62031581"
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "원 위에 $5$개의 점이 있다"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 위에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "만들 수 있는 선분의 개수는?"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "만들 수 있는 선분의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$5$개의 점에서 두 점을 고르는 방법",
+            "evidenceType": "IMPLIED",
+            "justification": "순서를 구분하지 않고 두 점을 선택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "solution",
+            "quote": "서로 다른 두 점을 고르면",
+            "evidenceType": "IMPLIED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "다섯 점 중 순서 없이 두 점을 택해 선분 하나를 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_96a3b46003d94242ee31f25390e05ae48f9144cd2821f425a033bdd894d1b0a7"
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "다섯 명의 학생을 일렬로 세울 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "양 끝에 서는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "가운데 세 자리에 $C,D,E$를 세우는 방법",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 세 사람을 가운데 세 자리에 배열한다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "전체 경우의 수는 $2\\times6=12$",
+            "evidenceType": "IMPLIED",
+            "justification": "양 끝의 배치와 가운데 배치를 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자리제한",
+            "src": "stem",
+            "quote": "$A$와 $B$가 양 끝에 서는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "양 끝의 두 사람과 가운데 세 사람을 따로 배열해 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "학생 줄 세우기",
+      "questionUid": "qid_v1_b482ca36af05654e55333172e5d37be318ea5008c64ca0184779bdb47bcb1303"
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "주사위 두 개를 동시에 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "확률이 $0$이나 $1$이 아닌 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "표본공간",
+            "src": "solution",
+            "quote": "두 주사위의 합은 최대 $12$",
+            "evidenceType": "IMPLIED",
+            "justification": "가능한 눈과 합의 범위로 불가능 또는 확실한 사건을 구분한다."
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "반드시 일어나는 사건은 확률이 $1$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 주사위 두 개"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "눈의 가능 범위로 불가능 사건과 확실 사건을 걸러낸다."
+      },
+      "steps": [],
+      "scenarioNote": "두 주사위",
+      "questionUid": "qid_v1_48b073685f281394e5fcd2a5f0bc7f478e9274835dc672b5386c4318c7ce0a38"
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "약속을 지킬 확률은 $\\dfrac34$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "두 사람이 만나지 못할 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "$\\dfrac34\\times\\dfrac35=\\dfrac9{20}$",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 독립이라고 가정하여 두 사건의 확률을 곱한다."
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "$1-\\dfrac9{20}=\\dfrac{11}{20}$",
+            "evidenceType": "IMPLIED",
+            "justification": "만나는 사건의 여사건을 취한다."
+          },
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "서로 독립으로 해석한다",
+            "evidenceType": "IMPLIED",
+            "justification": "해설의 독립 가정으로 두 확률의 곱을 사용하며 발문의 명시 조건으로 바꾸지 않는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "독립 가정 아래 둘 다 지킬 확률을 곱하고 여사건을 취한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 사람의 약속",
+      "questionUid": "qid_v1_aa8cb9eb15e4095d2f64e74f503fb0b920ea01e018003ec0f17aa8c1a61fa62b"
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "$2$의 배수 또는 $5$의 배수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "부분을 맞힐 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$2$의 배수는 $2,4,6,8$",
+            "evidenceType": "IMPLIED",
+            "justification": "조건을 만족하는 숫자를 직접 나열한다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "같은 크기로 $8$등분되어 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 크기 부분 중 해당 부분의 비를 확률로 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "경계선을 맞히거나 원판을 빗나가는 경우는 없다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "배수에 해당하는 구역을 세어 같은 크기의 전체 구역 수로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": "8등분 원판",
+      "questionUid": "qid_v1_55a8e289c5da640ded8d966f3e8e6f5b10f5d37a3141b123a86b3d61f49fc2a8"
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "두 주머니에서 구슬을 한 개씩"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "모두 노란 구슬일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "노란 구슬이 나올 확률은 $\\dfrac58$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 주머니의 노란 구슬 수를 전체로 나눈다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "각각 노란 구슬이 나올 확률을 곱한다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 주머니의 추출 확률을 곱한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 주머니의 노란 구슬 확률을 구하여 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 주머니의 구슬",
+      "questionUid": "qid_v1_eee85f4abcd64f88961a65cbd01b6247df0c538571a2feda009854666ae06d06"
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "첫 번째에는 $6$의 배수"
+          },
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "두 번째에는 $15$의 약수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "카드를 뽑을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$6$의 배수는 $6,12,18$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 조건에 해당하는 수를 나열해 센다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "$\\dfrac3{20}\\times\\dfrac15=\\dfrac3{100}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "복원추출",
+            "src": "stem",
+            "quote": "다시 넣고 또 한 장을 뽑을 때"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$1$부터 $20$까지의 자연수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$1$부터 $20$까지"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "배수와 약수를 각각 세고 복원추출의 두 확률을 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "숫자 카드",
+      "questionUid": "qid_v1_5cc65dcae052d39bfc312258d15e009791dfd819843a13e7b9196d4175963e08"
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "아래 $\\triangle ABC$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "닮음인 삼각형을 찾아"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{DG}$의 길이를 구하고"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "AA 닮음에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "$DG=\\dfrac12BC$",
+            "evidenceType": "IMPLIED",
+            "justification": "한 변의 중점에서 다른 변에 평행한 선분을 이용한다."
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비가 $1:1$이어서 $DG=CF$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{DG}\\parallel\\overline{BF}$"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{DE}=\\overline{EF}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행선의 AA 닮음을 두 번 쓰고 중점연결을 이용해 선분비를 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_df7a46a1d2551864d378ffa34389721380b230aa6e36d5a8d064be61aada21ea"
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$에서"
+          },
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 무게중심이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AB}$의 길이를 구하고"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "$AG:GD=2:1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "직각삼각형의 빗변의 중점 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 적용하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle A=90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "무게중심 비로 중선을 구하고 빗변 중점 성질과 피타고라스 정리로 다른 변을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_6924b95f2fc7a3ac361bf071a3cac7745002ee35c74088d27f0157fc66491582"
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "합격할 확률은 $\\dfrac67$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "두 사람 모두 합격할 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "$1-\\dfrac2{21}=\\dfrac{19}{21}$",
+            "evidenceType": "IMPLIED",
+            "justification": "적어도 한 명 합격의 여사건은 둘 다 불합격이다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "$\\dfrac17\\times\\dfrac23=\\dfrac2{21}$",
+            "evidenceType": "IMPLIED",
+            "justification": "독립을 가정하여 각 불합격 확률을 곱한다."
+          },
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "서로 독립으로 해석한다",
+            "evidenceType": "IMPLIED",
+            "justification": "해설이 채택한 독립 가정이며 발문 명시 조건이 아니다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "독립 가정 아래 합격과 불합격 확률을 각각 곱하고 여사건을 취한다."
+      },
+      "steps": [],
+      "scenarioNote": "자격 시험 합격",
+      "questionUid": "qid_v1_efe4b85d12152d8e9a9381046a7e807cf173a7ad5fd80f528c4489a81caddd3d"
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "sourceItemsRead": 23,
+    "reviewedBy": "C",
+    "independentSample": {
+      "status": "PENDING_OTHER_WORKER",
+      "sampled": []
+    },
+    "sourceBlindToSimilar": true
+  },
+  "reuseRef": {
+    "path": "prior4slot/E006.4slot.json",
+    "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+    "sha256": "e905e1c275aff98ebb827d027e18e7de8e6fafb07c2328f9afb26ae691681619",
+    "scope": "current source and intended terms verified; no inherited independent sample approval"
+  }
+}

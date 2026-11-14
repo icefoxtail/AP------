@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "m2-s2-meta-independent-sample-v1",
+  "examId": "E006",
+  "author": "C",
+  "reviewer": "A",
+  "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "e639c0def5984911d76ca624c50f5407fe824604",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewSha256": "764ee31be716c7e5bff53b6f02020226f135e6ce61be4359e33b6b39bc33c43c",
+  "fourSlotSha256": "e323f17b35ded621db3ee3ea23ae9b075d235ce359b1412333ccad8dbdbb9f32",
+  "ordinals": [
+    2,
+    10,
+    23
+  ],
+  "overallConclusion": "PASS_WITH_SOURCE_HOLD_NOTE",
+  "items": [
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_456d73e6a2578c5999276080557acee53cf464a21fb0adb57e1f06e2f4a30118",
+      "conclusion": "PASS",
+      "reason": "발문·기존해설과 다섯 그림을 실제 확인. 교차선의 대응 길이를 맞추어 비의 일치를 찾는 평행 판정이며 RPM092 및 NONE이 적합하다. PT_PARALLEL_SEGMENT_RATIO는 선분 길이비와 비례 관계를 이용하는 넓은 정의라 역방향 평행 판정도 parent 범위에 들어간다. 기존 두 TPL은 계산 방향을 명시하므로 역방향 새 TPL 제안은 구분된다. 4칸의 선분/평행 goal과 두 비의 exact 인용 및 IMPLIED 정당화도 일치한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_0eec9969fef909c52533d2dfc5839814365284cdce32a6490aa9923d0c63ce87",
+      "conclusion": "PASS",
+      "reason": "그림과 해설에서 피타고라스로 변의 제곱을 얻은 뒤 빗변 수선의 닮음으로 투영 길이를 구하여 목표 삼각형 넓이에 옮기는 것을 확인했다. PT_M2_PYTHAGOREAN_RELATION 정의는 관련 넓이까지 명시하여 AREA_TRANSFER parent가 적합하다. 길이만 다루는 RPM leaf를 억지로 쓰지 않은 gap 제안, 삼각형넓이 CC 중복 제거와 CC_RIGHT_TRIANGLE_SIMILARITY 보존, SEQUENTIAL이 타당하다. 4칸 method 세 개와 exact 인용도 맞다.",
+      "difficultyIndependentRecheck": {
+        "level": "중",
+        "difficultyBucket": 4,
+        "difficultyBoundaryFlag": "B34",
+        "suggestedLegacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "수선의 발이라는 보조점과 삼각형 대응을 선택하고 그 투영을 다른 삼각형 높이로 읽어야 하므로 bucket4 유지 가능. legacy중을 바꾸지 않는 인접 경계로 독립 수용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_efe4b85d12152d8e9a9381046a7e807cf173a7ad5fd80f528c4489a81caddd3d",
+      "conclusion": "PASS_WITH_SOURCE_HOLD_NOTE",
+      "reason": "독립 곱과 여사건은 제공 해설이 실제로 채택한 조건부 풀이를 정확히 나타낸다. 4칸은 독립을 stem 조건으로 꾸미지 않고 solution의 해석을 IMPLIED+정당화로 구분했고 모든 quote가 일치한다. 다만 두 주변 합격확률만으로 독립은 도출되지 않는다. source의 SOURCE_HOLD와 review notes의 독립가정 부재를 반드시 보존해야 하며, 이 표본 승인은 원문의 확정 정답 또는 독립 조건 충족 승인이 아니다.",
+      "sourceContentAction": "NONE; 학생 발문·해설 수정 금지. 독립가정 부재 NOTE와 조건부 메타 의미 유지."
+    }
+  ],
+  "freshMathematicalReverification": false,
+  "authorFilesModified": false
+}
