@@ -722,7 +722,7 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "problemTypeKey": null,
     "crossConceptKeys": ["CC_MEAN"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",

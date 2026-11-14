@@ -8,8 +8,8 @@
   "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
   "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
   "sourceBeforeBlob": "253b395cea3866adc138c927cf60833ec3581d3d",
-  "sourceAfterBlob": "be69cc255f116f9a0f847487c273feac2f5cdb49",
-  "sourceAfterSha256": "c215e2eb8b9b84b294a57bc366ce8f630746466311d32edc2c3b3874c58c4970",
+  "sourceAfterBlob": "5337c69314c63984522645b9ccbc658cd8e93ec4",
+  "sourceAfterSha256": "676734f37b99f50d43c9c3b3eba48c0c2d07bff28a95a2964521f0ab4581cdc8",
   "questionCount": 23,
   "uidDigest": "d9e0e61077227ee30c0cdab77d5ad809b2b7cdc179c329e1c9d1d1b6e5afa79f",
   "authorRawReviewSha256": "22ba944256765e08335da4c5eecac87ca9373a354d2013a3a87051a810310d5a",
@@ -25,7 +25,7 @@
   "artifactRefs": {
     "sourcePatch": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.source-patch.json",
-      "sha256": "18deeaa49c5a0a08c9a05f9e9cda6cdc5570363d689575a54a9107438543d133"
+      "sha256": "df0b6e5e2609798fae8a38e1e3919665976f5b4e6de33b4814c4bc20d31dd8d0"
     },
     "fourSlot": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.4slot.json",
@@ -33,7 +33,7 @@
     },
     "proposals": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.proposals.json",
-      "sha256": "523896f02abc140e8e3ae139d5cc177d41ad923bdb9c183e4655a9b3c979f92c"
+      "sha256": "35e46cb0b2bff2378dca25b733cb959648baea35c5f6fa3a541a4cd431918d67"
     },
     "4slot-reuse-evidence.json": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.4slot-reuse-evidence.json",
@@ -46,6 +46,10 @@
     "difficultyAdjudication": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.difficulty-adjudication.json",
       "sha256": "e92f6b61299957161c2db59716f2f24d508a8d2d73fb13c96cb675389b24d1b0"
+    },
+    "semanticAmendment": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.semantic-amendment.json",
+      "sha256": "b7aa655c72d1b10cfc1c78a831747622f6b9dc3367bf1de734cd349066d418c7"
     }
   },
   "items": [
@@ -2235,7 +2239,7 @@
         "standardUnitOrder": 7,
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
-        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "problemTypeKey": null,
         "templateKey": null,
         "crossConceptKeys": [
           "CC_MEAN"
@@ -2287,15 +2291,15 @@
         "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
         "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
         "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
-        "selectedProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "selectedProblemTypeKey": null,
         "selectedTemplateKey": null,
         "listedCrosswalkTemplate": false,
         "globalActiveSearched": true,
         "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
         "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
         "activeDefinition": null,
-        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
-        "newPTRequired": false,
+        "reuseAssessment": "정확한 ACTIVE 통계 부모가 없다. 기존 편차합0→미지편차→분산/표준편차 골격 전체를 쓰지 않으므로 미등록 통계 제약추론 부모 제안으로 분리한다.",
+        "newPTRequired": true,
         "newTPLRequired": true
       },
       "crossConceptKeys": [
@@ -2320,7 +2324,8 @@
         "reviewReason": "현재 source blob exact 일치. 문항·보기·풀이의 실제 결정 단계와 기존 given/goal/method/condition을 읽어 대조하여 의미 재사용을 확인했다. 평균으로 미지 두 수의 합을 얻고 분산식을 전개한 뒤 그 합을 대입해 제곱합을 직접 결정한다."
       },
       "debt": [
-        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요",
+        "정확 ACTIVE PT 부모 범위 공백: 미등록 통계 제약추론 부모 후보와 새 TPL의 공식 등록 대기"
       ],
       "reviewNotes": [],
       "operationalBeforeDelta": {
@@ -3174,5 +3179,11 @@
   "operationalRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
   "mainMerge": "NOT_RUN_USER_EXCLUDED",
   "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
-  "semanticPayloadSha256": "b8f33b9c49faf8b6ce17e79020e8947d8ceaef74ef989a12466f5ec3da14a176"
+  "semanticPayloadSha256": "83f1d3f3cac74ceafe0ed551eda44026a0508dba7c2ae141a1bf657f5d09b3e3",
+  "rootAdjudicationRefs": [
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.semantic-amendment.json",
+      "sha256": "b7aa655c72d1b10cfc1c78a831747622f6b9dc3367bf1de734cd349066d418c7"
+    }
+  ]
 }

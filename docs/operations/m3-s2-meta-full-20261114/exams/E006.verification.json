@@ -7,10 +7,10 @@
     "sourcePath": "archive/exams/original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
     "baselineBlob": "253b395cea3866adc138c927cf60833ec3581d3d",
     "baselineSha256": "b97fca358808790ae93247f08ca36830cf8d3d6b1aae44a7183a0527a57db427",
-    "sourceAfterSha256": "c215e2eb8b9b84b294a57bc366ce8f630746466311d32edc2c3b3874c58c4970",
+    "sourceAfterSha256": "676734f37b99f50d43c9c3b3eba48c0c2d07bff28a95a2964521f0ab4581cdc8",
     "questionCount": 23,
     "uidDigest": "d9e0e61077227ee30c0cdab77d5ad809b2b7cdc179c329e1c9d1d1b6e5afa79f",
-    "patchSha256": "18deeaa49c5a0a08c9a05f9e9cda6cdc5570363d689575a54a9107438543d133",
+    "patchSha256": "df0b6e5e2609798fae8a38e1e3919665976f5b4e6de33b4814c4bc20d31dd8d0",
     "metadataChangedQuestions": 23,
     "metadataChangedFieldCount": 196,
     "changedFields": [
@@ -30,7 +30,7 @@
     "QBODY_QFULL": "PASS",
     "studentPayloadDigest": "2475a9a2e5903e4779e2f0fb9f5ae54c5925e8ca7c9f11849ad12ea37875a624",
     "write": true,
-    "sourceAfterBlob": "be69cc255f116f9a0f847487c273feac2f5cdb49"
+    "sourceAfterBlob": "5337c69314c63984522645b9ccbc658cd8e93ec4"
   },
   "registry": {
     "status": "ACTIVE",
@@ -318,12 +318,13 @@
       ],
       "activeValidationStatus": "FAIL",
       "activeValidationErrors": [
-        "ADVANCED_META_FIELD_MISSING:templateKey"
+        "ADVANCED_META_FIELD_MISSING:templateKey",
+        "ADVANCED_META_FIELD_TYPE_INVALID:problemTypeKey"
       ],
       "bindingLookupCurriculum": "2015",
       "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
-      "activeBinding": true,
-      "activePT": true,
+      "activeBinding": false,
+      "activePT": false,
       "activeTPL": false,
       "masterTagErrors": []
     },
@@ -473,7 +474,7 @@
   "artifactRefs": {
     "sourcePatch": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.source-patch.json",
-      "sha256": "18deeaa49c5a0a08c9a05f9e9cda6cdc5570363d689575a54a9107438543d133"
+      "sha256": "df0b6e5e2609798fae8a38e1e3919665976f5b4e6de33b4814c4bc20d31dd8d0"
     },
     "fourSlot": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.4slot.json",
@@ -481,7 +482,7 @@
     },
     "proposals": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.proposals.json",
-      "sha256": "523896f02abc140e8e3ae139d5cc177d41ad923bdb9c183e4655a9b3c979f92c"
+      "sha256": "35e46cb0b2bff2378dca25b733cb959648baea35c5f6fa3a541a4cd431918d67"
     },
     "4slot-reuse-evidence.json": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.4slot-reuse-evidence.json",
@@ -494,14 +495,24 @@
     "difficultyAdjudication": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.difficulty-adjudication.json",
       "sha256": "e92f6b61299957161c2db59716f2f24d508a8d2d73fb13c96cb675389b24d1b0"
+    },
+    "semanticAmendment": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.semantic-amendment.json",
+      "sha256": "b7aa655c72d1b10cfc1c78a831747622f6b9dc3367bf1de734cd349066d418c7"
     }
   },
-  "packagedMetadataSha256": "b6b93ebecd4ba148f96f4c8ef923cd92ca47c3b838b5144a82e63733876a1070",
+  "packagedMetadataSha256": "888a93bffe0cfc4968f9cd6bc0408cea67106e2fd43bd263ea67f4f4ce53ab2c",
   "sourcePayloadReuse": {
     "basis": "All non-metadata fields compared exactly by VM values; QBODY and QFULL additionally unchanged",
     "evidenceSourceBlob": "253b395cea3866adc138c927cf60833ec3581d3d",
-    "metadataOnlySourceBlob": "be69cc255f116f9a0f847487c273feac2f5cdb49",
+    "metadataOnlySourceBlob": "5337c69314c63984522645b9ccbc658cd8e93ec4",
     "sameStudentContent": true,
     "sameFourSlotArtifact": true
-  }
+  },
+  "rootAdjudicationRefs": [
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.semantic-amendment.json",
+      "sha256": "b7aa655c72d1b10cfc1c78a831747622f6b9dc3367bf1de734cd349066d418c7"
+    }
+  ]
 }

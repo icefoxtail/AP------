@@ -99,10 +99,10 @@
     "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
   },
   {
-    "type": "NEW_TPL_PROPOSAL",
+    "type": "NEW_PT_AND_TPL_PROPOSAL",
     "nameKo": "평균·분산에서 미지 자료의 제곱합",
     "reuseDefinition": "평균의 합 조건과 편차 제곱합 식을 연립하여 개별 자료를 풀지 않고 요구된 제곱합을 구한다.",
-    "parentProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "parentProblemTypeKey": null,
     "distinguishingCriterion": "미지 편차 합0 후 표준편차 계산 TPL과 달리 분산이 주어지고 원자료의 제곱합을 역산한다.",
     "supportingQuestionUids": [
       "qid_v1_b5e3c476ff26be4717d5d1d4ea2e205a7e075cf851ecce7a9e886c00fe1bf283"
@@ -112,7 +112,28 @@
       "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
       "exactFitFound": false
     },
-    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "proposedParentProblemTypeKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+    "parentProposal": {
+      "proposedKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+      "definition": "유한 자료의 평균·중앙값·편차·분산·순서 조건에서 미지 변량 또는 합·제곱합을 추론하고 변경 자료의 통계량을 구한다.",
+      "internalSkeleton": "자료의 위치·합·편차제곱 조건을 수식화하여 결합한다.",
+      "reuseRef": "docs/operations/m3-s2-meta-full-20261114/exams/E008.proposals.json",
+      "reuseRefSha256": "dbf79ccd8604593df595220c1e49436213126b2949efebad08d094574fa7bc67",
+      "reuseProposalId": "B-E008-REUSE-CANDIDATE-PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+      "status": "UNREGISTERED_PROPOSAL_ONLY",
+      "originalAuthorReferenceSha256": "078c2cfa7d350f5e1ef2af3f190d900f1e23fc1b2d7205635b970b9ca73cfbf7",
+      "reuseRefCommit": "5afa42261173144ed296469333714916e4c64bb7"
+    },
+    "templateProposal": {
+      "nameKo": "평균·분산에서 미지 자료의 제곱합",
+      "reuseDefinition": "평균의 합 조건과 편차 제곱합 식을 연립하여 개별 자료를 풀지 않고 요구된 제곱합을 구한다.",
+      "distinguishingCriterion": "미지 편차 합0 후 표준편차 계산 TPL과 달리 분산이 주어지고 원자료의 제곱합을 역산한다.",
+      "parentCandidateKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+      "status": "UNREGISTERED_PROPOSAL_ONLY"
+    },
+    "existingParentRejected": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "existingParentDefinition": "편차의 합이 0이라는 성질로 미지의 편차를 구하고, 편차 제곱의 평균으로 분산·표준편차를 계산한다."
   },
   {
     "type": "NEW_TPL_PROPOSAL",
