@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 39,
-    "reviewedQuestions": 933
+    "reviewedExams": 40,
+    "reviewedQuestions": 956
   },
   "duplicateUids": [],
   "exams": [
@@ -3746,9 +3746,37 @@
       ],
       "solutionCount": 23,
       "existing4slot": null,
-      "status": "PENDING",
+      "status": "REVIEWED_WITH_EVIDENCE_DEBT",
       "assignedTo": "meta_b",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "0caec2ccf048d12b052ce100c7d8746c12994edb",
+      "reviewer": "meta_b",
+      "independentReviewer": "meta_c",
+      "integratedBy": "GPT_ROOT_0B1AF1898334",
+      "sampledOrdinals": [
+        6,
+        18,
+        21
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E035",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 8,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 6,
+      "sourceChangedFields": 13,
+      "contentDebtCount": 5,
+      "typeProposalCount": 31,
+      "evidenceDebtOrdinals": [
+        6
+      ],
+      "undecidedDifficultyOrdinals": [
+        6
+      ],
+      "difficultyPolicyDebtOrdinals": []
     },
     {
       "key": "E036",
@@ -9319,6 +9347,6 @@
     "sharedCheckpointRevision": 2,
     "predecessorRawSha256": "a898b038e1fbf8ab0dd49c82bfedfd69e9104dc984973930bbdbc2b221b857db"
   },
-  "updatedAt": "2026-11-14T14:19:11.822562+00:00",
-  "lastPublishedHeadBeforeCurrent": "4e5b93e26acba44d018bb78ddc82c0dbb05a7017"
+  "updatedAt": "2026-11-14T14:20:40.161803+00:00",
+  "lastPublishedHeadBeforeCurrent": "93e8523697bd42c4ff098b1aa80e833563264eb1"
 }
