@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "m2-meta-author-scoped-addendum-v1",
+  "examId": "E016",
+  "author": "A",
+  "at": "2026-11-14T11:04:50.674171+00:00",
+  "reviewSha256": "e92a1b743bae791242392cfe12e0e7f8803cbb379ac283e55e1e799da4013949",
+  "fourSlotSha256": "75240e80026732a222a81c31961ba381a7954147240bcc0032b01fffb4a775ce",
+  "scope": "Correct inaccurate no-figure author note; preserve original authored bytes.",
+  "correction": "The original source does contain solutionImage SVGs for Q14 andQ20. The author initially read complete text and missed these fields. Their full rendered existing SVGs have now been visually inspected; they agree with the text and introduce no new premise.",
+  "inspectedFigures": [
+    {
+      "sourceOrdinal": 14,
+      "path": "workers/B/assets/E016-q14-solution.png",
+      "renderSha256": "ec4ad2f5dbed60f967243a42a667d95baeb846b13e69c9d5aed0ee416b224998",
+      "svgSha256": "6b92c7f4f3478716e351cf09137a70311d05d3bdeb1b85fc7b2e1cd086e45f14"
+    },
+    {
+      "sourceOrdinal": 20,
+      "path": "workers/B/assets/E016-q20-solution.png",
+      "renderSha256": "9418b768d0eea2a2a82970c34d7090a28048c3f789446f6e1efa5f9eb48ff2b9",
+      "svgSha256": "c7088650138ca4b2d4d3648b36b50c32331248985a804c04585d1c821f68a506"
+    }
+  ],
+  "semanticAddendum": [
+    {
+      "sourceOrdinal": 14,
+      "change": "Retract exactActive=True / exact-template coverage. Existing canonical template says numerical substitution; symbolic quotient coverage remains HOLD.",
+      "primaryRecommendation": "Retain M1-RPM213 geometry goal with CC_MONOMIAL_DIVISION as an independently adjudicated proposal. Bare trapezoid area Q22 in E013 lacks an exact M1 RPM leaf; here the actual M1 prism measurement leaf exists."
+    }
+  ],
+  "independentDifficultyResponse": {
+    "sourceOrdinals": [
+      6,
+      15
+    ],
+    "recommendation": "Accept B proposed numeric2/B23 as root accepted narrow calibration; preserve this author original3 history."
+  },
+  "independentLegacyResponse": {
+    "sourceOrdinals": [
+      10,
+      20,
+      23
+    ],
+    "recommendation": "Accept B/root proposed legacy level중 for independently accepted numeric2; do not mark source상/2 as NORMAL."
+  }
+}

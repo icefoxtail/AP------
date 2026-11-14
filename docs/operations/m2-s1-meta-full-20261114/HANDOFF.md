@@ -4,7 +4,7 @@
 
 **RUNNING / ACTIVE_OWNER**. owner `GPT_ROOT_59E0F5BD3A77`. taskId `d200021a-924b-42a5-ad31-a53818575c78`. 같은 브랜치 `review/m2-s1-meta-full-20261114`에서 세 작업자가 분리된 시험지 큐를 연속 처리한다.
 
-전체 **75시험지 / 1,780문항** 중 **15시험지 / 356문항**의 검토 패킷을 보존했다. 잔여는 **60시험지 / 1,424문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
+전체 **75시험지 / 1,780문항** 중 **16시험지 / 379문항**의 검토 패킷을 보존했다. 잔여는 **59시험지 / 1,401문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
 
 기존 E001–E012 검토는 재사용했고, PENDING_AMENDMENTS.json의 7건은 원본·독립 증거를 보존한 채 좁은 보정을 적용·검증하여 각각 원격 출판했다. 이전 미원격 로컬 파일의 실제 바이트는 찾지 못했다. LOCAL_RECOVERY.json의 역사적 SHA를 새 작성본의 복구 SHA로 주장하지 않는다.
 
@@ -20,7 +20,7 @@
 
 ## 현재 집계와 한계
 
-독립 3문항 표본 45개, 명시 미판정 9문항, RPM leaf 공백 74문항, 등록 부채 344문항, 내용 부채 10문항, 필수 method 근거 부채 0문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=347은 전체 품질 PASS가 아니다.
+독립 3문항 표본 48개, 명시 미판정 9문항, RPM leaf 공백 77문항, 등록 부채 367문항, 내용 부채 12문항, 필수 method 근거 부채 0문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=370은 전체 품질 PASS가 아니다.
 
 최초 인벤토리의 기존 해설은 1,386문항, 빈 해설은394문항이다. 해설 없는 문항에 새 풀이를 만들어 method 근거를 채우지 않는다. 실제 method가 비어 있는 source-only 항목은 native validator 실패와 필수 근거 부채를 그대로 남긴다. 공식 resolver의 genuine VERIFIED_FINAL 증거가 없는 경우 NOT_RUN을 유지한다.
 
@@ -58,6 +58,7 @@
 | E007-prerequisite-scope | `450b261932fa91883817c7227e4b331793de80c3` |
 | E012-scoped-calibration | `6a6830e3b5aa0c957da7af95e7c0c0fef8befb8f` |
 | E014-prerequisite-scope | `6a84b1c374f194f50601dc74e525c63bf5d07a0f` |
+| E015-prerequisite-scope | `21eef4e00aaa030f2c92c3d9bd701acf31f995d8` |
 
 현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
 
@@ -66,10 +67,10 @@
 | subUnitKey | 문항 수 |
 |---|---:|
 | M1-07-SOLID_FIGURE_MEASURE | 1 |
-| M2-01-EXPONENT_LAW | 24 |
-| M2-01-POLYNOMIAL_OPERATIONS | 25 |
-| M2-01-REPEATING_DECIMAL | 37 |
-| M2-02-LINEAR_INEQUALITY | 27 |
+| M2-01-EXPONENT_LAW | 33 |
+| M2-01-POLYNOMIAL_OPERATIONS | 27 |
+| M2-01-REPEATING_DECIMAL | 45 |
+| M2-02-LINEAR_INEQUALITY | 31 |
 | M2-02-LINEAR_INEQUALITY_WORD | 10 |
 | M2-03-SIMULTANEOUS_LINEAR_EQUATION | 52 |
 | M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD | 16 |

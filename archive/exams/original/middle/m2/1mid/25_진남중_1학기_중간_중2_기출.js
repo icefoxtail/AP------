@@ -38,7 +38,7 @@ window.questionBank = [
     "course": "중2 수학",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -76,10 +76,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 1,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 3,
@@ -193,10 +193,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 6,
@@ -233,8 +233,8 @@ window.questionBank = [
     "curriculum": "2022",
     "course": "중2 수학",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -313,7 +313,7 @@ window.questionBank = [
     "course": "중2 수학",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -357,7 +357,7 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "상",
+    "level": "중",
     "category": "지수법칙",
     "originalCategory": "수와 식",
     "standardCourse": "중2 수학",
@@ -389,9 +389,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -467,10 +467,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 13,
@@ -590,8 +590,8 @@ window.questionBank = [
     "curriculum": "2022",
     "course": "중2 수학",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -630,7 +630,7 @@ window.questionBank = [
     "course": "중2 수학",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -751,7 +751,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "level": "상",
+    "level": "중",
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
@@ -784,9 +784,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/25_진남중_1학기_중간_중2_기출/q20-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 좌표평면에서 -11≤x≤3 구간에만 그려진 오른쪽 아래로 내려가는 직선 y=-x/3+1/3이다. 왼쪽 끝점은 (-11, 4)이고 오른쪽 끝점은 (3, -2/3)이며 오른쪽 끝점에 최솟값 b가 표시되어 있다. 최댓값 4는 x=-11에서, 최솟값 b=-2/3은 x=3에서 생긴다.",
@@ -824,7 +824,7 @@ window.questionBank = [
     "course": "중2 수학",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -862,7 +862,7 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "level": "상",
+    "level": "중",
     "category": "일차부등식",
     "originalCategory": "일차부등식",
     "standardCourse": "중2 수학",
@@ -888,9 +888,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "curriculum": "2022",
     "course": "중2 수학",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   }
 ];

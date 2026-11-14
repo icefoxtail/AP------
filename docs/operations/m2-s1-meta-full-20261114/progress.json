@@ -19,10 +19,10 @@
     "existingFourSlotCount": 24,
     "canonicalUidCount": 1780
   },
-  "reviewedExams": 15,
-  "reviewedQuestions": 356,
-  "remainingExams": 60,
-  "remainingQuestions": 1424,
+  "reviewedExams": 16,
+  "reviewedQuestions": 379,
+  "remainingExams": 59,
+  "remainingQuestions": 1401,
   "nextAction": "Continue remaining disjoint exam queues and actual author-independent checks; publish and remote-verify one exam at a time.",
   "registrationStatus": "NOT_RUN",
   "mainMergeStatus": "NOT_AUTHORIZED",
@@ -1875,8 +1875,106 @@
       "solutionCount": 23,
       "existingFourSlotCount": 0,
       "existingFourSlotRef": null,
-      "status": "QUEUED",
-      "reviewedQuestionCount": 0
+      "status": "REVIEWED_RELEASE_PENDING",
+      "reviewedQuestionCount": 23,
+      "fullyJudgedQuestionCount": 23,
+      "finalSourceBlob": "e5cc0b159da7e3edfa57784d36c31958aad9574f",
+      "sourceFieldEditCount": 32,
+      "artifactDir": "docs/operations/m2-s1-meta-full-20261114/exams/E016",
+      "currentArtifactIndex": "docs/operations/m2-s1-meta-full-20261114/exams/E016/CURRENT.json",
+      "independentReviewer": "B",
+      "independentSampleOrdinals": [
+        12,
+        14,
+        23
+      ],
+      "rpmGapOrdinals": [
+        3,
+        4,
+        18
+      ],
+      "registrationPendingOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "contentDebtOrdinals": [
+        6,
+        23
+      ],
+      "unresolved": [],
+      "requiredEvidenceDebt": [],
+      "topicSummary": [
+        {
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "count": 9,
+          "ordinals": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            22
+          ]
+        },
+        {
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "count": 2,
+          "ordinals": [
+            16,
+            17
+          ]
+        },
+        {
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "count": 8,
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            21
+          ]
+        },
+        {
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "count": 4,
+          "ordinals": [
+            18,
+            19,
+            20,
+            23
+          ]
+        }
+      ],
+      "nextAction": "CODEX_RESOLVE_NAMED_DEBTS_AND_REGISTER",
+      "localWorkStatus": "AUTHOR_AND_INDEPENDENT_BYTES_PRESERVED"
     },
     {
       "examId": "E017",
@@ -2766,8 +2864,8 @@
       "reviewedQuestionCount": 0
     }
   ],
-  "fullyJudgedQuestions": 347,
-  "updatedAt": "2026-11-14T11:18:47.963600+00:00",
+  "fullyJudgedQuestions": 370,
+  "updatedAt": "2026-11-14T11:19:56.439715+00:00",
   "verifiedExamPublications": [
     {
       "examId": "E001",
@@ -3011,12 +3109,12 @@
   "pendingAmendmentsReference": "docs/operations/m2-s1-meta-full-20261114/PENDING_AMENDMENTS.json",
   "localRecoveryReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json",
   "workingSnapshot": {
-    "inspectedAndRemotelyPreservedQuestions": 356,
-    "independentThreeItemSamples": 45,
+    "inspectedAndRemotelyPreservedQuestions": 379,
+    "independentThreeItemSamples": 48,
     "unresolvedMarkedQuestions": 9,
-    "rpmGapQuestions": 74,
-    "registrationPendingQuestions": 344,
-    "contentDebtQuestions": 10,
+    "rpmGapQuestions": 77,
+    "registrationPendingQuestions": 367,
+    "contentDebtQuestions": 12,
     "requiredMethodEvidenceDebtQuestions": 0,
     "interpretation": "Counts overlap. Reviewed means the bounded review and its named debts were preserved, not full quality PASS or registration. The current publication becomes remotely preserved only after CAS push and remote HEAD readback."
   },
@@ -3401,6 +3499,25 @@
         "docs/operations/m2-s1-meta-full-20261114/progress.json"
       ],
       "verifiedAt": "2026-11-14T11:18:18.055108+00:00"
+    },
+    {
+      "label": "E015-prerequisite-scope",
+      "commitSha": "21eef4e00aaa030f2c92c3d9bd701acf31f995d8",
+      "parentSha": "6a84b1c374f194f50601dc74e525c63bf5d07a0f",
+      "treeSha": "3ee30f32e6d72e39deaeb62ca96630426a4aa3f4",
+      "remoteHeadVerified": true,
+      "files": [
+        "archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js",
+        "docs/operations/m2-s1-meta-full-20261114/HANDOFF.md",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E015/CURRENT.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E015/amendments/resume-prerequisite-scope-r1/accepted-review.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E015/amendments/resume-prerequisite-scope-r1/four-slot.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E015/amendments/resume-prerequisite-scope-r1/root-adjudication.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E015/amendments/resume-prerequisite-scope-r1/source-writer-deferred.json",
+        "docs/operations/m2-s1-meta-full-20261114/exams/E015/amendments/resume-prerequisite-scope-r1/validation.json",
+        "docs/operations/m2-s1-meta-full-20261114/progress.json"
+      ],
+      "verifiedAt": "2026-11-14T11:19:03.014147+00:00"
     }
   ]
 }
