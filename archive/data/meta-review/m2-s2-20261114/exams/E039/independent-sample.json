@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "m2-s2-meta-independent-sample-v1",
+  "examId": "E039",
+  "author": "C",
+  "reviewer": "A",
+  "sourceArchiveFile": "original/middle/m2/2final/21_풍덕중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "a1a5f3d9f2a2d2d388ed9624e6c6f13584ac0acb",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewSha256": "ef943859dd6fdf44347f1418f13caa41eafba82d4edac81c6fcf22314151063a",
+  "fourSlotSha256": "0314ff3d9e2f94db1b5b8e2569a502d776df71eb542c5ab2b81473fb2f43b790",
+  "ordinals": [
+    5,
+    17,
+    22
+  ],
+  "overallConclusion": "PASS_AFTER_SCOPE_PINPOINT",
+  "items": [
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_1f58562bf60cf971d296d012fa0020fe8faefe63c64e3cd79dabb6a6d93617bd",
+      "conclusion": "PASS_AFTER_SCOPE_PINPOINT",
+      "reason": "선분 양끝점 (1,3),(4,1)과 원점을 잇는 경계 기울기를 실제로 확인했다. ACTIVE TPL_INTERSECTION_SEGMENT_RANGE의 경계직선으로 매개변수 범위를 정하는 정의는 정확하며 binding 부재와 RPM leaf gap을 분리한 판단을 수용한다. 4칸의 기울기·끝점·증가감소와 중/bucket3도 타당하다. 단 rpmPath.scope=M2-2는 실제 일차함수 범위 및 source의 M2-1과 불일치하여 M2-1로 핀포인트 수정 필요하다. 작성자가 Q4·Q5만 M2-1로 수정한 최신 review를 재독했으며 Q10 M1-1은 유지되어 수정 수용한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_7fbbb2cf87f608a350d2cb3ba1d810bc7fef8603928b884c538f69f08d42ac0f",
+      "conclusion": "PASS",
+      "reason": "막힌 왼쪽 아래 격자와 P 위치를 실제 이미지로 대조했다. 전체19와 P 경유12의 경로를 이용한 확률이므로 RPM117/TPL_BASIC_COUNT_RATIO가 주방법이며 CC_GRID_SHORTEST_PATH 및 SEQUENTIAL은 경로계수를 확률에 전달하는 정확한 보조축이다. 등가능한 완성경로 선택 가정 미명시는 별도 SOURCE_HOLD로 보존한다. 정형 누적계수와 경유 전후 곱의 결합이므로 bucket3/B34, 기존 상과의 인접 경계를 수용한다. 4칸의 합의법칙·곱의법칙·수학적확률은 해설과 일치한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_86103e88dba15f29814a10d628218f6b12da0adb47c9224348fcfa2bdcab0f73",
+      "conclusion": "PASS",
+      "reason": "세 교점의 위치와 둘러싸인 삼각형을 해설 SVG에서 확인했다. RPM058 및 PT_FUNCTION_GRAPH_GEOMETRY의 목표 넓이 분류가 정확하고 TPL_GRAPH_AREA_BY_SYMMETRY는 이름과 달리 현행 definition/internalSkeleton이 그래프와 직선으로 둘러싸인 넓이를 포괄하므로 대칭 요구를 새로 덧붙이지 않는다. 연결 binding 부재를 debt로 남긴 것이 정확하다. 교점의 좌표 차에서 밑변·높이를 정하므로 bucket3를 수용한다. 그래프·교점·넓이 goal과 연립방정식·넓이 method가 두 소문항을 덮는다."
+    }
+  ],
+  "exactQuoteCheck": "PASS",
+  "quotesChecked": 24,
+  "imagesActuallyViewed": [
+    "workers/C/images/E039/5.render.png",
+    "workers/C/images/E039/17.png",
+    "workers/A/tmp/E039/22.png"
+  ],
+  "freshMathematicalReverification": false,
+  "authorFilesModified": false,
+  "correctionRecheck": {
+    "fields": [
+      "items[3].rpmPath.scope",
+      "items[4].rpmPath.scope"
+    ],
+    "result": "M2-1 exact readback confirmed",
+    "authorFilesModifiedByReviewer": false,
+    "timing": "Author correction landed before initial sample file SHA capture; current linked hash is the corrected version."
+  }
+}

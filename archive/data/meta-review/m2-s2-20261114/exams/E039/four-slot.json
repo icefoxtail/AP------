@@ -1,0 +1,1346 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2final/21_풍덕중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "a1a5f3d9f2a2d2d388ed9624e6c6f13584ac0acb",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "C / current-source semantic reread with exact prior evidence reuse",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y=-3x+2$"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "점 $(0,5)$를 지나도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "이 때, $b$의 값을 구하면?"
+          },
+          {
+            "term": "결정",
+            "src": "stem",
+            "quote": "이 때, $b$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "평행이동하면 y절편은 $2+b$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "y절편은 $2+b$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "이동된 직선의 y절편이 5가 되도록 한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "점 $(0,5)$를 지나도록"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "y축 방향 평행이동으로 변한 절편을 주어진 점의 좌표와 맞춘다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_b958b2e3115c90928b6c094b0ce0a50de9c472140fc8831f0551ac26eebf1adb"
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "다음 중 일차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "변화량",
+            "src": "stem",
+            "quote": "$y$값은 몇 증가하는가?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기가 $\\dfrac43$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "변화량",
+            "src": "solution",
+            "quote": "y값의 증가량은",
+            "evidenceType": "IMPLIED",
+            "justification": "x 증가량에 기울기를 곱해 y 증가량을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "에서 $1$까지 증가할 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x의 증가량과 기울기의 곱으로 y 증가량을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4bc9d159c44fbdbb06e04ab72bba9e9ded9c51275ac524e5a6ec964f12703280"
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y=2x+4$"
+          },
+          {
+            "term": "x절편",
+            "src": "stem",
+            "quote": "의 $x$절편을 $a$"
+          },
+          {
+            "term": "y절편",
+            "src": "stem",
+            "quote": "$y$절편을 $b$라고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "절편은 $y=0$일 때의 x값이다",
+            "evidenceType": "IMPLIED",
+            "justification": "각 축 위에서는 다른 좌표를 0으로 놓아 절편을 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=0$일 때의 y값이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "양 축에서 한 좌표가 0임을 식에 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "x와 y가 각각 0인 경우로 두 절편을 얻어 더한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a74d8746a895f1e9e7ca98adc16edb27931447e4175baafac95919a97137ffc5"
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "기울기가 $2$이고"
+          },
+          {
+            "term": "y절편",
+            "src": "stem",
+            "quote": "절편이 $1$인 직선"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "한 점 $(m,5)$를 지날"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "한 점 $(m,5)$를 지날 때, $m$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "직선의방정식",
+            "src": "solution",
+            "quote": "직선의 식은 $y=2x+1$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "기울기와 절편으로 직선의 식을 세운다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$y=5$를 대입한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "한 점 $(m,5)$를 지날 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "기울기와 절편으로 직선의 식을 정하고 점을 대입한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_2da8604556d90af06dc9f829a6fea21d02e051fc9b7cdc5c5416d0fd57a3575c"
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "두 점 $A(1,3)$, $B(4,1)$"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "의 그래프가 $\\overline{AB}$와"
+          },
+          {
+            "term": "정비례",
+            "src": "stem",
+            "quote": "$y=ax$의 그래프가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "상수 $a$의 값의 범위는?"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "상수 $a$의 값의 범위는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "원점을 지나는 직선의 기울기는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "끝점",
+            "src": "solution",
+            "quote": "끝점에서의 기울기는",
+            "evidenceType": "IMPLIED",
+            "justification": "선분 양 끝점과 원점을 잇는 직선의 기울기를 경계로 구한다."
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "까지 연속해서 감소한다",
+            "evidenceType": "IMPLIED",
+            "justification": "선분 위의 기울기가 한 끝에서 다른 끝까지 단조로 변한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "와 만나기 위한 상수"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "선분의 점과 원점을 잇는 기울기 범위를 두 끝점에서 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_1f58562bf60cf971d296d012fa0020fe8faefe63c64e3cd79dabb6a6d93617bd"
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y=ax+b$"
+          },
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제1, 2, 4사분면을 지날 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부호",
+            "src": "choices",
+            "quote": "$a<0, b>0$"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "y절편은 양수이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기는 음수이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제1, 2, 4사분면을 지날 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지나는 사분면을 바탕으로 기울기와 y절편의 부호를 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4523f25cd9bf3980d15b6b2d0d2310910cc449b7bb72f50bb5fb7f8acc72979d"
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y=ax+b$의 그래프"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "오른쪽 그림은 일차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "y절편",
+            "src": "stem",
+            "quote": "절편 $b$를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기는 $\\dfrac{0-4}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "에 $(3,0)$을 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "그림에서 두 점을 읽어 기울기를 계산하고 한 점을 식에 대입한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_69fc36c7c6edd5757704178b71cf0b63285473d20855a465700c2c2f2a77a5aa"
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "$2x-3y-11=0$의 그래프"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "점 $(0,2)$를 지나는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직선의방정식",
+            "src": "stem",
+            "quote": "직선의 방정식은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "두 직선이 만나지 않으려면 기울기가 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "일치하지 않으면서 만나지 않는 두 직선은 평행하다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "점 $(0,2)$를 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "의 그래프와 만나지 않으며"
+          },
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "점 $(0,2)$를 지나는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 직선과 같은 기울기를 취하고 주어진 점으로 절편을 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_51eb81d1a4314171014a5695e59632927e2d2cb8112ab377ced2c49b155a4b1a"
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y=ax+4(a>0)$"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형의 넓이가 $12$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$a$의 값을 구하면?"
+          },
+          {
+            "term": "결정",
+            "src": "stem",
+            "quote": "$a$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "y절편은 4이고 x절편을",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이 조건에서",
+            "evidenceType": "IMPLIED",
+            "justification": "축과 직선이 둘러싼 삼각형의 넓이로 x절편의 크기를 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "점 $(-6,0)$을 $y=ax+4$에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$y=ax+4(a>0)$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "축 절편 삼각형의 넓이와 기울기의 양수 조건으로 x절편을 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_f264cdc3e65d9b154735234fe772e9430277014ddd95f05380d1696d88531e42"
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이가 $16\\text{ cm}$인"
+          },
+          {
+            "term": "변화량",
+            "src": "stem",
+            "quote": "시간당 $2\\text{ cm}$씩 일정하게"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "몇 시간 후인지 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "남은 양초 길이는 $16-2t$",
+            "evidenceType": "IMPLIED",
+            "justification": "남은 양을 시간의 일차식으로 표현한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$16-2t=7$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "미지수t 하나의 일차방정식이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "남은 길이를 시간의 일차식으로 세우고 7이 되는 때를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "일정하게 타는 양초",
+      "questionUid": "qid_v1_71b53bbc2a822e0c379703c9e357d065fa1cdd3828525d13a509beaa143b73bb"
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "경로",
+            "src": "stem",
+            "quote": "경로를 따라 지점 $A$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 경로의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "두 구간의 경로를 각각 하나씩 고르면",
+            "evidenceType": "IMPLIED",
+            "justification": "A-B의 세 경로와 B-C의 세 경로 선택을 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "재방문금지",
+            "src": "stem",
+            "quote": "같은 지점을 두 번 이상 지나지 않는다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 구간의 경로 선택 수를 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "세 지점의 연결 경로",
+      "questionUid": "qid_v1_0e133fdd721d40a534033216ebe4d6efd0a62619a25758ea9276c85c4a4fd6ea"
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "2개의 불량품을 포함한 50개의 제품"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "합격품일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "전체 50개 중 불량품이 2개이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "전체에서 불량품을 빼 합격품의 수를 구한다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "합격품을 고를 확률은",
+            "evidenceType": "IMPLIED",
+            "justification": "합격품 수를 전체 수로 나눈다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "불량품 수를 제외한 합격품 수를 전체로 나눈다."
+      },
+      "steps": [],
+      "scenarioNote": "제품 불량 검사",
+      "questionUid": "qid_v1_d1fc64b3127793409a35db53d7d227b8726bb78b48e8d1ec824afbce9267fedf"
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 위에 6개의 점이 있다"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "원 위에 6개의 점이 있다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "삼각형의 개수를 $a$, 두 점을 이어 생기는 선분의 개수를 $b$"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$a-b$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "한 삼각형은 꼭짓점 순서",
+            "evidenceType": "IMPLIED",
+            "justification": "세 점과 두 점의 순서 없는 선택을 각각 센다."
+          },
+          {
+            "term": "중복불허",
+            "src": "solution",
+            "quote": "꼭짓점 순서 $3\\times2\\times1=6$번씩 중복된다",
+            "evidenceType": "IMPLIED",
+            "justification": "선택 순서에 따른 중복을 나누어 제거한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원 위 점 세 개 및 두 개를 순서 없이 선택한 수를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_54dab0473aec9167e432b42437d6885ddf6d7fcd177cf80ee3a24154731d3f2f"
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "가족 5명이 나란히 서서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "묶음",
+            "src": "solution",
+            "quote": "철이를 가운데 두고 부모님이 서는 묶음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "세 대상을 배열하는 수는",
+            "evidenceType": "IMPLIED",
+            "justification": "세 사람 묶음과 나머지 두 사람을 배열한다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$6\\times2=12$가지이다",
+            "evidenceType": "IMPLIED",
+            "justification": "블록 배열과 내부 부모 순서를 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "인접",
+            "src": "stem",
+            "quote": "철이가 부모님 사이에 서게"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "가운데 철이가 있는 세 사람을 묶고 부모 순서와 묶음 배열을 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "가족 사진",
+      "questionUid": "qid_v1_d32f937d3f51d800bd65bb049e40476c1887bd8347193965bd9d3b84565a66bf"
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "두 일차함수"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "그래프의 교점의 $x$좌표"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "교점에서는 $2x-m=x-n$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 함수값을 같게 두어 교점의 좌표를 구한다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$(m,n)=(3,1),(4,2),(5,3),(6,4)$",
+            "evidenceType": "IMPLIED",
+            "justification": "눈의 범위에서 차가 2인 순서쌍을 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "처음에 나온 눈의 수를"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "교점의 x좌표로 두 눈의 차를 정하고 가능한 순서쌍을 센다."
+      },
+      "steps": [],
+      "scenarioNote": "주사위 두 번의 눈을 함수 계수로 사용",
+      "questionUid": "qid_v1_b287642456ab23597a8b75a2a192b33c502c1745443128d7c7bee2f0548bea24"
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "choices",
+            "quote": "동전 한 개를 던질 때, 앞면이 나올 확률"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "확률이 가장 큰 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "확률이 가장 큰 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "각 확률을 비교한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "주사위 눈이 양수: $1$",
+            "evidenceType": "IMPLIED",
+            "justification": "불가능 사건과 확실한 사건을 각각 0과 1로 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 사건의 확률을 구하고 확실한 사건의 확률 1과 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "동전, 주사위, 공, 가위바위보",
+      "questionUid": "qid_v1_8116ec2c4974177f84a4bbffdc6b04177d57d7e89942b5282e7c522abc238a24"
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "최단경로",
+            "src": "stem",
+            "quote": "최단 거리로 갈 때"
+          },
+          {
+            "term": "경로",
+            "src": "stem",
+            "quote": "다음 그림과 같은 도로가 있다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "P지점을 지날 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "최단경로 수는 왼쪽과 위쪽 수의 합이다",
+            "evidenceType": "IMPLIED",
+            "justification": "마지막 진입 방향이 다른 배타적인 경로 수를 더한다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$6\\times2=12$가지이다",
+            "evidenceType": "IMPLIED",
+            "justification": "P 도착 전후 경로를 각각 골라 결합한다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$\\dfrac{12}{19}$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 완성 최단경로가 같은 가능성이라는 해설의 모델하에서 유리한 경로 수의 비이다. 원문이 경로 선택 방식을 명시하지 않은 점은 별도 sourceHold이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "최단경로",
+            "src": "stem",
+            "quote": "최단 거리로 갈 때"
+          },
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "P지점을 지날 확률은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "막힌 격자에서 전체 경로를 누적하고 P를 지나는 두 구간의 경로 수를 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "도로 격자와 통과점",
+      "questionUid": "qid_v1_7fbbb2cf87f608a350d2cb3ba1d810bc7fef8603928b884c538f69f08d42ac0f"
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "동전 두 개와 주사위 한 개를 동시에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "2 또는 5의 눈이 나올 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "두 조건은 독립이므로 곱하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "주사위가 2 또는 5일 확률은",
+            "evidenceType": "IMPLIED",
+            "justification": "두 눈의 유리한 결과 수를 더한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 동전이 모두 앞면일 확률과 주사위의 두 눈 중 하나가 나올 확률을 곱한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 동전과 주사위",
+      "questionUid": "qid_v1_8adf93fc64dc171e61dcd8aae00c30e30fe2f3005e4c81083573982a4e17c36d"
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "빨간 공 1개와 파란 공 4개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "빨간 공이 정확히 한 개 나올 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "순서에 따라 두 경우로 나눈다",
+            "evidenceType": "IMPLIED",
+            "justification": "빨간 공이 첫 번째 또는 두 번째인 경우를 나눈다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "파란 공 다음에 빨간 공을 꺼낼 확률은",
+            "evidenceType": "IMPLIED",
+            "justification": "각 순서의 조건부 확률을 곱한다."
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "두 경우는 겹치지 않으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 배반인 두 순서의 확률을 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "비복원추출",
+            "src": "stem",
+            "quote": "꺼낸 공은 다시 넣지 않는다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "비복원 두 번 중 빨간 공이 나오는 순서를 나눠 확률을 합한다."
+      },
+      "steps": [],
+      "scenarioNote": "색깔 공 두 개 추출",
+      "questionUid": "qid_v1_174d1526a619e3d2c6db7df82cf1114e3e308c45f4ddec3bd36a6471ab6510e8"
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "0에서 5까지의 수가 각각 적힌 6장의 카드"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "3장의 카드를 뽑아"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "5의 배수일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "일의 자리가 0일 때",
+            "evidenceType": "IMPLIED",
+            "justification": "끝자리0과5에 따라 백의 자리 후보 수를 나눈다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$5\\times5\\times4=100$가지",
+            "evidenceType": "IMPLIED",
+            "justification": "자리별 허용 카드의 선택 수를 곱한다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$\\dfrac{36}{100}=\\dfrac9{25}$",
+            "evidenceType": "IMPLIED",
+            "justification": "유리한 세 자리 수를 전체 세 자리 수로 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중복불허",
+            "src": "stem",
+            "quote": "6장의 카드 중에서 3장의 카드를"
+          },
+          {
+            "term": "자리제한",
+            "src": "solution",
+            "quote": "백의 자리는 0이 될 수 없다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "첫 자리 0을 배제하고 5의 배수 끝자리별로 경우를 센다."
+      },
+      "steps": [],
+      "scenarioNote": "숫자 카드 세 자리 수",
+      "questionUid": "qid_v1_c6711715a01fd27145b439d2e329676e18a60c517dc7c120ab3d82d479ecffa4"
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y=ax+b$의 그래프"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프를 보고 다음을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "기울기 $a$를 구하시오"
+          },
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "일차함수의 식을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "그래프에서 $(0,-2)$와 $(3,0)$을 읽는다",
+            "evidenceType": "IMPLIED",
+            "justification": "그래프 두 점의 좌표 차로 기울기를 구한다."
+          },
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "y절편은 $b=-2$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "그래프의 두 절편에서 기울기와 y절편을 읽어 함수식을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_99340de92d64ffb4735ae6dcf7d12f7027c66dc4c86f57c43c31ca481eb03cc1"
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직선의방정식",
+            "src": "stem",
+            "quote": "세 직선 $y=2x-2$"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "둘러싸인 삼각형의 넓이를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "개략적인 그래프를 그리시오"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점좌표 표시"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형의 넓이를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 직선의 교점은 $2x-2=x-2$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 직선 쌍을 연립해 꼭짓점 좌표를 찾는다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "세로 변의 길이는 $2$",
+            "evidenceType": "IMPLIED",
+            "justification": "한 세로 변과 반대 꼭짓점까지 수평 거리를 밑변과 높이로 잡는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "세 직선의 교점을 구하고 좌표로 밑변과 높이를 얻는다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_86103e88dba15f29814a10d628218f6b12da0adb47c9224348fcfa2bdcab0f73"
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "남학생 4명, 여학생 3명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "배정",
+            "src": "solution",
+            "quote": "청소당번 남학생은 4명 중 1명",
+            "evidenceType": "IMPLIED",
+            "justification": "담당별로 후보를 갱신하며 사람을 고른다."
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "가능한 짝은 (가, 나), (가, 다), (나, 다)",
+            "evidenceType": "IMPLIED",
+            "justification": "남은 세 명 중 역할 구분 없는 두 명을 고른다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$12\\times3\\times1=36$가지",
+            "evidenceType": "IMPLIED",
+            "justification": "각 단계의 선택 수를 곱해 모든 담당 배정을 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "청소당번을 제외한"
+          },
+          {
+            "term": "중복불허",
+            "src": "stem",
+            "quote": "청소당번을 제외한"
+          },
+          {
+            "term": "자리제한",
+            "src": "stem",
+            "quote": "식사당번은 여학생 중에서 2명"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "청소 담당자를 고른 뒤 남은 남녀에서 지정된 업무별 인원을 고른다."
+      },
+      "steps": [],
+      "scenarioNote": "봉사활동 당번",
+      "questionUid": "qid_v1_16e73247bc21c92fca840618a83e6de367885478ba1852a0f634a6efb51bde09"
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "주머니 A에는 노란 공 3개, 파란 공 2개"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "공을 각각 한 개씩 임의로 꺼낼 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "다른 색일 확률을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "각각 노란 공을 뽑을 확률은",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 색을 두 색별로 나눈다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "각각 파란 공을 뽑을 확률은",
+            "evidenceType": "IMPLIED",
+            "justification": "각 주머니에서 해당 색을 뽑을 확률을 곱한다."
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "같은 색일 확률은",
+            "evidenceType": "IMPLIED",
+            "justification": "노란색과 파란색 두 경우의 확률을 더한다."
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "다른 색일 확률은 여사건으로 구한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "같은 색을 색별로 나누어 곱하고 더한 뒤 다른 색의 여사건을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 주머니의 공",
+      "questionUid": "qid_v1_e51a4b15940df40ccbdfb0201f171a2068ace3f44d68cbfbfff30fed7db284be"
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "sourceItemsRead": 24,
+    "reviewedBy": "C",
+    "independentSample": {
+      "status": "PENDING_OTHER_WORKER",
+      "sampled": []
+    },
+    "sourceBlindToSimilar": true
+  },
+  "reuseRef": {
+    "path": "prior4slot/E039.4slot.json",
+    "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+    "sha256": "984424f91fea0e3f1c7692de6695ef98cb19e07c42587d64f3957626cd15274b",
+    "scope": "current source and intended terms verified; no inherited independent sample approval"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E039",
+  "owner": "C",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "a1a5f3d9f2a2d2d388ed9624e6c6f13584ac0acb",
+  "sourceSha256": "62dfeb6ec71f6bf1367b07e7c6b906c1983e965ad8a7172549e73e1366bd561d",
+  "reviewSha256": "ef943859dd6fdf44347f1418f13caa41eafba82d4edac81c6fcf22314151063a",
+  "fourSlotSha256": "0314ff3d9e2f94db1b5b8e2569a502d776df71eb542c5ab2b81473fb2f43b790",
+  "independentSampleSha256": "41359c3f60267149878bc32ad278cb1684b1224dc32cf4138dd0c6b14672750b",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE",
+  "operationalStatus": "REGISTRATION_PENDING",
+  "sampleReviewer": "A",
+  "sampleOrdinals": [
+    5,
+    17,
+    22
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Pinpoint RPM semester correction after independent sample",
+      "ordinals": [
+        4,
+        5
+      ],
+      "before": "M2-2",
+      "after": "M2-1",
+      "fourSlotUnchanged": true,
+      "independentRechecked": true
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Interpret vertical translation as the change in the y-intercept."
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "Apply the explicit slope to the directly given change in x."
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "Substitute zero according to each intercept definition and add the results."
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Build the line from its explicit slope and intercept, then substitute the supplied point to recover the missing coordinate."
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Read two coordinates from the actual graph, obtain the slope and transfer it to the y-intercept."
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "The lost length divided by the stated constant burn rate gives the time directly; a function is not a necessary primary method."
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "The positive die outcome is a certain event and directly attains the maximum probability."
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "Accumulate shortest paths with the missing road and combine counts before and after the marked point. The unspecified route-choice distribution remains a separate source hold."
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "Account for changed remaining contents in the two disjoint draw orders; B23 records the direct-symmetry alternative."
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "The same event as E033Q20 requires separating final zero from final five under the leading-zero restriction; use the same bucket 3 and B23 boundary."
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Read both intercept coordinates and express slope and intercept together as the requested line equation."
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 14,
+      "reason": "The source says the child stands between the parents but does not explicitly require adjacency; the existing block-arrangement solution uses adjacency."
+    },
+    {
+      "ordinal": 17,
+      "reason": "Counting full shortest routes gives their probability ratio only under an equal-route or specified equivalent selection model, which is not stated in the source."
+    }
+  ],
+  "notes": [
+    "ROOT read the changed-bucket and difficulty-exception stems, choices, existing solutions and seven relevant diagrams.",
+    "Independent A sample is required before publication."
+  ],
+  "evidenceReuse": {
+    "fromOwner": "GPT_ROOT_576242AD7339",
+    "sourceBlobMatched": true,
+    "originalReviewPreservedExceptRecordedDelta": true,
+    "rootDecisionSourceSha256": "826b5dd09ed0b1a529dfd26cc18955a1150e2482781fb53695ffe3b184b15b3e",
+    "priorIndependentSampleReused": false,
+    "readbackBy": "GPT_ROOT_87F142347508"
+  }
+}
