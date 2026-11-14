@@ -548,7 +548,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "points": 5,
-    "image": "assets/images/26_왕운중_2학기_중간_중1_유사/q14.svg",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_유사/q14-problem-v2.svg",
     "problemTypeKey": "PT_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION",
     "templateKey": "TPL_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION_CORE",
     "solution": "[키포인트] 제1사분면에서 $x, y$가 모두 자연수이고 곡선 $y=\\dfrac{a}{x}$의 아래쪽(내부)에 있으므로 부등식 $xy < a$를 만족해야 합니다. $a$가 자연수이므로 $xy \\le a-1$을 만족하는 자연수 순서쌍 $(x, y)$의 개수를 조사합니다.\n\n$x$의 값에 따라 가능한 자연수 $y$의 개수를 구합니다.\n$a=6$일 때, $xy < 6$, 즉 $xy \\le 5$입니다.\n- $x=1$일 때: $y \\le 5 \\implies (1,1), (1,2), (1,3), (1,4), (1,5)$의 $5$개\n- $x=2$일 때: $2y \\le 5 \\implies y \\le 2.5 \\implies (2,1), (2,2)$의 $2$개\n- $x=3$일 때: $3y \\le 5 \\implies y \\le 1.66\\dots \\implies (3,1)$의 $1$개\n- $x=4$일 때: $4y \\le 5 \\implies (4,1)$의 $1$개\n- $x=5$일 때: $5y \\le 5 \\implies (5,1)$의 $1$개\n- $x \\ge 6$일 때: $y \\ge 1$이므로 $xy \\ge 6$이 되어 조건을 만족하는 점이 없습니다.\n\n따라서 순서쌍의 총 개수는 $5 + 2 + 1 + 1 + 1 = 10$개입니다.\n그러므로 구하는 자연수 $a$의 값은 $6$입니다.\n정답은 ④입니다.",
