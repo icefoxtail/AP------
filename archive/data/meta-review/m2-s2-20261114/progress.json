@@ -5626,7 +5626,7 @@
           "sha256": "8cd56204ba2653b047c82c339098e058c594a08369ca9526ee948d43f8054e6c"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
       "noncanonicalHistoricalLevelOrdinals": [
         1,
@@ -5653,7 +5653,8 @@
         22,
         23,
         24
-      ]
+      ],
+      "remoteCommit": "066122fb39a717781c345a19d9da18f8770a830a"
     },
     {
       "examId": "E039",
@@ -6306,11 +6307,12 @@
           "sha256": "aa42058cf74ec8992c96be7b1fa4c3add303fa0b8a3c735f93af85864ae61263"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
       "noncanonicalHistoricalLevelOrdinals": [
         24
-      ]
+      ],
+      "remoteCommit": "bf2fce1e81efdd3214ffe4d2131a6aafbbbbe227"
     },
     {
       "examId": "E043",
@@ -6351,12 +6353,133 @@
         25,
         26
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
       "existing4slotPath": null,
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "6ce06a64c3b1b2e361c13d623511803e26efc6cb351e90d09239c465dcfe65bf"
+      "uidSetSha256": "6ce06a64c3b1b2e361c13d623511803e26efc6cb351e90d09239c465dcfe65bf",
+      "reviewedQuestionCount": 26,
+      "fullyJudgedQuestionCount": 25,
+      "registrationPendingQuestionCount": 25,
+      "unresolvedQuestionCount": 1,
+      "unresolvedOrdinals": [
+        7
+      ],
+      "sourceHoldQuestionCount": 2,
+      "sourceHoldOrdinals": [
+        7,
+        12
+      ],
+      "changedQuestionCount": 26,
+      "fourSlotQuestionCount": 26,
+      "independentSampleOrdinals": [
+        7,
+        18,
+        25
+      ],
+      "independentReviewer": "B",
+      "topicSummary": [
+        {
+          "rpmL1": "일차함수",
+          "rpmL2": "일차함수와 일차방정식의 관계",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            24
+          ]
+        },
+        {
+          "rpmL1": "도형의 성질",
+          "rpmL2": "삼각형의 성질",
+          "ordinals": [
+            5,
+            9
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 성질",
+          "ordinals": [
+            6,
+            7,
+            25
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            8
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 외심과 내심",
+          "ordinals": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            26
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "평행사변형",
+          "ordinals": [
+            15,
+            16,
+            17
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "여러 가지 사각형",
+          "ordinals": [
+            18,
+            19,
+            20,
+            21,
+            22
+          ]
+        },
+        {
+          "rpmL1": "일차함수",
+          "rpmL2": "일차함수와 그 그래프(2)",
+          "ordinals": [
+            23
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E043/four-slot.json",
+          "sha256": "ad44902e2e62e83452281effaa93ae102f716576103b039030b12edc4b458551"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E043/independent-sample.json",
+          "sha256": "45b2c90de8e5580f3ff6a6122ba996a6a458601c3a42fcc0d412cec2c212f15f"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E043/mechanical-check.json",
+          "sha256": "aae24c589ae8168b4cd7a00b3e2b1e7a6d170d0a39ba67631ea3b5900fc2e8c4"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E043/review.json",
+          "sha256": "bd5be035c862969cfcf9f53254a75669567352f93d62155b46668ef443ee5c13"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E043/root-acceptance.json",
+          "sha256": "55326ca088a7b381db48e4d1808aa9a5c355104bf7dc91d5dbc2a4d8706afbe8"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E044",
@@ -7555,14 +7678,14 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 43,
-    "reviewedQuestions": 1024,
-    "fullyJudgedQuestions": 1020,
-    "unresolvedQuestions": 4,
-    "remainingExams": 24,
-    "remainingQuestions": 580
+    "reviewedExams": 44,
+    "reviewedQuestions": 1050,
+    "fullyJudgedQuestions": 1045,
+    "unresolvedQuestions": 5,
+    "remainingExams": 23,
+    "remainingQuestions": 554
   },
-  "lastVerifiedExamCommit": "1cd50aef46b6bc6a8c349533970d1b3d7a1d553b",
+  "lastVerifiedExamCommit": "bf2fce1e81efdd3214ffe4d2131a6aafbbbbe227",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",
@@ -7579,7 +7702,16 @@
     "singleRootWriter": true,
     "previousWorkspaceProcessObserved": false,
     "sourceReadOnly": true,
-    "mainMergeAuthorized": false
+    "mainMergeAuthorized": false,
+    "latestMainParity": {
+      "main": "e9cdc120e2a7d7b26b2bac01306191276b8fbcc1",
+      "sourceFiles": 67,
+      "sourceBlobsEqual": 67,
+      "essentialRegistries": 8,
+      "registryBlobsEqual": 8,
+      "referencedImages": 1903,
+      "imageBlobsEqual": 1903
+    }
   },
   "countSemantics": {
     "reviewed": "Every item was inspected; unresolved evidence is counted separately and is not accepted metadata.",

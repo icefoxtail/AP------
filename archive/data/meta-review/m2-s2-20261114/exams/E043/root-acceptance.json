@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E043",
+  "owner": "A",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "7d303c1c0ebf908c9ee7d668044e7d223c94f286",
+  "sourceSha256": "e091d58b8b2a0b9486e0042fb21ab6702fbd3c920072efa7f4dfad8d68d74a9a",
+  "reviewSha256": "bd5be035c862969cfcf9f53254a75669567352f93d62155b46668ef443ee5c13",
+  "fourSlotSha256": "ad44902e2e62e83452281effaa93ae102f716576103b039030b12edc4b458551",
+  "independentSampleSha256": "45b2c90de8e5580f3ff6a6122ba996a6a458601c3a42fcc0d412cec2c212f15f",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_4daa03572ff93ccfa7b90ccfd12808e7004cca4b0ec93ec0e6d9ebe3617ffb91",
+      "fields": [
+        "목표각 x의 실제 위치",
+        "최종 메타·난도 확정",
+        "difficultyBucket",
+        "level"
+      ]
+    }
+  ],
+  "sampleReviewer": "B",
+  "sampleOrdinals": [
+    7,
+    18,
+    25
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "27d2618d912a24e239e12dbb83f65e656a469b914587fdbca6aaa0b8497e29a5",
+      "finalReviewSha256": "da89ff9b7cf568fee0d05a6e1f65ab093812c0340fba07746dc5e33b4c738119",
+      "independentSampleSha256": "45b2c90de8e5580f3ff6a6122ba996a6a458601c3a42fcc0d412cec2c212f15f",
+      "adjudicatedCompatibilityOrdinals": [
+        11,
+        14,
+        19,
+        22
+      ],
+      "resolvedRepairs": []
+    },
+    {
+      "scope": "Exact unresolved field identifiers added to Q7; source interpretation and all sampled slots unchanged. ROOT separately checked unchanged-bucket boundary exceptions Q3/Q9/Q25/Q26.",
+      "finalReviewSha256": "bd5be035c862969cfcf9f53254a75669567352f93d62155b46668ef443ee5c13"
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "교점과축절편의 좌표계산은 도형 넓이에 필요한 정형 전처리이며 새 전략을 선택하지 않는다. 그림의x축 밑변도 명확하여3에서2/B23으로 보정한 판단을 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_AUTHOR_REVISION"
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "72°와 그반36°로 DBC와ABD의 같은각을 각각찾아 길이를 연쇄 전달한다. 두부분 이등변을 골라야 하므로3/B23과중을 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 7,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "그림에서 목표x가 잘려 최종난도를 확정하지 않는다. 기존해설의밑각B 가정에 한정한2/B12는 candidate로만 보존하며 학습하도 원본값으로 남긴다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_UNRESOLVED"
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "외심등거리로 세쌍의 같은밑각을 만든 뒤 내각합에 모으는 익숙한 전처리라2가 적절하다. 원본 학습하는 표준성질연습의 인접수준으로 허용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "외심의등거리각과 내심반각을 같은꼭짓점의 차로 연결하므로3/B23을 수용한다. 기존해설의 원주각정리 사용에 관한 교육과정방법검토 sourceHold는 유지한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_WITH_SOURCE_HOLD"
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "평행선과 각이등분선으로 좌우이등변을 찾아 선분합으로 재해석하므로3/B23의 관계선택이 있다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "내심각112°에서90°를 빼는 직접정형식이고 그림의x는 반꼭지각임을 확인하여1을 수용한다. 원본중은 기본내심식 숙련의 인접학습수준으로 허용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "두이등변에서 각각8을 얻고 전체11의 중복구간을8+8−11로 계산해야 하므로3/B23을 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "각이등분선→같은변→작은평행사변형판정→같은높이넓이비로 이어지는 구조가3이며 B34 경계를 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "반대각선의 같은길이로6을 정한 뒤 이등변 밑각30°를 옮겨 합하므로2가 적절하다. 원본하는 기본직사각형성질연습의 인접수준으로 허용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "대각선양쪽 SAS를 포착하여10°를 옮긴 후 외각45+10을 구해야 하므로3/B23을 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "주어진 다섯 사각형의 표준대각선성질을 곧바로대조하는 정의확인이라1을 수용한다. 원본중은 여러종류개념구분의 인접학습수준으로 허용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "Interpret the stated intersection as the common solution, then substitute sequentially to recover the two parameters. This is standard algebraic preprocessing with bucket2/B12.",
+      "reviewer": "ROOT"
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "Compare the actual right-triangle hypotheses against RHS/RHA/SAS/ASA and distinguish angle-only similarity; bucket2/B12 reflects the short condition comparison.",
+      "reviewer": "ROOT"
+    },
+    {
+      "ordinal": 25,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "The auxiliary bisector, triangle pair and proof sequence are supplied. Complete corresponding angles and the common side for ASA; the proof target creates a type-definition gap but does not itself force a higher bucket.",
+      "reviewer": "ROOT"
+    },
+    {
+      "ordinal": 26,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "The subquestions explicitly guide inradius calculation followed by its use as the height of the target partial triangle; retain bucket2/B23.",
+      "reviewer": "ROOT"
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 7,
+      "reason": "현재 q07.png는 꼭짓점 A와25°·같은변표시만 남고 밑변 B,M,C 및 x표시가 잘려 있다. x=밑각B라는 현재해설 가정으로 메타를 판정하며 학생발문에서목표각식별은완결되지않음.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 12,
+      "reason": "현재해설은 중3 원주각 정리를 이름과 공식으로 직접 사용한다. 외심의 이등변삼각형 각추적으로 중2과정풀이가가능하나 본작업은 해설수정권한이없어 원문교육과정방법확인을 별도기록한다.",
+      "metadataJudgmentUnresolved": false
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}
