@@ -1,0 +1,437 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사.js",
+  "questionId": 12,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "-2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "-2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "H"
+        ],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "ab",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "bc",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "cd",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "de",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "ef",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "fa",
+            "refs": [
+              "F",
+              "A"
+            ]
+          },
+          {
+            "id": "oh",
+            "refs": [
+              "O",
+              "H"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "rightH",
+            "refs": [
+              "O",
+              "H",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "ohValue",
+              "ownerSegment": "oh",
+              "text": "2√3",
+              "factRole": "GIVEN",
+              "side": "RIGHT"
+            }
+          ],
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "circ",
+              "points": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F"
+              ]
+            }
+          ],
+          "regions": [
+            {
+              "id": "coloredSegments",
+              "fill": "MEDIUM",
+              "factRole": "GIVEN",
+              "shapes": [
+                {
+                  "segment": {
+                    "center": "O",
+                    "from": "A",
+                    "to": "B",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "segment": {
+                    "center": "O",
+                    "from": "B",
+                    "to": "C",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "segment": {
+                    "center": "O",
+                    "from": "C",
+                    "to": "D",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "segment": {
+                    "center": "O",
+                    "from": "D",
+                    "to": "E",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "segment": {
+                    "center": "O",
+                    "from": "E",
+                    "to": "F",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "segment": {
+                    "center": "O",
+                    "from": "F",
+                    "to": "A",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 550,
+          "height": 485
+        },
+        "caption": "원 O에 내접한 정육각형 ABCDEF와 바깥 색칠 부분",
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 38,
+        "displayScale": 0.45,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}
