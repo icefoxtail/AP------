@@ -7114,6 +7114,849 @@
       "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
     },
     {
+      "examKey": "E012",
+      "ordinal": 1,
+      "questionUid": "qid_v1_c0abab9bbd38be58a7b6af3d88bcf8c4472911352fa79236493c32f40ddc7ff5",
+      "nativeRpm": "M3-RPM-001",
+      "rpm2022": "M3-RPM-093",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 제곱근 정의·성질 판정 의미를 확인했다. native curriculum값이 미설정이라 route는 후보이며 root 등록 판단이 필요하다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 정의, 양수·음수의 제곱근 및 제곱근의 절댓값 성질을 이용해 명제나 식의 값을 판별한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "제곱근의 정의와 양수·음수의 제곱근 성질을 각 진술에 적용해 옳은 것을 고른다.",
+          "templateParent": "PT_M3_SQUARE_ROOT_PROPERTY",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 2,
+      "questionUid": "qid_v1_4865aea0aede61de06109ec436d68a4c1f2787b0298f6dc49347736cc2155da7",
+      "nativeRpm": "M3-RPM-001",
+      "rpm2022": "M3-RPM-093",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED",
+        "TEMPLATE_GAP_NESTED_SQUARE_ROOT_NUMERIC_VALUE"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "제곱근 성질 PT는 식의값 산출을 포함한다. 그러나 AUDIT TPL은 여러 진술의 참거짓 판정이며 본 문항의 중첩 제곱근 수치 산출과 출력 골격이 달라 제외한다. exact TPL 미확정.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 정의, 양수·음수의 제곱근 및 제곱근의 절댓값 성질을 이용해 명제나 식의 값을 판별한다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "templateParent": null,
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER"
+            }
+          ]
+        },
+        "rejectedTemplateEvidence": {
+          "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+          "definition": "제곱근의 정의와 양수·음수의 제곱근 성질을 각 진술에 적용해 옳은 것을 고른다.",
+          "reason": "제곱근 성질 PT는 식의값 산출을 포함한다. 그러나 AUDIT TPL은 여러 진술의 참거짓 판정이며 본 문항의 중첩 제곱근 수치 산출과 출력 골격이 달라 제외한다. exact TPL 미확정."
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 3,
+      "questionUid": "qid_v1_9bbbc2f42489364a3a358ad274aee56f7f9a31d515377d50193a8c111e32b724",
+      "nativeRpm": "M3-RPM-002",
+      "rpm2022": "M3-RPM-094",
+      "debts": [
+        "TEMPLATE_GAP_NEAREST_SQUARE_ADDITIVE_PARAMETER",
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE PT는 자연수 제곱근 판정에 맞지만 소인수 곱 조건 TPL은 상수 더하기의 다음 제곱수 선택과 다르다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 정의, 양수·음수의 제곱근 및 제곱근의 절댓값 성질을 이용해 명제나 식의 값을 판별한다.",
+          "templateStatus": null,
+          "templateParent": null,
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 4,
+      "questionUid": "qid_v1_96c3aa8de573ff559986a9ffaddf456c4cb556f75e333ece8bad8351183a1068",
+      "nativeRpm": "M3-RPM-004",
+      "rpm2022": "M3-RPM-096",
+      "debts": [
+        "TEMPLATE_GAP_INTEGER_PART_INTERVAL_COUNT",
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE PT의 정수부분·범위 의미는 맞고 exact 자연수 개수 TPL은 미확정이다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "거듭제곱·제곱근·역수의 대소 관계 또는 정수부분을 이용해 실수의 순서와 범위를 판단한다.",
+          "templateStatus": null,
+          "templateParent": null,
+          "matchingBindings": []
+        }
+      },
+      "validationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 5,
+      "questionUid": "qid_v1_29828b38763aedae45e2875f7e57b4e6afd69f9ea8386c93845f250d3183e2d7",
+      "nativeRpm": null,
+      "rpm2022": null,
+      "debts": [
+        "RPM_LEAF_GAP_REAL_NUMBER_PROPERTIES",
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "기존 REAL_NUMBER_CLASSIFICATION PT는 표현의 수분류를 주로 다룬다. 수직선 대응과 조밀성 진술 감사까지 확장된 정의를 확인하지 못했다."
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 6,
+      "questionUid": "qid_v1_eab651bdf85f086adbf379361402391eb989e78686e8faa3bf020536adf4b2e0",
+      "nativeRpm": "M3-RPM-005",
+      "rpm2022": "M3-RPM-097",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+        "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 모눈 직각삼각형 길이와 기준점 이동의 정의가 정확히 일치한다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "직각삼각형의 길이와 기준점으로부터의 방향·거리를 이용해 무리수에 대응하는 수직선의 점을 결정한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "격자 직각삼각형의 빗변 길이를 피타고라스 정리로 구하고 기준점에서 이동 방향을 반영한다.",
+          "templateParent": "PT_M3_REAL_NUMBER_LINE",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 7,
+      "questionUid": "qid_v1_71733f856083fe451cce8b1cd0ef663c9d34e8f8105cbb990adf3bc3836c7202",
+      "nativeRpm": "M3-RPM-006",
+      "rpm2022": "M3-RPM-098",
+      "debts": [
+        "CONDITION_GAP_PRESCRIBED_APPROXIMATION",
+        "TEMPLATE_GAP_DECIMAL_SHIFT_APPROXIMATION_AUDIT",
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "근호 계산 PT의 범위이지만 현재 문자계수표현 TPL과 수치 근삿값 감사를 같은 골격으로 승인하지 않는다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 성질과 사칙연산, 동류근호 정리, 분모의 유리화를 적용해 근호식을 계산하거나 비교한다.",
+          "templateStatus": null,
+          "templateParent": null,
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 8,
+      "questionUid": "qid_v1_b94079e147029595b36de8f65b60fbd057349bc8362e4795209f1a51e0d95c8d",
+      "nativeRpm": "M3-RPM-004",
+      "rpm2022": "M3-RPM-096",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 양수 근호 대소를 내부 수/제곱 비교로 바꾸는 정의와 맞다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "거듭제곱·제곱근·역수의 대소 관계 또는 정수부분을 이용해 실수의 순서와 범위를 판단한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "양수의 제곱근 비교를 근호 안 수 또는 양변의 제곱 비교로 바꾸어 부등식의 참·거짓을 판정한다.",
+          "templateParent": "PT_M3_REAL_NUMBER_COMPARISON",
+          "matchingBindings": []
+        }
+      },
+      "validationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 9,
+      "questionUid": "qid_v1_0567db495ace4920aae7cae5ade184020a6ec8ce8da5b08308a6529a1f521480",
+      "nativeRpm": "M3-RPM-007",
+      "rpm2022": "M3-RPM-099",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 근호의 곱셈·나눗셈 및 혼합연산 정의와 맞는 후보다. resolver 독립수학검증 플래그는 생성하지 않았다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 성질과 사칙연산, 동류근호 정리, 분모의 유리화를 적용해 근호식을 계산하거나 비교한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "제곱근의 성질로 근호를 정리하고 연산 순서에 따라 곱셈·나눗셈 또는 동류근호의 덧셈·뺄셈을 수행한다.",
+          "templateParent": "PT_M3_RADICAL_CALCULATION",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 10,
+      "questionUid": "qid_v1_4b32bbfbc749475d8d0831cad4f551fa83667051587dd1a6d3f8f4239ce7501e",
+      "nativeRpm": "M3-RPM-008",
+      "rpm2022": "M3-RPM-100",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 근호의 곱셈·나눗셈 및 혼합연산 정의와 맞는 후보다. resolver 독립수학검증 플래그는 생성하지 않았다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 성질과 사칙연산, 동류근호 정리, 분모의 유리화를 적용해 근호식을 계산하거나 비교한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "제곱근의 성질로 근호를 정리하고 연산 순서에 따라 곱셈·나눗셈 또는 동류근호의 덧셈·뺄셈을 수행한다.",
+          "templateParent": "PT_M3_RADICAL_CALCULATION",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 11,
+      "questionUid": "qid_v1_716bdf694344a85d3af9437a94666335a5ce838a8c7f86626a2441fb63cb1c59",
+      "nativeRpm": "M3-RPM-009",
+      "rpm2022": "M3-RPM-101",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 근호의 곱셈·나눗셈 및 혼합연산 정의와 맞는 후보다. resolver 독립수학검증 플래그는 생성하지 않았다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 성질과 사칙연산, 동류근호 정리, 분모의 유리화를 적용해 근호식을 계산하거나 비교한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "제곱근의 성질로 근호를 정리하고 연산 순서에 따라 곱셈·나눗셈 또는 동류근호의 덧셈·뺄셈을 수행한다.",
+          "templateParent": "PT_M3_RADICAL_CALCULATION",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 12,
+      "questionUid": "qid_v1_f4fc72d96c7d90d60ec93519ff3787b5d0da795155b21f0ffbce7d589ef2df01",
+      "nativeRpm": "M3-RPM-014",
+      "rpm2022": "M3-RPM-106",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 근호의 곱셈·나눗셈 및 혼합연산 정의와 맞는 후보다. resolver 독립수학검증 플래그는 생성하지 않았다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 성질과 사칙연산, 동류근호 정리, 분모의 유리화를 적용해 근호식을 계산하거나 비교한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "제곱근의 성질로 근호를 정리하고 연산 순서에 따라 곱셈·나눗셈 또는 동류근호의 덧셈·뺄셈을 수행한다.",
+          "templateParent": "PT_M3_RADICAL_CALCULATION",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 13,
+      "questionUid": "qid_v1_5a64f122a5e141686c1a58e745484d9b1ee9495ddb5ea04af8e85a63199c3c93",
+      "nativeRpm": "M3-RPM-002",
+      "rpm2022": "M3-RPM-094",
+      "debts": [
+        "TEMPLATE_GAP_RADICAL_DICE_PROBABILITY",
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE PT는 자연수 제곱근 조건에 맞지만 두 주사위 확률 결합 exact TPL은 미확정이다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 정의, 양수·음수의 제곱근 및 제곱근의 절댓값 성질을 이용해 명제나 식의 값을 판별한다.",
+          "templateStatus": null,
+          "templateParent": null,
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 14,
+      "questionUid": "qid_v1_9645f48b14e05742a4fdf57ec8ba947be0dbdf5dcca2498d6eca50bfc5086734",
+      "nativeRpm": "M3-RPM-017",
+      "rpm2022": "M3-RPM-109",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 전개식에서 특정 문자항의 계수를 읽는 정의에 맞다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "다항식의 곱셈과 곱셈공식을 이용하여 식을 전개하고 계수 또는 수치 조건을 해결한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "곱셈공식을 이용하여 전개한 식에서 특정 문자의 계수를 구한다.",
+          "templateParent": "PT_M3_POLY_MULTIPLICATION",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION"
+            },
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 15,
+      "questionUid": "qid_v1_60fb877902995d7636e44262e7f830e383dd0b68501b2c726b86495dc9b3c95b",
+      "nativeRpm": "M3-RPM-182",
+      "rpm2022": null,
+      "debts": [
+        "RPM2022_LEAF_GAP_MULTI_FORMULA_AUDIT",
+        "TEMPLATE_GAP_FORMULA_BLANK_MIN",
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE PT와 맞으나 numerical-audit TPL은 진위 판정 중심이고 여러 빈칸의 최솟값 선택은 미확정이다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "다항식의 곱셈과 곱셈공식을 이용하여 식을 전개하고 계수 또는 수치 조건을 해결한다.",
+          "templateStatus": null,
+          "templateParent": null,
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION"
+            },
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 16,
+      "questionUid": "qid_v1_5798aef97b6e1e2cb50348a9926c1e8c3d9d54fc631fb6565f5327ac9b3ec4a8",
+      "nativeRpm": "M3-RPM-023",
+      "rpm2022": "M3-RPM-115",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 두 제곱항에서 중간항을 정하는 정의가 맞다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "공통인수, 인수분해 공식, 인수정리와 치환을 이용해 다항식을 인수분해하거나 계수·수치 조건을 해결한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "두 제곱항의 제곱근을 읽고 완전제곱식 전개에서 중간항 계수를 결정한다.",
+          "templateParent": "PT_M3_POLY_FACTORIZATION",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-FACTORIZATION"
+            },
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-FACTORIZATION"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 17,
+      "questionUid": "qid_v1_f66a4f6cd61fe6cd8391ba7d3287110cbc70ab46975f9faeb77fdea49e516c2d",
+      "nativeRpm": "M3-RPM-012",
+      "rpm2022": "M3-RPM-104",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 켤레식 유리화 정의에 맞다. source의 M3-01 표준분류는 그대로 보존한다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 성질과 사칙연산, 동류근호 정리, 분모의 유리화를 적용해 근호식을 계산하거나 비교한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "분모의 근호를 유리화하고 근호 안의 제곱인수를 정리하여 식을 공통 형태로 비교한다.",
+          "templateParent": "PT_M3_RADICAL_CALCULATION",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 18,
+      "questionUid": "qid_v1_5c5c73e62d6df45132e0dc67648362b5961133144dbffae4fffc5cd1b1ff6adb",
+      "nativeRpm": "M3-RPM-017",
+      "rpm2022": "M3-RPM-109",
+      "debts": [
+        "CONTENT_DEBT_NEGATIVE_PASSWORD_DIGIT",
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 전개식의 주어진 계수에서 미정계수를 정하는 정의가 맞다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "다항식의 곱셈과 곱셈공식을 이용하여 식을 전개하고 계수 또는 수치 조건을 해결한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "일차식의 곱 전개식에서 주어진 상수항 또는 일차항 계수로부터 미정계수를 구한다.",
+          "templateParent": "PT_M3_POLY_MULTIPLICATION",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION"
+            },
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 19,
+      "questionUid": "qid_v1_ac3f839b5d28a674619729b9d9d1bdf61d2741c061f1a27f56506df792573581",
+      "nativeRpm": "M3-RPM-026",
+      "rpm2022": "M3-RPM-118",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED",
+        "TEMPLATE_GAP_NUMERIC_GENERAL_QUADRATIC_FACTORIZATION"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "실제 해설은 t²+2t−3=(t+3)(t−1)의 일반 이차식 인수분해와 약분이다. TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION 정의의 합차/완전제곱 공식 사용 범위와 다르므로 해당 TPL을 제외한다. 수치 인수분해 RPM026은 유지한다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "공통인수, 인수분해 공식, 인수정리와 치환을 이용해 다항식을 인수분해하거나 계수·수치 조건을 해결한다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "templateParent": null,
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-FACTORIZATION"
+            },
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-FACTORIZATION"
+            }
+          ]
+        },
+        "rejectedTemplateEvidence": {
+          "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+          "definition": "합차 또는 완전제곱 공식으로 수식을 곱의 형태로 바꾸고 범위 안의 약수나 수치값을 구한다.",
+          "reason": "실제 해설은 t²+2t−3=(t+3)(t−1)의 일반 이차식 인수분해와 약분이다. TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION 정의의 합차/완전제곱 공식 사용 범위와 다르므로 해당 TPL을 제외한다. 수치 인수분해 RPM026은 유지한다."
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 20,
+      "questionUid": "qid_v1_11d64e89695e2b8ecab44c3f01f699ee66fe3fe902862a1a3db7b63beb87e5de",
+      "nativeRpm": "M3-RPM-002",
+      "rpm2022": "M3-RPM-094",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 조건부 문자부호와 제곱의 제곱근 단순화 정의에 맞다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 정의, 양수·음수의 제곱근 및 제곱근의 절댓값 성질을 이용해 명제나 식의 값을 판별한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "조건식에서 문자의 부호를 판별하고 √(x²)=|x|를 적용해 근호가 포함된 문자를 정리한다.",
+          "templateParent": "PT_M3_SQUARE_ROOT_PROPERTY",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 21,
+      "questionUid": "qid_v1_96b3be0b2c9efd176997d4e2ef00ad351034de3fd8d2ce46d79d3e5898798995",
+      "nativeRpm": "M3-RPM-002",
+      "rpm2022": "M3-RPM-094",
+      "debts": [
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 소인수 제곱 조건으로 자연수 후보를 얻은 뒤 범위를 적용하는 정의와 일치한다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 정의, 양수·음수의 제곱근 및 제곱근의 절댓값 성질을 이용해 명제나 식의 값을 판별한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "근호 안의 수를 소인수분해하고 지수의 짝수 조건으로 가능한 자연수를 구한 뒤 범위 조건을 적용한다.",
+          "templateParent": "PT_M3_SQUARE_ROOT_PROPERTY",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 22,
+      "questionUid": "qid_v1_a4b3bec452d174aede4f76fdb2102ab46054f935d034105ca4911695027e1209",
+      "nativeRpm": "M3-RPM-006",
+      "rpm2022": "M3-RPM-098",
+      "debts": [
+        "CONDITION_GAP_PRESCRIBED_APPROXIMATION",
+        "TEMPLATE_GAP_ROOT_APPROXIMATION_APPLICATION",
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "근호 단순화 PT 범위이지만 실제 지정 근삿값 응용 TPL은 미확정이다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "제곱근의 성질과 사칙연산, 동류근호 정리, 분모의 유리화를 적용해 근호식을 계산하거나 비교한다.",
+          "templateStatus": null,
+          "templateParent": null,
+          "matchingBindings": [
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-01",
+              "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E012",
+      "ordinal": 23,
+      "questionUid": "qid_v1_6a9c6ed3e77bce12533297ba78b96a6c24f6899a3cbd7c63c59ab5dd11e1746b",
+      "nativeRpm": "M3-RPM-025",
+      "rpm2022": "M3-RPM-117",
+      "debts": [
+        "CONTENT_DEBT_FACTORIZATION_DOMAIN_UNSTATED",
+        "CONDITION_GAP_NOT_PERFECT_SQUARE",
+        "TEMPLATE_GAP_FACTORIZATION_DICE_PROBABILITY",
+        "MACHINE_CURRICULUM_UNSET_NATIVE_2015_PROPOSED",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 이차식 인수분해 PT 범위이나 정수계수 인수분해·제곱식 제외·주사위확률의 exact TPL은 미확정이다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "공통인수, 인수분해 공식, 인수정리와 치환을 이용해 다항식을 인수분해하거나 계수·수치 조건을 해결한다.",
+          "templateStatus": null,
+          "templateParent": null,
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-FACTORIZATION"
+            },
+            {
+              "standardCourse": "중3 수학",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-02",
+              "subUnitKey": "M3-02-FACTORIZATION"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
       "examKey": "E013",
       "ordinal": 1,
       "questionUid": "qid_v1_350d27ccb5b7ed95cdd8d0517474a2bd1cf3264d87437fc097c36230c5556ec4",
@@ -9778,6 +10621,136 @@
         "desiredLeaf": "이차식을 인수분해하여 지정 인수를 갖지 않는 식 판정",
         "distinction": "공통인수를 찾거나 주어진 인수의 나머지 인수를 구하는 목표와 다르다.",
         "registration": "NOT_REGISTERED"
+      }
+    },
+    {
+      "examKey": "E012",
+      "kind": "FOUR_SLOT_TERM_CANDIDATE",
+      "proposal": {
+        "term": "양의제곱근",
+        "en": "POSITIVE_SQUARE_ROOT",
+        "synonyms": [],
+        "kind": "대상",
+        "parent": "제곱근",
+        "note": "두 제곱근 중 양수인 것; 이 문항은 계산 결과에 다시 양의 제곱근을 취한다.",
+        "usedIn": [
+          "qid_v1_4865aea0aede61de06109ec436d68a4c1f2787b0298f6dc49347736cc2155da7"
+        ]
+      }
+    },
+    {
+      "examKey": "E012",
+      "kind": "FOUR_SLOT_TERM_CANDIDATE",
+      "proposal": {
+        "term": "실수의조밀성",
+        "en": "DENSITY_OF_REAL_NUMBERS",
+        "synonyms": [],
+        "kind": "방법",
+        "parent": "실수",
+        "note": "서로 다른 유리수 사이 무리수가 무한히 존재한다는 성질을 포함한다.",
+        "usedIn": [
+          "qid_v1_29828b38763aedae45e2875f7e57b4e6afd69f9ea8386c93845f250d3183e2d7"
+        ]
+      }
+    },
+    {
+      "examKey": "E012",
+      "kind": "FOUR_SLOT_TERM_CANDIDATE",
+      "proposal": {
+        "term": "근호의소수점이동",
+        "en": "RADICAL_DECIMAL_SCALING",
+        "synonyms": [],
+        "kind": "방법",
+        "parent": "제곱근",
+        "note": "피제곱수 소수점 두 자리 이동과 제곱근 소수점 한 자리 이동.",
+        "usedIn": [
+          "qid_v1_71733f856083fe451cce8b1cd0ef663c9d34e8f8105cbb990adf3bc3836c7202",
+          "qid_v1_a4b3bec452d174aede4f76fdb2102ab46054f935d034105ca4911695027e1209"
+        ]
+      }
+    },
+    {
+      "examKey": "E012",
+      "kind": "FOUR_SLOT_TERM_CANDIDATE",
+      "proposal": {
+        "term": "근호의곱셈",
+        "en": "PRODUCT_OF_RADICALS",
+        "synonyms": [],
+        "kind": "방법",
+        "parent": "제곱근",
+        "note": "근호의 곱셈·나눗셈 성질을 적용한다.",
+        "usedIn": [
+          "qid_v1_4b32bbfbc749475d8d0831cad4f551fa83667051587dd1a6d3f8f4239ce7501e",
+          "qid_v1_f4fc72d96c7d90d60ec93519ff3787b5d0da795155b21f0ffbce7d589ef2df01"
+        ]
+      }
+    },
+    {
+      "examKey": "E012",
+      "kind": "FOUR_SLOT_TERM_CANDIDATE",
+      "proposal": {
+        "term": "무리수항계수소거",
+        "en": "ZERO_IRRATIONAL_PART_COEFFICIENT",
+        "synonyms": [],
+        "kind": "방법",
+        "parent": "계수",
+        "note": "유리계수 A+B√m이 유리수일 때 B=0을 적용한다.",
+        "usedIn": [
+          "qid_v1_716bdf694344a85d3af9437a94666335a5ce838a8c7f86626a2441fb63cb1c59"
+        ]
+      }
+    },
+    {
+      "examKey": "E012",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "kind": "RPM_LEAF_GAP",
+        "ordinals": [
+          5
+        ],
+        "desiredPath": {
+          "majorUnit": "실수와 그 연산",
+          "midUnit": "제곱근과 실수",
+          "l3": "무리수와 실수",
+          "l4": "실수의 기본 성질 판정"
+        },
+        "distinction": "무리수 여부만 아니라 수직선 대응과 수체계의 조밀성을 함께 판정한다.",
+        "status": "PROPOSED_NOT_REGISTERED",
+        "supportingQuestionUids": [
+          "qid_v1_29828b38763aedae45e2875f7e57b4e6afd69f9ea8386c93845f250d3183e2d7"
+        ]
+      }
+    },
+    {
+      "examKey": "E012",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "kind": "TEMPLATE_GAP",
+        "ordinals": [
+          2
+        ],
+        "supportingQuestionUids": [
+          "qid_v1_4865aea0aede61de06109ec436d68a4c1f2787b0298f6dc49347736cc2155da7"
+        ],
+        "proposedLabel": "중첩된 제곱근의 수치값 산출",
+        "distinction": "제곱근 성질 PT는 식의값 산출을 포함한다. 그러나 AUDIT TPL은 여러 진술의 참거짓 판정이며 본 문항의 중첩 제곱근 수치 산출과 출력 골격이 달라 제외한다. exact TPL 미확정.",
+        "status": "PROPOSED_NOT_REGISTERED"
+      }
+    },
+    {
+      "examKey": "E012",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "kind": "TEMPLATE_GAP",
+        "ordinals": [
+          19
+        ],
+        "supportingQuestionUids": [
+          "qid_v1_ac3f839b5d28a674619729b9d9d1bdf61d2741c061f1a27f56506df792573581"
+        ],
+        "proposedLabel": "일반 이차식 인수분해를 이용한 수치 약분",
+        "distinction": "실제 해설은 t²+2t−3=(t+3)(t−1)의 일반 이차식 인수분해와 약분이다. TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION 정의의 합차/완전제곱 공식 사용 범위와 다르므로 해당 TPL을 제외한다. 수치 인수분해 RPM026은 유지한다.",
+        "status": "PROPOSED_NOT_REGISTERED"
       }
     },
     {
