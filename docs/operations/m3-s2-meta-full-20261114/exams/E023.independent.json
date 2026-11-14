@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "examId": "E023",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "361feba2088c78608b9995b3b9fc5c563f0181da",
+  "sampled4slotSha256": "47ede59dd7ce62e75c61a6345137b07564d1c4c66317804b0ccc05b86bed5720",
+  "sampledReviewSha256": "a322baf97d23edab2cd039f6a479e123ab06a877178d8f23b129ad91606cd5c8",
+  "sampledSourcePatchSha256": "d6b5e1a2f14733ed698c840fd6711ff26513cfb2675fedddc8f356be4efbc25c",
+  "sourcePacketSha256": "807af1dbaf2d8065256d730b7a49575201141c3a5661509a8a938f6ddca72ecd",
+  "sampled": [
+    3,
+    15,
+    23
+  ],
+  "status": "PASS_AFTER_QUOTE_AND_COMPARISON_LEAF_CORRECTIONS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_e08d08e8ce90f96039119d9a4875c6d0f18937c089082b6b5fd7efc62d6fb5a2",
+      "sourceImageRead": true,
+      "solutionImageRead": true,
+      "visualStatus": "READ_CURRENT_VERSION",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 5
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "세 호의 비 전체3:4:5와 목표각이 호BC를 봄을 실제 원본·새 해설SVG에서 확인했다. 360×4/12의 완결된 비례배분 인용으로 보완되어 CENTER_ARC 075/current163과 두 단계 방법이 정확하다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_f916bacc9de695e9961ec4fd0c033636a435dd079786b6a564aa665ed4a2efcf",
+      "sourceImageRead": true,
+      "solutionImageRead": false,
+      "visualStatus": "READ_CURRENT_VERSION",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 6
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "실제 대화 그림의 두 자료와 중앙값8/12, 둘째 평균10을 읽었다. 평균에서 a+b=19로 후보를 정하고 두 중앙값을 검산하므로 조건복원 TPL 재사용과 original087/current222가 타당하다. 정렬자료부터 중앙값12 결론까지 method 인용이 보완됐다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_34d667ec4aa1c5b356f3d4f22f16143c3b8f0f8b1bf31363d7595271e93b2dab",
+      "sourceImageRead": true,
+      "solutionImageRead": false,
+      "visualStatus": "READ_CURRENT_VERSION",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 8
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "실제 그림의 최소9·한 사람15·최빈18·평균14.8 조건을 모두 확인했다. 합74로 18세 세 명을 배제하고 정확히 두 명으로 정하는 결정 문장이 method에 포함되어, 조건복원 TPL과 original087/current223-MEDIAN-RECONSTRUCTION 연결이 맞다.",
+      "status": "PASS"
+    }
+  ],
+  "outstanding": [],
+  "scope": "Three independent metadata/4slot samples; no full-exam R1/R2/R3 certification",
+  "visualEvidence": [
+    "worker-outputs/c/E023-sample-visuals.jpg"
+  ],
+  "difficultyReviewScope": "Root already independently reviewed all exceptions; no duplicate whole-exam difficulty adjudication by c."
+}
