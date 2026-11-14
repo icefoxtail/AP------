@@ -346,6 +346,7 @@
       padding: 14px 12px;
       overflow: visible;
     }
+    .page-body { display: block !important; flex: none !important; }
     .page-body, .ap-equal-slot-grid, .ap-equal-slot {
       height: auto !important;
       min-height: 0;
@@ -359,12 +360,11 @@
     .page-header-title { overflow-wrap: anywhere; }
     .page-header-meta-right { flex-wrap: wrap; }
     .grid-container {
-      grid-template-columns: minmax(0, 1fr) !important;
+      display: block !important;
       height: auto !important;
-      flex: 0 0 auto;
     }
     .grid-container::after { display: none; }
-    .grid-col { height: auto; padding: 0; overflow: visible; }
+    .grid-col { display: block; height: auto; padding: 0; overflow: visible; }
     .ap-equal-slot .ap-slot-content {
       display: flow-root;
       position: static !important;
