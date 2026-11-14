@@ -760,10 +760,53 @@ def equal_units_opt_in_errors(plan,transform):
     if abs(transform['sy']-transform['sx'])*max(x1-x0,y1-y0)*transform['displayScale']>1.0:errors.append('EQUAL_UNIT_SCALE_MISMATCH')
     return errors
 
-def rational_overview_audit(plan,poly,points,transform,topology,svg_root):
+def rational_asymptote_only_errors(root, singularity_x, horizontal, transform, model):
+    errors=[]
+    if any(node.get('data-role') in ('axis','tick') for node in root.iter()):
+        errors.append('RATIONAL_ASYMPTOTE_ONLY_AXES_OR_TICKS_PRESENT')
+    labels=[node for node in root.iter() if node.get('data-label-kind')]
+    if model:
+        if labels:errors.append('RATIONAL_ASYMPTOTE_ONLY_MODEL_LABELS_PRESENT')
+        return errors
+
+    expected={
+        'horizontal-asymptote-label':('y',horizontal,'horizontal'),
+        'vertical-asymptote-label':('x',singularity_x,'vertical'),
+    }
+    if sorted(node.get('id','') for node in labels)!=sorted(expected) or any(
+        node.tag.split('}')[-1] in ('text','foreignObject') for node in root.iter()
+    ):
+        errors.append('RATIONAL_ASYMPTOTE_ONLY_LABEL_INVENTORY_MISMATCH')
+    groups={node.get('id'):node for node in labels}
+    for ident,(variable,value,direction) in expected.items():
+        node=groups.get(ident)
+        if node is None:continue
+        codes=_ov_glyph_codes(node)
+        want=_ov_label_codes(f'{variable}={value}')
+        fractions=sum(child.get('data-mml-node')=='mfrac' for child in node.iter())
+        if (node.get('data-label-kind')!='EQUATION_LABEL' or len(codes)!=len(want)
+            or any(code not in allowed for code,allowed in zip(codes,want))
+            or fractions!=int(value.q!=1)):
+            errors.append('RATIONAL_ASYMPTOTE_ONLY_LABEL_MISMATCH:'+ident)
+        box=_region_label_box(groups,ident)
+        if box is None:
+            errors.append('RATIONAL_ASYMPTOTE_ONLY_LABEL_BOX_UNREADABLE:'+ident)
+            continue
+        x=transform['originX']+float(singularity_x)*transform['sx']
+        y=transform['originY']-float(horizontal)*transform['sy']
+        vertical_gap=max(box[0]-x,x-box[0]-box[2],0.0)
+        horizontal_gap=max(box[1]-y,y-box[1]-box[3],0.0)
+        own,other=(vertical_gap,horizontal_gap) if direction=='vertical' else (horizontal_gap,vertical_gap)
+        if own>35 or own>=other:
+            errors.append('RATIONAL_ASYMPTOTE_ONLY_LABEL_DETACHED:'+ident)
+    return errors
+
+def rational_overview_audit(plan,poly,points,transform,topology,svg_root,model=False):
     errors=[]
     if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:return {'status':'UNSUPPORTED','errors':['RATIONAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS']}
-    if plan.get('overviewPolicy')=='RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1':return rational_constant_overview_audit(plan,points,transform,topology,svg_root)
+    if plan.get('overviewPolicy')=='RATIONAL_CONSTANT_OVER_LINEAR_OVERVIEW_v1':
+        if 'asymptoteOnly' in plan:return {'status':'UNSUPPORTED','errors':['ASYMPTOTE_ONLY_REQUIRES_LINEAR_NUMERATOR']}
+        return rational_constant_overview_audit(plan,points,transform,topology,svg_root)
     if plan.get('overviewPolicy')!='RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_v1':return {'status':'UNSUPPORTED','errors':['RATIONAL_OVERVIEW_POLICY_REQUIRED']}
     try:
         numerator=polynomial(plan.get('numerator'),1);denominator=polynomial(plan.get('denominator'),1)
@@ -773,6 +816,10 @@ def rational_overview_audit(plan,poly,points,transform,topology,svg_root):
     numerator_root=-numerator.nth(0)/numerator.nth(1)
     horizontal=numerator.LC()/denominator.LC()
     is_hole=numerator.eval(singularity_x)==0
+    if 'asymptoteOnly' in plan:
+        if plan['asymptoteOnly'] is not True:return {'status':'UNSUPPORTED','errors':['ASYMPTOTE_ONLY_INVALID']}
+        if is_hole:return {'status':'UNSUPPORTED','errors':['ASYMPTOTE_ONLY_REQUIRES_VERTICAL_POLE']}
+        errors.extend(rational_asymptote_only_errors(svg_root,singularity_x,horizontal,transform,model))
     expected={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1','singularity':{'kind':'REMOVABLE_HOLE','x':str(singularity_x),'y':str(horizontal)} if is_hole else {'kind':'VERTICAL_POLE','x':str(singularity_x)},'horizontalAsymptoteY':str(horizontal),'xIntercept':None if is_hole else str(numerator_root)}
     policy={'schemaVersion':'RATIONAL_LINEAR_OVER_LINEAR_OVERVIEW_POLICY_v1','sourceDomain':'ALL_REALS_WITH_DENOMINATOR_EXCLUSION','degreeGrammar':'LINEAR_OVER_LINEAR','singularityPolicy':'ONE_SIMPLE_REAL_POLE_OR_ONE_REMOVABLE_HOLE','horizontalAsymptotePolicy':'EXACT_LEADING_COEFFICIENT_RATIO','minimumFeatureSeparationCssPx':1,'holeMarkerRadiusIntrinsicPx':4,'minimumHoleMarkerDiameterCssPx':4.5}
     if plan.get('rationalFeatures')!=expected:errors.append('RATIONAL_FEATURE_INVENTORY_MISMATCH')
@@ -5146,7 +5193,7 @@ def piecewise_discontinuous_audit(plan,svg,transform):
     status='UNSUPPORTED' if 'UNSUPPORTED' in statuses else 'FAIL' if ('FAIL' in statuses or extra) else 'PASS'
     return {**first,'status':status,'errors':sorted(set(errors)),'sharedCurve':{key:value for key,value in second.items() if key not in ('status','errors')}}
 
-def _audit_family(plan,svg,transform):
+def _audit_family(plan,svg,transform,model=False):
     if plan.get('family')=='piecewise-polynomial':
         return piecewise_polynomial_audit(plan,svg,transform)
     if plan.get('family')=='piecewise-discontinuous':
@@ -5258,7 +5305,7 @@ def _audit_family(plan,svg,transform):
     for hole in topology['holes']:
         lim=float(S.limit(f,x,S.Rational(str(hole))))
         if plan['viewport'][2]<=lim<=plan['viewport'][3] and not any(abs(mx-hole)<1e-7 and abs(my-lim)*scale<=tolerance for mx,my in markers):errors.append('REMOVABLE_HOLE_MARKER_MISSING')
-    if plan.get('family')=='rational' and plan.get('shapeIntent')=='OVERVIEW':overview=rational_overview_audit(plan,poly,actual_points,transform,topology,root)
+    if plan.get('family')=='rational' and plan.get('shapeIntent')=='OVERVIEW':overview=rational_overview_audit(plan,poly,actual_points,transform,topology,root,model=model)
     elif plan.get('family')=='sqrt-affine' and plan.get('shapeIntent')=='OVERVIEW':overview=sqrt_affine_general_overview_audit(plan,actual_points,transform,topology,root) if plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY else sqrt_affine_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='absolute-value' and plan.get('shapeIntent')=='OVERVIEW':overview=absolute_value_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL':overview=polynomial_interval_audit(plan,poly,actual_points,transform,root)
@@ -5724,10 +5771,10 @@ def multi_curve_label_audit(plan,svg,transform):
             if own>reach or closer:errors.append('ASYMPTOTE_LABEL_DETACHED:'+label_id)
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
 
-def audit(plan,svg,transform):
+def audit(plan,svg,transform,*,model=False):
     """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
     field and reads the same element ids back from the model and the final SVG."""
-    result=_audit_family(plan,svg,transform)
+    result=_audit_family(plan,svg,transform,model=model)
     parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform)) if part is not None]
     if not parts:return result
     errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
