@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E020",
+  "examiner": "C",
+  "author": "B",
+  "sourceArchiveFile": "original/middle/m2/2final/23_금당중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "bfb1516d0f1cf4956e9276a7d016db364a7aaada",
+  "reviewSha256": "a18d04f0213feae6def6b2b5f033ec2fff3e6861e4210a3f0f6940373c154e38",
+  "fourSlotSha256": "2b44b5fcb70dda21a9bbdcfb4923cfafe441a7935555f89f46dcb6097daf155c",
+  "ordinals": [
+    6,
+    9,
+    19
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 6,
+      "verdict": "PASS",
+      "reason": "실제 사각형은 좌표 범위가1~3인 닫힌 영역이고, 직선은(0,-1)을 지나므로 두 극단 방향의 꼭짓점을 선택해야 한다. PT_LINE_INTERSECTION_CONDITION의 만남 조건은 맞지만 TPL_INTERSECTION_SEGMENT_RANGE는 이미 주어진 한 선분의 경계선, QUADRANT_AVOID는 사분면 판정이다. 다각형 전체의 극단 꼭짓점 선택이라는 NEW_TPL과 현재 M2 RPM 범위 leaf 공백 판단에 동의한다. 4칸 기울기·최댓값·최솟값 및 닫힌범위 인용이 정확하다.",
+      "imageViewed": "workers/B/images/E020-06.png",
+      "repairs": [],
+      "questionUid": "qid_v1_d25a848bbcdfa7d4ee6833e04f6e22376d984c1e73644dab331b22526b836738",
+      "quotesExact": true,
+      "fourSlotCriticalDefect": false,
+      "quoteCount": 7
+    },
+    {
+      "sourceOrdinal": 9,
+      "verdict": "REPAIR",
+      "reason": "실제 그림의 표기는 bx-y=2이고 발문·해설은 bx+y=2이므로 SOURCE_HOLD는 정확하다. 기존 해설을 조건부로 읽으면 주어진 교점 좌표를 두 식에 대입하여 계수를 결정하는 과제이다. PT_FUNCTION_GRAPH_INTERSECTION의 현행 정의는 교점 개수·위치·접함 목표여서 주어진 교점을 입력으로 쓰는 계수 복원과 방향이 다르다. RPM056의 교점과 연립방정식 맥락은 유지 가능하지만 PT/TPL의 정확한 목표 연결은 다시 검토해야 한다. 4칸의 교점/대입 방법과 차 목표는 실제 해설에 맞으며 sourceHold와 분리해 보존한다.",
+      "imageViewed": "workers/B/images/E020-09.png",
+      "repairs": [
+        {
+          "field": "conditional PT/TPL decision",
+          "repair": "주어진 공통점 대입으로 계수 결정하는 목표에 맞는 정의 재검토. 기존 교점 계산 TPL로 확정하지 않기.",
+          "candidatesChecked": [
+            "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION: 한 식의 두 점에서 계수/좌표 복원이라 현 문제와 입력 구조 다름",
+            "PT_LINE_EQUATION: 정보로 직선식 결정이라는 상위 의미 후보; 정확한 공통점 계수 복원 TPL 검토 필요",
+            "PT_FUNCTION_GRAPH_INTERSECTION: 교점이 최종 목표인 정의와 구별"
+          ]
+        }
+      ],
+      "questionUid": "qid_v1_da63e7dc5a8c6a56e0d70c71cbe7db95a76610264fd5a9a5af5d8634de78fcca",
+      "quotesExact": true,
+      "fourSlotCriticalDefect": false,
+      "quoteCount": 4
+    },
+    {
+      "sourceOrdinal": 19,
+      "verdict": "REPAIR",
+      "reason": "첫 사탕 이후 남은8개에서 초콜릿6개의 비를 곱하여 두 지정 결과가 함께 일어날 확률을 구한다. 독립시행 유형도 아니고 최종 목표가 단독 P(B|A)도 아니므로 제안한 비복원 순차추출 NEW_TPL 구별은 타당하다. 4칸의 조건부확률 IMPLIED와 비복원추출 condition이 정확하다. 다만 fieldReview.condition의 도형 조건이라는 일반 문구는 실제 실험과 맞지 않는다. 비복원 제한을 canonical 조건으로도 기록할지 정확한 정책 근거를 남겨야 하며, 현행 registry에 직접 대응 키가 없다는 상태를 숨겨서는 안 된다.",
+      "imageViewed": null,
+      "repairs": [
+        {
+          "field": "fieldReview.condition",
+          "repair": "비복원은 두 번째 표본공간을 변경하는 실험 제약이고 4칸에 보존했다고 구체화. 별도 canonical 조건을 운영하는 경우 비복원추출 CONDITION 제안을 남기고, primary TPL에 이미 포함되어 별도 키를 쓰지 않는 운영 판단이면 그 근거를 명시."
+        }
+      ],
+      "questionUid": "qid_v1_d9a997e182d310a986756d033e439e5b6489625e6a1da08e5c157467ed7ba684",
+      "quotesExact": true,
+      "fourSlotCriticalDefect": false,
+      "quoteCount": 5
+    }
+  ],
+  "overallStatus": "REPAIR",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "registryRead": [
+    "taxonomy_registry.json: all definitions for line intersections/point substitution/line equation",
+    "taxonomy_registry.json: repeated trials and conditional/direct templates",
+    "condition_registry.json: replacement-related keys/labels/definitions"
+  ],
+  "notes": [
+    "저자 파일 미수정. 새 전체 수학 재검수나 source correction을 수행하지 않았고 sourceHold를 보존한다."
+  ]
+}

@@ -1870,7 +1870,8 @@
           "sha256": "8876ea89d7cc38f0246b5e3a6620317d0af78c14b7ad1f93c913250f78224a4b"
         }
       },
-      "remoteSaveState": "PENDING_READBACK"
+      "remoteSaveState": "VERIFIED",
+      "remoteCommit": "ad09974ef51fafbda9ea36f4518ea17c7341b3d6"
     },
     {
       "examId": "E014",
@@ -2607,12 +2608,103 @@
         24,
         25
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/23_금당중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "46fba7c06818bc5e80efe9630c73908c8ff012fc0b3e393cc26db329de8b3b59"
+      "uidSetSha256": "46fba7c06818bc5e80efe9630c73908c8ff012fc0b3e393cc26db329de8b3b59",
+      "reviewedQuestionCount": 25,
+      "registrationPendingQuestionCount": 25,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 3,
+      "sourceHoldOrdinals": [
+        9,
+        20,
+        21
+      ],
+      "changedQuestionCount": 25,
+      "fourSlotQuestionCount": 25,
+      "independentSampleOrdinals": [
+        6,
+        9,
+        19
+      ],
+      "independentReviewer": "C",
+      "topicSummary": [
+        {
+          "rpmL1": "일차함수",
+          "rpmL2": "일차함수와 그 그래프",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            22
+          ]
+        },
+        {
+          "rpmL1": "일차함수",
+          "rpmL2": "일차함수와 일차방정식의 관계",
+          "ordinals": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            23
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            24
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            18,
+            19,
+            20,
+            21,
+            25
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E020/four-slot.json",
+          "sha256": "2b44b5fcb70dda21a9bbdcfb4923cfafe441a7935555f89f46dcb6097daf155c"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E020/independent-sample.json",
+          "sha256": "a969e6cdefb66de99883f839655ece6b558671cc0eaa9341ab0a3c3d5c012e37"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E020/mechanical-check.json",
+          "sha256": "570f7ed0b2f9f4f6c7441625b0d168822c6da50ae4ed210cb3931569a935ef86"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E020/review.json",
+          "sha256": "711f78290bf64dee299f4d06d837fa84fa8c5b5b99edd2c07d2d584855537531"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E020/root-acceptance.json",
+          "sha256": "34677f5b97867218c171f5efffd687c0d26918beffc7d334b1a3b0d1337c789e"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK"
     },
     {
       "examId": "E021",
@@ -4691,11 +4783,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 17,
-    "reviewedQuestions": 405,
+    "reviewedExams": 18,
+    "reviewedQuestions": 430,
     "unresolvedQuestions": 0,
-    "remainingExams": 50,
-    "remainingQuestions": 1199
+    "remainingExams": 49,
+    "remainingQuestions": 1174
   },
-  "lastVerifiedExamCommit": "2912845432bce8859e9c7c3c80ea58ce47977bcb"
+  "lastVerifiedExamCommit": "ad09974ef51fafbda9ea36f4518ea17c7341b3d6"
 }
