@@ -311,7 +311,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[조건 정리] $\\angle C=90^\\circ$, $AC=4$, $\\angle A=60^\\circ$이고 그림에서 $BC=x$, $AB=y$이다.\n[풀이] 각 $A$에 대하여 $AC$는 이웃한 변, $BC$는 맞은편 변이므로\n$\\tan60^\\circ=\\dfrac{x}{4}=\\sqrt3$에서 $x=4\\sqrt3$이다.\n또 $\\cos60^\\circ=\\dfrac{4}{y}=\\dfrac12$에서 $y=8$이다.\n따라서 $x+y=4\\sqrt3+8=8+4\\sqrt3$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q07_question-v2.svg"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q07_question-v2.svg",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 60도 각 A의 이웃변 AC=4가 파랑, 맞은편 BC=x가 주황, 빗변 AB=y가 초록이다. C는 직각이다.",
+    "solutionImageCaption": "tan60°=x/4에서 x=4√3이고, cos60°=4/y에서 y=8이다. 따라서 x+y=8+4√3이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -401,7 +405,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[조건 정리] $BC=9\\,\\mathrm{cm}$, $\\angle C=150^\\circ$, $[ABC]=18\\sqrt3\\,\\mathrm{cm}^2$이고 $AC$를 구한다.\n[풀이] $A$에서 직선 $BC$에 내린 수선의 발을 $D$라 하자. $D$는 $C$의 오른쪽 연장선 위에 있다. 따라서 $\\angle ACD=30^\\circ$이고, 직각삼각형 $ACD$에서\n$AD=AC\\sin30^\\circ=\\dfrac12 AC$이다. 삼각형 $ABC$의 넓이는\n$18\\sqrt3=\\dfrac12\\cdot BC\\cdot AD$\n$=\\dfrac12\\cdot9\\cdot\\dfrac12 AC=\\dfrac94 AC$이다.\n따라서 $AC=\\dfrac{18\\sqrt3\\cdot4}{9}=8\\sqrt3\\,\\mathrm{cm}$이다.\n정답은 ①이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q09.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q09.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 삼각형 ABC의 밑변은 BC=9 cm이고, C의 150도 바깥쪽에 연장선 CD를 그으면 각 ACD는 30도이다. 주황 직각삼각형에서 AD가 높이 h이다.",
+    "solutionImageCaption": "높이 AD=ACsin30°=AC/2이다. 주어진 넓이 18√3=(1/2)·9·(AC/2)에서 AC=8√3 cm이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -446,7 +454,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[조건 정리] $AC=8\\,\\mathrm m$, $\\angle A=75^\\circ$, $\\angle C=60^\\circ$이다. 따라서\n$\\angle B=180^\\circ-75^\\circ-60^\\circ=45^\\circ$이다.\n[풀이] $A$에서 $BC$에 내린 수선의 발을 $D$라 하자. 직각삼각형 $ACD$에서\n$AD=AC\\sin60^\\circ=8\\cdot\\dfrac{\\sqrt3}{2}=4\\sqrt3$이다.\n직각삼각형 $ABD$는 $\\angle B=45^\\circ$인 직각이등변삼각형이므로\n$AB=AD\\sqrt2=4\\sqrt3\\sqrt2=4\\sqrt6\\,\\mathrm m$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q10.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q10.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 측량한 AC=8 m와 C에서의 60도, A에서의 75도를 보여 준다. A에서 내린 수선을 공통변으로 하는 파랑과 주황 직각삼각형이 이어지고 주황 삼각형의 두 직각변은 같다.",
+    "solutionImageCaption": "B=45°이므로 △ABD는 직각이등변삼각형이다. AD=8sin60°=4√3 m이므로 AB=AD√2=4√6 m이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -585,7 +597,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[조건 정리] 마름모의 모든 변의 길이는 $10\\,\\mathrm{cm}$이고, $\\angle A=135^\\circ$이다. 이웃한 각은 서로 보각이므로 $\\angle B=45^\\circ$이다.\n[풀이] $C$에서 $AB$에 내린 수선의 발을 $E$라 하자. 직각삼각형 $BCE$에서 $BC=10$이고 $\\angle B=45^\\circ$이므로\n$CE=BC\\sin45^\\circ=10\\cdot\\dfrac{\\sqrt2}{2}=5\\sqrt2$이다.\n삼각형 $ABC$의 넓이는 $\\dfrac12\\cdot AB\\cdot CE$이고, 대각선 $AC$는 마름모를 넓이가 같은 두 삼각형으로 나누므로 마름모의 넓이는\n$2\\cdot\\dfrac12\\cdot10\\cdot5\\sqrt2=50\\sqrt2\\,\\mathrm{cm}^2$이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q13.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q13.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 마름모 ABCD의 대각선 AC를 그어 파랑과 주황의 두 등넓이 삼각형으로 나눈다. C에서 윗변 BA에 내린 수선 CE로 45도 직각삼각형의 높이를 읽는다.",
+    "solutionImageCaption": "CE=10sin45°=5√2 cm이다. 대각선으로 나뉜 두 삼각형의 넓이가 같으므로 마름모 넓이는 2·(1/2)·10·5√2=50√2 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -910,7 +926,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[핵심 성질] 중심에서 현까지의 거리가 같은 두 현의 길이는 같다.\n[풀이] $OM=ON$이므로 현 $AB$와 현 $AC$의 길이가 같다. 따라서 삼각형 $ABC$는 $AB=AC$인 이등변삼각형이고 밑각은 $\\angle B=\\angle C$이다.\n삼각형의 내각의 합을 이용하면\n$\\angle B+\\angle C=180^\\circ-50^\\circ=130^\\circ$,\n따라서 $\\angle B=\\angle C=65^\\circ$이다.\n그러므로 정답은 ①이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q20.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q20.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 길이인 중심의 두 수선 OM과 ON을 파랑 한 눈금, 길이가 같은 두 현의 네 반쪽을 주황 두 눈금으로 묶었다. 꼭짓점 A의 50도도 표시한다.",
+    "solutionImageCaption": "중심에서 같은 거리에 있는 현은 길이가 같으므로 AB=AC이다. 이등변삼각형의 두 밑각은 각각 (180°−50°)/2=65°이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -949,7 +969,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$6\\sqrt3$",
     "solution": "[조건 정리] $\\angle B=45^\\circ$, $\\angle C=60^\\circ$, $AB=9\\sqrt2$이고 $AD\\perp BC$이다.\n[풀이] 직각삼각형 $ABD$에서 $\\angle B=45^\\circ$이므로 두 직각변이 같아 $AD=BD$이다. 빗변 $AB=9\\sqrt2$이므로 각 직각변은 $9$이고, 특히 $AD=9$이다.\n직각삼각형 $ACD$에서 $\\sin60^\\circ=AD/AC$이므로\n$AC=\\dfrac{AD}{\\sin60^\\circ}=\\dfrac{9}{\\sqrt3/2}=6\\sqrt3$이다.\n따라서 $AC=6\\sqrt3$이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/s01.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/s01.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABD의 같은 직각변 AD와 BD를 파랑 한 눈금으로 구분한다. 공통 높이 AD로 오른쪽 60도 삼각형을 이어 읽는다.",
+    "solutionImageCaption": "△ABD에서 AB=9√2이고 B가 45°이므로 AD=9이다. △ACD에서 AC=9/sin60°=6√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1031,7 +1055,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{3\\sqrt{13}}4$",
     "solution": "[조건 정리] $AB=\\sqrt{13}$, $BC=3$, $\\angle B=30^\\circ$이다.\n[풀이] $A$에서 $BC$에 내린 수선의 길이를 $h$라 하자. 직각삼각형에서\n$h=AB\\sin30^\\circ=\\sqrt{13}\\cdot\\dfrac12=\\dfrac{\\sqrt{13}}2$이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot BC\\cdot h=\\dfrac12\\cdot3\\cdot\\dfrac{\\sqrt{13}}2=\\dfrac{3\\sqrt{13}}4$이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/s03.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/s03.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 삼각형 ABC의 밑변 BC는 3이고, AB는 √13이다. 각 B의 30도를 이용해 오른쪽 연장선까지 이어진 직각삼각형에서 높이 AD를 구한다.",
+    "solutionImageCaption": "AD=ABsin30°=√13/2이다. 따라서 △ABC의 넓이는 (1/2)·3·(√13/2)=3√13/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

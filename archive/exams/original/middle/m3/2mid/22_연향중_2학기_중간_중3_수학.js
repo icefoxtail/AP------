@@ -595,7 +595,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q09.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q09.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: D는 B에서 AC에 내린 수선의 발이다. AB=18 cm인 30도 직각삼각형과, 45도 및 두 직각변이 같은 직각삼각형을 수선 BD가 이어 준다.",
+      "solutionImageCaption": "A=180°−105°−45°=30°이므로 BD=18sin30°=9이다. C가 45°인 직각이등변삼각형에서 BC=9√2이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 10,
@@ -1072,7 +1076,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q16.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q16.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 직각삼각형에서 OA와 OC는 파랑 한 눈금, 같은 현을 이등분한 구간은 주황 두 눈금이다. 중심부터 수선의 발까지의 두 선분은 눈금 없이 그렸다.",
+      "solutionImageCaption": "AM=AB/2, CN=CD/2이고 AB=CD이므로 AM=CN이다. 빗변 OA=OC는 반지름이므로 두 직각삼각형은 RHS 합동이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,

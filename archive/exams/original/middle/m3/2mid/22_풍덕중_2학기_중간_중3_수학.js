@@ -662,7 +662,11 @@ window.questionBank = [
       "subConcept": "삼각비의 값 구하기",
       "conditionsUsed": "이등변삼각형의 30° 꼭짓각을 이등분해 15°를 확인한 뒤, tan30°와 각의 이등분선 정리를 보조 삼각형에 적용한다.",
       "integrationPatternExplanation": "30°의 삼각비를 사용해 보조 직각삼각형의 변을 정하고, 각의 이등분선 정리로 15°의 탄젠트를 구하는 순차 결합이다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: AB와 AC가 각각 3 cm인 이등변삼각형에서 C에서 AB에 수선을 내려 H를 잡는다. 파랑 삼각형에는 30도, 주황 삼각형에는 C의 15도와 H의 직각이 있다.",
+    "solutionImageCaption": "AH=3cos30°, CH=3sin30°이다. △BCH에서 ∠BCH=15°이므로 tan15°=BH/CH=(3−3√3/2)/(3/2)=2−√3이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -872,7 +876,11 @@ window.questionBank = [
       "subConcept": "삼각비의 뜻·값·활용",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "피타고라스 정리로 AB를 구한 뒤, 직각삼각형에서 여각 관계와 사인비로 cos x를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직각삼각형 ABC와 ADE는 A에서 같은 각을 공유하고 C와 E가 각각 직각이다. 작은 삼각형의 D에 x를 표시했다.",
+    "solutionImageCaption": "A의 각을 α라고 하면 x=90°−α이므로 cos x=sin α이다. 전체 직각삼각형의 빗변은 √(15²+8²)=17이므로 cos x=8/17이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1089,7 +1097,11 @@ window.questionBank = [
       "subConcept": "삼각비를 이용한 직각삼각형 길이 연쇄 계산",
       "conditionsUsed": "합동으로 각의 대응을 확인한 뒤 BC=6, ∠DBC=30°를 사용해 BD와 DC를 구하고, 두 교차선의 30° 각 관계로 BE를 결정한다.",
       "integrationPatternExplanation": "30° 삼각비로 합동인 직각삼각형의 변을 구하고, 교점에서 만들어진 이등변삼각형과 직각삼각비로 DE를 연쇄 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직각삼각형의 공통 빗변은 6 cm이며 겹치는 삼각형 BEC의 밑각은 둘 다 30도이다. E에서 내린 수선이 BC를 이등분하고 구하는 선분 ED를 주황으로 표시했다.",
+    "solutionImageCaption": "∆BEC에서 BH=3 cm이고 BE=3/cos30°=2√3 cm이다. ∆DBC에서 BD=6cos30°=3√3 cm이므로 DE=BD−BE=√3 cm이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

@@ -259,7 +259,11 @@ window.questionBank = [
       "subConcept": "x축 대칭과 계수 부호",
       "conditionsUsed": "x축 대칭에 따라 같은 x에서 y값의 부호를 바꾼다.",
       "integrationPatternExplanation": "x축 대칭의 y값 부호 변화만 적용하므로 통합유형은 NONE이다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 아래로 열린 포물선과 주황 위로 열린 포물선이 x축을 기준으로 서로 대칭이다. 같은 x 위치의 예시 점을 점선으로 대응시킨다.",
+    "solutionImageCaption": "x축 대칭은 (x,y)를 (x,−y)로 바꾸므로 y=−(−4/5x²)=4/5x²이다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -364,7 +368,11 @@ window.questionBank = [
       "subConcept": "직각삼각형에서 tan 정의",
       "conditionsUsed": "AB=13, AC=12, BC=5에서 직각 위치와 A의 맞은편·이웃한 변을 확인한다.",
       "integrationPatternExplanation": "직각삼각형의 변 관계로 탄젠트를 계산하므로 통합유형은 NONE이다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 C가 직각이다. A의 맞은편 BC=5는 주황색, A의 이웃변 AC=12는 파란색, 빗변 AB=13는 초록색이다.",
+    "solutionImageCaption": "13²=12²+5²이므로 C=90°이다. tan A=맞은편/이웃한 변=BC/AC=5/12이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -560,7 +568,11 @@ window.questionBank = [
       "subConcept": "tan과 피타고라스 정리",
       "conditionsUsed": "∠B=90°, AB=3, tanA=5/3으로 BC를 구한 뒤 AC를 구한다.",
       "integrationPatternExplanation": "탄젠트로 한 직각변을 구하고 피타고라스 정리를 적용한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 B가 직각이다. AB=3 cm는 각 A의 이웃한 직각변, BC=5 cm는 맞은편 직각변이며 AC는 빗변이다.",
+    "solutionImageCaption": "tan A=BC/AB=5/3이고 AB=3이므로 BC=5이다. 피타고라스 정리에서 AC=√(3²+5²)=√34 cm이다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -609,7 +621,11 @@ window.questionBank = [
       "subConcept": "특수각으로 직각삼각형의 넓이 계산",
       "conditionsUsed": "∠C=90°, ∠A=30°, BC=6에서 AC와 넓이를 차례로 구한다.",
       "integrationPatternExplanation": "특수각의 변의 비를 넓이 계산에 적용한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 C가 직각, A=30°이다. 밑변 BC=6 cm와 높이 AC=6√3 cm를 서로 다른 색으로 표시한다.",
+    "solutionImageCaption": "넓이는 1/2·BC·AC=1/2·6·6√3=18√3 cm²이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

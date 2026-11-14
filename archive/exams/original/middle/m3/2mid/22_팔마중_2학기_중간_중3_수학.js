@@ -515,7 +515,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q08.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q08.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 OPQ와 Q에서 OP에 내린 수선 H. 두 직각삼각형 OHQ, PHQ를 색으로 구분하고 OP=8 m, OQ=12 m, ∠O=60°를 표시했다.",
+    "solutionImageCaption": "OH=6 m, QH=6√3 m, PH=2 m이므로 PQ²=2²+(6√3)²=112. 답: 4√7 m, ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -578,7 +582,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q09.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q09.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에 보조선 BD를 그려 두 직각삼각형으로 나눈 그림. 파랑은 45° 두 각, 주황은 다른 삼각형을 표시한다.",
+    "solutionImageCaption": "△BCD에서 BD=90/√2=45√2 m. △ABD에서 AB=2BD/√3=30√6 m. 답: 30√6 m, ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -641,7 +649,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q10.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q10.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 지면 위의 두 관측점 A, B, 건물 발 C, 꼭대기 D. A의 시선 각은 45°, B의 시선 각은 60°이고 CD는 수직이다.",
+    "solutionImageCaption": "tan45°=h/(x+180), tan60°=h/x이므로 x=90(1+√3), h=90(3+√3) m. 답: 90(3+√3) m, ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -775,7 +787,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q12.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q12.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 대각선 BD, 변 위의 E와 F, 이등변삼각형 EBF. BE와 BF에 같은 눈금이 있고 B의 각 분할을 색으로 구분했다.",
+    "solutionImageCaption": "BE=BF=t에서 (1/2)t²sin30°=3/2이므로 t=√6. ∠ABE=30°이므로 AB=t cos30°=3√2/2 cm. 정사각형의 넓이는 AB²=9/2 cm². 답: 9/2 cm², ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1319,7 +1335,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q20.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q20.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O와 점 A, B, C, 현의 중점 P·Q, 수선 OP·OQ 및 연하게 칠한 삼각형 OPQ. 같은 반지름·반현·삼각형 변을 색과 눈금으로 구분했다.",
+    "solutionImageCaption": "△OAB와 △OBC는 정삼각형이므로 ∠POQ=60°, OP=OQ=3√3. 넓이=1/2·OP·OQ·sin60°=27√3/4. 답: 27√3/4, ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
