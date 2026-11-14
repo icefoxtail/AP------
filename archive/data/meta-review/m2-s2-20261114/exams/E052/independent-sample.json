@@ -1,0 +1,294 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E052",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "a9139d884ae0efe45c2d776a307cf3f065f8319c7f610d37e00b33ab3f86fedb",
+  "fourSlotInputSha256": "4ce905e7a9acf8a6e3926ee8f74e35ec0d252af8892857ee24642d6d6fd1f053",
+  "sampleOrdinals": [
+    13,
+    20,
+    22
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_8b1c182d21a7ba480ee1763e13cf1bdc94abb013c3813a6ec828817bf87ee88c",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "metadataReview": "실제직사각형그림의6·8과두수선발을확인했다. 닮음의사영관계가최종길이를결정하며 피타고라스는공통대각선의선행계산이다. ACTIVE RPM089와238은같은L4의각기활성소단원대응이고 선택089/SIMILAR_FIGURE에도ACTIVE binding이있음을확인했다.",
+      "fourSlotReview": "직사각형·수선입력, PQ길이goal, 피타고라스/AA함의/차method와수선condition은실제본문·해설·그림과일치한다. 해설이AA명칭을직접쓰지않은부분의IMPLIED근거도정확하다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7,
+      "imageViewed": [
+        "/workspace/scratch/87f142347508/workers/B/images/E052-13.png"
+      ],
+      "observedFinalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "서로 반대 꼭짓점에서 내린 수선발을 같은 대각선 기준의 사영 길이로 표현해야 한다."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_6bcbeb5fe6bb7c16cae81ecf0747b91d2399b5503f99a0db5ca908df58fb4df7",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "metadataReview": "실제인접그래프와 반복사용허용·이웃색상이조건을확인했다. 일반경우의수PT와GRAPH_PATH_COLOR의정의는이골격에맞고 중2binding gap은등록debt로분리했다.",
+      "fourSlotReview": "영역과색선택input,개수goal,인접관계와곱의법칙method,이웃상이색과중복허용condition이실제본문에있다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7,
+      "imageViewed": [
+        "/workspace/scratch/87f142347508/workers/B/images/E052-20.png"
+      ],
+      "observedFinalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "reason": "주어진 단순 인접 구조를 읽으면 네 영역의 순서별 선택수가 바로 정해지고 별도 경우 분기가 없다."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_74c9b90424c6c8c7063af01676048515f96505e756d6f3db5cd41ae29eb7fbfa",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "metadataReview": "AM을반빗변으로구하는외심CC와 AG²를두AA높이·사영관계에사용하는닮음Primary를확인했다. 피타고라스반복으로강제하지않은판정과SEQUENTIAL을수용한다.",
+      "fourSlotReview": "직각삼각형·중점input,AH길이goal,외심과AA및비례식method,두수선condition이실제원문과일치한다. 외심/AA를IMPLIED로기록한한도도타당하다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7,
+      "imageViewed": [
+        "/workspace/scratch/87f142347508/workers/B/images/E052-22.png"
+      ],
+      "observedFinalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "두 직각삼각형의 높이·사영 관계를 공통AG²로 연결하고 빗변중점의 등거리를 보조 입력으로 선택한다."
+      }
+    }
+  ],
+  "difficultyExceptionScope": "changed bucket OR any non-NONE boundary OR BORDERLINE/STRONG_CONFLICT OR UNKNOWN level/bucket OR low confidence; 21 exceptions",
+  "difficultyRechecks": [
+    {
+      "ordinal": 2,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B12",
+      "decision": "ACCEPT",
+      "reason": "닮음이 이미 주어져 모선비를 반지름비에 적용한 뒤 원주공식을 잇는 한 전처리이므로2/B12를 수용한다."
+    },
+    {
+      "ordinal": 3,
+      "bucket": 1,
+      "level": "중",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B12",
+      "decision": "ACCEPT",
+      "reason": "닮음표기의 대응순서와 이미 주어진15:10의 비를 직접 적용한다. 여러 보기가 있어도 별도전략선택은 없어1/B12를 수용한다."
+    },
+    {
+      "ordinal": 4,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B12",
+      "decision": "ACCEPT",
+      "reason": "그림의 C50·E40과 제안직각을 내각합으로 보완하여 AA를 확인하는 정형전처리로2를 수용한다."
+    },
+    {
+      "ordinal": 5,
+      "bucket": 3,
+      "level": "중",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "그림의 수직이등분선으로 EOD와ABD의 직각·공통각 대응을 선택하여 길이비를 만드는 판단이 있어3/B23을 수용한다."
+    },
+    {
+      "ordinal": 6,
+      "bucket": 3,
+      "level": "중",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "평행사변형의 BF=DE를 전체밑변BC=x+10에 반영해 x/(x+10)의 비례식을 선택하는3/B23을 수용한다."
+    },
+    {
+      "ordinal": 7,
+      "bucket": 3,
+      "level": "상",
+      "proposedLevel": "상",
+      "difficultyBoundaryFlag": "B34",
+      "decision": "ACCEPT",
+      "reason": "교차한두직선의 대응비로 BF를 먼저 정하고 작은삼각형의비로 EF높이를 정하는 관계선택을 거쳐 넓이를구하므로3/B34를 수용한다."
+    },
+    {
+      "ordinal": 8,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "중심G와G′가 모두 명시되어 같은 중선2:1을 순서대로 적용한다. 추가중심발견이 없어2/B23을 수용한다."
+    },
+    {
+      "ordinal": 9,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "E,F가중점인그림과무게중심으로 목표사각형은 표준1/6부분두개로 나뉜다. 별도비정형분할 없이2/B23을 수용한다."
+    },
+    {
+      "ordinal": 10,
+      "bucket": 3,
+      "level": "상",
+      "proposedLevel": "상",
+      "difficultyBoundaryFlag": "B34",
+      "decision": "ACCEPT",
+      "reason": "G를지나는BE로 E의숨은중점을 복원한 뒤 다른삼각형ADC의평행선에 연결하여F중점을 얻어야 하므로3/B34를 수용한다."
+    },
+    {
+      "ordinal": 11,
+      "bucket": 1,
+      "level": "중",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B12",
+      "decision": "ACCEPT",
+      "reason": "각세변목록에 최장변의제곱합을 곧바로 비교하는 단일정리직접형이다. 목록수는 전략난도를늘리지않아1/B12를 수용한다."
+    },
+    {
+      "ordinal": 12,
+      "bucket": 2,
+      "level": "하",
+      "proposedLevel": "하",
+      "difficultyBoundaryFlag": "B12",
+      "decision": "ACCEPT",
+      "reason": "원본그림의윗변2·밑변4·높이3에서 차2를읽은뒤제곱합을 구하는2/B12를 수용한다. 해설의직사각형명칭오류는 수치판정가능한sourceHold로유지한다."
+    },
+    {
+      "ordinal": 13,
+      "bucket": 3,
+      "level": "상",
+      "proposedLevel": "상",
+      "difficultyBoundaryFlag": "B34",
+      "decision": "ACCEPT",
+      "reason": "동일대각선에대한반대꼭짓점의사영길이를둘다정하고차로목표PQ를복원하는 전략으로3/B34를 수용한다."
+    },
+    {
+      "ordinal": 14,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "네모서리직각삼각형의변3과4를읽고 전체49에서4개의넓이를빼는표준분해로2/B23을 수용한다."
+    },
+    {
+      "ordinal": 16,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B12",
+      "decision": "ACCEPT",
+      "reason": "서로다른주사위를순서쌍으로구분하고 합5와9의두배반목록을더하는2/B12를 수용한다."
+    },
+    {
+      "ordinal": 18,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B12",
+      "decision": "ACCEPT",
+      "reason": "세사람의비김을전부같음과전부다름이라는두표준경우로옮겨합하는2/B12를 수용한다."
+    },
+    {
+      "ordinal": 19,
+      "bucket": 2,
+      "level": "상",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B23",
+      "decision": "ACCEPT_WITH_LEGACY_LEVEL_REVIEW",
+      "reason": "이웃할두사람을한묶음으로보는표준배열뒤묶음내순서를곱한다. 추가배치제약이없어2/B23 및 원본상강한충돌을수용하고학습중후보를권고한다."
+    },
+    {
+      "ordinal": 20,
+      "bucket": 2,
+      "level": "상",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B23",
+      "decision": "ACCEPT_WITH_LEGACY_LEVEL_REVIEW",
+      "reason": "실제그림에서A는BCD모두와접하고 B-D는비인접이다. A,B,C,D순서에서4·3·2·2가바로정해져2/B23 및 원본상강한충돌을수용한다."
+    },
+    {
+      "ordinal": 21,
+      "bucket": 2,
+      "level": "상",
+      "proposedLevel": "중",
+      "difficultyBoundaryFlag": "B23",
+      "decision": "ACCEPT_WITH_LEGACY_LEVEL_REVIEW",
+      "reason": "소문항이닮음발견·이유·비례적용을안내한다. 두직각과공통A의AA표준구조이므로2/B23 및 원본상강한충돌을수용한다."
+    },
+    {
+      "ordinal": 22,
+      "bucket": 3,
+      "level": "상",
+      "proposedLevel": "상",
+      "difficultyBoundaryFlag": "B34",
+      "decision": "ACCEPT",
+      "reason": "빗변중점으로AM을복원하고큰직각삼각형의AG²관계를작은직각삼각형의AH사영관계로이전하는선택이있어3/B34를수용한다."
+    },
+    {
+      "ordinal": 23,
+      "bucket": 3,
+      "level": "상",
+      "proposedLevel": "상",
+      "difficultyBoundaryFlag": "B34",
+      "decision": "ACCEPT",
+      "reason": "무게중심에서AD를얻은뒤AD를직각삼각형외접반지름으로재해석하여BC·AB·넓이로이어야하므로3/B34를수용한다."
+    },
+    {
+      "ordinal": 24,
+      "bucket": 3,
+      "level": "상",
+      "proposedLevel": "상",
+      "difficultyBoundaryFlag": "B34",
+      "decision": "ACCEPT",
+      "reason": "끝자리0인지에따라앞자리허용수가달라지는연결제약을분기기준으로정해세어야하므로3/B34를수용한다."
+    }
+  ],
+  "evidenceScope": {
+    "actualStemsAndChoicesRead": 21,
+    "answersAndSolutionsRead": 21,
+    "imagesViewed": 16,
+    "notFreshFullExamMathematicalReverification": true
+  },
+  "sourceHoldPreserved": [
+    {
+      "ordinal": 12,
+      "status": "SOURCE_NAMING_ERROR_WITH_COMPLETE_NUMERIC_GIVENS"
+    }
+  ],
+  "approvalScope": "three independent four-slot/metadata samples and all21 difficulty exceptions only; registration debt stays pending",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}

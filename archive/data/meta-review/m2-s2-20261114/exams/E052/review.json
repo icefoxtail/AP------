@@ -1,0 +1,2416 @@
+{
+  "schemaVersion": "m2-s2-meta-review-v1",
+  "examId": "E052",
+  "owner": "A",
+  "sourceArchiveFile": "original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewedQuestionCount": 24,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_73036163f616b1c24d8b841bdc40314d96c94b7ab215ad966d0553342d7e92e1",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-085",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "도형 종류별 닮음의 보장 여부",
+      "decisiveStep": "각 도형류에서 대응각과 대응변의 비가 항상 같은지를 확인하여 정사각형을 고른다.",
+      "before": {
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "subUnit": "닮은 도형과 삼각형의 닮음",
+        "difficultyConfidence": "medium"
+      },
+      "after": {
+        "templateKey": "",
+        "subUnit": "도형의 닮음",
+        "difficultyConfidence": "high"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮은 도형 > 대응변·대응각: 도형 종류별 닮음의 보장 여부",
+        "binding": "ACTIVE PT 정의와 해당 source 교육과정 binding 일치. 정확한 TPL 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "닮음의 기본 정의를 정해진 도형 종류에 직접 대조한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "각 도형류에서 대응각과 대응변의 비가 항상 같은지를 확인하여 정사각형을 고른다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [
+        "A-E052-ALWAYS-SIMILAR"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "닮음의 기본 정의를 정해진 도형 종류에 직접 대조한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-085",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "대응변·대응각"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "대응변·대응각"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-203",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_b5a23f146e8f2071637cd4f7a23551046dd7fad8e16d8c45dcf3c3f4ab432b53",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-084",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "모선비를 반지름비로 옮긴 뒤 원둘레 계산",
+      "decisiveStep": "주어진 모선의 비2:3을 밑면 반지름에 적용하고 그 반지름을 원둘레 공식에 넣는다.",
+      "before": {
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "subUnit": "닮은 도형과 삼각형의 닮음",
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "subUnit": "도형의 닮음",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮은 도형 > 닮음비: 모선비를 반지름비로 옮긴 뒤 원둘레 계산",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "Primary 닮음비로 얻은 반지름을 원둘레 공식에 대입하는 단계가 최종 목표에 별도로 필요하다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "주어진 모선의 비2:3을 밑면 반지름에 적용하고 그 반지름을 원둘레 공식에 넣는다.",
+        "difficulty": "모선에서 반지름으로 대응 길이의 의미를 한 번 바꾸고 정형 공식을 잇는다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "주어진 모선의 비2:3을 밑면 반지름에 적용하고 그 반지름을 원둘레 공식에 넣는다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "모선에서 반지름으로 대응 길이의 의미를 한 번 바꾸고 정형 공식을 잇는다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-084",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "닮음비"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "닮음비"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-202",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/2.png",
+            "sha256": "fa78b6975a358b92ad8fc397a9332214653b1a7b8a85f51d1afa9a31aa625647"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_b74a2b3069e2e5afb743209be6e731e631b38f22c8ff0127067f6bc548887753",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-085",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "닮음 표기의 대응변과 비례 판정",
+      "decisiveStep": "주어진 닮음기호의 순서대로 대응변을 맞추고 AB와DF는 대응하지 않음을 수치비로 확인한다.",
+      "before": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮은 도형 > 대응변·대응각: 닮음 표기의 대응변과 비례 판정",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "이미 닮음이 주어진 도형에 대응변과 기본 비례를 직접 적용한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "주어진 닮음기호의 순서대로 대응변을 맞추고 AB와DF는 대응하지 않음을 수치비로 확인한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "이미 닮음이 주어진 도형에 대응변과 기본 비례를 직접 적용한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-085",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "대응변·대응각"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "대응변·대응각"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-203",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/3.png",
+            "sha256": "b20fcbed107699e188389cf4a531ad323c5138777783cec9758368375636429a"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_1127f1cd1edbd1185df14364b6548fbd36d08afa3774069e091369035aecd6d3",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-086",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "내각합 전처리로 AA 충분조건 판단",
+      "decisiveStep": "보기의 직각 두 개를 넣어 남은 각을 구하고 두 삼각형의 대응각이 같아지는 조건을 고른다.",
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 삼각형의 닮음 > AA: 내각합 전처리로 AA 충분조건 판단",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "주어진 각을 내각합으로 보완한 뒤 닮음 조건과 비교하는 익숙한 전처리이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "보기의 직각 두 개를 넣어 남은 각을 구하고 두 삼각형의 대응각이 같아지는 조건을 고른다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 각을 내각합으로 보완한 뒤 닮음 조건과 비교하는 익숙한 전처리이다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-086",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "AA"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "AA"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-204",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/4.png",
+            "sha256": "a200ae4f7e809a94a214c3844ee101f09f51610ded7d9e4bce64ba20299cd31e"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_8a721d057d10922d1b0f26181a91a9972b72ac97a0771bfbe0548bef88f1452e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-089",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "수직이등분선의 작은 직각삼각형과 원래 삼각형 닮음",
+      "decisiveStep": "대각선을 피타고라스로 구한 뒤 중점의 반대각선을 작은 삼각형의 변으로 읽어 AA 대응비를 세운다.",
+      "before": {
+        "subUnit": "도형의 닮음과 삼각형의 닮음",
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "subUnit": "도형의 닮음",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 길이: 수직이등분선의 작은 직각삼각형과 원래 삼각형 닮음",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "AA 길이비를 쓰기 전에 직사각형 대각선 길이를 피타고라스로 복원해야 한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "대각선을 피타고라스로 구한 뒤 중점의 반대각선을 작은 삼각형의 변으로 읽어 AA 대응비를 세운다.",
+        "difficulty": "직사각형 대각선과 수직이등분선이 만드는 두 삼각형의 대응을 선택해야 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "대각선을 피타고라스로 구한 뒤 중점의 반대각선을 작은 삼각형의 변으로 읽어 AA 대응비를 세운다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "직사각형 대각선과 수직이등분선이 만드는 두 삼각형의 대응을 선택해야 한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-089",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-207",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/5.png",
+            "sha256": "3ca416cb611318112a9d901491844ff413156810986ee9ecfa4a0e74e623ee65"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_eddc33cba6efb30d346b546fa8321806fa1a9cc1c79920e2bbb374341ad204cc",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-091",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행사변형 대변을 미지 밑변에 연결한 평행선비",
+      "decisiveStep": "두 쌍의 평행으로 BF=DE를 얻고 BC=DE+10을 삼각형의 닮음비에 넣는다.",
+      "before": {
+        "subUnit": "평행선과 선분의 길이의 비",
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 삼각형과 평행선 > 기본 비례: 평행사변형 대변을 미지 밑변에 연결한 평행선비",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "평행사변형 대변의 같음이 Primary 평행선비 밖의 필수 전처리이다. CC_PARALLELOGRAM_PROPERTIES는 대각선 이등분만 정의하고 CC_PARALLELOGRAMS는 정의만 담으므로 해당 대변 성질 CC를 별도 제안했다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "두 쌍의 평행으로 BF=DE를 얻고 BC=DE+10을 삼각형의 닮음비에 넣는다.",
+        "difficulty": "평행사변형 대변과 삼각형 전체 밑변을 같은 미지수로 연결하는 식 선택이 필요하다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "두 쌍의 평행으로 BF=DE를 얻고 BC=DE+10을 삼각형의 닮음비에 넣는다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [
+        "A-E052-PARALLELOGRAM-OPPOSITE-SIDES"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행사변형 대변과 삼각형 전체 밑변을 같은 미지수로 연결하는 식 선택이 필요하다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-091",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선 사이의 선분의 길이의 비",
+          "l3": "삼각형과 평행선",
+          "l4": "기본 비례"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "삼각형과 평행선",
+          "l4": "기본 비례"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-209",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/6.png",
+            "sha256": "51d59e46a6bb8986bfd69eb2e1c9c2d7711a00b2529c0158e89cf0496478cc6d"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_edfd6ba1657231f4e831fd27fb93cde53eaa09d9fdc1e1f6d2de1270ca199588",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-096",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "교차 평행선의 두 비례와 밑변·높이 넓이",
+      "decisiveStep": "교차 삼각형에서 BF:FD를 정하고 전체 BD와 EF를 차례 구해 삼각형 넓이를 계산한다.",
+      "before": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "subUnit": "평행선과 선분의 길이의 비",
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 비례 활용 > 선분비를 이용한 복합도형: 교차 평행선의 두 비례와 밑변·높이 넓이",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "평행선비로 얻은 길이를 목표 삼각형의 밑변과 수직 높이로 사용해 넓이를 구한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "교차 삼각형에서 BF:FD를 정하고 전체 BD와 EF를 차례 구해 삼각형 넓이를 계산한다.",
+        "difficulty": "교차한 삼각형의 비와 한쪽 내부 삼각형의 비를 목표 밑변·높이에 연결하는 관계 선택이 있다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "교차 삼각형에서 BF:FD를 정하고 전체 BD와 EF를 차례 구해 삼각형 넓이를 계산한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "교차한 삼각형의 비와 한쪽 내부 삼각형의 비를 목표 밑변·높이에 연결하는 관계 선택이 있다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-096",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선 사이의 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-214",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/7.png",
+            "sha256": "2223adb47471eab890983896310157d1d51510ceeedd52a4c9ea19df0c2503b5"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_a4d7e220919b6440ebc6490d001a80dc50d74e42447f724ca48b34d85bb0dd9e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-097",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "중첩 무게중심의 중선비 반복",
+      "decisiveStep": "큰 삼각형 중선의 뒤쪽1/3을 작은 삼각형 중선으로 받아 그 앞쪽2/3을 취한다.",
+      "before": {
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "subUnit": "삼각형의 무게중심",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "templateKey": "",
+        "subUnit": "삼각형의 무게중심의 성질",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 중선과 무게중심 > 2:1 비: 중첩 무게중심의 중선비 반복",
+        "binding": "ACTIVE PT 정의와 해당 source 교육과정 binding 일치. 정확한 TPL 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "두 무게중심이 명시되어 같은2:1 관계를 순차 적용하는 표준 구조이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "큰 삼각형 중선의 뒤쪽1/3을 작은 삼각형 중선으로 받아 그 앞쪽2/3을 취한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [
+        "A-E052-NESTED-CENTROID-LENGTH"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 무게중심이 명시되어 같은2:1 관계를 순차 적용하는 표준 구조이다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-097",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "중선과 무게중심",
+          "l4": "2:1 비"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "중선과 무게중심",
+          "l4": "2:1 비"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-215",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/8.png",
+            "sha256": "ed3eeb49340d571d8bc2299f52a8f934b0deafae321d5e5aa47b47db58bddb6c"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_7a9f3def72e05d1e9a16f1ed74c4e7db0a9b78f886f55dca5ffd7b33e0c72938",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-099",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "무게중심과 두 변의 중점으로 분할된 사각형 넓이",
+      "decisiveStep": "두 중점과 무게중심이 만드는 부분삼각형들의 높이비로 사각형의 전체에 대한 넓이비를 정한다.",
+      "before": {
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "subUnit": "삼각형의 무게중심",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "templateKey": "",
+        "subUnit": "삼각형의 무게중심의 성질",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 넓이와 무게중심 > 넓이 분할: 무게중심과 두 변의 중점으로 분할된 사각형 넓이",
+        "binding": "ACTIVE PT 정의와 해당 source 교육과정 binding 일치. 정확한 TPL 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "무게중심의 표준 중선·넓이분할을 차례 적용한다. 목표 사각형은 꼭짓점과 무게중심을 연결하면 표준1/6 넓이 두 개로도 바로 분해되어 별도 비정형 전략이 없다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "두 중점과 무게중심이 만드는 부분삼각형들의 높이비로 사각형의 전체에 대한 넓이비를 정한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [
+        "A-E052-CENTROID-PARTITION-AREA"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "무게중심의 표준 중선·넓이분할을 차례 적용한다. 목표 사각형은 꼭짓점과 무게중심을 연결하면 표준1/6 넓이 두 개로도 바로 분해되어 별도 비정형 전략이 없다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-099",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "넓이 분할"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "넓이 분할"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-217",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/9.png",
+            "sha256": "f1512efd264c605ce65985e2c528763d9000dcbe6a20b5f30db5437408bf2ee9"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_2511f0878121eb0f2506b8d0cbb8b2f400ef8585bf2a8945e8349d0ead9dc258",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-100",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "중선의 숨은 중점과 평행선 중점 연결",
+      "decisiveStep": "B,G,E의 공선에서 E를 중점으로 읽고 평행선으로 F를 중점으로 옮긴 뒤 무게중심 위치와의 차를 구한다.",
+      "before": {
+        "subUnit": "삼각형의 무게중심",
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "subUnit": "삼각형의 무게중심의 성질",
+        "crossConceptKeys": [
+          "CC_MIDPOINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 넓이와 무게중심 > 무게중심을 이용한 복합도형: 중선의 숨은 중점과 평행선 중점 연결",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "무게중심이 정한 AC의 중점을 평행선으로 AD의 중점에 전달하는 보조 중점 성질이 별도로 필요하다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "B,G,E의 공선에서 E를 중점으로 읽고 평행선으로 F를 중점으로 옮긴 뒤 무게중심 위치와의 차를 구한다.",
+        "difficulty": "무게중심을 지나는 선에서 표시되지 않은 중점을 복원하고 다른 삼각형의 평행선에 연결해야 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "B,G,E의 공선에서 E를 중점으로 읽고 평행선으로 F를 중점으로 옮긴 뒤 무게중심 위치와의 차를 구한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "무게중심을 지나는 선에서 표시되지 않은 중점을 복원하고 다른 삼각형의 평행선에 연결해야 한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-100",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "무게중심을 이용한 복합도형"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "무게중심을 이용한 복합도형"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-218",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/10.png",
+            "sha256": "f08c1f4c295e60b615f4769e909eadac029a8c18122679cc56a9208af53571b6"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_89ee5aee743adae3ab7f18e97a72e9cf7d0423c2cd5017147717073dfc5dd27c",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-103",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "가장 긴 변의 제곱합 비교",
+      "decisiveStep": "각 수 목록에서 가장 긴 변의 제곱과 나머지 두 제곱의 합을 직접 비교한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 피타고라스 정리의 역 > 직각삼각형 판정: 가장 긴 변의 제곱합 비교",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "주어진 수 목록에 정해진 직각 판정식을 바로 적용하며 목록 수는 사고 단계를 늘리지 않는다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "각 수 목록에서 가장 긴 변의 제곱과 나머지 두 제곱의 합을 직접 비교한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "주어진 수 목록에 정해진 직각 판정식을 바로 적용하며 목록 수는 사고 단계를 늘리지 않는다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-103",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리의 역",
+          "l4": "직각삼각형 판정"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리의 역",
+          "l4": "직각삼각형 판정"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-221",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_7d543780e2e1bb514694e9f9e25c5ca12605577d5982bafb435a131562d26236",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-105",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "사다리꼴의 밑변 차로 생긴 직각삼각형",
+      "decisiveStep": "두 평행변의 차를 작은 직각삼각형의 한 직각변으로 읽어 빗변의 제곱을 구한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 도형에의 활용 > 평면도형 길이: 사다리꼴의 밑변 차로 생긴 직각삼각형",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "그림에서 전체와 부분 길이의 차를 먼저 해석한 뒤 제곱합에 대입한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "두 평행변의 차를 작은 직각삼각형의 한 직각변으로 읽어 빗변의 제곱을 구한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "그림에서 전체와 부분 길이의 차를 먼저 해석한 뒤 제곱합에 대입한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-105",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-223",
+        "projectionApplied": false
+      },
+      "sourceHold": "원문 해설 첫 문장이 실제 사다리꼴을 직사각형이라고 부른다. 그림의 두 평행변2,4와 높이3,오른쪽 직각삼각형 및 뒤의x²=2²+3²는 명확하므로 메타·난이도 판정은 가능하다. source 명칭만 별도 보류하며 수정하지 않았다.",
+      "sourceContentStatus": "SOURCE_HOLD",
+      "conditionalMetadataJudgment": "COMPLETE_FOR_EXISTING_SOLUTION_ASSUMPTIONS",
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/12.png",
+            "sha256": "bb4d1729d42169d798b6e596f9beb9a388573fdc686871866aceb0497af4ea12"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_8b1c182d21a7ba480ee1763e13cf1bdc94abb013c3813a6ec828817bf87ee88c",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-089",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "직각삼각형 빗변 위의 두 사영 길이 차",
+      "decisiveStep": "직사각형 대각선을 구한 뒤 양쪽 직각삼각형의 AA 사영관계로 BP와BQ를 정해 차를 구한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "standardUnit": "피타고라스 정리",
+        "subUnit": "피타고라스 정리의 활용",
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "standardUnit": "도형의 닮음",
+        "subUnit": "도형의 닮음",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 길이: 직각삼각형 빗변 위의 두 사영 길이 차",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "두 AA 사영관계의 공통 빗변 길이를 직사각형의 두 변으로 먼저 구한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "직사각형 대각선을 구한 뒤 양쪽 직각삼각형의 AA 사영관계로 BP와BQ를 정해 차를 구한다.",
+        "difficulty": "서로 반대 꼭짓점에서 내린 수선발을 같은 대각선 기준의 사영 길이로 표현해야 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "직사각형 대각선을 구한 뒤 양쪽 직각삼각형의 AA 사영관계로 BP와BQ를 정해 차를 구한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "서로 반대 꼭짓점에서 내린 수선발을 같은 대각선 기준의 사영 길이로 표현해야 한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-089",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-207",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/13.png",
+            "sha256": "1691ead9a2a34e1b76bf4f1e2a918c9951ca68fbcaa1deb92a8ee2de4234b31b"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_d15ff4146f06f85f88024cef124fa2f1337cab24a9baffb58856818c4208b090",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "전체 정사각형에서 네 직각삼각형의 넓이 빼기",
+      "decisiveStep": "정사각형 전체넓이에서 같은4와3을 직각변으로 갖는 네 모서리 삼각형의 넓이를 뺀다.",
+      "before": {
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "standardCourse": "중1 수학",
+        "standardUnit": "평면도형의 성질",
+        "subUnit": "평면도형의 측정",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "fieldReview": {
+        "classification": "평면도형의 성질 > 평면도형의 측정 > 다각형의 넓이 분해 > None: 전체 정사각형에서 네 직각삼각형의 넓이 빼기",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "남은 변 길이를 한 번 구한 뒤 전체에서 부분을 빼는 익숙한 넓이 분해이다. 피타고라스나 합동증명은 실제 해설에 필요하지 않다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "정사각형 전체넓이에서 같은4와3을 직각변으로 갖는 네 모서리 삼각형의 넓이를 뺀다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "정사각형 전체넓이에서 같은4와3을 직각변으로 갖는 네 모서리 삼각형의 넓이를 뺀다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E052-COMPLEMENT-AREA"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "남은 변 길이를 한 번 구한 뒤 전체에서 부분을 빼는 익숙한 넓이 분해이다. 피타고라스나 합동증명은 실제 해설에 필요하지 않다."
+      },
+      "semanticSourceScope": "M2-2",
+      "semanticScopeRelation": "SOURCE_M2_WITH_PRIOR_PLANE_AREA_METHOD_RPM_PT_TPL_GAP",
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "평면도형의 성질",
+          "midUnit": "평면도형의 측정",
+          "l3": "다각형의 넓이 분해",
+          "l4": null,
+          "scope": "M1-2"
+        },
+        "basePath": {
+          "majorUnit": "평면도형의 성질",
+          "midUnit": "평면도형의 측정",
+          "l3": "다각형의 넓이 분해",
+          "l4": null,
+          "scope": "M1-2"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/14.png",
+            "sha256": "4c15dae0a307fe03af55f885464fef646a78a32a6be2d102e370db7d45c72739"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_9dd7d4ee26a8a5a665285048dd98b653c66f4d56fda1c3b2cf80cdcd66918221",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-105",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "삼등분점 거리의 제곱관계 소거",
+      "decisiveStep": "같은 높이를 가진 두 거리식의 차와 큰 직각삼각형의 제곱관계를 연결해 곱항을 제거하고 빗변제곱을 구한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium"
+      },
+      "after": {
+        "templateKey": "",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_EXPANSION"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyConfidence": "high"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 도형에의 활용 > 평면도형 길이: 삼등분점 거리의 제곱관계 소거",
+        "binding": "ACTIVE PT 정의와 해당 source 교육과정 binding 일치. 정확한 TPL 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "여러 직각삼각형에서 만든 제곱식을 전개·정리하여 공통항과 곱항을 소거하는 다항식 조작이 결정적이다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "작은 거리식의 차와 큰 삼각형의 제곱관계가 서로 필요한 곱항 정보를 제공하며 다항식 정리로 결합되어야 빗변제곱을 결정한다.",
+        "difficulty": "삼등분 길이·수선발 위치·높이를 함께 변수화하고 세 제곱관계를 소거하는 구조화가 풀이 중심이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "같은 높이를 가진 두 거리식의 차와 큰 직각삼각형의 제곱관계를 연결해 곱항을 제거하고 빗변제곱을 구한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [
+        "A-E052-PYTHAGOREAN-TRISECTION"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "삼등분 길이·수선발 위치·높이를 함께 변수화하고 세 제곱관계를 소거하는 구조화가 풀이 중심이다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-105",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-223",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "difficultyConfidence": "medium"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "difficultyConfidence": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/15.png",
+            "sha256": "80489d25a70bfa3bc7d39fcc5de1aeec9a6c4d095bc07d24737a468f86c1c0ff"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b8564c176321097550764c170bdcee266e243ab4b7f0aa29919b05861f03b360",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-108",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 주사위 합의 순서쌍 열거와 합",
+      "decisiveStep": "서로 다른 주사위의 결과를 순서쌍으로 세고 합5와합9의 배타적인 두 목록을 합한다.",
+      "before": {
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+        "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "확률 > 경우의 수 > 합의 법칙과 곱의 법칙 > 중복 없이 세기: 두 주사위 합의 순서쌍 열거와 합",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "합5와합9의 서로 배타적인 경우를 실제로 나누어 열거한 뒤 합친다.",
+        "difficulty": "서로 다른 주사위를 순서쌍으로 해석한 뒤 지정된 두 합을 표준 열거한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "서로 다른 주사위의 결과를 순서쌍으로 세고 합5와합9의 배타적인 두 목록을 합한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "서로 다른 주사위를 순서쌍으로 해석한 뒤 지정된 두 합을 표준 열거한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-108",
+        "effectivePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "중복 없이 세기"
+        },
+        "basePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "중복 없이 세기"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-226",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_bbfffc85955e945e6f81416c9e52dbfc906cc3cadbaab99dcc44092f501324e6",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-107",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "독립된 두 종류 선택의 곱",
+      "decisiveStep": "햄버거 종류와 음료 종류의 독립 선택 개수를 곱한다.",
+      "before": {
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "difficultyConfidence": "medium"
+      },
+      "after": {
+        "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+        "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "difficultyConfidence": "high"
+      },
+      "fieldReview": {
+        "classification": "확률 > 경우의 수 > 합의 법칙과 곱의 법칙 > 단계별 선택: 독립된 두 종류 선택의 곱",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "발문의 두 독립 선택에 곱의 법칙을 직접 적용한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "햄버거 종류와 음료 종류의 독립 선택 개수를 곱한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "definition": "합의 법칙·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반적인 경우의 수를 세는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "발문의 두 독립 선택에 곱의 법칙을 직접 적용한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-107",
+        "effectivePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        },
+        "basePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-225",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_f2a496665fe83474194330a8d63181413a0d62f4468fed207b07ae31a876241b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-108",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "세 사람 무승부의 두 유형 분기",
+      "decisiveStep": "모두 같은 손과 모두 다른 손을 무승부의 배타적인 두 경우로 나누어 합한다.",
+      "before": {
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+        "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "fieldReview": {
+        "classification": "확률 > 경우의 수 > 합의 법칙과 곱의 법칙 > 중복 없이 세기: 세 사람 무승부의 두 유형 분기",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "무승부를 모두 같은 손과 모두 다른 손으로 실제 분리하고 두 결과를 합한다.",
+        "difficulty": "세 사람의 비김을 두 표준 경우로 해석한 뒤 고정 선택과 배열을 센다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "모두 같은 손과 모두 다른 손을 무승부의 배타적인 두 경우로 나누어 합한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "definition": "합의 법칙·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반적인 경우의 수를 세는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "세 사람의 비김을 두 표준 경우로 해석한 뒤 고정 선택과 배열을 센다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-108",
+        "effectivePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "중복 없이 세기"
+        },
+        "basePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "중복 없이 세기"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-226",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_c976536da8053b6bfab5723189f5e3a3fa2c6de229768f7f17b047a77cd10534",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-109",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "인접한 두 사람의 묶음 배열",
+      "decisiveStep": "두 여학생을 한 덩어리로 놓아 다섯 대상의 순서를 정하고 묶음 내부의 두 순서를 곱한다.",
+      "before": {
+        "conditionKeys": [],
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_CONSECUTIVE_GROUPING"
+        ],
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT"
+      },
+      "fieldReview": {
+        "classification": "확률 > 경우의 수 > 배열과 선택 > 순서가 있는 경우: 인접한 두 사람의 묶음 배열",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "두 여학생이 한 연속 블록이어야 하므로 ACTIVE COND_CONSECUTIVE_GROUPING이 배열 개수의 실제 제약이다.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "이웃함을 한 묶음으로 바꾸는 표준 조건 배열이며 추가 분기나 위치 제약은 없다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "두 여학생을 한 덩어리로 놓아 다섯 대상의 순서를 정하고 묶음 내부의 두 순서를 곱한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "reason": "이웃함을 한 묶음으로 바꾸는 표준 조건 배열이며 추가 분기나 위치 제약은 없다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-109",
+        "effectivePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "배열과 선택",
+          "l4": "순서가 있는 경우"
+        },
+        "basePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "배열과 선택",
+          "l4": "순서가 있는 경우"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-227",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_6bcbeb5fe6bb7c16cae81ecf0747b91d2399b5503f99a0db5ca908df58fb4df7",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-107",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "인접 영역 그래프의 순차 색 선택",
+      "decisiveStep": "A를 먼저 정하고 B,C,D 순서로 이미 색이 정해진 인접 영역의 색을 제외하며 선택수를 곱한다.",
+      "before": {
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "conditionKeys": [],
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+        "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "conditionKeys": [
+          "COND_ADJACENT_REGIONS_DIFFERENT_COLOR"
+        ],
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT"
+      },
+      "fieldReview": {
+        "classification": "확률 > 경우의 수 > 합의 법칙과 곱의 법칙 > 단계별 선택: 인접 영역 그래프의 순차 색 선택",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "실제 변을 공유하는 영역만 다른 색이어야 하고 비인접 영역은 색을 공유할 수 있어 ACTIVE 인접색 제한을 적용한다.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "주어진 단순 인접 구조를 읽으면 네 영역의 순서별 선택수가 바로 정해지고 별도 경우 분기가 없다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "A를 먼저 정하고 B,C,D 순서로 이미 색이 정해진 인접 영역의 색을 제외하며 선택수를 곱한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "definition": "합의 법칙·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반적인 경우의 수를 세는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "reason": "주어진 단순 인접 구조를 읽으면 네 영역의 순서별 선택수가 바로 정해지고 별도 경우 분기가 없다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-107",
+        "effectivePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        },
+        "basePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-225",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/20.png",
+            "sha256": "099fb61a731d842ecab3875e32af619decc4c5df09620eabf67f331c69fa36cb"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_7f9ddd5cb85efd4477bf79fa151b187ee52abd612d431fa0dcd443a8252d4274",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-086",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 직각과 공통각의 AA 닮음 후 비례",
+      "decisiveStep": "수선으로 생긴 두 직각과 공통 A각을 대응하여 닮음을 증명한 뒤 주어진 길이비를 적용한다.",
+      "before": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "subUnit": "삼각형의 닮음",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "subUnit": "도형의 닮음",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 삼각형의 닮음 > AA: 두 직각과 공통각의 AA 닮음 후 비례",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "소문항이 닮음 찾기·이유·비례 적용의 순서를 안내하며 공통각과 직각의 정형 구조이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "수선으로 생긴 두 직각과 공통 A각을 대응하여 닮음을 증명한 뒤 주어진 길이비를 적용한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "reason": "소문항이 닮음 찾기·이유·비례 적용의 순서를 안내하며 공통각과 직각의 정형 구조이다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-086",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "AA"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "AA"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-204",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/21.png",
+            "sha256": "93e246fc92ee1aa5bc1a51def629ac283b651eda7f16dac4bc572549e440d84c"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_74c9b90424c6c8c7063af01676048515f96505e756d6f3db5cd41ae29eb7fbfa",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-089",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "빗변중점의 반지름과 직각삼각형의 사영 관계 반복",
+      "decisiveStep": "빗변중점으로 AM을 얻고 큰 삼각형의 높이 제곱관계를 작은 삼각형의 사영 길이에 다시 쓴다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "standardUnit": "피타고라스 정리",
+        "subUnit": "피타고라스 정리의 활용",
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "standardUnit": "도형의 닮음",
+        "subUnit": "도형의 닮음",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_CIRCUMCENTER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 길이: 빗변중점의 반지름과 직각삼각형의 사영 관계 반복",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "직각삼각형의 빗변중점이 외심임을 이용해 목표 사영관계에 필요한AM을 반빗변으로 복원한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "빗변중점으로 AM을 얻고 큰 삼각형의 높이 제곱관계를 작은 삼각형의 사영 길이에 다시 쓴다.",
+        "difficulty": "두 직각삼각형의 높이·사영 관계를 공통AG²로 연결하고 빗변중점의 등거리를 보조 입력으로 선택한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "빗변중점으로 AM을 얻고 큰 삼각형의 높이 제곱관계를 작은 삼각형의 사영 길이에 다시 쓴다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "두 직각삼각형의 높이·사영 관계를 공통AG²로 연결하고 빗변중점의 등거리를 보조 입력으로 선택한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-089",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-207",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/22.png",
+            "sha256": "2128d2931846862089cc03ae0b9f0d11baa58f8e0cac511e95ad84b63a6dfec1"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8a14443a6c8ffd200ee56deccc6b008268eb6426a51dd728d35934f6235a4d53",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-100",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "무게중심 중선비와 빗변중점 등거리로 넓이 복원",
+      "decisiveStep": "중선2:1로 AD를 구하고 직각삼각형 외심인 D로 빗변BC를 복원한 뒤 다른 직각변과 넓이를 구한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "standardUnit": "피타고라스 정리",
+        "subUnit": "피타고라스 정리의 활용",
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+        "standardUnit": "도형의 닮음",
+        "subUnit": "삼각형의 무게중심의 성질",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_CIRCUMCENTER",
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 넓이와 무게중심 > 무게중심을 이용한 복합도형: 무게중심 중선비와 빗변중점 등거리로 넓이 복원",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "Primary 무게중심의 길이비 뒤에 직각삼각형 외심의 등거리,피타고라스 직각변 복원,삼각형 넓이가 각각 필수로 이어진다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "중선2:1로 AD를 구하고 직각삼각형 외심인 D로 빗변BC를 복원한 뒤 다른 직각변과 넓이를 구한다.",
+        "difficulty": "무게중심의 길이를 직각삼각형 빗변중점의 반지름으로 재해석하여 피타고라스·넓이로 연결해야 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "중선2:1로 AD를 구하고 직각삼각형 외심인 D로 빗변BC를 복원한 뒤 다른 직각변과 넓이를 구한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "무게중심의 길이를 직각삼각형 빗변중점의 반지름으로 재해석하여 피타고라스·넓이로 연결해야 한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-100",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "무게중심을 이용한 복합도형"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "무게중심을 이용한 복합도형"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-218",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E052/23.png",
+            "sha256": "2ec64bf9264da4bc3bf4b3d836f22a3d7480d7b488ae6cc0c0940d51bc280e95"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_cac4a936a99faabef96e14f9d23165eecbbf1417f040a0d04d74dbcce25b5c0d",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-109",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "일의 자리0 여부와 선행0 배제의 조건 배열",
+      "decisiveStep": "짝수인 일의 자리를0과2·4로 나누고 각 경우 백의 자리0을 제외하면서 중복 없는 세 자리를 센다.",
+      "before": {
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_RANGE",
+          "COND_DISTINCT_DIGITS",
+          "COND_PARITY_POSITION",
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "확률 > 경우의 수 > 배열과 선택 > 순서가 있는 경우: 일의 자리0 여부와 선행0 배제의 조건 배열",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "0~5의 유한 범위,각 숫자 한 번 사용,일의 자리 짝수,백의 자리0 제외가 각각 실제 선택수와 분기를 바꾸므로 네 ACTIVE Condition 정의에 맞는다.",
+        "integration": "일의 자리가0일 때와2·4일 때 백의 자리 금지값 수가 달라져 실제 두 경우를 분리한다.",
+        "difficulty": "일의 자리 선택에 따라 백의 자리 후보 수가 달라짐을 판단하여 두 제약이 연결된 경우 분류를 선택해야 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "짝수인 일의 자리를0과2·4로 나누고 각 경우 백의 자리0을 제외하면서 중복 없는 세 자리를 센다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "일의 자리 선택에 따라 백의 자리 후보 수가 달라짐을 판단하여 두 제약이 연결된 경우 분류를 선택해야 한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-109",
+        "effectivePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "배열과 선택",
+          "l4": "순서가 있는 경우"
+        },
+        "basePath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "배열과 선택",
+          "l4": "순서가 있는 경우"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-227",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    }
+  ],
+  "topicSummary": [
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "도형의 닮음",
+      "ordinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        13,
+        21,
+        22
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "평행선 사이의 선분의 길이의 비",
+      "ordinals": [
+        6,
+        7
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "삼각형의 무게중심",
+      "ordinals": [
+        8,
+        9,
+        10,
+        23
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "피타고라스 정리",
+      "ordinals": [
+        11,
+        12,
+        15
+      ]
+    },
+    {
+      "rpmL1": "평면도형의 성질",
+      "rpmL2": "평면도형의 측정",
+      "ordinals": [
+        14
+      ]
+    },
+    {
+      "rpmL1": "확률",
+      "rpmL2": "경우의 수",
+      "ordinals": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        24
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "A-E052-ALWAYS-SIMILAR",
+      "type": "NEW_TPL",
+      "name": "도형 종류에서 항상 닮음 보장 판정",
+      "definition": "여러 도형류에서 임의의 두 도형을 골랐을 때 대응각과 대응변 비가 항상 같은지를 정의와 자유도에 따라 판정한다.",
+      "parent": "PT_SIMILAR_FIGURES / M2-RPM-085",
+      "distinguishingCriteria": "주어진 두 도형이 이미 닮았다는 전제에서 길이비를 계산하는 TPL_SIMILAR_FIGURES_RATIO와 다르다.",
+      "existingCandidatesReviewed": [
+        "TPL_SIMILAR_FIGURES_RATIO",
+        "TPL_TRIANGLE_SIMILARITY_CRITERIA"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_73036163f616b1c24d8b841bdc40314d96c94b7ab215ad966d0553342d7e92e1"
+      ]
+    },
+    {
+      "id": "A-E052-PARALLELOGRAM-OPPOSITE-SIDES",
+      "type": "CC",
+      "name": "평행사변형 대변의 길이 같음",
+      "definition": "Primary 외부의 보조 단계에서 두 쌍의 평행을 가진 사각형의 마주 보는 변 길이가 같음을 사용해 선분 길이식이나 다른 도형의 입력을 만든다.",
+      "parent": "MIDDLE_GEOMETRY / 평행사변형의 성질",
+      "distinguishingCriteria": "CC_PARALLELOGRAM_PROPERTIES는 대각선 이등분,CC_PARALLELOGRAMS는 정의여서 대변 등거리 추론을 포함하지 않는다.",
+      "existingCandidatesReviewed": [
+        "CC_PARALLELOGRAM_PROPERTIES",
+        "CC_PARALLELOGRAMS"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_eddc33cba6efb30d346b546fa8321806fa1a9cc1c79920e2bbb374341ad204cc"
+      ]
+    },
+    {
+      "id": "A-E052-NESTED-CENTROID-LENGTH",
+      "type": "NEW_TPL",
+      "name": "중첩 무게중심의 중선비 반복",
+      "definition": "원삼각형의 무게중심을 새 꼭짓점으로 하는 삼각형에 같은 중선2:1 비를 반복해 무게중심 사이 길이를 구한다.",
+      "parent": "PT_COORD_CENTROID / M2-RPM-097",
+      "distinguishingCriteria": "TPL_CENTROID_REVERSE의 미지 꼭짓점·좌표 복원과 달리 두 무게중심과 중선이 모두 주어진 순수 길이비이다.",
+      "existingCandidatesReviewed": [
+        "TPL_CENTROID_REVERSE",
+        "TPL_CENTROID_APPLICATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a4d7e220919b6440ebc6490d001a80dc50d74e42447f724ca48b34d85bb0dd9e"
+      ]
+    },
+    {
+      "id": "A-E052-CENTROID-PARTITION-AREA",
+      "type": "NEW_TPL",
+      "name": "무게중심과 변의 중점으로 분할한 부분영역 넓이",
+      "definition": "무게중심의 중선비와 변의 중점을 이용해 표준 부분삼각형의 넓이비를 정하고 목표 부분사각형의 넓이를 합하거나 뺀다.",
+      "parent": "PT_COORD_CENTROID / M2-RPM-099",
+      "distinguishingCriteria": "좌표 평균·미지 꼭짓점 좌표 복원이 아니며 추가 특수사각형 없이 무게중심 자체의 넓이분할을 사용한다.",
+      "existingCandidatesReviewed": [
+        "TPL_CENTROID_REVERSE",
+        "TPL_CENTROID_APPLICATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_7a9f3def72e05d1e9a16f1ed74c4e7db0a9b78f886f55dca5ffd7b33e0c72938"
+      ]
+    },
+    {
+      "id": "A-E052-COMPLEMENT-AREA",
+      "type": "RPM_PT_TPL_GAP",
+      "name": "다각형 전체에서 모서리 삼각형을 뺀 넓이",
+      "definition": "전체 다각형의 넓이에서 주어진 변 길이로 계산되는 비중첩 삼각형 넓이를 빼 내부 다각형 넓이를 구한다.",
+      "parent": "M1-06 / M1-06-PLANE_FIGURE_MEASURE / 평면도형 넓이",
+      "distinguishingCriteria": "실제 해설은 정사각형49에서 네 직각삼각형24를 뺀다. 피타고라스,좌표,인접한 두 정사각형의 합동증명,특수사각형 판정은 필요하지 않다. 현행M1 RPM의 부채꼴·호 leaf로 강제하지 않고 선수 평면넓이 gap을 둔다.",
+      "existingCandidatesReviewed": [
+        "PT_QUADRILATERAL_PROPERTIES",
+        "TPL_SPECIAL_QUADRILATERALS",
+        "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+        "TPL_M2_PYTHAGOREAN_AREA_TRANSFER"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_d15ff4146f06f85f88024cef124fa2f1337cab24a9baffb58856818c4208b090"
+      ]
+    },
+    {
+      "id": "A-E052-PYTHAGOREAN-TRISECTION",
+      "type": "NEW_TPL",
+      "name": "같은 직선 위 분점 거리의 제곱관계 소거",
+      "definition": "빗변의 등분점까지의 거리와 직각 조건을 수선발·높이·등분 길이 변수로 표현하고 제곱식을 차감·대입하여 전체 빗변의 제곱을 결정한다.",
+      "parent": "PT_M2_PYTHAGOREAN_RELATION / M2-RPM-105",
+      "distinguishingCriteria": "두 변을 알고 나머지 한 변을 구하는 직접형이나 접기·입체 대각선 중심의 COMPOSITE_APPLICATION과 다르다.",
+      "existingCandidatesReviewed": [
+        "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+        "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_9dd7d4ee26a8a5a665285048dd98b653c66f4d56fda1c3b2cf80cdcd66918221"
+      ]
+    }
+  ],
+  "notes": [
+    "전24항 발문·선택지·정답·해설을 읽었고17개 원본 그림을 직접 확인했다. Q12 해설 도형명은 별도sourceHold이며 필수 그림 결손은 발견하지 않았다.",
+    "2015 machine 단원과2022 표시 부모를 분리했다. Q13·22는 기존 피타고라스 맥락보다 실제 AA 사영관계가 Primary이고,Q14는 사각형 성질 또는 피타고라스로 강제하지 않은 선수 평면넓이 gap이다.",
+    "기존 level 하중상은 유지하면서 bucket을 독립 판정했다. 단순 묶음배열Q19·순차색칠Q20·소문항 안내AA Q21은2여서 원본상과STRONG_CONFLICT를 표시한다.",
+    "source와 공용 registry를 변경하지 않았으며 정확한 정의와binding/Resolver 등록대기를 별도 기록했다."
+  ]
+}

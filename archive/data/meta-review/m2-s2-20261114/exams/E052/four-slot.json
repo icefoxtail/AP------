@@ -1,0 +1,1567 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "/root/m2_a",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_73036163f616b1c24d8b841bdc40314d96c94b7ab215ad966d0553342d7e92e1",
+      "fingerprints": {
+        "QBODY": "28ef6bf145a8d364b5587139e807f8056815ab54f890ccc6a397a26897dec6ec",
+        "QFULL": "4f7a8aa148221c448b38703091fe4a370e9b7821529d14d8a3dc621d18fd7e1f"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "도형",
+            "src": "stem",
+            "quote": "닮은 도형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "항상 닮은"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응각",
+            "src": "solution",
+            "quote": "대응각이 같고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "대응변의 비가 일정해야",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정사각형",
+            "src": "solution",
+            "quote": "정사각형 두 개는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "도형 종류별 닮음의 보장 여부",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "각 도형류에서 대응각과 대응변의 비가 항상 같은지를 확인하여 정사각형을 고른다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_b5a23f146e8f2071637cd4f7a23551046dd7fad8e16d8c45dcf3c3f4ab432b53",
+      "fingerprints": {
+        "QBODY": "7769c04048818fb4a04dceae2dfe6f1f0600f8359b6bb54ce5c83eefc3b224ba",
+        "QFULL": "9862e98ac3b100608d7d6834f712dd0156efdb86cfd37f218bea07658d34d52f"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "두 원뿔"
+          },
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "서로 닮은 도형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "밑면의 둘레의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "모선의 길이 비는",
+            "evidenceType": "IMPLIED",
+            "justification": "닮음인 두 입체에서 모선비를 반지름비로 옮긴다."
+          },
+          {
+            "term": "원",
+            "src": "solution",
+            "quote": "밑면의 둘레는",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름을 얻은 뒤 원둘레2πr를 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "모선비를 반지름비로 옮긴 뒤 원둘레 계산",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "주어진 모선의 비2:3을 밑면 반지름에 적용하고 그 반지름을 원둘레 공식에 넣는다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_b74a2b3069e2e5afb743209be6e731e631b38f22c8ff0127067f6bc548887753",
+      "fingerprints": {
+        "QBODY": "b2d87a04871fe590b99780fea14fa76a005432f3e66798697bc39702e3b7c310",
+        "QFULL": "6326b9f2f60ab6fe61443b88a916d46240ed5945d71505f75a8695de4440ff8b"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "\\triangle ABC\\sim\\triangle DEF"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "대응변의 길이의 비",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$AB=DE\\times\\dfrac{3}{2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "확정된 대응변의 닮음비를 직접 길이에 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "닮음 표기의 대응변과 비례 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "주어진 닮음기호의 순서대로 대응변을 맞추고 AB와DF는 대응하지 않음을 수치비로 확인한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_1127f1cd1edbd1185df14364b6548fbd36d08afa3774069e091369035aecd6d3",
+      "fingerprints": {
+        "QBODY": "249ae61e874d9542fb7b3d846269c6788e668638838ed24ba923a20b18c7d0ed",
+        "QFULL": "eab95dc57840bce1e3f47ab4a922a004d3534f8d4e230abe82f3fe29dadc6a64"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$와 $\\triangle DEF$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음조건",
+            "src": "stem",
+            "quote": "닮은 도형이 되기 위해"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "필요한 조건"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$\\angle B=180\\circ-90\\circ-50\\circ=40\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 두 각으로 남은 내각을 계산한다."
+          },
+          {
+            "term": "대응각",
+            "src": "solution",
+            "quote": "대응각이 모두 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "두 삼각형은 닮음이다",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 두 대응각이 확보되어 AA 닮음으로 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "내각합 전처리로 AA 충분조건 판단",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "보기의 직각 두 개를 넣어 남은 각을 구하고 두 삼각형의 대응각이 같아지는 조건을 고른다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_8a721d057d10922d1b0f26181a91a9972b72ac97a0771bfbe0548bef88f1452e",
+      "fingerprints": {
+        "QBODY": "f8ab84bc4d892c0b1cde2b3660fcfcb4dba73a5db271e68df03101981825515d",
+        "QFULL": "ad40a642be5a21b498fc7a4057754ae1dc9d9f6ccb5bb8185cc66bc418f448d9"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형"
+          },
+          {
+            "term": "수직이등분선",
+            "src": "stem",
+            "quote": "수직이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$DE$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$BD=\\sqrt{12^2+16^2}=20\\text{ cm}$",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형의 두 변과 대각선의 제곱관계를 쓴다."
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "이므로 닮음이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 직각과 공통 D각으로 AA 닮음을 세운다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "\\dfrac{DE}{BD}=\\dfrac{OD}{AD}",
+            "evidenceType": "IMPLIED",
+            "justification": "작은 삼각형과 큰 삼각형의 대응변 비로 목표 길이를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직이등분선",
+            "src": "stem",
+            "quote": "수직이등분선"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "수직이등분선의 작은 직각삼각형과 원래 삼각형 닮음",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "대각선을 피타고라스로 구한 뒤 중점의 반대각선을 작은 삼각형의 변으로 읽어 AA 대응비를 세운다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_eddc33cba6efb30d346b546fa8321806fa1a9cc1c79920e2bbb374341ad204cc",
+      "fingerprints": {
+        "QBODY": "c7422234e45fbadcf06bf0a16d1afe3d25b64c3cfb74f5a417b062e6f8594486",
+        "QFULL": "2fb786170b8febe5cc72b0cd0757c7fa210047c0cc73dffd941c8b665206464f"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$BC\\parallel DE$, $AB\\parallel EF$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$DE$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "$BF=DE$",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형 대변의 길이 같음을 사용한다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "\\dfrac{x}{x+10}=\\dfrac35",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형에서 얻은 전체 밑변 표현을 삼각형 평행선비에 대입한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$BC\\parallel DE$, $AB\\parallel EF$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "평행사변형 대변을 미지 밑변에 연결한 평행선비",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "두 쌍의 평행으로 BF=DE를 얻고 BC=DE+10을 삼각형의 닮음비에 넣는다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_edfd6ba1657231f4e831fd27fb93cde53eaa09d9fdc1e1f6d2de1270ca199588",
+      "fingerprints": {
+        "QBODY": "721e5cc62e7a2d7978a62679f0701107c1fc07aafd0ca76e6e69442ab07625eb",
+        "QFULL": "fd9cf5a00f3b3d2af775ad93abff393f99f1edf0522a3cff032896c63058b19c"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$AB\\parallel EF\\parallel CD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle EBD$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$BF:FD=AB:CD=10:15=2:3$",
+            "evidenceType": "IMPLIED",
+            "justification": "평행한 교차 삼각형의 대응을 밑변 분할비로 읽는다."
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "$\\triangle EFD\\sim\\triangle ABD$",
+            "evidenceType": "IMPLIED",
+            "justification": "내부 평행선에서 생긴 두 삼각형의 대응비를 사용한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[\\triangle EBD]=\\dfrac12\\times20\\times6",
+            "evidenceType": "IMPLIED",
+            "justification": "얻은 밑변과 수직 높이를 삼각형 넓이식에 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$AB\\parallel EF\\parallel CD$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "교차 평행선의 두 비례와 밑변·높이 넓이",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "교차 삼각형에서 BF:FD를 정하고 전체 BD와 EF를 차례 구해 삼각형 넓이를 계산한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_a4d7e220919b6440ebc6490d001a80dc50d74e42447f724ca48b34d85bb0dd9e",
+      "fingerprints": {
+        "QBODY": "c0994f6252636b61e242e3201f5c0725a13b6c2dc98b81205d33c7023d0062f4",
+        "QFULL": "0a4be7edef59ddc65907fa59d58dc65958a7ba58e60480f4e7d4867ff6e23e56"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중선",
+            "src": "stem",
+            "quote": "중선이고"
+          },
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$GG'$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "중선을 꼭짓점에서부터 $2:1$로 나눈다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$GG\\prime=\\dfrac23 GD",
+            "evidenceType": "IMPLIED",
+            "justification": "앞서 얻은 GD에 작은 삼각형의 무게중심 비를 다시 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "중첩 무게중심의 중선비 반복",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "큰 삼각형 중선의 뒤쪽1/3을 작은 삼각형 중선으로 받아 그 앞쪽2/3을 취한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_7a9f3def72e05d1e9a16f1ed74c4e7db0a9b78f886f55dca5ffd7b33e0c72938",
+      "fingerprints": {
+        "QBODY": "7817d4162f68b81f6b96bf9b66e3c58e34dc85cdc5cbae19afdc58cdce45e99b",
+        "QFULL": "61ed0c19de1778c4fe99cd4b73288de8505fa027636f02f9bcefaf1cdeed6956"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심이다"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\square AEGF$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "각각 $AB$, $AC$의 중점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "$EF\\parallel BC$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 중점을 잇는 선분의 평행·절반길이로 작은 삼각형 넓이1/4을 정한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "같은 밑변 $EF$를 쓰므로",
+            "evidenceType": "IMPLIED",
+            "justification": "무게중심에서 나온 높이비를 같은 밑변의 넓이비로 옮긴다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "무게중심과 두 변의 중점으로 분할된 사각형 넓이",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "두 중점과 무게중심이 만드는 부분삼각형들의 높이비로 사각형의 전체에 대한 넓이비를 정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_2511f0878121eb0f2506b8d0cbb8b2f400ef8585bf2a8945e8349d0ead9dc258",
+      "fingerprints": {
+        "QBODY": "fc39fe6b90b0619b88d8e7ba37f912d554250cb08672b44c47a60080edb62d26",
+        "QFULL": "4045ee068068909b5c858f744f421eb4bfd80788adae7110a913f5698145adb2"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심이고"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$FE\\parallel BC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$FG$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "중선",
+            "src": "solution",
+            "quote": "BE는 중선이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "중점 정리에 따라 F는 AD의 중점",
+            "evidenceType": "IMPLIED",
+            "justification": "ADC에서 E의 중점과 FE평행을 이용해 F의 중점을 추론한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "FG=AG−AF",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 중선 위의 두 위치를 빼 목표 구간을 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$FE\\parallel BC$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "중선의 숨은 중점과 평행선 중점 연결",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "B,G,E의 공선에서 E를 중점으로 읽고 평행선으로 F를 중점으로 옮긴 뒤 무게중심 위치와의 차를 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_89ee5aee743adae3ab7f18e97a72e9cf7d0423c2cd5017147717073dfc5dd27c",
+      "fingerprints": {
+        "QBODY": "f83cf0c6451b5b372a0efa496d6481a9123255093d70db4303b476cf417b66ff",
+        "QFULL": "c4b17375bf865ecb281d53def7e182326d7a1544588581324483ee1ba29977e1"
+      },
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형의 세 변"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형인 것"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "개수는"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "가장 긴 변의 제곱이 나머지 두 변의 제곱의 합과 같다",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스 정리의 역을 이용해 각 목록을 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "가장 긴 변의 제곱합 비교",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "각 수 목록에서 가장 긴 변의 제곱과 나머지 두 제곱의 합을 직접 비교한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_7d543780e2e1bb514694e9f9e25c5ca12605577d5982bafb435a131562d26236",
+      "fingerprints": {
+        "QBODY": "d09bdb3328091ed131f34dc8b2c06e8b0a5a0b257900b37f03158bcf77053c63",
+        "QFULL": "58831800872456564db45fc6728d63a285d70b66866bd8b6c8edbbac30f55127"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "$\\square ABCD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x^2$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$4-2=2$",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 두 평행변 차가 오른쪽 직각삼각형의 가로 직각변이다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리에 따라",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "사다리꼴의 밑변 차로 생긴 직각삼각형",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "두 평행변의 차를 작은 직각삼각형의 한 직각변으로 읽어 빗변의 제곱을 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_8b1c182d21a7ba480ee1763e13cf1bdc94abb013c3813a6ec828817bf87ee88c",
+      "fingerprints": {
+        "QBODY": "8e81ad4ff7d7aabea0040d7a7f2440a60d6a4cfc331e42309ce6d0aaffd06aa8",
+        "QFULL": "17c5ea8c6f4271d4f8c635ad1a8f48999d00e8dbdd986ff9d72a6430631c5e19"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$AP\\perp BD$, $CQ\\perp BD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$PQ$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$BD=\\sqrt{6^2+8^2}=10$",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형 대각선 길이를 먼저 구한다."
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "BP=\\dfrac{AB^2}{BD}",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형에서 빗변에 내린 수선의 AA 닮음이 사영변 관계를 준다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$PQ=BQ-BP",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 B에서 잰 두 사영 위치의 차로 수선발 사이 길이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$AP\\perp BD$, $CQ\\perp BD$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "직각삼각형 빗변 위의 두 사영 길이 차",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "직사각형 대각선을 구한 뒤 양쪽 직각삼각형의 AA 사영관계로 BP와BQ를 정해 차를 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_d15ff4146f06f85f88024cef124fa2f1337cab24a9baffb58856818c4208b090",
+      "fingerprints": {
+        "QBODY": "5f44288b304193fe97fa38a4444502e5d37a499094cfa31a5dacfd865baa783b",
+        "QFULL": "5eae0513b8ec4ff96f377b12174f1ad0a14a2ef7642c0a5e1d8614abba341ca3"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$AH=BE=CF=DG=4"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\square EFGH$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "모두 직각삼각형이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "두 직각변은 $4$와 $7-4=3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$[EFGH]=49-24",
+            "evidenceType": "IMPLIED",
+            "justification": "바깥 정사각형에서 네 모서리 삼각형의 넓이를 빼 목표 영역을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "전체 정사각형에서 네 직각삼각형의 넓이 빼기",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "정사각형 전체넓이에서 같은4와3을 직각변으로 갖는 네 모서리 삼각형의 넓이를 뺀다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_9dd7d4ee26a8a5a665285048dd98b653c66f4d56fda1c3b2cf80cdcd66918221",
+      "fingerprints": {
+        "QBODY": "ca0ca8d4214edd9f99cd5512cadc620da40813ca3712f8f8b2c9cbe9aa06cc3f",
+        "QFULL": "9facc88079a26b9b24f5d0f0fc7659711203d8faa828c7ebe6b8f6d0f24b102d"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "분할",
+            "src": "stem",
+            "quote": "삼등분점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$AB^2$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선의발",
+            "src": "solution",
+            "quote": "수선의 발을 $H$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리에 따라",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "$2xy-3x^2=7$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 제곱식을 전개하여 공통 높이와 y²항을 소거한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$7=2xy-3x^2=2(16-x^2)-3x^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 삼각형에서 얻은 곱항 관계를 작은 거리식 차에 대입해 x²만 남긴다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "삼등분점 거리의 제곱관계 소거",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "같은 높이를 가진 두 거리식의 차와 큰 직각삼각형의 제곱관계를 연결해 곱항을 제거하고 빗변제곱을 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b8564c176321097550764c170bdcee266e243ab4b7f0aa29919b05861f03b360",
+      "fingerprints": {
+        "QBODY": "b946162986be87fc15f958380a76bfd23cd883964a4945ee6883963e41fe9686",
+        "QFULL": "343d193bf90ca521f471dbb4c04282d0ab61c04b91f1aad097ef9cb4c0c1a642"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "서로 다른 두 개의 주사위를 동시에 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "순서쌍",
+            "src": "solution",
+            "quote": "순서가 있는 순서쌍",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "두 경우는 겹치지 않으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "합5와합9는 동시에 성립하지 않으므로 두 개수를 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "합이 5 또는 9"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "두 주사위 합의 순서쌍 열거와 합",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "서로 다른 주사위의 결과를 순서쌍으로 세고 합5와합9의 배타적인 두 목록을 합한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_bbfffc85955e945e6f81416c9e52dbfc906cc3cadbaab99dcc44092f501324e6",
+      "fingerprints": {
+        "QBODY": "fcc2acc7074aaa5ed5944a46ac37b0be1702db0d7a47aa16eaa6946f21d6f103",
+        "QFULL": "ab1937b42369dd1cc42a4bce12362d9da76f0dcd17ab6a8f639352ef6e73270b"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선택",
+            "src": "stem",
+            "quote": "고르는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙에 따라",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "독립된 두 종류 선택의 곱",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "햄버거 종류와 음료 종류의 독립 선택 개수를 곱한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_f2a496665fe83474194330a8d63181413a0d62f4468fed207b07ae31a876241b",
+      "fingerprints": {
+        "QBODY": "8fb1768711be99020e3e2ff834578a74ef755fff6d7a6afcf88dd456161404b4",
+        "QFULL": "3a739f512517a9726774c14d3a0d568782acec8f4d68a97d30424607e6e1808e"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선택",
+            "src": "stem",
+            "quote": "세 사람이 가위바위보"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "비기는 경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "분류",
+            "src": "solution",
+            "quote": "모두 같은 손을 내면",
+            "evidenceType": "IMPLIED",
+            "justification": "비기는 사건을 모두 같음과 모두 다름의 두 경우로 분류한다."
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "세 손의 순서를 정하는 방법",
+            "evidenceType": "IMPLIED",
+            "justification": "모두 다른 경우 서로 다른 세 손을 세 사람에게 순서 있게 배정한다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "$3+6=9$",
+            "evidenceType": "IMPLIED",
+            "justification": "배타적인 두 무승부 경우를 더한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "세 사람 무승부의 두 유형 분기",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "모두 같은 손과 모두 다른 손을 무승부의 배타적인 두 경우로 나누어 합한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_c976536da8053b6bfab5723189f5e3a3fa2c6de229768f7f17b047a77cd10534",
+      "fingerprints": {
+        "QBODY": "e5ed8c74314a21ed0a7031b8f91cfe6c1465bf390531005af560cf59245a8ad7",
+        "QFULL": "c00cde351029681161edfc8de0d9501aed4be25fdae331a08233800f0e02db76"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "한 줄로 세울 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "모두 $5$개를 배열한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$120\\times2=240$",
+            "evidenceType": "IMPLIED",
+            "justification": "묶음 배열과 묶음 내부 두 순서를 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "이웃",
+            "src": "stem",
+            "quote": "여학생끼리 이웃하여"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "인접한 두 사람의 묶음 배열",
+        "condition": "두 여학생이 한 연속 블록이어야 하므로 ACTIVE COND_CONSECUTIVE_GROUPING이 배열 개수의 실제 제약이다."
+      },
+      "steps": [
+        "두 여학생을 한 덩어리로 놓아 다섯 대상의 순서를 정하고 묶음 내부의 두 순서를 곱한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_6bcbeb5fe6bb7c16cae81ecf0747b91d2399b5503f99a0db5ca908df58fb4df7",
+      "fingerprints": {
+        "QBODY": "52b19b6ca948cd14ab1b3db640d4adb3a8f4c6419f9d12a31194e220e99a3549",
+        "QFULL": "dad61f43f5d9ac3b907ace3545ba1817e17f7138d762d988dbe6715c30fe156a"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "영역",
+            "src": "stem",
+            "quote": "네 부분"
+          },
+          {
+            "term": "선택",
+            "src": "stem",
+            "quote": "네 가지 색"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "방법의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$4\\times3\\times2\\times2=48$",
+            "evidenceType": "IMPLIED",
+            "justification": "A,B,C,D 순서로 금지된 인접 색을 뺀 선택수들을 곱한다."
+          },
+          {
+            "term": "이웃",
+            "src": "solution",
+            "quote": "A는 아래의 B, C, D 모두와 이웃",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 인접 관계를 읽어 각 단계에서 사용 금지되는 색을 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "이웃",
+            "src": "stem",
+            "quote": "이웃한 영역은 서로 다른 색"
+          },
+          {
+            "term": "중복허용",
+            "src": "stem",
+            "quote": "같은 색을 여러 번 사용할 수"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "인접 영역 그래프의 순차 색 선택",
+        "condition": "실제 변을 공유하는 영역만 다른 색이어야 하고 비인접 영역은 색을 공유할 수 있어 ACTIVE 인접색 제한을 적용한다."
+      },
+      "steps": [
+        "A를 먼저 정하고 B,C,D 순서로 이미 색이 정해진 인접 영역의 색을 제외하며 선택수를 곱한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_7f9ddd5cb85efd4477bf79fa151b187ee52abd612d431fa0dcd443a8252d4274",
+      "fingerprints": {
+        "QBODY": "bc048b020c15fa1d94ea9eae6c30e38321850eebe8cc5b50cae5a02bf63460b6",
+        "QFULL": "3905b2a21762233879a4bc35076ca7f72018ff7b805823005fb3403a9183cff1"
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$AB\\perp CD$, $AC\\perp BE$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "닮음인 두 삼각형"
+          },
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "그 이유를 설명"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "\\dfrac{AC}{AB}=\\dfrac{AD}{AE}",
+            "evidenceType": "IMPLIED",
+            "justification": "확정한 대응 순서로 비례식을 세워 x를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$AB\\perp CD$, $AC\\perp BE$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "두 직각과 공통각의 AA 닮음 후 비례",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "수선으로 생긴 두 직각과 공통 A각을 대응하여 닮음을 증명한 뒤 주어진 길이비를 적용한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_74c9b90424c6c8c7063af01676048515f96505e756d6f3db5cd41ae29eb7fbfa",
+      "fingerprints": {
+        "QBODY": "35e91759877bfed50a4d5720f7de7b17018ed57456d100a5ee6849ea07b06577",
+        "QFULL": "e55a67c759c4b9f48cd5ad642f1d03df59b19ee506b5c6b7a5b5e49df255a797"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "$\\angle A=90^\\circ$"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "$BM=CM$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$AH$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "빗변의 중점은 세 꼭짓점에서 같은 거리",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형에서 빗변중점이 외심이어서 AM이 반빗변이다."
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "직각삼각형의 높이 정리에서",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변에 내린 수선이 만드는 AA 닮음으로 AG²=BG·GC를 얻는다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$AG^2=AH\\times AM$",
+            "evidenceType": "IMPLIED",
+            "justification": "작은 직각삼각형의 AA 사영관계에 동일한 AG²를 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$AG\\perp BC$, $GH\\perp AM$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "빗변중점의 반지름과 직각삼각형의 사영 관계 반복",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "빗변중점으로 AM을 얻고 큰 삼각형의 높이 제곱관계를 작은 삼각형의 사영 길이에 다시 쓴다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8a14443a6c8ffd200ee56deccc6b008268eb6426a51dd728d35934f6235a4d53",
+      "fingerprints": {
+        "QBODY": "46d7c740be94c661fa2141a8f683b1cfa139a1b3018581da46165949117ccca5",
+        "QFULL": "97a47cd674e41c212841757f74bd56e5ce74268d9181d3e13cca55cb2d815239"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "중선 $AD$를 $AG:GD=2:1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "빗변의 중점은 세 꼭짓점에서 같은 거리",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 외심인 D에서 AD=BD=CD를 이용한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[\\triangle ABC]=\\dfrac12\\times24\\times18",
+            "evidenceType": "IMPLIED",
+            "justification": "복원한 두 직각변을 밑변과 높이로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "무게중심 중선비와 빗변중점 등거리로 넓이 복원",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "중선2:1로 AD를 구하고 직각삼각형 외심인 D로 빗변BC를 복원한 뒤 다른 직각변과 넓이를 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_cac4a936a99faabef96e14f9d23165eecbbf1417f040a0d04d74dbcce25b5c0d",
+      "fingerprints": {
+        "QBODY": "43b5257241dd91783863e8bde19548026071befb2dc9f9ddb5d5944e30300282",
+        "QFULL": "10bd194ad1dcf77fc6973c921680776b6323505c3f522616801fbf9a0a998104"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "세 자리 정수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "0부터 5까지"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "짝수의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "분류",
+            "src": "solution",
+            "quote": "일의 자리가 $0$인 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "일의 자리0과0이 아닌 짝수로 나누어 선행0 제약의 영향을 구분한다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$2\\times4\\times4=32$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 분기에서 세 자리의 중복 없는 선택수를 곱한다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "$20+32=52$",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 배타적인 일의 자리 분기의 수를 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "0부터 5까지"
+          },
+          {
+            "term": "중복불허",
+            "src": "stem",
+            "quote": "각각 하나씩"
+          },
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "짝수의 개수"
+          },
+          {
+            "term": "제외",
+            "src": "solution",
+            "quote": "백의 자리는 0이 아닌"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "일의 자리0 여부와 선행0 배제의 조건 배열",
+        "condition": "0~5의 유한 범위,각 숫자 한 번 사용,일의 자리 짝수,백의 자리0 제외가 각각 실제 선택수와 분기를 바꾸므로 네 ACTIVE Condition 정의에 맞는다."
+      },
+      "steps": [
+        "짝수인 일의 자리를0과2·4로 나누고 각 경우 백의 자리0을 제외하면서 중복 없는 세 자리를 센다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "allItemsRead": true,
+    "exactQuotesChecked": true,
+    "sourceContentUnchanged": true,
+    "semanticReviewBy": "/root/m2_a",
+    "independentSampleReview": "PENDING_ROOT_ASSIGNMENT"
+  }
+}
