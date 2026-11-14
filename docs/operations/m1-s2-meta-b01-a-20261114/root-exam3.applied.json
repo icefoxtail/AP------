@@ -2,8 +2,8 @@
   "schemaVersion": "m1s2-scoped-source-meta-delta-v1",
   "sourcePath": "archive/exams/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
   "baselineSourceGitBlobSha": "9d635c26109d3c088e55bd0529884611457d0433",
-  "finalSourceGitBlobSha": "99cd522479988a1a968228e3d86cd26bfd1d5f3e",
-  "finalSourceSha256": "5da677cd437571b6ef94f7cdacf7dad56be667ad950bab482e50d8e3b873618d",
+  "finalSourceGitBlobSha": "5ea211ca5907ad3706105b7f88f593fbc511c151",
+  "finalSourceSha256": "6cc54bc6f90556abde5937530f491ca81fdbd20300d671afb1f2137110b440b6",
   "questionCount": 24,
   "protectedNonMetadataPayloadEqual": true,
   "reviewRef": "docs/operations/m1-s2-meta-b01-a-20261114/a2-exam3.review.json",
@@ -408,11 +408,6 @@
       "sourceOrdinal": 13,
       "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
       "before": {
-        "standardUnitKey": "M1-07",
-        "standardUnit": "입체도형의 성질",
-        "standardUnitOrder": 7,
-        "subUnitKey": "M1-07-SOLID_FIGURE",
-        "subUnit": "입체도형",
         "integrationPattern": "CASE_BRANCH",
         "curriculum": null,
         "primaryMethod": null,
@@ -420,11 +415,6 @@
         "courseKey": null
       },
       "after": {
-        "standardUnitKey": "M1-05",
-        "standardUnit": "기본도형",
-        "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "subUnit": "위치 관계",
         "integrationPattern": "NONE",
         "curriculum": "2022",
         "primaryMethod": "공간 직선·평면 위치관계",
@@ -434,7 +424,15 @@
       "topic": "공간 직선·평면 위치관계",
       "semanticGap": null,
       "gapType": "RPM_LEAF_GAP",
-      "reason": "오각기둥을 소재로 모서리끼리 만남·평행·꼬임 및 모서리와 면 관계를 판정한다. 다면체 모양/측정이 primary가 아니다."
+      "reason": "오각기둥을 소재로 모서리끼리 만남·평행·꼬임 및 모서리와 면 관계를 판정한다. 다면체 모양/측정이 primary가 아니다.",
+      "confirmedCorrectionPendingPublication": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계"
+      },
+      "publicationHoldRef": "docs/operations/m1-s2-meta-b01-a-20261114/q13-parent-publication-hold.json"
     },
     {
       "sourceOrdinal": 14,
@@ -816,6 +814,20 @@
       "semanticGap": null,
       "gapType": null,
       "reason": "정사각형의 대각선 성질과 직각으로 ASA 합동을 보이고 넓이를 옮겨 합한다. 선형 합동→넓이 전달이므로 반복 상호 의존 DEEP_COMPOSITE는 과하다."
+    }
+  ],
+  "publicationHolds": [
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+      "fields": [
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "subUnitKey",
+        "subUnit"
+      ],
+      "evidencePath": "docs/operations/m1-s2-meta-b01-a-20261114/q13-parent-publication-hold.json"
     }
   ]
 }
