@@ -1,0 +1,229 @@
+{
+  "schemaVersion": "m2-s2-meta-independent-sample-v1",
+  "examId": "E048",
+  "author": "C",
+  "reviewer": "A",
+  "sourceArchiveFile": "original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "3bf1dcaa0acbdd566f938421e0f42e0c7ccc6efd",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewSha256": "a584a30c07c174c348c1b757c2888ec14d4fe589173b8a97d6b4b27f533d0674",
+  "fourSlotSha256": "2339d9bc1157d5b256b22ec62eb3f377ab96c134d8089a70f2efc29a5ed521d5",
+  "ordinals": [
+    5,
+    14,
+    24
+  ],
+  "overallConclusion": "PASS_METADATA_SAMPLE_AFTER_PINPOINT_CORRECTIONS_WITH_EXPLICIT_HOLD",
+  "items": [
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_55fd6b255eeb5b4ce5e8c1d25ff545ab5f17252e219e17c55c2542fbe8d8e14f",
+      "conclusion": "ACCEPT_UNRESOLVED_AND_CANDIDATE_GAP",
+      "reason": "발문에는 무한 직선 그래프를 회전한다는 말만 있고 좌표축으로 둘러싸인 삼각형이라는 유계영역 조건이 없다. 해설이 추가한 삼각형으로만 원뿔 해석이 가능하므로 최종 UNKNOWN/등록차단과4칸 PARTIAL을 수용한다. 후보 PT_M2_LINEAR_FUNCTION_SOLID_OF_REVOLUTION/TPL_M2_CALCULATE_CONE_VOLUME_FROM_INTERCEPT_TRIANGLE는 그 해설모형과 정확히 맞지만 RPM058의 넓이 leaf를 회전체 부피에 확정하지 않고 RPM_LEAF_GAP으로 분리한 수정본을 확인했다. TPL 자체가 원뿔 부피까지 포함하므로 중복 CC_CONE_VOLUME를 빼고NONE으로 좁힌 것도 수용한다. source2015와2022 표시부모는 M2-1 함수 범위로 구분된다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_69f5f572e65435ddbb310ce81278e9a301b36aba92b7ca2cacec3c8d65f8c1f1",
+      "conclusion": "PASS_AFTER_DIFFICULTY_PINPOINT",
+      "reason": "실제 그림과 텍스트는 큰 삼각형과 GBC의 두 무게중심,같은 중선 위의 D를 보여준다. 기존 해설의 보조좌표는 높이1/3 반복과 반밑변,목표 부분넓이를 표현하는 장치여서 별도 coordinate CC를 만들지 않은 판단이 맞다. RPM099/무게중심 기계 소단원,ACTIVE PT_COORD_CENTROID와 exact2015 binding 및 중첩면적 TPL gap 후보를 확인했다. 단순 좌표 평균이나 미지 꼭짓점 복원 템플릿으로 강제하지 않는다. 4칸은 무게중심·삼각형 입력,넓이 목표,무게중심·보조좌표·넓이 방법과 실제 인용이 맞다. 표준분할 반복이므로3에서2/B23로 낮춘 독립 권고를 작성자가 수용한 최종본이며 원본상은 STRONG_CONFLICT로 유지한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_895e71dc4edbf25a35c587254ebd12144a1d05305b672a6e576278e6a9b9f211",
+      "conclusion": "PASS_AFTER_EXACT_METHOD_QUOTE_PINPOINT",
+      "reason": "그림의 직사각형 대각선중점과 수직선에서 실제 AA 대응은 EOD~DCB이다. 해설의 EOD~BCD 표기는 오류지만 뒤의 OD/BC=ED/BD 비례식과 수치계산은 올바른 대응이므로 메타 판정이 가능하다. 4칸 방법 근거를 잘못된 기호식에서 exact quote OD/BC=ED/BD와IMPLIED 정확대응 설명으로 바꾼 현재본을 확인했다. RPM089/TPL_TRIANGLE_SIMILARITY_APPLICATION과 exact2015 binding,2022 부모가 맞고 CC_PYTHAGOREAN·CC_RECTANGLE_PROPERTIES·CC_TRIANGLE_AREA는 닮음 길이에서 넓이/중심거리에 이르는 별도 필수 단계라 SEQUENTIAL이 적절하다. source표기 debt는 유지하며3/B34를 수용한다."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_3ca8b350b43f63d5ed3180b9a4e730f3fcf8dd9c4c8f4720237557562207619f",
+      "bucket": 2,
+      "level": "하",
+      "decision": "ACCEPT",
+      "reason": "일차식으로 정리한 후 차수와 분모의 문자를 구별한다. 한 단계 전처리가 있어2/B12 수용,기존하 경계 유지."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_16c5d4fbbacf04e50a66b0b0279335455afa39aced12262997f61a3168148895",
+      "bucket": 2,
+      "level": "하",
+      "decision": "ACCEPT",
+      "reason": "점 통과·절편·감소·사분면·이동을 주어진 함수의 표준 성질로 확인하는 익숙한 해석이다. bucket2 및 기존하 경계 수용."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_418268a7cffd5787418e765e24acea2196f614641004c42bdee274fdfa6cc741",
+      "bucket": 2,
+      "level": "하",
+      "decision": "ACCEPT",
+      "reason": "수직 평행이동량을 상수항에 넣은 식에 점을 대입하는 한 번의 표현변환이다.2와 기존하 경계 수용."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_55fd6b255eeb5b4ce5e8c1d25ff545ab5f17252e219e17c55c2542fbe8d8e14f",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "decision": "ACCEPT_UNKNOWN_HOLD",
+      "reason": "유계 회전영역이 학생본문에 없어 최종 UNKNOWN을 유지한다. 해설모형의 중/2는 원문 조건 복구를 전제로 한 후보일 뿐이다.",
+      "candidateBucket": 2,
+      "proposedLevel": "중"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_e66b3394788b21597e6767fd0996b8287f5861dcf3f97983c89113fb6afd1af3",
+      "bucket": 2,
+      "level": "하",
+      "decision": "ACCEPT",
+      "reason": "교점을 두 일차방정식의 공통해로 해석한 뒤 가감·대입을 한다.2와 기존하 경계 수용."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_ab0c4b3e6cff2cdddf8ebe91407bc3e65e09e81b95dc8ff15286795b8e96a138",
+      "bucket": 2,
+      "level": "중",
+      "decision": "ACCEPT",
+      "reason": "식의 부호를 기울기·절편 부호로 변형하고 사분면 성질에 적용한다.새로운 전략 없이 정형 해석이라3→2 수용."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_702ad7f6a95f85f08e92038792ef63de9fdbd7df958e88aa3f90530e1bc53e6c",
+      "bucket": 1,
+      "level": "하",
+      "decision": "ACCEPT",
+      "reason": "외심의 정의에서 세 꼭짓점까지의 등거리를 직접 확인한다.2→1 수용."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_65d55e4270dd2d3a663efba4766aee99a2fa0f1ef1ea8ceff18bd0f812424b04",
+      "bucket": 3,
+      "level": "상",
+      "decision": "ACCEPT",
+      "reason": "내심의 넓이식과 평행한 두 삼각형의 닮음비를 같은 높이비로 연결하는 기존 풀이의 관계 선택이 있다.3/B34 및 기존상 경계 수용."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_a040c14783d9dc0bcbdd9a6fab5dee601d0812460dc1e4c51e54ce0c796fdb84",
+      "bucket": 2,
+      "level": "중",
+      "decision": "ACCEPT",
+      "reason": "세 반지름의 같은길이에서 밑각쌍을 옮겨 전체 내각합에 모은다.표준 한 구조 해석이라2 수용."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_ab884d4a82a93b3cb76e2ffb8006567fb556f4dd80e4d27bb45ff77c7fc21c83",
+      "bucket": 2,
+      "level": "하",
+      "decision": "ACCEPT",
+      "reason": "이웃각180도에 주어진 비를 적용하고 그림의 내각과 외각을 구별한다.2와 기존하 경계 수용."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_23a371220229bf723793ac46318342160cc2218c4c8cb163df785527e90b8c97",
+      "bucket": 2,
+      "level": "중",
+      "decision": "ACCEPT",
+      "reason": "사면체의 대응면 순서를 실제 모서리에 매칭한 뒤 길이비를 적용한다.한 단계 도형 해석이라2 수용.원문의 닮음비 순서오기는 별도 유지."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_69f5f572e65435ddbb310ce81278e9a301b36aba92b7ca2cacec3c8d65f8c1f1",
+      "bucket": 2,
+      "level": "상",
+      "decision": "ACCEPT_CORRECTED_BUCKET_KEEP_STRONG_CONFLICT",
+      "reason": "두 무게중심의1/3 높이와 반밑변,목표1/3 넓이를 표준 순서로 연결한다.비정형 경로 선택은 없어2/B23로 권고·반영했고 원본상과STRONG_CONFLICT는 남긴다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_dba3b94d36d559eafeaa40b2552985690b4f123dfd37bb640be059d08c5ac0cd",
+      "bucket": 1,
+      "level": "하",
+      "decision": "ACCEPT",
+      "reason": "각 수 목록을 직각삼각형의 제곱합 판정에 직접 대입한다.삼각형이 아닌 첫목록도 즉시 배제 가능하여1 수용."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_962627061195e2855e0e6f7155e540b758cbfbb566645c651637dfaeb63cdc7f",
+      "bucket": 2,
+      "level": "하",
+      "decision": "ACCEPT",
+      "reason": "두 대각선을 중점연결선의 대응밑변으로 읽어 절반길이를 둘레에 연결한다.한 번의 도형 해석이 있어2와 기존하 경계 수용."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_005d65242b256395f47e0b51e9dc505bcbc4b74580fc29c93076e4e69e4d503a",
+      "bucket": 3,
+      "level": "상",
+      "decision": "ACCEPT",
+      "reason": "여각 관계로 두 수선삼각형의 RHA 대응을 찾아 길이를 전이한 뒤 피타고라스와 목표 넓이로 이어간다.구조 선택이 있어3/B34 수용."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_7e4c0bd97f3a9c97574555e517f5809cb95fd713c8bb7bc3ee8a09bc45b6f685",
+      "bucket": 2,
+      "level": "중",
+      "decision": "ACCEPT",
+      "reason": "교차한 두 삼각형에서 같은 직선의 대응구간을 맞추어 두 비례식을 세운다.익숙한 대응 해석이라2 수용."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_9579e02c03ee0592d983c6b5d8dd75eeb6c64d8876e3cbd11c7a39b17f64ad21",
+      "bucket": 2,
+      "level": "하",
+      "decision": "ACCEPT",
+      "reason": "합친 도형 자체를 직사각형이라 부른 해설 표현은 잘못됐지만 actual그림의 바깥 직각삼각형은 확인된다.정사각형 변을 그 직각변으로 옮기는 전처리라2 및 기존하 경계 수용."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_29a82b919a27ceba3e7d91bc47db6b8067c3e25d314110c3efdd8ac7bf87c099",
+      "bucket": 2,
+      "level": "하",
+      "decision": "ACCEPT",
+      "reason": "평행을 같은 기울기로 해석하고 통과점을 대입한다.한 번의 조건 해석이라2와 기존하 경계 수용."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_70492392da89ea7ddb896cebf7a4e98bd70bfad8ef42bcc1a4cc293c628bfe72",
+      "bucket": 1,
+      "level": "하",
+      "decision": "ACCEPT",
+      "reason": "직각삼각형 외접원 반지름을 빗변의 절반으로 읽고 원 넓이에 직접 대입한다.새 구조가 없는 직접형이라1 수용."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_6be6222e4358fb32cbeaef1b11216d9cdeb623f9c411e375260078077aaa3df5",
+      "bucket": 2,
+      "level": "중",
+      "decision": "ACCEPT",
+      "reason": "작은 삼각형의 높이가 큰 삼각형으로 그대로 전달되고 밑변은 두 구간 합이다.정해진 두 피타고라스 적용이라3→2 수용."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_895e71dc4edbf25a35c587254ebd12144a1d05305b672a6e576278e6a9b9f211",
+      "bucket": 3,
+      "level": "상",
+      "decision": "ACCEPT",
+      "reason": "수선과 대각선의 AA 대응을 선정하고 길이·직각삼각형 넓이·직사각형 중심거리를 연결한다.3/B34 수용,source대응순서 오류는 별도 유지."
+    }
+  ],
+  "exactQuoteCheck": "PASS",
+  "quotesChecked": 22,
+  "imagesActuallyViewed": [
+    "workers/C/images/E048/9.png",
+    "workers/C/images/E048/10.png",
+    "workers/C/images/E048/11.png",
+    "workers/C/images/E048/12.png",
+    "workers/C/images/E048/13.png",
+    "workers/C/images/E048/14.png",
+    "workers/C/images/E048/16.png",
+    "workers/C/images/E048/17.png",
+    "workers/C/images/E048/18.png",
+    "workers/C/images/E048/19.png",
+    "workers/C/images/E048/22.png",
+    "workers/C/images/E048/23.png",
+    "workers/C/images/E048/24.png"
+  ],
+  "freshMathematicalReverification": false,
+  "authorFilesModified": false,
+  "scope": "4칸3문항과변경bucket/경계flag/compat예외/low/UNKNOWN21항 실제재확인. 정상값3항은 추가전수하지 않았다.원문미결·정본등록·공식Resolver승인을대신하지 않는다."
+}

@@ -1,0 +1,280 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E048",
+  "owner": "C",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "3bf1dcaa0acbdd566f938421e0f42e0c7ccc6efd",
+  "sourceSha256": "f9fac90ecfcc22cb62fe394771723bfa417bb469b43a00fb525bb41b6803bbad",
+  "reviewSha256": "46aa00f1f280e826326b1ae62227a660947232e8eea1bbe5bc7ca659a80dd047",
+  "fourSlotSha256": "2339d9bc1157d5b256b22ec62eb3f377ab96c134d8089a70f2efc29a5ed521d5",
+  "independentSampleSha256": "18f044446868d863a2cbef0e208f757d3c35be0c632ebb0c91475a398bf9f440",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_55fd6b255eeb5b4ce5e8c1d25ff545ab5f17252e219e17c55c2542fbe8d8e14f",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    }
+  ],
+  "sampleReviewer": "A",
+  "sampleOrdinals": [
+    5,
+    14,
+    24
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "a584a30c07c174c348c1b757c2888ec14d4fe589173b8a97d6b4b27f533d0674",
+      "finalReviewSha256": "46aa00f1f280e826326b1ae62227a660947232e8eea1bbe5bc7ca659a80dd047",
+      "independentSampleSha256": "18f044446868d863a2cbef0e208f757d3c35be0c632ebb0c91475a398bf9f440",
+      "adjudicatedCompatibilityOrdinals": [
+        1,
+        2,
+        4,
+        6,
+        10,
+        12,
+        16,
+        17,
+        19,
+        21,
+        24
+      ],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "일차식으로 정리한 후 차수와 분모의 문자를 구별한다. 한 단계 전처리가 있어2/B12 수용,기존하 경계 유지.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "점 통과·절편·감소·사분면·이동을 주어진 함수의 표준 성질로 확인하는 익숙한 해석이다. bucket2 및 기존하 경계 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "수직 평행이동량을 상수항에 넣은 식에 점을 대입하는 한 번의 표현변환이다.2와 기존하 경계 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 5,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "유계 회전영역이 학생본문에 없어 최종 UNKNOWN을 유지한다. 해설모형의 중/2는 원문 조건 복구를 전제로 한 후보일 뿐이다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_UNKNOWN_HOLD"
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "교점을 두 일차방정식의 공통해로 해석한 뒤 가감·대입을 한다.2와 기존하 경계 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "식의 부호를 기울기·절편 부호로 변형하고 사분면 성질에 적용한다.새로운 전략 없이 정형 해석이라3→2 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "외심의 정의에서 세 꼭짓점까지의 등거리를 직접 확인한다.2→1 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "내심의 넓이식과 평행한 두 삼각형의 닮음비를 같은 높이비로 연결하는 기존 풀이의 관계 선택이 있다.3/B34 및 기존상 경계 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "세 반지름의 같은길이에서 밑각쌍을 옮겨 전체 내각합에 모은다.표준 한 구조 해석이라2 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "이웃각180도에 주어진 비를 적용하고 그림의 내각과 외각을 구별한다.2와 기존하 경계 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "사면체의 대응면 순서를 실제 모서리에 매칭한 뒤 길이비를 적용한다.한 단계 도형 해석이라2 수용.원문의 닮음비 순서오기는 별도 유지.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "두 무게중심의1/3 높이와 반밑변,목표1/3 넓이를 표준 순서로 연결한다.비정형 경로 선택은 없어2/B23로 권고·반영했고 원본상과STRONG_CONFLICT는 남긴다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_CORRECTED_BUCKET_KEEP_STRONG_CONFLICT"
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "각 수 목록을 직각삼각형의 제곱합 판정에 직접 대입한다.삼각형이 아닌 첫목록도 즉시 배제 가능하여1 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "두 대각선을 중점연결선의 대응밑변으로 읽어 절반길이를 둘레에 연결한다.한 번의 도형 해석이 있어2와 기존하 경계 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "여각 관계로 두 수선삼각형의 RHA 대응을 찾아 길이를 전이한 뒤 피타고라스와 목표 넓이로 이어간다.구조 선택이 있어3/B34 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "교차한 두 삼각형에서 같은 직선의 대응구간을 맞추어 두 비례식을 세운다.익숙한 대응 해석이라2 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "합친 도형 자체를 직사각형이라 부른 해설 표현은 잘못됐지만 actual그림의 바깥 직각삼각형은 확인된다.정사각형 변을 그 직각변으로 옮기는 전처리라2 및 기존하 경계 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "평행을 같은 기울기로 해석하고 통과점을 대입한다.한 번의 조건 해석이라2와 기존하 경계 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "직각삼각형 외접원 반지름을 빗변의 절반으로 읽고 원 넓이에 직접 대입한다.새 구조가 없는 직접형이라1 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "작은 삼각형의 높이가 큰 삼각형으로 그대로 전달되고 밑변은 두 구간 합이다.정해진 두 피타고라스 적용이라3→2 수용.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "수선과 대각선의 AA 대응을 선정하고 길이·직각삼각형 넓이·직사각형 중심거리를 연결한다.3/B34 수용,source대응순서 오류는 별도 유지.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 5,
+      "reason": "해설모델에 대한 후보 메타이며, 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 13,
+      "reason": "대응면의 꼭짓점 순서를 맞추고 공통 길이비로 x와y를 구한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 19,
+      "reason": "각 넓이에서 변을 구하고 가로3+9,높이9인 직각삼각형에 피타고라스를 적용한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 24,
+      "reason": "두 직각삼각형의 닮음비로 ED를 정하고 피타고라스로 EO를 얻어 넓이를 구한다.",
+      "metadataJudgmentUnresolved": false
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}
