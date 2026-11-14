@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "m1s2-independent-three-sample-v1",
+  "reviewer": "GPT_META_B_20261114",
+  "author": "GPT_META_C_20261114",
+  "sourceArchiveFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+  "readOrder": "SAMPLE_SOURCE_CONTENT_SOLUTION_AND_NEEDED_IMAGES_BEFORE_AUTHOR_4SLOT",
+  "sampled": [
+    4,
+    18,
+    21
+  ],
+  "scope": "THREE_QUESTIONS_ONLY_NOT_FULL_EXAM_MATH_QA",
+  "status": "ACCEPTED_AFTER_MINOR_CORRECTIONS",
+  "boundInputs": {
+    "sourcePath": "/workspace/scratch/64695b8ede31/agent-c/sources/archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "sourceSha256": "0c2e146ce8831541111faa0eb9df2802b7c788e47fda88548bc4f867f44d39a4",
+    "rawPath": "/workspace/scratch/64695b8ede31/agent-c/evidence/26_신흥중_2학기_중간_중1_기출.4slot.json",
+    "rawSha256": "f8f5de66241932f3e07d1af7348c1d9f0d277aa401efb3417523700abc53a3eb",
+    "reviewPath": "/workspace/scratch/64695b8ede31/agent-c/reviews/26_신흥중_2학기_중간_중1_기출-review.json",
+    "reviewSha256": "3078e2489da618c6e733f7dcae9cb240f7dea9831704d5a1e6ee34fa40801d46"
+  },
+  "images": [
+    {
+      "ordinal": 4,
+      "path": "/workspace/scratch/64695b8ede31/agent-b/cross/images/shinheung-q4.png",
+      "sha256": "9e275073bda0eecfe746875512745238becaf0dcb54ad2f549fcc0e3681fc02f",
+      "actualView": true
+    },
+    {
+      "ordinal": 18,
+      "path": "/workspace/scratch/64695b8ede31/agent-b/cross/images/shinheung-q18.png",
+      "sha256": "e59e42bd252bce1452e8ff04031d4df10cd4e8e3c1dc1aa788d1f8ed0733864a",
+      "actualView": true
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 4,
+      "metadataVerdict": "ACCEPT",
+      "ccGapVerdict": "ACCEPT_REGISTRATION_DEBT",
+      "difficultyVerdict": "KEEP",
+      "fourSlotVerdict": "ACCEPTED",
+      "reason": "각복사 작도에서 반지름의 같음, 호·교점의 생성 순서, 동위각의 역을 모두 판단한다. 현 CC 정의로 역명제를 임의 대체하지 않는 보류가 타당하다.",
+      "requiredChanges": [
+        {
+          "slot": "method",
+          "operation": "ADD",
+          "term": "반지름",
+          "src": "solution",
+          "quote": "같은 반지름으로 잡으므로 같습니다.",
+          "evidenceType": "NAMED"
+        },
+        {
+          "slot": "method",
+          "operation": "ADD",
+          "term": "순서",
+          "src": "solution",
+          "quote": "실제 원호와 교점의 생성 순서",
+          "evidenceType": "NAMED"
+        },
+        {
+          "slot": "condition",
+          "operation": "ADD",
+          "term": "위치관계",
+          "src": "stem",
+          "quote": "직선 $l$ 위에 있지 않은 한 점 $P$"
+        }
+      ],
+      "optionalChanges": [
+        {
+          "slot": "method",
+          "operation": "REMOVE_REDUNDANT",
+          "term": "작도",
+          "reason": "반지름·순서·동위각·평행이 구체적인 네 단계를 덮으면 넓은 작도 용어는 중복이다."
+        }
+      ],
+      "questionUid": "qid_v1_97f9ad6aabd1e324eec3450d0c25addf60efd4ca77f5ea5cdd2962a808dcf4d1",
+      "scopeNote": "모두 고르라는 응답 형식은 양화 제약으로 추가하지 않는다.",
+      "requiredChangesApplied": true
+    },
+    {
+      "ordinal": 18,
+      "metadataVerdict": "ACCEPT",
+      "difficultyVerdict": "ACCEPT_5_TO_4",
+      "fourSlotVerdict": "ACCEPTED",
+      "reason": "정삼각형의 변·각으로 보조삼각형 SAS 합동을 선택하고 대응각을 옮겨 두 삼각형 내각합과 한 점360°를 결합한다. 구조화가 필요하지만 학습된 합동·각추적 패턴으로 접근되어4가 적절하다.",
+      "requiredChanges": [
+        {
+          "slot": "condition",
+          "operation": "ADD",
+          "term": "각",
+          "src": "stem",
+          "quote": "\\angle DBE=80^\\circ"
+        },
+        {
+          "slot": "method",
+          "operation": "ADD",
+          "term": "대응각",
+          "src": "solution",
+          "quote": "\\angle ADC=\\angle BEC",
+          "evidenceType": "IMPLIED",
+          "justification": "직전 SAS 합동의 대응각을 다른 삼각형의 각합에 옮기는 단계이다."
+        }
+      ],
+      "optionalChanges": [
+        {
+          "slot": "method",
+          "term": "합동조건",
+          "operation": "EVIDENCE_TYPE_NAMED",
+          "reason": "SAS 합동이 명시되어 있으므로 NAMED가 더 정확하다."
+        }
+      ],
+      "questionUid": "qid_v1_7b6ffc097c4b1406b5cee2111ebb8986751ffe11d939b413e0f90e0da85945e7",
+      "requiredChangesApplied": true
+    },
+    {
+      "ordinal": 21,
+      "metadataVerdict": "ACCEPT",
+      "difficultyVerdict": "ACCEPT_3_TO_2",
+      "fourSlotVerdict": "ACCEPTED",
+      "reason": "주어진 비를 공통비례상수로 쓰고 중점의 반길이를 더해 비를 약분하는 명확한 표준 절차로2가 적절하다. 자연수비 조건은 이미 반영되어 있다.",
+      "requiredChanges": [
+        {
+          "slot": "condition",
+          "operation": "ADD",
+          "term": "순서",
+          "src": "stem",
+          "quote": "세 점 $A,B,C$가 차례대로 있다."
+        }
+      ],
+      "optionalChanges": [],
+      "questionUid": "qid_v1_3d9462aa63a14abe817fdd1b002390991d3d1a189b5d056fc38bfc85dabb5c07",
+      "requiredChangesApplied": true
+    }
+  ],
+  "revision": 2,
+  "reboundInputs": {
+    "sourcePath": "0c2e146ce8831541111faa0eb9df2802b7c788e47fda88548bc4f867f44d39a4",
+    "rawPath": "d187611ca4d58efc957c46e7106053d5ca0a5dbaca749a8897bd8ab73b3c4e78",
+    "reviewPath": "d59894b76c16f4fd71f8437235340c5fde7ca4feb5395ae8e6813beeb4a6c29e"
+  },
+  "correctionReadback": "Q4 반지름·순서/직선밖P; Q18 각80°·대응각 및 SAS NAMED; Q21 점순서 직접 재읽기 확인"
+}
