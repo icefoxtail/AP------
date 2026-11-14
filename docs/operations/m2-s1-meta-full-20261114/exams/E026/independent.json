@@ -1,0 +1,569 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E026",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "reviewer": "M2-S1-META-FULL/C",
+  "at": "2026-11-14T12:01:40.066265+00:00",
+  "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+  "sourceSha256": "5a5624aae92c19d72036aaae10ddc343f924c0ea2f3676d2844a2857e98a0b46",
+  "reviewedAuthorArtifacts": {
+    "reviewPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E026.review.json",
+    "reviewSha256": "53951306519594ad2e0986004ba868d41c121c1d6684d5fb88d5d0331f5b71ae",
+    "fourSlotPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E026.4slot.json",
+    "fourSlotSha256": "cfba2ceb0ca21efc485974cc4cba2e46048a814963518f2b136e6a9e7657f53e",
+    "confidenceSupplementPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E026.source-only-confidence-supplement.json",
+    "confidenceSupplementSha256": "239a3457a0d1de26ddcf8c3072165e5b46e6ba8bae2c2379b0b831e669127a9d"
+  },
+  "status": "ACCEPT_CONDITIONAL_PROPOSALS_WITH_NARROW_GOAL_AMENDMENTS_PENDING",
+  "scope": {
+    "sevenAxisSampleOrdinals": [
+      6,
+      23,
+      24
+    ],
+    "additionalClassificationOrdinals": [
+      1,
+      2
+    ],
+    "difficultyOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "selectionRule": "v1.3 section18 applied to author plus confidence supplement: all24 low therefore all24 actual-source difficulty recheck.",
+    "allCurrentStemsAndChoicesRead": true,
+    "existingSolutionCount": 0,
+    "priorExamsNotRepeated": true,
+    "blindClaim": false,
+    "blindDisclosure": "Independent current-source comparison; author values had been exposed before this review. No blind-first claim."
+  },
+  "samples": [
+    {
+      "sourceOrdinal": 6,
+      "status": "ACCEPT_SOURCE_ONLY_CLASSIFICATION_WITH_GOAL_AMENDMENT",
+      "classification": "M2-RPM-163 일의 양과 작업률은 두 호스의 총량/시간 상황에 직접 맞는다. source-only 분류 제안이며 풀이 실증은 없다.",
+      "binding": "현재 RPM_ONLY이며 실제 기존 해설이나 genuine resolver 검증이 없어 active PT/TPL을 발명하지 않았다.",
+      "crossConcept": "주 작업률 모델 내부 계산을 별도 CC로 반복하지 않는 제안은 타당하다.",
+      "condition": "본문에 없는 추가 수치 제한을 발명하지 않았다.",
+      "integration": "정형 작업률 primary의 NONE 제안으로만 수용한다.",
+      "fourSlot": "given/goal/condition의 정확 인용과 신원을 확인했다. goal 값만으로 경과시간 대상이 빠져 후보 경과시간과 같은 slot의 등록 부모 변화량316을 추가할 것을 요청했다. method 빈칸을 유지한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "status": "ACCEPT_META_ONLY_UNRESOLVED_WITH_CONTENT_DEBT_AND_GOAL_AMENDMENT",
+      "classification": "독립 첫 부분171과 둘째 조건식177 후보를 per-part로 보존하고 단일 primary/종속 CC/Integration을 유보한 판단을 수용한다.",
+      "binding": "한 점·기울기 template는 첫 부분 후보에만 적합하다. 사분면 범위 template는 본문의 모순 때문에 완결 exact 적용으로 승인하지 않는다.",
+      "crossConcept": "단일 primary 미정의 종속축 유보를 수용한다.",
+      "condition": "평행과 사분면 배제 및 a,b 상수라는 실제 제한을 보존해야 한다. a,b를 임의로 다른 값/부호로 수정하지 않는다.",
+      "integration": "독립 수준을 인위적 SEQUENTIAL로 통합하지 않는다.",
+      "fourSlot": "b의 범위 goal에 매개변수308 핵심 대상 및 명시 상수 제한의 좁은 추가를 요청했다. 실제 해설이 없으므로 method는 비워 둔다.",
+      "contentDebt": "두 주어진 점의 연결선 기울기는 음수이다. 이에 평행한 모든 직선은 충분히 음수인 x에서 y>0이므로 제2사분면을 피할 수 없다. 원문/빈 정답/빈 해설을 수정하지 않고 모순 부채를 보존한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "status": "ACCEPT_META_ONLY_UNRESOLVED_WITH_GOAL_AMENDMENT",
+      "classification": "첫 부분 축평행선 작도173과 넓이176, 둘째 가변 직선의 넓이176 및 정수 제한을 별도 essential output으로 보존하는 판단을 수용한다.",
+      "binding": "해설 미확보 및 단일 primary 미정 상태에서 검증된 active binding을 만들지 않는다.",
+      "crossConcept": "single primary의 종속 CC를 유보하며 각 부분의 넓이와 정수 역할은 보존한다.",
+      "condition": "정수 m, 넓이6미만을 실제 literal로 보존한다. 비퇴화는 삼각형 정의의 조건이며 가짜 source 인용을 만들지 않는다.",
+      "integration": "독립 두 부분을 한 절차로 통합하지 않는다.",
+      "fourSlot": "두 실제 이미지는 같은 빈 작도 좌표망이다. goal 합에 m의 매개변수308를 추가해야 한다. method는 기존 solution 부재에 따라 빈칸을 유지한다."
+    }
+  ],
+  "additionalClassificationReview": [
+    {
+      "sourceOrdinal": 1,
+      "status": "ACCEPT_PREREQUISITE_SOURCE_ONLY_PROPOSAL",
+      "reason": "M1-RPM-149의 방정식 해 정의 및 후보 대입 template가 직접적인 목표와 맞는다. full canonical M1 rpmPath와 별도 M2 targetNamespace를 분리하였다. absent target source field는 제안으로만 남는다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "status": "ACCEPT_PREREQUISITE_SOURCE_ONLY_PROPOSAL",
+      "reason": "이미 알려진 한 순서쌍을 각 식에 대입해 연립해 여부를 확인하는 목표이며 새 계수를 복원하는150과 다르다. M1-RPM149/full canonical path, M2 target 별도 분리를 수용한다. system 동시성 CC 및 SEQUENTIAL은 source-only 가설로만 수용하며 실제 solution 검증으로 승인하지 않는다."
+    }
+  ],
+  "difficultyReview": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_3ca0e254ae90e01efb7fa0e6db08efc7d5575c781ccd7f98c545ddd2e014a477",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "자연수 제한과 합 조건에 순서쌍을 직접 대입하는 정의 적용이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_59356f0de6ef6e2ae3b24eb4e400462bfa4fd06fcc4369ba16e165adc61f18cc",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "주어진 두 좌표를 각 연립식의 두 식에 넣어 성립을 확인한다. 단순 반복 계산이므로 1/B12 조건부 판단이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_9b220a84d33066926e22a86e8f5fe3d0d946db3f636201c96ca8033adc59de70",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "이미 선형으로 제시된 두 식에서 한 번 치환하여 해를 얻는 익숙한 계산 구조이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_aca9424c4903eed6ac752061ad5922d8e7a507972632650b5f7ab10c19631d2e",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "연속 등식을 두 선형식으로 풀어 쓰는 표준 변환이 한 번 필요하다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_97dcac28af619cbc0208e0148c787375e580bcdd253686124cd8dfb25fcae0a6",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "계수비를 통해 평행·일치·유일해를 구별하는 정형 판단이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b25c776094a75fdcc1854818ef4c550136456b5c4c0a52717d2fc7f4178ecbaa",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "두 호스의 단위 시간 작업량과 총량 조건을 대응시키는 익숙한 두 미지수 모델이다. 2/B23 조건부 제안이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_9c10760a9f73e30ea4b1502cbc53d4ee1e9a65e90729bd20a927c87d1df1dbaa",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "한 입력에 출력이 유일하게 정해지는지를 각 상황에서 확인하는 함수 정의의 직접 적용이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3dedbf2340c43f0b5bffe3d301c59af1baacfc1df6040384350e2daf46fe50bb",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "주어진 일차식에 입력값을 직접 대입한다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_bfcfdeac06f9aad51277ef48381f0a33eb938e1282a5787f2535002627ea3217",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "두 그래프의 같은 기울기와 상수항 차이에 해당하는 수직 이동량을 직접 읽는다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_287f899b4de6fe373659331a4bb6a8b5e94771e6ae801ea020092100b4302656",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "x절편으로 계수를 먼저 정한 뒤 y절편을 읽는 한 번의 연결된 변환이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_ab67c3cd6db4e0ff480f814d522d8aabdb8440af3c93d906bb5f9f84301b1050",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "기울기를 y변화량/x변화량에 대응시키는 직접 정의 적용이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_fa2cdae59b4a346e3a688a675f7e118c5b2713f1c26b8918653d15bdc6b8a351",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "명시된 식에서 절편·기울기·사분면을 확인하는 익숙한 그래프 성질 점검이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_4459fef33615bc57543e4cc011ab2d295f593aa4dcd7e49241d0db0539a19bce",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "실제 그림의 음의 기울기와 절편으로 주어진 설명을 비교한다. 1과 2의 경계이나 두 성질 대응을 고려한 2/B12를 수용한다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_a02a2b5019a14329148e3341cffb37f4a5778e7ed73a07ab176cfa6fdda150aa",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "주어진 방정식을 기울기절편 꼴로 정리하여 다섯 실제 그림과 대응시키는 표준 변환이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_300a60010567206c4f8172ce5049030f20c07050b1b530153ebf7a2cfb79c46d",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "곱과 차의 부호에서 계수 부호를 정하고 그래프의 사분면으로 옮기는 익숙한 부호 해석이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_0d13548bbacf78be3c83b310030229cc57e5f40dbbe82a611607678e768a0e22",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "y축에 평행한 직선은 x값이 일정하다는 정의를 직접 적용한다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_0544ba27dce308b7d29eac76415cd79d71bbaa3e8d63ca20df0b3770826dea85",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "지정된 두 식의 교점을 읽는 표준 연립해 해석이다. 실제 그림의 추가 상승 직선은 원문 보존 부채이며 난도를 높이는 새 조건으로 쓰지 않는다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7dfa9776645fe179bfa9ac1262ddff1bf964062e0c47fde1bae19155608cb1fe",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "두 방정식의 기울기만 비교하는 평행 조건 직접 적용이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ef9ad34380600ffc79691bef42eefb2316dcc27dcb59658bb1a2cb958acddad4",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "무수히 많은 교점은 두 직선이 같다는 조건으로 계수를 대응시키는 표준 변환이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_c64e410b6119d5f9441a104102d781acfd74ba26aa4d800e9888c4fad227097e",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "실제 그래프의 출발 위치와 두 도착 시각으로 각각의 직선을 읽고 만나는 시각을 비교하는 정형 모델이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2fc4f617351aaf2d5b59507ddd1ed68325d0f1d7b31d2df2b616826697816a83",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "첫 부분은 제시된 연립식의 해, 둘째는 승패별 이동량을 두 식에 대응하는 정형 문장 모델이다. 독립 부분을 복잡한 통합으로 올리지 않는다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_ba31ea69bb469ba50377663014c27faa1280fa9d68a9a265d6563f2f5446301f",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "첫 부분은 단가와 개수의 함수, 둘째는 공유 변을 고려한 반복 개수의 표준 표현이다. 실제 잘린 육각형 위쪽과 해설 부재 때문에 low 조건부만 유지한다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_89b10781bdde01fc3d2f716cd67260785b996990818576accba1b1c2afdd07c5",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "SOURCE_UNRESOLVED",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "첫 부분은 한 점과 기울기 직접 대응이다. 둘째는 음의 기울기와 제2사분면 배제 조건이 양립하지 않는다. 의도된 정형 2는 조건부이며 SOURCE_UNRESOLVED를 유지한다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_0a3ee765c50182c7483b37678583278b3f994a89d6679cf568eaa37b91450631",
+      "independentDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+      "reason": "둘째 부분의 가변 수평선과 고정 교점에 따른 넓이 표현, 정수 범위 및 비퇴화 조건을 함께 해석해야 하므로 표현 선택이 있는 3/B23이다. 실제 빈 좌표망은 학생 작도 공간이다. 기존 정답·해설이 없어 확정 난도나 검증된 풀이로 주장하지 않는다."
+    }
+  ],
+  "sourceVisualEvidence": [
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E026-q13.png",
+      "sha256": "b06d01f2c6f5a3f00345ae9140ed66c8ba8cccbff6a08abf3326f6829d67ca6f",
+      "actuallyViewed": true,
+      "observation": "하강 직선이 y축 1 부근을 지나며 기울기 −2인 그래프를 실제 확인했다."
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E026-q14.png",
+      "sha256": "40f3bce54505ea83c11b7aecfa2b40541d6b1627fee40f5779c740750378aa2b",
+      "actuallyViewed": true,
+      "observation": "절편과 기울기가 다른 다섯 그래프를 실제 확인했다."
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E026-q17.png",
+      "sha256": "3bfce88f8acb5bb2c4570ea7993699265e3dafc7e98d7502f8a06f6be26b4958",
+      "actuallyViewed": true,
+      "observation": "문항의 두 하강 직선 외 상승 직선이 추가로 들어 있다."
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E026-q20.png",
+      "sha256": "27f8767399ebc5270d07fc3fa4814c22c347ab7ff6d60b1df958ea842e5797ad",
+      "actuallyViewed": true,
+      "observation": "형은 원점 출발, 동생은 200m 출발이며 1000m 시각이 각각 250초와 300초인 그림이다."
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E026-q22.png",
+      "sha256": "6a8ac8d2aae2440c02667a8bd241852e91a24dfb019017eefac934c03eab3d66",
+      "actuallyViewed": true,
+      "observation": "육각형의 상반부가 잘리고 하반부와 공유 수직변이 남아 있다."
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E026-q24_1.png",
+      "sha256": "2aa38f38a6022b237b352e98afb03f2c2b1232caf3ca8ffedc8f0672c48f2feb",
+      "actuallyViewed": true,
+      "observation": "빈 좌표망을 실제 확인했다."
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E026-q24_2.png",
+      "sha256": "2aa38f38a6022b237b352e98afb03f2c2b1232caf3ca8ffedc8f0672c48f2feb",
+      "actuallyViewed": true,
+      "observation": "q24_1과 SHA256이 같은 빈 좌표망 파일임을 확인했다."
+    }
+  ],
+  "narrowRequestedAmendments": [
+    {
+      "sourceOrdinal": 6,
+      "field": "fourSlot.goal",
+      "request": "경과시간 CANDIDATE plus registered 변화량316 in same slot"
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "fourSlot.goal/condition",
+      "request": "매개변수308 b goal and explicit a,b 상수 condition"
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "fourSlot.goal",
+      "request": "매개변수308 m before 합"
+    },
+    {
+      "sourceOrdinals": [
+        7,
+        9,
+        11,
+        12,
+        13,
+        18,
+        19,
+        20
+      ],
+      "field": "fourSlot.goal",
+      "request": "Writer to add each actual core mathematical target using source literals; generic 값/판정 alone is insufficient."
+    }
+  ],
+  "mechanicalValidation": {
+    "nativeValidationPath": "/workspace/scratch/59e0f5bd3a77/workers/C/cross/E026.native-validation-original.json",
+    "native": {
+      "fail": [
+        "#1 empty method",
+        "#2 empty method",
+        "#3 empty method",
+        "#4 empty method",
+        "#5 empty method",
+        "#6 empty method",
+        "#7 empty method",
+        "#8 empty method",
+        "#9 empty method",
+        "#10 empty method",
+        "#11 empty method",
+        "#12 empty method",
+        "#13 empty method",
+        "#14 empty method",
+        "#15 empty method",
+        "#16 empty method",
+        "#17 empty method",
+        "#18 empty method",
+        "#19 empty method",
+        "#20 empty method",
+        "#21 empty method",
+        "#22 empty method",
+        "#23 empty method",
+        "#24 empty method"
+      ],
+      "warn": [
+        "#1 only 3 distinct terms",
+        "#2 only 2 distinct terms",
+        "#3 only 2 distinct terms",
+        "#3 same 4-slot set as #2",
+        "#4 only 2 distinct terms",
+        "#5 only 2 distinct terms",
+        "#5 same 4-slot set as #2",
+        "#6 only 2 distinct terms",
+        "#7 only 3 distinct terms",
+        "#8 only 2 distinct terms",
+        "#9 only 3 distinct terms",
+        "#10 only 3 distinct terms",
+        "#11 only 2 distinct terms",
+        "#12 only 2 distinct terms",
+        "#13 only 2 distinct terms",
+        "#14 only 2 distinct terms",
+        "#15 only 3 distinct terms",
+        "#16 only 3 distinct terms",
+        "#17 only 2 distinct terms",
+        "#17 same 4-slot set as #2",
+        "#18 only 3 distinct terms",
+        "#19 only 3 distinct terms",
+        "#20 only 3 distinct terms",
+        "#21 only 4 distinct terms",
+        "#22 only 4 distinct terms"
+      ],
+      "stats": {
+        "items": 24,
+        "examItems": 24,
+        "quotes": 74
+      }
+    },
+    "identityFingerprintMismatches": 0,
+    "literalQuoteMismatches": 0,
+    "quotesChecked": 74,
+    "sourceBlobAndShaMatched": true,
+    "allMethodsEmptyAsRequired": true
+  },
+  "limitations": [
+    "All24 answers and solutions are absent; SOURCE_ONLY evidence remains conditional, no quality PASS or solution verification claim.",
+    "Native validator has exactly24 empty-method FAIL results; they remain explicit debt and must not be filled with newly authored solutions.",
+    "Machine curriculum/legacy levels and source numeric fields are absent; semantic curriculum and numeric values remain proposals.",
+    "Await writer immutable goal supplement exact SHA before root accepted-layer integration."
+  ]
+}

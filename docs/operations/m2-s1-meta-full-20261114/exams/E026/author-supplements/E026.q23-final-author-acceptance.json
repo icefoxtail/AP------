@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "m2-s1-meta-author-supplement.v1",
+  "examId": "E026",
+  "status": "AUTHOR_ACCEPTED_NARROW_CONDITION_AND_UNKNOWN_DIFFICULTY_CORRECTION",
+  "originalReviewSha256": "53951306519594ad2e0986004ba868d41c121c1d6684d5fb88d5d0331f5b71ae",
+  "originalFourSlotSha256": "cfba2ceb0ca21efc485974cc4cba2e46048a814963518f2b136e6a9e7657f53e",
+  "priorGoalSupplementSha256": "63c494f8827f7f0f67f3ec7d87931e36c39ff85018fcc5ddef75769d0e142782",
+  "sourceOrdinal": 23,
+  "questionUid": "qid_v1_89b10781bdde01fc3d2f716cd67260785b996990818576accba1b1c2afdd07c5",
+  "conditionAppend": {
+    "term": "평행",
+    "termId": 180,
+    "src": "stem",
+    "quote": "그래프와 평행하고"
+  },
+  "difficultyAcceptedPatch": {
+    "difficultyBucket": "UNKNOWN",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "difficultyConfidence": "low",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "reviewStatus": "manual_review"
+  },
+  "reason": "수준별 3-②의 명시 평행 조건은 condition에서 빠짐없이 보존한다. 두 점의 기울기 -1과 평행해야 하므로 a=1이며 y=-x+1+b는 어떤 실수 b에도 충분히 작은 음수 x에서 y>0이 되어 제2사분면을 지난다. 따라서 제2사분면 비통과 조건과 양립하지 않는 독립 필수 소문항을 포함한 단일 UID 전체의 난도를 숫자로 확정하지 않는다. 모순은 contentDebt와 manual_review에 남기며 비정규 SOURCE_UNRESOLVED boundary는 쓰지 않는다.",
+  "invariants": [
+    "원 저작 및 기존 두 supplement의 bytes 불변",
+    "원문·보기·정답·해설·UID 불변",
+    "source-only method 빈값/native FAIL 유지"
+  ]
+}

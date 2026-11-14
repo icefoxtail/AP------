@@ -1,0 +1,3581 @@
+{
+  "schemaVersion": "m2-s1-meta-review-v1",
+  "examId": "E026",
+  "owner": "B",
+  "sourceArchiveFile": "original/middle/m2/1final/23_매산중_1학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+  "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "reviewedQuestionCount": 24,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_3ca0e254ae90e01efb7fa0e6db08efc7d5575c781ccd7f98c545ddd2e014a477",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M1-RPM-149",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 각 순서쌍을 원식에 대입하고 자연수 제한을 확인",
+      "decisiveStep": "방정식의 해 정의와 자연수라는 조건이 목표이며 새로운 풀이 문장을 원문에 추가하지 않는다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": {
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이",
+          "l3": "등식과 방정식",
+          "l4": "방정식의 해"
+        },
+        "rpmBasePath": {
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이",
+          "l3": "등식과 방정식",
+          "l4": "방정식의 해"
+        },
+        "rpmRecordId": "M1-RPM-149",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M1-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\"]",
+        "semanticSourcePath": {
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이",
+          "l3": "등식과 방정식",
+          "l4": "방정식의 해"
+        },
+        "semanticSourceScope": "2022|중1 수학|M1-03|M1-03-LINEAR_EQUATION|M1-RPM-149",
+        "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+        "targetNamespace": {
+          "scope": "M2-1",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+          "provenance": "SOURCE_FIELDS_ABSENT_TARGET_PROPOSAL_ONLY"
+        },
+        "targetParentLookupReference": "M2-RPM-148",
+        "targetNamespaceProvenance": "SOURCE_FIELDS_ABSENT_TARGET_PROPOSAL_ONLY",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Canonical prerequisite RPM path remains intact. Target M2 namespace and L1/L2 are held separately in targetNamespace; absent source target fields remain proposal only. Target scoped binding is unconfirmed.",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+            "parentProblemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+            "definition": "후보 값을 각 방정식에 직접 대입해 등식 성립 여부를 판정한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "현재M2의 가감/대입풀이 leaf보다 prerequisite M1의 방정식의해149가 직접적인 정의이다. current targetM2 namespace는 source에 없으므로 제안으로만 둔다.",
+        "binding": "기존M1 template는 후보값을 각 방정식에 대입해 등식 성립을 판정한다. 두 좌표를 함께 대입하는 기본해 정의와 맞는 shared 후보이나 targetM2 binding과 실제풀이 근거는 미확정이다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "x,y가 자연수임을 명시하여 x0인 후보를 배제한다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "자연수 조건을 만족하는 순서쌍을 합10에 직접 대입하는 한 단계 판정.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "현재M2의 가감/대입풀이 leaf보다 prerequisite M1의 방정식의해149가 직접적인 정의이다. current targetM2 namespace는 source에 없으므로 제안으로만 둔다. 방정식의 해 정의와 자연수라는 조건이 목표이며 새로운 풀이 문장을 원문에 추가하지 않는다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "자연수 조건을 만족하는 순서쌍을 합10에 직접 대입하는 한 단계 판정."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "466bd61c06c04e248d2cece029b570c5463e677a8654acba39536dfd01a307e8"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "4ad13f7bd96319621519ec33dbb7e3e42db81643d94864e4c6b18cbe0e07d260"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_3ca0e254ae90e01efb7fa0e6db08efc7d5575c781ccd7f98c545ddd2e014a477",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "자연수 조건을 만족하는 순서쌍을 합10에 직접 대입하는 한 단계 판정."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_59356f0de6ef6e2ae3b24eb4e400462bfa4fd06fcc4369ba16e165adc61f18cc",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M1-RPM-149",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 주어진 좌표를 연립식의 두 식에 모두 대입해 성립 확인",
+      "decisiveStep": "해를 구하는 대신 주어진 해의 성립을 확인하는 source 목표이다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": {
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이",
+          "l3": "등식과 방정식",
+          "l4": "방정식의 해"
+        },
+        "rpmBasePath": {
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이",
+          "l3": "등식과 방정식",
+          "l4": "방정식의 해"
+        },
+        "rpmRecordId": "M1-RPM-149",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M1-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M1-1\",\"문자와 식\",\"일차방정식의 풀이\"]",
+        "semanticSourcePath": {
+          "majorUnit": "문자와 식",
+          "midUnit": "일차방정식의 풀이",
+          "l3": "등식과 방정식",
+          "l4": "방정식의 해"
+        },
+        "semanticSourceScope": "2022|중1 수학|M1-03|M1-03-LINEAR_EQUATION|M1-RPM-149",
+        "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+        "targetNamespace": {
+          "scope": "M2-1",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+          "provenance": "SOURCE_FIELDS_ABSENT_TARGET_PROPOSAL_ONLY"
+        },
+        "targetParentLookupReference": "M2-RPM-148",
+        "targetNamespaceProvenance": "SOURCE_FIELDS_ABSENT_TARGET_PROPOSAL_ONLY",
+        "projectionStatus": "BINDING_PENDING",
+        "projectionReason": "Canonical prerequisite RPM path remains intact. Target M2 namespace and L1/L2 are held separately in targetNamespace; absent source target fields remain proposal only. Target scoped binding is unconfirmed.",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+            "parentProblemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+            "definition": "후보 값을 각 방정식에 직접 대입해 등식 성립 여부를 판정한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [
+          {
+            "conceptKey": "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+            "definition": "둘 이상의 일차방정식을 동시에 만족하는 미지수의 값을 다루는 개념."
+          }
+        ],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "prerequisite 방정식의해149를 각각의 식에 사용한다. 두 식 동시성은 명시적 보조 개념이며 targetM2 source 미정 namespace를 제안으로 구분한다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "한 방정식 해의 정의를 두 방정식에 동시에 만족시킨다는 system 조건이 추가된다. 실제 solution 증거가 없어 보조축도 source-only 제안이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "각 방정식의 성립 여부를 얻은 다음 두 성립 결과를 같은 순서쌍의 연립해 조건으로 결합한다. 실제 풀이 근거 없이 source-only 가설로 남긴다.",
+        "difficulty": "주어진 두 수를 각 연립식에 대입하여 동시에 성립하는지 확인하는 직접 정의 적용.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "prerequisite 방정식의해149를 각각의 식에 사용한다. 두 식 동시성은 명시적 보조 개념이며 targetM2 source 미정 namespace를 제안으로 구분한다. 해를 구하는 대신 주어진 해의 성립을 확인하는 source 목표이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "주어진 두 수를 각 연립식에 대입하여 동시에 성립하는지 확인하는 직접 정의 적용."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "fd832dca09152a385d6e570badc228c0d1a852f00c6a0001de612e0a390c3d2f"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "fe7e3a09f5c2e2732e1b6bd80f78b6432c668e2e6e3a24e45571b398f6d19b77"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_59356f0de6ef6e2ae3b24eb4e400462bfa4fd06fcc4369ba16e165adc61f18cc",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "주어진 두 수를 각 연립식에 대입하여 동시에 성립하는지 확인하는 직접 정의 적용."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_9b220a84d33066926e22a86e8f5fe3d0d946db3f636201c96ca8033adc59de70",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-149",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 둘째 식의3y를 첫째 식에 대입하는 표준 연립풀이 후보",
+      "decisiveStep": "두 식의 표준 대입법149를 source-only 후보로 제시하며 가감법도 가능하다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "대입법"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "대입법"
+        },
+        "rpmRecordId": "M2-RPM-149",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+        "supportingRpmRecordIds": [
+          "M2-RPM-148"
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "기본 연립풀이의 대입법149 후보이다. 현재 solution이 없어 실제 채택방법을 FINAL로 단정하지 않는다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "둘째 식을 첫째 식에 대입하거나 양 식을 정리해 미지수를 소거하는 표준 연립풀이.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "기본 연립풀이의 대입법149 후보이다. 현재 solution이 없어 실제 채택방법을 FINAL로 단정하지 않는다. 두 식의 표준 대입법149를 source-only 후보로 제시하며 가감법도 가능하다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTUAL_ELIMINATION_OR_SUBSTITUTION_METHOD_NOT_OBSERVED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "둘째 식을 첫째 식에 대입하거나 양 식을 정리해 미지수를 소거하는 표준 연립풀이."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2db6809718abe8c867bc121629a9b34e46d30a60fad6e75a753bac238c824499"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "71eb4c81ad8b7fb79fbd032f0b8cd63314b2685c6c5a8a1ca547c7b7522b651c"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_9b220a84d33066926e22a86e8f5fe3d0d946db3f636201c96ca8033adc59de70",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "둘째 식을 첫째 식에 대입하거나 양 식을 정리해 미지수를 소거하는 표준 연립풀이."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_aca9424c4903eed6ac752061ad5922d8e7a507972632650b5f7ab10c19631d2e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-148",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 연쇄 등식을 두 등식으로 해석한 뒤 가감하는 후보",
+      "decisiveStep": "12x−5y=22와2x−10y=22의 동시 성립을 요구한다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "rpmRecordId": "M2-RPM-148",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+        "supportingRpmRecordIds": [
+          "M2-RPM-149"
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "연쇄 등식은 새로운 equation 유형이 아니라 기본 연립풀이 source 후보이다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "연쇄등식을 두 일차방정식으로 읽은 뒤 표준 연립풀이를 한다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "연쇄 등식은 새로운 equation 유형이 아니라 기본 연립풀이 source 후보이다. 12x−5y=22와2x−10y=22의 동시 성립을 요구한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTUAL_ELIMINATION_OR_SUBSTITUTION_METHOD_NOT_OBSERVED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "연쇄등식을 두 일차방정식으로 읽은 뒤 표준 연립풀이를 한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "a415ddc15a568924a0590d47cab17ea3fadb8206b7b072871256436ed321888b"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "e5bab0d87f4f5da79bbfa977c9144c5553a15b0318563d131db19fa938761752"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_aca9424c4903eed6ac752061ad5922d8e7a507972632650b5f7ab10c19631d2e",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "연쇄등식을 두 일차방정식으로 읽은 뒤 표준 연립풀이를 한다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_97dcac28af619cbc0208e0148c787375e580bcdd253686124cd8dfb25fcae0a6",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-155",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 계수비와 상수비로 연립식의 해 상태 비교",
+      "decisiveStep": "유일해인지 묻는 source 목표이며 해의 개수를 판별하는 계수조건155이다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "계수 조건으로 해의 상태 판단"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "계수 조건으로 해의 상태 판단"
+        },
+        "rpmRecordId": "M2-RPM-155",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+        "supportingRpmRecordIds": [
+          "M2-RPM-154"
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "특수해를 직접 구하는154보다 해 상태를 조건으로 판정하는155를 source-only primary 후보로 둔다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "다섯 연립식의 계수 비와 상수 관계로 해가 하나인 경우를 판정한다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "특수해를 직접 구하는154보다 해 상태를 조건으로 판정하는155를 source-only primary 후보로 둔다. 유일해인지 묻는 source 목표이며 해의 개수를 판별하는 계수조건155이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "다섯 연립식의 계수 비와 상수 관계로 해가 하나인 경우를 판정한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "d08170048a3d261f2badf5e9c74bdfdc989e5f428d2678a82c53cb9a6ef20ebd"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "7832928a7a5cb94b8cd6deb144b5b9dda6bda4d8754d383c377866a4229673ca"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_97dcac28af619cbc0208e0148c787375e580bcdd253686124cd8dfb25fcae0a6",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "다섯 연립식의 계수 비와 상수 관계로 해가 하나인 경우를 판정한다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b25c776094a75fdcc1854818ef4c550136456b5c4c0a52717d2fc7f4178ecbaa",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-163",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 호스의 단위시간 작업량으로 두 채움 조건을 모델링",
+      "decisiveStep": "전체 물통을1로 정규화하는 작업률 모형은 author 분석 가설이며 원문해설 근거가 아니다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "일의 양",
+          "l4": "일의 양과 작업률"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "일의 양",
+          "l4": "일의 양과 작업률"
+        },
+        "rpmRecordId": "M2-RPM-163",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식의 활용\"]",
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "두 호스의 시간·총량 관계이므로 일의양과작업률163을 source 목표로 식별한다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "호스의 분당 작업량을 두 미지수로 두고 두 채움 조건을 선형식으로 세우는 익숙한 작업량 모델.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "두 호스의 시간·총량 관계이므로 일의양과작업률163을 source 목표로 식별한다. 전체 물통을1로 정규화하는 작업률 모형은 author 분석 가설이며 원문해설 근거가 아니다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "호스의 분당 작업량을 두 미지수로 두고 두 채움 조건을 선형식으로 세우는 익숙한 작업량 모델."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "617d1489c87e2d1a18a38960692473b0b127251dec7c02dfb98ace1463a93819"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "94d0b7db56570e0dd0c12343c7677ee5d0bf793b7e05e30dbc2d30f8ea263181"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_b25c776094a75fdcc1854818ef4c550136456b5c4c0a52717d2fc7f4178ecbaa",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "호스의 분당 작업량을 두 미지수로 두고 두 채움 조건을 선형식으로 세우는 익숙한 작업량 모델."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_9c10760a9f73e30ea4b1502cbc53d4ee1e9a65e90729bd20a927c87d1df1dbaa",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_L4_UNREPRESENTED_FUNCTION_DEFINITION_SHARED_SEMANTIC_IDENTIFIED",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 각 입력에서 출력이 유일한지 함수 정의로 판정",
+      "decisiveStep": "공약수 대응은 입력에 따라 둘 이상의 출력이 가능하다는 정의 판정이다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+        "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
+            "parentProblemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+            "definition": "`함수의 뜻과 판정` 안에서 '대응이 함수인지 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+            "internalSkeleton": "대응이 함수인지 판정",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "현재M2 leaf165는 일차함수판별이고 이 문항은 함수 자체의 정의다. prerequisite M1 정비례/반비례leaf도 일반정의와 같지 않다. GLOBAL ACTIVE 함수대응판정 shared semantic은 찾았으나 해당 RPM L4 exact 대응은 표현되지 않는다.",
+        "binding": "GLOBAL ACTIVE 정의/골격은 입력-출력 대응의 함수 여부 판정과 일치한다. 신규key를 만들지 않고 기존후보를 보존하며 current RPM path 대응과 target binding을 따로 남긴다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "입력 하나에 출력이 하나인지 함수의 정의를 적용한다. 공약수는 하나로 정해지지 않는다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "현재M2 leaf165는 일차함수판별이고 이 문항은 함수 자체의 정의다. prerequisite M1 정비례/반비례leaf도 일반정의와 같지 않다. GLOBAL ACTIVE 함수대응판정 shared semantic은 찾았으나 해당 RPM L4 exact 대응은 표현되지 않는다. 공약수 대응은 입력에 따라 둘 이상의 출력이 가능하다는 정의 판정이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "RPM_L4_UNREPRESENTED_FUNCTION_DEFINITION_SHARED_SEMANTIC_IDENTIFIED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "입력 하나에 출력이 하나인지 함수의 정의를 적용한다. 공약수는 하나로 정해지지 않는다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "835c026ca57b8fe2a97e28485018dd4302db3a0bd34ec8d42605b6319cd2f585"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "bee69b3456151a84640012e00120565059de6a8fd5f61b111de51fd77deab714"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_9c10760a9f73e30ea4b1502cbc53d4ee1e9a65e90729bd20a927c87d1df1dbaa",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "입력 하나에 출력이 하나인지 함수의 정의를 적용한다. 공약수는 하나로 정해지지 않는다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3dedbf2340c43f0b5bffe3d301c59af1baacfc1df6040384350e2daf46fe50bb",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-164",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 주어진 입력을 일차함수에 직접 대입",
+      "decisiveStep": "함숫값 자체가 목표이다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmRecordId": "M2-RPM-164",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+            "parentProblemTypeKey": "PT_FUNCTION_VALUE",
+            "definition": "`함숫값 계산` 안에서 '함숫값 직접 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+            "internalSkeleton": "함숫값 직접 계산",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "함숫값164를 source-only 후보로 둔다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "일차함수에 주어진 입력을 직접 대입하는 정의 적용.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "함숫값164를 source-only 후보로 둔다. 함숫값 자체가 목표이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "일차함수에 주어진 입력을 직접 대입하는 정의 적용."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cb91418b22787eddc5db31351c399f7eb558d0a289cd17d0465bc685cefd05df"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "bbc5836e30d6fe3574029fb281be93b2e9d24505dee7943524b651caf773b4a7"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_3dedbf2340c43f0b5bffe3d301c59af1baacfc1df6040384350e2daf46fe50bb",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "일차함수에 주어진 입력을 직접 대입하는 정의 적용."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_bfcfdeac06f9aad51277ef48381f0a33eb938e1282a5787f2535002627ea3217",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-166",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 상수항의 차로 수직 이동량 읽기",
+      "decisiveStep": "같은 기울기에서 y절편이 바뀌는 값을 묻는다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmRecordId": "M2-RPM-166",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "supportingRpmRecordIds": [
+          "M2-RPM-168"
+        ],
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+            "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+            "definition": "일차함수 식의 상수항에 이동량을 더한 평행이동 식을 세우고, 그래프가 지나는 점의 좌표를 대입해 이동량을 구한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "current 기울기·절편166의 수직 평행이동 관련항목으로 source 후보를 둔다. 168평행여부가 출력은 아니다.",
+        "binding": "기존 template는 이동후 지나는 점에 대입하여 이동량을 구한다. 본문은 두 식이 모두 주어져 절편 차이를 읽으므로 동일 주제의 variant이고 exact skeleton으로 확정하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "같은 기울기의 두 식에서 y절편 차이를 직접 읽는 평행이동 기본형.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "current 기울기·절편166의 수직 평행이동 관련항목으로 source 후보를 둔다. 168평행여부가 출력은 아니다. 같은 기울기에서 y절편이 바뀌는 값을 묻는다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "같은 기울기의 두 식에서 y절편 차이를 직접 읽는 평행이동 기본형."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "58cfd6116a2c57532db5132638af017efeeabfef11f7b2a6e3366674938bcef0"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "c1d4ac5023385b32b6d45aefac8089e7b4ff21f6eff69136ce6d24c7aec7f0d0"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_bfcfdeac06f9aad51277ef48381f0a33eb938e1282a5787f2535002627ea3217",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "같은 기울기의 두 식에서 y절편 차이를 직접 읽는 평행이동 기본형."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_287f899b4de6fe373659331a4bb6a8b5e94771e6ae801ea020092100b4302656",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-166",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: x절편을 대입하여 상수항을 복원하고 y절편 읽기",
+      "decisiveStep": "x절편의 정의로 a를 정한 후 y절편을 확인하는 source 목표이다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmRecordId": "M2-RPM-166",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "기울기·절편166이 직접 목표이며 별도상위개념은 필요없다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "x절편2에서 y0을 대입해 상수 a를 정하고 이것이 y절편임을 확인한다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "기울기·절편166이 직접 목표이며 별도상위개념은 필요없다. x절편의 정의로 a를 정한 후 y절편을 확인하는 source 목표이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "x절편2에서 y0을 대입해 상수 a를 정하고 이것이 y절편임을 확인한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3cc059bc7b215c134fa7c2a700b53def5c65291c8f27531479a2ac6cfbb559f4"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "716c4b46d105b08afe2407695dc8bf40f3920439a1a79a9824a63b9cb198a88a"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_287f899b4de6fe373659331a4bb6a8b5e94771e6ae801ea020092100b4302656",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "x절편2에서 y0을 대입해 상수 a를 정하고 이것이 y절편임을 확인한다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_ab67c3cd6db4e0ff480f814d522d8aabdb8440af3c93d906bb5f9f84301b1050",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-166",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 기울기와 좌표 변화량 관계로 k를 역산",
+      "decisiveStep": "x증가량과 y감소량의 비가 기울기라는 source 조건이다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmRecordId": "M2-RPM-166",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "증가·감소169의 방향 판정이 아니라 정량적인 기울기166을 묻는다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "y변화량을 기울기로 나누어 x증가량을 구하는 직접 관계 적용.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "증가·감소169의 방향 판정이 아니라 정량적인 기울기166을 묻는다. x증가량과 y감소량의 비가 기울기라는 source 조건이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "y변화량을 기울기로 나누어 x증가량을 구하는 직접 관계 적용."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "119a178fb5ae7da24ac68a7d90e784f841c217cecde54cb399e5769cbe406ffc"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0df9bbc004d0b358fd6cd1b71bed9db9dc1830793956e4732366a21c5a9e0210"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_ab67c3cd6db4e0ff480f814d522d8aabdb8440af3c93d906bb5f9f84301b1050",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "y변화량을 기울기로 나누어 x증가량을 구하는 직접 관계 적용."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_fa2cdae59b4a346e3a688a675f7e118c5b2713f1c26b8918653d15bdc6b8a351",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-166",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 식의 기울기와 절편에서 기본 그래프 성질 판정",
+      "decisiveStep": "절편·기울기·사분면·증가 방향을 함께 확인하는 source 판정이다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmRecordId": "M2-RPM-166",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "supportingRpmRecordIds": [
+          "M2-RPM-169"
+        ],
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+            "parentProblemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+            "definition": "일차방정식을 일차함수 꼴로 고친 뒤 기울기, y절편, 지나는 사분면, 특정 점의 통과 여부를 각각 계산해 보기의 참·거짓을 판정한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "기울기·절편166을 중심으로 명시된 다섯 설명을 판정하는 후보이나 실제풀이 근거는 없다.",
+        "binding": "해당 M2 template는 일차방정식을 함수꼴로 고쳐 여러 성질을 판정한다. 본문은 이미 함수꼴이어서 성질 판정 skeleton은 관련되지만 전처리 차이를 적고 source-only 후보로 남긴다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "기울기와 절편, 사분면, 증가 방향의 기본 성질을 각 선택지에서 확인한다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "기울기·절편166을 중심으로 명시된 다섯 설명을 판정하는 후보이나 실제풀이 근거는 없다. 절편·기울기·사분면·증가 방향을 함께 확인하는 source 판정이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "기울기와 절편, 사분면, 증가 방향의 기본 성질을 각 선택지에서 확인한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "a53a14aea585101edf844059c9c5ecc9a12811e938e511206a808ac41d59c596"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "00e057f054a316e644ed194788633c7c9a8c4deb1bc8a01473d55b0bc4ca2bbb"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_fa2cdae59b4a346e3a688a675f7e118c5b2713f1c26b8918653d15bdc6b8a351",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "기울기와 절편, 사분면, 증가 방향의 기본 성질을 각 선택지에서 확인한다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_4459fef33615bc57543e4cc011ab2d295f593aa4dcd7e49241d0db0539a19bce",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-166",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 실제 직선 그림의 기울기와 절편을 읽고 설명 비교",
+      "decisiveStep": "그림의 감소 직선은 y=-2x와 평행인 후보와 일치한다. 이는 author의 그림 판독이며 원문 answer evidence가 아니다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmRecordId": "M2-RPM-166",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "supportingRpmRecordIds": [
+          "M2-RPM-168"
+        ],
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+            "parentProblemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+            "definition": "일차방정식을 일차함수 꼴로 고친 뒤 기울기, y절편, 지나는 사분면, 특정 점의 통과 여부를 각각 계산해 보기의 참·거짓을 판정한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "그림에서 기울기·절편166을 읽는 판정으로 source-only 후보를 둔다.",
+        "binding": "기존 M2 template는 방정식에서 성질을 판정하지만 여기서는 그림이 입력이다. 그림 판독 variant로만 보존한다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "실제 그림에서 기울기와 절편을 읽어 평행 여부 등 기본 설명을 비교한다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "그림에서 기울기·절편166을 읽는 판정으로 source-only 후보를 둔다. 그림의 감소 직선은 y=-2x와 평행인 후보와 일치한다. 이는 author의 그림 판독이며 원문 answer evidence가 아니다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 그림에서 기울기와 절편을 읽어 평행 여부 등 기본 설명을 비교한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "b8aa571b6ee9dd34600100849410aa3b6f84956452f9953bd1a8626bd7bbdbd3"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "f989520cd44b811c464c2de62f43a0ebe0ed91afa04ba85dd02d262e35274760"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_4459fef33615bc57543e4cc011ab2d295f593aa4dcd7e49241d0db0539a19bce",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "실제 그림에서 기울기와 절편을 읽어 평행 여부 등 기본 설명을 비교한다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_a02a2b5019a14329148e3341cffb37f4a5778e7ed73a07ab176cfa6fdda150aa",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-172",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 일차방정식을 함수꼴로 정리하고 두 절편에 맞는 그래프 선택",
+      "decisiveStep": "해당직선의 절편은 x3,y−5인 source 분석으로 그림⑤에 대응한다. 답이나 풀이를 source에 쓰지 않는다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "일차방정식의 그래프"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "일차방정식의 그래프"
+        },
+        "rpmRecordId": "M2-RPM-172",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+        "templateKey": "TPL_M2_MATCH_LINEAR_EQUATION_GRAPH_FROM_INTERCEPTS",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 일차방정식의 관계\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_MATCH_LINEAR_EQUATION_GRAPH_FROM_INTERCEPTS",
+            "parentProblemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+            "definition": "일차방정식을 일차함수 꼴로 변형해 x절편과 y절편을 구하고, 두 절편을 지나는 직선과 일치하는 그래프를 보기에서 찾는다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "일차방정식의그래프172이며 existing M2 exact goal/skeleton 후보가 있다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "식을 기울기절편형으로 정리하고 두 절편을 선택지 그림과 대응한다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "일차방정식의그래프172이며 existing M2 exact goal/skeleton 후보가 있다. 해당직선의 절편은 x3,y−5인 source 분석으로 그림⑤에 대응한다. 답이나 풀이를 source에 쓰지 않는다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "식을 기울기절편형으로 정리하고 두 절편을 선택지 그림과 대응한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0025245dcfbdcfe2a774ef0f715c18d808ac659086b25badce719f199d68ca72"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "1593969dda6042d2bee0f696069655d4a7b3c28dd9d825e9d3c66b15ed626ce7"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_a02a2b5019a14329148e3341cffb37f4a5778e7ed73a07ab176cfa6fdda150aa",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "식을 기울기절편형으로 정리하고 두 절편을 선택지 그림과 대응한다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_300a60010567206c4f8172ce5049030f20c07050b1b530153ebf7a2cfb79c46d",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-166",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 두 부호조건에서 기울기와 절편 부호를 정해 사분면 판정",
+      "decisiveStep": "ab<0와b>a는a음수,b양수를 강제하므로 식의 y절편−b도 음수다. source-only 논리이다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NEGATIVE",
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmRecordId": "M2-RPM-166",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NEGATIVE",
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+            "parentProblemTypeKey": "PT_LINE_EQUATION",
+            "definition": "직선의 계수 부호에서 기울기와 절편의 부호를 판정하여 그래프를 고른다.",
+            "internalSkeleton": "직선의 계수 부호에서 기울기와 절편의 부호를 판정하여 그래프를 고른다.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "기울기·절편166을 source 후보로 두며 부호조건은 명시적 restriction이다.",
+        "binding": "generic 계수부호→기울기·절편부호 skeleton은 관련된다. 현재 출력은 그래프그림선택이 아니라 지나는 사분면 집합이므로 exact 템플릿은 미확정이다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "음수제한은 ab에, 양수제한은 b−a에 각각 걸린 명시적 조건이다. a,b 모두에 한꺼번에 양수·음수를 부여하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "곱의 부호와 b>a에서 a,b의 부호를 정하고 기울기와 y절편의 부호를 연결하는 정형 절차.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "기울기·절편166을 source 후보로 두며 부호조건은 명시적 restriction이다. ab<0와b>a는a음수,b양수를 강제하므로 식의 y절편−b도 음수다. source-only 논리이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "곱의 부호와 b>a에서 a,b의 부호를 정하고 기울기와 y절편의 부호를 연결하는 정형 절차."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ad7e26272065dc3c9f1c41a499255cbfea6a56b28f6b2574b68a4936467588a3"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "77b1d52efb96930e1eb0bdbc45b24b6ae6afb80f56a954d32b676ddff34271c6"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_300a60010567206c4f8172ce5049030f20c07050b1b530153ebf7a2cfb79c46d",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "곱의 부호와 b>a에서 a,b의 부호를 정하고 기울기와 y절편의 부호를 연결하는 정형 절차."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_0d13548bbacf78be3c83b310030229cc57e5f40dbbe82a611607678e768a0e22",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-173",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: y축에 평행한 직선은 x좌표 일정임을 이용",
+      "decisiveStep": "지나는점의 x좌표로 세로 직선이 결정된다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "x축·y축에 평행한 직선"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "x축·y축에 평행한 직선"
+        },
+        "rpmRecordId": "M2-RPM-173",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 일차방정식의 관계\"]",
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "x축·y축평행직선173을 source-only 후보로 둔다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "y축에 평행한 직선은 x좌표가 일정하다는 직접 정의 적용.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "x축·y축평행직선173을 source-only 후보로 둔다. 지나는점의 x좌표로 세로 직선이 결정된다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "y축에 평행한 직선은 x좌표가 일정하다는 직접 정의 적용."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3ce9ffa111419024e391f02b9f7df67c8856ba0517bea5e0eb80b271e6db736d"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cff7961a2c36604469ed61a39e09a797d6e635e77fb17fc315dc9ec19617f52c"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_0d13548bbacf78be3c83b310030229cc57e5f40dbbe82a611607678e768a0e22",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "y축에 평행한 직선은 x좌표가 일정하다는 직접 정의 적용."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_0544ba27dce308b7d29eac76415cd79d71bbaa3e8d63ca20df0b3770826dea85",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-174",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 명시된 두 직선의 교점을 해와 연결",
+      "decisiveStep": "actual PNG에는 추가 양의기울기 직선도 있으나 문제에서 지정한 두 식은 음의기울기 두 직선이다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식"
+        },
+        "rpmRecordId": "M2-RPM-174",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 일차방정식의 관계\"]",
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "교점과연립방정식174가 직접 목표이다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "주어진 두 직선의 교점을 읽거나 두 식을 연립하여 순서쌍을 확인한다. 그림의 추가 직선은 요구한 두 식이 아니다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "교점과연립방정식174가 직접 목표이다. actual PNG에는 추가 양의기울기 직선도 있으나 문제에서 지정한 두 식은 음의기울기 두 직선이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "주어진 두 직선의 교점을 읽거나 두 식을 연립하여 순서쌍을 확인한다. 그림의 추가 직선은 요구한 두 식이 아니다."
+      },
+      "contentDebt": [
+        {
+          "type": "EXTRANEOUS_FIGURE_LINE",
+          "evidence": "ActualPNG contains a third rising line not named in the requested system; the two stated equations still determine a unique intersection. Preserve image; no missing answer/solution invented."
+        }
+      ],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "9bd027823870477c9636b89011917099ba9f0dff971362fc5000b712185a8e89"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "76dec2ca75d6708f19e35a6c576ec0a4f9141af6bb2f3b101dbc561998abfae1"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_0544ba27dce308b7d29eac76415cd79d71bbaa3e8d63ca20df0b3770826dea85",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "주어진 두 직선의 교점을 읽거나 두 식을 연립하여 순서쌍을 확인한다. 그림의 추가 직선은 요구한 두 식이 아니다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7dfa9776645fe179bfa9ac1262ddff1bf964062e0c47fde1bae19155608cb1fe",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-175",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 두 일차방정식 그래프의 기울기가 같은 조건 적용",
+      "decisiveStep": "두 y계수는 같고 x계수 대응으로 평행조건을 확인한다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "두 직선의 평행·일치"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "두 직선의 평행·일치"
+        },
+        "rpmRecordId": "M2-RPM-175",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PARALLEL",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 일차방정식의 관계\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_LINE_PARALLEL",
+            "parentProblemTypeKey": "PT_LINE_EQUATION",
+            "definition": "주어진 직선과 같은 기울기 또는 같은 법선계수를 이용해 평행한 직선을 구한다.",
+            "internalSkeleton": "주어진 직선과 같은 기울기 또는 같은 법선계수를 이용해 평행한 직선을 구한다.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "방정식 두 직선의 평행·일치175가 source 목표이다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "두 식의 기울기를 같게 놓는 평행 조건의 직접 적용.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "방정식 두 직선의 평행·일치175가 source 목표이다. 두 y계수는 같고 x계수 대응으로 평행조건을 확인한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두 식의 기울기를 같게 놓는 평행 조건의 직접 적용."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "a8b545b194db5a658c6a53fa9965e9aebce66974153701737054b73489bf0176"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "dcd8d9571497d4a14901a4c298cc0b09e32c43703556e67db1bf1564bdc81916"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_7dfa9776645fe179bfa9ac1262ddff1bf964062e0c47fde1bae19155608cb1fe",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "두 식의 기울기를 같게 놓는 평행 조건의 직접 적용."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ef9ad34380600ffc79691bef42eefb2316dcc27dcb59658bb1a2cb958acddad4",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-175",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 교점이 무수한 두 직선의 일치 조건으로 계수 관계 설정",
+      "decisiveStep": "같은 직선이 되는 계수조건으로 ab를 확인한다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "두 직선의 평행·일치"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "두 직선의 평행·일치"
+        },
+        "rpmRecordId": "M2-RPM-175",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 일차방정식의 관계\"]",
+        "supportingRpmRecordIds": [
+          "M2-RPM-154"
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "그래프 교점무수는 두 직선의 일치175가 직접적인 source 목표이고 해특수154가 보조이다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "선택한 source-only primary 제안에 이미 포함된 기본 대수/그래프 개념을 CC로 중복하지 않는다. 실제 풀이 증거는 미확보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "source-only primary 가설의 기본 절차로 분류한다. 실제 풀이 연결 증거는 없고 확정 구현으로 사용하지 않는다.",
+        "difficulty": "두 직선의 교점이 무수하므로 두 식이 동일하도록 계수와 상수 비를 맞춘다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "그래프 교점무수는 두 직선의 일치175가 직접적인 source 목표이고 해특수154가 보조이다. 같은 직선이 되는 계수조건으로 ab를 확인한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두 직선의 교점이 무수하므로 두 식이 동일하도록 계수와 상수 비를 맞춘다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3ccc3baefbe2dc1093539945b630b6270cec1d6753952f85422c278be71cb41d"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "e838b9b94a78c0d249da3f1d3e9d1000e12001f7991eb8378d8e19a8c72d9908"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_ef9ad34380600ffc79691bef42eefb2316dcc27dcb59658bb1a2cb958acddad4",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "두 직선의 교점이 무수하므로 두 식이 동일하도록 계수와 상수 비를 맞춘다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_c64e410b6119d5f9441a104102d781acfd74ba26aa4d800e9888c4fad227097e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-174",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 달리기 그래프의 두 직선식에서 만나는 시간을 판단",
+      "decisiveStep": "그림은 초기거리0/200과1000m 도착시간250/300을 나타낸다. 두 직선 교점이 추월 시작 경계이다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": [
+          "CC_SPEED_DISTANCE_TIME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식"
+        },
+        "rpmRecordId": "M2-RPM-174",
+        "crossConceptKeys": [
+          "CC_SPEED_DISTANCE_TIME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+        "templateKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 일차방정식의 관계\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+            "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+            "definition": "각 물체의 그래프에서 두 점을 읽어 기울기와 y절편으로 일차함수 식을 세우고, 두 식을 같다고 놓아 만나는 시각을 구하는 과정을 서술한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [
+          {
+            "conceptKey": "CC_SPEED_DISTANCE_TIME",
+            "definition": "속력과 시간의 곱으로 거리를 구하는 관계."
+          }
+        ],
+        "semanticEvidenceStatus": "SOURCE_ONLY"
+      },
+      "fieldReview": {
+        "classification": "source가 직접 거리-시간 그래프의 교점을 묻으므로174를 source-only 후보로 둔다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "그래프 교점 primary 밖에서 거리·시간과 일정속력의 물리적 대응을 해석해야 하므로CC_SPEED_DISTANCE_TIME을 source-only 후보로 둔다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "거리/시간에서 직선식을 읽고 교점과 추월시각으로 연결한다. 기존 solution근거는 없다.",
+        "difficulty": "그림의 도착시간과 초기거리로 두 일정속력의 직선을 세워 교점 시간을 구하는 표준 추격 모델.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "source가 직접 거리-시간 그래프의 교점을 묻으므로174를 source-only 후보로 둔다. 그림은 초기거리0/200과1000m 도착시간250/300을 나타낸다. 두 직선 교점이 추월 시작 경계이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "그림의 도착시간과 초기거리로 두 일정속력의 직선을 세워 교점 시간을 구하는 표준 추격 모델."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "d0efc11852fd957d85e8008a489da6a91814c6de9eecdab459c327d830e70cc4"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "62ff9130fbf4171bf9ede8d02697f610e404ba56644b908272c81ce3922cc4cc"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_c64e410b6119d5f9441a104102d781acfd74ba26aa4d800e9888c4fad227097e",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "그림의 도착시간과 초기거리로 두 일정속력의 직선을 세워 교점 시간을 구하는 표준 추격 모델."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2fc4f617351aaf2d5b59507ddd1ed68325d0f1d7b31d2df2b616826697816a83",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 서로 독립인 기본 연립식과 가위바위보 모형을 각각 분석",
+      "decisiveStep": "수준별1-①은기본연립식;1-②는승패횟수의게임모형이다. 번호순서로primary를고르지않는다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "perPartDecisions": [
+          {
+            "part": "수준별1-①",
+            "rpmRecordId": "M2-RPM-149",
+            "goal": "주어진연립식해",
+            "evidenceStatus": "SOURCE_ONLY"
+          },
+          {
+            "part": "수준별1-②",
+            "rpmRecordId": null,
+            "supportingRpmRecordIds": [
+              "M2-RPM-156",
+              "M2-RPM-157"
+            ],
+            "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+            "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+            "goal": "이긴횟수",
+            "evidenceStatus": "SOURCE_ONLY",
+            "caveat": "기존 게임template의 출력은두변수합이나 본문은한사람승수여서 exact일치로단정하지않는다."
+          }
+        ],
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+            "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+            "definition": "한 사람의 이긴 횟수와 진 횟수를 다른 사람의 진 횟수와 이긴 횟수로 뒤집어, 각 사람의 계단 이동량에 대한 두 방정식을 세우고 두 식의 합과 차로 두 변수의 합을 구한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY",
+        "singlePrimaryStatus": "META_ONLY_UNRESOLVED",
+        "dependentAxisStatus": {
+          "crossConcept": "META_ONLY_UNRESOLVED",
+          "integrationPattern": "META_ONLY_UNRESOLVED"
+        }
+      },
+      "fieldReview": {
+        "classification": "한 UID에 독립 수준별 두 문제가 있다. 첫부분149후보와둘째게임모형의여러 L4 후보를 보존하고 single primary는 Meta-only unresolved이다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "single primary가 미정이라 그것에 종속되는CC목록은 확정하지 않는다. 각부분해석을 보존한다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "독립 수준별문제를 하나의 SEQUENTIAL 연결로 만들지 않는다. single-primary dependent integration은 Meta-only unresolved이다.",
+        "difficulty": "독립 수준별 문제를 포함한다. 첫 연립식은 기본형이고 가위바위보는 승패를 두 미지수로 나타내는 표준 두 식 모델.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "한 UID에 독립 수준별 두 문제가 있다. 첫부분149후보와둘째게임모형의여러 L4 후보를 보존하고 single primary는 Meta-only unresolved이다. 수준별1-①은기본연립식;1-②는승패횟수의게임모형이다. 번호순서로primary를고르지않는다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "독립 수준별 문제를 포함한다. 첫 연립식은 기본형이고 가위바위보는 승패를 두 미지수로 나타내는 표준 두 식 모델."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ac3556ff84194329c1f7400606d6f646f705f727994ecba6688150c2bd6a6527"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "7a079523cb8b1f717c658db027211e12659b5bacac1933bda54570df4d69da75"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_2fc4f617351aaf2d5b59507ddd1ed68325d0f1d7b31d2df2b616826697816a83",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "독립 수준별 문제를 포함한다. 첫 연립식은 기본형이고 가위바위보는 승패를 두 미지수로 나타내는 표준 두 식 모델."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_ba31ea69bb469ba50377663014c27faa1280fa9d68a9a265d6563f2f5446301f",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 병수-가격 함수표현과 함숫값, 성냥개비 패턴을 각각 해석",
+      "decisiveStep": "수준별2-①은정비례식과함숫값;2-②는공유변이있는육각형연결개수이다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "perPartDecisions": [
+          {
+            "part": "수준별2-①(1)",
+            "rpmRecordId": "M1-RPM-167",
+            "semanticSourceScope": "2022|중1 수학|M1-04|M1-04-GRAPH_RELATION|M1-RPM-167",
+            "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+            "goal": "병수와가격의정비례식",
+            "targetNamespaceProposal": "M2-04/M2-04-LINEAR_FUNCTION_BASIC"
+          },
+          {
+            "part": "수준별2-①(2)",
+            "rpmRecordId": "M2-RPM-164",
+            "goal": "f11값"
+          },
+          {
+            "part": "수준별2-②",
+            "rpmRecordId": "M1-RPM-140",
+            "semanticSourceScope": "2022|중1 수학|M1-03|M1-03-ALGEBRAIC_EXPRESSION|M1-RPM-140",
+            "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+            "goal": "공유변을고려한성냥개비수량",
+            "targetNamespaceProposal": "M2-04/M2-04-LINEAR_FUNCTION_BASIC",
+            "caveat": "그림윗부분절단및source-only이므로후보이며상급등차수열RPM을사용하지않는다."
+          }
+        ],
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+            "parentProblemTypeKey": "PT_FUNCTION_VALUE",
+            "definition": "`함숫값 계산` 안에서 '함숫값 직접 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+            "internalSkeleton": "함숫값 직접 계산",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+            "parentProblemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+            "definition": "The template mixes price, age, perimeter, money, and place-value descriptions and asks for the incorrect translation.",
+            "internalSkeleton": "A two-digit number with tens digit x and units digit y is 10x+y, not xy; statement ⑤ is false.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY",
+        "singlePrimaryStatus": "META_ONLY_UNRESOLVED",
+        "dependentAxisStatus": {
+          "crossConcept": "META_ONLY_UNRESOLVED",
+          "integrationPattern": "META_ONLY_UNRESOLVED"
+        }
+      },
+      "fieldReview": {
+        "classification": "독립 수준별문제 및 서로다른 필수 출력이 묶여 있다. 한 primary를 순서로 정하지 않고 per-part lower/current semantic을 보존한다.",
+        "binding": "함숫값direct는해당부분후보다. 문자식translation template는가격/자리값오류선택 구체골격이어서 성냥개비공유변 세기를exact로 확정하지않는다.",
+        "crossConcept": "독립부분이므로singleprimary종속CC는미정으로두고함숫값·수량의각목표만보존한다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "integration": "독립 수준별문항을가짜통합경로로잇지않고Meta-only unresolved로둔다.",
+        "difficulty": "첫 수준의 비례식·함숫값은 직접 적용이고 이어진 육각형은 공유변을 세는 익숙한 선형 패턴이다. 그림 윗부분이 잘려 있어 자산 부채를 별도로 남긴다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "독립 수준별문제 및 서로다른 필수 출력이 묶여 있다. 한 primary를 순서로 정하지 않고 per-part lower/current semantic을 보존한다. 수준별2-①은정비례식과함숫값;2-②는공유변이있는육각형연결개수이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "첫 수준의 비례식·함숫값은 직접 적용이고 이어진 육각형은 공유변을 세는 익숙한 선형 패턴이다. 그림 윗부분이 잘려 있어 자산 부채를 별도로 남긴다."
+      },
+      "contentDebt": [
+        {
+          "type": "CROPPED_FIGURE",
+          "evidence": "Actual q22 PNG omits all upper halves of hexagons. Lower zigzag and shared vertical segments remain; stem names connected hexagons. Do not reconstruct missing image or claim a verified method."
+        }
+      ],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "83e36ac31b91237539259eb414121ab252b9f7d61ca3140707a82dd77510c0d2"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "6fb6a5ef533ca54e7525837ae76f08c5101465002ded60fbf8c7374f622e7f57"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_ba31ea69bb469ba50377663014c27faa1280fa9d68a9a265d6563f2f5446301f",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "첫 수준의 비례식·함숫값은 직접 적용이고 이어진 육각형은 공유변을 세는 익숙한 선형 패턴이다. 그림 윗부분이 잘려 있어 자산 부채를 별도로 남긴다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_89b10781bdde01fc3d2f716cd67260785b996990818576accba1b1c2afdd07c5",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 서로 독립인 기울기한점 직선식과 평행·사분면조건을 분리",
+      "decisiveStep": "수준별3-②에서기울기−1은제2사분면통과를강제하여현재요구범위는공집합이다. source내용을고치지않는다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": null,
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "SOURCE_UNRESOLVED",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": null,
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "perPartDecisions": [
+          {
+            "part": "수준별3-①",
+            "rpmRecordId": "M2-RPM-171",
+            "goal": "한점/기울기직선식",
+            "evidenceStatus": "SOURCE_ONLY"
+          },
+          {
+            "part": "수준별3-②",
+            "rpmRecordId": "M2-RPM-177",
+            "supportingRpmRecordIds": [
+              "M2-RPM-168",
+              "M2-RPM-166"
+            ],
+            "goal": "평행과사분면배제의b범위",
+            "evidenceStatus": "SOURCE_ONLY_INCONSISTENT_CONDITION"
+          }
+        ],
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_LINE_POINT_SLOPE",
+            "parentProblemTypeKey": "PT_LINE_EQUATION",
+            "definition": "한 점과 기울기를 이용하여 점-기울기형 또는 y=mx+n 꼴로 직선을 구한다.",
+            "internalSkeleton": "한 점과 기울기를 이용하여 점-기울기형 또는 y=mx+n 꼴로 직선을 구한다.",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT",
+            "parentProblemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+            "definition": "그래프가 특정 사분면을 지나지 않기 위한 기울기 부호 조건과 y절편 부호 조건을 각각 부등식으로 세우고, 두 부등식의 공통 범위를 구해 경계값의 합을 계산한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY",
+        "singlePrimaryStatus": "META_ONLY_UNRESOLVED",
+        "dependentAxisStatus": {
+          "crossConcept": "META_ONLY_UNRESOLVED",
+          "integrationPattern": "META_ONLY_UNRESOLVED"
+        }
+      },
+      "fieldReview": {
+        "classification": "3-①은171;3-②는177조건식후보이나조건모순이있다. 서로다른필수출력을singleprimary로강제하지않는다.",
+        "binding": "한점기울기는첫부분후보이다. 사분면배제template는제약들의공통범위를찾지만 본문은음의기울기가이미확정되어제2사분면을피할수없고exact완결문항으로확정하지않는다.",
+        "crossConcept": "singleprimary미정및한부분내용모순으로종속CC축은Meta-only unresolved이다.",
+        "condition": "b의허용범위를제한하는사분면배제가명시되어있으나음의기울기와모순이다. 실제답을수정하거나다른사분면으로추정교정하지않는다.",
+        "integration": "독립두수준의풀이를한통합경로로묶지않는다.",
+        "difficulty": "첫 수준은 기울기와 y절편의 직접 대응이다. 둘째 수준은 평행에서 음의 기울기가 강제되어 어떤 절편도 제2사분면을 피할 수 없는 모순이 있다. intended routine 난도2 제안이며 내용 완결성이 낮다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "3-①은171;3-②는177조건식후보이나조건모순이있다. 서로다른필수출력을singleprimary로강제하지않는다. 수준별3-②에서기울기−1은제2사분면통과를강제하여현재요구범위는공집합이다. source내용을고치지않는다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "SOURCE_UNRESOLVED",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "첫 수준은 기울기와 y절편의 직접 대응이다. 둘째 수준은 평행에서 음의 기울기가 강제되어 어떤 절편도 제2사분면을 피할 수 없는 모순이 있다. intended routine 난도2 제안이며 내용 완결성이 낮다."
+      },
+      "contentDebt": [
+        {
+          "type": "INCONSISTENT_QUADRANT_CONDITION",
+          "evidence": "Parallelism to points(1,5),(6,0) forces slope−1 and a1. For any real b, y=−x+1+b is positive at sufficiently negative x, so quadrantII is unavoidable. No b satisfies the stated condition. Preserve source; no answer/solution is present."
+        }
+      ],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cb48def038145b5b7ce10bfbd8705f8eedaca6021964367cd7298e412263560d"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "f5d3986c789c7b847be6463cc6f543a81251816e30314ea2321c1368f655daf6"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_89b10781bdde01fc3d2f716cd67260785b996990818576accba1b1c2afdd07c5",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "SOURCE_UNRESOLVED",
+        "reason": "첫 수준은 기울기와 y절편의 직접 대응이다. 둘째 수준은 평행에서 음의 기울기가 강제되어 어떤 절편도 제2사분면을 피할 수 없는 모순이 있다. intended routine 난도2 제안이며 내용 완결성이 낮다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_0a3ee765c50182c7483b37678583278b3f994a89d6679cf568eaa37b91450631",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "primaryMethod": "SOURCE_ONLY proposed analysis: 네 축평행직선의 넓이와 가변수평선 삼각형넓이 정수범위를 각각 분석",
+      "decisiveStep": "4-②의꼭짓점은(0,1)이고m1은퇴화한다. 넓이와정수조건을다뤄야하나실제풀이근거가없다.",
+      "beforeSource": {
+        "standardUnitKey": null,
+        "subUnitKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": null,
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": null,
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing answer and solution are absent. Any method text is an author hypothesis from source content, not existing-solution evidence or a verified resolver receipt.",
+        "perPartDecisions": [
+          {
+            "part": "수준별4-①",
+            "rpmRecordIds": [
+              "M2-RPM-173",
+              "M2-RPM-176"
+            ],
+            "goal": "네직선그리기와직사각형넓이",
+            "evidenceStatus": "SOURCE_ONLY"
+          },
+          {
+            "part": "수준별4-②",
+            "rpmRecordId": "M2-RPM-176",
+            "goal": "삼각형넓이조건의정수m합",
+            "conditionKeys": [
+              "COND_INTEGER",
+              "COND_RANGE",
+              "COND_NONZERO"
+            ],
+            "implicitRestriction": "m−1≠0 because a triangle must be nondegenerate",
+            "evidenceStatus": "SOURCE_ONLY"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticEvidenceStatus": "SOURCE_ONLY",
+        "singlePrimaryStatus": "META_ONLY_UNRESOLVED",
+        "dependentAxisStatus": {
+          "crossConcept": "META_ONLY_UNRESOLVED",
+          "integrationPattern": "META_ONLY_UNRESOLVED"
+        }
+      },
+      "fieldReview": {
+        "classification": "4-①은축평행직선그리기173과넓이176,4-②는넓이176와정수조건이다. 독립수준의필수출력을singleprimary로강제하지않는다.",
+        "binding": "현 source에는 해설/정답이 없다. source 목표로 가능한 기존 후보를 검토하지만 실제 solution 골격·resolver·target binding이 없어 exact 적용을 완료하지 않는다.",
+        "crossConcept": "singleprimary가미정이므로CC전체확정없이각부분의넓이/조건역할을보존한다.",
+        "condition": "정수m과넓이6미만은명시되어있다. 비퇴화조건m≠1은삼각형이라는도형명에내재하므로per-part분석부채로남기며literal condition에가짜인용을넣지않는다.",
+        "integration": "독립수준별문제를SEQUENTIAL통합으로주장하지않는다. 4-②내부의정수·넓이조건만per-part로보존한다.",
+        "difficulty": "두 독립 수준을 포함한다. 둘째의 가변 수평선으로 생기는 넓이를 꼭짓점 위아래 위치에 따라 해석하고 정수 범위와 퇴화 경우를 확인하는 표현·조건 선택이 필요하다.",
+        "fourSlot": "Source literals and dictionary IDs checked for given/goal/condition. Method slot is empty because existing solution is absent; native failure is retained explicitly."
+      },
+      "reason": "4-①은축평행직선그리기173과넓이176,4-②는넓이176와정수조건이다. 독립수준의필수출력을singleprimary로강제하지않는다. 4-②의꼭짓점은(0,1)이고m1은퇴화한다. 넓이와정수조건을다뤄야하나실제풀이근거가없다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_METADATA_AND_LEGACY_LEVEL_ABSENT_PROPOSAL_ONLY",
+        "SOURCE_ANSWER_AND_SOLUTION_EMPTY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두 독립 수준을 포함한다. 둘째의 가변 수평선으로 생기는 넓이를 꼭짓점 위아래 위치에 따라 해석하고 정수 범위와 퇴화 경우를 확인하는 표현·조건 선택이 필요하다."
+      },
+      "contentDebt": [
+        {
+          "type": "IMPLICIT_NONDEGENERATE_TRIANGLE_BOUNDARY",
+          "evidence": "At m=1 all three lines meet at(0,1), so no triangle is enclosed. Exclusion of m=1 follows geometric nondegeneracy rather than an explicit text inequality; source answer/solution is empty, so interpretation is recorded as debt."
+        }
+      ],
+      "reviewScope": "STEM_CHOICES_REQUIRED_FIGURES_SOURCE_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "78be904568201d31732ca241d340bea673d1da62ab3955e475c68048385b9f52"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "fab7f5b645c70b2a063f8aebafca3f25d839b85e3a02b5b896e04c1b0723da60"
+          }
+        ]
+      },
+      "evidenceStatus": "SOURCE_ONLY",
+      "initialDifficultyFreeze": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_0a3ee765c50182c7483b37678583278b3f994a89d6679cf568eaa37b91450631",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두 독립 수준을 포함한다. 둘째의 가변 수평선으로 생기는 넓이를 꼭짓점 위아래 위치에 따라 해석하고 정수 범위와 퇴화 경우를 확인하는 표현·조건 선택이 필요하다."
+      },
+      "metadataWriteDisposition": "PROPOSAL_ONLY_SOURCE_FIELDS_ABSENT"
+    }
+  ],
+  "topicSummary": [
+    "현재M2의 가감/대입풀이 leaf보다 prerequisite M1의 방정식의해149가 직접적인 정의이다. current targetM2 namespace는 source에 없으므로 제안으로만 둔다.",
+    "prerequisite 방정식의해149를 각각의 식에 사용한다. 두 식 동시성은 명시적 보조 개념이며 targetM2 source 미정 namespace를 제안으로 구분한다.",
+    "기본 연립풀이의 대입법149 후보이다. 현재 solution이 없어 실제 채택방법을 FINAL로 단정하지 않는다.",
+    "연쇄 등식은 새로운 equation 유형이 아니라 기본 연립풀이 source 후보이다.",
+    "특수해를 직접 구하는154보다 해 상태를 조건으로 판정하는155를 source-only primary 후보로 둔다.",
+    "두 호스의 시간·총량 관계이므로 일의양과작업률163을 source 목표로 식별한다.",
+    "현재M2 leaf165는 일차함수판별이고 이 문항은 함수 자체의 정의다. prerequisite M1 정비례/반비례leaf도 일반정의와 같지 않다. GLOBAL ACTIVE 함수대응판정 shared semantic은 찾았으나 해당 RPM L4 exact 대응은 표현되지 않는다.",
+    "함숫값164를 source-only 후보로 둔다.",
+    "current 기울기·절편166의 수직 평행이동 관련항목으로 source 후보를 둔다. 168평행여부가 출력은 아니다.",
+    "기울기·절편166이 직접 목표이며 별도상위개념은 필요없다.",
+    "증가·감소169의 방향 판정이 아니라 정량적인 기울기166을 묻는다.",
+    "기울기·절편166을 중심으로 명시된 다섯 설명을 판정하는 후보이나 실제풀이 근거는 없다.",
+    "그림에서 기울기·절편166을 읽는 판정으로 source-only 후보를 둔다.",
+    "일차방정식의그래프172이며 existing M2 exact goal/skeleton 후보가 있다.",
+    "기울기·절편166을 source 후보로 두며 부호조건은 명시적 restriction이다.",
+    "x축·y축평행직선173을 source-only 후보로 둔다.",
+    "교점과연립방정식174가 직접 목표이다.",
+    "방정식 두 직선의 평행·일치175가 source 목표이다.",
+    "그래프 교점무수는 두 직선의 일치175가 직접적인 source 목표이고 해특수154가 보조이다.",
+    "source가 직접 거리-시간 그래프의 교점을 묻으므로174를 source-only 후보로 둔다.",
+    "한 UID에 독립 수준별 두 문제가 있다. 첫부분149후보와둘째게임모형의여러 L4 후보를 보존하고 single primary는 Meta-only unresolved이다.",
+    "독립 수준별문제 및 서로다른 필수 출력이 묶여 있다. 한 primary를 순서로 정하지 않고 per-part lower/current semantic을 보존한다.",
+    "3-①은171;3-②는177조건식후보이나조건모순이있다. 서로다른필수출력을singleprimary로강제하지않는다.",
+    "4-①은축평행직선그리기173과넓이176,4-②는넓이176와정수조건이다. 독립수준의필수출력을singleprimary로강제하지않는다."
+  ],
+  "proposals": [],
+  "notes": [
+    "All24 current answer and solution strings are empty. This is SOURCE_ONLY review, not a quality PASS or a verified solver result.",
+    "Current source has no curriculum, unit/subUnit, numeric difficulty or legacy level fields. Existing source stays immutable; semantic2022 target scope and all metadata are review proposals only.",
+    "Actual7 PNGs inspected, including two identical blank answer grids. Q22 cropped figure and Q23 impossible quadrant condition remain explicit.",
+    "Difficulty initial content-only freeze preceded any metadata display. Legacy comparison is unavailable because source level is absent; compatibilityUNKNOWN.",
+    "Independent level problems within Q21–24 remain one sourceUID/order; no item split or arbitrary last-part primary."
+  ],
+  "judgedBy": {
+    "agent": "M2_META_REVIEWER_B_RESUME",
+    "at": "2026-11-14T11:41:32.670440+00:00"
+  },
+  "sourceAssetEvidence": [
+    {
+      "path": "workers/B/assets/E026-q13.png",
+      "sha256": "b06d01f2c6f5a3f00345ae9140ed66c8ba8cccbff6a08abf3326f6829d67ca6f",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q14.png",
+      "sha256": "40f3bce54505ea83c11b7aecfa2b40541d6b1627fee40f5779c740750378aa2b",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q17.png",
+      "sha256": "3bfce88f8acb5bb2c4570ea7993699265e3dafc7e98d7502f8a06f6be26b4958",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q20.png",
+      "sha256": "27f8767399ebc5270d07fc3fa4814c22c347ab7ff6d60b1df958ea842e5797ad",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q22.png",
+      "sha256": "6a8ac8d2aae2440c02667a8bd241852e91a24dfb019017eefac934c03eab3d66",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q24_1.png",
+      "sha256": "2aa38f38a6022b237b352e98afb03f2c2b1232caf3ca8ffedc8f0672c48f2feb",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q24_2.png",
+      "sha256": "2aa38f38a6022b237b352e98afb03f2c2b1232caf3ca8ffedc8f0672c48f2feb",
+      "visuallyInspected": true
+    }
+  ],
+  "evidenceStatus": "SOURCE_ONLY",
+  "difficultyProcess": {
+    "initialRead": "BLIND_CONTENT_ONLY_FROZEN_BEFORE_LEGACY_COMPARISON",
+    "freezePath": "workers/B/E026.difficulty-blind-freeze.json",
+    "freezeSha256": "f769cacde2d910fdc411c62d8a51c24977eab0e76f5329445a436f81464289ad",
+    "frozenAt": "2026-11-14T11:35:23.527411+00:00"
+  }
+}

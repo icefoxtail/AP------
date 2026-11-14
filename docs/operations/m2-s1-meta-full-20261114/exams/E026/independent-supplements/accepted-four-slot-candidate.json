@@ -1,0 +1,1655 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/1final/23_매산중_1학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "M2_META_REVIEWER_B_RESUME",
+    "at": "2026-11-14T11:41:32.670440+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_3ca0e254ae90e01efb7fa0e6db08efc7d5575c781ccd7f98c545ddd2e014a477",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "466bd61c06c04e248d2cece029b570c5463e677a8654acba39536dfd01a307e8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4ad13f7bd96319621519ec33dbb7e3e42db81643d94864e4c6b18cbe0e07d260"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$x+y=10$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해는?"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "자연수일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 각 순서쌍을 원식에 대입하고 자연수 제한을 확인",
+        "classification": "현재M2의 가감/대입풀이 leaf보다 prerequisite M1의 방정식의해149가 직접적인 정의이다. current targetM2 namespace는 source에 없으므로 제안으로만 둔다.",
+        "condition": "x,y가 자연수임을 명시하여 x0인 후보를 배제한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_59356f0de6ef6e2ae3b24eb4e400462bfa4fd06fcc4369ba16e165adc61f18cc",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fd832dca09152a385d6e570badc228c0d1a852f00c6a0001de612e0a390c3d2f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fe7e3a09f5c2e2732e1b6bd80f78b6432c668e2e6e3a24e45571b398f6d19b77"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "$x=-1, y=3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "해로 갖는 연립방정식"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 주어진 좌표를 연립식의 두 식에 모두 대입해 성립 확인",
+        "classification": "prerequisite 방정식의해149를 각각의 식에 사용한다. 두 식 동시성은 명시적 보조 개념이며 targetM2 source 미정 namespace를 제안으로 구분한다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_9b220a84d33066926e22a86e8f5fe3d0d946db3f636201c96ca8033adc59de70",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2db6809718abe8c867bc121629a9b34e46d30a60fad6e75a753bac238c824499"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "71eb4c81ad8b7fb79fbd032f0b8cd63314b2685c6c5a8a1ca547c7b7522b651c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "2x+3y=1 \\\\ 3y=x-5"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "연립방정식의 해"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 둘째 식의3y를 첫째 식에 대입하는 표준 연립풀이 후보",
+        "classification": "기본 연립풀이의 대입법149 후보이다. 현재 solution이 없어 실제 채택방법을 FINAL로 단정하지 않는다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_aca9424c4903eed6ac752061ad5922d8e7a507972632650b5f7ab10c19631d2e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a415ddc15a568924a0590d47cab17ea3fadb8206b7b072871256436ed321888b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e5bab0d87f4f5da79bbfa977c9144c5553a15b0318563d131db19fa938761752"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$12x-5y = 2x-10y = 22$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해는?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 연쇄 등식을 두 등식으로 해석한 뒤 가감하는 후보",
+        "classification": "연쇄 등식은 새로운 equation 유형이 아니라 기본 연립풀이 source 후보이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_97dcac28af619cbc0208e0148c787375e580bcdd253686124cd8dfb25fcae0a6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d08170048a3d261f2badf5e9c74bdfdc989e5f428d2678a82c53cb9a6ef20ebd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7832928a7a5cb94b8cd6deb144b5b9dda6bda4d8754d383c377866a4229673ca"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "해가 한 개인 연립방정식"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "해가 한 개인 연립방정식"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 계수비와 상수비로 연립식의 해 상태 비교",
+        "classification": "특수해를 직접 구하는154보다 해 상태를 조건으로 판정하는155를 source-only primary 후보로 둔다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b25c776094a75fdcc1854818ef4c550136456b5c4c0a52717d2fc7f4178ecbaa",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "617d1489c87e2d1a18a38960692473b0b127251dec7c02dfb98ace1463a93819"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "94d0b7db56570e0dd0c12343c7677ee5d0bf793b7e05e30dbc2d30f8ea263181"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부피",
+            "termId": 219,
+            "src": "stem",
+            "quote": "물통에 물을 가득 채우는데"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "2분 동안 넣고 $\\text{B}$호스로 8분 동안"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경과시간",
+            "status": "CANDIDATE",
+            "src": "stem",
+            "quote": "가득 채우는 데 걸리는 시간"
+          },
+          {
+            "term": "변화량",
+            "termId": 316,
+            "src": "stem",
+            "quote": "가득 채우는 데 걸리는 시간"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "가득 채우는 데 걸리는 시간"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "원문에 answer/solution이 없어 작업률 식을 method 근거로 넣지 않았다.",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 호스의 단위시간 작업량으로 두 채움 조건을 모델링",
+        "classification": "두 호스의 시간·총량 관계이므로 일의양과작업률163을 source 목표로 식별한다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_9c10760a9f73e30ea4b1502cbc53d4ee1e9a65e90729bd20a927c87d1df1dbaa",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "835c026ca57b8fe2a97e28485018dd4302db3a0bd34ec8d42605b6319cd2f585"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bee69b3456151a84640012e00120565059de6a8fd5f61b111de51fd77deab714"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "stem",
+            "quote": "$y$가 $x$에 대한 함수"
+          },
+          {
+            "term": "공약수",
+            "termId": 17,
+            "src": "choices",
+            "quote": "공약수 $y$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "stem",
+            "quote": "함수가 아닌 것은?"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "함수가 아닌 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 각 입력에서 출력이 유일한지 함수 정의로 판정",
+        "classification": "현재M2 leaf165는 일차함수판별이고 이 문항은 함수 자체의 정의다. prerequisite M1 정비례/반비례leaf도 일반정의와 같지 않다. GLOBAL ACTIVE 함수대응판정 shared semantic은 찾았으나 해당 RPM L4 exact 대응은 표현되지 않는다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3dedbf2340c43f0b5bffe3d301c59af1baacfc1df6040384350e2daf46fe50bb",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cb91418b22787eddc5db31351c399f7eb558d0a289cd17d0465bc685cefd05df"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bbc5836e30d6fe3574029fb281be93b2e9d24505dee7943524b651caf773b4a7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$f(x)=2x-1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "termId": 100,
+            "src": "stem",
+            "quote": "함숫값을 옳게"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 주어진 입력을 일차함수에 직접 대입",
+        "classification": "함숫값164를 source-only 후보로 둔다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_bfcfdeac06f9aad51277ef48381f0a33eb938e1282a5787f2535002627ea3217",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "58cfd6116a2c57532db5132638af017efeeabfef11f7b2a6e3366674938bcef0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c1d4ac5023385b32b6d45aefac8089e7b4ff21f6eff69136ce6d24c7aec7f0d0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=3x$의 그래프는 일차함수 $y=3x-5$"
+          },
+          {
+            "term": "평행이동",
+            "termId": 210,
+            "src": "stem",
+            "quote": "평행이동한 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "변화량",
+            "termId": 316,
+            "src": "stem",
+            "quote": "$m$의 값"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "$m$의 값"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 상수항의 차로 수직 이동량 읽기",
+        "classification": "current 기울기·절편166의 수직 평행이동 관련항목으로 source 후보를 둔다. 168평행여부가 출력은 아니다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_287f899b4de6fe373659331a4bb6a8b5e94771e6ae801ea020092100b4302656",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3cc059bc7b215c134fa7c2a700b53def5c65291c8f27531479a2ac6cfbb559f4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "716c4b46d105b08afe2407695dc8bf40f3920439a1a79a9824a63b9cb198a88a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=-\\frac{5}{2}x+a$"
+          },
+          {
+            "term": "x절편",
+            "termId": 648,
+            "src": "stem",
+            "quote": "$x$절편이 2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "stem",
+            "quote": "$y$절편은?"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "상수",
+            "termId": 309,
+            "src": "stem",
+            "quote": "$a$는 상수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: x절편을 대입하여 상수항을 복원하고 y절편 읽기",
+        "classification": "기울기·절편166이 직접 목표이며 별도상위개념은 필요없다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_ab67c3cd6db4e0ff480f814d522d8aabdb8440af3c93d906bb5f9f84301b1050",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "119a178fb5ae7da24ac68a7d90e784f841c217cecde54cb399e5769cbe406ffc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0df9bbc004d0b358fd6cd1b71bed9db9dc1830793956e4732366a21c5a9e0210"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=-3x+3$"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "6만큼 감소"
+          }
+        ],
+        "goal": [
+          {
+            "term": "변화량",
+            "termId": 316,
+            "src": "stem",
+            "quote": "$k$의 값"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "$k$의 값"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 기울기와 좌표 변화량 관계로 k를 역산",
+        "classification": "증가·감소169의 방향 판정이 아니라 정량적인 기울기166을 묻는다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_fa2cdae59b4a346e3a688a675f7e118c5b2713f1c26b8918653d15bdc6b8a351",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a53a14aea585101edf844059c9c5ecc9a12811e938e511206a808ac41d59c596"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "00e057f054a316e644ed194788633c7c9a8c4deb1bc8a01473d55b0bc4ca2bbb"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=\\frac{1}{7}x-2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수 $y=\\frac{1}{7}x-2$에 대한 설명"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 식의 기울기와 절편에서 기본 그래프 성질 판정",
+        "classification": "기울기·절편166을 중심으로 명시된 다섯 설명을 판정하는 후보이나 실제풀이 근거는 없다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_4459fef33615bc57543e4cc011ab2d295f593aa4dcd7e49241d0db0539a19bce",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8aa571b6ee9dd34600100849410aa3b6f84956452f9953bd1a8626bd7bbdbd3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f989520cd44b811c464c2de62f43a0ebe0ed91afa04ba85dd02d262e35274760"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "일차함수의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "일차함수의 그래프에 대한 설명"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "설명으로 옳은 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "actual q13 PNG 확인: y절편은양수이고기울기음수; 수치 눈금은 흐리지만-2와 평행임을 판독했다.",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 실제 직선 그림의 기울기와 절편을 읽고 설명 비교",
+        "classification": "그림에서 기울기·절편166을 읽는 판정으로 source-only 후보를 둔다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_a02a2b5019a14329148e3341cffb37f4a5778e7ed73a07ab176cfa6fdda150aa",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0025245dcfbdcfe2a774ef0f715c18d808ac659086b25badce719f199d68ca72"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1593969dda6042d2bee0f696069655d4a7b3c28dd9d825e9d3c66b15ed626ce7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y-\\frac{5}{3}x+5=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "그래프는?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 일차방정식을 함수꼴로 정리하고 두 절편에 맞는 그래프 선택",
+        "classification": "일차방정식의그래프172이며 existing M2 exact goal/skeleton 후보가 있다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_300a60010567206c4f8172ce5049030f20c07050b1b530153ebf7a2cfb79c46d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ad7e26272065dc3c9f1c41a499255cbfea6a56b28f6b2574b68a4936467588a3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "77b1d52efb96930e1eb0bdbc45b24b6ae6afb80f56a954d32b676ddff34271c6"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y-ax+b=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사분면",
+            "termId": 149,
+            "src": "stem",
+            "quote": "지나는 사분면"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "stem",
+            "quote": "$ab < 0, b-a > 0$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 두 부호조건에서 기울기와 절편 부호를 정해 사분면 판정",
+        "classification": "기울기·절편166을 source 후보로 두며 부호조건은 명시적 restriction이다.",
+        "condition": "음수제한은 ab에, 양수제한은 b−a에 각각 걸린 명시적 조건이다. a,b 모두에 한꺼번에 양수·음수를 부여하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_0d13548bbacf78be3c83b310030229cc57e5f40dbbe82a611607678e768a0e22",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3ce9ffa111419024e391f02b9f7df67c8856ba0517bea5e0eb80b271e6db736d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cff7961a2c36604469ed61a39e09a797d6e635e77fb17fc315dc9ec19617f52c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "$(-4, 1)$"
+          },
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "stem",
+            "quote": "$y$축에 평행"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직선",
+            "termId": 143,
+            "src": "stem",
+            "quote": "직선은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: y축에 평행한 직선은 x좌표 일정임을 이용",
+        "classification": "x축·y축평행직선173을 source-only 후보로 둔다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_0544ba27dce308b7d29eac76415cd79d71bbaa3e8d63ca20df0b3770826dea85",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9bd027823870477c9636b89011917099ba9f0dff971362fc5000b712185a8e89"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "76dec2ca75d6708f19e35a6c576ec0a4f9141af6bb2f3b101dbc561998abfae1"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "y=-x-2 \\\\ y=-\\frac{1}{2}x"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해로 올바른 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 명시된 두 직선의 교점을 해와 연결",
+        "classification": "교점과연립방정식174가 직접 목표이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7dfa9776645fe179bfa9ac1262ddff1bf964062e0c47fde1bae19155608cb1fe",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a8b545b194db5a658c6a53fa9965e9aebce66974153701737054b73489bf0176"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dcd8d9571497d4a14901a4c298cc0b09e32c43703556e67db1bf1564bdc81916"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$y-ax-6=0, y+x+6=0$"
+          },
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "stem",
+            "quote": "평행하기 위한"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$a$의 값"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "$a$의 값"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 두 일차방정식 그래프의 기울기가 같은 조건 적용",
+        "classification": "방정식 두 직선의 평행·일치175가 source 목표이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ef9ad34380600ffc79691bef42eefb2316dcc27dcb59658bb1a2cb958acddad4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3ccc3baefbe2dc1093539945b630b6270cec1d6753952f85422c278be71cb41d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e838b9b94a78c0d249da3f1d3e9d1000e12001f7991eb8378d8e19a8c72d9908"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$ax-y=1, x-by=4$"
+          },
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "stem",
+            "quote": "교점이 무수히 많을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$ab$의 값"
+          },
+          {
+            "term": "식의값",
+            "termId": 61,
+            "src": "stem",
+            "quote": "$ab$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "상수",
+            "termId": 309,
+            "src": "stem",
+            "quote": "$a, b$는 상수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 교점이 무수한 두 직선의 일치 조건으로 계수 관계 설정",
+        "classification": "그래프 교점무수는 두 직선의 일치175가 직접적인 source 목표이고 해특수154가 보조이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_c64e410b6119d5f9441a104102d781acfd74ba26aa4d800e9888c4fad227097e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d0efc11852fd957d85e8008a489da6a91814c6de9eecdab459c327d830e70cc4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "62ff9130fbf4171bf9ede8d02697f610e404ba56644b908272c81ce3922cc4cc"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "$1000\\,\\text{m}$"
+          },
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "관계를 그래프로 나타낸 것"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경과시간",
+            "status": "CANDIDATE",
+            "src": "stem",
+            "quote": "몇 초 후에 형이 동생을 앞지르기 시작"
+          },
+          {
+            "term": "변화량",
+            "termId": 316,
+            "src": "stem",
+            "quote": "몇 초 후에 형이 동생을 앞지르기 시작"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "몇 초 후"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 달리기 그래프의 두 직선식에서 만나는 시간을 판단",
+        "classification": "source가 직접 거리-시간 그래프의 교점을 묻으므로174를 source-only 후보로 둔다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2fc4f617351aaf2d5b59507ddd1ed68325d0f1d7b31d2df2b616826697816a83",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ac3556ff84194329c1f7400606d6f646f705f727994ecba6688150c2bd6a6527"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7a079523cb8b1f717c658db027211e12659b5bacac1933bda54570df4d69da75"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "\\begin{cases} y=x+1 \\\\ y=2x \\end{cases}"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "이긴 횟수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해를 구하시오."
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "이긴 횟수를 구하시오."
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "조건",
+            "termId": 394,
+            "src": "stem",
+            "quote": "비긴 경우는 없었다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 서로 독립인 기본 연립식과 가위바위보 모형을 각각 분석",
+        "classification": "한 UID에 독립 수준별 두 문제가 있다. 첫부분149후보와둘째게임모형의여러 L4 후보를 보존하고 single primary는 Meta-only unresolved이다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_ba31ea69bb469ba50377663014c27faa1280fa9d68a9a265d6563f2f5446301f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "83e36ac31b91237539259eb414121ab252b9f7d61ca3140707a82dd77510c0d2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6fb6a5ef533ca54e7525837ae76f08c5101465002ded60fbf8c7374f622e7f57"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "한 병에 500원"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "육각형 18개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "stem",
+            "quote": "$f(x)$를 구하시오"
+          },
+          {
+            "term": "함숫값",
+            "termId": 100,
+            "src": "stem",
+            "quote": "$f(11)$를 구하시오"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "성냥개비의 개수"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 병수-가격 함수표현과 함숫값, 성냥개비 패턴을 각각 해석",
+        "classification": "독립 수준별문제 및 서로다른 필수 출력이 묶여 있다. 한 primary를 순서로 정하지 않고 per-part lower/current semantic을 보존한다.",
+        "condition": "입력값과 문장의 제한을 읽었다. 별도 전역 정의역 조건을 임의로 추가하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_89b10781bdde01fc3d2f716cd67260785b996990818576accba1b1c2afdd07c5",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cb48def038145b5b7ce10bfbd8705f8eedaca6021964367cd7298e412263560d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f5d3986c789c7b847be6463cc6f543a81251816e30314ea2321c1368f655daf6"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "stem",
+            "quote": "기울기가 2"
+          },
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=-ax+a+b$"
+          },
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "$(1, 5)$, $(6, 0)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수 식을 구하시오"
+          },
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "$b$의 값의 범위"
+          },
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$b$의 값의 범위"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "사분면",
+            "termId": 149,
+            "src": "stem",
+            "quote": "제2사분면을 지나지 않도록"
+          },
+          {
+            "term": "상수",
+            "termId": 309,
+            "src": "stem",
+            "quote": "$a, b$는 상수"
+          },
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "stem",
+            "quote": "그래프와 평행하고"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 서로 독립인 기울기한점 직선식과 평행·사분면조건을 분리",
+        "classification": "3-①은171;3-②는177조건식후보이나조건모순이있다. 서로다른필수출력을singleprimary로강제하지않는다.",
+        "condition": "b의허용범위를제한하는사분면배제가명시되어있으나음의기울기와모순이다. 실제답을수정하거나다른사분면으로추정교정하지않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_0a3ee765c50182c7483b37678583278b3f994a89d6679cf568eaa37b91450631",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "78be904568201d31732ca241d340bea673d1da62ab3955e475c68048385b9f52"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fab7f5b645c70b2a063f8aebafca3f25d839b85e3a02b5b896e04c1b0723da60"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "termId": 143,
+            "src": "stem",
+            "quote": "$x=-1, x=2, y=1, y=3$"
+          },
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$y-3x-1=0, y+x-1=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "그래프를 그리고"
+          },
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "도형의 넓이를 구하시오"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "모든 정수 $m$의 합"
+          },
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "정수 $m$의 합"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "정수",
+            "termId": 2,
+            "src": "stem",
+            "quote": "모든 정수 $m$"
+          },
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "stem",
+            "quote": "넓이가 6미만"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "q24_1/q24_2 PNGs are the same blank coordinate grid for student drawing, not missing diagrams. Both were viewed and hashed.",
+      "reasons": {
+        "method": "SOURCE_ONLY proposed analysis: 네 축평행직선의 넓이와 가변수평선 삼각형넓이 정수범위를 각각 분석",
+        "classification": "4-①은축평행직선그리기173과넓이176,4-②는넓이176와정수조건이다. 독립수준의필수출력을singleprimary로강제하지않는다.",
+        "condition": "정수m과넓이6미만은명시되어있다. 비퇴화조건m≠1은삼각형이라는도형명에내재하므로per-part분석부채로남기며literal condition에가짜인용을넣지않는다.",
+        "sourceGoalSupplement": "§3/§3-1 target before final answer shape, and explicit constant restrictions. No mathematical source or method evidence added."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:41:32.670440+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "EXISTING_SOLUTION_MISSING_METHOD_SLOT_EMPTY",
+        "SOURCE_ONLY_GIVEN_GOAL_CONDITION_NO_VERIFIED_METHOD"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "term": "경과시간",
+      "en": [
+        "ELAPSED_TIME"
+      ],
+      "synonyms": [
+        "걸린시간"
+      ],
+      "kind": "대상",
+      "parent": "변화량",
+      "note": "출발과 도착 등 두 사건 사이의 시간 변화량. 절대 시각이나 벡터의 시점과 구분한다.",
+      "usedIn": [
+        6,
+        20
+      ],
+      "status": "CANDIDATE"
+    }
+  ],
+  "selfCheck": {
+    "status": "SOURCE_ONLY_PARTIAL_EVIDENCE",
+    "scope": "Actual stems, choices and required figures inspected. Missing existing solutions remain source-only with empty methods and explicit native failures.",
+    "independentReview": "PENDING"
+  },
+  "acceptedCandidateProvenance": {
+    "authorReviewSha256": "53951306519594ad2e0986004ba868d41c121c1d6684d5fb88d5d0331f5b71ae",
+    "originalFourSlotSha256": "cfba2ceb0ca21efc485974cc4cba2e46048a814963518f2b136e6a9e7657f53e",
+    "candidateConventionInspected": "workers/C/E021/four-slot-candidate-supplement-v3.json",
+    "registeredParentId": 316,
+    "notSharedRegistration": true,
+    "createdAt": "2026-11-14T12:03:00.434131+00:00"
+  },
+  "acceptedSupplementProvenance": {
+    "baseGoalSupplementSha256": "63c494f8827f7f0f67f3ec7d87931e36c39ff85018fcc5ddef75769d0e142782",
+    "independentFinalAcceptanceSha256": "55ce0df32fa5ea397d5d5f57c50299aa31f3af5c8449dad6832707f7b7163de7",
+    "additionalAtom": "Q23 explicit parallel condition only",
+    "allMethodsRemainEmpty": true,
+    "qualityStatus": "INCOMPLETE_SOURCE_ONLY_NATIVE_METHOD_FAILURES_PRESERVED"
+  }
+}

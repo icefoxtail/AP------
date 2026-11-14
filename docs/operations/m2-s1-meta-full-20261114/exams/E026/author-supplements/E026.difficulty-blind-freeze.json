@@ -1,0 +1,258 @@
+{
+  "schemaVersion": "m2-s1-difficulty-blind-freeze-v1",
+  "examId": "E026",
+  "reviewer": "B",
+  "frozenAt": "2026-11-14T11:35:23.527411+00:00",
+  "blindContentSha256": "6dccb2aab9db26f826157fb93196941709da569a0cd0094df96746e8035a6351",
+  "sourceGitBlobSha": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+  "inputExposure": "Only current stem, choices, empty solution fields and seven actual required PNG images were displayed before this freeze. Existing level/bucket/confidence/boundary/compatibility and source metadata were not displayed for E026.",
+  "status": "FROZEN_BEFORE_LEGACY_COMPARISON",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_3ca0e254ae90e01efb7fa0e6db08efc7d5575c781ccd7f98c545ddd2e014a477",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "자연수 조건을 만족하는 순서쌍을 합10에 직접 대입하는 한 단계 판정."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_59356f0de6ef6e2ae3b24eb4e400462bfa4fd06fcc4369ba16e165adc61f18cc",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "주어진 두 수를 각 연립식에 대입하여 동시에 성립하는지 확인하는 직접 정의 적용."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_9b220a84d33066926e22a86e8f5fe3d0d946db3f636201c96ca8033adc59de70",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "둘째 식을 첫째 식에 대입하거나 양 식을 정리해 미지수를 소거하는 표준 연립풀이."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_aca9424c4903eed6ac752061ad5922d8e7a507972632650b5f7ab10c19631d2e",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "연쇄등식을 두 일차방정식으로 읽은 뒤 표준 연립풀이를 한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_97dcac28af619cbc0208e0148c787375e580bcdd253686124cd8dfb25fcae0a6",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "다섯 연립식의 계수 비와 상수 관계로 해가 하나인 경우를 판정한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b25c776094a75fdcc1854818ef4c550136456b5c4c0a52717d2fc7f4178ecbaa",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "호스의 분당 작업량을 두 미지수로 두고 두 채움 조건을 선형식으로 세우는 익숙한 작업량 모델."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_9c10760a9f73e30ea4b1502cbc53d4ee1e9a65e90729bd20a927c87d1df1dbaa",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "입력 하나에 출력이 하나인지 함수의 정의를 적용한다. 공약수는 하나로 정해지지 않는다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3dedbf2340c43f0b5bffe3d301c59af1baacfc1df6040384350e2daf46fe50bb",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "일차함수에 주어진 입력을 직접 대입하는 정의 적용."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_bfcfdeac06f9aad51277ef48381f0a33eb938e1282a5787f2535002627ea3217",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "같은 기울기의 두 식에서 y절편 차이를 직접 읽는 평행이동 기본형."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_287f899b4de6fe373659331a4bb6a8b5e94771e6ae801ea020092100b4302656",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "x절편2에서 y0을 대입해 상수 a를 정하고 이것이 y절편임을 확인한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_ab67c3cd6db4e0ff480f814d522d8aabdb8440af3c93d906bb5f9f84301b1050",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "y변화량을 기울기로 나누어 x증가량을 구하는 직접 관계 적용."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_fa2cdae59b4a346e3a688a675f7e118c5b2713f1c26b8918653d15bdc6b8a351",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "기울기와 절편, 사분면, 증가 방향의 기본 성질을 각 선택지에서 확인한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_4459fef33615bc57543e4cc011ab2d295f593aa4dcd7e49241d0db0539a19bce",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "실제 그림에서 기울기와 절편을 읽어 평행 여부 등 기본 설명을 비교한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_a02a2b5019a14329148e3341cffb37f4a5778e7ed73a07ab176cfa6fdda150aa",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "식을 기울기절편형으로 정리하고 두 절편을 선택지 그림과 대응한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_300a60010567206c4f8172ce5049030f20c07050b1b530153ebf7a2cfb79c46d",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "곱의 부호와 b>a에서 a,b의 부호를 정하고 기울기와 y절편의 부호를 연결하는 정형 절차."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_0d13548bbacf78be3c83b310030229cc57e5f40dbbe82a611607678e768a0e22",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "y축에 평행한 직선은 x좌표가 일정하다는 직접 정의 적용."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_0544ba27dce308b7d29eac76415cd79d71bbaa3e8d63ca20df0b3770826dea85",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "주어진 두 직선의 교점을 읽거나 두 식을 연립하여 순서쌍을 확인한다. 그림의 추가 직선은 요구한 두 식이 아니다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7dfa9776645fe179bfa9ac1262ddff1bf964062e0c47fde1bae19155608cb1fe",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "두 식의 기울기를 같게 놓는 평행 조건의 직접 적용."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ef9ad34380600ffc79691bef42eefb2316dcc27dcb59658bb1a2cb958acddad4",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "두 직선의 교점이 무수하므로 두 식이 동일하도록 계수와 상수 비를 맞춘다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_c64e410b6119d5f9441a104102d781acfd74ba26aa4d800e9888c4fad227097e",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "그림의 도착시간과 초기거리로 두 일정속력의 직선을 세워 교점 시간을 구하는 표준 추격 모델."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2fc4f617351aaf2d5b59507ddd1ed68325d0f1d7b31d2df2b616826697816a83",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "독립 수준별 문제를 포함한다. 첫 연립식은 기본형이고 가위바위보는 승패를 두 미지수로 나타내는 표준 두 식 모델."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_ba31ea69bb469ba50377663014c27faa1280fa9d68a9a265d6563f2f5446301f",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "첫 수준의 비례식·함숫값은 직접 적용이고 이어진 육각형은 공유변을 세는 익숙한 선형 패턴이다. 그림 윗부분이 잘려 있어 자산 부채를 별도로 남긴다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_89b10781bdde01fc3d2f716cd67260785b996990818576accba1b1c2afdd07c5",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "low",
+      "difficultyBoundaryFlag": "SOURCE_UNRESOLVED",
+      "reason": "첫 수준은 기울기와 y절편의 직접 대응이다. 둘째 수준은 평행에서 음의 기울기가 강제되어 어떤 절편도 제2사분면을 피할 수 없는 모순이 있다. intended routine 난도2 제안이며 내용 완결성이 낮다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_0a3ee765c50182c7483b37678583278b3f994a89d6679cf568eaa37b91450631",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "두 독립 수준을 포함한다. 둘째의 가변 수평선으로 생기는 넓이를 꼭짓점 위아래 위치에 따라 해석하고 정수 범위와 퇴화 경우를 확인하는 표현·조건 선택이 필요하다."
+    }
+  ],
+  "assetEvidence": [
+    {
+      "path": "workers/B/assets/E026-q13.png",
+      "sha256": "b06d01f2c6f5a3f00345ae9140ed66c8ba8cccbff6a08abf3326f6829d67ca6f",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q14.png",
+      "sha256": "40f3bce54505ea83c11b7aecfa2b40541d6b1627fee40f5779c740750378aa2b",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q17.png",
+      "sha256": "3bfce88f8acb5bb2c4570ea7993699265e3dafc7e98d7502f8a06f6be26b4958",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q20.png",
+      "sha256": "27f8767399ebc5270d07fc3fa4814c22c347ab7ff6d60b1df958ea842e5797ad",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q22.png",
+      "sha256": "6a8ac8d2aae2440c02667a8bd241852e91a24dfb019017eefac934c03eab3d66",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q24_1.png",
+      "sha256": "2aa38f38a6022b237b352e98afb03f2c2b1232caf3ca8ffedc8f0672c48f2feb",
+      "visuallyInspected": true
+    },
+    {
+      "path": "workers/B/assets/E026-q24_2.png",
+      "sha256": "2aa38f38a6022b237b352e98afb03f2c2b1232caf3ca8ffedc8f0672c48f2feb",
+      "visuallyInspected": true
+    }
+  ],
+  "contentObservations": [
+    {
+      "sourceOrdinal": 23,
+      "type": "INCONSISTENT_QUADRANT_CONDITION",
+      "evidence": "Part3-② parallel to the line through(1,5),(6,0) forces slope−1. Every line of slope−1 passes quadrantII for sufficiently negative x. Thus no real b can satisfy avoiding quadrantII; preserve source without changing quadrant."
+    },
+    {
+      "sourceOrdinal": 22,
+      "type": "CROPPED_FIGURE",
+      "evidence": "ActualPNG has lower zigzag and vertical shared edges but upper hexagon halves are absent. The chain is described in stem; record incomplete image rather than reconstruct it."
+    },
+    {
+      "sourceOrdinal": "ALL",
+      "type": "MISSING_EXISTING_SOLUTION",
+      "evidence": "All24 existing solution strings are empty. Methods cannot be source-bound and remain empty in native4slot."
+    }
+  ]
+}
