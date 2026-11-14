@@ -1,0 +1,239 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E060",
+  "reviewer": "ROOT",
+  "author": "C",
+  "independent": true,
+  "sourceArchiveFile": "original/middle/m2/2final/19_연향중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "257830b3e8d6f32ed765bd715bf1abdc63a2449f",
+  "reviewSha256": "26d506fe9c6e0a4bab8c01ebe4d17107d1e25d0c5c07b4f5fc7cb9698847caac",
+  "fourSlotSha256": "271057b90110c051d3a743723079db4f6e3f84d5f46abe9a6386e9a6a891de61",
+  "ordinals": [
+    3,
+    14,
+    20
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_9753d60533c0747e832a674827088b42fb76e5311a96cb4b686408b6d02bb2eb",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "reason": "삼각형·중점·무게중심은given이고좌표는해설이선택한method임을확인했다. 두평균좌표의차가길이goal을정하는실제경로와일치한다. ACTIVE CENTROID_APPLICATION·2015무게중심binding을재사용하고원본RPM098과2022부모를구분했다.",
+      "quotesExact": true,
+      "quoteCount": 7,
+      "imageViewed": true,
+      "imageRequiredForThisSample": true,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_e54ca5436f74304220a5013f58d61d04a9495b8c38b74e26e923a0484f345b9f",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "reason": "두평행선과점들given,삼각형개수goal,2+1배분의경우분류·조합·합의법칙method,평행condition을실제그림과대조했다. 합·곱Primary와순서없는선택CC_COMBINATION을분리한CASE_BRANCH가정의에맞으며중2binding공백은후속등록이다.",
+      "quotesExact": true,
+      "quoteCount": 8,
+      "imageViewed": true,
+      "imageRequiredForThisSample": true,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_80e416719b9c305445c7ca0a408aa6b501a43c2cbb0c1d13dd9fb717b6e23111",
+      "verdict": "ACCEPT_PARTIAL_RECORD_ONLY",
+      "reason": "주변확률given과정확히한성공goal은확정할수있다. 여사건·독립곱·배반합method는기존해설의정확인용이며독립조건이발문에없다는PARTIAL기록에한정하여수용한다. ACTIVE정의대조는후보골격대조이며등록·최종메타승인이아니다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": false,
+      "imageRequiredForThisSample": false,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": true,
+      "repairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_98e21adc5ec3cde4c873a72430550208f098fd6df18f99d150a797759c237195",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "명시된 무게중심의 중선2:1과기본넓이성질을보기와직접대조한다. 서로다른중선의절대길이는같지않다는기본구분이며1/B12를수용한다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_0f74382334e61fd52916037090006ce76c90e6937e9e9f8f7d96447bdd67b11b",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 무게중심이 모두 주어져 같은높이1/3을반복하고밑변절반을곱하는표준중첩이다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_9753d60533c0747e832a674827088b42fb76e5311a96cb4b686408b6d02bb2eb",
+      "bucket": 3,
+      "decision": "ACCEPT",
+      "reason": "원문에는좌표가없으며해설이임의A=(u,v)를선택해두중심의같은성분을소거한다. 좌표모형선택이있어3/B23을수용한다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_503fb38ea3cf9e619533ca60c09095a8be5f99434f15dce0f51fc432e4c11ccb",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "넓이를변의제곱으로읽어피타고라스와삼각형넓이를연결한다.하문자열과2의인접차이를수용한다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_ca7d16db07050e5a94d2f78de7b39fa8621ace5da662c8eec906d090b2c00af0",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "붙어있는두밑변을합친후이미명시된두직각삼각형에피타고라스를차례로적용한다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_cfc2820900e1a8361f9833462ebee41a6f5533ba263910a959fc6f6b4f6151e0",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "정사각형의가로합12+x를표현하는한전처리후피타고라스관계를쓴다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_4d8943b260725a13ad5b154abb55f54f40cfdeef163bdc2808d8a3bbd53f4e17",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "주어진세변의제곱합을직접대조하는판정이다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_9ce1934291a388f0ec28c792eef7afe7203de882f5b06811554e75d7085be5cb",
+      "bucket": 3,
+      "decision": "ACCEPT",
+      "reason": "네반원과외접원의넓이를표현한뒤겹친원호부분이상쇄되는분해를선택한다.3/B34를수용한다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_6e58aa4ca9664ef24639443c9ae8857014f7395e781694baa894c01849381289",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "입체모서리최단경로를서로다른세방향의순서로바꾸는한모형해석이다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_886de205c24df4c488574c22400771f077b83e6b6d368a6ea516f74bdb94809c",
+      "bucket": 3,
+      "decision": "ACCEPT",
+      "reason": "세동전의각상한과금액식을함께만족시키도록큰동전수를분기하고가능한작은동전쌍을열거한다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_29d69957b2e5f5d36cd3a3e23a734d1add9cfa547dd667bd520a28172215a9ff",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "표에서음료2종과다른메뉴7종을그대로합·곱의법칙에넣는기본형이다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_26a6eab7f9cca15f990264e52a7bbb302017dc3f0f2d9af22fb7054d8c67c269",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "주사위유한범위를y별로대입하여허용되는x를세는정형부등식해석이다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_21fb8feb5f9374e331f66d9ab4436d4dfe5be2b847fd31eab8776d00fe4402ec",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "악수한번을순서없는두사람선택으로바꾸고중복을제거하는표준모형이다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_e54ca5436f74304220a5013f58d61d04a9495b8c38b74e26e923a0484f345b9f",
+      "bucket": 3,
+      "decision": "ACCEPT",
+      "reason": "일직선세점은삼각형이아님을반영해어느선에서두점을선택할지두경우로분류한다.조합곱과합의분기기준선택이있어3을수용한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_107790cd6ae03e43424ac79ef18df8eede0146406b3e6a33b4605f70bfa97511",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "작은범위의서로겹치지않는두배수목록을직접세어전체카드수로나눈다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_337c961332cad3aaa3bd6fe18e350b9206c154bfcb5280bbf8618fb24058b94c",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "복원조건을해석하여두사건의각확률을구한뒤독립곱을쓴다.하문자열과2의차이를수용한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_9a1b2709e6c7565113a808b2c351d1d2451fd5e62624902c0fa6fa1bb8b7288c",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "그림의인접관계를읽으면B,A,C,D순서별선택수가정해지고지정색경우도같은곱으로계산된다.별도경우분기가없어2를수용한다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_f06e679dd97c2e91a3911711b751452b02670672123fbb749813e0bf261d12f2",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "적어도두눈일치를모두다른여사건으로바꾸고6·5·4를세는익숙한표준전환이다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b2c93fe47c8659a8c885822e60f073e9d7a0a319c27ed5bdac2761298080bc03",
+      "bucket": 3,
+      "decision": "ACCEPT",
+      "reason": "비인접을직접세지않고이웃하는두사람묶음을선택해여사건으로연결하는두선택이있어3/B23을수용한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_80e416719b9c305445c7ca0a408aa6b501a43c2cbb0c1d13dd9fb717b6e23111",
+      "bucket": "UNKNOWN",
+      "decision": "HOLD",
+      "reason": "원문은주변확률만주고독립은해설에서추가한다.두결합사건을확정할수없으므로UNKNOWN과등록차단을유지하고2는추가가정하의후보로만둔다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_f9ae00d34287887c218bb2e0a7980129f84ee11db0bbfff56eeacd7ffb0ba33b",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "명시된두무게중심에중선2:1을연속적용한뒤한직선의길이를합하는정형구조이다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_e5bd124281da2585962e7a0b80c501b9d24e8a34f8b8fd7f779265d64382b24c",
+      "bucket": 3,
+      "decision": "ACCEPT",
+      "reason": "미지변이빗변인지다른변인지구별해가능한두피타고라스식을선택해야한다.3/B23을수용한다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_47339c515042049f5ab2a6659158673ad8f0b3d1c6bc7cce51a4136e09bd2864",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "같은숫자반복허용과백의자리0불가를반영하며소문항이일의자리홀짝경우를이미분리한다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_4d2fae5718fd378def93e3b9f8cb2d9f874a45cb7f1b6c35c8202e700c073cd5",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두복권의동일가격·당첨금조건에서순서없는두수조합과한수선택을확률로옮겨비교한다.정형비교2를수용한다."
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "declaredSourceEvidenceBlockedOrdinals": [
+    20
+  ],
+  "imageEvidenceViewed": [
+    "workers/C/images/E060/montage0.jpg"
+  ],
+  "notes": [
+    "All24 items triggered the focused changed-bucket/boundary/compatibility/UNKNOWN gate. Their actual stems, choices, existing answers, solutions and required figures were read without fresh full mathematical verification.",
+    "The 3-item four-slot sample distinguishes authored coordinate method from givens, count primary from combination helper, and unknown joint probabilities from numeric candidates. Shared registries remained read-only."
+  ]
+}

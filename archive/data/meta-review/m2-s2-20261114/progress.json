@@ -8469,9 +8469,10 @@
           "sha256": "ceb1f22c2688a5300b57aa0e76c7374dfd22de59ef447d9b896f0c98da96967a"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "cf0d9544a611e2f835aa02fb5c5f8fe1a8fcf43e"
     },
     {
       "examId": "E056",
@@ -8797,12 +8798,106 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/19_연향중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "e4653b266a8088be6de524553b93586cfc2ecfa27f13fb89dbe623406b247ce6"
+      "uidSetSha256": "e4653b266a8088be6de524553b93586cfc2ecfa27f13fb89dbe623406b247ce6",
+      "reviewedQuestionCount": 24,
+      "fullyJudgedQuestionCount": 23,
+      "registrationPendingQuestionCount": 23,
+      "unresolvedQuestionCount": 1,
+      "unresolvedOrdinals": [
+        20
+      ],
+      "sourceHoldQuestionCount": 1,
+      "sourceHoldOrdinals": [
+        20
+      ],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        3,
+        14,
+        20
+      ],
+      "independentReviewer": "ROOT",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            1,
+            2,
+            3,
+            21
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            22
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            23
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            24
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E060/four-slot.json",
+          "sha256": "271057b90110c051d3a743723079db4f6e3f84d5f46abe9a6386e9a6a891de61"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E060/independent-sample.json",
+          "sha256": "dc6526433ad8af0c6fe5f6b99cf961cf65bca39a7d869f24a19012de80be9406"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E060/mechanical-check.json",
+          "sha256": "82719c9ce864c4354cbb1c1e04377087427c3d80daae5156c986acf4ecba8ff2"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E060/review.json",
+          "sha256": "6da67ff3becb9dc186c55fcd4002a10fa83479b5aa490d00b4daebb4fc30e73c"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E060/root-acceptance.json",
+          "sha256": "71288ec21b68b2cfedec54bd76d83efc4b55500206a6e1631255b52919ca2d6f"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E061",
@@ -9119,14 +9214,14 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 56,
-    "reviewedQuestions": 1340,
-    "fullyJudgedQuestions": 1315,
-    "unresolvedQuestions": 25,
-    "remainingExams": 11,
-    "remainingQuestions": 264
+    "reviewedExams": 57,
+    "reviewedQuestions": 1364,
+    "fullyJudgedQuestions": 1338,
+    "unresolvedQuestions": 26,
+    "remainingExams": 10,
+    "remainingQuestions": 240
   },
-  "lastVerifiedExamCommit": "e7ccab7b03c42686c7b89782e38b49520d4e54b4",
+  "lastVerifiedExamCommit": "cf0d9544a611e2f835aa02fb5c5f8fe1a8fcf43e",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",
