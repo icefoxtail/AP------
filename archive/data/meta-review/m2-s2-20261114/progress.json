@@ -689,7 +689,8 @@
           "sha256": "a14b065b55a2605f71a82122bd604c8e6dd424c55cce71adfd1baa009f248367"
         }
       },
-      "remoteSaveState": "PENDING_READBACK"
+      "remoteSaveState": "VERIFIED",
+      "remoteCommit": "f47a7bdf275344abe504b991c503e3e3bc63cc25"
     },
     {
       "examId": "E006",
@@ -871,12 +872,111 @@
         22,
         23
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "5b3fefad9b8d5ab6fc934da87ab6e01881b425eefeeaaf6ebb368d93168322ee"
+      "uidSetSha256": "5b3fefad9b8d5ab6fc934da87ab6e01881b425eefeeaaf6ebb368d93168322ee",
+      "reviewedQuestionCount": 23,
+      "registrationPendingQuestionCount": 23,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 1,
+      "sourceHoldOrdinals": [
+        19
+      ],
+      "changedQuestionCount": 23,
+      "fourSlotQuestionCount": 23,
+      "independentSampleOrdinals": [
+        8,
+        16,
+        19
+      ],
+      "independentReviewer": "B",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            12,
+            17
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선 사이의 선분의 길이의 비",
+          "ordinals": [
+            5,
+            9,
+            10
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            6,
+            11
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            7,
+            8,
+            21
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            13,
+            14,
+            15
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            16,
+            18,
+            19,
+            20,
+            22,
+            23
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E007/four-slot.json",
+          "sha256": "4553cd9db9a0c9c52d15fce398edc53a853f6bafdc89e92e24e80d89223f91ec"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E007/independent-sample.json",
+          "sha256": "55d3b5477179a47672b58ebef0377e40e59924c137b3cd0dda4124e0a931ddf3"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E007/mechanical-check.json",
+          "sha256": "bf82174c6c03728150f60c77ad36a34ce588f2393d0b59590b06e46c5f227d75"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E007/review.json",
+          "sha256": "a06c489792dd9eac8ae9727a07db8ed8fdb13cdbd556eb2e768e75260be77c0d"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E007/root-acceptance.json",
+          "sha256": "84a4ac35b180cb7c954d7c48472e5d2f6d019e4cb6b9373807e2b0ad0ba5dcfd"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK"
     },
     {
       "examId": "E008",
@@ -3525,11 +3625,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 6,
-    "reviewedQuestions": 142,
+    "reviewedExams": 7,
+    "reviewedQuestions": 165,
     "unresolvedQuestions": 0,
-    "remainingExams": 61,
-    "remainingQuestions": 1462
+    "remainingExams": 60,
+    "remainingQuestions": 1439
   },
-  "lastVerifiedExamCommit": "abd9d611be3190cc73480fe385d5f99074d9c37b"
+  "lastVerifiedExamCommit": "f47a7bdf275344abe504b991c503e3e3bc63cc25"
 }

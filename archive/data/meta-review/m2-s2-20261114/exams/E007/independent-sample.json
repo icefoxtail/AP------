@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E007",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "6c1cdb2f811eca046800abfb2e227de53b58f8b4",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "62dd14949a9b44fc29505ea0492f619955e396759f2f4e8d4521a46087feecfe",
+  "fourSlotInputSha256": "4553cd9db9a0c9c52d15fce398edc53a853f6bafdc89e92e24e80d89223f91ec",
+  "sampleOrdinals": [
+    8,
+    16,
+    19
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3c9afa4462e122cd55647daf7769918695b20db216acb7cedfceec782bc90b66",
+      "verdict": "PASS",
+      "metadataReview": "합동으로 가로 합과 세로 차를 구성한 뒤 CD제곱을 반원 넓이에 옮기는 풀이로 AREA_TRANSFER ACTIVE 정의와 일치. RPM105 길이 leaf와 넓이 목표의 차이를 gap으로 남기는 판정 타당.",
+      "fourSlotReview": "세 점 일직선/합동 조건, 반원 넓이 목표, 합동·피타고라스·넓이 방법과 exact quotes 모두 타당.",
+      "difficultyReview": "보조직각삼각형을 합·차로 구성하는 선택이 있어 bucket3/legacy상 인접경계를 독립 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 8,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E007/8.png"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_e274a8114cab357dcb289d2122734b0d32c7723626d097d4808f17a3657bfe3b",
+      "verdict": "NEEDS_DEFINITION_ADJUDICATION",
+      "metadataReview": "RPM 확률 기본성질 진위판정 leaf gap은 타당. 선택 TPL_PROBABILITY_BASIC_COUNT_RATIO의 definition은 확률을 계산하는 골격이며 실제 목표는 여러 명제의 진위판정이라 exact goal이 다르다. 현행 ACTIVE probability 관련 전체 후보를 조회했으나 명제판정 전용 정의는 없었다. PT도 확률을 구하는 것으로 끝나므로 NEW_TPL 허용범위/NEW_PT 필요성은 ROOT 정본 심의 대상으로 제시.",
+      "fourSlotReview": "확률 given, 판정 goal, 여사건·0≤p≤1 범위 method 모두 실제 읽은 원문과 일치한다. 확률범위는 주어진 해범위 제한이 아니라 판정해야 할 성질이므로 canonical condition 공란 타당.",
+      "difficultyReview": "경계값 포함 여부와 여사건 식을 비교해야 하는 bucket2/중 타당.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 4,
+      "imageViewed": null
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_7ae33b94c82f02e93ff48e0d24e27e3dc5351640d9db4c017bd9afb899c6eb00",
+      "verdict": "PASS_WITH_TEMPLATE_REFINEMENT",
+      "metadataReview": "독립이 발문에 없으므로 SOURCE_HOLD 및 기존 해설의 독립가정에 한정한 메타판정 분리 타당. 주골격은 여사건이므로 기존 ACTIVE TPL_EVENT_RELATION_COMPLEMENT_ADDITION 정의가 BASIC_COUNT_RATIO보다 정확하게 일치한다. CC_PROBABILITY_MULTIPLICATION 및 SEQUENTIAL은 해당 가정 아래 타당.",
+      "fourSlotReview": "독립사건 method를 IMPLIED로 표시하고 발문 조건이 아니라고 명시한 근거가 정확하다. 모든 quote가 실제 source해설에 있다.",
+      "difficultyReview": "독립가정을 채택한 의도 구조에 한해 여사건식 역산 bucket2/중 타당. 원문 정답 결정 가능성을 승인하지 않는다.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": null
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}
