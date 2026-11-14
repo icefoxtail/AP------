@@ -353,7 +353,11 @@ window.questionBank = [
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 초록색 화단의 가로는 8 m, 세로는 5 m이다. 연한 색 길 띠는 네 방향에서 같은 폭 x m로 이어지고, 바깥 직사각형의 두 변은 각각 8+2x m, 5+2x m이다. 도식의 띠 두께는 실제 비례가 아닌 설명용 예시이다.",
+    "solutionImageCaption": "길의 넓이는 (8+2x)(5+2x)-40=48이다. 이를 풀어 폭은 x=3/2 m이며 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -389,7 +393,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 세 포물선 y=−1/2x², y=−2/3x², y=−2x²를 파랑, 주황 점선, 초록으로 비교한 그래프.",
+    "solutionImageCaption": "아래로 열린 포물선 중 |a|가 가장 작은 y=−1/2x²의 폭이 가장 넓다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -425,7 +433,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: y=x²/3 포물선의 x<0인 가지를 주황색으로 강조했다. P(−3,3)에서 Q(−1,1/3)로 오른쪽으로 갈수록 y가 낮아진다.",
+    "solutionImageCaption": "x<0에서 x가 증가하면 y=x²/3의 값은 감소한다. 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -459,7 +471,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색 y=3x²와 주황 점선 y=−3x²가 x축을 기준으로 서로 대칭이다. 세로 점선은 주어진 x=2를 가리키며, 해당 그래프의 y좌표 숫자는 그림에 쓰지 않았다.",
+    "solutionImageCaption": "x축 대칭 그래프는 y=−3x²이므로 x=2에서 k=−12이다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -630,7 +646,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 y=x² 포물선과 왼쪽·아래로 옮긴 주황 포물선을 겹쳐 그렸다. 두 꼭짓점과 주황 그래프의 근, y절편이 표시되어 있다.",
+    "solutionImageCaption": "④는 점 (−1,0)을 지나고 위로 볼록하며, ⑤는 y=x²을 왼쪽 3, 아래 4만큼 평행이동한 그래프이다. 답은 ④, ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -696,7 +716,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선의 x절편 A(−2,0), B(4,0)는 점선 대칭축 x=1의 양쪽에 같은 거리만큼 떨어져 있다. 꼭짓점 V도 표시했다.",
+    "solutionImageCaption": "대칭축이 x=1이고 두 x절편의 거리가 6이므로 절편은 −2와 4이다. 이를 식에 대입하면 a=1/2, b=4이고 ab=2이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -728,7 +752,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 위의 O(0,0), P(4,−2), A(8,0)을 잇는 삼각형 OPA를 연하게 칠했다. 점선 PH는 x축에 수직이고, H에서 직각 표시가 있다.",
+    "solutionImageCaption": "OA=8, PH=2이므로 삼각형 OPA의 넓이는 (1/2)·8·2=8이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -829,9 +857,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출/q25-solution.svg",
-    "solutionImageAlt": "꼭짓점 (1, 0)에서 x축에 접하고 (0, -1)을 지나는 이차함수 그래프",
-    "solutionImageCaption": "축은 x=1이고, 꼭짓점은 (1, 0), y절편은 (0, -1)이다.",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q25-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 굵은 파란 포물선이 x축에 (1,0)에서 접하고 점선 x=1을 대칭축으로 가진다. y절편 (0,−1)도 표시했다.",
+    "solutionImageCaption": "(1) 그래프는 x축에 (1,0)에서 접하고 y절편은 (0,−1)이다. (2) 꼭짓점은 (1,0)이다. (3) 구하는 식은 y=−x²+2x−1이다.",
     "solutionImageSize": "full"
   }
 ];

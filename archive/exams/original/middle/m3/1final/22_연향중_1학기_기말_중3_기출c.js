@@ -284,7 +284,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중3_기출c/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 파란 포물선과 좌표축을 표시한다.",
+    "solutionImageCaption": "x<0인 구간에서 x가 오른쪽으로 증가할수록 y도 증가한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -319,7 +323,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중3_기출c/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 주황 아래로 열린 곡선과 파란 위로 열린 곡선, 위아래의 수평 비교선과 양 끝점을 표시한다.",
+    "solutionImageCaption": "x축 대칭인 두 그래프는 같은 |y|에서 같은 가로 폭을 갖는다. 해당 쌍은 ㄴ과 ㄹ이므로 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -355,7 +363,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중3_기출c/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 포물선과 두 개의 수평 비교선이 한 좌표평면에 표시된다.",
+    "solutionImageCaption": "같은 |y|에서 가로 폭은 |a|가 클수록 좁다. 가장 좁은 그래프는 ㄱ이므로 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -489,7 +501,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중3_기출c/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선, 주황 가로 점선, 두 점과 점선 안내를 표시한다.",
+    "solutionImageCaption": "y=−12와 만나는 두 점의 x좌표는 −3과 1이므로 합은 −2이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -557,7 +573,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중3_기출c/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 위로 열린 포물선에 곡선 가까이 f(x) 표시가 있고, 꼭짓점에는 보라 점을 둔다.",
+    "solutionImageCaption": "y=3x²−3의 그래프는 y축에 대칭이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -593,7 +613,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중3_기출c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선과 보라 점선, 주황 점 두 개를 나타낸다.",
+    "solutionImageCaption": "표준형은 y=−(x−2)²+3이고 y축과의 교점은 (0,−1)이다. 옳지 않은 설명은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -703,6 +727,10 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_연향중_1학기_기말_중3_기출c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 곡선과 점선, 꼭짓점 표시를 나타낸다.",
+    "solutionImageCaption": "표준형은 y=−½(x−1)²+4이다. 축은 x=1, 꼭짓점은 (1,4), 위로 볼록하며 x<1에서 증가하고 x>1에서 감소한다.",
+    "solutionImageSize": "full"
   }
 ];
