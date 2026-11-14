@@ -907,6 +907,18 @@ def tick_ground_line_ids(obstacles,at):
     """Ids of the drawn lines/segments (kind 'line', not an axis) that pass exactly through the tick point `at`."""
     return {o.get('id') for o in obstacles if o.get('kind')=='line' and isinstance(o.get('id'),str) and not o['id'].endswith('-axis') and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(at,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
 
+def tick_start_circle_ids(obstacles,start,end):
+    """An exact circle-axis intersection may be touched at the leader's start, if it leaves the circle outwards."""
+    circle_ids=set()
+    for obstacle in obstacles:
+        if obstacle.get('kind')!='circle':continue
+        x,y,radius=obstacle['geometry']
+        dx,dy=start[0]-x,start[1]-y
+        if abs(math.hypot(dx,dy)-radius)>1e-3:continue
+        if dx*(end[0]-start[0])+dy*(end[1]-start[1])>=0:circle_ids.add(obstacle['id'])
+    return circle_ids
+
+
 def tick_labels_first_order(label):
     """The tick-label retry order: at one priority the tick numbers go first (each is bound to its axis tick and may stand on two sides only), then every other label as in the first pass."""
     return (label.get('priority',2),0 if label.get('kind')=='TICK_LABEL' else 1,label['id'])
@@ -1009,7 +1021,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             if acceptable(box):
                 chosen=box;method='OWNER_BOUND_TICK_LEADER'
                 end=owner_leader_endpoint(box,label['at'],center)
-                owner_ids={tick_owner['id'],label['tickAxis']+'-axis'}
+                owner_ids={tick_owner['id'],label['tickAxis']+'-axis'}|tick_start_circle_ids(occupied,label['at'],end)
                 # A dot drawn exactly on its own tick (a declared function value on an axis) is part of that tick, not an obstacle to its leader.
                 owner_ids|={o.get('id') for o in occupied if o.get('kind') in {'circle','point'} and math.dist((o['geometry'][0],o['geometry'][1]),label['at'])<=1e-3}
                 # Likewise a dashed approach guide, or an overlay line/guide (a vertical line x=a through the tick, G5b), that passes exactly through this tick belongs to it (the leader may touch it only at its start).
