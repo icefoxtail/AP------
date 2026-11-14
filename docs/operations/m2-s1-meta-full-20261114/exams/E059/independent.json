@@ -1,0 +1,654 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E059",
+  "author": "B",
+  "reviewer": "GPT_ROOT_14C2C64E43FB",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS_AND_SCOPED_SUPPLEMENTS",
+  "createdAt": "2026-11-14T14:44:07.907703+00:00",
+  "sourceGitBlobSha": "999a157de46144a606b01fc4d0365f0a81e7e042",
+  "sourceSha256": "feb784b757023c7914b4da8e6eb84f56cba1f644962f785fe7cb682591f1a403",
+  "reviewSha256": "2dd7d62b15b0c681c44b0a1c7a963fa1f93adff78429ba765cd88eb814f9bc0b",
+  "fourSlotSha256": "950fae3a213b2c1bbf2d338f6f6dec4fe44b17b615065ce5e933e39f34ccaab0",
+  "sampleOrdinals": [
+    5,
+    16,
+    21
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 5,
+      "classification": "실제분모7의약분·기약분자11·100미만자연수를결합하는 RPM124를 정본에서확인했다.",
+      "binding": "124정본은NO_ACTIVE_MAPPING이며 실제genuine binding은 없으므로 등록부채 유지.",
+      "crossConcept": "약분·공배수는조건유리수primary내부로중복CC없음.",
+      "condition": "ACTIVE COND_NATURAL_NUMBER와 COND_RANGE 정의를읽고 실제100미만자연수제약에맞게수용.",
+      "integration": "동일조건유리수primary내부의 NONE.",
+      "difficulty": "정형배수연결로 독립2/저자2 일치. 기존상→중의실제풀이근거를수용한다.",
+      "fourSlot": "원분수/기약분수와목표a+b, 소인수분해14·공배수18의명시인용, 유한/자연/범위조건을직접대조했다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "classification": "해의허용분수개수로a범위를정하는 RPM141 계수조건이맞으며 단순정수개수leaf와구별한다.",
+      "binding": "141의NO_ACTIVE_MAPPING을확인했고 임의exacttemplate를만들지않는다.",
+      "crossConcept": "ACTIVE CC_NUMBER_PRIME_COPRIME는서로소를사용해허용원소집합구성이다. 분모2와서로소인홀수분자의허용집합은계수경계primary의외부입력이다.",
+      "condition": "ACTIVE 유리수/양수제약을실제발문에서확인했고분모2기약성·정확히3개의4칸조건을보존했다.",
+      "integration": "허용분수나열이세번째포함·네번째배제경계에입력되므로 SEQUENTIAL.",
+      "difficulty": "독립3과저자3일치. 두끝점의포함/배제를동시에연결하므로학습상과B23인접수용.",
+      "fourSlot": "기약분수·서로소·범위 도출의 실제기존해설명시가NAMED이며 goal은a범위이다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "classification": "밑통일로지수등식을선형관계로바꾸고해의비를통해계수결정하는151을조건부수용한다. 중등양의정수지수범위를벗어나는기존표현은등록부채로남긴다.",
+      "binding": "151정본과지수기능을확인하되확장지수의target귀속과genuinebinding은미완으로둔다.",
+      "crossConcept": "ACTIVE CC_EXPONENT_RULES 정의의지수합/곱이선형계수문제의전처리인실제해설과맞는다.",
+      "condition": "x가y의2배라는비율650제약을실제발문에서보존하고없는정수조건을더하지않는다.",
+      "integration": "지수식변환결과가계수결정으로넘어가는 SEQUENTIAL.",
+      "difficulty": "표현변환과해비율결합3/B23로독립과저자일치. 지수범위부채때문에low유지.",
+      "fourSlot": "원래given은지수연립식이므로연립일차방정식568대신상위연립방정식67로좁게교정한후보를수용. 목표3a와실제지수비교/대입method는보존."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_ab2d46f068be81c4c02eba375be21d20fe855ca649b28dbdff3e3bcb90a7a3a3",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_ab2d46f068be81c4c02eba375be21d20fe855ca649b28dbdff3e3bcb90a7a3a3",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "유리수·유한소수·순환소수의 정의와 반례 판정이다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "유리수와 유한·순환·무한소수의 포함관계 직접 판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "유리수·유한소수·순환소수의 정의와 반례 판정이다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_ecc18f8f7c7586fdf5526103ea86262daa286e7da05f251972c810d7b0cb74e2",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_ecc18f8f7c7586fdf5526103ea86262daa286e7da05f251972c810d7b0cb74e2",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "기약화한 분모에2,5외의 소인수가 남는지 직접 검사한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "분수 약분 후 남은 분모소인수2/5 확인"
+      },
+      "decision": "ACCEPT",
+      "reason": "독립1/저자2 B12 경계. 각분수 약분이 선행한 뒤 남은소인수를 판단하므로 익숙한변형2 수용."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_b3f78aa6d958659a31217d5deb04800b89c590414cd851f3242c96774ceaa9f0",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_b3f78aa6d958659a31217d5deb04800b89c590414cd851f3242c96774ceaa9f0",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "실제 반복부분과 점 표기를 직접 대조한다. 해설의 순환마디가2개는 두자리라는 용어오기다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "순환마디 양끝점 표기 직접 판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "실제 반복부분과 점 표기를 직접 대조한다. 해설의 순환마디가2개는 두자리라는 용어오기다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_4faba8a001d583d425412af8b6d627bfd4150e2c5aa997d1ce5e1008965fe985",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_4faba8a001d583d425412af8b6d627bfd4150e2c5aa997d1ce5e1008965fe985",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "비순환1자리·순환2자리의 소수꼬리를 맞추는 표준차를 고른다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "비순환자리1과순환자리2를 맞출10의 거듭제곱차 선택"
+      },
+      "decision": "ACCEPT",
+      "reason": "비순환1자리·순환2자리의 소수꼬리를 맞추는 표준차를 고른다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_5b42d4029af3f42eb89b6eec44338bc2b8f18340296c8bc824210f5e8771fa76",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_5b42d4029af3f42eb89b6eec44338bc2b8f18340296c8bc824210f5e8771fa76",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "약분조건의 두배수를 결합하고 자연수범위로 a,b를 결정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분모7의소거와 기약분자11의배수 및100미만 제한 연결"
+      },
+      "decision": "ACCEPT",
+      "reason": "약분조건의 두배수를 결합하고 자연수범위로 a,b를 결정한다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_a75592e57c1d9acfe51335bb90ac7d0d05a6592e3df4c9415019e033dcd75a0d",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_a75592e57c1d9acfe51335bb90ac7d0d05a6592e3df4c9415019e033dcd75a0d",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "지수법칙을 보기별 직접 대조한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "지수곱몫과 중첩거듭제곱 및 동류항 여부를 보기별 판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "독립1/저자2 B12 경계. 곱·몫/거듭제곱/동류항의 여러규칙을 비교하는 정형2 수용."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_5481cf4c7ebb5469dde1b1aabb02c81678e843bfd62bee84c8b89e3670faad36",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_5481cf4c7ebb5469dde1b1aabb02c81678e843bfd62bee84c8b89e3670faad36",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "분모수치의 지수에서b를 정하고 문자지수로 a,c를 순차결정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "짝수거듭제곱의 수치계수와 두문자 지수를 순차비교"
+      },
+      "decision": "ACCEPT",
+      "reason": "분모수치의 지수에서b를 정하고 문자지수로 a,c를 순차결정한다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_f80a4712402263fc62132074696866dd4307de5e5be29efa58656e7859a6d188",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_f80a4712402263fc62132074696866dd4307de5e5be29efa58656e7859a6d188",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "두 단항식 혼합연산결과를 다시 몫으로 연결한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 단항식의 거듭제곱·나눗셈 후 다시 몫 약분"
+      },
+      "decision": "ACCEPT",
+      "reason": "두 단항식 혼합연산결과를 다시 몫으로 연결한다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_72bff03307d559683e0fcd2c295d4ac1e28b89056604a9be8d43b6f8f9d1a44a",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_72bff03307d559683e0fcd2c295d4ac1e28b89056604a9be8d43b6f8f9d1a44a",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "음의 분배법칙과 동류항 정리를 수행한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "−2분배 후 동류항계수 계산"
+      },
+      "decision": "ACCEPT",
+      "reason": "독립2/저자1 B12 경계. 한번의 -2분배와 같은계수합인 짧은직접적용1 수용."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_516bdf1dd92380acaa00038b444c9968617546f02f1f1ef55b98b87a3fc86631",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_516bdf1dd92380acaa00038b444c9968617546f02f1f1ef55b98b87a3fc86631",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "곱·몫을 전개하고 정리된 두계수의 합을 얻는다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "곱과 다항식나눗셈을 각각 전개한뒤 계수합"
+      },
+      "decision": "ACCEPT",
+      "reason": "곱·몫을 전개하고 정리된 두계수의 합을 얻는다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_9ab5242526dcb6740bdcee45efc761e3a35c0ac41465e9784c0b475db09cd1ec",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_9ab5242526dcb6740bdcee45efc761e3a35c0ac41465e9784c0b475db09cd1ec",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "기호식의 중첩괄호를 정리한 뒤 원다항식 대입한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "삼중괄호 기호식을 단순화한뒤 문자식대입"
+      },
+      "decision": "ACCEPT",
+      "reason": "기호식의 중첩괄호를 정리한 뒤 원다항식 대입한다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_ae6139dfd1ec1940fe19583e86c824e66d6d878805d2d4a8a041b714fa9df03c",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_ae6139dfd1ec1940fe19583e86c824e66d6d878805d2d4a8a041b714fa9df03c",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "음수곱일때만 방향을 바꾸는 성질을 직접 적용한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "음수배에서만 부등호방향 반전하는 성질 직접 비교"
+      },
+      "decision": "ACCEPT",
+      "reason": "음수곱일때만 방향을 바꾸는 성질을 직접 적용한다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_50630b7e9b71074e8d6b132f7e003943e350d35078f51839e461115068cf6780",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_50630b7e9b71074e8d6b132f7e003943e350d35078f51839e461115068cf6780",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "이항·전개후 최고차수와 미지수 소거를 판단한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "차수소거·이차항·미지수없음·등호를 구별하는 일차부등식 정의"
+      },
+      "decision": "ACCEPT",
+      "reason": "독립2/저자1 B12 경계. 한단계전개/소거로 정의에직접대조하는1 수용."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_56fd1437af8e06c89f14bd86c5cf2be98a633926b3a40ccbd49bc2f1b9732c1f",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_56fd1437af8e06c89f14bd86c5cf2be98a633926b3a40ccbd49bc2f1b9732c1f",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "부등식풀이의 경계값을 실제 수직선의 닫힌-1오른쪽과 맞춘다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "부등식해 경계를 실제수직선−1닫힌점과 비교하여계수결정"
+      },
+      "decision": "ACCEPT",
+      "reason": "부등식풀이의 경계값을 실제 수직선의 닫힌-1오른쪽과 맞춘다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_971d4a4b1acacccf59f3a273af81556ba0f0744fbe4955dd6fce034491bb2e6b",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_971d4a4b1acacccf59f3a273af81556ba0f0744fbe4955dd6fce034491bb2e6b",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "구매비·대여비의 표준일차부등식과 최소정수경계를 연결한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "고정비와 월비용 비교후 엄격부등식의 최소자연수"
+      },
+      "decision": "ACCEPT",
+      "reason": "구매비·대여비의 표준일차부등식과 최소정수경계를 연결한다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_40277bcbea87633473920857e2035ab9403b4912cee98c693e22ac112f8b74c8",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_40277bcbea87633473920857e2035ab9403b4912cee98c693e22ac112f8b74c8",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "홀수분자/2의 세번째·네번째 경계를 포함/제외하는 구간으로 바꾸어 계수범위를 정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "분모2양의기약분수의 세번째포함·네번째배제 양끝조건"
+      },
+      "decision": "ACCEPT",
+      "reason": "홀수분자/2의 세번째·네번째 경계를 포함/제외하는 구간으로 바꾸어 계수범위를 정한다. 학습상과 숫자3의 B23 인접을 실제구조로 수용한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_ca369fe43f9cb81fce2c9a7def6b0918028bac744497fad62576098fdfb35d65",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_ca369fe43f9cb81fce2c9a7def6b0918028bac744497fad62576098fdfb35d65",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "해의 한좌표를 첫식에 대입하고 다른계수를 이어 결정한다. 핵심공식의 미지수가없는첫식은 미정계수없는식이라는 용어오기다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "한 해성분으로 다른성분을 구하고 미정계수식에 대입"
+      },
+      "decision": "ACCEPT",
+      "reason": "해의 한좌표를 첫식에 대입하고 다른계수를 이어 결정한다. 핵심공식의 미지수가없는첫식은 미정계수없는식이라는 용어오기다. 학습하와 숫자2의 B12 인접을 실제구조로 수용한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_04a58ddacb601c38818870f4065b3bc7ce12f2ec1dd6ee36d88d872b1e2e4c8f",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_04a58ddacb601c38818870f4065b3bc7ce12f2ec1dd6ee36d88d872b1e2e4c8f",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "한 순서쌍을 두 식에 직접 대입한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진해를 보기의 연립식에 직접대입"
+      },
+      "decision": "ACCEPT",
+      "reason": "한 순서쌍을 두 식에 직접 대입한다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_f529d1a3ce86d0aab4803bc0da4c44618e964fb8325fa10ebb625199792c4465",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_f529d1a3ce86d0aab4803bc0da4c44618e964fb8325fa10ebb625199792c4465",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "뒤바꾼 식에서 계수를 구한뒤 원래 식을 다시푸는 익숙한 두단계 복원이다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "뒤바뀐 계수의 연립식을 풀고 원래연립식 재풀이"
+      },
+      "decision": "ACCEPT",
+      "reason": "뒤바꾼 식에서 계수를 구한뒤 원래 식을 다시푸는 익숙한 두단계 복원이다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_611a6e6d71a1e09266f89d1c9ff37df2157feb5404df98cb717e556bdbdc7e75",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_611a6e6d71a1e09266f89d1c9ff37df2157feb5404df98cb717e556bdbdc7e75",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "두식 전체의 비례와 동일계수를 맞춘다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분수식 상수항맞춤 후 무수히많은해의 계수비교"
+      },
+      "decision": "ACCEPT",
+      "reason": "두식 전체의 비례와 동일계수를 맞춘다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_b2fa7d254c5aa9d3a6e52c1e914fbcb28e7e39a09d7c40dcd71f44b33c4fdd98",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_b2fa7d254c5aa9d3a6e52c1e914fbcb28e7e39a09d7c40dcd71f44b33c4fdd98",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "밑통일로 지수관계를 선형식으로 바꾸고 x=2y와 다른식으로 미정계수를 찾는다."
+      },
+      "authorFinalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "두밑 거듭제곱을 통일해 지수방정식으로 바꾸고 해의비로계수결정"
+      },
+      "decision": "ACCEPT",
+      "reason": "밑통일로 지수관계를 선형식으로 바꾸고 x=2y와 다른식으로 미정계수를 찾는다. 학습상과 숫자3의 B23 인접을 실제구조로 수용한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_29068c95e3efd7adc66f56285165c060c60dc4f52c519d3b258abb7835f407fa",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_29068c95e3efd7adc66f56285165c060c60dc4f52c519d3b258abb7835f407fa",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "2·5를10의거듭제곱으로 묶고 계수범위와 자릿수를 연결한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "2와5거듭제곱묶기 후 계수범위 조정과 자리수 판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "2·5를10의거듭제곱으로 묶고 계수범위와 자릿수를 연결한다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_0ecb687ad27d052403be06cf26cde2b4e528aa77129a0b419f9af91542ad30a9",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_0ecb687ad27d052403be06cf26cde2b4e528aa77129a0b419f9af91542ad30a9",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "세부등식과 한연립식의 결과를 독립적으로 계산해 결합한다. 길어도 새로운 통합전략은 없다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "네자리의 독립부등식·연립방정식을 각각풀고 순서대로 결합"
+      },
+      "decision": "ACCEPT",
+      "reason": "세부등식과 한연립식의 결과를 독립적으로 계산해 결합한다. 길어도 새로운 통합전략은 없다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d24c11b572a473c396c01b171cdca2a28045e9f261557e5f9635061ae7963aed",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_d24c11b572a473c396c01b171cdca2a28045e9f261557e5f9635061ae7963aed",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "거리·시간단위를 맞추고 표준거리합/시간합 연립식을 푼다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "단위통일 후 서로다른 두속력의 거리합과시간합 연립"
+      },
+      "decision": "ACCEPT",
+      "reason": "거리·시간단위를 맞추고 표준거리합/시간합 연립식을 푼다. 실제 기존해설·발문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 2,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "기약화한 분모에2,5외의 소인수가 남는지 직접 검사한다. 학습하와 숫자2의 B12 인접을 실제구조로 수용한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "지수법칙을 보기별 직접 대조한다. 학습하와 숫자2의 B12 인접을 실제구조로 수용한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "홀수분자/2의 세번째·네번째 경계를 포함/제외하는 구간으로 바꾸어 계수범위를 정한다. 학습상과 숫자3의 B23 인접을 실제구조로 수용한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "해의 한좌표를 첫식에 대입하고 다른계수를 이어 결정한다. 핵심공식의 미지수가없는첫식은 미정계수없는식이라는 용어오기다. 학습하와 숫자2의 B12 인접을 실제구조로 수용한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "밑통일로 지수관계를 선형식으로 바꾸고 x=2y와 다른식으로 미정계수를 찾는다. 학습상과 숫자3의 B23 인접을 실제구조로 수용한다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 3,
+      "decision": "ACCEPT_NAMED_WORDING_DEBT",
+      "reason": "실제원해설의순환마디가2개표현은두자리의오기이며low보존."
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT_NAMED_WORDING_DEBT",
+      "reason": "미지수가없는첫식이라는해설표현은미정계수의오기로실제x,y가남는다. low보존."
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT_UNRESOLVED_PRIMARY",
+      "reason": "세부등식과연립식의독립소문항묶음이므로단일leaf미판정/종속축null수용;각절차는정형이라학습중2제안수용."
+    }
+  ],
+  "initialSnapshot": {
+    "path": "/workspace/scratch/14c2c64e43fb/root/independent/E059/initial.json",
+    "sha256": "911cd2e86ae81d0fd9aa2b5edd73a818b68d47d79f3311c62c5dd168e4137713"
+  },
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "actualReading": {
+    "contentQuestions": 24,
+    "existingSolutions": 24,
+    "images": [
+      "workers/B/assets/E059-q14-q14.png"
+    ]
+  },
+  "canonicalEvidenceRead": [
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "archive/data/meta-foundation/compiled/concept_registry.json",
+    "archive/data/meta-foundation/compiled/condition_registry.json",
+    "docs/architecture/4slot/term-dictionary-v1.5.json"
+  ],
+  "notes": [
+    "All24actualsource/solutions and originalnumberline14 read before author numeric comparison.",
+    "Actual wording errors3/17 and exponent target-scope debt21 preserved; no source rewrite.",
+    "One narrow given-term correction reflects actual original exponential system."
+  ],
+  "acceptedSupplements": [
+    {
+      "path": "/workspace/scratch/14c2c64e43fb/root/independent/E059/accepted-four-slot-candidate.json",
+      "sha256": "df1f4bedada6d8a73d80805af3c3299f7deff39e88dee27d82fbec619ee1b141"
+    }
+  ]
+}
