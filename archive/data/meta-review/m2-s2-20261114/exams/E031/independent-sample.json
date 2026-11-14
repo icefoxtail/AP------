@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E031",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "88f8cbf133612624bb876d9762ee1268bf374208",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "74268fad51cd97d4889de6419f8ebd903003ccd09a567313576842cff2bda760",
+  "fourSlotInputSha256": "8827e1e365456fc75c973c8ac8ea2ffaa191602e0286ca7c8c3e67077f63ba6d",
+  "sampleOrdinals": [
+    5,
+    11,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_f833211db4f6db8cac467cef0f4b06390519b0c18d9f4002b84baebb2066d552",
+      "verdict": "PASS",
+      "metadataReview": "원본 그림의 P,Q,R 중점과 G의 세 중선 교차를 확인했다. 중선 2:1과 여섯 등넓이 조각을 판정하는 목표이므로 PT_COORD_CENTROID 및 B-E029와 공유하는 성질 판정 NEW_TPL이 정확하다. ㄴ의 두 변 동등만으로 합동 충분조건이 성립하지 않는다는 검사는 새 성질 판정 골격 밖의 CC_TRIANGLE_CONGRUENCE 정의와 일치한다. 좌표 계산 DIRECT/REVERSE와 다른 도형을 결합하는 APPLICATION으로 확대하지 않는 판단에 동의한다. canonical Condition 해당 없음과 SEQUENTIAL 수용.",
+      "fourSlotReview": "무게중심·중선 입력, 보기 판정 목표, 중선 2:1·합동 충분조건 부족·등넓이 비교의 세 방법을 실제 정확 인용으로 확인했다. condition 빈 배열은 추가 값 제한이 없고 무게중심 관계가 given에 이미 보존되어 타당하다.",
+      "difficultyReview": "표준 무게중심 성질을 각 보기에 직접 대입하고 등넓이와 합동을 구별하는 bucket2/중을 독립 수용.",
+      "minorMetadataWording": "fieldReview.binding의 ACTIVE PT/TPL parent 일치 문구는 현재 exact TPL 공백과 구별하여 ACTIVE PT 정의 적합, TPL 등록 대기로 정밀화 권고.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E031-05.png"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_db9e788b23b90e315ed7f16fe013b1f904e7a714615d20dc2c5efffb5172c072",
+      "verdict": "PASS",
+      "metadataReview": "그림의 절편 A,B와 OH⊥AB를 확인했다. 두 절편으로 얻은 3,4에서 피타고라스로 5를 만들지만 목표 OH는 같은 삼각형 넓이의 두 표현에서 결정한다. B-E023/E022와 공유하는 AREA-REBASE NEW_PT와 RPM leaf 공백이 정확하다. SIDE_LENGTH는 제곱관계로 목표높이를 구하는 정의라 다르고, PT_PERPENDICULAR_FOOT_ALTITUDE/TPL_PERPENDICULAR_FOOT_COORDINATE는 수직 직선 방정식과 교점 좌표를 요구한다. 좌표 넓이 PT도 이번의 높이 복원 골격을 대신하지 않는다. CC_INTERCEPTS와 빗변 계산에 정확한 CC_PYTHAGOREAN_THEOREM, SEQUENTIAL 수용.",
+      "fourSlotReview": "실제 일차식과 수선의 발 입력, 길이 목표, 절편·피타고라스·같은 넓이의 두 표현 방법과 수선 조건이 모두 원문 및 주풀이와 일치한다.",
+      "difficultyReview": "3-4-5 입력은 직접 얻어지며 넓이를 다른 밑변으로 재표현하는 핵심 전환이 한 번인 bucket2 medium/B23, 원문 중을 독립 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E031-11.png"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_3020187f0f9569e2e4e66b35c983eaa5901a6ac9cd50d42911621d9b2af60cca",
+      "verdict": "PASS_WITH_MINOR_REPAIR",
+      "metadataReview": "그림에서 D가 BC 위, G가 AD 위이며 C직각/DC9/AC15임을 확인했다. 무게중심이 주는 중점으로 BC를 얻고 전체 넓이를 계산한 뒤 중선2:1과 같은 높이로 부분면적1/3을 적용한다. 추가 사각형이나 새 닮음의 성질이 없으므로 B-E035-CENTROID-AREA-PARTITION 공통 NEW_TPL이 맞고 APPLICATION으로 넓히지 않는다. 전체 면적 135를 실제 밑변·높이 공식으로 먼저 계산하므로 이 단계의 CC_TRIANGLE_AREA는 분할비 자체와 중복되지 않는 보조 개념이다. RPM099, canonical Condition 해당 없음, SEQUENTIAL 수용.",
+      "fourSlotReview": "given·goal·condition과 세 method의 정확 인용은 존재하고 의미도 타당하다. 단 method 넓이의 인용은 이름이 없는 수식만 있으므로 evidenceType NAMED를 IMPLIED로 바꾸고 직각변 18과15를 밑변·높이로 곱한다는 justification을 붙이는 최소 수리를 권고한다. 원래 수식을 유지해도 된다.",
+      "difficultyReview": "소문항이 BC→전체면적→부분면적을 안내하며 기본 중점·넓이·중선비를 순서대로 적용하므로 bucket2/중 수용.",
+      "minorMetadataWording": "Q5와 같이 binding 문구에서 ACTIVE PT와 exact NEW_TPL 등록 대기를 구분 권고.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 8,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E031-23.png"
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}

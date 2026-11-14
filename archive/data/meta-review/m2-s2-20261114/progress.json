@@ -1582,8 +1582,8 @@
           "sha256": "e7c1b19ef43f054663fdf78cde8940e1ab6f9bad67f517e6090afa5a8117d41b"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
-      "remoteCommit": "8b106d0482e74bb5d5860985946e1dedf2b1e608",
+      "remoteSaveState": "VERIFIED",
+      "remoteCommit": "add370e66a89570762812eb85dff4b6624c46296",
       "historicalLevelAbsentOrdinals": [],
       "noncanonicalHistoricalLevelOrdinals": []
     },
@@ -4471,12 +4471,111 @@
         22,
         23
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/22_연향중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "cbf54dea459b78005929e8c320c5f643c77f3cf64292896c62311f4e8c2abec7"
+      "uidSetSha256": "cbf54dea459b78005929e8c320c5f643c77f3cf64292896c62311f4e8c2abec7",
+      "reviewedQuestionCount": 23,
+      "registrationPendingQuestionCount": 23,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 0,
+      "sourceHoldOrdinals": [],
+      "changedQuestionCount": 23,
+      "fourSlotQuestionCount": 23,
+      "independentSampleOrdinals": [
+        5,
+        11,
+        23
+      ],
+      "independentReviewer": "B",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선 사이의 선분의 길이의 비",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            7
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            5,
+            6,
+            23
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            12,
+            13,
+            14,
+            15
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            16,
+            17,
+            18,
+            19,
+            20,
+            22
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            21
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E031/four-slot.json",
+          "sha256": "edc2634069a6d29dfb62c0fa1d14f16da071edbbc2205d6fb4fafc5a8ee03b7b"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E031/independent-sample.json",
+          "sha256": "1804d43cbdb39ba93b07a062b491d25ac47cdfa0709a05ecb83d8936c0610647"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E031/mechanical-check.json",
+          "sha256": "2a418877806e36bc8804f127654825df2461f97f9f16a9fef264522aa640f6c2"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E031/review.json",
+          "sha256": "4331f73129c458498785ebc6342fcdb2208010ab76a859cd068f41ad4a08b5bc"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E031/root-acceptance.json",
+          "sha256": "24f32d0c09f942c4fc4f22892fd4dcc0223f62be465a55dedf6a9fb29d711753"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E032",
@@ -6405,11 +6504,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 33,
-    "reviewedQuestions": 784,
+    "reviewedExams": 34,
+    "reviewedQuestions": 807,
     "unresolvedQuestions": 0,
-    "remainingExams": 34,
-    "remainingQuestions": 820
+    "remainingExams": 33,
+    "remainingQuestions": 797
   },
-  "lastVerifiedExamCommit": "023b25c8f5c24f41655e890d060c5a89e7b8a95f"
+  "lastVerifiedExamCommit": "add370e66a89570762812eb85dff4b6624c46296"
 }
