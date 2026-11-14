@@ -1,0 +1,354 @@
+[
+  {
+    "kind": "PT_SCOPE_AND_EXACT_TEMPLATE_REVIEW",
+    "supportingQuestionUids": [
+      "qid_v1_224c400ffa9f2f629de6a65961fcb6dc962972a3d63e0bf7bfb4539a0380fc6a"
+    ],
+    "ordinals": [
+      1
+    ],
+    "existingParentCandidate": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+    "existingParentDefinition": "실생활·도형 관계식이 y=ax^2+bx+c (a≠0) 꼴인지 판별하여 이차함수인 것을 고른다.",
+    "existingTemplateExcluded": "TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM",
+    "reason": "실생활·도형의 식 구성 없이 주어진 식 자체를 이차함수 정의로 판별한다. 기존 parent 정의의 범위를 먼저 확인하고 필요하면 parent 확장 또는 정의판별 TPL을 검토한다. 새 키는 source에 넣지 않았다.",
+    "status": "RELEASE_OWNER_DECISION_PENDING"
+  },
+  {
+    "kind": "NEW_EXACT_TEMPLATE_UNDER_ACTIVE_PARENT",
+    "supportingQuestionUids": [
+      "qid_v1_64c2b6e9d8a09ce1e9e10faddc872bc13f3c77adf1e20400f737b83adeb6708c"
+    ],
+    "ordinals": [
+      6
+    ],
+    "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+    "reason": "방향과 서로 다른 폭을 계수 부호·절댓값의 범위로 읽는다. 동일 a를 전제한 공통성질 TPL과 기본 속성 진술 TPL은 정확 골격이 아니다.",
+    "status": "RELEASE_OWNER_REGISTRATION_PENDING"
+  },
+  {
+    "kind": "RPM_2022_EXACT_LEAF_GAP",
+    "supportingQuestionUids": [
+      "qid_v1_224c400ffa9f2f629de6a65961fcb6dc962972a3d63e0bf7bfb4539a0380fc6a",
+      "qid_v1_266496bb12069d27636569749d7c66c473d5e04abbe8e6e8907197ce72f56380"
+    ],
+    "ordinals": [
+      1,
+      2
+    ],
+    "original2015Record": "M3-RPM-043",
+    "current2022Parent": {
+      "key": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(1)\"]",
+      "parentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(1)\"]",
+      "unitKey": "RPM22-M3-L1-04",
+      "grade": "중3",
+      "gradeKey": "M3",
+      "curriculumKey": "2022",
+      "courseKey": "M3-1",
+      "L1": "이차함수",
+      "L2": "이차함수의 그래프(1)",
+      "label": "이차함수의 그래프(1)",
+      "order": 8,
+      "orderInUnit": 1,
+      "legacyUnitKeys": [
+        "M22-3-04"
+      ]
+    },
+    "reason": "현행 부모 아래 정의판별 exact leaf가 없다. Q1의 식 정의판별과 Q2의 문장관계 판별은 수학 의미를 판정했으며 2022y=ax² 그래프 leaf로 위장하지 않는다.",
+    "status": "PUBLISHER_LEAF_REGISTRATION_PENDING"
+  },
+  {
+    "kind": "MULTI_VARIANT_SINGLE_FIELD_REPRESENTATION_GAP",
+    "supportingQuestionUids": [
+      "qid_v1_f309fc18fd6cf18c004c2af01398ca91fa305f55980696e7af93ad5197eeca11",
+      "qid_v1_219e4d3eb588b985bdca39486d7b47f3d242a96b71e8e90e8a72a6d1d631e34c"
+    ],
+    "ordinals": [
+      22,
+      23
+    ],
+    "branches": {
+      "22": [
+        {
+          "variant": "①",
+          "questionUid": "qid_v1_f309fc18fd6cf18c004c2af01398ca91fa305f55980696e7af93ad5197eeca11",
+          "selection": "MUTUALLY_EXCLUSIVE_OPTION",
+          "baseRecordId": "M3-RPM-054",
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+            "l3": "그래프와 계수",
+            "l4": "조건으로 식 구하기"
+          },
+          "current2022RecordId": "M3-RPM-142",
+          "current2022Path": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "최대·최소와 활용",
+            "l4": "조건으로 식 결정"
+          },
+          "current2022EffectiveParentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+          "existingActiveProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
+          "existingActiveTemplateKey": "TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS",
+          "activeTemplateDefinition": "y절편에서 c를 먼저 얻고 나머지 두 점으로 a, b 연립방정식을 풀어 식을 완성한다.",
+          "templateParentVerified": true,
+          "difficultyBucket": 2,
+          "reason": "y절편−3으로 c를 먼저 구하고 두 점으로 a,b의 연립일차방정식을 푸는 ACTIVE 정의와 정확히 같다.",
+          "originalContext": {
+            "comparisonContext": {
+              "curriculum": "2015",
+              "standardCourse": null,
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH"
+            },
+            "crosswalkRecordId": "M3-RPM-054",
+            "crosswalkMappingStatus": "FAMILY_BINDING_GAP",
+            "rowProblemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+            "rowTemplateKey": null,
+            "rowTemplateCandidates": [
+              "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+              "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX"
+            ],
+            "rowSelectedTemplateMatches": false,
+            "exactProblemTypeBindingCount": 0,
+            "bindingOwners": [],
+            "globalProblemTypeStatus": "ACTIVE",
+            "globalTemplateStatus": "ACTIVE",
+            "globalProblemTypeOwner": "MIDDLE3",
+            "globalTemplateOwner": "MIDDLE3"
+          },
+          "current2022Context": {
+            "comparisonContext": {
+              "curriculum": "2022",
+              "standardCourse": null,
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH"
+            },
+            "crosswalkRecordId": "M3-RPM-142",
+            "crosswalkMappingStatus": "FAMILY_BINDING_GAP",
+            "rowProblemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+            "rowTemplateKey": null,
+            "rowTemplateCandidates": [
+              "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+              "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX"
+            ],
+            "rowSelectedTemplateMatches": false,
+            "exactProblemTypeBindingCount": 0,
+            "bindingOwners": [],
+            "globalProblemTypeStatus": "ACTIVE",
+            "globalTemplateStatus": "ACTIVE",
+            "globalProblemTypeOwner": "MIDDLE3",
+            "globalTemplateOwner": "MIDDLE3"
+          }
+        },
+        {
+          "variant": "②",
+          "questionUid": "qid_v1_f309fc18fd6cf18c004c2af01398ca91fa305f55980696e7af93ad5197eeca11",
+          "selection": "MUTUALLY_EXCLUSIVE_OPTION",
+          "baseRecordId": "M3-RPM-054",
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+            "l3": "그래프와 계수",
+            "l4": "조건으로 식 구하기"
+          },
+          "current2022RecordId": "M3-RPM-142",
+          "current2022Path": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "최대·최소와 활용",
+            "l4": "조건으로 식 결정"
+          },
+          "current2022EffectiveParentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+          "existingActiveProblemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "existingActiveTemplateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+          "activeTemplateDefinition": "교점·축·근의 대칭을 좌표·거리·넓이 등 후속 관계와 결합한다.",
+          "templateParentVerified": true,
+          "difficultyBucket": 3,
+          "reason": "축과 한 근에서 다른 근을 대칭으로 정하고 y절편으로 계수를 얻어 꼭짓점좌표를 넓이에 연결한다. 기존 ACTIVE 정의의 근대칭·좌표·넓이 결합이다.",
+          "originalContext": {
+            "comparisonContext": {
+              "curriculum": "2015",
+              "standardCourse": null,
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH"
+            },
+            "crosswalkRecordId": "M3-RPM-054",
+            "crosswalkMappingStatus": "FAMILY_BINDING_GAP",
+            "rowProblemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+            "rowTemplateKey": null,
+            "rowTemplateCandidates": [
+              "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+              "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX"
+            ],
+            "rowSelectedTemplateMatches": false,
+            "exactProblemTypeBindingCount": 0,
+            "bindingOwners": [],
+            "globalProblemTypeStatus": "ACTIVE",
+            "globalTemplateStatus": "ACTIVE",
+            "globalProblemTypeOwner": "H1_FOUNDATION",
+            "globalTemplateOwner": "H1_FOUNDATION"
+          },
+          "current2022Context": {
+            "comparisonContext": {
+              "curriculum": "2022",
+              "standardCourse": null,
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH"
+            },
+            "crosswalkRecordId": "M3-RPM-142",
+            "crosswalkMappingStatus": "FAMILY_BINDING_GAP",
+            "rowProblemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+            "rowTemplateKey": null,
+            "rowTemplateCandidates": [
+              "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+              "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX"
+            ],
+            "rowSelectedTemplateMatches": false,
+            "exactProblemTypeBindingCount": 0,
+            "bindingOwners": [],
+            "globalProblemTypeStatus": "ACTIVE",
+            "globalTemplateStatus": "ACTIVE",
+            "globalProblemTypeOwner": "H1_FOUNDATION",
+            "globalTemplateOwner": "H1_FOUNDATION"
+          }
+        }
+      ],
+      "23": [
+        {
+          "variant": "①",
+          "questionUid": "qid_v1_219e4d3eb588b985bdca39486d7b47f3d242a96b71e8e90e8a72a6d1d631e34c",
+          "selection": "MUTUALLY_EXCLUSIVE_OPTION",
+          "baseRecordId": "M3-RPM-057",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "특수각의 삼각비",
+            "l4": "30°·45°·60°"
+          },
+          "current2022RecordId": "M3-RPM-145",
+          "current2022Path": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "특수각의 삼각비",
+            "l4": "30°·45°·60°"
+          },
+          "current2022EffectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+          "existingActiveProblemTypeKey": "PT_TRIG_RATIO",
+          "existingActiveTemplateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+          "activeTemplateDefinition": "특수각의 삼각비 값을 직접 계산·비교·판정한다.",
+          "templateParentVerified": true,
+          "difficultyBucket": 1,
+          "reason": "알려진30·45·60도 삼각비9개를 표에 직접 채운다.",
+          "originalContext": {
+            "comparisonContext": {
+              "curriculum": "2015",
+              "standardCourse": null,
+              "standardUnitKey": "M3-05",
+              "subUnitKey": "M3-05-TRIG_RATIO"
+            },
+            "crosswalkRecordId": "M3-RPM-057",
+            "crosswalkMappingStatus": "DIRECT_ACTIVE",
+            "rowProblemTypeKey": "PT_TRIG_RATIO",
+            "rowTemplateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+            "rowTemplateCandidates": [],
+            "rowSelectedTemplateMatches": true,
+            "exactProblemTypeBindingCount": 0,
+            "bindingOwners": [],
+            "globalProblemTypeStatus": "ACTIVE",
+            "globalTemplateStatus": "ACTIVE",
+            "globalProblemTypeOwner": "MIDDLE_GEOMETRY",
+            "globalTemplateOwner": "MIDDLE_GEOMETRY"
+          },
+          "current2022Context": {
+            "comparisonContext": {
+              "curriculum": "2022",
+              "standardCourse": null,
+              "standardUnitKey": "M3-05",
+              "subUnitKey": "M3-05-TRIG_RATIO"
+            },
+            "crosswalkRecordId": "M3-RPM-145",
+            "crosswalkMappingStatus": "DIRECT_BINDING_GAP",
+            "rowProblemTypeKey": "PT_TRIG_RATIO",
+            "rowTemplateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+            "rowTemplateCandidates": [],
+            "rowSelectedTemplateMatches": true,
+            "exactProblemTypeBindingCount": 0,
+            "bindingOwners": [],
+            "globalProblemTypeStatus": "ACTIVE",
+            "globalTemplateStatus": "ACTIVE",
+            "globalProblemTypeOwner": "MIDDLE_GEOMETRY",
+            "globalTemplateOwner": "MIDDLE_GEOMETRY"
+          }
+        },
+        {
+          "variant": "②",
+          "questionUid": "qid_v1_219e4d3eb588b985bdca39486d7b47f3d242a96b71e8e90e8a72a6d1d631e34c",
+          "selection": "MUTUALLY_EXCLUSIVE_OPTION",
+          "baseRecordId": "M3-RPM-055",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "current2022RecordId": "M3-RPM-143",
+          "current2022Path": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "current2022EffectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+          "existingActiveProblemTypeKey": "PT_TRIG_RATIO",
+          "existingActiveTemplateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+          "activeTemplateDefinition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+          "templateParentVerified": true,
+          "difficultyBucket": 3,
+          "reason": "옆모서리 상등으로 수선의 발을 정사각형 중심으로 정당화한 뒤 높이를 피타고라스로 얻고 단면AOM의 탄젠트를 구한다. 최종 삼각비여서 길이·넓이 활용 유형이 아니다.",
+          "originalContext": {
+            "comparisonContext": {
+              "curriculum": "2015",
+              "standardCourse": null,
+              "standardUnitKey": "M3-05",
+              "subUnitKey": "M3-05-TRIG_RATIO"
+            },
+            "crosswalkRecordId": "M3-RPM-055",
+            "crosswalkMappingStatus": "DIRECT_ACTIVE",
+            "rowProblemTypeKey": "PT_TRIG_RATIO",
+            "rowTemplateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+            "rowTemplateCandidates": [],
+            "rowSelectedTemplateMatches": false,
+            "exactProblemTypeBindingCount": 0,
+            "bindingOwners": [],
+            "globalProblemTypeStatus": "ACTIVE",
+            "globalTemplateStatus": "ACTIVE",
+            "globalProblemTypeOwner": "MIDDLE_GEOMETRY",
+            "globalTemplateOwner": "MIDDLE_GEOMETRY"
+          },
+          "current2022Context": {
+            "comparisonContext": {
+              "curriculum": "2022",
+              "standardCourse": null,
+              "standardUnitKey": "M3-05",
+              "subUnitKey": "M3-05-TRIG_RATIO"
+            },
+            "crosswalkRecordId": "M3-RPM-143",
+            "crosswalkMappingStatus": "DIRECT_BINDING_GAP",
+            "rowProblemTypeKey": "PT_TRIG_RATIO",
+            "rowTemplateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+            "rowTemplateCandidates": [],
+            "rowSelectedTemplateMatches": false,
+            "exactProblemTypeBindingCount": 0,
+            "bindingOwners": [],
+            "globalProblemTypeStatus": "ACTIVE",
+            "globalTemplateStatus": "ACTIVE",
+            "globalProblemTypeOwner": "MIDDLE_GEOMETRY",
+            "globalTemplateOwner": "MIDDLE_GEOMETRY"
+          }
+        }
+      ]
+    },
+    "reason": "각 분기에 적합한 공식ACTIVE 정의가 모두 있다. 하나의 UID에 두 기존TPL을 표현하는 연결문제이며 새로운 풀이유형 공백이 아니다. source UID를 나누거나 임의 분기키를 만들지 않았다.",
+    "status": "RELEASE_OWNER_REPRESENTATION_DECISION_PENDING"
+  }
+]

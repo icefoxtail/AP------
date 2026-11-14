@@ -1,0 +1,561 @@
+{
+  "schemaVersion": "m3-s2-root-technical-verification-v1",
+  "examId": "E038",
+  "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
+  "sourceValidation": {
+    "examId": "E038",
+    "sourcePath": "archive/exams/original/middle/m3/2mid/22_매산중_2학기_중간_중3_수학.js",
+    "baselineBlob": "c359c7a18444b4732668917feb2a0cd0d30038d4",
+    "baselineSha256": "31445f899edc7d0e0363dc6521e17ba2f06e9bc56efcb112b4ac478dda43ea0f",
+    "sourceAfterSha256": "7bc2feb1413f3dd65184d9e168ee94075aeee1b6ae4e6eb5557abb55a58e7424",
+    "questionCount": 24,
+    "uidDigest": "b4a69edb1e1cb2fa7239c709c5d5aca1ea00c0bceadbd57278cdc850a02e0023",
+    "patchSha256": "e883097aedc83e217017645089864f820c4a43da334fa056204a229b52c6e218",
+    "metadataChangedQuestions": 24,
+    "metadataChangedFieldCount": 264,
+    "changedFields": [
+      "standardUnit",
+      "difficultyConfidence",
+      "crossConceptKeys",
+      "conditionKeys",
+      "subUnitKey",
+      "subUnit",
+      "difficultyBoundaryFlag",
+      "legacyLevelCompatibility",
+      "rpmPrimaryKey",
+      "problemTypeKey",
+      "templateKey",
+      "integrationPattern",
+      "metaStatus",
+      "semanticMeta",
+      "difficultyBucket",
+      "metaDebtFields",
+      "difficultyReason"
+    ],
+    "syntax": "PASS",
+    "ordinalUidAndCount": "PASS",
+    "protectedFields": "PASS",
+    "QBODY_QFULL": "PASS",
+    "studentPayloadDigest": "abeb36d28105e1973a223e61046afb352af49dc492db18c989cd21367d775dde",
+    "write": true,
+    "sourceAfterBlob": "dba97880108288a7110e610e5ad17649e23654dc"
+  },
+  "registry": {
+    "status": "ACTIVE",
+    "sha256": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+    "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+  },
+  "newUnregisteredKeyInsertions": 0,
+  "mechanicalStructure": "PASS",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_224c400ffa9f2f629de6a65961fcb6dc962972a3d63e0bf7bfb4539a0380fc6a",
+      "rpmRecordIds": [
+        "M3-RPM-043"
+      ],
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_TYPE_INVALID:problemTypeKey",
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey"
+      ],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_266496bb12069d27636569749d7c66c473d5e04abbe8e6e8907197ce72f56380",
+      "rpmRecordIds": [
+        "M3-RPM-043"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_7be82cf55ed1785188eacdb67ff36ccfca74da860a1592531b0a513cc4329251",
+      "rpmRecordIds": [
+        "M3-RPM-047",
+        "M3-RPM-135"
+      ],
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": false,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_c704061b6da9a53b7e8564ac3f6cf5a04b7279f7db107e9d4bb53017307fde0f",
+      "rpmRecordIds": [
+        "M3-RPM-045",
+        "M3-RPM-135"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_01e86bb0ddb38ac2a4bcb1123eae379606984b96f86beff837cdfe5862fa8e39",
+      "rpmRecordIds": [
+        "M3-RPM-045",
+        "M3-RPM-135"
+      ],
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": false,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_64c2b6e9d8a09ce1e9e10faddc872bc13f3c77adf1e20400f737b83adeb6708c",
+      "rpmRecordIds": [
+        "M3-RPM-045",
+        "M3-RPM-135"
+      ],
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey"
+      ],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_faf4ecd742c138d3b09cb23e6df665c801d3d044e276978d2e36358fbd2acfc9",
+      "rpmRecordIds": [
+        "M3-RPM-055",
+        "M3-RPM-143"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_7c91daecf9d76ff5bd106d3364aab38a32b04e854f04bbb8b2f6ab3cffd46071",
+      "rpmRecordIds": [
+        "M3-RPM-058",
+        "M3-RPM-146"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_57e037fbe122e1f13dbd5abe8e6b52cda499f0a547407be039f94d0f9c06fc08",
+      "rpmRecordIds": [
+        "M3-RPM-055",
+        "M3-RPM-143"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_687351aaed626382379a96c1739b21fa456cd1927e9a86eb4ac7c93c49fc099c",
+      "rpmRecordIds": [
+        "M3-RPM-055",
+        "M3-RPM-143"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_b2ed049361d824b57832afb3ed3622898a079f8386231925288750057d8b1f10",
+      "rpmRecordIds": [
+        "M3-RPM-059",
+        "M3-RPM-147"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_de0972ff9036263825ffbbf0bed0421cba9372a2b0ead83d75eca5f0e1ce755f",
+      "rpmRecordIds": [
+        "M3-RPM-061",
+        "M3-RPM-149"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_4ba63c1677e691fafa6848199e46993c81dd7c5b2bb3615b75c528ead4b85e3a",
+      "rpmRecordIds": [
+        "M3-RPM-059",
+        "M3-RPM-147"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_83cda756e3fe5ea56759246f839cd121b901b92a992c7ca2ea63821eacf43007",
+      "rpmRecordIds": [
+        "M3-RPM-055",
+        "M3-RPM-143"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_98722ecf33c72cefec82f5f62860772c5904c4b7f1217db4e6b676706acb536d",
+      "rpmRecordIds": [
+        "M3-RPM-062",
+        "M3-RPM-150"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_f8162b8361a6d5e2ac83a6c99002f52b82ae632c6a8e11243e7f112921cabef6",
+      "rpmRecordIds": [
+        "M3-RPM-049",
+        "M3-RPM-136"
+      ],
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": false,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_9116b10c6731be09e38b2ac81ded708d1f6248cd7a29f80ad43c497b8f1697b9",
+      "rpmRecordIds": [
+        "M3-RPM-049",
+        "M3-RPM-136"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_3174d986ce619079700f71f70c58e3ba6071dfa231817182bcfc83bc7042d05e",
+      "rpmRecordIds": [
+        "M3-RPM-054",
+        "M3-RPM-142"
+      ],
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": false,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_8fcd599fce6db2ae6ff21a384a339a119cc288a541fb0fd6c2fcf9ff17c40b84",
+      "rpmRecordIds": [
+        "M3-RPM-054",
+        "M3-RPM-142"
+      ],
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": false,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_7235d5e5dd21ac3c5b7929db8c9b82b500a73afa26279431d92436e5e053cc0e",
+      "rpmRecordIds": [
+        "M3-RPM-054",
+        "M3-RPM-142"
+      ],
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": false,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_5e9ea6eaeb8d2a94f97f080339b2da07c15586a11e220e6c17f3ea3ee766183e",
+      "rpmRecordIds": [
+        "M3-RPM-054",
+        "M3-RPM-142"
+      ],
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": false,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_f309fc18fd6cf18c004c2af01398ca91fa305f55980696e7af93ad5197eeca11",
+      "rpmRecordIds": [
+        "M3-RPM-054",
+        "M3-RPM-142"
+      ],
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_TYPE_INVALID:problemTypeKey",
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey"
+      ],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_219e4d3eb588b985bdca39486d7b47f3d242a96b71e8e90e8a72a6d1d631e34c",
+      "rpmRecordIds": [
+        "M3-RPM-055",
+        "M3-RPM-143"
+      ],
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey"
+      ],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_3b04294258c4b0f7ae456e5fcccb100fa7bc4b83d554603410b84b4b19053c2d",
+      "rpmRecordIds": [
+        "M3-RPM-061",
+        "M3-RPM-149"
+      ],
+      "activeValidationStatus": "VALIDATED",
+      "activeValidationErrors": [],
+      "bindingLookupCurriculum": "2015",
+      "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": true,
+      "masterTagErrors": []
+    }
+  ],
+  "activeFieldSchemaPassCount": 13,
+  "activeFieldSchemaDebtCount": 11,
+  "unresolvedMasterTagCount": 0,
+  "fourSlot": {
+    "path": "E038.4slot.json",
+    "sha256": "21b179a49773b9b7ddded069d58806f4d839a26635985ab309e661f10d08bab7",
+    "fail": [],
+    "warn": [
+      "#3 only 4 distinct terms",
+      "#5 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 24,
+      "examItems": 24,
+      "quotes": 217
+    },
+    "sourceBlob": "c359c7a18444b4732668917feb2a0cd0d30038d4",
+    "candidateParentSameSlot": "PASS"
+  },
+  "independent": {
+    "status": "PASS_FINAL_METADATA_BOUND",
+    "artifactSha256": "101e2dcdcd2cfa515ee87cad20e04e44fa7cdeef42cb8278f2f800fbfdfe2ee7",
+    "sampleOrdinals": [
+      9,
+      22,
+      23
+    ],
+    "slotHashMatches": true,
+    "targetSlotSha256": "21b179a49773b9b7ddded069d58806f4d839a26635985ab309e661f10d08bab7",
+    "reviewHashMatches": true,
+    "targetReviewSha256": "bc308a07a41978d98efb329ad6eb2525fd61a47ee57d602986446ec811651c0a",
+    "sourcePatchHashMatches": true,
+    "targetSourcePatchSha256": "e883097aedc83e217017645089864f820c4a43da334fa056204a229b52c6e218"
+  },
+  "reviewSha256": "bc308a07a41978d98efb329ad6eb2525fd61a47ee57d602986446ec811651c0a",
+  "productionRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+  "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
+  "artifactRefs": {
+    "sourcePatch": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.source-patch.json",
+      "sha256": "e883097aedc83e217017645089864f820c4a43da334fa056204a229b52c6e218"
+    },
+    "fourSlot": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.4slot.json",
+      "sha256": "21b179a49773b9b7ddded069d58806f4d839a26635985ab309e661f10d08bab7"
+    },
+    "proposals": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.proposals.json",
+      "sha256": "e24f7d14aa1c4e86275a611aae617c25ec25df2491277c3b1456cf62afcc3478"
+    },
+    "global-reuse-evidence.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.global-reuse-evidence.json",
+      "sha256": "94ab884b59689eae782ad57ec6138f7abbe60a9fecddf4b31c4be6d9e90ef9b9"
+    },
+    "resolver-evidence.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.resolver-evidence.json",
+      "sha256": "f849e55f2405124e41c44e09ceb155198569db5d222caeb80e53362621c59cd7"
+    },
+    "difficulty-change-review.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.difficulty-change-review.json",
+      "sha256": "cd77bb20ca97865652fac8194bda410ee2917a91e81d51a94da8aaddeb3d421d"
+    },
+    "asset-version-evidence.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.asset-version-evidence.json",
+      "sha256": "5b3db429f16dd37072e302b40f7972e40099b0299ae3604f98ede639d5ff1f64"
+    },
+    "existing-metadata-sync.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.existing-metadata-sync.json",
+      "sha256": "c72f00dd55908b3c858ae3d708eaaad02d565d9d457ead26e6435ed0a34cd4c9"
+    },
+    "resume-notes.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.resume-notes.json",
+      "sha256": "2ec29dbfc01be054eba2f57da4c1ded5e477de5d17d81c6465c2711b2f39672b"
+    },
+    "independent": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.independent.json",
+      "sha256": "101e2dcdcd2cfa515ee87cad20e04e44fa7cdeef42cb8278f2f800fbfdfe2ee7"
+    },
+    "difficultyAdjudication": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.difficulty-adjudication.json",
+      "sha256": "a217c1b450c6cfea26841bbeb0767c8adfac5906a094243edb786062049a0415"
+    },
+    "independent.difficulty.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.independent.difficulty.json",
+      "sha256": "37308b60ee2c6aab63fee4ca3de9bb583499d0d35419aef43095f5204efdf7d5"
+    },
+    "independent.variants.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.independent.variants.json",
+      "sha256": "9fd0e4fb481f315c6245d201bad65911a2a61a4b8203dabd30635e1d0232117e"
+    },
+    "independent-image-version.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.independent.image-version.json",
+      "sha256": "c384f002da818d60bcc97233b79a31db280f2706dc279f40787321347d162357"
+    }
+  },
+  "packagedMetadataSha256": "2203e2c6472b19a1bd22f98aaa681dfa884f9149dcdf59904681cc60ccfeac84",
+  "sourcePayloadReuse": {
+    "basis": "All non-metadata fields compared exactly by VM values; QBODY and QFULL additionally unchanged",
+    "evidenceSourceBlob": "c359c7a18444b4732668917feb2a0cd0d30038d4",
+    "metadataOnlySourceBlob": "dba97880108288a7110e610e5ad17649e23654dc",
+    "sameStudentContent": true,
+    "sameFourSlotArtifact": true
+  }
+}

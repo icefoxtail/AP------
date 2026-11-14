@@ -1,0 +1,949 @@
+{
+  "status": "EXISTING_METADATA_KEYS_ONLY_SYNCHRONIZED",
+  "rootAuthorizedExistingFields": [
+    "rpmPrimaryKey",
+    "metaStatus",
+    "metaDebtFields",
+    "semanticMeta"
+  ],
+  "newNestedFields": false,
+  "studentFieldsChanged": false,
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_224c400ffa9f2f629de6a65961fcb6dc962972a3d63e0bf7bfb4539a0380fc6a",
+      "changedExistingKeys": [],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-043",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 뜻",
+          "subConcept": "식이 이차함수인지 판별",
+          "conditionsUsed": "보기의 다섯 식에서 x에 대한 최고차항의 차수를 확인한다.",
+          "integrationPatternExplanation": "이차함수의 정의에 따른 차수 판별만 하므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "정의에 따라 식의 차수만 확인한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-043",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 뜻",
+          "subConcept": "식이 이차함수인지 판별",
+          "conditionsUsed": "보기의 다섯 식에서 x에 대한 최고차항의 차수를 확인한다.",
+          "integrationPatternExplanation": "이차함수의 정의에 따른 차수 판별만 하므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "정의에 따라 식의 차수만 확인한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "RPM_ONLY",
+      "selectedPairMatchesRawRow": false,
+      "reason": "다섯 식 중 최고차항이2차이고 이차항계수가0이 아닌 다항식 관계를 찾는다. 분모에 x가 있는 식과 일차·삼차식을 제외하는 정의 판별이다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_266496bb12069d27636569749d7c66c473d5e04abbe8e6e8907197ce72f56380",
+      "changedExistingKeys": [
+        "rpmPrimaryKey",
+        "metaStatus",
+        "semanticMeta"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-054",
+        "metaStatus": "FAMILY_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 뜻",
+          "subConcept": "상황을 이차식으로 표현",
+          "conditionsUsed": "둘레·넓이·속력·정답 수 조건을 각각 y에 대한 식으로 표현한다.",
+          "integrationPatternExplanation": "각 문맥을 식으로 바꾸고 차수를 판단하는 한 개념 중심 풀이이므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "각 상황의 식을 세우고 차수를 구별한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-043",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 뜻",
+          "subConcept": "상황을 이차식으로 표현",
+          "conditionsUsed": "둘레·넓이·속력·정답 수 조건을 각각 y에 대한 식으로 표현한다.",
+          "integrationPatternExplanation": "직사각형 넓이 공식을 이용해 문장관계를 이차식으로 만든 뒤 정의를 판정한다. 실제 도형 넓이 보조 개념에서 함수 판별로 이어지는 SEQUENTIAL이다."
+        },
+        "difficultyReason": "각 상황의 식을 세우고 차수를 구별한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "RPM_ONLY",
+      "selectedPairMatchesRawRow": false,
+      "reason": "각 상황의 둘레·넓이·거리·점수를 x의 식으로 만들고 직사각형의 넓이 x(x+2)만 이차식임을 판정한다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_7be82cf55ed1785188eacdb67ff36ccfca74da860a1592531b0a513cc4329251",
+      "changedExistingKeys": [
+        "metaStatus"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-047",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "좌표 대입으로 그래프 위 점 판별",
+          "conditionsUsed": "각 보기의 x좌표를 y=2x²에 대입해 y좌표와 비교한다.",
+          "integrationPatternExplanation": "이차함수 식에 좌표를 대입하는 단일 개념 풀이이므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "한 좌표를 식에 대입한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-047",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "좌표 대입으로 그래프 위 점 판별",
+          "conditionsUsed": "각 보기의 x좌표를 y=2x²에 대입해 y좌표와 비교한다.",
+          "integrationPatternExplanation": "이차함수 식에 좌표를 대입하는 단일 개념 풀이이므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "한 좌표를 식에 대입한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "RPM_ONLY",
+      "selectedPairMatchesRawRow": false,
+      "reason": "각 선택점의 x를 y=2x²에 직접 대입하고 계산한 y와 선택점의 y를 대조한다. 점좌표를 고르는 목표와 함숫값 직접계산 방법을 구분한다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_c704061b6da9a53b7e8564ac3f6cf5a04b7279f7db107e9d4bb53017307fde0f",
+      "changedExistingKeys": [
+        "rpmPrimaryKey",
+        "metaStatus"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-046",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "대칭축·볼록성·꼭짓점",
+          "conditionsUsed": "y=−x²의 계수 부호, 대칭축, 꼭짓점 좌표를 확인한다.",
+          "integrationPatternExplanation": "한 포물선의 대칭축·볼록성·꼭짓점을 각각 확인하므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "대칭축·볼록성·꼭짓점 세 성질을 판단한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-045",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "대칭축·볼록성·꼭짓점",
+          "conditionsUsed": "y=−x²의 계수 부호, 대칭축, 꼭짓점 좌표를 확인한다.",
+          "integrationPatternExplanation": "한 포물선의 대칭축·볼록성·꼭짓점을 각각 확인하므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "대칭축·볼록성·꼭짓점 세 성질을 판단한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "RPM_ONLY",
+      "selectedPairMatchesRawRow": false,
+      "reason": "y=−x²의 대칭축 y축, 원점 꼭짓점과 음의 계수에 따른 위로볼록 성질을 각 진술에 직접 대조한다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_01e86bb0ddb38ac2a4bcb1123eae379606984b96f86beff837cdfe5862fa8e39",
+      "changedExistingKeys": [
+        "metaStatus"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-045",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "x축 대칭과 계수 부호",
+          "conditionsUsed": "x축 대칭에 따라 같은 x에서 y값의 부호를 바꾼다.",
+          "integrationPatternExplanation": "x축 대칭의 y값 부호 변화만 적용하므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "x축 대칭에서 y값의 부호를 바꾼다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-045",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "x축 대칭과 계수 부호",
+          "conditionsUsed": "x축 대칭에 따라 같은 x에서 y값의 부호를 바꾼다.",
+          "integrationPatternExplanation": "x축 대칭의 y값 부호 변화만 적용하므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "x축 대칭에서 y값의 부호를 바꾼다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "RPM_ONLY",
+      "selectedPairMatchesRawRow": false,
+      "reason": "x축 대칭은 점의 y좌표만 부호를 바꾸므로 기존 식 전체에 음수를 곱한 대칭이동 식을 얻는다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_64c2b6e9d8a09ce1e9e10faddc872bc13f3c77adf1e20400f737b83adeb6708c",
+      "changedExistingKeys": [
+        "metaDebtFields"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-045",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "계수 절댓값과 포물선의 폭",
+          "conditionsUsed": "두 포물선이 아래로 열리고 점선의 폭이 더 좁다는 조건을 계수 a의 부호와 절댓값으로 바꾼다.",
+          "integrationPatternExplanation": "포물선 계수와 그래프 모양의 관계를 해석하므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "포물선의 방향과 폭을 계수 부호·절댓값으로 해석한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-045",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "계수 절댓값과 포물선의 폭",
+          "conditionsUsed": "두 포물선이 아래로 열리고 점선의 폭이 더 좁다는 조건을 계수 a의 부호와 절댓값으로 바꾼다.",
+          "integrationPatternExplanation": "포물선 계수와 그래프 모양의 관계를 해석하므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "포물선의 방향과 폭을 계수 부호·절댓값으로 해석한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "RPM_ONLY",
+      "selectedPairMatchesRawRow": false,
+      "reason": "두 그래프의 아래로 열림에서 a의 음수를, 점선의 더 좁은 폭에서 |a|>1을 얻어 가능한 계수를 고른다. 같은 a를 전제로 한 두 포물선 공통성질 유형과 구별한다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_faf4ecd742c138d3b09cb23e6df665c801d3d044e276978d2e36358fbd2acfc9",
+      "changedExistingKeys": [
+        "semanticMeta"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-055",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비의 뜻",
+          "subConcept": "직각삼각형에서 tan 정의",
+          "conditionsUsed": "AB=13, AC=12, BC=5에서 직각 위치와 A의 맞은편·이웃한 변을 확인한다.",
+          "integrationPatternExplanation": "직각삼각형의 변 관계로 탄젠트를 계산하므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "빗변과 두 직각변을 구별해 tan을 쓴다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-055",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비의 뜻",
+          "subConcept": "직각삼각형에서 tan 정의",
+          "conditionsUsed": "AB=13, AC=12, BC=5에서 직각 위치와 A의 맞은편·이웃한 변을 확인한다.",
+          "integrationPatternExplanation": "기존 해설은 피타고라스 정리의 역으로 직각 위치를 먼저 확인하고 탄젠트 정의를 적용한다. 이 보조 단계는 SEQUENTIAL로 기록하되 현재 그림에 직각이 주어졌다는 난도 근거와 구별한다."
+        },
+        "difficultyReason": "빗변과 두 직각변을 구별해 tan을 쓴다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "DIRECT_ACTIVE",
+      "selectedPairMatchesRawRow": true,
+      "reason": "원본의 직각C와 세 변13·12·5를 읽고 A의 맞은편 BC와 이웃한 직각변 AC의 비를 탄젠트로 쓴다. 기존 해설의 피타고라스 역 확인도 기록하되 도형 복원 문제로 확대하지 않는다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_7c91daecf9d76ff5bd106d3364aab38a32b04e854f04bbb8b2f6ab3cffd46071",
+      "changedExistingKeys": [
+        "rpmPrimaryKey"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-057",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "특수각의 삼각비",
+          "subConcept": "30도·45도 삼각비 계산",
+          "conditionsUsed": "sin30°와 cos45°의 특수각 값을 이용한다.",
+          "integrationPatternExplanation": "특수각 두 삼각비를 더하는 풀이이므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "특수각 두 값의 합을 계산한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-058",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "특수각의 삼각비",
+          "subConcept": "30도·45도 삼각비 계산",
+          "conditionsUsed": "sin30°와 cos45°의 특수각 값을 이용한다.",
+          "integrationPatternExplanation": "특수각 두 삼각비를 더하는 풀이이므로 통합유형은 NONE이다."
+        },
+        "difficultyReason": "특수각 두 값의 합을 계산한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "DIRECT_ACTIVE",
+      "selectedPairMatchesRawRow": true,
+      "reason": "sin30와 cos45의 알려진 두 값을 대입하여 합을 낸다. 삼각형 길이 복원 없이 특수각 값 자체를 계산한다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_57e037fbe122e1f13dbd5abe8e6b52cda499f0a547407be039f94d0f9c06fc08",
+      "changedExistingKeys": [
+        "rpmPrimaryKey",
+        "semanticMeta"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-058",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비의 활용",
+          "subConcept": "단위원 길이와 삼각비 근삿값",
+          "conditionsUsed": "반지름 1과 그림의 맞은편 변 약 0.67을 이용해 인접변의 길이를 피타고라스 정리로 구한다.",
+          "integrationPatternExplanation": "직각삼각형에서 한 변을 구한 뒤 코사인값을 읽는 삼각비 적용이다."
+        },
+        "difficultyReason": "삼각비의 수치 근삿값을 선택한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-055",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비의 뜻",
+          "subConcept": "단위원에서 피타고라스를 보조로 코사인값 산출",
+          "conditionsUsed": "반지름 1과 그림의 맞은편 변 약 0.67을 이용해 인접변의 길이를 피타고라스 정리로 구한다.",
+          "integrationPatternExplanation": "42도는 특수각이 아니다. 반지름1의 직각삼각형에서 피타고라스로 인접변을 정한 후 코사인 정의로 이어지는 SEQUENTIAL이다."
+        },
+        "difficultyReason": "삼각비의 수치 근삿값을 선택한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "DIRECT_ACTIVE",
+      "selectedPairMatchesRawRow": true,
+      "reason": "단위원의 반지름1을 빗변으로 보고 주어진 맞은편 변 약0.67에서 피타고라스로 인접변 약0.74를 얻어 코사인값을 읽는다. 42도는 특수각이 아니다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_687351aaed626382379a96c1739b21fa456cd1927e9a86eb4ac7c93c49fc099c",
+      "changedExistingKeys": [
+        "rpmPrimaryKey",
+        "metaStatus",
+        "metaDebtFields",
+        "semanticMeta"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-058",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비의 활용",
+          "subConcept": "표에서 두 삼각비를 읽어 계산",
+          "conditionsUsed": "표에서 cos73°와 tan74°의 값을 찾아 x+y에 대입한다.",
+          "integrationPatternExplanation": "삼각비 표에서 두 수치를 읽어 더하는 풀이이다."
+        },
+        "difficultyReason": "표의 두 값을 찾아 소수 덧셈을 한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-055",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "삼각비의 뜻",
+          "subConcept": "삼각비표에서 코사인·탄젠트 값을 직접 조회",
+          "conditionsUsed": "표에서 cos73°와 tan74°의 값을 찾아 x+y에 대입한다.",
+          "integrationPatternExplanation": "표의 각도 행과 함수 열에서 두 값을 직접 읽고 더한다. 특수각 계산과 구별하며 다른 개념 결합이 없어 NONE이다."
+        },
+        "difficultyReason": "표의 두 값을 찾아 소수 덧셈을 한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "DIRECT_ACTIVE",
+      "selectedPairMatchesRawRow": false,
+      "reason": "표의73도 행 코사인 열과74도 행 탄젠트 열을 각각 찾아 두 수치를 더한다. 특수각을 외워 산출하는 풀이가 아니다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_b2ed049361d824b57832afb3ed3622898a079f8386231925288750057d8b1f10",
+      "changedExistingKeys": [],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-059",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비와 변의 길이",
+          "subConcept": "tan과 피타고라스 정리",
+          "conditionsUsed": "∠B=90°, AB=3, tanA=5/3으로 BC를 구한 뒤 AC를 구한다.",
+          "integrationPatternExplanation": "탄젠트로 한 직각변을 구하고 피타고라스 정리를 적용한다."
+        },
+        "difficultyReason": "tan으로 한 변을 구한 뒤 피타고라스 정리를 적용한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-059",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비와 변의 길이",
+          "subConcept": "tan과 피타고라스 정리",
+          "conditionsUsed": "∠B=90°, AB=3, tanA=5/3으로 BC를 구한 뒤 AC를 구한다.",
+          "integrationPatternExplanation": "탄젠트로 한 직각변을 구하고 피타고라스 정리를 적용한다."
+        },
+        "difficultyReason": "tan으로 한 변을 구한 뒤 피타고라스 정리를 적용한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "DIRECT_ACTIVE",
+      "selectedPairMatchesRawRow": true,
+      "reason": "tanA=BC/AB와 주어진 AB3에서 BC5를 구한 뒤 피타고라스로 목표 빗변 AC를 정한다. 최종 목표가 변의 길이인 직접측정 유형이다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_de0972ff9036263825ffbbf0bed0421cba9372a2b0ead83d75eca5f0e1ce755f",
+      "changedExistingKeys": [],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-061",
+        "metaStatus": "FAMILY_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비와 넓이",
+          "subConcept": "특수각으로 직각삼각형의 넓이 계산",
+          "conditionsUsed": "∠C=90°, ∠A=30°, BC=6에서 AC와 넓이를 차례로 구한다.",
+          "integrationPatternExplanation": "특수각의 변의 비를 넓이 계산에 적용한다."
+        },
+        "difficultyReason": "특수각의 변의 비와 삼각형 넓이를 연결한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-061",
+        "metaStatus": "FAMILY_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비와 넓이",
+          "subConcept": "특수각으로 직각삼각형의 넓이 계산",
+          "conditionsUsed": "∠C=90°, ∠A=30°, BC=6에서 AC와 넓이를 차례로 구한다.",
+          "integrationPatternExplanation": "특수각의 변의 비를 넓이 계산에 적용한다."
+        },
+        "difficultyReason": "특수각의 변의 비와 삼각형 넓이를 연결한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "FAMILY_ACTIVE",
+      "selectedPairMatchesRawRow": true,
+      "reason": "30도 직각삼각형의 고정 변비로 빗변12와 다른 직각변6√3을 얻고 밑변·높이의 곱으로 넓이를 구한다. 현재 해설에 없는 sin/cos 계산을 썼다고 주장하지 않는다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_4ba63c1677e691fafa6848199e46993c81dd7c5b2bb3615b75c528ead4b85e3a",
+      "changedExistingKeys": [
+        "rpmPrimaryKey",
+        "metaStatus",
+        "metaDebtFields"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-066",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비와 길이",
+          "subConcept": "두 직각삼각형에서 변의 길이 곱 계산",
+          "conditionsUsed": "ABC에서 ∠C=45°와 BC=6을, BCD에서 ∠B=30°와 BC=6을 각각 사용한다.",
+          "integrationPatternExplanation": "두 직각삼각형에서 서로 다른 삼각비로 길이를 구해 곱한다."
+        },
+        "difficultyReason": "두 직각삼각형에서 각각 길이를 구해 곱한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-059",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "삼각비와 길이",
+          "subConcept": "두 직각삼각형에서 변의 길이 곱 계산",
+          "conditionsUsed": "ABC에서 ∠C=45°와 BC=6을, BCD에서 ∠B=30°와 BC=6을 각각 사용한다.",
+          "integrationPatternExplanation": "두 직각삼각형에서 서로 다른 삼각비로 길이를 구해 곱한다."
+        },
+        "difficultyReason": "두 직각삼각형에서 각각 길이를 구해 곱한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "DIRECT_ACTIVE",
+      "selectedPairMatchesRawRow": false,
+      "reason": "이미 주어진 두 직각삼각형의 공통 변BC6을 각각 sin45와 tan30에 직접 적용하여 두 길이를 구한 뒤 곱한다. 서로 얽힌 미지조건이나 새 보조선은 없다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_83cda756e3fe5ea56759246f839cd121b901b92a992c7ca2ea63821eacf43007",
+      "changedExistingKeys": [
+        "rpmPrimaryKey",
+        "metaStatus",
+        "metaDebtFields",
+        "semanticMeta"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-060",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비의 활용",
+          "subConcept": "물매를 tan으로 해석",
+          "conditionsUsed": "직각삼각형의 높이:밑변=3:10을 tan x와 연결하고 표의 값을 찾는다.",
+          "integrationPatternExplanation": "지붕의 기울기를 탄젠트로 나타내어 표의 각과 연결한다."
+        },
+        "difficultyReason": "물매를 tan으로 표현하고 표와 대조한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-055",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "삼각비의 뜻",
+          "subConcept": "탄젠트로 나타낸 물매에서 표로 각도 역조회",
+          "conditionsUsed": "직각삼각형의 높이:밑변=3:10을 tan x와 연결하고 표의 값을 찾는다.",
+          "integrationPatternExplanation": "지붕의 기울기를 탄젠트로 나타내어 표의 각과 연결한다."
+        },
+        "difficultyReason": "물매를 tan으로 표현하고 표와 대조한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "DIRECT_ACTIVE",
+      "selectedPairMatchesRawRow": false,
+      "reason": "물매3/10을 직각삼각형의 높이/밑변 즉 tanx로 해석한 뒤 표의 탄젠트0.30에서 각17도를 역으로 찾는다. 최종 각을 찾는 삼각비표 조회이다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_98722ecf33c72cefec82f5f62860772c5904c4b7f1217db4e6b676706acb536d",
+      "changedExistingKeys": [],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-062",
+        "metaStatus": "FAMILY_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비와 도형의 넓이",
+          "subConcept": "특수각 좌표와 사다리꼴 넓이",
+          "conditionsUsed": "반지름 2, 중심각 60°, AC⊥OB, DB⊥OB 및 O,A,D의 일직선 조건을 사용한다.",
+          "integrationPatternExplanation": "중심각을 좌표로 나타내고 수직조건으로 사다리꼴의 넓이를 구한다."
+        },
+        "difficultyReason": "좌표를 구성해 평행한 변의 길이와 간격을 구한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-062",
+        "metaStatus": "FAMILY_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비와 도형의 넓이",
+          "subConcept": "특수각 좌표와 사다리꼴 넓이",
+          "conditionsUsed": "반지름 2, 중심각 60°, AC⊥OB, DB⊥OB 및 O,A,D의 일직선 조건을 사용한다.",
+          "integrationPatternExplanation": "중심각을 좌표로 나타내고 수직조건으로 사다리꼴의 넓이를 구한다."
+        },
+        "difficultyReason": "좌표를 구성해 평행한 변의 길이와 간격을 구한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "FAMILY_ACTIVE",
+      "selectedPairMatchesRawRow": true,
+      "reason": "사분원의 반지름과60도에서 A의 좌표를 삼각비로 정하고 수선·OAD공선 조건으로 C,D를 얻는다. 평행변AC·BD와 간격CB로 사다리꼴 넓이를 구하는 좌표 구성 풀이이다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_f8162b8361a6d5e2ac83a6c99002f52b82ae632c6a8e11243e7f112921cabef6",
+      "changedExistingKeys": [],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-049",
+        "metaStatus": "DIRECT_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "수직 평행이동과 점 대입",
+          "conditionsUsed": "위로 k만큼 이동한 y=−4x²+3+k에 점 (1/2,5)를 대입한다.",
+          "integrationPatternExplanation": "평행이동 후 함수식에 점을 대입하는 단일 함수 개념 풀이이다."
+        },
+        "difficultyReason": "평행이동식을 세워 주어진 점을 대입한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-049",
+        "metaStatus": "DIRECT_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "수직 평행이동과 점 대입",
+          "conditionsUsed": "위로 k만큼 이동한 y=−4x²+3+k에 점 (1/2,5)를 대입한다.",
+          "integrationPatternExplanation": "평행이동 후 함수식에 점을 대입하는 단일 함수 개념 풀이이다."
+        },
+        "difficultyReason": "평행이동식을 세워 주어진 점을 대입한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "DIRECT_BINDING_GAP",
+      "selectedPairMatchesRawRow": true,
+      "reason": "y방향 k 평행이동을 상수항+k로 나타낸 뒤 주어진 점(1/2,5)을 대입해 이동량을 정한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_9116b10c6731be09e38b2ac81ded708d1f6248cd7a29f80ad43c497b8f1697b9",
+      "changedExistingKeys": [
+        "metaStatus"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-049",
+        "metaStatus": "DIRECT_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "수평 평행이동과 그래프 성질",
+          "conditionsUsed": "왼쪽 4만큼 이동한 y=3(x+4)²의 축·꼭짓점·점 통과·증가성을 확인한다.",
+          "integrationPatternExplanation": "수평이동 후 같은 포물선의 기본 성질을 판정한다."
+        },
+        "difficultyReason": "수평 이동 후 축·꼭짓점·증가성을 확인한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-049",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "수평 평행이동과 그래프 성질",
+          "conditionsUsed": "왼쪽 4만큼 이동한 y=3(x+4)²의 축·꼭짓점·점 통과·증가성을 확인한다.",
+          "integrationPatternExplanation": "수평이동 후 같은 포물선의 기본 성질을 판정한다."
+        },
+        "difficultyReason": "수평 이동 후 축·꼭짓점·증가성을 확인한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "DIRECT_BINDING_GAP",
+      "selectedPairMatchesRawRow": false,
+      "reason": "왼쪽4 이동한 식 y=3(x+4)²에서 축과 꼭짓점을 바로 읽고 좌표 부호가 반대인 진술을 가른다. 나머지 보기의 증가 구간도 실제 x>0 범위에서 확인한다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_3174d986ce619079700f71f70c58e3ba6071dfa231817182bcfc83bc7042d05e",
+      "changedExistingKeys": [
+        "rpmPrimaryKey",
+        "metaStatus"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-050",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 식",
+          "subConcept": "꼭짓점형의 계수 결정",
+          "conditionsUsed": "꼭짓점 (2,6)으로 꼭짓점형을 세우고 점 (0,2)를 대입한다.",
+          "integrationPatternExplanation": "꼭짓점형과 한 점 조건으로 계수를 구한다."
+        },
+        "difficultyReason": "꼭짓점과 한 점으로 계수를 구한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-054",
+        "metaStatus": "FAMILY_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 식",
+          "subConcept": "꼭짓점형의 계수 결정",
+          "conditionsUsed": "꼭짓점 (2,6)으로 꼭짓점형을 세우고 점 (0,2)를 대입한다.",
+          "integrationPatternExplanation": "꼭짓점형과 한 점 조건으로 계수를 구한다."
+        },
+        "difficultyReason": "꼭짓점과 한 점으로 계수를 구한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "FAMILY_BINDING_GAP",
+      "selectedPairMatchesRawRow": true,
+      "reason": "꼭짓점으로 p2,q6을 읽은 뒤 점(0,2)을 대입하여 계수a를 정하고 세 매개변수의 곱을 낸다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_8fcd599fce6db2ae6ff21a384a339a119cc288a541fb0fd6c2fcf9ff17c40b84",
+      "changedExistingKeys": [
+        "rpmPrimaryKey"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-048",
+        "metaStatus": "FAMILY_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 식",
+          "subConcept": "평행이동 조건으로 원래 식 결정",
+          "conditionsUsed": "오른쪽 3, 아래 5로 이동한 꼭짓점과 점 조건을 원래 함수로 역변환한다.",
+          "integrationPatternExplanation": "평행이동을 역으로 해석하고 꼭짓점·점 조건으로 계수를 정한다."
+        },
+        "difficultyReason": "이동을 역으로 해석하고 꼭짓점·점 조건을 순차 적용한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-054",
+        "metaStatus": "FAMILY_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 식",
+          "subConcept": "평행이동 조건으로 원래 식 결정",
+          "conditionsUsed": "오른쪽 3, 아래 5로 이동한 꼭짓점과 점 조건을 원래 함수로 역변환한다.",
+          "integrationPatternExplanation": "평행이동을 역으로 해석하고 꼭짓점·점 조건으로 계수를 정한다."
+        },
+        "difficultyReason": "이동을 역으로 해석하고 꼭짓점·점 조건을 순차 적용한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "FAMILY_BINDING_GAP",
+      "selectedPairMatchesRawRow": true,
+      "reason": "이동된 꼭짓점과 한 점을 원래 좌표로 역이동하여 꼭짓점형을 세우고 계수를 정한 다음 전개하여 a,b,c를 읽는다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_7235d5e5dd21ac3c5b7929db8c9b82b500a73afa26279431d92436e5e053cc0e",
+      "changedExistingKeys": [],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-054",
+        "metaStatus": "FAMILY_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "두 포물선의 꼭짓점·교점 관계",
+          "conditionsUsed": "두 포물선이 서로의 꼭짓점을 지나고 p<−2이며 수평거리 AB=6이라는 조건을 연결한다.",
+          "integrationPatternExplanation": "서로의 꼭짓점 조건과 수평 현 길이를 포물선 대칭성에 함께 적용한다."
+        },
+        "difficultyReason": "서로의 꼭짓점을 지나는 조건과 수평 현의 길이를 함께 쓴다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-054",
+        "metaStatus": "FAMILY_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 그래프",
+          "subConcept": "두 포물선의 꼭짓점·교점 관계",
+          "conditionsUsed": "두 포물선이 서로의 꼭짓점을 지나고 p<−2이며 수평거리 AB=6이라는 조건을 연결한다.",
+          "integrationPatternExplanation": "서로의 꼭짓점 조건과 수평 현 길이를 포물선 대칭성에 함께 적용한다."
+        },
+        "difficultyReason": "서로의 꼭짓점을 지나는 조건과 수평 현의 길이를 함께 쓴다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "FAMILY_BINDING_GAP",
+      "selectedPairMatchesRawRow": true,
+      "reason": "서로의 꼭짓점 통과식을 합쳐 (a+2)(p+2)²=0을 만들고 p<−2로 두 번째 인수를 제외한다. 같은 높이의 두 교점이 축−2에 대칭이라는 관계와 수평길이6을 결합해 p,q까지 복원한다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_5e9ea6eaeb8d2a94f97f080339b2da07c15586a11e220e6c17f3ea3ee766183e",
+      "changedExistingKeys": [
+        "rpmPrimaryKey",
+        "metaStatus"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-049",
+        "metaStatus": "DIRECT_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 식",
+          "subConcept": "꼭짓점형과 축·절편 조건",
+          "conditionsUsed": "선택 ①은 꼭짓점과 점, 선택 ②는 축과 y축 교점의 함수값을 사용한다.",
+          "integrationPatternExplanation": "각 선택문항의 꼭짓점 또는 함수값 조건으로 매개변수를 결정한다."
+        },
+        "difficultyReason": "서답형의 선택지별로 꼭짓점형 또는 y절편 조건을 정리한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-054",
+        "metaStatus": "FAMILY_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 식",
+          "subConcept": "꼭짓점형과 축·절편 조건",
+          "conditionsUsed": "선택 ①은 꼭짓점과 점, 선택 ②는 축과 y축 교점의 함수값을 사용한다.",
+          "integrationPatternExplanation": "각 선택문항의 꼭짓점 또는 함수값 조건으로 매개변수를 결정한다."
+        },
+        "difficultyReason": "서답형의 선택지별로 꼭짓점형 또는 y절편 조건을 정리한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "FAMILY_BINDING_GAP",
+      "selectedPairMatchesRawRow": true,
+      "reason": "①은 꼭짓점형에 한 점을 대입해 함수식을 구한다. ②는 축에서 p를 읽고 y축 공통교점의 함숫값으로 q를 구한다. 두 분기는 선택 관계이며 ROOT_VERTEX의 서로 다른 입력 분기를 재사용한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_f309fc18fd6cf18c004c2af01398ca91fa305f55980696e7af93ad5197eeca11",
+      "changedExistingKeys": [
+        "rpmPrimaryKey",
+        "metaStatus",
+        "difficultyReason"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-048",
+        "metaStatus": "FAMILY_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 식",
+          "subConcept": "점·절편·대칭축 조건으로 식 결정",
+          "conditionsUsed": "선택 ①은 y절편과 두 점, 선택 ②는 축·x절편·y절편으로 식과 넓이를 구한다.",
+          "integrationPatternExplanation": "각 선택문항의 계수·근·축 조건을 식으로 정리하고 필요한 넓이를 계산한다."
+        },
+        "difficultyReason": "각 선택형에서 연립조건을 세우고 넓이까지 산출한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-054",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 식",
+          "subConcept": "점·절편·대칭축 조건으로 식 결정",
+          "conditionsUsed": "선택 ①은 y절편과 두 점, 선택 ②는 축·x절편·y절편으로 식과 넓이를 구한다.",
+          "integrationPatternExplanation": "각 선택문항의 계수·근·축 조건을 식으로 정리하고 필요한 넓이를 계산한다."
+        },
+        "difficultyReason": "선택①은 y절편과 두 점으로 연립하여 식을 구하고, 선택②는 축·근의 대칭으로 식과 꼭짓점을 복원해 넓이에 연결한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "FAMILY_BINDING_GAP",
+      "selectedPairMatchesRawRow": false,
+      "reason": "①은 y절편으로 c를 정하고 두 점의 식을 연립해 일반형을 복원한다. ②는 축대칭에서 다른 근을 얻어 함수와 꼭짓점을 복원한 뒤 대각선AO로 나눈 두 삼각형의 넓이를 합한다. 분기별로 이미 다른 ACTIVE 유형이 있다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_219e4d3eb588b985bdca39486d7b47f3d242a96b71e8e90e8a72a6d1d631e34c",
+      "changedExistingKeys": [
+        "rpmPrimaryKey",
+        "metaStatus",
+        "metaDebtFields",
+        "semanticMeta",
+        "difficultyReason"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-066",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비의 활용",
+          "subConcept": "q23-① 특수각 표; q23-② 정사각뿔 높이와 tan",
+          "conditionsUsed": "①은 30°·45°·60°의 표준값, ②는 한 모서리 10인 정사각뿔과 두 변의 중점 조건을 사용한다.",
+          "integrationPatternExplanation": "특수각 표를 완성하고, 다른 선택문항에서는 입체의 높이를 구해 삼각비를 계산한다."
+        },
+        "difficultyReason": "특수각 표를 완성하고 정사각뿔의 높이를 구해 삼각비에 연결한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-055",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "templateKey"
+        ],
+        "semanticMeta": {
+          "primaryConcept": "삼각비의 뜻",
+          "subConcept": "선택① 특수각 표준값; 선택② 입체 길이 복원 후 탄젠트",
+          "conditionsUsed": "①은 30°·45°·60°의 표준값, ②는 한 모서리 10인 정사각뿔과 두 변의 중점 조건을 사용한다.",
+          "integrationPatternExplanation": "①과②는 택일 관계이다. ②는 정사각형 중심·피타고라스로 높이를 복원한 뒤 탄젠트로 이어지는 SEQUENTIAL이고, ①의 표준값 계산을②와 동시에 요구하지 않는다."
+        },
+        "difficultyReason": "선택①은 특수각 표준값을 직접 채우며, 선택②는 정사각뿔의 높이와 단면을 구성하여 탄젠트로 연결한다. 두 선택문항을 동시에 요구하지 않는다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "DIRECT_ACTIVE",
+      "selectedPairMatchesRawRow": false,
+      "reason": "①은 특수각30·45·60도의 값을 표에 직접 채운다. ②는 정사각뿔의 옆모서리 길이가 같다는 조건으로 높이의 발을 중심으로 정당화하고 피타고라스로 높이를 복원해 단면 직각삼각형의 tan을 구한다. 최종값은 양쪽 모두 삼각비다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_3b04294258c4b0f7ae456e5fcccb100fa7bc4b83d554603410b84b4b19053c2d",
+      "changedExistingKeys": [
+        "rpmPrimaryKey"
+      ],
+      "before": {
+        "rpmPrimaryKey": "M3-RPM-062",
+        "metaStatus": "FAMILY_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비와 도형의 넓이",
+          "subConcept": "특수각·닮음과 삼각형 넓이; 4-①만 ALIVE 교체",
+          "conditionsUsed": "①은 AC=24, ∠A=30°, CD=8을 사용한다. ②는 닮음비 1:2, AB=AC=4, ∠B=30°와 F의 교점 조건을 사용한다.",
+          "integrationPatternExplanation": "삼각비와 넓이를 결합하는 ①, 닮음·직선 교점 비율과 넓이를 결합하는 ②로 구성된다."
+        },
+        "difficultyReason": "두 삼각형의 길이 관계와 좌표·넓이 계산을 결합한다."
+      },
+      "after": {
+        "rpmPrimaryKey": "M3-RPM-061",
+        "metaStatus": "FAMILY_ACTIVE",
+        "metaDebtFields": [],
+        "semanticMeta": {
+          "primaryConcept": "삼각비와 도형의 넓이",
+          "subConcept": "특수각·닮음과 삼각형 넓이; 4-①만 ALIVE 교체",
+          "conditionsUsed": "①은 AC=24, ∠A=30°, CD=8을 사용한다. ②는 닮음비 1:2, AB=AC=4, ∠B=30°와 F의 교점 조건을 사용한다.",
+          "integrationPatternExplanation": "삼각비와 넓이를 결합하는 ①, 닮음·직선 교점 비율과 넓이를 결합하는 ②로 구성된다."
+        },
+        "difficultyReason": "두 삼각형의 길이 관계와 좌표·넓이 계산을 결합한다."
+      },
+      "statusMeaning": "metaStatus는 선택 의미와 기존 raw RPM row의 연결 상태를 표현한다. ACTIVE인 경우도 독립 VERIFIED_FINAL/공식 Resolver의 새 완료나 출고 승인으로 사용하지 않는다.",
+      "rawCrosswalkStatus": "FAMILY_ACTIVE",
+      "selectedPairMatchesRawRow": true,
+      "reason": "①은 두 직각변을 삼각비로 구하고 주어진 조각8을 빼 목표 삼각형의 넓이를 낸다. ②는 닮은 이등변삼각형의 길이·높이를 구해 좌표화한 뒤 두 직선 위 점F를 매개변수 연립으로 결정하고 등밑변 넓이비로 목표 넓이에 연결한다."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "status": "GLOBAL_ACTIVE_DEFINITIONS_READ",
+  "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+  "templates": [
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "definition": "`함수 그래프의 변환` 안에서 '함수 그래프의 평행이동'을 핵심 풀이 골격으로 사용하는 유형.",
+      "internalSkeleton": "함수 그래프의 평행이동",
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "definition": "`함수 그래프의 변환` 안에서 '함수 그래프의 평행이동과 대칭이동'을 핵심 풀이 골격으로 사용하는 유형.",
+      "internalSkeleton": "함수 그래프의 평행이동과 대칭이동",
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+      "parentProblemTypeKey": "PT_FUNCTION_VALUE",
+      "definition": "`함숫값 계산` 안에서 '함숫값 직접 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+      "internalSkeleton": "함숫값 직접 계산",
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "definition": "교점·축·근의 대칭을 좌표·거리·넓이 등 후속 관계와 결합한다.",
+      "internalSkeleton": "GRAPH_REFLECTION_OR_ROOT_INTERVAL_TRANSFORM",
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "definition": "부등식·그래프 관계 등 여러 조건을 계수관계로 바꾸어 함수식을 정한다.",
+      "internalSkeleton": "PAIR_OF_QUADRATICS_RECONSTRUCTION_FROM_ROOT_AND_SIGN_CONDITIONS",
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION"
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "definition": "근, 축, 꼭짓점, 한 점 조건으로 함수식을 복원한다.",
+      "internalSkeleton": "TRANSLATED_QUADRATIC_VERTEX_CONDITION_TO_COEFFICIENTS",
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION"
+    },
+    {
+      "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS",
+      "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
+      "definition": "y절편에서 c를 먼저 얻고 나머지 두 점으로 a, b 연립방정식을 풀어 식을 완성한다.",
+      "internalSkeleton": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3"
+    },
+    {
+      "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS",
+      "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "definition": "y=ax^2의 꼭짓점·축·치역·사분면 성질을 각 진술에 적용해 옳은 것을 고른다.",
+      "internalSkeleton": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3"
+    },
+    {
+      "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_OF_TRANSLATED_PARABOLA",
+      "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "definition": "표준형에서 꼭짓점·축·볼록성을 확인하고 y절편을 계산해 지나는 사분면을 판정한 뒤 틀린 진술을 고른다.",
+      "internalSkeleton": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3"
+    },
+    {
+      "templateKey": "TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM",
+      "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+      "definition": "둘레·넓이·부피·거리 공식을 각각 식으로 세워 최고차항이 2차인 것을 고른다.",
+      "internalSkeleton": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3"
+    },
+    {
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "definition": "삼각비로 중간 길이·각을 만든 뒤 넓이·둘레·부피·직선식 등으로 연결한다.",
+      "internalSkeleton": "삼각비 계산 결과를 다른 도형량·대상량의 계산으로 이어간다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "definition": "삼각비로 목표 길이·높이·거리·기본 측정값을 직접 구한다.",
+      "internalSkeleton": "한 개 또는 연결된 직각삼각형에서 목표 측정값을 바로 산출한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "parentProblemTypeKey": "PT_TRIG_RATIO",
+      "definition": "삼각비 정의와 한 삼각비에서 다른 삼각비로의 변환을 이용한다.",
+      "internalSkeleton": "직각삼각형의 변·각 관계를 삼각비 식으로 직접 변환한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "parentProblemTypeKey": "PT_TRIG_RATIO",
+      "definition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+      "internalSkeleton": "도형의 길이 관계를 먼저 복원하고 최종 삼각비 값으로 연결한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "parentProblemTypeKey": "PT_TRIG_RATIO",
+      "definition": "특수각의 삼각비 값을 직접 계산·비교·판정한다.",
+      "internalSkeleton": "특수각 관계를 사용해 삼각비 또는 각을 결정한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "parentProblemTypeKey": "PT_TRIG_RATIO",
+      "definition": "삼각비표·근삿값·역조회로 값을 비교하거나 각을 찾는다.",
+      "internalSkeleton": "표의 값과 주어진 조건을 대응시켜 삼각비·각을 결정한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    }
+  ],
+  "problemTypes": [
+    {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "definition": "평행이동·대칭이동으로 함수 그래프 사이의 관계를 해석하는 문제 유형.",
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "definition": "주어진 함수식·대응·조각조건에서 특정 입력의 함숫값을 구하는 문제 유형.",
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "definition": "이차함수와 직선·축·다른 그래프의 교점, 접점, 근 위치를 판정하는 유형.",
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION"
+    },
+    {
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "definition": "교점·축·꼭짓점·함숫값 등의 조건으로 이차함수 식이나 계수를 복원하는 유형.",
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION"
+    },
+    {
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+      "definition": "실생활·도형 관계식이 y=ax^2+bx+c (a≠0) 꼴인지 판별하여 이차함수인 것을 고른다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3"
+    },
+    {
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "definition": "꼭짓점·축·y절편·볼록성·폭을 근거로 이차함수 그래프의 공통점·차이를 비교하고 주어진 진술의 참·거짓을 판정한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3"
+    },
+    {
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
+      "definition": "y=ax^2+bx+c에 세 점을 대입해 연립방정식을 세우고 a, b, c를 구해 식을 완성한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3"
+    },
+    {
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "definition": "직각삼각형·특수각·삼각비표에서 삼각비의 값과 관계를 직접 구하거나 판정하는 유형.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "definition": "삼각비를 이용해 길이·높이·거리·넓이 등 다른 기하량을 구하는 유형.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    }
+  ]
+}

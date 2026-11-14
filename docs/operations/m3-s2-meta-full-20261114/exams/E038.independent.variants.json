@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "m3-s2-independent-variant-adjudication-v1",
+  "examId": "E038",
+  "author": "a",
+  "reviewer": "b",
+  "sourceGitBlobSha": "c359c7a18444b4732668917feb2a0cd0d30038d4",
+  "sampledAuthorReviewSha256": "bc308a07a41978d98efb329ad6eb2525fd61a47ee57d602986446ec811651c0a",
+  "sampledSourcePatchSha256": "e883097aedc83e217017645089864f820c4a43da334fa056204a229b52c6e218",
+  "sampled4slotSha256": "21b179a49773b9b7ddded069d58806f4d839a26635985ab309e661f10d08bab7",
+  "status": "PASS",
+  "items": [
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_5e9ea6eaeb8d2a94f97f080339b2da07c15586a11e220e6c17f3ea3ee766183e",
+      "selection": "MUTUALLY_EXCLUSIVE_OPTIONS",
+      "variants": [
+        {
+          "variant": "①",
+          "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+          "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+          "difficultyBucket": 2,
+          "status": "INDEPENDENTLY_ACCEPTED"
+        },
+        {
+          "variant": "②",
+          "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+          "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+          "difficultyBucket": 2,
+          "status": "INDEPENDENTLY_ACCEPTED"
+        }
+      ],
+      "representativePolicy": "MAX_OF_INDEPENDENT_VARIANT_BUCKETS_NOT_SUM",
+      "acceptedRepresentativeBucket": 2,
+      "basis": "①은 꼭짓점+한 점,②는 축+공통y절편의 한 번 대입으로 각각2다.",
+      "sourceAndBothExistingVariantSolutionsRead": true,
+      "activeDefinitionsAndParentsRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_f309fc18fd6cf18c004c2af01398ca91fa305f55980696e7af93ad5197eeca11",
+      "selection": "MUTUALLY_EXCLUSIVE_OPTIONS",
+      "variants": [
+        {
+          "variant": "①",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
+          "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS",
+          "difficultyBucket": 2,
+          "status": "INDEPENDENTLY_ACCEPTED"
+        },
+        {
+          "variant": "②",
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+          "difficultyBucket": 3,
+          "status": "INDEPENDENTLY_ACCEPTED"
+        }
+      ],
+      "representativePolicy": "MAX_OF_INDEPENDENT_VARIANT_BUCKETS_NOT_SUM",
+      "acceptedRepresentativeBucket": 3,
+      "basis": "①의 절편+두 점 연립은2, ②의 근대칭·함수복원·꼭짓점좌표를 도형넓이에 연결하는 선택전략은3이다. 대표값 max(2,3)=3을 수용한다.",
+      "sourceAndBothExistingVariantSolutionsRead": true,
+      "activeDefinitionsAndParentsRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_219e4d3eb588b985bdca39486d7b47f3d242a96b71e8e90e8a72a6d1d631e34c",
+      "selection": "MUTUALLY_EXCLUSIVE_OPTIONS",
+      "variants": [
+        {
+          "variant": "①",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+          "difficultyBucket": 1,
+          "status": "INDEPENDENTLY_ACCEPTED"
+        },
+        {
+          "variant": "②",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+          "difficultyBucket": 3,
+          "status": "INDEPENDENTLY_ACCEPTED"
+        }
+      ],
+      "representativePolicy": "MAX_OF_INDEPENDENT_VARIANT_BUCKETS_NOT_SUM",
+      "acceptedRepresentativeBucket": 3,
+      "basis": "①의 알려진 삼각비9개는 직접값1, ②는 수선의 발이 중심임을 정당화하고 필요한 단면을 고른 뒤 길이를 복원하는 표준기하유도3이다. 대표값 max(1,3)=3을 수용한다.",
+      "sourceAndBothExistingVariantSolutionsRead": true,
+      "activeDefinitionsAndParentsRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_3b04294258c4b0f7ae456e5fcccb100fa7bc4b83d554603410b84b4b19053c2d",
+      "selection": "MUTUALLY_EXCLUSIVE_OPTIONS",
+      "variants": [
+        {
+          "variant": "①",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "difficultyBucket": 2,
+          "status": "INDEPENDENTLY_ACCEPTED"
+        },
+        {
+          "variant": "②",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "difficultyBucket": 4,
+          "status": "INDEPENDENTLY_ACCEPTED"
+        }
+      ],
+      "representativePolicy": "MAX_OF_INDEPENDENT_VARIANT_BUCKETS_NOT_SUM",
+      "acceptedRepresentativeBucket": 4,
+      "basis": "①은 직접 삼각비 두 변과 조각차로 넓이를 얻는2다.②는 닮음·삼각비의 좌표화 뒤 교점F의 두 매개변수 표현을 연립하고 분할비를 같은밑변 넓이비로 다시 해석해야 하므로 조건 재구성4를 수용한다.",
+      "sourceAndBothExistingVariantSolutionsRead": true,
+      "activeDefinitionsAndParentsRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceSingleFieldRepresentationGapOrdinals": [
+    22,
+    23
+  ],
+  "newPTOrTPLNeededForVariants": false,
+  "newMathematicalVerification": false,
+  "previousBoundArtifactHashes": {
+    "review.json": "76221c65b57f37a2bf07832d4a6b270c23955f83bbd61a0a3b3f705b07ab1bcc",
+    "source-patch.json": "d5de1be70855c7b2a61ac90d5762b44c25f6aa4d81d915a86d94743f50991f58"
+  },
+  "targetedIntegrationDelta": {
+    "ordinal": 20,
+    "field": "integrationPattern",
+    "fromNonCanonical": "CONDITION_COMPOSITE",
+    "accepted": "INTERDEPENDENT",
+    "sourceAndExistingSolutionActuallyRead": true,
+    "basis": "두 그래프가 서로의 꼭짓점을 지나는 두 식은 같은 p,q와 a를 함께 제한하고, 수평선분 길이와 p<−2 조건이 이 공통 미지량 관계를 결정한다. 같은 변수들을 함께 구속하는 결합으로 INTERDEPENDENT를 수용한다.",
+    "sourcePatchSingleFieldDeltaProvedByReverseHash": "d5de1be70855c7b2a61ac90d5762b44c25f6aa4d81d915a86d94743f50991f58",
+    "otherSampleAndDifficultyValuesUnchanged": true,
+    "newMathematicalVerification": false
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "examId": "E038",
+  "status": "IN_PROGRESS_E037_INDEPENDENT_PRIORITY",
+  "sourceGitBlobSha": "c359c7a18444b4732668917feb2a0cd0d30038d4",
+  "sourceSha256": "31445f899edc7d0e0363dc6521e17ba2f06e9bc56efcb112b4ac478dda43ea0f",
+  "sourceBytesMatched": true,
+  "all24StemsChoicesAnswersExistingSolutionsRead": true,
+  "all9InlineSourceAssetsRead": true,
+  "assetBlobEvidence": "asset-version-evidence.json",
+  "priorPacketFound": false,
+  "existingFourSlotFound": false,
+  "observations": [
+    "Q1-6/16-22는 이차함수; Q7-15/23-24는 삼각비. 시험시기는2학기이나 이차함수 RPM은M3-1이며 원본시험분류를 덮어쓰지 않는다.",
+    "Q23 source crossConceptKeys에 M3-RPM-057이라는 RPM ID가 들어 있어 ACTIVE CC 키로 교체 필요.",
+    "Q9는42도 근삿값의 사분원길이/Pythagoras로 cos를 구하므로 SPECIAL_ANGLE TPL 부적합. Q10표 직접조회/Q14물매tan역조회는 TABLE_LOOKUP 기존ACTIVE 후보.",
+    "Q21-24는 수준별①② 중 하나 선택하는 원문. UID나문항수분리 없이 두 분기를 모두 검토·4slot에 근거 남길 것.",
+    "필요한9인라인그림은 cached old m3-meta asset를 현재branch tree Gitblob과 모두동일확인후 복사·렌더했다. 일부png q9/14/15/20은원본잘림; 텍스트조건/기존해설로 메타판정가능, 이미지변경금지.",
+    "Q7 원본repairSVG에직각표시C 명확하며 현재해설은 피타고라스역도명시. 삼각비뜻기본이며 조건부가공과 목표비구분.",
+    "Q12 30도특수직각변비로다른변을구해넓이: RPM061 및 CHAINED_MEASURE 후보; 실제삼각비sin식강요하지말것.",
+    "Q15 원그림이지만 실제삼각비좌표복원→사다리꼴넓이이므로삼각비활용다각형넓이 RPM062 후보.",
+    "Q23 ①특수각값표 ②정사각뿔AO높이정당화/Pythagoras/OM5/탄젠트값. 최종비이므로 GEOMETRIC_DERIVATION활성TPL후보,주제삼각비활용의입체보조선과기본비관계교차검토.",
+    "Q24 ①삼각비직각변복원→BD4넓이 ②닮음두삼각형→좌표연립교점F비→면적비. CHAINED_MEASURE기존재사용,조건COMPOSITE는실제보조순차결합SEQUENTIAL로점검."
+  ],
+  "nextAction": "E037 독립3표본과난도예외영수증완료후E038 GLOBAL ACTIVE PT/TPL/RPM exact등록확인과24개개별결정/새4slot작성"
+}
