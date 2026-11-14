@@ -393,7 +393,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 세 포물선 y=−1/2x², y=−2/3x², y=−2x²를 파랑, 주황 점선, 초록으로 비교한 그래프.",
+    "solutionImageCaption": "아래로 열린 포물선 중 |a|가 가장 작은 y=−1/2x²의 폭이 가장 넓다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -429,7 +433,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: y=x²/3 포물선의 x<0인 가지를 주황색으로 강조했다. P(−3,3)에서 Q(−1,1/3)로 오른쪽으로 갈수록 y가 낮아진다.",
+    "solutionImageCaption": "x<0에서 x가 증가하면 y=x²/3의 값은 감소한다. 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -638,7 +646,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 y=x² 포물선과 왼쪽·아래로 옮긴 주황 포물선을 겹쳐 그렸다. 두 꼭짓점과 주황 그래프의 근, y절편이 표시되어 있다.",
+    "solutionImageCaption": "④는 점 (−1,0)을 지나고 위로 볼록하며, ⑤는 y=x²을 왼쪽 3, 아래 4만큼 평행이동한 그래프이다. 답은 ④, ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -845,9 +857,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출/q25-solution.svg",
-    "solutionImageAlt": "꼭짓점 (1, 0)에서 x축에 접하고 (0, -1)을 지나는 이차함수 그래프",
-    "solutionImageCaption": "축은 x=1이고, 꼭짓점은 (1, 0), y절편은 (0, -1)이다.",
+    "solutionImage": "assets/images/22_팔마중_1학기_기말_중3_기출c/q25-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 굵은 파란 포물선이 x축에 (1,0)에서 접하고 점선 x=1을 대칭축으로 가진다. y절편 (0,−1)도 표시했다.",
+    "solutionImageCaption": "(1) 그래프는 x축에 (1,0)에서 접하고 y절편은 (0,−1)이다. (2) 꼭짓점은 (1,0)이다. (3) 구하는 식은 y=−x²+2x−1이다.",
     "solutionImageSize": "full"
   }
 ];
