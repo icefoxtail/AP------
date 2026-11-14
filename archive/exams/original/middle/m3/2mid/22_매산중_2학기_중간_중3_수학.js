@@ -892,7 +892,11 @@ window.questionBank = [
       "subConcept": "수평 평행이동과 그래프 성질",
       "conditionsUsed": "왼쪽 4만큼 이동한 y=3(x+4)²의 축·꼭짓점·점 통과·증가성을 확인한다.",
       "integrationPatternExplanation": "수평이동 후 같은 포물선의 기본 성질을 판정한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 원래 포물선 y=3x²와 주황색으로 왼쪽 이동한 포물선, 대칭축 x=-4, 이동한 그래프 위의 점 P(-2,12)를 나타낸다.",
+    "solutionImageCaption": "x축 방향으로 -4만큼 옮기면 식은 y=3(x+4)², 꼭짓점은 V=(-4,0)이다. x=-2일 때 y=12이며 x>0에서 그래프는 증가한다. 꼭짓점이 (4,0)이라는 설명은 틀렸다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1000,7 +1004,11 @@ window.questionBank = [
       "subConcept": "평행이동 조건으로 원래 식 결정",
       "conditionsUsed": "오른쪽 3, 아래 5로 이동한 꼭짓점과 점 조건을 원래 함수로 역변환한다.",
       "integrationPatternExplanation": "평행이동을 역으로 해석하고 꼭짓점·점 조건으로 계수를 정한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 원래 포물선과 주황색으로 오른쪽 3, 아래 5만큼 옮긴 포물선을 그린다. 꼭짓점 V,W와 대응점 R(1,10), P(4,5)을 연결된 점쌍으로 표시한다.",
+    "solutionImageCaption": "이동된 꼭짓점 (2,-3)에서 원래 꼭짓점은 (-1,2)이므로 f(x)=a(x+1)²+2이다. P(4,5)는 f의 R(1,10)에 대응해 4a+2=10, a=2이다. 전개하면 f(x)=2x²+4x+4이므로 a+b-c=2+4-4=2. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1102,7 +1110,11 @@ window.questionBank = [
       "subConcept": "꼭짓점형과 축·절편 조건",
       "conditionsUsed": "선택 ①은 꼭짓점과 점, 선택 ②는 축과 y축 교점의 함수값을 사용한다.",
       "integrationPatternExplanation": "각 선택문항의 꼭짓점 또는 함수값 조건으로 매개변수를 결정한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 패널은 꼭짓점 V와 조건점 P를 지나는 포물선이다. 둘째 패널은 대칭축 x=2인 파란 포물선과 주황 포물선의 공통 y절편 C를 나타낸다.",
+    "solutionImageCaption": "1-① a=5이므로 y=5(x−3)²−2이다. 1-② p=2이고 공통 y절편이 5이므로 12+q=5, q=−7이다. 따라서 p+q=−5이다. 답: 1-① y=5(x−3)²−2, 1-② p+q=−5.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1148,7 +1160,11 @@ window.questionBank = [
       "subConcept": "점·절편·대칭축 조건으로 식 결정",
       "conditionsUsed": "선택 ①은 y절편과 두 점, 선택 ②는 축·x절편·y절편으로 식과 넓이를 구한다.",
       "integrationPatternExplanation": "각 선택문항의 계수·근·축 조건을 식으로 정리하고 필요한 넓이를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선의 꼭짓점 A, x축 교점 B, y축 교점 C, 원점 O를 연결한 사각형 ABOC를 표시한다.",
+    "solutionImageCaption": "축 x=−3과 한 근 −9에서 다른 근은 3이다. y절편이 9이므로 y=−1/3(x+9)(x−3)이고 A=(−3,12)이다. [ABO]=54, [AOC]=27/2이므로 [ABOC]=135/2이다. 답: 135/2.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1240,6 +1256,10 @@ window.questionBank = [
       "subConcept": "특수각·닮음과 삼각형 넓이; 4-①만 ALIVE 교체",
       "conditionsUsed": "①은 AC=24, ∠A=30°, CD=8을 사용한다. ②는 닮음비 1:2, AB=AC=4, ∠B=30°와 F의 교점 조건을 사용한다.",
       "integrationPatternExplanation": "삼각비와 넓이를 결합하는 ①, 닮음·직선 교점 비율과 넓이를 결합하는 ②로 구성된다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 패널은 직각삼각형 ABC에서 D가 BC 위에 있고 △ABD를 파란색으로 강조한다. 둘째 패널은 닮음비 1:2인 두 이등변삼각형과 교점 F, △FCD를 보여 준다.",
+    "solutionImageCaption": "4-① BC=12, AB=12√3, BD=4이므로 [ABD]=24√3 cm²이다. 4-② F가 BD를 1:2로 나누고 [BCD]=8√3이므로 [FCD]=(2/3)·8√3=16√3/3 cm²이다. 답: 4-① 24√3 cm², 4-② 16√3/3 cm².",
+    "solutionImageSize": "full"
   }
 ];

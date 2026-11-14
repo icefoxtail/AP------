@@ -194,7 +194,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q03.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q03.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 변 BD를 기준으로 분리한 두 직각삼각형 ABD와 BCD. 두 45° 각은 초록색으로 묶이고, 변 길이는 각 선분에 붙여 표시했다.",
+    "solutionImageCaption": "△ABD에서 AD=2√6, △BCD에서 BC=4이므로 AD×BC=8√6. 답: 8√6, ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -720,7 +724,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q11.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q11.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 대각선 AC와 BD의 교각은 60°이고, 두 대각선으로 나뉜 △ABC와 △ACD를 서로 다른 색으로 구분했다.",
+    "solutionImageCaption": "대각선 전체는 AC=8 cm, BD=5√3 cm이고 그 교각은 60°이다. 넓이=1/2·AC·BD·sin60°=30 cm². 답: 30 cm², ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1063,7 +1071,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q16.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q16.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 원 O, 접는 선 AB와 중점 M, 반사된 중심 O′ 및 A와 B를 잇는 접힌 원호. OM과 MO′ 및 AM과 MB에 같은 눈금을 표시했다.",
+    "solutionImageCaption": "OO′=8 cm이므로 OM=4 cm. 직각삼각형 OMA에서 AM=4√3 cm, 따라서 AB=8√3 cm. 답: 8√3 cm, ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1406,7 +1418,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q21.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q21.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=24의 중점 C에서 만나는 두 원, P 접선과 현 AQ·중점 H, 색칠한 △AOQ. 같은 반지름과 현의 두 반을 색으로 구분했다.",
+    "solutionImageCaption": "AB=24, C는 중점이다. O′P=6, AO′=18이므로 sin∠O′AP=1/3; AQ=8√2. 넓이=8√2. 답: 8√2, ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

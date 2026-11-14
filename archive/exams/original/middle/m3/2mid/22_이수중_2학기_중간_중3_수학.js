@@ -504,7 +504,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[조건 정리] $AB=AC=5\\sqrt3\\,\\mathrm{cm}$이므로 이등변삼각형의 밑각은 같다. $\\angle B=75^\\circ$에서 $\\angle C=75^\\circ$, 따라서 $\\angle A=30^\\circ$이다.\n[풀이] $C$에서 $AB$에 내린 수선의 발을 $D$라 하자. 직각삼각형 $ACD$에서\n$CD=AC\\sin30^\\circ=5\\sqrt3\\cdot\\dfrac12=\\dfrac{5\\sqrt3}{2}$이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot AB\\cdot CD$\n$=\\dfrac12\\cdot5\\sqrt3\\cdot\\dfrac{5\\sqrt3}{2}=\\dfrac{75}{4}\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q11.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q11.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 같은 변 AB와 AC를 초록 눈금으로, 같은 밑각 75°를 파랑으로 묶었다. 꼭짓점 A의 30° 및 C에서 내린 수선 CD가 보인다.",
+    "solutionImageCaption": "두 밑각이 75°이므로 A=30°이다. 따라서 높이 CD=5√3sin30°=5√3/2 cm이고, 넓이는 (1/2)·5√3·5√3/2=75/4 cm²이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -551,7 +555,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[조건 정리] $AD=6\\,\\mathrm{cm}$, $BD=9\\,\\mathrm{cm}$, $\\angle DBC=45^\\circ$이다. 평행사변형에서 $AD\\parallel BC$이다.\n[풀이] 평행선에서 엇각이 같으므로 $\\angle ADB=\\angle DBC=45^\\circ$이다. 대각선 $BD$는 평행사변형을 넓이가 같은 두 삼각형으로 나누므로\n$[ABCD]=2[ABD]$이다.\n삼각형 $ABD$의 넓이는\n$[ABD]=\\dfrac12\\cdot AD\\cdot BD\\cdot\\sin\\angle ADB$\n$=\\dfrac12\\cdot6\\cdot9\\cdot\\dfrac{\\sqrt2}{2}=\\dfrac{27\\sqrt2}{2}$이다.\n따라서 $[ABCD]=2\\cdot\\dfrac{27\\sqrt2}{2}=27\\sqrt2\\,\\mathrm{cm}^2$이고, 정답은 ④이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q12_alive.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q12_alive.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형에 대각선 BD를 그어 파랑과 주황 두 부분으로 나눈다. B와 D에 같은 파랑 45°를 표시하고 AD=6 cm, BD=9 cm를 적었다.",
+    "solutionImageCaption": "평행한 AD와 BC의 엇각으로 ∠ADB=45°이다. 평행사변형은 △ABD의 두 배이므로 넓이는 6·9·sin45°=27√2 cm²이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -690,7 +698,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[조건 정리] 그림에서 $OA=6$, $OC=3$, $OC\\perp AB$이고, 구할 길이는 $x=AB$이다.\n[풀이] 중심에서 현에 내린 수선은 현을 이등분하므로 $AC=CB$이다. 직각삼각형 $OCA$에서\n$AC^2=OA^2-OC^2=6^2-3^2=27$이므로 $AC=3\\sqrt3$이다.\n따라서 $x=AB=2AC=6\\sqrt3$이고, 정답은 ⑤이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q15.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q15.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 현 AB는 x이고, 중심에서 현까지 3을 내리면 두 반현이 주황 눈금처럼 같다. 파란 직각삼각형은 반지름 6과 중심에서 현까지 3을 사용한다.",
+    "solutionImageCaption": "직각삼각형 OCA에서 AC=√(6²−3²)=3√3이다. C가 현 AB의 중점이므로 x=2AC=6√3이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -784,7 +796,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[핵심 성질] 한 점 $P$에서 원에 그은 두 접선의 길이는 서로 같다.\n[풀이] $PT=12$이고, $P$에서 원에 그은 다른 접선의 길이도 $PT$와 같으므로 $12$이다. 주어진 $OT=5$는 반지름의 길이이며 접선 길이의 같음을 판단하는 데에는 사용하지 않는다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q17.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q17.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 그은 파랑 접선 PT와 PS에 같은 눈금을 붙였다. 반지름 OT=5는 점선이고 각 접점에서 접선에 수직이다.",
+    "solutionImageCaption": "두 접선은 한 점 P에서 출발하므로 PS=PT=12이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
