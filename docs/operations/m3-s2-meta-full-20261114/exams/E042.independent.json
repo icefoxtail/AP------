@@ -1,0 +1,273 @@
+{
+  "examId": "E042",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "d94698b97c8583f061a2c836379d4c425309d6d5",
+  "sourceRawSha256": "f4e2f0c358ff1802db0491d31e1a36cf5f24ba62a841fc985ee5a93da191bf0d",
+  "sourcePacketSha256": "43af9bfecec7eece0d4eb62f834e933bcc2e5d1a340b190a0a182ef4bf850757",
+  "sampled4slotSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+  "sampledReviewSha256": "d67b095e0728216754d9639ff8a5fbf118022d7e3945625281a75848aa66203f",
+  "sampledSourcePatchSha256": "9fb0bbebb45a4c1604a59f8681cb69461b10ad370cced2bbfa79d6970f3b3b2e",
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "sampled": [
+    3,
+    20,
+    25
+  ],
+  "status": "PASS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_7cf731cf1b98cd7728ff631d88ac551eac119bec36a0fb78a6a403903c1f3187",
+      "sourceImageRead": true,
+      "existingSolutionRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 8
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "두 직각 표시와60도·45도 입력을 원본 그림에서 확인했다. given의 도형·길이·각, goal의 두 선분 길이 곱, method의 실제 고정 특수변비와 같은 칸 부모 직각삼각형, condition의 명시 직각이 각각 근거와 일치한다. 함수 이름이 없어도 정형 특수각의 변비 관계를 적용한 것이므로 현재 ACTIVE 지원 UID와 semantic freeze에 따라 PT_TRIG_RATIO_APPLICATION/CHAINED를 재사용하는 수정 판단을 수용한다. 새 sin/cos/tan 풀이를 소급하여 기록하지 않고 실제4칸의 고정변비 표현을 유지한 것이 정확하다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_49b61fc4641e1e17b49a21c9e8550d81ae36417be842a9d9f377f7630980b9fa",
+      "sourceImageRead": true,
+      "existingSolutionRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 12
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본의 P,Q는 현AB,BC의 중점이고 반지름=현6이다. 원주각·접현각을 사용하지 않고 두 정삼각형의 중심각과 현 중점 수선으로 OP,OQ를 복원한다. 이후 피타고라스와 마지막 사인 넓이식에 연결한다. goal 삼각형 넓이, method의 정삼각형·현의 수직이등분·피타고라스·사인 넓이 및 후보 부모들이 실제 풀이와 일치한다. RPM069/157 원과 직선·현 길이 조건의 TM_CIRCLE_CHORD_LENGTH가 적합하며 원주각 활용으로 분류하지 않는다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_e7910d6bd1e0429ed9eea6cef8deea42a3d2ce71b6d416795f741306a9e852b5",
+      "sourceImageRead": true,
+      "existingSolutionRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 10
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "접시 조각의 두 현 수직이등분선으로 중심을 정하는 설명과, AB16·CM4가 표시된 원본 두 번째 그림을 읽었다. 반현8과 원호 높이4를 중심거리 r−4로 바꾸는 현재 해설을 given·condition에 보존하고, goal 중심/반지름과 method 현의 수직이등분·피타고라스·일차식이 두 소문항을 함께 설명한다. 실제 목표는 원주각 계산이 아니며 RPM069/157과 구성 성질068/156의 구분이 타당하다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    }
+  ],
+  "outstanding": [],
+  "additionalSemanticChecks": [
+    {
+      "ordinals": [
+        9,
+        10,
+        22
+      ],
+      "status": "ACCEPT_CORRECTION",
+      "reason": "Q9의90/√2와 목표근호 정리, Q10의180/(√3−1) 켤레 유리화, Q22의4/√3 정리 모두 기존 해설의 실제 변형이다. ACTIVE generic/CONJUGATE 정의와 정확인용을 각각 대조했고 단일근호와 켤레를 구분한 보조 CC·유리화 method 추가를 수용한다. 숫자 난도는 이 정형 변형 때문에 바꾸지 않는다."
+    },
+    {
+      "ordinals": [
+        17,
+        18,
+        19
+      ],
+      "status": "ACCEPT_EXISTING_ACTIVE_REUSE",
+      "reason": "GLOBAL TM_TANGENT_LENGTH 정의와 실제 감사 정본 questionId24의 PT/TM·접선 관계식·피타고라스 적용 범위를 직접 읽었다. 한 조각만이라는 제한을 추가할 근거가 없으며 Q17 합차, Q18 길이조각의 둘레 소거, Q19 외접사각형 변합 뒤 피타고라스는 같은 등접선 길이 관계를 적용한다. 새 유형 공백 철회와 기존 projection provenance 보존을 수용한다."
+    },
+    {
+      "ordinals": [
+        3,
+        9
+      ],
+      "status": "ACCEPT_CANONICAL_SUPPORTED_FIXED_RATIO_REUSE",
+      "reason": "현재 ACTIVE CHAINED의 지원 UID12b03adc…와 실제 semantic freeze에서45-45-90 고정변비가 길이 전달의 출발 단계로 쓰임을 확인했다. sin/cos/tan 문자 유무를 배제조건으로 삼지 않는다. Q3은 주어진 대각선으로 두 특수직각삼각형 길이를 전달해 곱을 구하고, Q9는45도 보조선으로 구한 길이를 다른 삼각형에 전달한다. 기존 PT_APPLICATION/CHAINED·RPM065/153을 재사용하고 신규 native/publisher 공백을 철회하는 최종 판단이 타당하다."
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_b99b0f71bc2323fadccc5dbd5380caaa6606493596ffd79bb9c1b17fba42cc2f",
+      "kind": "EXISTING_SOLUTION_WORDING_NOTE",
+      "literal": "정사각형의 대각선은 ∠ABD=45°를 이등분하므로",
+      "observation": "현재 해설의 이 문구는90도 꼭짓각을 이등분해45도를 얻는 관계의 각 이름을 부정확하게 적었다. 이어지는 ∠ABE=45°−15°=30°와 실제 메타의 대칭·넓이 골격은 판정 가능하다.",
+      "studentContentChanged": false,
+      "newHoldSet": false,
+      "nextOwner": "CODEX_RELEASE_OWNER_SOURCE_QA",
+      "metadataReviewDoesNotCertifySourceProof": true
+    }
+  ],
+  "visualEvidence": [
+    "worker-outputs/b/E042/images-0.png",
+    "worker-outputs/b/E042/images-1.png",
+    "worker-outputs/b/E042/images-2.png",
+    "worker-outputs/b/E042/images-3.png"
+  ],
+  "assetByteChecks": [
+    {
+      "ordinal": 3,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/q03.png",
+      "gitBlob": "f7b65d9280251d06d3fdd9b89ac540194692d955",
+      "sha256": "dd14883d6ae18ed78ef0746f4efa39c1e4d50e65bcd82c4c158bfb8f5a57535d",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 9,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/q09.png",
+      "gitBlob": "d24627b2a95a52690e8ba346aa3872901df0648f",
+      "sha256": "70a5550aeb51716a542a0af3b6f56a151a5ae91edd3251cd0cb482eff452612c",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 10,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/q10.png",
+      "gitBlob": "567eceebc948412b596dcdf0b074bb02e00f9ff0",
+      "sha256": "710c1cdf3938a494cdd4978acd5a6a5765d2ec62deb6c662a661bfde4d29f9a2",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 12,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/q12.png",
+      "gitBlob": "3334ea8a9ec2a73f84740861253ab2db60c2f269",
+      "sha256": "231bb2ba0852ef654f380053878acd9ebe87165aa117804ccecfd182773839db",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 15,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/q15.png",
+      "gitBlob": "78d547e3461150fe6db764cced0e50eb2a507897",
+      "sha256": "0b23bc61e46de42295126ea898f164fac063585c6d339e931859681aa510d649",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 16,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/q16.png",
+      "gitBlob": "a15cd5a08f22da1038627ddd34b77d9c4eeef5f5",
+      "sha256": "a34a5104cebba36d63a82641bfb6ac004c4044008c517c4b58732fb0857af7ff",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 17,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/q17.png",
+      "gitBlob": "62fd032afb32360324ff76d91ce4649b662297fd",
+      "sha256": "f91fb89ebe7d84dd78d060f4383c08018607c83907871ffe66c774eebab1c94e",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 18,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/q18.png",
+      "gitBlob": "cb33a0f2d4cb2856a0e5a392174ce7fb983f6f4f",
+      "sha256": "3b0cb40458fdbf3ec4eac8abbdb2731434930d729e1d1d95f975c662b71a2acb",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 19,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/q19.png",
+      "gitBlob": "504d6bab1939de085990047f7509373e55146b00",
+      "sha256": "795c71730987b7d2b8000932f18f05781bdb1b0841666835faa074f655b84f6e",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 20,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/q20.png",
+      "gitBlob": "8fe47cc1294505c5749c697201a78418d08d9362",
+      "sha256": "37e48de85c5e7d5690ecc00589fec8c4ecbae7819d578ba23942d2444ce783d5",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 21,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/q21.png",
+      "gitBlob": "acdc9c15d235689febb6cf8a3c0af04abaedc196",
+      "sha256": "f64fcb48a700defaa9401e0a2332475eea721303b0a18a74e44017761efa506b",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 22,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/s01.png",
+      "gitBlob": "066296affd3e727ffc68c80ca4ca9c32fed46aec",
+      "sha256": "1f5cee951f92df59e35f805f73128bee78fca925ce25fc2f03f8c9c7ae1cac10",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 24,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/s03.png",
+      "gitBlob": "d6e13e94a1dda37cef96f5428d139bb489f213a1",
+      "sha256": "325dde61891296326250209b494423e21d0e9d142db46063739a64e1532aabfe",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 25,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/s04_1.png",
+      "gitBlob": "4d8e9df1dae799bc94eb74307b5aec24c6e4431b",
+      "sha256": "24c9a0419e3b8d6e3cb7c2c591f30a9910953ce60ba5c9d38592cf36f76e9e64",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 25,
+      "path": "archive/assets/images/22_팔마중_2학기_중간_중3_수학/s04_2.png",
+      "gitBlob": "5f1b26962f3e7d5845deeefcf7cc440247bf9ebd",
+      "sha256": "73889fae56c2d467f6fb3c4baec3b18eeff1a25ea0599bb745481810fc406baf",
+      "matchesCurrentBranch": true
+    }
+  ],
+  "definitionRefs": [
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "sha256": "e8d40bce41d532c70ae205269b771564c23fca0f077335f07e5449b78a1bd7c2"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+      "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_crossconcept_semantic_freeze_928.json",
+      "sha256": "74f82314617e8b1cd6ffbc3c6693f7c12ea5714d033f21a0a2e650048f80e4d2"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_conflict_adjudication_final_143_20260923.json",
+      "sha256": "ae6eaf01d0c6d4c4a8de4d79384922f2b8db44dd28df641b426535461475e380"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+      "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+    }
+  ],
+  "canonicalSupportingRecord": {
+    "questionUid": "qid_v1_12b03adc6ab27ca9fded29172176c9d29c16cdea222c82c784c6babaa7c10e59",
+    "decisiveStep": "45-45-90에서 AH=BH=4, 이어 AHC에서 피타고라스로 AC 계산",
+    "activeTemplateSupportMembership": true,
+    "evidencePackage": "worker-outputs/root/E048/special-right-triangle-active-reuse-evidence.json",
+    "evidencePackageSha256": "04aef640205a7a35a4d4c0fec87250a077322b492552c798e6263b9a3f1dc8b7"
+  },
+  "finalDeltaRefs": [
+    {
+      "path": "worker-outputs/b/E042/tangent-reuse-and-rationalization-delta.json",
+      "sha256": "72c19b1e0eb5b3385a08f1faa06e256a7f89c3789b8fee41ef60373e74609e95"
+    },
+    {
+      "path": "worker-outputs/b/E042/special-right-triangle-reuse-correction.json",
+      "sha256": "3019930d44d4381d60128bc87443f035c126f7fde24530cbb5833ce503a54262"
+    }
+  ],
+  "scope": "Three independent4slot samples, all twelve difficulty exceptions and narrow requested metadata corrections; no full mathematical R1/R2/R3 certification."
+}

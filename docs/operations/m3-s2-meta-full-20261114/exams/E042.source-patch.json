@@ -1,0 +1,589 @@
+[
+  {
+    "ordinal": 1,
+    "before": {
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "difficultyConfidence": "high",
+      "projectionStatus": "REUSE",
+      "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다."
+    },
+    "after": {
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "difficultyConfidence": "medium",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "GLOBAL ACTIVE TPL_TRIG_RATIO_GEOMETRIC_DERIVATION와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다."
+    }
+  },
+  {
+    "ordinal": 2,
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "difficultyConfidence": "high",
+      "rpmPrimaryRecordId": "M3-RPM-059",
+      "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비와 길이 > 직각삼각형의 변",
+      "rpmL3": "삼각비와 길이",
+      "rpmL4": "직각삼각형의 변",
+      "projectionStatus": "REUSE",
+      "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다."
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "difficultyConfidence": "medium",
+      "rpmPrimaryRecordId": "M3-RPM-066",
+      "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 피타고라스 결합",
+      "rpmL3": "복합도형",
+      "rpmL4": "피타고라스 결합",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "GLOBAL ACTIVE TPL_TRIG_APPLICATION_CHAINED_MEASURE와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다."
+    }
+  },
+  {
+    "ordinal": 3,
+    "before": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high"
+    },
+    "after": {
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium"
+    }
+  },
+  {
+    "ordinal": 4,
+    "before": {
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "after": {
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    }
+  },
+  {
+    "ordinal": 5,
+    "before": {
+      "crossConceptKeys": [],
+      "difficultyConfidence": "high",
+      "crossConceptReasons": []
+    },
+    "after": {
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM",
+        "CC_RATIO_AND_PROPORTION"
+      ],
+      "difficultyConfidence": "medium",
+      "crossConceptReasons": [
+        "삼각형 내각의 합180°가 세 각의 비를 각도로 바꾸는 기준량이다.",
+        "2:3:7의 비를 합12몫으로 비례배분하여 가장 작은 각30°를 결정한다."
+      ]
+    }
+  },
+  {
+    "ordinal": 6,
+    "before": {
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "rpmPrimaryRecordId": "M3-RPM-060",
+      "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비와 길이 > 각을 이용한 길이",
+      "rpmL3": "삼각비와 길이",
+      "rpmL4": "각을 이용한 길이",
+      "projectionStatus": "REUSE",
+      "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
+      "crossConceptReasons": []
+    },
+    "after": {
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "crossConceptKeys": [
+        "CC_UNIT_QUARTER_CIRCLE"
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "rpmPrimaryRecordId": "M3-RPM-055",
+      "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비의 뜻 > sin·cos·tan",
+      "rpmL3": "삼각비의 뜻",
+      "rpmL4": "sin·cos·tan",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "GLOBAL ACTIVE TPL_TRIG_RATIO_TABLE_LOOKUP와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
+      "crossConceptReasons": [
+        "단위 사분원에서 OB=OC=1이고 OA=1−0.17임을 이용해 코사인 표의 조회값을 얻는다."
+      ]
+    }
+  },
+  {
+    "ordinal": 7,
+    "before": {
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "rpmPrimaryRecordId": "M3-RPM-056",
+      "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비의 뜻 > 삼각비의 관계",
+      "rpmL4": "삼각비의 관계",
+      "projectionStatus": "REUSE",
+      "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다."
+    },
+    "after": {
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "rpmPrimaryRecordId": "M3-RPM-055",
+      "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비의 뜻 > sin·cos·tan",
+      "rpmL4": "sin·cos·tan",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "GLOBAL ACTIVE TPL_TRIG_RATIO_GEOMETRIC_DERIVATION와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다."
+    }
+  },
+  {
+    "ordinal": 8,
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "difficultyConfidence": "high",
+      "rpmPrimaryRecordId": "M3-RPM-060",
+      "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비와 길이 > 각을 이용한 길이",
+      "rpmL3": "삼각비와 길이",
+      "rpmL4": "각을 이용한 길이",
+      "projectionStatus": "REUSE",
+      "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다."
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "difficultyConfidence": "medium",
+      "rpmPrimaryRecordId": "M3-RPM-066",
+      "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 피타고라스 결합",
+      "rpmL3": "복합도형",
+      "rpmL4": "피타고라스 결합",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "GLOBAL ACTIVE TPL_TRIG_APPLICATION_CHAINED_MEASURE와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다."
+    }
+  },
+  {
+    "ordinal": 9,
+    "before": {
+      "crossConceptKeys": [],
+      "difficultyBucket": 4,
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptReasons": []
+    },
+    "after": {
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM",
+        "CC_DENOMINATOR_RATIONALIZATION"
+      ],
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "crossConceptReasons": [
+        "60°와75°의 두 내각에서 남은45°를 정해 특수직각삼각형 보조선을 구성한다.",
+        "고정 변비로 얻은 90/√2와 90√2/√3의 분모 근호를 제거하여 기존 정답 형태로 정리한다."
+      ]
+    }
+  },
+  {
+    "ordinal": 10,
+    "before": {
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [],
+      "crossConceptReasons": []
+    },
+    "after": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"
+      ],
+      "crossConceptReasons": [
+        "공유 높이 식에서 얻은 180/(√3−1)의 분모·분자에 켤레 √3+1을 곱하여 90(√3+1)로 정리한다."
+      ]
+    }
+  },
+  {
+    "ordinal": 11,
+    "before": {
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "projectionStatus": "REUSE",
+      "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
+      "crossConceptReasons": [
+        "사각형을 두 삼각형으로 분할해 삼각형 넓이를 합산하는 것이 넓이 계산의 필수 보조 개념이다."
+      ]
+    },
+    "after": {
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "기존 ACTIVE 부모 PT는 맞고 교육과정 binding 여부를 별도 확인했으나 전체 문항의 정확 TPL이 없다. 기존 제안에 지원 UID를 남기며 공통 등록은 수행하지 않았다.",
+      "crossConceptReasons": []
+    }
+  },
+  {
+    "ordinal": 12,
+    "before": {
+      "crossConceptKeys": [
+        "CC_SQUARE"
+      ],
+      "difficultyBucket": 4,
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryRecordId": "M3-RPM-061",
+      "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 평면도형 > 삼각형의 높이·넓이",
+      "rpmL4": "삼각형의 높이·넓이",
+      "crossConceptReasons": [
+        "정사각형의 대각선 대칭 및 직각 성질이 ∠ABE를 결정하는 데 필수이며 삼각비 활용만으로는 이 각을 알 수 없다."
+      ]
+    },
+    "after": {
+      "crossConceptKeys": [
+        "CC_SQUARE",
+        "CC_ANGLE_BISECTOR"
+      ],
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "rpmPrimaryRecordId": "M3-RPM-062",
+      "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 평면도형 > 다각형의 길이·넓이",
+      "rpmL4": "다각형의 길이·넓이",
+      "crossConceptReasons": [
+        "정사각형의 대각선 대칭 및 직각 성질이 ∠ABE를 결정하는 데 필수이며 삼각비 활용만으로는 이 각을 알 수 없다.",
+        "정사각형 대각선의 대칭축과 BE=BF를 이용한 각이등분으로 ∠ABE=30°를 얻는다."
+      ]
+    }
+  },
+  {
+    "ordinal": 13,
+    "before": {
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "crossConceptKeys": [
+        "CC_CIRCUMCIRCLE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "rpmPrimaryRecordId": "M3-RPM-068",
+      "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 중심과 현 > 현의 수직이등분선과 중심",
+      "rpmL4": "현의 수직이등분선과 중심",
+      "projectionStatus": "REUSE",
+      "projectionReason": "GLOBAL ACTIVE key의 canonical owner는 GEOMETRY_EQUATIONS이고, 현재 MIDDLE_GEOMETRY bindings.json에 2015/중3 수학/M3-06/M3-06-CIRCLE_LINE ACTIVE row가 있다. 최신 Meta Foundation §1.4 판정 규칙 5가 canonical ownerPack과 curriculum binding ownerPack이 달라도 unique active key와 유효 binding이면 정상 cross-pack reuse라고 명시한다. stale RPM crosswalk mismatch는 evidence에 별도 보존했다.",
+      "crossConceptReasons": [
+        "세 삼각형 변이 원 O의 현이라는 조건을 이용해 변 길이 비교와 둘레로 전환한다."
+      ]
+    },
+    "after": {
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "rpmPrimaryRecordId": "M3-RPM-069",
+      "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 중심과 현 > 중심거리와 현의 길이",
+      "rpmL4": "중심거리와 현의 길이",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "GLOBAL ACTIVE TM_CIRCLE_CHORD_LENGTH와 canonical owner GEOMETRY_EQUATIONS, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
+      "crossConceptReasons": []
+    }
+  },
+  {
+    "ordinal": 14,
+    "before": {
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high"
+    },
+    "after": {
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium"
+    }
+  },
+  {
+    "ordinal": 15,
+    "before": {
+      "crossConceptKeys": [],
+      "difficultyBucket": 4,
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptReasons": []
+    },
+    "after": {
+      "crossConceptKeys": [
+        "CC_EQUAL_CHORDS_EQUAL_DISTANCE"
+      ],
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "crossConceptReasons": [
+        "같은 중심거리 OM=ON에서 두 현AB=BC와 그에 대응하는 중심각의 상등을 얻어 원주각에 연결한다."
+      ]
+    }
+  },
+  {
+    "ordinal": 16,
+    "before": {
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "difficultyBucket": 4,
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryRecordId": "M3-RPM-068",
+      "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 중심과 현 > 현의 수직이등분선과 중심",
+      "rpmL4": "현의 수직이등분선과 중심",
+      "projectionStatus": "REUSE",
+      "projectionReason": "GLOBAL ACTIVE key의 canonical owner는 GEOMETRY_EQUATIONS이고, 현재 MIDDLE_GEOMETRY bindings.json에 2015/중3 수학/M3-06/M3-06-CIRCLE_LINE ACTIVE row가 있다. 최신 Meta Foundation §1.4 판정 규칙 5가 canonical ownerPack과 curriculum binding ownerPack이 달라도 unique active key와 유효 binding이면 정상 cross-pack reuse라고 명시한다. stale RPM crosswalk mismatch는 evidence에 별도 보존했다.",
+      "crossConceptReasons": [
+        "중심-현 직각삼각형에서 반현 길이를 계산하는 데 피타고라스 정리가 필요하다."
+      ]
+    },
+    "after": {
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_GEOMETRIC_FOLDING",
+        "CC_PYTHAGOREAN"
+      ],
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "rpmPrimaryRecordId": "M3-RPM-069",
+      "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 중심과 현 > 중심거리와 현의 길이",
+      "rpmL4": "중심거리와 현의 길이",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "GLOBAL ACTIVE TM_CIRCLE_CHORD_LENGTH와 canonical owner GEOMETRY_EQUATIONS, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
+      "crossConceptReasons": [
+        "접힌 호가 기존 중심을 지나므로 반사된 중심간 거리 OO′가 반지름8이고 원래 중심에서 접는 현까지 거리는4이다.",
+        "중심-현 직각삼각형에서 반현 길이를 계산하는 데 피타고라스 정리가 필요하다."
+      ]
+    }
+  },
+  {
+    "ordinal": 17,
+    "before": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "after": {
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    }
+  },
+  {
+    "ordinal": 18,
+    "before": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "after": {
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    }
+  },
+  {
+    "ordinal": 19,
+    "before": {
+      "difficultyBoundaryFlag": "B34"
+    },
+    "after": {
+      "difficultyBoundaryFlag": "NONE"
+    }
+  },
+  {
+    "ordinal": 20,
+    "before": {
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "difficultyBucket": 4,
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptReasons": [
+        "현의 중점까지의 거리를 구할 때 반지름과 반현으로 만든 직각삼각형에서 피타고라스 정리가 필수이다."
+      ]
+    },
+    "after": {
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_PYTHAGOREAN",
+        "CC_TRIG_RATIO"
+      ],
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "crossConceptReasons": [
+        "현AB와BC가 반지름과 같으므로 두 정삼각형의 중심각60°를 얻는다.",
+        "현의 중점까지의 거리를 구할 때 반지름과 반현으로 만든 직각삼각형에서 피타고라스 정리가 필수이다.",
+        "현중점까지 중심거리를 복원한 뒤 마지막 삼각형 넓이에서 sin60°를 사용한다."
+      ]
+    }
+  },
+  {
+    "ordinal": 21,
+    "before": {
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENCY_CONDITION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "difficultyBucket": 5,
+      "difficultyBoundaryFlag": "B45",
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryRecordId": "M3-RPM-070",
+      "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 접선 > 접점의 반지름과 접선",
+      "rpmL3": "원의 접선",
+      "rpmL4": "접점의 반지름과 접선",
+      "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+      "projectionStatus": "REUSE",
+      "projectionReason": "GLOBAL ACTIVE key의 canonical owner는 GEOMETRY_EQUATIONS이고, 현재 MIDDLE_GEOMETRY bindings.json에 2015/중3 수학/M3-06/M3-06-CIRCLE_LINE ACTIVE row가 있다. 최신 Meta Foundation §1.4 판정 규칙 5가 canonical ownerPack과 curriculum binding ownerPack이 달라도 unique active key와 유효 binding이면 정상 cross-pack reuse라고 명시한다. stale RPM crosswalk mismatch는 evidence에 별도 보존했다.",
+      "crossConceptReasons": [
+        "접선 직각삼각형에서 cosθ를 구하는 데 피타고라스 관계가 필요하다."
+      ]
+    },
+    "after": {
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_PROPERTY",
+        "CC_CIRCLE_CHORD_PERP_BISECTOR",
+        "CC_PYTHAGOREAN"
+      ],
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "rpmPrimaryRecordId": "M3-RPM-066",
+      "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 피타고라스 결합",
+      "rpmL3": "복합도형",
+      "rpmL4": "피타고라스 결합",
+      "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "GLOBAL ACTIVE TPL_TRIG_APPLICATION_CHAINED_MEASURE와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
+      "crossConceptReasons": [
+        "접선AP와 접점반지름O′P의 수직 관계로 오른쪽 원의 직각삼각형을 만든다.",
+        "왼쪽 원에서 현AQ에 내린 중심의 수선이 AQ를 이등분하여 AH로부터 전체 현을 복원한다.",
+        "접선 직각삼각형에서 cosθ를 구하는 데 피타고라스 관계가 필요하다."
+      ]
+    }
+  },
+  {
+    "ordinal": 22,
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "projectionStatus": "REUSE",
+      "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": []
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "GLOBAL ACTIVE TPL_TRIG_APPLICATION_DIRECT_MEASURE와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION"
+      ],
+      "crossConceptReasons": [
+        "두 번째 사인 관계로 얻은 4/√3을 4√3/3으로 표현하는 실제 분모 유리화를 보존한다."
+      ]
+    }
+  },
+  {
+    "ordinal": 23,
+    "before": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high"
+    },
+    "after": {
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium"
+    }
+  },
+  {
+    "ordinal": 24,
+    "before": {
+      "crossConceptKeys": [],
+      "difficultyBucket": 4,
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryRecordId": "M3-RPM-061",
+      "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 평면도형 > 삼각형의 높이·넓이",
+      "rpmL3": "평면도형",
+      "rpmL4": "삼각형의 높이·넓이",
+      "crossConceptReasons": []
+    },
+    "after": {
+      "crossConceptKeys": [
+        "CC_GEOMETRIC_FOLDING",
+        "CC_PARALLEL_LINE_ANGLES",
+        "CC_ISOSCELES_CONVERSE",
+        "CC_TRIANGLE_AREA"
+      ],
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "rpmPrimaryRecordId": "M3-RPM-065",
+      "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 보조선 활용",
+      "rpmL3": "복합도형",
+      "rpmL4": "보조선 활용",
+      "crossConceptReasons": [
+        "접기 전 테이프 가장자리와 접힌 변AB가 AC에 대해 대칭이라는 관계로 각을 대응한다.",
+        "원래 두 테이프 가장자리의 평행을 이용해 접기각을 삼각형의 각A,C로 옮긴다.",
+        "각A=각C에서 대변AB=BC를 얻어 삼각비로 구한 AB를 목표 넓이의 밑변으로 사용한다.",
+        "폭을 높이2로 해석한 뒤 복원한 밑변BC와 함께 삼각형 넓이를 구한다."
+      ]
+    }
+  },
+  {
+    "ordinal": 25,
+    "before": {
+      "difficultyBoundaryFlag": "B23"
+    },
+    "after": {
+      "difficultyBoundaryFlag": "NONE"
+    }
+  }
+]

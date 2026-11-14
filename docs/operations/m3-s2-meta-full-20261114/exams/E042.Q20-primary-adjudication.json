@@ -1,0 +1,23 @@
+{
+  "ordinal": 20,
+  "questionUid": "qid_v1_49b61fc4641e1e17b49a21c9e8550d81ae36417be842a9d9f377f7630980b9fa",
+  "beforePriorRPM": [
+    "M3-RPM-080",
+    "M3-RPM-168"
+  ],
+  "afterRPM": [
+    "M3-RPM-069",
+    "M3-RPM-157"
+  ],
+  "decision": "현길이와 반지름이 같은 두 정삼각형을 확인하고 현 중점까지의 중심거리를 피타고라스로 구한 뒤 끼인 중심각으로 목표 삼각형 넓이를 계산한다.",
+  "decisiveStep": "P,Q가 현의 중점이므로 중심에서 현까지의 수선거리 OP=OQ=√(6²−3²)=3√3을 구한다. 두 정삼각형의 중심각을 각각 이등분하여 ∠POQ=60°로 두고 넓이에 연결한다.",
+  "reuseDefinition": "원과 직선이 만드는 현의 길이를 구하거나 현의 길이 조건을 이용하는 유형.",
+  "activeAlternativesCompared": {
+    "TPL_CIRCLE_ANGLE_COMPOSITE": "원주각·접현각을 실제 쓰지 않고 현중점까지 중심거리가 계산 대상이다. 원주각 활용 RPM leaf를 배제한다.",
+    "TPL_TRIG_APPLICATION_CHAINED_MEASURE": "중간길이를 피타고라스로 구하고 삼각비는 마지막 넓이에만 사용하므로 정의의 삼각비 중간측정과 다르다."
+  },
+  "actualDiagramInspected": true,
+  "independentReviewer": "c",
+  "rootDirection": "ROOT_SUPPORTED_CORRECTION_PENDING_FINAL_INDEPENDENT_HASH_BOUND_REVIEW",
+  "studentPayloadChanged": false
+}

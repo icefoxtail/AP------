@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "m3-s2-targeted-metadata-delta-v1",
+  "examId": "E042",
+  "beforeHashes": {
+    "review.json": "ea8408a498ab56955fc51614bf0f3c1faff47e3ecf476a08cf8f2cd2da24577e",
+    "source-patch.json": "5ee11edc9b9a9a511415b02014a6920a7788b5130b78a1396e08971732dd4ccb",
+    "E042.4slot.json": "7d7a487970144a988daae5ae84f1cc9cb3e07c3cb4532f86cb38616444b37146",
+    "proposals.json": "fccf0e4747566c700e3684555457997665840446411801f7f94e50b6f7403129"
+  },
+  "status": "AUTHOR_CORRECTION_PENDING_C_FINAL_BINDING",
+  "sourceAndExistingSolutionRead": true,
+  "studentContentUnchanged": true,
+  "numericBucketsUnchanged": true,
+  "tangentScope": {
+    "definition": "원 밖의 점에서 원에 그은 접선의 길이를 구하는 유형.",
+    "internalSkeleton": "원 밖의 점에서 원에 그은 접선의 길이를 구하는 유형.",
+    "parentDefinition": "원의 접선의 방정식, 접선 조건, 외부점에서 그은 접선의 길이와 접점 관계를 구하거나 판정하는 문제유형.",
+    "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+    "active2015BindingOwner": "MIDDLE_GEOMETRY",
+    "rootDecision": "Root read the exact definitions plus E041 Q24 and E042 Q17/Q18/Q19 existing solutions. No single-piece restriction exists. Transfer, sum, cancellation and Pythagorean support fit the existing tangent-length network.",
+    "validSameItemEvidence": [
+      {
+        "source": "META_PIPELINE_AUDIT",
+        "questionUid": "qid_v1_2312d310763215029400544c0888892134cacc4b3bc00da3f5502df1644c28ad",
+        "sourceOrdinal": 24,
+        "classificationRationale": "META_PIPELINE_AUDIT record 24 binds CC_RECTANGLE_INSCRIBED_CIRCLE for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06/M3-06-CIRCLE_LINE.",
+        "decisiveEvidence": "서술형 심화 문항으로서 직사각형에 내접하는 원의 반지름을 구하고, 접선의 길이 성질로 분할 선분들을 표현한 후 직각삼각형을 형성하여 피타고라스 정리로 이차/일차 방정식을 세워 선분의 길이를 완결하는 4단계 복합 킬러 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+        "auditPackageRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+          "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+        }
+      }
+    ],
+    "auditPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+    "auditSha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab",
+    "withdrawnNewTypeProposals": [
+      {
+        "type": "NEW_TPL_PROPOSAL",
+        "nameKo": "등접선 조각의 합차로 외접다각형 변길이",
+        "reuseDefinition": "원에 외접하는 삼각형 또는 사각형에서 같은 꼭짓점의 등접선 조각을 대응시키고 변의 분할·합차 관계로 한 변 전체의 길이를 구한다.",
+        "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+        "distinguishingCriterion": "TM_TANGENT_LENGTH는 한 외부점에서 접점까지의 접선 길이가 목표이다. 목표 변의 내부에 접점이 놓이고 양쪽 외부점의 두 조각을 합하는 whole-side 목표를 별도 명시한다.",
+        "supportingQuestionUids": [
+          "qid_v1_44ed308ed76ae6884c5a3ca3f8ef0b753188a01fd5a72da4f37a6e29b9a9c567"
+        ],
+        "globalActiveSearch": {
+          "searchedGlobalActive": true,
+          "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+          "exactFitFound": false
+        },
+        "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+      },
+      {
+        "type": "NEW_TPL_PROPOSAL",
+        "nameKo": "내접원 접선으로 잘린 꼭짓점 삼각형의 둘레 불변",
+        "reuseDefinition": "내접원의 접점 안쪽에 놓인 두 점을 잇는 접선을 사용해 새 접선 길이를 양쪽 접선 조각 합으로 바꾸고, 잘린 삼각형 둘레에서 변화 조각을 소거한다.",
+        "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+        "distinguishingCriterion": "일개 접선 길이 또는 다각형 한 변 복원과 달리 점이 움직여도 보존되는 둘레합이 결정 목표이며 점의 순서가 소거식의 필수 조건이다.",
+        "supportingQuestionUids": [
+          "qid_v1_6ca08a6cb282b4c44c282ad11bfd4660a94b4bc205771a9c5207d2ca711f51a4"
+        ],
+        "globalActiveSearch": {
+          "searchedGlobalActive": true,
+          "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+          "exactFitFound": false
+        },
+        "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+      },
+      {
+        "type": "NEW_TPL_PROPOSAL",
+        "nameKo": "외접사각형 변합과 직각사다리꼴의 한 변 복원",
+        "reuseDefinition": "등접선에서 유도한 외접사각형의 맞은편 변 합을 미지변 관계로 쓰고 직각사다리꼴의 밑변 차와 높이에 피타고라스를 적용하여 접점을 내부에 갖는 변 전체 길이를 구한다.",
+        "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+        "distinguishingCriterion": "목표가 한 점에서 접점까지의 단일 접선 길이가 아니며 다각형 변합과 직각 높이 모델의 연결이 필요하다. Q17의 등접선 whole-side 복원의 피타고라스 결합 분기이다.",
+        "supportingQuestionUids": [
+          "qid_v1_2fcf3d457839b26755108b4af16c450a6531061a5121c781c3094ef154b85c22"
+        ],
+        "globalActiveSearch": {
+          "searchedGlobalActive": true,
+          "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+          "exactFitFound": false
+        },
+        "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+      }
+    ],
+    "acceptedItems": [
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_44ed308ed76ae6884c5a3ca3f8ef0b753188a01fd5a72da4f37a6e29b9a9c567",
+        "reason": "같은 외부점의 접선 길이를 전달하여 CE=AC−AF를 얻고 BC=BE+EC를 구한다. 두 조각을 더한다는 사실은 정본에 없는 단일 조각 제한을 도입할 근거가 아니다."
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_6ca08a6cb282b4c44c282ad11bfd4660a94b4bc205771a9c5207d2ca711f51a4",
+        "reason": "등접선에서 BE=BF를 구하고 새 접선 PQ=PE+QF를 둘레식에 넣어 동일 조각을 소거한다. 전체 둘레 목표와 P,Q의 위치는 실제 해설 근거로 보존하지만 추가 정리나 비정형 골격이 필요하지 않으므로 기존 접선 길이 관계망을 재사용한다."
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_2fcf3d457839b26755108b4af16c450a6531061a5121c781c3094ef154b85c22",
+        "reason": "등접선에서 유도되는 외접사각형의 대변 길이합을 사용해 AB=y+2를 세우고 직각사다리꼴의 피타고라스 식으로 y를 결정한다. 접선 관계가 주제이고 CC_PYTHAGOREAN이 보조이다. 접점이 변 내부에 있다는 이유로 별도 TPL을 만들지 않는다."
+      }
+    ]
+  },
+  "crossConceptCorrections": [
+    {
+      "ordinal": 9,
+      "key": "CC_DENOMINATOR_RATIONALIZATION",
+      "quote": "BC=90 m는 빗변이므로 BD=90/√2=45√2 m이다.",
+      "reason": "고정 변비로 얻은 90/√2와 90√2/√3의 분모 근호를 제거하여 기존 정답 형태로 정리한다. 유리화는 특수직각 변비 주제를 대체하지 않는 별도 보조 개념이다.",
+      "activeDefinition": "분모에 있는 근호를 제거하는 변형"
+    },
+    {
+      "ordinal": 10,
+      "key": "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE",
+      "quote": "x=180/(√3−1)=90(√3+1)이므로 h=x+180=90(3+√3) m이다. 정답은 ①이다.",
+      "reason": "공유 높이 식에서 얻은 180/(√3−1)의 분모·분자에 켤레 √3+1을 곱하는 단계가 실제 해설에 있으므로 켤레 유리화 보조 개념을 기록한다.",
+      "activeDefinition": "분모에 근호가 포함된 분수에서 분모·분자에 켤레를 곱하여 분모를 유리수로 만드는 변형."
+    },
+    {
+      "ordinal": 22,
+      "key": "CC_DENOMINATOR_RATIONALIZATION",
+      "quote": "sin60°=AH/AC이므로 AC=AH/sin60°=2/(√3/2)=4√3/3이다.",
+      "reason": "두 번째 사인 관계로 얻은 4/√3을 4√3/3으로 표현하는 실제 분모 유리화를 기록한다. 두 사인 관계의 안내된 적용을 난도 상향 근거로 삼지 않는다.",
+      "activeDefinition": "분모에 있는 근호를 제거하는 변형"
+    }
+  ],
+  "newMathematicalVerification": false
+}
