@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E015",
+  "author": "C",
+  "reviewer": "A",
+  "independent": true,
+  "at": "2026-11-14T11:03:35.286349+00:00",
+  "sourceGitBlobSha": "2a9872ccaba46c416aa706a4c18a7e1d76502682",
+  "reviewSha256": "c80654a87b6ae5aaa4a6924816c339e22e363c5f6667912e28903ccfe5935ce6",
+  "fourSlotSha256": "b4102c8f2169414d89e2857e3070d8f0af1b4844246edd1a6b68270593fcf6f7",
+  "sampleOrdinals": [
+    5,
+    12,
+    14
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_59704debf23d2a04d00ae4e753c4c6eebb0cdb7d1e7f968c81614ae4e4bfe7cf",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "두 유한소수 조건과 비정수 제외 조건이 실제 원문에 있다. goal의 자연수·최솟값은300과의 거리 최소화로 읽혀야 하며 자연수 자체의 최소를 묻는 것으로 해석하지 않았다. lcm과 거리 비교 IMPLIED는 기존 해설의63배수와두거리 계산에 직접 근거한다. 조건 atom 제외와 자연수가 누락되지 않았다.",
+      "sourceRead": "Full requested stem, choices, existing solution and exact submitted review/4slots. Required source figures and existing solution figures visually inspected. No independent VERIFIED_FINAL solver receipt claimed.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_e3170ecdcdaf0fb7706eb72d2443502e2bccca49199d7b89557b9be3aceedc09",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "수정본은 서로 독립된 단항식/다항식 보기를 오답①하나의 primary129로 강제하지 않는다. 원분류 잠정보존과 per-choice129/131/133/131/133을 확인했다. CASE_BRANCH를 철회하고 CC/Integration을 source에 새로 패치하지 않는 HOLD가 적절하다. goal등식과 동류항·다항식나눗셈의 실제해설 인용/IMPLIED 근거가 추가되어 여러 계산 종류를 보존한다.",
+      "sourceRead": "Full requested stem, choices, existing solution and exact submitted review/4slots. Required source figures and existing solution figures visually inspected. No independent VERIFIED_FINAL solver receipt claimed.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_241843642e7596d75f5f99dad036ba61b4ecfa4e59147d8337bfa3312bdbd5c7",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "원본 원뿔 그림 및 기존해설 그림을 실제 보았다. 발문의 높이5x,부피15x²y²를 V=Sh/3에 넣어 밑넓이를 구하는 목표이므로 M1-RPM216을 수용한다. 단항식몫은 CC_MONOMIAL_DIVISION/SEQUENTIAL 보조 단계이다. TPL의 수치대입 정의를 문자식까지 exact확정하지 않고 HOLD한 점이 타당하다.",
+      "sourceRead": "Full requested stem, choices, existing solution and exact submitted review/4slots. Required source figures and existing solution figures visually inspected. No independent VERIFIED_FINAL solver receipt claimed.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 5,
+      "difficultyBucket": 4,
+      "decision": "ACCEPT",
+      "recommendedBucket": 4,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B34",
+      "reason": "분모7·9 제거 조건에서63의 배수를 얻은 후, 28/45의 배수 배제로 가장 가까운252와315를 제외해야 한다. 다시 양쪽 허용값189·378의 거리를 비교하는 복합 조건 구조가 중심이라4/medium/B34를 수용한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "1000x와10x의 자리맞춤과 차를 취하는 순서가 발문에 안내되어 있다. 기약분수 정리 후 값 계산하는 표준2/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "difficultyBucket": 4,
+      "decision": "ACCEPT",
+      "recommendedBucket": 4,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B34",
+      "reason": "원래5자리 순환에서 홀수 위치만 선택한 새 주기0,3,7,7,1을 구성하고 1013개 항의 완전묶음과 나머지를 합친다. 재구성이 핵심인4/medium/B34가 타당하다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "곱이면 지수를 더하고 거듭제곱이면 곱하는 법칙을 각 식에 직접 적용한다. 중→하 및 숫자1/B12 제안을 독립적으로 수용한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "각 보기의 정형 합차·몫과 부호를 검증하는 것이며 여러 식의 길이가3의 근거가 아니다. 숫자2/B23을 수용한다. Primary와 Integration은 별도 유보가 맞다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "괄호를 푼 후 음수로 나누고 네 후보를 필터해 합산한다. 직접 대입만 하는1보다 표준 전처리2/B12가 맞으며 하→중 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "이미 주어진a≥b에서 각 보기의 양수/음수배를 직접 판단한다. 핵심법칙은 하나이고④의음수배 반전이 곧바로 결정되어 숫자1/B12 및 중→하를 수용한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "recommendedBucket": 3,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "분모600에3이 남아야 한다는 조건을3의 배수 제외로 바꾸고 두 자리짝수45개에서6의배수15개를 뺀다. 조건을 세는 방식으로 전환하는3/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "recommendedBucket": 3,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "x<n을 만족하는 정확히 세 후보를 만들기 위해 마지막 포함값0과 첫 제외값1을 선택하고 strict/non-strict 끝점을 결합한다.3/B23을 수용한다."
+    }
+  ],
+  "legacyLevelRechecks": [
+    {
+      "sourceOrdinal": 9,
+      "beforeLevel": "중",
+      "afterLevel": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT_INDEPENDENT_LEVEL_CORRECTION",
+      "reason": "곱이면 지수를 더하고 거듭제곱이면 곱하는 법칙을 각 식에 직접 적용한다. 중→하 및 숫자1/B12 제안을 독립적으로 수용한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "beforeLevel": "하",
+      "afterLevel": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT_INDEPENDENT_LEVEL_CORRECTION",
+      "reason": "괄호를 푼 후 음수로 나누고 네 후보를 필터해 합산한다. 직접 대입만 하는1보다 표준 전처리2/B12가 맞으며 하→중 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "beforeLevel": "중",
+      "afterLevel": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT_INDEPENDENT_LEVEL_CORRECTION",
+      "reason": "이미 주어진a≥b에서 각 보기의 양수/음수배를 직접 판단한다. 핵심법칙은 하나이고④의음수배 반전이 곧바로 결정되어 숫자1/B12 및 중→하를 수용한다."
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 12,
+      "decision": "ACCEPT_REVISED_HOLD",
+      "reason": "수정본은 서로 독립된 단항식/다항식 보기를 오답①하나의 primary129로 강제하지 않는다. 원분류 잠정보존과 per-choice129/131/133/131/133을 확인했다. CASE_BRANCH를 철회하고 CC/Integration을 source에 새로 패치하지 않는 HOLD가 적절하다. goal등식과 동류항·다항식나눗셈의 실제해설 인용/IMPLIED 근거가 추가되어 여러 계산 종류를 보존한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "ACCEPT",
+      "reason": "원본 원뿔 그림 및 기존해설 그림을 실제 보았다. 발문의 높이5x,부피15x²y²를 V=Sh/3에 넣어 밑넓이를 구하는 목표이므로 M1-RPM216을 수용한다. 단항식몫은 CC_MONOMIAL_DIVISION/SEQUENTIAL 보조 단계이다. TPL의 수치대입 정의를 문자식까지 exact확정하지 않고 HOLD한 점이 타당하다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "decision": "ACCEPT",
+      "reason": "원본5.5t제한 표지판을 실제 보았다. 이하는≤라는 뜻을 직접 표시하는 문제로 모델을 세워 부등식을 푸는 WORD보다 BASIC이 맞다. 표현의 정확한leaf가 없으므로136/137을 강제하지 않은 처리를 수용한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_WITH_SCOPE_CAVEAT",
+      "reason": "0.6반복과0.6을분수로바꿔(2/3−3/5)x=3을 모델링하는수량방정식M1-RPM154가목표/결정단계와맞다. 실제TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY정의도확인했다. CC_REPEATING_DECIMAL_RATIONAL은유리수소속성질이며수치변환알고리즘전체의exactCC라고하지않는추가scopecaveat를확인했다."
+    }
+  ],
+  "revisionReadback": {
+    "previousReviewSha256": "4767c1cd6b2b84a00f9a10ba3b968f20390b9ae5160a04b39c9e1c44f4815648",
+    "previousFourSlotSha256": "5a95575aec3a6564338e3dff6b0bf5cd2b14e6b07aaabb316ca20ee52af6e5c9",
+    "changedScope": [
+      "Q12 primary/RPM/CC/Integration andfourSlotmethod/goal",
+      "Q21 CrossConcept scope caveat",
+      "Q14 canonical label alignment"
+    ],
+    "status": "EXACT_FINAL_BYTES_REVIEWED"
+  },
+  "figureEvidence": [
+    {
+      "path": "workers/C/E015/assets/q14.png",
+      "sha256": "ced3be2b0140235f4e0d81f3f7c191720255674aec38d9140f73569227671916"
+    },
+    {
+      "path": "workers/C/E015/assets/q15.png",
+      "sha256": "445ba7725a9209bb9830e9984d6a3751e3683859416de93180dc491bf8ca5d53"
+    },
+    {
+      "path": "workers/C/E015/assets/q14-solution-v2.png",
+      "sha256": "3fdfac9fcd258aa3bdd3429a3ff2108e9f279adec99296e7e8bf05554ee3670f"
+    },
+    {
+      "path": "workers/C/E015/assets/q20-solution-v2.png",
+      "sha256": "89d4f12efc25ba7d6fdc2b89d23c8e214388d6c9d7ec4280d40643be157d8e68"
+    }
+  ],
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "scopeLimits": [
+    "This is a targeted independent3-sample plus identified difficulty/semantic rechecks, not a repeated full-exam authorship.",
+    "Q12 single-primary ambiguity and PT/TPL resolver debts remain explicit. No shared registration or content edit is authorized by this sample."
+  ]
+}
