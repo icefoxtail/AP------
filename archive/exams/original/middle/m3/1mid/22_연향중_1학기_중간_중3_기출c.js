@@ -380,7 +380,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyReason": "제곱근표 조회 후 202=100×2.02로 크기를 환산. 기존 하/버킷2 경계 검토. 기존 level/bucket을 확인한 뒤 평가했으며 blind first-pass가 아니다.",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "problemTypeKey": null,
     "templateKey": null,
@@ -503,7 +503,7 @@ window.questionBank = [
     ],
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "rpmPrimaryIdCandidate": "M3-RPM-013",
     "rpmBindingStatus": "RPM_ONLY",
     "learningDifficulty": "중"
@@ -562,9 +562,7 @@ window.questionBank = [
       "problemTypeKey",
       "templateKey"
     ],
-    "crossConceptKeys": [
-      "CC_AREA"
-    ],
+    "crossConceptKeys": ["CC_TRIANGLE_AREA", "CC_RECTANGLE_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryIdCandidate": "M3-RPM-007",
@@ -614,7 +612,7 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyReason": "제곱근 식을 전개해 유리수·무리수 성분을 모은 뒤 계수를 0으로 둔다. 기존 level/bucket을 확인한 뒤 평가했으며 blind first-pass가 아니다.",
-    "difficultyBoundaryFlag": "B23",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "problemTypeKey": null,
     "templateKey": null,
@@ -623,8 +621,8 @@ window.questionBank = [
       "templateKey"
     ],
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": ["COND_RATIONAL"],
+    "integrationPattern": "NONE",
     "rpmPrimaryIdCandidate": "M3-RPM-014",
     "rpmBindingStatus": "RPM_ONLY",
     "learningDifficulty": "상"
@@ -678,8 +676,8 @@ window.questionBank = [
       "problemTypeKey",
       "templateKey"
     ],
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": ["CC_SYMMETRIC_SUM_PRODUCT"],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryIdCandidate": "M3-RPM-014",
     "rpmBindingStatus": "RPM_ONLY",
@@ -726,7 +724,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyReason": "두 일차식 전개에서 상수항과 일차항 계수를 비교하는 짧은 절차. 기존 하/버킷2 경계 검토. 기존 level/bucket을 확인한 뒤 평가했으며 blind first-pass가 아니다.",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "problemTypeKey": null,
     "templateKey": null,
@@ -790,11 +788,9 @@ window.questionBank = [
       "problemTypeKey",
       "templateKey"
     ],
-    "crossConceptKeys": [
-      "CC_AREA"
-    ],
+    "crossConceptKeys": ["CC_RECTANGLE_AREA"],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryIdCandidate": "M3-RPM-025",
     "rpmBindingStatus": "RPM_ONLY",
     "learningDifficulty": "중",
@@ -964,7 +960,7 @@ window.questionBank = [
     ],
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "rpmPrimaryIdCandidate": "M3-RPM-023",
     "rpmBindingStatus": "RPM_ONLY",
     "learningDifficulty": "중"
@@ -1057,7 +1053,7 @@ window.questionBank = [
       "sourceQid": 19,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyReason": "부등호 방향을 바꾸고 제곱한 뒤 자연수 후보를 열거한다. 기존 level/bucket을 확인한 뒤 평가했으며 blind first-pass가 아니다.",
     "difficultyBoundaryFlag": "B23",
@@ -1072,7 +1068,7 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "rpmPrimaryIdCandidate": "M3-RPM-004",
     "rpmBindingStatus": "RPM_ONLY",
     "learningDifficulty": "중"
@@ -1167,7 +1163,7 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyReason": "둘레 조건에서 a+b를 구하고 넓이 합과 제곱항등식으로 a-b를 유도한다. 기존 level/bucket을 확인한 뒤 평가했으며 blind first-pass가 아니다.",
-    "difficultyBoundaryFlag": "B23",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "problemTypeKey": null,
     "templateKey": null,
@@ -1175,8 +1171,8 @@ window.questionBank = [
       "problemTypeKey",
       "templateKey"
     ],
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": ["CC_SQUARE_AREA"],
+    "conditionKeys": ["COND_POSITIVE", "COND_INEQUALITY_CONSTRAINT"],
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryIdCandidate": "M3-RPM-019",
     "rpmBindingStatus": "RPM_ONLY",

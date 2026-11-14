@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E043",
+  "status": "PASS_WITH_EVIDENCE_DEBT",
+  "author": "meta_a",
+  "reviewer": "GPT_ROOT_0B1AF1898334",
+  "at": "2026-11-14T14:19:58.690786+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/22_연향중_1학기_중간_중3_기출c.js",
+  "sourceBlob": "e8283a372936427fd9af6a5925ac0f42e3f7f6f7",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/0b1af1898334/workers/A/E043.review.json",
+      "sha256": "a63cbf8996ff6d342ca263bd6add32939820be493ebc2e953497ef364744be27"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/0b1af1898334/workers/A/E043.4slot.json",
+      "sha256": "2faa1c3535fa4258019742911d029641e08841ade7de77f53768aafb4a342a2c"
+    }
+  },
+  "sampledOrdinals": [
+    10,
+    12,
+    20,
+    21
+  ],
+  "additionalChangedOrBoundaryOrdinals": [
+    7,
+    9,
+    11,
+    13,
+    14,
+    17,
+    18,
+    19
+  ],
+  "scope": "Actual stem/choices/existing solution read for listed12questions. Four slots directly compared10/12/20/21. Current-source images7/10/14/20 directly viewed. Metadata-only independent review.",
+  "findings": [
+    {
+      "ordinal": 7,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "원본 제곱근표2.0행.2열1.421 확인.100배의근호를10배로옮기는 직접표준계산으로 하2/B12 수용."
+    },
+    {
+      "ordinal": 9,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "주어진 근호 혼합식을 각항정리 후 동류항 상쇄하는 표준계산. primary내절차라 NONE 수용."
+    },
+    {
+      "ordinal": 10,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "현재 source가 명시한 ALIVE_REPLACEMENT 그림을 직접 확인; 원본진품으로 주장하지 않음. 두도형 넓이비로x를역산하는 목표/실제해설/4칸 일치. CC_TRIANGLE_AREA+CC_RECTANGLE_AREA와SEQUENTIAL/bucket2 및exactleafgap 수용."
+    },
+    {
+      "ordinal": 11,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "전체식과계수a의 유리수전제가 실제 무리수계수소거를 가능하게한다. COND_RATIONAL 및 상3/B34의 경계 수용."
+    },
+    {
+      "ordinal": 12,
+      "status": "PASS_AFTER_REVISION",
+      "note": "기존해설은 합곱으로(a−b)²를구해a=b를먼저얻는다. ACTIVE CC_SYMMETRIC_SUM_PRODUCT 정의와 직접대조하여 근호계산의 보조선행으로추가하고 SEQUENTIAL 유지한 최종수정확인. 4칸곱셈공식 인용은 실제해설과일치."
+    },
+    {
+      "ordinal": 13,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "두일차식 전개 후 상수항·일차항계수 비교하는 표준절차. 하2/B12 수용."
+    },
+    {
+      "ordinal": 14,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "원본의x²한개,x세개,1두개 직접확인. 도형에서항을읽고인수분해하므로 직사각형넓이보조/SEQUENTIAL 및bucket2 수용."
+    },
+    {
+      "ordinal": 17,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "완전제곱식 중간항±12 두부호를확인하는 동일primary의정형적절차. 복수정답형식보존 및NONE/bucket2 수용."
+    },
+    {
+      "ordinal": 18,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "주어진 인수의영점대입으로계수를구하는 실제해설을재사용. 조건식028은부모맥락이며정확leafgap유지."
+    },
+    {
+      "ordinal": 19,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "음의근호부등식에서방향변환·양수제곱·작은자연수구간열거가명시된표준처리. bucket2/B23 및정확leafgap 수용."
+    },
+    {
+      "ordinal": 20,
+      "status": "REVIEWED_WITH_EVIDENCE_DEBT",
+      "note": "원본PNG의끈이작은상자윗모서리에서큰상자가장자리로사선이되어 기존해설의수직2+수평3 계단경로와다름을직접확인. B의별도시각증거와도일치. 실제방법·분류·난도는UNKNOWN/sourcehold 유지;4칸method는기존해설의기록일뿐타당성승인이아니라는EVIDENCE_DEBT를보존. 새정답확정없음."
+    },
+    {
+      "ordinal": 21,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "둘레와넓이합을a+b와a²+b²로바꾸어차의제곱을계산하고a>b로부호선택. CC_SQUARE_AREA/양수·부등식/SEQUENTIAL 및상3/B34수용. geometry exactleafgap보존."
+    }
+  ],
+  "correctionRequests": [
+    {
+      "ordinal": 12,
+      "field": "crossConceptKeys/integrationPattern",
+      "severity": "REQUIRED",
+      "status": "RESOLVED",
+      "reason": "근호계산 전 선행대칭식항등식의보조결합 누락보완."
+    }
+  ],
+  "assetReview": [
+    {
+      "ordinal": 7,
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E043/07-content-1.png",
+      "sha256": "2463b67652e366f5a100966533e66a52301f30436bd3ad89683dd8f9191cebb9",
+      "status": "VIEWED",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "ordinal": 10,
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E043/10-content-1.svg",
+      "sha256": "2c058d72c139c8df9b36b68054df7b6f511fbc33f64471e19b37eadc4a251b58",
+      "status": "VIEWED",
+      "sourceMode": "ALIVE_REPLACEMENT"
+    },
+    {
+      "ordinal": 14,
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E043/14-content-1.png",
+      "sha256": "96fedb336ba757db35cbd8df685d5f33647c3234901d2e30bbbd751c29e0b48f",
+      "status": "VIEWED",
+      "sourceMode": "ORIGINAL"
+    },
+    {
+      "ordinal": 20,
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E043/20-content-1.png",
+      "sha256": "f037ee57ef15e1368214206d67c845472c8d699c23b6009eb4eda56529b97e8a",
+      "status": "VIEWED",
+      "sourceMode": "ORIGINAL"
+    }
+  ],
+  "reusedEvidence": [
+    {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E043.q20-evidence.json",
+      "sha256": "6cb7b5c903330cd61aa5b36caabcb5e53f4618ab1fd0ca17f53dd7edf0121dcf",
+      "scope": "Independent visual conflict precheck; root additionally viewed original."
+    }
+  ],
+  "evidenceDebtOrdinals": [
+    20
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}
