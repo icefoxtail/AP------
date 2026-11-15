@@ -56,7 +56,9 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "그림에서 같은 호를 보는 중심각150도와 원주각을 대응하여 절반 관계를 바로 적용한다.",
+        "decisiveStep": "그림에서 같은 호를 보는 중심각150도와 원주각을 대응하여 절반 관계를 바로 적용한다."
       },
       "priorReviewNotes": [
         {
@@ -110,7 +112,9 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B12",
         "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "원주각의 꼭짓점이 작은 호에 있으므로 반대쪽 큰 호를 먼저 선택한 뒤 중심각과 원주각의 절반 관계를 적용한다.",
+        "decisiveStep": "원주각의 꼭짓점이 작은 호에 있으므로 반대쪽 큰 호를 먼저 선택한 뒤 중심각과 원주각의 절반 관계를 적용한다."
       },
       "priorReviewNotes": [
         {
@@ -164,7 +168,9 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B12",
         "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "기존 원주각으로 작은 호를 구하고 요구한 ABD가 나머지 큰 호임을 확인하여 그 절반을 정한다.",
+        "decisiveStep": "기존 원주각으로 작은 호를 구하고 요구한 ABD가 나머지 큰 호임을 확인하여 그 절반을 정한다."
       },
       "priorReviewNotes": [
         {
@@ -220,7 +226,9 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
         "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "접선현각으로 ABD를 정하고 삼각형 내각합, 내접사각형의 대각 보각, 다시 삼각형 내각합을 순차 결합하여 두 각의 합을 구한다.",
+        "decisiveStep": "접선현각으로 ABD를 정하고 삼각형 내각합, 내접사각형의 대각 보각, 다시 삼각형 내각합을 순차 결합하여 두 각의 합을 구한다."
       },
       "priorReviewNotes": [
         {
@@ -277,7 +285,9 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
         "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "원주각과 중심각, 접점수직, 같은 점의 등접선, 이등변삼각형과 접현각을 연결해 주어진 다섯 각·길이 진술을 확인한다.",
+        "decisiveStep": "원주각과 중심각, 접점수직, 같은 점의 등접선, 이등변삼각형과 접현각을 연결해 주어진 다섯 각·길이 진술을 확인한다."
       },
       "priorReviewNotes": [
         {
@@ -333,7 +343,9 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "접선과 평행한 현에서 엇각을 구한 뒤 접선현각과 같은 원주각에 연결하여 두 각의 같음을 판정한다.",
+        "decisiveStep": "접선과 평행한 현에서 엇각을 구한 뒤 접선현각과 같은 원주각에 연결하여 두 각의 같음을 판정한다."
       },
       "priorReviewNotes": [
         {
@@ -387,7 +399,9 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "접선과 현 AC가 이루는 각을 그 현을 보는 반대쪽 원주각에 직접 대응한다.",
+        "decisiveStep": "접선과 현 AC가 이루는 각을 그 현을 보는 반대쪽 원주각에 직접 대응한다."
       },
       "priorReviewNotes": [
         {
@@ -441,7 +455,9 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "STRONG_CONFLICT",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "정오각형 중심각의 절반으로 원주각을 구하는 방법과 내각을 같은 세 원주각으로 나누는 방법을 각각 제시된 방향에 따라 전개한다.",
+        "decisiveStep": "정오각형 중심각의 절반으로 원주각을 구하는 방법과 내각을 같은 세 원주각으로 나누는 방법을 각각 제시된 방향에 따라 전개한다."
       },
       "priorReviewNotes": [
         {
@@ -596,5 +612,20 @@
         "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
       ]
     }
-  ]
+  ],
+  "registrationRationaleBinding": {
+    "sourceCommit": "f41a3192625208ad14411a1780faa1be651773fb",
+    "fields": [
+      "primaryMethod",
+      "decisiveStep"
+    ],
+    "basis": "PORT_OF_NATIVE_REVIEW_TOP_ROW_OR_NARROW_INDEPENDENTLY_REVIEWED_REPAIR",
+    "sourceConsumerParity": true
+  },
+  "currentMainIntegration": {
+    "mainCommit": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+    "previousSourcePortCommit": "f41a3192625208ad14411a1780faa1be651773fb",
+    "newerMainStudentFieldsPreserved": [],
+    "sourceAfterSha256": "442f4228845573b4a4f320815488be084183da3a04e04d94203a191958697454"
+  }
 }

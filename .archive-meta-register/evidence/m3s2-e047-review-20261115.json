@@ -63,7 +63,9 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "같은 호의 원주각·중심각 관계로 호 AC와 BC를 읽고 차인 호 AB를 구해 원주각으로 돌려놓는다.",
+        "decisiveStep": "같은 호의 원주각·중심각 관계로 호 AC와 BC를 읽고 차인 호 AB를 구해 원주각으로 돌려놓는다."
       },
       "priorReviewNotes": [
         {
@@ -115,7 +117,9 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "두 원주각이 보는 큰 호와 작은 호를 구별해 보완 호 EDC를 만든 뒤 BCDE에서 빼서 목표 중심각 BOC를 정한다.",
+        "decisiveStep": "두 원주각이 보는 큰 호와 작은 호를 구별해 보완 호 EDC를 만든 뒤 BCDE에서 빼서 목표 중심각 BOC를 정한다."
       },
       "priorReviewNotes": [
         {
@@ -169,7 +173,9 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
         "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다.",
+        "decisiveStep": "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다."
       },
       "priorReviewNotes": [
         {
@@ -223,7 +229,9 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "등변 TA=AB의 밑각으로 TAB를 구하고 접현각으로 PTB에 옮긴 뒤 삼각형 PBT의 내각합에서 PBT를 구한다.",
+        "decisiveStep": "등변 TA=AB의 밑각으로 TAB를 구하고 접현각으로 PTB에 옮긴 뒤 삼각형 PBT의 내각합에서 PBT를 구한다."
       },
       "priorReviewNotes": [
         {
@@ -278,7 +286,9 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "구하는 두 접현각을 원주각 두 개의 합으로 바꾼다. 접점의 반지름 수직으로 작은 중심각116도를 구하고 큰 호에 대한 원주각122도를 삼각형 내각합에서 뺀다.",
+        "decisiveStep": "구하는 두 접현각을 원주각 두 개의 합으로 바꾼다. 접점의 반지름 수직으로 작은 중심각116도를 구하고 큰 호에 대한 원주각122도를 삼각형 내각합에서 뺀다."
       },
       "priorReviewNotes": [
         {
@@ -333,7 +343,9 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
         "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "지름에 대한 원주각90도에20도를 더하고, 평행선의 각으로 BAD를 구해 접현각 DBT에 옮긴 뒤 한 직선의 보각으로 EBD를 구한다.",
+        "decisiveStep": "지름에 대한 원주각90도에20도를 더하고, 평행선의 각으로 BAD를 구해 접현각 DBT에 옮긴 뒤 한 직선의 보각으로 EBD를 구한다."
       },
       "priorReviewNotes": [
         {
@@ -474,5 +486,20 @@
         "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
       ]
     }
-  ]
+  ],
+  "registrationRationaleBinding": {
+    "sourceCommit": "f41a3192625208ad14411a1780faa1be651773fb",
+    "fields": [
+      "primaryMethod",
+      "decisiveStep"
+    ],
+    "basis": "PORT_OF_NATIVE_REVIEW_TOP_ROW_OR_NARROW_INDEPENDENTLY_REVIEWED_REPAIR",
+    "sourceConsumerParity": true
+  },
+  "currentMainIntegration": {
+    "mainCommit": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+    "previousSourcePortCommit": "f41a3192625208ad14411a1780faa1be651773fb",
+    "newerMainStudentFieldsPreserved": [],
+    "sourceAfterSha256": "51a86f317d3d6202ecca22d6d2e9b342c369c09814770253d7becf4bd5db326b"
+  }
 }

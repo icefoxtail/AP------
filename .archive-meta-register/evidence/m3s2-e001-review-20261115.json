@@ -55,7 +55,9 @@
         "difficultyBucket": 1,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "30°, 60°의 삼각비를 넣은 뒤 켤레 형태의 두 근호식을 합차공식으로 계산한다.",
+        "decisiveStep": "30°, 60°의 삼각비를 넣은 뒤 켤레 형태의 두 근호식을 합차공식으로 계산한다."
       },
       "priorReviewNotes": [
         {
@@ -100,7 +102,9 @@
         "difficultyBucket": 1,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "tan A=3을 두 직각변 x, 3x로 표현하고 피타고라스로 빗변을 정해 다른 예각 B의 sin 값을 구한다.",
+        "decisiveStep": "tan A=3을 두 직각변 x, 3x로 표현하고 피타고라스로 빗변을 정해 다른 예각 B의 sin 값을 구한다."
       },
       "priorReviewNotes": [
         {
@@ -143,7 +147,9 @@
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "한 직각삼각형의 빗변 2에 표의 cos42°, sin42°를 각각 곱하여 두 직각변의 합을 구한다. 복합 측량이 아닌 삼각비 기본 길이 항목이다.",
+        "decisiveStep": "한 직각삼각형의 빗변 2에 표의 cos42°, sin42°를 각각 곱하여 두 직각변의 합을 구한다. 복합 측량이 아닌 삼각비 기본 길이 항목이다."
       },
       "priorReviewNotes": [
         {
@@ -188,7 +194,9 @@
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "0°의 tan, 삼각비 표의 근삿값, 닮음에서 대응변 비 불변과 45° 값을 함께 판정한다. 정답 선지의 특수각만으로 유형을 좁히지 않고 삼각비의 관계를 주분류로 잡는다.",
+        "decisiveStep": "0°의 tan, 삼각비 표의 근삿값, 닮음에서 대응변 비 불변과 45° 값을 함께 판정한다. 정답 선지의 특수각만으로 유형을 좁히지 않고 삼각비의 관계를 주분류로 잡는다."
       },
       "priorReviewNotes": [
         {
@@ -233,7 +241,9 @@
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "서로 다른 두 현의 수직이등분선 교점으로 중심을 작도하고, 반지름·공통변·직각의 RHS 합동으로 현의 이등분 성질을 설명한다.",
+        "decisiveStep": "서로 다른 두 현의 수직이등분선 교점으로 중심을 작도하고, 반지름·공통변·직각의 RHS 합동으로 현의 이등분 성질을 설명한다."
       },
       "priorReviewNotes": [
         {
@@ -385,5 +395,20 @@
         "STALE_REGISTERED_CONTENT_FINGERPRINT"
       ]
     }
-  ]
+  ],
+  "registrationRationaleBinding": {
+    "sourceCommit": "f41a3192625208ad14411a1780faa1be651773fb",
+    "fields": [
+      "primaryMethod",
+      "decisiveStep"
+    ],
+    "basis": "PORT_OF_NATIVE_REVIEW_TOP_ROW_OR_NARROW_INDEPENDENTLY_REVIEWED_REPAIR",
+    "sourceConsumerParity": true
+  },
+  "currentMainIntegration": {
+    "mainCommit": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+    "previousSourcePortCommit": "f41a3192625208ad14411a1780faa1be651773fb",
+    "newerMainStudentFieldsPreserved": [],
+    "sourceAfterSha256": "616a36936b61a7885e83b4c0702a09006f759819bc8abb03e23b6455672dba98"
+  }
 }

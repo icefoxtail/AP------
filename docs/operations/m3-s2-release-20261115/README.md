@@ -2,7 +2,7 @@
 
 ## Scope of this checkpoint
 
-The 83-exam / 1,958-question review at `c17c09a24eb356e4eaf17e4f5bc43c9844cf7427` is ported onto current main source **field by field**. The input snapshot is `e16005f23ba75a2efb9ab5a294881274591fde8e`; newer question and solution figures on that main snapshot are preserved. Only metadata values documented in the review and its explicit reasoning are copied. Exact-type gaps, unknown difficulty values, historical curriculum gaps, and prior review notes remain distinguishable from completed canonical registration.
+The 83-exam / 1,958-question review at `c17c09a24eb356e4eaf17e4f5bc43c9844cf7427` is ported onto current main source **field by field**. The input snapshot is `80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5`; newer question and solution figures on that main snapshot are preserved. Only metadata values documented in the review and its explicit reasoning are copied. Exact-type gaps, unknown difficulty values, historical curriculum gaps, and prior review notes remain distinguishable from completed canonical registration.
 
 Six repaired questions also receive a current-method difficulty reassessment independently checked against the difficulty v1.3 rubric; the two geometry items on the bucket-3/4 boundary preserve `B34` and `medium` confidence. The historical level is retained.
 
@@ -12,7 +12,9 @@ For an otherwise unspecified curriculum, an unambiguous M3 source exam year 2020
 
 ## Registration
 
-The inbox contains the UID subsets whose current source, identity, exact ACTIVE type/template, binding, parent labels, and difficulty already satisfy the official registrar. `strict-registration-dryrun.json` records a successful dry-run of 35 requests / 471 UIDs. These are FINAL_QA metadata approvals and do not claim a new REVIEW2 or R1/R2/R3 exam audit.
+The inbox contains the UID subsets whose current source, identity, exact ACTIVE type/template, binding, parent labels, and difficulty already satisfy the official registrar. `strict-registration-dryrun.json` records a successful dry-run of 35 requests / 465 UIDs. These are FINAL_QA metadata approvals and do not claim a new REVIEW2 or R1/R2/R3 exam audit.
+
+Six UIDs whose current main question-figure paths changed are withheld from this first strict subset. `current-main-figure-followup.json` lists every UID, prior/current figure, source path, and original review path for a narrow current-source reassessment. No new source fingerprint is approved by substitution.
 
 The other reviewed source declarations proceed through the existing `MAIN_MERGED_EXPLICIT_METADATA` registration path after merge, subject to its ordinary UID, ACTIVE binding, difficulty and Consumer checks. A source declaration or a successful dry-run is not evidence of completed registration or publication. Missing definitions and source reassessment are being repaired in subsequent closeout work; `strict-registration-selection.json` preserves the specific current exclusion reasons rather than reporting the entire 1,958 as canonical PASS.
 

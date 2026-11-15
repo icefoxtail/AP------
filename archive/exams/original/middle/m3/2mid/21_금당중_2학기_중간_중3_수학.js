@@ -70,7 +70,11 @@ window.questionBank = [
     "projectionReason": "C가 직각인 그림에서 빗변 c·대변 a·인접변 b를 sin·cos·tan 정의에 직접 대응한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_BASIC_RELATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"C가 직각인 그림에서 빗변 c·대변 a·인접변 b를 sin·cos·tan 정의에 직접 대응한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_BASIC_RELATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"C가 직각인 그림에서 빗변 c·대변 a·인접변 b를 sin·cos·tan 정의에 직접 대응한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 C가 직각이고, 각 A의 맞은편 변 BC=a는 파랑, 이웃한 변 AC=b는 주황, 빗변 AB=c는 초록으로 표시했다.",
+    "solutionImageCaption": "삼각형 ABC의 직각은 C이다. AB=c는 빗변, BC=a는 각 A의 맞은편 변, AC=b는 각 A의 이웃한 변이므로 sin A=a/c, cos A=b/c, tan A=a/b이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -150,7 +154,11 @@ window.questionBank = [
       },
       "rationale": "Direct review established source non-uniqueness. This independently authored complete M3 item is a replacement, not original recovery; no missing original conditions were inferred from answer choices.",
       "originalCropPreserved": true
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 ∠C=90°, AB=5 cm, BC=3 cm, CA=4 cm이다. 각 A의 맞은편 변 BC는 파랑, 이웃한 변 CA는 주황, 빗변 AB는 초록으로 표시했다.",
+    "solutionImageCaption": "sin A=BC/AB=3/5이고 cos A=CA/AB=4/5이다. 따라서 sin A×cos A=(3/5)(4/5)=12/25이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -228,7 +236,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4.0,
-    "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$일 때, $\\sin A$의 값은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q04.png\" />",
+    "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$일 때, $\\sin A$의 값은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q4-problem-v2.svg\" />",
     "choices": [
       "$\\frac{3}{4}$",
       "$\\frac{3}{5}$",
@@ -287,7 +295,11 @@ window.questionBank = [
     "projectionReason": "현 해설의 AA 닮음 BCD∼BAC로 AB=BC²/BD를 먼저 복원한 다음 sinA=BC/AB를 계산한다. 목표가 길이 아닌 삼각비이므로 DIRECT_MEASURE에서 GEOMETRIC_DERIVATION으로 교정한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_GEOMETRIC_DERIVATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"현 해설의 AA 닮음 BCD∼BAC로 AB=BC²/BD를 먼저 복원한 다음 sinA=BC/AB를 계산한다. 목표가 길이 아닌 삼각비이므로 DIRECT_MEASURE에서 GEOMETRIC_DERIVATION으로 교정한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_GEOMETRIC_DERIVATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"현 해설의 AA 닮음 BCD∼BAC로 AB=BC²/BD를 먼저 복원한 다음 sinA=BC/AB를 계산한다. 목표가 길이 아닌 삼각비이므로 DIRECT_MEASURE에서 GEOMETRIC_DERIVATION으로 교정한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 D는 AB 위에 있고 CD는 AB에 수직이다. △BCD와 △BAC는 B의 공통각과 두 직각을 가져 닮음이며, BC=15와 중간값 AB=25를 표시했다.",
+    "solutionImageCaption": "△BCD∼△BAC이다. BC/BA=BD/BC이므로 BA=15²/9=25이다. 따라서 sin A=BC/BA=15/25=3/5이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -357,7 +369,11 @@ window.questionBank = [
     "projectionReason": "이차방정식을 인수분해해 양의 근2/3만 tanA로 선택하고, 변비2:3에서 빗변√13을 복원하여 sinAcosA를 구한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-056","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"삼각비의 관계"},"rpmL3":"삼각비의 뜻","rpmL4":"삼각비의 관계","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_BASIC_RELATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"이차방정식을 인수분해해 양의 근2/3만 tanA로 선택하고, 변비2:3에서 빗변√13을 복원하여 sinAcosA를 구한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-056","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"삼각비의 관계"},"rpmL3":"삼각비의 뜻","rpmL4":"삼각비의 관계","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_BASIC_RELATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"이차방정식을 인수분해해 양의 근2/3만 tanA로 선택하고, 변비2:3에서 빗변√13을 복원하여 sinAcosA를 구한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 예각 A에서 맞은편 변은 2, 이웃한 변은 3이며 빗변은 √13인 직각삼각형을 나타낸다. 각 C가 직각이다.",
+    "solutionImageCaption": "이차방정식의 근은 2/3, −1이고 A가 예각이므로 tan A=2/3이다. 대표 삼각형에서 sin A=2/√13, cos A=3/√13이므로 cos A×sin A=6/13이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -424,7 +440,11 @@ window.questionBank = [
     "projectionReason": "그림의30° 삼각형에서 AD2,DC√3을 얻고 ABD의 두15° 밑각으로 BD=AD를 복원하여 BC/AC=tan75°로 연결한다. 주어진 특수각 값 직접 대입만 하는 유형과 구별한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_GEOMETRIC_DERIVATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"그림의30° 삼각형에서 AD2,DC√3을 얻고 ABD의 두15° 밑각으로 BD=AD를 복원하여 BC/AC=tan75°로 연결한다. 주어진 특수각 값 직접 대입만 하는 유형과 구별한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_GEOMETRIC_DERIVATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"그림의30° 삼각형에서 AD2,DC√3을 얻고 ABD의 두15° 밑각으로 BD=AD를 복원하여 BC/AC=tan75°로 연결한다. 주어진 특수각 값 직접 대입만 하는 유형과 구별한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: AC=1인 직각삼각형 ADC와 직각삼각형 ABC를 나타낸다. AD와 BD는 같은 길이 2, DC는 √3이며, ∠ADC=30°, ∠ABD=15°이다.",
+    "solutionImageCaption": "△ADC에서 AC=1, ∠D=30°이므로 AD=2, DC=√3이다. △ABD의 밑각은 15°씩이어서 BD=AD=2이다. 따라서 BC=2+√3이고 tan 75°=BC/AC=2+√3이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -499,7 +519,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4.0,
-    "content": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle \\mathrm{BOC}$의 크기를 $x^\\circ$라고 할 때, 다음 설명 중 옳은 것을 모두 고르면? (정답 2개) ($0 \\le x^\\circ \\le 90^\\circ$)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q08.png\" />",
+    "content": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle \\mathrm{BOC}$의 크기를 $x^\\circ$라고 할 때, 다음 설명 중 옳은 것을 모두 고르면? (정답 2개) ($0 \\le x^\\circ \\le 90^\\circ$)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q8-problem-v2.svg\" />",
     "choices": [
       "$x^\\circ$의 크기가 커질수록 $\\overline{{\\mathrm{{OB}}}}$의 길이가 커진다.",
       "$x^\\circ$의 크기가 커질수록 $\\overline{{\\mathrm{{OC}}}}$의 길이가 커진다.",
@@ -564,7 +584,11 @@ window.questionBank = [
     "projectionReason": "닫힌0°~90°에서 사인 증가·코사인 감소와 그림의 수직 성분 변화를 판정하는 문항이다. BASIC_RELATION의 직접 정의·삼각비 변환만으로는 단조성 판정 골격을 보증할 수 없어 정확한 ACTIVE 템플릿 연결을 보류한다. 기존 해설의 현/반지름 설명은 그림과 충돌하므로 별도 내용결함이다.",
     "nullReason": "닫힌0°~90°에서 사인 증가·코사인 감소와 그림의 수직 성분 변화를 판정하는 문항이다. BASIC_RELATION의 직접 정의·삼각비 변환만으로는 단조성 판정 골격을 보증할 수 없어 정확한 ACTIVE 템플릿 연결을 보류한다. 기존 해설의 현/반지름 설명은 그림과 충돌하므로 별도 내용결함이다.",
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-056","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"삼각비의 관계"},"rpmL3":"삼각비의 뜻","rpmL4":"삼각비의 관계","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":null,"projectionStatus":"ACTIVE_TEMPLATE_GAP","projectionReason":"닫힌0°~90°에서 사인 증가·코사인 감소와 그림의 수직 성분 변화를 판정하는 문항이다. BASIC_RELATION의 직접 정의·삼각비 변환만으로는 단조성 판정 골격을 보증할 수 없어 정확한 ACTIVE 템플릿 연결을 보류한다. 기존 해설의 현/반지름 설명은 그림과 충돌하므로 별도 내용결함이다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-056","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"삼각비의 관계"},"rpmL3":"삼각비의 뜻","rpmL4":"삼각비의 관계","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":null,"projectionStatus":"ACTIVE_TEMPLATE_GAP","projectionReason":"닫힌0°~90°에서 사인 증가·코사인 감소와 그림의 수직 성분 변화를 판정하는 문항이다. BASIC_RELATION의 직접 정의·삼각비 변환만으로는 단조성 판정 골격을 보증할 수 없어 정확한 ACTIVE 템플릿 연결을 보류한다. 기존 해설의 현/반지름 설명은 그림과 충돌하므로 별도 내용결함이다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 사분원에서 OC=OB₃₀=OB₆₀=1인 두 예시를 표시했다. 각각의 현과 OC에 내린 수선, 수직 성분 1/2 및 √3/2가 보인다.",
+    "solutionImageCaption": "예를 들어 x=30°일 때 수직 성분은 sin 30°=1/2이고, x=60°일 때는 sin 60°=√3/2이다. 반지름 OB와 OC는 1로 일정하고, cos x에 해당하는 가로 성분은 √3/2에서 1/2로 작아진다. 중심각이 커질수록 현 BC도 길어진다. 옳은 설명은 ③, ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -696,7 +720,11 @@ window.questionBank = [
     "projectionReason": "일차함수의 두 절편으로 직각변8/3과2를 만들고 피타고라스로 빗변10/3을 복원한 뒤 cos a=4/5를 판정한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_GEOMETRIC_DERIVATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"일차함수의 두 절편으로 직각변8/3과2를 만들고 피타고라스로 빗변10/3을 복원한 뒤 cos a=4/5를 판정한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_GEOMETRIC_DERIVATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"일차함수의 두 절편으로 직각변8/3과2를 만들고 피타고라스로 빗변10/3을 복원한 뒤 cos a=4/5를 판정한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=3/4 x+2의 두 절편 A와 B 및 원점 O를 잇는 직각삼각형이다. AO=8/3, BO=2, AB=10/3이며 각 A와 B를 a°, b°로 표시했다.",
+    "solutionImageCaption": "x절편은 A=(-8/3,0), y절편은 B=(0,2)이므로 AO=8/3, BO=2이다. 피타고라스 정리로 AB=10/3이다. 따라서 cos a=AO/AB=(8/3)/(10/3)=4/5이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -704,7 +732,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4.0,
-    "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{A}$의 크기와 선분 $\\mathrm{AB}$의 길이 $c$가 주어졌을 때, 다음 중 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BC}}$의 길이를 순서대로 바르게 짝지은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q11.png\" />",
+    "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{A}$의 크기와 선분 $\\mathrm{AB}$의 길이 $c$가 주어졌을 때, 다음 중 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BC}}$의 길이를 순서대로 바르게 짝지은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q11-problem-v2.svg\" />",
     "choices": [
       "$c\\sin A$, $c\\cos A$",
       "$c\\sin A$, $c\\tan A$",
@@ -768,7 +796,11 @@ window.questionBank = [
     "projectionReason": "빗변c와 각A가 주어져 두 직각변을 c cosA,c sinA로 직접 표현한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-059","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비와 길이","l4":"직각삼각형의 변"},"rpmL3":"삼각비와 길이","rpmL4":"직각삼각형의 변","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_DIRECT_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"빗변c와 각A가 주어져 두 직각변을 c cosA,c sinA로 직접 표현한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-059","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비와 길이","l4":"직각삼각형의 변"},"rpmL3":"삼각비와 길이","rpmL4":"직각삼각형의 변","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_DIRECT_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"빗변c와 각A가 주어져 두 직각변을 c cosA,c sinA로 직접 표현한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AB=c는 초록 빗변, AC는 주황 이웃변, BC는 파란 맞은편 변이다. 직각은 C이다.",
+    "solutionImageCaption": "AB=c는 빗변이다. AC는 각 A의 이웃한 변이므로 AC=c cos A이고, BC는 맞은편 변이므로 BC=c sin A이다. 따라서 순서는 c cos A, c sin A이며 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -912,7 +944,11 @@ window.questionBank = [
     "projectionReason": "두 변5,4와 끼인각150°의 사인을 사용해 ½ab sinθ로 넓이를 구한다. 길이·높이 목표가 아닌 넓이 연결이므로 CHAINED_MEASURE를 사용한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-061","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"평면도형","l4":"삼각형의 높이·넓이"},"rpmL3":"평면도형","rpmL4":"삼각형의 높이·넓이","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"두 변5,4와 끼인각150°의 사인을 사용해 ½ab sinθ로 넓이를 구한다. 길이·높이 목표가 아닌 넓이 연결이므로 CHAINED_MEASURE를 사용한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-061","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"평면도형","l4":"삼각형의 높이·넓이"},"rpmL3":"평면도형","rpmL4":"삼각형의 높이·넓이","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"두 변5,4와 끼인각150°의 사인을 사용해 ½ab sinθ로 넓이를 구한다. 길이·높이 목표가 아닌 넓이 연결이므로 CHAINED_MEASURE를 사용한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB=5 cm, BC=4 cm, ∠ABC=150°이다. E는 B에서 C의 반대쪽으로 연장한 직선 위에 있고 AE는 BC에 수직인 높이다.",
+    "solutionImageCaption": "∠ABC=150°이므로 AE=AB·sin150°=5/2 cm이다. △ABC의 넓이는 ½·BC·AE=½·4·(5/2)=5 cm²이며 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -984,7 +1020,11 @@ window.questionBank = [
     "projectionReason": "길이40인 줄의 수직 성분40cos30°를 지지점의 바닥높이50에서 빼서 추의 바닥높이를 구한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-063","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"측정 문제","l4":"높이·거리"},"rpmL3":"측정 문제","rpmL4":"높이·거리","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_DIRECT_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"길이40인 줄의 수직 성분40cos30°를 지지점의 바닥높이50에서 빼서 추의 바닥높이를 구한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-063","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"측정 문제","l4":"높이·거리"},"rpmL3":"측정 문제","rpmL4":"높이·거리","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_DIRECT_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"길이40인 줄의 수직 성분40cos30°를 지지점의 바닥높이50에서 빼서 추의 바닥높이를 구한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: O에서 A와 B까지 줄의 길이는 각각 40 cm이고 ∠AOB=30°이다. A는 바닥에서 10 cm 위의 최저점이며, B에서 바닥에 내린 수선을 표시한다.",
+    "solutionImageCaption": "OB의 바닥 방향 수직 성분은 40cos30°=20√3 cm이다. 따라서 B의 높이는 10+(40−20√3)=50−20√3 cm이며 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -992,7 +1032,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4.0,
-    "content": "오른쪽 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{CD}$에 내린 수선의 발을 각각 $\\mathrm{M}$과 $\\mathrm{N}$이라고 할 때, 보기의 설명 중 옳은 것을 모두 고르면?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q15.png\" /><br><b>[보 기]</b><br>(ㄱ) $\\overline{\\mathrm{AM}} = \\overline{\\mathrm{BM}}$<br>(ㄴ) $\\angle \\mathrm{OAM} = \\angle \\mathrm{OCN}$<br>(ㄷ) $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이면, $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이다<br>(ㄹ) $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이면, $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이다",
+    "content": "오른쪽 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{CD}$에 내린 수선의 발을 각각 $\\mathrm{M}$과 $\\mathrm{N}$이라고 할 때, 보기의 설명 중 옳은 것을 모두 고르면?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q15-problem-v2.svg\" /><br><b>[보 기]</b><br>(ㄱ) $\\overline{\\mathrm{AM}} = \\overline{\\mathrm{BM}}$<br>(ㄴ) $\\angle \\mathrm{OAM} = \\angle \\mathrm{OCN}$<br>(ㄷ) $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이면, $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이다<br>(ㄹ) $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이면, $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이다",
     "choices": [
       "(ㄱ)",
       "(ㄱ), (ㄴ)",
@@ -1009,7 +1049,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "원",
       "현",
@@ -1052,7 +1092,11 @@ window.questionBank = [
     "projectionReason": "중심의 현 수직이등분 성질과 같은 중심거리↔같은 현의 길이를 각각 확인한다. 두 반지름만 같고 중심거리는 미지정이므로 각이 같다는 보기는 일반적으로 성립하지 않는다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-069","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 중심과 현","l4":"중심거리와 현의 길이"},"rpmL3":"원의 중심과 현","rpmL4":"중심거리와 현의 길이","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_LINE_RELATION","templateKey":"TM_CIRCLE_CHORD_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"중심의 현 수직이등분 성질과 같은 중심거리↔같은 현의 길이를 각각 확인한다. 두 반지름만 같고 중심거리는 미지정이므로 각이 같다는 보기는 일반적으로 성립하지 않는다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-069","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 중심과 현","l4":"중심거리와 현의 길이"},"rpmL3":"원의 중심과 현","rpmL4":"중심거리와 현의 길이","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_LINE_RELATION","templateKey":"TM_CIRCLE_CHORD_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"중심의 현 수직이등분 성질과 같은 중심거리↔같은 현의 길이를 각각 확인한다. 두 반지름만 같고 중심거리는 미지정이므로 각이 같다는 보기는 일반적으로 성립하지 않는다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB, CD에 중심에서 내린 수선 OM, ON과 두 직각을 표시한다. 파란색은 AM=BM, 주황색은 CN=ND를 각각 묶으며, 두 쌍 사이의 길이 같음은 표시하지 않는다.",
+    "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 AM=BM이다. OM=ON이면 같은 반지름에서 두 현까지의 거리가 같아 두 반현의 길이가 같고 AB=CD이다. 반대로 AB=CD이면 AM=CN이고, 같은 반지름이므로 OM=ON이다. ㄴ은 항상 성립하지 않으므로 참인 것은 ㄱ, ㄷ, ㄹ이며 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1125,7 +1169,11 @@ window.questionBank = [
     "projectionReason": "중심 수선으로 현10을 반으로 나눠5를 얻고 중심거리3과 함께 반지름√34를 복원한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-069","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 중심과 현","l4":"중심거리와 현의 길이"},"rpmL3":"원의 중심과 현","rpmL4":"중심거리와 현의 길이","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_LINE_RELATION","templateKey":"TM_CIRCLE_CHORD_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"중심 수선으로 현10을 반으로 나눠5를 얻고 중심거리3과 함께 반지름√34를 복원한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-069","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 중심과 현","l4":"중심거리와 현의 길이"},"rpmL3":"원의 중심과 현","rpmL4":"중심거리와 현의 길이","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_LINE_RELATION","templateKey":"TM_CIRCLE_CHORD_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"중심 수선으로 현10을 반으로 나눠5를 얻고 중심거리3과 함께 반지름√34를 복원한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB 전체에 10 cm 치수선을 표시했다. 중심 O에서 현에 내린 수선 OH는 3 cm이고, 현의 두 반쪽에는 같은 파란 눈금이 있다.",
+    "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 HB=AB/2=5 cm이다. 직각삼각형 OHB에서 OB=√(OH²+HB²)=√(3²+5²)=√34 cm이므로 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1193,7 +1241,11 @@ window.questionBank = [
     "projectionReason": "그림에서 OP=반지름3+원 밖 길이3으로6을 읽고 접점의 수직인 반지름3과 피타고라스로 접선길이를 구한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-072","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 접선","l4":"접선 조건으로 길이 구하기"},"rpmL3":"원의 접선","rpmL4":"접선 조건으로 길이 구하기","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"그림에서 OP=반지름3+원 밖 길이3으로6을 읽고 접점의 수직인 반지름3과 피타고라스로 접선길이를 구한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-072","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 접선","l4":"접선 조건으로 길이 구하기"},"rpmL3":"원의 접선","rpmL4":"접선 조건으로 길이 구하기","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"그림에서 OP=반지름3+원 밖 길이3으로6을 읽고 접점의 수직인 반지름3과 피타고라스로 접선길이를 구한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O와 두 접점 A,B, 바깥점 P를 표시한다. OA=3cm, 원에서 P까지 TP=3cm이며 접선 PA와 PB는 같은 길이이다.",
+    "solutionImageCaption": "OP=OT+TP=3+3=6cm이다. 직각삼각형 OAP에서 PA=√(6²−3²)=3√3cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1265,7 +1317,11 @@ window.questionBank = [
     "projectionReason": "A에서 그은 두 접선 AP,AR의 길이가 같아 AP9를 AR에 그대로 전달한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-071","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 접선","l4":"한 점에서 그은 두 접선"},"rpmL3":"원의 접선","rpmL4":"한 점에서 그은 두 접선","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"A에서 그은 두 접선 AP,AR의 길이가 같아 AP9를 AR에 그대로 전달한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-071","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 접선","l4":"한 점에서 그은 두 접선"},"rpmL3":"원의 접선","rpmL4":"한 점에서 그은 두 접선","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"A에서 그은 두 접선 AP,AR의 길이가 같아 AP9를 AR에 그대로 전달한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원에서 접점 P,Q,R을 표시하고, A의 접선 AP=AR를 파란 눈금, B와 C의 접선 쌍을 각각 주황·초록 눈금으로 구분한다. AP=9cm, CR=13cm이다.",
+    "solutionImageCaption": "A에서 그은 두 접선은 길이가 같으므로 AR=AP=9cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1345,7 +1401,11 @@ window.questionBank = [
       },
       "rationale": "Direct review established source non-uniqueness. This independently authored complete M3 item is a replacement, not original recovery; no missing original conditions were inferred from answer choices.",
       "originalCropPreserved": true
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 외접한 사각형 ABCD의 접점 E,F,G,H와 주어진 AB=5cm, AE=2cm, CD=6cm, CF=3cm를 표시한다. x=BF, y=DH이며 꼭짓점별 같은 접선 길이 쌍을 눈금으로 묶는다.",
+    "solutionImageCaption": "BE=BF=5−2=3cm이고 CG=CF=3cm이다. CD=6cm이므로 DG=3cm, 따라서 DH=DG=3cm이다. x+y=3+3=6cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1430,7 +1490,11 @@ window.questionBank = [
       },
       "rationale": "Direct review established source non-uniqueness. This independently authored complete M3 item is a replacement, not original recovery; no missing original conditions were inferred from answer choices.",
       "originalCropPreserved": true
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원 O에서 접점 F,D,E를 표시하고 AF=4cm, BD=3cm, CE=5cm를 나타낸다. 꼭짓점별 같은 접선 구간은 각각 한 눈금, 두 눈금, 세 눈금이다.",
+    "solutionImageCaption": "AB=AF+FB=4+3=7cm, BC=BD+DC=3+5=8cm, CA=CE+EA=5+4=9cm이다. 따라서 둘레는 7+8+9=24cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1497,7 +1561,11 @@ window.questionBank = [
     "projectionReason": "등접선 PA=PB와60°로 정삼각형을 얻어 AB와 넓이를 확인하고, 접점수직·OP의 반각30°로 반지름과 중심각 보기를 판정한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-072","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 접선","l4":"접선 조건으로 길이 구하기"},"rpmL3":"원의 접선","rpmL4":"접선 조건으로 길이 구하기","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"등접선 PA=PB와60°로 정삼각형을 얻어 AB와 넓이를 확인하고, 접점수직·OP의 반각30°로 반지름과 중심각 보기를 판정한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-072","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 접선","l4":"접선 조건으로 길이 구하기"},"rpmL3":"원의 접선","rpmL4":"접선 조건으로 길이 구하기","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"등접선 PA=PB와60°로 정삼각형을 얻어 AB와 넓이를 확인하고, 접점수직·OP의 반각30°로 반지름과 중심각 보기를 판정한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 밖의 P에서 그은 접선 PA와 PB에 같은 초록 눈금을 표시한다. PA=6 cm, ∠APB=60°이고 두 접점의 반지름은 접선에 각각 수직이다.",
+    "solutionImageCaption": "PA=PB=6이고 ∠APB=60°이므로 △PAB는 정삼각형이다. 따라서 AB=6이고 넓이는 9√3이다. OA와 OB는 각 접선에 수직이며 △OAP와 △OBP는 합동이므로 OA=2√3, ∠AOB=120°이다. 따라서 옳은 것은 ㄱ, ㄹ이고 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1564,7 +1632,11 @@ window.questionBank = [
     "projectionReason": "명시된 수선CH에서30° 삼각비로 CH와BH를 구하고 내각합의45° 직각이등변으로 AH를 정하여 AB와넓이를 구한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-061","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"평면도형","l4":"삼각형의 높이·넓이"},"rpmL3":"평면도형","rpmL4":"삼각형의 높이·넓이","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"명시된 수선CH에서30° 삼각비로 CH와BH를 구하고 내각합의45° 직각이등변으로 AH를 정하여 AB와넓이를 구한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-061","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"평면도형","l4":"삼각형의 높이·넓이"},"rpmL3":"평면도형","rpmL4":"삼각형의 높이·넓이","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"명시된 수선CH에서30° 삼각비로 CH와BH를 구하고 내각합의45° 직각이등변으로 AH를 정하여 AB와넓이를 구한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 밑변 AB와 수선 CH를 나타낸다. ∠B=30°, ∠C=105°, BC=8 cm이며, 고도 CH=4 cm, BH=4√3 cm, AH=4 cm이다. AH와 CH는 같은 눈금으로 표시한다.",
+    "solutionImageCaption": "△BCH에서 CH=8sin30°=4 cm, BH=8cos30°=4√3 cm이다. ∠A=180°−30°−105°=45°이므로 AH=CH=4 cm이다. 따라서 AB=4+4√3 cm이고, 넓이는 ½·AB·CH=8+8√3 cm²이다. 답은 (1) 4+4√3 cm, (2) 8+8√3 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1572,7 +1644,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 6.0,
-    "content": "[서술형 2] 원의 현에 대한 성질을 이용하여 $x$의 값을 각각 구하시오. (6점, 각각 3점)<br>(1)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_1.png\" /><br>(2)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png\" />",
+    "content": "[서술형 2] 원의 현에 대한 성질을 이용하여 $x$의 값을 각각 구하시오. (6점, 각각 3점)<br>(1)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q23-problem-v2.svg\" /><br>(2)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png\" />",
     "choices": [],
     "answer": "(1) 7 cm, (2) 5 cm",
     "solution": "(1) 중심에서 현에 내린 수선은 현을 이등분하므로 14cm인 현의 절반은 x=7cm이다. (2) 중심에서 같은 거리에 있는 현의 길이는 같으므로, 중심에서 4cm 떨어진 두 현은 길이가 같다. 한 현이 5cm이므로 x=5cm이다.",
@@ -1583,7 +1655,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "현",
       "수선",
@@ -1627,7 +1699,11 @@ window.questionBank = [
     "projectionReason": "소문항(1)은 중심수선이 현14를 이등분해7,(2)는 같은 중심거리4의 두 현이 같아5임을 직접 적용한다. 기존 CC의 M3-RPM-069는 등록 개념키가 아니며 동일 주제의 핵심이므로 제거한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-069","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 중심과 현","l4":"중심거리와 현의 길이"},"rpmL3":"원의 중심과 현","rpmL4":"중심거리와 현의 길이","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_LINE_RELATION","templateKey":"TM_CIRCLE_CHORD_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"소문항(1)은 중심수선이 현14를 이등분해7,(2)는 같은 중심거리4의 두 현이 같아5임을 직접 적용한다. 기존 CC의 M3-RPM-069는 등록 개념키가 아니며 동일 주제의 핵심이므로 제거한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-069","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 중심과 현","l4":"중심거리와 현의 길이"},"rpmL3":"원의 중심과 현","rpmL4":"중심거리와 현의 길이","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_LINE_RELATION","templateKey":"TM_CIRCLE_CHORD_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"소문항(1)은 중심수선이 현14를 이등분해7,(2)는 같은 중심거리4의 두 현이 같아5임을 직접 적용한다. 기존 CC의 M3-RPM-069는 등록 개념키가 아니며 동일 주제의 핵심이므로 제거한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림은 길이 14 cm인 현을 아래에 확대해 왼쪽 반현 AH에 x를 표시한다. 둘째 그림은 두 중심거리 4 cm와 길이가 같은 두 현을 색과 눈금으로 구분한다.",
+    "solutionImageCaption": "(1) 중심에서 현에 내린 수선은 현을 이등분하므로 x=14÷2=7 cm이다. (2) 중심에서 같은 거리에 있는 두 현의 길이는 같으므로 x=5 cm이다. 답은 (1) 7 cm, (2) 5 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1689,6 +1765,10 @@ window.questionBank = [
     "projectionReason": "45° 직각삼각형에서 OA=√2x,OM=x를 표현하고 반지름OC=OA와MC3을 결합해 √2x=x+3을 푼 뒤 현2x를 얻는다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-069","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 중심과 현","l4":"중심거리와 현의 길이"},"rpmL3":"원의 중심과 현","rpmL4":"중심거리와 현의 길이","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_LINE_RELATION","templateKey":"TM_CIRCLE_CHORD_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"45° 직각삼각형에서 OA=√2x,OM=x를 표현하고 반지름OC=OA와MC3을 결합해 √2x=x+3을 푼 뒤 현2x를 얻는다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-069","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 중심과 현","l4":"중심거리와 현의 길이"},"rpmL3":"원의 중심과 현","rpmL4":"중심거리와 현의 길이","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_LINE_RELATION","templateKey":"TM_CIRCLE_CHORD_LENGTH","projectionStatus":"PROJECTION_REUSE","projectionReason":"45° 직각삼각형에서 OA=√2x,OM=x를 표현하고 반지름OC=OA와MC3을 결합해 √2x=x+3을 푼 뒤 현2x를 얻는다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 현 AB와 수선 OC가 M에서 만난다. 같은 반지름 OA와 OC는 파란색이며, AM과 MB는 주황 한 줄 눈금이다. ∠OAM=45°, AM=x cm, CM=3 cm를 표시한다.",
+    "solutionImageCaption": "(1) △OAM은 45°-45°-90°이므로 OA=√2x, OM=x이다. 따라서 a=√2, b=1이다. (2) OC=OA이고 OC=OM+MC이므로 √2x=x+3, x=3(√2+1) cm이다. (3) M은 AB의 중점이므로 AB=2x=6(√2+1) cm이다. 답은 (1) a=√2, b=1, (2) x=3(√2+1) cm, (3) AB=6(√2+1) cm이다.",
+    "solutionImageSize": "full"
   }
 ];

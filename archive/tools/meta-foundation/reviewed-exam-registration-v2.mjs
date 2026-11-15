@@ -5,9 +5,12 @@ import crypto from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
 import { execFileSync } from "node:child_process";
 import canonical from "../../archive2-canonical.js";
+import ProblemBankMeta from "../../problem-bank-meta.js";
 import { loadCanonical, buildCompiled, compiledOutputs, buildRegistryIndex } from "./compile-meta-foundation.mjs";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 import { computeLegacyCompat } from "./register-difficulty5.mjs";
+import { validateReviewedSourceReassessment } from "./reviewed-source-reassessment.mjs";
+import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
@@ -1911,8 +1914,115 @@ function loadSourceRebindPrior({ req, source, bytes, rows, read, evidenceRefs })
   return { receipt: prior, records: unique(prior.appliedRecords, "questionUid", "prior receipt UID") };
 }
 
+export function verifyIdentityFingerprintConsumer(root, bindings, catalog) {
+  const byUid = unique(catalog.records, "questionUid", "identity repair consumer UID");
+  const generated = JSON.parse(fs.readFileSync(safePath(root, "archive/data/generated-lite-consumer/v1/index.json"), "utf8"));
+  const hashes = new Map(catalog.sourceHashes || []);
+  const inventory = ProblemBankMeta.buildIndex(catalog.records.map(row => ({ ...row,
+    currentSourceJsSha256: hashes.get(row.sourceFile) || "" })), generated.records, { excludedHoldUids: generated.userDisabledUids || [] });
+  const visible = new Set(ProblemBankMeta.query(inventory, {}).map(row => row.uid));
+  for (const binding of bindings) {
+    const row = byUid.get(binding.questionUid);
+    if (!row || row.sourceFile !== binding.sourceArchiveFile || row.sourceOrdinal !== binding.sourceOrdinal ||
+        row.sourceFingerprint !== binding.sourceFingerprint || row.assignmentFingerprint !== binding.contentFingerprint)
+      fail(`identity repair Consumer source binding mismatch: ${binding.questionUid}`);
+    if ((row.metadataConflicts || []).length) fail(`identity repair Consumer metadata conflict: ${binding.questionUid}`);
+    if (!visible.has(binding.questionUid)) fail(`identity repair Consumer UID not selectable: ${binding.questionUid}`);
+  }
+  return { identityBindings: bindings.length, newMetadataApprovals: 0 };
+}
+
+// This lane repairs an identity sidecar already described by current, approved metadata.
+// It cannot approve/rewrite a semantic value, clear a hold, emit a runtime row or create a canonical assignment.
+function registerIdentityFingerprintOnly({ root, req, metadata, identity, rows, ids, bank, bytes, blob,
+  receiptPath, requestSha256, previous, scopeFields, write, verifyProjection, read }) {
+  if (req.scope !== "PARTIAL_UIDS" || req.approval.type !== "FINAL_QA" || req.approval.sourceRebind || req.registryChanges?.length)
+    fail("identity-only repair requires PARTIAL_UIDS FINAL_QA without registry changes");
+  const metadataBytes = fs.readFileSync(safePath(root, META));
+  const identityBytes = fs.readFileSync(safePath(root, IDENTITY));
+  if (!eq(JSON.parse(metadataBytes), metadata) || !eq(JSON.parse(identityBytes), identity)) fail("identity-only input changed during planning");
+  const allowedKeys = new Set(["questionUid", "sourceOrdinal", "before", "after", "identityBefore", "sourceReview", "reason", "evidenceRefs"]);
+  const bindings = [], appliedIdentityRecords = [], fingerprintRepairs = [], cache = new Map();
+  for (const patch of req.items) {
+    const current = rows[patch.sourceOrdinal - 1], id = ids.get(patch.questionUid), q = JSON.parse(JSON.stringify(bank[patch.sourceOrdinal - 1]));
+    if (Object.keys(patch).some(key => !allowedKeys.has(key)) || !patch.before || !patch.after ||
+        [patch.before, patch.after].some(values => Array.isArray(values) || Object.keys(values).sort().join(",") !== "contentFingerprint,sourceFingerprint"))
+      fail(`identity-only repair accepts fingerprint fields only: ${patch.questionUid}`);
+    requireText(patch.reason, "identity-only repair reason");
+    if (!current || id?.sourceArchiveFile !== req.sourceArchiveFile || id.sourceOrdinal !== patch.sourceOrdinal ||
+        q.questionUid && q.questionUid !== current.questionUid && !isUnambiguousLegacySourceUidAlias({
+          question: q, sourceArchiveFile: req.sourceArchiveFile, sourceOrdinal: patch.sourceOrdinal,
+          identityRecord: id, identityMap: identity, bank })) fail(`identity-only UID/source mismatch: ${patch.questionUid}`);
+    if (!approved(current)) fail(`identity-only metadata approval missing: ${patch.questionUid}`);
+    const actual = sourceFingerprints(q);
+    for (const [field, value] of Object.entries(actual))
+      if (current[field] !== value || patch.before[field] !== value || patch.after[field] !== value)
+        fail(`identity-only current metadata/source fingerprint mismatch: ${patch.questionUid}.${field}`);
+    const proof = validateReviewedSourceReassessment({ root, request: req, patch, metadata: current, question: q, final: current, supportedFields: valueFields, cache });
+    bindings.push({ questionUid: current.questionUid, sourceArchiveFile: req.sourceArchiveFile, sourceOrdinal: patch.sourceOrdinal, ...actual });
+    if (previous) continue;
+    const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch });
+    if (!checked.identityChanged) fail(`identity-only repair unnecessary: ${patch.questionUid}`);
+    appliedIdentityRecords.push(checked.identityAfter);
+    fingerprintRepairs.push({ questionUid: current.questionUid, sourceOrdinal: patch.sourceOrdinal,
+      metadataBefore: actual, identityBefore: { sourceFingerprint: id.sourceFingerprint }, after: actual, sourceReview: proof });
+    Object.assign(id, checked.identityAfter);
+  }
+  if (previous) {
+    if (previous.schemaVersion !== "archive-reviewed-identity-fingerprint-repair-v1" ||
+        previous.registrationMode !== req.registrationMode || previous.newMetadataApprovals !== 0 ||
+        previous.metadataChanged !== false || previous.identityRegistrationStatus !== "REPAIRED" ||
+        previous.metadataRegistrationStatus !== "PRESERVED_WITHOUT_NEW_APPROVAL" ||
+        previous.sourceArchiveFile !== req.sourceArchiveFile || previous.sourceBlobSha1 !== blob || previous.sourceRawSha256 !== digest(bytes) ||
+        previous.scope !== req.scope || previous.expectedQuestionCount !== req.expectedQuestionCount ||
+        previous.partialUidCount !== req.items.length || previous.totalQuestions !== req.items.length ||
+        !eq(previous.bindings, bindings) || !Array.isArray(previous.appliedIdentityRecords) ||
+        previous.appliedIdentityRecords.length !== req.items.length ||
+        unique(previous.appliedIdentityRecords, "questionUid", "identity-only receipt UID").size !== req.items.length ||
+        previous.appliedIdentityRecords.some(record => !bindings.some(binding => binding.questionUid === record.questionUid) ||
+          !eq(ids.get(record.questionUid), record))) fail("identity-only receipt scope/binding drift");
+    const consumerLanes = verifyProjection ? verifyIdentityFingerprintConsumer(root, bindings, loadResolvedConsumerCatalog(root, read)) : null;
+    return { status: "PASS", requestId: req.requestId, totalQuestions: bindings.length, ...scopeFields,
+      registrationMode: req.registrationMode, replay: true, plannedPaths: [], metadataChanged: false, newMetadataApprovals: 0,
+      consumerSearchStatus: verifyProjection ? "IDENTITY_BINDINGS_VERIFIED" : "NOT_RUN", browserStatus: "NOT_RUN",
+      ...(consumerLanes ? { consumerLanes } : {}) };
+  }
+  if (verifyProjection) fail("identity-only receipt required before --verify-projection");
+  const identityText = json(identity), metadataSha256 = digest(metadataBytes);
+  const receipt = { schemaVersion: "archive-reviewed-identity-fingerprint-repair-v1", registrationMode: req.registrationMode,
+    requestId: req.requestId, requestSha256, examUid: req.examUid, sourceArchiveFile: req.sourceArchiveFile,
+    sourceBlobSha1: blob, sourceRawSha256: digest(bytes), approval: req.approval,
+    metadataRegistrationStatus: "PRESERVED_WITHOUT_NEW_APPROVAL", identityRegistrationStatus: "REPAIRED",
+    metadataChanged: false, newMetadataApprovals: 0, examFinalQaStatus: "NOT_EVALUATED_BY_REGISTRAR",
+    totalQuestions: bindings.length, ...scopeFields, bindings, appliedIdentityRecords, fingerprintRepairs,
+    metadataPreservation: { path: META, beforeSha256: metadataSha256, afterSha256: metadataSha256 },
+    outputDigests: [{ path: IDENTITY, sha256: digest(identityText) }] };
+  const outputs = new Map([[IDENTITY, identityText], [receiptPath, json(receipt)]]);
+  if (!eq(fs.readFileSync(safePath(root, META)), metadataBytes) || !eq(fs.readFileSync(safePath(root, IDENTITY)), identityBytes) ||
+      !eq(fs.readFileSync(safePath(root, `archive/exams/${req.sourceArchiveFile}`)), bytes)) fail("identity-only input changed during planning");
+  if (write) {
+    const backup = new Map();
+    try {
+      for (const [relative, output] of outputs) {
+        const file = safePath(root, relative);
+        backup.set(file, fs.existsSync(file) ? fs.readFileSync(file) : null);
+        fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, output, "utf8");
+      }
+      if (!eq(fs.readFileSync(safePath(root, META)), metadataBytes)) fail("identity-only repair changed metadata");
+    } catch (error) {
+      for (const [file, prior] of backup) if (prior === null) fs.rmSync(file, { force: true }); else fs.writeFileSync(file, prior);
+      throw error;
+    }
+  }
+  return { status: "PASS", requestId: req.requestId, totalQuestions: bindings.length, ...scopeFields,
+    registrationMode: req.registrationMode, replay: false, written: write, plannedPaths: [...outputs.keys()],
+    fingerprintRepairCount: bindings.length, metadataChanged: false, newMetadataApprovals: 0,
+    consumerSearchStatus: "NOT_RUN", browserStatus: "NOT_RUN" };
+}
+
 export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false }) {
   if (req.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2") fail("request schema mismatch");
+  if (req.registrationMode !== undefined && req.registrationMode !== "IDENTITY_FINGERPRINT_ONLY") fail("unsupported registration mode");
   if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(req.requestId || "")) fail("valid requestId required");
   requireText(req.examUid, "examUid");
   if (!["REVIEW2", "FINAL_QA", "META_PIPELINE_AUDIT"].includes(req.approval?.type) || req.approval.metadataReviewed !== true) fail("metadata approval required");
@@ -1968,14 +2078,19 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   }
   if (req.approval.sourceRebind && req.items.some(item => item.rebind !== undefined))
     fail("item rebind cannot be combined with approval.sourceRebind");
-  const scopeFields = partial ? { scope: req.scope, partialUidCount: patches.size } : {};
+  if (req.items.some(item => item.sourceReview !== undefined &&
+      (!partial || req.approval.type !== "FINAL_QA" || req.approval.sourceRebind || item.rebind !== undefined)))
+    fail("source reassessment requires an exclusive PARTIAL_UIDS FINAL_QA fingerprint repair");
+  const scopeFields = partial ? { scope: req.scope, partialUidCount: patches.size, expectedQuestionCount: req.expectedQuestionCount } : {};
   const requestSha256 = digest(stable(req));
   const receiptPath = `${RECEIPTS}/${req.requestId}.json`;
   const receiptFull = safePath(root, receiptPath);
   const previous = fs.existsSync(receiptFull) ? read(receiptPath) : null;
   if (previous && previous.requestSha256 !== requestSha256) fail("requestId reused with different content");
+  if (req.registrationMode === "IDENTITY_FINGERPRINT_ONLY") return registerIdentityFingerprintOnly({
+    root, req, metadata, identity, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, write, verifyProjection, read });
   if (previous) {
-    if (partial && (previous.scope !== req.scope || previous.partialUidCount !== patches.size ||
+    if (partial && (previous.scope !== req.scope || previous.expectedQuestionCount !== req.expectedQuestionCount || previous.partialUidCount !== patches.size ||
         previous.totalQuestions !== patches.size || previous.appliedRecords.length !== patches.size ||
         unique(previous.appliedRecords, "questionUid", "receipt UID").size !== patches.size ||
         previous.appliedRecords.some(record => !targetUids.has(record.questionUid)) ||
@@ -2050,7 +2165,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     owners.set(r.questionUid, pack);
   }
   const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [];
-  const extensionUsage = new Map(), priorBanks = new Map();
+  const extensionUsage = new Map(), priorBanks = new Map(), sourceReviewCache = new Map();
   let identityChanged = false;
   // Source-only rebind (2026-11-02): re-bind an already registered receipt to changed source bytes without
   // touching any metadata value. The prior receipt (SHA-bound) must equal the current metadata row for row.
@@ -2061,7 +2176,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     const q = JSON.parse(JSON.stringify(bank[i]));
     const id = ids.get(current.questionUid);
     if (!patch || patch.sourceOrdinal !== i + 1 || current.sourceOrdinal !== i + 1 || id?.sourceArchiveFile !== source || id.sourceOrdinal !== i + 1) fail(`UID/source ordinal mismatch #${i + 1}`);
-    if (q.questionUid && q.questionUid !== current.questionUid) fail(`source UID mismatch #${i + 1}`);
+    if (q.questionUid && q.questionUid !== current.questionUid && !isUnambiguousLegacySourceUidAlias({
+      question: q, sourceArchiveFile: source, sourceOrdinal: i + 1, identityRecord: id, identityMap: identity, bank }))
+      fail(`source UID mismatch #${i + 1}`);
     evidenceRefs(patch.evidenceRefs);
     requireText(patch.reason, `UID ${current.questionUid} semantic reason`);
     if (!patch.after || typeof patch.after !== "object" || Array.isArray(patch.after) || !patch.before || typeof patch.before !== "object" || Array.isArray(patch.before)) fail(`before/after required: ${current.questionUid}`);
@@ -2143,15 +2260,18 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
     }
     const priorQuestion = patch.rebind === undefined ? null : loadPriorQuestionBank(root, patch.rebind?.priorSourceBlobSha1, priorBanks)[i];
+    const sourceReview = patch.sourceReview === undefined ? null : validateReviewedSourceReassessment({
+      root, request: req, patch, metadata: current, question: q, final, supportedFields: valueFields, cache: sourceReviewCache });
     const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch, priorQuestion,
-      requireRebind: partial && Object.hasOwn(patch.after, "sourceFingerprint") });
+      requireRebind: partial && Object.hasOwn(patch.after, "sourceFingerprint") && !sourceReview });
     const fingerprint = checked.sourceFingerprint;
     if (checked.identityChanged || Object.hasOwn(patch.after, "sourceFingerprint")) fingerprintRepairs.push({
       questionUid: current.questionUid, sourceOrdinal: i + 1,
       metadataBefore: { sourceFingerprint: current.sourceFingerprint ?? null, contentFingerprint: current.contentFingerprint ?? null },
       identityBefore: { sourceFingerprint: id.sourceFingerprint },
       after: { sourceFingerprint: checked.sourceFingerprint, contentFingerprint: checked.contentFingerprint },
-      ...(patch.rebind ? { rebind: patch.rebind } : {})
+      ...(patch.rebind ? { rebind: patch.rebind } : {}),
+      ...(sourceReview ? { sourceReview } : {})
     });
     if (checked.identityChanged) { Object.assign(id, checked.identityAfter); identityChanged = true; }
     appliedIdentityRecords.push(structuredClone(id));

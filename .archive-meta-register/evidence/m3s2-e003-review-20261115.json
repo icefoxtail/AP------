@@ -59,7 +59,9 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "주어진 탄젠트값을 구한 뒤 sin A cos A를 tan A의 유리식으로 바꾸는 항등 관계가 결정 단계다.",
+        "decisiveStep": "주어진 탄젠트값을 구한 뒤 sin A cos A를 tan A의 유리식으로 바꾸는 항등 관계가 결정 단계다."
       },
       "priorReviewNotes": [],
       "currentSolutionRepairIndependentlyReviewed": false
@@ -102,7 +104,9 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "제한된 각도 범위에서 tan x와 sin y에 대응하는 특수각을 역으로 찾고 합각 90도의 코사인 값을 읽는다.",
+        "decisiveStep": "제한된 각도 범위에서 tan x와 sin y에 대응하는 특수각을 역으로 찾고 합각 90도의 코사인 값을 읽는다."
       },
       "priorReviewNotes": [],
       "currentSolutionRepairIndependentlyReviewed": false
@@ -145,7 +149,9 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "내각의 합 180도를 비의 합으로 나누어 최소각을 구한 다음 30도의 세 삼각비 비율을 정리한다.",
+        "decisiveStep": "내각의 합 180도를 비의 합으로 나누어 최소각을 구한 다음 30도의 세 삼각비 비율을 정리한다."
       },
       "priorReviewNotes": [],
       "currentSolutionRepairIndependentlyReviewed": false
@@ -186,7 +192,9 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "curriculum": "2015"
+        "curriculum": "2015",
+        "primaryMethod": "대각선 교점으로 분할한 네 삼각형의 삼각비 넓이를 합쳐 대각선 길이의 곱으로 묶는 것이 핵심이다.",
+        "decisiveStep": "대각선 교점으로 분할한 네 삼각형의 삼각비 넓이를 합쳐 대각선 길이의 곱으로 묶는 것이 핵심이다."
       },
       "priorReviewNotes": [],
       "currentSolutionRepairIndependentlyReviewed": false
@@ -334,5 +342,20 @@
         "STALE_REGISTERED_CONTENT_FINGERPRINT"
       ]
     }
-  ]
+  ],
+  "registrationRationaleBinding": {
+    "sourceCommit": "f41a3192625208ad14411a1780faa1be651773fb",
+    "fields": [
+      "primaryMethod",
+      "decisiveStep"
+    ],
+    "basis": "PORT_OF_NATIVE_REVIEW_TOP_ROW_OR_NARROW_INDEPENDENTLY_REVIEWED_REPAIR",
+    "sourceConsumerParity": true
+  },
+  "currentMainIntegration": {
+    "mainCommit": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+    "previousSourcePortCommit": "f41a3192625208ad14411a1780faa1be651773fb",
+    "newerMainStudentFieldsPreserved": [],
+    "sourceAfterSha256": "0ab7a82733c857887f5bd24328d12d2a6ca7ef03255503ab97814f7c149cc0cf"
+  }
 }

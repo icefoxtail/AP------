@@ -62,7 +62,9 @@
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "그림에 제시된40도 원주각과 같은 호의 중심각을 두 배 관계로 바로 읽는다. 기존 CENTER_ARC와 결정단계는 정상이다.",
+        "decisiveStep": "같은 호를 보는 중심각은 원주각의 두 배"
       },
       "priorReviewNotes": [
         {
@@ -117,7 +119,9 @@
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "30도·60도 원주각을 각각 중심각으로 바꾸고 길이8인 호와 목표 호의 비를 세운다. 기존 호·중심각·원주각 대응 TPL이 이 계산을 포함한다.",
+        "decisiveStep": "호의 길이는 중심각의 크기에 비례"
       },
       "priorReviewNotes": [
         {
@@ -174,7 +178,9 @@
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "내접사각형의 마주 보는 각이 보각인 성질로 ABC를 구한 뒤 삼각형ABC의 내각합으로 BAC를 정한다. 실제 주제는 원주각의 활용이고 기존 복합 각 관계 TPL은 유효하다.",
+        "decisiveStep": "내접사각형의 대각과 삼각형 내각 합"
       },
       "priorReviewNotes": [
         {
@@ -233,7 +239,9 @@
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "B23",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "원주각20도를 호AB40도로 옮기고 같은 호CD를 정한 뒤 이미 그려진 두 현의 내부 교각을 반합으로 계산한다. 원주각과 현 교각의 결합이므로 기존 COMPOSITE를 재사용한다.",
+        "decisiveStep": "교차하는 두 현의 교각은 마주 보는 두 호의 합의 절반"
       },
       "priorReviewNotes": [
         {
@@ -288,7 +296,9 @@
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "B23",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "원의 전체360도를 호의 비3:4:2로 나누어 BC에 대응하는 중심각을 얻고 같은 호의 원주각으로 바꾼다. 기존 CENTER_ARC의 호 비례 범위 안이다.",
+        "decisiveStep": "호의 비를 360도 분할과 원주각으로 연결"
       },
       "priorReviewNotes": [
         {
@@ -345,7 +355,9 @@
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "B23",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "그림의 x는 ADB, y는 접선AT와 현AB의 각이다. 현재 기하 adjudication 해설의 내접사각형→삼각형내각합→접현각 순서를 재사용하며 원과직선 일반성질이 아닌 접선과현의 원주각 관계로 분류한다.",
+        "decisiveStep": "그림에서 x=∠ADB, y=∠BAT를 읽고, 원주각의 합과 접선-현 각으로 두 값을 각각 45°로 정해 차를 0°로 구한다."
       },
       "priorReviewNotes": [
         {
@@ -400,7 +412,9 @@
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "두 접선이 이루는50도와 접점 반지름의 직각으로 중심각130도를 얻고 원주각65도로 옮긴다. 접선-현 각을 직접 사용하는 문제가 아니므로 TANGENT_CHORD를 기존 ACTIVE COMPOSITE로 정정한다.",
+        "decisiveStep": "두 접선 각에서 중심각을 구한 뒤 원주각으로 전환"
       },
       "priorReviewNotes": [
         {
@@ -459,7 +473,9 @@
         "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "지름의 원주각 직각, PC=BC인 이등변삼각형의 밑각, CP와CT의 반대방향, 접현각을 연결하여 같은 미지각의 식을 만든다. 기존 접현각 TPL이 최종 제약을 제공한다.",
+        "decisiveStep": "접선 길이와 현 길이의 등식 및 tangent-chord 관계"
       },
       "priorReviewNotes": [
         {
@@ -516,7 +532,9 @@
         "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "작은 삼각형의 원주각55도에서 중심각110도를 얻고 두 접점의 수직으로 큰 삼각형의 C각을 복원한 다음 B30도와 내각합을 적용한다. 내접원과 외접원이 같은 원이라는 관계 해석이 핵심이다.",
+        "decisiveStep": "내접원의 접점 반지름과 세 각의 관계"
       },
       "priorReviewNotes": [
         {
@@ -573,7 +591,9 @@
         "difficultyBucket": 3,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
-        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "primaryMethod": "같은 세 호를t, 남은 호를u로 두어 전체각3t+u=360과 외부 두 할선각에서t-u=60을 만들고 목표 원주각으로 바꾼다. 단일 외부 할선각 공식 문제와 달리 호 분할·연립·원주각을 실제 연쇄하므로 RPM 복합 각 추론과 기존 COMPOSITE가 맞는다.",
+        "decisiveStep": "두 할선의 외각과 전체 원호의 합"
       },
       "priorReviewNotes": [
         {
@@ -628,7 +648,9 @@
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "B23",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "원주 전체의1/5인 호AB를72도로 정하고3:4의 비로 호CD를 얻은 뒤 내부 교각의 반합을 적용한다. 기존 COMPOSITE 및 결정단계의 호 비율→현 교각 흐름은 유효하다.",
+        "decisiveStep": "호의 길이비에서 중심각을 구한 뒤 교차현 각으로 연결"
       },
       "priorReviewNotes": [
         {
@@ -687,7 +709,9 @@
         "difficultyBucket": 4,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "BH가 외접원의 지름임을 이용해 두 직각과 평행사변형을 얻고, 중심수선의 현 이등분 및 지름 중점O를 두 중점 연결로 옮긴다. 기존 TPL은 외심·외접원·빗변 중점으로 각·길이를 정하는 정의이므로 정상 재사용한다. 주어진 외심을 찾는 문제로 좁게 오해하지 않는다.",
+        "decisiveStep": "직각삼각형과 고도선으로 평행사변형, 중점연결정리로 길이비"
       },
       "priorReviewNotes": [
         {
@@ -804,5 +828,20 @@
         "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
       ]
     }
-  ]
+  ],
+  "registrationRationaleBinding": {
+    "sourceCommit": "f41a3192625208ad14411a1780faa1be651773fb",
+    "fields": [
+      "primaryMethod",
+      "decisiveStep"
+    ],
+    "basis": "PORT_OF_NATIVE_REVIEW_TOP_ROW_OR_NARROW_INDEPENDENTLY_REVIEWED_REPAIR",
+    "sourceConsumerParity": true
+  },
+  "currentMainIntegration": {
+    "mainCommit": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+    "previousSourcePortCommit": "f41a3192625208ad14411a1780faa1be651773fb",
+    "newerMainStudentFieldsPreserved": [],
+    "sourceAfterSha256": "d16213002f7e980e16a1c7f28084b08190476e370e615c1d949f5669ab910fbc"
+  }
 }

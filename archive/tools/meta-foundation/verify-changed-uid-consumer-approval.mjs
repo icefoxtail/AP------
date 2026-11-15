@@ -39,7 +39,7 @@ import { createRequire } from "node:module";
 import { isDeepStrictEqual } from "node:util";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { loadResolvedConsumerCatalog } from "./reviewed-exam-registration-v2.mjs";
+import { loadResolvedConsumerCatalog, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
@@ -132,6 +132,26 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
   }
   if (schema === SCHEMA.PINPOINT || schema === SCHEMA.V2) {
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "request needs sourceArchiveFile and items[]");
+    if (schema === SCHEMA.V2 && doc.registrationMode !== undefined) {
+      if (doc.registrationMode !== "IDENTITY_FINGERPRINT_ONLY" || doc.scope !== "PARTIAL_UIDS" ||
+          doc.approval?.type !== "FINAL_QA" || doc.approval.metadataReviewed !== true ||
+          !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length ||
+          doc.items.length > doc.expectedQuestionCount || doc.registryChanges?.length || doc.approval.sourceRebind)
+        fail("INVALID_REQUEST", "identity repair requires its explicit scope and creates no metadata approval");
+      const rows = doc.items.map(item => {
+        if (!item.questionUid || !Number.isSafeInteger(item.sourceOrdinal) || item.sourceOrdinal < 1 || item.sourceOrdinal > doc.expectedQuestionCount ||
+            [item.before, item.after].some(values => !values || Array.isArray(values) || Object.keys(values).sort().join(",") !== "contentFingerprint,sourceFingerprint") ||
+            !same(item.before, item.after) || Object.values(item.after).some(value => !/^[a-f0-9]{64}$/.test(value || "")) ||
+            !/^[a-f0-9]{64}$/.test(item.identityBefore?.sourceFingerprint || "") ||
+            item.identityBefore.sourceFingerprint === item.after.sourceFingerprint)
+          fail("INVALID_REQUEST", "identity repair must preserve exact current metadata fingerprints");
+        return { ordinal: item.sourceOrdinal, uid: item.questionUid, unchanged: false, expect: item.after };
+      });
+      if (new Set(rows.map(r => r.uid)).size !== rows.length || new Set(rows.map(r => r.ordinal)).size !== rows.length)
+        fail("INVALID_REQUEST", "identity repair UID/ordinal scope is ambiguous");
+      return { kind: "identity-fingerprint-repair", exam: doc.examUid || doc.sourceArchiveFile,
+        sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, expectedQuestionCount: doc.expectedQuestionCount, rows };
+    }
     const rows = doc.items.map(item => {
       if (!item?.after || typeof item.after !== "object") fail("INVALID_REQUEST", `item #${item?.sourceOrdinal} has no after`);
       // A row whose after equals its before (and repairs no identity fingerprint) changes nothing: skipped, but counted.
@@ -253,7 +273,7 @@ export function loadConsumer(root) {
   }
   const runtimePacks = new Map((catalog.metaFoundationRuntime?.packs || []).map(pack => [pack.packId, pack]));
   return {
-    ProblemBankMeta, inventory,
+    ProblemBankMeta, inventory, catalog,
     resolvedBySource: new Map(records.map(r => [`${normalizeFile(r.sourceFile)}#${Number(r.sourceOrdinal)}`, r])),
     pageByUid: new Map(inventory.map(r => [r.uid, r])),
     runtimeByUid, runtimePacks,
@@ -392,6 +412,27 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       }
     }
     if (!sourceBound) continue;
+    if (unit.kind === "identity-fingerprint-repair") {
+      summary.checked = rows.length; result.counts.checked += rows.length;
+      summary.approvalCreated = false; summary.newMetadataApprovals = 0;
+      try {
+        if (loadBank(root, unit.sourceFile).length !== unit.expectedQuestionCount) throw Error("identity repair source denominator mismatch");
+        const identities = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_identity_map.json"), "utf8")).records;
+        const bindings = rows.map(row => {
+          const matches = identities.filter(id => id.questionUid === row.uid);
+          if (matches.length !== 1 || matches[0].sourceArchiveFile !== unit.sourceFile || matches[0].sourceOrdinal !== row.ordinal ||
+              matches[0].sourceFingerprint !== row.expect.sourceFingerprint) throw Error(`identity repair current identity mismatch: ${row.uid}`);
+          return { questionUid: row.uid, sourceArchiveFile: unit.sourceFile, sourceOrdinal: row.ordinal, ...row.expect };
+        });
+        const proof = verifyIdentityFingerprintConsumer(root, bindings, consumer.catalog);
+        summary.identityBindings = proof.identityBindings;
+        summary.passed = rows.length; result.counts.passed += rows.length;
+      } catch (error) {
+        result.failures.push({ exam: unit.exam, qid: rows[0]?.ordinal ?? "-", uid: rows[0]?.uid ?? "-",
+          reason: "IDENTITY_BINDING_MISMATCH", detail: error.message });
+      }
+      continue;
+    }
     if (unit.kind === "binding-course-correction") {
       // This operation creates no approval. Its gate is exact preservation of
       // every runtime consumer in the pack, including existing non-approvals.
@@ -425,11 +466,11 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
 
 export function renderSummary(result) {
   const c = result.counts;
-  const preservation = result.exams.some(e => e.kind === "binding-course-correction");
+  const preservation = result.exams.some(e => ["binding-course-correction", "identity-fingerprint-repair"].includes(e.kind));
   const lines = [preservation ? "### Changed-UID consumer verification" : "### Changed-UID effective consumer approval", ""];
   if (result.status === "PASS") {
     lines.push(`PASS: changed ${c.passed}/${c.changed} ${preservation ? "verified" : "approved"} (checked ${c.checked}, skippedUnchanged ${c.skippedUnchanged}), main \`${result.mainSha}\`.`);
-    if (preservation) lines.push("Binding-course corrections preserve existing consumer state and create no metadata or exam approval.");
+    if (preservation) lines.push("Binding-course and identity-fingerprint repairs preserve existing consumer state and create no metadata or exam approval.");
   } else {
     lines.push(`FAIL: changed ${c.changed}, checked ${c.checked}, passed ${c.passed}, skippedUnchanged ${c.skippedUnchanged}, main \`${result.mainSha}\`.`, "",
       "| exam | QID | UID | reason |", "| --- | --- | --- | --- |");
@@ -438,6 +479,8 @@ export function renderSummary(result) {
   for (const e of result.exams) lines.push("", `- ${e.kind} \`${e.exam}\`: changed ${e.changed}, checked ${e.checked}, passed ${e.passed}, skippedUnchanged ${e.skippedUnchanged}`);
   for (const e of result.exams.filter(e => e.kind === "binding-course-correction"))
     lines.push(`  Preserved runtime consumers: ${e.preservedRuntimeUids ?? 0}; new approvals: 0.`);
+  for (const e of result.exams.filter(e => e.kind === "identity-fingerprint-repair"))
+    lines.push(`  Verified identity bindings: ${e.identityBindings ?? 0}; new approvals: 0.`);
   if (result.assignmentPending?.length) {
     const byExam = new Map();
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);

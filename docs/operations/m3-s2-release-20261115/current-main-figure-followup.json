@@ -1,0 +1,326 @@
+{
+  "schemaVersion": "archive-m3s2-current-main-figure-followup-v1",
+  "taskId": "e33d4ad1-c652-44cf-98fc-4561917ab5e0",
+  "currentMain": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+  "priorMain": "e16005f23ba75a2efb9ab5a294881274591fde8e",
+  "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+  "uidCount": 6,
+  "status": "PENDING_NARROW_CURRENT_FIGURE_REVIEW_AND_OFFICIAL_REASSESSMENT",
+  "reason": "New main figure paths alter protected content while sidecar fingerprints still point at the prior source. These UIDs are withheld only from the first strict FINAL_QA subset; their reviewed metadata declarations remain in source.",
+  "items": [
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_3357fd243a5db407de3f6bfa9a346d747e1e75679e29b829eb342fa05755b9c6",
+      "ordinal": 4,
+      "reasons": [
+        "CURRENT_MAIN_FIGURE_CHANGED_NATIVE_REVIEW_REQUIRED"
+      ],
+      "currentFingerprint": {
+        "sourceFingerprint": "c57beca876217225f068b31045de893f47048e09f8f061e984c2368820dfb84d",
+        "contentFingerprint": "5914cc5a16de32b31880289afc27e842b9bfb83a03397d7eb4a3880caf65b4bb"
+      },
+      "registeredFingerprint": "26280c84da6b680a8aeb48ac147153df749cff5754093ef2cbca203bb8c1e437",
+      "currentMain": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+      "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E053.meta.json",
+      "sourceBeforeSha256": "09c1436fdb17b610340fe478434a09eb18305e5a5f6cd098bb99a09d937d1a07",
+      "sourceCurrentMainSha256": "f8fa4871bd099db29b266a81bf9c70c1176a5da5312ba1e30c7524222febad24",
+      "previousFigurePaths": [
+        "assets/images/21_금당중_2학기_중간_중3_수학/q04.png"
+      ],
+      "currentFigurePaths": [
+        "assets/images/21_금당중_2학기_중간_중3_수학/q4-problem-v2.svg",
+        "assets/images/21_금당중_2학기_중간_중3_수학/q4-solution.svg"
+      ],
+      "before": {
+        "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$일 때, $\\sin A$의 값은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q04.png\" />",
+        "solution": "직각삼각형 ABC에서 ∠C=90°이고 BC=15, BD=9이다. ∠BDC=∠ACB=90°, ∠CBD=∠ABC이므로 △BCD∼△BAC이다(대응각은 B↔B, C↔A, D↔C). 따라서 BC/BA=BD/BC이고, AB=BC²/BD=15²/9=25이다. sin A는 맞은편 변을 빗변으로 나눈 값이므로 sin A=BC/AB=15/25=3/5이다. 정답은 ②이다.",
+        "answer": "②",
+        "choices": [
+          "$\\frac{3}{4}$",
+          "$\\frac{3}{5}$",
+          "$\\frac{4}{5}$",
+          "$\\frac{4}{3}$",
+          "$\\frac{5}{3}$"
+        ]
+      },
+      "current": {
+        "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$일 때, $\\sin A$의 값은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q4-problem-v2.svg\" />",
+        "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q4-solution.svg",
+        "solution": "직각삼각형 ABC에서 ∠C=90°이고 BC=15, BD=9이다. ∠BDC=∠ACB=90°, ∠CBD=∠ABC이므로 △BCD∼△BAC이다(대응각은 B↔B, C↔A, D↔C). 따라서 BC/BA=BD/BC이고, AB=BC²/BD=15²/9=25이다. sin A는 맞은편 변을 빗변으로 나눈 값이므로 sin A=BC/AB=15/25=3/5이다. 정답은 ②이다.",
+        "solutionImageAlt": "해설 그림: 점 D는 AB 위에 있고 CD는 AB에 수직이다. △BCD와 △BAC는 B의 공통각과 두 직각을 가져 닮음이며, BC=15와 중간값 AB=25를 표시했다.",
+        "solutionImageCaption": "△BCD∼△BAC이다. BC/BA=BD/BC이므로 BA=15²/9=25이다. 따라서 sin A=BC/BA=15/25=3/5이다. 정답은 ②이다.",
+        "answer": "②",
+        "choices": [
+          "$\\frac{3}{4}$",
+          "$\\frac{3}{5}$",
+          "$\\frac{4}{5}$",
+          "$\\frac{4}{3}$",
+          "$\\frac{5}{3}$"
+        ]
+      },
+      "independentReviewStatus": "PENDING",
+      "officialRegistrationStatus": "NOT_RUN"
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_ec0c7e5d18f9d5ae587ebc6e996c294efe56dff023af9fdc26c06adaa7465814",
+      "ordinal": 11,
+      "reasons": [
+        "CURRENT_MAIN_FIGURE_CHANGED_NATIVE_REVIEW_REQUIRED"
+      ],
+      "currentFingerprint": {
+        "sourceFingerprint": "fc2fc79493ea3e9eea331ece45c563e3b3b44961aa6bb577d9be6d02a55d141d",
+        "contentFingerprint": "79e2574ebd6adde24addaadc9f31fb17ca48a20aea7d7bea28d78b7ba145f189"
+      },
+      "registeredFingerprint": "33c76bfe9e576f698d78717a906356c93c5ef2803ddf971513379e505b253272",
+      "currentMain": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+      "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E053.meta.json",
+      "sourceBeforeSha256": "09c1436fdb17b610340fe478434a09eb18305e5a5f6cd098bb99a09d937d1a07",
+      "sourceCurrentMainSha256": "f8fa4871bd099db29b266a81bf9c70c1176a5da5312ba1e30c7524222febad24",
+      "previousFigurePaths": [
+        "assets/images/21_금당중_2학기_중간_중3_수학/q11.png"
+      ],
+      "currentFigurePaths": [
+        "assets/images/21_금당중_2학기_중간_중3_수학/q11-problem-v2.svg",
+        "assets/images/21_금당중_2학기_중간_중3_수학/q11-solution.svg"
+      ],
+      "before": {
+        "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{A}$의 크기와 선분 $\\mathrm{AB}$의 길이 $c$가 주어졌을 때, 다음 중 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BC}}$의 길이를 순서대로 바르게 짝지은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q11.png\" />",
+        "solution": "AB=c는 빗변이고 AC는 ∠A에 이웃한 변, BC는 ∠A의 맞은편 변이다. 따라서 AC=c cos A, BC=c sin A이므로 ③이다.",
+        "answer": "③",
+        "choices": [
+          "$c\\sin A$, $c\\cos A$",
+          "$c\\sin A$, $c\\tan A$",
+          "$c\\cos A$, $c\\sin A$",
+          "$c\\cos A$, $c\\tan A$",
+          "$c\\tan A$, $c\\sin A$"
+        ]
+      },
+      "current": {
+        "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{A}$의 크기와 선분 $\\mathrm{AB}$의 길이 $c$가 주어졌을 때, 다음 중 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BC}}$의 길이를 순서대로 바르게 짝지은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q11-problem-v2.svg\" />",
+        "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q11-solution.svg",
+        "solution": "AB=c는 빗변이고 AC는 ∠A에 이웃한 변, BC는 ∠A의 맞은편 변이다. 따라서 AC=c cos A, BC=c sin A이므로 ③이다.",
+        "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AB=c는 초록 빗변, AC는 주황 이웃변, BC는 파란 맞은편 변이다. 직각은 C이다.",
+        "solutionImageCaption": "AB=c는 빗변이다. AC는 각 A의 이웃한 변이므로 AC=c cos A이고, BC는 맞은편 변이므로 BC=c sin A이다. 따라서 순서는 c cos A, c sin A이며 정답은 ③이다.",
+        "answer": "③",
+        "choices": [
+          "$c\\sin A$, $c\\cos A$",
+          "$c\\sin A$, $c\\tan A$",
+          "$c\\cos A$, $c\\sin A$",
+          "$c\\cos A$, $c\\tan A$",
+          "$c\\tan A$, $c\\sin A$"
+        ]
+      },
+      "independentReviewStatus": "PENDING",
+      "officialRegistrationStatus": "NOT_RUN"
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_e2b38c9883111b002725b9d0609fbaed012fb0a1a5ea66185417097babf7e41d",
+      "ordinal": 15,
+      "reasons": [
+        "CURRENT_MAIN_FIGURE_CHANGED_NATIVE_REVIEW_REQUIRED"
+      ],
+      "currentFingerprint": {
+        "sourceFingerprint": "46726a3a50773df4c84c46542d005aec2c93a62af9c8ae4de65a47c4bb72d7e2",
+        "contentFingerprint": "71795e2ae1af3cf3ba7130362d836dd14e0630548789abe52756b4ce278bac51"
+      },
+      "registeredFingerprint": "4be4a18a1c4f54d5400174cfe5a4be4a3a5c1ab33386486fc0920cb812d00826",
+      "currentMain": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+      "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E053.meta.json",
+      "sourceBeforeSha256": "09c1436fdb17b610340fe478434a09eb18305e5a5f6cd098bb99a09d937d1a07",
+      "sourceCurrentMainSha256": "f8fa4871bd099db29b266a81bf9c70c1176a5da5312ba1e30c7524222febad24",
+      "previousFigurePaths": [
+        "assets/images/21_금당중_2학기_중간_중3_수학/q15.png"
+      ],
+      "currentFigurePaths": [
+        "assets/images/21_금당중_2학기_중간_중3_수학/q15-problem-v2.svg",
+        "assets/images/21_금당중_2학기_중간_중3_수학/q15-solution.svg"
+      ],
+      "before": {
+        "content": "오른쪽 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{CD}$에 내린 수선의 발을 각각 $\\mathrm{M}$과 $\\mathrm{N}$이라고 할 때, 보기의 설명 중 옳은 것을 모두 고르면?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q15.png\" /><br><b>[보 기]</b><br>(ㄱ) $\\overline{\\mathrm{AM}} = \\overline{\\mathrm{BM}}$<br>(ㄴ) $\\angle \\mathrm{OAM} = \\angle \\mathrm{OCN}$<br>(ㄷ) $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이면, $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이다<br>(ㄹ) $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이면, $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이다",
+        "solution": "원의 중심에서 현에 내린 수선은 현을 이등분하므로 AM=BM이고 ㄱ은 참이다. ㄴ에서 sin∠OAM=OM/OA, sin∠OCN=ON/OC이며 OA=OC는 같은 원의 반지름이다. 그러나 OM과 ON 사이에는 조건이 없어 두 각은 항상 같지 않으므로 ㄴ은 거짓이다. ㄷ에서 OM=ON이고 OA=OC이므로 직각삼각형 OAM, OCN에 피타고라스 정리를 적용하면 AM=CN이다. 따라서 AB=2AM=2CN=CD이므로 ㄷ은 참이다. ㄹ에서 AB=CD이면 수선이 각각 현을 이등분하므로 AM=CN이다. 또 OA=OC이므로 OM²=OA²−AM²=OC²−CN²=ON²이고, 길이는 음수가 아니므로 OM=ON이다. ㄹ도 참이며, ㄷ의 역명제이므로 별도로 증명했다. 따라서 ㄱ, ㄷ, ㄹ인 ④이다.",
+        "answer": "④",
+        "choices": [
+          "(ㄱ)",
+          "(ㄱ), (ㄴ)",
+          "(ㄴ), (ㄷ)",
+          "(ㄱ), (ㄷ), (ㄹ)",
+          "(ㄱ), (ㄴ), (ㄷ), (ㄹ)"
+        ]
+      },
+      "current": {
+        "content": "오른쪽 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{CD}$에 내린 수선의 발을 각각 $\\mathrm{M}$과 $\\mathrm{N}$이라고 할 때, 보기의 설명 중 옳은 것을 모두 고르면?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q15-problem-v2.svg\" /><br><b>[보 기]</b><br>(ㄱ) $\\overline{\\mathrm{AM}} = \\overline{\\mathrm{BM}}$<br>(ㄴ) $\\angle \\mathrm{OAM} = \\angle \\mathrm{OCN}$<br>(ㄷ) $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이면, $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이다<br>(ㄹ) $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이면, $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이다",
+        "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q15-solution.svg",
+        "solution": "원의 중심에서 현에 내린 수선은 현을 이등분하므로 AM=BM이고 ㄱ은 참이다. ㄴ에서 sin∠OAM=OM/OA, sin∠OCN=ON/OC이며 OA=OC는 같은 원의 반지름이다. 그러나 OM과 ON 사이에는 조건이 없어 두 각은 항상 같지 않으므로 ㄴ은 거짓이다. ㄷ에서 OM=ON이고 OA=OC이므로 직각삼각형 OAM, OCN에 피타고라스 정리를 적용하면 AM=CN이다. 따라서 AB=2AM=2CN=CD이므로 ㄷ은 참이다. ㄹ에서 AB=CD이면 수선이 각각 현을 이등분하므로 AM=CN이다. 또 OA=OC이므로 OM²=OA²−AM²=OC²−CN²=ON²이고, 길이는 음수가 아니므로 OM=ON이다. ㄹ도 참이며, ㄷ의 역명제이므로 별도로 증명했다. 따라서 ㄱ, ㄷ, ㄹ인 ④이다.",
+        "solutionImageAlt": "해설 그림: 원 O의 현 AB, CD에 중심에서 내린 수선 OM, ON과 두 직각을 표시한다. 파란색은 AM=BM, 주황색은 CN=ND를 각각 묶으며, 두 쌍 사이의 길이 같음은 표시하지 않는다.",
+        "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 AM=BM이다. OM=ON이면 같은 반지름에서 두 현까지의 거리가 같아 두 반현의 길이가 같고 AB=CD이다. 반대로 AB=CD이면 AM=CN이고, 같은 반지름이므로 OM=ON이다. ㄴ은 항상 성립하지 않으므로 참인 것은 ㄱ, ㄷ, ㄹ이며 정답은 ④이다.",
+        "answer": "④",
+        "choices": [
+          "(ㄱ)",
+          "(ㄱ), (ㄴ)",
+          "(ㄴ), (ㄷ)",
+          "(ㄱ), (ㄷ), (ㄹ)",
+          "(ㄱ), (ㄴ), (ㄷ), (ㄹ)"
+        ]
+      },
+      "independentReviewStatus": "PENDING",
+      "officialRegistrationStatus": "NOT_RUN"
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_24d1de5cbf0526bfb3505eae85b10e66e6db85cf8228d3280bb15b01cf07ef4a",
+      "ordinal": 23,
+      "reasons": [
+        "CURRENT_MAIN_FIGURE_CHANGED_NATIVE_REVIEW_REQUIRED"
+      ],
+      "currentFingerprint": {
+        "sourceFingerprint": "520fdee068b911f946c3589e1e8e6735da909b9968e88c883fd554cfca0c52bb",
+        "contentFingerprint": "0c2fd5a656e46dd9511437b0302cc484af4f06cbad9b1543b28c4e20b6dae882"
+      },
+      "registeredFingerprint": "25fcf05534a635b952e79622dccc43b6956d99859fb96b3c57ce2edb72bf8dcc",
+      "currentMain": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+      "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E053.meta.json",
+      "sourceBeforeSha256": "09c1436fdb17b610340fe478434a09eb18305e5a5f6cd098bb99a09d937d1a07",
+      "sourceCurrentMainSha256": "f8fa4871bd099db29b266a81bf9c70c1176a5da5312ba1e30c7524222febad24",
+      "previousFigurePaths": [
+        "assets/images/21_금당중_2학기_중간_중3_수학/s02_1.png",
+        "assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png"
+      ],
+      "currentFigurePaths": [
+        "assets/images/21_금당중_2학기_중간_중3_수학/q23-problem-v2.svg",
+        "assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png",
+        "assets/images/21_금당중_2학기_중간_중3_수학/q23-solution.svg"
+      ],
+      "before": {
+        "content": "[서술형 2] 원의 현에 대한 성질을 이용하여 $x$의 값을 각각 구하시오. (6점, 각각 3점)<br>(1)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_1.png\" /><br>(2)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png\" />",
+        "solution": "(1) 중심에서 현에 내린 수선은 현을 이등분하므로 14cm인 현의 절반은 x=7cm이다. (2) 중심에서 같은 거리에 있는 현의 길이는 같으므로, 중심에서 4cm 떨어진 두 현은 길이가 같다. 한 현이 5cm이므로 x=5cm이다.",
+        "answer": "(1) 7 cm, (2) 5 cm",
+        "choices": []
+      },
+      "current": {
+        "content": "[서술형 2] 원의 현에 대한 성질을 이용하여 $x$의 값을 각각 구하시오. (6점, 각각 3점)<br>(1)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q23-problem-v2.svg\" /><br>(2)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png\" />",
+        "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q23-solution.svg",
+        "solution": "(1) 중심에서 현에 내린 수선은 현을 이등분하므로 14cm인 현의 절반은 x=7cm이다. (2) 중심에서 같은 거리에 있는 현의 길이는 같으므로, 중심에서 4cm 떨어진 두 현은 길이가 같다. 한 현이 5cm이므로 x=5cm이다.",
+        "solutionImageAlt": "해설 그림: 첫 그림은 길이 14 cm인 현을 아래에 확대해 왼쪽 반현 AH에 x를 표시한다. 둘째 그림은 두 중심거리 4 cm와 길이가 같은 두 현을 색과 눈금으로 구분한다.",
+        "solutionImageCaption": "(1) 중심에서 현에 내린 수선은 현을 이등분하므로 x=14÷2=7 cm이다. (2) 중심에서 같은 거리에 있는 두 현의 길이는 같으므로 x=5 cm이다. 답은 (1) 7 cm, (2) 5 cm이다.",
+        "answer": "(1) 7 cm, (2) 5 cm",
+        "choices": []
+      },
+      "independentReviewStatus": "PENDING",
+      "officialRegistrationStatus": "NOT_RUN"
+    },
+    {
+      "examId": "E059",
+      "questionUid": "qid_v1_c812e2456354808ae65b1b06816b10bc6504418e1f30698f62dd1e5640052459",
+      "ordinal": 9,
+      "reasons": [
+        "CURRENT_MAIN_FIGURE_CHANGED_NATIVE_REVIEW_REQUIRED"
+      ],
+      "currentFingerprint": {
+        "sourceFingerprint": "d5eb4c7af16c6a16ef9377f7ff640758437abdbc21c598a1d807c2c40196ff83",
+        "contentFingerprint": "bb5c7387117c8bf620515c1a10fa3c27bac6d7851717ec514442cfa680b3bc48"
+      },
+      "registeredFingerprint": "0b720895e6570a5bcea15dce0923b49621a660e6c738465c8ed2fcb2a649b148",
+      "currentMain": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/21_팔마중_2학기_중간_중3_수학.js",
+      "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E059.meta.json",
+      "sourceBeforeSha256": "c4313f63588c9047b0e72e67f97e3f6259d3060613d9d765e91ba6ce289a0e25",
+      "sourceCurrentMainSha256": "ca502040622fa4517983da0331f22d00fc548fda860fbfe0a03f50d963ec00d3",
+      "previousFigurePaths": [
+        "assets/images/21_팔마중_2학기_중간_중3_수학/q09.png"
+      ],
+      "currentFigurePaths": [
+        "assets/images/21_팔마중_2학기_중간_중3_수학/q9-problem-v2.svg",
+        "assets/images/21_팔마중_2학기_중간_중3_수학/q9-solution.svg"
+      ],
+      "before": {
+        "content": "다음 그림은 서로 $200\\text{ m}$ 떨어진 해안가의 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 $\\mathrm{C}$지점을 관측하였더니 다음 그림과 같은 결과를 얻었다. 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$사이의 거리를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q09.png\" />",
+        "solution": "그림에서 $AB=200\\,\\mathrm m$, $\\angle A=60^\\circ$, $\\angle B=75^\\circ$이다. 따라서 $\\angle C=45^\\circ$이다. $B$에서 $AC$에 내린 수선의 발을 $H$라 하면 직각삼각형 $ABH$에서 $AH=AB\\cos60^\\circ=100$, $BH=AB\\sin60^\\circ=100\\sqrt3$이다.<br>$\\triangle BHC$는 $H$에서 직각이고 $\\angle C=45^\\circ$이므로 직각이등변삼각형이다. 따라서 $HC=BH=100\\sqrt3$이고 $BC=\\sqrt{BH^2+HC^2}=100\\sqrt6$ m이다. ③이다.",
+        "answer": "③",
+        "choices": [
+          "$100\\sqrt{3}\\text{ m}$",
+          "$100\\sqrt{5}\\text{ m}$",
+          "$100\\sqrt{6}\\text{ m}$",
+          "$200\\sqrt{2}\\text{ m}$",
+          "$200\\sqrt{6}\\text{ m}$"
+        ]
+      },
+      "current": {
+        "content": "다음 그림은 서로 $200\\text{ m}$ 떨어진 해안가의 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 $\\mathrm{C}$지점을 관측하였더니 다음 그림과 같은 결과를 얻었다. 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$사이의 거리를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q9-problem-v2.svg\" />",
+        "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q9-solution.svg",
+        "solution": "그림에서 $AB=200\\,\\mathrm m$, $\\angle A=60^\\circ$, $\\angle B=75^\\circ$이다. 따라서 $\\angle C=45^\\circ$이다. $B$에서 $AC$에 내린 수선의 발을 $H$라 하면 직각삼각형 $ABH$에서 $AH=AB\\cos60^\\circ=100$, $BH=AB\\sin60^\\circ=100\\sqrt3$이다.<br>$\\triangle BHC$는 $H$에서 직각이고 $\\angle C=45^\\circ$이므로 직각이등변삼각형이다. 따라서 $HC=BH=100\\sqrt3$이고 $BC=\\sqrt{BH^2+HC^2}=100\\sqrt6$ m이다. ③이다.",
+        "solutionImageAlt": "해설 그림: 해안 관측점 A,B 사이 200m와 ∠A=60°, ∠B=75°를 표시하고 B에서 AC에 내린 고도 BH를 그렸다.",
+        "solutionImageCaption": "AH=100m, BH=100√3m이고 ∠C=45°이므로 HC=BH이다. BC=√(BH²+HC²)=100√6m이다. 답은 ③이다.",
+        "answer": "③",
+        "choices": [
+          "$100\\sqrt{3}\\text{ m}$",
+          "$100\\sqrt{5}\\text{ m}$",
+          "$100\\sqrt{6}\\text{ m}$",
+          "$200\\sqrt{2}\\text{ m}$",
+          "$200\\sqrt{6}\\text{ m}$"
+        ]
+      },
+      "independentReviewStatus": "PENDING",
+      "officialRegistrationStatus": "NOT_RUN"
+    },
+    {
+      "examId": "E059",
+      "questionUid": "qid_v1_357b8db2a86ab986cc1ea7b75abd1eef0597719cf4fefe36e753851f1c0334db",
+      "ordinal": 15,
+      "reasons": [
+        "CURRENT_MAIN_FIGURE_CHANGED_NATIVE_REVIEW_REQUIRED"
+      ],
+      "currentFingerprint": {
+        "sourceFingerprint": "28f09c8156387c1ebb5790eb760949c65874c25daec344ba9c3df3d70a0b8cf5",
+        "contentFingerprint": "951ba1e731f7d0a08220c28f19ef79259a10cc9d1d2f5db61842a266f413db28"
+      },
+      "registeredFingerprint": "132aef1e17de6ae5ed83f1ae8b51013b3389524b34251a976932330df7803f60",
+      "currentMain": "80aa52c5b7f5bd370166f6c6be9a083e4cfaebe5",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/21_팔마중_2학기_중간_중3_수학.js",
+      "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E059.meta.json",
+      "sourceBeforeSha256": "c4313f63588c9047b0e72e67f97e3f6259d3060613d9d765e91ba6ce289a0e25",
+      "sourceCurrentMainSha256": "ca502040622fa4517983da0331f22d00fc548fda860fbfe0a03f50d963ec00d3",
+      "previousFigurePaths": [
+        "assets/images/21_팔마중_2학기_중간_중3_수학/q15.png"
+      ],
+      "currentFigurePaths": [
+        "assets/images/21_팔마중_2학기_중간_중3_수학/q15-problem-v2.svg",
+        "assets/images/21_팔마중_2학기_중간_중3_수학/q15-solution.svg"
+      ],
+      "before": {
+        "content": "다음 그림과 같이 반지름의 길이가 $12\\text{ cm}$인 원 모양의 종이를 현 $\\mathrm{AB}$를 접는 선으로 하여 접었더니 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지난다. 이 때 현 $\\mathrm{AB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q15.png\" />",
+        "solution": "접은 뒤 원래의 중심 $O$가 접힌 호 $AB$ 위에 놓인다. 접은 뒤의 원은 중심 $O'$와 반지름 12 cm인 원이므로 $OO'=12$ cm이다. 접는 선 $AB$는 $OO'$의 수직이등분선이다. 원래 중심에서 현 $AB$까지의 거리를 $d$라 하면 $2d=OO'=12$, 따라서 $d=6$ cm이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 반 현의 길이는 $\\sqrt{12^2-6^2}=6\\sqrt3$ cm이다. 따라서 $AB=12\\sqrt3$ cm로 ⑤이다.",
+        "answer": "⑤",
+        "choices": [
+          "$4\\text{ cm}$",
+          "$6\\text{ cm}$",
+          "$6\\sqrt{3}\\text{ cm}$",
+          "$12\\sqrt{2}\\text{ cm}$",
+          "$12\\sqrt{3}\\text{ cm}$"
+        ]
+      },
+      "current": {
+        "content": "다음 그림과 같이 반지름의 길이가 $12\\text{ cm}$인 원 모양의 종이를 현 $\\mathrm{AB}$를 접는 선으로 하여 접었더니 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지난다. 이 때 현 $\\mathrm{AB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q15-problem-v2.svg\" />",
+        "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q15-solution.svg",
+        "solution": "접은 뒤 원래의 중심 $O$가 접힌 호 $AB$ 위에 놓인다. 접은 뒤의 원은 중심 $O'$와 반지름 12 cm인 원이므로 $OO'=12$ cm이다. 접는 선 $AB$는 $OO'$의 수직이등분선이다. 원래 중심에서 현 $AB$까지의 거리를 $d$라 하면 $2d=OO'=12$, 따라서 $d=6$ cm이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 반 현의 길이는 $\\sqrt{12^2-6^2}=6\\sqrt3$ cm이다. 따라서 $AB=12\\sqrt3$ cm로 ⑤이다.",
+        "solutionImageAlt": "해설 그림: 원래 원과 O를 지나는 초록 접힌 호를 구분한다. 접는 선 AB가 보라 선분 OO′를 수직으로 이등분하고, M은 현의 중점이다.",
+        "solutionImageCaption": "접힌 호의 중심을 O′이라 하면 OO′=12 cm이다. 접는 선까지의 거리 OM은 OO′의 절반인 6 cm이다. 직각삼각형 OMA에서 AM=6√3 cm이므로 AB=12√3 cm이다.",
+        "answer": "⑤",
+        "choices": [
+          "$4\\text{ cm}$",
+          "$6\\text{ cm}$",
+          "$6\\sqrt{3}\\text{ cm}$",
+          "$12\\sqrt{2}\\text{ cm}$",
+          "$12\\sqrt{3}\\text{ cm}$"
+        ]
+      },
+      "independentReviewStatus": "PENDING",
+      "officialRegistrationStatus": "NOT_RUN"
+    }
+  ]
+}
