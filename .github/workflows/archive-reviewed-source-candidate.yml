@@ -1,0 +1,61 @@
+name: Archive Reviewed Source Metadata Candidate
+
+on:
+  create:
+
+permissions:
+  contents: read
+
+jobs:
+  candidate:
+    if: >-
+      github.repository == 'icefoxtail/AP------' &&
+      github.event.ref_type == 'branch' &&
+      startsWith(github.event.ref, 'archive-meta-source-input/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    concurrency:
+      group: archive-source-metadata-candidate-${{ github.event.ref }}
+      cancel-in-progress: false
+    steps:
+      - name: Check out the trusted current main implementation
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build the exact metadata candidate with trusted code
+        env:
+          INPUT_COMMIT: ${{ github.sha }}
+          INPUT_REF: ${{ github.event.ref }}
+        run: |
+          node tools/ci/archive-reviewed-source-candidate.mjs \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --input-commit "$INPUT_COMMIT" \
+            --event-ref "$INPUT_REF" \
+            --output-root "$RUNNER_TEMP/archive-source-candidate-output" \
+            --result-file "$RUNNER_TEMP/archive-source-candidate-result.json"
+      - name: Create one candidate branch while the base still matches
+        run: |
+          result="$RUNNER_TEMP/archive-source-candidate-result.json"
+          base_sha=$(node -e 'const fs=require("node:fs");process.stdout.write(JSON.parse(fs.readFileSync(process.argv[1])).baseCommit)' "$result")
+          candidate_sha=$(node -e 'const fs=require("node:fs");process.stdout.write(JSON.parse(fs.readFileSync(process.argv[1])).candidateCommit)' "$result")
+          candidate_branch=$(node -e 'const fs=require("node:fs");process.stdout.write(JSON.parse(fs.readFileSync(process.argv[1])).candidateBranch)' "$result")
+          [[ "$base_sha" =~ ^[0-9a-f]{40}$ && "$candidate_sha" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$candidate_branch" =~ ^release/metadata-source-[a-z0-9][a-z0-9-]{5,80}$ ]]
+          current_main=$(git ls-remote --exit-code origin refs/heads/main | cut -f1)
+          test "$current_main" = "$base_sha" || { echo 'SOURCE_METADATA_CANDIDATE:MAIN_ADVANCED'; exit 1; }
+          test -z "$(git ls-remote origin "refs/heads/$candidate_branch")" || { echo 'SOURCE_METADATA_CANDIDATE:BRANCH_EXISTS'; exit 1; }
+          git push --force-with-lease="refs/heads/$candidate_branch:" origin "$candidate_sha:refs/heads/$candidate_branch"
+          printf 'candidate_branch=%s\nbase_sha=%s\nregistration_status=NOT_REGISTERED\n' "$candidate_branch" "$base_sha" >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve the candidate reference for ordinary PR review
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-source-candidate-reference
+          path: ${{ runner.temp }}/archive-source-candidate-result.json
+          if-no-files-found: error

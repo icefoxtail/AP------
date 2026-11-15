@@ -935,6 +935,8 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "imageSize": "tall",
+    "imageAlt": "파란 직선 (1)과 회색 점선 y=x는 서로 평행이다. 세로 방향 화살표는 점선에서 파란 선까지 위로 3의 간격을 나타낸다.",
     "questionUid": "25_왕운중_1학기_기말_중2_수학|13",
     "sourceExamId": "25_왕운중_1학기_기말_중2_수학",
     "sourceOrdinal": 13,
@@ -956,7 +958,7 @@ window.questionBank = [
     },
     "score": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "일차함수와 그래프",
       "일차함수의 뜻과 그래프"
@@ -1010,7 +1012,7 @@ window.questionBank = [
     "problemVisualReason": "Source graph is necessary input and the extracted PNG reference is preserved unchanged.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The source problem graph is already present in the question and the decisive solution is a direct equation/value calculation; a second visual would repeat the same information.",
-    "image": "assets/images/25_왕운중_1학기_기말_중2_수학/q13.png",
+    "image": "assets/images/25_왕운중_1학기_기말_중2_수학/q13-problem-visual-v2.svg",
     "difficultyReason": "평행이동 방향과 크기를 읽어 식의 절편에 적용한다."
   },
   {
@@ -1165,6 +1167,8 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "imageSize": "tall",
+    "imageAlt": "파란 직선이 세로축의 6과 가로축의 2를 지나며 오른쪽 아래로 내려간다. 두 축에 같은 간격의 눈금이 있다.",
     "questionUid": "25_왕운중_1학기_기말_중2_수학|16",
     "sourceExamId": "25_왕운중_1학기_기말_중2_수학",
     "sourceOrdinal": 16,
@@ -1182,7 +1186,7 @@ window.questionBank = [
     },
     "score": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "일차함수와 그래프",
       "일차함수의 뜻과 그래프"
@@ -1236,7 +1240,7 @@ window.questionBank = [
     "problemVisualReason": "Scoped printed source reconstruction removes handwritten coordinate notes/selected-choice marks while retaining the grid, axes, labels, and source line.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The source problem graph is already present in the question and the decisive solution is a direct equation/value calculation; a second visual would repeat the same information.",
-    "image": "assets/images/25_왕운중_1학기_기말_중2_수학/q16-clean-v1.png",
+    "image": "assets/images/25_왕운중_1학기_기말_중2_수학/q16-problem-visual-v2.svg",
     "difficultyReason": "그래프에서 두 점을 읽어 기울기 공식을 적용한다."
   },
   {
@@ -1320,6 +1324,11 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "a>0이고 b<0이므로 y=−ax−b는 기울기가 음수이며 세로축 절편이 양수다. 그래프는 제3사분면을 지나지 않는다.",
+    "solutionImageAlt": "중심의 보라색 직선 y=−ax−b는 오른쪽 아래로 내려가고 두 축을 원점의 양의 쪽에서 지난다. 왼쪽 아래 영역을 옅게 칠했다.",
+    "imageSize": "tall",
+    "imageAlt": "두 직선이 같은 기울기로 오른쪽 위로 올라간다. 세 번째는 오른쪽 아래로 내려간다. 올라가는 직선 가운데 하나는 세로축의 위, 하나는 아래에서 만난다.",
     "questionUid": "25_왕운중_1학기_기말_중2_수학|18",
     "sourceExamId": "25_왕운중_1학기_기말_중2_수학",
     "sourceOrdinal": 18,
@@ -1341,7 +1350,7 @@ window.questionBank = [
     },
     "score": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "일차함수와 그래프",
       "일차함수의 뜻과 그래프"
@@ -1394,10 +1403,10 @@ window.questionBank = [
     "problemVisualDisposition": "REQUIRED_PROBLEM_IMAGE_PRESERVED",
     "problemVisualReason": "Scoped printed source reconstruction removes handwritten prompt notes and circled-choice marks while retaining the three printed lines, axes, origin, and crossing order.",
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
-    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q18-solution.svg",
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q18-solution-visual-v2.svg",
     "solutionVisualDisposition": "ADD_NEW_VISUAL",
     "solutionVisualReason": "The target line is not drawn in the source graph. A schematic solution graph shows its negative slope, positive intercepts, and passage through quadrants II, I, and IV; axis units are not asserted.",
-    "image": "assets/images/25_왕운중_1학기_기말_중2_수학/q18-clean-v1.png",
+    "image": "assets/images/25_왕운중_1학기_기말_중2_수학/q18-problem-visual-v2.svg",
     "difficultyReason": "그래프에서 a,b의 부호를 먼저 해석한 뒤 새 직선의 사분면을 분석한다."
   },
   {
@@ -1478,10 +1487,10 @@ window.questionBank = [
     "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
     "solutionVisualReason": "The solution is a direct equation transformation, numeric calculation, or explicitly separated case check; no added spatial/graph relationship needs a separate solution drawing.",
     "difficultyReason": "기울기·절편·점 대입·교점 성질을 각각 계산해 진술을 검증한다.",
-    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=-3x+1이 y축 위의 점 (0,1)을 지나고, 점선으로 x 방향 2와 y 방향 6의 변화량이 표시되어 있다. 기울기가 같은 직선 y=-3x-1과 y절편이 같은 직선 y=2x+1이 함께 그려져 있고, 점 (2,5)가 표시되어 있다.",
-    "solutionImageCaption": "일차함수 y=-3x+1의 그래프와 y절편, x가 2만큼 변할 때 y의 변화량, 비교용 직선 y=-3x-1과 y=2x+1, 점 (2,5)를 한 좌표평면에 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_왕운중_1학기_기말_중2_수학/q19-solution-visual-v2.svg",
+    "solutionImageAlt": "파란 y=−3x+1과 주황 점선 y=−3x−1은 평행하다. 청록 점선 y=2x+1은 파란 직선과 (0,1)에서 만난다. (2,5)는 청록 직선 위이고 파란 직선의 x=2인 점은 (2,−5)이다.",
+    "solutionImageCaption": "파란 직선에서 x가 2만큼 증가하면 y는 6만큼 감소한다. x=2일 때 y=−5이므로 (2,5)는 파란 직선 위에 없다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
