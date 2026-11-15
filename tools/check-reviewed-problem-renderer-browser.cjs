@@ -15,7 +15,10 @@ const CHECKER_PATH = 'tools/check-reviewed-problem-renderer-browser.cjs';
 const TEST_PATH = 'tests/archive-problem-renderer-ui-contract.test.js';
 const WORKFLOW_PATH = '.github/workflows/archive2-runtime-guard.yml';
 const IDENTITY_PATH = 'archive/data/question_identity_map.json';
-const SCHEMA = 'archive-problem-renderer-student-ui-preview-v1';
+const SCHEMA = 'archive-problem-renderer-student-ui-preview-v2';
+const TILE_SCHEMA = 'archive-problem-scroll-coverage-v1';
+const TILE_OVERLAP = 32;
+const TILE_LIMIT = 8;
 const FONT_FAMILY = 'Nanum Myeongjo';
 const EXPECTED_KEYS = ['E005-Q12', 'E006-Q21', 'E006-Q3'];
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -166,6 +169,168 @@ async function captureCompleteProblem(page, target, file) {
     scrollBefore, scrollAfter: after.scroll, scrollOperations, feedbackIdle: true, obstructionsIntersectingClip: 0,
     hitTestSamples: hits.samples + afterHits.samples, foreignContentHits: 0, domSha256: originalDomSha256,
     cssWrites: 0, domWrites: 0, viewportChanges: 0 };
+}
+
+// A tall mobile problem is read by scrolling the unchanged student surface.
+// Each PNG is an original viewport capture. No image stitching, resizing,
+// hidden controls or CSS/DOM substitutes can establish complete coverage.
+function problemTileIntervals(frame) {
+  const clip = problemContentClip(frame), viewport = frame.viewport;
+  assert(viewport && Number.isFinite(viewport.width) && Number.isFinite(viewport.height) &&
+    viewport.width > 0 && viewport.height > 0, 'UI_CAPTURE_VIEWPORT');
+  assert(clip.x >= 0 && clip.x + clip.width <= viewport.width, 'UI_PROBLEM_HORIZONTAL_CLIP');
+  assert(Array.isArray(frame.obstructions), 'UI_CAPTURE_OBSTRUCTIONS');
+  const blocked = frame.obstructions.map(checkedRect).filter(rect => rect.x < clip.x + clip.width && rect.x + rect.width > clip.x)
+    .map(rect => [Math.max(0, rect.y - 8), Math.min(viewport.height, rect.y + rect.height + 8)])
+    .filter(([from, to]) => to > from).sort((a, b) => a[0] - b[0]);
+  const free = []; let start = 8;
+  for (const [from, to] of blocked) { if (from > start) free.push([start, from]); start = Math.max(start, to); }
+  if (start < viewport.height - 8) free.push([start, viewport.height - 8]);
+  return { clip, free };
+}
+
+function assertTileCoverage(height, tiles) {
+  assert(Number.isFinite(height) && height > 0 && Array.isArray(tiles) && tiles.length > 0 && tiles.length <= TILE_LIMIT,
+    'UI_SCROLL_TILE_INVENTORY');
+  for (let i = 0; i < tiles.length; i++) {
+    const tile = tiles[i], span = tile.relativeInterval;
+    assert(tile.tileIndex === i + 1 && Array.isArray(span) && span.length === 2 && span.every(Number.isFinite) &&
+      span[0] >= 0 && span[1] <= height && span[1] > span[0], 'UI_SCROLL_TILE_RANGE');
+    if (i === 0) assert.equal(span[0], 0, 'UI_SCROLL_TILE_TOP_MISSING');
+    else {
+      const prior = tiles[i - 1].relativeInterval;
+      assert(span[0] > prior[0] && span[1] > prior[1], 'UI_SCROLL_TILE_NO_PROGRESS');
+      assert.equal(prior[1] - span[0], TILE_OVERLAP, 'UI_SCROLL_TILE_OVERLAP');
+    }
+  }
+  assert.equal(tiles.at(-1).relativeInterval[1], height, 'UI_SCROLL_TILE_BOTTOM_MISSING');
+  return { requiredInterval: [0, height], coveredInterval: [0, height], complete: true };
+}
+
+function planProblemTiles(frame) {
+  const { clip, free } = problemTileIntervals(frame);
+  const capacity = Math.max(0, ...free.map(([from, to]) => to - from));
+  assert(capacity > 0 && (clip.height <= capacity || capacity >= TILE_OVERLAP * 2), 'UI_SCROLL_TILE_VISIBLE_AREA');
+  const tiles = []; let start = 0;
+  while (true) {
+    const end = Math.min(clip.height, start + capacity);
+    tiles.push({ tileIndex: tiles.length + 1, relativeInterval: [start, end] });
+    assert(tiles.length <= TILE_LIMIT, 'UI_SCROLL_TILE_LIMIT');
+    if (end === clip.height) break;
+    start = end - TILE_OVERLAP;
+  }
+  return { tiles, capacity, coverage: assertTileCoverage(clip.height, tiles) };
+}
+
+function problemTileClip(frame, tile) {
+  const full = problemContentClip(frame), span = tile.relativeInterval;
+  assert(Array.isArray(span) && span.length === 2 && span.every(Number.isFinite) && span[0] >= 0 &&
+    span[1] <= full.height && span[1] > span[0], 'UI_SCROLL_TILE_RANGE');
+  return checkedRect({ x: full.x, y: full.y + span[0], width: full.width, height: span[1] - span[0] });
+}
+
+function planProblemTileScroll(frame, tile) {
+  const { free } = problemTileIntervals(frame), clip = problemTileClip(frame, tile);
+  const fits = free.filter(([from, to]) => to - from >= clip.height);
+  assert(fits.length > 0, 'UI_SCROLL_TILE_DOES_NOT_FIT');
+  const clear = fits.find(([from, to]) => clip.y >= from && clip.y + clip.height <= to);
+  const selected = clear || fits.sort((a, b) => (b[1] - b[0]) - (a[1] - a[0]))[0];
+  return { scrollByY: clear ? 0 : clip.y - selected[0], safeInterval: selected, clip };
+}
+
+function assertProblemTileCapture(frame, tile) {
+  const clip = problemTileClip(frame, tile), viewport = frame.viewport;
+  assert(frame.feedbackIdle === true, 'UI_RENDER_FEEDBACK_NOT_IDLE');
+  assert(frame.readiness === 'RENDER_READY' && frame.solutionNodes === 0, 'UI_CAPTURE_RENDER_STATE');
+  assert(frame.mandatoryChildrenVisible === true, 'UI_REQUIRED_PROBLEM_CHILD_HIDDEN');
+  assert(clip.x >= 0 && clip.y >= 0 && clip.x + clip.width <= viewport.width && clip.y + clip.height <= viewport.height,
+    'UI_SCROLL_TILE_OUTSIDE_VIEWPORT');
+  assert(Array.isArray(frame.obstructions) && frame.obstructions.every(rect => !overlaps(clip, checkedRect(rect))),
+    'UI_CAPTURE_OBSCURED');
+  return clip;
+}
+
+function documentProblemFrame(frame) {
+  assert(frame.scroll && Number.isFinite(frame.scroll.x) && Number.isFinite(frame.scroll.y), 'UI_CAPTURE_SCROLL');
+  const documentRect = rect => { checkedRect(rect); return { x: rect.x + frame.scroll.x, y: rect.y + frame.scroll.y,
+    width: rect.width, height: rect.height }; };
+  return { question: documentRect(frame.question), content: documentRect(problemContentClip(frame)),
+    children: frame.children.map(documentRect), image: documentRect(frame.image), viewport: frame.viewport,
+    questionNumber: frame.questionNumber };
+}
+
+async function captureProblemTiles(page, target, file) {
+  try {
+    await page.waitForFunction(() => {
+      const panel = document.getElementById('ap-archive-render-feedback');
+      return !panel || panel.hidden || getComputedStyle(panel).display === 'none';
+    }, null, { timeout: 15000 });
+  } catch { throw new Error('UI_RENDER_FEEDBACK_NOT_IDLE'); }
+  let frame = await target.evaluate(measureProblemCapture);
+  assert(frame.mandatoryChildrenVisible === true, 'UI_REQUIRED_PROBLEM_CHILD_HIDDEN');
+  const original = documentProblemFrame(frame), originalDomSha256 = frame.domSha256, scrollBefore = frame.scroll;
+  const plan = planProblemTiles(frame), tiles = [];
+  for (const tile of plan.tiles) {
+    let scrollOperations = 0;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const step = planProblemTileScroll(frame, tile);
+      if (Math.abs(step.scrollByY) < 0.5) break;
+      await page.evaluate(delta => window.scrollBy({ top: delta, left: 0, behavior: 'instant' }), step.scrollByY);
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      scrollOperations++; frame = await target.evaluate(measureProblemCapture);
+    }
+    assert.equal(frame.domSha256, originalDomSha256, 'UI_PROBLEM_DOM_CHANGED_DURING_SCROLL');
+    assert.deepEqual(documentProblemFrame(frame), original, 'UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED');
+    const clip = assertProblemTileCapture(frame, tile), hits = await target.evaluate(inspectCaptureHits, clip);
+    assert(hits.samples > 0 && hits.outsideQuestion === 0, 'UI_CAPTURE_FOREIGN_CONTENT');
+    const tileFile = file.replace(/\.png$/, '') + `-tile-${String(tile.tileIndex).padStart(2, '0')}.png`;
+    await page.screenshot({ path: tileFile, clip, fullPage: false, caret: 'initial', timeout: 15000 });
+    const after = await target.evaluate(measureProblemCapture);
+    assert.deepEqual(assertProblemTileCapture(after, tile), clip, 'UI_CAPTURE_GEOMETRY_CHANGED');
+    assert.deepEqual(after.scroll, frame.scroll, 'UI_CAPTURE_SCROLLED');
+    assert.equal(after.domSha256, originalDomSha256, 'UI_PROBLEM_DOM_CHANGED_DURING_CAPTURE');
+    assert.deepEqual(documentProblemFrame(after), original, 'UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED');
+    const afterHits = await target.evaluate(inspectCaptureHits, clip);
+    assert(afterHits.samples > 0 && afterHits.outsideQuestion === 0, 'UI_CAPTURE_FOREIGN_CONTENT');
+    tiles.push({ ...tile, filename: path.basename(tileFile), clip, scroll: after.scroll, scrollOperations,
+      feedbackIdle: true, obstructionsIntersectingClip: 0, hitTestSamples: hits.samples + afterHits.samples,
+      foreignContentHits: 0, domSha256: originalDomSha256 });
+    frame = after;
+  }
+  return { schemaVersion: TILE_SCHEMA, method: 'UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES', tileLimit: TILE_LIMIT,
+    overlapCssPixels: TILE_OVERLAP, tileCount: tiles.length, content: original.content, question: original.question,
+    viewport: original.viewport, visibleChildren: original.children.length, coverage: assertTileCoverage(original.content.height, tiles),
+    tiles, scrollBefore, scrollAfter: frame.scroll, scrollOperations: tiles.reduce((sum, row) => sum + row.scrollOperations, 0),
+    domSha256: originalDomSha256, feedbackIdle: true, foreignContentHits: 0, cssWrites: 0, domWrites: 0, viewportChanges: 0,
+    compositeImageCreated: false };
+}
+
+function readScreenshotArtifacts(out) {
+  return fs.readdirSync(out).filter(file => file.endsWith('.png')).sort().map(file => {
+    const full = path.join(out, file);
+    assert(fs.lstatSync(full).isFile(), 'UI_SCREENSHOT_REGULAR_FILE');
+    const bytes = fs.readFileSync(full);
+    return { path: file, sha256: sha256(bytes), bytes: bytes.length };
+  });
+}
+
+function assertScreenshotInventory(results, artifacts) {
+  const expected = results.flatMap(row => {
+    assert(Array.isArray(row.screenshots) && row.screenshots.length === row.capture.tileCount &&
+      row.screenshots.length === row.capture.tiles.length && row.screenshots.length > 0 && row.screenshots.length <= TILE_LIMIT,
+    'UI_SCREENSHOT_TILE_COUNT');
+    return row.screenshots.map((shot, index) => {
+      ownKeys(shot, ['tileIndex', 'path', 'sha256', 'bytes'], 'UI_SCREENSHOT_KEYS');
+      const expectedPath = `${row.key}-${row.viewport.name}-tile-${String(index + 1).padStart(2, '0')}.png`;
+      assert(shot.tileIndex === index + 1 && row.capture.tiles[index].tileIndex === index + 1 &&
+        shot.path === expectedPath && row.capture.tiles[index].filename === expectedPath &&
+        SHA256.test(shot.sha256) && Number.isSafeInteger(shot.bytes) && shot.bytes > 0, 'UI_SCREENSHOT_TILE_BINDING');
+      return { path: shot.path, sha256: shot.sha256, bytes: shot.bytes };
+    });
+  }).sort((a, b) => a.path.localeCompare(b.path));
+  assert.equal(new Set(expected.map(row => row.path)).size, expected.length, 'UI_SCREENSHOT_ARTIFACT_DUPLICATE');
+  assert.deepEqual(artifacts.slice().sort((a, b) => a.path.localeCompare(b.path)), expected, 'UI_SCREENSHOT_ARTIFACT_INVENTORY');
+  return expected.length;
 }
 
 function isStudentFontStylesheet(value) {
@@ -330,16 +495,21 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
   const manifestBytes = reader.read(MANIFEST_PATH), manifest = JSON.parse(manifestBytes);
   const inputs = preflight(reader, manifest);
   const served = new Map(), mirrored = new Map(), externalFontResources = new Map(), failures = [], results = [];
+  let activeCase = null;
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: reader.commit,
     manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), ...inputs,
-    mode: 'exam', studentReview: true, screenshotsScope: 'SELECTED_PROBLEM_Q_BOX_ONLY', problemOnlyScreenshots: true,
+    mode: 'exam', studentReview: true, screenshotsScope: 'SELECTED_PROBLEM_ORIGINAL_SCROLL_TILES_ONLY', problemOnlyScreenshots: true,
     sourceOverlay: false, sourceOverlayCount: 0, sourceWrites: 0,
     solutionsOpened: false, productionCdnTest: false, assetTransport: 'EXACT_CHECKOUT_BYTES_FOR_DEFAULT_IMAGE_ORIGIN',
     fontTransport: 'EXACT_STUDENT_GOOGLE_STYLESHEET_AND_ITS_DECLARED_NANUM_MYEONGJO_FILES',
     newFullMathematicalQa: false, newMetadataApprovals: 0, newDifficultyJudgments: 0, newReviewPassCount: 0, newFourSlotApprovals: 0 };
   const writeProof = (status, code = null) => {
-    const proof = { ...proofBase, status, ...(code ? { failureCode: code } : {}), results, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
+    const screenshotArtifacts = readScreenshotArtifacts(out);
+    if (status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING') assertScreenshotInventory(results, screenshotArtifacts);
+    const proof = { ...proofBase, status, ...(code ? { failureCode: code, activeCase } : {}), expectedLogicalCases: manifest.expectedCases,
+      completedLogicalCases: results.length, screenshotArtifactCount: screenshotArtifacts.length, screenshotArtifacts,
+      results, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
       externalFontResources: [...externalFontResources.values()], failures };
     fs.writeFileSync(path.join(out, 'technical-proof.json'), JSON.stringify(proof, null, 2) + '\n');
     return proof;
@@ -463,12 +633,13 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
         assert.equal(technical.solutionNodes, 0, 'UI_PROBLEM_ONLY');
         assert.equal(pageErrors.length + requestFailures.length + externalRequests.length + failures.length, 0, 'UI_NETWORK_OR_PAGE_FAILURE');
         for (const item of inputs.items.filter(row => row.sourceRef.path === sourcePath)) {
+          activeCase = { key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, viewport: viewport.name };
           const target = page.locator(`#print-area img[src*="${path.posix.basename(item.assetRef.path)}"]`);
           assert.equal(await target.count(), 1, 'UI_UNIQUE_PROBLEM_IMAGE');
           const box = target.locator('xpath=ancestor::div[contains(concat(" ",normalize-space(@class)," ")," q-box ")][1]');
           assert.equal(await box.count(), 1, 'UI_UNIQUE_PROBLEM_BOX');
           const screenshotPath = `${item.key}-${viewport.name}.png`;
-          const capture = await captureCompleteProblem(page, target, path.join(out, screenshotPath));
+          const capture = await captureProblemTiles(page, target, path.join(out, screenshotPath));
           const geometry = await target.evaluate(image => {
             const box = image.closest('.q-box'), a = image.getBoundingClientRect(), b = box.getBoundingClientRect();
             return { naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
@@ -478,17 +649,20 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           });
           assert(geometry.imageInsideQuestion && geometry.naturalWidth > 0 && geometry.image.width > 0, 'UI_IMAGE_CLIPPED');
           assert.equal(Number((geometry.questionNumber || '').match(/^\d+/)?.[0]), item.sourceOrdinal, 'UI_VISIBLE_ORDINAL');
-          const screenshot = fs.readFileSync(path.join(out, screenshotPath));
+          const screenshots = capture.tiles.map(tile => { const bytes = fs.readFileSync(path.join(out, tile.filename));
+            return { tileIndex: tile.tileIndex, path: tile.filename, sha256: sha256(bytes), bytes: bytes.length }; });
           results.push({ status: 'PASS', key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, viewport,
-            sourceRef: item.sourceRef, assetRef: item.assetRef, screenshot: { path: screenshotPath, sha256: sha256(screenshot), bytes: screenshot.length },
+            sourceRef: item.sourceRef, assetRef: item.assetRef, screenshots,
             technical: { ...technical, fontReadiness, fontResourceIds: [...fontResources].sort() }, geometry, capture,
             visualReview: 'PENDING', pageErrors, requestFailures, externalRequests });
+          activeCase = null;
         }
         assert.equal(pageErrors.length + requestFailures.length + externalRequests.length + failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
       } finally { await context.close(); }
     }
     assert.equal(results.length, manifest.expectedCases, 'UI_ALL_SIX_REQUIRED');
     assert.equal(new Set(results.map(row => `${row.key}:${row.viewport.name}`)).size, 6, 'UI_UNIQUE_SIX_REQUIRED');
+    assertScreenshotInventory(results, readScreenshotArtifacts(out));
     // Re-read all served and bound inputs after the screenshots. No cache can
     // turn a mutable working-tree file into immutable provenance.
     for (const ref of [proofBase.manifestRef, proofBase.checkerRef, inputs.identityRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
@@ -530,7 +704,9 @@ async function main() {
 
 module.exports = { MANIFEST_PATH, CHECKER_PATH, TEST_PATH, WORKFLOW_PATH, IDENTITY_PATH, SCHEMA, stable, sha256, gitBlob, validateManifest, planRequired, createGitReader, preflight,
   isStudentFontStylesheet, declaredStudentFonts, fontFailureDiagnostic,
-  problemContentClip, planProblemScroll, assertProblemCapture, captureCompleteProblem };
+  problemContentClip, planProblemScroll, assertProblemCapture, captureCompleteProblem,
+  TILE_SCHEMA, TILE_OVERLAP, TILE_LIMIT, planProblemTiles, planProblemTileScroll, assertTileCoverage, assertProblemTileCapture, captureProblemTiles,
+  readScreenshotArtifacts, assertScreenshotInventory };
 if (require.main === module) main().catch(error => {
   const args = process.argv.slice(2), index = args.indexOf('--output');
   if (!args.includes('--plan') && index >= 0 && args[index + 1]) {

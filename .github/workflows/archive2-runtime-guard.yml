@@ -161,8 +161,8 @@ jobs:
           path: |
             ${{ runner.temp }}/reviewed-problem-ui-plan.json
             ${{ runner.temp }}/reviewed-problem-ui-evidence/technical-proof.json
-            ${{ runner.temp }}/reviewed-problem-ui-evidence/*-desktop.png
-            ${{ runner.temp }}/reviewed-problem-ui-evidence/*-mobile.png
+            ${{ runner.temp }}/reviewed-problem-ui-evidence/*-desktop-tile-*.png
+            ${{ runner.temp }}/reviewed-problem-ui-evidence/*-mobile-tile-*.png
           if-no-files-found: error
           retention-days: 14
 

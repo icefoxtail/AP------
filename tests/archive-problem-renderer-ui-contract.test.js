@@ -118,6 +118,7 @@ function captureFrame() {
 function scrollFrame(frame, delta) {
   frame.question.y -= delta;
   for (const child of frame.children) child.y -= delta;
+  if (frame.image) frame.image.y -= delta;
   frame.scroll.y += delta;
 }
 
@@ -214,6 +215,180 @@ for (const [name, mutation, error, shots] of [
   const driver = captureDriver(mutation);
   await assert.rejects(checker.captureCompleteProblem(driver.page, driver.target, '/synthetic/problem.png'), error);
   assert.equal(driver.shots.length, shots);
+});
+
+function tallMobileFrame() {
+  const frame = captureFrame();
+  frame.viewport = { width: 390, height: 844 };
+  frame.question = { x: 28, y: 3, width: 334, height: 1600 };
+  frame.children = [{ x: 28, y: 13, width: 334, height: 19 }, { x: 28, y: 38, width: 334, height: 600 },
+    { x: 28, y: 648, width: 334, height: 540 }, { x: 28, y: 1198, width: 334, height: 70 }];
+  frame.image = copy(frame.children[2]);
+  frame.obstructions = frame.obstructions.map(rect => ({ ...rect, width: 390 }));
+  return frame;
+}
+
+function tileDriver(mutation = {}, initial = tallMobileFrame()) {
+  const frame = copy(initial), shots = [], calls = [];
+  if (!frame.image) frame.image = copy(frame.children[2]);
+  const target = { async evaluate(fn, arg) {
+    calls.push(fn.name);
+    if (fn.name === 'measureProblemCapture') return copy(frame);
+    if (fn.name === 'inspectCaptureHits') return { samples: 1500, outsideQuestion: mutation.foreignHits || 0 };
+    throw Error('UNEXPECTED_BROWSER_OPERATION');
+  } };
+  const page = {
+    async waitForFunction(_fn, _arg, options) { assert.equal(options.timeout, 15000); if (mutation.pending) throw Error('timeout'); },
+    async evaluate(_fn, delta) {
+      if (typeof delta === 'number') {
+        if (!mutation.stuckScroll) scrollFrame(frame, delta);
+        if (mutation.afterScroll) mutation.afterScroll(frame);
+      }
+    },
+    async screenshot(options) { shots.push(copy(options)); if (mutation.afterScreenshot) mutation.afterScreenshot(frame, shots.length); }
+  };
+  return { frame, target, page, shots, calls };
+}
+
+test('UI v2 keeps six logical cases separate from bounded original PNG tiles', () => {
+  assert.equal(checker.SCHEMA, 'archive-problem-renderer-student-ui-preview-v2');
+  assert.equal(checker.TILE_SCHEMA, 'archive-problem-scroll-coverage-v1');
+  assert.equal(checker.TILE_LIMIT, 8); assert.equal(checker.TILE_OVERLAP, 32);
+  const source = fs.readFileSync(path.join(__dirname, '..', checker.CHECKER_PATH), 'utf8');
+  assert.match(source, /expectedLogicalCases: manifest\.expectedCases/);
+  assert.match(source, /completedLogicalCases: results\.length/);
+  assert.match(source, /UI_SCREENSHOT_ARTIFACT_INVENTORY/);
+  assert.match(source, /UI_UNIQUE_SIX_REQUIRED/);
+  assert.match(source, /UI_TOTAL_TIMEOUT[\s\S]*?240000/);
+  assert(!/screenshot:\s*\{\s*path: screenshotPath/.test(source), 'v2 cannot retain a misleading single-shot alias');
+});
+
+test('tall mobile planning retains the single-shot rejection and proves complete overlapping tile coverage', () => {
+  const frame = tallMobileFrame(), before = copy(frame), height = checker.problemContentClip(frame).height;
+  assert.throws(() => checker.planProblemScroll(frame), /UI_COMPLETE_PROBLEM_DOES_NOT_FIT_VIEWPORT/);
+  const plan = checker.planProblemTiles(frame);
+  assert.equal(plan.tiles.length, 2); assert.equal(plan.tiles[0].relativeInterval[0], 0);
+  assert.equal(plan.tiles.at(-1).relativeInterval[1], height);
+  assert.equal(plan.tiles[0].relativeInterval[1] - plan.tiles[1].relativeInterval[0], 32);
+  assert.deepEqual(plan.coverage, { requiredInterval: [0, height], coveredInterval: [0, height], complete: true });
+  assert.deepEqual(frame, before, 'planning has no rendering mutation');
+});
+
+test('a one-tile desktop case keeps the complete content envelope and zero artificial split', () => {
+  const frame = captureFrame(); frame.image = copy(frame.children[2]);
+  const plan = checker.planProblemTiles(frame);
+  assert.equal(plan.tiles.length, 1); assert.equal(plan.tiles[0].relativeInterval[1], checker.problemContentClip(frame).height);
+});
+
+for (const [name, mutate, error] of [
+  ['missing top', t => { t[0].relativeInterval[0] = 1; }, /TOP_MISSING/],
+  ['missing bottom', t => { t.at(-1).relativeInterval[1] -= 1; }, /BOTTOM_MISSING/],
+  ['gap between tiles', t => { t[1].relativeInterval[0] = t[0].relativeInterval[1] + 1; }, /OVERLAP/],
+  ['31px overlap', t => { t[1].relativeInterval[0] += 1; }, /OVERLAP/],
+  ['33px overlap', t => { t[1].relativeInterval[0] -= 1; }, /OVERLAP/],
+  ['out-of-order indices', t => { t[1].tileIndex = 1; }, /RANGE/],
+  ['duplicated region', t => { t[1].relativeInterval = copy(t[0].relativeInterval); }, /NO_PROGRESS/],
+  ['nonfinite bound', t => { t[0].relativeInterval[1] = NaN; }, /RANGE/],
+  ['negative start', t => { t[0].relativeInterval[0] = -1; }, /RANGE/],
+  ['overshoot after content', t => { t.at(-1).relativeInterval[1] += 1; }, /RANGE/],
+  ['missing last artifact', t => { t.pop(); }, /BOTTOM_MISSING/]
+]) test(`scroll coverage refuses ${name}`, () => {
+  const frame = tallMobileFrame(), plan = checker.planProblemTiles(frame), tiles = copy(plan.tiles); mutate(tiles);
+  assert.throws(() => checker.assertTileCoverage(checker.problemContentClip(frame).height, tiles), error);
+});
+
+for (const [name, mutate, error] of [
+  ['horizontal overflow', f => { f.children[0].width = 400; }, /PROBLEM_CHILD_CLIPPED/],
+  ['viewport narrower than the question', f => { f.viewport.width = 300; }, /HORIZONTAL_CLIP/],
+  ['no useful visible interval', f => { f.obstructions.push({ x: 0, y: 114, width: 390, height: 700 }); }, /VISIBLE_AREA/],
+  ['more than eight tiles', f => { f.question.height = 20000; f.children.at(-1).y = 19000; }, /TILE_LIMIT/],
+  ['missing mandatory content', f => { f.children.splice(0, 2); }, /COMPLETE_PROBLEM_CHILDREN/]
+]) test(`tile planning refuses ${name}`, () => { const frame = tallMobileFrame(); mutate(frame); assert.throws(() => checker.planProblemTiles(frame), error); });
+
+test('two natural scroll captures preserve exact document geometry, 32px overlap and every viewport pixel', async () => {
+  const driver = tileDriver(), original = copy(driver.frame);
+  const result = await checker.captureProblemTiles(driver.page, driver.target, '/synthetic/problem.png');
+  assert.equal(result.tileCount, 2); assert.equal(driver.shots.length, 2);
+  assert.equal(result.tiles[0].relativeInterval[1] - result.tiles[1].relativeInterval[0], 32);
+  assert.deepEqual(result.viewport, original.viewport); assert.equal(result.content.height, checker.problemContentClip(original).height);
+  assert.equal(result.cssWrites + result.domWrites + result.viewportChanges, 0); assert.equal(result.compositeImageCreated, false);
+  assert.equal(result.foreignContentHits, 0); assert.equal(result.coverage.complete, true);
+  assert.equal(new Set(result.tiles.map(t => t.filename)).size, 2);
+  for (let i = 0; i < driver.shots.length; i++) {
+    const shot = driver.shots[i]; assert.equal(shot.fullPage, false); assert.equal(shot.caret, 'initial'); assert.equal(shot.timeout, 15000);
+    assert.equal(shot.clip.width, original.question.width); assert.equal(shot.clip.height, result.tiles[i].relativeInterval[1] - result.tiles[i].relativeInterval[0]);
+    assert.match(shot.path, new RegExp(`tile-0${i + 1}\\.png$`));
+    assert.equal(result.tiles[i].obstructionsIntersectingClip, 0); assert(result.tiles[i].hitTestSamples > 0);
+  }
+  assert.equal(driver.calls.filter(n => n === 'inspectCaptureHits').length, 4);
+});
+
+test('single desktop capture uses the same v2 inventory without a stitched or legacy screenshot alias', async () => {
+  const driver = tileDriver({}, captureFrame());
+  const result = await checker.captureProblemTiles(driver.page, driver.target, '/synthetic/desktop.png');
+  assert.equal(result.tileCount, 1); assert.equal(driver.shots.length, 1); assert.equal(result.coverage.complete, true);
+  assert.equal(result.tiles[0].filename, 'desktop-tile-01.png');
+});
+
+for (const [name, mutation, error] of [
+  ['feedback remains pending', { pending: true }, /FEEDBACK_NOT_IDLE/],
+  ['natural scrolling cannot move the page', { stuckScroll: true }, /OUTSIDE_VIEWPORT|OBSCURED/],
+  ['foreign overlay hit', { foreignHits: 1 }, /FOREIGN_CONTENT/],
+  ['hidden child after scroll', { afterScroll: f => { f.mandatoryChildrenVisible = false; } }, /CHILD_HIDDEN/],
+  ['changed DOM after scroll', { afterScroll: f => { f.domSha256 = 'd'.repeat(64); } }, /DOM_CHANGED_DURING_SCROLL/],
+  ['changed document geometry after scroll', { afterScroll: f => { f.children[1].height += 1; } }, /DOCUMENT_GEOMETRY_CHANGED/],
+  ['changed viewport after scroll', { afterScroll: f => { f.viewport.width += 1; } }, /DOCUMENT_GEOMETRY_CHANGED/],
+  ['solution DOM after scroll', { afterScroll: f => { f.solutionNodes = 1; } }, /RENDER_STATE/],
+  ['screenshot scrolls without permission', { afterScreenshot: f => { f.scroll.y += 1; } }, /CAPTURE_SCROLLED/],
+  ['screenshot changes content', { afterScreenshot: f => { f.children.at(-1).y += 1; } }, /DOCUMENT_GEOMETRY_CHANGED/],
+  ['screenshot changes DOM', { afterScreenshot: f => { f.domSha256 = 'd'.repeat(64); } }, /DOM_CHANGED_DURING_CAPTURE/],
+  ['later tile loses a mandatory element', { afterScreenshot: (f, n) => { if (n === 2) f.mandatoryChildrenVisible = false; } }, /CHILD_HIDDEN/],
+  ['later tile gains a toast', { afterScreenshot: (f, n) => { if (n === 2) f.obstructions.push({ x: 30, y: 200, width: 300, height: 100 }); } }, /OBSCURED/]
+]) test(`v2 scroll capture refuses ${name}`, async () => {
+  const driver = tileDriver(mutation); await assert.rejects(checker.captureProblemTiles(driver.page, driver.target, '/synthetic/problem.png'), error);
+});
+
+function tileInventory() {
+  const rows = [{ key: 'E005-Q12', viewport: { name: 'mobile' }, capture: { tileCount: 2, tiles: [] }, screenshots: [] },
+    { key: 'E006-Q3', viewport: { name: 'desktop' }, capture: { tileCount: 1, tiles: [] }, screenshots: [] }];
+  for (const row of rows) for (let index = 1; index <= row.capture.tileCount; index++) {
+    const file = `${row.key}-${row.viewport.name}-tile-${String(index).padStart(2, '0')}.png`;
+    row.capture.tiles.push({ tileIndex: index, filename: file });
+    row.screenshots.push({ tileIndex: index, path: file, sha256: checker.sha256(file), bytes: 123 });
+  }
+  return { rows, artifacts: rows.flatMap(row => row.screenshots.map(({ path, sha256, bytes }) => ({ path, sha256, bytes }))) };
+}
+
+test('the artifact inventory binds all original tile paths and raw bytes separately from logical cases', () => {
+  const { rows, artifacts } = tileInventory();
+  assert.equal(rows.length, 2); assert.equal(checker.assertScreenshotInventory(rows, artifacts), 3);
+});
+
+for (const [name, mutate, error] of [
+  ['unrecorded extra PNG', f => { f.artifacts.push({ path: 'extra.png', sha256: 'a'.repeat(64), bytes: 1 }); }, /ARTIFACT_INVENTORY/],
+  ['missing original tile', f => { f.artifacts.pop(); }, /ARTIFACT_INVENTORY/],
+  ['same path changed bytes', f => { f.artifacts[0].sha256 = 'b'.repeat(64); }, /ARTIFACT_INVENTORY/],
+  ['changed byte count', f => { f.artifacts[0].bytes += 1; }, /ARTIFACT_INVENTORY/],
+  ['duplicated file', f => { f.artifacts.push(copy(f.artifacts[0])); }, /ARTIFACT_INVENTORY/],
+  ['duplicated logical record', f => { f.rows.push(copy(f.rows[0])); }, /ARTIFACT_DUPLICATE/],
+  ['missing tile mapping', f => { f.rows[0].capture.tiles.pop(); }, /TILE_COUNT/],
+  ['reordered tile mapping', f => { f.rows[0].screenshots.reverse(); }, /TILE_BINDING/],
+  ['forged legacy single-shot name', f => { f.rows[0].screenshots[0].path = 'E005-Q12-mobile.png'; }, /TILE_BINDING/],
+  ['foreign case filename', f => { f.rows[0].capture.tiles[0].filename = 'E006-Q3-mobile-tile-01.png'; }, /TILE_BINDING/]
+]) test(`v2 artifact inventory refuses ${name}`, () => {
+  const f = tileInventory(); mutate(f); assert.throws(() => checker.assertScreenshotInventory(f.rows, f.artifacts), error);
+});
+
+test('artifact bytes are freshly hashed and a symlink cannot supply an original PNG', t => {
+  const folder = fs.mkdtempSync(path.join(os.tmpdir(), 'problem-ui-tiles-'));
+  t.after(() => fs.rmSync(folder, { recursive: true, force: true }));
+  const file = path.join(folder, 'E005-Q12-mobile-tile-01.png');
+  fs.writeFileSync(file, 'synthetic-original');
+  const before = checker.readScreenshotArtifacts(folder);
+  fs.writeFileSync(file, 'synthetic-changed');
+  assert.notEqual(checker.readScreenshotArtifacts(folder)[0].sha256, before[0].sha256);
+  fs.symlinkSync(file, path.join(folder, 'E005-Q12-mobile-tile-02.png'));
+  assert.throws(() => checker.readScreenshotArtifacts(folder), /UI_SCREENSHOT_REGULAR_FILE/);
 });
 
 function fixture() {
@@ -321,7 +496,8 @@ test('workflow requires the six-case job without modifying the existing solution
   assert.match(job, /if: steps.plan.outputs.required == 'true'/);
   assert(!job.includes('continue-on-error'));
   assert.match(job, /technical-proof.json/);
-  assert.match(job, /\*-desktop.png/);
-  assert.match(job, /\*-mobile.png/);
+  assert.match(job, /\*-desktop-tile-\*.png/);
+  assert.match(job, /\*-mobile-tile-\*.png/);
+  assert(!job.includes('/*-desktop.png') && !job.includes('/*-mobile.png'), 'v2 uploads original tiles without a single-shot alias');
   assert.match(workflow, /name: Archive2 50-question solution Chrome[\s\S]*?timeout-minutes: 12/);
 });
