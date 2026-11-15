@@ -375,7 +375,7 @@ function expectedRefs(original, priorRef, liveRefs) {
   const map = new Map();
   for (const ref of [...refsOf(original), priorRef, ...liveRefs]) {
     if (map.has(ref.path) && map.get(ref.path).sha256 !== ref.sha256) fail('immutable evidence conflict');
-    map.set(ref.path, ref);
+    map.set(ref.path, structuredClone(ref));
   }
   return [...map.values()].sort((a, b) => a.path.localeCompare(b.path));
 }

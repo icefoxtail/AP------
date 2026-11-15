@@ -6478,7 +6478,7 @@ test('renderer v3 prior solution witness cannot be omitted or broaden the exact 
 
 // Model the historical writer's missing sidecar in fixture data only. Production
 // recovery always pins the original issued Git receipt and never edits it.
-function issuedBindingRecoveryFixture(t) {
+function issuedBindingRecoveryFixture(t, { transitiveEvidence = false } = {}) {
   const f=fixture(t),sourcePath=`archive/exams/${f.request.sourceArchiveFile}`;
   f.request=JSON.parse(JSON.stringify(f.request).replaceAll('UNIT_NEW','M1-RECOVERY-TEST'));
   f.q.standardUnitKey='M1-RECOVERY-TEST';
@@ -6504,6 +6504,13 @@ function issuedBindingRecoveryFixture(t) {
   git('init','-q');const first=writeBank();git('hash-object','-w',sourcePath);
   f.request.scope='PARTIAL_UIDS';f.request.expectedQuestionCount=3;f.request.expectedSourceBlobSha1=blob(first);
   f.request.items=records.slice(0,2).map(row=>({...structuredClone(f.request.items[0]),questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal}));
+  if(transitiveEvidence) {
+    const evidencePath='docs/prior-native-transitive-authority.json';
+    f.put(evidencePath,{review:'original immutable authority'});
+    const ref={path:evidencePath,sha256:hash(fs.readFileSync(path.join(f.root,evidencePath)))};
+    f.request.approval.evidenceRefs=[...f.request.approval.evidenceRefs,ref];
+    f.request.items=f.request.items.map(item=>({...item,evidenceRefs:[...item.evidenceRefs,ref]}));
+  }
   registerReviewedExamV2({root:f.root,request:f.request,write:true});
   const firstPath=`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${f.request.requestId}.json`;
   const firstRef={path:firstPath,sha256:hash(fs.readFileSync(path.join(f.root,firstPath)))};commit();
@@ -6682,4 +6689,36 @@ test('issued binding recovery refuses digest-valid selected canonical drift and 
     assert.equal((await recoveryAuto(f))[0].native,null);
     for(const [p,raw]of frozen)fs.writeFileSync(path.join(f.root,p),raw);
   });
+});
+
+
+test('issued binding recovery keeps returned transitive references detached from immutable replay authority',async t=>{
+  const f=issuedBindingRecoveryFixture(t,{transitiveEvidence:true}),evidencePath='docs/prior-native-transitive-authority.json';
+  const originalRaw=fs.readFileSync(path.join(f.root,evidencePath)),originalDigest=hash(originalRaw);
+  assert.ok(!f.original.approval.evidenceRefs.some(ref=>ref.path===evidencePath));
+  const returnedRef=f.request.approval.evidenceRefs.find(ref=>ref.path===evidencePath);
+  assert.equal(returnedRef.sha256,originalDigest);
+  assert.equal(registerReviewedExamV2({root:f.root,request:f.request}).status,'PASS');
+  const immutableBefore=f.git('show',`${f.pre}:${evidencePath}`);
+  f.put(evidencePath,{review:'changed live authority cannot be adopted through a returned reference'});
+  returnedRef.sha256=hash(fs.readFileSync(path.join(f.root,evidencePath)));
+  const preparedAgain=prepareIssuedSourceBindingRecovery({root:f.root,requestId:f.request.requestId,
+    originalRequestRef:f.request.approval.sourceRebind.originalRequestRef,
+    issuedReceiptCommit:f.request.approval.sourceRebind.issuedReceiptCommit,
+    priorReceiptRef:f.request.approval.sourceRebind.priorReceiptRef});
+  assert.equal(preparedAgain.inputRefs.find(ref=>ref.path===evidencePath).sha256,originalDigest);
+  const unchangedPaths=[META,'archive/data/question_identity_map.json',f.runtimePath,f.originalReceiptPath,f.sourcePath];
+  const before=new Map(unchangedPaths.map(p=>[p,fs.readFileSync(path.join(f.root,p))]));
+  assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request,write:true}),/complete immutable evidence|evidence missing, changed or ambiguous/);
+  assert.equal(fs.existsSync(path.join(f.root,f.receiptPath)),false);
+  assert.equal(fs.existsSync(path.join(f.root,f.proofPath)),false);
+  for(const [p,raw]of before)assert.deepEqual(fs.readFileSync(path.join(f.root,p)),raw);
+  assert.equal(f.git('show',`${f.pre}:${evidencePath}`),immutableBefore);
+  fs.writeFileSync(path.join(f.root,evidencePath),originalRaw);
+  const applied=registerReviewedExamV2({root:f.root,request:preparedAgain.request,write:true});
+  assert.equal(applied.status,'PASS');assert.equal(applied.preservedMetadataApprovals,2);
+  assert.equal(registerReviewedExamV2({root:f.root,request:preparedAgain.request}).replay,true);
+  for(const result of await recoveryAuto(f,preparedAgain.request)) {
+    assert.equal(result.native,f.receiptPath);assert.equal(result.auto.status,'ALREADY_REGISTERED');
+  }
 });
