@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "independent-meta-sample-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
+  "examKey": "E102",
+  "author": "meta_c",
+  "reviewer": "meta_b",
+  "reviewerOwner": "GPT_ROOT_D03144C8CA75/B",
+  "reviewedAt": "2026-11-15",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "scope": "METADATA_ONLY_LOCAL_PREPARATION",
+  "sourceBlob": "eecc26b1b83f8d8095ebb8d0c1c09f9a5a1c90d0",
+  "sourceSha256": "ca4e4a43d4bb395e70bee27293d0ec09e659706ee16af807103133418ed2cf94",
+  "reviewPath": "/workspace/scratch/d03144c8ca75/workers/C/E102.review.json",
+  "reviewSha256": "4427c98550af08e7fad052a619a2470871349248a09089ebe6edc86abb40381e",
+  "fourSlotPath": "/workspace/scratch/d03144c8ca75/workers/C/E102.4slot.json",
+  "fourSlotSha256": "77286f738feca838e9a2479a9fde95b77ff5e49595217662043f94217fb21a81",
+  "sampleOrdinals": [
+    11,
+    16,
+    28
+  ],
+  "samples": [
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_e4569a483fcce46b7208c953dda15e90aca9dca991476bdf616abaf678a14349",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt",
+        "actual image"
+      ],
+      "quotesVerified": 7,
+      "rationale": "실제 빈 모눈 좌표축 PNG와 본문 조건을 확인. 완전제곱꼴에서A(2,5), y절편B(0,1), 축교점C(2,0)을 읽고 수직 밑변AC와 수평높이로 넓이를 구하는 기존해설 경로에 방법과 CC_TRIANGLE_AREA가 부합. level중/bucket3 및 leaf047 상위맥락·2022/세부유형 제안 부채를 수용.",
+      "sourceFingerprints": {
+        "QBODY": "4eae56c820ed781a62c378dfead6ca2bbe9bcb54c2a2b33375d0e2d7a086b57e",
+        "QFULL": "265f56d566c1f411769158b076aa1d865b36bea541dc893eacdb6ad8a810d847"
+      },
+      "debtKindsPreserved": [
+        "RPM2022_LEAF_PROPOSAL",
+        "TAXONOMY_PROPOSAL"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_e685441ff02e83971ab3ea9578149724e7e2ddcfbce68b06ae923c45bbc4333f",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt"
+      ],
+      "quotesVerified": 6,
+      "rationale": "두 근의 합을 다른 이차방정식에 대입하는 실제해설을 읽음. 주공식인 근과계수의관계에 별도 교육과정 부채를 보존하고 해설 안에 실제 존재하는 괄호 속 근의공식 경로에만 method를 결속한 점을 확인. 근의공식→합→대입 두단계 bucket2와 계수결정 leaf031/123을 수용.",
+      "sourceFingerprints": {
+        "QBODY": "bf58f7bdc9f380df64e4f24f259cc9e65219334a899484a58902de1fee5ee112",
+        "QFULL": "62c3f5591c767e18365aec02bb8be5c659dd90f4a61a83cf76271307521eeca6"
+      },
+      "debtKindsPreserved": [
+        "CURRICULUM_METHOD_DEBT",
+        "TAXONOMY_PROPOSAL"
+      ]
+    },
+    {
+      "ordinal": 28,
+      "questionUid": "qid_v1_5ab62c296e9319292961c73b9c0aac2cfa1dedba58b0ffeb7360225fcfce73e5",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt"
+      ],
+      "quotesVerified": 9,
+      "rationale": "꼭짓점좌표(a/2,(8-a²)/4)의 제2사분면 부호조건을 동시에 만족하는 정수선별임을 확인. graph 사분면통과 PT와 vertex 한점 조건을 구별하여 표본 지적 후 PT정확일치 후보를 철회한 최종본 재조회. subtype 제안·integer조건·bucket3/B34 및 기존상 유지가 타당.",
+      "sourceFingerprints": {
+        "QBODY": "19127ab6c46973dd3739f91a5f915623d21c508d96b8c858005d34f3fd88c732",
+        "QFULL": "aa0a576c2ab072313cae2773f96e7a196df0a0a7d276c02a5aad5ef231b410f2"
+      },
+      "debtKindsPreserved": [
+        "RPM2022_LEAF_PROPOSAL",
+        "TAXONOMY_PROPOSAL"
+      ]
+    }
+  ],
+  "assetReadback": [
+    {
+      "ordinal": 11,
+      "path": "/workspace/scratch/d03144c8ca75/workers/C/E102-assets/q11.png",
+      "sha256": "fb4e19c459c41a205c6ddda574be230596bbce324e8243f3e9176748e24aa7f5",
+      "gitBlob": "0c8d0b946e0088bb4234532a3426df9beb9354e3",
+      "status": "VISUALLY_READ"
+    }
+  ],
+  "independentReviewerNotAuthor": true,
+  "contentQualityPass": false,
+  "remoteCompletionClaim": false,
+  "remaining": [
+    "root ownership handoff confirmation",
+    "root protected-field integration checks",
+    "remote checkpoint",
+    "Codex exact-leaf/projection and declared content debt processing"
+  ]
+}
