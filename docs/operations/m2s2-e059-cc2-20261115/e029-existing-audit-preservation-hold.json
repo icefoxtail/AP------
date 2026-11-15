@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "m2s2-finalized-cc-preservation-contract-hold-v1",
+  "status": "HOLD_EXISTING_AUDIT_AND_CC_PRESERVATION_CONTRACT",
+  "baseCommit": "6b608e3e606eb50ce4fd3d9ad6954d6fc4120f1f",
+  "questionUid": "qid_v1_ad78c39cb384b8f7c42183424b8cf37172d3c0577ed584c52b42c50bee1ece10",
+  "sourceOrdinal": 17,
+  "sourcePath": "archive/exams/original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+  "sourceBlob": "1564b9a4e8168d29f93ee9b0122d2f0c4f336183",
+  "sourceMutation": 0,
+  "requestCreated": false,
+  "existing": {
+    "metadataApprovalType": "META_PIPELINE_AUDIT",
+    "metadataStatus": "approved_semantic_review",
+    "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.3:exam-meta_pipeline_audit-v2:m2s2-closeout-20261115-E029-audit-preserve",
+    "crossConceptKeys": [
+      "CC_SIMILAR_FIGURES_AREA_VOLUME"
+    ],
+    "metadataStableSha256": "ddb077eedd04584b995944ad180ef9f3b93454799edcf4a839547cd7db9dd29b",
+    "sameSourceAuditedRows": 24,
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-closeout-20261115-E029-audit-preserve.json"
+  },
+  "native": {
+    "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "path": "archive/data/meta-review/m2-s2-20261114/exams/E029/review.json",
+    "sha256": "cfaa00f0d5960c0007c3513e06faeaf2cc5b5d7ce508958afb7f8d149af2721a",
+    "explicitAfterCurriculum": "2015",
+    "explicitAfterPrimary": {
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME"
+    },
+    "nativeAfterCrossConceptKeys": []
+  },
+  "finalization": {
+    "commit": "1bd67bd03dfc299d371ea0e9ee55677bf4e9052a",
+    "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+    "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00",
+    "addCrossConceptKey": "CC_PRISM_VOLUME",
+    "existingApprovalAndConceptRemovalAuthorized": false
+  },
+  "contractConflicts": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-proposal-finalization.mjs",
+      "sha256": "b2c0c594beca17fa99b88657c4a3880a925e63e7b4954632937b36c132ae9109",
+      "contract": "v1 finalizeCrossConcept returns exact native base concepts plus the single finalized concept; native base is empty, so this is not the required union with the already audited concept."
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-audit-preservation.mjs",
+      "sha256": "e24b39db44464db679d7e786bb2b5f864e45cc00404afd6afe4dd5b2a54b9f64",
+      "contract": "Existing audit preservation rejects registry changes and permits only separately reviewed difficulty changes; it does not authorize appending a new cross-concept."
+    }
+  ],
+  "nextAction": "Use a typed officially reviewed preservation-and-append route that retains the existing audit and concept, or obtain the necessary narrow contract amendment. Do not remove the audited concept, silently convert the approval type, or bypass finalization guards.",
+  "newMathematicalQa": false,
+  "newSemanticJudgment": false
+}

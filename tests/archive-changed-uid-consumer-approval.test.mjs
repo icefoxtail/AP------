@@ -9,6 +9,8 @@ import { fileURLToPath } from "node:url";
 import { verifyChangedUidConsumerApproval, renderSummary } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
 import { loadResolvedConsumerCatalog, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import canonical from "../archive/archive2-canonical.js";
+import { SOURCE_SUBSET_SCHEMA, FULL_SOURCE_SUBSET_SCHEMA } from "../archive/tools/meta-foundation/source-subset-preservation.mjs";
+import { ORIGINAL_RENDERER_SCHEMA } from "../archive/tools/meta-foundation/original-finalqa-renderer-preservation.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const checker = path.join(repo, "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs");
@@ -202,6 +204,58 @@ test("partial audit preservation is typed as existing approval preservation and 
   assert.equal(out.exams[0].newMetadataApprovals, 0); assert.equal(out.exams[0].preservedMetadataApprovals, 0);
   assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 0, skippedUnchanged: 0 });
   assert.equal(out.failures[0].reason, "NATIVE_PRESERVATION_MISMATCH");
+});
+
+for (const schemaVersion of [SOURCE_SUBSET_SCHEMA, FULL_SOURCE_SUBSET_SCHEMA])
+test("strict subset Consumer dispatch requires real native replay and never skips its unchanged values: " + schemaVersion, t => {
+  const f = historicalConsumerFixture(t), item = f.request.items[0];
+  const request = { ...f.request, requestId: "missing-strict-subset-proof", scope: "PARTIAL_UIDS", registryChanges: [],
+    approval: { ...f.request.approval, type: "FINAL_QA", sourceRebind: {
+      schemaVersion, priorReceiptRef: { path: "missing.json", sha256: "a".repeat(64) },
+      subsetEvidenceRef: { path: "missing-subset.json", sha256: "b".repeat(64) } } },
+    items: [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, before: {}, after: {} }] };
+  const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "strict-subset.json", request)] });
+  assert.equal(out.status, "FAIL");
+  assert.equal(out.exams[0].kind, "native-approval-preservation");
+  assert.equal(out.exams[0].expectedQuestionCount, 24);
+  assert.equal(out.exams[0].newMetadataApprovals, 0);assert.equal(out.exams[0].preservedMetadataApprovals, 0);
+  assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 0, skippedUnchanged: 0 });
+  assert.equal(out.failures[0].reason, "NATIVE_PRESERVATION_MISMATCH");
+  for (const mutate of [r => { r.approval.sourceRebind.schemaVersion = "unknown-subset"; },
+    r => { delete r.scope; r.expectedQuestionCount = 1; }, r => { r.approval.type = "REVIEW2"; },
+    r => { r.items[0].after.crossConceptKeys = ["UNREVIEWED"]; }, r => { r.items[0].sourceReview = {}; }]) {
+    const bad = structuredClone(request);mutate(bad);
+    const result = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "bad-strict-subset.json", bad)] });
+    assert.equal(result.status, "FAIL");assert.equal(result.failures[0].reason, "INVALID_REQUEST");assert.equal(result.counts.passed, 0);
+  }
+});
+
+test("original full-approval renderer Consumer dispatch requires immutable proof and real native replay", t => {
+  const f = historicalConsumerFixture(t), item = f.request.items[0];
+  const priorReceiptRef = { path: "missing-original-full.json", sha256: "a".repeat(64) };
+  const rendererEvidenceRef = { path: "missing-independent-renderer.json", sha256: "b".repeat(64) };
+  const evidenceRefs = [priorReceiptRef, rendererEvidenceRef];
+  const request = { schemaVersion: "archive-reviewed-exam-meta-register-request-v2", requestId: "missing-original-renderer-proof",
+    examUid: f.request.examUid, sourceArchiveFile: f.request.sourceArchiveFile, scope: "PARTIAL_UIDS",
+    expectedQuestionCount: 24, expectedSourceBlobSha1: f.request.expectedSourceBlobSha1, registryChanges: [],
+    approval: { type: "FINAL_QA", metadataReviewed: true, approvedBy: "fixture-transport", evidenceRefs,
+      sourceRebind: { schemaVersion: ORIGINAL_RENDERER_SCHEMA, priorReceiptRef, rendererEvidenceRef, reviewCommit: "c".repeat(40) } },
+    items: [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, before: {}, after: {}, reason: "Existing approval preservation only", evidenceRefs }] };
+  const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "original-renderer.json", request)] });
+  assert.equal(out.status, "FAIL");
+  assert.equal(out.exams[0].kind, "native-approval-preservation");
+  assert.equal(out.exams[0].expectedQuestionCount, 24);
+  assert.equal(out.exams[0].newMetadataApprovals, 0); assert.equal(out.exams[0].preservedMetadataApprovals, 0);
+  assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 0, skippedUnchanged: 0 });
+  assert.equal(out.failures[0].reason, "NATIVE_PRESERVATION_MISMATCH");
+  for (const mutate of [r => { r.approval.sourceRebind.schemaVersion = "unknown-renderer"; },
+    r => { delete r.scope; }, r => { r.approval.type = "REVIEW2"; }, r => { delete r.approval.sourceRebind.rendererEvidenceRef; },
+    r => { r.items[0].after.difficultyBucket = 2; }, r => { r.items[0].sourceReview = {}; }, r => { r.registryChanges = [{}]; }]) {
+    const bad = structuredClone(request); mutate(bad);
+    const result = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "bad-original-renderer.json", bad)] });
+    assert.equal(result.status, "FAIL"); assert.equal(result.failures[0].reason, "INVALID_REQUEST");
+    assert.equal(result.counts.passed, 0); assert.equal(result.counts.skippedUnchanged, 0);
+  }
 });
 
 test("preserved native summary separates old approvals from new approvals and keeps its source denominator", () => {

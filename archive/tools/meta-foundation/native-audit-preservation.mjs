@@ -305,7 +305,7 @@ export function loadAuditPreservation({ root, request, bytes, bank, _historical 
   }
   const context = { root, request, prior, ref, records, identities, runtimes, patches, oldBank, bank, master,
     changes, difficultyItems, proofRows, difficulty, difficultyBytes, difficultyRef, repair, repairedUids: new Set(),
-    readBound, readBoundBytes, historical: _historical };
+    readBound, readBoundBytes, historical: _historical, preservedPriorContext: preservedPrior?.context || null };
   context.consumerParents = loadPreservedConsumerParents(context);
   return context;
 }
@@ -336,7 +336,53 @@ function verifyHistoricalPreservation({ root, receipt, receiptRef, priorCommit, 
       receiptPath: receiptRef.path, replay: true });
     assertPreservedAuditRepair(receipt, kept);
   }
-  return { request };
+  return { request, context };
+}
+
+// A different, explicitly typed component operation may retain an already
+// issued full audit. Reproduce its existing preservation contract at the exact
+// immutable snapshot; this does not add any value to the v1 preservation lane.
+export function loadVerifiedHistoricalAuditSnapshot({ root, priorCommit, priorReceiptRef }) {
+  commit(root, priorCommit);
+  if (!priorReceiptRef?.path?.startsWith(RECEIPTS) ||
+      priorReceiptRef.path.slice(RECEIPTS.length).includes("/") || !priorReceiptRef.path.endsWith(".json") ||
+      !SHA256.test(priorReceiptRef.sha256 || "")) fail("historical full audit reference required");
+  const raw = git(root, ["show", priorCommit + ":" + priorReceiptRef.path]);
+  if (sha(raw) !== priorReceiptRef.sha256 ||
+      sha(fs.readFileSync(localPath(root, priorReceiptRef.path))) !== priorReceiptRef.sha256)
+    fail("historical full audit receipt SHA mismatch");
+  const prior = JSON.parse(raw);
+  if (!isAuditPreservation(prior.approval) || prior.scope !== undefined ||
+      prior.registrationMode !== undefined || prior.approval.sourceRebind.priorReceiptRef.path === priorReceiptRef.path)
+    fail("an existing full typed audit preservation is required");
+  const bytes = git(root, ["show", priorCommit + ":archive/exams/" + prior.sourceArchiveFile]);
+  if (blobSha(bytes) !== prior.sourceBlobSha1 || sha(bytes) !== prior.sourceRawSha256)
+    fail("historical full audit source mismatch");
+  const bank = parseBank(bytes);
+  const verified = verifyHistoricalPreservation({ root, receipt: prior, receiptRef: priorReceiptRef,
+    priorCommit, bytes, bank, seen: [] });
+  const metadata = unique(gitJson(root, priorCommit, "archive/data/question_metadata.json").records,
+    "questionUid", "historical current metadata");
+  const identity = unique(gitJson(root, priorCommit, "archive/data/question_identity_map.json").records,
+    "questionUid", "historical current identity");
+  const runtimeFiles = git(root, ["ls-tree", "-r", "--name-only", priorCommit, "--", "archive/data/meta-foundation/runtime"])
+    .toString().split("\n").filter(p => p.endsWith(".json") && !p.endsWith("/runtime-bridge-receipt.json"));
+  const runtime = unique(runtimeFiles.flatMap(p => gitJson(root, priorCommit, p).records || []),
+    "questionUid", "historical current runtime");
+  for (const [rows, actual, label] of [[prior.appliedRecords, metadata, "metadata"],
+    [prior.appliedIdentityRecords, identity, "identity"], [prior.runtimeRecords, runtime, "runtime"]])
+    for (const row of rows) if (!equal(row, actual.get(row.questionUid)))
+      fail("historical full audit differs from actual snapshot " + label + ": " + row.questionUid);
+  // These are the actual source snapshots authenticated by the existing
+  // preservation recursion. A new component must not choose a later commit as
+  // an independent authority for renderer bytes that the old audit never saw.
+  const sourceSnapshots = [{ commit: priorCommit, receiptRef: priorReceiptRef, bank,
+    sourceBlobSha1: prior.sourceBlobSha1, sourceRawSha256: prior.sourceRawSha256 }];
+  for (let context = verified.context; context; context = context.preservedPriorContext)
+    sourceSnapshots.push({ commit: context.request.approval.sourceRebind.priorCommit,
+      receiptRef: context.ref, bank: context.oldBank, sourceBlobSha1: context.prior.sourceBlobSha1,
+      sourceRawSha256: context.prior.sourceRawSha256 });
+  return { prior, bytes, bank, context: verified.context, request: verified.request, sourceSnapshots };
 }
 
 // Historical raw audit L1/L2 can predate the already published basic-parent

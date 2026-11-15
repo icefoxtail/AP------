@@ -20,6 +20,7 @@ const fs = require('node:fs'); const path = require('node:path');
 const args = process.argv.slice(2); const req = args[args.indexOf('--request') + 1];
 if (!args.includes('--write')) process.exit(3);
 const body = JSON.parse(fs.readFileSync(req, 'utf8')); const name = path.basename(req, '.json');
+if (body.traceCalls) fs.appendFileSync('registrar-calls.log', name + '\\n');
 if (body.behavior !== 'fail') fs.mkdirSync('derived', { recursive: true });
 if (body.behavior === 'dirty-fail') fs.writeFileSync('derived/partial-' + name + '.out', 'half written');
 if (body.behavior === 'ok') { fs.writeFileSync('derived/' + name + '.out', 'applied ' + name + '\\n'); console.log(JSON.stringify({ status: 'PASS' })); process.exit(0); }
@@ -49,7 +50,7 @@ function fixture(t, behaviors) {
     return { ...r, applied: lines('applied.txt'), rejected: lines('rejected.txt'), summary: fs.existsSync(summary) ? fs.readFileSync(summary, 'utf8') : '' };
   };
   const exists = rel => fs.existsSync(path.join(dir, rel));
-  return { dir, run, exists, readJson: rel => JSON.parse(fs.readFileSync(path.join(dir, rel), 'utf8')) };
+  return { dir, requests, run, exists, readJson: rel => JSON.parse(fs.readFileSync(path.join(dir, rel), 'utf8')) };
 }
 
 function registryDependencyFixture(t, { providerBehavior = 'ok' } = {}) {
@@ -109,6 +110,113 @@ for (const mode of ['duplicate', 'cycle']) test(`main rejects a ${mode} binding 
   const r = f.run(); assert.equal(r.status, 1);
   assert.match(r.stderr, mode === 'duplicate' ? /REGISTRY_DEPENDENCY_AMBIGUOUS/ : /REGISTRY_DEPENDENCY_CYCLE/);
   assert.deepEqual(r.applied, []); assert.equal(f.exists('derived'), false);
+});
+
+// Exercise the exported main writer, not just the shared preview sorter. The
+// registrar stub makes invocation/write boundaries observable without granting
+// any semantic approval or relaxing the real registrar's validation contract.
+async function runExportedWriter(f) {
+  const { registerRequests } = await import(script);
+  return registerRequests({ root: f.dir, registrar: 'registrar.js',
+    rejectedDir: '.archive-meta-register/rejected', guardPathsFile: 'tools/ci/commit.paths',
+    requests: f.requests }, { log() {} });
+}
+
+function definitionChange(kind) {
+  const concept = kind === 'concepts', field = concept ? 'conceptKey' : 'conditionKey';
+  const key = concept ? 'CC_ORDER_SHARED' : 'COND_ORDER_SHARED';
+  return { path: concept ? 'archive/data/meta-foundation/canonical/concepts/plane-geometry.json'
+    : 'archive/data/meta-foundation/canonical/condition_registry.json', collection: kind,
+    match: { [field]: key }, before: null, after: { [field]: key, status: 'ACTIVE' } };
+}
+
+function definitionDependencyFixture(t, { kind = 'concepts', providerBehavior = 'ok' } = {}) {
+  const f = fixture(t, { '00-consumer': 'ok', '10-unrelated': 'ok', '99-provider': providerBehavior });
+  const put = (name, value) => fs.writeFileSync(path.join(f.dir, '.archive-meta-register/inbox', name + '.json'), JSON.stringify(value));
+  const change = definitionChange(kind), itemField = kind === 'concepts' ? 'crossConceptKeys' : 'conditionKeys';
+  const after = { [itemField]: Object.values(change.match) };
+  const consumer = { schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', behavior: 'ok', traceCalls: true,
+    approval: { type: 'FINAL_QA' }, items: [{ questionUid: 'consumer', sourceOrdinal: 1, after }] };
+  const provider = { schemaVersion: consumer.schemaVersion, behavior: providerBehavior, traceCalls: true,
+    items: [{ questionUid: 'provider', sourceOrdinal: 1, after }], registryChanges: [change] };
+  put('00-consumer', consumer); put('99-provider', provider);
+  put('10-unrelated', { behavior: 'ok', traceCalls: true });
+  git(f.dir, 'add', '-A'); git(f.dir, 'commit', '-qm', 'definition provider after consumer in filename order');
+  const calls = () => f.exists('registrar-calls.log') ? fs.readFileSync(path.join(f.dir, 'registrar-calls.log'), 'utf8').trim().split('\n') : [];
+  return { ...f, put, consumer, provider, calls };
+}
+
+for (const kind of ['concepts', 'conditions']) {
+  test(`main exported writer applies the exact ${kind} definition provider before its consumer`, async t => {
+    const f = definitionDependencyFixture(t, { kind }), result = await runExportedWriter(f);
+    assert.deepEqual(result.applied.map(row => row.request), [f.requests[1], f.requests[2], f.requests[0]]);
+    assert.deepEqual(result.rejected, []); assert.deepEqual(result.pendingSupplement, []);
+    assert.equal(result.dirtied, null);
+    assert.deepEqual(f.calls(), ['10-unrelated', '99-provider', '00-consumer']);
+  });
+
+  test(`main exported writer refuses a consumer after its ${kind} provider fails and leaves unrelated work intact`, async t => {
+    const f = definitionDependencyFixture(t, { kind, providerBehavior: 'fail' }), result = await runExportedWriter(f);
+    assert.deepEqual(result.applied.map(row => row.request), [f.requests[1]]);
+    assert.deepEqual(result.rejected.map(row => row.request), [f.requests[2], f.requests[0]]);
+    assert.deepEqual(result.pendingSupplement, []); assert.equal(result.dirtied, null);
+    assert.deepEqual(f.calls(), ['10-unrelated', '99-provider']);
+    assert.equal(f.exists('derived/00-consumer.out'), false);
+    assert.equal(f.exists(f.requests[2]), false, 'dependency survives moving its provider out of the inbox');
+    assert.match(f.readJson('.archive-meta-register/rejected/00-consumer.rejection.json').error, /DEFINITION_DEPENDENCY_NOT_APPLIED/);
+  });
+}
+
+test('main exported writer cannot provisionally approve an audit consumer after a definition provider refusal', async t => {
+  const f = definitionDependencyFixture(t, { providerBehavior: 'fail' });
+  f.consumer.approval.type = 'META_PIPELINE_AUDIT'; f.put('00-consumer', f.consumer);
+  const result = await runExportedWriter(f);
+  assert.deepEqual(result.applied.map(row => row.request), [f.requests[1]]);
+  assert.deepEqual(result.rejected.map(row => row.request), [f.requests[2], f.requests[0]]);
+  assert.deepEqual(result.pendingSupplement, []);
+  assert.equal(f.exists('.archive-meta-register/pending-supplement'), false);
+  assert.deepEqual(f.calls(), ['10-unrelated', '99-provider']);
+});
+
+for (const mode of ['duplicate', 'cycle']) test(`main exported writer rejects a ${mode} definition graph before any registrar call`, async t => {
+  const f = definitionDependencyFixture(t);
+  if (mode === 'duplicate') f.put('10-unrelated', { ...f.provider, behavior: 'ok' });
+  else {
+    const change = definitionChange('conditions');
+    f.consumer.registryChanges = [change];
+    f.provider.items[0].after = { conditionKeys: Object.values(change.match) };
+    f.put('00-consumer', f.consumer); f.put('99-provider', f.provider);
+  }
+  await assert.rejects(runExportedWriter(f), mode === 'duplicate' ? /DEFINITION_DEPENDENCY_AMBIGUOUS/ : /REGISTRY_DEPENDENCY_CYCLE/);
+  assert.deepEqual(f.calls(), []); assert.equal(f.exists('derived'), false);
+  assert.ok(f.requests.every(f.exists), 'graph rejection occurs before any request is moved');
+});
+
+for (const providerBehavior of ['ok', 'fail']) test(`main exported writer composes binding and definition dependencies when the binding provider is ${providerBehavior}`, async t => {
+  const f = definitionDependencyFixture(t);
+  const key = { curriculum: '2015', standardCourse: '중2 수학', standardUnitKey: 'M2-06',
+    subUnitKey: 'M2-06-PARALLEL_LENGTH_RATIO', problemTypeKey: 'PT_QUADRILATERAL_PROPERTIES' };
+  // Filename order is consumer, definition provider, binding provider: both
+  // edges must participate in the same graph and in actual failure propagation.
+  const definitionProvider = { ...f.provider, items: [{ questionUid: 'provider', sourceOrdinal: 1, after: key }] };
+  const bindingProvider = { schemaVersion: f.consumer.schemaVersion, behavior: providerBehavior, traceCalls: true,
+    items: [], registryChanges: [{ path: 'archive/data/meta-foundation/canonical/packs/middle2/bindings.json',
+      collection: 'bindings', match: key, before: null, after: { ...key, status: 'ACTIVE', ownerPack: 'MIDDLE2' } }] };
+  f.put('10-unrelated', definitionProvider); f.put('99-provider', bindingProvider);
+  const result = await runExportedWriter(f);
+  if (providerBehavior === 'ok') {
+    assert.deepEqual(result.applied.map(row => row.request), [f.requests[2], f.requests[1], f.requests[0]]);
+    assert.deepEqual(result.rejected, []);
+    assert.deepEqual(f.calls(), ['99-provider', '10-unrelated', '00-consumer']);
+  } else {
+    assert.deepEqual(result.applied, []);
+    assert.deepEqual(result.rejected.map(row => row.request), [f.requests[2], f.requests[1], f.requests[0]]);
+    assert.deepEqual(f.calls(), ['99-provider']);
+    assert.match(f.readJson('.archive-meta-register/rejected/10-unrelated.rejection.json').error, /REGISTRY_DEPENDENCY_NOT_APPLIED/);
+    assert.match(f.readJson('.archive-meta-register/rejected/00-consumer.rejection.json').error, /DEFINITION_DEPENDENCY_NOT_APPLIED/);
+    assert.equal(f.exists('derived'), false);
+  }
+  assert.deepEqual(result.pendingSupplement, []); assert.equal(result.dirtied, null);
 });
 
 test('a refused first request does not block the remaining requests (head-of-line fix)', t => {
@@ -351,8 +459,22 @@ function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
   git(dir, 'init', '-q', '--initial-branch=main');
   for (const [k, v] of [['user.name', 'test'], ['user.email', 'test@example.invalid'], ['core.autocrlf', 'false']]) git(dir, 'config', k, v);
   const put = (rel, text) => { fs.mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true }); fs.writeFileSync(path.join(dir, rel), text); };
+  // The real preview imports typed preservation contracts. Copy their actual
+  // local module closure before installing the intentional heavy-step stubs.
+  const copiedModules = new Set();
+  const copyModule = rel => {
+    if (copiedModules.has(rel)) return;
+    assert.ok(!path.posix.isAbsolute(rel) && !rel.startsWith('../'), 'fixture module stays in the repository');
+    copiedModules.add(rel);
+    const source = read(rel);
+    put(rel, source);
+    const localImports = /(?:^|[;\n])\s*(?:import|export)\s+(?:[^;'\"]*?\sfrom\s*)?['\"](\.{1,2}\/[^'\"]+)['\"]/g;
+    for (const match of source.matchAll(localImports))
+      copyModule(path.posix.normalize(path.posix.join(path.posix.dirname(rel), match[1])));
+  };
   for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/archive-pr-native-preview.mjs', 'tools/ci/collect-reviewed-consumer-refusals.mjs', 'tools/ci/archive-meta-register-commit.paths', 'archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs'])
-    put(rel, read(rel));
+    if (rel === 'tools/ci/archive-pr-native-preview.mjs') copyModule(rel);
+    else put(rel, read(rel));
   // The real registration paths plus `derived/`, where the stub registrar writes its output.
   put('tools/ci/archive-meta-register-commit.paths', read('tools/ci/archive-meta-register-commit.paths') + 'derived/\n');
   put('derived/.keep', '');

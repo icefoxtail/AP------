@@ -1034,3 +1034,15 @@ window.questionBank = [
     "decisiveStep": "각 사람의 성공·실패 확률을 곱하고 둘 다 실패하는 여사건으로 적어도 한 성공을 구한다."
   }
 ];
+
+// Carry existing source curriculum and its exact reviewed course namespace.
+Object.assign(window.questionBank[2], {
+  "curriculumKey": "2015",
+  "courseKey": "M2-2"
+});
+
+// Carry existing source curriculum and its exact reviewed course namespace.
+Object.assign(window.questionBank[20], {
+  "curriculumKey": "2015",
+  "courseKey": "M2-2"
+});

@@ -14,15 +14,62 @@ const stable = value => JSON.stringify(value, (_, v) => v && typeof v === 'objec
 const equal = (a, b) => stable(a) === stable(b);
 const ownKeys = (value, allowed) => value && typeof value === 'object' && !Array.isArray(value) &&
   Object.keys(value).every(k => allowed.includes(k));
-const FIGURE_FIELDS = new Set(['content', 'image', 'solutionImage', 'solutionImageSize',
+const FIGURE_FIELDS = new Set(['content', 'question', 'image', 'imageSize', 'aliveReplacement', 'solutionImage', 'solutionImageSize',
   'solutionImageAlt', 'solutionImageCaption', 'layoutTag']);
+const inspectedImageSize = question => !Object.hasOwn(question, 'imageSize') ||
+  question.imageSize === 'full' || question.imageSize === 'tall';
 const changed = (a, b) => [...new Set([...Object.keys(a), ...Object.keys(b)])].filter(k => !equal(a[k], b[k]));
 const imagePathsOnly = value => typeof value === 'string' ? value.replace(
   /(<img\b[^>]*?\bsrc\s*=\s*)(["'])([^"']*)\2/gi, '$1$2FIGURE_PATH$2') : value;
+function outsideHtmlTag(value, end) {
+  let tag = false, quote = null;
+  for (let i = 0; i < end; i += 1) {
+    const c = value[i];
+    if (!tag) { if (c === '<' && /[A-Za-z/!]/.test(value[i + 1] || '')) tag = true; }
+    else if (quote) { if (c === quote) quote = null; }
+    else if (c === '"' || c === "'") quote = c;
+    else if (c === '>') tag = false;
+  }
+  return !tag;
+}
+function inspectedRendererStem(value) {
+  if (typeof value !== 'string') return value;
+  // Only this image-only container is removable. No whitespace/text, generic
+  // tags, attributes, CSS or inline SVG are normalized. Every image still has
+  // to appear in the immutable, independently inspected asset inventory below.
+  const rawContext = /<!--|<(?:script|style|textarea|title|xmp|plaintext|iframe|noembed|noscript|template|svg|math)\b/i.test(value);
+  const stem = value.replace(/<div class="question-image"><img src="(?:archive\/)?assets\/[^"'<>\\\s?#&]+" alt="[^"<>\x00-\x1f&]*" style="width:[1-9]\d{0,3}px;max-width:100%;height:auto"><\/div>/g,
+    (container, offset) => !rawContext && outsideHtmlTag(value, offset) ? '' : container);
+  return imagePathsOnly(stem);
+}
+function inspectedQuestionAlias(value) {
+  if (typeof value !== 'string' || /<!--|<(?:script|style|textarea|title|xmp|plaintext|iframe|noembed|noscript|template|svg|math)\b/i.test(value)) return value;
+  // The legacy question alias permits an inspected path only when src is the
+  // first actual image attribute. Do not match data-src or text inside another
+  // attribute. Keep all remaining text, markup and attributes, including containers.
+  return value.replace(/(<img\s+src\s*=\s*)(["'])([^"']*)\2/gi,
+    (image, prefix, quote, source, offset) => outsideHtmlTag(value, offset)
+      ? `${prefix}${quote}FIGURE_PATH${quote}` : image);
+}
+function inspectedReplacementAssetPointer(ctx, before, current) {
+  const object = value => value && typeof value === 'object' && !Array.isArray(value);
+  const old = before.aliveReplacement, next = current.aliveReplacement;
+  if (!object(old) || !object(next) || !object(old.replacementAsset) || !object(next.replacementAsset) ||
+      !equal(changed(old, next), ['replacementAsset']) ||
+      !equal(changed(old.replacementAsset, next.replacementAsset), ['path'])) return false;
+  const normalize = value => typeof value === 'string' && value.startsWith('assets/') ? `archive/${value}` : value;
+  // This field is a historical provenance pointer. Its remaining fields stay
+  // exact. Actual asset bytes are established by the immutable independent
+  // inventories below, never by a stored replacementAsset byte count or digest.
+  return references(ctx, before).includes(normalize(old.replacementAsset.path)) &&
+    references(ctx, current).includes(normalize(next.replacementAsset.path));
+}
+
 const RENDERER_REVIEW_V2 = 'archive-independent-current-renderer-review-v2';
 const RENDERER_REVIEW_V3 = 'archive-independent-current-renderer-review-v3';
 const V3_FIGURE_FIELDS = new Set(['question', 'content', 'aliveReplacement']);
-const V2_FIGURE_FIELDS = new Set([...FIGURE_FIELDS, 'imageAlt', 'imageSize']);
+const V2_FIGURE_FIELDS = new Set(['content', 'image', 'solutionImage', 'solutionImageSize',
+  'solutionImageAlt', 'solutionImageCaption', 'layoutTag', 'imageAlt', 'imageSize']);
 const fieldDigest = (question, field) => sha(stable({ present: Object.hasOwn(question, field), value: question[field] ?? null }));
 
 // V2 adds only an independently inspected image description/size and the
@@ -562,8 +609,20 @@ export function validateReviewedCurrentRendererContinuity(args) {
       !equal(ctx.studentPayload(prefigure.question), ctx.studentPayload(ctx.native.reviewedBank[ctx.patch.sourceOrdinal - 1])))
     fail('prefigure source differs from the immutable native student payload');
   const delta = changed(prefigure.question, current.question);
-  if (!delta.length || delta.some(k => !(v3 ? V3_FIGURE_FIELDS : v2 ? V2_FIGURE_FIELDS : FIGURE_FIELDS).has(k)) ||
-      (!v2 && !v3 && !equal(imagePathsOnly(prefigure.question.content), imagePathsOnly(current.question.content))))
+  // Keep each independently authored schema's original closed field contract.
+  // V2/V3 are validated by their exact transition witnesses below; they do not
+  // widen the earlier v1 image-container, alias or provenance-pointer rules.
+  if (!v2 && !v3) {
+    if (delta.includes('imageSize') &&
+        (!inspectedImageSize(prefigure.question) || !inspectedImageSize(current.question)))
+      fail('only absent/full/tall imageSize hints are supported by renderer continuity');
+    if (delta.includes('aliveReplacement') && !inspectedReplacementAssetPointer(ctx, prefigure.question, current.question))
+      fail('only an inspected replacement asset path may change in historical renderer provenance');
+    if (!delta.length || delta.some(k => !FIGURE_FIELDS.has(k)) ||
+        !equal(inspectedRendererStem(prefigure.question.content), inspectedRendererStem(current.question.content)) ||
+        !equal(inspectedQuestionAlias(prefigure.question.question), inspectedQuestionAlias(current.question.question)))
+      fail('prefigure/current change is outside the inspected renderer fields');
+  } else if (!delta.length || delta.some(k => !(v3 ? V3_FIGURE_FIELDS : V2_FIGURE_FIELDS).has(k)))
     fail('prefigure/current change is outside the inspected renderer fields');
   if (!equal(ctx.studentPayload(ctx.question), ctx.studentPayload(current.question))) fail('live student payload differs from independently reviewed current source');
   const independent = independentWitness(ctx, item.independentReviewRef, prefigure, current, nativeSource, independentDocument);

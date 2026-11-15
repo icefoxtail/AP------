@@ -12,6 +12,7 @@ import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
 } from '../tools/ci/archive-pr-registration-proof.mjs';
 
 import { preparePrRegistration } from '../tools/ci/archive-pr-registration-prepare.mjs';
+import { SOURCE_SUBSET_SCHEMA, sourceSubsetEvidencePath, FULL_SOURCE_SUBSET_SCHEMA, fullSourceSubsetEvidencePath } from '../archive/tools/meta-foundation/source-subset-preservation.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
@@ -31,7 +32,7 @@ const PLANNED = [META, AUTHORITY, RECEIPT].sort();
 const ALLOWED = [/^archive\/db\.js$/, /^archive\/data\/question_metadata\.json$/,
   /^archive\/data\/archive2-(?:catalog|canonical-input-manifest)\.json$/];
 
-function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
+function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, subsetPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -100,10 +101,21 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     request.approval.sourceRebind = { schemaVersion: 'archive-native-audit-preservation-v1', requestPath: REQUEST,
       difficultyRequestRef: { path: DIFFICULTY_REQUEST, sha256: sha(json(difficultyRequest)) } };
   }
-  if (finalQaPreservation) {
+  if (finalQaPreservation || subsetPreservation) {
     Object.assign(request.approval, { metadataReviewed: true, approvedBy: 'fixture existing approval preservation',
       sourceRebind: { priorReceiptRef: evidenceRef } });
     Object.assign(request.items[0], { before: {}, after: {} });
+  }
+  if (subsetPreservation) {
+    const proofPath = subsetPreservation === 'full' ? fullSourceSubsetEvidencePath(request.requestId) : sourceSubsetEvidencePath(request.requestId);
+    // This fixture tests dispatch only; the registrar test suite authenticates
+    // the complete strict-subset proof and the original approved inventory.
+    const bytes = json({ schemaVersion: 'archive-native-source-subset-evidence-v1', dispatchFixture: true });
+    write(proofPath, bytes);
+    const ref = { path: proofPath, sha256: sha(bytes) };
+    request.approval.sourceRebind = { schemaVersion: subsetPreservation === 'full' ? FULL_SOURCE_SUBSET_SCHEMA : SOURCE_SUBSET_SCHEMA,
+      priorReceiptRef: evidenceRef, subsetEvidenceRef: ref };
+    request.approval.evidenceRefs.push(ref);request.items[0].evidenceRefs.push(ref);
   }
   if (basicPreservation) {
     request.schemaVersion = 'archive-basic-scope-rebind-request-v1'; delete request.scope; delete request.registryChanges;
@@ -114,7 +126,8 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
   mutateRequest?.(request);
   write(REQUEST, json(request));
   if (pairedDifficulty) write(DIFFICULTY_REQUEST, json(difficultyRequest));
-  git('add', '--', REQUEST, ...(pairedDifficulty ? [DIFFICULTY_REQUEST] : [])); git('commit', '-qm', 'own request only');
+  git('add', '--', REQUEST, ...(pairedDifficulty ? [DIFFICULTY_REQUEST] : []), ...(subsetPreservation ? [
+    subsetPreservation === 'full' ? fullSourceSubsetEvidencePath(request.requestId) : sourceSubsetEvidencePath(request.requestId)] : [])); git('commit', '-qm', 'own request only');
   const headSha = git('rev-parse', 'HEAD'), repo = 'owner/repository';
   const event = { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
     number: 17, base: { sha: baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } },
@@ -486,6 +499,107 @@ test('binding dependency rejects duplicate providers and cycles while allowing s
   cyclicConsumer.registryDependency.provides = [{ path: provider.registryDependency.provides[0].path, key: secondKey }];
   cyclicProvider.registryDependency.requires.push({ questionUid: 'provider-uid', sourceOrdinal: 6, key: secondKey });
   assert.throws(() => orderNativeRequests([cyclicConsumer, cyclicProvider]), /REGISTRY_DEPENDENCY_CYCLE/);
+});
+
+const DEFINITION_PROVIDER = '.archive-meta-register/inbox/zz-definition-provider.json';
+const DEFINITION_CASES = [
+  { collection: 'concepts', field: 'conceptKey', itemField: 'crossConceptKeys', key: 'CC_APPROVED_RATIO',
+    path: 'archive/data/meta-foundation/canonical/concepts/plane-geometry.json' },
+  { collection: 'conditions', field: 'conditionKey', itemField: 'conditionKeys', key: 'COND_APPROVED_VALUE',
+    path: 'archive/data/meta-foundation/canonical/condition_registry.json' },
+];
+function definitionDependencyFixture(t, kind, { mutateProvider, unchangedProvider = false } = {}) {
+  const f = fixture(t, { partial: true, otherOwner: false,
+    mutateRequest: r => { r.items[0].after = { [kind.itemField]: [kind.key] }; } });
+  const provider = copy(f.request); provider.requestId = 'zz-definition-provider';
+  provider.items[0].questionUid = 'definition-provider-uid'; provider.items[0].sourceOrdinal = 6;
+  provider.registryChanges = [{ path: kind.path, collection: kind.collection, match: { [kind.field]: kind.key },
+    before: null, after: { [kind.field]: kind.key, status: 'ACTIVE' }, evidenceRefs: copy(provider.approval.evidenceRefs) }];
+  mutateProvider?.(provider);
+  f.write(DEFINITION_PROVIDER, json(provider)); f.git('add', DEFINITION_PROVIDER);
+  f.git('commit', '-qm', 'explicit reviewed definition provider');
+  const baseSha = unchangedProvider ? f.git('rev-parse', 'HEAD') : f.baseSha;
+  if (unchangedProvider) {
+    f.request.items[0].after.level = '중'; f.write(REQUEST, json(f.request));
+    f.git('add', REQUEST); f.git('commit', '-qm', 'consumer only');
+  }
+  return { ...f, provider, baseSha, headSha: f.git('rev-parse', 'HEAD'),
+    select: () => selectNativeRequests({ root: f.root, baseSha, headSha: f.git('rev-parse', 'HEAD') }) };
+}
+
+for (const kind of DEFINITION_CASES) test(`explicit ${kind.collection} supplier precedes its consumer in PR and main snapshots`, t => {
+  const f = definitionDependencyFixture(t, kind), selected = f.select();
+  assert.deepEqual(selected.map(r => r.path), [DEFINITION_PROVIDER, REQUEST]);
+  assert.deepEqual(selectPendingNativeRequests({ root: f.root, headSha: f.headSha }).map(r => r.path),
+    [DEFINITION_PROVIDER, REQUEST]);
+  assert.deepEqual(orderNativeRequests([...selected].reverse()).map(r => r.path), [DEFINITION_PROVIDER, REQUEST]);
+  assert.deepEqual(orderNativeRequests([selected[0]]).map(r => r.path), [DEFINITION_PROVIDER]);
+});
+
+for (const [name, mutateProvider] of [
+  ['replacement', r => { r.registryChanges[0].before = { prior: true }; }],
+  ['inactive definition', r => { r.registryChanges[0].after.status = 'REVIEW_REQUIRED'; }],
+  ['wrong collection', r => { r.registryChanges[0].collection = 'problemTypes'; }],
+  ['noncanonical path', r => { r.registryChanges[0].path = 'archive/data/meta-foundation/compiled/concepts.json'; }],
+  ['mismatched key', r => { r.registryChanges[0].match.conceptKey += '_OTHER'; }],
+  ['nonexact match', r => { r.registryChanges[0].match.status = 'ACTIVE'; }],
+]) test(`definition ordering leaves ${name} to unchanged registrar validation`, t => {
+  const f = definitionDependencyFixture(t, DEFINITION_CASES[0], { mutateProvider });
+  assert.deepEqual(f.select().map(r => r.path), [REQUEST, DEFINITION_PROVIDER]);
+});
+
+test('definition ordering neither imports unchanged providers nor infers keys from before or source', t => {
+  const unchanged = definitionDependencyFixture(t, DEFINITION_CASES[0], { unchangedProvider: true });
+  assert.deepEqual(unchanged.select().map(r => r.path), [REQUEST]);
+  const f = definitionDependencyFixture(t, DEFINITION_CASES[0]);
+  f.request.items[0].before = copy(f.request.items[0].after); f.request.items[0].after = {};
+  f.write(REQUEST, json(f.request)); f.git('add', REQUEST); f.git('commit', '-qm', 'no explicit definition reference');
+  assert.deepEqual(f.select().map(r => r.path), [REQUEST, DEFINITION_PROVIDER]);
+});
+
+test('definition ordering rejects duplicate providers across shards and mixed binding cycles', t => {
+  const f = definitionDependencyFixture(t, DEFINITION_CASES[0]), selected = f.select();
+  const provider = selected.find(r => r.path === DEFINITION_PROVIDER), consumer = selected.find(r => r.path === REQUEST);
+  const duplicate = copy(provider); duplicate.path = '.archive-meta-register/inbox/duplicate-definition-provider.json';
+  duplicate.definitionDependency.provides[0].path = 'archive/data/meta-foundation/canonical/concepts/middle1.json';
+  assert.throws(() => orderNativeRequests([...selected, duplicate]), /DEFINITION_DEPENDENCY_AMBIGUOUS/);
+  const a = copy(provider), b = copy(consumer);
+  a.registryDependency = { schemaVersion: 'archive-native-active-binding-dependency-v1', provides: [],
+    requires: [{ key: copy(BINDING_KEY), questionUid: 'definition-provider-uid', sourceOrdinal: 6 }] };
+  b.registryDependency = { schemaVersion: 'archive-native-active-binding-dependency-v1', requires: [],
+    provides: [{ path: 'archive/data/meta-foundation/canonical/packs/middle2/bindings.json', key: copy(BINDING_KEY) }] };
+  assert.throws(() => orderNativeRequests([a, b]), /REGISTRY_DEPENDENCY_CYCLE/);
+});
+
+test('definition ordering follows a concept-to-condition-to-consumer chain with both keys required', t => {
+  const f = definitionDependencyFixture(t, DEFINITION_CASES[0]), condition = DEFINITION_CASES[1];
+  const conditionPath = '.archive-meta-register/inbox/yy-condition-provider.json';
+  f.request.items[0].after.conditionKeys = [condition.key];
+  const provider = copy(f.request); provider.requestId = 'yy-condition-provider';
+  provider.items[0].questionUid = 'condition-provider-uid'; provider.items[0].sourceOrdinal = 7;
+  provider.registryChanges = [{ path: condition.path, collection: condition.collection,
+    match: { [condition.field]: condition.key }, before: null,
+    after: { [condition.field]: condition.key, status: 'ACTIVE' }, evidenceRefs: copy(provider.approval.evidenceRefs) }];
+  f.write(REQUEST, json(f.request)); f.write(conditionPath, json(provider));
+  f.git('add', REQUEST, conditionPath); f.git('commit', '-qm', 'explicit chained supplier');
+  const selected = f.select();
+  assert.deepEqual(selected.map(r => r.path), [DEFINITION_PROVIDER, conditionPath, REQUEST]);
+  assert.deepEqual(orderNativeRequests([...selected].reverse()).map(r => r.path),
+    [DEFINITION_PROVIDER, conditionPath, REQUEST]);
+});
+
+test('a rejected definition supplier prevents writes and consumer execution in PR and main application', t => {
+  const f = definitionDependencyFixture(t, DEFINITION_CASES[0]), before = f.snapshot();
+  for (const requests of [f.select(), selectPendingNativeRequests({ root: f.root, headSha: f.headSha })]) {
+    const calls = [];
+    assert.throws(() => applyNativeRequests({ root: f.root, requests: [...requests].reverse(), run: (program, args) => {
+      assert.equal(program, process.execPath);
+      calls.push({ request: args[args.indexOf('--request') + 1], write: args.includes('--write') });
+      throw Error('FIXTURE_DEFINITION_AUTHORITY_REJECTED');
+    } }), /FIXTURE_DEFINITION_AUTHORITY_REJECTED/);
+    assert.deepEqual(calls, [{ request: DEFINITION_PROVIDER, write: false }]);
+    assert.deepEqual(f.snapshot(), before);
+  }
 });
 
 test('inbox-only PR selects its fixed v2 request and leaves unchanged course inbox untouched', t => {
@@ -1070,6 +1184,44 @@ function laterCodePr(f) {
     expectedSha:headSha,runId:41,runAttempt:1,run:f.run};
 }
 
+test('explicit strict subset uses the same changed, pending and inherited official preservation dispatch',t=>{
+  const f=fixture(t,{partial:true,subsetPreservation:true,otherOwner:false}),changed=f.selected();
+  assert.deepEqual(changed.map(r=>[r.path,r.kind,r.questionCount,r.sourceQuestionCount]),[[REQUEST,'native-approval-preservation',1,24]]);
+  assert(changed[0].evidence.some(ref=>ref.path===sourceSubsetEvidencePath(f.request.requestId)));
+  assert.deepEqual(selectPendingNativeRequests({root:f.root,headSha:f.headSha}),changed);
+  const options=laterCodePr(f),baseSha=options.event.pull_request.base.sha,headSha=options.expectedSha;
+  const inherited=selectNativeRequests({root:f.root,baseSha,headSha});
+  assert.equal(inherited[0].kind,'native-approval-preservation');
+  assert.deepEqual(inherited[0].inheritedPreservation,{baseSha,requestSha256:sha(fs.readFileSync(path.join(f.root,REQUEST)))});
+  // Dispatch must still invoke the real registrar boundary and propagate refusal.
+  f.hook['dry-run']=()=>{throw Error('FIXTURE_SUBSET_PRIOR_APPROVAL_NOT_VERIFIED');};
+  assert.throws(()=>producePrRegistrationProof(options),/SUBSET_PRIOR_APPROVAL_NOT_VERIFIED/);
+  assert.equal(fs.existsSync(path.join(f.root,RECEIPT)),false);
+});
+for(const [name,mutate]of [
+  ['unknown schema',r=>{r.approval.sourceRebind.schemaVersion='unreviewed-subset';}],
+  ['unknown schema option',r=>{r.approval.sourceRebind.allowExcluded=true;}],
+  ['missing subset evidence',r=>{delete r.approval.sourceRebind.subsetEvidenceRef;}],
+  ['wrong deterministic evidence path',r=>{r.approval.sourceRebind.subsetEvidenceRef.path=EVIDENCE;}],
+  ['missing item evidence',r=>{r.items[0].evidenceRefs=[r.approval.sourceRebind.priorReceiptRef];}],
+  ['full scope',r=>{delete r.scope;}],
+  ['new values',r=>{r.items[0].after={templateKey:'UNREVIEWED'};}],
+  ['new registry additions',r=>{r.registryChanges=[{path:AUTHORITY,after:{}}];}],
+  ['new source review',r=>{r.items[0].sourceReview={reviewCommit:'a'.repeat(40)};}],
+])test('strict subset dispatch refuses '+name+' and never adopts it as inherited approval',t=>{
+  const f=fixture(t,{partial:true,subsetPreservation:true,mutateRequest:mutate});
+  assert.throws(()=>f.selected(),/PRESERVATION_SCOPE/);
+  const options=laterCodePr(f);
+  assert.deepEqual(selectNativeRequests({root:f.root,baseSha:options.event.pull_request.base.sha,headSha:options.expectedSha}),[]);
+  assert.equal(f.calls.filter(c=>c.program!=='git').length,0);
+});
+test('strict subset selection binds actual evidence bytes to the fixed Git head',t=>{
+  const f=fixture(t,{partial:true,subsetPreservation:true}),proofPath=sourceSubsetEvidencePath(f.request.requestId);
+  assert.equal(f.selected().length,1);f.write(proofPath,'unreviewed working-copy proof');
+  assert.throws(()=>f.selected(),/EVIDENCE_DRIFT/);
+  assert.equal(f.calls.filter(c=>c.program!=='git').length,0);
+});
+
 const PRIOR_NATIVE = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/previous-native.json';
 const NATIVE_RUNTIME = 'archive/data/meta-foundation/runtime/middle-geometry-v1.json';
 function fingerprintReassessmentFixture(t, { mutateRequest, mutateBaseline } = {}) {
@@ -1235,6 +1387,22 @@ test('fingerprint-only preservation is rechecked after projection and Consumer, 
     f.write(META, json(metadata), target); f.write(RECEIPT, json(issued), target);
   };
   assert.throws(() => producePrRegistrationProof({ ...f.options, run: reassessmentRunner(f) }), /CHANGED_APPROVAL_VALUES/);
+});
+
+test('full-source subset keeps its distinct typed proof through changed, pending and inherited dispatch',t=>{
+  const f=fixture(t,{partial:true,subsetPreservation:'full',otherOwner:false}),selected=f.selected();
+  assert.equal(selected[0].kind,'native-approval-preservation');assert.equal(selected[0].questionCount,1);assert.equal(selected[0].sourceQuestionCount,24);
+  assert(selected[0].evidence.some(ref=>ref.path===fullSourceSubsetEvidencePath(f.request.requestId)));
+  assert.deepEqual(selectPendingNativeRequests({root:f.root,headSha:f.headSha}),selected);
+  const options=laterCodePr(f),inherited=selectNativeRequests({root:f.root,baseSha:options.event.pull_request.base.sha,headSha:options.expectedSha});
+  assert.equal(inherited[0].kind,'native-approval-preservation');assert(inherited[0].inheritedPreservation);
+  f.hook['dry-run']=()=>{throw Error('ORIGINAL_FULL_REUSE_PROOF_NOT_VERIFIED');};
+  assert.throws(()=>producePrRegistrationProof(options),/ORIGINAL_FULL_REUSE_PROOF_NOT_VERIFIED/);
+  for(const mutateRequest of [r=>{r.approval.sourceRebind.schemaVersion=SOURCE_SUBSET_SCHEMA;},r=>{delete r.scope;},
+    r=>{r.items[0].after={difficultyBucket:4};},r=>{r.items[0].sourceReview={};}]){
+    const bad=fixture(t,{partial:true,subsetPreservation:'full',mutateRequest});
+    assert.throws(()=>bad.selected(),/PRESERVATION_SCOPE/);
+  }
 });
 
 test('code-only PR preserves an exact inherited partial FINAL_QA approval through the official projection and Consumer',t=>{

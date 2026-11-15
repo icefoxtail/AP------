@@ -29,6 +29,17 @@ const studentPayload = question => Object.fromEntries(REASSESSED_STUDENT_FIELDS.
 const DIFFICULTY_FIELDS = ["level", "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"];
 const DERIVED_FIELDS = new Set(["sourceFingerprint", "contentFingerprint", "L1", "L2", "L3", "L4"]);
 
+function validateNativePerItemSourceEvidence(native, row, ordinal) {
+  if (!row.sourceEvidence) return;
+  const evidence = row.sourceEvidence, q = native.reviewedBank[ordinal - 1];
+  const fingerprints = { QBODY: sha256(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, image: q.image ?? null })),
+    QFULL: sha256(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, answer: q.answer ?? null, solution: q.solution ?? null, image: q.image ?? null })) };
+  if (evidence.sourceGitBlobSha !== native.sourceBlob || !Array.isArray(evidence.fingerprints) ||
+      Object.entries(fingerprints).some(([scope, value]) => evidence.fingerprints.filter(f =>
+        f.scope === scope && f.algo === "sha256-canonical-json-v1" && f.value === value).length !== 1))
+    fail("native per-item source fingerprints mismatch");
+}
+
 function repositoryPath(root, relative) {
   if (!text(relative) || relative.includes("\\") || relative.includes("\0") || path.isAbsolute(relative) ||
       relative.split("/").some(part => !part || part === "." || part === "..")) fail("unsafe review path");
@@ -200,15 +211,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       question, studentPayload, bankFromBytes, cache });
   if (!rendererContinuity && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
       !equal(payload, studentPayload(committedBank[ordinal - 1])))) fail("current student payload differs from the reviewed source");
-  if (row.sourceEvidence) {
-    const evidence = row.sourceEvidence, q = reviewedBank[ordinal - 1];
-    const fingerprints = { QBODY: sha256(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, image: q.image ?? null })),
-      QFULL: sha256(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, answer: q.answer ?? null, solution: q.solution ?? null, image: q.image ?? null })) };
-    if (evidence.sourceGitBlobSha !== loaded.sourceBlob || !Array.isArray(evidence.fingerprints) ||
-        Object.entries(fingerprints).some(([scope, value]) => evidence.fingerprints.filter(f =>
-          f.scope === scope && f.algo === "sha256-canonical-json-v1" && f.value === value).length !== 1))
-      fail("native per-item source fingerprints mismatch");
-  }
+  validateNativePerItemSourceEvidence(loaded, row, ordinal);
   const accepted = { ...row.after };
   for (const key of DIFFICULTY_FIELDS) if (Object.hasOwn(row.finalDifficulty || {}, key)) {
     if (Object.hasOwn(accepted, key) && !equal(accepted[key], row.finalDifficulty[key])) fail(`native difficulty disagreement: ${key}`);
@@ -234,13 +237,16 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     let value, origin;
     if (Object.hasOwn(accepted, field)) { value = accepted[field]; origin = "NATIVE_AFTER"; }
     else if (text(row[field])) { value = row[field]; origin = "NATIVE_ITEM_FIELD"; }
-    else if (text(committedBank[ordinal - 1][field])) { value = committedBank[ordinal - 1][field]; origin = "REVIEW_COMMIT_SOURCE_FIELD"; }
-    else if (field === "primaryMethod" && [patch.after.primaryMethod, patch.after.decisiveStep,
+    else if (field === "primaryMethod" && !equal(committedBank[ordinal - 1][field], row.decisiveStep) &&
+      [patch.after.primaryMethod, patch.after.decisiveStep,
       question.primaryMethod, question.decisiveStep].every(v => equal(v, row.decisiveStep))) {
       // This schema's reviewed decisive step may be carried verbatim as both rationale
-      // fields. It is not a separately authored method judgment or new mathematical QA.
+      // fields, including when the review commit still carries an older source method.
+      // Keep already-matching source provenance stable for issued receipts. This is
+      // not a separately authored method judgment or new mathematical QA.
       value = row.decisiveStep; origin = "NATIVE_DECISIVE_STEP_VERBATIM";
-    } else if (field === "primaryMethod" && review.schemaVersion === "m3-s2-complete-semantic-review-v1" &&
+    } else if (text(committedBank[ordinal - 1][field])) { value = committedBank[ordinal - 1][field]; origin = "REVIEW_COMMIT_SOURCE_FIELD"; }
+    else if (field === "primaryMethod" && review.schemaVersion === "m3-s2-complete-semantic-review-v1" &&
       Object.keys(patch.after).length === 2 && ["sourceFingerprint", "contentFingerprint"].every(key => Object.hasOwn(patch.after, key)) &&
       metadata.metadataApprovalType === "FINAL_QA" && metadata.reviewStatus === "reviewed_pass" &&
       metadata.tagStatus === "reviewed_pass" && String(metadata.metadataStatus || "").startsWith("approved_") &&
@@ -299,4 +305,63 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     ...(proposalFinalization?.proof ? { proposalFinalization: proposalFinalization.proof } : {}),
     ...(proposalFinalization?.technicalBindings?.length ? { technicalProposalBindings: proposalFinalization.technicalBindings } : {}),
     scope: identityOnly ? "IDENTITY_BINDING_ONLY" : "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false };
+}
+
+// Independently finalized CC authority is a component, not a replacement for
+// an existing audit's primary, difficulty, integration or status. Validate the
+// component against its own immutable native base, then return that one exact
+// addition. The caller separately verifies/preserves the original audit and
+// binds the actual source to their exact union. Ordinary FINAL_QA is unchanged.
+export function validateReviewedAuditCrossConceptComponent({ root, request, component, evidenceRefs,
+  question, prior, canonicalBefore, canonicalAfter, cache = new Map() }) {
+  if (request.approval?.type !== "META_PIPELINE_AUDIT" ||
+      request.approval.sourceRebind?.schemaVersion !== "archive-audit-finalized-cc-append-v1" ||
+      !component || Object.keys(component).some(k => !["questionUid", "sourceOrdinal", "addCrossConceptKey", "sourceReview"].includes(k)) ||
+      component.questionUid !== prior.questionUid || component.sourceOrdinal !== prior.sourceOrdinal ||
+      !text(component.addCrossConceptKey) || component.sourceReview?.rendererProof !== undefined ||
+      Object.keys(component.sourceReview || {}).some(k => !["schemaVersion", "reviewCommit", "reviewPath", "reviewRef", "proposalFinalization"].includes(k)))
+    fail("exact separately typed audit CC component required");
+  const patch = { questionUid: component.questionUid, sourceOrdinal: component.sourceOrdinal,
+    sourceReview: component.sourceReview, evidenceRefs };
+  const native = loadReview({ root, request, patch, cache }), row = native.rows.get(component.sourceOrdinal);
+  if (native.review.schemaVersion !== "m2-s2-meta-review-v1" || row?.questionUid !== component.questionUid ||
+      !["CORRECT", "KEEP", "KEEP_SEMANTIC_RPM"].includes(row.rpmDecision) || !text(row.decisiveStep) ||
+      !text(row.fieldReview?.classification) || !text(row.fieldReview?.difficulty) ||
+      !row.after || typeof row.after !== "object" || Array.isArray(row.after) ||
+      !Array.isArray(row.after.crossConceptKeys) || new Set(row.after.crossConceptKeys).size !== row.after.crossConceptKeys.length ||
+      row.after.crossConceptKeys.some(k => !text(k)) || row.after.crossConceptKeys.includes(component.addCrossConceptKey))
+    fail("settled exact native CC component missing");
+  const debts = [...(row.debts || []), ...(row.contentDebt || []), ...(row.registrationDebt || [])];
+  if ((row.contentDebt || []).length || debts.some(debt => {
+    const kind = typeof debt === "string" ? debt : debt?.type || debt?.kind || "";
+    return /^(SOURCE_|CONTENT_|SOLUTION_|PRIOR_SOURCE_QA|DIFFICULTY_HOLD|EXPLICIT_DIFFICULTY_VALIDITY)/.test(kind) &&
+      kind !== "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA";
+  })) fail("native component retains a source/content/difficulty hold");
+  const ordinal = component.sourceOrdinal;
+  if (!equal(studentPayload(question), studentPayload(native.reviewedBank[ordinal - 1])) ||
+      !equal(studentPayload(question), studentPayload(native.committedBank[ordinal - 1])))
+    fail("audit CC component student payload differs from immutable native source");
+  validateNativePerItemSourceEvidence(native, row, ordinal);
+  for (const field of ["standardCourse", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "curriculum", "curriculumKey", "courseKey"])
+    if (Object.hasOwn(row.after, field) && !equal(row.after[field], prior[field]))
+      fail("audit CC component primary/curriculum disagrees with retained audit: " + field);
+  const componentKeys = [...row.after.crossConceptKeys, component.addCrossConceptKey];
+  const componentQuestion = { ...question, crossConceptKeys: componentKeys };
+  patch.after = { crossConceptKeys: componentKeys };
+  const final = { ...prior, crossConceptKeys: componentKeys };
+  const proof = validateNativeProposalFinalization({ root, request, patch, native, row,
+    accepted: { ...row.after }, question: componentQuestion, final, studentPayload, bankFromBytes,
+    canonicalBefore, canonicalAfter, cache });
+  if (component.sourceReview.proposalFinalization?.schemaVersion !== "archive-native-proposal-finalization-v1" ||
+      proof?.proof?.nativeProposalBindings?.length !== 1 || proof.proof.nativeProposalBindings[0].type !== "CC" ||
+      proof.proof.definitions?.length !== 1 || proof.proof.definitions[0].collection !== "concepts" ||
+      proof.proof.definitions[0].key !== component.addCrossConceptKey ||
+      !equal(proof.fields, { crossConceptKeys: componentKeys }) || proof.technicalBindings?.length)
+    fail("only one independently finalized CC component is supported");
+  return { schemaVersion: "archive-reviewed-audit-cc-component-v1", questionUid: prior.questionUid,
+    sourceOrdinal: ordinal, nativeReview: { commit: native.spec.reviewCommit, path: native.spec.reviewPath,
+      sha256: native.spec.reviewRef.sha256 }, nativeItemSha256: sha256(stable(row)),
+    nativeBaseCrossConceptKeys: row.after.crossConceptKeys, addCrossConceptKey: component.addCrossConceptKey,
+    proposalFinalization: proof.proof, nativeOtherFieldsApplied: false,
+    newMathematicalQa: false, newReview2Claims: 0, newDifficultyJudgments: 0 };
 }

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "existing-full-finalqa-subset-gate-addendum-v1",
+  "validatedInputCommit": "50d541fe2739420ca2d169bd16922055d732297b",
+  "codeCommit": "8f7b73f0b10d4d4933dd5fa45b5e3fc6bc5f10bb",
+  "sourceInputs": "All 1228 source JS files and official manifest inputs restored from exact Git HEAD; no targeted catalog substitute.",
+  "catalogCommand": "node archive/tools/build-archive2-catalog.mjs",
+  "catalogExitCode": 0,
+  "projection": {
+    "status": "PASS",
+    "replay": true,
+    "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+    "consumerLanes": {
+      "canonical": 16,
+      "usableMetaLane": 0
+    }
+  },
+  "consumer": {
+    "status": "PASS",
+    "counts": {
+      "changed": 16,
+      "checked": 16,
+      "passed": 16,
+      "skippedUnchanged": 0
+    },
+    "exams": [
+      {
+        "file": ".archive-meta-register/inbox/m1s2-wangun26-full-subset-preserve-20261115.json",
+        "kind": "native-approval-preservation",
+        "exam": "26_왕운중_2학기_중간_중1_기출",
+        "sourceFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "changed": 16,
+        "checked": 16,
+        "passed": 16,
+        "skippedUnchanged": 0,
+        "approvalCreated": false,
+        "newMetadataApprovals": 0,
+        "preservedMetadataApprovals": 16,
+        "approvalType": "FINAL_QA",
+        "expectedQuestionCount": 23
+      }
+    ],
+    "failures": [],
+    "unobservedFields": [],
+    "assignmentPending": []
+  },
+  "immutableShadow": {
+    "status": "PASS",
+    "requestCount": 5,
+    "ownUidCount": 16,
+    "inheritedUidCount": 37,
+    "selectedUidCount": 53,
+    "planCount": 5,
+    "outputCount": 9
+  },
+  "evidenceDigests": [
+    {
+      "localPath": ".tmp/full-catalog-validation.log",
+      "sha256": "e96da283011f3ab9e06dd82cf10c9a632c877f5e7624ae068c276daaa33b5323"
+    },
+    {
+      "localPath": ".tmp/full16-projection.json",
+      "sha256": "cdbb9c7be33e3fc9a73ee25859da028b2552c01457a3480f1d356b3daa75ea47"
+    },
+    {
+      "localPath": ".tmp/full16-consumer.json",
+      "sha256": "3947651c2fb8887283a93d228eb5e0573fea60dd2a769766e7c21de0a28b2360"
+    },
+    {
+      "localPath": ".tmp/fixed-shadow-validation.json",
+      "sha256": "4afcbca297b7967fc1de515f3a5ec03c08f0ce66fefe2098f0ae67dfd288b6c2"
+    }
+  ],
+  "newMathematicalQa": false,
+  "newMetadataApprovals": 0,
+  "remoteCi": "NOT_RUN",
+  "actualMainRegistration": false
+}

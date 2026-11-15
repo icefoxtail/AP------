@@ -49,7 +49,9 @@ jobs:
     runs-on: ubuntu-latest
     # Source PRs generate and verify their temporary projection, including one
     # bounded builder recovery, before running the unchanged full test scope.
-    timeout-minutes: 30
+    # The reviewed multi-exam preview and complete test scope must both finish;
+    # the verified Wangun preview exhausted the former 30-minute job budget.
+    timeout-minutes: 60
     permissions:
       contents: read
     steps:

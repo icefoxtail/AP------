@@ -1,0 +1,283 @@
+{
+  "schemaVersion": "original-full-finalqa-renderer-consumer-shadow-gates-v1",
+  "status": "PASS_LOCAL_OFFICIAL_GATES",
+  "consumer": {
+    "schemaVersion": "original-full-finalqa-renderer-consumer-validation-v1",
+    "status": "PASS",
+    "fullCatalog": "OFFICIAL_UNFILTERED_1211_EXAMS_28882_QUESTIONS",
+    "projections": [
+      {
+        "requestId": "m1s2-wangun26-original-renderer-preserve-20261115",
+        "count": 7,
+        "status": "PASS",
+        "replay": true,
+        "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+        "consumerLanes": {
+          "canonical": 7,
+          "usableMetaLane": 0
+        },
+        "newMetadataApprovals": 0
+      },
+      {
+        "requestId": "m1s2-wangun26-full-subset-preserve-20261115",
+        "count": 16,
+        "status": "PASS",
+        "replay": true,
+        "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+        "consumerLanes": {
+          "canonical": 16,
+          "usableMetaLane": 0
+        },
+        "newMetadataApprovals": 0
+      }
+    ],
+    "consumer": {
+      "status": "PASS",
+      "counts": {
+        "changed": 23,
+        "checked": 23,
+        "passed": 23,
+        "skippedUnchanged": 0
+      },
+      "exams": [
+        {
+          "file": ".archive-meta-register/inbox/m1s2-wangun26-original-renderer-preserve-20261115.json",
+          "kind": "native-approval-preservation",
+          "exam": "26_왕운중_2학기_중간_중1_기출",
+          "sourceFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+          "changed": 7,
+          "checked": 7,
+          "passed": 7,
+          "skippedUnchanged": 0,
+          "approvalCreated": false,
+          "newMetadataApprovals": 0,
+          "preservedMetadataApprovals": 7,
+          "approvalType": "FINAL_QA",
+          "expectedQuestionCount": 23
+        },
+        {
+          "file": ".archive-meta-register/inbox/m1s2-wangun26-full-subset-preserve-20261115.json",
+          "kind": "native-approval-preservation",
+          "exam": "26_왕운중_2학기_중간_중1_기출",
+          "sourceFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+          "changed": 16,
+          "checked": 16,
+          "passed": 16,
+          "skippedUnchanged": 0,
+          "approvalCreated": false,
+          "newMetadataApprovals": 0,
+          "preservedMetadataApprovals": 16,
+          "approvalType": "FINAL_QA",
+          "expectedQuestionCount": 23
+        }
+      ],
+      "failures": [],
+      "unobservedFields": [],
+      "assignmentPending": []
+    },
+    "newMetadataApprovals": 0,
+    "newMathematicalQa": false,
+    "newReviewPassCount": 0,
+    "newDifficultyJudgments": 0,
+    "remoteCi": "NOT_RUN",
+    "actualMainRegistration": false
+  },
+  "immutableShadow": {
+    "schemaVersion": "original-full-finalqa-renderer-immutable-shadow-validation-v1",
+    "status": "PASS",
+    "localInputCommit": "5478ff55630e55102960d616fc8962eec6dc19e7",
+    "localDependencyBaseline": "9fab80c88b79f8d81bd7516a1d1300027d5e30e4",
+    "requestCount": 6,
+    "ownUidCount": 7,
+    "inheritedUidCount": 53,
+    "selectedUidCount": 60,
+    "requests": [
+      {
+        "requestId": "m1s2-wangun26-full-subset-preserve-20261115",
+        "path": ".archive-meta-register/inbox/m1s2-wangun26-full-subset-preserve-20261115.json",
+        "count": 16,
+        "sourceQuestionCount": 23,
+        "inherited": true
+      },
+      {
+        "requestId": "m1s2-wangun26-original-renderer-preserve-20261115",
+        "path": ".archive-meta-register/inbox/m1s2-wangun26-original-renderer-preserve-20261115.json",
+        "count": 7,
+        "sourceQuestionCount": 23,
+        "inherited": false
+      },
+      {
+        "requestId": "m3s2-e037-preserve-quadratic5-26fc-20261115",
+        "path": ".archive-meta-register/inbox/m3s2-e037-preserve-quadratic5-26fc-20261115.json",
+        "count": 14,
+        "sourceQuestionCount": 25,
+        "inherited": true
+      },
+      {
+        "requestId": "m3s2-e044-preserve-early2-26fc-20261115",
+        "path": ".archive-meta-register/inbox/m3s2-e044-preserve-early2-26fc-20261115.json",
+        "count": 8,
+        "sourceQuestionCount": 25,
+        "inherited": true
+      },
+      {
+        "requestId": "m3s2-e054-preserve-quadratic5-26fc-20261115",
+        "path": ".archive-meta-register/inbox/m3s2-e054-preserve-quadratic5-26fc-20261115.json",
+        "count": 5,
+        "sourceQuestionCount": 25,
+        "inherited": true
+      },
+      {
+        "requestId": "m3s2-e061-preserve-quadratic5-26fc-20261115",
+        "path": ".archive-meta-register/inbox/m3s2-e061-preserve-quadratic5-26fc-20261115.json",
+        "count": 10,
+        "sourceQuestionCount": 25,
+        "inherited": true
+      }
+    ],
+    "plans": [
+      {
+        "requestPath": ".archive-meta-register/inbox/m1s2-wangun26-full-subset-preserve-20261115.json",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full-subset-preserve-20261115.json",
+          "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+          "archive/data/meta-foundation/runtime/middle1-v1.json",
+          "archive/data/question_metadata.json"
+        ]
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m1s2-wangun26-original-renderer-preserve-20261115.json",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-original-renderer-preserve-20261115.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-original-renderer-preserve-20261115.original-renderer-binding.json",
+          "archive/data/meta-foundation/runtime/middle1-v1.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/question_metadata.json"
+        ]
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m3s2-e037-preserve-quadratic5-26fc-20261115.json",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e037-preserve-quadratic5-26fc-20261115.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json"
+        ]
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m3s2-e044-preserve-early2-26fc-20261115.json",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e044-preserve-early2-26fc-20261115.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json"
+        ]
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m3s2-e054-preserve-quadratic5-26fc-20261115.json",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e054-preserve-quadratic5-26fc-20261115.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json"
+        ]
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m3s2-e061-preserve-quadratic5-26fc-20261115.json",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e061-preserve-quadratic5-26fc-20261115.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json"
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full-subset-preserve-20261115.json",
+        "sha256": "72712dca9fb7833233136475cc790173131b98e96ef2ff28c996d9f8ba111a3f",
+        "sizeBytes": 145080
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-original-renderer-preserve-20261115.json",
+        "sha256": "b7d72831cf57d1da01e305b3ccc9f41019815a2dcd49b6ae5925f44d21617651",
+        "sizeBytes": 79007
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-original-renderer-preserve-20261115.original-renderer-binding.json",
+        "sha256": "e5fe5acfe0a60f34b1a3739d5e50834eba4f4e82ac78d96873c805d4372e1b28",
+        "sizeBytes": 56696
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e037-preserve-quadratic5-26fc-20261115.json",
+        "sha256": "50e51c64e267c7ce597d78d49a4b8e6dabcf81e7b740574f598cba6abf6cfee1",
+        "sizeBytes": 103274
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e044-preserve-early2-26fc-20261115.json",
+        "sha256": "551f1234511106b198b8f411b0183bc3517c4919bb07de47377c84dc35709d6c",
+        "sizeBytes": 56789
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e054-preserve-quadratic5-26fc-20261115.json",
+        "sha256": "36e851f4f11ef26d1f107bb51cfcf7061cb6b8484a5b1ef2693e9fadcef8881b",
+        "sizeBytes": 40458
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e061-preserve-quadratic5-26fc-20261115.json",
+        "sha256": "cca622d2d72637e1ac3f1c847e5dd17cdc539826a8468e8fe631d724f667c4e4",
+        "sizeBytes": 71018
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+        "sha256": "49adc298656c57543de8a863eae70cc19e42bfc324766b04c551a640222baeff",
+        "sizeBytes": 1407825
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "sha256": "8030853bd3ebe7b48a5cb821365a8874e4748a1cdf5bc6de8d6884f4e0c0ba6d",
+        "sizeBytes": 4545018
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "sha256": "24b8f070d1f7a142b8e6d2b9f8c779f558f95d7f28490062e887cc5a31b24c71",
+        "sizeBytes": 1614532
+      },
+      {
+        "path": "archive/data/question_identity_map.json",
+        "sha256": "55c6203a38e15995815e80a03b73b8ff728b7ff17edde1c61ac4563116539a91",
+        "sizeBytes": 27938431
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "sha256": "2e371d89e6c55850576a3b112acd663b3e4642dde1740b1791c40f773bf973a6",
+        "sizeBytes": 71811589
+      }
+    ],
+    "newMathematicalQa": false,
+    "newMetadataApprovals": 0,
+    "newDifficultyJudgments": 0,
+    "productionRegistration": false,
+    "seconds": 77.507
+  },
+  "logDigests": [
+    {
+      "localPath": ".tmp/wangun-full-catalog.log",
+      "sha256": "b01683a1391647167597d3b638f03a0826a134c407da6303ea5338170d2f4a11"
+    },
+    {
+      "localPath": ".tmp/wangun-consumer-verification.log",
+      "sha256": "7e8ba26f40c95b75f46e96a1bd5a618a8e69e8154712b9345ca8d5b7db05ffe5"
+    },
+    {
+      "localPath": ".tmp/wangun-shadow-verification.log",
+      "sha256": "ed4a5129542929fcf799fd16bca143814f34484ed545a936fd6809664b295cde"
+    }
+  ],
+  "remoteCi": "NOT_RUN",
+  "actualMainRegistration": false,
+  "pagesDeployment": "NOT_RUN",
+  "browser": "NOT_RUN"
+}

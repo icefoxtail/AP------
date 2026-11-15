@@ -11,8 +11,11 @@ import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
+import { hasReviewedReceiptLineage, reviewedSourceBindingPath } from './reviewed-source-binding.mjs';
+import { nativeOriginalFinalQaRendererRebind,hasOriginalFinalQaRendererClaim } from './original-finalqa-renderer-preservation.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
+import { nativeAuditCcAppend, hasExplicitAuditCcAppendClaim, hasAuditCcAppendClaim } from './audited-cross-concept-append.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -165,8 +168,13 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
   if(!Buffer.isBuffer(bytes)||!Array.isArray(bank)||!equal(bank[ordinal-1],question)
     ||!/^[a-f0-9]{40}$/.test(blobSha1||'')||!runtimeRecord||runtimeStatus!=='ACTIVE'
     ||String(runtimeRecord.sourceQuestionNo??'')!==String(question.sourceQuestionNo??question.id??''))return null;
-  if(current.metadataApprovalType==='META_PIPELINE_AUDIT')
+  if(current.metadataApprovalType==='META_PIPELINE_AUDIT') {
+    const component = nativeAuditCcAppend({nativeSource,question,previous,current,identity,ordinal,registry,pt,tpl,ownerPack});
+    if(component)return component;
+    if(hasExplicitAuditCcAppendClaim({root,current,runtimeRecord}))return null;
     return preservedAuditReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,ownerPack});
+  }
+  if(hasExplicitAuditCcAppendClaim({root,current,runtimeRecord}))return null;
   if(!['FINAL_QA','REVIEW2'].includes(current.metadataApprovalType)||current.reviewStatus!=='reviewed_pass'
     ||!String(current.metadataStatus||'').startsWith('approved_')||current.tagStatus!=='reviewed_pass'
     ||current.sourceFingerprint!==sourceFingerprint(question)||current.contentFingerprint!==contentFingerprint(question)
@@ -204,8 +212,24 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||registeredIdentity[0].sourceOrdinal!==ordinal||registeredIdentity[0].sourceFingerprint!==identity.sourceFingerprint
         ||!equal(registeredIdentity[0].sourceQuestionNo,identity.sourceQuestionNo)
         ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
-      validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
-      const preservedSource=nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,registry,
+      const originalRenderer=nativeOriginalFinalQaRendererRebind({receipt,nativeSource,previous,question,identity,ordinal,current,registry,
+        revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor}),
+        revalidateDirectSource:()=>validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry)===true&&hasReviewedReceiptLineage(receipt)});
+      if(originalRenderer===true)return receiptPath;
+      const reviewedSource=validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
+      // Only a replayed immutable source reassessment distinguishes a direct
+      // review's lineage refs from source-only preservation. null is no proof;
+      // explicit sourceRebind/count claims still enter every preservation guard.
+      const reviewedLineage=reviewedSource===true&&hasReviewedReceiptLineage(receipt);
+      const reviewedRequest=reviewedLineage?read(root,reviewedSourceBindingPath(receipt.requestId))?.requestSnapshot:null;
+      const reviewedPatch=reviewedRequest?.items?.find(row=>row.questionUid===identity.questionUid&&row.sourceOrdinal===ordinal);
+      // A request that only rebinds fingerprints must still preserve its actual
+      // prior approved values and any mixed renderer peers. A fresh semantic
+      // reassessment remains governed by the verified explicit request values.
+      const fingerprintOnlyLineage=reviewedPatch?.sourceReview!==undefined&&
+        equal(Object.keys(reviewedPatch.after||{}).sort(),['contentFingerprint','sourceFingerprint']);
+      const directSourceReview=reviewedLineage&&!fingerprintOnlyLineage;
+      const preservedSource=directSourceReview?null:nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,registry,
         revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});
       if(preservedSource===true)return receiptPath;
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
@@ -307,6 +331,10 @@ export function planQuestion({question:q, previous, current, identity, registry,
       }
     }
   }
+  if(nativeSource&&hasAuditCcAppendClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord,nativeSource}))
+    return reject('AUDITED_CC_COMPONENT_REVALIDATION_FAILED');
+  if(nativeSource&&hasOriginalFinalQaRendererClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
+    return reject('ORIGINAL_FINAL_QA_RENDERER_REVALIDATION_FAILED');
   if(nativeSource&&hasNativeReviewedSourceClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
     return reject('NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED');
   if(nativeSource&&hasNativeSourcePreservationClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord,nativeSource}))
@@ -496,7 +524,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
         nativeSource.blobSha1=execFileSync('git',['hash-object','--path',rel,'--stdin'],{cwd:root,input:nativeSource.bytes,encoding:'utf8',stdio:['pipe','pipe','pipe']}).trim();
       result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,
         nativeSource:{...nativeSource,identityMap:c.identityMap,identityByJoin:c.identityByJoin,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
-          runtimeStatus:c.runtimes.get(runtimeOwner)?.data.status}});
+          runtimeStatus:c.runtimes.get(runtimeOwner)?.data.status,runtimeStatusByPack:new Map([...c.runtimes].map(([pack,item])=>[pack,item.data.status]))}});
       if(result.status==='APPLY') {
         const rt=c.runtimes.get(result.ownerPack);if(!rt||rt.data.status!=='ACTIVE')throw Error('OWNER_RUNTIME_MISSING');
         const requestId=`main-${result.questionUid.slice(7,23)}-${result.inputHash.slice(0,24)}`;
