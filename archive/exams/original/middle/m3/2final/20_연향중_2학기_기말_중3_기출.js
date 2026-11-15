@@ -724,7 +724,7 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "content": "다음은 어느 병원에서 환자 5명의 접수 후 대기 시간에 대한 편차를 조사하여 나타낸 것이다. 대기 시간의 평균이 12분일 때, 환자 C의 대기 시간은? (4점)",
+    "content": "다음은 어느 병원에서 환자 5명의 접수 후 대기 시간에 대한 편차를 조사하여 나타낸 것이다. 대기 시간의 평균이 12분일 때, 환자 C의 대기 시간은? (4점)\n| 환자 | A | B | C | D | E |\n| :---: | :---: | :---: | :---: | :---: | :---: |\n| 편차 | 7 | −2 |  | −6 | 3 |\n",
     "choices": [
       "$8\\rm\\,분$",
       "$9\\rm\\,분$",
@@ -738,11 +738,10 @@ window.questionBank = [
       "통계",
       "표"
     ],
-    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q13.png",
     "category": "통계",
     "originalCategory": "통계",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "하",
     "standardCourse": "중3 수학",
@@ -778,9 +777,9 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|13",
     "decisiveStep": "편차의 합이 0이라는 조건에서 C의 편차를 구한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q13.png",
-    "solutionImageAlt": "환자 A–E의 편차 표. C의 편차 칸은 비어 있다.",
-    "solutionImageCaption": "표에서 A, B, D, E의 편차와 C의 빈칸을 확인하세요.",
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "환자별 편차를 수직 영점 좌우에 표시했다. 오른쪽 파랑은 양수, 왼쪽 주황은 음수이다. C는 B와 같은 길이의 왼쪽 막대이다.",
+    "solutionImageCaption": "편차의 합은 0이므로 C의 편차는 −2분이다. 평균 12분에 C의 편차를 더하면 대기 시간은 10분이다.",
     "solutionImageSize": "full"
   },
   {
