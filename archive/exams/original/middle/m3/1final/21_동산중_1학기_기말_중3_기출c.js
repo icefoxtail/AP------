@@ -209,7 +209,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "인수분해",
       "문제그림",
@@ -248,8 +248,12 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/21_동산중_1학기_기말_중3_수학/q05.png",
-    "solutionImage": "assets/images/21_동산중_1학기_기말_중3_수학/q05-solution.svg"
+    "image": "assets/images/21_동산중_1학기_기말_중3_기출c/q5-problem-v2.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/images/21_동산중_1학기_기말_중3_기출c/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 큰 직사각형의 가로는 3a+2이고 높이는 2a이다. 위쪽 주황 띠의 높이는 1이며, 남은 파란 부분의 넓이가 6a²+a−2이다.",
+    "solutionImageCaption": "(3a+2)×2a에서 (3a+2)×1을 빼면 6a²+a−2가 된다. 파란 부분의 가로가 3a+2이므로 세로는 2a−1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -835,7 +839,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_동산중_1학기_기말_중3_기출c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 −2와 6 사이를 표시한다. P와 Q는 예시로 놓은 두 움직이는 근이며, 두 점 모두 열린 구간 안에 있다.",
+    "solutionImageCaption": "고정된 두 근은 −2와 6이다. 작은 근 a−3은 −2보다 크고 큰 근 a+3은 6보다 작아야 하므로 1<a<3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -935,7 +943,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_동산중_1학기_기말_중3_기출c/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선은 시간에 따른 공의 높이이다. 주황 점선 y=21과 만나는 점 P는 올라갈 때, Q는 내려올 때에 있다.",
+    "solutionImageCaption": "높이가 21 m일 때 −5t²+25t+1=21을 풀면 t=1 또는 4이다. 처음 통과한 때는 1초 후이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1031,7 +1043,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/21_동산중_1학기_기말_중3_기출c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 아래쪽과 초록 위쪽 곡선은 x축에 대하여 대칭이다. 같은 낮은 높이에서 파란 두 점의 간격은 주황 두 점의 간격보다 넓다.",
+    "solutionImageCaption": "y=−x²/3의 꼭짓점과 대칭축은 원점과 y축이다. 같은 높이에서 파란 그래프는 y=−2x²보다 폭이 넓으므로 폭이 더 좁다는 설명이 옳지 않다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1079,7 +1095,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_동산중_1학기_기말_중3_기출c/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 위에서 M은 x좌표가 2이고 높이가 6인 점이며, N의 x좌표는 4이고 높이는 b이다. 각각 x축에 점선으로 연결한다.",
+    "solutionImageCaption": "(2,6)을 대입하면 a=3/2이다. x가 2에서 4로 두 배가 되면 함수값은 네 배가 되므로 b=24, ab=36이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1177,7 +1197,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "이차방정식",
       "문제그림",
@@ -1210,7 +1230,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/21_동산중_1학기_기말_중3_수학/q25.png",
-    "solutionImage": "assets/images/21_동산중_1학기_기말_중3_수학/q25-solution.svg"
+    "image": "assets/images/21_동산중_1학기_기말_중3_기출c/q25-problem-v2.svg",
+    "imageSize": "large",
+    "solutionImage": "assets/images/21_동산중_1학기_기말_중3_기출c/q25-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선은 직사각형의 가로 길이에 따른 넓이이다. 넓이 32인 주황 점선이 포물선과 L과 R에서 만난다.",
+    "solutionImageCaption": "가로가 a이면 세로는 12−a이므로 넓이는 a(12−a)이다. a(12−a)=32를 풀면 a=4 또는 8이므로 P의 좌표는 (4,0), (8,0)이다.",
+    "solutionImageSize": "full"
   }
 ];

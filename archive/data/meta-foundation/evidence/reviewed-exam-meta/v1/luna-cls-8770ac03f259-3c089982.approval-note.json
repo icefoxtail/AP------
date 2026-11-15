@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-8770ac03f259-3c089982",
+  "sourceArchiveFile": "original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js",
+  "createdAt": "2026-11-14T12:10:09.686Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "9e8e635f6bfefb11287da7a7f499206013ae5e7e",
+  "sourceBlobSha1": "f242f9f6e44ebae9c7d2b55842acc436a3ad35aa",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/22_강남여고_2학기_기말_고1_기출.json",
+      "sourceSha256": "0b93e878112c2070068d6198d05c09b56132a1bb475b9c78b4530e290048ba26",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-8770ac03f259-3c089982.pass1-ledger.json",
+      "repoSha256": "0b93e878112c2070068d6198d05c09b56132a1bb475b9c78b4530e290048ba26",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/22_강남여고_2학기_기말_고1_기출.json",
+      "sourceSha256": "0ae0f386a86b000d477357c253e7fc052029f249724f2c9c02c4a956b5496238",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-8770ac03f259-3c089982.pass2-ledger.json",
+      "repoSha256": "92b86dcc7332a5fe756714fbb0084d28e70f4628be1ebdcedb3f78f03227d147",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard-1-exam-0092.json",
+      "sourceSha256": "9ad6f945053cd88b69c52418d5cfa6b7fe1e93507eeca62dd4a36e9ade4e820e",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-8770ac03f259-3c089982.pass3-ledger.json",
+      "repoSha256": "9ad6f945053cd88b69c52418d5cfa6b7fe1e93507eeca62dd4a36e9ade4e820e",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/l/ledgers/luna-pass3-shard4-122-gangnam-high1-final.json",
+      "sourceSha256": "d95ecafc270a871e1bd4534aec9d9f658ac59662e6ea30e859feb4bd64b2dfc6",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-8770ac03f259-3c089982.pass3-ledger-2.json",
+      "repoSha256": "d95ecafc270a871e1bd4534aec9d9f658ac59662e6ea30e859feb4bd64b2dfc6",
+      "lineEndingNormalized": false
+    }
+  ],
+  "fieldSources": {
+    "registered": 136,
+    "agree": 61,
+    "p3": 19
+  },
+  "itemSources": {
+    "registered": 8
+  },
+  "typeHoldQuestions": 0,
+  "idWarnings": []
+}
