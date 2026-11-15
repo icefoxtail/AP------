@@ -405,7 +405,7 @@ window.questionBank = [
       "사각형"
     ],
     "wide": false,
-    "content": "다음 보기 중 무리수인 것을 모두 고른 것은? [4점]\\n<div class='box'>ㄱ. 가로의 길이가 6, 세로의 길이가 8인 직사각형의 대각선의 길이 ㄴ. 반지름의 길이가 2인 원의 넓이 ㄷ. 넓이가 \\frac{9}{16}인 정사각형의 한 변의 길이 ㄹ. 한변의 길이가 6인 정삼각형의 높이</div>",
+    "content": "다음 보기 중 무리수인 것을 모두 고른 것은? [4점]<br><div class='box'>ㄱ. 가로의 길이가 6, 세로의 길이가 8인 직사각형의 대각선의 길이 ㄴ. 반지름의 길이가 2인 원의 넓이 ㄷ. 넓이가 $\\frac{9}{16}$인 정사각형의 한 변의 길이 ㄹ. 한변의 길이가 6인 정삼각형의 높이</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄴ, ㄹ",
@@ -576,13 +576,13 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "content": "두 번째로 큰 수는 $a$, 세 번째로 작은 수를 $b$라 할 때 $a^{2}-b^{2}$의 값은? [5점]\\n<div class='box'>\\sqrt{5}, -\\sqrt{\\frac{9}{4}}, -\\sqrt{3}, \\frac{5}{2}, -\\sqrt{\\frac{5}{2}}, \\sqrt{\\frac{13}{2}}</div>",
+    "content": "두 번째로 큰 수는 $a$, 세 번째로 작은 수를 $b$라 할 때 $a^{2}-b^{2}$의 값은? [5점]<br><div class='box'>$\\sqrt{5}$, $-\\sqrt{\\frac{9}{4}}$, $-\\sqrt{3}$, $\\frac{5}{2}$, $-\\sqrt{\\frac{5}{2}}$, $\\sqrt{\\frac{13}{2}}$</div>",
     "choices": [
-      "\\frac{17}{4}",
-      "-\\frac{5}{2}",
+      "$\\frac{17}{4}$",
+      "$-\\frac{5}{2}$",
       "4",
       "-2",
-      "\\frac{11}{4}"
+      "$\\frac{11}{4}$"
     ],
     "answer": "3",
     "solution": "$-\\sqrt3<-\\sqrt{\\frac52}< -\\frac32<\\sqrt5<\\frac52<\\sqrt{\\frac{13}{2}}$이다.<br>따라서 $a=\\frac52$, $b=-\\frac32$이고 $a^2-b^2=4$이므로 정답은 ③이다.",
@@ -662,6 +662,10 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "solutionImage": "assets/images/21_왕운중_1학기_중간_중3_기출/q20-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "둘레가 2√2π cm인 원 두 개는 반지름이 √2 cm로 같다. 옆면 직사각형의 가로는 그 원둘레이고 세로는 높이 3√5 cm이다.",
+    "solutionImageCaption": "부피는 6√5π, 겉넓이는 4π+6√10π이다. 비를 정리하면 √2+(2/15)√5이므로 a+b=17/15이다.",
     "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -670,7 +674,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "제곱근",
@@ -690,7 +694,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/21_왕운중_1학기_중간_중3_기출/q20.png"
+    "image": "assets/images/21_왕운중_1학기_중간_중3_기출/q20-problem-v2.svg"
   },
   {
     "id": 21,
