@@ -9,9 +9,12 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
+import { createRequire } from "node:module";
 import { registerBasicScopeRebind, sourceFingerprint, contentFingerprint } from "../archive/tools/meta-foundation/register-basic-scope-rebind.mjs";
+import { BASIC_PRESERVATION_SCHEMA, BASIC_PRESERVATION_REVIEW_SCHEMA, stableBasicValue } from "../archive/tools/meta-foundation/reviewed-basic-preservation.mjs";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const canonical = createRequire(import.meta.url)("../archive/archive2-canonical.js");
 const SRC = "original/high/h2/1mid/99_테스트고_1학기_중간_고2_대수.js";
 const EVID = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1";
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -311,4 +314,145 @@ test("the registrar, pass script, consumer verifier and commit paths know the re
   assert.match(read("tools/ci/reviewed-meta-register-pass.sh"), /node --test tests\/archive-basic-scope-rebind\.test\.mjs/);
   assert.match(read("archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs"), /BASIC_REBIND: "archive-basic-scope-rebind-request-v1"/);
   assert.ok(read("tools/ci/archive-meta-register-commit.paths").split(/\r?\n/).includes("archive/data/basic-scope-source-links.json"), "the link file is committed by the single writer");
+});
+
+// A small real canonical bundle, committed with the original metadata and
+// source. No mocked approval predicate is used by the preservation tests.
+function preservationFixture(t, { text = false, fullDrift = false, approved = true, assets = {}, mutateCurrent = () => {} } = {}) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "basic-preservation-"));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  git(dir, "init", "-q"); git(dir, "config", "user.email", "t@example.invalid"); git(dir, "config", "user.name", "t");
+  const source = "original/middle/m2/1mid/26_테스트중_1학기_중간_중2_기출.js";
+  const questionUid = "qid_v1_" + sha256(source + "#1");
+  const parent = { grade: "중2", curriculumKey: "2015", courseKey: "M2-1", L1: "일차부등식", L2: "일차부등식의 활용" };
+  const questions = [{ id: 1, standardCourse: "중2 수학", standardUnitKey: "M2-02", subUnitKey: "M2-02-LINEAR_INEQUALITY_WORD",
+    problemTypeKey: null, templateKey: null, level: "중", content: "처음에 간 거리를 구하시오. $x>20$", choices: ["", " ", ""], answer: "21", solution: "처음에 간 거리는 $21$이다." },
+  { id: 2, content: "unselected", choices: [], answer: "1", solution: "1" }];
+  Object.assign(questions[0], assets);
+  const prior = structuredClone(questions), q = prior[0];
+  const before = { sourceFingerprint: fullDrift ? "f".repeat(64) : sourceFingerprint(q), contentFingerprint: contentFingerprint(q) };
+  const metadata = { records: [{ questionUid, sourceArchiveFile: source, sourceOrdinal: 1, sourceQuestionNo: "1", ...before,
+    standardCourse: "중2 수학", standardUnitKey: q.standardUnitKey, subUnitKey: q.subUnitKey, problemTypeKey: "", templateKey: "",
+    fieldStatus: { standardUnit: "approved_source", subUnit: "approved_source", problemType: "manual_review_pending", template: "manual_review_pending" },
+    metadataStatus: "approved_partial_with_explicit_holds", approvalEvidence: ["archive/_generated/prior-basic.json"],
+    difficultyBucket: 3, difficultyConfidence: "high", difficultyBoundaryFlag: "B23", legacyLevelCompatibility: "NORMAL" },
+  { questionUid: questionUid + "2", sourceArchiveFile: source, sourceOrdinal: 2, keep: "metadata" }] };
+  const identity = { records: [{ questionUid, sourceArchiveFile: source, sourceOrdinal: 1, sourceFingerprint: before.sourceFingerprint },
+    { questionUid: questionUid + "2", sourceArchiveFile: source, sourceOrdinal: 2, keep: "identity" }] };
+  write(dir, `archive/exams/${source}`, sourceText(prior));
+  write(dir, "archive/data/question_metadata.json", JSON.stringify(metadata));
+  write(dir, "archive/data/question_identity_map.json", JSON.stringify(identity));
+  const master = { records: [{ curriculum: "2015", scope: "M2-1", majorUnit: parent.L1, midUnit: parent.L2, concepts: [] }] };
+  const masterSha = sha256(JSON.stringify(master));
+  const resources = Object.fromEntries(canonical.MANIFEST_REQUIRED_PATHS.map(p => [p, {}]));
+  resources[canonical.CANONICAL_MASTER_PATH] = master;
+  resources["data/archive2-canonical-projection-policy.json"] = { schemaVersion: "archive2-canonical-projection-policy-v1", status: "ACTIVE",
+    canonicalMasterSha256: masterSha, gradeCourseAllowlist: [{ grade: "중2", curriculumKey: "2015", courseKey: "M2-1" }] };
+  resources["data/basic-scope-parent-links.json"] = { schemaVersion: "archive2-basic-scope-parent-links-v1", status: "DERIVED_READ_ONLY", authority: { sha256: masterSha },
+    records: [{ ...parent, standardUnitKey: q.standardUnitKey, subUnitKey: q.subUnitKey },
+      { ...parent, curriculumKey: "2022", standardUnitKey: q.standardUnitKey, subUnitKey: q.subUnitKey }], sourceParents: [], groups: [] };
+  resources["data/basic-scope-source-links.json"] = { status: "REVIEWED_SCOPE_LINKS", records: [] };
+  resources["data/archive2-item-review-overrides.json"] = { schemaVersion: "archive2-item-review-override-index-v1", status: "DERIVED_READ_ONLY", records: [] };
+  resources["data/meta-foundation/compiled/taxonomy_registry.json"] = { status: "DERIVED_READ_ONLY", problemTypes: [], templates: [] };
+  resources["data/meta-foundation/compiled/curriculum_bindings.json"] = { status: "DERIVED_READ_ONLY", bindings: [] };
+  for (const p of canonical.RUNTIME_INPUT_PATHS) resources[p] = { status: "ACTIVE", packId: p, records: [], taxonomyRows: [], ownedScopes: [] };
+  const assignment = { questionUid, sourceFile: source, sourceOrdinal: 1, ...parent,
+    sourceFingerprint: before.contentFingerprint, assignmentFingerprint: before.contentFingerprint,
+    approvalStatus: approved ? "APPROVED" : "HOLD", taxonomyVersion: masterSha,
+    reviewEvidence: { status: "PASS", reference: "prior-review.json", sha256: "b".repeat(64) } };
+  resources["data/archive2-catalog.json"] = { schemaVersion: "archive2-v1", indexVersion: "test", taxonomy: [parent], exams: [{ file: source, grade: "중2", qCount: 2 }],
+    sourceHashes: [[source, sha256(sourceText(prior))]], records: [{ questionUid, sourceFile: source, sourceOrdinal: 1, sourceGrade: "중2",
+      identityStatus: "VERIFIED", sourceStatus: "VERIFIED", sourceIntegrityStatus: "VERIFIED", sourceFingerprint: sourceFingerprint(q),
+      assignmentFingerprint: before.contentFingerprint, ...parent, standardUnitKey: q.standardUnitKey, subUnitKey: q.subUnitKey,
+      reviewStatus: "reviewed_pass", assignmentEvidence: assignment }] };
+  const files = Object.entries(resources).map(([p, value]) => { const raw = JSON.stringify(value); write(dir, `archive/${p}`, raw); return { path: p, sha256: sha256(raw) }; });
+  write(dir, "archive/data/archive2-canonical-input-manifest.json", JSON.stringify({ schemaVersion: "archive2-canonical-input-manifest-v1",
+    resolverVersion: canonical.RESOLVER_VERSION, files,
+    projectionVersion: "archive2-canonical-v1:" + sha256(canonical.projectionManifestPayload(files)) }));
+  git(dir, "add", "-A"); git(dir, "commit", "-qm", "original basic approval");
+  const priorCommit = git(dir, "rev-parse", "HEAD"), previousBlob = git(dir, "hash-object", `archive/exams/${source}`);
+  const textEdits = text ? { content: [{ from: "처음에 간 거리를", to: "처음에 뛴 거리를" }], solution: [{ from: "처음에 간 거리는", to: "처음에 뛴 거리는" }] } : {};
+  if (text) for (const [field, edits] of Object.entries(textEdits)) questions[0][field] = questions[0][field].replace(edits[0].from, edits[0].to);
+  else questions[0].choices = [];
+  mutateCurrent(questions[0]);
+  write(dir, `archive/exams/${source}`, sourceText(questions));
+  const after = { sourceFingerprint: sourceFingerprint(questions[0]), contentFingerprint: contentFingerprint(questions[0]) };
+  const request = { schemaVersion: "archive-basic-scope-rebind-request-v1", requestId: "basic-current-preservation", examUid: "test-middle",
+    sourceArchiveFile: source, expectedQuestionCount: 2, previousSourceCommit: priorCommit, previousSourceBlobSha1: previousBlob,
+    expectedSourceBlobSha1: git(dir, "hash-object", `archive/exams/${source}`),
+    approval: { type: "BASIC_SCOPE_REBIND", metadataReviewed: true, approvedBy: "independent", evidenceRefs: [],
+      sourceReview: { schemaVersion: BASIC_PRESERVATION_SCHEMA, priorCommit, repairBaseCommit: priorCommit } },
+    items: [{ questionUid, sourceOrdinal: 1, before, after, basicParent: parent, reason: "preserve an existing basic approval",
+      repairKind: text ? "REVIEWED_KOREAN_TEXT_ONLY" : "EMPTY_CHOICE_PLACEHOLDERS_ONLY", textEdits, evidenceRefs: [] }] };
+  const item = request.items[0], hashValue = v => sha256(stableBasicValue(v) ?? "undefined");
+  const changes = Object.keys({ ...prior[0], ...questions[0] }).filter(k => stableBasicValue(prior[0][k]) !== stableBasicValue(questions[0][k])).sort()
+    .map(field => ({ field, beforeSha256: hashValue(prior[0][field]), afterSha256: hashValue(questions[0][field]) }));
+  const record = { questionUid, sourceOrdinal: 1, repairKind: item.repairKind, textEdits, changes, basicParent: parent,
+    beforeQuestionSha256: hashValue(prior[0]), afterQuestionSha256: hashValue(questions[0]), decision: "PRESERVE_EXISTING_BASIC_ONLY" };
+  const save = (name, doc) => { const raw = JSON.stringify(doc); const rel = `${EVID}/${name}.json`; write(dir, rel, raw); return { path: rel, sha256: sha256(raw) }; };
+  const input = { schemaVersion: "archive-basic-scope-preservation-review-input-v1", rows: [record] }, inputRef = save("basic-input", input);
+  const independent = { schemaVersion: "archive-basic-scope-preservation-independent-review-v1", reviewer: "independent", inputSha256: inputRef.sha256,
+    status: "PASS_FOR_EXACT_DECLARED_REPAIR_AND_EXISTING_BASIC_ONLY", rows: [{ ...record, sourcePath: `archive/exams/${source}`,
+      priorCommit, repairBaseCommit: priorCommit, verifiedCurrentSourceRawSha256: sha256(sourceText(questions)), newAdvancedApproval: false }] };
+  const independentRef = save("basic-independent", independent);
+  const review = { schemaVersion: BASIC_PRESERVATION_REVIEW_SCHEMA, requestId: request.requestId, examUid: request.examUid, sourceArchiveFile: source,
+    expectedQuestionCount: 2, expectedSourceBlobSha1: request.expectedSourceBlobSha1, priorCommit, repairBaseCommit: priorCommit,
+    status: "PASS", decision: "PRESERVE_EXISTING_BASIC_ONLY", reviewedBy: "independent", preparedBy: "implementer", newMetadataApprovals: 0, advancedApprovals: 0,
+    independentInputRef: inputRef, independentReviewRef: independentRef, questions: [record] };
+  const reviewRef = save("basic-current-review", review);
+  request.approval.evidenceRefs = [reviewRef, independentRef, inputRef]; item.evidenceRefs = structuredClone(request.approval.evidenceRefs);
+  return { dir, request, prior, current: questions, metadata, identity, review, reviewRef, independent, independentRef, input, inputRef, save };
+}
+
+test("reviewed basic preservation restores empty-choice and exact text repairs, including a prior full-only fingerprint drift", t => {
+  for (const opts of [{ fullDrift: true }, { text: true }]) {
+    const f = preservationFixture(t, opts), before = snapshot(f.dir);
+    const dry = run(f); assert.equal(dry.preservedMetadataApprovals, 1); assert.equal(dry.newMetadataApprovals, 0);
+    assert.equal(snapshot(f.dir), before);
+    const result = run(f, { write: true }); assert.equal(result.advancedApprovals, 0);
+    const metadata = readJson(f.dir, "archive/data/question_metadata.json"), identity = readJson(f.dir, "archive/data/question_identity_map.json");
+    assert.deepEqual({ ...metadata.records[0], ...f.request.items[0].before }, f.metadata.records[0]);
+    assert.deepEqual(metadata.records[1], f.metadata.records[1]); assert.deepEqual(identity.records[1], f.identity.records[1]);
+    const digest = metadata.digest; delete metadata.digest; assert.equal(digest, sha256(JSON.stringify(metadata)));
+    assert.equal(run(f, { write: true }).replay, true);
+    const projection = run(f, { verifyProjection: true }); assert.equal(projection.consumerSearchStatus, "STATIC_VALUES_VERIFIED");
+    assert.equal(projection.preservedMetadataApprovals, 1);
+    assert.equal(readJson(f.dir, `${EVID}/${f.request.requestId}.json`).applied[0].preexistingFullFingerprintDrift, !!opts.fullDrift);
+  }
+});
+
+test("reviewed basic preservation refuses nonblank choices, numeric/answer/classification edits and unsupported repair kinds", t => {
+  for (const mutateCurrent of [q => { q.answer = "22"; }, q => { q.choices = ["1"]; }, q => { q.level = "상"; }, q => { q.content += " $2$"; }]) {
+    const f = preservationFixture(t, { mutateCurrent }); refuses(f, /only empty choice placeholders/);
+  }
+  const f = preservationFixture(t, { text: true, mutateCurrent: q => { q.solution += " $22$"; } }); refuses(f, /undeclared text change/);
+  const g = preservationFixture(t); g.request.items[0].repairKind = "ANY_SOURCE_CHANGE"; refuses(g, /current-source review mismatch/);
+});
+
+test("reviewed basic preservation refuses prior HOLD, parent replacement, changed protected metadata and an active runtime", t => {
+  refuses(preservationFixture(t, { approved: false }), /exact canonical basic parent is not approved/);
+  const wrongParent = preservationFixture(t); wrongParent.request.items[0].basicParent.curriculumKey = "2022";
+  refuses(wrongParent, /exact canonical basic parent is not approved|review mismatch/);
+  for (const change of [row => { row.fieldStatus.problemType = "approved"; }, row => { row.metadataApprovalType = "FINAL_QA"; }, row => { row.subUnitKey = "OTHER"; }]) {
+    const f = preservationFixture(t), md = readJson(f.dir, "archive/data/question_metadata.json"); change(md.records[0]);
+    write(f.dir, "archive/data/question_metadata.json", JSON.stringify(md)); refuses(f, /protected approval\/identity values changed/);
+  }
+  const f = preservationFixture(t), rel = "archive/" + canonical.RUNTIME_INPUT_PATHS[0], runtime = readJson(f.dir, rel);
+  runtime.records.push({ questionUid: f.request.items[0].questionUid }); write(f.dir, rel, JSON.stringify(runtime));
+  refuses(f, /current runtime approval cannot use/);
+});
+
+test("reviewed basic preservation refuses independent evidence drift, missing commit and receipt tampering", t => {
+  const f = preservationFixture(t); write(f.dir, f.independentRef.path, JSON.stringify({ ...f.independent, status: "HOLD" })); refuses(f, /evidence missing\/drift/);
+  const g = preservationFixture(t); g.request.approval.sourceReview.priorCommit = "a".repeat(40); refuses(g, /independent review scope/);
+  const h = preservationFixture(t); run(h, { write: true });
+  const rel = `${EVID}/${h.request.requestId}.json`, receipt = readJson(h.dir, rel); receipt.newMetadataApprovals = 1; write(h.dir, rel, JSON.stringify(receipt));
+  assert.throws(() => run(h, { verifyProjection: true }), /receipt\/protected value drift/);
+});
+
+test("reviewed basic preservation rejects unchanged external, alternate and inline render asset shapes", t => {
+  for (const assets of [{ image: "assets/images/q1.svg" }, { images: ["q1.svg"] }, { solutionImage: "solution.svg" },
+    { solutionImages: ["solution.svg"] }, { sharedMaterial: "<svg><image href='nested.svg'/></svg>" },
+    { explanation: "<img src='figure.png'>" }, { extra: { figure: { src: "figure.png" } } }])
+    refuses(preservationFixture(t, { assets }), /render assets are outside text-only preservation/);
 });

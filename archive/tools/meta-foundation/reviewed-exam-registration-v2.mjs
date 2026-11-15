@@ -2378,7 +2378,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     }
     const priorQuestion = patch.rebind === undefined ? null : loadPriorQuestionBank(root, patch.rebind?.priorSourceBlobSha1, priorBanks)[i];
     const sourceReview = patch.sourceReview === undefined ? null : validateReviewedSourceReassessment({
-      root, request: req, patch, metadata: current, question: q, final, supportedFields: valueFields, cache: sourceReviewCache });
+      root, request: req, patch, metadata: current, question: q, final, supportedFields: valueFields,
+      canonicalBefore: beforeTables || tables, canonicalAfter: tables, cache: sourceReviewCache });
     const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch, priorQuestion,
       requireRebind: partial && Object.hasOwn(patch.after, "sourceFingerprint") && !sourceReview });
     const fingerprint = checked.sourceFingerprint;

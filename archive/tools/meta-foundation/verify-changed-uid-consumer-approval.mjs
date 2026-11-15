@@ -42,6 +42,8 @@ import { fileURLToPath } from "node:url";
 import { loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
+import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
+import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 const require = createRequire(import.meta.url);
@@ -204,7 +206,15 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
   }
   if (schema === SCHEMA.BASIC_REBIND || schema === SCHEMA.BASIC_PARENT_CORRECTION) {
     const correction = schema === SCHEMA.BASIC_PARENT_CORRECTION;
+    const preservation = doc.approval?.sourceReview !== undefined;
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "rebind request needs sourceArchiveFile and items[]");
+    if (preservation && (correction || doc.approval.sourceReview?.schemaVersion !== BASIC_PRESERVATION_SCHEMA ||
+        doc.approval.type !== "BASIC_SCOPE_REBIND" || doc.scope !== undefined || doc.registrationMode !== undefined ||
+        !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length ||
+        doc.items.length > doc.expectedQuestionCount || new Set(doc.items.map(i => i.questionUid)).size !== doc.items.length ||
+        new Set(doc.items.map(i => i.sourceOrdinal)).size !== doc.items.length || doc.items.some(i => !Number.isSafeInteger(i.sourceOrdinal)
+          || i.sourceOrdinal < 1 || i.sourceOrdinal > doc.expectedQuestionCount || !i.questionUid || !i.basicParent)))
+      fail("INVALID_REQUEST", "basic preservation requires its exact selected scope");
     // A rebind changes no metadata value: the claim is only that the question is approved again in the consumer
     // (gated: canonical assignment APPROVED/PASS) and is bound to the current bytes (both fingerprints).
     const rows = doc.items.map(item => {
@@ -215,7 +225,9 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       } : {}, fingerprint: item.after.sourceFingerprint,
         bodyFingerprint: item.after.contentFingerprint, unchanged: false, gated: true };
     });
-    return { kind: correction ? "basic-parent-correction" : "basic-scope-rebind", approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
+    return { kind: preservation ? "basic-approval-preservation" : correction ? "basic-parent-correction" : "basic-scope-rebind",
+      approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
+      ...(preservation ? { request: doc, expectedQuestionCount: doc.expectedQuestionCount } : {}),
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
   }
   if (schema === SCHEMA.NONPT) {
@@ -442,6 +454,30 @@ function preservedNativeRows(root, unit, consumer) {
   });
 }
 
+function preservedBasicRows(root, unit, consumer) {
+  const request = unit.request, count = unit.rows.length;
+  const proof = registerBasicScopeRebind({ root, request, verifyProjection: true });
+  if (proof.status !== "PASS" || proof.requestId !== request.requestId || proof.replay !== true ||
+      proof.consumerSearchStatus !== "STATIC_VALUES_VERIFIED" || proof.totalQuestions !== count ||
+      proof.expectedQuestionCount !== unit.expectedQuestionCount || proof.newMetadataApprovals !== 0 || proof.advancedApprovals !== 0 ||
+      proof.metadataValuesChanged !== false || proof.preservedMetadataApprovals !== count || !same(proof.plannedPaths, []))
+    throw Error("basic preservation official replay/scope mismatch");
+  const metadata = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8"));
+  return unit.rows.map(row => {
+    const matches = metadata.records.filter(r => r.questionUid === row.uid);
+    if (matches.length !== 1 || consumer.runtimeByUid.has(row.uid)) throw Error("basic preservation current metadata/runtime scope mismatch");
+    const item = request.items.find(i => i.questionUid === row.uid), record = matches[0];
+    // The official replay above checks the entire protected metadata/identity
+    // row. The current canonical resolver and actual page query below must
+    // additionally retain this exact existing basic parent and byte binding.
+    return { ...row, expect: {
+      curriculumKey: item.basicParent.curriculumKey, courseKey: item.basicParent.courseKey,
+      L1: item.basicParent.L1, L2: item.basicParent.L2,
+      standardCourse: record.standardCourse, standardUnitKey: record.standardUnitKey, subUnitKey: record.subUnitKey,
+    } };
+  });
+}
+
 export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scopedPaths = [] }) {
   let mainSha = "UNKNOWN";
   try { mainSha = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim(); } catch { /* not a git checkout */ }
@@ -503,6 +539,17 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
         continue;
       }
     }
+    if (unit.kind === "basic-approval-preservation") {
+      summary.approvalCreated = false; summary.newMetadataApprovals = 0; summary.advancedApprovals = 0;
+      summary.preservedMetadataApprovals = 0; summary.expectedQuestionCount = unit.expectedQuestionCount;
+      try { rows = preservedBasicRows(root, unit, consumer); }
+      catch (error) {
+        summary.checked = rows.length; result.counts.checked += rows.length;
+        result.failures.push({ exam: unit.exam, qid: rows[0]?.ordinal ?? "-", uid: rows[0]?.uid ?? "-",
+          reason: "BASIC_PRESERVATION_MISMATCH", detail: error.message });
+        continue;
+      }
+    }
     if (unit.kind === "identity-fingerprint-repair") {
       summary.checked = rows.length; result.counts.checked += rows.length;
       summary.approvalCreated = false; summary.newMetadataApprovals = 0;
@@ -550,7 +597,7 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       if (checked.solverOnlyRevision) result.solverOnlyRevisions.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid });
       if (checked.unobserved?.length) result.unobservedFields.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid, fields: checked.unobserved });
     }
-    if (unit.kind === "native-approval-preservation") summary.preservedMetadataApprovals = summary.passed;
+    if (["native-approval-preservation", "basic-approval-preservation"].includes(unit.kind)) summary.preservedMetadataApprovals = summary.passed;
   }
   if (result.failures.length || result.counts.checked !== result.counts.changed) result.status = "FAIL";
   return result;
@@ -558,7 +605,7 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
 
 export function renderSummary(result) {
   const c = result.counts;
-  const preservation = result.exams.some(e => ["binding-course-correction", "identity-fingerprint-repair", "native-approval-preservation"].includes(e.kind));
+  const preservation = result.exams.some(e => ["binding-course-correction", "identity-fingerprint-repair", "native-approval-preservation", "basic-approval-preservation"].includes(e.kind));
   const lines = [preservation ? "### Changed-UID consumer verification" : "### Changed-UID effective consumer approval", ""];
   if (result.status === "PASS") {
     lines.push(`PASS: changed ${c.passed}/${c.changed} ${preservation ? "verified" : "approved"} (checked ${c.checked}, skippedUnchanged ${c.skippedUnchanged}), main \`${result.mainSha}\`.`);
@@ -575,6 +622,8 @@ export function renderSummary(result) {
     lines.push(`  Verified identity bindings: ${e.identityBindings ?? 0}; new approvals: 0.`);
   for (const e of result.exams.filter(e => e.kind === "native-approval-preservation"))
     lines.push(`  Preserved ${e.approvalType} approvals: ${e.preservedMetadataApprovals ?? 0}; new approvals: 0; source questions: ${e.expectedQuestionCount}.`);
+  for (const e of result.exams.filter(e => e.kind === "basic-approval-preservation"))
+    lines.push(`  Preserved basic approvals: ${e.preservedMetadataApprovals ?? 0}; new approvals: 0; advanced approvals: 0; source questions: ${e.expectedQuestionCount}.`);
   if (result.assignmentPending?.length) {
     const byExam = new Map();
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);

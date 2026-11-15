@@ -88,6 +88,45 @@ function readRef(root, ref, refs) {
   if (sha(bytes) !== ref.sha256) fail("evidence SHA drift: " + ref.path);
   return { bytes, data: JSON.parse(bytes.toString("utf8")) };
 }
+// Read a historical dependency from its exact Git tree. Absence is different
+// from an unavailable blob: only an actually consumed difficulty inbox path may
+// use the raw bytes sealed in that immutable preservation receipt.
+function historicalFile(root, revision, relative) {
+  localPath(root, relative);
+  const entries = git(root, ["ls-tree", "-z", revision, "--", relative]).toString("utf8").split("\0").filter(Boolean);
+  if (!entries.length) return null;
+  if (entries.length !== 1) fail("historical evidence path is ambiguous");
+  const [header, name] = entries[0].split("\t"), [mode, type] = header.split(" ");
+  if (name !== relative || type !== "blob" || !["100644", "100755"].includes(mode))
+    fail("historical evidence is not a regular Git file");
+  return git(root, ["show", revision + ":" + relative]);
+}
+function historicalRequest(root, revision, receipt) {
+  const snapshot = receipt.auditPreservation?.requestSnapshot;
+  if (!isAuditPreservation(receipt.approval) || !snapshot || !equal(snapshot.approval, receipt.approval) ||
+      receipt.requestSha256 !== sha(stable(snapshot))) fail("historical preservation request snapshot mismatch");
+  const bytes = historicalFile(root, revision, receipt.approval.sourceRebind.requestPath);
+  if (bytes && !equal(JSON.parse(bytes.toString("utf8")), snapshot))
+    fail("historical preservation request differs from Git input");
+  return snapshot;
+}
+function historicalEvidence(root, revision, ref, refs, receipt, request) {
+  if (!ref || !SHA256.test(ref.sha256 || "") || !refs?.some(r => r.path === ref.path && r.sha256 === ref.sha256))
+    fail("historical SHA-bound evidence reference required");
+  let bytes = historicalFile(root, revision, ref.path);
+  if (bytes === null) {
+    if (!equal(ref, request.approval.sourceRebind.difficultyRequestRef))
+      fail("historical non-inbox evidence missing from Git");
+    const sealed = receipt.auditPreservation?.difficultyRequestSnapshot;
+    if (!ref.path.startsWith(".archive-meta-register/inbox/") || sealed?.path !== ref.path ||
+        sealed.sha256 !== ref.sha256 || typeof sealed.rawUtf8 !== "string")
+      fail("historical consumed difficulty snapshot missing");
+    bytes = Buffer.from(sealed.rawUtf8, "utf8");
+  }
+  if (sha(bytes) !== ref.sha256) fail("historical evidence SHA drift: " + ref.path);
+  return bytes;
+}
+
 export function isAuditPreservation(approval) {
   return approval?.type === "META_PIPELINE_AUDIT" && approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
 }
@@ -151,7 +190,7 @@ function preservationSelection(request, questionCount) {
 // exact source. A full request keeps every UID; explicit PARTIAL_UIDS keeps only
 // its exact subset. Neither path changes classification or QA. The independently
 // reviewed difficulty input must still cover the entire source bank.
-export function loadAuditPreservation({ root, request, bytes, bank }) {
+export function loadAuditPreservation({ root, request, bytes, bank, _historical = null }) {
   const approval = request.approval, spec = approval?.sourceRebind, source = request.sourceArchiveFile;
   if (!isAuditPreservation(approval) || request.registrationMode !== undefined ||
       request.registryChanges?.length || !text(approval.approvedBy) || approval.metadataReviewed !== true)
@@ -161,13 +200,28 @@ export function loadAuditPreservation({ root, request, bytes, bank }) {
     fail("unknown preservation option");
   if (!spec.requestPath?.startsWith(".archive-meta-register/inbox/")) fail("explicit preservation inbox path required");
   const requestFile = localPath(root, spec.requestPath);
-  const boundRequest = fs.existsSync(requestFile) ? JSON.parse(fs.readFileSync(requestFile, "utf8"))
-    : readAuditPreservationRequest(root, JSON.parse(fs.readFileSync(localPath(root, RECEIPTS + request.requestId + ".json"), "utf8")));
+  const boundRequest = _historical ? historicalRequest(root, _historical.commit, _historical.receipt)
+    : fs.existsSync(requestFile) ? JSON.parse(fs.readFileSync(requestFile, "utf8"))
+      : readAuditPreservationRequest(root, JSON.parse(fs.readFileSync(localPath(root, RECEIPTS + request.requestId + ".json"), "utf8")));
   if (!equal(boundRequest, request)) fail("preservation request differs from its bound input");
   const ref = spec.priorReceiptRef, refs = approval.evidenceRefs;
+  const readBoundBytes = (evidence, evidenceRefs = refs) => _historical
+    ? historicalEvidence(root, _historical.commit, evidence, evidenceRefs, _historical.receipt, request)
+    : (() => {
+      if (!evidence || !SHA256.test(evidence.sha256 || "") ||
+          !evidenceRefs?.some(r => r.path === evidence.path && r.sha256 === evidence.sha256))
+        fail("explicit SHA-bound evidence reference required");
+      const raw = fs.readFileSync(localPath(root, evidence.path));
+      if (sha(raw) !== evidence.sha256) fail("evidence SHA drift: " + evidence.path);
+      return raw;
+    })();
+  const readBound = (evidence, evidenceRefs = refs) => {
+    const raw = readBoundBytes(evidence, evidenceRefs);
+    return { bytes: raw, data: JSON.parse(raw.toString("utf8")) };
+  };
   if (!ref?.path?.startsWith(RECEIPTS) || ref.path.slice(RECEIPTS.length).includes("/") || !ref.path.endsWith(".json"))
     fail("prior native receipt path required");
-  const prior = readRef(root, ref, refs).data;
+  const prior = readBound(ref).data;
   commit(root, spec.priorCommit);
   if (sha(git(root, ["show", spec.priorCommit + ":" + ref.path])) !== ref.sha256)
     fail("prior receipt differs from its Git commit");
@@ -199,31 +253,41 @@ export function loadAuditPreservation({ root, request, bytes, bank }) {
       fail("selected UID/ordinal is not in the original full audit: " + uid);
   }
   const masterRef = refs.find(r => r.path === MASTER);
-  const master = readRef(root, masterRef, refs).data;
+  const master = readBound(masterRef).data;
   if (!Array.isArray(master)) fail("current canonical master must be bound");
+  // A full preservation receipt is a prior state only after its original audit,
+  // historical source, sealed request/D5 input and every applied value have been
+  // replayed without reading mutable current source or ignoring revision/evidence.
+  const preservedPrior = isAuditPreservation(prior.approval)
+    ? verifyHistoricalPreservation({ root, receipt: prior, receiptRef: ref, priorCommit: spec.priorCommit,
+      bytes: oldBytes, bank: oldBank, seen: _historical?.seen || [] }) : null;
   // The master can gain unrelated keys after the original audit. Re-resolve its
   // exact current keys below; every original non-master evidence file stays sealed.
   for (const evidence of prior.approval.evidenceRefs || []) {
     localPath(root, evidence.path);
     if (!SHA256.test(evidence.sha256 || "")) fail("prior evidence SHA missing");
-    if (evidence.path !== MASTER && sha(git(root, ["show", spec.priorCommit + ":" + evidence.path])) !== evidence.sha256)
+    if (evidence.path !== MASTER && sha(preservedPrior
+      ? historicalEvidence(root, spec.priorCommit, evidence, prior.approval.evidenceRefs, prior, preservedPrior.request)
+      : git(root, ["show", spec.priorCommit + ":" + evidence.path])) !== evidence.sha256)
       fail("prior audit evidence differs from its Git commit");
   }
   if (!prior.approval.evidenceRefs?.length) fail("prior audit evidence missing");
-  for (const key of ["auditPackageRef", "manifestRef", "sourceParityRef"]) {
+  // A preserved prior carries its immediate receipt; the recursive historical
+  // replay above verifies these original audit refs at their original commit.
+  if (!preservedPrior) for (const key of ["auditPackageRef", "manifestRef", "sourceParityRef"]) {
     const evidence = prior.approval.metaPipelineAudit[key];
     if (!evidence || !prior.approval.evidenceRefs.some(r => r.path === evidence.path && r.sha256 === evidence.sha256))
       fail("original audit evidence reference missing");
   }
   const difficultyRef = spec.difficultyRequestRef;
   if (!difficultyRef?.path?.startsWith(".archive-meta-register/inbox/")) fail("official difficulty request reference required");
-  const difficultyBytes = readPreservedAuditEvidence(root, request, difficultyRef);
+  const difficultyBytes = _historical ? readBoundBytes(difficultyRef) : readPreservedAuditEvidence(root, request, difficultyRef);
   const difficulty = JSON.parse(difficultyBytes.toString("utf8")), correction = difficulty.reviewedCorrection;
   if (difficulty.schemaVersion !== "archive-difficulty5-register-request-v1" ||
       difficulty.gemini?.sourceArchiveFile !== source || difficulty.gemini.latestBlobSha !== request.expectedSourceBlobSha1 ||
       correction?.schemaVersion !== "archive-difficulty5-reviewed-correction-v1")
     fail("reviewed difficulty source/request mismatch");
-  const difficultyProof = readRef(root, { path: correction.evidencePath, sha256: correction.evidenceSha256 }, refs).data;
+  const difficultyProof = readBound({ path: correction.evidencePath, sha256: correction.evidenceSha256 }).data;
   if (difficultyProof.schemaVersion !== correction.schemaVersion) fail("difficulty proof schema mismatch");
   const changes = unique(correction.rows, "questionUid", "difficulty correction UID");
   const difficultyItems = unique(difficulty.gemini.items, "questionUid", "difficulty request UID");
@@ -233,16 +297,46 @@ export function loadAuditPreservation({ root, request, bytes, bank }) {
   if (spec.solutionRepair) {
     const value = spec.solutionRepair;
     if (Object.keys(value).some(k => !["ref", "reviewCommit", "reviewPath"].includes(k))) fail("unknown solution repair option");
-    repair = readRef(root, value.ref, refs).data;
+    repair = readBound(value.ref).data;
     commit(root, value.reviewCommit); localPath(root, value.reviewPath);
     if (sha(git(root, ["show", value.reviewCommit + ":" + value.reviewPath])) !== value.ref.sha256 ||
         repair.schemaVersion !== "archive-source-solution-repair-v1" || repair.status !== "NARROW_REPAIR_REVIEWED" ||
         !Array.isArray(repair.rows)) fail("immutable narrow solution review mismatch");
   }
   const context = { root, request, prior, ref, records, identities, runtimes, patches, oldBank, bank, master,
-    changes, difficultyItems, proofRows, difficulty, difficultyBytes, difficultyRef, repair, repairedUids: new Set() };
+    changes, difficultyItems, proofRows, difficulty, difficultyBytes, difficultyRef, repair, repairedUids: new Set(),
+    readBound, readBoundBytes, historical: _historical };
   context.consumerParents = loadPreservedConsumerParents(context);
   return context;
+}
+
+function verifyHistoricalPreservation({ root, receipt, receiptRef, priorCommit, bytes, bank, seen }) {
+  const key = priorCommit + ":" + receiptRef.path + ":" + receiptRef.sha256;
+  if (seen.includes(key) || seen.length >= 16) fail("preservation history cycle or depth limit");
+  const request = historicalRequest(root, priorCommit, receipt);
+  if (request.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2" ||
+      request.scope !== undefined || receipt.scope !== undefined || request.registrationMode !== undefined)
+    fail("only a full historical preservation may be the prior audit");
+  assertAuditPreservationReceipt(receipt, request, bytes, bank.length);
+  // Historical inputs are authenticated even when the new request does not need
+  // their particular field. An existing Git file always wins over a sealed copy.
+  for (const refs of [request.approval.evidenceRefs, ...request.items.map(item => item.evidenceRefs)]) {
+    if (!Array.isArray(refs) || !refs.length) fail("historical item evidence missing");
+    for (const ref of refs) historicalEvidence(root, priorCommit, ref, refs, receipt, request);
+  }
+  const context = loadAuditPreservation({ root, request, bytes, bank,
+    _historical: { commit: priorCommit, receipt, seen: [...seen, key] } });
+  if (!equal(receipt.metaPipelineAudit, context.prior.metaPipelineAudit))
+    fail("historical original audit summary changed");
+  const identities = unique(receipt.appliedIdentityRecords, "questionUid", "historical identity UID");
+  const runtimes = unique(receipt.runtimeRecords, "questionUid", "historical runtime UID");
+  for (const current of receipt.appliedRecords) {
+    const kept = planPreservedAuditRecord(context, { current, identity: identities.get(current.questionUid),
+      runtime: runtimes.get(current.questionUid), question: bank[current.sourceOrdinal - 1], ordinal: current.sourceOrdinal,
+      receiptPath: receiptRef.path, replay: true });
+    assertPreservedAuditRepair(receipt, kept);
+  }
+  return { request };
 }
 
 // Historical raw audit L1/L2 can predate the already published basic-parent
@@ -255,7 +349,7 @@ function loadPreservedConsumerParents(context) {
   if (!parentRef) return new Map();
   if (!parentRef.path?.startsWith(RECEIPTS) || !parentRef.path.endsWith(".parent-preservation.json"))
     fail("consumer parent proof path invalid");
-  const proof = readRef(root, parentRef, request.approval.evidenceRefs).data;
+  const proof = context.readBound(parentRef).data;
   if (proof.schemaVersion !== "archive-native-audit-consumer-parent-preservation-v1" ||
       proof.sourceArchiveFile !== request.sourceArchiveFile || proof.expectedQuestionCount !== prior.totalQuestions ||
       !equal(proof.priorReceiptRef, ref) || proof.parentLinks?.path !== PARENT_LINKS ||
@@ -368,8 +462,9 @@ export function planPreservedAuditRecord(context, { current, identity, runtime, 
     fail("source category is not the exact canonical unit label");
   if (!equal(question.standardUnitOrder, beforeQuestion.standardUnitOrder)) {
     const orderRef = request.approval.evidenceRefs.find(r => r.path === UNIT_MASTER_PATH);
-    if (!orderRef || sha(fs.readFileSync(localPath(context.root, orderRef.path))) !== orderRef.sha256)
-      fail("unit-order authority must be SHA-bound");
+    if (!orderRef || sha(context.readBoundBytes(orderRef)) !== orderRef.sha256 ||
+        sha(fs.readFileSync(localPath(context.root, orderRef.path))) !== orderRef.sha256)
+      fail("unit-order authority must be SHA-bound at the current and historical input");
     if (loadUnitOrders(context.root).orders.get(old.standardUnitKey)?.order !== question.standardUnitOrder)
       fail("source unit order differs from canonical authority");
   }

@@ -4,6 +4,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { REVIEWED_RPM_FIELDS } from "./reviewed-rpm-provenance.mjs";
+import { validateNativeProposalFinalization } from "./reviewed-proposal-finalization.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -108,7 +109,8 @@ function loadReview({ root, request, patch, cache }) {
   return loaded;
 }
 
-export function validateReviewedSourceReassessment({ root, request, patch, metadata, question, final, supportedFields, cache = new Map() }) {
+export function validateReviewedSourceReassessment({ root, request, patch, metadata, question, final, supportedFields,
+  canonicalBefore, canonicalAfter, cache = new Map() }) {
   if (request.scope !== "PARTIAL_UIDS" || request.approval?.type !== "FINAL_QA" ||
       request.approval.sourceRebind || patch.rebind !== undefined || !Object.hasOwn(patch.after, "sourceFingerprint"))
     fail("requires an exclusive PARTIAL_UIDS FINAL_QA fingerprint repair");
@@ -146,6 +148,10 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     accepted[key] = row.finalDifficulty[key];
   }
   const identityOnly = request.registrationMode === "IDENTITY_FINGERPRINT_ONLY";
+  const proposalFinalization = identityOnly && patch.sourceReview.proposalFinalization === undefined ? null :
+    validateNativeProposalFinalization({ root, request, patch, native: loaded, row,
+      accepted, question, final, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
+  if (proposalFinalization) Object.assign(accepted, proposalFinalization.fields);
   const rationaleBindings = {};
   if (!identityOnly) for (const field of ["primaryMethod", "decisiveStep"]) {
     if (!Object.hasOwn(patch.after, field) && !Object.hasOwn(question, field)) continue;
@@ -200,5 +206,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     reviewer: loaded.reviewer, decision, studentPayloadSha256: sha256(stable(payload)),
     ...(Object.keys(rationaleBindings).length ? { rationaleBindings } : {}),
     ...(Object.keys(rpmBindings).length ? { rpmBindings } : {}),
+    ...(proposalFinalization?.proof ? { proposalFinalization: proposalFinalization.proof } : {}),
+    ...(proposalFinalization?.technicalBindings?.length ? { technicalProposalBindings: proposalFinalization.technicalBindings } : {}),
     scope: identityOnly ? "IDENTITY_BINDING_ONLY" : "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false };
 }

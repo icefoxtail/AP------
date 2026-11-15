@@ -33,6 +33,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { registerDifficulty5 } from "./register-difficulty5.mjs";
+import { BASIC_PRESERVATION_SCHEMA, BASIC_PRESERVATION_REVIEW_SCHEMA, verifyReviewedBasicPreservation } from "./reviewed-basic-preservation.mjs";
 
 export const SCHEMA = "archive-basic-scope-rebind-request-v1";
 export const PARENT_SCHEMA = "archive-basic-parent-correction-request-v1";
@@ -135,14 +136,19 @@ function loadReview(root, req, schema = REVIEW_SCHEMA) {
 
 export function registerBasicScopeRebind({ root, request: req, write = false, verifyProjection = false }) {
   const correction = req?.schemaVersion === PARENT_SCHEMA;
+  const preservation = req?.approval?.sourceReview !== undefined;
   if (!correction && req?.schemaVersion !== SCHEMA) fail("request schema mismatch");
+  if (preservation && (correction || req.approval.sourceReview?.schemaVersion !== BASIC_PRESERVATION_SCHEMA)) fail("unsupported basic source review");
   if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(req.requestId || "")) fail("valid requestId required");
   requireText(req.examUid, "examUid");
   if (req.approval?.type !== (correction ? "BASIC_PARENT_CORRECTION" : "BASIC_SCOPE_REBIND") || req.approval.metadataReviewed !== true) fail("BASIC_SCOPE_REBIND approval with metadataReviewed=true required");
   requireText(req.approval.approvedBy, "approvedBy");
   evidenceRefs(root, req.approval.evidenceRefs, "approval", correction);
-  const review = loadReview(root, req, correction ? PARENT_REVIEW_SCHEMA : REVIEW_SCHEMA);
+  const review = loadReview(root, req, correction ? PARENT_REVIEW_SCHEMA : preservation ? BASIC_PRESERVATION_REVIEW_SCHEMA : REVIEW_SCHEMA);
   if (!Array.isArray(req.items) || !req.items.length || req.items.length > MAX_ITEMS) fail(`items[] required (1..${MAX_ITEMS})`);
+  if (preservation && (review.doc.questions.length !== req.items.length || new Set(review.doc.questions.map(q => q.questionUid)).size !== req.items.length ||
+      new Set(req.items.map(item => item.sourceOrdinal)).size !== req.items.length))
+    fail("basic preservation review scope must equal selected items");
   if (req.registryChanges !== undefined) fail("registryChanges are not allowed in a rebind");
 
   const adjudicationRef = correction ? review.doc.priorReview : null;
@@ -215,6 +221,8 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
     seen.add(uid);
     const row = metaRows.get(uid), id = idRows.get(uid), n = item.sourceOrdinal;
     if (!row || !id) fail(`UID not in source exam: ${uid}`);
+    if (preservation && (metadata.records.filter(r => r.questionUid === uid).length !== 1 || identity.records.filter(r => r.questionUid === uid).length !== 1))
+      fail(`${uid} ambiguous current metadata/identity UID`);
     if (!Number.isInteger(n) || n < 1 || n > bank.length || row.sourceOrdinal !== n || id.sourceOrdinal !== n) fail(`UID/source ordinal mismatch: ${uid}`);
     requireText(item.reason, `${uid} reason`);
     evidenceRefs(root, item.evidenceRefs, uid, correction);
@@ -238,7 +246,7 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
     const alreadyRebound = eq(stored, now) && id.sourceFingerprint === now.sourceFingerprint;
     if (!alreadyRebound) {
       if (!eq(stored, item.before) || id.sourceFingerprint !== item.before.sourceFingerprint) fail(`${uid} before fingerprints do not match the registered row/identity`);
-      if (!eq(approvedBytes, item.before)) fail(`${uid} the previous source blob does not reproduce the approved fingerprints`);
+      if (!preservation && !eq(approvedBytes, item.before)) fail(`${uid} the previous source blob does not reproduce the approved fingerprints`);
     } else if (!previous && !verifyProjection) fail(`${uid} is already bound to the current source`);
     if (correction) {
       const parentKeys = ["standardUnitKey", "standardUnit", "subUnitKey", "subUnit"];
@@ -288,7 +296,21 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
         parentBefore: priorParent, parentAfter: nextParent, difficulty, nextLink });
       continue;
     }
-    // Only a figure may differ.
+    if (preservation) {
+      const proof = verifyReviewedBasicPreservation({ root, request: req, review: review.doc, item,
+        current, previous: prior, row, identity: id, crosswalk });
+      const bp = item.basicParent;
+      const matches = links.records.filter(link => link.sourceFile === source && Number(link.sourceOrdinal) === n);
+      if (matches.length > 1 || matches.some(link => ["grade", "curriculumKey", "courseKey", "L1", "L2"].some(key => link[key] !== bp[key])))
+        fail(`${uid} existing reviewed link has another or ambiguous parent`);
+      const nextLink = { ...bp, sourceFile: source, sourceOrdinal: n,
+        sourceFingerprint: item.after.sourceFingerprint, sourceBodyFingerprint: item.after.contentFingerprint,
+        reason: matches[0]?.reason || `BASIC_SCOPE_REBIND ${req.requestId}: preserve the existing exact basic parent after the bound current-source repair` };
+      applied.push({ questionUid: uid, sourceOrdinal: n, before: item.before, after: item.after,
+        metadataValuesChanged: false, figureChanged: false, basicParent: bp, ...proof, nextLink });
+      continue;
+    }
+    // The original figure-only path remains unchanged.
     if (!eq(prior.answer, current.answer)) fail(`${uid} answer changed`);
     if (!eq(prior.choices, current.choices)) fail(`${uid} choices changed`);
     if (!eq(prior.solution, current.solution)) fail(`${uid} solution changed`);
@@ -332,6 +354,15 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
       ...(nextLink ? { basicParent: item.basicParent } : {}), nextLink });
   }
 
+  const preservationCounts = preservation ? { preservedMetadataApprovals: applied.length,
+    newMetadataApprovals: 0, advancedApprovals: 0, metadataValuesChanged: false,
+    expectedQuestionCount: req.expectedQuestionCount } : {};
+  if (preservation && previous && (previous.sourceReviewSchema !== BASIC_PRESERVATION_SCHEMA ||
+      !eq(previous.applied, applied) || previous.preservedMetadataApprovals !== applied.length ||
+      previous.newMetadataApprovals !== 0 || previous.advancedApprovals !== 0 || previous.metadataValuesChanged !== false ||
+      previous.expectedQuestionCount !== req.expectedQuestionCount || previous.sourceRawSha256 !== sha256(bytes)))
+    fail("basic preservation receipt/protected value drift");
+
   if (verifyProjection) {
     if (!previous) fail("registration receipt required before --verify-projection");
     for (const record of previous.applied) {
@@ -340,9 +371,11 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
         fail(`registered fingerprint drift: ${record.questionUid}`);
       if (record.nextLink && !links.records.some(link => eq(link, record.nextLink))) fail(`registered basic source link drift: ${record.questionUid}`);
     }
-    return { status: "PASS", requestId: req.requestId, verifiedRows: previous.applied.length, totalQuestions: req.items.length, replay: true, consumerSearchStatus: correction ? "STATIC_VALUES_VERIFIED" : "NOT_RUN" };
+    return { status: "PASS", requestId: req.requestId, verifiedRows: previous.applied.length, totalQuestions: req.items.length, replay: true,
+      ...(preservation ? { ...preservationCounts, plannedPaths: [] } : {}), consumerSearchStatus: correction || preservation ? "STATIC_VALUES_VERIFIED" : "NOT_RUN" };
   }
-  if (previous) return { status: "PASS", requestId: req.requestId, replay: true, plannedPaths: [], totalQuestions: req.items.length, verifiedRows: applied.length };
+  if (previous) return { status: "PASS", requestId: req.requestId, replay: true, plannedPaths: [], totalQuestions: req.items.length, verifiedRows: applied.length,
+    ...preservationCounts };
 
   for (const record of applied) {
     const row = metaRows.get(record.questionUid), id = idRows.get(record.questionUid);
@@ -357,10 +390,12 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
   }
   const stableIdentity = { ...identity }; delete stableIdentity.generatedAt; delete stableIdentity.identityDigest;
   identity.identityDigest = sha256(JSON.stringify(stableIdentity));
+  if (preservation) { delete metadata.digest; metadata.digest = sha256(JSON.stringify(metadata)); }
   const receipt = { schemaVersion: RECEIPT_SCHEMA, requestId: req.requestId, requestSha256, examUid: req.examUid, sourceArchiveFile: source,
     sourceBlobSha1: req.expectedSourceBlobSha1, previousSourceBlobSha1: req.previousSourceBlobSha1, sourceRawSha256: sha256(bytes),
     approval: req.approval, metadataRegistrationStatus: correction ? "BASIC_PARENT_CORRECTED" : "FINGERPRINT_REBOUND", metadataValuesChanged: correction,
-    consumerSearchStatus: "NOT_RUN", totalRebound: applied.length, applied };
+    consumerSearchStatus: "NOT_RUN", totalRebound: applied.length, applied,
+    ...(preservation ? { sourceReviewSchema: BASIC_PRESERVATION_SCHEMA, ...preservationCounts } : {}) };
   const output = new Map([[META, json(metadata)], [IDENTITY, JSON.stringify(identity) + "\n"], [LINKS, json(links)], [receiptPath, json(receipt)]]);
   const changed = [...output].filter(([file, text]) => !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text);
   if (write) {
@@ -378,5 +413,5 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
     }
   }
   return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalRebound: applied.length, totalQuestions: req.items.length,
-    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file) };
+    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file), ...preservationCounts };
 }

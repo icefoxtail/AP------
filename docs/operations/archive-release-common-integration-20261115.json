@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "archive-release-common-integration-proof-v1",
+  "status": "LOCAL_CODE_AND_SCOPED_CONSUMER_VERIFIED",
+  "baseCodeCommit": "e9cf28bacf52048d39207c74e0a35e8c8eb0579e",
+  "testedCodeCommit": "9bff4fec3963d0f69fe9df24d6e848e402b67795",
+  "integration": {
+    "basicAndMainDependency": "42efee1534e44cb10fff2deef294ee384b47e686",
+    "nativeProposalFinalization": [
+      "c29d796ae2",
+      "72b5c9d596c216016022aa4fd40b2a5085900111",
+      "a8f03780ebb4cf87181f919ee5bfb590721947d1"
+    ],
+    "historicalFullAuditChain": "9bff4fec3963d0f69fe9df24d6e848e402b67795",
+    "method": "three-way cherry-picks; earlier PARTIAL audit, full-source D5 and exact HEAD pending-main gates retained",
+    "sourceAndRequestChanges": 0
+  },
+  "remoteFailureClosed": {
+    "workflowRun": 43685277192,
+    "job": 132724378049,
+    "pullRequest": 2104,
+    "head": "b8eb15e3c554fb2e1c52d71685fded497b98a92a",
+    "test": "tests/archive-register-isolation.test.js",
+    "cause": "The shared audit dependency gate required the source denominator and selected UID scope, but the actual main CLI had not populated those descriptors.",
+    "fix": "Parse the exact blob-bound source bank and carry sourceQuestionCount, questionCount and selectedItems to the same shared order gate. A partial audit still requires its entire-source difficulty request.",
+    "regressions": [
+      "full audit uses exact D5-first order and preserves unrelated order",
+      "refused D5 prevents audit preservation",
+      "partial audit uses full-source D5 and exact selected UID",
+      "narrowed D5 denominator rejected",
+      "substituted UID rejected",
+      "selected count substituted for whole-source denominator rejected"
+    ]
+  },
+  "regression": {
+    "command": [
+      "node",
+      "--test",
+      "--test-concurrency=2",
+      "tests/archive-basic-scope-rebind.test.mjs",
+      "tests/archive-changed-uid-consumer-approval.test.mjs",
+      "tests/archive-pr-native-preview.test.mjs",
+      "tests/archive-register-isolation.test.js",
+      "tests/archive-ci-scope.test.mjs",
+      "tests/archive-pr-registration-prepare.test.mjs",
+      "tests/archive-pr-registration-proof.test.mjs",
+      "tests/archive-reviewed-exam-registration-v2.test.mjs"
+    ],
+    "tests": 539,
+    "passed": 539,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 89505.384126,
+    "log": {
+      "path": "m2s1-final-common-complete-tests-r2.log",
+      "sha256": "cad2b9a113e3f461207f3e5bc47bcc557a30c3082935a523cb622d2a52903d38"
+    },
+    "environment": "The sparse checkout was populated with exact HEAD copies of required test inputs. No source or canonical input was changed."
+  },
+  "actualScopedVerification": {
+    "dataCommit": "1e600bf5af2da249b8ef15d98270f4da518115f6",
+    "proof": {
+      "path": "m2s1-final-common-actual-proof.json",
+      "sha256": "f5ffb6e1ca1524e90c7a248505a44beaa9d41130745411ac3b6263b677f6e007"
+    },
+    "counts": {
+      "requests": 31,
+      "checked": 49,
+      "passed": 49,
+      "preservedBasic": 2,
+      "newBasic": 0,
+      "newAdvancedFromPreservation": 0,
+      "informationalDifficultyAssignmentPending": 42,
+      "guardedFiles": 53,
+      "changedGuardedFiles": 0
+    },
+    "basicDependencies": [
+      {
+        "request": ".archive-meta-register/inbox/m2s1-basic-preserve-20261115-E052.json",
+        "dependent": ".archive-meta-register/inbox/m2s1-remaining-20261115-E052.json",
+        "basicIndex": 0,
+        "difficultyIndex": 28,
+        "sourceQuestions": 24
+      },
+      {
+        "request": ".archive-meta-register/inbox/m2s1-basic-preserve-20261115-E068.json",
+        "dependent": ".archive-meta-register/inbox/m2s1-five-narrow-20261115-E068.json",
+        "basicIndex": 1,
+        "difficultyIndex": 10,
+        "sourceQuestions": 25
+      }
+    ],
+    "first61MainDependency": {
+      "fixture": "/workspace/scratch/c8f1b0bfb4fa/native-audit-preserve",
+      "fixtureCommit": "335347e9aed0d0d8f08624636f93c9f40df2096c",
+      "requests": 61,
+      "auditDependencies": [
+        {
+          "request": ".archive-meta-register/inbox/m2s1-native-preserve-20261115-E037.json",
+          "dependency": ".archive-meta-register/inbox/m2s1-closeout-20261115-E037.json",
+          "preservedRows": 25,
+          "expectedQuestionCount": 25,
+          "difficultyIndex": 32,
+          "preservationIndex": 59
+        },
+        {
+          "request": ".archive-meta-register/inbox/m2s1-native-preserve-20261115-E045.json",
+          "dependency": ".archive-meta-register/inbox/m2s1-closeout-20261115-E045.json",
+          "preservedRows": 24,
+          "expectedQuestionCount": 24,
+          "difficultyIndex": 36,
+          "preservationIndex": 60
+        }
+      ],
+      "officialWriterOrConsumerRepeated": false
+    },
+    "fullBuildExecutedInThisVerification": false,
+    "officialWriterExecutedInThisVerification": false
+  },
+  "legacyRuntimeRegression": {
+    "historicalInputCommit": "0eb4b5306796f3828f9ebbf22a1a44e0eb24601c",
+    "currentVersionMismatchStillRejected": true,
+    "currentProductionRuntimeNormalized": false,
+    "scope": "The existing historical runtime regression is bound to its original exact input bundle. The current pack 1.0.3 versus row 1.0.2 debt is not declared repaired."
+  },
+  "productionRegistrationOrDeploymentClaim": false,
+  "remoteReferenceWritten": false
+}
