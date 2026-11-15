@@ -157,6 +157,10 @@ window.examData = {
     },
     {
       "id": 12,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=x² 하나의 대칭축은 x=0이다. y=0이라고 한 ③이 옳지 않다.",
+      "solutionImageAlt": "위로 열린 파란 포물선 하나의 대칭축은 세로축이다. 주황 점선 포물선까지 맞대면 두 그래프는 가로축의 위와 아래에 놓인다.",
+      "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q12-solution.svg",
       "score": 4.0,
       "question": "이차함수 $y=x^2$에 대한 설명이다. 옳지 <u>않은</u> 것을 고르면? [4.0점]",
       "choices": [
@@ -171,6 +175,10 @@ window.examData = {
     },
     {
       "id": 13,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "2=a(5−3)²이므로 a=1/2이다. 정답은 ②이다.",
+      "solutionImageAlt": "파랑 원래 그래프를 가로 방향으로 세 칸 옮기면 주황 점선 그래프가 된다. 옮긴 그래프는 점 (5,2)를 지난다.",
+      "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q13-solution.svg",
       "score": 4.0,
       "question": "이차함수 $y=ax^2$의 그래프를 $x$축의 방향으로 3만큼 평행이동하면 점 $(5, 2)$를 지난다. 이때, 상수 $a$의 값을 구하면? [4.0점]",
       "choices": [
@@ -185,6 +193,10 @@ window.examData = {
     },
     {
       "id": 14,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "첫째 포물선이 x축에 접해 m=4이다. 둘째 포물선의 꼭짓점은 (−2,0)이므로 정답은 ④이다.",
+      "solutionImageAlt": "두 함수의 파랑 꼭짓점과 주황 꼭짓점이 각각 x축 위에 하나씩 있다.",
+      "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q14-solution.svg",
       "score": 4.0,
       "question": "이차함수 $y=x^2-6x+5+m$의 그래프가 $x$축에 접할 때, $y=x^2+4x+m$의 꼭짓점의 좌표는? [4.0점]",
       "choices": [
@@ -199,6 +211,10 @@ window.examData = {
     },
     {
       "id": 15,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y절편은 (0,−3)이고 네 사분면을 모두 지난다. 따라서 옳은 것은 ④이다.",
+      "solutionImageAlt": "두 가지의 네 위치에 초록 점을 찍어 네 사분면마다 파란 곡선이 지나는 모습을 보여 준다. 가운데 주황 점은 y축과의 교점이다.",
+      "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q15-solution.svg",
       "score": 4.0,
       "question": "다음 중 이차함수 $y=3x^2-3$의 그래프에 대한 설명으로 옳은 것은? [4.0점]",
       "choices": [
@@ -213,6 +229,10 @@ window.examData = {
     },
     {
       "id": 16,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "네 사분면을 지나므로 a와 q의 부호가 반대이다. aq<0, a²−a/q>0인 두 설명이 옳아 정답은 ④이다.",
+      "solutionImageAlt": "왼쪽 예시는 위로 열리고 꼭짓점이 x축 아래에 있다. 오른쪽 예시는 아래로 열리고 꼭짓점이 x축 위에 있다.",
+      "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q16-solution.svg",
       "score": 4.0,
       "question": "이차함수 $y=ax^2+q$의 그래프가 모든 사분면을 지난다고 한다. 다음 &lt;보기&gt;중 항상 옳은 것을 모두 고른 것은? [4.0점]\n<div class=\"box-inset\">\n<b>&lt;보기&gt;</b><br>\n(ㄱ) $a-q > 0$<br>\n(ㄴ) $a+q > 0$<br>\n(ㄷ) $a+q < 0$<br>\n(ㄹ) $aq > 0$<br>\n(ㅁ) $aq < 0$<br>\n(ㅂ) $a^2-\\frac{a}{q} > 0$\n</div>",
       "choices": [
@@ -227,8 +247,13 @@ window.examData = {
     },
     {
       "id": 17,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "1=16a+3에서 a=−1/8이다. x=1일 때 a+b+c=25a+3=−1/8이고 정답은 ①이다.",
+      "solutionImageAlt": "꼭짓점에서 y절편까지 가로 4만큼 갔을 때 높이가 2 감소한다. 주황 보조선은 x=1의 함수값을 찾는 데 쓴다.",
+      "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q17-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, 상수 $a+b+c$, 의 값을 각각 구하면? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_신흥중_1학기_기말_중3_수학/q17.png\" style=\"max-width: 50%;\">\n</div>",
+      "question": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, 상수 $a+b+c$, 의 값을 각각 구하면? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_신흥중_1학기_기말_중3_수학/q17-problem-v3.svg\" alt=\"아래로 열린 파란 포물선의 꼭짓점은 가로 −4와 세로 3에 대응한다. 세로축의 1에서 그래프가 축을 지난다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [
         "$-\\frac{1}{8}$",
         "$\\frac{3}{2}$",
@@ -241,8 +266,13 @@ window.examData = {
     },
     {
       "id": 18,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "a<0, c>0이고 f(−1)<0이므로 a−b+c<0이다. 이 조건을 말한 ③이 옳다.",
+      "solutionImageAlt": "x축의 −1, −1/2, 1/2에서 세로 보조선을 그렸다. −1/2일 때는 초록 점이 위쪽이고 나머지 두 주황 점은 아래쪽이다.",
+      "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q18-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, 다음 중 옳은 것은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_신흥중_1학기_기말_중3_수학/q18.png\" style=\"max-width: 50%;\">\n</div>",
+      "question": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, 다음 중 옳은 것은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_신흥중_1학기_기말_중3_수학/q18-problem-v3.svg\" alt=\"아래로 열린 포물선은 x축 왼쪽 −1과 −1/2 사이에서 한 번, 원점과 1/2 사이에서 한 번 축을 지난다. y절편은 x축 위에 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [
         "$ac > 0$",
         "$a+b+c > 0$",
@@ -255,6 +285,10 @@ window.examData = {
     },
     {
       "id": 19,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "f(k)=4k²+4k−7=4(k+1/2)²−8이므로 f(k)의 최솟값은 −8이다. 정답은 ④이다.",
+      "solutionImageAlt": "위 두 포물선 예시에서는 각각 꼭짓점의 높이가 최댓값이다. 아래 파란 포물선은 k를 바꾸면서 생기는 높이 f(k)를 이어 나타낸 것이다.",
+      "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q19-solution.svg",
       "score": 4.0,
       "question": "이차함수 $y=-x^2-4kx+4k-7$의 최댓값을 $f(k)$라 할 때, $f(k)$의 최솟값은? [4.0점]",
       "choices": [
@@ -269,8 +303,13 @@ window.examData = {
     },
     {
       "id": 20,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=−(x−40)(x−80)/4이고 대칭축은 x=60이다. 최고 높이는 100 cm이고 정답은 ③이다.",
+      "solutionImageAlt": "두 착지점이 좌우로 같은 거리인 가로 60 cm 위에 주황 꼭짓점이 있다. 가로 50 cm에 해당하는 75 cm와 두 착지점이 같은 포물선에 있다.",
+      "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q20-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "다음 그림은 아래 방향으로 던진 공이 포물선을 그리며 튀어 오르는 모양을 그래프로 나타낸 것이다. 공은 점 $\\text{O}$로부터 각각 $40\\text{ cm}$, $80\\text{ cm}$ 떨어진 점에서 다시 튀어 올랐다. 공이 점 $\\text{O}$로부터 $50\\text{ cm}$ 떨어졌을 때 공의 높이가 $75\\text{ cm}$이었다. 튀어 오른 공의 최고 높이를 구하면? [5.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_신흥중_1학기_기말_중3_수학/q20.png\" style=\"max-width: 60%;\">\n</div>",
+      "question": "다음 그림은 아래 방향으로 던진 공이 포물선을 그리며 튀어 오르는 모양을 그래프로 나타낸 것이다. 공은 점 $\\text{O}$로부터 각각 $40\\text{ cm}$, $80\\text{ cm}$ 떨어진 점에서 다시 튀어 올랐다. 공이 점 $\\text{O}$로부터 $50\\text{ cm}$ 떨어졌을 때 공의 높이가 $75\\text{ cm}$이었다. 튀어 오른 공의 최고 높이를 구하면? [5.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_신흥중_1학기_기말_중3_수학/q20-problem-v3.svg\" alt=\"그래프에서 공은 왼쪽에서 내려와 40 cm에서 땅에 닿고, 가운데 파란 포물선을 따라 다시 80 cm에서 땅에 닿는다. 가로 위치 50 cm에서 공의 높이는 75 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [
         "$120\\text{ cm}$",
         "$110\\text{ cm}$",
@@ -299,6 +338,10 @@ window.examData = {
     },
     {
       "id": 23,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "꼭짓점이 (1,4)이고 아래로 열려 a=−2/3이다. 식은 y=−(2/3)(x−1)²+4이다.",
+      "solutionImageAlt": "파란 위로 열린 포물선에 대응하는 주황 포물선을 그렸다. 주황 꼭짓점은 가로 1과 세로 4의 안내선이 만나는 위치에 있다.",
+      "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q23-solution.svg",
       "score": 5.0,
       "question": "[서술형 3] 다음 조건을 모두 만족하는 이차함수의 식을 $y=a(x-p)^2+q$의 꼴로 나타내어라. [5.0점]\n<div class=\"box-inset\">\nㄱ. 이차함수 $y=\\frac{2}{3}x^2$의 그래프와 폭이 같다.<br>\nㄴ. $x=1$일 때 최댓값은 4이다.\n</div>\n\n① $a$값을 바르게 구한 경우? (1점)\n② $p$값을 바르게 구한 경우? (1점)\n③ $q$값을 바르게 구한 경우? (1점)\n④ $y=a(x-p)^2+q$의 식을 바르게 구한 경우? (2점)",
       "choices": [],
@@ -307,8 +350,13 @@ window.examData = {
     },
     {
       "id": 24,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "A=(2,9), C=(5,0)이다. 둘레의 직사각형 넓이는 45이고 바깥 넓이 4, 25/2, 27/2를 빼면 15이다.",
+      "solutionImageAlt": "주황 삼각형 바깥의 직사각형을 세 모서리 삼각형으로 나눴다. 각 색 영역의 넓이를 직사각형 넓이에서 빼면 주황 삼각형이 남는다.",
+      "solutionImage": "assets/images/19_신흥중_1학기_기말_중3_수학/q24-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "[서술형 4] 이차함수 $y=-x^2+4x+5$의 그래프가 다음 그림과 같을 때, 다음의 값을 구하여라. [5.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_신흥중_1학기_기말_중3_수학/s04.png\" style=\"max-width: 50%;\">\n</div>\n\n① 꼭짓점 A의 좌표를 바르게 구한 경우? (1점)\n② $x$축과 만나는 점 C의 좌표를 바르게 구한 경우? (1점)\n③ $\\triangle\\text{ABC}$의 넓이를 바르게 구한 경우? (3점)",
+      "question": "[서술형 4] 이차함수 $y=-x^2+4x+5$의 그래프가 다음 그림과 같을 때, 다음의 값을 구하여라. [5.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_신흥중_1학기_기말_중3_수학/q24-problem-v3.svg\" alt=\"A는 파란 포물선의 꼭짓점, B는 세로축과의 교점, C는 오른쪽 가로축과의 교점이다. 세 점을 주황 선으로 이었다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>\n\n① 꼭짓점 A의 좌표를 바르게 구한 경우? (1점)\n② $x$축과 만나는 점 C의 좌표를 바르게 구한 경우? (1점)\n③ $\\triangle\\text{ABC}$의 넓이를 바르게 구한 경우? (3점)",
       "choices": [],
       "answer": "A=(2,9), C=(5,0);  넓이=15",
       "solution": "완전제곱식으로 고치면\n$y=-(x-2)^2+9$\n이므로 꼭짓점 $A=(2,9)$이다.\n$-x^2+4x+5=0$\n$(x-5)(x+1)=0$\n그래프의 오른쪽 $x$절편은 $C=(5,0)$이다. $y$절편은 $B=(0,5)$이다.\n$A,B,C$를 둘러싼 직사각형의 꼭짓점은 $(0,0),(5,0),(5,9),(0,9)$이고 넓이는 45이다.\n왼쪽 위 삼각형은 $(0,9), B=(0,5), A=(2,9)$를 꼭짓점으로 하므로 넓이는 $\\frac{2\\cdot4}{2}=4$이다.\n왼쪽 아래 삼각형은 $(0,0), B=(0,5), C=(5,0)$를 꼭짓점으로 하므로 넓이는 $\\frac{5\\cdot5}{2}=\\frac{25}{2}$이다.\n오른쪽 위 삼각형은 $A=(2,9), (5,9), C=(5,0)$를 꼭짓점으로 하므로 넓이는 $\\frac{3\\cdot9}{2}=\\frac{27}{2}$이다.\n따라서\n$\\triangle ABC$의 넓이는 $45-4-\\frac{25}{2}-\\frac{27}{2}=15$이다."
