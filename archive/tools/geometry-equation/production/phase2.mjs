@@ -1461,6 +1461,7 @@ function multiCurveSpec(plan,id){
     const wrapIf=text=>/[+\-]/.test(text.replace(/^-/,''))?'('+text+')':text;
     if(curve.kind==='LINE')return 'y='+polyText(curve.coefficients);
     if(curve.kind==='RATIONAL')return 'y='+wrapIf(rationalPolynomialText(curve.numerator))+'/'+wrapIf(rationalPolynomialText(curve.denominator));
+    if(curve.kind==='EXPONENTIAL')return expLogFormulaText({...curve,family:'exponential-affine'});
     if(curve.kind==='SQRT'){
       const wrap=text=>/[+*/]/.test(text)&&!text.startsWith('(')?'('+text+')':text,amplitude=curve.amplitude,factor=amplitude==='1'?'':amplitude==='-1'?'-':wrap(amplitude)+'*',offset=curve.offset==='0'?'':(curve.offset.startsWith('-')?curve.offset:'+'+curve.offset);
       return 'y='+factor+'sqrt('+rationalPolynomialText(curve.radicand)+')'+offset;
@@ -1470,6 +1471,10 @@ function multiCurveSpec(plan,id){
   const plainValueOf=(curve,x)=>{
     if(curve.kind==='LINE')return exactValue(curve.coefficients[0])+exactValue(curve.coefficients[1])*x;
     if(curve.kind==='RATIONAL')return (exactValue(curve.numerator[0])+exactValue(curve.numerator[1])*x+(curve.numerator.length===3?exactValue(curve.numerator[2])*x*x:0))/(exactValue(curve.denominator[0])+exactValue(curve.denominator[1])*x);
+    if(curve.kind==='EXPONENTIAL'){
+      const [amplitude,rate,offset]=curve.coefficients.map(exactValue);
+      return offset+amplitude*Number(curve.base)**(rate*(x-exactValue(curve.shiftX)));
+    }
     return exactValue(curve.offset)+exactValue(curve.amplitude)*Math.sqrt(Math.max(0,exactValue(curve.radicand[0])+exactValue(curve.radicand[1])*x));
   };
   // G18c: abs:true draws y=|f(x)|; the kink (where f is 0) is a sampled position, so the folded corner is exact.
@@ -1504,9 +1509,9 @@ function multiCurveSpec(plan,id){
   let verticalLabels=0,horizontalLabels=0;
   for(const curve of features.curves){
     if(!curve||typeof curve.id!=='string'||!Array.isArray(curve.branches)||!curve.branches.length)throw Error('MULTI_CURVE_FEATURE_INVENTORY_REQUIRED');
-    if(curve.kind==='LINE'||curve.kind==='RATIONAL'||curve.kind==='SQRT'){
+    if(['LINE','RATIONAL','SQRT','EXPONENTIAL'].includes(curve.kind)){
       // G18a free kinds: each branch is its own FUNCTION_GRAPH with a CURVE_<id>[_L|_R] tag; the sampler clips it to the frame.
-      const expression=wrapAbs(curve,curve.kind==='LINE'?polyText(curve.coefficients):curve.kind==='RATIONAL'?'('+rationalPolynomialText(curve.numerator)+')/('+rationalPolynomialText(curve.denominator)+')':'('+curve.offset+')+('+curve.amplitude+')*sqrt('+rationalPolynomialText(curve.radicand)+')');
+      const expression=curve.kind==='EXPONENTIAL'?expLogExpression({...curve,family:'exponential-affine'}):wrapAbs(curve,curve.kind==='LINE'?polyText(curve.coefficients):curve.kind==='RATIONAL'?'('+rationalPolynomialText(curve.numerator)+')/('+rationalPolynomialText(curve.denominator)+')':'('+curve.offset+')+('+curve.amplitude+')*sqrt('+rationalPolynomialText(curve.radicand)+')');
       expressionOfCurve.set(curve.id,expression);
       for(const branch of curve.branches){
         if(!branch||!['FUNCTION','LEFT','RIGHT'].includes(branch.side)||!Array.isArray(branch.xInterval))throw Error('MULTI_CURVE_FEATURE_INVENTORY_REQUIRED');
@@ -1839,6 +1844,7 @@ const CONTAINER_FILL_CONTRACT=` CONTAINER FILL FIGURES (container-fill-figure-v1
     extendedContract+=SOLID_FIGURE_CONTRACT;
     extendedContract+=SET_DIAGRAM_CONTRACT;
     extendedContract+=MULTI_CURVE_CONTRACT;
+    extendedContract+=' MULTI-CURVE EXPONENTIAL: an EXPONENTIAL row has id, kind, base (integer string 2 to 1000), coefficients:[A,k,C] (exact rationals; A,k nonzero), optional shiftX (exact rational, default zero), and an explicit finite domain. Draws y=A*base^(k*(x-shiftX))+C on the stated span, with the usual curve label, color, style and endpoint options and a required graphPlan.viewport. This display interval does not add source endpoint marks unless the author requests them. Inverses and abs are unsupported for this kind.';
     extendedContract+=' OBLIQUE RATIONAL (multi-curve-figure-v1): a RATIONAL curve may carry a quadratic numerator [a0,a1,a2] with a2 nonzero, y=(a0+a1x+a2x^2)/(d0+d1x). It has the vertical asymptote x=p (dashed, with its text) but no horizontal one; the oblique asymptote y=qx+r, q=a2/d1, is not drawn by the curve: draw it as a dashed LINE curve of the same figure. a2=0 is MULTI_CURVE_COEFFICIENT_INVALID (use the linear numerator), a numerator that vanishes at the pole is MULTI_CURVE_RATIONAL_DEGENERATE, abs:true is MULTI_CURVE_COEFFICIENT_INVALID and a curve with inverseOf pointing at it is MULTI_CURVE_INVERSE_UNSUPPORTED. Use it only when the problem itself is that function (it is outside the high-school graph syllabus), never as a detour of a solution.';
     extendedContract+=CONTAINER_FILL_CONTRACT;
     extendedContract+=LATTICE_PATH_CONTRACT;

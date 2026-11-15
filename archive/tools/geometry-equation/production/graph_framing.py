@@ -4302,9 +4302,9 @@ MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plot
 # G18a: besides the two quadratic kinds a curve may be LINE (y=c0+c1*x), RATIONAL (y=(a0+a1*x)/(d0+d1*x)) or SQRT (y=offset+amplitude*sqrt(c0+c1*x)), each with
 # its own look (color, weight, style, label, hideLabels), or the inverse of another curve (inverseOf). These kinds are not bounded by their own shape, so the
 # author names the window (graphPlan.viewport = [xmin,xmax,ymin,ymax]) and a curve is clipped to the frame built around that window.
-MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT')
-MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT')
-MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','domainStates','abs'},'RATIONAL':{'numerator','denominator','domain','domainStates','abs'},'SQRT':{'radicand','amplitude','offset','domain','domainStates','abs'}}
+MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT','EXPONENTIAL')
+MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL')
+MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','domainStates','abs'},'RATIONAL':{'numerator','denominator','domain','domainStates','abs'},'SQRT':{'radicand','amplitude','offset','domain','domainStates','abs'},'EXPONENTIAL':{'base','coefficients','shiftX','domain','domainStates'}}
 MULTI_CURVE_LOOK_KEYS={'id','kind','label','color','weight','style','hideLabel','hideLabels','inverseOf','emphasis'}
 # G18a-4: emphasis:[{from?,to?,color?,fromState?,toState?}] draws only that x stretch of the curve heavier and in a colour, with an open or closed end dot (states OPEN | CLOSED | NONE);
 # domain may be written {from,to} as well as [from,to] (the curve is then not drawn outside it).
@@ -4449,11 +4449,33 @@ def mc_value(curve,x_value):
         den=curve['denominator'][0]+curve['denominator'][1]*x_value
         if den==0:return None
         value=float(mc_rational_value(curve,x_value))
+    elif kind=='EXPONENTIAL':
+        amplitude,rate,offset=curve['coefficients']
+        value=float(amplitude)*curve['base']**float(rate*(x_value-curve['shiftX']))+float(offset)
     else:
         radicand=curve['radicand'][0]+curve['radicand'][1]*x_value
         if radicand<0:return None
         value=float(curve['offset'])+float(curve['amplitude'])*math.sqrt(float(radicand))
     return abs(value) if curve.get('abs') else value
+
+def _mc_exponential_curve(entry,ident):
+    base=entry.get('base')
+    if not isinstance(base,str) or not re.fullmatch(r'[1-9]\d{0,3}',base) or not 2<=int(base)<=1000:
+        raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
+    raw=entry.get('coefficients')
+    code='MULTI_CURVE_COEFFICIENT_INVALID:'+ident
+    if not isinstance(raw,list) or len(raw)!=3:raise ValueError(code)
+    coefficients=[_mc_fraction(value,code) for value in raw]
+    if not coefficients[0] or not coefficients[1]:raise ValueError(code)
+    if 'domain' not in entry:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+    interval=_mc_interval_fractions(entry['domain'],'MULTI_CURVE_DOMAIN_INVALID:'+ident)
+    shift=_mc_fraction(entry.get('shiftX','0'),code)
+    curve={'kind':'EXPONENTIAL','base':int(base),'coefficients':coefficients,'shiftX':shift,'interval':interval}
+    if any(abs(x)>10**6 or abs(coefficients[1]*(x-shift))>64 for x in interval):
+        raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
+    if any(abs(mc_value(curve,x))>10**8 for x in interval):
+        raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
+    return curve
 
 def _mc_free_curve(entry,ident,kind,window,look):
     """LINE / RATIONAL / SQRT from its own fields; the draw interval is the author's domain or the window's."""
@@ -4476,6 +4498,8 @@ def _mc_free_curve(entry,ident,kind,window,look):
             if curve['numerator'][2]==0 or entry.get('abs') is True:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)   # a zero x^2 coefficient is a linear numerator; |f| of an oblique rational is not drawn
             if curve['numerator'][0]+curve['numerator'][1]*pole+curve['numerator'][2]*pole*pole==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
         elif curve['numerator'][0]+curve['numerator'][1]*pole==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
+    elif kind=='EXPONENTIAL':
+        curve.update(_mc_exponential_curve(entry,ident))
     else:
         raw=entry.get('radicand')
         if not isinstance(raw,list) or len(raw)!=2:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
@@ -4572,6 +4596,7 @@ def multi_curve_source(plan):
         if set(entry)-MULTI_CURVE_LOOK_KEYS-MULTI_CURVE_KIND_KEYS[kind]:raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
         look=_mc_look(entry,ident,free)
         if free:
+            if kind=='EXPONENTIAL' and window is None:raise ValueError('MULTI_CURVE_WINDOW_REQUIRED:'+ident)
             curve=_mc_free_curve(entry,ident,kind,window,look)
             if 'interval' not in curve:
                 if window is None:raise ValueError('MULTI_CURVE_WINDOW_REQUIRED:'+ident)
@@ -4707,6 +4732,10 @@ def _mc_row(curve):
             if curve.get('abs'):horizontal=abs(horizontal)   # the asymptote of |f| is |h|
             lo,hi=curve['interval']
             row['asymptotes']={'vertical':{'x':_mc_text(pole),'drawn':bool(lo<=pole<=hi and pole!=0)},'horizontal':{'y':_mc_text(horizontal),'drawn':bool(horizontal!=0)}}
+        elif kind=='EXPONENTIAL':
+            row['base']=str(curve['base'])
+            row['coefficients']=[_mc_text(value) for value in curve['coefficients']]
+            row['shiftX']=_mc_text(curve['shiftX'])
         else:
             row['radicand']=[_mc_text(value) for value in curve['radicand']];row['amplitude']=_mc_text(curve['amplitude']);row['offset']=_mc_text(curve['offset'])
             boundary=-curve['radicand'][0]/curve['radicand'][1];lo,hi=curve['interval']

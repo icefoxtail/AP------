@@ -167,3 +167,49 @@ test('the independent observer passes the model SVG and rejects a changed invent
   assert.equal(badCurve.status,'OK');assert.equal(badCurve.result.status,'FAIL');
   assert.match(JSON.stringify(badCurve.result.errors),/MULTI_CURVE_WRONG_CURVE:CURVE_top/);
 });
+
+test('Maesan Q14 retains its exact exponential and quadratic on one frame', async()=>{
+  const plan={capability:'multi-curve-figure-v1',caption:'지수함수와 이차함수의 비교',graphPlan:{
+    family:'multi-curve',viewport:[0,2.4,-.4,4.7],axisTitles:{x:'t'},
+    curves:[
+      {id:'exp',kind:'EXPONENTIAL',base:'2',coefficients:['1','1','0'],domain:['1','2'],label:'2^t',color:'BLUE',weight:'BOLD'},
+      {id:'quad',kind:'Y_OF_X',coefficients:['0','0','1'],domain:['1','2'],label:'t^2',color:'WARM',style:'DASHED'},
+    ],
+    axisTickValues:{x:['1','2'],y:['4']},
+    overlays:{points:[{id:'P',x:'2',y:'4',unnamed:true,coordinates:true}]},
+  }};
+  const send=async(payload,options)=>{
+    const reply=await pythonWorker(payload,options);
+    assert.equal(reply.status,'OK',JSON.stringify(reply.result));
+    return reply.result;
+  };
+  const {graphPlan}=await send({action:'frame_graph',graphPlan:plan.graphPlan});
+  const model=await send({action:'graph',graphPlan});
+  const spec=specFor({...plan,graphPlan},model,'q14');
+  assert.deepEqual(spec.objects.filter(row=>row.kind==='FUNCTION_GRAPH').map(row=>[row.branch,row.domain]),
+    [['CURVE_exp',[1,2]],['CURVE_quad',[1,2]]]);
+  assert.deepEqual(spec.objects.find(row=>row.id==='P').at,[2,4]);
+  for(const [,tag,values] of model.svg.matchAll(/data-branch="(CURVE_\w+)" points="([^"]+)"/g)){
+    const points=values.split(' ').map(pair=>pair.split(',').map(Number));
+    const [x,y]=points.at(-1);
+    const {sx,sy,originX,originY}=model.transform;
+    assert.ok(Math.abs(x-(originX+2*sx))<1e-6,tag);
+    assert.ok(Math.abs(y-(originY-4*sy))<1e-6,tag);
+  }
+  const independent=svg=>send({action:'modelBinding',graphPlan,svg,transform:model.transform},{script:observerScript});
+  assert.equal((await independent(model.svg)).status,'PASS');
+  const shifted=model.svg.replace(/(data-branch="CURVE_exp" points=")([-\d.]+),([-\d.]+)/,
+    (_all,head,x,y)=>head+x+','+(Number(y)+3));
+  assert.ok((await independent(shifted)).errors.includes('MULTI_CURVE_WRONG_CURVE:CURVE_exp'));
+
+  for(const [change,code] of [
+    [{base:'1'},'MULTI_CURVE_EXPONENTIAL_BASE_INVALID:exp'],
+    [{domain:undefined},'MULTI_CURVE_DOMAIN_INVALID:exp'],
+    [{coefficients:['1','-1','0'],domain:['-100','1']},'MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:exp'],
+  ]){
+    const graphPlan={...plan.graphPlan,curves:[{...plan.graphPlan.curves[0],...change},plan.graphPlan.curves[1]]};
+    if(change.domain===undefined&&Object.hasOwn(change,'domain'))delete graphPlan.curves[0].domain;
+    const reply=await pythonWorker({action:'frame_graph',graphPlan});
+    assert.equal(reply.result.code,code,JSON.stringify(reply.result));
+  }
+});

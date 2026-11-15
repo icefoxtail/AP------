@@ -4722,7 +4722,7 @@ def trigonometric_period_v2_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':features,'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_INDEPENDENT_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
-MC_FREE_KINDS=('LINE','RATIONAL','SQRT')
+MC_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL')
 MC_EXACT_PATTERN=r'-?\d+(?:/\d+)?'
 
 def _mc_obs_fraction(value,code):
@@ -4754,6 +4754,15 @@ def _mc_obs_free(entry,ident):
         if curve['d'][1]==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
         pole=-curve['d'][0]/curve['d'][1]
         if sum(coefficient*pole**power for power,coefficient in enumerate(curve['n']))==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
+    elif kind=='EXPONENTIAL':
+        base=entry.get('base')
+        if not isinstance(base,str) or not re.fullmatch(r'[1-9]\d{0,3}',base) or not 2<=int(base)<=1000:
+            raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
+        coefficients=entry.get('coefficients')
+        if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError(code)
+        a,k,c=[_mc_obs_fraction(value,code) for value in coefficients]
+        if not a or not k:raise ValueError(code)
+        curve.update({'base':int(base),'c':[a,k,c],'shiftX':_mc_obs_fraction(entry.get('shiftX','0'),code)})
     else:
         curve['r']=_mc_obs_pair(entry,'radicand',code)
         if curve['r'][1]==0:raise ValueError(code)
@@ -4797,6 +4806,9 @@ def _mc_obs_y_plain(curve,x_value):
     if kind=='SQRT':
         radicand=curve['r'][0]+curve['r'][1]*x_value
         return None if radicand<0 else float(curve['o'])+float(curve['a'])*math.sqrt(float(radicand))
+    if kind=='EXPONENTIAL':
+        a,k,c=curve['c']
+        return float(c)+float(a)*math.exp(math.log(curve['base'])*float(k*(x_value-curve['shiftX'])))
     f0,f1,f2=curve['f']
     return f0+f1*x_value+f2*x_value*x_value
 
@@ -5120,6 +5132,11 @@ def multi_curve_audit(plan,svg,transform):
                 curve=_mc_obs_free(entry,ident);curve['look']=look;curve['inverse']=False;curve['entry']=entry
                 (lo,hi),curve['domainStates']=_mc_obs_domain(entry,ident)
                 curve['interval']=(lo,hi);branches=[{'side':'FUNCTION','xInterval':(lo,hi),'yInterval':None}]
+                if kind=='EXPONENTIAL':
+                    if any(abs(x)>10**6 or abs(curve['c'][1]*(x-curve['shiftX']))>64 for x in (lo,hi)):
+                        raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
+                    if any(abs(_mc_obs_y_plain(curve,x))>10**8 for x in (lo,hi)):
+                        raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
                 if kind=='RATIONAL':
                     pole=-curve['d'][0]/curve['d'][1]
                     if lo<pole<hi:branches=[{'side':'LEFT','xInterval':(lo,pole),'yInterval':None},{'side':'RIGHT','xInterval':(pole,hi),'yInterval':None}]
@@ -5188,6 +5205,9 @@ def multi_curve_audit(plan,svg,transform):
                 if not list_same(row.get('coefficients'),curve['c']):same=False
             elif kind=='RATIONAL':
                 if not list_same(row.get('numerator'),curve['n']) or not list_same(row.get('denominator'),curve['d']):same=False
+            elif kind=='EXPONENTIAL':
+                if (row.get('base')!=str(curve['base']) or not list_same(row.get('coefficients'),curve['c'])
+                    or not list_same([row.get('shiftX')],[curve['shiftX']])):same=False
             elif kind=='SQRT':
                 if not list_same(row.get('radicand'),curve['r']) or not list_same([row.get('amplitude','1')],[curve['a']]) or not list_same([row.get('offset','0')],[curve['o']]):same=False
             if kind=='X_OF_Y' and row.get('branch','BOTH')!=curve['branch']:same=False
@@ -5250,7 +5270,7 @@ def multi_curve_audit(plan,svg,transform):
                 widths[tag]=(width_value if width_value is not None else 0.0,look.get('weight')=='BOLD')
                 if any(right[0]<=left[0] for left,right in zip(points,points[1:])):errors.append('MULTI_CURVE_CURVE_NOT_INCREASING_X:'+tag)
                 if any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('MULTI_CURVE_CURVE_CROSSES_INTERVAL:'+tag)
-                clipped_ok=kind in MC_FREE_KINDS or curve.get('inverse')   # a LINE, RATIONAL, SQRT or an inverse may be cut off by the frame; a quadratic arc never is
+                clipped_ok=kind in ('LINE','RATIONAL','SQRT') or curve.get('inverse')   # a LINE, RATIONAL, SQRT or an inverse may be cut off by the frame; a quadratic arc never is
                 # coverage: each end is at the interval end, or (a free curve) where the frame cuts it off
                 for end_point,want in ((points[0],start),(points[-1],end)):
                     at_end=abs(end_point[0]-want)<=x_tol
@@ -6028,7 +6048,7 @@ def multi_curve_label_audit(plan,svg,transform):
     rows=[row for row in (inventory.get('curves') if isinstance(inventory,dict) else None) or []
           if isinstance(row,dict) and isinstance(row.get('id'),str)]
     all_vertical_parabolas=len(rows)>1 and all(row.get('kind')=='Y_OF_X' for row in rows)
-    owned={row.get('id') for row in rows if all_vertical_parabolas or row.get('kind') in ('LINE','RATIONAL','SQRT')}
+    owned={row.get('id') for row in rows if all_vertical_parabolas or row.get('kind') in MC_FREE_KINDS}
     suffixes={'FUNCTION':('',''),'LEFT':('_L','-left'),'RIGHT':('_R','-right'),
               'POSITIVE':('_POS','-positive'),'NEGATIVE':('_NEG','-negative')}
     branch_owners={}
