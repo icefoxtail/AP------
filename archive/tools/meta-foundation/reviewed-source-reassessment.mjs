@@ -9,6 +9,7 @@ import { validateReviewedCurrentRendererContinuity } from "./reviewed-current-re
 import { bindReviewedNativeScopeFields } from "./reviewed-native-scope-fields.mjs";
 import { validateReviewedNativeRetainedFields } from "./reviewed-native-retained-fields.mjs";
 import { validateM2CurrentRendererContinuity } from "./reviewed-m2-current-renderer-continuity.mjs";
+import { validateM2ProviderCurrentRendererContinuity } from "./reviewed-m2-provider-current-renderer-continuity.mjs";
 import { createImmutableGitMetadataLookup } from "./immutable-git-metadata.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
@@ -215,12 +216,15 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const m2Renderer = patch.sourceReview.m2RendererProof === undefined ? null :
     validateM2CurrentRendererContinuity({ root, request, patch, native: loaded, row,
       question, studentPayload, bankFromBytes, cache });
-  if (!rendererContinuity && !m2Renderer && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
+  const m2ProviderRenderer = patch.sourceReview.m2ProviderRendererProof === undefined ? null :
+    validateM2ProviderCurrentRendererContinuity({ root, request, patch, native: loaded, row,
+      question, studentPayload, bankFromBytes, cache });
+  if (!rendererContinuity && !m2Renderer && !m2ProviderRenderer && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
       !equal(payload, studentPayload(committedBank[ordinal - 1])))) fail("current student payload differs from the reviewed source");
   // Only the authenticated frozen request's exact prefigure object can be used
   // as this M2 presentation view. Its metadata is equal to the live object; the
   // existing finalization/retention validators still supply every approved value.
-  const semanticQuestion = m2Renderer?.semanticQuestion || question;
+  const semanticQuestion = m2ProviderRenderer?.semanticQuestion || m2Renderer?.semanticQuestion || question;
   validateNativePerItemSourceEvidence(loaded, row, ordinal);
   const accepted = { ...row.after };
   for (const key of DIFFICULTY_FIELDS) if (Object.hasOwn(row.finalDifficulty || {}, key)) {
@@ -308,6 +312,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     reviewer: loaded.reviewer, decision, studentPayloadSha256: sha256(stable(payload)),
     ...(rendererContinuity ? { rendererContinuity } : {}),
     ...(m2Renderer ? { m2RendererContinuity: m2Renderer.proof } : {}),
+    ...(m2ProviderRenderer ? { m2ProviderRendererContinuity: m2ProviderRenderer.proof } : {}),
     ...(Object.keys(rationaleBindings).length ? { rationaleBindings } : {}),
     ...(Object.keys(rpmBindings).length ? { rpmBindings } : {}),
     ...(unchangedPrimary ? { unchangedPrimaryBindings: unchangedPrimary.proof } : {}),

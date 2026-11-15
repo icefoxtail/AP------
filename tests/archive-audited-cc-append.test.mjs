@@ -9,6 +9,7 @@ import {nativeReviewReceipt,planQuestion} from '../archive/tools/meta-foundation
 import {auditCcBindingPath,isExplicitAuditCcAppendRequest,hasAuditCcAppendClaim,nativeAuditCcAppend} from '../archive/tools/meta-foundation/audited-cross-concept-append.mjs';
 import {selectNativeRequests,selectPendingNativeRequests,rederiveNativePlans,nativeOutputManifest} from '../tools/ci/archive-pr-native-preview.mjs';
 import {verifyChangedUidConsumerApproval} from '../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs';
+import {loadVerifiedHistoricalAuditSnapshot} from '../archive/tools/meta-foundation/native-audit-preservation.mjs';
 const META='archive/data/question_metadata.json',IDENTITY='archive/data/question_identity_map.json',RUNTIME='archive/data/meta-foundation/runtime/new-course-v1.json';
 const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 const blob=bytes=>crypto.createHash('sha1').update(`blob ${Buffer.byteLength(bytes)}\0`).update(bytes).digest('hex');
@@ -46,6 +47,36 @@ test('audited CC native receipt row mismatch rejects before component loading wh
   assert.equal(nativeAuditCcAppend(args),f.registeredPath);
   assert(componentReads>0,'valid reuse must still load and authenticate the complete component');
  } finally {fs.readFileSync=read;}
+});
+
+test('audited CC source and issued identity/runtime negatives reject before component loading',t=>{
+ const f=auditedCcAppendFixture(t);registerReviewedExamV2({root:f.root,request:f.request,write:true});
+ const a=native(f),args={...a,ownerPack:a.pt.ownerPack},before=snapshot(f),
+  receiptFile=path.join(f.root,f.registeredPath),issuedRaw=fs.readFileSync(receiptFile),
+  target=path.join(f.root,auditCcBindingPath(f.request.requestId));
+ const cases=[
+  ['changed source bytes',(value,receipt)=>{value.nativeSource={...value.nativeSource,bytes:Buffer.concat([value.nativeSource.bytes,Buffer.from('\n')])};}],
+  ['wrong issued source SHA',(value,receipt)=>{receipt.sourceRawSha256='0'.repeat(64);}],
+  ['wrong issued source blob',(value,receipt)=>{receipt.sourceBlobSha1='0'.repeat(40);}],
+  ['changed identity',(value,receipt)=>{value.identity={...value.identity,sourceFingerprint:'0'.repeat(64)};}],
+  ['changed runtime',(value,receipt)=>{value.nativeSource={...value.nativeSource,runtimeRecord:{...value.nativeSource.runtimeRecord,metaFoundationPackVersion:'999.0.0'}};}],
+  ['duplicate issued identity',(value,receipt)=>{receipt.appliedIdentityRecords.push(structuredClone(receipt.appliedIdentityRecords.find(r=>r.questionUid===value.current.questionUid)));}],
+  ['duplicate issued runtime',(value,receipt)=>{receipt.runtimeRecords.push(structuredClone(receipt.runtimeRecords.find(r=>r.questionUid===value.current.questionUid)));}]
+ ];
+ const read=fs.readFileSync;let componentReads=0;
+ fs.readFileSync=function(file,...rest){if(String(file)===target)componentReads++;return read.call(this,file,...rest);};
+ try {
+  for(const [label,change]of cases){
+   const value={...args},receipt=JSON.parse(issuedRaw);change(value,receipt);f.put(f.registeredPath,receipt);componentReads=0;
+   assert.equal(nativeAuditCcAppend(value),null,label);assert.equal(componentReads,0,label);
+   assert.equal(nativeReviewReceipt(value),null,label+' must not reuse an older approval');
+   fs.writeFileSync(receiptFile,issuedRaw);
+  }
+  componentReads=0;
+  assert.equal(nativeAuditCcAppend(args),f.registeredPath);
+  assert(componentReads>0,'normal reuse still verifies the full component authority');
+ } finally {fs.readFileSync=read;fs.writeFileSync(receiptFile,issuedRaw);}
+ assert.deepEqual(snapshot(f),before);assert.deepEqual(fs.readFileSync(receiptFile),issuedRaw);
 });
 
 const badInputs=[
@@ -144,9 +175,26 @@ const damaged=[
  ['extra UID in issued receipt',f=>{const d=f.read(f.registeredPath);d.appliedRecords.push(structuredClone(d.appliedRecords[0]));f.put(f.registeredPath,d);}],
 ];
 for(const[name,mutate]of damaged)test('issued audited CC append rejects '+name+' and refuses producer fallback',t=>{
- const f=auditedCcAppendFixture(t);registerReviewedExamV2({root:f.root,request:f.request,write:true});mutate(f);
+ const f=auditedCcAppendFixture(t);registerReviewedExamV2({root:f.root,request:f.request,write:true});
+ assert.equal(nativeReviewReceipt(native(f)),f.registeredPath,'warm current JSON and immutable indexes first');mutate(f);
  assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request,write:true}));
  const a=native(f);assert.equal(nativeReviewReceipt(a),null);assert.equal(planQuestion(a).status,'SUPPLEMENT_PENDING');
+});
+
+test('historical audit UID indexes retain fresh receipt checks and reject a duplicate in a different immutable snapshot',t=>{
+ const f=auditedCcAppendFixture(t),priorReceiptRef=f.request.approval.sourceRebind.priorReceiptRef,
+  args={root:f.root,priorCommit:f.priorCommit,priorReceiptRef},priorRaw=fs.readFileSync(path.join(f.root,f.priorPath));
+ assert.equal(loadVerifiedHistoricalAuditSnapshot(args).prior.requestId,f.prior.requestId);
+ f.put(f.priorPath,{...f.read(f.priorPath),extraUnapprovedField:true});
+ assert.throws(()=>loadVerifiedHistoricalAuditSnapshot(args),/receipt SHA mismatch/);
+ fs.writeFileSync(path.join(f.root,f.priorPath),priorRaw);
+ assert.equal(loadVerifiedHistoricalAuditSnapshot(args).prior.requestId,f.prior.requestId);
+ f.put(f.sourcePath,'window.questions='+JSON.stringify(f.oldBank)+';\n');
+ const metadata=f.read(META);metadata.records.push(structuredClone(metadata.records[0]));f.put(META,metadata);
+ const changed=f.checkpoint('Different immutable snapshot with duplicate metadata UID');
+ assert.throws(()=>loadVerifiedHistoricalAuditSnapshot({...args,priorCommit:changed}),/historical current metadata missing\/duplicate/);
+ assert.equal(loadVerifiedHistoricalAuditSnapshot(args).prior.requestId,f.prior.requestId,'original immutable snapshot remains independently verified');
+ assert.deepEqual(fs.readFileSync(path.join(f.root,f.priorPath)),priorRaw);
 });
 
 for(const restoreSource of [false,true])for(const removeChild of [false,true])test('combined CC marker deletion cannot borrow the old audit: child missing='+removeChild+', source restored='+restoreSource,t=>{

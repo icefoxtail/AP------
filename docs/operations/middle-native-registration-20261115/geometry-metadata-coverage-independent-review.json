@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "root-immutable-metadata-coverage-independent-review-v1",
+  "author": "/root/audit_m3",
+  "reviewer": "GPT_ROOT_META_PLAN_20261115",
+  "reviewedCommit": "9ede3f8039d42496fb525a74684c786c4fde0abb",
+  "scope": "CODE_AND_TARGETED_NEGATIVE_GUARDS",
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/immutable-git-batch.mjs",
+      "sha256": "f87a003d0aa8f93cbc5149a31dc20487a351831b84e00c0a8457e26225c024c2"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+      "sha256": "ade879b4632d2341512447ff1068cb33485b2d112d56db8b6d870da543b7c9f8"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs",
+      "sha256": "8141acba639714be3456ba71bae4ee57658ea73faf0a12ccbdfff83f9d843a56"
+    },
+    {
+      "path": "tests/meta-foundation-immutable-git-batch.test.mjs",
+      "sha256": "16e699d23ec53bfef8d92c11932a0294b2178d8645169c25c89561e89335cbb3"
+    }
+  ],
+  "blockingFindings": 0,
+  "findings": [],
+  "reviewedBoundaries": [
+    "Existing helper accepts only exact immutable commit verification or exact commit-safe-path object name lookups.",
+    "Successful 40hex metadata only; no symbolic reference/error/raw blob/live evidence/approval result cache.",
+    "Per-call fresh regular-file inventory and cat-file raw batch remain required.",
+    "Figure and renderer callers retain all raw live SHA and authority checks.",
+    "Added three-call regression proves one commit lookup plus three inventory and three raw reads; missing/symlink/invalid inputs still reject."
+  ],
+  "authorTests": {
+    "passed": 33,
+    "failed": 0,
+    "skipped": 0
+  },
+  "rootTestExecution": "NOT_RUN",
+  "officialGeometry300": "RUNNING_UNPROFILED",
+  "newSemanticApprovals": 0
+}

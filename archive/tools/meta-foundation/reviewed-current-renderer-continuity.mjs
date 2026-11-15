@@ -4,6 +4,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
+import { createImmutableGitMetadataLookup } from './immutable-git-metadata.mjs';
+
+const immutableMetadata = createImmutableGitMetadataLookup();
 
 const fail = message => { throw Error(`reviewed renderer continuity: ${message}`); };
 const SHA1 = /^[a-f0-9]{40}$/, SHA256 = /^[a-f0-9]{64}$/;
@@ -207,8 +210,8 @@ function safePath(root, relative) {
 }
 function parse(bytes) { try { return JSON.parse(bytes); } catch { fail('invalid JSON evidence'); } }
 function git(ctx, ...args) {
-  try { return execFileSync('git', args, { cwd: ctx.root, maxBuffer: 32 * 1024 * 1024,
-    stdio: ['ignore', 'pipe', 'pipe'] }); }
+  try { return immutableMetadata(ctx.root,args,()=>execFileSync('git', args,
+    { cwd: ctx.root, maxBuffer: 32 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'] })); }
   catch { fail('immutable Git evidence unavailable'); }
 }
 function gitFile(ctx, commit, relative) {

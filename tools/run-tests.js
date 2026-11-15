@@ -40,6 +40,59 @@ const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' ? 180000
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/archive-m2-provider-current-renderer.test.mjs',
+    args: ['--test', 'tests/archive-m2-provider-current-renderer.test.mjs']
+  },
+  {
+    label: 'tests/archive-audited-cc-append.test.mjs',
+    args: ['--test', 'tests/archive-audited-cc-append.test.mjs']
+  },
+  {
+    label: 'tests/archive-audited-cc-catalog-precedence.test.mjs',
+    args: ['--test', 'tests/archive-audited-cc-catalog-precedence.test.mjs']
+  },
+  {
+    label: 'tests/archive-changed-uid-consumer-approval.test.mjs',
+    args: ['--test', 'tests/archive-changed-uid-consumer-approval.test.mjs']
+  },
+  {
+    label: 'tests/archive-m2-current-renderer-continuity.test.mjs',
+    args: ['--test', 'tests/archive-m2-current-renderer-continuity.test.mjs']
+  },
+  {
+    label: 'tests/archive-m2-current-renderer-registration.test.mjs',
+    args: ['--test', 'tests/archive-m2-current-renderer-registration.test.mjs']
+  },
+  {
+    label: 'tests/archive-original-finalqa-renderer-preservation.test.mjs',
+    args: ['--test', 'tests/archive-original-finalqa-renderer-preservation.test.mjs']
+  },
+  {
+    label: 'tests/archive-reviewed-exam-registration-v2.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
+    timeout: 300000
+  },
+  {
+    label: 'tests/item-4slot-current-renderer-negative-hold-v2.test.cjs',
+    args: ['--test', 'tests/item-4slot-current-renderer-negative-hold-v2.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-current-renderer-negative-hold.test.cjs',
+    args: ['--test', 'tests/item-4slot-current-renderer-negative-hold.test.cjs']
+  },
+  {
+    label: 'tests/meta-foundation-exact-json-byte-parser.test.mjs',
+    args: ['--test', 'tests/meta-foundation-exact-json-byte-parser.test.mjs']
+  },
+  {
+    label: 'tests/meta-foundation-immutable-git-batch.test.mjs',
+    args: ['--test', 'tests/meta-foundation-immutable-git-batch.test.mjs']
+  },
+  {
+    label: 'tests/meta-foundation-immutable-git-metadata.test.mjs',
+    args: ['--test', 'tests/meta-foundation-immutable-git-metadata.test.mjs']
+  },
+  {
     label: 'tests/native-approved-renderer-consumer.test.mjs',
     args: ['--test', 'tests/native-approved-renderer-consumer.test.mjs']
   },

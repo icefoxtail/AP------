@@ -260,7 +260,12 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       const reviewedM2Renderer=reviewedSource===true&&m2Proofs.length===1&&
         m2Proofs[0].schemaVersion==='archive-reviewed-m2-current-renderer-continuity-v1'&&
         m2Proofs[0].nativeStudentPayloadSha256===hash(pick(previous,REASSESSED_STUDENT_FIELDS));
-      if(reviewedFigure!==true&&reviewedRenderer!==true&&!reviewedM2Renderer&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      const m2ProviderProofs=receipt.fingerprintRepairs?.filter(repair=>repair.questionUid===identity.questionUid&&repair.sourceOrdinal===ordinal)
+        .map(repair=>repair.sourceReview?.m2ProviderRendererContinuity).filter(Boolean)||[];
+      const reviewedM2ProviderRenderer=reviewedSource===true&&m2ProviderProofs.length===1&&
+        m2ProviderProofs[0].schemaVersion==='archive-reviewed-m2-provider-current-renderer-continuity-v1'&&
+        m2ProviderProofs[0].nativeStudentPayloadSha256===hash(pick(previous,REASSESSED_STUDENT_FIELDS));
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&!reviewedM2Renderer&&!reviewedM2ProviderRenderer&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }

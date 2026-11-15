@@ -21,7 +21,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(Buffer.concat([fs.readFileSync(__filename), fs.readFileSync(require.resolve('./renderer-registration-hold.cjs')), fs.readFileSync(require.resolve('./partial-submission.cjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold.cjs')), fs.readFileSync(require.resolve('./import-4slot.cjs')), fs.readFileSync(require.resolve('./validate-4slot.cjs')), fs.readFileSync(require.resolve('./exam-items.cjs'))]));
+const BUILDER_SHA = sha(Buffer.concat([fs.readFileSync(__filename), fs.readFileSync(require.resolve('./renderer-registration-hold.cjs')), fs.readFileSync(require.resolve('./partial-submission.cjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold.cjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold-v2.cjs')), fs.readFileSync(require.resolve('./import-4slot.cjs')), fs.readFileSync(require.resolve('./validate-4slot.cjs')), fs.readFileSync(require.resolve('./exam-items.cjs'))]));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -95,10 +95,10 @@ function validateItem(it, dict) {
 // of that complete exam denominator can register. It is not an empty-slot route.
 function validateRegistrationHold(root, d, it, id, cur, {currentRendererNegativeValidated=false}={}) {
   const h=it.registrationHold, errors=[];
-  if(!h||!['4slot-native-review-hold-v1',currentRendererHold.HOLD_SCHEMA].includes(h.schemaVersion))return ['UNSUPPORTED_HOLD'];
+  if(!h||!['4slot-native-review-hold-v1',...currentRendererHold.HOLD_SCHEMAS].includes(h.schemaVersion))return ['UNSUPPORTED_HOLD'];
   if(h.questionUid!==id?.questionUid||h.sourceOrdinal!==cur?.ordinal||h.sourceQuestionNo!==sourceIdentityNumber(cur?.q||{})||h.ordinal!==it.ordinal)errors.push('HOLD_IDENTITY_MISMATCH');
   if(typeof h.nextAction!=='string'||!h.nextAction.trim())errors.push('HOLD_NEXT_ACTION_MISSING');
-  if(h.schemaVersion===currentRendererHold.HOLD_SCHEMA)return [...errors,...(currentRendererNegativeValidated&&h.reason===currentRendererHold.REASON?[]:['CURRENT_RENDERER_HOLD_FILE_NOT_VALIDATED'])];
+  if(currentRendererHold.HOLD_SCHEMAS.includes(h.schemaVersion))return [...errors,...(currentRendererNegativeValidated&&h.reason===currentRendererHold.REASON?[]:['CURRENT_RENDERER_HOLD_FILE_NOT_VALIDATED'])];
   if(h.reason==='SOURCE_RENDERER_CORRECTION_PENDING')return [...errors,...rendererHold.validate(root,d,it,id,cur,{safe,sha,blob,stable,payloadHash,identityHash,git,assetRefs,loadBank})];
   if(h.reason==='SOURCE_EVIDENCE_UNRESOLVED')return [...errors,...validateM2SourceHold(root,d,it,id,cur)];
   if(h.reason!=='PARTIAL_METHOD_EVIDENCE_DEBT'||!/^original\/middle\/m1\/1(?:mid|final)\//.test(d.sourceArchiveFile))return [...errors,'UNSUPPORTED_HOLD'];

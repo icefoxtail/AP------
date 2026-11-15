@@ -512,9 +512,11 @@ function liveSnapshot(root) {
   const key=stable([fs.realpathSync(root),[...raw].map(([p,value])=>[p,sha(value)])]);
   if(liveSnapshotCache?.key===key)return liveSnapshotCache;
   const docs=[...raw].filter(([p])=>p.startsWith(RUNTIME)).map(([p,value])=>({...JSON.parse(value),__path:p}));
-  liveSnapshotCache={key,metadata:byUid(JSON.parse(raw.get(META)).records,'live metadata'),
-    identity:byUid(JSON.parse(raw.get(IDENTITY)).records,'live identity'),
-    runtime:byUid(docs.flatMap(doc=>doc.records||[]),'live runtime'),docs};
+  const metadata=byUid(JSON.parse(raw.get(META)).records,'live metadata'),
+    identity=byUid(JSON.parse(raw.get(IDENTITY)).records,'live identity');
+  const runtime=byUid(docs.flatMap(doc=>doc.records||[]),'live runtime'),runtimePackByUid=new Map();
+  for(const doc of docs)for(const row of doc.records||[])runtimePackByUid.set(row.questionUid,doc);
+  liveSnapshotCache={key,metadata,identity,runtime,runtimePackByUid,docs};
   return liveSnapshotCache;
 }
 const withoutProvenance=row=>Object.fromEntries(Object.entries(row).filter(([key])=>!['metadataRevision','approvalEvidence'].includes(key)));
@@ -522,7 +524,7 @@ function assertLiveCohort(root,ctx,recovery) {
   const live=liveSnapshot(root),expected=inventory(recovery),sourceRaw=bytes(root,`archive/exams/${recovery.sourceArchiveFile}`),bank=bankOf(sourceRaw,recovery.expectedQuestionCount);
   const latestIds=new Set();
   for(const [uid,row]of expected.records) {
-    const current=live.metadata.get(uid),runtime=live.runtime.get(uid),pack=live.docs.find(doc=>doc.records?.some(r=>r.questionUid===uid));
+    const current=live.metadata.get(uid),runtime=live.runtime.get(uid),pack=live.runtimePackByUid.get(uid);
     if(!current||!runtime||!same(withoutProvenance(current),withoutProvenance(row))||
       !same(withoutProvenance(runtime),withoutProvenance(expected.runtimes.get(uid)))||!same(live.identity.get(uid),expected.identities.get(uid))||
       !same(bank[row.sourceOrdinal-1],ctx.bank[row.sourceOrdinal-1])||pack?.status!=='ACTIVE'||pack.packId!==row.metaFoundationPackId||

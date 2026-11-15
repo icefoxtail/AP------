@@ -10,6 +10,10 @@ import {loadVerifiedHistoricalAuditSnapshot, isPreservableAuditRecord, isAuditPr
 import {validateReviewedAuditCrossConceptComponent, REASSESSED_STUDENT_FIELDS} from './reviewed-source-reassessment.mjs';
 import {loadActiveMetaRegistry} from './active-registry.mjs';
 import {readImmutableGitFiles} from './immutable-git-batch.mjs';
+import {createExactJsonByteParser} from './exact-json-byte-parser.mjs';
+
+const parseSmallJson = createExactJsonByteParser(16);
+const parseCurrentJson = raw => raw.length<=2*1024*1024 ? parseSmallJson(raw) : JSON.parse(raw.toString('utf8'));
 
 export const AUDIT_CC_APPEND_SCHEMA = 'archive-audit-finalized-cc-append-v1';
 export const AUDIT_CC_BINDING_SCHEMA = 'archive-audit-finalized-cc-binding-v1';
@@ -39,7 +43,7 @@ function safe(root, relative) {
     if (fs.existsSync(p) && fs.lstatSync(p).isSymbolicLink()) fail('symlink evidence path');
   return full;
 }
-const read = (root, p) => JSON.parse(fs.readFileSync(safe(root, p), 'utf8'));
+const read = (root, p) => parseCurrentJson(fs.readFileSync(safe(root, p)));
 function git(root, args) {
   try {return execFileSync('git', args, {cwd:root,maxBuffer:128*1024*1024,stdio:['ignore','pipe','pipe']});}
   catch {fail('immutable Git evidence missing');}
@@ -280,7 +284,7 @@ export function assertAuditCcAppendReceipt(context,receipt) {
   const raw=fs.readFileSync(safe(context.root,context.bindingPath));
   const digests=receipt.outputDigests?.filter(r=>r.path===context.bindingPath);
   if (digests?.length!==1 || digests[0].sha256!==sha(raw) ||
-      !same(JSON.parse(raw),buildAuditCcAppendBinding(context,hash))) fail('durable component sidecar missing or changed');
+      !same(parseCurrentJson(raw),buildAuditCcAppendBinding(context,hash))) fail('durable component sidecar missing or changed');
   const records=inventory(receipt.appliedRecords,'issued metadata'),ids=inventory(receipt.appliedIdentityRecords,'issued identity'),
     runtimes=inventory(receipt.runtimeRecords,'issued runtime');
   if ([records,ids,runtimes].some(m=>m.size!==count) ||
@@ -310,6 +314,12 @@ export function nativeAuditCcAppend({nativeSource,question,previous,current,iden
       if (!isAuditCcAppend(receipt.approval)) continue;
       const matches=receipt.appliedRecords.filter(r=>r.questionUid===current.questionUid);
       if (matches.length!==1 || !same(matches[0],current)) fail('native current component row drift');
+      if (receipt.sourceRawSha256!==sha(bytes) || receipt.sourceBlobSha1!==blob(bytes))
+        fail('native component source bytes drift');
+      const ids=receipt.appliedIdentityRecords.filter(r=>r.questionUid===current.questionUid),
+        runtimes=receipt.runtimeRecords.filter(r=>r.questionUid===current.questionUid);
+      if (ids.length!==1 || !same(ids[0],identity) || runtimes.length!==1 || !same(runtimes[0],runtimeRecord))
+        fail('native component identity or runtime drift');
       const binding=read(root,auditCcBindingPath(receipt.requestId)),request=binding.requestSnapshot;
       if (p!==RECEIPTS+request?.requestId+'.json' || request.sourceArchiveFile!==current.sourceArchiveFile ||
           receipt.requestSha256!==sha(stable(request))) fail('native component request missing');

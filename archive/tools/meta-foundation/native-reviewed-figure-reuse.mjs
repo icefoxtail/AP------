@@ -6,6 +6,9 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { REASSESSED_STUDENT_FIELDS, validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
+import { createImmutableGitMetadataLookup } from './immutable-git-metadata.mjs';
+
+const immutableMetadata = createImmutableGitMetadataLookup();
 
 const SHA1 = /^[a-f0-9]{40}$/, SHA256 = /^[a-f0-9]{64}$/;
 const fail = message => { throw Error(`native reviewed figure reuse: ${message}`); };
@@ -30,7 +33,8 @@ function safePath(root, relative) {
 }
 function parse(bytes) { try { return JSON.parse(bytes); } catch { fail('invalid JSON evidence'); } }
 function git(ctx, ...args) {
-  try { return execFileSync('git', args, {cwd:ctx.root, maxBuffer:32*1024*1024, stdio:['ignore','pipe','pipe']}); }
+  try { return immutableMetadata(ctx.root,args,()=>execFileSync('git', args,
+    {cwd:ctx.root, maxBuffer:32*1024*1024, stdio:['ignore','pipe','pipe']})); }
   catch { fail('immutable Git evidence unavailable'); }
 }
 function gitFile(ctx, commit, relative) {

@@ -7,6 +7,10 @@ import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { REASSESSED_STUDENT_FIELDS } from "./reviewed-source-reassessment.mjs";
 import { loadUnitOrders, UNIT_MASTER_PATH } from "../archive-unit-order.mjs";
+import { createExactJsonByteParser, freezeJsonValue } from "./exact-json-byte-parser.mjs";
+
+const parseSmallJson = createExactJsonByteParser(16);
+const parseReadonlyJson = raw => raw.length<=2*1024*1024 ? parseSmallJson(raw) : freezeJsonValue(JSON.parse(raw.toString("utf8")));
 
 export const AUDIT_PRESERVATION_SCHEMA = "archive-native-audit-preservation-v1";
 export const PRESERVED_DIFFICULTY_FIELDS = Object.freeze([
@@ -61,7 +65,7 @@ function commit(root, value) {
 }
 function gitJson(root, revision, relative) {
   const key = stable([path.resolve(root), revision, relative]);
-  if (!immutableJson.has(key)) immutableJson.set(key, JSON.parse(git(root, ["show", revision + ":" + relative])));
+  if (!immutableJson.has(key)) immutableJson.set(key, parseReadonlyJson(git(root, ["show", revision + ":" + relative])));
   return immutableJson.get(key);
 }
 function parseBank(bytes) {
@@ -81,12 +85,24 @@ function unique(rows, key, label) {
   }
   return map;
 }
+// These private indexes describe already frozen immutable JSON only. They never
+// leave this module; every historical authority and row comparison still runs.
+const historicalUidIndexes = new WeakMap();
+function historicalUidIndex(rows, label) {
+  if (!Array.isArray(rows) || !Object.isFrozen(rows)) return unique(rows,"questionUid",label);
+  let index = historicalUidIndexes.get(rows);
+  if (!index) {
+    index = unique(rows,"questionUid",label);
+    historicalUidIndexes.set(rows,index);
+  }
+  return index;
+}
 function readRef(root, ref, refs) {
   if (!ref || !SHA256.test(ref.sha256 || "") || !refs?.some(r => r.path === ref.path && r.sha256 === ref.sha256))
     fail("explicit SHA-bound evidence reference required");
   const bytes = fs.readFileSync(localPath(root, ref.path));
   if (sha(bytes) !== ref.sha256) fail("evidence SHA drift: " + ref.path);
-  return { bytes, data: JSON.parse(bytes.toString("utf8")) };
+  return { bytes, data: parseReadonlyJson(bytes) };
 }
 // Read a historical dependency from its exact Git tree. Absence is different
 // from an unavailable blob: only an actually consumed difficulty inbox path may
@@ -217,7 +233,7 @@ export function loadAuditPreservation({ root, request, bytes, bank, _historical 
     })();
   const readBound = (evidence, evidenceRefs = refs) => {
     const raw = readBoundBytes(evidence, evidenceRefs);
-    return { bytes: raw, data: JSON.parse(raw.toString("utf8")) };
+    return { bytes: raw, data: parseReadonlyJson(raw) };
   };
   if (!ref?.path?.startsWith(RECEIPTS) || ref.path.slice(RECEIPTS.length).includes("/") || !ref.path.endsWith(".json"))
     fail("prior native receipt path required");
@@ -351,7 +367,7 @@ export function loadVerifiedHistoricalAuditSnapshot({ root, priorCommit, priorRe
   if (sha(raw) !== priorReceiptRef.sha256 ||
       sha(fs.readFileSync(localPath(root, priorReceiptRef.path))) !== priorReceiptRef.sha256)
     fail("historical full audit receipt SHA mismatch");
-  const prior = JSON.parse(raw);
+  const prior = parseReadonlyJson(raw);
   if (!isAuditPreservation(prior.approval) || prior.scope !== undefined ||
       prior.registrationMode !== undefined || prior.approval.sourceRebind.priorReceiptRef.path === priorReceiptRef.path)
     fail("an existing full typed audit preservation is required");
@@ -361,10 +377,10 @@ export function loadVerifiedHistoricalAuditSnapshot({ root, priorCommit, priorRe
   const bank = parseBank(bytes);
   const verified = verifyHistoricalPreservation({ root, receipt: prior, receiptRef: priorReceiptRef,
     priorCommit, bytes, bank, seen: [] });
-  const metadata = unique(gitJson(root, priorCommit, "archive/data/question_metadata.json").records,
-    "questionUid", "historical current metadata");
-  const identity = unique(gitJson(root, priorCommit, "archive/data/question_identity_map.json").records,
-    "questionUid", "historical current identity");
+  const metadata = historicalUidIndex(gitJson(root, priorCommit, "archive/data/question_metadata.json").records,
+    "historical current metadata");
+  const identity = historicalUidIndex(gitJson(root, priorCommit, "archive/data/question_identity_map.json").records,
+    "historical current identity");
   const runtimeFiles = git(root, ["ls-tree", "-r", "--name-only", priorCommit, "--", "archive/data/meta-foundation/runtime"])
     .toString().split("\n").filter(p => p.endsWith(".json") && !p.endsWith("/runtime-bridge-receipt.json"));
   const runtime = unique(runtimeFiles.flatMap(p => gitJson(root, priorCommit, p).records || []),

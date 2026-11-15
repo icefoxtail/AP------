@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "geometry-pure-data-independent-code-read-v1",
+  "reviewer": "/root/m1_compact_transport",
+  "reviewedAtUtc": "2026-11-15T23:52:42.416610+00:00",
+  "commit": "7a25584dd818752d469afd39ce0b6e7aa1fb7140",
+  "parent": "d7f822059efd22098f30eb20ac75876c81d5bced",
+  "scope": "READ_ONLY_FOUR_PRODUCTION_DELTAS_AND_TWO_TARGETED_TEST_DELTAS",
+  "status": "NO_BLOCKING_FINDING_IN_SCOPED_CODE_READ",
+  "files": [
+    {
+      "commit": "7a25584dd818752d469afd39ce0b6e7aa1fb7140",
+      "path": "archive/tools/meta-foundation/audited-cross-concept-append.mjs",
+      "sha256": "03ce5e52f4df3dcfb6da1dc280d69fb480f66029359942470fc77581022186d1",
+      "gitBlobSha1": "088d2e0c8fd7b258a27daff40880c813b6484efd",
+      "bytes": 35208,
+      "workingBytesExactAtRead": true
+    },
+    {
+      "commit": "7a25584dd818752d469afd39ce0b6e7aa1fb7140",
+      "path": "archive/tools/meta-foundation/exact-json-byte-parser.mjs",
+      "sha256": "2d116b4c6799a3996ca8819efa4151874b65e87258f2ba119c32538292eca7d1",
+      "gitBlobSha1": "04cfeb3be18204df2174be6be5ac3b541c5d6471",
+      "bytes": 1099,
+      "workingBytesExactAtRead": true
+    },
+    {
+      "commit": "7a25584dd818752d469afd39ce0b6e7aa1fb7140",
+      "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+      "sha256": "0a40d5a8c82f6b7a7af7459fe3f47e7c1406f1e98f3a698a0bf395875387e9a7",
+      "gitBlobSha1": "4dbbd4b1c0245e07724e8e0dd08c7d19581871f3",
+      "bytes": 55118,
+      "workingBytesExactAtRead": true
+    },
+    {
+      "commit": "7a25584dd818752d469afd39ce0b6e7aa1fb7140",
+      "path": "archive/tools/meta-foundation/native-audit-preservation.mjs",
+      "sha256": "e650401e9ec9281ace5dda5acd375bad69afcc780a59840951e80389bae9a3de",
+      "gitBlobSha1": "223807eac877e074b9797072c3f88f3df063976f",
+      "bytes": 48288,
+      "workingBytesExactAtRead": true
+    }
+  ],
+  "observations": [
+    {
+      "boundary": "fresh small current JSON parse",
+      "finding": "Each call still executes the safe live file read. The parser selects by SHA256 and exact Buffer equality, stores a copied raw Buffer, recursively freezes parsed JSON, and limits its private cache to 16 entries. Per-document threshold is 2 MiB. The sidecar raw digest comparison and complete expected binding equality still execute."
+    },
+    {
+      "boundary": "large current JSON",
+      "finding": "The audited-CC current reader retains ordinary JSON.parse above the small-document threshold; no new large current document cache or approval result is introduced."
+    },
+    {
+      "boundary": "historical immutable UID indexes",
+      "finding": "New private WeakMap indexes are used only on frozen immutable metadata/identity record arrays. Creation still rejects missing or duplicate UIDs. Maps never escape the module. The historical receipt live raw SHA check, preservation recursion and every historical row comparison still run for each call."
+    },
+    {
+      "boundary": "current runtime container index",
+      "finding": "The original current metadata, identity and all runtime raw files are reread and hashed before the existing snapshot key is compared. Runtime byUid rejects duplicates before runtimePackByUid is populated. The new lookup replaces only repeated document scans. Every cohort record, current source, ACTIVE container, pack owner/version, generatedFrom provenance and descendant check remains."
+    },
+    {
+      "boundary": "shared value mutation",
+      "finding": "Cached JSON is recursively frozen and raw input is copied. Historical maps are private. The runtime container map is private inside the existing live snapshot, with only read access from assertLiveCohort in the inspected delta."
+    }
+  ],
+  "targetedTestDeltaRead": {
+    "warmCurrentJsonBeforeCorruption": true,
+    "historicalLiveReceiptMutationAfterWarm": true,
+    "differentImmutableDuplicateMetadataSnapshot": true,
+    "inactiveRuntimeContainer": true,
+    "wrongRuntimeContainerOwner": true,
+    "duplicateLiveRuntimeUid": true
+  },
+  "authorReportedTests": {
+    "source": "/root/audit_m3",
+    "count": 46,
+    "passed": 46,
+    "independentlyExecutedByThisReviewer": false
+  },
+  "officialGeometryTimingClaim": null,
+  "approvalResultCachingIntroduced": false,
+  "testCallsOrPublicApiChangedByThisDelta": false,
+  "timeoutOrDenominatorRelaxation": false,
+  "productionWritesByReviewer": 0,
+  "testsOrClonesExecutedByReviewer": 0,
+  "limitations": [
+    "This is an exact-commit static boundary read; it does not assert that the official 300-second geometry test now completes.",
+    "Existing immutable Git caching and existing raw-keyed live snapshot caching predate this delta and were not expanded into approval result caching."
+  ]
+}

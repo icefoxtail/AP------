@@ -5,10 +5,12 @@ const fs=require('node:fs'),{execFileSync}=require('node:child_process');
 const {compactItem}=require('./import-4slot.cjs');
 const {buildLookup}=require('./validate-4slot.cjs');
 const {sourceNumber,sourceIdentityNumber}=require('./exam-items.cjs');
+const v2=require('./current-renderer-negative-hold-v2.cjs');
 const HOLD_SCHEMA='4slot-current-renderer-negative-hold-v1';
 const PROOF_SCHEMA='m3-s2-current-renderer-negative-hold-v1';
 const REVIEW_SCHEMA='archive-m3s2-current-four-slot-renderer-negative-review-v1';
 const CONTINUITY_SCHEMA='archive-m3s2-current-four-slot-vector-continuity-v1';
+const HOLD_SCHEMAS=Object.freeze([HOLD_SCHEMA,v2.HOLD_SCHEMA]);
 const REASON='SOURCE_RENDERER_CORRECTION_PENDING';
 const REF=/^docs\/operations\/[A-Za-z0-9_가-힣./-]+\.json$/;
 const NEGATIVE_PATH=/^docs\/operations\/[A-Za-z0-9_가-힣./-]+\/negative-independent-review\.json$/;
@@ -18,7 +20,7 @@ const ASSET=/^archive\/assets\/.+\.(?:svg|png|jpe?g|gif|webp)$/i;
 const SHA=/^[a-f0-9]{64}$/,GIT=/^[a-f0-9]{40}$/,UID=/^qid_v1_[a-f0-9]{64}$/;
 const own=(o,k)=>Object.hasOwn(o||{},k);
 const directFields=['currentRendererNegativeEvidence','vectorContinuityEvidence','independentNegativeEvidence'];
-function has(d){return (d.items||[]).some(i=>i.registrationHold?.schemaVersion===HOLD_SCHEMA||directFields.some(k=>own(i.registrationHold,k)))||['currentRendererNegative','vectorContinuity','independentNegative'].some(k=>own(d.evidence?.nativeHoldReview,k));}
+function has(d){return (d.items||[]).some(i=>HOLD_SCHEMAS.includes(i.registrationHold?.schemaVersion)||directFields.some(k=>own(i.registrationHold,k)))||['currentRendererNegative','vectorContinuity','independentNegative'].some(k=>own(d.evidence?.nativeHoldReview,k));}
 
 // Immutable ancestry identifies a withholding obligation only. It never grants
 // a slot or a positive review. Discover once per builder pass, including evidence
@@ -36,7 +38,7 @@ function createObligationReader(root,{safe,sha,blob,stable}){
     if(!GIT.test(commit))throw Error('HISTORY');
     const paths=git(['ls-tree','-r','-z','--name-only',commit,'--','docs/operations']).toString().split('\0').filter(p=>NEGATIVE_PATH.test(p));
     for(const p of paths){safe(root,p);const raw=git(['show',commit+':'+p]),hash=sha(raw),key=p+'#'+hash;if(seen.has(key))continue;seen.add(key);
-     const review=JSON.parse(raw);if(review.schemaVersion!==REVIEW_SCHEMA)continue;
+     const review=JSON.parse(raw);if(![REVIEW_SCHEMA,v2.REVIEW_SCHEMA].includes(review.schemaVersion))continue;
      if(review.scope!=='EXISTING_FOUR_SLOT_VECTOR_CURRENT_RENDERER_NEGATIVE_ONLY'||review.decision!=='WITHHOLD_CURRENT_RENDERER'||!review.reviewer||!review.transportAuthor||review.reviewer===review.transportAuthor||!Array.isArray(review.rows)||review.rows.length!==review.heldUidCount||['newSemanticApprovals','newDifficultyApprovals','newMathQa','newSlotValues','sourceWrites','assetWrites'].some(k=>review[k]!==0))throw Error('NEGATIVE_INVENTORY');
      for(const row of review.rows){
       if(!UID.test(row.questionUid||'')||!/^original\/middle\/m3\/2(?:mid|final)\/.+\.js$/.test(row.sourceArchiveFile||'')||row.sourceRef?.path!=='archive/exams/'+row.sourceArchiveFile||!GIT.test(row.sourceRef?.commit||'')||!GIT.test(row.sourceRef?.gitBlobSha1||'')||!SHA.test(row.sourceRef?.sha256||'')||row.decision!=='WITHHOLD_CURRENT_RENDERER')throw Error('NEGATIVE_INVENTORY_ROW');
@@ -54,13 +56,17 @@ function createObligationReader(root,{safe,sha,blob,stable}){
   if(!/^original\/middle\/m3\/2(?:mid|final)\//.test(d.sourceArchiveFile||''))return {required:false,errors:[],digest:null};
   load();if(failure)return {required:true,errors:[failure],digest:null};
   const found=entries.filter(r=>r.sourceArchiveFile===d.sourceArchiveFile);if(!found.length)return {required:false,errors:[],digest:null};
-  const ids=[...new Set(found.map(r=>r.questionUid))],h=d.items?.find(i=>i.registrationHold?.schemaVersion===HOLD_SCHEMA)?.registrationHold;
-  const matches=found.filter(r=>r.sourceBlob===currentSourceBlob&&r.questionUid===h?.questionUid&&r.sourceOrdinal===h?.sourceOrdinal&&r.sourceQuestionNo===h?.sourceQuestionNo&&r.ordinal===h?.ordinal&&r.evidencePath===h?.independentNegativeEvidence?.path&&r.evidenceSha256===h?.independentNegativeEvidence?.sha256);
-  return {required:true,errors:ids.length!==1||!has(d)||!matches.length?['CURRENT_RENDERER_HOLD_NEGATIVE_OBLIGATION_REQUIRED']:[],digest:sha(stable(found))};
+  const ids=[...new Set(found.map(r=>r.questionUid))],holds=(d.items||[]).filter(i=>HOLD_SCHEMAS.includes(i.registrationHold?.schemaVersion)).map(i=>i.registrationHold);
+  // Every recorded UID remains withheld, including witnesses deleted from a
+  // later tree. A newer negative witness may rebind that same obligation but
+  // cannot remove another held UID from the complete file.
+  const covered=ids.every(uid=>holds.some(h=>h.questionUid===uid&&found.some(r=>r.sourceBlob===currentSourceBlob&&r.questionUid===h.questionUid&&r.sourceOrdinal===h.sourceOrdinal&&r.sourceQuestionNo===h.sourceQuestionNo&&r.ordinal===h.ordinal&&r.evidencePath===h.independentNegativeEvidence?.path&&r.evidenceSha256===h.independentNegativeEvidence?.sha256)));
+  return {required:true,errors:!has(d)||!covered?['CURRENT_RENDERER_HOLD_NEGATIVE_OBLIGATION_REQUIRED']:[],digest:sha(stable(found))};
  };
 }
 
 function validateFile(root,d,hp){
+ if(v2.has(d))return v2.validateFile(root,d,hp);
  if(!has(d))return [];
  const {safe,sha,blob,stable,payloadHash,identityHash,assetRefs,loadBank,dictionary,identity,studentFields}=hp;
  const fail=s=>{throw Error('CURRENT_RENDERER_HOLD_'+s);},same=(a,b)=>stable(a)===stable(b);
@@ -155,4 +161,4 @@ function validateFile(root,d,hp){
   return [];
  }catch(error){return [error.message?.startsWith('CURRENT_RENDERER_HOLD_')?error.message:'CURRENT_RENDERER_HOLD_EVIDENCE_UNAVAILABLE'];}
 }
-module.exports={HOLD_SCHEMA,PROOF_SCHEMA,REVIEW_SCHEMA,CONTINUITY_SCHEMA,REASON,has,validateFile,directFields,createObligationReader};
+module.exports={HOLD_SCHEMA,HOLD_SCHEMAS,PROOF_SCHEMA,REVIEW_SCHEMA,CONTINUITY_SCHEMA,REASON,has,validateFile,directFields,createObligationReader};

@@ -8,6 +8,7 @@ const freeze = value => {
   }
   return value;
 };
+export {freeze as freezeJsonValue};
 export function createExactJsonByteParser(limit=128) {
   if(!Number.isSafeInteger(limit)||limit<1)throw Error('positive parser cache limit required');
   const cache=new Map();

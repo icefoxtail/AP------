@@ -3,6 +3,9 @@
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import {createImmutableGitMetadataLookup} from './immutable-git-metadata.mjs';
+
+const immutableMetadata = createImmutableGitMetadataLookup();
 
 const SHA1 = /^[a-f0-9]{40}$/;
 const fail = message => {throw Error('immutable Git batch: ' + message);};
@@ -43,7 +46,8 @@ function readFiles(root, inputs, consume) {
     byCommit.get(entry.commit).add(entry.path);
   }
   const git = (args, input) => {
-    try {return execFileSync('git', args, {cwd:root,input,maxBuffer:256*1024*1024,stdio:['pipe','pipe','pipe']});}
+    try {return immutableMetadata(root,args,()=>execFileSync('git', args,
+      {cwd:root,input,maxBuffer:256*1024*1024,stdio:['pipe','pipe','pipe']}));}
     catch {fail('immutable Git input unavailable');}
   };
   const entries = new Map();

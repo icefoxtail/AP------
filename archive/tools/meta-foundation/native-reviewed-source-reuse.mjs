@@ -16,6 +16,7 @@ import { restoreReviewedReplayCanonicalBefore } from './reviewed-replay-registry
 import { isSourceSubsetRebind, validateSourceSubsetEvidence, preservedSourceEvidence } from './source-subset-preservation.mjs';
 import { isIssuedSourceBindingRecovery, validateIssuedSourceBindingRecovery } from './issued-source-binding-recovery.mjs';
 import { hasImmutableM2CurrentRendererClaim } from './reviewed-m2-current-renderer-continuity.mjs';
+import { hasImmutableM2ProviderCurrentRendererClaim } from './reviewed-m2-provider-current-renderer-continuity.mjs';
 
 const RECEIPTS = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const INDEX = 'archive/data/meta-foundation/canonical/registry_index.json';
@@ -63,6 +64,7 @@ function unique(rows, key, label) {
 // receipt itself is missing, changed or no longer passes its earlier checks.
 export function hasNativeReviewedSourceClaim({root, current, runtimeRecord}) {
   if (hasImmutableM2CurrentRendererClaim({root,current,runtimeRecord})) return true;
+  if (hasImmutableM2ProviderCurrentRendererClaim({root,current,runtimeRecord})) return true;
   if (markers(current).length || markers(runtimeRecord).length) return true;
   const candidates=new Set([current,runtimeRecord].flatMap(row=>Array.isArray(row?.approvalEvidence)?row.approvalEvidence:[]));
   for (const row of [current,runtimeRecord]) {

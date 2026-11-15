@@ -135,7 +135,11 @@ window.questionBank = [
       "삼각함수의 뜻과 값",
       "삼각함수의 뜻과 값"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고2_수학I/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 호 길이 π, 넓이 2π인 부채꼴을 개략적으로 나타냈다. 중심각은 정확히 π/4이고 두 반지름은 같은 r로 표시된다. 원의 크기와 길이 비례는 도식만으로 정하지 않는다.",
+    "solutionImageCaption": "ℓ=rθ, S=½r²θ에서 S=½rℓ이다. ℓ=π, S=2π이므로 r=4이고 θ=ℓ/r=π/4이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -408,7 +412,11 @@ window.questionBank = [
       "로그의 뜻과 성질",
       "로그의 뜻과 성질"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: t=log₁₀x는 열린 구간 (1,3)에 있다. 조건 2t∈ℤ를 만족하는 값은 3/2, 2, 5/2의 세 점이다. 끝점 1과 3은 제외된다. x들의 곱은 표시하지 않는다.",
+    "solutionImageCaption": "t=3/2, 2, 5/2에 대응하는 x들의 곱은 10^6이므로 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -735,12 +743,16 @@ window.questionBank = [
       "로그함수",
       "로그함수의 그래프"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 열린 구간 12<k<162를 표시해 제1사분면 교점 조건을 나타낸다. 경계값에서는 교점이 축 위에 놓인다.",
+    "solutionImageCaption": "두 그래프가 제1사분면에서 만나려면 12<k<162이다. 가능한 자연수 k는 13부터 161까지 149개이므로 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
     "questionType": "객관식",
-    "content": "$a > 1$인 실수 $a$에 대하여 직선 $y=-x+4$가 두 곡선 $y=a^{x-1}$, $y=\\log_a (x-1)$과 만나는 점을 각각 $A, B$라 하고, 곡선 $y=a^{x-1}$이 $y$축과 만나는 점을 $C$라 하자. $\\overline{AB} = 2\\sqrt{2}$일 때, 점 $C$의 $y$ 좌표는? [4.6점]<br><div class=\"exam-img-box\"><img src=\"assets/images/23_제일고_1학기_중간_고2_수학I/q17.png\" class=\"exam-img\"></div>",
+    "content": "$a > 1$인 실수 $a$에 대하여 직선 $y=-x+4$가 두 곡선 $y=a^{x-1}$, $y=\\log_a (x-1)$과 만나는 점을 각각 $A, B$라 하고, 곡선 $y=a^{x-1}$이 $y$축과 만나는 점을 $C$라 하자. $\\overline{AB} = 2\\sqrt{2}$일 때, 점 $C$의 $y$ 좌표는? [4.6점]<br><div class=\"exam-img-box\"><img src=\"assets/images/23_제일고_1학기_중간_고2_수학I/q17-problem-v1.svg\" class=\"exam-img\" alt=\"좌표평면의 개형이다. 직선 y=−x+4와 지수곡선 y=a^(x−1)의 교점 A, 직선과 로그곡선 y=logₐ(x−1)의 교점 B, 지수곡선과 y축의 교점 C, 원점 O가 표시되어 있다.\"></div>",
     "choices": [
       "\\frac{2}{25}",
       "\\frac{1}{10}",
@@ -829,7 +841,11 @@ window.questionBank = [
       "로그함수",
       "로그함수의 활용"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 닫힌 구간 -1≤a≤4를 표시해 두 집합의 교집합이 존재하는 범위를 나타낸다.",
+    "solutionImageCaption": "A와 B가 공통 원소를 가지려면 -1≤a≤4이다. 이 구간의 정수는 6개이므로 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
