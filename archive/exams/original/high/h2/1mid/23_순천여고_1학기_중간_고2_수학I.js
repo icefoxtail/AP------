@@ -439,7 +439,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q7-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정의역 −2≤x≤2에서 감소하는 지수곡선이다. 양 끝은 닫힌 점이며, x=−2에서 주어진 최댓값 y=48에 이른다.",
+    "solutionImageCaption": "밑 $r=\\frac{a}{a+2}$는 $a>0$이므로 $0<r<1$이다.\n따라서 $f(x)=3r^x$는 감소함수이고, 정의역 $[-2,2]$에서 최댓값은 $x=-2$일 때이다.\n$3r^{-2}=48$에서\n$r^2=\\frac1{16}$, $r=\\frac14$이다.\n그러므로\n$\\frac{a}{a+2}=\\frac14$\n$4a=a+2$\n$a=\\frac23$이다.\n정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 8,
@@ -814,7 +817,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q13-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 함수 f(x), g(x)의 두 로그곡선과 y=2 수평선을 나타낸다. x=1에서 각 곡선의 기준점 P,Q가 표시되어 있으며 두 곡선은 y=2를 기준으로 서로 대칭이다.",
+    "solutionImageCaption": "y=log₂x와 y=−log₂x+m의 대칭 조건을 y=2와 비교하면 m=4이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 14,
@@ -876,7 +882,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q14-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지수함수 y=3^(x+1), y=3 및 y=5 기준선과 좌표축을 나타낸다. x=0에서 곡선은 y=3이고, 두 후보 높이 5±k는 y=5를 중심으로 대응한다.",
+    "solutionImageCaption": "t=3^(x+1)에서 양의 x는 t>3, 음의 x는 0<t<3이다. 두 후보 5±k를 비교해 k=3,4를 얻고 합은 7이다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 15,
@@ -938,7 +947,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q15-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 수평선 y=3, y=9, y=27을 나타낸다. 두 낮은 수평선은 포물선과 각각 두 점에서 만나고, 가장 높은 수평선은 꼭짓점에서 접한다.",
+    "solutionImageCaption": "y=3과 y=9는 각각 두 점에서 만나고, y=27은 꼭짓점에서 접한다. 꼭짓값이 27이므로 더 높은 자연수 수준에는 교점이 없다. 따라서 a=10 (⑤)이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 16,
@@ -1252,7 +1264,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q20-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 수직선은 u=f(x)−1의 범위 [k−3,k+1]을 비교한다. 위 두 범위는 0을 포함하고 마지막 범위는 0의 오른쪽에 있다. 모두 닫힌 범위이며, 절댓값은 0에서 해당 점까지의 거리이다.",
+    "solutionImageCaption": "범위가 0을 포함하면 최솟값은 0이고, 그렇지 않으면 두 끝점에서 읽은 절댓값의 차가 구간 길이와 같다. 옳은 것은 ㄱ뿐이므로 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 21,
@@ -1389,7 +1404,7 @@ window.questionBank = [
     "content": "양수 $k$에 대하여 세 함수 $f(x) = \\log_{\\frac{1}{3}} (x+3)$, $g(x) = \\log_9 (x+3)$, $h(x) = \\log_3 (x-k)$가 있다. 두 함수 $y = f(x)$, $y = g(x)$의 그래프의 교점을 $A$, 두 함수 $y = f(x)$, $y = h(x)$의 그래프의 교점을 $B$, 두 함수 $y = g(x)$, $y = h(x)$의 그래프의 교점을 $C$라고 하고, 함수 $y = h(x)$의 그래프의 점근선이 두 함수 $y = f(x)$, $y = g(x)$의 그래프와 만나는 점을 각각 $D, E$라 하자. $\\overline{DE} = \\frac{3}{2}\\log_3 6$일 때, 삼각형 $ABC$의 무게중심의 $x$좌표를 구하시오. (7점)",
     "choices": [],
     "answer": "\\frac{4+\\sqrt{10}}{3}",
-    "solution": "교점 $A$는\n$\\log_{\\frac{1}{3}}(x+3)=\\log_9(x+3)$에서 구한다.\n$u=\\log_3(x+3)$라 두면 $-u=\\frac{u}{2}$이므로 $u=0$, $A=(-2,0)$이다.\n점근선은 $x=k$이다. 이 직선과 $f,g$의 교점 $D,E$는 세로로 놓이며\n$DE=|\\log_{\\frac{1}{3}}(k+3)-\\log_9(k+3)|=\\frac32\\log_3(k+3)$이다.\n주어진 길이와 비교하여 $k+3=6$, 따라서 $k=3$이다.\n$B$는 $f=h$에서\n$-\\log_3(x+3)=\\log_3(x-3)$이므로 $(x+3)(x-3)=1$, 즉 $x^2=10$이다.\n$x=\\pm\\sqrt{10}$ 중 $h$의 정의역 $x>3$을 만족하는 값은 $x_B=\\sqrt{10}$이다.\n$C$는 $g=h$에서\n$\\frac12\\log_3(x+3)=\\log_3(x-3)$이므로 $x+3=(x-3)^2$이다.\n$(x-1)(x-6)=0$ 중 정의역 $x>3$을 만족하는 것은 $x_C=6$이다.\n무게중심의 $x$좌표는\n$\\frac{-2+\\sqrt{10}+6}{3}=\\frac{4+\\sqrt{10}}{3}$이다.",
+    "solution": "교점 $A$는\n$\\log_{\\frac{1}{3}}(x+3)=\\log_9(x+3)$에서 구한다.\n$u=\\log_3(x+3)$라 두면 $-u=\\frac{u}{2}$이므로 $u=0$, $A=(-2,0)$이다.\n점근선은 $x=k$이다. 이 직선과 $f,g$의 교점 $D,E$는 세로로 놓이며\n$DE=|\\log_{\\frac{1}{3}}(k+3)-\\log_9(k+3)|=\\frac32\\log_3(k+3)$이다.\n주어진 길이와 비교하여 $k+3=6$, 따라서 $k=3$이다.\n$B$는 $f=h$에서\n$-\\log_3(x+3)=\\log_3(x-3)$이므로 $(x+3)(x-3)=1$, 즉 $x^2=10$이다.\n$x=\\pm\\sqrt{10}$ 중 $h$의 정의역 $x>3$을 만족하는 값은 $x_B=\\sqrt{10}$이다.\n$C$는 $g=h$에서\n$\\frac12\\log_3(x+3)=\\log_3(x-3)$이므로 $x+3=(x-3)^2$이다.\n$(x-1)(x-6)=0$ 중 정의역 $x>3$을 만족하는 것은 $x_C=6$이다.\n\n\n세로 점근선은 $x=3$이다. 그림에서 만나는 곳을 아래와 같이 대응시킨다.\n\n| 점 | 그림에서의 위치 | 좌표 |\n| --- | --- | --- |\n| $A$ | 곡선 $f$와 $g$의 교점 | $x=-2$, $y=0$ |\n| $B$ | 곡선 $f$와 $h$의 교점 | $x=\\sqrt{10}$, $y=\\log_3(\\sqrt{10}-3)$ |\n| $C$ | 곡선 $g$와 $h$의 교점 | $x=6$, $y=1$ |\n| $D$ | 곡선 $f$와 점근선의 교점 | $x=3$, $y=-\\log_3 6$ |\n| $E$ | 곡선 $g$와 점근선의 교점 | $x=3$, $y=\\frac{1}{2}\\log_3 6$ |\n\n무게중심의 $x$좌표는\n$\\frac{-2+\\sqrt{10}+6}{3}=\\frac{4+\\sqrt{10}}{3}$이다.",
     "category": "수학I",
     "originalCategory": "수학I",
     "level": "상",
@@ -1434,6 +1449,9 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q23-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선 f, 초록 점선 곡선 g, 주황 곡선 h 및 점근선 x=3이다. f와 g의 교점 A, g와 h의 교점 C를 표시했다. 점근선 바로 오른쪽의 f와 h 사이 교점 B와, 점근선 위의 D, E는 해설 표에서 위치를 대조한다.",
+    "solutionImageCaption": "두 로그함수의 높이 차에서 점근선 위치를 정한다. 세 교점의 x좌표를 더해 3으로 나누면 답은 (4+√10)/3이다.",
+    "solutionImageSize": "full"
   }
 ];

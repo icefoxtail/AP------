@@ -407,7 +407,11 @@ window.questionBank = [
       "로그함수",
       "로그함수의 그래프"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: x<5에서 증가하는 로그 곡선과 수직 점근선 x=5, 점 (4,3)을 표시한다.",
+    "solutionImageCaption": "정의역은 x<5이고 그래프는 x=5에서 수직 점근선을 가지며 증가한다. 점 (4,3)을 지나지만 y=log₃x의 평행이동만은 아니므로 옳지 않은 설명은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -454,7 +458,11 @@ window.questionBank = [
       "삼각함수의 뜻과 값",
       "삼각함수의 관계"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: u=θ/π인 수직선에서 y축 대칭 조건의 후보 1/4, 3/4, 5/4, 7/4와 제3사분면 범위 1<u<3/2를 비교한다. 구간 안의 후보는 고리로 표시된다.",
+    "solutionImageCaption": "조건에서 θ=5π/4이고 sinθ=cosθ=−√2/2이므로 sinθcosθ=1/2이다. 따라서 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -502,7 +510,11 @@ window.questionBank = [
       "삼각함수의 그래프",
       "삼각함수의 그래프"
     ],
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: n 수직선에 0<n≤22/3 범위를 표시한다. 0은 열린 끝이고 22/3은 닫힌 끝이며, 닫힌 끝은 x=2가 허용되는 데서 온다.",
+    "solutionImageCaption": "첫 두 탄젠트 구간은 n>0이면 각각 한 교점이고, 마지막 구간은 n≤22/3일 때 한 교점이 있다. x=2가 포함되어 등호도 허용되므로 최댓값은 7이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
