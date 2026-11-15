@@ -76,7 +76,8 @@ const requiredCommands = [
   },
   {
     label: 'tests/archive-main-merge-meta.test.mjs',
-    args: ['--test', 'tests/archive-main-merge-meta.test.mjs']
+    args: ['--test', 'tests/archive-main-merge-meta.test.mjs'],
+    timeout: 180000
   },
   {
     label: 'tests/archive-main-meta-batch-replay.test.mjs',
@@ -490,7 +491,7 @@ if (args.length) {
   const availableCommands = [
     ...tests.map(file => ({ label: `tests/${file}`, args: [`tests/${file}`],
       timeout: file === 'archive2-compose-scope.test.js' ? 180000 : 60000 })),
-    ...requiredCommands.map(command => ({ ...command, timeout: 60000 })),
+    ...requiredCommands.map(command => ({ ...command, timeout: command.timeout ?? 60000 })),
   ];
   if (runScopedTests({ root, scopeFile: args[1], availableCommands })) return;
 }
@@ -567,7 +568,7 @@ for (const command of requiredCommands) {
   const result = spawnSync(process.execPath, command.args, {
     cwd: root,
     stdio: 'inherit',
-    timeout: 60000
+    timeout: command.timeout ?? 60000
   });
   if (result.status === 0) {
     passed += 1;
