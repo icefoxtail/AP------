@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 53,
-    "reviewedQuestions": 1263
+    "reviewedExams": 54,
+    "reviewedQuestions": 1287
   },
   "duplicateUids": [],
   "exams": [
@@ -5286,9 +5286,48 @@
       ],
       "solutionCount": 24,
       "existing4slot": null,
-      "status": "PENDING",
+      "status": "REVIEWED_WITH_EVIDENCE_DEBT",
       "assignedTo": "meta_b",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "993fec2a46806d5c32359d00296c81af0457309c",
+      "reviewer": "meta_b",
+      "independentReviewer": "meta_c_resume_20261115",
+      "integratedBy": "GPT_ROOT_E45FF6C78C51",
+      "sampledOrdinals": [
+        10,
+        20,
+        23
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E050",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 6,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 6,
+      "sourceChangedFields": 17,
+      "contentDebtCount": 5,
+      "typeProposalCount": 35,
+      "evidenceDebtOrdinals": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "undecidedDifficultyOrdinals": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "difficultyPolicyDebtOrdinals": [
+        21,
+        22,
+        23,
+        24
+      ]
     },
     {
       "key": "E051",
@@ -9695,8 +9734,8 @@
     "reusedCompletedExams": 48,
     "reusedCompletedQuestions": 1143
   },
-  "updatedAt": "2026-11-15T00:07:34.242831+00:00",
-  "lastPublishedHeadBeforeCurrent": "8b46d67a1d396631de1fc92561d67e472b6bb4a3",
+  "updatedAt": "2026-11-15T00:07:50.989211+00:00",
+  "lastPublishedHeadBeforeCurrent": "6039655adacfc5e852b87ca8d4e0baee54e1475d",
   "resumeHistory": [
     {
       "basis": "EXPLICIT_USER_DIRECTION_TO_RESUME_DESPITE_UNCONFIRMED_STALE_RUNNING",

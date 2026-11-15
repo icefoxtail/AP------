@@ -68,9 +68,9 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -358,9 +358,9 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -466,9 +466,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -532,9 +532,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -640,7 +640,7 @@ window.questionBank = [
   {
     "id": 19,
     "score": 4,
-    "level": "상",
+    "level": "중",
     "category": "이차함수",
     "originalCategory": "이차함수",
     "standardCourse": "중3 수학",
@@ -664,13 +664,13 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "이차함수를 $y=ax^2+bx+c$로 놓는다.\n$y$절편이 $-11$이므로 $c=-11$이다.\n점 $(1,-18)$을 대입하면\n$-18=a+b-11$,\n$a+b=-7$이다.\n점 $(-3,-2)$를 대입하면\n$-2=9a-3b-11$,\n$9a-3b=9$,\n$3a-b=3$이다.\n두 식을 더하면 $(a+b)+(3a-b)=-7+3$,\n$4a=-4$에서 $a=-1$이다.\n$b=-7-(-1)=-6$이다.\n따라서 $y=-x^2-6x-11$로 나타낸 ②가 정답이다.",
-    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "이차함수의 활용",
+    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -700,13 +700,13 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "첫 번째 함수 $y=-x^2+2$의 꼭짓점은 $(0,2)$이다.\n두 번째 함수 $y=a(x-3)^2+b$의 꼭짓점은 $(3,b)$이다.\n서로의 꼭짓점을 지나므로 먼저 $(3,b)$를 첫째 식에 대입한다.\n$b=-(3)^2+2=-9+2=-7$이다.\n다음으로 $(0,2)$를 두 번째 식에 대입하면\n$2=a(0-3)^2-7$,\n$2=9a-7$,\n$9a=9$,\n$a=1$이다.\n따라서 $ab=1\\cdot(-7)=-7$이므로 정답은 ①이다.",
-    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "이차함수의 활용",
+    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
