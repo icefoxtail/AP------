@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "m3s2-2147-review-baseline-restoration-draft-v1",
+  "owner": "GPT_ROOT_26FC42390A50_M3S2_RELEASE",
+  "date": "2026-11-15",
+  "status": "DRAFT_ONLY_HOLD71_EVIDENCE_INSUFFICIENT_IN_CHECKED_SURFACES",
+  "observedMain": "e7bbf45ec55cff6722a9c4ec1caa06fd4745a25b",
+  "pr": {
+    "number": 2147,
+    "head": "fb12e711ce6aadf4ec3db6095b61bee950bdc4c1",
+    "merge": "1891e02a7c842462f4c4e0431b56f08112217432"
+  },
+  "originalReviewBaselineRef": "23dc6e09decfa5f902b992e730256856137b140d",
+  "figureSource": {
+    "pr": 2129,
+    "head": "41f5cf846144658c753414d7cc0d28bba4fb02a1",
+    "merge": "73a1d6db6a9e80a14d8cbdc45b9d4ea43edd3459",
+    "currentSourceBlobsStillMatchMergedFigureScope": true,
+    "sources": [
+      {
+        "path": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+        "gitBlobSha": "27507fb6237748fd5349fded2a72d37ee9d5155c"
+      },
+      {
+        "path": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+        "gitBlobSha": "36c738026dc11bd0483ece6039154d43e624eafc"
+      },
+      {
+        "path": "archive/exams/original/middle/m3/2mid/19_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha": "005ef3ec39a825ee07084767a7dc72240cbf1aed"
+      },
+      {
+        "path": "archive/exams/original/middle/m3/2mid/19_이수중_2학기_중간_중3_수학.js",
+        "gitBlobSha": "1541c19f60a194cc4feb25388690bd2bb9f3dfd6"
+      }
+    ]
+  },
+  "checkedEvidenceSurfaces": [
+    {
+      "surface": "PR2147 body and merged discussion/reviews",
+      "finding": "Body declares merged source-owner review reuse, no new independent visual review; discussion list is empty; no standalone exact independent artifact path or SHA."
+    },
+    {
+      "surface": "PR2129 body and merged discussion/reviews",
+      "finding": "Author asserts 94 question review and 246 PC/mobile displays; discussion list is empty; no immutable independent review/rendered proof artifact path or SHA."
+    },
+    {
+      "surface": "PR2147 four compact currentFigureRebind objects",
+      "finding": "All point only to PR2129 head/merge and evidenceKind MERGED_SOURCE_OWNER_REVIEW; newIndependentVisualReview=false; assetManifestSha256 exists but no corresponding independent reviewed artifact reference."
+    },
+    {
+      "surface": "Exact PR2129 geometry-equation ledger Git blob9a6b2868a46190298522f97ca9034510fcced3de",
+      "finding": "Four entries record PUBLISHED/EXEMPT states, source owner closure and a display-inspection note. They contain no independent reviewer identity, immutable review artifact, reviewed SVG hash or rendered-proof hash. Sinheung Q8 remains OPEN_CONTENT."
+    }
+  ],
+  "boundedConclusion": "An exact independent graphics review artifact and the current native quote/asset binding needed to justify promotion of these71 were not found in the checked linked immutable surfaces. This does not establish that no such artifact exists elsewhere, nor that the changed figures are mathematically wrong.",
+  "priorIndependentTechnicalReview": {
+    "sha256": "b99db5c6c3129994e978b62ad162e89e6636e846cb9a5ce1f7f5ea51d3d870ae",
+    "originalLocation": "ci-evidence/pr2147-graphics-rebind-review/independent-technical-review.json",
+    "status": "HOLD71_REUSED_SAME_PR_HEAD",
+    "originalLocalCopyAvailability": "LOST_ENVIRONMENT_RESET; parent agent may have remote checkpoint; not falsely reverified"
+  },
+  "proposedDelta": [
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.4slot.json",
+      "mode": "100644",
+      "expectedCurrentGitBlobSha": "247ac448d6e5c0280f5848479a05373a49812086",
+      "expectedCurrentRawSha256": "53dd5d2b1cb2cbab0631ec1e2eeab549f08f13742ac97f53b49b32aca10c8ef8",
+      "replacementExistingGitBlobSha": "9c412ecc13eba6decb2014609542d45e6bcf7239",
+      "replacementRawSha256": "5092b803f7704ca974d1102a6c43d6fdbb463d696960cfeebc6dabb2784b68ed",
+      "itemCount": 25,
+      "reviewBaselineSourceGitBlobSha": "4daf3b4a4122e4ea240850c9112c842a6e638dc2",
+      "currentSourceGitBlobSha": "27507fb6237748fd5349fded2a72d37ee9d5155c",
+      "changes": [
+        "Restore sourceGitBlobSha to immutable previously reviewed source baseline",
+        "Remove only unsupported currentFigureRebind declaration"
+      ],
+      "localReplacementPath": "remote-compacts/old-E072.json"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.4slot.json",
+      "mode": "100644",
+      "expectedCurrentGitBlobSha": "b2453b2e4b4d6dd8e932a7dca348d374dfb9ab4c",
+      "expectedCurrentRawSha256": "fa9038f7df502ddc72139c6a77079daa057fe773df8efd1d980a9ef607438b58",
+      "replacementExistingGitBlobSha": "82c68324715f5193e2d9ddad6a3be8b0f318af07",
+      "replacementRawSha256": "00cc7da1ae14afeb0dfd7c061956d7cf2d6a0d1262e4d97a17267a8f812d0576",
+      "itemCount": 23,
+      "reviewBaselineSourceGitBlobSha": "520de1cdd995c7325717747a8cefc601be472fde",
+      "currentSourceGitBlobSha": "36c738026dc11bd0483ece6039154d43e624eafc",
+      "changes": [
+        "Restore sourceGitBlobSha to immutable previously reviewed source baseline",
+        "Remove only unsupported currentFigureRebind declaration"
+      ],
+      "localReplacementPath": "remote-compacts/old-E073.json"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_연향중_2학기_중간_중3_수학.4slot.json",
+      "mode": "100644",
+      "expectedCurrentGitBlobSha": "9a0137e3674483ad2240c7708a855758ea374288",
+      "expectedCurrentRawSha256": "5215d69738fe029b140726000ca3f8ea703f4a87e04a2e4b46b30af9a459b2cf",
+      "replacementExistingGitBlobSha": "517ddd3d994ad3062a20734a784c61b8109673d6",
+      "replacementRawSha256": "b7dd42735ac4c4f44ac24b047503fff6769d94d09d8d4bed9b5eef663a24cf95",
+      "itemCount": 23,
+      "reviewBaselineSourceGitBlobSha": "9ba790d98eacd9bb6eacbfd3f5fb9c2d9f95c945",
+      "currentSourceGitBlobSha": "005ef3ec39a825ee07084767a7dc72240cbf1aed",
+      "changes": [
+        "Restore sourceGitBlobSha to immutable previously reviewed source baseline",
+        "Remove only unsupported currentFigureRebind declaration"
+      ],
+      "localReplacementPath": "remote-compacts/old-E074.json"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_이수중_2학기_중간_중3_수학.4slot.json",
+      "mode": "100644",
+      "expectedCurrentGitBlobSha": "3372ccd4b2d4a0d89d8b39f1d4ad949ce9be3885",
+      "expectedCurrentRawSha256": "dab58895f3bc6e137b976aba4200cc147e0f2c7b22d4a41c63986794fd5fecd4",
+      "replacementExistingGitBlobSha": "eb5765658673fe2d851b895d650733145c2f312c",
+      "replacementRawSha256": "1daf1d4621d0aa049b139f0e868169dd41da8532e08aa68078ae6c09d934e7bc",
+      "itemCount": 23,
+      "reviewBaselineSourceGitBlobSha": "5ac4271db664be2341c412d711dc8aba7bc87575",
+      "currentSourceGitBlobSha": "1541c19f60a194cc4feb25388690bd2bb9f3dfd6",
+      "changes": [
+        "Restore sourceGitBlobSha to immutable previously reviewed source baseline",
+        "Remove only unsupported currentFigureRebind declaration"
+      ],
+      "localReplacementPath": "remote-compacts/old-E075.json"
+    }
+  ],
+  "preservation": {
+    "questionRows": 94,
+    "itemArraysUnchanged": true,
+    "slotValuesUnchanged": true,
+    "reviewersUnchanged": true,
+    "dictionaryVersionUnchanged": true,
+    "allOtherCompactFieldsUnchanged": true,
+    "studentSourceChanges": 0,
+    "assetChanges": 0,
+    "semanticApprovalChanges": 0,
+    "registryChanges": 0,
+    "excludedM3S1SourceReads": 0,
+    "excludedM3S1SourceWrites": 0
+  },
+  "expectedScopedTechnicalEffect": {
+    "previousSameVersionScopedBuilder": {
+      "eligible": 23,
+      "pendingStale": 71,
+      "total": 94
+    },
+    "freshBuilderRun": "NOT_RUN_IN_RECOVERED_ENVIRONMENT",
+    "eligibilityPredictionCondition": "Exact source4 remains the observed hashes and current official builder guard matches the previously verified contract. Recheck only this slice before merge.",
+    "globalActualRegisteredCount": "NOT_RECOMPUTED_NEW_WRITER_REQUIRED",
+    "actualConsumer": "NOT_RUN",
+    "actualPages": "NOT_RUN"
+  },
+  "publicationPreconditions": [
+    "Root must recheck exact current compact blobs and source4 hashes before expected-head publication",
+    "If any compact changed since observedMain, preserve its later valid changes and do not overwrite with whole-file restoration",
+    "Use existing replacement Git blobs from the immutable pre-2147 ref; no source/SVG rollback",
+    "Run only the official four-exam scoped builder/data gate and verify the existing23 remain registered and affected71 remain pending",
+    "Preserve E073Q8 OPEN_CONTENT and unrelated E066Q15 strict hold",
+    "After green PR CI and root merge, verify actual writer receipt/runtime and Pages; do not infer publication from local eligibility"
+  ],
+  "nextAction": "Root decides and publishes this bounded restoration or obtains exact missing figure/quote proof; this agent changes no remote state.",
+  "writes": {
+    "production": 0,
+    "source": 0,
+    "registry": 0,
+    "remote": 0
+  },
+  "comparisonSha256": "5a8bcc6058c671e09ecba278f6e15a1368165c464ad04e84ffbc23a93f05f0d7"
+}
