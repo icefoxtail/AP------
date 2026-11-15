@@ -137,6 +137,10 @@ window.examData = {
     },
     {
       "number": 10,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=a(x−0)²의 꼭짓점은 원점이다. a(−x)²=ax²이므로 대칭축은 y축이고 정답은 ③이다.",
+      "solutionImageAlt": "위아래로 열리는 파랑과 주황 포물선 모두 가운데 원점을 꼭짓점으로 한다. 세로축 양쪽에서 같은 높이에 대응하는 점을 짚었다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q10-solution.svg",
       "score": 3.0,
       "question": "이차함수 $y=ax^2$의 그래프의 특징으로 옳은 것을 구하여라. (3점)",
       "choices": [
@@ -151,6 +155,10 @@ window.examData = {
     },
     {
       "number": 11,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=(x+1)²/6−2이므로 대칭축은 x=−1이다. x=1이라고 한 ②가 옳지 않다.",
+      "solutionImageAlt": "파란 포물선은 원점 왼쪽의 보라 세로 점선을 사이에 두고 같은 모양이다. 아래 주황 꼭짓점과 두 x절편을 볼 수 있다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q11-solution.svg",
       "score": 4.0,
       "question": "이차함수 $y=\\dfrac{1}{6}x^2+\\dfrac{1}{3}x-\\dfrac{11}{6}$의 그래프에 대한 설명으로 올바르지 <u>않은</u> 것을 구하여라. (4점)",
       "choices": [
@@ -165,8 +173,13 @@ window.examData = {
     },
     {
       "number": 12,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "기울기 a>0, y절편 b<0이다. 즉 꼭짓점 (a,b)는 오른쪽 아래에 있고 정답은 ①이다.",
+      "solutionImageAlt": "왼쪽 직선이 오른쪽으로 올라가며 원점 아래쪽에서 세로축을 지난다. 오른쪽 포물선의 주황 꼭짓점은 오른쪽 아래에 있다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q12-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "일차함수 $y=ax+b$의 그래프가 그림과 같을 때, 이차함수 $y=(x-a)^2+b$의 그래프의 개형으로 옳은 것을 구하여라. (5점)<br><br><img src=\"assets/images/19_이수중_1학기_기말_중3_수학/q12.png\" style=\"max-width: 420px; display: block; margin: 10px 0;\">",
+      "question": "일차함수 $y=ax+b$의 그래프가 그림과 같을 때, 이차함수 $y=(x-a)^2+b$의 그래프의 개형으로 옳은 것을 구하여라. (5점)<br><br><img src=\"assets/images/19_이수중_1학기_기말_중3_수학/q12-problem-v3.svg\" alt=\"위 주황 직선은 오른쪽으로 올라가며 세로축의 아래쪽을 지난다. 아래에는 꼭짓점의 위치가 다른 다섯 파란 포물선이 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "①",
         "②",
@@ -179,8 +192,13 @@ window.examData = {
     },
     {
       "number": 13,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "위로 열려 a>0이고 왼쪽 아래 꼭짓점에서 p<0, q<0이다. 정답은 ③이다.",
+      "solutionImageAlt": "보라 점선으로 주황 꼭짓점에서 두 축에 연결했다. 가로 점 p는 원점 왼쪽, 세로 점 q는 원점 아래에 있다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q13-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "이차함수 $y=a(x-p)^2+q$의 그래프가 다음과 같을 때, $a, p, q$의 부호로 알맞은 것을 구하여라. (4점)<br><br><img src=\"assets/images/19_이수중_1학기_기말_중3_수학/q13.png\" style=\"max-width: 320px; display: block; margin: 10px 0;\">",
+      "question": "이차함수 $y=a(x-p)^2+q$의 그래프가 다음과 같을 때, $a, p, q$의 부호로 알맞은 것을 구하여라. (4점)<br><br><img src=\"assets/images/19_이수중_1학기_기말_중3_수학/q13-problem-v3.svg\" alt=\"위로 열린 포물선의 꼭짓점은 두 축의 왼쪽 아래에 있다. 다른 눈금 숫자는 표시하지 않았다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$a>0, p>0, q>0$",
         "$a>0, p>0, q<0$",
@@ -193,6 +211,10 @@ window.examData = {
     },
     {
       "number": 14,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "공통 꼭짓점의 가로는 −3/2이다. b=1과 a=5를 얻으므로 a+b=6이며 정답은 ⑤이다.",
+      "solutionImageAlt": "파랑 곡선보다 초록 곡선의 폭이 넓고, 아래쪽에서는 두 곡선이 주황 꼭짓점과 보라 대칭축을 공유한다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q14-solution.svg",
       "score": 5.0,
       "question": "두 이차함수 $y=2x^2+6x+a$ 와 $y=\\dfrac{1}{3}x^2+bx+\\dfrac{5}{4}$의 그래프의 꼭짓점이 일치할 때, $a+b$의 값을 구하여라. (5점)",
       "choices": [
@@ -207,6 +229,10 @@ window.examData = {
     },
     {
       "number": 15,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "원래 꼭짓점 (−2,9)를 반사된 포물선의 꼭짓점 (3,1)로 옮기면 a=5, b=−8이다. a+b=−3이며 정답은 ③이다.",
+      "solutionImageAlt": "원래 파란 그래프와 이동 후 초록 그래프는 둘 다 아래로 열린다. 초록 그래프는 위로 열린 주황 점선과 가로축 대칭이다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q15-solution.svg",
       "score": 6.0,
       "question": "이차함수 $y=-x^2-4x+5$의 그래프를 $x$축 방향으로 $a$만큼 $y$축 방향으로 $b$만큼 평행이동하면 $y=x^2-6x+8$과 $x$축에 대하여 대칭인 그래프가 된다. 이 때, $a+b$의 값을 구하여라. (6점)",
       "choices": [
@@ -221,6 +247,10 @@ window.examData = {
     },
     {
       "number": 16,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "밑변 AB=6이고 높이는 9이므로 삼각형의 넓이는 6×9/2=27이다. 정답은 ②이다.",
+      "solutionImageAlt": "파란 포물선의 x절편 A·B와 주황 꼭짓점 C를 이은 삼각형이다. 세로 점선이 가로 밑변에 수직이다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q16-solution.svg",
       "score": 5.0,
       "question": "이차함수 $y=(x-3)(x+3)$의 그래프가 $x$축과 만나는 두 점을 $\\mathrm{A, B}$라 하고 꼭짓점을 $\\mathrm{C}$라고 할 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하여라. (5점)",
       "choices": [
@@ -235,6 +265,10 @@ window.examData = {
     },
     {
       "number": 17,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "h=−5(t−4)²+80이므로 발사 4초 뒤 최대 80 m이고 정답은 ②이다.",
+      "solutionImageAlt": "가로축은 시간이고 세로축은 높이이다. 주황 점이 파란 포물선의 가운데 꼭짓점이며 이때 물체가 가장 높다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q17-solution.svg",
       "score": 5.0,
       "question": "지면에서 초속 $40\\text{m}$로 곧바로 쏘아올린 물체의 $t$초 후의 높이를 $h\\text{m}$라고 하면, $t$와 $h$ 사이에는 $h=-5t^2+40t$인 관계가 성립한다. 이렇게 쏘아올린 물체는 최대 몇 $\\text{m}$까지 올라가는지 구하여라. (5점)",
       "choices": [
@@ -249,6 +283,10 @@ window.examData = {
     },
     {
       "number": 18,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "비교한 다섯 높이는 3, −1, 10, −1/4, 8이다. 가장 큰 최댓값을 가진 함수는 ③이다.",
+      "solutionImageAlt": "계수가 양수이면 아래쪽 꼭짓점의 높이, 음수이면 위쪽 꼭짓점의 높이가 해당한다. 다섯 주황 점은 같은 세로 눈금으로 비교한다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q18-solution.svg",
       "score": 5.0,
       "question": "다음 각각의 이차함수의 최댓값 또는 최솟값을 구하여 그 값이 가장 큰 이차함수를 구하여라. (5점)",
       "choices": [
@@ -271,22 +309,36 @@ window.examData = {
     },
     {
       "number": 20,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "(12+2x)(20+2x)−12×20=320이다. 양수 해는 4이므로 사진틀 폭은 4 cm이다.",
+      "solutionImageAlt": "파란 사진과 주황 액자 부분을 구분했다. 각 쪽의 폭 x를 더한 바깥 가로와 세로는 각각 12+2x와 20+2x이다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q20-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 6.0,
-      "question": "[서답형 2] 가로의 길이와 세로의 길이가 $12\\,\\text{cm}, 20\\,\\text{cm}$인 직사각형 모양의 사진이 있다. 폭이 일정하고 넓이가 $320\\,\\text{cm}^2$인 사진틀을 만들려면 사진틀의 폭은 몇 $\\text{cm}$로 해야하는지 구하여라. (총 6점)<br><br><img src=\"assets/images/19_이수중_1학기_기말_중3_수학/s02.png\" style=\"max-width: 180px; display: block; margin: 10px 0;\"><br><br>(1) 구하려고 하는 것은 무엇인가? (1점)<br><br>(2) 사진틀의 넓이에 관한 방정식을 만들어라. (2점)<br><br>(3) (2)에서 만든 방정식을 풀고, 사진틀의 폭을 구하여라. (3점)",
+      "question": "[서답형 2] 가로의 길이와 세로의 길이가 $12\\,\\text{cm}, 20\\,\\text{cm}$인 직사각형 모양의 사진이 있다. 폭이 일정하고 넓이가 $320\\,\\text{cm}^2$인 사진틀을 만들려면 사진틀의 폭은 몇 $\\text{cm}$로 해야하는지 구하여라. (총 6점)<br><br><img src=\"assets/images/19_이수중_1학기_기말_중3_수학/q20-problem-v3.svg\" alt=\"파란 직사각형 사진에서 가로변의 길이는 12 cm, 세로변은 20 cm이다. 주황 액자의 네 모서리 쪽 띠는 모두 폭이 같다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"><br><br>(1) 구하려고 하는 것은 무엇인가? (1점)<br><br>(2) 사진틀의 넓이에 관한 방정식을 만들어라. (2점)<br><br>(3) (2)에서 만든 방정식을 풀고, 사진틀의 폭을 구하여라. (3점)",
       "choices": [],
       "answer": "$4\\,\\text{cm}$",
       "solution": "(1) 사진틀의 폭을 $x\\,\\text{cm}$라 하자.\n(2) 사진틀의 바깥쪽 가로와 세로의 길이는 각각 $12+2x$, $20+2x$이다. 사진틀의 넓이는 바깥 직사각형에서 사진 넓이 $12\\cdot20$을 뺀 값이므로\n$(12+2x)(20+2x)-12\\cdot20=320$이다.\n(3) 식을 정리하면\n$4x^2+64x-320=0$\n$x^2+16x-80=0$\n$(x+20)(x-4)=0$이다.\n따라서 $x=-20$ 또는 $x=4$이다. 폭은 양수이므로 $x=4$이다.\n그러므로 사진틀의 폭은 $4\\,\\text{cm}$이다."
     },
     {
       "number": 21,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "위로 열려 a>0이다. 같은 x≠0에서 ax²<3x²이므로 a<3이다. 범위는 0<a<3이다.",
+      "solutionImageAlt": "두 포물선을 같은 높이의 보라 수평선이 가로지른다. 초록 바깥 두 점 사이가 파란 안쪽 두 점 사이보다 길다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q21-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "[서답형 3] 이차함수 $y=ax^2$의 그래프가 다음과 같을 때, $a$의 값의 범위를 구하고 그 이유를 설명하여라. (5점)<br><br><img src=\"assets/images/19_이수중_1학기_기말_중3_수학/s03.png\" style=\"max-width: 320px; display: block; margin: 10px 0;\">",
+      "question": "[서답형 3] 이차함수 $y=ax^2$의 그래프가 다음과 같을 때, $a$의 값의 범위를 구하고 그 이유를 설명하여라. (5점)<br><br><img src=\"assets/images/19_이수중_1학기_기말_중3_수학/q21-problem-v3.svg\" alt=\"두 포물선은 원점에서 위로 열린다. 파란 y=3x²가 좁고 초록 y=ax²가 넓다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [],
       "answer": "$0<a<3$",
       "solution": "그림에서 $y=3x^2$의 포물선은 더 좁고, $y=ax^2$의 포물선은 더 넓으며 두 그래프 모두 위로 열린다.\n따라서 $a>0$이다. 또 $x\\ne0$일 때 넓은 포물선의 높이가 더 낮으므로\n$ax^2<3x^2$이다.\n$x^2>0$이므로 양변을 $x^2$로 나누면 $a<3$이다.\n두 그래프가 서로 다른 포물선이고 $y=ax^2$도 위로 열리므로 끝값은 포함되지 않는다.\n따라서 $a$의 범위는 $0<a<3$이다."
     },
     {
       "number": 22,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "9k²−k+3=6k+5에서 k=−2/9 또는 1이다. 이 중 정수는 1이다.",
+      "solutionImageAlt": "각 k에서 파란 포물선은 주어진 꼭짓점 높이를, 주황 직선은 조건에서 필요한 높이를 나타낸다. 두 그래프의 교점에서 두 높이가 같다.",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q22-solution.svg",
       "score": 6.0,
       "question": "[서답형 4] 이차함수 $y=-x^2+6kx-k+3$의 그래프의 꼭짓점이 직선 $2x-y+5=0$ 위에 있을 때 정수 $k$의 값을 구하여라. (총 6점)<br><br>(1) 구하려고 하는 것은 무엇인가? (1점)<br><br>(2) 이차함수 $y=-x^2+6kx-k+3$의 그래프의 꼭짓점의 좌표를 구하여라. (2점)<br><br>(3) (2)에서 구한 꼭짓점의 좌표를 직선 $2x-y+5=0$에 대입하여 $k$의 값을 구하여라. (3점)",
       "choices": [],
