@@ -51,6 +51,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q01",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "대푯값과 산포도의 구별, 평균과분산의 독립성, 표준편차의 제곱근정의와 극단값에 대한 평균의 민감도를 진술별로 판정한다.",
+    "decisiveStep": "대푯값과 산포도의 구별, 평균과분산의 독립성, 표준편차의 제곱근정의와 극단값에 대한 평균의 민감도를 진술별로 판정한다."
   },
   {
     "id": 2,
@@ -101,6 +109,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q02",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "8개 자료를 정렬하고 네번째23과 다섯번째26의 평균24.5를 중앙값으로 구한다.",
+    "decisiveStep": "8개 자료를 정렬하고 네번째23과 다섯번째26의 평균24.5를 중앙값으로 구한다."
   },
   {
     "id": 3,
@@ -151,6 +167,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q03",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "0·1·2·3의 도수가 각각2로 모두 같음을 확인하고 현 원문이 채택한 같은도수에서는 최빈값없음 규칙을 적용한다.",
+    "decisiveStep": "0·1·2·3의 도수가 각각2로 모두 같음을 확인하고 현 원문이 채택한 같은도수에서는 최빈값없음 규칙을 적용한다."
   },
   {
     "id": 4,
@@ -194,14 +218,22 @@ window.questionBank = [
     "integrationPattern": null,
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceCurriculum": "2009",
     "sourceGrade": "M3",
     "sourceExamId": "19_이수중_2학기_중간_중3_수학",
     "uid": "19_이수중_2학기_중간_중3_수학:q04",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "편차합0으로 정호의 누락편차2를 구하고 평균179에 더해 실제키181을 복원한다.",
+    "decisiveStep": "편차합0으로 정호의 누락편차2를 구하고 평균179에 더해 실제키181을 복원한다."
   },
   {
     "id": 5,
@@ -244,7 +276,7 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -254,6 +286,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q05",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "세 대칭분포의 공통평균5를 확인하고 중심밀집도 또는 가중편차제곱으로 분산순서C<A<B를 판단하여 복수 진술을 고른다.",
+    "decisiveStep": "세 대칭분포의 공통평균5를 확인하고 중심밀집도 또는 가중편차제곱으로 분산순서C<A<B를 판단하여 복수 진술을 고른다."
   },
   {
     "id": 6,
@@ -306,6 +346,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q06",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "자료평균9를 구하고 편차 절댓값합8과 제곱합10을 구별해 분산·표준편차·편차합계 진술을 검증한다.",
+    "decisiveStep": "자료평균9를 구하고 편차 절댓값합8과 제곱합10을 구별해 분산·표준편차·편차합계 진술을 검증한다."
   },
   {
     "id": 7,
@@ -358,6 +406,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q07",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "표에 이미 계산된 가중편차제곱합2000과총도수16을 나누어 분산125를 얻고 양의 제곱근5√5로 표준편차를 구한다.",
+    "decisiveStep": "표에 이미 계산된 가중편차제곱합2000과총도수16을 나누어 분산125를 얻고 양의 제곱근5√5로 표준편차를 구한다."
   },
   {
     "id": 8,
@@ -409,6 +465,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q08",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "빗변7과 다른직각변√33의 제곱차로 x²16을 얻고 양의 길이4를 선택한다.",
+    "decisiveStep": "빗변7과 다른직각변√33의 제곱차로 x²16을 얻고 양의 길이4를 선택한다."
   },
   {
     "id": 9,
@@ -449,7 +513,7 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -459,6 +523,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q09",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "각 보기의 최대변제곱과 나머지두변 제곱합을 비교하여 직각삼각형인 두보기를 고른다.",
+    "decisiveStep": "각 보기의 최대변제곱과 나머지두변 제곱합을 비교하여 직각삼각형인 두보기를 고른다."
   },
   {
     "id": 10,
@@ -510,6 +582,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q10",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "직교대각선으로 생기는 네 직각삼각형의 피타고라스식을 합차하여 공통 제곱항을 소거하고 CD²=AD²+BC²-AB²를 얻는다.",
+    "decisiveStep": "직교대각선으로 생기는 네 직각삼각형의 피타고라스식을 합차하여 공통 제곱항을 소거하고 CD²=AD²+BC²-AB²를 얻는다."
   },
   {
     "id": 11,
@@ -561,6 +641,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q11",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "빗변수선으로 생기는 두 직각삼각형의 AA닮음에서 AC²=BC·CH로 빗변9를 구하고 피타고라스로 AB를 구한다.",
+    "decisiveStep": "빗변수선으로 생기는 두 직각삼각형의 AA닮음에서 AC²=BC·CH로 빗변9를 구하고 피타고라스로 AB를 구한다."
   },
   {
     "id": 12,
@@ -603,7 +691,7 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -613,6 +701,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q12",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "정삼각형 높이가 밑변을 이등분함을 사용해 (a/2)²를 피타고라스식에 넣고 양의제곱근으로 높이를 구하여 제시된넓이 유도의 빈칸을 완성한다.",
+    "decisiveStep": "정삼각형 높이가 밑변을 이등분함을 사용해 (a/2)²를 피타고라스식에 넣고 양의제곱근으로 높이를 구하여 제시된넓이 유도의 빈칸을 완성한다."
   },
   {
     "id": 13,
@@ -664,6 +760,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q13",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "두 점의 좌표차3·4를 직각변으로 읽고 피타고라스로 거리5를 구한다.",
+    "decisiveStep": "두 점의 좌표차3·4를 직각변으로 읽고 피타고라스로 거리5를 구한다."
   },
   {
     "id": 14,
@@ -705,7 +809,7 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -715,6 +819,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q14",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "30도 맞은편변이 빗변의 절반인 특수각 길이비로 y=5를 얻고 나머지직각변x=5√3을 구해 합한다.",
+    "decisiveStep": "30도 맞은편변이 빗변의 절반인 특수각 길이비로 y=5를 얻고 나머지직각변x=5√3을 구해 합한다."
   },
   {
     "id": 15,
@@ -767,6 +879,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q15",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "B마을을 도로 반대편으로 반사해 두구간의합을 AB′직선으로 환원하고 수평8·수직거리합6에 피타고라스를 적용한다.",
+    "decisiveStep": "B마을을 도로 반대편으로 반사해 두구간의합을 AB′직선으로 환원하고 수평8·수직거리합6에 피타고라스를 적용한다."
   },
   {
     "id": 16,
@@ -818,6 +938,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q16",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "모눈 외곽4×4정사각형에서 목표삼각형 바깥의 세 직각삼각형 넓이6·4·1을 빼5를 구한다.",
+    "decisiveStep": "모눈 외곽4×4정사각형에서 목표삼각형 바깥의 세 직각삼각형 넓이6·4·1을 빼5를 구한다."
   },
   {
     "id": 17,
@@ -869,6 +997,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q17",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "피타고라스의 변제곱관계를 반원넓이합으로 옮기고 두 공통활꼴을 제거해 두 루네의 넓이합이 직각삼각형넓이30임을 도출한다.",
+    "decisiveStep": "피타고라스의 변제곱관계를 반원넓이합으로 옮기고 두 공통활꼴을 제거해 두 루네의 넓이합이 직각삼각형넓이30임을 도출한다."
   },
   {
     "id": 18,
@@ -911,14 +1047,22 @@ window.questionBank = [
     "integrationPattern": null,
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceCurriculum": "2009",
     "sourceGrade": "M3",
     "sourceExamId": "19_이수중_2학기_중간_중3_수학",
     "uid": "19_이수중_2학기_중간_중3_수학:q18",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "직육면체 안의 최장선분을 공간대각선으로 해석하고 세 모서리 제곱합150의 제곱근으로 빨대의 한계길이를 구한다.",
+    "decisiveStep": "직육면체 안의 최장선분을 공간대각선으로 해석하고 세 모서리 제곱합150의 제곱근으로 빨대의 한계길이를 구한다."
   },
   {
     "id": 19,
@@ -970,6 +1114,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q19",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "밑면 반대각선2√2와 옆모서리6으로 피타고라스 높이2√7을 구한 뒤 사각뿔 부피공식에 밑넓이16과 높이를 넣는다.",
+    "decisiveStep": "밑면 반대각선2√2와 옆모서리6으로 피타고라스 높이2√7을 구한 뒤 사각뿔 부피공식에 밑넓이16과 높이를 넣는다."
   },
   {
     "id": 20,
@@ -1005,16 +1157,24 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceCurriculum": "2009",
     "sourceGrade": "M3",
     "sourceExamId": "19_이수중_2학기_중간_중3_수학",
     "uid": "19_이수중_2학기_중간_중3_수학:q20",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "최다판매치수에 대응하는 주문계획이라는 목적에서 최빈값을 선택하고 치수별도수로245mm가5켤레임을 확인해 이유와 주문치수를 제시한다.",
+    "decisiveStep": "최다판매치수에 대응하는 주문계획이라는 목적에서 최빈값을 선택하고 치수별도수로245mm가5켤레임을 확인해 이유와 주문치수를 제시한다."
   },
   {
     "id": 21,
@@ -1051,7 +1211,7 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -1061,6 +1221,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q21",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "각 계급값을 대표로 두고 두집단의 가중평균32와 가중분산161·81을 계산하여 더흩어진A를 판정한다.",
+    "decisiveStep": "각 계급값을 대표로 두고 두집단의 가중평균32와 가중분산161·81을 계산하여 더흩어진A를 판정한다."
   },
   {
     "id": 22,
@@ -1106,6 +1274,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q22",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "각 직각삼각형에서 정사각형넓이 관계P=Q+R,Q=S+T,R=U+V를 세워 원하는합을 P-S로 환원한다.",
+    "decisiveStep": "각 직각삼각형에서 정사각형넓이 관계P=Q+R,Q=S+T,R=U+V를 세워 원하는합을 P-S로 환원한다."
   },
   {
     "id": 23,
@@ -1152,5 +1328,13 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q23",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "전개도 부채꼴호를 밑면원주와 같게 두어 반지름6을 구하고 모선9와 피타고라스로 높이를 얻어 원뿔 부피를 계산한다.",
+    "decisiveStep": "전개도 부채꼴호를 밑면원주와 같게 두어 반지름6을 구하고 모선9와 피타고라스로 높이를 얻어 원뿔 부피를 계산한다."
   }
 ];

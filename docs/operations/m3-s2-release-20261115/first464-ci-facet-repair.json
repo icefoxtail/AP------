@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "archive-m3s2-ci-meta-facets-repair-v1",
+  "remoteJobId": 132678020891,
+  "remoteHead": "d9e46aba503eb195bd2dc611bee70ac8804dd67a",
+  "failedTest": "tests/archive2-meta-facets.test.js",
+  "rootCause": "The test equated strict basic DEFAULT_SCOPE selection with independently approved advanced canonical assignment. Reviewed CORE rows violate that implication without violating approval.",
+  "productionCodeChanged": false,
+  "sourceOrApprovalGateWeakened": false,
+  "baselineFailureReproduced": true,
+  "repairedTestsPassed": 18,
+  "repairedTestsFailed": 0,
+  "negativeCases": [
+    "source release HOLD",
+    "source integrity HOLD",
+    "unverified identity",
+    "changed assignment fingerprint",
+    "pending approval",
+    "failed review evidence",
+    "different approved UID"
+  ],
+  "logSha256": "2d3cbadb11559303120dfb2369054695212064cf6fb04bf0a78496f28c154ef1",
+  "baselineFailureLogSha256": "59a6879d4d93e003ef6cdee66e313d7420b35b09fe969ca50206285016fd02fa"
+}

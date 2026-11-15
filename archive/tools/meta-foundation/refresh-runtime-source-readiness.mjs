@@ -280,6 +280,17 @@ if (middleGeometryJoins) {
     middleGeometryJoins.directUidJoinCount + middleGeometryJoins.sourceIdentityRepairJoinCount;
   receipt.checked.middleGeometryCatalogJoinMismatch = middleGeometryJoins.joinMismatchCount;
 }
+// Reviewed registrations can add LIMIT_CONTINUITY rows without rebuilding its
+// historical bridge statistics. Publish the already verified current joins;
+// retain historical source-readiness/difficulty counts and approval rows.
+const limitContinuityJoins = runtimeJoinByPack.get("LIMIT_CONTINUITY");
+if (limitContinuityJoins) {
+  receipt.checked.limitContinuityExistingCatalogUidJoin = limitContinuityJoins.directUidJoinCount;
+  receipt.checked.limitContinuitySourceIdentityRepairJoin = limitContinuityJoins.sourceIdentityRepairJoinCount;
+  receipt.checked.limitContinuityCatalogJoin =
+    limitContinuityJoins.directUidJoinCount + limitContinuityJoins.sourceIdentityRepairJoinCount;
+  receipt.checked.limitContinuityCatalogJoinMismatch = limitContinuityJoins.joinMismatchCount;
+}
 for (const pack of packs) {
   const report = packReports[pack.id];
   receipt.checked[`${pack.receiptPrefix}RuntimeRecords`] = report.runtimeRecords;
