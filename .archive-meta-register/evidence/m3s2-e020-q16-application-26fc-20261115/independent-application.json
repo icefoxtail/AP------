@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "archive-independent-definition-application-review-v1",
+  "reviewer": "/root/m1_release",
+  "frozenAt": "2026-11-15T10:07:26.885672+00:00",
+  "status": "FROZEN_INDEPENDENT_SUPPORTED_CONDITIONAL_ON_INSTALLATION_AND_BINDING",
+  "questionUid": "qid_v1_cf508756ee75298ff7a497d8fab531106eca4845540fce0b75cfb04534ecf7ea",
+  "sourceOrdinal": 16,
+  "inputManifest": {
+    "path": "/workspace/scratch/26fc42390a50/m3s2-e020-q16-blind/manifest.json",
+    "sha256": "9634e227d8e3807a8e4284417dc9fbd0af4e96200c0a0ec5d75569a22aa896d5"
+  },
+  "decision": {
+    "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+    "applicability": "SUPPORTED_BY_DECISIVE_STEP_OF_EXISTING_SOLUTION",
+    "definitionChangeNeeded": false,
+    "unsupportedDefinitionClauses": [],
+    "contentApplicabilityBlockers": [],
+    "operationalStatus": "CONDITIONAL_NOT_REGISTERED",
+    "fullSemanticApprovalGranted": false,
+    "registrationApprovalGranted": false
+  },
+  "definition": {
+    "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+    "canonicalLabelKo": "다각형의 내각의 합",
+    "definition": "주분류 풀이를 보조하여 단순 다각형의 내각의 합 (n−2)×180°에서 알려진 각을 빼 필요한 각을 구하는 개념.",
+    "ownerConceptShard": "PLANE_GEOMETRY",
+    "aliases": [
+      "사각형 내각의 합"
+    ],
+    "inputFileRawSha256": "1ebda0463a998458e0eb29ef2f13bf1638541754c41eb3013097bc5fef4bce63",
+    "recordStableSha256": "d0793e5d1f53923e049a0bdeab5e0fc9497d7c01062b5910412df61a38415e86",
+    "immutableReference": {
+      "commit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+      "path": ".archive-meta-register/evidence/m3s2-proposal-finalization-20261115/six-auxiliary-independent-finalization.json",
+      "sha256": "021a00e67d849cf47b80463f1f04a6e5bf65d6c9f2718192a63a91bd81e29952",
+      "locator": "applications[2].decisions[0].definition",
+      "recordStableSha256": "d0793e5d1f53923e049a0bdeab5e0fc9497d7c01062b5910412df61a38415e86"
+    },
+    "recordStatusField": "ACTIVE",
+    "recordStatusIsNotProofOfCurrentCanonicalInstallation": true,
+    "existingSupportingItemCount": 4,
+    "targetUidAlreadyInSupportingList": false
+  },
+  "studentSource": {
+    "inputFile": "/workspace/scratch/26fc42390a50/m3s2-e020-q16-blind/question.json",
+    "rawSha256": "a6f45f7d82cc34220a3ab32009551bfd6171c8b85d13a026cb7151fe20e70663",
+    "stableSha256": "b76062fb74ad3932a365dc29988944a2b0c39d8f17127e41f009883c5f68a9fe",
+    "currentSourceProvenance": {
+      "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+      "path": "archive/exams/original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+      "gitBlobSha1": "316547973f510a5bc189b661bd2d928b4f4018cb",
+      "sha256": "ecf0919508c62ef5c07a2a4a00bdf39f8ca2328f4889fe59bee7870b268178b4",
+      "questionStudentObjectStableSha256": "b76062fb74ad3932a365dc29988944a2b0c39d8f17127e41f009883c5f68a9fe"
+    },
+    "originalReviewedSourceProvenance": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "archive/exams/original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+      "gitBlobSha1": "639cbc149ae80e9ab9c6f08141b72ec4560f08d8",
+      "sha256": "df3746cf1cd1b9dd98a6d99f346b6a45250088243309bc4b810074fa5fe7012a",
+      "questionStudentObjectStableSha256": "b76062fb74ad3932a365dc29988944a2b0c39d8f17127e41f009883c5f68a9fe"
+    },
+    "originalReviewReference": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E020.meta.json",
+      "sha256": "9b338ff94652802127ce9c78d048275bafea963640422e0f6b0869830890430d"
+    },
+    "providedCurrentAndOriginalStudentHashIdentical": true,
+    "fullSourceFilesReRead": false
+  },
+  "definitionApplicationEvidence": [
+    {
+      "definitionClause": "주분류 풀이를 보조하는 각도 결정",
+      "support": "EXPLICIT_STEP_ROLE",
+      "explanation": "접선과 반지름의 수직 관계로 두 직각을 확보한 뒤, 사각형 내각 합을 사용해 부채꼴 계산에 필요한 중심각을 구한다. 문항에 다각형이 단순히 등장하는 경우가 아니라 실제 해설의 중간 결정 단계다. 원/접선 문제의 기존 주분류 자체는 이 검토에서 판정하거나 변경하지 않는다.",
+      "sourceEvidence": [
+        {
+          "field": "solution",
+          "quote": "접점에서 반지름은 접선에 수직이므로",
+          "exactSubstringVerified": true,
+          "studentObjectRawSha256": "a6f45f7d82cc34220a3ab32009551bfd6171c8b85d13a026cb7151fe20e70663",
+          "studentObjectStableSha256": "b76062fb74ad3932a365dc29988944a2b0c39d8f17127e41f009883c5f68a9fe"
+        },
+        {
+          "field": "solution",
+          "quote": "따라서 사각형 $OAPB$의 내각의 합을 이용하면",
+          "exactSubstringVerified": true,
+          "studentObjectRawSha256": "a6f45f7d82cc34220a3ab32009551bfd6171c8b85d13a026cb7151fe20e70663",
+          "studentObjectStableSha256": "b76062fb74ad3932a365dc29988944a2b0c39d8f17127e41f009883c5f68a9fe"
+        }
+      ]
+    },
+    {
+      "definitionClause": "단순 다각형의 내각 합 (n−2)×180°",
+      "support": "EXPLICIT_QUADRILATERAL_INSTANCE",
+      "explanation": "풀이가 사각형 OAPB를 명시하고 내각 네 개의 합을 360°로 둔다. 이는 n=4인 정의의 직접적인 특수 경우다. 제공된 그림에서 O-A-P-B의 연결은 그 사각형을 가리키며, 이 해석은 이미 승인된 원본/렌더러 검토를 재사용한다.",
+      "sourceEvidence": [
+        {
+          "field": "solution",
+          "quote": "따라서 사각형 $OAPB$의 내각의 합을 이용하면",
+          "exactSubstringVerified": true,
+          "studentObjectRawSha256": "a6f45f7d82cc34220a3ab32009551bfd6171c8b85d13a026cb7151fe20e70663",
+          "studentObjectStableSha256": "b76062fb74ad3932a365dc29988944a2b0c39d8f17127e41f009883c5f68a9fe"
+        },
+        {
+          "field": "solution",
+          "quote": "$\\angle AOB+90^\\circ+40^\\circ+90^\\circ=360^\\circ$",
+          "exactSubstringVerified": true,
+          "studentObjectRawSha256": "a6f45f7d82cc34220a3ab32009551bfd6171c8b85d13a026cb7151fe20e70663",
+          "studentObjectStableSha256": "b76062fb74ad3932a365dc29988944a2b0c39d8f17127e41f009883c5f68a9fe"
+        }
+      ]
+    },
+    {
+      "definitionClause": "알려진 각을 빼 필요한 각을 구함",
+      "support": "EXPLICIT_DECISIVE_OPERATION",
+      "explanation": "알려진 두 직각과 접선 사이의 각을 내각 합에서 제외하여 중심각을 얻는 조작이 현재 해설에 연속해서 쓰인다. 이 단계는 뒤의 큰 부채꼴 중심각과 넓이 계산에 필요한 입력을 만든다.",
+      "sourceEvidence": [
+        {
+          "field": "solution",
+          "quote": "$\\angle AOB+90^\\circ+40^\\circ+90^\\circ=360^\\circ$",
+          "exactSubstringVerified": true,
+          "studentObjectRawSha256": "a6f45f7d82cc34220a3ab32009551bfd6171c8b85d13a026cb7151fe20e70663",
+          "studentObjectStableSha256": "b76062fb74ad3932a365dc29988944a2b0c39d8f17127e41f009883c5f68a9fe"
+        },
+        {
+          "field": "solution",
+          "quote": "$\\angle AOB=140^\\circ$이다.",
+          "exactSubstringVerified": true,
+          "studentObjectRawSha256": "a6f45f7d82cc34220a3ab32009551bfd6171c8b85d13a026cb7151fe20e70663",
+          "studentObjectStableSha256": "b76062fb74ad3932a365dc29988944a2b0c39d8f17127e41f009883c5f68a9fe"
+        }
+      ]
+    }
+  ],
+  "scopeDistinction": {
+    "appliesTo": "사각형 OAPB의 네 내각 합으로 중심각을 결정하는 단계",
+    "doesNotSeparatelyEstablish": "이후 360°에서 작은 중심각을 빼는 회전 전체각 계산이나 부채꼴 넓이 공식 자체를 이 CC의 독립 적용 근거로 삼지 않는다.",
+    "auxiliaryRole": "원과 접선의 기존 풀이에서 필요한 각도를 얻는 보조 개념이며, 주분류·난도·전체 의미 메타를 새로 판정하지 않는다."
+  },
+  "assetHandling": {
+    "refs": [
+      {
+        "file": "assets/q16.png",
+        "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+        "path": "archive/assets/images/24_연향중_2학기_중간_중3_수학/q16.png",
+        "gitBlobSha1": "a0724dc1878093246457bfe12330694199e3ab2f",
+        "sha256": "8d56279ca2521d71f2130bf23dd6de70311f92f1c75cd977deb99f370070d694"
+      },
+      {
+        "file": "assets/q16-solution.svg",
+        "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+        "path": "archive/assets/images/24_연향중_2학기_중간_중3_수학/q16-solution.svg",
+        "gitBlobSha1": "61c6e451ea48bd5392db619ca205095a38f029cf",
+        "sha256": "bfedeffa658f233bfcb983114548e51e627d689d0a2f5887e29aede2352b0473"
+      }
+    ],
+    "allSuppliedAssetRawHashesVerified": true,
+    "q16PngOpenedForNarrowStepIdentification": true,
+    "q16SolutionSvgSourceReadForLabelsOnly": true,
+    "q16SolutionSvgFreshRenderPerformed": false,
+    "existingUnchangedRendererReviewReusedAsDirected": true,
+    "newFullRendererOrMathematicalQa": false,
+    "originalAssetBytesFetchedAgain": false
+  },
+  "conditionsBeforeAnyOperationalApplication": [
+    "External canonical owner installs the same approved CC_POLYGON_INTERIOR_ANGLE_SUM definition with the immutable definition reference and matching definition content. An ACTIVE string in the frozen definition record does not demonstrate an installed ACTIVE canonical row.",
+    "The official registrar verifies the current source tuple, target UID, source/student fingerprints, exact installed key and existing parent/curriculum/taxonomy binding. This blind packet excludes semantic tags and cannot establish those binding checks.",
+    "The target UID is not in the frozen definition record's four supporting UIDs. Preserve that historical support record; register any additional application/provenance only through the authorized official path.",
+    "Read back the actual request/receipt, target Consumer and deployed snapshot. This review creates neither a registry row nor a registration receipt."
+  ],
+  "blindness": {
+    "onlyAllowedInputDirectoryReadForThisTask": true,
+    "readE020ApplicationDraftsBeforeFreeze": false,
+    "readOtherUidVerdictsBeforeFreeze": false,
+    "readProducerApplicationRationale": false,
+    "otherUidReferencesInsideDefinition": "Opaque provenance records were present in the exact allowed definition file; their linked source/review/proposal files were not opened or used as application evidence."
+  },
+  "limitations": [
+    "Only the supplied question object, definition record and two asset files were independently byte-hashed. Full source-file/immutable-definition-document hashes are retained from the frozen manifest rather than fetched anew.",
+    "Question continuity uses the provided matching original/current student-object hash and the existing review reference. This task does not repeat full mathematical, source, renderer, difficulty or semantic QA.",
+    "Current absence of an installed ACTIVE CC is a prerequisite stated by root/the input, not a fresh main-registry query performed in this blind review."
+  ],
+  "counts": {
+    "questionApplicabilityReviews": 1,
+    "supportedConditionalApplications": 1,
+    "newFullMathematicalReviews": 0,
+    "newSourceQa": 0,
+    "newDifficultyApprovals": 0,
+    "newFullSemanticApprovals": 0,
+    "sourceWrites": 0,
+    "registryWrites": 0,
+    "remoteWrites": 0
+  },
+  "nextAction": "Send this frozen independent SHA to root before opening any application draft. Root compares separately, coordinates exact definition installation with its owner, and performs the official registration/binding/Consumer checks. M1 actual receipt verification remains pending root's writer SHA."
+}
