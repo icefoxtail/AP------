@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "root-current-main-integration-v1",
+  "status": "IN_PROGRESS",
+  "actualRegisteredMain": "125431da16e154d75182185c787ec1f05e89e90b",
+  "otherReleaseWriterRun": 43755738927,
+  "otherReleaseRequestsConsumed": 5,
+  "otherReleaseInputEntries": 15,
+  "otherReleaseUniqueUids": 14,
+  "current166UidOverlap": 0,
+  "our166MetadataIdentityRuntimeUnchanged": true,
+  "our25SourceBlobsUnchanged": true,
+  "original6IssuedReceiptsUnchanged": true,
+  "ourProductionApplied": false,
+  "localHead": "f7453c3856bd999ac056e54368938431a7a80400",
+  "remoteBackup": "533c9e3df218ae2429a62972e17c6da68624d31b",
+  "tree": "933318499d222b43d1a76c9742a8515495d0fe6c",
+  "exactRunScope": {
+    "active": true,
+    "boundInboxCount": 29,
+    "digest": "ae538a00a64424c83470acd1a6f79d0f53fb7d7a3d6b2e412bbf9e98423a8240"
+  },
+  "mergeResolution": "Both independent imports retained; newer main lineage logic, test cases and bounded child timeouts retained. Test job120min and plan5min remain explicit.",
+  "initialCombinedRegression": {
+    "tests": 499,
+    "pass": 478,
+    "fail": 21,
+    "skip": 0,
+    "status": "FAIL_FIXTURE_COMPOSITION_UNDER_REPAIR"
+  },
+  "proofArtifactPreservation": {
+    "path": "runner.temp/archive-pr-registration-proof/proof.json",
+    "noGateRemoved": true,
+    "yamlCheck": "PASS",
+    "ciHygieneTests": {
+      "pass": 19,
+      "fail": 0,
+      "skip": 0
+    }
+  },
+  "localShadowAttempts": "Interrupted attempts are not PASS; stale4de shadow stopped when actual main code advanced.",
+  "finalValidationRoute": "New exact-head CI must complete producePrRegistrationProof and validateLocalRegistrationProof. The latter always calls validateNativePreview, which rederives the full immutable native plan, checks authority output bytes and reruns complete projection/Consumer. Persist the resulting proof artifact.",
+  "nextSteps": [
+    "Finish existing pack-lineage fixture composition without changing production validators",
+    "Publish fixed final head and require fresh exact-head CI",
+    "Observe actual29 writer and M3S1 row/debt guard",
+    "Build phase2 new3 plus preserve23 from actual recovery receipts",
+    "Verify final registered snapshot and live release"
+  ]
+}
