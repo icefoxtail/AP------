@@ -247,7 +247,7 @@ window.questionBank = [
       "$49$"
     ],
     "answer": "⑤",
-    "solution": "구하는 분수를 $x$라 하자.\n\n$x\\times\\dfrac{26}{9}$,\n$x\\times\\dfrac{13}{12}$\n\n가 모두 자연수가 되어야 한다.\n\n가장 작은 값은\n\n$x=\\dfrac{36}{13}$\n\n왜냐하면\n\n$\\dfrac{36}{13}\\times\\dfrac{26}{9}=8$\n\n$\\dfrac{36}{13}\\times\\dfrac{13}{12}=3$\n\n이기 때문이다.\n\n따라서\n\n$a=36,\\quad b=13$\n\n$a+b=49$\n\n정답은 ⑤이다.",
+    "solution": "구하는 분수를 $x$라 하자.\n\n$x\\times\\dfrac{26}{9}$,\n$x\\times\\dfrac{13}{12}$\n\n가 모두 자연수가 되어야 한다.\n\n두 번째 곱의 값을 자연수 $n$이라 하면\n\n$x\\times\\dfrac{13}{12}=n$\n\n$x=\\dfrac{12n}{13}$\n\n$x\\times\\dfrac{26}{9}=\\dfrac{8n}{3}$\n\n$8$과 $3$은 서로소이므로 $n$은 $3$의 배수이다.\n\n따라서 가장 작은 $n$은 $3$이다.\n\n가장 작은 값은\n\n$x=\\dfrac{36}{13}$\n\n실제로\n\n$\\dfrac{36}{13}\\times\\dfrac{26}{9}=8$\n\n$\\dfrac{36}{13}\\times\\dfrac{13}{12}=3$\n\n으로 두 조건을 모두 만족한다.\n\n또한 $36$과 $13$은 서로소이므로 $\\dfrac{36}{13}$은 기약분수이다.\n\n따라서\n\n$a=36,\\quad b=13$\n\n$a+b=49$\n\n정답은 ⑤이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "candidate_evidence",
