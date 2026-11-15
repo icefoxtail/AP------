@@ -328,6 +328,8 @@ window.questionBank = [  {
     "questionNumber": 21,
     "questionType": "서술형",
     "content": "삼각형 $ABC$에서 $a=7$, $b=9$, $c=6$일 때, 다음 물음에 답하라. [7점] (부분점수 있음.)\n\n1) $\\cos B$의 값을 구하여라. [3점]\n\n2) 삼각형 $ABC$의 넓이를 구하여라. [4점]",
+    "image": "assets/images/20_매산여고_1학기_기말_고2_수학I/q21-problem.svg",
+    "imageAlt": "삼각형 ABC에서 AB=6, BC=7, CA=9를 나타낸다.",
     "choices": [],
     "images": [],
     "answer": "1) $\\cos B=\\frac1{21}$, 2) $2\\sqrt{110}$",
