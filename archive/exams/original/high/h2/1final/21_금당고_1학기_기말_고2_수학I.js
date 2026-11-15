@@ -284,7 +284,11 @@ var examData = window.examData = {
       "solution": "$AP=PQ$이고 $OA=OP=OQ$이므로 점 $O$와 점 $P$는 선분 $AQ$의 수직이등분선 위에 있다.\n따라서 $OP$는 이등변삼각형 $APQ$의 꼭짓각 $\\angle APQ=\\theta$를 이등분하여\n$\\angle APO=\\dfrac\\theta2$이다.\n삼각형 $AOP$에서 $OA=OP$이므로 밑각도 같아\n$\\angle OAP=\\dfrac\\theta2$이다.\n삼각형의 내각의 합으로부터\n$\\angle AOP=\\pi-\\dfrac\\theta2-\\dfrac\\theta2=\\pi-\\theta$이다.\n그러므로\n$f(\\theta)=\\pi-\\theta$이다.\n코사인법칙을 삼각형 $AOP$에 적용하면\n$PA^2=OA^2+OP^2-2\\cdot OA\\cdot OP\\cos(\\pi-\\theta)$\n$=1^2+1^2-2\\cos(\\pi-\\theta)$\n$=2+2\\cos\\theta$이다.\n따라서 $g(\\theta)=2+2\\cos\\theta$이고,\n$f\\left(\\dfrac\\pi3\\right)=\\dfrac{2\\pi}{3}$,\n$g\\left(\\dfrac\\pi3\\right)=2+2\\cdot\\dfrac12=3$이다.\n따라서\n$f\\left(\\dfrac\\pi3\\right)g\\left(\\dfrac\\pi3\\right)=\\dfrac{2\\pi}{3}\\cdot3=2\\pi$이다.\n따라서 정답은 ⑤이다.",
       "images": [
         "assets/images/21_금당고_1학기_기말_고2_수학I/q17.png"
-      ]
+      ],
+      "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 예: 단위원 위 A, P, Q와 중심 O를 표시했다. AP=PQ이고 OP가 P의 60° 각을 두 같은 반각으로 나누며 중심각 AOP=120°다.",
+      "solutionImageCaption": "예: θ=60°일 때 OP가 ∠APQ를 이등분하고 ∠AOP=120°이다. 일반적으로 원주각 관계에서 f(θ)=π−θ이고, 코사인법칙에서 g(θ)=2+2cos θ이다. 정답은 ⑤, 2π이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
