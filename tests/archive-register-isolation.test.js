@@ -484,8 +484,15 @@ function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
   put('archive/build_db.py', `const fs = require('node:fs'); const n = Number(fs.existsSync('build.count') ? fs.readFileSync('build.count', 'utf8') : 0) + 1; fs.writeFileSync('build.count', String(n));
 ${buildFailOnce ? "if (n === 1) { console.error('first build does not converge'); process.exit(1); }" : ''}
 `);
-  for (const rel of ['archive/tools/verify-archive-registration.mjs', 'archive/tools/build-archive2-catalog.mjs', 'archive/tools/meta-foundation/compile-meta-foundation.mjs'])
+  for (const rel of ['archive/tools/verify-archive-registration.mjs', 'archive/tools/build-archive2-catalog.mjs'])
     put(rel, '');
+  // Preserve the real compiler's import interface for typed preview contracts.
+  // The heavy CLI is intentionally empty here; this orchestration fixture must
+  // never invent registry authority by calling a stubbed compiler API.
+  put('archive/tools/meta-foundation/compile-meta-foundation.mjs', `
+export function loadCanonical() { throw Error('ISOLATION_FIXTURE_UNEXPECTED_COMPILER_API_CALL'); }
+export const buildCompiled = loadCanonical, compiledOutputs = loadCanonical, buildRegistryIndex = loadCanonical;
+`);
   put('archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs', `import fs from 'node:fs'; import path from 'node:path';
 const args = process.argv.slice(2); const req = args[args.indexOf('--request') + 1]; const body = JSON.parse(fs.readFileSync(req, 'utf8'));
 const name = path.basename(req, '.json');

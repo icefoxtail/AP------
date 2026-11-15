@@ -6,7 +6,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, producePrRegistrationProof,
-  validateLocalRegistrationProof, prRegistrationProofNeeded,
+  validateLocalRegistrationProof, prRegistrationProofNeeded, registrationProofFingerprints,
 } from '../tools/ci/archive-pr-registration-proof.mjs';
 
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -24,6 +24,9 @@ test('proof production follows registration inputs and direct checkers, not unre
     'docs/rules/01_CANONICAL/taxonomy/units.json', 'tools/lib/canonical.mjs', '.gitignore',
     'tools/ci/archive-pr-registration-proof.mjs', 'tests/archive-pr-registration-proof.test.mjs',
     '.archive-meta-register/inbox/reviewed-exam.json', 'tools/ci/archive-pr-native-preview.mjs',
+    '.archive-meta-register/auto/run-scopes/a-phase1.json',
+    'archive/tools/meta-foundation/semantic-run-scope.mjs',
+    'tests/archive-semantic-run-scope.test.mjs',
     'tests/archive-pr-native-preview.test.mjs',
     CI_WORKFLOW_PATH, ...REGISTRATION_CHECKS.map(check => check.file)]) {
     assert.equal(prRegistrationProofNeeded([file]), true, file);
@@ -32,6 +35,20 @@ test('proof production follows registration inputs and direct checkers, not unre
     ['archive\\exams\\new.js'], ['/archive/exams/new.js'], ['apmath/playground/app.js\n']]) {
     assert.equal(prRegistrationProofNeeded(files), true, JSON.stringify(files));
   }
+});
+
+test('scope descriptor bytes and the shared helper belong to the immutable proof fingerprints', t => {
+  const f=fixture(t),before=registrationProofFingerprints(f.root);
+  const scope='.archive-meta-register/auto/run-scopes/fixture-phase1.json';
+  f.write(scope,'{"fixture":"input fingerprint"}\n');f.git('add','--',scope);f.git('commit','-qm','scope input');
+  const afterScope=registrationProofFingerprints(f.root);
+  assert.notEqual(afterScope.inputDigest,before.inputDigest);
+  assert.equal(afterScope.checkerDigest,before.checkerDigest);
+  const helper='archive/tools/meta-foundation/semantic-run-scope.mjs';
+  f.write(helper,'// immutable scope checker\n');f.git('add','--',helper);f.git('commit','-qm','scope checker');
+  const afterHelper=registrationProofFingerprints(f.root);
+  assert.notEqual(afterHelper.checkerDigest,afterScope.checkerDigest);
+  assert.equal(afterHelper.inputDigest,afterScope.inputDigest);
 });
 
 function fixture(t, changedFile = 'archive/exams/original/new.js') {

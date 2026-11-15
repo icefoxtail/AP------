@@ -17,6 +17,7 @@ import { nativeOriginalFinalQaRendererRebind,hasOriginalFinalQaRendererClaim } f
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 import { nativeAuditCcAppend, hasExplicitAuditCcAppendClaim, hasAuditCcAppendClaim } from './audited-cross-concept-append.mjs';
+import {resolveSemanticRunScope,semanticRunScopeProof,assertSemanticRunScopeProof,excludesSemanticSource} from './semantic-run-scope.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -428,7 +429,16 @@ export function selectTargets(root, state, config, head) {
   return [...selected.entries()].sort(([a],[b])=>a.localeCompare(b,'en'));
 }
 
-function replayBatch(root, file, {config,state,head}) {
+const deferredScopeTargets=(state,scope)=>Object.entries(state.pending||{})
+  .filter(([,target])=>excludesSemanticSource(scope,target.sourceArchiveFile))
+  .sort(([a],[b])=>a.localeCompare(b,'en'))
+  .map(([key,target])=>({key,sourceArchiveFile:target.sourceArchiveFile,sourceOrdinal:target.sourceOrdinal,pendingSha256:hash(target)}));
+function assertNoExcludedAttempts(report,scope){
+  if((report.results||[]).some(row=>excludesSemanticSource(scope,row.sourceArchiveFile))
+    ||(report.targets||[]).some(([,target])=>excludesSemanticSource(scope,target.sourceArchiveFile)))
+    throw Error('AUTO_META_SCOPE_EXCLUDED_ATTEMPT');
+}
+function replayBatch(root, file, {config,state,head,runScope}) {
   const original=JSON.parse(fs.readFileSync(file,'utf8')),binding=original.replayBatch;
   if(original.schemaVersion!==VERSION||original.write!==true||original.head!==head
     ||binding?.schemaVersion!==REPLAY_VERSION||!Array.isArray(binding.targets)
@@ -439,6 +449,11 @@ function replayBatch(root, file, {config,state,head}) {
   if(digest!==hash(sealed)||binding.head!==head||binding.configSha256!==hash(config)
     ||stateAfterSha256!==hash(state)||(binding.targets.length&&state.lastBatchSha256!==digest))
     throw Error('AUTO_META_REPLAY_BINDING_DRIFT');
+  assertSemanticRunScopeProof(original.runScope,runScope);
+  assertSemanticRunScopeProof(binding.runScope,runScope);
+  assertNoExcludedAttempts(original,runScope);assertNoExcludedAttempts(binding,runScope);
+  if(runScope.active&&(!equal(binding.deferredTargets,deferredScopeTargets(state,runScope))
+    ||!equal(original.deferredTargets,binding.deferredTargets)))throw Error('AUTO_META_SCOPE_DEFERRED_BINDING_DRIFT');
   const seen=new Set();
   for(let i=0;i<binding.targets.length;i++) {
     const [key,target]=binding.targets[i],result=binding.results[i];
@@ -469,14 +484,19 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   const config=read(root,CONFIG); if(config?.enabled!==true){const r={status:'DISABLED',processed:0,results:[]};if(reportPath)fs.writeFileSync(reportPath,json(r));return r;}
   const head=git(root,'rev-parse','HEAD').trim();
   if(doWrite&&process.env.GITHUB_ACTIONS==='true'&&process.env.GITHUB_REF!=='refs/heads/main')throw Error('MAIN_ONLY_WRITER');
+  const runScope=resolveSemanticRunScope(root),scopeProof=semanticRunScopeProof(runScope);
   const state=read(root,STATE,{schemaVersion:VERSION,lastProcessedCommit:config.bootstrapBase,pending:{},completedPilots:[],latestReceipts:{}});
-  const replay=replayReportPath?replayBatch(root,replayReportPath,{config,state,head}):null;
+  const replay=replayReportPath?replayBatch(root,replayReportPath,{config,state,head,runScope}):null;
   const targets=replay?structuredClone(replay.targets):selectTargets(root,state,config,head);
-  const report={schemaVersion:VERSION,head,base:state.lastProcessedCommit,write:doWrite,results:[],studentFilesChanged:0,unrelatedMetadataChanged:0};
+  const report={schemaVersion:VERSION,head,base:state.lastProcessedCommit,write:doWrite,runScope:scopeProof,
+    deferredTargets:replay?structuredClone(replay.deferredTargets||[]):[],results:[],studentFilesChanged:0,unrelatedMetadataChanged:0};
   if(!targets.length){
     if(replay?.registrySha&&(await context(root)).registry.registrySha!==replay.registrySha)throw Error('AUTO_META_REPLAY_REGISTRY_DRIFT');
-    const batch={schemaVersion:REPLAY_VERSION,head,configSha256:hash(config),registrySha:null,targets:[],results:[],rowBindings:[],sourceHashes:{},immutableOutputs:{}};
-    report.status='NO_CHANGE';report.applied=0;report.plannedPaths=[];
+    const batch={schemaVersion:REPLAY_VERSION,head,configSha256:hash(config),runScope:scopeProof,
+      deferredTargets:report.deferredTargets,registrySha:null,targets:[],results:[],rowBindings:[],sourceHashes:{},immutableOutputs:{}};
+    report.status=report.deferredTargets.length?'DEFERRED_BY_RUN_SCOPE':'NO_CHANGE';report.applied=0;report.plannedPaths=[];
+    report.pending=Object.keys(state.pending||{}).length;report.deferredPending=report.deferredTargets.length;
+    report.allowedPending=report.pending-report.deferredPending;
     if(replay){report.replayVerified=true;report.replayed=0;report.replayOf=replay.sha256;}
     else report.replayBatch={...batch,sha256:hash(batch),stateAfterSha256:hash(state)};
     if(reportPath)fs.writeFileSync(reportPath,json(report));return report;
@@ -497,6 +517,13 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   let acted=0;
   for(let ti=0;ti<targets.length;ti++) {
     const [key,target]=targets[ti];
+    if(excludesSemanticSource(runScope,target.sourceArchiveFile)){
+      // selectTargets can replace a pending key with a later source delta. An
+      // excluded old debt keeps its original complete record; only newly seen
+      // excluded changes are queued, before the global cursor can advance.
+      nextState.pending[key]=structuredClone(state.pending?.[key]??target);
+      continue;
+    }
     if(acted>=max){nextState.pending[key]=target;continue;}
     const attemptedTarget=structuredClone(target);
     const source=sourcePath(target.sourceArchiveFile),ordinal=Number(target.sourceOrdinal),rel=`archive/exams/${source}`;
@@ -586,7 +613,9 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
     for(const p of changedPacks){const rt=c.runtimes.get(p);rt.data.records.sort((a,b)=>a.questionUid.localeCompare(b.questionUid,'en'));c.refreshRuntime(rt.data);outputs.set(rt.rel,rt.data);}
   }
   if(!replay) {
+    report.deferredTargets=deferredScopeTargets(nextState,runScope);
     const batch={schemaVersion:REPLAY_VERSION,head,configSha256:hash(config),registrySha:c.registry.registrySha,
+      runScope:scopeProof,deferredTargets:report.deferredTargets,
       targets:attemptedTargets,results:attemptedResults,sourceHashes:Object.fromEntries(sourceHashes),
       rowBindings:attemptedTargets.map(([key])=>rowBinding(key)),
       immutableOutputs:Object.fromEntries([...outputs].filter(([p])=>p.startsWith(`${AUTO}/requests/`)||p.startsWith(`${AUTO}/receipts/`)).map(([p,obj])=>[p,sha256(json(obj))]))};
@@ -599,17 +628,26 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
     if(acted!==replay.targets.length||touched.size||outputs.size)throw Error('AUTO_META_REPLAY_NOT_IDEMPOTENT');
     report.replayVerified=true;report.replayed=acted;report.replayOf=replay.sha256;
   }
-  report.status=report.results.some(r=>r.status.startsWith('SUPPLEMENT_PENDING'))?'REGISTERED_WITH_SUPPLEMENTS':touched.size?'REGISTERED':'NO_CHANGE';
+  report.status=report.results.some(r=>r.status.startsWith('SUPPLEMENT_PENDING'))?'REGISTERED_WITH_SUPPLEMENTS'
+    :report.deferredTargets.length?'REGISTERED_WITH_DEFERRED_SCOPE':touched.size?'REGISTERED':'NO_CHANGE';
   report.unrelatedMetadataDigest=hash(c.metadata.records.filter(r=>!touched.has(r.questionUid)).sort((a,b)=>a.questionUid.localeCompare(b.questionUid,'en')));
   report.sourceHashes=Object.fromEntries(sourceHashes);
   report.applied=touched.size;report.pending=Object.keys(nextState.pending).length;report.plannedPaths=[...outputs.keys()];
+  report.deferredPending=report.deferredTargets.length;report.allowedPending=report.pending-report.deferredPending;
+  assertNoExcludedAttempts(report,runScope);
   if(doWrite)for(const [rel,obj]of outputs)write(root,rel,obj);
   if(reportPath)fs.writeFileSync(reportPath,json(report));
   return report;
 }
 
 export async function verifyMergedSource({root=ROOT,reportPath}) {
-  const report=JSON.parse(fs.readFileSync(reportPath,'utf8')),c=await context(root);
+  const report=JSON.parse(fs.readFileSync(reportPath,'utf8')),runScope=resolveSemanticRunScope(root);
+  assertSemanticRunScopeProof(report.runScope,runScope);
+  if((runScope.active||report.runScope?.active)&&report.head!==runScope.head)throw Error('AUTO_META_SCOPE_REPORT_HEAD_DRIFT');
+  assertNoExcludedAttempts(report,runScope);
+  if(runScope.active&&!equal(report.deferredTargets,deferredScopeTargets(read(root,STATE,{pending:{}}),runScope)))
+    throw Error('AUTO_META_SCOPE_DEFERRED_BINDING_DRIFT');
+  const c=await context(root);
   const {loadResolvedConsumerCatalog}=await import('./reviewed-exam-registration-v2.mjs');
   const catalog=loadResolvedConsumerCatalog(root),byUid=new Map((catalog.records||[]).map(r=>[r.questionUid,r]));
   const appliedUids=new Set(report.results.filter(r=>r.status==='APPLY').map(r=>r.questionUid));
@@ -634,7 +672,8 @@ export async function verifyMergedSource({root=ROOT,reportPath}) {
     for(const field of ['crossConceptKeys','conditionKeys'])if(Object.hasOwn(consumer,field)&&!equal(consumer[field],row[field]))throw Error('CONSUMER_'+field+'_MISMATCH');
     verified.push({questionUid:r.questionUid,sourceOrdinal:r.sourceOrdinal,problemTypeKey:cpt,templateKey:ctpl,metaBinding:consumer.metaBinding||null});
   }
-  const result={status:'PASS',verifiedCount:verified.length,verified,studentMutation:0};
+  const result={status:'PASS',verifiedCount:verified.length,verified,studentMutation:0,
+    runScope:semanticRunScopeProof(runScope),deferredPending:report.deferredTargets?.length||0};
   if(verified.length)write(root,`${AUTO}/last-verification.json`,{schemaVersion:VERSION,head:report.head,...result});
   return result;
 }

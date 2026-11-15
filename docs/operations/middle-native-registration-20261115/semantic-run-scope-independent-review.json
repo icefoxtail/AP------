@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "independent-semantic-run-scope-review-v1",
+  "reviewer": "audit_m1",
+  "status": "PASS",
+  "blockingFindings": [],
+  "reviewedHead": "ae9cf910ed51aa17723a930bcf6f6a32a8f3046a",
+  "baseCommit": "a64bcb9c4533fefaa5717b8f1ed1903630f8e2eb",
+  "scopeCommitFileCount": 14,
+  "includedFixtureOnlyCommit": "1a8c9b9d440339bf84c80b6a85312fb6a41cb239",
+  "combinedFileCount": 15,
+  "files": [
+    {
+      "path": ".archive-meta-register/auto/run-scopes/middle-registration-20261115-phase1.json",
+      "gitBlob": "0c4dcde3f00ec2368714f16c304a44f20dda6ad9",
+      "sha256": "61ad6d04c363c8e9f28b098e95b7ecdc7349fe8af49acf93f9e286b1dea3e308"
+    },
+    {
+      "path": ".github/workflows/archive-main-auto-meta.yml",
+      "gitBlob": "7a21387a2a8d4bc4aef07001b9b04c358f7d26b7",
+      "sha256": "9da950599090ace49a7991b2c76531c4f819f2ccf37241971fc5ddded5c0d8ca"
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "gitBlob": "3069d4f67c9633c2ff3a054913ca98e6aa317655",
+      "sha256": "a82e5e89f502de5b31b2bc48b19b04bb9b4e5c1bd5176577aa23bd5c9f8f2933"
+    },
+    {
+      "path": "archive/tools/meta-foundation/semantic-run-scope.mjs",
+      "gitBlob": "b0a43caa3f4a0a1c9c90c87e2e479dacdba65248",
+      "sha256": "a584a7d3e6271501209b49136f895cdc41434d8bfc25678b0264695f9fd3db34"
+    },
+    {
+      "path": "docs/architecture/Archive_Main_Merge_Auto_Metadata_CURRENT.md",
+      "gitBlob": "bb8ae7e5b24cc5c0386c47525bfaf5172bbcbedf",
+      "sha256": "316710409620189673ce48bff9eac76da7fd9a3d78195010fa20fc3a6e2e0e43"
+    },
+    {
+      "path": "tests/archive-main-meta-batch-replay.test.mjs",
+      "gitBlob": "e2e8f0150d9301dfecf70dc5af93fe1832f31619",
+      "sha256": "7c6590464a58abb1a39f9f6accddcb9cc913c6fdd73dbe308c68d0b51bb9529f"
+    },
+    {
+      "path": "tests/archive-pr-registration-proof.test.mjs",
+      "gitBlob": "61a5a32ca700be91ac4b1acad750a6433568ecd7",
+      "sha256": "9a7cc69cab7c067ba716f1ad6dc5a18ae5184d9bf1382d350072a73ca6d860b6"
+    },
+    {
+      "path": "tests/archive-register-isolation.test.js",
+      "gitBlob": "4569f067edb6d10d9e8ddfc054404fc7aa5c6a87",
+      "sha256": "5ac13cf72e8e877f25d6b02667e8d72bf535a018b1d6d24015146fc4598272e8"
+    },
+    {
+      "path": "tests/archive-registration-writer.test.mjs",
+      "gitBlob": "40f8cf8cfd432fa0da53d59deb551ee8abeeaa83",
+      "sha256": "4904f3f65205b895694028cf686ec310c40f5e502868b05ce39bf2b66af6597c"
+    },
+    {
+      "path": "tests/archive-semantic-run-scope.test.mjs",
+      "gitBlob": "3b48a82776f5b295a95cf0346a20cfbdc1795371",
+      "sha256": "3aa66214898df56a254b18fdf284c4ca909d02cb3bdaba7228b4064e9fe1c173"
+    },
+    {
+      "path": "tests/archive-single-writer-workflows.test.mjs",
+      "gitBlob": "a0bf2e643e02b8df3f3886166e3bb129afe88ec0",
+      "sha256": "4e94490473cab6f2102d19165e432d3e69fb34a305585fe8213709080bffe263"
+    },
+    {
+      "path": "tools/ci/archive-pr-registration-proof.mjs",
+      "gitBlob": "8aa9fd1e876119036463e85ead54e59a1b2235fc",
+      "sha256": "4905bc95ec8eeb026df1f7efef6fb0ced4cedd07505b6d76149df8c35de097d6"
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "gitBlob": "0ea4866c2a3b3d868b20e36710ff47af526e3150",
+      "sha256": "93796ef11bb7884757011ffb70592f496bf6f78316dddb5b966b0ff03f1d5f3d"
+    },
+    {
+      "path": "tools/ci/run-scoped-tests.mjs",
+      "gitBlob": "f7523105777618d1bbefa0d932fa44948518aba5",
+      "sha256": "b2356b5567d5fe8f55d1cd76668c86aa3a2ed48ac29341645d002ff5e72c91fa"
+    },
+    {
+      "path": "tools/run-tests.js",
+      "gitBlob": "d10cf72d7a6eec6dea9e5fc8580928963e600b21",
+      "sha256": "97ec474bd99c37ce959e1a8cdb2708b24823cf9e953e75e7844b0bb50d63acb5"
+    }
+  ],
+  "findings": {
+    "immutableHeadInbox": "Exactly all 29 inbox JSON paths and raw SHA256 match; working/index consumption keeps scope; all bound inputs absent at a later HEAD disables this one batch scope.",
+    "excludedPrefixes": [
+      "original/middle/m3/1final/",
+      "original/middle/m3/1mid/"
+    ],
+    "invalidScope": "Partial/drift/extra/duplicate/unknown prefix/multiple active scope reject before any lane and replace earlier success evidence.",
+    "planning": "Complete selector and native planner/authority bytes remain identical after removing the new import; exclusion happens before planning or cap consumption.",
+    "debt": "Old excluded pending key/value is preserved independently of current report. New excluded source deltas remain queued before cursor advance. Allowed-only continuation does not clear deferred debt.",
+    "binding": "Writer parameters, AutoMeta report/replay/final verify bind scope digest; active mid-run HEAD drift is rejected.",
+    "finalGuard": "Original UID set plus new excluded rows protects metadata, identity, runtime, and four-slot rows; original excluded pending records stay exact. Global envelopes may refresh.",
+    "validation": "Required producer/registry/identity/Consumer/replay validations are unchanged. New scope test and input dependencies are added to workflow/proof/test routing.",
+    "dependency": "Shared helper resides under archive/tools/meta-foundation; no new tools/ci dependency from the registrar import closure.",
+    "fixture": "Separate fixture-only change preserves compiler export interface with throwing APIs; it does not supply registry authority or relax assertions."
+  },
+  "independentlyExecuted": {
+    "probes": {
+      "groups": 6,
+      "pass": 6,
+      "fail": 0,
+      "skip": 0,
+      "details": [
+        {
+          "name": "immutable lifecycle",
+          "passed": true,
+          "workingAndIndexConsumptionPreserveScope": true,
+          "committedCompletionDisablesScope": true,
+          "laterUnboundJobUsesDefault": true
+        },
+        {
+          "name": "raw SHA",
+          "passed": true,
+          "invalidUtf8CannotBindReplacementBytes": true
+        },
+        {
+          "name": "compound row guard",
+          "passed": true,
+          "uidAndSourceRelocationRejected": true,
+          "newRuntimeOnlyExcludedRowRejected": true,
+          "globalEnvelopeOnlyAllowed": true
+        },
+        {
+          "name": "stale success evidence",
+          "passed": true,
+          "producerCalls": 0,
+          "prepareAndCheckReplacePreviousPass": true
+        },
+        {
+          "name": "durable excluded debt",
+          "passed": true,
+          "newDeferredTargetAllowed": true,
+          "removedPriorDebtRejected": true,
+          "priorReasonAndSignatureMutationRejected": true
+        },
+        {
+          "name": "writer end-to-end guard",
+          "passed": true,
+          "nonsemanticMutationRefusedBeforePersistence": true
+        }
+      ]
+    },
+    "officialBoundedAutoMetaReplay": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "skip": 0
+    },
+    "actualImmutableInput": {
+      "bindings": 29,
+      "descriptorRawSha256": "61ad6d04c363c8e9f28b098e95b7ecdc7349fe8af49acf93f9e286b1dea3e308",
+      "scopeDigest": "ae538a00a64424c83470acd1a6f79d0f53fb7d7a3d6b2e412bbf9e98423a8240",
+      "counts": {
+        "metadata": 2750,
+        "identity": 2750,
+        "runtime": 126,
+        "fourSlotRecords": 579,
+        "fourSlotPending": 113,
+        "fourSlotFiles": 29
+      },
+      "protectedUidCount": 2750,
+      "committedExcludedPending": 660,
+      "totalPending": 11580,
+      "exactDataFiles": 22,
+      "guardUnchanged": true
+    }
+  },
+  "authorRunsReadSeparately": {
+    "scopeBatchWriterWorkflowProofCiScope": "144/144 PASS",
+    "midRunHead": "1/1 PASS",
+    "isolation": "46/46 PASS",
+    "restoredPinnedRegistry": "1/1 PASS",
+    "allReportedSkip": 0
+  },
+  "evidence": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e029-current/.tmp/semantic-run-scope-independent-probes.json",
+      "sha256": "7e502a9658eea0a4bbc5530a598dd67c8bb56d94a8c6708d6a56377911b6f53a"
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e029-current/.tmp/semantic-run-scope-independent.tap",
+      "sha256": "ded9459c1c70b19026fc460fbe4b576e9f1c2fafc0e63100f10fff52834bb29b"
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e029-current/.tmp/semantic-run-scope-bounded-replay-independent.tap",
+      "sha256": "f53e287c838c584932dfc12c1a0fd76619026facd29ff09316f1f26e5e047749"
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e029-current/.tmp/semantic-run-scope-actual-binding-independent.json",
+      "sha256": "3c9b43e8585bf3f9a07d8782171eb3ccf4fb25c82f6b1a8c8e6b49ada8ded066"
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e029-current/.tmp/semantic-scope-archive-closure-probe.json",
+      "sha256": "af6fc995a064c454e849f32485daa087549e3c50a585779368ead8213d0e344d"
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-middle-semantic-scope/.tmp/semantic-run-scope-publication.json",
+      "sha256": "9218383fc776ff604ba2a88b14311f92077c1a88fb8932a53147ca8546550db0"
+    }
+  ],
+  "boundaries": {
+    "ownerFilesEdited": false,
+    "productionExecution": false,
+    "fullNativeUnionShadow": "PENDING_ROOT_COMBINED",
+    "sourceOrAssetWrites": 0,
+    "newApprovals": 0,
+    "actualSnapshotMethod": "Initial owner sparse tree was refused for missing metadata. Exact HEAD JSON blobs were then independently materialized in a temporary directory, read and checked, then deleted.",
+    "countCaution": "660 is the existing excluded pending count at this exact committed HEAD. New source deltas and any earlier working-state count must be reported separately by the actual run."
+  }
+}

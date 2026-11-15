@@ -79,6 +79,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-main-meta-batch-replay.test.mjs']
   },
   {
+    label: 'tests/archive-semantic-run-scope.test.mjs',
+    args: ['--test', 'tests/archive-semantic-run-scope.test.mjs']
+  },
+  {
     label: 'tests/item-4slot-runtime.test.cjs',
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
   },
