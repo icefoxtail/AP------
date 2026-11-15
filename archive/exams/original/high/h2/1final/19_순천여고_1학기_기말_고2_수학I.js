@@ -375,7 +375,10 @@ window.questionBank = [
     "id": 6,
     "questionNumber": 6,
     "questionType": "객관식",
-    "content": "해안가의 $\\mathrm{A}$지점과 $\\mathrm{B}$지점을 연결하는 방조제를 쌓아 간척지를 건설하려고 한다. $\\mathrm{C}$지점에서 $\\mathrm{A}, \\mathrm{B}$지점까지의 거리와 사잇각의 크기를 측정하였더니 위의 그림과 같았다. 이때 삼각형 $\\mathrm{ABC}$의 넓이는?<br>(단, $\\cos 37^\\circ = 0.8$로 계산한다.) [4.4점]<br><br><img src=\"assets/images/19_순천여고_1학기_기말_고2_수학I/q06.png\" class=\"exam-img\">",
+    "content": "해안가의 $\\mathrm{A}$지점과 $\\mathrm{B}$지점을 연결하는 방조제를 쌓아 간척지를 건설하려고 한다. $\\mathrm{C}$지점에서 $\\mathrm{A}, \\mathrm{B}$지점까지의 거리와 사잇각의 크기를 측정하였더니 위의 그림과 같았다. 이때 삼각형 $\\mathrm{ABC}$의 넓이는?<br>(단, $\\cos 37^\\circ = 0.8$로 계산한다.) [4.4점]<br><br><img src=\"assets/images/19_순천여고_1학기_기말_고2_수학I/q06-problem-11px.svg\" class=\"exam-img\" alt=\"삼각형 ABC에서 CA=7 km, CB=10 km, ∠ACB=37°를 나타낸다.\">",
+    "images": [
+      "assets/images/19_순천여고_1학기_기말_고2_수학I/q06-problem-11px.svg"
+    ],
     "choices": [
       "$18\\text{km}^2$",
       "$19\\text{km}^2$",
@@ -583,7 +586,11 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "legacyLevelCompatibility": "UNKNOWN",
-    "solutionSha256": "fcccb99667a85095f50755d38ec4c8799c88623f41817f48ce2955b8dcb4f28a"
+    "solutionSha256": "fcccb99667a85095f50755d38ec4c8799c88623f41817f48ce2955b8dcb4f28a",
+    "solutionImage": "assets/images/19_순천여고_1학기_기말_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 사인곡선 f(x)=sin(πx)와 직선 y=2x/7의 교점을 그렸다.",
+    "solutionImageCaption": "교점의 대칭과 구간별 사인 곡선의 모양을 함께 나타낸다. 정답: ①",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -656,7 +663,11 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "legacyLevelCompatibility": "UNKNOWN",
-    "solutionSha256": "ee11cec272be31f38f7781cdc139f486dfa2547559bbcaf6d9ff21f8d3572855"
+    "solutionSha256": "ee11cec272be31f38f7781cdc139f486dfa2547559bbcaf6d9ff21f8d3572855",
+    "solutionImage": "assets/images/19_순천여고_1학기_기말_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC와 직각삼각형 AOC를 함께 나타내고, AC=10√2인 중간 길이를 표시한다.",
+    "solutionImageCaption": "사인법칙으로 얻은 AC를 직각삼각형 AOC에 연결해 CO를 구한다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -1398,7 +1409,11 @@ window.questionBank = [
     "tags": [],
     "wide": false,
     "legacyLevelCompatibility": "UNKNOWN",
-    "solutionSha256": "0a77394db9870c42875144dddd1b23763e0c4c0d1f5defaced4aafdeb3f5cf9b"
+    "solutionSha256": "0a77394db9870c42875144dddd1b23763e0c4c0d1f5defaced4aafdeb3f5cf9b",
+    "solutionImage": "assets/images/19_순천여고_1학기_기말_고2_수학I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 진수 조건 x>4와 로그 부등식 조건 x≤6의 교집합인 구간을 나타낸다.",
+    "solutionImageCaption": "두 조건의 공통 해집합은 열린 4와 닫힌 6 사이이다. 답: 4<x≤6",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

@@ -117,6 +117,10 @@ window.examData = {
     },
     {
       "id": 9,
+      "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q9-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "a가 양수인 예에서 파랑은 위로 열린 포물선, 주황은 아래로 열린 포물선이다. x가 같은 두 점의 세로 높이는 x축을 가운데 두고 서로 반대 방향이다.",
+      "solutionImageCaption": "y=ax²와 y=−ax²에서는 같은 x에 대응하는 y의 부호가 반대다. 따라서 두 그래프는 x축 대칭이며, ④가 틀리다.",
       "score": 3,
       "question": "이차함수 $y = ax^2$의 그래프에 대한 설명 중 틀린 것은? (3점)",
       "choices": [
@@ -131,8 +135,13 @@ window.examData = {
     },
     {
       "id": 10,
+      "layoutTag": "fullwidth",
+      "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q10-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "세 포물선의 꼭짓점은 모두 원점이며 세 그래프가 아래로 열린다. 파랑 그래프가 가장 좁고 초록 그래프가 가장 넓으며 주황 그래프가 가운데이다.",
+      "solutionImageCaption": "같은 높이에서 파랑 y=−3x²가 가장 좁고 초록 y=−x²/2가 가장 넓다. 주황 그래프는 그 사이이므로 −3<a<−1/2이다. 정답은 ④이다.",
       "score": 5,
-      "question": "세 이차함수 $y = ax^2, y = -3x^2, y = -\\dfrac{1}{2}x^2$의 그래프가 오른쪽 그림과 같을 때, 수 $a$의 값의 범위는? (5점)<br><br><p><img src=\"assets/images/20_연향중_1학기_기말_중3_수학/q10.png\" alt=\"문제 10번 그림\" style=\"max-width: 300px;\"></p>",
+      "question": "세 이차함수 $y = ax^2, y = -3x^2, y = -\\dfrac{1}{2}x^2$의 그래프가 오른쪽 그림과 같을 때, 수 $a$의 값의 범위는? (5점)<br><br><p><img src=\"assets/images/20_연향중_1학기_기말_중3_수학/q10-problem-v2.svg\" alt=\"세 포물선의 꼭짓점은 모두 원점이며 세 그래프가 아래로 열린다. 파랑 그래프가 가장 좁고 초록 그래프가 가장 넓으며 주황 그래프가 가운데이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p>",
       "choices": [
         "$a < -\\dfrac{1}{2}$",
         "$a < -3$",
@@ -145,6 +154,10 @@ window.examData = {
     },
     {
       "id": 11,
+      "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q11-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "아래로 열린 파란 포물선의 최고점과 주황 대칭축이 보인다. 대칭축은 x축의 3을 통과하고 최고점은 x축 아래에 있다.",
+      "solutionImageCaption": "꼭짓점형에서 대칭축은 x=3, 꼭짓점은 (3, −1)이다. 정답은 ②이다.",
       "score": 5,
       "question": "이차함수 $y = -\\dfrac{1}{2}(x-3)^2 - 1$ 그래프의 축의 방정식과 꼭짓점의 좌표를 올바르게 구한 것은? (5점)",
       "choices": [
@@ -159,8 +172,13 @@ window.examData = {
     },
     {
       "id": 12,
+      "layoutTag": "fullwidth",
+      "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q12-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "포물선은 위로 열리고 왼쪽에서 x축의 −1을 지난다. 꼭짓점은 x=1에 해당하는 점선 위와 x축 아래에 있다.",
+      "solutionImageCaption": "포물선이 위로 열려 a>0이다. 축이 x=1이어서 b=−2a<0이고 y절편이 x축 아래에 있어 c<0이다. 따라서 ③만 옳다.",
       "score": 5,
-      "question": "이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 다음 중 옳은 것은? (단, $a, b, c$는 수이다.) (5점)<br><br><p><img src=\"assets/images/20_연향중_1학기_기말_중3_수학/q12.png\" alt=\"문제 12번 그림\" style=\"max-width: 300px;\"></p>",
+      "question": "이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 다음 중 옳은 것은? (단, $a, b, c$는 수이다.) (5점)<br><br><p><img src=\"assets/images/20_연향중_1학기_기말_중3_수학/q12-problem-v2.svg\" alt=\"포물선은 위로 열리고 왼쪽에서 x축의 −1을 지난다. 꼭짓점은 x=1에 해당하는 점선 위와 x축 아래에 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p>",
       "choices": [
         "$ab > 0$",
         "$c > 0$",
@@ -173,6 +191,10 @@ window.examData = {
     },
     {
       "id": 13,
+      "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q13-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "파란 포물선이 x축 양쪽을 지나고 y축의 1을 지난다. 주황 점은 x축 위의 꼭짓점이고 대칭축은 y축 왼쪽에 있다.",
+      "solutionImageCaption": "y=−2(x+1)²+3이다. 원래 y=−2x² 그래프를 왼쪽으로 1, 위로 3만큼 옮겼으므로 ⑤가 틀리다.",
       "score": 5,
       "question": "다음 중 이차함수 $y = -2x^2 - 4x + 1$의 그래프에 대한 설명으로 틀린 것은? (5점)",
       "choices": [
@@ -187,6 +209,10 @@ window.examData = {
     },
     {
       "id": 14,
+      "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q14-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "파랑 위로 열린 포물선과 주황 아래로 열린 포물선이 같은 주황 점을 꼭짓점으로 삼는다. 점선은 두 그래프가 공유하는 대칭축이다.",
+      "solutionImageCaption": "첫째 꼭짓점은 (a,6−a²), 둘째 꼭짓점은 (−2,b+11)이다. a=−2, b=−9로 a²+b=−5이다. 정답은 ②이다.",
       "score": 5,
       "question": "두 이차함수 $y = x^2 - 2ax + 6$, $y = -2x^2 - 8x + b + 3$ 그래프의 꼭짓점이 일치할 때, 두 수 $a, b$에 대하여 $a^2 + b$의 값은? (5점)",
       "choices": [
@@ -201,6 +227,10 @@ window.examData = {
     },
     {
       "id": 15,
+      "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q15-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "주황 꼭짓점에서 오른쪽 x절편까지 가로 두 칸과 세로 여덟 칸의 안내선을 그었다. 파란 포물선의 두 가지가 x축 위쪽까지 뻗는다.",
+      "solutionImageCaption": "y=A(x+4)²−8에 x절편 (−2,0)을 넣으면 A=2이다. 전개하면 b=16이고 정답은 ①이다.",
       "score": 5,
       "question": "이차함수 $y = ax^2 + bx + c$의 그래프의 꼭짓점의 좌표가 $(-4, -8)$이고 $x$절편중 하나가 $-2$일 때 $b$의 값은? (5점)",
       "choices": [
@@ -215,6 +245,10 @@ window.examData = {
     },
     {
       "id": 16,
+      "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q16-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "포물선의 두 x절편과 y절편을 이었다. 작은 주황 삼각형과 큰 파랑 삼각형은 같은 세로 높이를 공유한다.",
+      "solutionImageCaption": "공통 높이는 3이고 밑변은 각각 1 또는 3이다. 두 넓이는 3/2와 9/2이다. 정답은 ②와 ⑤이다.",
       "score": 5,
       "question": "이차함수 $y = x^2 - 4x + 3$의 그래프의 $x$절편을 $A$, 그래프와 $y$축의 교점을 $B$, 원점을 $O$라고 할 때, $\\triangle ABO$의 넓이로 가능한 것은? (답 2개) (5점)",
       "choices": [
@@ -229,6 +263,10 @@ window.examData = {
     },
     {
       "id": 17,
+      "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q17-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "주황 포물선을 x축에 대해 반사하면 파랑 포물선이 된다. 반사된 그래프의 꼭짓점을 왼쪽과 아래로 옮기면 초록 포물선이 된다.",
+      "solutionImageCaption": "y=−2x²를 x축 대칭해 y=2x²를 만들고, 왼쪽으로 3, 아래로 4만큼 옮겨 y=2(x+3)²−4를 얻는다. a+p+q=−5, 정답은 ①이다.",
       "score": 5,
       "question": "이차함수 $y = -2x^2$의 그래프와 $x$축에 대하여 대칭이고, $x$축의 방향으로 $-3$만큼, $y$축의 방향으로 $-4$만큼 평행이동 하였더니 이차함수 $y = a(x-p)^2 + q$의 그래프와 일치하였다. $a+p+q$의 값은? (5점)",
       "choices": [
@@ -259,8 +297,13 @@ window.examData = {
     },
     {
       "id": 20,
+      "layoutTag": "fullwidth",
+      "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q20-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "왼쪽 조각의 겹치지 않는 부분을 주황으로 칠하고 x=1에서 자른 경계를 점선으로 표시했다. 아래 직사각형은 원래 색과 이동한 색이 합쳐진 모습을 보여 준다.",
+      "solutionImageCaption": "왼쪽 조각을 오른쪽으로 2만큼 옮기면 오른쪽 곡선 경계와 겹쳐 가로 2, 세로 3인 직사각형을 이룬다. 따라서 넓이는 6이다.",
       "score": 6,
-      "question": "서술형3. 다음 그림은 두 이차함수 $y = x^2 - 2x - 2$와 $y = x^2 - 6x + 6$의 그래프이다. 이때 어두운 부분의 넓이를 구하시오. (단, 두 점 $\\mathrm{P}$와 $\\mathrm{Q}$는 각 그래프의 꼭짓점이다.) (6점)<br><br><p><img src=\"assets/images/20_연향중_1학기_기말_중3_수학/s03.png\" alt=\"서술형 3번 그림\" style=\"max-width: 500px;\"></p>",
+      "question": "서술형3. 다음 그림은 두 이차함수 $y = x^2 - 2x - 2$와 $y = x^2 - 6x + 6$의 그래프이다. 이때 어두운 부분의 넓이를 구하시오. (단, 두 점 $\\mathrm{P}$와 $\\mathrm{Q}$는 각 그래프의 꼭짓점이다.) (6점)<br><br><p><img src=\"assets/images/20_연향중_1학기_기말_중3_수학/q20-problem-v2.svg\" alt=\"두 이차함수의 그래프 아래쪽에서 왼쪽 가지 두 개가 연두 영역을 사이에 둔다. 위 경계는 x축, 아래 경계는 P와 Q가 이어진 수평선이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p>",
       "choices": [],
       "answer": "6",
       "solution": "$F(x)=x^2-2x-2=(x-1)^2-3$\n$G(x)=x^2-6x+6=(x-3)^2-3$\n$G(x+2)=((x+2)-3)^2-3$\n$G(x+2)=(x-1)^2-3=F(x)$\n따라서 $F$의 그래프를 오른쪽으로 $2$만큼 평행이동하면 $G$의 그래프와 겹친다.\n$F(x)=0$\n$(x-1)^2=3$\n$x=1-\\sqrt3$\n$G(x)=0$\n$(x-3)^2=3$\n$x=3-\\sqrt3$\n왼쪽 곡선의 $x$축 교점을 $A=(1-\\sqrt3,0)$, 오른쪽 곡선의 $x$축 교점을 $B=(3-\\sqrt3,0)$라 하자.\n그림의 어두운 부분을 $x=1$에서 잘라 왼쪽 곡선 조각을 오른쪽으로 $2$만큼 평행이동한다.\n이때 $P=(1,-3)$은 $Q=(3,-3)$으로, $A$는 $B$로 옮겨진다.\n그래프가 서로 평행이동으로 겹치므로 옮긴 조각의 곡선 경계는 오른쪽 곡선 경계와 일치한다.\n따라서 남은 조각과 옮긴 조각을 합치면 가로 $1\\le x\\le3$, 세로 $-3\\le y\\le0$인 직사각형을 빈 곳 없이 채운다.\n평행이동은 넓이를 보존하므로 구하는 넓이는 이 직사각형의 넓이와 같다.\n$3-1=2$\n$0-(-3)=3$\n$2\\cdot3=6$\n따라서 어두운 부분의 넓이는 $6$이다."

@@ -243,7 +243,11 @@ window.questionBank = [
     },
     "layoutTag": "grid",
     "wide": false,
-    "sourceIdentityFingerprint": "8df1586b62fe53f248c5ffbeabcde071a3256a7f97cb3ca30b5c3590a3b9222b"
+    "sourceIdentityFingerprint": "8df1586b62fe53f248c5ffbeabcde071a3256a7f97cb3ca30b5c3590a3b9222b",
+    "solutionImage": "assets/images/21_매산고_1학기_기말_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 0부터 2π까지 y=cos x와 y=−√3/3의 두 교점은 해집합에 포함되지 않는다. 두 교점 사이에서 곡선이 기준선 아래인 열린 구간이 해이다.",
+    "solutionImageCaption": "그래프에서 곡선이 기준선 아래인 부분을 고른다. 두 교점 자체는 포함하지 않는 열린 구간이며, 두 경계는 π에 대하여 대칭이다. 정답은 −√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -534,10 +538,11 @@ window.questionBank = [
     },
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/21_매산고_1학기_기말_고2_수학I/q15-solution.svg",
-    "solutionImageAlt": "n=2일 때 sin t와 t/(8π) 그래프의 양의 교점 7개를 표시한 그림",
-    "solutionImageCaption": "첫 양의 반파장에는 교점 1개, 이후 세 반파장에는 각 2개",
-    "sourceIdentityFingerprint": "f3a2012e047375848423b5c1c01b0611c2fa0a7cad44a7ef84696bf63b1fcaf7"
+    "solutionImage": "assets/images/21_매산고_1학기_기말_고2_수학I/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 그래프의 가로좌표 x는 치환변수 t를 나타낸다. n=1에서 사인곡선과 원점을 지나는 증가직선은 첫 양의 반파장에서 한 번, 다음 양의 반파장에서 두 번 만난다.",
+    "solutionImageCaption": "그래프에서 가로좌표 x는 치환변수 t를 뜻한다. n=1에서 첫 양의 반파장에는 교점 하나, 다음 양의 반파장에는 두 개가 생긴다. 이 규칙으로 aₙ=4n−1을 얻어 합을 계산한다. 정답은 210이다.",
+    "sourceIdentityFingerprint": "f3a2012e047375848423b5c1c01b0611c2fa0a7cad44a7ef84696bf63b1fcaf7",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

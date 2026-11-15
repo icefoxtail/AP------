@@ -53,16 +53,17 @@ export function preparePrRegistration({ root = process.cwd(), eventName, event, 
   try { paths = git(['diff', '--name-only', '--no-renames', '-z', baseSha, headSha, '--']).split('\0').filter(Boolean); }
   catch { paths = null; }
   const pendingPaths = eventName === 'push' ? pendingNativeRequestPaths({ root, headSha }) : [];
+  const requests = eventName === 'pull_request'
+    ? selectNativeRequests({ root, baseSha, headSha }) : selectPendingNativeRequests({ root, headSha });
   const report = { baseSha, inputHeadSha, headSha, changedPathCount: paths?.length ?? null,
     ...(eventName === 'push' ? { pendingRequestPaths: pendingPaths } : {}) };
-  if (!registrationInputsChanged(paths) && !pendingPaths.length) {
+  if (!registrationInputsChanged(paths) && !pendingPaths.length && !requests.length) {
     return { ...report, state: 'NO_OP', reason: 'no registration input changed in the fixed source snapshot' };
   }
   // This command is for a disposable CI checkout. Never overwrite local unfinished work.
   if (git(['status', '--porcelain', '-z', '--untracked-files=all']).length) throw new Error('temporary registration preparation requires a clean CI checkout');
   const nativePreview = emptyNativePreview();
-  nativePreview.requests = eventName === 'pull_request'
-    ? selectNativeRequests({ root, baseSha, headSha }) : selectPendingNativeRequests({ root, headSha });
+  nativePreview.requests = requests;
   nativePreview.plans = applyNativeRequests({ root, requests: nativePreview.requests, run });
   run(process.execPath, ['archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs', '--write'], root, true);
   if (nativePreview.requests.length) run(process.execPath, ['archive/tools/meta-foundation/compile-meta-foundation.mjs', '--write'], root, true);
