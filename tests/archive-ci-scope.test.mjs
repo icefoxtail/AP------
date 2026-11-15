@@ -135,6 +135,13 @@ test('technical group union uses registered Consumer, retry and gate commands wi
     (args.includes('archive/tools/build-archive2-catalog.mjs') && !args.includes('--package-only'))), 'no second shared registration build');
 });
 
+test('native proposal definition contracts remain selected for registration work', () => {
+  const command={label:'tests/archive-native-proposal-v3.test.js',args:['tests/archive-native-proposal-v3.test.js']};
+  const scope=classifyPaths(['tools/ci/archive-registration-writer.mjs']);
+  assert.equal(scope.mode,'archive-registration');
+  assert.deepEqual(selectTechnicalCommands(scope,[command]),[command]);
+});
+
 test('the production test registry retains its P2/P3 additions and supplies the scoped runner once', async () => {
   const text = read('tools/run-tests.js');
   const boundary = text.indexOf('\nif (args.length) {\n  const { runScopedTests }');
@@ -150,8 +157,15 @@ test('the production test registry retains its P2/P3 additions and supplies the 
     require: name => name === 'child_process' ? { spawnSync() { throw Error('registry inspection must not execute commands'); } } : createRequire(import.meta.url)(name),
   });
   const names = registry.flatMap(command => command.args);
-  for (const file of ['tests/archive-registration-writer.test.mjs', 'tests/archive-single-writer-workflows.test.mjs', 'tests/archive-pages-release-identity.test.mjs']) {
+  const requiredRegistrationContracts = ['tests/archive-registration-writer.test.mjs', 'tests/archive-single-writer-workflows.test.mjs',
+    'tests/archive-pages-release-identity.test.mjs', 'tests/archive-pr-native-preview.test.mjs', 'tests/archive-main-meta-batch-replay.test.mjs',
+    'tests/archive-native-proposal-v3.test.js', 'tests/archive-reviewed-native-scope-fields.test.mjs',
+    'tests/archive-reviewed-native-retained-fields.test.js', 'tests/archive-reviewed-native-parent.test.mjs',
+    'tests/archive-native-replay-registry-context.test.mjs'];
+  for (const file of requiredRegistrationContracts) {
     assert.ok(names.includes(file), file);
+    assert.equal(registry.filter(command => command.args.includes(file)).length, 1,
+      `full CI runs this registration contract exactly once: ${file}`);
   }
   const meta = selectTechnicalCommands(classifyPaths([metadataFile]), registry);
   const registration = selectTechnicalCommands(classifyPaths(['tools/ci/archive-registration-writer.mjs']), registry);
@@ -163,7 +177,7 @@ test('the production test registry retains its P2/P3 additions and supplies the 
     assert.ok(commands.some(command => command.args.includes('tests/apms-result-clinic-uid-bridge.test.mjs')));
     assert.ok(!commands.some(command => command.args.some(arg => /geometry-equation\/tests\/verify-svg-coordinate-parity|solution-calibration-gate/.test(arg))));
   }
-  for (const file of ['tests/archive-registration-writer.test.mjs', 'tests/archive-single-writer-workflows.test.mjs', 'tests/archive-pages-release-identity.test.mjs']) {
+  for (const file of requiredRegistrationContracts) {
     assert.ok(registration.some(command => command.args.includes(file)), `new registration contract remains selected: ${file}`);
   }
   for (const file of TECHNICAL_INPUTS.registration.filter(file => file.startsWith('tests/'))) {
