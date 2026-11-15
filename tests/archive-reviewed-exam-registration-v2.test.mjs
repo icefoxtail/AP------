@@ -4411,6 +4411,66 @@ test("native decisive step can be carried verbatim with explicit provenance with
     for (const [field, value] of Object.entries(values)) assert.equal(row[field], value);
 });
 
+function reviewedRationaleWithOlderSource(t) {
+  const f = reviewedSourceFixture(t);
+  const bytes = f.writeBank({ ...f.current, primaryMethod: "검토 이전 원본의 주풀이", decisiveStep: "검토 이전 원본의 결정 단계" });
+  f.review.sourceAfterBlob = f.git("hash-object", "-w", f.sourcePath);
+  f.review.sourceAfterSha256 = hash(bytes);
+  f.updateReview();
+  return { ...f, values: carryReviewedRationale(f) };
+}
+
+test("verbatim native rationale takes precedence over an older source method and survives official replay", t => {
+  const f = reviewedRationaleWithOlderSource(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read(f.receiptPath), proof = receipt.fingerprintRepairs[0].sourceReview;
+  assert.deepEqual(proof.rationaleBindings.primaryMethod, {
+    origin: "NATIVE_DECISIVE_STEP_VERBATIM", valueSha256: hash(f.values.primaryMethod),
+  });
+  assert.equal(proof.rationaleBindings.decisiveStep.origin, "NATIVE_ITEM_FIELD");
+  assert.equal(proof.newMathematicalQa, false);
+  for (const row of [receipt.appliedRecords[0], receipt.runtimeRecords[0]])
+    for (const [field, value] of Object.entries(f.values)) assert.equal(row[field], value);
+  const replay = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(replay.replay, true);
+  assert.deepEqual(replay.plannedPaths, []);
+});
+
+test("verbatim native rationale rejects any one of the four mismatched declarations", t => {
+  for (const target of ["request", "source"]) for (const field of ["primaryMethod", "decisiveStep"]) {
+    const f = reviewedRationaleWithOlderSource(t);
+    if (target === "request") f.item.after[field] = "독립 근거 없는 다른 설명";
+    else f.writeBank({ ...f.current, ...f.values, [field]: "독립 근거 없는 다른 설명" });
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /primaryMethod|decisiveStep/);
+    assert.equal(fs.existsSync(path.join(f.root, f.receiptPath)), false);
+  }
+});
+
+test("already-matching committed rationale keeps its source provenance for receipt compatibility", t => {
+  const f = reviewedRationaleWithOlderSource(t);
+  f.review.sourceAfterBlob = f.git("hash-object", "-w", f.sourcePath);
+  f.review.sourceAfterSha256 = hash(fs.readFileSync(path.join(f.root, f.sourcePath)));
+  f.updateReview();
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.deepEqual(f.read(f.receiptPath).fingerprintRepairs[0].sourceReview.rationaleBindings.primaryMethod, {
+    origin: "REVIEW_COMMIT_SOURCE_FIELD", valueSha256: hash(f.values.primaryMethod),
+  });
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).replay, true);
+});
+
+test("explicit native after and item methods still outrank verbatim decisive-step transport", t => {
+  for (const location of ["after", "item"]) {
+    const f = reviewedRationaleWithOlderSource(t);
+    if (location === "after") f.review.items[0].after.primaryMethod = "별도로 확정된 native 주풀이";
+    else f.review.items[0].primaryMethod = "별도로 확정된 native 주풀이";
+    f.review.sourceAfterBlob = f.git("hash-object", "-w", f.sourcePath);
+    f.review.sourceAfterSha256 = hash(fs.readFileSync(path.join(f.root, f.sourcePath)));
+    f.updateReview();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /primaryMethod/);
+    assert.equal(fs.existsSync(path.join(f.root, f.receiptPath)), false);
+  }
+});
+
 test("native explicit rationale and committed source rationale retain their distinct provenance", t => {
   const native = reviewedSourceFixture(t, "m2-s2-meta-review-v1");
   native.review.items[0].primaryMethod = "원검토에 명시된 주풀이"; native.updateReview(); carryReviewedRationale(native);

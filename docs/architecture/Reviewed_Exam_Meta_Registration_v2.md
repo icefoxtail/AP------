@@ -80,10 +80,12 @@ M2의 `REGISTRATION_PENDING` 표기만으로 확정 필드를 버리지는 않�
 재승인할 수 없다. L1~L4 표시명은 기존 정본 검증을 계속 받으며, 등록기 계약 밖의 native 보조 필드는 임의로 생성하지 않는다.
 교육과정·과목 식별자는 현재 원본이나 기존 메타의 명시값을 유지하며 원검토가 명시한 값과도 일치해야 한다.
 
-`primaryMethod`/`decisiveStep`을 운반할 때는 native `after`, native 항목의 같은 필드, 검토 commit source의 같은 필드 순으로
-실제 값을 찾는다. 요청 `after`와 source에 선언된 값, 최종 metadata는 그 값과 완전히 같아야 한다. native에 별도 `primaryMethod`가
-없으면 원검토 `decisiveStep` 문자열을 source와 요청의 두 필드에 그대로 실은 경우만 허용하며, 영수증에는
-`NATIVE_DECISIVE_STEP_VERBATIM`으로 기록한다. 별도 주풀이 판정이나 새 독립 검수로 기록하지 않는다. `rationaleBindings`는
+`primaryMethod`/`decisiveStep`을 운반할 때는 native `after`와 native 항목의 같은 필드가 우선한다. native에 별도 `primaryMethod`가
+없고 현재 source와 요청 `after`의 두 rationale 필드 네 값이 모두 원검토 `decisiveStep` 문자열과 완전히 같으면,
+검토 commit source에 남은 다른 옛 주풀이보다 이 명시 운반을 우선하며 영수증에 `NATIVE_DECISIVE_STEP_VERBATIM`으로 기록한다.
+검토 commit source의 값도 이미 같으면 기존 `REVIEW_COMMIT_SOURCE_FIELD` 출처를 유지해 발행된 영수증과 호환한다.
+나머지는 검토 commit source의 같은 필드를 사용한다. 요청 `after`와 source에 선언된 값, 최종 metadata는 선택된 값과
+완전히 같아야 한다. 별도 주풀이 판정이나 새 독립 검수로 기록하지 않는다. `rationaleBindings`는
 각 값의 출처와 SHA를 보존하며, 요청에서 필드를 빼서 상충하는 기존 rationale를 유지하는 경우는 거절한다.
 
 `rpmPrimaryId`/`rpmPrimaryPath`/`rpmL1~rpmL4`도 native `after`의 확정값 또는 검토 commit의 source에 이미 있고 현재 source와

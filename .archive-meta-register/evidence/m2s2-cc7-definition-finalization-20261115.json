@@ -1,0 +1,1055 @@
+{
+  "schemaVersion": "archive-cross-concept-narrow-definition-finalization-v1",
+  "status": "DEFINITIONS_FINALIZED_OFFICIAL_REGISTRATION_PENDING",
+  "reviewer": "/root/m3s2_release",
+  "actualMain": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+  "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+  "scope": {
+    "conceptDefinitions": 7,
+    "selectedApplications": 9,
+    "distinctNativeProposals": 8,
+    "nativeProposalApplications": 9,
+    "sourceFiles": 7,
+    "sourceWrites": 0,
+    "canonicalWrites": 0,
+    "newFullMathematicalQa": false,
+    "newReview2Claims": 0,
+    "newMetadataApprovals": 0,
+    "newDifficultyJudgments": 0
+  },
+  "canonicalLookup": {
+    "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+    "gitBlobSha1": "c92d9eb64df0d1173b5f964570ddedf0940b0601",
+    "sha256": "e8d40bce41d532c70ae205269b771564c23fca0f077335f07e5449b78a1bd7c2",
+    "activeConceptCount": 985,
+    "searchFields": [
+      "conceptKey",
+      "canonicalLabelKo",
+      "definition",
+      "aliases"
+    ],
+    "searchTerms": [
+      "30/60/THIRTY/RIGHT_TRIANGLE/반빗변",
+      "원뿔/CONE/옆넓이/모선",
+      "중선/무게중심/CENTROID/MEDIAN",
+      "각기둥/PRISM/VOLUME/밑넓이",
+      "평행사변형/대변/PARALLELOGRAM",
+      "내접/내심/반둘레/INRADIUS/SEMIPERIMETER",
+      "원기둥/옆면/전개/CYLINDER/UNFOLD/SHORTEST"
+    ],
+    "exactExistingReuseFound": false,
+    "newKeyCollisions": []
+  },
+  "definitionDecisions": [
+    {
+      "definition": {
+        "conceptKey": "CC_RIGHT_TRIANGLE_THIRTY_DEGREE_HALF_HYPOTENUSE",
+        "canonicalLabelKo": "30도 직각삼각형의 반빗변 성질",
+        "definition": "직각삼각형에서 30°인 예각의 맞은편 직각변 길이는 빗변의 절반이다. 역으로 한 직각변 길이가 빗변의 절반이면 그 맞은편 예각은 30°이다.",
+        "ownerConceptShard": "PLANE_GEOMETRY",
+        "aliases": [],
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_8dfe8c3aa1929d687c8f83e0bc6b7b340304cc77c6bee69eed915d421e4a7920"
+        ],
+        "supportingItemCount": 1,
+        "sourceUnits": [
+          "M2-05"
+        ],
+        "legacyKeys": [],
+        "taxonomyRefs": [
+          "PT_ISOSCELES_TRIANGLE"
+        ],
+        "curriculumRefs": [],
+        "evidenceProvenance": [
+          {
+            "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+            "questionUid": "qid_v1_8dfe8c3aa1929d687c8f83e0bc6b7b340304cc77c6bee69eed915d421e4a7920",
+            "sourceOrdinal": 10,
+            "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+            "sourceBlobSha1": "b4a8cc6a1bda1ab1e647b40316c3c41e9c0a97e9",
+            "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E004/review.json",
+            "nativeReviewSha256": "f7b2960edd58c9eb782fb5c2b5538f1f58e906e2f6dcfd9864d449352c53a0f4",
+            "nativeProposalRefs": [
+              "E004-CC30"
+            ],
+            "classificationRationale": "현재 stem의 AB=AC와 AD의 꼭지각 이등분선 조건 및 PNG의 AD 수선/30°/BD 표기를 확인했다. 이등변삼각형의 수선·중점 관계 이후, 30° 맞은편 직각변과 빗변의 절반 관계를 사용하는 보조 단계이다.",
+            "newMathematicalQa": false
+          }
+        ]
+      },
+      "ownerReason": "기존 직각삼각형과 정삼각형 관계를 소유하는 ACTIVE PLANE_GEOMETRY shard에 한 번만 정의한다.",
+      "precisionNote": null,
+      "checkedExistingCanonicalCandidates": [
+        {
+          "conceptKey": "CC_RIGHT_TRIANGLE",
+          "canonicalLabelKo": "직각삼각형",
+          "definition": "직각삼각형이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "직각삼각형이라는 대상의 일반 개념이며 30°와 반빗변의 특정 관계가 명시되어 있지 않다."
+        },
+        {
+          "conceptKey": "CC_SPECIAL_ANGLES",
+          "canonicalLabelKo": "특수각의 삼각비",
+          "definition": "30°, 45°, 60° 등 특수각에 대한 정형화된 삼각비 값과 사칙연산",
+          "aliases": [],
+          "ownerConceptShard": "TRIGONOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "삼각비의 정형화된 수치값과 사칙연산이다. 현재 중2 풀이에서는 삼각비를 도입하지 않는다."
+        },
+        {
+          "conceptKey": "CC_EQUILATERAL_TRIANGLE",
+          "canonicalLabelKo": "정삼각형의 성질",
+          "definition": "세 변의 길이가 모두 같고 세 내각의 크기가 모두 60도인 정삼각형의 성질",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "세 변과 세 각이 같은 정삼각형 자체의 성질이며 해당 직각삼각형의 변-각 관계와 구별된다."
+        },
+        {
+          "conceptKey": "CC_REGULAR_HEXAGON_DIAGONAL",
+          "canonicalLabelKo": "정육각형의 분할과 대각선 길이",
+          "definition": "한 변의 길이가 b인 정육각형을 대각선으로 자를 때 30°-60°-90° 직각삼각형과 120° 이등변삼각형이 생기고 짧은 대각선 길이가 √3 b가 되는 성질",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "정육각형 분할과 특정 대각선 길이에 한정된다."
+        }
+      ],
+      "supportingSelectedUidCount": 1
+    },
+    {
+      "definition": {
+        "conceptKey": "CC_CONE_LATERAL_AREA",
+        "canonicalLabelKo": "원뿔의 반지름과 모선에 의한 옆넓이",
+        "definition": "밑면 반지름이 r이고 모선의 길이가 l인 직원뿔의 옆넓이는 πrl이다. 이 넓이는 밑면을 포함하지 않는다.",
+        "ownerConceptShard": "MIDDLE1",
+        "aliases": [],
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_d0b9c1fa0603907bf60d4cc4504d2747a03ff23046d96526a083511f9f734547"
+        ],
+        "supportingItemCount": 1,
+        "sourceUnits": [
+          "M2-07"
+        ],
+        "legacyKeys": [],
+        "taxonomyRefs": [
+          "PT_M2_PYTHAGOREAN_RELATION"
+        ],
+        "curriculumRefs": [],
+        "evidenceProvenance": [
+          {
+            "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+            "questionUid": "qid_v1_d0b9c1fa0603907bf60d4cc4504d2747a03ff23046d96526a083511f9f734547",
+            "sourceOrdinal": 22,
+            "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+            "sourceBlobSha1": "b3b8bab44a7375a7a5f4443937c821ea14ef890c",
+            "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E021/review.json",
+            "nativeReviewSha256": "271659418186e8f3e0bb54b8ddadd6fc853327c947177d67be4f544786ac5558",
+            "nativeProposalRefs": [
+              "C-E021-CC-CONE-LATERAL"
+            ],
+            "classificationRationale": "두 소문항 중 ②에서 stem이 밑면 반지름과 원뿔의 부피를 주고 옆넓이를 요구한다. PNG의 원뿔과 현재 해설에서 높이→모선→πrl을 사용하는 단계를 확인했다.",
+            "newMathematicalQa": false
+          }
+        ]
+      },
+      "ownerReason": "원뿔의 기본 측정 공식 CC_CONE_VOLUME를 소유한 ACTIVE MIDDLE1 shard에 둔다. CC의 다른 학년/Pack 재사용은 GLOBAL 계약에 따른다.",
+      "precisionNote": "πrl의 적용 대상을 직원뿔로 명확히 한 정의이다. 현재 문항의 원뿔 옆넓이 풀이에 적용하며 사원뿔로 공식을 확장하지 않는다.",
+      "checkedExistingCanonicalCandidates": [
+        {
+          "conceptKey": "CC_CONE_VOLUME",
+          "canonicalLabelKo": "원뿔의 부피",
+          "definition": "밑넓이와 높이의 곱의 3분의 1로 구하는 원뿔의 부피.",
+          "aliases": [],
+          "ownerConceptShard": "MIDDLE1",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "밑넓이와 높이의 곱의 3분의 1인 부피 관계이며 옆넓이와 모선의 관계가 아니다."
+        },
+        {
+          "conceptKey": "CC_CIRCLE_SECTOR_AREA",
+          "canonicalLabelKo": "부채꼴의 넓이",
+          "definition": "반지름 r, 중심각 x°인 부채꼴의 넓이 S = πr² × (x/360)",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "평면 부채꼴의 반지름과 중심각으로 넓이를 구하는 관계이며 원뿔의 밑면 반지름과 모선을 직접 연결하지 않는다."
+        }
+      ],
+      "supportingSelectedUidCount": 1
+    },
+    {
+      "definition": {
+        "conceptKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO",
+        "canonicalLabelKo": "무게중심의 중선 교점과 2대1 분할",
+        "definition": "삼각형의 무게중심은 각 꼭짓점과 그 대변의 중점을 잇는 세 중선의 교점이며, 각 중선을 꼭짓점에서 대변의 중점 쪽으로 2:1로 나눈다.",
+        "ownerConceptShard": "PLANE_GEOMETRY",
+        "aliases": [],
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+          "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3"
+        ],
+        "supportingItemCount": 2,
+        "sourceUnits": [
+          "M2-05",
+          "M2-06"
+        ],
+        "legacyKeys": [],
+        "taxonomyRefs": [
+          "PT_PARALLEL_SEGMENT_RATIO",
+          "PT_TRIANGLE_CENTERS"
+        ],
+        "curriculumRefs": [],
+        "evidenceProvenance": [
+          {
+            "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+            "questionUid": "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3",
+            "sourceOrdinal": 3,
+            "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+            "sourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+            "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+            "nativeReviewSha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+            "nativeProposalRefs": [
+              "B-E023-CC-CENTROID"
+            ],
+            "classificationRationale": "G가 무게중심이며 AG/BG의 연장이 각각 D/E에 닿는다는 stem과 그림을 확인했다. 중선의 정의로 D/E가 대변의 중점임을 얻은 후 평행선 선분비와 넓이비를 결합한다.",
+            "newMathematicalQa": false
+          },
+          {
+            "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+            "questionUid": "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+            "sourceOrdinal": 21,
+            "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+            "sourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+            "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+            "nativeReviewSha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+            "nativeProposalRefs": [
+              "B-E023-CC-CENTROID"
+            ],
+            "classificationRationale": "PNG의 A 직각, G가 AD 위에 있는 위치, GD 길이 표기를 확인했다. 현재 해설은 무게중심의 AG:GD=2:1로 AD를 정한 뒤 직각삼각형 빗변 중점 성질을 Primary로 사용한다.",
+            "newMathematicalQa": false
+          }
+        ]
+      },
+      "ownerReason": "좌표 평균 CC는 기존 소유자를 유지하고, 삼각형 중선의 기하 관계를 ACTIVE PLANE_GEOMETRY shard에 정의한다.",
+      "precisionNote": null,
+      "checkedExistingCanonicalCandidates": [
+        {
+          "conceptKey": "CC_CENTROID",
+          "canonicalLabelKo": "무게중심",
+          "definition": "삼각형 세 꼭짓점 좌표의 평균",
+          "aliases": [],
+          "ownerConceptShard": "COORDINATE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "세 꼭짓점 좌표의 평균을 구하는 좌표 연산이다."
+        },
+        {
+          "conceptKey": "CC_TRIANGLE_CENTROID",
+          "canonicalLabelKo": "삼각형의 무게중심",
+          "definition": "세 꼭짓점 좌표와 무게중심 좌표의 관계를 사용하는 개념.",
+          "aliases": [
+            "삼각형의 무게중심 개념"
+          ],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "세 꼭짓점 좌표와 무게중심 좌표의 관계로 정의되어 있으며 중선의 중점/2:1 분할 연산과 구별된다."
+        },
+        {
+          "conceptKey": "CC_MEDIAN",
+          "canonicalLabelKo": "중앙값",
+          "definition": "변량을 작은 값부터 크기순으로 나열했을 때 한가운데 위치하는 값.",
+          "aliases": [],
+          "ownerConceptShard": "STATISTICS_CONCEPTS",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "통계의 중앙값이며 삼각형의 중선과 무관하다."
+        }
+      ],
+      "supportingSelectedUidCount": 2
+    },
+    {
+      "definition": {
+        "conceptKey": "CC_PRISM_VOLUME",
+        "canonicalLabelKo": "각기둥의 밑넓이와 높이에 의한 부피",
+        "definition": "밑면의 넓이가 S이고 두 밑면이 놓인 평면 사이의 수직 거리가 h인 각기둥의 부피는 V=Sh이다. 높이 h는 기울어진 옆모서리 길이와 구별한다.",
+        "ownerConceptShard": "MIDDLE1",
+        "aliases": [],
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_ad78c39cb384b8f7c42183424b8cf37172d3c0577ed584c52b42c50bee1ece10"
+        ],
+        "supportingItemCount": 1,
+        "sourceUnits": [
+          "M2-06"
+        ],
+        "legacyKeys": [],
+        "taxonomyRefs": [
+          "PT_SIMILAR_FIGURES"
+        ],
+        "curriculumRefs": [],
+        "evidenceProvenance": [
+          {
+            "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+            "questionUid": "qid_v1_ad78c39cb384b8f7c42183424b8cf37172d3c0577ed584c52b42c50bee1ece10",
+            "sourceOrdinal": 17,
+            "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+            "sourceBlobSha1": "a608b1a6773e4dfd624eb782424b98e6427ac5f7",
+            "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E029/review.json",
+            "nativeReviewSha256": "cfaa00f0d5960c0007c3513e06faeaf2cc5b5d7ce508958afb7f8d149af2721a",
+            "nativeProposalRefs": [
+              "B-E029-CC-PRISM-VOLUME"
+            ],
+            "classificationRationale": "서로 닮은 두 삼각기둥이라는 stem과 대응 높이 10/5 도해를 확인했다. Primary의 닮음비로 큰 밑넓이를 구한 뒤, 각기둥의 밑넓이×높이로 절대 부피를 계산한다.",
+            "newMathematicalQa": false
+          }
+        ]
+      },
+      "ownerReason": "각기둥 및 원뿔 등 입체 측정의 기초 관계를 소유하는 ACTIVE MIDDLE1 shard에 둔다. 기존 다른 shard의 부피 CC를 이동하거나 재정의하지 않는다.",
+      "precisionNote": "높이를 두 밑면 사이의 수직 거리로 한정한다. 이 문항에서는 현재 도해와 기존 해설의 각기둥 높이 입력을 사용한다.",
+      "checkedExistingCanonicalCandidates": [
+        {
+          "conceptKey": "CC_GEOMETRIC_AREA_VOLUME_FORMULA",
+          "canonicalLabelKo": "도형의 둘레·넓이·부피 공식",
+          "definition": "정사각형 둘레 4x, 삼각형 넓이 ½×밑변×높이, 원 넓이 πx², 정육면체 부피 x³ 등 도형 공식을 x의 식으로 쓴다.",
+          "aliases": [],
+          "ownerConceptShard": "ALGEBRA",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "도형 공식을 x의 식으로 나타내는 대수 모델링이다."
+        },
+        {
+          "conceptKey": "CC_CYLINDER_VOLUME",
+          "canonicalLabelKo": "원기둥의 부피",
+          "definition": "밑면의 반지름과 높이를 이용해 원기둥의 부피를 구하는 공식.",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "원기둥의 반지름과 높이를 쓰는 부피 관계이다."
+        },
+        {
+          "conceptKey": "CC_CONE_VOLUME",
+          "canonicalLabelKo": "원뿔의 부피",
+          "definition": "밑넓이와 높이의 곱의 3분의 1로 구하는 원뿔의 부피.",
+          "aliases": [],
+          "ownerConceptShard": "MIDDLE1",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "원뿔에 대한 1/3 계수가 있는 부피 관계이다."
+        },
+        {
+          "conceptKey": "CC_VOLUME_MODELING_POLYNOMIAL",
+          "canonicalLabelKo": "부피의 다항함수 모델링",
+          "definition": "도형의 길이 관계로부터 부피를 한 변수에 대한 다항함수로 나타내고, 그 함수의 최댓값을 구하는 모델링 개념.",
+          "aliases": [],
+          "ownerConceptShard": "CALCULUS",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "부피를 다항함수로 모델링하여 최댓값을 구하는 연산이다."
+        },
+        {
+          "conceptKey": "CC_SIMILAR_FIGURES_AREA_VOLUME",
+          "canonicalLabelKo": "닮은 도형의 넓이비와 부피비",
+          "definition": "닮음비가 m:n일 때 넓이의 비는 m²:n²이고 부피의 비는 m³:n³이다",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "닮음비와 넓이비/부피비의 관계이다. 절대 밑넓이와 높이에서 각기둥의 부피를 계산하는 보조 단계와 구별된다."
+        },
+        {
+          "conceptKey": "CC_RECTANGULAR_PRISM_TILING",
+          "canonicalLabelKo": "직육면체 단위 배치의 곱셈",
+          "definition": "최소공배수로 정한 입체 크기에 단위 직육면체가 각 축으로 몇 개 놓이는지 곱하여 총수를 구할 때 기록한다.",
+          "aliases": [],
+          "ownerConceptShard": "MIDDLE1",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "단위 직육면체의 각 축 배치 개수를 곱하는 정수 배치 연산이다."
+        }
+      ],
+      "supportingSelectedUidCount": 1
+    },
+    {
+      "definition": {
+        "conceptKey": "CC_PARALLELOGRAM_OPPOSITE_SIDES_EQUAL",
+        "canonicalLabelKo": "평행사변형의 대변 길이 같음",
+        "definition": "평행사변형에서는 두 쌍의 대변의 길이가 각각 같다. 이미 주어지거나 두 쌍의 평행으로 확인된 평행사변형에서 대응하는 대변 길이를 다른 선분 길이식에 대입할 때 사용한다.",
+        "ownerConceptShard": "PLANE_GEOMETRY",
+        "aliases": [],
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_9d910d2bf5e2d195e25dd27d89ec5d4fb40c23145756682a8364528000479431",
+          "qid_v1_eddc33cba6efb30d346b546fa8321806fa1a9cc1c79920e2bbb374341ad204cc"
+        ],
+        "supportingItemCount": 2,
+        "sourceUnits": [
+          "M2-06"
+        ],
+        "legacyKeys": [],
+        "taxonomyRefs": [
+          "PT_PARALLEL_SEGMENT_RATIO"
+        ],
+        "curriculumRefs": [],
+        "evidenceProvenance": [
+          {
+            "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+            "questionUid": "qid_v1_eddc33cba6efb30d346b546fa8321806fa1a9cc1c79920e2bbb374341ad204cc",
+            "sourceOrdinal": 6,
+            "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+            "sourceBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+            "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E052/review.json",
+            "nativeReviewSha256": "b8a2d07916f13068082e4a294b5aab6579e454226c0beab3ea413055b9b15c50",
+            "nativeProposalRefs": [
+              "A-E052-PARALLELOGRAM-OPPOSITE-SIDES"
+            ],
+            "classificationRationale": "PNG의 AD/DB 및 FC 길이, BC∥DE와 AB∥EF를 확인했다. BDEF가 평행사변형임을 확인한 뒤 BF=DE를 사용해 BC를 DE와 주어진 길이의 합으로 나타내고 삼각형 선분비에 연결한다.",
+            "newMathematicalQa": false
+          },
+          {
+            "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+            "questionUid": "qid_v1_9d910d2bf5e2d195e25dd27d89ec5d4fb40c23145756682a8364528000479431",
+            "sourceOrdinal": 9,
+            "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+            "sourceBlobSha1": "42b58e94128c45b894cd819fea364482248afea7",
+            "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E058/review.json",
+            "nativeReviewSha256": "9e408cc29001c8ac306980b67f9e145febc335d6a6471561cbf0f3c709e47d2b",
+            "nativeProposalRefs": [
+              "A-E058-PARALLELOGRAM-OPPOSITE-SIDES"
+            ],
+            "classificationRationale": "평행사변형 ABCD, M/N의 중점 표기와 E/F 교점을 그림과 stem에서 확인했다. BC=AD를 BM=BC/2와 결합하여 교차 삼각형의 닮음비 입력을 만든다.",
+            "newMathematicalQa": false
+          }
+        ]
+      },
+      "ownerReason": "평행사변형의 기하 관계를 소유하는 ACTIVE PLANE_GEOMETRY shard에 한 번만 정의하여 두 native 제안을 병합한다.",
+      "precisionNote": "CC_PARALLELOGRAM_CRITERIA와 논리적 관련성을 부정하지 않는다. 기존 판정 조건 정의/증거는 변경하지 않고 현재 문항에 필요한 정방향 대변 관계를 분리한다.",
+      "checkedExistingCanonicalCandidates": [
+        {
+          "conceptKey": "CC_PARALLELOGRAM_PROPERTIES",
+          "canonicalLabelKo": "평행사변형의 성질",
+          "definition": "평행사변형의 두 대각선이 서로를 이등분하는 성질을 사용한다.",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "현재 정본은 두 대각선이 서로를 이등분하는 성질로 정의되어 있다."
+        },
+        {
+          "conceptKey": "CC_PARALLELOGRAMS",
+          "canonicalLabelKo": "평행사변형",
+          "definition": "두 쌍의 대변이 각각 평행한 사각형.",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "두 쌍의 대변이 각각 평행하다는 정의이며 등길이 치환을 명시하지 않는다."
+        },
+        {
+          "conceptKey": "CC_PARALLELOGRAM_CRITERIA",
+          "canonicalLabelKo": "평행사변형이 되는 조건",
+          "definition": "한 쌍의 대변이 평행하고 그 길이가 같거나 두 대각선이 서로를 이등분하는 등 5가지 필요충분조건",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "필요충분조건이므로 수학적으로 관련성이 있다. 그러나 현행 라벨과 결속된 원 검토는 주어진 조건으로 평행사변형 여부를 판정하는 연산이다. 본 두 문항은 이미 확인된 평행사변형에서 대변 등길이를 다른 Primary의 선분비 입력으로 사용하는 정방향 관계이다."
+        }
+      ],
+      "supportingSelectedUidCount": 2
+    },
+    {
+      "definition": {
+        "conceptKey": "CC_TRIANGLE_AREA_INRADIUS_SEMIPERIMETER",
+        "canonicalLabelKo": "내접반지름과 반둘레에 의한 삼각형의 넓이",
+        "definition": "삼각형의 내접반지름을 r, 세 변의 길이를 a,b,c, 반둘레를 s=(a+b+c)/2라 하면 넓이 S=rs이다. 내심과 세 꼭짓점을 이은 세 삼각형의 공통 높이가 r이라는 관계로부터 얻는다.",
+        "ownerConceptShard": "PLANE_GEOMETRY",
+        "aliases": [],
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_7c0c618d63f2d9206e5e301a165195bbdf84f94024985da9a551967f5eedea78"
+        ],
+        "supportingItemCount": 1,
+        "sourceUnits": [
+          "M2-06"
+        ],
+        "legacyKeys": [],
+        "taxonomyRefs": [
+          "PT_COORD_CENTROID"
+        ],
+        "curriculumRefs": [],
+        "evidenceProvenance": [
+          {
+            "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+            "questionUid": "qid_v1_7c0c618d63f2d9206e5e301a165195bbdf84f94024985da9a551967f5eedea78",
+            "sourceOrdinal": 7,
+            "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+            "sourceBlobSha1": "d02155dc9bda42ff2a5b097a62b604664183ada5",
+            "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+            "nativeReviewSha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544",
+            "nativeProposalRefs": [
+              "B-E059-INCIRCLE-SEMIPERIMETER"
+            ],
+            "classificationRationale": "현재 PNG에서 D-G-I-E가 BC와 평행한 단면 위에 놓임을 확인했다. 현재 해설은 무게중심 높이비와 내접반지름을 연결하고 S=rs 및 밑변×높이/2를 결합한다.",
+            "newMathematicalQa": false
+          }
+        ]
+      },
+      "ownerReason": "기존 삼각형 내심과 넓이의 기하 관계가 속한 ACTIVE PLANE_GEOMETRY shard에 둔다.",
+      "precisionNote": null,
+      "checkedExistingCanonicalCandidates": [
+        {
+          "conceptKey": "CC_TRIANGLE_INCENTER",
+          "canonicalLabelKo": "삼각형의 내심과 내접원",
+          "definition": "삼각형의 세 내각의 이등분선의 교점이며, 세 변에 이르는 거리가 내접반지름으로 같다",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "각의 이등분선의 교점과 세 변까지 같은 거리를 다룬다. 넓이와 반둘레의 곱 관계는 별도의 보조 계산이다."
+        },
+        {
+          "conceptKey": "CC_TRIANGLE_AREA",
+          "canonicalLabelKo": "삼각형의 넓이",
+          "definition": "밑변과 높이 또는 좌표를 이용하여 삼각형의 넓이를 구하는 개념.",
+          "aliases": [
+            "삼각형 넓이"
+          ],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "밑변과 높이 또는 좌표에 의한 넓이이며 r과 반둘레의 관계가 아니다."
+        },
+        {
+          "conceptKey": "CC_INSCRIBED_CIRCLE",
+          "canonicalLabelKo": "삼각형의 내접원",
+          "definition": "삼각형의 세 변에 접하는 원으로 중심에서 세 변에 이르는 거리가 내접반지름 r로 일정하다",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "삼각형의 세 변에 접하는 원과 동일한 내접반지름에 관한 정의이다."
+        },
+        {
+          "conceptKey": "CC_TRIANGLE_INSCRIBED_CIRCLE_PERIMETER",
+          "canonicalLabelKo": "삼각형의 내접원과 둘레의 길이",
+          "definition": "삼각형의 세 꼭짓점에서 내접원에 그은 접선 조각 쌍들의 합으로 삼각형의 둘레를 산출",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "접선 조각의 합을 통해 둘레를 구하는 관계이며 넓이 식이 아니다."
+        }
+      ],
+      "supportingSelectedUidCount": 1
+    },
+    {
+      "definition": {
+        "conceptKey": "CC_CYLINDER_LATERAL_UNFOLDING_SHORTEST_PATH",
+        "canonicalLabelKo": "원기둥 옆면의 고정 감김수 전개 최단거리",
+        "definition": "직원기둥의 옆면을 길이가 보존되는 직사각형 띠로 펼치고 지정된 감김수에 해당하는 두 끝점의 전개 위치를 고르면, 허용된 옆면 전개 영역 안에서 두 끝점을 잇는 직선이 최단 경로가 된다. 밑면을 가로지르는 경로나 다른 감김수의 경로와 구별한다.",
+        "ownerConceptShard": "COORDINATE_GEOMETRY",
+        "aliases": [],
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9"
+        ],
+        "supportingItemCount": 1,
+        "sourceUnits": [
+          "M2-07"
+        ],
+        "legacyKeys": [],
+        "taxonomyRefs": [
+          "PT_M2_PYTHAGOREAN_RELATION"
+        ],
+        "curriculumRefs": [],
+        "evidenceProvenance": [
+          {
+            "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+            "questionUid": "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9",
+            "sourceOrdinal": 12,
+            "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+            "sourceBlobSha1": "d02155dc9bda42ff2a5b097a62b604664183ada5",
+            "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+            "nativeReviewSha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544",
+            "nativeProposalRefs": [
+              "B-E059-CYLINDER-UNFOLD"
+            ],
+            "classificationRationale": "PNG에서 A/B는 같은 모선의 위/아래 끝점이고 실은 옆면을 한 바퀴 감는다. stem의 반지름/높이와 고정 한 바퀴 조건을 직사각형 전개 끝점에 대응한 후 직선 최단 경로를 피타고라스로 계산한다.",
+            "newMathematicalQa": false
+          }
+        ]
+      },
+      "ownerReason": "전개 후 위치 추적과 평면 최단거리 기법이 속한 ACTIVE COORDINATE_GEOMETRY shard에 두되 기존 다면체 접기/반사 최단거리의 정의는 유지한다.",
+      "precisionNote": "현재 도해의 A/B는 같은 모선의 위/아래 끝점이고 한 바퀴 감김 조건이 있다. 원둘레가 전개 가로 길이가 되는 것은 이 문항의 위치와 감김수에서 확인한 적용이며 임의의 두 점에 일반화하지 않는다.",
+      "checkedExistingCanonicalCandidates": [
+        {
+          "conceptKey": "CC_POLYHEDRON_NET",
+          "canonicalLabelKo": "다면체의 전개도와 입체 복원",
+          "definition": "정육면체 등 다면체의 전개도를 접었을 때 맞닿는 꼭짓점과 모서리의 공간적 위치 추적",
+          "aliases": [],
+          "ownerConceptShard": "COORDINATE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "다면체 전개도를 접었을 때 맞닿는 꼭짓점/모서리를 추적하는 연산이다. 곡면을 길이 보존 전개하여 최단거리를 구하는 연산이 아니다."
+        },
+        {
+          "conceptKey": "CC_SHORTEST_DISTANCE_COLLINEAR",
+          "canonicalLabelKo": "대칭이동을 이용한 최단거리",
+          "definition": "대칭이동한 점과 다른 한 점을 일직선으로 이은 선분의 길이로 꺾인 선분 합의 최솟값을 구하는 원리",
+          "aliases": [],
+          "ownerConceptShard": "COORDINATE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "대칭이동한 점을 이용한 꺾인 선분의 최단거리이다. 현재 문제에는 반사 대신 원기둥의 옆면 전개와 고정 감김수에 따른 끝점 선택이 필요하다."
+        },
+        {
+          "conceptKey": "CC_CIRCLE_CIRCUMFERENCE",
+          "canonicalLabelKo": "원의 둘레와 넓이",
+          "definition": "반지름 r인 원의 둘레 2πr 및 넓이 πr² 산출",
+          "aliases": [],
+          "ownerConceptShard": "PLANE_GEOMETRY",
+          "status": "ACTIVE",
+          "disposition": "NOT_EXACT_OPERATION",
+          "reason": "반지름으로 밑면의 둘레를 계산하는 보조 연산이다. 옆면 전개와 최단 직선 선택은 별도로 필요하다."
+        }
+      ],
+      "supportingSelectedUidCount": 1
+    }
+  ],
+  "applications": [
+    {
+      "examId": "E004",
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_8dfe8c3aa1929d687c8f83e0bc6b7b340304cc77c6bee69eed915d421e4a7920",
+      "sourcePath": "archive/exams/original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "currentSourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+      "currentSourceBlobSha1": "b4a8cc6a1bda1ab1e647b40316c3c41e9c0a97e9",
+      "currentSourceRawSha256": "051c28789fcfc9889b06ff22f4317c6ffe84745ddb13166e07a77e64e52841b5",
+      "currentWholeQuestionStableSha256": "089a8350150e7765ac1dd5e6353d26911a44213ebb29580979cbad2c1d8577d5",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E004/review.json",
+        "sha256": "f7b2960edd58c9eb782fb5c2b5538f1f58e906e2f6dcfd9864d449352c53a0f4"
+      },
+      "nativeProposalRefs": [
+        "E004-CC30"
+      ],
+      "nativeItemStableSha256": "a41a8ddeb91af253282514ed3fc382b12855a94975703c032aa92ad46800ba86",
+      "nativeProtectedStudentFieldsChanges": [],
+      "currentProblemFigure": {
+        "commit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+        "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q10.png",
+        "gitBlobSha1": "f79ce9af0b1e493266d06416dd09bd7e7910c29b",
+        "sha256": "597d81e15b68290582bb64acb444e459b7a0d54e78ddaf42c69ee56d6f278528",
+        "visuallyInspected": true
+      },
+      "definitionDisposition": "ADD_EXACT_NEW_CANONICAL_CC",
+      "addCrossConceptKey": "CC_RIGHT_TRIANGLE_THIRTY_DEGREE_HALF_HYPOTENUSE",
+      "reviewedPrimaryContext": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR"
+      },
+      "nativeAfterCrossConceptKeys": [],
+      "applicabilityEvidence": "현재 stem의 AB=AC와 AD의 꼭지각 이등분선 조건 및 PNG의 AD 수선/30°/BD 표기를 확인했다. 이등변삼각형의 수선·중점 관계 이후, 30° 맞은편 직각변과 빗변의 절반 관계를 사용하는 보조 단계이다.",
+      "boundaryAndPreservation": "이등변삼각형 꼭지각 이등분선의 성질을 Primary로 유지하며 삼각비 키로 대체하지 않는다.",
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false
+    },
+    {
+      "examId": "E021",
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_d0b9c1fa0603907bf60d4cc4504d2747a03ff23046d96526a083511f9f734547",
+      "sourcePath": "archive/exams/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+      "currentSourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+      "currentSourceBlobSha1": "b3b8bab44a7375a7a5f4443937c821ea14ef890c",
+      "currentSourceRawSha256": "ff55fb975605d1061313146be5f5a0ee9c5e68b9fec18a899627e804cb771c5b",
+      "currentWholeQuestionStableSha256": "c2c4f45f214d9a1e270d5f83aa8245721328f7f100b9a03add6450b87e300635",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E021/review.json",
+        "sha256": "271659418186e8f3e0bb54b8ddadd6fc853327c947177d67be4f544786ac5558"
+      },
+      "nativeProposalRefs": [
+        "C-E021-CC-CONE-LATERAL"
+      ],
+      "nativeItemStableSha256": "ab95aea77e99711b0aa0ef556c2e7147c1fa3b4cebe66402eb0fceca725e4295",
+      "nativeProtectedStudentFieldsChanges": [],
+      "currentProblemFigure": {
+        "commit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+        "path": "archive/assets/images/23_매산중_2학기_기말_중2_기출/q22.png",
+        "gitBlobSha1": "1c64b7808be155c03b88f24f78e1e2cef716e8b1",
+        "sha256": "1b516068904357a1d7c29b74b103d43c06be40c25a5c87ee420035ede48e802f",
+        "visuallyInspected": true
+      },
+      "definitionDisposition": "ADD_EXACT_NEW_CANONICAL_CC",
+      "addCrossConceptKey": "CC_CONE_LATERAL_AREA",
+      "reviewedPrimaryContext": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION"
+      },
+      "nativeAfterCrossConceptKeys": [
+        "CC_CONE_VOLUME"
+      ],
+      "applicabilityEvidence": "두 소문항 중 ②에서 stem이 밑면 반지름과 원뿔의 부피를 주고 옆넓이를 요구한다. PNG의 원뿔과 현재 해설에서 높이→모선→πrl을 사용하는 단계를 확인했다.",
+      "boundaryAndPreservation": "①의 평면 피타고라스 문제에 옆넓이 개념을 적용한다고 주장하지 않는다. 기존 CC_CONE_VOLUME를 자동 삭제하지 않는다.",
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false
+    },
+    {
+      "examId": "E023",
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3",
+      "sourcePath": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+      "currentSourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+      "currentSourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+      "currentSourceRawSha256": "5e97d4fcea1a919e49a50ae655ee7c288b7a23a1656189a57b8aa1a9543f7e0c",
+      "currentWholeQuestionStableSha256": "0c1dc55b21708a88d14b26df4472ebd179c9f2b01ff8792dfcd35276dd872e4b",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+        "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07"
+      },
+      "nativeProposalRefs": [
+        "B-E023-CC-CENTROID"
+      ],
+      "nativeItemStableSha256": "30eb6c8a4600f522973a9943807dbc87c5e506efe6206cd8ba6f80566f5b1981",
+      "nativeProtectedStudentFieldsChanges": [],
+      "currentProblemFigure": {
+        "commit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+        "path": "archive/assets/images/23_연향중_2학기_기말_중2_기출/q3.png",
+        "gitBlobSha1": "bdc8b4ff7a1f6c1a5ca34497e490f31ddf9170f9",
+        "sha256": "839cc0945b578830d102d356cb6ce46e976bb3c1d2ae6ee6606c956002014a5e",
+        "visuallyInspected": true
+      },
+      "definitionDisposition": "ADD_EXACT_NEW_CANONICAL_CC",
+      "addCrossConceptKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO",
+      "reviewedPrimaryContext": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+      },
+      "nativeAfterCrossConceptKeys": [
+        "CC_AREA_RATIO"
+      ],
+      "applicabilityEvidence": "G가 무게중심이며 AG/BG의 연장이 각각 D/E에 닿는다는 stem과 그림을 확인했다. 중선의 정의로 D/E가 대변의 중점임을 얻은 후 평행선 선분비와 넓이비를 결합한다.",
+      "boundaryAndPreservation": "이 문항에서는 새 CC의 중선·중점 부분이 사용되며 2:1 수치까지 사용한다고 과장하지 않는다. 기존 CC_AREA_RATIO는 별도 넓이비 단계이다.",
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false
+    },
+    {
+      "examId": "E023",
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+      "sourcePath": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+      "currentSourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+      "currentSourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+      "currentSourceRawSha256": "5e97d4fcea1a919e49a50ae655ee7c288b7a23a1656189a57b8aa1a9543f7e0c",
+      "currentWholeQuestionStableSha256": "adb09878135bb2501fa7af41a958889b0f2d70e0dd9bc65277398876c17f7686",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+        "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07"
+      },
+      "nativeProposalRefs": [
+        "B-E023-CC-CENTROID"
+      ],
+      "nativeItemStableSha256": "31bb1d156ba824f761c95dcc2359c53bc24f0cb9c12773c45166f851a5a94b10",
+      "nativeProtectedStudentFieldsChanges": [],
+      "currentProblemFigure": {
+        "commit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+        "path": "archive/assets/images/23_연향중_2학기_기말_중2_기출/q21.png",
+        "gitBlobSha1": "d2a139c88d80b69ea3502313f7710495c7bfc351",
+        "sha256": "c51ca7c19a80afef4dfcd2b67f9cfdace7b44e0c0967e0b90cfebcd1042b0166",
+        "visuallyInspected": true
+      },
+      "definitionDisposition": "ADD_EXACT_NEW_CANONICAL_CC",
+      "addCrossConceptKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO",
+      "reviewedPrimaryContext": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
+      },
+      "nativeAfterCrossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "applicabilityEvidence": "PNG의 A 직각, G가 AD 위에 있는 위치, GD 길이 표기를 확인했다. 현재 해설은 무게중심의 AG:GD=2:1로 AD를 정한 뒤 직각삼각형 빗변 중점 성질을 Primary로 사용한다.",
+      "boundaryAndPreservation": "좌표 평균 계산으로 분류하지 않는다. 기존 CC_PYTHAGOREAN은 마지막 나머지 변 길이 단계에 실제 사용된다.",
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false
+    },
+    {
+      "examId": "E029",
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_ad78c39cb384b8f7c42183424b8cf37172d3c0577ed584c52b42c50bee1ece10",
+      "sourcePath": "archive/exams/original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+      "currentSourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+      "currentSourceBlobSha1": "a608b1a6773e4dfd624eb782424b98e6427ac5f7",
+      "currentSourceRawSha256": "210efd28d8cc6dbe82b163191e9be2a617e3d603a638146939ad6089a71e6ad8",
+      "currentWholeQuestionStableSha256": "4d4400ace747e00764b4adb13d5077dccf1f9e1364f96e06b10527498abfc3bb",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E029/review.json",
+        "sha256": "cfaa00f0d5960c0007c3513e06faeaf2cc5b5d7ce508958afb7f8d149af2721a"
+      },
+      "nativeProposalRefs": [
+        "B-E029-CC-PRISM-VOLUME"
+      ],
+      "nativeItemStableSha256": "016b1c8cf43cf75c8f506720d94d34cb64118b7e7183e632b8476d4cd5a68ab0",
+      "nativeProtectedStudentFieldsChanges": [],
+      "currentProblemFigure": {
+        "commit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+        "path": "archive/assets/images/23_이수중_2학기_중간_중2_수학/q17.png",
+        "gitBlobSha1": "32b1079e5e19ed7d1bff1aa383c1df6660da7468",
+        "sha256": "1a9ef5c270c509687301f13c98f4d330cc0fdcd25178db1dc5ffcbc2c00a6e96",
+        "visuallyInspected": true
+      },
+      "definitionDisposition": "ADD_EXACT_NEW_CANONICAL_CC",
+      "addCrossConceptKey": "CC_PRISM_VOLUME",
+      "reviewedPrimaryContext": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURES",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME"
+      },
+      "nativeAfterCrossConceptKeys": [],
+      "applicabilityEvidence": "서로 닮은 두 삼각기둥이라는 stem과 대응 높이 10/5 도해를 확인했다. Primary의 닮음비로 큰 밑넓이를 구한 뒤, 각기둥의 밑넓이×높이로 절대 부피를 계산한다.",
+      "boundaryAndPreservation": "현재 main META_PIPELINE_AUDIT와 CC_SIMILAR_FIGURES_AREA_VOLUME가 존재한다. 본 정의 finalization은 기존 승인/CC의 삭제 또는 대체를 승인하지 않는다. 공식 보존과 별도 요청 결속이 필요하다.",
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false
+    },
+    {
+      "examId": "E052",
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_eddc33cba6efb30d346b546fa8321806fa1a9cc1c79920e2bbb374341ad204cc",
+      "sourcePath": "archive/exams/original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js",
+      "currentSourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+      "currentSourceBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "currentSourceRawSha256": "db837ddf4b9c1e2b609a920d0cd5515fe6eac34a051403c30e834068e4b7e77e",
+      "currentWholeQuestionStableSha256": "ec9f6ffaacdeac5e4f3a6e2f22e1c60246569776dfb63742afd6196da49d13b7",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E052/review.json",
+        "sha256": "b8a2d07916f13068082e4a294b5aab6579e454226c0beab3ea413055b9b15c50"
+      },
+      "nativeProposalRefs": [
+        "A-E052-PARALLELOGRAM-OPPOSITE-SIDES"
+      ],
+      "nativeItemStableSha256": "db8b8fbd5ee4a29916b1b101a188bf73191b9782422633b89528df3ddde30cd7",
+      "nativeProtectedStudentFieldsChanges": [],
+      "currentProblemFigure": {
+        "commit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+        "path": "archive/assets/images/20_팔마중_2학기_기말_중2_기출/q06.png",
+        "gitBlobSha1": "b51961d2c2cc653d2077a0c974e75fa737c06cf5",
+        "sha256": "51d59e46a6bb8986bfd69eb2e1c9c2d7711a00b2529c0158e89cf0496478cc6d",
+        "visuallyInspected": true
+      },
+      "definitionDisposition": "ADD_EXACT_NEW_CANONICAL_CC",
+      "addCrossConceptKey": "CC_PARALLELOGRAM_OPPOSITE_SIDES_EQUAL",
+      "reviewedPrimaryContext": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE"
+      },
+      "nativeAfterCrossConceptKeys": [],
+      "applicabilityEvidence": "PNG의 AD/DB 및 FC 길이, BC∥DE와 AB∥EF를 확인했다. BDEF가 평행사변형임을 확인한 뒤 BF=DE를 사용해 BC를 DE와 주어진 길이의 합으로 나타내고 삼각형 선분비에 연결한다.",
+      "boundaryAndPreservation": "평행사변형 대변 등길이는 선분비 Primary 밖의 입력을 만드는 단계이다. 대각선 이등분이나 평행사변형 판정만 기록하는 키로 바꾸지 않는다.",
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false
+    },
+    {
+      "examId": "E058",
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_9d910d2bf5e2d195e25dd27d89ec5d4fb40c23145756682a8364528000479431",
+      "sourcePath": "archive/exams/original/middle/m2/2final/19_동산중_2학기_기말_중2_기출.js",
+      "currentSourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+      "currentSourceBlobSha1": "42b58e94128c45b894cd819fea364482248afea7",
+      "currentSourceRawSha256": "9422ef860055fbfd63ee5ae4dae97a8d9730271de953fe58a85854020d0d2120",
+      "currentWholeQuestionStableSha256": "d54b8288cc538cc0f53ab65b5c30bf65cf3ef7f2177ab855d4a70f4df1f13359",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E058/review.json",
+        "sha256": "9e408cc29001c8ac306980b67f9e145febc335d6a6471561cbf0f3c709e47d2b"
+      },
+      "nativeProposalRefs": [
+        "A-E058-PARALLELOGRAM-OPPOSITE-SIDES"
+      ],
+      "nativeItemStableSha256": "dd54177d9dc8c65523d64c82fd1f698902cbc06da214191d24620e704578d2bd",
+      "nativeProtectedStudentFieldsChanges": [],
+      "currentProblemFigure": {
+        "commit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+        "path": "archive/assets/images/19_동산중_2학기_기말_중2_기출/q09.png",
+        "gitBlobSha1": "3c5789d2ca0ea6c01623a71e3f53344ca897e529",
+        "sha256": "d871cc3418a09a79fec9f3e9178b06471dd444ff32fafcf09be818fc035204c8",
+        "visuallyInspected": true
+      },
+      "definitionDisposition": "ADD_EXACT_NEW_CANONICAL_CC",
+      "addCrossConceptKey": "CC_PARALLELOGRAM_OPPOSITE_SIDES_EQUAL",
+      "reviewedPrimaryContext": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+      },
+      "nativeAfterCrossConceptKeys": [
+        "CC_SEGMENT_MIDPOINT"
+      ],
+      "applicabilityEvidence": "평행사변형 ABCD, M/N의 중점 표기와 E/F 교점을 그림과 stem에서 확인했다. BC=AD를 BM=BC/2와 결합하여 교차 삼각형의 닮음비 입력을 만든다.",
+      "boundaryAndPreservation": "E052 제안과 같은 하나의 CC를 재사용한다. 기존 CC_SEGMENT_MIDPOINT는 별도 중점 입력으로 유지 대상이다.",
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false
+    },
+    {
+      "examId": "E059",
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_7c0c618d63f2d9206e5e301a165195bbdf84f94024985da9a551967f5eedea78",
+      "sourcePath": "archive/exams/original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+      "currentSourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+      "currentSourceBlobSha1": "d02155dc9bda42ff2a5b097a62b604664183ada5",
+      "currentSourceRawSha256": "0e25904c3ccb7dabfd18699b5252b8133bd2c464253e7f3f4000d9e94043eddd",
+      "currentWholeQuestionStableSha256": "9fb898c64f3a59e0cc38cc6713836d7104834fde34cd1be2d3b205e390bfdc4e",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+        "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544"
+      },
+      "nativeProposalRefs": [
+        "B-E059-INCIRCLE-SEMIPERIMETER"
+      ],
+      "nativeItemStableSha256": "b86b62c49b618d13b59a114e74489d17791fbe8cc4d2830e2e1ac76be397f298",
+      "nativeProtectedStudentFieldsChanges": [],
+      "currentProblemFigure": {
+        "commit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+        "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q07.png",
+        "gitBlobSha1": "dfc921a97bdba726eed0a4da76842d6c93dbbb2c",
+        "sha256": "5fdd824e91ef61c6ea52a8c619b842cf2631881e34c481d235607c66717fde74",
+        "visuallyInspected": true
+      },
+      "definitionDisposition": "ADD_EXACT_NEW_CANONICAL_CC",
+      "addCrossConceptKey": "CC_TRIANGLE_AREA_INRADIUS_SEMIPERIMETER",
+      "reviewedPrimaryContext": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION"
+      },
+      "nativeAfterCrossConceptKeys": [
+        "CC_TRIANGLE_INCENTER",
+        "CC_TRIANGLE_AREA"
+      ],
+      "applicabilityEvidence": "현재 PNG에서 D-G-I-E가 BC와 평행한 단면 위에 놓임을 확인했다. 현재 해설은 무게중심 높이비와 내접반지름을 연결하고 S=rs 및 밑변×높이/2를 결합한다.",
+      "boundaryAndPreservation": "기존 CC_TRIANGLE_INCENTER와 CC_TRIANGLE_AREA는 각각 내접반지름 높이와 밑변·높이 넓이 단계에 사용된다. 이번 새 CC 추가 근거는 두 관계를 잇는 S=rs이다.",
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false
+    },
+    {
+      "examId": "E059",
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9",
+      "sourcePath": "archive/exams/original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+      "currentSourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+      "currentSourceBlobSha1": "d02155dc9bda42ff2a5b097a62b604664183ada5",
+      "currentSourceRawSha256": "0e25904c3ccb7dabfd18699b5252b8133bd2c464253e7f3f4000d9e94043eddd",
+      "currentWholeQuestionStableSha256": "310563a7ad5db98006ff9a579558bb49547f6243a3692537e0048d4ff8e3f96d",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+        "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544"
+      },
+      "nativeProposalRefs": [
+        "B-E059-CYLINDER-UNFOLD"
+      ],
+      "nativeItemStableSha256": "483fa36585c539acfb2b0f443a5fa52237a9d0815346d2f608d3bcbd3ced86c7",
+      "nativeProtectedStudentFieldsChanges": [],
+      "currentProblemFigure": {
+        "commit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+        "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q12.png",
+        "gitBlobSha1": "bdeea55f8465490f7d49e7ffeaae6850176677d8",
+        "sha256": "fb6e7b003d77e4e943d0ccf81308b879c6d3fd63c23376c2caae45303f7b2c2d",
+        "visuallyInspected": true
+      },
+      "definitionDisposition": "ADD_EXACT_NEW_CANONICAL_CC",
+      "addCrossConceptKey": "CC_CYLINDER_LATERAL_UNFOLDING_SHORTEST_PATH",
+      "reviewedPrimaryContext": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION"
+      },
+      "nativeAfterCrossConceptKeys": [
+        "CC_CIRCLE_CIRCUMFERENCE"
+      ],
+      "applicabilityEvidence": "PNG에서 A/B는 같은 모선의 위/아래 끝점이고 실은 옆면을 한 바퀴 감는다. stem의 반지름/높이와 고정 한 바퀴 조건을 직사각형 전개 끝점에 대응한 후 직선 최단 경로를 피타고라스로 계산한다.",
+      "boundaryAndPreservation": "경로는 옆면과 지정된 감김수에 한정된다. 밑면을 통과하는 공간 직선 또는 임의 감김수의 최단거리로 바꾸지 않는다. 기존 원둘레 CC는 가로 길이 입력에 독립 사용된다.",
+      "newMathematicalQa": false,
+      "newMetadataApproval": false,
+      "difficultyChanged": false
+    }
+  ],
+  "explicitExclusions": [
+    {
+      "nativeProposalId": "E004-CC30",
+      "questionUid": "qid_v1_4c3c6a8816838082caa89b0de54e590e7149574d94416b81e51b5a9773c2ba80",
+      "reason": "Native proposal lists a second supporting UID, but this independent task selects only E004 Q10. No automatic approval/application to the uninspected second UID."
+    }
+  ],
+  "ownershipContract": {
+    "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+    "sections": [
+      "14.5 CrossConcept Shard",
+      "14.7 Ownership Lock"
+    ],
+    "principle": "One conceptKey has exactly one concept shard owner. Cross-pack reuse does not create duplicate definitions.",
+    "commit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+    "gitBlobSha1": "8cd98707cb79cabdbb145b60d8d989b1f8cb0046",
+    "sha256": "f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9"
+  },
+  "sourceCurriculumHandling": "No source curriculum value is inferred or changed by this definition finalization. Empty curriculumRefs in candidate records avoid asserting an unreviewed curriculum scope; official request scope must use its own verified provenance.",
+  "registryAndConsumerStatus": "NOT_RUN: this evidence finalizes exact definitions and selected applications; the official registrar must apply registryChanges, prove actual source/metadata authority, preserve existing approvals, and run projection/Consumer.",
+  "sourceReviewCompatibility": "This is a separate narrow definition evidence schema, not a fabricated native FINAL_QA/REVIEW2 packet. Do not rewrite immutable native after fields to make them appear already approved."
+}
