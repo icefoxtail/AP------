@@ -527,7 +527,7 @@ window.questionBank = [
     "provenance": "ALIVE_REPLACEMENT",
     "sourceMode": "ALIVE_REPLACEMENT",
     "score": 4,
-    "content": "밑변의 길이가 $6\\sqrt3$ cm이고 높이가 $4$ cm인 삼각형이 있다. 높이가 $3$ cm인 직사각형과 넓이가 같을 때, 직사각형의 가로 길이는? [4점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q10-problem-label-layout-v2.svg\">",
+    "content": "밑변의 길이가 $6\\sqrt3$ cm이고 높이가 $4$ cm인 삼각형이 있다. 높이가 $3$ cm인 직사각형과 넓이가 같을 때, 직사각형의 가로 길이는? [4점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q10-audit-rework.svg\">",
     "choices": [
       "$\\frac{5\\sqrt3}{3}$",
       "$2\\sqrt3$",
@@ -586,7 +586,8 @@ window.questionBank = [
       "replacementReason": "original q10 relied on inaccessible geometry PNG; replacement preserves area-equivalence with radicals, score, grade and difficulty",
       "replacementStage": "CREATE"
     },
-    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q10-problem-label-layout-v2.svg",
+    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q10-audit-rework.svg",
+    "imageSize": "full",
     "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q10-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 같은 파란색으로 채운 삼각형과 직사각형의 넓이가 같고, 각 도형의 밑변 또는 가로와 높이를 구별한다.",
     "solutionImageCaption": "삼각형과 직사각형의 같은 넓이 관계. 직사각형의 가로 길이는 4√3 cm.",

@@ -2094,7 +2094,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "AUDITED_REPAIR",
     "score": 6,
-    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $AB=6$, $AD=4$, $CD=2$일 때, $\\cos B$의 값을 구하여라. (6점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q24.svg\" alt=\"C가 직각이고 D가 BC 위에 있는 삼각형, AB=6, AD=4, CD=2\" />",
+    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $AB=6$, $AD=4$, $CD=2$일 때, $\\cos B$의 값을 구하여라. (6점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q24-audit-rework.svg\" alt=\"C가 직각이고 D가 BC 위에 있는 삼각형, AB=6, AD=4, CD=2\" />",
     "choices": [],
     "answer": "\\frac{\\sqrt6}{3}",
     "solution": "$D$가 $BC$ 위에 있고 $\\angle C=90^\\circ$이므로 $AC\\perp CD$이다. 직각삼각형 $ACD$에서 $AD^2=AC^2+CD^2$이므로 $AC^2=4^2-2^2=12$, 즉 $AC=2\\sqrt3$이다. 직각삼각형 $ABC$에서 $BC^2=AB^2-AC^2=6^2-12=24$이므로 $BC=2\\sqrt6$이다. 따라서 $\\cos B=BC/AB=2\\sqrt6/6=\\sqrt6/3$이다.",

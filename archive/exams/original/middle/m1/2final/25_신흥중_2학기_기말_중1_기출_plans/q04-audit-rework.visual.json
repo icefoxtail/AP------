@@ -1,0 +1,297 @@
+{
+  "sourcePath": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+  "questionId": 4,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "B"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "45"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "B"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "45"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k1",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k2",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "O",
+                "C"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "outside1",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "outside2",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "inside1",
+            "refs": [
+              "O",
+              "A"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "inside2",
+            "refs": [
+              "O",
+              "B"
+            ],
+            "dashed": true
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "coordinateCanvas": {
+          "width": 630,
+          "height": 420
+        },
+        "caption": "중심각이 45도인 두 부채꼴과 그 사이의 색칠 영역",
+        "accessibilityDescription": "두 반지름은 공통 중심에서 시작하며, 안쪽 호까지 4센티미터이고 바깥 호까지 8센티미터이다.",
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "inner",
+              "circle": "k1",
+              "center": "O",
+              "to": "B",
+              "side": "MINOR",
+              "from": "A"
+            },
+            {
+              "id": "outer",
+              "circle": "k2",
+              "center": "O",
+              "to": "D",
+              "side": "MINOR",
+              "from": "C"
+            }
+          ],
+          "regions": [
+            {
+              "id": "fill",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "A",
+                    "steps": [
+                      {
+                        "to": "C"
+                      },
+                      {
+                        "to": "D",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "B"
+                      },
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "central",
+              "refs": [
+                "A",
+                "O",
+                "B"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "value": 45,
+              "label": "45"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "short",
+              "from": "O",
+              "to": "A",
+              "label": "4",
+              "side": "ABOVE",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 4
+            },
+            {
+              "id": "long",
+              "from": "O",
+              "to": "D",
+              "label": "8",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 8
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 30,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

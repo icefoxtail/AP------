@@ -229,7 +229,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "두 변 $AB = 6, BC = 4$의 끼인각이 $120^\\circ$이므로\n\n$\\triangle ABC = \\dfrac{1}{2} \\times AB \\times BC \\times \\sin(180^\\circ - 120^\\circ)$\n$= \\dfrac{1}{2} \\times 6 \\times 4 \\times \\sin 60^\\circ$\n$= 12 \\times \\dfrac{\\sqrt{3}}{2} = 6\\sqrt{3}$\n\n정답은 ①이다.",
-    "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q6.svg",
+    "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q06-audit-rework.svg",
+    "imageSize": "full",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_유사/q6-solution.svg",
     "solutionImageAlt": "둔각삼각형 ABC 높이 CH",
     "solutionImageCaption": "각 B=120도의 외각 60도를 이용해 높이 h=2√3을 구한다.",
@@ -745,7 +746,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$A$에서 첫 번째 원의 접점까지의 길이를 $t$라 둔다.\n$B$쪽 접선 길이: $30 - t$\n$C$쪽 접선 길이: $24 - (30 - t) = t - 6$\n\n두 번째 원의 $D$쪽 접선 길이: $20 - (t - 6) = 26 - t$\n$AD = t + (26 - t) = 26$\n\n세 번째 원의 $E$쪽 접선 길이: $14 - (26 - t) = t - 12$\n네 번째 원의 $F$쪽 접선 길이: $10 - (t - 12) = 22 - t$\n$AF = t + (22 - t) = 22$\n\n$AD + AF = 26 + 22 = 48$\n\n정답은 ⑤이다.",
-    "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q18.svg",
+    "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q18-audit-rework.svg",
     "imageSize": "full",
 
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_유사/q18-solution.svg",

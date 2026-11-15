@@ -252,7 +252,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_팔마중_2학기_기말_중3_기출/q06-display-v2.svg",
+    "image": "assets/images/21_팔마중_2학기_기말_중3_기출/q06-audit-rework.svg",
     "imageSize": "full",
     "questionType": "객관식",
     "layoutTag": "grid",

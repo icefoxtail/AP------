@@ -1,0 +1,394 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",
+  "questionId": 17,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "45"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "X"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "45"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "25"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "arcOriginal",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "O",
+                "P"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "arcCopy",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "transferSeed",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "Q"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "15"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "arcTransfer",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "C",
+                "transferSeed"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "copyCross",
+              "op": "INTERSECTION",
+              "inputs": [
+                "arcCopy",
+                "arcTransfer"
+              ],
+              "args": {},
+              "outputType": "POINT_SET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "SELECT_POINT",
+              "inputs": [
+                "copyCross"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "branch": {
+                "kind": "SIDE_OF_ORIENTED_LINE",
+                "refs": [
+                  "A",
+                  "B"
+                ],
+                "sign": 1
+              }
+            },
+            {
+              "id": "rayEnd",
+              "op": "VECTOR_SCALE_POINT",
+              "inputs": [
+                "A",
+                "D"
+              ],
+              "args": {
+                "k": {
+                  "kind": "rational",
+                  "numerator": "2",
+                  "denominator": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "X",
+          "Y",
+          "P",
+          "Q",
+          "A",
+          "B",
+          "C",
+          "D",
+          "rayEnd"
+        ],
+        "displaySegments": [
+          {
+            "id": "originalBase",
+            "refs": [
+              "O",
+              "X"
+            ]
+          },
+          {
+            "id": "originalSide",
+            "refs": [
+              "O",
+              "Y"
+            ]
+          },
+          {
+            "id": "copyBase",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "copyRay",
+            "refs": [
+              "A",
+              "rayEnd"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sChord",
+            "refs": [
+              "P",
+              "Q"
+            ],
+            "dashed": true
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 430
+        },
+        "caption": "같은 반지름과 같은 현을 이용하여 크기가 같은 각을 작도한 그림",
+        "accessibilityDescription": "왼쪽의 원래 각과 오른쪽의 같은 크기로 옮긴 각을 점과 컴퍼스 호로 나타낸다.",
+        "planeMarks": {
+          "traces": [
+            {
+              "id": "original",
+              "center": "O",
+              "radius": {
+                "point": "P"
+              },
+              "through": [
+                "P",
+                "Q"
+              ],
+              "spanDeg": 18,
+              "span": "JOIN"
+            },
+            {
+              "id": "replica",
+              "center": "A",
+              "radius": {
+                "point": "C"
+              },
+              "through": [
+                "C",
+                "D"
+              ],
+              "spanDeg": 18,
+              "span": "JOIN"
+            },
+            {
+              "id": "chord",
+              "center": "C",
+              "radius": {
+                "point": "D"
+              },
+              "through": [
+                "D"
+              ],
+              "spanDeg": 19
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "rayEnd"
+        ],
+        "hiddenPointStyle": "NONE",
+        "pointNames": {
+          "X": "Y",
+          "Y": "X"
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 22,
+        "displayScale": 0.59,
+        "fontFloorCssPx": 11
+      }
+    }
+  ],
+  "sourceFigure": {
+    "path": "archive/assets/images/25_연향중_2학기_중간_중1_유사/q17.svg",
+    "note": "현재 인쇄 캡처의 이름·배치와 원문 작도 단계를 대조했다. 호의 중심·반지름과 교점은 작도 정의에 따라 복원한다."
+  }
+}

@@ -457,7 +457,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "아래 그림과 같은 ㉮, ㉯, ㉰, ㉱, ㉲, ㉳의 여섯 개의 영역으로 이루어진 지도를 서로 다른 여섯 가지 색의 전부 또는 일부를 사용하여 칠하려고 한다. 다음 조건을 만족시키는 경우의 수를 구하시오. [4.7점]\n<div style=\"text-align:center; margin:0; padding:0; line-height:0;\">\n<img src=\"assets/images/25_매산고_1학기_기말_고1_기출c/q13-problem-v2.svg\" style=\"display:block; margin:8px auto; width:280px; max-width:100%; height:auto; max-height:230px; object-fit:contain\" alt=\"중앙 ㉮, 이를 둘러싼 네 영역, 그리고 바깥 ㉳가 접하는 지도\">\n</div>\n<div class=\"question-table-wrap\">\n  <table class=\"question-table\">\n    <tr>\n      <td>(가) 한 영역에는 한 가지 색을 칠하며, 같은 색을 중복하여 칠해도 좋으나 인접한 영역은 서로 다른 색으로 칠한다.</td>\n    </tr>\n    <tr>\n      <td>(나) 영역 ㉮에 색칠된 색은 나머지 다섯 개의 영역에 색칠된 색과 겹치지 않는다.</td>\n    </tr>\n  </table>\n</div>",
+    "content": "아래 그림과 같은 ㉮, ㉯, ㉰, ㉱, ㉲, ㉳의 여섯 개의 영역으로 이루어진 지도를 서로 다른 여섯 가지 색의 전부 또는 일부를 사용하여 칠하려고 한다. 다음 조건을 만족시키는 경우의 수를 구하시오. [4.7점]\n<div style=\"text-align:center; margin:0; padding:0; line-height:0;\">\n<img src=\"assets/images/25_매산고_1학기_기말_고1_기출c/q13-audit-rework.svg\" style=\"display:block; margin:8px auto; width:280px; max-width:100%; height:auto; max-height:230px; object-fit:contain\" alt=\"중앙 ㉮, 이를 둘러싼 네 영역, 그리고 바깥 ㉳가 접하는 지도\">\n</div>\n<div class=\"question-table-wrap\">\n  <table class=\"question-table\">\n    <tr>\n      <td>(가) 한 영역에는 한 가지 색을 칠하며, 같은 색을 중복하여 칠해도 좋으나 인접한 영역은 서로 다른 색으로 칠한다.</td>\n    </tr>\n    <tr>\n      <td>(나) 영역 ㉮에 색칠된 색은 나머지 다섯 개의 영역에 색칠된 색과 겹치지 않는다.</td>\n    </tr>\n  </table>\n</div>",
     "choices": [
       "2520",
       "2540",

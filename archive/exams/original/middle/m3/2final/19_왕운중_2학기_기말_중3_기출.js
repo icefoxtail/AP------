@@ -1275,7 +1275,8 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q22-problem-v2.svg",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q22-audit-rework.svg",
+    "imageSize": "full",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",

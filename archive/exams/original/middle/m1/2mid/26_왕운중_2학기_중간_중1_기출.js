@@ -69,7 +69,7 @@ window.questionBank = [
     "tagStatus": "reviewed_pass",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q001_question-v2.svg",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q01-audit-rework.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q1-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 길이가 a인 선분 AB의 양 끝점 A, B에서 각각 파란 호의 ∠A와 주황 호의 ∠B를 그렸을 때, 두 반직선이 만나는 점 C로 삼각형 ABC가 만들어지는 그림.",

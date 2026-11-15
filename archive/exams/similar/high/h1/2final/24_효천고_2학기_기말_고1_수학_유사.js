@@ -340,7 +340,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "image": "assets/images/24_효천고_2학기_기말_고1_수학_유사/q7.svg",
+    "image": "assets/images/24_효천고_2학기_기말_고1_수학_유사/q07-audit-rework.svg",
     "imageSize": "full",
     "content": "유리함수 $f(x)=\\dfrac{ax+b}{x+c}$의 그래프가 그림과 같을 때, 무리함수 $g(x)=\\sqrt{cx+b}+a$의 그래프가 지나는 사분면을 모두 적은 것은? [3.6점]",
     "choices": [

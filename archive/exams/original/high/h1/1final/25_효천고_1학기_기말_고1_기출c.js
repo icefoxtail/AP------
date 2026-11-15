@@ -247,7 +247,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "직각을 낀 두 변의 길이가 20cm와 60cm인 직각삼각형 모양의 자투리 천이 있다. 이 천에서 아래 그림과 같이 세로의 길이가 $a$cm인 직사각형 모양을 잘라내어 가방을 만들려고 한다. 직사각형의 넓이가 최대가 되도록 자를 때, $a$의 값은? [4점]<br><img src=\"assets/images/25_효천고_1학기_기말_고1_기출c/q7-problem-v2.svg\" style=\"display:block; margin:8px auto; width:280px; max-width:100%; height:auto; max-height:185px; object-fit:contain\" alt=\"20 cm와 60 cm인 직각변이 있는 삼각형 안에서 높이가 a cm인 직사각형\">",
+    "content": "직각을 낀 두 변의 길이가 20cm와 60cm인 직각삼각형 모양의 자투리 천이 있다. 이 천에서 아래 그림과 같이 세로의 길이가 $a$cm인 직사각형 모양을 잘라내어 가방을 만들려고 한다. 직사각형의 넓이가 최대가 되도록 자를 때, $a$의 값은? [4점]<br><img src=\"assets/images/25_효천고_1학기_기말_고1_기출c/q07-audit-rework.svg\" style=\"display:block; margin:8px auto; width:280px; max-width:100%; height:auto; max-height:185px; object-fit:contain\" alt=\"20 cm와 60 cm인 직각변이 있는 삼각형 안에서 높이가 a cm인 직사각형\">",
     "choices": [
       "$2$",
       "$3$",

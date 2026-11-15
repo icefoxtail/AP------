@@ -294,7 +294,7 @@ window.examData = {
     {
       "number": 20,
       "score": 5,
-      "question": "다음 그림과 같이 모선의 길이가 $12\\,\\mathrm{cm}$, 밑면의 반지름의 길이가 $2\\,\\mathrm{cm}$인 원뿔에서 점 $\\mathrm{M}$은 모선 $\\overline{\\mathrm{OB}}$의 중점이다. 점 $\\mathrm{B}$에서 꼭짓점 $\\mathrm{O}$를 지나지 않고 원뿔의 옆면을 정확히 한 바퀴 돌아 점 $\\mathrm{M}$에 이르는 경로 중 가장 짧은 길이는?(5점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q20_audited.svg\" />",
+      "question": "다음 그림과 같이 모선의 길이가 $12\\,\\mathrm{cm}$, 밑면의 반지름의 길이가 $2\\,\\mathrm{cm}$인 원뿔에서 점 $\\mathrm{M}$은 모선 $\\overline{\\mathrm{OB}}$의 중점이다. 점 $\\mathrm{B}$에서 꼭짓점 $\\mathrm{O}$를 지나지 않고 원뿔의 옆면을 정확히 한 바퀴 돌아 점 $\\mathrm{M}$에 이르는 경로 중 가장 짧은 길이는?(5점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q20-audit-rework.svg\" />",
       "choices": [
         "$6\\sqrt{2}\\,\\mathrm{cm}$",
         "$6\\sqrt{3}\\,\\mathrm{cm}$",
