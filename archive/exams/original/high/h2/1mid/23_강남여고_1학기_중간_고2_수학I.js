@@ -797,6 +797,7 @@ window.questionBank = [
       "3"
     ],
     "image": "assets/images/23_강남여고_1학기_중간_고2_수학I/q18.png",
+    "imageAlt": "좌표평면에 직선 y=−x+a와 지수곡선 y=2^(x+1)+b, 로그곡선 y=log₂(x−b)−1을 그리고, 교점 A·B와 각 축의 절편 C·D·E를 표시했다.",
     "answer": "②",
     "solution": "$s=\\overline{y_A}=a-x_A$라 두면 $s>0$이다. B가 AC를 $4:1$로 내분하므로\n$B=(a-\\frac{s}{5},\\frac{s}{5})$이다. 넓이 조건에서\n$[AOB]=\\frac45[AOC]=\\frac45\\cdot\\frac{as}{2}=12$,\n따라서 $as=30$이다.\nA가 지수곡선 위에 있으므로 $b=s-2^{a-s+1}$이고, B가 로그곡선 위에 있으므로\n$a-\\frac{s}{5}-b=2^{1+\\frac{s}{5}}$이다. $a=\\frac{30}{s}$를 대입하면\n$F(s)=\\frac{30}{s}-\\frac{6s}{5}+2^{\\frac{30}{s}-s+1}-2^{1+\\frac{s}{5}}=0$.\n각 항을 미분하면 $F'(s)<0$ ($s>0$)이므로 해는 하나뿐이다. $s=5$가 식을 만족하므로 $a=6$, $b=1$이다.\n$D=(0,3)$, $E=(3,0)$이어서 $[DOE]=\\frac12\\cdot3\\cdot3=\\frac92$.\n정답은 ②이다.",
     "score": 4.5,
@@ -937,6 +938,7 @@ window.questionBank = [
       "$\\frac{3}{2}$"
     ],
     "image": "assets/images/23_강남여고_1학기_중간_고2_수학I/q21.png",
+    "imageAlt": "지름 AB인 반원에서 중심 O와 호 위의 P, ∠PAB=30°, O에서 AP에 내린 수선의 발 Q, P에서 AB에 내린 수선의 발 R을 표시했다.",
     "answer": "④",
     "solution": "반지름을 $r$이라 하자. $\\angle PAB=30^\\circ$이므로 중심각 $\\angle POB=60^\\circ$이다.\n좌표를 $A=(0,0)$, $O=(r,0)$로 잡으면 $P=(\\frac{3r}{2},\\frac{\\sqrt3r}{2})$이다.\n직선 AP 방향 단위벡터는 $(\\frac{\\sqrt3}{2},\\frac12)$이므로\n$AQ=\\frac{\\sqrt3r}{2}$, $OQ=\\frac r2$.\n$[QAO]=\\frac12\\cdot\\frac{\\sqrt3r}{2}\\cdot\\frac r2=\\frac{\\sqrt3r^2}{8}=\\frac{\\sqrt[4]{27}}2$에서\n$r^2=4\\sqrt[4]3$이다.\n또 $AR=\\frac{3r}{2}$, $BR=\\frac r2$이므로\n$AR\\cdot BR=\\frac{3r^2}{4}=3^{\\frac{5}{4}}$.\n따라서 로그값은 $\\frac54$이고 정답은 ④이다.",
     "score": 4.5,
