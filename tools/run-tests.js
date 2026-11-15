@@ -63,6 +63,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-main-merge-meta.test.mjs']
   },
   {
+    label: 'tests/archive-main-meta-batch-replay.test.mjs',
+    args: ['--test', 'tests/archive-main-meta-batch-replay.test.mjs']
+  },
+  {
     label: 'tests/item-4slot-runtime.test.cjs',
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
   },
