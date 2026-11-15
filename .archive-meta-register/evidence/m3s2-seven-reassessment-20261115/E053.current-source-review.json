@@ -1,0 +1,751 @@
+{
+  "schemaVersion": "m3-s2-complete-semantic-review-v1",
+  "reviewScope": "TARGETED_CURRENT_SOURCE_MATH_FIGURE_AND_METADATA_REASSESSMENT",
+  "schemaUse": "The full UID/ordinal denominator is structural only. Only selected ordinals were rechecked; every other row is OUTSIDE_REASSESSMENT_SCOPE. No new whole-exam R1/R2/R3 or blind review is claimed.",
+  "examId": "E053",
+  "taskId": "8820808e-b9a6-4ef0-9a50-b03953b2439c",
+  "author": "GPT_SUBAGENT_E053_REVIEW",
+  "rootIntegrator": "GPT_ROOT_12FB47B9B1B3",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+  "reviewBaseCommit": "4337ea4c70eff7b5ceb6b3c553b6af6c7bc76a4b",
+  "integrationBaseCommit": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+  "sourceAfterBlob": "45c81f4c1e0e1d7d42a2d8ad17bc96219e2f46a5",
+  "sourceAfterSha256": "c1991de72906533d51bb9a07baf10e3cd5f52df0df2c3297d222f2267e1c9eca",
+  "questionCount": 24,
+  "selectedUidCount": 5,
+  "selectedOrdinals": [
+    4,
+    11,
+    15,
+    20,
+    23
+  ],
+  "fullMathematicalQa": false,
+  "newReviewPassCount": 0,
+  "targetedCurrentSourceMathReviewed": true,
+  "selectedQuestionMathPassCount": 5,
+  "priorAnswersVisible": true,
+  "blindReviewClaim": false,
+  "originalPngDirectComparison": false,
+  "browserOrDeviceQa": "NOT_RUN",
+  "renderMethod": "Inkscape 1.x SVG-to-PNG, direct PNG observation",
+  "metadataReviewScope": "Reconfirm unchanged accepted semantic/difficulty declarations against these current questions; reuse prior official PT/TPL and four-slot decisions. No new canonical mapping approval.",
+  "originalSemanticReview": {
+    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E053.meta.json",
+    "sha256": "d4d83b714748dcb61f985806a3e0e2371702823acde32233323b6a0d99b8f60b"
+  },
+  "priorNarrowReview": {
+    "path": "docs/operations/m3-s2-release-20261115/E053.current-figure-review.json",
+    "sha256": "d46beb78457213236a199e1469a713d026233eb674144916bea15aa7803b8002"
+  },
+  "supportingEvidenceRefs": [
+    {
+      "path": "docs/operations/m3-s2-release-20261115/E053.current-figure-review.json",
+      "sha256": "d46beb78457213236a199e1469a713d026233eb674144916bea15aa7803b8002"
+    }
+  ],
+  "currentReviewerReport": {
+    "provider": "GoogleDrive",
+    "fileId": "1qTZR6sj_7l8tW4JX5Lrxm1QEW0l3k9BQ",
+    "url": "https://drive.google.com/file/d/1qTZR6sj_7l8tW4JX5Lrxm1QEW0l3k9BQ/view",
+    "sha256": "171fbf09c83efc5633d8f0a403608f681eedb22db906d1586c95fa9bbf60e54a",
+    "readbackRawSha256": "171fbf09c83efc5633d8f0a403608f681eedb22db906d1586c95fa9bbf60e54a",
+    "role": "Actual selected-question calculation and exact current asset inspection"
+  },
+  "nonblockingObservations": [
+    {
+      "ordinal": 23,
+      "asset": "archive/assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png",
+      "finding": "Legacy raster right unit suffix clipped; x and all required numeric/orthogonal conditions remain legible.",
+      "impact": "No ambiguity in asked value or answer. This observation is not a claim of a pristine full-image layout."
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_8e243b2ca85156e84b542d0a628f2078ebef473dc3e4994b95f5253079fe1e04",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_510825ad2ee8b8968bf1ee29f41945a908b8fe8fb8134d9f0bff3e78550228f0",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_31e0bad9f8239222c191bf35790beb096bb8bac998c62cd943e182da5ae43aa6",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_3357fd243a5db407de3f6bfa9a346d747e1e75679e29b829eb342fa05755b9c6",
+      "decision": "KEEP",
+      "decisiveStep": "현 해설의 AA 닮음 BCD∼BAC로 AB=BC²/BD를 먼저 복원한 다음 sinA=BC/AB를 계산한다. 목표가 길이 아닌 삼각비이므로 DIRECT_MEASURE에서 GEOMETRIC_DERIVATION으로 교정한다.",
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "crossConceptKeys": [
+          "CC_RIGHT_TRIANGLE_SIMILARITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryId": "M3-RPM-055",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "sin·cos·tan"
+        },
+        "rpmL3": "삼각비의 뜻",
+        "rpmL4": "sin·cos·tan",
+        "primaryMethod": "현 해설의 AA 닮음 BCD∼BAC로 AB=BC²/BD를 먼저 복원한 다음 sinA=BC/AB를 계산한다. 목표가 길이 아닌 삼각비이므로 DIRECT_MEASURE에서 GEOMETRIC_DERIVATION으로 교정한다.",
+        "decisiveStep": "현 해설의 AA 닮음 BCD∼BAC로 AB=BC²/BD를 먼저 복원한 다음 sinA=BC/AB를 계산한다. 목표가 길이 아닌 삼각비이므로 DIRECT_MEASURE에서 GEOMETRIC_DERIVATION으로 교정한다.",
+        "difficultyReason": "주어진 수선에서 직각삼각형 닮음을 적용한 뒤 정의를 연결하는 정형2이다.",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReason": "현 해설의 AA 닮음 BCD∼BAC로 AB=BC²/BD를 먼저 복원한 다음 sinA=BC/AB를 계산한다. 목표가 길이 아닌 삼각비이므로 DIRECT_MEASURE에서 GEOMETRIC_DERIVATION으로 교정한다.",
+        "nullReason": null,
+        "metaEvidenceDebt": "NONE",
+        "meaningMeta": {
+          "semanticStatus": "FINAL",
+          "rpmPrimaryId": "M3-RPM-055",
+          "rpmPrimaryPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "rpmL3": "삼각비의 뜻",
+          "rpmL4": "sin·cos·tan",
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReason": "현 해설의 AA 닮음 BCD∼BAC로 AB=BC²/BD를 먼저 복원한 다음 sinA=BC/AB를 계산한다. 목표가 길이 아닌 삼각비이므로 DIRECT_MEASURE에서 GEOMETRIC_DERIVATION으로 교정한다."
+        },
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "debts": [],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "inheritedSemanticDecision": "CORRECT",
+      "currentFingerprints": {
+        "sourceFingerprint": "c57beca876217225f068b31045de893f47048e09f8f061e984c2368820dfb84d",
+        "contentFingerprint": "5914cc5a16de32b31880289afc27e842b9bfb83a03397d7eb4a3880caf65b4bb"
+      },
+      "targetedCurrentSourceChecks": {
+        "mathematicalReview": "PASS",
+        "calculation": {
+          "ordinal": 4,
+          "studentConditions": "C is right; D lies on AB; CD perpendicular AB; BC=15; BD=9.",
+          "calculation": "Triangle BCD is similar to BAC, so BC/BA=BD/BC, BA=225/9=25; sin A=15/25=3/5.",
+          "result": "② (3/5)"
+        },
+        "answerComparison": {
+          "sourceAnswer": "②",
+          "status": "MATCH"
+        },
+        "curriculumReview": "PASS_M3_STUDENT_METHOD",
+        "visualReview": "PASS_CURRENT_SOURCE_PARITY",
+        "visualObservation": "문제 렌더에서 C와 D의 직각, D∈AB, BC=15, BD=9가 확인된다. 해설 렌더의 AB=25와 대응 삼각형 관계가 풀이와 일치한다. 문제 그림에 계산된 AB나 정답이 노출되지 않는다.",
+        "metadataRationale": "닮음으로 빗변을 구한 뒤 sin의 정의를 적용한다. M3-05/TRIG_RATIO 및 RPM 삼각비의 뜻/sin·cos·tan이 목표이고, CC_RIGHT_TRIANGLE_SIMILARITY가 실제 보조 개념이다. 익숙한 닮음→정의의 순차 적용이므로 bucket2를 유지한다.",
+        "sourceProvenance": "ORIGINAL"
+      },
+      "assets": [
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q4-problem-v2.svg",
+          "sha256": "6a44ee513959d2ac701d229bce1a0f8cdc9039168167c2ca6c8baca2a8c666a0",
+          "gitBlobSha1": "592b6f5d72175fbd6151d89b7153975b57f8b0bf",
+          "rasterChecks": [
+            {
+              "sha256": "160d8b1c54b2bda447bf2a31fb0af5026dce397d22d699f7a2cb1d16b9468b6d",
+              "inspection": "ACTUAL_RENDER_VISUALLY_INSPECTED"
+            }
+          ]
+        },
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q4-solution.svg",
+          "sha256": "1e3756a6db7e2ce4b02c9fe2eb5b7aa43dab711dd94c3aeb6b55637be739ba32",
+          "gitBlobSha1": "0de9308884d999ab72418b394e1671ba0e97ba91",
+          "rasterChecks": [
+            {
+              "sha256": "527eb313bc499df5013e04f22a494d61b772c5851911a478e50b1a022fea12a0",
+              "inspection": "ACTUAL_RENDER_VISUALLY_INSPECTED"
+            }
+          ]
+        }
+      ],
+      "fullExamReview": false,
+      "originalPngDirectComparison": false,
+      "sourceChangesRequired": false
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_97a0e6cfa94ec7e5ce66e009437556e98844f56cfb4cba5745a41823525381d1",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_5fb6052e34bb1abf618509b097f7cd6d9909ce2ae3d92752e582eab082c23d2b",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_80298469d51d949f4b6d3da50cf0aebc472a6141cfe549a2d1a4ba7f3703d963",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_459ce0cd913c975dcfa4f18a0191520a7500615f439ec39b4b096a5bc4acbb8f",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_0403c59b3633afbcf91f585663291447fcdc05b62b678f11d08a1bf12c20e4b2",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_cac395d0e641db31367b4e34e1d91e454d3bf9521c70ee9e2500650ee215707c",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_ec0c7e5d18f9d5ae587ebc6e996c294efe56dff023af9fdc26c06adaa7465814",
+      "decision": "KEEP",
+      "decisiveStep": "빗변c와 각A가 주어져 두 직각변을 c cosA,c sinA로 직접 표현한다.",
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryId": "M3-RPM-059",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비와 길이",
+          "l4": "직각삼각형의 변"
+        },
+        "rpmL3": "삼각비와 길이",
+        "rpmL4": "직각삼각형의 변",
+        "primaryMethod": "빗변c와 각A가 주어져 두 직각변을 c cosA,c sinA로 직접 표현한다.",
+        "decisiveStep": "빗변c와 각A가 주어져 두 직각변을 c cosA,c sinA로 직접 표현한다.",
+        "difficultyReason": "정의식을 길이식으로 바로 쓰는1이다.",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReason": "빗변c와 각A가 주어져 두 직각변을 c cosA,c sinA로 직접 표현한다.",
+        "nullReason": null,
+        "metaEvidenceDebt": "NONE",
+        "meaningMeta": {
+          "semanticStatus": "FINAL",
+          "rpmPrimaryId": "M3-RPM-059",
+          "rpmPrimaryPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비와 길이",
+            "l4": "직각삼각형의 변"
+          },
+          "rpmL3": "삼각비와 길이",
+          "rpmL4": "직각삼각형의 변",
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReason": "빗변c와 각A가 주어져 두 직각변을 c cosA,c sinA로 직접 표현한다."
+        },
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "debts": [],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "inheritedSemanticDecision": "CORRECT",
+      "currentFingerprints": {
+        "sourceFingerprint": "fc2fc79493ea3e9eea331ece45c563e3b3b44961aa6bb577d9be6d02a55d141d",
+        "contentFingerprint": "79e2574ebd6adde24addaadc9f31fb17ca48a20aea7d7bea28d78b7ba145f189"
+      },
+      "targetedCurrentSourceChecks": {
+        "mathematicalReview": "PASS",
+        "calculation": {
+          "ordinal": 11,
+          "studentConditions": "Triangle ABC is right at C; AB=c; specified acute angle A.",
+          "calculation": "cos A=AC/c and sin A=BC/c, so AC=c cos A; BC=c sin A.",
+          "result": "③"
+        },
+        "answerComparison": {
+          "sourceAnswer": "③",
+          "status": "MATCH"
+        },
+        "curriculumReview": "PASS_M3_STUDENT_METHOD",
+        "visualReview": "PASS_CURRENT_SOURCE_PARITY",
+        "visualObservation": "문제 렌더에서 C 직각, AB=c, ∠A가 확인된다. 해설에서 빗변/이웃변/맞은편변의 색 구분 및 C 직각이 발문과 맞는다.",
+        "metadataRationale": "주어진 빗변과 각으로 이웃변·맞은편변을 직접 표현한다. M3-05/TRIG_RATIO 및 RPM 삼각비와 길이/직각삼각형의 변을 유지한다. 추가 개념·특수 조건이 없고 직접 정의 적용이므로 CC=[], condition=[], integration=NONE, bucket1을 유지한다.",
+        "sourceProvenance": "ORIGINAL"
+      },
+      "assets": [
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q11-problem-v2.svg",
+          "sha256": "c3d6191931bb04c22211791901b0572d90de2501aa9b88940b61951112ed14d7",
+          "gitBlobSha1": "578ce844b7d14be1bcbf07f3602a4bdc218abdae",
+          "rasterChecks": [
+            {
+              "sha256": "d6e372cefd35b68478550a40f992e9136266727440838aa2ea5b5e0513ca237a",
+              "inspection": "ACTUAL_RENDER_VISUALLY_INSPECTED"
+            }
+          ]
+        },
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q11-solution.svg",
+          "sha256": "72335e5312296695be84a0eedf4b0f78d6f59c7db442489c8264a4beff6b9f76",
+          "gitBlobSha1": "0e3fe1d690c6c23a9fc6b08356b65efbacf42d67",
+          "rasterChecks": [
+            {
+              "sha256": "da24fde26c3b40b3234f4e44b8c657b24f35c96f10d121695f0211922861e842",
+              "inspection": "ACTUAL_RENDER_VISUALLY_INSPECTED"
+            }
+          ]
+        }
+      ],
+      "fullExamReview": false,
+      "originalPngDirectComparison": false,
+      "sourceChangesRequired": false
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_064a62112d4ebbf3711db2bd012a799fcc2c89eb06538487606ce85919f24554",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_f9c30aa4b26c0130118bdcaf64cde2ee61080b983751662b088c9a024e69c80f",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_248ce8639810ba146ddfae2af95cb30fa199cd57a8ee95aadf73225e8a61f63b",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_e2b38c9883111b002725b9d0609fbaed012fb0a1a5ea66185417097babf7e41d",
+      "decision": "KEEP",
+      "decisiveStep": "중심의 현 수직이등분 성질과 같은 중심거리↔같은 현의 길이를 각각 확인한다. 두 반지름만 같고 중심거리는 미지정이므로 각이 같다는 보기는 일반적으로 성립하지 않는다.",
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryId": "M3-RPM-069",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이"
+        },
+        "rpmL3": "원의 중심과 현",
+        "rpmL4": "중심거리와 현의 길이",
+        "primaryMethod": "중심의 현 수직이등분 성질과 같은 중심거리↔같은 현의 길이를 각각 확인한다. 두 반지름만 같고 중심거리는 미지정이므로 각이 같다는 보기는 일반적으로 성립하지 않는다.",
+        "decisiveStep": "중심의 현 수직이등분 성질과 같은 중심거리↔같은 현의 길이를 각각 확인한다. 두 반지름만 같고 중심거리는 미지정이므로 각이 같다는 보기는 일반적으로 성립하지 않는다.",
+        "difficultyReason": "현 길이·중심거리의 기본 성질을 표준 직각삼각형으로 확인하는2이다. 보기 수 자체가3을 만들지 않는다.",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReason": "중심의 현 수직이등분 성질과 같은 중심거리↔같은 현의 길이를 각각 확인한다. 두 반지름만 같고 중심거리는 미지정이므로 각이 같다는 보기는 일반적으로 성립하지 않는다.",
+        "nullReason": null,
+        "metaEvidenceDebt": "NONE",
+        "meaningMeta": {
+          "semanticStatus": "FINAL",
+          "rpmPrimaryId": "M3-RPM-069",
+          "rpmPrimaryPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "rpmL3": "원의 중심과 현",
+          "rpmL4": "중심거리와 현의 길이",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReason": "중심의 현 수직이등분 성질과 같은 중심거리↔같은 현의 길이를 각각 확인한다. 두 반지름만 같고 중심거리는 미지정이므로 각이 같다는 보기는 일반적으로 성립하지 않는다."
+        },
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "debts": [],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "inheritedSemanticDecision": "CORRECT",
+      "currentFingerprints": {
+        "sourceFingerprint": "46726a3a50773df4c84c46542d005aec2c93a62af9c8ae4de65a47c4bb72d7e2",
+        "contentFingerprint": "71795e2ae1af3cf3ba7130362d836dd14e0630548789abe52756b4ce278bac51"
+      },
+      "targetedCurrentSourceChecks": {
+        "mathematicalReview": "PASS",
+        "calculation": {
+          "ordinal": 15,
+          "studentConditions": "O is circle center; OM perpendicular chord AB, ON perpendicular chord CD; no equality of chord lengths is assumed.",
+          "calculation": "Perpendicular from center bisects chord: AM=BM. For radius r and distances d1,d2, half-chords are sqrt(r²-d1²),sqrt(r²-d2²), proving both equal-distance iff equal-chord statements. OAM=OCN is not unconditional: different center distances give different acute angles.",
+          "result": "④ (ㄱ,ㄷ,ㄹ)"
+        },
+        "answerComparison": {
+          "sourceAnswer": "④",
+          "status": "MATCH"
+        },
+        "curriculumReview": "PASS_M3_STUDENT_METHOD",
+        "visualReview": "PASS_CURRENT_SOURCE_PARITY",
+        "visualObservation": "문제 렌더에서 두 현 AB,CD와 수선 OM,ON이 서로 다르게 그려지고 수선의 발 M,N이 보인다. 해설의 AM=BM, CN=ND 표식은 서로 다른 눈금으로 구분하여 두 현이 항상 같다는 잘못된 조건을 부여하지 않는다.",
+        "metadataRationale": "원의 중심에서 현에 내린 수선, 중심거리와 현 길이의 동치가 판단 핵심이다. M3-06/CIRCLE_LINE 및 RPM 원의 중심과 현/중심거리와 현의 길이를 유지한다. 현 해설에서 두 방향에 피타고라스 정리를 명시 사용하므로 CC_PYTHAGOREAN/SEQUENTIAL을 유지한다. 익숙한 기본 성질의 보기 판단으로 bucket2를 유지한다.",
+        "sourceProvenance": "ORIGINAL"
+      },
+      "assets": [
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q15-problem-v2.svg",
+          "sha256": "8418bb8d7391b3f771eba98887ee6a181d7adf87cadf96908172a6b9adcaef0e",
+          "gitBlobSha1": "ef7189a939e0f954f8eae8469022583f5c79b566",
+          "rasterChecks": [
+            {
+              "sha256": "b69f868880b9a45fd74b0cd003d592750baa4ea70bb580dde11eb5c85c58e719",
+              "inspection": "ACTUAL_RENDER_VISUALLY_INSPECTED"
+            }
+          ]
+        },
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q15-solution.svg",
+          "sha256": "8ffc7d6d208bfa41a3303923fe113f8bbb7622a1d69bff3ea8dfad3bbc3dff32",
+          "gitBlobSha1": "2fa50cdea705bf506cd4348a97539058972a25d4",
+          "rasterChecks": [
+            {
+              "sha256": "5532c18338bc7262888bde6bf40748bb1a63c16d61ccccf71740d38d7dc08061",
+              "inspection": "ACTUAL_RENDER_VISUALLY_INSPECTED"
+            }
+          ]
+        }
+      ],
+      "fullExamReview": false,
+      "originalPngDirectComparison": false,
+      "sourceChangesRequired": false
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_819499ec6c53a4614be0e79cafd7256d433dcd0dbedbd416dbc20e65ddca22ab",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_c99ef3e8bf8f4d256bb6d8e94fdbecd130d862358868ea6ea4fc9405acc3fae8",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_b325769cd75486d3a1fcca78341db996d9c1cb8eec54774e49f3e29a73766cc4",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_0712df7eb36d8470adaa336d489d7fc15bf448252cf9259bbf3769060a235f04",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_6b154792603079aabc87099a8ee36edb8179a21d8f380accd3d7049fa8219f1f",
+      "decision": "KEEP",
+      "decisiveStep": "내접원의 각 꼭짓점에서 등접선을 전달해 세 변7,8,9를 복원하고 둘레를 구한다.",
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryId": "M3-RPM-072",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기"
+        },
+        "rpmL3": "원의 접선",
+        "rpmL4": "접선 조건으로 길이 구하기",
+        "primaryMethod": "내접원의 각 꼭짓점에서 등접선을 전달해 세 변7,8,9를 복원하고 둘레를 구한다.",
+        "decisiveStep": "내접원의 각 꼭짓점에서 등접선을 전달해 세 변7,8,9를 복원하고 둘레를 구한다.",
+        "difficultyReason": "등접선 값을 세 변에 전달한 뒤 합하는 정형2이다.",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReason": "내접원의 각 꼭짓점에서 등접선을 전달해 세 변7,8,9를 복원하고 둘레를 구한다.",
+        "nullReason": null,
+        "metaEvidenceDebt": "NONE",
+        "meaningMeta": {
+          "semanticStatus": "FINAL",
+          "rpmPrimaryId": "M3-RPM-072",
+          "rpmPrimaryPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "rpmL3": "원의 접선",
+          "rpmL4": "접선 조건으로 길이 구하기",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReason": "내접원의 각 꼭짓점에서 등접선을 전달해 세 변7,8,9를 복원하고 둘레를 구한다."
+        },
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "debts": [],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "inheritedSemanticDecision": "CORRECT",
+      "currentFingerprints": {
+        "sourceFingerprint": "925e2f922a410e7e7d409082968167f9f898f318212885fd0ef60b4e9d7b4bef",
+        "contentFingerprint": "1f43854d82adca9b276abde5c35e07c05139f57b85bb7fcb4eab7b8752dd1513"
+      },
+      "targetedCurrentSourceChecks": {
+        "mathematicalReview": "PASS",
+        "calculation": {
+          "ordinal": 20,
+          "studentConditions": "Incircle touches AB at F, BC at D, CA at E; AF=4cm, BD=3cm, CE=5cm.",
+          "calculation": "AF=AE=4, BF=BD=3, CD=CE=5. AB=7, BC=8, CA=9, perimeter=24cm.",
+          "result": "③ (24 cm)"
+        },
+        "answerComparison": {
+          "sourceAnswer": "③",
+          "status": "MATCH"
+        },
+        "curriculumReview": "PASS_M3_STUDENT_METHOD",
+        "visualReview": "PASS_CURRENT_SOURCE_PARITY",
+        "visualObservation": "문제와 해설 렌더 모두 F∈AB,D∈BC,E∈CA이며 각 변에 원이 접한다. AF=4cm,BD=3cm,CE=5cm가 각 구간에 명확히 붙는다. 해설은 꼭짓점별 등접선 쌍을 서로 다른 눈금으로 표시하며 정답 24는 그림 안에 노출하지 않는다.",
+        "metadataRationale": "내접원의 각 꼭짓점에서 그은 두 접선 길이가 같음을 세 변에 적용하고 둘레를 합산한다. M3-06/CIRCLE_LINE 및 RPM 원의 접선/접선 조건으로 길이 구하기를 유지한다. 추가 횡단 개념이나 조건 키는 없으며 SEQUENTIAL, bucket2가 실제 풀이와 일치한다. ALIVE_REPLACEMENT 출처를 보존한다.",
+        "sourceProvenance": "ALIVE_REPLACEMENT"
+      },
+      "assets": [
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q20-problem-readable-v2.svg",
+          "sha256": "1fe1769e9d3e7fbddb975633f37091eb845fbd9b020a62e47203698ccbc5db65",
+          "gitBlobSha1": "927183c1e94216f223e6434fc7ae3121289f2106",
+          "rasterChecks": [
+            {
+              "sha256": "22bcadc0812b09d82871d479eac2f87e07d2ef545ca23fb2487d066fbd60f414",
+              "inspection": "ACTUAL_RENDER_VISUALLY_INSPECTED"
+            }
+          ]
+        },
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q20-solution.svg",
+          "sha256": "25d7d6a1563e66b3bb62c8557fd19e8edd1023e4854bd7813cece12dc49d60ab",
+          "gitBlobSha1": "3ea09b8c933d29ae27b9ce40bbddf795096d7a24",
+          "rasterChecks": [
+            {
+              "sha256": "8e60b92a9802518942fd8a145982a0faf26f4537eeac188b95317442c1d287a9",
+              "inspection": "ACTUAL_RENDER_VISUALLY_INSPECTED"
+            }
+          ]
+        }
+      ],
+      "fullExamReview": false,
+      "originalPngDirectComparison": false,
+      "sourceChangesRequired": false,
+      "sourceProvenance": "ALIVE_REPLACEMENT",
+      "provenanceLimit": "This confirms the current replacement question, answer and solution. It does not certify original PNG parity or original crop recovery."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_3d45fab11d9c1dbce0f2bb36b02cb40198b26075009b834ca70aba7c7a5416bb",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_7bebd96a1b3c12e9ebc7250baad13a29cb2a0af2fc574a95eece9d24c119744c",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_24d1de5cbf0526bfb3505eae85b10e66e6db85cf8228d3280bb15b01cf07ef4a",
+      "decision": "KEEP",
+      "decisiveStep": "소문항(1)은 중심수선이 현14를 이등분해7,(2)는 같은 중심거리4의 두 현이 같아5임을 직접 적용한다. 기존 CC의 M3-RPM-069는 등록 개념키가 아니며 동일 주제의 핵심이므로 제거한다.",
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryId": "M3-RPM-069",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이"
+        },
+        "rpmL3": "원의 중심과 현",
+        "rpmL4": "중심거리와 현의 길이",
+        "primaryMethod": "소문항(1)은 중심수선이 현14를 이등분해7,(2)는 같은 중심거리4의 두 현이 같아5임을 직접 적용한다. 기존 CC의 M3-RPM-069는 등록 개념키가 아니며 동일 주제의 핵심이므로 제거한다.",
+        "decisiveStep": "소문항(1)은 중심수선이 현14를 이등분해7,(2)는 같은 중심거리4의 두 현이 같아5임을 직접 적용한다. 기존 CC의 M3-RPM-069는 등록 개념키가 아니며 동일 주제의 핵심이므로 제거한다.",
+        "difficultyReason": "두 독립 소문항 모두 원의 현에 대한 성질 직접 적용1이다.",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReason": "소문항(1)은 중심수선이 현14를 이등분해7,(2)는 같은 중심거리4의 두 현이 같아5임을 직접 적용한다. 기존 CC의 M3-RPM-069는 등록 개념키가 아니며 동일 주제의 핵심이므로 제거한다.",
+        "nullReason": null,
+        "metaEvidenceDebt": "NONE",
+        "meaningMeta": {
+          "semanticStatus": "FINAL",
+          "rpmPrimaryId": "M3-RPM-069",
+          "rpmPrimaryPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "rpmL3": "원의 중심과 현",
+          "rpmL4": "중심거리와 현의 길이",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+          "projectionStatus": "PROJECTION_REUSE",
+          "projectionReason": "소문항(1)은 중심수선이 현14를 이등분해7,(2)는 같은 중심거리4의 두 현이 같아5임을 직접 적용한다. 기존 CC의 M3-RPM-069는 등록 개념키가 아니며 동일 주제의 핵심이므로 제거한다."
+        },
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "debts": [],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "inheritedSemanticDecision": "CORRECT",
+      "currentFingerprints": {
+        "sourceFingerprint": "520fdee068b911f946c3589e1e8e6735da909b9968e88c883fd554cfca0c52bb",
+        "contentFingerprint": "0c2fd5a656e46dd9511437b0302cc484af4f06cbad9b1543b28c4e20b6dae882"
+      },
+      "targetedCurrentSourceChecks": {
+        "mathematicalReview": "PASS",
+        "calculation": {
+          "ordinal": 23,
+          "studentConditions": "(1) Chord is 14cm, radius perpendicular to it and x is left half-chord. (2) Two chords have center distance 4cm, one chord length5cm and other is x.",
+          "calculation": "(1) Perpendicular radius bisects chord, x=14/2=7cm. (2) Equal center distances imply equal chords, x=5cm.",
+          "result": "(1)7 cm,(2)5 cm"
+        },
+        "answerComparison": {
+          "sourceAnswer": "(1) 7 cm, (2) 5 cm",
+          "status": "MATCH"
+        },
+        "curriculumReview": "PASS_M3_STUDENT_METHOD",
+        "visualReview": "PASS_SOLVABILITY_WITH_LEGACY_CROP_NOTE",
+        "visualObservation": "(1) 렌더에서 전체 현 14cm, 왼쪽 반현 xcm, 중심에서 현에 내린 수선이 보인다. (2) 현재 PNG에서 두 중심거리 4cm, 한 현 5cm, 다른 현 x 및 수선 표식이 판독된다. 오른쪽 x의 단위 suffix가 가장자리에서 일부 잘린 기존 PNG이나 수학 조건과 미지수가 식별된다. 해설 SVG 두 패널은 각각 현 이등분과 같은 중심거리/같은 현 표식을 정확히 표현한다.",
+        "metadataRationale": "두 소문항은 각각 중심수선의 현 이등분과 같은 중심거리의 현 길이 같음을 직접 적용한다. M3-06/CIRCLE_LINE 및 RPM 원의 중심과 현/중심거리와 현의 길이를 유지한다. 두 독립 소문항이므로 CC=[], condition=[], integration=NONE, 직접 적용 bucket1을 유지한다. 기존 level=중, confidence=medium, B12 및 BORDERLINE_ACCEPTABLE은 기존 유효 경계판정을 보존한다.",
+        "sourceProvenance": "ORIGINAL"
+      },
+      "assets": [
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q23-problem-v2.svg",
+          "sha256": "bb060838792ea1580323ec851dd953cf279cee7375c711fa7324539202bd7cc2",
+          "gitBlobSha1": "98e56c41ebb6aea8c965f1dcb06699a20d4b16be",
+          "rasterChecks": [
+            {
+              "sha256": "fa7890fb72ff138c38767953d60361cf6ba1a65987d3565bd961cd956997161f",
+              "inspection": "ACTUAL_RENDER_VISUALLY_INSPECTED"
+            }
+          ]
+        },
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png",
+          "sha256": "76c2cfe249897b57155cba8d10cdbd383a4c4012eeef1fd705fe4f155a5c1318",
+          "gitBlobSha1": "947a76c82fda53838407d5c263b9a842025b1956",
+          "rasterChecks": [
+            {
+              "sha256": "76c2cfe249897b57155cba8d10cdbd383a4c4012eeef1fd705fe4f155a5c1318",
+              "inspection": "ACTUAL_RENDER_VISUALLY_INSPECTED"
+            }
+          ]
+        },
+        {
+          "path": "archive/assets/images/21_금당중_2학기_중간_중3_수학/q23-solution.svg",
+          "sha256": "2f57ebaa6a9d1f5a4ab977415ae1dc6646e54465b566d35ec7298677939a561f",
+          "gitBlobSha1": "6bf387257bd1a986454417ef448704592dd9e555",
+          "rasterChecks": [
+            {
+              "sha256": "26dc68be41b12ebd8e5209af778c512c00c3dae01df11520825f4db034827e11",
+              "inspection": "ACTUAL_RENDER_VISUALLY_INSPECTED"
+            }
+          ]
+        }
+      ],
+      "fullExamReview": false,
+      "originalPngDirectComparison": false,
+      "sourceChangesRequired": false,
+      "nonblockingObservations": [
+        {
+          "ordinal": 23,
+          "asset": "archive/assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png",
+          "finding": "Legacy raster right unit suffix clipped; x and all required numeric/orthogonal conditions remain legible.",
+          "impact": "No ambiguity in asked value or answer. This observation is not a claim of a pristine full-image layout."
+        }
+      ]
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_10b861e5078f0d6b072a04dcadf7306c8a45f4a47cb0361a1166fc4a507427cd",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    }
+  ]
+}
