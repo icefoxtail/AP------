@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "m1-dongsan-helper-current-repair-v1",
+  "builder": {
+    "unitCount": 24,
+    "parentCount": 54,
+    "conceptCount": 155,
+    "leafCount": 326,
+    "baseSha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+    "authoritySha256": "6b51807e3abda9475fa4f9fce5c6d1df83cc3006e32f52e5baf8aafd6519e1a1",
+    "helperSha256": "1369c042bb941fa8867cd87039bfb2e2622000c74af733dc125e0e167f0e61b5",
+    "changed": true
+  },
+  "helper": {
+    "path": "archive/rpm-middle-toc.js",
+    "beforeSha256": "ea3d33592a5d0545cd44e9b08fc5f26dfd660ec163ce2dd4e74404a3717711b7",
+    "afterSha256": "1369c042bb941fa8867cd87039bfb2e2622000c74af733dc125e0e167f0e61b5",
+    "outsideGeneratedBlockUnchanged": true
+  },
+  "cacheUpdates": [
+    {
+      "path": "archive/archive2-runtime-check.html",
+      "beforeSha256": "81825c9334582e15b9d7854773de532f005672c19c8146c6dc51c3c2b9ec2497",
+      "afterSha256": "de58c21e3071f83bf93f311ef7eab01fbdc58e3e3979348b5e83fd7ed16ba794",
+      "changedOccurrences": 1
+    },
+    {
+      "path": "archive/index.html",
+      "beforeSha256": "6373966375610f0e21fdae4bc83a61b09d61b81e4f0a7b38c2ec279bddc04335",
+      "afterSha256": "d5944b55456237bcfeda3e96d054add19c934b02616a03c2a8c59393c89022ef",
+      "changedOccurrences": 1
+    },
+    {
+      "path": "archive/mixer.html",
+      "beforeSha256": "40f1cdf846b800cca0454321815264984592d4ef36e72f7f3f2c6660d5ba6e2b",
+      "afterSha256": "4b4b6fb7f665604a32e2cfa2149138d557c92c8976b4bf7febc7ed92ad15d0bf",
+      "changedOccurrences": 1
+    },
+    {
+      "path": "archive/problem-bank-search.html",
+      "beforeSha256": "93081a019781e12fd5968fe900a7cae6a3cf444bcbf385351fd42cc5b27bcda2",
+      "afterSha256": "af32e04260d5695667676cad8ef9cb90524e6505070822ee42999964682e8ea5",
+      "changedOccurrences": 1
+    },
+    {
+      "path": "archive/unit-past-exams.html",
+      "beforeSha256": "83e48ecef485ea981f79d22863d0cc5d051adaf9a345bb36b40a57b9bd29bce3",
+      "afterSha256": "c0cb2fab191c1d23c7f9bd2b20d3c58e5e3451eadb3a120615885ad3b2f8ad9e",
+      "changedOccurrences": 1
+    },
+    {
+      "path": "archive/workspace.html",
+      "beforeSha256": "3a50bdf80e92734eeba4c0891921e0462be5a0feed4aa6ebc141f70abfb388be",
+      "afterSha256": "00396f74f3121b1853643f56b95928352627753a0e6fa366c2c9377226f1549a",
+      "changedOccurrences": 1
+    }
+  ],
+  "tests": {
+    "command": "node --test archive/tools/meta-foundation/rpm-middle-toc.test.mjs",
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "stdoutSha256": "c2a8aa1719d111d00889cf06ca43301fec40e6716429380c7b3a70400073fcbd"
+  },
+  "canonicalMasterUnchanged": true,
+  "otherGradeDefinitionsUnchanged": true
+}
