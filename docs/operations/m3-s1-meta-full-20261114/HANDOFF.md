@@ -1,62 +1,39 @@
-# M3-S1-META-FULL — 검토 진행 및 Codex 인계
+# M3-S1-META-FULL — 사용자 직접 재개 및 브랜치 저장
 
-상태: **RUNNING / RUNNING**  
-Task: `675e8b6b-b864-4891-b6c2-e822f550853e`  
-Owner: `GPT_ROOT_E0C948452E80`  
-Branch: `review/m3-s1-meta-full-20261114`  
-확인한 main: `22d5b2fa1c09eec588c434a16c41ae197e946c80`
+상태: **RUNNING / USER_DIRECTED_RESUME**
 
-## 검증된 저장 범위
+- Task: `675e8b6b-b864-4891-b6c2-e822f550853e`
+- Root writer: `GPT_ROOT_DD661086D023`
+- Branch: `review/m3-s1-meta-full-20261114`
+- 확인한 main: `e7bbf45ec55cff6722a9c4ec1caa06fd4745a25b`
 
-전체115시험지·2,750문항. 이전73시험지·1,731문항 재사용. 현재 검토패킷 97시험지·2312문항, 이번추가 24시험지·581문항. 잔여18시험지·438문항. 이 snapshot의 원격 저장은 해당 commit의 HEAD/tree/blob readback으로 확인한다.
+## 저장 범위
 
-마지막 완료: **E094**. 다음 미완료: **E096**.
+전체115시험지·2750문항. 기존 원격97시험지·2312문항의 유효 검토를 보존했다.
+이 commit의 패킷 snapshot은 97시험지·2312문항이며 이번 추가는 0시험지·0문항이다.
+원격 잔여는 18시험지·438문항. 마지막 저장 대상은 E094, 다음은 E096이다.
+각 snapshot의 원격 완료 계수는 해당 commit의 push 및 ref/tree/blob readback 성공 후 확정한다. 자기 commit SHA는 이후 AWCR/Notion과 원격 영수증에 기록한다.
 
-## 소유권·복구
+## 소유권과 재사용
 
-기존 task와 branch를 현재 사용자 명시 지시로 이어간다. 이전 GPT_ROOT_E45FF6C78C51 및 그 worker 종료는 독립확인하지 못했으며 공식 OFFERED는 관측되지 않았다. 종료나 인계 수락을 가장하지 않는다. 이전 체크아웃은 보존하며 별도 worktree에서 root만 직렬 expected-HEAD fast-forward를 한다. 원격 변경이 발견되면 통합을 중지하고 대조한다.
+사용자 최신 지시로 이전 writer를 종료건으로 취급하여 같은 task·branch의 root 직렬 저장을 인수했다.
+이전 owner GPT_ROOT_E0C948452E80의 독립 종료·정확 OFFERED는 역사적으로 미확인이다. 이를 관측된 인계로 바꾸지 않는다.
+원격 기준 `e997036d76b60a9391ea18b914775681ce21664d`와 고정 복구본 v1을 사용하며, 314파일의 raw SHA/size 및 18시험지 기존 독립3문항 표본54개 결속을 재검증했다.
+기존 유효 의미 검토를 반복하지 않고 메타 수정안과 실제 Git source blob의 일치, 보호 필드·UID·순서 및 공식 검사 결과를 확인한다.
+복구 원문: libfile_bfa90158e5e48191a557f84d166aac92 / v1 / file_000000009ff08206971f22427b2e9823 / SHA256 03e92628d9c816a1d23eb6c6f5389ad9b980f9c35d8373372d50c876cc016992.
 
-A/B/C 담당·실제 output 경로는 progress.workers. 패킷은 문항별 의미판정, 실제 인용, source blob/QBODY/QFULL, 작성자 외3문항 표본과 원본 보호검사를 포함한다. 미판정·소스부재·공식 검사 FAIL은 명명 부채로 보존한다. 유효한 기존 증거는 재사용한다.
+## 보존할 부채와 변경 범위
 
-## 체크포인트
+이번18의 공식4칸 실패129건(E096 legacy stem87, E098/E103 source-only method 각21), 미판정9문항과 기존 근거부채30시험지·별도E034·기존 미판정46문항을 보존한다.
+이번 미판정: E098#4·15, E101#6·13, E108#11, E112#18·19, E115#14·15.
+지원 메타305문항·706필드만 적용한다. 미지원 deferred96제안은 실제 source 변경에 포함하지 않는다.
+기존10시험지16문항 null-template exact 표시 및 E104#24 원본 level 비교 표시는 별도 overlay로 보완한다.
+원문 변경15시험지(E071~E085)는 최신 main의 바뀐 문항·직접 근거에 한해 재결속한다. 원 패킷과 역사적 판정은 보존한다.
+문제·보기·정답·해설·그림·UID·순서는 이번 source patch에서 불변이다.
 
-마지막 검증 AWCR: r14 / raw SHA `b8309700fb38b58cfcefcba3bbb7cdee73c4c58f81b1386ea56b2d0d1ade692d` / Drive `1HBtwTDvYQWXdkSBdqmHgL_VqM74cbmfd`. 이 commit 자체의 외부 sync는 다음 raw readback 전까지 SYNC_PENDING. 원격 검증 후3시험지마다,20분 이내,중단/오류/마감 때 AWCR append-only와 Notion 중3 1학기 행만 갱신한다.
+## 체크포인트와 다음 단계
 
-이전 원격 HEAD: `75d036d6260af0d1762ea814862676a032fc6881`. 현재 commit의 SHA는 원격 조회 후 AWCR/Notion에 기록한다. 같은 commit 안에 자기 SHA를 요구하지 않는다.
-
-## 품질·출고 경계
-
-근거 부채 또는 미판정 상태 시험지: E024, E025, E028, E031, E034, E035, E043, E044, E047, E050, E059, E061, E064, E066, E073, E080, E081, E082, E083, E084, E085, E088, E089, E090, E091, E092, E093, E094, E095, E100, E109. 자세한 UID·사유는 exams/E###/review.json 및 validation.json. 공식4칸 실패·난도UNKNOWN·leaf/binding gap과 source drift는 숨기지 않는다. 검토패킷 저장은 전체 품질 PASS 또는 출고승인이 아니다.
-
-문제·보기·정답·해설·그림·UID·순서는 불변. source가 지원하는 메타만 최소 수정하고 미지원 필드는 소형 제안으로 남긴다. main·공용 레지스트리·DB·catalog·runtime 등록·배포는 이 Pro 범위에서 NOT_RUN. 전체 패킷과 명명 부채를 정리한 후 CODEX_LOCAL에 OFFERED한다.
-
-## 다음 실행
-
-`CONTINUE_E096_AND_PENDING_ONLY`. 원격 source 및 동일판본 검토 hash를 확인하여 아래 미완료만 처리한다.
-
-| ID | 문항 | source |
-| --- | ---: | --- |
-| E096 | 25 | `original/middle/m3/1final/17_연향중_1학기_기말_중3_수학.js` |
-| E097 | 25 | `original/middle/m3/1final/17_풍덕중_1학기_기말_중3_수학.js` |
-| E098 | 21 | `original/middle/m3/1mid/17_대구교동중_1학기_중간_중3_수학.js` |
-| E099 | 22 | `original/middle/m3/1mid/17_서울가산중_1학기_중간_중3_수학.js` |
-| E101 | 25 | `original/middle/m3/1mid/17_풍덕중_1학기_중간_중3_수학.js` |
-| E102 | 28 | `original/middle/m3/1final/16_가람중_1학기_기말_중3_수학.js` |
-| E103 | 21 | `original/middle/m3/1final/16_경기은계중_1학기_기말_중3_수학.js` |
-| E104 | 25 | `original/middle/m3/1final/16_동원중_1학기_기말_중3_수학.js` |
-| E105 | 22 | `original/middle/m3/1final/16_오성중_1학기_기말_중3_수학.js` |
-| E106 | 21 | `original/middle/m3/1final/16_은계중_1학기_기말_중3_수학.js` |
-| E107 | 24 | `original/middle/m3/1final/16_장흥중_1학기_기말_중3_수학.js` |
-| E108 | 25 | `original/middle/m3/1final/16_창포중_1학기_기말_중3_수학.js` |
-| E110 | 24 | `original/middle/m3/1mid/16_경북장흥중_1학기_중간_중3_수학.js` |
-| E111 | 29 | `original/middle/m3/1mid/16_부산대천리중_1학기_중간_중3_수학.js` |
-| E112 | 26 | `original/middle/m3/1mid/16_부산만덕중_1학기_중간_중3_수학.js` |
-| E113 | 26 | `original/middle/m3/1mid/16_부산엄궁중_1학기_중간_중3_수학.js` |
-| E114 | 24 | `original/middle/m3/1mid/16_왕운중_1학기_중간_중3_수학.js` |
-| E115 | 25 | `original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js` |
-
-## 아직 원격 완료로 집계하지 않은 로컬 패킷
-
-정확한 파일 경로·SHA·작성자는 `progress.json`의 `unsavedArtifacts`에 기록한다. 읽는 동안 변한 파일은 검증된 완성본으로 취급하지 않는다.
-
-E096 / E097 / E098 / E101 / E103 / E106 / E112 / E115
+최근 검증 AWCR r20 / raw SHA `d49568cade04687959f6834870b9b4b7a9d2dffa92df750a6699000600a72d17` / Drive `1igKY0YCl-U551fi6li-UxewSTNEP7HU-`.
+이 commit의 외부 sync는 후속 checkpoint raw readback으로 확인한다. 3시험지마다 또는20분 이내 AWCR와 Notion 중3 행을 갱신한다.
+다음: `SERIAL_SAVE_E096`. 모든 패킷과 명명 부채를 마감한 뒤 CODEX_LOCAL에 OFFERED한다. 현재 Codex 수락은 관측되지 않았다.
+main 병합·공용 등록·배포는 NOT_RUN. 검토패킷 보존·무결성 검사를 전체 품질 PASS로 표현하지 않는다.

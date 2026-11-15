@@ -1,17 +1,13 @@
 # M3-S1-META-FULL
 
-Task: `675e8b6b-b864-4891-b6c2-e822f550853e`  
-Root writer: `GPT_ROOT_E0C948452E80`  
-Branch: `review/m3-s1-meta-full-20261114`  
-Status: `RUNNING` / `RUNNING`
+Task: `675e8b6b-b864-4891-b6c2-e822f550853e`
+Root writer: `GPT_ROOT_DD661086D023`
+Branch: `review/m3-s1-meta-full-20261114`
+Status: `RUNNING` / `USER_DIRECTED_RESUME`
 
-Progress: [progress.json](docs/operations/m3-s1-meta-full-20261114/progress.json)  
-Handoff: [HANDOFF.md](docs/operations/m3-s1-meta-full-20261114/HANDOFF.md)
+[progress.json](docs/operations/m3-s1-meta-full-20261114/progress.json) / [HANDOFF.md](docs/operations/m3-s1-meta-full-20261114/HANDOFF.md)
 
-Preserved packet snapshot: 97/115 exams, 2312/2750 questions. Last: E094. Next pending: E096.
-
-Root alone serializes branch writes. A/B/C write disjoint local artifacts. Every exam updates progress, handoff and this pointer before one atomic branch commit. A transaction counts remotely only after HEAD/tree/blob readback. AWCR+Notion sync every three saved exams or20 minutes.
-
-Previous writer termination: NOT_INDEPENDENTLY_VERIFIED. No formal prior-owner offer was observed. Current exact-task resume is user-directed; isolated worktree, expected-HEAD fast-forward only, halt on ref conflict. This does not assert prior worker closure.
-
-AWCR last verified revision r14, raw SHA `b8309700fb38b58cfcefcba3bbb7cdee73c4c58f81b1386ea56b2d0d1ade692d`; current-transaction external sync is pending until readback. Final remote SHA is recorded outside its own commit.
+Snapshot 97/115 exams, 2312/2750 questions; remaining 18/438. Last E094; next E096.
+Root alone commits/pushes with expected-head fast-forward; count after remote ref/tree/blob readback.
+User directed treating previous writer as ended; historical independent termination/exact offer NOT_OBSERVED remains recorded.
+AWCR verified r20 SHA `d49568cade04687959f6834870b9b4b7a9d2dffa92df750a6699000600a72d17`. Full quality UNKNOWN; named debts preserved; main/registration/deployment NOT_RUN.

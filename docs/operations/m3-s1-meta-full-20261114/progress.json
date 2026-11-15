@@ -2,11 +2,11 @@
   "schemaVersion": "m3-s1-meta-full-progress-v1",
   "workKey": "M3-S1-META-FULL",
   "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
-  "owner": "GPT_ROOT_E0C948452E80",
+  "owner": "GPT_ROOT_DD661086D023",
   "branch": "review/m3-s1-meta-full-20261114",
   "baseMain": "0ba1e7de048de3af0771da6c0972409fd46baa75",
   "status": "RUNNING",
-  "resumeState": "RUNNING",
+  "resumeState": "USER_DIRECTED_RESUME",
   "totals": {
     "exams": 115,
     "questions": 2750,
@@ -11071,23 +11071,22 @@
       "nextAction": "SEMANTIC_REVIEW"
     }
   ],
-  "nextAction": "CONTINUE_E096_AND_PENDING_ONLY",
-  "resumedAt": "2026-11-14T23:58:38.098191+00:00",
-  "authorityMainChecked": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
+  "nextAction": "SERIAL_SAVE_E096",
+  "resumedAt": "2026-11-15T12:40:01.181838+00:00",
+  "authorityMainChecked": "e7bbf45ec55cff6722a9c4ec1caa06fd4745a25b",
   "resumeAuthority": {
-    "owner": "GPT_ROOT_E0C948452E80",
-    "basis": "EXPLICIT_CURRENT_USER_DIRECTED_EXACT_TASK_RESUME",
-    "previousOwner": "GPT_ROOT_E45FF6C78C51",
-    "previousRemoteHead": "fcb3591cd3d9a2feb766206c16186482e02417ee",
-    "previousWriterTermination": "NOT_INDEPENDENTLY_VERIFIED",
+    "owner": "GPT_ROOT_DD661086D023",
+    "basis": "EXPLICIT_USER_DIRECTION_PREVIOUS_WRITER_TREATED_AS_ENDED",
+    "previousOwner": "GPT_ROOT_E0C948452E80",
+    "previousRemoteHead": "e997036d76b60a9391ea18b914775681ce21664d",
+    "previousWriterTermination": "NOT_INDEPENDENTLY_VERIFIED_HISTORICAL_FACT",
     "formalOfferFromPriorOwner": "NOT_OBSERVED",
-    "safety": "ISOLATED_WORKTREE_EXPECTED_HEAD_FAST_FORWARD_ONLY_STOP_ON_CONFLICT",
-    "reusedExams": 73,
-    "reusedQuestions": 1731,
-    "predecessorRevision": 6,
-    "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
+    "authorization": "USER_DIRECTED_RESUME_ON_EXISTING_BRANCH",
+    "safety": "ISOLATED_WORKTREE_ROOT_SERIAL_EXPECTED_HEAD_FAST_FORWARD_ONLY",
+    "predecessorRevision": 19,
+    "predecessorRawSha256": "aa7ca3a8de2aa5da0c8e21462663df01905dac74e8ffb1c1420be05ab60342cc"
   },
-  "updatedAt": "2026-11-15T06:14:08.237290+00:00",
+  "updatedAt": "2026-11-15T12:40:01.192548+00:00",
   "lastPublishedHeadBeforeCurrent": "75d036d6260af0d1762ea814862676a032fc6881",
   "resumeHistory": [
     {
@@ -11113,20 +11112,177 @@
       "reusedQuestions": 1731,
       "predecessorRevision": 6,
       "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
+    },
+    {
+      "owner": "GPT_ROOT_DD661086D023",
+      "basis": "EXPLICIT_USER_DIRECTION_PREVIOUS_WRITER_TREATED_AS_ENDED",
+      "previousOwner": "GPT_ROOT_E0C948452E80",
+      "previousRemoteHead": "e997036d76b60a9391ea18b914775681ce21664d",
+      "previousWriterTermination": "NOT_INDEPENDENTLY_VERIFIED_HISTORICAL_FACT",
+      "formalOfferFromPriorOwner": "NOT_OBSERVED",
+      "authorization": "USER_DIRECTED_RESUME_ON_EXISTING_BRANCH",
+      "safety": "ISOLATED_WORKTREE_ROOT_SERIAL_EXPECTED_HEAD_FAST_FORWARD_ONLY",
+      "predecessorRevision": 19,
+      "predecessorRawSha256": "aa7ca3a8de2aa5da0c8e21462663df01905dac74e8ffb1c1420be05ab60342cc"
     }
   ],
   "lastCompletedExam": "E094",
   "nextIncompleteExam": "E096",
   "remainingExams": 18,
   "remainingQuestions": 438,
-  "lastVerifiedRemoteHeadBeforeCurrent": "75d036d6260af0d1762ea814862676a032fc6881",
+  "lastVerifiedRemoteHeadBeforeCurrent": "e997036d76b60a9391ea18b914775681ce21664d",
   "externalCheckpoint": {
-    "revision": 14,
-    "sha256": "b8309700fb38b58cfcefcba3bbb7cdee73c4c58f81b1386ea56b2d0d1ade692d",
-    "fileId": "1HBtwTDvYQWXdkSBdqmHgL_VqM74cbmfd",
-    "state": "VERIFIED_PREVIOUS_CHECKPOINT_CURRENT_SYNC_PENDING"
+    "revision": 20,
+    "sha256": "d49568cade04687959f6834870b9b4b7a9d2dffa92df750a6699000600a72d17",
+    "fileId": "1igKY0YCl-U551fi6li-UxewSTNEP7HU-",
+    "state": "REMOTE_READBACK_VERIFIED_PREVIOUS_CHECKPOINT"
   },
   "workers": {
+    "A": {
+      "agent": "/root/git_owner_evidence",
+      "scope": "MAIN_SOURCE_REBINDING_ONLY",
+      "status": "ACTIVE"
+    },
+    "B": {
+      "agent": "/root/awcr_owner_evidence",
+      "scope": "PREPARED_BINDING_AND_CONTRACT_READ_ONLY",
+      "status": "ACTIVE"
+    },
+    "C": {
+      "agent": "/root/local_owner_evidence",
+      "scope": "DISPLAY_QUALIFICATION_ONLY",
+      "status": "CLOSED_NO_FURTHER_WRITES"
+    }
+  },
+  "unsavedArtifacts": [
+    {
+      "examKey": "E096",
+      "questionCount": 25,
+      "sourceBlob": "fb3d90690a85c2ff4b3db8f182d2f4d7a10193bb",
+      "recoveryUnit": "exams/E096/3905dcfce3b17b53",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E097",
+      "questionCount": 25,
+      "sourceBlob": "ce50093a0a30612f6d5ae98bc1858c5d844d8427",
+      "recoveryUnit": "exams/E097/9dbd79ceb77379e7",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E098",
+      "questionCount": 21,
+      "sourceBlob": "cfe0f4ed00a2ec80687b1044292c48d18af5076c",
+      "recoveryUnit": "exams/E098/cba7e9d58ed3a63f",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E099",
+      "questionCount": 22,
+      "sourceBlob": "201a3606b4d9cf4aa0cfbef20b84f7634eac915a",
+      "recoveryUnit": "exams/E099/aa06f52eebb19e3c",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E101",
+      "questionCount": 25,
+      "sourceBlob": "0ba6e708e5999831eb3db86d16e135aac4c5eea6",
+      "recoveryUnit": "exams/E101/56162ca2552eafb0",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E102",
+      "questionCount": 28,
+      "sourceBlob": "eecc26b1b83f8d8095ebb8d0c1c09f9a5a1c90d0",
+      "recoveryUnit": "exams/E102/c3edaaa01f688bfc",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E103",
+      "questionCount": 21,
+      "sourceBlob": "d288e88a3d3f9d4635ee120f08fd0f10af2739e8",
+      "recoveryUnit": "exams/E103/9c3257dd21ba9a1d",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E104",
+      "questionCount": 25,
+      "sourceBlob": "14a617f5265f3a0950ef41afa3ecb3e69536bef3",
+      "recoveryUnit": "exams/E104/54388e4f2f53fe2f",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E105",
+      "questionCount": 22,
+      "sourceBlob": "c6f862bd8a7930c7c203ddd4305ad28b49e410a0",
+      "recoveryUnit": "exams/E105/9d822717faf2b2f4",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E106",
+      "questionCount": 21,
+      "sourceBlob": "d9bf372f4e6c0fc171fa380104c3051f205f7c17",
+      "recoveryUnit": "exams/E106/c6ff7cd8f38a93e6",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E107",
+      "questionCount": 24,
+      "sourceBlob": "5d8ffc3061073ac15c5e8c77bac1663d6ea7baaa",
+      "recoveryUnit": "exams/E107/8e581070e8f0170b",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E108",
+      "questionCount": 25,
+      "sourceBlob": "80fa072576784bd00681e6c9f675e78784995a10",
+      "recoveryUnit": "exams/E108/d814dc452ba2456a",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E110",
+      "questionCount": 24,
+      "sourceBlob": "a103367961b4069161f51613d8230db57ece6385",
+      "recoveryUnit": "exams/E110/33eb37eec525153e",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E111",
+      "questionCount": 29,
+      "sourceBlob": "dfaa5be13dbee7fa3f2c9b7db1e3fc986ee3f38a",
+      "recoveryUnit": "exams/E111/8a5c578ace5ab052",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E112",
+      "questionCount": 26,
+      "sourceBlob": "22d9aece7106ac2e2f647a7bb90de5b49cc015ad",
+      "recoveryUnit": "exams/E112/8c986d6454dba414",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E113",
+      "questionCount": 26,
+      "sourceBlob": "78ff56ee7c1aad3c363a62c7ea4c0fc9a112ce74",
+      "recoveryUnit": "exams/E113/b999ded0bacf9ba8",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E114",
+      "questionCount": 24,
+      "sourceBlob": "42f7cc9081011db27497469d4fa4329722951c13",
+      "recoveryUnit": "exams/E114/2c110d32c62a118e",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    },
+    {
+      "examKey": "E115",
+      "questionCount": 25,
+      "sourceBlob": "14abf906edb417567a756e3fbca76163f16128af",
+      "recoveryUnit": "exams/E115/af24f00601e99454",
+      "state": "PREPARED_PENDING_REMOTE_SAVE"
+    }
+  ],
+  "priorWorkersAtResume": {
     "A": {
       "agent": "/root/meta_a",
       "status": "ACTIVE",
@@ -11191,222 +11347,15 @@
       "outputDirectory": "/workspace/scratch/e0c948452e80/workers/C"
     }
   },
-  "unsavedArtifacts": [
-    {
-      "examKey": "E096",
-      "sourceBlob": "fb3d90690a85c2ff4b3db8f182d2f4d7a10193bb",
-      "questionCount": 25,
-      "artifacts": [
-        {
-          "worker": "C",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/C/E096.review.json",
-          "bytes": 213156,
-          "sha256": "57a5653c67f5267fc618a91d14f4f5b0ca131f7e560d6d71345bdae5db26979a",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "C",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/C/E096.4slot.json",
-          "bytes": 98202,
-          "sha256": "34248b7c3e7f81a19faa55966d403213ae2fa0942d660314a9e1bc4db4c1df66",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        }
-      ],
-      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
-    },
-    {
-      "examKey": "E097",
-      "sourceBlob": "ce50093a0a30612f6d5ae98bc1858c5d844d8427",
-      "questionCount": 25,
-      "artifacts": [
-        {
-          "worker": "A",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E097.review.json",
-          "bytes": 154038,
-          "sha256": "beff51c7e566ae5f58af24bff1bcf4dd448d589d588fc050bab0d7396abf3796",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "A",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E097.4slot.json",
-          "bytes": 114901,
-          "sha256": "36bfb1cc55ee63758dd6e29bd56d42bc0447f42517acca1649a81d3d69f316fd",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "B",
-          "kind": "independent",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E097.independent.json",
-          "bytes": 3275,
-          "sha256": "1722df4008b36248c4a1dc3eb2a575868693b67a7e8e8e6d289cfa1c63da6994",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        }
-      ],
-      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
-    },
-    {
-      "examKey": "E098",
-      "sourceBlob": "cfe0f4ed00a2ec80687b1044292c48d18af5076c",
-      "questionCount": 21,
-      "artifacts": [
-        {
-          "worker": "B",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E098.review.json",
-          "bytes": 160189,
-          "sha256": "8531bb601fb642422a6ec6e97c80ba09a41b0def395b0242933c03032bedeaa1",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "B",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E098.4slot.json",
-          "bytes": 46492,
-          "sha256": "487dc3e31c6f83e70afd9360b605e74190eb52eef3c1c18601f97a91a3f3be57",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        }
-      ],
-      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
-    },
-    {
-      "examKey": "E101",
-      "sourceBlob": "0ba6e708e5999831eb3db86d16e135aac4c5eea6",
-      "questionCount": 25,
-      "artifacts": [
-        {
-          "worker": "B",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E101.review.json",
-          "bytes": 265826,
-          "sha256": "ea6b1cc3708283c61b07c2f448c754b60285cfe05879475ccec8eec35ad8e50d",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "B",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E101.4slot.json",
-          "bytes": 177592,
-          "sha256": "6ff6c56642b174ead0c0cb2d1329007e95f79060cba4d8d20042db7b38ba9c72",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        }
-      ],
-      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
-    },
-    {
-      "examKey": "E103",
-      "sourceBlob": "d288e88a3d3f9d4635ee120f08fd0f10af2739e8",
-      "questionCount": 21,
-      "artifacts": [
-        {
-          "worker": "A",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E103.review.json",
-          "bytes": 144278,
-          "sha256": "9951aaa8cf4aa53247ce1b9317cecf12af02a03ee50a63b6171a0fa257533405",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "A",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E103.4slot.json",
-          "bytes": 61162,
-          "sha256": "6dc58f899ceeacac4b49aac18fcb4034540b106e961d09e71c150b8db3d0caeb",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "B",
-          "kind": "independent",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E103.independent.json",
-          "bytes": 4703,
-          "sha256": "efaab83ac4a91b310d105e98c6bfcbbcd8443f32ab3cd959a96484a3bcd43e12",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        }
-      ],
-      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
-    },
-    {
-      "examKey": "E106",
-      "sourceBlob": "d9bf372f4e6c0fc171fa380104c3051f205f7c17",
-      "questionCount": 21,
-      "artifacts": [
-        {
-          "worker": "A",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E106.review.json",
-          "bytes": 155893,
-          "sha256": "21106c9b93d917b86df9c22e2af7961aab2ece483b36ddeb57591863728e2902",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "A",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E106.4slot.json",
-          "bytes": 135904,
-          "sha256": "d6b0428d473372fddbc31f6dffd45f324d3ee9e0eb52ea63f270111963f0c481",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "B",
-          "kind": "independent",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E106.independent.json",
-          "bytes": 4767,
-          "sha256": "1ffe90fe47b96d80e0d1e8772f8c33efda888caf96cbdda871ddaaf5ac3bd2fb",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        }
-      ],
-      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
-    },
-    {
-      "examKey": "E112",
-      "sourceBlob": "22d9aece7106ac2e2f647a7bb90de5b49cc015ad",
-      "questionCount": 26,
-      "artifacts": [
-        {
-          "worker": "A",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E112.review.json",
-          "bytes": 191193,
-          "sha256": "39c6b1fb8aaace5ff7efbd0503d56b05985a670cf95a1b92d2f81925c6e36b4a",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "A",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E112.4slot.json",
-          "bytes": 173783,
-          "sha256": "c45df41886e90113be0390bf3e85249f3f704a12dfeb7151f838328986847c77",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        }
-      ],
-      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
-    },
-    {
-      "examKey": "E115",
-      "sourceBlob": "14abf906edb417567a756e3fbca76163f16128af",
-      "questionCount": 25,
-      "artifacts": [
-        {
-          "worker": "A",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E115.review.json",
-          "bytes": 184322,
-          "sha256": "e8f6c0be6bdee6caa87b22365ab3aeece833c336b1185ebb4c936e76f71547e6",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "A",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E115.4slot.json",
-          "bytes": 161844,
-          "sha256": "616331db282157d4a400fd5ec11d9936a3d8d24723f036b69c86139bec858012",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        }
-      ],
-      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
-    }
-  ]
+  "currentRun": {
+    "baselineHead": "e997036d76b60a9391ea18b914775681ce21664d",
+    "reusedRemoteExams": 97,
+    "reusedRemoteQuestions": 2312,
+    "reusedPreparedExams": 18,
+    "reusedPreparedQuestions": 438,
+    "newSemanticReviewQuestions": 0,
+    "originalRecoverySha256": "03e92628d9c816a1d23eb6c6f5389ad9b980f9c35d8373372d50c876cc016992",
+    "newlyPreservedExams": 0,
+    "newlyPreservedQuestions": 0
+  }
 }
