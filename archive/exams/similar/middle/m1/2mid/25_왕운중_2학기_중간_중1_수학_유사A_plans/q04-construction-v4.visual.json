@@ -1,0 +1,491 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학_유사A.js",
+  "questionId": 4,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "V",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "M"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "M",
+                "V"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "120"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "M",
+                "V"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "9"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "120"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "UMax",
+              "op": "VECTOR_SCALE_POINT",
+              "inputs": [
+                "M",
+                "U"
+              ],
+              "args": {
+                "k": {
+                  "kind": "rational",
+                  "numerator": "11",
+                  "denominator": "10"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "VMax",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "V"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "N",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "22"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "W",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "34"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "N"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "WMax",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "W"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "nCircle",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "N",
+                "H"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "hCircle",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "H"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "xPoints",
+              "op": "INTERSECTION",
+              "inputs": [
+                "nCircle",
+                "hCircle"
+              ],
+              "args": {},
+              "outputType": "POINT_SET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "G",
+              "op": "SELECT_POINT",
+              "inputs": [
+                "xPoints"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "branch": {
+                "kind": "SIDE_OF_ORIENTED_LINE",
+                "refs": [
+                  "N",
+                  "W"
+                ],
+                "sign": 1
+              }
+            },
+            {
+              "id": "R",
+              "op": "VECTOR_SCALE_POINT",
+              "inputs": [
+                "N",
+                "G"
+              ],
+              "args": {
+                "k": {
+                  "kind": "rational",
+                  "numerator": "9",
+                  "denominator": "5"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "RMax",
+              "op": "VECTOR_SCALE_POINT",
+              "inputs": [
+                "N",
+                "R"
+              ],
+              "args": {
+                "k": {
+                  "kind": "rational",
+                  "numerator": "11",
+                  "denominator": "10"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "M",
+          "U",
+          "V",
+          "E",
+          "F",
+          "N",
+          "R",
+          "W",
+          "G",
+          "H",
+          "UMax",
+          "VMax",
+          "RMax",
+          "WMax"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "rayMU",
+            "refs": [
+              "M",
+              "UMax"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "rayMV",
+            "refs": [
+              "M",
+              "VMax"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "rayNR",
+            "refs": [
+              "N",
+              "RMax"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "rayNW",
+            "refs": [
+              "N",
+              "WMax"
+            ],
+            "arrow": "END"
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 410
+        },
+        "caption": "컴퍼스로 같은 크기의 각을 옮기는 작도",
+        "accessibilityDescription": "왼쪽의 두 반직선은 M에서 만나고 오른쪽의 두 반직선은 N에서 만난다. 두 그림에 ㉠부터 ㉤까지의 작도 표시가 있다.",
+        "planeMarks": {
+          "traces": [
+            {
+              "id": "copyM",
+              "center": "M",
+              "radius": {
+                "point": "F"
+              },
+              "through": [
+                "F",
+                "E"
+              ],
+              "spanDeg": 18,
+              "label": "㉠",
+              "labelKind": "TEXT",
+              "labelAt": "END",
+              "factRole": "GIVEN",
+              "span": "JOIN"
+            },
+            {
+              "id": "chordF",
+              "center": "F",
+              "radius": {
+                "point": "E"
+              },
+              "through": [
+                "E"
+              ],
+              "spanDeg": 28,
+              "label": "㉡",
+              "labelKind": "TEXT",
+              "labelAt": "START",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "copyN",
+              "center": "N",
+              "radius": {
+                "point": "H"
+              },
+              "through": [
+                "H",
+                "G"
+              ],
+              "spanDeg": 18,
+              "label": "㉢",
+              "labelKind": "TEXT",
+              "labelAt": "END",
+              "factRole": "GIVEN",
+              "span": "JOIN"
+            },
+            {
+              "id": "chordH",
+              "center": "H",
+              "radius": {
+                "point": "G"
+              },
+              "through": [
+                "G"
+              ],
+              "spanDeg": 28,
+              "label": "㉤",
+              "labelKind": "TEXT",
+              "labelAt": "START",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "rayMark",
+              "ownerSegment": "rayNR",
+              "text": "㉣",
+              "labelKind": "TEXT",
+              "labelAt": 0.88
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "UMax",
+          "VMax",
+          "RMax",
+          "WMax"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 22,
+        "displayScale": 0.59,
+        "fontFloorCssPx": 11
+      }
+    }
+  ],
+  "sourceFigure": {
+    "path": "archive/assets/images/25_왕운중_2학기_중간_중1_수학/q04.png",
+    "sha256": "0a914a35bec1afc80270a61ddcea605b4c79bf44c3240fa6dea3613db9c2c8ac",
+    "note": "원본의 둔각과 컴퍼스 호 배치를 유지한다. 그림에는 각의 수치나 비교할 선분의 수치를 적지 않는다."
+  }
+}

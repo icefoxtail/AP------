@@ -5,6 +5,8 @@ import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import {validateReviewedSourceReassessment} from './reviewed-source-reassessment.mjs';
+import {REVIEWED_META_VALUE_FIELDS} from './reviewed-meta-value-fields.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -16,6 +18,7 @@ const blob=bytes=>crypto.createHash('sha1').update(`blob ${bytes.length}\0`).upd
 const fail=message=>{throw Error(`native preserved source reuse: ${message}`);};
 const receiptPath=id=>{if(!ID.test(id||''))fail('invalid receipt identity');return RECEIPTS+id+'.json';};
 const nativePath=p=>typeof p==='string'&&p.startsWith(RECEIPTS)&&p.endsWith('.json')&&ID.test(p.slice(RECEIPTS.length,-5));
+const reviewCaches=new Map(),reviewedFields=new Set(REVIEWED_META_VALUE_FIELDS);
 
 function safePath(root,relative) {
   if(typeof relative!=='string'||!relative||path.isAbsolute(relative)||relative.includes('\\')||
@@ -152,6 +155,60 @@ function gitSource(root,sourceBlob,rawSha,expectedCount) {
 const unchanged=row=>Object.fromEntries(Object.entries(row).filter(([key])=>!['metadataRevision','approvalEvidence'].includes(key)));
 const absentOrEmpty=value=>value===undefined||Array.isArray(value)&&value.length===0;
 
+// An ordinary fingerprint reassessment may cite its prior native receipt as
+// evidence. That reference remains a fail-closed claim until the actual native
+// review replays; it does not by itself make the new receipt source-only. Keep
+// explicit preservation markers authoritative, and do not accept a repair flag
+// as a substitute for immutable review/source/proof equality.
+function ordinaryReviewedReassessment({receipt,nativeSource,question,identity,ordinal,current}) {
+  if(Object.hasOwn(receipt.approval,'sourceRebind')||Object.hasOwn(receipt,'newMetadataApprovals')||
+    Object.hasOwn(receipt,'preservedMetadataApprovals')||!absentOrEmpty(receipt.registryChanges)||
+    !absentOrEmpty(receipt.nativeParentBindings)||!Array.isArray(receipt.fingerprintRepairs))return false;
+  const repairs=receipt.fingerprintRepairs.filter(row=>row.questionUid===identity.questionUid);
+  if(repairs.length!==1)return false;
+  const repair=repairs[0],proof=repair.sourceReview;
+  const fingerprintKeys=['contentFingerprint','sourceFingerprint'];
+  if(repair.sourceOrdinal!==ordinal||repair.rebind!==undefined||
+    !same(Object.keys(repair.metadataBefore||{}).sort(),fingerprintKeys)||
+    !same(Object.keys(repair.identityBefore||{}),['sourceFingerprint'])||
+    !same(Object.keys(repair.after||{}).sort(),fingerprintKeys)||
+    ![...Object.values(repair.metadataBefore),...Object.values(repair.identityBefore),...Object.values(repair.after)].every(value=>SHA256.test(value||''))||
+    repair.after.sourceFingerprint!==current.sourceFingerprint||repair.after.contentFingerprint!==current.contentFingerprint||
+    repair.after.sourceFingerprint!==identity.sourceFingerprint||proof?.schemaVersion!=='archive-reviewed-source-reassessment-v1')return false;
+  const root=fs.realpathSync(nativeSource.root);
+  const refs=receipt.approval.evidenceRefs.filter(ref=>nativePath(ref?.path));
+  if(refs.length!==1)return false;
+  const ref=refs[0],bytes=readBytes(root,ref.path);
+  if(sha(bytes)!==ref.sha256)fail('ordinary reassessment prior receipt digest changed');
+  const prior=JSON.parse(bytes),old=selected(prior,identity.questionUid,ordinal);
+  if(ref.path!==receiptPath(prior.requestId)||prior.requestId===receipt.requestId||prior.examUid!==receipt.examUid||
+    prior.sourceArchiveFile!==receipt.sourceArchiveFile||prior.expectedQuestionCount!==receipt.expectedQuestionCount||
+    // Copying the ancestor's existing review into a damaged source-only receipt
+    // is not a new immutable reassessment of the changed source container.
+    proof.reviewedSourceBlobSha1===prior.sourceBlobSha1||proof.reviewCommitSourceBlobSha1===prior.sourceBlobSha1||
+    !same(repair.metadataBefore,{sourceFingerprint:old.row.sourceFingerprint,contentFingerprint:old.row.contentFingerprint})||
+    repair.identityBefore.sourceFingerprint!==old.identity.sourceFingerprint)return false;
+  const without=(row,keys)=>Object.fromEntries(Object.entries(row).filter(([key])=>!keys.includes(key)));
+  const metadataKeys=['sourceFingerprint','contentFingerprint','metadataRevision','approvalEvidence'];
+  const runtimeKeys=[...metadataKeys,'approvedSourceFingerprint'];
+  const appended=row=>[...new Set([...row.approvalEvidence,receiptPath(receipt.requestId)])];
+  if(!same(without(current,metadataKeys),without(old.row,metadataKeys))||
+    !same(without(identity,['sourceFingerprint']),without(old.identity,['sourceFingerprint']))||
+    !same(without(nativeSource.runtimeRecord,runtimeKeys),without(old.runtime,runtimeKeys))||
+    !same(current.approvalEvidence,appended(old.row))||!same(nativeSource.runtimeRecord.approvalEvidence,appended(old.runtime)))
+    fail('ordinary reassessment changed an existing approved value or provenance');
+  if(!reviewCaches.has(root))reviewCaches.set(root,new Map());
+  const result=validateReviewedSourceReassessment({root,
+    request:{scope:receipt.scope,approval:receipt.approval,sourceArchiveFile:receipt.sourceArchiveFile,
+      expectedQuestionCount:receipt.expectedQuestionCount},
+    patch:{questionUid:identity.questionUid,sourceOrdinal:ordinal,before:repair.metadataBefore,
+      identityBefore:repair.identityBefore,after:repair.after,evidenceRefs:receipt.approval.evidenceRefs,
+      sourceReview:{schemaVersion:proof.schemaVersion,reviewCommit:proof.reviewCommit,reviewPath:proof.reviewPath,reviewRef:proof.reviewRef}},
+    metadata:{...current,...repair.metadataBefore},question,final:current,supportedFields:reviewedFields,cache:reviewCaches.get(root)});
+  if(!same(result,proof))fail('ordinary reassessment differs from its immutable native proof');
+  return true;
+}
+
 export function nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,revalidateLeaf}) {
   if(!isPartialNativeSourcePreservation(receipt,nativeSource.root))return null;
   const root=fs.realpathSync(nativeSource.root),runtime=nativeSource.runtimeRecord;
@@ -161,8 +218,12 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     !Buffer.isBuffer(source.bytes)||!Array.isArray(source.bank)||!same(source.bank[ordinal-1],question)||
     source.bank.length!==receipt.expectedQuestionCount||blob(source.bytes)!==source.blobSha1||
     receipt.sourceBlobSha1!==source.blobSha1||receipt.sourceRawSha256!==sha(source.bytes))fail('current receipt differs from actual state');
+  // null preserves the ordinary native/student guards; this is not permission
+  // to reuse changed student content or skip a renderer/typed-source verifier.
+  if(ordinaryReviewedReassessment({receipt,nativeSource,question,identity,ordinal,current}))return null;
   const seen=new Set();
-  while(isPartialNativeSourcePreservation(cursor,root)) {
+  while(isPartialNativeSourcePreservation(cursor,root)&&!ordinaryReviewedReassessment({receipt:cursor,nativeSource:source,
+    question:source.bank[ordinal-1],identity:state.identity,ordinal,current:state.row})) {
     if(seen.has(cursor.requestId)||seen.size>=64)fail('source-rebind cycle or depth exceeded');
     seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs);
     const spec=cursor.approval.sourceRebind,ref=spec?.priorReceiptRef;

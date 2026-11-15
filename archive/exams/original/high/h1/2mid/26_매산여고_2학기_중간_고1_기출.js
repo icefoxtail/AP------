@@ -1069,7 +1069,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래 그림과 같이 좌표평면 위에 제 1사분면의 점 $A$와 $y$축 위의 점 $B$에 대하여 $\\overline{AB}=\\overline{AO}=\\sqrt5$인 이등변삼각형 $OAB$가 있다. 점 $A$를 직선 $y=x$에 대하여 대칭이동한 점을 $C$라 하면 점 $C$는 직선 $y=2x$ 위의 점이다. 선분 $AB$가 두 직선 $y=x$, $y=2x$와 만나는 점을 각각 $D$, $E$라 할 때, 삼각형 $ODE$의 외접원의 둘레의 길이를 구하면? (단, $O$는 원점이다.) [4.5점]",
-    "image": "assets/images/26_매산여고_2학기_중간_고1_기출/q20-problem-v2.svg",
+    "image": "assets/images/26_매산여고_2학기_중간_고1_기출/q20-quality-v4.svg",
     "choices": [
       "$\\dfrac{\\sqrt2}{3}\\pi$",
       "$\\dfrac{2\\sqrt2}{3}\\pi$",

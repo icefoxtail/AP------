@@ -1,0 +1,315 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+  "questionId": 6,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "원에 내접하는 사각형 ABCD",
+        "accessibilityDescription": "원 위의 네 꼭짓점과 변을 이은 사각형에서 꼭짓점 A의 각호와 변 길이 표기를 나타낸 그림.",
+        "sourceConditions": [
+          {
+            "id": "source",
+            "condition": "AB=2, BC=2, CD=√3, AD=3√3, ∠BAD=30°.",
+            "mappedTo": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "O"
+            ]
+          }
+        ],
+        "newVisualInformation": [],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "48",
+                    "denominator": "13"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "rational",
+                        "numerator": "8",
+                        "denominator": "13"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "9",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "rational",
+                        "numerator": "3",
+                        "denominator": "2"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "rational",
+                        "numerator": "2",
+                        "denominator": "1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "rim",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "outputType": "CIRCLE",
+              "args": {
+                "radius": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "13"
+                    }
+                  ]
+                }
+              },
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "rim"
+        ],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 520,
+          "height": 420
+        },
+        "hiddenPointNames": [
+          "O"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "AD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "givenAngle",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "value": 30,
+              "label": "30",
+              "arcs": 1,
+              "arcScale": "PROPORTIONAL",
+              "style": "ARC"
+            }
+          ],
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "rim",
+              "points": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "ABlength",
+              "ownerSegment": "AB",
+              "text": "2",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "BClength",
+              "ownerSegment": "BC",
+              "text": "2",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ADlength",
+              "ownerSegment": "AD",
+              "text": "3*sqrt(3)",
+              "factRole": "GIVEN"
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.57,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

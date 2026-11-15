@@ -899,7 +899,7 @@ window.questionBank = [
       "answer": "⑤",
       "solution": "한 번의 시행에서 점 $P$가 $+2$만큼, $-1$만큼 이동할 확률을 각각 구하고, $+2$만큼 이동한 횟수를 $n$이라 하여 최종 위치를 $n$의 식으로 나타낸다.\n\n$1$부터 $6$까지의 카드 중 $3$의 배수는 $3,6$이므로 $+2$만큼 이동할 확률은 $\\dfrac26=\\dfrac13$, $-1$만큼 이동할 확률은 $\\dfrac23$이다.\n\n$6$번 중 $+2$만큼 이동한 횟수를 $n$이라 하면 $-1$만큼 이동한 횟수는 $6-n$이다.\n최종 위치는 $2n-(6-n)=3n-6$이다.\n\n점 $P$가 선분 $AB$ 위(두 점 포함)에 있으려면 $A(-3)$, $B(3)$이므로 $-3\\le3n-6\\le3$이어야 한다.\n각 변에 $6$을 더하면 $3\\le3n\\le9$, 즉 $1\\le n\\le3$이다.\n$n$은 정수이므로 $n=1,2,3$이다.\n\n$+2$만큼 이동한 횟수가 $n$일 확률은 ${}_{6}C_{n}\\left(\\dfrac13\\right)^{n}\\left(\\dfrac23\\right)^{6-n}$이다.\n$n=1$: ${}_{6}C_{1}\\left(\\dfrac13\\right)\\left(\\dfrac23\\right)^5=\\dfrac{6\\times32}{729}=\\dfrac{192}{729}$\n$n=2$: ${}_{6}C_{2}\\left(\\dfrac13\\right)^2\\left(\\dfrac23\\right)^4=\\dfrac{15\\times16}{729}=\\dfrac{240}{729}$\n$n=3$: ${}_{6}C_{3}\\left(\\dfrac13\\right)^3\\left(\\dfrac23\\right)^3=\\dfrac{20\\times8}{729}=\\dfrac{160}{729}$\n세 경우는 동시에 일어날 수 없으므로 구하는 확률은 $\\dfrac{192+240+160}{729}=\\dfrac{592}{729}$이다.\n정답은 ⑤이다.",
       "points": 4.7,
-      "image": "assets/images/26_효천고_1학기_중간_고2_확률과통계_유사/q17.svg",
+      "image": "assets/images/26_효천고_1학기_중간_고2_확률과통계_유사/q17-readable-v3.svg",
       "imageSize": "full",
       "curriculum": "2022",
       "curriculumKey": "2022",

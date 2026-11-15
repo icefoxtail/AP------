@@ -1,0 +1,1200 @@
+{
+  "schemaVersion": "m3s2-five-quadratic-one-binding-target-impact-v1",
+  "status": "PASS_FOR_NONEXCLUDED_IMMUTABLE_TARGET_SCOPE_ONLY",
+  "main": "5cdb0fea82185a48cc19cf1e2945f3002fe1d9bb",
+  "registryChangesRef": {
+    "path": "/workspace/scratch/26fc42390a50/m3s2-work/.tmp/m3s2-remainder5-a9ca/registry-changes.json",
+    "sha256": "340c58dc40206b22e3710828ff5d39425b605a9c86b992154e6b61dc30e7df69",
+    "count": 1
+  },
+  "exactCourseBoundary": {
+    "existingAutoMetaFourTupleKeys": 1,
+    "newAutoMetaFourTupleKeys": 0,
+    "existingRuntimeKeys": [
+      {
+        "proposedProblemType": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "existingRows": [
+          {
+            "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+            "curriculum": "2015",
+            "standardCourse": "중3-1",
+            "standardUnitKey": "M3-04",
+            "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+            "subUnitLabelKo": "이차함수의 그래프",
+            "L1": "이차함수",
+            "L2": "이차함수 y=ax²+bx+c의 그래프",
+            "supportingItemCount": 2,
+            "supportingQuestionUids": [
+              "qid_v1_46e5b047eacab91915c0d9b45be592d4ba477089ece163f8c8ac77a8aa40aa03",
+              "qid_v1_98505b445a7266aed9e511b1e9e17af58002cfbfda68d23fa8c1164a2a2dd354"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE3"
+          }
+        ]
+      }
+    ],
+    "note": "The reviewed registrar resolves the exact five-field tuple including standardCourse. AutoMeta uses the four-field tuple without course. Existing legacy-course rows remain unchanged; the requested exact-course row is absent."
+  },
+  "authority": {
+    "archive/tools/meta-foundation/auto-register-merged-source.mjs": {
+      "sha256": "686000533020a011121db6fbd5b6c413694751a6574cb4d5b297901ad5683a2d"
+    },
+    "archive/tools/meta-foundation/active-registry.mjs": {
+      "sha256": "fb92f3db9c869183cf04415f9a1d678c60ba52a7ad1ec995beb57e77bdf402ed"
+    },
+    ".archive-meta-register/auto/state.json": {
+      "sha256": "aec952fd1d91f3d09f40dceb378901f88715b8246f96562abaabd4c0c71a8e23"
+    },
+    ".archive-meta-register/auto/config.json": {
+      "sha256": "876bcac7d53781533e735c61aba6b9a471957c788fd4f3dcf825e3af0ce9673c"
+    }
+  },
+  "counts": {
+    "allSelectedTargetsIncludingExcludedPending": 11335,
+    "allSources": 913,
+    "examinedSources": 823,
+    "examinedTargetCount": 10695,
+    "excludedByExactPtSources": 816,
+    "potentialRows": 14,
+    "newApply": 5,
+    "newApplyWithinSelected5": 5,
+    "newApplyOutsideSelected5": 0,
+    "knownNativeExplicitHoldNewApply": 0,
+    "excludedM3S1PendingTargets": 640,
+    "excludedM3S1PendingSources": 90,
+    "excludedMetadataMatchesAffectedTypes": 0,
+    "excludedSourceReadAttempts": 0,
+    "errors": 0
+  },
+  "rows": [
+    {
+      "questionUid": "qid_v1_424af2aa0f28beb65e58fbdcbdf8f5377fd5fa4f4d0eaa9995edcad63955b653",
+      "sourceArchiveFile": "original/middle/m3/2mid/21_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 6,
+      "selected5": false,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "registration_pending_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E054",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "CURRENT_2022_RPM_EXACT_LEAF_GAP",
+            "detail": "명시 꼭짓점형에서 그림·원점으로 계수 복원. E039Q4와 동일한2022 그래프(1) exact leaf 공백이며 일반형 조건으로 식 결정142를 강제하지 않는다."
+          }
+        ],
+        "afterTemplate": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT"
+      }
+    },
+    {
+      "questionUid": "qid_v1_10f83f802e59ad8d2712878d2d65a7927db0ae9e65da5b3f50d5777970bdc27f",
+      "sourceArchiveFile": "original/middle/m3/2mid/21_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 7,
+      "selected5": true,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "registration_pending_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "APPLY",
+        "reasons": [],
+        "metadataApprovalType": "MAIN_MERGE",
+        "reviewStatus": "review_required",
+        "changedFields": [
+          "curriculum",
+          "curriculumKey",
+          "courseKey",
+          "problemTypeKey",
+          "templateKey",
+          "difficultyBucket",
+          "difficultyConfidence",
+          "difficultyBoundaryFlag",
+          "legacyLevelCompatibility",
+          "level",
+          "primaryMethod",
+          "decisiveStep",
+          "rpmPrimaryId",
+          "rpmPrimaryPath",
+          "rpmL3",
+          "rpmL4",
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ]
+      },
+      "nativeReview": {
+        "examId": "E054",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE"
+      }
+    },
+    {
+      "questionUid": "qid_v1_8bfe87a0304533dcc678119879bb2646ae973041d4c3da165da4f196273a8065",
+      "sourceArchiveFile": "original/middle/m3/2mid/21_향림중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 23,
+      "selected5": true,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "registration_pending_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "APPLY",
+        "reasons": [],
+        "metadataApprovalType": "MAIN_MERGE",
+        "reviewStatus": "review_required",
+        "changedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "curriculum",
+          "curriculumKey",
+          "courseKey",
+          "problemTypeKey",
+          "templateKey",
+          "integrationPattern",
+          "difficultyBoundaryFlag",
+          "level",
+          "primaryMethod",
+          "decisiveStep",
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ]
+      },
+      "nativeReview": {
+        "examId": "E061",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT"
+      }
+    },
+    {
+      "questionUid": "qid_v1_321b4898420d25430441194ed806a78fd65f0331b4e3a24a57c65b138b2ea768",
+      "sourceArchiveFile": "original/middle/m3/2mid/21_향림중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 9,
+      "selected5": true,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "registration_pending_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "APPLY",
+        "reasons": [],
+        "metadataApprovalType": "MAIN_MERGE",
+        "reviewStatus": "review_required",
+        "changedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "subUnitKey",
+          "subUnit",
+          "curriculum",
+          "curriculumKey",
+          "courseKey",
+          "problemTypeKey",
+          "templateKey",
+          "integrationPattern",
+          "difficultyBoundaryFlag",
+          "level",
+          "primaryMethod",
+          "decisiveStep",
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ]
+      },
+      "nativeReview": {
+        "examId": "E061",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT"
+      }
+    },
+    {
+      "questionUid": "qid_v1_a1d4525e9784f170d1e22ce9d86b7a77e34f6dd021206cf0824e2f0fb0ae75cc",
+      "sourceArchiveFile": "original/middle/m3/2mid/22_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 3,
+      "selected5": true,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "registration_pending_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "APPLY",
+        "reasons": [],
+        "metadataApprovalType": "MAIN_MERGE",
+        "reviewStatus": "review_required",
+        "changedFields": [
+          "curriculum",
+          "curriculumKey",
+          "courseKey",
+          "problemTypeKey",
+          "templateKey",
+          "crossConceptKeys",
+          "integrationPattern",
+          "difficultyConfidence",
+          "difficultyBoundaryFlag",
+          "legacyLevelCompatibility",
+          "level",
+          "primaryMethod",
+          "decisiveStep",
+          "rpmPrimaryId",
+          "rpmPrimaryPath",
+          "rpmL3",
+          "rpmL4",
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ]
+      },
+      "nativeReview": {
+        "examId": "E037",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+            "detail": "실제 풀이 골격에 맞는 GLOBAL ACTIVE 정의를 재사용하며 publisher crosswalk의 정밀 연결은 출고 담당에게 인계한다."
+          },
+          {
+            "type": "RESOLVER_SOLUTION_PROVENANCE",
+            "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+          }
+        ],
+        "afterTemplate": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE"
+      }
+    },
+    {
+      "questionUid": "qid_v1_f2721da21ad48fdef9649b9c08980c1181c22caf8efcf6e0cc56088a91056a0f",
+      "sourceArchiveFile": "original/middle/m3/2mid/22_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 7,
+      "selected5": true,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "registration_pending_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "APPLY",
+        "reasons": [],
+        "metadataApprovalType": "MAIN_MERGE",
+        "reviewStatus": "review_required",
+        "changedFields": [
+          "curriculum",
+          "curriculumKey",
+          "courseKey",
+          "problemTypeKey",
+          "templateKey",
+          "crossConceptKeys",
+          "integrationPattern",
+          "difficultyBucket",
+          "difficultyConfidence",
+          "difficultyBoundaryFlag",
+          "legacyLevelCompatibility",
+          "level",
+          "primaryMethod",
+          "decisiveStep",
+          "rpmPrimaryId",
+          "rpmPrimaryPath",
+          "rpmL3",
+          "rpmL4",
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ]
+      },
+      "nativeReview": {
+        "examId": "E037",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+            "detail": "실제 풀이 골격에 맞는 GLOBAL ACTIVE 정의를 재사용하며 publisher crosswalk의 정밀 연결은 출고 담당에게 인계한다."
+          },
+          {
+            "type": "RESOLVER_SOLUTION_PROVENANCE",
+            "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+          }
+        ],
+        "afterTemplate": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT"
+      }
+    },
+    {
+      "questionUid": "qid_v1_420f418f6d1f8f3544cfd9d06ffcc68ec4f0820caebcbe22d1126e6b93a107ca",
+      "sourceArchiveFile": "original/middle/m3/2mid/22_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 17,
+      "selected5": false,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "registration_pending_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "DECLARED_PT_TPL_MISSING"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "DECLARED_PT_TPL_MISSING"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E039",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": null
+      }
+    },
+    {
+      "questionUid": "qid_v1_4a529fb6138570d1d3d4ed746d72329db5eb7792bbfd0ca4f5cc7550cb6d5e2e",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 23,
+      "selected5": false,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "approved_partial_with_explicit_holds",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E027",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE"
+      }
+    },
+    {
+      "questionUid": "qid_v1_b1a956d6ee0f9fa4fa624044eb8fadd1c4d206cba7c81e274f363ebef7f77912",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 3,
+      "selected5": false,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "approved_partial_with_explicit_holds",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E029",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+            "detail": "GLOBAL ACTIVE 정확 풀이 골격을 재사용하며 publisher RPM 단일 매핑·native context binding의 공백은 별도 구별한다."
+          },
+          {
+            "type": "RESOLVER_SOLUTION_PROVENANCE",
+            "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+          }
+        ],
+        "afterTemplate": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE"
+      }
+    },
+    {
+      "questionUid": "qid_v1_d5d5961b24cdedd8ee5bc7747e451c54a2f441d61fbde63fafb2f3ca5ee2749a",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 5,
+      "selected5": false,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "approved_partial_with_explicit_holds",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E029",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "REGISTRATION_PROPOSAL_PENDING",
+            "proposedKey": "TPL_QUADRATIC_VERTEX_ON_AXIS_PARAMETER",
+            "insertedInSource": false
+          },
+          {
+            "type": "RESOLVER_SOLUTION_PROVENANCE",
+            "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+          }
+        ],
+        "afterTemplate": null
+      }
+    },
+    {
+      "questionUid": "qid_v1_bd3389afe1ae8b951c2053bdb2d64d1ba0fe47ccd343cc75b2087292f7e069e1",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 6,
+      "selected5": false,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "approved_partial_with_explicit_holds",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E029",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+            "detail": "GLOBAL ACTIVE 정확 풀이 골격을 재사용하며 publisher RPM 단일 매핑·native context binding의 공백은 별도 구별한다."
+          },
+          {
+            "type": "RESOLVER_SOLUTION_PROVENANCE",
+            "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+          }
+        ],
+        "afterTemplate": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT"
+      }
+    },
+    {
+      "questionUid": "qid_v1_9cc20572060846583b7508af9ddcabe81d9c3d4c3d81fdc5908fd99954130015",
+      "sourceArchiveFile": "original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 12,
+      "selected5": false,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentMetadataStatus": "approved_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E021",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": null
+      }
+    },
+    {
+      "questionUid": "qid_v1_3a04987ddab08ef50bfe01e98c85f84d18d11419b6d856d61d83d7ca39a3ee74",
+      "sourceArchiveFile": "original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 13,
+      "selected5": false,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentMetadataStatus": "approved_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E021",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": null
+      }
+    },
+    {
+      "questionUid": "qid_v1_af3dff171b6dcc9686412c0c501d49810b97514711461a508049adcf3fdee1a1",
+      "sourceArchiveFile": "original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 8,
+      "selected5": false,
+      "sourceProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "currentMetadataStatus": "approved_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E021",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": null
+      }
+    }
+  ],
+  "outsideCandidates": [],
+  "explicitHoldRisk": [],
+  "errors": [],
+  "excludedM3S1": [
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/16_오성중_1학기_기말_중3_수학.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/16_장흥중_1학기_기말_중3_수학.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/16_환호여중_1학기_기말_중3_수학.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_가산중_1학기_기말_중3_수학.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_동산중_1학기_기말_중3_수학.js",
+      "targetCount": 13,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_서울가산중_1학기_기말_중3_수학.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_신흥중_1학기_기말_중3_수학.js",
+      "targetCount": 12,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_연향중_1학기_기말_중3_수학.js",
+      "targetCount": 14,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_왕운중_1학기_기말_중3_수학.js",
+      "targetCount": 12,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_이수중_1학기_기말_중3_수학.js",
+      "targetCount": 12,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js",
+      "targetCount": 7,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/20_연향중_1학기_기말_중3_수학.js",
+      "targetCount": 10,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/20_이수중_1학기_기말_중3_수학.js",
+      "targetCount": 9,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_금당중_1학기_기말_중3_기출c.js",
+      "targetCount": 16,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_동산중_1학기_기말_중3_기출c.js",
+      "targetCount": 6,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_매산중_1학기_기말_중3_수학.js",
+      "targetCount": 13,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_신흥중_1학기_기말_중3_기출.js",
+      "targetCount": 13,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_연향중_1학기_기말_중3_기출c.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_왕운중_1학기_기말_중3_수학.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_왕의중_1학기_기말_중3_수학_기출.js",
+      "targetCount": 13,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_팔마중_1학기_기말_중3_수학.js",
+      "targetCount": 14,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_풍덕중_1학기_기말_중3_수학.js",
+      "targetCount": 15,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_동산중_1학기_기말_중3_기출c.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_매산중_1학기_기말_중3_기출.js",
+      "targetCount": 6,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_신흥중_1학기_기말_중3_기출c.js",
+      "targetCount": 5,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_연향중_1학기_기말_중3_기출c.js",
+      "targetCount": 7,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_이수중_1학기_기말_중3_기출c.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_풍덕중_1학기_기말_중3_기출c.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_향림중_1학기_기말_중3_수학.js",
+      "targetCount": 6,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/23_매산중_1학기_기말_중3_기출c.js",
+      "targetCount": 9,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/23_매산중_1학기_기말_중3_수학c.js",
+      "targetCount": 9,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/23_연향중_1학기_기말_중3_수학.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/23_풍덕중_1학기_기말_중3_기출.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/24_신흥중_1학기_기말_중3_기출c.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/24_연향중_1학기_기말_중3_기출c.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/25_연향중_1학기_기말_중3_기출c.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/25_왕운중_1학기_기말_중3_기출c.js",
+      "targetCount": 10,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/25_풍덕중_1학기_기말_중3_기출c.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/26_삼산중_1학기_기말_중3_기출.js",
+      "targetCount": 12,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/26_왕운중_1학기_기말_중3_기출.js",
+      "targetCount": 12,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/26_팔마중_1학기_기말_중3_기출.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/17_풍덕중_1학기_중간_중3_수학.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/19_풍덕중_1학기_중간_중3_기출.js",
+      "targetCount": 16,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_금당중_1학기_중간_중3_기출.js",
+      "targetCount": 5,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_금당중_1학기_중간_중3_수학.js",
+      "targetCount": 7,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_동산중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_매산중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_매산중_1학기_중간_중3_수학.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_신흥중_1학기_중간_중3_수학.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_연향중_1학기_중간_중3_기출.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_왕운중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_팔마중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_풍덕중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_동산중_1학기_중간_중3_기출.js",
+      "targetCount": 5,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_신흥중_1학기_중간_중3_기출.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_연향중_1학기_중간_중3_기출c.js",
+      "targetCount": 19,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_왕운중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_팔마중_1학기_중간_중3_기출.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js",
+      "targetCount": 16,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_향림중_1학기_중간_중3_수학.js",
+      "targetCount": 14,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_동산중_1학기_중간_중3_수학.js",
+      "targetCount": 13,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_연향중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_왕운중_1학기_중간_중3_기출.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_향림중_1학기_중간_중3_기출.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js",
+      "targetCount": 22,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_신흥중_1학기_중간_중3_수학.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_연향중_1학기_중간_중3_기출.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_왕운중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_이수중_1학기_중간_중3_기출c.js",
+      "targetCount": 10,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/25_금당중_1학기_중간_중3_기출.js",
+      "targetCount": 5,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/25_연향중_1학기_중간_중3_기출.js",
+      "targetCount": 18,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js",
+      "targetCount": 7,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/26_연향중_1학기_중간_중3_수학.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/26_왕운중_1학기_중간_중3_기출c.js",
+      "targetCount": 7,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/23_왕운중_1학기_중간_중3_유사1.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/23_왕운중_1학기_중간_중3_유사2.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/23_왕운중_1학기_중간_중3_유사3.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/23_풍덕중_1학기_중간_중3_유사2.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/23_풍덕중_1학기_중간_중3_유사3.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/24_왕운중_1학기_중간_중3_유사.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/25_왕운중_1학기_중간_중3_유사1.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/25_왕운중_1학기_중간_중3_유사2.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    }
+  ],
+  "excludedExactBindingMatches": [
+    {
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM"
+      },
+      "pendingUidCount": 0
+    }
+  ],
+  "approvedBoundary": {
+    "examinedApprovedRows": 13236,
+    "approvedExactBindingMatches": [
+      {
+        "target": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-04",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM"
+        },
+        "questionUids": []
+      }
+    ]
+  },
+  "sourceWrites": 0,
+  "registryWrites": 0,
+  "metadataWrites": 0,
+  "identityWrites": 0,
+  "runtimeWrites": 0,
+  "approvalWrites": 0,
+  "wholeRegistryImpactPass": false,
+  "scope": "Compare one proposed exact binding addition using the actual immutable main official planner and all nonexcluded selected target source/metadata PT declarations. No mathematical review is repeated. M3 S1 source access is explicitly blocked; global pending path/metadata counts are boundary evidence only.",
+  "actualRegistration": "NOT_RUN",
+  "consumer": "NOT_RUN",
+  "pages": "NOT_RUN",
+  "nextAction": "First464 receipts are verified. Retain these unpublished candidates until final source-wide actual approval preservation and external source-owner composition are complete. Any outside-candidate APPLY must be resolved with exact native evidence or negative hold preservation before binding release."
+}

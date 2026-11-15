@@ -105,6 +105,22 @@ const stable = value => JSON.stringify(value, (_, v) => v && !Array.isArray(v) &
 const digest = value => crypto.createHash("sha256").update(value).digest("hex");
 const eq = (a, b) => isDeepStrictEqual(a, b);
 const slug = value => value.toLowerCase().replaceAll("_", "-");
+// Pre-rename exam sources hashed a longer path ("exams/<file>" or "archive/exams/<file>") into the same
+// qid_v1 formula. A source UID equal to one of those two historical formulas names the same question.
+export const legacyPathFormulaUids = (sourceArchiveFile, ordinal) =>
+  ["exams/", "archive/exams/"].map(prefix => "qid_v1_" + digest(`${prefix}${sourceArchiveFile}#${ordinal}`));
+export const isLegacyPathFormulaUid = (uid, sourceArchiveFile, ordinal) =>
+  typeof uid === "string" && legacyPathFormulaUids(sourceArchiveFile, ordinal).includes(uid);
+// REVIEW2 may register a judged value that differs from the exam file's own inline value for these fields.
+// The source value is never lost: it is recorded per field as receipt.sourceValueOverrides.
+export const REVIEW2_SOURCE_OVERRIDE_FIELDS = Object.freeze(["tagStatus", "tagConfidence", "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"]);
+const hasSourceValue = v => v !== undefined && v !== null && String(v).trim() !== "";
+export function collectSourceValueOverrides({ approvalType, questionUid, source, final }) {
+  if (approvalType !== "REVIEW2") return [];
+  return REVIEW2_SOURCE_OVERRIDE_FIELDS.filter(field => hasSourceValue(source?.[field]) && final[field] !== undefined &&
+    JSON.stringify(source[field]) !== JSON.stringify(final[field]))
+    .map(field => ({ questionUid, field, sourceValue: source[field], registeredValue: final[field] }));
+}
 const isTypeHoldRecord = r => r.metadataApprovalType === "REVIEW2" && r.metaFoundationHoldReason === "TYPE_PATH_UNBOUND_UNIT_SUB_ONLY" && !r.problemTypeKey;
 const approved = row => row.reviewStatus === "reviewed_pass" || String(row.metadataStatus || "").startsWith("approved_");
 const fail = message => { throw new Error(message); };
@@ -2326,7 +2342,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       }
     }
     const consumerLanes = verifyProjection ? verifyConsumer(root, previous.appliedRecords, previous.runtimeRecords, read,
-      { auditPreservation: preservedAudit }) : null;
+      { auditPreservation: preservedAudit, sourceValueOverrides: previous.sourceValueOverrides || [] }) : null;
     return { status: "PASS", requestId: req.requestId, totalQuestions: patches.size, ...scopeFields, ...preservationFields, replay: true, plannedPaths: [],
       consumerSearchStatus: verifyProjection ? "STATIC_VALUES_VERIFIED" : "NOT_RUN", browserStatus: "NOT_RUN",
       ...(consumerLanes ? { consumerLanes } : {}) };
@@ -2381,6 +2397,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (owners.has(r.questionUid)) fail(`duplicate runtime UID: ${r.questionUid}`);
     owners.set(r.questionUid, pack);
   }
+  const sourceValueOverrides = [];
   const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [], rpmPrimaryBindings = [], nativeParentBindings = [];
   const extensionUsage = new Map(), priorBanks = new Map(), sourceReviewCache = new Map();
   let identityChanged = false;
@@ -2396,7 +2413,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     const q = JSON.parse(JSON.stringify(bank[i]));
     const id = ids.get(current.questionUid);
     if (!patch || patch.sourceOrdinal !== i + 1 || current.sourceOrdinal !== i + 1 || id?.sourceArchiveFile !== source || id.sourceOrdinal !== i + 1) fail(`UID/source ordinal mismatch #${i + 1}`);
-    if (q.questionUid && q.questionUid !== current.questionUid && !isUnambiguousLegacySourceUidAlias({
+    if (q.questionUid && q.questionUid !== current.questionUid && !isLegacyPathFormulaUid(q.questionUid, source, i + 1) && !isUnambiguousLegacySourceUidAlias({
       question: q, sourceArchiveFile: source, sourceOrdinal: i + 1, identityRecord: id, identityMap: identity, bank }))
       fail(`source UID mismatch #${i + 1}`);
     evidenceRefs(patch.evidenceRefs);
@@ -2583,6 +2600,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         metaFoundationHoldReason: "TYPE_PATH_UNBOUND_UNIT_SUB_ONLY", l3Disposition: "HOLD", l4Disposition: "HOLD",
         curriculumApplicability: final.curriculumApplicability || "DEFAULT_SCOPE", defaultSelectable: final.defaultSelectable !== false,
         approvalEvidence: [...new Set([...(current.approvalEvidence || []), receiptPath])], fieldStatus: holdFieldStatus });
+      sourceValueOverrides.push(...collectSourceValueOverrides({ approvalType: req.approval.type, questionUid: current.questionUid, source: q, final }));
       Object.assign(current, final); applied.push(structuredClone(final));
       continue;
     }
@@ -2709,6 +2727,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     const rt = runtimes.get(packId).data;
     rt.records = rt.records.filter(r => r.questionUid !== current.questionUid); rt.records.push(rr);
     touched.add(packId);
+    sourceValueOverrides.push(...collectSourceValueOverrides({ approvalType: req.approval.type, questionUid: current.questionUid, source: q, final }));
     Object.assign(current, final); applied.push(structuredClone(final)); runtimeRecords.push(rr);
   }
   for (const [packId, item] of runtimes) for (const row of item.data.records) {
@@ -2771,6 +2790,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         solutionFingerprintRepairs: fingerprintRepairs.length, newMetadataApprovals: 0, preservedMetadataApprovals: applied.length } } : {}),
     ...(rpmPrimaryBindings.length ? { rpmPrimaryBindings } : {}),
     ...(nativeParentBindings.length ? { nativeParentBindings } : {}),
+    ...(sourceValueOverrides.length ? { sourceValueOverrides } : {}),
     ...(metaPipelineAudit ? { metaPipelineAudit: { schemaVersion: metaPipelineAudit.inputAuditSchemaVersion || metaPipelineAudit.audit.schemaVersion,
       inputAuditVariant: metaPipelineAudit.inputAuditVariant,
       ...(metaPipelineAudit.inputAuditVariant === "source_drive_flat_v3" ? { sourceSchemaNormalization: {
@@ -2903,7 +2923,7 @@ function verifyConsumer(root, records, runtimeRecords, read, options) {
   return verifyConsumerValues(root, records, runtimeRecords, loadResolvedConsumerCatalog(root, read), options);
 }
 
-export function verifyConsumerValues(root, records, runtimeRecords, catalog, { auditPreservation = null } = {}) {
+export function verifyConsumerValues(root, records, runtimeRecords, catalog, { auditPreservation = null, sourceValueOverrides = [] } = {}) {
   const decode = v => Array.isArray(v) && v.length === 1 && Number.isInteger(v[0]) && catalog.strings?.[v[0]] !== undefined ? catalog.strings[v[0]] : v;
   const rows = catalog.encoding === "column-dictionary-v1" && Array.isArray(catalog.records[0])
     ? catalog.records.map(r => Object.fromEntries(catalog.columns.map((k, i) => [k, decode(r[i])]))) : catalog.records;
@@ -3015,7 +3035,8 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog, { a
     const extensionExplained = field => field === "foundationTaxonomy" && hasExtensionKey(r) &&
       resolve(r, (extensionTables ||= lookup(registryPlan(root, [], () => {}))),
         { allowConditionDebt: r.conditionKeysEvidenceDebt?.status === "EVIDENCE_DEBT" }).extensions.length > 0;
-    const blockingConflicts = (c.metadataConflicts || []).filter(field => !(laneBound && field === "reviewStatus") && !(r.metadataApprovalType === "REVIEW2" && field === "reviewStatus") && !extensionExplained(field));
+    const blockingConflicts = (c.metadataConflicts || []).filter(field => !(laneBound && field === "reviewStatus") && !(r.metadataApprovalType === "REVIEW2" && field === "reviewStatus") &&
+      !(r.metadataApprovalType === "REVIEW2" && REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(field) && sourceValueOverrides.some(o => o.questionUid === r.questionUid && o.field === field && eq(o.registeredValue, r[field]))) && !extensionExplained(field));
     if (blockingConflicts.length) fail(`Consumer metadata conflict: ${r.questionUid}`);
     if ((c.metadataConflicts || []).includes("foundationTaxonomy") && hasExtensionKey(r)) lanes.generatedExtension = (lanes.generatedExtension || 0) + 1;
   }

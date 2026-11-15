@@ -275,7 +275,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "점과 직선 사이의 거리는 그 점에서 직선에 내린 수선분의 길이이다.\n① 직각 표시에서 $\\overline{AC}\\perp\\overleftrightarrow{BC}$이므로 옳다.\n② $BD=DC=8\\,\\mathrm{cm}$이므로 $D$는 $BC$의 중점이다.\n③ $A$에서 직선 $BD$에 내린 수선은 $AC$이므로 거리는 $7\\,\\mathrm{cm}$이다. 따라서 $12\\,\\mathrm{cm}$라는 설명은 옳지 않다.\n④ $B$에서 직선 $AC$에 내린 수선은 $BC$이고, $BC=8+8=16\\,\\mathrm{cm}$이므로 옳다.\n⑤ 수선 $AC$와 직선 $BD$가 만나는 점은 $C$이므로 옳다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_풍덕중_2학기_중간_중1_기출/q06-source-repaired.svg",
+    "image": "assets/images/25_풍덕중_2학기_중간_중1_기출/q06-readable-v3.svg",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",

@@ -703,6 +703,80 @@ test('ordinary Git-bound source reviews retain their unchanged-cursor path and l
   assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
 });
 
+function ordinaryReassessmentWithPriorFixture(t) {
+  const f=reviewedFigureNativeFixture(t,{genericReview:true,completeFields:true}),dir=f.nativeSource.root;
+  const previousBytes=execFileSync('git',['show',f.review.previousSourceCommit+':archive/exams/'+source],{cwd:dir});
+  const previousBank=loadBank(previousBytes.toString('utf8'));
+  const priorId='prior-approved-native-review',priorPath='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/'+priorId+'.json';
+  const prior=structuredClone(f.receipt);
+  const stripStudent=row=>Object.fromEntries(Object.entries(row).filter(([key])=>
+    !REASSESSED_STUDENT_FIELDS.includes(key)||['questionUid','sourceOrdinal','sourceQuestionNo'].includes(key)));
+  for(const key of ['appliedRecords','runtimeRecords'])f.receipt[key]=f.receipt[key].map(stripStudent);
+  const beforeRow=row=>{
+    const q=previousBank[row.sourceOrdinal-1];
+    return {...stripStudent(row),sourceFingerprint:sourceFingerprint(q),contentFingerprint:contentFingerprint(q),
+      ...(Object.hasOwn(row,'approvedSourceFingerprint')?{approvedSourceFingerprint:sourceFingerprint(q)}:{}),
+      metadataRevision:`meta-foundation:MIDDLE3@1.0.0:exam-final_qa-v2:${priorId}`,approvalEvidence:[priorPath]};
+  };
+  Object.assign(prior,{requestId:priorId,requestSha256:f.sha(priorId),sourceBlobSha1:f.git('rev-parse',f.review.previousSourceCommit+':archive/exams/'+source),
+    sourceRawSha256:f.sha(previousBytes),fingerprintRepairs:[],approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'prior-reviewer',
+      evidenceRefs:[structuredClone(f.receipt.approval.evidenceRefs[0])]},appliedRecords:prior.appliedRecords.map(beforeRow),runtimeRecords:prior.runtimeRecords.map(beforeRow),
+    appliedIdentityRecords:prior.appliedIdentityRecords.map(row=>({...row,sourceFingerprint:sourceFingerprint(previousBank[row.sourceOrdinal-1])}))});
+  f.put(priorPath,prior);
+  const nextId='ordinary-reassessment-with-prior',nextPath='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/'+nextId+'.json';
+  const updated=row=>({...row,metadataRevision:`meta-foundation:MIDDLE3@1.0.0:exam-final_qa-v2:${nextId}`,approvalEvidence:[priorPath,nextPath]});
+  Object.assign(f.receipt,{requestId:nextId,requestSha256:f.sha(nextId),partialUidCount:1,totalQuestions:1,
+    appliedRecords:f.receipt.appliedRecords.filter(row=>row.questionUid===uid).map(updated),
+    runtimeRecords:f.receipt.runtimeRecords.filter(row=>row.questionUid===uid).map(updated),
+    appliedIdentityRecords:f.receipt.appliedIdentityRecords.filter(row=>row.questionUid===uid)});
+  f.receipt.approval.evidenceRefs.push({path:priorPath,sha256:f.sha(fs.readFileSync(path.join(dir,priorPath)))});
+  f.current=f.receipt.appliedRecords[0];f.nativeSource.runtimeRecord=f.receipt.runtimeRecords[0];
+  f.identity=f.receipt.appliedIdentityRecords[0];f.previous=structuredClone(f.question);
+  f.registry.bindingRows[0].L1='Numbers';f.registry.bindingRows[0].L2='Roots';
+  f.receiptPath=nextPath;f.saveReceipt=()=>f.put(nextPath,f.receipt);f.saveReceipt();
+  return {...f,priorNativeReceipt:prior,priorNativePath:priorPath};
+}
+
+test('geometry native verifier accepts a fingerprint reassessment citing its prior FINAL_QA receipt',t=>{
+  const f=ordinaryReassessmentWithPriorFixture(t),before=JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.receipt]);
+  assert.equal(planQuestion({...f,nativeSource:undefined}).status,'APPLY','ordinary producer could otherwise overwrite the native revision');
+  const check=validateActiveMetaFields(f.current,f.registry,{requireFields:false});
+  const context=activeBindingContext({candidate:f.current,check,registry:f.registry,runtimeOwner:'MIDDLE3'});
+  assert.equal(context.reason,undefined);
+  assert.equal(nativeReviewReceipt({...f,pt:context.pt,tpl:context.tpl,ownerPack:context.ownerPack}),f.receiptPath);
+  const result=planQuestion(f);assert.equal(result.status,'ALREADY_REGISTERED');assert.equal(result.nativeReviewReceipt,f.receiptPath);
+  assert.equal(result.final,undefined);assert.equal(JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.receipt]),before);
+});
+
+for(const [name,change]of [
+  ['missing selected repair',f=>{f.receipt.fingerprintRepairs=[];}],
+  ['a repair marker without native review',f=>{delete f.receipt.fingerprintRepairs[0].sourceReview;}],
+  ['a fabricated native review marker',f=>{f.receipt.fingerprintRepairs[0].sourceReview={schemaVersion:'archive-reviewed-source-reassessment-v1'};}],
+  ['wrong immutable review commit',f=>{f.receipt.fingerprintRepairs[0].sourceReview.reviewCommit='0'.repeat(40);}],
+  ['changed saved review payload proof',f=>{f.receipt.fingerprintRepairs[0].sourceReview.studentPayloadSha256='0'.repeat(64);}],
+  ['missing current review evidence',f=>{fs.unlinkSync(path.join(f.nativeSource.root,f.reviewPath));}],
+  ['locally rebound review outside its Git commit',f=>{
+    const doc=structuredClone(f.review);doc.author='unapproved replacement';f.put(f.reviewPath,doc);
+    const digest=f.sha(fs.readFileSync(path.join(f.nativeSource.root,f.reviewPath)));
+    f.receipt.fingerprintRepairs[0].sourceReview.reviewRef.sha256=digest;
+    f.receipt.approval.evidenceRefs.find(ref=>ref.path===f.reviewPath).sha256=digest;
+  }],
+  ['wrong prior metadata fingerprint',f=>{f.receipt.fingerprintRepairs[0].metadataBefore.sourceFingerprint='0'.repeat(64);}],
+  ['wrong prior identity fingerprint',f=>{f.receipt.fingerprintRepairs[0].identityBefore.sourceFingerprint='0'.repeat(64);}],
+  ['wrong current repair fingerprint',f=>{f.receipt.fingerprintRepairs[0].after.contentFingerprint='0'.repeat(64);}],
+  ['a new metadata field hidden in fingerprint repair',f=>{f.receipt.fingerprintRepairs[0].after.problemTypeKey='PT_ROOT';}],
+  ['a source-only marker with ordinary review',f=>{f.receipt.approval.sourceRebind={};}],
+  ['source-only count markers with ordinary review',f=>{f.receipt.newMetadataApprovals=0;f.receipt.preservedMetadataApprovals=1;}],
+  ['changed existing approval status',f=>{f.current.fieldStatus.problemType='review_required';f.nativeSource.runtimeRecord.fieldStatus.problemType='review_required';}],
+  ['changed identity foreign field',f=>{f.identity.unreviewedField='changed';}],
+  ['changed runtime readiness',f=>{f.nativeSource.runtimeRecord.runtimeSelectable=!f.nativeSource.runtimeRecord.runtimeSelectable;}],
+])test('ordinary reassessment with prior evidence refuses '+name+' without producer fallback',t=>{
+  const f=ordinaryReassessmentWithPriorFixture(t);assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  change(f);f.saveReceipt();
+  const out=planQuestion(f);assert.equal(out.status,'SUPPLEMENT_PENDING');assert.equal(out.nativeReviewReceipt,undefined);assert.equal(out.final,undefined);
+  assert.deepEqual(out.reasons,['NATIVE_SOURCE_PRESERVATION_REVALIDATION_FAILED']);
+});
+
 test('a claimed current figure row cannot drop its repair after the cursor catches up',async t=>{
   for(const [name,change]of [
     ['sourceReview removed',f=>{delete f.receipt.fingerprintRepairs[0].sourceReview;}],
@@ -1061,6 +1135,24 @@ test('two exact source-only preserves replay the original solution proof without
   const f=preserveNativeSubset(preserveNativeSubset(solutionRebindNativeFixture(t)),'second-source-preservation');
   assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
   f.previous=structuredClone(f.question);assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+});
+test('source-only ancestry can end at an exact ordinary fingerprint reassessment with prior evidence',t=>{
+  const f=preserveNativeSubset(ordinaryReassessmentWithPriorFixture(t));
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  f.put(f.reviewPath,{unreviewed:true});assert.equal(planQuestion(f).status,'SUPPLEMENT_PENDING');
+});
+test('erasing preservation markers and copying an ancestor review cannot fabricate a new reassessment',t=>{
+  const f=preserveNativeSubset(ordinaryReassessmentWithPriorFixture(t));
+  delete f.receipt.approval.sourceRebind;delete f.receipt.newMetadataApprovals;delete f.receipt.preservedMetadataApprovals;
+  f.receipt.fingerprintRepairs=structuredClone(f.ancestor.fingerprintRepairs);
+  for(const repair of f.receipt.fingerprintRepairs) {
+    const old=f.ancestor.appliedRecords.find(row=>row.questionUid===repair.questionUid);
+    repair.metadataBefore={sourceFingerprint:old.sourceFingerprint,contentFingerprint:old.contentFingerprint};
+    repair.identityBefore={sourceFingerprint:old.sourceFingerprint};
+  }
+  f.receipt.approval.evidenceRefs.push(...f.ancestor.approval.evidenceRefs.filter(ref=>!ref.path.startsWith('archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/')));
+  f.saveReceipt();const result=planQuestion(f);
+  assert.equal(result.status,'SUPPLEMENT_PENDING');assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
 });
 const updatePreservedPrior=f=>{
   f.put(f.ancestorPath,f.ancestor);
