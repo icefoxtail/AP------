@@ -651,7 +651,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/25_매산고_1학기_중간_고2_대수/q18.svg",
+    "image": "assets/images/25_매산고_1학기_중간_고2_대수/q18-problem-readable-v2.svg",
     "imageAlt": "원본 시험지처럼 안쪽 호 AB와 바깥쪽 호 CD가 공통 중심 O를 갖는 부채꼴 사이 영역 ABDC",
     "imageSize": "full",
     "solutionImage": "assets/images/25_매산고_1학기_중간_고2_대수/q18-solution.svg",

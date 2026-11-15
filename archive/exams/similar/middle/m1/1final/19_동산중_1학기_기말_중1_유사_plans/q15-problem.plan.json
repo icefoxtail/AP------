@@ -1,35 +1,351 @@
 {
-  "capability": "construction-spike-v1",
-  "sourceQuote": "좌표평면 위의 네 점 $A, B, C, D$의 좌표",
-  "caption": "좌표평면 위의 네 점 A, B, C, D의 위치와 좌표",
-  "mathPlan": {
-    "schemaVersion": "construction-spike-v1",
-    "nodes": [
+  "schemaVersion": "APMATH_NATIVE_SIMPLE_FUNCTION_GRAPH_PLAN_v1",
+  "status": "CANDIDATE_AWAITING_ROOT_CAPTURE",
+  "sourceExam": "archive/exams/similar/middle/m1/1final/19_동산중_1학기_기말_중1_유사.js",
+  "sourceQuestionId": 15,
+  "sourceQuote": "다음 좌표평면 위의 네 점 $A, B, C, D$의 좌표를 나타낸 것으로 옳은 것은? (3점)",
+  "sourceAsset": "archive/assets/images/19_동산중_1학기_기말_중1_유사/q15.svg",
+  "assetPath": "assets/images/19_동산중_1학기_기말_중1_유사/q15-native-graph.svg",
+  "sourceAssetSha256": "fe346a6184f29e273999e099cef62bb137c9f63188187766a0196ef8cae44efa",
+  "candidateAssetSha256": "b3b7aadcc4126eb0914a90463356df933e6fd39ddf7c22af76caf51c8e43e6df",
+  "renderer": "alive.engine.visual_renderer.render_visual_spec",
+  "rendererVersion": "0.5.3-student-language-accessibility",
+  "typography": "archive/tools/geometry-equation/production/typography.mjs",
+  "studentAnswerExposed": false,
+  "visualSpec": {
+    "version": "0.1",
+    "type": "simple_function_graph",
+    "width": 600,
+    "height": 350,
+    "xRange": [
+      -6.56,
+      6.56
+    ],
+    "yRange": [
+      -3.5,
+      3.5
+    ],
+    "title": "네 점의 좌표",
+    "description": "좌표평면 위의 네 점 A, B, C, D와 원점 및 축 보조선.",
+    "curves": [],
+    "points": [
       {
-        "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
+        "x": 3,
+        "y": 2
+      },
+      {
+        "x": -4,
+        "y": 3
+      },
+      {
+        "x": -2,
+        "y": -3
+      },
+      {
+        "x": 4,
+        "y": -2
       }
-    ]
+    ],
+    "segments": [
+      {
+        "from": {
+          "x": 3,
+          "y": 0
+        },
+        "to": {
+          "x": 3,
+          "y": 2
+        },
+        "kind": "guide"
+      },
+      {
+        "from": {
+          "x": 0,
+          "y": 2
+        },
+        "to": {
+          "x": 3,
+          "y": 2
+        },
+        "kind": "guide"
+      },
+      {
+        "from": {
+          "x": -4,
+          "y": 0
+        },
+        "to": {
+          "x": -4,
+          "y": 3
+        },
+        "kind": "guide"
+      },
+      {
+        "from": {
+          "x": 0,
+          "y": 3
+        },
+        "to": {
+          "x": -4,
+          "y": 3
+        },
+        "kind": "guide"
+      },
+      {
+        "from": {
+          "x": -2,
+          "y": 0
+        },
+        "to": {
+          "x": -2,
+          "y": -3
+        },
+        "kind": "guide"
+      },
+      {
+        "from": {
+          "x": 0,
+          "y": -3
+        },
+        "to": {
+          "x": -2,
+          "y": -3
+        },
+        "kind": "guide"
+      },
+      {
+        "from": {
+          "x": 4,
+          "y": 0
+        },
+        "to": {
+          "x": 4,
+          "y": -2
+        },
+        "kind": "guide"
+      },
+      {
+        "from": {
+          "x": 0,
+          "y": -2
+        },
+        "to": {
+          "x": 4,
+          "y": -2
+        },
+        "kind": "guide"
+      },
+      {
+        "from": {
+          "x": 6.56,
+          "y": 0
+        },
+        "to": {
+          "x": 6.34,
+          "y": 0.14
+        }
+      },
+      {
+        "from": {
+          "x": 6.56,
+          "y": 0
+        },
+        "to": {
+          "x": 6.34,
+          "y": -0.14
+        }
+      },
+      {
+        "from": {
+          "x": 0,
+          "y": 3.5
+        },
+        "to": {
+          "x": 0.14,
+          "y": 3.28
+        }
+      },
+      {
+        "from": {
+          "x": 0,
+          "y": 3.5
+        },
+        "to": {
+          "x": -0.14,
+          "y": 3.28
+        }
+      }
+    ],
+    "annotations": []
   },
-  "assetPath": "assets/images/19_동산중_1학기_기말_중1_유사/q15.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/middle/m1/1final/19_동산중_1학기_기말_중1_유사_plans/engine_evidence/q15-problem-result.json",
-    "statePath": "archive/exams/similar/middle/m1/1final/19_동산중_1학기_기말_중1_유사_plans/engine_evidence/q15-problem-state.json",
-    "svgPath": "archive/exams/similar/middle/m1/1final/19_동산중_1학기_기말_중1_유사_plans/engine_evidence/q15-problem.svg"
-  }
+  "typographyPlan": [
+    {
+      "text": "x",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "start",
+      "x": 568,
+      "y": 147
+    },
+    {
+      "text": "y",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "start",
+      "x": 307,
+      "y": 18
+    },
+    {
+      "text": "O",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "start",
+      "x": 278,
+      "y": 178
+    },
+    {
+      "text": "3",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "middle",
+      "at": {
+        "x": 3,
+        "y": 0,
+        "dx": 0,
+        "dy": 7
+      }
+    },
+    {
+      "text": "-4",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "middle",
+      "at": {
+        "x": -4,
+        "y": 0,
+        "dx": 0,
+        "dy": 7
+      }
+    },
+    {
+      "text": "-2",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "middle",
+      "at": {
+        "x": -2,
+        "y": 0,
+        "dx": 0,
+        "dy": 7
+      }
+    },
+    {
+      "text": "4",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "middle",
+      "at": {
+        "x": 4,
+        "y": 0,
+        "dx": 0,
+        "dy": 7
+      }
+    },
+    {
+      "text": "2",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "end",
+      "at": {
+        "x": 0,
+        "y": 2,
+        "dx": -9,
+        "dy": -13
+      }
+    },
+    {
+      "text": "3",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "end",
+      "at": {
+        "x": 0,
+        "y": 3,
+        "dx": -9,
+        "dy": -13
+      }
+    },
+    {
+      "text": "-3",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "end",
+      "at": {
+        "x": 0,
+        "y": -3,
+        "dx": -9,
+        "dy": -13
+      }
+    },
+    {
+      "text": "-2",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "end",
+      "at": {
+        "x": 0,
+        "y": -2,
+        "dx": -9,
+        "dy": -13
+      }
+    },
+    {
+      "text": "A",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "start",
+      "at": {
+        "x": 3,
+        "y": 2,
+        "dx": 12,
+        "dy": -26
+      }
+    },
+    {
+      "text": "B",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "start",
+      "at": {
+        "x": -4,
+        "y": 3,
+        "dx": 12,
+        "dy": -25
+      }
+    },
+    {
+      "text": "C",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "start",
+      "at": {
+        "x": -2,
+        "y": -3,
+        "dx": -27,
+        "dy": 1
+      }
+    },
+    {
+      "text": "D",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "start",
+      "at": {
+        "x": 4,
+        "y": -2,
+        "dx": 12,
+        "dy": 2
+      }
+    }
+  ]
 }

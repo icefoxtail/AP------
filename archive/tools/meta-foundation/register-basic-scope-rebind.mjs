@@ -35,6 +35,8 @@ import { execFileSync } from "node:child_process";
 import { registerDifficulty5 } from "./register-difficulty5.mjs";
 import { registerReviewedParentCorrection } from "./reviewed-parent-correction.mjs";
 import { BASIC_PRESERVATION_SCHEMA, BASIC_PRESERVATION_REVIEW_SCHEMA, verifyReviewedBasicPreservation } from "./reviewed-basic-preservation.mjs";
+import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REVIEW_SCHEMA, verifyNativeBasicHoldPreservation } from "./native-basic-hold-preservation.mjs";
+import { NATIVE_BASIC_PARENT_SCHEMA, NATIVE_BASIC_PARENT_REVIEW_SCHEMA, verifyReviewedNativeBasicParent } from "./reviewed-native-basic-parent.mjs";
 
 export const SCHEMA = "archive-basic-scope-rebind-request-v1";
 export const PARENT_SCHEMA = "archive-basic-parent-correction-request-v1";
@@ -140,14 +142,16 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
     return registerReviewedParentCorrection({ root, request: req, write, verifyProjection });
   const correction = req?.schemaVersion === PARENT_SCHEMA;
   const preservation = req?.approval?.sourceReview !== undefined;
+  const nativeHold = req?.approval?.sourceReview?.schemaVersion === NATIVE_BASIC_HOLD_SCHEMA;
+  const nativeParent = req?.approval?.sourceReview?.schemaVersion === NATIVE_BASIC_PARENT_SCHEMA;
   if (!correction && req?.schemaVersion !== SCHEMA) fail("request schema mismatch");
-  if (preservation && (correction || req.approval.sourceReview?.schemaVersion !== BASIC_PRESERVATION_SCHEMA)) fail("unsupported basic source review");
+  if (preservation && (correction || ![BASIC_PRESERVATION_SCHEMA, NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_PARENT_SCHEMA].includes(req.approval.sourceReview?.schemaVersion))) fail("unsupported basic source review");
   if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(req.requestId || "")) fail("valid requestId required");
   requireText(req.examUid, "examUid");
   if (req.approval?.type !== (correction ? "BASIC_PARENT_CORRECTION" : "BASIC_SCOPE_REBIND") || req.approval.metadataReviewed !== true) fail("BASIC_SCOPE_REBIND approval with metadataReviewed=true required");
   requireText(req.approval.approvedBy, "approvedBy");
   evidenceRefs(root, req.approval.evidenceRefs, "approval", correction);
-  const review = loadReview(root, req, correction ? PARENT_REVIEW_SCHEMA : preservation ? BASIC_PRESERVATION_REVIEW_SCHEMA : REVIEW_SCHEMA);
+  const review = loadReview(root, req, correction ? PARENT_REVIEW_SCHEMA : nativeParent ? NATIVE_BASIC_PARENT_REVIEW_SCHEMA : nativeHold ? NATIVE_BASIC_HOLD_REVIEW_SCHEMA : preservation ? BASIC_PRESERVATION_REVIEW_SCHEMA : REVIEW_SCHEMA);
   if (!Array.isArray(req.items) || !req.items.length || req.items.length > MAX_ITEMS) fail(`items[] required (1..${MAX_ITEMS})`);
   if (preservation && (review.doc.questions.length !== req.items.length || new Set(review.doc.questions.map(q => q.questionUid)).size !== req.items.length ||
       new Set(req.items.map(item => item.sourceOrdinal)).size !== req.items.length))
@@ -300,15 +304,19 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
       continue;
     }
     if (preservation) {
-      const proof = verifyReviewedBasicPreservation({ root, request: req, review: review.doc, item,
+      const verify = nativeParent ? verifyReviewedNativeBasicParent : nativeHold ? verifyNativeBasicHoldPreservation : verifyReviewedBasicPreservation;
+      const proof = verify({ root, request: req, review: review.doc, item,
         current, previous: prior, row, identity: id, crosswalk });
       const bp = item.basicParent;
       const matches = links.records.filter(link => link.sourceFile === source && Number(link.sourceOrdinal) === n);
       if (matches.length > 1 || matches.some(link => ["grade", "curriculumKey", "courseKey", "L1", "L2"].some(key => link[key] !== bp[key])))
         fail(`${uid} existing reviewed link has another or ambiguous parent`);
+      if (nativeParent && !previous && matches.length) fail(`${uid} new basic parent already has a scoped source link`);
       const nextLink = { ...bp, sourceFile: source, sourceOrdinal: n,
         sourceFingerprint: item.after.sourceFingerprint, sourceBodyFingerprint: item.after.contentFingerprint,
-        reason: matches[0]?.reason || `BASIC_SCOPE_REBIND ${req.requestId}: preserve the existing exact basic parent after the bound current-source repair` };
+        reason: matches[0]?.reason || (nativeParent
+          ? `BASIC_SCOPE_REBIND ${req.requestId}: register the independently reviewed basic parent after the bound current-source wording repair`
+          : `BASIC_SCOPE_REBIND ${req.requestId}: preserve the existing exact basic parent after the bound current-source repair`) };
       applied.push({ questionUid: uid, sourceOrdinal: n, before: item.before, after: item.after,
         metadataValuesChanged: false, figureChanged: false, basicParent: bp, ...proof, nextLink });
       continue;
@@ -357,12 +365,17 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
       ...(nextLink ? { basicParent: item.basicParent } : {}), nextLink });
   }
 
-  const preservationCounts = preservation ? { preservedMetadataApprovals: applied.length,
-    newMetadataApprovals: 0, advancedApprovals: 0, metadataValuesChanged: false,
+  const preservationCounts = preservation ? { preservedMetadataApprovals: nativeParent ? 0 : applied.length,
+    newMetadataApprovals: nativeParent ? applied.length : 0, advancedApprovals: 0, metadataValuesChanged: false,
+    ...(nativeParent ? { newBasicParentApprovals: applied.length, newDifficultyJudgments: 0, newBlindReviews: 0, newReview2: 0 } : {}),
     expectedQuestionCount: req.expectedQuestionCount } : {};
-  if (preservation && previous && (previous.sourceReviewSchema !== BASIC_PRESERVATION_SCHEMA ||
-      !eq(previous.applied, applied) || previous.preservedMetadataApprovals !== applied.length ||
-      previous.newMetadataApprovals !== 0 || previous.advancedApprovals !== 0 || previous.metadataValuesChanged !== false ||
+  const nativeHoldProof = nativeHold ? {
+    heldRuntimeBindings: applied.flatMap(record => record.heldRuntimeBindings),
+    metaOnlyHoldReasons: applied.map(record => ({ questionUid: record.questionUid, reason: record.metaOnlyHoldReason })),
+  } : {};
+  if (preservation && previous && (previous.sourceReviewSchema !== req.approval.sourceReview.schemaVersion ||
+      !eq(previous.applied, applied) || Object.entries(preservationCounts).some(([key, value]) => !eq(previous[key], value)) ||
+      previous.advancedApprovals !== 0 || previous.metadataValuesChanged !== false ||
       previous.expectedQuestionCount !== req.expectedQuestionCount || previous.sourceRawSha256 !== sha256(bytes)))
     fail("basic preservation receipt/protected value drift");
 
@@ -375,10 +388,10 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
       if (record.nextLink && !links.records.some(link => eq(link, record.nextLink))) fail(`registered basic source link drift: ${record.questionUid}`);
     }
     return { status: "PASS", requestId: req.requestId, verifiedRows: previous.applied.length, totalQuestions: req.items.length, replay: true,
-      ...(preservation ? { ...preservationCounts, plannedPaths: [] } : {}), consumerSearchStatus: correction || preservation ? "STATIC_VALUES_VERIFIED" : "NOT_RUN" };
+      ...(preservation ? { ...preservationCounts, ...nativeHoldProof, plannedPaths: [] } : {}), consumerSearchStatus: correction || preservation ? "STATIC_VALUES_VERIFIED" : "NOT_RUN" };
   }
   if (previous) return { status: "PASS", requestId: req.requestId, replay: true, plannedPaths: [], totalQuestions: req.items.length, verifiedRows: applied.length,
-    ...preservationCounts };
+    ...preservationCounts, ...nativeHoldProof };
 
   for (const record of applied) {
     const row = metaRows.get(record.questionUid), id = idRows.get(record.questionUid);
@@ -396,9 +409,9 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
   if (preservation) { delete metadata.digest; metadata.digest = sha256(JSON.stringify(metadata)); }
   const receipt = { schemaVersion: RECEIPT_SCHEMA, requestId: req.requestId, requestSha256, examUid: req.examUid, sourceArchiveFile: source,
     sourceBlobSha1: req.expectedSourceBlobSha1, previousSourceBlobSha1: req.previousSourceBlobSha1, sourceRawSha256: sha256(bytes),
-    approval: req.approval, metadataRegistrationStatus: correction ? "BASIC_PARENT_CORRECTED" : "FINGERPRINT_REBOUND", metadataValuesChanged: correction,
+    approval: req.approval, metadataRegistrationStatus: nativeParent ? "BASIC_PARENT_REGISTERED" : correction ? "BASIC_PARENT_CORRECTED" : "FINGERPRINT_REBOUND", metadataValuesChanged: correction,
     consumerSearchStatus: "NOT_RUN", totalRebound: applied.length, applied,
-    ...(preservation ? { sourceReviewSchema: BASIC_PRESERVATION_SCHEMA, ...preservationCounts } : {}) };
+    ...(preservation ? { sourceReviewSchema: req.approval.sourceReview.schemaVersion, ...preservationCounts } : {}) };
   const output = new Map([[META, json(metadata)], [IDENTITY, JSON.stringify(identity) + "\n"], [LINKS, json(links)], [receiptPath, json(receipt)]]);
   const changed = [...output].filter(([file, text]) => !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text);
   if (write) {
@@ -416,5 +429,5 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
     }
   }
   return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalRebound: applied.length, totalQuestions: req.items.length,
-    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file), ...preservationCounts };
+    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file), ...preservationCounts, ...nativeHoldProof };
 }

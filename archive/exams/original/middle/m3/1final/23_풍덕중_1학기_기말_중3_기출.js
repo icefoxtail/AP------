@@ -900,7 +900,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "두 이차함수 $y=2(x+1)(x-1)$, $y=-2(x-3)(x-5)$의 꼭짓점을 각각 $A$, $B$라고 하고, 직선 $y=2$와 $y$축의 교점을 $C$라 하자. 삼각형 $ABC$의 넓이로 옳은 것을 고르시오. (5점)<br><br><img src=\"assets/images/23_풍덕중_1학기_기말_중3_수학/q20_alive_problem.svg\">",
+    "content": "두 이차함수 $y=2(x+1)(x-1)$, $y=-2(x-3)(x-5)$의 꼭짓점을 각각 $A$, $B$라고 하고, 직선 $y=2$와 $y$축의 교점을 $C$라 하자. 삼각형 $ABC$의 넓이로 옳은 것을 고르시오. (5점)<br><br><img src=\"assets/images/23_풍덕중_1학기_기말_중3_수학/q20-problem-readable-v2-figure-only.svg\">",
     "choices": [
       "4",
       "6",
