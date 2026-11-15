@@ -810,7 +810,7 @@ window.questionBank = [
     "id": 17,
     "questionNumber": 17,
     "questionType": "객관식",
-    "content": "그림과 같이 지름 $\\mathrm{AB}$의 길이가 6이고 중심이 $O$인 원 위의 점 $C$에 대하여 $\\overline{\\mathrm{AC}}^2 = 18+9\\sqrt{2}$일 때, 부채꼴 $\\mathrm{OBC}$에서 호 $\\mathrm{BC}$의 길이를 $l$이라 하자. $l$의 값은? (단, 부채꼴 $\\mathrm{OBC}$의 중심각의 크기는 $90^\\circ$보다 작다.) [4.7점]<br><br><img src=\"assets/images/21_제일고_1학기_기말_고2_수학I/q17.png\" class=\"question-img\">",
+    "content": "그림과 같이 지름 $\\mathrm{AB}$의 길이가 6이고 중심이 $O$인 원 위의 점 $C$에 대하여 $\\overline{\\mathrm{AC}}^2 = 18+9\\sqrt{2}$일 때, 부채꼴 $\\mathrm{OBC}$에서 호 $\\mathrm{BC}$의 길이를 $l$이라 하자. $l$의 값은? (단, 부채꼴 $\\mathrm{OBC}$의 중심각의 크기는 $90^\\circ$보다 작다.) [4.7점]<br><br><img src=\"assets/images/21_제일고_1학기_기말_고2_수학I/q17_question-v2.svg\" class=\"question-img\" alt=\"지름 AB가 6인 원에서 중심 O, 원 위의 점 C, 선분 AC와 OC 및 호 BC를 나타낸 그림.\">",
     "choices": [
       "$\\frac{1}{2}\\pi$",
       "$\\frac{1}{4}\\pi$",
@@ -856,7 +856,11 @@ window.questionBank = [
       "examUid": "21_제일고_1학기_기말_고2_수학I",
       "sourceQid": 17,
       "sourceJsSha256": "b73ae437b1071dabdd25504d3159962cebccb953f4fedcf961f4821d98926e97"
-    }
+    },
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 중심 O에서 OB와 OC까지의 반지름 길이는 3이다. ∠BOC=45°인 부채꼴과 그 호 BC를 강조했다.",
+    "solutionImageCaption": "반지름은 3이고 코사인법칙으로 ∠BOC=45°임을 확인해 호 BC의 길이를 구한다. 정답은 3π/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1069,7 +1073,7 @@ window.questionBank = [
     "id": 22,
     "questionNumber": 22,
     "questionType": "주관식",
-    "content": "[서술형 2] 그림과 같이 원에 내접하는 사각형 $\\mathrm{ABCD}$가 있다. $\\overline{\\mathrm{AD}}=2, \\overline{\\mathrm{CD}}=3, \\angle\\mathrm{B}=60^\\circ$일 때, 삼각형 $\\mathrm{ACD}$의 넓이를 구하시오. [4.0점]<br><br><img src=\"assets/images/21_제일고_1학기_기말_고2_수학I/q22.png\" class=\"question-img\">",
+    "content": "[서술형 2] 그림과 같이 원에 내접하는 사각형 $\\mathrm{ABCD}$가 있다. $\\overline{\\mathrm{AD}}=2, \\overline{\\mathrm{CD}}=3, \\angle\\mathrm{B}=60^\\circ$일 때, 삼각형 $\\mathrm{ACD}$의 넓이를 구하시오. [4.0점]<br><br><img src=\"assets/images/21_제일고_1학기_기말_고2_수학I/q22_question-v2.svg\" class=\"question-img\" alt=\"원에 내접하는 사각형 ABCD에서 AD=2, CD=3, ∠B=60°와 대각선 AC를 나타낸 그림.\">",
     "choices": [],
     "images": [
       "assets/images/21_제일고_1학기_기말_고2_수학I/q22.png"
@@ -1109,7 +1113,11 @@ window.questionBank = [
       "examUid": "21_제일고_1학기_기말_고2_수학I",
       "sourceQid": 22,
       "sourceJsSha256": "b73ae437b1071dabdd25504d3159962cebccb953f4fedcf961f4821d98926e97"
-    }
+    },
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_수학I/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 사각형 ABCD와 중심 O를 표시했다. ∠B=60°, ∠ADC=120°, AD=2, CD=3을 나타냈다.",
+    "solutionImageCaption": "내접사각형의 마주 보는 각은 보각이므로 ∠ADC=120°이다. 두 변과 끼인각을 넓이 공식에 대입한다. 정답은 3√3/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1152,7 +1160,11 @@ window.questionBank = [
       "examUid": "21_제일고_1학기_기말_고2_수학I",
       "sourceQid": 23,
       "sourceJsSha256": "b73ae437b1071dabdd25504d3159962cebccb953f4fedcf961f4821d98926e97"
-    }
+    },
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_수학I/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 비대칭 대표 삼각형을 비교한다. 왼쪽은 A=60°, B=90°, C=30°이고 오른쪽은 A=120°, B=45°, C=15°이다. 두 경우 모두 BC=2√3이고 외접반지름 R=2이며 B와 C의 각은 문제에서 고정되지 않는다.",
+    "solutionImageCaption": "각 A는 60° 또는 120°다. 두 비대칭 대표 예시 모두 BC=2√3, sin A=√3/2이므로 외접반지름은 R=2이다. 따라서 외접원 넓이는 4π이고 정답은 4π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
