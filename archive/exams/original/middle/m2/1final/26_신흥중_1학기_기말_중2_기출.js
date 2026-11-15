@@ -87,6 +87,8 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "imageSize": "full",
+    "imageAlt": "가로축의 1을 지나고 세로축과 나란한 파란 직선을 나타냈다. 두 좌표축은 옅은 회색이다. 직선과 가로축이 만나는 곳에 직각 표시가 있다.",
     "level": "하",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -95,7 +97,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "그래프"
     ],
@@ -110,7 +112,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$x$축에 수직인 직선에서는 모든 점의 $x$좌표가 같다.\n\n그림의 직선은 $x$축의 $1$을 지나고 $y$축과 평행하다.\n따라서 직선 위의 모든 점의 $x$좌표가 1이므로 방정식은\n$x=1$이다.\n\n따라서 정답은 ①이다.",
-    "image": "assets/images/26_신흥중_1학기_기말_중2_기출/q04.png",
+    "image": "assets/images/26_신흥중_1학기_기말_중2_기출/q4-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -539,10 +541,10 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에서 점 (0,1)을 지나는 두 직선 y=10x+1과 y=7/3x+1이 각각 점 A(2,21), B(3,8)을 지나고, 선분 AB가 두 직선 사이에 굵게 그려져 있다.",
-    "solutionImageCaption": "y=ax+1이 선분 AB와 만나는 경계는 점 A를 지날 때와 점 B를 지날 때이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q19-solution-visual-v2.svg",
+    "solutionImageAlt": "세로축의 (0,1)에서 나온 두 직선 중 파란 실선은 A(2,21), 주황 점선은 B(3,8)을 지난다. 두 점 사이의 녹색 선분에서 만날 수 있도록 두 직선 사이를 연한 색으로 표시했다.",
+    "solutionImageCaption": "기울기의 경계는 A를 지날 때 10, B를 지날 때 7/3이다. 선분 AB를 만나려면 7/3 이상 10 이하이므로 자연수 a는 3부터 10까지 8개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
