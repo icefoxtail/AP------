@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "archive-source-narrow-recheck-v1",
+  "examId": "E057",
+  "sourceArchiveFile": "original/middle/m2/1final/20_왕의중_1학기_기말_중2_수학.js",
+  "ordinal": 19,
+  "questionUid": "qid_v1_74ee64d3d28eb489ca2870a2d344812048b0da42659eb078f6cb22ff53b346f0",
+  "reason": "최신 원문과 q19-problem-v2.svg에는 y=ax+b 및 두 점 (2,0),(3,-1)만 주어져 있다. 두 점으로 기울기를 구하고 한 점을 대입하여 절편을 결정한 뒤 계수의 곱을 계산하는 정형 연쇄이다. 답이 직접 표시된 구 SVG에 근거한 bucket1 판정을 대체한다. 공식 선택은 직접적이나 좌표 조건을 식으로 옮기는 전처리와 연속 대입이 있어 bucket2, B12, medium으로 판정한다. 루트가 최신 source·렌더·crosswalk를 독립 확인하여 이 좁은 변경에 동의했다.",
+  "priorReview": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E057/accepted-review.json",
+    "sha256": "c794e152b4f5916d56190d89e7b2b89d1e7e65c113469760d7cdc1a5ac2248f0"
+  },
+  "figure": {
+    "path": "archive/assets/images/20_왕의중_1학기_기말_중2_수학/q19-problem-v2.svg",
+    "sha256": "28400c26c45bae0015e7ddb39755516083784c4e8f33194872e8ed5c782ab97c",
+    "visualInspection": "Rendered with Sharp and inspected; no final equation or y-intercept is disclosed."
+  },
+  "semanticPrimary": {
+    "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "records": [
+      "M2-RPM-052",
+      "M2-RPM-170"
+    ],
+    "rpmPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 그 그래프",
+      "l3": "식 구하기",
+      "l4": "두 점으로 식 구하기"
+    },
+    "standardUnitKey": "M2-04",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "bindingStatus": "MISSING",
+    "activation": "NOT_REQUESTED_BY_DIFFICULTY_ONLY_REGISTRATION"
+  },
+  "after": {
+    "level": "중",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL"
+  },
+  "reviewers": {
+    "author": "GPT_M2S1_RELEASE_C8F1B0BFB4FA",
+    "independent": "/root",
+    "scope": "Latest Q19 source, rendered current figure, arithmetic, difficulty and semantic Primary only; no full-exam independent PASS claim."
+  }
+}

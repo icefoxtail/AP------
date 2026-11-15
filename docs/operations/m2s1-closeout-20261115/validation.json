@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "archive-m2s1-closeout-validation-v1",
+  "status": "PASS",
+  "validationScope": "Isolated fixture at base main plus this packet. These results do not assert main CI or production release.",
+  "baseMain": "0eb4b5306796f3828f9ebbf22a1a44e0eb24601c",
+  "requiredToolingCommit": "33101e33e9385fef94403126563ec5435f628d67",
+  "reviewCommit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+  "counts": {
+    "examCount": 75,
+    "questionCount": 1780,
+    "requestCount": 59,
+    "difficultyRequestCount": 58,
+    "identityRepairCount": 1,
+    "selectedCount": 1299,
+    "heldCount": 481,
+    "alreadyExactCount": 179,
+    "staleSourceBindingCount": 57,
+    "sourceMetadataChanges": 3636,
+    "studentPayloadChanges": 5,
+    "solutionRepairs": 5,
+    "difficultyChangedUids": 1120,
+    "difficultyChangedFields": 3106,
+    "sourceFilesChanged": 58,
+    "uniqueConsumerUids": 1299,
+    "consumerRequestRows": 1300
+  },
+  "difficultyWrite": {
+    "requests": 58,
+    "passed": 58,
+    "failed": 0,
+    "questions": 1299,
+    "applied": 1120,
+    "alreadyRegistered": 179,
+    "verified": 0,
+    "changedFields": 3106,
+    "staleSourceBinding": 57
+  },
+  "difficultyProjection": {
+    "requests": 58,
+    "passed": 58,
+    "failed": 0,
+    "questions": 1299,
+    "applied": 0,
+    "alreadyRegistered": 0,
+    "verified": 1299,
+    "changedFields": 0,
+    "staleSourceBinding": 57
+  },
+  "identityWriter": {
+    "status": "PASS",
+    "scope": "PARTIAL_UIDS",
+    "partialUidCount": 1,
+    "expectedQuestionCount": 24,
+    "registrationMode": "IDENTITY_FINGERPRINT_ONLY",
+    "metadataChanged": false,
+    "newMetadataApprovals": 0
+  },
+  "identityReplay": {
+    "status": "PASS",
+    "requestId": "m2s1-closeout-20261115-E035-identity",
+    "totalQuestions": 1,
+    "scope": "PARTIAL_UIDS",
+    "partialUidCount": 1,
+    "expectedQuestionCount": 24,
+    "registrationMode": "IDENTITY_FINGERPRINT_ONLY",
+    "replay": true,
+    "plannedPaths": [],
+    "metadataChanged": false,
+    "newMetadataApprovals": 0,
+    "consumerSearchStatus": "NOT_RUN",
+    "browserStatus": "NOT_RUN"
+  },
+  "identityConsumer": {
+    "schemaVersion": "archive-identity-consumer-validation-v1",
+    "scope": "PARTIAL_UIDS",
+    "toolingCommit": "33101e33e9385fef94403126563ec5435f628d67",
+    "status": "PASS",
+    "requestId": "m2s1-closeout-20261115-E035-identity",
+    "totalQuestions": 1,
+    "partialUidCount": 1,
+    "expectedQuestionCount": 24,
+    "registrationMode": "IDENTITY_FINGERPRINT_ONLY",
+    "replay": true,
+    "plannedPaths": [],
+    "metadataChanged": false,
+    "newMetadataApprovals": 0,
+    "consumerSearchStatus": "IDENTITY_BINDINGS_VERIFIED",
+    "browserStatus": "NOT_RUN",
+    "consumerLanes": {
+      "identityBindings": 1,
+      "newMetadataApprovals": 0
+    }
+  },
+  "actualConsumer": {
+    "status": "PASS",
+    "counts": {
+      "changed": 1300,
+      "checked": 1300,
+      "passed": 1300,
+      "skippedUnchanged": 0
+    },
+    "requestCount": 59,
+    "reportSha256": "4688c9277445b0f0c56ed31cdaaee93f933473835ea00a8a11e53d3227acb347"
+  },
+  "officialBuild": {
+    "command": "python archive/build_db.py",
+    "status": "PASS",
+    "observedResult": "ARCHIVE REGISTRATION SYNC PASS",
+    "logSha256": "b7a1b9452aa0ec7baa7414819aba7033d6b616eb851172eed457235534aa6229",
+    "freshWriterFinalSidecarsExactlyMatchBuiltCatalogInputs": true
+  },
+  "mutationIsolation": {
+    "path": "docs/operations/m2s1-closeout-20261115/mutation-isolation.json",
+    "sha256": "8f017c559567900024b197b0b67dd7459a7861a80ce754af4792e42180ba82b0",
+    "unrelatedUidChanges": 0,
+    "ptTplAndApprovalFieldsUntouched": true
+  },
+  "heldReasonsOverlap": {
+    "SOURCE_CONTENT": 118,
+    "SOURCE_REVIEW_STATUS_CONFLICT": 3,
+    "DIFFICULTY_CONDITIONAL_MANUAL_REVIEW": 169,
+    "SOURCE_METHOD_EVIDENCE": 394,
+    "NUMERIC_DIFFICULTY_UNKNOWN": 38
+  },
+  "releaseStatus": {
+    "mainCi": "PENDING_PARENT_SERIAL_RELEASE",
+    "mainMerge": "PENDING",
+    "production": "PENDING",
+    "wholeGradeSemanticCompletion": "NOT_CLAIMED"
+  },
+  "rawLocalEvidence": {
+    "path": ".tmp/m2s1-validation-history/final",
+    "writeReportSha256": "97cebd3469da5eb6d671aa6b436f27821c3760b60b5db1e8412effddec74a441",
+    "projectionReportSha256": "69657c6aa46ba334f89e0d07bb7fdc3f404c6cf23ba93b0f2c1d818df7efab5b",
+    "consumerReportSha256": "4688c9277445b0f0c56ed31cdaaee93f933473835ea00a8a11e53d3227acb347"
+  }
+}
