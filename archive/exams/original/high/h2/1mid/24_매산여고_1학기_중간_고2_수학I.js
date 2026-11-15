@@ -193,7 +193,10 @@ window.questionBank = [
     "sourceQid": 4,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q04-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직 점선의 오른쪽에서 감소하는 로그곡선과 곡선 위의 기준점 (-1, 3)을 나타낸다.",
+    "solutionImageCaption": "밑이 0과 1 사이이므로 정의역에서 감소한다. 진수가 0에 가까워지는 쪽으로 곡선은 수직 점선에 가까워진다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -445,7 +448,10 @@ window.questionBank = [
     "sourceQid": 9,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q09-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: u=x/π로 환산한 두 범위가 수직선 두 줄에 놓여 있다. 위쪽 조건은 u=1/4에서 열리고, 아래쪽 조건은 u=2/3에서 닫힌다.",
+    "solutionImageCaption": "코사인은 [0,π)에서 감소하므로 각 기준값을 u=x/π의 범위로 바꾼다. 위 조건은 엄격부등식이고 아래 조건은 등호를 포함한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
