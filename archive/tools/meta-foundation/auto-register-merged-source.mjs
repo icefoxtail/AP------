@@ -204,12 +204,13 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||registeredIdentity[0].sourceOrdinal!==ordinal||registeredIdentity[0].sourceFingerprint!==identity.sourceFingerprint
         ||!equal(registeredIdentity[0].sourceQuestionNo,identity.sourceQuestionNo)
         ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
+      validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
+      const preservedSource=nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,registry,
+        revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});
+      if(preservedSource===true)return receiptPath;
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
       const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
-      validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
-      const preservedSource=nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,
-        revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});
-      if(preservedSource!==true&&reviewedFigure!==true&&reviewedRenderer!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }
