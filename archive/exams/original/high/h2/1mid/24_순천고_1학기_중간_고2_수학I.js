@@ -902,7 +902,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceQid": 18,
     "questionUid": "qid_v1_5460f0b3bd3314803f7221f5be8857636ef461bbcb95fd3c7c5fe33b87393005",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q18-solution.svg"
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 좌표평면에서 파란 꺾은선 f와 초록 점선 지수곡선을 비교한다. 위는 x가 음수인 구간이고 아래는 영을 포함한 오른쪽 구간이다. 영에서 만나는 점은 아래 그림에 포함한다.",
+    "solutionImageCaption": "각 일차식으로 정해지는 구간에서 지수곡선과의 교점을 확인한다. 음의 구간은 짝함수 관계로 계산한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
