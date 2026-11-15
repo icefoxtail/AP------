@@ -408,6 +408,38 @@ approval.sourceRebind.schemaVersion: archive-native-audit-preservation-v1을 사
   부분 보존의 parent witness도 선택한 UID 안에서 실제 근거가 필요한 행만 포함한다. witness의
   `expectedQuestionCount`는 원 전체 분모를 유지하며, 선택 밖 다른 승인 UID의 부모를 끼워 넣으면 거부한다.
 
+## 검토된 그림 교체 뒤 native 승인 재사용 (2026-11-15)
+
+`native-reviewed-figure-reuse.mjs`는 공식 PARTIAL_UIDS FINAL_QA 등록이 이미 끝났지만
+AutoMeta의 이전 원본 cursor에 PNG 또는 옛 해설 그림이 남아 있을 때만, 현재 영수증의 승인을 그대로 재사용한다.
+새 등록 모드나 내용 변경의 일반 허용 경로를 만들지 않는다. 성공 결과는 `ALREADY_REGISTERED`이며
+metadata·identity·runtime·source를 쓰지 않고 기존 승인 종류·revision·부모·fieldStatus를 유지한다.
+
+- current sourceReview는 immutable native 문서의 `NARROW_CURRENT_FIGURE_CONTINUITY_ONLY` 범위를 가져야 한다.
+  실제 `reviewCommit:reviewPath`, local reviewRef SHA, nativeSchemaVersion을 범위 분기 전에 대조한다.
+  scope/schema와 local SHA를 함께 바꾸더라도 일반 승인 경로로 빠질 수 없다.
+  sourceReview가 없는 기존 영수증과 정상 Git-bound 일반 재판정의 별도 local-copy 경로는 유지한다.
+- 현재 원본 전체 blob/raw SHA 및 UID/ordinal 분모, 실제 이전 Git 원본의 학생 payload와
+  AutoMeta previous payload, 원 pending 요청의 의미·난도 after 값, 원 native 의미 판정을 결속한다.
+  기존 재판정 helper로 현재 영수증의 sourceReview proof도 다시 재현한다.
+  이미 current 원본에 도달한 cursor도 동일한 그림 근거를 계속 검증한다.
+- 문항 전체에서 허용하는 차이는 검토된 image/solutionImage·그림 표시 필드와 layoutTag뿐이다.
+  content에서는 동일 `<img>`의 quoted `src` 경로 교체만 허용한다. 발문, 선택지, 정답, 해설,
+  HTML alt 속성, 번호, 점수, 분류·난도 등 나머지 값이 바뀌면 거부한다.
+- 독립 그림 검토의 네 명시 schema에서 정확한 UID/ordinal, 전체 before/current 문항 SHA,
+  원본 blob/raw SHA와 narrow PASS를 읽는다. 원 renderer inventory와 원·현재 모든 참조 asset의
+  Git blob/raw SHA가 일치해야 하며, 현재 파일 bytes도 매번 확인한다.
+  같은 경로에서 나중에 바뀐 asset, 누락·추가 asset, 외부 SVG 의존성, 미지원 asset object/inline SVG를 거부한다.
+  immutable Git bytes는 cache할 수 있지만 현재 source/metadata/identity/runtime 및 local evidence/asset 확인은 생략하지 않는다.
+- 이 경로는 새 전체 수학 QA, REVIEW2, 난도 판단 또는 고급 메타 승인을 부여하지 않는다.
+  기존 solution-only 재결속과 일반 native receipt의 ACTIVE 정본·정확 binding·현재 runtime 검증은 유지한다.
+  실제 build, projection, Changed-UID Consumer 및 main 등록·배포는 별도 게이트다.
+
+`tests/archive-main-merge-meta.test.mjs`는 image/본문 img/solutionImage-only의 정상 경로와
+원문·답·해설·독립 검토·원 pending 값·renderer inventory·same-path asset·scope/schema 위조를 검증한다.
+cursor가 이미 current와 같거나 Git cache가 채워진 뒤에도 변조를 거부하며,
+`tests/archive-main-meta-batch-replay.test.mjs`의 기존 배치 재실행 계약을 함께 유지한다.
+
 ## 검증
 
 `node --test tests/archive-reviewed-exam-registration-v2.test.mjs`는 격리된 임시 저장소에서
