@@ -58,6 +58,65 @@ function createServer(siteRoot, basePath) {
   });
 }
 
+async function waitForChromePage(browser, tempProfile, {
+  timeoutMs = 15_000, pollMs = 100, probeTimeoutMs = 1_000, stderrTail = () => '',
+} = {}) {
+  const deadline = Date.now() + timeoutMs;
+  const portFile = path.join(tempProfile, 'DevToolsActivePort');
+  let lastObservation = 'DevToolsActivePort has not been created';
+  let spawnError;
+  const onError = (error) => { spawnError = error; };
+  const failure = (reason) => new Error(`${reason}; last observation: ${lastObservation}` +
+    (stderrTail() ? `; Chrome stderr: ${stderrTail().slice(-4096)}` : ''));
+  browser.on('error', onError);
+  try {
+    while (Date.now() < deadline) {
+      if (spawnError) throw failure(`Chrome could not start: ${spawnError.message}`);
+      if (browser.exitCode !== null || browser.signalCode)
+        throw failure(`Chrome exited with ${browser.signalCode ? `signal ${browser.signalCode}` : `code ${browser.exitCode}`}`);
+      let devtoolsPort = 0;
+      try {
+        // Chrome creates this file before writing its contents. Even a numeric
+        // prefix is incomplete until the first line ends; it is not readiness.
+        const match = /^(\d+)\r?\n/.exec(fs.readFileSync(portFile, 'utf8'));
+        const candidate = match ? Number(match[1]) : 0;
+        if (Number.isInteger(candidate) && candidate > 0 && candidate <= 65535)
+          devtoolsPort = candidate;
+        else lastObservation = 'DevToolsActivePort is empty, incomplete, or has an invalid port';
+      } catch (error) {
+        if (error.code !== 'ENOENT') throw failure(`Cannot read DevToolsActivePort: ${error.message}`);
+        lastObservation = 'DevToolsActivePort has not been created';
+      }
+      if (devtoolsPort) {
+        try {
+          const response = await fetch(`http://127.0.0.1:${devtoolsPort}/json/list`, {
+            signal: AbortSignal.timeout(Math.max(1, Math.min(probeTimeoutMs, deadline - Date.now()))),
+          });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const targets = await response.json();
+          const target = Array.isArray(targets) && targets.find((item) => {
+            if (item?.type !== 'page' || typeof item.webSocketDebuggerUrl !== 'string') return false;
+            try {
+              const url = new URL(item.webSocketDebuggerUrl);
+              return url.protocol === 'ws:' && url.hostname === '127.0.0.1' &&
+                Number(url.port) === devtoolsPort && url.pathname.startsWith('/devtools/page/');
+            } catch { return false; }
+          });
+          if (target) return target;
+          lastObservation = `DevTools port ${devtoolsPort} has no ready page target`;
+        } catch (error) {
+          lastObservation = `DevTools port ${devtoolsPort} is not ready: ${error.message}`;
+        }
+      }
+      const remaining = deadline - Date.now();
+      if (remaining > 0) await sleep(Math.min(pollMs, remaining));
+    }
+    throw failure(`Chrome DevTools startup timed out after ${timeoutMs} ms`);
+  } finally {
+    browser.removeListener('error', onError);
+  }
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const siteRoot = path.resolve(option(args, '--site-root', path.join(repoRoot, '_site')));
@@ -77,23 +136,12 @@ async function main() {
     '--headless=new', '--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage',
     '--disable-background-networking', '--no-first-run', '--remote-allow-origins=*',
     '--remote-debugging-port=0', `--user-data-dir=${tempProfile}`, 'about:blank',
-  ], { stdio: 'ignore' });
+  ], { stdio: ['ignore', 'ignore', 'pipe'] });
+  let chromeStderr = '';
+  browser.stderr.on('data', (chunk) => { chromeStderr = (chromeStderr + chunk.toString()).slice(-4096); });
   let socket;
   try {
-    let devtoolsPort = 0;
-    for (let attempt = 0; attempt < 150; attempt += 1) {
-      if (browser.exitCode !== null) throw new Error(`Chrome exited with code ${browser.exitCode}`);
-      const portFile = path.join(tempProfile, 'DevToolsActivePort');
-      if (fs.existsSync(portFile)) {
-        devtoolsPort = Number(fs.readFileSync(portFile, 'utf8').split('\n')[0]);
-        break;
-      }
-      await sleep(100);
-    }
-    if (!devtoolsPort) throw new Error('Chrome remote debugging port did not start');
-    const targets = await (await fetch(`http://127.0.0.1:${devtoolsPort}/json/list`)).json();
-    const target = targets.find((item) => item.type === 'page');
-    if (!target) throw new Error('Chrome page target is missing');
+    const target = await waitForChromePage(browser, tempProfile, { stderrTail: () => chromeStderr });
     socket = new WebSocket(target.webSocketDebuggerUrl);
     await new Promise((resolve, reject) => {
       socket.addEventListener('open', resolve, { once: true });
@@ -277,7 +325,10 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error('ARCHIVE_PAGES_SITE_CHROME_FAIL', error);
-  process.exitCode = 1;
-});
+module.exports = { waitForChromePage };
+if (require.main === module) {
+  main().catch((error) => {
+    console.error('ARCHIVE_PAGES_SITE_CHROME_FAIL', error);
+    process.exitCode = 1;
+  });
+}
