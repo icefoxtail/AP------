@@ -122,30 +122,87 @@ test('a fixed re-submission supersedes the earlier rejection record', t => {
   assert.ok(!f.exists('.archive-meta-register/rejected/x-request.json'));
 });
 
-function auditDependencyFixture(t, { difficultyBehavior = 'ok', auditBehavior = 'ok' } = {}) {
+function auditDependencyFixture(t, { difficultyBehavior = 'ok', auditBehavior = 'ok', partial = false } = {}) {
   const f=fixture(t,{'00-preserve':auditBehavior,'10-unrelated':'ok','99-difficulty':difficultyBehavior});
   const put=(rel,value)=>{fs.mkdirSync(path.dirname(path.join(f.dir,rel)),{recursive:true});fs.writeFileSync(path.join(f.dir,rel),typeof value==='string'?value:JSON.stringify(value,null,2)+'\n');};
-  const source='archive/exams/original/dependency.js',body='window.questions=[{id:1}];\n';
+  const source='archive/exams/original/dependency.js',count=partial?3:1,
+    body='window.questions='+JSON.stringify(Array.from({length:count},(_,i)=>({id:i+1})))+';\n';
   put(source,body);
   const blob=require('node:crypto').createHash('sha1').update(`blob ${Buffer.byteLength(body)}\0`).update(body).digest('hex');
   const difficultyPath='.archive-meta-register/inbox/99-difficulty.json',auditPath='.archive-meta-register/inbox/00-preserve.json';
-  put(difficultyPath,{schemaVersion:'archive-difficulty5-register-request-v1',behavior:difficultyBehavior,
-    gemini:{schemaVersion:'v1',sourceArchiveFile:'original/dependency.js',latestBlobSha:blob},
-    reviewedCorrection:{schemaVersion:'archive-difficulty5-reviewed-correction-v1'}});
+  const difficulty={schemaVersion:'archive-difficulty5-register-request-v1',behavior:difficultyBehavior,
+    gemini:{schemaVersion:'v1',sourceArchiveFile:'original/dependency.js',latestBlobSha:blob,
+      items:Array.from({length:count},(_,i)=>({questionUid:'fixture-'+(i+1),ordinal:i+1}))},
+    reviewedCorrection:{schemaVersion:'archive-difficulty5-reviewed-correction-v1'}};
+  put(difficultyPath,difficulty);
   const digest=require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(f.dir,difficultyPath))).digest('hex');
   const audit={schemaVersion:'archive-reviewed-exam-meta-register-request-v2',behavior:auditBehavior,
-    sourceArchiveFile:'original/dependency.js',expectedSourceBlobSha1:blob,
+    sourceArchiveFile:'original/dependency.js',expectedSourceBlobSha1:blob,expectedQuestionCount:count,
+    ...(partial?{scope:'PARTIAL_UIDS'}:{}),items:[{questionUid:'fixture-'+(partial?2:1),sourceOrdinal:partial?2:1}],
     approval:{type:'META_PIPELINE_AUDIT',sourceRebind:{schemaVersion:'archive-native-audit-preservation-v1',
       requestPath:auditPath,difficultyRequestRef:{path:difficultyPath,sha256:digest}}}};
   put(auditPath,audit);git(f.dir,'add','-A');git(f.dir,'commit','-qm','bind audit dependency inputs');
-  return {...f,put,audit,auditPath,difficultyPath,source};
+  return {...f,put,audit,difficulty,auditPath,difficultyPath,source};
 }
+
+function basicDependencyFixture(t,{behavior='ok',stale=false}={}){
+  const f=fixture(t,{'00-difficulty':'ok','10-unrelated':'ok','99-basic-preserve':behavior});
+  const put=(rel,value)=>{fs.mkdirSync(path.dirname(path.join(f.dir,rel)),{recursive:true});fs.writeFileSync(path.join(f.dir,rel),typeof value==='string'?value:JSON.stringify(value)+'\n');};
+  const source='archive/exams/original/basic.js',body='window.questions=[{id:1}];\n';put(source,body);
+  const blob=require('node:crypto').createHash('sha1').update(`blob ${Buffer.byteLength(body)}\0`).update(body).digest('hex');
+  const fingerprints={sourceFingerprint:'a'.repeat(64),contentFingerprint:'b'.repeat(64)},uid='fixture';
+  const basicPath='.archive-meta-register/inbox/99-basic-preserve.json',difficultyPath='.archive-meta-register/inbox/00-difficulty.json';
+  put(basicPath,{schemaVersion:'archive-basic-scope-rebind-request-v1',behavior,sourceArchiveFile:'original/basic.js',expectedSourceBlobSha1:blob,expectedQuestionCount:1,
+    approval:{type:'BASIC_SCOPE_REBIND',sourceReview:{schemaVersion:'archive-basic-scope-current-source-preservation-v1'}},
+    items:[{questionUid:uid,sourceOrdinal:1,after:fingerprints}]});
+  put(difficultyPath,{schemaVersion:'archive-difficulty5-register-request-v1',behavior:'ok',
+    gemini:{schemaVersion:'v1',sourceArchiveFile:'original/basic.js',latestBlobSha:blob,items:[{questionUid:uid,ordinal:1}]},
+    reviewedCorrection:{schemaVersion:'archive-difficulty5-reviewed-correction-v1',rows:[{questionUid:uid,ordinal:1,before:stale?{...fingerprints,sourceFingerprint:'0'.repeat(64)}:fingerprints}]}});
+  git(f.dir,'add','-A');git(f.dir,'commit','-qm','bind basic preservation before reviewed difficulty');
+  return{...f,basicPath,difficultyPath};
+}
+
+test('main uses exact basic-before-D5 dependency despite reversed filenames',t=>{
+  const f=basicDependencyFixture(t),r=f.run();assert.equal(r.status,0,r.stderr);
+  assert.deepEqual(r.applied,['.archive-meta-register/inbox/10-unrelated.json',f.basicPath,f.difficultyPath]);assert.deepEqual(r.rejected,[]);
+});
+test('refused basic preservation prevents its paired D5 and keeps unrelated registration',t=>{
+  const f=basicDependencyFixture(t,{behavior:'fail'}),r=f.run();assert.equal(r.status,0,r.stderr);
+  assert.deepEqual(r.applied,['.archive-meta-register/inbox/10-unrelated.json']);assert.deepEqual(r.rejected,[f.basicPath,f.difficultyPath]);
+  assert.match(f.readJson('.archive-meta-register/rejected/00-difficulty.rejection.json').error,/BASIC_DEPENDENCY_NOT_APPLIED/);
+  assert.ok(!f.exists('derived/00-difficulty.out'));assert.ok(!f.exists('.archive-meta-register/pending-supplement'));
+});
+test('stale basic-to-D5 fingerprint declaration is rejected before either registrar runs',t=>{
+  const f=basicDependencyFixture(t,{stale:true}),r=f.run();assert.equal(r.status,0,r.stderr);
+  assert.deepEqual(r.applied,['.archive-meta-register/inbox/10-unrelated.json']);assert.deepEqual(r.rejected,[f.basicPath,f.difficultyPath]);
+  assert.match(f.readJson('.archive-meta-register/rejected/99-basic-preserve.rejection.json').error,/BASIC_DEPENDENCY_FINGERPRINT/);
+});
 
 test('main registrar uses exact D5 dependency order despite reversed inbox names and preserves unrelated order',t=>{
   const f=auditDependencyFixture(t),r=f.run();
   assert.equal(r.status,0,r.stderr);
   assert.deepEqual(r.applied,['.archive-meta-register/inbox/10-unrelated.json',f.difficultyPath,f.auditPath]);
   assert.deepEqual(r.rejected,[]);assert.ok(f.exists('derived/00-preserve.out'));
+});
+
+test('main partial audit uses its full source D5 denominator and preserves the selected UID subset',t=>{
+  const f=auditDependencyFixture(t,{partial:true}),r=f.run();
+  assert.equal(r.status,0,r.stderr);assert.deepEqual(r.rejected,[]);
+  assert.deepEqual(r.applied,['.archive-meta-register/inbox/10-unrelated.json',f.difficultyPath,f.auditPath]);
+});
+
+for(const [name,mutate,reason] of [
+  ['narrowed D5 denominator',f=>{f.difficulty.gemini.items=f.difficulty.gemini.items.slice(1,2);},/AUDIT_DEPENDENCY_DENOMINATOR/],
+  ['substituted selected UID',f=>{f.audit.items[0].questionUid='another-uid';},/AUDIT_DEPENDENCY_UID_SCOPE/],
+  ['selected count substituted for source count',f=>{f.audit.expectedQuestionCount=1;},/AUDIT_DEPENDENCY_SOURCE_DENOMINATOR/],
+])test(`main partial audit rejects ${name} before the preservation writer`,t=>{
+  const f=auditDependencyFixture(t,{partial:true});mutate(f);f.put(f.difficultyPath,f.difficulty);
+  f.audit.approval.sourceRebind.difficultyRequestRef.sha256=require('node:crypto').createHash('sha256')
+    .update(fs.readFileSync(path.join(f.dir,f.difficultyPath))).digest('hex');f.put(f.auditPath,f.audit);
+  const r=f.run();assert.equal(r.status,0,r.stderr);assert.deepEqual(r.rejected,[f.auditPath]);
+  assert.deepEqual(r.applied,['.archive-meta-register/inbox/10-unrelated.json',f.difficultyPath]);
+  assert.match(f.readJson('.archive-meta-register/rejected/00-preserve.rejection.json').error,reason);
+  assert.ok(!f.exists('derived/00-preserve.out'));
 });
 
 test('a refused difficulty dependency cannot run preservation or become a provisional approval',t=>{

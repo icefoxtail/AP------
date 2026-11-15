@@ -9,7 +9,7 @@ import ProblemBankMeta from "../../problem-bank-meta.js";
 import { loadCanonical, buildCompiled, compiledOutputs, buildRegistryIndex } from "./compile-meta-foundation.mjs";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 import { computeLegacyCompat, registerDifficulty5 } from "./register-difficulty5.mjs";
-import { AUDIT_PRESERVATION_SCHEMA, isAuditPreservation, loadAuditPreservation, planPreservedAuditRecord, assertAuditPreservationReceipt, assertPreservedAuditRepair, readPreservedAuditEvidence } from "./native-audit-preservation.mjs";
+import { AUDIT_PRESERVATION_SCHEMA, isAuditPreservation, loadAuditPreservation, planPreservedAuditRecord, assertAuditPreservationReceipt, assertPreservedAuditRepair, readPreservedAuditEvidence, preservedAuditConsumerParent } from "./native-audit-preservation.mjs";
 import { validateReviewedSourceReassessment } from "./reviewed-source-reassessment.mjs";
 import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
@@ -2151,15 +2151,18 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (req.registrationMode === "IDENTITY_FINGERPRINT_ONLY") return registerIdentityFingerprintOnly({
     root, req, metadata, identity, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, write, verifyProjection, read });
   if (previous) {
+    let preservedAudit = null;
     if (auditPreservationRequested) {
-      assertAuditPreservationReceipt(previous, req, bytes, patches.size);
+      assertAuditPreservationReceipt(previous, req, bytes, bank.length);
       const context = loadAuditPreservation({ root, request: req, bytes, bank });
+      preservedAudit = context;
       registerDifficulty5({ root, request: context.difficulty, verifyProjection: true });
       const replayTables = lookup(registryPlan(root, [], evidenceRefs));
       const allRuntime = fs.readdirSync(safePath(root, "archive/data/meta-foundation/runtime"))
         .filter(n => n.endsWith(".json") && n !== "runtime-bridge-receipt.json")
         .flatMap(n => read("archive/data/meta-foundation/runtime/" + n).records || []);
       for (const current of rows) {
+        if (!targetUids.has(current.questionUid)) continue;
         const resolved = resolve(current, replayTables, { allowConditionDebt: current.conditionKeysEvidenceDebt?.status === "EVIDENCE_DEBT" });
         const found = allRuntime.filter(r => r.questionUid === current.questionUid);
         if (found.length !== 1 || resolved.pack.meta.packId !== current.metaFoundationPackId ||
@@ -2195,7 +2198,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const found = allRuntime.filter(r => r.questionUid === record.questionUid);
       if (found.length !== 1 || !eq(found[0], record)) fail(`registered runtime drift: ${record.questionUid}`);
     }
-    const consumerLanes = verifyProjection ? verifyConsumer(root, previous.appliedRecords, previous.runtimeRecords, read) : null;
+    const consumerLanes = verifyProjection ? verifyConsumer(root, previous.appliedRecords, previous.runtimeRecords, read,
+      { auditPreservation: preservedAudit }) : null;
     return { status: "PASS", requestId: req.requestId, totalQuestions: patches.size, ...scopeFields, ...preservationFields, replay: true, plannedPaths: [],
       consumerSearchStatus: verifyProjection ? "STATIC_VALUES_VERIFIED" : "NOT_RUN", browserStatus: "NOT_RUN",
       ...(consumerLanes ? { consumerLanes } : {}) };
@@ -2374,7 +2378,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     }
     const priorQuestion = patch.rebind === undefined ? null : loadPriorQuestionBank(root, patch.rebind?.priorSourceBlobSha1, priorBanks)[i];
     const sourceReview = patch.sourceReview === undefined ? null : validateReviewedSourceReassessment({
-      root, request: req, patch, metadata: current, question: q, final, supportedFields: valueFields, cache: sourceReviewCache });
+      root, request: req, patch, metadata: current, question: q, final, supportedFields: valueFields,
+      canonicalBefore: beforeTables || tables, canonicalAfter: tables, cache: sourceReviewCache });
     const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch, priorQuestion,
       requireRebind: partial && Object.hasOwn(patch.after, "sourceFingerprint") && !sourceReview });
     const fingerprint = checked.sourceFingerprint;
@@ -2737,11 +2742,11 @@ function reviewTwoSourceLacks(root, r, field, indexValue, cache) {
   return Boolean(q) && empty(q[field]);
 }
 
-function verifyConsumer(root, records, runtimeRecords, read) {
-  return verifyConsumerValues(root, records, runtimeRecords, loadResolvedConsumerCatalog(root, read));
+function verifyConsumer(root, records, runtimeRecords, read, options) {
+  return verifyConsumerValues(root, records, runtimeRecords, loadResolvedConsumerCatalog(root, read), options);
 }
 
-export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
+export function verifyConsumerValues(root, records, runtimeRecords, catalog, { auditPreservation = null } = {}) {
   const decode = v => Array.isArray(v) && v.length === 1 && Number.isInteger(v[0]) && catalog.strings?.[v[0]] !== undefined ? catalog.strings[v[0]] : v;
   const rows = catalog.encoding === "column-dictionary-v1" && Array.isArray(catalog.records[0])
     ? catalog.records.map(r => Object.fromEntries(catalog.columns.map((k, i) => [k, decode(r[i])]))) : catalog.records;
@@ -2776,8 +2781,19 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
     };
     const empty = value => value === undefined || value === null || value === "";
     const courseCompact = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
+    const preservedParent = preservedAuditConsumerParent(auditPreservation, r, c);
+    if (preservedParent) {
+      const basic = canonical.validateBasicAssignment(c, catalog.canonicalAuthority);
+      if (!basic.ok || !eq(basic.parent, preservedParent)) fail("Consumer preserved basic parent is not canonically approved: " + r.questionUid);
+      if (["L1", "L2"].some(k => !eq(runtimeByUid.get(r.questionUid)?.[k], r[k])))
+        fail("Consumer preserved native parent drift: " + r.questionUid);
+    }
     let usedLane = false;
     for (const f of ["curriculumKey", "courseKey", "L1", "L2", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"]) {
+      if (preservedParent && ["L1", "L2"].includes(f)) {
+        if (!eq(c[f], preservedParent[f])) fail("Consumer preserved canonical parent mismatch: " + r.questionUid + "." + f);
+        continue;
+      }
       // A type-hold row has no foundation revision, so the Consumer does not publish PT/TPL nor CrossConcept/Condition for it; those are verified in the registrar (resolveUnitOnly) instead.
       if (isTypeHoldRecord(r) && ["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys"].includes(f)) continue;
       // A type-hold row has no consumer assignment yet, so the Consumer publishes a blank for the assignment-governed columns; a blank is

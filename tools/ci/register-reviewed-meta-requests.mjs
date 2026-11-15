@@ -25,11 +25,12 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import vm from "node:vm";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { verifyStudentAccess } from '../../archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs';
 import { AUDIT_PRESERVATION_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, auditPreservationDependency,
-  orderNativeRequests } from './archive-pr-native-preview.mjs';
+  basicPreservationDescriptor, difficultyBeforeBindings, orderNativeRequests } from './archive-pr-native-preview.mjs';
 
 export function acceptPendingSupplement(opt, requestAbs, error) {
   const bytes=fs.readFileSync(requestAbs),doc=JSON.parse(bytes.toString('utf8'));
@@ -96,8 +97,9 @@ export function orderedRequestPaths(opt, { onDependencyError } = {}) {
   if(onDependencyError) {
     const auditArgs=opt.requests.filter(requestArg=>{
       const absolute=path.resolve(opt.root,requestArg);if(!fs.existsSync(absolute))return false;
-      try {const spec=JSON.parse(fs.readFileSync(absolute,'utf8')).approval?.sourceRebind;
-        return spec?.schemaVersion===AUDIT_PRESERVATION_SCHEMA||spec?.difficultyRequestRef!==undefined;
+      try {const doc=JSON.parse(fs.readFileSync(absolute,'utf8')),spec=doc.approval?.sourceRebind;
+        return spec?.schemaVersion===AUDIT_PRESERVATION_SCHEMA||spec?.difficultyRequestRef!==undefined
+          ||doc.schemaVersion==='archive-basic-scope-rebind-request-v1'&&doc.approval?.sourceReview!==undefined;
       }catch(error){if(error instanceof SyntaxError)return false;throw error;}
     });
     const rejected=[];
@@ -117,15 +119,21 @@ export function orderedRequestPaths(opt, { onDependencyError } = {}) {
       try {doc=JSON.parse(bytes.toString('utf8'));}catch(error){if(!(error instanceof SyntaxError))throw error;}
     }
     const sourceRebind=doc?auditPreservationDependency(doc,rel):undefined;
+    const basicPreservation=doc?basicPreservationDescriptor(doc):undefined;
     return {path:rel,requestArg,sha256:bytes?sha256(bytes):undefined,doc,sourceRebind,
+      ...(sourceRebind?{kind:'native-approval-preservation'}:{}),
+      ...(basicPreservation?{basicPreservation,kind:'basic-approval-preservation'}:{}),
       ...(doc?.schemaVersion===DIFFICULTY_REQUEST_SCHEMA&&doc.gemini?.schemaVersion==='v1'
         &&doc.reviewedCorrection?.schemaVersion==='archive-difficulty5-reviewed-correction-v1'
-        ?{kind:'difficulty5-ratings'}:{}),
+        ?{kind:'difficulty5-ratings',difficultyBeforeBindings:difficultyBeforeBindings(doc),
+          selectedItems:(doc.gemini.items||[]).map(i=>({questionUid:i.questionUid,sourceOrdinal:i.ordinal}))}:{}),
       ...(doc?.scope!==undefined?{scope:doc.scope}:{}),
       ...(doc?.registrationMode!==undefined?{registrationMode:doc.registrationMode}:{} )};
   });
-  if(!descriptors.some(r=>r.sourceRebind))return [...opt.requests];
+  if(!descriptors.some(r=>r.sourceRebind||r.basicPreservation))return [...opt.requests];
   const bound=new Set(descriptors.filter(r=>r.sourceRebind).flatMap(r=>[r.path,r.sourceRebind.difficultyRequestRef?.path]));
+  const basicUids=new Set(descriptors.flatMap(r=>(r.basicPreservation?.bindings||[]).map(b=>b.questionUid)));
+  for(const row of descriptors)if(row.basicPreservation||(row.difficultyBeforeBindings||[]).some(b=>basicUids.has(b.questionUid)))bound.add(row.path);
   for(const row of descriptors.filter(r=>bound.has(r.path))) {
     const payload=row.kind==='difficulty5-ratings'?row.doc.gemini:row.doc;
     const rel=`archive/exams/${payload?.sourceArchiveFile||''}`;
@@ -139,6 +147,22 @@ export function orderedRequestPaths(opt, { onDependencyError } = {}) {
     const expected=row.kind==='difficulty5-ratings'?payload.latestBlobSha:payload.expectedSourceBlobSha1;
     if(blob!==expected)throw Error('AUDIT_DEPENDENCY_SOURCE_NOT_FIXED');
     row.source={path:rel,blobSha1:blob,sha256:sha256(bytes)};
+    // The shared order gate checks a selected audit against its whole-source
+    // difficulty input. Supply the same actual bank denominator and exact UID
+    // scope as PR/main previews; selected item count is never the denominator.
+    let bank;
+    try {
+      const context={window:{},console:{log(){},warn(){},error(){}}};
+      vm.runInNewContext(bytes.toString('utf8'),context,{timeout:5000});
+      bank=context.window.questionBank||context.window.questions||context.window.examData?.questions;
+    } catch { throw Error('AUDIT_DEPENDENCY_SOURCE_BANK_INVALID'); }
+    if(!Array.isArray(bank)||!bank.length)throw Error('AUDIT_DEPENDENCY_SOURCE_DENOMINATOR');
+    row.sourceQuestionCount=bank.length;
+    row.selectedItems=(payload.items||[]).map(item=>({questionUid:item.questionUid,
+      sourceOrdinal:row.kind==='difficulty5-ratings'?item.ordinal:item.sourceOrdinal}));
+    row.questionCount=row.selectedItems.length;
+    if(row.kind!=='difficulty5-ratings'&&payload.expectedQuestionCount!==bank.length)
+      throw Error('AUDIT_DEPENDENCY_SOURCE_DENOMINATOR');
   }
   return orderNativeRequests(descriptors).map(row=>row.requestArg);
 }
@@ -210,6 +234,16 @@ export function registerRequests(opt, { log = console.log } = {}) {
   let dirtied = null;
   const dependencyErrors=new Map();
   const requestOrder=orderedRequestPaths(opt,{onDependencyError:(rel,error)=>dependencyErrors.set(rel,error.message)});
+  // Keep the selected basic owners before a failed request is moved away.
+  // A dependent D5 request must not execute after its rebind was refused.
+  const basicOwners=new Map();
+  for(const arg of requestOrder){
+    const absolute=path.resolve(root,arg);if(!fs.existsSync(absolute))continue;
+    try{const doc=JSON.parse(fs.readFileSync(absolute,'utf8'));
+      if(doc.schemaVersion==='archive-basic-scope-rebind-request-v1'&&doc.approval?.sourceReview!==undefined)
+        for(const item of doc.items||[])basicOwners.set(item.questionUid,posix(path.relative(root,absolute)));
+    }catch(error){if(!(error instanceof SyntaxError))throw error;}
+  }
   for (const requestArg of requestOrder) {
     const requestAbs = path.resolve(root, requestArg), rel = posix(path.relative(root, requestAbs)), name = path.basename(requestAbs);
     if (!fs.existsSync(requestAbs)) { rejected.push({ request: rel, name, error: "request file not found", exitCode: null }); continue; }
@@ -222,6 +256,10 @@ export function registerRequests(opt, { log = console.log } = {}) {
       if(!dependencyError&&doc.approval?.sourceRebind?.schemaVersion===AUDIT_PRESERVATION_SCHEMA
           &&!applied.some(row=>row.request===doc.approval.sourceRebind.difficultyRequestRef.path))
         dependencyError='Error: AUDIT_DEPENDENCY_NOT_APPLIED: '+doc.approval.sourceRebind.difficultyRequestRef.path;
+      if(!dependencyError&&doc.schemaVersion===DIFFICULTY_REQUEST_SCHEMA){
+        const missing=(doc.gemini?.items||[]).map(item=>basicOwners.get(item.questionUid)).find(owner=>owner&&!applied.some(row=>row.request===owner));
+        if(missing)dependencyError='Error: BASIC_DEPENDENCY_NOT_APPLIED: '+missing;
+      }
     } catch(error){if(!(error instanceof SyntaxError))throw error;}
     const run = dependencyError ? {status:1,stderr:dependencyError,stdout:''}
       : conflicts.length ? {status:1,stderr:'Error: PRESERVE_CURRENT_DIFFICULTY: '+conflicts.join(', '),stdout:''}

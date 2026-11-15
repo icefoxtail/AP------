@@ -317,3 +317,33 @@ test('missing event identities and an unrelated PR base cannot become a scoped s
   assert.throws(() => planCiScope({ root: f.root, eventName: 'pull_request', event: { pull_request: { base: { sha: 'a'.repeat(40) }, head: { sha: f.headSha } } } }));
   assert.equal(planCiScope({ root: f.root, eventName: 'workflow_dispatch' }).mode, 'full');
 });
+
+
+test('full fallback retains registration preparation for unknown Archive code, mixed content and unproved assets', () => {
+  for (const files of [
+    ['archive/tools/meta-foundation/native-audit-preservation.mjs', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
+    [source, asset], [source, 'shared/runtime.js'], [source], null,
+  ]) {
+    const classification = classifyPaths(files, { exists: () => false });
+    assert.equal(classification.mode, 'full');
+    assert.equal(scopeChecks({ ...classification, changedFiles: files, pendingRequestPaths: [] }).prepareProjection, true);
+  }
+  assert.equal(scopeChecks({ ...classifyPaths(['tests/unrelated.test.js']), changedFiles: ['tests/unrelated.test.js'], pendingRequestPaths: [] }).prepareProjection, false);
+});
+
+test('a later code-only main snapshot with pending requests prepares registration and seals the inventory in its scope', t => {
+  const f = fixture(t, { 'tests/unrelated.test.js': '// initial code' });
+  const pending = '.archive-meta-register/inbox/pending-native.json';
+  f.write(pending, '{}'); f.git('add', '--', pending); f.git('commit', '-qm', 'pending request');
+  const baseSha = f.git('rev-parse', 'HEAD');
+  f.write('tests/unrelated.test.js', '// later code'); f.git('add', '-u'); f.git('commit', '-qm', 'code-only main push');
+  const headSha = f.git('rev-parse', 'HEAD');
+  const plan = planCiScope({ root: f.root, eventName: 'push', event: { before: baseSha, after: headSha }, expectedSha: headSha });
+  assert.equal(plan.mode, 'full'); assert.deepEqual(plan.changedFiles, ['tests/unrelated.test.js']);
+  assert.deepEqual(plan.pendingRequestPaths, [pending]); assert.equal(plan.checks.prepareProjection, true);
+  const scopePath = path.join(f.root, 'scope.json'); fs.writeFileSync(scopePath, JSON.stringify(plan));
+  f.write('.archive-meta-register/inbox/untracked.json', '{}');
+  assert.deepEqual(readScope(scopePath, f.root).pendingRequestPaths, [pending], 'mutable files cannot enlarge the fixed queue');
+  fs.writeFileSync(scopePath, JSON.stringify({ ...plan, pendingRequestPaths: [] }));
+  assert.throws(() => readScope(scopePath, f.root), /no longer matches snapshot: pendingRequestPaths/);
+});
