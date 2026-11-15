@@ -1407,18 +1407,58 @@ def _exp_log_pair_name_errors(plan,root,model):
             errors.append('EXP_LOG_PAIR_NAME_LABEL_MISMATCH:'+ident)
     return errors
 
+def _exp_log_pair_reference_name_errors(root,owner):
+    nodes=list(root.iter())
+    names=[node for node in nodes if node.get('id')==owner+'-name'
+           or node.get('data-owner')==owner and node.get('data-label-kind')=='POINT_NAME']
+    if len(names)!=1 or names[0].get('id')!=owner+'-name' or names[0].get('data-owner')!=owner or names[0].get('data-label-kind')!='POINT_NAME':
+        return ['EXP_LOG_PAIR_REFERENCE_NAME_OWNER_MISMATCH:'+owner]
+    glyphs=_ov_glyph_codes(names[0])
+    if len(glyphs)!=1 or glyphs[0] not in _ov_label_codes(owner)[0]:
+        return ['EXP_LOG_PAIR_REFERENCE_NAME_TEXT_MISMATCH:'+owner]
+    dots={node.get('id'):node for node in nodes if node.tag.split('}')[-1]=='circle' and node.get('data-role')=='point'}
+    box=_region_label_box({owner+'-name':names[0]},owner+'-name')
+    dot=dots.get(owner)
+    position_error='EXP_LOG_PAIR_REFERENCE_NAME_POSITION_MISMATCH:'+owner
+    if dot is None or box is None or not all(math.isfinite(value) for value in box) or min(box[2:])<=0:
+        return [position_error]
+    centre=lambda node:(float(node.get('cx')),float(node.get('cy')))
+    own=centre(dot)
+    if not all(math.isfinite(value) for value in own):return [position_error]
+    leader=next((node for node in nodes if node.get('data-role')=='leader' and node.get('data-owner-label')==owner+'-name'),None)
+    if leader is None:
+        distance=_ov_point_box_distance(own,box)
+        if distance>OV_COORDINATE_LABEL_OWN_MAX_PX or any(_ov_point_box_distance(centre(node),box)+.5<distance for ident,node in dots.items() if ident!=owner):
+            return [position_error]
+    else:
+        start=(float(leader.get('x1')),float(leader.get('y1')))
+        end=(float(leader.get('x2')),float(leader.get('y2')))
+        x,y,w,h=box
+        corners=[(x,y),(x+w,y),(x+w,y+h),(x,y+h)]
+        edge_distance=min(_ov_point_segment_distance(end,a,b) for a,b in zip(corners,corners[1:]+corners[:1]))
+        if (leader.get('data-owner')!=owner or not all(math.isfinite(value) for value in (*start,*end))
+            or math.dist(start,own)>float(dot.get('r') or 0)+OV_LEADER_TOLERANCE_PX or edge_distance>OV_LEADER_TOLERANCE_PX):
+            return [position_error]
+    return []
+
 def _exp_log_pair_reference_label_errors(plan,root,model,expected_rows):
     errors=[]
     for curve in plan.get('curves',[]):
+        ident=curve.get('id','')
+        name_only=curve.get('referenceLabelMode')=='NAME'
+        if 'referenceLabelMode' in curve and (not name_only or curve.get('formulaLabel')!='NAME' or 'referenceLabelPoint' not in curve):
+            errors.append('EXP_LOG_PAIR_REFERENCE_LABEL_MODE_INVALID:'+ident)
+            continue
         if 'referenceLabelPoint' not in curve:continue
-        ident,owner=curve.get('id',''),curve['referenceLabelPoint']
+        owner=curve['referenceLabelPoint']
         code='EXP_LOG_PAIR_REFERENCE_LABEL_POINT_MISMATCH:'+ident
         if not isinstance(owner,str) or not re.fullmatch('[A-Z]',owner):
             errors.append('EXP_LOG_PAIR_REFERENCE_LABEL_POINT_INVALID:'+ident)
             continue
         points=(plan.get('overlays') or {}).get('points',[])
         owners=[point for point in points if point.get('id')==owner]
-        if (len(owners)!=1 or owners[0].get('coordinates') is not True or owners[0].get('unnamed',False) is not False
+        show_coordinates=not name_only
+        if (len(owners)!=1 or owners[0].get('coordinates') is not show_coordinates or owners[0].get('unnamed',False) is not False
             or owners[0].get('marker','FILLED')!='FILLED'):
             errors.append(code)
             continue
@@ -1435,7 +1475,12 @@ def _exp_log_pair_reference_label_errors(plan,root,model,expected_rows):
             errors.append(code)
         if any(node.get('id')=='reference-'+ident+'-value' for node in root.iter()):
             errors.append('EXP_LOG_PAIR_REFERENCE_LABEL_NOT_SUPPRESSED:'+ident)
-        if not model:
+        if name_only:
+            if any(node.get('id')==owner+'-coordinates' or (node.get('data-owner')==owner and node.get('data-label-kind') in ('COORDINATE_LABEL','EQUATION_LABEL')) for node in root.iter()):
+                errors.append('EXP_LOG_PAIR_REFERENCE_COORDINATES_NOT_SUPPRESSED:'+owner)
+            if not model:
+                errors.extend(_exp_log_pair_reference_name_errors(root,owner))
+        elif not model:
             labels=[node for node in root.iter() if node.get('id')==owner+'-coordinates']
             if len(labels)!=1 or labels[0].get('data-owner')!=owner or labels[0].get('data-label-kind') not in ('COORDINATE_LABEL','EQUATION_LABEL'):
                 errors.append('EXP_LOG_PAIR_REFERENCE_OVERLAY_LABEL_MISSING:'+owner)
