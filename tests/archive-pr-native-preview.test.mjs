@@ -333,6 +333,69 @@ test('complete transitive input staging cannot turn an official ancestor rejecti
   assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
 });
 
+function rendererAssetEvidenceFixture(t, mutate = () => {}) {
+  const f = ancestralEvidenceFixture(t);
+  const assetPath = 'archive/assets/images/current-reviewed.svg', assetBytes = '<svg>fixed current renderer</svg>\n';
+  const oldPath = 'archive/assets/images/historical-only.svg', unrelated = 'archive/assets/images/unrelated.svg';
+  f.write(assetPath, assetBytes); f.write(oldPath, '<svg>historical only</svg>'); f.write(unrelated, '<svg>unrelated</svg>');
+  f.git('add', 'archive/assets'); f.git('commit', '-qm', 'current and unrelated renderer fixtures');
+  const asset = { path: assetPath, gitBlobSha: f.git('rev-parse', `HEAD:${assetPath}`), rawSha256: sha(assetBytes) };
+  const doc = { schemaVersion: 'archive-pending-current-renderer-asset-binding-v1',
+    rows: [{ questionUid: 'fixture', ordinal: 5, beforeAssets: [{ path: oldPath }], currentAssets: [asset] }] };
+  mutate(doc, f);
+  const leafBytes = json(doc), leafRef = { path: f.leafPath, sha256: sha(leafBytes) }; f.write(f.leafPath, leafBytes);
+  const ancestorBytes = json({ schemaVersion: 'archive-reviewed-exam-meta-registration-v2', approval: { evidenceRefs: [leafRef] } });
+  const ancestorRef = { path: f.ancestorPath, sha256: sha(ancestorBytes) }; f.write(f.ancestorPath, ancestorBytes);
+  const priorBytes = json({ schemaVersion: 'archive-reviewed-exam-meta-registration-v2', approval: { evidenceRefs: [ancestorRef, leafRef] } });
+  const priorRef = { path: f.priorPath, sha256: sha(priorBytes) }; f.write(f.priorPath, priorBytes);
+  f.request.approval.evidenceRefs = [priorRef]; f.request.approval.sourceRebind.priorReceiptRef = priorRef;
+  f.request.items[0].evidenceRefs = [priorRef]; f.write(REQUEST, json(f.request));
+  f.git('add', '.'); f.git('commit', '-qm', 'exact typed renderer inventory in ancestor approval');
+  const headSha = f.git('rev-parse', 'HEAD'), repo = 'owner/repository';
+  const event = { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
+    number: 17, base: { sha: f.baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } } } };
+  const options = { root:f.root,repo,event,expectedSha:headSha,runId:41,runAttempt:1,run:f.run };
+  return { ...f,headSha,assetPath,assetBytes,oldPath,unrelated,doc,
+    selected:()=>selectNativeRequests({root:f.root,baseSha:f.baseSha,headSha}),
+    produce:()=>producePrRegistrationProof(options),
+    validate:proof=>validateLocalRegistrationProof({...options,proof}) };
+}
+
+test('shadow ancestor replay stages only exact typed current renderer assets', t => {
+  const f = rendererAssetEvidenceFixture(t);
+  f.hook['dry-run'] = target => {
+    assert.equal(fs.readFileSync(path.join(target,f.assetPath),'utf8'),f.assetBytes);
+    if (target !== f.root) for (const rel of [f.oldPath,f.unrelated]) assert.equal(fs.existsSync(path.join(target,rel)),false);
+  };
+  const proof=f.produce(),before=f.snapshot();assert.equal(f.validate(proof).reusable,true);
+  assert.equal(proof.nativePreview.requests[0].evidence.filter(r=>r.path===f.assetPath).length,1);
+  assert.deepEqual(f.snapshot(),before);f.assertShadowsRemoved();
+});
+
+for (const [name,mutate,error] of [
+  ['unsafe path',d=>{d.rows[0].currentAssets[0].path='../outside.svg';},/UNSAFE_PATH/],
+  ['outside assets namespace',d=>{d.rows[0].currentAssets[0].path=EVIDENCE;},/RENDERER_ASSET_PATH/],
+  ['missing digest',d=>{delete d.rows[0].currentAssets[0].rawSha256;},/RENDERER_ASSET_DIGEST/],
+  ['wrong Git blob',d=>{d.rows[0].currentAssets[0].gitBlobSha='0'.repeat(40);},/RENDERER_ASSET_NOT_FIXED/],
+  ['wrong raw SHA',d=>{d.rows[0].currentAssets[0].rawSha256='0'.repeat(64);},/EVIDENCE_DRIFT/],
+  ['duplicate within inventory',d=>{d.rows[0].currentAssets.push({...d.rows[0].currentAssets[0]});},/RENDERER_ASSET_INVENTORY/],
+  ['conflicting repeated inventory',d=>{d.rows.push({currentAssets:[{...d.rows[0].currentAssets[0],rawSha256:'0'.repeat(64)}]});},/EVIDENCE_DRIFT/],
+]) test('typed renderer asset staging rejects '+name+' before any registration',t=>{
+  const f=rendererAssetEvidenceFixture(t,mutate),before=f.snapshot();assert.throws(()=>f.produce(),error);
+  assert.deepEqual(f.snapshot(),before);assert.equal(f.calls.some(c=>c.args[0]?.endsWith('/register-reviewed-exam-meta-source.mjs')),false);
+});
+
+for(const fault of ['missing','worktree-drift','symlink']) test('typed renderer proof reuse rejects '+fault,t=>{
+  const f=rendererAssetEvidenceFixture(t),proof=f.produce(),full=path.join(f.root,f.assetPath);
+  if(fault==='missing')fs.rmSync(full);else if(fault==='symlink'){fs.rmSync(full);fs.symlinkSync(path.join(f.root,f.oldPath),full);}else fs.appendFileSync(full,'changed');
+  assert.throws(()=>f.validate(proof),fault==='missing'?/MISSING_FILE/:fault==='symlink'?/SYMLINK/:/EVIDENCE_DRIFT/);f.assertShadowsRemoved();
+});
+
+test('an untyped currentAssets field cannot expand the shadow input closure',t=>{
+  const f=rendererAssetEvidenceFixture(t,d=>{d.schemaVersion='unrelated-author-summary';});
+  assert.equal(f.selected()[0].evidence.some(r=>r.path===f.assetPath),false);
+});
+
 const BINDING_KEY = { curriculum: '2015', standardCourse: '중2 수학', standardUnitKey: 'M2-06',
   subUnitKey: 'M2-06-PARALLEL_LENGTH_RATIO', problemTypeKey: 'PT_QUADRILATERAL_PROPERTIES' };
 const BINDING_PROVIDER = '.archive-meta-register/inbox/zz-binding-provider.json';

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "middle-native-shadow-renderer-input-verification-v1",
+  "status": "PASS_LOCAL_OFFICIAL_SHADOW",
+  "inputPrHead": "856e91b715d91a7514d9ed1567c0cdd84bfde0d1",
+  "rootCause": {
+    "questionUid": "qid_v1_d0f13bd8543fdafbae919916b56c59fb9d1adea669e334aff42d5e79636575cb",
+    "sourceOrdinal": 9,
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-release-20261115.json",
+    "failure": "SHA-bound live renderer asset absent from CI shadow; native verifier correctly rejected it",
+    "diagnosisSha256": "1cc1d37e9e40f63ddd322da16a67dd9fa03b5cf2043b847bb4baa49edd402d75"
+  },
+  "repair": {
+    "typedInventorySchema": "archive-pending-current-renderer-asset-binding-v1",
+    "stagedField": "rows[].currentAssets",
+    "assetNamespace": "archive/assets/",
+    "checks": [
+      "safe path",
+      "no symlinks",
+      "SHA256 current bytes",
+      "exact fixed HEAD Git blob",
+      "duplicate inventory and conflicting repeated reference rejection"
+    ],
+    "stagedUniqueCurrentAssets": 54,
+    "copiedWholeAssetDirectory": false,
+    "historicalAssetOverwrite": false,
+    "registrarOrApprovalGateChanges": 0
+  },
+  "verification": {
+    "originalShadowRegression": "FAIL_ENOENT",
+    "focusedExistingAndNewTests": 20,
+    "untypedInventoryTest": 1,
+    "failedTests": 0,
+    "officialRequests": 11,
+    "officialSelectedUids": 120,
+    "officialDryRuns": 11,
+    "officialWritesInDisposableShadow": 11,
+    "newMetadataApprovals": 0,
+    "preservedMetadataApprovals": 120,
+    "sourceChanges": 0,
+    "inputCheckoutUnchanged": true,
+    "temporaryShadowRemoved": true,
+    "fullBuild": "NOT_RUN",
+    "mainRegistration": "NOT_RUN",
+    "pages": "NOT_RUN"
+  },
+  "digests": {
+    "code-v1-manifest.json": "83c61efb0d6e8d84baf4d479b076dcf9e2d0b68017c06dd178717e0b3cc159fd",
+    "actual-inputs-manifest.json": "393fe5b691dcdc27a7331ed8d6351e9fe727f85709ffff75880465076ba04613",
+    "official-shadow120.json": "7b9cf4ed8d381eeeb7886dc8834e32f171fa61f2cd2665acc18426cec21bedc1",
+    "official-shadow120.log": "b8acfe9cd5259d0dab41b430f9d5c78c2a0c071172819475a385382500ade9e2",
+    "focused-tests.tap": "f9dcd52ecaae2c36748e150c559b29e591c9db8f2a17453d57e8deaf1abcd792",
+    "untyped-inventory-test.tap": "5542366029f3af21c19c8043ace7a15b62749fff78bb2ce6b189230339104e26",
+    "regression-before.tap": "6a5f35f30a4c495a073f430991378f295ac4112db8ac03729c1ab2a130787d3c"
+  }
+}

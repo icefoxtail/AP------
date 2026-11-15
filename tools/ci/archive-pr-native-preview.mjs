@@ -385,9 +385,10 @@ export function selectPendingNativeRequests({ root, headSha }) {
 // any receipt, scope, source, or approval is valid.
 function fixedNativeEvidence(root, headSha, lists) {
   const refs = new Map(), active = new Set();
-  const visit = item => {
+  const visit = (item, rendererAsset = false) => {
     if (!/^[a-f0-9]{64}$/.test(item?.sha256 || '')) fail('EVIDENCE_SHA');
     safe(root, item.path);
+    if (rendererAsset && !item.path.startsWith('archive/assets/')) fail('RENDERER_ASSET_PATH');
     if (active.has(item.path)) fail(`EVIDENCE_CYCLE:${item.path}`);
     const known = refs.get(item.path);
     if (known) {
@@ -398,11 +399,29 @@ function fixedNativeEvidence(root, headSha, lists) {
     if (ref.sha256 !== item.sha256) fail(`EVIDENCE_DRIFT:${ref.path}`);
     if (sha(gitBytes(root, `${headSha}:${ref.path}`)) !== ref.sha256) fail(`EVIDENCE_NOT_FIXED:${ref.path}`);
     refs.set(ref.path, ref);
-    if (!ref.path.startsWith(RECEIPTS) || ref.path.slice(RECEIPTS.length).includes('/') || !ref.path.endsWith('.json')) return;
+    if (rendererAsset) return; // Image bytes are inputs, never another approval document.
+    const nativeReceipt = ref.path.startsWith(RECEIPTS) && !ref.path.slice(RECEIPTS.length).includes('/') && ref.path.endsWith('.json');
+    if (!ref.path.endsWith('.json')) return;
     let receipt;
     try { receipt = JSON.parse(fs.readFileSync(safe(root, ref.path), 'utf8')); }
-    catch { fail(`EVIDENCE_JSON:${ref.path}`); }
-    if (receipt?.schemaVersion !== 'archive-reviewed-exam-meta-registration-v2') return;
+    catch { if (nativeReceipt) fail(`EVIDENCE_JSON:${ref.path}`); return; }
+    // The issued native figure receipt replays this exact inventory and checks
+    // its live renderer bytes too. Stage only explicitly bound current assets,
+    // never an entire assets directory or historical bytes over current HEAD.
+    if (receipt?.schemaVersion === 'archive-pending-current-renderer-asset-binding-v1') {
+      if (!Array.isArray(receipt.rows) || !receipt.rows.length) fail('RENDERER_ASSET_INVENTORY');
+      for (const row of receipt.rows) {
+        if (!Array.isArray(row.currentAssets) || new Set(row.currentAssets.map(a => a?.path)).size !== row.currentAssets.length) fail('RENDERER_ASSET_INVENTORY');
+        for (const asset of row.currentAssets) {
+          safe(root, asset?.path);
+          if (!asset.path.startsWith('archive/assets/')) fail('RENDERER_ASSET_PATH');
+          if (!/^[a-f0-9]{40}$/.test(asset.gitBlobSha || '') || !/^[a-f0-9]{64}$/.test(asset.rawSha256 || '')) fail('RENDERER_ASSET_DIGEST');
+          if (git(root, 'rev-parse', `${headSha}:${asset.path}`).trim() !== asset.gitBlobSha) fail(`RENDERER_ASSET_NOT_FIXED:${asset.path}`);
+          visit({ path: asset.path, sha256: asset.rawSha256 }, true);
+        }
+      }
+    }
+    if (!nativeReceipt || receipt?.schemaVersion !== 'archive-reviewed-exam-meta-registration-v2') return;
     if (!Array.isArray(receipt.approval?.evidenceRefs) || !receipt.approval.evidenceRefs.length) fail('EVIDENCE_REQUIRED');
     active.add(ref.path);
     for (const nested of receipt.approval.evidenceRefs) visit(nested);
