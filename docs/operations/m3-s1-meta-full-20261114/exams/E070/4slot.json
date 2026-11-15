@@ -1,0 +1,1899 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1final/20_이수중_1학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "086521edf36878ced96aa3f48b73de8cf95be880",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "meta_a",
+    "owner": "M3_S1_RESUME_20261115_A",
+    "assignmentId": "M3-S1-META-FULL",
+    "at": "2026-11-15T00:03:46.470514+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_6c0129425e5916774b862c4e86791d9ac81e75f164a35d036baced0ddec4c07c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cf37144d6110eb6d62bd1fc7e3d8da6c1c653559f43adba424216f9f2156d258"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0ed5dd3e10fa23845b5da1a7dfd154f4296f82cec562ff31b764ac3b23d64b0a"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$-3$은 $-9$의 음의 제곱근이다.",
+            "src": "choices",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음 설명 중 옳은 것은? [4.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "quote": "제곱근 기호는 0 이상인 제곱근을 뜻한다.\n$\\sqrt{16}=4$이므로 ④가 옳다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√16은 16의 양의 제곱근 4이며 제곱근 두 개와 구별한다.",
+            "termId": 369
+          },
+          {
+            "term": "제곱근",
+            "quote": "제곱근 기호는 0 이상인 제곱근을 뜻한다.\n$\\sqrt{16}=4$이므로 ④가 옳다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√16은 16의 양의 제곱근 4이며 제곱근 두 개와 구별한다.",
+            "termId": 22
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근 정의",
+        "condition": "√16은 16의 양의 제곱근 4이며 제곱근 두 개와 구별한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_9498804f0ad1597c9210c9e3ee17bae689bfe339f8c54bf15abea8ef1e6ff66c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f91ba11b0b7f4b0a9010b22bf5fffc4ae6eb363ba771508fdf270fec9f090278"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "22eefab261c8a761d39668b96bc2fa31e4fd64db7b983d6fda4a68cea84a2c7f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$0 < a < 1$ 일 때, 다음 수를 큰 것부터 차례로 나열하면? [4.0점]\n<div class=\"box-inset text-center py-2\">\n$\\sqrt{a},\\quad \\sqrt{\\frac{1}{a}},\\quad a,\\quad a^2$\n</div>",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "거듭제곱",
+            "quote": "$0 < a < 1$ 일 때, 다음 수를 큰 것부터 차례로 나열하면? [4.0점]\n<div class=\"box-inset text-center py-2\">\n$\\sqrt{a},\\quad \\sqrt{\\frac{1}{a}},\\quad a,\\quad a^2$\n</div>",
+            "src": "stem",
+            "termId": 20
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "quote": "$0 < a < 1$ 일 때, 다음 수를 큰 것부터 차례로 나열하면? [4.0점]\n<div class=\"box-inset text-center py-2\">\n$\\sqrt{a},\\quad \\sqrt{\\frac{1}{a}},\\quad a,\\quad a^2$\n</div>",
+            "src": "stem",
+            "termId": 28
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "$0<a<1$이므로 $\\sqrt a>a>a^2$이다.\n또 $\\frac{1}{a}>1$이므로 $\\sqrt{\\frac{1}{a}}>1>\\sqrt a$이다.\n따라서 $\\sqrt{\\frac{1}{a}},\\sqrt a,a,a^2$의 순서인 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "0<a<1에서 1/a>1,√a>a>a²임을 연결한다.",
+            "termId": 22
+          },
+          {
+            "term": "부등식의성질",
+            "quote": "$0<a<1$이므로 $\\sqrt a>a>a^2$이다.\n또 $\\frac{1}{a}>1$이므로 $\\sqrt{\\frac{1}{a}}>1>\\sqrt a$이다.\n따라서 $\\sqrt{\\frac{1}{a}},\\sqrt a,a,a^2$의 순서인 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "0<a<1에서 1/a>1,√a>a>a²임을 연결한다.",
+            "termId": 654
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "quote": "$0 < a < 1$ 일 때, 다음 수를 큰 것부터 차례로 나열하면? [4.0점]\n<div class=\"box-inset text-center py-2\">\n$\\sqrt{a},\\quad \\sqrt{\\frac{1}{a}},\\quad a,\\quad a^2$\n</div>",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "0과1 사이 수의 크기",
+        "condition": "0<a<1에서 1/a>1,√a>a>a²임을 연결한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_e1ee56725969c6f8b954d89b6beb7ea0467de05f64ea1dbf8f5fdc84eb3b1157",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4002ebf7b32d55526ccea926d1d538b0c828a2dc4bfed4fedb612c6a32e60794"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f170a9464dabce489fc995d2e6d888f8b685de7ba0650e624718d6879c009753"
+        }
+      ],
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "quote": "다음 &lt;보기&gt;에서 옳은 것을 모두 고르면? [4.0점]\n<div class=\"box-inset\">\n<b>&lt;보기&gt;</b><br>\nㄱ. 무한소수로 나타내어지는 수는 모두 무리수이다.<br>\nㄴ. 수직선은 유리수에 대응하는 점들로 완전히 채워진다.<br>\nㄷ. 유리수와 무리수를 통틀어 실수라고 한다.<br>\nㄹ. $\\pi$에 대응하는 점이 수직선 위에 있다.\n</div>",
+            "src": "stem",
+            "termId": 5
+          },
+          {
+            "term": "수직선",
+            "quote": "다음 &lt;보기&gt;에서 옳은 것을 모두 고르면? [4.0점]\n<div class=\"box-inset\">\n<b>&lt;보기&gt;</b><br>\nㄱ. 무한소수로 나타내어지는 수는 모두 무리수이다.<br>\nㄴ. 수직선은 유리수에 대응하는 점들로 완전히 채워진다.<br>\nㄷ. 유리수와 무리수를 통틀어 실수라고 한다.<br>\nㄹ. $\\pi$에 대응하는 점이 수직선 위에 있다.\n</div>",
+            "src": "stem",
+            "termId": 295
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음 &lt;보기&gt;에서 옳은 것을 모두 고르면? [4.0점]\n<div class=\"box-inset\">\n<b>&lt;보기&gt;</b><br>\nㄱ. 무한소수로 나타내어지는 수는 모두 무리수이다.<br>\nㄴ. 수직선은 유리수에 대응하는 점들로 완전히 채워진다.<br>\nㄷ. 유리수와 무리수를 통틀어 실수라고 한다.<br>\nㄹ. $\\pi$에 대응하는 점이 수직선 위에 있다.\n</div>",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "quote": "ㄱ은 순환소수도 무한소수이므로 거짓이다.\nㄴ은 수직선에 무리수도 대응하므로 거짓이다.\nㄷ은 참이고 ㄹ도 $\\pi$가 실수이므로 참이다.\n따라서 ㄷ, ㄹ인 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "순환소수와 무리수를 구별하고 수직선이 모든 실수에 대응함을 확인한다.",
+            "termId": 369
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "실수 분류 명제",
+        "condition": "순환소수와 무리수를 구별하고 수직선이 모든 실수에 대응함을 확인한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_da81c1ec596896873d52d6e2906efdc0bb639d6dcb64b3e0dca6157820bd394e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a558d88082033b86e48aa0236768ec49541e50507c0fc3cf92117917284679e1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0a8d34b4e9b8d244cb83bd9724fde18c8e25a3c4303c7b0bf6148c1fbfbc27e9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "quote": "다음 중 $\\sqrt{30} \\div \\sqrt{5}$ 와 계산 결과가 같지 <u>않은</u> 것은? [3.0점]",
+            "src": "stem",
+            "termId": 23
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "다음 중 $\\sqrt{30} \\div \\sqrt{5}$ 와 계산 결과가 같지 <u>않은</u> 것은? [3.0점]",
+            "src": "stem",
+            "termId": 61
+          },
+          {
+            "term": "판정",
+            "quote": "다음 중 $\\sqrt{30} \\div \\sqrt{5}$ 와 계산 결과가 같지 <u>않은</u> 것은? [3.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "$\\sqrt{30}\\div\\sqrt5=\\sqrt6$이다.\n②는 $3\\sqrt6/3=\\sqrt6$이고, ③은 $\\sqrt6$, ④는 $3\\sqrt6-2\\sqrt6=\\sqrt6$, ⑤는 $-3\\sqrt6+4\\sqrt6=\\sqrt6$이다.\n①은 $2+\\sqrt2\\ne\\sqrt6$이므로 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√30÷√5=√6과 비교하여 √2+√4만 다른 값임을 판정한다.",
+            "termId": 22
+          },
+          {
+            "term": "사칙연산",
+            "quote": "$\\sqrt{30}\\div\\sqrt5=\\sqrt6$이다.\n②는 $3\\sqrt6/3=\\sqrt6$이고, ③은 $\\sqrt6$, ④는 $3\\sqrt6-2\\sqrt6=\\sqrt6$, ⑤는 $-3\\sqrt6+4\\sqrt6=\\sqrt6$이다.\n①은 $2+\\sqrt2\\ne\\sqrt6$이므로 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√30÷√5=√6과 비교하여 √2+√4만 다른 값임을 판정한다.",
+            "termId": 32
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호 연산 결과 비교",
+        "condition": "√30÷√5=√6과 비교하여 √2+√4만 다른 값임을 판정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_444401e6384e3ea63af414c1c7b2bebd0e2c2f82fa7557c2530a193697ca32a6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c830814ad19b4f9b59a2af69767023e57529087fad0b4711f88325992b085b27"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a91de9fee10cc3959bd312747401d2afc2fa63c546cf33de347afd7a43154cf0"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "quote": "$\\sqrt{5} + \\sqrt{45} = 4\\sqrt{5}$",
+            "src": "choices",
+            "termId": 23
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음 중 옳지 <u>않은</u> 것은? [4.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "quote": "⑤의 좌변은 $\\sqrt{14}-\\sqrt7=(\\sqrt2-1)\\sqrt7$이다.\n$\\sqrt2-1\\ne1$이므로 $\\sqrt7$과 같지 않다.\n따라서 옳지 않은 것은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√14와 √7은 동류 근호가 아니므로 뺄셈 결과를 √7로 합칠 수 없다.",
+            "termId": 698
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "동류 근호 덧셈·뺄셈",
+        "condition": "√14와 √7은 동류 근호가 아니므로 뺄셈 결과를 √7로 합칠 수 없다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_c7f7571410754acbca57a5a011edcd2e6fa0340f78d271f8fb9527d3f437cc60",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "55821bb8a4f433201e18f3d6cb8c1379d2fef84d816b13493e730830d3c74d84"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f80a70451ac4329e5ee4156fb780b1d5ae9ab667716d874ce949c8bd2553ce94"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "수직선",
+            "quote": "아래 그림과 같이 수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$를 그렸다.. $\\overline{AC}=\\overline{AQ}$, $\\overline{BD}=\\overline{BP}$ 일 때, 다음 중 옳지 <u>않은</u> 것은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q06.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 295
+          },
+          {
+            "term": "정사각형",
+            "quote": "아래 그림과 같이 수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$를 그렸다.. $\\overline{AC}=\\overline{AQ}$, $\\overline{BD}=\\overline{BP}$ 일 때, 다음 중 옳지 <u>않은</u> 것은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q06.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 166
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "quote": "아래 그림과 같이 수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$를 그렸다.. $\\overline{AC}=\\overline{AQ}$, $\\overline{BD}=\\overline{BP}$ 일 때, 다음 중 옳지 <u>않은</u> 것은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q06.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 148
+          },
+          {
+            "term": "판정",
+            "quote": "아래 그림과 같이 수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$를 그렸다.. $\\overline{AC}=\\overline{AQ}$, $\\overline{BD}=\\overline{BP}$ 일 때, 다음 중 옳지 <u>않은</u> 것은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q06.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "quote": "$AB=1$이고 대각선 $BD=\\sqrt2$이므로 $BP=\\sqrt2$이다.\n따라서 $P=2-\\sqrt2$, $Q=1+\\sqrt2$이다.\n$P+Q=3$이므로 ⑤의 $3+2\\sqrt2$가 틀렸다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선 √2로 P=2-√2,Q=1+√2를 구하면 두 수 합은 3이다.",
+            "termId": 195
+          },
+          {
+            "term": "거리",
+            "quote": "$AB=1$이고 대각선 $BD=\\sqrt2$이므로 $BP=\\sqrt2$이다.\n따라서 $P=2-\\sqrt2$, $Q=1+\\sqrt2$이다.\n$P+Q=3$이므로 ⑤의 $3+2\\sqrt2$가 틀렸다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선 √2로 P=2-√2,Q=1+√2를 구하면 두 수 합은 3이다.",
+            "termId": 216
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "정사각형 대각선과 수직선",
+        "condition": "대각선 √2로 P=2-√2,Q=1+√2를 구하면 두 수 합은 3이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_7bbf097de0328d59b1e62ef219303704b35d22121d61a7ef929f489559d57449",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "da5842404db7f4a4eb2e498e701bf0658e13ddda067ec37c125f19a635523c1f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d9b27bfd307fc841a75efb7de2023cf252d2b745d206e697a56c2010934e955d"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "$(2x+1)(2x-1) = 4x^2 + 1$",
+            "src": "choices",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "전개",
+            "quote": "다음 중에서 옳은 것은? [4.0점]",
+            "src": "stem",
+            "termId": 41
+          },
+          {
+            "term": "판정",
+            "quote": "다음 중에서 옳은 것은? [4.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "quote": "④를 전개하면 $(x+7)(x-4)=x^2+3x-28$이다.\n따라서 옳은 것은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "각 전개 계수를 확인하면 (x+7)(x-4)의 x항은 3x이다.",
+            "termId": 40
+          },
+          {
+            "term": "계수비교",
+            "quote": "④를 전개하면 $(x+7)(x-4)=x^2+3x-28$이다.\n따라서 옳은 것은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "각 전개 계수를 확인하면 (x+7)(x-4)의 x항은 3x이다.",
+            "termId": 696
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "곱셈공식 비교",
+        "condition": "각 전개 계수를 확인하면 (x+7)(x-4)의 x항은 3x이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_4119a12216dd49bb41ffd4454ff83fa8736aab7009d137860dd4ba3a0d759bec",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c57e8d18fbb9118e381485b4e2b3995d7875fb4647f0f7d00e414292487979d5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c4fdc38ee0d88a6e0603ec83c0334d6ce1941bbc2458b2a233b67cae9d677533"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$(\\sqrt{7}-2)^2 = 5$",
+            "src": "choices",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "다음 중 옳은 것은? [4.0점]",
+            "src": "stem",
+            "termId": 61
+          },
+          {
+            "term": "판정",
+            "quote": "다음 중 옳은 것은? [4.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "quote": "$ (2-\\sqrt3)^2=4-4\\sqrt3+3=7-4\\sqrt3$이다.\n따라서 옳은 것은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(2-√3)²의 중간항 -4√3과 상수합 7을 확인한다.",
+            "termId": 40
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호 수의 곱셈공식",
+        "condition": "(2-√3)²의 중간항 -4√3과 상수합 7을 확인한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f9229eaa69efec6423b5806cb425eb8aec7cd4683ca326dd414f68cab15f26ed",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "88ffa30cebf506154fc9d77d29908d0b65c1fe61e8446ba7db11cffd757f239c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "93caeb58b8624da573f5ae3bc7f7c1d49e3e96adc9603a8e27e55253e770187d"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "다음 중 옳지 <u>않은</u> 것은? [3.0점]\n<div class=\"box-inset text-center py-2\">\n$(x-1)(x+3) \\underset{ㄴ}{\\overset{ㄱ}{\\rightleftharpoons}} x^2+2x-3$<br><br>\n$ma+mb = m(a+b)$\n</div>",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음 중 옳지 <u>않은</u> 것은? [3.0점]\n<div class=\"box-inset text-center py-2\">\n$(x-1)(x+3) \\underset{ㄴ}{\\overset{ㄱ}{\\rightleftharpoons}} x^2+2x-3$<br><br>\n$ma+mb = m(a+b)$\n</div>",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "$(x-1)(x+3)=x^2+2x-3$이다.\n$2x-3$은 이 곱의 인수가 아니므로 옳지 않은 것은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "합을 곱으로 바꾸는 방향을 구분하고 ma+mb=m(a+b)의 인수를 읽는다.",
+            "termId": 42
+          },
+          {
+            "term": "정의",
+            "quote": "$(x-1)(x+3)=x^2+2x-3$이다.\n$2x-3$은 이 곱의 인수가 아니므로 옳지 않은 것은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "합을 곱으로 바꾸는 방향을 구분하고 ma+mb=m(a+b)의 인수를 읽는다.",
+            "termId": 369
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "인수분해와 인수의 뜻",
+        "condition": "합을 곱으로 바꾸는 방향을 구분하고 ma+mb=m(a+b)의 인수를 읽는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9171efeb942098fb083ed720fbc86d524011d10a39857ffe14c9ecab252d72fe",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e6e457fa3b22b82bbe8068853baff8cb06e7cd58f105e1f5e354807d7182c4ad"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ff503c12bffb9008baa9488755493c02367f8d01103a201ee9f6459c7a689deb"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "quote": "두 다항식 $x^2+6x+A$ 와 $9x^2+12x+B$ 가 모두 완전제곱식이 될 때, $A$, $B$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "두 다항식 $x^2+6x+A$ 와 $9x^2+12x+B$ 가 모두 완전제곱식이 될 때, $A$, $B$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "두 다항식 $x^2+6x+A$ 와 $9x^2+12x+B$ 가 모두 완전제곱식이 될 때, $A$, $B$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "$x^2+6x+A=(x+3)^2$에서 $A=9$이다.\n$9x^2+12x+B=(3x+2)^2$에서 $B=4$이다.\n따라서 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 이차식의 중간항을 2uv로 비교해 A=9,B=4를 정한다.",
+            "termId": 59
+          },
+          {
+            "term": "계수비교",
+            "quote": "$x^2+6x+A=(x+3)^2$에서 $A=9$이다.\n$9x^2+12x+B=(3x+2)^2$에서 $B=4$이다.\n따라서 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 이차식의 중간항을 2uv로 비교해 A=9,B=4를 정한다.",
+            "termId": 696
+          }
+        ],
+        "condition": [
+          {
+            "term": "완전제곱식",
+            "quote": "두 다항식 $x^2+6x+A$ 와 $9x^2+12x+B$ 가 모두 완전제곱식이 될 때, $A$, $B$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 59
+          }
+        ]
+      },
+      "reasons": {
+        "method": "완전제곱식 상수항",
+        "condition": "두 이차식의 중간항을 2uv로 비교해 A=9,B=4를 정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_12b657c3c49f339fbe9a8bd8a217b9375d826510bee0e57d7bc4e2af19bb79bc",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "71ac8e7c8fb489b37f07fe858d07d808a1c5aae1244c8fe7330cc26481644cbe"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "652e91b1611a467947e79905af9132fb5100d7d3613c0942a7febcc404e3fa67"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "quote": "도형(가)는 한 변의 길이가 $a$인 정사각형 모양의 색종이에서 한 변의 길이가 $b$인 정사각형을 잘라내어 만든 것이다. 도형 (가)를 잘라서 (나)와 같은 직사각형 모양을 만들었다. (나)의 넓이는? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q11.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 166
+          },
+          {
+            "term": "직사각형",
+            "quote": "도형(가)는 한 변의 길이가 $a$인 정사각형 모양의 색종이에서 한 변의 길이가 $b$인 정사각형을 잘라내어 만든 것이다. 도형 (가)를 잘라서 (나)와 같은 직사각형 모양을 만들었다. (나)의 넓이는? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q11.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 165
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "quote": "도형(가)는 한 변의 길이가 $a$인 정사각형 모양의 색종이에서 한 변의 길이가 $b$인 정사각형을 잘라내어 만든 것이다. 도형 (가)를 잘라서 (나)와 같은 직사각형 모양을 만들었다. (나)의 넓이는? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q11.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 35
+          },
+          {
+            "term": "인수분해",
+            "quote": "도형(가)는 한 변의 길이가 $a$인 정사각형 모양의 색종이에서 한 변의 길이가 $b$인 정사각형을 잘라내어 만든 것이다. 도형 (가)를 잘라서 (나)와 같은 직사각형 모양을 만들었다. (나)의 넓이는? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q11.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 42
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "quote": "잘라낸 정사각형의 넓이는 $b^2$이다.\n남은 도형의 넓이는 $a^2-b^2=(a+b)(a-b)$이다.\n모양을 바꾸어도 넓이는 같으므로 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 정사각형 넓이의 차 a²-b²를 재배열한 직사각형의 (a+b)(a-b)로 읽는다.",
+            "termId": 213
+          },
+          {
+            "term": "합차공식",
+            "quote": "잘라낸 정사각형의 넓이는 $b^2$이다.\n남은 도형의 넓이는 $a^2-b^2=(a+b)(a-b)$이다.\n모양을 바꾸어도 넓이는 같으므로 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 정사각형 넓이의 차 a²-b²를 재배열한 직사각형의 (a+b)(a-b)로 읽는다.",
+            "termId": 694
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "넓이 차의 합차인수분해",
+        "condition": "두 정사각형 넓이의 차 a²-b²를 재배열한 직사각형의 (a+b)(a-b)로 읽는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_a82af0149bca6f98d3eb7067fcb12848fe64d454db9fe1fe43b660aee70b1494",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "99dfbfadb4a0ba68ddb14632dd71e4ae34de4a81773e8c4aef9701054fa11389"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c160babb1b2bbc8a9881631d4c3bc7a2a6c956927907bcd021d7c3d144033b45"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "quote": "이수중학교 중앙 현관을 리모델링 하는데, 한쪽 벽면을 직사각형 모양으로 타일로 붙이려고 한다. 아래 그림과 같은 종류의 타일을 사용하여 타일을 붙일 때, 넓이가 $x$인 타일을 가능한 적게 사용하려고 한다. 넓이가 $x$인 타일을 몇 개 사용하면 될까? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q12.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 165
+          },
+          {
+            "term": "정사각형",
+            "quote": "이수중학교 중앙 현관을 리모델링 하는데, 한쪽 벽면을 직사각형 모양으로 타일로 붙이려고 한다. 아래 그림과 같은 종류의 타일을 사용하여 타일을 붙일 때, 넓이가 $x$인 타일을 가능한 적게 사용하려고 한다. 넓이가 $x$인 타일을 몇 개 사용하면 될까? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q12.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 166
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "quote": "이수중학교 중앙 현관을 리모델링 하는데, 한쪽 벽면을 직사각형 모양으로 타일로 붙이려고 한다. 아래 그림과 같은 종류의 타일을 사용하여 타일을 붙일 때, 넓이가 $x$인 타일을 가능한 적게 사용하려고 한다. 넓이가 $x$인 타일을 몇 개 사용하면 될까? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q12.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 129
+          },
+          {
+            "term": "최솟값",
+            "quote": "이수중학교 중앙 현관을 리모델링 하는데, 한쪽 벽면을 직사각형 모양으로 타일로 붙이려고 한다. 아래 그림과 같은 종류의 타일을 사용하여 타일을 붙일 때, 넓이가 $x$인 타일을 가능한 적게 사용하려고 한다. 넓이가 $x$인 타일을 몇 개 사용하면 될까? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q12.png\" style=\"max-width: 80%;\">\n</div>",
+            "src": "stem",
+            "termId": 128
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "quote": "큰 정사각형 타일은 1개, $1\\times1$ 타일은 18개이므로 상수항은 18이다.\n직사각형의 변을 $(x+m),(x+n)$이라 두면 $m,n$은 양의 정수이고 $mn=18$이다. (넓이의 상수항)\n대칭이므로 $m\\le n$로 두면 $(m,n)=(1,18),(2,9),(3,6)$이다. (18의 인수쌍)\n각 인수쌍에서 $m+n=19,11,9$이다. (필요한 $x$ 타일 수)\n최솟값은 9개이므로 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형 변을 x+m,x+n으로 두고 mn=18인 자연수 쌍 중 m+n이 최소인 3과6을 고른다.",
+            "termId": 299
+          },
+          {
+            "term": "인수분해",
+            "quote": "큰 정사각형 타일은 1개, $1\\times1$ 타일은 18개이므로 상수항은 18이다.\n직사각형의 변을 $(x+m),(x+n)$이라 두면 $m,n$은 양의 정수이고 $mn=18$이다. (넓이의 상수항)\n대칭이므로 $m\\le n$로 두면 $(m,n)=(1,18),(2,9),(3,6)$이다. (18의 인수쌍)\n각 인수쌍에서 $m+n=19,11,9$이다. (필요한 $x$ 타일 수)\n최솟값은 9개이므로 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형 변을 x+m,x+n으로 두고 mn=18인 자연수 쌍 중 m+n이 최소인 3과6을 고른다.",
+            "termId": 42
+          },
+          {
+            "term": "경우분류",
+            "quote": "큰 정사각형 타일은 1개, $1\\times1$ 타일은 18개이므로 상수항은 18이다.\n직사각형의 변을 $(x+m),(x+n)$이라 두면 $m,n$은 양의 정수이고 $mn=18$이다. (넓이의 상수항)\n대칭이므로 $m\\le n$로 두면 $(m,n)=(1,18),(2,9),(3,6)$이다. (18의 인수쌍)\n각 인수쌍에서 $m+n=19,11,9$이다. (필요한 $x$ 타일 수)\n최솟값은 9개이므로 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형 변을 x+m,x+n으로 두고 mn=18인 자연수 쌍 중 m+n이 최소인 3과6을 고른다.",
+            "termId": 293
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "타일 인수쌍의 최소 개수",
+        "condition": "직사각형 변을 x+m,x+n으로 두고 mn=18인 자연수 쌍 중 m+n이 최소인 3과6을 고른다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_de480127adb4130238ae3b1e6a3084f64e265e4d268fa774030994419dbc3ef3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f936fa1950eb0999421c54845adbe66e14284eb2efe32228385977eb81642f15"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f90047f7d2f1d34e2fe8c9ca3d49e6fdd85e380078867f69135ec3b8dadaac81"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "quote": "수학 선생님께서 $x^2$의 계수가 1인 이차식을 인수분해하는 문제를 제시하셨다. 그런데 철수는 $x$의 계수를 잘못 보고 $(x+8)(x-3)$으로 인수분해 하여 틀렸고, 영희는 상수항을 잘못 보고 $(x-4)(x+2)$로 인수분해 하여 틀렸다. 선생님께서 틀린 사람은 문제를 다시 풀어서 제출하라고 숙제를 주셨다. 제시한 이차식을 바르게 인수분해하면? [4.0점]",
+            "src": "stem",
+            "termId": 37
+          },
+          {
+            "term": "인수분해",
+            "quote": "수학 선생님께서 $x^2$의 계수가 1인 이차식을 인수분해하는 문제를 제시하셨다. 그런데 철수는 $x$의 계수를 잘못 보고 $(x+8)(x-3)$으로 인수분해 하여 틀렸고, 영희는 상수항을 잘못 보고 $(x-4)(x+2)$로 인수분해 하여 틀렸다. 선생님께서 틀린 사람은 문제를 다시 풀어서 제출하라고 숙제를 주셨다. 제시한 이차식을 바르게 인수분해하면? [4.0점]",
+            "src": "stem",
+            "termId": 42
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "quote": "수학 선생님께서 $x^2$의 계수가 1인 이차식을 인수분해하는 문제를 제시하셨다. 그런데 철수는 $x$의 계수를 잘못 보고 $(x+8)(x-3)$으로 인수분해 하여 틀렸고, 영희는 상수항을 잘못 보고 $(x-4)(x+2)$로 인수분해 하여 틀렸다. 선생님께서 틀린 사람은 문제를 다시 풀어서 제출하라고 숙제를 주셨다. 제시한 이차식을 바르게 인수분해하면? [4.0점]",
+            "src": "stem",
+            "termId": 35
+          },
+          {
+            "term": "인수분해",
+            "quote": "수학 선생님께서 $x^2$의 계수가 1인 이차식을 인수분해하는 문제를 제시하셨다. 그런데 철수는 $x$의 계수를 잘못 보고 $(x+8)(x-3)$으로 인수분해 하여 틀렸고, 영희는 상수항을 잘못 보고 $(x-4)(x+2)$로 인수분해 하여 틀렸다. 선생님께서 틀린 사람은 문제를 다시 풀어서 제출하라고 숙제를 주셨다. 제시한 이차식을 바르게 인수분해하면? [4.0점]",
+            "src": "stem",
+            "termId": 42
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "철수가 제대로 본 상수항은 $(x+8)(x-3)$의 $-24$이다.\n영희가 제대로 본 $x$의 계수는 $(x-4)(x+2)$의 $-2$이다.\n원래 식은 $x^2-2x-24=(x+4)(x-6)$이므로 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 인수분해에서 상수 -24를 둘째에서 x계수 -2를 회수해 x²-2x-24를 분해한다.",
+            "termId": 41
+          },
+          {
+            "term": "계수비교",
+            "quote": "철수가 제대로 본 상수항은 $(x+8)(x-3)$의 $-24$이다.\n영희가 제대로 본 $x$의 계수는 $(x-4)(x+2)$의 $-2$이다.\n원래 식은 $x^2-2x-24=(x+4)(x-6)$이므로 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 인수분해에서 상수 -24를 둘째에서 x계수 -2를 회수해 x²-2x-24를 분해한다.",
+            "termId": 696
+          },
+          {
+            "term": "인수분해",
+            "quote": "철수가 제대로 본 상수항은 $(x+8)(x-3)$의 $-24$이다.\n영희가 제대로 본 $x$의 계수는 $(x-4)(x+2)$의 $-2$이다.\n원래 식은 $x^2-2x-24=(x+4)(x-6)$이므로 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 인수분해에서 상수 -24를 둘째에서 x계수 -2를 회수해 x²-2x-24를 분해한다.",
+            "termId": 42
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "잘못 본 계수 복원",
+        "condition": "첫 인수분해에서 상수 -24를 둘째에서 x계수 -2를 회수해 x²-2x-24를 분해한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_f63b501758d2171d1db652e75c28a01ed488c4d1fcadf383d03b3cd95d829fba",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d9a6d53978a99f5390027db88ddb067d9f31b3d98c7592bec6c3385bc6f8d578"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6947db2611182c27cf16742ddbf197c3d1341c71e038c5614b09c0b21c46f5c7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "quote": "다음 그림은 이수중학교 수학보드실의 평면도를 나타낸 것이다. 이 교실은 넓이가 $10a^2+19a+6$이고 가로의 길이가 $5a+2$인 직사각형 모양이다. 이 교실의 세로의 길이를 $a$의 식으로 나타내면? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q14.png\" style=\"max-width: 60%;\">\n</div>",
+            "src": "stem",
+            "termId": 165
+          },
+          {
+            "term": "다항식",
+            "quote": "다음 그림은 이수중학교 수학보드실의 평면도를 나타낸 것이다. 이 교실은 넓이가 $10a^2+19a+6$이고 가로의 길이가 $5a+2$인 직사각형 모양이다. 이 교실의 세로의 길이를 $a$의 식으로 나타내면? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q14.png\" style=\"max-width: 60%;\">\n</div>",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "quote": "다음 그림은 이수중학교 수학보드실의 평면도를 나타낸 것이다. 이 교실은 넓이가 $10a^2+19a+6$이고 가로의 길이가 $5a+2$인 직사각형 모양이다. 이 교실의 세로의 길이를 $a$의 식으로 나타내면? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q14.png\" style=\"max-width: 60%;\">\n</div>",
+            "src": "stem",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "$10a^2+19a+6=(5a+2)(2a+3)$이다.\n넓이를 가로로 나누면 세로는 $2a+3$이므로 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "10a²+19a+6=(5a+2)(2a+3)에서 가로를 제외한 인수를 세로로 읽는다.",
+            "termId": 42
+          },
+          {
+            "term": "넓이",
+            "quote": "$10a^2+19a+6=(5a+2)(2a+3)$이다.\n넓이를 가로로 나누면 세로는 $2a+3$이므로 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "10a²+19a+6=(5a+2)(2a+3)에서 가로를 제외한 인수를 세로로 읽는다.",
+            "termId": 213
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "넓이 인수분해로 세로",
+        "condition": "10a²+19a+6=(5a+2)(2a+3)에서 가로를 제외한 인수를 세로로 읽는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_0639bf2180d71f491be8ba7fbf747366e1023effc6229d2395040fb1724fe68f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e3029b47dc6c8f02676deee3eff5702e6457c00d8a273d2d6f8187a11fab7807"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7a52fb54967df083b3caac182533ff7b89925e2715fcfe8ab13809506a493116"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$1 < x < 3$ 일 때, $\\sqrt{4x^2+8x+4} + \\sqrt{x^2-6x+9}$ 을 간단히 하면? [4.0점]",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "이차식",
+            "quote": "$1 < x < 3$ 일 때, $\\sqrt{4x^2+8x+4} + \\sqrt{x^2-6x+9}$ 을 간단히 하면? [4.0점]",
+            "src": "stem",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "$1 < x < 3$ 일 때, $\\sqrt{4x^2+8x+4} + \\sqrt{x^2-6x+9}$ 을 간단히 하면? [4.0점]",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "$4x^2+8x+4=(2x+2)^2$이고 $1<x$이므로 첫째 근호는 $2x+2$이다.\n$x^2-6x+9=(x-3)^2$이고 $x<3$이므로 둘째 근호는 $3-x$이다.\n합은 $x+5$이므로 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안을 (2x+2)²와 (x-3)²로 바꾸고 1<x<3에서 x+5로 정리한다.",
+            "termId": 59
+          },
+          {
+            "term": "절댓값",
+            "quote": "$4x^2+8x+4=(2x+2)^2$이고 $1<x$이므로 첫째 근호는 $2x+2$이다.\n$x^2-6x+9=(x-3)^2$이고 $x<3$이므로 둘째 근호는 $3-x$이다.\n합은 $x+5$이므로 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안을 (2x+2)²와 (x-3)²로 바꾸고 1<x<3에서 x+5로 정리한다.",
+            "termId": 24
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "quote": "$1 < x < 3$ 일 때, $\\sqrt{4x^2+8x+4} + \\sqrt{x^2-6x+9}$ 을 간단히 하면? [4.0점]",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "문자 제곱근의 절댓값",
+        "condition": "근호 안을 (2x+2)²와 (x-3)²로 바꾸고 1<x<3에서 x+5로 정리한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_165554915f3fac4b7e1357afe106032d7d358f58579f5f8455d22b1a3eeb7a6a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "679b5dda1649c675a5c97a22aa3cee325cbc53c0d7089b35236063e11b879c88"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5fe02c07cdb14fb2ef70ae845089e7c4e60bc66383f35c377d97bce9cecb385b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "$p$가 이차방정식 $x^2-6x-3=0$ 의 한 근일 때, $2p^2-12p+8$ 의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "$p$가 이차방정식 $x^2-6x-3=0$ 의 한 근일 때, $2p^2-12p+8$ 의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "quote": "$p^2-6p-3=0$에서 $p^2=6p+3$이다.\n$2p^2-12p+8=2(6p+3)-12p+8=14$이다.\n따라서 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "p²-6p=3을 목표식 2(p²-6p)+8에 대입한다.",
+            "termId": 53
+          },
+          {
+            "term": "등식의성질",
+            "quote": "$p^2-6p-3=0$에서 $p^2=6p+3$이다.\n$2p^2-12p+8=2(6p+3)-12p+8=14$이다.\n따라서 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "p²-6p=3을 목표식 2(p²-6p)+8에 대입한다.",
+            "termId": 433
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "이차방정식 근 관계 활용",
+        "condition": "p²-6p=3을 목표식 2(p²-6p)+8에 대입한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_c68fd3f793fb65dffad16a5dcf3d2c3ef3a56d2c0c26551f1505da1df11fd2fc",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cf63aa875932ad2e0d4963f97a26d5e220f50af1849df39d99d6816d8725f0df"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7da94e9e0667f92fe8ab0ae663820169b9e52b859d706adc206b44a95ba2dc98"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $x^2-8x+3=0$을 $(x+a)^2=b$의 꼴로 나타낼 때, $a+b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "이차방정식 $x^2-8x+3=0$을 $(x+a)^2=b$의 꼴로 나타낼 때, $a+b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "이차방정식 $x^2-8x+3=0$을 $(x+a)^2=b$의 꼴로 나타낼 때, $a+b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "$x^2-8x+3=0$에서 $x^2-8x=-3$이다.\n$(x-4)^2=13$이므로 $a=-4$, $b=13$이다.\n$a+b=9$이므로 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²-8x+3=0 양변에 13을 더한 형태 (x-4)²=13에서 a,b를 읽는다.",
+            "termId": 59
+          },
+          {
+            "term": "등식의성질",
+            "quote": "$x^2-8x+3=0$에서 $x^2-8x=-3$이다.\n$(x-4)^2=13$이므로 $a=-4$, $b=13$이다.\n$a+b=9$이므로 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²-8x+3=0 양변에 13을 더한 형태 (x-4)²=13에서 a,b를 읽는다.",
+            "termId": 433
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "완전제곱식으로 변형",
+        "condition": "x²-8x+3=0 양변에 13을 더한 형태 (x-4)²=13에서 a,b를 읽는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_4b81c883a77c49fd10a65935d74ac7038b4cfa2d7c4207a77bfc34699d7f553c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "94965dd1bea5ea6323218c25a0d29813d59463311d9b6414ead02452be1aa3f8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4a371fb986541b8b1af8401ec60f8d23f58e0ef8cca59afb8b7061ca6063c9f9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $\\frac{1}{5}x^2 - 0.4x - 0.1 = 0$ 의 해가 $x = \\frac{a \\pm \\sqrt{b}}{2}$ 일 때, $a+b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "이차방정식 $\\frac{1}{5}x^2 - 0.4x - 0.1 = 0$ 의 해가 $x = \\frac{a \\pm \\sqrt{b}}{2}$ 일 때, $a+b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "이차방정식 $\\frac{1}{5}x^2 - 0.4x - 0.1 = 0$ 의 해가 $x = \\frac{a \\pm \\sqrt{b}}{2}$ 일 때, $a+b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "등식의성질",
+            "quote": "$\\frac15x^2-0.4x-0.1=0$에 10을 곱하면 $2x^2-4x-1=0$이다.\n근은 $x=\\frac{4\\pm\\sqrt{16+8}}4=\\frac{2\\pm\\sqrt6}2$이다.\n$a=2$, $b=6$이므로 $a+b=8$, ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "10배하여 2x²-4x-1=0을 만든 뒤 근의공식을 적용한다.",
+            "termId": 433
+          },
+          {
+            "term": "근의공식",
+            "quote": "$\\frac15x^2-0.4x-0.1=0$에 10을 곱하면 $2x^2-4x-1=0$이다.\n근은 $x=\\frac{4\\pm\\sqrt{16+8}}4=\\frac{2\\pm\\sqrt6}2$이다.\n$a=2$, $b=6$이므로 $a+b=8$, ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "10배하여 2x²-4x-1=0을 만든 뒤 근의공식을 적용한다.",
+            "termId": 443
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "소수 계수의 근의공식",
+        "condition": "10배하여 2x²-4x-1=0을 만든 뒤 근의공식을 적용한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_c52b820ccd30783b64ccbfb4387a42ffe0b6e648b73a9b9745535ee5cffd0a0f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9ba7cd032d4fd9576c9c39f9898e1d39fb114539e2a9a30c1fa0a2d6d4051ff8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6b2d6a7694ae647c804f70855acf35fee502290146d4b1d4ddf06d38737d6d3c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "quote": "가로가 세로보다 $4\\text{ cm}$ 더 긴 직사각형 모양의 종이의 네 모퉁이에서 한 변이 $3\\text{ cm}$인 정사각형을 잘라내어 부피가 $96\\text{ cm}^3$인 직육면체를 만들었다. 처음 직사각형 모양의 종이의 세로의 길이는 몇 $\\text{cm}$인가? [4.0점]",
+            "src": "stem",
+            "termId": 165
+          },
+          {
+            "term": "입체도형",
+            "quote": "가로가 세로보다 $4\\text{ cm}$ 더 긴 직사각형 모양의 종이의 네 모퉁이에서 한 변이 $3\\text{ cm}$인 정사각형을 잘라내어 부피가 $96\\text{ cm}^3$인 직육면체를 만들었다. 처음 직사각형 모양의 종이의 세로의 길이는 몇 $\\text{cm}$인가? [4.0점]",
+            "src": "stem",
+            "termId": 171
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "quote": "가로가 세로보다 $4\\text{ cm}$ 더 긴 직사각형 모양의 종이의 네 모퉁이에서 한 변이 $3\\text{ cm}$인 정사각형을 잘라내어 부피가 $96\\text{ cm}^3$인 직육면체를 만들었다. 처음 직사각형 모양의 종이의 세로의 길이는 몇 $\\text{cm}$인가? [4.0점]",
+            "src": "stem",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "quote": "세로를 $y$ cm라 두면 가로는 $y+4$ cm이다.\n잘라낸 뒤 밑면은 $(y-6)(y-2)$이고 높이는 3이므로 $3(y-6)(y-2)=96$이다.\n$(y-6)(y-2)=32$에서 $y^2-8y-20=0$이다.\n$(y-10)(y+2)=0$이고 길이는 양수이므로 $y=10$ cm, ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "짧은 변 y에서 높이3인 상자의 부피 3(y-6)(y-2)=96을 세우고 가능한 y=10을 택한다.",
+            "termId": 299
+          },
+          {
+            "term": "부피",
+            "quote": "세로를 $y$ cm라 두면 가로는 $y+4$ cm이다.\n잘라낸 뒤 밑면은 $(y-6)(y-2)$이고 높이는 3이므로 $3(y-6)(y-2)=96$이다.\n$(y-6)(y-2)=32$에서 $y^2-8y-20=0$이다.\n$(y-10)(y+2)=0$이고 길이는 양수이므로 $y=10$ cm, ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "짧은 변 y에서 높이3인 상자의 부피 3(y-6)(y-2)=96을 세우고 가능한 y=10을 택한다.",
+            "termId": 219
+          },
+          {
+            "term": "인수분해",
+            "quote": "세로를 $y$ cm라 두면 가로는 $y+4$ cm이다.\n잘라낸 뒤 밑면은 $(y-6)(y-2)$이고 높이는 3이므로 $3(y-6)(y-2)=96$이다.\n$(y-6)(y-2)=32$에서 $y^2-8y-20=0$이다.\n$(y-10)(y+2)=0$이고 길이는 양수이므로 $y=10$ cm, ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "짧은 변 y에서 높이3인 상자의 부피 3(y-6)(y-2)=96을 세우고 가능한 y=10을 택한다.",
+            "termId": 42
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "종이 상자의 부피 방정식",
+        "condition": "짧은 변 y에서 높이3인 상자의 부피 3(y-6)(y-2)=96을 세우고 가능한 y=10을 택한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_442a8bc6f11274d2fe0d1afbfe7a950968dd80dec6551101c03a4a1673365693",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "97484a1365cf8b3dde556e0e7c9bec791522c787dcaae565ae58a7ea80e83416"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "[서답형 1] $1 < \\sqrt{3} < 2$이므로 $\\sqrt{3}$의 정수 부분은 1이고, 소수 부분은 $\\sqrt{3}-1$이다. 이와 같은 방법으로 $2\\sqrt{3}$ 을 소수로 나타낼 때 정수 부분을 $a$라 하고, 소수 부분을 $b$라고 할 때, 다음 물음에 답하시오. (답과 풀이 과정을 쓰시오.) [6.0점]\n\n(1) $a$의 값을 구하시오. (2점)\n(2) $b$의 값을 구하시오. (2점)\n(3) $a^2+2ab+b^2$ 의 값을 구하시오. (2점)",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수부분",
+            "quote": "[서답형 1] $1 < \\sqrt{3} < 2$이므로 $\\sqrt{3}$의 정수 부분은 1이고, 소수 부분은 $\\sqrt{3}-1$이다. 이와 같은 방법으로 $2\\sqrt{3}$ 을 소수로 나타낼 때 정수 부분을 $a$라 하고, 소수 부분을 $b$라고 할 때, 다음 물음에 답하시오. (답과 풀이 과정을 쓰시오.) [6.0점]\n\n(1) $a$의 값을 구하시오. (2점)\n(2) $b$의 값을 구하시오. (2점)\n(3) $a^2+2ab+b^2$ 의 값을 구하시오. (2점)",
+            "src": "stem",
+            "termId": 450
+          },
+          {
+            "term": "소수부분",
+            "quote": "[서답형 1] $1 < \\sqrt{3} < 2$이므로 $\\sqrt{3}$의 정수 부분은 1이고, 소수 부분은 $\\sqrt{3}-1$이다. 이와 같은 방법으로 $2\\sqrt{3}$ 을 소수로 나타낼 때 정수 부분을 $a$라 하고, 소수 부분을 $b$라고 할 때, 다음 물음에 답하시오. (답과 풀이 과정을 쓰시오.) [6.0점]\n\n(1) $a$의 값을 구하시오. (2점)\n(2) $b$의 값을 구하시오. (2점)\n(3) $a^2+2ab+b^2$ 의 값을 구하시오. (2점)",
+            "src": "stem",
+            "termId": 451
+          },
+          {
+            "term": "식의값",
+            "quote": "[서답형 1] $1 < \\sqrt{3} < 2$이므로 $\\sqrt{3}$의 정수 부분은 1이고, 소수 부분은 $\\sqrt{3}-1$이다. 이와 같은 방법으로 $2\\sqrt{3}$ 을 소수로 나타낼 때 정수 부분을 $a$라 하고, 소수 부분을 $b$라고 할 때, 다음 물음에 답하시오. (답과 풀이 과정을 쓰시오.) [6.0점]\n\n(1) $a$의 값을 구하시오. (2점)\n(2) $b$의 값을 구하시오. (2점)\n(3) $a^2+2ab+b^2$ 의 값을 구하시오. (2점)",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "quote": "$3<2\\sqrt3<4$이므로 정수 부분은 $a=3$이다.\n$b=2\\sqrt3-3$이다.\n$a^2+2ab+b^2=(a+b)^2=(2\\sqrt3)^2=12$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "3<2√3<4로 정수부분3,소수부분2√3-3을 구하고 합의 제곱을 계산한다.",
+            "termId": 28
+          },
+          {
+            "term": "정의",
+            "quote": "$3<2\\sqrt3<4$이므로 정수 부분은 $a=3$이다.\n$b=2\\sqrt3-3$이다.\n$a^2+2ab+b^2=(a+b)^2=(2\\sqrt3)^2=12$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "3<2√3<4로 정수부분3,소수부분2√3-3을 구하고 합의 제곱을 계산한다.",
+            "termId": 369
+          },
+          {
+            "term": "제곱근",
+            "quote": "$3<2\\sqrt3<4$이므로 정수 부분은 $a=3$이다.\n$b=2\\sqrt3-3$이다.\n$a^2+2ab+b^2=(a+b)^2=(2\\sqrt3)^2=12$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "3<2√3<4로 정수부분3,소수부분2√3-3을 구하고 합의 제곱을 계산한다.",
+            "termId": 22
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "정수·소수 부분의 재결합",
+        "condition": "3<2√3<4로 정수부분3,소수부분2√3-3을 구하고 합의 제곱을 계산한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_fd137e43878719aa10bb9d6126bc16a0dd6559b4699977f4bdb6debc5111353e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f192c2b6dc639e71b84cabce1bbc58ee7dca0be5ea2c34ac3f8f1c0c14a377aa"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "[서답형 2] 다음 식 $x(x+3)+(x+1)(x+2)$을 전개하시오. (답과 풀이 과정을 쓰시오. 부분점수 있음) [5.0점]",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "quote": "[서답형 2] 다음 식 $x(x+3)+(x+1)(x+2)$을 전개하시오. (답과 풀이 과정을 쓰시오. 부분점수 있음) [5.0점]",
+            "src": "stem",
+            "termId": 35
+          },
+          {
+            "term": "전개",
+            "quote": "[서답형 2] 다음 식 $x(x+3)+(x+1)(x+2)$을 전개하시오. (답과 풀이 과정을 쓰시오. 부분점수 있음) [5.0점]",
+            "src": "stem",
+            "termId": 41
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "$x(x+3)=x^2+3x$ (분배법칙).\n$(x+1)(x+2)=x^2+3x+2$ (전개).\n합은 $2x^2+6x+2$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x(x+3)과 (x+1)(x+2)를 전개해 2x²+6x+2로 합친다.",
+            "termId": 41
+          },
+          {
+            "term": "동류항",
+            "quote": "$x(x+3)=x^2+3x$ (분배법칙).\n$(x+1)(x+2)=x^2+3x+2$ (전개).\n합은 $2x^2+6x+2$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x(x+3)과 (x+1)(x+2)를 전개해 2x²+6x+2로 합친다.",
+            "termId": 698
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "다항식 전개와 동류항",
+        "condition": "x(x+3)과 (x+1)(x+2)를 전개해 2x²+6x+2로 합친다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_ac5db3ae0c41551facfad54c9d08dbebd666fcb5a3a37226a8040954185700fc",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e7be8de919ebe47f1c83df9d4ab46dd69b3a74c2a00fdaecf3ec8bcac724cfe1"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "소수",
+            "quote": "[서답형 3] $(4.5)^2-(3.5)^2$ 을 인수분해 공식을 이용하여 구하시오. (답과 풀이 과정을 쓰시오. 부분점수 있음) [4.0점]",
+            "src": "stem",
+            "termId": 9
+          },
+          {
+            "term": "제곱합",
+            "quote": "[서답형 3] $(4.5)^2-(3.5)^2$ 을 인수분해 공식을 이용하여 구하시오. (답과 풀이 과정을 쓰시오. 부분점수 있음) [4.0점]",
+            "src": "stem",
+            "termId": 336
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "[서답형 3] $(4.5)^2-(3.5)^2$ 을 인수분해 공식을 이용하여 구하시오. (답과 풀이 과정을 쓰시오. 부분점수 있음) [4.0점]",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "quote": "제곱의 차는 두 수의 차와 합의 곱이다.\n$(4.5)^2-(3.5)^2=(4.5-3.5)(4.5+3.5)$이다.\n$=1\\times8=8$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "4.5²-3.5²=(4.5-3.5)(4.5+3.5)로 계산한다.",
+            "termId": 694
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱 차의 수 계산",
+        "condition": "4.5²-3.5²=(4.5-3.5)(4.5+3.5)로 계산한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_32c4f268ccf84e78df6d5f3dad69655aed8a2cd65c5b36a6727f924fea0010d9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "742905f175879f164504ab187bdce94eead3214a55a50b31a349454e82080b31"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "[서답형 4] 이차방정식 $0.1x^2 - \\frac{1}{2}x = -\\frac{1}{10}$ 의 한 해를 $a$라고 할 때, $5a+\\frac{5}{a}$의 값을 구하시오. (답과 풀이 과정을 쓰시오. 부분점수 있음) [5.0점]",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "유리식",
+            "quote": "[서답형 4] 이차방정식 $0.1x^2 - \\frac{1}{2}x = -\\frac{1}{10}$ 의 한 해를 $a$라고 할 때, $5a+\\frac{5}{a}$의 값을 구하시오. (답과 풀이 과정을 쓰시오. 부분점수 있음) [5.0점]",
+            "src": "stem",
+            "termId": 38
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "[서답형 4] 이차방정식 $0.1x^2 - \\frac{1}{2}x = -\\frac{1}{10}$ 의 한 해를 $a$라고 할 때, $5a+\\frac{5}{a}$의 값을 구하시오. (답과 풀이 과정을 쓰시오. 부분점수 있음) [5.0점]",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "등식의성질",
+            "quote": "$0.1x^2-\\frac12x=-\\frac1{10}$에 10을 곱하면 $x^2-5x=-1$이다.\n$a$는 해이므로 $a^2-5a+1=0$이다.\n$a\\ne0$이므로 $a-5+\\frac1a=0$이다.\n따라서 $5a+\\frac5a=25$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "a²-5a+1=0을 a≠0으로 나누어 a+1/a=5를 얻는다.",
+            "termId": 433
+          },
+          {
+            "term": "약분",
+            "quote": "$0.1x^2-\\frac12x=-\\frac1{10}$에 10을 곱하면 $x^2-5x=-1$이다.\n$a$는 해이므로 $a^2-5a+1=0$이다.\n$a\\ne0$이므로 $a-5+\\frac1a=0$이다.\n따라서 $5a+\\frac5a=25$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "a²-5a+1=0을 a≠0으로 나누어 a+1/a=5를 얻는다.",
+            "termId": 58
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근 관계를 역수합으로 변형",
+        "condition": "a²-5a+1=0을 a≠0으로 나누어 a+1/a=5를 얻는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_0674e5839ceaad4094084cf6f3a727fd6d8952e822286d617bff7ba614c3e595",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "253682d1cec18ff8dc71a5679078f55fba42e9edc1b1d378e986933cf890c539"
+        }
+      ],
+      "format": "증명",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "[서답형 5] 이차방정식 $ax^2+bx+c=0$ ($a \\neq 0$)의 근은 $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$ (단, $b^2-4ac \\ge 0$)이다. 근을 구하는 공식을 유도하는 과정을 서술하시오. (부분점수 있음) [6.0점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "근의공식",
+            "quote": "[서답형 5] 이차방정식 $ax^2+bx+c=0$ ($a \\neq 0$)의 근은 $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$ (단, $b^2-4ac \\ge 0$)이다. 근을 구하는 공식을 유도하는 과정을 서술하시오. (부분점수 있음) [6.0점]",
+            "src": "stem",
+            "termId": 443
+          },
+          {
+            "term": "증명",
+            "quote": "[서답형 5] 이차방정식 $ax^2+bx+c=0$ ($a \\neq 0$)의 근은 $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$ (단, $b^2-4ac \\ge 0$)이다. 근을 구하는 공식을 유도하는 과정을 서술하시오. (부분점수 있음) [6.0점]",
+            "src": "stem",
+            "termId": 133
+          }
+        ],
+        "method": [
+          {
+            "term": "등식의성질",
+            "quote": "$ax^2+bx+c=0$에서 $a\\ne0$이므로 양변을 $a$로 나눈다.\n$x^2+\\frac ba x=-\\frac ca$이다.\n양변에 $\\left(\\frac b{2a}\\right)^2$를 더하면 $x^2+\\frac ba x+\\left(\\frac b{2a}\\right)^2=\\frac{b^2-4ac}{4a^2}$이다.\n왼쪽을 제곱식으로 묶으면 $\\left(x+\\frac b{2a}\\right)^2=\\frac{D}{4a^2}$이다. (단, $D=b^2-4ac$)\n양변에 $4a^2$를 곱하면 $(2ax+b)^2=D$이다. (완전제곱식 정리)\n제곱근을 취하면 $2ax+b=\\pm\\sqrt D$이다. ($D\\ge0$)\n$2a$로 나누어 $x=\\frac{-b\\pm\\sqrt D}{2a}$를 얻는다. (근의 공식)",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "양변을 4a배하고 b²를 더해 (2ax+b)²=b²-4ac로 만든 뒤 제곱근을 취한다.",
+            "termId": 433
+          },
+          {
+            "term": "완전제곱식",
+            "quote": "$ax^2+bx+c=0$에서 $a\\ne0$이므로 양변을 $a$로 나눈다.\n$x^2+\\frac ba x=-\\frac ca$이다.\n양변에 $\\left(\\frac b{2a}\\right)^2$를 더하면 $x^2+\\frac ba x+\\left(\\frac b{2a}\\right)^2=\\frac{b^2-4ac}{4a^2}$이다.\n왼쪽을 제곱식으로 묶으면 $\\left(x+\\frac b{2a}\\right)^2=\\frac{D}{4a^2}$이다. (단, $D=b^2-4ac$)\n양변에 $4a^2$를 곱하면 $(2ax+b)^2=D$이다. (완전제곱식 정리)\n제곱근을 취하면 $2ax+b=\\pm\\sqrt D$이다. ($D\\ge0$)\n$2a$로 나누어 $x=\\frac{-b\\pm\\sqrt D}{2a}$를 얻는다. (근의 공식)",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "양변을 4a배하고 b²를 더해 (2ax+b)²=b²-4ac로 만든 뒤 제곱근을 취한다.",
+            "termId": 59
+          },
+          {
+            "term": "제곱근",
+            "quote": "$ax^2+bx+c=0$에서 $a\\ne0$이므로 양변을 $a$로 나눈다.\n$x^2+\\frac ba x=-\\frac ca$이다.\n양변에 $\\left(\\frac b{2a}\\right)^2$를 더하면 $x^2+\\frac ba x+\\left(\\frac b{2a}\\right)^2=\\frac{b^2-4ac}{4a^2}$이다.\n왼쪽을 제곱식으로 묶으면 $\\left(x+\\frac b{2a}\\right)^2=\\frac{D}{4a^2}$이다. (단, $D=b^2-4ac$)\n양변에 $4a^2$를 곱하면 $(2ax+b)^2=D$이다. (완전제곱식 정리)\n제곱근을 취하면 $2ax+b=\\pm\\sqrt D$이다. ($D\\ge0$)\n$2a$로 나누어 $x=\\frac{-b\\pm\\sqrt D}{2a}$를 얻는다. (근의 공식)",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "양변을 4a배하고 b²를 더해 (2ax+b)²=b²-4ac로 만든 뒤 제곱근을 취한다.",
+            "termId": 22
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "quote": "[서답형 5] 이차방정식 $ax^2+bx+c=0$ ($a \\neq 0$)의 근은 $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$ (단, $b^2-4ac \\ge 0$)이다. 근을 구하는 공식을 유도하는 과정을 서술하시오. (부분점수 있음) [6.0점]",
+            "src": "stem",
+            "termId": 297
+          },
+          {
+            "term": "부등식",
+            "termId": 63,
+            "quote": "[서답형 5] 이차방정식 $ax^2+bx+c=0$ ($a \\neq 0$)의 근은 $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$ (단, $b^2-4ac \\ge 0$)이다. 근을 구하는 공식을 유도하는 과정을 서술하시오. (부분점수 있음) [6.0점]",
+            "src": "stem"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "완전제곱식으로 근의공식 유도",
+        "condition": "양변을 4a배하고 b²를 더해 (2ax+b)²=b²-4ac로 만든 뒤 제곱근을 취한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.470514+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_CHECKED",
+    "independentReview": "PENDING_ROOT_SAMPLE"
+  },
+  "reviewedSourceBaseBlob": "086521edf36878ced96aa3f48b73de8cf95be880",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E070",
+    "author": "meta_a",
+    "reviewer": "meta_b",
+    "reviewedAt": "2026-11-15",
+    "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+    "status": "PASS_WITH_EXPLICIT_DEBTS",
+    "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+    "sourceBaseBlob": "086521edf36878ced96aa3f48b73de8cf95be880",
+    "inputHashes": {
+      "reviewSha256": "be743c6363ece3b0f9eb166276b1a00997cd7d16a31921111550c0e0456d3a0c",
+      "fourSlotSha256": "cf3e9f7afa0daf538b1b50fe082de00250303ce691a89233978dd39fa5ded3f9"
+    },
+    "sampledOrdinals": [
+      12,
+      19,
+      24
+    ],
+    "additionalReviewedOrdinals": [],
+    "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+    "findings": [
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_a82af0149bca6f98d3eb7067fcb12848fe64d454db9fe1fe43b660aee70b1494",
+        "status": "PASS",
+        "note": "실제그림의 x² 타일1개·단위타일18개·x타일 미정 수를 확인. 직사각형 인수쌍1×18,2×9,3×6 중 합9를 선택하는 모델3 및 넓이보조 수용."
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_c52b820ccd30783b64ccbfb4387a42ffe0b6e648b73a9b9745535ee5cffd0a0f",
+        "status": "PASS",
+        "note": "종이길이와 절단너비를 반영하여 높이3·밑면(y-6)(y-2)를 구성하는 입체모델3. 길이목표 및 부피·인수분해 method가 본문·해설과 대응."
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_0674e5839ceaad4094084cf6f3a727fd6d8952e822286d617bff7ba614c3e595",
+        "status": "PASS",
+        "note": "지정된 근의 공식을 완전제곱→제곱근법으로 유도하는 중2/B23. a≠0와 D≥0의 명시조건을 최종판정·4칸에 보완한 것 확인. D 기호사용은 판별식에 의한 실근개수 풀이로 오분류하지 않음."
+      }
+    ],
+    "assetReview": [
+      {
+        "path": "/workspace/scratch/e45ff6c78c51/workers/A/assets/E070/12-question-1.png",
+        "sha256": "5a394034b0dfb49a40a123bb6534150719eea5fb4ee5eb72ae874a08a26cc0e4",
+        "status": "READ"
+      }
+    ],
+    "decisiveMethodOrGoalErrorsInSample": 0,
+    "inventedQuotesInSample": 0,
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED",
+    "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+  }
+}

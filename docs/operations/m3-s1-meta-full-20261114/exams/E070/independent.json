@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E070",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "086521edf36878ced96aa3f48b73de8cf95be880",
+  "inputHashes": {
+    "reviewSha256": "be743c6363ece3b0f9eb166276b1a00997cd7d16a31921111550c0e0456d3a0c",
+    "fourSlotSha256": "cf3e9f7afa0daf538b1b50fe082de00250303ce691a89233978dd39fa5ded3f9"
+  },
+  "sampledOrdinals": [
+    12,
+    19,
+    24
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_a82af0149bca6f98d3eb7067fcb12848fe64d454db9fe1fe43b660aee70b1494",
+      "status": "PASS",
+      "note": "실제그림의 x² 타일1개·단위타일18개·x타일 미정 수를 확인. 직사각형 인수쌍1×18,2×9,3×6 중 합9를 선택하는 모델3 및 넓이보조 수용."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_c52b820ccd30783b64ccbfb4387a42ffe0b6e648b73a9b9745535ee5cffd0a0f",
+      "status": "PASS",
+      "note": "종이길이와 절단너비를 반영하여 높이3·밑면(y-6)(y-2)를 구성하는 입체모델3. 길이목표 및 부피·인수분해 method가 본문·해설과 대응."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_0674e5839ceaad4094084cf6f3a727fd6d8952e822286d617bff7ba614c3e595",
+      "status": "PASS",
+      "note": "지정된 근의 공식을 완전제곱→제곱근법으로 유도하는 중2/B23. a≠0와 D≥0의 명시조건을 최종판정·4칸에 보완한 것 확인. D 기호사용은 판별식에 의한 실근개수 풀이로 오분류하지 않음."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/A/assets/E070/12-question-1.png",
+      "sha256": "5a394034b0dfb49a40a123bb6534150719eea5fb4ee5eb72ae874a08a26cc0e4",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
