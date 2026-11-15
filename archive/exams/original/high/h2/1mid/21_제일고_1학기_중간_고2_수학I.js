@@ -238,10 +238,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "직사각형의 넓이는 <strong>밑변 $BC$의 길이 × 높이 $AB$</strong>입니다. 밑변은 $2$로 주어졌으므로 그래프에서 윗변의 높이를 구합니다.<br>\n$y=\\sin\\frac\\pi3x$는 $0\\le x\\le3$에서<br>$\\sin\\frac\\pi3(3-x)=\\sin\\left(\\pi-\\frac\\pi3x\\right)=\\sin\\frac\\pi3x$이므로 $x=\\frac32$를 기준으로 좌우대칭입니다.<br>직사각형의 두 윗꼭짓점 $A,D$는 높이가 같으므로 그 $x$좌표도 $\\frac32$를 기준으로 대칭입니다. 두 좌표의 차이는 $BC=2$이므로 각각 중심에서 $1$만큼 떨어져 있습니다.<br>$x_A=\\frac32-1=\\frac12$, $x_D=\\frac32+1=\\frac52$입니다.<br>\n높이는 $AB=y_A=\\sin\\left(\\frac\\pi3\\cdot\\frac12\\right)=\\sin\\frac\\pi6=\\frac12$입니다. 실제로 $D$에서도 $\\sin\\frac{5\\pi}6=\\frac12$로 높이가 같습니다.<br>\n따라서 넓이는 $BC\\times AB=2\\times\\frac12=1$이고 정답은 ①입니다.",
-    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I/q17-solution.svg",
-    "solutionImageAlt": "사인함수의 대칭축 x=3/2와 직사각형 ABCD의 밑변 2, 높이 1/2를 표시한 해설 그래프",
-    "solutionImageCaption": "두 윗꼭짓점의 x좌표는 1/2, 5/2이므로 높이는 sin(π/6)=1/2입니다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 사인곡선 위의 A와 D 및 x축 위의 B와 C가 직사각형을 이룬다. 점선 x=3/2 양옆의 윗꼭짓점 높이는 y=1/2이다.",
+    "solutionImageCaption": "두 윗꼭짓점은 x=3/2에서 같은 거리만큼 떨어져 있다. 높이 1/2와 밑변 2를 곱한 넓이는 1이다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
