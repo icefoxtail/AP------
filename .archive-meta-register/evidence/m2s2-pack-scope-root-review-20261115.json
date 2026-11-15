@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "archive-root-existing-binding-scope-review-v1",
+  "reviewer": "GPT_ROOT_SCOPE_RECONCILIATION_20261115",
+  "decision": "APPROVED_EXACT_EXISTING_ACTIVE_BINDING_SCOPE_RECONCILIATION",
+  "currentCommit": "c1d9dda6fd6be0dd63b10c8b52157546c108714f",
+  "evidenceRef": {
+    "path": ".archive-meta-register/evidence/m2s2-pack-scope-reconciliation-20261116.json",
+    "sha256": "30e797a71f5afc919c5761f8452128a217d2b98caa8cd4fe1bbbf7280b4b7749"
+  },
+  "registryChangeSha256": "e43d13f0bc1719694f61c969226fb41155d37c2452169b779b63c46aaf0e3c9d",
+  "exactBindingCount": 4,
+  "affectedReviewedUidCount": 26,
+  "approvedChange": {
+    "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/pack.json",
+    "field": "standardCourses",
+    "appendOnly": [
+      "중2 수학",
+      "M2-2"
+    ]
+  },
+  "unchanged": {
+    "curricula": true,
+    "problemTypes": true,
+    "templates": true,
+    "bindings": true,
+    "studentPayload": true,
+    "existingRuntime": true
+  },
+  "newFullMathematicalQa": false,
+  "newQuestionApprovals": 0,
+  "newBindings": 0,
+  "productionGuardChanges": 0,
+  "observed": "The four exact ACTIVE bindings were already published for the 2015 middle2 probability unit; the original native review references explicit M2-2 RPM scope. The pack course list omitted those already-existing binding course aliases. The approved append reconciles that inconsistency; every item remains subject to the original binding, source review, parent, master, and consumer gates.",
+  "registrationStatus": "NOT_REGISTERED"
+}
