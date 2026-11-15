@@ -459,6 +459,10 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q9-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "파란 치수선은 같은 길이 AB와 AC를, 주황 눈금은 같은 길이 AD, BD, BC를 표시한다. 주황 삼각형 BDC가 큰 삼각형 ABC와 닮았다.",
+    "solutionImageCaption": "BD=BC=AD=6이다. 두 삼각형의 닮음에서 x/6=6/(x−6)이므로 x²−6x−36=0이다. 양의 길이 AB는 3+3√5 cm이다.",
     "score": 4,
     "level": "상",
     "category": "도형",
@@ -468,7 +472,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차방정식",
@@ -477,7 +481,7 @@ window.questionBank = [
       "그림해석"
     ],
     "wide": true,
-    "content": "오른쪽 그림과 같이 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형이 있고, 꼭짓각 $\\angle\\mathrm{BAC}=36^\\circ$이다. $\\overline{\\mathrm{BC}} = 6\\text{ cm}$이고 $\\angle\\mathrm{B}$의 이등분선과 $\\overline{\\mathrm{AC}}$의 교점을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{AB}}$의 길이는? (4점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q09.png\" alt=\"문제 9번 그림\" style=\"max-width: 250px;\"></p>",
+    "content": "오른쪽 그림과 같이 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형이 있고, 꼭짓각 $\\angle\\mathrm{BAC}=36^\\circ$이다. $\\overline{\\mathrm{BC}} = 6\\text{ cm}$이고 $\\angle\\mathrm{B}$의 이등분선과 $\\overline{\\mathrm{AC}}$의 교점을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{AB}}$의 길이는? (4점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q9-problem-v2.svg\" alt=\"문제 9번 그림\" style=\"max-width: 440px;\"></p>",
     "choices": [
       "$3 + 3\\sqrt{5}$",
       "$3 + \\sqrt{5}$",
@@ -575,6 +579,10 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q11-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "큰 반원에서 지름이 u와 v인 두 작은 반원을 뺀 부분이 주황색이다. 보조선이 세 지름의 공통 끝과 가운데 C를 구분한다.",
+    "solutionImageCaption": "u+v=10이고 색칠한 부분의 넓이에서 u²+v²=68이다. 따라서 uv=16이므로 두 지름은 8과 2이다. 더 짧은 BC는 2 cm이다.",
     "score": 4,
     "level": "상",
     "category": "도형",
@@ -584,7 +592,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차방정식",
@@ -594,7 +602,7 @@ window.questionBank = [
       "실생활·도형조건"
     ],
     "wide": true,
-    "content": "다음 그림은 3개의 반원으로 이루어진 도형이다. 큰 반원의 지름의 길이가 $10\\text{ cm}$이고, 색칠한 부분의 넓이가 $4\\pi\\text{ cm}^2$일 때, $\\overline{\\mathrm{BC}}$의 길이를 구하면? (단, $\\overline{\\mathrm{AC}} > \\overline{\\mathrm{BC}}$, 단위는 $\\text{cm}$) (4점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q11.png\" alt=\"문제 11번 그림\" style=\"max-width: 400px;\"></p>",
+    "content": "다음 그림은 3개의 반원으로 이루어진 도형이다. 큰 반원의 지름의 길이가 $10\\text{ cm}$이고, 색칠한 부분의 넓이가 $4\\pi\\text{ cm}^2$일 때, $\\overline{\\mathrm{BC}}$의 길이를 구하면? (단, $\\overline{\\mathrm{AC}} > \\overline{\\mathrm{BC}}$, 단위는 $\\text{cm}$) (4점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q11-problem-v2.svg\" alt=\"문제 11번 그림\" style=\"max-width: 400px;\"></p>",
     "choices": [
       "$1$",
       "$\\sqrt{2}$",
@@ -804,7 +812,11 @@ window.questionBank = [
       "subConcept": "증감·개수",
       "conditionsUsed": "경기 수 66, 팀별 한 경기씩.",
       "integrationPatternExplanation": "분류한 핵심 개념과 문항에 명시된 추가 조건을 순차적으로 결합; machine cross/condition key는 활성 근거가 없어 미결속."
-    }
+    },
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 다섯 팀을 점으로 놓은 예시에서 A가 각 상대와 한 번씩 갖는 경기를 파랑으로 표시했다. 각 선분은 두 팀이 함께 치르는 한 경기를 뜻한다.",
+    "solutionImageCaption": "n팀이면 경기 수는 n(n−1)/2이다. 66과 같다고 놓으면 (n−12)(n+11)=0이고, 양수인 12팀이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -817,7 +829,7 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차함수",
@@ -826,7 +838,7 @@ window.questionBank = [
       "그림해석"
     ],
     "wide": true,
-    "content": "이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 이 이차함수의 꼭짓점과 축의 방정식을 순서대로 바르게 구한 것은? (4점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q15.png\" alt=\"문제 15번 그림\" style=\"max-width: 250px;\"></p>",
+    "content": "이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 이 이차함수의 꼭짓점과 축의 방정식을 순서대로 바르게 구한 것은? (4점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q15-problem-v2.svg\" alt=\"문제 15번 그림\" style=\"max-width: 440px;\"></p>",
     "choices": [
       "$(0, 3)$, $x = 3$",
       "$(8, 3)$, $x = 3$",
@@ -919,7 +931,11 @@ window.questionBank = [
       "subConcept": "그래프 위치",
       "conditionsUsed": "y=−(x−2)²/3+1의 그래프.",
       "integrationPatternExplanation": "분류한 핵심 개념과 문항에 명시된 추가 조건을 순차적으로 결합; machine cross/condition key는 활성 근거가 없어 미결속."
-    }
+    },
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선은 두 주황 x절편 사이에서 x축 위에 있다. 왼쪽 위의 회색 사분면에는 파란 곡선이 없다.",
+    "solutionImageCaption": "두 근은 2−√3과 2+√3이다. 그래프가 지나는 곳은 제1·제3·제4사분면이므로 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -976,7 +992,11 @@ window.questionBank = [
       "subConcept": "대칭축·증감",
       "conditionsUsed": "y=3x²−6x+1의 그래프 성질.",
       "integrationPatternExplanation": "분류한 핵심 개념과 문항에 명시된 추가 조건을 순차적으로 결합; machine cross/condition key는 활성 근거가 없어 미결속."
-    }
+    },
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 주황 y절편과 파란 꼭짓점의 좌표를 각각 점에 이었다. 꼭짓점과 x축 사이의 점선이 대칭축을 보여 준다.",
+    "solutionImageCaption": "대칭축은 x=1이다. x=2라고 한 ③이 옳지 않다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1033,7 +1053,11 @@ window.questionBank = [
       "subConcept": "평행이동",
       "conditionsUsed": "y=x²−1/3과 평행이동 동형, x<2 감소·x>2 증가, (5,5) 통과.",
       "integrationPatternExplanation": "분류한 핵심 개념과 문항에 명시된 추가 조건을 순차적으로 결합; machine cross/condition key는 활성 근거가 없어 미결속."
-    }
+    },
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 초록과 파랑 포물선은 같은 폭으로 열린다. 파란 곡선의 꼭짓점에서 x축의 2로 점선을 이었다. 주황 점은 주어진 (5,5)이다.",
+    "solutionImageCaption": "y=(x−2)²+k에 (5,5)를 대입하면 k=−4이다. 따라서 y=(x−2)²−4이며 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1046,7 +1070,7 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차함수",
@@ -1055,7 +1079,7 @@ window.questionBank = [
       "그림해석"
     ],
     "wide": true,
-    "content": "오른쪽 그림은 이차함수 $y = x^2 - 6x - 7$의 그래프이다. 이 그래프가 $y$축과 만나는 점을 $\\mathrm{A}$라 하고, 꼭짓점을 $\\mathrm{B}$, $x$축의 양의 부분과 만나는 점을 $\\mathrm{C}$라고 할 때, 점 $\\mathrm{C}$의 좌표는 $(7, 0)$이다. 이때 $\\square\\mathrm{OABC}$의 넓이를 구하면? (5점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q19.png\" alt=\"문제 19번 그림\" style=\"max-width: 300px;\"></p>",
+    "content": "오른쪽 그림은 이차함수 $y = x^2 - 6x - 7$의 그래프이다. 이 그래프가 $y$축과 만나는 점을 $\\mathrm{A}$라 하고, 꼭짓점을 $\\mathrm{B}$, $x$축의 양의 부분과 만나는 점을 $\\mathrm{C}$라고 할 때, 점 $\\mathrm{C}$의 좌표는 $(7, 0)$이다. 이때 $\\square\\mathrm{OABC}$의 넓이를 구하면? (5점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q19-problem-v2.svg\" alt=\"문제 19번 그림\" style=\"max-width: 440px;\"></p>",
     "choices": [
       "$\\dfrac{125}{2}$",
       "$65$",
@@ -1091,7 +1115,11 @@ window.questionBank = [
       "subConcept": "점의 좌표",
       "conditionsUsed": "y=x²−6x−7, A=(0,−7), B는 꼭짓점, C=(7,0).",
       "integrationPatternExplanation": "분류한 핵심 개념과 문항에 명시된 추가 조건을 순차적으로 결합; machine cross/condition key는 활성 근거가 없어 미결속."
-    }
+    },
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형을 대각선 OB로 나눠 파랑과 주황 삼각형을 구분했다. B에서 두 축으로 내린 점선은 각각의 높이를 표시한다.",
+    "solutionImageCaption": "두 넓이는 7×3÷2와 7×16÷2이다. 합은 133/2이므로 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1104,7 +1132,7 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차함수",
@@ -1114,7 +1142,7 @@ window.questionBank = [
       "실생활·도형조건"
     ],
     "wide": true,
-    "content": "오른쪽 그림과 같이 직사각형 $\\mathrm{ABCD}$의 두 꼭짓점 $\\mathrm{A, D}$가 이차함수 $y = -x^2 + 6x$의 그래프 위에 있고 두 꼭짓점 $\\mathrm{B, C}$가 $x$축 위에 있다. 직사각형 $\\mathrm{ABCD}$의 둘레의 길이가 $20$일 때, 점 $\\mathrm{A}$의 좌표를 구하면? (5점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q20.png\" alt=\"문제 20번 그림\" style=\"max-width: 250px;\"></p>",
+    "content": "오른쪽 그림과 같이 직사각형 $\\mathrm{ABCD}$의 두 꼭짓점 $\\mathrm{A, D}$가 이차함수 $y = -x^2 + 6x$의 그래프 위에 있고 두 꼭짓점 $\\mathrm{B, C}$가 $x$축 위에 있다. 직사각형 $\\mathrm{ABCD}$의 둘레의 길이가 $20$일 때, 점 $\\mathrm{A}$의 좌표를 구하면? (5점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q20-problem-v2.svg\" alt=\"문제 20번 그림\" style=\"max-width: 440px;\"></p>",
     "choices": [
       "$\\left(\\dfrac{1}{2}, \\dfrac{11}{4}\\right)$",
       "$(1, 5)$",
@@ -1150,7 +1178,11 @@ window.questionBank = [
       "subConcept": "꼭짓점·축",
       "conditionsUsed": "y=−x²+6x, 직사각형의 윗점 A,D가 포물선 위, 아랫점 B,C가 x축 위, 둘레 20.",
       "integrationPatternExplanation": "분류한 핵심 개념과 문항에 명시된 추가 조건을 순차적으로 결합; machine cross/condition key는 활성 근거가 없어 미결속."
-    }
+    },
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽 A와 D는 x=3을 중심으로 같은 높이에 있다. 주황 직사각형의 가로와 세로가 포물선의 대칭으로 정해진다.",
+    "solutionImageCaption": "가로 6−2t와 세로 −t²+6t의 합이 10이다. 정리하면 (t−2)²=0이므로 A의 좌표는 (2,8)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1208,7 +1240,11 @@ window.questionBank = [
       "subConcept": "꼭짓점·축",
       "conditionsUsed": "y=x²/2+kx−k의 그래프가 네 사분면을 지나며 꼭짓점이 x+y=−6 위.",
       "integrationPatternExplanation": "분류한 핵심 개념과 문항에 명시된 추가 조건을 순차적으로 결합; machine cross/condition key는 활성 근거가 없어 미결속."
-    }
+    },
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 초록 점선 위에 두 포물선의 꼭짓점이 있다. 파란 곡선은 y축을 x축 아래에서 통과한다. 주황 곡선의 음수 부분은 y축 오른쪽에 놓인다.",
+    "solutionImageCaption": "직선 조건에서 k=−6 또는 k=2이다. 모든 사분면을 지나는 조건 k>0을 함께 적용하면 k=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1221,7 +1257,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "이차방정식",
@@ -1231,7 +1267,7 @@ window.questionBank = [
       "실생활·도형조건"
     ],
     "wide": true,
-    "content": "[서술형 1] 다음 직사각형 $\\mathrm{ABCD}$에서 점 $\\mathrm{P}$는 점 $\\mathrm{A}$를 출발하여 변 $\\mathrm{AB}$를 따라 점 $\\mathrm{B}$까지 매초 $2\\text{ cm}$의 속력으로 이동하고, 점 $\\mathrm{Q}$는 점 $\\mathrm{B}$를 출발하여 변 $\\mathrm{BC}$를 따라 점 $\\mathrm{C}$까지 매초 $3\\text{ cm}$의 속력으로 이동한다. 두 점 $\\mathrm{P, Q}$가 동시에 출발할 때, $\\triangle\\mathrm{PBQ}$의 넓이가 $63\\text{ cm}^2$가 되는 것은 몇 초 후인지 구하시오. (7점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/s01.png\" alt=\"서술형 1번 그림\" style=\"max-width: 400px;\"></p><br><table style=\"border: 1px solid #000; width: 100%; border-collapse: collapse; text-align: center;\"><tr style=\"background: #f0f0f0;\"><th style=\"border: 1px solid #000; padding: 5px;\">채점기준</th><th style=\"border: 1px solid #000; padding: 5px;\">배점</th></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">$x$초 후의 $\\overline{\\mathrm{PB}}, \\overline{\\mathrm{BQ}}$의 길이를 적으면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">문제 뜻에 맞는 이차방정식을 세우면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">이차방정식을 옳게 풀면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">문제의 뜻에 맞는 $x$값을 구하면</td><td style=\"border: 1px solid #000; padding: 5px;\">1점</td></tr></table>",
+    "content": "[서술형 1] 다음 직사각형 $\\mathrm{ABCD}$에서 점 $\\mathrm{P}$는 점 $\\mathrm{A}$를 출발하여 변 $\\mathrm{AB}$를 따라 점 $\\mathrm{B}$까지 매초 $2\\text{ cm}$의 속력으로 이동하고, 점 $\\mathrm{Q}$는 점 $\\mathrm{B}$를 출발하여 변 $\\mathrm{BC}$를 따라 점 $\\mathrm{C}$까지 매초 $3\\text{ cm}$의 속력으로 이동한다. 두 점 $\\mathrm{P, Q}$가 동시에 출발할 때, $\\triangle\\mathrm{PBQ}$의 넓이가 $63\\text{ cm}^2$가 되는 것은 몇 초 후인지 구하시오. (7점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q22-problem-v2.svg\" alt=\"서술형 1번 그림\" style=\"max-width: 400px;\"></p><br><table style=\"border: 1px solid #000; width: 100%; border-collapse: collapse; text-align: center;\"><tr style=\"background: #f0f0f0;\"><th style=\"border: 1px solid #000; padding: 5px;\">채점기준</th><th style=\"border: 1px solid #000; padding: 5px;\">배점</th></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">$x$초 후의 $\\overline{\\mathrm{PB}}, \\overline{\\mathrm{BQ}}$의 길이를 적으면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">문제 뜻에 맞는 이차방정식을 세우면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">이차방정식을 옳게 풀면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">문제의 뜻에 맞는 $x$값을 구하면</td><td style=\"border: 1px solid #000; padding: 5px;\">1점</td></tr></table>",
     "choices": [],
     "answer": "서술형: 3초 또는 7초",
     "solution": "그림에서 가로 $\\overline{AD}=\\overline{BC}=30\\text{ cm}$이고 세로 $\\overline{AB}=\\overline{DC}=20\\text{ cm}$이다. $t$초 후 $\\overline{PB}=20-2t$, $\\overline{BQ}=3t$이며 두 길이는 서로 수직인 삼각형 $PBQ$의 밑변과 높이다.<br>넓이가 $63\\text{ cm}^2$이므로 $\\frac12(20-2t)(3t)=63$이다. 정리하면 $30t-3t^2=63$, 즉 $t^2-10t+21=0$이고 $(t-3)(t-7)=0$이다.<br>$P$가 $B$에 도착하는 시간은 $20\\div2=10$초이고 $Q$가 $C$에 도착하는 시간도 $30\\div3=10$초이므로 $3$초와 $7$초는 모두 이동 시간 범위에 들어간다. 따라서 답은 $3$초 또는 $7$초이다.",
@@ -1261,7 +1297,11 @@ window.questionBank = [
       "subConcept": "운동 문제",
       "conditionsUsed": "가로 AD=BC=30cm, 세로 AB=DC=20cm, P는 AB에서 2cm/s, Q는 BC에서 3cm/s로 이동, 삼각형 PBQ의 넓이 63cm².",
       "integrationPatternExplanation": "분류한 핵심 개념과 문항에 명시된 추가 조건을 순차적으로 결합; machine cross/condition key는 활성 근거가 없어 미결속."
-    }
+    },
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 주황 삼각형의 세로변 PB를 20−2t, 가로변 BQ를 3t로 표시했다. 두 변은 B에서 서로 수직이다.",
+    "solutionImageCaption": "넓이 조건은 (20−2t)(3t)/2=63이다. 두 근이 모두 이동 시간 범위에 들어가므로 3초 또는 7초이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1312,7 +1352,11 @@ window.questionBank = [
       "subConcept": "평행이동",
       "conditionsUsed": "y=−(x−2)²를 x방향 a, y방향 4 평행이동 후 x축 대칭, (0,5),(4,b) 통과, a>0.",
       "integrationPatternExplanation": "분류한 핵심 개념과 문항에 명시된 추가 조건을 순차적으로 결합; machine cross/condition key는 활성 근거가 없어 미결속."
-    }
+    },
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 처음 곡선은 파랑이다. 평행이동한 초록 곡선과 대칭이동한 주황 곡선의 꼭짓점은 같은 x좌표에 있다. 주어진 (0,5)는 주황 곡선 위에 있다.",
+    "solutionImageCaption": "대칭이동한 식은 y=(x−a−2)²−4이다. (0,5)와 a>0에서 a=1이고 x=4에서 b=−3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1325,7 +1369,7 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "이차함수",
@@ -1335,7 +1379,7 @@ window.questionBank = [
       "실생활·도형조건"
     ],
     "wide": true,
-    "content": "[서술형 3] 다음 그림은 이차함수 $y = \\dfrac{1}{2}x^2 + ax$의 그래프이다. 이 그래프의 꼭짓점을 $\\mathrm{P}$라 하고, 포물선이 $x$축과 만나는 두 점을 각각 $\\mathrm{A, O}$라고 할 때, 점 $\\mathrm{A}$의 좌표는 $(6, 0)$이다. 아래 물음에 답하시오. (단, $\\mathrm{O}$는 원점) (7점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/s03.png\" alt=\"서술형 3번 그림\" style=\"max-width: 300px;\"></p><br>(1) 수 $a$의 값을 구하시오.<br>(2) 삼각형 $\\mathrm{OPA}$의 넓이를 구하시오.<br><br><table style=\"border: 1px solid #000; width: 100%; border-collapse: collapse; text-align: center;\"><tr style=\"background: #f0f0f0;\"><th style=\"border: 1px solid #000; padding: 5px;\">채점 기준</th><th style=\"border: 1px solid #000; padding: 5px;\">배점</th></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">(1) $a$의 값을 구한 경우 (구하는 과정 필요)</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">식을 변형하여 꼭짓점 $\\mathrm{P}$의 좌표를 구하면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">(2) 삼각형 $\\mathrm{OPA}$의 넓이를 구하는 식을 바르게 적으면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">삼각형 $\\mathrm{OPA}$의 넓이를 구한 경우</td><td style=\"border: 1px solid #000; padding: 5px;\">1점</td></tr></table>",
+    "content": "[서술형 3] 다음 그림은 이차함수 $y = \\dfrac{1}{2}x^2 + ax$의 그래프이다. 이 그래프의 꼭짓점을 $\\mathrm{P}$라 하고, 포물선이 $x$축과 만나는 두 점을 각각 $\\mathrm{A, O}$라고 할 때, 점 $\\mathrm{A}$의 좌표는 $(6, 0)$이다. 아래 물음에 답하시오. (단, $\\mathrm{O}$는 원점) (7점)<br><br><p><img src=\"assets/images/21_풍덕중_1학기_기말_중3_수학/q24-problem-v2.svg\" alt=\"서술형 3번 그림\" style=\"max-width: 440px;\"></p><br>(1) 수 $a$의 값을 구하시오.<br>(2) 삼각형 $\\mathrm{OPA}$의 넓이를 구하시오.<br><br><table style=\"border: 1px solid #000; width: 100%; border-collapse: collapse; text-align: center;\"><tr style=\"background: #f0f0f0;\"><th style=\"border: 1px solid #000; padding: 5px;\">채점 기준</th><th style=\"border: 1px solid #000; padding: 5px;\">배점</th></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">(1) $a$의 값을 구한 경우 (구하는 과정 필요)</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">식을 변형하여 꼭짓점 $\\mathrm{P}$의 좌표를 구하면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">(2) 삼각형 $\\mathrm{OPA}$의 넓이를 구하는 식을 바르게 적으면</td><td style=\"border: 1px solid #000; padding: 5px;\">2점</td></tr><tr><td style=\"border: 1px solid #000; text-align: left; padding: 5px;\">삼각형 $\\mathrm{OPA}$의 넓이를 구한 경우</td><td style=\"border: 1px solid #000; padding: 5px;\">1점</td></tr></table>",
     "choices": [],
     "answer": "서술형: (1) a=−3  (2) 삼각형 OPA의 넓이=27/2 cm²",
     "solution": "(1) $y=\\frac12x^2+ax=x(\\frac12x+a)$이다. $x$절편은 $0$과 $-2a$이다. 점 $A=(6,0)$이므로 $-2a=6$, 따라서 $a=-3$이다. (2) 식에 대입하면 $y=\\frac12x^2-3x=\\frac12(x-3)^2-\\frac92$이므로 꼭짓점은 $P=(3,-\\frac92)$이다. 밑변 $OA=6$ cm이고 높이는 꼭짓점에서 $x$축까지의 거리 $\\frac{9}{2}$ cm이다. 따라서 삼각형 $OPA$의 넓이는 $\\frac12\\cdot6\\cdot\\frac92=\\frac{27}{2}$ cm$^2$이다.",
@@ -1365,6 +1409,10 @@ window.questionBank = [
       "subConcept": "계수 결정",
       "conditionsUsed": "y=x²/2+ax, x절편 O=(0,0), A=(6,0), P는 꼭짓점.",
       "integrationPatternExplanation": "분류한 핵심 개념과 문항에 명시된 추가 조건을 순차적으로 결합; machine cross/condition key는 활성 근거가 없어 미결속."
-    }
+    },
+    "solutionImage": "assets/images/21_풍덕중_1학기_기말_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 주황 삼각형의 밑변은 x축 위의 OA이다. P에서 x축을 향해 높이를 점선으로 표시했다.",
+    "solutionImageCaption": "(1) A=(6,0)을 대입하면 a=−3이다. (2) 꼭짓점의 높이는 9/2여서 삼각형 넓이는 6×(9/2)÷2=27/2 cm²이다.",
+    "solutionImageSize": "full"
   }
 ];

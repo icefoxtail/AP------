@@ -168,7 +168,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_기출c/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 파란 곡선은 y=2x²/7이다. 같은 x좌표에서 점선의 위아래 점은 x축 대칭이다.",
+    "solutionImageCaption": "x축 대칭을 하면 x좌표는 같고 y좌표의 부호가 바뀐다. 대칭한 그래프는 y=−2x²/7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -210,7 +214,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_기출c/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선의 꼭짓점 O와 포물선 위 왼쪽의 주황 점 (−4,12)를 표시했다.",
+    "solutionImageCaption": "12=a×(−4)²이므로 a=12/16=3/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -254,9 +262,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_수학/q06-solution.svg",
-    "solutionImageAlt": "위로 볼록한 포물선의 폭 비교. ①의 이차항 계수는 −1/2, ②는 −1, ⑤는 −1/3이다. 계수의 절댓값이 가장 작은 ⑤의 폭이 가장 넓다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_기출c/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 세 포물선을 같은 꼭짓점에 맞췄다. 색이 다른 곡선의 숫자는 이차항 계수의 절댓값이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "아래로 열리는 세 그래프의 계수 절댓값은 1/2, 1, 1/3이다. 가장 작은 1/3이 가장 넓으므로 y=−(x−2)²/3+5이다."
   },
   {
     "id": 7,
@@ -511,9 +520,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_수학/q12-solution.svg",
-    "solutionImageAlt": "12번 해설의 이차함수 그래프 또는 도형과 필수 수학 관계",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_기출c/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선은 아래로 열리고, 꼭짓점 V를 지나는 점선에서 양쪽 가지가 거울처럼 대응한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "포물선은 아래로 열리고 꼭짓점은 (1,0)이다. 꼭짓점을 지나는 대칭축이 x=1이므로 옳은 것은 ②이다."
   },
   {
     "id": 13,
@@ -556,9 +566,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_수학/q13-solution.svg",
-    "solutionImageAlt": "13번 해설의 이차함수 그래프 또는 도형과 필수 수학 관계",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_기출c/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 초록 P는 (2,5)이다. x좌표를 x축으로 이어, 같은 파란 포물선 위에서 x=−4의 점 Q를 찾아 표시했다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "꼭짓점이 원점이므로 y=ax²이다. (2,5)에서 a=5/4이다. x=−4를 대입하면 y=20이므로 ④이다."
   },
   {
     "id": 14,
@@ -601,9 +612,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_수학/q14-solution.svg",
-    "solutionImageAlt": "14번 해설의 이차함수 그래프 또는 도형과 필수 수학 관계",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_기출c/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선은 위로 열리며 O를 지난다. 아래로 열린 주황 포물선과 꼭짓점 V가 같다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "파란 그래프는 꼭짓점이 (−2,−1)이고 y절편은 0이다. 원점을 실제로 지나므로 옳지 않은 설명은 ⑤이다."
   },
   {
     "id": 15,
@@ -664,7 +676,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "정오각형",
@@ -672,7 +684,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 한 변의 길이가 $x$인 정오각형의 한 대각선의 길이가 1일 때, $x$의 값은? (5점)<br><br><img src=\"assets/images/21_연향중_1학기_기말_중3_수학/q16.png\">",
+    "content": "다음 그림과 같이 한 변의 길이가 $x$인 정오각형의 한 대각선의 길이가 1일 때, $x$의 값은? (5점)<br><br><img src=\"assets/images/21_연향중_1학기_기말_중3_기출c/q16-problem-v2.svg\">",
     "choices": [
       "$\\frac{-1+\\sqrt{5}}{2}$",
       "$\\frac{-1+\\sqrt{5}}{4}$",
@@ -690,9 +702,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_수학/q16-solution.svg",
-    "solutionImageAlt": "정오각형의 교점 F와 △ACE, △AFB의 닮음 및 변과 대각선의 길이 관계",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_기출c/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: BC=1이며 AB, AC, FC에는 같은 파란 눈금이 있다. 파랑과 주황의 삼각형이 닮았다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "FC=AC=x이므로 BF=1−x이다. 닮음에서 x:1=(1−x):x이므로 x²+x−1=0이며 길이의 양의 해는 (√5−1)/2이다. 정답은 ①이다."
   },
   {
     "id": 17,
@@ -736,9 +749,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_수학/q17-solution.svg",
-    "solutionImageAlt": "17번 해설의 이차함수 그래프 또는 도형과 필수 수학 관계",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_기출c/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌우 x절편과 주어진 y절편 (0,−6)을 각각 표시했다. 두 x절편 사이의 정가운데에서 꼭짓점 V까지 점선을 내렸다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "식은 a(x+1)(x−3)이다. (0,−6)을 대입하면 a=2이다. 대칭축은 x=1, 그때 y=−8이므로 꼭짓점은 (1,−8)이다."
   },
   {
     "id": 18,
@@ -757,14 +771,14 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "넓이",
       "그래프"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 이차함수 $y=2x^2$의 그래프 위에 점 $\\mathrm{A}$가 있다. 점 $\\mathrm{B}$의 좌표가 $(-5, 0)$이고 $\\triangle\\mathrm{ABO}$의 넓이가 20일 때, 점 $\\mathrm{A}$의 좌표는? (단, 점 $\\mathrm{A}$는 제1사분면 위의 점이다.) (5점)<br><br><img src=\"assets/images/21_연향중_1학기_기말_중3_수학/q18.png\">",
+    "content": "다음 그림과 같이 이차함수 $y=2x^2$의 그래프 위에 점 $\\mathrm{A}$가 있다. 점 $\\mathrm{B}$의 좌표가 $(-5, 0)$이고 $\\triangle\\mathrm{ABO}$의 넓이가 20일 때, 점 $\\mathrm{A}$의 좌표는? (단, 점 $\\mathrm{A}$는 제1사분면 위의 점이다.) (5점)<br><br><img src=\"assets/images/21_연향중_1학기_기말_중3_기출c/q18-problem-v2.svg\">",
     "choices": [
       "$\\mathrm{A}(1, 2)$",
       "$\\mathrm{A}(1, 8)$",
@@ -782,9 +796,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_수학/q18-solution.svg",
-    "solutionImageAlt": "18번 해설의 이차함수 그래프 또는 도형과 필수 수학 관계",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_기출c/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선과 주황 삼각형에 A에서 밑변 쪽으로 내린 높이를 점선으로 표시했다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "BO=5이고 넓이가 20이므로 높이는 8이다. 8=2x²에서 제1사분면인 x=2를 택해 A=(2,8)이다."
   },
   {
     "id": 19,
@@ -875,14 +890,14 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "그래프",
       "축"
     ],
     "wide": false,
-    "content": "서술형 3. 다음 그림은 이차함수 $y=ax^2+q$의 그래프이다. 이때, 상수 $a, q$에 대하여 $a-q$의 값을 구하시오. (5점)<br><br><img src=\"assets/images/21_연향중_1학기_기말_중3_수학/s03.png\">",
+    "content": "서술형 3. 다음 그림은 이차함수 $y=ax^2+q$의 그래프이다. 이때, 상수 $a, q$에 대하여 $a-q$의 값을 구하시오. (5점)<br><br><img src=\"assets/images/21_연향중_1학기_기말_중3_기출c/q21-problem-v2.svg\">",
     "choices": [],
     "answer": "-5",
     "solution": "[키포인트] 그래프의 $y$절편과 $x$절편을 함수식에 대입한다.\n그림에서 꼭짓점은 $(0,4)$이고 $x$축과 $(-2,0)$, $(2,0)$에서 만난다.\n$y=ax^2+q$에 $(0,4)$를 대입하면 $q=4$이다.\n또 $(2,0)$을 대입하면 $0=4a+4$이므로 $a=-1$이다.\n따라서 $a-q=-1-4=-5$이다.",
@@ -894,9 +909,6 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_수학/q21-solution.svg",
-    "solutionImageAlt": "21번 해설의 이차함수 그래프 또는 도형과 필수 수학 관계",
-    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -934,8 +946,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_REVIEW",
-    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_수학/q22-solution.svg",
-    "solutionImageAlt": "22번 해설의 이차함수 그래프 또는 도형과 필수 수학 관계",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/21_연향중_1학기_기말_중3_기출c/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 파란 포물선 위의 꼭짓점 A와 x절편 B, C를 이었다. 주황 삼각형에서 A의 높이는 점선이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "꼭짓점은 (3,16), 두 근은 −1과 7이어서 밑변은 8이다. 넓이는 8×16÷2=64이다."
   }
 ];
