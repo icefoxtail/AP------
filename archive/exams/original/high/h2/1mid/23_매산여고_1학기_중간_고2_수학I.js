@@ -514,7 +514,11 @@ window.questionBank = [
       "l4": "증가·감소"
     },
     "primaryMethod": "최솟값에서 접하는 한 경우와 그보다 큰 수평선의 좌우 두 교점을 나눈다.",
-    "projectionStatus": "DIRECT_BINDING_GAP"
+    "projectionStatus": "DIRECT_BINDING_GAP",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 지수 가지 y=2^(1−x)+4 (x≤1), y=2^(x−1)+4 (x>1)가 (1,5)에서 만난다. k=4는 그래프 아래, k=5는 최소점에서 만나며, 표본선 k=8은 두 점에서 만난다.",
+    "solutionImageCaption": "두 정확한 지수 가지가 x=1에서 최솟값 5로 만난다. k=4,5,8 표본선에서는 교점 수가 각각 0,1,2개다. 따라서 정답은 k>5 (⑤)이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 10,
@@ -747,7 +751,11 @@ window.questionBank = [
       "l4": "삼각함수 관계"
     },
     "primaryMethod": "A의 구간·고립각과 B의 구간을 합친 뒤 끝점과 단일 원소를 더한다.",
-    "projectionStatus": "RPM_ONLY"
+    "projectionStatus": "RPM_ONLY",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: u=θ/π로 정규화한 수직선이다. 첫째 행 “연속 구간”의 닫힌 구간은 [0,5/6]이다. 둘째 행 “끝점·고립”은 구간 끝값 β/π=5/6과 합집합에 따로 포함되는 고립점 γ/π=5/4를 표시한다. α/π=0은 첫째 행 왼쪽 닫힌 끝점이다. 두 행의 내용을 합쳐 A∪B를 읽는다.",
+    "solutionImageCaption": "u=θ/π 축에서 A∪B는 닫힌 구간 [0,5/6]과 고립점 5/4로 이루어진다. α/π=0, β/π=5/6, γ/π=5/4이므로 α+β+γ=25π/12이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 14,
@@ -1159,7 +1167,11 @@ window.questionBank = [
       "l4": "최대·최소"
     },
     "primaryMethod": "u=cos t의 범위 [-1,1]에서 완전제곱식의 양 끝 범위를 구해 최댓값으로 k, 최솟값 m을 얻는다.",
-    "projectionStatus": "DIRECT_BINDING_GAP"
+    "projectionStatus": "DIRECT_BINDING_GAP",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: u의 닫힌 구간 [−1,1], 꼭짓점 u=−1/2와 두 끝점이 표시되어 있다. 꼭짓점에서 왼쪽 끝까지는 1/2, 오른쪽 끝까지는 3/2로 오른쪽 끝이 더 멀다.",
+    "solutionImageCaption": "t=x−π/4, u=cos t∈[−1,1]로 두면 f=k+5/4−(u+1/2)^2이다. 꼭짓점은 구간 안에 있고, 더 먼 오른쪽 끝 u=1에서 최솟값이 생긴다. 최댓값 4를 이용하면 최솟값은 7/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 21,

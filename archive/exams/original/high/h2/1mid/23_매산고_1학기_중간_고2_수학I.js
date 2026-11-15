@@ -768,7 +768,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_매산고_1학기_중간_고2_수학I/q18-solution.svg"
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고2_수학I/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위에 A, B, C와 BC의 중점 M을 표시한다. AB와 AC는 같은 길이 4이고 BM과 MC는 같은 길이이며 AM=2이고 BC에 수직이다. C는 y=log_a x 그래프 위에 있다.",
+    "solutionImageCaption": "AB=AC=4이고 M은 BC의 중점이다. AM=2 및 AM⊥BC에서 BM=2√3을 얻어 C=(1+2√3,6)이다. C가 y=log_a x 위에 있고 a>1이므로 a^6=1+2√3, 따라서 a^12=13+4√3이다. 정답은 13+4√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 19,
