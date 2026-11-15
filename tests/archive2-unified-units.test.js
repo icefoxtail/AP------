@@ -19,6 +19,19 @@ const plain = value => JSON.parse(JSON.stringify(value));
 let catalogPromise;
 const catalog = () => (catalogPromise ||= productionCatalog().then(result => result.data));
 
+// Run the actual unit-page join. The live page classifies its raw index only after
+// joining the current catalog's RPM parent; the unjoined source index is not its
+// production classification input.
+function joinedUnitIndex(data, index, metadata = { records: [] }) {
+  const source = read('unit-past-exams.js');
+  const end = source.indexOf('  function loadQuestionFile(');
+  assert.ok(end > 0, 'unit-page metadata join must remain available');
+  const context = { window: { UnitPastExamsCore: UnitCore, Archive2Core: core,
+    ARCHIVE2_FINAL_CATALOG: data, ARCHIVE_QUESTION_METADATA: metadata } };
+  vm.runInNewContext(source.slice(0, end) + '\n globalThis.joinUnitIndex = joinApprovedMetadata;\n})();', context);
+  return context.joinUnitIndex(index);
+}
+
 function harness(data) {
   const events = new Map(), nodes = new Map(), storage = new Map();
   const node = id => {
@@ -134,7 +147,7 @@ test('source hold annotations are not usage gates; the strict approval metric is
   assert.equal(core.generalUseEligibility({ ...base, sourceFingerprint: '' }).ok, false);
 });
 
-test('unified classification agrees with every 단원별 기출 classification (shared maps, legacy fields)', async () => {
+test('unified classification agrees with every production 단원별 기출 classification (current catalog join)', async () => {
   const data = await catalog();
   const context = { window: {} };
   context.window = context;
@@ -151,7 +164,9 @@ test('unified classification agrees with every 단원별 기출 classification (
     entryByIdentity.set(identity, entry);
   }
   let compared = 0;
-  for (const row of index) {
+  const joined = joinedUnitIndex(data, index, JSON.parse(read('data/question_metadata.json')));
+  assert.equal(joined.length, index.length, 'the production join must preserve every index row');
+  for (const row of joined) {
     const profileId = profileByGrade[row.grade || row.sourceGrade];
     if (!profileId) continue;
     const result = UnitCore.classifyRecord(row, profileId);
@@ -163,6 +178,34 @@ test('unified classification agrees with every 단원별 기출 classification (
     assert.equal(entry.unitKey, result.unitKey, `${row.sourceFile}#${row.id}`);
   }
   assert.ok(compared > 15000, `compared ${compared} classified question-index rows`);
+});
+
+test('unit-page join uses the exact current catalog parent without rewriting a stale source unit', () => {
+  const file = 'original/middle/m1/2mid/synthetic-parent-join.js';
+  const row = { sourceFile: file, sourceOrdinal: 13, id: 13, grade: '중1', examYear: 2025,
+    standardUnitKey: 'M1-05', standardUnit: '기본 도형', subUnitKey: 'M1-05-BASIC_FIGURE' };
+  const record = { sourceFile: file, sourceOrdinal: 13, sourceQuestionNo: '13', sourceGrade: '중1',
+    questionUid: 'qid_v1_' + '1'.repeat(64), curriculumKey: '2022', courseKey: 'M1-2',
+    L1: '입체도형', L2: '다면체와 회전체', legacyStandardUnitKey: row.standardUnitKey,
+    legacyStandardUnit: row.standardUnit, identityStatus: 'VERIFIED', sourceIntegrityStatus: 'VERIFIED', sourceFingerprint: 'a'.repeat(64) };
+  const before = JSON.stringify({ row, record }), data = { records: [record] };
+  const expected = UnitCore.resolveRpmParent(record, 'm1');
+  assert.equal(expected.status, 'EXACT');
+  const legacy = UnitCore.classifyRecord(row, 'm1');
+  assert.notEqual(legacy.unitKey, expected.parent.unitKey, 'the fixture must exercise a real stale/current parent difference');
+  const joined = joinedUnitIndex(data, [row])[0];
+  assert.equal(UnitCore.classifyRecord(joined, 'm1').unitKey, expected.parent.unitKey);
+  assert.equal(Unified.buildIndex([record]).byRecord.get(record).unitKey, expected.parent.unitKey);
+  assert.equal(joined.standardUnitKey, row.standardUnitKey, 'display joining must not rewrite the source key');
+  assert.equal(JSON.stringify({ row, record }), before, 'source and canonical inputs stay unchanged');
+  const otherOrdinal = { ...record, sourceOrdinal: 14, questionUid: 'qid_v1_' + '2'.repeat(64) };
+  assert.equal(UnitCore.classifyRecord(joinedUnitIndex({ records: [otherOrdinal] }, [row])[0], 'm1').unitKey,
+    legacy.unitKey, 'another UID/ordinal cannot lend its canonical parent');
+  const wrongParent = { ...record, L1: '없는 대단원', L2: '없는 중단원' };
+  const wrong = joinedUnitIndex({ records: [wrongParent] }, [row])[0];
+  assert.notEqual(wrong.rpmParentResolution.status, 'EXACT');
+  assert.notEqual(UnitCore.classifyRecord(wrong, 'm1').unitKey, expected.parent.unitKey,
+    'an invalid canonical parent cannot be treated as the valid one');
 });
 
 test('every catalog record with a grade is placed; the only unplaced ones lack a registered grade', async () => {
