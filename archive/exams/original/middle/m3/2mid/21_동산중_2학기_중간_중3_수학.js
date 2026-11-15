@@ -84,7 +84,11 @@ window.questionBank = [
       "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "RPM semantic classification is evidence-backed; exact M3 problem-type/template binding is missing in the active crosswalk and remains pending."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 포물선과 y축 방향으로 이동한 포물선을 겹쳐 그리고, 주어진 점 P와 같은 x좌표의 원래 그래프 점 Q를 세로 선분으로 연결한다.",
+    "solutionImageCaption": "x=−2에서 원래 그래프의 y값은 −8이므로 이동량 q=−5−(−8)=3이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -170,7 +174,11 @@ window.questionBank = [
       "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "RPM semantic classification is evidence-backed; exact M3 problem-type/template binding is missing in the active crosswalk and remains pending."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 포물선과 y축 방향으로 이동한 포물선을 함께 나타낸다. 같은 x좌표의 점 Q와 P를 잇고 두 꼭짓점 O와 V를 구별한다.",
+    "solutionImageCaption": "a=2−6=−4이고 이동한 꼭짓점은 (0,−4)이므로 a+b+c=−8이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -342,7 +350,11 @@ window.questionBank = [
       "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "RPM semantic classification is evidence-backed; exact M3 problem-type/template binding is missing in the active crosswalk and remains pending."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 모양으로 아래로 열린 두 포물선의 꼭짓점 V와 W를 표시해 원래 그래프와 이동 후 그래프를 비교한다.",
+    "solutionImageCaption": "a=−2, p=−5이므로 a+p=−7이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -691,7 +703,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 제3사분면을 옅게 칠하고, 원점에 닿으며 꼭짓점이 (3,−4)인 위로 열린 경계 포물선을 그린다.",
+    "solutionImageCaption": "x<0에서 그래프가 제3사분면에 들어가지 않으려면 y(0)=9a−4≥0이어야 하므로 a≥4/9이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -869,7 +885,11 @@ window.questionBank = [
       "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "RPM semantic classification is evidence-backed; exact M3 problem-type/template binding is missing in the active crosswalk and remains pending."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 아래로 열린 포물선과 오른쪽 위로 옮긴 포물선을 함께 나타낸다. 이동한 그래프의 꼭짓점, x=3인 축, y절편을 표시한다.",
+    "solutionImageCaption": "완전제곱식은 −2(x−3)²+9이므로 원래 그래프에서 오른쪽 3, 위쪽 9만큼 이동한다. 왼쪽 3만큼 이동했다는 설명이 틀렸으므로 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1041,7 +1061,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색과 주황색 포물선이 공통 꼭짓점 V(−2,6)을 갖고, 서로 다른 폭으로 아래로 열린다.",
+    "solutionImageCaption": "꼭짓점에서 p=−2, q=4이므로 p+q=2이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1133,7 +1157,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=12, AC=5, BC=13인 직각삼각형에 BC와 수직인 DE를 그리고, ∠BDE=x와 ∠ACB를 같은 색으로 표시한다. D/E 위치는 대표 배치이다.",
+    "solutionImageCaption": "13cos x=13cos C=13·(AC/BC)=13·5/13=5이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1221,7 +1249,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각이등변삼각형에서 D는 AC의 중점이다. 두 주황 변 AD와 DC에 같은 눈금이 있고 직각삼각형 BCD의 각 x가 표시된다.",
+    "solutionImageCaption": "CD=AC/2=BC/2이므로 tan x=CD/BC=1/2이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1398,7 +1430,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름이 1인 사분원과 그 안의 점 P, 반지름 OA에 내린 수선 PH를 나타낸다. 각 POH는 x이며 직각삼각형의 변 OP, PH, OH를 구별한다.",
+    "solutionImageCaption": "OP=1인 직각삼각형에서 sin x=PH/OP=PH, cos x=OH/OP=OH, tan x=PH/OH이다. sin x=OP라는 설명이 틀렸으므로 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1406,7 +1442,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "AUDITED_REPAIR",
     "score": 3,
-    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)<br><table border=\"1\"><tr><th>각도</th><th>sin</th><th>cos</th><th>tan</th></tr><tr><td>68°</td><td>0.9272</td><td>0.3746</td><td>2.4751</td></tr><tr><td>69°</td><td>0.9336</td><td>0.3584</td><td>2.6051</td></tr><tr><td>70°</td><td>0.9397</td><td>0.3420</td><td>2.7475</td></tr><tr><td>71°</td><td>0.9455</td><td>0.3256</td><td>2.9042</td></tr><tr><td>72°</td><td>0.9511</td><td>0.3090</td><td>3.0777</td></tr></table><br><br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q17.svg\" alt=\"C가 직각이고 AB가 빗변인 삼각형\" />",
+    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)<br><table border=\"1\"><tr><th>각도</th><th>sin</th><th>cos</th><th>tan</th></tr><tr><td>68°</td><td>0.9272</td><td>0.3746</td><td>2.4751</td></tr><tr><td>69°</td><td>0.9336</td><td>0.3584</td><td>2.6051</td></tr><tr><td>70°</td><td>0.9397</td><td>0.3420</td><td>2.7475</td></tr><tr><td>71°</td><td>0.9455</td><td>0.3256</td><td>2.9042</td></tr><tr><td>72°</td><td>0.9511</td><td>0.3090</td><td>3.0777</td></tr></table><br><br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q17-problem-v2.svg\" alt=\"C가 직각이고 AB가 빗변인 삼각형\" />",
     "choices": [
       "$93.97$",
       "$9.397$",
@@ -1423,7 +1459,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "삼각비와 길이",
       "각을 이용한 길이"
@@ -1490,7 +1526,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: C에서 직각인 삼각형 ABC에서 빗변 AB=100, ∠B=70°이며 AC 길이는 숫자로 표시하지 않았다.",
+    "solutionImageCaption": "sin70°=0.9397이므로 AC=100·0.9397=93.97이다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1578,7 +1618,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: C가 직각인 삼각형에서 각 B의 맞은편 변 AC=12cm와 이웃한 변 BC=8cm를 서로 다른 색으로 표시하고, 빗변 AB에는 길이를 쓰지 않는다.",
+    "solutionImageCaption": "tan B=AC/BC=3/2이므로 AC=12cm이다. 따라서 AB=√(12²+8²)=4√13cm이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1669,7 +1713,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 D는 BC 위에 있다. BD=8cm, ∠B=30°, ∠ADB=120°를 표시하고, AD=BD 표식과 직각삼각형 ACD의 60°를 구별한다.",
+    "solutionImageCaption": "△ABD에서 AD=BD=8cm이고 ∠ADC=60°이다. 따라서 AC=AD·sin60°=8·√3/2=4√3cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1757,7 +1805,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "The active taxonomy cleanly classifies the trig-ratio step, but no single exact PT/TPL represents the additional angle-bisector theorem chain."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: C가 직각인 삼각형에서 B각 30도, AB=6cm, AC=3cm를 표시한다. AD는 A각의 이등분선이고 BC의 세 같은 눈금은 BD:DC=2:1을 나타낸다.",
+    "solutionImageCaption": "AC=6sin30°=3cm이다. 각의 이등분선 정리로 BD:DC=AB:AC=6:3=2:1이므로 BD=2/3·3√3=2√3cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1848,7 +1900,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_FAMILY_ACTIVE; selected family template fits the decisive operation"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 변이 각각 4√3인 마름모에서 끼인각 60°와 수직 높이 DH=6을 표시했다.",
+    "solutionImageCaption": "넓이는 밑변×높이=4√3×6=24√3이다. 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1940,7 +1996,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_FAMILY_ACTIVE; selected family template fits the decisive operation"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD에서 E는 AD의 중점, F는 C 가까운 CD 삼등분점이다. 삼각형 BEF와 나머지 세 직각삼각형을 색으로 나누었다.",
+    "solutionImageCaption": "삼각형 BEF의 넓이와 두 변 길이로 sin x를 구하면 √2/2이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -2022,7 +2082,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 파란 포물선의 양쪽 가지, y절편 A, 꼭짓점 B, 수선의 발 C와 원점 O를 표시한다. OABC는 연한 주황 사다리꼴이다.",
+    "solutionImageCaption": "A(0, 4), B(4, 8), C(4, 0)이므로 OA=4, BC=8이고 두 평행변 사이 거리는 4이다. 넓이는 (4+8)÷2×4=24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -2108,7 +2172,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: C에서 직각인 삼각형 ABC에서 D는 BC 위에 있다. 삼각형 ACD를 연하게 칠하고 AB=6, AD=4, CD=2를 표시했다.",
+    "solutionImageCaption": "AC=2√3, BC=2√6이므로 cos B=BC/AB=√6/3이다. 답은 √6/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -2190,6 +2258,10 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=30, AC=40, ∠A=60°인 삼각형에서 C에서 AB로 내린 높이 CH를 표시한다. AH=20, BH=10, CH=20√3이며 두 직각삼각형을 색으로 구별한다.",
+    "solutionImageCaption": "BH=10, CH=20√3이므로 BC=√(10²+(20√3)²)=10√13이다. 정답은 10√13이다.",
+    "solutionImageSize": "full"
   }
 ];

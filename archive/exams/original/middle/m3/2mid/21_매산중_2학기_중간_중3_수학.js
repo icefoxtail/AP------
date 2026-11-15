@@ -38,10 +38,16 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{AC}}=3$, $\\overline{\\mathrm{BC}}=4$, $\\overline{\\mathrm{AB}}=5$일 때, 다음 중 옳은 것은?"
+      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{AC}}=3$, $\\overline{\\mathrm{BC}}=4$, $\\overline{\\mathrm{AB}}=5$일 때, 다음 중 옳은 것은?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q1-solution.svg",
+      "solutionImageAlt": "해설 그림: C가 직각이다. 파란 BC는 A의 맞은편이고 초록 AC는 B의 맞은편이다. AB는 공통 빗변이다.",
+      "solutionImageCaption": "각 B에서 BC는 이웃한 변, AB는 빗변이므로 cos B=4/5이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 2,
+      "image": "assets/images/21_매산중_2학기_중간_중3_수학/q2-problem-v2.svg",
+      "imageSize": "tall",
       "score": 4.0,
       "question": "다음 그림에서 $\\angle \\mathrm{C} = 90^\\circ$이고 $\\sin A = \\frac23$일 때, $\\tan A$의 값은?<br>",
       "choices": [
@@ -76,7 +82,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림에서 $\\angle \\mathrm{C} = 90^\\circ$이고 $\\sin A = \\frac23$일 때, $\\tan A$의 값은?<br>"
+      "content": "다음 그림에서 $\\angle \\mathrm{C} = 90^\\circ$이고 $\\sin A = \\frac23$일 때, $\\tan A$의 값은?<br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q2-solution.svg",
+      "solutionImageAlt": "해설 그림: 대표 삼각형의 변 비는 AB=3k, BC=2k, AC=k√5이다. C는 직각이고, 파란 BC는 A의 맞은편, 초록 AC는 이웃, 주황 AB는 빗변이다.",
+      "solutionImageCaption": "sin A=BC/AB=2k/3k=2/3이다. 피타고라스 정리로 AC=k√5이므로 tan A=2k/(k√5)=2√5/5이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 3,
@@ -193,10 +203,16 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\angle A=30^\\circ$, $\\overline{\\mathrm{AB}}=10\\,\\text{cm}$이다. $x=\\overline{\\mathrm{BC}}$, $y=\\overline{\\mathrm{AC}}$라 할 때, $(x,y)$는?"
+      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\angle A=30^\\circ$, $\\overline{\\mathrm{AB}}=10\\,\\text{cm}$이다. $x=\\overline{\\mathrm{BC}}$, $y=\\overline{\\mathrm{AC}}$라 할 때, $(x,y)$는?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: A의 30도에서 파란 변은 x, 초록 변은 y, 빗변 AB는 10 cm다. C가 직각이다.",
+      "solutionImageCaption": "x=10sin30°=5 cm, y=10cos30°=5√3 cm이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 6,
+      "image": "assets/images/21_매산중_2학기_중간_중3_수학/q6-problem-v2.svg",
+      "imageSize": "tall",
       "score": 4.0,
       "question": "【대체 문항】좌표평면에서 $O=(0,0)$이고 반지름이 $1$인 원의 오른쪽 끝점을 $A=(1,0)$, 위쪽 끝점을 $C=(0,1)$, 왼쪽 끝점을 $D=(-1,0)$이라 하자. 점 $A$를 지나고 $OA$에 수직인 직선과, 양의 $x$축에서 $x^\\circ$ 위로 기울어진 반직선이 만나는 점을 $B$라 한다($0<x<90$). $\\tan x$를 나타내는 선분은?<br><img src=\"assets/replacements/q06_tan_segment.png\" />",
       "choices": [
@@ -232,10 +248,16 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】좌표평면에서 $O=(0,0)$이고 반지름이 $1$인 원의 오른쪽 끝점을 $A=(1,0)$, 위쪽 끝점을 $C=(0,1)$, 왼쪽 끝점을 $D=(-1,0)$이라 하자. 점 $A$를 지나고 $OA$에 수직인 직선과, 양의 $x$축에서 $x^\\circ$ 위로 기울어진 반직선이 만나는 점을 $B$라 한다($0<x<90$). $\\tan x$를 나타내는 선분은?"
+      "content": "【대체 문항】좌표평면에서 $O=(0,0)$이고 반지름이 $1$인 원의 오른쪽 끝점을 $A=(1,0)$, 위쪽 끝점을 $C=(0,1)$, 왼쪽 끝점을 $D=(-1,0)$이라 하자. 점 $A$를 지나고 $OA$에 수직인 직선과, 양의 $x$축에서 $x^\\circ$ 위로 기울어진 반직선이 만나는 점을 $B$라 한다($0<x<90$). $\\tan x$를 나타내는 선분은?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q6-solution.svg",
+      "solutionImageAlt": "해설 그림: 단위원에서 파란 선분 OA는 양의 가로 방향에 있고, 주황 선분 AB는 A에서 원에 접한다. 각 x는 OA와 반직선 OB 사이에 있다.",
+      "solutionImageCaption": "직각삼각형 OAB에서 각 x에 이웃한 변 OA의 길이는 1이다. 따라서 tan x=AB/OA=AB이며, 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 7,
+      "image": "assets/images/21_매산중_2학기_중간_중3_수학/q7-problem-v2.svg",
+      "imageSize": "tall",
       "score": 4.0,
       "question": "다음 그림과 같이 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 6$, $\\overline{\\mathrm{AC}} = 8$이다. 변 $\\mathrm{AC}$ 위의 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$, $\\angle \\mathrm{CDE} = x^\\circ$라고 할 때, $\\cos x^\\circ$의 값은?<br>",
       "choices": [
@@ -271,7 +293,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림과 같이 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 6$, $\\overline{\\mathrm{AC}} = 8$이다. 변 $\\mathrm{AC}$ 위의 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$, $\\angle \\mathrm{CDE} = x^\\circ$라고 할 때, $\\cos x^\\circ$의 값은?<br>"
+      "content": "다음 그림과 같이 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 6$, $\\overline{\\mathrm{AC}} = 8$이다. 변 $\\mathrm{AC}$ 위의 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$, $\\angle \\mathrm{CDE} = x^\\circ$라고 할 때, $\\cos x^\\circ$의 값은?<br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 보라 호는 같은 크기의 B각과 x각이다. 파란 AB·DE와 주황 BC·DC는 닮은 두 삼각형의 대응변이며, 색은 길이가 같다는 뜻이 아니다.",
+      "solutionImageCaption": "BC=√(6²+8²)=10 cm이다. ∠B=x이고 두 직각삼각형은 닮았으므로 cos x=DE/DC=AB/BC=6/10=3/5이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
@@ -310,10 +336,16 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】한 변의 길이가 $2\\,\\text{cm}$이고 예각이 $60^\\circ$인 합동인 마름모 6장을 겹치지 않게 붙였다. 이 도형 전체의 넓이는?"
+      "content": "【대체 문항】한 변의 길이가 $2\\,\\text{cm}$이고 예각이 $60^\\circ$인 합동인 마름모 6장을 겹치지 않게 붙였다. 이 도형 전체의 넓이는?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 합동인 마름모 한 장에서 한 변은 2 cm이고 예각은 60도다. 꼭짓점에서 밑변으로 수선을 내려 높이를 표시했다.",
+      "solutionImageCaption": "마름모 한 장의 높이는 2sin60°=√3 cm이고 넓이는 2√3 cm²이다. 여섯 장의 넓이는 12√3 cm²이며 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
+      "image": "assets/images/21_매산중_2학기_중간_중3_수학/q9-problem-v2.svg",
+      "imageSize": "tall",
       "score": 5.0,
       "question": "다음 그림과 같이 한 변의 길이가 $4$인 정사면체 $\\mathrm{A-BCD}$에서 $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{E}$라 한다. $\\angle \\mathrm{EDA} = x^\\circ$일 때, $\\sin x^\\circ$의 값은?<br>",
       "choices": [
@@ -349,7 +381,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림과 같이 한 변의 길이가 $4$인 정사면체 $\\mathrm{A-BCD}$에서 $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{E}$라 한다. $\\angle \\mathrm{EDA} = x^\\circ$일 때, $\\sin x^\\circ$의 값은?<br>"
+      "content": "다음 그림과 같이 한 변의 길이가 $4$인 정사면체 $\\mathrm{A-BCD}$에서 $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{E}$라 한다. $\\angle \\mathrm{EDA} = x^\\circ$일 때, $\\sin x^\\circ$의 값은?<br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 정사면체에서 두 파란 선분 AE와 DE의 길이가 같고 E에서 AD로 내린 수선 EF를 주황색으로 표시했다.",
+      "solutionImageCaption": "AE=DE=2√3이고 F는 AD의 중점이므로 DF=2이다. 직각삼각형 DEF에서 EF=2√2이다. 따라서 sin x=EF/DE=√6/3이며 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 10,
@@ -428,10 +464,16 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "은행과 병원 사이의 수평 거리는 $20\\,\\text{m}$이다. 은행의 꼭대기 $\\mathrm{A}$지점에서 병원의 꼭대기 $\\mathrm{B}$지점을 올려다본 각의 크기가 $60^\\circ$이고, 병원의 아랫부분 $\\mathrm{C}$지점을 내려다본 각의 크기가 $45^\\circ$일 때, 병원의 높이는?<br>"
+      "content": "은행과 병원 사이의 수평 거리는 $20\\,\\text{m}$이다. 은행의 꼭대기 $\\mathrm{A}$지점에서 병원의 꼭대기 $\\mathrm{B}$지점을 올려다본 각의 크기가 $60^\\circ$이고, 병원의 아랫부분 $\\mathrm{C}$지점을 내려다본 각의 크기가 $45^\\circ$일 때, 병원의 높이는?<br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 은행 꼭대기 A에서 수평선을 그었다. 위쪽 파란 구간은 올려다본 60도, 아래쪽 주황 구간은 내려다본 45도에 연결된다.",
+      "solutionImageCaption": "아래 구간은 20tan45°=20 m, 위 구간은 20tan60°=20√3 m다. 병원 높이는 20(1+√3) m이며, 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 12,
+      "image": "assets/images/21_매산중_2학기_중간_중3_수학/q12-problem-v2.svg",
+      "imageSize": "tall",
       "score": 4.0,
       "question": "다음 그림과 같이 일차방정식 $x - 2y + 4 = 0$의 그래프가 $x$축의 양의 방향과 이루는 각의 크기를 $a$라 할 때, $\\tan a$의 값을 구하면?<br>",
       "choices": [
@@ -505,7 +547,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{BC}}=6$, $\\tan A=\\frac34$일 때, $\\overline{\\mathrm{AB}}$의 길이는?"
+      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{BC}}=6$, $\\tan A=\\frac34$일 때, $\\overline{\\mathrm{AB}}$의 길이는?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 직각 C를 사이에 둔 두 변은 파란 BC와 초록 AC이고, 주황 AB는 빗변이다.",
+      "solutionImageCaption": "6/AC=3/4이므로 AC=8이다. 피타고라스 정리로 AB=√(6²+8²)=10이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -544,7 +590,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】원 $O$의 반지름은 $13\\,\\text{cm}$이고, 현 $AB$까지의 수선의 길이는 $OM=5\\,\\text{cm}$이다. $OM\\perp AB$일 때, 현 $AB$의 길이는?"
+      "content": "【대체 문항】원 $O$의 반지름은 $13\\,\\text{cm}$이고, 현 $AB$까지의 수선의 길이는 $OM=5\\,\\text{cm}$이다. $OM\\perp AB$일 때, 현 $AB$의 길이는?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 중심 O에서 현 AB에 내린 수선은 M에서 현을 이등분한다. 두 반쪽은 같은 파란색 한 눈금으로 표시했다.",
+      "solutionImageCaption": "AM=MB이고 AM=√(13²−5²)=12 cm이다. 따라서 AB=24 cm이며, 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 15,
@@ -583,7 +633,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】원 $O$의 현 $AB$의 길이가 $16\\,\\text{cm}$이고, $OM\\perp AB$이며 $OM=6\\,\\text{cm}$이다. 원의 반지름 $OA$의 길이는?"
+      "content": "【대체 문항】원 $O$의 현 $AB$의 길이가 $16\\,\\text{cm}$이고, $OM\\perp AB$이며 $OM=6\\,\\text{cm}$이다. 원의 반지름 $OA$의 길이는?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 현 AB는 16 cm이며 중심 O에서 현에 내린 수선은 6 cm다. 같은 색과 눈금의 두 반쪽은 길이가 같다.",
+      "solutionImageCaption": "AM=16÷2=8 cm이다. 직각삼각형 OMA에서 OA=√(6²+8²)=10 cm이며, 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 16,
@@ -622,7 +676,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】점 $P$에서 원에 그은 두 접선의 접점을 각각 $A,B$라 하자. $PA=2x+3$, $PB=5x-6$일 때, $x$의 값은?"
+      "content": "【대체 문항】점 $P$에서 원에 그은 두 접선의 접점을 각각 $A,B$라 하자. $PA=2x+3$, $PB=5x-6$일 때, $x$의 값은?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 점 P에서 원의 두 접점 A, B로 그은 선분을 파란 한 눈금으로 묶었다. 접점에서 반지름은 접선과 수직이다.",
+      "solutionImageCaption": "한 점에서 그은 두 접선의 길이가 같으므로 2x+3=5x−6이다. 3x=9에서 x=3이며, 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -661,7 +719,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】두 원의 중심은 같고 큰 원의 현 하나가 작은 원에 접한다. 큰 원의 그 현의 길이가 $10\\,\\text{cm}$일 때, 두 원 사이의 고리 모양 영역의 넓이는?"
+      "content": "【대체 문항】두 원의 중심은 같고 큰 원의 현 하나가 작은 원에 접한다. 큰 원의 그 현의 길이가 $10\\,\\text{cm}$일 때, 두 원 사이의 고리 모양 영역의 넓이는?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 중심이 같은 두 원에서 큰 원의 현은 작은 원에 닿는다. 중심에서 접점으로 내린 수선이 10 cm 현을 이등분한다.",
+      "solutionImageCaption": "현의 절반은 5 cm이다. 피타고라스 정리로 큰 반지름의 제곱에서 작은 반지름의 제곱을 빼면 5²이다. 따라서 고리의 넓이는 25π cm²이며 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
@@ -700,7 +762,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】원 $O$가 삼각형 $ABC$의 내접원이며, 세 변 $AB,BC,CA$와의 접점을 각각 $D,E,F$라 하자. $AB=13\\,\\text{cm}$, $BC=14\\,\\text{cm}$, $CA=15\\,\\text{cm}$일 때, $AD$의 길이는?"
+      "content": "【대체 문항】원 $O$가 삼각형 $ABC$의 내접원이며, 세 변 $AB,BC,CA$와의 접점을 각각 $D,E,F$라 하자. $AB=13\\,\\text{cm}$, $BC=14\\,\\text{cm}$, $CA=15\\,\\text{cm}$일 때, $AD$의 길이는?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: A에서 그은 두 접선은 파란 한 눈금, B에서 그은 두 접선은 주황 두 눈금, C에서 그은 두 접선은 초록 세 눈금이다.",
+      "solutionImageCaption": "AD=AF, BD=BE, CE=CF이다. AB와 CA를 더하고 BC를 빼면 AD가 두 번 남는다. 따라서 AD=(13+15−14)÷2=7 cm이며, 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,
@@ -739,10 +805,16 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】점 $P$에서 원 $O$에 그은 접선이 원과 $A$에서 만난다. $OA=5\\,\\text{cm}$, $OP=13\\,\\text{cm}$일 때, 접선 $PA$의 길이는?"
+      "content": "【대체 문항】점 $P$에서 원 $O$에 그은 접선이 원과 $A$에서 만난다. $OA=5\\,\\text{cm}$, $OP=13\\,\\text{cm}$일 때, 접선 $PA$의 길이는?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 반지름 OA와 접선 AP는 A에서 수직이다. 빗변 OP는 13 cm, 반지름 OA는 5 cm다.",
+      "solutionImageCaption": "직각삼각형 OAP에서 PA=√(13²−5²)=12 cm이며, 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,
+      "image": "assets/images/21_매산중_2학기_중간_중3_수학/q20-problem-v2.svg",
+      "imageSize": "tall",
       "score": 4.0,
       "question": "다음 그림과 같이 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접하고, $\\angle \\mathrm{B} = 90^\\circ$, $\\overline{\\mathrm{AB}} = 4\\,\\text{cm}$, $\\overline{\\mathrm{AC}} = 2\\sqrt13\\,\\text{cm}$, $\\overline{\\mathrm{AD}} = 3\\,\\text{cm}$일 때, $\\overline{\\mathrm{CD}}$의 길이를 구하면?<br>",
       "choices": [
@@ -778,12 +850,16 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림과 같이 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접하고, $\\angle \\mathrm{B} = 90^\\circ$, $\\overline{\\mathrm{AB}} = 4\\,\\text{cm}$, $\\overline{\\mathrm{AC}} = 2\\sqrt13\\,\\text{cm}$, $\\overline{\\mathrm{AD}} = 3\\,\\text{cm}$일 때, $\\overline{\\mathrm{CD}}$의 길이를 구하면?<br>"
+      "content": "다음 그림과 같이 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접하고, $\\angle \\mathrm{B} = 90^\\circ$, $\\overline{\\mathrm{AB}} = 4\\,\\text{cm}$, $\\overline{\\mathrm{AC}} = 2\\sqrt13\\,\\text{cm}$, $\\overline{\\mathrm{AD}} = 3\\,\\text{cm}$일 때, $\\overline{\\mathrm{CD}}$의 길이를 구하면?<br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 사각형 안의 내접원에 닿는 두 선분을 각 꼭짓점마다 같은 색으로 짝지었다. 대각선이 직각삼각형 ABC를 만든다.",
+      "solutionImageCaption": "직각삼각형 ABC에서 BC=√((2√13)²−4²)=6 cm이다. 같은 꼭짓점의 접선 쌍이 각각 같으므로 AB+CD=AD+BC이다. CD=3+6−4=5 cm이며 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 21,
       "score": 5.0,
-      "question": "【서답형 1】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 1-①】</b> (4점)<br>【대체 문항】삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\,\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\text{cm}$, $\\angle \\mathrm{BAC}=30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.<br><br><b>【수준별 1-②】</b> (5점)<br>다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{AC}} = 10$이고 $\\cos B = \\frac14$일 때, $\\sin C$의 값을 구하시오.<br>",
+      "question": "【서답형 1】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 1-①】</b> (4점)<br>【대체 문항】삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\,\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\text{cm}$, $\\angle \\mathrm{BAC}=30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.<br><br><b>【수준별 1-②】</b> (5점)<br>다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{AC}} = 10$이고 $\\cos B = \\frac14$일 때, $\\sin C$의 값을 구하시오.<br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q21-problem-v2.svg\" /><br>",
       "choices": [],
       "answer": "수준별 1-①: $20\\,\\text{cm}^2$; 수준별 1-②: $\\frac{\\sqrt{15}}5$",
       "solution": "【수준별 1-①】<br>$C$에서 직선 $AB$에 내린 수선의 발을 $H$라 하자. 직각삼각형 $ACH$에서 $CH=AC\\sin30^\\circ=10\\times\\frac12=5\\,\\text{cm}$이다. $CH$는 밑변 $AB$가 놓인 직선까지의 높이이므로 $[ABC]=\\frac12\\times AB\\times CH=\\frac12\\times8\\times5=20\\,\\text{cm}^2$이다.<br><br>【수준별 1-②】<br>$\\cos B=\\frac14$이고 $B$는 예각이므로 $\\sin B=\\sqrt{1-\\frac1{16}}=\\frac{\\sqrt{15}}4$이다. $A$에서 직선 $BC$에 내린 수선의 길이 $h$는 $h=AB\\sin B=8\\cdot\\frac{\\sqrt{15}}4=2\\sqrt{15}$이다. 삼각형의 넓이를 밑변 $BC$에 대한 높이로 나타내면 $\\frac12 BC\\cdot h=\\frac12 BC\\cdot AC\\sin C$이므로 $h=AC\\sin C$이다. 따라서 $\\sin C=\\frac{2\\sqrt{15}}{10}=\\frac{\\sqrt{15}}5$이다.",
@@ -795,7 +871,7 @@ window.examData = {
       "standardUnit": "삼각비",
       "standardUnitOrder": 5,
       "questionType": "서술형",
-      "layoutTag": "text",
+      "layoutTag": "fullwidth",
       "tags": [
         "삼각비",
         "삼각형의 넓이",
@@ -811,12 +887,16 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 1】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 1-①】</b> (4점)<br>【대체 문항】삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\,\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\text{cm}$, $\\angle \\mathrm{BAC}=30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.<br><br><b>【수준별 1-②】</b> (5점)<br>다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{AC}} = 10$이고 $\\cos B = \\frac14$일 때, $\\sin C$의 값을 구하시오.<br>"
+      "content": "【서답형 1】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 1-①】</b> (4점)<br>【대체 문항】삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\,\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\text{cm}$, $\\angle \\mathrm{BAC}=30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.<br><br><b>【수준별 1-②】</b> (5점)<br>다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{AC}} = 10$이고 $\\cos B = \\frac14$일 때, $\\sin C$의 값을 구하시오.<br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q21-problem-v2.svg\" /><br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫 삼각형은 AB의 연장선에 내린 높이 CH를 표시한다. 두 번째 삼각형은 변 BC에 내린 높이 AH를 표시한다.",
+      "solutionImageCaption": "1-①: CH=10sin30°=5 cm이므로 넓이는 ½·8·5=20 cm²이다. 1-②: AH=AB·sinB=2√15이고 AH=AC·sinC이므로 sinC=√15/5이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 22,
       "score": 5.0,
-      "question": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>다음 그림과 같이 나무의 그림자의 길이는 $10\\,\\text{m}$이고, 그림자의 끝 $A$ 지점에서 나무 꼭대기 $B$ 지점을 올려다본 각도가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$로 계산한다.)<br><br><br><b>【수준별 2-②】</b> (5점)<br>【대체 문항】$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle B = 72^\\circ$, $\\overline{\\mathrm{BC}} = 6$이다. 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{AC}}$ 위에 있고, $\\angle \\mathrm{ABD} = \\angle \\mathrm{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.<br>",
+      "question": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>다음 그림과 같이 나무의 그림자의 길이는 $10\\,\\text{m}$이고, 그림자의 끝 $A$ 지점에서 나무 꼭대기 $B$ 지점을 올려다본 각도가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$로 계산한다.)<br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q22-problem-v2.svg\" /><br><br><br><b>【수준별 2-②】</b> (5점)<br>【대체 문항】$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle B = 72^\\circ$, $\\overline{\\mathrm{BC}} = 6$이다. 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{AC}}$ 위에 있고, $\\angle \\mathrm{ABD} = \\angle \\mathrm{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.<br>",
       "choices": [],
       "answer": "수준별 2-①: $6\\,\\mathrm m$; 수준별 2-②: $\\frac{1+\\sqrt5}{4}$",
       "solution": "【수준별 2-①】<br>나무의 높이는 수평인 지면과 수직인 나무가 이루는 직각삼각형의 한 변이고, 그림자 길이 $10\\,\\mathrm m$는 각도 $31^\\circ$에 인접한 변이다. 따라서 $\\tan31^\\circ=\\frac{\\text{나무의 높이}}{10}$이므로 나무의 높이는 $10\\times0.6=6\\,\\mathrm m$이다.<br><br>【수준별 2-②】<br>$AB=AC$이므로 $\\angle C=\\angle B=72^\\circ$, $\\angle A=36^\\circ$이다. $BD$가 $\\angle B$를 이등분하고 $D$가 선분 $AC$ 위에 있으므로 $\\angle ABD=\\angle BAD=36^\\circ$이다. 따라서 $AD=BD$이다. 또 $\\triangle BDC$에서 $\\angle BDC=180^\\circ-36^\\circ-72^\\circ=72^\\circ=\\angle BCD$이므로 $BD=BC=6$이고, $AD=6$이다.<br>두 삼각형의 넓이를 비교하자. $\\triangle ABD$와 $\\triangle CBD$는 $AC$ 위에 놓여 있으므로 $\\frac{[ABD]}{[CBD]}=\\frac{AD}{DC}$이다. 한편 공통 밑변 $BD$에 대한 두 높이는 각각 $AB\\sin36^\\circ$, $BC\\sin36^\\circ$이므로 $\\frac{[ABD]}{[CBD]}=\\frac{AB}{BC}$이다. 따라서 $\\frac{AD}{DC}=\\frac{AB}{BC}$이다.<br>$AB=AC$이므로 $AB=AD+DC=6+DC$이다. $AB=x$라 두면 $\\frac6{DC}=\\frac{x}{6}$에서 $DC=\\frac{36}{x}$이고, $x=6+\\frac{36}{x}$이다. 따라서 $x^2-6x-36=0$이고, 길이는 양수이므로 $AB=3+3\\sqrt5$이다.<br>$D$에서 $AB$에 내린 수선의 발을 $F$라 하면 $AD=BD$이므로 $F$는 $AB$의 중점이다. 직각삼각형 $ADF$에서 $\\cos36^\\circ=\\frac{AF}{AD}=\\frac{AB/2}{6}=\\frac{AB}{12}=\\frac{1+\\sqrt5}{4}$이다.",
@@ -828,7 +908,7 @@ window.examData = {
       "standardUnit": "삼각비",
       "standardUnitOrder": 5,
       "questionType": "서술형",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "삼각비",
         "서술형",
@@ -845,7 +925,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>다음 그림과 같이 나무의 그림자의 길이는 $10\\,\\text{m}$이고, 그림자의 끝 $A$ 지점에서 나무 꼭대기 $B$ 지점을 올려다본 각도가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$로 계산한다.)<br><br><br><b>【수준별 2-②】</b> (5점)<br>【대체 문항】$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle B = 72^\\circ$, $\\overline{\\mathrm{BC}} = 6$이다. 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{AC}}$ 위에 있고, $\\angle \\mathrm{ABD} = \\angle \\mathrm{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.<br>"
+      "content": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>다음 그림과 같이 나무의 그림자의 길이는 $10\\,\\text{m}$이고, 그림자의 끝 $A$ 지점에서 나무 꼭대기 $B$ 지점을 올려다본 각도가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$로 계산한다.)<br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q22-problem-v2.svg\" /><br><br><br><b>【수준별 2-②】</b> (5점)<br>【대체 문항】$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle B = 72^\\circ$, $\\overline{\\mathrm{BC}} = 6$이다. 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{AC}}$ 위에 있고, $\\angle \\mathrm{ABD} = \\angle \\mathrm{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.<br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫 패널은 그림자와 나무의 직각삼각형, 둘째 패널은 각 이등분선과 수선의 발을 나타낸다. 최종 높이와 삼각비 결과는 게시 캡션에만 둔다.",
+      "solutionImageCaption": "2-①: 10×tan31°=10×0.6=6 m. 2-②: cos36°=(1+√5)/4.",
+      "solutionImageSize": "full"
     },
     {
       "id": 23,
@@ -879,7 +963,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 3】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 3-①】</b> (4점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=6\\,\\text{cm}$, $BC=8\\,\\text{cm}$이다. 원 $O$가 삼각형 $ABC$의 내접원일 때, 원 $O$의 반지름을 구하시오.<br><br><b>【수준별 3-②】</b> (5점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=15\\,\\text{cm}$, $BC=20\\,\\text{cm}$이다. 원 $I$는 삼각형 $ABC$의 내접원이며, 변 $AB,BC,CA$와의 접점은 각각 $D,E,F$이다. 사각형 $DBEI$의 넓이를 구하시오."
+      "content": "【서답형 3】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 3-①】</b> (4점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=6\\,\\text{cm}$, $BC=8\\,\\text{cm}$이다. 원 $O$가 삼각형 $ABC$의 내접원일 때, 원 $O$의 반지름을 구하시오.<br><br><b>【수준별 3-②】</b> (5점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=15\\,\\text{cm}$, $BC=20\\,\\text{cm}$이다. 원 $I$는 삼각형 $ABC$의 내접원이며, 변 $AB,BC,CA$와의 접점은 각각 $D,E,F$이다. 사각형 $DBEI$의 넓이를 구하시오.",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫 패널은 AC=6, BC=8인 직각삼각형과 내접원, 둘째 패널은 AC=15, BC=20인 직각삼각형과 세 접점, DBEI의 두 부분을 보여 준다.",
+      "solutionImageCaption": "3-①: 넓이 24, 반둘레 12이므로 내접원 반지름은 2 cm이다. 3-②: r=5 cm, BD=BE=15 cm이므로 [DBEI]=½·15·5+½·15·5=75 cm²이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 24,
@@ -913,7 +1001,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 4】 [서술형]<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{AB}}=13\\,\\text{cm}$, $\\overline{\\mathrm{BC}}=5\\,\\text{cm}$이다. $F$는 $C$에서 $AB$에 내린 수선의 발이고, 삼각형 $ABC$의 내접원은 변 $AC,BC$에 각각 $D,E$에서 접한다. 다음을 차례로 구하시오.<br>(1) $\\overline{\\mathrm{AC}}$의 길이<br>(2) $\\overline{\\mathrm{BF}}$의 길이<br>(3) $\\overline{\\mathrm{CF}}$의 길이<br>(4) $\\overline{\\mathrm{CD}}$의 길이<br>(5) $\\overline{\\mathrm{DE}}$의 길이"
+      "content": "【서답형 4】 [서술형]<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{AB}}=13\\,\\text{cm}$, $\\overline{\\mathrm{BC}}=5\\,\\text{cm}$이다. $F$는 $C$에서 $AB$에 내린 수선의 발이고, 삼각형 $ABC$의 내접원은 변 $AC,BC$에 각각 $D,E$에서 접한다. 다음을 차례로 구하시오.<br>(1) $\\overline{\\mathrm{AC}}$의 길이<br>(2) $\\overline{\\mathrm{BF}}$의 길이<br>(3) $\\overline{\\mathrm{CF}}$의 길이<br>(4) $\\overline{\\mathrm{CD}}$의 길이<br>(5) $\\overline{\\mathrm{DE}}$의 길이",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 C에서 빗변으로 내린 수선의 발 F와 내접원의 접점 D, E를 구별했다.",
+      "solutionImageCaption": "피타고라스 정리로 AC=12 cm이다. 닮음과 넓이에서 BF=25/13 cm, CF=60/13 cm이다. 내접원의 반지름이 2 cm이므로 CD=2 cm이고 DE=2√2 cm이다.",
+      "solutionImageSize": "full"
     }
   ]
 };
