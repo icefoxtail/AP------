@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_BOUNDED_REPAIR_OR_DEBT_RECHECK",
+  "producer": "/root/m2s1_release",
+  "priorAcceptedReview": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E006/accepted-review.json",
+    "sha256": "5629706bc9916e953ace79bf2c21329f2e0ef6308d5083438335829d074e2248"
+  },
+  "currentSourceBlobSha": "2a96764bcb5540c3804dddc429f6bfe4937e2549",
+  "narrowEvidence": {
+    "firstEightProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-remaining-20261115/first8-proposal.json",
+      "sha256": "ccc53758c54ba407f991529db5a14b3211a9a936d17c2d562c92a449b699cc25"
+    },
+    "firstEightIndependent": {
+      "path": ".archive-meta-register/evidence/m2s1-remaining-20261115/first8-independent.json",
+      "sha256": "427337f3bcfc71c66baea43bee65a735389f2eb12bda3b6b9ed8ae436e465827"
+    },
+    "benchIndependent": {
+      "path": ".archive-meta-register/evidence/m2s1-remaining-20261115/E075-Q20-independent.json",
+      "sha256": "de50cde321ddfd79520204c7675fdd2b523495080b401f94a232b9785ba29d79"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 24,
+    "selectedQuestions": 2
+  },
+  "newAdvancedMetadataApprovals": 0,
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+      "ordinal": 4,
+      "questionUid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+      "before": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "sourceFingerprint": "577e3ee147becb1a6acbfc7822d0faa5e333ab3f0954cadadc967f9f271ae96c",
+        "contentFingerprint": "a05a2be5466687d36bb6b6922e30841f14b6e68e5804a796dbca4e67b7058ac4"
+      },
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "577e3ee147becb1a6acbfc7822d0faa5e333ab3f0954cadadc967f9f271ae96c",
+      "contentFingerprint": "a05a2be5466687d36bb6b6922e30841f14b6e68e5804a796dbca4e67b7058ac4",
+      "staleSourceBinding": false,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "비순환 한 자리와 순환 한 자리를 구분하는 직접 적용이다.\nCurrent bounded closure: The current stem already requires a concise repeating-block representation; the existing second choice is its minimal form. Equal numeric values in nonminimal forms do not invalidate this prompt. Existing numeric difficulty/confidence are preserved; no advanced metadata or REVIEW2 approval is created."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+      "ordinal": 7,
+      "questionUid": "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "sourceFingerprint": "0bd46a7b32d4aad3cd530aee15f8b9027e740230b128a145604ed636fd05dfee",
+        "contentFingerprint": "f5de9dc136a21b60e00bdc8eb2d4f03aa40115902982d460ac724561e148eb0b"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "0bd46a7b32d4aad3cd530aee15f8b9027e740230b128a145604ed636fd05dfee",
+      "contentFingerprint": "f5de9dc136a21b60e00bdc8eb2d4f03aa40115902982d460ac724561e148eb0b",
+      "staleSourceBinding": false,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "비순환1자리와 주기2자리에 따른 두 배수를 선택하고 약분하는 익숙한 다단계이다.\nCurrent bounded closure: Restore only the three labels referenced by the existing ordered equations; retain every expression, number and answer. Existing numeric difficulty/confidence are preserved; no advanced metadata or REVIEW2 approval is created."
+    }
+  ]
+}

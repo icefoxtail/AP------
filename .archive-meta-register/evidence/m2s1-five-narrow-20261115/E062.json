@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_CURRENT_NARROW_REPAIR",
+  "producer": "/root/m2s1_release",
+  "currentSourceBlobSha": "ff2f28b1abe9f01594afe8295b0c49c7eec5b124",
+  "currentSourceRawSha256": "666e29ccb8929dca0751e2492b7f21cb6cf98fbf23e4fec18821b54f32272cf1",
+  "narrowEvidence": {
+    "sourceProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/source-proposal.json",
+      "sha256": "8a6339b83fe610749749ece281816b4acc4ed6783efa94342bc4a58809af7db6"
+    },
+    "sourceApplication": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/source-application.json",
+      "sha256": "b87270853a8252a0f157c3cccde227d298a55ed4114aef02adf347b6e6118ba0"
+    },
+    "independentReview": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/independent-review.json",
+      "sha256": "aeb275197932dffc28a7a53697e8f88fc4561962546fc05365915e5bd5d04ae3"
+    },
+    "currentReviewClosure": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/current-review-closure.json",
+      "sha256": "7d71187d1fc37bca64a491567ed055b93ddfbfcab0ad9c94ac8660845e3df2a5"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 25,
+    "selectedQuestions": 1
+  },
+  "newAdvancedMetadataApprovals": 0,
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+      "ordinal": 4,
+      "questionUid": "qid_v1_62b5e5984280ddc94fd0339bae7ffceee81b3ad632196cfe55e0c893a180e247",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "sourceFingerprint": "7d01b8d737431a0f89377b0c35141c09ec7be2c5b3c79bfbc3f78aea9dfa6bd1",
+        "contentFingerprint": "2671dd8912930c0d13ecfacb8ac6cc74addfde8cbfa13cd48c31eba26eff5786"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "64a032860146a117f9316e82f5df5540b53f62413ab81ca5bc116f408a7c7350",
+      "contentFingerprint": "1810d7ed6241d3e0d834aee97c83386f3d37338ef413f17f5f2e014547a9e527",
+      "staleSourceBinding": true,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "세식의공통해를 수치두식에서 먼저구해계수대입\nCurrent narrow source repair: Clarify that the simultaneous solution satisfies the third equation, exactly as already stated and solved in the existing explanation. Existing common solution (4,-4), coefficient -1, answer and numeric difficulty remain unchanged. Existing accepted numeric difficulty and confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+    }
+  ]
+}

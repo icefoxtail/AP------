@@ -1,0 +1,766 @@
+{
+  "schemaVersion": "archive-source-narrow-repair-proposal-v1",
+  "status": "AUTHOR_REPAIRED_INDEPENDENT_REVIEW_PENDING",
+  "author": "/root/m2s1_release",
+  "baseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+  "scope": "Bounded source explanation and accessibility text corrections; no answer or image changes and no full-exam approval",
+  "rows": [
+    {
+      "examId": "E049",
+      "ordinal": 3,
+      "questionUid": "qid_v1_abb6a08af167493e0bc079d8f4c3f20ca2eb59f985d307fca0498101f896b955",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Restore the explanation option order to the actual unchanged choices and stored answer ③.",
+      "before": {
+        "solution": "기약분수 상태에서 분모의 소인수가 $2, 5$뿐인지 확인함.\n① $\\frac{6}{7} \\implies$ 분모 소인수 $7$\n② $\\frac{9}{14} = \\frac{9}{2 \\times 7} \\implies$ 분모 소인수 $7$\n③ $\\frac{12}{33} = \\frac{4}{11} \\implies$ 분모 소인수 $11$\n④ $\\frac{21}{63} = \\frac{1}{3} \\implies$ 분모 소인수 $3$\n⑤ $\\frac{3}{20} = \\frac{3}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$뿐임.\n$\\therefore$ ⑤"
+      },
+      "after": {
+        "solution": "기약분수의 분모의 소인수가 $2$, $5$뿐인지 확인한다.\n① $\\frac{6}{7}$: 분모에 소인수 $7$이 있으므로 유한소수가 아니다.\n② $\\frac{9}{14}=\\frac{9}{2\\times7}$: 분모에 소인수 $7$이 있으므로 유한소수가 아니다.\n③ $\\frac{3}{20}=\\frac{3}{2^2\\times5}$: 기약분모의 소인수가 $2$, $5$뿐이므로 유한소수이다.\n④ $\\frac{12}{33}=\\frac{4}{11}$: 기약분모에 소인수 $11$이 있으므로 유한소수가 아니다.\n⑤ $\\frac{21}{63}=\\frac{1}{3}$: 기약분모에 소인수 $3$이 있으므로 유한소수가 아니다.\n따라서 정답은 ③이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "기약분모소인수로유한소수판정; 실제해설의보기번호순서가source와다르고결론번호도충돌",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 3
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "b133ebf8ce48e5d0f7f9e59a958431bd631a7937",
+      "afterSourceBlobSha": "31fc952200884ef9316a415371f8ef2a1bb7a255",
+      "beforeFieldSha256": {
+        "solution": "05446b46e9f4d128badbb71e95686837b7a6460ba7c2e043cf7c51f0998ce2d8"
+      },
+      "afterFieldSha256": {
+        "solution": "be55b039ed485160481526dc1e0e0fc1725d2ce8caee5df3d7afbc5464e54542"
+      }
+    },
+    {
+      "examId": "E049",
+      "ordinal": 10,
+      "questionUid": "qid_v1_f5911d30917bd394d57148d30137f12abaec8702a5e005019a3090868db26730",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Use (x³)^b = x^(3b); d is 6 and the sum is 21, consistent with unchanged answer ②.",
+      "before": {
+        "solution": "좌변을 전개함: $\\frac{(-3)^b y^{ab}}{2^b x^{b^2}}$\n우변의 분모 상수와 비교: $2^b = 4 \\implies b = 2$\n분모 $x$ 지수: $b^2 = d \\implies d = 4$\n분자 상수: $(-3)^2 = c \\implies c = 9$\n분자 $y$ 지수: $ab = 8 \\implies 2a = 8 \\implies a = 4$\n$\\therefore a+b+c+d = 4 + 2 + 9 + 4 = 19$"
+      },
+      "after": {
+        "solution": "좌변을 전개하면 $\\dfrac{(-3)^b y^{ab}}{2^b x^{3b}}$이다.\n우변의 분모 상수와 비교하면 $2^b=4$이므로 $b=2$이다.\n분모의 $x$의 지수를 비교하면 $d=3b=6$이다.\n분자의 상수는 $c=(-3)^2=9$이고, $y$의 지수는 $ab=8$이므로 $a=4$이다.\n따라서 $a+b+c+d=4+2+9+6=21$이므로 정답은 ②이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "거듭제곱의계수/지수대응구조이나실제해설의x지수가3b대신b²로적혀최종합도answer와충돌",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 10
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "b133ebf8ce48e5d0f7f9e59a958431bd631a7937",
+      "afterSourceBlobSha": "31fc952200884ef9316a415371f8ef2a1bb7a255",
+      "beforeFieldSha256": {
+        "solution": "27d25e9c0d1de4b688d91de8fc21c03f01e402119da4d96fa169983f057e1a75"
+      },
+      "afterFieldSha256": {
+        "solution": "d78b2cc44d0f41a1b02569f3e9d6b556b7d827ac22250a0cf467fccdd005293d"
+      }
+    },
+    {
+      "examId": "E049",
+      "ordinal": 16,
+      "questionUid": "qid_v1_90c0f4ad9847c805767b6aa6036e42930ab78424b27c8dfc36d24bbf15d90a48",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Expand the actual leading coefficient 4; remove an undefined A imported from another version.",
+      "before": {
+        "solution": "중괄호 정리: $(3xy^3 - 2xy^3 + 8x^2y) \\div xy = (xy^3 + 8x^2y) \\div xy = y^2 + 8x$\n전체 식: $\\frac{A}{2}x^2 + 2Ax - (y^2 + 8x) = \\frac{A}{2}x^2 + (2A-8)x - y^2$\n$x$항이 소거되어야 하므로 $2A-8 = 0 \\implies A = 4$\n$\\implies 2x^2 - y^2$ (이때 $a=2, b=-1$)\n$\\therefore a+b = 1$"
+      },
+      "after": {
+        "solution": "중괄호 안을 정리하면 $3xy^3-2y(xy^2-4x^2)=xy^3+8x^2y$이다.\n이를 $xy$로 나누면 $y^2+8x$이다.\n따라서 전체 식은\n$4x(\\frac{x}{2}+2)-(y^2+8x)=2x^2+8x-y^2-8x=2x^2-y^2$이다.\n$a=2$, $b=-1$이므로 $a+b=1$이다. 따라서 정답은 ①이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "괄호전개/단항식나눗셈뒤계수합; 해설이source상수4대신정의안된A를도입한판본혼입부채",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 16
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "b133ebf8ce48e5d0f7f9e59a958431bd631a7937",
+      "afterSourceBlobSha": "31fc952200884ef9316a415371f8ef2a1bb7a255",
+      "beforeFieldSha256": {
+        "solution": "c4e4e6f8255885547cca9c49759b8a7773ba8954efcf74cffd5982fa39bae522"
+      },
+      "afterFieldSha256": {
+        "solution": "2144b4dfb31112a2d32509525c012d8791902d717d410b17156b98657087f341"
+      }
+    },
+    {
+      "examId": "E050",
+      "ordinal": 7,
+      "questionUid": "qid_v1_48e2cccdd167683e98ba18543f6c2a376b25ec632f52bb969fd9e940f513a488",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "State the open endpoint and leftward ray that identify the actual third inline SVG.",
+      "before": {
+        "solution": "$2x+5>2+3x$\n$2x-3x>2-5$\n$-x>-3$이다.\n양변을 $-1$로 나누면\n$x<3$이다.\n\n따라서 정답은 ③이다."
+      },
+      "after": {
+        "solution": "$2x+5>2+3x$\n$2x-3x>2-5$\n$-x>-3$이다.\n양변을 $-1$로 나누면\n$x<3$이다.\n\n$x<3$은 $3$을 포함하지 않으므로 $3$에 빈 원을 표시하고 왼쪽으로 선을 긋는다. 이에 해당하는 수직선은 ③이다.\n따라서 정답은 ③이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "일차부등식의 해를 열린 점과 왼쪽 방향의 실제 SVG 수직선으로 대응한다."
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "61e92c85009e8256b4a1a3fd59c1339aaa829dc4",
+      "afterSourceBlobSha": "7c93afdb305606fd2260a0c919088a18a988b5ee",
+      "beforeFieldSha256": {
+        "solution": "d774173fb38e51c65a5a7c1ebf7755beb8ae2c54896dd350af7e9f16e14dc432"
+      },
+      "afterFieldSha256": {
+        "solution": "f2be24bde83444feafc9f5cdd0735bf3fe659240090f51f8c66fe2bd1c916b05"
+      }
+    },
+    {
+      "examId": "E050",
+      "ordinal": 11,
+      "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Use positive exponent multiplication after clearing the denominator, avoiding a high-school negative exponent step.",
+      "before": {
+        "solution": "$(3^x)^2\\times3^{11}\\div(3^5)^3=3^{2x+11-15}=3^{2x-4}$이다.\n문제에서 이 값이 $\\dfrac1{3^2}=3^{-2}$라고 했으므로\n$2x-4=-2$이다.\n따라서 $2x=2$, $x=1$이다.\n\n따라서 정답은 ①이다."
+      },
+      "after": {
+        "solution": "$(3^5)^3=3^{15}$이므로 주어진 등식의 양변에 $3^{15}$을 곱하면\n$(3^x)^2\\times3^{11}=\\dfrac{3^{15}}{3^2}=3^{13}$이다.\n왼쪽은 $3^{2x+11}$이므로 지수를 비교하면 $2x+11=13$이다.\n따라서 $x=1$이므로 정답은 ①이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "거듭제곱의 곱과 몫을 한 밑으로 정리한 뒤 지수를 같게 둔다."
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "61e92c85009e8256b4a1a3fd59c1339aaa829dc4",
+      "afterSourceBlobSha": "7c93afdb305606fd2260a0c919088a18a988b5ee",
+      "beforeFieldSha256": {
+        "solution": "cf397b3451d55d87d8e111b2243f6b5f5427b88ae3b32e6bb86e0d4d1e412563"
+      },
+      "afterFieldSha256": {
+        "solution": "4bfefef43c324b2ededfc55041eebb10f2d8a90d6ca2d1fb472289aadcd74f45"
+      }
+    },
+    {
+      "examId": "E051",
+      "ordinal": 20,
+      "questionUid": "qid_v1_ee2b69b3cac444f730056374a7078069c0cebfc7d28288ca649acdc8da6a0a69",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_왕운중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Complete the explicitly requested largest-integer selection at the open endpoint 21.",
+      "before": {
+        "solution": "\\(-2\\le\\frac{x}{3}<4\\Rightarrow -6\\le x<12\\). 여기에 2를 곱하고 3을 빼면 \\(-15\\le2x-3<21\\)이다.\n ④"
+      },
+      "after": {
+        "solution": "$-2\\le\\dfrac{x}{3}<4$의 각 변에 $3$을 곱하면 $-6\\le x<12$이다.\n각 변에 $2$를 곱하고 $3$을 빼면 $-15\\le2x-3<21$이다.\n이 범위에서 가장 큰 정수는 $20$이므로 정답은 ④이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "연속구간을 일차식의 구간으로 바꾸고 열린 위끝보다 작은 최대 정수를 고른다. 기존해설이 마지막 최대정수 선별을 서술하지 않고 범위와 정답만 제시하므로 confidence low로 제한한다."
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "2096e77a2a38074955ab5f630b864da43d7ae788",
+      "afterSourceBlobSha": "ca6696cfda0af3138a2b04ea5226afb9290a08fe",
+      "beforeFieldSha256": {
+        "solution": "17bd4f69bdab777d82d56a3a2e3ca50a5569d13cd1462c7ac2269480460a44f4"
+      },
+      "afterFieldSha256": {
+        "solution": "c7fbbf9fb4aeac03f35e96068d3edf2d7ee82ac3285d096479779dd50a900f71"
+      }
+    },
+    {
+      "examId": "E052",
+      "ordinal": 1,
+      "questionUid": "qid_v1_d36de1141c43e1d2adaaf23d68d1455f2737d042e22d9800a2b5d7a98c6fce41",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "The non-repeating prefix of 29.05909090… is the two digits 05; the repeating block remains 90.",
+      "before": {
+        "solution": "① $0.6333\\cdots$는 $3$만 반복하므로 순환마디는 $3$이다.\n② $29.05909090\\cdots$는 소수점 아래 첫째 자리 $0$ 뒤에서 $90$이 반복되므로 순환마디는 $90$이다.\n③ $0.373737\\cdots$의 순환마디는 $37$이다.\n④ $47.273273273\\cdots$의 순환마디는 $273$이다.\n⑤ $5.8170581705\\cdots$의 순환마디는 $81705$이다.\n\n따라서 정답은 ②이다."
+      },
+      "after": {
+        "solution": "① $0.6333\\cdots$는 $3$만 반복하므로 순환마디는 $3$이다.\n② $29.05909090\\cdots$는 소수점 아래 첫째 자리와 둘째 자리의 숫자 $0$, $5$ 뒤에서 $90$이 반복되므로 순환마디는 $90$이다.\n③ $0.373737\\cdots$의 순환마디는 $37$이다.\n④ $47.273273273\\cdots$의 순환마디는 $273$이다.\n⑤ $5.8170581705\\cdots$의 순환마디는 $81705$이다.\n\n따라서 정답은 ②이다."
+      },
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "순환마디 직접대조; 기존해설②의 비순환부분 설명은 원수의05를0으로 줄인 오기",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 1
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "d07e680fe49b577f06eb4ae522b6ce477c912e67",
+      "afterSourceBlobSha": "a3b23fe1a0ca990ccbee6d307afcb6d7b46cedff",
+      "beforeFieldSha256": {
+        "solution": "b5b0dd91d006c866a280748bbbac7ca003c1757496114fc3533ce0155f911349"
+      },
+      "afterFieldSha256": {
+        "solution": "17f4eaa995c24ae206a3c499f0b0903495d90d09be070c03e51882a3b6750965"
+      }
+    },
+    {
+      "examId": "E052",
+      "ordinal": 17,
+      "questionUid": "qid_v1_4e956e543e31bf16db816d85f99ab60587ba21a1a69f552da111b75e9b678855",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "State the smallest natural number satisfying x>3, which is the unchanged fourth choice.",
+      "before": {
+        "solution": "$-0.2x<0.2x-1.2$에서 양변에 $0.2x$와 $1.2$를 더하면\n$1.2<0.4x$이다.\n양수 $0.4$로 나누면 $x>3$이다.\n\n따라서 정답은 ④이다."
+      },
+      "after": {
+        "solution": "$-0.2x<0.2x-1.2$에서 양변에 $0.2x$와 $1.2$를 더하면\n$1.2<0.4x$이다.\n양수 $0.4$로 나누면 $x>3$이다.\n\n따라서 $3$보다 큰 자연수 중 가장 작은 수는 $4$이므로 정답은 ④이다."
+      },
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "소수부등식 뒤 최소자연수 선택; 기존해설은 x>3까지만 쓰고 ④로 선별을 생략",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "initialFreezeSourceOrdinal": 17,
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "d07e680fe49b577f06eb4ae522b6ce477c912e67",
+      "afterSourceBlobSha": "a3b23fe1a0ca990ccbee6d307afcb6d7b46cedff",
+      "beforeFieldSha256": {
+        "solution": "1c2c44e4a2592f5d33a215ef178ace4a97cb03ca8c9ff208bd9f903e10c70655"
+      },
+      "afterFieldSha256": {
+        "solution": "95c756a2148c917137b824ebd7d66f558a0a67f357d2e726d5b45a0bdc1b2a0f"
+      }
+    },
+    {
+      "examId": "E055",
+      "ordinal": 10,
+      "questionUid": "qid_v1_44165405091fab3caf36938fa61208cd8f1d3f36d4469be4606121204995b2d5",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "The figure shows a triangle base and its internal altitude, not a right-triangular base; the area computation is unchanged.",
+      "before": {
+        "solution": "[키포인트] 직육면체의 부피 $(\\text{가로} \\times \\text{세로} \\times \\text{높이})$와 삼각뿔의 부피 $\\left(\\dfrac{1}{3} \\times \\text{밑넓이} \\times \\text{높이}\\right)$가 같음을 이용하여 방정식을 세운다.\n1단계 (조건 분석): 직육면체의 밑면 가로는 $2ab$, 세로는 $2b^2$, 높이는 $2a$이고, 삼각뿔의 밑면은 밑변이 $3ab$, 높이가 $4b$인 직각삼각형이다.\n2단계 (직육면체 부피): 직육면체의 부피 $V_1$은 세 모서리의 곱이다.\n$V_1 = 2ab \\times 2b^2 \\times 2a = 8a^2b^3$\n3단계 (삼각뿔 부피 식): 삼각뿔의 높이를 $h$라 할 때, 밑넓이는 직각삼각형의 넓이이므로\n$S = \\dfrac{1}{2} \\times 3ab \\times 4b = 6ab^2$\n삼각뿔의 부피 $V_2 = \\dfrac{1}{3} \\times 6ab^2 \\times h = 2ab^2h$\n4단계 (방정식 수립 및 풀이): 두 입체도형의 부피가 같으므로\n$2ab^2h = 8a^2b^3 \\implies h = \\dfrac{8a^2b^3}{2ab^2} = 4ab$\n5단계 (결론): 삼각뿔의 높이는 $4ab$이다.\n따라서 정답은 ④이다."
+      },
+      "after": {
+        "solution": "[키포인트] 직육면체의 부피 $(\\text{가로} \\times \\text{세로} \\times \\text{높이})$와 삼각뿔의 부피 $\\left(\\dfrac{1}{3} \\times \\text{밑넓이} \\times \\text{높이}\\right)$가 같음을 이용하여 방정식을 세운다.\n1단계 (조건 분석): 직육면체의 밑면 가로는 $2ab$, 세로는 $2b^2$, 높이는 $2a$이고, 삼각뿔의 밑면은 밑변이 $3ab$, 높이가 $4b$인 삼각형이다.\n2단계 (직육면체 부피): 직육면체의 부피 $V_1$은 세 모서리의 곱이다.\n$V_1 = 2ab \\times 2b^2 \\times 2a = 8a^2b^3$\n3단계 (삼각뿔 부피 식): 삼각뿔의 높이를 $h$라 할 때, 밑넓이는 삼각형의 넓이이므로\n$S = \\dfrac{1}{2} \\times 3ab \\times 4b = 6ab^2$\n삼각뿔의 부피 $V_2 = \\dfrac{1}{3} \\times 6ab^2 \\times h = 2ab^2h$\n4단계 (방정식 수립 및 풀이): 두 입체도형의 부피가 같으므로\n$2ab^2h = 8a^2b^3 \\implies h = \\dfrac{8a^2b^3}{2ab^2} = 4ab$\n5단계 (결론): 삼각뿔의 높이는 $4ab$이다.\n따라서 정답은 ④이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "실제 입체두 부피공식과 삼각형밑넓이 뒤 높이역산; 원해설 밑면 직각삼각형 단정의 그림근거 부족으로 confidence low.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 10
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "54d49a68e8b2d3ab736da82a0d2af9395d436995",
+      "afterSourceBlobSha": "effa3d073447fda9bc26cc2a47b147cb57ce7712",
+      "beforeFieldSha256": {
+        "solution": "2094d31f97b17499c6f66c3c16f0497218b2f29b882cc198be7f5ece28b307dd"
+      },
+      "afterFieldSha256": {
+        "solution": "8f817d59b820f66414d1e674871022d95be1ea8b4be921b5ec71d8c2534b3dc4"
+      }
+    },
+    {
+      "examId": "E055",
+      "ordinal": 14,
+      "questionUid": "qid_v1_8a0c31c0eb1626db802d7415fd8d7230d4aceaff785b347b85eceaad2086c7d5",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "choices",
+        "solution"
+      ],
+      "reason": "Correct choice-alt descriptions and their solution descriptions to the actual unchanged third/fourth/fifth PNG number lines.",
+      "before": {
+        "choices": [
+          "<img src=\"assets/images/20_신흥중_1학기_기말_중2_수학/q14_1.png\" alt=\"수직선: x <= 2\" />",
+          "<img src=\"assets/images/20_신흥중_1학기_기말_중2_수학/q14_2.png\" alt=\"수직선: x >= 2\" />",
+          "<img src=\"assets/images/20_신흥중_1학기_기말_중2_수학/q14_3.png\" alt=\"수직선: x >= -2\" />",
+          "<img src=\"assets/images/20_신흥중_1학기_기말_중2_수학/q14_4.png\" alt=\"수직선: x > 2\" />",
+          "<img src=\"assets/images/20_신흥중_1학기_기말_중2_수학/q14_5.png\" alt=\"수직선: x < 2\" />"
+        ],
+        "solution": "[키포인트] 일차부등식을 풀어 해의 범위를 구하고, 등호가 포함되면 수직선 위에 채워진 원으로 경계를 표시한 뒤 알맞은 방향으로 화살표를 그린다.\n1단계 (조건 분석): 일차부등식 $x+1 \\le 3x-3$의 해를 수직선 위에 나타내는 문제이다.\n2단계 (일차부등식 풀이): $x$항은 좌변으로, 상수항은 우변으로 이항하여 정리한다.\n$x - 3x \\le -3 - 1 \\implies -2x \\le -4$\n양변을 음수 $-2$로 나누면 부등호의 방향이 반대로 바뀐다.\n$x \\ge 2$\n3단계 (수직선 표현 규칙):\n- 등호($\\le, \\ge$)가 포함되어 있으므로 경계점 $2$에 색칠된 원(검은 점)을 찍는다.\n- $x \\ge 2$는 $2$보다 크거나 같은 수의 모임이므로 $2$에서 오른쪽 방향으로 화살표 선을 긋는다.\n4단계 (보기 검토):\n① $x \\le 2$ (왼쪽 방향)\n② $x \\ge 2$ (오른쪽 방향, 색칠된 원)\n③ $x \\ge -2$ (기준점 오류)\n④ $x > 2$ (빈 원, 등호 누락)\n⑤ $x < 2$ (빈 원, 왼쪽 방향)\n5단계 (결론): 올바르게 나타낸 수직선은 ②이다.\n따라서 정답은 ②이다."
+      },
+      "after": {
+        "choices": [
+          "<img src=\"assets/images/20_신흥중_1학기_기말_중2_수학/q14_1.png\" alt=\"수직선: x <= 2\" />",
+          "<img src=\"assets/images/20_신흥중_1학기_기말_중2_수학/q14_2.png\" alt=\"수직선: x >= 2\" />",
+          "<img src=\"assets/images/20_신흥중_1학기_기말_중2_수학/q14_3.png\" alt=\"수직선: x < 3\" />",
+          "<img src=\"assets/images/20_신흥중_1학기_기말_중2_수학/q14_4.png\" alt=\"수직선: x >= 3\" />",
+          "<img src=\"assets/images/20_신흥중_1학기_기말_중2_수학/q14_5.png\" alt=\"수직선: x > 3\" />"
+        ],
+        "solution": "[키포인트] 일차부등식을 풀어 해의 범위를 구하고, 등호가 포함되면 수직선 위에 채워진 원으로 경계를 표시한 뒤 알맞은 방향으로 화살표를 그린다.\n1단계 (조건 분석): 일차부등식 $x+1 \\le 3x-3$의 해를 수직선 위에 나타내는 문제이다.\n2단계 (일차부등식 풀이): $x$항은 좌변으로, 상수항은 우변으로 이항하여 정리한다.\n$x - 3x \\le -3 - 1 \\implies -2x \\le -4$\n양변을 음수 $-2$로 나누면 부등호의 방향이 반대로 바뀐다.\n$x \\ge 2$\n3단계 (수직선 표현 규칙):\n- 등호($\\le, \\ge$)가 포함되어 있으므로 경계점 $2$에 색칠된 원(검은 점)을 찍는다.\n- $x \\ge 2$는 $2$보다 크거나 같은 수의 모임이므로 $2$에서 오른쪽 방향으로 화살표 선을 긋는다.\n4단계 (보기 검토):\n① $x \\le 2$ (왼쪽 방향)\n② $x \\ge 2$ (오른쪽 방향, 색칠된 원)\n③ $x < 3$ ($3$의 빈 원, 왼쪽 방향)\n④ $x \\ge 3$ ($3$의 색칠된 원, 오른쪽 방향)\n⑤ $x > 3$ ($3$의 빈 원, 오른쪽 방향)\n5단계 (결론): 올바르게 나타낸 수직선은 ②이다.\n따라서 정답은 ②이다."
+      },
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "간단부등식과 실제2닫힌점 오른쪽; 선택지③④⑤ actual그림이 alt/해설과 불일치",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 14
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "54d49a68e8b2d3ab736da82a0d2af9395d436995",
+      "afterSourceBlobSha": "effa3d073447fda9bc26cc2a47b147cb57ce7712",
+      "beforeFieldSha256": {
+        "choices": "2ded8132da319bafa26560727f442d8542c99776ee93ffbdca3f87cdbd87d22e",
+        "solution": "defcb7cb7a456cb1da5b1adade8983e813b7d7b6c35ef3c8e2f5112682737362"
+      },
+      "afterFieldSha256": {
+        "choices": "e6f708b4dd73380069dc8db6fce95a953901658c93ff639fe967b71ab78c0120",
+        "solution": "e4d6a06b1556551f67231cf606a96f745ffaf6cef95abefce3353d23aa1768e8"
+      }
+    },
+    {
+      "examId": "E059",
+      "ordinal": 3,
+      "questionUid": "qid_v1_b3f78aa6d958659a31217d5deb04800b89c590414cd851f3242c96774ceaa9f0",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_팔마중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Use the number of digits in the repeating block, not a count of repeating blocks.",
+      "before": {
+        "solution": "[원문 조건 및 구할 대상]\n순환소수의 순환마디 표기 규칙에 어긋난 보기를 찾는다.\n\n[핵심 발상/공식]\n순환소수는 순환마디의 양 끝의 숫자 위에 점(·)을 찍어 나타낸다. 순환마디가 2개인 경우 두 숫자 모두 위에 점을 찍어야 한다.\n\n[연속 등식 및 중간 계산]\n1단계: ① $-7.222\\cdots$의 순환마디는 2이므로 $-7.\\dot{2}$로 옳게 나타내었다.\n2단계: ② $0.6111\\cdots$의 순환마디는 1이므로 $0.6\\dot{1}$로 옳게 나타내었다.\n3단계: ③ $0.8282\\cdots$의 순환마디는 82이다. 순환마디를 이루는 숫자가 8과 2의 2개이므로 양 끝인 8과 2 위에 각각 점을 찍어 $0.\\dot{8}\\dot{2}$로 나타내어야 한다. 보기에서는 2 위에만 점을 찍은 $0.8\\dot{2}$로 표기하였으므로 옳지 않다 (거짓).\n4단계: ④ $0.017017\\cdots$의 순환마디는 017(3자리)이므로 양 끝인 0과 7 위에 점을 찍어 $0.\\dot{0}1\\dot{7}$로 옳게 나타내었다.\n5단계: ⑤ $0.31414\\cdots$의 순환마디는 14이므로 $0.3\\dot{1}\\dot{4}$로 옳게 나타내었다.\n\n[경우 나눔 및 선택지 검토]\n③번 표기만이 순환마디의 시작 숫자인 8 위의 점이 누락되어 규칙을 위반하였다.\n\n[결론]\n따라서 옳지 않은 것은 ③이다."
+      },
+      "after": {
+        "solution": "[원문 조건 및 구할 대상]\n순환소수의 순환마디 표기 규칙에 어긋난 보기를 찾는다.\n\n[핵심 발상/공식]\n순환소수는 순환마디의 양 끝의 숫자 위에 점(·)을 찍어 나타낸다. 순환마디가 두 자리인 경우 두 숫자 모두 위에 점을 찍어야 한다.\n\n[연속 등식 및 중간 계산]\n1단계: ① $-7.222\\cdots$의 순환마디는 2이므로 $-7.\\dot{2}$로 옳게 나타내었다.\n2단계: ② $0.6111\\cdots$의 순환마디는 1이므로 $0.6\\dot{1}$로 옳게 나타내었다.\n3단계: ③ $0.8282\\cdots$의 순환마디는 82이다. 순환마디를 이루는 숫자가 8과 2의 2개이므로 양 끝인 8과 2 위에 각각 점을 찍어 $0.\\dot{8}\\dot{2}$로 나타내어야 한다. 보기에서는 2 위에만 점을 찍은 $0.8\\dot{2}$로 표기하였으므로 옳지 않다 (거짓).\n4단계: ④ $0.017017\\cdots$의 순환마디는 017(3자리)이므로 양 끝인 0과 7 위에 점을 찍어 $0.\\dot{0}1\\dot{7}$로 옳게 나타내었다.\n5단계: ⑤ $0.31414\\cdots$의 순환마디는 14이므로 $0.3\\dot{1}\\dot{4}$로 옳게 나타내었다.\n\n[경우 나눔 및 선택지 검토]\n③번 표기만이 순환마디의 시작 숫자인 8 위의 점이 누락되어 규칙을 위반하였다.\n\n[결론]\n따라서 옳지 않은 것은 ③이다."
+      },
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "순환마디 양끝점 표기 직접 판정"
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "564f45eab507eb70d68716cffd122a4597252e10",
+      "afterSourceBlobSha": "61676d10b08e9d798ab7c26d1f78ef32e2dcc0f5",
+      "beforeFieldSha256": {
+        "solution": "e13cb4965371d13f82e8b0ee9b8f6f08dae19acf28e4ac7d409f9b0d7ced01f9"
+      },
+      "afterFieldSha256": {
+        "solution": "9504766fb04a4a61429d0f15bda03363f361e849863542b12a85a426f6903011"
+      }
+    },
+    {
+      "examId": "E059",
+      "ordinal": 17,
+      "questionUid": "qid_v1_ca369fe43f9cb81fce2c9a7def6b0918028bac744497fad62576098fdfb35d65",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_팔마중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "The first equation contains unknowns x and y, but no undetermined coefficient.",
+      "before": {
+        "solution": "[원문 조건 및 구할 대상]\n연립방정식 $\\begin{cases} x+4y=6 \\\\ ax-4y=2 \\end{cases}$의 해가 $(2, b)$일 때, $a-b$의 값을 구한다.\n\n[핵심 발상/공식]\n주어진 해 $x=2$를 미지수가 없는 첫 번째 식에 대입하여 $b$를 구한 후, 완성된 순서쌍 $(2, b)$를 두 번째 식에 대입하여 $a$를 구한다.\n\n[연속 등식 및 중간 계산]\n1단계: $x=2, y=b$를 첫 번째 식 $x+4y=6$에 대입한다.\n$2 + 4b = 6$\n$4b = 4 \\implies b = 1$\n따라서 연립방정식의 해는 $x=2, y=1$이다.\n2단계: $x=2, y=1$을 두 번째 식 $ax-4y=2$에 대입한다.\n$a(2) - 4(1) = 2$\n$2a - 4 = 2$\n$2a = 6 \\implies a = 3$\n3단계: $a-b$ 계산\n$a - b = 3 - 1 = 2$\n\n[경우 나눔 및 선택지 검토]\n$a=3, b=1$이므로 $a-b=2$이며 선택지 ②번과 일치한다.\n\n[결론]\n따라서 정답은 ②이다."
+      },
+      "after": {
+        "solution": "[원문 조건 및 구할 대상]\n연립방정식 $\\begin{cases} x+4y=6 \\\\ ax-4y=2 \\end{cases}$의 해가 $(2, b)$일 때, $a-b$의 값을 구한다.\n\n[핵심 발상/공식]\n주어진 해 $x=2$를 미정계수가 없는 첫 번째 식에 대입하여 $b$를 구한 후, 완성된 순서쌍 $(2, b)$를 두 번째 식에 대입하여 $a$를 구한다.\n\n[연속 등식 및 중간 계산]\n1단계: $x=2, y=b$를 첫 번째 식 $x+4y=6$에 대입한다.\n$2 + 4b = 6$\n$4b = 4 \\implies b = 1$\n따라서 연립방정식의 해는 $x=2, y=1$이다.\n2단계: $x=2, y=1$을 두 번째 식 $ax-4y=2$에 대입한다.\n$a(2) - 4(1) = 2$\n$2a - 4 = 2$\n$2a = 6 \\implies a = 3$\n3단계: $a-b$ 계산\n$a - b = 3 - 1 = 2$\n\n[경우 나눔 및 선택지 검토]\n$a=3, b=1$이므로 $a-b=2$이며 선택지 ②번과 일치한다.\n\n[결론]\n따라서 정답은 ②이다."
+      },
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "한 해성분으로 다른성분을 구하고 미정계수식에 대입",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "564f45eab507eb70d68716cffd122a4597252e10",
+      "afterSourceBlobSha": "61676d10b08e9d798ab7c26d1f78ef32e2dcc0f5",
+      "beforeFieldSha256": {
+        "solution": "b5caa3128e433a4199f013ae0c482c8dca58ed690987cb150acbb364096790f6"
+      },
+      "afterFieldSha256": {
+        "solution": "9b51b8e1461641b315bf685299344e604284afedecc3985e4553fd415eca22ef"
+      }
+    },
+    {
+      "examId": "E061",
+      "ordinal": 9,
+      "questionUid": "qid_v1_33c7f08ded5c8fa96043e841201466361777bed299e6fdf148ce294537401f11",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Supply the remaining four direct checks; the first choice remains the sole wrong calculation.",
+      "before": {
+        "solution": "1단계: ① $4x^2 \\times (-5x^3)$의 계수를 계산하면 $4 \\times (-5) = -20$이다.\n2단계: 지수법칙에 의해 문자를 계산하면 $x^2 \\times x^3 = x^{2+3} = x^5$이다.\n3단계: 따라서 결과는 $-20x^5$이 되어야 하므로 $20x^5$로 표기된 ①번은 옳지 않다."
+      },
+      "after": {
+        "solution": "1단계: ① $4x^2 \\times (-5x^3)$의 계수를 계산하면 $4 \\times (-5) = -20$이다.\n2단계: 지수법칙에 의해 문자를 계산하면 $x^2 \\times x^3 = x^{2+3} = x^5$이다.\n3단계: 따라서 결과는 $-20x^5$이 되어야 하므로 $20x^5$로 표기된 ①번은 옳지 않다.\n나머지 보기를 확인하면 다음과 같다.\n② $3x^3\\times(-xy^2)=-3x^4y^2$이다.\n③ $(3x^2)^2\\div(-27x^{11})=\\dfrac{9x^4}{-27x^{11}}=-\\dfrac{1}{3x^7}$이다.\n④ $12x^4\\div(\\frac{4}{3}x^3)=12x^4\\times\\dfrac{3}{4x^3}=9x$이다.\n⑤ $9x^2\\times4x^3\\div6x^4=6x$이다.\n따라서 옳지 않은 것은 ①뿐이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "기존해설의 잘못된 첫보기 계수부호 판정은 직접 곱셈. 다른 보기 검증은 별도 축약이다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "initialFreezeSourceOrdinal": 9,
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "e0263aa2ed587b298d9881fe0b49ff2d80e165f4",
+      "afterSourceBlobSha": "94a6036abff5dd49c68f1dda04c4370b43dfc058",
+      "beforeFieldSha256": {
+        "solution": "d1271d4b4e8080ad7349082884a5e66b5f5c8f737c87cd4ef04a0cb4cbc10cf3"
+      },
+      "afterFieldSha256": {
+        "solution": "739ce8e739d0c72f39bb8ac03ad5363251e8ecdf968746900b27d4b70bebaa20"
+      }
+    },
+    {
+      "examId": "E062",
+      "ordinal": 3,
+      "questionUid": "qid_v1_5c30cd9afdf9683b7e3d171368b561c3b4aad9112fedc413a64e0014c03de379",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Only the fifth option eliminates x; the fourth addition leaves both variables.",
+      "before": {
+        "solution": "[원문 조건 및 구할 대상]\n연립방정식 $\\begin{cases} 3x + 5y = 4 \\quad \\cdots \\text{㉠} \\\\ 5x - 3y = 3 \\quad \\cdots \\text{㉡} \\end{cases}$에서 가감법으로 미지수 $y$를 소거하기 위한 가장 적절한 변형식을 찾는다.\n\n[핵심 발상/공식/보조선]\n가감법으로 한 미지수를 없애려면 없애려는 미지수의 계수의 절댓값을 최소공배수로 맞추어야 한다. 두 계수의 부호가 다르면 두 식을 더하고, 부호가 같으면 두 식을 뺀다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $y$의 계수 파악\n- ㉠식의 $y$의 계수는 $+5$\n- ㉡식의 $y$의 계수는 $-3$\n계수의 절댓값인 5와 3의 최소공배수는 15이다.\n\n2단계: 절댓값을 15로 맞추기 위한 상수배\n- ㉠식의 양변에 3을 곱함: ㉠ $\\times 3 \\implies 9x + 15y = 12$\n- ㉡식의 양변에 5를 곱함: ㉡ $\\times 5 \\implies 25x - 15y = 15$\n\n3단계: 부호 판정에 따른 연산 결정\n$y$의 부호가 서로 반대($+15y$와 $-15y$)이므로 두 식을 더해야 $y$가 소거된다:\n(㉠ $\\times 3$) + (㉡ $\\times 5$)\n$(9x + 15y) + (25x - 15y) = 12 + 15 \\implies 34x = 27$\n따라서 가장 적절한 방법은 ㉠$\\times 3 + $㉡$\\times 5$이다.\n\n[경우 나눔 및 5개 선지 검토]\n- ① ㉠$\\times 3 - $㉡$\\times 4$: $y$의 계수가 맞지 않음\n- ② ㉠$\\times 3 + $㉡$\\times 5$: $y$가 정확히 소거되므로 참\n- ③ ㉠$\\times 3 - $㉡$\\times 5$: 부호가 반대이므로 빼면 $30y$가 되어 소거 안 됨\n- ④, ⑤: $x$를 소거하는 방법임\n\n[명확한 결론]\n따라서 가장 적절한 방법은 ②이다."
+      },
+      "after": {
+        "solution": "[원문 조건 및 구할 대상]\n연립방정식 $\\begin{cases} 3x + 5y = 4 \\quad \\cdots \\text{㉠} \\\\ 5x - 3y = 3 \\quad \\cdots \\text{㉡} \\end{cases}$에서 가감법으로 미지수 $y$를 소거하기 위한 가장 적절한 변형식을 찾는다.\n\n[핵심 발상/공식/보조선]\n가감법으로 한 미지수를 없애려면 없애려는 미지수의 계수의 절댓값을 최소공배수로 맞추어야 한다. 두 계수의 부호가 다르면 두 식을 더하고, 부호가 같으면 두 식을 뺀다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $y$의 계수 파악\n- ㉠식의 $y$의 계수는 $+5$\n- ㉡식의 $y$의 계수는 $-3$\n계수의 절댓값인 5와 3의 최소공배수는 15이다.\n\n2단계: 절댓값을 15로 맞추기 위한 상수배\n- ㉠식의 양변에 3을 곱함: ㉠ $\\times 3 \\implies 9x + 15y = 12$\n- ㉡식의 양변에 5를 곱함: ㉡ $\\times 5 \\implies 25x - 15y = 15$\n\n3단계: 부호 판정에 따른 연산 결정\n$y$의 부호가 서로 반대($+15y$와 $-15y$)이므로 두 식을 더해야 $y$가 소거된다:\n(㉠ $\\times 3$) + (㉡ $\\times 5$)\n$(9x + 15y) + (25x - 15y) = 12 + 15 \\implies 34x = 27$\n따라서 가장 적절한 방법은 ㉠$\\times 3 + $㉡$\\times 5$이다.\n\n[경우 나눔 및 5개 선지 검토]\n- ① ㉠$\\times 3 - $㉡$\\times 4$: $y$의 계수가 맞지 않음\n- ② ㉠$\\times 3 + $㉡$\\times 5$: $y$가 정확히 소거되므로 참\n- ③ ㉠$\\times 3 - $㉡$\\times 5$: 부호가 반대이므로 빼면 $30y$가 되어 소거 안 됨\n- ④ ㉠$\\times5+$㉡$\\times3$: 좌변은 $30x+16y$가 되어 두 미지수 모두 소거되지 않음\n- ⑤ ㉠$\\times5-$㉡$\\times3$: 좌변은 $34y$가 되어 $x$만 소거됨\n\n[명확한 결론]\n따라서 가장 적절한 방법은 ②이다."
+      },
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소거변수의 계수최소공배수로 배수와가감선택"
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "d4ef3b06eef401e568096a14ab7ba815cfcf4856",
+      "afterSourceBlobSha": "95cbd86ec5e1af0448d956dd11ce2f735de366a3",
+      "beforeFieldSha256": {
+        "solution": "582edacb099c6d52547e15e07ef0acf610b3ff8fc1c8fc69c3a8e4e6fe040c58"
+      },
+      "afterFieldSha256": {
+        "solution": "522f4cfc22d6a1c67d0705d7b527bb712597dae5e73c1c0e592f9f4f26bd4f0d"
+      }
+    },
+    {
+      "examId": "E063",
+      "ordinal": 1,
+      "questionUid": "qid_v1_c724c934eb7df3527a47681ce10177a6d5f5d6165af62384787c366b781d324c",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Expand 2(x+y)-3 with constant -3, giving x-6=0; distinguish one-variable from two-variable linear equations.",
+      "before": {
+        "solution": "[원문 조건 및 구할 대상]\n보기 5개의 등식 중 모든 항을 좌변으로 이항하여 정리했을 때 미지수가 2개인 일차방정식인 것을 모두 고른다.\n\n[핵심 발상/공식/보조선]\n$ax + by + c = 0$ ($a, b, c$는 상수, $a \\ne 0, b \\ne 0$)의 꼴로 정리되어야 미지수가 2개인 일차방정식이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: ㄱ. $2x + 3y - 5 = 0$ : 이미 $ax + by + c = 0$ 꼴이며 $a = 2, b = 3$으로 미지수가 2개인 일차방정식이다. (참)\n2단계: ㄴ. $x - y = 2x + y \\implies -x - 2y = 0 \\implies x + 2y = 0$ : 미지수 $x, y$가 모두 살아있고 차수가 1이므로 미지수가 2개인 일차방정식이다. (참)\n3단계: ㄷ. $x - 2y + 3 = -2y + 1 \\implies x + 2 = 0$ : $y$항이 소거되어 미지수가 1개뿐이므로 일차방정식이 아니다. (거짓)\n4단계: ㄹ. $2x^2 + y + 1 = 2(x^2 + \\frac{1}{2}y) + x = 2x^2 + y + x \\implies x - 1 = 0$ : $x^2$항과 $y$항이 모두 소거되어 미지수가 $x$ 하나만 남으므로 거짓이다. (거짓)\n5단계: ㅁ. $x + 2y + 3 = 2(x + y) - 3 = 2x + 2y - 6 \\implies x - 9 = 0$ : $2y$항이 소거되어 미지수가 $x$ 하나만 남으므로 거짓이다. (거짓)\n\n[경우 나눔 및 5개 선지 검토]\n참인 것은 ㄱ, ㄴ뿐이므로 ①번 선지가 정답이다.\n\n[명확한 결론]\n따라서 정답은 ①이다."
+      },
+      "after": {
+        "solution": "[원문 조건 및 구할 대상]\n보기 5개의 등식 중 모든 항을 좌변으로 이항하여 정리했을 때 미지수가 2개인 일차방정식인 것을 모두 고른다.\n\n[핵심 발상/공식/보조선]\n$ax + by + c = 0$ ($a, b, c$는 상수, $a \\ne 0, b \\ne 0$)의 꼴로 정리되어야 미지수가 2개인 일차방정식이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: ㄱ. $2x + 3y - 5 = 0$ : 이미 $ax + by + c = 0$ 꼴이며 $a = 2, b = 3$으로 미지수가 2개인 일차방정식이다. (참)\n2단계: ㄴ. $x - y = 2x + y \\implies -x - 2y = 0 \\implies x + 2y = 0$ : 미지수 $x, y$가 모두 살아있고 차수가 1이므로 미지수가 2개인 일차방정식이다. (참)\n3단계: ㄷ. $x - 2y + 3 = -2y + 1 \\implies x + 2 = 0$ : $y$항이 소거되어 미지수가 1개뿐이므로 미지수가 두 개인 일차방정식이 아니다. (거짓)\n4단계: ㄹ. $2x^2 + y + 1 = 2(x^2 + \\frac{1}{2}y) + x = 2x^2 + y + x \\implies x - 1 = 0$ : $x^2$항과 $y$항이 모두 소거되어 미지수가 $x$ 하나만 남으므로 거짓이다. (거짓)\n5단계: ㅁ. $x + 2y + 3 = 2(x + y) - 3 = 2x + 2y - 3 \\implies x - 6 = 0$ : $2y$항이 소거되어 미지수가 $x$ 하나만 남으므로 거짓이다. (거짓)\n\n[경우 나눔 및 5개 선지 검토]\n참인 것은 ㄱ, ㄴ뿐이므로 ①번 선지가 정답이다.\n\n[명확한 결론]\n따라서 정답은 ①이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "다섯 등식을 정리해 남는 미지수와 차수를 판정한다. ㅁ의 기존해설 상수 전개 오류는 분류에 영향 없는 부채로 보존한다."
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "7e5f548e2690fef86f2e2bde4f3c520cc2117637",
+      "afterSourceBlobSha": "86ebc367a18ff7628ddf3088e0174fccea9e1dcc",
+      "beforeFieldSha256": {
+        "solution": "0de8c394fa65f4629121f0653aab67ce70c71719f7df83536fbd4d324e979c1b"
+      },
+      "afterFieldSha256": {
+        "solution": "b481132848ac04fca6d0910ff2493ffa2015d731a2dbfd0e853be6f3752d0eb9"
+      }
+    },
+    {
+      "examId": "E064",
+      "ordinal": 9,
+      "questionUid": "qid_v1_56e70166e404b75ca05faeadf94b889236f582bb04ba9c995530298b0d12330d",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Replace a check dividing by b with comparison after multiplying an equation by -1, valid also at b=0.",
+      "before": {
+        "solution": "[원문 조건 및 구할 대상]\n두 일차방정식 $ax - y = 3$, $2x + y = b$의 그래프가 서로 만나지 않을 때 상수 $a, b$의 조건을 구한다.\n\n[핵심 발상/공식/보조선]\n두 직선이 서로 만나지 않는다는 것은 두 직선이 평행하다는 것이며, 이는 기울기는 같고 $y$절편은 다르다는 것을 의미한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 두 방정식을 $y = mx + n$ 형태로 정리\n$ax - y = 3 \\implies y = ax - 3$\n$2x + y = b \\implies y = -2x + b$\n2단계: 평행 조건 적용\n- 기울기가 같아야 하므로: $a = -2$\n- $y$절편이 달라야 하므로: $-3 \\ne b \\implies b \\ne -3$\n3단계: 계수 비 공식으로 재검증\n$\\frac{a}{2} = \\frac{-1}{1} \\ne \\frac{3}{b} \\implies a = -2, \\; b \\ne -3$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $a=-2, b=-3$: 두 직선이 일치하여 무수히 많은 점에서 만남\n- ② $a=-2, b \\ne -3$: 두 직선이 평행하여 결코 만나지 않음 (정답)\n- ③, ④, ⑤: 기울기 조건 $a=-2$를 만족하지 않음\n\n[명확한 결론]\n따라서 $a = -2, b \\ne -3$이므로 정답은 ②이다."
+      },
+      "after": {
+        "solution": "[원문 조건 및 구할 대상]\n두 일차방정식 $ax - y = 3$, $2x + y = b$의 그래프가 서로 만나지 않을 때 상수 $a, b$의 조건을 구한다.\n\n[핵심 발상/공식/보조선]\n두 직선이 서로 만나지 않는다는 것은 두 직선이 평행하다는 것이며, 이는 기울기는 같고 $y$절편은 다르다는 것을 의미한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 두 방정식을 $y = mx + n$ 형태로 정리\n$ax - y = 3 \\implies y = ax - 3$\n$2x + y = b \\implies y = -2x + b$\n2단계: 평행 조건 적용\n- 기울기가 같아야 하므로: $a = -2$\n- $y$절편이 달라야 하므로: $-3 \\ne b \\implies b \\ne -3$\n3단계: 같은 좌변으로 재검증\n$a=-2$일 때 첫째 식은 $-2x-y=3$이다. 둘째 식의 양변에 $-1$을 곱하면 $-2x-y=-b$이다.\n두 직선이 만나지 않으려면 같은 좌변에 대한 우변이 달라야 하므로 $3\\ne-b$, 즉 $b\\ne-3$이다. 이 비교는 $b=0$일 때도 유효하다.\n\n[경우 나눔 및 5개 선지 검토]\n- ① $a=-2, b=-3$: 두 직선이 일치하여 무수히 많은 점에서 만남\n- ② $a=-2, b \\ne -3$: 두 직선이 평행하여 결코 만나지 않음 (정답)\n- ③, ④, ⑤: 기울기 조건 $a=-2$를 만족하지 않음\n\n[명확한 결론]\n따라서 $a = -2, b \\ne -3$이므로 정답은 ②이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "기울기같고절편다름으로무교점조건결정. 기존재검산3/b식은b=0가능성에대한정의부채.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 9
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "3719786d498445a0c868208c94424793768b2d9b",
+      "afterSourceBlobSha": "3dc56770a63e5ac567f6b3fef5e6a019cc03424f",
+      "beforeFieldSha256": {
+        "solution": "fee02b7e137241ad6f501431495c1cc19b26247a8fc688be8b456d93fb88c2a8"
+      },
+      "afterFieldSha256": {
+        "solution": "5b1bd0fa80f4dbcf4bcdc2171fa27ac6d53b75798e7853275130329cd696c6c2"
+      }
+    },
+    {
+      "examId": "E065",
+      "ordinal": 7,
+      "questionUid": "qid_v1_25339208c6c5165ab6c27761092fa631b57c6556d078b6b181b79d0d89963ee5",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Compare the equations after multiplication by the nonzero constant 3/2, avoiding division by an unknown b.",
+      "before": {
+        "solution": "[원문 조건 및 구할 대상]\n연립방정식 $\\begin{cases} x+ay=4 \\\\ bx-y=6 \\end{cases}$의 해가 무수히 많을 때, 두 상수 $a, b$의 곱 $ab$의 값을 구한다.\n\n[핵심 발상/공식]\n연립방정식 $\\begin{cases} ax+by=c \\\\ a'x+b'y=c' \\end{cases}$에서 해가 무수히 많을 조건은 계수와 상수항의 비가 일치하는 $\\dfrac{a}{a'} = \\dfrac{b}{b'} = \\dfrac{c}{c'}$이다.\n\n[연속 등식 및 중간 계산]\n1단계: 계수와 상수항의 비를 등식으로 세운다.\n$\\dfrac{1}{b} = \\dfrac{a}{-1} = \\dfrac{4}{6}$\n2단계: 상수항의 비를 간단히 하면 $\\dfrac{4}{6} = \\dfrac{2}{3}$이다.\n3단계: 각 미지수의 값을 구한다.\n- $\\dfrac{1}{b} = \\dfrac{2}{3} \\implies 2b = 3 \\implies b = \\dfrac{3}{2}$\n- $\\dfrac{a}{-1} = \\dfrac{2}{3} \\implies a = -\\dfrac{2}{3}$\n4단계: $ab$의 곱을 계산한다.\n$ab = \\left(-\\dfrac{2}{3}\\right) \\times \\left(\\dfrac{3}{2}\\right) = -1$\n\n[경우 나눔 및 선택지 검토]\n계산 결과 $ab = -1$이며 선택지 ①번과 정확히 일치한다.\n\n[결론]\n따라서 정답은 ①이다."
+      },
+      "after": {
+        "solution": "해가 무수히 많으려면 두 식이 같은 직선을 나타내야 한다.\n첫째 식의 상수항 $4$를 둘째 식의 상수항 $6$에 맞추기 위해 첫째 식의 양변에 $\\dfrac32$를 곱하면\n$\\dfrac32x+\\dfrac{3a}{2}y=6$이다.\n이를 둘째 식 $bx-y=6$과 비교하면 $b=\\dfrac32$, $\\dfrac{3a}{2}=-1$이므로 $a=-\\dfrac23$이다.\n따라서 $ab=(-\\dfrac23)\\times\\dfrac32=-1$이므로 정답은 ①이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "무수히 많은 해의 계수·상수항 비를 일치시켜 미정계수 결정; 분모 b의 영 예외를 해설에서 별도로 다루지 않음"
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "bdc3f60bea0c7f03530b2ea81bbdf73156fd14aa",
+      "afterSourceBlobSha": "76c371302a0a2b38eb237a578c364a06db241d2c",
+      "beforeFieldSha256": {
+        "solution": "79ab71255910b81a849aebf374261069ce43b35b445701b069098640fe7bc70a"
+      },
+      "afterFieldSha256": {
+        "solution": "eba3e9fef996812c9b2e525d34f22654a068e9cee20f0832ae007fcf84d8ac66"
+      }
+    },
+    {
+      "examId": "E065",
+      "ordinal": 19,
+      "questionUid": "qid_v1_6eb9d9fd1fcbe1a0c4cf5338c66fd9d54fa2f5a567b3e484cb3460ef1b3e544e",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Use the actual square vertices (1,-1),(5,-1),(5,3),(1,3); its center and final choice are unchanged.",
+      "before": {
+        "solution": "[원문 조건 및 구할 대상]\n그림에 주어진 정사각형의 넓이를 이등분하지 않는 직선의 방정식을 선지에서 찾는다.\n\n[핵심 발상/공식]\n직사각형이나 정사각형의 넓이를 이등분하는 직선은 대칭성에 의해 반드시 그 도형의 대칭중심(두 대각선의 교점)을 지난다. 대칭중심을 지나는 직선은 정사각형을 서로 합동인 두 도형으로 분할하므로 넓이가 항상 이등분된다.\n\n[연속 등식 및 중간 계산]\n1단계: 정사각형의 대칭중심(대각선의 교점) 좌표 구하기\n그림에서 정사각형의 네 꼭짓점은 $(2, 0), (4, 0), (4, 2), (2, 2)$이다.\n- 대칭중심의 $x$좌표: $\\dfrac{2 + 4}{2} = 3$\n- 대칭중심의 $y$좌표: $\\dfrac{0 + 2}{2} = 1$\n따라서 대칭중심의 좌표는 $(3, 1)$이다.\n정사각형의 넓이를 이등분하는 모든 직선은 반드시 점 $(3, 1)$을 지나야 한다.\n2단계: 각 선지의 직선에 점 $(3, 1)$을 대입하여 성립 여부를 확인한다.\n- ① $x-y-2=0 \\implies 3 - 1 - 2 = 0$ (성립, 넓이를 이등분함)\n- ② $-x+3y+1=0 \\implies -3 + 3(1) + 1 = 1 \\ne 0$ (불성립, 대칭중심을 지나지 않음!)\n- ③ $2x-3y-3=0 \\implies 2(3) - 3(1) - 3 = 6 - 6 = 0$ (성립, 넓이를 이등분함)\n- ④ $-3x+y+8=0 \\implies -3(3) + 1 + 8 = -9 + 9 = 0$ (성립, 넓이를 이등분함)\n- ⑤ $y=1 \\implies 1 = 1$ (성립, 넓이를 이등분함)\n\n[경우 나눔 및 선택지 검토]\n점 $(3, 1)$을 지나지 않는 직선은 ②번뿐이므로 정사각형의 넓이를 이등분할 수 없다.\n\n[결론]\n따라서 정답은 ②이다."
+      },
+      "after": {
+        "solution": "[원문 조건 및 구할 대상]\n그림에 주어진 정사각형의 넓이를 이등분하지 않는 직선의 방정식을 선지에서 찾는다.\n\n[핵심 발상/공식]\n직사각형이나 정사각형의 넓이를 이등분하는 직선은 대칭성에 의해 반드시 그 도형의 대칭중심(두 대각선의 교점)을 지난다. 대칭중심을 지나는 직선은 정사각형을 서로 합동인 두 도형으로 분할하므로 넓이가 항상 이등분된다.\n\n[연속 등식 및 중간 계산]\n1단계: 정사각형의 대칭중심(대각선의 교점) 좌표 구하기\n그림에서 정사각형의 네 꼭짓점은 $(1, -1), (5, -1), (5, 3), (1, 3)$이다.\n- 대칭중심의 $x$좌표: $\\dfrac{1 + 5}{2} = 3$\n- 대칭중심의 $y$좌표: $\\dfrac{-1 + 3}{2} = 1$\n따라서 대칭중심의 좌표는 $(3, 1)$이다.\n정사각형의 넓이를 이등분하는 모든 직선은 반드시 점 $(3, 1)$을 지나야 한다.\n2단계: 각 선지의 직선에 점 $(3, 1)$을 대입하여 성립 여부를 확인한다.\n- ① $x-y-2=0 \\implies 3 - 1 - 2 = 0$ (성립, 넓이를 이등분함)\n- ② $-x+3y+1=0 \\implies -3 + 3(1) + 1 = 1 \\ne 0$ (불성립, 대칭중심을 지나지 않음!)\n- ③ $2x-3y-3=0 \\implies 2(3) - 3(1) - 3 = 6 - 6 = 0$ (성립, 넓이를 이등분함)\n- ④ $-3x+y+8=0 \\implies -3(3) + 1 + 8 = -9 + 9 = 0$ (성립, 넓이를 이등분함)\n- ⑤ $y=1 \\implies 1 = 1$ (성립, 넓이를 이등분함)\n\n[경우 나눔 및 선택지 검토]\n점 $(3, 1)$을 지나지 않는 직선은 ②번뿐이므로 정사각형의 넓이를 이등분할 수 없다.\n\n[결론]\n따라서 정답은 ②이다."
+      },
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "직사각형 넓이를 이등분하는 중심 통과 조건으로 직선식 선택; 실제 꼭짓점과 해설 꼭짓점이 다르나 중심은 같음",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "bdc3f60bea0c7f03530b2ea81bbdf73156fd14aa",
+      "afterSourceBlobSha": "76c371302a0a2b38eb237a578c364a06db241d2c",
+      "beforeFieldSha256": {
+        "solution": "6a1f6b58a3ee2d9a9d28f213e5a8fb4925871532e03cdbc1d3dca31321cd95b6"
+      },
+      "afterFieldSha256": {
+        "solution": "cc9f9ff7807adc8b1b538ad5c88eb54198823338df9b37e09c874e29f2792f81"
+      }
+    },
+    {
+      "examId": "E068",
+      "ordinal": 9,
+      "questionUid": "qid_v1_447bbb99124393e8bb53e108a7a531bb533437736e9f663b831ce59074a7f19e",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Express division with excess denominator powers as a fraction, within the stated middle-school exponent method.",
+      "before": {
+        "solution": "① $a^{2}\\times a^{4}=a^{2+4}=a^{6}$\n② $a^{6}\\div a^{8}=a^{6-8}=a^{-2}=\\frac{1}{a^{2}}$\n③ $x^{3}\\times x^{2}\\div x=x^{3+2-1}=x^{4}$\n④ $(x^{3})^{2}\\div x^{2}=x^{6}\\div x^{2}=x^{4}$ 이므로 $x^{3}$이 아닙니다.\n⑤ $x^{3}\\div x^{2}\\times (x^{2})^{2}=x^{3-2+4}=x^{5}$\n따라서 잘못된 것은 ④입니다."
+      },
+      "after": {
+        "solution": "① $a^{2}\\times a^{4}=a^{2+4}=a^{6}$\n② $a^{6}\\div a^{8}=\\frac{a^6}{a^8}=\\frac{1}{a^{8-6}}=\\frac{1}{a^{2}}$\n③ $x^{3}\\times x^{2}\\div x=x^{3+2-1}=x^{4}$\n④ $(x^{3})^{2}\\div x^{2}=x^{6}\\div x^{2}=x^{4}$ 이므로 $x^{3}$이 아닙니다.\n⑤ $x^{3}\\div x^{2}\\times (x^{2})^{2}=x^{3-2+4}=x^{5}$\n따라서 잘못된 것은 ④입니다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "거듭제곱/곱/몫의 여러 지수법칙을 보기별 비교"
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "94f6d0b5fff97426b5cc45ee90e001a127a928d7",
+      "afterSourceBlobSha": "14d2a0fedac69e86078d1098c14dd50b970e3f5f",
+      "beforeFieldSha256": {
+        "solution": "2b52e69eb528bd09b0bd5e61f2293cceab92b626cdf02d6443bf4e2021b10d02"
+      },
+      "afterFieldSha256": {
+        "solution": "fb94c0f18406f10dfca6df0e5c0ba31c78dc11b1c29ca6697d38123ed6c09f0b"
+      }
+    },
+    {
+      "examId": "E075",
+      "ordinal": 6,
+      "questionUid": "qid_v1_60d136d40490d26320ebf194f41d706006d1bd2aa5768f8f6c3512341a83e381",
+      "sourcePath": "archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Multiply the second equation by -2 before comparing coefficients; no division by 1+2k occurs.",
+      "before": {
+        "solution": "[원문 조건 및 구할 대상]\n연립일차방정식의 해가 무수히 많을 때 상수 $k$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n연립방정식 $\\begin{cases} a_1 x + b_1 y = c_1 \\\\ a_2 x + b_2 y = c_2 \\end{cases}$의 해가 무수히 많을 조건은 계수의 비가 모두 일치하는 것이다: $\\frac{a_1}{a_2} = \\frac{b_1}{b_2} = \\frac{c_1}{c_2}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 계수 비 등식 세우기\n$\\frac{2}{-1} = \\frac{-6}{1+2k} = \\frac{-2}{1}$\n2단계: $\\frac{2}{-1} = -2$이므로\n$\\frac{-6}{1+2k} = -2$\n3단계: $k$ 구하기\n$-2(1 + 2k) = -6$\n$1 + 2k = 3$\n$2k = 2 \\implies k = 1$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $-\\frac{1}{4}$: 오답\n- ② 1: 계산된 값 1과 일치\n- ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 $k = 1$이므로 정답은 ②이다."
+      },
+      "after": {
+        "solution": "해가 무수히 많으려면 두 식이 같은 직선을 나타내야 한다.\n㉡의 양변에 $-2$를 곱하면 $2x-2(1+2k)y=-2$이다.\n이를 ㉠ $2x-6y=-2$와 비교하면 $-2(1+2k)=-6$이어야 한다.\n따라서 $1+2k=3$, $k=1$이다.\n$k=1$을 대입하면 ㉡에 $-2$를 곱한 식이 ㉠과 완전히 같아 해가 무수히 많다. 따라서 정답은 ②이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "무수히많은해의계수비조건을이용한다.기존해설이1+2k분모0예외를분리하지않은좁은부채로낮은확신."
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "c27e7c94543446f4a65e9c493159f79e0f2f0cec",
+      "afterSourceBlobSha": "0b274e50f77fd082ba0980337a099c72d8df2fff",
+      "beforeFieldSha256": {
+        "solution": "7e4d949811e593a457c3c21e183c50fd3f1253d25720032e2603edf05070f328"
+      },
+      "afterFieldSha256": {
+        "solution": "7f17fffd6f1c78db5a408cd3f5a651f4c3ed710d6973b5c7c57599582d36aa70"
+      }
+    },
+    {
+      "examId": "E075",
+      "ordinal": 18,
+      "questionUid": "qid_v1_cf84bf35f4720664d68008ccee6740917650f9f51e19bb4335eb21342d22c2d6",
+      "sourcePath": "archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "reason": "Keep the exact boundary 29/3 throughout; avoid treating a rounded decimal as an equality or exact endpoint.",
+      "before": {
+        "solution": "[원문 조건 및 구할 대상]\n현재 아버지와 아들의 나이 합이 40세일 때 주어진 부등식 조건을 만족하는 현재 아들의 나이를 구한다.\n\n[핵심 발상/공식/보조선]\n현재 아들의 나이를 $x$세(자연수)라 하면 아버지 나이는 $40 - x$세이다. 현재 조건과 11년 후 조건을 각각 부등식으로 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 현재 조건 부등식\n$40 - x \\ge 3x \\implies 4x \\le 40 \\implies x \\le 10$\n2단계: 11년 후 조건 부등식\n11년 후 아들은 $x + 11$세, 아버지는 $(40 - x) + 11 = 51 - x$세\n$51 - x < 2(x + 11)$\n$51 - x < 2x + 22$\n$3x > 29 \\implies x > \\frac{29}{3} = 9.667$\n3단계: 공통 범위에서 자연수 $x$ 찾기\n$9.667 < x \\le 10$\n따라서 자연수 $x = 10$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 9세: $x > 9.667$ 조건에 위배\n- ② 10세: 조건에 부합하는 유일한 나이\n- ③, ④, ⑤: $x \\le 10$ 조건에 위배\n\n[명확한 결론]\n따라서 현재 아들의 나이는 10세이므로 정답은 ②이다."
+      },
+      "after": {
+        "solution": "[원문 조건 및 구할 대상]\n현재 아버지와 아들의 나이 합이 40세일 때 주어진 부등식 조건을 만족하는 현재 아들의 나이를 구한다.\n\n[핵심 발상/공식/보조선]\n현재 아들의 나이를 $x$세(자연수)라 하면 아버지 나이는 $40 - x$세이다. 현재 조건과 11년 후 조건을 각각 부등식으로 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 현재 조건 부등식\n$40 - x \\ge 3x \\implies 4x \\le 40 \\implies x \\le 10$\n2단계: 11년 후 조건 부등식\n11년 후 아들은 $x + 11$세, 아버지는 $(40 - x) + 11 = 51 - x$세\n$51 - x < 2(x + 11)$\n$51 - x < 2x + 22$\n$3x > 29 \\implies x > \\frac{29}{3}$\n3단계: 공통 범위에서 자연수 $x$ 찾기\n$\\frac{29}{3} < x \\le 10$\n따라서 자연수 $x = 10$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 9세: $x > \\frac{29}{3}$ 조건에 위배\n- ② 10세: 조건에 부합하는 유일한 나이\n- ③, ④, ⑤: $x \\le 10$ 조건에 위배\n\n[명확한 결론]\n따라서 현재 아들의 나이는 10세이므로 정답은 ②이다."
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "현재와미래나이두조건의공통범위에서자연수를선택한다.기존29/3=9.667은근삿값을등호로쓴표현부채로보존."
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "c27e7c94543446f4a65e9c493159f79e0f2f0cec",
+      "afterSourceBlobSha": "0b274e50f77fd082ba0980337a099c72d8df2fff",
+      "beforeFieldSha256": {
+        "solution": "b4ff23ac97a49deb51ffc11757f86938a55adf29f13e611449a241114eb594dd"
+      },
+      "afterFieldSha256": {
+        "solution": "7b0752af96d0c476a56c605d4323aeac00611a1a216776b66a886b8dc590df41"
+      }
+    },
+    {
+      "examId": "E040",
+      "ordinal": 17,
+      "questionUid": "qid_v1_670d367bd0fda423aa0897817e80a681a2c27d6bdbf29e462ad0ab82da5e44be",
+      "sourcePath": "archive/exams/original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "content"
+      ],
+      "reason": "Replace the incorrect answer-revealing alt text with the two pairs of coordinates actually shown by the unchanged image.",
+      "before": {
+        "content": "<p>17. 동생과 형이 800m 달리기 시합을 하는데 동생이 출발선으로부터 200m 앞에서 출발하기로 하였다. 오른쪽 그림은 두 사람이 동시에 출발한 지 $x$초 후에 출발선으로부터의 거리를 $y\\text{m}$라고 할 때, $x$와 $y$ 사이의 관계를 그래프로 나타낸 것이다. 형이 동생을 앞지르기 시작하는 시간은 출발한 지 몇 초 후인가? [5점]</p><p><img src=\"assets/images/21_매산중_1학기_기말_중2_수학/q17.png\" alt=\"달리기 시합 거리-시간 그래프: 형 y = 8x, 동생 y = 3x + 200 및 40초 시점의 교점\" class=\"question-image\"></p>"
+      },
+      "after": {
+        "content": "<p>17. 동생과 형이 800m 달리기 시합을 하는데 동생이 출발선으로부터 200m 앞에서 출발하기로 하였다. 오른쪽 그림은 두 사람이 동시에 출발한 지 $x$초 후에 출발선으로부터의 거리를 $y\\text{m}$라고 할 때, $x$와 $y$ 사이의 관계를 그래프로 나타낸 것이다. 형이 동생을 앞지르기 시작하는 시간은 출발한 지 몇 초 후인가? [5점]</p><p><img src=\"assets/images/21_매산중_1학기_기말_중2_수학/q17.png\" alt=\"달리기 시합 거리-시간 그래프: 형의 직선은 (0, 0)과 (160, 800), 동생의 직선은 (0, 200)과 (200, 800)을 지난다.\" class=\"question-image\"></p>"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "실제그림의 두 직선과 한 교점방정식은 정형 활용이라 source상3 대신 중2/low 제안. alt 충돌 부채를 보존하며 독립검토를 요청한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 17
+      },
+      "sourceBaseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+      "beforeSourceBlobSha": "20a34625713e72946bf17aade5135fc66724ca31",
+      "afterSourceBlobSha": "d646e6a4b4858d7738fe2b4cd9ec60b38a53a3ac",
+      "beforeFieldSha256": {
+        "content": "3bb94e09b9ab12acc2d514e29026c8e8dfc00a3b67349df60b217fbbd1d2b12a"
+      },
+      "afterFieldSha256": {
+        "content": "1fb9c1441432df464d2176b99f33480ed06d7b9dcab5fa06b2905b44dca3b182"
+      }
+    }
+  ]
+}

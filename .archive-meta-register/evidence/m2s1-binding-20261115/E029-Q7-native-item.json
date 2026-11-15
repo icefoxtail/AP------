@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "archive-native-review-item-excerpt-v1",
+  "sourceReview": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E029/accepted-review.json",
+    "rawSha256": "f49dca98cbcb5432515ba2182848cf9c83c15c1c7b284942f5b26df5ec0b535b"
+  },
+  "item": {
+    "sourceOrdinal": 7,
+    "questionUid": "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+    "verdict": "REGISTRATION_PENDING",
+    "rpmRecordId": "M2-RPM-053",
+    "rpmDecision": "CORRECT",
+    "primaryMethod": "평행한 그림의 기울기와 지나는 점으로 직선 계수 결정",
+    "decisiveStep": "그림기울기−4/3에서a3,점대입에서b−8을얻는다.",
+    "beforeSource": {
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "beforeMetadata": {
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "integrationPattern": null,
+      "level": null,
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "after": {
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "일차함수의 뜻과 그래프"
+    },
+    "semanticDecision": {
+      "semanticCurriculum": "2015",
+      "machineCurriculum": "2015",
+      "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "rpmPath": {
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프",
+        "l3": "식 구하기",
+        "l4": "기울기와 한 점으로 식 구하기"
+      },
+      "rpmBasePath": {
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프",
+        "l3": "식 구하기",
+        "l4": "기울기와 한 점으로 식 구하기"
+      },
+      "rpmRecordId": "M2-RPM-053",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_PARALLEL",
+      "activeProjection": "REGISTRATION_PENDING",
+      "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+      "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+      "semanticScope": "M2-1",
+      "inspectedTemplateCandidates": [
+        {
+          "templateKey": "TPL_LINE_PARALLEL",
+          "parentProblemTypeKey": "PT_LINE_EQUATION",
+          "definition": "주어진 직선과 같은 기울기 또는 같은 법선계수를 이용해 평행한 직선을 구한다.",
+          "internalSkeleton": "주어진 직선과 같은 기울기 또는 같은 법선계수를 이용해 평행한 직선을 구한다.",
+          "status": "ACTIVE"
+        },
+        {
+          "templateKey": "TPL_LINE_POINT_SLOPE",
+          "parentProblemTypeKey": "PT_LINE_EQUATION",
+          "definition": "한 점과 기울기를 이용하여 점-기울기형 또는 y=mx+n 꼴로 직선을 구한다.",
+          "internalSkeleton": "한 점과 기울기를 이용하여 점-기울기형 또는 y=mx+n 꼴로 직선을 구한다.",
+          "status": "ACTIVE"
+        }
+      ],
+      "crossConceptDefinitions": []
+    },
+    "fieldReview": {
+      "classification": "기울기와한점으로직선계수를정하는053으로분류한다. 원래EQUATIONnamespace는같은학년의BASIC으로좁은분류보정제안이다.",
+      "binding": "GLOBALLINE_PARALLEL의같은기울기와POINT_SLOPE의주어진점으로직선계수를정하는골격이실제해설에있다. 같은기울기에서계수a를복원하고점을대입하므로parallel후보를우선보존하되2015binding은미확정이다.",
+      "crossConcept": "선택한primary의기본대수·그림읽기단계를CC로중복하지않는다.",
+      "condition": "입력수치와좌표는given이며별도정의역·해선택제한을임의로추가하지않는다.",
+      "integration": "primary의표준절차로이어지고별도외부개념통합은없다.",
+      "difficulty": "그림의 두 절편으로 기울기, 평행 조건으로 a, 주어진 점 대입으로 b를 구하는 안내된 연속 절차.",
+      "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+    },
+    "reason": "기울기와한점으로직선계수를정하는053으로분류한다. 원래EQUATIONnamespace는같은학년의BASIC으로좁은분류보정제안이다. 그림기울기−4/3에서a3,점대입에서b−8을얻는다.",
+    "registrationDebt": [
+      "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+      "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+    ],
+    "proposalRefs": [],
+    "finalDifficulty": {
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "그림의 두 절편으로 기울기, 평행 조건으로 a, 주어진 점 대입으로 b를 구하는 안내된 연속 절차."
+    },
+    "contentDebt": [],
+    "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+    "sourceEvidence": {
+      "sourceGitBlobSha": "b4081251ca79dfa3ba9eebfff3aad0ebb7398297",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "be4cbdd5ae048852034ee785d66ff5ce7cd310d59bd0d39fd3bc80296508f695"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ccf1fb2d0d87bd04f5cd1a8ae06dfedf7b79a57bfb5a45aa767e6959aa4c0f26"
+        }
+      ]
+    },
+    "initialDifficultyFreeze": {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "그림의 두 절편으로 기울기, 평행 조건으로 a, 주어진 점 대입으로 b를 구하는 안내된 연속 절차."
+    }
+  }
+}

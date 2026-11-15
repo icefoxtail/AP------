@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_CURRENT_FIGURE_REPAIR",
+  "producer": "/root/m2s1_release",
+  "currentSourceBlobSha": "115086462eaac3e46b6e59b70f40f02c8c4a0f13",
+  "currentSourceRawSha256": "a73016aa029d7efee8d6c8800d4aaa3bfc54c1168af60410c6d2fffe57a0deac",
+  "narrowEvidence": {
+    "spec": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/source-change-spec.json",
+      "sha256": "7b4ead8f69fbf8afff5478c26e411bde214c8d672694461b49347705a1621ea6"
+    },
+    "sourceProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/source-proposal.json",
+      "sha256": "6d5bdc711398784029f057f8870c8476d39e73f40a3d56191578a07fabe4d906"
+    },
+    "rootIndependent": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/root-independent-review.json",
+      "sha256": "069bfc84e8f9b79d81a2cd1524f33c6c10bc0f72207bdc3268094347ad2fdb4a"
+    },
+    "m3Independent": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/m3-independent-review.json",
+      "sha256": "37327bc7011ad2727a506ddaad422e20d16d747a8ef3ff11175e2aa7389a0e9f"
+    },
+    "currentReviewClosure": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/current-review-closure.json",
+      "sha256": "4c3175969caffb5f15cdd8c5276ba4ce4c0babae979b26a8932b1cccba082fa4"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 24,
+    "selectedQuestions": 2
+  },
+  "newAdvancedMetadataApprovals": 0,
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js",
+      "ordinal": 15,
+      "questionUid": "qid_v1_ec72c2b6e583c9e010a6e6aad0715c4d294c099f1e6e15914a7ec37e3b7496fb",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "sourceFingerprint": "522d8c043ca90ff8db55ef01dbf6f53d2e07f0114deb9f01a6728fe866416eaf",
+        "contentFingerprint": "9dd7822798d1c20287ad11ff4502cad6bfc4839cef8e1d34a5e6c0f4e4ccec2c"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "5f594c5ffe53a977d9aa97426848939fabb1e60a911ec484d7cf33957be4aec7",
+      "contentFingerprint": "9dd7822798d1c20287ad11ff4502cad6bfc4839cef8e1d34a5e6c0f4e4ccec2c",
+      "staleSourceBinding": false,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "기울기와 y절편에 맞는 실제 그림 선택; 기존해설은②이나 실제⑤와 조건이 맞는 번호 충돌\nCurrent narrow source repair: The actual fifth graph passes through (0,1) and (2,-2). Correct only the answer and graph-number references in the existing solution; preserve accepted difficulty. The existing accepted numeric difficulty and low confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js",
+      "ordinal": 22,
+      "questionUid": "qid_v1_95b71006923b7c86954408374061925e4e7a6921b7fdfb22fc438c30c8e4b69d",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "sourceFingerprint": "cdce1d9338aba6ab5a683c7beacde45c5529eec4c42a6dc484b40ee9d961be4f",
+        "contentFingerprint": "0c2d81f49623d25072a24645c3004ef4f09dfd4c5bb1c80d3eb89d73100d9713"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "01ed2bc9b93e29b3c9ab46eb6e9c764fcd98f125b0bc29d0ca22f8f741934644",
+      "contentFingerprint": "80c5712cbae836758f2dc3c535d7fdb72ef9ad8fed5a151fc8a8e63447c53570",
+      "staleSourceBinding": true,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "총시간과 열량에 대한 두 식을 세우고 문제에서 지정한 가감법을 적용하는 표준 활용이다. 가감법과 구할 양이 직접 제시되어 전략 선택 부담은 작다. 실제 만화 수치로 수리한 현재 문항에 대한 새 판정이다.\nCurrent narrow source repair: Use the four actual quantities printed in the cartoon. Correct the alt, two equations, numerical solution and answer while preserving the unchanged three requested tasks and image. This is a fresh independently reviewed numeric difficulty decision on the corrected current source; the old UNKNOWN review is retained as history. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+    }
+  ]
+}
