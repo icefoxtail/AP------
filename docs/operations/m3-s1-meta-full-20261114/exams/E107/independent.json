@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E107",
+  "author": "meta_b",
+  "reviewer": "meta_a_resume_d03144c8ca75",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "D03144C8CA75/A",
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE",
+  "sourceBaseBlob": "5d8ffc3061073ac15c5e8c77bac1663d6ea7baaa",
+  "inputHashes": {
+    "reviewSha256": "2b9b4b613c0f2d687f68ab695f2ed356c1e7804f43c1e5050073f68cb457e22d",
+    "fourSlotSha256": "d28107e18ca80d575bfc778432ed9b60d0aff55da91d37e5e29312be41db9842"
+  },
+  "sampledOrdinals": [
+    8,
+    18,
+    20
+  ],
+  "basis": "실제 본문·보기·기존 해설과 표본 4칸의 의미 및 PNG를 독립 관측. 전수 수학 재풀이 없음. 작성자와 다른 reviewer가 시행.",
+  "findings": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_02a909f1b80c7584db8c56c9073ca1a82a891dabab5067a11b71a0590f72f473",
+      "status": "ACCEPTED_WITH_EXPLICIT_DEBT",
+      "note": "이등변삼각형의 두 각 관계를 사용하여 AD=BD=BC를 얻고 닮음의 길이 비로 이차방정식을 세우는 핵심이 일치한다. 039 parent·AA닮음/이등변 CC·bucket4를 수용한다. 실제 q08 이미지 하단에서 B/C와 밑변이 잘린 부채를 확인했으며 원본 복구 전 내용 품질 PASS는 주장하지 않는다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_9f07da20debf39b3d289a6b5ff421861888976f2f63110b4a1bdcd989c41c77d",
+      "status": "ACCEPTED_WITH_EXPLICIT_DEBT",
+      "note": "제곱근 절댓값으로 a>0,b<0을 얻고 x절편과 볼록 방향을 확인하는 표준 경로이므로 bucket2 수용. 실제 ① PNG는 아래로 열린 포물선인데 alt는 아래로 볼록이라고 잘못 설명한다. ②~⑤ crop 및 ⑤ 다른 그래프 조각 혼입을 확인했다. 그래프→계수 정의인 기존 PT 후보를 제거하고 역방향 subtype 제안으로 바꾼 수정과 alt 부채 추가를 readback했다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_8dc1368494cd3078f3df31410ec15c45f989b1d16c70374c238a77c4aaf7a414",
+      "status": "ACCEPTED_WITH_EXPLICIT_DEBT",
+      "note": "같은 x인 두 그래프의 세로 거리에서 완전제곱식의 최소를 구해 P 좌표를 복원하는 일반형 경로 및 bucket3 수용. 이미지의 y=(1/2)x²+2와 본문의 y=x²+2 충돌을 실제 확인했으므로 정답 품질 보류를 유지한다. goal의 최솟값을 condition으로 옮기고 좌표만 목표로 남긴 수정을 확인했다. 기존 상과 bucket3는 B34 경계로 허용 가능한 관계이나 내용 충돌은 별도 해결해야 한다."
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "ordinal": 18,
+      "change": "역방향 PT 정의 불일치 후보 제거 및 ① alt와 실제 PNG 불일치 추가"
+    },
+    {
+      "ordinal": 20,
+      "change": "목표 좌표/최소 조건 분리"
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/d03144c8ca75/workers/B/assets/E107/q08.png",
+      "sha256": "43fc83a3713ade76eefbe774c76ec866737eb1ee31c5d275776a17fbbaac952b",
+      "status": "VISUALLY_INSPECTED"
+    },
+    {
+      "path": "/workspace/scratch/d03144c8ca75/workers/B/assets/E107/contact.jpg",
+      "sha256": "970361c05c36a4ec0a56c6623e672f53dadb5c5016f721bc563895732792ae43",
+      "status": "VISUALLY_INSPECTED"
+    },
+    {
+      "path": "/workspace/scratch/d03144c8ca75/workers/B/assets/E107/q20.png",
+      "sha256": "d121ca3df6cbc6d4699499a6cc2f99b7612bcb801622be203450e56a8520d648",
+      "status": "VISUALLY_INSPECTED"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "ownershipStatus": "UNCONFIRMED_LOCAL_ONLY",
+  "nextAction": "ROOT_SOURCE_PROTECTION_VALIDATION_AND_SAFE_INTEGRATION_AFTER_OWNERSHIP_CONFIRMATION"
+}

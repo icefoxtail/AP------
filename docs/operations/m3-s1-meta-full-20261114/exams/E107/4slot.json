@@ -1,0 +1,1890 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1final/16_장흥중_1학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "d11d8be1200a313dc64d672b7faa66666954dc0c",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "GPT-6 Astra Pro / meta_b",
+    "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+    "at": "2026-11-15"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_40245fc8d2fb01fe00f2ad1ef3eb3a88f2134158a159de5530ede04bbc0e5559",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "db09fa1bdc81dc7114a990cc58d9c071a0c28a573ca96ef6c7aba397433cd6e5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5ac6e0dc57c0cd588f46ced3266e93da8c9cba700be91c5c81b235909db191b9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "<p>1. 이차방정식 $x^2-6x+3+2k=0$이 중근을 가질 때, 상수 $k$의 값은? (4점)</p>"
+          },
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "<p>1. 이차방정식 $x^2-6x+3+2k=0$이 중근을 가질 때, 상수 $k$의 값은? (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "<p>1. 이차방정식 $x^2-6x+3+2k=0$이 중근을 가질 때, 상수 $k$의 값은? (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $x^2 - 6x + (3 + 2k) = 0$이 중근을 가질 때 상수 $k$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n이차방정식 $ax^2 + bx + c = 0$이 중근을 가질 조건은 판별식 $D = b^2 - 4ac = 0$ (또는 $\\frac{D}{4} = b'^2 - ac = 0$)이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 짝수 판별식 $\\frac{D}{4}$ 적용 ($b' = -3, a = 1, c = 3 + 2k$)\n$\\frac{D}{4} = (-3)^2 - 1(3 + 2k) = 9 - 3 - 2k = 6 - 2k$\n2단계: 중근 조건 $\\frac{D}{4} = 0$ 풀기\n$6 - 2k = 0$\n$2k = 6 \\implies k = 3$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 1, ② 2: 오답\n- ③ 3: 계산된 값 3과 일치\n- ④ -4, ⑤ -5: 오답\n\n[명확한 결론]\n따라서 상수 $k$의 값은 3이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중근 조건 D=0을 직접 적용하는 단일 판정이다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $x^2 - 6x + (3 + 2k) = 0$이 중근을 가질 때 상수 $k$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n이차방정식 $ax^2 + bx + c = 0$이 중근을 가질 조건은 판별식 $D = b^2 - 4ac = 0$ (또는 $\\frac{D}{4} = b'^2 - ac = 0$)이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 짝수 판별식 $\\frac{D}{4}$ 적용 ($b' = -3, a = 1, c = 3 + 2k$)\n$\\frac{D}{4} = (-3)^2 - 1(3 + 2k) = 9 - 3 - 2k = 6 - 2k$\n2단계: 중근 조건 $\\frac{D}{4} = 0$ 풀기\n$6 - 2k = 0$\n$2k = 6 \\implies k = 3$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 1, ② 2: 오답\n- ③ 3: 계산된 값 3과 일치\n- ④ -4, ⑤ -5: 오답\n\n[명확한 결론]\n따라서 상수 $k$의 값은 3이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중근 조건 D=0을 직접 적용하는 단일 판정이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "<p>1. 이차방정식 $x^2-6x+3+2k=0$이 중근을 가질 때, 상수 $k$의 값은? (4점)</p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "중근 조건 D=0을 직접 적용하는 단일 판정이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_e67ab9d1be3bb1f93916520e06f81b090f04f616bf589815c71ef6b0921fb23b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d8d401e62e03e9b16353a96758de74cb690bd2ea1f068fcda7e757b0ce0cbce5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2c42261743e08d3ec00b77096b46914932225ed4f46d9e029078d1c7e4129a4b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "<p>2. $x^2-x-a+5=0$의 해가 모두 유리수가 되도록 하는 가장 작은 자연수 $a$의 값과 그 때의 두 근을 모두 더하면? (5점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "<p>2. $x^2-x-a+5=0$의 해가 모두 유리수가 되도록 하는 가장 작은 자연수 $a$의 값과 그 때의 두 근을 모두 더하면? (5점)</p>"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "<p>2. $x^2-x-a+5=0$의 해가 모두 유리수가 되도록 하는 가장 작은 자연수 $a$의 값과 그 때의 두 근을 모두 더하면? (5점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $x^2 - x - a + 5 = 0$의 해가 모두 유리수가 되도록 하는 가장 작은 자연수 $a$의 값과 그때의 두 근의 총합을 구한다.\n\n[핵심 발상/공식/보조선]\n근의 공식 $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$에서 해가 유리수가 되려면 근호 안의 판별식 $D = b^2 - 4ac$가 0 또는 어떤 정수의 제곱수여야 한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 판별식 $D$ 계산\n$D = (-1)^2 - 4(1)(5 - a) = 1 - 20 + 4a = 4a - 19$\n2단계: $4a - 19 = k^2$ ($k$는 0 이상의 정수) 만족하는 가장 작은 자연수 $a$ 찾기\n- $k = 0 \\implies 4a - 19 = 0 \\implies 4a = 19$ (자연수 없음)\n- $k = 1 \\implies 4a - 19 = 1 \\implies 4a = 20 \\implies a = 5$ (자연수 성립)\n따라서 가장 작은 자연수 $a = 5$이다.\n3단계: $a = 5$일 때의 두 근 구하기\n$x^2 - x - 5 + 5 = 0 \\implies x^2 - x = 0 \\implies x(x - 1) = 0$\n두 근은 $x = 0$ 또는 $x = 1$이다.\n4단계: $a$와 두 근의 총합 계산\n$a + (\\text{두 근의 합}) = 5 + 0 + 1 = 6$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 2, ② 4, ③ 5: 오답\n- ④ 6: 계산된 값 6과 정확히 일치\n- ⑤ 8: 오답\n\n[명확한 결론]\n따라서 구하는 합은 6이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "유리근 조건을 판별식의 제곱수 조건으로 바꾸고 자연수 최소 계수와 두 근을 순서대로 구한다."
+          },
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $x^2 - x - a + 5 = 0$의 해가 모두 유리수가 되도록 하는 가장 작은 자연수 $a$의 값과 그때의 두 근의 총합을 구한다.\n\n[핵심 발상/공식/보조선]\n근의 공식 $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$에서 해가 유리수가 되려면 근호 안의 판별식 $D = b^2 - 4ac$가 0 또는 어떤 정수의 제곱수여야 한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 판별식 $D$ 계산\n$D = (-1)^2 - 4(1)(5 - a) = 1 - 20 + 4a = 4a - 19$\n2단계: $4a - 19 = k^2$ ($k$는 0 이상의 정수) 만족하는 가장 작은 자연수 $a$ 찾기\n- $k = 0 \\implies 4a - 19 = 0 \\implies 4a = 19$ (자연수 없음)\n- $k = 1 \\implies 4a - 19 = 1 \\implies 4a = 20 \\implies a = 5$ (자연수 성립)\n따라서 가장 작은 자연수 $a = 5$이다.\n3단계: $a = 5$일 때의 두 근 구하기\n$x^2 - x - 5 + 5 = 0 \\implies x^2 - x = 0 \\implies x(x - 1) = 0$\n두 근은 $x = 0$ 또는 $x = 1$이다.\n4단계: $a$와 두 근의 총합 계산\n$a + (\\text{두 근의 합}) = 5 + 0 + 1 = 6$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 2, ② 4, ③ 5: 오답\n- ④ 6: 계산된 값 6과 정확히 일치\n- ⑤ 8: 오답\n\n[명확한 결론]\n따라서 구하는 합은 6이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "유리근 조건을 판별식의 제곱수 조건으로 바꾸고 자연수 최소 계수와 두 근을 순서대로 구한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $x^2 - x - a + 5 = 0$의 해가 모두 유리수가 되도록 하는 가장 작은 자연수 $a$의 값과 그때의 두 근의 총합을 구한다.\n\n[핵심 발상/공식/보조선]\n근의 공식 $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$에서 해가 유리수가 되려면 근호 안의 판별식 $D = b^2 - 4ac$가 0 또는 어떤 정수의 제곱수여야 한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 판별식 $D$ 계산\n$D = (-1)^2 - 4(1)(5 - a) = 1 - 20 + 4a = 4a - 19$\n2단계: $4a - 19 = k^2$ ($k$는 0 이상의 정수) 만족하는 가장 작은 자연수 $a$ 찾기\n- $k = 0 \\implies 4a - 19 = 0 \\implies 4a = 19$ (자연수 없음)\n- $k = 1 \\implies 4a - 19 = 1 \\implies 4a = 20 \\implies a = 5$ (자연수 성립)\n따라서 가장 작은 자연수 $a = 5$이다.\n3단계: $a = 5$일 때의 두 근 구하기\n$x^2 - x - 5 + 5 = 0 \\implies x^2 - x = 0 \\implies x(x - 1) = 0$\n두 근은 $x = 0$ 또는 $x = 1$이다.\n4단계: $a$와 두 근의 총합 계산\n$a + (\\text{두 근의 합}) = 5 + 0 + 1 = 6$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 2, ② 4, ③ 5: 오답\n- ④ 6: 계산된 값 6과 정확히 일치\n- ⑤ 8: 오답\n\n[명확한 결론]\n따라서 구하는 합은 6이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "유리근 조건을 판별식의 제곱수 조건으로 바꾸고 자연수 최소 계수와 두 근을 순서대로 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "<p>2. $x^2-x-a+5=0$의 해가 모두 유리수가 되도록 하는 가장 작은 자연수 $a$의 값과 그 때의 두 근을 모두 더하면? (5점)</p>"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "<p>2. $x^2-x-a+5=0$의 해가 모두 유리수가 되도록 하는 가장 작은 자연수 $a$의 값과 그 때의 두 근을 모두 더하면? (5점)</p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리근 조건을 판별식의 제곱수 조건으로 바꾸고 자연수 최소 계수와 두 근을 순서대로 구한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_27488c95e604bac989c9ae1e47069fa0ab1e8c0f728d3c06e237335519e677c0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e5b94e879fcac576fe1fcbfb86e290dcdab0f00f8b2140dc9a88d28e2cfcd9b1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "472906c3250701e4c9fcd0414f2627bb070aee1c16f042d7dcf64535d85c6cea"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "<p>3. 이차방정식 $2x^2-4x-5=0$을 $(x+p)^2=q$의 꼴로 고칠 때, $p+q$의 값을 구하면? (4점)</p>"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "<p>3. 이차방정식 $2x^2-4x-5=0$을 $(x+p)^2=q$의 꼴로 고칠 때, $p+q$의 값을 구하면? (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "<p>3. 이차방정식 $2x^2-4x-5=0$을 $(x+p)^2=q$의 꼴로 고칠 때, $p+q$의 값을 구하면? (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $2x^2 - 4x - 5 = 0$을 $(x+p)^2 = q$ 꼴로 변형하여 $p + q$를 구한다.\n\n[핵심 발상/공식/보조선]\n양변을 $x^2$의 계수로 나눈 후 상수항을 이항하고, 좌변을 완전제곱식으로 만들기 위해 $x$ 계수의 절반의 제곱을 양변에 더한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 양변을 2로 나눔\n$x^2 - 2x - \\frac{5}{2} = 0$\n2단계: 상수항 우변 이항\n$x^2 - 2x = \\frac{5}{2}$\n3단계: 양변에 $\\left(\\frac{-2}{2}\\right)^2 = 1$을 더함\n$x^2 - 2x + 1 = \\frac{5}{2} + 1$\n$(x - 1)^2 = \\frac{7}{2}$\n4단계: $p, q$ 식별 및 $p + q$ 계산\n$p = -1, \\; q = \\frac{7}{2}$\n$p + q = -1 + \\frac{7}{2} = \\frac{5}{2}$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $\\frac{5}{2}$: 계산 결과와 일치\n- ② $-\\frac{5}{2}$, ③ $\\frac{7}{2}$, ④ $-\\frac{7}{2}$, ⑤ $\\frac{9}{2}$: 오답\n\n[명확한 결론]\n따라서 $p + q = \\frac{5}{2}$이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이차항 계수로 나눈 뒤 완전제곱꼴의 상수를 비교한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $2x^2 - 4x - 5 = 0$을 $(x+p)^2 = q$ 꼴로 변형하여 $p + q$를 구한다.\n\n[핵심 발상/공식/보조선]\n양변을 $x^2$의 계수로 나눈 후 상수항을 이항하고, 좌변을 완전제곱식으로 만들기 위해 $x$ 계수의 절반의 제곱을 양변에 더한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 양변을 2로 나눔\n$x^2 - 2x - \\frac{5}{2} = 0$\n2단계: 상수항 우변 이항\n$x^2 - 2x = \\frac{5}{2}$\n3단계: 양변에 $\\left(\\frac{-2}{2}\\right)^2 = 1$을 더함\n$x^2 - 2x + 1 = \\frac{5}{2} + 1$\n$(x - 1)^2 = \\frac{7}{2}$\n4단계: $p, q$ 식별 및 $p + q$ 계산\n$p = -1, \\; q = \\frac{7}{2}$\n$p + q = -1 + \\frac{7}{2} = \\frac{5}{2}$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $\\frac{5}{2}$: 계산 결과와 일치\n- ② $-\\frac{5}{2}$, ③ $\\frac{7}{2}$, ④ $-\\frac{7}{2}$, ⑤ $\\frac{9}{2}$: 오답\n\n[명확한 결론]\n따라서 $p + q = \\frac{5}{2}$이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이차항 계수로 나눈 뒤 완전제곱꼴의 상수를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "이차항 계수로 나눈 뒤 완전제곱꼴의 상수를 비교한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_68f8d95c69196397965d7420f578de36aef02eb10ee3b31c3e744d390ad0a61f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c116d537489b684ef17fba701216906c581b278534580fafd21f8ebc46149340"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "56857e2d273e84dfbadc29f10aee35e3c85c2ad7d16db24e80cbc8728ee72f54"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "<p>4. 이차방정식 $2x^2-3x-1=0$을 풀면? (3점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "<p>4. 이차방정식 $2x^2-3x-1=0$을 풀면? (3점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $2x^2 - 3x - 1 = 0$의 해를 구한다.\n\n[핵심 발상/공식/보조선]\n근의 공식 $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$을 적용한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 계수 확인: $a = 2, b = -3, c = -1$\n2단계: 근의 공식 대입\n$x = \\frac{-(-3) \\pm \\sqrt{(-3)^2 - 4 \\times 2 \\times (-1)}}{2 \\times 2}$\n$x = \\frac{3 \\pm \\sqrt{9 + 8}}{4} = \\frac{3 \\pm \\sqrt{17}}{4}$\n\n[경우 나눔 및 5개 선지 검토]\n- ①: 부호 오류\n- ② $x=\\frac{3\\pm\\sqrt{17}}{4}$: 계산 결과와 일치\n- ③, ④, ⑤: 판별식 계산 오류\n\n[명확한 결론]\n따라서 해는 $x = \\frac{3 \\pm \\sqrt{17}}{4}$이므로 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 정수 계수에 근의 공식을 한 번 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "주어진 정수 계수에 근의 공식을 한 번 적용한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_1cefdb86d6b3883050ff43097b06b0954389419bc84dcc0f70555ca1b3745422",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2dc739bc08223d40f4d303cc3be044d4a86e36d429505eee4202542b7640818f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b202ac06bee997515bdb9fb37a25bdd2b5dfdfac6bb116d577a9772a60637437"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "<p>5. 이차방정식 $3x^2-2x-2=0$의 근이 $x=\\frac{a\\pm\\sqrt{b}}{3}$일 때, 유리수 $a+b$의 값은? (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "<p>5. 이차방정식 $3x^2-2x-2=0$의 근이 $x=\\frac{a\\pm\\sqrt{b}}{3}$일 때, 유리수 $a+b$의 값은? (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $3x^2 - 2x - 2 = 0$의 근이 $x = \\frac{a \\pm \\sqrt{b}}{3}$일 때 유리수 $a + b$를 구한다.\n\n[핵심 발상/공식/보조선]\n$x$의 계수가 짝수이므로 짝수 근의 공식 $x = \\frac{-b' \\pm \\sqrt{b'^2 - ac}}{a}$을 적용한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 짝수 공식 대입 ($a = 3, b' = -1, c = -2$)\n$x = \\frac{-(-1) \\pm \\sqrt{(-1)^2 - 3 \\times (-2)}}{3} = \\frac{1 \\pm \\sqrt{1 + 6}}{3} = \\frac{1 \\pm \\sqrt{7}}{3}$\n2단계: $a, b$ 식별\n$a = 1, \\; b = 7$\n3단계: $a + b$ 계산\n$a + b = 1 + 7 = 8$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 10, ② 9: 오답\n- ③ 8: 계산 결과와 정확히 일치\n- ④ 7, ⑤ 6: 오답\n\n[명확한 결론]\n따라서 $a + b = 8$이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "근의 공식 결과를 제시된 근호꼴과 비교해 두 계수를 읽는다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $3x^2 - 2x - 2 = 0$의 근이 $x = \\frac{a \\pm \\sqrt{b}}{3}$일 때 유리수 $a + b$를 구한다.\n\n[핵심 발상/공식/보조선]\n$x$의 계수가 짝수이므로 짝수 근의 공식 $x = \\frac{-b' \\pm \\sqrt{b'^2 - ac}}{a}$을 적용한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 짝수 공식 대입 ($a = 3, b' = -1, c = -2$)\n$x = \\frac{-(-1) \\pm \\sqrt{(-1)^2 - 3 \\times (-2)}}{3} = \\frac{1 \\pm \\sqrt{1 + 6}}{3} = \\frac{1 \\pm \\sqrt{7}}{3}$\n2단계: $a, b$ 식별\n$a = 1, \\; b = 7$\n3단계: $a + b$ 계산\n$a + b = 1 + 7 = 8$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 10, ② 9: 오답\n- ③ 8: 계산 결과와 정확히 일치\n- ④ 7, ⑤ 6: 오답\n\n[명확한 결론]\n따라서 $a + b = 8$이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "근의 공식 결과를 제시된 근호꼴과 비교해 두 계수를 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근의 공식 결과를 제시된 근호꼴과 비교해 두 계수를 읽는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_16306233337175e2d5f5598a3db4ec58712d527d13b3e42e002622b7c4701641",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bcfb129968f70e42727ba7891721ff4aad064ff2ca8abbf37e3250ee1da87653"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7bcd29c02bfb718c5c770c6d173b08329a20bfd8d45a518eb076ff9d6726fc70"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "<p>6. 이차방정식 $x^2+x-1=0$의 한 근을 $a$라 할 때, $\\frac{a^2}{a-1}$의 값은? (4점)</p>"
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "<p>6. 이차방정식 $x^2+x-1=0$의 한 근을 $a$라 할 때, $\\frac{a^2}{a-1}$의 값은? (4점)</p>"
+          },
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "<p>6. 이차방정식 $x^2+x-1=0$의 한 근을 $a$라 할 때, $\\frac{a^2}{a-1}$의 값은? (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "<p>6. 이차방정식 $x^2+x-1=0$의 한 근을 $a$라 할 때, $\\frac{a^2}{a-1}$의 값은? (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $x^2 + x - 1 = 0$의 한 근이 $a$일 때 분수식 $\\frac{a^2}{a-1}$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n$a$를 방정식에 대입한 관계식 $a^2 + a - 1 = 0$을 변형하여 $a^2$을 일차식으로 나타낸다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $a$ 대입\n$a^2 + a - 1 = 0$\n2단계: $a^2$에 대해 정리\n$a^2 = -a + 1 = -(a - 1)$\n3단계: 구하는 식에 대입\n$\\frac{a^2}{a - 1} = \\frac{-(a - 1)}{a - 1} = -1$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 1: 부호 오답\n- ② -1: 계산 결과와 정확히 일치\n- ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 구하는 식의 값은 $-1$이므로 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 근의 관계식으로 분자를 분모의 배수로 바꾸어 식의 값을 구한다."
+          },
+          {
+            "term": "등식의성질",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $x^2 + x - 1 = 0$의 한 근이 $a$일 때 분수식 $\\frac{a^2}{a-1}$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n$a$를 방정식에 대입한 관계식 $a^2 + a - 1 = 0$을 변형하여 $a^2$을 일차식으로 나타낸다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $a$ 대입\n$a^2 + a - 1 = 0$\n2단계: $a^2$에 대해 정리\n$a^2 = -a + 1 = -(a - 1)$\n3단계: 구하는 식에 대입\n$\\frac{a^2}{a - 1} = \\frac{-(a - 1)}{a - 1} = -1$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 1: 부호 오답\n- ② -1: 계산 결과와 정확히 일치\n- ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 구하는 식의 값은 $-1$이므로 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 근의 관계식으로 분자를 분모의 배수로 바꾸어 식의 값을 구한다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차방정식 $x^2 + x - 1 = 0$의 한 근이 $a$일 때 분수식 $\\frac{a^2}{a-1}$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n$a$를 방정식에 대입한 관계식 $a^2 + a - 1 = 0$을 변형하여 $a^2$을 일차식으로 나타낸다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $a$ 대입\n$a^2 + a - 1 = 0$\n2단계: $a^2$에 대해 정리\n$a^2 = -a + 1 = -(a - 1)$\n3단계: 구하는 식에 대입\n$\\frac{a^2}{a - 1} = \\frac{-(a - 1)}{a - 1} = -1$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 1: 부호 오답\n- ② -1: 계산 결과와 정확히 일치\n- ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 구하는 식의 값은 $-1$이므로 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 근의 관계식으로 분자를 분모의 배수로 바꾸어 식의 값을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "한 근의 관계식으로 분자를 분모의 배수로 바꾸어 식의 값을 구한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_e3a0cd4f80a8d6fb4313033f7413bed288b7f419e1a0d7987a6642e1efc93886",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4327b49f8343ed2e9d780f483294ebd8ce921bf27b0d91a8439d0a4370227527"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c613bf07f508244a6416f72a7c8b58a07a6d9e3971b7fc43d39c31004eb55146"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "<p>7. 가로의 길이와 세로의 길이가 각각 $10\\text{ cm}$, $16\\text{ cm}$인 직사각형 모양의 사진이 있다. 다음 그림과 같이 폭이 일정하고, 넓이가 $56\\text{ cm}^2$인 사진틀을 만들려면 사진틀의 폭을 몇 $\\text{cm}$로 해야 하는가? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q07.png\" alt=\"가로 10cm, 세로 16cm인 사진의 둘레에 일정한 폭의 틀이 있는 그림\" /></p>"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "<p>7. 가로의 길이와 세로의 길이가 각각 $10\\text{ cm}$, $16\\text{ cm}$인 직사각형 모양의 사진이 있다. 다음 그림과 같이 폭이 일정하고, 넓이가 $56\\text{ cm}^2$인 사진틀을 만들려면 사진틀의 폭을 몇 $\\text{cm}$로 해야 하는가? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q07.png\" alt=\"가로 10cm, 세로 16cm인 사진의 둘레에 일정한 폭의 틀이 있는 그림\" /></p>"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "<p>7. 가로의 길이와 세로의 길이가 각각 $10\\text{ cm}$, $16\\text{ cm}$인 직사각형 모양의 사진이 있다. 다음 그림과 같이 폭이 일정하고, 넓이가 $56\\text{ cm}^2$인 사진틀을 만들려면 사진틀의 폭을 몇 $\\text{cm}$로 해야 하는가? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q07.png\" alt=\"가로 10cm, 세로 16cm인 사진의 둘레에 일정한 폭의 틀이 있는 그림\" /></p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "<p>7. 가로의 길이와 세로의 길이가 각각 $10\\text{ cm}$, $16\\text{ cm}$인 직사각형 모양의 사진이 있다. 다음 그림과 같이 폭이 일정하고, 넓이가 $56\\text{ cm}^2$인 사진틀을 만들려면 사진틀의 폭을 몇 $\\text{cm}$로 해야 하는가? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q07.png\" alt=\"가로 10cm, 세로 16cm인 사진의 둘레에 일정한 폭의 틀이 있는 그림\" /></p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n가로 $10\\text{ cm}$, 세로 $16\\text{ cm}$인 사진 둘레에 폭이 $x\\text{ cm}$인 사진틀을 둘러 틀의 넓이가 $56\\text{ cm}^2$가 되도록 할 때 폭 $x$를 구한다.\n\n[핵심 발상/공식/보조선]\n(사진틀의 넓이) = (틀을 포함한 전체 직사각형 넓이) - (사진의 넓이) 관계식으로 $x$에 대한 이차방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 전체 직사각형 가로, 세로 및 사진 넓이 표현\n- 가로: $10 + 2x$, 세로: $16 + 2x$\n- 사진 넓이: $10 \\times 16 = 160\\text{ cm}^2$\n2단계: 사진틀 넓이 방정식 수립\n$(10 + 2x)(16 + 2x) - 160 = 56$\n$4x^2 + 52x + 160 - 160 = 56$\n$4x^2 + 52x - 56 = 0$\n3단계: 양변을 4로 나누고 인수분해\n$x^2 + 13x - 14 = 0$\n$(x + 14)(x - 1) = 0$\n4단계: $x > 0$ 적용\n$x = 1\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n- ①, ②, ③, ④: 오답\n- ⑤ $1\\text{ cm}$: 계산 결과와 일치\n\n[명확한 결론]\n따라서 사진틀의 폭은 $1\\text{ cm}$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "균일한 틀의 두 변을 10+2x와 16+2x로 두어 넓이 차 방정식을 세우고 양의 해를 고른다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n가로 $10\\text{ cm}$, 세로 $16\\text{ cm}$인 사진 둘레에 폭이 $x\\text{ cm}$인 사진틀을 둘러 틀의 넓이가 $56\\text{ cm}^2$가 되도록 할 때 폭 $x$를 구한다.\n\n[핵심 발상/공식/보조선]\n(사진틀의 넓이) = (틀을 포함한 전체 직사각형 넓이) - (사진의 넓이) 관계식으로 $x$에 대한 이차방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 전체 직사각형 가로, 세로 및 사진 넓이 표현\n- 가로: $10 + 2x$, 세로: $16 + 2x$\n- 사진 넓이: $10 \\times 16 = 160\\text{ cm}^2$\n2단계: 사진틀 넓이 방정식 수립\n$(10 + 2x)(16 + 2x) - 160 = 56$\n$4x^2 + 52x + 160 - 160 = 56$\n$4x^2 + 52x - 56 = 0$\n3단계: 양변을 4로 나누고 인수분해\n$x^2 + 13x - 14 = 0$\n$(x + 14)(x - 1) = 0$\n4단계: $x > 0$ 적용\n$x = 1\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n- ①, ②, ③, ④: 오답\n- ⑤ $1\\text{ cm}$: 계산 결과와 일치\n\n[명확한 결론]\n따라서 사진틀의 폭은 $1\\text{ cm}$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "균일한 틀의 두 변을 10+2x와 16+2x로 두어 넓이 차 방정식을 세우고 양의 해를 고른다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n가로 $10\\text{ cm}$, 세로 $16\\text{ cm}$인 사진 둘레에 폭이 $x\\text{ cm}$인 사진틀을 둘러 틀의 넓이가 $56\\text{ cm}^2$가 되도록 할 때 폭 $x$를 구한다.\n\n[핵심 발상/공식/보조선]\n(사진틀의 넓이) = (틀을 포함한 전체 직사각형 넓이) - (사진의 넓이) 관계식으로 $x$에 대한 이차방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 전체 직사각형 가로, 세로 및 사진 넓이 표현\n- 가로: $10 + 2x$, 세로: $16 + 2x$\n- 사진 넓이: $10 \\times 16 = 160\\text{ cm}^2$\n2단계: 사진틀 넓이 방정식 수립\n$(10 + 2x)(16 + 2x) - 160 = 56$\n$4x^2 + 52x + 160 - 160 = 56$\n$4x^2 + 52x - 56 = 0$\n3단계: 양변을 4로 나누고 인수분해\n$x^2 + 13x - 14 = 0$\n$(x + 14)(x - 1) = 0$\n4단계: $x > 0$ 적용\n$x = 1\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n- ①, ②, ③, ④: 오답\n- ⑤ $1\\text{ cm}$: 계산 결과와 일치\n\n[명확한 결론]\n따라서 사진틀의 폭은 $1\\text{ cm}$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "균일한 틀의 두 변을 10+2x와 16+2x로 두어 넓이 차 방정식을 세우고 양의 해를 고른다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n가로 $10\\text{ cm}$, 세로 $16\\text{ cm}$인 사진 둘레에 폭이 $x\\text{ cm}$인 사진틀을 둘러 틀의 넓이가 $56\\text{ cm}^2$가 되도록 할 때 폭 $x$를 구한다.\n\n[핵심 발상/공식/보조선]\n(사진틀의 넓이) = (틀을 포함한 전체 직사각형 넓이) - (사진의 넓이) 관계식으로 $x$에 대한 이차방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 전체 직사각형 가로, 세로 및 사진 넓이 표현\n- 가로: $10 + 2x$, 세로: $16 + 2x$\n- 사진 넓이: $10 \\times 16 = 160\\text{ cm}^2$\n2단계: 사진틀 넓이 방정식 수립\n$(10 + 2x)(16 + 2x) - 160 = 56$\n$4x^2 + 52x + 160 - 160 = 56$\n$4x^2 + 52x - 56 = 0$\n3단계: 양변을 4로 나누고 인수분해\n$x^2 + 13x - 14 = 0$\n$(x + 14)(x - 1) = 0$\n4단계: $x > 0$ 적용\n$x = 1\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n- ①, ②, ③, ④: 오답\n- ⑤ $1\\text{ cm}$: 계산 결과와 일치\n\n[명확한 결론]\n따라서 사진틀의 폭은 $1\\text{ cm}$이므로 정답은 ⑤이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "균일한 틀의 두 변을 10+2x와 16+2x로 두어 넓이 차 방정식을 세우고 양의 해를 고른다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_02a909f1b80c7584db8c56c9073ca1a82a891dabab5067a11b71a0590f72f473",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "01ea4b2dc1dde7943d0a5f87b39cf9e4397a879f9469341d4c355990ad570101"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7764b3426a0dde74c542e4d6133c794f6cbf117868f8f1cf21a1639820cb2b0e"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "<p>8. 다음 그림과 같이 $\\overline{\\text{AB}}=\\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 선분 $\\text{BD}$가 $\\angle\\text{B}$의 이등분선이고 $\\angle\\text{ACB}=72^\\circ$, $\\overline{\\text{AB}}=10\\text{ cm}$일 때, 선분 $\\text{CD}$의 길이는? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q08.png\" alt=\"AB=AC=10cm이고 각C=72도인 이등변삼각형에서 각B의 이등분선 BD가 그어진 그림\" /></p>"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "<p>8. 다음 그림과 같이 $\\overline{\\text{AB}}=\\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 선분 $\\text{BD}$가 $\\angle\\text{B}$의 이등분선이고 $\\angle\\text{ACB}=72^\\circ$, $\\overline{\\text{AB}}=10\\text{ cm}$일 때, 선분 $\\text{CD}$의 길이는? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q08.png\" alt=\"AB=AC=10cm이고 각C=72도인 이등변삼각형에서 각B의 이등분선 BD가 그어진 그림\" /></p>"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "<p>8. 다음 그림과 같이 $\\overline{\\text{AB}}=\\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 선분 $\\text{BD}$가 $\\angle\\text{B}$의 이등분선이고 $\\angle\\text{ACB}=72^\\circ$, $\\overline{\\text{AB}}=10\\text{ cm}$일 때, 선분 $\\text{CD}$의 길이는? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q08.png\" alt=\"AB=AC=10cm이고 각C=72도인 이등변삼각형에서 각B의 이등분선 BD가 그어진 그림\" /></p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "<p>8. 다음 그림과 같이 $\\overline{\\text{AB}}=\\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 선분 $\\text{BD}$가 $\\angle\\text{B}$의 이등분선이고 $\\angle\\text{ACB}=72^\\circ$, $\\overline{\\text{AB}}=10\\text{ cm}$일 때, 선분 $\\text{CD}$의 길이는? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q08.png\" alt=\"AB=AC=10cm이고 각C=72도인 이등변삼각형에서 각B의 이등분선 BD가 그어진 그림\" /></p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$\\overline{\\text{AB}} = \\overline{\\text{AC}} = 10\\text{ cm}$, $\\angle\\text{C} = 72^\\circ$, 선분 $\\text{BD}$가 $\\angle\\text{B}$의 이등분선일 때 선분 $\\text{CD}$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n삼각형 내각의 합과 이등변삼각형의 성질을 이용하여 각도를 추적하면:\n1) $\\triangle\\text{ABD}$는 두 밑각이 $36^\\circ$인 이등변삼각형이므로 $\\overline{\\text{AD}} = \\overline{\\text{BD}}$이다.\n2) $\\triangle\\text{BCD}$는 두 밑각이 $72^\\circ$인 이등변삼각형이므로 $\\overline{\\text{BD}} = \\overline{\\text{BC}}$이다.\n따라서 $\\overline{\\text{AD}} = \\overline{\\text{BD}} = \\overline{\\text{BC}}$가 성립하며, $\\triangle\\text{ABC} \\sim \\triangle\\text{BCD}$ (AA 닮음)의 닮음비로 이차방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각도 추적 및 변의 길이 관계 도출\n- $\\triangle\\text{ABC}$는 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형이므로:\n  $\\angle\\text{B} = \\angle\\text{C} = 72^\\circ$\n  $\\angle\\text{A} = 180^\\circ - (72^\\circ + 72^\\circ) = 36^\\circ$\n- $\\text{BD}$가 $\\angle\\text{B}$의 이등분선이므로:\n  $\\angle\\text{ABD} = \\angle\\text{DBC} = \\frac{72^\\circ}{2} = 36^\\circ$\n- $\\triangle\\text{ABD}$에서 $\\angle\\text{A} = \\angle\\text{ABD} = 36^\\circ$이므로 이등변삼각형: $\\overline{\\text{AD}} = \\overline{\\text{BD}}$\n- $\\triangle\\text{BCD}$에서 $\\angle\\text{BDC} = 180^\\circ - (36^\\circ + 72^\\circ) = 72^\\circ = \\angle\\text{C}$이므로 이등변삼각형: $\\overline{\\text{BC}} = \\overline{\\text{BD}}$\n- 따라서 $\\overline{\\text{AD}} = \\overline{\\text{BD}} = \\overline{\\text{BC}}$이다.\n2단계: 미지수 설정 및 변의 길이 표현\n구하는 선분 $\\overline{\\text{CD}} = x\\text{ (cm)}$라 두면:\n$\\overline{\\text{AC}} = 10\\text{ cm}$이므로 $\\overline{\\text{AD}} = 10 - x$\n$\\overline{\\text{BC}} = \\overline{\\text{AD}} = 10 - x$\n3단계: 닮음비 비례식 수립 (큰 삼각형 $\\triangle\\text{ABC} \\sim$ 작은 삼각형 $\\triangle\\text{BCD}$)\n$\\overline{\\text{AB}} : \\overline{\\text{BC}} = \\overline{\\text{BC}} : \\overline{\\text{CD}}$\n$10 : (10 - x) = (10 - x) : x$\n외항의 곱과 내항의 곱:\n$10x = (10 - x)^2$\n$10x = 100 - 20x + x^2$\n$x^2 - 30x + 100 = 0$\n4단계: 근의 공식으로 $x$ 계산\n짝수 공식 적용 ($b' = -15, a = 1, c = 100$):\n$x = 15 \\pm \\sqrt{(-15)^2 - 1(100)} = 15 \\pm \\sqrt{225 - 100} = 15 \\pm \\sqrt{125} = 15 \\pm 5\\sqrt{5}$\n선분 $\\text{CD}$의 길이는 전체 $\\overline{\\text{AC}} = 10\\text{ cm}$보다 작아야 하므로 ($x < 10$):\n$x = 15 - 5\\sqrt{5}\\text{ cm}$ ($15 + 5\\sqrt{5} > 10$이므로 부적합)\n\n[경우 나눔 및 5개 선지 검토]\n- ①, ②, ③, ④: 오답\n- ⑤ $15-5\\sqrt{5}\\text{ cm}$: 유도된 값과 완벽히 일치\n\n[명확한 결론]\n따라서 선분 $\\text{CD}$의 길이는 $15 - 5\\sqrt{5}\\text{ cm}$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "72도 이등변삼각형과 각이등분선에서 닮음비를 찾아 이차방정식으로 길이를 결정한다. 기하 관계의 발견이 핵심이다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$\\overline{\\text{AB}} = \\overline{\\text{AC}} = 10\\text{ cm}$, $\\angle\\text{C} = 72^\\circ$, 선분 $\\text{BD}$가 $\\angle\\text{B}$의 이등분선일 때 선분 $\\text{CD}$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n삼각형 내각의 합과 이등변삼각형의 성질을 이용하여 각도를 추적하면:\n1) $\\triangle\\text{ABD}$는 두 밑각이 $36^\\circ$인 이등변삼각형이므로 $\\overline{\\text{AD}} = \\overline{\\text{BD}}$이다.\n2) $\\triangle\\text{BCD}$는 두 밑각이 $72^\\circ$인 이등변삼각형이므로 $\\overline{\\text{BD}} = \\overline{\\text{BC}}$이다.\n따라서 $\\overline{\\text{AD}} = \\overline{\\text{BD}} = \\overline{\\text{BC}}$가 성립하며, $\\triangle\\text{ABC} \\sim \\triangle\\text{BCD}$ (AA 닮음)의 닮음비로 이차방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각도 추적 및 변의 길이 관계 도출\n- $\\triangle\\text{ABC}$는 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형이므로:\n  $\\angle\\text{B} = \\angle\\text{C} = 72^\\circ$\n  $\\angle\\text{A} = 180^\\circ - (72^\\circ + 72^\\circ) = 36^\\circ$\n- $\\text{BD}$가 $\\angle\\text{B}$의 이등분선이므로:\n  $\\angle\\text{ABD} = \\angle\\text{DBC} = \\frac{72^\\circ}{2} = 36^\\circ$\n- $\\triangle\\text{ABD}$에서 $\\angle\\text{A} = \\angle\\text{ABD} = 36^\\circ$이므로 이등변삼각형: $\\overline{\\text{AD}} = \\overline{\\text{BD}}$\n- $\\triangle\\text{BCD}$에서 $\\angle\\text{BDC} = 180^\\circ - (36^\\circ + 72^\\circ) = 72^\\circ = \\angle\\text{C}$이므로 이등변삼각형: $\\overline{\\text{BC}} = \\overline{\\text{BD}}$\n- 따라서 $\\overline{\\text{AD}} = \\overline{\\text{BD}} = \\overline{\\text{BC}}$이다.\n2단계: 미지수 설정 및 변의 길이 표현\n구하는 선분 $\\overline{\\text{CD}} = x\\text{ (cm)}$라 두면:\n$\\overline{\\text{AC}} = 10\\text{ cm}$이므로 $\\overline{\\text{AD}} = 10 - x$\n$\\overline{\\text{BC}} = \\overline{\\text{AD}} = 10 - x$\n3단계: 닮음비 비례식 수립 (큰 삼각형 $\\triangle\\text{ABC} \\sim$ 작은 삼각형 $\\triangle\\text{BCD}$)\n$\\overline{\\text{AB}} : \\overline{\\text{BC}} = \\overline{\\text{BC}} : \\overline{\\text{CD}}$\n$10 : (10 - x) = (10 - x) : x$\n외항의 곱과 내항의 곱:\n$10x = (10 - x)^2$\n$10x = 100 - 20x + x^2$\n$x^2 - 30x + 100 = 0$\n4단계: 근의 공식으로 $x$ 계산\n짝수 공식 적용 ($b' = -15, a = 1, c = 100$):\n$x = 15 \\pm \\sqrt{(-15)^2 - 1(100)} = 15 \\pm \\sqrt{225 - 100} = 15 \\pm \\sqrt{125} = 15 \\pm 5\\sqrt{5}$\n선분 $\\text{CD}$의 길이는 전체 $\\overline{\\text{AC}} = 10\\text{ cm}$보다 작아야 하므로 ($x < 10$):\n$x = 15 - 5\\sqrt{5}\\text{ cm}$ ($15 + 5\\sqrt{5} > 10$이므로 부적합)\n\n[경우 나눔 및 5개 선지 검토]\n- ①, ②, ③, ④: 오답\n- ⑤ $15-5\\sqrt{5}\\text{ cm}$: 유도된 값과 완벽히 일치\n\n[명확한 결론]\n따라서 선분 $\\text{CD}$의 길이는 $15 - 5\\sqrt{5}\\text{ cm}$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "72도 이등변삼각형과 각이등분선에서 닮음비를 찾아 이차방정식으로 길이를 결정한다. 기하 관계의 발견이 핵심이다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$\\overline{\\text{AB}} = \\overline{\\text{AC}} = 10\\text{ cm}$, $\\angle\\text{C} = 72^\\circ$, 선분 $\\text{BD}$가 $\\angle\\text{B}$의 이등분선일 때 선분 $\\text{CD}$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n삼각형 내각의 합과 이등변삼각형의 성질을 이용하여 각도를 추적하면:\n1) $\\triangle\\text{ABD}$는 두 밑각이 $36^\\circ$인 이등변삼각형이므로 $\\overline{\\text{AD}} = \\overline{\\text{BD}}$이다.\n2) $\\triangle\\text{BCD}$는 두 밑각이 $72^\\circ$인 이등변삼각형이므로 $\\overline{\\text{BD}} = \\overline{\\text{BC}}$이다.\n따라서 $\\overline{\\text{AD}} = \\overline{\\text{BD}} = \\overline{\\text{BC}}$가 성립하며, $\\triangle\\text{ABC} \\sim \\triangle\\text{BCD}$ (AA 닮음)의 닮음비로 이차방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각도 추적 및 변의 길이 관계 도출\n- $\\triangle\\text{ABC}$는 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형이므로:\n  $\\angle\\text{B} = \\angle\\text{C} = 72^\\circ$\n  $\\angle\\text{A} = 180^\\circ - (72^\\circ + 72^\\circ) = 36^\\circ$\n- $\\text{BD}$가 $\\angle\\text{B}$의 이등분선이므로:\n  $\\angle\\text{ABD} = \\angle\\text{DBC} = \\frac{72^\\circ}{2} = 36^\\circ$\n- $\\triangle\\text{ABD}$에서 $\\angle\\text{A} = \\angle\\text{ABD} = 36^\\circ$이므로 이등변삼각형: $\\overline{\\text{AD}} = \\overline{\\text{BD}}$\n- $\\triangle\\text{BCD}$에서 $\\angle\\text{BDC} = 180^\\circ - (36^\\circ + 72^\\circ) = 72^\\circ = \\angle\\text{C}$이므로 이등변삼각형: $\\overline{\\text{BC}} = \\overline{\\text{BD}}$\n- 따라서 $\\overline{\\text{AD}} = \\overline{\\text{BD}} = \\overline{\\text{BC}}$이다.\n2단계: 미지수 설정 및 변의 길이 표현\n구하는 선분 $\\overline{\\text{CD}} = x\\text{ (cm)}$라 두면:\n$\\overline{\\text{AC}} = 10\\text{ cm}$이므로 $\\overline{\\text{AD}} = 10 - x$\n$\\overline{\\text{BC}} = \\overline{\\text{AD}} = 10 - x$\n3단계: 닮음비 비례식 수립 (큰 삼각형 $\\triangle\\text{ABC} \\sim$ 작은 삼각형 $\\triangle\\text{BCD}$)\n$\\overline{\\text{AB}} : \\overline{\\text{BC}} = \\overline{\\text{BC}} : \\overline{\\text{CD}}$\n$10 : (10 - x) = (10 - x) : x$\n외항의 곱과 내항의 곱:\n$10x = (10 - x)^2$\n$10x = 100 - 20x + x^2$\n$x^2 - 30x + 100 = 0$\n4단계: 근의 공식으로 $x$ 계산\n짝수 공식 적용 ($b' = -15, a = 1, c = 100$):\n$x = 15 \\pm \\sqrt{(-15)^2 - 1(100)} = 15 \\pm \\sqrt{225 - 100} = 15 \\pm \\sqrt{125} = 15 \\pm 5\\sqrt{5}$\n선분 $\\text{CD}$의 길이는 전체 $\\overline{\\text{AC}} = 10\\text{ cm}$보다 작아야 하므로 ($x < 10$):\n$x = 15 - 5\\sqrt{5}\\text{ cm}$ ($15 + 5\\sqrt{5} > 10$이므로 부적합)\n\n[경우 나눔 및 5개 선지 검토]\n- ①, ②, ③, ④: 오답\n- ⑤ $15-5\\sqrt{5}\\text{ cm}$: 유도된 값과 완벽히 일치\n\n[명확한 결론]\n따라서 선분 $\\text{CD}$의 길이는 $15 - 5\\sqrt{5}\\text{ cm}$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "72도 이등변삼각형과 각이등분선에서 닮음비를 찾아 이차방정식으로 길이를 결정한다. 기하 관계의 발견이 핵심이다."
+          },
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$\\overline{\\text{AB}} = \\overline{\\text{AC}} = 10\\text{ cm}$, $\\angle\\text{C} = 72^\\circ$, 선분 $\\text{BD}$가 $\\angle\\text{B}$의 이등분선일 때 선분 $\\text{CD}$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n삼각형 내각의 합과 이등변삼각형의 성질을 이용하여 각도를 추적하면:\n1) $\\triangle\\text{ABD}$는 두 밑각이 $36^\\circ$인 이등변삼각형이므로 $\\overline{\\text{AD}} = \\overline{\\text{BD}}$이다.\n2) $\\triangle\\text{BCD}$는 두 밑각이 $72^\\circ$인 이등변삼각형이므로 $\\overline{\\text{BD}} = \\overline{\\text{BC}}$이다.\n따라서 $\\overline{\\text{AD}} = \\overline{\\text{BD}} = \\overline{\\text{BC}}$가 성립하며, $\\triangle\\text{ABC} \\sim \\triangle\\text{BCD}$ (AA 닮음)의 닮음비로 이차방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각도 추적 및 변의 길이 관계 도출\n- $\\triangle\\text{ABC}$는 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형이므로:\n  $\\angle\\text{B} = \\angle\\text{C} = 72^\\circ$\n  $\\angle\\text{A} = 180^\\circ - (72^\\circ + 72^\\circ) = 36^\\circ$\n- $\\text{BD}$가 $\\angle\\text{B}$의 이등분선이므로:\n  $\\angle\\text{ABD} = \\angle\\text{DBC} = \\frac{72^\\circ}{2} = 36^\\circ$\n- $\\triangle\\text{ABD}$에서 $\\angle\\text{A} = \\angle\\text{ABD} = 36^\\circ$이므로 이등변삼각형: $\\overline{\\text{AD}} = \\overline{\\text{BD}}$\n- $\\triangle\\text{BCD}$에서 $\\angle\\text{BDC} = 180^\\circ - (36^\\circ + 72^\\circ) = 72^\\circ = \\angle\\text{C}$이므로 이등변삼각형: $\\overline{\\text{BC}} = \\overline{\\text{BD}}$\n- 따라서 $\\overline{\\text{AD}} = \\overline{\\text{BD}} = \\overline{\\text{BC}}$이다.\n2단계: 미지수 설정 및 변의 길이 표현\n구하는 선분 $\\overline{\\text{CD}} = x\\text{ (cm)}$라 두면:\n$\\overline{\\text{AC}} = 10\\text{ cm}$이므로 $\\overline{\\text{AD}} = 10 - x$\n$\\overline{\\text{BC}} = \\overline{\\text{AD}} = 10 - x$\n3단계: 닮음비 비례식 수립 (큰 삼각형 $\\triangle\\text{ABC} \\sim$ 작은 삼각형 $\\triangle\\text{BCD}$)\n$\\overline{\\text{AB}} : \\overline{\\text{BC}} = \\overline{\\text{BC}} : \\overline{\\text{CD}}$\n$10 : (10 - x) = (10 - x) : x$\n외항의 곱과 내항의 곱:\n$10x = (10 - x)^2$\n$10x = 100 - 20x + x^2$\n$x^2 - 30x + 100 = 0$\n4단계: 근의 공식으로 $x$ 계산\n짝수 공식 적용 ($b' = -15, a = 1, c = 100$):\n$x = 15 \\pm \\sqrt{(-15)^2 - 1(100)} = 15 \\pm \\sqrt{225 - 100} = 15 \\pm \\sqrt{125} = 15 \\pm 5\\sqrt{5}$\n선분 $\\text{CD}$의 길이는 전체 $\\overline{\\text{AC}} = 10\\text{ cm}$보다 작아야 하므로 ($x < 10$):\n$x = 15 - 5\\sqrt{5}\\text{ cm}$ ($15 + 5\\sqrt{5} > 10$이므로 부적합)\n\n[경우 나눔 및 5개 선지 검토]\n- ①, ②, ③, ④: 오답\n- ⑤ $15-5\\sqrt{5}\\text{ cm}$: 유도된 값과 완벽히 일치\n\n[명확한 결론]\n따라서 선분 $\\text{CD}$의 길이는 $15 - 5\\sqrt{5}\\text{ cm}$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "72도 이등변삼각형과 각이등분선에서 닮음비를 찾아 이차방정식으로 길이를 결정한다. 기하 관계의 발견이 핵심이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$\\overline{\\text{AB}} = \\overline{\\text{AC}} = 10\\text{ cm}$, $\\angle\\text{C} = 72^\\circ$, 선분 $\\text{BD}$가 $\\angle\\text{B}$의 이등분선일 때 선분 $\\text{CD}$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n삼각형 내각의 합과 이등변삼각형의 성질을 이용하여 각도를 추적하면:\n1) $\\triangle\\text{ABD}$는 두 밑각이 $36^\\circ$인 이등변삼각형이므로 $\\overline{\\text{AD}} = \\overline{\\text{BD}}$이다.\n2) $\\triangle\\text{BCD}$는 두 밑각이 $72^\\circ$인 이등변삼각형이므로 $\\overline{\\text{BD}} = \\overline{\\text{BC}}$이다.\n따라서 $\\overline{\\text{AD}} = \\overline{\\text{BD}} = \\overline{\\text{BC}}$가 성립하며, $\\triangle\\text{ABC} \\sim \\triangle\\text{BCD}$ (AA 닮음)의 닮음비로 이차방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각도 추적 및 변의 길이 관계 도출\n- $\\triangle\\text{ABC}$는 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형이므로:\n  $\\angle\\text{B} = \\angle\\text{C} = 72^\\circ$\n  $\\angle\\text{A} = 180^\\circ - (72^\\circ + 72^\\circ) = 36^\\circ$\n- $\\text{BD}$가 $\\angle\\text{B}$의 이등분선이므로:\n  $\\angle\\text{ABD} = \\angle\\text{DBC} = \\frac{72^\\circ}{2} = 36^\\circ$\n- $\\triangle\\text{ABD}$에서 $\\angle\\text{A} = \\angle\\text{ABD} = 36^\\circ$이므로 이등변삼각형: $\\overline{\\text{AD}} = \\overline{\\text{BD}}$\n- $\\triangle\\text{BCD}$에서 $\\angle\\text{BDC} = 180^\\circ - (36^\\circ + 72^\\circ) = 72^\\circ = \\angle\\text{C}$이므로 이등변삼각형: $\\overline{\\text{BC}} = \\overline{\\text{BD}}$\n- 따라서 $\\overline{\\text{AD}} = \\overline{\\text{BD}} = \\overline{\\text{BC}}$이다.\n2단계: 미지수 설정 및 변의 길이 표현\n구하는 선분 $\\overline{\\text{CD}} = x\\text{ (cm)}$라 두면:\n$\\overline{\\text{AC}} = 10\\text{ cm}$이므로 $\\overline{\\text{AD}} = 10 - x$\n$\\overline{\\text{BC}} = \\overline{\\text{AD}} = 10 - x$\n3단계: 닮음비 비례식 수립 (큰 삼각형 $\\triangle\\text{ABC} \\sim$ 작은 삼각형 $\\triangle\\text{BCD}$)\n$\\overline{\\text{AB}} : \\overline{\\text{BC}} = \\overline{\\text{BC}} : \\overline{\\text{CD}}$\n$10 : (10 - x) = (10 - x) : x$\n외항의 곱과 내항의 곱:\n$10x = (10 - x)^2$\n$10x = 100 - 20x + x^2$\n$x^2 - 30x + 100 = 0$\n4단계: 근의 공식으로 $x$ 계산\n짝수 공식 적용 ($b' = -15, a = 1, c = 100$):\n$x = 15 \\pm \\sqrt{(-15)^2 - 1(100)} = 15 \\pm \\sqrt{225 - 100} = 15 \\pm \\sqrt{125} = 15 \\pm 5\\sqrt{5}$\n선분 $\\text{CD}$의 길이는 전체 $\\overline{\\text{AC}} = 10\\text{ cm}$보다 작아야 하므로 ($x < 10$):\n$x = 15 - 5\\sqrt{5}\\text{ cm}$ ($15 + 5\\sqrt{5} > 10$이므로 부적합)\n\n[경우 나눔 및 5개 선지 검토]\n- ①, ②, ③, ④: 오답\n- ⑤ $15-5\\sqrt{5}\\text{ cm}$: 유도된 값과 완벽히 일치\n\n[명확한 결론]\n따라서 선분 $\\text{CD}$의 길이는 $15 - 5\\sqrt{5}\\text{ cm}$이므로 정답은 ⑤이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "72도 이등변삼각형과 각이등분선에서 닮음비를 찾아 이차방정식으로 길이를 결정한다. 기하 관계의 발견이 핵심이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_b54461a24d43b6db80ad097ec25f51308de99ee5478b3b4eef513880ee9e3e8a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8457e484a5eab5187dedfebf0901bfa0013ca2c47676bb25e70c48e66dd77ee"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "099f8dc92d671eb6100a8a56b2c26d0e61b520a79b750cfe06c14ae4015f8e3f"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "choices",
+            "quote": "$y=-2x+1$"
+          },
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "$y=-2x+1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>9. 다음 중 이차함수인 것은? (3점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n보기 5개 중 $y$가 $x$에 대한 이차함수인 것을 찾는다.\n\n[핵심 발상/공식/보조선]\n$y = ax^2 + bx + c$ ($a \\ne 0$, $a, b, c$는 상수) 꼴의 다항함수가 이차함수이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: ① $y = -2x + 1$ : 일차함수 (거짓)\n2단계: ② $y = x(x+1) = x^2 + x$ : 최고차수가 2차인 다항함수이므로 이차함수 (참)\n3단계: ③ $y = (x+1)^2 - x^2 = 2x + 1$ : 일차함수 (거짓)\n4단계: ④ $y = -x^2 + x^3$ : 삼차함수 (거짓)\n5단계: ⑤ $y = \\frac{1}{x^2}$ : 분모에 미지수가 있는 분수함수 (거짓)\n\n[경우 나눔 및 5개 선지 검토]\n②번 식만이 이차함수의 정의를 만족한다.\n\n[명확한 결론]\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정리한 관계식의 x차수가 2이고 계수가 0이 아닌지를 판별한다."
+          },
+          {
+            "term": "차수",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n보기 5개 중 $y$가 $x$에 대한 이차함수인 것을 찾는다.\n\n[핵심 발상/공식/보조선]\n$y = ax^2 + bx + c$ ($a \\ne 0$, $a, b, c$는 상수) 꼴의 다항함수가 이차함수이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: ① $y = -2x + 1$ : 일차함수 (거짓)\n2단계: ② $y = x(x+1) = x^2 + x$ : 최고차수가 2차인 다항함수이므로 이차함수 (참)\n3단계: ③ $y = (x+1)^2 - x^2 = 2x + 1$ : 일차함수 (거짓)\n4단계: ④ $y = -x^2 + x^3$ : 삼차함수 (거짓)\n5단계: ⑤ $y = \\frac{1}{x^2}$ : 분모에 미지수가 있는 분수함수 (거짓)\n\n[경우 나눔 및 5개 선지 검토]\n②번 식만이 이차함수의 정의를 만족한다.\n\n[명확한 결론]\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정리한 관계식의 x차수가 2이고 계수가 0이 아닌지를 판별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "정리한 관계식의 x차수가 2이고 계수가 0이 아닌지를 판별한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_667df0ed79709c08256cf448e6facf6142fcc2c9ee5bf3cf6917ef64a6a92174",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bf55d1a98ff40e3f87d2e5607b9e88d640105b836fa610f5e2b131b926309b3d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "362d2efde8e1e5aae738b490f2ef526b85778be23666ae3117eef3a0629b33d2"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>10. 이차함수 $y=ax^2$의 그래프가 아래 그림과 같을 때, $a$의 값의 범위를 구하면? (3점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q10.png\" alt=\"y=2x^2 그래프의 바깥쪽에 위치하며 아래로 볼록한 y=ax^2 포물선 그래프\" /></p>"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "<p>10. 이차함수 $y=ax^2$의 그래프가 아래 그림과 같을 때, $a$의 값의 범위를 구하면? (3점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q10.png\" alt=\"y=2x^2 그래프의 바깥쪽에 위치하며 아래로 볼록한 y=ax^2 포물선 그래프\" /></p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "<p>10. 이차함수 $y=ax^2$의 그래프가 아래 그림과 같을 때, $a$의 값의 범위를 구하면? (3점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q10.png\" alt=\"y=2x^2 그래프의 바깥쪽에 위치하며 아래로 볼록한 y=ax^2 포물선 그래프\" /></p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n그림에서 $y = ax^2$의 그래프가 $y = 2x^2$의 바깥쪽(폭이 더 넓은 쪽)에 위치할 때 상수 $a$의 값의 범위를 구한다.\n\n[핵심 발상/공식/보조선]\n1) 포물선이 $x$축 위쪽(제1, 2사분면)에 그려져 있으므로 아래로 볼록이다. 즉 $a > 0$이다.\n2) 포물선 $y = ax^2$의 폭은 $|a|$의 값에 의해 결정되며, $|a|$가 작을수록 그래프의 폭이 넓어진다.\n   따라서 $y = 2x^2$보다 폭이 넓으려면 $|a| < 2$이어야 한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 볼록 방향에 따른 부호\n아래로 볼록하므로 $a > 0$\n2단계: 폭에 따른 계수의 절댓값 비교\n$y = 2x^2$보다 폭이 넓으므로:\n$|a| < 2 \\implies -2 < a < 2$\n3단계: 두 조건의 공통 범위 도출\n$a > 0$이고 $-2 < a < 2$이므로:\n$0 < a < 2$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $a < -2$, ② $-2 < a < 0$: 위로 볼록($a < 0$)인 경우이므로 오답\n- ③ $0 < a < 2$: 아래로 볼록하며 $y=2x^2$보다 폭이 넓은 조건과 완벽히 일치\n- ④ $a < 2$: 음수 범위($a \\le 0$)를 포함하므로 오답\n- ⑤ $a > 2$: $y=2x^2$보다 폭이 좁은 경우이므로 오답\n\n[명확한 결론]\n따라서 $a$의 값의 범위는 $0 < a < 2$이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 열림 방향과 y=2x²보다 넓은 폭을 계수의 부호·절댓값으로 직접 해석한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n그림에서 $y = ax^2$의 그래프가 $y = 2x^2$의 바깥쪽(폭이 더 넓은 쪽)에 위치할 때 상수 $a$의 값의 범위를 구한다.\n\n[핵심 발상/공식/보조선]\n1) 포물선이 $x$축 위쪽(제1, 2사분면)에 그려져 있으므로 아래로 볼록이다. 즉 $a > 0$이다.\n2) 포물선 $y = ax^2$의 폭은 $|a|$의 값에 의해 결정되며, $|a|$가 작을수록 그래프의 폭이 넓어진다.\n   따라서 $y = 2x^2$보다 폭이 넓으려면 $|a| < 2$이어야 한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 볼록 방향에 따른 부호\n아래로 볼록하므로 $a > 0$\n2단계: 폭에 따른 계수의 절댓값 비교\n$y = 2x^2$보다 폭이 넓으므로:\n$|a| < 2 \\implies -2 < a < 2$\n3단계: 두 조건의 공통 범위 도출\n$a > 0$이고 $-2 < a < 2$이므로:\n$0 < a < 2$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $a < -2$, ② $-2 < a < 0$: 위로 볼록($a < 0$)인 경우이므로 오답\n- ③ $0 < a < 2$: 아래로 볼록하며 $y=2x^2$보다 폭이 넓은 조건과 완벽히 일치\n- ④ $a < 2$: 음수 범위($a \\le 0$)를 포함하므로 오답\n- ⑤ $a > 2$: $y=2x^2$보다 폭이 좁은 경우이므로 오답\n\n[명확한 결론]\n따라서 $a$의 값의 범위는 $0 < a < 2$이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 열림 방향과 y=2x²보다 넓은 폭을 계수의 부호·절댓값으로 직접 해석한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n그림에서 $y = ax^2$의 그래프가 $y = 2x^2$의 바깥쪽(폭이 더 넓은 쪽)에 위치할 때 상수 $a$의 값의 범위를 구한다.\n\n[핵심 발상/공식/보조선]\n1) 포물선이 $x$축 위쪽(제1, 2사분면)에 그려져 있으므로 아래로 볼록이다. 즉 $a > 0$이다.\n2) 포물선 $y = ax^2$의 폭은 $|a|$의 값에 의해 결정되며, $|a|$가 작을수록 그래프의 폭이 넓어진다.\n   따라서 $y = 2x^2$보다 폭이 넓으려면 $|a| < 2$이어야 한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 볼록 방향에 따른 부호\n아래로 볼록하므로 $a > 0$\n2단계: 폭에 따른 계수의 절댓값 비교\n$y = 2x^2$보다 폭이 넓으므로:\n$|a| < 2 \\implies -2 < a < 2$\n3단계: 두 조건의 공통 범위 도출\n$a > 0$이고 $-2 < a < 2$이므로:\n$0 < a < 2$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $a < -2$, ② $-2 < a < 0$: 위로 볼록($a < 0$)인 경우이므로 오답\n- ③ $0 < a < 2$: 아래로 볼록하며 $y=2x^2$보다 폭이 넓은 조건과 완벽히 일치\n- ④ $a < 2$: 음수 범위($a \\le 0$)를 포함하므로 오답\n- ⑤ $a > 2$: $y=2x^2$보다 폭이 좁은 경우이므로 오답\n\n[명확한 결론]\n따라서 $a$의 값의 범위는 $0 < a < 2$이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 열림 방향과 y=2x²보다 넓은 폭을 계수의 부호·절댓값으로 직접 해석한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "그림의 열림 방향과 y=2x²보다 넓은 폭을 계수의 부호·절댓값으로 직접 해석한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_994eb618bc250f4bb9ec942cb00ca638ed9a521b6c23852fbc548a9632cecd59",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "87733f3c4c39866223c991d0cc45f066bf859c138e68ce215708fda2c24bdd48"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "076f14c408c096edf7d6c9568fefb5b329a57d9e531139fdccd3c143f35f9f91"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>11. 이차함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, $f(-4)$를 구하면? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q11.png\" alt=\"원점을 꼭짓점으로 하고 점 (2, 2)를 지나는 포물선 그래프\" /></p>"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "<p>11. 이차함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, $f(-4)$를 구하면? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q11.png\" alt=\"원점을 꼭짓점으로 하고 점 (2, 2)를 지나는 포물선 그래프\" /></p>"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "<p>11. 이차함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, $f(-4)$를 구하면? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q11.png\" alt=\"원점을 꼭짓점으로 하고 점 (2, 2)를 지나는 포물선 그래프\" /></p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "<p>11. 이차함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, $f(-4)$를 구하면? (4점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q11.png\" alt=\"원점을 꼭짓점으로 하고 점 (2, 2)를 지나는 포물선 그래프\" /></p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n그림에서 원점을 꼭짓점으로 하고 점 $(2, 2)$를 지나는 포물선 $f(x)$에 대해 $f(-4)$를 구한다.\n\n[핵심 발상/공식/보조선]\n원점이 꼭짓점이므로 $f(x) = ax^2$ 꼴이다. 점 $(2, 2)$를 대입하여 $a$를 구한 후 $f(-4)$를 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $(2, 2)$ 대입\n$2 = a(2)^2 = 4a \\implies a = \\frac{1}{2}$\n따라서 $f(x) = \\frac{1}{2}x^2$\n2단계: $f(-4)$ 계산\n$f(-4) = \\frac{1}{2}(-4)^2 = \\frac{1}{2} \\times 16 = 8$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 2, ② 4: 오답\n- ③ 8: 계산된 값 8과 일치\n- ④ 16, ⑤ 32: 오답\n\n[명확한 결론]\n따라서 $f(-4) = 8$이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림에서 원점 꼭짓점과 점(2,2)을 읽어 계수를 정하고 x=-4를 대입한다."
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n그림에서 원점을 꼭짓점으로 하고 점 $(2, 2)$를 지나는 포물선 $f(x)$에 대해 $f(-4)$를 구한다.\n\n[핵심 발상/공식/보조선]\n원점이 꼭짓점이므로 $f(x) = ax^2$ 꼴이다. 점 $(2, 2)$를 대입하여 $a$를 구한 후 $f(-4)$를 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $(2, 2)$ 대입\n$2 = a(2)^2 = 4a \\implies a = \\frac{1}{2}$\n따라서 $f(x) = \\frac{1}{2}x^2$\n2단계: $f(-4)$ 계산\n$f(-4) = \\frac{1}{2}(-4)^2 = \\frac{1}{2} \\times 16 = 8$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 2, ② 4: 오답\n- ③ 8: 계산된 값 8과 일치\n- ④ 16, ⑤ 32: 오답\n\n[명확한 결론]\n따라서 $f(-4) = 8$이므로 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림에서 원점 꼭짓점과 점(2,2)을 읽어 계수를 정하고 x=-4를 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "그림에서 원점 꼭짓점과 점(2,2)을 읽어 계수를 정하고 x=-4를 대입한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_ea8c18ed7d3588fcba56283c98e9ec1097d97e7d910d0ea543ac503fabfd073d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3e3bb633142c5e35e5eb2dda0a7874fd428cfaea73540cab08254e79627f233b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "73f6e71605268886785ba09df412c2417be8e1ef909a39dfcbb158ae5849cace"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>12. 원점을 꼭짓점으로 하는 이차함수의 그래프가 점 $(1, 2)$와 점 $(k, 8)$를 지날 때, 양수 $k$의 값을 구하면? (4점)</p>"
+          },
+          {
+            "term": "원점",
+            "src": "stem",
+            "quote": "<p>12. 원점을 꼭짓점으로 하는 이차함수의 그래프가 점 $(1, 2)$와 점 $(k, 8)$를 지날 때, 양수 $k$의 값을 구하면? (4점)</p>"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "<p>12. 원점을 꼭짓점으로 하는 이차함수의 그래프가 점 $(1, 2)$와 점 $(k, 8)$를 지날 때, 양수 $k$의 값을 구하면? (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "<p>12. 원점을 꼭짓점으로 하는 이차함수의 그래프가 점 $(1, 2)$와 점 $(k, 8)$를 지날 때, 양수 $k$의 값을 구하면? (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n원점을 꼭짓점으로 하는 이차함수가 점 $(1, 2)$와 점 $(k, 8)$을 지날 때 양수 $k$를 구한다.\n\n[핵심 발상/공식/보조선]\n원점을 꼭짓점으로 하므로 식은 $y = ax^2$이다. 점 $(1, 2)$로 $a$를 구한 뒤 점 $(k, 8)$을 대입한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $(1, 2)$ 대입\n$2 = a(1)^2 \\implies a = 2$\n따라서 식은 $y = 2x^2$\n2단계: 점 $(k, 8)$ 대입\n$8 = 2k^2 \\implies k^2 = 4$\n$k = \\pm 2$\n3단계: 양수 조건 적용\n$k = 2$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 2: 도출된 값 2와 일치\n- ②, ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 양수 $k$의 값은 2이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 점으로 a를 정하고 다른 점에서 k²를 구한 후 양수 조건으로 좌표를 선별하는 두 단계이다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n원점을 꼭짓점으로 하는 이차함수가 점 $(1, 2)$와 점 $(k, 8)$을 지날 때 양수 $k$를 구한다.\n\n[핵심 발상/공식/보조선]\n원점을 꼭짓점으로 하므로 식은 $y = ax^2$이다. 점 $(1, 2)$로 $a$를 구한 뒤 점 $(k, 8)$을 대입한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $(1, 2)$ 대입\n$2 = a(1)^2 \\implies a = 2$\n따라서 식은 $y = 2x^2$\n2단계: 점 $(k, 8)$ 대입\n$8 = 2k^2 \\implies k^2 = 4$\n$k = \\pm 2$\n3단계: 양수 조건 적용\n$k = 2$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 2: 도출된 값 2와 일치\n- ②, ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 양수 $k$의 값은 2이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 점으로 a를 정하고 다른 점에서 k²를 구한 후 양수 조건으로 좌표를 선별하는 두 단계이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "<p>12. 원점을 꼭짓점으로 하는 이차함수의 그래프가 점 $(1, 2)$와 점 $(k, 8)$를 지날 때, 양수 $k$의 값을 구하면? (4점)</p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "한 점으로 a를 정하고 다른 점에서 k²를 구한 후 양수 조건으로 좌표를 선별하는 두 단계이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_4214f8e67faea721324da08e17ec7b8001d1dcbe61b634d46ed275c1de9f1095",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4d6216b0930b35217276db6a919151fec6cdff429c02b981c01c853b018e32e6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6ed5a2f56f16bcab6c72d0ea5d82da48e2ec61f3e2587f1d23185312a4e63e0b"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>13. 이차함수 $y=-2x^2+8x-1$의 그래프에 대한 설명 중 옳지 않은 것을 모두 고르면? (정답 2개) (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>13. 이차함수 $y=-2x^2+8x-1$의 그래프에 대한 설명 중 옳지 않은 것을 모두 고르면? (정답 2개) (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = -2x^2 + 8x - 1$의 그래프에 대한 설명 중 옳지 않은 것을 모두 고른다. (정답 2개)\n\n[핵심 발상/공식/보조선]\n일반형 $y = ax^2 + bx + c$를 완전제곱식을 이용하여 표준형 $y = a(x-p)^2 + q$로 변형하고, 꼭짓점 $(p, q)$, 대칭축 $x = p$, $y$절편 $(0, c)$, 볼록 방향($a < 0$ 위로 볼록), 폭($|a| = 2$)을 단계별로 분석한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 표준형 변형\n$y = -2(x^2 - 4x) - 1 = -2(x^2 - 4x + 4 - 4) - 1 = -2(x - 2)^2 + 8 - 1 = -2(x - 2)^2 + 7$\n- 꼭짓점의 좌표는 $(2, 7)$이다. (① 참)\n- 대칭축의 방정식은 $x = 2$이다.\n2단계: $y$축과의 교점($y$절편) 확인\n$x = 0$ 대입 시 $y = -1$이므로 $y$축과 점 $(0, -1)$에서 만난다. 점 $(0, 7)$에서 만난다는 설명은 거짓이다. (② 거짓)\n3단계: 지나는 사분면 분석\n- 위로 볼록($a = -2 < 0$)하고 꼭짓점이 $(2, 7)$로 제1사분면에 있다.\n- $y$절편이 $(0, -1)$로 원점 아래($y < 0$)를 지난다.\n- $x < 0$인 모든 영역에서 $x - 2 < -2 \\implies (x - 2)^2 > 4 \\implies -2(x - 2)^2 < -8 \\implies y < -8 + 7 = -1 < 0$이다.\n  즉 $x < 0$일 때 $y$의 값은 항상 음수이므로 제2사분면($x < 0, y > 0$)은 결코 지나지 않는다.\n- 따라서 제1, 3, 4사분면만 지나므로 '모든 사분면을 지난다'는 설명은 거짓이다. (③ 거짓)\n4단계: 폭 비교\n$y = 2(x+1)^2$의 이차항 계수의 절댓값은 $|2| = 2$이고, 주어진 함수의 이차항 계수의 절댓값도 $|-2| = 2$로 같으므로 두 포물선의 폭은 같다. (④ 참)\n5단계: 축 비교\n$y = 3(x-2)^2$의 축의 방정식은 $x = 2$로 주어진 함수의 축 $x = 2$와 같다. (⑤ 참)\n\n[경우 나눔 및 5개 선지 검토]\n②번과 ③번이 옳지 않은 설명이다.\n\n[명확한 결론]\n따라서 정답은 ②, ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱꼴로 꼭짓점·축·폭을 읽고 절편 및 사분면 진술을 비교하는 정형 복수판정이다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = -2x^2 + 8x - 1$의 그래프에 대한 설명 중 옳지 않은 것을 모두 고른다. (정답 2개)\n\n[핵심 발상/공식/보조선]\n일반형 $y = ax^2 + bx + c$를 완전제곱식을 이용하여 표준형 $y = a(x-p)^2 + q$로 변형하고, 꼭짓점 $(p, q)$, 대칭축 $x = p$, $y$절편 $(0, c)$, 볼록 방향($a < 0$ 위로 볼록), 폭($|a| = 2$)을 단계별로 분석한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 표준형 변형\n$y = -2(x^2 - 4x) - 1 = -2(x^2 - 4x + 4 - 4) - 1 = -2(x - 2)^2 + 8 - 1 = -2(x - 2)^2 + 7$\n- 꼭짓점의 좌표는 $(2, 7)$이다. (① 참)\n- 대칭축의 방정식은 $x = 2$이다.\n2단계: $y$축과의 교점($y$절편) 확인\n$x = 0$ 대입 시 $y = -1$이므로 $y$축과 점 $(0, -1)$에서 만난다. 점 $(0, 7)$에서 만난다는 설명은 거짓이다. (② 거짓)\n3단계: 지나는 사분면 분석\n- 위로 볼록($a = -2 < 0$)하고 꼭짓점이 $(2, 7)$로 제1사분면에 있다.\n- $y$절편이 $(0, -1)$로 원점 아래($y < 0$)를 지난다.\n- $x < 0$인 모든 영역에서 $x - 2 < -2 \\implies (x - 2)^2 > 4 \\implies -2(x - 2)^2 < -8 \\implies y < -8 + 7 = -1 < 0$이다.\n  즉 $x < 0$일 때 $y$의 값은 항상 음수이므로 제2사분면($x < 0, y > 0$)은 결코 지나지 않는다.\n- 따라서 제1, 3, 4사분면만 지나므로 '모든 사분면을 지난다'는 설명은 거짓이다. (③ 거짓)\n4단계: 폭 비교\n$y = 2(x+1)^2$의 이차항 계수의 절댓값은 $|2| = 2$이고, 주어진 함수의 이차항 계수의 절댓값도 $|-2| = 2$로 같으므로 두 포물선의 폭은 같다. (④ 참)\n5단계: 축 비교\n$y = 3(x-2)^2$의 축의 방정식은 $x = 2$로 주어진 함수의 축 $x = 2$와 같다. (⑤ 참)\n\n[경우 나눔 및 5개 선지 검토]\n②번과 ③번이 옳지 않은 설명이다.\n\n[명확한 결론]\n따라서 정답은 ②, ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱꼴로 꼭짓점·축·폭을 읽고 절편 및 사분면 진술을 비교하는 정형 복수판정이다."
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = -2x^2 + 8x - 1$의 그래프에 대한 설명 중 옳지 않은 것을 모두 고른다. (정답 2개)\n\n[핵심 발상/공식/보조선]\n일반형 $y = ax^2 + bx + c$를 완전제곱식을 이용하여 표준형 $y = a(x-p)^2 + q$로 변형하고, 꼭짓점 $(p, q)$, 대칭축 $x = p$, $y$절편 $(0, c)$, 볼록 방향($a < 0$ 위로 볼록), 폭($|a| = 2$)을 단계별로 분석한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 표준형 변형\n$y = -2(x^2 - 4x) - 1 = -2(x^2 - 4x + 4 - 4) - 1 = -2(x - 2)^2 + 8 - 1 = -2(x - 2)^2 + 7$\n- 꼭짓점의 좌표는 $(2, 7)$이다. (① 참)\n- 대칭축의 방정식은 $x = 2$이다.\n2단계: $y$축과의 교점($y$절편) 확인\n$x = 0$ 대입 시 $y = -1$이므로 $y$축과 점 $(0, -1)$에서 만난다. 점 $(0, 7)$에서 만난다는 설명은 거짓이다. (② 거짓)\n3단계: 지나는 사분면 분석\n- 위로 볼록($a = -2 < 0$)하고 꼭짓점이 $(2, 7)$로 제1사분면에 있다.\n- $y$절편이 $(0, -1)$로 원점 아래($y < 0$)를 지난다.\n- $x < 0$인 모든 영역에서 $x - 2 < -2 \\implies (x - 2)^2 > 4 \\implies -2(x - 2)^2 < -8 \\implies y < -8 + 7 = -1 < 0$이다.\n  즉 $x < 0$일 때 $y$의 값은 항상 음수이므로 제2사분면($x < 0, y > 0$)은 결코 지나지 않는다.\n- 따라서 제1, 3, 4사분면만 지나므로 '모든 사분면을 지난다'는 설명은 거짓이다. (③ 거짓)\n4단계: 폭 비교\n$y = 2(x+1)^2$의 이차항 계수의 절댓값은 $|2| = 2$이고, 주어진 함수의 이차항 계수의 절댓값도 $|-2| = 2$로 같으므로 두 포물선의 폭은 같다. (④ 참)\n5단계: 축 비교\n$y = 3(x-2)^2$의 축의 방정식은 $x = 2$로 주어진 함수의 축 $x = 2$와 같다. (⑤ 참)\n\n[경우 나눔 및 5개 선지 검토]\n②번과 ③번이 옳지 않은 설명이다.\n\n[명확한 결론]\n따라서 정답은 ②, ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱꼴로 꼭짓점·축·폭을 읽고 절편 및 사분면 진술을 비교하는 정형 복수판정이다."
+          },
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = -2x^2 + 8x - 1$의 그래프에 대한 설명 중 옳지 않은 것을 모두 고른다. (정답 2개)\n\n[핵심 발상/공식/보조선]\n일반형 $y = ax^2 + bx + c$를 완전제곱식을 이용하여 표준형 $y = a(x-p)^2 + q$로 변형하고, 꼭짓점 $(p, q)$, 대칭축 $x = p$, $y$절편 $(0, c)$, 볼록 방향($a < 0$ 위로 볼록), 폭($|a| = 2$)을 단계별로 분석한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 표준형 변형\n$y = -2(x^2 - 4x) - 1 = -2(x^2 - 4x + 4 - 4) - 1 = -2(x - 2)^2 + 8 - 1 = -2(x - 2)^2 + 7$\n- 꼭짓점의 좌표는 $(2, 7)$이다. (① 참)\n- 대칭축의 방정식은 $x = 2$이다.\n2단계: $y$축과의 교점($y$절편) 확인\n$x = 0$ 대입 시 $y = -1$이므로 $y$축과 점 $(0, -1)$에서 만난다. 점 $(0, 7)$에서 만난다는 설명은 거짓이다. (② 거짓)\n3단계: 지나는 사분면 분석\n- 위로 볼록($a = -2 < 0$)하고 꼭짓점이 $(2, 7)$로 제1사분면에 있다.\n- $y$절편이 $(0, -1)$로 원점 아래($y < 0$)를 지난다.\n- $x < 0$인 모든 영역에서 $x - 2 < -2 \\implies (x - 2)^2 > 4 \\implies -2(x - 2)^2 < -8 \\implies y < -8 + 7 = -1 < 0$이다.\n  즉 $x < 0$일 때 $y$의 값은 항상 음수이므로 제2사분면($x < 0, y > 0$)은 결코 지나지 않는다.\n- 따라서 제1, 3, 4사분면만 지나므로 '모든 사분면을 지난다'는 설명은 거짓이다. (③ 거짓)\n4단계: 폭 비교\n$y = 2(x+1)^2$의 이차항 계수의 절댓값은 $|2| = 2$이고, 주어진 함수의 이차항 계수의 절댓값도 $|-2| = 2$로 같으므로 두 포물선의 폭은 같다. (④ 참)\n5단계: 축 비교\n$y = 3(x-2)^2$의 축의 방정식은 $x = 2$로 주어진 함수의 축 $x = 2$와 같다. (⑤ 참)\n\n[경우 나눔 및 5개 선지 검토]\n②번과 ③번이 옳지 않은 설명이다.\n\n[명확한 결론]\n따라서 정답은 ②, ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱꼴로 꼭짓점·축·폭을 읽고 절편 및 사분면 진술을 비교하는 정형 복수판정이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "완전제곱꼴로 꼭짓점·축·폭을 읽고 절편 및 사분면 진술을 비교하는 정형 복수판정이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_f533206eedb2496c8866f148502606affe55d056070f503ebc77725948516b0a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "452ea1c92b0ab395c25aa4fcf56340ef4def49d7fdb2f3d416922dfd76acbe6b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "977f2080b870611d5639648fe314bb8baa78a0af4abe5ffdc7bcf198106011e6"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>14. 이차함수 $y=ax^2+bx+c$의 그래프가 점 $(1, 4)$을 지나고, 꼭짓점의 좌표가 $(-2, -5)$인 포물선일 때, $a+b+c$의 값을 구하면? (4점)</p>"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "<p>14. 이차함수 $y=ax^2+bx+c$의 그래프가 점 $(1, 4)$을 지나고, 꼭짓점의 좌표가 $(-2, -5)$인 포물선일 때, $a+b+c$의 값을 구하면? (4점)</p>"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "<p>14. 이차함수 $y=ax^2+bx+c$의 그래프가 점 $(1, 4)$을 지나고, 꼭짓점의 좌표가 $(-2, -5)$인 포물선일 때, $a+b+c$의 값을 구하면? (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "<p>14. 이차함수 $y=ax^2+bx+c$의 그래프가 점 $(1, 4)$을 지나고, 꼭짓점의 좌표가 $(-2, -5)$인 포물선일 때, $a+b+c$의 값을 구하면? (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n꼭짓점이 $(-2, -5)$이고 점 $(1, 4)$를 지나는 포물선 $y = ax^2 + bx + c$에서 $a + b + c$를 구한다.\n\n[핵심 발상/공식/보조선]\n$y = ax^2 + bx + c$에서 $a + b + c$는 $x = 1$일 때의 함숫값 $y$와 같다. 문제 조건에서 그래프가 점 $(1, 4)$를 지난다고 하였으므로 $x = 1$일 때 $y = 4$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 식을 직접 구하여 확인\n꼭짓점이 $(-2, -5)$이므로 $y = a(x + 2)^2 - 5$\n점 $(1, 4)$ 대입:\n$4 = a(1 + 2)^2 - 5 = 9a - 5 \\implies 9a = 9 \\implies a = 1$\n2단계: 일반형 전개\n$y = 1(x + 2)^2 - 5 = x^2 + 4x + 4 - 5 = x^2 + 4x - 1$\n$a = 1, b = 4, c = -1$\n3단계: $a + b + c$ 계산\n$a + b + c = 1 + 4 + (-1) = 4$\n\n[경우 나눔 및 5개 선지 검토]\n- ① -14, ② -6, ③ 2: 오답\n- ④ 4: 계산 결과와 정확히 일치\n- ⑤ 6: 오답\n\n[명확한 결론]\n따라서 $a + b + c = 4$이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "a+b+c=f(1)이므로 지나는 점(1,4)에서 직접 값을 읽는다. 주어진 꼭짓점으로 계수를 전부 복원할 필요는 없고 기존 해설에도 직접 대입 근거가 있다."
+          },
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n꼭짓점이 $(-2, -5)$이고 점 $(1, 4)$를 지나는 포물선 $y = ax^2 + bx + c$에서 $a + b + c$를 구한다.\n\n[핵심 발상/공식/보조선]\n$y = ax^2 + bx + c$에서 $a + b + c$는 $x = 1$일 때의 함숫값 $y$와 같다. 문제 조건에서 그래프가 점 $(1, 4)$를 지난다고 하였으므로 $x = 1$일 때 $y = 4$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 식을 직접 구하여 확인\n꼭짓점이 $(-2, -5)$이므로 $y = a(x + 2)^2 - 5$\n점 $(1, 4)$ 대입:\n$4 = a(1 + 2)^2 - 5 = 9a - 5 \\implies 9a = 9 \\implies a = 1$\n2단계: 일반형 전개\n$y = 1(x + 2)^2 - 5 = x^2 + 4x + 4 - 5 = x^2 + 4x - 1$\n$a = 1, b = 4, c = -1$\n3단계: $a + b + c$ 계산\n$a + b + c = 1 + 4 + (-1) = 4$\n\n[경우 나눔 및 5개 선지 검토]\n- ① -14, ② -6, ③ 2: 오답\n- ④ 4: 계산 결과와 정확히 일치\n- ⑤ 6: 오답\n\n[명확한 결론]\n따라서 $a + b + c = 4$이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "a+b+c=f(1)이므로 지나는 점(1,4)에서 직접 값을 읽는다. 주어진 꼭짓점으로 계수를 전부 복원할 필요는 없고 기존 해설에도 직접 대입 근거가 있다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "a+b+c=f(1)이므로 지나는 점(1,4)에서 직접 값을 읽는다. 주어진 꼭짓점으로 계수를 전부 복원할 필요는 없고 기존 해설에도 직접 대입 근거가 있다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_e11f282cd9050c9ddb9cd31194be0efb5235fefc8f9bc4a0ea738252b28b0c87",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5f83c65063418a4ee9c6cbadc116f7f905d3ad1f2bb3f011eecbdb410eae11a6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "677467e78c1ba2481c5d07453aabd47802433a8a3f8f0f23fede7182a9dd080f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>15. 이차함수 $y=-x^2+ax-a$의 최댓값은 $x=3$일 때 $p$이다. 이때 $a-p$의 값을 구하면? (4점)</p>"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "<p>15. 이차함수 $y=-x^2+ax-a$의 최댓값은 $x=3$일 때 $p$이다. 이때 $a-p$의 값을 구하면? (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "<p>15. 이차함수 $y=-x^2+ax-a$의 최댓값은 $x=3$일 때 $p$이다. 이때 $a-p$의 값을 구하면? (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = -x^2 + ax - a$가 $x = 3$에서 최댓값 $p$를 가질 때 $a - p$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n위로 볼록한 포물선의 최댓값은 축 $x = -\\frac{b}{2a'}$에서 발생한다. 축이 $x = 3$임을 이용해 $a$를 구하고 최댓값 $p$를 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 표준형 변형\n$y = -(x^2 - ax) - a = -\\left(x - \\frac{a}{2}\\right)^2 + \\frac{a^2}{4} - a$\n2단계: 축의 방정식과 $a$ 구하기\n축은 $x = \\frac{a}{2}$이므로 $\\frac{a}{2} = 3 \\implies a = 6$\n3단계: 최댓값 $p$ 계산 ($x = 3, a = 6$ 대입)\n$p = -(3)^2 + 6(3) - 6 = -9 + 18 - 6 = 3$\n4단계: $a - p$ 계산\n$a - p = 6 - 3 = 3$\n\n[경우 나눔 및 5개 선지 검토]\n- ① -6, ② -3, ③ 0: 오답\n- ④ 3: 계산된 값 3과 일치\n- ⑤ 6: 오답\n\n[명확한 결론]\n따라서 $a - p = 3$이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "최대가 되는 x좌표로 축을 정하고 그때 함숫값을 대입해 두 상수의 차를 구한다."
+          },
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = -x^2 + ax - a$가 $x = 3$에서 최댓값 $p$를 가질 때 $a - p$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n위로 볼록한 포물선의 최댓값은 축 $x = -\\frac{b}{2a'}$에서 발생한다. 축이 $x = 3$임을 이용해 $a$를 구하고 최댓값 $p$를 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 표준형 변형\n$y = -(x^2 - ax) - a = -\\left(x - \\frac{a}{2}\\right)^2 + \\frac{a^2}{4} - a$\n2단계: 축의 방정식과 $a$ 구하기\n축은 $x = \\frac{a}{2}$이므로 $\\frac{a}{2} = 3 \\implies a = 6$\n3단계: 최댓값 $p$ 계산 ($x = 3, a = 6$ 대입)\n$p = -(3)^2 + 6(3) - 6 = -9 + 18 - 6 = 3$\n4단계: $a - p$ 계산\n$a - p = 6 - 3 = 3$\n\n[경우 나눔 및 5개 선지 검토]\n- ① -6, ② -3, ③ 0: 오답\n- ④ 3: 계산된 값 3과 일치\n- ⑤ 6: 오답\n\n[명확한 결론]\n따라서 $a - p = 3$이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "최대가 되는 x좌표로 축을 정하고 그때 함숫값을 대입해 두 상수의 차를 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = -x^2 + ax - a$가 $x = 3$에서 최댓값 $p$를 가질 때 $a - p$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n위로 볼록한 포물선의 최댓값은 축 $x = -\\frac{b}{2a'}$에서 발생한다. 축이 $x = 3$임을 이용해 $a$를 구하고 최댓값 $p$를 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 표준형 변형\n$y = -(x^2 - ax) - a = -\\left(x - \\frac{a}{2}\\right)^2 + \\frac{a^2}{4} - a$\n2단계: 축의 방정식과 $a$ 구하기\n축은 $x = \\frac{a}{2}$이므로 $\\frac{a}{2} = 3 \\implies a = 6$\n3단계: 최댓값 $p$ 계산 ($x = 3, a = 6$ 대입)\n$p = -(3)^2 + 6(3) - 6 = -9 + 18 - 6 = 3$\n4단계: $a - p$ 계산\n$a - p = 6 - 3 = 3$\n\n[경우 나눔 및 5개 선지 검토]\n- ① -6, ② -3, ③ 0: 오답\n- ④ 3: 계산된 값 3과 일치\n- ⑤ 6: 오답\n\n[명확한 결론]\n따라서 $a - p = 3$이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "최대가 되는 x좌표로 축을 정하고 그때 함숫값을 대입해 두 상수의 차를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "최대가 되는 x좌표로 축을 정하고 그때 함숫값을 대입해 두 상수의 차를 구한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_a46dc4d4854ab73385169cd055ba0842e8d06275d33d51d3606cac3e6e7b2cc3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "306b8760f084f360558ebf4bb421226859d6beddbf2524aebafb49a2424af881"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a95f399f3473123343d774006ef317d55e767e3121d992289e73175135a6dcba"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>16. 이차함수 $y=x^2-8x+7$의 그래프가 $x$축과 만나는 두 점을 각각 $\\text{A}$, $\\text{B}$라 하고 꼭짓점을 $\\text{C}$라고 할 때, $\\triangle\\text{ABC}$의 넓이는? (4점)</p>"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "<p>16. 이차함수 $y=x^2-8x+7$의 그래프가 $x$축과 만나는 두 점을 각각 $\\text{A}$, $\\text{B}$라 하고 꼭짓점을 $\\text{C}$라고 할 때, $\\triangle\\text{ABC}$의 넓이는? (4점)</p>"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "<p>16. 이차함수 $y=x^2-8x+7$의 그래프가 $x$축과 만나는 두 점을 각각 $\\text{A}$, $\\text{B}$라 하고 꼭짓점을 $\\text{C}$라고 할 때, $\\triangle\\text{ABC}$의 넓이는? (4점)</p>"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "<p>16. 이차함수 $y=x^2-8x+7$의 그래프가 $x$축과 만나는 두 점을 각각 $\\text{A}$, $\\text{B}$라 하고 꼭짓점을 $\\text{C}$라고 할 때, $\\triangle\\text{ABC}$의 넓이는? (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "<p>16. 이차함수 $y=x^2-8x+7$의 그래프가 $x$축과 만나는 두 점을 각각 $\\text{A}$, $\\text{B}$라 하고 꼭짓점을 $\\text{C}$라고 할 때, $\\triangle\\text{ABC}$의 넓이는? (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = x^2 - 8x + 7$의 $x$축 교점 $\\text{A}, \\text{B}$와 꼭짓점 $\\text{C}$로 만들어지는 삼각형 $\\triangle\\text{ABC}$의 넓이를 구한다.\n\n[핵심 발상/공식/보조선]\n$x$축 위의 두 점 사이의 거리를 밑변으로 하고 꼭짓점의 $y$좌표의 절댓값을 높이로 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $x$축 교점 구하기\n$x^2 - 8x + 7 = 0 \\implies (x - 1)(x - 7) = 0 \\implies x = 1$ 또는 $x = 7$\n밑변의 길이: $\\overline{\\text{AB}} = 7 - 1 = 6$\n2단계: 꼭짓점 $\\text{C}$ 구하기\n$y = (x - 4)^2 - 16 + 7 = (x - 4)^2 - 9$\n꼭짓점은 $\\text{C}(4, -9)$이므로 높이 $h = |-9| = 9$\n3단계: 삼각형 넓이 계산\n$\\text{넓이} = \\frac{1}{2} \\times 6 \\times 9 = 27$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 27: 계산 결과와 일치\n- ② 36, ③ 42, ④ 45, ⑤ 48: 오답\n\n[명확한 결론]\n따라서 $\\triangle\\text{ABC}$의 넓이는 27이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해로 두 x절편을 구하고 완전제곱꼴에서 꼭짓점 높이를 읽어 삼각형 넓이에 대입한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = x^2 - 8x + 7$의 $x$축 교점 $\\text{A}, \\text{B}$와 꼭짓점 $\\text{C}$로 만들어지는 삼각형 $\\triangle\\text{ABC}$의 넓이를 구한다.\n\n[핵심 발상/공식/보조선]\n$x$축 위의 두 점 사이의 거리를 밑변으로 하고 꼭짓점의 $y$좌표의 절댓값을 높이로 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $x$축 교점 구하기\n$x^2 - 8x + 7 = 0 \\implies (x - 1)(x - 7) = 0 \\implies x = 1$ 또는 $x = 7$\n밑변의 길이: $\\overline{\\text{AB}} = 7 - 1 = 6$\n2단계: 꼭짓점 $\\text{C}$ 구하기\n$y = (x - 4)^2 - 16 + 7 = (x - 4)^2 - 9$\n꼭짓점은 $\\text{C}(4, -9)$이므로 높이 $h = |-9| = 9$\n3단계: 삼각형 넓이 계산\n$\\text{넓이} = \\frac{1}{2} \\times 6 \\times 9 = 27$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 27: 계산 결과와 일치\n- ② 36, ③ 42, ④ 45, ⑤ 48: 오답\n\n[명확한 결론]\n따라서 $\\triangle\\text{ABC}$의 넓이는 27이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해로 두 x절편을 구하고 완전제곱꼴에서 꼭짓점 높이를 읽어 삼각형 넓이에 대입한다."
+          },
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = x^2 - 8x + 7$의 $x$축 교점 $\\text{A}, \\text{B}$와 꼭짓점 $\\text{C}$로 만들어지는 삼각형 $\\triangle\\text{ABC}$의 넓이를 구한다.\n\n[핵심 발상/공식/보조선]\n$x$축 위의 두 점 사이의 거리를 밑변으로 하고 꼭짓점의 $y$좌표의 절댓값을 높이로 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $x$축 교점 구하기\n$x^2 - 8x + 7 = 0 \\implies (x - 1)(x - 7) = 0 \\implies x = 1$ 또는 $x = 7$\n밑변의 길이: $\\overline{\\text{AB}} = 7 - 1 = 6$\n2단계: 꼭짓점 $\\text{C}$ 구하기\n$y = (x - 4)^2 - 16 + 7 = (x - 4)^2 - 9$\n꼭짓점은 $\\text{C}(4, -9)$이므로 높이 $h = |-9| = 9$\n3단계: 삼각형 넓이 계산\n$\\text{넓이} = \\frac{1}{2} \\times 6 \\times 9 = 27$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 27: 계산 결과와 일치\n- ② 36, ③ 42, ④ 45, ⑤ 48: 오답\n\n[명확한 결론]\n따라서 $\\triangle\\text{ABC}$의 넓이는 27이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해로 두 x절편을 구하고 완전제곱꼴에서 꼭짓점 높이를 읽어 삼각형 넓이에 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "인수분해로 두 x절편을 구하고 완전제곱꼴에서 꼭짓점 높이를 읽어 삼각형 넓이에 대입한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_4e567d2a738c754ebbd3c9760eee3f974e580e033f82e0c55ccd4bb72d6f2b0b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fab70eb5e9b6ecb6b85b393ea1653fec628d49d4833481c2ce80454881e8e52b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0eb96549158d958532a1495ff9a77f7353513026ebd8c197e2447b6c2a315202"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>17. 이차함수 $y=-x^2-3$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $4$만큼 평행이동한 그래프가 나타내는 이차함수의 최댓값은? (4점)</p>"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "<p>17. 이차함수 $y=-x^2-3$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $4$만큼 평행이동한 그래프가 나타내는 이차함수의 최댓값은? (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "<p>17. 이차함수 $y=-x^2-3$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $4$만큼 평행이동한 그래프가 나타내는 이차함수의 최댓값은? (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$y = -x^2 - 3$을 $x$축 방향 2만큼, $y$축 방향 4만큼 평행이동한 함수의 최댓값을 구한다.\n\n[핵심 발상/공식/보조선]\n위로 볼록한 포물선의 최댓값은 꼭짓점의 $y$좌표와 같다. 꼭짓점의 이동을 추적하여 최댓값을 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 원래 꼭짓점: $(0, -3)$\n2단계: 평행이동 후 꼭짓점: $(0 + 2, -3 + 4) = (2, 1)$\n3단계: 최댓값 도출\n최고차항의 계수가 $-1 < 0$이므로 포물선은 $x = 2$에서 최댓값 1을 갖는다.\n\n[경우 나눔 및 5개 선지 검토]\n- ① -7, ② -4, ③ -3: 오답\n- ④ 1: 최댓값 1과 일치\n- ⑤ 4: 오답\n\n[명확한 결론]\n따라서 최댓값은 1이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 이동량으로 꼭짓점의 y좌표를 바꾸어 최대를 읽는 직접 평행이동이다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$y = -x^2 - 3$을 $x$축 방향 2만큼, $y$축 방향 4만큼 평행이동한 함수의 최댓값을 구한다.\n\n[핵심 발상/공식/보조선]\n위로 볼록한 포물선의 최댓값은 꼭짓점의 $y$좌표와 같다. 꼭짓점의 이동을 추적하여 최댓값을 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 원래 꼭짓점: $(0, -3)$\n2단계: 평행이동 후 꼭짓점: $(0 + 2, -3 + 4) = (2, 1)$\n3단계: 최댓값 도출\n최고차항의 계수가 $-1 < 0$이므로 포물선은 $x = 2$에서 최댓값 1을 갖는다.\n\n[경우 나눔 및 5개 선지 검토]\n- ① -7, ② -4, ③ -3: 오답\n- ④ 1: 최댓값 1과 일치\n- ⑤ 4: 오답\n\n[명확한 결론]\n따라서 최댓값은 1이므로 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 이동량으로 꼭짓점의 y좌표를 바꾸어 최대를 읽는 직접 평행이동이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "주어진 이동량으로 꼭짓점의 y좌표를 바꾸어 최대를 읽는 직접 평행이동이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_9f07da20debf39b3d289a6b5ff421861888976f2f63110b4a1bdcd989c41c77d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1d738b2ca1572814836959f71232eb01341a780e1f451fe032be8de7c1217a49"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "37d1486675fb4ae82c69f3084554f05986d326bed49d0aade4c6740e9044b5bf"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>18. $0$이 아닌 두 실수 $a, b$에 대하여 $\\sqrt{a^2}=a, \\sqrt{b^2}=-b$가 성립할 때, 다음 중 이차함수 $y=ax^2+bx$의 그래프로 알맞은 것은? (4점)</p>"
+          },
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>18. $0$이 아닌 두 실수 $a, b$에 대하여 $\\sqrt{a^2}=a, \\sqrt{b^2}=-b$가 성립할 때, 다음 중 이차함수 $y=ax^2+bx$의 그래프로 알맞은 것은? (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "<p>18. $0$이 아닌 두 실수 $a, b$에 대하여 $\\sqrt{a^2}=a, \\sqrt{b^2}=-b$가 성립할 때, 다음 중 이차함수 $y=ax^2+bx$의 그래프로 알맞은 것은? (4점)</p>"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>18. $0$이 아닌 두 실수 $a, b$에 대하여 $\\sqrt{a^2}=a, \\sqrt{b^2}=-b$가 성립할 때, 다음 중 이차함수 $y=ax^2+bx$의 그래프로 알맞은 것은? (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$\\sqrt{a^2} = a, \\sqrt{b^2} = -b$ ($a, b \\ne 0$)일 때 $y = ax^2 + bx$의 그래프 개형을 찾는다.\n\n[핵심 발상/공식/보조선]\n제곱근의 성질 $\\sqrt{x^2} = |x|$를 이용하여 $a, b$의 부호를 구한 뒤 포물선의 볼록 방향과 축, $x$절편의 위치를 파악한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $a, b$의 부호 결정\n- $\\sqrt{a^2} = |a| = a \\implies a > 0$\n- $\\sqrt{b^2} = |b| = -b \\implies b < 0$\n2단계: 볼록 방향 및 $x$절편\n- $a > 0$이므로 아래로 볼록하다.\n- $y = x(ax + b) = 0 \\implies x = 0$ 또는 $x = -\\frac{b}{a}$\n- $a > 0, b < 0$이므로 $-\\frac{b}{a} > 0$이다.\n3단계: 종합 개형\n원점 $(0, 0)$과 양의 $x$축 $(-\\frac{b}{a}, 0)$을 지나며 아래로 볼록한 포물선이다.\n\n[경우 나눔 및 5개 선지 검토]\n원점과 양의 $x$축을 지나며 아래로 볼록한 포물선을 나타낸 것은 ⑤번이다.\n\n[명확한 결론]\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "√(a²)=a와 √(b²)=-b를 절댓값 성질로 해석해 a>0,b<0을 얻고 포물선의 방향·교점을 판정한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$\\sqrt{a^2} = a, \\sqrt{b^2} = -b$ ($a, b \\ne 0$)일 때 $y = ax^2 + bx$의 그래프 개형을 찾는다.\n\n[핵심 발상/공식/보조선]\n제곱근의 성질 $\\sqrt{x^2} = |x|$를 이용하여 $a, b$의 부호를 구한 뒤 포물선의 볼록 방향과 축, $x$절편의 위치를 파악한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $a, b$의 부호 결정\n- $\\sqrt{a^2} = |a| = a \\implies a > 0$\n- $\\sqrt{b^2} = |b| = -b \\implies b < 0$\n2단계: 볼록 방향 및 $x$절편\n- $a > 0$이므로 아래로 볼록하다.\n- $y = x(ax + b) = 0 \\implies x = 0$ 또는 $x = -\\frac{b}{a}$\n- $a > 0, b < 0$이므로 $-\\frac{b}{a} > 0$이다.\n3단계: 종합 개형\n원점 $(0, 0)$과 양의 $x$축 $(-\\frac{b}{a}, 0)$을 지나며 아래로 볼록한 포물선이다.\n\n[경우 나눔 및 5개 선지 검토]\n원점과 양의 $x$축을 지나며 아래로 볼록한 포물선을 나타낸 것은 ⑤번이다.\n\n[명확한 결론]\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "√(a²)=a와 √(b²)=-b를 절댓값 성질로 해석해 a>0,b<0을 얻고 포물선의 방향·교점을 판정한다."
+          },
+          {
+            "term": "그래프의개형",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$\\sqrt{a^2} = a, \\sqrt{b^2} = -b$ ($a, b \\ne 0$)일 때 $y = ax^2 + bx$의 그래프 개형을 찾는다.\n\n[핵심 발상/공식/보조선]\n제곱근의 성질 $\\sqrt{x^2} = |x|$를 이용하여 $a, b$의 부호를 구한 뒤 포물선의 볼록 방향과 축, $x$절편의 위치를 파악한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $a, b$의 부호 결정\n- $\\sqrt{a^2} = |a| = a \\implies a > 0$\n- $\\sqrt{b^2} = |b| = -b \\implies b < 0$\n2단계: 볼록 방향 및 $x$절편\n- $a > 0$이므로 아래로 볼록하다.\n- $y = x(ax + b) = 0 \\implies x = 0$ 또는 $x = -\\frac{b}{a}$\n- $a > 0, b < 0$이므로 $-\\frac{b}{a} > 0$이다.\n3단계: 종합 개형\n원점 $(0, 0)$과 양의 $x$축 $(-\\frac{b}{a}, 0)$을 지나며 아래로 볼록한 포물선이다.\n\n[경우 나눔 및 5개 선지 검토]\n원점과 양의 $x$축을 지나며 아래로 볼록한 포물선을 나타낸 것은 ⑤번이다.\n\n[명확한 결론]\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "√(a²)=a와 √(b²)=-b를 절댓값 성질로 해석해 a>0,b<0을 얻고 포물선의 방향·교점을 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "<p>18. $0$이 아닌 두 실수 $a, b$에 대하여 $\\sqrt{a^2}=a, \\sqrt{b^2}=-b$가 성립할 때, 다음 중 이차함수 $y=ax^2+bx$의 그래프로 알맞은 것은? (4점)</p>"
+          },
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "<p>18. $0$이 아닌 두 실수 $a, b$에 대하여 $\\sqrt{a^2}=a, \\sqrt{b^2}=-b$가 성립할 때, 다음 중 이차함수 $y=ax^2+bx$의 그래프로 알맞은 것은? (4점)</p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "√(a²)=a와 √(b²)=-b를 절댓값 성질로 해석해 a>0,b<0을 얻고 포물선의 방향·교점을 판정한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_da518d938ab9ed56a6c17d869a8e88cfd85f0686969fc4262fb6f29d7cd1fdd0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "854bebd5c301835a0576d7ab0940a83eea9ebbb325eb847ec21a222b2244b109"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2751582d8d0d073e448cf9aa5515fd74edda4d803cbf62f3216f4d625c52be20"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>19. 다음 그림과 같이 이차함수 $y=a(x-3)^2+1$의 그래프 위에 네 점 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$가 있다. 이 함수의 그래프가 점 $\\text{A}(0, 2)$에서 $y$축과 만나고, 선분 $\\text{AB}$와 선분 $\\text{CD}$는 평행하고 선분 $\\text{CD}$의 길이가 $18$일 때, 사다리꼴 $\\text{ABCD}$의 넓이를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q19.png\" alt=\"꼭짓점이 (3, 1)이고 점 A(0, 2)를 지나며 평행한 선분 AB와 CD로 이루어진 사다리꼴 그림\" /></p>"
+          },
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "<p>19. 다음 그림과 같이 이차함수 $y=a(x-3)^2+1$의 그래프 위에 네 점 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$가 있다. 이 함수의 그래프가 점 $\\text{A}(0, 2)$에서 $y$축과 만나고, 선분 $\\text{AB}$와 선분 $\\text{CD}$는 평행하고 선분 $\\text{CD}$의 길이가 $18$일 때, 사다리꼴 $\\text{ABCD}$의 넓이를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q19.png\" alt=\"꼭짓점이 (3, 1)이고 점 A(0, 2)를 지나며 평행한 선분 AB와 CD로 이루어진 사다리꼴 그림\" /></p>"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "<p>19. 다음 그림과 같이 이차함수 $y=a(x-3)^2+1$의 그래프 위에 네 점 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$가 있다. 이 함수의 그래프가 점 $\\text{A}(0, 2)$에서 $y$축과 만나고, 선분 $\\text{AB}$와 선분 $\\text{CD}$는 평행하고 선분 $\\text{CD}$의 길이가 $18$일 때, 사다리꼴 $\\text{ABCD}$의 넓이를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q19.png\" alt=\"꼭짓점이 (3, 1)이고 점 A(0, 2)를 지나며 평행한 선분 AB와 CD로 이루어진 사다리꼴 그림\" /></p>"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "<p>19. 다음 그림과 같이 이차함수 $y=a(x-3)^2+1$의 그래프 위에 네 점 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$가 있다. 이 함수의 그래프가 점 $\\text{A}(0, 2)$에서 $y$축과 만나고, 선분 $\\text{AB}$와 선분 $\\text{CD}$는 평행하고 선분 $\\text{CD}$의 길이가 $18$일 때, 사다리꼴 $\\text{ABCD}$의 넓이를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q19.png\" alt=\"꼭짓점이 (3, 1)이고 점 A(0, 2)를 지나며 평행한 선분 AB와 CD로 이루어진 사다리꼴 그림\" /></p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "<p>19. 다음 그림과 같이 이차함수 $y=a(x-3)^2+1$의 그래프 위에 네 점 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$가 있다. 이 함수의 그래프가 점 $\\text{A}(0, 2)$에서 $y$축과 만나고, 선분 $\\text{AB}$와 선분 $\\text{CD}$는 평행하고 선분 $\\text{CD}$의 길이가 $18$일 때, 사다리꼴 $\\text{ABCD}$의 넓이를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q19.png\" alt=\"꼭짓점이 (3, 1)이고 점 A(0, 2)를 지나며 평행한 선분 AB와 CD로 이루어진 사다리꼴 그림\" /></p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = a(x-3)^2 + 1$의 그래프가 점 $\\text{A}(0, 2)$에서 $y$축과 만나고, 선분 $\\text{AB} \\parallel \\text{CD}$이며 $\\overline{\\text{CD}} = 18$일 때 사다리꼴 $\\text{ABCD}$의 넓이를 구한다.\n\n[핵심 발상/공식/보조선]\n이차함수 포물선은 대칭축 $x = 3$에 대하여 좌우대칭이다.\n1) 점 $\\text{A}(0, 2)$를 대입하여 계수 $a$를 확정한다.\n2) 선분 $\\text{AB}$가 $x$축과 평행하므로 점 $\\text{B}$의 $y$좌표는 2이며, 대칭축 $x = 3$에 대칭이므로 점 $\\text{B}$의 $x$좌표와 윗변의 길이를 구한다.\n3) 선분 $\\text{CD}$의 길이 18이 대칭축 $x = 3$에 의해 좌우 9씩 양분되므로 점 $\\text{C}, \\text{D}$의 $x$좌표를 구하고 함숫값을 통해 사다리꼴의 높이를 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $\\text{A}(0, 2)$ 대입하여 $a$ 구하기\n$2 = a(0 - 3)^2 + 1 \\implies 9a + 1 = 2 \\implies 9a = 1 \\implies a = \\frac{1}{9}$\n따라서 포물선의 식은 $y = \\frac{1}{9}(x - 3)^2 + 1$이다.\n2단계: 점 $\\text{B}$의 좌표 및 윗변 $\\overline{\\text{AB}}$의 길이 구하기\n- 점 $\\text{A}$의 좌표는 $(0, 2)$이다.\n- $\\overline{\\text{AB}}$는 대칭축에 수직($x$축에 평행)하므로 점 $\\text{B}$의 $y$좌표는 2이다.\n- 대칭축이 $x = 3$이므로 점 $\\text{B}$의 $x$좌표는 $3 + (3 - 0) = 6$이다. 즉 $\\text{B}(6, 2)$이다.\n- 윗변의 길이: $\\overline{\\text{AB}} = 6 - 0 = 6$\n3단계: 밑변 $\\overline{\\text{CD}}$의 위치 및 높이 $h$ 구하기\n- $\\overline{\\text{CD}} = 18$이고 대칭축이 $x = 3$이므로 점 $\\text{C}, \\text{D}$의 $x$좌표는 대칭축에서 각각 9만큼 떨어진 점이다:\n  $x_\\text{C} = 3 - 9 = -6, \\quad x_\\text{D} = 3 + 9 = 12$\n- 점 $\\text{D}(12, y_\\text{D})$의 $y$좌표 계산:\n  $y_\\text{D} = \\frac{1}{9}(12 - 3)^2 + 1 = \\frac{1}{9}(9^2) + 1 = \\frac{1}{9}(81) + 1 = 9 + 1 = 10$\n- 선분 $\\text{AB}$의 $y$좌표는 2, 선분 $\\text{CD}$의 $y$좌표는 10이므로 사다리꼴의 높이 $h$는:\n  $h = 10 - 2 = 8$\n4단계: 사다리꼴 넓이 계산\n$\\text{넓이} = \\frac{1}{2} \\times (\\text{윗변} + \\text{밑변}) \\times \\text{높이} = \\frac{1}{2} \\times (6 + 18) \\times 8 = \\frac{1}{2} \\times 24 \\times 8 = 12 \\times 8 = 96$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 72, ② 80, ③ 88, ④ 92: 오답\n- ⑤ 96: 계산 결과와 정확히 일치\n\n[명확한 결론]\n따라서 사다리꼴 $\\text{ABCD}$의 넓이는 96이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 한 점에서 계수, 대칭축에서 평행선분 양 끝 좌표, 함숫값에서 높이를 얻어 사다리꼴 넓이를 구한다. 각 절차가 정형이나 연계가 여러 단계이다."
+          },
+          {
+            "term": "축대칭",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = a(x-3)^2 + 1$의 그래프가 점 $\\text{A}(0, 2)$에서 $y$축과 만나고, 선분 $\\text{AB} \\parallel \\text{CD}$이며 $\\overline{\\text{CD}} = 18$일 때 사다리꼴 $\\text{ABCD}$의 넓이를 구한다.\n\n[핵심 발상/공식/보조선]\n이차함수 포물선은 대칭축 $x = 3$에 대하여 좌우대칭이다.\n1) 점 $\\text{A}(0, 2)$를 대입하여 계수 $a$를 확정한다.\n2) 선분 $\\text{AB}$가 $x$축과 평행하므로 점 $\\text{B}$의 $y$좌표는 2이며, 대칭축 $x = 3$에 대칭이므로 점 $\\text{B}$의 $x$좌표와 윗변의 길이를 구한다.\n3) 선분 $\\text{CD}$의 길이 18이 대칭축 $x = 3$에 의해 좌우 9씩 양분되므로 점 $\\text{C}, \\text{D}$의 $x$좌표를 구하고 함숫값을 통해 사다리꼴의 높이를 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $\\text{A}(0, 2)$ 대입하여 $a$ 구하기\n$2 = a(0 - 3)^2 + 1 \\implies 9a + 1 = 2 \\implies 9a = 1 \\implies a = \\frac{1}{9}$\n따라서 포물선의 식은 $y = \\frac{1}{9}(x - 3)^2 + 1$이다.\n2단계: 점 $\\text{B}$의 좌표 및 윗변 $\\overline{\\text{AB}}$의 길이 구하기\n- 점 $\\text{A}$의 좌표는 $(0, 2)$이다.\n- $\\overline{\\text{AB}}$는 대칭축에 수직($x$축에 평행)하므로 점 $\\text{B}$의 $y$좌표는 2이다.\n- 대칭축이 $x = 3$이므로 점 $\\text{B}$의 $x$좌표는 $3 + (3 - 0) = 6$이다. 즉 $\\text{B}(6, 2)$이다.\n- 윗변의 길이: $\\overline{\\text{AB}} = 6 - 0 = 6$\n3단계: 밑변 $\\overline{\\text{CD}}$의 위치 및 높이 $h$ 구하기\n- $\\overline{\\text{CD}} = 18$이고 대칭축이 $x = 3$이므로 점 $\\text{C}, \\text{D}$의 $x$좌표는 대칭축에서 각각 9만큼 떨어진 점이다:\n  $x_\\text{C} = 3 - 9 = -6, \\quad x_\\text{D} = 3 + 9 = 12$\n- 점 $\\text{D}(12, y_\\text{D})$의 $y$좌표 계산:\n  $y_\\text{D} = \\frac{1}{9}(12 - 3)^2 + 1 = \\frac{1}{9}(9^2) + 1 = \\frac{1}{9}(81) + 1 = 9 + 1 = 10$\n- 선분 $\\text{AB}$의 $y$좌표는 2, 선분 $\\text{CD}$의 $y$좌표는 10이므로 사다리꼴의 높이 $h$는:\n  $h = 10 - 2 = 8$\n4단계: 사다리꼴 넓이 계산\n$\\text{넓이} = \\frac{1}{2} \\times (\\text{윗변} + \\text{밑변}) \\times \\text{높이} = \\frac{1}{2} \\times (6 + 18) \\times 8 = \\frac{1}{2} \\times 24 \\times 8 = 12 \\times 8 = 96$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 72, ② 80, ③ 88, ④ 92: 오답\n- ⑤ 96: 계산 결과와 정확히 일치\n\n[명확한 결론]\n따라서 사다리꼴 $\\text{ABCD}$의 넓이는 96이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 한 점에서 계수, 대칭축에서 평행선분 양 끝 좌표, 함숫값에서 높이를 얻어 사다리꼴 넓이를 구한다. 각 절차가 정형이나 연계가 여러 단계이다."
+          },
+          {
+            "term": "사다리꼴넓이공식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = a(x-3)^2 + 1$의 그래프가 점 $\\text{A}(0, 2)$에서 $y$축과 만나고, 선분 $\\text{AB} \\parallel \\text{CD}$이며 $\\overline{\\text{CD}} = 18$일 때 사다리꼴 $\\text{ABCD}$의 넓이를 구한다.\n\n[핵심 발상/공식/보조선]\n이차함수 포물선은 대칭축 $x = 3$에 대하여 좌우대칭이다.\n1) 점 $\\text{A}(0, 2)$를 대입하여 계수 $a$를 확정한다.\n2) 선분 $\\text{AB}$가 $x$축과 평행하므로 점 $\\text{B}$의 $y$좌표는 2이며, 대칭축 $x = 3$에 대칭이므로 점 $\\text{B}$의 $x$좌표와 윗변의 길이를 구한다.\n3) 선분 $\\text{CD}$의 길이 18이 대칭축 $x = 3$에 의해 좌우 9씩 양분되므로 점 $\\text{C}, \\text{D}$의 $x$좌표를 구하고 함숫값을 통해 사다리꼴의 높이를 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $\\text{A}(0, 2)$ 대입하여 $a$ 구하기\n$2 = a(0 - 3)^2 + 1 \\implies 9a + 1 = 2 \\implies 9a = 1 \\implies a = \\frac{1}{9}$\n따라서 포물선의 식은 $y = \\frac{1}{9}(x - 3)^2 + 1$이다.\n2단계: 점 $\\text{B}$의 좌표 및 윗변 $\\overline{\\text{AB}}$의 길이 구하기\n- 점 $\\text{A}$의 좌표는 $(0, 2)$이다.\n- $\\overline{\\text{AB}}$는 대칭축에 수직($x$축에 평행)하므로 점 $\\text{B}$의 $y$좌표는 2이다.\n- 대칭축이 $x = 3$이므로 점 $\\text{B}$의 $x$좌표는 $3 + (3 - 0) = 6$이다. 즉 $\\text{B}(6, 2)$이다.\n- 윗변의 길이: $\\overline{\\text{AB}} = 6 - 0 = 6$\n3단계: 밑변 $\\overline{\\text{CD}}$의 위치 및 높이 $h$ 구하기\n- $\\overline{\\text{CD}} = 18$이고 대칭축이 $x = 3$이므로 점 $\\text{C}, \\text{D}$의 $x$좌표는 대칭축에서 각각 9만큼 떨어진 점이다:\n  $x_\\text{C} = 3 - 9 = -6, \\quad x_\\text{D} = 3 + 9 = 12$\n- 점 $\\text{D}(12, y_\\text{D})$의 $y$좌표 계산:\n  $y_\\text{D} = \\frac{1}{9}(12 - 3)^2 + 1 = \\frac{1}{9}(9^2) + 1 = \\frac{1}{9}(81) + 1 = 9 + 1 = 10$\n- 선분 $\\text{AB}$의 $y$좌표는 2, 선분 $\\text{CD}$의 $y$좌표는 10이므로 사다리꼴의 높이 $h$는:\n  $h = 10 - 2 = 8$\n4단계: 사다리꼴 넓이 계산\n$\\text{넓이} = \\frac{1}{2} \\times (\\text{윗변} + \\text{밑변}) \\times \\text{높이} = \\frac{1}{2} \\times (6 + 18) \\times 8 = \\frac{1}{2} \\times 24 \\times 8 = 12 \\times 8 = 96$\n\n[경우 나눔 및 5개 선지 검토]\n- ① 72, ② 80, ③ 88, ④ 92: 오답\n- ⑤ 96: 계산 결과와 정확히 일치\n\n[명확한 결론]\n따라서 사다리꼴 $\\text{ABCD}$의 넓이는 96이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 한 점에서 계수, 대칭축에서 평행선분 양 끝 좌표, 함숫값에서 높이를 얻어 사다리꼴 넓이를 구한다. 각 절차가 정형이나 연계가 여러 단계이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "주어진 한 점에서 계수, 대칭축에서 평행선분 양 끝 좌표, 함숫값에서 높이를 얻어 사다리꼴 넓이를 구한다. 각 절차가 정형이나 연계가 여러 단계이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_8dc1368494cd3078f3df31410ec15c45f989b1d16c70374c238a77c4aaf7a414",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3697964945967cb646f04ea4b49a13c3a4d32ba4f3ad3d6f49cd32cc621c2f3a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "986d4af9fff1b26003b33399bec5204cbcad7fa11da2dfb895ea18f3a43038cb"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>20. 다음 그림과 같이 이차함수 $y=x^2+2$의 그래프 위의 한 점 $\\text{P}$에서 $y$축에 평행한 직선을 그어 직선 $y=x$와 만나는 점을 $\\text{Q}$라고 하자. 선분 $\\text{PQ}$의 길이가 최솟값을 가질 때, 점 $\\text{P}$의 좌표를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q20.png\" alt=\"y=x^2+2와 직선 y=x 사이의 수직 선분 PQ가 표시된 좌표평면 그림\" /></p>"
+          },
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "<p>20. 다음 그림과 같이 이차함수 $y=x^2+2$의 그래프 위의 한 점 $\\text{P}$에서 $y$축에 평행한 직선을 그어 직선 $y=x$와 만나는 점을 $\\text{Q}$라고 하자. 선분 $\\text{PQ}$의 길이가 최솟값을 가질 때, 점 $\\text{P}$의 좌표를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q20.png\" alt=\"y=x^2+2와 직선 y=x 사이의 수직 선분 PQ가 표시된 좌표평면 그림\" /></p>"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "<p>20. 다음 그림과 같이 이차함수 $y=x^2+2$의 그래프 위의 한 점 $\\text{P}$에서 $y$축에 평행한 직선을 그어 직선 $y=x$와 만나는 점을 $\\text{Q}$라고 하자. 선분 $\\text{PQ}$의 길이가 최솟값을 가질 때, 점 $\\text{P}$의 좌표를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q20.png\" alt=\"y=x^2+2와 직선 y=x 사이의 수직 선분 PQ가 표시된 좌표평면 그림\" /></p>"
+          },
+          {
+            "term": "수직",
+            "src": "stem",
+            "quote": "<p>20. 다음 그림과 같이 이차함수 $y=x^2+2$의 그래프 위의 한 점 $\\text{P}$에서 $y$축에 평행한 직선을 그어 직선 $y=x$와 만나는 점을 $\\text{Q}$라고 하자. 선분 $\\text{PQ}$의 길이가 최솟값을 가질 때, 점 $\\text{P}$의 좌표를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q20.png\" alt=\"y=x^2+2와 직선 y=x 사이의 수직 선분 PQ가 표시된 좌표평면 그림\" /></p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "<p>20. 다음 그림과 같이 이차함수 $y=x^2+2$의 그래프 위의 한 점 $\\text{P}$에서 $y$축에 평행한 직선을 그어 직선 $y=x$와 만나는 점을 $\\text{Q}$라고 하자. 선분 $\\text{PQ}$의 길이가 최솟값을 가질 때, 점 $\\text{P}$의 좌표를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q20.png\" alt=\"y=x^2+2와 직선 y=x 사이의 수직 선분 PQ가 표시된 좌표평면 그림\" /></p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "함수식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$y = x^2 + 2$ 위의 점 $\\text{P}$와 $y = x$ 위의 점 $\\text{Q}$를 잇는 $y$축에 평행한 선분 $\\text{PQ}$의 길이가 최소일 때 점 $\\text{P}$의 좌표를 구한다.\n\n[핵심 발상/공식/보조선]\n점 $\\text{P}$의 $x$좌표를 $t$라 두고 선분 $\\text{PQ}$의 길이를 $t$에 관한 이차함수로 나타낸 뒤 완전제곱식을 이용하여 최솟값을 갖는 $t$를 찾는다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $\\text{P}, \\text{Q}$의 좌표 표현\n$\\text{P}(t, t^2 + 2), \\quad \\text{Q}(t, t)$\n2단계: 선분 $\\text{PQ}$의 길이 함수 $L(t)$ 작성\n$t^2 + 2 - t = \\left(t - \\frac{1}{2}\\right)^2 + \\frac{7}{4} > 0$이므로 항상 점 $\\text{P}$가 점 $\\text{Q}$보다 위에 있다.\n$L(t) = t^2 - t + 2 = \\left(t - \\frac{1}{2}\\right)^2 + \\frac{7}{4}$\n3단계: 최솟값을 갖는 $t$ 및 점 $\\text{P}$의 좌표 계산\n$L(t)$는 $t = \\frac{1}{2}$일 때 최솟값 $\\frac{7}{4}$을 갖는다.\n따라서 점 $\\text{P}$의 좌표는:\n$x = \\frac{1}{2}$\n$y = \\left(\\frac{1}{2}\\right)^2 + 2 = \\frac{1}{4} + 2 = \\frac{9}{4}$\n점 $\\text{P}\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$: 계산 결과와 일치\n- ②, ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 점 $\\text{P}$의 좌표는 $\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 x에서 두 그래프의 y좌표 차를 길이 함수로 만들고 완전제곱식의 최솟값에서 점P를 복원한다. 기존 상과 bucket3 경계를 명시한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$y = x^2 + 2$ 위의 점 $\\text{P}$와 $y = x$ 위의 점 $\\text{Q}$를 잇는 $y$축에 평행한 선분 $\\text{PQ}$의 길이가 최소일 때 점 $\\text{P}$의 좌표를 구한다.\n\n[핵심 발상/공식/보조선]\n점 $\\text{P}$의 $x$좌표를 $t$라 두고 선분 $\\text{PQ}$의 길이를 $t$에 관한 이차함수로 나타낸 뒤 완전제곱식을 이용하여 최솟값을 갖는 $t$를 찾는다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $\\text{P}, \\text{Q}$의 좌표 표현\n$\\text{P}(t, t^2 + 2), \\quad \\text{Q}(t, t)$\n2단계: 선분 $\\text{PQ}$의 길이 함수 $L(t)$ 작성\n$t^2 + 2 - t = \\left(t - \\frac{1}{2}\\right)^2 + \\frac{7}{4} > 0$이므로 항상 점 $\\text{P}$가 점 $\\text{Q}$보다 위에 있다.\n$L(t) = t^2 - t + 2 = \\left(t - \\frac{1}{2}\\right)^2 + \\frac{7}{4}$\n3단계: 최솟값을 갖는 $t$ 및 점 $\\text{P}$의 좌표 계산\n$L(t)$는 $t = \\frac{1}{2}$일 때 최솟값 $\\frac{7}{4}$을 갖는다.\n따라서 점 $\\text{P}$의 좌표는:\n$x = \\frac{1}{2}$\n$y = \\left(\\frac{1}{2}\\right)^2 + 2 = \\frac{1}{4} + 2 = \\frac{9}{4}$\n점 $\\text{P}\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$: 계산 결과와 일치\n- ②, ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 점 $\\text{P}$의 좌표는 $\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 x에서 두 그래프의 y좌표 차를 길이 함수로 만들고 완전제곱식의 최솟값에서 점P를 복원한다. 기존 상과 bucket3 경계를 명시한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$y = x^2 + 2$ 위의 점 $\\text{P}$와 $y = x$ 위의 점 $\\text{Q}$를 잇는 $y$축에 평행한 선분 $\\text{PQ}$의 길이가 최소일 때 점 $\\text{P}$의 좌표를 구한다.\n\n[핵심 발상/공식/보조선]\n점 $\\text{P}$의 $x$좌표를 $t$라 두고 선분 $\\text{PQ}$의 길이를 $t$에 관한 이차함수로 나타낸 뒤 완전제곱식을 이용하여 최솟값을 갖는 $t$를 찾는다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $\\text{P}, \\text{Q}$의 좌표 표현\n$\\text{P}(t, t^2 + 2), \\quad \\text{Q}(t, t)$\n2단계: 선분 $\\text{PQ}$의 길이 함수 $L(t)$ 작성\n$t^2 + 2 - t = \\left(t - \\frac{1}{2}\\right)^2 + \\frac{7}{4} > 0$이므로 항상 점 $\\text{P}$가 점 $\\text{Q}$보다 위에 있다.\n$L(t) = t^2 - t + 2 = \\left(t - \\frac{1}{2}\\right)^2 + \\frac{7}{4}$\n3단계: 최솟값을 갖는 $t$ 및 점 $\\text{P}$의 좌표 계산\n$L(t)$는 $t = \\frac{1}{2}$일 때 최솟값 $\\frac{7}{4}$을 갖는다.\n따라서 점 $\\text{P}$의 좌표는:\n$x = \\frac{1}{2}$\n$y = \\left(\\frac{1}{2}\\right)^2 + 2 = \\frac{1}{4} + 2 = \\frac{9}{4}$\n점 $\\text{P}\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$: 계산 결과와 일치\n- ②, ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 점 $\\text{P}$의 좌표는 $\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 x에서 두 그래프의 y좌표 차를 길이 함수로 만들고 완전제곱식의 최솟값에서 점P를 복원한다. 기존 상과 bucket3 경계를 명시한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n$y = x^2 + 2$ 위의 점 $\\text{P}$와 $y = x$ 위의 점 $\\text{Q}$를 잇는 $y$축에 평행한 선분 $\\text{PQ}$의 길이가 최소일 때 점 $\\text{P}$의 좌표를 구한다.\n\n[핵심 발상/공식/보조선]\n점 $\\text{P}$의 $x$좌표를 $t$라 두고 선분 $\\text{PQ}$의 길이를 $t$에 관한 이차함수로 나타낸 뒤 완전제곱식을 이용하여 최솟값을 갖는 $t$를 찾는다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $\\text{P}, \\text{Q}$의 좌표 표현\n$\\text{P}(t, t^2 + 2), \\quad \\text{Q}(t, t)$\n2단계: 선분 $\\text{PQ}$의 길이 함수 $L(t)$ 작성\n$t^2 + 2 - t = \\left(t - \\frac{1}{2}\\right)^2 + \\frac{7}{4} > 0$이므로 항상 점 $\\text{P}$가 점 $\\text{Q}$보다 위에 있다.\n$L(t) = t^2 - t + 2 = \\left(t - \\frac{1}{2}\\right)^2 + \\frac{7}{4}$\n3단계: 최솟값을 갖는 $t$ 및 점 $\\text{P}$의 좌표 계산\n$L(t)$는 $t = \\frac{1}{2}$일 때 최솟값 $\\frac{7}{4}$을 갖는다.\n따라서 점 $\\text{P}$의 좌표는:\n$x = \\frac{1}{2}$\n$y = \\left(\\frac{1}{2}\\right)^2 + 2 = \\frac{1}{4} + 2 = \\frac{9}{4}$\n점 $\\text{P}\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$: 계산 결과와 일치\n- ②, ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 점 $\\text{P}$의 좌표는 $\\left(\\frac{1}{2}, \\frac{9}{4}\\right)$이므로 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 x에서 두 그래프의 y좌표 차를 길이 함수로 만들고 완전제곱식의 최솟값에서 점P를 복원한다. 기존 상과 bucket3 경계를 명시한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "<p>20. 다음 그림과 같이 이차함수 $y=x^2+2$의 그래프 위의 한 점 $\\text{P}$에서 $y$축에 평행한 직선을 그어 직선 $y=x$와 만나는 점을 $\\text{Q}$라고 하자. 선분 $\\text{PQ}$의 길이가 최솟값을 가질 때, 점 $\\text{P}$의 좌표를 구하면? (5점)<br><img src=\"assets/images/16_장흥중_1학기_기말_중3_수학/q20.png\" alt=\"y=x^2+2와 직선 y=x 사이의 수직 선분 PQ가 표시된 좌표평면 그림\" /></p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "같은 x에서 두 그래프의 y좌표 차를 길이 함수로 만들고 완전제곱식의 최솟값에서 점P를 복원한다. 기존 상과 bucket3 경계를 명시한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_55758e45892f329c296f525c92a585b1c2d2dfbee8a24e3e271ede0f40ce4dd9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dec21303859e7e2e98efcef84e3604597c592d97ebcc7366aa8d51f70ae2a5f1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7164ae7fd0b63945291abade7e80c937c22854197511952c9b1953aeb2ccc090"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "<p>【서술형1】 다음은 완전제곱식을 이용하여 이차방정식 $2x^2+2x-1=0$을 푸는 과정이다. 안에 알맞은 식이나 수를 적으시오. (5점)<br>① 양변을 $x^2$의 계수로 나눈다: (1) $= 0$<br>② 좌변의 상수항을 우변으로 이항한다: $x^2 + x = \\dots$<br>③ $x$의 계수의 절반을 제곱한 값을 양변에 더한다: $x^2 + x + (2) = \\frac{1}{2} + (2)$<br>④ 좌변을 완전제곱식으로 나타낸다: $\\left(x + \\frac{1}{2}\\right)^2 = (3)$<br>⑤ 제곱근을 구한다: $x + \\frac{1}{2} = (4)$<br>⑥ 근을 구한다: $x = (5)$</p>"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "<p>【서술형1】 다음은 완전제곱식을 이용하여 이차방정식 $2x^2+2x-1=0$을 푸는 과정이다. 안에 알맞은 식이나 수를 적으시오. (5점)<br>① 양변을 $x^2$의 계수로 나눈다: (1) $= 0$<br>② 좌변의 상수항을 우변으로 이항한다: $x^2 + x = \\dots$<br>③ $x$의 계수의 절반을 제곱한 값을 양변에 더한다: $x^2 + x + (2) = \\frac{1}{2} + (2)$<br>④ 좌변을 완전제곱식으로 나타낸다: $\\left(x + \\frac{1}{2}\\right)^2 = (3)$<br>⑤ 제곱근을 구한다: $x + \\frac{1}{2} = (4)$<br>⑥ 근을 구한다: $x = (5)$</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "<p>【서술형1】 다음은 완전제곱식을 이용하여 이차방정식 $2x^2+2x-1=0$을 푸는 과정이다. 안에 알맞은 식이나 수를 적으시오. (5점)<br>① 양변을 $x^2$의 계수로 나눈다: (1) $= 0$<br>② 좌변의 상수항을 우변으로 이항한다: $x^2 + x = \\dots$<br>③ $x$의 계수의 절반을 제곱한 값을 양변에 더한다: $x^2 + x + (2) = \\frac{1}{2} + (2)$<br>④ 좌변을 완전제곱식으로 나타낸다: $\\left(x + \\frac{1}{2}\\right)^2 = (3)$<br>⑤ 제곱근을 구한다: $x + \\frac{1}{2} = (4)$<br>⑥ 근을 구한다: $x = (5)$</p>"
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "<p>【서술형1】 다음은 완전제곱식을 이용하여 이차방정식 $2x^2+2x-1=0$을 푸는 과정이다. 안에 알맞은 식이나 수를 적으시오. (5점)<br>① 양변을 $x^2$의 계수로 나눈다: (1) $= 0$<br>② 좌변의 상수항을 우변으로 이항한다: $x^2 + x = \\dots$<br>③ $x$의 계수의 절반을 제곱한 값을 양변에 더한다: $x^2 + x + (2) = \\frac{1}{2} + (2)$<br>④ 좌변을 완전제곱식으로 나타낸다: $\\left(x + \\frac{1}{2}\\right)^2 = (3)$<br>⑤ 제곱근을 구한다: $x + \\frac{1}{2} = (4)$<br>⑥ 근을 구한다: $x = (5)$</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n완전제곱식을 이용하여 $2x^2 + 2x - 1 = 0$을 푸는 단계별 빈칸 (1)~(5)를 완성한다.\n\n[핵심 발상/공식/보조선]\n최고차항 계수로 나누기 $\\to$ 상수항 이항 $\\to$ 일차항 계수의 절반의 제곱 더하기 $\\to$ 완전제곱식 정리 $\\to$ 제곱근 풀기 $\\to$ 해 도출\n\n[연속 등식 및 충분한 중간 계산]\n1단계: (1) 양변을 2로 나눔: $x^2 + x - \\frac{1}{2} = 0$\n2단계: 상수항 이항: $x^2 + x = \\frac{1}{2}$\n3단계: (2) 양변에 더할 수: 일차항 계수 1의 절반의 제곱인 $\\left(\\frac{1}{2}\\right)^2$ (또는 $\\frac{1}{4}$)\n4단계: (3) 우변 계산: $\\frac{1}{2} + \\frac{1}{4} = \\frac{3}{4}$, 즉 $\\left(x + \\frac{1}{2}\\right)^2 = \\frac{3}{4}$\n5단계: (4) 제곱근 풀기: $x + \\frac{1}{2} = \\pm\\frac{\\sqrt{3}}{2}$\n6단계: (5) 최종 해: $x = -\\frac{1}{2} \\pm \\frac{\\sqrt{3}}{2} = \\frac{-1 \\pm \\sqrt{3}}{2}$\n\n[조건 적합성 검토]\n도출된 빈칸을 차례로 대입하면 전개 과정의 각 등식이 수학적으로 모두 성립하여 문제의 논리 전개에 정확히 부합한다.\n\n[명확한 결론]\n따라서 정답은 (1) $x^2 + x - \\frac{1}{2}$, (2) $\\left(\\frac{1}{2}\\right)^2$ (또는 $\\frac{1}{4}$), (3) $\\frac{3}{4}$, (4) $\\pm\\frac{\\sqrt{3}}{2}$, (5) $\\frac{-1 \\pm \\sqrt{3}}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "제시된 단계의 빈칸을 완전제곱식과 제곱근 풀이로 연결한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n완전제곱식을 이용하여 $2x^2 + 2x - 1 = 0$을 푸는 단계별 빈칸 (1)~(5)를 완성한다.\n\n[핵심 발상/공식/보조선]\n최고차항 계수로 나누기 $\\to$ 상수항 이항 $\\to$ 일차항 계수의 절반의 제곱 더하기 $\\to$ 완전제곱식 정리 $\\to$ 제곱근 풀기 $\\to$ 해 도출\n\n[연속 등식 및 충분한 중간 계산]\n1단계: (1) 양변을 2로 나눔: $x^2 + x - \\frac{1}{2} = 0$\n2단계: 상수항 이항: $x^2 + x = \\frac{1}{2}$\n3단계: (2) 양변에 더할 수: 일차항 계수 1의 절반의 제곱인 $\\left(\\frac{1}{2}\\right)^2$ (또는 $\\frac{1}{4}$)\n4단계: (3) 우변 계산: $\\frac{1}{2} + \\frac{1}{4} = \\frac{3}{4}$, 즉 $\\left(x + \\frac{1}{2}\\right)^2 = \\frac{3}{4}$\n5단계: (4) 제곱근 풀기: $x + \\frac{1}{2} = \\pm\\frac{\\sqrt{3}}{2}$\n6단계: (5) 최종 해: $x = -\\frac{1}{2} \\pm \\frac{\\sqrt{3}}{2} = \\frac{-1 \\pm \\sqrt{3}}{2}$\n\n[조건 적합성 검토]\n도출된 빈칸을 차례로 대입하면 전개 과정의 각 등식이 수학적으로 모두 성립하여 문제의 논리 전개에 정확히 부합한다.\n\n[명확한 결론]\n따라서 정답은 (1) $x^2 + x - \\frac{1}{2}$, (2) $\\left(\\frac{1}{2}\\right)^2$ (또는 $\\frac{1}{4}$), (3) $\\frac{3}{4}$, (4) $\\pm\\frac{\\sqrt{3}}{2}$, (5) $\\frac{-1 \\pm \\sqrt{3}}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "제시된 단계의 빈칸을 완전제곱식과 제곱근 풀이로 연결한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n완전제곱식을 이용하여 $2x^2 + 2x - 1 = 0$을 푸는 단계별 빈칸 (1)~(5)를 완성한다.\n\n[핵심 발상/공식/보조선]\n최고차항 계수로 나누기 $\\to$ 상수항 이항 $\\to$ 일차항 계수의 절반의 제곱 더하기 $\\to$ 완전제곱식 정리 $\\to$ 제곱근 풀기 $\\to$ 해 도출\n\n[연속 등식 및 충분한 중간 계산]\n1단계: (1) 양변을 2로 나눔: $x^2 + x - \\frac{1}{2} = 0$\n2단계: 상수항 이항: $x^2 + x = \\frac{1}{2}$\n3단계: (2) 양변에 더할 수: 일차항 계수 1의 절반의 제곱인 $\\left(\\frac{1}{2}\\right)^2$ (또는 $\\frac{1}{4}$)\n4단계: (3) 우변 계산: $\\frac{1}{2} + \\frac{1}{4} = \\frac{3}{4}$, 즉 $\\left(x + \\frac{1}{2}\\right)^2 = \\frac{3}{4}$\n5단계: (4) 제곱근 풀기: $x + \\frac{1}{2} = \\pm\\frac{\\sqrt{3}}{2}$\n6단계: (5) 최종 해: $x = -\\frac{1}{2} \\pm \\frac{\\sqrt{3}}{2} = \\frac{-1 \\pm \\sqrt{3}}{2}$\n\n[조건 적합성 검토]\n도출된 빈칸을 차례로 대입하면 전개 과정의 각 등식이 수학적으로 모두 성립하여 문제의 논리 전개에 정확히 부합한다.\n\n[명확한 결론]\n따라서 정답은 (1) $x^2 + x - \\frac{1}{2}$, (2) $\\left(\\frac{1}{2}\\right)^2$ (또는 $\\frac{1}{4}$), (3) $\\frac{3}{4}$, (4) $\\pm\\frac{\\sqrt{3}}{2}$, (5) $\\frac{-1 \\pm \\sqrt{3}}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "제시된 단계의 빈칸을 완전제곱식과 제곱근 풀이로 연결한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제시된 단계의 빈칸을 완전제곱식과 제곱근 풀이로 연결한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_94a04abbd93a03acc2718cf56843c2efbf4c7edd06298a3b45b7aed03377c490",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "41b28f2f787380afb2898e3571cbcc446868a6e6184c2b9f3e2f3463414982f5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a8fea50d469c498ecd620eb8d2b2c273a0870dd9a28cab678fe665a0acc07abd"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "<p>【서술형2】 어떤 수의 제곱의 2배에서 5를 빼면 2와 같다. 어떤 수를 구하시오. (4점)</p>"
+          },
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "<p>【서술형2】 어떤 수의 제곱의 2배에서 5를 빼면 2와 같다. 어떤 수를 구하시오. (4점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "<p>【서술형2】 어떤 수의 제곱의 2배에서 5를 빼면 2와 같다. 어떤 수를 구하시오. (4점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n어떤 수의 제곱의 2배에서 5를 뺀 값이 2와 같을 때 어떤 수를 구한다.\n\n[핵심 발상/공식/보조선]\n어떤 수를 $x$라 하고 문제 조건에 맞추어 $2x^2 - 5 = 2$ 방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 방정식 세우기\n$2x^2 - 5 = 2$\n2단계: 이항 및 정리\n$2x^2 = 7$\n$x^2 = \\frac{7}{2}$\n3단계: 제곱근 구하기 및 분모 유리화\n$x = \\pm\\sqrt{\\frac{7}{2}} = \\pm\\frac{\\sqrt{7}}{\\sqrt{2}} = \\pm\\frac{\\sqrt{14}}{2}$\n\n[조건 적합성 검토]\n구한 $x = \\pm\\frac{\\sqrt{14}}{2}$에 대하여 $2x^2 - 5 = 2\\left(\\frac{14}{4}\\right) - 5 = 7 - 5 = 2$가 성립하므로 문제의 조건에 정확히 부합한다.\n\n[명확한 결론]\n따라서 어떤 수는 $\\pm\\frac{\\sqrt{14}}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "문장 관계를 2x²-5=2로 모델링하고 제곱근으로 두 해를 구한다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n어떤 수의 제곱의 2배에서 5를 뺀 값이 2와 같을 때 어떤 수를 구한다.\n\n[핵심 발상/공식/보조선]\n어떤 수를 $x$라 하고 문제 조건에 맞추어 $2x^2 - 5 = 2$ 방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 방정식 세우기\n$2x^2 - 5 = 2$\n2단계: 이항 및 정리\n$2x^2 = 7$\n$x^2 = \\frac{7}{2}$\n3단계: 제곱근 구하기 및 분모 유리화\n$x = \\pm\\sqrt{\\frac{7}{2}} = \\pm\\frac{\\sqrt{7}}{\\sqrt{2}} = \\pm\\frac{\\sqrt{14}}{2}$\n\n[조건 적합성 검토]\n구한 $x = \\pm\\frac{\\sqrt{14}}{2}$에 대하여 $2x^2 - 5 = 2\\left(\\frac{14}{4}\\right) - 5 = 7 - 5 = 2$가 성립하므로 문제의 조건에 정확히 부합한다.\n\n[명확한 결론]\n따라서 어떤 수는 $\\pm\\frac{\\sqrt{14}}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "문장 관계를 2x²-5=2로 모델링하고 제곱근으로 두 해를 구한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n어떤 수의 제곱의 2배에서 5를 뺀 값이 2와 같을 때 어떤 수를 구한다.\n\n[핵심 발상/공식/보조선]\n어떤 수를 $x$라 하고 문제 조건에 맞추어 $2x^2 - 5 = 2$ 방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 방정식 세우기\n$2x^2 - 5 = 2$\n2단계: 이항 및 정리\n$2x^2 = 7$\n$x^2 = \\frac{7}{2}$\n3단계: 제곱근 구하기 및 분모 유리화\n$x = \\pm\\sqrt{\\frac{7}{2}} = \\pm\\frac{\\sqrt{7}}{\\sqrt{2}} = \\pm\\frac{\\sqrt{14}}{2}$\n\n[조건 적합성 검토]\n구한 $x = \\pm\\frac{\\sqrt{14}}{2}$에 대하여 $2x^2 - 5 = 2\\left(\\frac{14}{4}\\right) - 5 = 7 - 5 = 2$가 성립하므로 문제의 조건에 정확히 부합한다.\n\n[명확한 결론]\n따라서 어떤 수는 $\\pm\\frac{\\sqrt{14}}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "문장 관계를 2x²-5=2로 모델링하고 제곱근으로 두 해를 구한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n어떤 수의 제곱의 2배에서 5를 뺀 값이 2와 같을 때 어떤 수를 구한다.\n\n[핵심 발상/공식/보조선]\n어떤 수를 $x$라 하고 문제 조건에 맞추어 $2x^2 - 5 = 2$ 방정식을 세운다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 방정식 세우기\n$2x^2 - 5 = 2$\n2단계: 이항 및 정리\n$2x^2 = 7$\n$x^2 = \\frac{7}{2}$\n3단계: 제곱근 구하기 및 분모 유리화\n$x = \\pm\\sqrt{\\frac{7}{2}} = \\pm\\frac{\\sqrt{7}}{\\sqrt{2}} = \\pm\\frac{\\sqrt{14}}{2}$\n\n[조건 적합성 검토]\n구한 $x = \\pm\\frac{\\sqrt{14}}{2}$에 대하여 $2x^2 - 5 = 2\\left(\\frac{14}{4}\\right) - 5 = 7 - 5 = 2$가 성립하므로 문제의 조건에 정확히 부합한다.\n\n[명확한 결론]\n따라서 어떤 수는 $\\pm\\frac{\\sqrt{14}}{2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "문장 관계를 2x²-5=2로 모델링하고 제곱근으로 두 해를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "문장 관계를 2x²-5=2로 모델링하고 제곱근으로 두 해를 구한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_7e0c5342876cdfa9afa02a711b0c6e7f3894e83bc4cf50e59d00fcab9006fd5e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "82e829ffe9977dd4e31138c38fa94a074513abf4a7d3b5b8a84b31e12a07d00b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "815b076e23bad377c3dff9fd26a56c92c6a63ee404214d7ff56df9fd6b7393e3"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>【서술형3】 다음 보기의 이차함수식을 보고 물음에 답하시오. (각 2점) (6점)<br>ㄱ. $y=4x^2$<br>ㄴ. $y=-\\frac{3}{2}(x+1)^2$<br>ㄷ. $y=-7x^2+2$<br>ㄹ. $y=5(x-2)^2+3$<br>ㅁ. $y=-\\frac{1}{5}x^2$<br>ㅂ. $y=\\frac{1}{3}(x+1)^2+3$<br>(1) 그래프가 아래로 볼록한 것을 모두 찾아라.<br>(2) 그래프의 폭이 넓은 것부터 차례로 나열하시오.<br>(3) ㄹ. $y=5(x-2)^2+3$에서 $x$값이 증가할 때 $y$값도 증가하는 $x$의 범위를 구하시오.</p>"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "<p>【서술형3】 다음 보기의 이차함수식을 보고 물음에 답하시오. (각 2점) (6점)<br>ㄱ. $y=4x^2$<br>ㄴ. $y=-\\frac{3}{2}(x+1)^2$<br>ㄷ. $y=-7x^2+2$<br>ㄹ. $y=5(x-2)^2+3$<br>ㅁ. $y=-\\frac{1}{5}x^2$<br>ㅂ. $y=\\frac{1}{3}(x+1)^2+3$<br>(1) 그래프가 아래로 볼록한 것을 모두 찾아라.<br>(2) 그래프의 폭이 넓은 것부터 차례로 나열하시오.<br>(3) ㄹ. $y=5(x-2)^2+3$에서 $x$값이 증가할 때 $y$값도 증가하는 $x$의 범위를 구하시오.</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>【서술형3】 다음 보기의 이차함수식을 보고 물음에 답하시오. (각 2점) (6점)<br>ㄱ. $y=4x^2$<br>ㄴ. $y=-\\frac{3}{2}(x+1)^2$<br>ㄷ. $y=-7x^2+2$<br>ㄹ. $y=5(x-2)^2+3$<br>ㅁ. $y=-\\frac{1}{5}x^2$<br>ㅂ. $y=\\frac{1}{3}(x+1)^2+3$<br>(1) 그래프가 아래로 볼록한 것을 모두 찾아라.<br>(2) 그래프의 폭이 넓은 것부터 차례로 나열하시오.<br>(3) ㄹ. $y=5(x-2)^2+3$에서 $x$값이 증가할 때 $y$값도 증가하는 $x$의 범위를 구하시오.</p>"
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "<p>【서술형3】 다음 보기의 이차함수식을 보고 물음에 답하시오. (각 2점) (6점)<br>ㄱ. $y=4x^2$<br>ㄴ. $y=-\\frac{3}{2}(x+1)^2$<br>ㄷ. $y=-7x^2+2$<br>ㄹ. $y=5(x-2)^2+3$<br>ㅁ. $y=-\\frac{1}{5}x^2$<br>ㅂ. $y=\\frac{1}{3}(x+1)^2+3$<br>(1) 그래프가 아래로 볼록한 것을 모두 찾아라.<br>(2) 그래프의 폭이 넓은 것부터 차례로 나열하시오.<br>(3) ㄹ. $y=5(x-2)^2+3$에서 $x$값이 증가할 때 $y$값도 증가하는 $x$의 범위를 구하시오.</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n보기의 6개 이차함수에 대하여 (1) 아래로 볼록한 것, (2) 폭이 넓은 순서, (3) ㄹ 함수의 증가 구간을 구한다.\n\n[핵심 발상/공식/보조선]\n(1) 이차항의 계수 $a > 0$이면 아래로 볼록이다.\n(2) 그래프의 폭은 $|a|$의 값이 작을수록 넓다.\n(3) $a > 0$일 때 대칭축 $x = p$의 오른쪽($x > p$)에서 $x$의 값이 증가할 때 $y$의 값도 증가한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각 함수의 $a$ 및 $|a|$ 파악\n- ㄱ: $a = 4, |a| = 4$\n- ㄴ: $a = -\\frac{3}{2}, |a| = 1.5$\n- ㄷ: $a = -7, |a| = 7$\n- ㄹ: $a = 5, |a| = 5$\n- ㅁ: $a = -\\frac{1}{5}, |a| = 0.2$\n- ㅂ: $a = \\frac{1}{3}, |a| \\approx 0.333$\n2단계: (1) 아래로 볼록 ($a > 0$)\nㄱ ($4 > 0$), ㄹ ($5 > 0$), ㅂ ($\\frac{1}{3} > 0$)\n답: ㄱ, ㄹ, ㅂ\n3단계: (2) 폭이 넓은 순서 ($|a|$가 작은 순서대로 나열)\n$0.2 \\text{ (ㅁ)} < \\frac{1}{3} \\text{ (ㅂ)} < 1.5 \\text{ (ㄴ)} < 4 \\text{ (ㄱ)} < 5 \\text{ (ㄹ)} < 7 \\text{ (ㄷ)}$\n답: ㅁ, ㅂ, ㄴ, ㄱ, ㄹ, ㄷ\n4단계: (3) ㄹ. $y = 5(x-2)^2 + 3$의 증가 구간\n$a = 5 > 0$이고 대칭축이 $x = 2$이므로 $x > 2$에서 $x$의 값이 증가할 때 $y$의 값도 증가한다.\n답: $x > 2$\n\n[조건 적합성 검토]\n각 소문항별 판정 결과가 이차함수의 계수 부호에 따른 모양, 절댓값에 따른 폭의 성질, 대칭축 기준 증가/감소 구간의 수학적 성질과 모두 일치한다.\n\n[명확한 결론]\n따라서 정답은 (1) ㄱ, ㄹ, ㅂ, (2) ㅁ, ㅂ, ㄴ, ㄱ, ㄹ, ㄷ, (3) $x > 2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "여섯 이차함수에서 계수 부호·절댓값과 축을 비교해 열림,폭,증가조건을 각각 판정한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n보기의 6개 이차함수에 대하여 (1) 아래로 볼록한 것, (2) 폭이 넓은 순서, (3) ㄹ 함수의 증가 구간을 구한다.\n\n[핵심 발상/공식/보조선]\n(1) 이차항의 계수 $a > 0$이면 아래로 볼록이다.\n(2) 그래프의 폭은 $|a|$의 값이 작을수록 넓다.\n(3) $a > 0$일 때 대칭축 $x = p$의 오른쪽($x > p$)에서 $x$의 값이 증가할 때 $y$의 값도 증가한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각 함수의 $a$ 및 $|a|$ 파악\n- ㄱ: $a = 4, |a| = 4$\n- ㄴ: $a = -\\frac{3}{2}, |a| = 1.5$\n- ㄷ: $a = -7, |a| = 7$\n- ㄹ: $a = 5, |a| = 5$\n- ㅁ: $a = -\\frac{1}{5}, |a| = 0.2$\n- ㅂ: $a = \\frac{1}{3}, |a| \\approx 0.333$\n2단계: (1) 아래로 볼록 ($a > 0$)\nㄱ ($4 > 0$), ㄹ ($5 > 0$), ㅂ ($\\frac{1}{3} > 0$)\n답: ㄱ, ㄹ, ㅂ\n3단계: (2) 폭이 넓은 순서 ($|a|$가 작은 순서대로 나열)\n$0.2 \\text{ (ㅁ)} < \\frac{1}{3} \\text{ (ㅂ)} < 1.5 \\text{ (ㄴ)} < 4 \\text{ (ㄱ)} < 5 \\text{ (ㄹ)} < 7 \\text{ (ㄷ)}$\n답: ㅁ, ㅂ, ㄴ, ㄱ, ㄹ, ㄷ\n4단계: (3) ㄹ. $y = 5(x-2)^2 + 3$의 증가 구간\n$a = 5 > 0$이고 대칭축이 $x = 2$이므로 $x > 2$에서 $x$의 값이 증가할 때 $y$의 값도 증가한다.\n답: $x > 2$\n\n[조건 적합성 검토]\n각 소문항별 판정 결과가 이차함수의 계수 부호에 따른 모양, 절댓값에 따른 폭의 성질, 대칭축 기준 증가/감소 구간의 수학적 성질과 모두 일치한다.\n\n[명확한 결론]\n따라서 정답은 (1) ㄱ, ㄹ, ㅂ, (2) ㅁ, ㅂ, ㄴ, ㄱ, ㄹ, ㄷ, (3) $x > 2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "여섯 이차함수에서 계수 부호·절댓값과 축을 비교해 열림,폭,증가조건을 각각 판정한다."
+          },
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n보기의 6개 이차함수에 대하여 (1) 아래로 볼록한 것, (2) 폭이 넓은 순서, (3) ㄹ 함수의 증가 구간을 구한다.\n\n[핵심 발상/공식/보조선]\n(1) 이차항의 계수 $a > 0$이면 아래로 볼록이다.\n(2) 그래프의 폭은 $|a|$의 값이 작을수록 넓다.\n(3) $a > 0$일 때 대칭축 $x = p$의 오른쪽($x > p$)에서 $x$의 값이 증가할 때 $y$의 값도 증가한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각 함수의 $a$ 및 $|a|$ 파악\n- ㄱ: $a = 4, |a| = 4$\n- ㄴ: $a = -\\frac{3}{2}, |a| = 1.5$\n- ㄷ: $a = -7, |a| = 7$\n- ㄹ: $a = 5, |a| = 5$\n- ㅁ: $a = -\\frac{1}{5}, |a| = 0.2$\n- ㅂ: $a = \\frac{1}{3}, |a| \\approx 0.333$\n2단계: (1) 아래로 볼록 ($a > 0$)\nㄱ ($4 > 0$), ㄹ ($5 > 0$), ㅂ ($\\frac{1}{3} > 0$)\n답: ㄱ, ㄹ, ㅂ\n3단계: (2) 폭이 넓은 순서 ($|a|$가 작은 순서대로 나열)\n$0.2 \\text{ (ㅁ)} < \\frac{1}{3} \\text{ (ㅂ)} < 1.5 \\text{ (ㄴ)} < 4 \\text{ (ㄱ)} < 5 \\text{ (ㄹ)} < 7 \\text{ (ㄷ)}$\n답: ㅁ, ㅂ, ㄴ, ㄱ, ㄹ, ㄷ\n4단계: (3) ㄹ. $y = 5(x-2)^2 + 3$의 증가 구간\n$a = 5 > 0$이고 대칭축이 $x = 2$이므로 $x > 2$에서 $x$의 값이 증가할 때 $y$의 값도 증가한다.\n답: $x > 2$\n\n[조건 적합성 검토]\n각 소문항별 판정 결과가 이차함수의 계수 부호에 따른 모양, 절댓값에 따른 폭의 성질, 대칭축 기준 증가/감소 구간의 수학적 성질과 모두 일치한다.\n\n[명확한 결론]\n따라서 정답은 (1) ㄱ, ㄹ, ㅂ, (2) ㅁ, ㅂ, ㄴ, ㄱ, ㄹ, ㄷ, (3) $x > 2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "여섯 이차함수에서 계수 부호·절댓값과 축을 비교해 열림,폭,증가조건을 각각 판정한다."
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n보기의 6개 이차함수에 대하여 (1) 아래로 볼록한 것, (2) 폭이 넓은 순서, (3) ㄹ 함수의 증가 구간을 구한다.\n\n[핵심 발상/공식/보조선]\n(1) 이차항의 계수 $a > 0$이면 아래로 볼록이다.\n(2) 그래프의 폭은 $|a|$의 값이 작을수록 넓다.\n(3) $a > 0$일 때 대칭축 $x = p$의 오른쪽($x > p$)에서 $x$의 값이 증가할 때 $y$의 값도 증가한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각 함수의 $a$ 및 $|a|$ 파악\n- ㄱ: $a = 4, |a| = 4$\n- ㄴ: $a = -\\frac{3}{2}, |a| = 1.5$\n- ㄷ: $a = -7, |a| = 7$\n- ㄹ: $a = 5, |a| = 5$\n- ㅁ: $a = -\\frac{1}{5}, |a| = 0.2$\n- ㅂ: $a = \\frac{1}{3}, |a| \\approx 0.333$\n2단계: (1) 아래로 볼록 ($a > 0$)\nㄱ ($4 > 0$), ㄹ ($5 > 0$), ㅂ ($\\frac{1}{3} > 0$)\n답: ㄱ, ㄹ, ㅂ\n3단계: (2) 폭이 넓은 순서 ($|a|$가 작은 순서대로 나열)\n$0.2 \\text{ (ㅁ)} < \\frac{1}{3} \\text{ (ㅂ)} < 1.5 \\text{ (ㄴ)} < 4 \\text{ (ㄱ)} < 5 \\text{ (ㄹ)} < 7 \\text{ (ㄷ)}$\n답: ㅁ, ㅂ, ㄴ, ㄱ, ㄹ, ㄷ\n4단계: (3) ㄹ. $y = 5(x-2)^2 + 3$의 증가 구간\n$a = 5 > 0$이고 대칭축이 $x = 2$이므로 $x > 2$에서 $x$의 값이 증가할 때 $y$의 값도 증가한다.\n답: $x > 2$\n\n[조건 적합성 검토]\n각 소문항별 판정 결과가 이차함수의 계수 부호에 따른 모양, 절댓값에 따른 폭의 성질, 대칭축 기준 증가/감소 구간의 수학적 성질과 모두 일치한다.\n\n[명확한 결론]\n따라서 정답은 (1) ㄱ, ㄹ, ㅂ, (2) ㅁ, ㅂ, ㄴ, ㄱ, ㄹ, ㄷ, (3) $x > 2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "여섯 이차함수에서 계수 부호·절댓값과 축을 비교해 열림,폭,증가조건을 각각 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "<p>【서술형3】 다음 보기의 이차함수식을 보고 물음에 답하시오. (각 2점) (6점)<br>ㄱ. $y=4x^2$<br>ㄴ. $y=-\\frac{3}{2}(x+1)^2$<br>ㄷ. $y=-7x^2+2$<br>ㄹ. $y=5(x-2)^2+3$<br>ㅁ. $y=-\\frac{1}{5}x^2$<br>ㅂ. $y=\\frac{1}{3}(x+1)^2+3$<br>(1) 그래프가 아래로 볼록한 것을 모두 찾아라.<br>(2) 그래프의 폭이 넓은 것부터 차례로 나열하시오.<br>(3) ㄹ. $y=5(x-2)^2+3$에서 $x$값이 증가할 때 $y$값도 증가하는 $x$의 범위를 구하시오.</p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "여섯 이차함수에서 계수 부호·절댓값과 축을 비교해 열림,폭,증가조건을 각각 판정한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_7156335f54df3900152ec248532ab2945969d57ab370e1816bf4bcae465be21c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ddd84c8df59372533bdbb8d8d6e09bff9a665ed5014816e80832ea1187420ef7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "583fd3254cc5fde51c84c0851f4d56e07fc7927c4a3a918531e820b2abfbf710"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "<p>【서술형4】 이차함수 $y=3x^2-6x-1$를<br>(1) $y=a(x-p)^2+q$꼴로 고치고(2점), (2) 꼭짓점의 좌표(1점)와 (3) 함숫값의 범위(1점), (4) $y$절편(1점)을 각각 구하시오. (5점)</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "<p>【서술형4】 이차함수 $y=3x^2-6x-1$를<br>(1) $y=a(x-p)^2+q$꼴로 고치고(2점), (2) 꼭짓점의 좌표(1점)와 (3) 함숫값의 범위(1점), (4) $y$절편(1점)을 각각 구하시오. (5점)</p>"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "<p>【서술형4】 이차함수 $y=3x^2-6x-1$를<br>(1) $y=a(x-p)^2+q$꼴로 고치고(2점), (2) 꼭짓점의 좌표(1점)와 (3) 함숫값의 범위(1점), (4) $y$절편(1점)을 각각 구하시오. (5점)</p>"
+          },
+          {
+            "term": "치역",
+            "src": "stem",
+            "quote": "<p>【서술형4】 이차함수 $y=3x^2-6x-1$를<br>(1) $y=a(x-p)^2+q$꼴로 고치고(2점), (2) 꼭짓점의 좌표(1점)와 (3) 함숫값의 범위(1점), (4) $y$절편(1점)을 각각 구하시오. (5점)</p>"
+          },
+          {
+            "term": "절편",
+            "src": "stem",
+            "quote": "<p>【서술형4】 이차함수 $y=3x^2-6x-1$를<br>(1) $y=a(x-p)^2+q$꼴로 고치고(2점), (2) 꼭짓점의 좌표(1점)와 (3) 함숫값의 범위(1점), (4) $y$절편(1점)을 각각 구하시오. (5점)</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = 3x^2 - 6x - 1$의 (1) 표준형 식, (2) 꼭짓점 좌표, (3) 함숫값의 범위, (4) $y$절편을 각각 구한다.\n\n[핵심 발상/공식/보조선]\n완전제곱식으로 묶어 표준형 $y = a(x-p)^2 + q$을 도출하고, 꼭짓점 $(p, q)$와 $a > 0$임을 이용해 치역(함숫값 범위)을 구하며 $x = 0$ 대입으로 $y$절편을 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: (1) 표준형 고치기 (2점)\n$y = 3(x^2 - 2x) - 1 = 3(x^2 - 2x + 1 - 1) - 1 = 3(x - 1)^2 - 3 - 1 = 3(x - 1)^2 - 4$\n2단계: (2) 꼭짓점의 좌표 (1점)\n꼭짓점의 좌표는 $(1, -4)$이다.\n3단계: (3) 함숫값의 범위 (1점)\n$a = 3 > 0$이므로 아래로 볼록하며 최솟값은 $-4$이다.\n따라서 함숫값의 범위는 $y \\ge -4$이다.\n4단계: (4) $y$절편 (1점)\n$x = 0$ 대입 시 $y = -1$이므로 $y$절편은 $-1$ (또는 점 $(0, -1)$)이다.\n\n[조건 적합성 검토]\n표준형 $y = 3(x-1)^2 - 4 = 3(x^2 - 2x + 1) - 4 = 3x^2 - 6x - 1$로 전개식이 원식과 일치하며, 꼭짓점 $(1, -4)$, 치역 $y \\ge -4$, $y$절편 $-1$이 모두 수학적 정의에 부합한다.\n\n[명확한 결론]\n따라서 정답은 (1) $y = 3(x-1)^2 - 4$, (2) $(1, -4)$, (3) $y \\ge -4$, (4) $-1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 완전제곱꼴로 고치고 꼭짓점·치역·y절편을 순차적으로 읽는다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = 3x^2 - 6x - 1$의 (1) 표준형 식, (2) 꼭짓점 좌표, (3) 함숫값의 범위, (4) $y$절편을 각각 구한다.\n\n[핵심 발상/공식/보조선]\n완전제곱식으로 묶어 표준형 $y = a(x-p)^2 + q$을 도출하고, 꼭짓점 $(p, q)$와 $a > 0$임을 이용해 치역(함숫값 범위)을 구하며 $x = 0$ 대입으로 $y$절편을 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: (1) 표준형 고치기 (2점)\n$y = 3(x^2 - 2x) - 1 = 3(x^2 - 2x + 1 - 1) - 1 = 3(x - 1)^2 - 3 - 1 = 3(x - 1)^2 - 4$\n2단계: (2) 꼭짓점의 좌표 (1점)\n꼭짓점의 좌표는 $(1, -4)$이다.\n3단계: (3) 함숫값의 범위 (1점)\n$a = 3 > 0$이므로 아래로 볼록하며 최솟값은 $-4$이다.\n따라서 함숫값의 범위는 $y \\ge -4$이다.\n4단계: (4) $y$절편 (1점)\n$x = 0$ 대입 시 $y = -1$이므로 $y$절편은 $-1$ (또는 점 $(0, -1)$)이다.\n\n[조건 적합성 검토]\n표준형 $y = 3(x-1)^2 - 4 = 3(x^2 - 2x + 1) - 4 = 3x^2 - 6x - 1$로 전개식이 원식과 일치하며, 꼭짓점 $(1, -4)$, 치역 $y \\ge -4$, $y$절편 $-1$이 모두 수학적 정의에 부합한다.\n\n[명확한 결론]\n따라서 정답은 (1) $y = 3(x-1)^2 - 4$, (2) $(1, -4)$, (3) $y \\ge -4$, (4) $-1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 완전제곱꼴로 고치고 꼭짓점·치역·y절편을 순차적으로 읽는다."
+          },
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = 3x^2 - 6x - 1$의 (1) 표준형 식, (2) 꼭짓점 좌표, (3) 함숫값의 범위, (4) $y$절편을 각각 구한다.\n\n[핵심 발상/공식/보조선]\n완전제곱식으로 묶어 표준형 $y = a(x-p)^2 + q$을 도출하고, 꼭짓점 $(p, q)$와 $a > 0$임을 이용해 치역(함숫값 범위)을 구하며 $x = 0$ 대입으로 $y$절편을 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: (1) 표준형 고치기 (2점)\n$y = 3(x^2 - 2x) - 1 = 3(x^2 - 2x + 1 - 1) - 1 = 3(x - 1)^2 - 3 - 1 = 3(x - 1)^2 - 4$\n2단계: (2) 꼭짓점의 좌표 (1점)\n꼭짓점의 좌표는 $(1, -4)$이다.\n3단계: (3) 함숫값의 범위 (1점)\n$a = 3 > 0$이므로 아래로 볼록하며 최솟값은 $-4$이다.\n따라서 함숫값의 범위는 $y \\ge -4$이다.\n4단계: (4) $y$절편 (1점)\n$x = 0$ 대입 시 $y = -1$이므로 $y$절편은 $-1$ (또는 점 $(0, -1)$)이다.\n\n[조건 적합성 검토]\n표준형 $y = 3(x-1)^2 - 4 = 3(x^2 - 2x + 1) - 4 = 3x^2 - 6x - 1$로 전개식이 원식과 일치하며, 꼭짓점 $(1, -4)$, 치역 $y \\ge -4$, $y$절편 $-1$이 모두 수학적 정의에 부합한다.\n\n[명확한 결론]\n따라서 정답은 (1) $y = 3(x-1)^2 - 4$, (2) $(1, -4)$, (3) $y \\ge -4$, (4) $-1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 완전제곱꼴로 고치고 꼭짓점·치역·y절편을 순차적으로 읽는다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[원문 조건 및 구할 대상]\n이차함수 $y = 3x^2 - 6x - 1$의 (1) 표준형 식, (2) 꼭짓점 좌표, (3) 함숫값의 범위, (4) $y$절편을 각각 구한다.\n\n[핵심 발상/공식/보조선]\n완전제곱식으로 묶어 표준형 $y = a(x-p)^2 + q$을 도출하고, 꼭짓점 $(p, q)$와 $a > 0$임을 이용해 치역(함숫값 범위)을 구하며 $x = 0$ 대입으로 $y$절편을 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: (1) 표준형 고치기 (2점)\n$y = 3(x^2 - 2x) - 1 = 3(x^2 - 2x + 1 - 1) - 1 = 3(x - 1)^2 - 3 - 1 = 3(x - 1)^2 - 4$\n2단계: (2) 꼭짓점의 좌표 (1점)\n꼭짓점의 좌표는 $(1, -4)$이다.\n3단계: (3) 함숫값의 범위 (1점)\n$a = 3 > 0$이므로 아래로 볼록하며 최솟값은 $-4$이다.\n따라서 함숫값의 범위는 $y \\ge -4$이다.\n4단계: (4) $y$절편 (1점)\n$x = 0$ 대입 시 $y = -1$이므로 $y$절편은 $-1$ (또는 점 $(0, -1)$)이다.\n\n[조건 적합성 검토]\n표준형 $y = 3(x-1)^2 - 4 = 3(x^2 - 2x + 1) - 4 = 3x^2 - 6x - 1$로 전개식이 원식과 일치하며, 꼭짓점 $(1, -4)$, 치역 $y \\ge -4$, $y$절편 $-1$이 모두 수학적 정의에 부합한다.\n\n[명확한 결론]\n따라서 정답은 (1) $y = 3(x-1)^2 - 4$, (2) $(1, -4)$, (3) $y \\ge -4$, (4) $-1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반형을 완전제곱꼴로 고치고 꼭짓점·치역·y절편을 순차적으로 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "일반형을 완전제곱꼴로 고치고 꼭짓점·치역·y절편을 순차적으로 읽는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E107-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "사다리꼴넓이공식",
+      "en": [
+        "TRAPEZOID_AREA_FORMULA"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "넓이",
+      "note": "평행한 두 밑변 길이 합에 높이를 곱하여 2로 나눈 넓이 공식. 문항별 실제 solution에서 직접 선택한 용어이며 공용사전 등록은 하지 않음.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 19,
+          "slot": "method"
+        }
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 24,
+    "quotesChecked": 164,
+    "quotesNotFound": 0,
+    "notes": "Actual question and existing solution read; author self-check only. Independent sample pending. No remote completion or ownership takeover claimed."
+  },
+  "reviewedSourceBaseBlob": "5d8ffc3061073ac15c5e8c77bac1663d6ea7baaa"
+}
