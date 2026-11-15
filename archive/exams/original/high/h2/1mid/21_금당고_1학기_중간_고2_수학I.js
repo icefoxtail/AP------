@@ -153,7 +153,11 @@ window.questionBank = [
       "0"
     ],
     "answer": "①",
-    "solution": "각 $\\theta$를 나타내는 동경을 $x$축에 대칭시키면 각 $-\\theta$의 동경입니다. 두 동경이 대칭이므로 $4\\theta=-\\theta+2k\\pi$ ($k$는 정수)입니다.<br>따라서 $5\\theta=2k\\pi$입니다. $0<\\theta<\\frac\\pi2$이므로 $0<5\\theta<\\frac{5\\pi}{2}$이고, 이 범위에서 가능한 값은 $5\\theta=2\\pi$뿐입니다.<br>그러므로 $\\theta=\\frac{2\\pi}{5}$이고 $\\theta-\\frac\\pi{15}=\\frac\\pi3$입니다. 구하는 값은 $\\sin\\frac\\pi3=\\frac{\\sqrt3}{2}$이므로 정답은 ①입니다."
+    "solution": "각 $\\theta$를 나타내는 동경을 $x$축에 대칭시키면 각 $-\\theta$의 동경입니다. 두 동경이 대칭이므로 $4\\theta=-\\theta+2k\\pi$ ($k$는 정수)입니다.<br>따라서 $5\\theta=2k\\pi$입니다. $0<\\theta<\\frac\\pi2$이므로 $0<5\\theta<\\frac{5\\pi}{2}$이고, 이 범위에서 가능한 값은 $5\\theta=2\\pi$뿐입니다.<br>그러므로 $\\theta=\\frac{2\\pi}{5}$이고 $\\theta-\\frac\\pi{15}=\\frac\\pi3$입니다. 구하는 값은 $\\sin\\frac\\pi3=\\frac{\\sqrt3}{2}$이므로 정답은 ①입니다.",
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원에서 제1사분면의 θ 동경과 제4사분면의 4θ 동경이 x축 대칭으로 놓여 있다. 두 끝점을 잇는 수직 현은 x축에서 같은 길이로 나뉜다.",
+    "solutionImageCaption": "두 동경이 x축 대칭이므로 4θ=−θ+2kπ이다. 주어진 범위에서 θ=2π/5이고, θ−π/15=π/3이므로 구하는 값은 √3/2이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -199,7 +203,11 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "②",
-    "solution": "$\\sin\\theta\\tan\\theta=\\frac{\\sin^2\\theta}{\\cos\\theta}<0$이므로 $\\cos\\theta<0$입니다.<br>$\\cos\\theta\\tan\\theta=\\sin\\theta>0$이므로 $\\sin\\theta>0$입니다. 따라서 $\\theta$는 제2사분면에 있고 $\\tan\\theta<0$입니다.<br>ㄱ. $\\cos\\theta<0$과 $\\tan\\theta<0$이므로 $\\cos\\theta+\\tan\\theta<0$은 참입니다.<br>ㄴ. $\\sin\\theta>0$과 $\\tan\\theta<0$이므로 $\\sin\\theta-\\tan\\theta>0$은 참입니다.<br>ㄷ. $\\sin\\theta>0$, $\\cos\\theta<0$이므로 $\\sin\\theta\\cos\\theta<0$입니다. 양수와 음수의 곱은 음수이므로 $\\sin\\theta\\cos\\theta>0$은 거짓입니다.<br>따라서 옳은 것은 ㄱ, ㄴ이고 정답은 ②입니다."
+    "solution": "$\\sin\\theta\\tan\\theta=\\frac{\\sin^2\\theta}{\\cos\\theta}<0$이므로 $\\cos\\theta<0$입니다.<br>$\\cos\\theta\\tan\\theta=\\sin\\theta>0$이므로 $\\sin\\theta>0$입니다. 따라서 $\\theta$는 제2사분면에 있고 $\\tan\\theta<0$입니다.<br>ㄱ. $\\cos\\theta<0$과 $\\tan\\theta<0$이므로 $\\cos\\theta+\\tan\\theta<0$은 참입니다.<br>ㄴ. $\\sin\\theta>0$과 $\\tan\\theta<0$이므로 $\\sin\\theta-\\tan\\theta>0$은 참입니다.<br>ㄷ. $\\sin\\theta>0$, $\\cos\\theta<0$이므로 $\\sin\\theta\\cos\\theta<0$입니다. 양수와 음수의 곱은 음수이므로 $\\sin\\theta\\cos\\theta>0$은 거짓입니다.<br>따라서 옳은 것은 ㄱ, ㄴ이고 정답은 ②입니다.",
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원 좌표평면의 제2사분면을 옅게 표시하고 그 바깥 위쪽에 s>0, c<0, t<0을 적었다. s=sinθ, c=cosθ, t=tanθ이다.",
+    "solutionImageCaption": "sinθ·tanθ=sin²θ/cosθ<0이므로 cosθ<0이고, cosθ·tanθ=sinθ>0이므로 sinθ>0이다. 따라서 θ는 제2사분면에 있다. ㄱ과 ㄴ은 참이고 ㄷ은 거짓이므로 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -259,7 +267,11 @@ window.questionBank = [
       "59"
     ],
     "answer": "⑤",
-    "solution": "중심이 $(n,n)$인 원의 중심과 $O$ 사이 거리는 $n\\sqrt2$이고, 이 원의 반지름은 $\\sqrt2$입니다. $n\\ge3$이므로 중심 거리가 반지름보다 큽니다. 중심을 지나는 직선 위에서 $O$에 가장 가까운 점과 가장 먼 점을 잡으면 $OP_n$의 최솟값과 최댓값은 각각 $n\\sqrt2-\\sqrt2=\\sqrt2(n-1)$, $n\\sqrt2+\\sqrt2=\\sqrt2(n+1)$입니다.<br>접점 $A$에서 반지름과 접선은 수직이므로 $OA\\perp AP_n$입니다. 직각삼각형 $OAP_n$에서 $\\sin\\angle AP_nO=\\frac{OA}{OP_n}=\\frac{\\sqrt2}{OP_n}$입니다.<br>따라서 이 값의 최댓값은 $\\frac1{n-1}$, 최솟값은 $\\frac1{n+1}$이고 $f(n)=\\frac1{n-1}+\\frac1{n+1}=\\frac{2n}{n^2-1}$입니다.<br>$f(3)=\\frac34$, $f(5)=\\frac5{12}$, $f(7)=\\frac7{24}$이므로 $f(3)+f(5)+f(7)=\\frac{18+10+7}{24}=\\frac{35}{24}$입니다. 따라서 $p+q=35+24=59$이고 정답은 ⑤입니다."
+    "solution": "중심이 $(n,n)$인 원의 중심과 $O$ 사이 거리는 $n\\sqrt2$이고, 이 원의 반지름은 $\\sqrt2$입니다. $n\\ge3$이므로 중심 거리가 반지름보다 큽니다. 중심을 지나는 직선 위에서 $O$에 가장 가까운 점과 가장 먼 점을 잡으면 $OP_n$의 최솟값과 최댓값은 각각 $n\\sqrt2-\\sqrt2=\\sqrt2(n-1)$, $n\\sqrt2+\\sqrt2=\\sqrt2(n+1)$입니다.\n\n예를 들어 $n=3$이면 중심 거리는 $3\\sqrt{2}$이고 반지름은 $\\sqrt{2}$입니다. 중심선에서 원점 $O$부터 가까운 원 위의 점, 바깥 원의 중심, 먼 쪽 점 $P_3$까지의 거리는 다음과 같습니다.\n\n| 중심선에서 O로부터의 위치 | 거리 |\n|:---:|:---:|\n| 가까운 쪽 원 위의 점 | $2\\sqrt{2}$ |\n| 바깥 원의 중심 | $3\\sqrt{2}$ |\n| 먼 쪽 원 위의 점 $P_3$ | $4\\sqrt{2}$ |\n\n<br>접점 $A$에서 반지름과 접선은 수직이므로 $OA\\perp AP_n$입니다. 직각삼각형 $OAP_n$에서 $\\sin\\angle AP_nO=\\frac{OA}{OP_n}=\\frac{\\sqrt2}{OP_n}$입니다.<br>따라서 이 값의 최댓값은 $\\frac1{n-1}$, 최솟값은 $\\frac1{n+1}$이고 $f(n)=\\frac1{n-1}+\\frac1{n+1}=\\frac{2n}{n^2-1}$입니다.<br>$f(3)=\\frac34$, $f(5)=\\frac5{12}$, $f(7)=\\frac7{24}$이므로 $f(3)+f(5)+f(7)=\\frac{18+10+7}{24}=\\frac{35}{24}$입니다. 따라서 $p+q=35+24=59$이고 정답은 ⑤입니다.",
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표축이 있는 그림에 중심 O인 작은 원과 바깥 원, 두 원의 중심을 잇는 선, 중심선 위의 점 P₃, 접점 A가 표시되어 있다. 접선 AP₃와 반지름 OA는 A에서 수직이고, 위쪽의 작은 선분 그림에는 OA=√2가 표시되어 있다.",
+    "solutionImageCaption": "예: n=3에서 두 원의 중심선 위 가까운 점, 바깥 원의 중심, 먼 점 P₃까지의 거리는 해설 표에 정리했다. 접점 A에서 OA⊥AP₃이다. 정답은 59.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
