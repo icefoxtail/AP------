@@ -11,6 +11,7 @@ import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
+import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } from './native-approved-renderer-preservation.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 
@@ -207,6 +208,17 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||registeredIdentity[0].sourceOrdinal!==ordinal||registeredIdentity[0].sourceFingerprint!==identity.sourceFingerprint
         ||!equal(registeredIdentity[0].sourceQuestionNo,identity.sourceQuestionNo)
         ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
+      if(Object.hasOwn(approval,'rendererPreservation')||Object.hasOwn(receipt,'approvedRendererPreservation')||
+        hasApprovedRendererPreservationClaim({root,current,runtimeRecord})) {
+        const kept=verifyApprovedRendererReceipt({receipt,nativeSource,current,identity,ordinal,previous,registry,
+          revalidateLeaf:ancestor=>{
+            const context=activeBindingContext({candidate:ancestor.current,check:{curriculum:ancestor.current.curriculum||ancestor.current.curriculumKey},
+              registry,runtimeOwner:ancestor.current.metaFoundationPackId});
+            return context.reason?null:nativeReviewReceipt({...ancestor,registry,...context});
+          }});
+        if(kept!==true)continue;
+        return receiptPath;
+      }
       validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
       const preservedSource=nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,registry,
         revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});
@@ -312,6 +324,8 @@ export function planQuestion({question:q, previous, current, identity, registry,
       }
     }
   }
+  if(nativeSource&&hasApprovedRendererPreservationClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
+    return reject('NATIVE_APPROVED_RENDERER_PRESERVATION_REVALIDATION_FAILED');
   if(nativeSource&&hasNativeReviewedSourceClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
     return reject('NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED');
   if(nativeSource&&hasNativeSourcePreservationClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord,nativeSource}))

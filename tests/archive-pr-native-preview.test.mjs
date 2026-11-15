@@ -31,6 +31,32 @@ const PLANNED = [META, AUTHORITY, RECEIPT].sort();
 const ALLOWED = [/^archive\/db\.js$/, /^archive\/data\/question_metadata\.json$/,
   /^archive\/data\/archive2-(?:catalog|canonical-input-manifest)\.json$/];
 
+function sourceQualityHoldFixture(write) {
+  const evidencePath = 'docs/operations/fixture-quality-hold-evidence.json';
+  const evidence = json({ unresolved: 'synthetic source condition; no approval granted' });
+  const evidenceRef = { path: evidencePath, sha256: sha(evidence) };
+  write(evidencePath, evidence);
+  const sourceArchiveFile = 'original/quality-held.js';
+  const imagePath = 'archive/assets/images/quality-held.svg', image = '<svg/>\n';
+  const questionUid = 'qid_v1_' + 'c'.repeat(64);
+  const source = 'window.questions = ' + JSON.stringify([{ id: 1, questionUid,
+    image: imagePath.slice('archive/'.length) }]) + ';\n';
+  const receiptPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/fixture-quality-hold.json';
+  const receipt = json({ approval: { evidenceRefs: [evidenceRef] } });
+  write('archive/exams/' + sourceArchiveFile, source); write(imagePath, image); write(receiptPath, receipt);
+  write('archive/data/meta-foundation/source-quality-holds-v1.json', json({
+    schemaVersion: 'archive-source-quality-holds-v1', status: 'ACTIVE', records: [{
+      holdId: 'fixture-quality-hold', status: 'HOLD', reasonCode: 'SOURCE_CONDITION_NOT_ESTABLISHED',
+      questionUid, sourceArchiveFile, sourceOrdinal: 1, expectedQuestionCount: 1,
+      sourceBlobSha1: createHash('sha1').update(`blob ${Buffer.byteLength(source)}\0`).update(source).digest('hex'),
+      sourceSha256: sha(source), image: { path: imagePath, sha256: sha(image), bytes: Buffer.byteLength(image) },
+      originalReceipt: { path: receiptPath, sha256: sha(receipt) },
+      pendingRootEvidence: evidenceRef, independentEvidence: evidenceRef, unresolvedEvidence: evidenceRef,
+      releasePolicy: 'EXPLICIT_SOURCE_EVIDENCE_RESOLUTION_REQUIRED',
+    }],
+  }));
+}
+
 function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
@@ -60,6 +86,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
   ].join('\n') + '\n');
   write(SOURCE, 'window.questions = '+JSON.stringify(Array.from({length:partial?24:1},(_,i)=>({id:i+1})))+';\n');
   write(EVIDENCE, json({ reviewed: 'fixture approval evidence, without student content' }));
+  sourceQualityHoldFixture(write);
   write(DIFFICULTY_EVIDENCE, json({ schemaVersion: 'archive-difficulty5-reviewed-correction-v1', rows: [] }));
   write(META, json({ records: [{ questionUid: 'fixture', before: true }] }));
   write(IDENTITY, json({ records: [{ questionUid: 'fixture', sourceFingerprint: 'old' }] }));
@@ -1087,7 +1114,8 @@ function fingerprintReassessmentFixture(t, { mutateRequest, mutateBaseline } = {
   const metadata = { records: [copy(record)] }, identities = { records: [copy(identity)] };
   const runtime = { status: 'ACTIVE', records: [copy(runtimeRecord)], generatedFrom: { 'reviewedExam_previous-native': PRIOR_NATIVE } };
   const prior = { schemaVersion: 'archive-reviewed-exam-meta-registration-v2', requestId: 'previous-native',
-    sourceArchiveFile: record.sourceArchiveFile, approval: { type: 'FINAL_QA', metadataReviewed: true },
+    sourceArchiveFile: record.sourceArchiveFile, approval: { type: 'FINAL_QA', metadataReviewed: true,
+      evidenceRefs: copy(f.request.approval.evidenceRefs) },
     metadataRegistrationStatus: 'REGISTERED', totalQuestions: 1, expectedQuestionCount: 24, scope: 'PARTIAL_UIDS', partialUidCount: 1,
     appliedRecords: [copy(record)], appliedIdentityRecords: [copy(identity)], runtimeRecords: [copy(runtimeRecord)],
     outputDigests: [{ path: NATIVE_RUNTIME, sha256: sha(json(runtime)) }] };
@@ -1433,3 +1461,132 @@ test('new BASIC proof rejects false preserved counts, advanced approval, and unc
   output.exams[0].approvalCreated = false; f.hook.consumerResult = output;
   assert.throws(() => verifyNativeRequests({ root: f.root, requests, run: f.run }), /CONSUMER_NOT_PASS/);
 });
+
+// Ancestor proof closure regression: preserving existing native approvals does not
+// infer a new approval or select another pending request.
+function ancestralEvidenceFixture(t, { mutateLeafRef, missingLeaf = false, cycle = false } = {}) {
+  const f = fixture(t, { partial: true, finalQaPreservation: true, otherOwner: false });
+  const leafPath = '.archive-meta-register/evidence/ancestor-native-review.json';
+  const priorPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/prior.json';
+  const ancestorPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ancestor.json';
+  const unrelatedPath = '.archive-meta-register/evidence/unrelated-owner.json';
+  const leafBytes = json({ reviewed: 'immutable fixture evidence' });
+  const leafRef = { path: leafPath, sha256: sha(leafBytes) };
+  mutateLeafRef?.(leafRef);
+  if (!missingLeaf) f.write(leafPath, leafBytes);
+  f.write(unrelatedPath, json({ unrelated: true }));
+  const ancestorBytes = json({ schemaVersion: 'archive-reviewed-exam-meta-registration-v2',
+    approval: { evidenceRefs: cycle ? [{ path: priorPath, sha256: '0'.repeat(64) }] : [leafRef] } });
+  const ancestorRef = { path: ancestorPath, sha256: sha(ancestorBytes) };
+  f.write(ancestorPath, ancestorBytes);
+  const priorBytes = json({ schemaVersion: 'archive-reviewed-exam-meta-registration-v2',
+    approval: { evidenceRefs: [ancestorRef, leafRef] } });
+  const priorRef = { path: priorPath, sha256: sha(priorBytes) };
+  f.write(priorPath, priorBytes);
+  f.request.approval.evidenceRefs = [priorRef];
+  f.request.approval.sourceRebind.priorReceiptRef = priorRef;
+  f.request.items[0].evidenceRefs = [priorRef];
+  f.write(REQUEST, json(f.request));
+  f.git('add', '.'); f.git('commit', '-qm', 'fixed transitive native receipt evidence');
+  const headSha = f.git('rev-parse', 'HEAD'), repo = 'owner/repository';
+  const event = { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
+    number: 17, base: { sha: f.baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } },
+  } };
+  const options = { root: f.root, repo, event, expectedSha: headSha, runId: 41, runAttempt: 1, run: f.run };
+  return { ...f, headSha, leafPath, leafBytes, leafRef, priorPath, ancestorPath, unrelatedPath,
+    refs: [priorRef, ancestorRef, leafRef],
+    selected: () => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha }),
+    produce: () => producePrRegistrationProof(options),
+    validate: proof => validateLocalRegistrationProof({ ...options, proof }) };
+}
+
+test('shadow re-plan includes fixed transitive native receipt evidence without adopting unrelated files', t => {
+  const f = ancestralEvidenceFixture(t);
+  f.hook['dry-run'] = target => {
+    for (const ref of f.refs) assert.equal(sha(fs.readFileSync(path.join(target, ref.path))), ref.sha256);
+    if (target !== f.root) assert.equal(fs.existsSync(path.join(target, f.unrelatedPath)), false);
+  };
+  const proof = f.produce(), before = f.snapshot();
+  assert.equal(f.validate(proof).reusable, true);
+  assert.deepEqual(f.snapshot(), before);
+  assert.deepEqual(proof.nativePreview.requests[0].evidence.map(ref => ref.path).sort(),
+    f.refs.map(ref => ref.path).sort(), 'a repeated leaf is copied and fingerprinted exactly once');
+  assert.equal(proof.nativePreview.requests.length, 1, 'evidence closure never selects another request');
+  f.assertShadowsRemoved();
+});
+
+for (const [name, options, error] of [
+  ['missing leaf', { missingLeaf: true }, /MISSING_FILE/],
+  ['wrong leaf hash', { mutateLeafRef: ref => { ref.sha256 = '0'.repeat(64); } }, /EVIDENCE_DRIFT/],
+  ['malformed leaf hash', { mutateLeafRef: ref => { ref.sha256 = 'not-a-digest'; } }, /EVIDENCE_SHA/],
+  ['unsafe leaf path', { mutateLeafRef: ref => { ref.path = '../outside.json'; } }, /UNSAFE_PATH/],
+  ['cyclic receipt reference', { cycle: true }, /EVIDENCE_CYCLE/],
+]) test(`transitive native evidence rejects ${name} before official registration`, t => {
+  const f = ancestralEvidenceFixture(t, options), before = f.snapshot();
+  assert.throws(() => f.produce(), error);
+  assert.deepEqual(f.snapshot(), before);
+  assert.equal(f.calls.some(call => call.args[0]?.endsWith('/register-reviewed-exam-meta-source.mjs')), false);
+});
+
+test('transitive native evidence rejects worktree drift and symlinks on proof reuse', t => {
+  for (const symlink of [false, true]) {
+    const f = ancestralEvidenceFixture(t), proof = f.produce();
+    if (symlink) {
+      fs.rmSync(path.join(f.root, f.leafPath));
+      fs.symlinkSync(path.join(f.root, EVIDENCE), path.join(f.root, f.leafPath));
+    } else fs.appendFileSync(path.join(f.root, f.leafPath), '\n');
+    const before = f.snapshot();
+    assert.throws(() => f.validate(proof), symlink ? /SYMLINK/ : /EVIDENCE_DRIFT/);
+    assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+  }
+});
+
+test('transitive evidence must match fixed Git even when its worktree hash matches every reference', t => {
+  const f = ancestralEvidenceFixture(t), changedBytes = f.leafBytes + '\n';
+  const leafRef = { path: f.leafPath, sha256: sha(changedBytes) };
+  f.write(f.leafPath, changedBytes);
+  const ancestor = JSON.parse(fs.readFileSync(path.join(f.root, f.ancestorPath), 'utf8'));
+  ancestor.approval.evidenceRefs = [leafRef]; f.write(f.ancestorPath, json(ancestor));
+  const prior = JSON.parse(fs.readFileSync(path.join(f.root, f.priorPath), 'utf8'));
+  prior.approval.evidenceRefs = [{ path: f.ancestorPath, sha256: sha(json(ancestor)) }, leafRef];
+  f.write(f.priorPath, json(prior));
+  const priorRef = { path: f.priorPath, sha256: sha(json(prior)) };
+  f.request.approval.evidenceRefs = [priorRef]; f.request.items[0].evidenceRefs = [priorRef];
+  f.request.approval.sourceRebind.priorReceiptRef = priorRef; f.write(REQUEST, json(f.request));
+  f.git('add', '--', f.ancestorPath, f.priorPath, REQUEST);
+  f.git('commit', '-qm', 'references cannot authorize an uncommitted evidence leaf');
+  const before = f.snapshot();
+  assert.throws(() => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha: f.git('rev-parse', 'HEAD') }), /EVIDENCE_NOT_FIXED/);
+  assert.deepEqual(f.snapshot(), before);
+});
+
+test('complete transitive input staging cannot turn an official ancestor rejection into a reusable proof', t => {
+  const f = ancestralEvidenceFixture(t), proof = f.produce(), before = f.snapshot();
+  f.hook['dry-run'] = target => {
+    if (target !== f.root) {
+      assert.equal(sha(fs.readFileSync(path.join(target, f.leafPath))), f.leafRef.sha256);
+      throw Error('OFFICIAL_ANCESTOR_APPROVAL_REJECTED');
+    }
+  };
+  assert.throws(() => f.validate(proof), /OFFICIAL_ANCESTOR_APPROVAL_REJECTED/);
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+for (const label of ['absent', 'empty']) {
+  test(`ordinary positive native preservation still rejects ${label} approval evidence on its original receipt`, t => {
+    const f = ancestralEvidenceFixture(t);
+    const prior = JSON.parse(fs.readFileSync(path.join(f.root, f.priorPath), 'utf8'));
+    if (label === 'empty') prior.approval.evidenceRefs = [];
+    else delete prior.approval.evidenceRefs;
+    const bytes = json(prior), priorRef = { path: f.priorPath, sha256: sha(bytes) };
+    f.write(f.priorPath, bytes);
+    f.request.approval.evidenceRefs = [priorRef];
+    f.request.approval.sourceRebind.priorReceiptRef = priorRef;
+    f.request.items[0].evidenceRefs = [priorRef];
+    f.write(REQUEST, json(f.request));
+    f.git('add', '.'); f.git('commit', '-qm', 'positive original receipt lacks approval evidence');
+    const headSha = f.git('rev-parse', 'HEAD');
+    assert.throws(() => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha }), /EVIDENCE_REQUIRED/);
+  });
+}
+

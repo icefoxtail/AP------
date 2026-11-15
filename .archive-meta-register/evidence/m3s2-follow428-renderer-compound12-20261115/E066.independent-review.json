@@ -1,0 +1,443 @@
+{
+  "schemaVersion": "archive-m3-narrow-current-figure-review-v1",
+  "reviewer": "GPT_M3S2_RELEASE_C8F1B0BFB4FA",
+  "examId": "E066",
+  "previousCommit": "6b916d9042f5c76e628d7ff201e524d9114da65b",
+  "currentCommit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+  "inputRef": {
+    "path": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/review-inputs.json",
+    "sha256": "009973414ed7f952f96ea34f8e55d6c39c69ea4c2fef30f86c9bbf7286775850"
+  },
+  "prefigureBaselineRef": {
+    "path": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/prefigure-main-source-audit.json",
+    "sha256": "a3583c9e2ea2fb8e5d21baf989c9bbab0a3cb365bc0b73a8b3d6ec3208a2b5c9"
+  },
+  "scope": "Existing immutable semantic review reused; current renderer meaning only. Q15 current solution is rejected pending the separately bound minimal correction.",
+  "selectedUidCount": 5,
+  "passCount": 4,
+  "repairRequiredCount": 1,
+  "sourceOrAssetWrites": 0,
+  "newFullMathematicalQa": false,
+  "newMetadataApprovals": 0,
+  "newDifficultyJudgments": 0,
+  "rows": [
+    {
+      "examId": "E066",
+      "ordinal": 2,
+      "questionUid": "qid_v1_ad9d31a273c6401b5871b80eff14057d8479efde5b37b167c431545ad8b76e23",
+      "status": "PASS_NARROW_FIGURE_CONTINUITY",
+      "finding": "원 PNG와 현재 문제 SVG 모두 BDC의 직각, BD=9, CD=12, BC=15 및 ABC의 직각 위치를 보존한다. 현재 해설 그림의 AC=20은 해설에만 있으며 기존 AB=25, AD=16, AC=20 계산 및 보기③ 판정과 일치한다. 문제 그림에는 정답 유도값을 새로 넣지 않았다.",
+      "previousSourceRef": {
+        "commit": "6b916d9042f5c76e628d7ff201e524d9114da65b",
+        "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "5e5f6606410850a88b46a37686b82a9db4a3d3bb",
+        "sha256": "01266299eae226d36d3900f74983841dd25fc6c405067d327ce3f4bf17a15aaa"
+      },
+      "currentSourceRef": {
+        "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+        "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "b5d867ed7bd83f03b1b6793dc5802de2cdcaf3ee",
+        "sha256": "3b6bc45e707e83a850030888cd58808949c5a8bd92b2a8fae2bb22089160446b"
+      },
+      "previousQuestionStableSha256": "cb6e3a5e8d7984689a42a036a3c0d000509be9f5f2f211410febbbb4dfe688e4",
+      "currentQuestionStableSha256": "114f55710e70c19632a15bac8a052846054912df1939c9734df68d657121bbbd",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "solutionImage",
+        "solutionImageSize",
+        "solutionImageAlt",
+        "solutionImageCaption"
+      ],
+      "nonFigureChanges": [],
+      "mathematicalStemUnchanged": true,
+      "nativeSemanticReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.meta.json",
+        "sha256": "42c48637d656991bbdfa513ff7d71d0edea3ff75ec9a4da74aeb46364302728c"
+      },
+      "rationaleBindings": {
+        "primaryMethod": {
+          "origin": "NATIVE_ITEM_FIELD_VERBATIM_ALREADY_PRESENT_IN_PRE_FIGURE_MAIN",
+          "sha256": "17fc2ba2a922c6c8ad8e50067472a4ff121185774f71948a02835f2b88955522"
+        },
+        "decisiveStep": {
+          "origin": "NATIVE_ITEM_FIELD_VERBATIM_ALREADY_PRESENT_IN_PRE_FIGURE_MAIN",
+          "sha256": "e670f65680085bb01762fe516e751cb8897fc3153b93a12ef2442d1ec446c7fc"
+        }
+      },
+      "nativeItemStableSha256": "70c705055ccd8b21435cdce750ca2bb75e0faabee6a32e36ac82464ffbaf8b20",
+      "assets": [
+        {
+          "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q02.png",
+          "gitBlobSha1": "1655205221f5c61d2acf9133199de3f72c2368b7",
+          "sha256": "75b791763268acf17f662da8047b2e2e13c69b2421c9651b524dc2e59d8d79a1",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/1655205221f5c61d2acf9133199de3f72c2368b7.png",
+          "renderSha256": "75b791763268acf17f662da8047b2e2e13c69b2421c9651b524dc2e59d8d79a1",
+          "visuallyInspected": true
+        },
+        {
+          "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q2-problem-v2.svg",
+          "gitBlobSha1": "84cb1df5bd2d1e38f2d5655e3b3807bd70d14ecf",
+          "sha256": "5eb57ab8a84f28311f0548865d53d6058775b560e38a3037397e0b2de5873bee",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/84cb1df5bd2d1e38f2d5655e3b3807bd70d14ecf.render.png",
+          "renderSha256": "15ec57c02ec2652b3c859e704e3494e6425200ae5e5fe613e8c9bf1ff6cf56d2",
+          "visuallyInspected": true
+        },
+        {
+          "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q2-solution.svg",
+          "gitBlobSha1": "827758542e44c78d3ef1b54f05d61f1a917e0748",
+          "sha256": "b6020c29bf6c8bb22b4492131354032d93a55f54187dab9fa08342ccbfb34919",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/827758542e44c78d3ef1b54f05d61f1a917e0748.render.png",
+          "renderSha256": "4f7b171c1cd32f33bbce994302ed3d788958b2137032768e6f8580d6dd8cb7be",
+          "visuallyInspected": true
+        }
+      ],
+      "contactRef": {
+        "path": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/contacts/E066-Q2.png",
+        "sha256": "2ad4d176228979e677be3beb547dc15e0280961544e436f792e37182d2ada7fd"
+      },
+      "newFullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newMetadataApprovals": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "examId": "E066",
+      "ordinal": 3,
+      "questionUid": "qid_v1_e1c1f3b573713fe27e6a4c3c9065b3e4fc34fa6d7ff5e5b80bdac09b69eccd62",
+      "status": "PASS_NARROW_FIGURE_CONTINUITY",
+      "finding": "원 PNG와 현재 문제 SVG의 AB=4, ∠B=30°, ∠C=60°가 같다. 해설 SVG에서만 AD 수선 및 발 D를 추가했고, AD=2와 AC=4/√3의 기존 계산·답②와 양립한다.",
+      "previousSourceRef": {
+        "commit": "6b916d9042f5c76e628d7ff201e524d9114da65b",
+        "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "5e5f6606410850a88b46a37686b82a9db4a3d3bb",
+        "sha256": "01266299eae226d36d3900f74983841dd25fc6c405067d327ce3f4bf17a15aaa"
+      },
+      "currentSourceRef": {
+        "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+        "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "b5d867ed7bd83f03b1b6793dc5802de2cdcaf3ee",
+        "sha256": "3b6bc45e707e83a850030888cd58808949c5a8bd92b2a8fae2bb22089160446b"
+      },
+      "previousQuestionStableSha256": "4d2150f771ac3288a5c1f2533668759813b6b9ff979e328e911d215e115e8b0b",
+      "currentQuestionStableSha256": "9d7483f412356b646d0357213ea18bc3127f0a00688b23f2752f7969a06443c3",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "solutionImage",
+        "solutionImageSize",
+        "solutionImageAlt",
+        "solutionImageCaption"
+      ],
+      "nonFigureChanges": [],
+      "mathematicalStemUnchanged": true,
+      "nativeSemanticReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.meta.json",
+        "sha256": "42c48637d656991bbdfa513ff7d71d0edea3ff75ec9a4da74aeb46364302728c"
+      },
+      "rationaleBindings": {
+        "primaryMethod": {
+          "origin": "NATIVE_ITEM_FIELD_VERBATIM_ALREADY_PRESENT_IN_PRE_FIGURE_MAIN",
+          "sha256": "86715fb97d5f4f7c2ac07ee5cd2a7283132bd3049226d2eb7085e3e24aee01d0"
+        },
+        "decisiveStep": {
+          "origin": "NATIVE_ITEM_FIELD_VERBATIM_ALREADY_PRESENT_IN_PRE_FIGURE_MAIN",
+          "sha256": "2361260a943b4ffae45229e6582610fb2723feae9dd12ef61b6999f2c0a33e5f"
+        }
+      },
+      "nativeItemStableSha256": "98d5cf6bf819884ec82192052d8d9199ece36c64197f280f9b56eb00d23f0e1d",
+      "assets": [
+        {
+          "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q03.png",
+          "gitBlobSha1": "286a2cb25b938e4c395010092d5815c1a0d1ac26",
+          "sha256": "11ebfcba8bc84ac856411ee897518b0687b1c465fc7782f75601889222f5e547",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/286a2cb25b938e4c395010092d5815c1a0d1ac26.png",
+          "renderSha256": "11ebfcba8bc84ac856411ee897518b0687b1c465fc7782f75601889222f5e547",
+          "visuallyInspected": true
+        },
+        {
+          "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q3-problem-v2.svg",
+          "gitBlobSha1": "c80fa8f0cc9054c3d73360fccc18c88ee6668649",
+          "sha256": "26b0f2a7fcdf511e52acb792ca016819501c7bcdf73050c2dbeccba885ee3e02",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/c80fa8f0cc9054c3d73360fccc18c88ee6668649.render.png",
+          "renderSha256": "0a44c740c819883e0ad80232d9653f76cb3cd43831b43f25594a784c1f9b14c8",
+          "visuallyInspected": true
+        },
+        {
+          "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q3-solution.svg",
+          "gitBlobSha1": "07fa59885c8e1c116b3314066c867298108bf2b8",
+          "sha256": "e59770de3945a6d55e72822a43f16aa91ad592141abef7d5be56f478a6c90c2f",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/07fa59885c8e1c116b3314066c867298108bf2b8.render.png",
+          "renderSha256": "cd3a8960b4258c50d6f1c47584906dd0852245f34740bda2642caa9eba0145f9",
+          "visuallyInspected": true
+        }
+      ],
+      "contactRef": {
+        "path": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/contacts/E066-Q3.png",
+        "sha256": "c69ad3e38520283dee8872cdf381d2cefa8d96b14198d033b09fe79b315f846b"
+      },
+      "newFullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newMetadataApprovals": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "examId": "E066",
+      "ordinal": 12,
+      "questionUid": "qid_v1_47efa13f04d4f85c7249434221a31359f512de94b2abb33ebcd5e255377b0e28",
+      "status": "PASS_NARROW_FIGURE_CONTINUITY",
+      "finding": "원 PNG와 현재 문제 SVG의 AB=5m, BC=12m, ∠B=60°와 못의 건너편 A,C가 같다. 해설 SVG에만 AD⊥BC를 추가하여 BD=5/2, AD=5√3/2, DC=19/2 및 AC=√109의 기존 풀이를 정확히 설명한다.",
+      "previousSourceRef": {
+        "commit": "6b916d9042f5c76e628d7ff201e524d9114da65b",
+        "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "5e5f6606410850a88b46a37686b82a9db4a3d3bb",
+        "sha256": "01266299eae226d36d3900f74983841dd25fc6c405067d327ce3f4bf17a15aaa"
+      },
+      "currentSourceRef": {
+        "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+        "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "b5d867ed7bd83f03b1b6793dc5802de2cdcaf3ee",
+        "sha256": "3b6bc45e707e83a850030888cd58808949c5a8bd92b2a8fae2bb22089160446b"
+      },
+      "previousQuestionStableSha256": "5d6db996398e5b69d301dd559c8c648be2c20a772d7f8911b99d3c0d73e68c92",
+      "currentQuestionStableSha256": "c8b896e1ec6f3d381713414062f0b5860f71e64130898618892687acb3d6190a",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "solutionImage",
+        "solutionImageSize",
+        "solutionImageAlt",
+        "solutionImageCaption"
+      ],
+      "nonFigureChanges": [],
+      "mathematicalStemUnchanged": true,
+      "nativeSemanticReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.meta.json",
+        "sha256": "42c48637d656991bbdfa513ff7d71d0edea3ff75ec9a4da74aeb46364302728c"
+      },
+      "rationaleBindings": {
+        "primaryMethod": {
+          "origin": "NATIVE_ITEM_FIELD_VERBATIM_ALREADY_PRESENT_IN_PRE_FIGURE_MAIN",
+          "sha256": "0ce1f4a1e54d193b5dc6b7e380f8f2b9f2611fc3b196e1516b39ed95bf132902"
+        },
+        "decisiveStep": {
+          "origin": "NATIVE_ITEM_FIELD_VERBATIM_ALREADY_PRESENT_IN_PRE_FIGURE_MAIN",
+          "sha256": "6a83f9141bf3fd93ade1a69597049691b2880ea1b460c1b6ff65b390a4fb01f2"
+        }
+      },
+      "nativeItemStableSha256": "846c9cef5e0dc2690cb18c7d09e6f48de3c0146e5d110aa48e937bdc38e2e990",
+      "assets": [
+        {
+          "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q12.png",
+          "gitBlobSha1": "e61093a2937633b116bead355dc402b5f7c942e0",
+          "sha256": "a09da951e32443f45d30e862769464ac949c86e4f10a375554301f94f79f0455",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/e61093a2937633b116bead355dc402b5f7c942e0.png",
+          "renderSha256": "a09da951e32443f45d30e862769464ac949c86e4f10a375554301f94f79f0455",
+          "visuallyInspected": true
+        },
+        {
+          "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q12-problem-v2.svg",
+          "gitBlobSha1": "3a5efd5d1cf95beae3109d1ce58251261c7ce37a",
+          "sha256": "f564648638638e431db18fad8452fea4ae261442d20f2f4e0e4fa4da4d3b56ab",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/3a5efd5d1cf95beae3109d1ce58251261c7ce37a.render.png",
+          "renderSha256": "5d1b206e2ade9696d1d57ff5fb9d0cecc4a19eda564f3654631edb1b72de781f",
+          "visuallyInspected": true
+        },
+        {
+          "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q12-solution.svg",
+          "gitBlobSha1": "d24264d3c42ea9ba61ebfd8026ec7402bd00c049",
+          "sha256": "04f31db937e4a015eb5ac7b3344a8fd1ddd4ffbe2393ffae0ebf377af628686c",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/d24264d3c42ea9ba61ebfd8026ec7402bd00c049.render.png",
+          "renderSha256": "9e0929b9fae6a5cc8470dbfa1aca53442162810ee61486f271a00f3362faa18d",
+          "visuallyInspected": true
+        }
+      ],
+      "contactRef": {
+        "path": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/contacts/E066-Q12.png",
+        "sha256": "7ea99a4eb2528042106e2e8b6b306a5e93ac4d0b447e80fc7c0d275ba6996120"
+      },
+      "newFullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newMetadataApprovals": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "examId": "E066",
+      "ordinal": 15,
+      "questionUid": "qid_v1_9d287c6ad59d90578b2325f24c150e2a0b1c91fec9fd81031ce40604ea6cfce6",
+      "status": "REQUIRES_NARROW_SOLUTION_RENDERER_CORRECTION",
+      "finding": "원 PNG와 현재 문제 SVG의 AB⊥OC, BM=6, CM=3은 보존된다. 그러나 현재 해설 SVG의 파란 OM 구간과 OB에 같은 두 눈금이 있어 OM=OB를 잘못 나타낸다. MC는 별도 주황 선분이므로 OC 전체의 표시로 볼 수 없다. 기존 본문·답④·해설 r²=(r−3)²+36은 타당하다. 이 current 해설은 PASS 처리하지 않고 잘못된 눈금 제거 및 설명의 최소 정정을 별도로 제출한다.",
+      "previousSourceRef": {
+        "commit": "6b916d9042f5c76e628d7ff201e524d9114da65b",
+        "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "5e5f6606410850a88b46a37686b82a9db4a3d3bb",
+        "sha256": "01266299eae226d36d3900f74983841dd25fc6c405067d327ce3f4bf17a15aaa"
+      },
+      "currentSourceRef": {
+        "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+        "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "b5d867ed7bd83f03b1b6793dc5802de2cdcaf3ee",
+        "sha256": "3b6bc45e707e83a850030888cd58808949c5a8bd92b2a8fae2bb22089160446b"
+      },
+      "previousQuestionStableSha256": "78172f80d94d0651edeb22ec30d6c33b22bf46a856df7ba90aa346f089a2f843",
+      "currentQuestionStableSha256": "d08eb8417a56bac8e012c58420ee2aa224eb05e0553723aa23cb604e19f94ece",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "solutionImage",
+        "solutionImageSize",
+        "solutionImageAlt",
+        "solutionImageCaption"
+      ],
+      "nonFigureChanges": [],
+      "mathematicalStemUnchanged": true,
+      "nativeSemanticReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.meta.json",
+        "sha256": "42c48637d656991bbdfa513ff7d71d0edea3ff75ec9a4da74aeb46364302728c"
+      },
+      "rationaleBindings": {
+        "primaryMethod": {
+          "origin": "NATIVE_ITEM_FIELD_VERBATIM_ALREADY_PRESENT_IN_PRE_FIGURE_MAIN",
+          "sha256": "3286aef3e14a58d59af5ab29970c81b5ac770b4ec69202be6eab1f64f8f1d51e"
+        },
+        "decisiveStep": {
+          "origin": "NATIVE_ITEM_FIELD_VERBATIM_ALREADY_PRESENT_IN_PRE_FIGURE_MAIN",
+          "sha256": "a7abc6729ee004f1737fbe3b08806a77208531ae988c70e80c3320c9a5d2afd1"
+        }
+      },
+      "nativeItemStableSha256": "94b6c18d1fc003468cc33a1f28c58cbd2468924d36bb48dd0e686f37000d2567",
+      "assets": [
+        {
+          "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q15.png",
+          "gitBlobSha1": "58683dd77c4b8da6aa85ee3a30535dff2f98e063",
+          "sha256": "947426847d8a8b766b3c09eed53a32ba0f82480f6af90a5ac7385f8109864713",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/58683dd77c4b8da6aa85ee3a30535dff2f98e063.png",
+          "renderSha256": "947426847d8a8b766b3c09eed53a32ba0f82480f6af90a5ac7385f8109864713",
+          "visuallyInspected": true
+        },
+        {
+          "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q15-problem-v2.svg",
+          "gitBlobSha1": "e6f83de8b0e4f47248b21e4a63f95a82944787c9",
+          "sha256": "62cf775435eb306dd62e1cd562066e6de159f338d97d3586b68b5f08a8e9f191",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/e6f83de8b0e4f47248b21e4a63f95a82944787c9.render.png",
+          "renderSha256": "a8980432d85f589ce7d562ad2c8b3ceec207ab0d2536e341416e55d277348d54",
+          "visuallyInspected": true
+        },
+        {
+          "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q15-solution.svg",
+          "gitBlobSha1": "542cd7f733c3a0ff5ca1f96429048eec9d6c389f",
+          "sha256": "a7d936aa5160f64c9e54fcffc07929d444de783f3f4adbff90b3d68754334b40",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/542cd7f733c3a0ff5ca1f96429048eec9d6c389f.render.png",
+          "renderSha256": "6125042389f0ea961367cba8380514489b14c166739737399c7311ed38bf5ee7",
+          "visuallyInspected": true
+        }
+      ],
+      "contactRef": {
+        "path": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/contacts/E066-Q15.png",
+        "sha256": "86a1cbd007f05c6ae484670d15623b43ac6da1656676dbafdee3627247dfff0e"
+      },
+      "newFullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newMetadataApprovals": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "examId": "E066",
+      "ordinal": 19,
+      "questionUid": "qid_v1_b9966166613fb21c634a72bb7acf1ff80f3b73e2b228cbda7ae3e6353d3fd6b9",
+      "status": "PASS_NARROW_FIGURE_CONTINUITY",
+      "finding": "기존 문제 q19_alive.svg는 그대로이고, 새 해설 SVG는 AC=3, BC=4, C의 직각에 AB=5를 해설용으로 추가했다. B에 대한 맞은변·이웃변·빗변의 색 구분이 정확하며, 기존 sinB=3/5, cosB=4/5, tanB=3/4와 C=90°의 비에 관한 본문·기존 풀이를 변경하지 않는다.",
+      "previousSourceRef": {
+        "commit": "6b916d9042f5c76e628d7ff201e524d9114da65b",
+        "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "5e5f6606410850a88b46a37686b82a9db4a3d3bb",
+        "sha256": "01266299eae226d36d3900f74983841dd25fc6c405067d327ce3f4bf17a15aaa"
+      },
+      "currentSourceRef": {
+        "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+        "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "b5d867ed7bd83f03b1b6793dc5802de2cdcaf3ee",
+        "sha256": "3b6bc45e707e83a850030888cd58808949c5a8bd92b2a8fae2bb22089160446b"
+      },
+      "previousQuestionStableSha256": "4d8d55e21cfd8ee36e89cebb62cae1a6989f0834d8af75f04196a10aa7782785",
+      "currentQuestionStableSha256": "6b0a07eaf41157cdb941fe3efc01d4645e5a3e10862ce8cc355e7bfc8dd261ec",
+      "changedFields": [
+        "solutionImage",
+        "solutionImageSize",
+        "solutionImageAlt",
+        "solutionImageCaption"
+      ],
+      "nonFigureChanges": [],
+      "mathematicalStemUnchanged": true,
+      "nativeSemanticReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.meta.json",
+        "sha256": "42c48637d656991bbdfa513ff7d71d0edea3ff75ec9a4da74aeb46364302728c"
+      },
+      "rationaleBindings": {
+        "primaryMethod": {
+          "origin": "NATIVE_ITEM_FIELD_VERBATIM_ALREADY_PRESENT_IN_PRE_FIGURE_MAIN",
+          "sha256": "cb6fced5193494ec847fe1b0e9bd46bd16a4505f3037c4699001061be4512030"
+        },
+        "decisiveStep": {
+          "origin": "NATIVE_ITEM_FIELD_VERBATIM_ALREADY_PRESENT_IN_PRE_FIGURE_MAIN",
+          "sha256": "a8067860be9ddfa696c2f174e47cd0cfb49ecaf698f841ef9cfa35efee1294b1"
+        }
+      },
+      "nativeItemStableSha256": "8865dcc3a82498cc4b2811587e0ad94a9a68a11d2265560b20a8a7174c4a210a",
+      "assets": [
+        {
+          "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q19_alive.svg",
+          "gitBlobSha1": "0fa90a26327f461e8308889919824b9ab64fe70a",
+          "sha256": "97e4030fe4ae23d783735174efdbf6fab9caad33daa6e0533f0e73ff62633321",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/0fa90a26327f461e8308889919824b9ab64fe70a.render.png",
+          "renderSha256": "e0a8e0fce2ee230eea610760d0593e7ef176a7bfe101abf6830b1487bf6dd4fd",
+          "visuallyInspected": true
+        },
+        {
+          "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q19-solution.svg",
+          "gitBlobSha1": "50d6a28108dad81d071303f0cdc617cd8db5fb16",
+          "sha256": "7188feed34d83ec9899c4809758d10dea0f4c01e2636423950523cbec53a99f9",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/50d6a28108dad81d071303f0cdc617cd8db5fb16.render.png",
+          "renderSha256": "6cc73da6f07e29b7cb27e27560a101f7b3e88542669bbc58da80eb2dd4783924",
+          "visuallyInspected": true
+        },
+        {
+          "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+          "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q19_alive.svg",
+          "gitBlobSha1": "0fa90a26327f461e8308889919824b9ab64fe70a",
+          "sha256": "97e4030fe4ae23d783735174efdbf6fab9caad33daa6e0533f0e73ff62633321",
+          "renderPath": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/assets/0fa90a26327f461e8308889919824b9ab64fe70a.render.png",
+          "renderSha256": "e0a8e0fce2ee230eea610760d0593e7ef176a7bfe101abf6830b1487bf6dd4fd",
+          "visuallyInspected": true
+        }
+      ],
+      "contactRef": {
+        "path": "/workspace/scratch/c8f1b0bfb4fa/m3-follow428-current-figures-20261115/contacts/E066-Q19.png",
+        "sha256": "319cb887fb3657b6c1bf97c3c1caa71e6d4e7ce58178cab65a56660ed1ce5483"
+      },
+      "newFullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newMetadataApprovals": 0,
+      "newDifficultyJudgments": 0
+    }
+  ]
+}
