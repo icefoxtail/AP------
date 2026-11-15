@@ -34,7 +34,18 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 닮은 두 삼각형 ABC와 DEF를 나란히 그리고 대응변 AB↔DE(파랑), BC↔EF(주황), CA↔FD(초록)를 같은 색으로 묶었다. BC=15 cm, EF=9 cm, DE=6 cm와 대응각 ∠B=∠E=55°를 표시했다.",
     "solutionImageCaption": "BC:EF=15:9=5:3이므로 AB=6×5/3=10 cm이어서 정답은 ④이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "주어진 닮음의 대응변 비",
+    "decisiveStep": "BC:EF로 닮음비를 얻어 AB:DE에 바로 적용한다."
   },
   {
     "id": 2,
@@ -70,7 +81,18 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: A0 직사각형을 반으로 자른 A1(1/2), A2(1/4), A3(1/8), A4(1/16)의 넓이를 서로 다른 색으로 나타냈고, 남은 흰 부분도 1/16이다.",
     "solutionImageCaption": "A0의 넓이를 1로 두면 A4의 넓이는 1/16이므로 닮음비는 1:4이다. 정답 ④.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "넓이비에서 닮음비 역산",
+    "decisiveStep": "네 번 절반으로 자른 넓이비의 제곱근을 길이비로 읽는다."
   },
   {
     "id": 3,
@@ -105,7 +127,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 점 D가 변 AB 위에 있는 삼각형 ABC에서 ∠A와 ∠BCD가 같은 호로 표시되고 ∠B가 공통각으로 표시되며, AC=12cm, CD=6cm, BC=8cm가 변에 적혀 있다.",
     "solutionImageCaption": "∠A=∠BCD이고 ∠B가 공통이므로 △ABC와 △CBD가 닮음이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "공통각과 주어진 각으로 AA 닮음",
+    "decisiveStep": "공통 B각과 A=BCD로 새로운 닮음을 세워 대응 길이를 찾는다."
   },
   {
     "id": 4,
@@ -140,7 +173,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 왼쪽은 49cm 지팡이와 60cm 그림자(삼각형 ABC), 오른쪽은 높이 h인 피라미드의 단면과 그림자(삼각형 D…)이다. 햇빛의 각(초록)이 같고, 높이(주황)끼리·그림자(파랑)끼리 대응하며 피라미드 쪽 수평 길이는 110+70=180m이다.",
     "solutionImageCaption": "49:60=h:180이므로 피라미드의 높이는 147m이다(정답 ③).",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "primaryMethod": "닮음으로 그림자에서 피라미드 높이",
+    "decisiveStep": "밑면 중심에서 바깥 그림자까지의 수평 길이를 합쳐 닮은 삼각형의 대응변으로 쓴다."
   },
   {
     "id": 5,
@@ -175,7 +219,18 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 평행한 세 직선 l, m, n이 두 직선과 만나 생기는 선분. 왼쪽의 4(파랑), 12(주황)와 오른쪽의 6(파랑), x(주황)가 같은 색끼리 대응한다.",
     "solutionImageCaption": "4:12=6:x이고 4:12=1:3이므로 x=18 cm이다. 정답 ④.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "primaryMethod": "세 평행선의 대응 선분비",
+    "decisiveStep": "왼쪽 두 구간의 비를 오른쪽 두 구간에 직접 옮긴다."
   },
   {
     "id": 6,
@@ -183,8 +238,8 @@ window.questionBank = [
     "category": "삼각형의 무게중심",
     "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-05",
-    "standardUnit": "도형의 성질",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -203,14 +258,24 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n$D$는 $AB$의 중점이므로 $BD=\\dfrac{AB}{2}=5\\mathrm{cm}$이다. 따라서 $y=5$이다.\n또 $CG:GD=2:1$이고 $CG=10\\mathrm{cm}$이므로 $GD=5\\mathrm{cm}$, 따라서 $CD=15\\mathrm{cm}$이다. 그림에서 $x=CD$이므로 $x=15$이다.\n따라서 $x+y=15+5=20$이고 정답은 ⑤이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q6.png",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+    "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC로, AB의 중점 D(AD=DB 눈금)와 무게중심 G가 중선 CD 위에 있고 치수선으로 AB=10cm와 BD=y=5cm가 적혀 있다. 오른쪽은 중선 CD만 따로 그려 C, G, D에 이름을 붙이고, 치수선을 쌓아 CG=10cm, GD=5cm와 전체 CD=x=15cm를 보인 그림이다.",
     "solutionImageCaption": "중선 CD를 오른쪽에 따로 그려 CG, GD와 전체 CD의 길이를 단으로 쌓아 나타냈다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "primaryMethod": "무게중심의 중선 2:1 비",
+    "decisiveStep": "중점의 반길이와 무게중심의2:1에서 중선 전체 길이를 각각 구한다."
   },
   {
     "id": 7,
@@ -241,7 +306,18 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "피타고라스 직각변 길이",
+    "decisiveStep": "주어진 빗변과 한 변의 제곱 차에서 다른 변을 구한다."
   },
   {
     "id": 8,
@@ -276,7 +352,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 사다리꼴 ABCD의 AB 위에 점 E를 잡아 합동인 △AED와 △BCE를 같은 색으로 칠하고 AE=BC=15, BE=AD=8, AB=23을 같은 눈금으로 보였다. 오른쪽에 D에서 BC에 내린 수선으로 만든 직각삼각형 DHC(DH=23, HC=7)를 따로 그렸고, CD를 지름으로 하는 반원을 위에 칠했다.",
     "solutionImageCaption": "CD²=23²+7²=578이므로 반원의 넓이는 578/8π=289/4π이어서 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_CONGRUENCE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "primaryMethod": "합동으로 길이를 옮긴 뒤 지름 제곱을 넓이로",
+    "decisiveStep": "합동 대응변으로 가로 합과 세로 차를 정하고 그 피타고라스 제곱을 반원 넓이에 직접 전달한다."
   },
   {
     "id": 9,
@@ -312,7 +401,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 변의 중점 D, E, F에서 같은 길이 눈금 3묶음(AD=DB=EF, AF=FC=DE, BE=EC=DF), EF∥AB(초록 화살표), 합동인 △ADF와 △EFD(파랑), △DBE와 △FEC(주황)를 나타냈다.",
     "solutionImageCaption": "중점연결정리로 ㉠ AB∥EF, ㉡ △ADF≡△EFD, ㉢ △DBE≡△FEC가 모두 옳다. 정답 ⑤.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_CONGRUENCE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "중점연결선의 평행·길이와 SSS",
+    "decisiveStep": "중점연결선 길이를 각 원변의 절반으로 나타내어 두 합동 명제를 판정한다."
   },
   {
     "id": 10,
@@ -343,7 +445,19 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 가로 15cm, 세로 12cm인 바깥 직사각형 ABCD 안에 테두리 폭 2cm를 두고 안쪽 직사각형 EFGH가 있으며, EFGH의 가로 11cm, 세로 8cm가 적혀 있다.",
     "solutionImageCaption": "바깥 직사각형과 테두리 폭을 뺀 안쪽 직사각형의 가로·세로 길이를 나타낸다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [
+      "CC_SIMILAR_FIGURES_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행선 선분비 성질의 역과 닮음 여부 비교",
+    "decisiveStep": "선분비 동등만으로 세 직선 평행이 보장되지 않음을 판단하고 같은 폭 테두리의 두 직사각형 변비를 따로 비교한다."
   },
   {
     "id": 11,
@@ -351,8 +465,8 @@ window.questionBank = [
     "category": "삼각형의 무게중심",
     "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-05",
-    "standardUnit": "도형의 성질",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -373,13 +487,26 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q11-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q11.png",
     "imageSize": "tall",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+    "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D, E, F가 변의 중점이고 G는 무게중심이다. 중선 AD를 같은 길이(보라 동그라미) 6칸으로 나누어 AH=3칸, HG=1칸, AG=4칸으로 보이고, △AFE(주황)와 □IBCJ(파랑) 영역이 칠해져 있다.",
     "solutionImageCaption": "AH:HG=3:1이고 AG:AD=2:3이며 △AFE=¼△ABC, □IBCJ=5/9△ABC이므로 ㉠(AH/HG=3), ㉡(20/9배)은 옳고 ㉢은 옳지 않다(정답 ②).",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_CENTROID_APPLICATION",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "crossConceptKeys": [
+      "CC_SIMILAR_FIGURES_AREA_VOLUME"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "무게중심·중점연결선과 넓이비 복합",
+    "decisiveStep": "중선의1/2와2/3 위치를 비교해 작은 높이를 정하고 평행단면의 닮음비 제곱으로 넓이 명제들을 판정한다."
   },
   {
     "id": 12,
@@ -415,7 +542,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 왼쪽은 막대 OAB, BCE를 연결한 구조로 OA=AD=BC=20, AB=DC=CE=50이고 AD∥BE이다. 가운데와 오른쪽은 닮은 두 삼각형 OAD와 OBE이며 대응변을 같은 색(파랑·주황·초록)으로 묶었다.",
     "solutionImageCaption": "닮음비는 OA:OB=20:70=2:7이므로 점 D와 E가 그리는 도형의 닮음비도 2:7이다. 정답 ③.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B34",
+    "primaryMethod": "팬터그래프 구조의 닮음비",
+    "decisiveStep": "조립된 막대에서 전체 길이와 부분 길이를 찾아 두 평행한 삼각형의 비를 그리는 도형의 비로 옮긴다."
   },
   {
     "id": 13,
@@ -443,7 +581,19 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "제한된 주사위 결과의 직접 열거",
+    "decisiveStep": "허용 눈 중5보다 작은 값만 추려 한 번씩 센다."
   },
   {
     "id": 14,
@@ -476,7 +626,18 @@ window.questionBank = [
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 상의 a, b, c에서 각각 하의 x, y 두 가지로 갈라지는 수형도. 끝 가지가 모두 6개이다.",
     "solutionImageCaption": "상의 3가지에 하의 2가지씩이므로 3×2=6가지이다. 정답 ④",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+    "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 독립 선택 단계의 곱",
+    "decisiveStep": "각 상의 선택에 모든 하의를 대응시켜 선택 수를 곱한다."
   },
   {
     "id": 15,
@@ -504,7 +665,20 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_DISTINCT_DIGITS"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "서로 다른 두 숫자의 순서 있는 배열",
+    "decisiveStep": "한꺼번에 꺼내더라도 두 자리 수의 자리는 구별되므로5×4의 순서 있는 선택을 센다."
   },
   {
     "id": 16,
@@ -534,7 +708,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyConfidence": "high",
+    "primaryMethod": "확률의 범위·불가능·확실·여사건 성질 비교",
+    "decisiveStep": "0과1 경계를 포함하는 범위와 여사건 식의 방향을 확인하여 틀린 두 명제를 고른다."
   },
   {
     "id": 17,
@@ -571,7 +754,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 두 삼각형 ABC와 DEF에 BC=12, EF=6, DE=7과 ∠B=∠E를 표시한 그림을 세 장으로 보였다. 가운데는 ∠A=∠D를 더한 AA 닮음, 아래는 AB=14를 더해 DE:AB=EF:BC=1:2와 끼인각이 같은 SAS 닮음이다.",
     "solutionImageCaption": "∠A=∠D 카드와 AB=14 카드의 2장이 닮음조건을 완성하므로 확률은 2/4=1/2이어서 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "crossConceptKeys": [
+      "CC_PROBABILITY_DEFINITION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "primaryMethod": "각 카드로 완성되는 AA·SAS 조건",
+    "decisiveStep": "공통 변비와 각에 각 카드 조건을 더하여 AA 또는 SAS가 되는 카드를 판정한 뒤 그 수의 비를 구한다."
   },
   {
     "id": 18,
@@ -596,14 +792,30 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "4의 배수와 7의 배수를 더하고, 두 집합에 중복되는 28의 배수를 한 번 뺀다.\n1부터 100까지 4의 배수는 $25$개, 7의 배수는 $14$개이다. 두 조건을 모두 만족하는 28의 배수는 $3$개이다.\n따라서 유리한 경우는 $25+14-3=36$개이고 확률은 $\\dfrac{36}{100}=\\dfrac9{25}$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 1부터 100까지의 자연수 전체집합 U 안에서 4의 배수 25개와 7의 배수 14개의 두 원이 겹치고, 겹친 부분(28의 배수) 3개가 표시된 벤다이어그램. 합집합이 색칠되어 있다.",
     "solutionImageCaption": "겹친 28의 배수 3개는 한 번 빼므로 4의 배수 또는 7의 배수는 25+14-3=36개이고 확률은 36/100=9/25이다. 정답 ①",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "crossConceptKeys": [
+      "CC_LEAST_COMMON_MULTIPLE"
+    ],
+    "conditionKeys": [
+      "COND_RANGE",
+      "COND_DIVISIBILITY"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "겹치는 두 배수 사건의 합",
+    "decisiveStep": "4의 배수와7의 배수의 합에서 공통배수 중복을 빼 유리한 카드 수를 확률로 바꾼다."
   },
   {
     "id": 19,
@@ -631,7 +843,20 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "crossConceptKeys": [
+      "CC_PROBABILITY_MULTIPLICATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "여사건의 곱으로 미지 성공확률 역산",
+    "decisiveStep": "해설이 독립을 가정해 두 실패확률의 곱을 세우고 주어진 적어도 한 성공 확률식에서 x를 구한다."
   },
   {
     "id": 20,
@@ -665,7 +890,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 성준의 말에서 윤태의 말까지 위로 1칸(눈 1), 왼쪽으로 1칸(눈 3) 가는 두 경로. 실선은 눈 1 다음 눈 3, 점선은 눈 3 다음 눈 1을 화살표로 나타낸다.",
     "solutionImageCaption": "두 번 던져 (1,3) 또는 (3,1)이 나오는 2가지가 가능하고 전체는 6×6=36가지이므로 확률은 2/36=1/18이다. 정답 ④",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B34",
+    "primaryMethod": "게임 이동 규칙을 주사위 순서쌍으로 바꾸기",
+    "decisiveStep": "목표 상대말까지의 가로·세로 이동을 두 눈의 순서쌍으로 옮기고 해당 경우를 센다."
   },
   {
     "id": 21,
@@ -697,7 +933,21 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 직선 12x+5y-60=0이 x축과 A, y축과 B에서 만나고 직각삼각형 OAB가 색칠되어 있다. OA=5, OB=12, AB=13이 치수선으로 표시되고, O에서 AB에 내린 수선 OC가 직각 표시와 함께 빨간색으로 그려져 있다.",
     "solutionImageCaption": "△OAB의 넓이를 두 가지로 나타내면 1/2×5×12=1/2×13×OC이므로 OC=60/13이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "crossConceptKeys": [
+      "CC_INTERCEPTS",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "primaryMethod": "절편에서 직각삼각형 길이와 높이",
+    "decisiveStep": "좌표축 절편으로 두 변을 얻고 피타고라스의 빗변과 같은 삼각형의 넓이 두 표현으로 수선 길이를 정한다."
   },
   {
     "id": 22,
@@ -721,13 +971,28 @@ window.questionBank = [
     "solution": "정육각형에서는 $6$칸 이동하면 같은 꼭짓점으로 돌아오므로, $A$에서 $E$에 도착하는 이동 칸 수를 주사위 눈의 합으로 찾는다.\n$A$에서 시계 반대 방향으로 $E$까지는 $4$칸이므로 두 눈의 합이 $4$이면 된다. 또한 $6$칸을 한 바퀴 더 이동한 합 $10$도 같은 꼭짓점 $E$에 도착한다.\n합이 $4$인 순서쌍은 $(1,3),(2,2),(3,1)$이고, 합이 $10$인 순서쌍은 $(4,6),(5,5),(6,4)$이다. 따라서 유리한 경우는 $6$가지이다.\n전체 경우는 $36$가지이므로 확률은 $\\dfrac6{36}=\\dfrac16$이다.\n따라서 구하는 확률은 $\\dfrac16$이다.",
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q22-solution-v2.svg",
     "image": "assets/images/25_왕운중_2학기_기말_중2_기출/q22.png",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImageAlt": "해설 그림: 왼쪽은 정육각형 ABCDEF에서 A부터 시계 반대 방향으로 한 칸씩 4칸 움직여 E에 가는 빨간 화살표 경로이고, 오른쪽은 바깥 점선 육각형으로 한 바퀴(6칸)를 돌고 다시 4칸 가는 10칸 경로를 보여 준다.",
     "solutionImageCaption": "E에 도착하려면 두 눈의 합이 4 또는 10(한 바퀴 6칸+4칸)이어야 하고, 그 경우는 6가지이므로 확률은 6/36=1/6이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "crossConceptKeys": [
+      "CC_POLYGON_VERTEX_MOTION"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "primaryMethod": "순환 경로의 이동 합을 분류한 확률",
+    "decisiveStep": "6칸을 돌면 같은 점임을 사용해 목표 도착 합4와10을 구하고 각 합의 순서쌍을 합친다."
   },
   {
     "id": 23,
@@ -748,13 +1013,24 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac6{25}$",
     "solution": "두 주머니에서 각각 공을 한 개씩 뽑을 때 전체 경우의 수와 두 공이 모두 빨간 공인 경우의 수를 센다.\n주머니 A의 공은 모두 $5$개이고 주머니 B의 공도 모두 $5$개이므로, 두 주머니에서 공을 하나씩 뽑는 전체 경우의 수는 $5\\times5=25$가지이다.\n주머니 A의 빨간 공은 $3$개, 주머니 B의 빨간 공은 $2$개이므로 두 공이 모두 빨간 공인 경우는 $3\\times2=6$가지이다.\n따라서 구하는 확률은 $\\dfrac6{25}$이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중2_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 주머니 A에서 빨강 3/5, 파랑 2/5, 각각에서 주머니 B 빨강 2/5, 파랑 3/5로 갈라지는 수형도. 두 공이 모두 빨강인 경로가 굵은 선과 동그라미로 표시되어 있다.",
     "solutionImageCaption": "두 공이 모두 빨강인 확률은 3/5×2/5=6/25이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "서로 다른 두 주머니 결과쌍의 경우의 수 비",
+    "decisiveStep": "전체 두 공 결과쌍과 두 빨간 공 결과쌍을 각각 곱의 법칙으로 센 뒤 그 비를 구한다."
   }
 ];

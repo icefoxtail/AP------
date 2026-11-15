@@ -1,0 +1,282 @@
+{
+  "schemaVersion": "archive-m2s2-native-preservation-release-amendment-v1",
+  "status": "LOCAL_CONSUMED_CHAIN_PASS_REQUIRES_MAIN_REGISTRATION_AND_DEPLOYMENT",
+  "actualBaselineMain": "2ea8fb8b109921997e6764a3f85213d9d04b4364",
+  "originalInputCommit": "42686af77e264aece5c9683f3e1f77baa55da4a1",
+  "validatedCodeCommit": "3ce4169c916e2693563fe256b0bebd142409818f",
+  "originalManifest": {
+    "commit": "42686af77e264aece5c9683f3e1f77baa55da4a1",
+    "path": "docs/operations/m2s2-closeout-20261115/release-manifest.json",
+    "sha256": "7aa58fc7f8fd730994a85c47b8079c2675950b63c1367374ff8167a836fb4903",
+    "retainedAsHistoricalInput": true
+  },
+  "scope": "Apply the same 1567 reviewed difficulty decisions; preserve the already registered Q5 FINAL_QA approval and 24 E029 META_PIPELINE_AUDIT approvals without granting new advanced approvals. The current E022/E029 bindings below supersede their original input manifest rows.",
+  "counts": {
+    "sourceExams": 67,
+    "sourceQuestions": 1604,
+    "difficultyRequests": 67,
+    "difficultyUids": 1567,
+    "preservationRequests": 2,
+    "preservedNativeApprovals": 25,
+    "newNativeApprovals": 0,
+    "requestsTotal": 69,
+    "typedConsumerChecks": 1592,
+    "typedConsumerPassed": 1592,
+    "typedConsumerSkipped": 0,
+    "uniqueQuestionUids": 1568,
+    "priorCanonicalApprovalsPreserved": 395,
+    "priorPartialApprovalsWithExplicitHoldsPreserved": 370,
+    "plannerApplied": 0,
+    "originalUnresolvedHoldsRetained": 36
+  },
+  "sourceAmendments": [
+    {
+      "examId": "E029",
+      "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+      "scope": "All 24 source questions equal the actual baseline source except the four exact already reviewed D5 fields. Preserve original audit kind, field status and source-versus-sidecar differences.",
+      "studentChanges": 0,
+      "legacyLevelChanges": 0,
+      "newAdvancedApprovals": 0
+    },
+    {
+      "examId": "E022",
+      "sourceArchiveFile": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_5d7ba86050b9338a67e36265d1f5da34d35fb92cc53ddfd000d5e2cb3a26548d",
+      "scope": "Keep the actual baseline governed source values and explicit partial-approval holds, applying the same reviewed D5 values. The other 22 questions remain byte-structurally equal to the original input.",
+      "studentChanges": 0,
+      "legacyLevelChanges": 0,
+      "newAdvancedApprovals": 0
+    }
+  ],
+  "unchangedOtherSourceFiles": {
+    "count": 65,
+    "commit": "42686af77e264aece5c9683f3e1f77baa55da4a1",
+    "inventorySha256": "157e6a5cb7fa8200492b3959dea9a9f79d6fd50ebc74f5c111d0cbb3b3c38dc6"
+  },
+  "replacements": [
+    {
+      "path": "archive/exams/original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+      "beforeBlobSha1": "4193d4ca8458ac5714f2851c2a5ec6c67bf6c713",
+      "beforeSha256": "e4db4a735f541d80e3039f0be3ddd4ab57ec96ef52f467943c39475b41863767",
+      "sha256": "b96dfec8112ef4c5f3eeb97470394cbdb1cdc13921e4baf400a5ece2b297a76d",
+      "blobSha1": "1564b9a4e8168d29f93ee9b0122d2f0c4f336183",
+      "bytes": 44283
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s2-closeout-20261115-E029.json",
+      "beforeBlobSha1": "9902a5f1a697a21e8d3fea185122363daba0a578",
+      "beforeSha256": "fac298f5ee7bb5786ffb6e5acc872c4accf9254f824193347d93c53c1e4e62e4",
+      "sha256": "3874b595793dbfa54f21f5f3b02799390cb1b4a8404136047349523e1bcaeb21",
+      "blobSha1": "aab98c99be10c3ff2647a24366ad4a4b872a3bc9",
+      "bytes": 40409
+    },
+    {
+      "path": ".archive-meta-register/evidence/m2s2-closeout-20261115/E029.json",
+      "beforeBlobSha1": "665f390bba8471ac871a35698ad64ec0c23cae2e",
+      "beforeSha256": "0795778f55a79bb831dd1fa4d60a8117b9e0dfa4d99fb46857b58f5731437c09",
+      "sha256": "7a00af2199b4c2db37c1b3585f2a6c7d1a305a7b79307f850c0ee56d01c4bff1",
+      "blobSha1": "d74f070cc52ca195054d288090b483b9a4025b95",
+      "bytes": 30588
+    },
+    {
+      "path": "archive/exams/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+      "beforeBlobSha1": "dac14183eaa77bd77a593e42d4d11eff9360b462",
+      "beforeSha256": "fb52a17a601fb0598854708b1c03ff33014988b74b662935ff074996e116c538",
+      "sha256": "5343be10b0c2dd23fbc944c404fcddf70ec4be25ba87ec4f6665abf065d213da",
+      "blobSha1": "0c667aabbd5eff76c3c0e4e2c27af6aabe772bd9",
+      "bytes": 54962
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s2-closeout-20261115-E022.json",
+      "beforeBlobSha1": "b7d096db6ceb621ea2fe926a9736250d0139b788",
+      "beforeSha256": "30b5e31399052dcfd747a5fac21084652c880ae8695df1c09db1cd038293911a",
+      "sha256": "0a41eae3a3ccf296a3ff366abd161899f0c9823735e3ab27189f741040eb15ac",
+      "blobSha1": "f50fe705d26d27e37d0b7d60847530a6607f078d",
+      "bytes": 39152
+    },
+    {
+      "path": ".archive-meta-register/evidence/m2s2-closeout-20261115/E022.json",
+      "beforeBlobSha1": "825fea832e9300124e21b7fd146a0eae62c2de61",
+      "beforeSha256": "76464a2a932aff013566fdf2e26c9b9f555f6c6a3621039dd5eecca16495b929",
+      "sha256": "4d5af3fea796503e80ec9cd805e6dc48e10155342ff4c7b72088ad5c08e7d6af",
+      "blobSha1": "d47a9309c4d662e757bf3b87b3eee03347a55cff",
+      "bytes": 30145
+    }
+  ],
+  "additions": [
+    {
+      "path": ".archive-meta-register/inbox/m2s2-closeout-20261115-E029-audit-preserve.json",
+      "sha256": "c32f099f873b9df180544d941872e4f61c0a20ad995b60d058a7900e62f2ee66",
+      "blobSha1": "ae30c24c97986928bdf165aaa9e21bb714f7061e",
+      "bytes": 44709
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-closeout-20261115-E029-audit-preserve.review.json",
+      "sha256": "f85d89b2fd8ee079f5f035143ae8ce6f74afc02325c95a8a3754950181a1a6e8",
+      "blobSha1": "5ef551f70a0efe4b559ca29b42668bf4a71588a7",
+      "bytes": 32341
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s2-closeout-20261115-E013-Q5-preserve.json",
+      "sha256": "2d7b7d931d328a2244afe064da639b878e047f6128381875e1cde7e912ba3e94",
+      "blobSha1": "baf70ca2af2aa7503585cac6674e6f9930fe3ef4",
+      "bytes": 3006
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-closeout-20261115-E013-Q5-preserve.review.json",
+      "sha256": "b2dc7ecf52b710c92bb5f5651fca0e275fd852542d7ef4a544bcde3cb2c5e82d",
+      "blobSha1": "fdb7e5960941cad1593e09df36d23e17a6d28f2a",
+      "bytes": 7733
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-closeout-20261115-E029-audit-preserve.parent-preservation.json",
+      "sha256": "ad296925a5675e9ed236f3c2e5c4e4d1f6ab2ea819b00fa09ae543fffbaa1771",
+      "blobSha1": "c1e2335fef5fc584750bff0dbba488deff96297b",
+      "bytes": 1982
+    }
+  ],
+  "difficultyRequestOverrides": [
+    {
+      "examId": "E022",
+      "sourceArchiveFile": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+      "sourceBlobSha": "0c667aabbd5eff76c3c0e4e2c27af6aabe772bd9",
+      "questionCount": 23,
+      "selectedCount": 23,
+      "alreadyExactCount": 11,
+      "staleSourceBindingCount": 0,
+      "requestPath": ".archive-meta-register/inbox/m2s2-closeout-20261115-E022.json",
+      "requestSha256": "0a41eae3a3ccf296a3ff366abd161899f0c9823735e3ab27189f741040eb15ac",
+      "evidencePath": ".archive-meta-register/evidence/m2s2-closeout-20261115/E022.json",
+      "evidenceSha256": "4d5af3fea796503e80ec9cd805e6dc48e10155342ff4c7b72088ad5c08e7d6af"
+    },
+    {
+      "examId": "E029",
+      "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+      "sourceBlobSha": "1564b9a4e8168d29f93ee9b0122d2f0c4f336183",
+      "questionCount": 24,
+      "selectedCount": 24,
+      "alreadyExactCount": 0,
+      "staleSourceBindingCount": 0,
+      "requestPath": ".archive-meta-register/inbox/m2s2-closeout-20261115-E029.json",
+      "requestSha256": "3874b595793dbfa54f21f5f3b02799390cb1b4a8404136047349523e1bcaeb21",
+      "evidencePath": ".archive-meta-register/evidence/m2s2-closeout-20261115/E029.json",
+      "evidenceSha256": "7a00af2199b4c2db37c1b3585f2a6c7d1a305a7b79307f850c0ee56d01c4bff1"
+    }
+  ],
+  "nativePreservationRequests": [
+    {
+      "requestId": "m2s2-closeout-20261115-E013-Q5-preserve",
+      "requestRef": {
+        "path": ".archive-meta-register/inbox/m2s2-closeout-20261115-E013-Q5-preserve.json",
+        "sha256": "2d7b7d931d328a2244afe064da639b878e047f6128381875e1cde7e912ba3e94",
+        "blobSha1": "baf70ca2af2aa7503585cac6674e6f9930fe3ef4",
+        "bytes": 3006
+      },
+      "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+      "expectedSourceBlobSha1": "dc90dee3aa1373c5842241324db00a3753a80cfd",
+      "approvalType": "FINAL_QA",
+      "scope": "PARTIAL_UIDS",
+      "expectedQuestionCount": 24,
+      "selectedUidCount": 1,
+      "preservedMetadataApprovals": 1,
+      "newMetadataApprovals": 0
+    },
+    {
+      "requestId": "m2s2-closeout-20261115-E029-audit-preserve",
+      "requestRef": {
+        "path": ".archive-meta-register/inbox/m2s2-closeout-20261115-E029-audit-preserve.json",
+        "sha256": "c32f099f873b9df180544d941872e4f61c0a20ad995b60d058a7900e62f2ee66",
+        "blobSha1": "ae30c24c97986928bdf165aaa9e21bb714f7061e",
+        "bytes": 44709
+      },
+      "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+      "expectedSourceBlobSha1": "1564b9a4e8168d29f93ee9b0122d2f0c4f336183",
+      "approvalType": "META_PIPELINE_AUDIT",
+      "scope": "FULL_EXAM",
+      "expectedQuestionCount": 24,
+      "selectedUidCount": 24,
+      "preservedMetadataApprovals": 24,
+      "newMetadataApprovals": 0
+    }
+  ],
+  "requiredImmutableGitEvidence": {
+    "originalAuditCommit": "e28221ab8cf04c6a2ef0c177603f16aaa041e17a",
+    "originalAuditRemoteTree": "8b6610f82095d107e89d66eff148b411c3e6d79f",
+    "originalAuditRemoteReceiptAndSourceBytesVerified": true,
+    "originalAuditEvidenceRefsVerified": 12,
+    "priorConsumerCommit": "2ea8fb8b109921997e6764a3f85213d9d04b4364",
+    "priorQ5RequestCommit": "d0c592f6948dce98a9716a59ee97e6182b9653dc",
+    "currentQ5SourceCommit": "42686af77e264aece5c9683f3e1f77baa55da4a1",
+    "currentQ5SourceBlobSha1": "dc90dee3aa1373c5842241324db00a3753a80cfd",
+    "currentQ5SourceRawSha256": "a4748d233f9150752ac0c6d2c11dd576f51871310689e698f9076ff6129cf44e",
+    "currentQ5SourceCommitMustRemainFetchable": true
+  },
+  "validation": {
+    "inboxAbsentDuringFullBuildAndConsumers": 69,
+    "fullBuildExitCode": 0,
+    "difficultyProjections": 67,
+    "nativeProjectedAndReused": 25,
+    "canonicalPriorApprovalsUnchanged": 395,
+    "priorMetadataApprovalStateAndGovernedConsumerValuesUnchanged": true,
+    "identityByteIdentical": true,
+    "actualPlanner": {
+      "SUPPLEMENT_PENDING": 370,
+      "ALREADY_REGISTERED": 25,
+      "APPLY": 0
+    },
+    "observedChainSeconds": 497.972,
+    "focusedRegressionTestsPassed": 514,
+    "focusedRegressionTestsSkipped": 0,
+    "proofFiles": [
+      {
+        "name": "consumed69-chain-r2-proof.json",
+        "sha256": "e200b7cf8745209417f5507ffb9ef702eed75adda60709fad2a8e3910d547d4d",
+        "bytes": 4243562
+      },
+      {
+        "name": "consumer-1592-r2.json",
+        "sha256": "f22fa47bb531195abc0626450d974909f0c30e4b9e2f67a35206fd8e7e818fcd",
+        "bytes": 259820
+      },
+      {
+        "name": "prior395-preservation-r2-proof.json",
+        "sha256": "e2d52ad0b280baab9a86e9c699510510f12f81203bc17a285de3b23d9ea51e02",
+        "bytes": 332037
+      },
+      {
+        "name": "prior-approved-auto-meta-plans-r2.json",
+        "sha256": "ca772af4d9f121a1a8bfdad1913d951231b3efc7e9ad617d440de2f3f765ea18",
+        "bytes": 773287
+      },
+      {
+        "name": "post-build-scope-proof.json",
+        "sha256": "518964b84f21c71cbc70d1d8eff02a4b5c3595b9159ce2079453660b9b98b66b",
+        "bytes": 481
+      },
+      {
+        "name": "e029-original-audit-remote-byte-proof.json",
+        "sha256": "78ffe3a133a8340929ab6b97e4f512717db9eb6a919146b376f550795001735b",
+        "bytes": 5735
+      },
+      {
+        "name": "chain69-r2-stage-observations.json",
+        "sha256": "da6a15dd7152af92f98683bc434ee238d8db2f5303610d301ed566610546336e",
+        "bytes": 29144
+      },
+      {
+        "name": "parent-projection-focused-tests-r2.log",
+        "sha256": "978aef1961ec1368711291815933b9c6f62a4828b7ddb1918972baa69d3cb432",
+        "bytes": 40093
+      }
+    ]
+  },
+  "mainRegistrationStatus": "PENDING",
+  "deploymentStatus": "PENDING",
+  "applicationRequirements": [
+    "Overlay these six replacements and five additions on the original source/request inputs; source E013 must remain exactly the declared 42686 blob.",
+    "Keep immutable input commit 42686 reachable/fetchable for CI and main sourceRebind proof validation.",
+    "Run official difficulty correction before its E029 preservation dependency; both preservation requests must retain newMetadataApprovals=0.",
+    "Confirm actual registered main, canonical Consumer and deployed site after CI/merge; this local verification does not claim those later steps."
+  ]
+}

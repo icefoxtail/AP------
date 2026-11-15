@@ -468,6 +468,8 @@ def _mc_look_attrs(curve):
 def _mc_plain_expression(curve):
     if curve['kind']=='LINE' or curve['kind']=='Y_OF_X':return _polynomial_text(curve['coefficients'])
     if curve['kind']=='RATIONAL':return '('+_polynomial_text(curve['numerator'])+')/('+_polynomial_text(curve['denominator'])+')'
+    if curve['kind']=='EXPONENTIAL':
+        return _exp_log_base_expression({**curve,'family':'exponential-affine'})
     return '('+curve['offset']+')+('+curve['amplitude']+')*sqrt('+_polynomial_text(curve['radicand'])+')'
 
 def _mc_free_expression(curve):
@@ -541,6 +543,26 @@ def _mc_region_parts(features,vp):
             upper_at=min(upper,key=lambda point:abs(point[0]-mid));lower_at=min(lower,key=lambda point:abs(point[0]-mid))
             cx,cy=(upper_at[0]+lower_at[0])/2,(upper_at[1]+lower_at[1])/2
             labels.append(f'<text id="region-{region["id"]}-label" x="{cx:.12g}" y="{cy:.12g}" text-anchor="middle" font-size="12">{html.escape(region["label"])}</text>')
+        columns=region.get('integerColumns',[])
+        if columns:
+            top=max(float(Fraction(row['upper'])) for row in columns)
+            label_y=top+(vp.yMax-top)*.35
+            for index,row in enumerate(columns):
+                ident=f'region-{region["id"]}-guide-{row["x"]}'
+                lower,upper=map(Fraction,(row['lower'],row['upper']))
+                sx,low=vp.screen((row['x'],float(lower)))
+                _,high=vp.screen((row['x'],float(upper)))
+                _,text_y=vp.screen((row['x'],label_y))
+                interior=0<index<len(columns)-1
+                style=('data-role="guide" stroke="#8a8a8a" stroke-width="0.8" stroke-dasharray="2 4"'
+                       if interior else 'data-role="line" stroke="#111" stroke-width="1.6"')
+                spans=[(ident,low,high)]
+                if interior and lower<0<upper:
+                    _,axis_y=vp.screen((row['x'],0))
+                    spans=[(ident,low,axis_y),(ident+'-upper',axis_y,high)]
+                for name,start_y,end_y in spans:
+                    labels.append(f'<line id="{name}" {style} x1="{sx:.12g}" x2="{sx:.12g}" y1="{start_y:.12g}" y2="{end_y:.12g}"/>')
+                labels.append(f'<text id="{ident}-count" x="{sx:.12g}" y="{text_y:.12g}" text-anchor="middle" font-size="12">{row["count"]}</text>')
     return fills,labels
 
 def _mc_row_y(row,x_value):
@@ -551,6 +573,9 @@ def _mc_row_y(row,x_value):
     if kind=='RATIONAL':
         n=[pp_exact_float(value) for value in row['numerator']];d=[pp_exact_float(value) for value in row['denominator']]
         value=sum(coefficient*x_value**power for power,coefficient in enumerate(n))/(d[0]+d[1]*x_value)
+    elif kind=='EXPONENTIAL':
+        amplitude,rate,offset=map(pp_exact_float,row['coefficients'])
+        value=offset+amplitude*int(row['base'])**(rate*(x_value-pp_exact_float(row['shiftX'])))
     elif kind=='SQRT':
         r=[pp_exact_float(value) for value in row['radicand']]
         value=pp_exact_float(row.get('offset','0'))+pp_exact_float(row.get('amplitude','1'))*math.sqrt(max(0.0,r[0]+r[1]*x_value))
@@ -586,8 +611,8 @@ def _produce_multi_curve(plan,vp):
     for curve in features['curves']:
         states=curve.get('domainStates',['NONE','NONE'])
         if not isinstance(states,list) or len(states)!=2 or any(state not in ('NONE','OPEN','CLOSED') for state in states):raise ValueError('MULTI_CURVE_DOMAIN_STATE_INVALID:'+str(curve.get('id')))
-        if curve.get('kind') not in ('LINE','RATIONAL','SQRT') and states!=['NONE','NONE']:raise ValueError('MULTI_CURVE_DOMAIN_STATE_UNSUPPORTED:'+str(curve.get('id')))
-        if curve.get('kind') in ('LINE','RATIONAL','SQRT') and states!=['NONE','NONE']:
+        if curve.get('kind') not in ('LINE','RATIONAL','SQRT','EXPONENTIAL') and states!=['NONE','NONE']:raise ValueError('MULTI_CURVE_DOMAIN_STATE_UNSUPPORTED:'+str(curve.get('id')))
+        if curve.get('kind') in ('LINE','RATIONAL','SQRT','EXPONENTIAL') and states!=['NONE','NONE']:
             from graph_framing import pp_exact_float
             lo,hi=curve.get('interval',[])
             for which,state,value in (('from',states[0],lo),('to',states[1],hi)):
@@ -599,7 +624,7 @@ def _produce_multi_curve(plan,vp):
     region_fills,region_labels=_mc_region_parts(features,vp)
     for curve in features['curves']:
         ident=curve.get('id');stroke,look=_mc_look_attrs(curve)
-        if curve.get('kind') in ('Y_OF_X','LINE','RATIONAL','SQRT'):
+        if curve.get('kind') in ('Y_OF_X','LINE','RATIONAL','SQRT','EXPONENTIAL'):
             intervals=curve.get('branches') or []
             if curve['kind']=='Y_OF_X' and len(intervals)!=1:raise ValueError('MULTI_CURVE_BRANCH_INVENTORY_REQUIRED:'+str(ident))
             for branch in intervals:

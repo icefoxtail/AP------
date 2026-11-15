@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "m2s2-first69-ci-evidence-v1",
+  "status": "LOCAL_TARGETED_PASS_REMOTE_CI_PENDING",
+  "failedCi": {
+    "pullRequest": 2103,
+    "head": "f348faf73140d1206e399e76ecbce13900886eb1",
+    "run": 43683008629,
+    "job": 132717509903,
+    "testsPassed": 336,
+    "testsFailed": 2
+  },
+  "scope": "Test contracts and fixed historical fixture only; no source, approval, metadata, runtime, or original cohort digest modified.",
+  "historicalSource": {
+    "commit": "2ea8fb8b109921997e6764a3f85213d9d04b4364",
+    "path": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+    "sha256": "939a819ea85a287139e603c924891452881d1dfadfe49d5227d67e4c762df803",
+    "blobSha1": "92d0b2d321e5b36d64cad1a66c7a71dbeee9384e"
+  },
+  "nativeReview": {
+    "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "path": "archive/data/meta-review/m2-s2-20261114/exams/E046/review.json",
+    "sha256": "dd9a4c37672ca5d24f5715de271479484653812620366904dc09200986babf17"
+  },
+  "fixtureSha256": "9c23bce8470fd996e87d87e33c33a1eaa02abf3716f8c713b009c99df06b1856",
+  "sourceOnly": {
+    "historicalResolverChecks": 2,
+    "currentReviewedSourceExact": 2,
+    "rejectedCorruptions": 4,
+    "currentMetadataPending": 2,
+    "newApprovals": 0
+  },
+  "runtime": {
+    "historicalCohorts": [
+      904,
+      47,
+      24
+    ],
+    "unchangedHistoricalRows": 950,
+    "byteBoundHistoricalTransitions": 25,
+    "auditPreservations": 24,
+    "historicalCorruptionsRejected": 5,
+    "nativeCorruptionsRejected": 13,
+    "auditCorruptionsRejected": 168,
+    "runtimeOverlaysChecked": 1021,
+    "productionVerifier": "nativeReviewReceipt -> preservedAuditReceipt -> immutable prior audit, D5, metadata, identity, runtime and source binding",
+    "cohortFixtureSha256": "74553daa7085f25652405f5bad95d8a7c269dfcce3e14017eab135746ed3fdc9"
+  },
+  "testLogs": {
+    ".tmp/ci2103-repair/hyangrim.log": "af5169b198d221ff16a8afeb878fe93a9532a44d72de6e82e358c7ba6c2889a6",
+    ".tmp/ci2103-repair/middle-geometry.log": "7ec2bf193eab144c917cd27aa03f361a33fccddd973acb59b1856ba7ce79f3ae"
+  }
+}
