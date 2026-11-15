@@ -13,7 +13,10 @@ export const REVIEWED_CORRECTION_SCHEMA = "archive-difficulty5-reviewed-correcti
 const META = "archive/data/question_metadata.json";
 const IDENTITY = "archive/data/question_identity_map.json";
 const CONFIDENCE = new Set(["high", "medium", "low"]);
-const BOUNDARY = new Set(["NONE", "B12", "B23", "B34", "B45"]);
+const BOUNDARY = new Set(["NONE", "B12", "B23", "B34", "B45", "UNKNOWN"]);
+// Question ids may be numbers in the exam file and strings in the identity map; compare by normalized text.
+const idKey = v => (typeof v === "string" || (typeof v === "number" && Number.isFinite(v))) ? String(v).trim() : null;
+const sameId = (a, b) => { const x = idKey(a), y = idKey(b); return x !== null && x !== "" && x === y; };
 const LEVEL_OF = { "하": 0, "중": 1, "상": 2 };
 const fail = message => { throw new Error("DIFFICULTY5: " + message); };
 const equal = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
@@ -94,9 +97,9 @@ function registerReviewedCorrection({ root, request, source, sha, bank, doc, ids
     if (n < 1 || n > bank.length) fail("ordinal outside question bank #" + n);
     const q = bank[n - 1];
     if (q?.id !== undefined && q.id !== n) {
-      const stringId = typeof q.id === "string" && q.id.length > 0;
-      if (!stringId || q.number !== n || typeof idr.sourceQuestionNo !== "string" || q.id !== idr.sourceQuestionNo ||
-          bank.filter(row => row?.id === q.id).length !== 1) fail("source question id mismatch #" + n);
+      const validId = idKey(q.id) !== null && idKey(q.id) !== "";
+      if (!validId || (typeof q.id === "string" ? q.number !== n : (q.number !== undefined && q.number !== n)) || typeof idr.sourceQuestionNo !== "string" || !sameId(q.id, idr.sourceQuestionNo) ||
+          bank.filter(row => sameId(row?.id, q.id)).length !== 1) fail("source question id mismatch #" + n);
     }
     const sourceLegacyLevel = rec.level ?? q?.level ?? null;
     if ((item.before?.level ?? null) !== sourceLegacyLevel || (review.before?.level ?? null) !== sourceLegacyLevel)
@@ -258,11 +261,11 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
         // Accept them only when the canonical identity, ordinal and unique source ID agree.
         const stringId = typeof q.id === "string" && q.id.length > 0;
         const legacyStringBinding = stringId && q.number === n && typeof idr.sourceQuestionNo === "string" &&
-          q.id === idr.sourceQuestionNo && bank.filter(row => row?.id === q.id).length === 1;
+          sameId(q.id, idr.sourceQuestionNo) && bank.filter(row => sameId(row?.id, q.id)).length === 1;
         // Extra binding is deliberately exact; stale/content-only fingerprints are not enough.
         const identityBinding = ((typeof q.id === "number" && Number.isFinite(q.id)) || stringId) &&
-          (q.number === undefined || q.number === n) && q.id === idr.sourceQuestionNo &&
-          bank.filter(row => row?.id === q.id).length === 1 &&
+          (q.number === undefined || q.number === n) && sameId(q.id, idr.sourceQuestionNo) &&
+          bank.filter(row => sameId(row?.id, q.id)).length === 1 &&
           (ids.records || []).filter(row => row.sourceArchiveFile === source && row.questionUid === item.questionUid).length === 1 &&
           idr.sourceFingerprint === fingerprint(q) && rec.sourceFingerprint === fingerprint(q);
         if (!legacyStringBinding && !identityBinding) fail("source question id mismatch #" + n);
@@ -289,7 +292,7 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     let reason = null;
     if (!isBucket(a.difficultyBucket)) reason = "difficultyBucket must be an integer 1..5";
     else if (!CONFIDENCE.has(conf)) reason = "difficultyConfidence must be high/medium/low";
-    else if (!BOUNDARY.has(a.difficultyBoundaryFlag)) reason = "difficultyBoundaryFlag must be NONE/B12/B23/B34/B45";
+    else if (!BOUNDARY.has(a.difficultyBoundaryFlag)) reason = "difficultyBoundaryFlag must be NONE/B12/B23/B34/B45/UNKNOWN";
     if (reason) { out.decision = "SKIP_INVALID"; out.reason = reason; counts.SKIP_INVALID++; items.push(out); continue; }
     const next = {
       difficultyBucket: a.difficultyBucket, difficultyConfidence: conf, difficultyBoundaryFlag: a.difficultyBoundaryFlag,
