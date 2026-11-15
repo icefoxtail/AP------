@@ -1,0 +1,370 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학_유사A.js",
+  "questionId": 9,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "두 정삼각형과 한 각",
+        "accessibilityDescription": "선분 AB 위에 만든 정삼각형 ACD, CBE.",
+        "sourceQuote": "ACD and CBE are equilateral; ∠DAE=36°",
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "equilateral1",
+            "condition": "△ACD is equilateral",
+            "mappedTo": "three side segments AC,CD,DA"
+          },
+          {
+            "id": "equilateral2",
+            "condition": "△CBE is equilateral",
+            "mappedTo": "three side segments CB,BE,EC"
+          },
+          {
+            "id": "angle",
+            "condition": "∠DAE=36°",
+            "mappedTo": "angle arc at A"
+          }
+        ],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Aright",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Cright",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "Aright"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "AtoE",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "Aright"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "24"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "CtoE",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "Cright"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineAE",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "AtoE"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineCE",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "CtoE"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lineAE",
+                "lineCE"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineBase",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circleC",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "C",
+                "E"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Bset",
+              "op": "INTERSECTION",
+              "inputs": [
+                "lineBase",
+                "circleC"
+              ],
+              "args": {},
+              "outputType": "POINT_SET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "CUp",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "SELECT_POINT",
+              "inputs": [
+                "Bset"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "GIVEN",
+              "branch": {
+                "kind": "SIDE_OF_ORIENTED_LINE",
+                "refs": [
+                  "C",
+                  "CUp"
+                ],
+                "sign": -1
+              }
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "displaySegments": [
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "DA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "CB",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "BE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "EC",
+            "refs": [
+              "E",
+              "C"
+            ]
+          },
+          {
+            "id": "AE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 680,
+          "height": 520
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "DAE36",
+              "refs": [
+                "D",
+                "A",
+                "E"
+              ],
+              "value": 36,
+              "label": "36",
+              "arcs": 1
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

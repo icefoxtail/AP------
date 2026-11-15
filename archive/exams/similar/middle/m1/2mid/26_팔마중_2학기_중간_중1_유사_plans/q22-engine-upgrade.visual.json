@@ -1,0 +1,348 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사.js",
+  "questionId": 22,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "한 점에서 만나는 직선",
+        "accessibilityDescription": "한 점에서 만나는 여러 선분과 그 사이의 각을 나타낸 그림.",
+        "sourceQuote": "∠AOB는 평각; 60°; 두 직선은 수직; 각 AOD=3x+30°",
+        "sourceConditions": [
+          {
+            "id": "straight",
+            "condition": "A,O,B are collinear",
+            "mappedTo": "line AB"
+          },
+          {
+            "id": "sixty",
+            "condition": "The angle from OB to OU is 60°",
+            "mappedTo": "angle mark 60"
+          },
+          {
+            "id": "perpendicular",
+            "condition": "The two intersecting lines are perpendicular",
+            "mappedTo": "right angle between upper-left and upper-right rays"
+          },
+          {
+            "id": "expression",
+            "condition": "Angle AOD is 3x+30°",
+            "mappedTo": "angle mark with expression"
+          }
+        ],
+        "newVisualInformation": [],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "150"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "L",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "240"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "330"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineAB",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineDV",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "D",
+                "V"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineUL",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "U",
+                "L"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "U",
+          "D",
+          "L",
+          "V",
+          "O",
+          "R"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "DV",
+            "refs": [
+              "D",
+              "V"
+            ]
+          },
+          {
+            "id": "UL",
+            "refs": [
+              "U",
+              "L"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 440
+        },
+        "displayLines": [
+          "lineAB",
+          "lineDV",
+          "lineUL"
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "y",
+              "refs": [
+                "A",
+                "O",
+                "D"
+              ],
+              "value": 30,
+              "label": "y",
+              "arcs": 1
+            },
+            {
+              "id": "sixty",
+              "refs": [
+                "U",
+                "O",
+                "B"
+              ],
+              "value": 60,
+              "label": "60",
+              "arcs": 1
+            },
+            {
+              "id": "expr",
+              "refs": [
+                "A",
+                "O",
+                "V"
+              ],
+              "value": 150,
+              "label": "3x+30",
+              "arcs": 1
+            }
+          ],
+          "facts": []
+        },
+        "hiddenPointNames": [
+          "A",
+          "B",
+          "U",
+          "D",
+          "L",
+          "V",
+          "O",
+          "R"
+        ],
+        "hiddenPointStyle": "NONE",
+        "rightAngles": [
+          {
+            "id": "perp",
+            "refs": [
+              "U",
+              "O",
+              "D"
+            ]
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

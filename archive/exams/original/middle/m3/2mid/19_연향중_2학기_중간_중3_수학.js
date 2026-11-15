@@ -746,7 +746,7 @@ window.questionBank = [
       "특수각"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=90^\\circ$, $\\angle\\mathrm{A}=30^\\circ$, $\\overline{\\mathrm{AB}}=5\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{BC}}=x\\,\\mathrm{cm}$의 값은? (3점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q10-problem-v3.svg\" alt=\"B는 직각이고 A의 각은 30도이다. 초록 AB는 5 cm, 주황 BC는 x cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
+    "content": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=90^\\circ$, $\\angle\\mathrm{A}=30^\\circ$, $\\overline{\\mathrm{AB}}=5\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{BC}}=x\\,\\mathrm{cm}$의 값은? (3점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q10-problem-v4.svg\" alt=\"B는 직각이고 A의 각은 30도이다. 초록 AB는 5 cm, 주황 BC는 x cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$\\dfrac{5\\sqrt3}{3}\\,\\mathrm{cm}$",
       "$5\\,\\mathrm{cm}$",

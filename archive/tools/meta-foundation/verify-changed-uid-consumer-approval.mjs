@@ -39,11 +39,12 @@ import { createRequire } from "node:module";
 import { isDeepStrictEqual } from "node:util";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
+import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
+import { isSourceSubsetRebind } from "./source-subset-preservation.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 const require = createRequire(import.meta.url);
@@ -165,10 +166,10 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     if (schema === SCHEMA.V2 && doc.approval?.sourceRebind !== undefined) {
       const audit = doc.approval.type === "META_PIPELINE_AUDIT" &&
         doc.approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
-      const partial = doc.scope === "PARTIAL_UIDS";
+      const partial = doc.scope === "PARTIAL_UIDS", subset = isSourceSubsetRebind(doc.approval.sourceRebind);
       if ((!audit && doc.approval.type !== "FINAL_QA") || !doc.approval.sourceRebind ||
           typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
-          (!audit && doc.approval.sourceRebind.schemaVersion !== undefined) ||
+          (!audit && doc.approval.sourceRebind.schemaVersion !== undefined && !subset) || subset && !partial ||
           doc.approval.metadataReviewed !== true || doc.registryChanges?.length ||
           (doc.scope !== undefined && !partial) ||
           !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(doc.requestId || "") ||
@@ -350,9 +351,10 @@ function checkRow(consumer, unit, row) {
   if (row.bodyFingerprint !== undefined && row.bodyFingerprint !== resolved.assignmentFingerprint)
     return { ...out, reason: "BODY_FINGERPRINT_MISMATCH", detail: `request ${row.bodyFingerprint} != consumer assignmentFingerprint ${resolved.assignmentFingerprint}` };
   if (row.fullFingerprint !== undefined && row.fullFingerprint !== resolved.sourceFingerprint) out.solverOnlyRevision = true;
+  // REVIEW2 may also register a judged tag/difficulty value over the exam file's inline value; the registrar records the source value in receipt.sourceValueOverrides.
   // REVIEW2 (two independent judgments): the exam file's own review annotation (e.g. SELF_CHECKED) differs from the registrar-forced
   // reviewed_pass by design; it is kept in the exam file and is not a metadata conflict. Every other conflicting field still refuses.
-  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && f === "reviewStatus"));
+  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && (f === "reviewStatus" || REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(f))));
   if (blockingConflicts.length)
     return { ...out, reason: "METADATA_CONFLICT", detail: blockingConflicts.join(",") };
   const evidence = resolved.assignmentEvidence;

@@ -1,0 +1,335 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/1final/19_금당중_1학기_기말_중1_유사.js",
+  "questionId": 21,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 680,
+          "height": 460
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "hiddenPointNames": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "AE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "EB",
+            "refs": [
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "BF",
+            "refs": [
+              "B",
+              "F"
+            ]
+          },
+          {
+            "id": "FC",
+            "refs": [
+              "F",
+              "C"
+            ]
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "DA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "EG",
+            "refs": [
+              "E",
+              "G"
+            ]
+          },
+          {
+            "id": "GF",
+            "refs": [
+              "G",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rectangle",
+              "fill": "LIGHT",
+              "factRole": "GIVEN",
+              "shapes": [
+                {
+                  "polygon": [
+                    "E",
+                    "B",
+                    "F",
+                    "G"
+                  ]
+                }
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "base",
+              "from": "D",
+              "to": "C",
+              "label": "10",
+              "unit": "cm",
+              "value": 10,
+              "side": "ABOVE",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "side",
+              "from": "A",
+              "to": "D",
+              "label": "10",
+              "unit": "cm",
+              "value": 10,
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "widthChange",
+              "from": "A",
+              "to": "E",
+              "label": "2x",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "heightChange",
+              "from": "F",
+              "to": "C",
+              "label": "(x+2)",
+              "unit": "cm",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "정사각형과 색칠한 직사각형",
+        "accessibilityDescription": "정사각형과 색칠한 직사각형의 경계와 치수를 나타낸 그림.",
+        "sourceConditions": [
+          {
+            "id": "square",
+            "condition": "한 변이 10 cm인 정사각형",
+            "mappedTo": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "changes",
+            "condition": "가로를 2x cm, 세로를 (x+2) cm 줄인다.",
+            "mappedTo": [
+              "AE",
+              "FC",
+              "rectangle"
+            ]
+          }
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

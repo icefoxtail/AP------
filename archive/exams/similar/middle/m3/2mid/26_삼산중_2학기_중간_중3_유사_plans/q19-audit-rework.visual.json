@@ -1,0 +1,306 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/26_삼산중_2학기_중간_중3_유사.js",
+  "questionId": 19,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "H",
+              "op": "MIDPOINT",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circleO",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "O",
+                "H"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "H",
+          "O"
+        ],
+        "displaySegments": [
+          {
+            "id": "ad",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "db",
+            "refs": [
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "bh",
+            "refs": [
+              "B",
+              "H"
+            ]
+          },
+          {
+            "id": "hc",
+            "refs": [
+              "H",
+              "C"
+            ]
+          },
+          {
+            "id": "ca",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "do",
+            "refs": [
+              "D",
+              "O"
+            ]
+          },
+          {
+            "id": "oh",
+            "refs": [
+              "O",
+              "H"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circleO"
+        ],
+        "coordinateCanvas": {
+          "width": 610,
+          "height": 450
+        },
+        "caption": "삼각형 안의 원과 색칠 영역",
+        "accessibilityDescription": "삼각형과 원이 겹쳐 보이고 점 D와 H에서 원의 가운데로 이어지는 두 선분과 색칠 영역이 있다.",
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "ab",
+              "from": "A",
+              "to": "B",
+              "label": "12",
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "value": 12
+            }
+          ],
+          "arcs": [
+            {
+              "id": "arcDH",
+              "circle": "circleO",
+              "center": "O",
+              "from": "D",
+              "to": "H",
+              "side": "MINOR",
+              "highlight": false
+            }
+          ],
+          "regions": [
+            {
+              "id": "upper",
+              "fill": "MEDIUM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "D",
+                    "O",
+                    "H",
+                    "C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "left",
+              "fill": "MEDIUM",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "B",
+                    "steps": [
+                      {
+                        "to": "D"
+                      },
+                      {
+                        "to": "H",
+                        "arc": {
+                          "center": "O",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "B"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 27,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

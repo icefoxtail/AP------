@@ -1,0 +1,203 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사.js",
+  "questionId": 3,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "coordinateCanvas": {
+          "width": 640,
+          "height": 405
+        },
+        "caption": "사다리꼴 ABCD",
+        "accessibilityDescription": "사다리꼴의 왼쪽 두 꼭짓점에 각 표식이 있고 세 변의 길이를 표시하는 치수선이 있다.",
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "top",
+              "from": "A",
+              "to": "D",
+              "label": "4",
+              "side": "ABOVE",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 4
+            },
+            {
+              "id": "bottom",
+              "from": "B",
+              "to": "C",
+              "label": "8",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 8
+            },
+            {
+              "id": "height",
+              "from": "A",
+              "to": "B",
+              "label": "6",
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 6
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "ra",
+            "refs": [
+              "D",
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "rb",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 30,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

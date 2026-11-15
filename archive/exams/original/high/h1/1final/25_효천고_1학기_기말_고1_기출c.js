@@ -247,7 +247,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "직각을 낀 두 변의 길이가 20cm와 60cm인 직각삼각형 모양의 자투리 천이 있다. 이 천에서 아래 그림과 같이 세로의 길이가 $a$cm인 직사각형 모양을 잘라내어 가방을 만들려고 한다. 직사각형의 넓이가 최대가 되도록 자를 때, $a$의 값은? [4점]<br><img src=\"assets/images/25_효천고_1학기_기말_고1_기출c/q7-problem-v2.svg\" style=\"display:block; margin:8px auto; width:280px; max-width:100%; height:auto; max-height:185px; object-fit:contain\" alt=\"20 cm와 60 cm인 직각변이 있는 삼각형 안에서 높이가 a cm인 직사각형\">",
+    "content": "직각을 낀 두 변의 길이가 20cm와 60cm인 직각삼각형 모양의 자투리 천이 있다. 이 천에서 아래 그림과 같이 세로의 길이가 $a$cm인 직사각형 모양을 잘라내어 가방을 만들려고 한다. 직사각형의 넓이가 최대가 되도록 자를 때, $a$의 값은? [4점]<br><img src=\"assets/images/25_효천고_1학기_기말_고1_기출c/q07-audit-rework.svg\" style=\"display:block; margin:8px auto; width:280px; max-width:100%; height:auto; max-height:185px; object-fit:contain\" alt=\"20 cm와 60 cm인 직각변이 있는 삼각형 안에서 높이가 a cm인 직사각형\">",
     "choices": [
       "$2$",
       "$3$",
@@ -584,7 +584,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 이차함수 $y = f(x)$의 그래프와 직선 $y = g(x)$가 만나는 두 점의 $x$좌표는 $-1,\\ -7$이다. $h(x) = f(x) - g(x)$라고 하면 $-4 \\le x \\le 0$에서 이차함수 $y = h(x)$의 최댓값이 9일 때, 같은 범위에서 이차함수 $y = h(x)$의 최솟값은? [4.7점]<br><img src=\"assets/images/25_효천고_1학기_기말_고1_기출c/q16-problem-v2.svg\" style=\"display:block; margin:8px auto; width:240px; max-width:100%; height:auto; max-height:215px; object-fit:contain\" alt=\"아래로 열린 포물선 y=f(x)와 올라가는 직선 y=g(x)가 두 점에서 만나는 그림\">",
+    "content": "다음 그림과 같이 이차함수 $y = f(x)$의 그래프와 직선 $y = g(x)$가 만나는 두 점의 $x$좌표는 $-1,\\ -7$이다. $h(x) = f(x) - g(x)$라고 하면 $-4 \\le x \\le 0$에서 이차함수 $y = h(x)$의 최댓값이 9일 때, 같은 범위에서 이차함수 $y = h(x)$의 최솟값은? [4.7점]<br><img src=\"assets/images/25_효천고_1학기_기말_고1_기출c/q16-quality-v4.svg\" style=\"display:block; margin:8px auto; width:240px; max-width:100%; height:auto; max-height:215px; object-fit:contain\" alt=\"아래로 열린 포물선 y=f(x)와 올라가는 직선 y=g(x)가 두 점에서 만나는 그림\">",
     "choices": [
       "$-11$",
       "$-9$",

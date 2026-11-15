@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "e050-existing-difficulty-renderer-transport-validation-v1",
+  "status": "PASS_LOCAL_OFFICIAL_D5_ONLY",
+  "baseline": "d6f4b10a1a1442932913cdfe5cd87c10e2516608",
+  "requestPath": ".archive-meta-register/inbox/m2s1-followup-20261115-E050.json",
+  "requestSha256": "810ca29427b11b86a5fe6431c1b890cd1599e2bd6edd7ce561baa0fbffcb1de6",
+  "witness": {
+    "path": ".archive-meta-register/evidence/m2s1-e050-renderer-transport-20261115.json",
+    "sha256": "6b336b5691e5965f9cc46fe673484657b07f4fdc90880360b39d553c81e0377e"
+  },
+  "sourceBlob": "7a91302f47df3aa5d2bb085f36ca1cfdece3b7d7",
+  "originalEvidenceUnchanged": true,
+  "reviewApprovalRefUnchanged": true,
+  "allDifficultyBeforeAfterDecisionReasonUnchanged": true,
+  "selectedMetadataBindingsUnchanged": true,
+  "identityBytesUnchanged": true,
+  "studentSourceBytesUnchanged": true,
+  "changedMetadataRows": [
+    {
+      "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+      "fields": [
+        "difficultyConfidence",
+        "difficultyBoundaryFlag"
+      ],
+      "selected": true
+    },
+    {
+      "questionUid": "qid_v1_48e2cccdd167683e98ba18543f6c2a376b25ec632f52bb969fd9e940f513a488",
+      "fields": [
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility"
+      ],
+      "selected": true
+    }
+  ],
+  "outsideSelectedMetadataChanges": 0,
+  "metadataRecordCount": 28890,
+  "dry": {
+    "status": "PASS",
+    "summary": {
+      "total": 2,
+      "APPLY": 2,
+      "ALREADY_REGISTERED": 0,
+      "SKIP_INVALID": 0,
+      "CONFLICT": 0,
+      "VERIFIED": 0,
+      "changedFields": 6,
+      "written": false,
+      "staleSourceBinding": 1
+    }
+  },
+  "write": {
+    "status": "PASS",
+    "summary": {
+      "total": 2,
+      "APPLY": 2,
+      "ALREADY_REGISTERED": 0,
+      "SKIP_INVALID": 0,
+      "CONFLICT": 0,
+      "VERIFIED": 0,
+      "changedFields": 6,
+      "written": true,
+      "staleSourceBinding": 1
+    }
+  },
+  "replay": {
+    "status": "PASS",
+    "summary": {
+      "total": 2,
+      "APPLY": 0,
+      "ALREADY_REGISTERED": 2,
+      "SKIP_INVALID": 0,
+      "CONFLICT": 0,
+      "VERIFIED": 0,
+      "changedFields": 0,
+      "written": false,
+      "staleSourceBinding": 1
+    },
+    "byteIdentical": true
+  },
+  "verifyProjection": {
+    "status": "PASS",
+    "summary": {
+      "total": 2,
+      "APPLY": 0,
+      "ALREADY_REGISTERED": 0,
+      "SKIP_INVALID": 0,
+      "CONFLICT": 0,
+      "VERIFIED": 2,
+      "changedFields": 0,
+      "written": false,
+      "consumerBinding": {
+        "stale": 1,
+        "content": 1
+      },
+      "staleSourceBinding": 1
+    }
+  },
+  "officialCodeSha256": {
+    "archive/tools/meta-foundation/register-difficulty5.mjs": "545d8eec8fc1c48f6887f6d0d1c37cbb23bb81a4d5063d6b2e75f5069f3a653a",
+    "archive/tools/meta-foundation/native-audit-preservation.mjs": "e24b39db44464db679d7e786bb2b5f864e45cc00404afd6afe4dd5b2a54b9f64",
+    "archive/tools/meta-foundation/reviewed-source-reassessment.mjs": "88f5134969a35cee3772454da854d7d8dc6c19b8a12a3043820d5a3f5aea1b21",
+    "archive/tools/meta-foundation/reviewed-rpm-provenance.mjs": "bd8c9eaeca865a78221a7f800778168fbd9ee2df97ad8fa57ea6d210e8739a82",
+    "archive/tools/meta-foundation/reviewed-proposal-finalization.mjs": "b2c0c594beca17fa99b88657c4a3880a925e63e7b4954632937b36c132ae9109",
+    "archive/tools/meta-foundation/reviewed-m2-proposal-finalization.mjs": "26942c38274a1f18656ed709b9e9cac7a2e28a83bcc69482e1b7f75f9bdcc714",
+    "archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs": "fe3f9843aa5db544525e000eca57880c52f24ccf495dec3d15f04a0e960fa169",
+    "archive/tools/meta-foundation/reviewed-native-scope-fields.mjs": "5141941aa255071121d605921e9c179d6483b6f14e672f385ee9993e9f59b8f8",
+    "archive/tools/meta-foundation/reviewed-native-retained-fields.mjs": "7eb37fdf8c19a257ae7baeb60a23b1e45e0743b561399823461f8804fe64b53c",
+    "archive/tools/meta-foundation/reviewed-existing-primary-disposition.mjs": "462195fd31d76b0abcd81ff695d54689220fcd80d618ec5bb3ad30a2ed3dd485",
+    "archive/tools/archive-content-inputs.mjs": "ca36f83f4674a493ba0db21da386d90c5c1d70fedd0505f4e40294ace5a69950",
+    "archive/tools/archive-unit-order.mjs": "ae070bda93511a26aecb8b7bc6419be787d38b0e443935c60a3f5e1debc632dc",
+    "archive/tools/archive-codex-artifact-io.mjs": "1b3a31fda62fb877260f0e38af96bf84cd7a6b5beaab358d929c87c7ac47017b",
+    "archive/tools/archive-stage-validator-compat-v1.mjs": "acdb9faa38fa611d60ebd3c234d48bd040f4d4484999a5c57c5c19053ebe3360",
+    "archive/tools/review-evidence-gate.mjs": "26ebc3515c2d7b02ed5d0096c6aa708bc9c1d35d6ad6701fa8cd82cfa343a866",
+    "archive/tools/solution-calibration-gate.mjs": "fc5230b62afbec3146ee1669a143910b667ed0377f04f90b0f7b255e283af98d",
+    "archive/tools/question-only-replacement-v2.mjs": "5fec4481ac8c4ada8a209eefe5ed13a21b04c4e42099ea5633777bc70461a959",
+    "archive/tools/archive-student-bundle.mjs": "b9b2bb2d9de4ac30a12add593887659eabe75215432b7d134be207cba3c5641a",
+    "archive/tools/evidence-authority-v1.mjs": "1ead1c23be30cc9917cdf3b45c8289f962114e5f9ef40fbfe45dbe56dcf1b864"
+  },
+  "newMathematicalQa": false,
+  "newDifficultyApproval": false,
+  "fullConsumer": "NOT_RUN: root integrated current-main gate",
+  "nativeShadow": "NOT_RUN: root integrated current-main gate",
+  "productionRegistrationClaim": false
+}
