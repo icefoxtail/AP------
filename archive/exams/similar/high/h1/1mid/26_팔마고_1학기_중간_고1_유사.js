@@ -478,7 +478,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "직사각형의 위쪽 두 꼭짓점 $A, B$는 위로 볼록한 포물선 위에 있고, 아래쪽 두 꼭짓점 $C, D$는 아래로 볼록한 포물선 위에 있다.\n두 포물선이 $y$축에 대하여 대칭이므로 직사각형도 $y$축에 대칭이다.\n점 $A$의 $x$좌표를 $t$라 하면 점 $B$의 $x$좌표는 $-t$이다.\n\n위쪽 두 꼭짓점의 $y$좌표는\n$-\\dfrac12t^2+4$이고,\n아래쪽 두 꼭짓점의 $y$좌표는\n$t^2-2$이다.\n따라서 직사각형의 가로 길이는 $2t$,\n세로 길이는\n$\\left(-\\dfrac12t^2+4\\right)-(t^2-2)=6-\\dfrac32t^2$이다.\n\n점 $A$가 제1사분면에 있으므로 $t>0$이고,\n점 $D(t,\\ t^2-2)$가 제4사분면에 있으므로 $t^2-2<0$이다.\n따라서 $0<t<\\sqrt2$이다.\n\n둘레 $L(t)$는\n$L(t)=2\\left(2t+6-\\dfrac32t^2\\right)$\n$=-3t^2+4t+12$이다.\n완전제곱식으로 고치면\n$L(t)=-3\\left(t-\\dfrac23\\right)^2+\\dfrac{40}{3}$이다.\n\n$t=\\dfrac23$은 $0<t<\\sqrt2$ 안에 있으므로 둘레의 최댓값은 $\\dfrac{40}{3}$이다.\n따라서 정답은 ②이다.",
     "points": 4.5,
-    "image": "assets/images/26_팔마고_1학기_중간_고1_유사/q9.svg",
+    "image": "assets/images/26_팔마고_1학기_중간_고1_유사/q09-problem-readable-v2.svg",
     "imageSize": "full",
     "curriculum": "2022",
     "curriculumKey": "2022",
