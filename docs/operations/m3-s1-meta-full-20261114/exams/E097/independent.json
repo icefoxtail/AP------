@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E097",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E0C948452E80/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "ce50093a0a30612f6d5ae98bc1858c5d844d8427",
+  "inputHashes": {
+    "reviewSha256": "beff51c7e566ae5f58af24bff1bcf4dd448d589d588fc050bab0d7396abf3796",
+    "fourSlotSha256": "36bfb1cc55ee63758dd6e29bd56d42bc0447f42517acca1649a81d3d69f316fd"
+  },
+  "sampledOrdinals": [
+    12,
+    17,
+    22
+  ],
+  "additionalReviewedOrdinals": [
+    6
+  ],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_c61b45029c8d2daa692308713390590df111a13e2968dee859827b62b414b2eb",
+      "status": "PASS",
+      "note": "x<-2에서는 다섯 보기의 축 모두 오른쪽에 있으며 음의 이차항계수②③⑤에서 증가한다는 실제 해설 확인. source 정답도 ②,③,⑤이고 4slot 형식 옳은 것 고르기로 복수정답을 보존한다. 축·증가감소·부호 method와 범위조건·난도2 수용."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_31d62e8066539abdc842e5e6cf488a15355ef1c1064f50581e7ae0dac73e6d8c",
+      "status": "PASS",
+      "note": "실제 직선그림에서 y절편2,x절편1과 다섯 후보 포물선을 모두 관측. a=-2,b=2를 얻어(x-1)²+1로 고치는 해설과④ 그래프 일치. 계수전달→제곱완성의 2단계 구조·난도2 및 exact-leaf gap 수용."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_5cc7466b082029f84c2130dedd2b66290af2b4d2b6866e44f0c60ce78c1ce669",
+      "status": "PASS_WITH_DEBT",
+      "note": "자료를 계급값으로 본다는 명시조건을 확인. 기존해설은 누적위치10번째3·11번째5의 평균4와 최대도수 계급값5를 구하며, 목표 중앙값/최빈값/차와 method 계급값/누적도수 분리가 정확하다. 역사적 M3-07 분류 유지와2022 경로 debt 수용."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_bc5adfb029c61c1313071c027a6f25dfe1d33f52773824877556fc3b86c1190f",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제 발문과 기존 해설이 발사 후 지면으로 돌아오는 때까지의 초 단위 시간을 구함을 확인했다. 경과시간 CANDIDATE는 이 목표와 맞으며 t=0 제외와 t=8의 해설 근거도 실재한다. 벡터 시점 term686 오분류 제거 및 신규 용어 등록 대기 debt 확인."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E097/17-question-1.png",
+      "sha256": "02ca2992da5f3263ac02477dd7134af1676113a86afb1ff3983c00d13e04ec3c",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
