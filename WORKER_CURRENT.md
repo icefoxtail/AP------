@@ -7,7 +7,7 @@ Status: `RUNNING` / `USER_DIRECTED_RESUME`
 
 [progress.json](docs/operations/m3-s1-meta-full-20261114/progress.json) / [HANDOFF.md](docs/operations/m3-s1-meta-full-20261114/HANDOFF.md)
 
-Snapshot 106/115 exams, 2526/2750 questions; remaining 9/224. Last E105; next E106.
+Snapshot 107/115 exams, 2547/2750 questions; remaining 8/203. Last E106; next E107.
 Root alone commits/pushes with expected-head fast-forward; count after remote ref/tree/blob readback.
 User directed treating previous writer as ended; historical independent termination/exact offer NOT_OBSERVED remains recorded.
-AWCR verified r22 SHA `2d5fd049852316227db7e6c5d1868f4fb5c0462d5e56971dd85876c74d70e1e2`. Full quality UNKNOWN; named debts preserved; main/registration/deployment NOT_RUN.
+AWCR verified r23 SHA `ca25eb5aecc1879e45bc067931a82a8c98f90ba91870b83ff3a1e8ca0a6d7d60`. Full quality UNKNOWN; named debts preserved; main/registration/deployment NOT_RUN.

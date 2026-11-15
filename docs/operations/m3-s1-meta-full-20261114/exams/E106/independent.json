@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E106",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E0C948452E80/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "d9bf372f4e6c0fc171fa380104c3051f205f7c17",
+  "inputHashes": {
+    "reviewSha256": "21106c9b93d917b86df9c22e2af7961aab2ece483b36ddeb57591863728e2902",
+    "fourSlotSha256": "d6b0428d473372fddbc31f6dffd45f324d3ee9e0eb52ea63f270111963f0c481"
+  },
+  "sampledOrdinals": [
+    10,
+    12,
+    13
+  ],
+  "additionalReviewedOrdinals": [
+    15
+  ],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_81ea2f5e650769eec678c1318ec6a32e4ef103c8cd1eebbfff2d2747426eda58",
+      "status": "PASS",
+      "note": "실제음영은위포물선3x²와아래포물선-x²사이의양쪽영역으로x축아래부분도포함한다. 기존해설의0<a<3한정은불완전하지만제시된음수계수선지는모두-1미만이라답②와핵심폭비교분류는유지된다. CONTENT_SOLUTION_EXPLANATION_DEBT 보존수용."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_a52181334b84870882b24ab04b79511a4eba358f7e4709c742ef32d8736dcb1c",
+      "status": "PASS",
+      "note": "실제그림에는x절편-6,2와y절편-4만있고해설첫문장의꼭짓점(-2,-16/3)은표시되지않았다. 함수복원은가능하나그꼭짓점도출단계의근거누락인METHOD_STEP_EVIDENCE_DEBT를정확히보존했다. 없는도출과정을method에추가하지않고대입·전개만기록한처리수용."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_e3fc3fba51d2df1c183c10f1f7aaafa6bb411ddc482749521796f5e569467e28",
+      "status": "PASS",
+      "note": "실제직선과5개보기그림을모두관측하여a>0,b>0→아래로열리고양의꼭짓점인②를확인. 해설의①·④볼록방향및⑤축설명은실물과불일치하지만핵심부호전달은일관된다. 해당CONTENT_SOLUTION_EXPLANATION_DEBT를유지한분류·bucket2수용."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_08b0e6c87cbfac6ce19160043bd75d01e078e4a87c14dd924a6648984c95a6ab",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제 발문과 기존 해설에서 늘고 줄어드는 직사각형의 넓이가 원래와 같아지는 t>0를 묻고 t=4초를 얻는다. 경과시간 CANDIDATE의 정의와 정확한 발문 인용이 맞으며 벡터 시점 term686 오분류를 제거했다. 공용 등록 대기 debt 유지."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E106/10-content-1.png",
+      "sha256": "7323a043b4085bd100addaff28f8ca9e40377602e8ff41d480f08f2923d0e6ff",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E106/12-content-1.png",
+      "sha256": "60eca55509d750fea1b6f2f5f9a8af7682a8fea0a7f4faa8058866b8c81581aa",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E106/13-content-1.png",
+      "sha256": "ccef3354402bf2f9cbf9a27ff0cd911ba6681dc87d08bc9ee308c4d6ed669fc1",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E106/13-choices-2.png",
+      "sha256": "1af79d84f9653c8a66e523270b9e4152bdb5885c184e870334bdf5aa3b79857b",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E106/13-choices-3.png",
+      "sha256": "c66c6ec40774233052af9986d2729eb5c094aa81b5a61474e39f3ad60c3116dc",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E106/13-choices-4.png",
+      "sha256": "a9d7c2acb94e6993e6562276f3a65891119c1ad137b6d48add031ee0539ff6a2",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E106/13-choices-5.png",
+      "sha256": "d256ead0a8d4ca6d54f2255be78ca86096898acf2bfeb77eac14a13047db7323",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E106/13-choices-6.png",
+      "sha256": "8a30fb41f488c6122525872821830bcb6f05084a7e337775d4b6049faefd8d50",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
