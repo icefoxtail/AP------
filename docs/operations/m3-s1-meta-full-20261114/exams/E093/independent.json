@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E093",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T06:07:45.393244+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/17_경북환호여중_1학기_기말_중3_수학.js",
+  "sourceBlob": "bd1ebce4da97d7d2997658a764869cc34c93fa39",
+  "inputArtifacts": {
+    "workers/C/E093.review.json": {
+      "sha256": "f05e637058fec0388200618d43b262d3c478028f24a71d42442651dadc39435d"
+    },
+    "workers/C/E093.4slot.json": {
+      "sha256": "cf3c2ee8767edcd9bac4f345e4b835b57e5684a0585ae038b1380314ba1009be"
+    },
+    "workers/C/E093.input.json": {
+      "sha256": "be00d4d50b6c5cc03a59fe896ca64ab3e182c5c07eae96310e883428401a6468"
+    }
+  },
+  "sampledOrdinals": [
+    8,
+    21,
+    26
+  ],
+  "items": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f7d624a25a8da9cfb9084667e1dc31392506f0ad30c3a4465f1e23587866a790",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제그림에는위쪽y15와아래두점이포물선위라는직사각형만있고변길이·정사각형·최대조건은없다. 아래점의위치에따라넓이가변하므로UNKNOWN및기하조건누락부채를수용한다. solution공백에따른method[]도정확하다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_aee08b8b171770305d0c54ef54a7a89cd3faae505c50e1d7085c8b709ab6437b",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "원본은편차5개와표준편차2√3만제시하며해설은실제공백이다. 편차합0과분산의제곱합을연결하는곱셈공식경로는발문후보로만둔현재bucket3/RPM085+CC표기가타당하고4칸method에가공근거를추가하지않았다."
+    },
+    {
+      "ordinal": 26,
+      "questionUid": "qid_v1_5a579b0ddf6464c5e5a04a4aca9c9cf8f74f13034b45abf5ecec634a2186f37d",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "원본도수분포표의총10명·평균6과소문항(A,B및표준편차)을대조했다. 계급값가중평균과총도수의연립후산포로이행하는후보분류/bucket3·2022통계경로타당. source공백을SOURCE_ONLY로남겨method[]와공식rawfail을보존한상태수용."
+    }
+  ],
+  "findingsResolved": [],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E093-assets/contact-1.jpg",
+      "sha256": "29f991dc3ccf1d088a870aff267f95d524a23be30adb1a1c2877c63c777b8f55",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}
