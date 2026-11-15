@@ -10,6 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const { loadExam } = require('../tools/4slot/exam-items.cjs');
 const runtime = require('../tools/4slot/build-4slot-runtime.cjs');
+const partial = require('../tools/4slot/partial-submission.cjs');
 
 const root = path.resolve(__dirname, '..');
 const identities = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/question_identity_map.json'), 'utf8')).records;
@@ -76,7 +77,7 @@ for (const file of files) {
   try { d = JSON.parse(fs.readFileSync(file, 'utf8')); } catch (e) { bad('JSON parse error ' + e.message); continue; }
   if (d.schemaVersion !== SCHEMA) bad(`schemaVersion ${d.schemaVersion} != ${SCHEMA}`);
   for (const k of ['sourceArchiveFile', 'sourceGitBlobSha', 'dictionaryVersion', 'evidence', 'reviewedBy', 'items']) if (!(k in d)) bad('missing field ' + k);
-  if (d.evidence) for (const k of ['branch', 'commit', 'path']) if (!d.evidence[k] || typeof d.evidence[k] !== 'string') bad('evidence.' + k + ' missing');
+  if (!partial.hasScope(d) && d.evidence) for (const k of ['branch', 'commit', 'path']) if (!d.evidence[k] || typeof d.evidence[k] !== 'string') bad('evidence.' + k + ' missing');
   if (d.reviewedBy) {
     if (!d.reviewedBy.agent || typeof d.reviewedBy.agent !== 'string') bad('reviewedBy.agent missing');
     if (!d.reviewedBy.at) bad('reviewedBy.at missing');
@@ -121,13 +122,18 @@ for (const file of files) {
   // Explicit native holds keep the full denominator and all ordinary slot checks.
   // A hold must name the existing canonical UID/ordinal and the exact original review.
   const nativeBank = runtime.loadBank(fs.readFileSync(examFile));
+  let submissionScope = null;
+  if (partial.hasScope(d)) {
+    try { submissionScope = partial.publicEvidence(root,d,{bank:nativeBank,identity:{records:identities},dictPath:DICT_BY_VERSION[d.dictionaryVersion]}); }
+    catch(e) { bad(e.message); continue; }
+  }
   for (const it of d.items.filter(x => Object.prototype.hasOwnProperty.call(x, 'registrationHold'))) {
     const index = exam.findIndex(q => Number(q.ordinal) === it.ordinal);
     const ids = identities.filter(r => r.sourceArchiveFile === d.sourceArchiveFile && r.sourceOrdinal === index + 1);
     if (index < 0 || ids.length !== 1) { bad(`#${it.ordinal}: explicit hold identity missing or ambiguous`); continue; }
     for (const error of runtime.validateRegistrationHold(root, d, it, ids[0], {q: nativeBank[index], ordinal: index + 1})) bad(`#${it.ordinal}: ${error}`);
   }
-  const examOrds = exam.map(q => Number(q.ordinal));
+  const examOrds = submissionScope ? submissionScope.selected.map(row => row.displayNumber) : exam.map(q => Number(q.ordinal));
   const missing = examOrds.filter(o => !ords.has(o));
   const extra = [...ords].filter(o => !examOrds.includes(o));
   if (missing.length || extra.length) {

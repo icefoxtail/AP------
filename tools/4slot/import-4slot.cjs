@@ -16,6 +16,7 @@ const DEST_DIR = 'archive/data/item-4slot';
 const SCHEMA = 'archive-meta-4slot-compact-v1';
 const SLOTS = ['given', 'goal', 'method', 'condition'];
 const { loadExam, itemLookup } = require('./exam-items.cjs');
+const partial = require('./partial-submission.cjs');
 
 function git(args, opts = {}) {
   return execFileSync('git', ['-C', REPO_ROOT, '-c', 'core.quotepath=false', ...args], { encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'], ...opts });
@@ -30,6 +31,9 @@ function parseArgs(argv) {
     else if (a === '--reviewer') o.reviewer = argv[++i];
     else if (a === '--at') o.at = argv[++i];
     else if (a === '--dry-run') o.dryRun = true;
+    else if (a === '--accepted-private-input') o.privateInput = argv[++i];
+    else if (a === '--request-id') o.requestId = argv[++i];
+    else if (a === '--expected-compact-sha256') o.expectedCompactSha256 = argv[++i];
     else if (a === '--only') { while (i + 1 < argv.length && !argv[i + 1].startsWith('--')) o.only.push(argv[++i]); }
     else if (a === '--sampled') {
       const [p, list] = String(argv[++i] || '').split('=');
@@ -94,13 +98,25 @@ function compactItem(it, lut, sourceLookup) {
 function serialize(c) {
   const head = ['schemaVersion', 'sourceArchiveFile', 'sourceGitBlobSha', 'dictionaryVersion', 'evidence', 'reviewedBy'];
   if (c.identityReconciliation) head.push('identityReconciliation');
+  if (partial.hasScope(c)) head.push('scope', 'expectedQuestionCount', 'selected', 'unsubmitted');
   const lines = head.map(k => `  ${JSON.stringify(k)}: ${JSON.stringify(c[k])}`);
   lines.push('  "items": [\n' + c.items.map(i => '    ' + JSON.stringify(i)).join(',\n') + '\n  ]');
   return '{\n' + lines.join(',\n') + '\n}\n';
 }
 
+function importPrivatePartial(options) {
+  return require('./private-partial-import.cjs').importPrivatePartial({...options, compactItem, serialize});
+}
+
 function main() {
   const o = parseArgs(process.argv.slice(2));
+  if (o.privateInput) {
+    if (o.fromRef || o.only.length || o.sampled.size || o.at) throw new Error('private partial intake cannot be combined with the Git full-exam import options');
+    const {output, publicReceipt, ...summary} = importPrivatePartial({root:REPO_ROOT,inputPath:o.privateInput,reviewer:o.reviewer,requestId:o.requestId,expectedCompactSha256:o.expectedCompactSha256,write:!o.dryRun});
+    console.log(JSON.stringify(summary, null, 2));
+    return;
+  }
+  if (o.requestId || o.expectedCompactSha256) throw new Error('--accepted-private-input is required for partial import arguments');
   if (!o.fromRef) throw new Error('--from-ref <ref> is required');
   if (!o.reviewer && !o.dryRun) throw new Error('--reviewer <name> is required (reviewedBy.agent is recorded in every file)');
   if (!o.dryRun && !o.only.length) throw new Error('a real import needs --only <exam path>... (only exams that passed review). Without --only the tool would import every unreviewed output; use --dry-run to list them.');
@@ -132,6 +148,7 @@ function main() {
     if (rejected.has(key)) { skip('REJECTED', rejected.get(key).reason || ''); continue; }
     let d;
     try { d = JSON.parse(refFile(o.fromRef, outPath)); } catch (e) { skip('BAD_JSON', e.message.slice(0, 120)); continue; }
+    if (partial.hasScope(d)) { skip('PARTIAL_PRIVATE_INTAKE_REQUIRED', 'explicit partial submissions require the separate accepted-private-input route'); continue; }
     if (examKey(d.sourceArchiveFile || '') !== key) { skip('BAD_PATH', `sourceArchiveFile ${d.sourceArchiveFile} != out path`); continue; }
     const examFile = 'archive/exams/' + examPath;
     const curBlob = gitTry(['rev-parse', `HEAD:${examFile}`]);
@@ -175,4 +192,4 @@ function main() {
 if (require.main === module) {
   try { main(); } catch (e) { console.error('ERROR ' + e.message); process.exit(2); }
 }
-module.exports = { examKey, compactItem, serialize };
+module.exports = { examKey, compactItem, serialize, importPrivatePartial };

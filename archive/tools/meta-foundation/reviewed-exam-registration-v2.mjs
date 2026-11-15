@@ -21,6 +21,8 @@ import { loadActiveMetaRegistry } from "./active-registry.mjs";
 import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 
+import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, nativeAuthorityHoldState, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
+
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
 const MASTER = "archive/data/master_tables/js_archive_tag_master.json";
@@ -2097,6 +2099,15 @@ function registerIdentityFingerprintOnly({ root, req, metadata, identity, rows, 
 
 export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false }) {
   if (req.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2") fail("request schema mismatch");
+  if (isNativeAuthorityCorrection(req)) {
+    if (write && verifyProjection) fail("authority correction write and projection must be separate");
+    const result = registerNativeAuthorityCorrection({ root, request: req, write });
+    if (!verifyProjection) return result;
+    if (!result.replay) fail("authority correction projection requires its applied receipt");
+    const proof = verifyNativeAuthorityCorrectionConsumer({ root, request: req, catalog: loadResolvedConsumerCatalog(root) });
+    return { ...result, consumerSearchStatus: "AUTHORITY_WITHDRAWAL_VERIFIED",
+      consumerLanes: { authorityHolds: proof.checkedAuthorityHolds, newMetadataApprovals: 0 } };
+  }
   if (req.registrationMode !== undefined && req.registrationMode !== "IDENTITY_FINGERPRINT_ONLY") fail("unsupported registration mode");
   if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(req.requestId || "")) fail("valid requestId required");
   requireText(req.examUid, "examUid");
@@ -2158,6 +2169,11 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (!Number.isInteger(item.sourceOrdinal) || row?.questionUid !== item.questionUid || row.sourceOrdinal !== item.sourceOrdinal)
         fail(`UID/source ordinal mismatch: ${item.questionUid}`);
     }
+  }
+  for (const uid of targetUids) {
+    const row = metadataByUid.get(uid);
+    if (nativeAuthorityHoldState({ root, current: row, identity: ids.get(uid), source, ordinal: row?.sourceOrdinal }))
+      fail("authority withdrawal requires a separate explicit resolution: " + uid);
   }
   if (req.approval.sourceRebind && req.items.some(item => item.rebind !== undefined))
     fail("item rebind cannot be combined with approval.sourceRebind");

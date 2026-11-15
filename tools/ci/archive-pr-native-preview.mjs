@@ -32,6 +32,8 @@ const eq = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 const fail = reason => { throw Error(`PR_NATIVE_PREVIEW:${reason}`); };
 const sorted = values => [...new Set(values)].sort();
 
+import { AUTHORITY_CORRECTION_MODE, isNativeAuthorityCorrection, authorityHoldSealPath } from '../../archive/tools/meta-foundation/native-authority-correction.mjs';
+
 export function nativeCommand(program, args, root) {
   const r = spawnSync(program, args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
     timeout: 12 * 60 * 1000, stdio: ['ignore', 'pipe', 'pipe'] });
@@ -542,6 +544,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       continue;
     }
     const correction = request.schemaVersion === PARENT_CORRECTION_SCHEMA;
+    const authorityCorrection = isNativeAuthorityCorrection(request);
     const basicPreservation = basicPreservationDescriptor(request);
     if (!correction && !basicPreservation && request.schemaVersion !== NATIVE_REQUEST_SCHEMA) {
       // An unhandled main inbox must not be reported as a coherent projection.
@@ -557,7 +560,10 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
         !(sourceRebind || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
-    if (request.registrationMode !== undefined && (correction || !partial || request.registrationMode !== 'IDENTITY_FINGERPRINT_ONLY')) fail('REGISTRATION_MODE');
+    if (request.registrationMode !== undefined && (correction || !partial ||
+        !['IDENTITY_FINGERPRINT_ONLY', AUTHORITY_CORRECTION_MODE].includes(request.registrationMode))) fail('REGISTRATION_MODE');
+    if (authorityCorrection && (request.approval?.type !== 'AUTHORITY_CORRECTION' || request.approval.metadataReviewed !== false ||
+        request.registryChanges?.length || request.approval.sourceRebind)) fail('AUTHORITY_WITHDRAWAL_SCOPE');
     if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(request.requestId || '')) fail('REQUEST_ID');
     if (!Number.isSafeInteger(request.expectedQuestionCount) || request.expectedQuestionCount < 1) fail('QUESTION_COUNT');
     if (!Array.isArray(request.items) || !request.items.length || request.items.length > request.expectedQuestionCount
@@ -600,7 +606,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
       ...(registryDependency ? { registryDependency } : {}),
-      ...(basicPreservation ? { basicPreservation, kind: basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation' }
+      ...(authorityCorrection ? { kind: 'native-authority-withdrawal' } : basicPreservation ? { basicPreservation, kind: basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation' }
         : correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }
         : preservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },
       evidence: [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en')),
@@ -648,6 +654,8 @@ function resultScopeMatches(result, request) {
     if (result.scope !== request.scope || result.partialUidCount !== request.questionCount
         || result.expectedQuestionCount !== request.sourceQuestionCount) return false;
   } else if (result.scope !== undefined || result.partialUidCount !== undefined) return false;
+  if (request.kind === 'native-authority-withdrawal' &&
+      (result.newMetadataApprovals !== 0 || result.withdrawnMetadataApprovals !== request.questionCount)) return false;
   if (request.kind === 'native-approval-preservation' &&
       (result.newMetadataApprovals !== 0 || result.preservedMetadataApprovals !== request.questionCount)) return false;
   if (request.kind === 'basic-approval-preservation' &&
@@ -666,6 +674,11 @@ function planPaths(result, request) {
   const paths = sorted(result.plannedPaths);
   if (paths.length !== result.plannedPaths.length || paths.some(file => !file.startsWith('archive/data/'))) fail('OUTPUT_SCOPE');
   for (const file of paths) safe('/', file);
+  if (request.kind === 'native-authority-withdrawal' && !result.replay) {
+    const required = [METADATA, request.receiptPath, ...request.selectedItems.map(item => authorityHoldSealPath(item.questionUid))];
+    if (required.some(file => !paths.includes(file)) || paths.some(file => !required.includes(file) &&
+        !/^archive\/data\/meta-foundation\/runtime\/[a-z0-9-]+-v1\.json$/.test(file))) fail('AUTHORITY_WITHDRAWAL_OUTPUT_SCOPE');
+  }
   if (request.kind === 'difficulty5-ratings') {
     if (!eq(paths, result.replay ? [] : [METADATA])) fail('DIFFICULTY_OUTPUT_SCOPE');
   } else if (['basic-approval-preservation', 'basic-parent-registration'].includes(request.kind)) {
@@ -729,7 +742,7 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
     const result = registrar(root, request, run, ['--verify-projection']);
     const identityOnly = request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY';
     if (!resultScopeMatches(result, request) || result.replay !== true
-        || result.consumerSearchStatus !== (identityOnly ? 'IDENTITY_BINDINGS_VERIFIED'
+        || result.consumerSearchStatus !== (request.kind === 'native-authority-withdrawal' ? 'AUTHORITY_WITHDRAWAL_VERIFIED' : identityOnly ? 'IDENTITY_BINDINGS_VERIFIED'
           : request.kind === 'difficulty5-ratings' ? 'STATIC_DIFFICULTY_VALUES_VERIFIED' : 'STATIC_VALUES_VERIFIED')
         || identityOnly && (result.consumerLanes?.identityBindings !== request.questionCount
           || result.consumerLanes?.newMetadataApprovals !== 0)) fail('PROJECTION_NOT_VERIFIED');
@@ -749,6 +762,9 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
         return exams.length !== 1 || exams[0].kind !== (r.kind || 'reviewed-exam-v2')
           || r.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' && (exams[0].newMetadataApprovals !== 0
             || exams[0].approvalCreated !== false || exams[0].identityBindings !== r.questionCount)
+          || r.kind === 'native-authority-withdrawal' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
+            || exams[0].withdrawnMetadataApprovals !== r.questionCount || exams[0].authorityHolds !== r.questionCount
+            || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
           || r.kind === 'native-approval-preservation' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
             || exams[0].preservedMetadataApprovals !== r.questionCount || exams[0].approvalType !== r.preservedApprovalType
             || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)

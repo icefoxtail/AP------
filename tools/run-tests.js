@@ -40,6 +40,10 @@ const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' ? 180000
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/archive-native-authority-correction.test.mjs',
+    args: ['--test', 'tests/archive-native-authority-correction.test.mjs']
+  },
+  {
     label: 'tests/archive-reviewed-parent-correction.test.mjs',
     args: ['--test', 'tests/archive-reviewed-parent-correction.test.mjs']
   },
