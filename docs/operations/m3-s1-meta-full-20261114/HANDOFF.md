@@ -8,9 +8,9 @@ Branch: `review/m3-s1-meta-full-20261114`
 
 ## 검증된 저장 범위
 
-전체115시험지·2,750문항. 이전73시험지·1,731문항 재사용. 현재 검토패킷 82시험지·1941문항, 이번추가 9시험지·210문항. 잔여33시험지·809문항. 이 snapshot의 원격 저장은 해당 commit의 HEAD/tree/blob readback으로 확인한다.
+전체115시험지·2,750문항. 이전73시험지·1,731문항 재사용. 현재 검토패킷 83시험지·1969문항, 이번추가 10시험지·238문항. 잔여32시험지·781문항. 이 snapshot의 원격 저장은 해당 commit의 HEAD/tree/blob readback으로 확인한다.
 
-마지막 완료: **E082**. 다음 미완료: **E083**.
+마지막 완료: **E083**. 다음 미완료: **E084**.
 
 ## 소유권·복구
 
@@ -20,23 +20,22 @@ A/B/C 담당·실제 output 경로는 progress.workers. 패킷은 문항별 의�
 
 ## 체크포인트
 
-마지막 검증 AWCR: r9 / raw SHA `4c9b303c9692835d00533fbb692b75ede5e4b827a8c99e9f8e065c0888ca4a0e` / Drive `11aA6174L9mVeqQsDKyJuNYGb2mn0A3Z_`. 이 commit 자체의 외부 sync는 다음 raw readback 전까지 SYNC_PENDING. 원격 검증 후3시험지마다,20분 이내,중단/오류/마감 때 AWCR append-only와 Notion 중3 1학기 행만 갱신한다.
+마지막 검증 AWCR: r10 / raw SHA `457792aee2e0459535e50c7b6305a2cd3e398bdbbeb871df3510c94eecbb4617` / Drive `1UJhcBdZeAXq_gmS0qBo1EDnhZGFcSWN4`. 이 commit 자체의 외부 sync는 다음 raw readback 전까지 SYNC_PENDING. 원격 검증 후3시험지마다,20분 이내,중단/오류/마감 때 AWCR append-only와 Notion 중3 1학기 행만 갱신한다.
 
-이전 원격 HEAD: `fe7efe55f98aaa1784bc964410c393eb08a8227a`. 현재 commit의 SHA는 원격 조회 후 AWCR/Notion에 기록한다. 같은 commit 안에 자기 SHA를 요구하지 않는다.
+이전 원격 HEAD: `f99317246676c9a2ac77f0dd4fc7758a12532d2b`. 현재 commit의 SHA는 원격 조회 후 AWCR/Notion에 기록한다. 같은 commit 안에 자기 SHA를 요구하지 않는다.
 
 ## 품질·출고 경계
 
-근거 부채 또는 미판정 상태 시험지: E024, E025, E028, E031, E034, E035, E043, E044, E047, E050, E059, E061, E064, E066, E073, E080, E081, E082. 자세한 UID·사유는 exams/E###/review.json 및 validation.json. 공식4칸 실패·난도UNKNOWN·leaf/binding gap과 source drift는 숨기지 않는다. 검토패킷 저장은 전체 품질 PASS 또는 출고승인이 아니다.
+근거 부채 또는 미판정 상태 시험지: E024, E025, E028, E031, E034, E035, E043, E044, E047, E050, E059, E061, E064, E066, E073, E080, E081, E082, E083. 자세한 UID·사유는 exams/E###/review.json 및 validation.json. 공식4칸 실패·난도UNKNOWN·leaf/binding gap과 source drift는 숨기지 않는다. 검토패킷 저장은 전체 품질 PASS 또는 출고승인이 아니다.
 
 문제·보기·정답·해설·그림·UID·순서는 불변. source가 지원하는 메타만 최소 수정하고 미지원 필드는 소형 제안으로 남긴다. main·공용 레지스트리·DB·catalog·runtime 등록·배포는 이 Pro 범위에서 NOT_RUN. 전체 패킷과 명명 부채를 정리한 후 CODEX_LOCAL에 OFFERED한다.
 
 ## 다음 실행
 
-`CONTINUE_E083_AND_PENDING_ONLY`. 원격 source 및 동일판본 검토 hash를 확인하여 아래 미완료만 처리한다.
+`CONTINUE_E084_AND_PENDING_ONLY`. 원격 source 및 동일판본 검토 hash를 확인하여 아래 미완료만 처리한다.
 
 | ID | 문항 | source |
 | --- | ---: | --- |
-| E083 | 28 | `original/middle/m3/1mid/19_서울안천중_1학기_중간_중3_수학.js` |
 | E084 | 23 | `original/middle/m3/1mid/19_연향중_1학기_중간_중3_기출.js` |
 | E085 | 25 | `original/middle/m3/1mid/19_풍덕중_1학기_중간_중3_기출.js` |
 | E086 | 26 | `original/middle/m3/1final/18_동산중_1학기_기말_중3_수학.js` |

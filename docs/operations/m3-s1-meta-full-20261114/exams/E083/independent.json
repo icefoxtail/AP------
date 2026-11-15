@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E083",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "owner": "GPT_ROOT_E0C948452E80/C",
+  "at": "2026-11-15T05:57:43.638492+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/19_서울안천중_1학기_중간_중3_수학.js",
+  "sourceBlob": "54a97c2182e9922e41eb6746ae1bc0ea65ea9833",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E083.review.json",
+      "sha256": "5e571aa6d69cf516846a7aec861767f0f772bddccd1ea8201dcc76b0ca8434b1"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E083.4slot.json",
+      "sha256": "dd72f5f54ddf151275b033b6fdd3d59e62e33a37eb5ffed01c753383abf2869e"
+    },
+    "sourceInput": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E083.input.json",
+      "sha256": "6d80a0156b3f6f6766b69b6758aca028623461e75760f615f294b0afb9b88765"
+    }
+  },
+  "sampledOrdinals": [
+    12,
+    17,
+    24
+  ],
+  "findings": [
+    {
+      "ordinal": 12,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 그림에서 중간 정사각형과 안쪽 정사각형 사이의 네 색칠 삼각영역을 확인했다. 둘레는 바깥 경계와 안쪽 경계를 모두 포함하므로 기하 길이→근호 합 연결 bucket3/B23과 exact-leaf-gap이 타당하다. 해설·정답이 실제 공백임을 확인했으며 method 공백/공식 FAIL을 보존한 판단을 수용한다."
+    },
+    {
+      "ordinal": 17,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 발문에 m,n의 정수 제한이 없고 보기 k는 실수 인수 상수를 허용하면 모두 가능하다. 따라서 불가능값이 유일하지 않은 content debt와 UNKNOWN hold가 타당하다. 원문에 없는 정수 조건을 만들어내지 않았고, method 공백을 보존했다."
+    },
+    {
+      "ordinal": 24,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "칠교 분할과 재배열된 실제 두 그림을 각각 보았다. 합동이 아닌 조각의 동일 둘레 비교와 공유변을 제외한 외곽 추적은 bucket3 후보에 해당한다. condition의 합동은 원문의 부정 조건을 전체 인용으로 보존한다. 빈 기존해설을 채우지 않은 SOURCE_ONLY와 공식 미충족 상태를 수용한다."
+    }
+  ],
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E083/12-content-1.png",
+      "sha256": "047fae282e665f83c178e9c3a4e20d621d7a9a799319aa077511fd68d29354e0"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E083/24-content-1.png",
+      "sha256": "ce1f16ee07ab0d2cb7dfa18c24efba53fc55b1ce0528f16a00c1cba495440bf1"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E083/24-content-2.png",
+      "sha256": "6f7367c52f8cce69e1e555a7e4a0ecfe0c9151b5294f5f148829a3dab8f32ffe"
+    }
+  ],
+  "additionalContentObservations": [],
+  "scope": "METADATA_ONLY: sampled source stems, choices, existing solutions/actual blanks, author judgments and exact 4slot quotes directly compared. No full-exam rereview or mathematical PASS asserted. Source-only missing-method failures remain open.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}
