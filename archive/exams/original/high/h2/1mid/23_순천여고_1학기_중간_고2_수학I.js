@@ -622,7 +622,11 @@ window.questionBank = [
       "disposition": "LAYOUT_KEEP",
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
-    "visualDisposition": "VISUAL_EXEMPT"
+    "visualDisposition": "VISUAL_EXEMPT",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 수직선은 이차식 해 −4<x<5, 정의역 x>4, 그리고 공통 해 4<x<5를 위에서 아래 순서로 나타낸다. 모든 경계점은 열린 점이다.",
+    "solutionImageCaption": "로그 부등식은 −4<x<5, 정의역은 x>4이므로 공통 구간은 4<x<5이고 길이는 1이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 11,
@@ -744,7 +748,11 @@ window.questionBank = [
       "disposition": "LAYOUT_KEEP",
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
-    "visualDisposition": "VISUAL_EXEMPT"
+    "visualDisposition": "VISUAL_EXEMPT",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원 위의 P_1,…,P_6를 표시하고, y축 대칭인 점들이 같은 높이에 놓이는 모습을 수평선으로 보여준다.",
+    "solutionImageCaption": "sin(π/7)=sin(6π/7), sin(2π/7)=sin(5π/7), sin(3π/7)=sin(4π/7)이므로 서로 다른 값은 3개이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 13,
@@ -1179,7 +1187,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q19-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 삼각형 A(−5,1), B(11,1), C(1,11)이 표시되어 있다. AB는 y=1의 수평 밑변이며 길이는 16이다. C에서 AB에 내린 수직 높이 CH에는 직각 표식이 있고, 높이는 10이다.",
+    "solutionImageCaption": "삼각형 ABC에서 밑변 AB=16과 수직 높이 CH=10을 이용하면 넓이는 1/2·16·10=80이다. 따라서 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 20,
