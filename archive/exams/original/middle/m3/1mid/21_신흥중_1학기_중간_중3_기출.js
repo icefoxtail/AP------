@@ -143,6 +143,10 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "solutionImage": "assets/images/21_신흥중_1학기_중간_중3_기출/q5-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "같은 파란 대각선의 길이는 모두 √2이다. A에서 오른쪽으로 P, B에서 왼쪽으로 Q까지 같은 거리를 표시했다.",
+    "solutionImageCaption": "P가 A보다 오른쪽 √2만큼 앞에 있어 A는 −2이다. 한 칸 오른쪽의 B는 −1이다. B에서 왼쪽으로 √2만큼 간 Q의 수는 −1−√2이다.",
     "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -151,7 +155,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "제곱근",
@@ -161,7 +165,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/21_신흥중_1학기_중간_중3_기출/q5.png",
+    "image": "assets/images/21_신흥중_1학기_중간_중3_기출/q5-problem-v2.svg",
     "content": "다음 그림과 같이 수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$를 그렸다. $\\overline{AC}=\\overline{AP}$, $\\overline{BD}=\\overline{BQ}$이고 점 $P$에 대응하는 수가 $\\sqrt2-2$일 때, 점 $Q$에 대응하는 수는? (5점)",
     "choices": [
       "$-2-\\sqrt2$",
