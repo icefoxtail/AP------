@@ -12,6 +12,17 @@ const head = 'a'.repeat(40);
 const scope = changedFiles => ({ schemaVersion: 'archive-ci-scope-v2', eventName: 'pull_request', headSha: head, changedFiles });
 const studentCss = [400, 700, 800].map(weight => `@font-face { font-family: 'Nanum Myeongjo'; font-style: normal; font-weight: ${weight}; src: url(https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_${weight}.woff2) format('woff2'); }`).join('\n');
 
+test('the real engine imports its student font before qualified CSS rules', () => {
+  const engine = fs.readFileSync(path.join(__dirname, '..', 'archive/engine.html'), 'utf8');
+  const fontStyles = [...engine.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)]
+    .map(match => match[1]).filter(css => css.includes('fonts.googleapis.com/css2'));
+  assert.equal(fontStyles.length, 1, 'UI_ENGINE_UNIQUE_FONT_STYLESHEET');
+  const css = fontStyles[0].replace(/\/\*[\s\S]*?\*\//g, '').trimStart();
+  const firstRule = css.match(/^@import\s+url\((['"])([^'"]+)\1\)\s*;/);
+  assert(firstRule, 'UI_ENGINE_FONT_IMPORT_MUST_PRECEDE_QUALIFIED_RULES');
+  assert.equal(checker.isStudentFontStylesheet(firstRule[2]), true);
+});
+
 test('only the exact student stylesheet query is allowed', () => {
   assert.equal(checker.isStudentFontStylesheet('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap'), true);
   assert.equal(checker.isStudentFontStylesheet('https://fonts.googleapis.com/css2?display=swap&family=Nanum%20Myeongjo%3Awght%40400%3B700%3B800'), true);
