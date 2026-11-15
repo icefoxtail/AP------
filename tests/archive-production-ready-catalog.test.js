@@ -29,6 +29,7 @@ function fixture(t,flags={}) {
   put(RUNTIME,{packId:'MIDDLE_GEOMETRY',counts:{total:1},records:rows});
   const parents={records:[{L1:'Geometry',L2:'Circles'}],sourceParents:[{questionUid:'existing-approved',L1:'Geometry',L2:'Circles'}]};
   put(PARENTS,{...parents,generatedAgainst:{authorityInputsSha256:sha(fs.readFileSync(path.join(root,RUNTIME)))}});
+  put('parent-authority.json',parents);
   put('archive/data/question_metadata.json',{records:rows});
   put('archive/exams/original/fixture.js','window.questionBank=[{id:1,content:"fixed source"}];\n');
   put('flags.json',flags);
@@ -42,7 +43,7 @@ write(manifest,{runtimeSha256:sha(fs.readFileSync(runtime)),parentSha256:sha(fs.
   projectionVersion:'canonical:'+sha(fs.readFileSync(runtime).toString()+fs.readFileSync(parents).toString())});
 `);
   put(PARENT_BUILDER,prelude+`
-const before=read(parents),expected={...before,generatedAgainst:{authorityInputsSha256:sha(fs.readFileSync(runtime))}};
+const before=read(parents),expected={...read('parent-authority.json'),generatedAgainst:{authorityInputsSha256:sha(fs.readFileSync(runtime))}};
 if(flags.failParentAuthority)throw Error('parent source evidence changed');
 if(process.argv.includes('--check')){
   if(flags.failParentCheck||JSON.stringify(before)!==JSON.stringify(expected))throw Error('Basic scope parent links are stale');
@@ -105,6 +106,43 @@ test('readiness-only closure leaves the prior parent authority digest stale',t=>
   assert.equal(result.catalogBuilds,2);assert.equal(f.run([READY,'--check']).status,0);
   const check=f.run([PARENT_BUILDER,'--check']);assert.equal(check.status,1);assert.match(check.stderr,/parent links are stale/);
   assert.deepEqual(f.read(PARENTS).records,f.parents.records);assert.deepEqual(f.read(PARENTS).sourceParents,f.parents.sourceParents);f.unchanged();
+});
+
+test('the intermediate ready-catalog call repairs stale parents when runtime readiness is already current',t=>{
+  const f=fixture(t);
+  const {prepareArchiveTestProjection}=require('../tools/lib/archive-test-projection.js');
+  const prepare=()=>prepareArchiveTestProjection({root:f.root,log(){},run:(node,args,opt)=>spawnSync(node,args,{...opt,stdio:['ignore','pipe','pipe']})});
+  assert.equal(prepare().catalogBuilds,2);
+  assert.equal(prepare().catalogBuilds,1);
+  const stale=f.run([PARENT_BUILDER,'--check']);assert.equal(stale.status,1);assert.match(stale.stderr,/parent links are stale/);
+  const runtimeBefore=fs.readFileSync(path.join(f.root,RUNTIME));
+  const intermediate=f.cli();assert.equal(intermediate.status,0,intermediate.stderr);
+  assert.deepEqual(JSON.parse(intermediate.stdout.trim().split('\n').at(-1)),{status:'PASS',catalogBuilds:2,readinessVerified:true,parentRebuilds:1,parentsVerified:true});
+  assert.deepEqual(fs.readFileSync(path.join(f.root,RUNTIME)),runtimeBefore);
+  assert.deepEqual(f.read(PARENTS).records,f.parents.records);assert.deepEqual(f.read(PARENTS).sourceParents,f.parents.sourceParents);
+  // The current production order calls the explicit parent writer between
+  // intermediate and final ready-catalog passes. That second pass is a no-op.
+  assert.equal(f.run([PARENT_BUILDER]).status,0);
+  const final=f.cli();assert.equal(final.status,0,final.stderr);
+  assert.deepEqual(JSON.parse(final.stdout.trim().split('\n').at(-1)),{status:'PASS',catalogBuilds:1,readinessVerified:true,parentRebuilds:0,parentsVerified:true});
+  assert.equal(f.run([PARENT_BUILDER,'--check']).status,0);
+  assert.equal(f.run([READY,'--check']).status,0);f.unchanged();
+});
+
+test('current readiness does not hide an independently changed canonical parent projection',t=>{
+  const f=fixture(t),initial=f.cli();assert.equal(initial.status,0,initial.stderr);
+  const authority={records:[{L1:'Geometry',L2:'Triangles'}],sourceParents:[{questionUid:'existing-approved',L1:'Geometry',L2:'Triangles'}]};
+  fs.writeFileSync(path.join(f.root,'parent-authority.json'),JSON.stringify(authority)+'\n');
+  assert.equal(f.run([READY,'--check']).status,0);
+  const stale=f.run([PARENT_BUILDER,'--check']);assert.equal(stale.status,1);assert.match(stale.stderr,/parent links are stale/);
+  const runtimeBefore=fs.readFileSync(path.join(f.root,RUNTIME));
+  const result=f.cli();assert.equal(result.status,0,result.stderr);
+  assert.deepEqual(JSON.parse(result.stdout.trim().split('\n').at(-1)),{status:'PASS',catalogBuilds:2,readinessVerified:true,parentRebuilds:1,parentsVerified:true});
+  assert.deepEqual(f.read(PARENTS).records,authority.records);assert.deepEqual(f.read(PARENTS).sourceParents,authority.sourceParents);
+  assert.deepEqual(fs.readFileSync(path.join(f.root,RUNTIME)),runtimeBefore);
+  assert.equal(f.read(MANIFEST).parentSha256,sha(fs.readFileSync(path.join(f.root,PARENTS))));
+  assert.equal(f.run([PARENT_BUILDER,'--check']).status,0);
+  assert.equal(f.run([READY,'--check']).status,0);f.unchanged();
 });
 
 for(const [name,flags,message]of [

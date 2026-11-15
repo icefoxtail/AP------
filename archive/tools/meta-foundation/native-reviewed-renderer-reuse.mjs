@@ -109,11 +109,15 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
   // registered current values; no stale fingerprint is treated as a new review.
   const canonical = registry ? {pt:registry.problemTypes, tpl:registry.templates} : undefined;
   const replayAfter = { ...repair.after };
+  const registeredRationale = proof.rationaleBindings?.primaryMethod?.origin === 'REGISTERED_NATIVE_DECISIVE_STEP_UNCHANGED';
   for (const [bindings, allowed] of [[proof.rationaleBindings, ['primaryMethod', 'decisiveStep']],
     [proof.rpmBindings, REVIEWED_RPM_FIELDS]]) {
     for (const field of Object.keys(bindings || {})) {
       if (!allowed.includes(field) || !Object.hasOwn(current, field)) fail('unsupported native value binding');
-      replayAfter[field] = current[field];
+      // This issued provenance comes from a fingerprint-only request. Reinjecting
+      // unchanged values would change that request's meaning and its exact proof.
+      // The official reassessment below still verifies every source-carried value.
+      if (!registeredRationale) replayAfter[field] = current[field];
     }
   }
   const reproduced = validateReviewedSourceReassessment({root,

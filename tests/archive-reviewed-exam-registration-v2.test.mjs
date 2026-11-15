@@ -3246,6 +3246,168 @@ function correctiveRendererContinuityFixture(t) {
   return { ...f, intermediate, intermediateQuestion, oldSolution, newSolution };
 }
 
+function rendererV2Fixture(t, { insertions = false, transformContainer = value => value, extraDelta = {} } = {}) {
+  const f = rendererContinuityFixture(t), previous = structuredClone(f.nativeQuestion);
+  const secondAsset = 'archive/assets/current-relic.svg';
+  f.put(secondAsset, '<svg xmlns="http://www.w3.org/2000/svg"><circle r="2"/></svg>');
+  Object.assign(f.current, { imageAlt: 'The two given radii and perpendicular foot', imageSize: 'full' }, extraDelta);
+  if (insertions) {
+    const container = (asset, width) => transformContainer(`<div class="question-image"><img src="${asset}" alt="Inspected diagram" style="width:${width}px;max-width:100%;height:auto"></div>`);
+    const one = container(f.assetPath.slice('archive/'.length), 156), two = container(secondAsset.slice('archive/'.length), 248);
+    f.current.content = previous.content.slice(0, 2) + one + previous.content.slice(2) + two;
+    f.current.image = '';
+    f.insertedContainers = [one, two];
+  }
+  f.writeBank(f.current);
+  const currentCommit = f.commit(f.sourcePath, secondAsset), current = f.sourceRef(currentCommit, f.current);
+  Object.assign(f.item.after, { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) });
+  f.manifest.items[0].currentSourceRef = current;
+  const delta = [...new Set([...Object.keys(previous), ...Object.keys(f.current)])]
+    .filter(k => stable(previous[k]) !== stable(f.current[k])).sort();
+  const fieldHash = (q, field) => hash(stable({ present: Object.hasOwn(q, field), value: q[field] ?? null }));
+  const transition = { kind: insertions ? 'TWO_EXACT_IMAGE_CONTAINERS_INSERTED' : 'UNCHANGED',
+    beforeSha256: hash(previous.content), afterSha256: hash(f.current.content) };
+  if (insertions) transition.insertions = f.insertedContainers.map(raw => {
+    const start = f.current.content.indexOf(raw), asset = raw.match(/src="([^"]+)"/)?.[1];
+    return { startByte: Buffer.byteLength(f.current.content.slice(0, start)), byteLength: Buffer.byteLength(raw),
+      sha256: hash(raw), assetPath: 'archive/' + asset };
+  });
+  const beforeAssets = [f.assetRef(f.item.sourceReview.reviewCommit, f.oldAssetPath, 'before')];
+  const currentAssets = [f.assetRef(currentCommit, f.assetPath, 'current'), ...(insertions ? [f.assetRef(currentCommit, secondAsset, 'current')] : [])];
+  for (const key of Object.keys(f.independent)) delete f.independent[key];
+  Object.assign(f.independent, { schemaVersion: 'archive-independent-current-renderer-review-v2',
+    scope: 'EXACT_RENDERER_METADATA_AND_TWO_IMAGE_CONTAINERS', reviewer: 'independent-v2-renderer-reviewer',
+    decision: 'PASS_NARROW_RENDERER_SEMANTIC_PRESERVATION', nativeReviewCommit: f.item.sourceReview.reviewCommit,
+    prefigureCommit: f.manifest.items[0].prefigureSourceRef.commit, currentCommit,
+    counts: { selected: 1, newFullMathApprovals: 0, newMetadataApprovals: 0, newDifficultyApprovals: 0, newReviewPassCount: 0 }, rows: [{
+      questionUid: 'uid1', sourceOrdinal: 1, decision: 'PASS_NARROW_RENDERER_SEMANTIC_PRESERVATION', visualInspectionPerformed: true,
+      nativeReviewRef: f.manifest.items[0].nativeReviewRef, nativeItemSha256: hash(stable(f.review.items[0])),
+      nativeSourceRef: f.sourceRef(f.item.sourceReview.reviewCommit, previous),
+      prefigureSourceRef: f.manifest.items[0].prefigureSourceRef, currentSourceRef: current,
+      changedRendererFields: delta, fieldDeltaHashes: delta.map(field => ({ field,
+        beforeSha256: fieldHash(previous, field), afterSha256: fieldHash(f.current, field) })),
+      contentTransition: transition, nonRendererFieldChanges: [], mathematicalStemBytesUnchanged: true,
+      choicesAnswerSolutionDifficultyUnchanged: true, assets: { before: beforeAssets, current: currentAssets },
+      visualEvidence: { contactSha256: 'c'.repeat(64), renderedAssetCount: new Set([...beforeAssets, ...currentAssets].map(a => a.sha256)).size },
+      observed: 'Only the exact inspected rendering properties changed; the mathematical statement and existing solution are preserved.' }] });
+  f.republish();
+  return { ...f, secondAsset, v2row: f.independent.rows[0] };
+}
+
+for (const insertions of [false, true]) test('renderer v2 official write/replay and native reuse preserve exact inspected ' +
+    (insertions ? 'two image containers' : 'image description and size'), t => {
+  const f = rendererV2Fixture(t, { insertions }), nativeBytes = fs.readFileSync(path.join(f.root, 'docs/native-review.json'));
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).totalQuestions, 1);
+  const receipt = f.read(f.receiptPath), proof = receipt.fingerprintRepairs[0].sourceReview.rendererContinuity;
+  assert.equal(proof.transitionContract.schemaVersion, 'archive-independent-current-renderer-review-v2');
+  assert.equal(proof.transitionContract.contentTransition.kind, insertions ? 'TWO_EXACT_IMAGE_CONTAINERS_INSERTED' : 'UNCHANGED');
+  assert.equal(proof.transitionContract.contentTransition.mathematicalStemSha256, hash(f.nativeQuestion.content));
+  assert.deepEqual([proof.newMathematicalQa, proof.newMetadataApprovals, proof.newDifficultyJudgments], [false, 0, 0]);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+  const bytes = fs.readFileSync(path.join(f.root, f.sourcePath)), bank = loadSourceBank(bytes.toString());
+  const identity = f.read('archive/data/question_identity_map.json').records.find(r => r.questionUid === 'uid1');
+  const source = { root: f.root, bytes, blobSha1: blob(bytes), bank, runtimeRecord: receipt.runtimeRecords[0] };
+  const registry = loadActiveMetaRegistry(f.root);
+  for (const previous of [f.nativeQuestion, bank[0]])
+    assert.equal(nativeReviewedRendererRebind(receipt, source, previous, bank[0], identity, 1, receipt.appliedRecords[0], registry), true);
+  assert.deepEqual(f.read(META).records[1], f.hold);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, 'docs/native-review.json')), nativeBytes);
+});
+
+test('renderer v2 fingerprint-only reuse preserves the issued registered rationale origin and RPM proof', t => {
+  const f = rendererV2Fixture(t), value = f.review.items[0].decisiveStep;
+  const transported = { primaryMethod: value, decisiveStep: value, rpmSemanticStatus: 'FINAL',
+    rpmL3: 'reviewed-rpm-l3', rpmL4: 'reviewed-rpm-l4' };
+  const before = { ...f.nativeQuestion, ...transported };
+  f.writeBank(before);
+  const prefigureCommit = f.commit(f.sourcePath), prefigure = f.sourceRef(prefigureCommit, before);
+  Object.assign(f.current, transported); f.writeBank(f.current);
+  const currentCommit = f.commit(f.sourcePath), currentRef = f.sourceRef(currentCommit, f.current);
+  Object.assign(f.independent, { prefigureCommit, currentCommit });
+  Object.assign(f.v2row, { prefigureSourceRef: prefigure, currentSourceRef: currentRef });
+  Object.assign(f.manifest.items[0], { prefigureSourceRef: prefigure, currentSourceRef: currentRef });
+  const metadata = f.read(META), oldFingerprints = { sourceFingerprint: metadata.records[0].sourceFingerprint,
+    contentFingerprint: metadata.records[0].contentFingerprint ?? null };
+  Object.assign(metadata.records[0], f.review.items[0].after, transported,
+    { metadataApprovalType: 'FINAL_QA', metadataStatus: 'approved_semantic_review',
+      reviewStatus: 'reviewed_pass', tagStatus: 'reviewed_pass', metaFoundationStatus: 'ACTIVE',
+      L1: '새 단원', L2: '새 세부단원', L3: '새 유형', L4: '새 풀이 구조' });
+  f.put(META, metadata); f.item.before = oldFingerprints;
+  f.item.after = { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) };
+  f.republish();
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read(f.receiptPath), proof = receipt.fingerprintRepairs[0].sourceReview;
+  assert.equal(proof.rationaleBindings.primaryMethod.origin, 'REGISTERED_NATIVE_DECISIVE_STEP_UNCHANGED');
+  assert.equal(proof.rationaleBindings.decisiveStep.origin, 'NATIVE_ITEM_FIELD');
+  assert.deepEqual(Object.keys(proof.rpmBindings).sort(), ['rpmL3', 'rpmL4']);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+  const bytes = fs.readFileSync(path.join(f.root, f.sourcePath)), bank = loadSourceBank(bytes.toString());
+  const identity = f.read('archive/data/question_identity_map.json').records.find(r => r.questionUid === 'uid1');
+  const source = { root: f.root, bytes, blobSha1: blob(bytes), bank, runtimeRecord: receipt.runtimeRecords[0] };
+  const registry = loadActiveMetaRegistry(f.root), current = receipt.appliedRecords[0];
+  for (const previous of [f.nativeQuestion, bank[0]])
+    assert.equal(nativeReviewedRendererRebind(receipt, source, previous, bank[0], identity, 1, current, registry), true);
+  for (const delta of [{ primaryMethod: value + ' drift' }, { decisiveStep: value + ' drift' }, { rpmL3: 'unreviewed' }])
+    assert.throws(() => nativeReviewedRendererRebind(receipt, source, bank[0], { ...bank[0], ...delta }, identity, 1, current, registry),
+      /source reassessment:|native renderer reassessment proof differs/);
+  assert.deepEqual(f.read(META).records[1], f.hold);
+});
+
+test('renderer v2 remains a closed immutable independent review contract', async t => {
+  for (const [name, mutate] of [
+    ['unknown scope', f => { f.independent.scope = 'ANY_HTML'; }],
+    ['unknown version', f => { f.independent.schemaVersion += '-next'; }],
+    ['new metadata approval', f => { f.independent.counts.newMetadataApprovals = 1; }],
+    ['uninspected asset', f => { f.v2row.assets.current[0].visuallyInspected = false; }],
+    ['omitted asset', f => { f.v2row.assets.current.pop(); }],
+    ['changed field digest', f => { f.v2row.fieldDeltaHashes[0].afterSha256 = 'a'.repeat(64); }],
+    ['changed native binding', f => { f.v2row.nativeItemSha256 = 'a'.repeat(64); }],
+    ['missing insertion', f => { f.v2row.contentTransition.insertions.pop(); }],
+    ['changed insertion offset', f => { f.v2row.contentTransition.insertions[0].startByte++; }],
+    ['overlapping insertion', f => { f.v2row.contentTransition.insertions[1].startByte = 0; }],
+    ['changed insertion hash', f => { f.v2row.contentTransition.insertions[0].sha256 = 'a'.repeat(64); }],
+    ['unbound image path', f => { f.v2row.contentTransition.insertions[0].assetPath = 'archive/assets/other.svg'; }],
+    ['non-image text removal', f => { f.v2row.contentTransition.beforeSha256 = hash(f.nativeQuestion.content.slice(1)); }],
+  ]) await t.test(name, t => {
+    const f = rendererV2Fixture(t, { insertions: true }); mutate(f); f.republish();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /reviewed renderer continuity:/);
+  });
+});
+
+test('renderer v2 refuses arbitrary HTML even when the new containers are hash-bound', async t => {
+  for (const [name, transformContainer] of [
+    ['extra script element', x => x.replace('</div>', '<script>alert(1)</script></div>')],
+    ['event handler', x => x.replace(' alt=', ' onload="alert(1)" alt=')],
+    ['unquoted source', x => x.replace(/src="([^"]+)"/, 'src=$1')],
+    ['external source', x => x.replace('src="assets/', 'src="https://example.invalid/')],
+    ['encoded traversal', x => x.replace('src="assets/', 'src="assets/%2e%2e/')],
+    ['link wrapper', x => x.replace('<img ', '<a href="assets/other.svg"><img ').replace('</div>', '</a></div>')],
+    ['arbitrary style', x => x.replace('height:auto', 'height:auto;background:url(assets/other.svg)')],
+  ]) await t.test(name, t => {
+    const f = rendererV2Fixture(t, { insertions: true, transformContainer });
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /reviewed renderer continuity:/);
+  });
+});
+
+test('renderer v2 cannot change answers, difficulty, metadata, or uninspected live image properties', async t => {
+  for (const [name, extraDelta] of [
+    ['answer', { answer: 'unreviewed' }], ['solution', { solution: 'unreviewed' }],
+    ['difficulty', { difficultyBucket: 5 }], ['new primary method', { primaryMethod: 'unreviewed' }],
+    ['HTML alternative', { imageAlt: '<b>new</b>' }], ['unsafe size', { imageSize: 'full;display:none' }],
+  ]) await t.test(name, t => {
+    const f = rendererV2Fixture(t, { extraDelta });
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /renderer continuity|source\/approved metadata parity/);
+  });
+  const f = rendererV2Fixture(t); registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read(f.receiptPath), identity = f.read('archive/data/question_identity_map.json').records[0];
+  const bytes = fs.readFileSync(path.join(f.root, f.sourcePath)), bank = loadSourceBank(bytes.toString());
+  const source = { root: f.root, bytes, blobSha1: blob(bytes), bank, runtimeRecord: receipt.runtimeRecords[0] };
+  assert.throws(() => nativeReviewedRendererRebind(receipt, source, bank[0], { ...bank[0], imageAlt: 'Uninspected later alternative' },
+    identity, 1, receipt.appliedRecords[0], loadActiveMetaRegistry(f.root)), /renderer|differs/);
+  f.put(f.assetPath, '<svg xmlns="http://www.w3.org/2000/svg"><text>changed</text></svg>');
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /live renderer bytes changed/);
+});
+
 test('corrective renderer proof binds only the independently inspected intermediate input through official write and replay', t => {
   const f = correctiveRendererContinuityFixture(t), nativeBytes = fs.readFileSync(path.join(f.root, 'docs/native-review.json'));
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).totalQuestions, 1);
