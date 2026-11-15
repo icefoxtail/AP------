@@ -243,7 +243,11 @@ window.questionBank = [
       "\\dfrac{2}{3}\\pi"
     ],
     "answer": "②",
-    "solution": "이차식 $x^2-4x\\sin\\theta+1$의 최고차항 계수는 양수이다.\n이 식이 모든 실수 $x$에서 항상 양수이려면 실근이 없어야 하므로 판별식이 $0$보다 작아야 한다. 판별식이 $0$이면 식이 어떤 실수에서 $0$이 되어 주어진 엄격한 부등식을 만족하지 않는다.\n$D=(-4\\sin\\theta)^2-4\\times1\\times1$\n$=16\\sin^2\\theta-4<0$,\n$\\sin^2\\theta<\\dfrac14$이다.\n$0\\le\\theta\\le\\pi$에서는 $\\sin\\theta\\ge0$이므로 $\\sin\\theta<\\dfrac12$이다.\n따라서\n$0\\le\\theta<\\dfrac\\pi6$ 또는 $\\dfrac{5\\pi}{6}<\\theta\\le\\pi$이다.\n$a=\\dfrac\\pi6$, $b=\\dfrac{5\\pi}{6}$이므로\n$a+b=\\pi$이다.\n따라서 정답은 ②이다."
+    "solution": "이차식 $x^2-4x\\sin\\theta+1$의 최고차항 계수는 양수이다.\n이 식이 모든 실수 $x$에서 항상 양수이려면 실근이 없어야 하므로 판별식이 $0$보다 작아야 한다. 판별식이 $0$이면 식이 어떤 실수에서 $0$이 되어 주어진 엄격한 부등식을 만족하지 않는다.\n$D=(-4\\sin\\theta)^2-4\\times1\\times1$\n$=16\\sin^2\\theta-4<0$,\n$\\sin^2\\theta<\\dfrac14$이다.\n$0\\le\\theta\\le\\pi$에서는 $\\sin\\theta\\ge0$이므로 $\\sin\\theta<\\dfrac12$이다.\n따라서\n$0\\le\\theta<\\dfrac\\pi6$ 또는 $\\dfrac{5\\pi}{6}<\\theta\\le\\pi$이다.\n$a=\\dfrac\\pi6$, $b=\\dfrac{5\\pi}{6}$이므로\n$a+b=\\pi$이다.\n따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t=θ/π의 수직선에서 t=0과 1은 포함하고 1/6과 5/6은 제외한 두 구간을 나타낸다.",
+    "solutionImageCaption": "판별식에서 얻은 사인 조건을 θ의 두 구간으로 옮기고 끝점의 포함 여부를 구분한다. 정답: ②",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -307,7 +311,11 @@ window.questionBank = [
     "solution": "두 원에 공통인 현은 $BD$이다.\n삼각형 $ABD$의 외접원의 반지름을 $R_1$이라 하면 사인법칙에 따라\n$BD=2R_1\\sin A$이다.\n삼각형 $BCD$의 외접원의 반지름을 $R_2$라 하면\n$BD=2R_2\\sin C$이다.\n두 식이 같은 $BD$를 나타내므로\n$2R_1\\sin A=2R_2\\sin C$,\n$\\dfrac{\\sin A}{\\sin C}=\\dfrac{R_2}{R_1}=2$이다.\n따라서\n$\\log_2\\sin A-\\log_2\\sin C=\\log_2\\dfrac{\\sin A}{\\sin C}=\\log_2 2=1$이다.\n따라서 정답은 ③이다.",
     "images": [
       "assets/images/19_강남여고_1학기_기말_고2_수학I/q20.png"
-    ]
+    ],
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통현 BD를 보는 원주각 A와 C, 두 원의 위치 관계를 나타낸 예시 도식.",
+    "solutionImageCaption": "공통현 BD가 두 원주각에서 같은 길이로 표현되는 관계와 반지름 비를 비교한다. 정답: ③",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -386,7 +394,11 @@ window.questionBank = [
       "\\dfrac{\\sqrt{6}}{3}"
     ],
     "answer": "④",
-    "solution": "$O_1O_2=3-1=2$이므로 $O_1A=2O_2A$와 함께\n$O_1A+O_2A=2$이다.\n따라서\n$O_2A=\\dfrac23$, $O_1A=\\dfrac43$이다.\n$O_3A$는 삼각형 $O_1O_3O_2$에서 $O_3$의 각의 이등분선이므로 각의 이등분선 정리에 따라\n$\\dfrac{O_1O_3}{O_2O_3}=\\dfrac{O_1A}{O_2A}=2$이다.\n$C_3$의 반지름을 $r$이라 하면 두 원의 접하는 조건에서\n$O_1O_3=1+r$, $O_2O_3=3-r$이다.\n따라서\n$O_1O_3+O_2O_3=4$이고, 두 길이의 비가 $2:1$이므로\n$O_1O_3=\\dfrac83$, $O_2O_3=\\dfrac43$이다.\n좌표를 두어 길이를 구한다.\n$O_1=(0,0)$, $O_2=(2,0)$이라 하면 $A=(\\dfrac43,0)$이다.\n$O_3=(x,y)$라 놓으면\n$x^2+y^2=\\left(\\dfrac83\\right)^2=\\dfrac{64}{9}$,\n$(x-2)^2+y^2=\\left(\\dfrac43\\right)^2=\\dfrac{16}{9}$이다.\n첫째 식에서 둘째 식을 빼면\n$x^2-(x-2)^2=\\dfrac{64}{9}-\\dfrac{16}{9}$,\n$4x-4=\\dfrac{16}{3}$,\n$x=\\dfrac73$이다.\n따라서\n$y^2=\\dfrac{64}{9}-\\left(\\dfrac73\\right)^2=\\dfrac{15}{9}=\\dfrac53$이다.\n그러므로\n$O_3A^2=\\left(\\dfrac73-\\dfrac43\\right)^2+\\dfrac53=1+\\dfrac53=\\dfrac83$,\n$O_3A=\\sqrt{\\dfrac83}=\\dfrac{2\\sqrt6}{3}$이다.\n따라서 정답은 ④이다."
+    "solution": "$O_1O_2=3-1=2$이므로 $O_1A=2O_2A$와 함께\n$O_1A+O_2A=2$이다.\n따라서\n$O_2A=\\dfrac23$, $O_1A=\\dfrac43$이다.\n$O_3A$는 삼각형 $O_1O_3O_2$에서 $O_3$의 각의 이등분선이므로 각의 이등분선 정리에 따라\n$\\dfrac{O_1O_3}{O_2O_3}=\\dfrac{O_1A}{O_2A}=2$이다.\n$C_3$의 반지름을 $r$이라 하면 두 원의 접하는 조건에서\n$O_1O_3=1+r$, $O_2O_3=3-r$이다.\n따라서\n$O_1O_3+O_2O_3=4$이고, 두 길이의 비가 $2:1$이므로\n$O_1O_3=\\dfrac83$, $O_2O_3=\\dfrac43$이다.\n좌표를 두어 길이를 구한다.\n$O_1=(0,0)$, $O_2=(2,0)$이라 하면 $A=(\\dfrac43,0)$이다.\n$O_3=(x,y)$라 놓으면\n$x^2+y^2=\\left(\\dfrac83\\right)^2=\\dfrac{64}{9}$,\n$(x-2)^2+y^2=\\left(\\dfrac43\\right)^2=\\dfrac{16}{9}$이다.\n첫째 식에서 둘째 식을 빼면\n$x^2-(x-2)^2=\\dfrac{64}{9}-\\dfrac{16}{9}$,\n$4x-4=\\dfrac{16}{3}$,\n$x=\\dfrac73$이다.\n따라서\n$y^2=\\dfrac{64}{9}-\\left(\\dfrac73\\right)^2=\\dfrac{15}{9}=\\dfrac53$이다.\n그러므로\n$O_3A^2=\\left(\\dfrac73-\\dfrac43\\right)^2+\\dfrac53=1+\\dfrac53=\\dfrac83$,\n$O_3A=\\sqrt{\\dfrac83}=\\dfrac{2\\sqrt6}{3}$이다.\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고2_수학I/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: O₁, O₂, O₃와 A 및 세 원의 접촉 관계를 나타낸다. A가 C₃ 경계와 닿아 보이지 않도록 C₃ 원호는 A 주변에서만 짧게 끊어 그렸으며, 수학적 원과 좌표는 바꾸지 않았다.",
+    "solutionImageCaption": "A가 C₃의 접점으로 오인되지 않도록 경계를 A 주변에서만 짧게 끊어 보이고, 세 원의 접촉과 각이등분선을 나타낸다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 26,
@@ -437,7 +449,11 @@ window.questionBank = [
     "content": "등차수열 $\\{a_n\\}$이 다음 조건을 모두 만족시킨다.<div class=\"box-content\">&lt;조건&gt;<br>(가) $a_{10} = 0$<br>(나) 모든 자연수 $n$에 대하여 $a_{n+1} > a_n$이다.<br>(다) $a_5 a_{15} = -225$</div><br>수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 할 때, $S_n$의 최솟값을 구하시오. [5점]",
     "choices": [],
     "answer": "$-135$",
-    "solution": "등차수열의 공차를 $d$라 하자.\n$a_{n+1}>a_n$이므로 $d>0$이다.\n$a_{10}=0$에서\n$a_n=a_{10}+(n-10)d=(n-10)d$이다.\n따라서\n$a_5=-5d$, $a_{15}=5d$이고,\n$a_5a_{15}=-25d^2=-225$이다.\n$d^2=9$이고 $d>0$이므로 $d=3$이다.\n따라서 $a_n=3(n-10)$이고\n$S_n=\\displaystyle\\sum_{k=1}^{n}3(k-10)$\n$=3\\left(\\dfrac{n(n+1)}2-10n\\right)$\n$=\\dfrac32n(n-19)$이다.\n또한 $S_n-S_{n-1}=a_n=3(n-10)$이므로 $n=1,\\ldots,9$에서는 합이 감소하고, $n=10$에서는 변화가 없으며, $n\\ge11$에서는 증가한다.\n따라서 최솟값은 $n=9$와 $n=10$에서 얻는다.\n$S_9=\\dfrac32\\times9\\times(-10)=-135$,\n$S_{10}=\\dfrac32\\times10\\times(-9)=-135$이다.\n그러므로 $S_n$의 최솟값은 $-135$이다."
+    "solution": "등차수열의 공차를 $d$라 하자.\n$a_{n+1}>a_n$이므로 $d>0$이다.\n$a_{10}=0$에서\n$a_n=a_{10}+(n-10)d=(n-10)d$이다.\n따라서\n$a_5=-5d$, $a_{15}=5d$이고,\n$a_5a_{15}=-25d^2=-225$이다.\n$d^2=9$이고 $d>0$이므로 $d=3$이다.\n따라서 $a_n=3(n-10)$이고\n$S_n=\\displaystyle\\sum_{k=1}^{n}3(k-10)$\n$=3\\left(\\dfrac{n(n+1)}2-10n\\right)$\n$=\\dfrac32n(n-19)$이다.\n또한 $S_n-S_{n-1}=a_n=3(n-10)$이므로 $n=1,\\ldots,9$에서는 합이 감소하고, $n=10$에서는 변화가 없으며, $n\\ge11$에서는 증가한다.\n따라서 최솟값은 $n=9$와 $n=10$에서 얻는다.\n$S_9=\\dfrac32\\times9\\times(-10)=-135$,\n$S_{10}=\\dfrac32\\times10\\times(-9)=-135$이다.\n그러므로 $S_n$의 최솟값은 $-135$이다.",
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고2_수학I/q30-solution.svg",
+    "solutionImageAlt": "해설 그림: 수열의 변화량 부호가 음수인 n=1부터 9까지의 구간, 양수인 n≥11 구간과 S₉=S₁₀인 두 이웃 항을 수직선에 나타낸다.",
+    "solutionImageCaption": "변화량이 음수인 항 뒤에 변화량이 0인 n=10이 있고 이후 양수가 되므로 최솟값은 −135이다.",
+    "solutionImageSize": "full"
   }
 ];
 if (typeof module !== "undefined" && module.exports) {
