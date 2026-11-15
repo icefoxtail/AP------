@@ -69,9 +69,22 @@ test('durable collector fails closed on unparseable current production source fi
 
 test('durable collector prefers the stable source question id over a human display label', t => {
   const { scanJavaScriptSource } = loadCollector();
-  const uses = scanJavaScriptSource(`window.questionBank=[{id:22,sourceQuestionNo:'서답형 2',solutionImage:'assets/images/a/q22-solution.svg'}];`, 'archive/exams/original/a.js');
+  const uses = scanJavaScriptSource(`window.questionBank=[{id:22,number:2,sourceQuestionNo:'서답형 2',solutionImage:'assets/images/a/q22-solution.svg'}];`, 'archive/exams/original/a.js');
   assert.equal(uses.length, 1);
   assert.equal(uses[0].sourceQid, '22');
+});
+
+test('collector binds legacy numbered questions in the active original exam bank', () => {
+  const { scanJavaScriptSource } = loadCollector();
+  const source = `window.examData = { questions: [{ number: 10, solutionImage: 'assets/images/a/q10-solution.svg' }] };`;
+  const ref = 'archive/exams/original/a.js';
+  const uses = scanJavaScriptSource(source, ref);
+  assert.equal(uses.length, 1);
+  assert.equal(uses[0].sourceExamRef, ref);
+  assert.equal(uses[0].sourceQid, '10');
+
+  const primary = scanJavaScriptSource(`${source}\nwindow.questionBank = [];`, ref);
+  assert.deepEqual(primary, []);
 });
 
 test('production delta scope finds changed SVGs and newly referenced refs without expanding to every old source use', t => {
