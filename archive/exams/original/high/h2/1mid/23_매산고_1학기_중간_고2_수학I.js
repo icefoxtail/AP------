@@ -567,9 +567,9 @@ window.questionBank = [
     "id": 14,
     "questionType": "객관식",
     "question": "함수 $f(x) = \\sin\\pi x\\,(x \\ge 0)$의 그래프와 직선 $y = \\frac{4}{5}$이 만나는 점의 $x$좌표를 작은 것부터 차례로 $x_1, x_2, x_3, x_4, x_5$ 라 할 때, $f(x_1 + 2x_2 + 3x_3 + 4x_4 + 3x_5)$ 의 값은? [4.9점]",
-    "content": "함수 $f(x) = \\sin\\pi x\\,(x \\ge 0)$의 그래프와 직선 $y = \\frac{4}{5}$이 만나는 점의 $x$좌표를 작은 것부터 차례로 $x_1, x_2, x_3, x_4, x_5$ 라 할 때, $f(x_1 + 2x_2 + 3x_3 + 4x_4 + 3x_5)$ 의 값은? [4.9점]",
-    "image": "assets/images/23_매산고_1학기_중간_고2_수학I/q14.png",
-    "imageAlt": "x≥0에서 y=sin(πx) 곡선과 수평선 y=4/5의 첫 다섯 교점을 왼쪽부터 x₁, x₂, x₃, x₄, x₅로 표시한 그림이다.",
+    "content": "함수 $f(x) = \\sin\\pi x\\,(x \\ge 0)$의 그래프와 직선 $y = \\frac{4}{5}$이 만나는 점의 $x$좌표를 작은 것부터 차례로 $x_1, x_2, x_3, x_4, x_5$ 라 할 때, $f(x_1 + 2x_2 + 3x_3 + 4x_4 + 3x_5)$ 의 값은? [4.9점]<br>그림은 오른쪽으로 이어지는 그래프의 앞부분을 나타낸다.",
+    "image": "assets/images/23_매산고_1학기_중간_고2_수학I/q14-problem-v2.svg",
+    "imageAlt": "사인곡선과 가로선 y=4/5가 만나는 처음 다섯 점을 왼쪽부터 표시한다. 각 교점의 x좌표는 x₁, x₂, x₃, x₄, x₅ 순서이다. 그림은 앞쪽 일부 구간을 보여 준다.",
     "choices": [
       "-1",
       "-\\frac{4}{5}",
@@ -592,11 +592,11 @@ window.questionBank = [
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "그래프"
     ],
-    "wide": false,
+    "wide": true,
     "decisiveStep": "주기 2의 교점 다섯 개의 위치를 $α,1-α,2+α,3-α,4+α$로 나타내 가중합의 $α$ 계수를 정리한다.",
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
     "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
@@ -606,7 +606,8 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "imageSize": "full"
   },
   {
     "number": 15,
