@@ -12,6 +12,9 @@ import { execFileSync } from "node:child_process";
 import { createRequire } from "node:module";
 import { registerBasicScopeRebind, sourceFingerprint, contentFingerprint } from "../archive/tools/meta-foundation/register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA, BASIC_PRESERVATION_REVIEW_SCHEMA, stableBasicValue } from "../archive/tools/meta-foundation/reviewed-basic-preservation.mjs";
+import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REVIEW_SCHEMA, NATIVE_BASIC_HOLD_REASON } from "../archive/tools/meta-foundation/native-basic-hold-preservation.mjs";
+import { NATIVE_BASIC_PARENT_SCHEMA, NATIVE_BASIC_PARENT_REVIEW_SCHEMA } from "../archive/tools/meta-foundation/reviewed-native-basic-parent.mjs";
+import { REASSESSED_STUDENT_FIELDS } from "../archive/tools/meta-foundation/reviewed-source-reassessment.mjs";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const canonical = createRequire(import.meta.url)("../archive/archive2-canonical.js");
@@ -455,4 +458,319 @@ test("reviewed basic preservation rejects unchanged external, alternate and inli
     { solutionImages: ["solution.svg"] }, { sharedMaterial: "<svg><image href='nested.svg'/></svg>" },
     { explanation: "<img src='figure.png'>" }, { extra: { figure: { src: "figure.png" } } }])
     refuses(preservationFixture(t, { assets }), /render assets are outside text-only preservation/);
+});
+
+// Reconstructed after loss of the unpublished e511 workspace. These are new
+// executions against the public production registrar, not recovered old PASSes.
+function nativeHoldFixture(t, { held = true, nativeChange = () => {}, holdChange = () => {}, currentExtra = {}, svg } = {}) {
+  const f = preservationFixture(t), { dir } = f;
+  const uid = f.request.items[0].questionUid, source = f.request.sourceArchiveFile, sourcePath = `archive/exams/${source}`;
+  const hash = value => sha256(stableBasicValue(value) ?? "undefined");
+  const payload = q => Object.fromEntries(REASSESSED_STUDENT_FIELDS.map(k => [k, Object.hasOwn(q, k) ? q[k] : null]));
+  const runtimePath = "archive/" + canonical.RUNTIME_INPUT_PATHS[0];
+  const runtime = readJson(dir, runtimePath);
+  const heldRecord = { questionUid: uid, sourceArchiveFile: source, sourceOrdinal: 1,
+    sourceFingerprint: f.request.items[0].before.sourceFingerprint, problemTypeKey: "PT_UNRESOLVED", templateKey: null,
+    difficultyBucket: 3, difficultyConfidence: "medium", metadataStatus: "EXPLICIT_L4_HOLD", metaFoundationStatus: "EXPLICIT_L4_HOLD",
+    metaFoundationL4Status: "EXPLICIT_HOLD", reviewStatus: "manual_review", defaultSelectable: false };
+  if (held) runtime.records.push(heldRecord);
+  write(dir, runtimePath, JSON.stringify(runtime));
+  write(dir, sourcePath, sourceText(f.prior));
+  const refreshManifest = () => {
+    const manifest = readJson(dir, "archive/data/archive2-canonical-input-manifest.json");
+    manifest.files.forEach(row => { row.sha256 = sha256(fs.readFileSync(path.join(dir, "archive", row.path))); });
+    manifest.projectionVersion = "archive2-canonical-v1:" + sha256(canonical.projectionManifestPayload(manifest.files));
+    write(dir, "archive/data/archive2-canonical-input-manifest.json", JSON.stringify(manifest));
+  };
+  refreshManifest(); git(dir, "add", "-A"); git(dir, "commit", "-qm", "immutable existing basic and explicit hold");
+  const priorCommit = git(dir, "rev-parse", "HEAD"), previousBlob = git(dir, "hash-object", sourcePath);
+  const current = structuredClone(f.prior);
+  Object.assign(current[0], { solution: "검토된 해설. $x>20$에서 정수 최솟값은 $21$이다.", problemTypeKey: "PT_CANDIDATE", templateKey: "TPL_NOT_APPROVED", ...currentExtra });
+  const assetPath = "archive/assets/images/test/q1-solution.svg";
+  if (svg !== undefined) { current[0].solutionImage = assetPath.slice("archive/".length); write(dir, assetPath, svg); }
+  write(dir, sourcePath, sourceText(current)); git(dir, "add", "-A"); git(dir, "commit", "-qm", "native reviewed current source");
+  const baseSha = git(dir, "rev-parse", "HEAD"), sourceBlob = git(dir, "hash-object", sourcePath);
+  const native = { schemaVersion: "m2-s2-meta-review-v1", owner: "native-reviewer", sourceArchiveFile: source,
+    reviewedQuestionCount: 2, sourceGitBlobSha: sourceBlob, baseSha, items: current.map((q, i) => ({
+      questionUid: i ? uid + "2" : uid, sourceOrdinal: i + 1, rpmDecision: "KEEP", after: {}, activeDefinitionMatch: { templateKey: null },
+      evidenceScope: { sourceRead: true, solutionRead: true }, proposalRefs: [], registrationDebt: ["OFFICIAL_RESOLVER_RECEIPT_REQUIRED"],
+    })) };
+  nativeChange(native);
+  const nativePath = "review/native.json", nativeRaw = JSON.stringify(native); write(dir, nativePath, nativeRaw);
+  git(dir, "add", "-A"); git(dir, "commit", "-qm", "immutable native review");
+  const nativeCommit = git(dir, "rev-parse", "HEAD"), q = current[0];
+  const sourceRef = commit => ({ commit, path: sourcePath, blob: sourceBlob, sha256: sha256(sourceText(current)), questionStableSha256: hash(q) });
+  const rendererAssets = svg === undefined ? [] : [{ path: assetPath, field: "solutionImage", commit: nativeCommit,
+    gitBlobSha1: git(dir, "hash-object", assetPath), sha256: sha256(svg), nativeCommit,
+    nativeGitBlobSha1: git(dir, "hash-object", assetPath), nativeSha256: sha256(svg), unchangedFromNative: true, visuallyInspected: true }];
+  const application = { questionUid: uid, sourceOrdinal: 1, nativeReviewRef: { commit: nativeCommit, path: nativePath, sha256: sha256(nativeRaw) },
+    nativeItemStableSha256: hash(native.items[0]), nativeAfterSha256: hash(native.items[0].after), nativeActiveDefinitionMatchSha256: hash(native.items[0].activeDefinitionMatch),
+    immutableSourceBefore: sourceRef(baseSha), immutableReviewedSource: sourceRef(nativeCommit), currentSource: sourceRef(nativeCommit),
+    studentPayloadFields: REASSESSED_STUDENT_FIELDS, studentPayloadSha256: hash(payload(q)), rendererAssets, rendererReview: "independently inspected current rendered panels",
+    decision: "HOLD_CURRENT_TEMPLATE_DEFINITION_MISMATCH", allowedRetentionFields: [], approvedValues: {}, rationale: "Independent subquestions do not have a single combined primary.",
+    originalNativeAfterPreserved: true, sourcePayloadChangeApproved: false, newMathematicalQa: false, newReview2: false, newDifficultyApproval: false };
+  const hold = { schemaVersion: "archive-independent-existing-primary-disposition-v1", scope: "EXISTING_PRIMARY_RETENTION_ONLY",
+    reviewerOwner: "independent", reviewerRole: "INDEPENDENT_REVIEWER", sourceWrites: 0, canonicalWrites: 0, newDefinitions: 0,
+    newMathematicalQa: false, newReview2: false, newDifficultyApproval: false, officialRegistrationRequired: true, actualMainRegistered: false,
+    applications: [application] };
+  holdChange(hold);
+  const holdPath = "review/hold.json", holdRaw = JSON.stringify(hold); write(dir, holdPath, holdRaw);
+  git(dir, "add", "-A"); git(dir, "commit", "-qm", "immutable independent primary hold");
+  const holdCommit = git(dir, "rev-parse", "HEAD");
+  const nativeRef = f.save("native-copy", native), holdRef = f.save("hold-copy", hold);
+  const item = { questionUid: uid, sourceOrdinal: 1, before: f.request.items[0].before,
+    after: { sourceFingerprint: sourceFingerprint(q), contentFingerprint: contentFingerprint(q) }, basicParent: f.request.items[0].basicParent,
+    holdReasonCode: NATIVE_BASIC_HOLD_REASON, reason: "Preserve exact basic approval and unapproved advanced hold", evidenceRefs: [] };
+  const request = { schemaVersion: "archive-basic-scope-rebind-request-v1", requestId: "native-basic-held-source", examUid: "test-middle", sourceArchiveFile: source,
+    expectedQuestionCount: 2, previousSourceCommit: priorCommit, previousSourceBlobSha1: previousBlob, expectedSourceBlobSha1: sourceBlob,
+    approval: { type: "BASIC_SCOPE_REBIND", metadataReviewed: true, approvedBy: "independent", evidenceRefs: [], sourceReview: {
+      schemaVersion: NATIVE_BASIC_HOLD_SCHEMA, priorCommit, nativeReviewCommit: nativeCommit, nativeReviewPath: nativePath, nativeReviewRef: nativeRef,
+      holdReviewCommit: holdCommit, holdReviewPath: holdPath, holdReviewRef: holdRef } }, items: [item] };
+  const wrapper = { schemaVersion: NATIVE_BASIC_HOLD_REVIEW_SCHEMA, requestId: request.requestId, examUid: request.examUid, sourceArchiveFile: source,
+    expectedQuestionCount: 2, expectedSourceBlobSha1: sourceBlob, priorCommit, status: "PASS", decision: "PRESERVE_EXISTING_BASIC_AND_EXPLICIT_TYPE_HOLD",
+    reviewedBy: "independent", preparedBy: "implementer", newMetadataApprovals: 0, advancedApprovals: 0, questions: [{ questionUid: uid, sourceOrdinal: 1,
+      holdReasonCode: NATIVE_BASIC_HOLD_REASON, basicParent: item.basicParent, nativeItemSha256: hash(native.items[0]), currentQuestionSha256: hash(q),
+      priorMetadataSha256: hash(f.metadata.records[0]), priorIdentitySha256: hash(f.identity.records[0]) }] };
+  const reviewRef = f.save("native-hold-wrapper", wrapper);
+  request.approval.evidenceRefs = [reviewRef, nativeRef, holdRef]; item.evidenceRefs = structuredClone(request.approval.evidenceRefs);
+  return { ...f, request, current, native, hold, wrapper, nativeRef, holdRef, reviewRef, runtimePath, heldRecord, assetPath, refreshManifest };
+}
+
+test("native source hold preserves basic approval and every held runtime field through write/replay/projection", t => {
+  for (const held of [false, true]) {
+    const f = nativeHoldFixture(t, { held }), before = snapshot(f.dir), runtime = fs.readFileSync(path.join(f.dir, f.runtimePath));
+    const dry = run(f); assert.equal(dry.preservedMetadataApprovals, 1); assert.equal(dry.newMetadataApprovals, 0); assert.equal(snapshot(f.dir), before);
+    const result = run(f, { write: true }); assert.equal(result.advancedApprovals, 0); assert.equal(result.heldRuntimeBindings.length, Number(held));
+    assert.deepEqual(fs.readFileSync(path.join(f.dir, f.runtimePath)), runtime);
+    const md = readJson(f.dir, "archive/data/question_metadata.json"), id = readJson(f.dir, "archive/data/question_identity_map.json");
+    assert.deepEqual({ ...md.records[0], ...f.request.items[0].before }, f.metadata.records[0]);
+    assert.deepEqual({ ...id.records[0], sourceFingerprint: f.request.items[0].before.sourceFingerprint }, f.identity.records[0]);
+    assert.deepEqual(md.records[1], f.metadata.records[1]); assert.deepEqual(id.records[1], f.identity.records[1]);
+    assert.equal(run(f, { write: true }).replay, true);
+    const projection = run(f, { verifyProjection: true }); assert.equal(projection.consumerSearchStatus, "STATIC_VALUES_VERIFIED");
+    assert.deepEqual(projection.metaOnlyHoldReasons, [{ questionUid: f.request.items[0].questionUid, reason: NATIVE_BASIC_HOLD_REASON }]);
+  }
+});
+
+test("native hold requires immutable full-bank source review and a separate zero-approval HOLD", t => {
+  for (const nativeChange of [n => { n.items.pop(); }, n => { n.items[0].rpmDecision = "CORRECT"; }, n => { n.items[0].evidenceScope.solutionRead = false; },
+    n => { n.items[0].contentDebt = ["MISSING_SOURCE"]; }, n => { n.items[0].proposalRefs = ["unresolved"]; }])
+    refuses(nativeHoldFixture(t, { nativeChange }), /native review|native source review/);
+  for (const holdChange of [h => { h.reviewerOwner = "native-reviewer"; }, h => { h.newReview2 = true; }, h => { h.applications[0].decision = "APPROVED_EXISTING_PRIMARY"; },
+    h => { h.applications[0].allowedRetentionFields = ["problemTypeKey"]; }, h => { h.applications[0].nativeItemStableSha256 = "a".repeat(64); }])
+    refuses(nativeHoldFixture(t, { holdChange }), /independent.*(?:scope|disposition)/);
+});
+
+test("native hold refuses changes to the current source, historical body, or immutable source binding", t => {
+  for (const field of ["content", "choices", "answer", "solution", "subUnitKey", "layoutTag"]) {
+    const f = nativeHoldFixture(t); f.current[0][field] = field === "choices" ? ["changed"] : "changed";
+    write(f.dir, `archive/exams/${f.request.sourceArchiveFile}`, sourceText(f.current));
+    f.request.expectedSourceBlobSha1 = git(f.dir, "hash-object", `archive/exams/${f.request.sourceArchiveFile}`);
+    f.request.items[0].after = { sourceFingerprint: sourceFingerprint(f.current[0]), contentFingerprint: contentFingerprint(f.current[0]) };
+    refuses(f, /historical approved body|current student payload|current question differs/);
+  }
+  const f = nativeHoldFixture(t); f.request.previousSourceCommit = f.request.approval.sourceReview.nativeReviewCommit;
+  refuses(f, /historical approved body/);
+  const g = nativeHoldFixture(t); g.request.approval.sourceReview.nativeReviewPath = "review/hold.json";
+  refuses(g, /immutable input|immutable evidence bytes/);
+});
+
+test("native hold preserves all existing metadata including difficulty and all identity values", t => {
+  for (const mutate of [r => { r.difficultyConfidence = "medium"; }, r => { r.problemTypeKey = "PT_APPROVED"; }, r => { r.fieldStatus.template = "approved"; },
+    r => { r.approvalEvidence.push("new-approval"); }]) {
+    const f = nativeHoldFixture(t), md = readJson(f.dir, "archive/data/question_metadata.json"); mutate(md.records[0]);
+    write(f.dir, "archive/data/question_metadata.json", JSON.stringify(md)); refuses(f, /protected prior metadata/);
+  }
+  const f = nativeHoldFixture(t), ids = readJson(f.dir, "archive/data/question_identity_map.json"); ids.records[0].alias = "new";
+  write(f.dir, "archive/data/question_identity_map.json", JSON.stringify(ids)); refuses(f, /protected prior metadata/);
+});
+
+test("native hold rejects absent, added, modified or approved runtime rows without writing", t => {
+  for (const mutate of [r => r.records.splice(0), r => { r.records[0].difficultyConfidence = "high"; }, r => { r.records[0].metadataApprovalType = "FINAL_QA"; },
+    r => { r.records[0].defaultSelectable = true; }, r => r.records.push({ ...r.records[0] })]) {
+    const f = nativeHoldFixture(t), runtime = readJson(f.dir, f.runtimePath); mutate(runtime);
+    write(f.dir, f.runtimePath, JSON.stringify(runtime)); refuses(f, /held runtime|explicit unapproved L4 hold/);
+  }
+  const f = nativeHoldFixture(t, { held: false }), runtime = readJson(f.dir, f.runtimePath); runtime.records.push(f.heldRecord);
+  write(f.dir, f.runtimePath, JSON.stringify(runtime)); refuses(f, /held runtime/);
+});
+
+test("native hold binds exact live renderer bytes, and refuses hidden HTML or nested external SVG dependencies", t => {
+  const safeSvg = '<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L1 1"/></svg>';
+  const nested = '<svg xmlns="http://www.w3.org/2000/svg"><image href="data:image/svg+xml;base64,' + Buffer.from(safeSvg).toString("base64") + '"/></svg>';
+  const f = nativeHoldFixture(t, { svg: nested }); assert.equal(run(f, { write: true }).status, "PASS");
+  write(f.dir, f.assetPath, nested.replace("</svg>", "<!-- changed --></svg>"));
+  assert.throws(() => run(f, { verifyProjection: true }), /current renderer bytes differ/);
+  const g = nativeHoldFixture(t, { svg: safeSvg }); fs.unlinkSync(path.join(g.dir, g.assetPath)); refuses(g, /ENOENT/);
+  const external = '<svg xmlns="http://www.w3.org/2000/svg"><image href="external.svg"/></svg>';
+  const embeddedExternal = '<svg xmlns="http://www.w3.org/2000/svg"><image href="data:image/svg+xml;base64,' + Buffer.from(external).toString("base64") + '"/></svg>';
+  refuses(nativeHoldFixture(t, { svg: embeddedExternal }), /external SVG dependency/);
+  for (const malformed of ['<svg><image href=external.svg /></svg>', '<svg><image xlink:href=external.svg /></svg>',
+    '<svg><image src=external.svg /></svg>', '<svg><image href="external.svg /></svg>', '<svg><image href="#ok"bad="x" /></svg>'])
+    refuses(nativeHoldFixture(t, { svg: malformed }), /unquoted or malformed SVG dependency/);
+  const fragment = nativeHoldFixture(t, { svg: '<svg xmlns="http://www.w3.org/2000/svg"><defs><path id="a" d="M0 0L1 1"/></defs><use href="#a" clip-path="url(\'#a\')"/></svg>' });
+  assert.equal(run(fragment).status, "PASS");
+  refuses(nativeHoldFixture(t, { currentExtra: { sharedMaterial: '<img src="assets/hidden.png">' } }), /unlisted renderer field/);
+});
+
+test("native hold replay revalidates immutable proof, receipt contents and current protected values", t => {
+  const f = nativeHoldFixture(t); run(f, { write: true });
+  const receiptPath = `${EVID}/${f.request.requestId}.json`, receipt = readJson(f.dir, receiptPath);
+  receipt.applied[0].heldRuntimeBindings = [];
+  write(f.dir, receiptPath, JSON.stringify(receipt)); assert.throws(() => run(f, { verifyProjection: true }), /receipt\/protected value drift/);
+  const g = nativeHoldFixture(t); run(g, { write: true }); fs.unlinkSync(path.join(g.dir, g.nativeRef.path));
+  assert.throws(() => run(g, { verifyProjection: true }), /evidence missing\/drift/);
+  const h = nativeHoldFixture(t); h.request.registryChanges = []; refuses(h, /registryChanges/);
+  const i = nativeHoldFixture(t); i.request.items[0].after.difficultyConfidence = "high"; refuses(i, /exactly sourceFingerprint/);
+});
+
+function newBasicParentFixture(t) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'reviewed-new-basic-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  git(dir, 'init', '-q'); git(dir, 'config', 'user.email', 't@example.invalid'); git(dir, 'config', 'user.name', 't');
+  const source = 'original/middle/m2/1final/99_테스트중_1학기_기말_중2_기출.js', selectedUid = 'qid_v1_' + sha256(source + '#1');
+  const d5 = ['difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility'];
+  const hash = x => sha256(stableBasicValue(x) ?? 'undefined');
+  const save = (p, v) => { const raw = JSON.stringify(v, null, 2) + '\n'; write(dir, p, raw); return { path: p, sha256: sha256(raw) }; };
+  const checkpoint = name => { git(dir, 'add', '-A'); git(dir, 'commit', '-qm', name); return git(dir, 'rev-parse', 'HEAD'); };
+  const parent = { grade: '중2', curriculumKey: '2022', courseKey: 'M2-1', L1: '일차함수', L2: '일차함수와 일차방정식의 관계' };
+  const base = { id: 1, level: '상', curriculum: '2022', standardCourse: '중2 수학', standardUnitKey: 'M2-04', standardUnit: '일차함수와 그래프',
+    subUnitKey: 'M2-04-LINEAR_FUNCTION_EQUATION', subUnit: parent.L2, content: '조건을 만족하는 값을 구하면?', choices: ['가', '나'], answer: '①, ②', solution: '이전 설명',
+    difficultyBucket: 4, difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL' };
+  const untouched = { ...base, id: 2, content: '다른 문제', answer: '①' };
+  const oldBank = [base, untouched]; write(dir, 'archive/exams/' + source, sourceText(oldBank));
+  const before = { sourceFingerprint: sourceFingerprint(base), contentFingerprint: contentFingerprint(base) };
+  const meta = oldBank.map((q, i) => ({ questionUid: i ? 'qid_v1_' + sha256(source + '#2') : selectedUid, sourceArchiveFile: source, sourceOrdinal: i + 1,
+    sourceFingerprint: sourceFingerprint(q), contentFingerprint: contentFingerprint(q), standardCourse: q.standardCourse, standardUnitKey: q.standardUnitKey, standardUnit: q.standardUnit,
+    subUnitKey: q.subUnitKey, subUnit: q.subUnit, problemTypeKey: '', templateKey: '', metadataStatus: 'approved_partial_with_explicit_holds',
+    fieldStatus: { standardUnit: 'approved_source', subUnit: 'approved_source', problemType: 'manual_review_pending', template: 'manual_review_pending' },
+    approvalEvidence: ['archive/_generated/old-basic.json'], ...Object.fromEntries(d5.map(k => [k, q[k]])) }));
+  const ids = meta.map(r => ({ questionUid: r.questionUid, sourceArchiveFile: source, sourceOrdinal: r.sourceOrdinal, sourceFingerprint: r.sourceFingerprint }));
+  save('archive/data/question_metadata.json', { records: meta }); save('archive/data/question_identity_map.json', { records: ids });
+  save('archive/data/basic-scope-source-links.json', { status: 'REVIEWED_SCOPE_LINKS', records: [] });
+  save('archive/data/basic-scope-parent-links.json', { records: [{ ...parent, standardUnitKey: base.standardUnitKey, subUnitKey: base.subUnitKey }] });
+  const masterPath = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
+  const master = { records: [{ curriculum: '2022', scope: 'M2-1', majorUnit: parent.L1, midUnit: parent.L2, majorStatus: 'RPM_VERIFIED', midStatus: 'RPM_VERIFIED' }] };
+  const masterRef = save(masterPath, master);
+  save('archive/data/archive2-canonical-projection-policy.json', { canonicalMasterSha256: masterRef.sha256, gradeCourseAllowlist: [{ grade: '중2', curriculumKey: '2022', courseKey: 'M2-1' }] });
+  save('archive/data/meta-foundation/runtime/middle-geometry-v1.json', { records: [] });
+  const priorCommit = checkpoint('historical metadata and input');
+  const currentBefore = { ...base, solution: '실제 원 검토의 설명', difficultyBucket: 3, difficultyConfidence: 'medium', difficultyBoundaryFlag: 'B34', legacyLevelCompatibility: 'BORDERLINE_ACCEPTABLE' };
+  write(dir, 'archive/exams/' + source, sourceText([currentBefore, untouched]));
+  const nativeBase = checkpoint('native inspected source'), nativeBlob = git(dir, 'hash-object', 'archive/exams/' + source);
+  const nativePath = 'docs/operations/native/accepted-review.json';
+  const decision = { questionUid: selectedUid, sourceOrdinal: 1, semanticDecision: { curriculumProvenance: 'SOURCE_EXPLICIT_PRESERVED', machineCurriculum: '2022', semanticCurriculum: '2022', problemTypeKey: null, templateKey: null },
+    proposalRefs: [], registrationDebt: ['ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED'], contentDebt: [{ type: 'MULTIPLE_VALID_CHOICES_IN_SINGLE_CHOICE_STEM' }],
+    finalDifficulty: { level: '상', ...Object.fromEntries(d5.map(k => [k, currentBefore[k]])) } };
+  const native = { schemaVersion: 'm2-s1-meta-review-v1', sourceArchiveFile: source, reviewedQuestionCount: 2, owner: 'native-author', baseSha: nativeBase, sourceGitBlobSha: nativeBlob,
+    items: [decision, { questionUid: ids[1].questionUid, sourceOrdinal: 2 }] };
+  save(nativePath, native); const nativeCommit = checkpoint('immutable native review');
+  const current = { ...currentBefore, content: '조건을 만족하는 값을 보기에서 모두 고르면?' };
+  const candidateRaw = sourceText([current, untouched]), afterBlob = crypto.createHash('sha1').update(`blob ${Buffer.byteLength(candidateRaw)}\0`).update(candidateRaw).digest('hex');
+  const beforeRaw = fs.readFileSync(path.join(dir, 'archive/exams/' + source));
+  const publicNative = { commit: nativeCommit, path: nativePath, gitBlobSha1: git(dir, 'rev-parse', nativeCommit + ':' + nativePath), sha256: sha256(fs.readFileSync(path.join(dir, nativePath))) };
+  const application = { questionUid: selectedUid, sourceOrdinal: 1, sourceArchiveFile: source, expectedQuestionCount: 2,
+    sourceBefore: { commit: nativeCommit, path: 'archive/exams/' + source, gitBlobSha1: nativeBlob, sha256: sha256(beforeRaw), bytes: beforeRaw.length },
+    sourceAfter: { gitBlobSha1: afterBlob, sha256: sha256(candidateRaw), bytes: Buffer.byteLength(candidateRaw) },
+    beforeQuestionStableSha256: hash(currentBefore), afterQuestionStableSha256: hash(current), nativeReviewRef: publicNative,
+    nativeItemStableSha256: hash(decision), nativeDifficultyStableSha256: hash(decision.finalDifficulty), allowedChangedFields: ['content'],
+    sourceRepairDisposition: 'APPROVED_NARROW_CURRENT_REVIEW', currentStudentMathAndRendererConsistency: 'PASS', studentAnswerPreserved: true, studentSolutionPreserved: true, assetsPreserved: true,
+    advancedApproval: 'HOLD_PRESERVED', newAdvancedApproval: false, newBlindReview: false, newReview2: false, difficultyDisposition: 'TRANSPORT_EXACT_ACCEPTED_NATIVE_ONLY',
+    literalTextReplacement: { before: '값을 구하면?', after: '값을 보기에서 모두 고르면?', exactOccurrenceCount: 1 }, basicParentDisposition: 'APPROVED_NEW_BASIC_ONLY', basicParent: parent };
+  const independentPath = 'docs/operations/independent-new-basic.json';
+  const independent = { schemaVersion: 'archive-m2s1-next-four-current-root-review-v1', reviewer: 'root-independent', baseCommit: nativeCommit,
+    canonicalMasterRef: { commit: nativeCommit, path: masterPath, gitBlobSha1: git(dir, 'rev-parse', nativeCommit + ':' + masterPath), sha256: masterRef.sha256 },
+    reviewScope: 'CURRENT_STUDENT_MATH_RENDERER_AND_EXACT_BASIC_PARENT_ONLY_WITH_NATIVE_CONTEXT', newBasicParentApprovedCount: 1,
+    newAdvancedApprovals: 0, newDifficultyJudgments: 0, newBlindReviews: 0, newReview2: 0, nonSelectedQuestionChanges: 0, rows: [application] };
+  save(independentPath, independent); const independentCommit = checkpoint('independent exact source and new BASIC review');
+  write(dir, 'archive/exams/' + source, candidateRaw);
+  const nativeRef = save(EVID + '/new-basic.native.json', native), independentRef = save(EVID + '/new-basic.independent.json', independent);
+  const request = { schemaVersion: 'archive-basic-scope-rebind-request-v1', requestId: 'reviewed-new-basic', examUid: path.basename(source, '.js'), sourceArchiveFile: source,
+    expectedSourceBlobSha1: afterBlob, previousSourceCommit: nativeCommit, previousSourceBlobSha1: nativeBlob, expectedQuestionCount: 2,
+    approval: { type: 'BASIC_SCOPE_REBIND', metadataReviewed: true, approvedBy: 'root-independent', sourceReview: { schemaVersion: NATIVE_BASIC_PARENT_SCHEMA,
+      priorCommit, priorFingerprintSourceCommit: priorCommit, nativeReviewCommit: nativeCommit, nativeReviewPath: nativePath, nativeReviewRef: nativeRef,
+      independentReviewCommit: independentCommit, independentReviewPath: independentPath, independentReviewRef: independentRef }, evidenceRefs: [] },
+    items: [{ questionUid: selectedUid, sourceOrdinal: 1, before, after: { sourceFingerprint: sourceFingerprint(current), contentFingerprint: contentFingerprint(current) },
+      basicParent: parent, reason: 'separately reviewed wording and explicit current curriculum BASIC parent', evidenceRefs: [] }] };
+  const review = { schemaVersion: NATIVE_BASIC_PARENT_REVIEW_SCHEMA, requestId: request.requestId, examUid: request.examUid, sourceArchiveFile: source,
+    status: 'PASS', decision: 'REGISTER_NEW_BASIC_PARENT_ONLY', preparedBy: 'preparer', reviewedBy: 'root-independent', priorCommit, expectedQuestionCount: 2,
+    expectedSourceBlobSha1: afterBlob, newBasicParentApprovals: 1, preservedMetadataApprovals: 0, advancedApprovals: 0, newDifficultyJudgments: 0,
+    questions: [{ questionUid: selectedUid, sourceOrdinal: 1, nativeItemSha256: hash(decision), currentQuestionSha256: hash(current), priorMetadataSha256: hash(meta[0]), priorIdentitySha256: hash(ids[0]), basicParent: parent }] };
+  const wrapperRef = save(EVID + '/new-basic.review.json', review);
+  request.approval.evidenceRefs = [nativeRef, independentRef, wrapperRef]; request.items[0].evidenceRefs = [...request.approval.evidenceRefs];
+  return { dir, request, save, current, currentBefore, untouched, meta, ids, d5, selectedUid, source, native, independent, review, nativeRef, independentRef, wrapperRef, independentPath, nativePath, checkpoint };
+}
+
+test('new reviewed BASIC parent registers one explicit-curriculum parent without upgrading advanced holds; exact native D5 replay remains separate', t => {
+  const f = newBasicParentFixture(t); const dry = run(f); assert.equal(dry.newBasicParentApprovals, 1); assert.equal(dry.preservedMetadataApprovals, 0); assert.equal(dry.newMetadataApprovals, 1); assert.equal(dry.advancedApprovals, 0);
+  const registered = run(f, { write: true }); assert.equal(registered.newBasicParentApprovals, 1);
+  const md = readJson(f.dir, 'archive/data/question_metadata.json'); assert.deepEqual(md.records[1], f.meta[1]);
+  assert.deepEqual({ ...md.records[0], ...f.request.items[0].before }, f.meta[0]);
+  assert.equal(readJson(f.dir, 'archive/data/basic-scope-source-links.json').records.length, 1);
+  assert.equal(run(f, { verifyProjection: true }).newBasicParentApprovals, 1);
+  for (const k of f.d5) md.records[0][k] = f.current[k]; f.save('archive/data/question_metadata.json', md);
+  const replay = run(f, { write: true }); assert.equal(replay.replay, true); assert.deepEqual(replay.plannedPaths, []);
+  const receipt = readJson(f.dir, EVID + '/reviewed-new-basic.json'); assert.equal(receipt.metadataRegistrationStatus, 'BASIC_PARENT_REGISTERED'); assert.equal(receipt.newReview2, 0);
+});
+
+test('new BASIC refuses missing explicit curriculum, native curriculum proposal, HOLD disposition, or invented parent', t => {
+  for (const mutate of [
+    f => { delete f.current.curriculum; write(f.dir, 'archive/exams/' + f.source, sourceText([f.current, f.untouched])); f.request.expectedSourceBlobSha1 = git(f.dir, 'hash-object', 'archive/exams/' + f.source); f.request.items[0].after = { sourceFingerprint: sourceFingerprint(f.current), contentFingerprint: contentFingerprint(f.current) }; },
+    f => { f.native.items[0].semanticDecision.curriculumProvenance = 'PROPOSAL_ONLY'; const ref = f.save(f.nativeRef.path, f.native); f.request.approval.sourceReview.nativeReviewRef = ref; f.request.approval.evidenceRefs[0] = ref; f.request.items[0].evidenceRefs[0] = ref; },
+    f => { f.independent.rows[0].basicParentDisposition = 'HOLD_CURRICULUM_EVIDENCE_NOT_ESTABLISHED'; const ref = f.save(f.independentRef.path, f.independent); f.request.approval.sourceReview.independentReviewRef = ref; f.request.approval.evidenceRefs[1] = ref; f.request.items[0].evidenceRefs[1] = ref; },
+    f => { f.request.items[0].basicParent = { ...f.request.items[0].basicParent, curriculumKey: '2015' }; },
+  ]) { const f = newBasicParentFixture(t); mutate(f); refuses(f, /REVIEWED_NATIVE_BASIC_PARENT/); }
+});
+
+test('new BASIC binds an optional current-source path and rejects immutable wrong-path or HOLD reviews', t => {
+  const revise = (f, mutate) => {
+    mutate(f.independent.rows[0]);
+    f.save(f.independentPath, f.independent);
+    f.request.approval.sourceReview.independentReviewCommit = f.checkpoint('independent review revision');
+    const ref = f.save(f.independentRef.path, f.independent);
+    f.request.approval.sourceReview.independentReviewRef = ref;
+    f.request.approval.evidenceRefs[1] = ref; f.request.items[0].evidenceRefs[1] = ref;
+  };
+  const valid = newBasicParentFixture(t);
+  revise(valid, a => { a.sourceAfter.path = 'archive/exams/' + valid.source; });
+  assert.equal(run(valid).newBasicParentApprovals, 1);
+  for (const mutate of [
+    a => { a.sourceAfter.path = 'archive/exams/original/middle/m2/1final/other.js'; },
+    a => { a.sourceAfter.unreviewedSource = true; },
+    a => { a.basicParentDisposition = 'HOLD_CURRICULUM_EVIDENCE_NOT_ESTABLISHED'; },
+  ]) {
+    const f = newBasicParentFixture(t); revise(f, mutate);
+    refuses(f, /independent (?:source hash|exact current review) mismatch/);
+  }
+});
+
+test('new BASIC refuses altered answer, solution, non-selected question or hidden renderer dependency before writes', t => {
+  for (const change of [f => { f.current.answer = '②'; }, f => { f.current.solution = '다른 설명'; }, f => { f.untouched.content += '변경'; },
+    f => { f.current.sharedMaterial = '<img src="assets/hidden.svg">'; }]) {
+    const f = newBasicParentFixture(t); change(f); write(f.dir, 'archive/exams/' + f.source, sourceText([f.current, f.untouched]));
+    f.request.expectedSourceBlobSha1 = git(f.dir, 'hash-object', 'archive/exams/' + f.source); f.request.items[0].after = { sourceFingerprint: sourceFingerprint(f.current), contentFingerprint: contentFingerprint(f.current) };
+    refuses(f, /REVIEWED_NATIVE_BASIC_PARENT/);
+  }
+});
+
+test('new BASIC retains whole protected metadata/identity and rejects runtime assignment, existing link and arbitrary difficulty', t => {
+  for (const mutate of [
+    f => { const d = readJson(f.dir, 'archive/data/question_metadata.json'); d.records[0].fieldStatus.problemType = 'approved'; f.save('archive/data/question_metadata.json', d); },
+    f => { const d = readJson(f.dir, 'archive/data/question_identity_map.json'); d.records[0].unexpected = true; f.save('archive/data/question_identity_map.json', d); },
+    f => { f.save('archive/data/meta-foundation/runtime/middle-geometry-v1.json', { records: [{ questionUid: f.selectedUid, metadataStatus: 'APPROVED' }] }); },
+    f => { f.save('archive/data/basic-scope-source-links.json', { status: 'REVIEWED_SCOPE_LINKS', records: [{ ...f.request.items[0].basicParent, sourceFile: f.source, sourceOrdinal: 1 }] }); },
+    f => { const d = readJson(f.dir, 'archive/data/question_metadata.json'); d.records[0].difficultyConfidence = 'low'; f.save('archive/data/question_metadata.json', d); },
+  ]) { const f = newBasicParentFixture(t); mutate(f); refuses(f, /REVIEWED_NATIVE_BASIC_PARENT|already has a scoped source link/); }
+});
+
+test('new BASIC replay revalidates immutable review, current authority and exact receipt counts', t => {
+  for (const mutate of [
+    f => { fs.unlinkSync(path.join(f.dir, f.independentRef.path)); },
+    f => { const p = 'archive/data/archive2-canonical-projection-policy.json', d = readJson(f.dir, p); d.gradeCourseAllowlist = []; f.save(p, d); },
+    f => { const p = EVID + '/reviewed-new-basic.json', d = readJson(f.dir, p); d.newBasicParentApprovals = 0; f.save(p, d); },
+    f => { const p = EVID + '/reviewed-new-basic.json', d = readJson(f.dir, p); d.applied[0].independentReviewRef.sha256 = '0'.repeat(64); f.save(p, d); },
+  ]) {
+    const f = newBasicParentFixture(t); run(f, { write: true }); mutate(f); const before = snapshot(f.dir);
+    assert.throws(() => run(f, { verifyProjection: true }), /evidence missing|REVIEWED_NATIVE_BASIC_PARENT|receipt\/protected value drift/); assert.equal(snapshot(f.dir), before);
+  }
 });

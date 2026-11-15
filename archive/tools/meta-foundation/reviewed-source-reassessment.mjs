@@ -240,6 +240,16 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       // This schema's reviewed decisive step may be carried verbatim as both rationale
       // fields. It is not a separately authored method judgment or new mathematical QA.
       value = row.decisiveStep; origin = "NATIVE_DECISIVE_STEP_VERBATIM";
+    } else if (field === "primaryMethod" && review.schemaVersion === "m3-s2-complete-semantic-review-v1" &&
+      Object.keys(patch.after).length === 2 && ["sourceFingerprint", "contentFingerprint"].every(key => Object.hasOwn(patch.after, key)) &&
+      metadata.metadataApprovalType === "FINAL_QA" && metadata.reviewStatus === "reviewed_pass" &&
+      metadata.tagStatus === "reviewed_pass" && String(metadata.metadataStatus || "").startsWith("approved_") &&
+      metadata.metaFoundationStatus === "ACTIVE" &&
+      ["primaryMethod", "decisiveStep"].every(key => [metadata[key], question[key], final[key]].every(v => equal(v, row.decisiveStep)))) {
+      // A fingerprint-only reassessment retains this already issued value. Both
+      // rationale fields still require the same immutable native decisive step;
+      // no omitted or newly supplied rationale is approved by this branch.
+      value = row.decisiveStep; origin = "REGISTERED_NATIVE_DECISIVE_STEP_UNCHANGED";
     } else fail(`rationale has no immutable native evidence: ${field}`);
     if (!text(value) || Object.hasOwn(question, field) && !equal(question[field], value))
       fail(`current source rationale differs from native evidence: ${field}`);

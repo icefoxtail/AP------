@@ -135,6 +135,10 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "수직선의 A, B, C는 차례로 0, 1, 2이다. A·B 위와 B·C 위에 한 변의 길이가 1인 두 정사각형이 나란히 서 있다. B에서 왼쪽 위 D로 잇는 대각선과 오른쪽 위 E로 잇는 대각선이 있다. 같은 길이를 왼쪽 P와 오른쪽 Q를 향하는 두 원호로 옮겼다.",
+    "image": "assets/images/18_연향중_1학기_중간_중3_수학/q8-problem-visual-v2.svg",
     "questionNumber": 8,
     "number": 8,
     "questionType": "객관식",
@@ -147,9 +151,7 @@ window.questionBank = [
       "④ $\\sqrt{2}$",
       "⑤ $2\\sqrt{2}$"
     ],
-    "images": [
-      "assets/images/18_연향중_1학기_중간_중3_수학/q08.png"
-    ],
+    "images": ["assets/images/18_연향중_1학기_중간_중3_수학/q8-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.0
@@ -194,6 +196,10 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "윗변이 한 수평선 위에 있는 네 정사각형이 왼쪽부터 (가), (나), (다), (라) 순서로 커진다. 점 P는 첫 정사각형의 왼쪽 위이고 점 Q는 끝 정사각형의 오른쪽 위이다.",
+    "image": "assets/images/18_연향중_1학기_중간_중3_수학/q11-problem-visual-v2.svg",
     "questionNumber": 11,
     "number": 11,
     "questionType": "객관식",
@@ -206,9 +212,7 @@ window.questionBank = [
       "④ $\\sqrt{2}-5\\sqrt{3}$",
       "⑤ $2\\sqrt{2}-\\sqrt{3}$"
     ],
-    "images": [
-      "assets/images/18_연향중_1학기_중간_중3_수학/q11.png"
-    ],
+    "images": ["assets/images/18_연향중_1학기_중간_중3_수학/q11-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 5.0
@@ -399,15 +403,17 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "왼쪽의 큰 정사각형 A가 전체 높이를 채운다. 오른쪽 좁은 띠 위에는 직사각형 B가 있고 아래에는 작은 정사각형 C가 있다. B와 C의 가로 길이는 같다.",
+    "image": "assets/images/18_연향중_1학기_중간_중3_수학/q22-problem-visual-v2.svg",
     "questionNumber": 22,
     "number": 22,
     "questionType": "서술형",
     "question": "[서술형 2] 오른쪽 그림은 하나의 직사각형을 두 개의 정사각형 $\\mathrm{A, C}$와 직사각형 $\\mathrm{B}$로 나눈 것이다. 두 정사각형 $\\mathrm{A, C}$ 넓이가 각각 $\\frac{18}{5}x$, $14-x$이고, 변의 길이가 모두 자연수일 때, 직사각형 $\\mathrm{B}$의 넓이를 구하여라. (단, $x$는 자연수)(7점)",
     "content": "[서술형 2] 오른쪽 그림은 하나의 직사각형을 두 개의 정사각형 $\\mathrm{A, C}$와 직사각형 $\\mathrm{B}$로 나눈 것이다. 두 정사각형 $\\mathrm{A, C}$ 넓이가 각각 $\\frac{18}{5}x$, $14-x$이고, 변의 길이가 모두 자연수일 때, 직사각형 $\\mathrm{B}$의 넓이를 구하여라. (단, $x$는 자연수)(7점) [7점]",
     "choices": [],
-    "images": [
-      "assets/images/18_연향중_1학기_중간_중3_수학/q22.png"
-    ],
+    "images": ["assets/images/18_연향중_1학기_중간_중3_수학/q22-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 7.0

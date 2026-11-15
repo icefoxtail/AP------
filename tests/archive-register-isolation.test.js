@@ -204,7 +204,7 @@ function auditDependencyFixture(t, { difficultyBehavior = 'ok', auditBehavior = 
   return {...f,put,audit,difficulty,auditPath,difficultyPath,source};
 }
 
-function basicDependencyFixture(t,{behavior='ok',stale=false}={}){
+function basicDependencyFixture(t,{behavior='ok',stale=false,newParent=false}={}){
   const f=fixture(t,{'00-difficulty':'ok','10-unrelated':'ok','99-basic-preserve':behavior});
   const put=(rel,value)=>{fs.mkdirSync(path.dirname(path.join(f.dir,rel)),{recursive:true});fs.writeFileSync(path.join(f.dir,rel),typeof value==='string'?value:JSON.stringify(value)+'\n');};
   const source='archive/exams/original/basic.js',body='window.questions=[{id:1}];\n';put(source,body);
@@ -212,7 +212,7 @@ function basicDependencyFixture(t,{behavior='ok',stale=false}={}){
   const fingerprints={sourceFingerprint:'a'.repeat(64),contentFingerprint:'b'.repeat(64)},uid='fixture';
   const basicPath='.archive-meta-register/inbox/99-basic-preserve.json',difficultyPath='.archive-meta-register/inbox/00-difficulty.json';
   put(basicPath,{schemaVersion:'archive-basic-scope-rebind-request-v1',behavior,sourceArchiveFile:'original/basic.js',expectedSourceBlobSha1:blob,expectedQuestionCount:1,
-    approval:{type:'BASIC_SCOPE_REBIND',sourceReview:{schemaVersion:'archive-basic-scope-current-source-preservation-v1'}},
+    approval:{type:'BASIC_SCOPE_REBIND',sourceReview:{schemaVersion:newParent?'archive-reviewed-native-basic-parent-v1':'archive-basic-scope-current-source-preservation-v1'}},
     items:[{questionUid:uid,sourceOrdinal:1,after:fingerprints}]});
   put(difficultyPath,{schemaVersion:'archive-difficulty5-register-request-v1',behavior:'ok',
     gemini:{schemaVersion:'v1',sourceArchiveFile:'original/basic.js',latestBlobSha:blob,items:[{questionUid:uid,ordinal:1}]},
@@ -224,6 +224,12 @@ function basicDependencyFixture(t,{behavior='ok',stale=false}={}){
 test('main uses exact basic-before-D5 dependency despite reversed filenames',t=>{
   const f=basicDependencyFixture(t),r=f.run();assert.equal(r.status,0,r.stderr);
   assert.deepEqual(r.applied,['.archive-meta-register/inbox/10-unrelated.json',f.basicPath,f.difficultyPath]);assert.deepEqual(r.rejected,[]);
+});
+test('main orders a new BASIC parent before exact D5 and propagates its refusal without changing unrelated requests',t=>{
+  const f=basicDependencyFixture(t,{newParent:true}),r=f.run();assert.equal(r.status,0,r.stderr);
+  assert.deepEqual(r.applied,['.archive-meta-register/inbox/10-unrelated.json',f.basicPath,f.difficultyPath]);assert.deepEqual(r.rejected,[]);
+  const bad=basicDependencyFixture(t,{newParent:true,behavior:'fail'}),refused=bad.run();assert.equal(refused.status,0,refused.stderr);
+  assert.deepEqual(refused.applied,['.archive-meta-register/inbox/10-unrelated.json']);assert.deepEqual(refused.rejected,[bad.basicPath,bad.difficultyPath]);
 });
 test('refused basic preservation prevents its paired D5 and keeps unrelated registration',t=>{
   const f=basicDependencyFixture(t,{behavior:'fail'}),r=f.run();assert.equal(r.status,0,r.stderr);

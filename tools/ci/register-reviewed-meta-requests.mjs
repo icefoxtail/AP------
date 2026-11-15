@@ -125,7 +125,7 @@ export function orderedRequestPaths(opt, { onDependencyError } = {}) {
     return {path:rel,requestArg,sha256:bytes?sha256(bytes):undefined,doc,sourceRebind,
       ...(registryDependency?{registryDependency}:{}),
       ...(sourceRebind?{kind:'native-approval-preservation'}:{}),
-      ...(basicPreservation?{basicPreservation,kind:'basic-approval-preservation'}:{}),
+      ...(basicPreservation?{basicPreservation,kind:basicPreservation.newBasicParent?'basic-parent-registration':'basic-approval-preservation'}:{}),
       ...(doc?.schemaVersion===DIFFICULTY_REQUEST_SCHEMA&&doc.gemini?.schemaVersion==='v1'
         &&doc.reviewedCorrection?.schemaVersion==='archive-difficulty5-reviewed-correction-v1'
         ?{kind:'difficulty5-ratings',difficultyBeforeBindings:difficultyBeforeBindings(doc),
