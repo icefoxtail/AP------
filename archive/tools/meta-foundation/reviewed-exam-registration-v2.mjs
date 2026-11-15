@@ -2153,7 +2153,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (previous) {
     let preservedAudit = null;
     if (auditPreservationRequested) {
-      assertAuditPreservationReceipt(previous, req, bytes, patches.size);
+      assertAuditPreservationReceipt(previous, req, bytes, bank.length);
       const context = loadAuditPreservation({ root, request: req, bytes, bank });
       preservedAudit = context;
       registerDifficulty5({ root, request: context.difficulty, verifyProjection: true });
@@ -2162,6 +2162,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         .filter(n => n.endsWith(".json") && n !== "runtime-bridge-receipt.json")
         .flatMap(n => read("archive/data/meta-foundation/runtime/" + n).records || []);
       for (const current of rows) {
+        if (!targetUids.has(current.questionUid)) continue;
         const resolved = resolve(current, replayTables, { allowConditionDebt: current.conditionKeysEvidenceDebt?.status === "EVIDENCE_DEBT" });
         const found = allRuntime.filter(r => r.questionUid === current.questionUid);
         if (found.length !== 1 || resolved.pack.meta.packId !== current.metaFoundationPackId ||

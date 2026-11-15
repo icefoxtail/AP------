@@ -162,7 +162,7 @@ test("native preservation rejects mixed modes, value edits and ambiguous selecte
     r => { r.approval.sourceRebind.schemaVersion = "unknown-preservation"; },
     r => { r.approval.sourceRebind = null; },
     r => { r.approval.metadataReviewed = false; },
-    r => { r.approval.type = "META_PIPELINE_AUDIT"; r.approval.sourceRebind.schemaVersion = "archive-native-audit-preservation-v1"; },
+    r => { r.approval.type = "META_PIPELINE_AUDIT"; r.approval.sourceRebind.schemaVersion = "unknown-audit-preservation"; },
     r => { r.registryChanges = [{}]; },
     r => { r.scope = "OTHER"; },
     r => { delete r.scope; },
@@ -186,6 +186,22 @@ test("native preservation rejects mixed modes, value edits and ambiguous selecte
     assert.equal(out.status, "FAIL"); assert.equal(out.counts.passed, 0); assert.equal(out.counts.skippedUnchanged, 0);
     assert.equal(out.failures[0].reason, "INVALID_REQUEST", out.failures[0].detail);
   }
+});
+
+test("partial audit preservation is typed as existing approval preservation and still requires its native replay", t => {
+  const f = historicalConsumerFixture(t), item = f.request.items[0];
+  const request = { ...f.request, requestId: "missing-partial-audit-proof", scope: "PARTIAL_UIDS", registryChanges: [],
+    approval: { ...f.request.approval, type: "META_PIPELINE_AUDIT", sourceRebind: {
+      schemaVersion: "archive-native-audit-preservation-v1", priorReceiptRef: { path: "missing.json", sha256: "a".repeat(64) } } },
+    items: [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, before: {}, after: {} }] };
+  const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "partial-audit.json", request)] });
+  assert.equal(out.status, "FAIL");
+  assert.equal(out.exams[0].kind, "native-approval-preservation");
+  assert.equal(out.exams[0].approvalType, "META_PIPELINE_AUDIT");
+  assert.equal(out.exams[0].expectedQuestionCount, 24);
+  assert.equal(out.exams[0].newMetadataApprovals, 0); assert.equal(out.exams[0].preservedMetadataApprovals, 0);
+  assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 0, skippedUnchanged: 0 });
+  assert.equal(out.failures[0].reason, "NATIVE_PRESERVATION_MISMATCH");
 });
 
 test("preserved native summary separates old approvals from new approvals and keeps its source denominator", () => {

@@ -168,7 +168,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
           typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
           (!audit && doc.approval.sourceRebind.schemaVersion !== undefined) ||
           doc.approval.metadataReviewed !== true || doc.registryChanges?.length ||
-          (doc.scope !== undefined && !partial) || (audit && partial) ||
+          (doc.scope !== undefined && !partial) ||
           !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(doc.requestId || "") ||
           !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 ||
           !doc.items.length || doc.items.length > doc.expectedQuestionCount ||

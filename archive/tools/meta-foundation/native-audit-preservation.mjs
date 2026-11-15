@@ -134,13 +134,29 @@ export function readPreservedAuditEvidence(root, request, ref) {
   return Buffer.from(snapshot.rawUtf8, "utf8");
 }
 
-// The original receipt is immutable at priorCommit and was bound to that exact
-// source. Every UID is kept; the new request cannot change classification or QA.
+function preservationSelection(request, questionCount) {
+  const partial = request.scope === "PARTIAL_UIDS";
+  if (request.scope !== undefined && !partial || !Number.isSafeInteger(questionCount) || questionCount < 1 ||
+      request.expectedQuestionCount !== questionCount) fail("preservation scope/source denominator mismatch");
+  const patches = unique(request.items, "questionUid", "request UID");
+  if (!patches.size || patches.size > questionCount || !partial && patches.size !== questionCount)
+    fail("preservation selected UID denominator mismatch");
+  const ordinals = unique(request.items, "sourceOrdinal", "request ordinal");
+  if ([...ordinals.keys()].some(n => !Number.isSafeInteger(n) || n < 1 || n > questionCount))
+    fail("preservation selected ordinal outside source");
+  return { partial, patches, selectedCount: patches.size };
+}
+
+// The original full receipt is immutable at priorCommit and was bound to that
+// exact source. A full request keeps every UID; explicit PARTIAL_UIDS keeps only
+// its exact subset. Neither path changes classification or QA. The independently
+// reviewed difficulty input must still cover the entire source bank.
 export function loadAuditPreservation({ root, request, bytes, bank }) {
   const approval = request.approval, spec = approval?.sourceRebind, source = request.sourceArchiveFile;
-  if (!isAuditPreservation(approval) || request.scope !== undefined || request.registrationMode !== undefined ||
+  if (!isAuditPreservation(approval) || request.registrationMode !== undefined ||
       request.registryChanges?.length || !text(approval.approvedBy) || approval.metadataReviewed !== true)
-    fail("requires full existing META_PIPELINE_AUDIT without registry changes");
+    fail("requires existing META_PIPELINE_AUDIT without registry changes");
+  const { patches } = preservationSelection(request, bank.length);
   if (Object.keys(spec).some(k => !["schemaVersion", "requestPath", "priorCommit", "priorReceiptRef", "difficultyRequestRef", "solutionRepair", "consumerParentRef"].includes(k)))
     fail("unknown preservation option");
   if (!spec.requestPath?.startsWith(".archive-meta-register/inbox/")) fail("explicit preservation inbox path required");
@@ -174,10 +190,14 @@ export function loadAuditPreservation({ root, request, bytes, bank }) {
   const records = unique(prior.appliedRecords, "questionUid", "prior metadata UID");
   const identities = unique(prior.appliedIdentityRecords, "questionUid", "prior identity UID");
   const runtimes = unique(prior.runtimeRecords, "questionUid", "prior runtime UID");
-  const patches = unique(request.items, "questionUid", "request UID");
-  if ([records, identities, runtimes, patches].some(m => m.size !== bank.length) ||
+  if ([records, identities, runtimes].some(m => m.size !== bank.length) ||
       new Set(prior.appliedRecords.map(r => r.sourceOrdinal)).size !== bank.length)
     fail("whole-exam UID denominator mismatch");
+  for (const [uid, patch] of patches) {
+    if ([records.get(uid), identities.get(uid), runtimes.get(uid)].some(row =>
+      !row || row.sourceArchiveFile !== source || row.sourceOrdinal !== patch.sourceOrdinal))
+      fail("selected UID/ordinal is not in the original full audit: " + uid);
+  }
   const masterRef = refs.find(r => r.path === MASTER);
   const master = readRef(root, masterRef, refs).data;
   if (!Array.isArray(master)) fail("current canonical master must be bound");
@@ -230,7 +250,7 @@ export function loadAuditPreservation({ root, request, bytes, bank }) {
 // separately; a matching label without its UID, fingerprints and keys is never
 // sufficient. This does not grant a new parent or alter a registered value.
 function loadPreservedConsumerParents(context) {
-  const { root, request, prior, ref, records } = context;
+  const { root, request, prior, ref, records, patches } = context;
   const parentRef = request.approval.sourceRebind.consumerParentRef;
   if (!parentRef) return new Map();
   if (!parentRef.path?.startsWith(RECEIPTS) || !parentRef.path.endsWith(".parent-preservation.json"))
@@ -254,7 +274,8 @@ function loadPreservedConsumerParents(context) {
     fail("consumer parent immutable authority mismatch");
   const priorMetadata = gitJson(root, proof.priorConsumerCommit, "archive/data/question_metadata.json");
   const parents = unique(proof.records, "questionUid", "consumer parent UID");
-  if (!parents.size || parents.size > records.size) fail("consumer parent UID scope mismatch");
+  if (!parents.size || parents.size > patches.size || [...parents.keys()].some(uid => !patches.has(uid)))
+    fail("consumer parent UID outside preserved selection");
   const fields = ["sourceOrdinal", "standardCourse", "standardUnitKey", "subUnitKey", "curriculumKey", "courseKey", "sourceFingerprint", "contentFingerprint"];
   for (const [uid, parent] of parents) {
     const old = records.get(uid), saved = priorMetadata.records?.filter(r => r.questionUid === uid);
@@ -388,12 +409,16 @@ export function planPreservedAuditRecord(context, { current, identity, runtime, 
       auditPreservation: { priorReceiptRef: context.ref, solutionRepair: request.approval.sourceRebind.solutionRepair } } : null };
 }
 
-export function assertAuditPreservationReceipt(receipt, request, bytes, count) {
+export function assertAuditPreservationReceipt(receipt, request, bytes, questionCount) {
+  const { partial, patches, selectedCount: count } = preservationSelection(request, questionCount);
   if (receipt.schemaVersion !== "archive-reviewed-exam-meta-registration-v2" || receipt.metadataRegistrationStatus !== "REGISTERED" ||
       receipt.requestId !== request.requestId || receipt.requestSha256 !== sha(stable(request)) ||
       !equal(receipt.approval, request.approval) || receipt.sourceArchiveFile !== request.sourceArchiveFile ||
       receipt.sourceBlobSha1 !== request.expectedSourceBlobSha1 || receipt.sourceRawSha256 !== sha(bytes) ||
-      receipt.scope !== undefined || receipt.totalQuestions !== count || receipt.newMetadataApprovals !== 0 ||
+      receipt.registrationMode !== undefined ||
+      (partial ? receipt.scope !== request.scope || receipt.partialUidCount !== count || receipt.expectedQuestionCount !== questionCount
+        : receipt.scope !== undefined || receipt.partialUidCount !== undefined) ||
+      receipt.totalQuestions !== count || receipt.newMetadataApprovals !== 0 ||
       receipt.preservedMetadataApprovals !== count || receipt.examFinalQaStatus !== "NOT_EVALUATED_BY_REGISTRAR")
     fail("preservation receipt binding/count drift");
   const records = unique(receipt.appliedRecords, "questionUid", "preserved receipt UID");
@@ -402,6 +427,8 @@ export function assertAuditPreservationReceipt(receipt, request, bytes, count) {
   const repairs = unique(receipt.fingerprintRepairs, "questionUid", "preserved receipt fingerprint repair");
   const summary = receipt.auditPreservation;
   if ([records, ids, runtimes].some(m => m.size !== count) ||
+      [records, ids, runtimes].some(m => [...m].some(([uid, row]) => !patches.has(uid) ||
+        row.sourceOrdinal !== patches.get(uid).sourceOrdinal || row.sourceArchiveFile !== request.sourceArchiveFile)) ||
       [...ids.keys(), ...runtimes.keys(), ...repairs.keys()].some(uid => !records.has(uid)) ||
       new Set(receipt.appliedRecords.map(r => r.sourceOrdinal)).size !== count ||
       receipt.registryChanges?.length || summary?.schemaVersion !== AUDIT_PRESERVATION_SCHEMA ||
@@ -452,7 +479,7 @@ export function verifyPreservedAuditDifficulty({ root, difficulty, current, iden
       const registered = unique(receipt.appliedRecords, "questionUid", "registered metadata UID");
       const registeredIds = unique(receipt.appliedIdentityRecords, "questionUid", "registered identity UID");
       const registeredRuntime = unique(receipt.runtimeRecords, "questionUid", "registered runtime UID");
-      if ([registered, registeredIds, registeredRuntime].some(m => m.size !== bank.length) ||
+      if ([registered, registeredIds, registeredRuntime].some(m => m.size !== context.patches.size) ||
           !equal(registered.get(current.questionUid), current) || !equal(registeredIds.get(current.questionUid), identity))
         continue;
       if (!/^[A-Z][A-Z0-9_]*$/.test(current.metaFoundationPackId || "")) continue;

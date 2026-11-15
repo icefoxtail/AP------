@@ -305,10 +305,13 @@ workflow에는 `::error` 주석과 요약 표가 남는다. 거절은 run을 실
 이미 유효한 전체 시험 감사 영수증이 있고, 원본 메타 운반 또는 별도로 검토된 해설 수리 때문에 전체 JS 해시가 바뀐 경우에만
 기존 v2 요청의 approval.type: META_PIPELINE_AUDIT와
 approval.sourceRebind.schemaVersion: archive-native-audit-preservation-v1을 사용한다.
-일반 FINAL_QA/REVIEW2 등록이나 부분 등록으로 전환하지 않는다.
+일반 FINAL_QA/REVIEW2 승인으로 전환하지 않는다. 기본 범위는 전체 시험이며,
+같은 원 전체 감사에서 일부 UID만 그대로 보존할 때는 명시적으로 `scope: PARTIAL_UIDS`를 사용한다.
 
 - requestPath는 해당 요청의 inbox 경로다. priorCommit의 실제 Git commit에서 priorReceiptRef의 raw SHA와 원본 blob/SHA를 대조한다.
-  이전 영수증, metadata, identity, runtime, 요청의 UID/ordinal 집합은 원시험 전체 분모와 같아야 한다.
+  이전 영수증의 metadata, identity, runtime UID/ordinal 집합은 원시험 전체 분모와 같아야 한다.
+  부분 보존도 `expectedQuestionCount`는 현재 원본 전체 문항 수이며, 요청 item은 원 전체 감사의 정확한 UID/ordinal 부분집합이어야 한다.
+  빈 집합, 중복, 범위 밖 순번, 다른 UID, 부분 영수증을 prior로 삼는 요청은 거부한다. 연쇄 prior는 지원하지 않는다.
 - 모든 item은 before: {}, after: {}이며 registryChanges는 없다. 원래 감사 종류, 분류키·부모·승인 필드 상태,
   review_required, source_unreviewed, EVIDENCE_DEBT, 선택 가능 상태를 그대로 보존한다.
 - difficultyRequestRef는 동일 source blob과 전체 UID를 대상으로 이미 적용된 공식 reviewed-correction D5 요청의 경로/raw SHA다.
@@ -322,6 +325,9 @@ approval.sourceRebind.schemaVersion: archive-native-audit-preservation-v1을 사
   해설 외 학생용 필드와 표시 번호가 모두 같아야만 full fingerprint를 갱신한다.
   새 시험지 QA나 고급 분류 승인을 부여하지 않는다.
 - 영수증은 newMetadataApprovals: 0, preservedMetadataApprovals: N, 실제 해설 지문 수리 수를 따로 기록한다.
+  부분 보존에서 N은 선택 UID 수이며 `scope`, `partialUidCount`, `totalQuestions`와 일치한다.
+  `expectedQuestionCount`에는 전체 시험 분모를 별도로 보존한다. 적용 metadata/identity/runtime와 재실행 검증은
+  정확히 선택한 UID에만 한정하고 선택 밖 행은 바꾸지 않는다. 원 전체 감사 및 D5 correction/gemini/proof의 전체 문항 검증은 줄이지 않는다.
   성공한 inbox가 소비된 이후에도 검증할 수 있도록 원 요청 객체와 D5 입력의 정확한 raw UTF-8를 영수증에 봉인한다.
   원 요청의 stable digest와 D5 raw SHA를 다시 검증하며, 현재 파일이 남아 있으면 봉인 사본으로 파일 변조를 숨길 수 없다.
 - AutoMeta는 위 증거, 현재 source/identity/metadata/runtime, ACTIVE PT/TPL과 exact binding을 다시 검증해 기존 승인만 재사용한다.
@@ -342,6 +348,8 @@ approval.sourceRebind.schemaVersion: archive-native-audit-preservation-v1을 사
   실제 canonical 기본 부모 검증을 다시 통과해야 한다. 이 경우 L1/L2의 화면 값은 그 기존 투영과 비교하고,
   raw 승인 L1/L2는 기존 runtime과 비교해 그대로 보존한다. PT/TPL·나머지 값과 ACTIVE binding 검증은 유지한다.
   새 부모 승인, 라벨만 같은 다른 키, 지문·분모·정본 근거 변조는 허용하지 않는다.
+  부분 보존의 parent witness도 선택한 UID 안에서 실제 근거가 필요한 행만 포함한다. witness의
+  `expectedQuestionCount`는 원 전체 분모를 유지하며, 선택 밖 다른 승인 UID의 부모를 끼워 넣으면 거부한다.
 
 ## 검증
 
