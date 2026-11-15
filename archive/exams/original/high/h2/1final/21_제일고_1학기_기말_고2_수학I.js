@@ -252,7 +252,11 @@ window.questionBank = [
       "examUid": "21_제일고_1학기_기말_고2_수학I",
       "sourceQid": 5,
       "sourceJsSha256": "b73ae437b1071dabdd25504d3159962cebccb953f4fedcf961f4821d98926e97"
-    }
+    },
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_수학I/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 a=BC=5는 파랑, b=CA=6은 따뜻한 색, c=AB=7은 중성 선으로 표시했다. 끼인각 C에는 호가 있다.",
+    "solutionImageCaption": "각 C의 코사인은 코사인법칙으로 1/5이고, 그 사인값을 두 변과 끼인각의 넓이 공식에 대입한다. 정답은 6√6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,

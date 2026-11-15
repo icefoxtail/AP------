@@ -43,7 +43,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 A에서 BC의 직선에 내린 높이 AH=2√3을 보인다. H는 B의 왼쪽에 있고 H에서 직각을 이룬다.",
+    "solutionImageCaption": "A에서 BC의 연장선에 내린 높이 AH를 이용해 넓이 공식을 확인한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
