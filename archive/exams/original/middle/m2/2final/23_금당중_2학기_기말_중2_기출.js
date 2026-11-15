@@ -27,7 +27,29 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 그 그래프",
+    "rpmL3": "일차함수의 뜻",
+    "rpmL4": "일차함수 판별",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 그 그래프",
+      "l3": "일차함수의 뜻",
+      "l4": "일차함수 판별"
+    },
+    "primaryMethod": "일차함수 정의로 후보식 판정",
+    "decisiveStep": "식을 정리하여 y=ax+b에서 a가0이 아닌 식을 고른다."
   },
   {
     "id": 2,
@@ -55,7 +77,29 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_POINT_SLOPE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 그 그래프",
+    "rpmL3": "식 구하기",
+    "rpmL4": "기울기와 한 점으로 식 구하기",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 그 그래프",
+      "l3": "식 구하기",
+      "l4": "기울기와 한 점으로 식 구하기"
+    },
+    "primaryMethod": "x절편을 점으로 바꿔 상수항 결정",
+    "decisiveStep": "주어진절편(-2,0)을 대입해 a를 구한 뒤 y절편을 읽는다."
   },
   {
     "id": 3,
@@ -80,14 +124,38 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 평행이동해도 기울기는 변하지 않는다.\n이동한 직선은 $y=ax-1+b$이다. 두 점을 이용하면 기울기 $a=\\dfrac{-5-1}{3-1}=-3$이다.\n점 $(1,1)$을 대입하면 $1=-3-1+b$이므로 $b=5$이다. 따라서 $a-b=-3-5=-8$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 두 점을 지나는 이동 후 직선과 이에 평행한 이동 전 직선.",
     "solutionImageCaption": "기울기 a=-3이고 y절편 차 b=5이므로 a-b=-8이다. 정답 ③.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_TWO_POINTS",
+    "crossConceptKeys": [
+      "CC_PARALLEL_TRANSLATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 그 그래프",
+    "rpmL3": "식 구하기",
+    "rpmL4": "두 점으로 식 구하기",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 그 그래프",
+      "l3": "식 구하기",
+      "l4": "두 점으로 식 구하기"
+    },
+    "primaryMethod": "두 점의 기울기와 수직 평행이동",
+    "decisiveStep": "이동한 두 점에서 공통기울기를 구한 후 이동량을 절편으로 결정한다."
   },
   {
     "id": 4,
@@ -122,7 +190,29 @@ window.questionBank = [
     "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 두 점 (-1,-3), (2,3)을 지나는 일차함수 그래프.",
     "solutionImageCaption": "기울기 a=6/3=2, y절편 b=-1이므로 b/a=-1/2이다. 정답 ③.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_TWO_POINTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 그 그래프",
+    "rpmL3": "식 구하기",
+    "rpmL4": "두 점으로 식 구하기",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 그 그래프",
+      "l3": "식 구하기",
+      "l4": "두 점으로 식 구하기"
+    },
+    "primaryMethod": "두 그래프 점으로 기울기와 절편",
+    "decisiveStep": "그림의 두 좌표에서 a,b를 구해 비를 계산한다."
   },
   {
     "id": 5,
@@ -153,7 +243,29 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 그 그래프",
+    "rpmL3": "일차함수의 그래프",
+    "rpmL4": "기울기·절편",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 그 그래프",
+      "l3": "일차함수의 그래프",
+      "l4": "기울기·절편"
+    },
+    "primaryMethod": "그래프에서 계수부호 역추론",
+    "decisiveStep": "감소하는 기울기와 양의 y절편을 각각 a와-b의 부호에 연결한다."
   },
   {
     "id": 6,
@@ -189,7 +301,21 @@ window.questionBank = [
     "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 사각형 ABCD와 고정점 (0,-1)에서 A와 C를 지나는 두 경계 직선.",
     "solutionImageCaption": "기울기의 최솟값은 2/3, 최댓값은 4이므로 p+q=14/3이다. 정답 ①.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "직선이 사각형과 만나는 기울기 범위",
+    "decisiveStep": "고정 y절편에서 사각형을 보는 두 경계 꼭짓점의 기울기를 극값으로 정한다."
   },
   {
     "id": 7,
@@ -224,7 +350,29 @@ window.questionBank = [
     "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 주어진 수평선과 점 (4,2)를 지나는 수평선.",
     "solutionImageCaption": "평행한 직선은 y=k 꼴이며 점의 y좌표가 2이므로 y=2이다. 정답 ⑤.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_PARALLEL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 일차방정식의 관계",
+    "rpmL3": "방정식과 그래프",
+    "rpmL4": "x축·y축에 평행한 직선",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "방정식과 그래프",
+      "l4": "x축·y축에 평행한 직선"
+    },
+    "primaryMethod": "수평선의 일정한 y좌표",
+    "decisiveStep": "주어진점의 y좌표를 수평선 전체의 값으로 둔다."
   },
   {
     "id": 8,
@@ -260,7 +408,29 @@ window.questionBank = [
     "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형의 중심 (7/2,4)과 원점을 지나는 직선.",
     "solutionImageCaption": "중심은 (7/2,4)이므로 기울기는 4 ÷ (7/2)=8/7이다. 정답 ④.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_AREA_BISECTING_LINE",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 일차방정식의 관계",
+    "rpmL3": "그래프 활용",
+    "rpmL4": "넓이",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "그래프 활용",
+      "l4": "넓이"
+    },
+    "primaryMethod": "직사각형 중심을 지나는 넓이 이등분선",
+    "decisiveStep": "중심좌표를 두 변의 중점으로 구해 원점과 잇는 기울기를 계산한다."
   },
   {
     "id": 9,
@@ -291,7 +461,29 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 일차방정식의 관계",
+    "rpmL3": "두 직선의 관계",
+    "rpmL4": "교점과 연립방정식",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "두 직선의 관계",
+      "l4": "교점과 연립방정식"
+    },
+    "primaryMethod": "그래프의 공통 교점으로 계수 복원",
+    "decisiveStep": "교점(1,-2)을 각 직선식에 넣어 a,b를 따로 결정한다."
   },
   {
     "id": 10,
@@ -323,7 +515,31 @@ window.questionBank = [
     "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 두 직선의 교점과 그 점을 지나는 y축 평행선.",
     "solutionImageCaption": "두 식을 연립하면 교점의 x좌표는 -2이므로 구하는 직선은 x=-2이다. 정답 ②.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+    "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+    "crossConceptKeys": [
+      "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 일차방정식의 관계",
+    "rpmL3": "방정식과 그래프",
+    "rpmL4": "x축·y축에 평행한 직선",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "방정식과 그래프",
+      "l4": "x축·y축에 평행한 직선"
+    },
+    "primaryMethod": "연립으로 교점의 x좌표 뒤 수직선식",
+    "decisiveStep": "교점의 x만 구하여 x=상수 형태의 직선을 정한다."
   },
   {
     "id": 11,
@@ -355,7 +571,19 @@ window.questionBank = [
     "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 검은 직선 x+4y-6=0, 파란 직선 3x-4y-2=0과 주황 직선 ax+y-2=0의 평행 또는 공점인 세 경우.",
     "solutionImageCaption": "a=1/4, -3/4, 1/2이므로 그 합은 0이다. 정답 ③.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+    "templateKey": "TPL_INTERSECTION_TRIANGLE_FORMATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "세 직선 비삼각형 조건 경우분류",
+    "decisiveStep": "평행한 두 경우와 세직선공점 한 경우를 빠짐없이 구해 합한다."
   },
   {
     "id": 12,
@@ -384,7 +612,29 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+    "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "확률",
+    "rpmL2": "경우의 수",
+    "rpmL3": "합의 법칙과 곱의 법칙",
+    "rpmL4": "단계별 선택",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "경우의 수",
+      "l3": "합의 법칙과 곱의 법칙",
+      "l4": "단계별 선택"
+    },
+    "primaryMethod": "두 독립 선택의 곱",
+    "decisiveStep": "먹을것3과 마실것3의 선택수를 곱한다."
   },
   {
     "id": 13,
@@ -412,7 +662,29 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+    "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "확률",
+    "rpmL2": "경우의 수",
+    "rpmL3": "합의 법칙과 곱의 법칙",
+    "rpmL4": "단계별 선택",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "경우의 수",
+      "l3": "합의 법칙과 곱의 법칙",
+      "l4": "단계별 선택"
+    },
+    "primaryMethod": "같은 손모양의 서로 다른 세 쌍 열거",
+    "decisiveStep": "각 손모양에 대해 동일한 두 사람의 결과 한 쌍씩 센다."
   },
   {
     "id": 14,
@@ -442,6 +714,32 @@ window.questionBank = [
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_SET_CARDINALITY",
+    "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+    "crossConceptKeys": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "확률",
+    "rpmL2": "경우의 수",
+    "rpmL3": "합의 법칙과 곱의 법칙",
+    "rpmL4": "중복 없이 세기",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "경우의 수",
+      "l3": "합의 법칙과 곱의 법칙",
+      "l4": "중복 없이 세기"
+    },
+    "primaryMethod": "두 배수 집합의 중복 제거",
+    "decisiveStep": "2의배수와5의배수를 더하고 공통10을 한번 뺀다."
   },
   {
     "id": 15,
@@ -470,6 +768,28 @@ window.questionBank = [
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "확률",
+    "rpmL2": "경우의 수",
+    "rpmL3": "배열과 선택",
+    "rpmL4": "순서가 있는 경우",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "경우의 수",
+      "l3": "배열과 선택",
+      "l4": "순서가 있는 경우"
+    },
+    "primaryMethod": "인접한 두 사람 묶음 배열",
+    "decisiveStep": "두 자리의 블록 위치·내부순서·나머지순서를 곱한다."
   },
   {
     "id": 16,
@@ -502,7 +822,29 @@ window.questionBank = [
     "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 격자 길을 경유점 P에서 나누어 첫 구간의 경로 6가지와 둘째 구간의 경로 3가지를 표시한다.",
     "solutionImageCaption": "P에서 새로 세기: A에서 P까지 6가지, P에서 B까지 3가지이므로 곱의 법칙을 적용한다. 답: ③ 18가지",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+    "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "확률",
+    "rpmL2": "경우의 수",
+    "rpmL3": "도형·경로",
+    "rpmL4": "최단경로",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "경우의 수",
+      "l3": "도형·경로",
+      "l4": "최단경로"
+    },
+    "primaryMethod": "지정 통과점에서 최단경로 분리",
+    "decisiveStep": "A에서P와 P에서B의 최단이동 순서를 각각 세어 곱한다."
   },
   {
     "id": 17,
@@ -532,7 +874,31 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_COMBINATION_SELECTION",
+    "crossConceptKeys": [
+      "CC_PROBABILITY_DEFINITION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "확률",
+    "rpmL2": "경우의 수",
+    "rpmL3": "배열과 선택",
+    "rpmL4": "순서가 없는 경우",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "경우의 수",
+      "l3": "배열과 선택",
+      "l4": "순서가 없는 경우"
+    },
+    "primaryMethod": "두 명의 순서없는 선택과 사건비율",
+    "decisiveStep": "여섯 조합을 목록으로 만든 후 각 선택사건의 개수와 확률을 비교한다."
   },
   {
     "id": 18,
@@ -557,10 +923,32 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 두 눈의 합은 $2$부터 $12$이므로 가능한 $5$의 배수는 $5$, $10$이다.\n합이 $5$인 경우는 $(1,4),(2,3),(3,2),(4,1)$의 $4$가지이고, 합이 $10$인 경우는 $(4,6),(5,5),(6,4)$의 $3$가지이다.\n전체 $36$가지 중 유리한 경우가 $7$가지이므로 확률은 $\\dfrac7{36}$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "확률",
+    "rpmL2": "확률",
+    "rpmL3": "확률의 활용",
+    "rpmL4": "경우를 나누어 구하는 확률",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "확률",
+      "l3": "확률의 활용",
+      "l4": "경우를 나누어 구하는 확률"
+    },
+    "primaryMethod": "합의 가능한 배수별 순서쌍 계수",
+    "decisiveStep": "합5와10을 나누어 순서쌍7개를 세고 전체36으로 나눈다."
   },
   {
     "id": 19,
@@ -585,10 +973,32 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 호빈이는 사탕, 현서는 초콜릿을 뽑아야 한다.\n호빈이가 사탕을 뽑을 확률은 $\\dfrac39$이다. 그 뒤 남은 $8$개 중 초콜릿은 $6$개이므로 현서가 초콜릿을 뽑을 확률은 $\\dfrac68$이다.\n따라서 $\\dfrac39\\times\\dfrac68=\\dfrac14$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "확률",
+    "rpmL2": "확률",
+    "rpmL3": "확률의 활용",
+    "rpmL4": "연속 시행",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "확률",
+      "l3": "확률의 활용",
+      "l4": "연속 시행"
+    },
+    "primaryMethod": "비복원 순차추출의 남은 표본 곱",
+    "decisiveStep": "첫째 사탕 확률에 사탕을 뺀 뒤 둘째 초콜릿 확률을 곱한다."
   },
   {
     "id": 20,
@@ -613,10 +1023,35 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 합이 홀수가 되려면 한 수는 짝수이고 다른 수는 홀수여야 한다.\n$a$가 짝수, $b$가 홀수일 확률은 $\\dfrac12\\times\\dfrac13=\\dfrac16$이다. $a$가 홀수, $b$가 짝수일 확률은 $\\dfrac12\\times\\dfrac23=\\dfrac13$이다.\n따라서 구하는 확률은 $\\dfrac16+\\dfrac13=\\dfrac12$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+    "crossConceptKeys": [
+      "CC_NUMBER_PARITY",
+      "CC_PROBABILITY_MULTIPLICATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "확률",
+    "rpmL2": "확률",
+    "rpmL3": "확률의 성질",
+    "rpmL4": "사건의 합",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "확률",
+      "l3": "확률의 성질",
+      "l4": "사건의 합"
+    },
+    "primaryMethod": "합의 홀짝을 두 배타적 사건으로",
+    "decisiveStep": "짝홀 또는 홀짝의 두 경우를 독립가정 아래 곱해서 더한다."
   },
   {
     "id": 21,
@@ -645,6 +1080,30 @@ window.questionBank = [
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+    "crossConceptKeys": [
+      "CC_PROBABILITY_MULTIPLICATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "확률",
+    "rpmL2": "확률",
+    "rpmL3": "확률의 성질",
+    "rpmL4": "여사건",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "확률",
+      "l3": "확률의 성질",
+      "l4": "여사건"
+    },
+    "primaryMethod": "모두 오답의 여사건",
+    "decisiveStep": "균등무작위·독립 선택 가정 아래 세 오답확률의 곱을1에서 뺀다."
   },
   {
     "id": 22,
@@ -668,7 +1127,29 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_POINT_SLOPE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 그 그래프",
+    "rpmL3": "식 구하기",
+    "rpmL4": "기울기와 한 점으로 식 구하기",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 그 그래프",
+      "l3": "식 구하기",
+      "l4": "기울기와 한 점으로 식 구하기"
+    },
+    "primaryMethod": "일정한 변화율과 초기값으로 관계식",
+    "decisiveStep": "온도5당 속도3의 기울기와0도 초기값331을 식으로 만들고 역산한다."
   },
   {
     "id": 23,
@@ -697,7 +1178,29 @@ window.questionBank = [
     "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 물체 A와 B의 위치 그래프를 연장한 두 직선의 교점.",
     "solutionImageCaption": "각 관계식은 A: y=x/3+3, B: y=x/2+1이다. 두 식을 연립하면 만나는 시각은 12분 후이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+    "templateKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 일차방정식의 관계",
+    "rpmL3": "두 직선의 관계",
+    "rpmL4": "교점과 연립방정식",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "두 직선의 관계",
+      "l4": "교점과 연립방정식"
+    },
+    "primaryMethod": "위치그래프를 식으로 만들고 만나는 시간",
+    "decisiveStep": "각 그래프의 두점으로 기울기와절편을 정하고 같은위치식을 푼다."
   },
   {
     "id": 24,
@@ -722,6 +1225,31 @@ window.questionBank = [
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_DISTINCT_DIGITS",
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmL1": "확률",
+    "rpmL2": "경우의 수",
+    "rpmL3": "배열과 선택",
+    "rpmL4": "순서가 있는 경우",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "경우의 수",
+      "l3": "배열과 선택",
+      "l4": "순서가 있는 경우"
+    },
+    "primaryMethod": "짝수의 끝자리로 경우분류한 수 배열",
+    "decisiveStep": "끝자리0과2·4에서 선두0금지와 중복금지를 달리 적용한다."
   },
   {
     "id": 25,
@@ -742,9 +1270,36 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac5{12}$",
     "solution": "[키포인트] 방정식의 해 $x=\\dfrac{b+3}{a}$가 자연수가 되도록 하는 순서쌍 $(a,b)$를 센다.\n$b=1,2,3,4,5,6$일 때 $b+3$은 각각 $4,5,6,7,8,9$이다. $1\\le a\\le6$에서 이를 나누어떨어지게 하는 $a$의 개수는 차례로 $3,2,4,1,3,2$개이다.\n따라서 유리한 경우는 $3+2+4+1+3+2=15$가지이고 전체 경우는 $36$가지이다.\n확률은 $\\dfrac{15}{36}=\\dfrac5{12}$이다.\n따라서 구하는 확률은 $\\dfrac5{12}$이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+    "crossConceptKeys": [
+      "CC_LINEAR_EQUATION_SOLUTION",
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "rpmL1": "확률",
+    "rpmL2": "확률",
+    "rpmL3": "확률의 활용",
+    "rpmL4": "경우를 나누어 구하는 확률",
+    "rpmPrimaryPath": {
+      "majorUnit": "확률",
+      "midUnit": "확률",
+      "l3": "확률의 활용",
+      "l4": "경우를 나누어 구하는 확률"
+    },
+    "primaryMethod": "자연수 근 조건을 나누어떨어짐으로 변환",
+    "decisiveStep": "x=(b+3)/a가 자연수가 되도록 b별로 허용약수 a를 센다."
   }
 ];

@@ -2106,8 +2106,8 @@ def run_archive_registration_sync():
         repo_root,
     )
     run_pipeline_command(
-        "Archive 2.0 final catalog/manifest 갱신",
-        ["node", archive_dir / "tools" / "build-archive2-catalog.mjs"],
+        "Archive 2.0 final catalog/runtime readiness 고정점 갱신",
+        ["node", archive_dir / "tools" / "build-archive2-ready-catalog.mjs"],
         repo_root,
     )
     run_pipeline_command(
@@ -2131,11 +2131,6 @@ def run_archive_registration_sync():
         repo_root,
     )
 
-    run_pipeline_command(
-        "Meta Foundation runtime readiness 최종 catalog 결속",
-        ["node", archive_dir / "tools" / "meta-foundation" / "refresh-runtime-source-readiness.mjs", "--write"],
-        repo_root,
-    )
     run_pipeline_command(
         "Meta Foundation runtime readiness 결속 검증",
         ["node", archive_dir / "tools" / "meta-foundation" / "refresh-runtime-source-readiness.mjs", "--check"],

@@ -39,8 +39,13 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q01-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "AB=AC이고 AD가 ∠A를 이등분하므로 BD=DC=x, ∠ADC=90°이다. BC=18이므로 x=9, y=90이고 x+y=99이다.",
+    "primaryMethod": "이등변삼각형 꼭지각 이등분선",
+    "decisiveStep": "꼭지각 이등분선의 밑변 수직이등분 성질로 길이와 각을 구한다."
   },
   {
     "id": 2,
@@ -78,10 +83,15 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q02-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "AB=AC인 이등변삼각형 ABC에서 ∠ACD=106°이면 ∠ACB=74°, ∠ABC=74°이므로 ∠A=32°이다.",
+    "primaryMethod": "이등변삼각형 밑각과 외각",
+    "decisiveStep": "주어진 외각을 내각으로 바꾸고 같은 밑각을 사용한다."
   },
   {
     "id": 3,
@@ -120,9 +130,14 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q03-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "직선 l에 내린 수선의 발 D, C에 대해 △AMD≡△BMC이므로 AD=BC=10, ∠AMD=∠BMC=25°이다. ∠A=65°이므로 ∠BMC=y=25°이다.",
+    "primaryMethod": "빗변과 예각의 RHA 합동",
+    "decisiveStep": "중점의 같은 빗변과 맞꼭지각으로 RHA를 만들고 길이와 각을 대응시킨다."
   },
   {
     "id": 4,
@@ -161,9 +176,14 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q04-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "점 O가 삼각형 ABC의 외심이므로 OA=OB=OC이고, ∠AOB=100°이면 원주각 ∠ACB=50°이다.",
+    "primaryMethod": "외심의 반지름으로 이등변삼각형 구성",
+    "decisiveStep": "세 반지름의 상등을 사용하여 두 미지각의 합을 전체 내각합에서 소거한다."
   },
   {
     "id": 5,
@@ -198,13 +218,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q05-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "외심 O에서 세 꼭짓점까지의 거리는 같고, 현 BC에 내린 수선 OE는 BC를 이등분한다. OD와 OF는 서로 다른 현 AB, AC까지의 거리이므로 항상 같다고 할 수 없다.",
+    "primaryMethod": "외심과 수직이등분선의 성질 판정",
+    "decisiveStep": "같은 반지름과 현의 이등분은 보장되지만 서로 다른 변까지의 거리는 같지 않다."
   },
   {
     "id": 6,
@@ -244,8 +271,13 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q06-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "점 I가 삼각형 ABC의 내심이므로 ∠ICB=∠ACI=31°이고, 삼각형 BIC에서 ∠x=180°-31°-125°=24°이다.",
+    "primaryMethod": "내심의 각 이등분",
+    "decisiveStep": "한 각의 절반을 삼각형 BIC의 각으로 옮겨 남은 각을 계산한다."
   },
   {
     "id": 7,
@@ -284,9 +316,14 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q07-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "내심 I에서 세 변까지의 거리는 모두 같아 y=10이고, 삼각형 BIC에서 ∠x=180°-40°-25°=115°이다.",
+    "primaryMethod": "내심의 변까지 등거리와 각",
+    "decisiveStep": "내심의 같은 수선 거리와 작은 삼각형의 각을 각각 구한다."
   },
   {
     "id": 8,
@@ -324,10 +361,15 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q08-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "AB=AC, ∠A=76°이면 두 밑각은 52°이고, BI는 ∠B를 이등분해 26°, BO는 BC와 14°를 이루므로 ∠IBO=12°이다.",
+    "primaryMethod": "외심과 내심의 각 관계 결합",
+    "decisiveStep": "내심의 이등분각과 외심의 반지름·대칭각을 각각 만든 뒤 두 각의 차를 구한다."
   },
   {
     "id": 9,
@@ -368,7 +410,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q09-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "평행사변형 ABCD에서 AB∥DC, AD∥BC이므로 AD=BC=6이고 ∠C+∠D=180°이므로 y=∠C=110°이다.",
+    "primaryMethod": "평행사변형 대변과 이웃각",
+    "decisiveStep": "마주 보는 변의 길이와 이웃각의 보각 관계를 직접 적용한다."
   },
   {
     "id": 10,
@@ -400,11 +447,16 @@ window.questionBank = [
     "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "보기 ①~⑤의 사각형에서 평행사변형이 되는 조건을 비교한다. ① 두 쌍의 대변의 길이, ② 두 쌍의 엇각, ③ AO=OC=2와 AD=BC=5에서 반직선 OB 위에 OE=OD인 E를 잡으면 AECD는 평행사변형이므로 EC=AD=5=BC이고 CO=2<5이므로 O는 중심 C, 반지름 5인 원의 내부이다. B와 E가 모두 그 원과 반직선 OB에서 만나므로 E=B이고 OB=OD이며 AO=OC이므로 ABCD는 평행사변형이다. ④ 한 쌍의 대변의 길이가 같고 엇각이므로 평행사변형, ⑤ 이웃한 두 각의 합이 180도인 것만으로는 두 쌍의 대변이 모두 평행함을 알 수 없다.",
+    "primaryMethod": "평행사변형 성립조건의 보장 여부",
+    "decisiveStep": "각 그림의 충분조건을 검토하고 한 쌍의 평행만 보장하는 조건을 배제한다."
   },
   {
     "id": 11,
@@ -442,10 +494,15 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "마름모 ABCD의 대각선은 서로를 수직이등분하므로 OD=OB=10이고, ∠B=70°, ∠A=110°이므로 y=∠OAD=55°이다.",
+    "primaryMethod": "마름모 대각선의 이등분 성질",
+    "decisiveStep": "대각선의 선분·각 이등분과 이웃각 관계로 두 값을 구한다."
   },
   {
     "id": 12,
@@ -483,10 +540,15 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "평행사변형 ABCD의 두 대각선은 교점 O에서 서로를 이등분한다. 대각선이 서로 수직이면 마름모가 될 조건이지 직사각형이 될 조건은 아니다.",
+    "primaryMethod": "평행사변형에서 직사각형 성립조건",
+    "decisiveStep": "같은 대각선·직각 조건을 대각선 수직 조건과 구별한다."
   },
   {
     "id": 13,
@@ -519,15 +581,24 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
+    "crossConceptKeys": [
+      "CC_SQUARE_PROPERTIES"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
-    "difficultyBucket": 4,
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q13-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "정사각형 ABCD에서 AE=FC이면 △ABE≡△CDF이고, 대각선 AC가 만드는 45°와 ∠AHD=80°에서 ∠CDH=35°이므로 ∠ABE=35°이다.",
+    "semanticSourceScope": "M1-2",
+    "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE",
+    "primaryMethod": "정사각형 안의 SAS 합동과 대응각 이동",
+    "decisiveStep": "같은 변·주어진 같은 선분·직각으로 SAS를 만들고 대각선의 각을 계산하여 대응각으로 옮긴다."
   },
   {
     "id": 14,
@@ -562,13 +633,22 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_PARALLELOGRAM_CRITERIA",
+      "CC_QUADRILATERAL_PROPERTIES",
+      "CC_ISOSCELES_TRIANGLE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "AD∥BE, AE∥DB이므로 ADBE는 평행사변형이고 AE=DB=AC이다. 삼각형 AEC가 이등변삼각형이므로 ∠AEC=∠ACB=43°이다.",
+    "primaryMethod": "등변사다리꼴 대각선과 보조 평행사변형",
+    "decisiveStep": "평행선으로 만든 평행사변형의 대변을 같은 두 대각선에 연결하여 이등변삼각형을 얻는다."
   },
   {
     "id": 15,
@@ -601,14 +681,16 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
-    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "templateKey": "",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "닮은 도형의 조건 판정",
+    "decisiveStep": "대응각과 대응변 비가 항상 고정되는 도형만 선택한다."
   },
   {
     "id": 16,
@@ -649,7 +731,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q16-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "닮은 두 정사각뿔에서 대응하는 밑면의 한 모서리가 4cm, 12cm이므로 닮음비는 4:12=1:3이다.",
+    "primaryMethod": "닮은 입체도형의 대응 길이비",
+    "decisiveStep": "대응하는 모서리 두 길이를 비로 나타낸다."
   },
   {
     "id": 17,
@@ -684,13 +771,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
     "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_QUADRILATERAL_PROPERTIES"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "사각형 ABCD와 EFGH가 닮음이므로 FG:BC=12:18=2:3에서 EF=10cm이고, ∠D=360°-70°-85°-85°=120°이므로 ∠H=120°이다.",
+    "primaryMethod": "닮음의 대응변과 대응각",
+    "decisiveStep": "대응변 비로 길이를 구하고 같은 대응각을 옮긴다."
   },
   {
     "id": 18,
@@ -724,14 +818,19 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q18-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "평행사변형 ABCD에서 AD∥BC이므로 △AFE∽△CFB이고 AE:BC=AF:CF=2:3에서 AE=14cm, ED=21-14=7cm이다.",
+    "primaryMethod": "평행선에서 교차하는 두 삼각형의 비",
+    "decisiveStep": "엇각·맞꼭지각으로 교차 두 삼각형을 닮게 한 뒤 평행사변형 대변에서 나머지 길이를 뺀다."
   },
   {
     "id": 19,
@@ -770,9 +869,14 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 4,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "직사각형 ABCD에서 BE:CE=5:3, ∠DEF=90°이면 △CDE∽△BFE에서 BF=15/2cm이고, △AFH∽△BFE에서 AH=21cm이다.",
+    "primaryMethod": "두 AA 닮음을 차례로 연결",
+    "decisiveStep": "서로 수직인 선의 각에서 첫 닮음비를 구한 뒤 평행선에서 두 번째 닮음비로 연장 길이를 구한다."
   },
   {
     "id": 20,
@@ -807,13 +911,20 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
     "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "정삼각형 ABC에서 BD:DC=2:1이고 ∠ADE=60°이면 △ADC∽△EDB이므로 AE:EB=7:2이다.",
+    "primaryMethod": "정삼각형에서 숨은 AA 닮음",
+    "decisiveStep": "보조각을 문자로 나타내어 두 삼각형의 대응각을 만든 뒤 변의 비를 옮긴다."
   },
   {
     "id": 21,
@@ -848,9 +959,14 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q21-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "① BA의 연장선 위에 D, BC의 연장선 위에 E를 잡으면 ∠DCE=72°이고, ② DE를 접는 선으로 A를 B에 겹치면 ∠A=48°이다.",
+    "primaryMethod": "이등변삼각형 각 관계와 접기",
+    "decisiveStep": "두 이등변삼각형의 밑각을 연결하고 접기의 같은 거리에서 새 이등변 조건을 얻는다."
   },
   {
     "id": 22,
@@ -880,14 +996,20 @@ window.questionBank = [
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
     "crossConceptKeys": [
+      "CC_CIRCLE_SECTOR_AREA",
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "① 내심에서 ∠x=35°이고, ② ∠BAO=27°, ∠BCO=18°에서 ∠AOC=90°인 활꼴의 넓이는 16π-32이다.",
+    "primaryMethod": "내심·외심 각 성질과 부채꼴 넓이",
+    "decisiveStep": "각 소문항에서 내심의 이등분 또는 외심의 반지름 상등으로 각을 얻고 두 번째는 부채꼴에서 삼각형을 뺀다."
   },
   {
     "id": 23,
@@ -917,14 +1039,19 @@ window.questionBank = [
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
+      "CC_AREA_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "마름모 ①은 AO=10cm, BO=6cm이므로 두 대각선이 서로를 수직이등분해 AC=20cm, BD=12cm이고 넓이는 30×4=120cm²이다. ②는 AC=16cm, BD=20cm, BP:PC=5:3이므로 삼각형 DBC의 넓이 80을 5:3으로 나누어 삼각형 DBP의 넓이는 50cm²이다.",
+    "primaryMethod": "마름모 대각선 넓이와 밑변비",
+    "decisiveStep": "마름모의 대각선으로 전체 넓이를 구한 뒤 같은 높이 삼각형의 밑변비로 부분 넓이를 얻는다."
   },
   {
     "id": 24,
@@ -956,10 +1083,15 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q24-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "직각삼각형 ABC에서 빗변 BC에 내린 수선 AH는 △ABH∽△CBA를 만들므로 BH:BA=BA:BC에서 BC=25cm, CH=16cm이다.",
+    "primaryMethod": "빗변 높이로 생긴 AA 닮음",
+    "decisiveStep": "직각과 공통각으로 닮음쌍을 잡아 전체 빗변을 구한 뒤 주어진 부분을 뺀다."
   }
 ];
 ;Object.assign(window.questionBank.find(q=>q.id===1),{"solutionImage":"assets/images/24_매산중_2학기_중간_중2_수학/q01-solution.svg","solutionImageSize":"full","solutionImageAlt":"AB=AC이고 AD가 ∠A를 이등분하므로 BD=DC=x, ∠ADC=90°이다. BC=18이므로 x=9, y=90이고 x+y=99이다."});

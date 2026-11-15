@@ -109,6 +109,67 @@ function loadReview({ root, request, patch, cache }) {
   return loaded;
 }
 
+// A native KEEP review may record only its CC/difficulty delta. Restore an
+// omitted primary tuple only when that same UID already supports both unchanged
+// ACTIVE definitions, both immutable source snapshots carry the tuple, and the
+// independent CC finalization has verified its exact primary context. This is
+// not a fallback for a new classification, an unresolved proposal or a hold.
+export function bindUnchangedReviewedPrimary({ native, row, accepted, patch, question, final,
+  canonicalBefore, canonicalAfter, proposalFinalization }) {
+  const primary = ["problemTypeKey", "templateKey"];
+  if (!primary.some(key => Object.hasOwn(patch.after, key) && !Object.hasOwn(accepted, key))) return null;
+  const proof = proposalFinalization?.proof, match = row.activeDefinitionMatch;
+  if (native.review.schemaVersion !== "m2-s2-meta-review-v1" || row.rpmDecision !== "KEEP" ||
+      primary.some(key => Object.hasOwn(accepted, key)) ||
+      proof?.schemaVersion !== "archive-native-proposal-finalization-v1" ||
+      !Array.isArray(proof.nativeProposalBindings) || !proof.nativeProposalBindings.length ||
+      proof.nativeProposalBindings.some(binding => binding.type !== "CC") ||
+      !Array.isArray(proof.definitions) || !proof.definitions.length ||
+      proof.definitions.some(definition => definition.collection !== "concepts")) return null;
+  const committed = native.committedBank[patch.sourceOrdinal - 1], reviewed = native.reviewedBank[patch.sourceOrdinal - 1];
+  const context = ["standardCourse", "standardUnitKey", "subUnitKey", ...primary];
+  for (const key of context) if (!text(committed?.[key]) || !equal(committed[key], reviewed?.[key]) ||
+      !equal(committed[key], question[key]) || !equal(committed[key], final[key]) ||
+      Object.hasOwn(patch.after, key) && !equal(committed[key], patch.after[key]))
+    fail(`unchanged primary tuple differs from immutable native sources: ${key}`);
+  const pt = committed.problemTypeKey, tpl = committed.templateKey;
+  const beforePt = canonicalBefore?.pt?.get(pt), afterPt = canonicalAfter?.pt?.get(pt),
+    beforeTpl = canonicalBefore?.tpl?.get(tpl), afterTpl = canonicalAfter?.tpl?.get(tpl);
+  if (beforePt?.status !== "ACTIVE" || beforeTpl?.status !== "ACTIVE" ||
+      beforeTpl.parentProblemTypeKey !== pt || !equal(beforePt, afterPt) || !equal(beforeTpl, afterTpl) ||
+      !beforePt.supportingQuestionUids?.includes(patch.questionUid) ||
+      !beforeTpl.supportingQuestionUids?.includes(patch.questionUid) ||
+      match?.problemTypeKey !== pt || match.templateKey !== tpl || match.problemTypeStatus !== "ACTIVE" ||
+      match.templateStatus !== "ACTIVE" || match.templateParent !== pt)
+    fail("unchanged primary requires exact pre-existing ACTIVE definitions supporting this UID");
+  const curriculum = final.curriculumKey || final.curriculum;
+  if (!["2015", "2022"].includes(curriculum) || native.review.sourceArchiveFile === undefined ||
+      row.rpmPath?.curriculum !== curriculum || !Array.isArray(match.exactBindings))
+    fail("unchanged primary requires the native exact curriculum binding");
+  const bindings = match.exactBindings.filter(binding => binding.status === "ACTIVE" &&
+    binding.curriculum === curriculum && binding.standardCourse === committed.standardCourse &&
+    binding.standardUnitKey === committed.standardUnitKey && binding.subUnitKey === committed.subUnitKey &&
+    binding.problemTypeKey === pt);
+  if (bindings.length !== 1) fail("unchanged primary requires one exact native ACTIVE binding");
+  const fields = Object.fromEntries(primary.map(key => [key, committed[key]]));
+  for (const key of ["conditionKeys", "integrationPattern"]) {
+    if (!Object.hasOwn(patch.after, key) || Object.hasOwn(accepted, key)) continue;
+    const value = committed[key];
+    if (!Object.hasOwn(committed, key) || !Object.hasOwn(reviewed, key) ||
+        !equal(value, reviewed[key]) || !equal(value, question[key]) ||
+        !equal(value, patch.after[key]) || !equal(value, final[key]) ||
+        (key === "conditionKeys" ? !Array.isArray(value) || value.length !== 0 || !text(row.fieldReview?.condition) :
+          !["NONE", "SEQUENTIAL", "PARALLEL"].includes(value) || !text(row.fieldReview?.integration)))
+      fail(`unchanged primary cannot add or replace native auxiliary values: ${key}`);
+    fields[key] = value;
+  }
+  return { fields, proof: { schemaVersion: "archive-native-unchanged-primary-binding-v1",
+    origin: "UNCHANGED_REVIEWED_SOURCE_AND_EXISTING_UID_DEFINITIONS",
+    fieldSha256: Object.fromEntries(Object.entries(fields).map(([key, value]) => [key, sha256(stable(value))])),
+    problemTypeDefinitionSha256: sha256(stable(beforePt)), templateDefinitionSha256: sha256(stable(beforeTpl)),
+    nativeExactBindingSha256: sha256(stable(bindings[0])), newDefinitions: false, newMathematicalQa: false } };
+}
+
 export function validateReviewedSourceReassessment({ root, request, patch, metadata, question, final, supportedFields,
   canonicalBefore, canonicalAfter, cache = new Map() }) {
   if (request.scope !== "PARTIAL_UIDS" || request.approval?.type !== "FINAL_QA" ||
@@ -152,6 +213,9 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     validateNativeProposalFinalization({ root, request, patch, native: loaded, row,
       accepted, question, final, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
   if (proposalFinalization) Object.assign(accepted, proposalFinalization.fields);
+  const unchangedPrimary = identityOnly ? null : bindUnchangedReviewedPrimary({ native: loaded, row, accepted,
+    patch, question, final, canonicalBefore, canonicalAfter, proposalFinalization });
+  if (unchangedPrimary) Object.assign(accepted, unchangedPrimary.fields);
   const rationaleBindings = {};
   if (!identityOnly) for (const field of ["primaryMethod", "decisiveStep"]) {
     if (!Object.hasOwn(patch.after, field) && !Object.hasOwn(question, field)) continue;
@@ -206,6 +270,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     reviewer: loaded.reviewer, decision, studentPayloadSha256: sha256(stable(payload)),
     ...(Object.keys(rationaleBindings).length ? { rationaleBindings } : {}),
     ...(Object.keys(rpmBindings).length ? { rpmBindings } : {}),
+    ...(unchangedPrimary ? { unchangedPrimaryBindings: unchangedPrimary.proof } : {}),
     ...(proposalFinalization?.proof ? { proposalFinalization: proposalFinalization.proof } : {}),
     ...(proposalFinalization?.technicalBindings?.length ? { technicalProposalBindings: proposalFinalization.technicalBindings } : {}),
     scope: identityOnly ? "IDENTITY_BINDING_ONLY" : "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false };
