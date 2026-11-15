@@ -4,6 +4,7 @@
 const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm');
 const crypto = require('node:crypto'), { execFileSync } = require('node:child_process');
 const consumer = require('../../archive/item-4slot.js');
+const rendererHold = require('./renderer-registration-hold.cjs');
 const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
 const ROOT = path.resolve(__dirname, '../..');
 const INPUT = 'archive/data/item-4slot/';
@@ -18,7 +19,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(fs.readFileSync(__filename));
+const BUILDER_SHA = sha(Buffer.concat([fs.readFileSync(__filename), fs.readFileSync(require.resolve('./renderer-registration-hold.cjs'))]));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -92,6 +93,7 @@ function validateRegistrationHold(root, d, it, id, cur) {
   if(!h||h.schemaVersion!=='4slot-native-review-hold-v1')return ['UNSUPPORTED_HOLD'];
   if(h.questionUid!==id?.questionUid||h.sourceOrdinal!==cur?.ordinal||h.sourceQuestionNo!==sourceIdentityNumber(cur?.q||{})||h.ordinal!==it.ordinal)errors.push('HOLD_IDENTITY_MISMATCH');
   if(typeof h.nextAction!=='string'||!h.nextAction.trim())errors.push('HOLD_NEXT_ACTION_MISSING');
+  if(h.reason==='SOURCE_RENDERER_CORRECTION_PENDING')return [...errors,...rendererHold.validate(root,d,it,id,cur,{safe,sha,blob,stable,payloadHash,identityHash,git,assetRefs})];
   if(h.reason==='SOURCE_EVIDENCE_UNRESOLVED')return [...errors,...validateM2SourceHold(root,d,it,id,cur)];
   if(h.reason!=='PARTIAL_METHOD_EVIDENCE_DEBT'||!/^original\/middle\/m1\/1(?:mid|final)\//.test(d.sourceArchiveFile))return [...errors,'UNSUPPORTED_HOLD'];
   const e=h.evidence, native=d.evidence?.independentReview;
@@ -128,7 +130,7 @@ function validateM2SourceHold(root,d,it,id,cur) {
 function holdEvidenceDigests(root,d) {
   const out={};
   for(const it of d.items)if(own(it,'registrationHold')) {
-    for(const field of ['evidence','reviewEvidence','independentEvidence','fourSlotEvidence']) {
+    for(const field of ['evidence','reviewEvidence','independentEvidence','fourSlotEvidence','supersessionEvidence']) {
       const rel=it.registrationHold?.[field]?.path;
       if(typeof rel!=='string')continue;
       try { out[rel]=sha(fs.readFileSync(safe(root,rel))); } catch { out[rel]=null; }
