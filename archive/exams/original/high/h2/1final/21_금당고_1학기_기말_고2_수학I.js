@@ -266,7 +266,11 @@ var examData = window.examData = {
         "18\\pi"
       ],
       "answer": "②",
-      "solution": "$u=\\dfrac{x-\\pi}{4}$라 놓으면 $y=2\\sin u$이고\n$0\\le x\\le10\\pi$에서 $-\\dfrac\\pi4\\le u\\le\\dfrac{9\\pi}{4}$이다.\n직선 $y=1$과 만나는 곳에서는\n$2\\sin u=1$, 즉 $\\sin u=\\dfrac12$이다.\n이 구간에서 가능한 값은\n$u=\\dfrac\\pi6,\\ \\dfrac{5\\pi}{6},\\ \\dfrac{13\\pi}{6}$이다.\n$x=4u+\\pi$를 이용하면 교점의 $x$좌표는\n$\\dfrac{5\\pi}{3},\\ \\dfrac{13\\pi}{3},\\ \\dfrac{29\\pi}{3}$이다.\n따라서 두 교점 사이의 가장 긴 밑변은\n$\\dfrac{29\\pi}{3}-\\dfrac{5\\pi}{3}=8\\pi$이다.\n삼각형의 넓이를 최대로 하려면 점 $P$의 직선 $y=1$까지의 거리가 최대여야 한다.\n곡선의 최솟값은 $-2$이고, 이는 $u=\\dfrac{3\\pi}{2}$일 때 실제로 나타난다.\n따라서 직선 $y=1$과의 최대 거리는 $1-(-2)=3$이다.\n그러므로 삼각형의 넓이의 최댓값은\n$\\dfrac12\\cdot8\\pi\\cdot3=12\\pi$이다.\n따라서 정답은 ②이다."
+      "solution": "$u=\\dfrac{x-\\pi}{4}$라 놓으면 $y=2\\sin u$이고\n$0\\le x\\le10\\pi$에서 $-\\dfrac\\pi4\\le u\\le\\dfrac{9\\pi}{4}$이다.\n직선 $y=1$과 만나는 곳에서는\n$2\\sin u=1$, 즉 $\\sin u=\\dfrac12$이다.\n이 구간에서 가능한 값은\n$u=\\dfrac\\pi6,\\ \\dfrac{5\\pi}{6},\\ \\dfrac{13\\pi}{6}$이다.\n$x=4u+\\pi$를 이용하면 교점의 $x$좌표는\n$\\dfrac{5\\pi}{3},\\ \\dfrac{13\\pi}{3},\\ \\dfrac{29\\pi}{3}$이다.\n따라서 두 교점 사이의 가장 긴 밑변은\n$\\dfrac{29\\pi}{3}-\\dfrac{5\\pi}{3}=8\\pi$이다.\n삼각형의 넓이를 최대로 하려면 점 $P$의 직선 $y=1$까지의 거리가 최대여야 한다.\n곡선의 최솟값은 $-2$이고, 이는 $u=\\dfrac{3\\pi}{2}$일 때 실제로 나타난다.\n따라서 직선 $y=1$과의 최대 거리는 $1-(-2)=3$이다.\n그러므로 삼각형의 넓이의 최댓값은\n$\\dfrac12\\cdot8\\pi\\cdot3=12\\pi$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: f(x)로 표시한 사인곡선, y=1의 수평선과 세 교점, 곡선의 최솟값을 나타낸 그래프.",
+      "solutionImageCaption": "세 교점 중 x좌표가 가장 작은 점과 큰 점 사이의 밑변은 8π다. 곡선의 최솟값 −2와 y=1 사이의 높이는 3이므로 삼각형 넓이의 최댓값을 구한다. 정답은 12π이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
