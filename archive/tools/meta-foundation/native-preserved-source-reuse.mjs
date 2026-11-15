@@ -5,6 +5,8 @@ import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import {hasReviewedReceiptLineage} from './reviewed-source-binding.mjs';
+import {hasSourceSubsetMarker,isSourceSubsetRebind,validateSourceSubsetEvidence,preservedSourceEvidence,priorSourceIdentityContext} from './source-subset-preservation.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -36,6 +38,7 @@ function evidence(root,refs) {
 // from turning an issued preservation receipt into an ordinary FINAL_QA receipt.
 export function isPartialNativeSourcePreservation(receipt,root) {
   if(receipt?.approval?.type!=='FINAL_QA'||!(receipt.scope==='PARTIAL_UIDS'||Object.hasOwn(receipt,'partialUidCount')))return false;
+  if(receipt.appliedRecords?.some(hasSourceSubsetMarker)||receipt.runtimeRecords?.some(hasSourceSubsetMarker))return true;
   if(Object.hasOwn(receipt.approval,'sourceRebind')||receipt.newMetadataApprovals===0&&receipt.preservedMetadataApprovals>0||
     Array.isArray(receipt.approval.evidenceRefs)&&receipt.approval.evidenceRefs.some(ref=>nativePath(ref?.path)))return true;
   if(!root||!ID.test(receipt.requestId||'')||!Array.isArray(receipt.appliedRecords)||!receipt.appliedRecords.length||
@@ -51,11 +54,11 @@ export function isPartialNativeSourcePreservation(receipt,root) {
       const prior=JSON.parse(readBytes(root,relative));
       if(prior.scope!=='PARTIAL_UIDS'||prior.approval?.type!=='FINAL_QA'||relative!==receiptPath(prior.requestId)||
         prior.examUid!==receipt.examUid||prior.sourceArchiveFile!==receipt.sourceArchiveFile||
-        prior.expectedQuestionCount!==receipt.expectedQuestionCount||prior.partialUidCount!==receipt.partialUidCount||
+        prior.expectedQuestionCount!==receipt.expectedQuestionCount||prior.partialUidCount<receipt.partialUidCount||
         prior.sourceBlobSha1===receipt.sourceBlobSha1)continue;
       const uid=receipt.appliedRecords[0].questionUid,ordinal=receipt.appliedRecords[0].sourceOrdinal,
         now=selected(receipt,uid,ordinal),old=selected(prior,uid,ordinal);
-      if(!same([...now.records.keys()].sort(),[...old.records.keys()].sort()))continue;
+      if([...now.records.keys()].some(id=>!old.records.has(id)))continue;
       if([...now.records].every(([id,row])=>{
         const before=old.records.get(id),evidenceAfter=[...new Set([...before.approvalEvidence,receiptPath(receipt.requestId)])];
         return same(unchanged(row),unchanged(before))&&same(row.approvalEvidence,evidenceAfter)&&
@@ -70,6 +73,7 @@ export function isPartialNativeSourcePreservation(receipt,root) {
 // Preserve the existing non-native producer behavior. Only a claimed partial
 // preservation chain blocks that fallback when its original proof cannot replay.
 export function hasNativeSourcePreservationClaim({root,current,runtimeRecord,nativeSource}) {
+  if(hasSourceSubsetMarker(current)||hasSourceSubsetMarker(runtimeRecord))return true;
   for(const row of [current,runtimeRecord])for(const relative of row?.approvalEvidence||[]) {
     if(!nativePath(relative))continue;
     try {if(isPartialNativeSourcePreservation(JSON.parse(readBytes(root,relative)),root))return true;}catch {/* No new claim is inferred from a filename. */}
@@ -163,31 +167,43 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     receipt.sourceBlobSha1!==source.blobSha1||receipt.sourceRawSha256!==sha(source.bytes))fail('current receipt differs from actual state');
   const seen=new Set();
   while(isPartialNativeSourcePreservation(cursor,root)) {
+    // A source-only descendant may reach a direct reassessment whose evidence
+    // also names older receipts. Replay that cursor's immutable native proof;
+    // the lineage marker alone cannot end the preservation chain.
+    if(hasReviewedReceiptLineage(cursor)&&cursor.fingerprintRepairs?.some(row=>
+      row.questionUid===identity.questionUid&&row.sourceReview!==undefined)) {
+      const context={nativeSource:source,current:state.row,identity:state.identity,question:source.bank[ordinal-1]};
+      if(revalidateLeaf(context)!==receiptPath(cursor.requestId))fail('direct source-review ancestor cannot replay');
+      break;
+    }
     if(seen.has(cursor.requestId)||seen.size>=64)fail('source-rebind cycle or depth exceeded');
     seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs);
     const spec=cursor.approval.sourceRebind,ref=spec?.priorReceiptRef;
-    if(!spec||!same(Object.keys(spec).sort(),['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
+    const subset=isSourceSubsetRebind(spec);
+    if(!spec||!subset&&!same(Object.keys(spec).sort(),['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
       !cursor.approval.evidenceRefs.some(item=>same(item,ref))||cursor.newMetadataApprovals!==0||
       cursor.preservedMetadataApprovals!==cursor.partialUidCount||!absentOrEmpty(cursor.registryChanges)||
       !absentOrEmpty(cursor.fingerprintRepairs)||!absentOrEmpty(cursor.nativeParentBindings))fail('exact source-only preservation required');
     const raw=readBytes(root,ref.path);
     if(sha(raw)!==ref.sha256)fail('prior receipt digest changed');
     const prior=JSON.parse(raw),old=selected(prior,identity.questionUid,ordinal);
+    if(subset)validateSourceSubsetEvidence({root,current:cursor,prior,selected:[...state.records.values()]});
     if(ref.path!==receiptPath(prior.requestId)||seen.has(prior.requestId)||prior.examUid!==cursor.examUid||
       prior.sourceArchiveFile!==cursor.sourceArchiveFile||prior.expectedQuestionCount!==cursor.expectedQuestionCount||
-      prior.partialUidCount!==cursor.partialUidCount||prior.sourceRawSha256===cursor.sourceRawSha256||
-      !same([...old.records.keys()].sort(),[...state.records.keys()].sort()))fail('preserved ancestor scope or source binding changed');
+      (!subset&&prior.partialUidCount!==cursor.partialUidCount)||prior.sourceRawSha256===cursor.sourceRawSha256||
+      (!subset&&!same([...old.records.keys()].sort(),[...state.records.keys()].sort())))fail('preserved ancestor scope or source binding changed');
     const priorSource=gitSource(root,prior.sourceBlobSha1,prior.sourceRawSha256,prior.expectedQuestionCount);
     for(const [uid,row]of state.records) {
       const before=old.records.get(uid),beforeRuntime=old.runtimes.get(uid),nextRuntime=state.runtimes.get(uid);
-      const approvalEvidence=[...new Set([...before.approvalEvidence,receiptPath(cursor.requestId)])];
+      const approvalEvidence=preservedSourceEvidence(before.approvalEvidence,receiptPath(cursor.requestId),spec);
       if(!same(unchanged(row),unchanged(before))||!same(row.approvalEvidence,approvalEvidence)||
         !same(unchanged(nextRuntime),unchanged(beforeRuntime))||!same(nextRuntime.approvalEvidence,approvalEvidence)||
         !same(state.identities.get(uid),old.identities.get(uid))||
         !same(source.bank[row.sourceOrdinal-1],priorSource.bank[row.sourceOrdinal-1]))
         fail('selected whole question, approval or identity changed');
     }
-    cursor=prior;state=old;source={...nativeSource,...priorSource,runtimeRecord:old.runtime};
+    const historicalIdentity=subset?priorSourceIdentityContext(source,prior):{};
+    cursor=prior;state=old;source={...source,...priorSource,...historicalIdentity,runtimeRecord:old.runtime};
   }
   evidence(root,cursor.approval.evidenceRefs);
   const relative=receiptPath(cursor.requestId),context={nativeSource:source,current:state.row,identity:state.identity,question:source.bank[ordinal-1]};
