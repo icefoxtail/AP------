@@ -20,15 +20,16 @@
     "reviewedExam_req-rpmpath-92b1d189eaf50121": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-92b1d189eaf50121.json",
     "reviewedExam_req-rpmpath-1f9a56cb8af8764e": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-1f9a56cb8af8764e.json",
     "reviewedExam_req-rpmpath-7f94c812b604136d": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-rpmpath-7f94c812b604136d.json",
-    "reviewedExam_meta-pipeline-gang23-h2-2final-20261104-v1": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json"
+    "reviewedExam_meta-pipeline-gang23-h2-2final-20261104-v1": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-gang23-h2-2final-20261104-v1.json",
+    "reviewedExam_luna-cls-f97b04216691-6724b618": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-f97b04216691-6724b618.json"
   },
   "counts": {
     "canonicalAssignments": 320,
-    "records": 395,
-    "taxonomyRows": 68,
-    "defaultSelectable": 395,
+    "records": 396,
+    "taxonomyRows": 69,
+    "defaultSelectable": 396,
     "supplementary": 0,
-    "automaticEligibleExpected": 249,
+    "automaticEligibleExpected": 250,
     "sourceHold": 146,
     "difficultyDeferred": 0,
     "catalogUidDirectJoin": 241,
@@ -38,7 +39,7 @@
     "catalogSourceHoldDirect": 11,
     "crossPackPrimaryOwnershipAbsorbed": 14,
     "postPromotionClassificationCorrection": 1,
-    "currentCatalogUidDirectJoin": 395,
+    "currentCatalogUidDirectJoin": 396,
     "currentCatalogSourceIdentityRepairJoin": 0,
     "currentCatalogJoinMismatch": 0,
     "currentCatalogSourceHoldDirect": 146
@@ -91,6 +92,12 @@
       "courseKey": "수학II",
       "L1": "미분",
       "L2": "접선의 방정식"
+    },
+    {
+      "curriculumKey": "2022",
+      "courseKey": "미적분I",
+      "L1": "미분",
+      "L2": "미분계수와 도함수"
     }
   ],
   "taxonomyRows": [
@@ -977,6 +984,19 @@
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
       "supportingItemCount": 20
+    },
+    {
+      "curriculumKey": "2022",
+      "courseKey": "미적분I",
+      "L1": "미분",
+      "L2": "미분계수와 도함수",
+      "L3": "미분가능 조건",
+      "L4": "한 점의 미분가능 조건",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
     }
   ],
   "records": [
@@ -15740,6 +15760,88 @@
       "legacyLevelCompatibility": "NORMAL"
     },
     {
+      "questionUid": "qid_v1_cdc8bbfbfe6d3d98cfa54e61e76062afeb3e25f4eaa9ab24b865fd942c5c478e",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceFingerprint": "26962cf57ba0594dc788b2722d72e62039b48d3a63b00e83c50fb62ac1de5449",
+      "contentFingerprint": "13d3d8e5c520b90b8172ce2d90aa2bec0e2c5c2b5f8ed3c12c8f8014d650bc6b",
+      "standardCourse": "미적분I",
+      "standardUnitKey": "H22-M1-03",
+      "standardUnit": "미분계수",
+      "subUnitKey": "H22-M1-03-DIFFERENTIABILITY_CONDITION",
+      "subUnit": "미분가능 조건",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "independent_review2",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_review2",
+        "subUnit": "approved_review2",
+        "concept": "approved_review2",
+        "problemType": "approved_review2",
+        "template": "approved_review2",
+        "difficulty": "approved_review2",
+        "L3": "approved_finalqa_nonpt",
+        "L4": "approved_finalqa_nonpt",
+        "crossConcept": "approved_review2",
+        "condition": "approved_review2",
+        "integrationPattern": "approved_review2"
+      },
+      "metadataRevision": "meta-foundation:DERIVATIVE@1.0.2:exam-review2-v2:luna-cls-f97b04216691-6724b618",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/exam-scoped/26_금당고_2학기_중간_고2_미적분I.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-f97b04216691-6724b618.json"
+      ],
+      "difficultyBucket": 3,
+      "L1": "미분",
+      "L2": "미분계수와 도함수",
+      "L3": "미분가능 조건",
+      "L4": "한 점의 미분가능 조건",
+      "level": "중",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "미적분I",
+      "nonPtSemanticRegistration": {
+        "state": "REGISTERED_SEMANTICS_ONLY",
+        "rpmPath": "CROSSWALK_CANDIDATE",
+        "ptTpl": "NOT_REVIEWED_NOT_APPROVED",
+        "auxiliaryCcCondIntegration": "CANDIDATE_ONLY_NOT_PROJECTED",
+        "sourceBlobSha1": "408a9862d9b5a08e341fb9aa008a2cbdae0cee06",
+        "candidateBlobSha1": "694bb4c282d6ce40809ebbfce3bd452890ef41c4"
+      },
+      "rpmL1": "미분",
+      "rpmL2": "미분계수와 도함수",
+      "rpmL3": "미분가능성과 연속",
+      "rpmL4": "미분가능 조건",
+      "rpmSemanticStatus": "FINAL",
+      "primaryMethod": "x=2에서 두 식의 값과 왼쪽·오른쪽 미분계수를 각각 같게 놓아 미정계수를 정한다.",
+      "decisiveStep": "오른쪽 기울기 b=4이고 연속 조건 a+4=2b로 a=4이므로 합은 8이다.",
+      "metadataApprovalType": "REVIEW2",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "DERIVATIVE",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js#14",
+      "approvedSourceFingerprint": "26962cf57ba0594dc788b2722d72e62039b48d3a63b00e83c50fb62ac1de5449",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_cea0167614c401932b249f8b0291638b0b506f2aad3a62b80408a32c80a9872a",
       "sourceArchiveFile": "similar/high/h2/2final/24_매산여고_2학기_기말_고2_수학II_유사.js",
       "sourceOrdinal": 15,
@@ -19128,7 +19230,7 @@
   ],
   "usage": {
     "schemaVersion": "archive-reviewed-runtime-usage-v1",
-    "records": 395,
+    "records": 396,
     "problemTypes": [
       {
         "key": "PT_CONTINUITY_JUDGMENT",
@@ -19511,7 +19613,7 @@
       },
       {
         "key": "PT_DIFFERENTIABILITY_CONDITION",
-        "count": 22,
+        "count": 23,
         "questionUids": [
           "qid_v1_037f9020899cfa7d74dc797e988f05eed04da387a9bcbc2bde122332e6d47071",
           "qid_v1_106c5037f0724e6104b33041a9251115854904e2dfda7dcc4b8dceaf81fcba7c",
@@ -19531,6 +19633,7 @@
           "qid_v1_ace52f3f3039a1eb3626020955b8115b41d10e0dbd714169a47a61314e7a3a4d",
           "qid_v1_bca528e4b8f84fc679d826621dd70224bb20fa6b63628d76423264ea258960ac",
           "qid_v1_c0f8958a87691c526dcf5d319e03c209ee1da9ec7fe3085a111adc85b1280f6a",
+          "qid_v1_cdc8bbfbfe6d3d98cfa54e61e76062afeb3e25f4eaa9ab24b865fd942c5c478e",
           "qid_v1_d617e9a04c2eea26edec7b611f5875925e48a8058ecf7ea0f32407737593d56d",
           "qid_v1_f26fc113b5bd9555f73a96ce261c5f16996af3749f1213c6c51b19cae2a35258",
           "qid_v1_f4d40b67a0a2106a13d644def9264ed1a2fb2336e4d0cce20e997ccd2ab117c3",
@@ -19780,7 +19883,7 @@
       },
       {
         "key": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
-        "count": 17,
+        "count": 18,
         "questionUids": [
           "qid_v1_037f9020899cfa7d74dc797e988f05eed04da387a9bcbc2bde122332e6d47071",
           "qid_v1_1736f30940c95bea25e179738ce45d8f4120de94e3c8a4ccfa6e91cd465d02b2",
@@ -19796,6 +19899,7 @@
           "qid_v1_ace52f3f3039a1eb3626020955b8115b41d10e0dbd714169a47a61314e7a3a4d",
           "qid_v1_bca528e4b8f84fc679d826621dd70224bb20fa6b63628d76423264ea258960ac",
           "qid_v1_c0f8958a87691c526dcf5d319e03c209ee1da9ec7fe3085a111adc85b1280f6a",
+          "qid_v1_cdc8bbfbfe6d3d98cfa54e61e76062afeb3e25f4eaa9ab24b865fd942c5c478e",
           "qid_v1_d617e9a04c2eea26edec7b611f5875925e48a8058ecf7ea0f32407737593d56d",
           "qid_v1_f26fc113b5bd9555f73a96ce261c5f16996af3749f1213c6c51b19cae2a35258",
           "qid_v1_f4d40b67a0a2106a13d644def9264ed1a2fb2336e4d0cce20e997ccd2ab117c3"
