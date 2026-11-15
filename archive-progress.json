@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-15T03:19:35.822Z",
+  "updatedAt": "2026-11-15T03:23:35.790Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
     "scope": "recent",
-    "oldestObservedAt": "2026-11-14T09:24:04Z",
+    "oldestObservedAt": "2026-11-14T09:26:44Z",
     "seenRegistrationRuns": 0,
     "seenReleaseRuns": 24,
     "runScanIsPartial": true
@@ -41577,23 +41577,6 @@
     }
   },
   "observations": {
-    "release:43610800774:1:369cfc0923aff4b0d0d3ee869a02e0099ae28bbf": {
-      "key": "release:43610800774:1:369cfc0923aff4b0d0d3ee869a02e0099ae28bbf",
-      "status": "unverified",
-      "attempts": 3,
-      "run": {
-        "id": 43610800774,
-        "attempt": 1,
-        "sha": "369cfc0923aff4b0d0d3ee869a02e0099ae28bbf",
-        "at": "2026-11-14T15:40:24Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/43610800774",
-        "conclusion": "success",
-        "event": "workflow_dispatch",
-        "branch": "main"
-      },
-      "reason": "배포 결과 단계 미검증",
-      "nextRetryAt": "2026-11-15T03:19:42.636Z"
-    },
     "release:43665484301:1:222653782fef2f31022e00c82a010ccfcafc3e10": {
       "key": "release:43665484301:1:222653782fef2f31022e00c82a010ccfcafc3e10",
       "status": "partial",
@@ -230061,6 +230044,23 @@
         "test-fixtures"
       ],
       "reason": "Pages ZIP 다운로드 실패",
+      "retryExhausted": true
+    },
+    "release:43610800774:1:369cfc0923aff4b0d0d3ee869a02e0099ae28bbf": {
+      "key": "release:43610800774:1:369cfc0923aff4b0d0d3ee869a02e0099ae28bbf",
+      "status": "unverified",
+      "attempts": 4,
+      "reason": "배포 결과 단계 미검증",
+      "run": {
+        "id": 43610800774,
+        "attempt": 1,
+        "sha": "369cfc0923aff4b0d0d3ee869a02e0099ae28bbf",
+        "at": "2026-11-14T15:40:24Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/43610800774",
+        "conclusion": "success",
+        "event": "workflow_dispatch",
+        "branch": "main"
+      },
       "retryExhausted": true
     },
     "release:43616144169:1:d023c97e10e626d275cd60bcd58708a9c8a996c4": {
