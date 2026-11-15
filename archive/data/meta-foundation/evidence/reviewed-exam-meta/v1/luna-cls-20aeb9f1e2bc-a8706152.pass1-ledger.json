@@ -1,0 +1,391 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass1",
+    "createdAt":  "2026-11-12T00:36:55+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/22_매산고_1학기_중간_고2_수학I.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "같은 밑 6인 두 로그의 합을 곱의 로그로 합쳐 36을 만든다.",
+                      "decisiveStep":  "$36=6^2$이므로 $\\log_6 36=2$이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질",
+                                      "l4":  "곱·몫·거듭제곱"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "중첩된 세제곱근을 안쪽부터 계산하고 마지막 여섯제곱근을 밑이 2인 지수로 바꾼다.",
+                      "decisiveStep":  "루트 안은 $4\\times2=8=2^3$이므로 전체 값은 $2^{3/6}=2^{1/2}$이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근",
+                                      "l4":  "n제곱근"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "$f(2)=3^2$를 계산하고 역함수 관계에서 $f(2)=9$이면 $g(9)=2$임을 쓴다.",
+                      "decisiveStep":  "두 항은 9와 2이므로 합은 11이다.",
+                      "rpmPath":  {
+
+                                  },
+                      "hold":  "선택지에 지수함수와 그 역함수의 대응값을 판정하는 네 칸 조합이 없다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "여각과 한 바퀴 이동으로 네 삼각함수를 $\\cos\\theta$ 또는 $-\\cos\\theta$로 바꾸어 뺄셈한다.",
+                      "decisiveStep":  "두 번째 곱은 $\\cos\\theta(-\\cos\\theta)$이므로 빼면 $\\cos^2\\theta+\\cos^2\\theta=2\\cos^2\\theta$가 된다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각함수의 성질",
+                                      "l4":  "주기·대칭"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "제3사분면에서 코사인의 부호를 정하고 탄젠트의 두 변 비 $3:4$에서 빗변을 구한다.",
+                      "decisiveStep":  "빗변은 5이고 제3사분면의 코사인은 음수이므로 $\\cos\\theta=-4/5$이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각함수의 뜻",
+                                      "l4":  "단위원"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "$x^n=a$의 실수해 개수를 $n$의 홀짝과 $a$의 부호에 따라 나누어 네 진술을 확인한다.",
+                      "decisiveStep":  "홀수 차수의 음수는 실수인 근 하나를 갖고, 짝수 차수의 음수는 실근이 없으므로 ㄴ과 ㄹ만 참이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근",
+                                      "l4":  "실수 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "CASE_BRANCH"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "$u=\\log_ab$, $v=\\log_ac$로 놓아 세 로그 조건을 $u,v$와 $a$의 식으로 바꾼다.",
+                      "decisiveStep":  "$u=2$, $v=1$이고 $(a^2+a)/3=a$에서 밑 조건을 적용하면 $a=2$, 따라서 $ab+c=10$이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그방정식",
+                                      "l4":  "치환"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE",
+                                            "COND_NONZERO"
+                                        ],
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "$t=\\log_3x$로 치환하고 $\\log_x27=3/t$로 밑을 바꾸어 이차방정식을 푼다.",
+                      "decisiveStep":  "$t=3,-1$에서 $x=27,1/3$이므로 둘 다 밑 조건을 만족하며 두 근의 곱은 9이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그방정식",
+                                      "l4":  "치환"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE",
+                                            "COND_NONZERO"
+                                        ],
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "밑을 3으로 맞추어 지수끼리 비교한 뒤 그래프에서 $g(x)$와 $f(x)-4$의 부호가 반대인 구간을 찾는다.",
+                      "decisiveStep":  "곱 조건은 $g(x)(f(x)-4)\\le0$이고 그래프의 영점들을 적용하면 자연수 $1$부터 $6$까지가 해이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수함수",
+                                      "l3":  "지수함수의 활용",
+                                      "l4":  "그래프 교점"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER",
+                                            "COND_RANGE"
+                                        ],
+                      "integrationPattern":  "INTERDEPENDENT"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "$t=a^x\u003e0$로 두어 $t+1/t=3$을 얻고 분자와 분모를 $t$의 다항식으로 정리한다.",
+                      "decisiveStep":  "$t^2+1=3t$, $t^4+1=7t^2$이므로 분수는 $3/7$이고 $p-q=4$이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙",
+                                      "l4":  "조건식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "그래프의 최댓값과 최솟값으로 진폭과 중심선을 정하고 중심선을 지나는 점 사이 간격으로 주기를 구한다.",
+                      "decisiveStep":  "진폭 1에서 $a=1$, 중심선 $-1$에서 $c=1$, 주기 $2\\pi/3$에서 $b=3$이므로 합은 5이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수의 그래프",
+                                      "l3":  "그래프 활용",
+                                      "l4":  "최대·최소"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "첫 부등식에서 $u=\\cos x$로 바꾸고 두 번째 부등식의 각 구간과 $0\\le x\u003c2\\pi$ 조건을 교차한다.",
+                      "decisiveStep":  "첫 조건은 $\\pi/3\\le x\\le5\\pi/3$, 둘째와 겹치는 구간은 $5\\pi/4\\le x\\le5\\pi/3$이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각방정식·부등식",
+                                      "l4":  "주기 구간의 해"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL",
+                                            "COND_RANGE"
+                                        ],
+                      "integrationPattern":  "INTERDEPENDENT"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "$u=2^x$, $v=3^{-y}$로 치환해 두 변수의 자취를 원의 방정식으로 완성하고 각각의 극값을 구한다.",
+                      "decisiveStep":  "$(u-4)^2+(v-3)^2=144$에서 $u_{max}=16$, $v_{max}=15$이며, 이에 따라 $\\alpha=4$, $\\beta=-\\log_3 15$이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수함수",
+                                      "l3":  "지수함수의 활용",
+                                      "l4":  "최대·최소"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "integrationPattern":  "INTERDEPENDENT"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "사다리꼴의 닮음으로 대각선 분할 길이의 비를 구해 로그의 비를 밑변환하고 정수 부등식을 푼다.",
+                      "decisiveStep":  "$\\log_ca=4/3$, $\\log_ac=3/4$이므로 $3/4+4k/3\u003e6$에서 가장 작은 정수는 4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질",
+                                      "l4":  "밑의 변환"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ],
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "한 주기에서 지수함수와 로그함수 사이의 넓이를 역함수 대칭으로 계산하고 평행 이동량 $n$의 부호에 따라 전체 넓이를 세운다.",
+                      "decisiveStep":  "주기별 넓이는 $|2n+1|$이고 두 주기의 합이 42이므로 정수 $n$은 10과 -11이다.",
+                      "rpmPath":  {
+
+                                  },
+                      "hold":  "선택지에 주기적 조각함수와 x축 사이의 넓이를 분류하는 네 칸 조합이 없다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ],
+                      "integrationPattern":  "CASE_BRANCH"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "$A=2^{3+\\sqrt3}$, $B=2^{3-\\sqrt3}$로 두고 제곱합과 제곱차의 차 공식을 쓴다.",
+                      "decisiveStep":  "$A B=2^6=64$이므로 $(A+B)^2-(A-B)^2=4AB=256$이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙",
+                                      "l4":  "지수식 계산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "$u=\\cos x$로 두어 $-1\\le u\\le1$에서 방정식을 $k=u^2-4u-1$로 나타낸다.",
+                      "decisiveStep":  "이 식은 구간에서 감소하므로 끝값 $u=1,-1$의 함숫값 사이인 $-4\\le k\\le4$가 범위이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각방정식·부등식",
+                                      "l4":  "그래프를 이용한 해"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL",
+                                            "COND_RANGE"
+                                        ],
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "$\\theta=\\pi x/8$로 바꾸어 사인과 코사인 방정식의 두 해 간격을 각의 위치로 구하고 차가 자연수인 경우를 찾는다.",
+                      "decisiveStep":  "양의 $t$에서 차는 $32a/\\pi$이고 $0\u003ca\u003c\\pi/2$이므로 가능한 자연수의 최댓값은 15이며 $a_n=\\sin(n\\pi/32)$이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수",
+                                      "midUnit":  "삼각함수",
+                                      "l3":  "삼각방정식·부등식",
+                                      "l4":  "주기 구간의 해"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL",
+                                            "COND_RANGE"
+                                        ],
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  19,
+                      "questionUid":  "",
+                      "primaryMethod":  "$\\log15=\\log3+1-\\log2$로 로그를 계산해 $15^9$의 자릿수와 최고 자리 숫자를 판단한다.",
+                      "decisiveStep":  "$\\log15^9=10.584$이므로 수는 11자리이고 $10^{0.584}$의 정수 부분은 3이어서 $a-b=8$이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "상용로그",
+                                      "l4":  "상용로그표·자릿수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  20,
+                      "questionUid":  "",
+                      "primaryMethod":  "$y=r^x$와 $y=\\log_rx$의 대칭 교점 조건으로 $t$를 정하고, 조각함수와 역함수 그래프의 교점 조건으로 나머지 교점을 찾는다.",
+                      "decisiveStep":  "$g(t)=-t$와 교점 조건 $g(-t)=t$에서 $3t^2=1$이므로 $t=1/\\sqrt3$이고, 계산한 두 함숫값의 곱에 6을 곱하면 56이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그함수의 활용",
+                                      "l4":  "그래프 교점"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_EXACT_INTERSECTION_COUNT",
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ],
+                      "integrationPattern":  "INTERDEPENDENT"
+                  }
+              ]
+}

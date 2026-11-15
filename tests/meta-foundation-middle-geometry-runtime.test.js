@@ -3,12 +3,14 @@ const assert = require("assert");
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
+const crypto = require("crypto");
 const { execFileSync } = require("child_process");
 const Archive2Core = require("../archive/archive2-core.js");
 
 async function main() {
 const { loadBank, nativeReviewReceipt, activeBindingContext, sourceFingerprint, sourcePath } = await import("../archive/tools/meta-foundation/auto-register-merged-source.mjs");
 const { loadActiveMetaRegistry, validateActiveMetaFields } = await import("../archive/tools/meta-foundation/active-registry.mjs");
+const { isUnambiguousLegacySourceUidAlias } = await import("../archive/tools/intelligence/question-identity-contract.mjs");
 const root = path.resolve(__dirname, "..");
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
 const sourceKey = (file, ordinal) => Archive2Core.normalizeFile(file) + "#" + Number(ordinal);
@@ -46,17 +48,46 @@ assert.strictEqual(runtime.counts.defaultSelectable, runtime.records.filter((row
 assert.strictEqual(new Set(runtime.records.map((row) => row.questionUid)).size, runtime.records.length);
 assert.strictEqual(new Set(runtime.records.map((row) => sourceKey(row.sourceArchiveFile, row.sourceOrdinal))).size, runtime.records.length);
 
-const frozenRows = runtime.records.filter((row) => row.metaFoundationPackVersion === "1.0.0");
-const priorReviewedRows = runtime.records.filter((row) => row.metaFoundationPackVersion === "1.0.2");
-const currentReviewedRows = runtime.records.filter((row) => row.metaFoundationPackVersion === "1.0.3");
-const additionalReviewedRows = runtime.records.filter((row) => !["1.0.0", "1.0.2", "1.0.3"].includes(row.metaFoundationPackVersion));
-assert.strictEqual(frozenRows.length, 904);
-assert.strictEqual(priorReviewedRows.length, 47);
-assert.strictEqual(currentReviewedRows.length, 24);
-assert.strictEqual(frozenRows.filter((row) => row.metaFoundationL3Status === "FINAL").length, 897);
-assert.strictEqual(frozenRows.filter((row) => row.metaFoundationL4Status === "FINAL").length, 878);
-assert.strictEqual(frozenRows.filter((row) => row.metaFoundationL4Status === "EXPLICIT_HOLD").length, 19);
-assert.strictEqual(frozenRows.filter((row) => row.metaFoundationL3Status === "ROUTE_OUT").length, 7);
+// These are immutable historical UID cohorts, not counts of rows that must
+// keep an old pack version forever. A fresh reviewed registration may replace
+// a row; it must preserve that UID/source and prove its new approval below.
+// Official source-readiness refresh updates counts and the bridge receipt, not
+// these approval rows. Current source release is checked by the canonical gate
+// below, so a source HOLD never inherits release from this historical digest.
+const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
+const stable = value => JSON.stringify(value, (_, v) => v && typeof v === "object" && !Array.isArray(v)
+  ? Object.fromEntries(Object.keys(v).sort().map(key => [key, v[key]])) : v);
+const cohortBytes = fs.readFileSync(path.join(root, "tests/fixtures/middle-geometry-runtime-cohorts-20261115.json"));
+assert.strictEqual(sha256(cohortBytes), "74553daa7085f25652405f5bad95d8a7c269dfcce3e14017eab135746ed3fdc9");
+const historical = JSON.parse(cohortBytes);
+assert.strictEqual(historical.schemaVersion, "middle-geometry-runtime-historical-cohorts-v1");
+assert.deepStrictEqual(historical.columns, ["questionUid", "sourceIndex", "sourceOrdinal", "metaFoundationL3Status", "metaFoundationL4Status", "runtimeRecordSha256"]);
+assert.deepStrictEqual(Object.keys(historical.cohorts), ["1.0.0", "1.0.2", "1.0.3"]);
+assert.strictEqual(historical.cohorts["1.0.0"].length, 904);
+assert.strictEqual(historical.cohorts["1.0.2"].length, 47);
+assert.strictEqual(historical.cohorts["1.0.3"].length, 24);
+assert.strictEqual(historical.cohorts["1.0.0"].filter(row => row[3] === "FINAL").length, 897);
+assert.strictEqual(historical.cohorts["1.0.0"].filter(row => row[4] === "FINAL").length, 878);
+assert.strictEqual(historical.cohorts["1.0.0"].filter(row => row[4] === "EXPLICIT_HOLD").length, 19);
+assert.strictEqual(historical.cohorts["1.0.0"].filter(row => row[3] === "ROUTE_OUT").length, 7);
+const historicalByUid = new Map();
+for (const [version, rows] of Object.entries(historical.cohorts)) for (const row of rows) {
+  const [uid, sourceIndex, ordinal, , , digest] = row;
+  assert(!historicalByUid.has(uid), uid);
+  assert(/^qid_v1_[a-f0-9]{64}$/.test(uid) && /^[a-f0-9]{64}$/.test(digest), uid);
+  assert(Number.isSafeInteger(sourceIndex) && historical.sources[sourceIndex], uid);
+  assert(Number.isSafeInteger(ordinal) && ordinal > 0, uid);
+  historicalByUid.set(uid, { version, source: historical.sources[sourceIndex], ordinal, digest });
+}
+const activeRuntimeByUid = new Map();
+for (const file of Archive2Core.Canonical.RUNTIME_INPUT_PATHS) {
+  const document = readJson("archive/" + file);
+  for (const row of document.records) {
+    const entries = activeRuntimeByUid.get(row.questionUid) || [];
+    entries.push({ row, packId: document.packId, status: document.status });
+    activeRuntimeByUid.set(row.questionUid, entries);
+  }
+}
 
 const l3Evidence = readJson("archive/data/meta-foundation/evidence/middle-geometry/v1/l3_semantic_final_928.json").records;
 const l4Evidence = readJson("archive/data/meta-foundation/evidence/middle-geometry/v1/l4_crossconcept_semantic_freeze_928.json").records;
@@ -68,13 +99,15 @@ assert.strictEqual(l4Evidence.filter((row) => row.l4ReviewStatus === "FINAL").le
 assert.strictEqual(l4Evidence.filter((row) => row.l4ReviewStatus === "EXPLICIT_HOLD").length, runtime.counts.explicitL4Hold);
 
 const currentQuestionMetadata = new Map(readJson("archive/data/question_metadata.json").records.map((row) => [row.questionUid, row]));
-const identityByUid = new Map(readJson("archive/data/question_identity_map.json").records.map((row) => [row.questionUid, row]));
+const identityMap = readJson("archive/data/question_identity_map.json");
+const identityByUid = new Map(identityMap.records.map((row) => [row.questionUid, row]));
+const identityByJoin = new Map(identityMap.records.map((row) => [sourceKey(row.sourceArchiveFile, row.sourceOrdinal), row]));
 const registry = loadActiveMetaRegistry(root);
 assert.strictEqual(registry.status, "ACTIVE", registry.errors.join("|"));
 const nativeSources = new Map();
 const nativeApprovals = new Map();
 const nativeInputs = [];
-function nativeInput(metadata, row) {
+function nativeInput(metadata, row, owner = runtime) {
   const source = sourcePath(metadata.sourceArchiveFile);
   if (!nativeSources.has(source)) {
     const relative = "archive/exams/" + source;
@@ -91,8 +124,8 @@ function nativeInput(metadata, row) {
   assert(question, metadata.questionUid);
   return {
     question, previous: question, current: metadata, identity: identityByUid.get(metadata.questionUid),
-    registry, source, ordinal, runtimeOwner: runtime.packId,
-    nativeSource: { ...sourceBinding, runtimeRecord: row, runtimeStatus: runtime.status }
+    registry, source, ordinal, runtimeOwner: owner.packId,
+    nativeSource: { ...sourceBinding, identityMap, identityByJoin, runtimeRecord: row, runtimeStatus: owner.status }
   };
 }
 function assertNativeApproval(input, label) {
@@ -104,7 +137,9 @@ function assertNativeApproval(input, label) {
   assert.strictEqual(current.sourceArchiveFile, source, label);
   assert.strictEqual(Number(identity.sourceOrdinal), ordinal, label);
   assert.strictEqual(Number(current.sourceOrdinal), ordinal, label);
-  if (question.questionUid) assert.strictEqual(question.questionUid, identity.questionUid, label);
+  if (question.questionUid && question.questionUid !== identity.questionUid)
+    assert(isUnambiguousLegacySourceUidAlias({ question, sourceArchiveFile: source, sourceOrdinal: ordinal,
+      identityRecord: identity, identityMap: input.nativeSource.identityMap, bank: input.nativeSource.bank }), label);
   if (identity.status) assert.strictEqual(identity.status, "VERIFIED", label);
   assert.strictEqual(String(current.sourceQuestionNo), String(identity.sourceQuestionNo), label);
   // Legacy sources can restart displayed sourceQuestionNo values for an essay section.
@@ -127,7 +162,7 @@ function assertNativeApproval(input, label) {
   assert.strictEqual(check.activeBinding, true, label);
   const context = activeBindingContext({ candidate: current, check, registry: input.registry, runtimeOwner: input.runtimeOwner });
   assert(!context.reason, label + ": " + context.reason);
-  const receiptPath = nativeReviewReceipt({ ...input, pt: context.pt, tpl: context.tpl });
+  const receiptPath = nativeReviewReceipt({ ...input, pt: context.pt, tpl: context.tpl, ownerPack: context.ownerPack });
   assert(receiptPath, label + ": native receipt was not verified");
   assert(current.approvalEvidence.includes(receiptPath), label);
   const receipt = JSON.parse(fs.readFileSync(path.join(input.nativeSource.root, receiptPath), "utf8"));
@@ -138,13 +173,47 @@ function assertNativeApproval(input, label) {
   assert.deepStrictEqual(current.fieldStatus, input.nativeSource.runtimeRecord.fieldStatus, label);
   return receiptPath;
 }
-for (const row of [...currentReviewedRows, ...additionalReviewedRows]) {
+
+function verifyHistoricalCohorts(index, remember = false) {
+  let unchanged = 0, reviewedTransitions = 0;
+  for (const [uid, baseline] of historicalByUid) {
+    const entries = index.get(uid) || [];
+    assert.strictEqual(entries.length, 1, "historical runtime UID missing/duplicated: " + uid);
+    const entry = entries[0], row = entry.row;
+    assert.strictEqual(sourceKey(row.sourceArchiveFile, row.sourceOrdinal), sourceKey(baseline.source, baseline.ordinal), uid);
+    if (sha256(stable(row)) === baseline.digest && entry.packId === "MIDDLE_GEOMETRY" && entry.status === "ACTIVE") {
+      assert.strictEqual(row.metaFoundationPackVersion, baseline.version, uid);
+      unchanged += 1;
+      continue;
+    }
+    // A flag or version string is insufficient. Use the production verifier
+    // against the current source bytes, UID map, exact ACTIVE binding, metadata,
+    // runtime owner and applied receipt, including any legitimate pack move.
+    const metadata = currentQuestionMetadata.get(uid);
+    assert(metadata && ["FINAL_QA", "REVIEW2"].includes(metadata.metadataApprovalType), uid);
+    const input = nativeInput(metadata, row, entry);
+    const receiptPath = assertNativeApproval(input, "historical reviewed transition: " + uid);
+    if (remember) {
+      nativeApprovals.set(uid, receiptPath);
+      nativeInputs.push(input);
+    }
+    reviewedTransitions += 1;
+  }
+  assert.strictEqual(unchanged + reviewedTransitions, historicalByUid.size);
+  return { unchanged, reviewedTransitions };
+}
+const preservedCohorts = verifyHistoricalCohorts(activeRuntimeByUid, true);
+const currentReviewedRows = historical.cohorts["1.0.3"].map(([uid]) => activeRuntimeByUid.get(uid)[0]);
+const additionalReviewedRows = runtime.records.filter(row => !historicalByUid.has(row.questionUid))
+  .map(row => ({ row, packId: runtime.packId, status: runtime.status }));
+for (const entry of [...currentReviewedRows, ...additionalReviewedRows]) {
+  const row = entry.row;
   const metadata = currentQuestionMetadata.get(row.questionUid);
   assert(metadata, row.questionUid);
   if (["FINAL_QA", "REVIEW2"].includes(metadata.metadataApprovalType)) {
-    const input = nativeInput(metadata, row);
+    const input = nativeInput(metadata, row, entry);
     nativeApprovals.set(row.questionUid, assertNativeApproval(input, row.questionUid));
-    nativeInputs.push(input);
+    if (!nativeInputs.some(existing => existing.current.questionUid === row.questionUid)) nativeInputs.push(input);
   } else {
     assert.strictEqual(metadata.metadataApprovalType, "META_PIPELINE_AUDIT", row.questionUid);
     assert(metadata.approvalEvidence.some((file) => file.endsWith(".source-parity.json")), row.questionUid);
@@ -163,6 +232,21 @@ for (const row of [...currentReviewedRows, ...additionalReviewedRows]) {
   assert.deepStrictEqual(metadata.conditionKeys, row.conditionKeys);
 }
 
+const historicalUid = historical.cohorts["1.0.0"][0][0];
+const historicalEntry = activeRuntimeByUid.get(historicalUid)[0];
+const invalidCohortCases = [
+  ["missing historical UID", []],
+  ["duplicate historical UID", [historicalEntry, historicalEntry]],
+  ["historical source ordinal drift", [{ ...historicalEntry, row: { ...historicalEntry.row, sourceOrdinal: historicalEntry.row.sourceOrdinal + 1 } }]],
+  ["unproved historical version change", [{ ...historicalEntry, row: { ...historicalEntry.row, metaFoundationPackVersion: "999.0.0" } }]],
+  ["unproved historical classification change", [{ ...historicalEntry, row: { ...historicalEntry.row, templateKey: "TPL_UNREVIEWED_COHORT_CHANGE" } }]],
+];
+for (const [label, entries] of invalidCohortCases) {
+  const invalid = new Map(activeRuntimeByUid).set(historicalUid, entries);
+  assert.throws(() => verifyHistoricalCohorts(invalid), { name: "AssertionError" }, label);
+}
+console.log(`PASS historical cohorts 904/47/24: ${preservedCohorts.unchanged} unchanged, ${preservedCohorts.reviewedTransitions} byte-bound reviewed transitions; ${invalidCohortCases.length} rejected corruptions`);
+
 if (nativeInputs.length) {
   const input = nativeInputs[0];
   const rejects = (candidate, label) => {
@@ -172,12 +256,14 @@ if (nativeInputs.length) {
     ["approval flag without evidence", { current: { ...input.current, approvalEvidence: [] } }],
     ["metadata differs from receipt", { current: { ...input.current, fieldStatus: { ...input.current.fieldStatus, problemType: "manual_review_pending" } } }],
     ["different UID", { identity: { ...input.identity, questionUid: "unregistered-native-uid" } }],
+    ["unknown explicit source UID", { question: { ...input.question, questionUid: "unregistered-explicit-source-uid" } }],
     ["different source ordinal", { identity: { ...input.identity, sourceOrdinal: input.ordinal + 1 } }],
     ["template belongs to another problem type", { registry: { ...input.registry, templates: new Map(input.registry.templates).set(input.current.templateKey, { ...input.registry.templates.get(input.current.templateKey), parentProblemTypeKey: "PT_NOT_THE_REGISTERED_PARENT" }) } }],
     ["changed student payload", { question: { ...input.question, content: "changed student payload fixture" } }],
     ["different source bytes", { nativeSource: { ...input.nativeSource, bytes: Buffer.concat([input.nativeSource.bytes, Buffer.from("\n")]) } }],
     ["different Git blob", { nativeSource: { ...input.nativeSource, blobSha1: "0".repeat(40) } }],
     ["runtime differs from receipt", { nativeSource: { ...input.nativeSource, runtimeRecord: { ...input.nativeSource.runtimeRecord, tagStatus: "review_required" } } }],
+    ["runtime version differs from receipt", { nativeSource: { ...input.nativeSource, runtimeRecord: { ...input.nativeSource.runtimeRecord, metaFoundationPackVersion: "999.0.0" } } }],
     ["inactive runtime", { nativeSource: { ...input.nativeSource, runtimeStatus: "INACTIVE" } }]
   ];
   for (const [label, changes] of cases) rejects({ ...input, ...changes }, label);

@@ -128,6 +128,174 @@ test('native receipt reuse accepts missing producer-only fields without completi
   assert.equal(JSON.stringify({question:f.question,current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,receipt:f.receipt}),before);
   for(const row of [f.question,f.current,f.nativeSource.runtimeRecord])for(const field of ['difficultyBoundaryFlag','legacyLevelCompatibility'])assert.equal(Object.hasOwn(row,field),false);
 });
+function partialNativeReviewFixture(t) {
+  const f=nativeReviewFixture(t,{ordinal:3,questionOverrides:{id:3},
+    omitFields:['difficultyBoundaryFlag','legacyLevelCompatibility'],officialValidator:true});
+  f.allRecords=structuredClone(f.receipt.appliedRecords);
+  f.allRuntimes=structuredClone(f.receipt.runtimeRecords);
+  f.nativeSource.identityByJoin=new Map(f.receipt.appliedIdentityRecords.map(r=>[
+    `${r.sourceArchiveFile}#${r.sourceOrdinal}`,structuredClone(r)]));
+  Object.assign(f.receipt,{scope:'PARTIAL_UIDS',partialUidCount:2,totalQuestions:2,expectedQuestionCount:3});
+  for(const key of ['appliedRecords','appliedIdentityRecords','runtimeRecords'])
+    f.receipt[key]=f.receipt[key].filter(r=>r.sourceOrdinal!==2).reverse();
+  f.saveReceipt();return f;
+}
+test('partial native reuse finds a noncontiguous selected UID without rewriting native approval',t=>{
+  const f=partialNativeReviewFixture(t),before=JSON.stringify({current:f.current,identity:f.identity,
+    runtime:f.nativeSource.runtimeRecord,receipt:f.receipt,question:f.question});
+  assert.deepEqual(f.receipt.appliedRecords.map(r=>r.sourceOrdinal),[3,1]);
+  const r=planQuestion(f);
+  assert.equal(r.status,'ALREADY_REGISTERED',JSON.stringify(r));assert.equal(r.nativeReviewReceipt,f.receiptPath);
+  assert.equal(r.final,undefined);
+  assert.equal(JSON.stringify({current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,
+    receipt:f.receipt,question:f.question}),before);
+});
+function solutionRebindNativeFixture(t) {
+  const f=partialNativeReviewFixture(t),oldBank=structuredClone(f.nativeSource.bank);
+  f.previous.solution='previous solution explicitly repaired by the native FINAL_QA';
+  oldBank[f.ordinal-1].solution=f.previous.solution;
+  execFileSync('git',['init','-q'],{cwd:f.nativeSource.root});
+  const oldBytes='window.questionBank='+JSON.stringify(oldBank)+';\n';
+  const priorSourceBlobSha1=execFileSync('git',['hash-object','-w','--stdin'],{cwd:f.nativeSource.root,input:oldBytes,encoding:'utf8'}).trim();
+  const fp=sourceFingerprint(f.previous),cf=contentFingerprint(f.previous);
+  f.receipt.fingerprintRepairs=[{questionUid:f.identity.questionUid,sourceOrdinal:f.ordinal,
+    metadataBefore:{sourceFingerprint:fp,contentFingerprint:cf},identityBefore:{sourceFingerprint:fp},
+    after:{sourceFingerprint:sourceFingerprint(f.question),contentFingerprint:contentFingerprint(f.question)},
+    rebind:{priorSourceBlobSha1,priorContentFingerprint:cf}}];
+  f.saveReceipt();return f;
+}
+test('a selected solution-only repair reuses its new native approval across an older cursor',t=>{
+  const f=solutionRebindNativeFixture(t),before=JSON.stringify({current:f.current,identity:f.identity,
+    runtime:f.nativeSource.runtimeRecord,receipt:f.receipt,question:f.question});
+  delete f.registry.bindingRows[0].L1;delete f.registry.bindingRows[0].L2;
+  const result=planQuestion(f);
+  assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));
+  assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  assert.equal(JSON.stringify({current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,
+    receipt:f.receipt,question:f.question}),before);
+});
+test('solution-only native reuse requires exact selected repair, previous Git bytes and unchanged student inputs',async t=>{
+  const cases=[
+    ['missing repair',f=>{delete f.receipt.fingerprintRepairs;}],
+    ['other UID repair',f=>{f.receipt.fingerprintRepairs[0].questionUid='other';}],
+    ['duplicate repair',f=>{f.receipt.fingerprintRepairs.push(structuredClone(f.receipt.fingerprintRepairs[0]));}],
+    ['other ordinal',f=>{f.receipt.fingerprintRepairs[0].sourceOrdinal=1;}],
+    ['old metadata mismatch',f=>{f.receipt.fingerprintRepairs[0].metadataBefore.sourceFingerprint='0'.repeat(64);}],
+    ['old identity mismatch',f=>{f.receipt.fingerprintRepairs[0].identityBefore.sourceFingerprint='0'.repeat(64);}],
+    ['old content mismatch',f=>{f.receipt.fingerprintRepairs[0].metadataBefore.contentFingerprint='0'.repeat(64);}],
+    ['missing old content declaration',f=>{delete f.receipt.fingerprintRepairs[0].metadataBefore.contentFingerprint;}],
+    ['current source mismatch',f=>{f.receipt.fingerprintRepairs[0].after.sourceFingerprint='0'.repeat(64);}],
+    ['current content mismatch',f=>{f.receipt.fingerprintRepairs[0].after.contentFingerprint='0'.repeat(64);}],
+    ['missing actual old blob',f=>{f.receipt.fingerprintRepairs[0].rebind.priorSourceBlobSha1='0'.repeat(40);}],
+    ['wrong rebind content',f=>{f.receipt.fingerprintRepairs[0].rebind.priorContentFingerprint='0'.repeat(64);}],
+    ['old source solution differs from cursor',f=>{f.previous.solution+=' different';const fp=sourceFingerprint(f.previous);f.receipt.fingerprintRepairs[0].metadataBefore.sourceFingerprint=fp;f.receipt.fingerprintRepairs[0].identityBefore.sourceFingerprint=fp;}],
+    ['changed stem',f=>{f.previous.content='old different stem';}],
+    ['changed answer',f=>{f.previous.answer='other';}],
+    ['changed figure',f=>{f.previous.figureSvg='<svg/>';}],
+    ['changed layout',f=>{f.previous.layoutTag='wide';}],
+    ['changed renderer number',f=>{f.previous.number=8;}],
+    ['ambiguous reassessment proof',f=>{f.receipt.fingerprintRepairs[0].sourceReview={};}],
+  ];
+  for(const [name,mutate] of cases)await t.test(name,t=>{
+    const f=solutionRebindNativeFixture(t);mutate(f);f.saveReceipt();const result=planQuestion(f);
+    assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+  });
+});
+test('AutoMeta retains a partial canonical approval when the source carries its uniquely bound legacy alias',t=>{
+  const f=partialNativeReviewFixture(t),identityMap={schemaVersion:'question-identity-map-v1',records:[],lookup:{
+    byQuestionUid:{},bySourceFileAndOrdinal:{[source]:{}},bySourceFileAndQuestionNo:{[source]:{}},byLegacyQKey:{}}};
+  for(const row of f.nativeSource.identityByJoin.values()) {
+    row.legacyQKey=`${source}_${row.sourceQuestionNo}`;identityMap.records.push(row);
+    identityMap.lookup.byQuestionUid[row.questionUid]={sourceArchiveFile:source,sourceOrdinal:row.sourceOrdinal,sourceQuestionNo:row.sourceQuestionNo};
+    identityMap.lookup.bySourceFileAndOrdinal[source][row.sourceOrdinal]=row.questionUid;
+    identityMap.lookup.bySourceFileAndQuestionNo[source][row.sourceQuestionNo]=[row.questionUid];
+    identityMap.lookup.byLegacyQKey[row.legacyQKey]=[row.questionUid];
+  }
+  f.nativeSource.identityMap=identityMap;
+  f.identity.legacyQKey=`${source}_3`;
+  for(const row of f.receipt.appliedIdentityRecords)row.legacyQKey=`${source}_${row.sourceQuestionNo}`;
+  f.question.questionUid='fixture|3';f.previous.questionUid='fixture|3';
+  f.nativeSource.bank[2].questionUid='fixture|3';
+  const bytes=Buffer.from('window.questionBank='+JSON.stringify(f.nativeSource.bank)+';\n');
+  f.nativeSource.bytes=bytes;
+  f.nativeSource.blobSha1=crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+  f.receipt.sourceBlobSha1=f.nativeSource.blobSha1;
+  f.receipt.sourceRawSha256=crypto.createHash('sha256').update(bytes).digest('hex');
+  f.saveReceipt();const before=JSON.stringify({current:f.current,identity:f.identity,question:f.question});
+  const r=planQuestion(f);assert.equal(r.status,'ALREADY_REGISTERED',JSON.stringify(r));assert.equal(r.final,undefined);
+  assert.equal(JSON.stringify({current:f.current,identity:f.identity,question:f.question}),before);
+  identityMap.lookup.bySourceFileAndQuestionNo[source]['3'].push(f.receipt.appliedRecords[1].questionUid);
+  assert.deepEqual(planQuestion(f).reasons,['SOURCE_UID_CONFLICT']);
+});
+test('a partial receipt cannot lend native approval to a UID outside its selected set',t=>{
+  const f=partialNativeReviewFixture(t);
+  f.ordinal=2;f.question=structuredClone(f.nativeSource.bank[1]);
+  f.previous={...f.question,primaryMethod:'prior method',decisiveStep:'prior step'};
+  f.current=f.allRecords[1];f.identity=f.nativeSource.identityByJoin.get(`${source}#2`);
+  f.nativeSource.runtimeRecord=f.allRuntimes[1];
+  const before=JSON.stringify({current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord});
+  const r=planQuestion(f);
+  assert.equal(r.status,'SUPPLEMENT_PENDING',JSON.stringify(r));assert.equal(r.nativeReviewReceipt,undefined);
+  assert.equal(r.final,undefined);assert.ok(r.reasons.includes('DIFFICULTY_INCOMPLETE'));
+  assert.equal(JSON.stringify({current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord}),before);
+});
+test('partial native reuse rejects malformed scope and tampering in any selected row',async t=>{
+  const cases=[
+    ['unmarked subset',f=>{delete f.receipt.scope;}],
+    ['unknown scope',f=>{f.receipt.scope='OTHER';}],
+    ['missing source denominator',f=>{delete f.receipt.expectedQuestionCount;}],
+    ['selected count substituted for source denominator',f=>{f.receipt.expectedQuestionCount=2;}],
+    ['fractional selected count',f=>{f.receipt.partialUidCount=2.5;}],
+    ['wrong selected count',f=>{f.receipt.partialUidCount=1;}],
+    ['wrong total',f=>{f.receipt.totalQuestions=3;}],
+    ['missing selected metadata',f=>{f.receipt.appliedRecords.pop();}],
+    ['duplicate selected UID',f=>{f.receipt.appliedRecords[1].questionUid=f.identity.questionUid;}],
+    ['duplicate selected ordinal',f=>{f.receipt.appliedRecords[1].sourceOrdinal=3;}],
+    ['out-of-bank ordinal',f=>{f.receipt.appliedRecords[1].sourceOrdinal=4;}],
+    ['other selected source',f=>{f.receipt.appliedRecords[1].sourceArchiveFile='other.js';}],
+    ['other selected fingerprint',f=>{f.receipt.appliedRecords[1].sourceFingerprint='0'.repeat(64);}],
+    ['other selected content fingerprint',f=>{f.receipt.appliedRecords[1].contentFingerprint='0'.repeat(64);}],
+    ['other selected global number',f=>{f.receipt.appliedRecords[1].sourceQuestionNo='9';}],
+    ['no actual identity map',f=>{delete f.nativeSource.identityByJoin;}],
+    ['actual identity UID drift',f=>{f.nativeSource.identityByJoin.get(`${source}#1`).questionUid='foreign';}],
+    ['actual identity fingerprint drift',f=>{f.nativeSource.identityByJoin.get(`${source}#1`).sourceFingerprint='0'.repeat(64);}],
+    ['missing selected identity',f=>{f.receipt.appliedIdentityRecords.pop();}],
+    ['extra identity outside selection',f=>{f.receipt.appliedIdentityRecords.push(f.nativeSource.identityByJoin.get(`${source}#2`));}],
+    ['duplicate selected identity',f=>{f.receipt.appliedIdentityRecords[1]=f.receipt.appliedIdentityRecords[0];}],
+    ['extra runtime outside selection',f=>{f.receipt.runtimeRecords.push(f.allRuntimes[1]);}],
+    ['duplicate runtime',f=>{f.receipt.runtimeRecords.push(f.receipt.runtimeRecords[0]);}],
+    ['other selected runtime ordinal',f=>{f.receipt.runtimeRecords[1].sourceOrdinal=2;}],
+    ['other selected runtime fingerprint',f=>{f.receipt.runtimeRecords[1].approvedSourceFingerprint='0'.repeat(64);}],
+    ['coordinated foreign UID in receipt',f=>{
+      for(const key of ['appliedRecords','appliedIdentityRecords','runtimeRecords'])f.receipt[key][1].questionUid='foreign';
+    }],
+  ];
+  for(const [name,mutate] of cases)await t.test(name,t=>{
+    const f=partialNativeReviewFixture(t);mutate(f);f.saveReceipt();const r=planQuestion(f);
+    assert.equal(r.status,'SUPPLEMENT_PENDING',JSON.stringify(r));assert.equal(r.nativeReviewReceipt,undefined);assert.equal(r.final,undefined);
+  });
+});
+test('a selected REVIEW2 type hold does not require or receive another UID runtime',t=>{
+  const f=partialNativeReviewFixture(t),held=f.receipt.appliedRecords[1];
+  f.receipt.approval.type='REVIEW2';f.receipt.approval.reviewPassCount=2;
+  for(const row of [f.current,f.nativeSource.runtimeRecord,...f.receipt.appliedRecords,...f.receipt.runtimeRecords]) {
+    row.metadataApprovalType='REVIEW2';row.metadataRevision=row.metadataRevision.replace('final_qa','review2');
+  }
+  Object.assign(held,{problemTypeKey:null,templateKey:null,l3Disposition:'HOLD',l4Disposition:'HOLD',
+    metadataStatus:'approved_partial_with_explicit_holds',metaFoundationHoldReason:'TYPE_PATH_UNBOUND_UNIT_SUB_ONLY'});
+  delete held.metaFoundationStatus;
+  f.receipt.runtimeRecords=f.receipt.runtimeRecords.filter(r=>r.questionUid!==held.questionUid);
+  Object.assign(f.nativeSource.bank[0],{problemTypeKey:null,templateKey:null});
+  const bytes=Buffer.from('window.questionBank='+JSON.stringify(f.nativeSource.bank)+';\n');
+  f.nativeSource.bytes=bytes;
+  f.nativeSource.blobSha1=crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+  f.receipt.sourceBlobSha1=f.nativeSource.blobSha1;
+  f.receipt.sourceRawSha256=crypto.createHash('sha256').update(bytes).digest('hex');
+  f.saveReceipt();const r=planQuestion(f);
+  assert.equal(r.status,'ALREADY_REGISTERED',JSON.stringify(r));assert.equal(r.final,undefined);
+  assert.equal(f.receipt.runtimeRecords.length,1);assert.equal(held.l3Disposition,'HOLD');
+});
 function useCrossPackDefinition(f) {
   f.registry.problemTypes.get('PT_ROOT').ownerPack='GEOMETRY_EQUATIONS';
   f.registry.templates.get('TPL_ROOT').ownerPack='GEOMETRY_EQUATIONS';

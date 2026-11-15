@@ -642,7 +642,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "content": "다음 그림과 같이 반지름의 길이가 $4\\,\\mathrm{cm}$인 원 $O$에서 중심 $O$로부터 두 현 $AB, CD$까지의 거리가 $\\overline{OM} = \\overline{ON} = 2\\,\\mathrm{cm}$이다. $\\angle NOM = 120^\\circ$일 때, 두 삼각형 $\\triangle OAM, \\triangle OCN$과 부채꼴 $MOD$로 이루어진 색칠한 부분의 넓이를 구하면?",
+    "content": "다음 그림과 같이 반지름의 길이가 $4\\,\\mathrm{cm}$인 원 $O$에서 두 현 $AD$, $CD$에 중심 $O$에서 내린 수선의 발을 각각 $M$, $N$이라 하자. $\\overline{OM}=\\overline{ON}=2\\,\\mathrm{cm}$이고 $\\angle MON=120^\\circ$이다. 반직선 $OM$이 원과 만나는 점을 $P$라 할 때, 두 삼각형 $OAM$, $OCN$과 부채꼴 $POD$를 합친 색칠한 부분의 넓이는?",
     "choices": [
       "① $\\left(2\\sqrt{3} + \\dfrac{8}{3}\\pi\\right)\\,\\mathrm{cm}^2$",
       "② $\\left(4\\sqrt{3} + \\dfrac{4}{3}\\pi\\right)\\,\\mathrm{cm}^2$",
@@ -651,9 +651,10 @@ window.questionBank = [
       "⑤ $\\left(4\\sqrt{3} + 4\\pi\\right)\\,\\mathrm{cm}^2$"
     ],
     "answer": "③",
-    "solution": "직각삼각형 $OAM$에서 $OA = 4, OM = 2$이므로\n$AM = \\sqrt{4^2 - 2^2} = 2\\sqrt{3}$\n삼각형 $OAM$의 넓이는 $\\dfrac{1}{2} \\times 2 \\times 2\\sqrt{3} = 2\\sqrt{3}$\n\n마찬가지로 직각삼각형 $OCN$의 넓이도 $2\\sqrt{3}$이므로\n두 직각삼각형의 넓이의 합은 $2\\sqrt{3} + 2\\sqrt{3} = 4\\sqrt{3}\\,\\mathrm{cm}^2$이다.\n\n또한 $\\cos(\\angle AOM) = \\dfrac{2}{4} = \\dfrac{1}{2}$이므로 $\\angle AOM = 60^\\circ$이다.\n부채꼴의 중심각이 $60^\\circ$이므로 부채꼴의 넓이는\n$\\pi \\times 4^2 \\times \\dfrac{60}{360} = \\dfrac{8}{3}\\pi\\,\\mathrm{cm}^2$\n\n따라서 색칠한 부분의 총 넓이는\n$\\left(4\\sqrt{3} + \\dfrac{8}{3}\\pi\\right)\\,\\mathrm{cm}^2$이다.",
+    "solution": "직각삼각형 $OAM$에서 $OA=4$, $OM=2$이므로 $AM=\\sqrt{4^2-2^2}=2\\sqrt3$이다. 마찬가지로 직각삼각형 $OCN$에서 $CN=2\\sqrt3$이다.\n\n따라서 두 삼각형의 넓이의 합은 $2\\cdot\\dfrac12\\cdot2\\cdot2\\sqrt3=4\\sqrt3\\,\\mathrm{cm}^2$이다.\n\n직각삼각형 $OMD$에서 $\\cos\\angle MOD=\\dfrac{OM}{OD}=\\dfrac12$이므로 $\\angle MOD=60^\\circ$이다. $P$는 반직선 $OM$ 위에 있으므로 $\\angle POD=60^\\circ$이다.\n\n따라서 부채꼴 $POD$의 넓이는 $\\dfrac{60}{360}\\cdot\\pi\\cdot4^2=\\dfrac83\\pi\\,\\mathrm{cm}^2$이다.\n\n색칠한 부분의 넓이는 $\\left(4\\sqrt3+\\dfrac83\\pi\\right)\\mathrm{cm}^2$이므로 정답은 ③이다.",
     "score": 4.5,
-    "image": "assets/images/25_금당중_2학기_중간_중3_유사/q20.svg",
+    "image": "assets/images/25_금당중_2학기_중간_중3_유사/q20-problem-sector-v2.svg",
+    "imageSize": "full",
     "standardUnitKey": "M3-06",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "questionType": "객관식",

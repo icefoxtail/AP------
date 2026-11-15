@@ -448,7 +448,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "ALIVE_REPLACEMENT",
     "score": 4,
-    "content": "원점을 지나는 이차함수 $y=a(x-p)^2+q$의 그래프가 그림과 같고 꼭짓점의 좌표가 $(2,-4)$일 때, $a+p+q$의 값을 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q06.svg\" alt=\"꼭짓점 (2,-4)와 원점을 지나는 이차함수 그래프\" />",
+    "content": "원점을 지나는 이차함수 $y=a(x-p)^2+q$의 그래프가 그림과 같고 꼭짓점의 좌표가 $(2,-4)$일 때, $a+p+q$의 값을 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q06-problem-readable-v2.svg\" alt=\"꼭짓점 (2,-4)와 원점을 지나는 이차함수 그래프\" />",
     "choices": [
       "$1$",
       "$-1$",
@@ -1347,7 +1347,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "ALIVE_REPLACEMENT",
     "score": 3,
-    "content": "중심이 $O$이고 반지름의 길이가 $1$인 사분원에서 점 $P$는 호 위에 있다. $H$는 $P$에서 사분원의 반지름에 내린 수선의 발이고 $\\angle POH=x$ ($0^\\circ<x<90^\\circ$)일 때, 다음 중 옳지 않은 것은? (3점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q16.svg\" alt=\"반지름 1인 사분원과 직각삼각형 OPH\" />",
+    "content": "중심이 $O$이고 반지름의 길이가 $1$인 사분원에서 점 $P$는 호 위에 있다. $H$는 $P$에서 사분원의 반지름에 내린 수선의 발이고 $\\angle POH=x$ ($0^\\circ<x<90^\\circ$)일 때, 다음 중 옳지 않은 것은? (3점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q16-problem-readable-v2.svg\" alt=\"반지름 1인 사분원과 직각삼각형 OPH\" />",
     "choices": [
       "$\\sin x=\\overline{PH}$",
       "$\\cos x=\\overline{OH}$",
@@ -1817,7 +1817,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "ALIVE_REPLACEMENT",
     "score": 4,
-    "content": "네 변의 길이가 모두 $4\\sqrt3$인 마름모 $ABCD$의 한 각이 $60^\\circ$일 때, 마름모의 넓이를 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q21.svg\" alt=\"변의 길이가 4루트3이고 한 각이 60도인 마름모\" />",
+    "content": "네 변의 길이가 모두 $4\\sqrt3$인 마름모 $ABCD$의 한 각이 $60^\\circ$일 때, 마름모의 넓이를 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q21-problem-readable-v2.svg\" alt=\"변의 길이가 4루트3이고 한 각이 60도인 마름모\" />",
     "choices": [
       "$17\\sqrt{3}$",
       "$18$",
@@ -1912,7 +1912,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "AUDITED_REPAIR",
     "score": 4,
-    "content": "정사각형 $ABCD$에서 $E$는 선분 $AD$의 중점이고, $F$는 선분 $CD$의 삼등분점 중 $C$에 더 가까운 점이다. $\\angle EBF=x$일 때, $\\sin x$의 값을 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q22.svg\" alt=\"정사각형에서 E는 AD의 중점, F는 C에 가까운 CD의 삼등분점\" />",
+    "content": "정사각형 $ABCD$에서 $E$는 선분 $AD$의 중점이고, $F$는 선분 $CD$의 삼등분점 중 $C$에 더 가까운 점이다. $\\angle EBF=x$일 때, $\\sin x$의 값을 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q22-problem-readable-v2.svg\" alt=\"정사각형에서 E는 AD의 중점, F는 C에 가까운 CD의 삼등분점\" />",
     "choices": [
       "$\\frac{1}{2}$",
       "$\\frac{\\sqrt{2}}{2}$",

@@ -17,8 +17,8 @@ const root = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "../..",
 );
-const read = (file) =>
-  fs.readFileSync(path.join(root, file), "utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
+const normalizedText = (source) => source.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
+const read = (file) => normalizedText(fs.readFileSync(path.join(root, file), "utf8"));
 const hash = (value) => crypto.createHash("sha256").update(value).digest("hex");
 const packageOnly = process.argv.includes("--package-only");
 const refreshingCanonicalProjection = process.argv.includes("--refresh-canonical-projection");
@@ -323,6 +323,7 @@ vm.runInContext(read("archive/db.js"), ctx);
 const exams = ctx.window.mainDB.exams;
 const records = [],
   sourceHashes = [],
+  sourceRawHashes = [],
   health = {};
 const count = (name) => {
   health[name] = (health[name] || 0) + 1;
@@ -348,8 +349,13 @@ const families = {
 };
 for (const exam of exams) {
   const file = core.normalizeFile(exam.file);
-  const source = read("archive/exams/" + file);
-  sourceHashes.push([file, hash(source)]);
+  const sourceBytes = fs.readFileSync(path.join(root, "archive/exams/", file));
+  const source = normalizedText(sourceBytes.toString("utf8"));
+  const normalizedHash = hash(source), rawHash = hash(sourceBytes);
+  sourceHashes.push([file, normalizedHash]);
+  // Browser restoration keeps its existing normalized-text contract. Native
+  // receipts bind exact bytes; record only hashes that differ from that text.
+  if (rawHash !== normalizedHash) sourceRawHashes.push([file, rawHash]);
   const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(scope);
   vm.runInContext(source, scope, { filename: file, timeout: 3000 });
@@ -665,6 +671,7 @@ const indexVersion = hash(
   JSON.stringify([
     core.VERSION,
     sourceHashes,
+    sourceRawHashes,
     hash(read("archive/data/question_metadata.json")),
     identity.identityDigest,
     taxonomy,
@@ -682,6 +689,7 @@ const catalog = {
   metadataRevision: metadata.metadataRevision,
   identityDigest: identity.identityDigest,
   sourceHashes,
+  sourceRawHashes,
   taxonomy,
   exams,
   records,
