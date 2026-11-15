@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 93,
-    "reviewedQuestions": 2215
+    "reviewedExams": 94,
+    "reviewedQuestions": 2239
   },
   "duplicateUids": [],
   "exams": [
@@ -9534,9 +9534,59 @@
       ],
       "solutionCount": 0,
       "existing4slot": null,
-      "status": "PENDING",
+      "status": "REVIEWED_WITH_EVIDENCE_DEBT",
       "assignedTo": "meta_b",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "4f8d13dd30289fd766afcebb9dbf1a7caf9f6591",
+      "reviewer": "meta_b",
+      "independentReviewer": "meta_c",
+      "integratedBy": "GPT_ROOT_E0C948452E80",
+      "sampledOrdinals": [
+        9,
+        22,
+        23
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E095",
+      "checks": {
+        "fourSlotFail": 24,
+        "fourSlotWarn": 18,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 0,
+      "sourceChangedFields": 0,
+      "contentDebtCount": 25,
+      "typeProposalCount": 29,
+      "evidenceDebtOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "undecidedDifficultyOrdinals": [],
+      "difficultyPolicyDebtOrdinals": [],
+      "validatorCompatibilityOrdinals": []
     },
     {
       "key": "E096",
@@ -10905,8 +10955,8 @@
     "predecessorRevision": 6,
     "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
   },
-  "updatedAt": "2026-11-15T06:11:26.148654+00:00",
-  "lastPublishedHeadBeforeCurrent": "b60a484f60a3d7e3b3282533409d4067e011bca4",
+  "updatedAt": "2026-11-15T06:12:43.374119+00:00",
+  "lastPublishedHeadBeforeCurrent": "575efea6d1b393b8cd6fd95ab28f67398edefbfd",
   "resumeHistory": [
     {
       "basis": "EXPLICIT_USER_DIRECTION_TO_RESUME_DESPITE_UNCONFIRMED_STALE_RUNNING",
@@ -10933,11 +10983,11 @@
       "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
     }
   ],
-  "lastCompletedExam": "E093",
+  "lastCompletedExam": "E095",
   "nextIncompleteExam": "E094",
-  "remainingExams": 22,
-  "remainingQuestions": 535,
-  "lastVerifiedRemoteHeadBeforeCurrent": "b60a484f60a3d7e3b3282533409d4067e011bca4",
+  "remainingExams": 21,
+  "remainingQuestions": 511,
+  "lastVerifiedRemoteHeadBeforeCurrent": "575efea6d1b393b8cd6fd95ab28f67398edefbfd",
   "externalCheckpoint": {
     "revision": 13,
     "sha256": "cbe6999d85befee6c4706ed86319dabe6ffbbd2e36f8aa6e41c465b7650b9a22",
@@ -11037,38 +11087,6 @@
           "path": "/workspace/scratch/e0c948452e80/workers/B/E094.independent.json",
           "bytes": 3011,
           "sha256": "336ce411361a004457aa21b315725e1e6ac18b136ed7cb4588cadf4bb2ef76af",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        }
-      ],
-      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
-    },
-    {
-      "examKey": "E095",
-      "sourceBlob": "4f8d13dd30289fd766afcebb9dbf1a7caf9f6591",
-      "questionCount": 24,
-      "artifacts": [
-        {
-          "worker": "B",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E095.review.json",
-          "bytes": 189407,
-          "sha256": "550add37dfaa3b66c3a5256a9f7dc4cdcb9c7a8f08d35ae23b91594e0340f535",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "B",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E095.4slot.json",
-          "bytes": 68736,
-          "sha256": "2138480e4d892563f3526c935673fbbb4248e7ba34eaea42092f52235131f3b8",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "C",
-          "kind": "independent",
-          "path": "/workspace/scratch/e0c948452e80/workers/C/E095.independent.json",
-          "bytes": 3185,
-          "sha256": "a6935ef55fefe1137a69e67b1bb59e96a28babe31f11d9a0cd6641e177cc18fc",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],

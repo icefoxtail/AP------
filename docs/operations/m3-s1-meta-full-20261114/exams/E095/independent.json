@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E095",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "owner": "GPT_ROOT_E0C948452E80/C",
+  "at": "2026-11-15T06:11:17.734373+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/17_대구오성중_1학기_기말_중3_수학.js",
+  "sourceBlob": "4f8d13dd30289fd766afcebb9dbf1a7caf9f6591",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E095.review.json",
+      "sha256": "550add37dfaa3b66c3a5256a9f7dc4cdcb9c7a8f08d35ae23b91594e0340f535"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E095.4slot.json",
+      "sha256": "2138480e4d892563f3526c935673fbbb4248e7ba34eaea42092f52235131f3b8"
+    },
+    "sourceInput": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E095.input.json",
+      "sha256": "775cdb18bd3fd182423981e8f8b0e6ec6bab12ea72465164bdcb7d15e7414e50"
+    }
+  },
+  "sampledOrdinals": [
+    9,
+    22,
+    23
+  ],
+  "findings": [
+    {
+      "ordinal": 9,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 q09 그림에서 B=(0,2), P는 y=(2/3)x+2 위, PA⊥x축을 직접 확인. PBOA는 사다리꼴이며 직사각형으로 오독하지 않은 넓이→이차방정식 후보, 좌표합 goal 및 bucket3을 수용. 기존 해설 공백과 method 공백을 유지한다."
+    },
+    {
+      "ordinal": 22,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 q22 그림의 PQ가 수평인 것을 직접 확인. 포물선과 직선 사이의 수평거리 최소를 처리하는 후보이며 수직거리 TPL을 부당 투영하지 않은 exact-leaf gap, Q 좌표곱 goal, bucket3 및 SOURCE_ONLY 제한을 수용한다."
+    },
+    {
+      "ordinal": 23,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 q23에서 AH=4, BH=12, CH=4와 내접 직사각형 PQRS를 확인. 닮음으로 넓이의 최댓값 위치를 정한 뒤 둘레를 묻는 단계 구분이 적절하며 최댓넓이 자체를 goal로 오인하지 않았다. CC_SIMILARITY+넓이, bucket3, 해설 공백 및 method 부채를 수용한다."
+    }
+  ],
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E095/09-content-1.png",
+      "sha256": "535a62ba05f890ed9b0ce100e3f9bb3fc8e94072efa1363df03348e75517b735"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E095/22-content-1.png",
+      "sha256": "4ab1e4814b8ce51bf0124fb22247e786f71e68daeac272a7b09c4dde0ad7e325"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E095/23-content-1.png",
+      "sha256": "4acf811de41b790bcf96cb9e3b64b354fc8387f35e877577d6a16f5ef4e513d7"
+    }
+  ],
+  "additionalContentObservations": [],
+  "scope": "METADATA_ONLY: sampled source stems, choices, existing solutions/actual blanks, author judgments and exact 4slot quotes directly compared. No full-exam rereview or mathematical PASS asserted. Source-only missing-method failures remain open.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}
