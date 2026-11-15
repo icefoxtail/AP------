@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E064",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "1002aa5fa441667411a2689111899b9ca9830880",
+  "inputHashes": {
+    "reviewSha256": "a584939b22fdbe03bcbcd9308b81006d626e93d1f34266c2181a996349d2e862",
+    "fourSlotSha256": "cd5a332cb544c561c9c6310b5acfae2f8b111c39c6e869337486ba8ecf25c7d7"
+  },
+  "sampledOrdinals": [
+    5,
+    11,
+    24
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_d045835bbed8eb068b5d199097101f04732e3a2484fa4372c5edda253cfd773a",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제 선택지③ √225의 제곱근과 해설이 가정한25의 제곱근이 다름을 확인. 제곱근 정의 주제는 유지하되 단일정답·난도 UNKNOWN 보류 타당."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_4a64cbfd20f64ad2226401fa10a971b6f4cec1247162d1339f00b6444c6234e9",
+      "status": "PASS",
+      "note": "실제 세 정사각형 계단 배치에서 3√2,4√2,7의 외곽을 구분. 넓이→길이→둘레 구성3, 정사각형넓이 보조·exact gap 수용."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_dffe1ca2b3ef42e3e55826fe6d4a684a300091f3972bb62fd7ff0c1fcbbc0e99",
+      "status": "PASS_WITH_DEBT",
+      "note": "교과서 방식이라는 참조로 두 일차인수의 정규화가 완전히 특정되는지는 source 확인 필요. 기존 풀이 인수분해·계수비교 evidence는 실재하며 정규화 debt/난도 보류를 유지."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E064/11-image-1.png",
+      "sha256": "5122e117f81d6bac17f2039b7f5a7488e5c8d3baa3cf6c35dbdb44c2c5ac97f3",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
