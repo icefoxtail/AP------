@@ -92,18 +92,17 @@ test("normal registration sync refreshes parent links and then rebuilds the boun
   const sync = source.slice(start);
   const runtimeRename = sync.indexOf("sync-runtime-source-path-renames.mjs");
   const parentLinks = sync.indexOf("build-basic-scope-parent-links.mjs");
-  const catalogWrites = [...sync.matchAll(/build-archive2-catalog\.mjs/g)]
-    .map((match) => match.index)
-    .filter((index) => !sync.slice(index, index + 80).includes("--check"));
+  const projections = [...sync.matchAll(/build-archive2-ready-catalog\.mjs/g)]
+    .map((match) => match.index);
   const catalogCheck = sync.indexOf('build-archive2-catalog.mjs", "--check"');
-  const finalProjection = sync.indexOf('build-archive2-ready-catalog.mjs');
+  const [intermediateProjection, finalProjection] = projections;
 
   assert.ok(runtimeRename >= 0 && runtimeRename < parentLinks,
     "runtime input renames must finish before parent links are regenerated");
-  assert.ok(catalogWrites.length > 0 && runtimeRename < catalogWrites[0],
-    "an intermediate catalog/manifest must include any runtime rename before parent-link generation");
-  assert.ok(catalogWrites.some((index) => index < parentLinks),
-    "a current intermediate catalog/manifest must be materialized before the parent-link generator consumes it");
+  assert.equal(projections.length, 2,
+    "registration uses one bounded intermediate and one bounded final catalog/readiness closure");
+  assert.ok(runtimeRename < intermediateProjection && intermediateProjection < parentLinks,
+    "intermediate catalog/readiness must settle renamed runtime inputs before parent links bind their authority");
   assert.ok(finalProjection > parentLinks,
     "the final catalog/readiness fixed point must be rebuilt after parent links change");
   assert.ok(catalogCheck > finalProjection,
