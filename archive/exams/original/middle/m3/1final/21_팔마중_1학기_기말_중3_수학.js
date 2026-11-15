@@ -608,7 +608,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 높이에서 바깥 파란 점 두 개가 넓은 곡선의 폭을, 안쪽 주황 점 두 개가 좁은 곡선의 폭을 표시한다. 두 포물선은 위로 열리며 꼭짓점이 같다.",
+    "solutionImageCaption": "같은 높이에서 큰 계수의 그래프가 y축에 가깝다. 폭이 가장 좁은 y=4x²가 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -658,7 +662,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 O를 꼭짓점으로 하고 왼쪽 주황 점 (−2,12)를 지나는 파란 포물선이다.",
+    "solutionImageCaption": "12=4a에서 a=3이므로 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -709,7 +717,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 파랑과 주황은 열리는 방향과 폭이 다르지만 두 곡선이 원점을 지나고 y축으로 대칭이다. 초록은 폭을 비교하는 기준 곡선이다.",
+    "solutionImageCaption": "두 포물선의 공통점은 원점을 지나고 y축 대칭인 ㉠과 ㉡이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -758,7 +770,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 x좌표의 점 두 개가 x축 위아래에서 대칭을 이룬다. 서로 다른 색의 두 가지 곡선을 점선으로 이었다.",
+    "solutionImageCaption": "x축 대칭에서는 함수값의 부호만 바뀐다. 따라서 y=−4x²/3인 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -808,7 +824,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 초록 포물선을 아래로 옮기면 파란 포물선이 된다. 파란 곡선 위에 주황 점 (3,5)가 있다.",
+    "solutionImageCaption": "5=9a−4에서 a=1이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -858,7 +878,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선의 꼭짓점인 원점에서 오른쪽으로, 다시 아래쪽 주황 꼭짓점으로 점선을 잇는다. 두 곡선의 모양은 같다.",
+    "solutionImageCaption": "꼭짓점의 변화가 (3,−5)이므로 m=3, n=−5이다. 따라서 m+n=−2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -909,7 +933,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에 있는 꼭짓점과, 오른쪽의 y축 아래에 있는 y절편을 포물선 위의 점으로 표시했다.",
+    "solutionImageCaption": "위로 볼록하고 꼭짓점은 (−4,1), 축은 x=−4이다. y절편은 −31이고 평행이동으로 계수가 바뀌지 않는다. ㉠, ㉡, ㉣인 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -922,7 +950,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차함수",
@@ -930,7 +958,7 @@ window.questionBank = [
       "계수의 부호"
     ],
     "wide": false,
-    "content": "이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같다. 이 이차함수의 식을 $y = a(x-p)^2 + q$의 꼴로 나타내었을 때, 다음 중 옳지 않은 것은? [4점]<br><br><p><img src=\"assets/images/21_팔마중_1학기_기말_중3_수학/q19.png\" alt=\"문제 19번 그림\" style=\"max-width: 300px;\"></p>",
+    "content": "이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같다. 이 이차함수의 식을 $y = a(x-p)^2 + q$의 꼴로 나타내었을 때, 다음 중 옳지 않은 것은? [4점]<br><br><p><img src=\"assets/images/21_팔마중_1학기_기말_중3_수학/q19-problem-v2.svg\" alt=\"문제 19번 그림\" style=\"max-width: 440px;\"></p>",
     "choices": [
       "$a > 0$",
       "$b > 0$",
@@ -959,7 +987,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점선은 꼭짓점에서 각각 두 축에 닿는다. 파란 꼭짓점은 오른쪽 아래에 있고 주황 y절편은 원점 위에 있다.",
+    "solutionImageCaption": "꼭짓점형을 전개하면 b=−2ap<0이다. b>0이라는 ②가 옳지 않다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -972,7 +1004,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차함수",
@@ -981,7 +1013,7 @@ window.questionBank = [
       "삼각형의 넓이"
     ],
     "wide": false,
-    "content": "오른쪽 이차함수 $y = -x^2 - 4x + 12$의 그래프가 $x$축과 만나는 점을 각각 $A, B$라고 하고, $y$축과 만나는 점을 $C$라 할 때, $\\triangle ABC$의 넓이는? [4점]<br><br><p><img src=\"assets/images/21_팔마중_1학기_기말_중3_수학/q20.png\" alt=\"문제 20번 그림\" style=\"max-width: 300px;\"></p>",
+    "content": "오른쪽 이차함수 $y = -x^2 - 4x + 12$의 그래프가 $x$축과 만나는 점을 각각 $A, B$라고 하고, $y$축과 만나는 점을 $C$라 할 때, $\\triangle ABC$의 넓이는? [4점]<br><br><p><img src=\"assets/images/21_팔마중_1학기_기말_중3_수학/q20-problem-v2.svg\" alt=\"문제 20번 그림\" style=\"max-width: 440px;\"></p>",
     "choices": [
       "$24$",
       "$36$",
@@ -1012,7 +1044,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 주황 삼각형의 밑변 AB는 x축에 있다. 원점 O를 지나 C까지 올라가는 점선이 높이를 표시한다.",
+    "solutionImageCaption": "밑변 AB는 8이고 높이 OC는 12이다. 넓이는 8×12÷2=48이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1063,7 +1099,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래쪽으로 내려오는 꼭짓점은 y축 오른쪽에 있고, y축 왼쪽의 그래프는 모두 x축 위에 있다. 회색은 왼쪽 아래 사분면이다.",
+    "solutionImageCaption": "x축 아래에 있는 구간은 모두 x>0이다. 따라서 지나지 않는 곳은 제3사분면이고 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1119,7 +1159,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "이차방정식의 활용",
@@ -1127,7 +1167,7 @@ window.questionBank = [
       "상자의 부피"
     ],
     "wide": false,
-    "content": "[서술형2] 다음 그림과 같이 가로의 길이가 세로의 길이보다 $4\\text{ cm}$ 더 긴 직사각형 모양의 종이에서, 네 귀퉁이를 한 변의 길이가 $3\\text{ cm}$인 정사각형 모양으로 잘라 내어 뚜껑이 없는 상자를 만들었더니 상자의 부피가 $180\\text{ cm}^3$이었다. 이때 처음 종이의 세로의 길이를 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. [6점]<br><br><p><img src=\"assets/images/21_팔마중_1학기_기말_중3_수학/s02.png\" alt=\"서술형 2번 그림\" style=\"max-width: 500px;\"></p><br>(1) 처음 종이의 세로의 길이를 미지수 $x$로 놓고 상자의 밑면의 가로의 길이와 세로의 길이를 구하면? [1점]<br>(2) 위 (1)에서 구한 가로의 길이와 세로의 길이를 이용하여 문제의 뜻에 맞는 방정식을 세워 보면? [2점]<br>(3) 위 (2)에서 구한 방정식을 풀고 처음 종이의 세로의 길이를 구하면? [3점]",
+    "content": "[서술형2] 다음 그림과 같이 가로의 길이가 세로의 길이보다 $4\\text{ cm}$ 더 긴 직사각형 모양의 종이에서, 네 귀퉁이를 한 변의 길이가 $3\\text{ cm}$인 정사각형 모양으로 잘라 내어 뚜껑이 없는 상자를 만들었더니 상자의 부피가 $180\\text{ cm}^3$이었다. 이때 처음 종이의 세로의 길이를 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. [6점]<br><br><p><img src=\"assets/images/21_팔마중_1학기_기말_중3_수학/q23-problem-v2.svg\" alt=\"서술형 2번 그림\" style=\"max-width: 500px;\"></p><br>(1) 처음 종이의 세로의 길이를 미지수 $x$로 놓고 상자의 밑면의 가로의 길이와 세로의 길이를 구하면? [1점]<br>(2) 위 (1)에서 구한 가로의 길이와 세로의 길이를 이용하여 문제의 뜻에 맞는 방정식을 세워 보면? [2점]<br>(3) 위 (2)에서 구한 방정식을 풀고 처음 종이의 세로의 길이를 구하면? [3점]",
     "choices": [],
     "answer": "(1) 밑면의 가로 $x-2$ cm, 세로 $x-6$ cm\n(2) $3(x-2)(x-6)=180$\n(3) 처음 종이의 세로 $x=12$ cm",
     "solution": "(1) 처음 종이의 세로를 $x$ cm라 두면 가로는 $(x+4)$ cm이다.\n네 모퉁이에서 3 cm 정사각형을 자르므로 밑면의 가로는\n$(x+4)-3-3=x-2$ cm,\n세로는 $x-3-3=x-6$ cm이다.\n\n(2) 상자의 높이는 잘라 낸 정사각형의 한 변인 3 cm이다.\n부피는 밑면의 가로·세로·높이를 곱하므로\n$3(x-2)(x-6)=180$이다.\n\n(3) 양변을 3으로 나누면\n$(x-2)(x-6)=60$이다.\n전개하여 정리하면\n$x^2-8x+12=60$,\n$x^2-8x-48=0$,\n$(x-12)(x+4)=0$이다.\n따라서 $x=12$ 또는 $x=-4$이다.\n세로의 길이와 밑면의 길이는 양수여야 하므로 $x>6$이다. 따라서 $x=12$만 가능하다.\n처음 종이의 세로의 길이는 12 cm이다.",
@@ -1152,7 +1192,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 가로는 x+4, 세로는 x이다. 주황 네 귀퉁이의 한 변은 모두 3 cm이고 파란 영역이 접은 상자의 밑면이다.",
+    "solutionImageCaption": "(1) 밑면의 가로는 x−2 cm, 세로는 x−6 cm이다. (2) 부피 조건은 3(x−2)(x−6)=180이다. (3) x>6인 해를 고르면 종이의 세로는 12 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1165,7 +1209,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "이차함수",
@@ -1173,7 +1217,7 @@ window.questionBank = [
       "계수 결정"
     ],
     "wide": false,
-    "content": "[서술형3] 다음 그림과 같은 그래프를 나타내는 이차함수의 식을 구하고자 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. [5점]<br><br><p><img src=\"assets/images/21_팔마중_1학기_기말_중3_수학/s03.png\" alt=\"서술형 3번 그림\" style=\"max-width: 300px;\"></p><br>(1) 꼭짓점의 좌표를 구하면? [1점]<br>(2) 위의 그래프를 보고 $y = ax^2 + bx + c$의 꼴로 나타내고 $a+b+c$의 값을 구하면? [4점]",
+    "content": "[서술형3] 다음 그림과 같은 그래프를 나타내는 이차함수의 식을 구하고자 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오. [5점]<br><br><p><img src=\"assets/images/21_팔마중_1학기_기말_중3_수학/q24-problem-v2.svg\" alt=\"서술형 3번 그림\" style=\"max-width: 440px;\"></p><br>(1) 꼭짓점의 좌표를 구하면? [1점]<br>(2) 위의 그래프를 보고 $y = ax^2 + bx + c$의 꼴로 나타내고 $a+b+c$의 값을 구하면? [4점]",
     "choices": [],
     "answer": "(1) 꼭짓점 $(2,0)$\n(2) $y=\\dfrac12x^2-2x+2$, $a+b+c=\\dfrac12$",
     "solution": "(1) 그림에서 꼭짓점은 $x$축 위의 $x=2$인 점이다.\n따라서 꼭짓점은 $(2,0)$이다.\n\n(2) 꼭짓점이 $(2,0)$이므로 이차함수를\n$y=a(x-2)^2$로 둘 수 있다.\n그래프가 $y$축과 만나는 점은 $(0,2)$이므로 대입하면\n$2=a(0-2)^2=4a$이다.\n따라서 $a=\\dfrac12$이다.\n꼭짓점형을 전개하면\n$y=\\dfrac12(x-2)^2$\n$=\\dfrac12(x^2-4x+4)$\n$=\\dfrac12x^2-2x+2$이다.\n따라서 $a=\\dfrac12$, $b=-2$, $c=2$이고\n$a+b+c=\\dfrac12-2+2=\\dfrac12$이다.",
@@ -1241,6 +1285,10 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선의 꼭짓점 아래로 대칭축을 그었다. 양쪽 x절편은 대칭축에서 같은 거리만큼 떨어져 있다.",
+    "solutionImageCaption": "(1) 꼭짓점형은 y=−(x−4)²+4이다. (2) 꼭짓점은 (4,4), 축은 x=4이다.",
+    "solutionImageSize": "full"
   }
 ];
