@@ -922,7 +922,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 수평선 y=m 위에 A, B, C, D가 왼쪽부터 놓이고, 이웃한 세 간격 AB, BC, CD에 같은 괄호와 등호가 표시되어 있다. B와 C는 두 수직 점근선과 만나는 점이다. 실제 x좌표는 나타내지 않는다.",
+    "solutionImageCaption": "A, B, C, D는 y=m 위에서 왼쪽부터 이 순서이고 AB=BC=CD이다. 그림은 간격 관계만 정규화해 보이고 실제 x좌표는 표시하지 않는다. 해설에서 AB=2^{m-1}, BC=3k/2, CD=2·4^m을 같게 두어 m=−2, k=1/12를 얻는다. 따라서 k−m=25/12이며 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 21,

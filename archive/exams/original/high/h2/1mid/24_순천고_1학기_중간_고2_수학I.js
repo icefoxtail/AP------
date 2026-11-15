@@ -1193,6 +1193,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceQid": 24,
     "questionUid": "qid_v1_00b87803b31a81acce071c041925b037d65596bc4ee80b3fc468a46539326200",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q24-solution.svg"
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 지수곡선과 초록 점선 지수곡선은 기울기 −1인 직선과 각각 A, B에서 만난다. AB의 중점 M에서 x축에 내린 점선의 길이가 a이다. 원점 O와 A, B가 이루는 삼각형의 넓이가 S이다.",
+    "solutionImageCaption": "두 교점 A=(1,17/4), B=(4,5/4)의 높이를 평균하면 중점의 높이는 a=11/4이다. 원점 O와 두 교점이 이루는 삼각형의 넓이는 S=63/8이다. 따라서 2S/a=63/11이다.",
+    "solutionImageSize": "full"
   }
 ];
