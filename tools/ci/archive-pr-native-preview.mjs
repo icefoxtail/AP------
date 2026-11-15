@@ -11,6 +11,7 @@ export const NATIVE_PREVIEW_SCHEMA = 'archive-pr-native-preview/v1';
 export const NATIVE_REQUEST_SCHEMA = 'archive-reviewed-exam-meta-register-request-v2';
 export const DIFFICULTY_REQUEST_SCHEMA = 'archive-difficulty5-register-request-v1';
 const DIFFICULTY_CORRECTION_SCHEMA = 'archive-difficulty5-reviewed-correction-v1';
+export const AUDIT_PRESERVATION_SCHEMA = 'archive-native-audit-preservation-v1';
 const PARENT_CORRECTION_SCHEMA = 'archive-basic-parent-correction-request-v1';
 export const NATIVE_PREVIEW_HELPER = 'tools/ci/archive-pr-native-preview.mjs';
 const INBOX = '.archive-meta-register/inbox/';
@@ -100,6 +101,52 @@ function selectReviewedDifficulty(root, file, request, headSha) {
     source: { ...source, blobSha1 }, evidence: [evidence] };
 }
 
+// Preserve the normal request order except where one exact audit-preservation
+// request declares its reviewed difficulty input. The dependency must itself
+// be selected by this PR; an unchanged inbox request is never pulled in.
+export function auditPreservationDependency(request, file) {
+  const spec = request.approval?.sourceRebind;
+  const audit = spec?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
+  if (audit && (request.schemaVersion !== NATIVE_REQUEST_SCHEMA || request.approval.type !== 'META_PIPELINE_AUDIT'
+      || request.scope !== undefined || request.registrationMode !== undefined
+      || spec.requestPath !== file)) fail('AUDIT_DEPENDENCY_SCOPE');
+  if (!audit && spec?.difficultyRequestRef !== undefined) fail('AUDIT_DEPENDENCY_SCOPE');
+  return audit ? { schemaVersion: AUDIT_PRESERVATION_SCHEMA, difficultyRequestRef: spec.difficultyRequestRef } : undefined;
+}
+
+export function orderNativeRequests(requests) {
+  const byPath = new Map(requests.map(request => [request.path, request]));
+  if (byPath.size !== requests.length) fail('DUPLICATE_REQUEST_PATH');
+  const dependencies = new Map();
+  for (const request of requests) {
+    if (!request.sourceRebind) continue;
+    const spec = request.sourceRebind, ref = spec.difficultyRequestRef;
+    if (spec.schemaVersion !== AUDIT_PRESERVATION_SCHEMA || request.kind !== undefined
+        || request.scope !== undefined || request.registrationMode !== undefined) fail('AUDIT_DEPENDENCY_SCOPE');
+    if (typeof ref?.path !== 'string' || !ref.path.startsWith(INBOX)
+        || ref.path.slice(INBOX.length).includes('/') || !ref.path.endsWith('.json')
+        || !/^[a-f0-9]{64}$/.test(ref.sha256 || '')) fail('AUDIT_DEPENDENCY_REF');
+    safe('/', ref.path);
+    const dependency = byPath.get(ref.path);
+    if (!dependency) fail('AUDIT_DEPENDENCY_NOT_SELECTED');
+    if (dependency.kind !== 'difficulty5-ratings' || dependency.sourceRebind) fail('AUDIT_DEPENDENCY_KIND');
+    if (dependency.sha256 !== ref.sha256) fail('AUDIT_DEPENDENCY_SHA');
+    if (!request.source || !dependency.source || request.source.path !== dependency.source.path
+        || request.source.blobSha1 !== dependency.source.blobSha1
+        || request.source.sha256 !== dependency.source.sha256) fail('AUDIT_DEPENDENCY_SOURCE');
+    dependencies.set(request.path, ref.path);
+  }
+  const remaining = [...requests], ordered = [], completed = new Set();
+  while (remaining.length) {
+    const index = remaining.findIndex(request => !dependencies.has(request.path)
+      || completed.has(dependencies.get(request.path)));
+    if (index < 0) fail('AUDIT_DEPENDENCY_CYCLE');
+    const [request] = remaining.splice(index, 1);
+    ordered.push(request); completed.add(request.path);
+  }
+  return ordered;
+}
+
 // Diff selection is independent of the inbox inventory. An unchanged request
 // belonging to another owner is never applied by this PR preview.
 export function selectNativeRequests({ root, baseSha, headSha }) {
@@ -119,6 +166,7 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     }
     const correction = request.schemaVersion === PARENT_CORRECTION_SCHEMA;
     if (!correction && request.schemaVersion !== NATIVE_REQUEST_SCHEMA) continue;
+    const sourceRebind = auditPreservationDependency(request, file);
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
     if (request.registrationMode !== undefined && (correction || !partial || request.registrationMode !== 'IDENTITY_FINGERPRINT_ONLY')) fail('REGISTRATION_MODE');
@@ -159,12 +207,13 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
       sourceQuestionCount: request.expectedQuestionCount, selectedItems,
       ...(partial ? { scope: request.scope } : {}),
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
+      ...(sourceRebind ? { sourceRebind } : {}),
       ...(correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' } : {}), source: { ...source, blobSha1 },
       evidence: [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en')),
       receiptPath: `${RECEIPTS}${request.requestId}.json` });
   }
   if (new Set(requests.map(r => r.requestId)).size !== requests.length) fail('DUPLICATE_REQUEST_ID');
-  return requests.sort((a, b) => a.path.localeCompare(b.path, 'en'));
+  return orderNativeRequests(requests.sort((a, b) => a.path.localeCompare(b.path, 'en')));
 }
 
 function difficultyResult(result, request, flags) {
@@ -223,7 +272,7 @@ function planPaths(result, request) {
 
 export function applyNativeRequests({ root, requests, run = nativeCommand, scriptRoot = root, guard = true }) {
   const plans = [];
-  for (const request of requests) {
+  for (const request of orderNativeRequests(requests)) {
     const before = guard ? dirtySnapshot(root) : null;
     const dryRun = registrar(root, request, run, [], scriptRoot), paths = planPaths(dryRun, request);
     if (guard) noUnexpectedMutation(root, before, new Set());
@@ -267,6 +316,7 @@ function difficultyAssignmentInformation(requests, result) {
 
 export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
   if (!requests.length) return [];
+  requests = orderNativeRequests(requests);
   const before = dirtySnapshot(root);
   for (const request of requests) {
     const result = registrar(root, request, run, ['--verify-projection']);

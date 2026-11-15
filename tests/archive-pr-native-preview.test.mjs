@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { NATIVE_REQUEST_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, selectNativeRequests, applyNativeRequests,
+import { NATIVE_REQUEST_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, selectNativeRequests, orderNativeRequests, applyNativeRequests,
   validateNativePreview } from '../tools/ci/archive-pr-native-preview.mjs';
 import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
   producePrRegistrationProof, validateLocalRegistrationProof,
@@ -28,7 +28,7 @@ const PLANNED = [META, AUTHORITY, RECEIPT].sort();
 const ALLOWED = [/^archive\/db\.js$/, /^archive\/data\/question_metadata\.json$/,
   /^archive\/data\/archive2-(?:catalog|canonical-input-manifest)\.json$/];
 
-function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, mutateRequest } = {}) {
+function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -86,6 +86,11 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     approval: { type: 'FINAL_QA', evidenceRefs: [evidenceRef] },
     registryChanges: [], items: [{ questionUid: 'fixture', sourceOrdinal: partial ? 5 : 1, evidenceRefs: [evidenceRef] }],
   };
+  if (auditPreservation) {
+    request.approval.type = 'META_PIPELINE_AUDIT';
+    request.approval.sourceRebind = { schemaVersion: 'archive-native-audit-preservation-v1', requestPath: REQUEST,
+      difficultyRequestRef: { path: DIFFICULTY_REQUEST, sha256: sha(json(difficultyRequest)) } };
+  }
   mutateRequest?.(request);
   write(REQUEST, json(request));
   if (pairedDifficulty) write(DIFFICULTY_REQUEST, json(difficultyRequest));
@@ -119,7 +124,9 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       if (phase === 'write' && !replay) {
         if(identityRepair)write(IDENTITY,json({records:[{questionUid:'fixture',sourceFingerprint:'current'}]}),target);
         else {
-          write(META, json({ records: [{ questionUid: 'fixture', after: true }] }), target);
+          const metadata = auditPreservation ? JSON.parse(fs.readFileSync(path.join(target, META), 'utf8'))
+            : { records: [{ questionUid: 'fixture' }] };
+          Object.assign(metadata.records[0], { after: true }); write(META, json(metadata), target);
           write(AUTHORITY, json({ version: 'after' }), target);
         }
         write(RECEIPT, json({ requestSha256: sha(fs.readFileSync(path.join(target, REQUEST))), source: req.expectedSourceBlobSha1 }), target);
@@ -305,6 +312,69 @@ test('identity repair and reviewed difficulty run in the same preview before str
   const writes=f.calls.filter(c=>c.root===f.root&&c.args.includes('--write')&&/register-(reviewed-exam-meta-source|difficulty5)\.mjs$/.test(c.args[0]));
   assert.equal(writes.length,2);assert.match(writes[0].args[0],/register-reviewed-exam-meta-source/);assert.match(writes[1].args[0],/register-difficulty5/);
   const before=f.snapshot();assert.equal(f.validate(proof).reusable,true);assert.deepEqual(f.snapshot(),before);f.assertShadowsRemoved();
+});
+
+test('audit preservation follows its exact difficulty input in apply, projection and shadow replay', t => {
+  const f=fixture(t,{pairedDifficulty:true,auditPreservation:true});
+  const assertDifficultyApplied=target=>assert.equal(JSON.parse(fs.readFileSync(path.join(target,META),'utf8')).records[0].difficultyBucket,2);
+  for(const phase of ['dry-run','write','projection'])f.hook[phase]=assertDifficultyApplied;
+  assert.deepEqual(f.selected().map(r=>r.path),[DIFFICULTY_REQUEST,REQUEST]);
+  const proof=f.produce();
+  assert.equal(proof.status,'PASS');
+  assert.deepEqual(proof.nativePreview.plans.map(p=>p.requestPath),[DIFFICULTY_REQUEST,REQUEST]);
+  assert.deepEqual(proof.nativePreview.requests[1].sourceRebind,
+    {schemaVersion:'archive-native-audit-preservation-v1',difficultyRequestRef:f.request.approval.sourceRebind.difficultyRequestRef});
+  f.validate(proof);
+  assertDifficultyApplied(f.root);
+  for(const target of new Set(f.calls.map(c=>c.root))) {
+    const writes=f.calls.filter(c=>c.root===target&&c.args.includes('--write')&&c.args.includes('--request'));
+    if(!writes.length)continue;
+    assert.deepEqual(writes.map(c=>c.args[c.args.indexOf('--request')+1]),[DIFFICULTY_REQUEST,REQUEST]);
+  }
+  f.assertShadowsRemoved();
+});
+
+test('audit dependency ordering leaves unrelated requests in their original order', t => {
+  const f=fixture(t,{pairedDifficulty:true,auditPreservation:true}),[difficulty,audit]=f.selected();
+  const unrelated=copy(audit);delete unrelated.sourceRebind;unrelated.path='.archive-meta-register/inbox/unrelated.json';
+  const identity=copy(unrelated);identity.path='.archive-meta-register/inbox/identity.json';identity.kind='identity-fingerprint-repair';
+  identity.scope='PARTIAL_UIDS';identity.registrationMode='IDENTITY_FINGERPRINT_ONLY';
+  assert.deepEqual(orderNativeRequests([identity,audit,unrelated,difficulty]).map(r=>r.path),
+    [identity.path,unrelated.path,difficulty.path,audit.path]);
+  assert.deepEqual(orderNativeRequests([unrelated,identity,difficulty]).map(r=>r.path),
+    [unrelated.path,identity.path,difficulty.path]);
+  const calls=[];
+  applyNativeRequests({root:f.root,requests:[audit,difficulty],run:(...args)=>{calls.push(args);return f.run(...args);}});
+  assert.equal(calls[0][1][calls[0][1].indexOf('--request')+1],DIFFICULTY_REQUEST);
+});
+
+for(const [name,mutation,error] of [
+  ['missing selected request',r=>{r.approval.sourceRebind.difficultyRequestRef.path=OTHER;},/AUDIT_DEPENDENCY_NOT_SELECTED/],
+  ['incorrect raw SHA',r=>{r.approval.sourceRebind.difficultyRequestRef.sha256='0'.repeat(64);},/AUDIT_DEPENDENCY_SHA/],
+  ['self dependency',r=>{r.approval.sourceRebind.difficultyRequestRef.path=REQUEST;},/AUDIT_DEPENDENCY_KIND/],
+  ['non-inbox reference',r=>{r.approval.sourceRebind.difficultyRequestRef.path=EVIDENCE;},/AUDIT_DEPENDENCY_REF/],
+  ['unsafe reference',r=>{r.approval.sourceRebind.difficultyRequestRef.path='.archive-meta-register/inbox/../zz-reviewed-difficulty.json';},/AUDIT_DEPENDENCY_REF/],
+  ['different approval kind',r=>{r.approval.type='FINAL_QA';},/AUDIT_DEPENDENCY_SCOPE/],
+  ['different subtype',r=>{r.approval.sourceRebind.schemaVersion='other-preservation';},/AUDIT_DEPENDENCY_SCOPE/],
+  ['different own request path',r=>{r.approval.sourceRebind.requestPath=DIFFICULTY_REQUEST;},/AUDIT_DEPENDENCY_SCOPE/],
+  ['partial preservation',r=>{r.scope='PARTIAL_UIDS';},/AUDIT_DEPENDENCY_SCOPE/],
+])test(`audit dependency rejects ${name}`,t=>{
+  const f=fixture(t,{pairedDifficulty:true,auditPreservation:true,mutateRequest:mutation});
+  assert.throws(()=>f.selected(),error);
+  assert.equal(f.calls.length,0);
+});
+
+test('audit dependency never selects an unchanged request or accepts another source',t=>{
+  const f=fixture(t,{pairedDifficulty:true,auditPreservation:true}),selected=f.selected();
+  assert.throws(()=>orderNativeRequests(selected.filter(r=>r.path!==DIFFICULTY_REQUEST)),/AUDIT_DEPENDENCY_NOT_SELECTED/);
+  for(const field of ['path','blobSha1','sha256']) {
+    const changed=copy(selected);changed[0].source[field]+='different';
+    assert.throws(()=>orderNativeRequests(changed),/AUDIT_DEPENDENCY_SOURCE/);
+  }
+  assert.throws(()=>orderNativeRequests([...selected,selected[0]]),/DUPLICATE_REQUEST_PATH/);
+  const cyclic=copy(selected);cyclic[0].sourceRebind=copy(cyclic[1].sourceRebind);
+  cyclic[0].sourceRebind.difficultyRequestRef.path=cyclic[1].path;
+  assert.throws(()=>orderNativeRequests(cyclic),/AUDIT_DEPENDENCY_SCOPE/);
 });
 
 test('reviewed difficulty refuses malformed selected scope, unbound evidence and incomplete official results', t => {

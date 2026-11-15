@@ -7,6 +7,8 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { isUnambiguousLegacySourceUidAlias } from '../intelligence/question-identity-contract.mjs';
 import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
+import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
+  readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -119,6 +121,35 @@ function nativeReceiptRecords(receipt,{bank,identityByJoin,identityMap},source) 
   return records;
 }
 
+function preservedAuditReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,ownerPack}) {
+  const {root,bytes,bank,runtimeRecord}=nativeSource;
+  if(!isPreservableAuditRecord(current)||current.metaFoundationPackId!==ownerPack||
+    current.L3!==pt?.canonicalLabelKo||current.L4!==tpl?.canonicalLabelKo)return null;
+  for(const relative of current.approvalEvidence||[]) {
+    if(typeof relative!=='string'||!relative.startsWith(NATIVE_RECEIPTS)||!relative.endsWith('.json'))continue;
+    try {
+      const receipt=read(root,relative);
+      if(!isAuditPreservation(receipt?.approval))continue;
+      const request=readAuditPreservationRequest(root,receipt);
+      if(relative!==NATIVE_RECEIPTS+request.requestId+'.json'||request.sourceArchiveFile!==source)continue;
+      assertAuditPreservationReceipt(receipt,request,bytes,bank.length);
+      const registered=nativeReceiptRecords(receipt,nativeSource,source)?.get(identity.questionUid);
+      const registeredIds=receipt.appliedIdentityRecords?.filter(r=>r.questionUid===identity.questionUid);
+      const registeredRuntime=receipt.runtimeRecords?.filter(r=>r.questionUid===identity.questionUid);
+      if(!equal(registered,current)||registeredIds?.length!==1||!equal(registeredIds[0],identity)||
+        registeredRuntime?.length!==1||!equal(registeredRuntime[0],runtimeRecord))continue;
+      const context=loadAuditPreservation({root,request,bytes,bank});
+      const kept=planPreservedAuditRecord(context,{current,identity,runtime:runtimeRecord,question,ordinal,
+        receiptPath:relative,replay:true});
+      assertPreservedAuditRepair(receipt,kept);
+      if(!equal(pick(previous,REASSESSED_STUDENT_FIELDS),pick(kept.priorQuestion,REASSESSED_STUDENT_FIELDS))&&
+        !equal(pick(previous,REASSESSED_STUDENT_FIELDS),pick(question,REASSESSED_STUDENT_FIELDS)))continue;
+      return relative;
+    } catch { /* Audit kind, explicit debt and original approval must all remain provable. */ }
+  }
+  return null;
+}
+
 // The reviewed lane may have just registered this exact source before AutoMeta reaches an older
 // pending cursor. Reuse its byte-bound native receipt, never the approval flags alone. Returning
 // ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
@@ -129,6 +160,8 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
   if(!Buffer.isBuffer(bytes)||!Array.isArray(bank)||!equal(bank[ordinal-1],question)
     ||!/^[a-f0-9]{40}$/.test(blobSha1||'')||!runtimeRecord||runtimeStatus!=='ACTIVE'
     ||String(runtimeRecord.sourceQuestionNo??'')!==String(question.sourceQuestionNo??question.id??''))return null;
+  if(current.metadataApprovalType==='META_PIPELINE_AUDIT')
+    return preservedAuditReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,ownerPack});
   if(!['FINAL_QA','REVIEW2'].includes(current.metadataApprovalType)||current.reviewStatus!=='reviewed_pass'
     ||!String(current.metadataStatus||'').startsWith('approved_')||current.tagStatus!=='reviewed_pass'
     ||current.sourceFingerprint!==sourceFingerprint(question)||current.contentFingerprint!==contentFingerprint(question)
@@ -212,6 +245,25 @@ export function planQuestion({question:q, previous, current, identity, registry,
   const sourceMetaChanged=Boolean(!previous||!equal(semantic(previous),semantic(q)));
   if(current.metadataStatus==='SOURCE_HOLD')return reject('EXPLICIT_SOURCE_HOLD');
   const studentChanged=Boolean(previous&&!equal(pick(previous,STUDENT),pick(q,STUDENT)));
+  if(nativeSource&&isPreservableAuditRecord(current)) {
+    // Existing audit evidence can explicitly leave an optional field unassessed.
+    // The native preservation proof below must retain that exact null and debt;
+    // omitting it only from the ACTIVE-key checker does not fill or approve it.
+    const supplied={...current,sourceArchiveFile:source};
+    if(supplied.integrationPattern===null&&supplied.fieldStatus?.integrationPattern==='EVIDENCE_DEBT'&&
+      supplied.integrationPatternEvidenceDebt?.status==='EVIDENCE_DEBT')delete supplied.integrationPattern;
+    const check=validate(supplied,registry,{requireFields:false});
+    if(check.status==='VALIDATED'&&check.activeBinding) {
+      const context=activeBindingContext({candidate:current,check,registry,runtimeOwner});
+      if(!context.reason) {
+        const receipt=nativeReviewReceipt({nativeSource,question:q,previous,current,identity,source,ordinal,
+          pt:context.pt,tpl:context.tpl,ownerPack:context.ownerPack});
+        if(receipt)return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,
+          sourceOrdinal:ordinal,inputHash:hash({source,ordinal,student:pick(q,STUDENT),metadata:semantic(q),registry:registry.registrySha}),
+          nativeReviewReceipt:receipt,newMetadataApprovals:0,preservedMetadataApprovals:1};
+      }
+    }
+  }
   const candidate={...current};
   // Absent source fields do not erase reviewed sidecars. Explicit changes are authoritative only for this UID.
   for(const k of FIELDS) if(Object.hasOwn(q,k)) {
@@ -366,7 +418,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       }
       acted++;attempted=true;target.attemptSignature=attemptSignature;
       const runtimeOwner=c.owners.get(id?.questionUid),nativeSource=sourceBindings.get(source);
-      if(['FINAL_QA','REVIEW2'].includes(current?.metadataApprovalType)&&!nativeSource.blobSha1)
+      if(['FINAL_QA','REVIEW2','META_PIPELINE_AUDIT'].includes(current?.metadataApprovalType)&&!nativeSource.blobSha1)
         nativeSource.blobSha1=execFileSync('git',['hash-object','--path',rel,'--stdin'],{cwd:root,input:nativeSource.bytes,encoding:'utf8',stdio:['pipe','pipe','pipe']}).trim();
       result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,
         nativeSource:{...nativeSource,identityMap:c.identityMap,identityByJoin:c.identityByJoin,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
