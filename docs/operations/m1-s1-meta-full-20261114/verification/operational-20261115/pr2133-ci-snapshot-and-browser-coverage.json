@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "m1-pr-browser-coverage-evidence-v1",
+  "pr": 2133,
+  "prHeadSha": "956a5add3fd9a6cdc4eb7d542fe05741169f66ac",
+  "prBaseSha": "40f16f8a7f4488991cc58589f49c3817676891c9",
+  "testedMergeSnapshotSha": "d948c9dd670a464a430ad486abd9545b985c0aa1",
+  "autoMetadataPreviewTestedSnapshotSha": "d948c9dd670a464a430ad486abd9545b985c0aa1",
+  "autoMetadataSnapshotEvidence": "Checkout log https://github.com/icefoxtail/AP------/actions/runs/43701763142/job/132774234441, git log -1 --format=%H at 10:02:54Z",
+  "chromeRunId": 43701763152,
+  "chromeJobId": 132774234772,
+  "chromeJobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43701763152/job/132774234772",
+  "chromeJobConclusion": "success",
+  "artifactId": 14156518493,
+  "artifactName": "archive-solution-loading-43701763152-1",
+  "artifactZipSha256": "a99d416875241a2edaff54d5d90971af62c01d622bd2d44041f8fed53a0fae44",
+  "rawVerification": {
+    "filename": "pr2133-solution-loading-raw.json",
+    "sha256": "004b0bace955d9adc504a908a481d7f6fc88d3aa406209e098a0ec34a336005a",
+    "bytes": 1053967,
+    "losslessGzipFilename": "pr2133-solution-loading-raw.json.gz",
+    "gzipSha256": "129ab7a5ded70897e818fec7537c99b8a594910e5fde1e97bdf4aedab684f084",
+    "gzipBytes": 110337
+  },
+  "actualScope": {
+    "headSha": "d948c9dd670a464a430ad486abd9545b985c0aa1",
+    "baseSha": "40f16f8a7f4488991cc58589f49c3817676891c9",
+    "mode": "full",
+    "reason": "shared, mixed raw-content/code, or unclassified dependency changed",
+    "changedFiles": [
+      "archive/data/item-4slot/original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.4slot.json",
+      "archive/exams/original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js",
+      "archive/exams/original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js"
+    ],
+    "sources": [],
+    "checks": {
+      "workerDependencies": true,
+      "runtimeContract": true,
+      "solutionBrowser": true,
+      "runtimeChrome": true,
+      "prepareProjection": true
+    }
+  },
+  "fixedFixture": {
+    "questions": 50,
+    "solutionImages": 37,
+    "sources": [
+      {
+        "file": "archive/exams/original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+        "sha256": "a7f82ce246d8c76f61043837887795bf823f94b4c456bbbed71d43e703625443"
+      },
+      {
+        "file": "archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
+        "sha256": "a317aee006f69898368d234ddeafcb34fb0e5afcaa2d7f2b0f54f4c918b3e17a"
+      },
+      {
+        "file": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+        "sha256": "e510391ad961220d562f863fccfc706b06a52d00c6c477e1bf2dad80c0aac2a6"
+      }
+    ],
+    "pass": true,
+    "cases": 16,
+    "comparisons": 6,
+    "chromeVersion": "157.0.8103.78",
+    "playwrightVersion": "1.62.1",
+    "baselineSha": "9efb9633b19b966b0611a10bc352172f217c2dcd"
+  },
+  "changedOriginalStep": {
+    "name": "Load and print the changed original sources in actual Chrome",
+    "status": "completed",
+    "conclusion": "skipped"
+  },
+  "targetCoverageByThisChromeJob": {
+    "sourceFiles": [
+      "archive/exams/original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js",
+      "archive/exams/original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js"
+    ],
+    "sourcesIncludedInFixedFixture": [],
+    "includedTargetSourceCount": 0,
+    "yeonhyangQ7Rendered": false,
+    "geumdangQ20Rendered": false,
+    "targetedChromeStatus": "NOT_RUN_IN_THIS_JOB"
+  },
+  "interpretation": "Shared runtime Chrome validation passed on the immutable PR merge snapshot. The 50-question fixture contains M1 semester-2 originals only. The changed-original step was skipped; this success does not establish target Q7/Q20 visual verification or mathematical approval. No new tests were run by this observer."
+}

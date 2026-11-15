@@ -5,7 +5,7 @@
   "owner": "GPT_ROOT_33CD7F492CC2",
   "branch": "review/m1-s1-meta-full-20261114",
   "baselineMain": "8c3b8fe05348d7235546d7d2d9ec063029d19e4d",
-  "stage": "RUNNING_RESIDUAL_REPAIR",
+  "stage": "RUNNING_PR_REQUIRED_CHECKS_AFTER_MAIN_REFRESH",
   "resumeState": "ACTIVE_OWNER",
   "mainMergeAuthorized": true,
   "registrationAuthorized": true,
@@ -943,7 +943,7 @@
       "originalReviewOwner": "META_A"
     }
   ],
-  "nextAction": "PUBLISH_REVIEWED_Q7_SOLUTION_METHOD_REPAIR_AND_VERIFY_ACTUAL_MAIN_REGISTRATION",
+  "nextAction": "VERIFY_PR_2133_HEAD_136B1D_CHECKS_THEN_MERGE_AND_REMOTE_READBACK",
   "authorityRefs": [
     {
       "path": "AGENTS.md",
@@ -982,9 +982,9 @@
     "revision": 4,
     "fileId": "1TkZmWOaOc8TQ6ZN3IMjCAlOvN88fMDj5",
     "rawSha256": "483710a553e80847e7b925605dd8efd348c622feac88d87ce68cc45c8ae606ee",
-    "latestSharedRevision": 7,
-    "latestSharedCheckpointFileId": "1Y5uRYKMi12tMH9WaHQUgigt1-sxNdUj4",
-    "latestSharedCheckpointSha256": "c8ed960778470d198198797a2ca4bb9a96e55cbf81888a737f1ae914b414f215",
+    "latestSharedRevision": 10,
+    "latestSharedCheckpointFileId": "10LQjyoFSdI_aQxx5CRSTTMpnIYnv3NOn",
+    "latestSharedCheckpointSha256": "3fa5ac4ef13b9223559b5cc8da50b1e2e9e70b39aee5b7ac918d3846a1a2f931",
     "latestSharedRawReadbackVerified": true,
     "finalOfferReceipt": "Next immutable revision written after final Git readback; exact receipt external in Notion/AWCR."
   },
@@ -993,7 +993,7 @@
     "uniqueUids": 286,
     "sourceOnlyMethodPolicy": "PROPOSE_SEPARATELY_DO_NOT_INVENT_SOLUTION_EVIDENCE"
   },
-  "updatedAt": "2026-11-15T09:49:56.640683+00:00",
+  "updatedAt": "2026-11-15T10:24:04.884160+00:00",
   "reviewedExamCount": 12,
   "reviewedQuestionCount": 286,
   "remoteReceipts": [
@@ -1141,9 +1141,9 @@
       "additional": "Cross-agent definition review and integrated item/registry proposal artifacts"
     }
   ],
-  "registrationStatus": "NOT_RUN",
-  "deploymentStatus": "NOT_RUN",
-  "mainMergeStatus": "NOT_RUN",
+  "registrationStatus": "PRIOR_INPUTS_PARTIALLY_REGISTERED_NEW_REPAIR_PENDING",
+  "deploymentStatus": "NEW_REPAIR_NOT_MERGED",
+  "mainMergeStatus": "PR_OPEN_REQUIRED_CHECKS",
   "counts": {
     "totalExams": 12,
     "totalQuestionUids": 286,
@@ -1212,7 +1212,7 @@
     },
     {
       "id": "R05",
-      "status": "OPEN_WITH_SPECIFIC_NEXT_ACTION",
+      "status": "SCOPED_REPAIR_APPROVED_PR_AWAITING_MAIN",
       "detailsRef": "docs/operations/m1-s1-meta-full-20261114/REMAINING.md"
     },
     {
@@ -1222,7 +1222,7 @@
     },
     {
       "id": "R07",
-      "status": "OPEN_WITH_SPECIFIC_NEXT_ACTION",
+      "status": "PARTIAL_TRANSCRIPTION_REPAIR_PR_AND_PRIOR_PROPOSAL_CORRECTED_OTHER_DEBTS_OPEN",
       "detailsRef": "docs/operations/m1-s1-meta-full-20261114/REMAINING.md"
     },
     {
@@ -1331,11 +1331,12 @@
     "TOPICS-RESUME.md": "84f36fe9d3421a05e94b345ef56945551e463ea4c8147d2715f56c444d5330b2",
     "topics-resume.json": "16230f388493a22320a5f356160bcfe759bc3213a6bc1b8541afb6d29fdff5dc",
     "current-source-metadata-only.json": "c3e1c78fc7409514330575352cb26c9957ea73bf8e357465e33a91aa11d482f6",
-    "HANDOFF.md": "6779c0260c05d96b32ce7844400ab9728015a0b23a71b2bfba823b5487be36e3",
-    "REMAINING.md": "3f689a38a7b21796be9213206abb4b96a5226f161ccba99f1b2d8bc226074bd0",
+    "HANDOFF.md": "f41ad6de317a2b46a530fcda3c3b3937bbf5bd830d28f6182779538e7a27938d",
+    "REMAINING.md": "b6ca85a158896464f462be1f275afc06fe7ce5f0099a44f14638eb9f86abdd17",
     "residual/merged-registry-proposals.json": "5b350c3be057457d7d24a36380e00122ef992c2eef2d90bb3ec17addcc326f76",
     "residual/merged-item-decisions.json": "1f5a689d74bb6ed95f2a8e327f4edf4c1df15560e8b10308db87356d016fb26b",
-    "residual/artifact-path-map.json": "fda6c36f202b64c40d9fd3e0129d1ffcac60c2d5170aea93dcc9274a3d2bc78c"
+    "residual/artifact-path-map.json": "fda6c36f202b64c40d9fd3e0129d1ffcac60c2d5170aea93dcc9274a3d2bc78c",
+    "residual/current-judgment-overlay-20261115.json": "b05026ec005017116652ae65fb46c1e8bd2e6fcd1c61fe632a4c9acbbc7e3c5f"
   },
   "previousOwner": "GPT_ROOT_75DAEF2BA0F3",
   "resumeWorkers": [
@@ -1642,7 +1643,7 @@
     "inputHashes": 69,
     "artifactReferencesChecked": 2288
   },
-  "originalGapCountsQualification": "gapCounts/gap-index are preserved pre-resume history; current decisions are in residual/merged-item-decisions.json.",
+  "originalGapCountsQualification": "Original counts and merged286 decisions are preserved Pro snapshots. Current operational changes and scoped counts are in operationalResume and currentDecisionOverlayRef.",
   "topicDataRef": "docs/operations/m1-s1-meta-full-20261114/topics-resume.json",
   "integratedDecisionRef": "docs/operations/m1-s1-meta-full-20261114/residual/merged-item-decisions.json",
   "integratedProposalRef": "docs/operations/m1-s1-meta-full-20261114/residual/merged-registry-proposals.json",
@@ -1681,10 +1682,10 @@
     "acceptanceBasis": "USER_DIRECTED_CHATGPT_RESUME_EXACT_TASK_AND_RAW_PREDECESSOR_VERIFIED",
     "originalCodexAcceptance": "NOT_OBSERVED_THROUGH_R8",
     "owner": "GPT_ROOT_33CD7F492CC2",
-    "awcrRevision": 9,
-    "awcrFileId": "1xgvGQmRLHxSx7nJzTLiI3jptzZF__uy6",
-    "awcrRawSha256": "f038e990282a8ba615e1fbfd1dfeac6bce54f49d16c6ca81e33daf77ab404a58",
-    "observedMain": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+    "awcrRevision": 10,
+    "awcrFileId": "10LQjyoFSdI_aQxx5CRSTTMpnIYnv3NOn",
+    "awcrRawSha256": "3fa5ac4ef13b9223559b5cc8da50b1e2e9e70b39aee5b7ac918d3846a1a2f931",
+    "observedMain": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
     "alreadyMergedPrs": [
       2113,
       2119
@@ -1697,27 +1698,41 @@
     "newScopedSolutionApprovalCount": 1,
     "approvedCorrectionRef": "residual/pinpoint-20261115/yeonhyang19-q7-pinpoint-review.json",
     "newScopedSolutionApprovalNotPublished": true,
-    "actualMainRegistration": "PENDING",
-    "actualDeployment": "PENDING",
+    "actualMainRegistration": "PRIOR_INPUTS_REGISTERED_NEW_REPAIR_PENDING",
+    "actualDeployment": "NEW_REPAIR_NOT_MERGED",
     "deploymentVerificationAuthorized": true,
     "workers": [
       {
         "agent": "/root/awcr_acceptance",
         "scope": "Q7 solution and method pinpoint; current93 approval tracing",
-        "state": "ACTIVE"
+        "state": "CLOSED"
       },
       {
         "agent": "/root/source_method_debt",
         "scope": "SOURCE_ONLY193 evidence tracing; source transcription findings",
-        "state": "ACTIVE"
+        "state": "CLOSED"
       },
       {
         "agent": "/root/operational_receipts",
         "scope": "read-only actual registration and deployment evidence",
-        "state": "ACTIVE"
+        "state": "ACTIVE_READONLY"
       }
     ],
-    "proofSha256": "00f4de482ccb96fddd2757a77270328c7c79a6aac1f5c8a385cb66758514d0f8"
+    "proofSha256": "00f4de482ccb96fddd2757a77270328c7c79a6aac1f5c8a385cb66758514d0f8",
+    "currentPr": 2133,
+    "currentPrHead": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+    "currentPrBase": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+    "currentSolutionApprovalEvidencePendingOtherUids": 92,
+    "nativeFinalQaApprovalsAdded": 0,
+    "sourceCorrectionUids": 2,
+    "priorDifficultyActualMetadataUpdated": 4,
+    "priorFourSlotActualConsumerRegistered": 92,
+    "traceEvidenceCheckpoint": "b37b3a0db449a3517d9489d3b4449fa29f01bc37",
+    "initialCiFailure": "M1S2_Q13_07_VS_05_OUTSIDE_CHANGED_FILES",
+    "officialRegisteredMainMergedIntoPr": true,
+    "scopeOutsideSourceOrWorkflowEdits": 0,
+    "localTargetRender": "BLOCKED_NO_VISUAL_PASS",
+    "newHeadCi": "RUNNING"
   },
   "historicalReportHashesBeforeOperationalResume": {
     "gap-index.json": "fc9d67203265cb8de31f43e0807aca4e180c79408ca971876fced0cc3ed8c0bf",
@@ -1731,5 +1746,7 @@
     "residual/merged-registry-proposals.json": "5b350c3be057457d7d24a36380e00122ef992c2eef2d90bb3ec17addcc326f76",
     "residual/merged-item-decisions.json": "1f5a689d74bb6ed95f2a8e327f4edf4c1df15560e8b10308db87356d016fb26b",
     "residual/artifact-path-map.json": "fda6c36f202b64c40d9fd3e0129d1ffcac60c2d5170aea93dcc9274a3d2bc78c"
-  }
+  },
+  "countsArePreservedProSnapshot": true,
+  "currentDecisionOverlayRef": "docs/operations/m1-s1-meta-full-20261114/residual/current-judgment-overlay-20261115.json"
 }

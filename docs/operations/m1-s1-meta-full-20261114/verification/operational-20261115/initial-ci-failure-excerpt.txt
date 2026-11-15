@@ -1,0 +1,29 @@
+2026-11-15T10:11:01.8504627Z # Subtest: unified classification agrees with every 단원별 기출 classification (shared maps, legacy fields)
+2026-11-15T10:11:01.8506541Z Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2026-11-15T10:11:01.8508415Z not ok 3 - unified classification agrees with every 단원별 기출 classification (shared maps, legacy fields)
+2026-11-15T10:11:01.8509491Z   ---
+2026-11-15T10:11:01.8510042Z   duration_ms: 870.670064
+2026-11-15T10:11:01.8510688Z   type: 'test'
+2026-11-15T10:11:01.8511657Z   location: '/home/runner/work/AP------/AP------/tests/archive2-unified-units.test.js:137:1'
+2026-11-15T10:11:01.8512729Z   failureType: 'testCodeFailure'
+2026-11-15T10:11:01.8513389Z   error: |-
+2026-11-15T10:11:01.8514377Z     original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js#13
+2026-11-15T10:11:01.8515128Z     + actual - expected
+2026-11-15T10:11:01.8515690Z     
+2026-11-15T10:11:01.8516209Z     + 'RPM22-M1-L1-07'
+2026-11-15T10:11:01.8516801Z     - 'RPM22-M1-L1-05'
+2026-11-15T10:11:01.8517371Z                     ^
+2026-11-15T10:11:01.8517912Z     
+2026-11-15T10:11:01.8518445Z   code: 'ERR_ASSERTION'
+2026-11-15T10:11:01.8519033Z   name: 'AssertionError'
+2026-11-15T10:11:01.8519643Z   expected: 'RPM22-M1-L1-05'
+2026-11-15T10:11:01.8520270Z   actual: 'RPM22-M1-L1-07'
+2026-11-15T10:11:01.8520887Z   operator: 'strictEqual'
+2026-11-15T10:11:01.8521468Z   stack: |-
+2026-11-15T10:11:01.8522531Z     TestContext.<anonymous> (/home/runner/work/AP------/AP------/tests/archive2-unified-units.test.js:163:12)
+2026-11-15T10:11:01.8523948Z     async Test.run (node:internal/test_runner/test:1054:7)
+2026-11-15T10:11:01.8525065Z     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+2026-11-15T10:11:01.8526082Z   ...
+2026-11-15T10:14:56.9728579Z PASS 342 / FAIL 1 / KNOWN-FAIL 0 (total 343)
+2026-11-15T10:14:56.9730137Z   FAIL archive2-unified-units.test.js
+2026-11-15T10:14:57.1282659Z ##[error]Process completed with exit code 1.

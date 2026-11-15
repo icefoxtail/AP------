@@ -1,14 +1,24 @@
 # M1-S1 메타 — Pro 마감 및 Codex 출고 인계
 
-## Current operational resumption — 2026-11-15
+## 현재 운영 재개 상태 — 2026-11-15
 
-- User-directed owner: `GPT_ROOT_33CD7F492CC2`; exact original task retained. AWCR r9 accepted by `CHATGPT_RESUME`, not a claim that `CODEX_LOCAL` accepted the original offer.
-- Existing PR #2113 and #2119 are already merged. Their M1 S1 difficulty and 92 eligible four-slot inputs must not be remerged or mistaken for approval of all 93 current solutions.
-- Reused: original 286 whole-review records, 36 independent samples, and 93 solution lineage findings. No repeated whole review.
-- Open work: SOURCE_ONLY193 approved method evidence; current solution approvals; selected-part decisions; named definition/binding/source debts. Current solution approval trace found no new blanket approval in the existing operational packets.
-- Newly reviewed pinpoint: Yeonhyang 2019 midterm Q7 solution minimality and method coverage. Raw proof: `residual/pinpoint-20261115/yeonhyang19-q7-pinpoint-review.json`; amended four-slot evidence: `residual/pinpoint-20261115/yeonhyang19-four-slot-after.json`. This scoped correction is not yet published; other 92 solutions remain unapproved by this new review.
-- Next: publish the reviewed Q7 amendment through a narrow current-main PR, resolve only supported transcription findings, and verify actual registration/deployment receipts. Record changes and remaining evidence without inventing semantic PASS.
+- 작업 `M1-S1-META-FULL`, taskId `ef319e48-5efb-4d99-a4ac-5ded7ac1d74d`, owner `GPT_ROOT_33CD7F492CC2`. 원래 CODEX_LOCAL의 인수는 r8까지 확인되지 않았다. 현재 root의 사용자 직접 재개는 AWCR r9에서 CHATGPT_RESUME 인수로 명시했다.
+- 보존·재사용: 기존 12시험지 286문항 검토, 독립표본36, 기존93 해설 판본 계보. 이 작업에서 전체 검토를 반복하지 않았다.
+- 새 근거: `residual/evidence-trace-20261115/README.md`와 manifest. 원격 checkpoint `b37b3a0db449a3517d9489d3b4449fa29f01bc37`의24파일을 다시 읽어 내용·blob SHA 일치를 확인했다.
+- 최신 판단은 기존 `residual/merged-item-decisions.json`에 `residual/current-judgment-overlay-20261115.json`의3개 판정 보완을 함께 적용한다. 기존 합본286개와 원시 검토 기록은 그대로다.
+- 연향19중간Q7: 최소성·기약성 해설과 method 보강을 문항 단위로 승인했다. source/선지/정답 중 변경은 solution뿐이고 나머지22문항은 같다. 근거 commit `45c17f1b31dd6898b7b4af108729b3bb9eb5472f`; 새 method `[53,1,19,12]`. 정식 native FINAL_QA 승격은 하지 않았다.
+- 금당19기말Q20: 두 원본 PDF에 일치하는 계수로 question 필드 한 글자를 정정했다. 답·해설 공란, 다른23문항, 직접 유사문항은 보존했다. 구형 question alias가 legacy fingerprint에서 빠지는 한계를 발견했으므로 raw source와 실제 question 문자열 SHA로 결속했다.
+- 매산17중간Q19: 새 원본 확대 근거에 따라 과거의 점 삭제 제안을 채택하지 않았다. source는 그대로이며 과거 판정을 새 근거로 보완했다.
+- 운영 PR: [#2133](https://github.com/icefoxtail/AP------/pull/2133), head `136b1d66603062ddfdeda6a0b3ac14f29265aaaa`. 운영 diff는 source2+compact1, 세 파일뿐이다. 현재 적용 CI 확인 중이며 아직 main 병합하지 않았다.
+- 최초 PR CI는343개 테스트 파일 중342 PASS/1 FAIL이었다. 실패는 작업 밖 M1S2 연향Q13의07/05 분류 불일치였다. 공용 검사나 다른 문항을 고치지 않았다. 기존 공식 writer가 main `5f8f509108cfc4bfac3ce47813839aaa3c558274`를 저장해 양쪽 분류를05로 맞춘 것을 readback한 뒤, 그 main을 같은 PR에 정방향 merge했다. 새 head의 실제 CI 결과를 확인한다.
+- 기존 PR2113/2119의 M1S1 난도4개와4칸92개는 main `5f8f509…`에서 실제metadata/Consumer 반영을 확인했다. Q7은 이 관측 snapshot에서 아직 기존 hold이고, 이번 PR이 바꿀 대상이다.93개 native 해설승인은 여전히 hold/미승격 상태다.
+- 원격 Chrome CI의 고정50문항 회귀검사는 성공했으나 이번Q7/Q20을 포함하지 않는다. 별도 두문항 로컬·지원브라우저 검사는 환경 차단으로 실제 화면을 관찰하지 못했다. 관련 영수증은 `verification/operational-20261115/`에 보존한다.
+- SOURCE_ONLY193의 새 method 승인0, `method=[]` 유지. 기존93 중 Q7의 한정 보강 근거1개가 추가됐고 다른92의 현재해설 승인 근거는 미확보다. 선택 묶음의 전체UID 난도 미정3개·단일PT/TPL 보류2개, 원문 판본/조건 문제와 정본 정의·binding 부채도 유지한다.
+- 다음 실행: 새 PR head의 필수 CI → 정상일 때 운영병합 → 실제 main SHA와 세 파일 blob readback. 등록/Pages는 실제 관측과 따로 기록한다. 근거 부채를 해소했다고 추정하거나 전체 품질PASS를 선언하지 않는다.
 
+## 보존된 이전 Pro 마감 기록
+
+아래는 이전 checkpoint의 이력이다. 위 최신 상태와 판단 보완 파일이 현재 운영 상태를 우선한다.
 
 **Pro의 잔여 검토·통합안·최소 검증·시험지별 브랜치 보존·출고 인계 범위를 마감했다.** 12시험지 286문항을 대상으로 기존 전수 검토 286건과 독립표본 36건을 재사용하고, 남은 근거·정의·binding·원문 대조 항목만 처리했다. 이 마감은 현재 해설 판본의 최종 승인이나 출고 PASS를 뜻하지 않는다.
 

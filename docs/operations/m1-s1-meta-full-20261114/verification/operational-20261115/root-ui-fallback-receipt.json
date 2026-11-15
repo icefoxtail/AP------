@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "m1-s1-root-ui-fallback-receipt-v1",
+  "at": "2026-11-15T10:14:21.487Z",
+  "recorder": "/root/awcr_acceptance",
+  "uiObserver": "GPT_ROOT_33CD7F492CC2",
+  "uiResultSource": "root live message after closing CUA part with completion_summary",
+  "status": "BLOCKED_CONNECTION_REFUSED",
+  "head": "d9585af65683f528de0241e6ff08c06807d03124",
+  "tree": "c08bf69d0d4131b4ef91c72d9f0a4a8986ca820e",
+  "httpServer": {
+    "origin": "http://127.0.0.1:8767",
+    "root": "/workspace/scratch/33cd7f492cc2/m1-release-work",
+    "startedAt": "2026-11-15T10:12:43.477Z",
+    "actualRequestCount": 0,
+    "servedResponses": 0,
+    "requests": [],
+    "serverProcessTerminated": true,
+    "stopEvidence": {
+      "execSessionId": 76814,
+      "requestedInput": "CONTROL_C",
+      "observedExitCode": 1,
+      "shutdownCallbackObserved": false
+    },
+    "logPath": "/workspace/scratch/33cd7f492cc2/approval93/pinned-http-observer.json",
+    "logSha256": "9d50b406696c09ca1e16457de55dd8472f2d88e6ccefbcd4ba3a927d272fad7f"
+  },
+  "fallbackAttempts": [
+    {
+      "surface": "Browser extension",
+      "result": "ORIGINATING_BROWSER_CONTEXT_UNAVAILABLE",
+      "reportedBy": "root"
+    },
+    {
+      "surface": "CUA Cloud browser",
+      "result": "net::ERR_CONNECTION_REFUSED",
+      "target": "pinned local official archive/engine.html",
+      "reportedBy": "root"
+    }
+  ],
+  "outcome": {
+    "pageConnections": 0,
+    "observedScreens": 0,
+    "observedMathRenderings": 0,
+    "screenshots": 0,
+    "browserResponseBytesVerified": 0,
+    "sourceLoad": "NOT_OBSERVED",
+    "renderPass": false,
+    "sourceDefectInferred": false
+  },
+  "noForwardingOrExternalPublication": true,
+  "noBrowserOrSourceConfigurationChanges": true,
+  "originalLocalBlockedReceipt": {
+    "path": "/workspace/scratch/33cd7f492cc2/approval93/two-item-render-review.json",
+    "sha256": "812b0d2e6c4bdd5ea391a22f6de12ffccfe5b0b30ac54a1bd13f18d5c1e9f170",
+    "preservedUnchanged": true
+  },
+  "nextAction": "root separately checks official PR Chrome CI; no new deployment or content gate inferred from local environment failure",
+  "writerStatus": "CLOSED"
+}

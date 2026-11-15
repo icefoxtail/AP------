@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "m1-s1-current-judgment-overlay-v1",
+  "workKey": "M1-S1-META-FULL",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "owner": "GPT_ROOT_33CD7F492CC2",
+  "baseMergedDecisions": {
+    "commit": "b2572826f5d86102193b5d6a84635e192301795b",
+    "path": "docs/operations/m1-s1-meta-full-20261114/residual/merged-item-decisions.json",
+    "sha256": "1f5a689d74bb6ed95f2a8e327f4edf4c1df15560e8b10308db87356d016fb26b",
+    "uids": 286,
+    "modification": "PRESERVED_BYTES"
+  },
+  "precedence": "Read the unchanged 286-UID merged decisions together with these three explicit scoped overrides. Unmentioned findings, historical evidence, proposals and approval gaps are retained.",
+  "evidenceCheckpoint": "b37b3a0db449a3517d9489d3b4449fa29f01bc37",
+  "production": {
+    "pr": 2133,
+    "head": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+    "status": "PR_REQUIRED_CHECKS_AFTER_OFFICIAL_MAIN_REFRESH",
+    "mergeSha": null,
+    "registration": "PENDING_ACTUAL_RECEIPT",
+    "deployment": "PENDING_ACTUAL_RECEIPT",
+    "baseMain": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+    "initialFailedHead": "956a5add3fd9a6cdc4eb7d542fe05741169f66ac",
+    "initialCiFailure": "M1S2_Q13_CLASSIFICATION_INPUT_MISMATCH",
+    "scopeRepairSourceOrWorkflowChanges": 0,
+    "previouslyMergedInputsActuallyRegistered": {
+      "difficultyUids": 4,
+      "fourSlotUids": 92,
+      "ref": "5f8f509108cfc4bfac3ce47813839aaa3c558274"
+    }
+  },
+  "decisions": [
+    {
+      "questionUid": "qid_v1_93d23f09e6b4ba421810c56393949ce5910e7d0c7bf416ed78ea055842f93c2e",
+      "exam": "19_연향중_1학기_중간_중1_기출",
+      "ordinal": 7,
+      "priorDebt": "R05_METHOD_COVERAGE_MINIMALITY",
+      "decision": "ACCEPTED_AFTER_SOLUTION_MINIMALITY_REPAIR",
+      "approvedScope": [
+        "solution",
+        "fourSlot.method"
+      ],
+      "sourceAfterGitBlobSha": "52b0ec503149dec163e3e2ebc3319ae8aa7b6a6c",
+      "qbody": "1174a1f6d91ebf37d20482882982a3c5dbff583e114c1b7b45f171bee7af52d0",
+      "qfull": "8972325da60d16f63ccac40a55652b1f1722c10e72daf95405c73b3e69483efd",
+      "methodIds": [
+        53,
+        1,
+        19,
+        12
+      ],
+      "compactHold": "REMOVED_IN_PRODUCTION_PR",
+      "nativeFinalQaApproval": "UNCHANGED_NOT_GRANTED",
+      "proof": {
+        "commit": "45c17f1b31dd6898b7b4af108729b3bb9eb5472f",
+        "path": "residual/pinpoint-20261115/yeonhyang19-q7-pinpoint-review.json",
+        "sha256": "00f4de482ccb96fddd2757a77270328c7c79a6aac1f5c8a385cb66758514d0f8"
+      }
+    },
+    {
+      "questionUid": "qid_v1_2e57de2c53204013dd96317d274069537db1672516e0797707dc13f55167161f",
+      "exam": "19_금당중_1학기_기말_중1_수학",
+      "ordinal": 20,
+      "priorDebt": "R07_SOURCE_TRANSCRIPTION",
+      "decision": "ACCEPTED_SCOPED_TRANSCRIPTION_CORRECTION",
+      "approvedScope": [
+        "question"
+      ],
+      "sourceAfterGitBlobSha": "a370abb83cfa7bb65a8de980422c5b4869c3490f",
+      "sourceAfterRawSha256": "d6930f0aab817111af7c25fce3cfdbf7a4b5002269523719e004734e6c3c245d",
+      "questionAfterSha256": "d9a63b5ba1d70ecdda13d39c8876052e040626e0916609eb3ef4c3aa66ee8c4a",
+      "legacyFingerprintLimit": "Legacy fingerprints ignore question alias. Unchanged QBODY/QFULL is not proof of unchanged student text. Bind correction to raw source and actual question string.",
+      "answerAndSolution": "PRESERVED_BLANK",
+      "method": [],
+      "proofPath": "residual/evidence-trace-20261115/current-solutions/geumdang19-q20-independent-transcription-review.json"
+    },
+    {
+      "questionUid": "qid_v1_9b9c2e542781840d71af3629a82ea5ad613067059ab306b14da6d579297469f5",
+      "exam": "17_매산중_1학기_중간_중1_수학",
+      "ordinal": 19,
+      "priorDebt": "R07_SOURCE_DOT_DELETION_PROPOSAL",
+      "decision": "PRIOR_PATCH_PROPOSAL_NOT_ADOPTED_SOURCE_PRESERVED",
+      "sourceChanged": false,
+      "sourceGitBlobSha": "3cee19be7a4c1c993d299d4138729b8479c1140c",
+      "newObservation": "The original crop has a visible dot-like printed mark. The prior categorical no-dot claim is not supported.",
+      "method": [],
+      "proofPath": "residual/evidence-trace-20261115/source-only/maesan-q19-adjudication-correction.json"
+    }
+  ],
+  "counts": {
+    "priorFullReviewsReused": 286,
+    "priorIndependentSamplesReused": 36,
+    "priorLineageFindingsReused": 93,
+    "repeatedWholeReviews": 0,
+    "newSourceOnlyMethodApprovals": 0,
+    "sourceOnlyMethodEvidencePending": 193,
+    "newScopedSolutionRepairApprovals": 1,
+    "otherCurrentSolutionsWithoutNewApprovalEvidence": 92,
+    "nativeFinalQaApprovalsAdded": 0,
+    "correctedSourceUids": 2,
+    "changedProductionFiles": 3,
+    "optionalWholeUidDifficultyUnknown": 3,
+    "optionalSinglePtTplProjectionWithheld": 2
+  },
+  "overallQualityPassClaimed": false,
+  "nextAction": "Observe required PR checks and scoped production merge. Preserve pending evidence without manufacturing method or blanket current-solution approval."
+}

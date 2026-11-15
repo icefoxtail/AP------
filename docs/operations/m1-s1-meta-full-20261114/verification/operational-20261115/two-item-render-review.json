@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "m1-s1-two-item-render-review-v1",
+  "at": "2026-11-15T10:07:03.352Z",
+  "reviewer": "/root/awcr_acceptance",
+  "prNumber": 2133,
+  "remoteHead": "956a5add3fd9a6cdc4eb7d542fe05741169f66ac",
+  "localHead": "d9585af65683f528de0241e6ff08c06807d03124",
+  "tree": "c08bf69d0d4131b4ef91c72d9f0a4a8986ca820e",
+  "status": "LOCAL_CAPTURE_BLOCKED",
+  "scope": [
+    "연향19중간Q7 보강해설",
+    "금당19기말Q20 정정발문과 source-only 공란"
+  ],
+  "routingConclusion": "현행 exam-release와 archive2-runtime-guard는 변경 source에 한정한 기술 렌더 확인을 둔다. 전수 수학검토나 신규 대규모 게이트는 요구하지 않는다.",
+  "officialReferences": [
+    "docs/agents/exam-release.md",
+    ".github/workflows/archive2-runtime-guard.yml",
+    "tools/check-archive-content-browser.mjs",
+    "tests/archive-original-exam-access.browser.cjs",
+    "archive/engine.html"
+  ],
+  "attempt": {
+    "driver": "bundled Playwright with /usr/bin/chromium, same launch and engine route as the repository checker; scoped observer without engine/source changes",
+    "browserStarted": false,
+    "caseExecutions": 0,
+    "sourceResponsesVerified": 0,
+    "screenshotCount": 0,
+    "blockedBeforeNavigation": true,
+    "reason": "Chromium process_singleton_posix.cc:297 socket() failed: Operation not permitted (1)",
+    "rawReportPath": "/workspace/scratch/33cd7f492cc2/approval93/two-item-render-20261115/render-observation.json",
+    "rawReportSha256": "3e7bd1349e8408f423332783b1aacb573a40604719bc32c943326d503b492f79"
+  },
+  "renderConclusions": {
+    "actualSourceLoad": "NOT_OBSERVED",
+    "mathRendering": "NOT_OBSERVED",
+    "sourceOnlyBlankInRenderedOutput": "NOT_OBSERVED",
+    "pageJavaScriptErrors": "NOT_OBSERVED_BROWSER_DID_NOT_START",
+    "visualPass": false,
+    "contentFailureInferred": false
+  },
+  "pinnedInputs": [
+    {
+      "path": "archive/exams/original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+      "sha256": "af182581755c491edd9c626993716b1c95654545ecfee4020a91f70ea5247a56"
+    },
+    {
+      "path": "archive/exams/original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js",
+      "sha256": "d6930f0aab817111af7c25fce3cfdbf7a4b5002269523719e004734e6c3c245d"
+    },
+    {
+      "path": "archive/engine.html",
+      "sha256": "73280fbfd0f52e9b6ef24861aa8fb35bdc3aa8622ad31dbe06b578dc4c17c47c"
+    },
+    {
+      "path": "tests/archive-original-exam-access.browser.cjs",
+      "sha256": "75e6d3b28612192437ec7fa81d000226c7c2a6590bcb3fa771183472af3bd550"
+    }
+  ],
+  "sourceOrGlobalConfigurationChanged": false,
+  "workingTreeAfter": "CLEAN",
+  "fullReview286Repeated": false,
+  "independentSample36Repeated": false,
+  "followup": "root가 수행 중인 PR의 공식 Chrome CI 결과를 별도로 확인한다. 로컬 환경 차단을 운영병합의 신규 게이트로 추가하지 않는다.",
+  "gitReadback": {
+    "head": "d9585af65683f528de0241e6ff08c06807d03124",
+    "tree": "c08bf69d0d4131b4ef91c72d9f0a4a8986ca820e",
+    "headMatchesExecutionPrecondition": true,
+    "treeMatchesPublishedPrTree": true
+  },
+  "processCleanup": {
+    "observerExecutionCompleted": true,
+    "loopbackServerCloseAwaited": true,
+    "chromiumFailureExitObserved": "SIGABRT",
+    "temporaryBrowserProfileCleanupObserved": true
+  },
+  "writerStatus": "CLOSED"
+}
