@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E053",
+  "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+  "author": "meta_b",
+  "reviewer": "meta_c_resume_20261115",
+  "owner": "GPT_ROOT_E45FF6C78C51/C",
+  "at": "2026-11-15T00:04:22.760690+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/21_왕운중_1학기_기말_중3_수학.js",
+  "sourceBlob": "7600b9a73ce175c86351c5f3d7602336661896e1",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E053.review.json",
+      "sha256": "8a2ef5548b0273b5e09a477a182cfefbd6bc9ad5714876553e64a41e17b8d253"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E053.4slot.json",
+      "sha256": "72c37e00e273a950bb39776719de4d7ded2575d53906e0b3f9ef0e03c41c7474"
+    }
+  },
+  "sampledOrdinals": [
+    4,
+    18,
+    23
+  ],
+  "additionalChangedOrBoundaryOrdinals": [],
+  "scope": "METADATA_ONLY: listed source stems, choices, existing solutions, author decisions and exact 4slot quotes directly compared. Other completed author judgments reused; no full-exam rereview claim.",
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E053-s03.png",
+      "sha256": "6e0b953e296eb0be8fc597151fe8dfe6c9c3cd58972ca20467afa6ede70a7cd6"
+    }
+  ],
+  "findings": [
+    {
+      "ordinal": 4,
+      "status": "PASS_AFTER_REVISION",
+      "note": "공통일차인수로각식을0으로두는표준대입2/B23과exactgap수용. 미정계수·곱으로목표보완확인."
+    },
+    {
+      "ordinal": 18,
+      "status": "PASS",
+      "note": "완전제곱식으로정수근조건을11k의제곱수조건및두자리범위에연결하는3단계판단과조건보존확인."
+    },
+    {
+      "ordinal": 23,
+      "status": "PASS",
+      "note": "그림의4각형→5각형→6각형과단계번호차이를직접확인. 변+대각선수로이차방정식을모델링하며일반대각선공식auxgap을부적합공용키로대체하지않음."
+    }
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}
