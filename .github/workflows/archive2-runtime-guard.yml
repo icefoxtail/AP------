@@ -15,6 +15,9 @@ on:
       - 'tools/check-archive2-finder-filter-browser.cjs'
       - 'tools/check-archive-rpm-middle-browser.cjs'
       - 'tools/check-archive-content-browser.mjs'
+      - 'tools/check-reviewed-problem-renderer-browser.cjs'
+      - 'tests/archive-problem-renderer-ui-contract.test.js'
+      - 'tests/fixtures/archive-reviewed-problem-renderer-ui3.json'
       - 'tools/ci/archive-ci-scope.mjs'
       - 'tools/ci/run-scoped-tests.mjs'
       - 'tests/archive-ci-scope.test.mjs'
@@ -37,6 +40,9 @@ on:
       - 'tools/check-archive2-finder-filter-browser.cjs'
       - 'tools/check-archive-rpm-middle-browser.cjs'
       - 'tools/check-archive-content-browser.mjs'
+      - 'tools/check-reviewed-problem-renderer-browser.cjs'
+      - 'tests/archive-problem-renderer-ui-contract.test.js'
+      - 'tests/fixtures/archive-reviewed-problem-renderer-ui3.json'
       - 'tools/ci/archive-ci-scope.mjs'
       - 'tools/ci/run-scoped-tests.mjs'
       - 'tests/archive-ci-scope.test.mjs'
@@ -104,6 +110,60 @@ jobs:
           name: archive-rpm-middle-browser-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/archive-rpm-middle-browser/
           if-no-files-found: warn
+          retention-days: 14
+
+  reviewed-problem-renderers:
+    name: Archive2 reviewed problem UI (6 cases)
+    runs-on: ubuntu-latest
+    # A separate bounded job preserves the existing solution browser's budget.
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify the closed problem UI evidence contract
+        run: node --test tests/archive-problem-renderer-ui-contract.test.js
+      - name: Classify the immutable snapshot
+        run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/reviewed-problem-scope.json"
+      - name: Require all six views for exact source, asset or checker changes
+        id: plan
+        run: >-
+          node tools/check-reviewed-problem-renderer-browser.cjs --plan
+          --scope "$RUNNER_TEMP/reviewed-problem-scope.json"
+          --output "$RUNNER_TEMP/reviewed-problem-ui-plan.json"
+      - uses: browser-actions/setup-chrome@v1
+        if: steps.plan.outputs.required == 'true'
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        if: steps.plan.outputs.required == 'true'
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/reviewed-problem-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Verify all three reviewed problems in desktop and mobile exam mode
+        if: steps.plan.outputs.required == 'true'
+        timeout-minutes: 5
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/reviewed-problem-browser/node_modules
+        run: node tools/check-reviewed-problem-renderer-browser.cjs --output "$RUNNER_TEMP/reviewed-problem-ui-evidence"
+      - name: Upload only problem screenshots and hash-bound technical metadata
+        if: always() && steps.plan.outputs.required == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: reviewed-problem-ui3-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/reviewed-problem-ui-plan.json
+            ${{ runner.temp }}/reviewed-problem-ui-evidence/technical-proof.json
+            ${{ runner.temp }}/reviewed-problem-ui-evidence/*-desktop.png
+            ${{ runner.temp }}/reviewed-problem-ui-evidence/*-mobile.png
+          if-no-files-found: error
           retention-days: 14
 
   solution-loading:
