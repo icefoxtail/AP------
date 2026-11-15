@@ -1,0 +1,843 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T21:30:00+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "각 보기의 최고차항 차수와 밑의 크기를 비교하여 2번 보기의 극한값이 0임을 판별한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "solution",
+            "quote": "각 수열에서 최고차항"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "극한값이 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "최고차항",
+            "src": "solution",
+            "quote": "각 수열에서 최고차항 또는 지배적인 항을 확인하여 극한값을 비교한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "일반항을 부분분수로 분해하여 중간 항들이 상쇄되는 망원급수의 합을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "급수",
+            "src": "stem",
+            "quote": "급수 $\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac1{(n+1)(n+2)}$의 합을 구하면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 합을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "망원합",
+            "src": "solution",
+            "quote": "망원급수로 계산한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "주어진 급수를 공비가 4/5와 3/5인 두 등비급수로 분리하여 각각의 합을 더한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "급수",
+            "src": "stem",
+            "quote": "급수 $\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{4^n+3^n}{5^n}$의 합을 구하면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 합을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등비급수",
+            "src": "solution",
+            "quote": "두 등비급수로 나눈다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수렴",
+            "src": "solution",
+            "quote": "각각 수렴한다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "로그와 삼각함수의 기본 극한 공식과 치환을 적용하여 3번 보기가 참임을 확인한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "극한값을 조사한 것이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "극한값이 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=-x$로 놓으면",
+            "evidenceType": "IMPLIED",
+            "justification": "u=-x로 치환하여 자연로그 기본 극한 공식을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "사분면 부호를 반영해 cos alpha와 sin beta를 구하고 코사인 덧셈정리로 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "제1사분면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$\\cos(\\alpha-\\beta)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의덧셈정리",
+            "src": "solution",
+            "quote": "코사인 차 공식을 사용한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "옳지 않은 것 고르기",
+      "decisiveStep": "곱의 미분법과 삼각함수 도함수 공식을 적용하여 5번의 미분이 틀렸음을 찾는다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "다음은 함수를 미분한 것이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "도함수",
+            "src": "solution",
+            "quote": "보기의 도함수를 확인한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의미분법",
+            "src": "solution",
+            "quote": "⑤는 곱 $x\\cot x$의 미분이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "곱의 미분법을 적용하여 x cot x의 도함수를 판별함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "코사인의 주기성으로 홀수 항을 소거하고 공비가 -1/4인 등비급수의 합을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "급수",
+            "src": "stem",
+            "quote": "급수 $\\displaystyle\\sum_{n=1}^{\\infty}\\left(\\dfrac12\\right)^n\\cos\\dfrac{n\\pi}2$의 합을 구하면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 합을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등비급수",
+            "src": "solution",
+            "quote": "등비급수로 계산한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "주기함수",
+            "src": "solution",
+            "quote": "$\\cos\\dfrac{n\\pi}{2}$의 주기를 이용하여",
+            "evidenceType": "IMPLIED",
+            "justification": "코사인 함수의 주기성에 따라 0이 되는 홀수 항을 제외함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "지수함수와 로그함수의 곱의 미분법으로 f'(x)를 구하고 x=1을 대입해 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=e^{x+1}\\ln x^2$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f'(1)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의미분법",
+            "src": "solution",
+            "quote": "곱의 미분법과 $\\ln x^2$의 미분을 함께 사용한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "탄젠트 덧셈정리로 tan theta를 구하고 1+tan^2 theta 공식을 이용해 값을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 직선"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "두 직선의 기울기를 구하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$4\\sec^2\\theta$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의상호관계",
+            "src": "solution",
+            "quote": "$\\sec^2\\theta=1+\\tan^2\\theta$를 적용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "sec^2 theta = 1 + tan^2 theta 상호관계를 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "분자가 0으로 수렴해야 하므로 a=2를 정하고 로그 기본 극한과 연속성으로 b를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조각함수",
+            "src": "stem",
+            "quote": "\\begin{cases}\\dfrac{\\ln(x^2+2)-\\ln a}{bx^2}&(x\\lt0)\\\\x^2-1&(x\\ge0)\\end{cases}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a,b$에 대하여"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌극한",
+            "src": "solution",
+            "quote": "왼쪽 극한이",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=\\dfrac{x^2}{2}$로 놓으면",
+            "evidenceType": "IMPLIED",
+            "justification": "u=x^2/2로 치환하여 기본 로그 극한을 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "연속",
+            "src": "stem",
+            "quote": "$x=0$에서 연속일 때,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "주어진 극한이 미분계수임을 파악하고 식을 간단히 한 후 도함수에 pi/4를 대입한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\dfrac{-\\csc x}{1+\\cot x}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미분계수",
+            "src": "solution",
+            "quote": "주어진 극한은 $f'(\\dfrac\\pi4)$이며,"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "몫의미분법",
+            "src": "solution",
+            "quote": "$f'(x)=\\dfrac{\\cos x-\\sin x}{(\\sin x+\\cos x)^2}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "분수 형태의 함수를 몫의 미분법으로 미분함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "삼각함수 기본 극한으로 f(n)=n^2/2임을 유도하고 거듭제곱의 합 공식으로 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$\\displaystyle\\sum_{n=1}^{8}f(n)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "공식",
+            "src": "solution",
+            "quote": "$1^2+\\cdots+8^2$ 공식을 적용한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "식을 cos과 sin으로 정리하고 몫의 미분법으로 도함수를 구해 x=pi/3을 대입한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선의 기울기는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "접선의 기울기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "몫의미분법",
+            "src": "solution",
+            "quote": "이를 미분하면",
+            "evidenceType": "IMPLIED",
+            "justification": "분수 형태의 삼각함수를 몫의 미분법으로 미분하여 접선의 기울기를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "부분합의 차를 이용하여 an의 일반항을 구하고 n^2an의 극한값을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "수열"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "$\\displaystyle\\lim_{n\\to\\infty}(a_1+n^2a_n)$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "두 부분합 식을 뺀다.",
+            "evidenceType": "IMPLIED",
+            "justification": "부분합 Sn과 Sn-1의 관계를 이용하여 일반항 an을 유도함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "회전된 점 C의 좌표로 넓이 함수 f(theta)를 삼각함수로 세우고 미분하여 값을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형 $ABCD$를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b+c$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "회전이동",
+            "src": "solution",
+            "quote": "시계방향으로 $\\theta$만큼 회전한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "점 B를 중심으로 회전이동하여 C 프라임의 좌표를 삼각함수로 표현함"
+          },
+          {
+            "term": "곱의미분법",
+            "src": "solution",
+            "quote": "넓이함수를 미분한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각함수의 곱으로 이루어진 넓이 함수를 미분함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "내린 수선의 발을 $H$라 하자."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "순환마디 3자리를 한 묶음으로 묶어 공비가 1/8인 등비급수의 합 공식을 적용한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "급수",
+            "src": "stem",
+            "quote": "급수 $\\dfrac{a_1}2+\\dfrac{a_2}{2^2}+\\dfrac{a_3}{2^3}+\\cdots$의 합은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등비급수",
+            "src": "solution",
+            "quote": "등비급수로 계산한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "대칭성을 이용해 교점의 개수 an=4n-1을 구하고 부분분수 망원합으로 급수를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 합을 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "그래프의 대칭성을 이용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "망원합",
+            "src": "solution",
+            "quote": "망원합을 계산하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "접선 방정식으로 QA를 구하여 넓이 식을 세우고 삼각함수 기본 극한을 적용한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "부채꼴 $OAB$가 있다."
+          },
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "단위원 위의 점 $P$에서의 접선은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "$\\displaystyle\\lim_{\\theta\\to0+}\\dfrac{2\\sqrt{g(\\theta)}}{\\theta\\times f(\\theta)}$의 값을 구하여라."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "극한의성질",
+            "src": "solution",
+            "quote": "기본 극한을 적용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각함수 세타의 기본 극한 성질을 적용하여 극한값을 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "내린 수선의 발을 $H$,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "분모를 sinx cosx로 정리하여 곱의 꼴로 바꾼 뒤 곱의 미분법으로 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\dfrac{\\sin x+\\cos x}{\\tan x+\\cot x}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f\\left(\\dfrac\\pi3\\right)+f'\\left(\\dfrac\\pi3\\right)$의 값을 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의미분법",
+            "src": "solution",
+            "quote": "$f'(x)=(\\cos x-\\sin x)\\sin x\\cos x+(\\sin x+\\cos x)(\\cos^2x-\\sin^2x)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각함수 곱의 형태로 변형된 함수식을 곱의 미분법으로 미분함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "소문항 묶음",
+      "decisiveStep": "정삼각형의 닮음비 1/2로 둘레의 등비급수와 넓이비 1/4로 넓이의 등비급수를 각각 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정삼각형",
+            "src": "stem",
+            "quote": "내접하는 정삼각형을 그리고"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $4$인 원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이의 합을 구하고,"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "제외한 부분의 넓이를 $S_1$이라 하자."
+          }
+        ],
+        "method": [
+          {
+            "term": "등비급수",
+            "src": "solution",
+            "quote": "등비급수로 계산한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원 $C_1$에 내접하는"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "극한 조건에서 f와 g의 함수값 및 도함수값을 구하고 곱의 미분법으로 b-a를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "미분 가능한 두 함수 $f(x)$, $g(x)$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$b-a$의 값을 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "미분계수",
+            "src": "solution",
+            "quote": "미분계수의 비를 이용하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의미분법",
+            "src": "solution",
+            "quote": "곱의 미분계수를 사용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "함수의 곱 f(x)g(x)의 미분계수를 구하기 위해 곱의 미분법을 적용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "미분가능",
+            "src": "stem",
+            "quote": "미분 가능한 두 함수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

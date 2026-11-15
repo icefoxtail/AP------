@@ -1,0 +1,1141 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T20:27:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1final/21_금당고_1학기_기말_고2_수학I.js",
+  "candidates": [
+    {
+      "term": "원리합계",
+      "en": "COMPOUND_INTEREST_SUM",
+      "synonyms": [
+        "적금",
+        "연금의현재가치"
+      ],
+      "kind": "방법",
+      "parent": "수열의합",
+      "note": "원금과 이자의 합계를 등비수열의 합을 이용하여 계산하는 방법",
+      "usedIn": [
+        18
+      ]
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "삼각방정식 sin x=-1/2의 해를 구간 [0,2pi)에서 구해 실근의 개수 2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각방정식",
+            "src": "stem",
+            "quote": "방정식 $\\sin x + \\frac{1}{2} = 0$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "실근의 개수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "사인값이 $-\\dfrac12$인 각은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "제3사분면과 제4사분면에 있다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "(단, $0 \\le x < 2\\pi$)"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "구간 [0,4]의 각 정수 x에 대하여 탄젠트값을 조사하여 부등식을 만족하는 정수 x의 개수 0을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각부등식",
+            "src": "stem",
+            "quote": "부등식 $\\tan\\frac{\\pi}{2}x \\ge 100$을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수 $x$의 개수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "탄젠트값이 정의되지 않는다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "정수 $x$는 $0,1,2,3,4$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정수 범위의 후보 값들을 대입하여 만족 여부를 확인함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $x$의"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0 \\le x \\le 4$일 때,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "삼각함수의 각변환 공식으로 -sqrt(2)/2와 sqrt(3)/2를 구해 더한 값 (sqrt(3)-sqrt(2))/2를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각함수",
+            "src": "solution",
+            "quote": "삼각함수의 각을 정리한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의성질",
+            "src": "solution",
+            "quote": "삼각함수의 각을 정리한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일반각에 대한 삼각함수 각변환 공식을 적용함"
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "$\\sin\\left(\\pi+\\dfrac\\pi4\\right)=-\\sin\\dfrac\\pi4",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "$\\cos\\left(\\dfrac\\pi2-\\dfrac\\pi3\\right)=\\cos\\dfrac\\pi6",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "삼각형의 넓이 공식 S=1/2*b*c*sin A에 주어진 값을 대입하여 넓이 6sqrt(3)을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "인 $\\triangle\\mathrm{ABC}$의"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "\\sin A = \\frac{\\sqrt{3}}{2}$인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형의 넓이는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "주어진 값을 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "a6-a2=4d=8에서 공차 d=2를 구하고 a4=a2+2d=12를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열 $\\{a_n\\}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a_4$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "공차",
+            "src": "solution",
+            "quote": "이므로 $d=2$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "네 칸 뒤의 항이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등차수열의 일반항 성질로 항 번호의 차와 공차의 관계를 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "a1=S1=7과 a3=S3-S2=54를 각각 구하여 a1+a3=61을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "수열 $\\{a_n\\}$의"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "제$n$항까지의 합 $S_n$이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a_1+a_3$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a_1+a_3$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "부분합의 정의에 따라",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "$a_3=S_3-S_2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수열의 합과 일반항의 관계 a_n=S_n-S_{n-1}을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "3r^4=243에서 공비 r=-3을 선택하여 세 수의 합 3(-3+9-27)=-63을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등비수열",
+            "src": "stem",
+            "quote": "등비수열을 이룰 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값을 구하면?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$x_1+x_2+x_3$의 최솟값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "공비",
+            "src": "solution",
+            "quote": "등비수열의 공비를 $r$이라 하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "중간 세 수의 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "등비수열의 각 항을 공비의 거듭제곱으로 표현함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "S3=S7 조건에서 공차 d=-4/3을 구하고 a5=2/3>0, a6=-2/3<0으로부터 합이 최대가 되는 n=5를 결정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "첫째항이 6인 등차수열"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$n$의 값은?"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$S_n$이 최대가 되는"
+          }
+        ],
+        "method": [
+          {
+            "term": "공차",
+            "src": "solution",
+            "quote": "공차를 $d$라 하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "제5항까지는 모두 양수이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "등차수열의 일반항 부호가 양수에서 음수로 바뀌는 지점을 조사함"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "등차수열의 합 조건에서",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "부분분수 분해 1/(k+1)-1/(k+2)를 적용하고 소거하여 1/2-1/9=7/18을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^{7}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분분수",
+            "src": "solution",
+            "quote": "부분분수로 나타낸다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "중근 조건 D/4=0에서 b sin^2 B = a sin^2 A를 얻고 사인법칙을 대입하여 a=b인 이등변삼각형임을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\mathrm{ABC}$에 대하여"
+          },
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x$에 대한 이차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "어떤 삼각형인가?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 0이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사인법칙",
+            "src": "solution",
+            "quote": "사인법칙에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "삼각형은 $a=b$인 이등변삼각형이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "중근을 가질 때,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "(a3+a4)-(a1+a2)=4d=2에서 공차 d=1/2을 구하고 a19+a20=(a1+a2)+36d=21을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열 $\\{a_n\\}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a_{19}+a_{20}$의 값은?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a_{19}+a_{20}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "공차",
+            "src": "solution",
+            "quote": "두 번째 식에서 첫 번째 식을 빼면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "각 항에서 18칸 뒤의 항을 비교하면",
+            "evidenceType": "IMPLIED",
+            "justification": "등차수열 일반항의 첨자 차이로 항의 차를 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "첫째항 10, 공비 0.9인 등비수열의 합 공식 S30=10*(1-0.04)/0.1을 적용하여 이동 거리 96을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "공비가 0.9인 등비수열을 이룬다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "이동할 거리를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "이동 거리의 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "등비수열의 합 공식을 적용하여 총 이동 거리를 구함"
+          },
+          {
+            "term": "공비",
+            "src": "solution",
+            "quote": "공비가 0.9인",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "대각선 AC에 대한 두 코사인법칙 식을 연립하여 cos theta=-5/7를 구하고 두 삼각형의 넓이의 합으로 2sqrt(6)을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "원에 내접하는 사각형 $\\mathrm{ABCD}$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "사각형 $\\mathrm{ABCD}$의 넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "대각선 $AC$에 코사인법칙을 각각 적용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각함수의상호관계",
+            "src": "solution",
+            "quote": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}$",
+            "evidenceType": "IMPLIED",
+            "justification": "sin^2 theta + cos^2 theta = 1로 sin theta를 구함"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "사각형의 넓이는 두 삼각형의 넓이의 합이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "넓이 공식에서 xy=36을 얻고 코사인법칙 식 x^2+y^2-36sqrt(3)의 산술기하평균 등호 조건 x=y=6으로부터 x+y=12를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "인 $\\triangle\\mathrm{ABC}$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AB}}+\\overline{\\mathrm{BC}}$의 값을 구하면?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AB}}+\\overline{\\mathrm{BC}}$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "코사인법칙으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "$x^2+y^2\\ge2xy=72$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "x^2+y^2>=2xy 부등식으로 최솟값과 등호 성립 조건을 구함"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이가 9이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "처음 4항과 마지막 4항의 합으로부터 2a1+(n-1)d=40을 얻고 등차수열의 합 Sn=20n=260에서 n=13을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "$n$개의 항으로 이루어진 등차수열"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$n$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "$S_n=\\dfrac n2\\{2a_1+(n-1)d\\}$로 나타낸다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "공차",
+            "src": "solution",
+            "quote": "마지막 네 항의 합에서 처음 네 항의 합을 빼면",
+            "evidenceType": "IMPLIED",
+            "justification": "항의 차를 통해 공차와 항 수의 관계식을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "sin u=1/2의 해로부터 가장 긴 밑변 8pi와 곡선의 최솟값 -2로부터 최대 높이 3을 구하여 넓이의 최댓값 12pi를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "함수 $y=2\\sin\\frac{1}{4}(x-\\pi)$"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=1$이 만나는"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\mathrm{PAB}$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "넓이의 최댓값을 구하면?"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이의 최댓값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=\\dfrac{x-\\pi}{4}$라 놓으면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각방정식",
+            "src": "solution",
+            "quote": "$\\sin u=\\dfrac12$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "곡선의 최솟값은 $-2$이고,",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "($0 \\le x \\le 10\\pi$)"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "빈칸 채우기",
+      "decisiveStep": "삼각형 AOP의 내각 합으로 f(theta)=pi-theta, 코사인법칙으로 g(theta)=2+2 cos theta를 구하여 f(pi/3)*g(pi/3)=2pi를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2+y^2=1$ 위의"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{AQP}$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$f\\left(\\frac{\\pi}{3}\\right) \\times g\\left(\\frac{\\pi}{3}\\right)$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f\\left(\\frac{\\pi}{3}\\right) \\times g\\left(\\frac{\\pi}{3}\\right)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인법칙",
+            "src": "stem",
+            "quote": "코사인법칙에 의하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형 $APQ$의",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$f\\left(\\dfrac\\pi3\\right)=\\dfrac{2\\pi}{3}$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 식에 theta=pi/3을 대입하여 함숫값을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "퇴직금의 미래가치 1,200,000원과 매달 지급액의 등비수열 합 25R을 같게 놓아 매달 지불액 R=48,000원을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "등비수열의 합을 이용하면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "금액을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원리합계",
+            "src": "solution",
+            "quote": "퇴직금의 미래가치와 24회 지급액의 미래가치는 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "복리 이자가 적용된 연금의 미래가치를 계산하는 원리합계 원리를 사용함"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "등비수열의 합을 이용하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "t=sin x로 치환한 이차함수 k=1+t-2t^2의 그래프에서 4개의 실근을 갖는 k의 범위 1<=k<9/8을 구해 a+8b=10을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각방정식",
+            "src": "stem",
+            "quote": "방정식 $1-2\\sin^2 x + \\sin x - k = 0$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+8b$의 값은?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+8b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=\\sin x$라 놓으면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "$k=1+t-2t^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "t에 대한 이차함수의 꼭짓점과 그래프 개형을 이용하여 범위를 구함"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "최댓값은 $\\dfrac98$이며,",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "닫힌구간",
+            "src": "stem",
+            "quote": "닫힌 구간 $[0, \\pi]$에서"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의"
+          },
+          {
+            "term": "서로다른",
+            "src": "stem",
+            "quote": "서로 다른 실근의 개수가"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "각의 이등분선 성질로 PQ=2/5 AP, PS=2/5 BP 및 삼각형 ABP의 넓이 5에서 AP*BP=10을 유도하여 직사각형의 넓이 8/5를 구하고 p+q=13을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$가 있다."
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "두 선분 $AB, BC$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값을 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$p+q$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선의 교점을 $P$,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "닮음이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "마주 보는 각의 이등분선은 서로 평행하므로 $PQRS$는 직사각형이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "따라서 직사각형의 넓이는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "$p$와 $q$는 서로소인 자연수이다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "등차수열의 일반항 a_n=2n-1로부터 부분분수 분해를 적용하여 망원급수 합 1/2(1/3-1/23)=10/69를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열 $\\{a_n\\}$에 대하여"
+          },
+          {
+            "term": "공차",
+            "src": "stem",
+            "quote": "공차가 2인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하는 과정을"
+          }
+        ],
+        "method": [
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "첫째항이 1이고 공차가 2이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "등차수열의 일반항 공식을 적용하여 a_n을 구함"
+          },
+          {
+            "term": "부분분수",
+            "src": "solution",
+            "quote": "각 항을 부분분수로 나타내면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "그러므로",
+            "evidenceType": "IMPLIED",
+            "justification": "부분분수의 소거를 이용하여 수열의 합을 구함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "구간별 함수 y>=f(x)와 정수점 조건에서 각 n별 점의 개수 An을 분류 계산하여 1부터 10까지의 합 244를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조각함수",
+            "src": "stem",
+            "quote": "좌표평면에서 함수 $$f(x)="
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $P_n Q_n R_n$이 있다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$\\sum_{n=1}^{10} A_n$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "세 부분으로 나누어 센다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "격자점",
+            "src": "stem",
+            "quote": "모두 정수인 점 중에서",
+            "evidenceType": "IMPLIED",
+            "justification": "정수 좌표를 갖는 격자점의 개수를 영역별로 셈"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "그러므로",
+            "evidenceType": "IMPLIED",
+            "justification": "각 n에 대한 점의 개수의 수열의 합을 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "$y$좌표가 모두 정수인"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

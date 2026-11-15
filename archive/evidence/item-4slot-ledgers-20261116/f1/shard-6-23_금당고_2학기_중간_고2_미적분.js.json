@@ -1,0 +1,950 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T21:20:00+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "n이 무한대로 갈 때 n분의 1의 제곱이 0으로 수렴함을 적용한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "solution",
+            "quote": "주어진 수열은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "$\\displaystyle\\lim_{n\\to\\infty}\\left(2-\\frac1{n^2}\\right)$"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "극한의성질",
+            "src": "solution",
+            "quote": "각 항의 극한을 따로 구해 더한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "상수와 수열 각 항의 극한 성질을 이용하여 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "분모에서 밑의 절댓값이 가장 큰 3^n으로 분모와 분자를 나눈다.",
+      "slots": {
+        "given": [
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "지수가 다른 항이 섞인 극한은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "$\\displaystyle\\lim_{n\\to\\infty}\\frac{2^{n+1}}{1+3^n}$"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "극한의성질",
+            "src": "solution",
+            "quote": "분자와 분모를 $3^n$으로 나누고 $\\left(\\dfrac23\\right)^n\\to0$임을 이용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 최고 밑인 3^n으로 나누어 수렴하는 극한 성질을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "공비가 3분의 1로 절댓값이 1보다 작으므로 등비급수 합 공식을 적용한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등비급수",
+            "src": "stem",
+            "quote": "등비급수 $\\displaystyle\\frac13+\\frac19+\\frac1{27}+\\frac1{81}+\\cdots$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "급수",
+            "src": "solution",
+            "quote": "급수는 수렴하고 그 합은"
+          },
+          {
+            "term": "값",
+            "src": "solution",
+            "quote": "그 합은 $\\dfrac{\\frac13}{1-\\frac13}=\\dfrac{\\frac13}{\\frac23}=\\dfrac12$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "공식",
+            "src": "solution",
+            "quote": "등비급수의 합 공식을 적용한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수렴",
+            "src": "solution",
+            "quote": "급수는 수렴하고"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "지수를 3x 형태로 맞추고 전체의 3분의 1제곱으로 변형하여 e의 정의를 적용한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "지수를 $3x$로 만든 뒤"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "$\\displaystyle\\lim_{x\\to\\infty}\\left(1+\\frac1{3x}\\right)^x$"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "극한의성질",
+            "src": "solution",
+            "quote": "지수를 $3x$로 만든 뒤 전체를 $\\dfrac13$제곱한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "자연상수 e의 극한 정의 형태에 맞추어 지수를 변형한 뒤 극한 성질을 적용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수렴",
+            "src": "solution",
+            "quote": "중괄호 안은 $e$에 수렴한다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "곱의 미분법으로 f'(x)를 구한 뒤 x=1을 대입하여 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=e^x\\ln x$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f'(1)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의미분법",
+            "src": "solution",
+            "quote": "곱의 미분법과 $(\\ln x)'=\\dfrac1x$, $(e^x)'=e^x$를 이용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "미분",
+            "src": "solution",
+            "quote": "곱의 미분법으로 $f'(x)$를 구한 뒤",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "곱의 미분법과 삼각함수 도함수를 적용하여 도함수를 구한 뒤 2분의 파이를 대입한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=(1-\\sin x)\\cos x$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f'\\left(\\frac\\pi2\\right)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의미분법",
+            "src": "solution",
+            "quote": "곱의 미분법과 삼각함수의 도함수를 이용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "도함수",
+            "src": "solution",
+            "quote": "삼각함수의 도함수를 이용한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "공비인 2cos x가 -1 초과 1 이하가 되도록 삼각부등식을 풀어 범위를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등비수열",
+            "src": "stem",
+            "quote": "등비수열"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "값의 범위는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$-1<2\\cos x\\le1$을 $\\cos x$에 대한 부등식으로 바꾸어",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수렴",
+            "src": "stem",
+            "quote": "수렴하도록 하는"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x$의 값의 범위는?"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "decisiveStep": "급수가 수렴하면 일반항이 0에 수렴하는 성질과 반례를 이용하여 각 보기의 참 거짓을 판별한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "두 수열"
+          }
+        ],
+        "goal": [
+          {
+            "term": "급수",
+            "src": "solution",
+            "quote": "급수의 수렴 판정은"
+          }
+        ],
+        "method": [
+          {
+            "term": "극한의성질",
+            "src": "solution",
+            "quote": "$\\sum a_n$이 수렴하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "급수와 수열의 수렴 발산 성질 및 반례를 통해 참 거짓을 판별함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수렴",
+            "src": "stem",
+            "quote": "$\\sum a_n$이 수렴하면"
+          },
+          {
+            "term": "발산",
+            "src": "stem",
+            "quote": "모두 발산하면"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "x=0에서 연속 조건으로 b를 구하고 좌우 미분계수가 일치함을 이용해 a를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\begin{cases}ax+2&(x<0)\\\\e^{x+b}&(x\\ge0)\\end{cases}$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$ab$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌미분계수",
+            "src": "solution",
+            "quote": "좌미분계수는 $a$이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "우미분계수",
+            "src": "solution",
+            "quote": "우미분계수는 $\\left(e^{x+b}\\right)'\\big|_{x=0}=e^b=2$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연속",
+            "src": "solution",
+            "quote": "연속 조건과 좌·우 미분계수가 같다는 조건을 함께 쓴다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "미분가능",
+            "src": "stem",
+            "quote": "$x=0$에서 미분가능할 때,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "각의 사분면에 맞는 부호를 고려하여 삼각함수의 덧셈정리로 식을 전개해 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "제$1$사분면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$\\cos(\\alpha-\\beta)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의덧셈정리",
+            "src": "solution",
+            "quote": "코사인의 덧셈정리를 쓴다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "첫째항 S1과 닮음비를 구하여 공비가 4분의 1인 무한등비급수의 합을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형 $OA_1B_1C_1$에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "둘러싸인 부분의 넓이를 $S_n$이라 하자."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$\\sum_{n=1}^{\\infty}S_n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "닮음비를 구해 넓이가 등비수열을 이룸을 보인 뒤",
+            "evidenceType": "IMPLIED",
+            "justification": "정사각형의 축소 과정에서 닮음비를 구하여 넓이의 공비를 도출함"
+          },
+          {
+            "term": "등비급수",
+            "src": "solution",
+            "quote": "등비급수의 합을 구한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "삼각형 $OA_1C_1$에 내접하는 정사각형"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "0분의 0꼴 극한 성질로 a=1을 정하고 삼각함수와 지수함수의 기본 극한을 이용해 b를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "두 상수 $a,b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "$\\displaystyle\\lim_{x\\to0}\\frac{a-\\cos x}{(e^{2x}-1)\\sin x}=b$"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "극한의성질",
+            "src": "solution",
+            "quote": "분모가 $0$에 수렴하는데 극한값이 존재하면 분자도 $0$에 수렴해야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "0/0꼴 극한의 수렴 성질 및 기본 삼각, 지수함수 극한 공식을 활용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수렴",
+            "src": "solution",
+            "quote": "분모가 $0$에 수렴하는데"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "대칭이동으로 함수 g(x)를 구하고 선분 PQ의 길이를 미분계수의 정의 꼴로 변형하여 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\log_2(x+3)$의 그래프를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "$\\displaystyle\\lim_{t\\to0+}\\frac{\\overline{PQ}}{2t}$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "stem",
+            "quote": "$y$축에 대하여 대칭이동한 곡선을 $y=g(x)$라 하자.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "미분계수",
+            "src": "solution",
+            "quote": "미분계수의 정의 꼴로 바꾼다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$x$축에 내린 수선과 곡선 $y=g(x)$가 만나는 점을 $Q$라 할 때,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "접선에 수직인 법선의 방정식과 중심에서 두 점까지의 거리가 같음을 연립하여 극한값을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "직선 $y=2x$와 접하는 원의 중심의 좌표를"
+          },
+          {
+            "term": "중심",
+            "src": "stem",
+            "quote": "원의 중심의 좌표를 $(a_n,b_n)$이라 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "$\\displaystyle\\lim_{n\\to\\infty}\\frac{a_n}{n^2}$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "직선 $y=2x$에 수직인 직선의 기울기는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "극한의성질",
+            "src": "solution",
+            "quote": "따라서 $\\displaystyle\\lim_{n\\to\\infty}\\dfrac{a_n}{n^2}=\\dfrac52$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "다항식 an을 n^2으로 나눈 최고차항 극한 성질을 적용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "점 $(n,2n)$에서 직선 $y=2x$와 접하는"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "삼각형의 각 변을 세타로 나타내고 넓이와 둘레의 관계식으로 내접원 반지름의 극한을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $ABC$에서"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "내접원의 반지름을 $r(\\theta)$라 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "극한",
+            "src": "stem",
+            "quote": "$\\displaystyle\\lim_{\\theta\\to0+}\\frac{r(\\theta)}{\\theta^2}$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형 $PBC$의 넓이와 둘레로 $r(\\theta)$를 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "삼각형 $PBC$의 넓이와 둘레로 $r(\\theta)$를 구한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "삼각형 $PBC$의 내접원의 반지름을"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "변 $AC$에 내린 수선의 발을 $H$라 하고,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "공집합이 되게 하는 an의 일반항을 구하고 부분분수로 분해하여 망원급수의 합을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "공집합",
+            "src": "stem",
+            "quote": "공집합이 되도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "급수",
+            "src": "stem",
+            "quote": "$\\displaystyle\\sum_{n=1}^{\\infty}\\frac2{a_n-2}$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분분수",
+            "src": "solution",
+            "quote": "$\\dfrac2{a_n-2}=\\dfrac2{n^2+2n}=\\dfrac2{n(n+2)}=\\dfrac1n-\\dfrac1{n+2}$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "일반항을 부분분수로 분해하여 소거형 급수의 합을 계산함"
+          },
+          {
+            "term": "망원합",
+            "src": "solution",
+            "quote": "$\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac2{a_n-2}=\\lim_{m\\to\\infty}\\left(1+\\dfrac12-\\dfrac1{m+1}-\\dfrac1{m+2}\\right)=1+\\dfrac12=\\dfrac32$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "인접항들이 상쇄되는 망원합 형태로 합을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "공비의 절댓값 크기에 따라 구간을 나누어 f(x)를 구하고 각 범위에서 방정식을 푼다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\displaystyle\\lim_{n\\to\\infty}\\frac{3\\left(\\frac x2\\right)^{2n+1}-x}{\\left(\\frac x2\\right)^{2n}+1}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "방정식 $f(k)=\\dfrac k4$를 푼다."
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$\\left(\\dfrac x2\\right)^{2n}$의 극한이 $\\left|\\dfrac x2\\right|$의 크기에 따라 달라지므로 구간을 나눈다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공비 x/2의 절댓값 크기에 따라 경우를 분류하여 함수 식을 정의함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $k$를 구하시오."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "합성함수의 극한 성질로 an이 (1/4)^n임을 구하고 등비급수의 합 공식을 적용한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\sin\\frac x4$와"
+          }
+        ],
+        "goal": [
+          {
+            "term": "급수",
+            "src": "stem",
+            "quote": "수렴하는 급수 $\\sum_{n=1}^{\\infty}a_n$의 합을 구하시오."
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 합을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "$f_n$은 $f$를 $n$번 합성한 함수이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반복 합성을 통해 정의된 합성함수의 극한을 귀납적으로 계산함"
+          },
+          {
+            "term": "등비급수",
+            "src": "solution",
+            "quote": "공비가 $\\dfrac14$인 등비급수이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수렴",
+            "src": "stem",
+            "quote": "수렴하는 급수 $\\sum_{n=1}^{\\infty}a_n$의 합을 구하시오."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "f'(x-1)의 발산으로 f(1)=0임을 찾아 b를 정하고 치환 후 극한값으로 a를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "두 상수 $a,b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f(e)$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$x=1+t$로 놓으면 $t\\to0$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "x=1+t로 치환하여 극한값을 구함"
+          },
+          {
+            "term": "미분",
+            "src": "solution",
+            "quote": "$f'(x)=\\dfrac ax+1$이므로 $f'(x-1)=\\dfrac a{x-1}+1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "f(x)를 미분하여 f'(x-1)의 도함수 식을 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "발산",
+            "src": "solution",
+            "quote": "$x\\to1$에서 $f'(x-1)$이 발산하므로"
+          },
+          {
+            "term": "수렴",
+            "src": "solution",
+            "quote": "곱이 유한하려면 $f(x^2)$이 $0$에 수렴해야 한다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "원의 방멱 성질로 지름의 제곱을 n에 대해 구하고 등비급수 합 공식을 적용한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "$y$축에 접하는 원의 접점을 $C_n$이라 하고,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "원의 넓이를 $S_n$이라 할 때,"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$\\displaystyle\\sum_{n=1}^{\\infty}S_n$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "등비급수",
+            "src": "solution",
+            "quote": "공비가 $\\dfrac37$인 등비급수이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$\\overline{C_nD_n}^2=\\left(\\dfrac27\\times\\dfrac32\\right)^n=\\left(\\dfrac37\\right)^n$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지수의 성질을 이용하여 선분의 곱을 (3/7)^n으로 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "두 점을 지나고 $y$축에 접하는 원의"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

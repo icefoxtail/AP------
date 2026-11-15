@@ -1,0 +1,821 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T21:30:00+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/25_금당고_2학기_중간_고2_확률과통계.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "한 사람의 자리를 고정하고 남은 5명을 일렬로 배열하여 5!=120을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "원순열은 회전만 다른 배열을 같은 것으로 보므로"
+          }
+        ],
+        "method": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "원순열은 회전만 다른 배열을 같은 것으로 보므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "4월 산불 건수 67건을 전체 산불 건수 279건으로 나누어 확률을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "전체 산불 사건에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "4월에 발생했을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "해당 사건의 건수를 전체 건수로 나누어 확률을 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "표본공간의 전체 경우의 수에 대한 사건의 비율로 수학적 확률을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "P가 2개 E가 2개인 같은 것이 있는 순열 공식 6!/(2!2!)=180을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "일렬로 나열하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "같은것이있는순열",
+            "src": "solution",
+            "quote": "같은 문자가 있는 순열은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "학생 3명이 각각 3가지 주스를 선택할 수 있으므로 중복순열 3^3=27을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "모든 경우의 수는"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "각 학생은 딸기·사과·포도 중 하나를 고른다.",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 3개 중 중복을 허락하여 3개를 택하는 중복순열 3^3을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "이항정리 일반항에서 r=1을 대입해 계수 4C1 * 2 = 8을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(x+2)^4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x^3$의 계수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "일반항 $\\binom{4}{r}x^{4-r}2^r$에서",
+            "evidenceType": "IMPLIED",
+            "justification": "이항정리의 일반항 공식으로 특정 차수의 계수를 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "전체 원순열 120가지에서 두 교사가 이웃하는 원순열 48가지를 빼서 확률을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "이웃하여 앉지 않을 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "확률은 $\\dfrac{72}{120}=\\dfrac{3}{5}$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "교사 두 명이 이웃하는 경우를 빼서 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이웃하지 않을 확률을 전체에서 이웃하는 경우의 확률을 빼는 여사건으로 구함"
+          },
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "전체 원순열에서",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "인접",
+            "src": "stem",
+            "quote": "교사가 서로 이웃하여 앉지 않을"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "각 색상별로 2송이씩 미리 배정한 뒤 남은 8송이를 중복조합 3H8=45로 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "음이 아닌 정수해의 수는 $\\binom{8+3-1}{3-1}=\\binom{10}{2}=45$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "치환 후 음이 아닌 정수해의 개수를 중복조합 3H8로 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "기명투표는 중복순열 3^5=243, 무기명투표는 중복조합 3H5=21을 구해 더한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수를 $a$,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "$a=3^5=243$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기명 투표의 경우의 수를 중복순열 3파이5로 계산함"
+          },
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "$\\binom{5+3-1}{3-1}=\\binom{7}{2}=21$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "무기명 투표의 경우의 수를 중복조합 3H5로 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "이동 시간의 절반에서 만나는 4개 격자점별로 경로수의 4제곱을 합산해 164를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "최단거리",
+            "src": "stem",
+            "quote": "최단 거리로 간다고 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "그 점까지의 경로 수는 $\\binom{3}{i}$이고,",
+            "evidenceType": "IMPLIED",
+            "justification": "중간 지점까지의 최단경로 수를 조합으로 계산함"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "가능한 점은 $(0,3),(1,2),(2,1),(3,0)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중간 시점에 만날 수 있는 4개 지점별로 경우를 분류하여 합산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "a가 14의 약수인 1과 2일 때 자연수해의 개수를 중복조합으로 각각 구해 합산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "방정식 $a(b+c+d)=14$를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "순서쌍 $(a,b,c,d)$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "양의 정수해의 수는 $\\binom{13}{2}=78$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "자연수해의 개수를 중복조합 3H11=13C2로 계산함"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$a$가 될 수 있는 14의 약수를 나누어 보고,",
+            "evidenceType": "IMPLIED",
+            "justification": "a의 약수값에 따라 경우를 분류하여 해를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $a,b,c,d$에 대하여"
+          },
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "순서쌍 $(a,b,c,d)$의 개수는?"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "두 식의 전개식에서 계수를 비교해 a(n-1)(n-2)=18을 유도하고 n=4, a=3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $(x+a^2)^n$과"
+          },
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x^{n-1}$의 계수가 서로 같을 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "두 전개식에서 $x^{n-1}$ 항을 만드는 경우만 골라 계수를 비교한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이항정리를 적용하여 두 다항식의 전개식 계수를 비교함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자연수 $a$와"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "전체 4^4=256에서 3이 없는 81개와 2의 거듭제곱이 부족한 43개를 제외한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "네 자리 자연수의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "자연수의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "부족한 경우를 뺀다.",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 네 자리 수에서 조건을 만족하지 않는 여사건을 빼서 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "배반 조건으로 A가 B의 부분집합임을 도출하고 배반사건 확률 덧셈으로 1/2을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A,B$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$P(A\\cup B^c)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "stem",
+            "quote": "$A^c$은 $A$의 여사건이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "$A$와 $B^c$는 서로 배반이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "서로 배반사건이고,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "f(1)=f(2)=1과 f(3)의 값에 따라 중복조합으로 조건을 만족하는 14개 함수를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "모든 함수 $f$ 중에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "조건을 만족시킬 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "$\\binom{3+3-1}{3}=\\binom{5}{3}=10$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "감소하지 않는 함수값을 정하기 위해 중복조합을 적용함"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$a_3$은 1 또는 2이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "a3의 값에 따라 두 가지 경우로 분류하여 함수를 구성함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "서로소인 4쌍을 구성하는 18가지에 원형 배치 방법 48가지를 곱하여 864를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "원형으로 나열할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "8번의 회전을 나누어 주면",
+            "evidenceType": "IMPLIED",
+            "justification": "회전에 의한 대칭을 고려하여 원순열 형태로 배치 수를 계산함"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "전체 경우의 수는 $18\\times48=864$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "짝짓기 수 18과 원형 배치 수 48을 곱의 법칙으로 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "부모가 이웃하는 원순열 48가지와 마주보는 원순열 24가지를 각각 구해 더한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수를 $a$,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "$a$와 $b$를 각각 원순열로 따로 구한 뒤 더한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "인접",
+            "src": "stem",
+            "quote": "부모가 이웃하여 앉는"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "맨 오른쪽 짝수 3가지에 남은 5자리의 홀수 순서 고정 배열 5!/3!=20을 곱한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "홀수가 적힌 카드는"
+          },
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "짝수가 적힌 카드가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "같은것이있는순열",
+            "src": "solution",
+            "quote": "한 경우당 $\\dfrac{5!}{3!}=20$가지이고,",
+            "evidenceType": "IMPLIED",
+            "justification": "순서가 정해진 홀수 3장을 같은 것으로 취급하여 5!/3!로 순열을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "3의 배수 10개와 5의 배수 6개에서 공배수 2개를 뺀 14개로 확률 7/15을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1부터 30까지의 자연수가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "5의 배수일 확률을 풀이과정과 함께 상세하게 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "포함배제의원리",
+            "src": "solution",
+            "quote": "개수를 포함배제로 센다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "전체 카드는 30장이므로 확률은 $\\dfrac{14}{30}=\\dfrac{7}{15}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 사건의 합사건 확률을 확률의 덧셈정리로 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "홀수와 짝수 치환 후 k가 짝수인 2, 4, 6의 세 경우별로 중복조합을 구해 합산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "홀수 개의 구슬을 넣는다."
+          },
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "짝수 개의 구슬을 넣는다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "방법의 수를 풀이과정과 함께 상세하게 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "$\\binom{12+4-1}{4-1}=\\binom{15}{3}=455$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "치환된 음이 아닌 정수해의 수를 중복조합으로 계산함"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "가능한 E의 값을 나누어 센다.",
+            "evidenceType": "IMPLIED",
+            "justification": "상자 E의 5의 배수 값 k=2,4,6에 따라 경우를 나누어 합산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "짝수 크기 부분집합 128개에서 A나 B와 소수점 없는 경우들을 포함배제로 제외한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "세 부분집합 $A=\\{2,4,6,8\\}$, $B=\\{3,6\\}$, $C$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "집합 $C$의 개수를 풀이과정과 함께 상세하게 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "포함배제의원리",
+            "src": "solution",
+            "quote": "포함배제로 뺀다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "원소의 개수는 짝수이다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

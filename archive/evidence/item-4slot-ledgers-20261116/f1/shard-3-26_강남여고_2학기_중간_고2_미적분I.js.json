@@ -1,0 +1,1325 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "gemini-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-15T19:08:00+09:00",
+ "sourceArchiveFile": "original/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x^2+x-6을 (x+3)(x-2)로 인수분해하여 x-2를 약분한 뒤 x=2를 대입해 극한값 5를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "유리식",
+      "src": "stem",
+      "quote": "\\frac{x^2+x-6}{x-2}"
+     }
+    ],
+    "goal": [
+     {
+      "term": "극한",
+      "src": "stem",
+      "quote": "다음 극한값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "인수분해",
+      "src": "solution",
+      "quote": "x^2+x-6=(x+3)(x-2)",
+      "evidenceType": "IMPLIED",
+      "justification": "분자의 이차식을 인수분해함"
+     },
+     {
+      "term": "약분",
+      "src": "solution",
+      "quote": "x\\ne2$에서 분수는 $x+3$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "공통인수 x-2를 약분함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "그래프에서 좌극한 lim_{x->-1-} f(x)=0과 우극한 lim_{x->1+} f(x)=-2를 읽어 합 0+(-2)=-2를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "함수 $y=f(x)$의 그래프가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "\\lim_{x\\to-1^-}f(x)+\\lim_{x\\to1^+}f(x)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "좌극한",
+      "src": "solution",
+      "quote": "\\lim_{x\\to-1^-}f(x)=0$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "그래프에서 x=-1로의 좌극한값을 읽음"
+     },
+     {
+      "term": "우극한",
+      "src": "solution",
+      "quote": "\\lim_{x\\to1^+}f(x)=-2$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "그래프에서 x=1로의 우극한값을 읽음"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "도함수 f'(x)=3x^2-10x+2에 x=1을 대입하여 미분계수 f'(1)=-5를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차식",
+      "src": "stem",
+      "quote": "함수 $f(x)=x^3-5x^2+2x$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "미분계수",
+      "src": "stem",
+      "quote": "$f'(1)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "각 항을 미분하여 도함수를 구한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "미분",
+      "src": "solution",
+      "quote": "각 항을 미분하여 도함수를 구한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "평균변화율 (f(a+1)-f(1))/a = a+5 = 9로부터 양수 a=4를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=x^2+3x+1$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "양수 $a$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "평균변화율",
+      "src": "solution",
+      "quote": "평균변화율은 $\\displaystyle\\frac{f(a+1)-f(1)}{a}$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "약분",
+      "src": "solution",
+      "quote": "\\frac{a(a+5)}a=a+5$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "분자 분모의 공통인수 a를 약분함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "양수 $a$의 값"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "b=√(1+a)를 이용해 분자를 유리화하여 극한값 1/(2b)=1/6에서 b=3, a=8, a+b=11을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "무리식",
+      "src": "stem",
+      "quote": "\\frac{\\sqrt{x+a}-b}{x-1}"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "유리화",
+      "src": "solution",
+      "quote": "곱해 유리화하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "0/0꼴",
+      "src": "solution",
+      "quote": "분모가 $0$으로 가는데 극한값이 유한하므로 분자도 $0$으로 가야 한다",
+      "evidenceType": "IMPLIED",
+      "justification": "분모가 0으로 갈 때 극한값이 존재하므로 0/0 꼴 조건을 적용함"
+     },
+     {
+      "term": "미정계수",
+      "src": "solution",
+      "quote": "b=3$, $a=3^2-1=8$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "극한값 조건으로부터 미정계수 a, b를 결정함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $a,b$의 값을"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "F(0)=-3 < 0과 F(1)=1 > 0에 사잇값 정리를 적용하여 실근이 존재하는 구간 (0, 1)을 정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "방정식",
+      "src": "stem",
+      "quote": "방정식 $x^3+2x^2+x-3=0$"
+     },
+     {
+      "term": "구간",
+      "src": "stem",
+      "quote": "실근이 존재하는 구간은?"
+     }
+    ],
+    "goal": [
+     {
+      "term": "구간",
+      "src": "stem",
+      "quote": "실근이 존재하는 구간은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "사잇값정리",
+      "src": "solution",
+      "quote": "사잇값 정리에 따라",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "연속",
+      "src": "solution",
+      "quote": "모든 실수에서 연속이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실근",
+      "src": "stem",
+      "quote": "오직 하나의 실근을 갖는다"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "f(x)=x^2+2x의 도함수 f'(x)=2x+2가 x > -1에서 f'(x) > 0이므로 구간 (-1, ∞)에서 증가함을 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "주어진 함수의 구간에서"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "판정을 옳게 한 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "증가",
+      "src": "solution",
+      "quote": "해당 구간에서 증가한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "도함수의 부호 또는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "부호",
+      "src": "solution",
+      "quote": "도함수의 부호 또는",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구간",
+      "src": "stem",
+      "quote": "함수의 구간에서"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x=-2에서 정의되지 않고 x->-2-일 때 무한대로 발산하므로 닫힌구간 [-4, 0]에서 최댓값을 갖지 않음을 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "유리함수",
+      "src": "stem",
+      "quote": "f(x)=\\frac{3x-2}{x+2}"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "다음 중 옳은 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "최대최소정리",
+      "src": "solution",
+      "quote": "연속함수의 최대·최소 정리를 바로 적용할 수 없다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "최댓값",
+      "src": "solution",
+      "quote": "최댓값이 없으므로 참이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "좌극한",
+      "src": "solution",
+      "quote": "x\\to-2^-",
+      "evidenceType": "IMPLIED",
+      "justification": "불연속점 x=-2에서의 좌극한을 조사함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구간",
+      "src": "choices",
+      "quote": "닫힌구간 $[-4,0]$에서"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "보기(ㄱㄴㄷ) 판정",
+   "decisiveStep": "f'(x)의 부호로부터 (-2, -1) 증가, (1, 2) 감소, x=-1 극대를 확인하여 옳은 보기 ㄱ, ㄴ, ㄷ을 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "도함수",
+      "src": "stem",
+      "quote": "도함수 $y=f'(x)$의 그래프가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "옳은 것을 있는 대로 고른 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "증가",
+      "src": "solution",
+      "quote": "원함수는 증가하고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "극대",
+      "src": "solution",
+      "quote": "극댓값을 갖는다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "그래프는 $f(x)$ 자체가 아니라 도함수",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "보기(ㄱㄴㄷ) 판정",
+   "decisiveStep": "좌우극한을 조사하여 x->1에서 f(x)g(x)의 극한값 -1, g(x)/f(x)의 극한값 -1이 존재함을 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "두 함수 $f(x)$, $g(x)$의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "보기에서 극한값이 존재하는 것만을 있는 대로 고른 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "좌극한",
+      "src": "solution",
+      "quote": "좌극한과 우극한을 각각 계산하여 비교한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "우극한",
+      "src": "solution",
+      "quote": "좌극한과 우극한을 각각 계산하여 비교한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "극한의성질",
+      "src": "solution",
+      "quote": "합·차·곱·몫의 극한은",
+      "evidenceType": "IMPLIED",
+      "justification": "함수의 곱과 몫의 극한 존재성을 좌우극한으로 판정함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x=1에서 f의 불연속을 보정하기 위해 g(1)=2+a=0에서 a=-2를 구하고 a+g(2)=-2+2=0을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "두 함수 $\\displaystyle f(x)="
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+g(2)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "연속",
+      "src": "solution",
+      "quote": "곱함수 $fg$가 연속이려면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "좌극한",
+      "src": "solution",
+      "quote": "$x=1$에서 $f$의 좌극한은 $1$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "우극한",
+      "src": "solution",
+      "quote": "우극한과 함수값은 $2$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "연속",
+      "src": "stem",
+      "quote": "$x=1$에서 연속일 때"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "그래프의 접선 기울기로부터 f'(a) < 0, f'(b) > 0임을 읽어 f'(a)f'(b) < 0이 옳음을 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "미분가능한 함수 $y=f(x)$의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "다음 중 옳은 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "도함수는 양수, 내려가면 음수",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "접선",
+      "src": "solution",
+      "quote": "접선이 오른쪽으로 올라가면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "기울기",
+      "src": "solution",
+      "quote": "접선이 오른쪽으로 올라가면",
+      "evidenceType": "IMPLIED",
+      "justification": "접선의 기울기 부호로 도함수의 부호를 판정함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "미분가능",
+      "src": "stem",
+      "quote": "미분가능한 함수"
+     },
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 전체의 집합에서"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "f(2)=b=2a-12와 f'(2)/4=2로부터 f'(2)=a-4=8, a=12, b=12를 구하여 a+b=24를 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=2x^3-7x^2+ax$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "미분계수",
+      "src": "solution",
+      "quote": "\\frac{f'(2)}4=2$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "미분계수 정의를 이용하여 극한값을 f'(2)/4로 표현함"
+     },
+     {
+      "term": "0/0꼴",
+      "src": "solution",
+      "quote": "분모가 $x\\to2$에서 $0$으로 가므로 극한값이 유한하려면 분자도 $0$으로 가야 한다",
+      "evidenceType": "IMPLIED",
+      "justification": "0/0 꼴 극한 조건에서 b=f(2)를 도출함"
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "f'(x)=6x^2-14x+a",
+      "evidenceType": "IMPLIED",
+      "justification": "다항함수를 미분하여 도함수를 구함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "$a,b$는 상수이다"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "f(1)=g(1)=2에서 c=1, a+b=1을 얻고 f'(1)=g'(1)=2에서 a=-1, b=2를 얻어 a+b+c=2를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "곡선",
+      "src": "stem",
+      "quote": "두 곡선 $f(x)=x^3+ax+b$"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "점 $(1,2)$에서 만나고"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "실수 $a+b+c$의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "공통접선",
+      "src": "solution",
+      "quote": "공통 접선이므로 같은 점에서",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "두 도함수의 값도 같다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 $a+b+c$의 값"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "평균값 정리식 (f(2)-f(a))/(2-a) = a+5 = f'(-1) = 1로부터 a=-4를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=x^2+3x-6$"
+     },
+     {
+      "term": "구간",
+      "src": "stem",
+      "quote": "닫힌구간 $[a,2]$에서"
+     }
+    ],
+    "goal": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 $a$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "평균값정리",
+      "src": "solution",
+      "quote": "평균값 정리에 의해",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "f'(x)=2x+3",
+      "evidenceType": "IMPLIED",
+      "justification": "도함수를 구해 c=-1에서의 미분계수를 계산함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 $c$의 값이"
+     },
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "$a\\lt-1$"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "t->1-에서 CR^2/BC = (1+t)^2(1+t^2)^2 / (2t^3)의 극한값 2^2*2^2 / 2 = 8을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "포물선",
+      "src": "stem",
+      "quote": "포물선 $y=1-x^2$이"
+     },
+     {
+      "term": "접선",
+      "src": "stem",
+      "quote": "점 $P$에서의 접선 $l$이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "극한",
+      "src": "stem",
+      "quote": "\\frac{\\overline{CR}^{2}}{\\overline{BC}}$의 극한값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "접선",
+      "src": "solution",
+      "quote": "접선 기울기는 $-2t$이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "직선의방정식",
+      "src": "solution",
+      "quote": "직선 $OP$의 기울기는",
+      "evidenceType": "IMPLIED",
+      "justification": "접선과 직선 OP의 방정식을 세워 교점 좌표를 계산함"
+     },
+     {
+      "term": "약분",
+      "src": "solution",
+      "quote": "\\frac{(1-t^4)^2}{4t^4}\\cdot\\frac{2t}{(1-t)^2}",
+      "evidenceType": "IMPLIED",
+      "justification": "1-t 공통인수를 약분하여 극한식을 정리함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "수직",
+      "src": "stem",
+      "quote": "$x$축에 수직인 직선이"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x=1에서 |f|의 좌극한 1과 우극한 3이 다름에 따라 g(1)=2+a=0이어야 하므로 상수 a=-2를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "절댓값",
+      "src": "stem",
+      "quote": "|f(x)|g(x)"
+     },
+     {
+      "term": "일차함수",
+      "src": "stem",
+      "quote": "함수 $g(x)=2x+a$에"
+     }
+    ],
+    "goal": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $a$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "연속",
+      "src": "solution",
+      "quote": "곱함수의 연속 조건은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "좌극한",
+      "src": "solution",
+      "quote": "|f|$의 좌극한은 $1$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "우극한",
+      "src": "solution",
+      "quote": "우극한과 함숫값은 $3$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "연속",
+      "src": "stem",
+      "quote": "$x=1$에서 연속일 때"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $a$의 값"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 18,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "h(x)가 x=4에서 연속이고 미분가능하므로 f(x)=(x-4)^2(x+2)임을 도출하여 f(0)/4=32/4=8을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차함수",
+      "src": "stem",
+      "quote": "삼차함수 $f(x)$와"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "\\frac{f(0)}4$의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "미분가능",
+      "src": "solution",
+      "quote": "h$가 $x=4$에서 연속이려면",
+      "evidenceType": "IMPLIED",
+      "justification": "미분가능성으로부터 연속성을 이끌어내어 인수를 결정함"
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "h'(4)=q'(4)=4+k=6",
+      "evidenceType": "IMPLIED",
+      "justification": "도함수값을 이용해 미정계수 k를 결정함"
+     },
+     {
+      "term": "최고차항",
+      "src": "solution",
+      "quote": "최고차항 계수가 $1$인",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "미분가능",
+      "src": "stem",
+      "quote": "미분가능하고 $h'(4)=6$이다"
+     },
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 전체의 집합에서"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 19,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "P(2)=R(2)=0에서 a=-1을 얻고 P'(2)=R'(2)=17에서 R(x)=17(x-2)를 구해 R(a)/a=51을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "다항식",
+      "src": "stem",
+      "quote": "다항식 $(x^2-1)(x^2+ax)-6$을"
+     },
+     {
+      "term": "나머지",
+      "src": "stem",
+      "quote": "나머지를 $R(x)$라 하자"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "\\frac{R(a)}a$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "다항식의나눗셈",
+      "src": "solution",
+      "quote": "P(x)=(x-2)^2Q(x)+R(x)$를",
+      "evidenceType": "IMPLIED",
+      "justification": "나눗셈의 항등식을 세우고 양변을 미분함"
+     },
+     {
+      "term": "미분",
+      "src": "solution",
+      "quote": "미분해 $x=2$를 대입하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "나머지정리",
+      "src": "solution",
+      "quote": "P(2)=R(2)",
+      "evidenceType": "IMPLIED",
+      "justification": "나머지정리에 의해 x=2 대입값을 구함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "$a$는 상수이다"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 20,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "A에서의 접선 기울기 1과 직각 조건으로 B의 접선 기울기 -1을 풀어 B(-1, 1/3)을 얻고 빗변 AB 지름으로부터 외접원 넓이 5π/18을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=ax^3+2x^2+x$에"
+     },
+     {
+      "term": "직각삼각형",
+      "src": "stem",
+      "quote": "직각삼각형이다"
+     }
+    ],
+    "goal": [
+     {
+      "term": "넓이",
+      "src": "stem",
+      "quote": "삼각형 $ABC$의 외접원의 넓이는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "접선",
+      "src": "solution",
+      "quote": "접선 기울기는 $-1$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "외접",
+      "src": "solution",
+      "quote": "직각삼각형의 외접원은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "지름",
+      "src": "solution",
+      "quote": "빗변 $AB$를 지름으로 가지므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "$a$는 상수이고"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 21,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "도함수 f'(x)=-3(x-1)^2+3-a=0의 두 근이 (-1, 2)에 속할 조건 0 < a < 3으로부터 정수 a=1, 2의 합 3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=-x^3+3x^2-ax+1$이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "정수 $a$의 합을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "도함수의 두 서로 다른 근이",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "극값",
+      "src": "solution",
+      "quote": "극댓값과 극솟값을 모두 가지려면",
+      "evidenceType": "IMPLIED",
+      "justification": "도함수의 부호 변화 근이 구간 안에 존재해야 극값을 가짐을 이용함"
+     },
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "따라서 $0\\lt a\\lt3$이며",
+      "evidenceType": "IMPLIED",
+      "justification": "구간 내 근의 존재 조건을 부등식으로 풀어 범위를 구함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "정수 $a$의 합을"
+     },
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "$-1\\lt x\\lt2$에서"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 22,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "f(x)=2x^2+bx+c에서 f(2)=0, f'(2)=12를 연립하여 b=4, c=-16을 얻고 f(5)=54를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "다항함수",
+      "src": "stem",
+      "quote": "다항함수 $f(x)$가 다음 두 조건을"
+     }
+    ],
+    "goal": [
+     {
+      "term": "함숫값",
+      "src": "stem",
+      "quote": "$f(5)$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "이차함수",
+      "src": "solution",
+      "quote": "최고차항의 계수가 $2$인 이차함수이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "미분계수",
+      "src": "solution",
+      "quote": "\\frac{f'(2)}4=3$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "미분계수의 정의로 극한값을 표현함"
+     },
+     {
+      "term": "연립방정식",
+      "src": "solution",
+      "quote": "8+b=12$에서 $b=4$이다. 이어서 $8+8+c=0$",
+      "evidenceType": "IMPLIED",
+      "justification": "계수들에 대한 일차 연립방정식을 풂"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 23,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "x=1 대입으로 a=-5를 얻고, 인수분해 후 x≠1에서 f(x)=2x+5의 x->1 극한값으로 f(1)=7을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "연속인 함수 $f(x)$가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "함숫값",
+      "src": "stem",
+      "quote": "$f(1)$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "연속",
+      "src": "solution",
+      "quote": "f$는 $x=1$에서 연속이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "인수분해",
+      "src": "solution",
+      "quote": "(x-1)(2x+5)$로 인수분해된다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "주어진 식에 $x=1$을 대입하면",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "연속",
+      "src": "stem",
+      "quote": "모든 실수에서 연속인"
+     },
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "모든 실수에서"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "$a$는 상수"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 24,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "곱의 미분법으로 g(5)=2, g'(5)=-1, 2f'(5)-f(5)=1을 구하고 주어진 함수의 도함수에 대입하여 (2f'(5)-f(5))-5 = 1-5 = -4를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "다항함수",
+      "src": "stem",
+      "quote": "두 다항함수 $f(x)$, $g(x)$가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "미분계수",
+      "src": "stem",
+      "quote": "$x=5$에서의 미분계수를 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "곱의미분법",
+      "src": "solution",
+      "quote": "곱의 미분법으로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "구하려는 도함수는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "$x=5$를 대입하면",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 25,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "접선 y=x-2와의 교점 B(-2, -4)와 평행한 접선의 접점 C(-1, 1)을 구하고 두 점 사이 거리의 제곱 d^2=1+25=26을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "곡선",
+      "src": "stem",
+      "quote": "곡선 $y=x^3-2x$ 위의"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "위의 점 $A(1,-1)$에서의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "거리",
+      "src": "stem",
+      "quote": "$d^2$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "접선",
+      "src": "solution",
+      "quote": "접선 기울기는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평행",
+      "src": "solution",
+      "quote": "직선 $l$에 평행한 다른 접선의",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "접점",
+      "src": "solution",
+      "quote": "새 접선의 접점이므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "평행",
+      "src": "stem",
+      "quote": "직선 $l$과 평행한 직선이"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  }
+ ]
+}

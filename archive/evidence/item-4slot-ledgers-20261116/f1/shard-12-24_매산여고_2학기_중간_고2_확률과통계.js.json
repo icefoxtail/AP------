@@ -1,0 +1,1213 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "gemini-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-16T02:30:00+09:00",
+ "sourceArchiveFile": "original/high/h2/2mid/24_매산여고_2학기_중간_고2_확률과통계.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "꺼낸 4개가 모두 검은 공인 여사건이 불가능하므로 여사건 확률 0에서 구하는 확률 1-0=1이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "흰 공이 나올 확률을 구하면?"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "흰 공이 나올 확률을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "여사건의 확률이 $0$이므로 구하는 확률은 $1-0=1$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "공집합",
+      "src": "solution",
+      "quote": "여사건이 공집합이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "버스로 통학하는 30명 중 A학급 학생 12명의 비율로 조건부확률 12/30=2/5를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조건부확률",
+      "src": "stem",
+      "quote": "버스로 통학하는 학생이었을 때, 그 학생이 $A$학급 학생일 확률을"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "확률을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "조건부확률",
+      "src": "solution",
+      "quote": "조건부확률을 구한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "수학적확률",
+      "src": "solution",
+      "quote": "표의 도수를 그대로 쓰면 $\\dfrac{12}{30}=\\dfrac25$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "조건 사건에 해당하는 학생 수 중 해당 사건 학생 수의 비로 확률을 구한다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "A와 B^c의 독립성에서 P(A)P(B^c)=p^2=1/9로 p=1/3을 구하고 P(B)=1-1/3=2/3을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "독립사건",
+      "src": "stem",
+      "quote": "두 사건 $A,B$가 서로 독립이고"
+     },
+     {
+      "term": "여사건",
+      "src": "stem",
+      "quote": "(단, $B^c$은 $B$의 여사건이다.)"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "$P(B)$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "독립사건",
+      "src": "solution",
+      "quote": "$A$와 $B$가 독립이면 $A$와 $B^c$도 독립이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "$P(B^c)=1-P(B)=P(A)$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "이항분포 B(50, 1/2)의 분산 공식 V(X)=npq=50*(1/2)*(1/2)=25/2를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "독립시행",
+      "src": "stem",
+      "quote": "동전을 $50$번 던질 때"
+     },
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "앞면이 나오는 횟수를 확률변수 $X$라 하자."
+     }
+    ],
+    "goal": [
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "$X$의 분산 $V(X)$의 값을 구하면?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "독립시행의 횟수는 이항분포를 따르고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "분산은 $npq$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "확률의 총합 sum (2a-x)/30 = (8a-10)/30 = 1에서 상수 a=5를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "확률변수 $X$의"
+     },
+     {
+      "term": "확률질량함수",
+      "src": "stem",
+      "quote": "확률질량함수가 $P(X=x)=\\dfrac{2a-x}{30}$"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $a$의 값을 구하면?"
+     }
+    ],
+    "goal": [
+     {
+      "term": "결정",
+      "src": "stem",
+      "quote": "상수 $a$의 값을 구하면?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "확률질량함수",
+      "src": "solution",
+      "quote": "확률질량함수의 모든 값의 합은 $1$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일차방정식",
+      "src": "solution",
+      "quote": "$8a-10=30$, 즉 $a=5$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "확률의 합이 1이라는 성질에서 a에 대한 일차방정식을 세워 푼다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "조합으로 P(X>=2)=(30+4)/84=17/42를 구하고 서로소 조건에서 a=42, b=17로 a+b=59를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "남학생 수를 확률변수 $X$라고 할 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b$의 값을 구하면?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "전체 경우는 $\\binom93=84$가지이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "기약분수",
+      "src": "solution",
+      "quote": "확률을 기약분수로 만든 뒤",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "$P(X\\ge2)=\\dfrac{30+4}{84}",
+      "evidenceType": "IMPLIED",
+      "justification": "배반인 두 경우의 수를 합하여 확률을 구한다."
+     }
+    ],
+    "condition": [
+     {
+      "term": "서로소",
+      "src": "stem",
+      "quote": "(단, $a,b$는 서로소인 정수)"
+     },
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "(단, $a,b$는 서로소인 정수)"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "확률의 합 2a+1/3=1에서 a=1/3을 구하고 E(X)=2(1/3)+4(1/9)+6(1/3)+8(2/9)=44/9를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "확률변수 $X$의 확률분포를"
+     },
+     {
+      "term": "확률분포표",
+      "src": "stem",
+      "quote": "표로 나타내면 다음과 같다."
+     }
+    ],
+    "goal": [
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$E(X)$를 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "확률분포",
+      "src": "solution",
+      "quote": "확률의 총합이 $1$임을 이용해",
+      "evidenceType": "IMPLIED",
+      "justification": "확률분포표의 전체 확률의 합이 1임을 이용한다."
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X)=\\sum xP(X=x)$를 계산한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "P(A cap B)=1/12에서 P(A cup B)=5/6을 구하고 드모르간 법칙으로 P(A^c cap B^c)=1/6을 얻어 조건부확률 (1/6)/(3/4)=2/9를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조건부확률",
+      "src": "stem",
+      "quote": "$P(B\\mid A)=\\dfrac13$일 때"
+     },
+     {
+      "term": "여사건",
+      "src": "stem",
+      "quote": "(단, $A^c$은 $A$의 여사건)"
+     }
+    ],
+    "goal": [
+     {
+      "term": "조건부확률",
+      "src": "stem",
+      "quote": "$P(B^c\\mid A^c)$의 값을 구하면?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "드모르간법칙",
+      "src": "solution",
+      "quote": "$P(A^c\\cap B^c)=1-P(A\\cup B)$(드모르간)",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "조건부확률",
+      "src": "solution",
+      "quote": "조건부확률의 정의에 넣는다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "$P(A\\cup B)=\\dfrac14+\\dfrac23-\\dfrac1{12}",
+      "evidenceType": "IMPLIED",
+      "justification": "확률의 덧셈정리로 합사건의 확률을 계산한다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "A cap B^c=공집합에서 B=A cup (A^c cap B)로 P(B)=1/3+1/6=1/2을 얻고 P(B^c)=1-1/2=1/2을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "배반사건",
+      "src": "stem",
+      "quote": "$A$와 $B^c$는 서로 배반사건이고"
+     },
+     {
+      "term": "여사건",
+      "src": "stem",
+      "quote": "(단, $A^c$은 $A$의 여사건"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "$P(B^c)$의 값을 구하면?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "배반사건",
+      "src": "solution",
+      "quote": "$A$와 $B^c$가 배반이면 $A\\cap B^c=\\varnothing$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "$P(B)=P(A)+P(A^c\\cap B)=\\dfrac13+\\dfrac16=\\dfrac12$",
+      "evidenceType": "IMPLIED",
+      "justification": "배반사건의 확률 덧셈정리를 적용한다."
+     },
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "$P(B^c)=1-\\dfrac12=\\dfrac12$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "두 근 n/2, n/3 중 적어도 하나가 정수일 조건에서 20 이하 2 또는 3의 배수 개수 10+6-3=13을 구하고 확률 13/20을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차방정식",
+      "src": "stem",
+      "quote": "$x$에 대한 이차방정식 $6x^2-5nx+n^2=0$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "정수해가 존재할 확률을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "인수분해",
+      "src": "solution",
+      "quote": "이차방정식을 인수분해하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "배수",
+      "src": "solution",
+      "quote": "$n$이 $2$의 배수이거나 $3$의 배수이면 된다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "포함배제의원리",
+      "src": "solution",
+      "quote": "포함배제에 의해 $10+6-3=13$개이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "$n$이 $20$ 이하의 자연수일 때"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "P(W)=1/10+1/3=13/30과 P(A cap W)=1/10에서 조건부확률 3/13을 구하고 m+n=13+3=16을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조건부확률",
+      "src": "stem",
+      "quote": "꺼낸 공이 흰 공일 때, 이 공이 주머니 $A$에서 꺼낸 공일 확률을"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "두 상수의 합 $m+n$의 값을 구하면?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "조건부확률",
+      "src": "solution",
+      "quote": "조건부확률(베이즈 정리)로 계산한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "전확률",
+      "src": "solution",
+      "quote": "$P(W)=\\dfrac1{10}+\\dfrac13=\\dfrac{3+10}{30}=\\dfrac{13}{30}$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "주머니 A와 B를 경유하여 흰 공이 나올 전확률 공식을 쓴다."
+     }
+    ],
+    "condition": [
+     {
+      "term": "서로소",
+      "src": "stem",
+      "quote": "(단, $m$과 $n$은 서로소인 자연수)"
+     },
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "(단, $m$과 $n$은 서로소인 자연수)"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "독립 조건 x/(x+165)=(x+75)(x+40)/(x+165)^2을 풀어 50x=3000에서 x=60을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "독립사건",
+      "src": "stem",
+      "quote": "서로 독립일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "경우의수",
+      "src": "stem",
+      "quote": "학생 수를 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "독립사건",
+      "src": "solution",
+      "quote": "두 사건이 독립이면 교집합의 확률은 두 사건의 확률의 곱과 같다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "이차방정식",
+      "src": "solution",
+      "quote": "$x(x+165)=(x+75)(x+40)$이다. 전개하면 $x^2+165x=x^2+115x+3000$",
+      "evidenceType": "IMPLIED",
+      "justification": "독립 조건의 식을 전개하여 일차항을 정리해 해를 구한다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "독립 조건 1/3+(2/3)P(B)=2/3에서 P(B)=1/2, |B|=3, |A cap B|=1을 얻고 조합 binom(2,1)*binom(4,2)=12를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "독립사건",
+      "src": "stem",
+      "quote": "두 사건 $A$와 $B$는 서로 독립이다."
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "사건 $B$의 개수를 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "독립사건",
+      "src": "solution",
+      "quote": "독립이므로 $P(A\\cap B)=P(A)P(B)$이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "$P(A\\cup B)=P(A)+P(B)-P(A)P(B)",
+      "evidenceType": "IMPLIED",
+      "justification": "합사건의 확률 덧셈정리를 적용한다."
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "\\binom21\\binom42=2\\times6=12",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "흰 공의 기댓값 E(X)=3*(3/6)=3/2에서 E(3/2*X+3)=(3/2)*(3/2)+3=21/4를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "개수를 확률변수 $X$라 하자."
+     }
+    ],
+    "goal": [
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$E\\left(\\dfrac32X+3\\right)$은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "기댓값의 성질에 의해 $E(X)=3\\times\\dfrac12=\\dfrac32$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률변수의일차식",
+      "src": "solution",
+      "quote": "$E(aX+b)=aE(X)+b$이므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "이항분포 B(9, 1/2)에서 sum(k=6..9) binom(9,k)/512 = (84+36+9+1)/512 = 65/256을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "독립시행",
+      "src": "stem",
+      "quote": "주사위를 $9$번 던질 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "나올 확률을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "횟수는 $\\mathrm B\\left(9,\\dfrac12\\right)$을 따른다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "\\dfrac{\\binom96+\\binom97+\\binom98+\\binom99}{2^9}",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "확률의 합과 비례식에서 a=1/4, b=-3/8을 얻어 V(X)=23/64를 구하고 -2*V(2X-3)=-2*(23/16)=-23/8을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이산확률변수",
+      "src": "stem",
+      "quote": "이산확률변수 $X$의"
+     },
+     {
+      "term": "확률질량함수",
+      "src": "stem",
+      "quote": "확률질량함수가 $P(X=x)=\\begin{cases}"
+     }
+    ],
+    "goal": [
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "$-2V(2X-3)$의 값을 구하면?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "확률질량함수",
+      "src": "solution",
+      "quote": "확률의 총합이 $1$이라는 조건과",
+      "evidenceType": "IMPLIED",
+      "justification": "확률질량함수 전체 확률의 합이 1이라는 성질을 쓴다."
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(X)=\\dfrac98-\\left(\\dfrac78\\right)^2=\\dfrac{72-49}{64}=\\dfrac{23}{64}$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률변수의일차식",
+      "src": "solution",
+      "quote": "$V(aX+b)=a^2V(X)$를 쓴다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "부분분수 망원합 7a/40=1에서 a=40/7을 구하고 a(1/20-1/30)=2/21을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "확률변수 $X$의"
+     },
+     {
+      "term": "확률질량함수",
+      "src": "stem",
+      "quote": "확률질량함수가 $P(X=x)=\\dfrac{a}{x(x+1)}$"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "(단, $a$는 상수)"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "$P(X=20)+P(X=21)+P(X=22)+\\cdots+P(X=29)$의 값을"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "부분분수",
+      "src": "solution",
+      "quote": "부분분수로 $a$를 정한 뒤",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률질량함수",
+      "src": "solution",
+      "quote": "확률의 총합은 $1$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "확률질량함수 전체 확률의 합이 1임을 이용한다."
+     },
+     {
+      "term": "합",
+      "src": "solution",
+      "quote": "합이 양 끝만 남는다",
+      "evidenceType": "IMPLIED",
+      "justification": "소거형 합 계산을 수행한다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 18,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "a-b>0과 D=4b(4b-3a)<0에서 3a>4b인 순서쌍 12개를 세어 확률 12/36=1/3을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "f(x)=ax^2+4bx+a"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "$f(x)\\gt g(x)$일 확률을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "판별식",
+      "src": "solution",
+      "quote": "판별식이 음수인 것이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "순서쌍",
+      "src": "solution",
+      "quote": "순서쌍의 개수를 센다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "수학적확률",
+      "src": "solution",
+      "quote": "확률은 $\\dfrac{12}{36}=\\dfrac13$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "전체 36개 경우 중 12개의 비로 수학적 확률을 구한다."
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "모든 실수 $x$에 대하여"
+     },
+     {
+      "term": "항상성립",
+      "src": "stem",
+      "quote": "모든 실수 $x$에 대하여"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 19,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "곱이 100의 배수인 쌍 31개 중 합이 60 미만인 8쌍을 뺀 23개로부터 조건부확률 23/31을 구해 m+n=54를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "배수",
+      "src": "stem",
+      "quote": "곱이 $100$의 배수일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "두 상수의 합 $m+n$의 값을 구하면?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "조건부확률",
+      "src": "solution",
+      "quote": "새로운 전체집합으로 삼는 조건부확률이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "여사건으로 처리한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "소인수",
+      "src": "solution",
+      "quote": "두 수의 소인수 $5$가 모두 합쳐 $2$개 이상이어야 한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "$26$개의 자연수 중에서"
+     },
+     {
+      "term": "구별가능",
+      "src": "stem",
+      "quote": "서로 다른 두 개의 수를 선택한다."
+     },
+     {
+      "term": "서로소",
+      "src": "stem",
+      "quote": "(단, $m$과 $n$은 서로소인 자연수)"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 20,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "B>A 부등식 20-6X>X+5에서 X<=2를 얻고 이항분포 B(5, 1/3)에서 sum(k=0..2) binom(5,k)(1/3)^k(2/3)^(5-k)=64/81을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "독립시행",
+      "src": "stem",
+      "quote": "이 시행을 $5$번 반복할 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "클 확률을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "$X\\sim\\mathrm B\\left(5,\\dfrac13\\right)$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "$B\\gt A$를 $X$에 대한 부등식으로 바꾼다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "\\sum_{k=0}^{2}\\binom5k\\left(\\dfrac13\\right)^k\\left(\\dfrac23\\right)^{5-k}",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 21,
+   "questionUid": null,
+   "format": "소문항 묶음",
+   "decisiveStep": "조합으로 확률질량함수 P(X=x)=binom(2,x)binom(6,2-x)/28을 세우고 표를 작성해 E(X)=14/28=1/2을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "불량품의 개수를 확률변수 $X$라 하자."
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률질량함수",
+      "src": "stem",
+      "quote": "$X$의 확률질량함수를 구하시오."
+     },
+     {
+      "term": "확률분포표",
+      "src": "stem",
+      "quote": "$X$의 확률분포를 표로 나타내는"
+     },
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$X$의 평균을 구하시오."
+     }
+    ],
+    "method": [
+     {
+      "term": "확률질량함수",
+      "src": "solution",
+      "quote": "확률질량함수는 $P(X=x)=\\dfrac{\\binom2x\\binom6{2-x}}{\\binom82}$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "각 확률은 조합으로 계산한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X)=0\\times\\dfrac{15}{28}+1\\times\\dfrac{12}{28}+2\\times\\dfrac1{28}=\\dfrac{14}{28}=\\dfrac12$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 22,
+   "questionUid": null,
+   "format": "소문항 묶음",
+   "decisiveStep": "X가 0, 2만 가지므로 E(X)=2p, V(X)=4p(1-p)를 {E(X)}^2=3V(X)에 대입해 4p^2=12p(1-p)에서 p=3/4을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이산확률변수",
+      "src": "stem",
+      "quote": "이산확률변수 $X$에 대하여"
+     },
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$\\{E(X)\\}^2=3V(X)$을"
+     },
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "$\\{E(X)\\}^2=3V(X)$을"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "확률 $P(X=2)$의 값을 구하고"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하고"
+     }
+    ],
+    "method": [
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X)=0\\times(1-p)+2\\times p=2p$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(X)=4p-(2p)^2=4p(1-p)$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일차방정식",
+      "src": "solution",
+      "quote": "양변을 $4p$로 나누면 $p=3(1-p)$, 즉 $4p=3$에서 $p=\\dfrac34$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "방정식을 정리해 p에 대한 일차방정식으로 푼다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 23,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "성공횟수 Y~B(40, 11/18)에서 X=6Y-160으로 두고 E(X)=-40/3, V(X)=3080/9를 구해 E(X^2)=V(X)+{E(X)}^2=520을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "좌표를 확률변수 $X$라 할 때"
+     },
+     {
+      "term": "독립시행",
+      "src": "stem",
+      "quote": "이 시행을 $40$회 반복한 후"
+     }
+    ],
+    "goal": [
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$E(X^2)$의 값을 구하고"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "값을 구하고 그 과정을 자세히 서술하시오."
+     }
+    ],
+    "method": [
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "$Y\\sim\\mathrm B\\left(40,\\dfrac{11}{18}\\right)$이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률변수의일차식",
+      "src": "solution",
+      "quote": "좌표를 성공 횟수의 일차식으로 나타낸 뒤",
+      "evidenceType": "IMPLIED",
+      "justification": "좌표 X를 성공 횟수 Y의 일차식으로 변환하여 기댓값과 분산을 구한다."
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(X)=6^2V(Y)=36\\times\\dfrac{770}{81}=\\dfrac{3080}9$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  }
+ ]
+}

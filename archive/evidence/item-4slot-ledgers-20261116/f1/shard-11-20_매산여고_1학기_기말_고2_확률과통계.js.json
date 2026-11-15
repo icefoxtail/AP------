@@ -1,0 +1,944 @@
+{
+  "schemaVersion": 1,
+  "judge": "claude-haiku-4s",
+  "dictionaryVersion": "2026-04-14",
+  "createdAt": "2026-11-15T16:56:07.122Z",
+  "sourceArchiveFile": "original/high/h2/2mid/20_매산여고_1학기_기말_고2_확률과통계.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "3H5=21, 4Π2=16, 5P2=20을 각각 계산하여 21 + 16 - 20 = 17을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "중복조합",
+            "src": "stem",
+            "quote": "${}_3\\mathrm{H}_5"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "${}_3\\mathrm{H}_5 + {}_4\\Pi_2 - {}_5\\mathrm{P}_2$를 계산하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "중복순열 ${}_4\\Pi_2$는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "3종류에서 중복을 허용해 5개를 고르므로"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "상대도수의 수학적 확률 수렴(ㄱ 참), 배반사건 정의(ㄴ 참), 여사건 덧셈정리(ㄷ 거짓)을 판정하여 ㄱ, ㄴ을 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "서로 배반사건이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "통계적확률",
+            "src": "solution",
+            "quote": "상대도수는 시행 횟수가 커질수록 수학적 확률에 가까워지는",
+            "evidenceType": "IMPLIED",
+            "justification": "시행 횟수가 클 때 상대도수가 수학적 확률에 수렴함을 판정"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "총 7명을 원탁에 둘러앉히는 원순열 (7-1)! = 6! = 720을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원순열",
+            "src": "stem",
+            "quote": "원탁에 둘러앉는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "한 사람의 자리를 고정하면 남은 6명의 자리를 시계방향으로 정하는",
+            "evidenceType": "IMPLIED",
+            "justification": "한 사람을 고정한 후 나머지 6명을 일렬배열하는 원순열 공식 적용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "원탁에서는 전체를 똑같이 회전한 배치를 같은 것으로 본다"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "주사위 8 눈 확률 0(ㄱ 참), 중복조합 4H3=6C3≠5C3(ㄴ 거짓), 옷 5벌 순열 5!=120(ㄷ 참)을 판정하여 ㄱ, ㄷ을 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "중복조합",
+            "src": "stem",
+            "quote": "중복을 허용하여 3개를 택하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "서로 다른 옷 5벌을 옷걸이에 일렬로 거는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "주사위 1개를 던질 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "P(A|B)=0.3/0.6=0.5(ㄱ 거짓), 독립 조건 P(B)=0.5(ㄴ 참), 10이하 또는 35이상 카드 확률 16/40≠1/2(ㄷ 거짓)에서 ㄴ을 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "$P(A|B)=0.75$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "독립사건은 $P(A\\cap B)=P(A)P(B)$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$가 서로 독립이고"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "비복원추출에서 P(A)=5/20=1/4(ㄱ 참), P(A∩B)=(5/20)*(4/19)=1/19(ㄴ 참), P(A^c∩B)=(15/20)*(5/19)=15/76(ㄷ 참)을 판정하여 ㄱ, ㄴ, ㄷ을 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "비복원추출",
+            "src": "stem",
+            "quote": "다시 넣지 않음"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "둘 다 당첨일 확률은",
+            "evidenceType": "IMPLIED",
+            "justification": "비복원추출에서 순차적으로 뽑을 때 조건부확률을 곱하여 결합확률을 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비복원추출",
+            "src": "solution",
+            "quote": "제비를 다시 넣지 않으므로"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "b가 홀수일 때 a는 2 또는 6(6가지), b가 짝수일 때 a는 4(3가지)로 총 9가지 순서쌍을 구해 9/36 = 1/4을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "주사위 1개를 2번 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$a+2b$가 4의 배수일 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "$4$의 배수라는 조건은",
+            "evidenceType": "IMPLIED",
+            "justification": "b의 홀짝성에 따른 2b의 나머지를 분석하고 a의 개수를 세어 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "4의 배수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "A∩B={6} 원소수 1(ㄱ 거짓), P(A)P(B)=1/2*1/3=1/6(ㄴ 참), P(A∩B)=1/6=P(A)P(B)이므로 독립(ㄷ 참)에서 ㄴ, ㄷ을 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "2의 배수의 눈이 나오는 사건을 $A$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "두 사건 $A$와 $B$는 서로 독립이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "3의 배수의 눈이 나오는 사건을 $B$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "x, y, z >= 1이므로 a+b+c = 17의 음이 아닌 정수해 개수 3H17 = 19C2 = 171을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "방정식 $x+y+z=20$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "양의 정수해의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "별 17개와 칸막이 2개의 배열을 생각하면",
+            "evidenceType": "IMPLIED",
+            "justification": "각 변수에서 1씩 미리 배정하여 0 이상의 정수해를 중복조합으로 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "양의 정수해"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "f(a)=f(b) 결정 5가지와 f(c), f(d), f(e) 결정 5^3=125가지를 곱하여 5 * 125 = 625를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "$X$에서 $Y$로의 함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "함수의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "나머지 $c,d,e$의 함숫값은 각각 5가지씩 자유롭게 정할 수",
+            "evidenceType": "IMPLIED",
+            "justification": "함수 값의 독립적인 선택 경우를 곱의 법칙으로 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "$f(a)=f(b)$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "부전승 시 1게임만으로 우승 가능(ㄱ 거짓), 결승 A 진출 시 C 우승 확률(ㄴ 참), C 최종 우승 확률(ㄷ 참), 경기 수(ㄹ 참)을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "B가 A를 이길 확률은 $\\frac{2}{3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "A, B, C 중 누가 부전승인지는 각각 확률 $\\frac{1}{3}$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "부전승 배정 경우에 따라 경기 경로별 확률을 나누어 합산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "비기는 경우는 없음"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "길이 1부터 8까지 신호의 개수 합 2^1 + 2^2 + ... + 2^8 = 2(2^8 - 1) = 510을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "중복순열",
+            "src": "stem",
+            "quote": "부호를 8개 이하를 택하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "만들 수 있는 신호의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "등비수열의 합을 쓰거나",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "8개 이하"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "P(A∪B) = 11/12 - P(A∩B)에서 최댓값 11/12 (배반), 최솟값 2/3 (포함)을 곱하여 (11/12)*(2/3) = 11/18을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A)=\\frac{1}{4}$, $P(B)=\\frac{2}{3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "최댓값과 최솟값을 곱하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "두 사건의 합집합 확률은 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값과 최솟값"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "A만 입상 확률 2/5 * 2/3 = 4/15와 B만 입상 확률 3/5 * 1/3 = 3/15를 더하여 7/15를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "각 학생이 입상하는 사건이 서로 독립일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "한 학생만 입상할 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "(A만 입상)과 (B만 입상)으로 나뉘며",
+            "evidenceType": "IMPLIED",
+            "justification": "한 학생이 입상하고 다른 학생은 비입상인 여사건 확률을 곱해 합산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "서로 독립일 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "30P4 / 30^4 = (30*29*28*27) / 30^4 = 1827 / 2500에서 a=2500, b=1827이므로 a-b = 673을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "네 사람의 생일이 모두 다를 확률을 $\\frac{b}{a}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$a-b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "첫 사람 30가지, 둘째 29가지, 셋째 28가지, 넷째 27가지",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 4개 날짜를 순서대로 배정하는 순열로 경우의 수 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "$a, b$는 서로소"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "독립 조건에 의해 남학생의 경험 비율 60/100과 여학생의 경험 비율 x/(x+20)이 같아야 하므로 3/5 = x/(x+20)에서 x=30을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "남학생인 사건과 PC방 이용 경험이 있는 학생인 사건이 서로 독립일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "PC방 이용 경험이 있는 여학생 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "두 사건 '남학생'과 '이용 경험 있음'이 독립이면",
+            "evidenceType": "IMPLIED",
+            "justification": "독립 사건의 비율 일치 조건으로 x에 대한 일차방정식을 세워 풀이"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "서로 독립일 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "노트북 소유자 전체 74 + 206 = 280명 중 A학교 학생 74명이므로 74/280 = 37/140이다. 따라서 a=140, b=37에서 a-b = 103을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "노트북을 소유한 학생일 때, 그 학생이 A학교 학생일 확률"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$a-b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "조건이 '노트북을 소유한 학생'이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "$a, b$는 서로소"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "사실이가 3연승하는 확률 (1/2)^3 = 1/8과 4경기 중 3승(마지막 승리)하는 확률 3C2 * (1/2)^4 = 3/16을 더하여 5/16를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "9번 게임까지 진실이가 5번, 사실이가 4번 이겼을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "사실이가 상금을 모두 가질 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "사실이 우승하는",
+            "evidenceType": "IMPLIED",
+            "justification": "3승에 도달하는 경기 수에 따라 경우를 나누어 독립시행 확률을 합산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "비기는 경우는 없음"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "총 10개 행동에서 각 컵마다 순서가 정해져 있으므로 A = 10! / (2!)^5 = 113400이고 A/100 = 1134를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "각 유리컵에 각설탕을 1회용 녹차티백보다 먼저 넣는다고 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$\\frac{A}{100}$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "같은것이있는순열",
+            "src": "solution",
+            "quote": "조건은 각 컵마다 반드시 $S_i$가 $T",
+            "evidenceType": "IMPLIED",
+            "justification": "각 쌍의 순서가 고정된 경우를 같은 것이 있는 순열 10! / 2!^5로 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "먼저 넣는다고 할 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "여사건 (1학년 없음: 10C2, 여학생 없음: 10C2, 둘 다 아님(2학년 남학생만): 6C2)을 이용해 1 - (45+45-15)/120 = 1 - 75/120 = 45/120 = 3/8을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "임의로 2명의 회원을 뽑을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "적어도 한 명의 1학년 학생과 적어도 한 명의 여학생이 포함될 확률을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "원하는 사건은 '1학년이 적어도 한 명'과 '여학생이 적어도 한 명'이 동시에 성립하는 것이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 조건의 여사건 합집합 확률을 포함배제로 구하여 1에서 차감"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "적어도 한 명"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "3Hk = k+2C2 = 66에서 (k+2)(k+1)=132=12*11이므로 k=10이고, 적어도 1개씩 주문은 3H7 = 9C2 = 36을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "중복조합",
+            "src": "stem",
+            "quote": "$k$개를 주문하는 경우의 수가 66일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "주문하는 경우의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "따라서 ${}_3H_k={}_{k+2}C_2=66$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "적어도 하나씩 포함하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "P(A∩B) = P(A)+P(B)-P(A∪B) = 5/8 + 1/4 - 3/4 = 1/8을 구하고 P(B|A) = P(A∩B)/P(A) = (1/8)/(5/8) = 1/5를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A)=\\frac{5}{8}$, $P(B)=\\frac{1}{4}$, $P(A \\cup B)=\\frac{3}{4}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "$P(B|A)$를 구하는 과정을 상세히"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "먼저 확률의 덧셈정리 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$에서 교집합을 구한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 23,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "(3x-m)(5x-m)=0에서 x=m/3 또는 x=m/5가 정수이어야 하므로 m은 3의 배수(33개) 또는 5의 배수(20개)이다. 33+20-6 = 47개이므로 확률 47/100을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x$에 대한 이차방정식 $15x^2 - 8mx + m^2 = 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "정수해가 존재할 확률을 구하는 과정을 상세히"
+          }
+        ],
+        "method": [
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "$15x^2-8mx+m^2=(3x-m)(5x-m)$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해를 통해 근이 정수가 되는 m의 배수 조건을 도출하여 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$m$이 100 이하의 자연수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

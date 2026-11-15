@@ -1,0 +1,1051 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T20:06:00+09:00",
+  "sourceArchiveFile": "original/high/h1/2mid/23_금당고_2학기_중간_고1_기출.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "점 (3,4)의 x축 대칭이동 공식 (x,y) -> (x,-y)를 적용하여 (3,-4)를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "다음 중 $(3,4)$를"
+          },
+          {
+            "term": "대칭이동",
+            "src": "stem",
+            "quote": "$x$축에 대하여 대칭이동한 점의 좌표는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "대칭이동한 점의 좌표는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "$x$축에 대하여 대칭이동하면 $x$좌표는 그대로이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "평행이동한 식 y = a(x-3)+3과 y=-2x+9의 계수를 비교하여 a=-2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=ax+2$를"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축의 방향으로 $3$만큼, $y$축의 방향으로 $1$만큼 평행이동한"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x$에 $x-3$, $y$에 $y-1$을 대입하여 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "평행이동한 직선의 식을 만든 뒤 $x$의 계수를 비교한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "동일한 직선의 두 식에서 일차항 계수를 비교"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "옳지 않은 것 고르기",
+      "decisiveStep": "0에 가깝다는 기준이 모호하여 원소의 포함 여부를 객관적으로 판정할 수 없는 모임을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "solution",
+            "quote": "집합은 어떤 대상이 원소인지 아닌지를 분명하게 판정할 수 있어야 한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 집합이 아닌 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "각 모임의 기준이 객관적으로 결정되는지 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "집합의 수학적 정의에 따라 기준의 명확성을 판정"
+          },
+          {
+            "term": "원소",
+            "src": "choices",
+            "quote": "$0$에 가까운 실수의 모임",
+            "evidenceType": "IMPLIED",
+            "justification": "원소가 객관적으로 정해지지 않는 보기를 선택"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "소수 집합 B={2,3,5,7}을 빼서 차집합 A-B={1,4,6}의 원소의 개수 3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "두 집합 $A=\\{1,2,3,4,5,6,7\\}$과"
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "$10$ 이하의 소수 전체의 집합 $B$에 대하여,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "집합 $A-B$의 원소의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "차집합",
+            "src": "solution",
+            "quote": "차집합 $A-B$는 $A$에는 속하지만 $B$에는 속하지 않는 원소의 집합이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "따라서 $A-B=\\{1,4,6\\}$이고 원소의 개수는 $3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "차집합의 구체적인 원소를 나열하여 개수를 셈"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "참과 거짓을 명확하게 판정할 수 있는 문장인 '소수는 홀수이다'를 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "solution",
+            "quote": "명제는 참인지 거짓인지가 분명하게 결정되는 문장이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "다음 중 명제인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "⑤ '소수는 홀수이다'는 $2$라는 반례가 있어 거짓이지만,",
+            "evidenceType": "IMPLIED",
+            "justification": "반례를 찾아 거짓임을 확인하여 참거짓 판정 가능한 명제임을 규명"
+          },
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "각 보기가 참·거짓을 하나로 판정할 수 있는지 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "명제의 정의에 따라 참거짓 판정 가능 여부 점검"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "가정과 결론을 각각 부정하고 위치를 바꾸어 대우 'x^2 != 4이면 x != 2이다'를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "실수 $x$에 대한 명제 '$x=2$이면 $x^2=4$이다.'의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대우",
+            "src": "stem",
+            "quote": "대우는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대우",
+            "src": "solution",
+            "quote": "명제 $p\\to q$의 대우는 $\\sim q\\to\\sim p$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부정",
+            "src": "solution",
+            "quote": "결론을 부정하여 조건으로, 조건을 부정하여 결론으로 바꾼다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x$에 대한 명제"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "원래 꼭짓점 (-1,3)을 평행이동한 (1, 3+k)가 y=x 위에 있으므로 3+k=1에서 k=-2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y=2x^2+4x+5$를"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축 방향으로 $2$만큼, $y$축 방향으로 $k$만큼 평행이동한"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "꼭짓점이 직선 $y=x$ 위에 있을 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$y=2(x+1)^2+3$이므로 원래 꼭짓점은 $(-1,3)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이차식을 완전제곱식으로 변형하여 꼭짓점의 좌표 도출"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "이 점이 $y=x$ 위에 있으므로 $3+k=1$이고 $k=-2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행이동된 꼭짓점 좌표를 직선의 방정식에 대입"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "전체 부분집합의 개수 2^6=64에서 홀수 원소만으로 된 부분집합 개수 2^3=8을 빼서 56을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "집합 $A$가 $18$의 양의 약수 전체의 집합일 때,"
+          },
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "적어도 한 개의 짝수를 원소로 갖는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "집합의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "전체 부분집합의 개수에서 홀수 원소만으로 이루어진 부분집합의 개수를 뺀다.",
+            "evidenceType": "IMPLIED",
+            "justification": "적어도 조건에 대해 여사건의 경우의 수를 전체에서 차감"
+          },
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "집합 $A$의 원소는 $6$개이므로 전체 부분집합은 $2^6=64$개이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "k=2, A={1,2,3,6}을 확정하고 B={2,4,6,12}에서 B-A={4,12}의 원소의 합 16을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U$는 자연수 전체의 집합이다."
+          },
+          {
+            "term": "교집합",
+            "src": "stem",
+            "quote": "$A\\cap B=\\{2,6\\}$일 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$B-A$의 모든 원소의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "$2\\in B$이므로 어떤 자연수 $a\\in A$에 대하여 $ka=2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원소가 집합 B에 속하는 조건을 분석하여 k와 a를 결정"
+          },
+          {
+            "term": "차집합",
+            "src": "solution",
+            "quote": "따라서 $B=\\{2,4,6,12\\}$이고 $B-A=\\{4,12\\}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "B에서 A의 원소를 제외한 차집합의 원소들의 합을 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$1$이 아닌 자연수 $k$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "p: a-b=0이면 a^2-b^2=0이지만 역으로 a^2-b^2=0에서 a=-b인 반례가 있어 충분조건이지만 필요조건이 아님을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "두 실수 $a,b$에 대하여 다음 중"
+          },
+          {
+            "term": "충분조건",
+            "src": "stem",
+            "quote": "조건 $p$가 조건 $q$이기 위한 충분조건이지만"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "필요조건이 아닌 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "$a=1$, $b=-1$이면 $a^2-b^2=0$이지만 $a-b\\ne0$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "반례를 찾아 역방향 명제가 거짓임을 증명"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$a=b$이므로 $a^2-b^2=(a-b)(a+b)=0$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해를 통해 순방향 명제가 참임을 증명"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "빈칸 채우기",
+      "decisiveStep": "결론을 부정하여 모순을 이끌어내는 귀류법과 n=3k-2일 때 식 3k^2-4k+1을 완성한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "명제 '$n^2$이 $3$의 배수이면 $n$도 $3$의 배수이다.'가"
+          },
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "참임을 (가)을 이용하여 증명하는 과정이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "(가), (나), (다)에 들어갈 말로 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "귀류법",
+            "src": "solution",
+            "quote": "결론의 부정을 가정하여 처음의 가정과 모순을 만드는 증명은 귀류법이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$n=3k-2$이면 $n^2=9k^2-12k+4=3(3k^2-4k+1)+1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱식을 전개하고 3으로 묶어 빈칸 다의 식을 유도"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "다음은 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "완전제곱식으로 점 (a,b)=(1,2)를 구하고 직선을 점대칭이동하여 3x+y-8=0을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=-3x+2$를 점 $(a,b)$에 대하여"
+          },
+          {
+            "term": "대칭이동",
+            "src": "stem",
+            "quote": "대칭이동한 직선의 방정식은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "대칭이동한 직선의 방정식은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$a^2-2a+b^2-4b+5=0$이므로 $(a-1)^2+(b-2)^2=0$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이차방정식을 완전제곱식으로 변형하여 실수 a, b 값을 특정"
+          },
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "대칭이동한 점을 $(x,y)$라 하면 원래 점은 $(2-x,4-y)$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "만족시키는 실수 $a,b$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "대칭차 원소수 2로부터 n(B) = 6-2x (x in {0,1,2})를 얻어 n(B) in {6,4,2}의 합 12를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "전체집합 $U$의 두 부분집합 $A,B$에 대하여"
+          },
+          {
+            "term": "대칭차집합",
+            "src": "solution",
+            "quote": "대칭차의 원소 수를 $A-B$와 $B-A$로 나누어 나타낸다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 $n(B)$의 값의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$n(A-B)$를 기준으로 가능한 경우를 모두 조사한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "A-B의 원소 개수 x에 따라 가능한 경우를 분류"
+          },
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "이때 $y=4-x$, $z=2-x$이므로 $n(B)=y+z=6-2x$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "집합 B의 원소 개수 식을 세워 가능한 값들을 산출"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "P ⊆ Q, Q ∩ R = ∅ 조건에서 옳은 보기 ㄱ, ㄴ, ㄹ, ㅁ의 4개를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "진리집합",
+            "src": "stem",
+            "quote": "세 조건 $p,q,r$의 진리집합이라 하자."
+          },
+          {
+            "term": "차집합",
+            "src": "stem",
+            "quote": "$P^C\\cup Q=U$, $Q-R=Q$가 성립할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "보기 중 옳은 것의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "$P^C\\cup Q=U$이므로 $P\\subset Q$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "$q\\to p$의 반례는 $Q\\cap P^C$의 원소이므로 ㄷ은 거짓이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "명제가 거짓임을 증명하는 반례 집합의 형태를 확인"
+          }
+        ],
+        "condition": [
+          {
+            "term": "공집합",
+            "src": "stem",
+            "quote": "공집합이 아닌 부분집합 $P,Q,R$가"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "격자 구조 조건으로부터 U-L의 크기가 2인 경우 6가지와 3인 경우 9가지를 합해 15개를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "집합 $P(A)$의 부분집합 중 다음 조건을 만족시키는"
+          },
+          {
+            "term": "합집합",
+            "src": "stem",
+            "quote": "(나) 집합 $T$의 임의의 두 원소 $X,Y$에 대하여 $X\\cup Y\\in T$,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "집합 $T$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$U-L$의 원소 개수에 따라 경우를 나눈다.",
+            "evidenceType": "IMPLIED",
+            "justification": "극대원소와 극소원소의 차집합 크기별로 경우를 분류"
+          },
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "$X,Y$가 포함관계에 있으면 작은 집합은 한 원소 집합,",
+            "evidenceType": "IMPLIED",
+            "justification": "부분집합들 사이의 포함관계 유무에 따라 가능한 격자 구조를 탐색"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원소",
+            "src": "stem",
+            "quote": "(가) 집합 $T$의 원소의 개수는 $4$이다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "중점 M의 x좌표 a+2/a에 산술기하평균을 적용하여 등호조건 a=sqrt(2)를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y=(x+a)^2-a^2$을"
+          },
+          {
+            "term": "대칭이동",
+            "src": "stem",
+            "quote": "$y$축에 대하여 대칭이동한 포물선을 $y=f(x)$라 하고,"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=-\\dfrac4a x$를 $x$축에 대하여 대칭이동한"
+          }
+        ],
+        "goal": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "교점의 $x$좌표를 찾고 산술평균과 기하평균의 관계를 적용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "따라서 중점의 $x$좌표는 $a+\\dfrac2a$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "두 교점의 x좌표의 평균으로 중점 M의 x좌표를 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등호조건",
+            "src": "solution",
+            "quote": "등호는 $a=\\dfrac2a$일 때 성립하므로 $a=\\sqrt2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "산술기하평균 등호 성립 조건을 통해 a의 값을 결정"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "h(x)=f(x)-x가 y=0에 접하고 y=2와 두 점에서 만남을 유도하여 f(x)=9/8*x^2-2x+2를 구하고 8f(1)=9를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=f(x)$가 있다."
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $1$인 원 중에서,"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "각각 $m$만큼 평행이동한 원이 $x$축과 $y$축에 동시에 접하도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$8f(1)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "그러므로 반드시 $y=0$이 포물선에 접하고,",
+            "evidenceType": "IMPLIED",
+            "justification": "교점의 총 개수가 3개가 되도록 수평선과 포물선의 접선 조건을 해석"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "포물선의 축 $x=u$에 대하여 서로 대칭이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "포물선의 축에 대한 대칭성을 활용하여 세 근의 합 식을 세움"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$x_1\\le x\\le x_3$에서 $f(x)$의 최솟값이 $0$보다 클 때,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "A와 C를 y=x에 대칭이동하여 A'B = sqrt(10), BC' = 2*sqrt(10)의 합 3*sqrt(10)을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "좌표평면 위에 세 점 $A(-1,1)$, $B(0,2)$, $C(4,6)$과"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=x$ 위의 두 점 $P,Q$가 있다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$AP+PB+BQ+QC$의 최솟값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "꺾인 경로의 최솟값은 한 점을 직선 $y=x$에 대하여 대칭이동하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최단거리",
+            "src": "solution",
+            "quote": "두 점 사이의 직선거리로 바꾼다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭이동을 통해 꺾인 선분의 길이 합을 두 점 사이의 최단 직선거리로 변환"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "k<=8이면 세 원소의 최대합이 21이 되어 모순임을 보이고 k=9에서 A={5,8,9}가 가능함을 보여 최솟값 9를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "세 부분집합 $A$, $B$, $C$가 $n(A)=3$,"
+          },
+          {
+            "term": "차집합",
+            "src": "stem",
+            "quote": "$(A-B)-C=\\varnothing$을 만족시킨다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $k$의 최솟값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "귀류법",
+            "src": "solution",
+            "quote": "서로 다른 세 자연수의 합을 가장 크게 잡아도 $8+7+6=21$이므로 합이 $22$가 될 수 없다.",
+            "evidenceType": "IMPLIED",
+            "justification": "k<=8을 가정하여 최대합이 21로 모순됨을 보여 배제"
+          },
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "$k=9$일 때 $A=\\{5,8,9\\}$로 잡으면 $n(A)=3$, 원소의 합은 $22$,",
+            "evidenceType": "IMPLIED",
+            "justification": "k=9일 때 조건을 만족하는 실제 집합 A의 원소를 구성"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "전체집합 $U$는 자연수 전체의 집합이다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "충분조건 (-2,2) ⊆ [-k-2,k]에서 k>=2, 필요조건 (-∞,-7] ⊆ p에서 k<5를 얻어 k=2,3,4의 합 9를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "충분조건",
+            "src": "stem",
+            "quote": "$q$는 $\\sim p$이기 위한 충분조건이고,"
+          },
+          {
+            "term": "필요조건",
+            "src": "stem",
+            "quote": "$p$는 $r$이기 위한 필요조건이 되도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 자연수 $k$의 값의 합을 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$x^2+2x-k^2-2k=(x-k)(x+k+2)$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "이차부등식을 인수분해하여 진리집합의 구간을 도출"
+          },
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "충분조건과 필요조건을 각각 진리집합의 포함 관계로 바꾼다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $k$의 값의 합을 구하는 과정을 서술하시오."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "점과 직선 사이의 거리 공식과 구간별 교점 분석으로 기울기 a에 따른 교점의 개수 함수 f(a)를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $4$인 원에 중심이 $(2,0)$이고 반지름의 길이가 $2$인 반원이"
+          },
+          {
+            "term": "원점대칭",
+            "src": "stem",
+            "quote": "도형 $C_1$을 원점에 대하여 대칭이동한 도형을 $C_2$라 하자."
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=a(x+2)$ 위의 모든 점의 집합을 $C$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(a)$를 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "중심 $(2,0)$에서 직선 $ax-y+2a=0$까지의 거리는",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 중심에서 직선까지의 거리를 공식으로 구하여 접선 조건 계산"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "따라서 구하는 함수는 $f(a)=\\begin{cases}3&(a\\le0)",
+            "evidenceType": "IMPLIED",
+            "justification": "기울기 a의 범위에 따라 교점 개수별로 분기하여 함수식 작성"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "(단, $a$는 실수이다.)"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

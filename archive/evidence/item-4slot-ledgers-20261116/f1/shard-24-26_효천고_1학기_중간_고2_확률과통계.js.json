@@ -1,0 +1,10 @@
+{"schemaVersion":"archive-meta-4slot-v0","judge":"sonnet-f1","dictionaryVersion":"term-dict-v1.5-2026-11-04","createdAt":"2026-11-15T14:00:00+09:00","sourceArchiveFile":"original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js","candidates":[],
+"items":[
+{"ordinal":21,"questionUid":null,"format":"서술",
+ "decisiveStep":"(2a-b+c)^5의 항은 a^i b^j c^k (i+j+k=5)로 구분되므로 음이 아닌 정수해의 개수 7C2=21이다.",
+ "slots":{"given":[{"term":"다항식","src":"stem","quote":"다항식 $(2a-b+c)^5$의 전개식에서"},{"term":"거듭제곱","src":"stem","quote":"$(2a-b+c)^5$의 전개식에서"}],
+  "goal":[{"term":"개수","src":"stem","quote":"서로 다른 항의 개수를 구하고"}],
+  "method":[{"term":"전개","src":"solution","quote":"전개식의 서로 다른 항은 세 문자 $a,b,c$의 지수 조합으로 구분된다","evidenceType":"NAMED"},{"term":"정수해","src":"solution","quote":"$i+j+k=5$의 음이 아닌 정수해 개수는","evidenceType":"NAMED"},{"term":"중복조합","src":"solution","quote":"별 $5$개를 세 구역에 나누는 방법과 같아","evidenceType":"IMPLIED","justification":"i+j+k=5의 음이 아닌 정수해 수를 별 5개를 세 구역에 나누는 중복조합으로 센다"},{"term":"조합","src":"solution","quote":"${}_{7}C_{2}=\\dfrac{7\\cdot6}{2}=21$이다","evidenceType":"NAMED"}],
+  "condition":[{"term":"구별가능","src":"stem","quote":"서로 다른 항의 개수를 구하고"}]},
+ "reasons":{},"steps":[],"scenarioNote":""}
+]}

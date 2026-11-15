@@ -1,0 +1,1090 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-16T02:41:00+09:00",
+  "sourceArchiveFile": "original/high/h1/1final/21_복성고_1학기_기말_고1_기출.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "x^3+x^2-2=(x-1)(x^2+2x+2)로 인수분해하여 두 허근이 x^2+2x+2=0의 근임을 파악하고 근과 계수의 관계로 식의 값 0을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3+x^2-2=0$의"
+          },
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "서로 다른 두 허근을 $\\alpha$, $\\beta$라 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\dfrac{\\beta}{\\alpha}+\\dfrac{\\alpha}{\\beta}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$x^3+x^2-2=(x-1)(x^2+2x+2)$로 인수분해된다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에서\n$\\alpha+\\beta=-2$, $\\alpha\\beta=2$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "1+w+w^2=0이므로 3개씩 묶으면 1부터 w^98까지 합은 0이고 남은 w^99=1이므로 전체 합은 1이다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3=1$의"
+          },
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "한 허근을 $\\omega$라 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$1+\\omega+\\omega^2+\\omega^3+\\cdots+\\omega^{99}$을 간단히 하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "거듭제곱은 세 항마다 반복된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "오메가의 거듭제곱이 3을 주기로 반복됨을 이용함"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(\\omega-1)(\\omega^2+\\omega+1)=\\omega^3-1=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "x^3-1을 인수분해하여 1+w+w^2=0을 이끌어냄"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "절댓값을 풀어 -3<x-1<3에서 -2<x<4를 얻고 범위 안의 정수 -1,0,1,2,3으로 5개임을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "부등식 $|x-1|<3$을"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "만족시키는 정수의 개수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "만족시키는 정수의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값부등식",
+            "src": "solution",
+            "quote": "절댓값 부등식 $|x-1|<3$은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "두 점 사이의 거리 공식 sqrt((1 - (-4))^2 + (-7 - (-2))^2)=sqrt(25+25)=5*sqrt(2)를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "$A(-4,-2)$, $B(1,-7)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "다음 두 점 사이의 거리는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "두 점 사이의 거리는 두 좌표 차의 제곱을",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AB=\\sqrt{5^2+(-5)^2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 점 사이의 거리 공식은 피타고라스 정리에 기반함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "두 점으로 구한 직선의 방정식 y=-3x+1에 점 (-1, a)를 대입하여 a=4를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선의방정식",
+            "src": "stem",
+            "quote": "지나는 직선의 방정식이"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "지나는 직선의 기울기는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "점 $(-1,a)$가 이 직선 위에 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "직선의 방정식에 좌표를 대입하여 미정계수를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "점과 직선 사이의 거리 공식 |2(-1)-4+1|/sqrt(2^2+(-1)^2)=5/sqrt(5)=sqrt(5)를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $2x-y+1=0$ 사이의 거리는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "직선 $2x-y+1=0$ 사이의 거리는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "점 $(x_1,y_1)$와 직선 $Ax+By+C=0$ 사이의 거리는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "=\\dfrac{5}{\\sqrt5}",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 무리수를 유리화하여 약분함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "x=y+2를 대입하여 y에 대한 방정식을 세우고 k=0(일차식)일 때 1개, k!=0일 때 판별식 D=0에서 k=1, 4를 찾아 합 5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식 $\\begin{cases}x-y=2\\\\x^2-kxy-y^2=5\\end{cases}$가"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "모든 상수 $k$값의 합은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 상수 $k$값의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "이를 둘째 식에 대입하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "이차방정식이므로 판별식이 $0$이어야 한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유일성",
+            "src": "stem",
+            "quote": "단 한 쌍의 해를 갖도록 하는"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "4x^2-y^2=(2x-y)(2x+y)=0에서 y=2x, y=-2x로 나누어 대입하고 각각의 경우에서 2x+y의 최댓값 4*sqrt(6)을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식 $\\begin{cases}4x^2-y^2=0\\\\8x^2-xy-y^2=12\\end{cases}$를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$2x+y$의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "첫째 식을 인수분해하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "첫째, $y=2x$이면 둘째 식에서",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해로 얻은 관계식을 둘째 식에 대입함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "각 일차부등식을 풀어 x<(a-1)/3과 x>3을 얻고 해가 없도록 (a-1)/3<=3에서 a<=10이므로 정수 a의 최댓값 10을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식 $5x-a<2x-1<4x-7$의"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $a$의 최댓값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "정수 $a$의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "첫째 부등식에서\n$5x-a<2x-1$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 일차부등식을 각각 풀어 x의 범위를 구함"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "$ a-1\\le9$, 따라서 $a\\le10$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "부등식의 양변에 3을 곱하고 1을 더해 a의 범위를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "공집합",
+            "src": "stem",
+            "quote": "해가 없을 때,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "t=|x|로 치환하여 (t-5)(t+3)<0에서 0<=t<5, 즉 |x|<5이므로 -5<x<5에서 b-a=10을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "부등식 $x^2-2|x|-15<0$의"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "부등식 $x^2-2|x|-15<0$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$b-a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=|x|$로 놓으면",
+            "evidenceType": "IMPLIED",
+            "justification": "|x|를 t로 치환하여 이차부등식으로 변환함"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "인수분해하면\n$(t-5)(t+3)<0$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "P(t,0) (-2<=t<=3)으로 두고 식을 t에 대한 이차식 2(t+1)^2+11로 변형하여 t=-1일 때 최솟값 m=11, a=-1을 얻어 m+a=10을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "꼭짓점으로 하는 삼각형 $ABC$가 있다."
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "그때의 점 $P$의 $x$좌표를 $a$라고 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$m+a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "두 거리의 제곱은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "$=2(t+1)^2+11$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이차식을 완전제곱식으로 변형하여 이차함수의 최솟값을 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "점 $P$가 변 $AB$ 위를 움직일 때,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "내분점 공식으로 P(-1,1), 외분점 공식으로 Q(-7,13)을 구하고 두 점 사이의 거리 sqrt((-6)^2+12^2)=6*sqrt(5)를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $AB$를 $3:2$로 내분하는 점을"
+          },
+          {
+            "term": "내분",
+            "src": "stem",
+            "quote": "선분 $AB$를 $3:2$로 내분하는 점을"
+          },
+          {
+            "term": "외분",
+            "src": "stem",
+            "quote": "외분하는 점을 $Q$라고 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "두 점 $P$, $Q$ 사이의 거리는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내분",
+            "src": "solution",
+            "quote": "$AP:PB=3:2$이므로 내분점은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외분",
+            "src": "solution",
+            "quote": "외분점은\n$Q=\\left(\\dfrac{3\\cdot(-2)-2\\cdot\\frac12}{3-2}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "$PQ=\\sqrt{(-7-(-1))^2+(13-1)^2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 점 사이의 거리 공식을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "기울기가 tan(45도)=1이므로 -a/b=1에서 a=-b이고 (1,2) 대입하여 a=2, b=-2를 구해 a-b=4를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $ax+by+2=0$이"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$, $b$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$a-b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "따라서 기울기는 $1$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$a=-b$를 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "수직 조건에서 기울기가 2이므로 2a-b=1, 내분점 C가 직선 위에 있으므로 a+2b=-7을 연립하여 a=-1, b=-3을 얻고 a-b=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $AB$를 $2:1$로 내분하는 점을"
+          },
+          {
+            "term": "내분",
+            "src": "stem",
+            "quote": "선분 $AB$를 $2:1$로 내분하는 점을"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$, $b$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$a-b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "직선 $AB$는 이에 수직이므로 기울기는 $2$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "연립하면\n$2a-b=1$, $a+2b=-7$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "직선 $AB$에 수직이고"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "평행한 두 직선 사이의 거리 공식 |k - (-3)|/sqrt(2^2+(-1)^2)=sqrt(5)에서 |k+3|=5로 k=2, -8이므로 합 -6을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 직선 $2x-y-3=0$과"
+          },
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "모든 상수 $k$값의 합은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 상수 $k$값의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "평행한 직선 $Ax+By+C_1=0$, $Ax+By+C_2=0$ 사이의 거리는",
+            "evidenceType": "IMPLIED",
+            "justification": "평행한 두 직선 사이의 거리 공식을 적용함"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$|k+3|=5$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 방정식을 풀어 k값을 구함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "13(x-4)+1<=10x+42<13(x-3)의 연립부등식을 세워 풀어 28<=x<=31을 얻고 M=31, m=28에서 M+m=59를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "상자의 개수의 최댓값을 $M$,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$M+m$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립부등식",
+            "src": "solution",
+            "quote": "$13(x-4)+1\\le10x+42<13(x-3)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "문제 상황을 연립일차부등식으로 모델링하여 해를 구함"
+          },
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "$x$는 정수이므로 $28\\le x\\le31$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "삼각형 OAB의 넓이가 8이므로 직선에 의해 잘린 삼각형의 넓이가 4임을 이용하여 (4+k)^2=10을 얻고, (4,a)를 지나므로 a=4+k에서 a^2=10을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $OAB$의 넓이를"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=x+k$가 이등분할 때,"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $OAB$의 넓이를 직선 $y=x+k$가 이등분할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$a^2$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형 $OAB$의 넓이는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "직선 $y=x+k$와 $AB$의 교점을 $Q$라 하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "이등분선",
+            "src": "stem",
+            "quote": "직선 $y=x+k$가 이등분할 때,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "좌표를 설정하거나 내외분점 비를 이용하여 밑변의 비 EC/BC=3, 높이 비 2배임을 찾아 삼각형의 넓이비 k=3*2=6을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $ABC$에서"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $BC$를 $1:3$으로 내분하는"
+          },
+          {
+            "term": "내분",
+            "src": "stem",
+            "quote": "선분 $BC$를 $1:3$으로 내분하는"
+          },
+          {
+            "term": "외분",
+            "src": "stem",
+            "quote": "선분 $BC$를 $2:3$으로 외분하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "이때 상수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "외분",
+            "src": "solution",
+            "quote": "외분점 공식에서\n$F=\\left(\\dfrac{1\\cdot0-2u}{1-2}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이비를 구하기 위해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "x^2+1=0의 근인 x=i를 대입하여 (1+i)(1-i)=2임을 이용해 2^m=128=2^7에서 n=2m=14를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "3이상의 자연수 $n$에 대하여"
+          },
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $P_n(x)=(1+x)(1+x^3)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수정리",
+            "src": "solution",
+            "quote": "$x^2+1$이 $P_n(x)$를 나누므로 $x=i$를 대입했을 때 $P_n(i)=0$이어야 한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "복소수",
+            "src": "solution",
+            "quote": "결과가 실수가 아니므로",
+            "evidenceType": "IMPLIED",
+            "justification": "허수단위 i의 거듭제곱 성질과 복소수 연산을 적용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "나누어 떨어지도록 하는"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "(x-2a)(x-(a^2-2a))<=0에서 구간 길이 |a^2-4a|가 3(양끝 정수) 또는 4(양끝 비정수)임을 파악하여 a=1, 3, 2+-2*sqrt(2)를 얻어 합 8을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "$x$에 대한 이차부등식 $x^2-a^2x+2a^3-4a^2\\le0$의"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "(가) $\\beta-\\alpha$는 자연수"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "(나) $\\alpha\\le x\\le\\beta$를 만족하는 정수 $x$는 4개이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 실수 $a$값의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "이차식은\n$x^2-a^2x+2a^3-4a^2=(x-2a)(x-a^2+2a)$로 인수분해된다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "두 근 사이의 길이는\n$\\beta-\\alpha=|a^2-4a|$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근의 차를 절댓값으로 표현하여 방정식으로 분류함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "(x-1)(x^2+ax+a)=0으로 인수분해하여 x=1이 중근인 경우 a=-1/2, 이차식이 중근인 경우 판별식 a(a-4)=0에서 a=0, 4를 구해 합 7/2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3+(a-1)x^2-a=0$이"
+          },
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "중근과 다른 한 실근을 갖도록 하는"
+          },
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "중근과 다른 한 실근을 갖도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 실수 $a$의 값의 합을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "인수분해하면\n$x^3+(a-1)x^2-a=(x-1)(x^2+ax+a)$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "둘째, 이차식이 중근을 가지면 판별식이 $0$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "중근과 다른 한 실근을 갖도록 하는"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": null,
+      "format": "소문항 묶음",
+      "decisiveStep": "두 수선의 방정식 y=2x와 y=1/3x+5/3을 연립하여 교점 P(1,2)를 구하고 밑변 OA=5, P에서 OA까지 거리 1로 삼각형 넓이 5/2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "꼭짓점으로 하는 삼각형 $OAB$가 있다."
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "내린 수선의 교점을 $P$라고 할 때,"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "내린 수선의 교점을 $P$라고 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "1) 교점을 $P$의 좌표를 구하시오."
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "2) 삼각형 $OAP$의 넓이를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 수선의 교점에서\n$2x=\\dfrac13x+\\dfrac53$,",
+            "evidenceType": "IMPLIED",
+            "justification": "두 수선의 방정식을 연립하여 교점의 좌표를 구함"
+          },
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "점 $P(1,2)$에서 $OA$까지의 거리는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "내린 수선의 교점을 $P$라고 할 때,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

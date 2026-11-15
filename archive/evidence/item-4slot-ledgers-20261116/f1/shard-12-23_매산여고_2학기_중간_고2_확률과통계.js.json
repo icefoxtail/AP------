@@ -1,0 +1,1208 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "gemini-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-16T02:24:00+09:00",
+ "sourceArchiveFile": "original/high/h2/2mid/23_매산여고_2학기_중간_고2_확률과통계.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "성공확률 p=6/36=1/6인 이항분포 B(180, 1/6)에서 E(X)=30, sigma(X)=5를 구해 합 35를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "횟수를 확률변수 $X$라 하자."
+     },
+     {
+      "term": "독립시행",
+      "src": "stem",
+      "quote": "던지는 시행을 $180$번 반복할 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$X$의 평균과 표준편차의 합은?"
+     },
+     {
+      "term": "표준편차",
+      "src": "stem",
+      "quote": "$X$의 평균과 표준편차의 합은?"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "표준편차의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "$X\\sim\\mathrm B\\left(180,\\dfrac16\\right)$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X)=180\\times\\dfrac16=30$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "표준편차",
+      "src": "solution",
+      "quote": "$\\sigma(X)=\\sqrt{25}=5$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구별가능",
+      "src": "stem",
+      "quote": "서로 다른 두 개의 주사위를"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "이항분포 B(45, 1/3)에서 E(X)=15, V(X)=10을 구하고 E(X^2)=V(X)+{E(X)}^2=10+225=235를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이항분포",
+      "src": "stem",
+      "quote": "이항분포 $B(45,\\dfrac13)$을 따를 때"
+     },
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "확률변수 $X$가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$X^2$의 평균은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(X)=npq=45\\times\\dfrac13\\times\\dfrac23=10$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X^2)=V(X)+\\{E(X)\\}^2=10+15^2=10+225=235$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "이항분포 B(4, 1/3)에서 P(X=3)=8/81과 P(X=4)=1/81을 더하여 확률 1/9을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "독립시행",
+      "src": "stem",
+      "quote": "이 선수가 $4$발을 쏘아"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "명중시킬 확률은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "독립시행",
+      "src": "solution",
+      "quote": "이항분포 $\\mathrm B\\left(4,\\dfrac13\\right)$을 따른다",
+      "evidenceType": "IMPLIED",
+      "justification": "독립시행의 확률분포인 이항분포의 확률 질량 공식으로 계산한다."
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "\\binom43",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "합",
+      "src": "solution",
+      "quote": "$\\dfrac8{81}+\\dfrac1{81}=\\dfrac9{81}=\\dfrac19$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "성공확률 p=3/7인 이항분포 B(98, 3/7)에서 V(X)=24를 구하고 V(5X+2)=600에서 sigma(5X+2)=10*sqrt(6)을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "복원추출",
+      "src": "stem",
+      "quote": "확인하고 다시 넣는"
+     },
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "횟수를 확률변수 $X$라 하자."
+     }
+    ],
+    "goal": [
+     {
+      "term": "표준편차",
+      "src": "stem",
+      "quote": "$\\sigma(5X+2)$는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "$X\\sim\\mathrm B\\left(98,\\dfrac37\\right)$이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률변수의일차식",
+      "src": "solution",
+      "quote": "$V(aX+b)=a^2V(X)$를 이용한다",
+      "evidenceType": "IMPLIED",
+      "justification": "확률변수의 일차식에 대한 분산의 성질을 적용한다."
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "\\binom42+\\binom32=6+3=9",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "E(2X+5)=95에서 m=45, V(2X+5)=36에서 sigma=3을 구하고 대칭성 (3+a)+(5-b)=90에서 a-b=82를 얻어 a-b+sigma=85를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정규분포",
+      "src": "stem",
+      "quote": "정규분포 $N(m,\\sigma^2)$을 따르는"
+     },
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "확률변수 $X$에 대하여"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "$a$, $b$는 상수이다."
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a-b+\\sigma$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "확률변수의일차식",
+      "src": "solution",
+      "quote": "$E(2X+5)=2m+5=95$, $V(2X+5)=2^2\\sigma^2=36$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "확률변수의 일차식에 대한 평균과 분산의 선형 변환 성질을 사용한다."
+     },
+     {
+      "term": "대칭성",
+      "src": "solution",
+      "quote": "정규분포의 확률밀도함수는 $x=m$에 대하여 대칭이므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "\\sigma\\gt0"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "대칭축 위치에서 m<4(3가지), 뾰족한 정도에서 sigma<7(6가지)을 도출하여 순서쌍의 개수 3*6=18을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정규분포",
+      "src": "stem",
+      "quote": "각각 정규분포 $N(m,7^2)$"
+     },
+     {
+      "term": "확률밀도함수",
+      "src": "stem",
+      "quote": "확률밀도함수가 각각 $f(x)$, $g(x)$라 할 때"
+     },
+     {
+      "term": "그래프",
+      "src": "stem",
+      "quote": "그래프는 그림과 같다."
+     }
+    ],
+    "goal": [
+     {
+      "term": "순서쌍",
+      "src": "stem",
+      "quote": "순서쌍 $(m,\\sigma)$의 개수는?"
+     },
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "순서쌍 $(m,\\sigma)$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "축",
+      "src": "solution",
+      "quote": "대칭축의 위치가 평균을",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "표준편차",
+      "src": "solution",
+      "quote": "곡선이 뾰족한 정도가 표준편차를 나타낸다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "곱의법칙",
+      "src": "solution",
+      "quote": "범위를 정한 뒤 곱의 법칙을 쓴다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "자연수 $m$, $\\sigma$의 값으로"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "왼쪽 꼬리 확률 a-b가 오른쪽 꼬리 확률과 대칭으로 같음을 이용해 b-(a-b)=2b-a를 유도한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정규분포",
+      "src": "stem",
+      "quote": "정규분포 $N(m,\\sigma^2)$을 따르는"
+     },
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "확률변수 $X$에 대하여"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "$P(m-2\\sigma\\le X\\le m+2\\sigma)$를"
+     }
+    ],
+    "method": [
+     {
+      "term": "대칭성",
+      "src": "solution",
+      "quote": "분포는 평균에 대하여 대칭이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "대칭인 오른쪽 구간의 확률을 $b$에서 빼면 된다",
+      "evidenceType": "IMPLIED",
+      "justification": "배반인 구간들의 확률 덧셈과 여사건 관계를 적용한다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "옳은 것 고르기",
+   "decisiveStep": "셀 수 있는 주사위 눈과 지각 학생 수는 이산확률변수, 연속 구간의 값을 갖는 몸무게는 연속확률변수임을 판정하여 ㄱ, ㄴ을 고른다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "확률변수에 대한 설명이다."
+     },
+     {
+      "term": "이산확률변수",
+      "src": "stem",
+      "quote": "눈의 수는 이산확률변수이다."
+     },
+     {
+      "term": "연속확률변수",
+      "src": "stem",
+      "quote": "몸무게는 연속확률변수이다."
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "옳은 것을 모두 고르면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "이산확률변수",
+      "src": "solution",
+      "quote": "값이 셀 수 있는 것은 이산확률변수",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "연속확률변수",
+      "src": "solution",
+      "quote": "모든 실숫값을 가질 수 있는 것은 연속확률변수이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "옳은 것 고르기",
+   "decisiveStep": "확률의 총합 b=1에서 a=1/2을 구하고 E(X)=2임을 계산하여 참인 명제 ㄴ, ㄷ을 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이산확률변수",
+      "src": "stem",
+      "quote": "이산확률변수 $X$의"
+     },
+     {
+      "term": "확률분포표",
+      "src": "stem",
+      "quote": "확률분포표가 다음과 같을 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "옳은 것을 모두 고르면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "확률분포",
+      "src": "solution",
+      "quote": "확률의 총합은 $1$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "확률분포표의 모든 확률의 합이 1이라는 성질을 이용한다."
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X)=1\\times\\dfrac14+2\\times\\dfrac12+3\\times\\dfrac14",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "조합으로 각 확률을 구해 E(X)=4/5를 계산하고 E(10X+1)=10*(4/5)+1=9를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "개수를 확률변수 $X$라고 하자."
+     }
+    ],
+    "goal": [
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$E(10X+1)$을 구하면?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "전체 경우는 $\\binom52=10$가지이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X)=0\\times\\dfrac3{10}+1\\times\\dfrac6{10}+2\\times\\dfrac1{10}",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률변수의일차식",
+      "src": "solution",
+      "quote": "$E(aX+b)=aE(X)+b$이므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "V(bX+8)=18b^2=18에서 양수 b=1을 구하고 E(aX+1)=6a+1=43에서 a=7을 얻어 ab=7을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이산확률변수",
+      "src": "stem",
+      "quote": "이산확률변수 $X$에 대하여"
+     },
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$E(X)=6$"
+     },
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "$V(X)=18$일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "곱",
+      "src": "stem",
+      "quote": "$a\\times b$의 값을 구하시오."
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "값을 구하시오."
+     }
+    ],
+    "method": [
+     {
+      "term": "확률변수의일차식",
+      "src": "solution",
+      "quote": "$E(aX+b)=aE(X)+b$이고 $V(aX+b)=a^2V(X)$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(bX+8)=b^2V(X)=18b^2=18$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(aX+b)=aE(X)+b=6a+1=43$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "두 양수 $a$, $b$에 대하여"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "전개식에서 sum x_i*p_i=m, sum p_i=1을 대입해 A=2m, B=m^2을 비교하여 f(-1)=m^2+2m=-1을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이산확률변수",
+      "src": "stem",
+      "quote": "$X$가 이산확률변수일 때"
+     },
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "$X$의 분산을 구하는 과정의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "함숫값",
+      "src": "stem",
+      "quote": "$f(-1)$의 값을 구하면?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "분산의 정의식을 전개하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "전개",
+      "src": "solution",
+      "quote": "$(x_i-m)^2$을 전개해 항별로 정리한 뒤",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$\\sum x_ip_i=E(X)$와",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "선형변환 공식에서 E(X)=5, V(X)=4를 구하고 E(X^2)=V(X)+{E(X)}^2=4+25=29를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "확률변수 $X$에 대하여"
+     }
+    ],
+    "goal": [
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$E(X^2)$의 값을 구하면?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "확률변수의일차식",
+      "src": "solution",
+      "quote": "선형변환 공식으로 $E(X)$와 $V(X)$를 먼저 구한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(2X+1)=2^2V(X)=16$에서",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X^2)=V(X)+\\{E(X)\\}^2=4+5^2=29$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "P(X=k)=P(X>=k)-P(X>=k+1)로 확률을 구하고 E(X^2)=sum k^2*P(X=k)=355/30=71/6을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "확률변수 $X$의"
+     },
+     {
+      "term": "확률질량함수",
+      "src": "stem",
+      "quote": "확률질량함수가 $P(X\\ge k)=1-\\dfrac{k^2}{30}$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$E(X^2)$을 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "확률질량함수",
+      "src": "solution",
+      "quote": "확률질량함수를 복원한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X^2)=\\sum k^2P(X=k)$를 계산한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "연립한 이차방정식 판별식 D=100-2X^2<0에서 X=8을 얻고 경우의 수 2/20=1/10의 확률을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "숫자의 합을 확률변수 $X$라고 하자."
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $y=10x-\\dfrac X2$와"
+     },
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "곡선 $y=-Xx^2-X$이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "만나지 않을 확률은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "판별식",
+      "src": "solution",
+      "quote": "그 판별식은 $D=10^2-4X\\cdot\\dfrac X2=100-2X^2$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "그 경우의 수는 $\\binom22\\binom21=2$이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "수학적확률",
+      "src": "solution",
+      "quote": "따라서 구하는 확률은 $\\dfrac2{20}=\\dfrac1{10}$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "전체 20가지 경우 중 조건을 만족하는 2가지 경우의 비로 수학적 확률을 구한다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "E(X)=(2n+1)/3=9에서 n=13을 구하고 E(X^2)=91을 계산하여 V(X)=91-81=10을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "숫자를 확률변수 $X$라 하자."
+     },
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "$X$의 평균이 $9$일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "$X$의 분산은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "거듭제곱합",
+      "src": "solution",
+      "quote": "공식을 이용한다",
+      "evidenceType": "IMPLIED",
+      "justification": "자연수 거듭제곱의 합 공식 sum k^2, sum k^3을 이용한다."
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X)=\\sum_{k=1}^{n}k\\cdot\\dfrac{2k}{n(n+1)}",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(X)=E(X^2)-\\{E(X)\\}^2$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "넓이 6X-X^2의 평균을 6E(X)-E(X^2)로 두고 E(X^2)=V(X)+{E(X)}^2=18을 대입해 24-18=6을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "직사각형",
+      "src": "stem",
+      "quote": "직사각형이 몇 개 있다."
+     },
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "가로의 길이의 평균이 $4$"
+     },
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "분산이 $2$일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "직사각형의 넓이의 평균은?"
+     },
+     {
+      "term": "넓이",
+      "src": "stem",
+      "quote": "직사각형의 넓이의 평균은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(6X-X^2)=6E(X)-E(X^2)$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$E(X^2)=V(X)+\\{E(X)\\}^2=2+4^2=18$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 18,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "X>=5를 처음 4번 중 흰 구슬이 0개 또는 1개인 사건으로 해석하여 (5+30)/70=1/2의 확률을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "비복원추출",
+      "src": "stem",
+      "quote": "꺼낸 구슬은 다시 넣지 않는다."
+     },
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "시행 횟수를 확률변수 $X$라 하자."
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "$P(X\\ge5)$를 구하시오."
+     }
+    ],
+    "method": [
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "$\\binom84=70$가지이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "$P(X\\ge5)=\\dfrac{5+30}{70}",
+      "evidenceType": "IMPLIED",
+      "justification": "흰 구슬이 0개인 경우와 1개인 배반사건의 확률을 더한다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 19,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "전체 삼각형 넓이 9k=1에서 k=1/9을 구하고 구간 [3, 9/2]의 사다리꼴 넓이로 확률 3/8을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "연속확률변수",
+      "src": "stem",
+      "quote": "연속확률변수 $X$의"
+     },
+     {
+      "term": "확률밀도함수",
+      "src": "stem",
+      "quote": "확률밀도함수가 $f(x)="
+     },
+     {
+      "term": "조각함수",
+      "src": "stem",
+      "quote": "f(x)=\\begin{cases}"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "(단, $k$는 상수이다.)"
+     }
+    ],
+    "goal": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "(단, $k$는 상수이다.)"
+     },
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "$P\\left(3\\le X\\le\\dfrac92\\right)$의 값"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "각각 구하여라."
+     }
+    ],
+    "method": [
+     {
+      "term": "넓이",
+      "src": "solution",
+      "quote": "확률밀도함수의 전체 넓이는 $1$이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "사다리꼴",
+      "src": "solution",
+      "quote": "사다리꼴의 넓이는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "삼각형",
+      "src": "solution",
+      "quote": "세 점 $(0,0)$, $(3,3k)$, $(6,0)$을 잇는 삼각형이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "닫힌구간",
+      "src": "stem",
+      "quote": "0\\le x\\le3"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 20,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "1회 점수의 평균 E(S)=11/3, 분산 V(S)=8/9에서 450회 독립시행 총점의 평균 a=1650, 분산 b=400을 구해 a+b=2050을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "독립시행",
+      "src": "stem",
+      "quote": "한 개의 주사위를 $450$번 던져서"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b$의 값을 구하시오."
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "값을 구하시오."
+     }
+    ],
+    "method": [
+     {
+      "term": "독립시행",
+      "src": "solution",
+      "quote": "$450$번의 시행은 서로 독립이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "독립인 450번의 시행의 합에 대해 평균과 분산을 곱하여 계산한다."
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "총점의 평균은 $a=450\\times\\dfrac{11}3=1650$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "분산은 $b=450\\times\\dfrac89=400$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 21,
+   "questionUid": null,
+   "format": "소문항 묶음",
+   "decisiveStep": "확률의 합 16/a=1에서 a=16으로 확률분포표를 완성하고 E(X)=25/8, E(X^2)=85/8에서 분산 V(X)=55/64를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "확률변수 $X$의"
+     },
+     {
+      "term": "확률질량함수",
+      "src": "stem",
+      "quote": "확률질량함수가 $P(X=x)=\\dfrac{2x-1}{a}$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률분포표",
+      "src": "stem",
+      "quote": "확률변수 $X$의 확률분포표를"
+     },
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "$V(X)$를 구하시오."
+     }
+    ],
+    "method": [
+     {
+      "term": "확률분포표",
+      "src": "solution",
+      "quote": "확률분포표를 완성한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X)=\\dfrac{1\\cdot1+2\\cdot3+3\\cdot5+4\\cdot7}{16}=\\dfrac{25}8$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(X)=\\dfrac{85}8-\\left(\\dfrac{25}8\\right)^2=\\dfrac{55}{64}$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 22,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "sum a_k를 이항분포 B(200, 1/4)의 E(X^2)으로 대응시켜 V(X)=75/2, E(X)=50에서 E(X^2)=75/2+2500=5075/2를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이항분포",
+      "src": "stem",
+      "quote": "a_k=k^2\\binom{200}{k}\\left(\\dfrac14\\right)^k\\left(\\dfrac34\\right)^{200-k}"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "\\sum_{k=0}^{200}a_k$의 값을"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "값을 풀이 과정과 함께 구하시오."
+     }
+    ],
+    "method": [
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "$X\\sim\\mathrm B\\left(200,\\dfrac14\\right)$라 하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "$E(X)=200\\times\\dfrac14=50$이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(X)=200\\times\\dfrac14\\times\\dfrac34=\\dfrac{75}2$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  }
+ ]
+}

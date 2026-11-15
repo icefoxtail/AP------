@@ -1,0 +1,1127 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T19:55:00+09:00",
+  "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_b2f7847d798c9d360b430787db73e35f97585612e117b2c47b860bd6ba1141cb",
+      "format": "단일 정답",
+      "decisiveStep": "방정식의 x에 x+1, y에 y-3을 대입하여 평행이동한 도형의 방정식을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "방정식 $x-2y+4=0$이"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축 방향으로 $-1$만큼, $y$축 방향으로 $3$만큼 평행이동"
+          }
+        ],
+        "goal": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "도형의 방정식은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "주어진 직선의 식에 대입하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "원래 직선 위의 점은 $(x+1,y-3)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행이동 변환식을 통해 원래 좌표의 대입식 유도"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_f11d79fca62834698b5a46f6f55095d9f1da1aea3acceecd7b2694717c33bda5",
+      "format": "옳지 않은 것 고르기",
+      "decisiveStep": "집합 {1,2}는 집합 A의 부분집합이지 원소가 아님을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $A=\\{1,2,4,8\\}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "$x\\in A$는 $x$가 집합 안의 원소라는 뜻이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "$C\\subset A$는 $C$의 원소가 모두 $A$ 안에 있다는 뜻이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "공집합",
+            "src": "solution",
+            "quote": "빈집합에는 원소가 없으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "공집합의 성질로부터 부분집합 참거짓 판정"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_21b5e52eece0890ce88da86dc0853cea7c04b8b7a9107c0e77e87f15218141f1",
+      "format": "옳지 않은 것 고르기",
+      "decisiveStep": "명제의 대우와 삼단논법을 이용하여 참인 명제들을 판정하고 참이 아닌 명제를 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "명제 $r\\to p$, $q\\to \\sim p$가 참이라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 참이 아닌 명제는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대우",
+            "src": "solution",
+            "quote": "참인 명제와 그 대우의 참·거짓은 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼단논법",
+            "src": "solution",
+            "quote": "이어 붙이면 $q\\to\\sim r$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "조건들을 연쇄하여 삼단논법으로 새로운 참인 명제 추론"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_0f2826a4b8168bed49ed8b16ab4015e3bb903ce283de371ff606f3f25fca3725",
+      "format": "단일 정답",
+      "decisiveStep": "함수 f의 치역 {1, 3, 5}의 모든 원소의 합 9를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "그림은 함수 $f:X\\to Y$를 나타낸 것이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "치역의 모든 원소의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "치역은 실제로 화살표가 도착한 $Y$의 원소들의 집합이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "치역은 $\\{1,3,5\\}$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "치역을 이루는 원소들을 특정하여 조건 구성"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_ff948cacb68b70ce066275d17520ca5d73302054124f3768fcf2c8476e7e2533",
+      "format": "단일 정답",
+      "decisiveStep": "원소가 4개인 집합 A의 부분집합의 개수 2^4 = 16을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $A$가 $A=\\{2,4,6,8\\}$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "부분집합의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "부분집합 하나를 만들 때 각 원소마다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "네 원소의 선택을 차례로 곱하면",
+            "evidenceType": "IMPLIED",
+            "justification": "곱의 법칙을 적용하여 부분집합의 총 개수를 산출"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_832062b2173cc4486a1b24ba39395bdc0079ecf731f626b8c4fda9410bf79075",
+      "format": "단일 정답",
+      "decisiveStep": "합성함수 값 f(f(3))=1과 역함수 값 f^(-1)(7)=3을 구하여 더한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "그림은 함수 $f:X\\to X$를 나타낸 것이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$f(f(3))+f^{-1}(7)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "합성한 값은 먼저 안쪽 함수값을 구한 뒤",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$f^{-1}(7)$은 ‘함숫값이 $7$이 되는 입력’을 뜻한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_a2eb68a823eb40552891b0053e502bdf3b953252257012fbdf8f2a43abb7842f",
+      "format": "단일 정답",
+      "decisiveStep": "산술기하평균 부등식 4x^2+y^2 >= 4xy를 이용하여 xy의 최댓값 2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$x>0$, $y>0$이고"
+          },
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "$4x^2+y^2=8$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$xy$의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "산술·기하평균의 관계에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "주어진 식 $4x^2+y^2=8$을 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등호조건",
+            "src": "solution",
+            "quote": "등호는 $4x^2=y^2$, 즉 $y=2x$일 때 성립한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "산술기하평균의 등호 성립 조건을 확인하여 최댓값 검증"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_759729330faeb7fa0889c879880ec288f765ba7af0afed094e0cd0e6a9363181",
+      "format": "단일 정답",
+      "decisiveStep": "평행이동한 점 B, C와 A가 한 직선 위에 있도록 기울기 식 3/a = 3a를 풀어 a=-1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "점 $A(0,3)$을 $x$축으로 $a$만큼"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$y$축으로 $3a$만큼 평행이동한 점을 $C$라 하자."
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "세 점 $A,B,C$가 서로 다른 점이고 한 직선 위에 있을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "세 점이 한 직선 위에 있으려면 두 기울기가 같아야 하므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "세 점이 서로 다르지 않다.",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 점이라는 문제 조건에 따라 a=1을 배제"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_37a572b1c1edb0e2bbd5133f505732b98a0086a5b83330e69d0bbfbd2f142e5f",
+      "format": "단일 정답",
+      "decisiveStep": "필요조건 포함관계 (-1, 3) ⊆ (a-3, a+3)으로부터 0 <= a <= 2를 구해 합 2를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "$|x-a|<3$이"
+          },
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "$x^2-2x-3<0$이기 위한"
+          },
+          {
+            "term": "필요조건",
+            "src": "stem",
+            "quote": "필요조건이 되도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "이때 $\\alpha+\\beta$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "첫 번째 부등식이 두 번째 부등식의 필요조건이라는 것은",
+            "evidenceType": "IMPLIED",
+            "justification": "필요조건 정의로부터 두 부등식 해집합 사이의 포함관계를 세움"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$x^2-2x-3=(x+1)(x-3)$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "이차식을 인수분해하여 부등식의 해 범위를 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 범위는"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_d72bf954818cf64ca4ad248580c0ee2cba8ce3f257d9c9eb71777979a3b76625",
+      "format": "단일 정답",
+      "decisiveStep": "일차함수의 역함수를 구하여 계수 비교를 통해 b=3, a=2/3를 구하고 곱 2를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\dfrac{1}{3}x+a$의"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수가 $f^{-1}(x)=bx-2$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "상수 $a\\times b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "에서 $x$와 $y$를 바꾸면",
+            "evidenceType": "IMPLIED",
+            "justification": "x와 y를 교환하여 역함수 식을 구하는 방법 적용"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "와 계수를 비교하면 $b=3$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_b912765a4eb48f9f68dda19506c979727bcacf7976cfa061bd3577bb6a19bd28",
+      "format": "단일 정답",
+      "decisiveStep": "대칭이동한 원 중심 (-2, -k)와 직선 2x+y+1=0 사이 거리가 루트5임을 이용하여 k의 합 -6을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $2x-y=1$을 $y$축에 대칭이동한"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $(x+k)^2+(y+2)^2=5$를 $y=x$에 대칭이동한"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "직선 $l$이 원 $C$에 접하도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 $k$값의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "중심에서 직선까지의 거리가 반지름과 같아야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원과 직선의 접선 조건으로 점과 직선 사이의 거리 공식 사용"
+          },
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "$y$축 대칭에서는 $x$좌표의 부호가 바뀐다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_191e10e4e2f936a66c43d1c1527a9265f32b673d95062a9e20fd8da65feb90fd",
+      "format": "단일 정답",
+      "decisiveStep": "명제의 부정인 '모든 실수 x에 대하여 x^2-8x+a >= 0'이 참이 되도록 a-16 >= 0에서 최솟값 16을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "명제 ‘어떤 실수 $x$에 대하여 $x^2-8x+a<0$이다’의"
+          },
+          {
+            "term": "부정",
+            "src": "stem",
+            "quote": "부정이 참일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "상수 $a$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$x^2-8x+a=(x-4)^2+a-16$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "이차식을 완전제곱식으로 변형하여 식의 최솟값을 파악"
+          },
+          {
+            "term": "부정",
+            "src": "solution",
+            "quote": "의 부정은\n“모든 실수 $x$에 대하여 $x^2-8x+a\\ge0$이다”이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_3272edaab620b01287b242f93103c6192a76cf1d60c43c3d6be9c53fcc967037",
+      "format": "단일 정답",
+      "decisiveStep": "u = 4x^2-2x+1로 치환하여 u-1+1/u >= 2-1 = 1에서 최솟값 alpha=1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $x$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값 $\\alpha$를 갖는다."
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$u=4x^2-2x+1$로 놓으면",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 부분을 u로 치환하여 산술기하평균 식을 단순화"
+          },
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "산술·기하평균의 관계에서",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등호조건",
+            "src": "solution",
+            "quote": "등호는 $u=1$일 때 성립한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등호 성립 여부를 확인하여 최솟값 달성 가능성을 검증"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_0df3af4a9c962624a8eec44c89793fdcdac9434046d9104a26f5818aca4b853a",
+      "format": "단일 정답",
+      "decisiveStep": "구간별 정의된 함수에서 f(0)=1, g(2)=3, h(-3/2)=3을 순차적으로 합성하여 합 7을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $g(x),h(x)$가 각각 $g=f\\circ f$, $h=f\\circ f\\circ f$를 만족시킬 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$f(0)+g(2)+h(-\\dfrac{3}{2})$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "$g(2)=f(f(2))$는 안쪽 $f(2)$부터 계산한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "합성함수의 정의에 따라 안쪽 함수부터 단계적으로 계산"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$0\\ge0$이므로 첫째 식을 써서",
+            "evidenceType": "IMPLIED",
+            "justification": "입력값의 부호에 따라 분기된 함수식을 선택하여 대입"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_00dda367bb22414fce7032df37951169a4cd4dee6920da041fb860ab11c2da15",
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "decisiveStep": "n(A ∩ B)=2 조건을 만족하는 k에 대해 ㄱ(거짓), ㄴ(참), ㄷ(거짓)을 각각 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "양의 약수\\}$, $B=\\{2,5,8\\}$이 있다."
+          },
+          {
+            "term": "교집합",
+            "src": "stem",
+            "quote": "$n(A\\cap B)=2$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<보기>에서 옳은 것만을 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "$k=20$이면 $A=\\{1,2,4,5,10,20\\}$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "k=20인 반례를 제시하여 명제 ㄱ이 거짓임을 판정"
+          },
+          {
+            "term": "차집합",
+            "src": "solution",
+            "quote": "$k=10$이면 $A-B=\\{1,10\\}$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "차집합 A-B의 원소들을 나열하여 원소들의 합의 홀짝성을 분석"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "180 이하의 자연수 $k$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_d71f730f3db447ea818e04cfed418f262782f785ae092df57ea0ed524fc62f9a",
+      "format": "단일 정답",
+      "decisiveStep": "대칭차집합 조건으로부터 a=1을 확정하고 B의 원소합 b=6을 구해 a+b=7을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "차집합",
+            "src": "stem",
+            "quote": "$(A-B)\\cup(B-A)=\\{0,2\\}$이다."
+          },
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "두 집합 $A,B$가 $A=\\{1,a+2,a^2-1\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭차집합",
+            "src": "solution",
+            "quote": "대칭차집합 $(A-B)\\cup(B-A)$에는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "따라서 $a=1,2,-2$를 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "a의 후보값들을 각각의 경우로 나누어 대칭차집합 조건을 검증"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_c86f96b784fc87ba9e4add24f2d20fad5e04caf27f8068b01189b05ffecb8025",
+      "format": "단일 정답",
+      "decisiveStep": "일대일 대응 조건과 (가), (나)로부터 f(2)=3, {f(3),f(5)}={7,11}, f(4)=5일 때 최솟값 15를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "일대일대응",
+            "src": "stem",
+            "quote": "함수 $f:X\\to Y$가 일대일 대응이고"
+          },
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "(가) $f(1)\\times f(f(1))\\times f(2)=18$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$f(2)+f(3)+f(4)$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "$f(1)$은 $Y$의 원소이면서 $f(f(1))$의 입력이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "합성함수의 입력 조건을 통해 f(1)의 가능한 값을 제한"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$f(1)=2$이면 조건 (가)는",
+            "evidenceType": "IMPLIED",
+            "justification": "f(1)의 가능한 값들에 대해 경우를 나누어 조건을 분석"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_7f3bb5181f16cd47489ba32a5f1a5abac53cba7f3bb02a51e2ca16002aa02cf3",
+      "format": "단일 정답",
+      "decisiveStep": "Q ⊆ P가 되도록 중심 (0,a)에서 세 변까지의 거리 조건을 비교하여 최댓값 b와 a+b=1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "진리집합",
+            "src": "stem",
+            "quote": "두 조건 $p,q$의 진리집합이 각각"
+          },
+          {
+            "term": "필요조건",
+            "src": "stem",
+            "quote": "$p$가 $q$이기 위한 필요조건이 되도록"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "$Q=\\{(x,y)\\mid x^2+(y-a)^2\\le b^2\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "오른쪽 사선은 $x-y-1=0$이므로 점-직선 거리 공식으로",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 중심과 삼각형 경계선 사이의 거리를 점과 직선 사이 거리 공식으로 계산"
+          },
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "원판 영역 $Q$가 삼각형 영역 $P$ 안에 들어가야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "필요조건의 정의로부터 진리집합의 포함관계 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수의 최댓값을 $b$라고 할 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_8a8e7e7acc296df4589e0748cf827366c67f607608df518f327cc319d1a6552c",
+      "format": "단일 정답",
+      "decisiveStep": "공통부분 넓이 S(t)를 구간별로 구하여 t=4/3일 때 최댓값 4/3를 얻고 q-p = 4-3 = 1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축 방향으로 $t$만큼, $y$축 방향으로 $t$만큼 평행이동한"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $AOB$의 내부와 삼각형 $O'C'D'$의 내부의"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "공통부분의 넓이를 $S(t)$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$S(t)$의 최댓값이 $\\dfrac{q}{p}$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$0<t\\le1$이면 $x+y\\le2t\\le2$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "t의 범위에 따라 공통 영역의 다각형 모양을 경우분류"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "이 구간에서는 $t=\\dfrac43$일 때 넓이가 $\\dfrac43$으로 최대이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "$p$와 $q$는 서로소인 자연수이다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_155e26adb01746e8ae1f9a876ac7a80a47d4e8d1dc59f7e31deb121978d062ef",
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "decisiveStep": "g(x)의 일대일대응 및 치역 조건으로 f([0,2])=[1,4]임을 밝혀 보기 ㄱ, ㄴ, ㄷ의 참거짓을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "함수 $g(x)$의 역함수가 존재할 때"
+          },
+          {
+            "term": "치역",
+            "src": "stem",
+            "quote": "함수 $g(x)$의 치역이 실수 전체의 집합이고"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "절댓값을 포함한 함수 $f(x)=|ax+b|$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<보기>에서 옳은 것만을 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "역함수가 있으려면 가운데 함수도 일대일이어야 하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "b=\\dfrac23a",
+            "evidenceType": "IMPLIED",
+            "justification": "관계식 b=2/3a를 f(4/3) 식에 대입하여 계산"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_5c357b0bcc7888c0280a4773d39fc5abbd25968718564498ead0911d3c6d8482",
+      "format": "단답",
+      "decisiveStep": "원 C1을 y=x에 대칭이동한 원과 C2의 중심거리 5*루트2에서 두 반지름의 합 3을 빼고 3을 더해 m=5*루트2, m^2=50을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "두 원 $C_1:(x+4)^2+(y-2)^2=4$과"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "점 $P$가 $y=x$ 위를 움직이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$\\overline{AP}+\\overline{PB}+3$의 최솟값을 $m$이라 하면 $m^2$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "점 $A$를 직선 $y=x$에 대칭이동한 점을 $A'$라 하자.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최단거리",
+            "src": "solution",
+            "quote": "두 원 위 점 사이의 최소거리는 중심거리에서 반지름의 합을",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭이동 후 두 원 사이의 최단거리 공식을 적용"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_fb02fd36de4b62c1b3b73b90fe88109154ad92223f8088e675c6e0b198d97ed8",
+      "format": "소문항 묶음",
+      "decisiveStep": "함숫값 조건 f(1)>=2, f(2)>=3, f(3)>=2, f(4)>=0에서 일반 함수의 개수 72와 전단사 함수의 개수 4를 각각 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f:X\\to X$ 중에서"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$f(x)+x^2\\ge4x-1$을 만족한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "(1) 함수 $f$의 개수를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "stem",
+            "quote": "(2) 전단사 함수 $f$의 개수를 구하시오.",
+            "evidenceType": "IMPLIED",
+            "justification": "전단사함수의 정의인 일대일대응 조건을 적용하여 경우의 수 계산"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=1$을 넣으면 $f(1)\\ge4-1-1=2$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "x의 각 원소를 대입하여 함숫값 부등식 범위 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원소",
+            "src": "stem",
+            "quote": "집합 $X$의 모든 원소 $x$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_ada9b4c8e9cf08d21952170a5a14297cea81bfe4ffa3f526553f967f3a7a8d81",
+      "format": "단답",
+      "decisiveStep": "조건을 만족하는 부분집합들의 원소별 등장 횟수를 세어 원소의 총합 111을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "집합 $X=\\{1,2,3,4,5\\}$의 부분집합 중에서"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$A_i$의 원소의 합을 $S(A_i)$"
+          },
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "(나) $S(A_i)$는 홀수이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$S(A_1)+S(A_2)+S(A_3)+\\cdots+S(A_n)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "원소가 2개인 경우에는 홀수 1개와 짝수 1개를 고른다.",
+            "evidenceType": "IMPLIED",
+            "justification": "부분집합의 원소 개수별로 경우를 분류하여 합이 홀수가 되는 조건 분석"
+          },
+          {
+            "term": "홀수",
+            "src": "solution",
+            "quote": "$S(A_i)$가 홀수이려면 부분집합에 홀수 원소가 홀수 개 들어 있어야 한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

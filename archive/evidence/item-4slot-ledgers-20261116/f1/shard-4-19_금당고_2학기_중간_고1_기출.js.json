@@ -1,0 +1,1229 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T19:50:00+09:00",
+  "sourceArchiveFile": "original/high/h1/2mid/19_금당고_2학기_중간_고1_기출.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_cc569eec237a94b2b1d58e79afa9db9b80dc9e04d39f3b4a4b772c299729f8dc",
+      "format": "옳은 것 고르기",
+      "decisiveStep": "소수의 집합 A={2,3,5,7}에서 4가 소수가 아니므로 4 notin A가 참임을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "10보다 작은 소수의"
+          },
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "소수의 집합을 $A$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "10보다 작은 소수는 $2,3,5,7$이므로 $A=\\{2,3,5,7\\}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원소의 소속 관계 판정"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "10보다 작은 소수는 $2,3,5,7$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원소나열법",
+            "src": "solution",
+            "quote": "$A=\\{2,3,5,7\\}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "조건을 만족하는 소수 원소들을 나열하여 집합 결정"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_76153aff1272416baa1f86bfed66d627bd6b947281e3f5ebddf4e7f73ff97725",
+      "format": "단일 정답",
+      "decisiveStep": "합집합의 결합법칙 (A u B) u C = A u (B u C)를 적용하여 {1,2,3,4,6,8}을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "세 집합 $A,B,C$에 대하여"
+          },
+          {
+            "term": "합집합",
+            "src": "stem",
+            "quote": "B\\cup C=\\{2,4,6,8\\}$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합집합",
+            "src": "stem",
+            "quote": "$(A\\cup B)\\cup C$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "결합법칙",
+            "src": "solution",
+            "quote": "합집합의 결합법칙으로 괄호를 바꾸면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "주어진 $A$와 $B\\cup C$를 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_437bdc1bb1256b6cfd71e089234d63ae4760e57740046dba38bec2a05dd140ad",
+      "format": "단일 정답",
+      "decisiveStep": "참·거짓이 고정된 ㄱ만 명제이고 변수에 따라 진리값이 바뀌는 ㄴ, ㄷ은 조건임을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "명제인 것만을 있는 대로 고른 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "명제인 것만을 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "명제",
+            "src": "solution",
+            "quote": "참인 명제이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "명제가 아니라 조건이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_b283268d84e9d43e9b6477fafbd0d2c560df39e4c512ca707b7d5b1236259784",
+      "format": "단일 정답",
+      "decisiveStep": "f(1)=-1과 g(5)=4의 역함수 성질로부터 a+b=-1임을 확인한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=ax+b"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수를 $g(x)$라 하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "상수 $a,b$의 합 $a+b$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "상수 $a,b$의 합 $a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "역함수의 정의에서 $g(5)=4$이면 $f(4)=5$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$f(1)=-1$이므로\n$a+b=-1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "함수식에 x=1을 대입하여 미정계수 식 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a,b$의 합"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_7268f167faeeacaaa8bba1910d739b4989a3a15267e6ad520846379a7d8e173e",
+      "format": "단일 정답",
+      "decisiveStep": "각 식의 함숫값 조사를 통해 함수 3개와 일대일대응 2개를 판정하여 a+b=5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $X=\\{-1,0,1\\}$에 대하여"
+          },
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "집합 $X$에서 $X$로의 함수인 것의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "각 식에 $x=-1,0,1$을 차례로 대입해 함수값을 확인한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "세 값이 서로 달라 일대일대응이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "차례로 대입해 함수값을 확인한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_fe32fe3f8d678b2034d729fd64a3dd819f06a31307c58ae3867ecc0c29b998a7",
+      "format": "단일 정답",
+      "decisiveStep": "(f o g)(2)=-13과 (g o f)(1)=11을 각각 계산하여 합 -2를 얻는다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "두 함수 $f(x)=2x-5,\\;g(x)=-3x+2$에 대하여"
+          },
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "$(f\\circ g)(2)+(g\\circ f)(1)$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "두 값을 더하면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 합성함숫값의 합 계산"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$(f\\circ g)(2)+(g\\circ f)(1)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$(f\\circ g)(2)=f(g(2))=f(-4)$",
+            "evidenceType": "IMPLIED",
+            "justification": "함수값을 차례로 대입하여 합성함숫값 계산"
+          },
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "$(f\\circ g)(2)=f(g(2))=f(-4)$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 함수의 합성 연산 적용"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_1f372295901c4aada3c82104f2458375a020b3580857a9c097cd2faabef82fdf",
+      "format": "단일 정답",
+      "decisiveStep": "그래프에서 f(2)=3/2, f(3)=2를 읽어 (f^-1 o f^-1)(3/2)=3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "정의된 함수 $y=f(x)$의"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프가 아래의 그림과 같을 때"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "$(f^{-1}\\circ f^{-1})(\\dfrac32)$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$(f^{-1}\\circ f^{-1})(\\dfrac32)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "그래프에서 $f(2)=\\dfrac32$이므로 $f^{-1}\\!\\left(\\dfrac32\\right)=2$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "해석",
+            "src": "solution",
+            "quote": "그래프에서 $f(2)=\\dfrac32$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 함수의 그래프를 읽어 함숫값 및 역함숫값 도출"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$0\\le x\\le3$에서 정의된"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_eb1415bb913b5a6af32f990aeb7c500b6e52634a5686fa377887b250a387f162",
+      "format": "단일 정답",
+      "decisiveStep": "대우 명제로부터 a^2+4a-21=(a+7)(a-3)=0을 풀어 상수 a의 값의 합 -4를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "명제 '$x^2+4x-21\\ne0$이면 $x-a\\ne0$이다'가"
+          },
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$x^2+4x-21\\ne0$이면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 값의 합은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "모든 값의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대우",
+            "src": "solution",
+            "quote": "결론 $x-a\\ne0$이 거짓이 되는 경우는 $x=a$이다.\n명제가 참이려면 이때 전제도 거짓이어야 하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "대우 명제의 참 조건을 통해 미정계수 방정식 유도"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "좌변을 인수분해하면\n$(a+7)(a-3)=0$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$가 될 수 있는"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_5cfdcb2eade91c238c72d034895711b046659a76427cf237c59da26dcda3602b",
+      "format": "단일 정답",
+      "decisiveStep": "B <= A 조건에서 m=1일 때 공집합과 x=1/(m-1) in {-2,1}일 때 m=1/2, 2의 곱 1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "두 집합 $A=\\{-2,1\\}"
+          },
+          {
+            "term": "합집합",
+            "src": "stem",
+            "quote": "$A\\cup B=A$를 만족시키는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "모든 실수 $m$의 값의 곱은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "모든 실수 $m$의 값의 곱은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "$A\\cup B=A$는 $B\\subseteq A=\\{-2,1\\}$과 같은 조건이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "합집합 조건으로부터 부분집합 포함관계 도출"
+          },
+          {
+            "term": "공집합",
+            "src": "solution",
+            "quote": "따라서 $B=\\varnothing$이고 조건을 만족한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "이 한 원소가 $A$에 있어야 하므로 다음 두 경우를 본다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $m$의 값의"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_7910a9019e4b62b20b6e15d1989c9ada2e268dde5fe2b4bd4ae1b86ec4fcf44e",
+      "format": "단일 정답",
+      "decisiveStep": "식을 16+64/(ab)로 정리하고 ab<=64로부터 최솟값 16+1=17을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "$\\dfrac{a^2+4}{a}+\\dfrac{b^2+4}{b}$의"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b=16$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "$=16+4\\cdot\\dfrac{a+b}{ab}$,",
+            "evidenceType": "IMPLIED",
+            "justification": "1/a+1/b를 통분하여 a+b=16을 대입"
+          },
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "산술·기하평균에서\n$(a+b)^2\\ge4ab$,",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a>0,\\;b>0$이고"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_572448e2b7308e07bc79535006e390fe7f80ece20b1af698bc0963bfc2572ffe",
+      "format": "단일 정답",
+      "decisiveStep": "음영 영역이 C와 A, B의 여집합의 교집합의 합집합인 C u (A^c n B^c)임을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U$의"
+          },
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "세 부분집합 $A,B,C$에 대하여"
+          },
+          {
+            "term": "벤다이어그램",
+            "src": "stem",
+            "quote": "아래 벤다이어그램의 어두운 부분을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "어두운 부분을 나타내는 집합은?"
+          },
+          {
+            "term": "판정",
+            "src": "choices",
+            "quote": "$C\\cup(A^c\\cap B^c)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "여집합",
+            "src": "solution",
+            "quote": "$A,B$ 모두에 속하지 않는 부분은 $A^c\\cap B^c$로 나타낸다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합집합",
+            "src": "solution",
+            "quote": "따라서 음영 부분은 $C\\cup(A^c\\cap B^c)$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_1c2e38046460ef0451100cc62be5a86e84d9236ef68f1f42d64b9e57ce3763a7",
+      "format": "단일 정답",
+      "decisiveStep": "역함수 합성식을 전개하여 (-2x+7)/3을 얻고 a=-2/3, b=7/3으로부터 |a|+|b|=3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=2x-3,\\;g(x)=-3x+4$에 대하여"
+          },
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "$(f^{-1}\\circ(g\\circ f^{-1})^{-1}\\circ f)(x)=ax+b$일 때"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "$|a|+|b|$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$|a|+|b|$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$|a|+|b|$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$f^{-1}(x)=\\dfrac{x+3}{2}$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "합성 순서를 보기 위해 $h=g\\circ f^{-1}$라 놓는다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_56b472b50392d40f4ee1623a7b626273b44591a4ee6851ca2ee8c45369e8a257",
+      "format": "단일 정답",
+      "decisiveStep": "A2 u A4 = A2임을 이용해 A3 n A2 = {6,12,18,24,30}의 원소 합 90을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U=\\{1,2,3,\\cdots,30\\}$의"
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "는 $k$의 배수"
+          },
+          {
+            "term": "교집합",
+            "src": "stem",
+            "quote": "집합 $A_3\\cap(A_2\\cup A_4)$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 원소의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "$A_4$의 원소는 모두 짝수이므로 $A_4\\subseteq A_2$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "공배수",
+            "src": "solution",
+            "quote": "30 이하에서 3과 2의 공배수는 6의 배수이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$k$는 자연수$\\}$라 할 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_19eb10c88e7ec14129fa60c061307412237028930da66451559b74af994977c3",
+      "format": "단일 정답",
+      "decisiveStep": "네 명제의 참·거짓을 판정하여 q=>p 참, p=>q 거짓인 조건 (가), (나), (라) 3개를 센다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "두 조건 $p,q$에 대하여"
+          },
+          {
+            "term": "필요조건",
+            "src": "stem",
+            "quote": "$p$가 $q$이기 위한 필요조건이지만"
+          },
+          {
+            "term": "충분조건",
+            "src": "stem",
+            "quote": "충분조건은 아닌 것의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "아닌 것의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "필요조건",
+            "src": "solution",
+            "quote": "$p$가 $q$의 필요조건이라는 말은 $q\\Rightarrow p$이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "충분조건",
+            "src": "solution",
+            "quote": "충분조건은 아니라는 말은 $p\\Rightarrow q$가 거짓이라는 뜻이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "$x=-1$에서는 $p$만 참이므로 $p\\Rightarrow q$는 거짓이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "충분조건이 성립하지 않음을 보이기 위해 반례 제시"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수이다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_1be16d9653b9040eba2ed834f19d3aaf179209c5b5d4ae1b3f885ffcb8fba8b2",
+      "format": "단일 정답",
+      "decisiveStep": "2의 기여 32와 선택 원소 3,4,5,6의 기여 8*18=144를 합산하여 S(A)의 총합 176을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합이 $U=\\{1,2,3,4,5,6\\}$일 때"
+          },
+          {
+            "term": "원소",
+            "src": "stem",
+            "quote": "집합 $A$의 원소의 합을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$S(A)$의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "각 원소를 넣거나 빼는 선택이 네 번 있어 집합은\n$2^4=16$개이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원소 포함 여부로 부분집합의 개수를 세어 기여도 계산"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "모든 $S(A)$의 합은\n$32+144=176$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "각 원소별 기여 합을 더하여 총합 산출"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_a5abafa22ca64f5d0e8b1fe1c3cee79e6795cf5a3a707e8f233e2ff556024206",
+      "format": "단일 정답",
+      "decisiveStep": "일대일대응을 위해 두 기울기의 부호가 양수로 일치하는 범위 -5/2<a<2에서 정수 4개를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조각함수",
+            "src": "stem",
+            "quote": "f(x)=\\begin{cases}(2-a)x+4 &(x\\ge0)\\\\(2a+5)x+4 &(x<0)\\end{cases}"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수가 존재하도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수 $a$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "두 식의 기울기를 왼쪽과 오른쪽에서 각각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "$2a+5>0$,\n$a>-\\dfrac52$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "기울기 부호 조건에 따른 a의 일차부등식 연립 풀이"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "양의 기울기인 경우 함수는 전체 실수에서 증가하고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $a$의 개수는?"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_d209942b12054ba257a56ccdc19fa34ec3e4697d3624469f25ce96877e3518eb",
+      "format": "단일 정답",
+      "decisiveStep": "각 원소 2^j가 16번씩 곱해짐을 이용하여 지수의 합 k=16*(0+1+2+3+4)=160을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "집합 $A=\\{1,2,4,8,16\\}$의 부분집합 중"
+          },
+          {
+            "term": "공집합",
+            "src": "stem",
+            "quote": "공집합이 아닌 모든 부분집합"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $k$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "상수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "한 부분집합의 원소 곱은 그 부분집합에 포함된 지수의 합을 지수로 갖는 2의 거듭제곱이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "모든 부분집합의 곱에서 지수 $j$의 총기여는 $16j$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "거듭제곱의 곱셈에서 지수 합산 법칙 적용"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_b324c9c86a8ba7e1f90b0dae612fa38f3e2c032ff16dbe09acb447823ea33d68",
+      "format": "단일 정답",
+      "decisiveStep": "R={1}과 Q가 공집합이 아니면 항상 1 in Q임을 증명하여 ㄴ만 항상 옳음을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "양수이고 실수에서 정의된 세 조건"
+          },
+          {
+            "term": "진리집합",
+            "src": "stem",
+            "quote": "진리집합을 각각 $P,Q,R$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "항상 옳은 것만을 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "진리집합",
+            "src": "solution",
+            "quote": "$(x-1)^2=0,\\quad x=1$이다.\n따라서 $R=\\{1\\}$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "ㄱ. $a=10,\\;b=3,\\;c=1$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "반례를 찾아 ㄱ과 ㄷ이 거짓임을 판정"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a,b,c$가 양수이고"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수에서 정의된"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_fb6a921441d8383b5e81fd491d8088b3ed5bbb9b59be277412223f7a98dde78d",
+      "format": "단일 정답",
+      "decisiveStep": "후보 {2,4,5,6,8,10} 중 합 11인 쌍 (5,6)에서 큰 수 6을 택해 B의 원소 합 최댓값 30을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U=\\{x\\mid x\\le10$인"
+          },
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "두 부분집합 $A,B$가"
+          },
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "$10$과 서로소인 모든"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "원소의 합의 최댓값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "차집합",
+            "src": "solution",
+            "quote": "$U\\setminus A=\\{2,4,5,6,8,10\\}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "AnB가 공집합이므로 B의 후보 원소를 차집합으로 도출"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "합을 최대로 하려면 더 큰 $6$을 남기고",
+            "evidenceType": "IMPLIED",
+            "justification": "합이 11인 쌍 중 큰 원소를 선택하여 총합 최대화"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수$\\}$의"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "임의의 서로 다른 두 원소의"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_19377a2a062024af7e6ac5949922e344828cb2de06a197bbd5ddec0360a3e41f",
+      "format": "단일 정답",
+      "decisiveStep": "치역 [0, (2a+3)^2]에 자연수가 100개 이상 들어가는 부등식 (2a+3)^2>=100에서 자연수 a의 최솟값 4를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "정의역을 $X=\\{x\\mid -a-2\\le x\\le a\\}$로"
+          },
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "합성함수 $g\\circ f$의"
+          },
+          {
+            "term": "치역",
+            "src": "stem",
+            "quote": "치역을 $A$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $a$의 최솟값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=f(x)=2x+3$이라 놓으면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "합성함수는\n$(g\\circ f)(x)=g(t)=(t-2)^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "t에 대한 이차함수의 꼭짓점과 구간 양 끝점에서의 최댓값 분석"
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "$2a+3\\ge10$,\n$a\\ge\\dfrac72$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "조건을 만족하는 자연수 a의 일차부등식 풀이"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $a$의 최솟값을"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_ccdfee28dff22780d09ac577cf9ff43933035c34e574389ace7512be8a1aca9f",
+      "format": "서술",
+      "decisiveStep": "넓이 관계 5d1+12d2+13d3=60과 완전제곱합 전개로부터 식의 최솟값 120을 도출한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "인 직각삼각형의 내부의 점 $P$에서"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "내린 수선의 발을 각각 $H_1,H_2,H_3$이라"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "점 $P$가 삼각형 내부에 있으므로 세 부분삼각형의 넓이를 더하면 전체 넓이가 된다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$5(d_1-2)^2+12(d_2-2)^2+13(d_3-2)^2\\ge0$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱합 전개를 통한 2차 다항식의 최솟값 산출"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리에서\n$CA=\\sqrt{5^2+12^2}=\\sqrt{169}=13$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_dc253e89f23bac6fcb91d52cc91e129a98a6498bf9c7a1ea1ba3a7e8e66fc407",
+      "format": "서술",
+      "decisiveStep": "f(f(x))=x로부터 f^-1=f임을 확인하고 f(1/3)=3을 대입하여 2g(3)=4, g(3)=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조각함수",
+            "src": "stem",
+            "quote": "f(x)=\\begin{cases}-3x+4 &(x<1)\\\\-\\dfrac13x+\\dfrac43 &(x\\ge1)\\end{cases}"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "$g(f^{-1}(x))+g(f(x))=\\dfrac32x+\\dfrac72$를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "$g(3)=2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "함수 g에 3을 대입한 함숫값 계산"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$g(3)$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "따라서 모든 실수에서 $f(f(x))=x$이고 $f^{-1}=f$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "자신과의 합성함수가 항등함수가 됨을 통해 역함수 관계 확인"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=\\dfrac13$이면\n$f\\left(\\dfrac13\\right)=-3\\cdot\\dfrac13+4=3$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여"
+          },
+          {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여 $g(f^{-1}(x))+g(f(x))=\\dfrac32x+\\dfrac72$를 만족시킬 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

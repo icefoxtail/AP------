@@ -1,0 +1,899 @@
+{
+  "schemaVersion": 1,
+  "judge": "claude-haiku-4s",
+  "dictionaryVersion": "2026-04-14",
+  "createdAt": "2026-11-15T16:54:20.164Z",
+  "sourceArchiveFile": "original/high/h2/2mid/19_매산여고_2학기_중간_고2_확률과통계.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "두 눈의 합 X가 2 또는 3인 순서쌍 (1,1), (1,2), (2,1) 3가지를 전체 36으로 나누어 확률 1/12를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "두 눈의 수의 합을 확률변수 $X$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(X<4)$은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "합이 $2$인 경우는",
+            "evidenceType": "IMPLIED",
+            "justification": "두 눈의 합이 2 또는 3인 순서쌍의 개수를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$P(X<4)$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "확률질량함수의 모든 확률의 합 (2a+8)/10 = 1을 풀어 상수 a=1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률질량함수",
+            "src": "stem",
+            "quote": "이산확률변수 $X$의 확률질량함수가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "확률질량함수의 모든 확률의 합은 $1$입니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$a$는 상수이다"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "삼각형 전체 넓이 1/2 * 8 * h = 1에서 h=1/4를 구하고, 사다리꼴 넓이 1/2 * (1/12 + 1/4) * 2 = 1/3을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률밀도함수",
+            "src": "stem",
+            "quote": "확률변수 $X$의 확률밀도함수 $f(x)$의 그래프가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(1 \\le X \\le 3)$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "전체 넓이는 $1$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "확률밀도함수 그래프와 x축 사이의 영역 넓이로 확률을 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$0 \\le x \\le 8$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "확률분포표에서 E(X)=2를 구하고 E(2X+1) = 2E(X)+1 = 5를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률분포표",
+            "src": "stem",
+            "quote": "이산확률변수 $X$의 확률분포를 표로 나타내면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "$E(2X+1)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "기댓값의 선형성으로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "이산확률변수",
+            "src": "stem",
+            "quote": "이산확률변수 $X$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "확률의 합 30a^2+3a+2/5=1에서 양수 a=1/10을 구하고 P(1<=X<=2)=10a^2+3a=4/10을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률분포표",
+            "src": "stem",
+            "quote": "확률변수 $X$의 확률분포를 표로 나타내면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(1 \\le X \\le 2)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "인수분해하면 $(10a-1)(5a+1)=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "확률의 총합이 1이라는 조건으로 a에 대한 이차방정식을 풀이"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$a$는 상수이다"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "기댓값의 선형성 ㄱ, 이항분포 분산 공식 ㄴ, 연속확률변수 한 점의 확률 ㄷ의 참을 판정하여 ㄱ, ㄴ, ㄷ을 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "아래 내용 중에서 참인 것만을 모두 고른 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "참인 것만을 모두 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "정규분포 $N(m,\\sigma^2)$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "이항분포 $\\mathrm{B}(30, p)$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "m=100, σ=10에서 Z=(X-100)/10으로 표준화하여 P(-2<=Z<=1) = 0.48 + 0.35 = 0.83을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $\\mathrm{N}(100, 100)$을 따를 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(80 \\le X \\le 110)$의 확률을"
+          }
+        ],
+        "method": [
+          {
+            "term": "표준화",
+            "src": "solution",
+            "quote": "$Z=\\frac{X-100}{10}$으로 표준화하면",
+            "evidenceType": "IMPLIED",
+            "justification": "정규분포 확률변수를 표준화하여 표준정규분포 확률을 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $\\mathrm{N}(100, 100)$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "각 동전에서 받는 금액의 기댓값 50, 50, 25를 선형성에 의해 합산하여 125원을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "받을 수 있는 금액을 확률변수 $X$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "금액 $X$의 기댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "기댓값의 선형성으로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "시행",
+            "src": "solution",
+            "quote": "공정한 동전의 각 금액 기댓값은"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "X ~ B(50, 1/5)에서 E(X)=10, V(X)=8이므로 E(X^2) = V(X)+{E(X)}^2 = 108을 얻고 E(X^2)-E(X) = 98을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "확률변수 $X$의 확률질량함수가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$E(X^2)-E(X)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "$V(X)=E(X^2)-\\{E(X)\\}^2$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "주어진 확률질량함수는 $X\\sim B(50,\\frac15)$입니다"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "X ~ B(36, 1/3)에서 V(X) = 36 * (1/3) * (2/3) = 8을 구하고 V(2X+5) = 4V(X) = 32를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "다시 넣는 시행을 36번 반복할 때, 흰 구슬이 나오는 횟수를 확률변수 $X$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "확률변수 $2X+5$의 분산은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "분산의 변환 공식",
+            "evidenceType": "IMPLIED",
+            "justification": "확률변수의 선형변환 분산 공식 V(aX+b)=a^2V(X) 적용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "복원추출",
+            "src": "stem",
+            "quote": "확인하고 다시 넣는 시행"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "P(2<=X<=2)=0에서 a=1/2를 얻고, x=2 대칭성에 의해 P(1<=X<=3) = 2*P(1<=X<=2) = 2*(1/2-1/4) = 1/2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률밀도함수",
+            "src": "stem",
+            "quote": "확률변수 $X$의 확률밀도함수 $f(x)$가 아래 조건을 만족한다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(1 \\le X \\le 3)$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "stem",
+            "quote": "$f(2+x)=f(2-x)$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$0 \\le x \\le 4$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "X ~ N(25, 8^2)에서 P(X<=37) = P(Z<=(37-25)/8) = P(Z<=1.5) = 0.5 + 0.4332 = 0.9332를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "평균이 25분, 표준편차가 8분인 정규분포"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "지각하지 않고 등교할 확률을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "표준화",
+            "src": "solution",
+            "quote": "표준화하면 $Z=\\frac{X-25}{8}$",
+            "evidenceType": "IMPLIED",
+            "justification": "정규분포 확률변수를 표준정규분포로 표준화하여 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "지각하지 않을 조건은 $X\\le37$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "대칭성에 의해 P(X<=m-3σ)=0.0013이므로 P(X>=m-3σ)=0.9987이다. 따라서 k = 40 - 3*5 = 25를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $\\mathrm{N}(m, \\sigma^2)$을 따르고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $k$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "정규분포는 평균 $m$을 중심으로 대칭입니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "평균 $m$을 중심으로 대칭"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "X ~ B(720, 1/6)을 N(120, 10^2)로 근사하여 P(110<=X<=125) = P(-1<=Z<=0.5) = 0.3413 + 0.1915 = 0.5328을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "자유투를 720번 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "성공시킬 확률을 표준정규분포표를 이용하여 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "정규분포로 근사합니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "자유투를 하는 시행은 독립시행이다"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "Y=2X+1에서 E(Y)=21, σ_Y=4를 구하고 P(Y<=25) = P(Z<=(25-21)/4) = P(Z<=1.0) = 0.5 + 0.3413 = 0.8413을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $\\mathrm{N}(10, 4)$을 따른다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(Y \\le 25)$을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "평균은 $E(Y)=2\\cdot10+1=21$",
+            "evidenceType": "IMPLIED",
+            "justification": "확률변수의 선형변환으로 기댓값과 표준편차를 구하여 표준화"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "정규분포 $\\mathrm{N}(10, 4)$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "X ~ B(1600, 0.8)을 N(1280, 16^2)로 근사하여 P(Z>=(k-1280)/16) = 0.84에서 (k-1280)/16 = -1, 즉 k=1264를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "1600명을 대상으로 전화조사를 하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$k$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "정규근사를 사용합니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$k$명 이상이 응답할 확률이 0.84"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "미등록자 수 Y ~ B(100, 0.2)을 N(20, 4^2)로 근사하여 14명 이상 미등록할 확률 P(Y>=14) = P(Z>=-1.5) = 0.5 + 0.43 = 0.93을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "최초 합격자는 100명이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "매산이가 이 회사에 입사하게 될 확률을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "정규분포",
+            "src": "solution",
+            "quote": "정규근사를 준비합니다",
+            "evidenceType": "IMPLIED",
+            "justification": "미등록자 수의 이항분포를 정규분포로 근사하여 확률을 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "14번째 예비 합격 후보"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "P(Z<=3/a) = P(Z>=-6/b)에서 3/a = 6/b, 즉 b=2a를 얻고, 2a^2=4에서 a^2=2, b^2=8을 구해 a^2+b^2 = 10을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "평균이 10, 표준편차가 $a$인 정규분포"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a^2+b^2$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입법",
+            "src": "solution",
+            "quote": "$b=2a$를 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a>0$, $b>0$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "X = 100A+10B+C에서 E(X) = 111 * 3.5 = 388.5를 구하고 E(2X+3) = 2*388.5 + 3 = 780을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "세 자리 자연수를 확률변수 $X$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "$E(2X+3)$값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "기댓값의 선형성으로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "세 자리 자연수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "소문항 묶음",
+      "decisiveStep": "P(X=0)=3/10, P(X=1)=6/10, P(X=2)=1/10의 분포표를 세우고 E(X)=4/5, V(X)=18/50에서 표준편차 3/5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "나오는 검은 공의 개수를 확률변수 $X$라고 하자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "(3) 표준편차"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률분포표",
+            "src": "stem",
+            "quote": "(2) $X$의 확률분포표",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "2개의 공을 동시에 꺼낼 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "np=6, E(X^2)=40에서 V(X)=40-36=4를 얻고 np(1-p)=6(1-p)=4에서 p=1/3, n=18을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "이항분포 $\\mathrm{B}(n, p)$를 따르고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$p$와 $n$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "분산 공식에서",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "$E(X)=np$, $V(X)=np(1-p)$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "불량률 p = 2*0.02 = 0.04를 구하고 불량품 수 X ~ B(3750, 0.04)을 N(150, 12^2)로 근사하여 P(X<=120) = P(Z<=-2.5) = 0.5 - 0.49 = 0.01을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정규분포",
+            "src": "stem",
+            "quote": "평균이 200g, 표준편차가 10g인 정규분포"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "불량품의 개수가 120개 이하일 확률을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "하루 불량품 수 $Y\\sim B(3750,0.04)$",
+            "evidenceType": "IMPLIED",
+            "justification": "불량률을 구한 뒤 제품 수에 대한 이항분포를 정규근사하여 확률을 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "제품별 불량 여부는 서로 독립이라고 가정한다"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

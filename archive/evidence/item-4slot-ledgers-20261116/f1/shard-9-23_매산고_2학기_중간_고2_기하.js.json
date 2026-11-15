@@ -1,0 +1,1152 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-16T00:18:00+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/23_매산고_2학기_중간_고2_기하.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "포물선 y^2=8x에 점 (1/2, a)를 대입하여 a^2=4로부터 양수 a=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "초점",
+            "src": "stem",
+            "quote": "초점이 $(2,0)$이고"
+          },
+          {
+            "term": "준선",
+            "src": "stem",
+            "quote": "준선이 $x=-2$인"
+          },
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선이 점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "포물선",
+            "src": "solution",
+            "quote": "포물선의 방정식은 $y^2=4px$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "$a^2=8\\times\\dfrac12=4$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "지나는 점의 좌표를 대입하여 a에 대한 이차방정식을 푼다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "장축 길이 a=2*5=10과 단축 길이 b=2*4=8을 구해 a+b=18을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\frac{x^2}{25}+\\frac{y^2}{16}=1$의"
+          },
+          {
+            "term": "장축",
+            "src": "stem",
+            "quote": "장축과 단축의 길이를"
+          },
+          {
+            "term": "단축",
+            "src": "stem",
+            "quote": "단축의 길이를 각각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "타원",
+            "src": "solution",
+            "quote": "타원 $\\dfrac{x^2}{A}+\\dfrac{y^2}{B}=1$에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "장축",
+            "src": "solution",
+            "quote": "장축의 길이는 $a=2\\times5=10$이고,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "단축",
+            "src": "solution",
+            "quote": "단축의 길이는 $b=2\\times4=8$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "기울기 m=-2와 p=2에서 포물선 접선 공식 y=-2x+2/(-2)=-2x-1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "$y^2=8x$에 접하고"
+          },
+          {
+            "term": "직선의방정식",
+            "src": "stem",
+            "quote": "직선의 방정식은?"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$2x+y-3=0$과 평행한"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직선의방정식",
+            "src": "stem",
+            "quote": "직선의 방정식은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의방정식",
+            "src": "solution",
+            "quote": "기울기가 $m$인 직선은 $y=mx+\\dfrac pm$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "평행하므로 기울기가 $-2$인",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기는 $-2$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$2x+y-3=0$과 평행한"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "음함수 미분 y'=-16x/(9y)에 점 (3/2, 2*sqrt(3))을 대입하여 접선 기울기 -4*sqrt(3)/9를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\frac{x^2}{9}+\\frac{y^2}{16}=1$ 위의"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선의 기울기는?"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "위의 점 $(\\frac32,2\\sqrt3)$에서의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "접선의 기울기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "음함수미분법",
+            "src": "solution",
+            "quote": "음함수의 미분으로 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "접선의 기울기는 음함수의",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "타원",
+            "src": "solution",
+            "quote": "타원 위의 점에서의",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "벡터 덧셈 AB+AF=(-1,0)이 중심에서 꼭짓점 D로 향하는 벡터 OD와 같음을 확인한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정육각형",
+            "src": "stem",
+            "quote": "정육각형 $ABCDEF$의 중심을"
+          },
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "시점과 종점으로 하는 벡터 중"
+          }
+        ],
+        "goal": [
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "$\\overrightarrow{AB}+\\overrightarrow{AF}$와 같은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "벡터",
+            "src": "solution",
+            "quote": "두 벡터를 더한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정육각형",
+            "src": "solution",
+            "quote": "정육각형 $ABCDEF$의 중심이",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "쌍곡선 초점거리 c^2=25와 타원 장축 a=10에서 b^2=100-25=75를 정해 a^2+b^2=175를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $\\frac{x^2}{16}-\\frac{y^2}{9}=1$과"
+          },
+          {
+            "term": "초점",
+            "src": "stem",
+            "quote": "초점이 일치하는"
+          },
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$의"
+          },
+          {
+            "term": "장축",
+            "src": "stem",
+            "quote": "장축 길이가 $20$일 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a^2+b^2$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "쌍곡선",
+            "src": "solution",
+            "quote": "쌍곡선에서 $c^2=16+9=25$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "타원",
+            "src": "solution",
+            "quote": "$a^2-b^2=25$에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "초점",
+            "src": "solution",
+            "quote": "초점이 같으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "쌍곡선 정의 AF'-AF=6, BF'-BF=6의 합에서 AF+BF=8을 얻어 선분 AB의 길이 8을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "초점",
+            "src": "stem",
+            "quote": "초점으로 하고"
+          },
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "주축 길이가 $6$인 쌍곡선에서"
+          },
+          {
+            "term": "주축",
+            "src": "stem",
+            "quote": "주축 길이가 $6$인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$AB$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "쌍곡선",
+            "src": "solution",
+            "quote": "쌍곡선의 정의에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "주축",
+            "src": "solution",
+            "quote": "주축의 길이와 같다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "직선을 대입한 이차방정식 15x^2+16kx+4k^2+8=0의 판별식 D/4>0에서 k^2>30이므로 자연수 최솟값 6을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $x^2-4y^2=8$과"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=2x+k$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $k$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 양수이면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "이차방정식의 판별식이",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $k$의 최솟값은?"
+          },
+          {
+            "term": "서로다른",
+            "src": "stem",
+            "quote": "서로 다른 두 점에서"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "직선 AB와 평행한 기울기 -3/5인 두 접선 중 절편 차가 더 큰 접선 y=-3/5x-3*sqrt(2)를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\frac{x^2}{25}+\\frac{y^2}{9}=1$의"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점 $A(5,0)$,"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $ABP$의 넓이가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "접선의방정식",
+            "src": "stem",
+            "quote": "접선의 방정식은?"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "넓이가 최대일 때,"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의방정식",
+            "src": "solution",
+            "quote": "기울기가 $m$인 직선은",
+            "evidenceType": "IMPLIED",
+            "justification": "기울기 공식으로 타원에 접하는 접선의 방정식을 구한다."
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "직선 $AB$와 평행한 두 접선을",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형 $ABP$의 넓이가 최대이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "접선 공식 y=mx-1/m에 (3,2)를 대입해 얻은 3m^2-2m-1=0에서 근과 계수의 관계로 기울기의 곱 -1/3을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2=-4x$에"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "그은 두 접선의 기울기의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "기울기의 곱은?"
+          },
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "기울기의 곱은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의방정식",
+            "src": "solution",
+            "quote": "기울기가 $m$인 직선은 $y=mx+\\dfrac pm$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "평행조건 k*a+3*b=t(2*a+b)에서 t=3, k=2t=6을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "두 벡터 $\\vec a,\\vec b$에 대하여"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "서로 평행하도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "실수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "두 벡터가 평행하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "실수배",
+            "src": "solution",
+            "quote": "한 벡터가 다른 벡터의 실수배이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 값은?"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "서로 평행하지 않은"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "좌표 성분으로 a-b+c-d=(-2,4)를 구하고 벡터의 크기 sqrt((-2)^2+4^2)=2*sqrt(5)를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$에서"
+          },
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "$\\overrightarrow{AB}=\\vec a$,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "벡터의크기",
+            "src": "stem",
+            "quote": "$|\\vec a-\\vec b+\\vec c-\\vec d|$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "네 벡터를 성분으로 나타낸다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "벡터의크기",
+            "src": "solution",
+            "quote": "|\\vec a-\\vec b+\\vec c-\\vec d|=",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "포물선 정의로 PQ=8, 높이 HH'=sqrt(8^2-4^2)=4*sqrt(3)을 구하고 사다리꼴 넓이 (1/2)*(2+6)*4*sqrt(3)=16*sqrt(3)을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선의 초점 $F$를 지나는"
+          },
+          {
+            "term": "초점",
+            "src": "stem",
+            "quote": "초점 $F$를 지나는"
+          },
+          {
+            "term": "준선",
+            "src": "stem",
+            "quote": "준선에 내린 수선의"
+          },
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "사다리꼴 $PHH'Q$의 넓이는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "사다리꼴 $PHH'Q$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "포물선",
+            "src": "solution",
+            "quote": "포물선의 정의에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형에서 준선과 나란한 방향의 거리는",
+            "evidenceType": "IMPLIED",
+            "justification": "두 점의 거리와 빗변으로 직각삼각형에서 높이를 구한다."
+          },
+          {
+            "term": "사다리꼴",
+            "src": "solution",
+            "quote": "사다리꼴 $PHH'Q$의 넓이는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "decisiveStep": "쌍곡선의 주축 길이 2a=8(ㄱ 참), 점근선 기울기 곱 -9/16(ㄴ 참), 점 (4,0)에서 사각형 넓이 192/25!=144/25(ㄷ 거짓)으로 ㄱ, ㄴ을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $\\frac{x^2}{16}-\\frac{y^2}{9}=1$ 위의"
+          },
+          {
+            "term": "점근선",
+            "src": "stem",
+            "quote": "두 점근선에 내린 수선의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "참",
+            "src": "solution",
+            "quote": "그러므로 옳은 것은 ㄱ, ㄴ이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "보기 ㄱ, ㄴ, ㄷ의 참 거짓을 판정한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "주축",
+            "src": "solution",
+            "quote": "주축의 길이는 $2a=8$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "점근선은 $y=\\dfrac34x$와",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "그 넓이는 $\\dfrac12\\times4\\times\\dfrac{96}{25}=\\dfrac{192}{25}$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "접선 y=x/2+4의 x절편 Q(-8,0)과 H(-2,8)로부터 네 변의 길이가 모두 10임을 확인해 둘레 40을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2=8x$의"
+          },
+          {
+            "term": "초점",
+            "src": "stem",
+            "quote": "초점을 $F$,"
+          },
+          {
+            "term": "준선",
+            "src": "stem",
+            "quote": "준선을 $l$이라 하자."
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선이 $x$축과 만나는 점을"
+          },
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형 $HQFP$의 둘레는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "사각형 $HQFP$의 둘레는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의방정식",
+            "src": "solution",
+            "quote": "점 $P(8,8)$에서의 접선은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "\\sqrt{(-2+8)^2+8^2}=\\sqrt{36+64}=10",
+            "evidenceType": "IMPLIED",
+            "justification": "좌표평면 위의 두 점 사이의 거리 공식으로 네 변의 길이를 계산한다."
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "사각형 $HQFP$의 둘레는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "접선 공식 8x/4-5sqrt(3)y/5=1을 정리하여 접선의 방정식 2x-sqrt(3)y=1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $\\frac{x^2}{4}-\\frac{y^2}{5}=1$ 위의"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "위의 점 $(8,5\\sqrt3)$에서의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "접선의방정식",
+            "src": "stem",
+            "quote": "접선의 방정식을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의방정식",
+            "src": "solution",
+            "quote": "접선의 방정식은 $\\dfrac{8x}4-\\dfrac{5\\sqrt3\\,y}5=1$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "쌍곡선",
+            "src": "solution",
+            "quote": "쌍곡선 $\\dfrac{x^2}{a^2}-\\dfrac{y^2}{b^2}=1$ 위의",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "초점 p-2=q+1에서 p-q=3을 얻고 두 준선 x=p+2, x=q-1 사이의 거리 (p-q)+3=6을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "두 포물선 $y^2=-8(x-p)$와"
+          },
+          {
+            "term": "초점",
+            "src": "stem",
+            "quote": "초점이 일치할 때,"
+          },
+          {
+            "term": "준선",
+            "src": "stem",
+            "quote": "두 포물선의 준선 사이의 거리를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "준선 사이의 거리를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "$x$축 방향으로 $k$만큼 평행이동한 것이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "초점",
+            "src": "solution",
+            "quote": "초점이 일치하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "준선",
+            "src": "solution",
+            "quote": "두 포물선의 초점과 준선을 각각 구하고,",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "sin theta=4/5에서 삼각형 ABP의 넓이 S=(1/2)*3*3*(4/5)=18/5를 구하고 5S=18을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "$\\angle B=90^\\circ$인 삼각형 $ABC$의"
+          },
+          {
+            "term": "벡터의크기",
+            "src": "stem",
+            "quote": "$|\\overrightarrow{AB}|=|\\overrightarrow{AP}|$이다."
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $ABP$의 넓이를 $S$라"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$5S$의 값을 구하시오."
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $ABP$의 넓이를 $S$라 할 때,"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\sin\\theta=\\dfrac{\\overline{BC}}{\\overline{AC}}=\\dfrac45",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "S=\\dfrac12\\times\\overline{AB}\\times\\overline{AP}\\times\\sin\\theta",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "\\overline{AC}=\\sqrt{3^2+4^2}=5",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 두 변의 길이로부터 빗변의 길이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle B=90^\\circ$인"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "중점 조건으로 벡터들을 a, b로 표현하여 합이 3a-3b임을 보이고 m=3, n=-3에서 m-n=6을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "반지름이 같은 네 원"
+          },
+          {
+            "term": "벡터",
+            "src": "stem",
+            "quote": "$\\overrightarrow{O_1A}=\\vec a$,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$m-n$을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "선분의 중점이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차결합",
+            "src": "solution",
+            "quote": "-2\\vec b+(-\\vec b+2\\vec a)+\\vec a=3\\vec a-3\\vec b",
+            "evidenceType": "IMPLIED",
+            "justification": "기저 벡터의 일차결합으로 벡터 합을 전개하여 계수를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "기울기 곱 -(b^2+1)/b^2>=-2에서 1<=|b|<=2를 얻고 원 위의 호의 길이 2*(4pi/3)=8pi/3에서 q-p=8-3=5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2+y^2=4$ 위에 있고,"
+          },
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $x^2-4y^2=4$에"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "그은 두 접선의 기울기의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$q-p$를 구하시오."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "호의 길이를 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원 위에서 조건을 만족하는 호의 길이를 계산한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계를 쓴다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선의방정식",
+            "src": "solution",
+            "quote": "기울기가 $m$인 접선은 $y=mx\\pm\\sqrt{4m^2-1}$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "호의 길이를 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "서로소인 자연수 $p,q$에 대하여"
+          },
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "서로소인 자연수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

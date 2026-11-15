@@ -1,0 +1,931 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "gemini-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-15T22:48:00+09:00",
+ "sourceArchiveFile": "original/high/h2/1final/20_매산고_1학기_기말_고2_확률과통계.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": "qid_v1_22b05010aa512426e287c57c873fb6814af453e4b8b3e5b182e9f3135c56ff4e",
+   "format": "단일 정답",
+   "decisiveStep": "중복조합 5H3=7C3=35와 조합 6C2=15의 합 50을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "중복조합",
+      "src": "stem",
+      "quote": "{}_5\\mathrm{H}_3"
+     },
+     {
+      "term": "조합",
+      "src": "stem",
+      "quote": "{}_6\\mathrm{C}_2$의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "중복조합",
+      "src": "solution",
+      "quote": "중복조합과 조합을 각각 계산합니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "{}_5\\mathrm H_3={}_{5+3-1}\\mathrm C_3={}_7\\mathrm C_3",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": "qid_v1_a1c4616c7fa1fd4ad4e15bba379f6eb169128c2361ae317f60221398c321bfe8",
+   "format": "단일 정답",
+   "decisiveStep": "이항정리 일반항에서 x^4의 계수 6C4*(-2)^4=15*16=240을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "다항식",
+      "src": "stem",
+      "quote": "$(1-2x)^6$의 전개식에서"
+     }
+    ],
+    "goal": [
+     {
+      "term": "계수",
+      "src": "stem",
+      "quote": "$x^4$의 계수를 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "이항정리",
+      "src": "solution",
+      "quote": "이항정리에서 $x^4$는 여섯 인수 중",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일반항",
+      "src": "solution",
+      "quote": "일반항은 $${}_6\\mathrm C_k(-2x)^k,$$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": "qid_v1_d1fc2b2e3a745a168e776fe11dd3ca48ab217d48e015ae30fd14c3c70250e5d3",
+   "format": "단일 정답",
+   "decisiveStep": "확률의 덧셈정리 P(A U B)=P(A)+P(B)-P(A 교집합 B)로부터 1/6을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "사건",
+      "src": "stem",
+      "quote": "두 사건 $A, B$에 대하여"
+     },
+     {
+      "term": "합집합",
+      "src": "stem",
+      "quote": "P(A \\cup B)=\\frac{2}{3}$일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "$P(A \\cap B)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "합사건의 확률을 구할 때 교집합이 중복되므로 한 번 빼야 합니다",
+      "evidenceType": "IMPLIED",
+      "justification": "두 사건의 합사건 확률에 관한 덧셈정리를 적용함"
+     },
+     {
+      "term": "교집합",
+      "src": "solution",
+      "quote": "P(A\\cup B)=P(A)+P(B)-P(A\\cap B)",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": "qid_v1_9ff876141540fff67a21a9face94fa736b2e455b52b28292dc80984965bd59c4",
+   "format": "단일 정답",
+   "decisiveStep": "백의 자리 3가지, 십의 자리 4가지, 일의 자리 4가지의 곱 48개를 센다.",
+   "slots": {
+    "given": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "세 자리 자연수의 개수는?"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "세 자리 자연수의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "곱의법칙",
+      "src": "solution",
+      "quote": "중복이 허용되므로 곱의 법칙을 쓰면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "중복순열",
+      "src": "solution",
+      "quote": "3\\times4\\times4=\\boxed{48}",
+      "evidenceType": "IMPLIED",
+      "justification": "중복을 허용하여 자릿수를 결정하는 중복순열 원리를 사용함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "중복허용",
+      "src": "stem",
+      "quote": "중복을 허용하여 3개를 뽑아"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": "qid_v1_823aded9d853cbbf416ca4824be5bc9594d688cfa4503c60cd7b7b808e278ff2",
+   "format": "단일 정답",
+   "decisiveStep": "일대일함수의 개수 n=5P4=120과 g(a)=1인 함수의 개수 m=5^3=125에서 n/m=24/25를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "집합",
+      "src": "stem",
+      "quote": "두 집합 $X=\\{a, b, c, d\\}$,"
+     },
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "$X$에서 $Y$로의 일대일 함수 $f$의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$\\frac{n}{m}$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "일대일함수",
+      "src": "solution",
+      "quote": "일대일 함수는 서로 다른 네 원소의",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "순열",
+      "src": "solution",
+      "quote": "n={}_5\\mathrm P_4=5\\times4\\times3\\times2=120",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "중복순열",
+      "src": "solution",
+      "quote": "m=1\\times5^3=125",
+      "evidenceType": "IMPLIED",
+      "justification": "함숫값의 독립적인 선택 경우를 중복순열로 계산함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": "qid_v1_6ffb5d6558a0fa07eac54b4c4c0c960f3640196cad67b6d058547bd38b84e769",
+   "format": "단일 정답",
+   "decisiveStep": "불량품일 조건부확률 공식으로 0.009/0.017=9/17을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "사건",
+      "src": "solution",
+      "quote": "A기계 생산품일 확률이므로"
+     }
+    ],
+    "goal": [
+     {
+      "term": "조건부확률",
+      "src": "solution",
+      "quote": "조건부확률을 씁니다"
+     }
+    ],
+    "method": [
+     {
+      "term": "조건부확률",
+      "src": "solution",
+      "quote": "조건부확률을 씁니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률의곱셈정리",
+      "src": "solution",
+      "quote": "P(A\\cap D)=0.60\\times0.015=0.009",
+      "evidenceType": "IMPLIED",
+      "justification": "원인별 사전확률과 불량률의 곱으로 교사건 확률을 구함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": "qid_v1_5460791f058d735bc6b46a9dd69372e7a1d6395ca0d3b2c1578d8f33bda5105d",
+   "format": "단일 정답",
+   "decisiveStep": "원순열로 네 부서 묶음 배치 3!=6가지와 각 모서리 2^4=16가지의 곱 96을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정사각형",
+      "src": "stem",
+      "quote": "정사각형 모양의 탁자에 앉아"
+     }
+    ],
+    "goal": [
+     {
+      "term": "경우의수",
+      "src": "stem",
+      "quote": "경우의 수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "원순열",
+      "src": "solution",
+      "quote": "회전 동치와 부서별 자리 교환을",
+      "evidenceType": "IMPLIED",
+      "justification": "탁자의 회전에 따른 원순열 배치를 계산함"
+     },
+     {
+      "term": "곱의법칙",
+      "src": "solution",
+      "quote": "6\\times16=\\boxed{96}",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": "qid_v1_bae857ed03ee6110cd42412c5c1fed2f33810b837caa9fcc5b61b9d2492b12dd",
+   "format": "단일 정답",
+   "decisiveStep": "sin a와 cos b가 같은 부호가 되는 경우의 수 4*3+1*1=13을 전체 36으로 나누어 13/36을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "다음 함수 $f(x)=\\sin x$와"
+     },
+     {
+      "term": "삼각함수",
+      "src": "solution",
+      "quote": "곱 $\\sin a\\cos b$가 양수가 되려면"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "양의 실수가 되는 확률은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "두 값이 모두 양수이거나 모두 음수여야 하며",
+      "evidenceType": "IMPLIED",
+      "justification": "함숫값 부호의 조합에 따라 경우를 나누어 셈"
+     },
+     {
+      "term": "수학적확률",
+      "src": "solution",
+      "quote": "전체는 $6^2=36$개입니다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": "qid_v1_cf51cf2b72322b32cf54fc59eabb3169571fc5bc7838584416bc452312306f37",
+   "format": "단일 정답",
+   "decisiveStep": "앞면일 때의 독립시행 확률 1/2과 뒷면일 때의 확률 26/32의 평균 21/32를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "소수",
+      "src": "stem",
+      "quote": "소수의 눈이 적어도 2번 나올"
+     },
+     {
+      "term": "시행",
+      "src": "solution",
+      "quote": "두 시행 길이의 조건부 확률을"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "소수의 눈이 적어도 2번 나올 확률은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "독립시행",
+      "src": "solution",
+      "quote": "두 시행 길이의 조건부 확률을",
+      "evidenceType": "IMPLIED",
+      "justification": "각각의 시행 횟수에 대한 독립시행의 확률을 계산함"
+     },
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "여사건(0번 또는 1번)을 빼면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "P=\\frac12\\cdot\\frac12+\\frac12\\cdot\\frac{26}{32}",
+      "evidenceType": "IMPLIED",
+      "justification": "동전의 결과에 따라 나누어진 두 확률을 더함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": "qid_v1_e6bd4f6bd93d3587852b8cbe45e917e4b9484d1dc1aaf9aedcad33feac34825c",
+   "format": "단일 정답",
+   "decisiveStep": "독립 조건에서 P(B)=3/5을 구하고 배반사건 합 공식으로 P(A)=4/5-3/5=1/5을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "사건",
+      "src": "stem",
+      "quote": "세 사건 $A, B, C$에 대하여"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "$P(A)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "배반사건",
+      "src": "stem",
+      "quote": "서로 배반사건이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "독립사건",
+      "src": "stem",
+      "quote": "서로 독립이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "P(A\\cup B)=P(A)+P(B)",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": "qid_v1_f3f2cf7d0eba3e173bf99b80870ad4bbe5c063fcca02f13fa99780fba8b838b6",
+   "format": "단일 정답",
+   "decisiveStep": "An=2nCn*(2/9)^n을 대입하여 4C2-8C4+16C8=6-70+12870=12806을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "독립시행",
+      "src": "solution",
+      "quote": "정확히 $n$번 성공하는 확률은"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "독립시행",
+      "src": "solution",
+      "quote": "A_n={}_{2n}C_n\\left(\\frac13\\right)^n\\left(\\frac23\\right)^n",
+      "evidenceType": "IMPLIED",
+      "justification": "독립시행 확률 공식을 세워 An을 표현함"
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "{}_4C_2-{}_8C_4+{}_{16}C_8",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "$n$은 자연수"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": "qid_v1_9fb36f2b4d68828c19a98555b1b911dc3a9a3a143f40bf8b86c2fb247c50ad96",
+   "format": "단일 정답",
+   "decisiveStep": "네 사건쌍의 독립과 배반을 판정하여 3(1)+1-2(-1)+1=7을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "사건",
+      "src": "stem",
+      "quote": "두 사건 $A, B$에 대하여"
+     },
+     {
+      "term": "시행",
+      "src": "stem",
+      "quote": "던지는 시행에서 소수가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "독립사건",
+      "src": "stem",
+      "quote": "(A, B\\text{는 독립사건})",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "배반사건",
+      "src": "stem",
+      "quote": "(A, B\\text{는 배반사건})",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "A^c=\\{1,4,6\\}",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": "qid_v1_0561d596e2d00c0879990719921543b7c2b599909cd5b2a53357b1ced63c37b8",
+   "format": "단일 정답",
+   "decisiveStep": "(x+1)(y+1)<=20인 전체 순서쌍 66개와 x+y=19인 2개로부터 확률 1/33에서 a+b=34를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "부등식 $x+y+xy \\le 19$을"
+     },
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "음 아닌 정수 $x$와 $y$의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "인수분해",
+      "src": "solution",
+      "quote": "(x+1)(y+1)\\le20",
+      "evidenceType": "IMPLIED",
+      "justification": "부등식의 좌변을 인수분해하여 순서쌍 개수를 구함"
+     },
+     {
+      "term": "수학적확률",
+      "src": "solution",
+      "quote": "P=\\frac2{66}=\\frac1{33}",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "순서쌍",
+      "src": "stem",
+      "quote": "순서쌍 $(x, y)$ 중에서 임의로"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": "qid_v1_58a27b54bddbef28e186f8016b940b1aa2ddfea2980e19cf7cd9d8f3121e85f8",
+   "format": "단일 정답",
+   "decisiveStep": "파스칼의 삼각형 관계를 연속 적용하여 16C8을 얻고 ab=128에서 log2(ab)=7을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "중복조합",
+      "src": "stem",
+      "quote": "{}_n\\mathrm{H}_{n-m} +"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$\\log_2 ab$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "파스칼의삼각형",
+      "src": "solution",
+      "quote": "파스칼 관계 ${}_n\\mathrm C_{k-1}+{}_n\\mathrm C_k={}_{n+1}\\mathrm C_k$를",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "로그",
+      "src": "solution",
+      "quote": "\\log_2(ab)=\\boxed7",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "두 자연수 $n, m"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 15,
+   "questionUid": "qid_v1_ed6f858b6bb726ebb995cc85991e19b30f1507c4f912eb9017cf9704f1b961c9",
+   "format": "단일 정답",
+   "decisiveStep": "동전 결과에 따른 조건부확률 3/8과 5/16을 가중 평균하여 P(4|E)=6/11을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "시행",
+      "src": "stem",
+      "quote": "이 시행에서 주사위"
+     },
+     {
+      "term": "짝수",
+      "src": "stem",
+      "quote": "짝수인 횟수와"
+     }
+    ],
+    "goal": [
+     {
+      "term": "조건부확률",
+      "src": "stem",
+      "quote": "주사위를 4번 던졌을 확률은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "조건부확률",
+      "src": "solution",
+      "quote": "조건부확률을 쓰면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "독립시행",
+      "src": "solution",
+      "quote": "P(E\\mid4)=\\frac{{}_4C_2}{2^4}",
+      "evidenceType": "IMPLIED",
+      "justification": "독립시행 공식으로 짝수와 홀수 횟수가 같을 확률을 구함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 16,
+   "questionUid": "qid_v1_3d2aefd8698f8733970111e9fc963185d53507e1c2539b21860bc110799b7674",
+   "format": "단답",
+   "decisiveStep": "3의 배수 16개 중 15의 배수 3개의 비로부터 조건부확률 P(A|B)=3/16을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "사건",
+      "src": "stem",
+      "quote": "5의 배수인 사건을 $A$,"
+     }
+    ],
+    "goal": [
+     {
+      "term": "조건부확률",
+      "src": "stem",
+      "quote": "$P(A|B)$를 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "조건부확률",
+      "src": "solution",
+      "quote": "조건부확률 $P(A\\mid B)$의 분모는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "배수",
+      "src": "solution",
+      "quote": "1부터 50까지 3의 배수는",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": "qid_v1_6202e6e112c8ca03b302a776700e9dfad77d490ecf96d9a114b3c76978509e91",
+   "format": "단답",
+   "decisiveStep": "독립인 두 학생이 모두 틀릴 확률 0.4*0.3=0.12의 여사건으로 1-0.12=0.88을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "사건",
+      "src": "solution",
+      "quote": "정답을 맞히는 사건을 $A$,"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "적어도 한 학생이 정답을 고를 확률을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "독립사건",
+      "src": "solution",
+      "quote": "두 사건은 서로 독립이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "여사건은 두 학생 모두 틀리는",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 18,
+   "questionUid": "qid_v1_ed1dd3e268be47d8c0b26a2348469463eade5c97b1dfd1298c7e2b6f2a4ee6eb",
+   "format": "단답",
+   "decisiveStep": "P(A 교집합 B)=1/6과 P(A U B)=3/4을 구하여 덧셈정리로 P(A)+P(B)=11/12를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "사건",
+      "src": "stem",
+      "quote": "두 사건 $A, B$에 대하여"
+     },
+     {
+      "term": "대칭차집합",
+      "src": "stem",
+      "quote": "A \\Delta B = (A-B) \\cup (B-A)"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$P(A)+P(B)$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "대칭차집합",
+      "src": "solution",
+      "quote": "두 사건 중 정확히 하나만 일어나는 사건입니다",
+      "evidenceType": "IMPLIED",
+      "justification": "대칭차집합 연산의 확률 성질을 활용함"
+     },
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "덧셈정리 $P(A)+P(B)=P(A\\cup B)+P(A\\cap B)$를 적용하면",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 19,
+   "questionUid": "qid_v1_dce4afb05b4e7e6af3184b40c94feec261a4bb5080d32a7b73d249ad95e4f36a",
+   "format": "소문항 묶음",
+   "decisiveStep": "일반항에서 r+s=5인 (1,4), (2,3)의 계수 2C1*4C4+2C2*4C3*2=2+8=10을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "다항식",
+      "src": "stem",
+      "quote": "$(1+x)^2(2+x)^4$의 전개식에서"
+     }
+    ],
+    "goal": [
+     {
+      "term": "일반항",
+      "src": "stem",
+      "quote": "일반항을 각각 구하시오"
+     },
+     {
+      "term": "계수",
+      "src": "stem",
+      "quote": "$x^5$의 계수를 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "이항정리",
+      "src": "solution",
+      "quote": "이항정리에 따라 $(1+x)^2$의 일반항은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일반항",
+      "src": "solution",
+      "quote": "두 일반항을 곱했을 때",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 20,
+   "questionUid": "qid_v1_5d9bcdc6a4224d5f4980e592c8408f21f390d454917fe9f03dbcd81acec57192",
+   "format": "소문항 묶음",
+   "decisiveStep": "x좌표가 같은 순서쌍 70개 중 y축 위의 28개로부터 조건부확률 28/70=2/5를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "0 < |b| \\le 4 - \\frac{1}{2}a^2"
+     },
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "x\\text{는 정수}"
+     }
+    ],
+    "goal": [
+     {
+      "term": "조건부확률",
+      "src": "stem",
+      "quote": "두 점이 $y$축 위에 있을 확률을"
+     }
+    ],
+    "method": [
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "{}_{28}C_2=378",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "조건부확률",
+      "src": "solution",
+      "quote": "P(a_1=a_2=0\\mid a_1=a_2)=\\frac{28}{70}",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "좌표",
+      "src": "stem",
+      "quote": "선택된 점의 좌표를 $(a, b)$라고 한다면"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  }
+ ]
+}

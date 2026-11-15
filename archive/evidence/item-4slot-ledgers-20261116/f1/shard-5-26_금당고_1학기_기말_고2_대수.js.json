@@ -1,0 +1,923 @@
+{
+  "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+  "totalQuestions": 21,
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "함수 $y=3\\sin(2x)+3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "치역을 구한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각함수",
+            "src": "solution",
+            "quote": "사인함수의 값의 범위로",
+            "evidenceType": "IMPLIED",
+            "justification": "사인함수의 기본 치역 범위를 이용하여 함수의 치역과 최댓값 최솟값을 도출함"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "0\\le3\\sin(2x)+3\\le6이다. 따라서 최댓값은 6, 최솟값은 0이고, 치역은"
+    },
+    {
+      "ordinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열 $\\{a_n\\}$에서"
+          },
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "a_2=3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "공차",
+            "src": "stem",
+            "quote": "공차는"
+          }
+        ],
+        "method": [
+          {
+            "term": "공차",
+            "src": "solution",
+            "quote": "$a_4=a_2+2d$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "7=3+2d, 4=2d, d=2이다"
+    },
+    {
+      "ordinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 ABC에서"
+          },
+          {
+            "term": "외접원",
+            "src": "stem",
+            "quote": "외접원 반지름의 길이 $R$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "외접원",
+            "src": "stem",
+            "quote": "외접원 반지름의 길이 $R$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인법칙",
+            "src": "solution",
+            "quote": "사인법칙을 쓴다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "2R=\\dfrac{4\\sqrt3}{\\sqrt3/2}, 2R=8, R=4이다"
+    },
+    {
+      "ordinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 ABC의"
+          },
+          {
+            "term": "내각",
+            "src": "stem",
+            "quote": "B=60^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 ABC의 넓이는"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "두 변과 끼인각을 이용한 넓이 공식을 적용하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각함수",
+            "src": "solution",
+            "quote": "\\sin60^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "특수각의 삼각비를 계산하여 넓이를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "S=\\dfrac12\\cdot6\\cdot4\\cdot\\sin60^\\circ=12\\cdot\\dfrac{\\sqrt3}{2}=6\\sqrt3"
+    },
+    {
+      "ordinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각부등식",
+            "src": "stem",
+            "quote": "\\cos x&lt;-\\dfrac{\\sqrt3}{2}"
+          },
+          {
+            "term": "닫힌구간",
+            "src": "stem",
+            "quote": "0\\le x&lt;2\\pi"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "다음 부등식 $\\cos x&lt;-\\dfrac{\\sqrt3}{2}$의 해는"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각부등식",
+            "src": "solution",
+            "quote": "가로좌표가 $-\\dfrac{\\sqrt3}{2}$보다 작은 점은",
+            "evidenceType": "IMPLIED",
+            "justification": "단위원의 좌표를 이용해 삼각부등식의 해 구간을 찾음"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "\\dfrac{5\\pi}{6}<x<\\dfrac{7\\pi}{6}이다. 엄격한 부등호이므로"
+    },
+    {
+      "ordinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "첫째항",
+            "src": "stem",
+            "quote": "첫째항이 9"
+          },
+          {
+            "term": "공비",
+            "src": "stem",
+            "quote": "공비가 3인"
+          },
+          {
+            "term": "등비수열",
+            "src": "stem",
+            "quote": "등비수열에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "제 몇 항인가"
+          }
+        ],
+        "method": [
+          {
+            "term": "일반항",
+            "src": "solution",
+            "quote": "일반항은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "지수부등식",
+            "src": "solution",
+            "quote": "2187\\ge1000$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "지수의 거듭제곱 값을 비교하여 부등식을 만족하는 최소 항 번호를 결정함"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "a_5=3^6=729<1000이고, a_6=3^7=2187\\ge1000이다"
+    },
+    {
+      "ordinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합의기호",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^{15}a_k=7"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^{15}(2a_k+1)$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "합의기호",
+            "src": "solution",
+            "quote": "합을 나누고 상수배를 밖으로 꺼낸다",
+            "evidenceType": "IMPLIED",
+            "justification": "합의 기호의 선형성을 적용하여 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "2\\cdot7+15=14+15=29이다"
+    },
+    {
+      "ordinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 ABC에 대하여"
+          },
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "\\cos C=\\dfrac{\\sqrt5}{5}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "\\sin(A+B)\\times\\cos\\left(\\dfrac\\pi2-C\\right)$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의성질",
+            "src": "solution",
+            "quote": "$A+B=\\pi-C$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 세 각의 합과 삼각함수의 각변환 성질을 이용함"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "1-\\left(\\dfrac{\\sqrt5}{5}\\right)^2=1-\\dfrac15=\\dfrac45이다"
+    },
+    {
+      "ordinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "등변사다리꼴의"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "두 대각선이 이루는 각의 크기가"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가 $9\\sqrt3$인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "한 대각선의 길이는"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\dfrac{\\sqrt3}{4}d^2$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선의 길이와 끼인각을 이용한 사각형 넓이 공식을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "\\dfrac{\\sqrt3}{4}d^2=9\\sqrt3, d^2=36, d=6이다"
+    },
+    {
+      "ordinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 ABC에서"
+          },
+          {
+            "term": "사인법칙",
+            "src": "stem",
+            "quote": "(\\sin A+\\sin B)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "\\cos C$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인법칙",
+            "src": "solution",
+            "quote": "사인법칙에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "코사인법칙을 적용하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "\\cos C=\\dfrac{t^2+(4t)^2-(4t)^2}{2\\cdot t\\cdot4t}=\\dfrac18이다"
+    },
+    {
+      "ordinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등비수열",
+            "src": "stem",
+            "quote": "등비수열 $\\{a_n\\}$에 대하여"
+          },
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "제3항이 2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "a_1^2+a_2^2+a_3^2+\\cdots+a_{10}^2$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "공비",
+            "src": "solution",
+            "quote": "$r^2=3$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "처음 $10$개 항의 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱한 항들로 이루어진 등비수열의 합 공식을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "\\dfrac49\\cdot\\dfrac{3^{10}-1}{3-1}=\\dfrac29(3^{10}-1)이다"
+    },
+    {
+      "ordinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등비수열",
+            "src": "stem",
+            "quote": "등비수열 $\\{a_n\\}$에 대하여"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 항이 실수인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "첫째항부터 제5항까지의 합은"
+          }
+        ],
+        "method": [
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "a_5=r^3a_2",
+            "evidenceType": "IMPLIED",
+            "justification": "등비수열 항 사이의 비율 관계로부터 공비를 구함"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "b_1+b_2+b_3+b_4+b_5=2+8+32+128+512",
+            "evidenceType": "IMPLIED",
+            "justification": "새로운 수열의 첫 다섯 항을 직접 더함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수인"
+          }
+        ]
+      },
+      "decisiveStep": "b_1+b_2+b_3+b_4+b_5=2+8+32+128+512=682이다"
+    },
+    {
+      "ordinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직육면체",
+            "src": "stem",
+            "quote": "직육면체의 가로의 길이"
+          },
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열을 이룬다"
+          },
+          {
+            "term": "겉넓이",
+            "src": "stem",
+            "quote": "겉넓이가 142일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "직육면체의 부피는"
+          }
+        ],
+        "method": [
+          {
+            "term": "등차중항",
+            "src": "solution",
+            "quote": "$x-d,\\ x,\\ x+d$라 두자",
+            "evidenceType": "IMPLIED",
+            "justification": "등차수열을 이루는 세 변의 길이를 미지수와 공차로 설정함"
+          },
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "부피를 $V$라 하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "V=(5-d)\\cdot5\\cdot(5+d)=5(25-4)=105이다"
+    },
+    {
+      "ordinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "f(x)=3\\cos x+2"
+          },
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "함수 $y=(f\\circ g)(x)$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "최댓값과 최솟값의 합은"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "합성함수에서는 먼저 안쪽 함수의 값이 움직이는 범위를 구한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "최댓값은 $t=0$일 때 $1$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "치환한 구간에서 코사인함수의 최대와 최소를 판정함"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "5+\\dfrac72=\\dfrac{10}{2}+\\dfrac72=\\dfrac{17}{2}이다"
+    },
+    {
+      "ordinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 ABC에서"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가 $9\\sqrt3$이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "a+b$의 최솟값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이 공식으로 두 변의 곱을 구하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "산술·기하평균의 관계를 적용한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "a+b\\ge2\\sqrt{ab}=2\\sqrt{36}=12이다"
+    },
+    {
+      "ordinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등비수열",
+            "src": "stem",
+            "quote": "등비수열이 되도록 하는"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $k$의 개수"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "공비가 정수인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $n$의 최솟값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "$n$의 양의 약수의 개수에서 $1$을 뺀 값이다",
+            "evidenceType": "IMPLIED",
+            "justification": "등비수열의 거듭제곱 조건으로부터 약수의 개수 관계를 도출함"
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "소인수분해하면 약수의 개수는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$"
+          }
+        ]
+      },
+      "decisiveStep": "각 경우의 최솟값은 2^{11}=2048, 2^5\\cdot3=96, 2^3\\cdot3^2=72, 2^2\\cdot3\\cdot5=60이다"
+    },
+    {
+      "ordinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열 $\\{a_n\\}$의"
+          },
+          {
+            "term": "공차",
+            "src": "stem",
+            "quote": "공차가 자연수인"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "공차가 자연수인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "\\sum_{m=1}^{15}|a_m|$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "등차수열의 합 공식에",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "음수인 다섯 항의 절댓값의 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "항의 부호가 변하는 경계를 찾아 절댓값 합을 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $k$"
+          }
+        ]
+      },
+      "decisiveStep": "\\displaystyle\\sum_{m=1}^{15}|a_m|=40+145=185이므로 정답은 ⑤이다"
+    },
+    {
+      "ordinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "y=3\\sin\\left\\{\\dfrac\\pi8(x+1)\\right\\}"
+          },
+          {
+            "term": "닫힌구간",
+            "src": "stem",
+            "quote": "0\\le x\\le n"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "모든 $n$의 값의 합은"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수",
+            "src": "solution",
+            "quote": "구간 안에 $t=\\dfrac{\\pi}{2}$가 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "정의역에 따른 삼각함수의 최대와 최소 값을 구간별로 분석함"
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$3<3-g(n)<6$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 차이 부등식을 만족하는 n의 범위를 결정함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$"
+          }
+        ]
+      },
+      "decisiveStep": "가능한 자연수는 8,9,10이고, 그 합은 8+9+10=27이다"
+    },
+    {
+      "ordinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외접원",
+            "src": "stem",
+            "quote": "삼각형 EAB의 외접원과"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 ECD의"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "\\overline{AB}=4"
+          }
+        ],
+        "goal": [
+          {
+            "term": "외접원",
+            "src": "stem",
+            "quote": "원 $O$의 반지름의 길이는"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인법칙",
+            "src": "solution",
+            "quote": "사인법칙에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "코사인법칙에서",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "decisiveStep": "BD^2=BC^2+CD^2-2\\cdot BC\\cdot CD\\cos\\phi=21"
+    },
+    {
+      "ordinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "f(x)=\\dfrac{kx+3k+8}{x+1}"
+          },
+          {
+            "term": "치역",
+            "src": "stem",
+            "quote": "치역에 속하는"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "모든 정수를 작은 수부터"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "자연수 $k$의 값을 풀이과정과 함께 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "치역을 구하기 위해 분자를 $x+1$의 배수와 나머지로 나눈다",
+            "evidenceType": "IMPLIED",
+            "justification": "유리함수의 표준형 변형을 통해 치역의 범위를 분석함"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "첫째항과 마지막 항의 평균은",
+            "evidenceType": "IMPLIED",
+            "justification": "등차수열 형태의 정수들의 합 공식을 적용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $k$의 값"
+          }
+        ]
+      },
+      "decisiveStep": "2k^2+11k-105=0, (2k+21)(k-5)=0이다. 따라서 k=5이다"
+    },
+    {
+      "ordinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "함수 $y=f(g(x))$의"
+          },
+          {
+            "term": "대칭",
+            "src": "stem",
+            "quote": "직선 $x=2$에 대하여 대칭이다"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자연수 $a,b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "순서쌍 $(a,b)$ 모두를 풀이과정과 함께 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각방정식",
+            "src": "solution",
+            "quote": "\\sin\\left(\\dfrac{\\pi}{b}f(x)\\right)=0",
+            "evidenceType": "IMPLIED",
+            "justification": "합성함수의 값이 정수가 되는 삼각방정식의 해를 분석함"
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "0\\le|x-2|\\le2",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 식의 범위를 평가하여 치역을 결정함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자연수 $a,b$"
+          }
+        ]
+      },
+      "decisiveStep": "2<ab\\le4이다. 따라서 모든 순서쌍은 (3,1),(4,1),(2,2),(1,4)이다"
+    }
+  ]
+}

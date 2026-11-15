@@ -1,0 +1,1352 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T14:00:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1final/23_매산고_1학기_기말_고2_수학I.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "일반항 \\(a_{10}=5+9d=68\\)에서 \\(d=7\\)을 얻는다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열 $\\{a_n\\}$에 대하여"
+          },
+          {
+            "term": "첫째항",
+            "src": "stem",
+            "quote": "$a_1=5$"
+          },
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$a_{10}=68$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "공차",
+            "src": "stem",
+            "quote": "공차를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등차수열",
+            "src": "solution",
+            "quote": "일반항은 \\(a_n=a_1+(n-1)d\\)이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "a_{10}=5+9d=68",
+            "evidenceType": "IMPLIED",
+            "justification": "등차수열의 일반항에 주어진 첫째항과 10번째 항을 대입해 공차에 대한 방정식을 세운다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "합에서 2를 묶어 \\(2\\sum_{k=1}^{9}k\\)로 바꾸고, 1부터 9까지의 합을 이용해 90을 얻는다.",
+      "slots": {
+        "given": [
+          {
+            "term": "시그마",
+            "src": "stem",
+            "quote": "$\\sum_{k=1}^9 (2k)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "시그마",
+            "src": "solution",
+            "quote": "2\\sum_{k=1}^{9}k",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등차수열",
+            "src": "solution",
+            "quote": "첫째항이 1, 끝항이 9인 등차수열의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "빈칸 채우기",
+      "decisiveStep": "자연수 전체에 대해 \\(n=1\\)에서 성립함을 확인하고 \\(n=k\\)에서 \\(n=k+1\\)로 이어지는 증명 방법을 골라 빈칸을 채운다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "명제 $p(n)$이 성립함을 증명하려면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "결정",
+            "src": "stem",
+            "quote": "위의 (가), (나), (다)에 알맞은 것은?"
+          },
+          {
+            "term": "수학적귀납법",
+            "src": "choices",
+            "quote": "(다): 수학적 귀납법"
+          }
+        ],
+        "method": [
+          {
+            "term": "수학적귀납법",
+            "src": "solution",
+            "quote": "증명 방법인 수학적 귀납법이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "귀납적정의",
+            "src": "solution",
+            "quote": "수열의 귀납적 정의가 아니라",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          },
+          {
+            "term": "양화",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "공차 7로 \\(a_7=45\\)를 구한 뒤 \\(S_7=7(3+45)/2=168\\)을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열 $\\{a_n\\}$의 첫째항이 3"
+          },
+          {
+            "term": "첫째항",
+            "src": "stem",
+            "quote": "첫째항이 3"
+          },
+          {
+            "term": "공차",
+            "src": "stem",
+            "quote": "공차가 7"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "첫째항부터 제7항까지의 합을 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "합을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등차수열",
+            "src": "solution",
+            "quote": "제7항은 \\(a_7=3+6\\cdot7=45\\)이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "S_7=\\frac{7(3+45)}2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "점화식에서 공비가 3인 등비수열임을 확인하고 \\(S_{20}=(3^{20}-1)/2\\)를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "귀납적정의",
+            "src": "stem",
+            "quote": "귀납적으로 정의된 수열"
+          },
+          {
+            "term": "첫째항",
+            "src": "stem",
+            "quote": "$a_1=1$"
+          },
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "수열 $\\{a_n\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "첫째항부터 제20항까지의 합을 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "합을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "공비가 3인 등비수열이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "등비수열의 합을 쓰면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "끼인각이 \\(120^\\circ\\)이므로 \\(\\frac12\\cdot4\\cdot7\\cdot\\sin120^\\circ=7\\sqrt3\\)을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{ABC}$에 대하여"
+          },
+          {
+            "term": "변",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{AB}}=4"
+          },
+          {
+            "term": "끼인각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{ABC}=120^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{ABC}$ 넓이를 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "공식",
+            "src": "solution",
+            "quote": "두 변과 그 끼인각을 이용하여 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 변과 그 사이각으로 삼각형의 넓이를 구하는 공식에 주어진 값을 넣는다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\sin120^\\circ",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "사인법칙 \\(AB=2R\\sin30^\\circ\\)에서 \\(R=2\\sqrt2\\)이므로 \\(R^2=8\\)이다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{ABC}$에 대하여"
+          },
+          {
+            "term": "변",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{AB}}=2\\sqrt{2}"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$C=30^\\circ$"
+          },
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{ABC}$의 외접원의 반지름"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "외접원의 반지름을 $R$라 할 때"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$R^2$ 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인법칙",
+            "src": "solution",
+            "quote": "사인법칙에서 \\(AB=2R\\sin C\\)이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\sin30^\\circ",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "주어진 곱 관계에 \\(n=2,1,3\\)을 차례로 적용해 \\(a_1=\\frac12\\), \\(a_4=9\\)를 얻고 합하면 \\(\\frac{19}{2}\\)이다.",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "수열 $\\{a_n\\}$이"
+          },
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$a_3=1$"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "a_n a_{n+1}=3n"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a_1+a_4$의 값을 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "복원",
+            "src": "solution",
+            "quote": "\\(n=2\\)일 때 \\(a_2a_3=6\\)",
+            "evidenceType": "IMPLIED",
+            "justification": "알려진 \\(a_3\\)에서 곱 관계를 역으로 적용해 인접한 항들을 차례로 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "\\(n=1\\)일 때 \\(a_1a_2=3\\)",
+            "evidenceType": "IMPLIED",
+            "justification": "관계식에서 n에 구체적인 값을 대입해 필요한 항의 곱을 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          },
+          {
+            "term": "양화",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": " \\(S_3\\ne0\\)임을 확인해 \\(S_6=(1+r^3)S_3=-7S_3\\)에서 \\(r=-2\\)를 얻고, 나머지 합 조건으로 \\(a_1=2\\), \\(a_2=-4\\)를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등비수열",
+            "src": "stem",
+            "quote": "등비수열 $\\{a_n\\}$의 첫째항부터"
+          },
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "합을 $S_n$이라 하자."
+          },
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$S_5=6a_1+10$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$a_2$ 값을 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a_2$ 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "등비수열의 공비를 \\(r\\)라 하자.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "1+r+r^2=(r+\\frac12)^2+\\frac34>0",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "S_6=(1+r^3)S_3",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱근",
+            "src": "solution",
+            "quote": "즉 \\(r=-2\\)이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "\\(r^3=-8\\)에서 실수 세제곱근을 취해 공비 \\(r=-2\\)를 결정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "나머지정리로 \\(f(-1)=17\\)을 세워 공차 \\(d=4\\)를 구하고, 등차수열의 13항 합을 계산해 221을 얻는다.",
+      "slots": {
+        "given": [
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "첫째항이 $-7$인 등차수열"
+          },
+          {
+            "term": "사차식",
+            "src": "stem",
+            "quote": "사차식 $$f(x)="
+          },
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나머지가 17일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "$\\sum_{k=1}^{13} a_k$의 값을 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "나머지정리에 따라",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등차수열",
+            "src": "solution",
+            "quote": "공차를 \\(d\\)라 하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "S_{13}=\\frac{13}{2}\\{2(-7)+12\\cdot4\\}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "연속한 부분합의 차로 \\(1/a_n=150/(n+1)\\)을 얻고, \\(k\\ge2\\)인 항을 망원합으로 정리해 첫 항을 더하면 94이다.",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "수열 $\\{a_n\\}$에 대하여"
+          },
+          {
+            "term": "시그마",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^n"
+          },
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^n \\dfrac{(k+1)}{a_k} = 150(n+1)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "\\sum_{k=1}^{23} \\dfrac{1}{a_k(k+2)}"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "복원",
+            "src": "solution",
+            "quote": "연속한 두 합을 빼서",
+            "evidenceType": "IMPLIED",
+            "justification": "연속한 부분합의 차로 각 항의 값을 복원한다."
+          },
+          {
+            "term": "부분분수",
+            "src": "solution",
+            "quote": "\\frac1{k+1}-\\frac1{k+2}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "망원합",
+            "src": "solution",
+            "quote": "\\left(\\frac1{k+1}-\\frac1{k+2}\\right)",
+            "evidenceType": "IMPLIED",
+            "justification": "연속 항의 차가 서로 소거되어 양 끝 항만 남는 합으로 정리한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "두 점근선의 교점은 \\(Q=(b,t)\\)이고 중점 조건에서 \\(P=(2b,2t)\\)이므로, 로그함수 위의 점 조건으로 \\(2t=\\log_b b=1\\), \\(t=\\frac12\\)를 얻는다.",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "두 실수 $a, b$에 대하여"
+          },
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "$f(x)=a^x+t$"
+          },
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "$g(x)=\\log_b(x-b)$"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점을 $\\mathrm{P}$라 하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "실수 $t$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$t$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "점근선은 \\(y=t\\)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "\\(O\\)와 \\(P\\)의 중점이 \\(Q\\)이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "로그함수",
+            "src": "solution",
+            "quote": "\\(P\\)는 로그함수 위에 있으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "두 실수 $a, b$에 대하여"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0 < a < 1$"
+          },
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$b > 1$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "식을 \\((x-3^n)(x+S_n)=0\\)으로 인수분해하고 양수 조건으로 \\(a_{n+1}=3^n\\)을 택해, 첫 여섯 항의 합 364를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "수열 $\\{a_n\\}$의 첫째항이 1"
+          },
+          {
+            "term": "첫째항",
+            "src": "stem",
+            "quote": "첫째항이 1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "$\\sum_{k=1}^{6} a_k$의 값을 구하면?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x-3^n)(x+S_n)=0",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "모든 항이 양수이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등비수열",
+            "src": "solution",
+            "quote": "1,3,9,27,81,243",
+            "evidenceType": "IMPLIED",
+            "justification": "앞에서 구한 \\(a_{n+1}=3^n\\)으로 첫 여섯 항이 공비 3인 등비수열을 이룬다."
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "1+3+9+27+81+243=364",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "모든 항이 양수인 수열"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          },
+          {
+            "term": "양화",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "두 부분합 관계로 \\(2b_1+3d=-15\\), \\(9b_1+36d=0\\)을 얻어 \\(d=3\\), \\(b_1=-12\\)를 결정하고 \\(b_{12}=21\\)을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "수열 $\\{a_n\\}$과 등차수열 $\\{b_n\\}$"
+          },
+          {
+            "term": "등차수열",
+            "src": "stem",
+            "quote": "등차수열 $\\{b_n\\}$"
+          },
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$a_9 = b_9$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$b_{12}$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등차수열",
+            "src": "solution",
+            "quote": "수열 \\(\\{b_n\\}\\)의 공차를 \\(d\\)라 두면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "b_1+b_2+b_3+b_4=-a_5=-30",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "2b_1+3d=-15",
+            "evidenceType": "IMPLIED",
+            "justification": "두 부분합 조건에서 얻은 \\(b_1,d\\)에 대한 두 일차식을 함께 풀어 미지수를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "2보다 큰 자연수 $n$에 대하여"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "2보다 큰 자연수 $n$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "절댓값 등식의 두 경우를 나누고 \\(\\log_3z<z\\)를 귀납적으로 확인해 \\(u=v\\)만 남긴 뒤 \\(u=9\\), \\(S=49/2\\), \\(20S=490\\)을 얻는다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=\\dfrac{1}{9}x^2$"
+          },
+          {
+            "term": "지수함수",
+            "src": "stem",
+            "quote": "$y=3^x$"
+          },
+          {
+            "term": "로그함수",
+            "src": "stem",
+            "quote": "$y=\\log_3 x$"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "곡선 $y=\\dfrac{1}{9}x^2$ 위의 점 $\\mathrm{A}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{ABC}$의 넓이를 $S$라 할 때"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$20S$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "두 식이 같거나 서로 반대이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값이 같은 경우를 두 부호 조건으로 나누어 각각 검토한다."
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "로그함수는 증가하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수학적귀납법",
+            "src": "solution",
+            "quote": "귀납적으로 성립한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "공식",
+            "src": "solution",
+            "quote": "S=\\frac12\\cdot7\\cdot7",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}"
+          },
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "점 $\\mathrm{A}$의 $x$좌표는 양수이다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "코사인법칙으로 \\(AC^2=156\\)을 얻고 양의 길이 \\(AC=2\\sqrt{39}\\)를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{ABC}$에서"
+          },
+          {
+            "term": "변",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{AB}}=6"
+          },
+          {
+            "term": "끼인각",
+            "src": "stem",
+            "quote": "$\\mathrm{B}=150^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $\\mathrm{AC}$의 길이를 구하시오."
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\mathrm{AC}$의 길이를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "코사인법칙으로 \\(AC\\)를 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\\cos150^\\circ",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "내접 사각형의 대각이 보각임을 이용해 \\(\\angle BCD\\)를 구하고, 코사인법칙과 사인법칙으로 \\(R=8\\sqrt{15}/15\\)를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "원에 내접하는 사각형 $\\mathrm{ABCD}$"
+          },
+          {
+            "term": "변",
+            "src": "stem",
+            "quote": "\\overline{\\mathrm{BC}}=3"
+          },
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "\\sin(\\angle\\mathrm{BAD})=\\dfrac{\\sqrt{15}}{4}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "삼각형 $\\mathrm{BCD}$의 외접원 반지름을 구하시오."
+          },
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "외접원 반지름을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "원에 내접하는 사각형의 마주 보는 각은 서로 보각이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "코사인법칙",
+            "src": "solution",
+            "quote": "코사인법칙을 적용하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사인법칙",
+            "src": "solution",
+            "quote": "BD=2R\\sin\\angle BCD",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{BAD} < \\dfrac{\\pi}{2}"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "\\(0<c<1/2\\)일 때만 \\(g(t)\\)가 0부터 5까지의 값을 모두 가지므로 \\(n=1,2\\), 그 합은 3이다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)="
+          },
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "\\sin x"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "\\left|\\sin x - \\dfrac{n}{6}\\right|"
+          },
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "방정식 $f(x)=t$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "모든 $n$값들의 합을 구하시오."
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 $n$값들의 합을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "\\(0<c<1\\)일 때",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각함수",
+            "src": "solution",
+            "quote": "\\(-1<y<1\\)인 사인값",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "근의 개수는 \\(2+3=5\\)이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          },
+          {
+            "term": "닫힌구간",
+            "src": "stem",
+            "quote": "0 \\le x \\le 2\\pi"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $t$에 대하여"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 실근의 개수"
+          },
+          {
+            "term": "치역",
+            "src": "stem",
+            "quote": "함수 $g(t)$의 치역의 원소 개수가 6"
+          },
+          {
+            "term": "원소의개수",
+            "src": "stem",
+            "quote": "치역의 원소 개수가 6"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "삼각함수의 상호관계로 근이 \\(x=1/4+k/2\\) 꼴임을 구하고, 근의 합 \\(N^2/4=49\\)에서 \\(N=14\\)를 얻어 \\(54\\le n<58\\), 따라서 합 222를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조각함수",
+            "src": "stem",
+            "quote": "f(x)=\\begin{cases} \\sin \\pi x"
+          },
+          {
+            "term": "삼각함수",
+            "src": "stem",
+            "quote": "\\sin \\pi x"
+          },
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "\\{f(x)\\}^2 = \\dfrac{1}{2}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$의 값의 합"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 자연수 $n$의 값의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수의상호관계",
+            "src": "solution",
+            "quote": "\\sin^2\\theta+\\cos^2\\theta=1",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "주기 \\(2\\pi\\)마다 반복된다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수열의합",
+            "src": "solution",
+            "quote": "\\frac14(1+3+\\cdots+(2N-1))",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "\\frac{27}{4}\\le\\frac n8<\\frac{29}{4}",
+            "evidenceType": "IMPLIED",
+            "justification": "14번째 근은 포함하고 15번째 근은 제외하도록 구간 끝점을 부등식으로 제한한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$"
+          },
+          {
+            "term": "닫힌구간",
+            "src": "stem",
+            "quote": "0 \\le x \\le \\dfrac{n}{8}"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실근의 합이 49"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "첫 8의 위치는 \\(a_5\\) 또는 \\(a_6\\)이고, 역으로 가능한 앞 항들을 복원하면 \\(a_6=8\\)인 경우의 최대 앞부분 합이 154이므로 \\(154+188=342\\)가 최대이다.",
+      "slots": {
+        "given": [
+          {
+            "term": "수열",
+            "src": "stem",
+            "quote": "수열 $\\{a_n\\}$에 대하여"
+          },
+          {
+            "term": "귀납적정의",
+            "src": "stem",
+            "quote": "a_{n+1}=\\begin{cases}"
+          },
+          {
+            "term": "항",
+            "src": "stem",
+            "quote": "$a_n = 8$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "$\\sum_{n=1}^{30} a_n$의 최댓값"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "의 최댓값을 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "이후에는 8과 7이 번갈아 나온다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "첫 8은 \\(a_5\\) 또는 \\(a_6\\)이어야 한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "복원",
+            "src": "solution",
+            "quote": "어떤 항 \\(y\\)의 바로 앞 항은",
+            "evidenceType": "IMPLIED",
+            "justification": "각 항의 가능한 직전 항을 역으로 구해 첫 8 이전의 항열 후보를 열거한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "20이하의 자연수 $n$의 개수는 8개"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "20이하의 자연수 $n$의 개수는 8개"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "$a_n = 8$을 만족시키는 20이하의 자연수 $n$의 개수는 8개"
+          },
+          {
+            "term": "양화",
+            "src": "stem",
+            "quote": "모든 자연수 $n$에 대하여"
+          },
+          {
+            "term": "홀짝",
+            "src": "stem",
+            "quote": "a_n\\text{이 홀수인 경우}"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

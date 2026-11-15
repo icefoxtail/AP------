@@ -1,0 +1,1112 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-16T01:13:00+09:00",
+  "sourceArchiveFile": "original/high/h1/2mid/20_매산여고_2학기_중간_고1_기출.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_c14a25c8084b83db21e48e16c6f24886f62601a67b31184ced8466b33742ea02",
+      "format": "단일 정답",
+      "decisiveStep": "y=2x-3을 평행이동한 직선 y=2x-2a에 점 (5,-4)를 대입하여 a=7을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=2x-3$을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "상수 $a$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "오른쪽으로 $a$, 위로 $3$만큼 옮겨져",
+            "evidenceType": "IMPLIED",
+            "justification": "도형의 평행이동 공식을 적용함"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "두 좌표를 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값을 구하시오."
+          },
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "점 $(5,-4)$를 지날 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_b252c82ced805d030f9db27bc88511f88732e87e9ec21a4d34f551bb17d2d7fa",
+      "format": "단일 정답",
+      "decisiveStep": "평행이동한 원의 중심 (k-1,-1)에서 직선까지의 거리 |4k+1|/5<3에서 -4<k<7/2를 풀어 정수 k의 최댓값 3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $(x+1)^2+(y-3)^2=9$를"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $4x-3y+2=0$과"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "정수 $k$의 최댓값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "중심을 $x$방향으로 $k$, $y$방향으로 $-4$만큼 옮기면",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 중심을 평행이동함"
+          },
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "중심 $(k-1,-1)$에서 직선 $4x-3y+2=0$까지의 거리는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "위치관계",
+            "src": "solution",
+            "quote": "원과 직선이 두 점에서 만나려면 중심에서 직선까지의 거리가 반지름보다 작아야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 중심에서 직선까지의 거리와 반지름을 비교하여 교점의 개수를 판정함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $k$의 최댓값을 구하시오."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_3b23d50e2115508cf236f9f76140bb9ea21dada4200dad3d58e90dd6e861b393",
+      "format": "단일 정답",
+      "decisiveStep": "원래 범위 1<=u<=2, 1<=v<=3에 u=y+1, v=x+3을 대입하여 새 직사각형의 범위 -2<=x<=0, 0<=y<=1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "도형",
+            "src": "stem",
+            "quote": "방정식 $f(x,y)=0$이 나타내는 도형이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "도형",
+            "src": "stem",
+            "quote": "방정식 $f(y+1,x+3)=0$이 나타내는 도형을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "$u=y+1,\\quad v=x+3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "좌표축 교환과 평행이동의 합성을 분석함"
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "$y=u-1,\\quad x=v-3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "변환된 식의 좌표 평행이동을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_d6d9cbbbe67e58bb99d1ffac224c7b0e1ed148d26cfe810d16e9c1c3b6bdc49d",
+      "format": "단일 정답",
+      "decisiveStep": "A(4,1)의 x축 대칭점 A'(4,-1)과 B(-2,5)를 잇는 직선의 x절편 3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "지점 $A(4,1)$에서 출발하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "x절편",
+            "src": "stem",
+            "quote": "지점 $P$의 $x$좌표를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "점 $A(4,1)$을 $x$축 대칭시킨 점을",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최단거리",
+            "src": "solution",
+            "quote": "삼각형에서 두 변의 길이의 합은 나머지 한 변보다 작지 않으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭점을 이용하여 최단거리 경로를 직선으로 만듦"
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "$x$축 위에서는 $y=0$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "직선과 x축의 교점을 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "이동하는 거리가 최소가 되도록"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_014e4b86a0d1bf0f78406a3bb827e9bb9c684ba0d8e2ec7314e88ba9da264d4e",
+      "format": "단일 정답",
+      "decisiveStep": "두 접선이 수직이므로 CP^2=2r^2=20에서 (a-3)^2=16을 풀어 a=7, -1의 합 6을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $(x+1)^2+(y-3)^2=10$에 그은"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "그은 두 접선이 서로 수직이 되도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "상수 $a$의 합을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수직",
+            "src": "solution",
+            "quote": "반지름은 접선에 수직이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "좌표로 거리의 제곱을 쓰면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 합을 구하시오."
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "두 접선이 서로 수직이 되도록"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_224b443932b2b3adfcdf15e5a6b5432dbf8f05a2b40dfd328fb2d0e9d5e461fe",
+      "format": "옳지 않은 것 고르기",
+      "decisiveStep": "A={1}, B={2,3}이면 n(A)<n(B)이지만 A\\subset B가 아니므로 ②가 거짓임을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "두 집합 $A,B$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳지 않은 것을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "$A=\\{1\\}$, $B=\\{2,3\\}$이면 $n(A)<n(B)$이지만 $A\\not\\subset B$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원소의 개수와 부분집합 포함관계 사이의 반례를 제시함"
+          },
+          {
+            "term": "여집합",
+            "src": "solution",
+            "quote": "$A\\subset B$이면 $B$에 속하지 않는 원소는 $A$에도 속하지 않는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "포함관계에 대한 여집합의 포함관계를 판정함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_98ad34bf595a8df45da2b53850d1cbc830d10894a1749dd8d24ad2a9b53a5ad6",
+      "format": "단일 정답",
+      "decisiveStep": "점 (1,2)를 지나는 직선과 중심 (3,4)의 거리 공식에서 3m^2-8m+3=0을 유도하고 근과 계수의 관계로 m1*m2=1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2+y^2-6x-8y+24=0$에 그은"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "그은 두 접선의 기울기의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "기울기의 곱을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "접선이므로 중심에서 이 직선까지의 거리는 반지름 $1$과 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계로\n$m_1m_2=\\dfrac{3}{3}=1$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_5ea17d48d5064cfe4f233aaebcec7b61453c2add9c74dca7bdcab5ef6763d570",
+      "format": "옳지 않은 것 고르기",
+      "decisiveStep": "1은 S의 원소가 아니므로 {1,2}\\subset S가 거짓임을 확인한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $S=\\{\\emptyset,\\{1\\},2,\\{1,2\\}\\}$에 대하여"
+          },
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "집합 $S$의 원소는 $\\emptyset$, $\\{1\\}$, $2$, $\\{1,2\\}$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것을 고르시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "공집합은 모든 집합의 부분집합이므로 참이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "$\\{1\\}$ 자체가 $S$의 원소이므로 참이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_970be3ce1ee8dcd986325ce5c7b34d535adfe06e17a61e4ecff8ef6654d2316e",
+      "format": "옳지 않은 것 고르기",
+      "decisiveStep": "3\\in A_3이지만 3\\notin A_6이므로 A_3\\subset(A_3\\cap A_6)이 거짓임을 확인한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $A_k=\\{x\\mid x\\text{는 }k\\text{의 배수}\\}$라 할 때"
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "집합 $A_k=\\{x\\mid x\\text{는 }k\\text{의 배수}\\}$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳지 않은 것을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "공배수",
+            "src": "solution",
+            "quote": "$4$와 $6$의 공배수는 $12$의 배수이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "$3\\in A_3$이지만 $3\\notin A_6$이므로 $A_3\\not\\subset(A_3\\cap A_6)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반례 원소를 들어 부분집합 포함관계가 성립하지 않음을 판정함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $k$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_c22609cccdc6a34be058b559bb3a7f6bdbad141f751bb50a7817bb451015dc3a",
+      "format": "단일 정답",
+      "decisiveStep": "2^{n-2}=64에서 n=8을 구하고 원소가 8개인 집합의 진부분집합의 개수 2^8-1=255를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $A=\\{1,2,3,\\ldots,n\\}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "집합 $A$의 진부분집합의 개수를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "원소가 $8$개인 $A$의 부분집합은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "진부분집합",
+            "src": "solution",
+            "quote": "진부분집합은 $A$ 자신을 한 번 빼므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "(단, $n$은 자연수이다.)"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_c532c4bfd1624de69f0018c7ace123eeb00c36838f472339d6f1dfdd5af90c25",
+      "format": "빈칸 채우기",
+      "decisiveStep": "c^2=3(3n^2+2nr_3)+r_3^2에서 (가)=3n^2+2nr_3, r_i^2\\equiv 1 (mod 3)에서 a^2+b^2의 나머지 (나)=2, c^2의 나머지 (다)=1을 결정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "주어진 명제의 대우는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "(가), (나), (다)에 알맞은 것을 고르시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "대우를이용한증명법",
+            "src": "solution",
+            "quote": "대우의 가정인 $a^2+b^2=c^2$가 성립한다고 두고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "나머지",
+            "src": "solution",
+            "quote": "$a^2+b^2$를 $3$으로 나눈 나머지는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "0이 아닌 정수 $a,b,c$에 대하여"
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "적어도 하나는 3의 배수이다.’가"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_45cb09c7e852f3047d729a0eb308b8f191d352ddf710ea393fea2765aea7aed9",
+      "format": "단일 정답",
+      "decisiveStep": "q에서 x=5일 때 p가 거짓이므로 a<2, r에서 x=1, 2일 때 p가 참이므로 a>=1/2를 연립하여 1/2<=a<2에 속하지 않는 1/3을 찾는다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "실수 $x$에 대하여 세 조건 $p,q,r$가"
+          },
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "명제 $q\\to p$는 거짓이고, 명제 $r\\to p$는 참이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "실수 $a$값이 될 수 없는 수를 고르시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "진리집합",
+            "src": "solution",
+            "quote": "$q\\to p$가 거짓이라는 것은 $q$가 참인 이 $x=5$에서 $p$가 거짓이라는 뜻이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "명제의 참과 거짓을 포함관계와 원소로 판정함"
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "$5>2a+1$\n$4>2a$\n$a<2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "a에 대한 일차부등식을 풀어 범위를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_94bea0957bfff04127b76876ae606a2f4fab12bba52db463b15232a1d6d09739",
+      "format": "단일 정답",
+      "decisiveStep": "A 안에 있으면서 B 또는 C에 속하는 영역을 (A\\cap B)\\cup(A\\cap C)로 나타낸다.",
+      "slots": {
+        "given": [
+          {
+            "term": "벤다이어그램",
+            "src": "stem",
+            "quote": "오른쪽 벤다이어그램에서 색칠한 부분을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "바르게 나타낸 것을 고르시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "왼쪽 색칠 영역은 $A\\cap B$, 오른쪽 색칠 영역은 $A\\cap C$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "두 집합의 공통 영역을 교집합으로 표현함"
+          },
+          {
+            "term": "합집합",
+            "src": "solution",
+            "quote": "$(A\\cap B)\\cup(A\\cap C)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 색칠된 영역의 합을 합집합으로 표현함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_9bdcd87ed5cf08601f4af4c6b54922f9ef2edc9fed2672aaa6bd6da12c1140bc",
+      "format": "단일 정답",
+      "decisiveStep": "q의 해구간 [2,8]이 p의 해구간 [-k,k]의 부분집합이어야 하므로 8<=k에서 자연수 k의 최솟값 8을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "실수 $x$에 대해 두 조건 $p,q$가"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "p: |x|\\le k,\\ q: |x-5|\\le 3$이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $k$의 최솟값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "필요조건",
+            "src": "solution",
+            "quote": "$p$가 $q$의 필요조건이라는 말은 $q$이면 반드시 $p$라는 뜻이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절댓값부등식",
+            "src": "solution",
+            "quote": "q:|x-5|\\le3$을 풀면\n$-3\\le x-5\\le3$",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값을 포함한 부등식의 성질로 해구간을 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $k$의 최솟값을 구하시오."
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x$에 대해"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_8c8067eac652a07faafb44c5099d4e6a3e91a4234f4ce74acc1a1ddd5b7da429",
+      "format": "단일 정답",
+      "decisiveStep": "x, y가 모두 정수이면 x+y는 정수이지만 역은 성립하지 않으므로 ⑤가 필요조건이지만 충분조건은 아님을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "두 조건 $p,q$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "필요조건이지만 충분조건은 아닌 것을 고르시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "필요조건",
+            "src": "solution",
+            "quote": "$p$가 $q$의 필요조건이면 $q\\Rightarrow p$이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "충분조건",
+            "src": "solution",
+            "quote": "충분조건이면 $p\\Rightarrow q$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "$x,y$는 실수일 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_48b0e1f83181be90e40da16d51057b316d43e9ace6901f26bf0b7721efb6ea04",
+      "format": "옳은 것 고르기",
+      "decisiveStep": "p=>~q에서 P\\subset Q^c, 즉 Q\\subset P^c이므로 P^c\\cap Q=Q가 항상 성립함을 확인한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U$에 대하여"
+          },
+          {
+            "term": "진리집합",
+            "src": "stem",
+            "quote": "진리집합을 각각 $P,Q$라고 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 항상 옳은 것을 고르시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "진리집합",
+            "src": "solution",
+            "quote": "진리집합으로 나타내면 $P\\subset Q^c$이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "$P^c\\cap Q=Q$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_9fa6144d9f8e9edc1e834834b07b6b0c1ae7981aab142e7f68a5b2cf0c99a5be",
+      "format": "단일 정답",
+      "decisiveStep": "x, y가 양수이므로 산술기하평균에서 xy<=4를 얻고 1/x+1/y=(x+y)/(xy)=4/(xy)>=1로 최솟값 1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "두 실수 $x,y$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$\\dfrac{1}{x}+\\dfrac{1}{y}$의 최솟값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "산술·기하평균 관계에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$\\dfrac1x+\\dfrac1y=\\dfrac4{xy}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "x+y=4를 대입하여 한 변수로 정리함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "둘 다 양수이다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_7a3addb54b4e04b9c01ced9a850567f04f73f94c822b5aa6abb61c27e0b169e5",
+      "format": "단답",
+      "decisiveStep": "5\\in A에서 a^2-a-1=5를 풀어 a=3일 때 A\\cap B={2,5}로 모순임을 제외하고 a=-2일 때 대칭차집합 {2,-3,10}의 원소의 합 9를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "두 집합 $A=\\{2,a^2-a-1\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 원소의 합을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "$A\\cap B=\\{5\\}$이므로 $5$는 $A$에도 들어간다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭차집합",
+            "src": "solution",
+            "quote": "따라서 $(A-B)\\cup(B-A)=\\{2,-3,10\\}$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "두 차집합의 합집합인 대칭차집합의 원소를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a$는 상수)"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_291acbbde030f2e38592eddfbf58173a81adeb587cc32f7fab9a50b8d8b7d703",
+      "format": "단답",
+      "decisiveStep": "중심 (3,1)에서 직선까지의 거리 d=2\\sqrt{2}와 현의 길이 AB=2\\sqrt{2-k}로 삼각형 넓이 1/2*AB*d=8에서 k=-6을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2+y^2-6x-2y+k=0$과"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=x+2$의"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 넓이가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "상수 $k$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "중심에서 직선까지의 거리는\n$d=\\dfrac{|3-1+2|}{\\sqrt{1^2+(-1)^2}}$",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 중심에서 직선까지의 거리 공식으로 높이를 구함"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형에서 현의 반 길이는\n$\\dfrac{AB}{2}=\\sqrt{(10-k)-d^2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "원과 현이 이루는 직각삼각형에서 피타고라스 정리로 현의 길이를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $k$의 값을 구하시오."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_9b5e38f78c4e283f7570e477505283e034e0cf7c94503a98aac795adec005999",
+      "format": "서술",
+      "decisiveStep": "n(A)=33, n(A\\cap B)=10을 구하고 n(B-A)가 0부터 n(A^c)=17까지 가능하므로 n(B)의 최솟값 10, 최댓값 27의 합 37을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U$의 두 부분집합 $A,B$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$M+m$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "원소의개수",
+            "src": "solution",
+            "quote": "$n(A)=n(U)-n(A^c)$",
+            "evidenceType": "IMPLIED",
+            "justification": "여집합과 전체집합의 원소의 개수 공식을 이용함"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "최댓값은 $M=27$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "최솟값은 $m=10$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_ff00af293ff64dba249bec8841817450633488f7c614ce2e93d2b731ce3989a5",
+      "format": "증명",
+      "decisiveStep": "n이 3의 배수가 아니면 n=3t+1 또는 3t+2에서 n^2을 3으로 나눈 나머지가 1이 되어 3의 배수라는 가정에 모순임을 보여 귀류법으로 증명한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "명제 ‘$n^2$이 3의 배수이면 $n$은 3의 배수이다.’가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "귀류법을 이용하여 증명하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "귀류법",
+            "src": "solution",
+            "quote": "귀류법으로 증명한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "나머지",
+            "src": "solution",
+            "quote": "어느 경우든 $n^2$을 $3$으로 나눈 나머지가 $1$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "3의 배수이면"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_078914dac7f8d2268893f531f0ebadda66d2492a16588ba4ca279a9b412b9894",
+      "format": "서술",
+      "decisiveStep": "x^2과 y^2의 계수가 같다는 조건 -k(2k-3)=1에서 k=1/2, 1을 구하고 두 원의 중심 (1,2), (2,4) 사이의 거리 \\sqrt{5}를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "방정식 $x^2-k(2k-3)y^2-4kx-8ky-2k=0$이"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "도형이 원이 되기 위한"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "두 원의 중심 사이의 거리를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "원의방정식",
+            "src": "solution",
+            "quote": "원이 되려면 $x^2$과 $y^2$의 계수가 같아야 하며",
+            "evidenceType": "IMPLIED",
+            "justification": "이차방정식이 원을 나타낼 조건을 판정함"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱을 만들기 위해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "두 중심 사이의 거리는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $k$는 2개다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

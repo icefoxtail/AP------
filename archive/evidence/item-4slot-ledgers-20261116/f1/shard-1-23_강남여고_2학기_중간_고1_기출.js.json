@@ -1,0 +1,896 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T18:00:00+09:00",
+  "sourceArchiveFile": "original/high/h1/2mid/23_강남여고_2학기_중간_고1_기출.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "{2}는 원소 2를 갖는 집합이므로 {2} subset A가 참임을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $A=\\{1,2,3\\}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "$\\{2\\}\\subset A$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "원소들로 이루어진 집합은 $A$의 부분집합이 될 수 있다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원소 소속과 부분집합 포함관계 기호의 정의를 비교하여 판정함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "n(A∪B)=40-12=28로부터 28=18+n(B)-9를 풀어 n(B)=19를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U$의 두 부분집합"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원소의개수",
+            "src": "solution",
+            "quote": "합집합의 원소 수와 여집합의 원소 수를 연결한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "드모르간법칙",
+            "src": "solution",
+            "quote": "$A^C\\cap B^C=(A\\cup B)^C$를 이용해",
+            "evidenceType": "IMPLIED",
+            "justification": "드모르간 법칙과 합집합 원소 수 공식을 적용하여 n(B)를 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "2 in A로부터 a=2일 때 A={2,3,4}, B={3,4,5}가 성립하므로 원소의 합 9를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "두 집합 $A=\\{3,a,a+2\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "집합 $A$의 모든 원소의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "차집합",
+            "src": "solution",
+            "quote": "$A-B=\\{2\\}$이면 먼저 $2\\in A$가 되어야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "차집합의 원소 조건으로부터 a의 후보를 구하고 검증하여 집합을 확정함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "(단, $a$는 상수)"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "n(A∩B)=23+19-35=7과 n((A∪B)^C)=40-35=5의 합 12를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원소의개수",
+            "src": "stem",
+            "quote": "집합의 원소의 개수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "원소의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "포함배제의원리",
+            "src": "solution",
+            "quote": "포함배제 원리로 교집합의 원소 수를 구하고",
+            "evidenceType": "IMPLIED",
+            "justification": "포함배제 원리로 교집합 원소 수를 구하고 여집합 원소 수와 더함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "decisiveStep": "자연수 최솟값으로 ㄱ의 참, x=2로 ㄴ의 참, 판별식/완전제곱식으로 ㄷ의 거짓을 판정한다.",
+      "slots": {
+        "given": [],
+        "goal": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "참인 명제만을 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "ㄷ은 완전제곱식으로 실근 존재 여부를 판단한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "자연수의 성질과 완전제곱식을 이용하여 전칭 및 존재 명제의 참거짓을 판별함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $x$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "x=1일 때 참이 되는 조건 x<2가 p의 충분조건이 될 수 있음을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "조건 '$p:x=1$'이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "충분조건",
+            "src": "stem",
+            "quote": "조건 $q$이기 위한 충분조건일 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "각 보기의 조건에 $x=1$을 대입하여 참인지 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "x=1을 각 조건에 대입하여 p->q가 성립하는 조건을 판별함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "옳지 않은 것 고르기",
+      "decisiveStep": "정의역의 모든 원소가 하나의 값에 대응하므로 공역에 남는 원소가 있어도 함수임을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "정의된 함수 $f:X\\to Y$에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "실제 함숫값들의 집합인 치역은"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응",
+            "src": "solution",
+            "quote": "정의역의 각 원소가 공역의 원소 하나에만 대응하면 된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "함수의 정의인 정의역 원소의 유일한 대응 조건을 점검하여 판정함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "h(-1)=-1, h(0)=0, h(1)=1을 만족하여 항등함수가 되는 h(x)=x^3을 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $X=\\{-1,0,1\\}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "항등함수",
+            "src": "stem",
+            "quote": "항등함수인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "각 함수에 $-1,0,1$을 대입하여",
+            "evidenceType": "IMPLIED",
+            "justification": "정의역의 각 원소를 대입하여 f(x)=x가 성립하는지 확인함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "g(f(1))=g(5)=4와 f(g(5))=f(4)=3을 각각 구하여 합 7을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "두 함수 $f:X\\to Y$, $g:Y\\to X$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$(g\\circ f)(1)+(f\\circ g)(5)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "합성함수는 안쪽 함수부터 그림의 화살표를 따라간다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "f^-1(x)=(1/a)x-3/a와 f(x)의 계수를 비교하여 a=-1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=ax+3$과"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$x$와 $y$를 바꾸어 역함수를 구한 뒤",
+            "evidenceType": "IMPLIED",
+            "justification": "역함수를 직접 구하여 원래 함수와 계수를 비교함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "x^2+y^2=0과 |x|+|y|=0이 모두 x=y=0과 동치이므로 역과 대우가 모두 참임을 판정한다.",
+      "slots": {
+        "given": [],
+        "goal": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "다음 중 역과 대우가 모두 참인 명제는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "필요충분조건",
+            "src": "solution",
+            "quote": "두 조건은 동치이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "역과 대우가 모두 참인 것은 조건이 필요충분조건(동치)임을 이용해 판별함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x,y$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "반례 구간이 존재할 조건 2<=a<5로부터 양의 정수 a=2,3,4의 개수 3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "실수 $x$에 대하여 명제"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "양의 정수 $a$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "두 구간이 만나려면 $2a-3\\lt a+2$여야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "역의 반례가 존재할 구간 교집합 조건을 부등식으로 세워 정수 a를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "양의 정수 $a$의"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "(1+9)(x^2+y^2)>=(x+3y)^2에서 최댓값 400과 등호 y=3x일 때 양수 x=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱합",
+            "src": "stem",
+            "quote": "$x^2+y^2=40$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$(x+3y)^2$의 최댓값과 양수 $x$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "코시슈바르츠부등식",
+            "src": "solution",
+            "quote": "따라서 $(x+3y)^2\\le10(x^2+y^2)=400$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "코시-슈바르츠 부등식 (1^2+3^2)(x^2+y^2)>=(x+3y)^2을 적용하여 최댓값과 등호조건을 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "최댓값과 양수 $x$의"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "합성함수 주기 4로부터 f^2023=f^3임을 찾아 f^3(2)-f^3(3)=3-1=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "에서 $X$로의 함수 $f$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f^{2023}(2)-f^{2023}(3)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "반복되는 주기를 찾아 큰 지수를 나머지로 줄인다.",
+            "evidenceType": "IMPLIED",
+            "justification": "합성함수의 순환 주기 4를 이용하여 지수 2023을 나머지 3으로 줄여 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "decisiveStep": "A*B=(A∩B)^C로 나타내어 ㄱ은 U(거짓), ㄴ은 U(참), ㄷ은 A^C(참)임을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U$의 두 부분집합"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "부분집합 $A$, $B$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "여집합",
+            "src": "solution",
+            "quote": "새 연산을 여집합 기호로 바꾸면",
+            "evidenceType": "IMPLIED",
+            "justification": "연산을 여집합 표현으로 변형하여 각 보기의 참거짓을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "반드시 포함되는 1,2,3(각 8회)과 선택적 원소 4,5,6(각 4회)의 총합 48+60=108을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "집합의 두 부분집합 $A="
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$S_1+S_2+\\cdots+S_n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "따라서 전체 합은 $48+60=108$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원소별 등장 횟수를 세어 모든 부분집합의 원소의 총합을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "빈칸 채우기",
+      "decisiveStep": "서로소 조건에서 b^2=1, 식 변형에서 (나)=1, 정수 인수 조건에서 (다)는 모두 1 또는 모두 -1임을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "$\\sqrt{n(n+1)}$은 유리수가 아님을 증명한 것이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "($a,b$는 서로소인 자연수)"
+          }
+        ],
+        "method": [
+          {
+            "term": "귀류법",
+            "src": "solution",
+            "quote": "차의 제곱을 인수분해해 모순을 만든다.",
+            "evidenceType": "IMPLIED",
+            "justification": "유리수라 가정하여 모순을 이끌어내는 귀류법 증명 과정을 단계별로 채움"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$n$이 자연수일 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "합성함수 조건과 일대일성으로부터 f(3)=1, g(4)=2를 찾아 f^-1(1)+g^-1(2)=3+4=7을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $X=\\{1,2,3,4\\}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f^{-1}(1)+g^{-1}(2)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "일대일대응에서는 같은 함숫값을 가지는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "h(-1)=f(-3)=-8과 h(3)=f(1)=4를 각각 계산하여 합 -4를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "두 함수 $f(x)=\\begin{cases}-x^2+1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$h(-1)+h(3)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=x+2$로 바꾼다.",
+            "evidenceType": "IMPLIED",
+            "justification": "t=x+2로 치환하여 h(t)=f(t-2)를 구하고 구간별 함숫값을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "y=x 대칭으로 생기는 두 영역의 넓이 합 14/3을 구하여 a+b=17을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\begin{cases}-\\dfrac12x+1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "둘러싸인 부분의 넓이는"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "원래 그래프를 직선 $y=x$에 대하여 대칭이동한 것이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "y=x 대칭인 역함수 그래프와의 교점을 구하고 삼각형의 넓이 공식으로 전체 넓이를 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "(단, $a,b$는 서로소이다.)"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "포함조건 k>=2, 4k<=20으로부터 정수 k=2,3,4,5를 찾아 합 14를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "두 조건 $p:k\\le x\\le4k$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "양의 정수 $k$의 값의 합을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "포함 관계가 성립하려면",
+            "evidenceType": "IMPLIED",
+            "justification": "진리집합의 포함관계 [k,4k] subset [2,20]으로부터 부등식을 풀어 k의 범위를 정함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "모든 양의 정수 $k$의"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "{1,2}를 반드시 포함하고 3,4를 선택할 수 있는 부분집합 4개를 모두 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "두 집합 $A=\\{1,2,3,4\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "부분집합 관계로 바꾼다."
+          }
+        ],
+        "method": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "$A-B\\subset X$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "{1,2} subset X subset {1,2,3,4} 포함관계로부터 가능한 모든 집합 X를 나열함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 23,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "f(0)=1, f(1/2)=2, f(2)=16을 차례로 구하여 1-2+16=15를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f$가 $f(x+y)=f(x)f(y)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f(0)-f\\left(\\dfrac12\\right)+f(2)$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "수치대입법",
+            "src": "solution",
+            "quote": "값을 대입한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "함수방정식에 특정한 수치들을 대입하여 필요한 함숫값들을 순차적으로 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "임의의 실수 $x,y$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 24,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "t=x^2+1/3로 두어 산술기하평균으로 최솟값 3과 그때의 x^2=4/3를 구한다.",
+      "slots": {
+        "given": [],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값과 그때의 $x^2$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "산술평균과 기하평균의 관계를 적용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "t=x^2+1/3으로 치환하여 식을 t+25/(9t)-1/3로 변형한 후 산술기하평균을 적용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

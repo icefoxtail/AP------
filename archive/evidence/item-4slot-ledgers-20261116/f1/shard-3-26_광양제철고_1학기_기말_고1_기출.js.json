@@ -1,0 +1,933 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "gemini-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-15T19:15:00+09:00",
+ "sourceArchiveFile": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "두 부등식의 공통 해 -3 < x <= -1을 구하고 만족하는 정수 x의 개수 2를 센다.",
+   "slots": {
+    "given": [
+     {
+      "term": "연립부등식",
+      "src": "stem",
+      "quote": "연립부등식 $\\begin{cases}-2x-3<x+6"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "정수 $x$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "일차부등식",
+      "src": "solution",
+      "quote": "양변을 $-3$으로 나누면 부등호 방향이 바뀌므로",
+      "evidenceType": "IMPLIED",
+      "justification": "음수로 나누어 부등호 방향을 바꾸는 일차부등식 성질을 적용함"
+     },
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "공통 범위는 $-3<x\\le-1$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "두 일차부등식의 공통 해 범위를 구함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "정수 $x$의 개수는?"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "연립방정식 x+2y=11, 3x+y=13에서 작업일수 x=3, y=4를 구해 흰색 하의의 수 x+2y=11을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "행렬",
+      "src": "stem",
+      "quote": "옷의 수를 행렬로 나타내면"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "생산된 흰색 하의의 수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "연립일차방정식",
+      "src": "solution",
+      "quote": "첫째 식을 $3$배 하여 둘째 식을 빼면",
+      "evidenceType": "IMPLIED",
+      "justification": "작업일수에 대한 이원일차 연립방정식을 풂"
+     },
+     {
+      "term": "성분",
+      "src": "solution",
+      "quote": "첫째 행은 파란색, 둘째 행은 흰색을 나타내고",
+      "evidenceType": "IMPLIED",
+      "justification": "행렬의 각 성분이 나타내는 품목을 대응시킴"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "연립하여 A=[[1,-2],[0,3]], B=[[0,0],[-3,-1]]을 구하고 행렬곱 AB=[[6,2],[-9,-3]]의 모든 성분의 합 -4를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "행렬",
+      "src": "stem",
+      "quote": "이차 정사각행렬 $A,B$에 대하여"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "모든 성분의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "행렬곱",
+      "src": "solution",
+      "quote": "AB=\\begin{pmatrix}1&-2\\\\0&3\\end{pmatrix}\\begin{pmatrix}0&0\\\\-3&-1\\end{pmatrix}",
+      "evidenceType": "IMPLIED",
+      "justification": "두 행렬의 곱셈을 계산함"
+     },
+     {
+      "term": "성분",
+      "src": "solution",
+      "quote": "모든 성분의 합은",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "가운데 수가 양 끝 두 수의 평균이 되는 3개 수 집합 9개에 대해 각각 3!=6가지 배열하여 9*6=54를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "세 자리 자연수를 만든다"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "때 경우의 수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "순열",
+      "src": "solution",
+      "quote": "각 집합은 $3!=6$가지로 배열되므로",
+      "evidenceType": "IMPLIED",
+      "justification": "고른 3개 수를 일렬로 나열하는 순열을 계산함"
+     },
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "양 끝 수의 차가 2일 때 5개, 4일 때 3개, 6일 때 1개로",
+      "evidenceType": "IMPLIED",
+      "justification": "조건을 만족하는 수의 조합을 차이에 따라 분류함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "숫자 $1,2,3,4,5,6,7$이"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "백의 자리 홀수/짝수 분류로 (3*4 + 2*5)*8 = 176개의 자연수 개수를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "600보다 작은 세 자리 자연수이다"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "자연수 $n$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "백의 자리가 홀수인 3가지에는 일의 자리 4가지, 짝수인 2가지에는 5가지이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "백의 자리가 홀수인지 짝수인지에 따라 분류하여 곱의 법칙을 적용함"
+     },
+     {
+      "term": "곱의법칙",
+      "src": "solution",
+      "quote": "(3\\cdot4+2\\cdot5)\\cdot8=176$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "자리수별 선택 가짓수를 곱하여 전체 경우의 수를 계산함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "자연수 $n$의 개수"
+     },
+     {
+      "term": "홀수",
+      "src": "stem",
+      "quote": "일의 자리 숫자는 홀수이고"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "A^n=[[1, na],[0, 1]]에서 성분의 합 2+na=56, na=54의 양의 약수 개수 (1+1)(3+1)=8로부터 순서쌍 개수 8을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "행렬",
+      "src": "stem",
+      "quote": "행렬 $A=\\begin{pmatrix}1&a\\\\0&1\\end{pmatrix}$에"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "순서쌍 $(a,n)$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "이항정리",
+      "src": "solution",
+      "quote": "이항전개에서 $N$의 2차항부터 모두 0이 되기 때문이다",
+      "evidenceType": "IMPLIED",
+      "justification": "행렬의 거듭제곱을 E+N의 이항정리로 전개함"
+     },
+     {
+      "term": "약수",
+      "src": "solution",
+      "quote": "54의 양의 약수 개수는",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "두 양의 정수 $a,n$의"
+     },
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "두 양의 정수 $a,n$의"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "연립부등식 9(t-4) < 7t+9 <= 9(t-3)에서 18 <= t <= 22를 얻어 최소 135와 최대 163의 합 298을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "9(t-4)<7t+9\\le9(t-3)"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "최소일 때와 최대일 때의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "연립부등식",
+      "src": "solution",
+      "quote": "왼쪽 부등식에서",
+      "evidenceType": "IMPLIED",
+      "justification": "연립부등식의 양쪽을 각각 풀어 t의 정수 범위를 구함"
+     },
+     {
+      "term": "최댓값",
+      "src": "solution",
+      "quote": "최대 학생 수는 $t=22$일 때",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "최솟값",
+      "src": "solution",
+      "quote": "최소 학생 수는 $t=18$일 때",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "해가 없으려면 a < 0이고 판별식/4 = (a+3)^2 + a = a^2+7a+9 <= 0이어야 하므로 정수 a=-5, -4, -3, -2의 개수 4를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차부등식",
+      "src": "stem",
+      "quote": "부등식 $ax^2-2(a+3)x-1>0$이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "정수 $a$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "판별식",
+      "src": "solution",
+      "quote": "판별식 조건은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "이차부등식",
+      "src": "solution",
+      "quote": "a^2+7a+9\\le0$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "판별식 조건으로부터 a에 대한 이차부등식을 풂"
+     }
+    ],
+    "condition": [
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "정수 $a$의 개수"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "s=x+y, d=x-y로 치환하여 d^2=8과 3s^2+4sd-32=0으로부터 s의 가능한 값 중 최댓값 4√2를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "연립이차방정식",
+      "src": "stem",
+      "quote": "연립방정식 $\\begin{cases}x^2-2xy+y^2=8"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최댓값",
+      "src": "stem",
+      "quote": "$\\alpha+\\beta$의 최댓값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "치환",
+      "src": "solution",
+      "quote": "s=x+y$, $d=x-y$라 놓는다",
+      "evidenceType": "IMPLIED",
+      "justification": "합과 차를 새로운 변수 s, d로 치환하여 연립방정식을 단순화함"
+     },
+     {
+      "term": "이차방정식",
+      "src": "solution",
+      "quote": "3s^2+8\\sqrt2s-32=0",
+      "evidenceType": "IMPLIED",
+      "justification": "s에 대한 이차방정식을 풀어 가능한 s의 값을 구함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "5*360 + 120*6 = 2520 = n(n-1)(n-2)(n-3)(n-4)에서 n=7을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "순열",
+      "src": "stem",
+      "quote": "5\\times{}_6P_4"
+     },
+     {
+      "term": "조합",
+      "src": "stem",
+      "quote": "120\\times{}_6C_5"
+     }
+    ],
+    "goal": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "자연수 $n$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "순열",
+      "src": "solution",
+      "quote": "{}_6P_4=6\\cdot5\\cdot4\\cdot3=360$",
+      "evidenceType": "IMPLIED",
+      "justification": "순열 계산 공식을 적용함"
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "{}_6C_5=6$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "조합 계산 공식을 적용함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "자연수 $n$의 값"
+     },
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "$n\\ge5$"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "-w^2-1 = -w = z라 두면 z^3=1, 1+z+z^2=0이므로 3항씩 상쇄되어 합이 z = -w임을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차방정식",
+      "src": "stem",
+      "quote": "방정식 $x^3+1=0$의"
+     },
+     {
+      "term": "허근",
+      "src": "stem",
+      "quote": "한 허근을 $w$라 할 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "단위근",
+      "src": "solution",
+      "quote": "z^3=1$, $z\\ne1$이고 $1+z+z^2=0$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "1의 삼승근의 주기성과 세 항의 합이 0임을 이용함"
+     },
+     {
+      "term": "치환",
+      "src": "solution",
+      "quote": "z=-w$라 두면",
+      "evidenceType": "IMPLIED",
+      "justification": "-w^2-1 = -w = z로 치환하여 식을 단순화함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "c=0이어야 하고 x=0 부근에서 1, 3사분면을 지나려면 b > 0이어야 하므로 b(4가지)*a(6가지)=24개를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "이차함수 $y=ax^2+bx+c$의"
+     },
+     {
+      "term": "사분면",
+      "src": "stem",
+      "quote": "제1사분면 및 제3사분면을"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "함수의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "사분면",
+      "src": "solution",
+      "quote": "제1사분면과 제3사분면을 모두 지나려면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "곱의법칙",
+      "src": "solution",
+      "quote": "따라서 $4\\cdot6=24$개이며",
+      "evidenceType": "IMPLIED",
+      "justification": "b의 선택 가짓수와 a의 선택 가짓수를 곱하여 함수의 개수를 구함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "8개의 정수"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "선택 가능한 전체 직사각형의 수 36+21+6=63에서 정사각형의 수 13+4+2+1=20을 빼서 43을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정사각형",
+      "src": "stem",
+      "quote": "합동인 정사각형 13개로"
+     },
+     {
+      "term": "직사각형",
+      "src": "stem",
+      "quote": "정사각형이 아닌 직사각형의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "직사각형의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "첫째 줄 ${}_6C_2=15$개",
+      "evidenceType": "IMPLIED",
+      "justification": "가로선과 세로선을 조합으로 택하여 직사각형을 셈"
+     },
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "정사각형의 수를 뺀다",
+      "evidenceType": "IMPLIED",
+      "justification": "전체 직사각형에서 정사각형을 빼서 정사각형이 아닌 직사각형을 셈"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x^2+y^2=250과 (x-5)(y+5)=xy-45에서 y=x+4를 대입해 가로 9, 세로 13을 얻고 새 직사각형 넓이 4*18=72를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "직사각형",
+      "src": "stem",
+      "quote": "직사각형 $ABCD$가 있다"
+     },
+     {
+      "term": "넓이",
+      "src": "stem",
+      "quote": "ABCD$의 넓이보다"
+     }
+    ],
+    "goal": [
+     {
+      "term": "넓이",
+      "src": "stem",
+      "quote": "A'B'C'D'$의 넓이는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "피타고라스정리",
+      "src": "solution",
+      "quote": "피타고라스 정리에 의해",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "이차방정식",
+      "src": "solution",
+      "quote": "x^2+4x-117=0",
+      "evidenceType": "IMPLIED",
+      "justification": "피타고라스 정리와 넓이 조건식으로부터 x에 대한 이차방정식을 풂"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "남 3명, 여 2명, 남 3명의 고정된 패턴에 남학생 6명 나열 6!과 여학생 2명 나열 2!을 곱하여 720*2=1440을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이웃",
+      "src": "stem",
+      "quote": "여학생 2명은 이웃하고"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "세우는 방법의 수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "순열",
+      "src": "solution",
+      "quote": "남학생 6명을 일렬로 배열하면 $6!$가지이다",
+      "evidenceType": "IMPLIED",
+      "justification": "남학생 6명과 여학생 2명의 순열 가짓수를 곱함"
+     },
+     {
+      "term": "이웃",
+      "src": "solution",
+      "quote": "남학생이 3명씩 두 묶음으로 이웃하며",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "이웃",
+      "src": "stem",
+      "quote": "모두 이웃하지는 않도록"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "a1=1, 2, 3으로 분류하여 (a2, a4) 순서쌍 수와 a1 < a3 < a5 조합 수를 곱해 3*15 + 2*10 + 1*6 = 71을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "1부터 7까지의 자연수가"
+     },
+     {
+      "term": "순서쌍",
+      "src": "stem",
+      "quote": "순서쌍 $(a_1,a_2,a_3,a_4,a_5)$의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "순서쌍 $(a_1,a_2,a_3,a_4,a_5)$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "a_1=1$이면",
+      "evidenceType": "IMPLIED",
+      "justification": "a1의 값에 따라 경우를 나누어 순서쌍 수를 구함"
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "{}_6C_2=15$가지이다",
+      "evidenceType": "IMPLIED",
+      "justification": "크기가 정해진 두 수 a3, a5를 고르는 조합의 수를 계산함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "1부터 7까지의 자연수가"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "대각성분 조건 a, b ∈ {1, 2, 3}과 비대각성분 0 조건으로부터 a ≠ b인 6개의 행렬 X를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "행렬",
+      "src": "stem",
+      "quote": "행렬 $X=\\begin{pmatrix}a&a+b"
+     },
+     {
+      "term": "단위행렬",
+      "src": "solution",
+      "quote": "X-kE=\\begin{pmatrix}a-k&a+b",
+      "evidenceType": "IMPLIED",
+      "justification": "E를 단위행렬로 취급하여 행렬식을 계산함"
+     },
+     {
+      "term": "영행렬",
+      "src": "solution",
+      "quote": "모두 $0$이어야 하므로",
+      "evidenceType": "IMPLIED",
+      "justification": "O를 영행렬로 취급하여 모든 성분이 0임을 적용함"
+     }
+    ],
+    "goal": [
+     {
+      "term": "행렬",
+      "src": "stem",
+      "quote": "이와 같은 행렬 $X$를 모두 구하는"
+     }
+    ],
+    "method": [
+     {
+      "term": "행렬곱",
+      "src": "solution",
+      "quote": "(X-E)(X-2E)",
+      "evidenceType": "IMPLIED",
+      "justification": "다항식 형태의 행렬곱을 순차적으로 전개함"
+     },
+     {
+      "term": "성분",
+      "src": "solution",
+      "quote": "대각성분이 모두 $0$이어야 하므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 18,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "근호식을 |2x+3|으로 바꾸고 x < -3/2, -3/2 <= x < 1, x >= 1의 세 구간으로 나누어 해 범위 x > 1/3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "부등식 $3|x-1|-\\sqrt{4x^2+12x+9}<x-2$를"
+     },
+     {
+      "term": "절댓값",
+      "src": "stem",
+      "quote": "3|x-1|-"
+     }
+    ],
+    "goal": [
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "만족시키는 범위를 구하는"
+     }
+    ],
+    "method": [
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "완전제곱식으로 바꾸면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "부호가 바뀌는 $x=-\\dfrac32,1$을 기준으로 나눈다",
+      "evidenceType": "IMPLIED",
+      "justification": "절댓값 안의 식 부호에 따라 세 구간으로 분류하여 부등식을 풂"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 19,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "세 근을 2-6/α, 2-6/β, 2-6/γ로 변형하고 t=x-2의 근과 계수의 관계로 p=3, q=27, r=54를 구해 p+q+r=84를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차방정식",
+      "src": "stem",
+      "quote": "삼차방정식 $x^3-3x^2+2x-4=0$의"
+     },
+     {
+      "term": "삼차식",
+      "src": "stem",
+      "quote": "삼차식 $f(x)=(x-2)^3+p(x-2)^2+q(x-2)+r$이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$p+q+r$의 값을 구하는"
+     }
+    ],
+    "method": [
+     {
+      "term": "근과계수의관계",
+      "src": "solution",
+      "quote": "근과 계수의 관계에서",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "치환",
+      "src": "solution",
+      "quote": "t=x-2$라 놓으면",
+      "evidenceType": "IMPLIED",
+      "justification": "변수 t=x-2로 치환하여 새로운 삼차방정식의 계수를 결정함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "$p,q,r$은 상수이다"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  }
+ ]
+}

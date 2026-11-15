@@ -1,0 +1,908 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T17:55:00+09:00",
+  "sourceArchiveFile": "original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "두 선분의 거리의 제곱 식 (a-1)^2+4=(a-3)^2+16을 전개하여 4a=20, a=5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{AC}=\\overline{BC}$를 만족시키는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "두 선분의 길이가 같으므로 제곱한 값을 비교하면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 점 사이의 거리 공식의 제곱을 이용하여 a에 관한 방정식을 세움"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "만족시키는 상수 $a$의"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "실수에서 제곱의 합이 0이면 각각 0이어야 하므로 ②가 참임을 판정한다.",
+      "slots": {
+        "given": [],
+        "goal": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "다음 중 참인 명제는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "반례 하나면 충분하다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반례를 찾아 거짓인 명제들을 제거하고 제곱의 성질로 참인 명제를 찾음"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "$x,y,z$가 실수일 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "a^3-a^2-2a=0의 근 0, -1, 2 중 서로 다른 원소 조건 n(X)=3을 만족하는 a=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "정의역이 집합 $X=\\{-1,0,a\\}$인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$a(a^2-a-2)=a(a-2)(a+1)=0$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "f(a)=g(a)인 삼차방정식을 인수분해하여 해를 구하고 중복을 배제함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "원소의개수",
+            "src": "stem",
+            "quote": "(단, $n(X)=3$)"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "f(1)=-1, f(3)=5로부터 a=3, b=-4를 구하여 f(2)=2를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=ax+b$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "$f(2)=6-4=2$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$f^{-1}(y)=x$는 $f(x)=y$와 같은 뜻이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "f^-1(5)=3을 f(3)=5로 바꾸어 연립방정식을 세워 계수를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "외분점의 좌표 ((2k+5)/(k-5), (4k-5)/(k-5))를 직선에 대입하여 k=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $AB$를 $k:5$로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "양수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "외분",
+            "src": "solution",
+            "quote": "외분점의 좌표를 $k$로 나타내어",
+            "evidenceType": "IMPLIED",
+            "justification": "외분점 공식을 이용하여 좌표를 구하고 직선의 방정식에 대입함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $x+y+4=0$ 위에 있을 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "중점 일치 조건 b=a+4와 AB=BC로부터 a=1, b=5 또는 a=5, b=9를 구해 a+b=6, 14를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "사각형 $ABCD$가 마름모가 될 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b$의 값으로 가능한 것을"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "두 대각선은 서로의 중점을 이등분하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선의 중점 일치 조건과 이웃한 두 변의 길이가 같음을 연립하여 풂"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "decisiveStep": "원소 기호와 공집합의 성질, 원소의 개수를 확인하여 참인 보기 ㄱ, ㄷ, ㄹ을 고른다.",
+      "slots": {
+        "given": [],
+        "goal": [
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "원소 기호와 집합의 원소 수를 정의에 따라 하나씩 확인한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "원소의개수",
+            "src": "solution",
+            "quote": "집합의 원소 수를 정의에 따라 하나씩 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원소 소속 기호와 집합의 원소의 개수를 정의에 따라 판정함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "산술기하평균으로 ab<=250(M=250)과 2a=5b=50(m=25, n=10)을 구해 합 285를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "합이 일정한 두 양수의 곱은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$M+m+n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "$2a+5b\\ge2\\sqrt{(2a)(5b)}=2\\sqrt{10ab}$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "산술기하평균 부등식을 적용하여 최댓값 M과 등호조건을 구함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "점들의 좌표 B(a+4,a), C(-a-4,-a)로부터 삼각형 넓이 8(a+2)=48을 세워 a=4를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 넓이가 $48$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "대칭이동한 점의 좌표를 구한 뒤",
+            "evidenceType": "IMPLIED",
+            "justification": "y=x 대칭 및 원점 대칭으로 B, C의 좌표를 구하고 삼각형의 넓이 공식을 적용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제1사분면 위의 점"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "1,3,4,8을 포함하고 6을 제외한 나머지 5개 원소에 대해 2^5=32개를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "두 부분집합 $A=\\{1,3\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "부분집합 $X$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "남은 $2,5,7,9,10$의 다섯 원소는 각각 포함하거나",
+            "evidenceType": "IMPLIED",
+            "justification": "포함해야 할 원소와 제외할 원소를 제외한 나머지 원소로 부분집합의 개수 2^5를 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$10$ 이하의 자연수$\\}$의"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "decisiveStep": "P subset Q^c와 R=Q^c를 도출하여 보기 ㄱ, ㄷ이 항상 옳음을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "진리집합",
+            "src": "stem",
+            "quote": "진리집합을 각각 $P,Q,R$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "세 명제 $p\\to\\sim q$"
+          }
+        ],
+        "method": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "진리집합의 포함 관계로 바꾼다.",
+            "evidenceType": "IMPLIED",
+            "justification": "명제의 참조건을 진리집합 간의 포함관계로 전환하여 보기들을 판정함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "g(f(2))=g(2)에서 f(2)=2를 얻고 f(4)=3, g(3)=4를 찾아 합 6을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "두 함수 $f,g$가 일대일대응이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f(2)+g(3)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "일대일대응에서는 같은 함숫값을 갖는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "정점 P(-3,1)과의 거리 AP=2sqrt(10)과 수직 기울기 m=-3으로부터 곱 -6sqrt(10)을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $mx-y+3m+1=0$ 사이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "값의 곱 $mM$은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "stem",
+            "quote": "직선 $mx-y+3m+1=0$ 사이 거리의 최댓값",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직",
+            "src": "solution",
+            "quote": "직선과 $AP$가 수직일 때 이 거리가 최대이고"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "조건을 만족하는 B가 [-1, 4]임을 찾아 이차식 (x+1)(x-4)로부터 ab=12를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "세 부분집합 $A=\\{x\\mid x^2-6x+8>0\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$ab$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차부등식",
+            "src": "solution",
+            "quote": "먼저 $A,C$를 부등식의 해집합으로 나타내고",
+            "evidenceType": "IMPLIED",
+            "justification": "이차부등식의 해집합 연산 조건으로부터 B=[-1,4]를 도출함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "명제의 가정인 짝수 카드 2와 대우의 가정인 비자음 카드 ㅓ를 확인해야 함을 결정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "solution",
+            "quote": "명제 '$P$이면 $Q$이다'가 거짓이 되는 경우는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "카드 한 쪽 면에 짝수가 적혀있으면"
+          }
+        ],
+        "method": [
+          {
+            "term": "대우",
+            "src": "solution",
+            "quote": "자음이 아니므로 뒷면이 짝수라면 규칙을 어기게 되어",
+            "evidenceType": "IMPLIED",
+            "justification": "원래 명제의 가정(짝수 2)과 대우의 가정(자음의 부정 ㅓ)을 확인하는 원리를 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "접선 y=x+2와 원의 접점 P(-1,1)을 구하여 직선 OP의 기울기 1/(-1)=-1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2+y^2=2$ 위의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "직선 $OP$의 기울기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "원점과 직선 사이의 거리가 반지름",
+            "evidenceType": "IMPLIED",
+            "justification": "(-2,0)을 지나는 직선이 원에 접할 조건을 점과 직선 사이의 거리 공식으로 풂"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접점",
+            "src": "solution",
+            "quote": "접점은 직선 $y=x+2$와 원의 공통점"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "f(a)=a인 경우 24가지와 f(a)!=a인 경우 4*3!=24가지를 더하여 함수 개수 48을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $X=\\{a,b,c,d,e\\}$에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "함수 $f$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "전체는 $24+24=48$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "f(a)=a인 경우와 f(a)!=a인 두 경우로 나누어 순열의 수를 합함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "일대일대응",
+            "src": "stem",
+            "quote": "함수 $f:X\\to X$가 일대일대응이고"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "빈칸 채우기",
+      "decisiveStep": "대우 p->~q와 s->~r를 연결하기 위해 ~q->s, 즉 ~s->q가 필요함을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "명제 $q\\to\\sim p$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "명제",
+            "src": "solution",
+            "quote": "주어진 명제의 대우를 이용해"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼단논법",
+            "src": "solution",
+            "quote": "차례로 연결하여 $p\\to\\sim r$를 얻는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "명제의 대우와 삼단논법을 이용하여 p에서 ~r로 이어지는 추론 사슬을 완성함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "0<=f(x)<=2로부터 x의 범위 [-1,0]U[2,4]를 찾아 정수해의 합 8을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "부등식 $f(f(x))\\le0$을 만족시키는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "정수 $x$값의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "바깥 함수의 입력을 새 문자로 놓고",
+            "evidenceType": "IMPLIED",
+            "justification": "t=f(x)로 치환하여 부등식을 단계별로 풀어 해구간을 도출함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "만족시키는 정수 $x$값의"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "중점 C의 x좌표 3a/2+1/(2a)에 산술기하평균 부등식을 적용하여 최솟값 sqrt(3)을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)=x^2-2ax$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$CH$의 길이의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "$CH=\\dfrac{3a}{2}+\\dfrac{1}{2a}\\ge2\\sqrt{\\dfrac{3a}{2}\\cdot\\dfrac{1}{2a}}=\\sqrt3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중점의 x좌표식에 산술기하평균 부등식을 적용하여 최솟값을 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "선분 $AB$의 중점을 $C$라 하고"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "f(g(x))=2ax+a^2+b=4x+3에서 a=2, b=-1을 얻어 f^-1(3)=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "두 함수 $f(x)=ax+b$, $g(x)=2x+a$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f^{-1}(3)$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "합성함수의 계수를 비교하여",
+            "evidenceType": "IMPLIED",
+            "justification": "합성함수 전개식의 계수를 비교하여 a, b를 구하고 역함숫값을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "평행(alpha=1), 일치(beta=-3), 수직(gamma=-1/2)을 각각 구하여 곱 3/2을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 직선 $(a+2)x+3y+1=0$과"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$\\alpha\\beta\\gamma$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "평행 또는 일치하려면",
+            "evidenceType": "IMPLIED",
+            "justification": "계수비와 기울기 곱 조건을 이용해 평행, 일치, 수직 조건을 각각 풂"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직",
+            "src": "stem",
+            "quote": "수직이기 위한 값을 $\\gamma$라"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 23,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "원점 대칭된 중심 (-2,3)과 mx-y=0 사이의 거리 |-2m-3|/sqrt(m^2+1)=2로부터 m=-5/12를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2+y^2-4x+6y+9=0$을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "상수 $m$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "중심과 접선 사이의 거리가 반지름과 같다는 조건을 사용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원점 대칭이동된 원의 중심과 직선 사이의 거리가 반지름 2임을 이용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 24,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "h(-1)=sqrt(2)와 h(-4)=-1을 합성 순서대로 계산하여 합 sqrt(2)-1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "에 대하여 $h=f^{-1}\\circ g\\circ f$로 정의할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$h(-1)+h(-4)$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "합성 순서대로 값을 구하고",
+            "evidenceType": "IMPLIED",
+            "justification": "합성 순서 f->g->f^-1에 따라 단계별 값을 구하고 구간별 역함수를 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

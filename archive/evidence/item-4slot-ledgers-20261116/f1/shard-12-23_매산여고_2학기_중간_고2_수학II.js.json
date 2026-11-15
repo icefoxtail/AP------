@@ -1,0 +1,1404 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "gemini-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-16T02:20:00+09:00",
+ "sourceArchiveFile": "original/high/h2/2mid/23_매산여고_2학기_중간_고2_수학II.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "그래프에서 함숫값 f(1)=2와 좌극한값 2를 각각 읽어 합 4를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "함수 $y=f(x)$의 그래프가"
+     },
+     {
+      "term": "그래프",
+      "src": "stem",
+      "quote": "함수 $y=f(x)$의 그래프가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "좌극한",
+      "src": "stem",
+      "quote": "\\lim_{x\\to2-}f(x)"
+     },
+     {
+      "term": "함숫값",
+      "src": "stem",
+      "quote": "$f(1)+\\displaystyle\\lim_{x\\to2-}f(x)$의 값은?"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "좌극한",
+      "src": "solution",
+      "quote": "$x\\to2-$일 때 곡선은 $2$에 다가가므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "함숫값",
+      "src": "solution",
+      "quote": "그래프에서 $f(1)=2$이고",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x=3에서 우극한 11과 좌극한 6+k가 같다는 조건 6+k=11에서 상수 k=5를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조각함수",
+      "src": "stem",
+      "quote": "f(x)=\\begin{cases}"
+     }
+    ],
+    "goal": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $k$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "상수 $k$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "우극한",
+      "src": "solution",
+      "quote": "우극한은 $\\displaystyle\\lim_{x\\to3+}f(x)=9-9+11=11$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "좌극한",
+      "src": "solution",
+      "quote": "좌극한은 $\\displaystyle\\lim_{x\\to3-}f(x)=6+k$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "수렴",
+      "src": "stem",
+      "quote": "$\\lim_{x\\to3}f(x)$가 존재할 때"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x->-무한대에서 |2x|=-2x로 풀고 분모와 분자를 x로 나누어 극한값 -2를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "유리식",
+      "src": "stem",
+      "quote": "\\dfrac{4x+3}{|2x|-5}"
+     },
+     {
+      "term": "절댓값",
+      "src": "stem",
+      "quote": "|2x|"
+     }
+    ],
+    "goal": [
+     {
+      "term": "극한",
+      "src": "stem",
+      "quote": "극한값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "극한값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "절댓값",
+      "src": "solution",
+      "quote": "$x\\lt0$에서 $|2x|=-2x$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "음의 무한대로 접근할 때 절댓값 안의 부호가 음수임을 고려하여 절댓값을 푼다."
+     },
+     {
+      "term": "극한",
+      "src": "solution",
+      "quote": "극한값은 $\\dfrac4{-2}=-2$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "곱의 미분법으로 f'(x)=6x(x+5)+(3x^2-1)을 구하고 x=1을 대입해 f'(1)=38을 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "다항함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=(3x^2-1)(x+5)$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "미분계수",
+      "src": "stem",
+      "quote": "$f'(1)$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$f'(1)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "곱의미분법",
+      "src": "solution",
+      "quote": "곱의 미분법 $(uv)'=u'v+uv'$를 적용한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "미분",
+      "src": "solution",
+      "quote": "$f'(x)=6x(x+5)+(3x^2-1)\\times1$",
+      "evidenceType": "IMPLIED",
+      "justification": "두 다항식을 각각 미분하여 도함수를 완성한다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "도함수 y'=6x^2-1에서 접선의 기울기 5를 구하고 접선 y=5x-10의 x절편 2를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "다항함수",
+      "src": "stem",
+      "quote": "곡선 $y=2x^3-x-6$ 위의"
+     },
+     {
+      "term": "접선",
+      "src": "stem",
+      "quote": "접하는 접선의 $x$절편은?"
+     }
+    ],
+    "goal": [
+     {
+      "term": "x절편",
+      "src": "stem",
+      "quote": "접선의 $x$절편은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "$y'=6x^2-1$이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "접선의방정식",
+      "src": "solution",
+      "quote": "접선은 $y-(-5)=5(x-1)$, 즉 $y=5x-10$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "접점과 미분계수를 이용하여 접선의 방정식을 세운다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "도함수 f'(x)=-3x^2+4ax-4a<=0이 항상 성립할 판별식 D/4=4a(a-3)<=0에서 0<=a<=3을 구하고 정수의 합 6을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=-x^3+2ax^2-4ax+5$가"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $a$의 범위에"
+     }
+    ],
+    "goal": [
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "모든 정수의 합은?"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "모든 정수의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "$f'(x)=-3x^2+4ax-4a$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "판별식",
+      "src": "solution",
+      "quote": "판별식이 $0$ 이하이어야 한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "임의의 두 실수 $x_1\\lt x_2$에 대하여"
+     },
+     {
+      "term": "증가감소",
+      "src": "stem",
+      "quote": "$f(x_1)\\gt f(x_2)$를 만족시키도록"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "분모가 0으로 수렴하는 조건에서 a=8을 얻고 유리화하여 약분한 뒤 6(1+b)=18에서 b=2를 구해 ab=16을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "무리식",
+      "src": "stem",
+      "quote": "\\sqrt{x+a}-3"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $ab$의 값은?"
+     }
+    ],
+    "goal": [
+     {
+      "term": "곱",
+      "src": "stem",
+      "quote": "상수 $ab$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "유리화",
+      "src": "solution",
+      "quote": "분모를 유리화하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "약분",
+      "src": "solution",
+      "quote": "(x^3+b)(\\sqrt{x+8}+3)$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "분모와 분자의 공통인수 x-1을 약분한다."
+     },
+     {
+      "term": "수렴",
+      "src": "solution",
+      "quote": "분모 $\\sqrt{x+a}-3$이 $0$이 아닌 값으로 수렴하면",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x=1에서 좌우 미분계수가 같아 2a-6=4로 a=5를 구하고 연속 조건 a-6=2-b에서 b=3을 구해 ab=15를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조각함수",
+      "src": "stem",
+      "quote": "f(x)=\\begin{cases}"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $ab$의 값은?"
+     }
+    ],
+    "goal": [
+     {
+      "term": "곱",
+      "src": "stem",
+      "quote": "상수 $ab$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "우미분계수",
+      "src": "solution",
+      "quote": "우미분계수는 $(2ax-6)",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "좌미분계수",
+      "src": "solution",
+      "quote": "좌미분계수는 $(4x)",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "연속",
+      "src": "solution",
+      "quote": "연속이려면 $f(1)$이 좌극한과 같아야 하므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "미분가능",
+      "src": "stem",
+      "quote": "$x=1$에서 미분가능할 때"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "h(x)=f(x)-x의 부호가 바뀌는 구간 (-2,-1), (-1,0)에서 사잇값 정리로 적어도 2개의 실근을 찾는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "모든 실수에서 연속인 함수 $f(x)$에 대하여"
+     },
+     {
+      "term": "방정식",
+      "src": "stem",
+      "quote": "방정식 $f(x)=x$는"
+     }
+    ],
+    "goal": [
+     {
+      "term": "실근",
+      "src": "stem",
+      "quote": "적어도 몇 개의 실근을 갖는가?"
+     },
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "몇 개의 실근을 갖는가?"
+     }
+    ],
+    "method": [
+     {
+      "term": "사잇값정리",
+      "src": "solution",
+      "quote": "사잇값 정리를 적용한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "부호",
+      "src": "solution",
+      "quote": "이웃한 구간에서 $h$의 부호가 바뀌는 곳을 세어",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "연속",
+      "src": "stem",
+      "quote": "모든 실수에서 연속인 함수"
+     },
+     {
+      "term": "열린구간",
+      "src": "stem",
+      "quote": "열린구간 $(-2,2)$에서"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "합성함수 F(x)=f(x^2)의 미분 F'(x)=2x*f'(x^2)에 x=3을 대입하여 F'(3)=6*f'(9)=78을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=x^2-5x-7$일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "미분계수",
+      "src": "stem",
+      "quote": "\\lim_{x\\to3}\\dfrac{f(x^2)-f(9)}{x-3}"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "합성함수의미분법",
+      "src": "solution",
+      "quote": "합성함수의 미분계수로 계산한다",
+      "evidenceType": "IMPLIED",
+      "justification": "합성함수 f(x^2)의 도함수를 구하기 위해 연쇄법칙을 적용한다."
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "$F'(x)=f'(x^2)\\times2x$이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "미분계수",
+      "src": "solution",
+      "quote": "합성함수의 미분계수로 계산한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "f'(1)=0, f'(2)=0에서 a=-9, b=12를 구하고 극솟값 c=f(2)=6을 계산하여 a+b+c=9를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=2x^3+ax^2+bx+2$가"
+     },
+     {
+      "term": "극대",
+      "src": "stem",
+      "quote": "$x=1$에서 극대이고"
+     },
+     {
+      "term": "극소",
+      "src": "stem",
+      "quote": "$x=2$에서 극솟값 $c$를 가질 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b+c$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "미분계수",
+      "src": "solution",
+      "quote": "극점에서는 미분계수가 $0$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "$f'(x)=6x^2+2ax+b$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "연립일차방정식",
+      "src": "solution",
+      "quote": "빼면 $18+2a=0$에서 $a=-9$이고",
+      "evidenceType": "IMPLIED",
+      "justification": "a, b에 관한 연립일차방정식을 세워 푼다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "접점 t에 대한 방정식 2t^2-4t-6=0에서 근과 계수의 관계 t1+t2=2를 이용해 기울기의 합 4(t1+t2)-2=6을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "곡선 $y=2x^2-x+4$에"
+     },
+     {
+      "term": "접선",
+      "src": "stem",
+      "quote": "그은 두 접선의 기울기의 합은?"
+     }
+    ],
+    "goal": [
+     {
+      "term": "기울기",
+      "src": "stem",
+      "quote": "기울기의 합은?"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "기울기의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "접선의방정식",
+      "src": "solution",
+      "quote": "접선은 $y-(2t^2-t+4)=(4t-1)(x-t)$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "접점 t에서의 접선의 방정식을 세우고 외부의 점을 대입한다."
+     },
+     {
+      "term": "근과계수의관계",
+      "src": "solution",
+      "quote": "근과 계수의 관계로 기울기의 합을 구한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "$y'=4x-1$이므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "(가)에서 n=2, 최고차항 계수 2를 정하고 (다)에서 c=0, (나)에서 b=-1을 구해 f(x)=2x^2-x를 얻고 f(2)=6을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "다항함수",
+      "src": "stem",
+      "quote": "다항함수 $f(x)$가"
+     },
+     {
+      "term": "합성함수",
+      "src": "stem",
+      "quote": "(f\\circ f)(x)"
+     }
+    ],
+    "goal": [
+     {
+      "term": "함숫값",
+      "src": "stem",
+      "quote": "$f(2)$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$f(2)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "차수",
+      "src": "solution",
+      "quote": "(가)에서 $f$의 차수를 정하고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "수렴",
+      "src": "solution",
+      "quote": "분자는 $0$으로 수렴하고 분모는 $-2$로 수렴하므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "함숫값",
+      "src": "solution",
+      "quote": "$\\displaystyle\\lim_{x\\to0}\\dfrac{f(x)}x$가 존재하므로 $f(0)=0$",
+      "evidenceType": "IMPLIED",
+      "justification": "분모가 0으로 갈 때 극한이 존재하므로 분자의 함숫값 f(0)=0이다."
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "옳은 것 고르기",
+   "decisiveStep": "그래프에서 x=0의 불연속으로 ㄱ이 거짓임을 밝히고, [0,2]에서 연속과 합성함수의 극한을 확인하여 ㄴ, ㄷ을 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "두 함수 $y=f(x)$, $y=g(x)$의"
+     },
+     {
+      "term": "그래프",
+      "src": "stem",
+      "quote": "그래프가 다음 그림과 같을 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "옳은 것만을 있는 대로 고른 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "연속",
+      "src": "solution",
+      "quote": "$x=0$에서 불연속이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "최대최소정리",
+      "src": "solution",
+      "quote": "최대·최소 정리에",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "합성함수",
+      "src": "solution",
+      "quote": "합성의 좌·우극한을 확인한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "수직 접선과 축의 교점으로부터 OQ^2+QR^2=16m+8/m, OP^2=2m+2/m을 구하고 m->무한대 극한값 8을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "유리함수",
+      "src": "stem",
+      "quote": "곡선 $y=2/x\\,(x\\gt0)$가"
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "기울기가 $m\\,(m\\gt0)$인 직선 $l$과"
+     },
+     {
+      "term": "접선",
+      "src": "stem",
+      "quote": "곡선에 접하는 직선이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "극한",
+      "src": "stem",
+      "quote": "\\lim_{m\\to\\infty}\\dfrac{OQ^2+QR^2}{OP^2}"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "수선",
+      "src": "solution",
+      "quote": "$l$에 수직인 접선의 기울기는 $-\\dfrac1m$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "판별식",
+      "src": "solution",
+      "quote": "중근을 가지므로 $m^2n^2-8m=0$에서",
+      "evidenceType": "IMPLIED",
+      "justification": "접한다는 조건에서 연립 이차방정식이 중근을 가져 판별식이 0이다."
+     },
+     {
+      "term": "피타고라스정리",
+      "src": "solution",
+      "quote": "$\\overline{QR}^2=\\overline{OQ}^2+\\overline{OR}^2=8m+\\dfrac8m$",
+      "evidenceType": "IMPLIED",
+      "justification": "직교하는 축 상의 절편으로 빗변 길이의 제곱을 피타고라스 정리로 구한다."
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "m\\gt0"
+     },
+     {
+      "term": "수선",
+      "src": "stem",
+      "quote": "$l$에 수직이고"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "f'(x)=6(x-2)(x+a)=0의 두 근 2와 -a가 서로 다르고 열린구간 (-1,4)에 속할 조건 -4<a<1, a!=-2에서 정수 a의 개수 3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=2x^3+3(a-2)x^2-12ax+1$이"
+     },
+     {
+      "term": "극대",
+      "src": "stem",
+      "quote": "극댓값과 극솟값을 모두 갖도록"
+     },
+     {
+      "term": "극소",
+      "src": "stem",
+      "quote": "극댓값과 극솟값을 모두 갖도록"
+     }
+    ],
+    "goal": [
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "정수 $a$의 개수는?"
+     },
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "정수 $a$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "$f'(x)=6x^2+6(a-2)x-12a$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "구별가능",
+      "src": "solution",
+      "quote": "두 근이 달라야 하므로 $-a\\ne2$",
+      "evidenceType": "IMPLIED",
+      "justification": "극대와 극소를 모두 가지려면 도함수의 두 근이 서로 달라야 한다."
+     },
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "$-1\\lt-a\\lt4$, 즉 $-4\\lt a\\lt 1$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "근이 열린구간 안에 놓일 조건을 부등식으로 푼다."
+     }
+    ],
+    "condition": [
+     {
+      "term": "열린구간",
+      "src": "stem",
+      "quote": "열린구간 $(-1,4)$에서"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "접점 t에 대한 이차식 판별식 D=9n^2-20n+4의 부호로 a_1=1, a_2=2, a_3..a_8=3을 구하고 합 21을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차함수",
+      "src": "stem",
+      "quote": "곡선 $y=x^3-2x^2$에"
+     },
+     {
+      "term": "접선",
+      "src": "stem",
+      "quote": "그은 서로 다른 접선의 개수를"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "\\sum_{n=1}^{8}a_n$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "접선의방정식",
+      "src": "solution",
+      "quote": "접선은 $y-(t^3-2t^2)=(3t^2-4t)(x-t)$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "곡선 위의 점 t에서의 접선의 방정식을 세우고 외부의 점을 대입한다."
+     },
+     {
+      "term": "판별식",
+      "src": "solution",
+      "quote": "이차식 $2t^2-(2+3n)t+4n=0$의 판별식은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "합",
+      "src": "solution",
+      "quote": "$\\displaystyle\\sum_{n=1}^{8}a_n=1+2+3\\times6=21$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "자연수 $n$에 대하여"
+     },
+     {
+      "term": "구별가능",
+      "src": "stem",
+      "quote": "서로 다른 접선의 개수를"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 18,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "w=5+-t에서의 교점 수 합 g(t)를 t의 구간별로 계산하여 t=0, t=5에서 불연속이 됨을 밝혀 개수 2를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조각함수",
+      "src": "stem",
+      "quote": "f(x)=\\begin{cases}"
+     },
+     {
+      "term": "절댓값",
+      "src": "stem",
+      "quote": "|f(x)-5|=t"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "$g(t)$의 불연속점의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "교점",
+      "src": "solution",
+      "quote": "각 수평선과 그래프의 교점 수를 센다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "$t$의 구간에 따라 $g(t)$를 계산한다",
+      "evidenceType": "IMPLIED",
+      "justification": "t의 범위에 따라 수평선과의 교점 개수를 분류하여 합산한다."
+     },
+     {
+      "term": "연속",
+      "src": "solution",
+      "quote": "불연속점은 $2$개이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실근",
+      "src": "stem",
+      "quote": "서로 다른 실근의 개수를"
+     },
+     {
+      "term": "구별가능",
+      "src": "stem",
+      "quote": "서로 다른 실근의 개수를"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 19,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "양변을 x>0으로 나누고 조임정리로 lim f(x)/x=2를 구한 뒤 식을 f(x)/x로 정리하여 극한값 4/5를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "함수 $f(x)$가"
+     },
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "-x^2+2x\\le f(x)\\le x^2+2x"
+     }
+    ],
+    "goal": [
+     {
+      "term": "우극한",
+      "src": "stem",
+      "quote": "\\lim_{x\\to0+}\\dfrac{\\{f(x)\\}^2}{x\\{3x+f(x)\\}}"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "의 값을 구하시오."
+     }
+    ],
+    "method": [
+     {
+      "term": "샌드위치정리",
+      "src": "solution",
+      "quote": "조임정리로 구한 뒤 대입한다",
+      "evidenceType": "IMPLIED",
+      "justification": "부등식의 양변 극한으로부터 샌드위치 정리(조임정리)를 적용한다."
+     },
+     {
+      "term": "부등식의성질",
+      "src": "solution",
+      "quote": "양변을 $x\\gt0$으로 나누어",
+      "evidenceType": "IMPLIED",
+      "justification": "양수 x로 양변을 나누어 부등호 방향을 보존한다."
+     },
+     {
+      "term": "우극한",
+      "src": "solution",
+      "quote": "$\\displaystyle\\lim_{x\\to0+}\\dfrac{f(x)}x=2$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "모든 실수 $x$에 대하여"
+     },
+     {
+      "term": "항상성립",
+      "src": "stem",
+      "quote": "모든 실수 $x$에 대하여"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 20,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "평균변화율 (2-(-31))/3=11과 f'(c)=3c^2+2=11을 같다고 놓고 열린구간 (-3,0)에 속하는 c=-sqrt(3)을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "삼차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=x^3+2x+2$에 대하여"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $c$의 값을 구하시오."
+     }
+    ],
+    "goal": [
+     {
+      "term": "결정",
+      "src": "stem",
+      "quote": "상수 $c$의 값을 구하시오."
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "값을 구하시오."
+     }
+    ],
+    "method": [
+     {
+      "term": "평균값정리",
+      "src": "solution",
+      "quote": "평균값 정리는 평균변화율과 같은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균변화율",
+      "src": "solution",
+      "quote": "평균변화율은 $\\dfrac{f(0)-f(-3)}{0-(-3)}",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "$f'(x)=3x^2+2$이므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "닫힌구간",
+      "src": "stem",
+      "quote": "닫힌구간 $[-3,0]$에서"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 21,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "|x|<3에서 약분한 -1/(3+|x|)의 극한 -1/6과 x=+-3에서의 함숫값을 같게 하여 a=0, b=-1을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조각함수",
+      "src": "stem",
+      "quote": "f(x)=\\begin{cases}"
+     },
+     {
+      "term": "절댓값",
+      "src": "stem",
+      "quote": "|x|\\ge3"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $a,b$의 값을 각각 구하시오."
+     }
+    ],
+    "goal": [
+     {
+      "term": "결정",
+      "src": "stem",
+      "quote": "상수 $a,b$의 값을 각각 구하시오."
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "값을 각각 구하시오."
+     }
+    ],
+    "method": [
+     {
+      "term": "약분",
+      "src": "solution",
+      "quote": "$f(x)=\\dfrac{|x|-3}{9-x^2}=-\\dfrac1{3+|x|}$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "분모를 인수분해하여 공통인수 3-|x|를 약분한다."
+     },
+     {
+      "term": "연립일차방정식",
+      "src": "solution",
+      "quote": "두 식을 빼면 $12a=0$에서 $a=0$이고",
+      "evidenceType": "IMPLIED",
+      "justification": "a, b에 관한 두 일차방정식을 연립하여 푼다."
+     },
+     {
+      "term": "연속",
+      "src": "solution",
+      "quote": "연속이려면 $6a+\\dfrac16b=-\\dfrac16$과",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "모든 실수 $x$에서"
+     },
+     {
+      "term": "항상성립",
+      "src": "stem",
+      "quote": "모든 실수 $x$에서"
+     },
+     {
+      "term": "연속",
+      "src": "stem",
+      "quote": "연속일 때"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 22,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "삼차 기함수 f(x)=2x^3+ax의 f'(-1)=6+a=0에서 f(x)=2x^3-6x를 구하고 f(2)=4를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "다항함수",
+      "src": "stem",
+      "quote": "다항함수 $f(x)$는"
+     },
+     {
+      "term": "극값",
+      "src": "stem",
+      "quote": "극값을 갖는다."
+     }
+    ],
+    "goal": [
+     {
+      "term": "함숫값",
+      "src": "stem",
+      "quote": "$f(2)$를 구하시오."
+     },
+     {
+      "term": "결정",
+      "src": "stem",
+      "quote": "$f(x)$를 구하고"
+     }
+    ],
+    "method": [
+     {
+      "term": "기함수",
+      "src": "solution",
+      "quote": "(나)에서 $f$는 기함수이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "차수",
+      "src": "solution",
+      "quote": "최고차항의 계수가 $2$인 삼차함수이다",
+      "evidenceType": "IMPLIED",
+      "justification": "무한대에서의 극한 차수와 계수를 결정한다."
+     },
+     {
+      "term": "도함수",
+      "src": "solution",
+      "quote": "$f'(x)=6x^2+a$이므로 $f'(-1)=6+a=0$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "모든 실수 $x$에 대하여"
+     },
+     {
+      "term": "항상성립",
+      "src": "stem",
+      "quote": "모든 실수 $x$에 대하여"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 23,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "g(t)의 미분불가능점이 {0,1,3}이라는 조건에서 전환점 (1+r)/2=3으로 b=-5a를 얻고 g(4)=q(4)=0으로 a=3/2, b=-15/2를 구해 f(2)=-3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조각함수",
+      "src": "stem",
+      "quote": "f(x)=\\begin{cases}"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "(단, $a,b$는 상수이고"
+     }
+    ],
+    "goal": [
+     {
+      "term": "함숫값",
+      "src": "stem",
+      "quote": "$f(2)$의 값을 구하시오."
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$f(2)$의 값을 구하시오."
+     }
+    ],
+    "method": [
+     {
+      "term": "최댓값",
+      "src": "solution",
+      "quote": "최댓값을 양 끝점 중 하나에서 가지므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "미분가능",
+      "src": "solution",
+      "quote": "$t=1$에서 미분 가능하다. 이는 조건 (가)에 어긋나므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "연립일차방정식",
+      "src": "solution",
+      "quote": "대입하면 $-4a+6=0$이므로 $a=\\dfrac32$",
+      "evidenceType": "IMPLIED",
+      "justification": "b=-5a와 g(4)=0 식을 연립하여 a, b를 구한다."
+     }
+    ],
+    "condition": [
+     {
+      "term": "연속",
+      "src": "stem",
+      "quote": "연속인 함수 $f(x)$가"
+     },
+     {
+      "term": "닫힌구간",
+      "src": "stem",
+      "quote": "닫힌구간 $[t-1,t]$에서"
+     },
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "$a\\gt0$이다."
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  }
+ ]
+}

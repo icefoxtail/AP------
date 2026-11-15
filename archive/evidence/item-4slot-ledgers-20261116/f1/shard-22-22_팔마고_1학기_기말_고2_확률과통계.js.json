@@ -1,0 +1,1667 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "sonnet-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-15T14:00:00+09:00",
+ "sourceArchiveFile": "original/high/h2/1final/22_팔마고_1학기_기말_고2_확률과통계.js",
+ "candidates": [
+  {
+   "term": "정규근사",
+   "en": "NORMAL_APPROXIMATION",
+   "synonyms": [
+    "정규분포로근사"
+   ],
+   "kind": "방법",
+   "parent": "정규분포",
+   "note": "이항분포를 정규분포로 근사해 확률을 구하는 방법",
+   "usedIn": [
+    18,
+    22
+   ]
+  }
+ ],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "한 번의 시행에서 두 동전의 면이 다를 확률 1/2를 구하고 5번 중 3번 성공할 확률 5C3(1/2)^5=5/16을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "독립시행",
+      "src": "stem",
+      "quote": "시행을 5번 반복할 때"
+     },
+     {
+      "term": "사건",
+      "src": "stem",
+      "quote": "서로 다른 면이 나오는 사건이 3번 일어날 확률은?"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "사건이 3번 일어날 확률은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "수학적확률",
+      "src": "solution",
+      "quote": "전체 네 가지가 같은 확률이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "동전 4가지 경우가 동등하므로 경우의 수 비로 한 번의 확률을 구한다"
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "${}_5C_3=10$가지로 고릅니다",
+      "evidenceType": "IMPLIED",
+      "justification": "5번 중 성공할 3번의 위치를 조합으로 센다"
+     },
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "$P={}_5C_3(\\frac12)^3(\\frac12)^2",
+      "evidenceType": "IMPLIED",
+      "justification": "독립시행 5번 중 정확히 3번 성공할 확률의 이항분포 꼴이다"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "동전 두 개 던지기"
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "둘 다 탈락할 확률 0.3×0.1=0.03을 독립으로 구해 여사건으로 1-0.03=0.97을 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "예선을 통과할 확률이 각각 $0.7$, $0.9$"
+     },
+     {
+      "term": "사건",
+      "src": "stem",
+      "quote": "각각 예선을 통과하는 사건이 독립일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "예선에 통과할 확률은?"
+     },
+     {
+      "term": "합집합",
+      "src": "stem",
+      "quote": "가은이 또는 진수가 예선에 통과할"
+     }
+    ],
+    "method": [
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "둘 다 탈락하는 여사건",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "독립사건",
+      "src": "solution",
+      "quote": "두 사건이 독립이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률의곱셈정리",
+      "src": "solution",
+      "quote": "$0.3\\times0.1=0.03$입니다",
+      "evidenceType": "IMPLIED",
+      "justification": "독립사건의 교집합 확률을 각 확률의 곱으로 구한다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "독립사건",
+      "src": "stem",
+      "quote": "사건이 독립일 때"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "노래 경연 예선"
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "연속확률변수는 구간에서 실수값을 갖는 양이고 태어난 달은 12개 값뿐인 이산확률변수이므로 ④가 해당한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "다음 확률변수 중 연속확률변수가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "연속확률변수가 아닌 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "연속확률변수",
+      "src": "solution",
+      "quote": "연속확률변수는 길이·시간·온도처럼",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "이산확률변수",
+      "src": "solution",
+      "quote": "이산확률변수입니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "실수",
+      "src": "solution",
+      "quote": "실수값으로 측정하는 양입니다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "E(aX+1)=9a+1=28에서 a=3, V(bX+a)=16b^2=64에서 b=2이므로 ab=6이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이산확률변수",
+      "src": "stem",
+      "quote": "이산확률변수 $X$에 대하여"
+     },
+     {
+      "term": "기댓값",
+      "src": "stem",
+      "quote": "$E(X)=9$, $V(X)=16$일 때"
+     },
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "$E(X)=9$, $V(X)=16$일 때"
+     },
+     {
+      "term": "확률변수의일차식",
+      "src": "stem",
+      "quote": "$E(aX+1)=28$, $V(bX+a)=64$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "곱",
+      "src": "stem",
+      "quote": "$ab$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$ab$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "기댓값",
+      "src": "solution",
+      "quote": "기댓값 조건:",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "분산 조건:",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률변수의일차식",
+      "src": "solution",
+      "quote": "$V(bX+a)=b^2V(X)=16b^2=64$",
+      "evidenceType": "IMPLIED",
+      "justification": "V(aX+b)=a^2V(X) 성질로 상수항은 제외하고 계수를 제곱한다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "두 양수 $a,b$에 대하여"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "B(80,1/4)에서 평균 np=20, 분산 np(1-p)=15를 구해 합 35를 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이항분포",
+      "src": "stem",
+      "quote": "이항분포 $B\\left(80,\\frac14\\right)$"
+     },
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "따르는 확률변수 $X$의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "평균과 분산의 합은?"
+     },
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "평균과 분산의 합은?"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "평균과 분산의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "평균은 $np$, 분산은 $np(1-p)$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "$n=80$, $p=\\frac14$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "n과 p의 값을 평균·분산 공식에 넣어 값을 구한다"
+     },
+     {
+      "term": "기댓값",
+      "src": "solution",
+      "quote": "$E(X)=80\\times\\frac14=20$",
+      "evidenceType": "IMPLIED",
+      "justification": "평균은 기댓값 E(X)=np로 구한다"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "표본평균의 분산 σ^2/n=8^2/64=1을 모표준편차를 제곱해 표본 크기로 나눠 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "모평균",
+      "src": "stem",
+      "quote": "모평균이 87이고"
+     },
+     {
+      "term": "모표준편차",
+      "src": "stem",
+      "quote": "모표준편차가 8인"
+     },
+     {
+      "term": "모집단",
+      "src": "stem",
+      "quote": "모표준편차가 8인 모집단에서"
+     },
+     {
+      "term": "표본의크기",
+      "src": "stem",
+      "quote": "크기가 64인 표본을"
+     },
+     {
+      "term": "임의추출",
+      "src": "stem",
+      "quote": "표본을 임의추출하였을 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "표본평균",
+      "src": "stem",
+      "quote": "표본평균 $\\overline X$의 분산은?"
+     },
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "표본평균 $\\overline X$의 분산은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "표본평균",
+      "src": "solution",
+      "quote": "표본평균의 분산은 개별 관측값의 분산을",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "표본의크기",
+      "src": "solution",
+      "quote": "표본 크기로 나눈 값입니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "모분산",
+      "src": "solution",
+      "quote": "\\frac{\\sigma^2}{n}=\\frac{8^2}{64}",
+      "evidenceType": "IMPLIED",
+      "justification": "모표준편차를 제곱한 모분산을 표본 크기로 나눈다"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "N(1,4)를 Z=(X-2)/2 꼴로 표준화해 P(0≤Z≤(a-1)/2)=0.4772=P(0≤Z≤2)에서 a=5를 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정규분포",
+      "src": "stem",
+      "quote": "확률변수 $X$가 정규분포 $N(1,4)$를 따르고"
+     },
+     {
+      "term": "표준정규분포",
+      "src": "stem",
+      "quote": "오른쪽 표준정규분포표를 이용하여"
+     }
+    ],
+    "goal": [
+     {
+      "term": "미지수",
+      "src": "stem",
+      "quote": "$a$의 값을 구한 것은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$a$의 값을 구한 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "표준편차",
+      "src": "solution",
+      "quote": "표준편차는 $\\sqrt4=2$입니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "표준화",
+      "src": "solution",
+      "quote": "$Z=\\frac{X-1}{2}$로 표준화하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "표준정규분포",
+      "src": "solution",
+      "quote": "표에서 $P(0\\le Z\\le2)=0.4772$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "표준정규분포표의 값과 비교해 (a-1)/2를 정한다"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "확률밀도함수의 전체 넓이 ∫0^4 a(x+3)dx=20a=1에서 a=1/20을 구하고 ∫0^2 (x+3)/20 dx=2/5를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "확률변수 $X$의 확률밀도함수가"
+     },
+     {
+      "term": "확률밀도함수",
+      "src": "stem",
+      "quote": "확률밀도함수가 $f(x)=a(x+3)$"
+     },
+     {
+      "term": "일차함수",
+      "src": "stem",
+      "quote": "$f(x)=a(x+3)$ ($0\\le x\\le4$)"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "$P(0\\le X\\le2)$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$P(0\\le X\\le2)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "확률밀도함수",
+      "src": "solution",
+      "quote": "확률밀도함수의 전체 넓이는 1",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "정적분",
+      "src": "solution",
+      "quote": "\\int_0^4a(x+3)\\,dx",
+      "evidenceType": "IMPLIED",
+      "justification": "확률밀도함수의 전체 넓이를 정적분으로 계산한다"
+     },
+     {
+      "term": "넓이",
+      "src": "solution",
+      "quote": "구하는 구간의 넓이",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "미정계수",
+      "src": "solution",
+      "quote": "a(8+12)=20a=1",
+      "evidenceType": "IMPLIED",
+      "justification": "전체 확률 1이라는 조건으로 상수 a를 정한다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "(단, $a$는 상수)"
+     },
+     {
+      "term": "정의역제한",
+      "src": "stem",
+      "quote": "($0\\le x\\le4$)"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "보기(ㄱㄴㄷ) 판정",
+   "decisiveStep": "ㄱ은 독립과 배반이 다르고 ㄹ은 P(A∩B)=1/6≠1/3이라 거짓이며 ㄴ,ㄷ만 독립의 성질로 참이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "사건",
+      "src": "stem",
+      "quote": "서로 다른 두 사건 $A,B$에 대하여"
+     },
+     {
+      "term": "표본공간",
+      "src": "stem",
+      "quote": "표본공간 $S$의"
+     },
+     {
+      "term": "독립사건",
+      "src": "stem",
+      "quote": "$A,B$가 서로 독립이면 $A^c,B$도"
+     },
+     {
+      "term": "배반사건",
+      "src": "stem",
+      "quote": "서로 배반사건이다"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "항상 옳은 것을 있는 대로 고른 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "독립사건",
+      "src": "solution",
+      "quote": "독립은 $P(A\\cap B)=P(A)P(B)$라는 뜻이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "배반사건",
+      "src": "solution",
+      "quote": "배반은 $P(A\\cap B)=0$입니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "$P(A^c\\cap B)=P(B)-P(A\\cap B)",
+      "evidenceType": "IMPLIED",
+      "justification": "여사건 A^c와 B의 교집합 확률을 P(B)-P(A∩B)로 바꾼다"
+     },
+     {
+      "term": "조건부확률",
+      "src": "solution",
+      "quote": "독립이면 $P(A\\mid B^c)=P(A)$이고",
+      "evidenceType": "IMPLIED",
+      "justification": "독립이면 조건부확률이 원래 확률과 같다는 성질을 쓴다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구별가능",
+      "src": "stem",
+      "quote": "서로 다른 두 사건"
+     },
+     {
+      "term": "항상성립",
+      "src": "stem",
+      "quote": "항상 옳은 것을"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "확률의 합 a+a^2+1/4=1에서 a=1/2를 구하고 E(X)=2, V(X)=11/2-4=3/2로 V(X)/a=3이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이산확률변수",
+      "src": "stem",
+      "quote": "이산확률변수 $X$의 확률분포표가"
+     },
+     {
+      "term": "확률분포표",
+      "src": "stem",
+      "quote": "확률분포표가 다음과 같을 때"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $a$와 $X$의 분산"
+     }
+    ],
+    "goal": [
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "$X$의 분산 $V(X)$에 대하여"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$\\dfrac{V(X)}{a}$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "확률",
+      "src": "solution",
+      "quote": "확률의 합은 1이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "이차방정식",
+      "src": "solution",
+      "quote": "$a^2+a-\\frac34=0$입니다",
+      "evidenceType": "IMPLIED",
+      "justification": "확률의 합 조건을 a에 관한 이차방정식으로 정리해 푼다"
+     },
+     {
+      "term": "인수분해",
+      "src": "solution",
+      "quote": "$(a-\\frac12)(a+\\frac32)=0$이고",
+      "evidenceType": "IMPLIED",
+      "justification": "이차방정식을 인수분해해 a의 값을 구한다"
+     },
+     {
+      "term": "음수",
+      "src": "solution",
+      "quote": "확률은 음수가 될 수 없으므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "기댓값",
+      "src": "solution",
+      "quote": "$E(X)=1\\cdot\\frac12+2\\cdot\\frac14",
+      "evidenceType": "IMPLIED",
+      "justification": "확률분포표로 값과 확률의 곱을 합해 기댓값을 구한다"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(X)=\\frac{11}{2}-2^2=\\frac32$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "V(X)=E(X^2)-E(X)^2 공식으로 분산을 구한다"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "T=100+20(X-m)/σ에서 E(T)=100, σ(T)=20, a=140으로 합 260을 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "점수를 확률변수 $X$라 하자"
+     },
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "전체 응시자의 시험 점수의 평균이 60점"
+     },
+     {
+      "term": "표준편차",
+      "src": "stem",
+      "quote": "표준편차가 15점일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "기댓값",
+      "src": "stem",
+      "quote": "$E(T)+\\sigma(T)+a$의 값은?"
+     },
+     {
+      "term": "표준편차",
+      "src": "stem",
+      "quote": "$E(T)+\\sigma(T)+a$의 값은?"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$E(T)+\\sigma(T)+a$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "확률변수의일차식",
+      "src": "solution",
+      "quote": "표준편차는 일차변환의 계수 절댓값만큼",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "절댓값",
+      "src": "solution",
+      "quote": "일차변환의 계수 절댓값만큼",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "기댓값",
+      "src": "solution",
+      "quote": "$E(X)=m$이므로 $E(T)=100",
+      "evidenceType": "IMPLIED",
+      "justification": "평균 m을 넣어 표준화 항이 0이 되어 E(T)=100을 얻는다"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "$a=100+20\\frac{90-60}{15}",
+      "evidenceType": "IMPLIED",
+      "justification": "점수 90점을 표준점수 식에 넣어 a를 구한다"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "표준점수"
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "V(X)=np(1-p)에서 p(1-p)=1/4-(p-1/2)^2의 최대로 p=1/2, 최댓값 n/4를 구해 곱 n/8을 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이항분포",
+      "src": "stem",
+      "quote": "이항분포 $B(n,p)$를 따르는"
+     },
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "따르는 확률변수 $X$에 대하여"
+     }
+    ],
+    "goal": [
+     {
+      "term": "분산",
+      "src": "stem",
+      "quote": "$V(X)$가 최대가 되기 위한"
+     },
+     {
+      "term": "최댓값",
+      "src": "stem",
+      "quote": "그때의 $V(X)$의 최댓값의 곱은?"
+     },
+     {
+      "term": "곱",
+      "src": "stem",
+      "quote": "그때의 $V(X)$의 최댓값의 곱은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "이항분포의 분산은 $V(X)=np(1-p)$입니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "$p(1-p)=\\frac14-(p-\\frac12)^2",
+      "evidenceType": "IMPLIED",
+      "justification": "이차식을 완전제곱식으로 고쳐 최댓값을 구한다"
+     },
+     {
+      "term": "최댓값",
+      "src": "solution",
+      "quote": "최대가 되는 값은 $p=\\frac12$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "일정",
+      "src": "stem",
+      "quote": "$n$의 값이 일정할 때"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "P(X≥8)=P(X≤12)로 m=10이고 대칭으로 P(X≤9)=a, P(X≤8)=1-(a+b)를 써서 P(8≤X≤9)=2a+b-1이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정규분포",
+      "src": "stem",
+      "quote": "정규분포 $N(m,\\sigma^2)$을 따르는"
+     },
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "따르는 확률변수 $X$와"
+     },
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "두 실수 $a,b$가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "$P(8\\le X\\le9)$의 값을"
+     }
+    ],
+    "method": [
+     {
+      "term": "축",
+      "src": "solution",
+      "quote": "(가) 대칭축:",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대칭성",
+      "src": "solution",
+      "quote": "(나) 대칭 이용:",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "$P(X\\le8)=P(X\\ge12)=1-(a+b)$",
+      "evidenceType": "IMPLIED",
+      "justification": "전체 확률 1에서 빼는 여사건 확률로 P(X≥12)를 나타낸다"
+     },
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "$P(X\\le12)=P(X\\le9)+b=a+b$",
+      "evidenceType": "IMPLIED",
+      "justification": "서로 겹치지 않는 구간의 확률을 더해 P(X≤12)를 구한다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상등",
+      "src": "stem",
+      "quote": "(가) $P(X\\ge8)=P(X\\le12)$"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "상위 4%의 꼬리확률 0.5-0.46=0.04에서 z=1.75를 얻어 x=60+10×1.75=77.5로 최저 점수를 정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정규분포",
+      "src": "stem",
+      "quote": "정규분포를 따른다고 한다"
+     },
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "평균이 60점, 표준편차가 10점인"
+     },
+     {
+      "term": "표준편차",
+      "src": "stem",
+      "quote": "평균이 60점, 표준편차가 10점인"
+     },
+     {
+      "term": "비율",
+      "src": "stem",
+      "quote": "상위 4% 이내에 속하는 학생들이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최솟값",
+      "src": "stem",
+      "quote": "1등급을 받기 위한 최저 점수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "표준정규분포",
+      "src": "solution",
+      "quote": "표준정규표에서 $P(0\\le Z\\le1.75)=0.46$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "표준정규분포표 값을 읽어 꼬리확률 0.04에 해당하는 z를 정한다"
+     },
+     {
+      "term": "대칭성",
+      "src": "solution",
+      "quote": "$P(Z\\ge1.75)=0.5-0.46=0.04$",
+      "evidenceType": "IMPLIED",
+      "justification": "표준정규분포가 0 중심으로 대칭이라 한쪽 넓이가 0.5임을 쓴다"
+     },
+     {
+      "term": "표준화",
+      "src": "solution",
+      "quote": "$z=(x-60)/10=1.75$",
+      "evidenceType": "IMPLIED",
+      "justification": "z=(x-m)/σ로 z값을 점수로 되돌린다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "중복불허",
+      "src": "stem",
+      "quote": "동점자가 없다고 할 때"
+     },
+     {
+      "term": "근삿값",
+      "src": "stem",
+      "quote": "$P(0 \\le Z \\le 1.75) = 0.46$으로 계산한다"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "성적 상위 비율 등급"
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "6번 중 2칸 이동이 k번이면 6+k칸이고 F까지 5칸(6으로 나눈 나머지 5)이므로 k=5이며 6C5(1/2)^6=3/32이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정육각형",
+      "src": "stem",
+      "quote": "한 변의 길이가 1인 정육각형 $ABCDEF$의"
+     },
+     {
+      "term": "꼭짓점",
+      "src": "stem",
+      "quote": "꼭짓점 $\\mathrm{A}$에서 출발하여"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "움직이는 점 $\\mathrm{P}$가 있다"
+     },
+     {
+      "term": "소수",
+      "src": "stem",
+      "quote": "소수의 눈이 나오면 2만큼"
+     },
+     {
+      "term": "시행",
+      "src": "stem",
+      "quote": "주사위 1개를 6번 던질 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "꼭짓점 $\\mathrm{F}$에 도착할 확률은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "나머지",
+      "src": "solution",
+      "quote": "이동 거리의 나머지로 판정합니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "수학적확률",
+      "src": "solution",
+      "quote": "2칸 이동 확률은 $1/2$입니다",
+      "evidenceType": "IMPLIED",
+      "justification": "소수의 눈 3개를 전체 6개로 나눈 경우의 수 비로 확률을 구한다"
+     },
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "{}_{6}C_5(1/2)^5(1/2)=6/64",
+      "evidenceType": "IMPLIED",
+      "justification": "6번 중 정확히 5번 2칸 이동하는 독립시행 확률을 이항분포 꼴로 구한다"
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "{}_{6}C_5",
+      "evidenceType": "IMPLIED",
+      "justification": "6번 중 2칸 이동하는 5번을 고르는 경우의 수이다"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "given": "정육각형의 그림은 보지 않았으나 해설의 칸 수 설명으로 충분"
+   },
+   "steps": [],
+   "scenarioNote": "정육각형 위 점의 이동"
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "한 팀에서 남자만 뽑힐 확률 1/5로 X~B(n,1/5)이고 V(X)=4n/25=12에서 n=75이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "남자만 선택된 팀의 수를 확률변수 $X$라"
+     },
+     {
+      "term": "표준편차",
+      "src": "stem",
+      "quote": "$\\sigma(X)=2\\sqrt{3}$일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "미지수",
+      "src": "stem",
+      "quote": "자연수 $n$의 값은?"
+     },
+     {
+      "term": "결정",
+      "src": "stem",
+      "quote": "자연수 $n$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "{}_{3}C_2/{}_{6}C_2=3/15",
+      "evidenceType": "IMPLIED",
+      "justification": "6명 중 2명을 뽑는 경우와 남자 3명 중 2명을 뽑는 경우를 조합으로 센다"
+     },
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "남자만 뽑힌 팀 수 $X\\sim B(n,1/5)$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "독립시행",
+      "src": "solution",
+      "quote": "각 팀의 선택을 독립적으로 보면",
+      "evidenceType": "IMPLIED",
+      "justification": "각 팀의 선택이 서로 독립인 시행이라 이항분포가 된다"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(X)=n(1/5)(4/5)=4n/25$",
+      "evidenceType": "IMPLIED",
+      "justification": "이항분포의 분산 np(1-p)를 쓴다"
+     },
+     {
+      "term": "표준편차",
+      "src": "solution",
+      "quote": "표준편차가 $2\\sqrt3$이므로 분산은 12",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "자연수 $n$의 값은?"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "팀에서 2명 선택"
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "약수 확률 p=2/3로 세 번 연속 약수 8/27(3점), 정확히 두 번 연속 8/27(2점), 나머지 11/27(1점)을 구해 E(X)=17/9이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "시행",
+      "src": "stem",
+      "quote": "한 개의 주사위를 세 번 던질 때"
+     },
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "얻은 점수를 확률변수 $X$라 하자"
+     },
+     {
+      "term": "약수",
+      "src": "stem",
+      "quote": "6의 약수의 눈이 연속하여 나오지"
+     }
+    ],
+    "goal": [
+     {
+      "term": "기댓값",
+      "src": "stem",
+      "quote": "$E(X)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "약수",
+      "src": "solution",
+      "quote": "6의 약수 눈은 $1,2,3,6$이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "약수·약수·기타 또는 기타·약수·약수이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "연속 두 번만 나오는 경우를 위치별로 나누어 센다"
+     },
+     {
+      "term": "독립시행",
+      "src": "solution",
+      "quote": "세 번 연속 약수인 확률은 $p^3=8/27$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "독립인 세 번의 시행 확률을 곱해 구한다"
+     },
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "확률 $1-8/27-8/27=11/27$",
+      "evidenceType": "IMPLIED",
+      "justification": "나머지 경우의 확률을 전체 1에서 빼서 구한다"
+     },
+     {
+      "term": "기댓값",
+      "src": "solution",
+      "quote": "$E(X)=1\\cdot11/27+2\\cdot8/27",
+      "evidenceType": "IMPLIED",
+      "justification": "점수와 확률의 곱을 합해 기댓값을 구한다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "인접",
+      "src": "stem",
+      "quote": "연속하여 두 번만 나오면 2점으로 한다"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "주사위 연속 약수 점수"
+  },
+  {
+   "ordinal": 18,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "성공 횟수 Y~B(162,2/3)로 총점 S=5Y-162의 평균 378, 표준편차 30을 구하고 정규근사로 P(0.5≤Z≤2)=0.2857이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "1부터 6까지의 자연수가 각각 하나씩"
+     },
+     {
+      "term": "복원추출",
+      "src": "stem",
+      "quote": "다시 주머니 안에 넣는 시행을 한다"
+     },
+     {
+      "term": "약수",
+      "src": "stem",
+      "quote": "6의 약수가 적혀 있는 공을 꺼내면 4점을 얻고"
+     },
+     {
+      "term": "표준정규분포",
+      "src": "stem",
+      "quote": "표준정규분포표를 이용하여 구한 것은?"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "393점 이상 438점 이하일 확률을"
+     }
+    ],
+    "method": [
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "$Y\\sim B(162,\\frac23)$이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률변수의일차식",
+      "src": "solution",
+      "quote": "총점은 $S=4Y-1(162-Y)=5Y-162$입니다",
+      "evidenceType": "IMPLIED",
+      "justification": "총점을 성공 횟수 Y의 일차식으로 나타내 평균·분산을 변환한다"
+     },
+     {
+      "term": "기댓값",
+      "src": "solution",
+      "quote": "$E(Y)=162\\cdot\\frac23=108$",
+      "evidenceType": "IMPLIED",
+      "justification": "이항분포의 평균 np로 기댓값을 구한다"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(Y)=162\\cdot\\frac23\\cdot\\frac13=36$",
+      "evidenceType": "IMPLIED",
+      "justification": "이항분포의 분산 np(1-p)로 분산을 구한다"
+     },
+     {
+      "term": "표준편차",
+      "src": "solution",
+      "quote": "$\\sigma(S)=30$입니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "정규근사",
+      "src": "solution",
+      "quote": "정규근사로 $P(393\\le S\\le438)",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "정규분포",
+      "src": "solution",
+      "quote": "정규근사로 $P(393\\le S\\le438)",
+      "evidenceType": "IMPLIED",
+      "justification": "정규근사는 이항분포를 정규분포로 바꾸는 것이다"
+     },
+     {
+      "term": "표준화",
+      "src": "solution",
+      "quote": "\\frac{393-378}{30}\\le Z",
+      "evidenceType": "IMPLIED",
+      "justification": "평균을 빼고 표준편차로 나눠 Z로 바꾼다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구간",
+      "src": "stem",
+      "quote": "393점 이상 438점 이하일 확률을"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "공 꺼내기 점수 게임"
+  },
+  {
+   "ordinal": 19,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "표본평균 X̄~N(5,1.2^2/n)을 표준화해 P(-√n/5≤Z≤√n/5)≥0.6826이 되도록 √n/5≥1에서 n≥25이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정규분포",
+      "src": "stem",
+      "quote": "표준편차가 1.2인 정규분포를"
+     },
+     {
+      "term": "평균",
+      "src": "stem",
+      "quote": "평균이 5이고"
+     },
+     {
+      "term": "표준편차",
+      "src": "stem",
+      "quote": "표준편차가 1.2인 정규분포를"
+     },
+     {
+      "term": "임의추출",
+      "src": "stem",
+      "quote": "임의추출한 $n$명의 월 교통비의"
+     },
+     {
+      "term": "표본평균",
+      "src": "stem",
+      "quote": "표본평균을 $\\overline X$라 할 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최솟값",
+      "src": "stem",
+      "quote": "$n$의 최솟값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "표본평균",
+      "src": "solution",
+      "quote": "표본평균은 $\\overline X\\sim N",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "표준편차",
+      "src": "solution",
+      "quote": "표준편차는 $\\frac{1.2}{\\sqrt n}$입니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "표준화",
+      "src": "solution",
+      "quote": "P\\left(-\\frac{0.24\\sqrt n}{1.2}\\le Z",
+      "evidenceType": "IMPLIED",
+      "justification": "구간의 양 끝을 평균과 표준편차로 표준화해 Z의 범위로 바꾼다"
+     },
+     {
+      "term": "표준정규분포",
+      "src": "solution",
+      "quote": "표에서 $P(-1\\le Z\\le1)=2(0.3413)",
+      "evidenceType": "IMPLIED",
+      "justification": "표준정규분포표 값 0.3413으로 구간 확률 0.6826을 확인한다"
+     },
+     {
+      "term": "대칭성",
+      "src": "solution",
+      "quote": "평균 5를 중심으로 양쪽 $0.24$씩 떨어져 있습니다",
+      "evidenceType": "IMPLIED",
+      "justification": "평균에 대해 대칭인 구간이라 -z부터 z까지의 확률로 바꾼다"
+     },
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "$\\frac{\\sqrt n}{5}\\ge1$이어야 합니다",
+      "evidenceType": "IMPLIED",
+      "justification": "확률 조건을 n에 관한 부등식으로 바꿔 푼다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "성립조건",
+      "src": "stem",
+      "quote": "\\ge0.6826$이 되기 위한"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "월 교통비"
+  },
+  {
+   "ordinal": 20,
+   "questionUid": null,
+   "format": "소문항 묶음",
+   "decisiveStep": "불량품 3개·정상 7개 중 2개를 뽑아 X=0,1,2의 확률 7/15, 7/15, 1/15를 구하고 P(X≥1)=8/15를 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률변수",
+      "src": "stem",
+      "quote": "불량품의 개수를 확률변수 $X$라고"
+     },
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "불량품의 개수를 확률변수"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률질량함수",
+      "src": "stem",
+      "quote": "$X$의 확률질량함수를 구하시오"
+     },
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "불량품이 1개 이상일 확률을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "전체 경우의 수는 ${}_{10}C_2=45$입니다",
+      "evidenceType": "IMPLIED",
+      "justification": "10개 중 2개를 동시에 뽑는 경우를 조합으로 센다"
+     },
+     {
+      "term": "곱의법칙",
+      "src": "solution",
+      "quote": "\\frac{{}_3C_1{}_7C_1}{45}",
+      "evidenceType": "IMPLIED",
+      "justification": "불량품 1개와 정상품 1개의 경우의 수를 곱해 센다"
+     },
+     {
+      "term": "확률질량함수",
+      "src": "solution",
+      "quote": "(1) 확률질량함수:",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "확률의덧셈정리",
+      "src": "solution",
+      "quote": "$P(X\\ge1)=P(X=1)+P(X=2)",
+      "evidenceType": "IMPLIED",
+      "justification": "겹치지 않는 사건의 확률을 더한다"
+     },
+     {
+      "term": "여사건",
+      "src": "solution",
+      "quote": "$1-P(X=0)=\\frac8{15}$로 확인",
+      "evidenceType": "IMPLIED",
+      "justification": "전체 1에서 불량품이 없는 확률을 빼는 여사건 확인이다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "적어도",
+      "src": "stem",
+      "quote": "불량품이 1개 이상일 확률을"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "불량품 뽑기"
+  },
+  {
+   "ordinal": 21,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "A가 2승, B가 3승 필요한 상황에서 4경기 중 A가 2번 이상 이길 확률 11/16을 구해 상금을 11:5로 분배한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "이길 확률이 같은 두 사람이 게임을 하여"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "A가 상금을 모두 가질 확률을 구하고"
+     },
+     {
+      "term": "분배",
+      "src": "stem",
+      "quote": "상금을 어떻게 분배해야 할까?"
+     }
+    ],
+    "method": [
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "A가 2번 이상 이기면 A가 먼저 6승에 도달합니다",
+      "evidenceType": "IMPLIED",
+      "justification": "앞으로 4경기에서 A의 승수로 경우를 나누어 A가 먼저 이기는 경우를 정한다"
+     },
+     {
+      "term": "독립시행",
+      "src": "solution",
+      "quote": "각 경기 승률이 $1/2$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "승률이 같은 경기를 독립 반복시행으로 보고 확률을 구한다"
+     },
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "{}_{4}C_2+{}_{4}C_3+{}_{4}C_4",
+      "evidenceType": "IMPLIED",
+      "justification": "4경기 중 A가 이기는 경기를 고르는 경우의 수를 조합으로 센다"
+     },
+     {
+      "term": "기댓값",
+      "src": "solution",
+      "quote": "기대 상금이 같아지도록",
+      "evidenceType": "IMPLIED",
+      "justification": "승리 확률에 따른 기대 상금에 비례해 분배한다"
+     },
+     {
+      "term": "비",
+      "src": "solution",
+      "quote": "A:B=11:5",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상등",
+      "src": "stem",
+      "quote": "이길 확률이 같은 두 사람이"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "파촐리의 상금 분배 문제"
+  },
+  {
+   "ordinal": 22,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "선택 확률 1/6로 X~B(720,1/6)의 평균 120, 표준편차 10을 구하고 정규근사로 표준화해 P(-1.5≤Z≤2)=0.9104를 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "표준정규분포",
+      "src": "stem",
+      "quote": "오른쪽 표준정규분포표를 이용하여"
+     }
+    ],
+    "goal": [
+     {
+      "term": "확률",
+      "src": "stem",
+      "quote": "105명 이상 140명 이하일 확률을"
+     }
+    ],
+    "method": [
+     {
+      "term": "조합",
+      "src": "solution",
+      "quote": "${}_{4}C_2=6$가지이고",
+      "evidenceType": "IMPLIED",
+      "justification": "네 과목 중 두 과목을 고르는 경우의 수를 조합으로 센다"
+     },
+     {
+      "term": "수학적확률",
+      "src": "solution",
+      "quote": "쌍은 1가지이므로 $p=1/6$입니다",
+      "evidenceType": "IMPLIED",
+      "justification": "전체 경우 중 해당 경우의 비로 한 학생의 확률을 구한다"
+     },
+     {
+      "term": "이항분포",
+      "src": "solution",
+      "quote": "$X\\sim B(720,1/6)$에서",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "기댓값",
+      "src": "solution",
+      "quote": "$E(X)=720/6=120$",
+      "evidenceType": "IMPLIED",
+      "justification": "이항분포의 평균 np로 기댓값을 구한다"
+     },
+     {
+      "term": "분산",
+      "src": "solution",
+      "quote": "$V(X)=720(1/6)(5/6)=100$",
+      "evidenceType": "IMPLIED",
+      "justification": "이항분포의 분산 np(1-p)로 분산을 구한다"
+     },
+     {
+      "term": "표준편차",
+      "src": "solution",
+      "quote": "표준편차는 10입니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "정규근사",
+      "src": "solution",
+      "quote": "정규근사 $X\\approx N(120,10^2)$로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "정규분포",
+      "src": "solution",
+      "quote": "정규근사 $X\\approx N(120,10^2)$로",
+      "evidenceType": "IMPLIED",
+      "justification": "이항분포를 정규분포 N(120,10^2)으로 바꿔 쓴다"
+     },
+     {
+      "term": "표준화",
+      "src": "solution",
+      "quote": "표준화하면 $105\\le X\\le140$은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대칭성",
+      "src": "solution",
+      "quote": "$P(-1.5\\le Z\\le2)=0.4332+0.4772",
+      "evidenceType": "IMPLIED",
+      "justification": "표준정규분포의 0 중심 대칭을 이용해 음수 쪽 구간 확률을 양수 쪽 표 값으로 쓴다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구별가능",
+      "src": "stem",
+      "quote": "서로 다른 2개의 과목을 임의로 선택할 때"
+     },
+     {
+      "term": "구간",
+      "src": "stem",
+      "quote": "105명 이상 140명 이하일 확률을"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "과목 선택 인원수"
+  }
+ ]
+}

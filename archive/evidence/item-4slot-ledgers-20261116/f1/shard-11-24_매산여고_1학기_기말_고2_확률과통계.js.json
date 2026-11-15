@@ -1,0 +1,939 @@
+{
+  "schemaVersion": 1,
+  "judge": "claude-haiku-4s",
+  "dictionaryVersion": "2026-04-14",
+  "createdAt": "2026-11-15T16:50:31.390Z",
+  "sourceArchiveFile": "original/high/h2/1final/24_매산여고_1학기_기말_고2_확률과통계.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "중복순열의 정의 n^4 = 81을 세우고 81 = 3^4에서 자연수 n=3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "중복순열",
+            "src": "stem",
+            "quote": "${}_{n}\\Pi_{4} = 81$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "자연수 $n$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "${}_{n}\\Pi_{r} = n^r$",
+            "evidenceType": "IMPLIED",
+            "justification": "중복순열을 거듭제곱 지수식으로 변환"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "각 상자에 1개씩 미리 담고 남은 과자 6개를 서로 다른 3개 상자에 나누어 담는 중복조합 3H6 = 8C6 = 28을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "중복조합",
+            "src": "stem",
+            "quote": "과자 9개를 서로 다른 3개의 상자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "나누어 담는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "${}_{n}H_{r} = {}_{n+r-1}C_{r}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "적어도 1개"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "x^2의 계수 nC2 = 15에서 n=6을 결정하고, x^3의 계수 6C3 = 20을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항정리",
+            "src": "stem",
+            "quote": "$(1+x)^n$의 전개식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x^3$의 계수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_{n}C_{r}",
+            "evidenceType": "IMPLIED",
+            "justification": "이항전개식 일반항의 조합 계수를 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$n$은 자연수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "남학생 3명을 원형 배열하는 (3-1)! = 2가지 후, 사잇자리 3곳에 여학생 3명을 배열하는 3! = 6가지를 곱해 12를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원순열",
+            "src": "stem",
+            "quote": "원형의 탁자에 둘러앉을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "교대로 앉는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "원순열의 성질을 이용하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교대",
+            "src": "stem",
+            "quote": "교대로 앉는"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "전체 8C2 = 28 분의 색이 서로 다른 경우 3C1 * 5C1 = 15로 나누어 확률 15/28을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "2개의 공을 동시에 꺼낼 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "색이 서로 다를 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_{n}C_{r}",
+            "evidenceType": "IMPLIED",
+            "justification": "공을 꺼내는 전체 경우의 수와 사건의 경우의 수를 조합으로 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "색이 서로 다를"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "P(B ∩ A^c) = P(A ∪ B) - P(A) = 3/4 - 1/3 = 5/12를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A) = \\dfrac{1}{3}$, $P(A \\cup B) = \\dfrac{3}{4}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(B \\cap A^c)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "확률의 덧셈정리와",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "두 눈의 합이 5 또는 10이 되는 순서쌍 4 + 3 = 7가지를 찾아 전체 36으로 나누어 7/36을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "두 개의 주사위를 동시에 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "5의 배수일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "두 눈의 합이 5의 배수가 되는 순서쌍을 찾아",
+            "evidenceType": "IMPLIED",
+            "justification": "두 눈의 합이 5인 경우와 10인 경우로 나누어 순서쌍을 탐색"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "5의 배수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "3학년 묶음과 2학년 2명을 배열하는 3! * 2! = 12가지 후 양 끝과 사이 4곳 중 2곳에 1학년을 배열하는 4P2 = 12가지를 곱해 144를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "일렬로 서서 사진을 찍으려고 한다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이웃",
+            "src": "solution",
+            "quote": "이웃해야 하는 조건은 묶어서",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "이웃",
+            "src": "stem",
+            "quote": "서로 이웃하고"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "15^10 = (14+1)^10 전개식에서 14의 배수를 제외한 마지막 항 10C10 * 1^10 = 1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "이항정리를 이용하여 큰 수의 거듭제곱을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나머지를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "이항정리를 이용하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "피제수는 $15^{10}$이고 제수는 14이다"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "A를 택해 노1파1이 나올 확률 1/2 * 3/5 = 3/10과 B를 택해 노1파1이 나올 확률 1/2 * 8/15 = 4/15의 합 분의 A의 확률로 사후확률 9/17을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "노란 공 1개와 파란 공 1개가 나왔을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "택한 주머니가 A일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "조건부확률 공식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "노란 공 1개와 파란 공 1개"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "동전 앞면 k개(k=1,2,3,4)의 이항확률과 주사위 눈 k가 나올 확률 1/6을 각각 곱해 합산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "동전 4개와 주사위 1개를 동시에 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "주사위의 눈의 수가 같을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "두 독립사건의 조건 수치가 일치하는 확률의 총합",
+            "evidenceType": "IMPLIED",
+            "justification": "동전 던지기와 주사위 던지기의 독립시행 확률을 곱하여 합산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "두 독립사건의 조건"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "P(A ∩ B) / P(B) + P(A ∩ B) / P(A) = 11/10에서 P(A ∩ B) = 3/10을 구하고 P(A ∪ B) = 1/2 + 3/5 - 3/10 = 4/5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "$P(A|B) + P(B|A) = \\dfrac{11}{10}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A \\cup B)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "확률의 덧셈정리 기본 공식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "여사건으로 곱이 4의 배수가 아닌 경우(홀수만 3번: 4^3, 짝수 2,6 중 1번과 홀수 2번: 3 * 2 * 16)를 7^3에서 빼서 확률을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "복원추출",
+            "src": "stem",
+            "quote": "다시 넣는 시행을 3번 반복한다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "적힌 수의 곱이 4의 배수일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건의 확률($1 - P(A^c)$)을 이용하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "곱이 4의 배수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "홀수 선택 후 앞면 2개(1/2 * 3/8 = 3/16)와 짝수 선택 후 앞면 2개(1/2 * 1/4 = 2/16)의 합 5/16 분의 3/16으로 3/5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "앞면이 나온 동전의 개수가 2개일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "주사위의 눈의 수가 홀수일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "독립시행의 조건부확률 구조",
+            "evidenceType": "IMPLIED",
+            "justification": "동전 던지기의 독립시행 확률을 조건부확률 공식에 적용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "눈의 수가 홀수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "A에서 흰2/흰1검1/검2 이동에 따른 B 흰공 확률의 가중합 분의 검2 이동 시 흰공 확률을 조건부확률로 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "상자 B에서 꺼낸 공이 흰 공일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "상자 A에서 상자 B로 이동한 공이 모두 검은 공이었을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "조건부확률을 적용한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "모두 검은 공"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "X ~ B(5, 1/3)에서 분산 V(X) = 5 * (1/3) * (2/3) = 10/9를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "3의 배수의 눈이 나오는 횟수를 $X$라 하자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "$X$의 분산 $V(X)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "이항분포의 분산 공식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "독립시행을 반복할 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "E(3X-1) = 3E(X)-1 = 35에서 E(X) = 12를 얻고, 24p = 12에서 p = 1/2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "24번 반복하여 사건 $A$가 일어나는 횟수를 $X$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$p$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "기댓값 성질 $E(aX+b) = aE(X)+b$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "일어날 확률이 $p$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "P(A)=a, P(B)=b라 하면 ab=1/8, (1-a)(1-b)=3/8에서 a+b = 1 - 3/8 + 1/8 = 3/4를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$는 서로 독립이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$P(A) + P(B)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "여사건들도 서로 독립이라는 성질",
+            "evidenceType": "IMPLIED",
+            "justification": "두 사건이 독립일 때 여사건도 독립임을 이용하여 확률 연립식을 전개"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$P(A) \\gt P(B)$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "앞면 x회, 뒷면 6-x회에서 2x + (6-x) = 9이므로 x=3이다. 6C3 * (1/2)^6 = 20/64 = 5/16을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "이 동전을 6번 던져서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "점수의 합이 9점일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "독립시행의 확률 공식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "점수의 합이 9점"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "X̄ = 5/4는 네 수의 합이 5인 경우이고 (1,1,1,2) 순서쌍 4가지이므로 4 / 6^4 = 4 / 1296 = 1 / 324를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "표본평균",
+            "src": "stem",
+            "quote": "확인한 4개의 수의 평균을 $\\overline{X}$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P\\left(\\overline{X}=\\dfrac{5}{4}\\right)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "4번 확인한 수의 합 조건으로 바꾼다",
+            "evidenceType": "IMPLIED",
+            "justification": "표본평균 조건을 4개 확률변수의 총합 조건으로 환원"
+          }
+        ],
+        "condition": [
+          {
+            "term": "복원추출",
+            "src": "stem",
+            "quote": "다시 넣는 시행을 4번 반복한다"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "실제 환자 양성 판정 100 * 0.9 = 90명과 비환자 오진 400 * 0.05 = 20명의 합 110명 분의 90명으로 90/110 = 9/11을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "암 진단을 받았을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "이 사람이 실제로 암 환자일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "베이즈 정리와 조건부확률 구조",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "실제로 암 환자일"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "X=1(4/10), 2(3/10), 3(2/10), 4(1/10)의 확률분포표를 작성하고 E(X)=2, E(X^2)=5에서 V(X)=5-4=1을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "두 수의 차를 확률변수 $X$라 하자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "$E(X)$와 $V(X)$를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률분포표",
+            "src": "stem",
+            "quote": "$X$의 확률분포표를 작성하고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "2장의 카드를 동시에 꺼낼 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 23,
+      "questionUid": null,
+      "format": "소문항 묶음",
+      "decisiveStep": "P(X=k)=1/7(k=1..7)이므로 E(X)=4이고, E(aX+2)=4a+2=14에서 a=3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "시도한 횟수를 확률변수 $X$라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "확률변수 $X$의 기댓값 $E(X)$를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "평균과 분산의 변환 성질을 활용한다",
+            "evidenceType": "IMPLIED",
+            "justification": "확률변수의 일차식 변환 공식 E(aX+b)=aE(X)+b를 적용"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $a$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

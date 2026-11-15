@@ -1,0 +1,912 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "gemini-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-15T22:25:00+09:00",
+ "sourceArchiveFile": "original/high/h1/2mid/20_매산고_2학기_중간_고1_기출.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "옳지 않은 것 고르기",
+   "decisiveStep": "집합 A의 원소는 공집합 기호, 1, 3, 5의 4개이므로 원소 개수 n(A)=4인데 n(A)=3으로 표기된 ②가 옳지 않다.",
+   "slots": {
+    "given": [
+     {
+      "term": "집합",
+      "quote": "집합 $A=\\{\\varnothing,1,3,5\\}$일 때,",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "거짓",
+      "quote": "②의 $n(A)=3$만 옳지 않다.",
+      "src": "solution"
+     }
+    ],
+    "method": [
+     {
+      "term": "원소",
+      "quote": "집합의 원소와 원소의 개수를 정확히 확인한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "개수",
+      "quote": "원소의 개수를 정확히 확인한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "수학 불호 50명 중 둘 다 불호 20명을 제외한 영어만 30명, 영어 선호 60명 중 둘 다 30명에서 수학 선호 50-30=20명을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "개수",
+      "quote": "좋아하지 않는 학생 수를 이용해 네 영역을 채운다.",
+      "src": "solution"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "quote": "수학만 좋아하는 학생은 몇 명인지 구하면?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "여집합",
+      "quote": "좋아하지 않는 학생 수를 이용해 네 영역을 채운다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "교집합",
+      "quote": "영어를 좋아하는 학생이 60명이므로 둘 다 좋아하는 학생은",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "참 또는 거짓을 명확히 판정할 수 있는 ㄱ(참), ㄴ(거짓), ㄷ(참), ㄹ(참)의 4개가 명제이므로 개수는 4이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "명제",
+      "quote": "다음 보기에서 명제인 것의 개수는?",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "quote": "명제인 것의 개수는?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "참",
+      "quote": "명제는 참인지 거짓인지 객관적으로 판단할 수 있는 문장이다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x>0이므로 산술-기하평균 부등식에 의해 x+4/x>=2sqrt(x*(4/x))=4이므로 최솟값은 4이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "부등식",
+      "quote": "양수 두 수에 산술평균-기하평균 부등식을 적용한다.",
+      "src": "solution"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최솟값",
+      "quote": "$x+\\dfrac{4}{x}$의 최솟값은?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "산술기하평균",
+      "quote": "산술평균-기하평균 부등식을 적용한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "등호조건",
+      "quote": "등호는 $x=\\dfrac4x$, 즉 $x=2$일 때 성립한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "quote": "$x>0$이므로 $x$와 $\\dfrac4x$는 모두 양수이다.",
+      "src": "solution"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "f(g(1))=f(2)=3으로 a=3, f(f(1))=f(2)=3으로 b=3에서 a+b=6을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "합성함수",
+      "quote": "아래의 그림은 합성함수를 나타낸 것이다.",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "quote": "$a+b$의 값은?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "합성함수",
+      "quote": "$(f\\circ g)(1)=f(g(1))=f(2)=3$이므로",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "함숫값",
+      "quote": "대응 그림에서 $f$와 $g$의 값을 순서대로 읽는다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "정의역 세 원소 -1, 0, 1의 함숫값이 4, 1, 0으로 모두 서로 다른 ③ (x-1)^2이 일대일함수이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정의역",
+      "quote": "정의역이 $X=\\{-1,0,1\\}$일 때,",
+      "src": "stem"
+     },
+     {
+      "term": "공역",
+      "quote": "(단, 공역은 실수 전체)",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "일대일함수",
+      "quote": "일대일함수인 것은?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "일대일함수",
+      "quote": "일대일함수라면 정의역의 서로 다른 원소가 서로 다른 함수값에 대응해야 한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "함숫값",
+      "quote": "서로 다른 함수값에 대응해야 한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "(g o f)(x)=-6x+3의 역함수에 3을 넣은 (g o f)^(-1)(3)=0으로부터 h(0)=4를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "quote": "세 함수 $f,g,h$에 대하여",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "quote": "$(h\\circ(g\\circ f)^{-1})(3)$의 값은?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "합성함수",
+      "quote": "먼저 $g\\circ f$를 구한 뒤",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "역함수",
+      "quote": "그 역함수에 3을 대입한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "일대일 증가조건 k>=1과 공역=치역 조건 f(k)=k^2-2k=k에서 k(k-3)=0이므로 k=3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정의역",
+      "quote": "$k\\ge1$이면 정의역에서 $f$는 증가하고",
+      "src": "solution"
+     },
+     {
+      "term": "이차함수",
+      "quote": "$f(x)=(x-1)^2-1$이므로",
+      "src": "solution"
+     }
+    ],
+    "goal": [
+     {
+      "term": "상수",
+      "quote": "실수 $k$의 값은?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "일대일대응",
+      "quote": "일대일성과 $f(X)=X$ 조건을 함께 확인한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "치역",
+      "quote": "치역의 최솟값이 $k$가 되어야 한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "보기(ㄱㄴㄷ) 판정",
+   "decisiveStep": "Q 포함 P와 R 포함 Q에서 R 포함 Q 포함 P이므로 진리집합 포함관계를 분석하여 옳은 보기를 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "진리집합",
+      "quote": "세 조건 $p,q,r$의 진리집합을 각각 $P,Q,R$라 할 때,",
+      "src": "stem"
+     },
+     {
+      "term": "충분조건",
+      "quote": "$q$는 $p$이기 위한 충분조건이다.",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "참",
+      "quote": "보기에서 옳은 것만을 있는 대로 고른 것은?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "포함관계",
+      "quote": "진리집합의 포함관계로 바꾸어",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "여집합",
+      "quote": "여집합의 포함관계를 뒤집으면",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "길이 3 순환 1->4->2->1에서 f(3)=3, g(3)=3으로 합 6, 1->4->3->1에서 f(3)=1, g(3)=4로 합 5이므로 최댓값은 6이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "일대일대응",
+      "quote": "일대일대응인 함수 $f:X\\to X$가",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최댓값",
+      "quote": "$f(3)+g(3)$의 최댓값은?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "항등함수",
+      "quote": "세 번 적용하면 자기 자신으로 돌아온다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "고정점",
+      "quote": "남은 $3$은 고정점이다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "역함수",
+      "quote": "$g(3)=f^{-1}(3)=3$이므로",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "원과 직선이 만나는 조건으로 중심 (-1,-3)과 x+y-4=0 사이 거리 d=8/sqrt(2)=4sqrt(2)에서 최소 반지름 r=4sqrt(2), r^2=32를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "원",
+      "quote": "원의 중심은 $(-1,-3)$이고",
+      "src": "solution"
+     },
+     {
+      "term": "직선",
+      "quote": "직선은 $x+y-4=0$이다.",
+      "src": "solution"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최솟값",
+      "quote": "$r^2$의 최솟값은?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "점과직선사이의거리",
+      "quote": "중심에서 직선까지의 거리는",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "접함",
+      "quote": "두 도형이 처음 만나는 접하는 경우에서 얻는다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "quote": "$r$은 양수이다.)",
+      "src": "stem"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "f(f(x))=f(x) 조건에서 a>=1일 때 a=2만 가능함을 보이고 f(-3)=4*9=36, f(5)=5로부터 합 41을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조각함수",
+      "quote": "$x\\ge0$이면 $f(x)=(a-1)x$이다.",
+      "src": "solution"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "quote": "합은 $41$이다.",
+      "src": "solution"
+     }
+    ],
+    "method": [
+     {
+      "term": "합성함수",
+      "quote": "모든 실수 $x$에서 $f(f(x))=f(x)$가 성립해야 한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "구간",
+      "quote": "먼저 $x>0$에서 가능한 $a$를 구하고 $x<0$에서도 확인한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "quote": "$a$는 양의 상수이다.)",
+      "src": "stem"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "g가 항등함수이고 f(2)=2에서 f(1)!=f(3)과 (다)에 의해 f(1)=3, f(3)=1이므로 (f o f)(3)=3, f^(-1)(1)=3, g(2)=2에서 합 8을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "일대일함수",
+      "quote": "$f$는 일대일함수이고,",
+      "src": "stem"
+     },
+     {
+      "term": "항등함수",
+      "quote": "$g$는 항등함수이다.",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "quote": "$(f\\circ f)(3)+f^{-1}(1)+g(2)$의 값은?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "합성함수",
+      "quote": "$(f\\circ f)(3)=f(1)=3$",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "역함수",
+      "quote": "$f^{-1}(1)=3$",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "15개의 순서쌍 합 a+b가 모두 서로 다를 때 최대가 되며 5*sum(A)+3*sum(B)=5*7+3*10=65를 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "부분집합",
+      "quote": "두 부분집합 $A,B$가 다음 조건을 만족시킨다.",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최댓값",
+      "quote": "집합 $C$의 모든 원소의 합의 최댓값은?",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "원소",
+      "quote": "모든 $a\\in A$, $b\\in B$에 대한 15개의 값 $a+b$를",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "합",
+      "quote": "각 $a$는 5번씩, 각 $b$는 3번씩 더해지므로 총합은",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "quote": "양의 실수 전체의 집합의",
+      "src": "stem"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x=8에서 성립 k>77.5(k>=78), x=9에서 불성립 k<=96.5(k<=96)로부터 78<=k<=96인 자연수 개수 96-78+1=19를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차부등식",
+      "quote": "$x$에 대한 이차부등식 $x^2+2x-\\dfrac52-k<0$을",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "quote": "$k$의 개수를 $f(n)$이라 할 때,",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "부등식",
+      "quote": "정수해의 최댓값이 8이라는 것은 8은 부등식을 만족하고 9는 만족하지 않는다는 뜻이다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대입",
+      "quote": "$x=8$을 대입하면",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "quote": "자연수 $k$에 대하여",
+      "src": "stem"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "f(t)=(t+2)(t+4)>=0이려면 g(x)의 최솟값 -a^2/4+a+10>=-2여야 하므로 a^2-4a-48<=0에서 -4<=a<=12이므로 p*q=-48이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "quote": "두 함수 $f(x)=x^2+6x+8$,",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "곱",
+      "quote": "$p\\times q$의 값을 구하시오.",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "합성함수",
+      "quote": "$(f\\circ g)(x)\\ge0$을 만족시킬 때,",
+      "src": "stem",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "최솟값",
+      "quote": "$g(x)$의 최솟값이 $-2$ 이상이어야 한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "이차부등식",
+      "quote": "$a^2-4a-48\\le0$이다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "quote": "모든 실수 $x$에 대하여",
+      "src": "stem"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "g(4)=-4, g^2(4)=8, g^4(4)=16 등 2번 합성할 때마다 2배가 되므로 g^18(4)=4*2^9=2048을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조각함수",
+      "quote": "$x<0$에서 $f(x)=-x>0$이므로",
+      "src": "solution"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "quote": "$g^{18}(4)$의 값을 구하시오.",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "역함수",
+      "quote": "역함수 $g$의 식을 구하고",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "합성함수",
+      "quote": "두 번 합성할 때의 변화를 본다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "등비수열",
+      "quote": "두 번 합성할 때마다 양의 값이 2배가 된다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 18,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "구간별 합성식에서 x=2-sqrt(3), x=1, x=2+sqrt(3)(제외) 등 실근을 구하고 모든 실근의 합 3에서 7alpha=21을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조각함수",
+      "quote": "구간을 나눈다.",
+      "src": "solution"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "quote": "$7\\alpha$의 값을 구하시오.",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "합성함수",
+      "quote": "$g(f(x))=-2x^2+4x$를 풀기 위해",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "구간",
+      "quote": "$f(x)$가 $1$보다 작은지 큰지에 따라 구간을 나눈다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "이차방정식",
+      "quote": "$-4x+2=-2x^2+4x$를 풀면 $x^2-4x+1=0$이고,",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실근",
+      "quote": "실근의 합을 $\\alpha$라 할 때,",
+      "src": "stem"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 19,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "홀수합 부분집합 전체 2^8/2=128개에서 원소 1개인 {3}, {5}, {7}의 3개를 제외하여 128-3=125개를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "부분집합",
+      "quote": "부분집합 중에서 다음 조건을 만족시키는",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "quote": "집합 $X$의 개수를 구하는 과정을 서술하시오.",
+      "src": "stem"
+     }
+    ],
+    "method": [
+     {
+      "term": "홀수",
+      "quote": "합이 홀수이려면 홀수 원소를 홀수 개 선택해야 한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "여사건",
+      "quote": "이 가운데 $n(X)\\ge2$ 조건에 어긋나는",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "홀수",
+      "quote": "집합 $X$의 모든 원소의 합은 홀수이다.",
+      "src": "stem"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 20,
+   "questionUid": null,
+   "format": "소문항 묶음",
+   "decisiveStep": "1) a=b=0 대입으로 f(0)^2<=0에서 f(0)=0을 구하고, 2) b=x, b=-x 대입 부등식을 더해 (f(x)+f(-x))^2<=0에서 f(-x)=-f(x)를 증명한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "quote": "함수 $f(x)$가 임의의 두 실수",
+      "src": "stem"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "quote": "$f(0)$의 값을 구하는 과정을 서술하시오.",
+      "src": "stem"
+     },
+     {
+      "term": "기함수",
+      "quote": "2) $f$는 홀함수이다.",
+      "src": "solution"
+     }
+    ],
+    "method": [
+     {
+      "term": "수치대입법",
+      "quote": "대입할 수를 직접 골라 두 물음을 순서대로 해결한다.",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "부등식",
+      "quote": "주어진 부등식은 모든 실수 $a,b$에 대하여",
+      "src": "solution",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "quote": "임의의 두 실수 $a,b$에 대하여",
+      "src": "stem"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  }
+ ]
+}

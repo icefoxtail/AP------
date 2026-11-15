@@ -1,0 +1,941 @@
+{
+  "schemaVersion": 1,
+  "judge": "claude-haiku-4s",
+  "dictionaryVersion": "2026-04-14",
+  "createdAt": "2026-11-15T17:02:06.700Z",
+  "sourceArchiveFile": "original/high/h2/2mid/20_매산여고_2학기_중간_고2_확률과통계.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "몸무게는 연속(ㄱ 거짓), 동전 뒷면 횟수는 이산(ㄴ 참), 버스 대기시간은 연속(ㄷ 참)을 판정하여 ㄴ, ㄷ을 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이산확률변수",
+            "src": "stem",
+            "quote": "각 아이의 몸무게는 이산확률변수이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "연속확률변수",
+            "src": "solution",
+            "quote": "몸무게는 이론적으로 연속적인 실숫값을 가질 수 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "확률변수가 취할 수 있는 값의 이산성과 연속성을 구별하여 참/거짓 판정"
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "구간의 모든 실숫값이면"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "X가 가질 수 있는 값은 4, 5, 6(ㄱ 참), P(X=5)=2/4=1/2(ㄴ 거짓), E(X)=4*(1/4)+5*(1/2)+6*(1/4)=5(ㄷ 참)에서 ㄱ, ㄷ을 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "숫자의 합을 확률변수 $X$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률분포표",
+            "src": "solution",
+            "quote": "순서쌍은 $(1,3),(1,4),(2,3),(2,4)$의 네 가지이며",
+            "evidenceType": "IMPLIED",
+            "justification": "두 공의 숫자의 합 X의 가능한 값과 각 확률을 구해 기댓값 판정"
+          }
+        ],
+        "condition": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "숫자의 합"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "X의 치역 {0,1,2}(ㄱ 참), P(X=1)=(4C1*6C1)/10C2 = 24/45=8/15(ㄴ 참), P(X>=1)=1-P(X=0)=1-15/45=2/3(ㄷ 참)을 판정하여 ㄱ, ㄴ, ㄷ을 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "임의로 2개를 동시에 꺼내려고 한다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률분포표",
+            "src": "solution",
+            "quote": "전체 경우는 $\\binom{10}{2}=45$가지이다",
+            "evidenceType": "IMPLIED",
+            "justification": "불량품 개수 X=0, 1, 2에 따른 확률질량함수를 조합으로 계산하여 판정"
+          }
+        ],
+        "condition": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "불량품의 개수를 확률변수 $X$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "E(3X-1)=3*5-1=14, V(3X-1)=9*10=90, σ(3X-1)=3*sqrt(10)을 각각 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "확률변수 $X$의 평균이 5, 분산이 10일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "평균, 분산, 표준편차를 각각 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "기댓값의 일차변환 공식은 $E(aX+b)=aE(X)+b$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "분산이 10"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "Z=(X-m)/σ에서 E(Z)=0, σ(Z)=1이므로 E(T)=100, σ(T)=20이다. 따라서 A+B = 100 + 20 = 120을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "표준화",
+            "src": "stem",
+            "quote": "T = 100 + 20\\left(\\frac{X-m}{\\sigma}\\right)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$A+B$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "표준화한 변수 $Z=(X-m)/\\sigma$는 평균 $0$, 표준편차 $1$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "표준화된 확률변수의 선형변환 평균과 표준편차를 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "표준편차를 $\\sigma$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "X ~ B(10, 1/6)에서 기댓값 E(X) = 10 * (1/6) = 5/3을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "주사위 1개를 10번 던지는 시행에서 1의 눈이 나오는 횟수를 확률변수 $X$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "$E(X)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "이항분포의 평균은 $np$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "주사위 1개를 10번 던지는 시행"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "삼각형 전체 넓이 (1/2)*2*a = 1에서 a=1이고, P(X>=1/2) = 1 - (1/2)*(1/2)*(1/2) = 1 - 1/8 = 7/8을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률밀도함수",
+            "src": "stem",
+            "quote": "확률변수 $X$의 확률밀도함수 $f(x)$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "값을 구하면? (단, $a$는 상수)"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "확률밀도함수의 전체 그래프 아래 넓이는 1이어야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 삼각형 넓이가 1임을 이용해 a를 구하고 해당 구간 넓이로 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "연속확률변수",
+            "src": "stem",
+            "quote": "연속확률변수 $X$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "A, B 독립이면 여사건들도 독립이므로 P(A^c∩B^c)=P(A^c)P(B^c)(ㄱ 참), P(A|B)=P(A)(ㄴ 참), 독립이므로 배반 P(A∩B)=0은 모순(ㄷ 거짓)을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "두 사건 $A$와 $B$가 서로 독립일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "두 사건의 독립은 $P(A\\cap B)=P(A)P(B)$라는 뜻이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "여사건",
+            "src": "stem",
+            "quote": "$A^c$, $B^c$은 각각 $A$, $B$의 여사건이다"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "X ~ B(5, 0.8)에서 분산 V(X) = 5 * 0.8 * 0.2 = 0.8이므로 표준편차 sqrt(0.8) = 2*sqrt(5)/5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "총을 5번 쏠 때, 9점 이상을 맞혀 모은 인형의 개수를 확률변수 $X$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "\\sigma(X)$를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "이항분포의 분산은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "각 발사는 독립이고 성공확률은"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "P(X=k)=1/4 (k=1..4)에서 E(X)=5/2, E(X^2)=15/2이므로 V(X)=15/2 - 25/4 = 5/4이다. E(X)*V(X) = (5/2)*(5/4) = 25/8을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "검사한 횟수를 확률변수 $X$라 하자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "값을 구하면? [3.7점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률분포표",
+            "src": "solution",
+            "quote": "불량품은 네 USB 중 정확히 하나이며",
+            "evidenceType": "IMPLIED",
+            "justification": "P(X=k)=1/4인 일양분포에서 평균과 분산을 구해 곱함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비복원추출",
+            "src": "stem",
+            "quote": "한 번에 1개씩 차례로 USB를 검사할 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "옳은 것 고르기",
+      "decisiveStep": "오름차순 1가지이므로 P(X=0)=1/24(ㄱ 참), 대칭성에 의해 E(X)=3/2(ㄴ 참), 분포표로 V(X) = 17/8 - 9/4 = -1/8이 아니므로 V(X)≠9/4(ㄷ 거짓)을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "자연수 1, 2, 3, 4를 한 번씩 사용하여 만들 수 있는 모든 네 자리의 자연수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "대칭성으로",
+            "evidenceType": "IMPLIED",
+            "justification": "순열의 역순 대칭성으로 기댓값 E(X)=3/2를 판정하고 확률분포를 확인"
+          }
+        ],
+        "condition": [
+          {
+            "term": "확률변수",
+            "src": "stem",
+            "quote": "만족시키는 $a_i$의 개수를 확률변수 $X$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "그래프 전체 넓이 2 * ((1/2)*2*2a) = 4a = 1에서 a=1/4이고, [3, 4] 사다리꼴 넓이 (1/2)*(1/4 + 2/4)*1 = 3/8을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률밀도함수",
+            "src": "stem",
+            "quote": "연속확률변수 $X$의 확률밀도함수가 $f(x)=a|x-2|$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(3 \\le X \\le 4)$를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "사다리꼴 넓이는",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 영역 넓이 1에서 a를 결정하고 해당 구간의 사다리꼴 넓이로 확률 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$0 \\le x \\le 4$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "빈칸 채우기",
+      "decisiveStep": "E(Y)=0.5에서 a=1/12, b=1/4이므로 α=1/12이고, V(Y)=100V(X)이므로 γ=100이다. αγ = (1/12)*100 = 25/3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률분포표",
+            "src": "stem",
+            "quote": "다음 표는 확률변수 $X$의 확률분포표이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "\\alpha\\gamma$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "stem",
+            "quote": "E(Y)=10E(X)-2.21=0.5",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$a, b$는 상수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "확률의 합 (2+1+1+2+3)/k = 9/k = 1에서 k=9이고, E(X)=23/9, E(X^2)=81/9=9에서 V(X)=9-(23/9)^2=200/81, σ(X)=10*sqrt(2)/9를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률질량함수",
+            "src": "stem",
+            "quote": "확률변수 $X$의 확률질량함수 $P(X=x)=\\frac{|x-2|}{k}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "\\sigma(X)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "분산을 구하기 위해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$k>0$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "A, B 모두 홀수일 확률 (5/10)*(4/9) = 2/9를 1에서 빼서 곱이 짝수일 확률 1 - 2/9 = 7/9를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "비복원추출",
+            "src": "stem",
+            "quote": "꺼낸 공은 다시 넣지 않는다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "곱이 짝수일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "곱이 짝수일 확률은 그 여사건으로 계산한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "곱이 짝수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "b/a가 2/3(2가지) 또는 1/2(3가지)일 확률 5/36에서, X ~ B(36, 5/36)이므로 분산 V(X) = 36 * (5/36) * (31/36) = 155/36이고 V(6X+1) = 36*V(X) = 155를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $6x^2-7x+2=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "$V(6X+1)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항분포",
+            "src": "solution",
+            "quote": "두 주사위 눈 $(a,b)$는",
+            "evidenceType": "IMPLIED",
+            "justification": "한 번의 시행에서 근이 될 확률을 구하고 36회 독립시행 이항분포의 분산을 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립시행",
+            "src": "stem",
+            "quote": "동시에 던지는 시행을 36회 반복할 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "X ~ B(n, 1/3)에서 V(3X+1) = 9*V(X) = 9*n*(1/3)*(2/3) = 2n = 180이므로 n=90이다. E(X)=30, V(X)=20이므로 E(X^2) = 20 + 30^2 = 920을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "P(X=x) = {}_{n}\\mathrm{C}_{x}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$E(X^2)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "V(3X+1)=9V(X)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "같은 색일 때 흰색일 조건부확률 (100-2a)/(300-4a) = 3/5에서 a=200이 나오지만 1<=a<=50 조건을 만족하지 않아 자연수 a는 존재하지 않음을 확인한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "임의로 꺼낸 구슬이 서로 같은 색일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "자연수 $a$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "조건부확률을 구하려면 먼저 두 구슬이 같은 색일 확률을",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "두 구슬이 같은 색일 확률"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "P(X=1)=2P(X=0)에서 np(1-p)^(n-1) = 2(1-p)^n, 즉 np = 2(1-p)이고 np=5/3이므로 1-p=5/6, p=1/6, n=10이다. E(6X+10) = 6(5/3)+10 = 20을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이항분포",
+            "src": "stem",
+            "quote": "이항분포 $B(n, p)$를 따르는 확률변수 $X$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기댓값",
+            "src": "stem",
+            "quote": "$E\\left(\\frac{X}{p}+n\\right)$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기댓값",
+            "src": "solution",
+            "quote": "E(X)=np=\\frac{5}{3}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$n$은 2 이상의 자연수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "P = 5C4*4! = 120, Q = 2(1이 2개)+1(1이 1개)=8, R = 8/120 = 1/15에서 P*Q*R = 120 * 8 * (1/15) = 64를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "임의로 4개의 공을 동시에 꺼내어 임의로 일렬로 나열하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "P \\times Q \\times R"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "다섯 공 중 네 공을 골라 순서를 정하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "P(전체 순열), Q(순서 고정 조합), R(확률 Q/P)을 순서대로 구해 곱함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "나열된 순서대로 공에 적혀 있는 수를 $a, b, c, d$라 한다"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "미술 선택자 40명 중 여학생은 40 - 20 = 20명이므로 A = 20/40 = 1/2이고 2A = 1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "미술을 선택한 학생일 때, 이 학생이 여학생일 확률"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "2A의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "전체 학생은 100명이다",
+            "evidenceType": "IMPLIED",
+            "justification": "미술 선택자 40명을 표본공간으로 하여 여학생 20명의 조건부확률 A=1/2를 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "음악을 선택한 남학생"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "독립이므로 P(A|B^c)=P(A)=3/5이고 P(A∩B)=P(A)P(B)=1/5에서 P(B)=1/3이다. P(A∪B) = 3/5 + 1/3 - 1/5 = 11/15를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$가 서로 독립이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A \\cup B)$의 값을 구하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "합집합의 확률은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "두 사건이 독립이면"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 23,
+      "questionUid": null,
+      "format": "소문항 묶음",
+      "decisiveStep": "b=1/5, a=2/5를 구하고 E(X)=1.2, V(X)=1.16을 계산한 후 V(-5X-7) = 25*V(X) = 25*1.16 = 29를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률분포표",
+            "src": "stem",
+            "quote": "확률변수 $X$의 확률분포표가 다음 표와 같고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "라. $V(-5X-7)$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률변수의일차식",
+            "src": "solution",
+            "quote": "상수 $-7$은 분산에 영향을 주지 않고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$a, b$는 상수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

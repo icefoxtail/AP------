@@ -1,0 +1,870 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T18:07:00+09:00",
+  "sourceArchiveFile": "original/high/h1/2mid/26_강남여고_2학기_중간_고1_공통수학2.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "내분 공식을 이용하여 a=2, b=-1을 구하고 a+b=1을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $AB$를 $2:1$로 내분하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "점의 좌표는 $(a, b)$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "내분",
+            "src": "stem",
+            "quote": "선분 $AB$를 $2:1$로 내분하는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "완전제곱식으로 변형하여 중심 (-3, 4)와 반지름 3을 구해 a+b+2r=7을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2+y^2+6x-8y+16=0$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이는 $r$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "주어진 원의 방정식을 완전제곱식으로 고친다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "각 집합의 조건을 확인하여 원소가 없는 집합 ㄴ, ㄷ, ㅁ의 3개를 찾는다.",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1\\text{보다 작은 자연수}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "공집합",
+            "src": "stem",
+            "quote": "공집합인 것의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "공집합은 원소가 하나도 없는 집합이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원소가 하나도 없는 집합이라는 공집합의 정의에 따라 각 보기를 판정함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "AC^2=BC^2인 (a+1)^2+1=(a-2)^2+4 방정식을 풀어 a=1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "세 점 $A(-1, 2)$, $B(2, 3)$, $C(a, 1)$에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "두 선분의 길이의 제곱을 같게 놓는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 점 사이의 거리 공식의 제곱을 이용하여 a에 관한 일차방정식을 세움"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "원과 직선이 접하는 조건 d=r을 세워 m=-1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2+y^2=2$와"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $m$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "원의 중심에서 직선까지의 거리가 반지름과 같아야 한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "원점 대칭이동에 의해 x, y 대신 -x, -y를 대입하여 3x-4y-5=0을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $3x-4y+5=0$이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "옮겨지는 직선의 방정식은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원점대칭",
+            "src": "solution",
+            "quote": "원점 대칭이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "중심 (4, 1)이 (0, 0)으로 가는 평행이동 (-4, -1)을 점에 적용하여 a=5, b=2, ab=10을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2+y^2-8x-2y+8=0$을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "평행이동한 점의 좌표가 $(1, b)$일 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "평행이동에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "수직과 평행 조건에서 mn=-1, m+n=4를 도출하고 곱셈공식으로 m^2+n^2=18을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=mx+1$이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$m, n$은 상수이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "$m^2+n^2=(m+n)^2-2mn$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 수의 합과 곱을 이용하여 제곱의 합을 구하는 곱셈 공식을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "평행한 두 직선 사이의 거리 공식 |k-2|/5=3에서 k=17, -13을 구해 합 4를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행한 두 직선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "모든 실수 $k$의 값의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "두 직선 사이의 거리가 $3$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "평행한 두 직선 사이의 거리 공식을 세워 k의 절댓값 방정식을 풀이함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "접선의 기울기 -2에서 a=2b를 얻고 a^2+b^2=8에 대입하여 ab=16/5를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2+y^2=20$ 위의 점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a, b$에 대하여 $ab$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의방정식",
+            "src": "solution",
+            "quote": "원 $x^2+y^2=r^2$ 위의 점 $(p,q)$에서의 접선은 $px+qy=r^2$로 나타낼 수 있다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원 위의 점에서 그은 접선의 방정식을 구하여 기울기 조건을 이용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "두 접선 $l_1, l_2$이 서로 평행할 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "각의 이등분선 정리로 내분점 D(5, 2)를 구하고 지름 BD=4인 원의 넓이 4pi를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "양 끝점으로 하는 원의 넓이는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "양 끝점으로 하는 원의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "각의이등분선정리",
+            "src": "solution",
+            "quote": "각의 이등분선 정리를 이용한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "삼각형의 전체 넓이 4의 절반인 (9-a)^2/18=2 방정식을 풀어 a=3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선의 방정식이 $x=a$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "전체 넓이는 $\\dfrac12\\cdot8\\cdot1=4$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형의 밑변과 높이로 넓이를 구하고 이등분하는 넓이 방정식을 세움"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "이동 결과가 4번마다 반복되는 주기성을 찾아 17회 후의 점의 좌표 (0, 1)을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "규칙",
+            "src": "stem",
+            "quote": "규칙에 따라 이동시키려고 한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "점의 좌표는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "이후에도 네 번마다 같은 좌표로 돌아온다.",
+            "evidenceType": "IMPLIED",
+            "justification": "4회 이동마다 동일한 좌표가 반복되는 주기성을 파악함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "BD와 AC가 평행함을 이용하여 D(3/2, 0)을 구하고 직선 AD의 기울기 8/9를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $AD$의 기울기는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "직선 $AD$의 기울기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "$BD\\parallel AC$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "밑변이 같은 두 삼각형의 넓이가 같으므로 대변이 평행함을 이용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "중심거리 d에서 최솟값 d-4=1로부터 a=2를 얻고 최댓값 M=5+4=9를 구해 a+M=11을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $(x-a)^2+(y-4)^2=9$ 위의 점 $P$와"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+M$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "중심 사이의 거리를 $d$라 하면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원의 중심 사이 거리와 반지름의 합과 차로 최대거리와 최소거리를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최댓값과 최솟값을 각각 $M, 1$이라 할 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "집합의 연산법칙과 드모르간 법칙을 적용하여 항상 옳은 식 ㄴ, ㄹ의 2개를 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U$의 두 부분집합 $A, B$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "전체집합 $U$의 두 부분집합 $A, B$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "드모르간법칙",
+            "src": "solution",
+            "quote": "드모르간 법칙에 따라",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "점과 직선 사이의 거리 CH=4와 피타고라스정리로 현의 반 AH=a를 구하고 넓이 4a=8sqrt(5)에서 a=2sqrt(5)를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $x^2+y^2-10x-2ay+9=0$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "양수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "중심 $C$에서 직선 $AB:4x-3y+3a=0$까지의 거리를 $CH$라 하자.",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 중심에서 직선까지의 거리를 점과 직선 사이의 거리 공식으로 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "대각선의 중점이 일치함과 무게중심 좌표 공식을 결합하여 a=3, b=5, c=3, d=7/3을 구해 곱 105를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$가 있다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "삼각형 $OAC$의 무게중심이 $G(c, d)$이고"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "무게중심의 좌표 공식을 적용하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "점과 직선 사이의 거리 d와 반지름 sqrt(5)의 비교로 (k-2)(k-8) 부호를 판정하여 교점 개수의 합 6을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $(x-5)^2+(y-5)^2=5$와"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "방정식 $f(2)+f(4)+f(6)+f(8)+f(10)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "중심에서 이 직선까지의 거리를 $d$라 하자.",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 중심과 직선 사이의 거리 공식으로 d^2과 반지름 제곱의 대소를 비교함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "외심의 성질로 r1=sqrt(a^2+4), 직각삼각형에서 r2=sqrt(2(a^2+4))/2를 구해 a^2=34를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "대칭이동",
+            "src": "stem",
+            "quote": "직선 $y=x$에 대하여 대칭이동한 점을 $B$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "외접원",
+            "src": "stem",
+            "quote": "외접원의 반지름의 길이를 각각 $r_1, r_2$라 할 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "삼각형 $ABC$의 외심은 원점 $O$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원점에서 세 꼭짓점까지의 거리가 같음을 보여 외심의 위치와 외접원의 반지름을 결정함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "A와 B의 원소를 나열하여 n(A∪B)=8, n(A∩B)=4를 구해 차 8-4=4를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "3\\text{의 양의 배수}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원소의개수",
+            "src": "solution",
+            "quote": "합집합의 원소 개수는"
+          }
+        ],
+        "method": [
+          {
+            "term": "합집합",
+            "src": "solution",
+            "quote": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$",
+            "evidenceType": "IMPLIED",
+            "justification": "합집합의 원소의 개수 포함배제 공식을 이용하여 n(A∪B)를 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "18\\text{의 양의 약수}"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "교점 방정식 (x-1)^2=1/(2a)-1이 중근을 갖도록 우변을 0으로 놓아 a=1/2을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y=ax^2$을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "양수 $a$의 값을 구하는"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "stem",
+            "quote": "$x$축에 대하여 대칭이동한 후",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$y$축의 방향으로 $1$만큼 평행이동한"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 23,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "y축 접함 조건으로 원의 방정식을 세워 중심 (2, 3), (10, 11)을 구하고 거리 8sqrt(2)를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "두 원의 중심을 각각 $A, B$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $AB$의 길이를 구하는"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "두 중심 사이의 거리는",
+            "evidenceType": "IMPLIED",
+            "justification": "두 중심의 좌표로부터 두 점 사이의 거리 공식을 적용하여 선분의 길이를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "중심이 직선 $y=x+1$ 위에 있다."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 24,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "점과 직선 사이의 거리로 표현한 넓이 함수 S=-(x-2)^2+1의 꼭짓점에서 최댓값 1을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=-x^2+5x-4$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "넓이의 최댓값을 구하는"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "점과 직선 사이의 거리 공식에 따라",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

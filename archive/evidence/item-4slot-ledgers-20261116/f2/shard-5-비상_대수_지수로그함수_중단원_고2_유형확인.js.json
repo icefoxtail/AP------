@@ -1,0 +1,1060 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "sonnet-f2",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-15T14:00:00+09:00",
+ "sourceArchiveFile": "types/high/h2/비상_대수_지수로그함수_중단원_고2_유형확인.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "소문항 묶음",
+   "decisiveStep": "y=3^{x+1}-2는 y=3^x를 x축 -1, y축 -2 평행이동해 점근선 y=-2, y=log_2(x-2)+1은 x축 2, y축 1 평행이동해 x=2.",
+   "slots": {
+    "given": [
+     {
+      "term": "지수함수",
+      "src": "stem",
+      "quote": "$y = 3^{x+1} - 2$"
+     },
+     {
+      "term": "로그함수",
+      "src": "stem",
+      "quote": "$y = \\log_2 (x - 2) + 1$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "점근선",
+      "src": "stem",
+      "quote": "점근선의 방정식을 구하시오"
+     },
+     {
+      "term": "그래프",
+      "src": "stem",
+      "quote": "다음 함수의 그래프를 그리고"
+     }
+    ],
+    "method": [
+     {
+      "term": "평행이동",
+      "src": "solution",
+      "quote": "$y$축으로 $-2$만큼 평행이동한 것이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "점근선",
+      "src": "solution",
+      "quote": "지수함수 $y = a^{x-p} + q$의 점근선은 $y = q$이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "그래프의개형",
+      "src": "solution",
+      "quote": "그래프의 개형을 그린다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "점근선 y=3에서 b=3, 점 (2,5)를 대입해 a=2를 얻어 a+b=5.",
+   "slots": {
+    "given": [
+     {
+      "term": "지수함수",
+      "src": "stem",
+      "quote": "함수 $y = a^{x-1} + b$의 그래프"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "점 $(2, 5)$를 지날 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "상수 $a, b$의 합 $a+b$의 값을 구하시오"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "상수 $a, b$의 합 $a+b$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "점근선",
+      "src": "solution",
+      "quote": "점근선은 $y = b$가 된다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대입법",
+      "src": "solution",
+      "quote": "대입법을 통해 $a$를 구한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "점근선",
+      "src": "stem",
+      "quote": "그래프의 점근선이 $y = 3$이고"
+     },
+     {
+      "term": "통과",
+      "src": "stem",
+      "quote": "점 $(2, 5)$를 지날 때"
+     },
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "$a > 0, a \\neq 1$"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "소문항 묶음",
+   "decisiveStep": "(1)은 (1/4)^3=(1/2)^6으로 밑을 통일하고 밑<1이라 지수가 클수록 작음을 쓰고, (2)는 (1/2)log_2 6=log_2 √6으로 만들어 밑>1에서 진수를 비교한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "거듭제곱",
+      "src": "stem",
+      "quote": "$\\left(\\dfrac{1}{2}\\right)^5, \\left(\\dfr"
+     },
+     {
+      "term": "로그",
+      "src": "stem",
+      "quote": "$\\log_2 \\sqrt{5}, \\dfrac{1}{2} \\log_2 6$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "대소비교",
+      "src": "stem",
+      "quote": "다음 두 수의 대소를 비교하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "지수법칙",
+      "src": "solution",
+      "quote": "밑을 통일한 후 밑의 범위에 따라",
+      "evidenceType": "IMPLIED",
+      "justification": "거듭제곱을 같은 밑으로 맞추는 지수법칙의 원리"
+     },
+     {
+      "term": "로그",
+      "src": "solution",
+      "quote": "$\\dfrac{1}{2} \\log_2 6 = \\log_2 6^{\\frac",
+      "evidenceType": "IMPLIED",
+      "justification": "계수를 진수의 지수로 옮기는 로그의 성질"
+     },
+     {
+      "term": "증가감소",
+      "src": "solution",
+      "quote": "밑이 $\\dfrac{1}{2} \\lt 1$이므로 지수가 클수록 값이 작아",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "옳은 것 고르기",
+   "decisiveStep": "0<a<1이므로 log_a x가 감소함수라 진수 1/2<2<3에서 log_a 3<log_a 2<log_a(1/2), 즉 B<A<C.",
+   "slots": {
+    "given": [
+     {
+      "term": "로그",
+      "src": "stem",
+      "quote": "$A = \\log_a 2, B = \\log_a 3, C = \\log_a"
+     },
+     {
+      "term": "로그함수",
+      "src": "solution",
+      "quote": "로그함수 $y = \\log_a x$에서"
+     }
+    ],
+    "goal": [
+     {
+      "term": "대소비교",
+      "src": "stem",
+      "quote": "의 대소를 비교한 것으로 옳은 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "증가감소",
+      "src": "solution",
+      "quote": "로그함수 $y = \\log_a x$는 감소함수이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대소비교",
+      "src": "solution",
+      "quote": "진수의 크기를 비교하면",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "범위",
+      "src": "stem",
+      "quote": "$0 \\lt a \\lt 1$일 때"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "소문항 묶음",
+   "decisiveStep": "(1)은 밑 3>1 증가함수라 x=0에서 최소 7/3, x=2에서 최대 5이고, (2)는 밑 1/2 감소함수라 x=0에서 최대 -2, x=2에서 최소 -3이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "지수함수",
+      "src": "stem",
+      "quote": "$y=3^{x-1}+2$"
+     },
+     {
+      "term": "로그함수",
+      "src": "stem",
+      "quote": "$y=\\log_{\\frac12}(x+2)-1$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최댓값",
+      "src": "stem",
+      "quote": "다음 함수의 최댓값과 최솟값을 구하시오"
+     },
+     {
+      "term": "최솟값",
+      "src": "stem",
+      "quote": "다음 함수의 최댓값과 최솟값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "증가감소",
+      "src": "solution",
+      "quote": "(1)은 증가함수이므로 양 끝값을 비교하고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "끝점",
+      "src": "solution",
+      "quote": "정의역의 양 끝값과 함수의 증가·감소를 이용하여",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "로그",
+      "src": "solution",
+      "quote": "$\\log_{\\frac12}2-1=-1-1=-2$",
+      "evidenceType": "IMPLIED",
+      "justification": "밑 1/2의 로그값을 구해 끝점에서의 함숫값을 계산한다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "정의역제한",
+      "src": "stem",
+      "quote": "정의역이 $\\{x\\mid 0\\le x\\le 2\\}$일 때"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "점근선 y=2에서 b=2, 점 (-1,5)를 대입해 (1/3)^{a-1}=3=(1/3)^{-1}로 a=0.",
+   "slots": {
+    "given": [
+     {
+      "term": "지수함수",
+      "src": "stem",
+      "quote": "y=\\left(\\frac13\\right)^{x+a}+b"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "점 $(-1,5)$를 지날 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "실수 $a,\\ b$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "점근선",
+      "src": "solution",
+      "quote": "수평점근선은 $y=b$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "지나는 점을 대입하여 $a$를 구한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "지수법칙",
+      "src": "solution",
+      "quote": "$3=\\left(\\dfrac13\\right)^{-1}$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "3을 밑 1/3의 거듭제곱으로 바꿔 지수를 비교한다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "점근선",
+      "src": "stem",
+      "quote": "직선 $y=2$를 점근선으로 하고"
+     },
+     {
+      "term": "통과",
+      "src": "stem",
+      "quote": "점 $(-1,5)$를 지날 때"
+     },
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 $a,\\ b$의 값"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x축 방향 2 평행이동으로 y=3·2^{x-2}-4, y축 대칭으로 y=3·2^{-x-2}-4를 만들고 x=1을 넣어 k=-29/8.",
+   "slots": {
+    "given": [
+     {
+      "term": "지수함수",
+      "src": "stem",
+      "quote": "y=3\\cdot 2^x-4"
+     },
+     {
+      "term": "그래프",
+      "src": "stem",
+      "quote": "의 그래프를 $x$축의 방향으로"
+     }
+    ],
+    "goal": [
+     {
+      "term": "함숫값",
+      "src": "stem",
+      "quote": "실수 $k$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "평행이동",
+      "src": "solution",
+      "quote": "$x$축의 방향으로 $2$만큼 평행이동하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대칭이동",
+      "src": "solution",
+      "quote": "$y$축에 대하여 대칭이동하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "$k=3\\cdot2^{-3}-4=",
+      "evidenceType": "IMPLIED",
+      "justification": "x=1을 이동한 식에 넣어 y값을 구하는 단계"
+     }
+    ],
+    "condition": [
+     {
+      "term": "통과",
+      "src": "stem",
+      "quote": "점 $(1,k)$를 지날 때"
+     },
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 $k$의 값을 구하시오"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [
+    "평행이동",
+    "대칭이동"
+   ],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "y=9와의 교점 x좌표가 -2, -1이라 밑변 1, 원점에서 y=9까지 높이 9로 삼각형 넓이 9/2.",
+   "slots": {
+    "given": [
+     {
+      "term": "지수함수",
+      "src": "stem",
+      "quote": "y=\\left(\\frac13\\right)^x,\\qquad y=\\left("
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "그래프와 직선 $y=9$가 만나는 점"
+     },
+     {
+      "term": "삼각형",
+      "src": "stem",
+      "quote": "삼각형 $AOB$의 넓이를 구하시오"
+     },
+     {
+      "term": "원점",
+      "src": "stem",
+      "quote": "원점 $O$에 대하여"
+     }
+    ],
+    "goal": [
+     {
+      "term": "넓이",
+      "src": "stem",
+      "quote": "삼각형 $AOB$의 넓이를 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "지수법칙",
+      "src": "solution",
+      "quote": "$\\left(\\dfrac19\\right)^x=9$는 $3^{-2x}=3^",
+      "evidenceType": "IMPLIED",
+      "justification": "밑 3으로 통일해 지수를 비교하여 x좌표를 구한다"
+     },
+     {
+      "term": "거리",
+      "src": "solution",
+      "quote": "두 점 사이의 거리는 $1$이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "넓이",
+      "src": "solution",
+      "quote": "삼각형 $AOB$의 넓이는 $\\dfrac12\\cdot1\\cdot9=\\df",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "소문항 묶음",
+   "decisiveStep": "(1)은 세 거듭제곱근이 모두 0.2로 같고, (2)는 log_2 5>2, 1<log_4 9<2로 log_4 9<2<log_2 5이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "거듭제곱근",
+      "src": "stem",
+      "quote": "$\\sqrt{0.04},\\ \\sqrt[3]{0.008},\\ \\sqrt[4"
+     },
+     {
+      "term": "로그",
+      "src": "stem",
+      "quote": "$\\log_2 5,\\ \\log_4 9,\\ 2$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "대소비교",
+      "src": "stem",
+      "quote": "다음 세 수의 대소를 비교하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "거듭제곱근",
+      "src": "solution",
+      "quote": "거듭제곱근은 직접 값으로 바꾸고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "거듭제곱",
+      "src": "solution",
+      "quote": "$0.04=0.2^2$, $0.008=0.2^3$",
+      "evidenceType": "IMPLIED",
+      "justification": "소수를 0.2의 거듭제곱으로 나타내 근을 구한다"
+     },
+     {
+      "term": "로그",
+      "src": "solution",
+      "quote": "각 로그값이 어느 정수 사이에 있는지 판단한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "A의 y좌표 2에서 2=log_3 x를 지수식으로 바꿔 x=9이고, 수선의 발 B는 A와 같은 x좌표라 a=9.",
+   "slots": {
+    "given": [
+     {
+      "term": "로그함수",
+      "src": "stem",
+      "quote": "함수 $y=\\log_3 x$의 그래프와 직선 $y=x$"
+     },
+     {
+      "term": "수선의발",
+      "src": "stem",
+      "quote": "수선의 발을 $B$라 하자"
+     }
+    ],
+    "goal": [
+     {
+      "term": "좌표",
+      "src": "stem",
+      "quote": "점 $B$의 $x$좌표를 $a$라 할 때"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$a$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "좌표를 로그식에 대입하여 구한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "로그",
+      "src": "solution",
+      "quote": "로그식을 지수식으로 바꾸면 $x=3^2=9$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상등",
+      "src": "solution",
+      "quote": "$A$와 같은 $x$좌표를 가지므로",
+      "evidenceType": "NAMED"
+     }
+    ]
+   },
+   "reasons": {
+    "given": "그림은 y=log_3 x와 직선 y=x를 나타낸 것으로 발문 글만으로 판정 가능"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "밑 1/2 감소함수라 -2<x<0에서 로그값이 -1보다 크므로 -1+k>=0, 즉 k>=1이 경계라 최솟값 1.",
+   "slots": {
+    "given": [
+     {
+      "term": "로그함수",
+      "src": "stem",
+      "quote": "y=\\log_{\\frac12}(x+2)+k"
+     },
+     {
+      "term": "사분면",
+      "src": "stem",
+      "quote": "그래프가 제3사분면을 지나지 않도록"
+     }
+    ],
+    "goal": [
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "실수 $k$의 최솟값을 구하시오"
+     },
+     {
+      "term": "최솟값",
+      "src": "stem",
+      "quote": "실수 $k$의 최솟값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "증가감소",
+      "src": "solution",
+      "quote": "밑이 $\\dfrac12$인 로그함수는 감소함수이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "경계조건",
+      "src": "solution",
+      "quote": "$-1+k\\ge0$에 해당하는 경계가 필요하므로",
+      "evidenceType": "IMPLIED",
+      "justification": "제3사분면에 걸리기 직전 경계에서 k의 범위를 정한다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "사분면",
+      "src": "stem",
+      "quote": "제3사분면을 지나지 않도록"
+     },
+     {
+      "term": "진수조건",
+      "src": "solution",
+      "quote": "함수의 정의역은 $x+2>0$이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "하는 실수 $k$의 최솟값"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "log_4 k=(1/2)log_2 k로 바꿔 AB=(1/2)log_2 k=2에서 log_2 k=4, k=16.",
+   "slots": {
+    "given": [
+     {
+      "term": "로그함수",
+      "src": "stem",
+      "quote": "y=\\log_2 x,\\qquad y=\\log_4 x"
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $x=k$가 만나는 점을 각각"
+     }
+    ],
+    "goal": [
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "실수 $k$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "밑변환",
+      "src": "solution",
+      "quote": "$\\log_4 k=\\dfrac{\\log_2 k}{\\log_2 4}=\\df",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "길이",
+      "src": "solution",
+      "quote": "$\\overline{AB}=\\log_2 k-\\log_4 k",
+      "evidenceType": "IMPLIED",
+      "justification": "같은 x좌표에서 두 y값의 차가 선분 AB의 길이"
+     },
+     {
+      "term": "로그",
+      "src": "solution",
+      "quote": "따라서 $k=2^4=16$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "길이",
+      "src": "stem",
+      "quote": "$\\overline{AB}=2$일 때"
+     },
+     {
+      "term": "범위",
+      "src": "stem",
+      "quote": "단, $k>1$이다"
+     },
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "일 때, 실수 $k$의 값을"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "두 인수가 x=5, x=-2에서 부호가 바뀌므로 구간을 나누어 곱이 양수인 -2<x<5의 정수 -1~4, 6개를 센다.",
+   "slots": {
+    "given": [
+     {
+      "term": "지수부등식",
+      "src": "stem",
+      "quote": "(2^x-32)\\left(\\left(\\frac13\\right)^x-9"
+     },
+     {
+      "term": "인수",
+      "src": "solution",
+      "quote": "두 인수의 부호가 같아야 곱이 양수가 된다"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "모든 정수 $x$의 개수를 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "부호",
+      "src": "solution",
+      "quote": "두 인수의 부호가 같아야 곱이 양수가 된다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "기준으로 구간을 나눈다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "지수법칙",
+      "src": "solution",
+      "quote": "$3^{-x}=3^2$이므로 $x=-2$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "밑 3으로 통일해 지수를 비교해 부호가 바뀌는 기준점을 구한다"
+     },
+     {
+      "term": "열거",
+      "src": "solution",
+      "quote": "정수 $x$는 $-1,0,1,2,3,4$로 모두 $6$개이다",
+      "evidenceType": "IMPLIED",
+      "justification": "구간 안의 정수를 직접 나열해 개수를 센다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "모든 정수 $x$의 개수를 구하시오"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "처음 5마리가 8시간 후 5a^8마리이므로 5a^8>=1280, a^8>=2^8에서 자연수 a의 최솟값 2.",
+   "slots": {
+    "given": [
+     {
+      "term": "지수성장",
+      "src": "stem",
+      "quote": "$t$시간 후에 $a^t$마리로 증식된다고"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최솟값",
+      "src": "stem",
+      "quote": "자연수 $a$의 최솟값을 구하시오"
+     },
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "자연수 $a$의 최솟값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "모델링",
+      "src": "solution",
+      "quote": "처음 세균이 $5$마리이면 $8$시간 후 세균 수는 $5a^8$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "문장 상황을 5a^8의 식으로 세우는 단계"
+     },
+     {
+      "term": "지수부등식",
+      "src": "solution",
+      "quote": "$256=2^8$이므로 $a^8\\ge2^8$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "거듭제곱 부등식을 같은 지수로 맞춰 밑을 비교한다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "자연수 $a$의 최솟값을 구하시오"
+     },
+     {
+      "term": "범위",
+      "src": "stem",
+      "quote": "$1280$마리 이상이 되도록"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "세균 증식"
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "매년 0.95배이므로 (0.95)^n<=1/2의 양변에 상용로그를 취하고 log0.95=-0.02가 음수라 부등호가 바뀌어 n>=15.",
+   "slots": {
+    "given": [
+     {
+      "term": "지수감쇠",
+      "src": "stem",
+      "quote": "전년도에 비해 $5\\%$씩 해마다 감소시킨다"
+     },
+     {
+      "term": "상용로그",
+      "src": "stem",
+      "quote": "$\\log 2=0.30,\\ \\log 9.5=0.98$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최솟값",
+      "src": "stem",
+      "quote": "최소 몇 년 후인지 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "모델링",
+      "src": "solution",
+      "quote": "$n$년 후 오염 물질의 양은 현재의 $(0.95)^n$배이다",
+      "evidenceType": "IMPLIED",
+      "justification": "매년 5% 감소를 0.95배의 거듭제곱 식으로 세운다"
+     },
+     {
+      "term": "상용로그",
+      "src": "solution",
+      "quote": "양변에 상용로그를 취하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "부등식의성질",
+      "src": "solution",
+      "quote": "부등호 방향에 주의하여",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "범위",
+      "src": "stem",
+      "quote": "현재 오염 물질의 $\\dfrac12$배 이하"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": "하천 오염"
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "점근선 x=-b가 x=-8이라 b=8, 점 P(8,2)를 넣어 a^2=16, a=4이므로 log_2 ab=log_2 32=5.",
+   "slots": {
+    "given": [
+     {
+      "term": "로그함수",
+      "src": "stem",
+      "quote": "y=\\log_a(x+b)"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "점 $P(8,2)$가 함수"
+     }
+    ],
+    "goal": [
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "의 값을 구하시오. 단"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "\\log_2 ab"
+     }
+    ],
+    "method": [
+     {
+      "term": "점근선",
+      "src": "solution",
+      "quote": "점근선은 $x=-b$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "점 $P(8,2)$가 그래프 위에 있으므로",
+      "evidenceType": "IMPLIED",
+      "justification": "점의 좌표를 함수식에 넣어 a를 구한다"
+     },
+     {
+      "term": "로그",
+      "src": "solution",
+      "quote": "$2=\\log_a(8+8)=\\log_a16$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "로그의 정의로 a^2=16을 얻는다"
+     }
+    ],
+    "condition": [
+     {
+      "term": "점근선",
+      "src": "stem",
+      "quote": "점근선이 직선 $x=-8$일 때"
+     },
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "$a>0,\\ a\\ne1,\\ b>0$"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "y=20, T0/T=4에서 20=c log_2 4=2c로 c=10을 구하고, y=50에서 log_2(T0/T)=5, T/T0=1/32라 25/8 %.",
+   "slots": {
+    "given": [
+     {
+      "term": "로그함수",
+      "src": "stem",
+      "quote": "y=c\\log_2\\frac{T_0}{T}"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "y=c\\log_2\\frac{T_0}{T}"
+     },
+     {
+      "term": "비율",
+      "src": "stem",
+      "quote": "방출되는 전자파의 양의 $\\dfrac14$이라고"
+     }
+    ],
+    "goal": [
+     {
+      "term": "비율",
+      "src": "stem",
+      "quote": "방출되는 전자파의 양의 몇 $\\%$인지 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "미정계수",
+      "src": "solution",
+      "quote": "$20=c\\log_2 4=2c$이므로 $c=10$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "주어진 조건으로 식 속 상수 c를 정하는 단계"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "$y=50$을 대입하여",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "로그",
+      "src": "solution",
+      "quote": "$\\dfrac{T_0}{T}=2^5=32$이고",
+      "evidenceType": "IMPLIED",
+      "justification": "로그의 정의로 로그식을 지수식으로 바꿔 비를 구한다"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": "전자파 감쇠"
+  }
+ ]
+}

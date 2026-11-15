@@ -1,0 +1,1153 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T18:26:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1final/23_강남여고_1학기_기말_고2_확률과통계.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_633fb6ac14d277f05181561233ba04be576b002f8c84fc3e51954130d6e038f8",
+      "format": "단일 정답",
+      "decisiveStep": "시행 횟수 10번 중 일어난 횟수 7번의 상대도수로 통계적 확률 7/10을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "solution",
+            "quote": "시행 횟수로 나눈"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "바닥에 닿을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "통계적확률",
+            "src": "solution",
+            "quote": "실험에서의 확률은 사건이 일어난 횟수를 시행 횟수로 나눈 상대도수이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "시행 횟수에 대한 사건 발생 상대도수로부터 통계적 확률을 정의"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "확률은 $\\dfrac{7}{10}$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_f86e5eb64c9d95c70ae0bd5c6e46de7870d0b541ac8c71fce735efb151db7bd2",
+      "format": "단일 정답",
+      "decisiveStep": "여사건의 확률 P(B^c) = 1 - P(B) = 1 - 7/8 = 1/8을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "사건 $B$에 대하여"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(B)=\\frac{7}{8}$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$P(B^c)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건의 확률은 전체 확률 1에서 사건의 확률을 뺀 값이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "여사건의 확률은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_44d573381c263d854488a3bf5e191b56ee38643d9538cd7be76c84692ecf207c",
+      "format": "단일 정답",
+      "decisiveStep": "두 주사위의 합이 2,3,4,5인 10가지를 전체 36가지로 나누어 확률 5/18를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 두 개의 주사위를"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "두 눈의 수의 합이 5 이하일"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "서로 다른 두 주사위의 순서쌍은 36가지로 모두 같은 확률이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "동등한 가능성을 지닌 36개 근원사건에 근거한 수학적 확률 계산"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "합이 5 이하인 경우의 수는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "5 이하일"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_70ae357d1ed9f172ef519826937e937fe785e761841e89d58909a735ae466b14",
+      "format": "단일 정답",
+      "decisiveStep": "전체 경우 5C2=10과 빨간 공 1개, 파란 공 1개 경우 3*2=6의 비로 3/5을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "두 공을 동시에 뽑는 전체 경우는 $\\binom52=10$가지이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "빨간 공 1개와 파란 공 1개가 나올 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "고르는 경우는 $\\binom31\\binom21=6$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "조합 기호를 이용해 색상별 공을 선택하는 경우의 수를 계산"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "따라서 확률은 $\\dfrac6{10}=\\dfrac35$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_f1653f10ccef6d1abebb82d82b914fc5f1d3b5e6ef5a6dab92df7dfa31ad308f",
+      "format": "단일 정답",
+      "decisiveStep": "두 눈이 모두 홀수일 확률 1/4의 여사건 1 - 1/4 = 3/4로 곱이 짝수일 확률을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "곱이 홀수이려면 두 눈이 모두 홀수여야 한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$ab$가 짝수일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건으로 $1-\\dfrac14=\\dfrac34$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "곱이 짝수일 확률은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_fe582d9fcaa247553f7c15dafbd67d6281ad2ce6064098ffdcda4b7dd7e6d704",
+      "format": "단일 정답",
+      "decisiveStep": "합이 6이고 차가 4인 순서쌍 (1,5), (5,1) 2가지를 전체 36으로 나누어 1/18을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "합이 6인 사건을 $A$"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "두 눈의 수의 합이 6인"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "두 눈의 수의 차가 4인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "사건 $A \\cap B$가 일어날 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "사건 $A\\cap B$는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "확률은 $\\dfrac2{36}=\\dfrac1{18}$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_0f3bfc6d3695b9bb02b94afecffcec97560e15ffee562edce8bd3c9aa405d4a4",
+      "format": "단일 정답",
+      "decisiveStep": "대칭성에 의해 다섯 명 중 A가 가운데 자리를 차지할 확률 1/5을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "3인용 소파에 나란히 앉을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$\\mathrm{A}$가 소파 가운데에 앉을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "모든 배치는 대칭적이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "따라서 확률은 $\\dfrac15$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_a1f97cc1a1a67fef9a41f600110219bf8ea62b5f2ab12a547887c8e727ca54a8",
+      "format": "단일 정답",
+      "decisiveStep": "파란 공 2개를 뽑을 확률 6/{(n+4)C2}=1/6에서 (n+4)(n+3)=72를 풀어 자연수 n=5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "파란 공 두 개를 뽑는 경우는 $\\binom42=6$가지이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "파란 공 두 개를 뽑는 경우는 $\\binom42=6$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "4개 중 2개를 택하는 조합 공식 nCr 적용"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "\\dfrac{6}{\\binom{n+4}{2}}=\\dfrac16",
+            "evidenceType": "IMPLIED",
+            "justification": "확률 식을 세워 n에 관한 방정식을 유도"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_92f7c6f0beaaf04b913f264d6041da7319cb186916bab685f3b244a289155cd6",
+      "format": "단일 정답",
+      "decisiveStep": "전체 7*6=42가지 중 자연수가 되는 5가지를 찾아 확률 5/42를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "만들어진 수가 자연수일"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "만들어진 수가 자연수일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "전체 경우는 $7\\cdot6=42$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 7개 수 중 2개를 순서 있게 배열하는 순열 계산"
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "자연수가 되는 분수는",
+            "evidenceType": "IMPLIED",
+            "justification": "분자가 분모의 배수가 되는 순서쌍을 찾아 경우의 수 카운팅"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_3ebe08d2021e0fcfbcefe33f14e34f560a6853040b32bdbfac9225cd51e4ee84",
+      "format": "단일 정답",
+      "decisiveStep": "지름 4개와 제3의 점 6개로 직각삼각형 24개를 세어 전체 8C3=56으로 나누어 3/7을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 위에 8개의 점이"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "이 삼각형이 직각삼각형일 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "이 삼각형이 직각삼각형일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "원에 내접하는 삼각형은 한 변이 지름일 때에만 직각삼각형이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체 삼각형은 $\\binom83=56$개이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "8개 점 중 3개의 점을 고르는 조합을 표본공간의 크기로 계산"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_ba8886edc752976e06bf59ffb7cbb5b8203a261a76642ec5dd306ff908ff0e3d",
+      "format": "단일 정답",
+      "decisiveStep": "원순열에서 한 명을 고정하고 마주 보는 자리가 7자리 중 1곳이므로 1/7을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원순열",
+            "src": "stem",
+            "quote": "회전하여 일치하는 것은 같은 것으로 본다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "선생님 2명이 서로 마주 앉을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "회전하여 같은 배치를 하나로 보므로",
+            "evidenceType": "IMPLIED",
+            "justification": "회전 대칭성을 제거하기 위해 기준점을 고정하는 원순열 해법"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "따라서 확률은 $\\dfrac17$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_02acac0efaffa75981a69fab7ebff237a222a63691150a13265f5b6bef5446be",
+      "format": "단일 정답",
+      "decisiveStep": "2행 4열에서 여학생 4명이 이웃하지 않는 2가지를 전체 8C4=70으로 나누어 1/35로부터 p+q=36을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "서로소인 두 자연수 $p, q$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "여학생 4명의 자리를 고르는 전체 경우는 $\\binom84=70$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 8개 자리 중 4자리를 선택하는 조합 계산"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "따라서 확률은 $\\dfrac2{70}=\\dfrac1{35}$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "서로소인 두 자연수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_31d6e6d7aff8b53bbb1aadfd6e2722c95dd63aece03373ff97a16f07fa1558bb",
+      "format": "단일 정답",
+      "decisiveStep": "공격 제약을 만족하는 6가지 분할 중 A,C,E가 한 어항에 있는 2가지를 찾아 확률 2/6=1/3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "가능한 분할은 다음 6가지이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$\\mathrm{A, C, E}$를 1개의 어항에 함께 넣을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "가능한 분할은 다음 6가지이다",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 배타적인 어항 배정 제약을 고려하여 유효한 분할 경우의 수를 전수 조사"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "따라서 확률은 $\\dfrac26=\\dfrac13$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_5381b7c465beefd1edc5af2f420664adce03ad22c8b28bb1da4673827f0c8fa3",
+      "format": "단일 정답",
+      "decisiveStep": "이차방정식의 두 근 a/3, a/7이 정수가 되도록 3 또는 7의 배수 13개를 세어 확률 13/30을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $21x^2-10ax+a^2=0$이"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수인 해를 가질 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "정수인 해를 가질 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "식의 판별식은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "$a$가 3 또는 7의 배수이면 된다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_4dcf435b88556403c940e00d25beafd0a4b2096216c7241749d4ddc03270456b",
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "decisiveStep": "확률의 기본 성질과 배반사건의 덧셈정리로 (가), (나)가 참이고 (다)가 거짓임을 판정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "임의의 두 사건 $A, B$에 대하여"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "0 \\le P(A \\cup B) \\le 1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "두 사건은 서로소이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합집합",
+            "src": "solution",
+            "quote": "합집합도 사건이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_4f8efb396836c3d5939e92242875b76679c712fd2eb45d89c087e89f7e9d163c",
+      "format": "단일 정답",
+      "decisiveStep": "음이 아닌 정수해 전체 3H8=10C2=45와 z=2일 때 2H6=7의 비 7/45로부터 p+q=52를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "음이 아닌 정수해가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "별과 막대의 원리로 $\\binom{8+3-1}{3-1}=\\binom{10}{2}=45$개이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "방정식의 음이 아닌 정수해 개수를 중복조합 공식으로 계산"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "확률은 $\\dfrac7{45}$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "서로소인 두 자연수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_c47511a8d6280bc74b24f881787306b81ad04ffbfa57ea6f2f09ac69d55f48db",
+      "format": "단일 정답",
+      "decisiveStep": "안쪽 원에 접하는 120° 현 6개로부터 직각삼각형 조건을 만족하는 6개를 골라 6/20=3/10을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "반지름의 길이가 각각 1, 2인 두 원"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형이 원 $C_1$과 한 점에서만 만날"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "한 점에서만 만날 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체 경우는 $\\binom63=20$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "6개의 점 중 3개를 택하는 조합으로 표본공간 크기 결정"
+          },
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "안쪽 원에 접해 한 점에서만 만난다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현이 안쪽 원과 한 점에서 접하는 기하학적 접선 성질 활용"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_eee822b42e1eeef072d4b5159c31b5d37629b12bccc739238c24deaad36ee0ff",
+      "format": "단일 정답",
+      "decisiveStep": "8개 부분집합 중 2개를 택하는 28가지와 여집합 쌍 4가지의 비 4/28=1/7에서 p+q=8을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "임의로 서로 다른 두 부분집합을 택할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여집합",
+            "src": "solution",
+            "quote": "서로 여집합인 쌍이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "고르는 경우는 $\\binom82=28$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "8개 부분집합 중 2개를 무순서로 택하는 조합 계산"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "서로소인 두 자연수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_4701c701058cf76e10193297d9ea6cac68f1905e103e7411016d560a2b0754b8",
+      "format": "단일 정답",
+      "decisiveStep": "전체 216가지 중 ab=c*3^k를 만족하는 36가지를 세어 확률 36/216=1/6을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "\\log_3 \\frac{ab}{c}"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수일 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "정수일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "ab=c\\cdot3^k",
+            "evidenceType": "IMPLIED",
+            "justification": "로그값이 정수가 되기 위한 진수의 3의 거듭제곱 배수 조건"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "전체 경우는 $6^3=216$가지이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_aee304155c3509ce03c97ceedf225683deb80e13631c24ed6a452484a354b7bb",
+      "format": "단일 정답",
+      "decisiveStep": "f(2)<=f(3)<=f(4)를 만족하는 치역 중복조합 4H3=20과 f(1)의 4가지를 곱해 80/256=5/16에서 p+q=21을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "모든 함수 $f$ 중에서"
+          },
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $X=\\{1, 2, 3, 4\\}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "중복을 허락해 3개를 고르는 경우와 같아 $\\binom{4+3-1}{3}=20$가지이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "확률은 $\\frac{80}{256}=\\frac{5}{16}$이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "서로소인 두 자연수"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_adfe5d6093801c24f84edc0e34ba20e2d35412358ce0a2a92dcf4ff78943e823",
+      "format": "단일 정답",
+      "decisiveStep": "전체 9C5=126에서 한 행이나 열이 모두 검은 81가지를 여사건으로 제외해 확률 45/126=5/14를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "고르는 전체 경우는 $\\binom95=126$가지이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "연속해서 있지 않도록 넣을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "금지되는 배치는 $90-9=81$개, 허용 배치는 $126-81=45$개이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "포함배제 원리로 여사건의 수를 구해 전체에서 빼는 여사건 확률 계산"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "고르는 전체 경우는 $\\binom95=126$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "9칸 중 5칸을 고르는 조합 계산으로 표본공간 크기 산출"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_bf04eca7da8a92944615edc8a2efeaaa2cc8857cc1177eafd328bc594264c6f3",
+      "format": "서술",
+      "decisiveStep": "네 사건의 원소를 각각 나열하고 공통원소가 없는 사건 (나)={1,2,4}와 (다)={3,12}가 배반임을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "보기의 각각의 사건을 집합으로 나타내고"
+          },
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "서로 배반인 사건을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "있는 대로 찾으시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "서로 배반인 사건은 [나]와 [다]이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "공통 원소가 없으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_9f1edbfe4f8cd31d57754b27029247541af539a11b9d4733fb7012158800ff46",
+      "format": "서술",
+      "decisiveStep": "합이 7의 배수인 10쌍과 곱이 12인 3쌍에서 중복 (3,4) 1쌍을 뺀 12가지를 전체 66으로 나누어 2/11을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "합이 7의 배수이거나"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "곱이 12일 확률을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "확률을 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "포함배제로 유리한 경우는 $10+3-1=12$가지이고",
+            "evidenceType": "IMPLIED",
+            "justification": "합집합의 원소 개수 세는 포함배제 원리 및 확률의 덧셈정리 적용"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체 경우는 $\\binom{12}{2}=66$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "12개 공 중 2개를 택하는 조합 계산"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_336af13e4869ed523acbef5580f765bc8e907dd80e6205c6b345c0c0fc2bd3e9",
+      "format": "서술",
+      "decisiveStep": "전체 4^3=64 중 357보다 큰 수 백의 자리 5,7인 32개와 37x인 4개를 합해 36/64=9/16을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "중복순열",
+            "src": "stem",
+            "quote": "중복을 허락하여 3개를 뽑아 세 자리 자연수를 만들 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "357보다 클 확률을 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "각 자리에 1,3,5,7 중 하나를 고르므로 $4^3=64$개이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "4개의 수 중 중복을 허락하여 3자리를 만드는 중복순열 계산"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "확률은 $\\frac{16+16+4}{64}=\\frac{36}{64}=\\frac{9}{16}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 자리 조건에 따라 경우의 수를 분류하여 합산"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_57df70f713ffae265e6da9fe075467d7e1574c94216734b523ca9fa5d78f1540",
+      "format": "서술",
+      "decisiveStep": "배반사건 성질 P(A)+P(B)=3/4과 P(A)+2P(B)=1에서 P(B)=1/4, P(A)=1/2을 얻고 P(A)-P(B)=1/4를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "두 사건 $\\mathrm{A, B}$가 서로 배반사건이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$P(A)-P(B)$의 값을 구하여라."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$P(A)-P(B)$의 값을 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "$A,B$가 서로 배반이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "$P(A\\cup B)=P(A)+P(B)=\\frac{3}{4}$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

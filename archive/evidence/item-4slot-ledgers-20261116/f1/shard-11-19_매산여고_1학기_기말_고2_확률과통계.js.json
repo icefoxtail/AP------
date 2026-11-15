@@ -1,0 +1,1045 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-16T01:40:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1final/19_매산여고_1학기_기말_고2_확률과통계.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_74e0566b84154d86a1c61e50ab49b86f15446916f9b16537d61381c48e9bb860",
+      "format": "단일 정답",
+      "decisiveStep": "이항정리 전개식 sum_{k=0}^n nCk = 2^n = 128에서 n=7을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "{}_n\\mathrm{C}_0 + {}_n\\mathrm{C}_1"
+          },
+          {
+            "term": "수열의합",
+            "src": "stem",
+            "quote": "{}_n\\mathrm{C}_0 + {}_n\\mathrm{C}_1 + {}_n\\mathrm{C}_2 + \\cdots + {}_n\\mathrm{C}_n = 128$을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "조합의 합은 이항정리에서 $(1+1)^n$의 전개식과 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$2^n=128=2^7$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "2의 거듭제곱 값을 비교하여 지수 n을 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값은?"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_c5fecec7bd0ec9b3cadc056c55afc7cdb705f7c3e049f4b12bec5bd6dd26a62c",
+      "format": "단일 정답",
+      "decisiveStep": "정의역의 각 원소가 공역 5개 원소 중 하나에 대응하므로 중복순열(곱의 법칙) 5^3=125개를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "두 집합 $X=\\{a, b, c\\}$"
+          },
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "$X$에서 $Y$로의 함수의 개수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "함수의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙으로 $5\\times5\\times5=5^3=125$개의",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "$5\\times5\\times5=5^3=125$개의",
+            "evidenceType": "IMPLIED",
+            "justification": "중복을 허용하여 5개 중 3개를 택하는 중복순열의 수를 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_201c28ad8f515ec0c392f543839b451095b2864407b1c6144c2c38c9ec2d70e9",
+      "format": "단일 정답",
+      "decisiveStep": "남자 3명을 원형 배열하는 (3-1)!=2가지에 남자 사이 세 자리에 여자 3명을 일렬 배열하는 3!=6가지를 곱해 2*6=12를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원탁에 둘러앉을 때"
+          },
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "경우의 수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "남녀가 교대로 앉는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원순열",
+            "src": "solution",
+            "quote": "남자 3명의 원순열: 한 남자를",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "배치하는 방법은 $3!=3\\times2\\times1=6$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빈자리에 여자를 일렬로 나열하는 순열을 계산함"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "두 선택을 곱하면 $2\\times6=12$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 단계의 경우의 수를 곱하여 전체 경우의 수를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_da719a1a7a10119436782a9420f02561556f070ad67c8e84926bb70b597093e2",
+      "format": "단일 정답",
+      "decisiveStep": "드모르간 법칙으로 P(A∪B)=1-1/8=7/8을 구하고 배반사건의 덧셈정리로 P(B)=7/8-1/4=5/8을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "배반사건",
+            "src": "stem",
+            "quote": "서로 배반사건인 두 사건 $A, B$에 대하여"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(A)=\\frac{1}{4}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P(B)$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "$P(A\\cup B)=1-\\frac18=\\frac78$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "여사건의 확률 성질을 이용하여 합사건의 확률을 계산함"
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "덧셈정리에 의해 $P(A\\cup B)=P(A)+P(B)$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "드모르간법칙",
+            "src": "solution",
+            "quote": "$A^c\\cap B^c=(A\\cup B)^c$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "여집합의 교집합을 합집합의 여집합으로 변형하는 드모르간 법칙을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_7f15961cde35eb5eaf09e6df10beb68b612c37707eb55abaabe078b2299fc46b",
+      "format": "단일 정답",
+      "decisiveStep": "P(A∩C)=P({3})=1/6과 P(A)P(C)=1/2*1/3=1/6이 같음을 확인하여 서로 독립인 쌍 A, C를 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "보기의 사건 $A, B, C, D$ 중"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "서로 독립인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "두 사건이 독립일 조건은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "$P(A)=P(B)=P(D)=\\frac12$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_b00c5c0305bbedbe05964bd9e22b5d15bb3f09b7286d269199dd8b23fe7bc72c",
+      "format": "단일 정답",
+      "decisiveStep": "전체 색 구성 3H5=7C5=21가지 중 노란색이 없는 구성 2H5=6C5=6가지를 빼서 확률 15/21=5/7을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "리본 중에서 임의로 5개를 사려고 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "노란색 리본을 사게 될 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "중복조합 모형을 사용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "노란 리본을 사지 않는 경우는 $y=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "노란 리본이 0개인 여사건의 경우의 수를 전체에서 뺌"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_95c499125a6502213b55a1d80246f3bf439bce6d7918765a000e5cab0fb61d62",
+      "format": "단일 정답",
+      "decisiveStep": "전체 6^3=216가지에서 세 눈이 모두 다른 여사건의 경우의 수 6*5*4=120을 빼서 확률 1-120/216=4/9를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$(a-b)(b-c)(c-a)=0$일 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$(a-b)(b-c)(c-a)=0$일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건인 '세 눈이 모두 다름'은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "$6\\times5\\times4=120$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 3개의 눈을 순서 있게 택하는 순열을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_6b8e22a18387f70ea2c13737d239fce7f4e76a0c5e132d92c1fba5cf03002705",
+      "format": "단일 정답",
+      "decisiveStep": "A상자 선택(1/2)*6C2/10C2(1/3) + B상자 선택(1/2)*3C2/6C2(1/5) = 1/6 + 1/10 = 4/15를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "모두 노란 공일 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "모두 노란 공일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "\\frac{{}_6\\mathrm C_2}{{}_{10}\\mathrm C_2}",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 공 중 2개를 택하는 조합으로 확률을 계산함"
+          },
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "P(\\text{노랑 2개}\\mid A)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "=\\frac16+\\frac1{10}=\\frac{5+3}{30}",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 배반인 두 경우의 확률을 더함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_4f11bbe0d35cae42f0a1c47bdbff4343fadd7df97a47cf47ee442e68abe46b80",
+      "format": "단일 정답",
+      "decisiveStep": "앞면이 4, 5, 6회 나오는 경우의 수 6C4+6C5+6C6=15+6+1=22를 전체 2^6=64로 나누어 확률 11/32를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "횟수",
+            "src": "stem",
+            "quote": "앞면이 나오는 횟수가 뒷면이 나오는 횟수보다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "클 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "{}_6\\mathrm C_4+{}_6\\mathrm C_5+{}_6\\mathrm C_6=15+6+1=22$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "동전을 반복하여 던지는 독립시행에서 각 성공 횟수의 확률을 조합으로 구함"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "{}_6\\mathrm C_4+{}_6\\mathrm C_5+{}_6\\mathrm C_6",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_6c0498318d768db0d9d098c867264754d44d1f795b4ac0af3788ecb1e765273e",
+      "format": "단일 정답",
+      "decisiveStep": "전체 불량률 P(D)=0.3*0.05+0.7*0.04=0.043에서 P(F1∩D)=0.015이므로 P(F1|D)=15/43을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "전체의 제품의 30%, 70%가 생산되고"
+          },
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "택하였더니 불량품이었을 때, 그 제품이 제1공장에서 생산된 제품일 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "제1공장에서 생산된 제품일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "P(F_1\\mid D)=\\frac{P(F_1\\cap D)}{P(D)}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "P(F_1\\cap D)=0.30\\times0.05=0.015$.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 공장의 생산 비율과 불량률을 곱하여 결합확률을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_17d06466c8faaa118beab1857f34e9da43a2e3bed0e3cfc1da03d54e3d2fd7ba",
+      "format": "단일 정답",
+      "decisiveStep": "1번(4), 2번(4^2=16), 3번(4^3=64) 신호의 개수를 합하여 4+16+64=84를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "신호의 개수를 구하시오."
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "신호의 개수를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "중복순열",
+            "src": "solution",
+            "quote": "$4\\times4=4^2=16$가지.",
+            "evidenceType": "IMPLIED",
+            "justification": "중복을 허용하여 순서 있게 나열하는 중복순열로 신호 수를 계산함"
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "합하면 $4+16+64=\\boxed{84}$가지",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "3번 이하로 들어 올려서"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_a905b291e0904cdcdd4b65b582be5ac4568db23d80cf831a3ea5d1934eba212e",
+      "format": "단일 정답",
+      "decisiveStep": "각 원소마다 A와 B에 속하는 상태가 (속함,속함), (안속함,속함), (안속함,안속함)의 3가지이므로 3^5=243을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U=\\{a, b, c, d, e\\}$의"
+          },
+          {
+            "term": "부분집합",
+            "src": "stem",
+            "quote": "두 부분집합 $A, B$가 $A \\subset B$를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "정하는 모든 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "부분집합으로 해석한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙으로 $3\\times3\\times3\\times3\\times3=\\boxed{3^5}$가지이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_960d37658a8171fda8456a92b8efa115b73f39f0eaa085fe79f78d9c83581fa6",
+      "format": "단일 정답",
+      "decisiveStep": "s=y+z의 범위 1<=s<=6에 대해 각 s마다 y+z=s의 해 (s+1)개를 더해 2+3+4+5+6+7=27을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "음이 아닌 정수 $x, y, z$의"
+          },
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "모든 순서쌍 $(x, y, z)$의 개수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "순서쌍 $(x, y, z)$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중복조합",
+            "src": "solution",
+            "quote": "음이 아닌 정수해는 ${}_9\\mathrm C_2=36$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "음이 아닌 정수해의 개수를 중복조합으로 계산하고 조건을 적용함"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "고정된 $s$마다 $y,z$는 음이 아닌 정수이고",
+            "evidenceType": "IMPLIED",
+            "justification": "y+z의 값에 따라 경우를 분류하여 각각 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "음이 아닌 정수 $x, y, z$의"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$0 < y+z < 7$"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_5fb67718efbae6048e090fd42aa1aacc9c0dd310a6cd239b12cebc1dd93922f4",
+      "format": "옳은 것 고르기",
+      "decisiveStep": "P(A)=4/8=1/2, P(A∩B)=1/8, P(B)=2/8=1/4에서 P(A∩B)=P(A)P(B)이므로 독립임을 밝혀 옳은 보기 ㄱ, ㄴ, ㄹ을 고른다.",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "앞면이 나오는 동전이 1개 이하인 사건을 $A$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "두 사건은 독립이다. 참이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "$P(A)=\\frac48=\\frac12$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_99b5cce8dcd4a44e568640ed86a59f70e781ea61fc97f52d86ce01396bd0cb1a",
+      "format": "단일 정답",
+      "decisiveStep": "P(E)=1/2*(2/3)^2 + 1/2*(1/3)^2 = 5/18에서 P(B∩E)=1/18이므로 P(B|E)=(1/18)/(5/18)=1/5를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "택한 주사위가 $B$일 확률을 구하여라."
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건부확률",
+            "src": "stem",
+            "quote": "택한 주사위가 $B$일 확률을 구하여라."
+          }
+        ],
+        "method": [
+          {
+            "term": "조건부확률",
+            "src": "solution",
+            "quote": "P(B\\mid E)=\\frac{P(B\\cap E)}{P(E)}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "두 번 모두 1일 확률은 $(\\frac{1}{3})^2=\\frac{1}{9}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "동일한 주사위를 독립적으로 두 번 던져 같은 눈이 나올 확률을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_3a2b2094a003a6604f75fb78ec6281feb5207e6e60f3bef20ff779b9c57db3b5",
+      "format": "단일 정답",
+      "decisiveStep": "2장 이내에 멈추는 사건(첫 장 5: 8가지, 합 5배수: 16가지, 총 24/72=1/3)의 여사건으로 1-1/3=2/3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "카드에 적힌 수의 합이 5의 배수가 될 때까지"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "카드 3장 이상 꺼낼 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "사건의 여사건인 ‘두 장 이내에 멈춘다’를 계산한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우의수",
+            "src": "solution",
+            "quote": "$9\\times8=72$가지로 동일한 확률을 갖는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "비복원추출에서 순서를 고려한 두 카드의 전체 경우의 수를 순열로 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1부터 9까지 자연수가 각각 적힌"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_1f9a1b3564679abcf09ee3eb02fe5616a7758d8f58db38f1226e596defc020f9",
+      "format": "단일 정답",
+      "decisiveStep": "처음 두 공에 빨간 공이 있으면 바로 만족하고, 모두 검은 공이면 남은 공(빨4,검1)에서 두 번째 꺼낼 때 반드시 빨간 공이 포함되므로 필연적으로 확률 1임을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "빨간 공의 개수가 1개 이상 들어 있을 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "빨간 공의 개수가 1개 이상 들어 있을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "두 공 중 적어도 한 개는 빨간 공이고",
+            "evidenceType": "IMPLIED",
+            "justification": "적어도 한 개가 특정 색인 사건을 여사건 관점에서 분석함"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "두 경우 모두 B에 빨간 공이 1개 이상",
+            "evidenceType": "IMPLIED",
+            "justification": "처음 꺼낸 공의 색 구성에 따라 경우를 나누어 분석함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_d103120767b3cef6c6da98fffb9c28a4adc839f1ad069f60e1de76aa22da38ee",
+      "format": "단답",
+      "decisiveStep": "독립성에 의해 P(A∩B)=1/12를 구하고 서로 배반인 두 사건의 합 P(A∩B^c)+P(A^c∩B) = (1/3-1/12) + (1/4-1/12) = 1/4+1/6 = 5/12를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "독립사건",
+            "src": "stem",
+            "quote": "두 사건 $A, B$가 서로 독립이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값을 구하시오."
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$P((A \\cap B^c) \\cup (A^c \\cap B))$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "독립 조건에 의해 $P(A\\cap B)=P(A)P(B)=\\frac13\\cdot\\frac14=\\frac1{12}$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "두 사건 $A\\cap B^c$와 $A^c\\cap B$는 서로 배반이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "두 사건을 더하면 $\\frac14+\\frac16=\\frac5{12}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "배반사건의 덧셈정리로 합사건의 확률을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_e81dfd1fbc0388477121aae776a22654d54470dd52196e864f0c69ae5383e83b",
+      "format": "단답",
+      "decisiveStep": "전체 10C2=45에서 장미 없음 4C2=6과 분홍색 없음 6C2=15를 빼고 둘 다 없음 2C2=1을 더하는 포함배제의 원리로 25/45=5/9를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "임의로 2송이를 동시에 꺼낼 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "적어도 1송이는 분홍색일 확률을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "2송이 선택은 ${}_{10}\\mathrm C_2=45$가지이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "포함배제의원리",
+            "src": "solution",
+            "quote": "포함배제 원리를 쓴다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "성공 경우는 $45-6-15+1=25$가지",
+            "evidenceType": "IMPLIED",
+            "justification": "조건을 만족하지 않는 여사건들을 제외하여 성공 경우의 수를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_4b6ead1e5caf59cc8b837e0ee908515e974eccfc3af68411afed36521b23b1a4",
+      "format": "소문항 묶음",
+      "decisiveStep": "일반항 4Cr*nCs*x^{r+2s}에서 r+2s=2인 쌍 (2,0), (0,1)의 계수합 4C2*nC0+4C0*nC1 = 6+n = 10에서 n=4를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "전개",
+            "src": "stem",
+            "quote": "$(1+x)^4 (1+x^2)^n$의 전개식에서"
+          },
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x^2$의 계수가 10이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "일반항",
+            "src": "stem",
+            "quote": "전개식의 일반항을 구하시오."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "자연수 $n$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "이항정리",
+            "src": "solution",
+            "quote": "이항정리에 의해 $(1+x)^4$의 일반항은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_4\\mathrm C_2{}_n\\mathrm C_0+{}_4\\mathrm C_0{}_n\\mathrm C_1=6+n$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "조합으로 이항계수들을 계산하여 계수 방정식을 풂"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 값을 구하시오."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_f6da789607176421cb6a3bac6e6131a9dcdb8bdb95566f8ff507ac08ddf7125a",
+      "format": "서술",
+      "decisiveStep": "색 다름(12/21=4/7)*3C2*(1/3)^2*(2/3)(2/9) + 색 같음(9/21=3/7)*(1/3)^2(1/9) = 8/63 + 3/63 = 11/63을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "이 시행에서 주사위가 2이하의 눈이 2번 나올 확률을 구하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "주사위가 2이하의 눈이 2번 나올 확률을 구하고 그 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "$3(\\frac{1}{3})^2(\\frac{2}{3})=\\frac{2}{9}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주사위를 반복하여 던지는 독립시행의 확률 공식 적용"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_7\\mathrm C_2=21$가지 중",
+            "evidenceType": "IMPLIED",
+            "justification": "주머니에서 공을 꺼내는 조합의 수를 계산함"
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "가중합은 $\\frac47\\cdot\\frac29+\\frac37\\cdot\\frac19=\\frac8{63}+\\frac3{63}=\\boxed{\\frac{11}{63}}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 배반인 두 조건의 확률을 더함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_1bdfa763d6c7dbb463e88270ee587ac5fe7b8a7417582470355261ef19cd3432",
+      "format": "소문항 묶음",
+      "decisiveStep": "1회 시행 시 B조 승률 1/4에서 A조 승률 3/4를 구하고, 4회 독립시행에서 3회 승리할 확률 4C3*(3/4)^3*(1/4) = 27/64를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "게임을 1번 할 때, A조가 이길 확률을 구하시오."
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "A조가 이길 확률을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "A조 승률은 $1-\\frac{1}{4}=\\boxed{\\frac{3}{4}}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "B조 승리 사건의 여사건으로 A조 승률을 계산함"
+          },
+          {
+            "term": "독립시행",
+            "src": "solution",
+            "quote": "P(\\text{A조 정확히 3승})={}_4\\mathrm C_3(\\frac{3}{4})^3(\\frac{1}{4})",
+            "evidenceType": "IMPLIED",
+            "justification": "독립시행의 확률 공식으로 4게임 중 3승할 확률을 구함"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_4\\mathrm C_1=4$가지 중 선택한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "승리할 회차의 조합을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

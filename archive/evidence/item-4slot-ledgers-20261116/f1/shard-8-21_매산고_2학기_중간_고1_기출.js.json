@@ -1,0 +1,1182 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "gemini-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-15T22:35:00+09:00",
+ "sourceArchiveFile": "original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "옳은 것 고르기",
+   "decisiveStep": "공집합 기호와 원소 1, 2를 원소로 갖는 집합 A에서 공집합이 모든 집합의 부분집합임을 확인한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "집합",
+      "src": "stem",
+      "quote": "집합 $A=\\{\\varnothing,1,2\\}$"
+     },
+     {
+      "term": "공집합",
+      "src": "stem",
+      "quote": "\\varnothing"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "옳은 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "원소",
+      "src": "solution",
+      "quote": "원소 기호 $\\in$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "부분집합",
+      "src": "solution",
+      "quote": "부분집합 기호 $\\subset$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "옳지 않은 것 고르기",
+   "decisiveStep": "A-B^c=A를 A 교집합 B = A로 변형하여 A가 B의 부분집합임을 얻고 B-A가 공집합이 아님을 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "전체집합",
+      "src": "stem",
+      "quote": "전체집합 $U$"
+     },
+     {
+      "term": "부분집합",
+      "src": "stem",
+      "quote": "두 부분집합 $A,B$"
+     },
+     {
+      "term": "차집합",
+      "src": "stem",
+      "quote": "$A-B^c=A$"
+     },
+     {
+      "term": "여집합",
+      "src": "stem",
+      "quote": "A-B^c=A"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "옳지 않은 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "교집합",
+      "src": "solution",
+      "quote": "차집합을 교집합으로 바꾸어",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "포함관계",
+      "src": "solution",
+      "quote": "포함관계를 찾는다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구별가능",
+      "src": "stem",
+      "quote": "서로 다른 두 부분집합"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "10의 양의 약수로 이루어진 진리집합 P={1,2,5,10}의 원소의 개수가 4임을 센다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조건",
+      "src": "stem",
+      "quote": "조건 '$x$는 10의 양의 약수'"
+     },
+     {
+      "term": "약수",
+      "src": "stem",
+      "quote": "10의 양의 약수"
+     }
+    ],
+    "goal": [
+     {
+      "term": "원소의개수",
+      "src": "stem",
+      "quote": "$n(P)$는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "진리집합",
+      "src": "solution",
+      "quote": "조건의 진리집합은 10을 나누어떨어지게 하는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "원소나열법",
+      "src": "solution",
+      "quote": "10의 양의 약수를 빠짐없이 나열한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "양의 약수"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "옳지 않은 것 고르기",
+   "decisiveStep": "명제의 대우와 충분조건·필요조건에서 P가 Q의 부분집합이고 Q가 R의 부분집합임을 유도하여 포함관계를 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "전체집합",
+      "src": "stem",
+      "quote": "전체집합 $U$에서"
+     },
+     {
+      "term": "조건",
+      "src": "stem",
+      "quote": "세 조건 $p,q,r$"
+     },
+     {
+      "term": "진리집합",
+      "src": "stem",
+      "quote": "진리집합을 각각 $P,Q,R$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "옳지 않은 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "충분조건",
+      "src": "solution",
+      "quote": "충분조건과 필요조건을",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대우",
+      "src": "solution",
+      "quote": "이 명제의 대우는 $q\\to r$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "포함관계",
+      "src": "solution",
+      "quote": "진리집합의 포함관계로 바꾼다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x와 y를 바꾼 식 x=2y+10을 y에 대하여 정리하여 역함수 y=1/2x-5를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "일차함수",
+      "src": "stem",
+      "quote": "함수 $y=2x+10$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "역함수",
+      "src": "stem",
+      "quote": "역함수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "역함수",
+      "src": "solution",
+      "quote": "역함수는 $x$와 $y$를 바꾼 뒤",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일차방정식",
+      "src": "solution",
+      "quote": "$2y=x-10$이므로 $y=\\dfrac12x-5$",
+      "evidenceType": "IMPLIED",
+      "justification": "y에 대한 일차방정식을 풀어 역함수의 식을 구함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "다섯 개의 명제 중 반례와 부등식 성질을 확인하여 ㄷ, ㄹ, ㅁ의 3개가 참임을 센다.",
+   "slots": {
+    "given": [
+     {
+      "term": "명제",
+      "src": "stem",
+      "quote": "참인 명제의 개수는?"
+     },
+     {
+      "term": "마름모",
+      "src": "stem",
+      "quote": "마름모는 정사각형이다"
+     },
+     {
+      "term": "정사각형",
+      "src": "stem",
+      "quote": "마름모는 정사각형이다"
+     },
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "$(a^2+b^2)(x^2+y^2)\\ge(ax+by)^2$"
+     },
+     {
+      "term": "방정식",
+      "src": "stem",
+      "quote": "$x+1=0$과 $(x+1)^2=0$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "참인 명제의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "반례",
+      "src": "solution",
+      "quote": "반례 하나로 판정할 수 있다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "$(ay-bx)^2\\ge0$이므로 참이다",
+      "evidenceType": "IMPLIED",
+      "justification": "완전제곱식이 0 이상임을 이용하여 부등식이 참임을 확인"
+     },
+     {
+      "term": "필요충분조건",
+      "src": "solution",
+      "quote": "해가 $x=-1$ 하나이므로 동치이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "모든 실수 $x>y$이면"
+     },
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "자연수 $k$에 대하여"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "옳지 않은 것 고르기",
+   "decisiveStep": "xy=0이지만 |x|+|y|=0이 아닌 반례 (0,1)을 찾아 ⑤가 충분조건이 아님을 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조건",
+      "src": "stem",
+      "quote": "$p$가 $q$이기 위한"
+     },
+     {
+      "term": "소수",
+      "src": "choices",
+      "quote": "짝수가 아닌 소수"
+     },
+     {
+      "term": "절댓값",
+      "src": "choices",
+      "quote": "|x+y|=|x-y|"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "충분조건이 아닌 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "충분조건",
+      "src": "solution",
+      "quote": "$p$가 $q$의 충분조건이 아니려면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "반례",
+      "src": "solution",
+      "quote": "반례가 하나라도 있어야 한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "교집합 원소 수의 범위 25<=t<=55를 통해 수학만 좋아하는 학생 수의 최댓값 45와 최솟값 15의 합 60을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "원소의개수",
+      "src": "stem",
+      "quote": "학생 100명 중 수학을 좋아하는 학생 70명"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최댓값",
+      "src": "stem",
+      "quote": "최댓값 $M$"
+     },
+     {
+      "term": "최솟값",
+      "src": "stem",
+      "quote": "최솟값 $m$"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$M+m$은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "교집합",
+      "src": "solution",
+      "quote": "두 집합의 교집합 인원을",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "$70+55-t\\le100$에서 $t\\ge25$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "홀수 n=2k-1의 제곱식을 전개하여 f(k)=4k^2-4k+1과 g(k)=2k^2-2k+1을 구한 뒤 f(3)+g(2)=30을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차식",
+      "src": "stem",
+      "quote": "$n^2=f(k)=2g(k)-1$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$f(3)+g(2)$는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "$n^2=(2k-1)^2=4k^2-4k+1$",
+      "evidenceType": "IMPLIED",
+      "justification": "일차식의 완전제곱식을 전개하여 이차식을 얻음"
+     },
+     {
+      "term": "계수비교",
+      "src": "solution",
+      "quote": "$2g(k)=4k^2-4k+2$, 따라서 $g(k)=2k^2-2k+1$",
+      "evidenceType": "IMPLIED",
+      "justification": "동치인 양변 식의 계수를 비교하여 g(k)를 결정함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "음수 쪽 일차함수 함숫값 k-1이 0 이상일 때의 함숫값 3, 6과 같아지는 k=4, 7을 제외하여 8개를 센다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정의역",
+      "src": "stem",
+      "quote": "정의역 $X=\\{-3,-2,-1,0,1,2\\}$"
+     },
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "x^2+2x+3"
+     },
+     {
+      "term": "일차함수",
+      "src": "stem",
+      "quote": "\\\\frac12x+k"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "자연수 $k$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "일대일함수",
+      "src": "stem",
+      "quote": "일대일함수가 되게 하는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "서로 겹치는 경우만 제외한다",
+      "evidenceType": "IMPLIED",
+      "justification": "함숫값이 겹치는 경우들을 분류하여 배제함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "10 이하 자연수 $k$"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "g(1)=2와 h=f o g를 유도하고 두 경우의 대칭성으로부터 h(1)=h^{-1}(1)임을 확인하여 비가 1임을 정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "함수 $f,g,h$가"
+     },
+     {
+      "term": "합성함수",
+      "src": "stem",
+      "quote": "$(f\\circ g^{-1})^{-1}(2)=2$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$\\dfrac{h(1)}{h^{-1}(1)}$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "역함수",
+      "src": "stem",
+      "quote": "역함수가 존재한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일대일대응",
+      "src": "solution",
+      "quote": "유한집합의 역함수가 존재한다는 것은",
+      "evidenceType": "IMPLIED",
+      "justification": "역함수가 존재하는 유한집합의 함수는 일대일대응임을 이용"
+     },
+     {
+      "term": "항등함수",
+      "src": "stem",
+      "quote": "$(f\\circ g)^{-1}\\circ h(x)=x$",
+      "evidenceType": "IMPLIED",
+      "justification": "항등함수로 대응되는 성질을 이용해 h=f o g 관계를 유도"
+     }
+    ],
+    "condition": [
+     {
+      "term": "항상성립",
+      "src": "stem",
+      "quote": "모든 $x\\in X$에 대하여 성립할 때"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "g o f가 항등함수이므로 첫째 항은 c이고 그래프의 점선 대응에서 둘째 항이 d임을 읽어 c+d를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "역함수",
+      "src": "stem",
+      "quote": "$g$는 $f$의 역함수이다"
+     },
+     {
+      "term": "합성함수",
+      "src": "stem",
+      "quote": "$(g\\circ f)^{-1}(c)"
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "$y=x$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "choices",
+      "quote": "$c+d$"
+     }
+    ],
+    "method": [
+     {
+      "term": "항등함수",
+      "src": "solution",
+      "quote": "합성함수를 항등함수로 단순화한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "역함수",
+      "src": "solution",
+      "quote": "$g\\circ f=f^{-1}\\circ f=I$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "합성함수 치역 [0, (3a+2)^2] 내 자연수가 121개 이상이 되도록 (3a+2)^2>=121을 풀어 최솟값 a=3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "일차함수",
+      "src": "stem",
+      "quote": "$f(x)=3x+4$"
+     },
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "$g(x)=(x-3)^2$"
+     },
+     {
+      "term": "정의역",
+      "src": "stem",
+      "quote": "정의역을 $X=\\{x\\mid-a-\\dfrac23\\le x\\le a+\\dfrac13\\}$"
+     },
+     {
+      "term": "치역",
+      "src": "stem",
+      "quote": "치역을 $A$라 하자"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최솟값",
+      "src": "stem",
+      "quote": "자연수 $a$의 최솟값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "합성함수",
+      "src": "solution",
+      "quote": "먼저 합성함수를 구하고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "$(3a+2)^2\\ge121$이어야 한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "자연수 $a$의 최솟값"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "원소들의 순환 및 강제 관계에서 6원소 집합 A가 2개(a=2)이고 제외 원소가 10(b=10)임을 구해 5a+b=20을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "부분집합",
+      "src": "stem",
+      "quote": "6원소 부분집합 $A$"
+     },
+     {
+      "term": "합집합",
+      "src": "stem",
+      "quote": "합집합을 $B$라 하고"
+     },
+     {
+      "term": "차집합",
+      "src": "stem",
+      "quote": "$S-B$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$5a+b$는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "원소의개수",
+      "src": "solution",
+      "quote": "6원소가 되는 닫힌 조합을",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "닫힌 조합을 모두 조사하면",
+      "evidenceType": "IMPLIED",
+      "justification": "원소 순환 관계에 따른 부분집합의 가능성을 분류함"
+     },
+     {
+      "term": "합",
+      "src": "solution",
+      "quote": "$5a+b=5\\times2+10=20$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "짝수",
+      "src": "stem",
+      "quote": "짝수 $x\\in A$"
+     },
+     {
+      "term": "홀수",
+      "src": "stem",
+      "quote": "홀수 $x\\in A$"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "g(3)=f(3)+1과 부등식 f(4)<g(3)<f(2)=6에서 f(3)=4, g(3)=5를 확정하고 f(5)=5를 찾아 합 10을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "두 함수 $f:X\\to Y$, $g:Y\\to Z$"
+     },
+     {
+      "term": "교집합",
+      "src": "stem",
+      "quote": "$x\\in X\\cap Y$"
+     },
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "$f(4)<g(3)<f(2)$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$f(5)+g(3)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "일대일대응",
+      "src": "solution",
+      "quote": "일대일대응이므로 남은 값은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "$f(3)=3$이면 $g(3)=4$인데",
+      "evidenceType": "IMPLIED",
+      "justification": "함숫값 후보에 따른 부등식 만족 여부를 분류하여 상을 결정함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "원소 1, 2, 4는 제외하고 3은 반드시 포함하며 5, 6의 자유 선택으로 2^2=4개의 집합 X를 센다.",
+   "slots": {
+    "given": [
+     {
+      "term": "전체집합",
+      "src": "stem",
+      "quote": "$U=\\{1,2,3,4,5,6\\}$"
+     },
+     {
+      "term": "교집합",
+      "src": "stem",
+      "quote": "$A\\cap X=\\varnothing$"
+     },
+     {
+      "term": "합집합",
+      "src": "stem",
+      "quote": "$(A\\cup B)\\cap X=\\{3\\}$"
+     },
+     {
+      "term": "공집합",
+      "src": "stem",
+      "quote": "$A\\cap X=\\varnothing$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "$X$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "부분집합",
+      "src": "solution",
+      "quote": "반드시 포함되는 원소와 절대로 포함될 수 없는 원소를 구분한다",
+      "evidenceType": "IMPLIED",
+      "justification": "조건에 따라 원소의 포함 배제를 정하는 부분집합 결정법"
+     },
+     {
+      "term": "곱의법칙",
+      "src": "solution",
+      "quote": "가능한 선택 수는 $2\\times2=4$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "합성함수 그래프의 네 구간 넓이의 합 S=6과 직선과의 교점 개수 k=2를 계산하여 S+k=8을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "합성함수",
+      "src": "stem",
+      "quote": "$y=(g\\circ f)(x)$"
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $y=x+\\dfrac12$"
+     },
+     {
+      "term": "그래프",
+      "src": "stem",
+      "quote": "그래프와 $x$축으로 둘러싸인"
+     }
+    ],
+    "goal": [
+     {
+      "term": "넓이",
+      "src": "stem",
+      "quote": "도형의 넓이를 $S$"
+     },
+     {
+      "term": "교점",
+      "src": "stem",
+      "quote": "교점 개수를 $k$"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$S+k$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "합성함수",
+      "src": "solution",
+      "quote": "먼저 $g\\circ f$를 네 구간으로 나눈 뒤",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "넓이",
+      "src": "solution",
+      "quote": "네 구간의 넓이는 차례로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일차방정식",
+      "src": "solution",
+      "quote": "$4x=x+\\dfrac12$이므로 $x=\\dfrac16$",
+      "evidenceType": "IMPLIED",
+      "justification": "구간별 일차식과 직선 식을 연립하여 교점 좌표를 계산함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구간",
+      "src": "stem",
+      "quote": "$0\\le x\\le3$에서"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 18,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "x^2=a-j의 정수값 j=0,1,2,3,4에 대해 5개의 양수 x^2가 대응하도록 4<a<5를 도출하여 alpha*beta=20을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "합성함수",
+      "src": "stem",
+      "quote": "$(h\\circ g\\circ f)(x)=-x^2+a$"
+     },
+     {
+      "term": "절댓값",
+      "src": "stem",
+      "quote": "$g(x)=|x-3|$"
+     },
+     {
+      "term": "가우스기호",
+      "src": "stem",
+      "quote": "$h(x)=[x]$"
+     },
+     {
+      "term": "이차식",
+      "src": "stem",
+      "quote": "$f(x)=x^2-2$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "곱",
+      "src": "stem",
+      "quote": "$\\alpha\\beta$를 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "가우스기호",
+      "src": "solution",
+      "quote": "가우스기호의 값 $j$를 두어",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "치환",
+      "src": "solution",
+      "quote": "$t=x^2$와",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "실근",
+      "src": "solution",
+      "quote": "실근의 개수를 센다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구별가능",
+      "src": "stem",
+      "quote": "서로 다른 실근 수"
+     },
+     {
+      "term": "실근",
+      "src": "stem",
+      "quote": "실근 수가 10이 되는"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 19,
+   "questionUid": null,
+   "format": "소문항 묶음",
+   "decisiveStep": "코시-슈바르츠 부등식을 완전제곱식으로 증명하고 (a,2b)와 (3,4)를 대입해 최댓값 10과 그때의 a=6/5, b=4/5를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "$(a^2+b^2)(x^2+y^2)\\ge(ax+by)^2$"
+     },
+     {
+      "term": "방정식",
+      "src": "stem",
+      "quote": "$a^2+4b^2=4$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "증명",
+      "src": "stem",
+      "quote": "성립함을 증명하고"
+     },
+     {
+      "term": "등호조건",
+      "src": "stem",
+      "quote": "등호가 성립할 조건을 구하시오"
+     },
+     {
+      "term": "최댓값",
+      "src": "stem",
+      "quote": "$3a+8b$의 최댓값을 구하시오"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "양수 $a,b$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "완전제곱식으로 만들고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "코시슈바르츠부등식",
+      "src": "solution",
+      "quote": "같은 부등식을 두 번째 조건에 알맞게 적용한다",
+      "evidenceType": "IMPLIED",
+      "justification": "코시-슈바르츠 부등식의 형태에 맞춰 최댓값을 계산함"
+     },
+     {
+      "term": "등호조건",
+      "src": "solution",
+      "quote": "등호는 $ay=bx$일 때 성립한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 $a,b,x,y$에 대하여"
+     },
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "양수 $a,b$의 값"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 20,
+   "questionUid": null,
+   "format": "소문항 묶음",
+   "decisiveStep": "주기 8과 원점대칭성을 이용해 판별식 D_k>0인 k의 개수가 9개임을 찾아 19<=n<=20에서 자연수 합 39를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "-\\dfrac14x^2+x"
+     },
+     {
+      "term": "주기함수",
+      "src": "stem",
+      "quote": "$f(x)=f(x+8)$을 만족시킨다"
+     },
+     {
+      "term": "방정식",
+      "src": "stem",
+      "quote": "방정식 $f(x)=mx$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "실근",
+      "src": "stem",
+      "quote": "서로 다른 실근 개수를 $g(m)$"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "자연수 $n$의 값의 합을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "주기",
+      "src": "solution",
+      "quote": "주기 8과 홀대칭을 이용해",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "기함수",
+      "src": "solution",
+      "quote": "$f(-x)=-f(x)$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "원점에 대해 대칭인 홀대칭(기함수) 성질로 음양 실근을 대칭 대응시킴"
+     },
+     {
+      "term": "판별식",
+      "src": "solution",
+      "quote": "판별식 $D_k=(4n-1)^2-32nk$",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "모든 실수 $x$에 대하여"
+     },
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "모든 자연수 $n$의 값의 합"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  }
+ ]
+}

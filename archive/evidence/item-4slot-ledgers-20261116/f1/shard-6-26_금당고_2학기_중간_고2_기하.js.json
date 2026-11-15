@@ -1,0 +1,862 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T21:30:00+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "타원의 장반경 a=4로부터 장축의 길이 2a=8을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{9}=1$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "장축",
+            "src": "stem",
+            "quote": "장축의 길이는?"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "공식",
+            "src": "solution",
+            "quote": "장축의 길이는 $2\\times4=8$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "타원의 장축 길이 공식 2a를 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "쌍곡선의 a=2루트3으로부터 주축의 길이 2a=4루트3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $\\dfrac{x^2}{12}-\\dfrac{y^2}{4}=1$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "주축",
+            "src": "stem",
+            "quote": "주축의 길이는?"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "두 꼭짓점 사이의 거리인 $2a$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "쌍곡선의 꼭짓점 간 거리를 구하여 주축 길이를 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "초점과 준선 사이의 거리 2a가 4임을 이용하여 a=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2=4ax$의"
+          },
+          {
+            "term": "초점",
+            "src": "stem",
+            "quote": "초점에서 준선까지의"
+          },
+          {
+            "term": "준선",
+            "src": "stem",
+            "quote": "초점에서 준선까지의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "양수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "초점에서 준선까지의 거리는 $a-(-a)=2a$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "초점과 준선 사이의 수평 거리를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "포물선을 표준형으로 정리하여 초점이 (a,2)임을 찾아 a=3, b=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2-4y-4ax+4=0$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "초점",
+            "src": "solution",
+            "quote": "초점은 $(h+p,k)$이므로 여기서는 $(a,2)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "포물선의 표준형에서 초점의 좌표를 결정함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "완전제곱식으로 타원 표준형을 만들고 c^2=9-4=5를 구해 초점 좌표를 결정한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $4x^2+9y^2-18y-27=0$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "초점",
+            "src": "stem",
+            "quote": "한 초점의 좌표가"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$p^2+q^2$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "초점",
+            "src": "solution",
+            "quote": "초점 거리의 제곱은 $c^2=9-4=5$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "타원 방정식의 a^2-b^2 관계식으로 초점 거리를 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "점근선 y=+-x/2와 y=2의 교점들로 이루어진 삼각형의 넓이 1/2*8*2=8을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $\\dfrac{x^2}{4}-y^2=1$의"
+          },
+          {
+            "term": "점근선",
+            "src": "stem",
+            "quote": "점근선과 직선 $y=2$로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "부분의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "세 직선이 이루는 삼각형의 밑변은 $8$, 높이는 $2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 직선의 교점을 구하여 삼각형의 밑변과 높이로 넓이를 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "타원 접선 공식에 접점 좌표를 대입하고 y=0을 넣어 x절편 4를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\dfrac{x^2}{8}+\\dfrac{y^2}{4}=1$ 위의"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선의 $x$절편은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "x절편",
+            "src": "stem",
+            "quote": "접선의 $x$절편은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "공식",
+            "src": "solution",
+            "quote": "접선은 $\\dfrac{xx_1}{a^2}+\\dfrac{yy_1}{b^2}=1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "타원 위의 점에서의 접선의 방정식 공식을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "쌍곡선의 접선 기울기를 구하고 두 직선의 수직 기울기 곱이 -1임을 이용해 a=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $\\dfrac{x^2}{a^2}-y^2=1$ 위의"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선이 직선 $y=-\\sqrt3x+1$과"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "접선의 기울기는 $\\dfrac{2}{a\\sqrt3}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접선의 방정식으로부터 기울기를 구하고 수직 조건 식을 세움"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "수직일 때,"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "두 직선의 방향벡터를 설정하고 벡터의 내적이 0임을 이용해 각의 크기가 pi/2임을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "그림과 같은 정육면체에서"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $AG$와 직선 $CF$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "이루는 각의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내적",
+            "src": "solution",
+            "quote": "내적은 $\\overrightarrow{AG}\\cdot\\overrightarrow{CF}=1\\cdot0+1\\cdot(-1)+(-1)\\cdot(-1)=0$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "기울기 m인 직선과 포물선을 연립하여 판별식 D=0을 만들고 근과 계수의 관계로 기울기 곱을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2=-2x$에"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "그은 두 접선의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "기울기의 곱은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식이 $0$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "포물선의 정의로 초점 거리를 y+2로 바꾸고 무게중심 성질로 y좌표의 합을 대입해 12를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $x^2=8y$ 위의"
+          },
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심이 포물선의 초점 $F$와 일치할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "초점",
+            "src": "solution",
+            "quote": "초점까지의 거리와 준선까지의 거리가 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "포물선의 기하학적 정의를 이용하여 초점 거리를 준선까지의 거리로 변환함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "BC와 평행한 OH를 찾고 직각삼각형 AOH에서 변의 길이 비율로 cos theta = 루트3/3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "옆면 $ACD$는 정삼각형이고"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $ACH$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$\\cos\\theta$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 쓰면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "내린 수선의 발을 $H$라 하자."
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "포물선과 타원의 접선 기울기를 각각 구하고 곱이 -2/9인 조건과 점 P 대입을 연립해 ab=24를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$과"
+          },
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2=4x$은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$ab$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "접선의 기울기는",
+            "evidenceType": "IMPLIED",
+            "justification": "포물선과 타원에서의 접선 기울기 공식을 적용하여 연립방정식을 세움"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "수직인 직선 l의 방정식 y=-x+2를 구하고 포물선과 연립하여 교점 사이의 거리 16을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2=8x$ 위의"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접선에 수직이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$\\overline{QR}$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "직선",
+            "src": "solution",
+            "quote": "이에 수직인 직선 $l$의 기울기는 $-1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수직인 직선의 방정식을 구하고 포물선과 연립하여 교점을 계산함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "접선에 수직이고"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "타원의 다른 초점 F 프라임을 도입해 삼각부등식을 적용하고 5-r=3에서 r=2를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{7}=1$과"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $r$인 원이 있다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값이 $3$일 때"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$r$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "초점",
+            "src": "solution",
+            "quote": "타원 위의 모든 점 $P$에 대하여 $PF+PF\\prime=8$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "타원의 정의인 두 초점과의 거리의 합 일정을 이용하여 거리를 변환함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "쌍곡선과 포물선의 정의로 가로와 세로 길이를 도출하여 사다리꼴 넓이 200을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $C_1$과"
+          },
+          {
+            "term": "쌍곡선",
+            "src": "stem",
+            "quote": "쌍곡선 $C_2$가 있다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "사각형 $RQPS$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "두 곡선은 모두 $x$축 대칭이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "곡선의 x축 대칭성을 이용하여 사각형의 밑변과 높이를 결정함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "접선 절편으로 삼각형 넓이를 나타내고 산술기하평균 부등식의 등호 조건으로 점 P의 좌표를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{4}=1$ 위에"
+          },
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제1사분면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최소",
+            "src": "stem",
+            "quote": "넓이가 최소일 때,"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형의 넓이가"
+          }
+        ],
+        "method": [
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "산술평균과 기하평균의 관계를 적용하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "접선 방정식과 준선의 교점으로 직각삼각형 넓이 2p^2=50을 세워 p=5와 OA=5루트5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 $y^2=4px$"
+          },
+          {
+            "term": "준선",
+            "src": "stem",
+            "quote": "준선 직선 $x=-p$,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$OA=\\sqrt{5^2+10^2}=\\sqrt{125}=5\\sqrt5$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원점과 점 A 사이의 거리를 피타고라스 정리로 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "포물선의 정의로 PA=PH를 이용해 일직선 조건 y=6을 찾고 포물선에 대입해 점 P를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "초점",
+            "src": "stem",
+            "quote": "기지국 $A$를 초점으로 하고"
+          },
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "포물선 모양의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최소",
+            "src": "stem",
+            "quote": "총 길이가 최소가 되도록 하는"
+          },
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "포물선의 방정식과"
+          }
+        ],
+        "method": [
+          {
+            "term": "최단거리",
+            "src": "solution",
+            "quote": "수직선 $x=-20$까지의 최단거리는",
+            "evidenceType": "IMPLIED",
+            "justification": "포물선의 정의를 통해 꺾인 선분의 길이를 수평 최단거리로 변환함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "마름모 성질로 k=2, y1=1을 결정하고 접선들의 x절편을 구해 삼각형 ARS의 넓이 12를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "타원",
+            "src": "stem",
+            "quote": "타원 $\\dfrac{x^2}{18}+\\dfrac{y^2}{2}=1$에"
+          },
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "사각형 $OPAQ$가 마름모일 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $ARS$의 넓이를 구하고,"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "타원의 대칭성에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "각 직선에 $y=0$을 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "직선의 x절편을 구하여 삼각형의 밑변 길이를 도출함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

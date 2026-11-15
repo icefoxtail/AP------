@@ -1,0 +1,1058 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "gemini-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-15T19:10:00+09:00",
+ "sourceArchiveFile": "original/high/h1/1final/21_고흥고_1학기_기말_고1_기출.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x^2+x-12=(x+4)(x-3)<=0의 해가 -4<=x<=3임을 구하여 b-a=3-(-4)=7을 계산한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차부등식",
+      "src": "stem",
+      "quote": "이차부등식 $x^2+x-12\\le0$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$b-a$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "인수분해",
+      "src": "solution",
+      "quote": "이차식을 인수분해한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "두 근 사이이다",
+      "evidenceType": "IMPLIED",
+      "justification": "이차함수 그래프와 x축의 교점 사이 영역으로 이차부등식의 해를 구함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x축 위의 점 P(a, 0)에 대해 (a-1)^2+4 = (a-5)^2+4로부터 a=3, b=0을 얻어 a+b=3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "두 점 $A(1,-2)$, $B(5,2)$에서"
+     },
+     {
+      "term": "거리",
+      "src": "stem",
+      "quote": "같은 거리에 있는"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "거리",
+      "src": "solution",
+      "quote": "거리의 제곱으로 나타내면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일차방정식",
+      "src": "solution",
+      "quote": "-2a+5=-10a+29",
+      "evidenceType": "IMPLIED",
+      "justification": "거리의 제곱이 같다는 조건으로부터 a에 대한 일차방정식을 풂"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "직선의 방정식 y+3=-2(x-2), 즉 y=-2x+1에서 a=-2, b=1을 얻어 b-a=3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "점 $(2,-3)$을 지나고"
+     },
+     {
+      "term": "기울기",
+      "src": "stem",
+      "quote": "기울기가 $-2$인"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$b-a$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "직선의방정식",
+      "src": "solution",
+      "quote": "지나는 직선은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "기울기",
+      "src": "solution",
+      "quote": "기울기가 $-2$이고",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "두 직선의 기울기 2와 -3/a의 곱이 -1이어야 하므로 2*(-3/a)=-1에서 a=6을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "두 직선 $2x-y+2=0$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $a$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "수직",
+      "src": "solution",
+      "quote": "두 직선이 수직이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "기울기",
+      "src": "solution",
+      "quote": "기울기의 곱은 $-1$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "수직",
+      "src": "stem",
+      "quote": "서로 수직일 때"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $a$의 값"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "원 위의 점 P(1, √3)에서의 접선 y=-1/√3 x + 4/√3에서 a^2+b^2=1/3+16/3=17/3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "원",
+      "src": "stem",
+      "quote": "원 $x^2+y^2=4$ 위의"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "위의 점 $P(1,\\sqrt3)$에서의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$a^2+b^2$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "접선의방정식",
+      "src": "solution",
+      "quote": "접선은 $P(1,\\sqrt3)$을 지나므로",
+      "evidenceType": "IMPLIED",
+      "justification": "원 위의 접점에서의 접선의 방정식을 구함"
+     },
+     {
+      "term": "수직",
+      "src": "solution",
+      "quote": "접선은 반지름과 수직이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "기울기",
+      "src": "solution",
+      "quote": "접선의 기울기는",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "평행이동한 식 2(x-2)-(y-k)+1 = 2x-y+k-3 = 0과 2x-y-7=0을 비교하여 k-3=-7에서 k=-4를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $2x-y+1=0$을"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$k$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "평행이동",
+      "src": "stem",
+      "quote": "$y$축의 방향으로 $k$만큼 평행이동한",
+      "evidenceType": "IMPLIED",
+      "justification": "도형의 평행이동 원리를 적용해 식을 변환함"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "$y$에 $y-k$를 대입해 구한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "내분점 P의 y좌표 (a+4)/3=0에서 a=-4, 외분점 Q의 x좌표 2b+5=0에서 b=-5/2를 얻어 ab=10을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "선분",
+      "src": "stem",
+      "quote": "선분 $AB$를"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "두 점 $A(-5,a)$, $B(b,2)$에"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "이때 $ab$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "내분점",
+      "src": "solution",
+      "quote": "내분점 $P$의 $y$좌표는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "외분점",
+      "src": "solution",
+      "quote": "외분하는 점 $Q$의",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "$a$, $b$는 상수"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "평행사변형의 두 대각선 AC와 BD의 중점이 일치함에서 6+a=7, -2+b=11로부터 a=1, b=13, a+b=14를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "평행사변형",
+      "src": "stem",
+      "quote": "사각형 $ABCD$가 평행사변형일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "중점",
+      "src": "solution",
+      "quote": "대각선 $AC$와 $BD$의 중점이 같다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평행사변형",
+      "src": "solution",
+      "quote": "평행사변형의 두 대각선은",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 $a$, $b$에 대하여"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x절편 k, y절편 -3으로부터 직각삼각형 넓이 1/2*|k|*3=18을 풀어 양수 k=12를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "일차방정식",
+      "src": "stem",
+      "quote": "일차방정식 $3x-ky-3k=0$이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "양수 $k$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "절편",
+      "src": "solution",
+      "quote": "x$절편은 $k$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "넓이",
+      "src": "solution",
+      "quote": "삼각형의 넓이는",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "양수 $k$의 값"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "원의 중심 (0,0)과 직선 사이의 거리 |k|/5 < 2로부터 |k| < 10을 얻어 정수 k의 개수 19를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "원",
+      "src": "stem",
+      "quote": "원 $x^2+y^2=4$와"
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $3x+4y+k=0$이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "정수 $k$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "점과직선사이의거리",
+      "src": "solution",
+      "quote": "중심과 직선 사이의 거리가 반지름보다 작아야 한다",
+      "evidenceType": "IMPLIED",
+      "justification": "점과 직선 사이의 거리 공식을 반지름과 비교함"
+     },
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "|k|<10",
+      "evidenceType": "IMPLIED",
+      "justification": "절댓값 부등식을 풀어 k의 범위를 도출함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "정수 $k$의 개수"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x=-2, x=3/2를 경계로 구간을 나누어 해집합 -3<=x<=11/3을 구하고 정수 x의 개수 7을 센다.",
+   "slots": {
+    "given": [
+     {
+      "term": "절댓값",
+      "src": "stem",
+      "quote": "|x+2|+|2x-3|\\le10$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "모든 정수 $x$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "절댓값 안의 식이 $0$이 되는 점은",
+      "evidenceType": "IMPLIED",
+      "justification": "절댓값 안의 식 부호에 따라 x의 구간을 세 경우로 분류함"
+     },
+     {
+      "term": "일차부등식",
+      "src": "solution",
+      "quote": "-3x+1\\le10",
+      "evidenceType": "IMPLIED",
+      "justification": "각 구간별로 일차부등식을 풀어 해 범위를 구함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "모든 정수 $x$의 개수"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x+y=-3, xy=-4의 해 중 a>b를 만족하는 (-4, 1)로부터 a=17, b=3을 얻어 a+b+x+y=17을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "연립이차방정식",
+      "src": "stem",
+      "quote": "두 연립방정식 $\\begin{cases}x^2+y^2=a"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b+x+y$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "이차방정식",
+      "src": "solution",
+      "quote": "t^2+3t-4=0",
+      "evidenceType": "IMPLIED",
+      "justification": "두 수의 합과 곱으로부터 t에 대한 이차방정식을 세워 해를 구함"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "17y+bx=5$에 대입한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 $a$, $b$에 대하여"
+     },
+     {
+      "term": "부등식",
+      "src": "stem",
+      "quote": "$a>b$"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "꼭짓점 비교로 x축 -5, y축 -5 평행이동을 파악하여 이동된 직선 x-3y-8=0과 l 사이의 거리 10/√10=√10을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "포물선",
+      "src": "stem",
+      "quote": "포물선 $y=x^2-2x$를"
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $l:x-3y+2=0$은"
+     }
+    ],
+    "goal": [
+     {
+      "term": "거리",
+      "src": "stem",
+      "quote": "두 직선 $l$과 $l'$ 사이의 거리는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "평행이동",
+      "src": "solution",
+      "quote": "꼭짓점을 비교해 평행이동을 구한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "점과직선사이의거리",
+      "src": "solution",
+      "quote": "d=\\dfrac{10}{\\sqrt{1^2+(-3)^2}}",
+      "evidenceType": "IMPLIED",
+      "justification": "평행한 두 직선 사이의 거리 공식을 적용함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "두 식을 빼서 y(2x-y)=3을 얻고 정수해 (2, 1), (-2, -1)을 찾아 α^2+β^2=5를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "연립이차방정식",
+      "src": "stem",
+      "quote": "연립방정식 $\\begin{cases}x^2-7xy+4y^2=-6"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$\\alpha^2+\\beta^2$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "인수분해",
+      "src": "solution",
+      "quote": "y(2x-y)=3",
+      "evidenceType": "IMPLIED",
+      "justification": "두 식의 차를 공통인수로 묶어 인수분해함"
+     },
+     {
+      "term": "약수",
+      "src": "solution",
+      "quote": "정수 $y$는 $1,-1,3,-3$ 중 하나이다",
+      "evidenceType": "IMPLIED",
+      "justification": "정수의 곱이 3임을 이용하여 약수 쌍으로 정수해를 구함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "정수해를 $x=\\alpha$"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "a에 대한 항등식으로 정점 P(3, 4)를 구하고 점과 직선 사이의 거리 |k+2|/√5=2√5에서 k=8, -12의 합 -4를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $(a+1)x-(a-3)y+a-15=0$이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "모든 $k$의 값의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "항등식",
+      "src": "solution",
+      "quote": "모든 실수 $a$에 대해 성립하므로",
+      "evidenceType": "IMPLIED",
+      "justification": "실수 a에 대한 항등식으로 정리하여 정점 좌표를 구함"
+     },
+     {
+      "term": "점과직선사이의거리",
+      "src": "solution",
+      "quote": "직선 $2x-y+k=0$ 사이의 거리는",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 $a$의 값에 관계없이"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "완전제곱식으로 변형하여 r^2=25-2k >= 9로부터 k <= 8을 얻어 자연수 k의 개수 8을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "원의방정식",
+      "src": "stem",
+      "quote": "이차방정식 $x^2+y^2-6x+8y+2k=0$이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "자연수 $k$의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "완전제곱식으로 고친다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일차부등식",
+      "src": "solution",
+      "quote": "25-2k\\ge9",
+      "evidenceType": "IMPLIED",
+      "justification": "반지름 조건으로부터 k에 대한 일차부등식을 풂"
+     }
+    ],
+    "condition": [
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "자연수 $k$의 개수"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "공통접선과 두 원 중심 사이의 거리 |b|=2d, |b-2a|=d로부터 ab=4/3를 얻어 12ab=16을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $y=ax+b$가"
+     },
+     {
+      "term": "원",
+      "src": "stem",
+      "quote": "두 원 $x^2+y^2=4$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$12ab$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "공통접선",
+      "src": "solution",
+      "quote": "각 원의 중심 사이의 거리는 각각 원의 반지름과 같다",
+      "evidenceType": "IMPLIED",
+      "justification": "두 원에 동시에 접하는 공통접선 조건을 적용함"
+     },
+     {
+      "term": "점과직선사이의거리",
+      "src": "solution",
+      "quote": "원의 중심 사이의 거리는",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "두 실수 $a$, $b$에 대하여"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 18,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "PA^2+PB^2 = 2(x^2+y^2)+2에서 원점과 원 사이의 최소 거리 3으로부터 최솟값 2*9+2=20을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "원의방정식",
+      "src": "stem",
+      "quote": "원 $x^2+y^2-6x-8y+21=0$과"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "두 점 $A(-1,0)$, $B(1,0)$이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최솟값",
+      "src": "stem",
+      "quote": "$PA^2+PB^2$의 최솟값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "원의방정식",
+      "src": "solution",
+      "quote": "(x-3)^2+(y-4)^2=4",
+      "evidenceType": "IMPLIED",
+      "justification": "원의 방정식을 표준형으로 변형하여 중심과 반지름을 구함"
+     },
+     {
+      "term": "최단거리",
+      "src": "solution",
+      "quote": "원점에서 원까지의 최소 거리는 $5-2=3$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "원점과 원의 중심 사이의 거리에서 반지름을 빼 최단거리를 구함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 19,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "중점 (2, 4)와 반지름 r=3√2를 구하여 a+b+r=6+3√2를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "원의방정식",
+      "src": "stem",
+      "quote": "원의 방정식이 $(x-a)^2+(y-b)^2=r^2$일 때"
+     },
+     {
+      "term": "지름",
+      "src": "stem",
+      "quote": "지름의 양 끝점으로 하는"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b+r$의 값을 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "중점",
+      "src": "solution",
+      "quote": "원의 중심은 선분 $AB$의 중점이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "거리",
+      "src": "solution",
+      "quote": "지름의 길이는",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "상수 $a$, $b$, $r$에 대하여"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 20,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "비용 조건 AP=2BP로부터 아폴로니오스의 원 (x-12)^2+y^2=36을 유도하여 중심 (12, 0), 반지름 6인 원 위의 지점임을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "거리",
+      "src": "stem",
+      "quote": "거리 9km 떨어진"
+     }
+    ],
+    "goal": [
+     {
+      "term": "원의방정식",
+      "src": "stem",
+      "quote": "배송 비용이 동일한 지점은 어느 지역인지 구하는"
+     }
+    ],
+    "method": [
+     {
+      "term": "아폴로니오스의원",
+      "src": "solution",
+      "quote": "AP=2BP",
+      "evidenceType": "IMPLIED",
+      "justification": "거리의 비가 일정한 점의 자취인 아폴로니오스의 원을 구함"
+     },
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "완전제곱식으로 고치면",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 21,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "빗변 AB 원 위에서 넓이가 최대일 때 C(4, 4)임을 구하고 무게중심 G((1+7+4)/3, (1+1+4)/3)=(4, 2)를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "직각삼각형",
+      "src": "stem",
+      "quote": "직각삼각형 $ABC$의"
+     },
+     {
+      "term": "선분",
+      "src": "stem",
+      "quote": "선분 $AB$가 빗변인"
+     }
+    ],
+    "goal": [
+     {
+      "term": "무게중심",
+      "src": "stem",
+      "quote": "무게중심 $G$의 좌표를 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "무게중심",
+      "src": "solution",
+      "quote": "무게중심은 세 꼭짓점 좌표의 평균이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "산술기하평균",
+      "src": "solution",
+      "quote": "u^2+v^2\\ge2uv",
+      "evidenceType": "IMPLIED",
+      "justification": "산술평균과 기하평균 부등식으로 직각삼각형 넓이의 최댓값 및 등호조건을 구함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "x>0$, $y>0$"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 22,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "P(6, 3)을 변 CA(y=0)와 변 BC(y=x)에 대해 각각 대칭이동한 점 P2(-3, 6)까지의 선분 길이 3√10 m를 최단 거리로 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "직각이등변삼각형",
+      "src": "stem",
+      "quote": "직각이등변삼각형이 있다"
+     },
+     {
+      "term": "중점",
+      "src": "stem",
+      "quote": "변 $AB$의 중점 $P$에서"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최단거리",
+      "src": "stem",
+      "quote": "이 경로의 최단 거리를 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "대칭이동",
+      "src": "solution",
+      "quote": "대칭이동한 점은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "최단거리",
+      "src": "solution",
+      "quote": "경로의 최단 거리는",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  }
+ ]
+}

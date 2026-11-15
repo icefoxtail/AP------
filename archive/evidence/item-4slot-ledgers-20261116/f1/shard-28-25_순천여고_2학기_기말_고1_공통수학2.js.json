@@ -1,0 +1,1443 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "sonnet-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-15T14:00:00+09:00",
+ "sourceArchiveFile": "original/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "조건 p: x-3>0을 부정한 ~p: x≤3의 진리집합 {1,2,3}의 원소의 합 6을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "전체집합",
+      "src": "stem",
+      "quote": "전체집합 $U$가 자연수 전체의 집합일 때"
+     },
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "자연수 전체의 집합일 때"
+     },
+     {
+      "term": "조건",
+      "src": "stem",
+      "quote": "$p: x-3 > 0$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "진리집합",
+      "src": "stem",
+      "quote": "진리집합의 원소의 합은?"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "진리집합의 원소의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "부정",
+      "src": "solution",
+      "quote": "먼저 조건을 부정한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "method": "해설이 부정 하나로 끝나는 단순 문항",
+    "condition": "전체집합이 자연수 전체인 것은 given에 둠"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "보기(ㄱㄴㄷ) 판정",
+   "decisiveStep": "ㄱ은 무리수, ㄴ은 (1+2i)(1-2i)=5로 거짓, ㄷ은 x=5 대입으로 참, ㄹ은 (n+1)(n+3)>0이라 거짓임을 하나씩 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "명제",
+      "src": "stem",
+      "quote": "다음 <보기>에서 참인 명제인 것만을"
+     },
+     {
+      "term": "무리수",
+      "src": "stem",
+      "quote": "ㄱ. $2-\\sqrt{2}$는 무리수이다."
+     },
+     {
+      "term": "허수",
+      "src": "stem",
+      "quote": "ㄴ. $(1+2i)(1-2i)=3$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "참인 명제인 것만을 모두 고른 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "켤레복소수",
+      "src": "solution",
+      "quote": "$(1+2i)(1-2i)=1+4=5$이므로 거짓이다",
+      "evidenceType": "IMPLIED",
+      "justification": "켤레복소수끼리의 곱이 실수부 제곱과 허수부 제곱의 합이 되는 성질"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "$x=5$를 대입하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "인수분해",
+      "src": "solution",
+      "quote": "$(n+1)(n+3)>0$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "n^2+4n+3을 (n+1)(n+3)으로 인수분해해 부호를 판정"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양화",
+      "src": "stem",
+      "quote": "ㄷ. 어떤 실수 $x$에 대하여"
+     },
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "어떤 실수 $x$에 대하여 $x^2-4x+1 > 5$이다"
+     },
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "ㄹ. 모든 자연수 $n$에 대하여"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "빈칸 채우기",
+   "decisiveStep": "명제의 대우 ab가 홀수이면 a, b가 모두 홀수라 a=2k+1, b=2l+1로 놓아 a^2+b^2=2(…)임을 보이고 ③이 2k+1이어야 함을 찾는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "명제",
+      "src": "stem",
+      "quote": "명제 '두 자연수 $a, b$에 대하여 $a^2+b^2$이 홀수이면 $ab$는 짝수이다.'"
+     },
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "두 자연수 $a, b$에 대하여"
+     }
+    ],
+    "goal": [
+     {
+      "term": "증명",
+      "src": "stem",
+      "quote": "가 참임을 증명하는 과정이다"
+     },
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "옳게 짝지어지지 않은 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "대우",
+      "src": "solution",
+      "quote": "명제의 대우에서 $ab$가 홀수이면 $a,b$는 모두 홀수이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "홀수",
+      "src": "solution",
+      "quote": "따라서 $a=2k+1$, $b=2l+1$로 놓을 수 있다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "전개",
+      "src": "solution",
+      "quote": "$=4k^2+4k+1+4l^2+4l+1$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "짝수",
+      "src": "solution",
+      "quote": "따라서 $a^2+b^2$은 짝수이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "보기(ㄱㄴㄷ) 판정",
+   "decisiveStep": "세 조건의 진리집합 P=R={(0,0)}⊆Q를 구해 충분조건, 역, 대우, 필요충분조건 관계를 판정하고 ㄱㄴㄹ이 옳다고 한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "두 실수 $x, y$에 대하여 세 조건 $p, q, r$가"
+     },
+     {
+      "term": "절댓값",
+      "src": "stem",
+      "quote": "$$q: |x|+|y|=|x+y|$$"
+     },
+     {
+      "term": "조건",
+      "src": "stem",
+      "quote": "세 조건 $p, q, r$가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "<보기>에서 옳은 것만을 있는 대로 고른 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "진리집합",
+      "src": "solution",
+      "quote": "먼저 세 조건의 진리집합을 구한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "$r:(x-y)^2+y^2\\le0$에서 두 제곱은 각각 $0$이어야 한다",
+      "evidenceType": "IMPLIED",
+      "justification": "제곱의 합이 0 이하이면 각 제곱이 0이라는 완전제곱식의 성질"
+     },
+     {
+      "term": "포함관계",
+      "src": "solution",
+      "quote": "결국 $P=R\\subseteq Q$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "충분조건",
+      "src": "solution",
+      "quote": "즉 $p$는 $q$의 충분조건이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "역",
+      "src": "solution",
+      "quote": "$q\\to r$의 역은 $r\\to q$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대우",
+      "src": "solution",
+      "quote": "$\\sim p\\to\\sim r$의 대우는 $r\\to p$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "필요충분조건",
+      "src": "solution",
+      "quote": "$p$는 $r$의 필요충분조건이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "Q∪R=R에서 Q⊆R, P∩Q^c=P에서 P∩Q=∅임을 얻어 p이면 항상 ~q라 ②가 참이고 나머지는 반례 U={a,b,c}로 거짓임을 보인다.",
+   "slots": {
+    "given": [
+     {
+      "term": "전체집합",
+      "src": "stem",
+      "quote": "전체집합 $U$에 대하여 세 조건 $p, q, r$의 진리집합을"
+     },
+     {
+      "term": "진리집합",
+      "src": "stem",
+      "quote": "진리집합을 각각 $P, Q, R$이라 하자"
+     },
+     {
+      "term": "합집합",
+      "src": "stem",
+      "quote": "(가) $Q \\cup R = R$"
+     },
+     {
+      "term": "교집합",
+      "src": "stem",
+      "quote": "(나) $P \\cap Q^c = P$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "항상 참인 명제는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "포함관계",
+      "src": "solution",
+      "quote": "집합 조건을 포함관계로 바꾼다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "여집합",
+      "src": "solution",
+      "quote": "$P\\subseteq Q^c$, 즉 $P\\cap Q=\\varnothing$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "반례",
+      "src": "solution",
+      "quote": "예를 들어 $U=\\{a,b,c\\}$,",
+      "evidenceType": "IMPLIED",
+      "justification": "구체적인 집합을 잡아 나머지 명제가 항상 참이 아님을 보이는 반례"
+     }
+    ],
+    "condition": [
+     {
+      "term": "항상성립",
+      "src": "stem",
+      "quote": "항상 참인 명제는?"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "s=2x+4y로 치환해 s+9/s≥6(산술기하평균)과 4(y-1/2)^2≥0의 등호 조건 s=3, y=1/2에서 x=1/2, 최솟값 5를 얻어 합 6이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "유리식",
+      "src": "stem",
+      "quote": "$$2x+4y^2+\\frac{9}{2x+4y}$$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최솟값",
+      "src": "stem",
+      "quote": "최솟값 $\\gamma$를 갖는다"
+     },
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "상수 $\\alpha, \\beta, \\gamma$에 대하여"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$\\alpha+\\beta+\\gamma$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "치환",
+      "src": "solution",
+      "quote": "$s=2x+4y$로 놓으면 $s>0$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "4\\left(y-\\dfrac12\\right)^2-1$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "산술기하평균",
+      "src": "solution",
+      "quote": "산술·기하평균에 의하여",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "등호조건",
+      "src": "solution",
+      "quote": "등호는 $s=3$일 때 성립한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "두 양수 $x, y$에 대하여"
+     },
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "(단, $\\alpha, \\beta$는 상수이다.)"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "정의역이 실수 전체이고 치역도 실수 전체이며 수평선과 한 번씩 만나는 증가하는 그래프를 일대일대응으로 판별해 ②를 고른다.",
+   "slots": {
+    "given": [
+     {
+      "term": "일대일대응",
+      "src": "stem",
+      "quote": "실수 전체의 집합 $R$에서 $R$로의 일대일대응의 그래프"
+     },
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 전체의 집합 $R$에서"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "일대일대응의 그래프인 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "일대일대응",
+      "src": "solution",
+      "quote": "실수 전체에서 실수 전체로의 일대일대응이려면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "정의역",
+      "src": "solution",
+      "quote": "정의역이 실수 전체가 아니다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "치역",
+      "src": "solution",
+      "quote": "치역이 실수 전체가 아니므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "증가감소",
+      "src": "solution",
+      "quote": "오른쪽 위까지 계속 증가한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일대일함수",
+      "src": "solution",
+      "quote": "일대일이 아니다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "method": "그림은 보지 못했고 해설 글로만 판정",
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "f^{-1}(-7)이 f(x)=-7을 만족하는 x임을 이용해 3x+2=-7에서 x=-3을 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "일차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=3x+2$에 대하여"
+     },
+     {
+      "term": "역함수",
+      "src": "stem",
+      "quote": "$f^{-1}(-7)$의 값은?"
+     }
+    ],
+    "goal": [
+     {
+      "term": "함숫값",
+      "src": "stem",
+      "quote": "$f^{-1}(-7)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "역함수",
+      "src": "solution",
+      "quote": "$f^{-1}(-7)$은 $f(x)=-7$을 만족하는 $x$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일차방정식",
+      "src": "solution",
+      "quote": "$3x+2=-7$",
+      "evidenceType": "IMPLIED",
+      "justification": "f(x)=-7을 x에 관한 일차방정식으로 풀어 역함숫값을 구함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "(f^{-1}∘g^{-1})^{-1}=g∘f로 (g∘f)(3)=4이고 (f∘g)^{-1}(3)=1에서 g(1)=4이므로 합 8을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "집합",
+      "src": "stem",
+      "quote": "집합 $X=\\{1, 2, 3, 4\\}$에 대하여"
+     },
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "$X$에서 $X$로의 두 함수 $f, g$가 아래 그림과 같을 때"
+     },
+     {
+      "term": "역함수",
+      "src": "stem",
+      "quote": "$(f^{-1} \\circ g^{-1})^{-1}(3)"
+     }
+    ],
+    "goal": [
+     {
+      "term": "함숫값",
+      "src": "stem",
+      "quote": "(f \\circ g)^{-1})(3)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "합성함수",
+      "src": "solution",
+      "quote": "$(f^{-1} \\circ g^{-1})^{-1}=g\\circ f$이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "역함수",
+      "src": "solution",
+      "quote": "$(f\\circ g)^{-1}(3)$은 $f(g(x))=3$을 만족하는 $x$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "함숫값",
+      "src": "solution",
+      "quote": "$(g\\circ f)(3)=g(f(3))=g(1)=4$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "method": "그림의 화살표는 해설 글에 적힌 대응값으로 판정",
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "(f∘f)(x)=4x+3으로 (f∘f)(2)=11, (f∘f)^{-1}(-5)는 4x+3=-5의 x=-2이므로 합 9이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "일차함수",
+      "src": "stem",
+      "quote": "$f(x)=2x+1$일 때"
+     },
+     {
+      "term": "반복합성",
+      "src": "stem",
+      "quote": "$(f\\circ f)(2)+(f\\circ f)^{-1}(-5)$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "함숫값",
+      "src": "stem",
+      "quote": "$(f\\circ f)(2)+(f\\circ f)^{-1}(-5)$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "합성함수",
+      "src": "solution",
+      "quote": "$(f\\circ f)(x)=f(2x+1)=2(2x+1)+1=4x+3$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "역함수",
+      "src": "solution",
+      "quote": "$(f\\circ f)^{-1}(-5)$는 $4x+3=-5$를 만족하는 $x$이므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "f(x)=(x-2)^2-4가 [a,∞)에서 일대일이도록 a≥2이고 치역 [f(a),∞)가 Y=[a-4,∞)와 같도록 (a-2)^2-4=a-4를 풀어 a=4를 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "집합",
+      "src": "stem",
+      "quote": "두 집합 $X=\\{x|x \\ge a\\}, Y=\\{y|y \\ge a-4\\}$에 대하여"
+     },
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=x^2-4x$의 역함수가"
+     },
+     {
+      "term": "역함수",
+      "src": "stem",
+      "quote": "$f(x)=x^2-4x$의 역함수가 존재하도록"
+     }
+    ],
+    "goal": [
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "상수 $a$의 값들의 합은?"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "상수 $a$의 값들의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "$f(x)=(x-2)^2-4$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일대일함수",
+      "src": "solution",
+      "quote": "$[a,\\infty)$에서 일대일이 되려면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "치역",
+      "src": "solution",
+      "quote": "이때 치역은 $[f(a),\\infty)$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일대일대응",
+      "src": "solution",
+      "quote": "역함수가 $X$에서 $Y$로 존재하려면 치역이 $Y=[a-4,\\infty)$와 같아야",
+      "evidenceType": "IMPLIED",
+      "justification": "역함수가 존재하려면 X에서 Y로의 일대일대응이어야 하므로 치역이 공역과 같아야 함"
+     },
+     {
+      "term": "인수분해",
+      "src": "solution",
+      "quote": "$(a-1)(a-4)=0$이므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "정의역제한",
+      "src": "solution",
+      "quote": "조건 $a\\ge2$를 만족하는 값은 $4$뿐이다"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "y=3+(b-3a)/(x+a)에서 점대칭 중심 (-a,3)이 (-2,c)이므로 a=2, c=3이고 (2,1)을 대입해 b=-2, a-b+c=7을 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "유리함수",
+      "src": "stem",
+      "quote": "유리함수 $y=\\frac{3x+b}{x+a}$의 그래프가"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "점 $(2, 1)$을 지나고"
+     },
+     {
+      "term": "대칭성",
+      "src": "stem",
+      "quote": "점 $(-2, c)$에 대하여 대칭일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "$a-b+c$의 값은?"
+     },
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "$a-b+c$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "표준형",
+      "src": "solution",
+      "quote": "$y=3+\\dfrac{b-3a}{x+a}$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "유리함수를 상수와 분수식의 합 꼴로 변형해 대칭 중심을 읽음"
+     },
+     {
+      "term": "점근선",
+      "src": "solution",
+      "quote": "두 점근선의 교점 $(-a,3)$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대칭성",
+      "src": "solution",
+      "quote": "그래프의 점대칭 중심은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대입",
+      "src": "solution",
+      "quote": "$(2,1)$을 대입하면",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "상수",
+      "src": "stem",
+      "quote": "(단, $a, b$는 상수이다.)"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "보기(ㄱㄴㄷ) 판정",
+   "decisiveStep": "y=x/(x-1)=1+1/(x-1)의 분수항 계수가 1인 보기만 평행이동으로 겹치므로 ㄴ, ㄷ을 고른다.",
+   "slots": {
+    "given": [
+     {
+      "term": "유리함수",
+      "src": "stem",
+      "quote": "함수 $y=\\frac{x}{x-1}$의 그래프를 평행이동하여"
+     },
+     {
+      "term": "그래프",
+      "src": "stem",
+      "quote": "그래프를 평행이동하여 겹칠 수 있는 것으로만"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "겹칠 수 있는 것으로만 모두 고른 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "표준형",
+      "src": "solution",
+      "quote": "$y=\\dfrac{x}{x-1}=1+\\dfrac1{x-1}$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "점근선",
+      "src": "solution",
+      "quote": "이 그래프의 점근선은 $x=1$, $y=1$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평행이동",
+      "src": "solution",
+      "quote": "$y=b+\\dfrac{a}{x-h}$를 평행이동하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "계수",
+      "src": "solution",
+      "quote": "분수항의 계수가 $-1$이므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "x와 y를 바꿔 f^{-1}(x)=(x+1)/(x-a)를 구하고 f=f^{-1}이 되도록 교차곱을 전개해 x^2의 계수를 비교해 a=1을 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "유리함수",
+      "src": "stem",
+      "quote": "함수 $y=\\frac{ax+1}{x-1}$의 역함수가"
+     },
+     {
+      "term": "역함수",
+      "src": "stem",
+      "quote": "역함수가 그 자신이 되도록 하는"
+     }
+    ],
+    "goal": [
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "상수 $a$의 값은?"
+     },
+     {
+      "term": "결정",
+      "src": "stem",
+      "quote": "상수 $a$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "역함수",
+      "src": "solution",
+      "quote": "$x$와 $y$를 바꿔 역함수를 구한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "전개",
+      "src": "solution",
+      "quote": "왼쪽과 오른쪽을 각각 전개한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "계수비교",
+      "src": "solution",
+      "quote": "$x^2$의 계수를 비교하면 $a=1$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "항등식",
+      "src": "solution",
+      "quote": "$\\dfrac{ax+1}{x-1}=\\dfrac{x+1}{x-a}$가 성립해야 한다",
+      "evidenceType": "IMPLIED",
+      "justification": "f와 f^{-1}이 같으려면 두 식이 x에 대한 항등식이어야 함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": "역함수가 자기 자신"
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "교점의 x좌표 u,v가 x^2-10x+k=0의 두 근임을 쓰고 삼각형 넓이 5|u-v|=44에서 100-4k=(u-v)^2=1936/25로 k=141/25를 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "유리함수",
+      "src": "stem",
+      "quote": "유리함수 $y=\\frac{k}{x}\\,(k>0)$의 그래프가"
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $y=-x+10$과 두 점 $P, Q$에서 만난다"
+     },
+     {
+      "term": "삼각형",
+      "src": "stem",
+      "quote": "삼각형 $OPQ$의 넓이가 $44$일 때"
+     },
+     {
+      "term": "원점",
+      "src": "stem",
+      "quote": "(단, $O$는 원점이다.)"
+     }
+    ],
+    "goal": [
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "상수 $k$의 값은?"
+     },
+     {
+      "term": "결정",
+      "src": "stem",
+      "quote": "상수 $k$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "이차방정식",
+      "src": "solution",
+      "quote": "$x^2-10x+k=0$의 두 근이 $u,v$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "신발끈공식",
+      "src": "solution",
+      "quote": "$\\dfrac12|u(10-v)-v(10-u)|=5|u-v|$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "원점과 두 점으로 이루어진 삼각형의 넓이를 좌표의 행렬식 꼴로 구하는 신발끈 공식"
+     },
+     {
+      "term": "판별식",
+      "src": "solution",
+      "quote": "이차방정식의 판별식은 두 근 차의 제곱이므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "$y=\\frac{k}{x}\\,(k>0)$"
+     }
+    ]
+   },
+   "reasons": {
+    "method": "그림은 보지 못했고 해설 글로만 판정"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "f(f(x))를 번분수식으로 정리하면 x이므로 조건이 x=x^2이 되고 x=1은 정의역에서 제외되어 x=0만 남아 합 0이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "유리함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=\\frac{x}{x-1}$에 대하여"
+     },
+     {
+      "term": "합성함수",
+      "src": "stem",
+      "quote": "$f(f(x))=x^2$을 만족하는"
+     }
+    ],
+    "goal": [
+     {
+      "term": "해",
+      "src": "stem",
+      "quote": "$f(f(x))=x^2$을 만족하는 실수 $x$의 값들의 합은?"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "실수 $x$의 값들의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "번분수식",
+      "src": "solution",
+      "quote": "$f(f(x))=\\dfrac{\\frac{x}{x-1}}{\\frac{x}{x-1}-1}$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "분수식 안에 분수식이 들어간 번분수식을 정리해 f(f(x))를 구함"
+     },
+     {
+      "term": "반복합성",
+      "src": "solution",
+      "quote": "이므로 $f(f(x))=x$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "정의역",
+      "src": "solution",
+      "quote": "원래 함수의 정의역에서 제외되므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "인수분해",
+      "src": "solution",
+      "quote": "$x(x-1)=0$이므로 후보는 $x=0,1$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "x=x^2을 x(x-1)=0으로 인수분해해 해 후보를 구함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "condition": "발문에 별도 제약 없음"
+   },
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "t=√(x-3)으로 치환해 t^2-t+(3+k)=0이 서로 다른 두 음이 아닌 근을 갖도록 판별식과 곱 조건을 쓰고 끝값을 확인해 -3≤k<-11/4를 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "무리함수",
+      "src": "stem",
+      "quote": "함수 $y=\\sqrt{x-3}$과 $y=x+k$의 그래프의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "상수 $k$의 값의 범위를 구하면?"
+     },
+     {
+      "term": "범위",
+      "src": "stem",
+      "quote": "상수 $k$의 값의 범위를 구하면?"
+     }
+    ],
+    "method": [
+     {
+      "term": "치환",
+      "src": "solution",
+      "quote": "$t=\\sqrt{x-3}$으로 놓으면 $t\\ge0$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "이차방정식",
+      "src": "solution",
+      "quote": "$t^2-t+(3+k)=0$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "판별식",
+      "src": "solution",
+      "quote": "판별식은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "근과계수의관계",
+      "src": "solution",
+      "quote": "두 근의 합은 $1>0$, 곱은 $3+k$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "경계조건",
+      "src": "solution",
+      "quote": "끝값을 직접 확인한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "교점의 개수가 $2$개가 되도록 하는"
+     },
+     {
+      "term": "교점",
+      "src": "stem",
+      "quote": "그래프의 교점의 개수가"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 18,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "u=f(x)로 치환해 f(u)=2-u를 구간별 식으로 풀어 u=1/2, 2를 얻고 f(x)=1/2, f(x)=2의 해 7/4, 1을 더해 11/4이다.",
+   "slots": {
+    "given": [
+     {
+      "term": "함수",
+      "src": "stem",
+      "quote": "함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때"
+     },
+     {
+      "term": "정의역",
+      "src": "stem",
+      "quote": "정의역이 $\\{x|0 \\le x \\le 2\\}$인"
+     },
+     {
+      "term": "합성함수",
+      "src": "stem",
+      "quote": "$f(f(x))=-f(x)+2$를 만족하는"
+     }
+    ],
+    "goal": [
+     {
+      "term": "실근",
+      "src": "stem",
+      "quote": "만족하는 모든 실근의 합은?"
+     },
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "모든 실근의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "치환",
+      "src": "solution",
+      "quote": "$u=f(x)$로 놓으면 방정식은 $f(u)=2-u$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "조각함수",
+      "src": "solution",
+      "quote": "$f(u)=u+1$ ($0\\le u\\le1$), $f(u)=-2u+4$",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "첫 구간에서는 $u+1=2-u$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "u의 구간별로 f의 식이 달라 구간마다 나누어 방정식을 풂"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {
+    "method": "그림은 보지 못했고 해설 글로만 판정",
+    "condition": "정의역은 given에 둠"
+   },
+   "steps": [
+    "치환 후 u 결정",
+    "x 결정"
+   ],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 19,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "f가 일대일대응이라 g=f^{-1}이고 (g∘g)(a)=1에서 a=(f∘f)(1)=f(5)=-5를 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "조각함수",
+      "src": "stem",
+      "quote": "\\begin{cases} -x^2+4x & (x \\ge 2)"
+     },
+     {
+      "term": "합성함수",
+      "src": "stem",
+      "quote": "$(g \\circ f)(x)=x$를 만족시키는 함수 $g(x)$가 존재한다"
+     }
+    ],
+    "goal": [
+     {
+      "term": "매개변수",
+      "src": "stem",
+      "quote": "상수 $a$의 값을 구하고"
+     },
+     {
+      "term": "결정",
+      "src": "stem",
+      "quote": "상수 $a$의 값을 구하고"
+     }
+    ],
+    "method": [
+     {
+      "term": "치역",
+      "src": "solution",
+      "quote": "치역은 $(-\\infty,4]$이고",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "일대일대응",
+      "src": "solution",
+      "quote": "합치면 실수 전체이므로 $f$는 일대일대응이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "항등함수",
+      "src": "solution",
+      "quote": "$g\\circ f=I$이므로 $g=f^{-1}$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "역함수",
+      "src": "solution",
+      "quote": "$g=f^{-1}$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "합성함수",
+      "src": "solution",
+      "quote": "$a=(f\\circ f)(1)$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "항상성립",
+      "src": "stem",
+      "quote": "임의의 실수 $x$에 대하여"
+     },
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "임의의 실수 $x$에 대하여"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 20,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "증가하는 무리함수가 제1,2,3사분면만 지나도록 f(-3), f(0)의 부호 조건을 세워 c=-1,-2,-3별로 열거해 순서쌍 14개를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "집합",
+      "src": "stem",
+      "quote": "두 집합 $X=\\{x|x \\ge -3\\}, Y=\\{y|y \\ge -2\\}$에 대하여"
+     },
+     {
+      "term": "무리함수",
+      "src": "stem",
+      "quote": "함수 $f(x)=\\sqrt{ax+b}+c$가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "순서쌍",
+      "src": "stem",
+      "quote": "순서쌍 $(a, b, c)$를 모두 구하고"
+     },
+     {
+      "term": "결정",
+      "src": "stem",
+      "quote": "상수 $a, b, c$에 대하여"
+     }
+    ],
+    "method": [
+     {
+      "term": "정의역",
+      "src": "solution",
+      "quote": "정의역은 $x\\ge-3$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "증가감소",
+      "src": "solution",
+      "quote": "따라서 $a>0$이고 $f(x)$는 증가한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "$-2\\le\\sqrt{b-3a}+c<0$,",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "경우분류",
+      "src": "solution",
+      "quote": "① $c=-1$일 때",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "열거",
+      "src": "solution",
+      "quote": "가능한 순서쌍은",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "사분면",
+      "src": "stem",
+      "quote": "제 $1, 2, 3$ 사분면만을 지나도록 하는"
+     },
+     {
+      "term": "정수",
+      "src": "stem",
+      "quote": "(단, $-10 \\le a, b, c \\le 10$인 정수)"
+     },
+     {
+      "term": "구간",
+      "src": "stem",
+      "quote": "$-10 \\le a, b, c \\le 10$인 정수"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 21,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "f^{-1}(x)=2+√(x-1)을 구해 f^{-1}(x)=x-2의 무리방정식 √(x-1)=x-4를 제곱하고 x≥4 조건으로 (9-√13)/2를 버려 (9+√13)/2를 얻는다.",
+   "slots": {
+    "given": [
+     {
+      "term": "정의역",
+      "src": "stem",
+      "quote": "함수 $f:[2,\\infty)\\to[1,\\infty)$를"
+     },
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "$f(x)=(x-2)^2+1$로 정의하자"
+     },
+     {
+      "term": "역함수",
+      "src": "stem",
+      "quote": "방정식 $f^{-1}(x)=x-2$를 만족하는"
+     }
+    ],
+    "goal": [
+     {
+      "term": "해",
+      "src": "stem",
+      "quote": "만족하는 모든 실수 $x$를 구하고"
+     }
+    ],
+    "method": [
+     {
+      "term": "역함수",
+      "src": "solution",
+      "quote": "$f^{-1}(x)=2+\\sqrt{x-1}\\quad(x\\ge1)$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "무리방정식",
+      "src": "solution",
+      "quote": "$\\sqrt{x-1}=x-4$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "이차방정식",
+      "src": "solution",
+      "quote": "$x^2-9x+17=0$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "근의공식",
+      "src": "solution",
+      "quote": "$x=\\dfrac{9\\pm\\sqrt{13}}2$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "이차방정식 x^2-9x+17=0의 해를 근의 공식으로 구함"
+     },
+     {
+      "term": "무연근",
+      "src": "solution",
+      "quote": "제곱 전 조건을 만족하지 않아 제외한다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구간",
+      "src": "stem",
+      "quote": "함수 $f:[2,\\infty)\\to[1,\\infty)$를"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  }
+ ]
+}

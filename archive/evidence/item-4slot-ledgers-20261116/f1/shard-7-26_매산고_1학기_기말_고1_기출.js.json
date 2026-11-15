@@ -1,0 +1,969 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "judge": "gemini-f1",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "createdAt": "2026-11-15T22:20:00+09:00",
+  "sourceArchiveFile": "original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js",
+  "candidates": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "A+B의 각 성분을 더하여 [1+5, 2+(-1); 3+0, 4+2]=[6, 1; 3, 6]을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "stem",
+            "quote": "두 행렬 $A=\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}$,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "행렬 $A+B$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "행렬의 덧셈은 같은 위치의 성분끼리 더한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "행렬",
+            "src": "solution",
+            "quote": "행렬의 덧셈은 같은 위치의 성분끼리 더한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 2,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "5P2=20과 6C2=15를 계산하여 합 20+15=35를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "순열",
+            "src": "stem",
+            "quote": "${}_5P_2+{}_6C_2$의 값은?"
+          },
+          {
+            "term": "조합",
+            "src": "stem",
+            "quote": "${}_5P_2+{}_6C_2$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "${}_5P_2+{}_6C_2$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "순열과 조합을 각각 계산한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "순열과 조합을 각각 계산한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 3,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "회장 선출 4가지와 부회장 선출 4가지에 곱의 법칙을 적용하여 4*4=16을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "뽑는 경우의 수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "뽑는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙에 따라",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "선택",
+            "src": "solution",
+            "quote": "부회장 $1$명을 고르는 방법도 $4$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "후보군에서 대표 1명을 선택함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 4,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "각 성분을 비교하여 a=4, b=5, c=1, d=3을 구하고 합 4+5+1+3=13을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "행렬",
+            "src": "solution",
+            "quote": "두 행렬이 같으므로 같은 위치의 성분을 비교한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 행렬이 같다는 행렬 상등 등식을 다룸"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b+c+d$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "같은 위치의 성분을 비교한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$3a=12$ $a=4$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "성분별 등식으로부터 일차방정식을 풀어 미지수를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a,b,c,d$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 5,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "빵 선택 4가지와 소스 선택 3C2=3가지의 곱의 법칙으로 4*3=12를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "샌드위치를 만드는 경우의 수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "샌드위치를 만드는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_3C_2=\\dfrac{3\\cdot2}{2\\cdot1}=3$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 소스 중 순서 없이 2가지를 고르는 조합을 사용함"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "샌드위치를 만드는 경우의 수는 $4\\cdot3=12$가지이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빵 선택과 소스 선택의 경우의 수를 곱함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 6,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "각 부등식을 푼 x<=7과 x>2의 공통 범위 2<x<=7에서 정수 3, 4, 5, 6, 7의 개수 5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식 $\\begin{cases}x+2\\le9"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수 $x$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "두 부등식을 각각 푼다.",
+            "evidenceType": "IMPLIED",
+            "justification": "연립부등식의 각 일차부등식을 풀어 해의 범위를 도출함"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "공통해는 $2<x\\le7$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 부등식 해의 공통부분을 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "만족하는 정수 $x$의 개수는?"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 7,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "과-야-과-야-과-야와 야-과-야-과-야-과의 2가지 형태에 각각 3!*3!=36가지로 2*36=72를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "번갈아 심는 경우의 수는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "번갈아 심는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "서로 다른 과일 $3$개를 배열하는 방법은 $3!$가지,",
+            "evidenceType": "IMPLIED",
+            "justification": "각 종류의 대상을 일렬로 배열하는 순열(계승)을 적용함"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "전체 경우의 수는 $2\\cdot3!\\cdot3!",
+            "evidenceType": "IMPLIED",
+            "justification": "배열 형태와 대상별 순열의 곱으로 전체 경우의 수를 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 8,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "부등식 10(x-4)<9x+8<=10(x-3)을 풀어 38<=x<48에서 정수 최솟값 38, 최댓값 47의 합 85를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$10(x-4)<9x+8\\le10(x-3)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "아몬드 수의 상한과 하한을 나타내는 연립부등식을 세움"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$x$의 최댓값과"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "왼쪽 부등식에서 $10x-40<9x+8$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "일수 $x$는 정수이므로\n$38\\le x\\le47$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 일차부등식 해의 공통부분을 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "전체 아몬드 수는 $9x+8$개이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "일수 x와 아몬드 개수는 자연수 제약"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 9,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "g(x)=2x^2-2x+3의 구간 [-2,4]에서 최댓값 g(4)=27이므로 k>=27에서 k의 최솟값은 27이다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "이차부등식 $x^2-2x+3\\le -x^2+k$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "실수 $k$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 바꾸면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "$g(x)=2x^2-2x+3$의 최댓값 이상이어야 한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "구간의 모든 $x$에서 성립해야 하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 닫힌 구간에서의 성립 제약조건"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 10,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "X^2=E이므로 25(X+E)의 성분 합 25(2+x)=175에서 2+x=7, x=5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각행렬",
+            "src": "stem",
+            "quote": "이차정사각행렬 $X=\\begin{pmatrix}1&x"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "단위행렬",
+            "src": "solution",
+            "quote": "그러므로 홀수 제곱은 $X$, 짝수 제곱은 $E$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "행렬 제곱 계산 결과 단위행렬 E가 됨을 파악함"
+          },
+          {
+            "term": "행렬",
+            "src": "solution",
+            "quote": "먼저 행렬을 제곱한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x$의 값은?"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 11,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "전체 50C2=1225에서 2의 배수 없음 300, 3의 배수 없음 561을 빼고 둘 다 없음 136을 더해 1225-300-561+136=500을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1부터 50까지의 자연수 중"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "곱이 6의 배수가 될 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "포함배제의원리",
+            "src": "solution",
+            "quote": "이 경우를 두 번 빼지 않도록 한 번 더하면,",
+            "evidenceType": "IMPLIED",
+            "justification": "여사건의 합집합 원소 개수를 포함배제의 원리로 계산함"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "전체 두 수의 선택에서 이 조건이 실패하는 경우를 뺀다.",
+            "evidenceType": "IMPLIED",
+            "justification": "50개 자연수 중 2개를 고르는 조합 수를 사용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "1부터 50까지 3의 배수는",
+            "evidenceType": "IMPLIED",
+            "justification": "곱이 6의 배수가 되기 위한 소인수 2와 3의 배수 조건"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 12,
+      "questionUid": null,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "decisiveStep": "omega^3=1과 omega^2+omega+1=0을 이용해 ㄱ(0 참), ㄴ(1 참), ㄷ(-8*omega^2!=0 거짓)으로 판정하여 정답은 ㄱ, ㄴ이다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "방정식 $x^3=1$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "참",
+            "src": "solution",
+            "quote": "옳은 것은 ㄱ, ㄴ이므로 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "보기 중 참인 명제를 모두 판정함"
+          }
+        ],
+        "method": [
+          {
+            "term": "허근",
+            "src": "solution",
+            "quote": "$\\omega$는 허수이므로 $\\omega\\ne1$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "켤레복소수",
+            "src": "solution",
+            "quote": "두 근은 서로 켤레이고 곱이 1이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "이차방정식의 켤레근 성질로 켤레 복소수 관계를 단순화함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 13,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "세 구간으로 풀어 얻은 해 1-a<=x<=1+a에 정수 9개가 포함되도록 4<=a<5를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "부등식 $|x+1|+|x-3|\\le2a$를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 범위는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "절댓값 안의 부호가 바뀌는 $x=-1,3$을 기준으로 나눈다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "절댓값 안의 부호가 바뀌는 $x=-1,3$을 기준으로 나눈다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "만족시키는 정수 $x$의 개수가 9개가 되도록"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 14,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "[-1,3]의 정수 5개에 더해 x>3 구간에서 4만 포함되도록 4<=a+3<5에서 1<=a<2를 얻어 p+q=3을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=x^2-2x-3$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$\\dfrac{|f(x)|+f(x)}2$는 $f(x)\\ge0$이면 $f(x)$이고,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "항상 0 이상이므로 구간을 나누어 조사한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "f(x)=x^2-2x-3=(x+1)(x-3)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이차함수를 인수분해하여 부호가 바뀌는 경계를 파악함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "(단, $a\\gt0$)"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 15,
+      "questionUid": null,
+      "format": "단일 정답",
+      "decisiveStep": "(가)와 (나)를 만족하는 대각성분 z=i, -i에서 a!=b이므로 A의 성분 합은 i+0+0+(-i)=0이다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각행렬",
+            "src": "stem",
+            "quote": "이차정사각행렬 $A=\\begin{pmatrix}a&0\\\\0&b\\end{pmatrix}$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 성분의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "행렬",
+            "src": "solution",
+            "quote": "대각행렬의 거듭제곱은 대각성분을 각각 거듭제곱하므로,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "대각행렬의 거듭제곱은 대각성분을 각각 거듭제곱하므로,",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "단위행렬",
+            "src": "solution",
+            "quote": "이제 (나)의 합 $S=z-z^2+z^3-\\cdots-z^{98}+z^{99}$가 1인지 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "교대 거듭제곱합이 단위행렬 E가 됨을 이용함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 16,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "AB의 (2,2) 성분 -x+2x=x=6을 비교하여 x=6을 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각행렬",
+            "src": "stem",
+            "quote": "이차정사각행렬 $A=\\begin{pmatrix}1&1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "행렬곱",
+            "src": "solution",
+            "quote": "행렬곱은 왼쪽 행과 오른쪽 열의 성분을 곱해 더한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "성분",
+            "src": "solution",
+            "quote": "성분을 곱해 더한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 17,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "(x-1)(kx^2+(2k+2)x+k+3)=0에서 k!=0, k!=-5/4, D/4=1-k>0으로부터 k<1, k!=0, k!=-5/4 범위를 구한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $kx^3+(k+2)x^2+(1-k)x-k-3=0$이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $k$의 범위를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "주어진 식은 $(x-1)\\{kx^2+(2k+2)x+k+3\\}=0$ 으로 인수분해된다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식의 $\\dfrac{D}{4}$는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "서로 다른 세 실근을 갖도록 하는"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 18,
+      "questionUid": null,
+      "format": "단답",
+      "decisiveStep": "짝수 4명이 변 가운데 4자리에 앉고 홀수 5명이 모서리와 중앙에 앉는 유일한 배치에 4!*5!=24*120=2880을 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "경우의수",
+            "src": "stem",
+            "quote": "배치하는 경우의 수를 구하시오."
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "배치하는 경우의 수를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "짝수 학생을 정해진 네 자리에 배치하는 방법은 $4!$가지이고,",
+            "evidenceType": "IMPLIED",
+            "justification": "정해진 위치에 학생들을 일렬로 배정하는 순열을 적용함"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "따라서 전체 경우의 수는\n$4!\\times5!$",
+            "evidenceType": "IMPLIED",
+            "justification": "짝수 배치와 홀수 배치의 경우의 수를 곱함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 19,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "-1<t<3에 t=(x-a)/3을 대입한 a-3<x<a+9와 주어진 해의 경계 비교 a-3=-7/2, a+9=17/2에서 a=-1/2을 도출한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=f(x)$의 그래프가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값을 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "여기에 $t=\\dfrac{x-a}{3}$을 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "인수를 t로 치환하여 x의 범위를 t의 범위로 변환함"
+          },
+          {
+            "term": "일차부등식",
+            "src": "solution",
+            "quote": "$-3<x-a<9$ $a-3<",
+            "evidenceType": "IMPLIED",
+            "justification": "치환된 부등식을 정리하여 x에 대한 일차부등식 해를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "부등식 $f\\left(\\dfrac{x-a}{3}\\right)\\gt0$의 해가"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 20,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "두 부등식의 합 (a+c)(x^2+1)<2bx와 x^2+1>=2x로부터 필요조건 b>a+c를 유도하고 x=1 대입으로 충분성을 보여 필요충분조건 b>a+c를 증명한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식 $\\begin{cases}ax^2-bx+c\\lt0"
+          }
+        ],
+        "goal": [
+          {
+            "term": "필요충분조건",
+            "src": "solution",
+            "quote": "따라서 구하는 필요충분조건은 $b>a+c$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "절대부등식",
+            "src": "solution",
+            "quote": "$x^2+1\\ge2x$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식 (x-1)^2>=0으로부터 절대부등식 x^2+1>=2x를 이끌어냄"
+          },
+          {
+            "term": "이차부등식",
+            "src": "solution",
+            "quote": "두 부등식을 더하면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 이차부등식을 변끼리 더하여 일차 결합 식을 유도함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양의 실수 $a,b,c$에 대하여"
+          }
+        ]
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    },
+    {
+      "ordinal": 21,
+      "questionUid": null,
+      "format": "서술",
+      "decisiveStep": "A+B=BA를 이용해 B=(2E-A)/3을 얻고 대입하여 A^2=-2E를 도출한 뒤 성분의 합 -2+0+0-2=-4를 계산한다.",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각행렬",
+            "src": "stem",
+            "quote": "이차정사각행렬 $A,B$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 성분의 합을 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "단위행렬",
+            "src": "solution",
+            "quote": "$-A^2=2E$\n$A^2=-2E$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "행렬 관계식을 대수적으로 소거하여 A^2을 단위행렬 E의 상수로 표현함"
+          },
+          {
+            "term": "행렬곱",
+            "src": "solution",
+            "quote": "행렬의 곱은 순서를 바꿀 수 없으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "비가환 행렬 곱셈의 성질을 유지하며 식을 변형함"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "steps": [],
+      "scenarioNote": ""
+    }
+  ]
+}

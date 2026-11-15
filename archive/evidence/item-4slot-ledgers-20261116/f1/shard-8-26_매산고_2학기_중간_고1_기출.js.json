@@ -1,0 +1,1064 @@
+{
+ "schemaVersion": "archive-meta-4slot-v0",
+ "judge": "gemini-f1",
+ "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+ "createdAt": "2026-11-15T22:42:00+09:00",
+ "sourceArchiveFile": "original/high/h1/2mid/26_매산고_2학기_중간_고1_기출.js",
+ "candidates": [],
+ "items": [
+  {
+   "ordinal": 1,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "약수와 자연수로 대상이 명확한 ㄴ, ㄹ의 2개가 집합임을 센다.",
+   "slots": {
+    "given": [
+     {
+      "term": "약수",
+      "src": "stem",
+      "quote": "12의 약수의 모임"
+     },
+     {
+      "term": "자연수",
+      "src": "stem",
+      "quote": "5보다 작은 자연수의 모임"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "집합인 것의 개수는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "집합",
+      "src": "solution",
+      "quote": "집합은 모임에 속하는 대상을 분명하게",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "원소나열법",
+      "src": "solution",
+      "quote": "$12$의 약수는 $1,2,3,4,6,12$로",
+      "evidenceType": "IMPLIED",
+      "justification": "원소들을 구체적으로 나열하여 집합 여부를 확인함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 2,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "A U B = {1, 2, 3, 4, 6, 8}의 모든 원소의 합 24를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "집합",
+      "src": "stem",
+      "quote": "집합 $A=\\{1,2,3,4\\}$"
+     },
+     {
+      "term": "합집합",
+      "src": "stem",
+      "quote": "집합 $A\\cup B$의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "모든 원소의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "합집합",
+      "src": "solution",
+      "quote": "$A\\cup B$에는 $A$ 또는 $B$에 속하는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "합",
+      "src": "solution",
+      "quote": "모든 원소의 합은\n$1+2+3+4+6+8=24$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 3,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "두 직선의 기울기 3과 1-k의 곱이 -1임을 풀어 k=4/3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "두 직선 $3x-y+2=0$,"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "상수 $k$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "수선",
+      "src": "solution",
+      "quote": "두 직선이 서로 수직이므로",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "기울기",
+      "src": "solution",
+      "quote": "기울기는 $3$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 4,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "점 (1,a)의 평행이동 결과 (1+b, a-3)=(2,5)에서 b=1, a=8로부터 a+b=9를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "좌표평면 위의 점 $(1,a)$를"
+     },
+     {
+      "term": "평행이동",
+      "src": "stem",
+      "quote": "평행이동한 점의 좌표가"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "평행이동",
+      "src": "solution",
+      "quote": "방향으로 $-3$만큼 평행이동하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "연립방정식",
+      "src": "solution",
+      "quote": "$1+b=2$, $a-3=5$이다",
+      "evidenceType": "IMPLIED",
+      "justification": "평행이동 좌표 일치 조건으로 연립방정식을 풂"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 5,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "C1의 방정식을 정리하여 반지름 3을 얻고 두 반지름의 합 7에서 C2의 반지름 4를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "원의방정식",
+      "src": "stem",
+      "quote": "두 원 $C_1$, $C_2$의 방정식이다"
+     },
+     {
+      "term": "반지름",
+      "src": "stem",
+      "quote": "두 원 $C_1$, $C_2$의 반지름의 합이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "반지름",
+      "src": "stem",
+      "quote": "$C_2$의 반지름의 길이는?"
+     }
+    ],
+    "method": [
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "방정식을 완전제곱식으로 정리한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "반지름",
+      "src": "solution",
+      "quote": "중심은 $(-2,1)$이고 반지름은 $3$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구별가능",
+      "src": "stem",
+      "quote": "서로 다른 두 원 $C_1$, $C_2$"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 6,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "무게중심의 y좌표 (1-4+k)/3이 0임을 이용해 k=3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "좌표평면 위의 세 점"
+     },
+     {
+      "term": "삼각형",
+      "src": "stem",
+      "quote": "삼각형 $ABC$의 무게중심"
+     },
+     {
+      "term": "무게중심",
+      "src": "stem",
+      "quote": "무게중심 $G$가 $x$축 위에 있을 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "상수 $k$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "무게중심",
+      "src": "solution",
+      "quote": "삼각형의 무게중심의 $y$좌표는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평균",
+      "src": "solution",
+      "quote": "세 꼭짓점의 $y$좌표의 평균이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 7,
+   "questionUid": null,
+   "format": "옳지 않은 것 고르기",
+   "decisiveStep": "원의 반지름의 제곱 4-k가 0보다 커야 하므로 k<4에서 k=4는 원이 될 수 없음을 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "원의방정식",
+      "src": "stem",
+      "quote": "방정식 $x^2+y^2+4x-2y+k+1=0$이"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "실수 $k$값이 아닌 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "완전제곱식",
+      "src": "solution",
+      "quote": "방정식을 완전제곱식으로 정리한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "부등식",
+      "src": "solution",
+      "quote": "반지름의 제곱이 양수여야 한다",
+      "evidenceType": "IMPLIED",
+      "justification": "원의 형성 조건으로 반지름 제곱이 0보다 큼을 이용"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 $k$값이 아닌 것은?"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 8,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "포물선 (1,0)에서의 접선 기울기 m=2를 구하고 (2,3)을 지나는 직선 -2x+y+1=0에서 a+b=-1을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "이차함수",
+      "src": "stem",
+      "quote": "이차함수 $y=x^2-1$"
+     },
+     {
+      "term": "접선",
+      "src": "stem",
+      "quote": "점 $(1,0)$에서의 접선 $l$과"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "점 $(2,3)$을 지나는"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "$a+b$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "접선",
+      "src": "solution",
+      "quote": "점 $(1,0)$에서 그은 접선의 기울기를",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "기울기",
+      "src": "solution",
+      "quote": "접선과 평행하므로 기울기도 $2$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평행",
+      "src": "solution",
+      "quote": "구하는 직선은 이 접선과 평행하므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 9,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "이동된 원의 중심 (k-1, 1)과 직선 사이 거리가 5임을 풀어 |2k+1|=5sqrt(13)의 두 근의 합 -1을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "평행이동",
+      "src": "stem",
+      "quote": "평행이동 $(x,y)\\to(x+k,y-2)$에"
+     },
+     {
+      "term": "원의방정식",
+      "src": "stem",
+      "quote": "$x^2+y^2+2x-6y-15=0$"
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "$2x-3y+6=0$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "모든 상수 $k$값의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "점과직선사이의거리",
+      "src": "solution",
+      "quote": "중심에서 직선까지의 거리가 반지름 $5$와 같아야 한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "평행이동",
+      "src": "solution",
+      "quote": "평행이동 $(x,y)\\to(x+k,y-2)$에 따라",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 10,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "각의 이등분선 위의 점 R(1,m)에서 두 직선까지의 거리가 같음을 풀어 m=1/2을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "두 직선 $y=0$, $y=\\dfrac{4}{3}x$가"
+     },
+     {
+      "term": "각",
+      "src": "stem",
+      "quote": "각 중 작은 각을 이등분하는"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "상수 $m$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "각이등분선",
+      "src": "solution",
+      "quote": "각의 이등분선 위의 점은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "점과직선사이의거리",
+      "src": "solution",
+      "quote": "두 직선까지의 거리가 같다",
+      "evidenceType": "IMPLIED",
+      "justification": "각의 이등분선 성질인 점과 직선 사이의 거리 일치를 이용함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 11,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "두 수선의 길이 비 15/|a-9|=3/2에서 |a-9|=10을 풀고 양수 조건에서 a=19를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "좌표평면 위의 두 점"
+     },
+     {
+      "term": "선분",
+      "src": "stem",
+      "quote": "선분 $AB$와 점 $P$에서 만나는"
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $l:2x+y-17=0$이"
+     },
+     {
+      "term": "수선의발",
+      "src": "stem",
+      "quote": "내린 두 수선의 발을 각각"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "양수 $a$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "점과직선사이의거리",
+      "src": "solution",
+      "quote": "점에서 직선까지의 거리 공식으로 두 수선의 길이를 구한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "비례",
+      "src": "solution",
+      "quote": "길이의 비가 $3:2$이므로",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": [
+     {
+      "term": "양수",
+      "src": "stem",
+      "quote": "양수 $a$의 값은?"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 12,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "점 A를 y=x 대칭한 A'(0,2)에서 원의 중심 (8,4)까지의 거리 2sqrt(17)에서 반지름 1을 빼 최솟값 2sqrt(17)-1을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "원",
+      "src": "stem",
+      "quote": "원 $C:(x-8)^2+(y-4)^2=1$과"
+     },
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "점 $A(2,0)$이 있다"
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $y=x$ 위의 점 $Q$에"
+     }
+    ],
+    "goal": [
+     {
+      "term": "최솟값",
+      "src": "stem",
+      "quote": "$\\overline{AQ}+\\overline{QP}$의 최솟값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "대칭이동",
+      "src": "solution",
+      "quote": "직선 $y=x$에 대하여 대칭이동하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "최단거리",
+      "src": "solution",
+      "quote": "가장 짧은 거리는\n$2\\sqrt{17}-1$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "거리",
+      "src": "solution",
+      "quote": "$A'C=\\sqrt{(8-0)^2+(4-2)^2}",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 13,
+   "questionUid": null,
+   "format": "보기(ㄱㄴㄷ) 판정",
+   "decisiveStep": "드모르간 법칙으로 S(A,B)가 대칭차집합임을 밝혀 ㄱ, ㄴ이 참이고 ㄷ의 반례가 존재함을 판정한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "전체집합",
+      "src": "stem",
+      "quote": "전체집합 $U$의"
+     },
+     {
+      "term": "부분집합",
+      "src": "stem",
+      "quote": "공집합이 아닌 부분집합 $A$, $B$에"
+     }
+    ],
+    "goal": [
+     {
+      "term": "판정",
+      "src": "stem",
+      "quote": "옳은 것만을 있는 대로 고른 것은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "드모르간법칙",
+      "src": "solution",
+      "quote": "드모르간 법칙으로 식을 먼저 간단히 한다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "원소의개수",
+      "src": "solution",
+      "quote": "$n(A\\cup B)=n(A\\cap B)+n(S(A,B))$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "대칭차집합",
+      "src": "solution",
+      "quote": "한 집합에만 속하는 원소들의 집합이다",
+      "evidenceType": "IMPLIED",
+      "justification": "두 집합의 합집합에서 교집합을 뺀 대칭차집합의 성질을 사용함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 14,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "중심 (-a,a)와 직선 3x-4y+8=0 사이 거리가 |a|임을 풀어 3a^2-14a+8=0의 두 근의 합 14/3을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "직선",
+      "src": "solution",
+      "quote": "직선 $y=\\dfrac34x+2$ 위의 점들의 집합이다"
+     },
+     {
+      "term": "원",
+      "src": "solution",
+      "quote": "중심 $(-a,a)$, 반지름 $|a|$인 원을 나타낸다"
+     }
+    ],
+    "goal": [
+     {
+      "term": "합",
+      "src": "stem",
+      "quote": "모든 실수 $a$값의 합은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "점과직선사이의거리",
+      "src": "solution",
+      "quote": "중심에서 직선까지의 거리가 반지름과 같다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "이차방정식",
+      "src": "solution",
+      "quote": "$3a^2-14a+8=0$",
+      "evidenceType": "IMPLIED",
+      "justification": "접하는 조건으로부터 a에 대한 이차방정식을 유도함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "모든 실수 $a$값의 합은?"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 15,
+   "questionUid": null,
+   "format": "단일 정답",
+   "decisiveStep": "OH^2=3BH^2에 피타고라스 거리를 대입해 (m-2)^2=3을 풀고 0<m<1에서 m=2-sqrt(3)을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "원",
+      "src": "stem",
+      "quote": "원 $C:(x-4)^2+(y-4)^2=16$,"
+     },
+     {
+      "term": "직선",
+      "src": "stem",
+      "quote": "직선 $y=mx\\ (0<m<1)$이 있다"
+     },
+     {
+      "term": "수선의발",
+      "src": "stem",
+      "quote": "내린 수선의 발을 $H$,"
+     }
+    ],
+    "goal": [
+     {
+      "term": "값",
+      "src": "stem",
+      "quote": "상수 $m$의 값은?"
+     }
+    ],
+    "method": [
+     {
+      "term": "피타고라스정리",
+      "src": "solution",
+      "quote": "피타고라스 정리를 이용하면",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "점과직선사이의거리",
+      "src": "solution",
+      "quote": "점 $A$에서 이 직선까지의 거리는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "이차방정식",
+      "src": "solution",
+      "quote": "$m^2-4m+1=0$",
+      "evidenceType": "IMPLIED",
+      "justification": "길이 비 관계식을 풀어 m에 대한 이차방정식을 풂"
+     }
+    ],
+    "condition": [
+     {
+      "term": "구간",
+      "src": "stem",
+      "quote": "0<m<1"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 16,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "원소 4개인 집합 A의 전체 부분집합 2^4=16에서 자기 자신을 빼 진부분집합 15개를 센다.",
+   "slots": {
+    "given": [
+     {
+      "term": "집합",
+      "src": "stem",
+      "quote": "집합 $A=\\{2,4,6,8\\}$의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "진부분집합의 개수를 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "진부분집합",
+      "src": "solution",
+      "quote": "진부분집합은 자기 자신 $A$를 제외한",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "거듭제곱",
+      "src": "solution",
+      "quote": "$2^4=16$개이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 17,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "각 선분의 2:1 내분점 M(-2,6), N(4,1), P(4,2)의 좌표 평균으로 무게중심 (2,3)을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "좌표평면 위의 세 점"
+     },
+     {
+      "term": "선분",
+      "src": "stem",
+      "quote": "선분 $AB$, 선분 $BC$, 선분 $CA$를"
+     },
+     {
+      "term": "삼각형",
+      "src": "stem",
+      "quote": "삼각형 $MNP$의"
+     }
+    ],
+    "goal": [
+     {
+      "term": "무게중심",
+      "src": "stem",
+      "quote": "무게중심의 좌표를 구하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "내분",
+      "src": "solution",
+      "quote": "내분점 좌표는 양 끝점의 좌표에",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "무게중심",
+      "src": "solution",
+      "quote": "삼각형의 무게중심은 세 꼭짓점 좌표의 평균이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 18,
+   "questionUid": null,
+   "format": "단답",
+   "decisiveStep": "u=y-1, v=x+1로부터 원래 점 (u,v)를 (v-1,u+1)로 대응시켜 중심 (-3,0)인 호와 두 선분을 그린다.",
+   "slots": {
+    "given": [
+     {
+      "term": "방정식",
+      "src": "stem",
+      "quote": "방정식 $f(x,y)=0$이"
+     },
+     {
+      "term": "그래프",
+      "src": "stem",
+      "quote": "도형의 그래프를 좌표를"
+     }
+    ],
+    "goal": [
+     {
+      "term": "그래프",
+      "src": "stem",
+      "quote": "도형의 그래프를 좌표를 명확히 나타내어 그리시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "대칭이동",
+      "src": "solution",
+      "quote": "원래 점 $(u,v)$는 새 점 $(v-1,u+1)$으로 옮겨진다",
+      "evidenceType": "IMPLIED",
+      "justification": "x와 y의 성분을 맞바꾸고 평행이동하는 도형의 변환 원리를 적용함"
+     },
+     {
+      "term": "평행이동",
+      "src": "solution",
+      "quote": "$u=y-1$, $v=x+1$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "좌표축 방향의 평행이동 성분을 계산함"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 19,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "두 제곱근 식을 A(-2,4), B(4,1)과 X(x,0)의 거리 차로 해석해 최대 직선 거리 beta=3sqrt(5)와 x절편 alpha=6의 곱 18sqrt(5)를 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "$x$가 실수일 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "곱",
+      "src": "stem",
+      "quote": "$\\alpha\\times\\beta$의 값을 구하는 과정을 서술하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "거리",
+      "src": "solution",
+      "quote": "두 제곱근을 $x$축 위의 점 $X=(x,0)$에서 두 점까지의 거리로 나타내자",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "최댓값",
+      "src": "solution",
+      "quote": "최댓값은 많아야 $3\\sqrt5$이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "직선의방정식",
+      "src": "solution",
+      "quote": "직선 $AB$의 기울기는",
+      "evidenceType": "IMPLIED",
+      "justification": "두 점을 잇는 직선의 방정식을 세워 x절편을 구함"
+     }
+    ],
+    "condition": [
+     {
+      "term": "실수",
+      "src": "stem",
+      "quote": "실수 $\\alpha$, $\\beta$에 대해"
+     }
+    ]
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 20,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "B가 A의 2원소 부분집합이고 C는 A-B의 공집합이 아닌 부분집합임을 밝혀 2^4-1=15개를 센다.",
+   "slots": {
+    "given": [
+     {
+      "term": "복소수",
+      "src": "stem",
+      "quote": "복소수 전체의 집합 $\\mathbb{C}$의"
+     },
+     {
+      "term": "부분집합",
+      "src": "stem",
+      "quote": "공집합이 아닌 세 부분집합 $A=\\{z\\mid z^6=1\\}$"
+     }
+    ],
+    "goal": [
+     {
+      "term": "개수",
+      "src": "stem",
+      "quote": "집합 $C$의 개수를 구하는 과정을 서술하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "켤레복소수",
+      "src": "solution",
+      "quote": "$z=s+ti$라 하면 $\\overline z=s-ti$이므로",
+      "evidenceType": "IMPLIED",
+      "justification": "켤레복소수의 성질을 이용하여 복소수 z를 구함"
+     },
+     {
+      "term": "부분집합",
+      "src": "solution",
+      "quote": "정확히 $A-B$의 공집합이 아닌 부분집합이다",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "차집합",
+      "src": "solution",
+      "quote": "$A-B$의 원소의 개수는",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  },
+  {
+   "ordinal": 21,
+   "questionUid": null,
+   "format": "서술",
+   "decisiveStep": "원주각 45도로부터 중심각 90도와 중심 거리 sqrt(13)을 도출해 (h-4)^2=9에서 두 x좌표 1, 7의 곱 7을 구한다.",
+   "slots": {
+    "given": [
+     {
+      "term": "점",
+      "src": "stem",
+      "quote": "좌표평면 위의 두 점"
+     },
+     {
+      "term": "원",
+      "src": "stem",
+      "quote": "세 점 $A$, $B$, $P$를 지나는 원을 $C$라 할 때"
+     }
+    ],
+    "goal": [
+     {
+      "term": "곱",
+      "src": "stem",
+      "quote": "값들의 곱을 구하는 과정을 서술하시오"
+     }
+    ],
+    "method": [
+     {
+      "term": "원주각",
+      "src": "solution",
+      "quote": "원주각 $\\angle APB=45^\\circ$가 보는",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "중심각",
+      "src": "solution",
+      "quote": "현 $AB$의 작은 중심각은",
+      "evidenceType": "NAMED"
+     },
+     {
+      "term": "수직이등분선",
+      "src": "solution",
+      "quote": "수직이등분선의 기울기는 $\\dfrac23$이다",
+      "evidenceType": "NAMED"
+     }
+    ],
+    "condition": []
+   },
+   "reasons": {},
+   "steps": [],
+   "scenarioNote": ""
+  }
+ ]
+}
