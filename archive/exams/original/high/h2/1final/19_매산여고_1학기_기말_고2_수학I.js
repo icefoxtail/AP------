@@ -1103,7 +1103,11 @@ window.questionBank = [
       "intakeEvidenceSha256": "f24b55d894b00ab56b231fe7c6b41e33778a773fccbf2d7f3348a8e625b7378e",
       "sourcePdfSha256": "87010d0fb7855019d7cdba48b30af73c201b3a88fca743d04d4b52a79c4bc41e",
       "sourcePdfComparison": "NOT_RUN_ROUTINE_PDF_RECHECK"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_수학I/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: F는 BC의 중점이고, DE는 AF의 중점에서 AF에 수직이다. 접으면 AD=DF, AE=EF가 되고 △DFE가 나타난다.",
+    "solutionImageCaption": "접는 선의 수직이등분 관계와 두 변의 길이로 넓이를 구한다. 정답은 −85이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

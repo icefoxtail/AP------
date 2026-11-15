@@ -3,6 +3,8 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const crypto = require('node:crypto');
+const { isDeepStrictEqual } = require('node:util');
 const root = path.resolve(__dirname, '..');
 const sourceArchiveFile = 'original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js';
 (async () => {
@@ -14,6 +16,34 @@ const sourceArchiveFile = 'original/middle/m2/2mid/21_향림중_2학기_중간_�
   assert.ok(matched, 'production questionBank missing');
   const bank = JSON.parse(matched[1]);
   assert.equal(bank.length, 26);
+  // BATCH-06 was a source-only mathematical check, not a registered approval.
+  // Keep that exact resolver input when a later native review transports a
+  // different pending candidate. The current source must still match one of
+  // these two immutable reviewed states in its entirety.
+  const frozenBytes = fs.readFileSync(path.join(root, 'tests/fixtures/hyangrim-source-only-resolver-review-20261115.json'));
+  assert.equal(crypto.createHash('sha256').update(frozenBytes).digest('hex'),
+    '9c23bce8470fd996e87d87e33c33a1eaa02abf3716f8c713b009c99df06b1856');
+  const frozen = JSON.parse(frozenBytes);
+  assert.equal(frozen.schemaVersion, 'hyangrim-source-only-resolver-historical-review-v1');
+  assert.equal(frozen.sourceArchiveFile, sourceArchiveFile);
+  assert.equal(frozen.historicalSource.commit, '2ea8fb8b109921997e6764a3f85213d9d04b4364');
+  assert.equal(frozen.nativeReview.commit, 'c28641f67d91bfb27352b11faaef4552f46c45be');
+  assert.equal(frozen.nativeReview.sha256, 'dd9a4c37672ca5d24f5715de271479484653812620366904dc09200986babf17');
+  assert.deepEqual(frozen.records.map(row => row.sourceOrdinal), [21, 22]);
+  const assertReviewedSource = (current, record) => {
+    const review = record.nativeReview;
+    assert.equal(review.verdict, 'REGISTRATION_PENDING');
+    assert.equal(review.sourceContentStatus, 'SOURCE_ANSWER_SOLUTION_ABSENT');
+    assert.equal(review.evidenceScope.freshMathematicalReverification, false);
+    const candidate = { ...record.question, ...review.after,
+      primaryMethod: review.primaryMethod, decisiveStep: review.decisiveStep };
+    for (const key of ['difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility'])
+      candidate[key] = review.finalDifficulty[key];
+    assert(isDeepStrictEqual(current, record.question) || isDeepStrictEqual(current, candidate),
+      'current source differs from both byte-bound reviewed states: Q' + record.sourceOrdinal);
+    assert.equal(current.answer, '');
+    assert.equal(current.solution, '');
+  };
   const crosswalk = JSON.parse(fs.readFileSync(
     path.join(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json'), 'utf8'));
   const specs = [
@@ -25,7 +55,13 @@ const sourceArchiveFile = 'original/middle/m2/2mid/21_향림중_2학기_중간_�
       proof: 'R=17/2,r=3,c=17,a+b=23,a²+b²=289,2ab=240, 넓이=60' },
   ];
   for (const spec of specs) {
-    const q = bank[spec.id - 1];
+    const record = frozen.records.find(row => row.sourceOrdinal === spec.id);
+    assert.equal(record.questionUid, spec.uid);
+    const current = bank[spec.id - 1];
+    assertReviewedSource(current, record);
+    assert.throws(() => assertReviewedSource({ ...current, problemTypeKey: 'PT_UNREVIEWED_CHANGE' }, record));
+    assert.throws(() => assertReviewedSource({ ...current, answer: 'unreviewed answer' }, record));
+    const q = record.question;
     const row = crosswalk.records.find(r => r.id === spec.record);
     assert.equal(q.id, spec.id);
     assert.equal(q.answer, '', 'student answer preserved blank');
@@ -84,5 +120,5 @@ const sourceArchiveFile = 'original/middle/m2/2mid/21_향림중_2학기_중간_�
     assert.equal(result.crosswalkRecordId, spec.record);
     assert.equal(validateResolverEvidence(input, result, { repoRoot: root }).status, 'PASS');
   }
-  console.log('PASS BATCH06_HYANGRIM_Q21_Q22_OFFICIAL_RESOLVER 2/2; student solution pending');
+  console.log('PASS BATCH06_HYANGRIM_Q21_Q22_OFFICIAL_RESOLVER 2/2; exact current native candidate transport 2/2; 4 corruptions rejected; no approval issued');
 })().catch(e => { console.error(e); process.exitCode = 1; });

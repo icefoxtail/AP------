@@ -17,6 +17,10 @@ window.examData = {
     },
     {
       "id": 2,
+      "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q2-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "수직선에 같은 a의 제곱, a, a의 제곱근, 1, 그리고 역수의 제곱근 위치를 나타낸 예이다.",
+      "solutionImageCaption": "0<a<1이므로 a²<a<√a<1<√(1/a)이다. 큰 순서로 쓴 것은 ⑤이다.",
       "score": 4.0,
       "question": "$0 < a < 1$ 일 때, 다음 수를 큰 것부터 차례로 나열하면? [4.0점]\n<div class=\"box-inset text-center py-2\">\n$\\sqrt{a},\\quad \\sqrt{\\frac{1}{a}},\\quad a,\\quad a^2$\n</div>",
       "choices": [
@@ -73,8 +77,13 @@ window.examData = {
     },
     {
       "id": 6,
+      "layoutTag": "fullwidth",
+      "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q6-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "0, 1, 2, 3의 수직선 위에 A와 B가 놓인다. 초록 대각선 AC와 BD의 길이를 원호로 각각 Q와 P까지 옮겼다.",
+      "solutionImageCaption": "P=2−√2, Q=1+√2이다. 합이 3이므로 3+2√2라고 한 ⑤만 옳지 않다.",
       "score": 4.0,
-      "question": "아래 그림과 같이 수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$를 그렸다.. $\\overline{AC}=\\overline{AQ}$, $\\overline{BD}=\\overline{BP}$ 일 때, 다음 중 옳지 <u>않은</u> 것은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q06.png\" style=\"max-width: 80%;\">\n</div>",
+      "question": "아래 그림과 같이 수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$를 그렸다.. $\\overline{AC}=\\overline{AQ}$, $\\overline{BD}=\\overline{BP}$ 일 때, 다음 중 옳지 <u>않은</u> 것은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q6-problem-v2.svg\" alt=\"0, 1, 2, 3의 수직선 위에 A와 B가 놓인다. 초록 대각선 AC와 BD의 길이를 원호로 각각 Q와 P까지 옮겼다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [
         "$\\overline{AQ} = \\sqrt{2}$",
         "$\\overline{PA} = \\sqrt{2}-1$",
@@ -143,8 +152,13 @@ window.examData = {
     },
     {
       "id": 11,
+      "layoutTag": "fullwidth",
+      "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q11-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "왼쪽의 큰 정사각형에서 작은 칸을 뺀 뒤 남은 두 조각을 서로 다른 색으로 구분하였다. 오른쪽 직사각형에는 같은 두 조각이 들어간다.",
+      "solutionImageCaption": "조각을 옮겨도 넓이는 변하지 않는다. 남은 넓이는 a²−b²=(a+b)(a−b)이고 정답은 ②이다.",
       "score": 4.0,
-      "question": "도형(가)는 한 변의 길이가 $a$인 정사각형 모양의 색종이에서 한 변의 길이가 $b$인 정사각형을 잘라내어 만든 것이다. 도형 (가)를 잘라서 (나)와 같은 직사각형 모양을 만들었다. (나)의 넓이는? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q11.png\" style=\"max-width: 80%;\">\n</div>",
+      "question": "도형(가)는 한 변의 길이가 $a$인 정사각형 모양의 색종이에서 한 변의 길이가 $b$인 정사각형을 잘라내어 만든 것이다. 도형 (가)를 잘라서 (나)와 같은 직사각형 모양을 만들었다. (나)의 넓이는? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q11-problem-v2.svg\" alt=\"왼쪽의 큰 정사각형에서 작은 칸을 뺀 뒤 남은 두 조각을 서로 다른 색으로 구분하였다. 오른쪽 직사각형에는 같은 두 조각이 들어간다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [
         "$a^2+2ab+b^2$",
         "$(a+b)(a-b)$",
@@ -157,8 +171,13 @@ window.examData = {
     },
     {
       "id": 12,
+      "layoutTag": "fullwidth",
+      "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q12-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "파란 정사각형 옆에 주황 직사각형 띠를 붙이고 오른쪽 아래에 초록 단위 정사각형을 3줄과 6칸으로 모았다.",
+      "solutionImageCaption": "18의 인수쌍은 (1,18), (2,9), (3,6)이다. x 타일은 두 수의 합만큼 필요하므로 (3,6)에서 가장 적은 9개이다. 정답은 ②이다.",
       "score": 4.0,
-      "question": "이수중학교 중앙 현관을 리모델링 하는데, 한쪽 벽면을 직사각형 모양으로 타일로 붙이려고 한다. 아래 그림과 같은 종류의 타일을 사용하여 타일을 붙일 때, 넓이가 $x$인 타일을 가능한 적게 사용하려고 한다. 넓이가 $x$인 타일을 몇 개 사용하면 될까? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q12.png\" style=\"max-width: 80%;\">\n</div>",
+      "question": "이수중학교 중앙 현관을 리모델링 하는데, 한쪽 벽면을 직사각형 모양으로 타일로 붙이려고 한다. 아래 그림과 같은 종류의 타일을 사용하여 타일을 붙일 때, 넓이가 $x$인 타일을 가능한 적게 사용하려고 한다. 넓이가 $x$인 타일을 몇 개 사용하면 될까? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q12-problem-v2.svg\" alt=\"파란 x 정사각형, 옆 주황 x와 1의 직사각형, 초록 단위 정사각형의 세 종류가 있다. 단위 타일은 18개이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [
         "6",
         "9",
@@ -185,8 +204,13 @@ window.examData = {
     },
     {
       "id": 14,
+      "layoutTag": "fullwidth",
+      "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q14-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "책상과 문이 있던 직사각형을 같은 크기인 넓이 모형으로 나타냈다. 가로 5a와 2의 경계를 기준으로 네 부분 넓이를 본다.",
+      "solutionImageCaption": "넓이 10a²+19a+6을 (5a+2)(2a+3)으로 인수분해한다. 가로가 5a+2이므로 세로는 2a+3이며 정답은 ②이다.",
       "score": 4.0,
-      "question": "다음 그림은 이수중학교 수학보드실의 평면도를 나타낸 것이다. 이 교실은 넓이가 $10a^2+19a+6$이고 가로의 길이가 $5a+2$인 직사각형 모양이다. 이 교실의 세로의 길이를 $a$의 식으로 나타내면? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q14.png\" style=\"max-width: 60%;\">\n</div>",
+      "question": "다음 그림은 이수중학교 수학보드실의 평면도를 나타낸 것이다. 이 교실은 넓이가 $10a^2+19a+6$이고 가로의 길이가 $5a+2$인 직사각형 모양이다. 이 교실의 세로의 길이를 $a$의 식으로 나타내면? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/20_이수중_1학기_기말_중3_수학/q14-problem-v2.svg\" alt=\"두 출입구와 책상 배치가 있는 직사각형 교실이다. 가로는 5a+2이고 세로가 문제에서 구하려는 길이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [
         "$2a+2$",
         "$2a+3$",
@@ -255,6 +279,10 @@ window.examData = {
     },
     {
       "id": 19,
+      "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q19-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "위쪽 전개도의 주황 정사각형 네 개를 떼면 가운데 밑면과 네 곳의 벽이 남는다. 아래 상자는 벽 높이와 밑면 길이를 다른 색으로 표시한다.",
+      "solutionImageCaption": "밑면은 (y−6)(y−2), 높이는 3이다. 부피 식 3(y−6)(y−2)=96의 양수 해 y=10 cm가 정답 ④이다.",
       "score": 4.0,
       "question": "가로가 세로보다 $4\\text{ cm}$ 더 긴 직사각형 모양의 종이의 네 모퉁이에서 한 변이 $3\\text{ cm}$인 정사각형을 잘라내어 부피가 $96\\text{ cm}^3$인 직육면체를 만들었다. 처음 직사각형 모양의 종이의 세로의 길이는 몇 $\\text{cm}$인가? [4.0점]",
       "choices": [
@@ -269,6 +297,10 @@ window.examData = {
     },
     {
       "id": 20,
+      "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q20-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "3과 4 사이 주황 점은 2√3을 나타낸다. 세 수의 제곱을 비교하면 그 점이 어느 위치에 놓이는지 알 수 있다.",
+      "solutionImageCaption": "3<2√3<4이므로 a=3, b=2√3−3이다. (a+b)²=(2√3)²=12이다.",
       "score": 6.0,
       "question": "[서답형 1] $1 < \\sqrt{3} < 2$이므로 $\\sqrt{3}$의 정수 부분은 1이고, 소수 부분은 $\\sqrt{3}-1$이다. 이와 같은 방법으로 $2\\sqrt{3}$ 을 소수로 나타낼 때 정수 부분을 $a$라 하고, 소수 부분을 $b$라고 할 때, 다음 물음에 답하시오. (답과 풀이 과정을 쓰시오.) [6.0점]\n\n(1) $a$의 값을 구하시오. (2점)\n(2) $b$의 값을 구하시오. (2점)\n(3) $a^2+2ab+b^2$ 의 값을 구하시오. (2점)",
       "choices": [],
@@ -277,6 +309,10 @@ window.examData = {
     },
     {
       "id": 21,
+      "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q21-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "왼쪽 x와 x+3의 직사각형을 두 조각으로, 오른쪽 x+1과 x+2의 직사각형을 네 조각으로 나누어 같은 차수의 넓이를 비교한다.",
+      "solutionImageCaption": "x(x+3)=x²+3x, (x+1)(x+2)=x²+3x+2이고 두 식을 더하면 2x²+6x+2이다.",
       "score": 5.0,
       "question": "[서답형 2] 다음 식 $x(x+3)+(x+1)(x+2)$을 전개하시오. (답과 풀이 과정을 쓰시오. 부분점수 있음) [5.0점]",
       "choices": [],
@@ -285,6 +321,10 @@ window.examData = {
     },
     {
       "id": 22,
+      "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q22-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "큰 정사각형에서 안쪽 작은 정사각형을 뺀 나머지를 파란 긴 조각과 주황 작은 조각으로 표시했다. 두 조각을 오른쪽에서 한 줄로 이었다.",
+      "solutionImageCaption": "제곱의 차 공식으로 (4.5−3.5)(4.5+3.5)=1×8=8이다.",
       "score": 4.0,
       "question": "[서답형 3] $(4.5)^2-(3.5)^2$ 을 인수분해 공식을 이용하여 구하시오. (답과 풀이 과정을 쓰시오. 부분점수 있음) [4.0점]",
       "choices": [],

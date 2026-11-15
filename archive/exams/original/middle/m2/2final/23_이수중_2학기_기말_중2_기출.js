@@ -30,7 +30,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "피타고라스로 직각변 구하기",
+    "decisiveStep": "주어진 빗변과 직각변의 제곱 차를 구한다."
   },
   {
     "id": 2,
@@ -61,7 +70,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "피타고라스로 빗변 구하기",
+    "decisiveStep": "두 직각변의 제곱합으로 빗변을 구한다."
   },
   {
     "id": 3,
@@ -92,7 +110,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "피타고라스의 세 정사각형 넓이 관계",
+    "decisiveStep": "주어진 넓이를 변의 제곱으로 읽어 나머지 정사각형 넓이를 뺀다."
   },
   {
     "id": 4,
@@ -127,7 +154,20 @@ window.questionBank = [
     "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형에서 D가 D′에 포개질 때 AD=AD′와 PD=PD′를 다른 색으로 표시한다.",
     "solutionImageCaption": "AD=AD′=10cm이므로 직각삼각형 ABD′에서 BD′=6cm이다. 답: ① 4cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [
+      "CC_GEOMETRIC_FOLDING"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+    "primaryMethod": "접기의 같은 길이와 피타고라스",
+    "decisiveStep": "접힌 점까지의 같은 거리를 빗변으로 잡고 직각변을 구하여 남은 선분을 뺀다."
   },
   {
     "id": 5,
@@ -155,7 +195,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "피타고라스의 역으로 직각 판정",
+    "decisiveStep": "가장 큰 변의 제곱과 나머지 두 제곱의 합을 비교한다."
   },
   {
     "id": 6,
@@ -190,7 +239,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 세 변을 지름으로 하는 반원과 두 초승달 영역을 표시한다.",
     "solutionImageCaption": "두 작은 반원의 넓이 합이 큰 반원의 넓이와 같으므로 두 초승달의 넓이 합은 삼각형 ABC의 넓이와 같다. 답: ③ 120cm²",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "반원 제곱넓이와 공통부분 소거",
+    "decisiveStep": "피타고라스의 반원 넓이 관계에서 겹친 부분을 빼 두 초승달을 삼각형 넓이로 옮긴다."
   },
   {
     "id": 7,
@@ -221,7 +279,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "직각삼각형의 제곱 관계 식 채우기",
+    "decisiveStep": "그림에서 두 직각변 문자를 읽어 해당 빗변 제곱의 합 표현을 빈칸에 넣는다."
   },
   {
     "id": 8,
@@ -252,7 +319,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 직각변 반원 넓이의 합",
+    "decisiveStep": "두 반원 합을 빗변 지름의 반원 하나의 넓이로 옮긴다."
   },
   {
     "id": 9,
@@ -280,7 +356,23 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE",
+      "COND_DIVISIBILITY"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+    "primaryMethod": "약수 조건을 만족하는 카드의 직접 열거",
+    "decisiveStep": "유한 범위에서20의 양의 약수를 나열하여 원소 수를 센다."
   },
   {
     "id": 10,
@@ -308,7 +400,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "서로 다른 두 종류에서 한 개 선택",
+    "decisiveStep": "연필 선택3개와 볼펜 선택4개를 배타적 두 경우로 더한다."
   },
   {
     "id": 11,
@@ -336,7 +437,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "경유하는 두 구간의 단계별 선택",
+    "decisiveStep": "첫 구간5개와 다음 구간4개 선택을 곱한다."
   },
   {
     "id": 12,
@@ -364,7 +474,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "일부 사람을 골라 순서대로 배열",
+    "decisiveStep": "세 자리에 남은 사람 수를 차례로 곱한다."
   },
   {
     "id": 13,
@@ -389,10 +508,22 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 서로 다른 두 숫자를 골라 십의 자리와 일의 자리에 배치한다.\n십의 자리는 $3$가지이고, 그 숫자를 사용한 뒤 일의 자리는 $2$가지이다.\n따라서 만들 수 있는 두 자리 정수는 $3\\times2=6$개이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M2-08-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 성질",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_DISTINCT_DIGITS",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "서로 다른 두 숫자의 자릿수 배열",
+    "decisiveStep": "동시에 뽑아도 십의 자리와 일의 자리의 순서를 구별한다."
   },
   {
     "id": 14,
@@ -420,10 +551,19 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] $7$개 점에서 $3$개를 고른 뒤, 한 직선 위의 세 점을 고른 경우를 제외한다.\n$7$개 중 $3$개를 고르는 경우는 $\\dfrac{7\\times6\\times5}{3\\times2\\times1}=35$가지이다.\n지름 위의 $D,E,F,G$ 중 $3$개를 고르면 삼각형이 되지 않으며, 그런 경우는 $\\dfrac{4\\times3\\times2}{3\\times2\\times1}=4$가지이다.\n따라서 삼각형의 수는 $35-4=31$개이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_이수중_2학기_기말_중2_기출/q14.png",
-    "subUnitKey": "M2-08-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 성질",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "삼각형이 되지 않는 공선 선택 제외",
+    "decisiveStep": "전체7개 점의3개 선택에서 지름 위4개 중3개인 경우를 뺀다."
   },
   {
     "id": 15,
@@ -451,7 +591,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "세 동전 결과의 등가능 확률",
+    "decisiveStep": "전체8개 결과와 뒷면 위치3개를 직접 비교한다."
   },
   {
     "id": 16,
@@ -479,7 +628,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "전체 인원에서 남자 비율",
+    "decisiveStep": "남자 수를 전체 인원으로 나눈다."
   },
   {
     "id": 17,
@@ -507,7 +665,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "여사건의 확률",
+    "decisiveStep": "주어진 사건 확률을1에서 뺀다."
   },
   {
     "id": 18,
@@ -535,7 +702,18 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 독립 시행의 수 조건 확률",
+    "decisiveStep": "첫 눈의 배수와 둘째 눈의 약수를 각각 센 뒤 확률을 곱한다."
   },
   {
     "id": 19,
@@ -563,10 +741,19 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 표에서 전체 책의 수와 세계사·고전문학 책의 수를 각각 합한다.\n전체 책은 $25+15+30+10=80$권이다.\n세계사 또는 고전문학은 $15+30=45$권이므로 확률은 $\\dfrac{45}{80}=\\dfrac9{16}$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_이수중_2학기_기말_중2_기출/q19.png",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "책 종류의 배타적 합사건",
+    "decisiveStep": "표에서 전체 책의 수와 원하는 두 분류의 수를 각각 합하여 비를 구한다."
   },
   {
     "id": 20,
@@ -594,7 +781,18 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [
+      "CC_INDEPENDENT_EVENTS_MULTIPLICATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "적어도 한 명 명중의 여사건",
+    "decisiveStep": "두 사람이 모두 실패할 확률을 곱하여 전체에서 뺀다."
   },
   {
     "id": 21,
@@ -624,7 +822,20 @@ window.questionBank = [
     "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형을 축 l 주위로 회전시켜 만든 원뿔의 높이 15cm, 반지름 8cm와 모선 17cm를 나타낸다.",
     "solutionImageCaption": "회전축을 따라 높이 h=15cm이고 원뿔의 반지름은 8cm이다. 답: 320πcm³",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [
+      "CC_CONE_VOLUME"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+    "primaryMethod": "피타고라스로 원뿔의 미지 높이를 산출",
+    "decisiveStep": "직각삼각형의 한 변을 회전 높이로 해석해 피타고라스로 구한 뒤 원뿔 부피 공식에 전달한다."
   },
   {
     "id": 22,
@@ -650,7 +861,18 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [
+      "CC_PARITY_ANALYSIS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "첫 완료 시점이 세 번째인 반복 확률",
+    "decisiveStep": "한 시행의 홀짝 확률을 구한 뒤 AAB와BBA만 남겨 각 순서의 확률을 더한다."
   },
   {
     "id": 23,
@@ -671,10 +893,21 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac7{10}$",
     "solution": "[키포인트] 전체 두 명을 뽑는 경우에서 남학생만 두 명 뽑는 경우를 제외한다.\n전체 경우의 수는 $\\dfrac{5\\times4}{2}=10$이다.\n남학생만 두 명 뽑는 경우의 수는 $\\dfrac{3\\times2}{2}=3$이므로 적어도 한 명이 여학생인 경우는 $10-3=7$가지이다.\n따라서 확률은 $\\dfrac7{10}$이다.\n따라서 구하는 값은 $\\dfrac7{10}$이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "crossConceptKeys": [
+      "CC_COMBINATION_SELECTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "동시 두 명 선택에서 여사건 제외",
+    "decisiveStep": "전체 두 명 조합에서 남자 두 명만 고르는 경우를 뺀다."
   },
   {
     "id": 24,
@@ -700,6 +933,17 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [
+      "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "수직선 이동을 횟수 연립으로 변환",
+    "decisiveStep": "전체 시행 수와 순변위를 연립하여 앞뒤 횟수를 정한 뒤 그 순서 수를 센다."
   }
 ];

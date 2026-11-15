@@ -897,7 +897,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 ### 3-40. 서로 다른 곡선 2~6개를 한 그림에: `multi-curve-figure-v1`
 
-한 문항의 그림이 **서로 다른 곡선 2~6개**(이차곡선, 직선, 유리함수, 무리함수, 역함수 쌍)로 이루어지거나 둘러싸일 때 쓴다. 한 곡선의 조각(가지)에는 `piecewise-*`를 쓴다. 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선과 26 삼산중 1학기 기말 중3 Q9의 위아래 포물선 쌍이 이 기능을 쓴다.
+한 문항의 그림이 **서로 다른 곡선 2~6개**(이차곡선, 직선, 유리함수, 무리함수, 지수함수, 역함수 쌍)로 이루어지거나 둘러싸일 때 쓴다. 한 곡선의 조각(가지)에는 `piecewise-*`를 쓴다. 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선과 26 삼산중 1학기 기말 중3 Q9의 위아래 포물선 쌍이 이 기능을 쓴다.
 
 ```json
 {"capability":"multi-curve-figure-v1","graphPlan":{"family":"multi-curve","curves":[
@@ -932,6 +932,9 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 - `LINE`: `coefficients:[c0,c1]` = `y=c0+c1*x`. `RATIONAL`: `numerator:[a0,a1]`, `denominator:[d0,d1]` = `y=(a0+a1*x)/(d0+d1*x)`(분모의 x 계수는 0이 아니고, 분자가 극점에서 0인 구멍은 `MULTI_CURVE_RATIONAL_DEGENERATE`). 극점이 `domain` 안에 있으면 두 쪽이 각각 가지(`CURVE_<id>_L`/`_R`)로 그려지고, 축 위가 아닌 점근선마다 점선 한 줄과 `x=p`·`y=q` 글자가 나온다. `SQRT`: `radicand:[c0,c1]`, `amplitude`(기본 1, 음수 가능), `offset`(기본 0) = `y=offset+amplitude*sqrt(c0+c1*x)`. 시작점에 검은 점과 좌표가 나온다.
 - **분자가 이차인 유리곡선 `numerator:[a0,a1,a2]`(2026-11-12)** = `y=(a2*x^2+a1*x+a0)/(d0+d1*x)`. 문제의 함수가 `x+16/(x+2)`처럼 일차식+반비례꼴일 때 쓴다(`numerator:["16","2","1"]`, `denominator:["2","1"]`). 세로 점근선 `x=p`는 일차 분자와 같이 점선과 글자로 나오지만 **수평 점근선은 없다**. 비스듬한 점근선 `y=qx+r`(q=a2/d1)은 엔진이 그리지 않으니 같은 그림에 `LINE` 곡선 `{"kind":"LINE","coefficients":[r,q],"style":"DASHED","label":"y=x"}`로 직접 그린다(곡선이 하나뿐이어도 이 선이 둘째 곡선이다). `a2`가 0이면 `MULTI_CURVE_COEFFICIENT_INVALID:<id>`(일차 분자로 쓴다), 분자가 극점에서 0인 구멍은 `MULTI_CURVE_RATIONAL_DEGENERATE:<id>`, `abs:true`는 `MULTI_CURVE_COEFFICIENT_INVALID:<id>`, `inverseOf`의 원본으로는 `MULTI_CURVE_INVERSE_UNSUPPORTED`이다. `x>-2`처럼 극점이 정의역 끝이면 `domain:["-2","9"]`, `domainStates:["OPEN","NONE"]`로 쓴다. 가장 낮은 점은 `overlays.points`의 `{"id":"M","x":"2","y":"6","unnamed":true}`로 표시하고 좌표(답)는 쓰지 않는다. **교육과정 밖 그래프이니 문제 자체가 그 함수일 때만 쓰고 풀이에 없는 치환·우회 그래프로 쓰지 않는다.** 예: 순천고 2학기 중간 q05(골든 `item156obliquerationalq05`).
+
+- `EXPONENTIAL`에는 정수 밑 문자열 `base` (`"2"`부터 `"1000"`까지), 유리수 계수 `[A,k,C]`, 선택 수평 이동 `shiftX`, 그리고 표시 구간 `domain`을 준다. `y=A·base^{k(x-shiftX)}+C`에서 (A)와 (k)는 0이 아니어야 한다. `viewport`도 명시하며 역함수나 절댓값 옵션은 적용하지 않는다.
+- 같은 밑과 율의 두 지수함수 사이 영역에는 `regions:[{id:"band",between:["f","g"],from:"4",to:"7",integerColumns:true}]`처럼 정수 열을 요청할 수 있다. 끝 열은 실선으로, 안쪽 열은 점선으로 나눈다. 각 열의 정수점 개수만 표시한다. 개별 점이나 합계는 그리지 않는다. 2~8개의 열을 지원하며 각 열에서 두 지수의 지수부가 정수여야 한다.
 
 - 유리함수의 극점이 정의역 끝점이면 그 끝점은 반드시 열린 끝점(배열형 `domain`의 `domainStates` 또는 객체형 `domain`의 `fromState`·`toState`에서 해당 끝을 `OPEN`으로 지정)이어야 한다. 이때 해당 쪽의 한 가지(from이면 CURVE_<id>_R, to이면 CURVE_<id>_L)만 그리고, 극점에는 유한한 끝점 표시를 그리지 않는다. 닫힌 극점 끝점은 거부하며, 정의역 내부 극점은 기존처럼 LEFT/RIGHT 두 가지로 나눈다.
 - 이런 곡선은 모양만으로 틀이 정해지지 않으므로 **창** `graphPlan.viewport:[xmin,xmax,ymin,ymax]`를 준다(틀은 이 창에 여백을 둘러 만들고, 곡선은 틀 위·아래에서 잘린다). `domain`을 생략하면 창의 x 범위(`SQRT`는 근호가 0인 점에서 창 끝까지)를 쓴다. 창이 없으면 `MULTI_CURVE_WINDOW_REQUIRED:<id>`.
