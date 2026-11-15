@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E114",
+  "author": "meta_b",
+  "reviewer": "meta_a_resume_d03144c8ca75",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "D03144C8CA75/A",
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE",
+  "sourceBaseBlob": "42f7cc9081011db27497469d4fa4329722951c13",
+  "inputHashes": {
+    "reviewSha256": "38eae49c84b061f979ed928645fe026bbde32c9796336df24204e11a11bf4390",
+    "fourSlotSha256": "ea8abe6f6425d72120cf887bcc89e8a09329c515e81d8cff21bc05b3eba98555"
+  },
+  "sampledOrdinals": [
+    9,
+    22,
+    24
+  ],
+  "basis": "실제 본문·보기·기존 해설과 표본 4칸의 의미 및 필요한 PNG를 독립 관측하고 수정 요청 후 새 파일을 다시 읽어 결속했다. 전수 수학 검증 및 공용 등록을 수행하지 않았다.",
+  "findings": [
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_6b891145554b36209ddf355e9eeaa2e63a4be85ab177d500dfae705a8831e2c8",
+      "status": "ACCEPTED_WITH_EXPLICIT_DEBT",
+      "note": "수직선 그림에서 양의 제곱근 순서를 실제 관측했다. 열린 구간을 피제곱수 정수 범위로 바꿔 개수를 구한다. 기존 해설은 (n+1)²의 전개 후 차를 계산하므로 합차공식 대신 전개·차·개수로 바꾸고 CC_INTEGER_COUNT를 쓰도록 한 수정이 실제 경로에 맞는다. RPM005 parent 및 새 개수 leaf 제안, 상/bucket3 B34 경계 수용."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_0ec8bbd6789ac6ac833b45c59147a653ff1379e25c538904a9cf63e798460e0f",
+      "status": "ACCEPTED_WITH_EXPLICIT_DEBT",
+      "note": "그림에 두 원의 지름이 한 직선 AB에 놓이고 외원과 내원의 경계가 음영 둘레를 구성함을 확인했다. 지름 차에서 반지름 차, 원주 합에서 반지름 합, 넓이 제곱차를 구하는 경로 및 RPM027 parent/도형 제안·bucket3를 수용한다. 원넓이공식 후보는 등록 대기로 보존한다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_9425f0be18b9344885df2d9d0ae51785623b0ae61dbde0c166aefe2852701081",
+      "status": "ACCEPTED",
+      "note": "그림의 AB=b,BC=a,D가 AC중점이며0<a<b에서 D는 AB내부임을 확인했다. 두 선분을 (a+b)/2,(b−a)/2로 표현하고 두 제곱식을 전개하는 주해설이 RPM020과 일치한다. 별해의 합차공식도 실제 존재하며 4칸 길이·차 목표, 부등식 조건, bucket3 경계를 수용한다."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/d03144c8ca75/workers/B/assets/E114/q09.png",
+      "sha256": "a195c5102bb891a36029c509f9370cd31b79cb63e1e62d78135df8705af8a1d7",
+      "status": "VISUALLY_INSPECTED"
+    },
+    {
+      "path": "/workspace/scratch/d03144c8ca75/workers/B/assets/E114/q22.png",
+      "sha256": "1bc90563b3c6e97bee941774dddf2ad72844e9b0e2dac4da850b84b35afbca8d",
+      "status": "VISUALLY_INSPECTED"
+    },
+    {
+      "path": "/workspace/scratch/d03144c8ca75/workers/B/assets/E114/q24.png",
+      "sha256": "7aaedf776087c8637b62c016a8a44076f7eccc3cc3ae24c1d6a47e233f4e9bf9",
+      "status": "VISUALLY_INSPECTED"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "ownershipStatus": "UNCONFIRMED_LOCAL_ONLY",
+  "nextAction": "ROOT_SOURCE_PROTECTION_VALIDATION_AND_SAFE_INTEGRATION_AFTER_OWNERSHIP_CONFIRMATION"
+}
