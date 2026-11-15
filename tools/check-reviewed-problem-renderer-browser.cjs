@@ -46,12 +46,34 @@ function declaredStudentFonts(css) {
   assert.equal((css.match(/url\(/gi) || []).length, urls.length, 'UI_FONT_URL_SYNTAX');
   for (const value of urls) {
     const url = new URL(value);
-    assert(url.origin === 'https://fonts.gstatic.com' && /^\/s\/nanummyeongjo\/[A-Za-z0-9/_-]+\.(?:woff2?|ttf)$/.test(url.pathname) && !url.search && !url.hash,
+    // The observed Korean subset files add one canonical numeric suffix, 0..119,
+    // before .woff2. Other suffix shapes remain outside this declared family.
+    assert(url.origin === 'https://fonts.gstatic.com' && /^\/s\/nanummyeongjo\/[A-Za-z0-9/_-]+\.(?:woff2?|ttf|(?:[0-9]|[1-9][0-9]|1[01][0-9])\.woff2)$/.test(url.pathname) && !url.search && !url.hash,
       'UI_FONT_URL_OUTSIDE_DECLARED_FAMILY');
   }
   assert(/font-family:\s*['"]Nanum Myeongjo['"]/i.test(css), 'UI_FONT_FAMILY_REQUIRED');
   for (const weight of [400, 700, 800]) assert(new RegExp(`font-weight:\\s*${weight}\\s*;`).test(css), 'UI_FONT_WEIGHT_REQUIRED');
   return new Set(urls);
+}
+
+function fontFailureDiagnostic(observation, error) {
+  const message = typeof error?.message === 'string' ? error.message : '';
+  const code = message.split('\n')[0];
+  const knownCodes = ['UI_FONT_HTTP_STATUS', 'UI_FONT_REDIRECT', 'UI_FONT_MIME', 'UI_FONT_BODY_SIZE',
+    'UI_NESTED_FONT_IMPORT', 'UI_FONT_URLS_REQUIRED', 'UI_FONT_URL_SYNTAX', 'UI_FONT_URL_OUTSIDE_DECLARED_FAMILY',
+    'UI_FONT_FAMILY_REQUIRED', 'UI_FONT_WEIGHT_REQUIRED'];
+  return { code: 'UI_STUDENT_FONT_FAILED',
+    kind: ['STYLESHEET', 'FONT'].includes(observation.kind) ? observation.kind : 'UNKNOWN',
+    urlSha256: SHA256.test(observation.urlSha256 || '') ? observation.urlSha256 : null,
+    stage: ['FETCH', 'HTTP_STATUS', 'RESPONSE_URL', 'MIME', 'BODY_READ', 'BODY_SIZE', 'CSS_DECLARATIONS'].includes(observation.stage)
+      ? observation.stage : 'UNKNOWN',
+    httpStatus: Number.isInteger(observation.httpStatus) && observation.httpStatus >= 100 && observation.httpStatus <= 599 ? observation.httpStatus : null,
+    responseUrlSha256: SHA256.test(observation.responseUrlSha256 || '') ? observation.responseUrlSha256 : null,
+    mime: typeof observation.mime === 'string' && observation.mime.length <= 128 && /^[a-z0-9!#$&^_.+-]+\/[a-z0-9!#$&^_.+-]+$/.test(observation.mime) ? observation.mime : null,
+    bytes: Number.isSafeInteger(observation.bytes) && observation.bytes >= 0 ? observation.bytes : null,
+    responseSha256: SHA256.test(observation.responseSha256 || '') ? observation.responseSha256 : null,
+    errorName: ['AssertionError', 'Error', 'TimeoutError', 'TypeError', 'SyntaxError'].includes(error?.name) ? error.name : 'OtherError',
+    errorCode: knownCodes.includes(code) ? code : 'UNCLASSIFIED_ERROR', errorMessageSha256: sha256(message) };
 }
 
 function validateManifest(manifest) {
@@ -225,14 +247,21 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           if (url.origin === origin) return route.continue();
           const stylesheet = isStudentFontStylesheet(url.href);
           if (stylesheet || declaredFonts.has(url.href)) {
+            const fontObservation = { kind: stylesheet ? 'STYLESHEET' : 'FONT', urlSha256: sha256(url.href), stage: 'FETCH' };
             try {
               const response = await route.fetch({ timeout: 15000, maxRedirects: 0 });
-              assert.equal(response.status(), 200, 'UI_FONT_HTTP_STATUS');
-              assert.equal(response.url(), url.href, 'UI_FONT_REDIRECT');
               const contentType = response.headers()['content-type'] || '', mediaType = contentType.split(';')[0].trim().toLowerCase();
+              Object.assign(fontObservation, { httpStatus: response.status(), responseUrlSha256: sha256(response.url()), mime: mediaType, stage: 'HTTP_STATUS' });
+              assert.equal(response.status(), 200, 'UI_FONT_HTTP_STATUS');
+              fontObservation.stage = 'RESPONSE_URL';
+              assert.equal(response.url(), url.href, 'UI_FONT_REDIRECT');
+              fontObservation.stage = 'MIME';
               assert(stylesheet ? mediaType === 'text/css' : ['font/woff2', 'font/woff', 'font/ttf', 'application/font-woff', 'application/x-font-ttf'].includes(mediaType), 'UI_FONT_MIME');
+              fontObservation.stage = 'BODY_READ';
               const bytes = await response.body();
+              Object.assign(fontObservation, { bytes: bytes.length, responseSha256: sha256(bytes), stage: 'BODY_SIZE' });
               assert(bytes.length > 0 && bytes.length <= 2 * 1024 * 1024, 'UI_FONT_BODY_SIZE');
+              fontObservation.stage = 'CSS_DECLARATIONS';
               if (stylesheet) for (const file of declaredStudentFonts(bytes.toString('utf8'))) declaredFonts.add(file);
               const urlSha256 = sha256(url.href), responseSha256 = sha256(bytes);
               const resourceId = sha256(stable({ urlSha256, responseSha256, mime: contentType }));
@@ -240,8 +269,8 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
                 status: response.status(), mime: contentType, sha256: responseSha256, bytes: bytes.length });
               fontResources.add(resourceId);
               return route.fulfill({ response });
-            } catch {
-              failures.push({ code: 'UI_STUDENT_FONT_FAILED', urlSha256: sha256(url.href) });
+            } catch (error) {
+              failures.push(fontFailureDiagnostic(fontObservation, error));
               return route.abort('failed');
             }
           }
@@ -365,7 +394,7 @@ async function main() {
 }
 
 module.exports = { MANIFEST_PATH, CHECKER_PATH, TEST_PATH, WORKFLOW_PATH, IDENTITY_PATH, SCHEMA, stable, sha256, gitBlob, validateManifest, planRequired, createGitReader, preflight,
-  isStudentFontStylesheet, declaredStudentFonts };
+  isStudentFontStylesheet, declaredStudentFonts, fontFailureDiagnostic };
 if (require.main === module) main().catch(error => {
   const args = process.argv.slice(2), index = args.indexOf('--output');
   if (!args.includes('--plan') && index >= 0 && args[index + 1]) {

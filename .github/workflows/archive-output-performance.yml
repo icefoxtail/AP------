@@ -315,7 +315,7 @@ jobs:
           persist-credentials: false
       - name: Fetch the original regression suite baseline
         env:
-          ARCHIVE_SOLUTION_BASE_SHA: '9efb9633b19b966b0611a10bc352172f217c2dcd'
+          ARCHIVE_SOLUTION_BASE_SHA: '13636f8799b1ff7de4c5f61f5f8d7f4e4b0e84eb'
         run: git fetch --no-tags --depth=1 origin "$ARCHIVE_SOLUTION_BASE_SHA"
       - uses: actions/setup-node@v4
         with:
@@ -341,7 +341,7 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
-          ARCHIVE_SOLUTION_BASE_SHA: '9efb9633b19b966b0611a10bc352172f217c2dcd'
+          ARCHIVE_SOLUTION_BASE_SHA: '13636f8799b1ff7de4c5f61f5f8d7f4e4b0e84eb'
           ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
           ARCHIVE_SOLUTION_REPEATS: '2'
         run: node tests/archive2-solution-loading-browser.cjs

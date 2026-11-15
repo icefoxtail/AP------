@@ -3,14 +3,15 @@
   "performanceBase": "8a6a71af2317060dacd877a7a7af86d347dc06e6",
   "performanceReference": "b9d77f8a32e245f29c672de100178bb1ebf4c617",
   "originalBase": "f446e62a29f90d6d30a76b295e5c226f5ead72d2",
-  "originalReference": "9efb9633b19b966b0611a10bc352172f217c2dcd",
+  "originalReference": "13636f8799b1ff7de4c5f61f5f8d7f4e4b0e84eb",
   "corrections": [
     "Shared reminder-image width constraint moved unchanged from original engine",
     "Existing 15s solution-image budget also used for cold exam-image preparation",
     "Inline-width source diagrams constrained in solution reminders (15a6dd95fd)",
     "AP Table Engine v1 table normalisation (4a0be8de31, 9628eff584, 7fffacdb01, 99cdecf175)",
     "<p> rendered as a line block without default margins (ed48384c2d)",
-    "Solution SVG display rule (2026-11-11 user decision): an .svg solution figure is shown at naturalWidth x 0.6 (1:1 below 384px wide), capped at the column, regardless of its size class; raster keeps the class caps. Changes solution block heights and therefore solution page counts on purpose (branches review-reference/output-20261111-solution-svg-size-performance and -original)"
+    "Solution SVG display rule (2026-11-11 user decision): an .svg solution figure is shown at naturalWidth x 0.6 (1:1 below 384px wide), capped at the column, regardless of its size class; raster keeps the class caps. Changes solution block heights and therefore solution page counts on purpose (branches review-reference/output-20261111-solution-svg-size-performance and -original)",
+    "Existing Nanum Myeongjo stylesheet import precedes the ordinary snapshot CSS rule. This fixes the ignored font import and changes original-renderer typography intentionally; the prior reference receives only the same adjacent-line order correction, with all performance code and source data preserved."
   ],
   "qualificationSourceRevision": "0367c4b985da40f6d76eac3442e6b38906c58863",
   "sourceDataChanged": false,
@@ -25,6 +26,14 @@
       "sha": "4a262850e4574f9e006ba0bd69a5f2aa31b84019",
       "replaced": "2026-11-10",
       "reason": "Correctness changes merged after 2026-11-06 changed table block geometry (continuation-golden: 214px -> 211px), so every engine PR failed output parity."
+    }
+  ],
+  "previousOriginalReferences": [
+    {
+      "sha": "9efb9633b19b966b0611a10bc352172f217c2dcd",
+      "replaced": "2026-11-15",
+      "replacement": "13636f8799b1ff7de4c5f61f5f8d7f4e4b0e84eb",
+      "reason": "Correctness-only font import-order repair; same two existing adjacent CSS lines exchanged in archive/engine.html, no other file changed."
     }
   ]
 }

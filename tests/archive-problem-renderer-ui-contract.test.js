@@ -37,6 +37,20 @@ for (const value of [
 test('font files are restricted to the returned stylesheet declarations and all three weights', () => {
   assert.deepEqual([...checker.declaredStudentFonts(studentCss)], [400, 700, 800].map(weight => `https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_${weight}.woff2`));
 });
+test('declared Korean font subsets accept the observed canonical numeric suffix range', () => {
+  for (const suffix of [0, 9, 10, 65, 94, 99, 100, 119]) {
+    const css = studentCss.replaceAll('.woff2', `.${suffix}.woff2`);
+    assert.deepEqual([...checker.declaredStudentFonts(css)], [400, 700, 800].map(weight =>
+      `https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_${weight}.${suffix}.woff2`));
+  }
+});
+for (const suffix of ['120.woff2', '999.woff2', '00.woff2', '01.woff2', '-1.woff2', '+1.woff2',
+  '1e2.woff2', 'subset.woff2', '1.2.woff2', '119.woff', '119.ttf', '119.woff2?other=1', '119.woff2#other']) {
+  test(`font CSS refuses undeclared subset shape ${suffix}`, () => {
+    assert.throws(() => checker.declaredStudentFonts(studentCss.replaceAll('.woff2', `.${suffix}`)),
+      /UI_FONT_URL_OUTSIDE_DECLARED_FAMILY/);
+  });
+}
 for (const [name, css] of [
   ['nested stylesheet', `@import 'https://example.test/font.css';\n${studentCss}`],
   ['another family directory', studentCss.replace('/s/nanummyeongjo/', '/s/other/')],
@@ -44,6 +58,48 @@ for (const [name, css] of [
   ['missing required weight', studentCss.replace('font-weight: 800;', 'font-weight: 900;')],
   ['malformed escaped URL', studentCss.replace('https://fonts.gstatic.com', 'https://fonts.gstatic.com\\escape')]
 ]) test(`font CSS refuses ${name}`, () => assert.throws(() => checker.declaredStudentFonts(css)));
+
+test('font failure diagnostics distinguish parsed CSS refusal from request failure without raw response content', () => {
+  const observation = { kind: 'STYLESHEET', urlSha256: 'a'.repeat(64), stage: 'CSS_DECLARATIONS', httpStatus: 200,
+    responseUrlSha256: 'a'.repeat(64), mime: 'text/css', bytes: 173575, responseSha256: 'b'.repeat(64), rawBody: 'DO_NOT_EXPORT_BODY' };
+  let parserError;
+  try { checker.declaredStudentFonts(studentCss.replace('/s/nanummyeongjo/', '/s/other/')); } catch (error) { parserError = error; }
+  const diagnostic = checker.fontFailureDiagnostic(observation, parserError);
+  assert.equal(diagnostic.stage, 'CSS_DECLARATIONS'); assert.equal(diagnostic.httpStatus, 200);
+  assert.equal(diagnostic.mime, 'text/css'); assert.equal(diagnostic.bytes, 173575);
+  assert.equal(diagnostic.errorCode, 'UI_FONT_URL_OUTSIDE_DECLARED_FAMILY');
+  assert.equal(diagnostic.errorName, 'AssertionError');
+  assert.deepEqual(Object.keys(diagnostic).sort(), ['code', 'kind', 'urlSha256', 'stage', 'httpStatus',
+    'responseUrlSha256', 'mime', 'bytes', 'responseSha256', 'errorName', 'errorCode', 'errorMessageSha256'].sort());
+  assert(!JSON.stringify(diagnostic).includes('DO_NOT_EXPORT'));
+});
+
+test('font request diagnostics keep only bounded metadata and hash an unclassified message', () => {
+  const message = 'Request failed: https://example.test/DO_NOT_EXPORT_URL';
+  const error = new Error(message); error.name = 'DO_NOT_EXPORT_ERROR';
+  const diagnostic = checker.fontFailureDiagnostic({ kind: 'STYLESHEET', stage: 'FETCH', urlSha256: 'a'.repeat(64) }, error);
+  assert.equal(diagnostic.stage, 'FETCH'); assert.equal(diagnostic.httpStatus, null);
+  assert.equal(diagnostic.bytes, null); assert.equal(diagnostic.responseSha256, null);
+  assert.equal(diagnostic.errorName, 'OtherError'); assert.equal(diagnostic.errorCode, 'UNCLASSIFIED_ERROR');
+  assert.equal(diagnostic.errorMessageSha256, checker.sha256(message));
+  assert(!JSON.stringify(diagnostic).includes('DO_NOT_EXPORT'));
+  const malformed = checker.fontFailureDiagnostic({ kind: message, stage: message, urlSha256: message,
+    responseUrlSha256: message, mime: message, responseSha256: message, bytes: -1, httpStatus: 1000 }, error);
+  assert.equal(malformed.kind, 'UNKNOWN'); assert.equal(malformed.stage, 'UNKNOWN');
+  for (const key of ['urlSha256', 'responseUrlSha256', 'mime', 'responseSha256', 'bytes', 'httpStatus']) assert.equal(malformed[key], null);
+  assert(!JSON.stringify(malformed).includes('DO_NOT_EXPORT'));
+});
+
+test('font HTTP assertion diagnostics preserve the fixed code while excluding compared values', () => {
+  let httpError;
+  try { assert.equal(503, 200, 'UI_FONT_HTTP_STATUS'); } catch (error) { httpError = error; }
+  const diagnostic = checker.fontFailureDiagnostic({ kind: 'FONT', stage: 'HTTP_STATUS', httpStatus: 503,
+    urlSha256: 'a'.repeat(64), responseUrlSha256: 'a'.repeat(64), mime: 'text/html' }, httpError);
+  assert.equal(diagnostic.errorCode, 'UI_FONT_HTTP_STATUS'); assert.equal(diagnostic.httpStatus, 503);
+  assert.equal(diagnostic.mime, 'text/html'); assert.equal(diagnostic.bytes, null);
+  assert.equal(diagnostic.errorMessageSha256, checker.sha256(httpError.message));
+  assert(!JSON.stringify(diagnostic).includes('503 !== 200'));
+});
 
 function fixture() {
   const manifest = copy(sourceManifest), files = new Map(), banks = new Map(), identities = [];

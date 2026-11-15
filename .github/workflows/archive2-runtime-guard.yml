@@ -206,9 +206,9 @@ jobs:
       - name: Compare 50 real solutions and verify asset failures in actual Chrome
         if: steps.scope.outputs.solution_browser == 'true'
         timeout-minutes: 8
-        # The test's checked-in reference applies only the shared image-fit fix
-        # to the old engine. Never accept the old overflow as output parity,
-        # and never widen the existing one-pixel geometry tolerance.
+        # The correctness-only reference applies the shared image-fit and font
+        # import-order repairs to the old engine. Preserve all output checks
+        # and the existing one-pixel geometry tolerance.
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
