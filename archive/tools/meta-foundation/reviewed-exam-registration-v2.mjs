@@ -11,6 +11,8 @@ import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 import { computeLegacyCompat, registerDifficulty5 } from "./register-difficulty5.mjs";
 import { AUDIT_PRESERVATION_SCHEMA, isAuditPreservation, loadAuditPreservation, planPreservedAuditRecord, assertAuditPreservationReceipt, assertPreservedAuditRepair, readPreservedAuditEvidence, preservedAuditConsumerParent } from "./native-audit-preservation.mjs";
 import { validateReviewedSourceReassessment } from "./reviewed-source-reassessment.mjs";
+import { REVIEWED_SOURCE_FIELDS, REVIEWED_META_VALUE_FIELDS } from "./reviewed-meta-value-fields.mjs";
+import { reviewedRendererBindingPath, buildReviewedRendererBinding } from "./reviewed-current-renderer-continuity.mjs";
 import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 
@@ -102,12 +104,8 @@ const isTypeHoldRecord = r => r.metadataApprovalType === "REVIEW2" && r.metaFoun
 const approved = row => row.reviewStatus === "reviewed_pass" || String(row.metadataStatus || "").startsWith("approved_");
 const fail = message => { throw new Error(message); };
 const requireText = (value, name) => typeof value === "string" && value.trim() ? value : fail(`${name} required`);
-const sourceFields = ["standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "level", "L3", "L4",
-  "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"];
-const valueFields = new Set([...sourceFields, "sourceFingerprint", "contentFingerprint", "curriculum", "curriculumKey", "courseKey", "L1", "L2", "L3", "L4",
-  "rpmL1", "rpmL2", "rpmL3", "rpmL4", "rpmPrimaryId", "rpmPrimaryPath", "rpmSemanticStatus", "semanticSourceScope", "semanticScopeRelation",
-  "primaryMethod", "decisiveStep", "integrationReason", "conceptClusterKey", "secondaryConceptKeys",
-  "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility", "curriculumApplicability", "defaultSelectable"]);
+const sourceFields = REVIEWED_SOURCE_FIELDS;
+const valueFields = new Set(REVIEWED_META_VALUE_FIELDS);
 const META_PIPELINE_STUDENT_FIELDS = ["id", "questionType", "content", "choices", "answer", "solution", "image", "images", "figureSvg", "solutionImage", "solutionFigureSvg", "layoutTag", "wide"];
 const studentPayloadSha256 = question => digest(stable(Object.fromEntries(META_PIPELINE_STUDENT_FIELDS.map(field =>
   [field, Object.hasOwn(question, field) ? question[field] : null]))));
@@ -2145,6 +2143,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const preservationFields = req.approval.sourceRebind ? { newMetadataApprovals: 0, preservedMetadataApprovals: patches.size } : {};
   const requestSha256 = digest(stable(req));
   const receiptPath = `${RECEIPTS}/${req.requestId}.json`;
+  const rendererPatches = req.items.filter(patch => patch.sourceReview?.rendererProof !== undefined);
+  const rendererBindingPath = rendererPatches.length ? reviewedRendererBindingPath(req.requestId) : null;
   const receiptFull = safePath(root, receiptPath);
   const previous = fs.existsSync(receiptFull) ? read(receiptPath) : null;
   if (previous && previous.requestSha256 !== requestSha256) fail("requestId reused with different content");
@@ -2188,6 +2188,42 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     for (const record of previous.appliedRecords) if (!eq(rows.find(r => r.questionUid === record.questionUid), record)) fail(`registered metadata drift: ${record.questionUid}`);
     for (const record of previous.appliedIdentityRecords || []) if (!eq(ids.get(record.questionUid), record)) fail(`registered identity drift: ${record.questionUid}`);
     const currentPlan = registryPlan(root, [], evidenceRefs), currentTables = lookup(currentPlan);
+    // A renderer can change without changing its referencing JS source. Re-run only
+    // the explicitly opted-in compound proof on replay, including all immutable
+    // review/assets and the original before values; ordinary native receipts keep
+    // their existing replay contract.
+    if (rendererPatches.length) {
+      if (previous.sourceArchiveFile !== source || previous.sourceBlobSha1 !== blob || previous.sourceRawSha256 !== digest(bytes))
+        fail("registered renderer source binding drift");
+      const bound = buildReviewedRendererBinding(previous);
+      if (!eq(bound.records.map(r => r.questionUid).sort(), rendererPatches.map(r => r.questionUid).sort()) ||
+          !fs.existsSync(safePath(root, rendererBindingPath))) fail("registered renderer sidecar inventory missing");
+      const boundBytes = fs.readFileSync(safePath(root, rendererBindingPath));
+      const boundDigests = (previous.outputDigests || []).filter(ref => ref.path === rendererBindingPath);
+      if (boundDigests.length !== 1 || boundDigests[0].sha256 !== digest(boundBytes) || !eq(read(rendererBindingPath), bound))
+        fail("registered renderer sidecar digest/content drift");
+      const rendererCache = new Map();
+      for (const patch of rendererPatches) {
+        const repairs = (previous.fingerprintRepairs || []).filter(repair => repair.questionUid === patch.questionUid &&
+          repair.sourceOrdinal === patch.sourceOrdinal);
+        const record = previous.appliedRecords.find(row => row.questionUid === patch.questionUid), repair = repairs[0];
+        const runtime = previous.runtimeRecords.find(r => r.questionUid === patch.questionUid);
+        if (repairs.length !== 1 || !record || !repair.sourceReview?.rendererContinuity ||
+            !record.approvalEvidence?.includes(rendererBindingPath) || !runtime?.approvalEvidence?.includes(rendererBindingPath) ||
+            !eq(repair.metadataBefore, { sourceFingerprint: patch.before.sourceFingerprint, contentFingerprint: patch.before.contentFingerprint }) ||
+            patch.identityBefore !== undefined && !eq(repair.identityBefore, patch.identityBefore))
+          fail("registered renderer fingerprint proof drift");
+        const before = { ...record, ...patch.before }, identityBefore = { ...ids.get(patch.questionUid), ...repair.identityBefore };
+        const question = JSON.parse(JSON.stringify(bank[patch.sourceOrdinal - 1]));
+        const checked = validateReviewedSourceFingerprints({ question, metadata: before, identity: identityBefore, patch });
+        if (!eq(repair.after, { sourceFingerprint: checked.sourceFingerprint, contentFingerprint: checked.contentFingerprint }) ||
+            record.sourceFingerprint !== checked.sourceFingerprint || ids.get(patch.questionUid)?.sourceFingerprint !== checked.sourceFingerprint)
+          fail("registered renderer computed fingerprint drift");
+        const proof = validateReviewedSourceReassessment({ root, request: req, patch, metadata: before, question, final: record,
+          supportedFields: valueFields, canonicalBefore: currentTables, canonicalAfter: currentTables, cache: rendererCache });
+        if (!eq(proof, repair.sourceReview)) fail("registered renderer source review proof drift");
+      }
+    }
     for (const record of previous.approval?.sourceRebind ? [] : previous.appliedRecords.filter(r => !isTypeHoldRecord(r))) {
       const r = resolve(record, currentTables, { allowConditionDebt: metaPipelineAudit?.conditionDebtUids.includes(record.questionUid) });
       const labels = labelsFor(root, patches.get(record.questionUid), record, r, read, blob, { registeredReplay: true });
@@ -2504,7 +2540,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         ...(sourceCrossCorrection ? [sourceCrossCorrection.ref.path] : []),
         ...(targetedAuditCorrection ? [targetedAuditCorrection.ref.path] : []),
         ...(sopV12Variant ? [req.approval.metaPipelineAudit.correctiveReviewRef.path] : [])]
-      : [receiptPath];
+      : [receiptPath, ...(patch.sourceReview?.rendererProof !== undefined ? [rendererBindingPath] : [])];
     Object.assign(final, { curriculum, curriculumKey: curriculum, standardCourse: course, courseKey: final.courseKey || course,
       reviewStatus: req.approval.type === "META_PIPELINE_AUDIT"
         ? (Object.hasOwn(q, "reviewStatus") ? q.reviewStatus : current.reviewStatus)
@@ -2604,7 +2640,16 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     identity.identityDigest = digest(JSON.stringify(stableIdentity));
     plan.output.set(IDENTITY, JSON.stringify(identity) + "\n");
   }
-  const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (!fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
+  if (rendererBindingPath) {
+    const bound = buildReviewedRendererBinding({ requestId: req.requestId, requestSha256, sourceArchiveFile: source,
+      sourceBlobSha1: blob, sourceRawSha256: digest(bytes), ...scopeFields, fingerprintRepairs });
+    if (!eq(bound.records.map(r => r.questionUid).sort(), rendererPatches.map(r => r.questionUid).sort()))
+      fail("renderer sidecar inventory differs from the explicit request");
+    const text = json(bound), full = safePath(root, rendererBindingPath);
+    if (fs.existsSync(full) && fs.readFileSync(full, "utf8") !== text) fail("renderer sidecar path already contains different evidence");
+    plan.output.set(rendererBindingPath, text);
+  }
+  const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (file === rendererBindingPath || !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
   const receipt = { schemaVersion: "archive-reviewed-exam-meta-registration-v2", requestId: req.requestId, requestSha256,
     examUid: req.examUid, sourceArchiveFile: source, sourceBlobSha1: blob, sourceRawSha256: digest(bytes), approval: req.approval,
     ...(auditPreservation ? { metaPipelineAudit: structuredClone(auditPreservation.prior.metaPipelineAudit),

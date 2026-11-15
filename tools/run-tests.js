@@ -59,6 +59,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-pr-registration-prepare.test.mjs']
   },
   {
+    label: 'tests/archive-pr-native-preview.test.mjs',
+    args: ['--test', 'tests/archive-pr-native-preview.test.mjs']
+  },
+  {
     label: 'tests/archive-main-merge-meta.test.mjs',
     args: ['--test', 'tests/archive-main-merge-meta.test.mjs']
   },

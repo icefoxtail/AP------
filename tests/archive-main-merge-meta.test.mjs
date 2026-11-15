@@ -10,6 +10,9 @@ import {planQuestion,nativeReviewReceipt,activeBindingContext,sourceFingerprint,
 import {validateActiveMetaFields} from '../archive/tools/meta-foundation/active-registry.mjs';
 import {validateReviewedSourceReassessment,REASSESSED_STUDENT_FIELDS} from '../archive/tools/meta-foundation/reviewed-source-reassessment.mjs';
 import {nativeReviewedFigureRebind} from '../archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs';
+import {nativeReviewedRendererRebind} from '../archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs';
+import {REVIEWED_META_VALUE_FIELDS} from '../archive/tools/meta-foundation/reviewed-meta-value-fields.mjs';
+import {reviewedRendererBindingPath,buildReviewedRendererBinding} from '../archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source='original/middle/m3/1mid/fixture.js',uid='qid_v1_'+'a'.repeat(64);
 function fixture() {
@@ -511,7 +514,7 @@ test('pinned DongSan source validates through the official registry and planner'
   assert.equal(r.status,'APPLY',JSON.stringify(r));assert.equal(r.final.problemTypeKey,'PT_M3_SQUARE_ROOT_PROPERTY');assert.equal(r.final.templateKey,'TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT');
 });
 
-function reviewedFigureNativeFixture(t,{form='image',mutateCurrent,mutatePending,mutateIndependent,mutateRenderer,nestedDependency=false,genericReview=false}={}) {
+function reviewedFigureNativeFixture(t,{form='image',mutateCurrent,mutatePending,mutateIndependent,mutateRenderer,mutateNative,nestedDependency=false,genericReview=false}={}) {
   const f=partialNativeReviewFixture(t),dir=f.nativeSource.root;
   const sha=v=>crypto.createHash('sha256').update(v).digest('hex');
   const blob=v=>crypto.createHash('sha1').update(`blob ${v.length}\0`).update(v).digest('hex');
@@ -533,7 +536,7 @@ function reviewedFigureNativeFixture(t,{form='image',mutateCurrent,mutatePending
   const originalRows=f.allRecords.map(r=>({ordinal:r.sourceOrdinal,questionUid:r.questionUid,decision:'KEEP',after:r.questionUid===uid?semantic:{},decisiveStep:'reviewed original decision'}));
   const nativePath='review/original-native.json',native={schemaVersion:'m3-s2-complete-semantic-review-v1',sourceArchiveFile:source,
     questionCount:3,author:'original-native-reviewer',rootIntegrator:'integrator',sourceAfterBlob:blob(beforeBytes),sourceAfterSha256:sha(beforeBytes),items:originalRows};
-  put(nativePath,native);
+  mutateNative?.(native);put(nativePath,native);
   const pendingPath='.archive-meta-register/inbox/original-pending.json',pending={requestId:f.receipt.requestId,
     schemaVersion:'archive-reviewed-exam-meta-register-request-v2',scope:'PARTIAL_UIDS',sourceArchiveFile:source,expectedQuestionCount:3,
     expectedSourceBlobSha1:blob(beforeBytes),approval:{type:'FINAL_QA',metadataReviewed:true},
@@ -704,4 +707,151 @@ test('a claimed current figure row cannot drop its repair after the cursor catch
   ])await t.test(name,t=>{const f=reviewedFigureNativeFixture(t);f.previous=structuredClone(f.question);
     assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');change(f);f.saveReceipt();
     assert.notEqual(planQuestion(f).status,'ALREADY_REGISTERED');});
+});
+
+function compoundRendererNativeFixture(t,{form='image',mutateManifest,mutateIndependent,unapprovedNativeDisplayField=false}={}) {
+  const f=reviewedFigureNativeFixture(t,{form,mutateNative:unapprovedNativeDisplayField?
+    native=>{const r=native.items.find(r=>r.questionUid===uid);r.after={...r.after,standardUnitOrder:17};}:undefined}),dir=f.nativeSource.root;
+  const nativeCommit=f.review.previousSourceCommit,currentCommit=f.review.currentSourceCommit;
+  const nativePath='review/original-native.json',sourcePath='archive/exams/'+source;
+  const ref=p=>({path:p,sha256:f.sha(fs.readFileSync(path.join(dir,p)))});
+  const native=JSON.parse(fs.readFileSync(path.join(dir,nativePath))),row=native.items.find(r=>r.questionUid===uid);
+  const nativeReviewRef={commit:nativeCommit,path:nativePath,sha256:ref(nativePath).sha256};
+  const snapshot=(commit,q)=>{const bytes=Buffer.from(f.git('show',commit+':'+sourcePath)+'\n');
+    return {commit,path:sourcePath,gitBlobSha1:f.git('rev-parse',commit+':'+sourcePath),sha256:f.sha(bytes),questionSha256:f.sha(f.stable(q))};};
+  const prefigureSourceRef=snapshot(nativeCommit,f.previous),currentSourceRef=snapshot(currentCommit,f.question);
+  const assets=(rows,phase,commit)=>rows.map(a=>({phase,commit,path:a.path,gitBlobSha1:a.gitBlobSha,
+    sha256:a.rawSha256,visuallyInspected:true}));
+  const independentPath='review/compound-independent-renderer.json',manifestPath='review/compound-renderer.json';
+  const independent={schemaVersion:'archive-independent-narrow-renderer-review-v1',reviewer:'independent-renderer-reviewer',
+    status:'PASS_NARROW_CURRENT_RENDERER_REVIEW',nativeReviewCommit:nativeCommit,currentSourceCommit:currentCommit,
+    counts:{newFullMathApprovals:0,newMetadataApprovals:0,newDifficultyApprovals:0},rows:[{
+      questionUid:uid,sourceOrdinal:3,decision:'PASS_NARROW_RENDERER_SEMANTIC_PRESERVATION',visualInspectionPerformed:true,
+      nativeReviewRef,nativeItemCanonicalSha256:f.sha(f.stable(row)),nativeSourceRef:prefigureSourceRef,currentSourceRef,
+      previousQuestionSha256:prefigureSourceRef.questionSha256,currentQuestionSha256:currentSourceRef.questionSha256,
+      unchangedFields:['content','choices','answer','solution','id','level','difficultyBucket','difficultyConfidence',
+        'difficultyBoundaryFlag','legacyLevelCompatibility'],observed:'The rendered triangle preserves the native relation.',
+      rendererAssets:[...assets(f.renderer.rows[0].beforeAssets,'native',nativeCommit),
+        ...assets(f.renderer.rows[0].currentAssets,'current',currentCommit)]}]};
+  mutateIndependent?.(independent);f.put(independentPath,independent);
+  const manifest={schemaVersion:'archive-reviewed-renderer-continuity-evidence-v1',
+    scope:'NATIVE_SEMANTIC_REUSE_WITH_INDEPENDENT_CURRENT_RENDERER',sourceArchiveFile:source,expectedQuestionCount:3,
+    selectedUidCount:1,newFullMathematicalQa:false,newReviewPassCount:0,newMetadataApprovals:0,newDifficultyJudgments:0,
+    items:[{questionUid:uid,sourceOrdinal:3,nativeReviewRef,nativeItemSha256:f.sha(f.stable(row)),
+      prefigureSourceRef,currentSourceRef,independentReviewRef:ref(independentPath)}]};
+  mutateManifest?.(manifest);f.put(manifestPath,manifest);
+  f.git('add','.');f.git('-c','user.name=Fixture reviewer','-c','user.email=fixture@example.invalid','commit','-qm','Compound renderer witness');
+  const reviewCommit=f.git('rev-parse','HEAD');
+  f.receipt.approval.evidenceRefs=[ref('review/metadata.json'),ref(nativePath),ref(independentPath),ref(manifestPath)];
+  const rendererProof={schemaVersion:'archive-reviewed-current-renderer-continuity-v1',reviewCommit,reviewRef:ref(manifestPath)};
+  const after={sourceFingerprint:sourceFingerprint(f.question),contentFingerprint:contentFingerprint(f.question)};
+  // This receipt repairs a real stale binding, distinct from the prefigure source.
+  const metadataBefore={sourceFingerprint:'c'.repeat(64),contentFingerprint:'d'.repeat(64)},identityBefore={sourceFingerprint:'e'.repeat(64)};
+  const sourceReview=validateReviewedSourceReassessment({root:dir,request:{scope:'PARTIAL_UIDS',approval:f.receipt.approval,
+    sourceArchiveFile:source,expectedQuestionCount:3},patch:{questionUid:uid,sourceOrdinal:3,after,
+      sourceReview:{schemaVersion:'archive-reviewed-source-reassessment-v1',reviewCommit:nativeCommit,reviewPath:nativePath,
+        reviewRef:ref(nativePath),rendererProof},evidenceRefs:f.receipt.approval.evidenceRefs},
+    metadata:{...f.current,...metadataBefore},question:f.question,final:f.current,supportedFields:new Set(REVIEWED_META_VALUE_FIELDS)});
+  f.receipt.fingerprintRepairs=[{questionUid:uid,sourceOrdinal:3,metadataBefore,identityBefore,after,sourceReview}];
+  const bindingPath=reviewedRendererBindingPath(f.receipt.requestId);
+  f.current.approvalEvidence=[...f.current.approvalEvidence,bindingPath];
+  for(const records of [f.receipt.appliedRecords,f.receipt.runtimeRecords])
+    records.find(r=>r.questionUid===uid).approvalEvidence=structuredClone(f.current.approvalEvidence);
+  f.nativeSource.runtimeRecord=structuredClone(f.receipt.runtimeRecords.find(r=>r.questionUid===uid));
+  const binding=buildReviewedRendererBinding(f.receipt);
+  f.put(bindingPath,binding);f.receipt.outputDigests=[...(f.receipt.outputDigests||[]),ref(bindingPath)];
+  f.saveReceipt();
+  return {...f,bindingPath,compoundBinding:binding,compoundManifest:manifest,compoundManifestPath:manifestPath,compoundIndependentPath:independentPath,
+    verifyCompound:()=>nativeReviewedRendererRebind(f.receipt,f.nativeSource,f.previous,f.question,f.identity,f.ordinal,f.current,f.registry)};
+}
+
+for(const form of ['image','html','solution'])test('compound native renderer proof keeps stale bindings distinct and reuses the original approval: '+form,t=>{
+  const f=compoundRendererNativeFixture(t,{form});
+  assert.notEqual(f.receipt.fingerprintRepairs[0].metadataBefore.sourceFingerprint,sourceFingerprint(f.previous));
+  assert.notEqual(f.receipt.fingerprintRepairs[0].identityBefore.sourceFingerprint,sourceFingerprint(f.previous));
+  const before=JSON.stringify({question:f.question,current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,receipt:f.receipt});
+  assert.equal(f.verifyCompound(),true);
+  const result=planQuestion(f);assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));
+  assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  assert.equal(JSON.stringify({question:f.question,current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,receipt:f.receipt}),before);
+  f.previous=structuredClone(f.question);assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
+  fs.appendFileSync(path.join(f.nativeSource.root,f.solutionAsset),'<!-- later unreviewed asset -->');
+  assert.notEqual(planQuestion(f).status,'ALREADY_REGISTERED','current asset bytes are rechecked after a warm cache and caught-up cursor');
+});
+
+test('compound renderer reuse refuses receipt drift and cannot fall back through a caught-up cursor',async t=>{
+  for(const [name,change]of [
+    ['renderer proof removed',f=>{delete f.receipt.fingerprintRepairs[0].sourceReview.rendererContinuity;}],
+    ['source review removed',f=>{delete f.receipt.fingerprintRepairs[0].sourceReview;}],
+    ['selected repair removed',f=>{f.receipt.fingerprintRepairs=[];}],
+    ['repair and manifest ref removed together',f=>{f.receipt.fingerprintRepairs=[];
+      f.receipt.approval.evidenceRefs=f.receipt.approval.evidenceRefs.filter(r=>r.path!==f.compoundManifestPath);}],
+    ['binding file removed',f=>{fs.unlinkSync(path.join(f.nativeSource.root,f.bindingPath));}],
+    ['binding output digest removed',f=>{f.receipt.outputDigests=[];}],
+    ['binding path removed from metadata',f=>{f.current.approvalEvidence=f.current.approvalEvidence.filter(p=>p!==f.bindingPath);}],
+    ['duplicate selected repair',f=>{f.receipt.fingerprintRepairs.push(structuredClone(f.receipt.fingerprintRepairs[0]));}],
+    ['foreign renderer schema',f=>{f.receipt.fingerprintRepairs[0].sourceReview.rendererContinuity.schemaVersion='OTHER';}],
+    ['foreign renderer scope',f=>{f.receipt.fingerprintRepairs[0].sourceReview.rendererContinuity.scope='OTHER';}],
+    ['ordinary full request',f=>{f.receipt.scope='FULL_EXAM';}],
+    ['sourceRebind mixed in',f=>{f.receipt.approval.sourceRebind={};}],
+    ['rebind mixed in',f=>{f.receipt.fingerprintRepairs[0].rebind={};}],
+    ['registration mode mixed in',f=>{f.receipt.registrationMode='IDENTITY_FINGERPRINT_ONLY';}],
+    ['proof UID changed',f=>{f.receipt.fingerprintRepairs[0].sourceReview.rendererContinuity.questionUid='other';}],
+    ['proof ordinal changed',f=>{f.receipt.fingerprintRepairs[0].sourceReview.rendererContinuity.sourceOrdinal=1;}],
+    ['proof native payload changed',f=>{f.receipt.fingerprintRepairs[0].sourceReview.rendererContinuity.nativeStudentPayloadSha256='0'.repeat(64);}],
+    ['proof inspected asset changed',f=>{f.receipt.fingerprintRepairs[0].sourceReview.rendererContinuity.currentAssets[0].sha256='0'.repeat(64);}],
+    ['proof independent reviewer changed',f=>{f.receipt.fingerprintRepairs[0].sourceReview.rendererContinuity.reviewer='other';}],
+    ['proof new metadata approval',f=>{f.receipt.fingerprintRepairs[0].sourceReview.rendererContinuity.newMetadataApprovals=1;}],
+    ['fingerprint after changed',f=>{f.receipt.fingerprintRepairs[0].after.sourceFingerprint='0'.repeat(64);}],
+    ['stale identity proof missing',f=>{delete f.receipt.fingerprintRepairs[0].identityBefore;}],
+    ['stale metadata fingerprint changed',f=>{f.receipt.fingerprintRepairs[0].metadataBefore.sourceFingerprint='0'.repeat(64);}],
+    ['stale identity fingerprint changed',f=>{f.receipt.fingerprintRepairs[0].identityBefore.sourceFingerprint='0'.repeat(64);}],
+    ['source raw changed',f=>{f.nativeSource.bytes=Buffer.concat([f.nativeSource.bytes,Buffer.from('\n')]);}],
+    ['current metadata changed',f=>{f.current.crossConceptKeys=['unreviewed'];}],
+    ['runtime row changed',f=>{f.nativeSource.runtimeRecord.templateKey='OTHER';}],
+  ])await t.test(name,t=>{
+    const f=compoundRendererNativeFixture(t);f.previous=structuredClone(f.question);
+    assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');change(f);f.saveReceipt();
+    assert.notEqual(planQuestion(f).status,'ALREADY_REGISTERED');
+  });
+});
+
+test('compound renderer proof remains bound to immutable evidence when local scope/hash claims change',async t=>{
+  for(const [name,change]of [
+    ['schema and scope changed',doc=>{doc.schemaVersion='ordinary-review';doc.scope='OTHER';}],
+    ['schema and scope removed',doc=>{delete doc.schemaVersion;delete doc.scope;}],
+    ['selected row removed',doc=>{doc.items=[];doc.selectedUidCount=0;}],
+    ['wrong selected ordinal',doc=>{doc.items[0].sourceOrdinal=1;}],
+    ['native item changed',doc=>{doc.items[0].nativeItemSha256='0'.repeat(64);}],
+  ])await t.test(name,t=>{
+    const f=compoundRendererNativeFixture(t);f.previous=structuredClone(f.question);
+    const doc=structuredClone(f.compoundManifest);change(doc);f.put(f.compoundManifestPath,doc);
+    const ref={path:f.compoundManifestPath,sha256:f.sha(fs.readFileSync(path.join(f.nativeSource.root,f.compoundManifestPath)))};
+    f.receipt.approval.evidenceRefs=f.receipt.approval.evidenceRefs.map(r=>r.path===ref.path?ref:r);
+    f.receipt.fingerprintRepairs[0].sourceReview.rendererContinuity.reviewRef=ref;f.saveReceipt();
+    assert.notEqual(planQuestion(f).status,'ALREADY_REGISTERED');
+    if(name.startsWith('schema')){
+      delete f.receipt.fingerprintRepairs[0].sourceReview.rendererContinuity;f.saveReceipt();
+      assert.notEqual(planQuestion(f).status,'ALREADY_REGISTERED','structural evidence detects a missing claimed proof');
+    }
+  });
+});
+
+test('compound renderer native reuse refuses an unrelated actual previous student payload',t=>{
+  const f=compoundRendererNativeFixture(t);f.previous.answer='unreviewed previous answer';
+  assert.throws(()=>f.verifyCompound(),/previous student payload/);assert.notEqual(planQuestion(f).status,'ALREADY_REGISTERED');
+});
+
+test('compound renderer binding cannot be replaced by a locally rehashed false inventory',t=>{
+  const f=compoundRendererNativeFixture(t);f.previous=structuredClone(f.question);
+  const binding=structuredClone(f.compoundBinding);binding.requestSha256='0'.repeat(64);f.put(f.bindingPath,binding);
+  f.receipt.outputDigests.find(r=>r.path===f.bindingPath).sha256=f.sha(fs.readFileSync(path.join(f.nativeSource.root,f.bindingPath)));
+  f.saveReceipt();assert.notEqual(planQuestion(f).status,'ALREADY_REGISTERED');
+});
+
+test('compound reuse follows the writer value contract without approving native display-only fields',t=>{
+  const f=compoundRendererNativeFixture(t,{unapprovedNativeDisplayField:true});
+  assert.equal(f.current.standardUnitOrder,undefined);
+  assert.equal(f.verifyCompound(),true);assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
+  assert.equal(f.current.standardUnitOrder,undefined);
 });

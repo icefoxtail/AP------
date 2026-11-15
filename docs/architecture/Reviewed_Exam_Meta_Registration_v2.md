@@ -100,6 +100,57 @@ M2의 `REGISTRATION_PENDING` 표기만으로 확정 필드를 버리지는 않�
 원본 JS를 쓰지 않으며 생략한 UID는 그대로 둔다. 영수증은 검토 schema/commit/경로/SHA·source blob·UID·학생 payload SHA와
 `newMathematicalQa: false`를 보존한다. 이 경로가 새 수학 독립 검수나 REVIEW2 2회 통과를 생성하지 않는다.
 
+#### 원 의미 검토와 이후 그림 검토를 각각 결속하는 `rendererProof`
+
+M3 원검토 이후 그림이 바뀌었고 실제 metadata/identity 지문은 원검토보다도 오래된 경우에는
+`sourceReview.rendererProof`를 명시할 수 있다. 원 `reviewCommit`·`reviewPath`·`reviewRef`와 native `after`는
+그대로 유지하고, 원검토의 학생 payload가 보존된 그림 변경 직전 source, 독립 시각 검토를 마친 현재 source,
+각 시점의 실제 asset 바이트를 별도로 검사한다. 요청의 `before` 또는 `identityBefore`를 그림 변경 직전 지문으로
+바꾸지 않는다. 기존 첫 등록 그림 재사용 계약과도 별도인 명시적 경로다.
+
+```json
+{
+  "rendererProof": {
+    "schemaVersion": "archive-reviewed-current-renderer-continuity-v1",
+    "reviewCommit": "독립 그림 원문과 manifest가 실제 존재하는 40자리 commit",
+    "reviewRef": { "path": "결속 manifest JSON", "sha256": "원시 SHA-256" }
+  }
+}
+```
+
+manifest는 `archive-reviewed-renderer-continuity-evidence-v1`,
+`NATIVE_SEMANTIC_REUSE_WITH_INDEPENDENT_CURRENT_RENDERER` 범위를 명시한다. 원시험 분모, 선택 UID·순번,
+원검토 commit/경로/SHA와 native item SHA, 그림 변경 전·후 같은 source 경로의 commit/blob/원시 SHA/문항 SHA,
+실제 독립 검토 원문 참조가 필요하다. manifest와 원문 참조는 승인과 선택 item의 `evidenceRefs` 양쪽에 포함한다.
+모든 JSON은 로컬 사본과 명시한 Git commit의 실제 바이트가 같아야 한다. 새 전체 QA·REVIEW2 횟수·메타 및 난도
+판정은 각각 false 또는 0으로 기록한다. 현재 `PARTIAL_UIDS` `FINAL_QA`의 원 M3 검토만 지원하며,
+`rebind`, `sourceRebind`, 별도 `registrationMode`, `proposalFinalization`을 함께 사용하지 않는다.
+
+등록기는 원검토와 그림 변경 직전 source의 학생 payload가 같은지, 변경 직전부터 현재 snapshot까지의 전체
+문항 필드 차이가 허용된 그림 필드뿐인지 직접 검사한다. `content`는 img src 교체만 허용한다. 현재 작업 source의
+학생 payload는 독립 검토 snapshot과 같아야 한다. 별도로 운반하는 governed metadata는 기존 native `after`·
+현행 정본·난도·source parity 검사를 그대로 받는다. 발문 조건, 보기, 정답, 해설, 원번호 또는 메타 판정을
+그림 변경으로 처리할 수 없다.
+
+정규화된 PASS 문장만 읽지 않고 지원하는 독립 작성 원문을 직접 대조한다. 원문에 결속된 모든 이전·현재
+renderer 자산은 해당 source가 참조하는 전체 집합과 일치해야 하며, Git blob과 SHA뿐 아니라 현재 파일의
+실제 바이트도 같아야 한다. 같은 경로의 자산이 원검토와 그림 변경 직전 사이에 바뀐 경우도 거절한다.
+외부 SVG 의존 경로는 허용하지 않는다. 명시적인 해설 그림 정정 원문은 승인된 선 노드 제거·설명 교체만
+바이트 단위로 재현하며, source의 지정된 그림/alt 외 필드와 다른 문항은 모두 보존해야 한다.
+
+영수증은 `sourceReview.rendererContinuity`에 두 source snapshot, 원검토·독립검토 참조, 실제 자산 SHA,
+변경된 renderer 필드와 학생 payload SHA를 남긴다. 동일 요청 재실행도 이 명시적 proof가 있는 항목은
+원래 before 값, 현재 정본 정의, 모든 독립 근거·자산을 다시 검사하고 저장된 전체 sourceReview proof와
+정확히 비교한다. source JS가 그대로인 asset-only 변경이나 영수증 proof 삭제도 거절한다.
+
+공식 writer는 `<requestId>.renderer-binding.json` 보조 증거를 함께 생성한다. schema는
+`archive-reviewed-renderer-binding-v1`이며 실제 request SHA·source blob/raw SHA·원시험 분모·부분 선택 수와
+그림 대상 UID/순번별 전체 sourceReview 및 fingerprint repair의 정렬 JSON SHA를 저장한다. 이 경로는
+그림 대상 metadata/runtime의 `approvalEvidence`에만 추가되고, 원 영수증의 `outputDigests`에 실제 파일 SHA로
+결속된다. 원 before·identityBefore도 전체 repair SHA에 포함한다. 재실행은 보조 파일·digest·선택 집합·현재 승인
+evidence를 모두 검사한다. 따라서 영수증의 renderer proof와 manifest 참조가 함께 누락되어도 이미 승인된 행에
+남아 있는 typed 증거 경로를 기준으로 거부할 수 있다. 다른 문항과 기존 일반/첫 그림 재사용 영수증은 바꾸지 않는다.
+
 #### 원검토의 CC·TPL 제안을 별도 독립 정의 검토로 확정
 
 원검토에 남은 의미 제안은 `REGISTRATION_PENDING`이라는 상태만 지우거나 `native.after`를 다시 써서 승인하지 않는다.

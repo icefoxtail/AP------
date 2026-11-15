@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { isUnambiguousLegacySourceUidAlias } from '../intelligence/question-identity-contract.mjs';
 import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
+import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 
@@ -155,7 +156,7 @@ function preservedAuditReceipt({nativeSource,question,previous,current,identity,
 // The reviewed lane may have just registered this exact source before AutoMeta reaches an older
 // pending cursor. Reuse its byte-bound native receipt, never the approval flags alone. Returning
 // ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
-export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,ownerPack=pt?.ownerPack}) {
+export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack=pt?.ownerPack}) {
   if(!nativeSource||!previous)return null;
   const studentUnchanged=equal(pick(previous,STUDENT),pick(question,STUDENT));
   const {root,bytes,blobSha1,bank,runtimeRecord,runtimeStatus}=nativeSource;
@@ -202,7 +203,8 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||!equal(registeredIdentity[0].sourceQuestionNo,identity.sourceQuestionNo)
         ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
-      if(reviewedFigure!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }
@@ -259,7 +261,7 @@ export function planQuestion({question:q, previous, current, identity, registry,
     if(check.status==='VALIDATED'&&check.activeBinding) {
       const context=activeBindingContext({candidate:current,check,registry,runtimeOwner});
       if(!context.reason) {
-        const receipt=nativeReviewReceipt({nativeSource,question:q,previous,current,identity,source,ordinal,
+        const receipt=nativeReviewReceipt({nativeSource,question:q,previous,current,identity,source,ordinal,registry,
           pt:context.pt,tpl:context.tpl,ownerPack:context.ownerPack});
         if(receipt)return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,
           sourceOrdinal:ordinal,inputHash:hash({source,ordinal,student:pick(q,STUDENT),metadata:semantic(q),registry:registry.registrySha}),
@@ -293,7 +295,7 @@ export function planQuestion({question:q, previous, current, identity, registry,
     if(supplied.status==='VALIDATED'&&supplied.activeBinding) {
       const context=activeBindingContext({candidate,check:supplied,registry,runtimeOwner});
       if(!context.reason&&hasSourceRationale) {
-        const nativeReceipt=nativeReviewReceipt({nativeSource,question:q,previous,current,identity,source,ordinal,pt:context.pt,tpl:context.tpl,ownerPack:context.ownerPack});
+        const nativeReceipt=nativeReviewReceipt({nativeSource,question:q,previous,current,identity,source,ordinal,registry,pt:context.pt,tpl:context.tpl,ownerPack:context.ownerPack});
         if(nativeReceipt)return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,
           sourceOrdinal:ordinal,inputHash,nativeReviewReceipt:nativeReceipt};
       }

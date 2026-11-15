@@ -3158,6 +3158,184 @@ function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1") 
   return { ...f, git, review, updateReview };
 }
 
+function rendererContinuityFixture(t) {
+  const f = reviewedSourceFixture(t);
+  const oldAssetPath = "archive/assets/reviewed-figure.svg", assetPath = "archive/assets/current-figure.svg";
+  f.put(oldAssetPath, '<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L1 1"/></svg>');
+  f.git("add", "--", oldAssetPath);
+  const nativeRef = f.updateReview(), nativeCommit = f.item.sourceReview.reviewCommit;
+  const nativeQuestion = structuredClone(f.current);
+  const commit = (...paths) => {
+    if (paths.length) f.git("add", "--", ...paths);
+    f.git("-c", "user.name=Renderer fixture", "-c", "user.email=renderer@example.invalid", "commit", "--allow-empty", "-qm", "Exact inspected renderer snapshot");
+    return f.git("rev-parse", "HEAD");
+  };
+  const sourceRef = (c, q) => ({ commit: c, path: f.sourcePath, gitBlobSha1: f.git("rev-parse", `${c}:${f.sourcePath}`),
+    sha256: hash(f.git("show", `${c}:${f.sourcePath}`) + "\n"), questionSha256: hash(stable(q)) });
+  const assetRef = (c, p, phase) => ({ commit: c, path: p, gitBlobSha1: f.git("rev-parse", `${c}:${p}`),
+    sha256: hash(f.git("show", `${c}:${p}`)), phase, visuallyInspected: true });
+  const prefigureCommit = commit(), prefigure = sourceRef(prefigureCommit, f.current);
+  f.current.image = "assets/current-figure.svg";
+  f.put(assetPath, '<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L2 2"/></svg>');
+  f.writeBank(f.current);
+  const currentCommit = commit(f.sourcePath, assetPath), current = sourceRef(currentCommit, f.current);
+  Object.assign(f.item.after, { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) });
+  const original = { commit: nativeCommit, path: f.item.sourceReview.reviewPath, sha256: nativeRef.sha256 };
+  const independentPath = "docs/independent-renderer-review.json", manifestPath = "docs/renderer-continuity.json";
+  const independent = { schemaVersion: "archive-independent-narrow-renderer-review-v1", reviewer: "independent-renderer-reviewer",
+    status: "PASS_NARROW_CURRENT_RENDERER_REVIEW", currentSourceCommit: currentCommit, nativeReviewCommit: nativeCommit,
+    counts: { newFullMathApprovals: 0, newMetadataApprovals: 0, newDifficultyApprovals: 0 }, rows: [{
+      questionUid: "uid1", sourceOrdinal: 1, decision: "PASS_NARROW_RENDERER_SEMANTIC_PRESERVATION", visualInspectionPerformed: true,
+      nativeReviewRef: original, nativeItemCanonicalSha256: hash(stable(f.review.items[0])),
+      nativeSourceRef: sourceRef(nativeCommit, nativeQuestion), currentSourceRef: current,
+      previousQuestionSha256: hash(stable(nativeQuestion)), currentQuestionSha256: hash(stable(f.current)),
+      unchangedFields: ["content", "choices", "answer", "solution", "id", "level", "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"],
+      rendererAssets: [assetRef(nativeCommit, oldAssetPath, "native"), assetRef(currentCommit, assetPath, "current")],
+      observed: "The changed renderer preserves the exact problem, solution and numerical labels." }] };
+  const manifest = { schemaVersion: "archive-reviewed-renderer-continuity-evidence-v1",
+    scope: "NATIVE_SEMANTIC_REUSE_WITH_INDEPENDENT_CURRENT_RENDERER", sourceArchiveFile: f.request.sourceArchiveFile,
+    expectedQuestionCount: 2, selectedUidCount: 1, newFullMathematicalQa: false, newReviewPassCount: 0,
+    newMetadataApprovals: 0, newDifficultyJudgments: 0, items: [{ questionUid: "uid1", sourceOrdinal: 1,
+      nativeReviewRef: original, nativeItemSha256: hash(stable(f.review.items[0])), prefigureSourceRef: prefigure,
+      currentSourceRef: current, independentReviewRef: null }] };
+  const republish = () => {
+    f.put(independentPath, independent);
+    const reviewRef = { path: independentPath, sha256: hash(fs.readFileSync(path.join(f.root, independentPath))) };
+    manifest.items[0].independentReviewRef = reviewRef;
+    f.put(manifestPath, manifest);
+    const manifestRef = { path: manifestPath, sha256: hash(fs.readFileSync(path.join(f.root, manifestPath))) };
+    const reviewCommit = commit(independentPath, manifestPath);
+    const refs = [...f.evidenceRefs, nativeRef, reviewRef, manifestRef];
+    f.request.approval.evidenceRefs = refs; f.item.evidenceRefs = refs;
+    f.item.sourceReview.rendererProof = { schemaVersion: "archive-reviewed-current-renderer-continuity-v1", reviewCommit, reviewRef: manifestRef };
+  };
+  republish();
+  return { ...f, oldAssetPath, assetPath, independentPath, manifestPath, independent, manifest, republish, commit, sourceRef, assetRef, nativeQuestion };
+}
+
+test("compound renderer review keeps the original stale before and immutable semantic review through write/replay", t => {
+  const f = rendererContinuityFixture(t), source = fs.readFileSync(path.join(f.root, f.sourcePath));
+  const originalBefore = structuredClone(f.item.before), nativeBytes = fs.readFileSync(path.join(f.root, "docs/native-review.json"));
+  assert.notEqual(originalBefore.sourceFingerprint, f.sourceSha(f.nativeQuestion));
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).fingerprintRepairCount, 1);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).totalQuestions, 1);
+  const receipt = f.read(f.receiptPath), proof = receipt.fingerprintRepairs[0].sourceReview.rendererContinuity;
+  const bindingPath = f.receiptPath.replace(/\.json$/, ".renderer-binding.json"), binding = f.read(bindingPath);
+  assert.equal(binding.schemaVersion, "archive-reviewed-renderer-binding-v1");
+  assert.deepEqual(binding.records, [{ questionUid: "uid1", sourceOrdinal: 1,
+    sourceReviewSha256: hash(stable(receipt.fingerprintRepairs[0].sourceReview)), fingerprintRepairSha256: hash(stable(receipt.fingerprintRepairs[0])) }]);
+  assert.deepEqual([binding.expectedQuestionCount, binding.partialUidCount, binding.rendererUidCount], [2, 1, 1]);
+  assert.equal(binding.requestSha256, receipt.requestSha256);
+  assert.equal(receipt.appliedRecords[0].approvalEvidence.includes(bindingPath), true);
+  assert.equal(receipt.runtimeRecords[0].approvalEvidence.includes(bindingPath), true);
+  assert.deepEqual(receipt.outputDigests.filter(r => r.path === bindingPath), [{ path: bindingPath, sha256: hash(fs.readFileSync(path.join(f.root, bindingPath))) }]);
+  assert.equal(proof.scope, "NATIVE_SEMANTIC_REUSE_WITH_INDEPENDENT_CURRENT_RENDERER");
+  assert.deepEqual(proof.changedRendererFields, ["image"]);
+  assert.deepEqual([proof.newMathematicalQa, proof.newMetadataApprovals, proof.newDifficultyJudgments], [false, 0, 0]);
+  assert.equal(receipt.fingerprintRepairs[0].metadataBefore.sourceFingerprint, originalBefore.sourceFingerprint);
+  assert.deepEqual(f.read(META).records[1], f.hold);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.sourcePath)), source);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, "docs/native-review.json")), nativeBytes);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+});
+
+test("compound renderer review requires exact scope, inventory and original native bindings", t => {
+  for (const mutate of [
+    f => { f.manifest.scope = "ANY_CURRENT_CONTENT"; },
+    f => { f.manifest.newMetadataApprovals = 1; },
+    f => { f.manifest.newFullMathematicalQa = true; },
+    f => { f.manifest.newReviewPassCount = 1; },
+    f => { f.manifest.expectedQuestionCount = 1; },
+    f => { f.manifest.items.push(structuredClone(f.manifest.items[0])); f.manifest.selectedUidCount = 2; },
+    f => { f.manifest.items[0].nativeItemSha256 = "a".repeat(64); },
+    f => { f.manifest.items[0].nativeReviewRef.sha256 = "a".repeat(64); },
+    f => { f.manifest.items[0].currentSourceRef.path = "archive/exams/other.js"; },
+    f => { f.manifest.items[0].prefigureSourceRef.questionSha256 = "a".repeat(64); },
+    f => { f.independent.reviewer = f.review.author; },
+    f => { f.independent.rows[0].visualInspectionPerformed = false; },
+    f => { f.independent.rows[0].rendererAssets.pop(); },
+  ]) {
+    const f = rendererContinuityFixture(t); mutate(f); f.republish();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /reviewed renderer continuity:/);
+  }
+});
+
+test("compound renderer review never substitutes a prefigure before or authorizes new semantic fields", t => {
+  for (const mutate of [
+    f => { f.item.before.sourceFingerprint = f.sourceSha(f.nativeQuestion); },
+    f => { f.item.identityBefore.sourceFingerprint = f.sourceSha(f.nativeQuestion); },
+    f => { f.item.after.difficultyBucket = f.current.difficultyBucket === 3 ? 2 : 3; },
+  ]) {
+    const f = rendererContinuityFixture(t); mutate(f);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /before|source\/approved metadata parity|not approved by native review|reviewed after value mismatch/);
+  }
+  for (const delta of [{ answer: "2" }, { solution: "unreviewed proof" }, { choices: ["2", "3"] }, { content: "new premise" }]) {
+    const f = rendererContinuityFixture(t); Object.assign(f.current, delta); f.writeBank(f.current);
+    Object.assign(f.item.after, { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) });
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /live student payload differs/);
+  }
+});
+
+test("compound renderer review fails closed when proof or a bound reference is removed", t => {
+  const noProof = rendererContinuityFixture(t); delete noProof.item.sourceReview.rendererProof;
+  assert.throws(() => registerReviewedExamV2({ root: noProof.root, request: noProof.request }), /current student payload differs/);
+  for (const where of ["approval", "item"]) {
+    const f = rendererContinuityFixture(t);
+    if (where === "approval") f.request.approval.evidenceRefs = f.request.approval.evidenceRefs.filter(r => r.path !== f.independentPath);
+    else f.item.evidenceRefs = f.item.evidenceRefs.filter(r => r.path !== f.independentPath);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /review reference must bind approval and item/);
+  }
+  const local = rendererContinuityFixture(t);
+  local.put(local.independentPath, { ...local.independent, reviewer: "local forgery" });
+  assert.throws(() => registerReviewedExamV2({ root: local.root, request: local.request }), /evidence missing\/drift|SHA mismatch|review evidence missing or changed/);
+});
+
+test("compound renderer review checks live asset bytes and denies non-renderer changes between snapshots", t => {
+  const asset = rendererContinuityFixture(t);
+  asset.put(asset.assetPath, '<svg xmlns="http://www.w3.org/2000/svg"><text>unreviewed</text></svg>');
+  assert.throws(() => registerReviewedExamV2({ root: asset.root, request: asset.request }), /live renderer bytes changed/);
+  for (const delta of [{ answer: "2" }, { level: "상" }, { primaryMethod: "new method" }]) {
+    const f = rendererContinuityFixture(t); Object.assign(f.current, delta); f.writeBank(f.current);
+    for (const field of ["level", "primaryMethod"]) if (Object.hasOwn(delta, field)) {
+      f.item.before[field] = f.read(META).records[0][field] ?? null; f.item.after[field] = delta[field];
+    }
+    const commit = f.commit(f.sourcePath);
+    f.manifest.items[0].currentSourceRef = f.sourceRef(commit, f.current);
+    f.republish();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /outside the inspected renderer fields/);
+  }
+});
+
+test("compound renderer replay rechecks assets and rejects erased or altered stored continuity proof", t => {
+  for (const mutate of [
+    f => { f.put(f.assetPath, '<svg xmlns="http://www.w3.org/2000/svg"><text>later edit</text></svg>'); },
+    f => { const r = f.read(f.receiptPath); delete r.fingerprintRepairs[0].sourceReview.rendererContinuity; f.put(f.receiptPath, r); },
+    f => { const r = f.read(f.receiptPath); r.fingerprintRepairs[0].sourceReview.rendererContinuity.currentStudentPayloadSha256 = "a".repeat(64); f.put(f.receiptPath, r); },
+  ]) {
+    const f = rendererContinuityFixture(t);
+    registerReviewedExamV2({ root: f.root, request: f.request, write: true }); mutate(f);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /reviewed renderer continuity:|registered renderer/);
+  }
+});
+
+test("compound renderer typed sidecar binds real before values and cannot disappear with the receipt proof", async t => {
+  for (const [name, mutate] of [
+    ["sidecar file deleted", (f, p) => fs.rmSync(path.join(f.root, p))],
+    ["sidecar digest deleted", (f, p, r) => { r.outputDigests = r.outputDigests.filter(d => d.path !== p); f.put(f.receiptPath, r); }],
+    ["repair and manifest both deleted", (f, p, r) => { r.fingerprintRepairs = []; r.approval.evidenceRefs = r.approval.evidenceRefs.filter(d => d.path !== f.manifestPath); f.put(f.receiptPath, r); }],
+    ["original metadata before changed", (f, p, r) => { r.fingerprintRepairs[0].metadataBefore.sourceFingerprint = "a".repeat(64); f.put(f.receiptPath, r); }],
+    ["original identity before changed", (f, p, r) => { r.fingerprintRepairs[0].identityBefore.sourceFingerprint = "a".repeat(64); f.put(f.receiptPath, r); }],
+    ["sidecar UID changed", (f, p) => { const d = f.read(p); d.records[0].questionUid = "uid2"; f.put(p, d); }],
+    ["sidecar denominator changed", (f, p) => { const d = f.read(p); d.expectedQuestionCount = 1; f.put(p, d); }],
+    ["sidecar approval marker removed", (f, p, r) => { r.appliedRecords[0].approvalEvidence = r.appliedRecords[0].approvalEvidence.filter(x => x !== p); f.put(f.receiptPath, r); }],
+  ]) await t.test(name, t => {
+    const f = rendererContinuityFixture(t); registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+    const p = f.receiptPath.replace(/\.json$/, ".renderer-binding.json"), receipt = f.read(f.receiptPath);
+    mutate(f, p, receipt);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /renderer|registered metadata drift/);
+  });
+});
+
 test("partial source reassessment binds real review/source Git objects and preserves the omitted HOLD", t => {
   const f = reviewedSourceFixture(t), before = fs.readFileSync(path.join(f.root, META), "utf8");
   const sourceBytes = fs.readFileSync(path.join(f.root, f.sourcePath));
