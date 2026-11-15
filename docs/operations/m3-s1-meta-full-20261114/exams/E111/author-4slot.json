@@ -1,0 +1,2160 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1mid/16_부산대천리중_1학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "dfaa5be13dbee7fa3f2c9b7db1e3fc986ee3f38a",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "GPT-6 Astra Pro / meta_b",
+    "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+    "at": "2026-11-15"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_6d280b29b552bdb6b528493cd8a05f94bf279428271e67ca454fb92003ba3692",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "834cd0c97d0eab78ef999d54b7fa98927d26e5c9263da80d3c0e791df5da8574"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4c019e114dcd869533b7f5c095d577ee99c100f345182764490377e693b42003"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>1. 다음 중 문장 '$x$는 15의 제곱근이다.'를 바르게 나타낸 식은? [2.5점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "<p>1. 다음 중 문장 '$x$는 15의 제곱근이다.'를 바르게 나타낸 식은? [2.5점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 문장 '$x$는 15의 제곱근이다.'<br/>\n구할 대상: 이 문장을 올바른 수학적 수식으로 표현한 식</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n제곱근의 정의: 어떤 수 $x$를 제곱하여 $a$가 될 때, 즉 $x^2=a$일 때 $x$를 $a$의 제곱근이라고 합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n'$x$는 15의 제곱근이다'라는 정의에 따라, $x$를 제곱했을 때 15가 되어야 하므로 다음 등식이 성립합니다.<br/>\n$$x^2 = 15$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 구하는 식은 $x^2=15$이며, 선지 ⑤와 정확히 일치합니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n① $x=15$는 $x$가 15 자체라는 뜻이므로 오답입니다.<br/>\n②, ③ $x=-\\sqrt{15}$나 $x=\\sqrt{15}$는 15의 음 또는 양의 제곱근 중 하나만을 나타낸 것으로 전체 제곱근을 뜻하는 식이 아닙니다.<br/>\n④ $2x=15$는 15의 절반을 의미하므로 오답입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근의 정의 x²=a를 바로 읽어 문장을 식으로 바꾸는 직접 개념판정이다. 숫자 level1을 하로 정규화한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 문장 '$x$는 15의 제곱근이다.'<br/>\n구할 대상: 이 문장을 올바른 수학적 수식으로 표현한 식</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n제곱근의 정의: 어떤 수 $x$를 제곱하여 $a$가 될 때, 즉 $x^2=a$일 때 $x$를 $a$의 제곱근이라고 합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n'$x$는 15의 제곱근이다'라는 정의에 따라, $x$를 제곱했을 때 15가 되어야 하므로 다음 등식이 성립합니다.<br/>\n$$x^2 = 15$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 구하는 식은 $x^2=15$이며, 선지 ⑤와 정확히 일치합니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n① $x=15$는 $x$가 15 자체라는 뜻이므로 오답입니다.<br/>\n②, ③ $x=-\\sqrt{15}$나 $x=\\sqrt{15}$는 15의 음 또는 양의 제곱근 중 하나만을 나타낸 것으로 전체 제곱근을 뜻하는 식이 아닙니다.<br/>\n④ $2x=15$는 15의 절반을 의미하므로 오답입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근의 정의 x²=a를 바로 읽어 문장을 식으로 바꾸는 직접 개념판정이다. 숫자 level1을 하로 정규화한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근의 정의 x²=a를 바로 읽어 문장을 식으로 바꾸는 직접 개념판정이다. 숫자 level1을 하로 정규화한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3e9b2dcdfc16129a638b37c4681ba333ab6a477a1cb92061cd8237acf94174b3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c034d6497cbba6779c9808028472ac51e9ed8cee6b8ee53a988e3f3cbbed9f57"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "170a659c895b3337afbfafc8fb961cda290c95c53daa49716d32b41c659905a7"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>2. 다음 대화 중에서 틀린 말을 하는 학생은? [3.0점]\n\n| 대화 내용 |\n| :--- |\n| A : 넓이가 2인 정사각형의 한 변의 길이는 유리수 범위에서는 찾을 수가 없어. |\n| B : 그래서 유리수 이외의 수에 대해 생각하게 된거지. 그게 바로 무리수이고, 이렇게 $\\sqrt{2}$가 탄생하게 됐단다. 하하하. |\n| C : 식으로 표현하면 $a^2=2$로 나타낼 수 있고, $a$를 2의 제곱근이라고 해. |\n| D : 맞아. 그리고 0을 제외한 모든 수는 제곱근을 두 개씩 가지고 있어. |\n| E : 그럼 4의 제곱근은 $\\pm 2$가 되는 거구나. 0의 제곱근은 0 하나이구. |</p>"
+          },
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "<p>2. 다음 대화 중에서 틀린 말을 하는 학생은? [3.0점]\n\n| 대화 내용 |\n| :--- |\n| A : 넓이가 2인 정사각형의 한 변의 길이는 유리수 범위에서는 찾을 수가 없어. |\n| B : 그래서 유리수 이외의 수에 대해 생각하게 된거지. 그게 바로 무리수이고, 이렇게 $\\sqrt{2}$가 탄생하게 됐단다. 하하하. |\n| C : 식으로 표현하면 $a^2=2$로 나타낼 수 있고, $a$를 2의 제곱근이라고 해. |\n| D : 맞아. 그리고 0을 제외한 모든 수는 제곱근을 두 개씩 가지고 있어. |\n| E : 그럼 4의 제곱근은 $\\pm 2$가 되는 거구나. 0의 제곱근은 0 하나이구. |</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>2. 다음 대화 중에서 틀린 말을 하는 학생은? [3.0점]\n\n| 대화 내용 |\n| :--- |\n| A : 넓이가 2인 정사각형의 한 변의 길이는 유리수 범위에서는 찾을 수가 없어. |\n| B : 그래서 유리수 이외의 수에 대해 생각하게 된거지. 그게 바로 무리수이고, 이렇게 $\\sqrt{2}$가 탄생하게 됐단다. 하하하. |\n| C : 식으로 표현하면 $a^2=2$로 나타낼 수 있고, $a$를 2의 제곱근이라고 해. |\n| D : 맞아. 그리고 0을 제외한 모든 수는 제곱근을 두 개씩 가지고 있어. |\n| E : 그럼 4의 제곱근은 $\\pm 2$가 되는 거구나. 0의 제곱근은 0 하나이구. |</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 대화 내용 중 학생 A, B, C, D, E의 발언<br/>\n구할 대상: 틀린 말을 하고 있는 학생</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n1. 양수의 제곱근은 양과 음 2개가 있으며 그 절댓값이 같습니다.<br/>\n2. 0의 제곱근은 0 하나뿐입니다.<br/>\n3. 음수의 제곱근은 실수 범위에서 존재하지 않습니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n학생들의 발언을 하나씩 분석합니다.<br/>\n- A: 한 변의 길이가 $x$일 때 $x^2=2$이므로 $x=\\sqrt{2}$입니다. 유리수 중에는 제곱하여 2가 되는 수가 없으므로 올바른 설명입니다.<br/>\n- B: 유리수 이외의 수인 무리수 $\\sqrt{2}$의 도입 배경을 바르게 설명하고 있습니다.<br/>\n- C: $a^2=2$를 만족할 때 $a$를 2의 제곱근이라 하므로 올바른 설명입니다.<br/>\n- D: '0을 제외한 모든 수는 제곱근을 두 개씩 가지고 있어'라고 하였으나, 음수는 실수 범위에서 제곱근을 가지지 않습니다. 오직 양수만 2개의 제곱근을 가지므로 D의 설명은 틀렸습니다.<br/>\n- E: 4의 제곱근은 $\\pm 2$, 0의 제곱근은 0이므로 올바른 설명입니다.</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 틀린 말을 한 학생은 D이며, 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n음수는 실수 범위에서 제곱근이 존재하지 않는다는 점에 주의해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "음수의 제곱근은 실수 범위에 없다는 정의로 잘못된 발언을 고른다. 표면 대화 길이와 무관한 직접 판정이다."
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 대화 내용 중 학생 A, B, C, D, E의 발언<br/>\n구할 대상: 틀린 말을 하고 있는 학생</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n1. 양수의 제곱근은 양과 음 2개가 있으며 그 절댓값이 같습니다.<br/>\n2. 0의 제곱근은 0 하나뿐입니다.<br/>\n3. 음수의 제곱근은 실수 범위에서 존재하지 않습니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n학생들의 발언을 하나씩 분석합니다.<br/>\n- A: 한 변의 길이가 $x$일 때 $x^2=2$이므로 $x=\\sqrt{2}$입니다. 유리수 중에는 제곱하여 2가 되는 수가 없으므로 올바른 설명입니다.<br/>\n- B: 유리수 이외의 수인 무리수 $\\sqrt{2}$의 도입 배경을 바르게 설명하고 있습니다.<br/>\n- C: $a^2=2$를 만족할 때 $a$를 2의 제곱근이라 하므로 올바른 설명입니다.<br/>\n- D: '0을 제외한 모든 수는 제곱근을 두 개씩 가지고 있어'라고 하였으나, 음수는 실수 범위에서 제곱근을 가지지 않습니다. 오직 양수만 2개의 제곱근을 가지므로 D의 설명은 틀렸습니다.<br/>\n- E: 4의 제곱근은 $\\pm 2$, 0의 제곱근은 0이므로 올바른 설명입니다.</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 틀린 말을 한 학생은 D이며, 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n음수는 실수 범위에서 제곱근이 존재하지 않는다는 점에 주의해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "음수의 제곱근은 실수 범위에 없다는 정의로 잘못된 발언을 고른다. 표면 대화 길이와 무관한 직접 판정이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "음수의 제곱근은 실수 범위에 없다는 정의로 잘못된 발언을 고른다. 표면 대화 길이와 무관한 직접 판정이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_61febf47ef618b1aca75c332815b2f010ed96023ff170c9b3f877f7edc32ea31",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1a3d46ecef8ca25235e0a669a14ef57235256af4de7957be7b2d9c485edc336c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1ebb751bdeff9516ddbfcb1f31b4812e8abf73fd069bf8355ad81b91a432b210"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "① $\\sqrt{(-2)^2}$"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "choices",
+            "quote": "① $\\sqrt{(-2)^2}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>3. 다음 중 나머지 넷과 다른 것은? [3.0점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 다섯 개의 수식 ①~⑤<br/>\n구할 대상: 계산 결과가 나머지 넷과 다른 하나</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- $a>0$일 때, $\\sqrt{a^2}=a$, $\\sqrt{(-a)^2}=a$, $(\\sqrt{a})^2=a$, $(-\\sqrt{a})^2=a$<br/>\n- 근호 앞의 음의 부호: $-\\sqrt{a^2} = -a$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 선지의 값을 계산합니다.<br/>\n① $\\sqrt{(-2)^2} = \\sqrt{4} = 2$<br/>\n② $\\sqrt{2^2} = 2$<br/>\n③ $-\\sqrt{(-2)^2} = -\\sqrt{4} = -2$<br/>\n④ $(-\\sqrt{2})^2 = (-\\sqrt{2}) \\times (-\\sqrt{2}) = 2$<br/>\n⑤ $(\\sqrt{2})^2 = 2$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n①, ②, ④, ⑤의 값은 모두 2이지만, ③만 값이 $-2$입니다. 따라서 정답은 ③입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n근호 앞의 마이너스 부호와 근호 안의 제곱 부호를 혼동하지 않도록 주의합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 앞 부호와 제곱·제곱근을 구별하여 다섯 값의 일치를 판단한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 다섯 개의 수식 ①~⑤<br/>\n구할 대상: 계산 결과가 나머지 넷과 다른 하나</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- $a>0$일 때, $\\sqrt{a^2}=a$, $\\sqrt{(-a)^2}=a$, $(\\sqrt{a})^2=a$, $(-\\sqrt{a})^2=a$<br/>\n- 근호 앞의 음의 부호: $-\\sqrt{a^2} = -a$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 선지의 값을 계산합니다.<br/>\n① $\\sqrt{(-2)^2} = \\sqrt{4} = 2$<br/>\n② $\\sqrt{2^2} = 2$<br/>\n③ $-\\sqrt{(-2)^2} = -\\sqrt{4} = -2$<br/>\n④ $(-\\sqrt{2})^2 = (-\\sqrt{2}) \\times (-\\sqrt{2}) = 2$<br/>\n⑤ $(\\sqrt{2})^2 = 2$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n①, ②, ④, ⑤의 값은 모두 2이지만, ③만 값이 $-2$입니다. 따라서 정답은 ③입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n근호 앞의 마이너스 부호와 근호 안의 제곱 부호를 혼동하지 않도록 주의합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 앞 부호와 제곱·제곱근을 구별하여 다섯 값의 일치를 판단한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호 앞 부호와 제곱·제곱근을 구별하여 다섯 값의 일치를 판단한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_e142ff8343bf030c7cd97a2803519971e79c7febf0b86d62be13a706d298fc61",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f2f4d31ebaf55076b53334906566afe1be4da7e3fd4390b6d237ecd2eff04bfa"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7c59790ec2989f09deb69bc2996362e6f4a693be968ed2aa466083772878c4f6"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "<p>4. 다음 그림과 같이 어떤 수를 넣으면 <보기>와 같이 $$\\mathrm{A} \to \\mathrm{B} \to \\mathrm{C}$$를 거쳐서 또 다른 수가 나오게 된다고 한다. 만약 양수 $a$를 넣었다면 어떤 수가 나오겠는가? [3.5점]\n\n<보기>\n$\\mathrm{A}$ : 어떤 수를 제곱한다.\n$\\mathrm{B}$ : 이 수를 2배 한다.\n$\\mathrm{C}$ : 이 수의 양의 제곱근을 구한다.</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q04.png\" alt=\"어떤 수에서 A 단계, B 단계, C 단계를 거쳐 결과 값으로 이어지는 단계별 순서도\" /></p>"
+          },
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "<p>4. 다음 그림과 같이 어떤 수를 넣으면 <보기>와 같이 $$\\mathrm{A} \to \\mathrm{B} \to \\mathrm{C}$$를 거쳐서 또 다른 수가 나오게 된다고 한다. 만약 양수 $a$를 넣었다면 어떤 수가 나오겠는가? [3.5점]\n\n<보기>\n$\\mathrm{A}$ : 어떤 수를 제곱한다.\n$\\mathrm{B}$ : 이 수를 2배 한다.\n$\\mathrm{C}$ : 이 수의 양의 제곱근을 구한다.</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q04.png\" alt=\"어떤 수에서 A 단계, B 단계, C 단계를 거쳐 결과 값으로 이어지는 단계별 순서도\" /></p>"
+          },
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>4. 다음 그림과 같이 어떤 수를 넣으면 <보기>와 같이 $$\\mathrm{A} \to \\mathrm{B} \to \\mathrm{C}$$를 거쳐서 또 다른 수가 나오게 된다고 한다. 만약 양수 $a$를 넣었다면 어떤 수가 나오겠는가? [3.5점]\n\n<보기>\n$\\mathrm{A}$ : 어떤 수를 제곱한다.\n$\\mathrm{B}$ : 이 수를 2배 한다.\n$\\mathrm{C}$ : 이 수의 양의 제곱근을 구한다.</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q04.png\" alt=\"어떤 수에서 A 단계, B 단계, C 단계를 거쳐 결과 값으로 이어지는 단계별 순서도\" /></p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "<p>4. 다음 그림과 같이 어떤 수를 넣으면 <보기>와 같이 $$\\mathrm{A} \to \\mathrm{B} \to \\mathrm{C}$$를 거쳐서 또 다른 수가 나오게 된다고 한다. 만약 양수 $a$를 넣었다면 어떤 수가 나오겠는가? [3.5점]\n\n<보기>\n$\\mathrm{A}$ : 어떤 수를 제곱한다.\n$\\mathrm{B}$ : 이 수를 2배 한다.\n$\\mathrm{C}$ : 이 수의 양의 제곱근을 구한다.</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q04.png\" alt=\"어떤 수에서 A 단계, B 단계, C 단계를 거쳐 결과 값으로 이어지는 단계별 순서도\" /></p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 양수 $a$를 입력하여 A, B, C 단계를 순차적으로 거침<br/>\n구할 대상: 최종적으로 출력되는 결과 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- A 단계: 어떤 수를 제곱함<br/>\n- B 단계: 수를 2배 함<br/>\n- C 단계: 수의 양의 제곱근을 구함<br/>\n- 양수 $a$에 대하여 $\\sqrt{a^2} = a$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 입력된 수가 양수 $a$이므로,<br/>\n   A 단계 통과 후: $a^2$<br/>\n2. B 단계 통과 후: 2배를 하므로 $2a^2$<br/>\n3. C 단계 통과 후: $2a^2$의 양의 제곱근을 구하므로<br/>\n   $$\\sqrt{2a^2} = \\sqrt{2} \\times \\sqrt{a^2} = \\sqrt{2}|a|$$\n   $a>0$이므로 $|a|=a$가 되어 최종 결과는 $\\sqrt{2}a$입니다.</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 나오는 수는 $\\sqrt{2}a$이며, 선지 ④와 일치합니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\nC 단계에서 '양의 제곱근'을 구하라고 명시되어 있으므로 $\\pm$ 부호가 붙은 선지 ②, ⑤는 오답입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "양수 a를 제곱→2배→양의 제곱근 순으로 계산하고 √(a²)=a를 적용한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 양수 $a$를 입력하여 A, B, C 단계를 순차적으로 거침<br/>\n구할 대상: 최종적으로 출력되는 결과 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- A 단계: 어떤 수를 제곱함<br/>\n- B 단계: 수를 2배 함<br/>\n- C 단계: 수의 양의 제곱근을 구함<br/>\n- 양수 $a$에 대하여 $\\sqrt{a^2} = a$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 입력된 수가 양수 $a$이므로,<br/>\n   A 단계 통과 후: $a^2$<br/>\n2. B 단계 통과 후: 2배를 하므로 $2a^2$<br/>\n3. C 단계 통과 후: $2a^2$의 양의 제곱근을 구하므로<br/>\n   $$\\sqrt{2a^2} = \\sqrt{2} \\times \\sqrt{a^2} = \\sqrt{2}|a|$$\n   $a>0$이므로 $|a|=a$가 되어 최종 결과는 $\\sqrt{2}a$입니다.</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 나오는 수는 $\\sqrt{2}a$이며, 선지 ④와 일치합니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\nC 단계에서 '양의 제곱근'을 구하라고 명시되어 있으므로 $\\pm$ 부호가 붙은 선지 ②, ⑤는 오답입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "양수 a를 제곱→2배→양의 제곱근 순으로 계산하고 √(a²)=a를 적용한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 양수 $a$를 입력하여 A, B, C 단계를 순차적으로 거침<br/>\n구할 대상: 최종적으로 출력되는 결과 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- A 단계: 어떤 수를 제곱함<br/>\n- B 단계: 수를 2배 함<br/>\n- C 단계: 수의 양의 제곱근을 구함<br/>\n- 양수 $a$에 대하여 $\\sqrt{a^2} = a$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 입력된 수가 양수 $a$이므로,<br/>\n   A 단계 통과 후: $a^2$<br/>\n2. B 단계 통과 후: 2배를 하므로 $2a^2$<br/>\n3. C 단계 통과 후: $2a^2$의 양의 제곱근을 구하므로<br/>\n   $$\\sqrt{2a^2} = \\sqrt{2} \\times \\sqrt{a^2} = \\sqrt{2}|a|$$\n   $a>0$이므로 $|a|=a$가 되어 최종 결과는 $\\sqrt{2}a$입니다.</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 나오는 수는 $\\sqrt{2}a$이며, 선지 ④와 일치합니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\nC 단계에서 '양의 제곱근'을 구하라고 명시되어 있으므로 $\\pm$ 부호가 붙은 선지 ②, ⑤는 오답입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "양수 a를 제곱→2배→양의 제곱근 순으로 계산하고 √(a²)=a를 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "<p>4. 다음 그림과 같이 어떤 수를 넣으면 <보기>와 같이 $$\\mathrm{A} \to \\mathrm{B} \to \\mathrm{C}$$를 거쳐서 또 다른 수가 나오게 된다고 한다. 만약 양수 $a$를 넣었다면 어떤 수가 나오겠는가? [3.5점]\n\n<보기>\n$\\mathrm{A}$ : 어떤 수를 제곱한다.\n$\\mathrm{B}$ : 이 수를 2배 한다.\n$\\mathrm{C}$ : 이 수의 양의 제곱근을 구한다.</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q04.png\" alt=\"어떤 수에서 A 단계, B 단계, C 단계를 거쳐 결과 값으로 이어지는 단계별 순서도\" /></p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "양수 a를 제곱→2배→양의 제곱근 순으로 계산하고 √(a²)=a를 적용한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_68f2861dd4fe5825211f48bff457524c2f22b7378b004001a5a0a5373185d3f5",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aa71ff1795871d926b102717d57691a837208997ac73627b04b8c0eb1751d08d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "12a1422c96b0fc2722d9f1d6032c6de4638a75d06fced5f0716201872b5ff492"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "<p>5. $\\dfrac{\\sqrt{9^6+27^8}}{\\sqrt{81^4+3^2\\cdot 9^{13}}}$의 값은? [4.0점]</p>"
+          },
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "<p>5. $\\dfrac{\\sqrt{9^6+27^8}}{\\sqrt{81^4+3^2\\cdot 9^{13}}}$의 값은? [4.0점]</p>"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "<p>5. $\\dfrac{\\sqrt{9^6+27^8}}{\\sqrt{81^4+3^2\\cdot 9^{13}}}$의 값은? [4.0점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "<p>5. $\\dfrac{\\sqrt{9^6+27^8}}{\\sqrt{81^4+3^2\\cdot 9^{13}}}$의 값은? [4.0점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 분수식 $\\dfrac{\\sqrt{9^6+27^8}}{\\sqrt{81^4+3^2\\cdot 9^{13}}}$<br/>\n구할 대상: 식을 간단히 계산한 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n밑을 3으로 통일하여 지수법칙을 적용합니다.<br/>\n$9 = 3^2$, $27 = 3^3$, $81 = 3^4$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 분자의 근호 안의 식을 밑이 3인 거듭제곱으로 정리합니다.<br/>\n   $$9^6 = (3^2)^6 = 3^{12}$$\n   $$27^8 = (3^3)^8 = 3^{24}$$\n   $$9^6 + 27^8 = 3^{12} + 3^{24} = 3^{12}(1 + 3^{12})$$\n2. 분모의 근호 안의 식을 정리합니다.<br/>\n   $$81^4 = (3^4)^4 = 3^{16}$$\n   $$3^2 \\cdot 9^{13} = 3^2 \\cdot (3^2)^{13} = 3^2 \\cdot 3^{26} = 3^{28}$$\n   $$81^4 + 3^2 \\cdot 9^{13} = 3^{16} + 3^{28} = 3^{16}(1 + 3^{12})$$\n3. 전체 분수식을 근호 안에서 나눕니다.<br/>\n   $$\\dfrac{9^6+27^8}{81^4+3^2\\cdot 9^{13}} = \\dfrac{3^{12}(1+3^{12})}{3^{16}(1+3^{12})} = \\dfrac{3^{12}}{3^{16}} = \\dfrac{1}{3^4} = \\dfrac{1}{81}$$\n4. 근호를 계산합니다.<br/>\n   $$\\sqrt{\\dfrac{1}{81}} = \\dfrac{1}{9}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n구하는 값은 $\\dfrac{1}{9}$이므로 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n공통인수 $(1+3^{12})$를 묶어내어 약분하는 것이 핵심 풀이 과정입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "밑을3으로 통일한 지수법칙과 공통인수 약분을 거쳐 근호의 몫을 계산하는 연계이다."
+          },
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 분수식 $\\dfrac{\\sqrt{9^6+27^8}}{\\sqrt{81^4+3^2\\cdot 9^{13}}}$<br/>\n구할 대상: 식을 간단히 계산한 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n밑을 3으로 통일하여 지수법칙을 적용합니다.<br/>\n$9 = 3^2$, $27 = 3^3$, $81 = 3^4$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 분자의 근호 안의 식을 밑이 3인 거듭제곱으로 정리합니다.<br/>\n   $$9^6 = (3^2)^6 = 3^{12}$$\n   $$27^8 = (3^3)^8 = 3^{24}$$\n   $$9^6 + 27^8 = 3^{12} + 3^{24} = 3^{12}(1 + 3^{12})$$\n2. 분모의 근호 안의 식을 정리합니다.<br/>\n   $$81^4 = (3^4)^4 = 3^{16}$$\n   $$3^2 \\cdot 9^{13} = 3^2 \\cdot (3^2)^{13} = 3^2 \\cdot 3^{26} = 3^{28}$$\n   $$81^4 + 3^2 \\cdot 9^{13} = 3^{16} + 3^{28} = 3^{16}(1 + 3^{12})$$\n3. 전체 분수식을 근호 안에서 나눕니다.<br/>\n   $$\\dfrac{9^6+27^8}{81^4+3^2\\cdot 9^{13}} = \\dfrac{3^{12}(1+3^{12})}{3^{16}(1+3^{12})} = \\dfrac{3^{12}}{3^{16}} = \\dfrac{1}{3^4} = \\dfrac{1}{81}$$\n4. 근호를 계산합니다.<br/>\n   $$\\sqrt{\\dfrac{1}{81}} = \\dfrac{1}{9}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n구하는 값은 $\\dfrac{1}{9}$이므로 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n공통인수 $(1+3^{12})$를 묶어내어 약분하는 것이 핵심 풀이 과정입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "밑을3으로 통일한 지수법칙과 공통인수 약분을 거쳐 근호의 몫을 계산하는 연계이다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 분수식 $\\dfrac{\\sqrt{9^6+27^8}}{\\sqrt{81^4+3^2\\cdot 9^{13}}}$<br/>\n구할 대상: 식을 간단히 계산한 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n밑을 3으로 통일하여 지수법칙을 적용합니다.<br/>\n$9 = 3^2$, $27 = 3^3$, $81 = 3^4$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 분자의 근호 안의 식을 밑이 3인 거듭제곱으로 정리합니다.<br/>\n   $$9^6 = (3^2)^6 = 3^{12}$$\n   $$27^8 = (3^3)^8 = 3^{24}$$\n   $$9^6 + 27^8 = 3^{12} + 3^{24} = 3^{12}(1 + 3^{12})$$\n2. 분모의 근호 안의 식을 정리합니다.<br/>\n   $$81^4 = (3^4)^4 = 3^{16}$$\n   $$3^2 \\cdot 9^{13} = 3^2 \\cdot (3^2)^{13} = 3^2 \\cdot 3^{26} = 3^{28}$$\n   $$81^4 + 3^2 \\cdot 9^{13} = 3^{16} + 3^{28} = 3^{16}(1 + 3^{12})$$\n3. 전체 분수식을 근호 안에서 나눕니다.<br/>\n   $$\\dfrac{9^6+27^8}{81^4+3^2\\cdot 9^{13}} = \\dfrac{3^{12}(1+3^{12})}{3^{16}(1+3^{12})} = \\dfrac{3^{12}}{3^{16}} = \\dfrac{1}{3^4} = \\dfrac{1}{81}$$\n4. 근호를 계산합니다.<br/>\n   $$\\sqrt{\\dfrac{1}{81}} = \\dfrac{1}{9}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n구하는 값은 $\\dfrac{1}{9}$이므로 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n공통인수 $(1+3^{12})$를 묶어내어 약분하는 것이 핵심 풀이 과정입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "밑을3으로 통일한 지수법칙과 공통인수 약분을 거쳐 근호의 몫을 계산하는 연계이다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 분수식 $\\dfrac{\\sqrt{9^6+27^8}}{\\sqrt{81^4+3^2\\cdot 9^{13}}}$<br/>\n구할 대상: 식을 간단히 계산한 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n밑을 3으로 통일하여 지수법칙을 적용합니다.<br/>\n$9 = 3^2$, $27 = 3^3$, $81 = 3^4$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 분자의 근호 안의 식을 밑이 3인 거듭제곱으로 정리합니다.<br/>\n   $$9^6 = (3^2)^6 = 3^{12}$$\n   $$27^8 = (3^3)^8 = 3^{24}$$\n   $$9^6 + 27^8 = 3^{12} + 3^{24} = 3^{12}(1 + 3^{12})$$\n2. 분모의 근호 안의 식을 정리합니다.<br/>\n   $$81^4 = (3^4)^4 = 3^{16}$$\n   $$3^2 \\cdot 9^{13} = 3^2 \\cdot (3^2)^{13} = 3^2 \\cdot 3^{26} = 3^{28}$$\n   $$81^4 + 3^2 \\cdot 9^{13} = 3^{16} + 3^{28} = 3^{16}(1 + 3^{12})$$\n3. 전체 분수식을 근호 안에서 나눕니다.<br/>\n   $$\\dfrac{9^6+27^8}{81^4+3^2\\cdot 9^{13}} = \\dfrac{3^{12}(1+3^{12})}{3^{16}(1+3^{12})} = \\dfrac{3^{12}}{3^{16}} = \\dfrac{1}{3^4} = \\dfrac{1}{81}$$\n4. 근호를 계산합니다.<br/>\n   $$\\sqrt{\\dfrac{1}{81}} = \\dfrac{1}{9}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n구하는 값은 $\\dfrac{1}{9}$이므로 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n공통인수 $(1+3^{12})$를 묶어내어 약분하는 것이 핵심 풀이 과정입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "밑을3으로 통일한 지수법칙과 공통인수 약분을 거쳐 근호의 몫을 계산하는 연계이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "밑을3으로 통일한 지수법칙과 공통인수 약분을 거쳐 근호의 몫을 계산하는 연계이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_f62dedc658e269e42f35c25e2c0aa2c868e36a21c519a66355ca0b306115df8a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fd0c653bd2b6c92e8f2e7378185e328891bd45354ef5ee4011e2872eefc838a5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d1cc2ba7bf21ff0dccae3df70be5e7a2fbc45bf3795e98ee003b65464e2be41c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>6. $(5-\\sqrt{26})^2$의 양의 제곱근을 $A$, $(\\sqrt{26}-5)^2$의 양의 제곱근을 $B$라 할 때, $A-B$의 값은? [4.0점]</p>"
+          },
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "<p>6. $(5-\\sqrt{26})^2$의 양의 제곱근을 $A$, $(\\sqrt{26}-5)^2$의 양의 제곱근을 $B$라 할 때, $A-B$의 값은? [4.0점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "<p>6. $(5-\\sqrt{26})^2$의 양의 제곱근을 $A$, $(\\sqrt{26}-5)^2$의 양의 제곱근을 $B$라 할 때, $A-B$의 값은? [4.0점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $(5-\\sqrt{26})^2$의 양의 제곱근 $A$, $(\\sqrt{26}-5)^2$의 양의 제곱근 $B$<br/>\n구할 대상: $A-B$의 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n양수 $X$에 대하여 $X^2$의 양의 제곱근은 $\\sqrt{X^2} = |X|$입니다.<br/>\n$5 = \\sqrt{25} < \\sqrt{26}$이므로 $5-\\sqrt{26} < 0$, $\\sqrt{26}-5 > 0$입니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. $A$의 값 계산:<br/>\n   $$A = \\sqrt{(5-\\sqrt{26})^2} = |5-\\sqrt{26}|$$\n   $5-\\sqrt{26} < 0$이므로 부호가 반대로 나와<br/>\n   $$A = -(5-\\sqrt{26}) = \\sqrt{26}-5$$\n2. $B$의 값 계산:<br/>\n   $$B = \\sqrt{(\\sqrt{26}-5)^2} = |\\sqrt{26}-5|$$\n   $\\sqrt{26}-5 > 0$이므로 그대로 나와<br/>\n   $$B = \\sqrt{26}-5$$\n3. $A-B$ 계산:<br/>\n   $$A-B = (\\sqrt{26}-5) - (\\sqrt{26}-5) = 0$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n$A$와 $B$의 값이 같으므로 $A-B=0$이며, 정답은 ③입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n절댓값을 벗길 때 음수 부호 처리를 정확히 하여 $A = \\sqrt{26}-5$임을 유도해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "5와√26의 대소로 두 근호 속 식의 부호를 정하고 절댓값을 해제한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $(5-\\sqrt{26})^2$의 양의 제곱근 $A$, $(\\sqrt{26}-5)^2$의 양의 제곱근 $B$<br/>\n구할 대상: $A-B$의 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n양수 $X$에 대하여 $X^2$의 양의 제곱근은 $\\sqrt{X^2} = |X|$입니다.<br/>\n$5 = \\sqrt{25} < \\sqrt{26}$이므로 $5-\\sqrt{26} < 0$, $\\sqrt{26}-5 > 0$입니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. $A$의 값 계산:<br/>\n   $$A = \\sqrt{(5-\\sqrt{26})^2} = |5-\\sqrt{26}|$$\n   $5-\\sqrt{26} < 0$이므로 부호가 반대로 나와<br/>\n   $$A = -(5-\\sqrt{26}) = \\sqrt{26}-5$$\n2. $B$의 값 계산:<br/>\n   $$B = \\sqrt{(\\sqrt{26}-5)^2} = |\\sqrt{26}-5|$$\n   $\\sqrt{26}-5 > 0$이므로 그대로 나와<br/>\n   $$B = \\sqrt{26}-5$$\n3. $A-B$ 계산:<br/>\n   $$A-B = (\\sqrt{26}-5) - (\\sqrt{26}-5) = 0$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n$A$와 $B$의 값이 같으므로 $A-B=0$이며, 정답은 ③입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n절댓값을 벗길 때 음수 부호 처리를 정확히 하여 $A = \\sqrt{26}-5$임을 유도해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "5와√26의 대소로 두 근호 속 식의 부호를 정하고 절댓값을 해제한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "5와√26의 대소로 두 근호 속 식의 부호를 정하고 절댓값을 해제한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_a4b0dc99a7b0a7228c345a98d31d31e4697e647ad583b59ab251fb2a37a06708",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3141094752332907ad19fd2b0081d6003f62a561741d9733009e15708902a3ff"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0a5f023b0631227d183fe4803185e4dbc01aa9be7bce984ac62eae3d18e27dda"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>7. $\\sqrt{110+x}$가 자연수가 되게 하는 $x$의 값 중 가장 작은 자연수는? [3.5점]</p>"
+          },
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "<p>7. $\\sqrt{110+x}$가 자연수가 되게 하는 $x$의 값 중 가장 작은 자연수는? [3.5점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "<p>7. $\\sqrt{110+x}$가 자연수가 되게 하는 $x$의 값 중 가장 작은 자연수는? [3.5점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{110+x}$가 자연수가 됨 ($x$는 자연수)<br/>\n구할 대상: $x$의 값 중 가장 작은 자연수</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n근호 안의 수 $110+x$가 어떤 자연수의 제곱(완전제곱수)이 되어야 합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 110보다 큰 완전제곱수들을 나열합니다.<br/>\n   $10^2 = 100$, $11^2 = 121$, $12^2 = 144, \\dots$<br/>\n2. $x$가 가장 작은 자연수가 되려면 $110+x$가 110보다 큰 가장 작은 완전제곱수인 121이어야 합니다.<br/>\n   $$110 + x = 121$$\n   $$x = 121 - 110 = 11$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $x$의 최솟값은 11이며, 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$x$는 자연수이므로 $x>0$이어야 하며, $110+x=121$일 때 $x=11$이 최소가 됩니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "110보다 큰 첫 완전제곱수를 찾아 근호값과 x가 자연수인 조건을 동시에 만족시킨다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{110+x}$가 자연수가 됨 ($x$는 자연수)<br/>\n구할 대상: $x$의 값 중 가장 작은 자연수</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n근호 안의 수 $110+x$가 어떤 자연수의 제곱(완전제곱수)이 되어야 합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 110보다 큰 완전제곱수들을 나열합니다.<br/>\n   $10^2 = 100$, $11^2 = 121$, $12^2 = 144, \\dots$<br/>\n2. $x$가 가장 작은 자연수가 되려면 $110+x$가 110보다 큰 가장 작은 완전제곱수인 121이어야 합니다.<br/>\n   $$110 + x = 121$$\n   $$x = 121 - 110 = 11$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $x$의 최솟값은 11이며, 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$x$는 자연수이므로 $x>0$이어야 하며, $110+x=121$일 때 $x=11$이 최소가 됩니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "110보다 큰 첫 완전제곱수를 찾아 근호값과 x가 자연수인 조건을 동시에 만족시킨다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "<p>7. $\\sqrt{110+x}$가 자연수가 되게 하는 $x$의 값 중 가장 작은 자연수는? [3.5점]</p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "110보다 큰 첫 완전제곱수를 찾아 근호값과 x가 자연수인 조건을 동시에 만족시킨다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_7e6c169886c40d6e65133fa1b2b7723990971aca5def01c2ac535c4d23101eed",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7de6607646c71417076a28a9f179697846c83805c248f6c42579fed3a89902d5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e2a800b2576f33efc394bea2cb7be2739ba3c8e7a2706ed9a452221c5e6d8afd"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>8. $\\sqrt{A}$는 세 자리의 자연수이다. 이때, $A$의 값의 범위로 옳은 것은? [3.0점]</p>"
+          },
+          {
+            "term": "자릿수",
+            "src": "stem",
+            "quote": "<p>8. $\\sqrt{A}$는 세 자리의 자연수이다. 이때, $A$의 값의 범위로 옳은 것은? [3.0점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "<p>8. $\\sqrt{A}$는 세 자리의 자연수이다. 이때, $A$의 값의 범위로 옳은 것은? [3.0점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{A}$는 세 자리의 자연수<br/>\n구할 대상: $A$의 값의 범위</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n세 자리의 자연수는 100 이상 999 이하의 정수입니다.<br/>\n즉, $100 \\le \\sqrt{A} < 1000$으로 표현할 수 있습니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n부등식의 각 변이 양수이므로 각 변을 제곱합니다.<br/>\n$$100^2 \\le (\\sqrt{A})^2 < 1000^2$$\n$$10000 \\le A < 1000000$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $A$의 범위로 옳은 것은 $10000 \\le A < 1000000$이며, 정답은 ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n세 자리 자연수의 시작은 100이고 끝은 999이므로, 미만 기호($<$)를 사용할 때는 1000의 제곱인 1,000,000 미만으로 표기해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "세 자리 자연수 범위를 제곱근의 크기와 연결하여 제곱한 A의 범위를 판정한다."
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{A}$는 세 자리의 자연수<br/>\n구할 대상: $A$의 값의 범위</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n세 자리의 자연수는 100 이상 999 이하의 정수입니다.<br/>\n즉, $100 \\le \\sqrt{A} < 1000$으로 표현할 수 있습니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n부등식의 각 변이 양수이므로 각 변을 제곱합니다.<br/>\n$$100^2 \\le (\\sqrt{A})^2 < 1000^2$$\n$$10000 \\le A < 1000000$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $A$의 범위로 옳은 것은 $10000 \\le A < 1000000$이며, 정답은 ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n세 자리 자연수의 시작은 100이고 끝은 999이므로, 미만 기호($<$)를 사용할 때는 1000의 제곱인 1,000,000 미만으로 표기해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "세 자리 자연수 범위를 제곱근의 크기와 연결하여 제곱한 A의 범위를 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "<p>8. $\\sqrt{A}$는 세 자리의 자연수이다. 이때, $A$의 값의 범위로 옳은 것은? [3.0점]</p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "세 자리 자연수 범위를 제곱근의 크기와 연결하여 제곱한 A의 범위를 판정한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_102e9440adbdd90ba5765476065fe00344ad49c894a92bb1b3450e496b5b9360",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9bbdf1f5f3f1d7a996905746fb7a411e064bafcd4cc83a69e1724c7e3146c72c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ce562ed2f7aa4658ca378b83c0596a02cff1af2a0b619f01c71f00aa21d04178"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "<p>9. 다음 조건을 만족할 때, 도형 $D$의 한 변의 길이는? [4.0점]\n\n(가) $A, B, C, D$는 모두 정사각형이다.\n(나) $A$의 넓이는 $B$의 넓이의 2배이다.\n(다) $B$의 넓이는 $C$의 넓이의 2배이다.\n(라) $C$의 넓이는 $D$의 넓이의 2배이다.\n(마) $A$의 넓이는 $1\\mathrm{cm}^2$이다.</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q09.png\" alt=\"가로로 나란히 맞닿아 있는 네 개의 정사각형 A, B, C, D의 넓이 비교 도판\" /></p>"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "<p>9. 다음 조건을 만족할 때, 도형 $D$의 한 변의 길이는? [4.0점]\n\n(가) $A, B, C, D$는 모두 정사각형이다.\n(나) $A$의 넓이는 $B$의 넓이의 2배이다.\n(다) $B$의 넓이는 $C$의 넓이의 2배이다.\n(라) $C$의 넓이는 $D$의 넓이의 2배이다.\n(마) $A$의 넓이는 $1\\mathrm{cm}^2$이다.</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q09.png\" alt=\"가로로 나란히 맞닿아 있는 네 개의 정사각형 A, B, C, D의 넓이 비교 도판\" /></p>"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "<p>9. 다음 조건을 만족할 때, 도형 $D$의 한 변의 길이는? [4.0점]\n\n(가) $A, B, C, D$는 모두 정사각형이다.\n(나) $A$의 넓이는 $B$의 넓이의 2배이다.\n(다) $B$의 넓이는 $C$의 넓이의 2배이다.\n(라) $C$의 넓이는 $D$의 넓이의 2배이다.\n(마) $A$의 넓이는 $1\\mathrm{cm}^2$이다.</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q09.png\" alt=\"가로로 나란히 맞닿아 있는 네 개의 정사각형 A, B, C, D의 넓이 비교 도판\" /></p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "<p>9. 다음 조건을 만족할 때, 도형 $D$의 한 변의 길이는? [4.0점]\n\n(가) $A, B, C, D$는 모두 정사각형이다.\n(나) $A$의 넓이는 $B$의 넓이의 2배이다.\n(다) $B$의 넓이는 $C$의 넓이의 2배이다.\n(라) $C$의 넓이는 $D$의 넓이의 2배이다.\n(마) $A$의 넓이는 $1\\mathrm{cm}^2$이다.</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q09.png\" alt=\"가로로 나란히 맞닿아 있는 네 개의 정사각형 A, B, C, D의 넓이 비교 도판\" /></p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 정사각형 $A, B, C, D$에서 각 넓이가 이전 도형의 $\\dfrac{1}{2}$배씩 감소함. $A$의 넓이는 $1\\text{ cm}^2$.<br/>\n구할 대상: 도형 $D$의 한 변의 길이</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n정사각형의 넓이가 $S$일 때, 한 변의 길이는 $\\sqrt{S}$입니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 조건에 따라 각 정사각형의 넓이를 구합니다.<br/>\n   $A$의 넓이: $S_A = 1\\text{ cm}^2$<br/>\n   $B$의 넓이: $S_B = \\dfrac{1}{2} S_A = \\dfrac{1}{2}\\text{ cm}^2$<br/>\n   $C$의 넓이: $S_C = \\dfrac{1}{2} S_B = \\dfrac{1}{4}\\text{ cm}^2$<br/>\n   $D$의 넓이: $S_D = \\dfrac{1}{2} S_C = \\dfrac{1}{8}\\text{ cm}^2$<br/>\n2. 도형 $D$의 한 변의 길이를 계산합니다.<br/>\n   $$\\text{한 변의 길이} = \\sqrt{\\dfrac{1}{8}} = \\dfrac{1}{2\\sqrt{2}} = \\dfrac{\\sqrt{2}}{4}\\text{ cm}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 도형 $D$의 한 변의 길이는 $\\dfrac{\\sqrt{2}}{4}\\text{ cm}$이며, 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n넓이의 비가 $1 : \\dfrac{1}{8}$이므로 길이의 비는 $1 : \\sqrt{\\dfrac{1}{8}} = 1 : \\dfrac{\\sqrt{2}}{4}$가 됩니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "연속한 정사각형의 넓이가 절반인 관계로 D넓이를 얻고 한 변을 제곱근과 유리화로 표현한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 정사각형 $A, B, C, D$에서 각 넓이가 이전 도형의 $\\dfrac{1}{2}$배씩 감소함. $A$의 넓이는 $1\\text{ cm}^2$.<br/>\n구할 대상: 도형 $D$의 한 변의 길이</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n정사각형의 넓이가 $S$일 때, 한 변의 길이는 $\\sqrt{S}$입니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 조건에 따라 각 정사각형의 넓이를 구합니다.<br/>\n   $A$의 넓이: $S_A = 1\\text{ cm}^2$<br/>\n   $B$의 넓이: $S_B = \\dfrac{1}{2} S_A = \\dfrac{1}{2}\\text{ cm}^2$<br/>\n   $C$의 넓이: $S_C = \\dfrac{1}{2} S_B = \\dfrac{1}{4}\\text{ cm}^2$<br/>\n   $D$의 넓이: $S_D = \\dfrac{1}{2} S_C = \\dfrac{1}{8}\\text{ cm}^2$<br/>\n2. 도형 $D$의 한 변의 길이를 계산합니다.<br/>\n   $$\\text{한 변의 길이} = \\sqrt{\\dfrac{1}{8}} = \\dfrac{1}{2\\sqrt{2}} = \\dfrac{\\sqrt{2}}{4}\\text{ cm}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 도형 $D$의 한 변의 길이는 $\\dfrac{\\sqrt{2}}{4}\\text{ cm}$이며, 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n넓이의 비가 $1 : \\dfrac{1}{8}$이므로 길이의 비는 $1 : \\sqrt{\\dfrac{1}{8}} = 1 : \\dfrac{\\sqrt{2}}{4}$가 됩니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "연속한 정사각형의 넓이가 절반인 관계로 D넓이를 얻고 한 변을 제곱근과 유리화로 표현한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 정사각형 $A, B, C, D$에서 각 넓이가 이전 도형의 $\\dfrac{1}{2}$배씩 감소함. $A$의 넓이는 $1\\text{ cm}^2$.<br/>\n구할 대상: 도형 $D$의 한 변의 길이</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n정사각형의 넓이가 $S$일 때, 한 변의 길이는 $\\sqrt{S}$입니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 조건에 따라 각 정사각형의 넓이를 구합니다.<br/>\n   $A$의 넓이: $S_A = 1\\text{ cm}^2$<br/>\n   $B$의 넓이: $S_B = \\dfrac{1}{2} S_A = \\dfrac{1}{2}\\text{ cm}^2$<br/>\n   $C$의 넓이: $S_C = \\dfrac{1}{2} S_B = \\dfrac{1}{4}\\text{ cm}^2$<br/>\n   $D$의 넓이: $S_D = \\dfrac{1}{2} S_C = \\dfrac{1}{8}\\text{ cm}^2$<br/>\n2. 도형 $D$의 한 변의 길이를 계산합니다.<br/>\n   $$\\text{한 변의 길이} = \\sqrt{\\dfrac{1}{8}} = \\dfrac{1}{2\\sqrt{2}} = \\dfrac{\\sqrt{2}}{4}\\text{ cm}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 도형 $D$의 한 변의 길이는 $\\dfrac{\\sqrt{2}}{4}\\text{ cm}$이며, 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n넓이의 비가 $1 : \\dfrac{1}{8}$이므로 길이의 비는 $1 : \\sqrt{\\dfrac{1}{8}} = 1 : \\dfrac{\\sqrt{2}}{4}$가 됩니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "연속한 정사각형의 넓이가 절반인 관계로 D넓이를 얻고 한 변을 제곱근과 유리화로 표현한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "연속한 정사각형의 넓이가 절반인 관계로 D넓이를 얻고 한 변을 제곱근과 유리화로 표현한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_6faa7252af18d59399e2c7823f8a9691ba430c6988cf052568e70ca8dbabb131",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "24efceaf51640bbf2fd792b8ac2d9e0c0abaebc92ae4ee31ca51cd376fe808ee"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2fb002cb97d02265c99bb14846a44f70ffb25071a24118c7a3ec9d691a61552c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>10. $\\sqrt{10}$을 소수로 나타내면 무한소수가 된다. 그림은 $\\sqrt{10}$을 소수로 나타내기 위하여 컴퓨터프로그램을 이용한 것으로, $\\mathrm{B}$열의 각각의 값은 $\\mathrm{A}$열의 값을 제곱한 것이다.\n\n$\\sqrt{10}$을 소수로 나타낼 때, 소수 둘째 자리의 숫자는? [3.5점]</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q10.png\" alt=\"스프레드시트에서 3.1부터 3.2까지의 값과 각 수의 제곱값이 정리된 표\" /></p>"
+          },
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "<p>10. $\\sqrt{10}$을 소수로 나타내면 무한소수가 된다. 그림은 $\\sqrt{10}$을 소수로 나타내기 위하여 컴퓨터프로그램을 이용한 것으로, $\\mathrm{B}$열의 각각의 값은 $\\mathrm{A}$열의 값을 제곱한 것이다.\n\n$\\sqrt{10}$을 소수로 나타낼 때, 소수 둘째 자리의 숫자는? [3.5점]</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q10.png\" alt=\"스프레드시트에서 3.1부터 3.2까지의 값과 각 수의 제곱값이 정리된 표\" /></p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자릿수",
+            "src": "stem",
+            "quote": "<p>10. $\\sqrt{10}$을 소수로 나타내면 무한소수가 된다. 그림은 $\\sqrt{10}$을 소수로 나타내기 위하여 컴퓨터프로그램을 이용한 것으로, $\\mathrm{B}$열의 각각의 값은 $\\mathrm{A}$열의 값을 제곱한 것이다.\n\n$\\sqrt{10}$을 소수로 나타낼 때, 소수 둘째 자리의 숫자는? [3.5점]</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q10.png\" alt=\"스프레드시트에서 3.1부터 3.2까지의 값과 각 수의 제곱값이 정리된 표\" /></p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 컴퓨터 스프레드시트에서 $\\text{A}$열의 수와 그 제곱인 $\\text{B}$열의 값<br/>\n구할 대상: $\\sqrt{10}$을 소수로 나타낼 때 소수 둘째 자리의 숫자</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n$a^2 < 10 < b^2$이면 $a < \\sqrt{10} < b$가 성립합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n표에서 $\\text{B}$열(제곱값)이 10 전후인 행을 찾습니다.<br/>\n- 7행: $\\text{A}=3.16 \\implies \\text{B}=9.9856$<br/>\n- 8행: $\\text{A}=3.17 \\implies \\text{B}=10.0489$<br/>\n$9.9856 < 10 < 10.0489$이므로<br/>\n$$3.16^2 < 10 < 3.17^2$$\n$$3.16 < \\sqrt{10} < 3.17$$\n따라서 $\\sqrt{10} = 3.16\\dots$입니다.</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n소수 첫째 자리는 1이고 소수 둘째 자리는 6이므로, 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n10에 가장 가까운 제곱수가 9.9856($3.16^2$)이므로 둘째 자리가 6임을 바로 확인할 수 있습니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱값 표에서 10을 끼우는 3.16과3.17을 읽어 소수 둘째 자리 숫자를 정한다."
+          },
+          {
+            "term": "근삿값",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 컴퓨터 스프레드시트에서 $\\text{A}$열의 수와 그 제곱인 $\\text{B}$열의 값<br/>\n구할 대상: $\\sqrt{10}$을 소수로 나타낼 때 소수 둘째 자리의 숫자</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n$a^2 < 10 < b^2$이면 $a < \\sqrt{10} < b$가 성립합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n표에서 $\\text{B}$열(제곱값)이 10 전후인 행을 찾습니다.<br/>\n- 7행: $\\text{A}=3.16 \\implies \\text{B}=9.9856$<br/>\n- 8행: $\\text{A}=3.17 \\implies \\text{B}=10.0489$<br/>\n$9.9856 < 10 < 10.0489$이므로<br/>\n$$3.16^2 < 10 < 3.17^2$$\n$$3.16 < \\sqrt{10} < 3.17$$\n따라서 $\\sqrt{10} = 3.16\\dots$입니다.</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n소수 첫째 자리는 1이고 소수 둘째 자리는 6이므로, 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n10에 가장 가까운 제곱수가 9.9856($3.16^2$)이므로 둘째 자리가 6임을 바로 확인할 수 있습니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱값 표에서 10을 끼우는 3.16과3.17을 읽어 소수 둘째 자리 숫자를 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱값 표에서 10을 끼우는 3.16과3.17을 읽어 소수 둘째 자리 숫자를 정한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_37ba06c838e2f8ca8184b0d68d1553f4a5cf8effc4ee2264d854b9ecd3ef0673",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7574e50b7ab7ede5ce03608ade5261b7116316926488e1b9a950c13dbace055c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "32df15d9ea078298607d28c8516b3699b5356cbea9351d2dff66a09331f26db2"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>11. 다음 $\\square$ 안의 수 중 무리수는 모두 몇 개인가? [3.0점]\n\n| | | |\n| :---: | :---: | :---: |\n| $-\\sqrt{1.25}$ | $-\\sqrt{\\dfrac{18}{2}}$ | $0.\\dot{2}\\dot{1}$ |\n| $3.\\dot{1}\\dot{4}$ | $\\sqrt{2}+\\sqrt{4}$ | $0.101001000\\cdots$ |\n| $\\sqrt{0.36}$ | $\\dfrac{7}{8}$ | $\\pi$ |</p>"
+          },
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "<p>11. 다음 $\\square$ 안의 수 중 무리수는 모두 몇 개인가? [3.0점]\n\n| | | |\n| :---: | :---: | :---: |\n| $-\\sqrt{1.25}$ | $-\\sqrt{\\dfrac{18}{2}}$ | $0.\\dot{2}\\dot{1}$ |\n| $3.\\dot{1}\\dot{4}$ | $\\sqrt{2}+\\sqrt{4}$ | $0.101001000\\cdots$ |\n| $\\sqrt{0.36}$ | $\\dfrac{7}{8}$ | $\\pi$ |</p>"
+          },
+          {
+            "term": "무한소수",
+            "src": "stem",
+            "quote": "<p>11. 다음 $\\square$ 안의 수 중 무리수는 모두 몇 개인가? [3.0점]\n\n| | | |\n| :---: | :---: | :---: |\n| $-\\sqrt{1.25}$ | $-\\sqrt{\\dfrac{18}{2}}$ | $0.\\dot{2}\\dot{1}$ |\n| $3.\\dot{1}\\dot{4}$ | $\\sqrt{2}+\\sqrt{4}$ | $0.101001000\\cdots$ |\n| $\\sqrt{0.36}$ | $\\dfrac{7}{8}$ | $\\pi$ |</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "<p>11. 다음 $\\square$ 안의 수 중 무리수는 모두 몇 개인가? [3.0점]\n\n| | | |\n| :---: | :---: | :---: |\n| $-\\sqrt{1.25}$ | $-\\sqrt{\\dfrac{18}{2}}$ | $0.\\dot{2}\\dot{1}$ |\n| $3.\\dot{1}\\dot{4}$ | $\\sqrt{2}+\\sqrt{4}$ | $0.101001000\\cdots$ |\n| $\\sqrt{0.36}$ | $\\dfrac{7}{8}$ | $\\pi$ |</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "분류",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 주어진 9개의 수<br/>\n구할 대상: 무리수의 총 개수</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- 유리수: 정수 또는 분수 $\\dfrac{b}{a}$ ($a, b$는 정수, $a \\ne 0$)로 나타낼 수 있는 수 (순환소수 포함)<br/>\n- 무리수: 순환하지 않는 무한소수 (근호가 벗겨지지 않는 수, $\\pi$ 등)</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 수를 분류합니다.<br/>\n1. $-\\sqrt{1.25} = -\\sqrt{\\dfrac{5}{4}} = -\\dfrac{\\sqrt{5}}{2}$ : 근호가 벗겨지지 않으므로 <strong>무리수</strong><br/>\n2. $-\\sqrt{\\dfrac{18}{2}} = -\\sqrt{9} = -3$ : 정수이므로 <strong>유리수</strong><br/>\n3. $0.\\dot{2}\\dot{1} = \\dfrac{21}{99}$ : 순환소수이므로 <strong>유리수</strong><br/>\n4. $3.\\dot{1}\\dot{4} = \\dfrac{314-3}{99}$ : 순환소수이므로 <strong>유리수</strong><br/>\n5. $\\sqrt{2}+\\sqrt{4} = \\sqrt{2}+2$ : (무리수)+(유리수)이므로 <strong>무리수</strong><br/>\n6. $0.101001000\\cdots$ : 규칙성이 있으나 순환하지 않는 무한소수이므로 <strong>무리수</strong><br/>\n7. $\\sqrt{0.36} = 0.6$ : 유한소수이므로 <strong>유리수</strong><br/>\n8. $\\dfrac{7}{8}$ : 분수이므로 <strong>유리수</strong><br/>\n9. $\\pi$ : 원주율이므로 <strong>무리수</strong></p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n무리수는 $-\\sqrt{1.25}$, $\\sqrt{2}+\\sqrt{4}$, $0.101001000\\cdots$, $\\pi$로 총 4개입니다. 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n순환소수는 모두 분수로 나타낼 수 있는 유리수라는 점을 명확히 구분해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "각 표현을 유리수/무리수 정의에 따라 분류한 뒤 무리수의 개수를 센다."
+          },
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 주어진 9개의 수<br/>\n구할 대상: 무리수의 총 개수</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- 유리수: 정수 또는 분수 $\\dfrac{b}{a}$ ($a, b$는 정수, $a \\ne 0$)로 나타낼 수 있는 수 (순환소수 포함)<br/>\n- 무리수: 순환하지 않는 무한소수 (근호가 벗겨지지 않는 수, $\\pi$ 등)</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 수를 분류합니다.<br/>\n1. $-\\sqrt{1.25} = -\\sqrt{\\dfrac{5}{4}} = -\\dfrac{\\sqrt{5}}{2}$ : 근호가 벗겨지지 않으므로 <strong>무리수</strong><br/>\n2. $-\\sqrt{\\dfrac{18}{2}} = -\\sqrt{9} = -3$ : 정수이므로 <strong>유리수</strong><br/>\n3. $0.\\dot{2}\\dot{1} = \\dfrac{21}{99}$ : 순환소수이므로 <strong>유리수</strong><br/>\n4. $3.\\dot{1}\\dot{4} = \\dfrac{314-3}{99}$ : 순환소수이므로 <strong>유리수</strong><br/>\n5. $\\sqrt{2}+\\sqrt{4} = \\sqrt{2}+2$ : (무리수)+(유리수)이므로 <strong>무리수</strong><br/>\n6. $0.101001000\\cdots$ : 규칙성이 있으나 순환하지 않는 무한소수이므로 <strong>무리수</strong><br/>\n7. $\\sqrt{0.36} = 0.6$ : 유한소수이므로 <strong>유리수</strong><br/>\n8. $\\dfrac{7}{8}$ : 분수이므로 <strong>유리수</strong><br/>\n9. $\\pi$ : 원주율이므로 <strong>무리수</strong></p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n무리수는 $-\\sqrt{1.25}$, $\\sqrt{2}+\\sqrt{4}$, $0.101001000\\cdots$, $\\pi$로 총 4개입니다. 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n순환소수는 모두 분수로 나타낼 수 있는 유리수라는 점을 명확히 구분해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "각 표현을 유리수/무리수 정의에 따라 분류한 뒤 무리수의 개수를 센다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 표현을 유리수/무리수 정의에 따라 분류한 뒤 무리수의 개수를 센다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_49b3f95af2f8f0806f9ed7af6b353f8f388ebe8fd93f431144a9eb3748d5579e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ebb605b234e30f269c38e46540582a99b69fdaca91f74e03360d6ff15b58ead2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "81868c94fcdffadd6099a492fd470570fc78aae8c2b865c502e5bdb1af97e530"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>12. 다음 부등식을 만족하는 자연수 $a$를 모두 더하면? [3.5점]\n$$3 < \\sqrt{4a} < 5$$</p>"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "<p>12. 다음 부등식을 만족하는 자연수 $a$를 모두 더하면? [3.5점]\n$$3 < \\sqrt{4a} < 5$$</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "<p>12. 다음 부등식을 만족하는 자연수 $a$를 모두 더하면? [3.5점]\n$$3 < \\sqrt{4a} < 5$$</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 부등식 $3 < \\sqrt{4a} < 5$ ($a$는 자연수)<br/>\n구할 대상: 부등식을 만족하는 자연수 $a$의 총합</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n양수들의 대소 관계: $x < y < z \\iff x^2 < y^2 < z^2$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 부등식의 각 변을 제곱합니다.<br/>\n   $$3^2 < (\\sqrt{4a})^2 < 5^2$$\n   $$9 < 4a < 25$$\n2. 각 변을 4로 나눕니다.<br/>\n   $$\\dfrac{9}{4} < a < \\dfrac{25}{4}$$\n   $$2.25 < a < 6.25$$\n3. 이를 만족하는 자연수 $a$는 $3, 4, 5, 6$입니다.<br/>\n4. 자연수 $a$의 합을 구합니다.<br/>\n   $$3 + 4 + 5 + 6 = 18$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 자연수 $a$의 모든 합은 18이며, 정답은 ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n경계값 $2.25$보다 커야 하므로 2는 포함되지 않고 3부터 시작함을 확인합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "양변을 제곱해 a의 허용범위를 정하고 범위 내 자연수를 열거해 합한다."
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 부등식 $3 < \\sqrt{4a} < 5$ ($a$는 자연수)<br/>\n구할 대상: 부등식을 만족하는 자연수 $a$의 총합</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n양수들의 대소 관계: $x < y < z \\iff x^2 < y^2 < z^2$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 부등식의 각 변을 제곱합니다.<br/>\n   $$3^2 < (\\sqrt{4a})^2 < 5^2$$\n   $$9 < 4a < 25$$\n2. 각 변을 4로 나눕니다.<br/>\n   $$\\dfrac{9}{4} < a < \\dfrac{25}{4}$$\n   $$2.25 < a < 6.25$$\n3. 이를 만족하는 자연수 $a$는 $3, 4, 5, 6$입니다.<br/>\n4. 자연수 $a$의 합을 구합니다.<br/>\n   $$3 + 4 + 5 + 6 = 18$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 자연수 $a$의 모든 합은 18이며, 정답은 ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n경계값 $2.25$보다 커야 하므로 2는 포함되지 않고 3부터 시작함을 확인합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "양변을 제곱해 a의 허용범위를 정하고 범위 내 자연수를 열거해 합한다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 부등식 $3 < \\sqrt{4a} < 5$ ($a$는 자연수)<br/>\n구할 대상: 부등식을 만족하는 자연수 $a$의 총합</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n양수들의 대소 관계: $x < y < z \\iff x^2 < y^2 < z^2$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 부등식의 각 변을 제곱합니다.<br/>\n   $$3^2 < (\\sqrt{4a})^2 < 5^2$$\n   $$9 < 4a < 25$$\n2. 각 변을 4로 나눕니다.<br/>\n   $$\\dfrac{9}{4} < a < \\dfrac{25}{4}$$\n   $$2.25 < a < 6.25$$\n3. 이를 만족하는 자연수 $a$는 $3, 4, 5, 6$입니다.<br/>\n4. 자연수 $a$의 합을 구합니다.<br/>\n   $$3 + 4 + 5 + 6 = 18$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 자연수 $a$의 모든 합은 18이며, 정답은 ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n경계값 $2.25$보다 커야 하므로 2는 포함되지 않고 3부터 시작함을 확인합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "양변을 제곱해 a의 허용범위를 정하고 범위 내 자연수를 열거해 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "<p>12. 다음 부등식을 만족하는 자연수 $a$를 모두 더하면? [3.5점]\n$$3 < \\sqrt{4a} < 5$$</p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "양변을 제곱해 a의 허용범위를 정하고 범위 내 자연수를 열거해 합한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_2f199a1b136d48f9222bef7e9001fcb8bbd9236067efc4c8c22e68da0902b956",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "53bf5003c4613e41503e7ab0fcb0ca86d4caaa135071437839107c0f7c7eb47b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4daec9d8c4ffcd31f8485c8d90897f87e90e0674584de6066d1872433e5e46fa"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "<p>13. 다음 그림에서 사각형들은 한 변의 길이가 1인 정사각형이다. 컴퍼스를 사용하여 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OP}}$, $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OQ}}$, $\\overline{\\mathrm{OC}}=\\overline{\\mathrm{OR}}$가 되도록 수직선 위에 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$를 정할 때, 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$에 대응하는 세 수의 곱은? [4.0점]</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q13.png\" alt=\"수직선 위에 모눈 직사각형들과 컴퍼스로 호를 그려 점 P, Q, R의 위치를 나타낸 기하 도판\" /></p>"
+          },
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "<p>13. 다음 그림에서 사각형들은 한 변의 길이가 1인 정사각형이다. 컴퍼스를 사용하여 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OP}}$, $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OQ}}$, $\\overline{\\mathrm{OC}}=\\overline{\\mathrm{OR}}$가 되도록 수직선 위에 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$를 정할 때, 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$에 대응하는 세 수의 곱은? [4.0점]</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q13.png\" alt=\"수직선 위에 모눈 직사각형들과 컴퍼스로 호를 그려 점 P, Q, R의 위치를 나타낸 기하 도판\" /></p>"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "<p>13. 다음 그림에서 사각형들은 한 변의 길이가 1인 정사각형이다. 컴퍼스를 사용하여 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OP}}$, $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OQ}}$, $\\overline{\\mathrm{OC}}=\\overline{\\mathrm{OR}}$가 되도록 수직선 위에 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$를 정할 때, 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$에 대응하는 세 수의 곱은? [4.0점]</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q13.png\" alt=\"수직선 위에 모눈 직사각형들과 컴퍼스로 호를 그려 점 P, Q, R의 위치를 나타낸 기하 도판\" /></p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "<p>13. 다음 그림에서 사각형들은 한 변의 길이가 1인 정사각형이다. 컴퍼스를 사용하여 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OP}}$, $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OQ}}$, $\\overline{\\mathrm{OC}}=\\overline{\\mathrm{OR}}$가 되도록 수직선 위에 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$를 정할 때, 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$에 대응하는 세 수의 곱은? [4.0점]</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q13.png\" alt=\"수직선 위에 모눈 직사각형들과 컴퍼스로 호를 그려 점 P, Q, R의 위치를 나타낸 기하 도판\" /></p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 모눈의 정사각형 한 변의 길이가 1. $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OP}}$, $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OQ}}$, $\\overline{\\mathrm{OC}}=\\overline{\\mathrm{OR}}$<br/>\n구할 대상: 세 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$에 대응하는 세 수의 곱</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n피타고라스 정리에 의해 원점 $(0, 0)$에서 점 $(x, y)$까지의 거리는 $\\sqrt{x^2+y^2}$입니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 점 $\\mathrm{A}$의 좌표는 $(1, 1)$이므로<br/>\n   $$\\overline{\\mathrm{OA}} = \\sqrt{1^2+1^2} = \\sqrt{2} \\implies \\mathrm{P} = \\sqrt{2}$$\n2. 점 $\\mathrm{B}$의 좌표는 $(2, 1)$이므로<br/>\n   $$\\overline{\\mathrm{OB}} = \\sqrt{2^2+1^2} = \\sqrt{4+1} = \\sqrt{5} \\implies \\mathrm{Q} = \\sqrt{5}$$\n3. 점 $\\mathrm{C}$의 좌표는 $(3, 1)$이므로<br/>\n   $$\\overline{\\mathrm{OC}} = \\sqrt{3^2+1^2} = \\sqrt{9+1} = \\sqrt{10} \\implies \\mathrm{R} = \\sqrt{10}$$\n4. 세 점에 대응하는 세 수의 곱을 계산합니다.<br/>\n   $$\\mathrm{P} \\times \\mathrm{Q} \\times \\mathrm{R} = \\sqrt{2} \\times \\sqrt{5} \\times \\sqrt{10} = \\sqrt{2 \\times 5 \\times 10} = \\sqrt{100} = 10$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 세 수의 곱은 10이며, 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n각 직각삼각형의 밑변과 높이를 좌표 평면 모눈에서 정확히 읽어 $\\sqrt{2}, \\sqrt{5}, \\sqrt{10}$을 도출해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "단위 격자의 빗변을 피타고라스 정리로 정하고 그 거리를 수직선에 옮겨 세 실수의 곱을 구한다."
+          },
+          {
+            "term": "회전이동",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 모눈의 정사각형 한 변의 길이가 1. $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OP}}$, $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OQ}}$, $\\overline{\\mathrm{OC}}=\\overline{\\mathrm{OR}}$<br/>\n구할 대상: 세 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$에 대응하는 세 수의 곱</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n피타고라스 정리에 의해 원점 $(0, 0)$에서 점 $(x, y)$까지의 거리는 $\\sqrt{x^2+y^2}$입니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 점 $\\mathrm{A}$의 좌표는 $(1, 1)$이므로<br/>\n   $$\\overline{\\mathrm{OA}} = \\sqrt{1^2+1^2} = \\sqrt{2} \\implies \\mathrm{P} = \\sqrt{2}$$\n2. 점 $\\mathrm{B}$의 좌표는 $(2, 1)$이므로<br/>\n   $$\\overline{\\mathrm{OB}} = \\sqrt{2^2+1^2} = \\sqrt{4+1} = \\sqrt{5} \\implies \\mathrm{Q} = \\sqrt{5}$$\n3. 점 $\\mathrm{C}$의 좌표는 $(3, 1)$이므로<br/>\n   $$\\overline{\\mathrm{OC}} = \\sqrt{3^2+1^2} = \\sqrt{9+1} = \\sqrt{10} \\implies \\mathrm{R} = \\sqrt{10}$$\n4. 세 점에 대응하는 세 수의 곱을 계산합니다.<br/>\n   $$\\mathrm{P} \\times \\mathrm{Q} \\times \\mathrm{R} = \\sqrt{2} \\times \\sqrt{5} \\times \\sqrt{10} = \\sqrt{2 \\times 5 \\times 10} = \\sqrt{100} = 10$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 세 수의 곱은 10이며, 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n각 직각삼각형의 밑변과 높이를 좌표 평면 모눈에서 정확히 읽어 $\\sqrt{2}, \\sqrt{5}, \\sqrt{10}$을 도출해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "단위 격자의 빗변을 피타고라스 정리로 정하고 그 거리를 수직선에 옮겨 세 실수의 곱을 구한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 모눈의 정사각형 한 변의 길이가 1. $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OP}}$, $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OQ}}$, $\\overline{\\mathrm{OC}}=\\overline{\\mathrm{OR}}$<br/>\n구할 대상: 세 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$에 대응하는 세 수의 곱</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n피타고라스 정리에 의해 원점 $(0, 0)$에서 점 $(x, y)$까지의 거리는 $\\sqrt{x^2+y^2}$입니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 점 $\\mathrm{A}$의 좌표는 $(1, 1)$이므로<br/>\n   $$\\overline{\\mathrm{OA}} = \\sqrt{1^2+1^2} = \\sqrt{2} \\implies \\mathrm{P} = \\sqrt{2}$$\n2. 점 $\\mathrm{B}$의 좌표는 $(2, 1)$이므로<br/>\n   $$\\overline{\\mathrm{OB}} = \\sqrt{2^2+1^2} = \\sqrt{4+1} = \\sqrt{5} \\implies \\mathrm{Q} = \\sqrt{5}$$\n3. 점 $\\mathrm{C}$의 좌표는 $(3, 1)$이므로<br/>\n   $$\\overline{\\mathrm{OC}} = \\sqrt{3^2+1^2} = \\sqrt{9+1} = \\sqrt{10} \\implies \\mathrm{R} = \\sqrt{10}$$\n4. 세 점에 대응하는 세 수의 곱을 계산합니다.<br/>\n   $$\\mathrm{P} \\times \\mathrm{Q} \\times \\mathrm{R} = \\sqrt{2} \\times \\sqrt{5} \\times \\sqrt{10} = \\sqrt{2 \\times 5 \\times 10} = \\sqrt{100} = 10$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 세 수의 곱은 10이며, 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n각 직각삼각형의 밑변과 높이를 좌표 평면 모눈에서 정확히 읽어 $\\sqrt{2}, \\sqrt{5}, \\sqrt{10}$을 도출해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "단위 격자의 빗변을 피타고라스 정리로 정하고 그 거리를 수직선에 옮겨 세 실수의 곱을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "단위 격자의 빗변을 피타고라스 정리로 정하고 그 거리를 수직선에 옮겨 세 실수의 곱을 구한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_d615a0afb82af3a72a559a392d5ead91371b94a694eb552453d8e95267b54cf4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "019faa5de86d083eaad489cf866258aed454d1811718bfe46dc9b510cac256d5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "596f97194351a034453c8d5cd7e368e2b56feaf19121718fa6eded923ad7c214"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "<p>14. 다음 세 수 $a, b, c$의 대소 관계가 옳은 것은? [3.5점]\n$$a=1+3\\sqrt{2}, \\quad b=2\\sqrt{2}+3, \\quad c=7$$</p>"
+          },
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "<p>14. 다음 세 수 $a, b, c$의 대소 관계가 옳은 것은? [3.5점]\n$$a=1+3\\sqrt{2}, \\quad b=2\\sqrt{2}+3, \\quad c=7$$</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "<p>14. 다음 세 수 $a, b, c$의 대소 관계가 옳은 것은? [3.5점]\n$$a=1+3\\sqrt{2}, \\quad b=2\\sqrt{2}+3, \\quad c=7$$</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $a=1+3\\sqrt{2}$, $b=2\\sqrt{2}+3$, $c=7$<br/>\n구할 대상: $a, b, c$의 올바른 대소 관계</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n두 수의 대소 비교는 두 수의 차를 이용하여 부호를 판정합니다.<br/>\n$X - Y > 0 \\iff X > Y$, $X - Y < 0 \\iff X < Y$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. $a$와 $b$의 대소 비교:<br/>\n   $$a - b = (1+3\\sqrt{2}) - (2\\sqrt{2}+3) = \\sqrt{2} - 2$$\n   $\\sqrt{2} = \\sqrt{2} < \\sqrt{4} = 2$이므로 $\\sqrt{2}-2 < 0$<br/>\n   $$\\therefore a < b$$\n2. $b$와 $c$의 대소 비교:<br/>\n   $$b - c = (2\\sqrt{2}+3) - 7 = 2\\sqrt{2} - 4 = \\sqrt{8} - \\sqrt{16}$$\n   $\\sqrt{8} < \\sqrt{16}$이므로 $2\\sqrt{2}-4 < 0$<br/>\n   $$\\therefore b < c$$\n3. 두 결과를 종합하면 $a < b < c$입니다.</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n대소 관계는 $a < b < c$이므로 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n근삿값 $\\sqrt{2} \\approx 1.414$를 대입해보면 $a \\approx 5.242$, $b \\approx 5.828$, $c=7$로 $a<b<c$임을 직관적으로도 확인할 수 있습니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "근호식 두 개의 차를 비교하고 마지막 유리수와의 대소를 순차로 정한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $a=1+3\\sqrt{2}$, $b=2\\sqrt{2}+3$, $c=7$<br/>\n구할 대상: $a, b, c$의 올바른 대소 관계</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n두 수의 대소 비교는 두 수의 차를 이용하여 부호를 판정합니다.<br/>\n$X - Y > 0 \\iff X > Y$, $X - Y < 0 \\iff X < Y$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. $a$와 $b$의 대소 비교:<br/>\n   $$a - b = (1+3\\sqrt{2}) - (2\\sqrt{2}+3) = \\sqrt{2} - 2$$\n   $\\sqrt{2} = \\sqrt{2} < \\sqrt{4} = 2$이므로 $\\sqrt{2}-2 < 0$<br/>\n   $$\\therefore a < b$$\n2. $b$와 $c$의 대소 비교:<br/>\n   $$b - c = (2\\sqrt{2}+3) - 7 = 2\\sqrt{2} - 4 = \\sqrt{8} - \\sqrt{16}$$\n   $\\sqrt{8} < \\sqrt{16}$이므로 $2\\sqrt{2}-4 < 0$<br/>\n   $$\\therefore b < c$$\n3. 두 결과를 종합하면 $a < b < c$입니다.</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n대소 관계는 $a < b < c$이므로 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n근삿값 $\\sqrt{2} \\approx 1.414$를 대입해보면 $a \\approx 5.242$, $b \\approx 5.828$, $c=7$로 $a<b<c$임을 직관적으로도 확인할 수 있습니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "근호식 두 개의 차를 비교하고 마지막 유리수와의 대소를 순차로 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호식 두 개의 차를 비교하고 마지막 유리수와의 대소를 순차로 정한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_0bd5f17a6cefe6d7e596bc4d1525dee04b58a73aaa57e74bbc424e69f2a23ae1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f9eb9362327f0052b22c1a52f9728c854c483953099317ba39581a10dbf75ff4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "929d4bd989d8339e436cf8909f54d7aabaf5c512f72871217b064fa0ccc799c8"
+        }
+      ],
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>15. 다음 <보기> 중 주어진 수를 근호 안의 수가 가장 작은 자연수가 되도록 $a\\sqrt{b}$의 꼴로 옳게 나타낸 것을 모두 고른 것은? [3.0점]\n\n<보기>\n㉠ $\\sqrt{12}=2\\sqrt{3}$\n㉡ $\\sqrt{44}=4\\sqrt{11}$\n㉢ $\\sqrt{60}=2\\sqrt{15}$\n㉣ $\\sqrt{128}=6\\sqrt{2}$</p>"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "<p>15. 다음 <보기> 중 주어진 수를 근호 안의 수가 가장 작은 자연수가 되도록 $a\\sqrt{b}$의 꼴로 옳게 나타낸 것을 모두 고른 것은? [3.0점]\n\n<보기>\n㉠ $\\sqrt{12}=2\\sqrt{3}$\n㉡ $\\sqrt{44}=4\\sqrt{11}$\n㉢ $\\sqrt{60}=2\\sqrt{15}$\n㉣ $\\sqrt{128}=6\\sqrt{2}$</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>15. 다음 <보기> 중 주어진 수를 근호 안의 수가 가장 작은 자연수가 되도록 $a\\sqrt{b}$의 꼴로 옳게 나타낸 것을 모두 고른 것은? [3.0점]\n\n<보기>\n㉠ $\\sqrt{12}=2\\sqrt{3}$\n㉡ $\\sqrt{44}=4\\sqrt{11}$\n㉢ $\\sqrt{60}=2\\sqrt{15}$\n㉣ $\\sqrt{128}=6\\sqrt{2}$</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: <보기>의 4개 제곱근 식<br/>\n구할 대상: 근호 안의 수가 가장 작은 자연수가 되도록 $a\\sqrt{b}$ 꼴로 옳게 나타낸 것</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n근호 안의 수에서 제곱인 인수를 찾아 근호 밖으로 꺼냅니다.<br/>\n$\\sqrt{a^2 b} = a\\sqrt{b}$ ($a>0, b>0$)</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 보기를 검토합니다.<br/>\n- ㉠ $\\sqrt{12} = \\sqrt{2^2 \\times 3} = 2\\sqrt{3}$ (옳음)<br/>\n- ㉡ $\\sqrt{44} = \\sqrt{2^2 \\times 11} = 2\\sqrt{11} \\ne 4\\sqrt{11}$ (틀림, $4\\sqrt{11}=\\sqrt{176}$)<br/>\n- ㉢ $\\sqrt{60} = \\sqrt{2^2 \\times 15} = 2\\sqrt{15}$ (옳음)<br/>\n- ㉣ $\\sqrt{128} = \\sqrt{8^2 \\times 2} = 8\\sqrt{2} \\ne 6\\sqrt{2}$ (틀림, $6\\sqrt{2}=\\sqrt{72}$)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n옳게 나타낸 것은 ㉠, ㉢이므로 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n소인수분해를 통해 제곱수를 온전히 밖으로 꺼냈는지 역으로 제곱하여 검토합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안의 제곱인수를 밖으로 꺼내 각 등식의 성립 여부를 확인한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: <보기>의 4개 제곱근 식<br/>\n구할 대상: 근호 안의 수가 가장 작은 자연수가 되도록 $a\\sqrt{b}$ 꼴로 옳게 나타낸 것</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n근호 안의 수에서 제곱인 인수를 찾아 근호 밖으로 꺼냅니다.<br/>\n$\\sqrt{a^2 b} = a\\sqrt{b}$ ($a>0, b>0$)</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 보기를 검토합니다.<br/>\n- ㉠ $\\sqrt{12} = \\sqrt{2^2 \\times 3} = 2\\sqrt{3}$ (옳음)<br/>\n- ㉡ $\\sqrt{44} = \\sqrt{2^2 \\times 11} = 2\\sqrt{11} \\ne 4\\sqrt{11}$ (틀림, $4\\sqrt{11}=\\sqrt{176}$)<br/>\n- ㉢ $\\sqrt{60} = \\sqrt{2^2 \\times 15} = 2\\sqrt{15}$ (옳음)<br/>\n- ㉣ $\\sqrt{128} = \\sqrt{8^2 \\times 2} = 8\\sqrt{2} \\ne 6\\sqrt{2}$ (틀림, $6\\sqrt{2}=\\sqrt{72}$)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n옳게 나타낸 것은 ㉠, ㉢이므로 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n소인수분해를 통해 제곱수를 온전히 밖으로 꺼냈는지 역으로 제곱하여 검토합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안의 제곱인수를 밖으로 꺼내 각 등식의 성립 여부를 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호 안의 제곱인수를 밖으로 꺼내 각 등식의 성립 여부를 확인한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_bccc2a94279b5064a1bd88a67bc79bd9911ad52182a86b1617feb33aa486a7d4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8c62f3400df831c5e58544f5b0ad1c621a772b38c39a4f29787fd9cdd10d6f2b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aa7ddc96828371d17fd6e7f7eab7ed07dfdcedc9e527269717bf755737887c68"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>16. $\\sqrt{2}=x$, $\\sqrt{3}=y$라 할 때, 다음 중 $\\sqrt{5}$를 나타내는 식은? [3.5점]</p>"
+          },
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "<p>16. $\\sqrt{2}=x$, $\\sqrt{3}=y$라 할 때, 다음 중 $\\sqrt{5}$를 나타내는 식은? [3.5점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "<p>16. $\\sqrt{2}=x$, $\\sqrt{3}=y$라 할 때, 다음 중 $\\sqrt{5}$를 나타내는 식은? [3.5점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{2}=x$, $\\sqrt{3}=y$<br/>\n구할 대상: $\\sqrt{5}$를 $x, y$로 올바르게 나타낸 식</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n$x^2 = (\\sqrt{2})^2 = 2$, $y^2 = (\\sqrt{3})^2 = 3$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 주어진 식의 양변을 제곱하면 $x^2=2$, $y^2=3$입니다.<br/>\n2. 두 식을 더하면 $x^2 + y^2 = 2 + 3 = 5$입니다.<br/>\n3. 양변에 양의 제곱근을 취하면<br/>\n   $$\\sqrt{5} = \\sqrt{x^2+y^2}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $\\sqrt{5}$를 나타내는 식은 $\\sqrt{x^2+y^2}$이며, 정답은 ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$\\sqrt{2}+\\sqrt{3} \\ne \\sqrt{5}$이므로 $x+y$나 $\\sqrt{x+y}$는 명백한 오답입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "x²=2,y²=3의 관계로 √5를 √(x²+y²)로 표시하는 직접 제곱근 정의이다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{2}=x$, $\\sqrt{3}=y$<br/>\n구할 대상: $\\sqrt{5}$를 $x, y$로 올바르게 나타낸 식</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n$x^2 = (\\sqrt{2})^2 = 2$, $y^2 = (\\sqrt{3})^2 = 3$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 주어진 식의 양변을 제곱하면 $x^2=2$, $y^2=3$입니다.<br/>\n2. 두 식을 더하면 $x^2 + y^2 = 2 + 3 = 5$입니다.<br/>\n3. 양변에 양의 제곱근을 취하면<br/>\n   $$\\sqrt{5} = \\sqrt{x^2+y^2}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $\\sqrt{5}$를 나타내는 식은 $\\sqrt{x^2+y^2}$이며, 정답은 ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$\\sqrt{2}+\\sqrt{3} \\ne \\sqrt{5}$이므로 $x+y$나 $\\sqrt{x+y}$는 명백한 오답입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "x²=2,y²=3의 관계로 √5를 √(x²+y²)로 표시하는 직접 제곱근 정의이다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{2}=x$, $\\sqrt{3}=y$<br/>\n구할 대상: $\\sqrt{5}$를 $x, y$로 올바르게 나타낸 식</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n$x^2 = (\\sqrt{2})^2 = 2$, $y^2 = (\\sqrt{3})^2 = 3$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 주어진 식의 양변을 제곱하면 $x^2=2$, $y^2=3$입니다.<br/>\n2. 두 식을 더하면 $x^2 + y^2 = 2 + 3 = 5$입니다.<br/>\n3. 양변에 양의 제곱근을 취하면<br/>\n   $$\\sqrt{5} = \\sqrt{x^2+y^2}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $\\sqrt{5}$를 나타내는 식은 $\\sqrt{x^2+y^2}$이며, 정답은 ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$\\sqrt{2}+\\sqrt{3} \\ne \\sqrt{5}$이므로 $x+y$나 $\\sqrt{x+y}$는 명백한 오답입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "x²=2,y²=3의 관계로 √5를 √(x²+y²)로 표시하는 직접 제곱근 정의이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "x²=2,y²=3의 관계로 √5를 √(x²+y²)로 표시하는 직접 제곱근 정의이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_b20d604096017a1244deb747621830353758794f51887f3a4d04e43700410f9d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ccaa1c05a584880b05c87b78af3654f46c4f019a9dbba650c9b384daa5a1a77c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6f6c2e8a8e2f7819f5b8ac35758ef8c43b5b3117ab9bc8f9628e2aee93c26c05"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>17. $\\sqrt{0.008}=k\\sqrt{5}$일 때, $k$의 값은? [3.5점]</p>"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "<p>17. $\\sqrt{0.008}=k\\sqrt{5}$일 때, $k$의 값은? [3.5점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "<p>17. $\\sqrt{0.008}=k\\sqrt{5}$일 때, $k$의 값은? [3.5점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{0.008} = k\\sqrt{5}$<br/>\n구할 대상: 유리수 $k$의 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n소수를 분수로 변환하여 근호 안의 수를 소인수분해하거나, $k = \\dfrac{\\sqrt{0.008}}{\\sqrt{5}} = \\sqrt{\\dfrac{0.008}{5}}$ 공식을 이용합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. $k$에 대해 식을 정리합니다.<br/>\n   $$k = \\sqrt{\\dfrac{0.008}{5}} = \\sqrt{0.0016}$$\n2. $0.0016$의 제곱근을 구합니다.<br/>\n   $$0.0016 = (0.04)^2 = \\left(\\dfrac{4}{100}\\right)^2 = \\left(\\dfrac{1}{25}\\right)^2$$\n   $$k = \\dfrac{1}{25}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $k = \\dfrac{1}{25}$이며, 정답은 ③입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$\\sqrt{0.008} = \\sqrt{\\dfrac{8}{1000}} = \\sqrt{\\dfrac{1}{125}} = \\dfrac{1}{5\\sqrt{5}} = \\dfrac{\\sqrt{5}}{25}$로도 동일하게 검토됩니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "소수를 분수로 바꾸고 제곱인수를 정리하여 √5의 계수를 읽는다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{0.008} = k\\sqrt{5}$<br/>\n구할 대상: 유리수 $k$의 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n소수를 분수로 변환하여 근호 안의 수를 소인수분해하거나, $k = \\dfrac{\\sqrt{0.008}}{\\sqrt{5}} = \\sqrt{\\dfrac{0.008}{5}}$ 공식을 이용합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. $k$에 대해 식을 정리합니다.<br/>\n   $$k = \\sqrt{\\dfrac{0.008}{5}} = \\sqrt{0.0016}$$\n2. $0.0016$의 제곱근을 구합니다.<br/>\n   $$0.0016 = (0.04)^2 = \\left(\\dfrac{4}{100}\\right)^2 = \\left(\\dfrac{1}{25}\\right)^2$$\n   $$k = \\dfrac{1}{25}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $k = \\dfrac{1}{25}$이며, 정답은 ③입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$\\sqrt{0.008} = \\sqrt{\\dfrac{8}{1000}} = \\sqrt{\\dfrac{1}{125}} = \\dfrac{1}{5\\sqrt{5}} = \\dfrac{\\sqrt{5}}{25}$로도 동일하게 검토됩니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "소수를 분수로 바꾸고 제곱인수를 정리하여 √5의 계수를 읽는다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{0.008} = k\\sqrt{5}$<br/>\n구할 대상: 유리수 $k$의 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n소수를 분수로 변환하여 근호 안의 수를 소인수분해하거나, $k = \\dfrac{\\sqrt{0.008}}{\\sqrt{5}} = \\sqrt{\\dfrac{0.008}{5}}$ 공식을 이용합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. $k$에 대해 식을 정리합니다.<br/>\n   $$k = \\sqrt{\\dfrac{0.008}{5}} = \\sqrt{0.0016}$$\n2. $0.0016$의 제곱근을 구합니다.<br/>\n   $$0.0016 = (0.04)^2 = \\left(\\dfrac{4}{100}\\right)^2 = \\left(\\dfrac{1}{25}\\right)^2$$\n   $$k = \\dfrac{1}{25}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $k = \\dfrac{1}{25}$이며, 정답은 ③입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$\\sqrt{0.008} = \\sqrt{\\dfrac{8}{1000}} = \\sqrt{\\dfrac{1}{125}} = \\dfrac{1}{5\\sqrt{5}} = \\dfrac{\\sqrt{5}}{25}$로도 동일하게 검토됩니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "소수를 분수로 바꾸고 제곱인수를 정리하여 √5의 계수를 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "소수를 분수로 바꾸고 제곱인수를 정리하여 √5의 계수를 읽는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_362dc2a65ac69552e0c7346a7acf1964b00451f7721ecb1ce85711c2a1f68863",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "39f1e8634fce8251f485329c2942ce36a227ca76833a3bf6f5b0019e513adfdd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dc9f4049ff5cd36c7b65d46d3c9bbd9f6cebafa771d04126aae5eb50e41f6169"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "① ㉠, ㉡"
+          },
+          {
+            "term": "소수",
+            "src": "choices",
+            "quote": "① ㉠, ㉡"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>18. 다음 <보기> 중에서 유리수를 모두 고르면? (단, $15^2=225$) [3.0점]\n\n<보기>\n㉠ $\\sqrt{0.0225}$  ㉡ $\\sqrt{0.225}$  ㉢ $\\sqrt{2250}$  ㉣ $\\sqrt{22500}$</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: <보기>의 4개 수. 단, $15^2=225$.<br/>\n구할 대상: 유리수인 것을 모두 고름</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n근호 안의 수가 유리수의 제곱이면 근호가 벗겨져 유리수가 됩니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 보기를 계산합니다.<br/>\n- ㉠ $\\sqrt{0.0225} = \\sqrt{\\dfrac{225}{10000}} = \\sqrt{\\left(\\dfrac{15}{100}\\right)^2} = \\dfrac{15}{100} = 0.15$ (유리수)<br/>\n- ㉡ $\\sqrt{0.225} = \\sqrt{\\dfrac{225}{1000}} = \\dfrac{15}{10\\sqrt{10}} = \\dfrac{3\\sqrt{10}}{20}$ (무리수)<br/>\n- ㉢ $\\sqrt{2250} = \\sqrt{225 \\times 10} = 15\\sqrt{10}$ (무리수)<br/>\n- ㉣ $\\sqrt{22500} = \\sqrt{225 \\times 100} = 15 \\times 10 = 150$ (유리수)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n유리수인 것은 ㉠, ㉣이므로 정답은 ③입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n소수점 아래 자리수나 0의 개수가 짝수 개여야 10의 거듭제곱이 근호 밖으로 정수로 빠져나옵니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "소수점 자리에 따른 완전제곱 여부로 근호값의 유리수 여부를 구별한다."
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: <보기>의 4개 수. 단, $15^2=225$.<br/>\n구할 대상: 유리수인 것을 모두 고름</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n근호 안의 수가 유리수의 제곱이면 근호가 벗겨져 유리수가 됩니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 보기를 계산합니다.<br/>\n- ㉠ $\\sqrt{0.0225} = \\sqrt{\\dfrac{225}{10000}} = \\sqrt{\\left(\\dfrac{15}{100}\\right)^2} = \\dfrac{15}{100} = 0.15$ (유리수)<br/>\n- ㉡ $\\sqrt{0.225} = \\sqrt{\\dfrac{225}{1000}} = \\dfrac{15}{10\\sqrt{10}} = \\dfrac{3\\sqrt{10}}{20}$ (무리수)<br/>\n- ㉢ $\\sqrt{2250} = \\sqrt{225 \\times 10} = 15\\sqrt{10}$ (무리수)<br/>\n- ㉣ $\\sqrt{22500} = \\sqrt{225 \\times 100} = 15 \\times 10 = 150$ (유리수)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n유리수인 것은 ㉠, ㉣이므로 정답은 ③입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n소수점 아래 자리수나 0의 개수가 짝수 개여야 10의 거듭제곱이 근호 밖으로 정수로 빠져나옵니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "소수점 자리에 따른 완전제곱 여부로 근호값의 유리수 여부를 구별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "소수점 자리에 따른 완전제곱 여부로 근호값의 유리수 여부를 구별한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_fadc80ca12c0e59dc3ef67a37535ccef4daa412f731500bf36766d48e87376af",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f9eb9362327f0052b22c1a52f9728c854c483953099317ba39581a10dbf75ff4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3fbcbae49fbb5c1ed2c7861a84cf3ecefc7b9695309cc0ca55af023d0282d6eb"
+        }
+      ],
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "<p>19. 다음 <보기>에서 분모의 유리화가 옳게 된 것을 모두 고른 것은? [3.5점]\n\n<보기>\n㉠ $\\dfrac{1}{\\sqrt{2}+1}=\\sqrt{2}-1$\n㉡ $\\dfrac{\\sqrt{3}}{\\sqrt{3}-\\sqrt{2}}=3-\\sqrt{6}$\n㉢ $\\dfrac{\\sqrt{6}+\\sqrt{2}}{\\sqrt{6}-\\sqrt{2}}=2+\\sqrt{3}$\n㉣ $\\dfrac{1}{2+\\sqrt{5}}=-2-\\sqrt{5}$</p>"
+          },
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "<p>19. 다음 <보기>에서 분모의 유리화가 옳게 된 것을 모두 고른 것은? [3.5점]\n\n<보기>\n㉠ $\\dfrac{1}{\\sqrt{2}+1}=\\sqrt{2}-1$\n㉡ $\\dfrac{\\sqrt{3}}{\\sqrt{3}-\\sqrt{2}}=3-\\sqrt{6}$\n㉢ $\\dfrac{\\sqrt{6}+\\sqrt{2}}{\\sqrt{6}-\\sqrt{2}}=2+\\sqrt{3}$\n㉣ $\\dfrac{1}{2+\\sqrt{5}}=-2-\\sqrt{5}$</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>19. 다음 <보기>에서 분모의 유리화가 옳게 된 것을 모두 고른 것은? [3.5점]\n\n<보기>\n㉠ $\\dfrac{1}{\\sqrt{2}+1}=\\sqrt{2}-1$\n㉡ $\\dfrac{\\sqrt{3}}{\\sqrt{3}-\\sqrt{2}}=3-\\sqrt{6}$\n㉢ $\\dfrac{\\sqrt{6}+\\sqrt{2}}{\\sqrt{6}-\\sqrt{2}}=2+\\sqrt{3}$\n㉣ $\\dfrac{1}{2+\\sqrt{5}}=-2-\\sqrt{5}$</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: <보기>의 분모의 유리화 식 4개<br/>\n구할 대상: 분모의 유리화가 올바르게 된 것을 모두 고름</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n합차공식 $(a+b)(a-b) = a^2 - b^2$를 이용하여 분모를 유리화합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 보기를 계산합니다.<br/>\n- ㉠ $\\dfrac{1}{\\sqrt{2}+1} = \\dfrac{\\sqrt{2}-1}{(\\sqrt{2}+1)(\\sqrt{2}-1)} = \\dfrac{\\sqrt{2}-1}{2-1} = \\sqrt{2}-1$ (옳음)<br/>\n- ㉡ $\\dfrac{\\sqrt{3}}{\\sqrt{3}-\\sqrt{2}} = \\dfrac{\\sqrt{3}(\\sqrt{3}+\\sqrt{2})}{3-2} = 3+\\sqrt{6} \\ne 3-\\sqrt{6}$ (틀림)<br/>\n- ㉢ $\\dfrac{\\sqrt{6}+\\sqrt{2}}{\\sqrt{6}-\\sqrt{2}} = \\dfrac{(\\sqrt{6}+\\sqrt{2})^2}{6-2} = \\dfrac{6+2\\sqrt{12}+2}{4} = \\dfrac{8+4\\sqrt{3}}{4} = 2+\\sqrt{3}$ (옳음)<br/>\n- ㉣ $\\dfrac{1}{2+\\sqrt{5}} = \\dfrac{2-\\sqrt{5}}{4-5} = \\dfrac{2-\\sqrt{5}}{-1} = -2+\\sqrt{5} = \\sqrt{5}-2 \\ne -2-\\sqrt{5}$ (틀림)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n옳은 것은 ㉠, ㉢이므로 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n㉣에서 분모 $4-5=-1$의 음수 부호 분배에 유의해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 켤레식을 곱한 결과를 각 보기와 대조하여 유리화의 정오를 판단한다."
+          },
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: <보기>의 분모의 유리화 식 4개<br/>\n구할 대상: 분모의 유리화가 올바르게 된 것을 모두 고름</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n합차공식 $(a+b)(a-b) = a^2 - b^2$를 이용하여 분모를 유리화합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 보기를 계산합니다.<br/>\n- ㉠ $\\dfrac{1}{\\sqrt{2}+1} = \\dfrac{\\sqrt{2}-1}{(\\sqrt{2}+1)(\\sqrt{2}-1)} = \\dfrac{\\sqrt{2}-1}{2-1} = \\sqrt{2}-1$ (옳음)<br/>\n- ㉡ $\\dfrac{\\sqrt{3}}{\\sqrt{3}-\\sqrt{2}} = \\dfrac{\\sqrt{3}(\\sqrt{3}+\\sqrt{2})}{3-2} = 3+\\sqrt{6} \\ne 3-\\sqrt{6}$ (틀림)<br/>\n- ㉢ $\\dfrac{\\sqrt{6}+\\sqrt{2}}{\\sqrt{6}-\\sqrt{2}} = \\dfrac{(\\sqrt{6}+\\sqrt{2})^2}{6-2} = \\dfrac{6+2\\sqrt{12}+2}{4} = \\dfrac{8+4\\sqrt{3}}{4} = 2+\\sqrt{3}$ (옳음)<br/>\n- ㉣ $\\dfrac{1}{2+\\sqrt{5}} = \\dfrac{2-\\sqrt{5}}{4-5} = \\dfrac{2-\\sqrt{5}}{-1} = -2+\\sqrt{5} = \\sqrt{5}-2 \\ne -2-\\sqrt{5}$ (틀림)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n옳은 것은 ㉠, ㉢이므로 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n㉣에서 분모 $4-5=-1$의 음수 부호 분배에 유의해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 켤레식을 곱한 결과를 각 보기와 대조하여 유리화의 정오를 판단한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "분모의 켤레식을 곱한 결과를 각 보기와 대조하여 유리화의 정오를 판단한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_47f992af90ea089c91cd3eab0afaaed688784b2fa7cf6622f64e4c3492bc9829",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ceedcf98b8fe54911fcc397048c8c49deff9663af6fd985df02b329618c233b4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e662f518faa873e3bcfc2f8e7a27cbf442adc7b8bddb65d6c4b3134f108b1a33"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "<p>20. $3\\sqrt{3}(2-\\sqrt{3})+\\dfrac{6}{\\sqrt{3}}-\\sqrt{48}+\\sqrt{81}$을 간단히 하면? [3.0점]</p>"
+          },
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "<p>20. $3\\sqrt{3}(2-\\sqrt{3})+\\dfrac{6}{\\sqrt{3}}-\\sqrt{48}+\\sqrt{81}$을 간단히 하면? [3.0점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "<p>20. $3\\sqrt{3}(2-\\sqrt{3})+\\dfrac{6}{\\sqrt{3}}-\\sqrt{48}+\\sqrt{81}$을 간단히 하면? [3.0점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 준식 $3\\sqrt{3}(2-\\sqrt{3})+\\dfrac{6}{\\sqrt{3}}-\\sqrt{48}+\\sqrt{81}$<br/>\n구할 대상: 식을 간단히 계산한 결과</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n분배법칙, 분모의 유리화, 근호 밖으로 수 꺼내기 공식을 적용하여 동류항끼리 묶어 정리합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 항을 순서대로 계산합니다.<br/>\n1. $3\\sqrt{3}(2-\\sqrt{3}) = 6\\sqrt{3} - 3 \\times 3 = 6\\sqrt{3} - 9$<br/>\n2. $\\dfrac{6}{\\sqrt{3}} = \\dfrac{6\\sqrt{3}}{3} = 2\\sqrt{3}$<br/>\n3. $-\\sqrt{48} = -\\sqrt{16 \\times 3} = -4\\sqrt{3}$<br/>\n4. $\\sqrt{81} = 9$<br/>\n5. 전체 식을 합산합니다.<br/>\n   $$(6\\sqrt{3}-9) + 2\\sqrt{3} - 4\\sqrt{3} + 9 = (6+2-4)\\sqrt{3} + (-9+9) = 4\\sqrt{3}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n계산 결과는 $4\\sqrt{3}$이므로 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n유리수 부분 $-9 + 9 = 0$으로 상쇄되고, 무리수 부분만 $4\\sqrt{3}$으로 남습니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "분배법칙, 단항 분모 유리화, 제곱근 단순화 후 동류근호를 합치는 정형 계산이다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 준식 $3\\sqrt{3}(2-\\sqrt{3})+\\dfrac{6}{\\sqrt{3}}-\\sqrt{48}+\\sqrt{81}$<br/>\n구할 대상: 식을 간단히 계산한 결과</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n분배법칙, 분모의 유리화, 근호 밖으로 수 꺼내기 공식을 적용하여 동류항끼리 묶어 정리합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 항을 순서대로 계산합니다.<br/>\n1. $3\\sqrt{3}(2-\\sqrt{3}) = 6\\sqrt{3} - 3 \\times 3 = 6\\sqrt{3} - 9$<br/>\n2. $\\dfrac{6}{\\sqrt{3}} = \\dfrac{6\\sqrt{3}}{3} = 2\\sqrt{3}$<br/>\n3. $-\\sqrt{48} = -\\sqrt{16 \\times 3} = -4\\sqrt{3}$<br/>\n4. $\\sqrt{81} = 9$<br/>\n5. 전체 식을 합산합니다.<br/>\n   $$(6\\sqrt{3}-9) + 2\\sqrt{3} - 4\\sqrt{3} + 9 = (6+2-4)\\sqrt{3} + (-9+9) = 4\\sqrt{3}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n계산 결과는 $4\\sqrt{3}$이므로 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n유리수 부분 $-9 + 9 = 0$으로 상쇄되고, 무리수 부분만 $4\\sqrt{3}$으로 남습니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "분배법칙, 단항 분모 유리화, 제곱근 단순화 후 동류근호를 합치는 정형 계산이다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 준식 $3\\sqrt{3}(2-\\sqrt{3})+\\dfrac{6}{\\sqrt{3}}-\\sqrt{48}+\\sqrt{81}$<br/>\n구할 대상: 식을 간단히 계산한 결과</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n분배법칙, 분모의 유리화, 근호 밖으로 수 꺼내기 공식을 적용하여 동류항끼리 묶어 정리합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 항을 순서대로 계산합니다.<br/>\n1. $3\\sqrt{3}(2-\\sqrt{3}) = 6\\sqrt{3} - 3 \\times 3 = 6\\sqrt{3} - 9$<br/>\n2. $\\dfrac{6}{\\sqrt{3}} = \\dfrac{6\\sqrt{3}}{3} = 2\\sqrt{3}$<br/>\n3. $-\\sqrt{48} = -\\sqrt{16 \\times 3} = -4\\sqrt{3}$<br/>\n4. $\\sqrt{81} = 9$<br/>\n5. 전체 식을 합산합니다.<br/>\n   $$(6\\sqrt{3}-9) + 2\\sqrt{3} - 4\\sqrt{3} + 9 = (6+2-4)\\sqrt{3} + (-9+9) = 4\\sqrt{3}$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n계산 결과는 $4\\sqrt{3}$이므로 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n유리수 부분 $-9 + 9 = 0$으로 상쇄되고, 무리수 부분만 $4\\sqrt{3}$으로 남습니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "분배법칙, 단항 분모 유리화, 제곱근 단순화 후 동류근호를 합치는 정형 계산이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "분배법칙, 단항 분모 유리화, 제곱근 단순화 후 동류근호를 합치는 정형 계산이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_192ea47b11e40668b78b2169946150d3fb25ea764089d6aaa445d30f4e56e9e7",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b330aabaa7504052547289cce9f7a77d43bd2fcf4915958e3e482aa54067d925"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fdb38bfe7141fa007190c337d8f2b5f19e88e757fb0bf5cf0f6b514558168519"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "<p>21. 다음은 $\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}$이 유리수가 되기 위한 유리수 $a$의 값을 정하는 과정을 나타낸 것이다.\n\n$$\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}=p \\text{ ($p$는 유리수)라 놓으면}$$\n$$(4\\sqrt{3}+1)p=a+\\sqrt{3}$$\n$$4p\\sqrt{3}+p=a+\\sqrt{3}$$\n그런데 $a, p$는 유리수이므로\n$$4p=\\text{[ (가) ]}, \\quad p=\\text{[ (나) ]}$$\n따라서 $a=\\text{[ (다) ]}$\n\n위의 풀이에서 (가), (나), (다)에 알맞은 것을 차례로 쓰면? [3.5점]</p>"
+          },
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "<p>21. 다음은 $\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}$이 유리수가 되기 위한 유리수 $a$의 값을 정하는 과정을 나타낸 것이다.\n\n$$\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}=p \\text{ ($p$는 유리수)라 놓으면}$$\n$$(4\\sqrt{3}+1)p=a+\\sqrt{3}$$\n$$4p\\sqrt{3}+p=a+\\sqrt{3}$$\n그런데 $a, p$는 유리수이므로\n$$4p=\\text{[ (가) ]}, \\quad p=\\text{[ (나) ]}$$\n따라서 $a=\\text{[ (다) ]}$\n\n위의 풀이에서 (가), (나), (다)에 알맞은 것을 차례로 쓰면? [3.5점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "<p>21. 다음은 $\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}$이 유리수가 되기 위한 유리수 $a$의 값을 정하는 과정을 나타낸 것이다.\n\n$$\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}=p \\text{ ($p$는 유리수)라 놓으면}$$\n$$(4\\sqrt{3}+1)p=a+\\sqrt{3}$$\n$$4p\\sqrt{3}+p=a+\\sqrt{3}$$\n그런데 $a, p$는 유리수이므로\n$$4p=\\text{[ (가) ]}, \\quad p=\\text{[ (나) ]}$$\n따라서 $a=\\text{[ (다) ]}$\n\n위의 풀이에서 (가), (나), (다)에 알맞은 것을 차례로 쓰면? [3.5점]</p>"
+          },
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "<p>21. 다음은 $\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}$이 유리수가 되기 위한 유리수 $a$의 값을 정하는 과정을 나타낸 것이다.\n\n$$\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}=p \\text{ ($p$는 유리수)라 놓으면}$$\n$$(4\\sqrt{3}+1)p=a+\\sqrt{3}$$\n$$4p\\sqrt{3}+p=a+\\sqrt{3}$$\n그런데 $a, p$는 유리수이므로\n$$4p=\\text{[ (가) ]}, \\quad p=\\text{[ (나) ]}$$\n따라서 $a=\\text{[ (다) ]}$\n\n위의 풀이에서 (가), (나), (다)에 알맞은 것을 차례로 쓰면? [3.5점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}$이 유리수가 되기 위한 증명 과정 빈칸 (가), (나), (다)<br/>\n구할 대상: (가), (나), (다)에 알맞은 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n$a, b$가 유리수이고 $\\sqrt{k}$가 무리수일 때, $a + b\\sqrt{k} = 0 \\iff a = 0, b = 0$입니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n제시된 풀이 과정을 따라갑니다.<br/>\n1. $4p\\sqrt{3} + p = a + \\sqrt{3}$ 에서 무리수와 유리수 부분을 비교합니다.<br/>\n   양변의 무리수 계수를 비교하면 $4p = 1$이어야 하므로 <strong>[ (가) ] = 1</strong> 입니다.<br/>\n2. 유리수 부분을 비교하면 $p = a$이어야 하므로 <strong>[ (나) ] = a</strong> 입니다.<br/>\n3. $4p = 1$에서 $p = \\dfrac{1}{4}$이고, $a = p$이므로 <strong>[ (다) ] = \\dfrac{1}{4}</strong> 입니다.</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 (가), (나), (다)는 차례대로 $1, a, \\dfrac{1}{4}$이며, 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n분모를 직접 유리화하여 계산해도 $\\dfrac{(a+\\sqrt{3})(4\\sqrt{3}-1)}{47} = \\dfrac{(12-a)+(4a-1)\\sqrt{3}}{47}$이 되므로, 무리수 부분 $4a-1=0 \\implies a=\\dfrac{1}{4}$로 일치함을 확인할 수 있습니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "p가 유리수라는 풀이 안내를 따라 유리부분과√3계수를 비교하여 빈칸을 채운다. 안내되지 않은 새 발상 난도로 높이지 않는다."
+          },
+          {
+            "term": "등식의성질",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}$이 유리수가 되기 위한 증명 과정 빈칸 (가), (나), (다)<br/>\n구할 대상: (가), (나), (다)에 알맞은 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n$a, b$가 유리수이고 $\\sqrt{k}$가 무리수일 때, $a + b\\sqrt{k} = 0 \\iff a = 0, b = 0$입니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n제시된 풀이 과정을 따라갑니다.<br/>\n1. $4p\\sqrt{3} + p = a + \\sqrt{3}$ 에서 무리수와 유리수 부분을 비교합니다.<br/>\n   양변의 무리수 계수를 비교하면 $4p = 1$이어야 하므로 <strong>[ (가) ] = 1</strong> 입니다.<br/>\n2. 유리수 부분을 비교하면 $p = a$이어야 하므로 <strong>[ (나) ] = a</strong> 입니다.<br/>\n3. $4p = 1$에서 $p = \\dfrac{1}{4}$이고, $a = p$이므로 <strong>[ (다) ] = \\dfrac{1}{4}</strong> 입니다.</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 (가), (나), (다)는 차례대로 $1, a, \\dfrac{1}{4}$이며, 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n분모를 직접 유리화하여 계산해도 $\\dfrac{(a+\\sqrt{3})(4\\sqrt{3}-1)}{47} = \\dfrac{(12-a)+(4a-1)\\sqrt{3}}{47}$이 되므로, 무리수 부분 $4a-1=0 \\implies a=\\dfrac{1}{4}$로 일치함을 확인할 수 있습니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "p가 유리수라는 풀이 안내를 따라 유리부분과√3계수를 비교하여 빈칸을 채운다. 안내되지 않은 새 발상 난도로 높이지 않는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "<p>21. 다음은 $\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}$이 유리수가 되기 위한 유리수 $a$의 값을 정하는 과정을 나타낸 것이다.\n\n$$\\dfrac{a+\\sqrt{3}}{4\\sqrt{3}+1}=p \\text{ ($p$는 유리수)라 놓으면}$$\n$$(4\\sqrt{3}+1)p=a+\\sqrt{3}$$\n$$4p\\sqrt{3}+p=a+\\sqrt{3}$$\n그런데 $a, p$는 유리수이므로\n$$4p=\\text{[ (가) ]}, \\quad p=\\text{[ (나) ]}$$\n따라서 $a=\\text{[ (다) ]}$\n\n위의 풀이에서 (가), (나), (다)에 알맞은 것을 차례로 쓰면? [3.5점]</p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "p가 유리수라는 풀이 안내를 따라 유리부분과√3계수를 비교하여 빈칸을 채운다. 안내되지 않은 새 발상 난도로 높이지 않는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_58fc0d897632eebb8d8a2eb47df8bfaff55d10a7c03803e38ab969aee0eeab75",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "373206a7e985358c5381b25869d3eff2966576abe1a9a3e8ac2f38bd37cf260b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0cce39cfd3606a49849c114beeae8b56dc757c8e32265ff26f139cc4bfaf1be1"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "<p>22. $\\sqrt{2.3}\\fallingdotseq 1.517$, $\\sqrt{23}\\fallingdotseq 4.796$일 때, $\\sqrt{0.023}$의 근삿값은? [3.0점]</p>"
+          },
+          {
+            "term": "근삿값",
+            "src": "stem",
+            "quote": "<p>22. $\\sqrt{2.3}\\fallingdotseq 1.517$, $\\sqrt{23}\\fallingdotseq 4.796$일 때, $\\sqrt{0.023}$의 근삿값은? [3.0점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "근삿값",
+            "src": "stem",
+            "quote": "<p>22. $\\sqrt{2.3}\\fallingdotseq 1.517$, $\\sqrt{23}\\fallingdotseq 4.796$일 때, $\\sqrt{0.023}$의 근삿값은? [3.0점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{2.3} \\fallingdotseq 1.517$, $\\sqrt{23} \\fallingdotseq 4.796$<br/>\n구할 대상: $\\sqrt{0.023}$의 근삿값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n근호 안의 수를 100의 거듭제곱을 이용하여 변형합니다.<br/>\n$\\sqrt{\\dfrac{a}{100}} = \\dfrac{\\sqrt{a}}{10}$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. $0.023 = \\dfrac{2.3}{100}$ 으로 나타냅니다.<br/>\n2. 근호를 분리합니다.<br/>\n   $$\\sqrt{0.023} = \\sqrt{\\dfrac{2.3}{100}} = \\dfrac{\\sqrt{2.3}}{10}$$\n3. 주어진 근삿값을 대입합니다.<br/>\n   $$\\dfrac{\\sqrt{2.3}}{10} \\fallingdotseq \\dfrac{1.517}{10} = 0.1517$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 구하는 근삿값은 0.1517이며, 정답은 ③입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n근호 안에서 소수점을 2자리 앞으로 이동하면 근호 밖에서는 소수점이 1자리 앞으로 이동합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안 수의 소수점 이동을 제곱인수 1/100과 연결해 근삿값을 읽는다."
+          },
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: $\\sqrt{2.3} \\fallingdotseq 1.517$, $\\sqrt{23} \\fallingdotseq 4.796$<br/>\n구할 대상: $\\sqrt{0.023}$의 근삿값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n근호 안의 수를 100의 거듭제곱을 이용하여 변형합니다.<br/>\n$\\sqrt{\\dfrac{a}{100}} = \\dfrac{\\sqrt{a}}{10}$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. $0.023 = \\dfrac{2.3}{100}$ 으로 나타냅니다.<br/>\n2. 근호를 분리합니다.<br/>\n   $$\\sqrt{0.023} = \\sqrt{\\dfrac{2.3}{100}} = \\dfrac{\\sqrt{2.3}}{10}$$\n3. 주어진 근삿값을 대입합니다.<br/>\n   $$\\dfrac{\\sqrt{2.3}}{10} \\fallingdotseq \\dfrac{1.517}{10} = 0.1517$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 구하는 근삿값은 0.1517이며, 정답은 ③입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n근호 안에서 소수점을 2자리 앞으로 이동하면 근호 밖에서는 소수점이 1자리 앞으로 이동합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안 수의 소수점 이동을 제곱인수 1/100과 연결해 근삿값을 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호 안 수의 소수점 이동을 제곱인수 1/100과 연결해 근삿값을 읽는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_1bc7c0a151d7451363893f88d3ab42827e9aa9dc6fd94ea13e337d0c0edfd64f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "20fa432666d86dc3e3bc6e53d12ba17a9fd5895f1a5185d29038b837a53cac13"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "be7ddecff76916ba8386cad3b038acbe41aa3dcc151bf4cbe691cb31987036c3"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "<p>23. <보기> 중 옳은 것을 모두 고른 것은? [4.0점]\n\n<보기>\n㉠ 두 무리수 $\\sqrt{2}$와 $\\sqrt{5}$ 사이에는 무수히 많은 무리수가 있다.\n㉡ 두 유리수 $\\dfrac{1}{3}$과 $\\dfrac{1}{2}$ 사이에는 무수히 많은 유리수가 있다.\n㉢ 모든 실수는 수직선 위의 점으로 나타낼 수 있다.</p>"
+          },
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "<p>23. <보기> 중 옳은 것을 모두 고른 것은? [4.0점]\n\n<보기>\n㉠ 두 무리수 $\\sqrt{2}$와 $\\sqrt{5}$ 사이에는 무수히 많은 무리수가 있다.\n㉡ 두 유리수 $\\dfrac{1}{3}$과 $\\dfrac{1}{2}$ 사이에는 무수히 많은 유리수가 있다.\n㉢ 모든 실수는 수직선 위의 점으로 나타낼 수 있다.</p>"
+          },
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "<p>23. <보기> 중 옳은 것을 모두 고른 것은? [4.0점]\n\n<보기>\n㉠ 두 무리수 $\\sqrt{2}$와 $\\sqrt{5}$ 사이에는 무수히 많은 무리수가 있다.\n㉡ 두 유리수 $\\dfrac{1}{3}$과 $\\dfrac{1}{2}$ 사이에는 무수히 많은 유리수가 있다.\n㉢ 모든 실수는 수직선 위의 점으로 나타낼 수 있다.</p>"
+          },
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "<p>23. <보기> 중 옳은 것을 모두 고른 것은? [4.0점]\n\n<보기>\n㉠ 두 무리수 $\\sqrt{2}$와 $\\sqrt{5}$ 사이에는 무수히 많은 무리수가 있다.\n㉡ 두 유리수 $\\dfrac{1}{3}$과 $\\dfrac{1}{2}$ 사이에는 무수히 많은 유리수가 있다.\n㉢ 모든 실수는 수직선 위의 점으로 나타낼 수 있다.</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>23. <보기> 중 옳은 것을 모두 고른 것은? [4.0점]\n\n<보기>\n㉠ 두 무리수 $\\sqrt{2}$와 $\\sqrt{5}$ 사이에는 무수히 많은 무리수가 있다.\n㉡ 두 유리수 $\\dfrac{1}{3}$과 $\\dfrac{1}{2}$ 사이에는 무수히 많은 유리수가 있다.\n㉢ 모든 실수는 수직선 위의 점으로 나타낼 수 있다.</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: <보기>의 세 명제 ㉠, ㉡, ㉢<br/>\n구할 대상: 옳은 것을 모두 고름</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- 유리수의 조밀성: 서로 다른 두 유리수 사이에는 무수히 많은 유리수가 존재합니다.<br/>\n- 무리수의 조밀성: 서로 다른 두 실수 사이에는 무수히 많은 무리수가 존재합니다.<br/>\n- 실수의 연속성: 수직선 위의 모든 점은 실수와 일대일로 완벽하게 대응합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 보기를 검토합니다.<br/>\n- ㉠ 두 무리수 $\\sqrt{2}$와 $\\sqrt{5}$ 사이에는 무수히 많은 무리수가 있다. (참: 조밀성에 의해 무수히 많은 무리수 존재)<br/>\n- ㉡ 두 유리수 $\\dfrac{1}{3}$과 $\\dfrac{1}{2}$ 사이에는 무수히 많은 유리수가 있다. (참: 조밀성에 의해 무수히 많은 유리수 존재)<br/>\n- ㉢ 모든 실수는 수직선 위의 점으로 나타낼 수 있다. (참: 수직선은 유리수와 무리수, 즉 실수 전체로 완전히 메워짐)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n㉠, ㉡, ㉢ 모두 옳으므로 정답은 ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n'유리수만으로 수직선을 가득 채울 수 있다'는 거짓이지만, '모든 실수는 수직선 위의 점으로 나타낼 수 있다'는 참입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "유리수·무리수의 조밀성과 모든 실수의 수직선 대응 성질을 각 명제에 직접 적용한다."
+          },
+          {
+            "term": "성질",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: <보기>의 세 명제 ㉠, ㉡, ㉢<br/>\n구할 대상: 옳은 것을 모두 고름</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- 유리수의 조밀성: 서로 다른 두 유리수 사이에는 무수히 많은 유리수가 존재합니다.<br/>\n- 무리수의 조밀성: 서로 다른 두 실수 사이에는 무수히 많은 무리수가 존재합니다.<br/>\n- 실수의 연속성: 수직선 위의 모든 점은 실수와 일대일로 완벽하게 대응합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 보기를 검토합니다.<br/>\n- ㉠ 두 무리수 $\\sqrt{2}$와 $\\sqrt{5}$ 사이에는 무수히 많은 무리수가 있다. (참: 조밀성에 의해 무수히 많은 무리수 존재)<br/>\n- ㉡ 두 유리수 $\\dfrac{1}{3}$과 $\\dfrac{1}{2}$ 사이에는 무수히 많은 유리수가 있다. (참: 조밀성에 의해 무수히 많은 유리수 존재)<br/>\n- ㉢ 모든 실수는 수직선 위의 점으로 나타낼 수 있다. (참: 수직선은 유리수와 무리수, 즉 실수 전체로 완전히 메워짐)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n㉠, ㉡, ㉢ 모두 옳으므로 정답은 ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n'유리수만으로 수직선을 가득 채울 수 있다'는 거짓이지만, '모든 실수는 수직선 위의 점으로 나타낼 수 있다'는 참입니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "유리수·무리수의 조밀성과 모든 실수의 수직선 대응 성질을 각 명제에 직접 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "유리수·무리수의 조밀성과 모든 실수의 수직선 대응 성질을 각 명제에 직접 적용한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_938bade26416e0aa45f7fc3a8c47a609255aabf8e13a4b83eedfac8a134b6e19",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bd8530a35929b1dda509d9118c9c1c11c6a0c2e4e788ff379355489ba7856c90"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c02ad72df1aa0ff766a9dada3437275161098296b1fcbc4bead0185bf350250a"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "① $\\sqrt{8}+7\\sqrt{2}-\\sqrt{18}=\\sqrt{2}$"
+          },
+          {
+            "term": "근호",
+            "src": "choices",
+            "quote": "② $\\sqrt{3}(2\\sqrt{6}-\\sqrt{15})=3\\sqrt{2}$"
+          },
+          {
+            "term": "분수식",
+            "src": "choices",
+            "quote": "③ $\\sqrt{2}(\\sqrt{8}-3)+\\dfrac{6-2\\sqrt{3}}{\\sqrt{2}}=4-\\sqrt{6}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>24. 다음 제곱근의 계산 중에서 옳은 것을 모두 고르시오. (정답 2개) [3.5점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 5개의 제곱근 연산식<br/>\n구할 대상: 옳은 것 2개</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n제곱근의 곱셈, 나눗셈, 덧셈, 뺄셈 및 분모의 유리화</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 선지를 검토합니다.<br/>\n① $\\sqrt{8}+7\\sqrt{2}-\\sqrt{18} = 2\\sqrt{2}+7\\sqrt{2}-3\\sqrt{2} = 6\\sqrt{2} \\ne \\sqrt{2}$ (틀림)<br/>\n② $\\sqrt{3}(2\\sqrt{6}-\\sqrt{15}) = 2\\sqrt{18}-\\sqrt{45} = 6\\sqrt{2}-3\\sqrt{5} \\ne 3\\sqrt{2}$ (틀림)<br/>\n③ $\\sqrt{2}(\\sqrt{8}-3)+\\dfrac{6-2\\sqrt{3}}{\\sqrt{2}}$:<br/>\n   $\\sqrt{2}(\\sqrt{8}-3) = 4-3\\sqrt{2}$<br/>\n   $\\dfrac{6-2\\sqrt{3}}{\\sqrt{2}} = \\dfrac{6\\sqrt{2}-2\\sqrt{6}}{2} = 3\\sqrt{2}-\\sqrt{6}$<br/>\n   합하면: $(4-3\\sqrt{2})+(3\\sqrt{2}-\\sqrt{6}) = 4-\\sqrt{6}$ (옳음)<br/>\n④ $\\sqrt{36}-2\\sqrt{(-3)^2}+\\sqrt{4^2 \\times 5^2} = 6 - 2(3) + 20 = 6 - 6 + 20 = 20 \\ne 26$ (틀림)<br/>\n⑤ $\\dfrac{3}{\\sqrt{2}}-\\dfrac{\\sqrt{18}}{4}-\\dfrac{1}{2\\sqrt{2}}$:<br/>\n   $\\dfrac{3\\sqrt{2}}{2} - \\dfrac{3\\sqrt{2}}{4} - \\dfrac{\\sqrt{2}}{4} = \\dfrac{6\\sqrt{2}-3\\sqrt{2}-\\sqrt{2}}{4} = \\dfrac{2\\sqrt{2}}{4} = \\dfrac{\\sqrt{2}}{2}$ (옳음)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n옳은 계산은 ③, ⑤이므로 정답은 ③, ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n정답이 2개인 복수정답 문항이므로 선지 5개를 전수 계산하여 ③과 ⑤가 확실히 성립함을 확인합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근 성질·분배·단항 유리화를 각 식에 정형적으로 적용하여 옳은 두 계산을 고른다."
+          },
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 5개의 제곱근 연산식<br/>\n구할 대상: 옳은 것 2개</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n제곱근의 곱셈, 나눗셈, 덧셈, 뺄셈 및 분모의 유리화</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 선지를 검토합니다.<br/>\n① $\\sqrt{8}+7\\sqrt{2}-\\sqrt{18} = 2\\sqrt{2}+7\\sqrt{2}-3\\sqrt{2} = 6\\sqrt{2} \\ne \\sqrt{2}$ (틀림)<br/>\n② $\\sqrt{3}(2\\sqrt{6}-\\sqrt{15}) = 2\\sqrt{18}-\\sqrt{45} = 6\\sqrt{2}-3\\sqrt{5} \\ne 3\\sqrt{2}$ (틀림)<br/>\n③ $\\sqrt{2}(\\sqrt{8}-3)+\\dfrac{6-2\\sqrt{3}}{\\sqrt{2}}$:<br/>\n   $\\sqrt{2}(\\sqrt{8}-3) = 4-3\\sqrt{2}$<br/>\n   $\\dfrac{6-2\\sqrt{3}}{\\sqrt{2}} = \\dfrac{6\\sqrt{2}-2\\sqrt{6}}{2} = 3\\sqrt{2}-\\sqrt{6}$<br/>\n   합하면: $(4-3\\sqrt{2})+(3\\sqrt{2}-\\sqrt{6}) = 4-\\sqrt{6}$ (옳음)<br/>\n④ $\\sqrt{36}-2\\sqrt{(-3)^2}+\\sqrt{4^2 \\times 5^2} = 6 - 2(3) + 20 = 6 - 6 + 20 = 20 \\ne 26$ (틀림)<br/>\n⑤ $\\dfrac{3}{\\sqrt{2}}-\\dfrac{\\sqrt{18}}{4}-\\dfrac{1}{2\\sqrt{2}}$:<br/>\n   $\\dfrac{3\\sqrt{2}}{2} - \\dfrac{3\\sqrt{2}}{4} - \\dfrac{\\sqrt{2}}{4} = \\dfrac{6\\sqrt{2}-3\\sqrt{2}-\\sqrt{2}}{4} = \\dfrac{2\\sqrt{2}}{4} = \\dfrac{\\sqrt{2}}{2}$ (옳음)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n옳은 계산은 ③, ⑤이므로 정답은 ③, ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n정답이 2개인 복수정답 문항이므로 선지 5개를 전수 계산하여 ③과 ⑤가 확실히 성립함을 확인합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근 성질·분배·단항 유리화를 각 식에 정형적으로 적용하여 옳은 두 계산을 고른다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 5개의 제곱근 연산식<br/>\n구할 대상: 옳은 것 2개</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n제곱근의 곱셈, 나눗셈, 덧셈, 뺄셈 및 분모의 유리화</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 선지를 검토합니다.<br/>\n① $\\sqrt{8}+7\\sqrt{2}-\\sqrt{18} = 2\\sqrt{2}+7\\sqrt{2}-3\\sqrt{2} = 6\\sqrt{2} \\ne \\sqrt{2}$ (틀림)<br/>\n② $\\sqrt{3}(2\\sqrt{6}-\\sqrt{15}) = 2\\sqrt{18}-\\sqrt{45} = 6\\sqrt{2}-3\\sqrt{5} \\ne 3\\sqrt{2}$ (틀림)<br/>\n③ $\\sqrt{2}(\\sqrt{8}-3)+\\dfrac{6-2\\sqrt{3}}{\\sqrt{2}}$:<br/>\n   $\\sqrt{2}(\\sqrt{8}-3) = 4-3\\sqrt{2}$<br/>\n   $\\dfrac{6-2\\sqrt{3}}{\\sqrt{2}} = \\dfrac{6\\sqrt{2}-2\\sqrt{6}}{2} = 3\\sqrt{2}-\\sqrt{6}$<br/>\n   합하면: $(4-3\\sqrt{2})+(3\\sqrt{2}-\\sqrt{6}) = 4-\\sqrt{6}$ (옳음)<br/>\n④ $\\sqrt{36}-2\\sqrt{(-3)^2}+\\sqrt{4^2 \\times 5^2} = 6 - 2(3) + 20 = 6 - 6 + 20 = 20 \\ne 26$ (틀림)<br/>\n⑤ $\\dfrac{3}{\\sqrt{2}}-\\dfrac{\\sqrt{18}}{4}-\\dfrac{1}{2\\sqrt{2}}$:<br/>\n   $\\dfrac{3\\sqrt{2}}{2} - \\dfrac{3\\sqrt{2}}{4} - \\dfrac{\\sqrt{2}}{4} = \\dfrac{6\\sqrt{2}-3\\sqrt{2}-\\sqrt{2}}{4} = \\dfrac{2\\sqrt{2}}{4} = \\dfrac{\\sqrt{2}}{2}$ (옳음)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n옳은 계산은 ③, ⑤이므로 정답은 ③, ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n정답이 2개인 복수정답 문항이므로 선지 5개를 전수 계산하여 ③과 ⑤가 확실히 성립함을 확인합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근 성질·분배·단항 유리화를 각 식에 정형적으로 적용하여 옳은 두 계산을 고른다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 5개의 제곱근 연산식<br/>\n구할 대상: 옳은 것 2개</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n제곱근의 곱셈, 나눗셈, 덧셈, 뺄셈 및 분모의 유리화</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 선지를 검토합니다.<br/>\n① $\\sqrt{8}+7\\sqrt{2}-\\sqrt{18} = 2\\sqrt{2}+7\\sqrt{2}-3\\sqrt{2} = 6\\sqrt{2} \\ne \\sqrt{2}$ (틀림)<br/>\n② $\\sqrt{3}(2\\sqrt{6}-\\sqrt{15}) = 2\\sqrt{18}-\\sqrt{45} = 6\\sqrt{2}-3\\sqrt{5} \\ne 3\\sqrt{2}$ (틀림)<br/>\n③ $\\sqrt{2}(\\sqrt{8}-3)+\\dfrac{6-2\\sqrt{3}}{\\sqrt{2}}$:<br/>\n   $\\sqrt{2}(\\sqrt{8}-3) = 4-3\\sqrt{2}$<br/>\n   $\\dfrac{6-2\\sqrt{3}}{\\sqrt{2}} = \\dfrac{6\\sqrt{2}-2\\sqrt{6}}{2} = 3\\sqrt{2}-\\sqrt{6}$<br/>\n   합하면: $(4-3\\sqrt{2})+(3\\sqrt{2}-\\sqrt{6}) = 4-\\sqrt{6}$ (옳음)<br/>\n④ $\\sqrt{36}-2\\sqrt{(-3)^2}+\\sqrt{4^2 \\times 5^2} = 6 - 2(3) + 20 = 6 - 6 + 20 = 20 \\ne 26$ (틀림)<br/>\n⑤ $\\dfrac{3}{\\sqrt{2}}-\\dfrac{\\sqrt{18}}{4}-\\dfrac{1}{2\\sqrt{2}}$:<br/>\n   $\\dfrac{3\\sqrt{2}}{2} - \\dfrac{3\\sqrt{2}}{4} - \\dfrac{\\sqrt{2}}{4} = \\dfrac{6\\sqrt{2}-3\\sqrt{2}-\\sqrt{2}}{4} = \\dfrac{2\\sqrt{2}}{4} = \\dfrac{\\sqrt{2}}{2}$ (옳음)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n옳은 계산은 ③, ⑤이므로 정답은 ③, ⑤입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n정답이 2개인 복수정답 문항이므로 선지 5개를 전수 계산하여 ③과 ⑤가 확실히 성립함을 확인합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근 성질·분배·단항 유리화를 각 식에 정형적으로 적용하여 옳은 두 계산을 고른다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근 성질·분배·단항 유리화를 각 식에 정형적으로 적용하여 옳은 두 계산을 고른다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_2d317de9195f87e4b67e09a1af92e2fc1b3fa65ad6842efdcb9c5bbf154e2750",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3c57736a56c14712adf21daba3103893652460ace05b11a5777d159da97c746f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e3762daf286edfcb63594af998838159aa65d2d3ae17f6240c99a6071c3fcad7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "<p>25. 자연수 $a, b$에 대하여\n$$\\dfrac{1}{1\\sqrt{2}+2\\sqrt{1}}+\\dfrac{1}{2\\sqrt{3}+3\\sqrt{2}}+\\dfrac{1}{3\\sqrt{4}+4\\sqrt{3}}+\\cdots+\\dfrac{1}{(100^2-1)\\sqrt{100^2}+100^2\\sqrt{100^2-1}}=\\dfrac{b}{a}$$\n일 때, $b-a$의 값은? (단, $a, b$는 서로소) [5.0점]</p>"
+          },
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "<p>25. 자연수 $a, b$에 대하여\n$$\\dfrac{1}{1\\sqrt{2}+2\\sqrt{1}}+\\dfrac{1}{2\\sqrt{3}+3\\sqrt{2}}+\\dfrac{1}{3\\sqrt{4}+4\\sqrt{3}}+\\cdots+\\dfrac{1}{(100^2-1)\\sqrt{100^2}+100^2\\sqrt{100^2-1}}=\\dfrac{b}{a}$$\n일 때, $b-a$의 값은? (단, $a, b$는 서로소) [5.0점]</p>"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "<p>25. 자연수 $a, b$에 대하여\n$$\\dfrac{1}{1\\sqrt{2}+2\\sqrt{1}}+\\dfrac{1}{2\\sqrt{3}+3\\sqrt{2}}+\\dfrac{1}{3\\sqrt{4}+4\\sqrt{3}}+\\cdots+\\dfrac{1}{(100^2-1)\\sqrt{100^2}+100^2\\sqrt{100^2-1}}=\\dfrac{b}{a}$$\n일 때, $b-a$의 값은? (단, $a, b$는 서로소) [5.0점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "<p>25. 자연수 $a, b$에 대하여\n$$\\dfrac{1}{1\\sqrt{2}+2\\sqrt{1}}+\\dfrac{1}{2\\sqrt{3}+3\\sqrt{2}}+\\dfrac{1}{3\\sqrt{4}+4\\sqrt{3}}+\\cdots+\\dfrac{1}{(100^2-1)\\sqrt{100^2}+100^2\\sqrt{100^2-1}}=\\dfrac{b}{a}$$\n일 때, $b-a$의 값은? (단, $a, b$는 서로소) [5.0점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 급수 식 $\\sum \\dfrac{1}{n\\sqrt{n+1}+(n+1)\\sqrt{n}}$의 합이 $\\dfrac{b}{a}$ ($a, b$는 서로소인 자연수)<br/>\n구할 대상: $b-a$의 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n일반항 $\\dfrac{1}{n\\sqrt{n+1}+(n+1)\\sqrt{n}}$의 분모를 유리화합니다.<br/>\n$$\\dfrac{1}{\\sqrt{n}\\sqrt{n+1}(\\sqrt{n+1}+\\sqrt{n})} = \\dfrac{\\sqrt{n+1}-\\sqrt{n}}{\\sqrt{n}\\sqrt{n+1}(n+1-n)} = \\dfrac{1}{\\sqrt{n}} - \\dfrac{1}{\\sqrt{n+1}}$$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 일반항을 분해하면 각 항이 다음과 같이 소거되는 망원급수 형태입니다.<br/>\n   $n=1: \\dfrac{1}{\\sqrt{1}} - \\dfrac{1}{\\sqrt{2}}$<br/>\n   $n=2: \\dfrac{1}{\\sqrt{2}} - \\dfrac{1}{\\sqrt{3}}$<br/>\n   $\\dots$<br/>\n   $n=100^2-1: \\dfrac{1}{\\sqrt{100^2-1}} - \\dfrac{1}{\\sqrt{100^2}}$<br/>\n2. 모든 항을 더하면 중간 항들이 전부 소거됩니다.<br/>\n   $$\\text{합} = 1 - \\dfrac{1}{\\sqrt{100^2}} = 1 - \\dfrac{1}{100} = \\dfrac{99}{100}$$\n3. $a=100, b=99$이며, 99와 100은 서로소입니다.<br/>\n4. $b-a$의 값을 구합니다.<br/>\n   $$b - a = 99 - 100 = -1$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $b-a = -1$이며, 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n마지막 항이 $100^2$이므로 제곱근을 취하면 100이 된다는 점을 정확히 파악해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "분모에서 공통 근호인수를 분리한 뒤 켤레식 유리화로 역수 차를 만들어 긴 합을 망원합으로 소거한다. 서로소 조건으로 기약분수의 분자분모를 확정한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 급수 식 $\\sum \\dfrac{1}{n\\sqrt{n+1}+(n+1)\\sqrt{n}}$의 합이 $\\dfrac{b}{a}$ ($a, b$는 서로소인 자연수)<br/>\n구할 대상: $b-a$의 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n일반항 $\\dfrac{1}{n\\sqrt{n+1}+(n+1)\\sqrt{n}}$의 분모를 유리화합니다.<br/>\n$$\\dfrac{1}{\\sqrt{n}\\sqrt{n+1}(\\sqrt{n+1}+\\sqrt{n})} = \\dfrac{\\sqrt{n+1}-\\sqrt{n}}{\\sqrt{n}\\sqrt{n+1}(n+1-n)} = \\dfrac{1}{\\sqrt{n}} - \\dfrac{1}{\\sqrt{n+1}}$$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 일반항을 분해하면 각 항이 다음과 같이 소거되는 망원급수 형태입니다.<br/>\n   $n=1: \\dfrac{1}{\\sqrt{1}} - \\dfrac{1}{\\sqrt{2}}$<br/>\n   $n=2: \\dfrac{1}{\\sqrt{2}} - \\dfrac{1}{\\sqrt{3}}$<br/>\n   $\\dots$<br/>\n   $n=100^2-1: \\dfrac{1}{\\sqrt{100^2-1}} - \\dfrac{1}{\\sqrt{100^2}}$<br/>\n2. 모든 항을 더하면 중간 항들이 전부 소거됩니다.<br/>\n   $$\\text{합} = 1 - \\dfrac{1}{\\sqrt{100^2}} = 1 - \\dfrac{1}{100} = \\dfrac{99}{100}$$\n3. $a=100, b=99$이며, 99와 100은 서로소입니다.<br/>\n4. $b-a$의 값을 구합니다.<br/>\n   $$b - a = 99 - 100 = -1$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $b-a = -1$이며, 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n마지막 항이 $100^2$이므로 제곱근을 취하면 100이 된다는 점을 정확히 파악해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "분모에서 공통 근호인수를 분리한 뒤 켤레식 유리화로 역수 차를 만들어 긴 합을 망원합으로 소거한다. 서로소 조건으로 기약분수의 분자분모를 확정한다."
+          },
+          {
+            "term": "망원합",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 급수 식 $\\sum \\dfrac{1}{n\\sqrt{n+1}+(n+1)\\sqrt{n}}$의 합이 $\\dfrac{b}{a}$ ($a, b$는 서로소인 자연수)<br/>\n구할 대상: $b-a$의 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n일반항 $\\dfrac{1}{n\\sqrt{n+1}+(n+1)\\sqrt{n}}$의 분모를 유리화합니다.<br/>\n$$\\dfrac{1}{\\sqrt{n}\\sqrt{n+1}(\\sqrt{n+1}+\\sqrt{n})} = \\dfrac{\\sqrt{n+1}-\\sqrt{n}}{\\sqrt{n}\\sqrt{n+1}(n+1-n)} = \\dfrac{1}{\\sqrt{n}} - \\dfrac{1}{\\sqrt{n+1}}$$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 일반항을 분해하면 각 항이 다음과 같이 소거되는 망원급수 형태입니다.<br/>\n   $n=1: \\dfrac{1}{\\sqrt{1}} - \\dfrac{1}{\\sqrt{2}}$<br/>\n   $n=2: \\dfrac{1}{\\sqrt{2}} - \\dfrac{1}{\\sqrt{3}}$<br/>\n   $\\dots$<br/>\n   $n=100^2-1: \\dfrac{1}{\\sqrt{100^2-1}} - \\dfrac{1}{\\sqrt{100^2}}$<br/>\n2. 모든 항을 더하면 중간 항들이 전부 소거됩니다.<br/>\n   $$\\text{합} = 1 - \\dfrac{1}{\\sqrt{100^2}} = 1 - \\dfrac{1}{100} = \\dfrac{99}{100}$$\n3. $a=100, b=99$이며, 99와 100은 서로소입니다.<br/>\n4. $b-a$의 값을 구합니다.<br/>\n   $$b - a = 99 - 100 = -1$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $b-a = -1$이며, 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n마지막 항이 $100^2$이므로 제곱근을 취하면 100이 된다는 점을 정확히 파악해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "분모에서 공통 근호인수를 분리한 뒤 켤레식 유리화로 역수 차를 만들어 긴 합을 망원합으로 소거한다. 서로소 조건으로 기약분수의 분자분모를 확정한다."
+          },
+          {
+            "term": "기약분수",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 급수 식 $\\sum \\dfrac{1}{n\\sqrt{n+1}+(n+1)\\sqrt{n}}$의 합이 $\\dfrac{b}{a}$ ($a, b$는 서로소인 자연수)<br/>\n구할 대상: $b-a$의 값</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n일반항 $\\dfrac{1}{n\\sqrt{n+1}+(n+1)\\sqrt{n}}$의 분모를 유리화합니다.<br/>\n$$\\dfrac{1}{\\sqrt{n}\\sqrt{n+1}(\\sqrt{n+1}+\\sqrt{n})} = \\dfrac{\\sqrt{n+1}-\\sqrt{n}}{\\sqrt{n}\\sqrt{n+1}(n+1-n)} = \\dfrac{1}{\\sqrt{n}} - \\dfrac{1}{\\sqrt{n+1}}$$</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 일반항을 분해하면 각 항이 다음과 같이 소거되는 망원급수 형태입니다.<br/>\n   $n=1: \\dfrac{1}{\\sqrt{1}} - \\dfrac{1}{\\sqrt{2}}$<br/>\n   $n=2: \\dfrac{1}{\\sqrt{2}} - \\dfrac{1}{\\sqrt{3}}$<br/>\n   $\\dots$<br/>\n   $n=100^2-1: \\dfrac{1}{\\sqrt{100^2-1}} - \\dfrac{1}{\\sqrt{100^2}}$<br/>\n2. 모든 항을 더하면 중간 항들이 전부 소거됩니다.<br/>\n   $$\\text{합} = 1 - \\dfrac{1}{\\sqrt{100^2}} = 1 - \\dfrac{1}{100} = \\dfrac{99}{100}$$\n3. $a=100, b=99$이며, 99와 100은 서로소입니다.<br/>\n4. $b-a$의 값을 구합니다.<br/>\n   $$b - a = 99 - 100 = -1$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 $b-a = -1$이며, 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n마지막 항이 $100^2$이므로 제곱근을 취하면 100이 된다는 점을 정확히 파악해야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "분모에서 공통 근호인수를 분리한 뒤 켤레식 유리화로 역수 차를 만들어 긴 합을 망원합으로 소거한다. 서로소 조건으로 기약분수의 분자분모를 확정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "<p>25. 자연수 $a, b$에 대하여\n$$\\dfrac{1}{1\\sqrt{2}+2\\sqrt{1}}+\\dfrac{1}{2\\sqrt{3}+3\\sqrt{2}}+\\dfrac{1}{3\\sqrt{4}+4\\sqrt{3}}+\\cdots+\\dfrac{1}{(100^2-1)\\sqrt{100^2}+100^2\\sqrt{100^2-1}}=\\dfrac{b}{a}$$\n일 때, $b-a$의 값은? (단, $a, b$는 서로소) [5.0점]</p>"
+          },
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "<p>25. 자연수 $a, b$에 대하여\n$$\\dfrac{1}{1\\sqrt{2}+2\\sqrt{1}}+\\dfrac{1}{2\\sqrt{3}+3\\sqrt{2}}+\\dfrac{1}{3\\sqrt{4}+4\\sqrt{3}}+\\cdots+\\dfrac{1}{(100^2-1)\\sqrt{100^2}+100^2\\sqrt{100^2-1}}=\\dfrac{b}{a}$$\n일 때, $b-a$의 값은? (단, $a, b$는 서로소) [5.0점]</p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "분모에서 공통 근호인수를 분리한 뒤 켤레식 유리화로 역수 차를 만들어 긴 합을 망원합으로 소거한다. 서로소 조건으로 기약분수의 분자분모를 확정한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 26,
+      "questionUid": "qid_v1_f734be3adba7bb556c5647d4f5a5809758e74b01668609c0d9ff13cb707eb2c2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "823d7bfb6e3bc549c18996e7f391708847cbae52df0db2267c4277f9f063eb21"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d24b6c3e3e3651e26fe6c5565b1779c7a28a68b02771cc9d09920086d554d574"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "<p>26. 대천리중학교 시험지 규격은 A4용지가 사용되고 있다. 박봉균 선생님은 실수로 A5용지 규격으로 시험문제를 출제하였으나 확대 복사하면 시험을 무사히 치룰 수 있다. 약 몇 %로 확대해야 하는가?\n(A4용지는 '절반으로 잘랐을 때, 처음의 종이와 닮음이어야 한다.' 는 원리로 폭과 길이의 비율을 결정한다. A4용지를 절반으로 자른 종이가 A5용지다.\n단, $\\sqrt{2}\\fallingdotseq 1.41$, $\\sqrt{3}\\fallingdotseq 1.73$, $\\sqrt{5}\\fallingdotseq 2.24$) [4.0점]</p>"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "<p>26. 대천리중학교 시험지 규격은 A4용지가 사용되고 있다. 박봉균 선생님은 실수로 A5용지 규격으로 시험문제를 출제하였으나 확대 복사하면 시험을 무사히 치룰 수 있다. 약 몇 %로 확대해야 하는가?\n(A4용지는 '절반으로 잘랐을 때, 처음의 종이와 닮음이어야 한다.' 는 원리로 폭과 길이의 비율을 결정한다. A4용지를 절반으로 자른 종이가 A5용지다.\n단, $\\sqrt{2}\\fallingdotseq 1.41$, $\\sqrt{3}\\fallingdotseq 1.73$, $\\sqrt{5}\\fallingdotseq 2.24$) [4.0점]</p>"
+          },
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "<p>26. 대천리중학교 시험지 규격은 A4용지가 사용되고 있다. 박봉균 선생님은 실수로 A5용지 규격으로 시험문제를 출제하였으나 확대 복사하면 시험을 무사히 치룰 수 있다. 약 몇 %로 확대해야 하는가?\n(A4용지는 '절반으로 잘랐을 때, 처음의 종이와 닮음이어야 한다.' 는 원리로 폭과 길이의 비율을 결정한다. A4용지를 절반으로 자른 종이가 A5용지다.\n단, $\\sqrt{2}\\fallingdotseq 1.41$, $\\sqrt{3}\\fallingdotseq 1.73$, $\\sqrt{5}\\fallingdotseq 2.24$) [4.0점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "<p>26. 대천리중학교 시험지 규격은 A4용지가 사용되고 있다. 박봉균 선생님은 실수로 A5용지 규격으로 시험문제를 출제하였으나 확대 복사하면 시험을 무사히 치룰 수 있다. 약 몇 %로 확대해야 하는가?\n(A4용지는 '절반으로 잘랐을 때, 처음의 종이와 닮음이어야 한다.' 는 원리로 폭과 길이의 비율을 결정한다. A4용지를 절반으로 자른 종이가 A5용지다.\n단, $\\sqrt{2}\\fallingdotseq 1.41$, $\\sqrt{3}\\fallingdotseq 1.73$, $\\sqrt{5}\\fallingdotseq 2.24$) [4.0점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: A4용지를 절반으로 자른 것이 A5용지이며 두 종이는 서로 닮음. A5용지를 A4용지 크기로 확대 복사함. $\\sqrt{2} \\fallingdotseq 1.41$.<br/>\n구할 대상: 확대 복사해야 하는 비율(%)</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- 넓이의 비가 $m : n$일 때 닮음비(길이의 비)는 $\\sqrt{m} : \\sqrt{n}$입니다.<br/>\n- 복사기의 확대 비율은 넓이가 아닌 '길이의 확대 비율'을 기준으로 합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. A4용지의 넓이는 A5용지의 넓이의 2배이므로,<br/>\n   $$\\text{A5의 넓이} : \\text{A4의 넓이} = 1 : 2$$\n2. 두 용지는 닮음이므로 길이의 비(닮음비)는 넓이의 비의 제곱근입니다.<br/>\n   $$\\text{길이의 비} = \\sqrt{1} : \\sqrt{2} = 1 : \\sqrt{2}$$\n3. 따라서 A5를 A4로 확대할 때 길이의 배율은 $\\sqrt{2}$배입니다.<br/>\n   $$\\sqrt{2} \\fallingdotseq 1.41 = 141\\%$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 약 141%로 확대해야 하므로 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n넓이가 2배(200%)라고 해서 확대 비율이 200%가 아니라, 길이 기준이므로 $\\sqrt{2}$배인 141%가 됨에 유의합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "닮은 종이의 넓이비1:2를 길이비1:√2로 바꾸고 주어진 근삿값을 백분율로 읽는다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: A4용지를 절반으로 자른 것이 A5용지이며 두 종이는 서로 닮음. A5용지를 A4용지 크기로 확대 복사함. $\\sqrt{2} \\fallingdotseq 1.41$.<br/>\n구할 대상: 확대 복사해야 하는 비율(%)</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- 넓이의 비가 $m : n$일 때 닮음비(길이의 비)는 $\\sqrt{m} : \\sqrt{n}$입니다.<br/>\n- 복사기의 확대 비율은 넓이가 아닌 '길이의 확대 비율'을 기준으로 합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. A4용지의 넓이는 A5용지의 넓이의 2배이므로,<br/>\n   $$\\text{A5의 넓이} : \\text{A4의 넓이} = 1 : 2$$\n2. 두 용지는 닮음이므로 길이의 비(닮음비)는 넓이의 비의 제곱근입니다.<br/>\n   $$\\text{길이의 비} = \\sqrt{1} : \\sqrt{2} = 1 : \\sqrt{2}$$\n3. 따라서 A5를 A4로 확대할 때 길이의 배율은 $\\sqrt{2}$배입니다.<br/>\n   $$\\sqrt{2} \\fallingdotseq 1.41 = 141\\%$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 약 141%로 확대해야 하므로 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n넓이가 2배(200%)라고 해서 확대 비율이 200%가 아니라, 길이 기준이므로 $\\sqrt{2}$배인 141%가 됨에 유의합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "닮은 종이의 넓이비1:2를 길이비1:√2로 바꾸고 주어진 근삿값을 백분율로 읽는다."
+          },
+          {
+            "term": "근삿값",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: A4용지를 절반으로 자른 것이 A5용지이며 두 종이는 서로 닮음. A5용지를 A4용지 크기로 확대 복사함. $\\sqrt{2} \\fallingdotseq 1.41$.<br/>\n구할 대상: 확대 복사해야 하는 비율(%)</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n- 넓이의 비가 $m : n$일 때 닮음비(길이의 비)는 $\\sqrt{m} : \\sqrt{n}$입니다.<br/>\n- 복사기의 확대 비율은 넓이가 아닌 '길이의 확대 비율'을 기준으로 합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. A4용지의 넓이는 A5용지의 넓이의 2배이므로,<br/>\n   $$\\text{A5의 넓이} : \\text{A4의 넓이} = 1 : 2$$\n2. 두 용지는 닮음이므로 길이의 비(닮음비)는 넓이의 비의 제곱근입니다.<br/>\n   $$\\text{길이의 비} = \\sqrt{1} : \\sqrt{2} = 1 : \\sqrt{2}$$\n3. 따라서 A5를 A4로 확대할 때 길이의 배율은 $\\sqrt{2}$배입니다.<br/>\n   $$\\sqrt{2} \\fallingdotseq 1.41 = 141\\%$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 약 141%로 확대해야 하므로 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n넓이가 2배(200%)라고 해서 확대 비율이 200%가 아니라, 길이 기준이므로 $\\sqrt{2}$배인 141%가 됨에 유의합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "닮은 종이의 넓이비1:2를 길이비1:√2로 바꾸고 주어진 근삿값을 백분율로 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "닮은 종이의 넓이비1:2를 길이비1:√2로 바꾸고 주어진 근삿값을 백분율로 읽는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 27,
+      "questionUid": "qid_v1_d95eb37a5610a2c9e8efa40d94d871e0068f36928029f57fae09e85e40faad83",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8ca2b7ee5d9c5d39809948e31688bf9a0c45c5319c4e499df9e10a922525b740"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9f67e8d56a536ab7320c00257cf5891ca7800f15b40b8511024924aba4445eb6"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "① $ax-ay=a(x-y)$"
+          },
+          {
+            "term": "인수분해",
+            "src": "choices",
+            "quote": "① $ax-ay=a(x-y)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<p>27. 다음 중 인수분해가 잘못된 것은? [3.0점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 5개의 인수분해 식<br/>\n구할 대상: 인수분해가 잘못된 것</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n다항식의 각 항에 공통으로 들어 있는 인수(공통인수)를 묶어내어 곱의 형태로 나타냅니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 선지를 검토합니다.<br/>\n① $ax-ay = a(x-y)$ (옳음)<br/>\n② $ab^2-ab = ab(b-1)$ (옳음)<br/>\n③ $x^2-xy = x(x-y)$ (옳음)<br/>\n④ $4x^3-2x$ 에서 공통인수 $2x$를 묶어내면:<br/>\n   $$4x^3-2x = 2x(2x^2-1)$$\n   선지에서는 $2x(2x^2-2x)$로 잘못 표기되어 있습니다. (잘못됨)<br/>\n⑤ $-2x^2+4x = -2x(x-2)$ (옳음)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n인수분해가 잘못된 것은 ④이며, 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n④를 전개해보면 $2x(2x^2-2x) = 4x^3-4x^2 \\ne 4x^3-2x$이므로 명백한 오류임을 확인할 수 있습니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "각 항의 공통인수를 묶은 결과를 원래 다항식과 대조하는 직접 인수분해 판정이다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 5개의 인수분해 식<br/>\n구할 대상: 인수분해가 잘못된 것</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n다항식의 각 항에 공통으로 들어 있는 인수(공통인수)를 묶어내어 곱의 형태로 나타냅니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n각 선지를 검토합니다.<br/>\n① $ax-ay = a(x-y)$ (옳음)<br/>\n② $ab^2-ab = ab(b-1)$ (옳음)<br/>\n③ $x^2-xy = x(x-y)$ (옳음)<br/>\n④ $4x^3-2x$ 에서 공통인수 $2x$를 묶어내면:<br/>\n   $$4x^3-2x = 2x(2x^2-1)$$\n   선지에서는 $2x(2x^2-2x)$로 잘못 표기되어 있습니다. (잘못됨)<br/>\n⑤ $-2x^2+4x = -2x(x-2)$ (옳음)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n인수분해가 잘못된 것은 ④이며, 정답은 ④입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n④를 전개해보면 $2x(2x^2-2x) = 4x^3-4x^2 \\ne 4x^3-2x$이므로 명백한 오류임을 확인할 수 있습니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "각 항의 공통인수를 묶은 결과를 원래 다항식과 대조하는 직접 인수분해 판정이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 항의 공통인수를 묶은 결과를 원래 다항식과 대조하는 직접 인수분해 판정이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 28,
+      "questionUid": "qid_v1_0f04d5be171953e869ceb955cdc90db70068f91d23c4f2b48470e61b021b77c9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fea0920516be4cdf3bebfcb82c5e6db8e277e8f619ecaccae24d1b4857a7fc2e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1195c6a67ef65096d4e99fae6c6696fbd4fca7834bdae689bdd49808a660dfed"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "<p>28. 다음 그림의 이어 붙인 세 직사각형을 이용하여 어떤 식을 인수분해하였다. 다음 중 어떤 식으로 옳은 것은? [2.5점]</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q28.png\" alt=\"한 변이 x인 정사각형 1개와 폭이 1이고 높이가 x인 직사각형 2개가 붙어 있는 도형\" /></p>"
+          },
+          {
+            "term": "도형",
+            "src": "stem",
+            "quote": "<p>28. 다음 그림의 이어 붙인 세 직사각형을 이용하여 어떤 식을 인수분해하였다. 다음 중 어떤 식으로 옳은 것은? [2.5점]</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q28.png\" alt=\"한 변이 x인 정사각형 1개와 폭이 1이고 높이가 x인 직사각형 2개가 붙어 있는 도형\" /></p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "<p>28. 다음 그림의 이어 붙인 세 직사각형을 이용하여 어떤 식을 인수분해하였다. 다음 중 어떤 식으로 옳은 것은? [2.5점]</p><p><img src=\"assets/images/16_부산대천리중_1학기_중간_중3_수학/q28.png\" alt=\"한 변이 x인 정사각형 1개와 폭이 1이고 높이가 x인 직사각형 2개가 붙어 있는 도형\" /></p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형넓이공식",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 한 변의 길이가 $x$인 정사각형 1개와 가로 1, 세로 $x$인 직사각형 2개를 이어 붙인 도형<br/>\n구할 대상: 이 도형의 넓이를 이용하여 인수분해한 원래의 식</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n전체 도형의 넓이는 나누어진 각 직사각형의 넓이의 합과 같습니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 세 직사각형의 넓이를 각각 구합니다.<br/>\n   - 첫 번째 직사각형(정사각형): 가로 $x$, 세로 $x \\implies x^2$<br/>\n   - 두 번째 직사각형: 가로 1, 세로 $x \\implies x$<br/>\n   - 세 번째 직사각형: 가로 1, 세로 $x \\implies x$<br/>\n2. 세 직사각형의 넓이의 합은 다음과 같습니다.<br/>\n   $$x^2 + x + x = x^2 + 2x$$\n3. 전체 직사각형의 가로는 $x+1+1 = x+2$, 세로는 $x$이므로<br/>\n   $$x^2 + 2x = x(x+2)$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 인수분해의 대상이 된 원래의 식은 $x^2+2x$이며, 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n그림의 가로 길이가 $x, 1, 1$이고 세로가 $x$이므로 전체 넓이가 $x^2+2x$임을 직관적으로 확인합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 세 직사각형 넓이를 더하여 x²+2x를 읽고 공통인수로 묶는다."
+          },
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 한 변의 길이가 $x$인 정사각형 1개와 가로 1, 세로 $x$인 직사각형 2개를 이어 붙인 도형<br/>\n구할 대상: 이 도형의 넓이를 이용하여 인수분해한 원래의 식</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n전체 도형의 넓이는 나누어진 각 직사각형의 넓이의 합과 같습니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 세 직사각형의 넓이를 각각 구합니다.<br/>\n   - 첫 번째 직사각형(정사각형): 가로 $x$, 세로 $x \\implies x^2$<br/>\n   - 두 번째 직사각형: 가로 1, 세로 $x \\implies x$<br/>\n   - 세 번째 직사각형: 가로 1, 세로 $x \\implies x$<br/>\n2. 세 직사각형의 넓이의 합은 다음과 같습니다.<br/>\n   $$x^2 + x + x = x^2 + 2x$$\n3. 전체 직사각형의 가로는 $x+1+1 = x+2$, 세로는 $x$이므로<br/>\n   $$x^2 + 2x = x(x+2)$$</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n따라서 인수분해의 대상이 된 원래의 식은 $x^2+2x$이며, 정답은 ①입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n그림의 가로 길이가 $x, 1, 1$이고 세로가 $x$이므로 전체 넓이가 $x^2+2x$임을 직관적으로 확인합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 세 직사각형 넓이를 더하여 x²+2x를 읽고 공통인수로 묶는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "그림의 세 직사각형 넓이를 더하여 x²+2x를 읽고 공통인수로 묶는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 29,
+      "questionUid": "qid_v1_77a1238392fa57f2eed27c2c0b4b2f9d17d232d913aff521840df76a3808b766",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6c59d8b45a85f2e6e311da6b748f614007398fb27e1c10229b7d3245d00f3065"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4d3a7df0fa1d3999cf56e6ec97451f5b816197aea68abb84f9b28bf24aa95f2d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "<p>29. $x, y$가 자연수일 때, $2xy-2x-y+1=5$를 만족시키는 $(x, y)$의 순서쌍의 개수는? [4.0점]</p>"
+          },
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "<p>29. $x, y$가 자연수일 때, $2xy-2x-y+1=5$를 만족시키는 $(x, y)$의 순서쌍의 개수는? [4.0점]</p>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "<p>29. $x, y$가 자연수일 때, $2xy-2x-y+1=5$를 만족시키는 $(x, y)$의 순서쌍의 개수는? [4.0점]</p>"
+          }
+        ],
+        "method": [
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 방정식 $2xy-2x-y+1=5$ ($x, y$는 자연수)<br/>\n구할 대상: 순서쌍 $(x, y)$의 개수</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n좌변을 인수분해하여 (일차식) $\\times$ (일차식) = (정수) 형태의 부정방정식으로 변형합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 좌변을 공통인수로 묶어 인수분해합니다.<br/>\n   $$2x(y-1) - (y-1) = 5$$\n   $$(2x-1)(y-1) = 5$$\n2. $x, y$가 자연수($x \\ge 1, y \\ge 1$)이므로<br/>\n   $2x-1$은 양의 홀수($2x-1 \\ge 1$)이고, $y-1$은 0 이상의 정수($y-1 \\ge 0$)입니다.<br/>\n3. 곱하여 5가 되는 양의 정수 순서쌍 $(2x-1, y-1)$을 구합니다.<br/>\n   - 경우 1: $2x-1 = 1$, $y-1 = 5$<br/>\n     $$2x = 2 \\implies x = 1$$\n     $$y = 6$$\n     순서쌍 $(1, 6)$ (자연수 만족)<br/>\n   - 경우 2: $2x-1 = 5$, $y-1 = 1$<br/>\n     $$2x = 6 \\implies x = 3$$\n     $$y = 2$$\n     순서쌍 $(3, 2)$ (자연수 만족)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n만족하는 순서쌍 $(x, y)$는 $(1, 6)$, $(3, 2)$의 2개입니다. 따라서 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$x, y$가 자연수라는 조건을 엄밀하게 적용하여 음의 약수 쌍은 배제되어야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "다변수식을 (2x-1)(y-1)=5로 인수분해하고 자연수 조건에 맞는 양의 약수쌍을 열거해 순서쌍 개수를 구한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 방정식 $2xy-2x-y+1=5$ ($x, y$는 자연수)<br/>\n구할 대상: 순서쌍 $(x, y)$의 개수</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n좌변을 인수분해하여 (일차식) $\\times$ (일차식) = (정수) 형태의 부정방정식으로 변형합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 좌변을 공통인수로 묶어 인수분해합니다.<br/>\n   $$2x(y-1) - (y-1) = 5$$\n   $$(2x-1)(y-1) = 5$$\n2. $x, y$가 자연수($x \\ge 1, y \\ge 1$)이므로<br/>\n   $2x-1$은 양의 홀수($2x-1 \\ge 1$)이고, $y-1$은 0 이상의 정수($y-1 \\ge 0$)입니다.<br/>\n3. 곱하여 5가 되는 양의 정수 순서쌍 $(2x-1, y-1)$을 구합니다.<br/>\n   - 경우 1: $2x-1 = 1$, $y-1 = 5$<br/>\n     $$2x = 2 \\implies x = 1$$\n     $$y = 6$$\n     순서쌍 $(1, 6)$ (자연수 만족)<br/>\n   - 경우 2: $2x-1 = 5$, $y-1 = 1$<br/>\n     $$2x = 6 \\implies x = 3$$\n     $$y = 2$$\n     순서쌍 $(3, 2)$ (자연수 만족)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n만족하는 순서쌍 $(x, y)$는 $(1, 6)$, $(3, 2)$의 2개입니다. 따라서 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$x, y$가 자연수라는 조건을 엄밀하게 적용하여 음의 약수 쌍은 배제되어야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "다변수식을 (2x-1)(y-1)=5로 인수분해하고 자연수 조건에 맞는 양의 약수쌍을 열거해 순서쌍 개수를 구한다."
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 방정식 $2xy-2x-y+1=5$ ($x, y$는 자연수)<br/>\n구할 대상: 순서쌍 $(x, y)$의 개수</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n좌변을 인수분해하여 (일차식) $\\times$ (일차식) = (정수) 형태의 부정방정식으로 변형합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 좌변을 공통인수로 묶어 인수분해합니다.<br/>\n   $$2x(y-1) - (y-1) = 5$$\n   $$(2x-1)(y-1) = 5$$\n2. $x, y$가 자연수($x \\ge 1, y \\ge 1$)이므로<br/>\n   $2x-1$은 양의 홀수($2x-1 \\ge 1$)이고, $y-1$은 0 이상의 정수($y-1 \\ge 0$)입니다.<br/>\n3. 곱하여 5가 되는 양의 정수 순서쌍 $(2x-1, y-1)$을 구합니다.<br/>\n   - 경우 1: $2x-1 = 1$, $y-1 = 5$<br/>\n     $$2x = 2 \\implies x = 1$$\n     $$y = 6$$\n     순서쌍 $(1, 6)$ (자연수 만족)<br/>\n   - 경우 2: $2x-1 = 5$, $y-1 = 1$<br/>\n     $$2x = 6 \\implies x = 3$$\n     $$y = 2$$\n     순서쌍 $(3, 2)$ (자연수 만족)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n만족하는 순서쌍 $(x, y)$는 $(1, 6)$, $(3, 2)$의 2개입니다. 따라서 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$x, y$가 자연수라는 조건을 엄밀하게 적용하여 음의 약수 쌍은 배제되어야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "다변수식을 (2x-1)(y-1)=5로 인수분해하고 자연수 조건에 맞는 양의 약수쌍을 열거해 순서쌍 개수를 구한다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>\n조건: 방정식 $2xy-2x-y+1=5$ ($x, y$는 자연수)<br/>\n구할 대상: 순서쌍 $(x, y)$의 개수</p>\n<p><strong>[2단계: 핵심 개념 및 공식]</strong><br/>\n좌변을 인수분해하여 (일차식) $\\times$ (일차식) = (정수) 형태의 부정방정식으로 변형합니다.</p>\n<p><strong>[3단계: 단계별 풀이]</strong><br/>\n1. 좌변을 공통인수로 묶어 인수분해합니다.<br/>\n   $$2x(y-1) - (y-1) = 5$$\n   $$(2x-1)(y-1) = 5$$\n2. $x, y$가 자연수($x \\ge 1, y \\ge 1$)이므로<br/>\n   $2x-1$은 양의 홀수($2x-1 \\ge 1$)이고, $y-1$은 0 이상의 정수($y-1 \\ge 0$)입니다.<br/>\n3. 곱하여 5가 되는 양의 정수 순서쌍 $(2x-1, y-1)$을 구합니다.<br/>\n   - 경우 1: $2x-1 = 1$, $y-1 = 5$<br/>\n     $$2x = 2 \\implies x = 1$$\n     $$y = 6$$\n     순서쌍 $(1, 6)$ (자연수 만족)<br/>\n   - 경우 2: $2x-1 = 5$, $y-1 = 1$<br/>\n     $$2x = 6 \\implies x = 3$$\n     $$y = 2$$\n     순서쌍 $(3, 2)$ (자연수 만족)</p>\n<p><strong>[4단계: 정답 도출]</strong><br/>\n만족하는 순서쌍 $(x, y)$는 $(1, 6)$, $(3, 2)$의 2개입니다. 따라서 정답은 ②입니다.</p>\n<p><strong>[5단계: 오답 피하기 및 검토]</strong><br/>\n$x, y$가 자연수라는 조건을 엄밀하게 적용하여 음의 약수 쌍은 배제되어야 합니다.</p>",
+            "evidenceType": "IMPLIED",
+            "justification": "다변수식을 (2x-1)(y-1)=5로 인수분해하고 자연수 조건에 맞는 양의 약수쌍을 열거해 순서쌍 개수를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "<p>29. $x, y$가 자연수일 때, $2xy-2x-y+1=5$를 만족시키는 $(x, y)$의 순서쌍의 개수는? [4.0점]</p>"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "다변수식을 (2x-1)(y-1)=5로 인수분해하고 자연수 조건에 맞는 양의 약수쌍을 열거해 순서쌍 개수를 구한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E111-recovery-D03144C8CA75",
+        "at": "2026-11-15"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "직사각형넓이공식",
+      "en": [
+        "RECTANGLE_AREA_FORMULA"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "넓이",
+      "note": "가로와 세로의 길이를 곱하여 직사각형 넓이를 구함. 문항별 실제 solution에서 직접 선택한 용어이며 공용사전 등록은 하지 않음.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 28,
+          "slot": "method"
+        }
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 29,
+    "quotesChecked": 179,
+    "quotesNotFound": 0,
+    "notes": "Actual question and existing solution read; author self-check only. Independent sample pending. No remote completion or ownership takeover claimed."
+  }
+}

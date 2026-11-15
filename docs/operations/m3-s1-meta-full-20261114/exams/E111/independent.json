@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E111",
+  "author": "meta_b",
+  "reviewer": "meta_a_resume_d03144c8ca75",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "D03144C8CA75/A",
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE",
+  "sourceBaseBlob": "dfaa5be13dbee7fa3f2c9b7db1e3fc986ee3f38a",
+  "inputHashes": {
+    "reviewSha256": "007f55877d722ce4c3cf69f1d229032b9937c464dc14b70592363f20903f1231",
+    "fourSlotSha256": "87255f14d6a777e3e14fe2ac49cac5d75092543bdd080da880503bcf8c0c5baa"
+  },
+  "sampledOrdinals": [
+    13,
+    25,
+    29
+  ],
+  "basis": "실제 본문·보기·기존 해설과 표본 4칸의 의미 및 필요한 PNG를 독립 관측하고 수정 요청 후 새 파일을 다시 읽어 결속했다. 전수 수학 검증 및 공용 등록을 수행하지 않았다.",
+  "findings": [
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_2f199a1b136d48f9222bef7e9001fcb8bbd9236067efc4c8c22e68da0902b956",
+      "status": "ACCEPTED",
+      "note": "실제 격자 A=(1,1),B=(2,1),C=(3,1) 및 각 양의 방향 호를 확인했다. 같은 빗변-수직선 전이를 세 번 반복하고 곱하므로 복합 전략 선택보다 직접 연결인 bucket2/B23 수정이 적절하다. RPM005·피타고라스 CC 및 4칸 방법은 일치한다."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_2d317de9195f87e4b67e09a1af92e2fc1b3fa65ad6842efdcb9c5bbf154e2750",
+      "status": "ACCEPTED_WITH_EXPLICIT_DEBT",
+      "note": "공통 근호 인수 추출→켤레 유리화→연속한 역수 차의 망원소거라는 핵심이 실제 기존 해설에 있다. bucket4를 수용하며 CC_TELESCOPING_SERIES와 SEQUENTIAL 보완을 확인했다. 자연수와 두 수 서로소는 4칸에서 보존되고 fixed integer COND를 잘못 부여하지 않은 condition gap 기록도 수용한다."
+    },
+    {
+      "ordinal": 29,
+      "questionUid": "qid_v1_77a1238392fa57f2eed27c2c0b4b2f9d17d232d913aff521840df76a3808b766",
+      "status": "ACCEPTED_WITH_EXPLICIT_DEBT",
+      "note": "공통인수로 (2x−1)(y−1)=5를 만들고 자연수 조건으로 양의 인수쌍만 복원하는 실제 경로와 표준 bucket3가 일치한다. 추가된 CC_INTEGER_FACTOR_PAIRS와 SEQUENTIAL은 핵심 약수쌍 방법을 정확히 보존한다."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/d03144c8ca75/workers/B/assets/E111/q13.png",
+      "sha256": "80c47450ef69ab073a38f2c1bbb1a444f7ca0101cefa4c164fceacc2cf8b8de2",
+      "status": "VISUALLY_INSPECTED"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "ownershipStatus": "UNCONFIRMED_LOCAL_ONLY",
+  "nextAction": "ROOT_SOURCE_PROTECTION_VALIDATION_AND_SAFE_INTEGRATION_AFTER_OWNERSHIP_CONFIRMATION",
+  "previousReviewedInputHashes": {
+    "reviewSha256": "a483ae926899a808574bfdc5e1423a7f88af0b9574b592b69971150c40d9d569",
+    "fourSlotSha256": "87255f14d6a777e3e14fe2ac49cac5d75092543bdd080da880503bcf8c0c5baa"
+  },
+  "readbackAmendment": {
+    "scope": "NONCANONICAL_LEGACY_ENUM_DISPLAY_ONLY",
+    "sampledOrdinals": [
+      13,
+      25,
+      29
+    ],
+    "note": "원본 숫자 level과 새 하/중/상 판정을 NORMAL로 비교하던 표시를 UNKNOWN/원본enum미지원으로 바꾼 실제 3표본 필드를 재열람했다. 실제 level·bucket·RPM·CC 판정 및 4칸 해시는 유지된다."
+  }
+}
