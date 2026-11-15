@@ -622,9 +622,11 @@ function specForFamily(plan,model,id){
     if(!features||features.schemaVersion!=='EXP_LOG_PAIR_FEATURES_v1'||!policy||policy.schemaVersion!=='EXP_LOG_PAIR_POLICY_v1')throw Error('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED');
     const number=value=>{const parts=String(value).split('/');return Number(parts[0])/(parts.length===2?Number(parts[1]):1);},showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0,objects=[];
     for(const [index,row] of features.curves.entries()){
-      objects.push({id:'curve-'+row.id,kind:'FUNCTION_GRAPH',expression:expLogExpression(row),domain:row.domain,criticalX:[number(row.referencePoint.x)],branch:'REF_'+row.id});
+      const nameOnly=(p.curves??[]).find(curve=>curve.id===row.id)?.formulaLabel==='NAME';
+      objects.push({id:(nameOnly?'f-':'curve-')+row.id,kind:'FUNCTION_GRAPH',expression:expLogExpression(row),domain:row.domain,criticalX:[number(row.referencePoint.x)],branch:'REF_'+row.id});
       const formulaX=index===0?v[0]+(v[1]-v[0])*.12:v[0]+(v[1]-v[0])*.62;
-      objects.push({id:'formula-'+row.id,kind:'EQUATION_LABEL',text:expLogFormulaText(row),at:[formulaX,v[3]-(v[3]-v[2])*.12],math:true,priority:0});
+      objects.push({id:'formula-'+row.id,kind:'EQUATION_LABEL',text:nameOnly?row.id+'(x)':expLogFormulaText(row),at:[formulaX,v[3]-(v[3]-v[2])*.12],math:true,priority:0,
+        ...(nameOnly?{nearCurve:row.id}:{})});
       const referenceX=number(row.referencePoint.x),referenceY=number(row.referencePoint.y),referenceAt=row.family==='exponential-affine'?[referenceX-(v[1]-v[0])*.18,referenceY+(v[3]-v[2])*.12]:[referenceX+(v[1]-v[0])*.18,referenceY-(v[3]-v[2])*.10];
       objects.push({id:'reference-'+row.id+'-value',kind:'EQUATION_LABEL',text:'('+row.referencePoint.x+','+row.referencePoint.y+')',at:referenceAt,math:true,priority:0});
     }
@@ -1831,6 +1833,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     extendedContract+=PIECEWISE_AFFINE_CONTRACT;
     extendedContract+=EXPONENTIAL_AFFINE_CONTRACT;
     extendedContract+=LOGARITHMIC_AFFINE_CONTRACT;
+    extendedContract+=' EXP-LOG PAIR CURVE NAMES: set formulaLabel:"NAME" on an exponential or logarithmic row with a one-letter id to write f(x) or g(x) beside its own curve instead of its evaluated equation. Exact bases, coefficients and reference geometry remain required. Default omits the option and prints the full evaluated equations.';
     extendedContract+=TRIG_AXIS_CROSSING_PAIR_CONTRACT;
     extendedContract+=TRIGONOMETRIC_CONTRACT;
     extendedContract+=' ORDINARY X-UNIT DISPLAY CROP: on ALL_REALS SIN/COS with ratePi and phasePi use displayWindowX:[lo,hi] with exact ordinary rational x values straddling 0, and axisTickValues:{x:[ordinary rational values],y:[rational levels]}. Do not combine with displayWindowPi or axisTickPi. The engine uses the same optional displayGuides and showOriginLabel as the pi crop, with ordinary x units, and draws no period label or interval endpoints.';

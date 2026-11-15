@@ -108,6 +108,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 이 계열의 오류 코드: `<FAMILY>_SOURCE_DOMAIN_REQUIRES_*`/`_SOURCE_DOMAIN_UNSUPPORTED`(정의역 형식이 위 표와 다르다. 표대로 고친다), `<FAMILY>_SOURCE_SCHEMA_INVALID`/`*_GRAMMAR_REQUIRED`(계수 개수·형식이 다르다), `*_NONZERO_*_REQUIRED`/`*_POSITIVE_SLOPE_REQUIRED`(0인 계수나 음의 기울기 반지름식), `*_OUTSIDE_OVERVIEW`/`*_OUTSIDE_VIEWPORT`(점근선·경계·꺾임점이 viewport 밖. viewport나 domain을 넓힌다), `*_BELOW_PROFILE_FLOOR`/`*_BELOW_DISPLAY_RESOLUTION`(특징이 너무 작아 학생 화면에서 구분되지 않는다. 범위를 좁히거나 UNSUPPORTED), `*_OVERVIEW_POLICY_REQUIRED`/`*_FEATURE_INVENTORY_MISMATCH`(plan 형식이 계약과 다르다. 계약 전문을 다시 읽는다), `*_BASE_GRAMMAR_REQUIRED`/`*_BASE_OUT_OF_RANGE`/`*_BASE_RADICAL_NOT_SQUARE_FREE`(밑 형식·범위·근호), `EXP_LOG_PAIR_PLAN_INVALID`/`EXP_LOG_PAIR_NO_SHARED_WINDOW`/`EXP_LOG_PAIR_WINDOW_TOO_WIDE`(두 곡선 plan·공통 창), `UNSUPPORTED_CAPABILITY`(위 한계를 벗어난 plan이다).
 
+지수·로그 한 쌍에서 구해야 하는 계수나 밑을 그림에 노출하지 않으려면 해당 곡선 행에 한 글자 id와 `formulaLabel:"NAME"`을 준다. 실제 식으로 곡선을 검증하고, 그림 곁에는 그 id를 쓴 `f(x)` 같은 이름만 적는다.
+
 ### 3-3. 이어진 조각 그래프(이차식 조각 최대 4개)와 직선
 
 `|x²-4x-12|`, `x²-2|x|+1`, 이차함수 두 개를 구간별로 이은 `h(x)`처럼 **끊어지지 않는** 한 함수에 수평선 또는 **기울어진 직선**을 겹쳐 교점을 보이는 풀이에 쓴다. `capability:"piecewise-polynomial-spike-v1"`, `graphPlan.family:"piecewise-polynomial"`.

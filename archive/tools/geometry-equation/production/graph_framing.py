@@ -1185,10 +1185,12 @@ def _fit_logarithmic_base_overview(plan):
 
 def _exp_log_curve_spec(row,index,code):
     if not isinstance(row,dict):raise ValueError(code)
-    allowed={'id','family','base','coefficients','sourceDomain','shiftX'}
+    allowed={'id','family','base','coefficients','sourceDomain','shiftX','formulaLabel'}
     if set(row)-allowed:raise ValueError(code)
     curve_id=row.get('id')
     if not isinstance(curve_id,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',curve_id):raise ValueError(code+'_ID_INVALID')
+    if 'formulaLabel' in row and (row['formulaLabel']!='NAME' or len(curve_id)!=1):
+        raise ValueError('EXP_LOG_PAIR_FORMULA_LABEL_INVALID:'+curve_id)
     family=row.get('family')
     if family not in {'exponential-affine','logarithmic-affine'}:raise ValueError(code+'_FAMILY_UNSUPPORTED')
     base=exp_log_base(row.get('base'),'EXP_LOG_PAIR') or natural_exp_log_base()

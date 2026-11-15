@@ -1389,7 +1389,25 @@ def logarithmic_base_overview_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':expected_features,'monotonicity':expected_features['monotonicity'],'curvePoints':len(points),'boundaryApproachGapCssPx':gap,'referenceMarker':marker,'mathMethod':'EXACT_POSITIVE_BASE_AND_INDEPENDENT_BASE_LOGARITHM_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'LOGARITHMIC_SOURCE_SCHEMA_INVALID']}
 
-def exp_log_pair_overview_audit(plan,svg,transform):
+def _exp_log_pair_name_errors(plan,root,model):
+    errors=[]
+    for curve in plan.get('curves',[]):
+        if 'formulaLabel' not in curve:continue
+        ident=curve.get('id','')
+        if curve['formulaLabel']!='NAME' or not re.fullmatch('[A-Za-z]',ident):
+            errors.append('EXP_LOG_PAIR_FORMULA_LABEL_INVALID:'+ident)
+            continue
+        labels=[node for node in root.iter() if node.get('id')=='formula-'+ident]
+        if model:
+            if labels:errors.append('EXP_LOG_PAIR_NAME_LABEL_IN_MODEL:'+ident)
+            continue
+        expected=_ov_label_codes(ident+'(x)')
+        glyphs=_ov_glyph_codes(labels[0]) if len(labels)==1 else []
+        if len(glyphs)!=len(expected) or any(code not in allowed for code,allowed in zip(glyphs,expected)):
+            errors.append('EXP_LOG_PAIR_NAME_LABEL_MISMATCH:'+ident)
+    return errors
+
+def exp_log_pair_overview_audit(plan,svg,transform,model=False):
     errors=[];unsupported=[]
     try:
         features=plan.get('expLogPairFeatures');policy=plan.get('expLogPairPolicy')
@@ -1465,6 +1483,7 @@ def exp_log_pair_overview_audit(plan,svg,transform):
                     if abs(a[1]-a[0])*yscale>.35 or abs(b[1]-b[0])*yscale>.35:errors.append('EXP_LOG_PAIR_IDENTITY_LINE_POSITION_MISMATCH')
                     if node.get('stroke-dasharray') not in {'4 3','4,3'}:errors.append('EXP_LOG_PAIR_IDENTITY_LINE_MUST_BE_DASHED')
         elif identity_nodes:errors.append('EXP_LOG_PAIR_UNEXPECTED_IDENTITY_LINE')
+        errors.extend(_exp_log_pair_name_errors(plan,root,model))
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
         return {'status':status,'errors':sorted(set(errors+unsupported)),'curves':[{key:value for key,value in row.items() if not key.startswith('_')} for row in expected_rows],'curveBranches':{key:len(value) for key,value in branches.items()},'identityLine':features.get('identityLine') is True,'mathMethod':'EXACT_BASES_AND_INDEPENDENT_MODEL_RECOMPUTATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'EXP_LOG_PAIR_SOURCE_SCHEMA_INVALID']}
@@ -5655,7 +5674,7 @@ def _audit_family(plan,svg,transform,model=False):
         if plan.get('overviewPolicy')=='LOGARITHMIC_BASE_OVERVIEW_v1':return logarithmic_base_overview_audit(plan,svg,transform)
         return logarithmic_affine_overview_audit(plan,svg,transform)
     if plan.get('family')=='exp-log-pair' and plan.get('shapeIntent')=='OVERVIEW':
-        return exp_log_pair_overview_audit(plan,svg,transform)
+        return exp_log_pair_overview_audit(plan,svg,transform,model)
     if plan.get('family')=='trigonometric' and plan.get('shapeIntent')=='OVERVIEW':
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_AXIS_CROSSING_PAIR_v1':
             return trig_axis_crossing_pair_audit(plan,svg,transform,model)
