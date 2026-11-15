@@ -351,9 +351,25 @@ function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
   git(dir, 'init', '-q', '--initial-branch=main');
   for (const [k, v] of [['user.name', 'test'], ['user.email', 'test@example.invalid'], ['core.autocrlf', 'false']]) git(dir, 'config', k, v);
   const put = (rel, text) => { fs.mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true }); fs.writeFileSync(path.join(dir, rel), text); };
+  // Copy the real preview module with its relative static imports.
+  // Heavy execution steps are still replaced by the explicit stubs below.
+  const copied = new Set();
+  const copyModule = rel => {
+    rel = path.posix.normalize(rel);
+    assert.ok(!path.posix.isAbsolute(rel) && rel !== '..' && !rel.startsWith('../'), 'fixture module stays inside the repository');
+    if (copied.has(rel)) return;
+    copied.add(rel);
+    const text = read(rel); put(rel, text);
+    if (!/\.[cm]?js$/.test(rel)) return;
+    const staticImports = /\b(?:import|export)\s+(?:[^'";()]*?\s+from\s*)?['"](\.{1,2}\/[^'"]+)['"]/g;
+    const staticRequires = /\brequire\s*\(\s*['"](\.{1,2}\/[^'"]+)['"]\s*\)/g;
+    for (const pattern of [staticImports, staticRequires]) for (const match of text.matchAll(pattern))
+      copyModule(path.posix.join(path.posix.dirname(rel), match[1]));
+  };
   for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/archive-pr-native-preview.mjs', 'tools/ci/collect-reviewed-consumer-refusals.mjs', 'tools/ci/archive-meta-register-commit.paths', 'archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs',
     'archive/tools/meta-foundation/native-authority-correction.mjs', 'archive/tools/meta-foundation/reviewed-runtime-summary.mjs'])
     put(rel, read(rel));
+  copyModule('tools/ci/archive-pr-native-preview.mjs');
   // The real registration paths plus `derived/`, where the stub registrar writes its output.
   put('tools/ci/archive-meta-register-commit.paths', read('tools/ci/archive-meta-register-commit.paths') + 'derived/\n');
   put('derived/.keep', '');
