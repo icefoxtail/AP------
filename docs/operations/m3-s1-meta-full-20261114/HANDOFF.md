@@ -8,9 +8,9 @@ Branch: `review/m3-s1-meta-full-20261114`
 
 ## 검증된 저장 범위
 
-전체115시험지·2,750문항. 이전73시험지·1,731문항 재사용. 현재 검토패킷 73시험지·1731문항, 이번추가 0시험지·0문항. 잔여42시험지·1019문항. 이 snapshot의 원격 저장은 해당 commit의 HEAD/tree/blob readback으로 확인한다.
+전체115시험지·2,750문항. 이전73시험지·1,731문항 재사용. 현재 검토패킷 74시험지·1755문항, 이번추가 1시험지·24문항. 잔여41시험지·995문항. 이 snapshot의 원격 저장은 해당 commit의 HEAD/tree/blob readback으로 확인한다.
 
-마지막 완료: **E073**. 다음 미완료: **E074**.
+마지막 완료: **E074**. 다음 미완료: **E075**.
 
 ## 소유권·복구
 
@@ -20,9 +20,9 @@ A/B/C 담당·실제 output 경로는 progress.workers. 패킷은 문항별 의�
 
 ## 체크포인트
 
-마지막 검증 AWCR: r6 / raw SHA `43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff` / Drive `1EiDN_CCH8rwCRwGsy_lnSpFHvSup9Jcd`. 이 commit 자체의 외부 sync는 다음 raw readback 전까지 SYNC_PENDING. 원격 검증 후3시험지마다,20분 이내,중단/오류/마감 때 AWCR append-only와 Notion 중3 1학기 행만 갱신한다.
+마지막 검증 AWCR: r7 / raw SHA `a7c68153bfae3b45b2cd41c8319e7a890d9ac31957c2bf82e1273667e2933b28` / Drive `15Qp_HqhR4HTIEPfhMi9Jpy6sHyJY0Ota`. 이 commit 자체의 외부 sync는 다음 raw readback 전까지 SYNC_PENDING. 원격 검증 후3시험지마다,20분 이내,중단/오류/마감 때 AWCR append-only와 Notion 중3 1학기 행만 갱신한다.
 
-이전 원격 HEAD: `fcb3591cd3d9a2feb766206c16186482e02417ee`. 현재 commit의 SHA는 원격 조회 후 AWCR/Notion에 기록한다. 같은 commit 안에 자기 SHA를 요구하지 않는다.
+이전 원격 HEAD: `8a96fed829176651f893c1a22af8ca1543d3701a`. 현재 commit의 SHA는 원격 조회 후 AWCR/Notion에 기록한다. 같은 commit 안에 자기 SHA를 요구하지 않는다.
 
 ## 품질·출고 경계
 
@@ -32,11 +32,10 @@ A/B/C 담당·실제 output 경로는 progress.workers. 패킷은 문항별 의�
 
 ## 다음 실행
 
-`CONTINUE_E074_AND_PENDING_ONLY`. 원격 source 및 동일판본 검토 hash를 확인하여 아래 미완료만 처리한다.
+`CONTINUE_E075_AND_PENDING_ONLY`. 원격 source 및 동일판본 검토 hash를 확인하여 아래 미완료만 처리한다.
 
 | ID | 문항 | source |
 | --- | ---: | --- |
-| E074 | 24 | `original/middle/m3/1final/19_신흥중_1학기_기말_중3_수학.js` |
 | E075 | 23 | `original/middle/m3/1final/19_연향중_1학기_기말_중3_수학.js` |
 | E076 | 24 | `original/middle/m3/1final/19_왕운중_1학기_기말_중3_수학.js` |
 | E077 | 22 | `original/middle/m3/1final/19_이수중_1학기_기말_중3_수학.js` |
