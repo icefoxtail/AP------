@@ -13,6 +13,8 @@ export const PRESERVED_DIFFICULTY_FIELDS = Object.freeze([
   "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"
 ]);
 const MASTER = "archive/data/master_tables/js_archive_tag_master.json";
+const PARENT_LINKS = "archive/data/basic-scope-parent-links.json";
+const RPM_MASTER = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
 const RECEIPTS = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/";
 const SHA1 = /^[a-f0-9]{40}$/, SHA256 = /^[a-f0-9]{64}$/;
 const stable = value => JSON.stringify(value, (_, v) => v && !Array.isArray(v) && typeof v === "object"
@@ -35,6 +37,7 @@ const TRANSPORT_FIELDS = new Set(["standardCourse", "standardUnitKey", "standard
   "standardUnitOrder", "category", "level", ...PRESERVED_DIFFICULTY_FIELDS, "solution"]);
 const FIXED_STUDENT_FIELDS = REASSESSED_STUDENT_FIELDS.filter(k => k !== "solution");
 const immutableGit = new Map();
+const immutableJson = new Map();
 
 function localPath(root, relative) {
   if (!text(relative) || path.isAbsolute(relative) || relative.includes("\\") || /[\x00-\x1f]/.test(relative) ||
@@ -47,7 +50,7 @@ function localPath(root, relative) {
 function git(root, args) {
   const key = stable([path.resolve(root), args]);
   if (!immutableGit.has(key)) {
-    try { immutableGit.set(key, execFileSync("git", args, { cwd: root, maxBuffer: 64 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] })); }
+    try { immutableGit.set(key, execFileSync("git", args, { cwd: root, maxBuffer: 128 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] })); }
     catch { fail("immutable Git evidence unavailable"); }
   }
   return immutableGit.get(key);
@@ -55,6 +58,11 @@ function git(root, args) {
 function commit(root, value) {
   if (!SHA1.test(value || "") || git(root, ["rev-parse", "--verify", value + "^{commit}"]).toString().trim() !== value)
     fail("exact prior/review commit required");
+}
+function gitJson(root, revision, relative) {
+  const key = stable([path.resolve(root), revision, relative]);
+  if (!immutableJson.has(key)) immutableJson.set(key, JSON.parse(git(root, ["show", revision + ":" + relative])));
+  return immutableJson.get(key);
 }
 function parseBank(bytes) {
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
@@ -133,7 +141,7 @@ export function loadAuditPreservation({ root, request, bytes, bank }) {
   if (!isAuditPreservation(approval) || request.scope !== undefined || request.registrationMode !== undefined ||
       request.registryChanges?.length || !text(approval.approvedBy) || approval.metadataReviewed !== true)
     fail("requires full existing META_PIPELINE_AUDIT without registry changes");
-  if (Object.keys(spec).some(k => !["schemaVersion", "requestPath", "priorCommit", "priorReceiptRef", "difficultyRequestRef", "solutionRepair"].includes(k)))
+  if (Object.keys(spec).some(k => !["schemaVersion", "requestPath", "priorCommit", "priorReceiptRef", "difficultyRequestRef", "solutionRepair", "consumerParentRef"].includes(k)))
     fail("unknown preservation option");
   if (!spec.requestPath?.startsWith(".archive-meta-register/inbox/")) fail("explicit preservation inbox path required");
   const requestFile = localPath(root, spec.requestPath);
@@ -211,8 +219,78 @@ export function loadAuditPreservation({ root, request, bytes, bank }) {
         repair.schemaVersion !== "archive-source-solution-repair-v1" || repair.status !== "NARROW_REPAIR_REVIEWED" ||
         !Array.isArray(repair.rows)) fail("immutable narrow solution review mismatch");
   }
-  return { root, request, prior, ref, records, identities, runtimes, patches, oldBank, bank, master,
+  const context = { root, request, prior, ref, records, identities, runtimes, patches, oldBank, bank, master,
     changes, difficultyItems, proofRows, difficulty, difficultyBytes, difficultyRef, repair, repairedUids: new Set() };
+  context.consumerParents = loadPreservedConsumerParents(context);
+  return context;
+}
+
+// Historical raw audit L1/L2 can predate the already published basic-parent
+// projection. Preserve the raw approval and prove that exact prior projection
+// separately; a matching label without its UID, fingerprints and keys is never
+// sufficient. This does not grant a new parent or alter a registered value.
+function loadPreservedConsumerParents(context) {
+  const { root, request, prior, ref, records } = context;
+  const parentRef = request.approval.sourceRebind.consumerParentRef;
+  if (!parentRef) return new Map();
+  if (!parentRef.path?.startsWith(RECEIPTS) || !parentRef.path.endsWith(".parent-preservation.json"))
+    fail("consumer parent proof path invalid");
+  const proof = readRef(root, parentRef, request.approval.evidenceRefs).data;
+  if (proof.schemaVersion !== "archive-native-audit-consumer-parent-preservation-v1" ||
+      proof.sourceArchiveFile !== request.sourceArchiveFile || proof.expectedQuestionCount !== prior.totalQuestions ||
+      !equal(proof.priorReceiptRef, ref) || proof.parentLinks?.path !== PARENT_LINKS ||
+      !SHA256.test(proof.parentLinks?.sha256 || "") || !SHA1.test(proof.parentLinks?.blobSha1 || ""))
+    fail("consumer parent proof binding invalid");
+  commit(root, proof.priorConsumerCommit);
+  if (sha(git(root, ["show", proof.priorConsumerCommit + ":" + ref.path])) !== ref.sha256 ||
+      sha(git(root, ["show", proof.priorConsumerCommit + ":archive/exams/" + request.sourceArchiveFile])) !== prior.sourceRawSha256)
+    fail("consumer parent snapshot differs from original audit/source");
+  const linksBytes = git(root, ["show", proof.priorConsumerCommit + ":" + PARENT_LINKS]);
+  const links = gitJson(root, proof.priorConsumerCommit, PARENT_LINKS);
+  if (sha(linksBytes) !== proof.parentLinks.sha256 || blobSha(linksBytes) !== proof.parentLinks.blobSha1 ||
+      links.schemaVersion !== "archive2-basic-scope-parent-links-v1" || links.status !== "DERIVED_READ_ONLY" ||
+      links.authority?.source !== RPM_MASTER || !SHA256.test(links.authority?.sha256 || "") ||
+      sha(git(root, ["show", proof.priorConsumerCommit + ":" + RPM_MASTER])) !== links.authority.sha256)
+    fail("consumer parent immutable authority mismatch");
+  const priorMetadata = gitJson(root, proof.priorConsumerCommit, "archive/data/question_metadata.json");
+  const parents = unique(proof.records, "questionUid", "consumer parent UID");
+  if (!parents.size || parents.size > records.size) fail("consumer parent UID scope mismatch");
+  const fields = ["sourceOrdinal", "standardCourse", "standardUnitKey", "subUnitKey", "curriculumKey", "courseKey", "sourceFingerprint", "contentFingerprint"];
+  for (const [uid, parent] of parents) {
+    const old = records.get(uid), saved = priorMetadata.records?.filter(r => r.questionUid === uid);
+    const matches = links.sourceParents?.filter(r => r.questionUid === uid);
+    if (!isSourceApprovedPartialAudit(old) || !equal(saved, [old]) || matches?.length !== 1 ||
+        fields.some(k => !equal(parent[k], old[k])) ||
+        Object.keys(parent).some(k => !["questionUid", "grade", "L1", "L2", ...fields].includes(k)))
+      fail("consumer parent prior UID/keys/approval mismatch: " + uid);
+    const linked = matches[0];
+    if (linked.sourceFingerprint !== old.sourceFingerprint || linked.assignmentFingerprint !== old.contentFingerprint ||
+        ["grade", "curriculumKey", "courseKey", "L1", "L2"].some(k => !text(parent[k]) || parent[k] !== linked[k]))
+      fail("consumer parent differs from prior source-bound projection: " + uid);
+  }
+  return parents;
+}
+
+export function preservedAuditConsumerParent(context, record, consumer) {
+  const parent = context?.consumerParents?.get(record.questionUid);
+  if (!parent) return null;
+  const assignment = consumer?.assignmentEvidence;
+  if (!isSourceApprovedPartialAudit(record) || assignment?.store !== "question_metadata+basic_scope_parent_links" ||
+      assignment.approvalStatus !== "APPROVED" || assignment.reviewEvidence?.status !== "PASS" ||
+      consumer.canonicalAssignmentReasons?.length || consumer.metadataConflicts?.length ||
+      consumer.questionUid !== record.questionUid || consumer.sourceFile !== record.sourceArchiveFile ||
+      consumer.sourceOrdinal !== record.sourceOrdinal || assignment.questionUid !== record.questionUid ||
+      assignment.sourceFile !== record.sourceArchiveFile || assignment.sourceOrdinal !== record.sourceOrdinal ||
+      assignment.sourceFingerprint !== record.contentFingerprint || assignment.assignmentFingerprint !== record.contentFingerprint ||
+      consumer.assignmentFingerprint !== record.contentFingerprint ||
+      assignment.reviewEvidence.reviewedSourceFingerprint !== record.sourceFingerprint ||
+      assignment.reviewEvidence.sourceRevision !== record.metadataRevision ||
+      !context.records.get(record.questionUid)?.approvalEvidence?.includes(assignment.reviewEvidence.reference) ||
+      ["standardCourse", "standardUnitKey", "subUnitKey", "curriculumKey", "courseKey"].some(k =>
+        !equal(consumer[k], record[k]) || !equal(assignment[k], record[k])) ||
+      ["grade", "curriculumKey", "courseKey", "L1", "L2"].some(k => assignment[k] !== parent[k]))
+    fail("consumer parent current approved projection mismatch: " + record.questionUid);
+  return { grade: parent.grade, curriculumKey: parent.curriculumKey, courseKey: parent.courseKey, L1: parent.L1, L2: parent.L2 };
 }
 
 export function planPreservedAuditRecord(context, { current, identity, runtime, question, ordinal, receiptPath, replay = false }) {

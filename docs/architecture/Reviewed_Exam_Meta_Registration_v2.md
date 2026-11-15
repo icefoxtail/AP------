@@ -334,6 +334,14 @@ approval.sourceRebind.schemaVersion: archive-native-audit-preservation-v1을 사
   기존 관계만 유지한다. 새 source 값으로 덮거나 비어 있던 QA 상태를 추가하지 않는다.
   현재 metadata/identity/runtime는 기존 승인 전체와 공식 D5 결과에 정확히 일치해야 하며,
   재결속 후에도 원 승인 종류·상태·fieldStatus·pack version을 유지하고 새 승인 수는 0이다.
+- 위 과거 상태에서 원 audit의 L1/L2와 이미 게시된 기본 부모 투영이 달랐던 경우에만
+  `sourceRebind.consumerParentRef`로 `archive-native-audit-consumer-parent-preservation-v1` 근거를 명시할 수 있다.
+  근거는 동일 원 영수증·원본이 존재하는 `priorConsumerCommit`, 그 commit의 `basic-scope-parent-links.json` blob/SHA,
+  동일 원 승인 metadata 전체행, UID별 full/body 지문과 정확한 기본 키·교육과정·과목·부모를 결속한다.
+  현재 Consumer도 같은 승인 assignment, 현재 metadata revision, 원 승인 근거, 동일 UID/지문/키를 가져야 하며
+  실제 canonical 기본 부모 검증을 다시 통과해야 한다. 이 경우 L1/L2의 화면 값은 그 기존 투영과 비교하고,
+  raw 승인 L1/L2는 기존 runtime과 비교해 그대로 보존한다. PT/TPL·나머지 값과 ACTIVE binding 검증은 유지한다.
+  새 부모 승인, 라벨만 같은 다른 키, 지문·분모·정본 근거 변조는 허용하지 않는다.
 
 ## 검증
 
