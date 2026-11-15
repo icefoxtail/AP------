@@ -8,7 +8,7 @@ Status: `RUNNING` / `RUNNING`
 Progress: [progress.json](docs/operations/m3-s1-meta-full-20261114/progress.json)  
 Handoff: [HANDOFF.md](docs/operations/m3-s1-meta-full-20261114/HANDOFF.md)
 
-Preserved packet snapshot: 74/115 exams, 1755/2750 questions. Last: E074. Next pending: E075.
+Preserved packet snapshot: 75/115 exams, 1778/2750 questions. Last: E075. Next pending: E076.
 
 Root alone serializes branch writes. A/B/C write disjoint local artifacts. Every exam updates progress, handoff and this pointer before one atomic branch commit. A transaction counts remotely only after HEAD/tree/blob readback. AWCR+Notion sync every three saved exams or20 minutes.
 
