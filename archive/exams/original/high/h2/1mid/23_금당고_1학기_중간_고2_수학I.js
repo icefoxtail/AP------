@@ -936,7 +936,11 @@ window.questionBank = [
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
     "reviewStatus": "manual_review",
-    "decisiveStep": "절댓값 로그를 m=8에서 나누어 정수 상한을 구하고, 겹치는 m=8 행은 한 번만 센다."
+    "decisiveStep": "절댓값 로그를 m=8에서 나누어 정수 상한을 구하고, 겹치는 m=8 행은 한 번만 센다.",
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 행에 n=1, n=2의 닫힌 m 범위와 n=3의 m=8 점을 표시한다. 마지막 행의 0 표시는 해가 아니라 축 원점 눈금이다.",
+    "solutionImageCaption": "a>1에서 로그 부등식을 n·max(m/8,8/m)≤3으로 바꾼다. n=1,2의 허용 범위와 n=3의 한 해를 행별로 표시했다. m=8이어도 n=1, 2, 3에서는 서로 다른 순서쌍이므로 각각 한 번씩 센다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
     {
     "number": 19,

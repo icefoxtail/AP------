@@ -960,7 +960,10 @@ window.questionBank = [
     "answerStatus": "created_pending_review",
     "solutionStatus": "created_pending_review",
     "reviewStatus": "manual_review",
-    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I/q21-solution.svg"
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 진수조건 행은 0에서 열린 점으로 시작해 오른쪽으로 이어지고, 인수해 행은 −22/5와 3에서 닫힌 끝점으로 표시된다.",
+    "solutionImageCaption": "로그의 진수 조건과 인수분해한 부등식의 해를 각각 나타낸다. 정답은 1, 2, 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
