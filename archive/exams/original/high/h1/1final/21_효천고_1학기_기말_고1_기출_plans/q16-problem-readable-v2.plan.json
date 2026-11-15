@@ -1,0 +1,169 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "ac",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "bc",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 420
+  },
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "note",
+        "at": [
+          3.6,
+          4.4
+        ],
+        "text": "P는 BC 위의 임의점",
+        "labelKind": "TEXT",
+        "labelWeight": "MATH"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC와 변 BC 위의 임의점 P",
+  "sourceConditions": [
+    "A(4,0), B(0,-3), C(0,3), P는 BC 위의 임의점이다."
+  ],
+  "newVisualInformation": [
+    "문제에 주어진 삼각형과 점"
+  ]
+}
