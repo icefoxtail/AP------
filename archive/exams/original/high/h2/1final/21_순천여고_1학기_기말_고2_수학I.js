@@ -474,7 +474,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 각각 30°와 45°의 고도각을 가진 두 직각 단면에서 높이 h와 밑변이 표시되고, 아래 그림에는 변 AC=√3h, BC=h, ∠C=30°인 지면 삼각형 ABC가 보인다.",
+    "solutionImageCaption": "두 직각삼각형에서 AC=√3h, BC=h를 얻는다. 이를 지면 삼각형 ABC에 옮겨 코사인법칙을 적용한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 12,
