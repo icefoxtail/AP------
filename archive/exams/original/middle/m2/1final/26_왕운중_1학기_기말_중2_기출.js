@@ -232,6 +232,8 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "imageSize": "full",
+    "imageAlt": "위와 아래 줄에 각각 가로로 놓인 타일 세 장이 있다. 그 사이에는 세로로 놓인 타일 다섯 장이 있다. 모든 타일의 모양과 크기는 같다.",
     "level": "상",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
@@ -240,7 +242,7 @@ window.questionBank = [
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "연립일차방정식",
@@ -260,7 +262,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "타일의 긴 변을 $x$cm, 짧은 변을 $y$cm로 두고 그림의 같은 길이를 식으로 나타낸다.\n큰 직사각형의 가로는 위쪽 타일 3장의 긴 변과 같고 가운데 타일 5장의 짧은 변과 같으므로\n$3x=5y$이다.\n세로는\n$y+x+y=x+2y$이다.\n둘레가 $208$cm이므로\n$2\\{3x+(x+2y)\\}=208$,\n즉\n$2x+y=52$이다.\n\n$3x=5y$에서\n$y=\\dfrac35x$.\n따라서\n$2x+\\dfrac35x=52$,\n$\\dfrac{13}{5}x=52$이므로\n$x=20$, $y=12$이다.\n타일 한 장의 넓이는\n$xy=20\\times12=240\\text{cm}^2$이다.\n정답은 ⑤이다.",
-    "image": "assets/images/26_왕운중_1학기_기말_중2_기출/q8.png",
+    "image": "assets/images/26_왕운중_1학기_기말_중2_기출/q8-problem-visual-v2.svg",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -471,6 +473,8 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "imageSize": "full",
+    "imageAlt": "점선으로 그린 y=bx−a는 오른쪽으로 갈수록 낮아진다. 이 직선은 세로축에서 원점 위를 지나고 가로축에서 원점 오른쪽을 지난다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -479,7 +483,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -499,7 +503,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "원래 그래프의 기울기와 $y$절편의 부호를 그림에서 읽는다.\n$y=bx-a$의 그래프가 오른쪽으로 갈수록 내려가므로\n$b<0$이다.\n또 $y$축과 양의 부분에서 만나므로\n$-a>0$, 즉 $a<0$이다.\n\n따라서\n$ab>0$이고\n$a+b<0$이다.\n그러므로\n$y=abx+(a+b)$는 기울기가 양수이고 $y$절편이 음수인 직선이다.\n이 직선은 제3사분면에서 제4사분면을 거쳐 제1사분면으로 지나가며 제2사분면은 지나지 않는다.\n정답은 ②이다.",
-    "image": "assets/images/26_왕운중_1학기_기말_중2_기출/q15.png",
+    "image": "assets/images/26_왕운중_1학기_기말_중2_기출/q15-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -582,6 +586,8 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "imageSize": "full",
+    "imageAlt": "일차방정식 ax+y+b=0의 파란 실선과 y=−2x+9의 주황 점선이 A에서 만난다. 가로선 y=3은 두 직선과 각각 B와 C에서 만나고 B는 y축 위이다. A 아래 x축에 k를 표시했다.",
     "level": "상",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -590,7 +596,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -610,7 +616,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "밑변 $BC$와 삼각형의 넓이로 점 $A$의 좌표를 먼저 정한다.\n$B$는 $y$축과 $y=3$의 교점이므로\n$B=(0,3)$이다.\n$C$는 $y=-2x+9$와 $y=3$의 교점이므로\n$3=-2x+9$에서\n$C=(3,3)$이다.\n따라서 $BC=3$이다.\n\n$A$의 $y$좌표를 $h$라 하면\n$\\dfrac12\\times3\\times(h-3)=3$.\n따라서 $h=5$이다.\n$A$는 $y=-2x+9$ 위에 있으므로\n$5=-2x+9$에서\n$A=(2,5)$,\n즉 $k=2$이다.\n\n직선 $AB$의 기울기는\n$\\dfrac{5-3}{2-0}=1$이므로\n$AB:y=x+3$.\n이를 $ax+y+b=0$ 꼴과 비교하면\n$-x+y-3=0$이므로\n$a=-1$, $b=-3$이다.\n따라서\n$a+b+k=-1-3+2=-2$이다.\n정답은 ①이다.",
-    "image": "assets/images/26_왕운중_1학기_기말_중2_기출/q18.png",
+    "image": "assets/images/26_왕운중_1학기_기말_중2_기출/q18-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -776,6 +782,8 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "imageSize": "full",
+    "imageAlt": "파란 실선 −x+y−4=0과 주황 점선 3x+y+4=0이 세로축 왼쪽에서 교차한다. 파란 선은 오른쪽 위로, 주황 선은 오른쪽 아래로 향한다.",
     "choices": [],
     "level": "상",
     "category": "일차함수와 그래프",
@@ -785,7 +793,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "일차방정식의그래프",
@@ -799,14 +807,14 @@ window.questionBank = [
     "content": "두 일차방정식 $-x+y-4=0$, $3x+y+4=0$의 그래프가 다음 그림과 같을 때, $ax-y+3=0$의 그래프가 삼각형을 이루지 않도록 하는 수 $a$의 값을 모두 구하시오. [6점]",
     "answer": "$a=-3,\\ \\dfrac{1}{2},\\ 1$",
     "solution": "세 직선이 삼각형을 만들지 않는 경우는 '두 직선이 평행'하거나 '세 직선이 한 점에서 만남'이다.\n주어진 두 직선은\n$y=x+4$,\n$y=-3x-4$이고,\n세 번째 직선은\n$y=ax+3$이다.\n\n(1) $y=ax+3$이 $y=x+4$와 평행:\n$a=1$.\n\n(2) $y=ax+3$이 $y=-3x-4$와 평행:\n$a=-3$.\n\n(3) 세 직선이 한 점에서 만남:\n$x+4=-3x-4$에서\n$x=-2$, $y=2$이다.\n이 점이 $y=ax+3$ 위에 있으므로\n$2=-2a+3$,\n$a=\\dfrac12$이다.\n\n따라서\n$a=-3,\\ \\dfrac12,\\ 1$이다.",
-    "image": "assets/images/26_왕운중_1학기_기말_중2_기출/q24.png",
+    "image": "assets/images/26_왕운중_1학기_기말_중2_기출/q24-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q24-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 두 직선 y=x+4, y=-3x-4와 세 번째 직선 y=ax+3을 좌표평면에 그린 세 장의 그림이다. 첫째는 세 번째 직선이 y=x+4와 평행한 경우, 둘째는 y=-3x-4와 평행한 경우, 셋째는 세 번째 직선이 두 직선의 교점을 지나 세 직선이 한 점에서 만나는 경우이다.",
-    "solutionImageCaption": "세 직선이 삼각형을 이루지 않는 세 경우를 y=ax+3의 위치로 비교한 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q24-solution-visual-v2.svg",
+    "solutionImageAlt": "모든 그림에서 기존 두 직선은 파란 실선과 주황 점선이다. 청록 짧은 점선은 세로축의 3을 지나는 세 번째 직선이다. 첫째는 파란 직선과 평행, 둘째는 주황 직선과 평행, 셋째는 세 직선이 한 점에서 만나는 경우이다.",
+    "solutionImageCaption": "세 번째 직선 y=ax+3이 첫째 직선과 평행하면 a=1이고 둘째와 평행하면 a=−3이다. 기존 두 직선의 교점 (−2, 2)를 지나면 2=−2a+3이므로 a=1/2이다. 삼각형을 만들지 않는 a는 −3, 1/2, 1이다.",
+    "solutionImageSize": "full"
   }
 ];
