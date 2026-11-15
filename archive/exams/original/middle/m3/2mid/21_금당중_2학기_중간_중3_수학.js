@@ -1367,7 +1367,11 @@ window.questionBank = [
       "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "Mapped semantics retained; exact M3 binding pending owner-pack reconciliation."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB, CD에 중심에서 내린 수선 OM, ON과 두 직각을 표시한다. 파란색은 AM=BM, 주황색은 CN=ND를 각각 묶으며, 두 쌍 사이의 길이 같음은 표시하지 않는다.",
+    "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 AM=BM이다. OM=ON이면 같은 반지름에서 두 현까지의 거리가 같아 두 반현의 길이가 같고 AB=CD이다. 반대로 AB=CD이면 AM=CN이고, 같은 반지름이므로 OM=ON이다. ㄴ은 항상 성립하지 않으므로 참인 것은 ㄱ, ㄷ, ㄹ이며 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1456,7 +1460,11 @@ window.questionBank = [
       "templateKey": "TM_CIRCLE_CHORD_LENGTH",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "Mapped semantics retained; exact M3 binding pending owner-pack reconciliation."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB 전체에 10 cm 치수선을 표시했다. 중심 O에서 현에 내린 수선 OH는 3 cm이고, 현의 두 반쪽에는 같은 파란 눈금이 있다.",
+    "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 HB=AB/2=5 cm이다. 직각삼각형 OHB에서 OB=√(OH²+HB²)=√(3²+5²)=√34 cm이므로 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1545,7 +1553,11 @@ window.questionBank = [
       "templateKey": "TM_TANGENT_LENGTH",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "Mapped semantics retained; exact M3 binding pending owner-pack reconciliation."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O와 두 접점 A,B, 바깥점 P를 표시한다. OA=3cm, 원에서 P까지 TP=3cm이며 접선 PA와 PB는 같은 길이이다.",
+    "solutionImageCaption": "OP=OT+TP=3+3=6cm이다. 직각삼각형 OAP에서 PA=√(6²−3²)=3√3cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1633,7 +1645,11 @@ window.questionBank = [
       "templateKey": "TM_TANGENT_LENGTH",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "Mapped semantics retained; exact M3 binding pending owner-pack reconciliation."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원에서 접점 P,Q,R을 표시하고, A의 접선 AP=AR를 파란 눈금, B와 C의 접선 쌍을 각각 주황·초록 눈금으로 구분한다. AP=9cm, CR=13cm이다.",
+    "solutionImageCaption": "A에서 그은 두 접선은 길이가 같으므로 AR=AP=9cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1835,7 +1851,11 @@ window.questionBank = [
       },
       "rationale": "Direct review established source non-uniqueness. This independently authored complete M3 item is a replacement, not original recovery; no missing original conditions were inferred from answer choices.",
       "originalCropPreserved": true
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원 O에서 접점 F,D,E를 표시하고 AF=4cm, BD=3cm, CE=5cm를 나타낸다. 꼭짓점별 같은 접선 구간은 각각 한 눈금, 두 눈금, 세 눈금이다.",
+    "solutionImageCaption": "AB=AF+FB=4+3=7cm, BC=BD+DC=3+5=8cm, CA=CE+EA=5+4=9cm이다. 따라서 둘레는 7+8+9=24cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1923,7 +1943,11 @@ window.questionBank = [
       "templateKey": "TM_TANGENT_LENGTH",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "Mapped semantics retained; exact M3 binding pending owner-pack reconciliation."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O 밖의 P에서 그은 접선 PA와 PB에 같은 초록 눈금을 표시한다. PA=6 cm, ∠APB=60°이고 두 접점의 반지름은 접선에 각각 수직이다.",
+    "solutionImageCaption": "PA=PB=6이고 ∠APB=60°이므로 △PAB는 정삼각형이다. 따라서 AB=6이고 넓이는 9√3이다. OA와 OB는 각 접선에 수직이며 △OAP와 △OBP는 합동이므로 OA=2√3, ∠AOB=120°이다. 따라서 옳은 것은 ㄱ, ㄹ이고 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

@@ -280,7 +280,11 @@ window.examData = {
         "$10$"
       ],
       "answer": "③",
-      "solution": "한 외부점에서 원에 그은 두 접선의 길이는 같습니다.\n$P,C,A$가 이 순서로 있으므로 $\\overline{PA}=\\overline{PC}+\\overline{CA}=7+3=10$이다. P에서 그은 두 접선의 길이가 같으므로 $\\overline{PB}=10$이다.\nC에서 그은 접선도 같아서 $\\overline{CE}=\\overline{CA}=3$이다. $C,E,D$가 이 순서이고 $\\overline{CD}=4$이므로 $\\overline{DE}=4-3=1$이다.\nD에서 그은 접선의 길이는 같으므로 $\\overline{DB}=\\overline{DE}=1$이다. $P,D,B$가 이 순서이므로 $\\overline{PD}=\\overline{PB}-\\overline{DB}=10-1=9$이다.\n정답은 ③이다."
+      "solution": "한 외부점에서 원에 그은 두 접선의 길이는 같습니다.\n$P,C,A$가 이 순서로 있으므로 $\\overline{PA}=\\overline{PC}+\\overline{CA}=7+3=10$이다. P에서 그은 두 접선의 길이가 같으므로 $\\overline{PB}=10$이다.\nC에서 그은 접선도 같아서 $\\overline{CE}=\\overline{CA}=3$이다. $C,E,D$가 이 순서이고 $\\overline{CD}=4$이므로 $\\overline{DE}=4-3=1$이다.\nD에서 그은 접선의 길이는 같으므로 $\\overline{DB}=\\overline{DE}=1$이다. $P,D,B$가 이 순서이므로 $\\overline{PD}=\\overline{PB}-\\overline{DB}=10-1=9$이다.\n정답은 ③이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: P-C-A, P-D-B, C-E-D의 점 순서와 원 O의 접점 A,B,E를 표시했다. PC=7cm, CA=3cm, CD=4cm이며 C와 D에서 나온 같은 길이 접선 쌍을 색 눈금으로 묶었다.",
+      "solutionImageCaption": "PA=7+3=10cm이고 PB=PA이다. CE=CA=3cm이므로 DE=4−3=1cm, DB=DE=1cm이다. 따라서 PD=PB−DB=10−1=9cm이다. 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,
@@ -312,7 +316,11 @@ window.examData = {
         "$3\\,\\mathrm{cm}$"
       ],
       "answer": "④",
-      "solution": "$EB=x$라 하자. E에서 그은 접선은 $EB$와 $EF$이므로 $EF=EB=x$이다.\nD에서 그은 접선은 $DC$와 $DF$이므로 $DF=DC=8$ cm이다. 따라서 $ED=x+8$이다.\n정사각형에서 E와 D의 가로 차는 $8$, 세로 차는 $8-x$이므로 $ED^2=8^2+(8-x)^2$이다.\n$(x+8)^2=64+(8-x)^2$를 풀면 $x^2+16x+64=x^2-16x+128$, 따라서 $x=2$이다.\n그러므로 $EB=2$ cm이고 정답은 ④이다."
+      "solution": "$EB=x$라 하자. E에서 그은 접선은 $EB$와 $EF$이므로 $EF=EB=x$이다.\nD에서 그은 접선은 $DC$와 $DF$이므로 $DF=DC=8$ cm이다. 따라서 $ED=x+8$이다.\n정사각형에서 E와 D의 가로 차는 $8$, 세로 차는 $8-x$이므로 $ED^2=8^2+(8-x)^2$이다.\n$(x+8)^2=64+(8-x)^2$를 풀면 $x^2+16x+64=x^2-16x+128$, 따라서 $x=2$이다.\n그러므로 $EB=2$ cm이고 정답은 ④이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 한 변이 8cm인 정사각형 ABCD 안에 BC를 지름으로 하는 위쪽 반원이 있다. E는 AB 위, ED는 F에서 반원에 접하며 EB=x이다. E와 D의 같은 접선 쌍을 파랑·주황 눈금으로 표시했다.",
+      "solutionImageCaption": "E에서 EB=EF=x이고 D에서 DC=DF=8cm이다. 따라서 ED=x+8이다. 정사각형에서 ED²=8²+(8−x)²이므로 (x+8)²=64+(8−x)², x=2cm이다. 답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 21,
@@ -338,7 +346,11 @@ window.examData = {
       "question": "※ 서술형은 총 3문항입니다. 모든 문항은 풀이과정과 답을 적어야 합니다.<br><br>[서술형 1]<br>다음 직각삼각형 $\\mathrm{ABC}$에서 $\\tan 15^\\circ$의 값을 구하시오. (5점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/s01.png\" /><br><br><table style=\"border-collapse: collapse; width: 100%; border: 1px solid #333;\"><tr style=\"border-bottom: 1px solid #333; background: #f8f8f8;\"><th style=\"padding: 4px; border-right: 1px solid #333;\">채점 기준</th><th style=\"padding: 4px; width: 60px;\">배점</th></tr><tr style=\"border-bottom: 1px solid #333;\"><td style=\"padding: 4px; border-right: 1px solid #333;\">(i) $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{DC}}$, $\\overline{\\mathrm{AC}}$의 길이를 각각 구한 경우</td><td style=\"padding: 4px; text-align: center;\">3점</td></tr><tr><td style=\"padding: 4px; border-right: 1px solid #333;\">(ii) $\\tan 15^\\circ$의 값을 구한 경우 (유리화까지 시켜야 함)</td><td style=\"padding: 4px; text-align: center;\">2점</td></tr></table>",
       "choices": [],
       "answer": "$2-\\sqrt{3}$",
-      "solution": "$B,D,C$가 이 순서로 한 직선 위이고 $\\angle ADC=30^\\circ$이므로\n$\\angle BDA=180^\\circ-30^\\circ=150^\\circ$이다.\n삼각형 $ABD$에서 $\\angle ABD=15^\\circ$이므로\n$\\angle BAD=180^\\circ-150^\\circ-15^\\circ=15^\\circ$이다.\n따라서 $\\angle BAD=\\angle ABD$이고 맞은편 변이 같아 $AD=BD=2$이다.\n직각삼각형 $ACD$에서 $AC=AD\\sin30^\\circ=2\\cdot\\dfrac12=1$이고\n$DC=AD\\cos30^\\circ=2\\cdot\\dfrac{\\sqrt3}{2}=\\sqrt3$이다.\n그러므로 $BC=BD+DC=2+\\sqrt3$이고 $\\tan15^\\circ=\\dfrac{AC}{BC}=\\dfrac1{2+\\sqrt3}$이다.\n분모를 유리화하면 $\\dfrac1{2+\\sqrt3}\\cdot\\dfrac{2-\\sqrt3}{2-\\sqrt3}=\\dfrac{2-\\sqrt3}{(2+\\sqrt3)(2-\\sqrt3)}=\\dfrac{2-\\sqrt3}{4-3}=2-\\sqrt3$이다."
+      "solution": "$B,D,C$가 이 순서로 한 직선 위이고 $\\angle ADC=30^\\circ$이므로\n$\\angle BDA=180^\\circ-30^\\circ=150^\\circ$이다.\n삼각형 $ABD$에서 $\\angle ABD=15^\\circ$이므로\n$\\angle BAD=180^\\circ-150^\\circ-15^\\circ=15^\\circ$이다.\n따라서 $\\angle BAD=\\angle ABD$이고 맞은편 변이 같아 $AD=BD=2$이다.\n직각삼각형 $ACD$에서 $AC=AD\\sin30^\\circ=2\\cdot\\dfrac12=1$이고\n$DC=AD\\cos30^\\circ=2\\cdot\\dfrac{\\sqrt3}{2}=\\sqrt3$이다.\n그러므로 $BC=BD+DC=2+\\sqrt3$이고 $\\tan15^\\circ=\\dfrac{AC}{BC}=\\dfrac1{2+\\sqrt3}$이다.\n분모를 유리화하면 $\\dfrac1{2+\\sqrt3}\\cdot\\dfrac{2-\\sqrt3}{2-\\sqrt3}=\\dfrac{2-\\sqrt3}{(2+\\sqrt3)(2-\\sqrt3)}=\\dfrac{2-\\sqrt3}{4-3}=2-\\sqrt3$이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: B-D-C가 한 직선에 있고 ∠ABD=15°, ∠ADC=30°, ∠ACD=90°이다. AD=BD=2, AC=1, DC=√3을 표시했다.",
+      "solutionImageCaption": "BC=BD+DC=2+√3이고 AC=1이므로 tan15°=1/(2+√3)=2−√3이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 23,

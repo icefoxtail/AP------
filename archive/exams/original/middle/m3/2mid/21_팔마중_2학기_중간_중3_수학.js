@@ -627,7 +627,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "a2f2282395514c4f9f8953679e3f433359402ff9"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 공통 높이 CH가 두 직각삼각형에 속한다. AC=4, BC=6을 서로 다른 색으로 표시했다.",
+    "solutionImageCaption": "sin A/sin B=(CH/4)/(CH/6)=6/4=3/2이다. 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -705,7 +709,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "05ffc4df1fd80048ce1a42c8271594a15577d0b5"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 해안 관측점 A,B 사이 200m와 ∠A=60°, ∠B=75°를 표시하고 B에서 AC에 내린 고도 BH를 그렸다.",
+    "solutionImageCaption": "AH=100m, BH=100√3m이고 ∠C=45°이므로 HC=BH이다. BC=√(BH²+HC²)=100√6m이다. 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -791,7 +799,11 @@ window.questionBank = [
       "reason": "발문의 거리 단위가 m이고 높이를 거리로 계산하므로 선택지 단위 cm는 차원상 불일치. 숫자/수식은 그대로 두고 단위만 m로 바로잡음."
     },
     "replacementReason": "발문의 거리 단위가 m이고 높이를 거리로 계산하므로 선택지 단위 cm는 차원상 불일치. 숫자/수식은 그대로 두고 단위만 m로 바로잡음.",
-    "replacementStage": "CREATE"
+    "replacementStage": "CREATE",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: B,D는 지면 위에서 10m 떨어져 있고, 각 관측각은 30°와 45°이다. C에서 수직으로 선 건물의 꼭대기는 A이다.",
+    "solutionImageCaption": "높이를 h라 하면 h√3−h=10이므로 h=5(√3+1)m이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1873,7 +1885,11 @@ window.questionBank = [
           "CC_AREA"
         ]
       }
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 그림은 같은 빗변 BD를 가진 두 직각삼각형을 색으로 구분한다. 둘째 그림은 두 대각선과 교점 P, 60° 및 대각선 BD 전체의 길이 15를 표시한다.",
+    "solutionImageCaption": "(1) BD=AB÷cos60°=4√2이고 BC=BD×sin45°=4이다. (2) 넓이는 AC×15×sin60°÷2이다. 이 값이 30√3이므로 AC=8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

@@ -539,7 +539,11 @@ window.questionBank = [
       "subConcept": "삼각형의 높이·넓이",
       "conditionsUsed": "AB=12, AC=18, ∠BAC=60°, AD는 각의 이등분선.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB=12, AC=18, 각 A=60°이며 AD는 각의 이등분선이다. 직선 AD에 내린 B와 C의 수선 높이는 각각 6과 9이고, 두 삼각형 부분을 파랑과 주황으로 표시했다.",
+    "solutionImageCaption": "각의 이등분선이므로 ∠BAD=∠DAC=30°이다. 두 높이는 12sin30°=6, 18sin30°=9이다. △ABC의 넓이는 ½·12·18·sin60°=54√3이므로 ½·AD·(6+9)=54√3이다. 따라서 AD=36√3/5, 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
