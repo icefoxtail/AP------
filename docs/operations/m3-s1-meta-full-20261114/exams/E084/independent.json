@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E084",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T06:01:36.819110+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/19_연향중_1학기_중간_중3_기출.js",
+  "sourceBlob": "9a15d50decae54476eb6f0473c0c6cd2102dc237",
+  "inputArtifacts": {
+    "workers/C/E084.review.json": {
+      "sha256": "c4a076f6a9872e17c96a3a23b8832e1a279e084637d12848d7caa88899e2f2a9"
+    },
+    "workers/C/E084.4slot.json": {
+      "sha256": "2379f3af8423bbd67e038d55938a5fea44d9e396dd027cc2123983b4132f3ad4"
+    },
+    "workers/C/E084.input.json": {
+      "sha256": "2b6d4bfa8a5b80fe5db73eef3ad87fb984e0c7ff5ff239f52b302963bd6d88a8"
+    }
+  },
+  "sampledOrdinals": [
+    5,
+    19,
+    22
+  ],
+  "items": [
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_b7a88636e3078f86aa71576561656a6f0291606aa8d18751fd6a336c7592c4ab",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "발문 a+b√2의 두계수 범위가 없어 계수비교로 a+b를 단정할 수 없다. 실제해설의 유리화·합차공식·계수비교 증거는 보존하되 UNKNOWN/SEMANTIC_CONCLUSION_HOLD 처리와 무패치를 수용한다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_8f1c7146113a625ef3de93074329e79354d3d4db14231ad3392958fa9298b33f",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제그림의 중점D,세원 및 음영=큰원-작은원과 해설의지름12±a→넓이차→제곱식정리를 대조했다. RPM020후보,중/bucket3,중점조건 및 4칸원넓이공식 타당. CC_CIRCLE_CIRCUMFERENCE의정본라벨은 원의둘레와넓이이고 정의는2πr및πr²모두여서 현CC가 두공식을 충족한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_86b777d0664baacb10f32e875d13bcb513107dcd761636037d4f57a09fe532d2",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제수직선그림에서P는-3~-2,Q는-1~0이나해설p=-2-√2,q=-1+√2는반대방향기준점으로그범위를벗어난다. 이미지-해설충돌및UNKNOWN보류를수용하고정답이나해설을고치지않았다."
+    }
+  ],
+  "findingsResolved": [
+    {
+      "ordinal": 19,
+      "finding": "원넓이CC누락가능성을제기했으나정본정의확인후현키가원주와원넓이를모두포함함을확인하여추가태그불필요로종결.",
+      "resolution": "NO_CHANGE_CANONICAL_DEFINITION_CONFIRMED"
+    }
+  ],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E084-assets/contact-1.jpg",
+      "sha256": "be4e89564a91f8e4c61e7ab083167e69a92032909fd0d3bcba95a3363503125a",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}
