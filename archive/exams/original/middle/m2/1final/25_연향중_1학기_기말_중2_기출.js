@@ -495,7 +495,7 @@ window.questionBank = [
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "연립일차방정식",
@@ -504,7 +504,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "$5\\%$의 소금물과 $10\\%$의 소금물을 섞어 농도가 $8\\%$인 소금물 $500\\,\\text{g}$을 만들려고 한다. 다음은 $5\\%$의 소금물과 $10\\%$의 소금물을 각각 몇 $\\text{g}$씩 섞어야 하는지 구하는 과정이다. 빈칸에 들어갈 내용으로 옳지 않은 것은? [4점]",
+    "content": "$5\\%$의 소금물과 $10\\%$의 소금물을 섞어 농도가 $8\\%$인 소금물 $500\\,\\text{g}$을 만들려고 한다. 다음은 $5\\%$의 소금물과 $10\\%$의 소금물을 각각 몇 $\\text{g}$씩 섞어야 하는지 구하는 과정이다. 빈칸에 들어갈 내용으로 옳지 않은 것은? [4점]<br><img src=\"assets/images/25_연향중_1학기_기말_중2_기출/q8-problem-visual-v2.svg\" alt=\"왼쪽 그릇에는 5% 소금물 x g, 오른쪽 그릇에는 10% 소금물 y g이 있다. 두 그릇에서 내려오는 화살표가 아래쪽의 8% 소금물 500 g으로 이어진다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><div class=\"question-note-box\"><p>5%의 소금물의 양을 $x\\,\\mathrm{g}$, 10%의 소금물의 양을 $y\\,\\mathrm{g}$이라고 하자.</p><p>두 소금물을 섞어 만든 소금물의 양은 $\\boxed{\\text{㉠}}\\,\\mathrm{g}$이므로<br>$x+y=\\boxed{\\text{㉠}}$.</p><p>두 소금물을 섞어도 소금의 양은 변하지 않으므로<br>$\\boxed{\\text{㉡}}x+\\dfrac{10}{100}y=\\boxed{\\text{㉢}}$.</p><p>다음 연립방정식을 풀면</p><p>$\\begin{cases}x+y=\\boxed{\\text{㉠}}\\\\[2pt]\\boxed{\\text{㉡}}x+\\dfrac{10}{100}y=\\boxed{\\text{㉢}}\\end{cases}$</p><p>$x=\\boxed{\\text{㉣}},\\quad y=\\boxed{\\text{㉤}}$이다.</p><p>따라서 5%의 소금물을 $\\boxed{\\text{㉣}}\\,\\mathrm{g}$, 10%의 소금물을 $\\boxed{\\text{㉤}}\\,\\mathrm{g}$을 섞어야 한다.</p></div>",
     "choices": [
       "㉠ 500",
       "㉡ $\\dfrac{5}{100}$",
@@ -514,7 +514,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "1) 총 소금물의 양은 $500\\,\\text{g}$이므로 $x+y=500$이다. 따라서 ㉠은 $500$이다.\n2) $5\\%$ 소금물 속 소금의 양은 $\\dfrac{5}{100}x$이므로 ㉡은 $\\dfrac{5}{100}$이다.\n3) 최종 섞은 후 소금의 양은 $500\\,\\text{g}$의 $8\\%$이므로 $500 \\times \\dfrac{8}{100} = 40$이 되어야 한다. 선지 ③의 ㉢은 단지 농도 비율인 $\\dfrac{8}{100}$만 적혀 있고 소금의 총량이 아니므로 옳지 않다. 원래 식은 $\\dfrac{5}{100}x + \\dfrac{10}{100}y = 500 \\times \\dfrac{8}{100}$이어야 하므로 ㉢ 자리에 들어갈 값은 $500 \\times \\dfrac{8}{100}$ 또는 $40$이다.\n4) 연립방정식을 풀면 $x=200, y=300$이 되므로 ㉣ $= 200$, ㉤ $= 300$은 참이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_연향중_1학기_기말_중2_기출/q8.png",
+    "image": "",
     "imageSize": "tall",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
@@ -972,10 +972,10 @@ window.questionBank = [
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
     ],
-    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에 일차함수 y=-3/2x+6의 그래프가 y축 위의 점 (0,6)과 x축 위의 점 (4,0)을 지나고, 점선으로 x 방향 2와 y 방향 3의 변화량이 표시되어 있다. 기울기가 다른 직선 y=-x+6도 점 (0,6)을 지난다.",
-    "solutionImageCaption": "일차함수 y=-3/2x+6의 그래프와 두 절편, x가 2만큼 변할 때 y의 변화량, 비교용 직선 y=-x+6을 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q14-solution-visual-v2.svg",
+    "solutionImageAlt": "파란 직선은 세로축 (0,6)을 지나 오른쪽 아래로 내려간다. 가로로 2 갈 때 아래로 3 간다. 주황 점선 y=−x+6은 같은 세로축 절편에 닿는다.",
+    "solutionImageCaption": "기울기는 −3/2, 세로축 절편은 6이다. 가로축 절편은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1127,7 +1127,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -1137,11 +1137,11 @@ window.questionBank = [
       "y절편"
     ],
     "wide": false,
-    "content": "$ab \\lt 0, a-b \\gt 0$일 때, 다음 중 일차함수 $y=ax+b$의 그래프로 알맞은 것은? [4점]",
+    "content": "$ab \\lt 0, a-b \\gt 0$일 때, 다음 중 일차함수 $y=ax+b$의 그래프로 알맞은 것은? [4점]<br><img src=\"assets/images/25_연향중_1학기_기말_중2_기출/q17-problem-visual-v2.svg\" alt=\"① 오른쪽 위로 올라가며 세로축의 원점 위를 지난다. ② 올라가며 세로축의 원점 아래를 지난다. ③ 올라가며 원점을 지난다. ④ 오른쪽 아래로 내려가며 세로축의 원점 위를 지난다. ⑤ 내려가며 세로축의 원점 아래를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [],
     "answer": "②",
     "solution": "조건 분석에 의해 $a \\gt 0, b \\lt 0$이다.\n기울기가 양수이므로 오른쪽 위로 증가하는 형태이며, $y$절편이 음수이므로 원점 아래에서 $y$축과 교점을 가진다. 이 개형을 만족하는 그래프는 ②번이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/25_연향중_1학기_기말_중2_기출/q17.png",
+    "image": "",
     "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
@@ -1253,10 +1253,10 @@ window.questionBank = [
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
     ],
-    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 y=x-6과 y=-1/2x+3이 점 (6,0)에서 만나고, 두 직선과 y축으로 둘러싸인 삼각형이 색칠되어 있다. y축 위의 꼭짓점은 (0,3)과 (0,-6)이며, y축 위의 밑변 길이 9와 교점에서 y축까지의 높이 6이 표시되어 있다.",
-    "solutionImageCaption": "두 직선 y=x-6, y=-1/2x+3과 y축으로 둘러싸인 삼각형을 색칠하고 밑변과 높이를 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q18-solution-visual-v2.svg",
+    "solutionImageAlt": "파란 직선은 y=x−6, 주황 점선은 y=−1/2 x+3이다. 두 직선이 (6,0)에서 만나고, 세로축의 (0,3), (0,−6)과 이루는 삼각형을 칠했다.",
+    "solutionImageCaption": "밑변은 세로축을 따라 길이 9이고 가로 방향 높이는 6이다. 삼각형의 넓이는 27이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
