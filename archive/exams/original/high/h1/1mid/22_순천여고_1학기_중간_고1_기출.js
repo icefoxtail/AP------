@@ -745,7 +745,7 @@ window.questionBank = [
       "$8\\sqrt{3}$",
       "$5\\sqrt{2}$"
     ],
-    "image": "assets/images/22_순천여고_1학기_중간_고1_기출/q18-source-clean.svg",
+    "image": "assets/images/22_순천여고_1학기_중간_고1_기출/q18-readable-v3.svg",
     "level": "상",
     "category": "이차함수",
     "originalCategory": "이차함수",

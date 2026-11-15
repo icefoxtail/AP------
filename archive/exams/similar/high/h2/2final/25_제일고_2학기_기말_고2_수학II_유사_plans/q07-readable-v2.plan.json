@@ -1,0 +1,261 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "axisScale": {
+      "x": 1,
+      "y": "3/5"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "v"
+    },
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "2"
+      },
+      {
+        "x": "3",
+        "y": "2"
+      },
+      {
+        "x": "5",
+        "y": "-2"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "2",
+        "2"
+      ],
+      "B": [
+        "3",
+        "2"
+      ],
+      "C": [
+        "5",
+        "-2"
+      ],
+      "D": [
+        "7",
+        "0"
+      ]
+    },
+    "family": "piecewise-polynomial",
+    "functionName": "v",
+    "nameVariable": "t",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "8",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-7",
+          "1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 2
+      },
+      {
+        "id": "C",
+        "x": 5,
+        "y": -2
+      },
+      {
+        "id": "D",
+        "x": 7,
+        "y": 0
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "7"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      7
+    ],
+    "viewport": [
+      -0.7608695652173916,
+      7.760869565217392,
+      -3.28125,
+      3.28125
+    ],
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "PIECEWISE_POLYNOMIAL_OVERVIEW_v1",
+    "piecewisePolynomialFeatures": {
+      "schemaVersion": "PIECEWISE_POLYNOMIAL_FEATURES_v1",
+      "pieces": [
+        {
+          "coefficients": [
+            "0",
+            "1",
+            "0"
+          ],
+          "interval": [
+            "0",
+            "2"
+          ],
+          "drawInterval": [
+            0,
+            2
+          ]
+        },
+        {
+          "coefficients": [
+            "2",
+            "0",
+            "0"
+          ],
+          "interval": [
+            "2",
+            "3"
+          ],
+          "drawInterval": [
+            2,
+            3
+          ]
+        },
+        {
+          "coefficients": [
+            "8",
+            "-2",
+            "0"
+          ],
+          "interval": [
+            "3",
+            "5"
+          ],
+          "drawInterval": [
+            3,
+            5
+          ]
+        },
+        {
+          "coefficients": [
+            "-7",
+            "1",
+            "0"
+          ],
+          "interval": [
+            "5",
+            "7"
+          ],
+          "drawInterval": [
+            5,
+            7
+          ]
+        }
+      ],
+      "corners": [
+        {
+          "x": "2",
+          "y": "2"
+        },
+        {
+          "x": "3",
+          "y": "2"
+        },
+        {
+          "x": "5",
+          "y": "-2"
+        }
+      ],
+      "extrema": [],
+      "intersections": []
+    },
+    "equalUnits": true,
+    "axisRatio": 0.6,
+    "plotCanvas": {
+      "width": 448,
+      "height": 207
+    },
+    "intervalFeatures": {
+      "schemaVersion": "POLYNOMIAL_INTERVAL_FEATURES_v1",
+      "endpoints": [
+        {
+          "side": "START",
+          "x": "0",
+          "y": "0",
+          "state": "CLOSED"
+        },
+        {
+          "side": "END",
+          "x": "7",
+          "y": "0",
+          "state": "CLOSED"
+        }
+      ]
+    },
+    "intervalFeaturePolicy": {
+      "schemaVersion": "POLYNOMIAL_INTERVAL_POLICY_v1",
+      "markerRadiusIntrinsicPx": 4,
+      "minimumMarkerDiameterCssPx": 3
+    }
+  },
+  "caption": "속도 v(t)의 그래프는 점 (0,0), (2,2), (3,2), (5,-2), (7,0)을 차례로 이은 꺾인 선이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "0≤t≤7에서 v(t)의 그래프가 그림과 같다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "속도 그래프의 꺾이는 점의 좌표와 t축을 지나는 위치를 읽을 수 있게 한다."
+  ],
+  "sourceQuote": "속도 $v(t)$의 그래프가 그림과 같다.",
+  "coordinatePanel": [
+    "O",
+    "A"
+  ],
+  "coordinateLeader": [
+    "B",
+    "C",
+    "D"
+  ]
+}

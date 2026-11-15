@@ -1,0 +1,406 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학_유사A.js",
+  "questionId": 2,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "L",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "L",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "62"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "R",
+                "L"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "308"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "W",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "L",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "242"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Z",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "R",
+                "L"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "128"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lu",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "L",
+                "U"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "rv",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "R",
+                "V"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lu",
+                "rv"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "L",
+          "R",
+          "M",
+          "N",
+          "U",
+          "V",
+          "W",
+          "Z",
+          "T"
+        ],
+        "displaySegments": [
+          {
+            "id": "sh",
+            "refs": [
+              "M",
+              "N"
+            ]
+          },
+          {
+            "id": "sleft",
+            "refs": [
+              "W",
+              "U"
+            ]
+          },
+          {
+            "id": "sright",
+            "refs": [
+              "V",
+              "Z"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 530
+        },
+        "caption": "세 직선이 만드는 각과 두 각의 크기를 표시한 그림",
+        "displayLines": [],
+        "displayCircles": [],
+        "hiddenPointNames": [
+          "L",
+          "R",
+          "M",
+          "N",
+          "U",
+          "V",
+          "W",
+          "Z",
+          "T"
+        ],
+        "hiddenPointStyle": "NONE",
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a",
+              "refs": [
+                "U",
+                "T",
+                "R"
+              ],
+              "value": 114,
+              "label": "a",
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "b",
+              "refs": [
+                "L",
+                "T",
+                "R"
+              ],
+              "value": 66,
+              "label": "b",
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "c",
+              "refs": [
+                "M",
+                "L",
+                "T"
+              ],
+              "value": 118,
+              "label": "c",
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "d",
+              "refs": [
+                "W",
+                "L",
+                "M"
+              ],
+              "value": 62,
+              "label": "d",
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "e",
+              "refs": [
+                "R",
+                "L",
+                "T"
+              ],
+              "value": 62,
+              "label": "e",
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "f",
+              "refs": [
+                "T",
+                "R",
+                "L"
+              ],
+              "value": 52,
+              "label": "f",
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "g",
+              "refs": [
+                "L",
+                "R",
+                "Z"
+              ],
+              "value": 128,
+              "label": "g",
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "h",
+              "refs": [
+                "N",
+                "R",
+                "T"
+              ],
+              "value": 128,
+              "label": "h",
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "k",
+              "refs": [
+                "R",
+                "L",
+                "W"
+              ],
+              "value": 118,
+              "label": "118",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "l",
+              "refs": [
+                "Z",
+                "R",
+                "N"
+              ],
+              "value": 52,
+              "label": "52",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 29,
+        "displayScale": 0.48,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

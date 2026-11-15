@@ -1,0 +1,1111 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_왕의중_2학기_중간_중1_유사.js",
+  "questionId": 20,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "v0B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "18"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "v0C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "18"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r0B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "v0B",
+                "v0C"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "r0C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "v0C",
+                "v0B"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "70"
+                },
+                "turn": "CW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "l0B",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "v0B",
+                "r0B"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "l0C",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "v0C",
+                "r0C"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "v0A",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "l0B",
+                "l0C"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "v1B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "18"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "v1C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "19"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "18"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "c1B",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "v1B"
+              ],
+              "outputType": "CIRCLE",
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "c1C",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "v1C"
+              ],
+              "outputType": "CIRCLE",
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "7"
+                }
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "roots1",
+              "op": "INTERSECTION",
+              "inputs": [
+                "c1B",
+                "c1C"
+              ],
+              "outputType": "POINT_SET",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "v1A",
+              "op": "SELECT_POINT",
+              "inputs": [
+                "roots1"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE",
+              "branch": {
+                "kind": "SIDE_OF_ORIENTED_LINE",
+                "refs": [
+                  "v1B",
+                  "v1C"
+                ],
+                "sign": 1
+              }
+            },
+            {
+              "id": "v2B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "v2C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "v2A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "v2B",
+                "v2C"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "v3B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "v3C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "19"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r3C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "v3C",
+                "v3B"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "40"
+                },
+                "turn": "CW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "l3C",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "v3C",
+                "r3C"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "c3B",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "v3B"
+              ],
+              "outputType": "CIRCLE",
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "roots3",
+              "op": "INTERSECTION",
+              "inputs": [
+                "l3C",
+                "c3B"
+              ],
+              "outputType": "POINT_SET",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "m31",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "v3B"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "m32",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "v3B"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "v3A",
+              "op": "SELECT_POINT",
+              "inputs": [
+                "roots3"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE",
+              "branch": {
+                "kind": "SIDE_OF_ORIENTED_LINE",
+                "refs": [
+                  "m31",
+                  "m32"
+                ],
+                "sign": -1
+              }
+            },
+            {
+              "id": "v4B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "v4C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "v4A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "v4C",
+                "v4B"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "v5B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "v5C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "18"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "r5B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "v5B",
+                "v5C"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "r5C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "v5C",
+                "v5B"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "l5B",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "v5B",
+                "r5B"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "l5C",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "v5C",
+                "r5C"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "v5A",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "l5B",
+                "l5C"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "v0A",
+          "v0B",
+          "v0C",
+          "v1A",
+          "v1B",
+          "v1C",
+          "v2A",
+          "v2B",
+          "v2C",
+          "v3A",
+          "v3B",
+          "v3C",
+          "v4A",
+          "v4B",
+          "v4C",
+          "v5A",
+          "v5B",
+          "v5C"
+        ],
+        "displaySegments": [
+          {
+            "id": "base0",
+            "refs": [
+              "v0B",
+              "v0C"
+            ]
+          },
+          {
+            "id": "left0",
+            "refs": [
+              "v0B",
+              "v0A"
+            ]
+          },
+          {
+            "id": "right0",
+            "refs": [
+              "v0C",
+              "v0A"
+            ]
+          },
+          {
+            "id": "base1",
+            "refs": [
+              "v1B",
+              "v1C"
+            ]
+          },
+          {
+            "id": "left1",
+            "refs": [
+              "v1B",
+              "v1A"
+            ]
+          },
+          {
+            "id": "right1",
+            "refs": [
+              "v1C",
+              "v1A"
+            ]
+          },
+          {
+            "id": "base2",
+            "refs": [
+              "v2B",
+              "v2C"
+            ]
+          },
+          {
+            "id": "left2",
+            "refs": [
+              "v2B",
+              "v2A"
+            ]
+          },
+          {
+            "id": "right2",
+            "refs": [
+              "v2C",
+              "v2A"
+            ]
+          },
+          {
+            "id": "base3",
+            "refs": [
+              "v3B",
+              "v3C"
+            ]
+          },
+          {
+            "id": "left3",
+            "refs": [
+              "v3B",
+              "v3A"
+            ]
+          },
+          {
+            "id": "right3",
+            "refs": [
+              "v3C",
+              "v3A"
+            ]
+          },
+          {
+            "id": "base4",
+            "refs": [
+              "v4B",
+              "v4C"
+            ]
+          },
+          {
+            "id": "left4",
+            "refs": [
+              "v4B",
+              "v4A"
+            ]
+          },
+          {
+            "id": "right4",
+            "refs": [
+              "v4C",
+              "v4A"
+            ]
+          },
+          {
+            "id": "base5",
+            "refs": [
+              "v5B",
+              "v5C"
+            ]
+          },
+          {
+            "id": "left5",
+            "refs": [
+              "v5B",
+              "v5A"
+            ]
+          },
+          {
+            "id": "right5",
+            "refs": [
+              "v5C",
+              "v5A"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "coordinateCanvas": {
+          "width": 670,
+          "height": 590
+        },
+        "caption": "여섯 삼각형의 보기",
+        "accessibilityDescription": "두 열의 여섯 삼각형에 각각 보기 기호, 각도 및 변의 길이 표기가 있다.",
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "baseLabel0",
+              "from": "v0B",
+              "to": "v0C",
+              "label": "7",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 7,
+              "offsetPx": 16,
+              "extension": "NONE"
+            },
+            {
+              "id": "baseLabel1",
+              "from": "v1B",
+              "to": "v1C",
+              "label": "8",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 8,
+              "offsetPx": 16,
+              "extension": "NONE"
+            },
+            {
+              "id": "leftLabel1",
+              "from": "v1B",
+              "to": "v1A",
+              "label": "5",
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 5,
+              "offsetPx": 14,
+              "extension": "NONE"
+            },
+            {
+              "id": "rightLabel1",
+              "from": "v1C",
+              "to": "v1A",
+              "label": "7",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 7,
+              "offsetPx": 14,
+              "extension": "NONE"
+            },
+            {
+              "id": "baseLabel2",
+              "from": "v2B",
+              "to": "v2C",
+              "label": "8",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 8,
+              "offsetPx": 16,
+              "extension": "NONE"
+            },
+            {
+              "id": "leftLabel2",
+              "from": "v2B",
+              "to": "v2A",
+              "label": "6",
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 6,
+              "offsetPx": 14,
+              "extension": "NONE"
+            },
+            {
+              "id": "baseLabel3",
+              "from": "v3B",
+              "to": "v3C",
+              "label": "8",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 8,
+              "offsetPx": 16,
+              "extension": "NONE"
+            },
+            {
+              "id": "leftLabel3",
+              "from": "v3B",
+              "to": "v3A",
+              "label": "6",
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 6,
+              "offsetPx": 14,
+              "extension": "NONE"
+            },
+            {
+              "id": "baseLabel4",
+              "from": "v4B",
+              "to": "v4C",
+              "label": "8",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 8,
+              "offsetPx": 16,
+              "extension": "NONE"
+            },
+            {
+              "id": "rightLabel4",
+              "from": "v4C",
+              "to": "v4A",
+              "label": "6",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 6,
+              "offsetPx": 14,
+              "extension": "NONE"
+            },
+            {
+              "id": "baseLabel5",
+              "from": "v5B",
+              "to": "v5C",
+              "label": "7",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "unit": "cm",
+              "value": 7,
+              "offsetPx": 16,
+              "extension": "NONE"
+            }
+          ],
+          "angles": [
+            {
+              "id": "ang0B",
+              "refs": [
+                "v0C",
+                "v0B",
+                "v0A"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "value": 60,
+              "label": "60"
+            },
+            {
+              "id": "ang0C",
+              "refs": [
+                "v0A",
+                "v0C",
+                "v0B"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "value": 70,
+              "label": "70"
+            },
+            {
+              "id": "ang2B",
+              "refs": [
+                "v2C",
+                "v2B",
+                "v2A"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "value": 50,
+              "label": "50"
+            },
+            {
+              "id": "ang3C",
+              "refs": [
+                "v3A",
+                "v3C",
+                "v3B"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "value": 40,
+              "label": "40"
+            },
+            {
+              "id": "ang4C",
+              "refs": [
+                "v4A",
+                "v4C",
+                "v4B"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "value": 50,
+              "label": "50"
+            },
+            {
+              "id": "ang5B",
+              "refs": [
+                "v5C",
+                "v5B",
+                "v5A"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "value": 60,
+              "label": "60"
+            },
+            {
+              "id": "ang5C",
+              "refs": [
+                "v5A",
+                "v5C",
+                "v5B"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "value": 50,
+              "label": "50"
+            }
+          ],
+          "regions": [
+            {
+              "id": "choice0",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "v0A",
+                    "v0B",
+                    "v0C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "choice1",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "v1A",
+                    "v1B",
+                    "v1C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "choice2",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "v2A",
+                    "v2B",
+                    "v2C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "choice3",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "v3A",
+                    "v3B",
+                    "v3C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "choice4",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "v4A",
+                    "v4B",
+                    "v4C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "choice5",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "v5A",
+                    "v5B",
+                    "v5C"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "v0A",
+          "v0B",
+          "v0C",
+          "v1A",
+          "v1B",
+          "v1C",
+          "v2A",
+          "v2B",
+          "v2C",
+          "v3A",
+          "v3B",
+          "v3C",
+          "v4A",
+          "v4B",
+          "v4C",
+          "v5A",
+          "v5B",
+          "v5C"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 23,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

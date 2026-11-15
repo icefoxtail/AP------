@@ -1,0 +1,254 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사.js",
+  "questionId": 12,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "55"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Bfar",
+              "op": "VECTOR_SCALE_POINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {
+                "k": {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Cfar",
+              "op": "VECTOR_SCALE_POINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {
+                "k": {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "baseRayLine",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "Bfar"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "sideRayLine",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "Cfar"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "R",
+          "Bfar",
+          "Cfar"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 410
+        },
+        "caption": "삼각형과 컴퍼스 호",
+        "accessibilityDescription": "반직선 위에 점 A, B, C와 컴퍼스 호가 있고 세 점을 잇는 선분이 보인다.",
+        "planeMarks": {
+          "traces": [
+            {
+              "id": "markAB",
+              "center": "A",
+              "radius": {
+                "point": "B"
+              },
+              "through": [
+                "B"
+              ],
+              "spanDeg": 22,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "markAC",
+              "center": "A",
+              "radius": {
+                "point": "C"
+              },
+              "through": [
+                "C"
+              ],
+              "spanDeg": 22,
+              "factRole": "GIVEN"
+            }
+          ],
+          "angles": [
+            {
+              "id": "angleA",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 55,
+              "arcs": 1,
+              "side": "INNER",
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "style": "ARC"
+            }
+          ],
+          "expressionLabels": []
+        },
+        "hiddenPointNames": [
+          "R",
+          "Bfar",
+          "Cfar"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 22,
+        "displayScale": 0.59,
+        "fontFloorCssPx": 11
+      }
+    }
+  ],
+  "sourceFigure": {
+    "path": "archive/assets/images/25_풍덕중_2학기_중간_중1_유사/q12.svg",
+    "note": "발문·해설의 SAS 구성 단계에 맞추었다. 두 반지름 호의 중심은 모두 A이고 각각 B와 C를 지난다."
+  }
+}
