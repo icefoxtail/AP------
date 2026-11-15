@@ -1,0 +1,369 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E062",
+  "owner": "B",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "e4add1c0fee150ddb4a05dd59d433f35995194dd",
+  "sourceSha256": "05d62e68c80b5307064887e295ff01e25cd99f47f96ca4c7a688dfc33f634fd0",
+  "reviewSha256": "83ba9b3eaa86598decbba1963e7ccf86b3e363628c625ddd56f5926f302d8765",
+  "fourSlotSha256": "8b70f3da98f8442126c445fae6332e9a23b8de2ed433479d166887655b60b302",
+  "independentSampleSha256": "b9a272b49a83f8349cae2d0bc5a2ebf36bcb1fc7184b925d127eb002c3919502",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_7b6f35220efcfae2fddf05cff7c60ea79ef54b66e0de4d1c98d9d772da7e6835",
+      "fields": [
+        "difficultyBucket",
+        "level",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "sourceRequiredGeometry"
+      ]
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f0d437ed043c09185f9beb639a6e6a92ad5703ea65f67f330e3acb4ca472dd80",
+      "fields": [
+        "difficultyBucket",
+        "level",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "sourceRequiredGeometry"
+      ]
+    }
+  ],
+  "sampleReviewer": "C",
+  "sampleOrdinals": [
+    3,
+    6,
+    24
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "83ba9b3eaa86598decbba1963e7ccf86b3e363628c625ddd56f5926f302d8765",
+      "finalReviewSha256": "83ba9b3eaa86598decbba1963e7ccf86b3e363628c625ddd56f5926f302d8765",
+      "independentSampleSha256": "b9a272b49a83f8349cae2d0bc5a2ebf36bcb1fc7184b925d127eb002c3919502",
+      "adjudicatedCompatibilityOrdinals": [],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "그림의 두 직선 교점이 격자 위에 명확히 있고 좌표를 읽는 직접형이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "교점의 주어진 y를 첫 식에 넣어 x를 구하고 같은 점을 다른 식에 대입하는 표준 두 단계이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "조건 직선의 기울기가 첫 함수와 같음을 읽어 목표가 그 함수임을 확인한 뒤 절편을 구한다. 한 번의 평행선 해석으로 충분하여2/B23이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "같은 직선의 계수비를 두 미정계수에 적용한 뒤 곱하는 정형 연계이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "이등변 밑각의 같음과 두 내각 이등분을 작은 삼각형 내각합에 넣는 표준 연결이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 6,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "RHS가 강제하는 CAD30도와 주어진 AC4·DC2는 함께 성립하지 않는다. 원본의 어떤 조건을 고쳐야 하는지 알 수 없으므로 버킷·학습수준 후보를 만들지 않는 NO_SUPPORTED_CANDIDATE를 수용한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_UNRESOLVED_NO_SUPPORTED_CANDIDATE",
+      "proposedLevel": null,
+      "candidateLevelApproved": false
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "각 선택지의 빗변·다른 변·예각 정보를 RHS/RHA/ASA에 대응시키며 빗변 하나만으로는 부족함을 판정한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "직각 외심의 빗변 중점과45도에서 같은 반지름을 수직높이로 읽어 삼각형 넓이에 넣는다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 9,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "실제 그림에서 두 변의 부분길이는 읽히지만 필수 밑변 수치가 잘려 있다. 최종UNKNOWN을 수용하며, 밑변의 중점·길이표시가 복구되면 직접 반길이 복원형1/하라는 조건부 후보만 허용한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_UNRESOLVED_CONDITIONAL_CANDIDATE",
+      "proposedLevel": "하",
+      "candidateLevelApproved": false
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "외심의 등거리·중심각·위치 성질을 보기와 바로 비교한다. 그림의 수선이 꼭짓점까지 연장된 위상 문제는SOURCE_HOLD로 따로 남겨 원문 정의의 판정과 구별한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "정삼각형 대칭에서 내심 수선발이 변의 중점임을 바로 쓰고 한 변을 세 배 하는 직접형이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "주어진 두 반각에서 내심각을 구하고 큰 삼각형의 내각합·꼭지각 반각을 연결한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "같은 밑각과 B의 이등분각을 구해 지정된 작은 삼각형의 내각합에 넣는 정형 순서이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "한 쌍 대변의 평행·등량으로 평행사변형을 판정한 뒤 대각선 이등분각과 엇각에서 이웃변 같음을 얻는다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "대각선의 절반 두 개와 같은 대변을 더하는 직접 구조는 명료하다. 실제 수치는4+6=10의 퇴화 삼각형이므로 SOURCE_HOLD를 유지하고 수학적 원문 정합을 승인하지 않는다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "등변사다리꼴도 허용되는 불충분 조건과 평행사변형의 충분조건을 구별해야 하므로 단순 대입보다 한 해석이 더 있다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "지정된 이등분선과 분할길이의 변비로 높이를 구한 다음 삼각형 넓이에 넣는 표준 연계이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "마름모 대각선의 반각과 주어진 보조 이등변의 밑각을 차례로 써 목표각을 뺀다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "평행사변형 이웃각의 합180도를 각 이등분으로 나누면 네 내부각이 직각이 되는 표준 판정이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "두 수선이 주어진 등변사다리꼴에서 밑변 차가 양쪽에 반씩 분배되는 성질을 바로 적용한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "특수사각형 포함관계에서 이미 성립하는 성질과 새 충분조건을 구별하고 반례 가능성을 판단한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "텍스트의 두 직선에서 교점·x절편을 구하여 밑변과 높이를 정하는 표준 넓이 계산이다. 그림 수식의 부호 혼용은SOURCE_HOLD로 분리하며 텍스트 식에 대한 메타로만 수용한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "이등변 밑각을 구한 뒤 명시된 두 내심이 그 각을 반복 이등분한다. 중첩 수가 새로운 전략을 요구하지 않는다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "첫 소문항이 ED=BF와 평행사변형 증명을 안내하고 둘째는 그 평행성과 대각선45도·주어진25도를 순차 적용한다. 보조선이나 경로 선택 없이 지정된 순서이므로2/B23이며, 작성자가3에서 보정했다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 25,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "ASA 증명과 넓이 목표가 소문항으로 안내되어 있다. AE=CD로 사다리꼴 밑변합이BD라는 한 해석 뒤 주어진 높이를 적용한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 6,
+      "reason": "RHS 합동이면 ∠CAD=30도인데 AC=4,DC=2는 이에 맞지 않는다. 어떤 주어진 조건이 잘못되었는지 알 수 없어 일관된 수치 풀이와 난도는 미결이다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 9,
+      "reason": "실제 그림의 밑변·수선발 아래에 필요한 길이 표시가 잘렸으며 발문과 빈 해설에서는 이를 복원할 수 없다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 10,
+      "reason": "그림의 세 수선이 각 꼭짓점까지 연장된 수심 형태로도 보인다. 발문은 외심을 명시한다. 이를 임의로 정삼각형 조건으로 보강하지 않고 일반 외심 성질 판정의 메타만 유지하며 학생 선택지 정답은 별도 확인한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 15,
+      "reason": "원문 AC=8,BD=12,BC=10이면 삼각형 AOD의 변이4,6,10으로 퇴화하여 비퇴화 평행사변형이 존재하지 않는다. 대각선 이등분·대변 길이라는 직접형 메타는 명료하나 새 정답이나 수치를 만들어 채우지 않는다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 22,
+      "reason": "본문은3x+y=3인데 그림의 인쇄 라벨은3x−y=3처럼 보인다. 실제 그려진 음의 기울기와 본문식은 일치하여 본문식 기준 메타 판정은 가능하다. 원본 이미지 표기는 수정하지 않는다.",
+      "metadataJudgmentUnresolved": false
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}

@@ -74,7 +74,9 @@ def main():
     result=read(verification)
     expected_counts={e['exam']:sum(Path(r['src']).stem==e['exam'] for r in batch) for e in entries}
     if not isinstance(result,list) or len(result)!=len(entries) or {x.get('exam') for x in result}!=set(expected_counts) or any(x.get('status')!='OK' or x.get('missing') or x.get('figures')!=expected_counts[x['exam']] for x in result): raise ValueError('verification failed or incomplete')
-    font_input=R/'font-batch-input.json'; font_output=R/'font-batch-result.json'
+    font_input=R/'font-batch-input.json'
+    font_output=ROOT/'.tmp'/'svg-m1'/'runs'/'font-batch-result.json'
+    font_output.parent.mkdir(parents=True,exist_ok=True)
     font_entries=[{'src':sources[e['exam']],'ords':[r['ord'] for r in batch if r['src']==sources[e['exam']]]} for e in entries]
     write(font_input,font_entries)
     if font_output.exists(): font_output.unlink()

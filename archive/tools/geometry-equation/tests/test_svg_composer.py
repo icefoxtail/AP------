@@ -52,6 +52,29 @@ class ComposerTests(unittest.TestCase):
         self.assertEqual(line.attrib['stroke'],'#666');self.assertEqual(line.attrib['stroke-width'],'0.8');self.assertNotIn('marker-end',line.attrib);self.assertNotIn('marker-start',line.attrib)
         self.assertEqual(renderedLabel.attrib['data-tick-callout'],'TICK_LABEL_OWNER_LEADER_v1')
         self.assertNotIn('tick-label-knockout',svg)
+    def test_plain_x_tick_leader_rejects_the_advance_box_endpoint(self):
+        tick_id='tick-x-1';label_id=tick_id+'-label'
+        callout={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','tickId':tick_id,'axis':'x','value':1,'sourceAt':[100,100],'offsetUser':[28,-22]}
+        prepared={'primitives':[{'id':tick_id,'kind':'line','from':[100,96],'to':[100,104],
+                                 'layer':30,'role':'tick','axis':'x','value':1,'token':'indicator'}]}
+        label={'id':label_id,'kind':'TICK_LABEL','text':'1','font':42,'tickId':tick_id,'tickAxis':'x','tickValue':1,
+               'tickDisplayValue':'1','at':[100,100],'baseline':[128,78],'box':{'x':117.5,'y':64,'width':21,'height':28},
+               'tickLabelCallout':callout,'tickLeaderUsesInk':True}
+        fragment={'labelId':label_id,'owner':tick_id,'fontPx':42,'fragmentSha256':'test',
+                  'intrinsic':{'width':21,'height':28},
+                  'observedBBox':{'x':3.486,'y':0,'width':14.448,'height':28},
+                  'svg':'<svg width="21" height="28" viewBox="0 0 21 28"><path d="M3.486 0V28H17.934V0Z"/></svg>'}
+        # From (100,100) towards the actual glyph center, reaching the left edge.
+        target=[120.986,100-20.986*22/28.21]
+        leader={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','id':label_id+'-owner-leader','from':[100,100],
+                'to':target,'ownerLabelId':label_id,'tickId':tick_id,'axis':'x','value':1}
+        viewport=Viewport(-2,2,-2,2,width=200,height=200,panel=0)
+        svg=compose(prepared,{'labels':[label],'leaders':[leader]},viewport,{label_id:fragment})
+        self.assertIn('data-tick-value="1"',svg)
+        wrong={**leader,'to':[117.5,100-17.5*22/28]}
+        with self.assertRaisesRegex(ValueError,'TICK_LABEL_OWNER_LEADER_ENDPOINT_INVALID'):
+            compose(prepared,{'labels':[label],'leaders':[wrong]},viewport,{label_id:fragment})
+
     def test_duplicate_label(self):
         p,l=fixtures();l['labels'].append({**l['labels'][0],'id':'label2'})
         with self.assertRaisesRegex(ValueError,'DUPLICATE_SEMANTIC'):compose(p,l,Viewport(-2,2,-2,2))

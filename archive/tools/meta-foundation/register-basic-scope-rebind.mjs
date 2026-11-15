@@ -33,6 +33,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { registerDifficulty5 } from "./register-difficulty5.mjs";
+import { registerReviewedParentCorrection } from "./reviewed-parent-correction.mjs";
 import { BASIC_PRESERVATION_SCHEMA, BASIC_PRESERVATION_REVIEW_SCHEMA, verifyReviewedBasicPreservation } from "./reviewed-basic-preservation.mjs";
 
 export const SCHEMA = "archive-basic-scope-rebind-request-v1";
@@ -135,6 +136,8 @@ function loadReview(root, req, schema = REVIEW_SCHEMA) {
 }
 
 export function registerBasicScopeRebind({ root, request: req, write = false, verifyProjection = false }) {
+  if (req?.schemaVersion === PARENT_SCHEMA && req.approval?.nativeParentReview)
+    return registerReviewedParentCorrection({ root, request: req, write, verifyProjection });
   const correction = req?.schemaVersion === PARENT_SCHEMA;
   const preservation = req?.approval?.sourceReview !== undefined;
   if (!correction && req?.schemaVersion !== SCHEMA) fail("request schema mismatch");

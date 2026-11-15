@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "m1s2-native-preservation-isolated-release-proof-v1",
+  "releaseBaselineMain": "467212bbc89da57664459d6a9b4adeec4216df77",
+  "testedCommit": "b11a96b42d6f1c676a604c033c6a410d7f0eea2b",
+  "scope": {
+    "exams": 2,
+    "preservedExistingFinalQaApprovals": 47,
+    "difficultyChangedUids": 27,
+    "bucketChangedUids": 14,
+    "auxiliaryOnlyChangedUids": 13,
+    "unchangedDifficultyUids": 20,
+    "newSemanticApprovals": 0,
+    "newSemanticJudgments": 0,
+    "sourceChanges": 0,
+    "registryChanges": 0,
+    "fourSlotChanges": 0,
+    "unchangedAssetGitBlobs": 70
+  },
+  "officialRegistration": {
+    "status": "PASS",
+    "preservedApprovals": 47,
+    "fingerprintRepairCount": 0,
+    "allOtherUidRowsUnchanged": true,
+    "allSemanticFieldsAndSourceFingerprintsPreserved": true
+  },
+  "build": {
+    "command": "python archive/build_db.py",
+    "exitCode": 0,
+    "terminalStatus": "ARCHIVE REGISTRATION SYNC PASS",
+    "logSha256": "8bdfbdf72e5af313b3f9dfe83703ab8711e942ab70153073ece21d1d69c16764",
+    "readinessVerified": true
+  },
+  "officialProjection": {
+    "status": "PASS",
+    "canonical": 47,
+    "usableMetaLane": 0,
+    "sourceTotals": [
+      24,
+      23
+    ],
+    "replay": true,
+    "plannedPaths": []
+  },
+  "changedUidConsumer": {
+    "status": "PASS",
+    "changed": 27,
+    "checked": 27,
+    "passed": 27,
+    "skippedUnchanged": 20,
+    "failures": 0,
+    "unobservedFields": 0,
+    "assignmentPending": 0
+  },
+  "evidenceRefs": [
+    {
+      "path": "docs/operations/m1s2-approved-difficulty-closeout-20261115/isolated-native-preservation-write.json",
+      "sha256": "cf6e99cbdedd1667a61ae6a82218e61c4e5e77705bf03684c2f1fde4526b5918"
+    },
+    {
+      "path": "docs/operations/m1s2-approved-difficulty-closeout-20261115/isolated-palma26-native-projection.json",
+      "sha256": "6737c3426d127cb525b11c55cb848d086ab06997bf208d5a51430114ddf751df"
+    },
+    {
+      "path": "docs/operations/m1s2-approved-difficulty-closeout-20261115/isolated-wangun26-native-projection.json",
+      "sha256": "4babff71c28acdb4c6306252f299a9775a73c3f4565c0aad20f85c9acf1492f1"
+    },
+    {
+      "path": "docs/operations/m1s2-approved-difficulty-closeout-20261115/isolated-native-preservation-consumer.json",
+      "sha256": "06a46c04a47c7acd6a4672af78b87927d189214e41bf83a1f1c184396c01298d"
+    }
+  ],
+  "productionRegistration": "PENDING_MAIN_WRITER",
+  "productionConsumer": "NOT_RUN",
+  "pages": "NOT_RUN",
+  "limitations": [
+    "This is an isolated registration/projection check, not a production registration receipt.",
+    "The changed-UID gate checks 27 changed items and skips 20 unchanged items; the official projection checks all 47.",
+    "The two old FINAL_QA decisions are reused after exact student-payload and asset continuity checks. No new semantic judgment is claimed."
+  ]
+}

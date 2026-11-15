@@ -35,6 +35,10 @@ const tests = includeQuarantined
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/archive-reviewed-parent-correction.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-parent-correction.test.mjs']
+  },
+  {
     label: 'tests/archive2-registration-contracts.test.mjs',
     args: ['--test', 'tests/archive2-registration-contracts.test.mjs']
   },
