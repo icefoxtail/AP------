@@ -121,7 +121,7 @@ export function orderNativeRequests(requests) {
   for (const request of requests) {
     if (!request.sourceRebind) continue;
     const spec = request.sourceRebind, ref = spec.difficultyRequestRef;
-    if (spec.schemaVersion !== AUDIT_PRESERVATION_SCHEMA || request.kind !== undefined
+    if (spec.schemaVersion !== AUDIT_PRESERVATION_SCHEMA || request.kind !== undefined && request.kind !== 'native-approval-preservation'
         || request.scope !== undefined || request.registrationMode !== undefined) fail('AUDIT_DEPENDENCY_SCOPE');
     if (typeof ref?.path !== 'string' || !ref.path.startsWith(INBOX)
         || ref.path.slice(INBOX.length).includes('/') || !ref.path.endsWith('.json')
@@ -167,6 +167,10 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     const correction = request.schemaVersion === PARENT_CORRECTION_SCHEMA;
     if (!correction && request.schemaVersion !== NATIVE_REQUEST_SCHEMA) continue;
     const sourceRebind = auditPreservationDependency(request, file);
+    const preservation = request.approval?.sourceRebind !== undefined;
+    if (preservation && (correction || request.registrationMode !== undefined ||
+        !request.approval.sourceRebind || typeof request.approval.sourceRebind !== 'object' || Array.isArray(request.approval.sourceRebind) ||
+        !(sourceRebind || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
     if (request.registrationMode !== undefined && (correction || !partial || request.registrationMode !== 'IDENTITY_FINGERPRINT_ONLY')) fail('REGISTRATION_MODE');
@@ -208,7 +212,8 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
       ...(partial ? { scope: request.scope } : {}),
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
-      ...(correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' } : {}), source: { ...source, blobSha1 },
+      ...(correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }
+        : preservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },
       evidence: [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en')),
       receiptPath: `${RECEIPTS}${request.requestId}.json` });
   }
@@ -254,6 +259,8 @@ function resultScopeMatches(result, request) {
     if (result.scope !== request.scope || result.partialUidCount !== request.questionCount
         || result.expectedQuestionCount !== request.sourceQuestionCount) return false;
   } else if (result.scope !== undefined || result.partialUidCount !== undefined) return false;
+  if (request.kind === 'native-approval-preservation' &&
+      (result.newMetadataApprovals !== 0 || result.preservedMetadataApprovals !== request.questionCount)) return false;
   return request.registrationMode !== 'IDENTITY_FINGERPRINT_ONLY'
     || result.metadataChanged === false && result.newMetadataApprovals === 0;
 }
@@ -342,15 +349,23 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
         return exams.length !== 1 || exams[0].kind !== (r.kind || 'reviewed-exam-v2')
           || r.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' && (exams[0].newMetadataApprovals !== 0
             || exams[0].approvalCreated !== false || exams[0].identityBindings !== r.questionCount)
+          || r.kind === 'native-approval-preservation' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
+            || exams[0].preservedMetadataApprovals !== r.questionCount || exams[0].approvalType !== r.preservedApprovalType
+            || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
           || `archive/exams/${exams[0].sourceFile}` !== r.source.path || !complete(exams[0], r.questionCount);
       })
       || ['changed', 'checked', 'passed', 'skippedUnchanged'].some(k => result.exams.reduce((sum, e) => sum + e[k], 0) !== result.counts[k])
       || ['failures', 'unobservedFields'].some(k => !Array.isArray(result[k]) || result[k].length)
       || !Array.isArray(result.assignmentPending)) fail('CONSUMER_NOT_PASS');
   const difficultyOnly = difficultyAssignmentInformation(requests, result);
+  const preservation = requests.filter(r => r.kind === 'native-approval-preservation');
+  const preservedNativeApprovals = preservation.length ? { requests: preservation.length,
+    preservedMetadataApprovals: preservation.reduce((sum, r) => sum + r.questionCount, 0), newMetadataApprovals: 0,
+    approvalTypes: sorted(preservation.map(r => r.preservedApprovalType)) } : null;
   noUnexpectedMutation(root, before, new Set());
   return [{ id: 'native-projection', outcome: 'success' },
-    { id: 'native-consumer', outcome: 'success', ...(difficultyOnly ? { difficultyOnly } : {}) }];
+    { id: 'native-consumer', outcome: 'success', ...(difficultyOnly ? { difficultyOnly } : {}),
+      ...(preservedNativeApprovals ? { preservedNativeApprovals } : {}) }];
 }
 
 export function nativeOutputManifest(root, plans) {

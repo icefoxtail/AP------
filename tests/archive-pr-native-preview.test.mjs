@@ -6,7 +6,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { NATIVE_REQUEST_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, selectNativeRequests, orderNativeRequests, applyNativeRequests,
-  validateNativePreview } from '../tools/ci/archive-pr-native-preview.mjs';
+  validateNativePreview, verifyNativeRequests } from '../tools/ci/archive-pr-native-preview.mjs';
 import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
   producePrRegistrationProof, validateLocalRegistrationProof,
 } from '../tools/ci/archive-pr-registration-proof.mjs';
@@ -28,7 +28,7 @@ const PLANNED = [META, AUTHORITY, RECEIPT].sort();
 const ALLOWED = [/^archive\/db\.js$/, /^archive\/data\/question_metadata\.json$/,
   /^archive\/data\/archive2-(?:catalog|canonical-input-manifest)\.json$/];
 
-function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, mutateRequest } = {}) {
+function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -91,6 +91,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     request.approval.sourceRebind = { schemaVersion: 'archive-native-audit-preservation-v1', requestPath: REQUEST,
       difficultyRequestRef: { path: DIFFICULTY_REQUEST, sha256: sha(json(difficultyRequest)) } };
   }
+  if (finalQaPreservation) request.approval.sourceRebind = { priorReceiptRef: evidenceRef };
   mutateRequest?.(request);
   write(REQUEST, json(request));
   if (pairedDifficulty) write(DIFFICULTY_REQUEST, json(difficultyRequest));
@@ -119,6 +120,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
         ...(req.scope==='PARTIAL_UIDS'?{scope:req.scope,partialUidCount:req.items.length,expectedQuestionCount:req.expectedQuestionCount}:{}),
         ...(identityRepair?{registrationMode:req.registrationMode,metadataChanged:false,newMetadataApprovals:0,
           ...(phase==='projection'?{consumerLanes:{identityBindings:req.items.length,newMetadataApprovals:0}}:{})}:{}),
+        ...(req.approval.sourceRebind?{newMetadataApprovals:0,preservedMetadataApprovals:req.items.length}:{}),
         plannedPaths: replay ? [] : identityRepair ? [IDENTITY, RECEIPT].sort() : PLANNED,
         consumerSearchStatus: phase === 'projection' ? identityRepair ? 'IDENTITY_BINDINGS_VERIFIED' : 'STATIC_VALUES_VERIFIED' : 'NOT_RUN' };
       if (phase === 'write' && !replay) {
@@ -161,10 +163,13 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       const files=[REQUEST,...(pairedDifficulty?[DIFFICULTY_REQUEST]:[])];
       const exams=files.map(file=>{const req=JSON.parse(fs.readFileSync(path.join(target,file),'utf8'));
         const identityRepair=req.registrationMode==='IDENTITY_FINGERPRINT_ONLY';
-        return { file, kind: req.schemaVersion===DIFFICULTY_REQUEST_SCHEMA?'difficulty5-ratings':identityRepair?'identity-fingerprint-repair':'reviewed-exam-v2',
+        const preservation=Boolean(req.approval?.sourceRebind);
+        return { file, kind: req.schemaVersion===DIFFICULTY_REQUEST_SCHEMA?'difficulty5-ratings':identityRepair?'identity-fingerprint-repair':preservation?'native-approval-preservation':'reviewed-exam-v2',
           exam:req.gemini?.requestId||req.examUid||req.sourceArchiveFile,
           sourceFile:'original/native.js',changed:1,checked:1,passed:1,skippedUnchanged:0,
-          ...(identityRepair?{approvalCreated:false,newMetadataApprovals:0,identityBindings:1}:{}) };});
+          ...(identityRepair?{approvalCreated:false,newMetadataApprovals:0,identityBindings:1}:{}),
+          ...(preservation?{approvalCreated:false,newMetadataApprovals:0,preservedMetadataApprovals:1,
+            approvalType:req.approval.type,expectedQuestionCount:req.expectedQuestionCount}:{}) };});
       return json(hook.consumerResult || { status: 'PASS', counts: { changed: files.length, checked: files.length, passed: files.length, skippedUnchanged: 0 },
         exams,
         failures: [], unobservedFields: [], assignmentPending: hook.assignmentPending || [] });
@@ -324,6 +329,8 @@ test('audit preservation follows its exact difficulty input in apply, projection
   assert.deepEqual(proof.nativePreview.plans.map(p=>p.requestPath),[DIFFICULTY_REQUEST,REQUEST]);
   assert.deepEqual(proof.nativePreview.requests[1].sourceRebind,
     {schemaVersion:'archive-native-audit-preservation-v1',difficultyRequestRef:f.request.approval.sourceRebind.difficultyRequestRef});
+  assert.equal(proof.nativePreview.requests[1].kind,'native-approval-preservation');
+  assert.equal(proof.nativePreview.requests[1].preservedApprovalType,'META_PIPELINE_AUDIT');
   f.validate(proof);
   assertDifficultyApplied(f.root);
   for(const target of new Set(f.calls.map(c=>c.root))) {
@@ -332,6 +339,47 @@ test('audit preservation follows its exact difficulty input in apply, projection
     assert.deepEqual(writes.map(c=>c.args[c.args.indexOf('--request')+1]),[DIFFICULTY_REQUEST,REQUEST]);
   }
   f.assertShadowsRemoved();
+});
+
+test('FINAL_QA partial source preservation verifies selected approval separately from the full source count', t => {
+  const f=fixture(t,{partial:true,finalQaPreservation:true}),proof=f.produce();
+  assert.equal(proof.status,'PASS');
+  const [request]=proof.nativePreview.requests;
+  assert.equal(request.kind,'native-approval-preservation');assert.equal(request.preservedApprovalType,'FINAL_QA');
+  assert.equal(request.questionCount,1);assert.equal(request.sourceQuestionCount,24);
+  assert.equal(f.validate(proof).reusable,true);f.assertShadowsRemoved();
+  const checks=verifyNativeRequests({root:f.root,requests:f.selected(),run:f.run});
+  assert.deepEqual(checks.find(c=>c.id==='native-consumer').preservedNativeApprovals,
+    {requests:1,preservedMetadataApprovals:1,newMetadataApprovals:0,approvalTypes:['FINAL_QA']});
+});
+
+test('preservation refuses claimed new approvals or missing preservation counts in every official phase', t => {
+  for(const phase of ['dry-run','write','projection'])for(const change of [
+    {newMetadataApprovals:1},{preservedMetadataApprovals:0},{preservedMetadataApprovals:24},
+    {newMetadataApprovals:undefined},{preservedMetadataApprovals:undefined},
+  ]) {
+    const f=fixture(t,{partial:true,finalQaPreservation:true});
+    f.hook.result=(p,r)=>p===phase?{...r,...change}:r;
+    assert.throws(()=>f.produce(),/DRY_RUN_NOT_PASS|WRITE_PLAN_MISMATCH|PROJECTION_NOT_VERIFIED/);
+  }
+});
+
+test('preservation Consumer cannot skip the selected UID, promote its type, or claim another scope', t => {
+  for(const change of [
+    {kind:'reviewed-exam-v2'},{newMetadataApprovals:1},{approvalCreated:true},{preservedMetadataApprovals:0},
+    {preservedMetadataApprovals:24},{preservedMetadataApprovals:undefined},{approvalType:'REVIEW2'},
+    {expectedQuestionCount:1},{expectedQuestionCount:undefined},{changed:0,checked:0,passed:0,skippedUnchanged:1},
+  ]) {
+    const f=fixture(t,{partial:true,finalQaPreservation:true});
+    const exam={file:REQUEST,kind:'native-approval-preservation',sourceFile:'original/native.js',changed:1,checked:1,passed:1,skippedUnchanged:0,
+      newMetadataApprovals:0,approvalCreated:false,preservedMetadataApprovals:1,approvalType:'FINAL_QA',expectedQuestionCount:24,...change};
+    f.hook.consumerResult={status:'PASS',counts:Object.fromEntries(['changed','checked','passed','skippedUnchanged'].map(k=>[k,exam[k]])),
+      exams:[exam],failures:[],unobservedFields:[],assignmentPending:[]};
+    assert.throws(()=>f.produce(),/CONSUMER_NOT_PASS/);
+  }
+  const f=fixture(t,{partial:true,finalQaPreservation:true});
+  f.hook.assignmentPending=[{exam:'original/native.js',qid:5,uid:'fixture',reason:'assignment_missing'}];
+  assert.throws(()=>f.produce(),/CONSUMER_NOT_PASS/);
 });
 
 test('audit dependency ordering leaves unrelated requests in their original order', t => {
