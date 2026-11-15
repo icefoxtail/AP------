@@ -6,7 +6,7 @@ import os from "node:os";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { isAuditedPendingIntegrationRebindAllowed, isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, isSourceConditionEvidenceDebtAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, validateSourceConditionCorrections, validateSourceCrossConceptCorrections, validateTargetedAuditCorrections, validateTargetedRecoverySupplement, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { isAuditedPendingIntegrationRebindAllowed, isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, isSourceConditionEvidenceDebtAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, validateSourceConditionCorrections, validateSourceCrossConceptCorrections, validateTargetedAuditCorrections, validateTargetedRecoverySupplement, verifyConsumerValues, verifyIdentityFingerprintConsumer } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 
 test("targeted audit correction preserves raw provenance and cannot merge canonical keys", () => {
   const ref = { path: "docs/audit-correction.json", sha256: "a".repeat(64) };
@@ -2807,6 +2807,7 @@ test("unmarked partial UID fails and a complete legacy request retains its recei
   assert.equal(receipt.totalQuestions, 1);
   assert.equal(Object.hasOwn(receipt, "scope"), false);
   assert.equal(Object.hasOwn(receipt, "partialUidCount"), false);
+  assert.equal(Object.hasOwn(receipt, "expectedQuestionCount"), false);
 });
 
 test("partial UID rebind verifies old Git bytes and updates both fingerprints", t => {
@@ -2857,12 +2858,22 @@ test("partial UID replay reports its exact denominator and ignores changes to om
   assert.equal(replay.replay, true);
   assert.deepEqual(replay.plannedPaths, []);
   for (const item of [replay, f.read(f.receiptPath)])
-    assert.deepEqual([item.scope, item.totalQuestions, item.partialUidCount], ["PARTIAL_UIDS", 1, 1]);
+    assert.deepEqual([item.scope, item.totalQuestions, item.partialUidCount, item.expectedQuestionCount], ["PARTIAL_UIDS", 1, 1, 2]);
   assert.deepEqual(f.read(META), meta);
   const receipt = f.read(f.receiptPath);
   receipt.appliedRecords[0] = meta.records[1];
   f.put(f.receiptPath, receipt);
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /partial receipt UID scope mismatch/);
+});
+
+test("partial UID replay rejects a missing or changed original source denominator", t => {
+  const f = partialFixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read(f.receiptPath);
+  for (const count of [undefined, 1, 3]) {
+    f.put(f.receiptPath, { ...receipt, expectedQuestionCount: count });
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /partial receipt UID scope mismatch/);
+  }
 });
 
 test("partial UID Consumer verification sees only applied records from the receipt", t => {
@@ -2874,4 +2885,273 @@ test("partial UID Consumer verification sees only applied records from the recei
   const lanes = verifyConsumerValues(f.root, receipt.appliedRecords, receipt.runtimeRecords, catalog);
   assert.deepEqual(lanes, { canonical: 1, usableMetaLane: 0 });
   assert.throws(() => verifyConsumerValues(f.root, f.read(META).records, receipt.runtimeRecords, catalog), /Consumer UID missing\/mismatch: uid2/);
+});
+
+function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1") {
+  const f = itemRebindFixture(t);
+  const git = (...args) => execFileSync("git", args, { cwd: f.root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  const commit = () => { git("add", "--", f.sourcePath, "docs/native-review.json");
+    git("-c", "user.name=Fixture reviewer", "-c", "user.email=fixture@example.invalid", "commit", "--allow-empty", "-qm", "Reviewed current source");
+    return git("rev-parse", "HEAD"); };
+  Object.assign(f.current, { content: "실제 재검토한 새 발문", image: "assets/reviewed-figure.svg" });
+  const bytes = f.writeBank(f.current), sourceBlob = git("hash-object", "-w", f.sourcePath);
+  Object.assign(f.item.after, { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) });
+  const after = structuredClone(f.item.after);
+  delete after.sourceFingerprint; delete after.contentFingerprint;
+  const isM3 = schema === "m3-s2-complete-semantic-review-v1";
+  const ordinalKey = isM3 ? "ordinal" : "sourceOrdinal";
+  const rows = [{ [ordinalKey]: 1, questionUid: "uid1", after, decisiveStep: "실제 검토한 문항의 결정 단계",
+    ...(isM3 ? { decision: "CORRECT", debts: [] } : { verdict: "REGISTRATION_PENDING", rpmDecision: "CORRECT",
+      fieldReview: { classification: "실제 주분류 검토", difficulty: "실제 난도 검토" }, contentDebt: [], registrationDebt: ["RESOLVER_PROOF_PENDING"] }) },
+    { [ordinalKey]: 2, questionUid: "uid2", after: {}, decisiveStep: "보류 문항은 이번 요청에서 제외",
+      ...(isM3 ? { decision: "REVIEW_COMPLETE_WITH_SOURCE_PREREQUISITE_HOLD" } : { verdict: "UNRESOLVED", rpmDecision: "UNRESOLVED" }) }];
+  let review = { schemaVersion: schema, sourceArchiveFile: f.request.sourceArchiveFile, items: rows };
+  f.put("docs/native-review.json", {});
+  if (isM3) Object.assign(review, { author: "native-author", rootIntegrator: "native-integrator", questionCount: 2,
+    sourceAfterBlob: sourceBlob, sourceAfterSha256: hash(bytes), mathR1R2R3: "NOT_RUN_OUT_OF_SCOPE" });
+  else {
+    const baseSha = commit();
+    Object.assign(review, { owner: "native-author", reviewedQuestionCount: 2, sourceGitBlobSha: sourceBlob, baseSha });
+    if (schema === "m2-s1-meta-review-v1") rows[0].sourceEvidence = { sourceGitBlobSha: sourceBlob, fingerprints: [
+      { scope: "QBODY", algo: "sha256-canonical-json-v1", value: f.bodySha(f.current) },
+      { scope: "QFULL", algo: "sha256-canonical-json-v1", value: f.sourceSha(f.current) }] };
+  }
+  const updateReview = () => {
+    f.put("docs/native-review.json", review);
+    const reviewCommit = commit();
+    const ref = { path: "docs/native-review.json", sha256: hash(fs.readFileSync(path.join(f.root, "docs/native-review.json"))) };
+    f.request.approval.evidenceRefs = [...f.evidenceRefs, ref];
+    f.item.evidenceRefs = [...f.evidenceRefs, ref];
+    f.item.sourceReview = { schemaVersion: "archive-reviewed-source-reassessment-v1", reviewCommit,
+      reviewPath: "docs/native-review.json", reviewRef: ref };
+    return ref;
+  };
+  delete f.item.rebind;
+  updateReview();
+  return { ...f, git, review, updateReview };
+}
+
+test("partial source reassessment binds real review/source Git objects and preserves the omitted HOLD", t => {
+  const f = reviewedSourceFixture(t), before = fs.readFileSync(path.join(f.root, META), "utf8");
+  const sourceBytes = fs.readFileSync(path.join(f.root, f.sourcePath));
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).fingerprintRepairCount, 1);
+  assert.equal(fs.readFileSync(path.join(f.root, META), "utf8"), before);
+  const out = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(out.totalQuestions, 1);
+  for (const p of [META, "archive/data/question_identity_map.json"]) {
+    const [row, held] = f.read(p).records;
+    assert.equal(row.sourceFingerprint, f.sourceSha(f.current));
+    assert.deepEqual(held, f.hold);
+  }
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.sourcePath)), sourceBytes);
+  const receipt = f.read(f.receiptPath), proof = receipt.fingerprintRepairs[0].sourceReview;
+  assert.equal(proof.reviewCommit, f.item.sourceReview.reviewCommit);
+  assert.equal(proof.reviewedSourceBlobSha1, f.review.sourceAfterBlob);
+  assert.equal(proof.newMathematicalQa, false);
+  assert.equal(proof.scope, "METADATA_SOURCE_BINDING_ONLY");
+  assert.equal(receipt.examFinalQaStatus, "NOT_EVALUATED_BY_REGISTRAR");
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+});
+
+test("native M2 S1/S2 reviews keep pending registration separate from settled field judgments", t => {
+  for (const schema of ["m2-s1-meta-review-v1", "m2-s2-meta-review-v1"]) {
+    const f = reviewedSourceFixture(t, schema);
+    assert.equal(f.review.items[0].verdict, "REGISTRATION_PENDING");
+    assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).totalQuestions, 1);
+    assert.equal(f.read(f.receiptPath).fingerprintRepairs[0].sourceReview.nativeSchemaVersion, schema);
+  }
+});
+
+test("reassessment refuses later changes to every protected student field even with truthful new hashes", t => {
+  const changes = [{ content: "미검토 새 발문" }, { choices: ["3", "4"] }, { answer: "2" }, { solution: "미검토 풀이" },
+    { image: "later.svg" }, { question: "미검토 별칭" }, { sourceQuestionNo: 7 }, { layoutTag: "wide" },
+    { imageSize: "large" }, { solutionImage: "later-solution.svg" }, { number: 9 }, { sourceQid: "9" }, { sourceOrdinal: 9 }, { questionUid: "uid1" }];
+  for (const change of changes) {
+    const f = reviewedSourceFixture(t);
+    Object.assign(f.current, change); f.writeBank(f.current);
+    Object.assign(f.item.after, { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) });
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /current student payload differs/);
+  }
+});
+
+test("reassessment requires immutable native review bytes, exact Git commit and dual evidence refs", t => {
+  const f = reviewedSourceFixture(t), spec = structuredClone(f.item.sourceReview);
+  for (const change of [{ reviewCommit: "a".repeat(40) }, { reviewCommit: f.review.sourceAfterBlob },
+    { reviewPath: "docs/absent.json" }, { reviewPath: "../native-review.json" }]) {
+    f.item.sourceReview = { ...spec, ...change };
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source reassessment:/);
+  }
+  f.item.sourceReview = spec;
+  f.item.evidenceRefs = f.evidenceRefs;
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /reviewRef must bind approval and item/);
+  f.item.evidenceRefs = [...f.evidenceRefs, spec.reviewRef];
+  f.request.approval.evidenceRefs = f.evidenceRefs;
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /reviewRef must bind approval and item/);
+  f.request.approval.evidenceRefs = [...f.evidenceRefs, spec.reviewRef];
+  f.put("docs/native-review.json", { ...f.review, author: "rewritten-after-review" });
+  const forged = { path: spec.reviewRef.path, sha256: hash(fs.readFileSync(path.join(f.root, spec.reviewRef.path))) };
+  f.item.sourceReview.reviewRef = forged; f.item.evidenceRefs = [...f.evidenceRefs, forged];
+  f.request.approval.evidenceRefs = [...f.evidenceRefs, forged];
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /native review differs from its Git commit/);
+});
+
+test("reassessment refuses wrong source binding, UID/ordinal, held decisions and unapproved after values", t => {
+  for (const [mutate, error] of [
+    [f => { f.review.sourceArchiveFile = "another/exam.js"; }, /review source identity mismatch/],
+    [f => { f.review.sourceAfterBlob = "a".repeat(40); }, /source blob\/SHA mismatch/],
+    [f => { f.review.sourceAfterSha256 = "a".repeat(64); }, /source blob\/SHA mismatch/],
+    [f => { f.review.questionCount = 3; }, /denominator/],
+    [f => { f.review.items[0].questionUid = "another-uid"; }, /reviewed UID\/ordinal/],
+    [f => { f.review.items[0].ordinal = 2; }, /UID\/ordinal denominator/],
+    [f => { f.review.items[0].decision = "REVIEW_COMPLETE_WITH_SOURCE_PREREQUISITE_HOLD"; }, /semantic decision is not settled/],
+    [f => { f.review.items[0].debts = [{ type: "SOURCE_SOLUTION_PREREQUISITE_HOLD" }]; }, /explicit source\/content\/difficulty hold/],
+    [f => { f.review.items[0].after.rpmL3 = "다른 검토값"; }, /changed value not approved|reviewed after value mismatch/],
+  ]) {
+    const f = reviewedSourceFixture(t); mutate(f); f.updateReview();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), error);
+  }
+  const f = reviewedSourceFixture(t);
+  f.item.before.conceptClusterKey = null; f.item.after.conceptClusterKey = "NOT_REVIEWED";
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /changed value not approved by native review: conceptClusterKey/);
+});
+
+test("native M2 source proofs reject stale baseline objects, per-item hashes and content holds", t => {
+  for (const [mutate, error] of [
+    [f => { f.review.sourceGitBlobSha = "a".repeat(40); }, /baseline\/source blob mismatch/],
+    [f => { f.review.items[0].sourceEvidence.fingerprints[0].value = "b".repeat(64); }, /per-item source fingerprints mismatch/],
+    [f => { f.review.items[0].contentDebt = ["Actual content remains unresolved"]; }, /explicit source\/content\/difficulty hold/],
+    [f => { f.review.items[0].rpmDecision = "META_ONLY_UNRESOLVED"; }, /semantic decision is not settled/],
+    [f => { f.review.items[0].fieldReview = {}; }, /native per-field review missing/],
+  ]) {
+    const f = reviewedSourceFixture(t, "m2-s1-meta-review-v1"); mutate(f); f.updateReview();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), error);
+  }
+  const f = reviewedSourceFixture(t, "m2-s2-meta-review-v1"), current = { ...f.current };
+  f.writeBank({ ...current, solution: "검토 branch에서 뒤늦게 바뀐 해설" });
+  f.updateReview();
+  f.writeBank(current);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /current student payload differs/);
+});
+
+test("FINAL_QA source reassessment refuses a reviewed PT/TPL correction omitted from the request", t => {
+  const f = reviewedSourceFixture(t), meta = f.read(META);
+  meta.records[0].problemTypeKey = "PT_OLD"; meta.records[0].templateKey = "TPL_OLD";
+  f.put(META, meta);
+  f.writeBank({ ...f.current, problemTypeKey: "PT_OLD", templateKey: "TPL_OLD" });
+  for (const field of ["problemTypeKey", "templateKey"]) { delete f.item.before[field]; delete f.item.after[field]; }
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /reviewed after value mismatch \(including omitted field\): problemTypeKey/);
+});
+
+test("reassessment keeps exact before/identity checks and does not replace the older rebind guard", t => {
+  for (const [mutate, error] of [
+    [f => { f.item.before.sourceFingerprint = "a".repeat(64); }, /before mismatch/],
+    [f => { f.item.identityBefore.sourceFingerprint = "a".repeat(64); }, /identity fingerprint before mismatch/],
+    [f => { f.item.after.contentFingerprint = "a".repeat(64); }, /computed fingerprint mismatch/],
+    [f => { f.item.rebind = {}; }, /exclusive PARTIAL_UIDS FINAL_QA/],
+    [f => { f.request.approval.sourceRebind = {}; }, /exclusive PARTIAL_UIDS FINAL_QA/],
+    [f => { f.request.approval.type = "REVIEW2"; f.request.approval.reviewPassCount = 2; }, /exclusive PARTIAL_UIDS FINAL_QA/],
+    [f => { delete f.item.sourceReview; }, /fingerprint rebind evidence required/],
+  ]) {
+    const f = reviewedSourceFixture(t); mutate(f);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), error);
+  }
+});
+
+function identityOnlyFixture(t) {
+  const f = reviewedSourceFixture(t, "m2-s1-meta-review-v1"), meta = f.read(META);
+  const fingerprints = { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) };
+  Object.assign(meta.records[0], fingerprints, { reviewStatus: "reviewed_pass", metadataStatus: "approved_partial_with_explicit_holds",
+    problemTypeKey: "", templateKey: null, fieldStatus: { problemType: "manual_review_pending", template: "manual_review_pending" },
+    approvalEvidence: ["docs/approval.json"] });
+  f.put(META, meta);
+  const runtimePath = "archive/data/meta-foundation/runtime/preserved.json";
+  f.put(runtimePath, { packId: "PRESERVED", records: [{ questionUid: "uid1", status: "HOLD", problemTypeKey: "", templateKey: null }] });
+  f.request.registrationMode = "IDENTITY_FINGERPRINT_ONLY";
+  f.request.registryChanges = [];
+  f.item.before = { ...fingerprints }; f.item.after = { ...fingerprints };
+  f.put("archive/data/generated-lite-consumer/v1/index.json", { records: [] });
+  return { ...f, fingerprints, runtimePath };
+}
+
+test("identity-only repair changes one identity binding and preserves metadata, holds, runtime and source bytes", t => {
+  const f = identityOnlyFixture(t), raw = p => fs.readFileSync(path.join(f.root, p));
+  const protectedPaths = [META, f.sourcePath, f.runtimePath, `${CANON}/registry_index.json`];
+  const before = new Map(protectedPaths.map(p => [p, raw(p)])), identityBefore = raw("archive/data/question_identity_map.json");
+  const dry = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.deepEqual(dry.plannedPaths, ["archive/data/question_identity_map.json", f.receiptPath]);
+  assert.deepEqual(raw("archive/data/question_identity_map.json"), identityBefore);
+  const out = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(out.metadataChanged, false); assert.equal(out.newMetadataApprovals, 0);
+  for (const [p, bytes] of before) assert.deepEqual(raw(p), bytes, p);
+  const [repaired, held] = f.read("archive/data/question_identity_map.json").records;
+  assert.equal(repaired.sourceFingerprint, f.fingerprints.sourceFingerprint); assert.deepEqual(held, f.hold);
+  const receipt = f.read(f.receiptPath);
+  assert.equal(receipt.schemaVersion, "archive-reviewed-identity-fingerprint-repair-v1");
+  assert.equal(receipt.metadataRegistrationStatus, "PRESERVED_WITHOUT_NEW_APPROVAL");
+  assert.equal(receipt.fingerprintRepairs[0].sourceReview.scope, "IDENTITY_BINDING_ONLY");
+  assert.equal(receipt.metadataPreservation.beforeSha256, hash(before.get(META)));
+  assert.equal(receipt.metadataPreservation.afterSha256, receipt.metadataPreservation.beforeSha256);
+  assert.equal(receipt.appliedRecords, undefined); assert.equal(receipt.runtimeRecords, undefined);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+  const metadata = f.read(META); metadata.records[0].difficultyBucket = 2; f.put(META, metadata);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true, "later independently registered non-binding values are not owned by this identity receipt");
+});
+
+test("identity-only repair refuses semantic changes, unapproved/stale metadata, a wrong before and missing review evidence", t => {
+  for (const [mutate, error] of [
+    [f => { f.item.after.difficultyBucket = 2; f.item.before.difficultyBucket = 3; }, /fingerprint fields only/],
+    [f => { f.item.typeHold = true; }, /fingerprint fields only/],
+    [f => { f.request.registryChanges = [{ path: "unused", evidenceRefs: f.evidenceRefs }]; }, /without registry changes/],
+    [f => { const m = f.read(META); m.records[0].metadataStatus = "review_required"; m.records[0].reviewStatus = "review_required"; f.put(META, m); }, /metadata approval missing/],
+    [f => { const m = f.read(META); m.records[0].sourceFingerprint = "a".repeat(64); f.put(META, m); }, /current metadata\/source fingerprint mismatch/],
+    [f => { f.item.before.contentFingerprint = "a".repeat(64); }, /current metadata\/source fingerprint mismatch/],
+    [f => { f.item.identityBefore.sourceFingerprint = "a".repeat(64); }, /identity fingerprint before mismatch/],
+    [f => { delete f.item.sourceReview; }, /explicit commit and SHA-bound native review required/],
+    [f => { const id = f.read("archive/data/question_identity_map.json"); id.records[0].sourceFingerprint = f.fingerprints.sourceFingerprint; f.put("archive/data/question_identity_map.json", id); f.item.identityBefore.sourceFingerprint = f.fingerprints.sourceFingerprint; }, /repair unnecessary/],
+    [f => { f.request.registrationMode = "UNKNOWN_MODE"; }, /unsupported registration mode/],
+  ]) {
+    const f = identityOnlyFixture(t); mutate(f);
+    const before = fs.readFileSync(path.join(f.root, "archive/data/question_identity_map.json"));
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), error);
+    assert.deepEqual(fs.readFileSync(path.join(f.root, "archive/data/question_identity_map.json")), before);
+  }
+});
+
+test("identity-only repair rolls back identity if receipt persistence fails", t => {
+  const f = identityOnlyFixture(t), identityPath = path.join(f.root, "archive/data/question_identity_map.json");
+  const before = fs.readFileSync(identityPath), writeFile = fs.writeFileSync;
+  try {
+    fs.writeFileSync = (file, ...args) => {
+      if (file === path.join(f.root, f.receiptPath)) throw new Error("fixture receipt write failure");
+      return writeFile(file, ...args);
+    };
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /fixture receipt write failure/);
+  } finally { fs.writeFileSync = writeFile; }
+  assert.deepEqual(fs.readFileSync(identityPath), before);
+  assert.equal(fs.existsSync(path.join(f.root, f.receiptPath)), false);
+});
+
+test("identity-only replay refuses extra receipt UIDs and stale identity bindings", t => {
+  const f = identityOnlyFixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read(f.receiptPath);
+  f.put(f.receiptPath, { ...receipt, appliedIdentityRecords: [...receipt.appliedIdentityRecords, f.hold] });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /receipt scope\/binding drift/);
+  f.put(f.receiptPath, receipt);
+  const identity = f.read("archive/data/question_identity_map.json"); identity.records[0].sourceFingerprint = "a".repeat(64);
+  f.put("archive/data/question_identity_map.json", identity);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /receipt scope\/binding drift/);
+});
+
+test("identity-only Consumer check validates real page visibility and exact fingerprints without granting an assignment", t => {
+  const f = identityOnlyFixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const bindings = f.read(f.receiptPath).bindings;
+  const catalog = { records: bindings.map(b => ({ ...b, sourceFile: b.sourceArchiveFile,
+    assignmentFingerprint: b.contentFingerprint, canonicalAssignmentReasons: ["assignment_missing"], metadataConflicts: [] })), sourceHashes: [] };
+  assert.deepEqual(verifyIdentityFingerprintConsumer(f.root, bindings, catalog), { identityBindings: 1, newMetadataApprovals: 0 });
+  for (const change of [{ sourceFingerprint: "a".repeat(64) }, { assignmentFingerprint: "a".repeat(64) }, { sourceOrdinal: 2 }])
+    assert.throws(() => verifyIdentityFingerprintConsumer(f.root, bindings, { ...catalog, records: [{ ...catalog.records[0], ...change }] }), /Consumer source binding mismatch/);
+  assert.throws(() => verifyIdentityFingerprintConsumer(f.root, bindings, { ...catalog,
+    records: [{ ...catalog.records[0], metadataConflicts: ["standardUnitKey"] }] }), /Consumer metadata conflict/);
 });
