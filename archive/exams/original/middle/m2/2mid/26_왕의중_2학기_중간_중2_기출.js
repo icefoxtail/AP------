@@ -3,6 +3,8 @@ window.examTitle = "26_왕의중_2학기_중간_중2_기출";
 window.questionBank = [
   {
     "id": 1,
+    "imageSize": "full",
+    "imageAlt": "삼각형 ABC에서 AB와 AC에 같은 파란 눈금, BC와 BD에 같은 청록 눈금을 썼다. D는 오른쪽 변에 놓인다. DCB는 75도이고 ABD는 x이다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -11,7 +13,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각형의 성질",
@@ -41,7 +43,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q1.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q1-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 AC 위의 점 D가 BC=BD를 만족한다. ∠C, ∠BDC, ∠ABC는 75°, ∠CBD는 30°이고 ∠x는 ∠ABD로 표시된다.",
     "solutionImageCaption": "BC=BD, AB=AC에서 얻는 75°, 30° 관계와 ∠x의 위치를 보여 준다.",
@@ -51,6 +53,8 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "imageSize": "full",
+    "imageAlt": "같은 길이인 두 변 AB와 AC는 파란색이다. A의 각을 이등분하는 주황색 선이 밑변에 내려와 D와 만난다. B의 각은 x, 왼쪽 D의 각은 y, C의 각은 55도이다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -59,7 +63,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각형의 성질",
@@ -89,7 +93,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q2.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q2-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 밑각 ∠B=x와 ∠C가 각각 55°, 꼭지각이 70°이고 이등분선 AD가 ∠A를 35°씩 나누며 AD가 BC와 직각을 이룬다.",
     "solutionImageCaption": "이등분선 AD로 나뉜 35°, 35°와 D에서의 직각을 보여 준다.",
@@ -99,6 +103,8 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "imageSize": "large",
+    "imageAlt": "왼쪽 직각삼각형의 꼭짓점은 A, B, C이고 C가 직각이다. 오른쪽 삼각형에는 D, E, F가 있고 F가 직각이다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -107,7 +113,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각형의 성질",
@@ -137,7 +143,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q3.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q3-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 DEF를 나란히 놓고 두 삼각형의 빗변 AB, DE를 붉은 굵은 선으로, 직각변 AC, BC, DF, EF를 일반 선으로 구분해 표시한다.",
     "solutionImageCaption": "두 직각삼각형의 빗변과 직각변을 구분해 보여 준다.",
@@ -147,6 +153,8 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "imageSize": "full",
+    "imageAlt": "C에서 직각인 삼각형 ABC의 변 AB는 10, BC는 8, AC는 6이다. A의 이등분선이 밑변을 D에서 만나며 D에서 AB로 내린 수선의 발이 E이다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -155,7 +163,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각형의 성질",
@@ -188,7 +196,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q4.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q4-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: ∠C=90°인 직각삼각형 ABC에서 AD가 ∠A를 이등분하고 DE⊥AB이다. 눈금과 각 표식으로 △ACD≅△AED를 나타내고 BE=4, BD=5, DC=DE=3을 적었으며 △BDE가 색칠되어 있다.",
     "solutionImageCaption": "△ACD≅△AED로 얻는 길이와 색칠한 △BDE를 보여 준다.",
@@ -198,6 +206,8 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "imageSize": "full",
+    "imageAlt": "삼각형 ABC의 외심이 O이다. O에서 AB, BC, AC로 내린 세 수선은 D, E, F에서 각 변을 만난다. O에서 세 꼭짓점을 잇는 선도 보인다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -206,7 +216,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각형의 성질",
@@ -238,7 +248,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q5.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q5-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q5-solution-v2.svg",
     "solutionImageAlt": "해설 그림: △ABC의 외심 O에서 세 변에 내린 수선과 세 꼭짓점으로 이은 선분을 그리고, OA=OB=OC, AF=FC, AD=DB, BE=EC를 서로 다른 눈금·동그라미 묶음으로 표시했으며 합동인 △OFA와 △OFC를 색칠했다.",
     "solutionImageCaption": "외심의 OA=OB=OC와 합동인 △OFA, △OFC를 보여 준다.",
@@ -248,6 +258,8 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "imageSize": "full",
+    "imageAlt": "삼각형 ABC에서 A에서 외심 O를 지나 밑변 BC의 D까지 이었다. B에서 O를 지나 오른쪽 변 AC의 E까지 이었다. 오른쪽 밑각 ACB는 64도이다.",
     "level": "상",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -256,7 +268,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각형의 성질",
@@ -289,7 +301,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q6.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q6-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: △ABC의 외심 O에서 AO, BO의 연장선이 BC, AC와 만나는 점 D, E를 나타낸다. OA=OB이고 ∠AOB=128°, ∠OAB=∠OBA=26°, ∠C=64°이다.",
     "solutionImageCaption": "OA=OB인 이등변삼각형 AOB의 각 128°, 26°, 26°를 보여 준다.",
@@ -349,13 +361,13 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "사각형의 성질"
     ],
     "wide": false,
-    "content": "다음은 평행사변형의 두 대각선이 서로 다른 것을 이등분함을 증명하는 과정이다. (가), (나), (다)에 들어갈 것으로 알맞게 짝지어진 것은? (4점)\n오른쪽 그림과 같은 평행사변형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하자. $\\triangle OAB$, $\\triangle OCD$에서 $AB\\parallel DC$이므로 $\\angle ABO=\\angle CDO$ …… ㉠, $\\angle BAO=(가)$ …… ㉡. 평행사변형에서 대변의 길이는 같으므로 $AB=(나)$ …… ㉢. ㉠, ㉡, ㉢에서 $\\triangle OAB=(다)$ (ASA 합동)이므로 $OA=OC$, $OB=OD$.",
+    "content": "다음은 평행사변형의 두 대각선이 서로 다른 것을 이등분함을 증명하는 과정이다. (가), (나), (다)에 들어갈 것으로 알맞게 짝지어진 것은? (4점)\n오른쪽 그림과 같은 평행사변형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하자. $\\triangle OAB$, $\\triangle OCD$에서 $AB\\parallel DC$이므로 $\\angle ABO=\\angle CDO$ …… ㉠, $\\angle BAO=(가)$ …… ㉡. 평행사변형에서 대변의 길이는 같으므로 $AB=(나)$ …… ㉢. ㉠, ㉡, ㉢에서 $\\triangle OAB=(다)$ (ASA 합동)이므로 $OA=OC$, $OB=OD$.<br><img src=\"assets/images/26_왕의중_2학기_중간_중2_기출/q8-problem-visual-v2.svg\" alt=\"평행사변형 ABCD에서 대각선 AC와 BD가 O에서 교차한다. 서로 평행한 왼쪽 변 AB와 오른쪽 변 DC에 같은 화살표를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "(가) $\\angle DCO$, (나) $CD$, (다) $\\triangle OCD$",
       "(가) $\\angle DCO$, (나) $CD$, (다) $\\triangle OAD$",
@@ -394,13 +406,13 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "사각형의 성질"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 평행사변형 $ABCD$에서 $\\angle B$의 이등분선과 $AD$의 교점을 $F$라 하자. $\\angle AFB=48^\\circ$일 때, $\\angle C$의 크기는? (4점)",
+    "content": "다음 그림과 같은 평행사변형 $ABCD$에서 $\\angle B$의 이등분선과 $AD$의 교점을 $F$라 하자. $\\angle AFB=48^\\circ$일 때, $\\angle C$의 크기는? (4점)<br><img src=\"assets/images/26_왕의중_2학기_중간_중2_기출/q9-problem-visual-v2.svg\" alt=\"평행사변형 ABCD의 왼쪽 아래 B에서 그은 각의 이등분선이 위쪽 AD의 F에 닿는다. 점 F에서 FA와 FB가 이루는 각은 48도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$72^\\circ$",
       "$78^\\circ$",
@@ -431,6 +443,8 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "imageSize": "large",
+    "imageAlt": "삼각형 ABC의 내심 I를 A와 C에 각각 이었다. I에서 AIC는 130도이며 C에서 ICB는 18도이다. A에서 AB와 AI 사이의 각은 x이다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -439,7 +453,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각형의 성질",
@@ -469,7 +483,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q10.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q10-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 내심 I를 가진 삼각형 ABC에서 CI가 ∠C를 이등분해 ∠ICB와 ∠ICA가 18°로 같고, AI가 ∠A를 이등분해 ∠x와 같은 호로 표시되며, ∠AIC=130°, ∠C=36°, ∠B=80°, ∠A=64°가 적혀 있다.",
     "solutionImageCaption": "내심의 각 이등분선으로 ∠C, ∠B, ∠A를 차례로 구하는 과정을 보여 준다.",
@@ -529,13 +543,13 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각형의 성질"
     ],
     "wide": false,
-    "content": "다음 그림에서 점 $O$, $I$는 각각 $\\triangle ABC$의 외심과 내심이다. $\\angle IBA=30^\\circ$, $\\angle ACI=20^\\circ$일 때, $\\angle BIC+\\angle BOC$의 크기는? (5점)",
+    "content": "다음 그림에서 점 $O$, $I$는 각각 $\\triangle ABC$의 외심과 내심이다. $\\angle IBA=30^\\circ$, $\\angle ACI=20^\\circ$일 때, $\\angle BIC+\\angle BOC$의 크기는? (5점)<br><img src=\"assets/images/26_왕의중_2학기_중간_중2_기출/q12-problem-visual-v2.svg\" alt=\"삼각형 ABC 안에 내심 I와 외심 O가 표시돼 있다. B와 C에서 각각 I, O로 이어진다. B에서 BI와 BA 사이가 30도이고, C에서 CA와 CI 사이는 20도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$260^\\circ$",
       "$270^\\circ$",
@@ -571,13 +585,13 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "사각형의 성질"
     ],
     "wide": false,
-    "content": "다음 그림에서 넓이가 $15\\text{ cm}^2$인 평행사변형 $ABCD$가 $AO=CO$, $BO=DO$, $AB=5\\text{ cm}$를 만족할 때, $\\triangle AOD$의 넓이는? (4점)",
+    "content": "다음 그림에서 넓이가 $15\\text{ cm}^2$인 평행사변형 $ABCD$가 $AO=CO$, $BO=DO$, $AB=5\\text{ cm}$를 만족할 때, $\\triangle AOD$의 넓이는? (4점)<br><img src=\"assets/images/26_왕의중_2학기_중간_중2_기출/q13-problem-visual-v2.svg\" alt=\"평행사변형 ABCD의 왼쪽 변 AB는 5 cm이다. 두 대각선은 O에서 만난다. AO와 OC에 같은 한 줄 눈금, BO와 OD에 같은 두 줄 눈금을 붙였다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$\\frac54\\text{ cm}^2$",
       "$\\frac{25}{4}\\text{ cm}^2$",
@@ -613,13 +627,13 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각형의 성질"
     ],
     "wide": false,
-    "content": "그림과 같이 마름모 $ABCD$에서 $CD$의 중점을 $M$이라 하자. $\\triangle ACM\\cong\\triangle ADM$일 때, $\\angle B$의 크기는? (4점)",
+    "content": "그림과 같이 마름모 $ABCD$에서 $CD$의 중점을 $M$이라 하자. $\\triangle ACM\\cong\\triangle ADM$일 때, $\\angle B$의 크기는? (4점)<br><img src=\"assets/images/26_왕의중_2학기_중간_중2_기출/q14-problem-visual-v2.svg\" alt=\"마름모 ABCD의 한 변 CD 위에 중점 M이 있다. A에서 C와 M으로 선을 이었다. 네 바깥 변에 같은 한 줄 눈금, CM과 MD에 같은 두 줄 눈금을 붙였다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$40^\\circ$",
       "$45^\\circ$",
@@ -658,13 +672,13 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형의 닮음"
     ],
     "wide": false,
-    "content": "다음 그림에서 $\\triangle ABC$와 $\\triangle DEF$는 서로 닮은 도형이고 닮음비가 $4:5$이다. $\\triangle ABC$의 넓이가 $32\\text{ cm}^2$일 때, $\\triangle DEF$의 넓이는? (3점)",
+    "content": "다음 그림에서 $\\triangle ABC$와 $\\triangle DEF$는 서로 닮은 도형이고 닮음비가 $4:5$이다. $\\triangle ABC$의 넓이가 $32\\text{ cm}^2$일 때, $\\triangle DEF$의 넓이는? (3점)<br><img src=\"assets/images/26_왕의중_2학기_중간_중2_기출/q15-problem-visual-v2.svg\" alt=\"왼쪽 파란 삼각형은 ABC이고 오른쪽 초록 삼각형은 DEF이다. 꼭짓점 A와 D, B와 E, C와 F가 각각 대응하고 대응변 길이의 비는 4 대 5이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$50\\text{ cm}^2$",
       "$55\\text{ cm}^2$",
@@ -692,6 +706,8 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "imageSize": "large",
+    "imageAlt": "왼쪽 삼각뿔은 A, B, C, 꼭짓점 V가 있다. AB는 6 cm, BC는 z cm, VC는 x cm이다. V와 C를 향하는 A의 두 모서리 사이 각은 55도이다. 오른쪽 삼각뿔에서 A′B′는 9 cm, B′C′는 6 cm, V′C′는 15 cm, 대응하는 A′의 각은 y도이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -700,7 +716,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형의 닮음",
@@ -730,7 +746,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q16.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q16-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q16-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 서로 닮은 두 삼각뿔 ABCV와 A′B′C′V′를 나란히 그린 그림이다. 대응하는 모서리 AB=6cm와 A′B′=9cm, VC=x cm와 V′C′=15cm, BC=z cm와 B′C′=6cm를 표시했고, 대응하는 각 ∠VAC와 ∠V′A′C′를 호로 나타내어 각각 55°와 y°라고 적었으며 닮음비는 2:3이다.",
     "solutionImageCaption": "AB:A′B′=6:9=2:3이므로 대응하는 모서리 VC와 V′C′, BC와 B′C′의 길이의 비도 2:3이고, 대응하는 각 ∠VAC=55°와 ∠V′A′C′=y°의 크기는 같다.",
@@ -740,6 +756,8 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "imageSize": "large",
+    "imageAlt": "아래 가로선에 B, C, E가 차례로 놓인다. 위쪽에 A와 D가 있고 AC와 DE는 평행하다. A에서 E, D에서 C로도 선을 이었다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -748,7 +766,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형의 닮음",
@@ -780,7 +798,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q17.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q17-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 그림은 B, C, E가 한 직선 위에 있고 BC:CE=3:2일 때 색칠한 삼각형 ABC(15)와 ACE(10)를, 오른쪽 그림은 AC∥DE일 때 색칠한 삼각형 ABC(15)와 ACD(10)가 사각형 ABCD를 이루는 모양을 보여 준다. 넓이의 단위는 cm²이다.",
     "solutionImageCaption": "밑변의 비와 평행선으로 △ACE, △ACD의 넓이를 구하는 과정을 보여 준다. (넓이의 단위: cm²)",
@@ -840,13 +858,13 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "사각형의 성질"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 평행사변형 $ABCD$가 정사각형이 되는 조건으로 옳지 않은 것을 모두 고르면? (단, 점 $O$는 두 대각선의 교점이다.) (정답 2개) (5점)",
+    "content": "다음 그림과 같은 평행사변형 $ABCD$가 정사각형이 되는 조건으로 옳지 않은 것을 모두 고르면? (단, 점 $O$는 두 대각선의 교점이다.) (정답 2개) (5점)<br><img src=\"assets/images/26_왕의중_2학기_중간_중2_기출/q19-problem-visual-v2.svg\" alt=\"평행사변형 ABCD에서 대각선 AC와 BD가 O에서 교차한다. 네 꼭짓점과 교점에 글자를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$AB=BC$, $AC=BD$",
       "$AC=BD$, $AC\\perp BD$",
@@ -882,13 +900,13 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "사각형의 성질"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 직사각형 $ABCD$의 한 변 $DC$ 위에 $2DF=3FC$가 되도록 점 $F$를 잡고, $AF$의 연장선과 $BC$의 연장선의 교점을 $E$라 하자. $\\square ABCD$의 넓이가 $160\\text{ cm}^2$일 때, $\\triangle DFE$의 넓이는? (5점)",
+    "content": "다음 그림과 같은 직사각형 $ABCD$의 한 변 $DC$ 위에 $2DF=3FC$가 되도록 점 $F$를 잡고, $AF$의 연장선과 $BC$의 연장선의 교점을 $E$라 하자. $\\square ABCD$의 넓이가 $160\\text{ cm}^2$일 때, $\\triangle DFE$의 넓이는? (5점)<br><img src=\"assets/images/26_왕의중_2학기_중간_중2_기출/q20-problem-visual-v2.svg\" alt=\"직사각형 ABCD에서 오른쪽 세로변 DC 위에 F가 있다. A에서 F를 지나고 B에서 C를 지난 두 연장선이 오른쪽의 E에서 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$28\\text{ cm}^2$",
       "$32\\text{ cm}^2$",
@@ -964,6 +982,8 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "imageSize": "large",
+    "imageAlt": "BC의 중점은 M이다. M에서 AB, AC에 내린 수선은 각각 D, E에서 만나며 MD와 ME는 같은 길이이다. 왼쪽 밑각은 32도이다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -972,7 +992,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "삼각형의 성질",
@@ -998,7 +1018,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q22.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q22-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 BC의 중점 M에서 AB, AC에 내린 수선의 발이 D, E이다. MD=ME, BM=MC이고 직각삼각형 MDB와 MEC가 색칠되어 있으며 ∠B와 ∠C가 32°로 같게 표시된다.",
     "solutionImageCaption": "색칠한 두 직각삼각형이 RHS 합동이어서 ∠C=∠B임을 보여 준다.",
@@ -1008,6 +1028,8 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "imageSize": "full",
+    "imageAlt": "접기 전 직각삼각형의 AB는 16 cm, AC는 20 cm이다. 점 A를 가로변 BC의 F로 옮겨 접었다. 접힌 경계는 DE이고 FD, FE가 보인다. 각 BDF와 DFE에 같은 색의 각 표시를 했다.",
     "level": "상",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -1016,7 +1038,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "삼각형의 성질",
@@ -1042,7 +1064,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q23.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q23-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC(AB=16 cm, AC=20 cm)를 꼭짓점 A가 BC 위의 점 F에 오도록 접은 그림이다. AD=DF, AE=EF이고 ∠BDF, ∠DFE, ∠A가 같은 호로 표시되며 직각삼각형 DBF가 색칠되어 있다.",
     "solutionImageCaption": "접힌 선에서 생기는 같은 변과 같은 각을 보여 준다.",
@@ -1052,6 +1074,8 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "imageSize": "full",
+    "imageAlt": "마름모 ABCD에서 A의 두 수선이 BC의 P와 CD의 Q에 닿는다. 두 수선의 발을 가로선으로 이었다. 왼쪽 각 B는 64도이고 AP와 PQ가 만드는 각은 x이다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -1060,7 +1084,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "삼각형의 성질",
@@ -1087,7 +1111,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q24.png",
+    "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q24-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q24-solution.svg",
     "solutionImageAlt": "해설 그림: 마름모 ABCD에서 A에서 BC, CD에 내린 수선의 발 P, Q가 있다. 색칠한 직각삼각형 ABP와 ADQ는 합동이고 AB=AD, AP=AQ이며 ∠B=∠D=64°, ∠PAQ=64°가 표시된다.",
     "solutionImageCaption": "색칠한 두 직각삼각형의 합동으로 AP=AQ와 ∠PAQ=64°를 보여 준다.",
