@@ -2,17 +2,17 @@
   "schemaVersion": "m3-s1-meta-full-progress-v1",
   "workKey": "M3-S1-META-FULL",
   "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
-  "owner": "GPT_ROOT_DD661086D023",
+  "owner": "GPT_ROOT_E92D0E19E75F",
   "branch": "review/m3-s1-meta-full-20261114",
   "baseMain": "0ba1e7de048de3af0771da6c0972409fd46baa75",
   "status": "RUNNING",
-  "resumeState": "USER_DIRECTED_RESUME",
+  "resumeState": "USER_DIRECTED_RESUME_AND_MAIN_RELEASE",
   "totals": {
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 112,
-    "reviewedQuestions": 2675
+    "reviewedExams": 113,
+    "reviewedQuestions": 2701
   },
   "duplicateUids": [],
   "exams": [
@@ -11397,9 +11397,35 @@
       ],
       "solutionCount": 26,
       "existing4slot": null,
-      "status": "PENDING",
+      "status": "REVIEWED_WITH_EVIDENCE_DEBT",
       "assignedTo": "meta_b",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CURRENT_ROOT_SCOPED_MAIN_RELEASE",
+      "reviewVersion": "M3-S1-META-FULL-recovery-v1",
+      "sourceFinalBlob": "92a70f1bc4947399d1dbfcdf687bcd5ade4594b9",
+      "reviewer": "meta_a_resume_d03144c8ca75",
+      "independentReviewer": "meta_c",
+      "integratedBy": "GPT_ROOT_E92D0E19E75F",
+      "sampledOrdinals": [
+        8,
+        18,
+        22
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E113",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 7,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "REUSED_EXACT_PREPARED",
+        "fingerprints": "PASS"
+      },
+      "sourceChangedItems": 26,
+      "sourceChangedFields": 55,
+      "contentDebtCount": 13,
+      "typeProposalCount": 34,
+      "evidenceDebtOrdinals": [],
+      "undecidedDifficultyOrdinals": [],
+      "difficultyPolicyDebtOrdinals": [],
+      "validatorCompatibilityOrdinals": []
     },
     {
       "key": "E114",
@@ -11552,22 +11578,20 @@
       "nextAction": "SEMANTIC_REVIEW"
     }
   ],
-  "nextAction": "SERIAL_SAVE_E113",
-  "resumedAt": "2026-11-15T12:40:01.181838+00:00",
-  "authorityMainChecked": "e7bbf45ec55cff6722a9c4ec1caa06fd4745a25b",
+  "nextAction": "SERIAL_SAVE_E114",
+  "resumedAt": "2026-11-15T22:48:29.680546+00:00",
+  "authorityMainChecked": "855c7a441a53690d242c93e10d710471fb215690",
   "resumeAuthority": {
-    "owner": "GPT_ROOT_DD661086D023",
-    "basis": "EXPLICIT_USER_DIRECTION_PREVIOUS_WRITER_TREATED_AS_ENDED",
-    "previousOwner": "GPT_ROOT_E0C948452E80",
-    "previousRemoteHead": "e997036d76b60a9391ea18b914775681ce21664d",
+    "owner": "GPT_ROOT_E92D0E19E75F",
+    "previousOwner": "GPT_ROOT_DD661086D023",
+    "previousRemoteHead": "12fbe408db7a2d74c9170e445a94c2492220f929",
+    "basis": "EXPLICIT_USER_DIRECTED_INTERRUPTED_WRITER_RECOVERY_AND_MAIN_RELEASE",
     "previousWriterTermination": "NOT_INDEPENDENTLY_VERIFIED_HISTORICAL_FACT",
     "formalOfferFromPriorOwner": "NOT_OBSERVED",
-    "authorization": "USER_DIRECTED_RESUME_ON_EXISTING_BRANCH",
-    "safety": "ISOLATED_WORKTREE_ROOT_SERIAL_EXPECTED_HEAD_FAST_FORWARD_ONLY",
-    "predecessorRevision": 19,
-    "predecessorRawSha256": "aa7ca3a8de2aa5da0c8e21462663df01905dac74e8ffb1c1420be05ab60342cc"
+    "predecessorRevision": 24,
+    "predecessorRawSha256": "481843eacddc4739e849a575b92455df296bfceaf9469b8cba8fb5f3ef8a1b9f"
   },
-  "updatedAt": "2026-11-15T12:55:31.735946+00:00",
+  "updatedAt": "2026-11-15T22:48:29.917380+00:00",
   "lastPublishedHeadBeforeCurrent": "75d036d6260af0d1762ea814862676a032fc6881",
   "resumeHistory": [
     {
@@ -11605,44 +11629,47 @@
       "safety": "ISOLATED_WORKTREE_ROOT_SERIAL_EXPECTED_HEAD_FAST_FORWARD_ONLY",
       "predecessorRevision": 19,
       "predecessorRawSha256": "aa7ca3a8de2aa5da0c8e21462663df01905dac74e8ffb1c1420be05ab60342cc"
+    },
+    {
+      "owner": "GPT_ROOT_E92D0E19E75F",
+      "previousOwner": "GPT_ROOT_DD661086D023",
+      "previousRemoteHead": "12fbe408db7a2d74c9170e445a94c2492220f929",
+      "basis": "EXPLICIT_USER_DIRECTED_INTERRUPTED_WRITER_RECOVERY_AND_MAIN_RELEASE",
+      "previousWriterTermination": "NOT_INDEPENDENTLY_VERIFIED_HISTORICAL_FACT",
+      "formalOfferFromPriorOwner": "NOT_OBSERVED",
+      "predecessorRevision": 24,
+      "predecessorRawSha256": "481843eacddc4739e849a575b92455df296bfceaf9469b8cba8fb5f3ef8a1b9f"
     }
   ],
-  "lastCompletedExam": "E112",
-  "nextIncompleteExam": "E113",
-  "remainingExams": 3,
-  "remainingQuestions": 75,
-  "lastVerifiedRemoteHeadBeforeCurrent": "a073e16878af97c4dc16fe89c5ba27fc10a9d4cc",
+  "lastCompletedExam": "E113",
+  "nextIncompleteExam": "E114",
+  "remainingExams": 2,
+  "remainingQuestions": 49,
+  "lastVerifiedRemoteHeadBeforeCurrent": "12fbe408db7a2d74c9170e445a94c2492220f929",
   "externalCheckpoint": {
-    "revision": 24,
-    "sha256": "481843eacddc4739e849a575b92455df296bfceaf9469b8cba8fb5f3ef8a1b9f",
-    "fileId": "15clG1iXAduCY4LDOU_lCxF3SCbCQK2Jv",
-    "state": "REMOTE_READBACK_VERIFIED_PREVIOUS_CHECKPOINT"
+    "revision": 25,
+    "sha256": "c361a0354e135ac820814746bf66f25b29d3a083b22c73736ad711424bdd8eba",
+    "fileId": "1jPfP87n2rfAX20QenPWDJyyz61MJHrQN",
+    "state": "REMOTE_RAW_READBACK_VERIFIED"
   },
   "workers": {
-    "A": {
-      "agent": "/root/git_owner_evidence",
-      "scope": "MAIN_SOURCE_REBINDING_ONLY",
-      "status": "ACTIVE"
-    },
-    "B": {
-      "agent": "/root/awcr_owner_evidence",
-      "scope": "PREPARED_BINDING_AND_CONTRACT_READ_ONLY",
-      "status": "ACTIVE"
-    },
-    "C": {
-      "agent": "/root/local_owner_evidence",
-      "scope": "DISPLAY_QUALIFICATION_ONLY",
+    "recovery": {
+      "agent": "/root/recovery_finish",
+      "scope": "LAST3_PREPARED_INTEGRITY",
       "status": "CLOSED_NO_FURTHER_WRITES"
+    },
+    "rebind": {
+      "agent": "/root/notion_route",
+      "scope": "CURRENT_SOURCE_DRIFT_READ_ONLY",
+      "status": "ACTIVE"
+    },
+    "release": {
+      "agent": "/root/release_route",
+      "scope": "OFFICIAL_RELEASE_CANDIDATES_ONLY",
+      "status": "ACTIVE"
     }
   },
   "unsavedArtifacts": [
-    {
-      "examKey": "E113",
-      "questionCount": 26,
-      "sourceBlob": "78ff56ee7c1aad3c363a62c7ea4c0fc9a112ce74",
-      "recoveryUnit": "exams/E113/b999ded0bacf9ba8",
-      "state": "PREPARED_PENDING_REMOTE_SAVE"
-    },
     {
       "examKey": "E114",
       "questionCount": 24,
@@ -11660,70 +11687,33 @@
   ],
   "priorWorkersAtResume": {
     "A": {
-      "agent": "/root/meta_a",
-      "status": "ACTIVE",
-      "assignedExams": [
-        "E076",
-        "E079",
-        "E082",
-        "E085",
-        "E088",
-        "E091",
-        "E094",
-        "E097",
-        "E100",
-        "E103",
-        "E106",
-        "E109",
-        "E112",
-        "E115"
-      ],
-      "outputDirectory": "/workspace/scratch/e0c948452e80/workers/A"
+      "agent": "/root/git_owner_evidence",
+      "scope": "MAIN_SOURCE_REBINDING_ONLY",
+      "status": "ACTIVE"
     },
     "B": {
-      "agent": "/root/meta_b",
-      "status": "ACTIVE",
-      "assignedExams": [
-        "E074",
-        "E077",
-        "E080",
-        "E083",
-        "E086",
-        "E089",
-        "E092",
-        "E095",
-        "E098",
-        "E101",
-        "E104",
-        "E107",
-        "E110",
-        "E113"
-      ],
-      "outputDirectory": "/workspace/scratch/e0c948452e80/workers/B"
+      "agent": "/root/awcr_owner_evidence",
+      "scope": "PREPARED_BINDING_AND_CONTRACT_READ_ONLY",
+      "status": "ACTIVE"
     },
     "C": {
-      "agent": "/root/meta_c",
-      "status": "ACTIVE",
-      "assignedExams": [
-        "E075",
-        "E078",
-        "E081",
-        "E084",
-        "E087",
-        "E090",
-        "E093",
-        "E096",
-        "E099",
-        "E102",
-        "E105",
-        "E108",
-        "E111",
-        "E114"
-      ],
-      "outputDirectory": "/workspace/scratch/e0c948452e80/workers/C"
+      "agent": "/root/local_owner_evidence",
+      "scope": "DISPLAY_QUALIFICATION_ONLY",
+      "status": "CLOSED_NO_FURTHER_WRITES"
     }
   },
   "currentRun": {
+    "baselineHead": "12fbe408db7a2d74c9170e445a94c2492220f929",
+    "reusedRemoteExams": 112,
+    "reusedRemoteQuestions": 2675,
+    "reusedPreparedExams": 3,
+    "reusedPreparedQuestions": 75,
+    "newSemanticReviewQuestions": 0,
+    "originalRecoverySha256": "03e92628d9c816a1d23eb6c6f5389ad9b980f9c35d8373372d50c876cc016992",
+    "newlyPreservedExams": 1,
+    "newlyPreservedQuestions": 26
+  },
+  "previousRun": {
     "baselineHead": "e997036d76b60a9391ea18b914775681ce21664d",
     "reusedRemoteExams": 97,
     "reusedRemoteQuestions": 2312,

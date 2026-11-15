@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "independent-meta-sample-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
+  "examKey": "E113",
+  "author": "meta_a_resume_d03144c8ca75",
+  "reviewer": "meta_c",
+  "reviewerOwner": "GPT_ROOT_D03144C8CA75/C",
+  "reviewedAt": "2026-11-15",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "scope": "METADATA_ONLY_LOCAL_PREPARATION",
+  "sourceBlob": "78ff56ee7c1aad3c363a62c7ea4c0fc9a112ce74",
+  "sourceSha256": "97fd37a29a416689069ffd6664563d67062d1a6c2e335c6c6597416a4d5c55a6",
+  "reviewPath": "/workspace/scratch/d03144c8ca75/workers/A/E113.review.json",
+  "reviewSha256": "15c1affb4930089798f07546da6b5ff1195688cd03f2e83cd0476111e87a0f28",
+  "fourSlotPath": "/workspace/scratch/d03144c8ca75/workers/A/E113.4slot.json",
+  "fourSlotSha256": "95c80df6b626e396a3ab5f625db138b5810078ef050f8b14a10e7a058191fb86",
+  "inputSha256": "f9632914a598243f0848dfbff3e41176e2ee51d90f823b6d5283b4846b1154a0",
+  "sampleOrdinals": [
+    8,
+    18,
+    22
+  ],
+  "evidenceDebtSampleOrdinals": [
+    18,
+    22
+  ],
+  "samples": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_25f8e7386195e82e2c681d63d820c65c7b7e79cbd661795ef159c902dd2f0f0b",
+      "status": "ACCEPTED_METADATA_SAMPLE",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "metadata decision",
+        "4slot exact quotes",
+        "projection and declared debt"
+      ],
+      "quotesVerified": 8,
+      "sourceFingerprints": {
+        "QBODY": "12a6c8a232168a37d06452b766aae1603afe8de3b14dc0b4bec6a60ccb1334f7",
+        "QFULL": "3561f4e9482bde53a9d332b8e0f5be18c7e26f3567927479225051474b268608"
+      },
+      "rationale": "실제 PNG에서 큰 정사각형의 기준점 B=-1,D=3 및 가로2·세로2, 작은 정사각형 F=4,H=6 및 가로1·세로1을 확인했다. 원호 좌우 방향과 길이 이동이 해설에 부합하며 반복 적용형 난도2/B23·피타고라스/정사각형넓이 보조개념을 수용한다.",
+      "debtKindsPreserved": [],
+      "mathematicalSufficiencyPass": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_6b46d4a547725bfcd52726cba694346a7cf085356438d70b2b052c60d9440910",
+      "status": "ACCEPTED_CANDIDATE_WITH_EVIDENCE_DEBT",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "metadata decision",
+        "4slot exact quotes",
+        "projection and declared debt"
+      ],
+      "quotesVerified": 10,
+      "sourceFingerprints": {
+        "QBODY": "d8aaae88d3aca884f1fe09e68b58f3406b6cf4a30e96ff0da28acf14859587ad",
+        "QFULL": "10c2e07662748968ab3a75dc1c6ba17a18535bcb053b0acdc113d893b0d6b8a8"
+      },
+      "rationale": "정수차 조건이 각 근호의 정수성을 강제한다는 필요성 설명이 기존 해설에 없음을 독립적으로 확인했다. 자연수 조건만으로 개별 근호의 최댓값을14라고 한 진술은 성립하지 않으므로 METHOD_NECESSITY_EVIDENCE_GAP을 유지한다. 기존해설에 실제 적힌 완전제곱수 선택/범위/대입만 4칸에 결속한 점을 확인했다. bucket4는 low·B34의 보완 전제 후보로 수용하며 수학적 충분성 PASS로 간주하지 않는다.",
+      "debtKindsPreserved": [
+        "METHOD_NECESSITY_EVIDENCE_GAP",
+        "TAXONOMY_PROPOSAL"
+      ],
+      "mathematicalSufficiencyPass": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_eb94dde3905cc455e4d5e7ef8ce408badb9a988a4ea0cde285a918415d2782d6",
+      "status": "ACCEPTED_CANDIDATE_WITH_EVIDENCE_DEBT",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "metadata decision",
+        "4slot exact quotes",
+        "projection and declared debt"
+      ],
+      "quotesVerified": 5,
+      "sourceFingerprints": {
+        "QBODY": "c7ec08fd23d73e1a912a97e3fc9df509baefbd4407d19dc7cb1a2fd7eed9ff58",
+        "QFULL": "8a472a5c1f5ecaea4044375043883b09c1729b2bbb45e019f3ee2942ea006d94"
+      },
+      "rationale": "같은 다항식의 두 인수를 동시에 음수로 바꾸면 계수합이 달라짐을 확인했다. 원문에 계수 범위와 양의 선행계수 정규화 조건이 없어 유일성 부채를 보존하는 것이 적절하다. 인수분해/계수비교의 메타 유형 후보와 level중/bucket2를 수용하지만 답 유일성 또는 정확 ACTIVE 템플릿 등록을 주장하지 않는다.",
+      "debtKindsPreserved": [
+        "CONTENT_FACTOR_NORMALIZATION_MISSING",
+        "TAXONOMY_PROPOSAL",
+        "CLASSIFICATION_ALIAS_DEBT"
+      ],
+      "mathematicalSufficiencyPass": false
+    }
+  ],
+  "assetEvidence": [
+    {
+      "ordinal": 8,
+      "path": "/workspace/scratch/d03144c8ca75/workers/A/assets/E113/q08.png",
+      "sha256": "2fe64609caac6fa082918748b9923c7208d9f99a607896d0f672a67d205f7623",
+      "blobSha": "5d08bb002a9b743452f2754c64ac01d90c4ade7f",
+      "status": "INDEPENDENTLY_VIEWED",
+      "currentMainRef": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+      "currentMainReadback": "MATCHES_VIEWED_BYTES"
+    }
+  ],
+  "independentReviewerNotAuthor": true,
+  "contentQualityPass": false,
+  "remoteCompletionClaim": false,
+  "remaining": [
+    "root ownership handoff confirmation",
+    "root integration and protected-field checks",
+    "remote checkpoint",
+    "Codex exact mapping and declared content debt processing"
+  ]
+}
