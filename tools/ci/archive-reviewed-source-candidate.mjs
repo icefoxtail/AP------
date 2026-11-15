@@ -21,10 +21,14 @@ const UID = /^qid_v1_[0-9a-f]{64}$/;
 const INBOX = /^\.archive-meta-register\/inbox\/[A-Za-z0-9][A-Za-z0-9_.-]*\.json$/;
 const RECEIPTS = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const PARENT_SCHEMA = 'archive-meta-pipeline-parent-label-evidence-v1';
+const METADATA_PARENT_SOURCE = 'archive/data/question_metadata.json';
+const TARGET_PARENT_MASTER = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
+const TARGET_PARENT_CROSSWALK = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json';
 const NATIVE_SCHEMAS = new Set(['m2-s2-meta-review-v1', 'm3-s2-complete-semantic-review-v1']);
 const PROPOSAL_SCHEMAS = new Set(['archive-independent-native-proposal-disposition-v1',
   'archive-reviewed-registry-change-proposal-v1', 'archive-independent-proposal-condition-boundary-finalization-v1',
-  'archive-m3s2-condition-definition-proposal-for-independent-review-v1']);
+  'archive-m3s2-condition-definition-proposal-for-independent-review-v1',
+  'archive-cross-concept-narrow-definition-finalization-v1', 'archive-reviewed-cross-concept-registry-change-proposal-v1']);
 const RENDERER_SCHEMAS = new Set(['archive-reviewed-renderer-continuity-evidence-v1',
   'archive-independent-narrow-renderer-review-v1', 'archive-independent-current-figure-review-v1',
   'archive-independent-current-renderer-review-v2',
@@ -306,7 +310,8 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
       const ordinals = new Set();
       for (const item of request.items) {
         exactKeys(item, ['questionUid', 'sourceOrdinal', 'before', 'after', 'reason', 'evidenceRefs'],
-          preservation ? [] : ['identityBefore', 'sourceReview', 'basicScopeParentRef']);
+          preservation ? [] : ['identityBefore', 'sourceReview', 'basicScopeParentRef', 'targetParentRef']);
+        requireThat(!(item.basicScopeParentRef && item.targetParentRef), 'AMBIGUOUS_PARENT_REFERENCE');
         requireThat(UID.test(item.questionUid) && !selected.has(item.questionUid) && Number.isSafeInteger(item.sourceOrdinal) &&
           item.sourceOrdinal >= 1 && item.sourceOrdinal <= source.expectedQuestionCount && !ordinals.has(item.sourceOrdinal) && text(item.reason), 'REQUEST_SELECTED_UID');
         selected.add(item.questionUid); ordinals.add(item.sourceOrdinal);
@@ -326,7 +331,7 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
           }
         }
       }
-      requests.push({ file, request, source, preservation, proposalCommits: new Set(), rendererCommits: new Set() });
+      requests.push({ file, request, source, preservation, proposalCommits: new Set(), rendererCommits: new Set(), selectedV1RegistryChanges: [] });
     }
   }
   const materializationRequests = requests.filter(r => !r.preservation), used = new Set(), changedItems = new Map();
@@ -344,13 +349,65 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
     requireThat(ctx.request.items.every(item => changedItems.get(ctx)?.has(`${item.questionUid}:${item.sourceOrdinal}`)) &&
       ctx.request.items.length === changedItems.get(ctx)?.size, 'UNUSED_MATERIALIZATION_REQUEST_ITEM');
 
+  const compact = value => String(value ?? '').normalize('NFC').replace(/\s/g, '');
+  function middle2ParentContext(request, item) {
+    requireThat(/^original\/middle\/m2\/(?:2mid|2final)\/[^/]+\.js$/u.test(request.sourceArchiveFile) &&
+      (item.after.curriculum ?? item.after.curriculumKey) === '2015' && item.after.courseKey === 'M2-2' &&
+      compact(item.after.standardCourse) === '중2수학' && text(item.after.standardUnitKey, 160) &&
+      (item.after.subUnitKey === null || text(item.after.subUnitKey, 160)) &&
+      text(item.after.L1, 160) && text(item.after.L2, 160), 'M2_CURRENT_PARENT_CONTEXT');
+  }
+  const metadataParentCache = new Map();
+  function metadataParent(file) {
+    if (metadataParentCache.has(file.path)) return metadataParentCache.get(file.path);
+    const doc = file.value;
+    // This is a current-public-base read only. The whole metadata document is
+    // never accepted as an uploaded input or copied into the output commit.
+    requireThat(!files.has(METADATA_PARENT_SOURCE), 'METADATA_PARENT_BASE_ONLY');
+    const original = immutable(baseCommit, METADATA_PARENT_SOURCE, { metadataOnly: false, maxBytes: 128 * 1024 * 1024 });
+    requireThat(original.sha256 === doc.sourceSha256 && original.value.schemaVersion === 'archive-question-metadata-v1' &&
+      Array.isArray(original.value.records), 'METADATA_PARENT_SOURCE_HASH');
+    const owners = requests.flatMap(ctx => ctx.preservation ? [] : ctx.request.items
+      .filter(item => item.basicScopeParentRef?.path === file.path)
+      .map(item => ({ request: ctx.request, item })));
+    requireThat(Array.isArray(doc.records) && doc.records.length > 0 && doc.records.length === owners.length, 'METADATA_PARENT_SELECTED_SCOPE');
+    const keys = ['questionUid', 'sourceArchiveFile', 'sourceOrdinal', 'curriculumKey', 'courseKey', 'standardUnitKey', 'subUnitKey', 'L1', 'L2'];
+    const selected = new Map();
+    for (const snapshot of doc.records) {
+      exactKeys(snapshot, keys);
+      requireThat(UID.test(snapshot.questionUid) && Number.isSafeInteger(snapshot.sourceOrdinal) &&
+        snapshot.sourceOrdinal > 0 && !selected.has(snapshot.questionUid), 'METADATA_PARENT_SELECTED_UID');
+      const owner = owners.filter(o => o.item.questionUid === snapshot.questionUid && o.item.sourceOrdinal === snapshot.sourceOrdinal &&
+        o.request.sourceArchiveFile === snapshot.sourceArchiveFile);
+      requireThat(owner.length === 1, 'METADATA_PARENT_SELECTED_SCOPE');
+      const { request, item } = owner[0]; middle2ParentContext(request, item);
+      const current = original.value.records.filter(r => r.questionUid === snapshot.questionUid &&
+        r.sourceArchiveFile === snapshot.sourceArchiveFile && r.sourceOrdinal === snapshot.sourceOrdinal);
+      requireThat(current.length === 1 && (current[0].reviewStatus === 'reviewed_pass' ||
+        String(current[0].metadataStatus || '').startsWith('approved_')), 'METADATA_PARENT_NOT_APPROVED');
+      const row = current[0], expected = { questionUid: row.questionUid, sourceArchiveFile: row.sourceArchiveFile,
+        sourceOrdinal: row.sourceOrdinal, curriculumKey: row.curriculum || row.curriculumKey,
+        courseKey: row.standardCourse || row.courseKey, standardUnitKey: row.standardUnitKey,
+        subUnitKey: row.subUnitKey ?? null, L1: row.L1, L2: row.L2 };
+      requireThat(equal(snapshot, expected) && snapshot.curriculumKey === '2015' &&
+        compact(snapshot.courseKey) === compact(item.after.standardCourse) &&
+        ['standardUnitKey', 'L1', 'L2'].every(k => snapshot[k] === item.after[k]) &&
+        snapshot.subUnitKey === (item.after.subUnitKey ?? null), 'METADATA_PARENT_VALUE_DRIFT');
+      selected.set(snapshot.questionUid, snapshot);
+    }
+    metadataParentCache.set(file.path, selected); return selected;
+  }
   function parent(ref, request, item) {
     bound(ref, request, item);
     const file = evidence(ref), doc = file.value;
     requireThat(ref.path.startsWith(RECEIPTS) && ref.path.endsWith('.parent-labels.json'), 'PARENT_EVIDENCE_PATH');
     exactKeys(doc, ['schemaVersion', 'sourcePath', 'sourceSha256', 'records']);
-    requireThat(doc.schemaVersion === PARENT_SCHEMA && doc.sourcePath === 'archive/data/basic-scope-parent-links.json' &&
+    requireThat(doc.schemaVersion === PARENT_SCHEMA && ['archive/data/basic-scope-parent-links.json', METADATA_PARENT_SOURCE].includes(doc.sourcePath) &&
       SHA256.test(doc.sourceSha256), 'PARENT_EVIDENCE_SCHEMA');
+    if (doc.sourcePath === METADATA_PARENT_SOURCE) {
+      requireThat(metadataParent(file).has(item.questionUid), 'METADATA_PARENT_SELECTED_UID');
+      role(file, 'parent'); return;
+    }
     const original = immutable(baseCommit, doc.sourcePath, { metadataOnly: false });
     requireThat(original.sha256 === doc.sourceSha256 && Array.isArray(original.value.records), 'PARENT_SOURCE_HASH');
     requireThat(Array.isArray(doc.records) && doc.records.length > 0 && doc.records.length <= 1000, 'PARENT_RECORDS');
@@ -360,6 +417,96 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
       requireThat(keys.every(k => text(row[k], 160)) && original.value.records.some(r => equal(r, row)), 'PARENT_RECORD_NOT_CURRENT_BASE');
     }
     role(file, 'parent');
+  }
+  function targetParent(ref, request, item, nativeItem) {
+    middle2ParentContext(request, item);
+    exactKeys(ref, ['path', 'sha256', 'curriculum', 'scope', 'majorUnit', 'midUnit'], ['crosswalkRef']);
+    requireThat(ref.path === TARGET_PARENT_MASTER && ref.curriculum === '2015' && ref.scope === 'M2-2' &&
+      ref.majorUnit === item.after.L1 && ref.midUnit === item.after.L2 && !files.has(ref.path), 'TARGET_PARENT_BASE_SCOPE');
+    const masterRef = { path: ref.path, sha256: ref.sha256 }; bound(masterRef, request, item);
+    const master = evidence(masterRef);
+    requireThat(master.value.schemaVersion === 'js-archive-taxonomy-rpm-primary-v1.0' && master.value.authorityStatus === 'LOCKED' &&
+      Array.isArray(master.value.records) && master.value.records.some(r => r.curriculum === ref.curriculum && r.scope === ref.scope &&
+        r.majorUnit === ref.majorUnit && r.midUnit === ref.midUnit), 'TARGET_PARENT_MASTER_RECORD');
+    role(master, 'target-parent-master');
+    const taxonomy = immutable(baseCommit, 'archive/data/meta-foundation/compiled/taxonomy_registry.json', { metadataOnly: false }).value;
+    const bindings = immutable(baseCommit, 'archive/data/meta-foundation/compiled/curriculum_bindings.json', { metadataOnly: false }).value;
+    const tagMaster = immutable(baseCommit, 'archive/data/master_tables/js_archive_tag_master.json', { metadataOnly: false }).value;
+    requireThat(taxonomy.status === 'DERIVED_READ_ONLY' && Array.isArray(taxonomy.problemTypes) && Array.isArray(taxonomy.templates) &&
+      bindings.status === 'DERIVED_READ_ONLY' && Array.isArray(bindings.bindings) && Array.isArray(tagMaster), 'TARGET_PARENT_CURRENT_REGISTRY');
+    const pt = taxonomy.problemTypes.filter(r => r.problemTypeKey === item.after.problemTypeKey && r.status === 'ACTIVE');
+    const tpl = taxonomy.templates.filter(r => r.templateKey === item.after.templateKey && r.status === 'ACTIVE');
+    const selected = bindings.bindings.filter(r => r.status === 'ACTIVE' && r.curriculum === ref.curriculum &&
+      r.standardCourse === item.after.standardCourse && r.standardUnitKey === item.after.standardUnitKey &&
+      (r.subUnitKey ?? null) === (item.after.subUnitKey ?? null) && r.problemTypeKey === item.after.problemTypeKey);
+    requireThat(pt.length === 1 && tpl.length === 1 && tpl[0].parentProblemTypeKey === pt[0].problemTypeKey &&
+      selected.length === 1, 'TARGET_PARENT_CURRENT_BINDING');
+    const binding = selected[0], unit = tagMaster.filter(r => r.key === item.after.standardUnitKey && r.keyType === 'standardUnitKey'),
+      sub = tagMaster.filter(r => r.key === item.after.subUnitKey && r.keyType === 'subUnitKey');
+    requireThat(unit.length === 1 && (item.after.subUnitKey === null || sub.length === 1) &&
+      (!binding.L1 || binding.L1 === ref.majorUnit), 'TARGET_PARENT_CURRENT_UNIT');
+    let exactCrosswalk = false;
+    if (ref.crosswalkRef) {
+      const cross = ref.crosswalkRef; exactKeys(cross, ['path', 'sha256', 'recordId']);
+      requireThat(cross.path === TARGET_PARENT_CROSSWALK && !files.has(cross.path) && text(cross.recordId, 160) &&
+        nativeItem.rpmRecordId === cross.recordId, 'TARGET_PARENT_CROSSWALK_SCOPE');
+      const crossRef = { path: cross.path, sha256: cross.sha256 }; bound(crossRef, request, item);
+      const file = evidence(crossRef), doc = file.value;
+      const rows = Array.isArray(doc.records) ? doc.records.filter(r => r.id === cross.recordId) : [];
+      const r = rows[0];
+      requireThat(doc.schemaVersion === 'rpm-primary-active-crosswalk-v1' && doc.status === 'ACTIVE_REFERENCE' && rows.length === 1 &&
+        r.bindingStatus === 'ACTIVE' && r.curriculum === ref.curriculum && r.scope === ref.scope &&
+        r.problemTypeKey === item.after.problemTypeKey && r.templateKey === item.after.templateKey &&
+        r.rpmPath?.majorUnit === ref.majorUnit && r.rpmPath?.midUnit === ref.midUnit, 'TARGET_PARENT_CROSSWALK_RECORD');
+      role(file, 'target-parent-crosswalk'); exactCrosswalk = true;
+    }
+    requireThat(exactCrosswalk || [binding.L2, binding.subUnitLabelKo, sub[0]?.labelKo, unit[0].labelKo]
+      .filter(Boolean).some(label => compact(label) === compact(ref.midUnit)), 'TARGET_PARENT_CONTEXT_ALIAS');
+  }
+  function conceptFinalizationV1(ctx, item, native, nativeItem) {
+    const { request } = ctx, spec = item.sourceReview, p = spec.proposalFinalization;
+    exactKeys(p, ['schemaVersion', 'finalizationCommit', 'finalizationRef', 'registryChangesRef', 'proposalIds']);
+    requireThat(native.schemaVersion === 'm2-s2-meta-review-v1' && Array.isArray(p.proposalIds) && p.proposalIds.length > 0 &&
+      p.proposalIds.length <= 100 && p.proposalIds.every(id => text(id, 160)) && new Set(p.proposalIds).size === p.proposalIds.length &&
+      Array.isArray(native.proposals) && Array.isArray(nativeItem.proposalRefs) &&
+      equal([...p.proposalIds].sort(), [...nativeItem.proposalRefs].sort()), 'M2_V1_CC_PROPOSAL_IDS');
+    for (const id of p.proposalIds) {
+      const found = native.proposals.filter(row => (row.id ?? row.proposalId) === id);
+      requireThat(found.length === 1 && ['CC', 'NEW_CC', 'CROSS_CONCEPT'].includes(found[0].type) &&
+        Array.isArray(found[0].supportingQuestionUids) && found[0].supportingQuestionUids.includes(item.questionUid), 'M2_V1_CC_NATIVE_PROPOSAL');
+    }
+    bound(p.finalizationRef, request, item); bound(p.registryChangesRef, request, item);
+    const proof = copy(p.finalizationRef, p.finalizationCommit, p.finalizationRef.path,
+      new Set(['archive-cross-concept-narrow-definition-finalization-v1']), 'proposal').value;
+    const registry = copy(p.registryChangesRef, p.finalizationCommit, p.registryChangesRef.path,
+      new Set(['archive-reviewed-cross-concept-registry-change-proposal-v1']), 'proposal').value;
+    requireThat(proof.status === 'DEFINITIONS_FINALIZED_OFFICIAL_REGISTRATION_PENDING' && text(proof.reviewer, 160) &&
+      proof.nativeReviewCommit === spec.reviewCommit && proof.scope?.newFullMathematicalQa === false &&
+      proof.scope?.newReview2Claims === 0 && proof.scope?.newMetadataApprovals === 0 && proof.scope?.newDifficultyJudgments === 0 &&
+      registry.status === 'PENDING_OFFICIAL_REGISTRAR' && registry.evidenceRefs?.some(r => equal(r, p.finalizationRef)), 'M2_V1_CC_FINALIZATION_SCOPE');
+    const app = one(proof.applications, item);
+    requireThat(app.sourcePath === `archive/exams/${request.sourceArchiveFile}` && app.examId === native.examId &&
+      equal(app.nativeReviewRef, { commit: spec.reviewCommit, path: spec.reviewPath, sha256: spec.reviewRef.sha256 }) &&
+      app.nativeItemStableSha256 === digest(stable(nativeItem)) && Array.isArray(app.nativeProposalRefs) &&
+      equal([...app.nativeProposalRefs].sort(), [...p.proposalIds].sort()) && app.definitionDisposition === 'ADD_EXACT_NEW_CANONICAL_CC' &&
+      app.newMathematicalQa === false && app.newMetadataApproval === false && app.difficultyChanged === false &&
+      equal(app.nativeProtectedStudentFieldsChanges, []) && Array.isArray(app.nativeAfterCrossConceptKeys) && text(app.addCrossConceptKey, 160) &&
+      !app.nativeAfterCrossConceptKeys.includes(app.addCrossConceptKey) &&
+      equal(item.after.crossConceptKeys, [...app.nativeAfterCrossConceptKeys, app.addCrossConceptKey]), 'M2_V1_CC_APPLICATION');
+    requireThat(['standardCourse', 'standardUnitKey', 'subUnitKey', 'problemTypeKey', 'templateKey']
+      .every(k => app.reviewedPrimaryContext?.[k] === item.after[k]), 'M2_V1_CC_PRIMARY_CONTEXT');
+    const definitions = proof.definitionDecisions?.filter(d => d.definition?.conceptKey === app.addCrossConceptKey);
+    const changes = registry.registryChanges?.filter(c => c.match?.conceptKey === app.addCrossConceptKey);
+    requireThat(definitions?.length === 1 && changes?.length === 1 && changes[0].before === null && changes[0].collection === 'concepts' &&
+      equal(changes[0].match, { conceptKey: app.addCrossConceptKey }) && equal(changes[0].after, definitions[0].definition), 'M2_V1_CC_DEFINITION');
+    // This public v1 document contains multiple finalized concepts. Only the
+    // exact change selected by this UID's finalized application is a transport
+    // edge. Preserve its evidenceRefs too; no sibling definition is authorized
+    // merely because it shares the same immutable proposal document.
+    requireThat(request.registryChanges.filter(change => equal(change, changes[0])).length === 1,
+      'M2_V1_CC_SELECTED_REGISTRY_CHANGE');
+    ctx.selectedV1RegistryChanges.push(changes[0]);
+    ctx.proposalCommits.add(p.finalizationCommit);
   }
   for (const ctx of requests) {
     const { request, preservation } = ctx;
@@ -389,10 +536,14 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
       requireThat(native.sourceArchiveFile === request.sourceArchiveFile &&
         request.sourceArchiveFile.startsWith(`original/middle/${m3 ? 'm3' : 'm2'}/`) &&
         (m3 ? native.questionCount : native.reviewedQuestionCount) === request.expectedQuestionCount, 'NATIVE_SOURCE_DENOMINATOR');
-      one(native.items, item, m3 ? 'ordinal' : 'sourceOrdinal');
+      const nativeItem = one(native.items, item, m3 ? 'ordinal' : 'sourceOrdinal');
       if (item.basicScopeParentRef) parent(item.basicScopeParentRef, request, item);
+      if (item.targetParentRef) targetParent(item.targetParentRef, request, item, nativeItem);
       if (spec.proposalFinalization) {
         const p = spec.proposalFinalization;
+        if (p.schemaVersion === 'archive-native-proposal-finalization-v1') {
+          conceptFinalizationV1(ctx, item, native, nativeItem);
+        } else {
         exactKeys(p, ['schemaVersion', 'finalizationCommit', 'finalizationRef', 'proposalSelections']);
         requireThat(p.schemaVersion === 'archive-native-proposal-finalization-v2' && Array.isArray(p.proposalSelections) && p.proposalSelections.length > 0, 'PROPOSAL_SPEC');
         for (const selection of p.proposalSelections) {
@@ -419,6 +570,7 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
             new Set(['archive-independent-proposal-condition-boundary-finalization-v1']), 'proposal');
         }
         requireThat(app.authorDraftRef === undefined && app.registryProposalRef === undefined, 'UNSUPPORTED_PROPOSAL_EVIDENCE_EDGE');
+        }
       }
       if (spec.rendererProof) {
         const r = spec.rendererProof;
@@ -489,10 +641,13 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
       const { evidenceRefs: refs, ...core } = change;
       const approved = refs.flatMap(ref => {
         const doc = supplementary(ref, ctx).value;
+        if (['archive-cross-concept-narrow-definition-finalization-v1',
+          'archive-reviewed-cross-concept-registry-change-proposal-v1'].includes(doc.schemaVersion)) return [];
         return [...(doc.registryChanges || []), ...(doc.approvedRegistryChanges || []),
           ...(doc.change ? [doc.change] : []), ...(doc.applications || []).flatMap(a => (a.decisions || []).map(d => d.registryChange).filter(Boolean))];
       });
-      requireThat(approved.some(row => equal(row, core)), 'REGISTRY_CHANGE_NOT_IMMUTABLE_PROPOSAL');
+      requireThat(ctx.selectedV1RegistryChanges.some(row => equal(row, change)) || approved.some(row => equal(row, core)),
+        'REGISTRY_CHANGE_NOT_IMMUTABLE_PROPOSAL');
     }
   }
   requireThat(reached.size === files.size && [...files.keys()].every(p => reached.has(p)), 'UNREFERENCED_INPUT_FILE');

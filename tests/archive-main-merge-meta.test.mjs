@@ -16,6 +16,7 @@ import {reviewedRendererBindingPath,buildReviewedRendererBinding} from '../archi
 import {reviewedSourceBindingPath,buildReviewedSourceBinding} from '../archive/tools/meta-foundation/reviewed-source-binding.mjs';
 import {hasNativeReviewedSourceClaim,validateNativeReviewedSourceReuse} from '../archive/tools/meta-foundation/native-reviewed-source-reuse.mjs';
 import {hasNativeSourcePreservationClaim} from '../archive/tools/meta-foundation/native-preserved-source-reuse.mjs';
+import {assertReviewedPackVersionLineage} from '../archive/tools/meta-foundation/reviewed-pack-version-lineage.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source='original/middle/m3/1mid/fixture.js',uid='qid_v1_'+'a'.repeat(64);
 function fixture() {
@@ -1545,4 +1546,125 @@ test('mixed existing rebind also replays an earlier solution-only repair instead
   old.fingerprintRepairs[0].rebind.priorContentFingerprint='e'.repeat(64);
   f.put(f.priorNativePath,old);f.receipt.approval.evidenceRefs.find(r=>r.path===f.priorNativePath).sha256=f.sha(fs.readFileSync(path.join(f.nativeSource.root,f.priorNativePath)));f.saveReceipt();
   const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING');assert.equal(result.final,undefined);
+});
+
+// Match the main-writer situation: three separately approved add-only binding
+// requests bump the same pack before an otherwise unchanged native reassessment.
+function approvedBindingVersionFixture(t,make=ordinaryReassessmentWithPriorFixture) {
+  const f=make(t),dir=f.nativeSource.root,id='MIDDLE3',base='archive/data/meta-foundation/canonical/packs/middle3',
+    packPath=base+'/pack.json',bindingPath=base+'/bindings.json',indexPath='archive/data/meta-foundation/canonical/registry_index.json',
+    compiledPath='archive/data/meta-foundation/compiled/taxonomy_registry.json',runtimePath='archive/data/meta-foundation/runtime/middle3-v1.json',
+    receiptBase='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
+  const pack={packId:id,ownerPack:id,packVersion:'1.0.0',canonicalStatus:'ACTIVE',bindingCount:1,ownedStandardUnitDomains:['M3-01']};
+  const bindings={status:'ACTIVE',bindingCount:1,bindings:[{...structuredClone(f.registry.bindingRows[0]),ownerPack:id}]};
+  const taxonomy={problemTypes:[structuredClone(f.registry.problemTypes.get('PT_ROOT'))],templates:[structuredClone(f.registry.templates.get('TPL_ROOT'))]};
+  taxonomy.problemTypes[0].problemTypeKey='PT_ROOT';taxonomy.templates[0].templateKey='TPL_ROOT';
+  f.registry.problemTypes.set('PT_ROOT',structuredClone(taxonomy.problemTypes[0]));
+  f.registry.templates.set('TPL_ROOT',structuredClone(taxonomy.templates[0]));
+  // Technical-review fixtures commit these exact records in their native proof.
+  for(const [collection,map]of [['problemTypes',f.registry.problemTypes],['templates',f.registry.templates]])
+    for(const row of taxonomy[collection])if(!map.has(row.problemTypeKey||row.templateKey))throw Error('fixture definition missing');
+  const compiled={status:'DERIVED_READ_ONLY',sourcePacks:[{packId:id,version:'1.0.0'}],...structuredClone(taxonomy)};
+  const live={status:'ACTIVE',packId:id,packVersion:'1.0.0',generatedFrom:{},records:[]},providers=[];
+  const raw=p=>fs.readFileSync(path.join(dir,p)),ref=p=>({path:p,sha256:f.sha(raw(p))});
+  const writeAuthority=()=>{
+    f.put(packPath,pack);f.put(bindingPath,bindings);f.put(base+'/taxonomy.json',taxonomy);f.put(base+'/aliases.json',{aliases:[]});
+    compiled.sourcePacks[0].version=pack.packVersion;f.put(compiledPath,compiled);
+    f.put(indexPath,{status:'ACTIVE',activePacks:[{id,version:pack.packVersion,status:'ACTIVE'}],
+      canonicalSources:[packPath,bindingPath,base+'/taxonomy.json',base+'/aliases.json'].map(ref),compiledArtifacts:[ref(compiledPath)]});
+    live.packVersion=pack.packVersion;live.records=structuredClone(f.receipt.runtimeRecords);f.put(runtimePath,live);
+    f.registry.activePacks.get(id).version=pack.packVersion;
+  };
+  for(let n=1;n<=3;n++){
+    const requestId='binding-version-step-'+n,requestPath='.archive-meta-register/inbox/'+requestId+'.json',receiptPath=receiptBase+requestId+'.json';
+    const after={...bindings.bindings[0],subUnitKey:'M3-01-ADDED-'+n};
+    const match=Object.fromEntries(['curriculum','problemTypeKey','standardCourse','standardUnitKey','subUnitKey'].map(k=>[k,after[k]]));
+    const request={schemaVersion:'archive-reviewed-exam-meta-register-request-v2',requestId,scope:'PARTIAL_UIDS',expectedQuestionCount:3,
+      sourceArchiveFile:source,expectedSourceBlobSha1:f.nativeSource.blobSha1,
+      approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'binding-reviewer',evidenceRefs:[ref('review/metadata.json')]},
+      items:f.receipt.appliedRecords.map(r=>({questionUid:r.questionUid,sourceOrdinal:r.sourceOrdinal,after:{problemTypeKey:r.problemTypeKey,templateKey:r.templateKey}})),
+      registryChanges:[{path:bindingPath,collection:'bindings',match,before:null,after,evidenceRefs:[ref('review/metadata.json')]}]};
+    f.put(requestPath,request);providers.push({request,requestPath,receiptPath});
+  }
+  writeAuthority();f.saveReceipt();f.git('add','.');f.git('-c','user.name=Fixture reviewer','-c','user.email=fixture@example.invalid','commit','-qm','Immutable prior and three binding requests');
+  const anchor=f.git('rev-parse','HEAD');
+  for(const [i,p]of providers.entries()){
+    bindings.bindings.push(structuredClone(p.request.registryChanges[0].after));bindings.bindingCount=bindings.bindings.length;
+    pack.bindingCount=bindings.bindingCount;pack.packVersion='1.0.'+(i+1);writeAuthority();
+    const row=r=>({...structuredClone(r),metaFoundationPackVersion:pack.packVersion,
+      metadataRevision:`meta-foundation:${id}@${pack.packVersion}:exam-final_qa-v2:${p.request.requestId}`});
+    p.receipt={schemaVersion:'archive-reviewed-exam-meta-registration-v2',requestId:p.request.requestId,
+      requestSha256:f.sha(f.stable(p.request)),sourceArchiveFile:source,sourceBlobSha1:f.nativeSource.blobSha1,sourceRawSha256:f.sha(f.nativeSource.bytes),
+      expectedQuestionCount:3,metadataRegistrationStatus:'REGISTERED',approval:p.request.approval,registryChanges:p.request.registryChanges,
+      appliedRecords:f.receipt.appliedRecords.map(row),runtimeRecords:f.receipt.runtimeRecords.map(row),outputDigests:[ref(packPath),ref(bindingPath)]};
+    f.put(p.receiptPath,p.receipt);live.generatedFrom['reviewedExam_'+p.request.requestId]=p.receiptPath;
+  }
+  for(const rows of [f.receipt.appliedRecords,f.receipt.runtimeRecords])for(const row of rows){
+    row.metaFoundationPackVersion='1.0.3';row.metadataRevision=`meta-foundation:${id}@1.0.3:exam-final_qa-v2:${f.receipt.requestId}`;
+  }
+  f.refreshBinding?.();f.saveReceipt();writeAuthority();
+  const priorRef=f.receipt.approval.evidenceRefs.find(r=>r.path===f.priorNativePath);
+  const check=()=>assertReviewedPackVersionLineage({root:dir,current:f.current,runtime:f.nativeSource.runtimeRecord,
+    prior:f.priorNativeReceipt.appliedRecords.find(r=>r.questionUid===f.current.questionUid),
+    priorRuntime:f.priorNativeReceipt.runtimeRecords.find(r=>r.questionUid===f.current.questionUid),priorReceiptRef:priorRef,registry:f.registry});
+  const laterDefinition=()=>{
+    f.git('add','.');f.git('-c','user.name=Fixture reviewer','-c','user.email=fixture@example.invalid','commit','-qm','Official issued version and receipts');
+    for(const p of providers)fs.unlinkSync(path.join(dir,p.requestPath));
+    taxonomy.templates.push({templateKey:'TPL_UNRELATED_NEW',parentProblemTypeKey:'PT_ROOT',ownerPack:id,status:'ACTIVE'});
+    compiled.templates=structuredClone(taxonomy.templates);pack.packVersion='1.0.4';writeAuthority();
+    f.git('add','.');f.git('-c','user.name=Fixture reviewer','-c','user.email=fixture@example.invalid','commit','-qm','Later unrelated definition, prior inbox consumed');
+  };
+  return Object.assign(f,{lineage:{check,pack,bindings,taxonomy,compiled,live,providers,anchor,writeAuthority,laterDefinition,
+    packPath,bindingPath,indexPath,compiledPath,runtimePath,raw}});
+}
+
+for(const [name,make]of [['ordinary',ordinaryReassessmentWithPriorFixture],['renderer',ordinaryRendererReassessmentWithPriorFixture],
+  ['mixed existing rebind',mixedApprovedRebindMemberFixture]])test('official pack binding lineage preserves '+name+' values across main registration',t=>{
+  const f=approvedBindingVersionFixture(t,make),before=JSON.stringify([f.receipt,f.current,f.identity,f.nativeSource.runtimeRecord]);
+  assert.equal(f.lineage.check(),true);
+  for(const previous of [f.previous,structuredClone(f.question)]){
+    const result=planQuestion({...f,previous});assert.equal(result.nativeReviewReceipt,f.receiptPath,JSON.stringify(result));assert.equal(result.final,undefined);
+  }
+  assert.equal(JSON.stringify([f.receipt,f.current,f.identity,f.nativeSource.runtimeRecord]),before);
+});
+
+test('historical issued pack lineage survives later unrelated PT/TPL registration and consumed inboxes',t=>{
+  const f=approvedBindingVersionFixture(t,mixedApprovedRebindMemberFixture);f.lineage.laterDefinition();
+  assert.equal(f.current.metaFoundationPackVersion,'1.0.3');assert.equal(f.registry.activePacks.get('MIDDLE3').version,'1.0.4');
+  assert.equal(f.lineage.check(),true);assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  const next=preserveNativeSubset(f,'preserve-issued-pack-lineage');
+  assert.equal(planQuestion(next).nativeReviewReceipt,next.receiptPath);
+  fs.appendFileSync(path.join(next.nativeSource.root,next.solutionAsset),'<!-- changed ancestor renderer -->');
+  assert.equal(planQuestion(next).status,'SUPPLEMENT_PENDING');
+});
+
+test('issued pack lineage remains verifiable after more than 64 unrelated main commits',t=>{
+  const f=approvedBindingVersionFixture(t);f.lineage.laterDefinition();
+  let parent=f.git('rev-parse','HEAD');const tree=f.git('rev-parse',parent+'^{tree}');
+  for(let i=0;i<70;i++)parent=f.git('-c','user.name=Fixture reviewer','-c','user.email=fixture@example.invalid',
+    'commit-tree',tree,'-p',parent,'-m','Unrelated main change '+i);
+  f.git('update-ref','HEAD',parent);
+  assert.equal(f.lineage.check(),true);assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+});
+
+for(const [name,change]of [
+  ['missing version step',f=>{delete f.lineage.live.generatedFrom['reviewedExam_binding-version-step-2'];f.lineage.writeAuthority();}],
+  ['registry output digest',f=>{const p=f.lineage.providers[1];p.receipt.outputDigests[0].sha256='e'.repeat(64);f.put(p.receiptPath,p.receipt);}],
+  ['replacement rather than add-only',f=>{const p=f.lineage.providers[1];p.receipt.registryChanges[0].before={status:'ACTIVE'};f.put(p.receiptPath,p.receipt);}],
+  ['foreign curriculum in provider',f=>{const p=f.lineage.providers[1];p.receipt.registryChanges[0].after.curriculum='2022';f.put(p.receiptPath,p.receipt);}],
+  ['request without immutable hash',f=>{const p=f.lineage.providers[1];p.receipt.requestSha256='e'.repeat(64);f.put(p.receiptPath,p.receipt);}],
+  ['request without immutable source',f=>{const p=f.lineage.providers[1];p.receipt.sourceRawSha256='e'.repeat(64);f.put(p.receiptPath,p.receipt);}],
+  ['changed original witness',f=>{const p=f.lineage.providers[1];p.receipt.approval.evidenceRefs[0].sha256='e'.repeat(64);f.put(p.receiptPath,p.receipt);}],
+  ['forged official revision',f=>{f.current.metadataRevision='invented';f.saveReceipt();}],
+  ['different approval kind',f=>{f.current.metadataApprovalType='REVIEW2';f.saveReceipt();}],
+  ['changed semantic value',f=>{f.current.difficultyBucket=5;f.nativeSource.runtimeRecord.difficultyBucket=5;f.saveReceipt();}],
+  ['changed identity value',f=>{f.identity.foreign='new';f.saveReceipt();}],
+  ['compiled version mismatch',f=>{f.lineage.compiled.sourcePacks[0].version='1.0.2';f.put(f.lineage.compiledPath,f.lineage.compiled);}],
+  ['canonical input digest mismatch',f=>{f.lineage.bindings.bindings[0].L1='changed';f.put(f.lineage.bindingPath,f.lineage.bindings);}],
+  ['runtime pack version mismatch',f=>{f.lineage.live.packVersion='1.0.2';f.put(f.lineage.runtimePath,f.lineage.live);}],
+  ['later changed selected definition',f=>{f.lineage.laterDefinition();f.lineage.taxonomy.templates[0].definition='unreviewed';f.lineage.compiled.templates=structuredClone(f.lineage.taxonomy.templates);f.lineage.writeAuthority();}],
+  ['later changed exact binding',f=>{f.lineage.laterDefinition();f.lineage.bindings.bindings[0].L2='unreviewed';f.lineage.writeAuthority();}],
+])test('official pack binding lineage refuses '+name+' without producer fallback',t=>{
+  const f=approvedBindingVersionFixture(t);assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  change(f);const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
 });
