@@ -1,0 +1,3069 @@
+{
+  "schemaVersion": "integrated-meta-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E071",
+  "sourceArchiveFile": "original/middle/m3/1final/19_가산중_1학기_기말_중3_수학.js",
+  "sourceBlob": "9a968bdfcf8e665d09c11b5f5b782b88d0744651",
+  "sourceBaseBlob": "9a968bdfcf8e665d09c11b5f5b782b88d0744651",
+  "sourceBaseSha256": "d8eb1e677dc076db4c566136a81c6a42ecec10d07873b4aad593206fc87cfb66",
+  "reviewer": "meta_b",
+  "reviewVersion": "M3-S1-META-FULL-v1",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_08ef4e500382617195d83397017446e421f3e702729b182de9efc721bf0f4a0b",
+      "verdict": "CONFIRM",
+      "primaryMethod": "영인자성질",
+      "decisiveStep": "[키포인트] $AB = 0$이면 $A = 0$ 또는 $B = 0$임을 이용하여 각 일차식의 근을 구한 뒤 합한다.\n1단계: 주어진 이차방정식 $(x+6)(x-3)=0$에서\n$x + 6 = 0$ 또는 $x - 3 = 0$\n$x = -6$ 또는 $x = 3$\n2단계: 두 해를 $a = -6, b = 3$이라 하면\n$a + b = -6 + 3 = -3$\n3단계: 결론: 따라서 $a+b = -3$이다.\n따라서 정답은 ②이다.",
+      "reason": "이미 인수분해된 곱0에서 두 일차근을 읽어 합한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-032",
+        "rpm2022RecordId": "M3-RPM-124",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "이미 인수분해된 곱0에서 두 일차근을 읽어 합한다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 이미 인수분해된 곱0에서 두 일차근을 읽어 합한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "이미 인수분해된 곱0에서 두 일차근을 읽어 합한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 이미 인수분해된 곱0에서 두 일차근을 읽어 합한다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "하",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "difficultyBucket": 1
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 1
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-032",
+        "rpm2022RecordId": "M3-RPM-124",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "이미 인수분해된 곱0에서 두 일차근을 읽어 합한다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 이미 인수분해된 곱0에서 두 일차근을 읽어 합한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "이미 인수분해된 곱0에서 두 일차근을 읽어 합한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 이미 인수분해된 곱0에서 두 일차근을 읽어 합한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "인수분해를 이용한 풀이",
+          "l4": "기본 인수분해"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 풀이",
+          "L3": "인수분해를 이용한 풀이",
+          "L4": "기본 인수분해"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "c44c852e4954573fc49f5a0219381ec78345420287c640a2c754a2ce721ddb69",
+        "QFULL": "327ec9d70844e49557b2ab42be29273582dbfd81ce327049af8600ef3c0611ca"
+      },
+      "supplementalStemSha256": "5f7cd5b5222cebc9661c29708d04c7126521320e0a2559d78be44390d38c2c29",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_a68c31fecca678c55a2fe99c2ac7c8217f18409cc9f75ee310b91adf2a48000a",
+      "verdict": "CONFIRM",
+      "primaryMethod": "완전제곱식; 중근",
+      "decisiveStep": "[키포인트] 이차방정식이 중근을 가질 조건은 좌변으로 이항하여 정리했을 때 $(\\text{일차식})^2 = 0$ 꼴의 완전제곱식이 되는 것이다.\n1단계: 각 보기를 정리한다.\n- ① $x^2 - x - 6 = 0 \\iff (x-3)(x+2)=0$ (서로 다른 두 근: $3, -2$)\n- ② $x(x+7)=0$ (서로 다른 두 근: $0, -7$)\n- ③ $(x-1)^2 = 16 \\iff x - 1 = \\pm 4$ (서로 다른 두 근: $5, -3$)\n- ④ $(x+4)(x-1)=0$ (서로 다른 두 근: $-4, 1$)\n- ⑤ $x^2 - 10x + 25 = 0 \\iff (x-5)^2 = 0$ (중근 $x=5$)\n2단계: 결론: 중근을 가지는 이차방정식은 ⑤이다.\n따라서 정답은 ⑤이다. / [키포인트] 이차방정식이 중근을 가질 조건은 좌변으로 이항하여 정리했을 때 $(\\text{일차식})^2 = 0$ 꼴의 완전제곱식이 되는 것이다.\n1단계: 각 보기를 정리한다.\n- ① $x^2 - x - 6 = 0 \\iff (x-3)(x+2)=0$ (서로 다른 두 근: $3, -2$)\n- ② $x(x+7)=0$ (서로 다른 두 근: $0, -7$)\n- ③ $(x-1)^2 = 16 \\iff x - 1 = \\pm 4$ (서로 다른 두 근: $5, -3$)\n- ④ $(x+4)(x-1)=0$ (서로 다른 두 근: $-4, 1$)\n- ⑤ $x^2 - 10x + 25 = 0 \\iff (x-5)^2 = 0$ (중근 $x=5$)\n2단계: 결론: 중근을 가지는 이차방정식은 ⑤이다.\n따라서 정답은 ⑤이다.",
+      "reason": "이항한 식 중 완전제곱식=0이 되는 보기를 직접 찾는다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-036",
+        "rpm2022RecordId": "M3-RPM-128",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "이항한 식 중 완전제곱식=0이 되는 보기를 직접 찾는다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 이항한 식 중 완전제곱식=0이 되는 보기를 직접 찾는다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "이항한 식 중 완전제곱식=0이 되는 보기를 직접 찾는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 이항한 식 중 완전제곱식=0이 되는 보기를 직접 찾는다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "하",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "difficultyBucket": 1
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 1
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-036",
+        "rpm2022RecordId": "M3-RPM-128",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "이항한 식 중 완전제곱식=0이 되는 보기를 직접 찾는다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 이항한 식 중 완전제곱식=0이 되는 보기를 직접 찾는다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "이항한 식 중 완전제곱식=0이 되는 보기를 직접 찾는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 이항한 식 중 완전제곱식=0이 되는 보기를 직접 찾는다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 개수·판별"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "근의 공식",
+          "L4": "근의 개수·판별"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "f43a89943d796b171e770a857a6ae71d2e2201f786851ac7bd2b238d24d5df0c",
+        "QFULL": "df23c01369e0b06610b7bbbc2a90f9de4e73d4d179d959ba9ef02b61446b856c"
+      },
+      "supplementalStemSha256": "0801a5ab0a6ea85fc9ba42b5f5ac316a327936a2b9ce8c7f5281e164dd48b8d9",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_50b79ab93074f1b0d1ee95188c18c3bda883f10db8aa1bde4706bb50adc8c655",
+      "verdict": "CONFIRM",
+      "primaryMethod": "전개; 차수; 제곱근",
+      "decisiveStep": "[키포인트] 모든 항을 좌변으로 이항하여 내림차순으로 정리했을 때, $x$에 관한 일차방정식이 되려면 이차항의 계수가 0이고 일차항의 계수는 0이 아니어야 한다.\n1단계 (좌변 전개):\n$(x-1)(4x+3) = 4x^2 + 3x - 4x - 3 = 4x^2 - x - 3$\n2단계 (우변의 항 이항 및 정리):\n$4x^2 - x - 3 = (a-1)^2x^2 + x$\n모든 항을 좌변으로 이항하면:\n$4x^2 - (a-1)^2x^2 - x - x - 3 = 0$\n$[4 - (a-1)^2]x^2 - 2x - 3 = 0$\n3단계 (일차방정식 조건 적용):\n이 식이 $x$에 관한 일차방정식이 되려면 이차항의 계수가 0이어야 한다:\n$4 - (a-1)^2 = 0 \\implies (a-1)^2 = 4$\n제곱근을 취하면:\n$a - 1 = 2 \\implies a = 3$\n또는 $a - 1 = -2 \\implies a = -1$\n이때 일차항의 계수는 $-2 \\ne 0$이므로 $a = -1, 3$ 모두 일차방정식 조건을 온전히 만족한다.\n4단계 (선지 확인):\n$a = -1$ (선지 ②), $a = 3$ (선지 ④)이다.\n5단계 (결론): 따라서 가능한 $a$의 값은 $-1, 3$이다.\n따라서 정답은 ②, ④이다. / [키포인트] 모든 항을 좌변으로 이항하여 내림차순으로 정리했을 때, $x$에 관한 일차방정식이 되려면 이차항의 계수가 0이고 일차항의 계수는 0이 아니어야 한다.\n1단계 (좌변 전개):\n$(x-1)(4x+3) = 4x^2 + 3x - 4x - 3 = 4x^2 - x - 3$\n2단계 (우변의 항 이항 및 정리):\n$4x^2 - x - 3 = (a-1)^2x^2 + x$\n모든 항을 좌변으로 이항하면:\n$4x^2 - (a-1)^2x^2 - x - x - 3 = 0$\n$[4 - (a-1)^2]x^2 - 2x - 3 = 0$\n3단계 (일차방정식 조건 적용):\n이 식이 $x$에 관한 일차방정식이 되려면 이차항의 계수가 0이어야 한다:\n$4 - (a-1)^2 = 0 \\implies (a-1)^2 = 4$\n제곱근을 취하면:\n$a - 1 = 2 \\implies a = 3$\n또는 $a - 1 = -2 \\implies a = -1$\n이때 일차항의 계수는 $-2 \\ne 0$이므로 $a = -1, 3$ 모두 일차방정식 조건을 온전히 만족한다.\n4단계 (선지 확인):\n$a = -1$ (선지 ②), $a = 3$ (선지 ④)이다.\n5단계 (결론): 따라서 가능한 $a$의 값은 $-1, 3$이다.\n따라서 정답은 ②, ④이다. / [키포인트] 모든 항을 좌변으로 이항하여 내림차순으로 정리했을 때, $x$에 관한 일차방정식이 되려면 이차항의 계수가 0이고 일차항의 계수는 0이 아니어야 한다.\n1단계 (좌변 전개):\n$(x-1)(4x+3) = 4x^2 + 3x - 4x - 3 = 4x^2 - x - 3$\n2단계 (우변의 항 이항 및 정리):\n$4x^2 - x - 3 = (a-1)^2x^2 + x$\n모든 항을 좌변으로 이항하면:\n$4x^2 - (a-1)^2x^2 - x - x - 3 = 0$\n$[4 - (a-1)^2]x^2 - 2x - 3 = 0$\n3단계 (일차방정식 조건 적용):\n이 식이 $x$에 관한 일차방정식이 되려면 이차항의 계수가 0이어야 한다:\n$4 - (a-1)^2 = 0 \\implies (a-1)^2 = 4$\n제곱근을 취하면:\n$a - 1 = 2 \\implies a = 3$\n또는 $a - 1 = -2 \\implies a = -1$\n이때 일차항의 계수는 $-2 \\ne 0$이므로 $a = -1, 3$ 모두 일차방정식 조건을 온전히 만족한다.\n4단계 (선지 확인):\n$a = -1$ (선지 ②), $a = 3$ (선지 ④)이다.\n5단계 (결론): 따라서 가능한 $a$의 값은 $-1, 3$이다.\n따라서 정답은 ②, ④이다.",
+      "reason": "양변을 전개·이항하여 이차항0과 일차항 비영 조건을 적용한 뒤 (a-1)²=4의 두 값을 선택한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-029",
+        "rpm2022RecordId": "M3-RPM-121",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "양변을 전개·이항하여 이차항0과 일차항 비영 조건을 적용한 뒤 (a-1)²=4의 두 값을 선택한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 양변을 전개·이항하여 이차항0과 일차항 비영 조건을 적용한 뒤 (a-1)²=4의 두 값을 선택한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "양변을 전개·이항하여 이차항0과 일차항 비영 조건을 적용한 뒤 (a-1)²=4의 두 값을 선택한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 양변을 전개·이항하여 이차항0과 일차항 비영 조건을 적용한 뒤 (a-1)²=4의 두 값을 선택한다.",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "TAXONOMY_PROPOSAL",
+          "reason": {
+            "name": "전개한 방정식이 일차가 되는 매개변수",
+            "definition": "이차방정식 판별 부모맥락이나 목표는 이차항 소거와 일차항 비영 조건.",
+            "rpmPath": {
+              "majorUnit": "이차방정식",
+              "midUnit": "이차방정식의 풀이",
+              "l3": "이차방정식과 해",
+              "l4": "이차방정식 판별"
+            },
+            "supportingQuestionUids": [
+              "qid_v1_50b79ab93074f1b0d1ee95188c18c3bda883f10db8aa1bde4706bb50adc8c655"
+            ]
+          }
+        }
+      ],
+      "before": {
+        "source": {
+          "level": "중",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "difficultyBucket": 2
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 2
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-029",
+        "rpm2022RecordId": "M3-RPM-121",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "양변을 전개·이항하여 이차항0과 일차항 비영 조건을 적용한 뒤 (a-1)²=4의 두 값을 선택한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 양변을 전개·이항하여 이차항0과 일차항 비영 조건을 적용한 뒤 (a-1)²=4의 두 값을 선택한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "양변을 전개·이항하여 이차항0과 일차항 비영 조건을 적용한 뒤 (a-1)²=4의 두 값을 선택한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 양변을 전개·이항하여 이차항0과 일차항 비영 조건을 적용한 뒤 (a-1)²=4의 두 값을 선택한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "이차방정식 판별"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 풀이",
+          "L3": "이차방정식과 해",
+          "L4": "이차방정식 판별"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP",
+        "exactLeafProposal": {
+          "name": "전개한 방정식이 일차가 되는 매개변수",
+          "definition": "이차방정식 판별 부모맥락이나 목표는 이차항 소거와 일차항 비영 조건.",
+          "rpmPath": {
+            "majorUnit": "이차방정식",
+            "midUnit": "이차방정식의 풀이",
+            "l3": "이차방정식과 해",
+            "l4": "이차방정식 판별"
+          },
+          "supportingQuestionUids": [
+            "qid_v1_50b79ab93074f1b0d1ee95188c18c3bda883f10db8aa1bde4706bb50adc8c655"
+          ]
+        },
+        "parentContextRpmRecordIds": [
+          "M3-RPM-029",
+          "M3-RPM-121"
+        ]
+      },
+      "fingerprints": {
+        "QBODY": "d113b9c72ab490f8cb9c2ee6a20725b192c575965d5b71a4ee3a7e732bf0f4a1",
+        "QFULL": "7389b7e18379088154e6dbfcb48451c722e0b1beaaf573717bc274e3f438c52d"
+      },
+      "supplementalStemSha256": "5e0871e74b4f0587ab55a330c15f85224c86f3387b5531f24b2e6dee9391993c",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_01baf8e1ff654b04462c245f2a4bb9fe2fc2388caa5d0eb593cce09a857fd69f",
+      "verdict": "CORRECT",
+      "primaryMethod": "인수분해; 전개; 계수비교",
+      "decisiveStep": "[키포인트] 두 근이 $\\alpha, \\beta$이고 $x^2$의 계수가 $k$인 이차방정식은 $k(x-\\alpha)(x-\\beta)=0$으로 나타낼 수 있다.\n1단계: 두 근이 $-2, 3$이고 $x^2$의 계수가 5인 이차방정식 세우기:\n$5(x+2)(x-3) = 0$\n$5(x^2 - x - 6) = 0$\n$5x^2 - 5x - 30 = 0$\n2단계: 주어진 식 $5x^2 + ax + b = 0$과 계수를 비교하면\n$a = -5, b = -30$\n3단계: $ab$의 값 계산:\n$ab = (-5) \\times (-30) = 150$\n4단계: 결론: 따라서 정답은 ⑤이다. / [키포인트] 두 근이 $\\alpha, \\beta$이고 $x^2$의 계수가 $k$인 이차방정식은 $k(x-\\alpha)(x-\\beta)=0$으로 나타낼 수 있다.\n1단계: 두 근이 $-2, 3$이고 $x^2$의 계수가 5인 이차방정식 세우기:\n$5(x+2)(x-3) = 0$\n$5(x^2 - x - 6) = 0$\n$5x^2 - 5x - 30 = 0$\n2단계: 주어진 식 $5x^2 + ax + b = 0$과 계수를 비교하면\n$a = -5, b = -30$\n3단계: $ab$의 값 계산:\n$ab = (-5) \\times (-30) = 150$\n4단계: 결론: 따라서 정답은 ⑤이다. / [키포인트] 두 근이 $\\alpha, \\beta$이고 $x^2$의 계수가 $k$인 이차방정식은 $k(x-\\alpha)(x-\\beta)=0$으로 나타낼 수 있다.\n1단계: 두 근이 $-2, 3$이고 $x^2$의 계수가 5인 이차방정식 세우기:\n$5(x+2)(x-3) = 0$\n$5(x^2 - x - 6) = 0$\n$5x^2 - 5x - 30 = 0$\n2단계: 주어진 식 $5x^2 + ax + b = 0$과 계수를 비교하면\n$a = -5, b = -30$\n3단계: $ab$의 값 계산:\n$ab = (-5) \\times (-30) = 150$\n4단계: 결론: 따라서 정답은 ⑤이다.",
+      "reason": "두 근으로5(x+2)(x-3)을 구성·전개하여 두 미정계수를 비교한다.",
+      "sourceChanges": {
+        "level": "중",
+        "difficultyBucket": 2
+      },
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-031",
+        "rpm2022RecordId": "M3-RPM-123",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "두 근으로5(x+2)(x-3)을 구성·전개하여 두 미정계수를 비교한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 두 근으로5(x+2)(x-3)을 구성·전개하여 두 미정계수를 비교한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "두 근으로5(x+2)(x-3)을 구성·전개하여 두 미정계수를 비교한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 두 근으로5(x+2)(x-3)을 구성·전개하여 두 미정계수를 비교한다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다."
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "하",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "difficultyBucket": 1
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 1
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-031",
+        "rpm2022RecordId": "M3-RPM-123",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "두 근으로5(x+2)(x-3)을 구성·전개하여 두 미정계수를 비교한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 두 근으로5(x+2)(x-3)을 구성·전개하여 두 미정계수를 비교한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "두 근으로5(x+2)(x-3)을 구성·전개하여 두 미정계수를 비교한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 두 근으로5(x+2)(x-3)을 구성·전개하여 두 미정계수를 비교한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "해가 주어진 이차방정식의 계수 결정"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 풀이",
+          "L3": "이차방정식과 해",
+          "L4": "해가 주어진 이차방정식의 계수 결정"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "430bc53bcf71bbb00687e0158ea73dba9cdb351db243444631227a6faa1752d2",
+        "QFULL": "ea36c4f487df8b5077a348a4cca67f43e4997e033ecb0fbefc1fdb4e9810c511"
+      },
+      "supplementalStemSha256": "466ed51eb99a1802e90b5b7a333aab55fc26f494563fa152db16bddbe18baecd",
+      "sourceStemField": "content",
+      "sourcePatch": {
+        "level": "중",
+        "difficultyBucket": 2
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_3ddad8cc24f97748389abf023fe962b008f214be0a87909d434fc623ca4509ae",
+      "verdict": "CONFIRM",
+      "primaryMethod": "근의공식; 계수비교",
+      "decisiveStep": "[키포인트] 양변에 분모의 최소공배수를 곱하여 정수 계수로 바꾼 뒤 근의 공식 $x = \\frac{-B \\pm \\sqrt{B^2 - 4AC}}{2A}$를 적용한다.\n1단계 (정수 계수로 변환):\n이차방정식 $\\frac{1}{3}x^2 + x - 1 = 0$의 양변에 3을 곱한다:\n$x^2 + 3x - 3 = 0$\n2단계 (근의 공식 적용):\n$A = 1, B = 3, C = -3$이므로\n$x = \\frac{-3 \\pm \\sqrt{3^2 - 4(1)(-3)}}{2(1)} = \\frac{-3 \\pm \\sqrt{9 + 12}}{2} = \\frac{-3 \\pm \\sqrt{21}}{2}$\n3단계 (미정계수 비교):\n근의 형태 $x = \\frac{a \\pm \\sqrt{b}}{2}$와 비교하면\n$a = -3, b = 21$\n4단계 ($7a + b$의 값 계산):\n$7a + b = 7(-3) + 21 = -21 + 21 = 0$\n5단계 (결론): 따라서 $7a + b = 0$이다.\n따라서 정답은 ③이다. / [키포인트] 양변에 분모의 최소공배수를 곱하여 정수 계수로 바꾼 뒤 근의 공식 $x = \\frac{-B \\pm \\sqrt{B^2 - 4AC}}{2A}$를 적용한다.\n1단계 (정수 계수로 변환):\n이차방정식 $\\frac{1}{3}x^2 + x - 1 = 0$의 양변에 3을 곱한다:\n$x^2 + 3x - 3 = 0$\n2단계 (근의 공식 적용):\n$A = 1, B = 3, C = -3$이므로\n$x = \\frac{-3 \\pm \\sqrt{3^2 - 4(1)(-3)}}{2(1)} = \\frac{-3 \\pm \\sqrt{9 + 12}}{2} = \\frac{-3 \\pm \\sqrt{21}}{2}$\n3단계 (미정계수 비교):\n근의 형태 $x = \\frac{a \\pm \\sqrt{b}}{2}$와 비교하면\n$a = -3, b = 21$\n4단계 ($7a + b$의 값 계산):\n$7a + b = 7(-3) + 21 = -21 + 21 = 0$\n5단계 (결론): 따라서 $7a + b = 0$이다.\n따라서 정답은 ③이다.",
+      "reason": "분모3을 없애고 근의 공식 결과의 중심·근호수와 a,b를 비교한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-035",
+        "rpm2022RecordId": "M3-RPM-127",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "분모3을 없애고 근의 공식 결과의 중심·근호수와 a,b를 비교한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 분모3을 없애고 근의 공식 결과의 중심·근호수와 a,b를 비교한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "분모3을 없애고 근의 공식 결과의 중심·근호수와 a,b를 비교한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 분모3을 없애고 근의 공식 결과의 중심·근호수와 a,b를 비교한다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다."
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "중",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "difficultyBucket": 2
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 2
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-035",
+        "rpm2022RecordId": "M3-RPM-127",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "분모3을 없애고 근의 공식 결과의 중심·근호수와 a,b를 비교한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 분모3을 없애고 근의 공식 결과의 중심·근호수와 a,b를 비교한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "분모3을 없애고 근의 공식 결과의 중심·근호수와 a,b를 비교한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 분모3을 없애고 근의 공식 결과의 중심·근호수와 a,b를 비교한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 공식"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "근의 공식",
+          "L4": "근의 공식"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "bc6a90928b9beca36b868fe5126d0fab6352f1115854c7aae75939cde17cf916",
+        "QFULL": "db9d0da8c6b1fb2000cb2314d855d37a63c3e4e3b366b2385a19304a15fea264"
+      },
+      "supplementalStemSha256": "b7d8a77a695e7ce1b8e03c95dd06e926d71e42dfd0b8bf02659fffba03679b78",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_387144d460ba6dcbb69076e92b8438c4288a3b1beac4eea3d651d40f99671cb0",
+      "verdict": "CONFIRM",
+      "primaryMethod": "완전제곱식; 계수비교",
+      "decisiveStep": "[키포인트] 이차항의 계수로 양변을 나눈 뒤 일차항 계수의 절반의 제곱을 양변에 더하여 완전제곱식으로 고친다.\n1단계: 양변을 2로 나눈다.\n$x^2 + 4x - 3 = 0$\n2단계: 상수항을 우변으로 이항한다.\n$x^2 + 4x = 3$\n3단계: 양변에 $\\left(\\frac{4}{2}\\right)^2 = 4$를 더한다.\n$x^2 + 4x + 4 = 3 + 4$\n$(x+2)^2 = 7$\n4단계: $(x+p)^2 = q$와 비교하면 $p = 2, q = 7$이다.\n$p \\times q = 2 \\times 7 = 14$\n5단계: 결론: 따라서 정답은 ④이다. / [키포인트] 이차항의 계수로 양변을 나눈 뒤 일차항 계수의 절반의 제곱을 양변에 더하여 완전제곱식으로 고친다.\n1단계: 양변을 2로 나눈다.\n$x^2 + 4x - 3 = 0$\n2단계: 상수항을 우변으로 이항한다.\n$x^2 + 4x = 3$\n3단계: 양변에 $\\left(\\frac{4}{2}\\right)^2 = 4$를 더한다.\n$x^2 + 4x + 4 = 3 + 4$\n$(x+2)^2 = 7$\n4단계: $(x+p)^2 = q$와 비교하면 $p = 2, q = 7$이다.\n$p \\times q = 2 \\times 7 = 14$\n5단계: 결론: 따라서 정답은 ④이다.",
+      "reason": "2로 나눈 뒤 지정된 완전제곱형 (x+2)²=7로 직접 고쳐 계수를 읽는다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-034",
+        "rpm2022RecordId": "M3-RPM-126",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "2로 나눈 뒤 지정된 완전제곱형 (x+2)²=7로 직접 고쳐 계수를 읽는다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 2로 나눈 뒤 지정된 완전제곱형 (x+2)²=7로 직접 고쳐 계수를 읽는다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "2로 나눈 뒤 지정된 완전제곱형 (x+2)²=7로 직접 고쳐 계수를 읽는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 2로 나눈 뒤 지정된 완전제곱형 (x+2)²=7로 직접 고쳐 계수를 읽는다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다."
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "하",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "difficultyBucket": 1
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 1
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-034",
+        "rpm2022RecordId": "M3-RPM-126",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "2로 나눈 뒤 지정된 완전제곱형 (x+2)²=7로 직접 고쳐 계수를 읽는다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 2로 나눈 뒤 지정된 완전제곱형 (x+2)²=7로 직접 고쳐 계수를 읽는다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "2로 나눈 뒤 지정된 완전제곱형 (x+2)²=7로 직접 고쳐 계수를 읽는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 2로 나눈 뒤 지정된 완전제곱형 (x+2)²=7로 직접 고쳐 계수를 읽는다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "제곱근·완전제곱식을 이용한 풀이",
+          "l4": "완전제곱식"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 풀이",
+          "L3": "제곱근·완전제곱식을 이용한 풀이",
+          "L4": "완전제곱식"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "e6a25227ed6de2a8f1e80d25f4305492cfac92a09e7bb6870ee9d7ba89298753",
+        "QFULL": "36d9dba844cc210c9b5a03d69fed766c071f7d61b2182097662365449e401be1"
+      },
+      "supplementalStemSha256": "ca58caf96861d1ca753a06154f4f3865567dbc7737cc7c7b813fde4c80dc45e8",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_a59441da679c606125bb5656c4368f684a693430481d7b9e19dfa393ee7d575c",
+      "verdict": "CORRECT",
+      "primaryMethod": "등식의성질; 대입; 약분",
+      "decisiveStep": "[키포인트] $a$가 이차방정식 $x^2 - 5x - 1 = 0$의 근이므로 $a^2 - 5a - 1 = 0$을 만족하며, 식을 적절히 변형하여 대입한다.\n1단계 (근의 조건 대입 및 식 변형):\n$a^2 - 5a - 1 = 0$\n- 상수항을 이항하면: $a^2 - 5a = 1 \\iff a(a-5) = 1$\n- 일차항을 이항하면: $a^2 - 1 = 5a$\n2단계 (각 항의 값 계산):\n- 첫 번째 항: $\\sqrt{a(a-5)} = \\sqrt{1} = 1$\n- 두 번째 항: $\\frac{a^2 - 1}{a} = \\frac{5a}{a} = 5$ (단, $a \\ne 0$)\n3단계 (합 계산):\n$\\sqrt{a(a-5)} + \\frac{a^2-1}{a} = 1 + 5 = 6$\n4단계 (결론): 따라서 구하는 값은 6이다.\n따라서 정답은 ⑤이다. / [키포인트] $a$가 이차방정식 $x^2 - 5x - 1 = 0$의 근이므로 $a^2 - 5a - 1 = 0$을 만족하며, 식을 적절히 변형하여 대입한다.\n1단계 (근의 조건 대입 및 식 변형):\n$a^2 - 5a - 1 = 0$\n- 상수항을 이항하면: $a^2 - 5a = 1 \\iff a(a-5) = 1$\n- 일차항을 이항하면: $a^2 - 1 = 5a$\n2단계 (각 항의 값 계산):\n- 첫 번째 항: $\\sqrt{a(a-5)} = \\sqrt{1} = 1$\n- 두 번째 항: $\\frac{a^2 - 1}{a} = \\frac{5a}{a} = 5$ (단, $a \\ne 0$)\n3단계 (합 계산):\n$\\sqrt{a(a-5)} + \\frac{a^2-1}{a} = 1 + 5 = 6$\n4단계 (결론): 따라서 구하는 값은 6이다.\n따라서 정답은 ⑤이다. / [키포인트] $a$가 이차방정식 $x^2 - 5x - 1 = 0$의 근이므로 $a^2 - 5a - 1 = 0$을 만족하며, 식을 적절히 변형하여 대입한다.\n1단계 (근의 조건 대입 및 식 변형):\n$a^2 - 5a - 1 = 0$\n- 상수항을 이항하면: $a^2 - 5a = 1 \\iff a(a-5) = 1$\n- 일차항을 이항하면: $a^2 - 1 = 5a$\n2단계 (각 항의 값 계산):\n- 첫 번째 항: $\\sqrt{a(a-5)} = \\sqrt{1} = 1$\n- 두 번째 항: $\\frac{a^2 - 1}{a} = \\frac{5a}{a} = 5$ (단, $a \\ne 0$)\n3단계 (합 계산):\n$\\sqrt{a(a-5)} + \\frac{a^2-1}{a} = 1 + 5 = 6$\n4단계 (결론): 따라서 구하는 값은 6이다.\n따라서 정답은 ⑤이다.",
+      "reason": "근의 관계에서 a(a-5)=1과 a²-1=5a를 각각 만들어 목표 두 항에 대입한다.",
+      "sourceChanges": {
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "subUnit": "이차방정식의 활용"
+      },
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-038",
+        "rpm2022RecordId": "M3-RPM-130",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "근의 관계에서 a(a-5)=1과 a²-1=5a를 각각 만들어 목표 두 항에 대입한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 근의 관계에서 a(a-5)=1과 a²-1=5a를 각각 만들어 목표 두 항에 대입한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "근의 관계에서 a(a-5)=1과 a²-1=5a를 각각 만들어 목표 두 항에 대입한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 근의 관계에서 a(a-5)=1과 a²-1=5a를 각각 만들어 목표 두 항에 대입한다.",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [
+        {
+          "kind": "TAXONOMY_PROPOSAL",
+          "reason": {
+            "name": "근의 관계로 근호와 분수식 계산",
+            "definition": "실생활 수문제와 달리 알려진 이차관계를 목표식에 치환.",
+            "rpmPath": {
+              "majorUnit": "이차방정식",
+              "midUnit": "이차방정식의 활용",
+              "l3": "수와 식",
+              "l4": "자리수·식의 값"
+            },
+            "supportingQuestionUids": [
+              "qid_v1_a59441da679c606125bb5656c4368f684a693430481d7b9e19dfa393ee7d575c"
+            ]
+          }
+        }
+      ],
+      "before": {
+        "source": {
+          "level": "중",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "difficultyBucket": 2
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "subUnit": "이차방정식",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 2
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-038",
+        "rpm2022RecordId": "M3-RPM-130",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "근의 관계에서 a(a-5)=1과 a²-1=5a를 각각 만들어 목표 두 항에 대입한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 근의 관계에서 a(a-5)=1과 a²-1=5a를 각각 만들어 목표 두 항에 대입한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "근의 관계에서 a(a-5)=1과 a²-1=5a를 각각 만들어 목표 두 항에 대입한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 근의 관계에서 a(a-5)=1과 a²-1=5a를 각각 만들어 목표 두 항에 대입한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 활용",
+          "l3": "수와 식",
+          "l4": "자리수·식의 값"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "수와 식",
+          "L4": "자리수·식의 값"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP",
+        "exactLeafProposal": {
+          "name": "근의 관계로 근호와 분수식 계산",
+          "definition": "실생활 수문제와 달리 알려진 이차관계를 목표식에 치환.",
+          "rpmPath": {
+            "majorUnit": "이차방정식",
+            "midUnit": "이차방정식의 활용",
+            "l3": "수와 식",
+            "l4": "자리수·식의 값"
+          },
+          "supportingQuestionUids": [
+            "qid_v1_a59441da679c606125bb5656c4368f684a693430481d7b9e19dfa393ee7d575c"
+          ]
+        },
+        "parentContextRpmRecordIds": [
+          "M3-RPM-038",
+          "M3-RPM-130"
+        ]
+      },
+      "fingerprints": {
+        "QBODY": "cad1925730be6b83a2ffd5efd05b076e1e58a0ab107843ba555474a7371f1ce9",
+        "QFULL": "2320174f22bf7bd1e32f28d7bcb38e81bbaf76f6296d17f557e6169ecce335b7"
+      },
+      "supplementalStemSha256": "1a3373bc7e81bc50c71f5e70779915e56a371695e7ae3b1972d089216a7df650",
+      "sourceStemField": "content",
+      "sourcePatch": {
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "subUnit": "이차방정식의 활용"
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_d54c981cc7ef5a74e27d093a2b84d9a4b3503826bb462f8a3adfe2060e4c6717",
+      "verdict": "CONFIRM",
+      "primaryMethod": "넓이; 등식",
+      "decisiveStep": "[키포인트] (늘어난 후의 넓이) - (처음 넓이) = (넓이의 증가량) 관계식을 세운다.\n1단계: 처음 꽃밭의 넓이:\n$7 \\times 5 = 35\\,\\text{m}^2$\n2단계: 가로와 세로를 각각 $x\\,\\text{m}$씩 늘렸을 때의 새로운 가로와 세로:\n- 새로운 가로: $(7+x)\\,\\text{m}$\n- 새로운 세로: $(5+x)\\,\\text{m}$\n- 새로운 넓이: $(7+x)(5+x)\\,\\text{m}^2$\n3단계: 새로운 넓이가 처음 넓이보다 $28\\,\\text{m}^2$만큼 넓어졌으므로:\n$(7+x)(5+x) - 35 = 28$\n4단계: 결론: 올바른 식은 ④이다.\n따라서 정답은 ④이다. / [키포인트] (늘어난 후의 넓이) - (처음 넓이) = (넓이의 증가량) 관계식을 세운다.\n1단계: 처음 꽃밭의 넓이:\n$7 \\times 5 = 35\\,\\text{m}^2$\n2단계: 가로와 세로를 각각 $x\\,\\text{m}$씩 늘렸을 때의 새로운 가로와 세로:\n- 새로운 가로: $(7+x)\\,\\text{m}$\n- 새로운 세로: $(5+x)\\,\\text{m}$\n- 새로운 넓이: $(7+x)(5+x)\\,\\text{m}^2$\n3단계: 새로운 넓이가 처음 넓이보다 $28\\,\\text{m}^2$만큼 넓어졌으므로:\n$(7+x)(5+x) - 35 = 28$\n4단계: 결론: 올바른 식은 ④이다.\n따라서 정답은 ④이다.",
+      "reason": "가로7+x·세로5+x와 넓이증가28이라는 표현을 제시식에 직접 대응시킨다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-039",
+        "rpm2022RecordId": "M3-RPM-131",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "가로7+x·세로5+x와 넓이증가28이라는 표현을 제시식에 직접 대응시킨다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 가로7+x·세로5+x와 넓이증가28이라는 표현을 제시식에 직접 대응시킨다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "가로7+x·세로5+x와 넓이증가28이라는 표현을 제시식에 직접 대응시킨다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 가로7+x·세로5+x와 넓이증가28이라는 표현을 제시식에 직접 대응시킨다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "하",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "subUnit": "이차방정식의 활용",
+          "difficultyBucket": 1
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "subUnit": "이차방정식의 활용",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 1
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-039",
+        "rpm2022RecordId": "M3-RPM-131",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "가로7+x·세로5+x와 넓이증가28이라는 표현을 제시식에 직접 대응시킨다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 가로7+x·세로5+x와 넓이증가28이라는 표현을 제시식에 직접 대응시킨다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "가로7+x·세로5+x와 넓이증가28이라는 표현을 제시식에 직접 대응시킨다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 가로7+x·세로5+x와 넓이증가28이라는 표현을 제시식에 직접 대응시킨다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 활용",
+          "l3": "도형",
+          "l4": "길이·넓이"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "도형",
+          "L4": "길이·넓이"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "0cdcf68db5b3ba3d44ed1fd0f3036ccebacf97df43a5dac4a8f3a960aed35180",
+        "QFULL": "260b32bb46c9655dcc079eb14ca1f610961678b095738b4e5779089465bde660"
+      },
+      "supplementalStemSha256": "60feee29e7535b76a6e4a175f06176bb10320694509945bbf632b8316d52783e",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_ae3cc9d705d77e14225b06ee8d516f5727ad1caff8933589598cdbcdb81e645f",
+      "verdict": "CONFIRM",
+      "primaryMethod": "이차방정식; 인수분해; 대입",
+      "decisiveStep": "[키포인트] 어떤 자연수를 $n$이라 두고 잘못 계산한 식으로부터 $n$을 구한 뒤 원래 구하려던 곱을 계산한다.\n1단계: 미지수 설정 및 방정식 세우기:\n어떤 자연수를 $n$이라 하면, $2$만큼 더 큰 수는 $n+2$이므로\n$n(n+2) = 48$\n$n^2 + 2n - 48 = 0$\n2단계: 이차방정식 풀기:\n$(n+8)(n-6) = 0$\n$n = -8$ 또는 $n = 6$\n$n$은 자연수이므로 $n = 6$이다.\n3단계: 원래 구하려던 두 수의 곱 구하기:\n어떤 자연수는 6이고, 그보다 4만큼 작은 수는 $6 - 4 = 2$이다.\n두 수의 곱 $= 6 \\times 2 = 12$\n4단계: 결론: 처음에 구하려고 했던 두 수의 곱은 12이다.\n따라서 정답은 ⑤이다. / [키포인트] 어떤 자연수를 $n$이라 두고 잘못 계산한 식으로부터 $n$을 구한 뒤 원래 구하려던 곱을 계산한다.\n1단계: 미지수 설정 및 방정식 세우기:\n어떤 자연수를 $n$이라 하면, $2$만큼 더 큰 수는 $n+2$이므로\n$n(n+2) = 48$\n$n^2 + 2n - 48 = 0$\n2단계: 이차방정식 풀기:\n$(n+8)(n-6) = 0$\n$n = -8$ 또는 $n = 6$\n$n$은 자연수이므로 $n = 6$이다.\n3단계: 원래 구하려던 두 수의 곱 구하기:\n어떤 자연수는 6이고, 그보다 4만큼 작은 수는 $6 - 4 = 2$이다.\n두 수의 곱 $= 6 \\times 2 = 12$\n4단계: 결론: 처음에 구하려고 했던 두 수의 곱은 12이다.\n따라서 정답은 ⑤이다. / [키포인트] 어떤 자연수를 $n$이라 두고 잘못 계산한 식으로부터 $n$을 구한 뒤 원래 구하려던 곱을 계산한다.\n1단계: 미지수 설정 및 방정식 세우기:\n어떤 자연수를 $n$이라 하면, $2$만큼 더 큰 수는 $n+2$이므로\n$n(n+2) = 48$\n$n^2 + 2n - 48 = 0$\n2단계: 이차방정식 풀기:\n$(n+8)(n-6) = 0$\n$n = -8$ 또는 $n = 6$\n$n$은 자연수이므로 $n = 6$이다.\n3단계: 원래 구하려던 두 수의 곱 구하기:\n어떤 자연수는 6이고, 그보다 4만큼 작은 수는 $6 - 4 = 2$이다.\n두 수의 곱 $= 6 \\times 2 = 12$\n4단계: 결론: 처음에 구하려고 했던 두 수의 곱은 12이다.\n따라서 정답은 ⑤이다.",
+      "reason": "잘못 구한 곱 n(n+2)=48에서 자연수6을 정하고 처음 의도한 n(n-4)를 계산한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-038",
+        "rpm2022RecordId": "M3-RPM-130",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "잘못 구한 곱 n(n+2)=48에서 자연수6을 정하고 처음 의도한 n(n-4)를 계산한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 잘못 구한 곱 n(n+2)=48에서 자연수6을 정하고 처음 의도한 n(n-4)를 계산한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "잘못 구한 곱 n(n+2)=48에서 자연수6을 정하고 처음 의도한 n(n-4)를 계산한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 잘못 구한 곱 n(n+2)=48에서 자연수6을 정하고 처음 의도한 n(n-4)를 계산한다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "중",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "subUnit": "이차방정식의 활용",
+          "difficultyBucket": 2
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "subUnit": "이차방정식의 활용",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 2
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-038",
+        "rpm2022RecordId": "M3-RPM-130",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "잘못 구한 곱 n(n+2)=48에서 자연수6을 정하고 처음 의도한 n(n-4)를 계산한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 잘못 구한 곱 n(n+2)=48에서 자연수6을 정하고 처음 의도한 n(n-4)를 계산한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "잘못 구한 곱 n(n+2)=48에서 자연수6을 정하고 처음 의도한 n(n-4)를 계산한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 잘못 구한 곱 n(n+2)=48에서 자연수6을 정하고 처음 의도한 n(n-4)를 계산한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 활용",
+          "l3": "수와 식",
+          "l4": "자리수·식의 값"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "수와 식",
+          "L4": "자리수·식의 값"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "ea78df38c76de87631f30771f096745cc47bddac5d5211309ee37c348ccdd644",
+        "QFULL": "58af1cf610b130bc372ae13e9cb4a7240a54a613efd240aa639b42b0117ba14d"
+      },
+      "supplementalStemSha256": "c2b60b3553324b290e69d966951f46c4805f2f496866857b8cc49c74f5e369a6",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_ed6027dff729a296a265f3c6f05bea0c51d96fd0c95f06e9962510e07b6c9b68",
+      "verdict": "CORRECT",
+      "primaryMethod": "제곱근; 비례식; 유리화",
+      "decisiveStep": "[키포인트] 정사각형의 넓이의 비가 $1:3$이면 닮음비(한 변의 길이의 비)는 $1:\\sqrt{3}$이다. 전체 둘레 16cm로부터 두 한 변의 길이의 합을 구한다.\n1단계 (한 변의 길이의 합 구하기):\n작은 정사각형의 한 변의 길이를 $x\\,\\text{cm}$, 큰 정사각형의 한 변의 길이를 $y\\,\\text{cm}$라 하자.\n두 정사각형의 둘레의 합이 끈의 총 길이 $16\\,\\text{cm}$이므로\n$4x + 4y = 16 \\implies x + y = 4 \\implies y = 4 - x$\n2단계 (넓이의 비 관계식 세우기):\n$x^2 : y^2 = 1 : 3 \\implies y^2 = 3x^2$\n$x > 0, y > 0$이므로 양변에 제곱근을 취하면\n$y = \\sqrt{3}x$\n3단계 ($x$에 대한 방정식 풀기 및 유리화):\n$4 - x = \\sqrt{3}x$\n$(\\sqrt{3} + 1)x = 4$\n$x = \\frac{4}{\\sqrt{3} + 1} = \\frac{4(\\sqrt{3}-1)}{(\\sqrt{3}+1)(\\sqrt{3}-1)} = \\frac{4(\\sqrt{3}-1)}{3 - 1} = 2(\\sqrt{3}-1) = -2 + 2\\sqrt{3}$\n4단계 (결론): 작은 정사각형의 한 변의 길이는 $-2 + 2\\sqrt{3}$이다.\n따라서 정답은 ③이다. / [키포인트] 정사각형의 넓이의 비가 $1:3$이면 닮음비(한 변의 길이의 비)는 $1:\\sqrt{3}$이다. 전체 둘레 16cm로부터 두 한 변의 길이의 합을 구한다.\n1단계 (한 변의 길이의 합 구하기):\n작은 정사각형의 한 변의 길이를 $x\\,\\text{cm}$, 큰 정사각형의 한 변의 길이를 $y\\,\\text{cm}$라 하자.\n두 정사각형의 둘레의 합이 끈의 총 길이 $16\\,\\text{cm}$이므로\n$4x + 4y = 16 \\implies x + y = 4 \\implies y = 4 - x$\n2단계 (넓이의 비 관계식 세우기):\n$x^2 : y^2 = 1 : 3 \\implies y^2 = 3x^2$\n$x > 0, y > 0$이므로 양변에 제곱근을 취하면\n$y = \\sqrt{3}x$\n3단계 ($x$에 대한 방정식 풀기 및 유리화):\n$4 - x = \\sqrt{3}x$\n$(\\sqrt{3} + 1)x = 4$\n$x = \\frac{4}{\\sqrt{3} + 1} = \\frac{4(\\sqrt{3}-1)}{(\\sqrt{3}+1)(\\sqrt{3}-1)} = \\frac{4(\\sqrt{3}-1)}{3 - 1} = 2(\\sqrt{3}-1) = -2 + 2\\sqrt{3}$\n4단계 (결론): 작은 정사각형의 한 변의 길이는 $-2 + 2\\sqrt{3}$이다.\n따라서 정답은 ③이다. / [키포인트] 정사각형의 넓이의 비가 $1:3$이면 닮음비(한 변의 길이의 비)는 $1:\\sqrt{3}$이다. 전체 둘레 16cm로부터 두 한 변의 길이의 합을 구한다.\n1단계 (한 변의 길이의 합 구하기):\n작은 정사각형의 한 변의 길이를 $x\\,\\text{cm}$, 큰 정사각형의 한 변의 길이를 $y\\,\\text{cm}$라 하자.\n두 정사각형의 둘레의 합이 끈의 총 길이 $16\\,\\text{cm}$이므로\n$4x + 4y = 16 \\implies x + y = 4 \\implies y = 4 - x$\n2단계 (넓이의 비 관계식 세우기):\n$x^2 : y^2 = 1 : 3 \\implies y^2 = 3x^2$\n$x > 0, y > 0$이므로 양변에 제곱근을 취하면\n$y = \\sqrt{3}x$\n3단계 ($x$에 대한 방정식 풀기 및 유리화):\n$4 - x = \\sqrt{3}x$\n$(\\sqrt{3} + 1)x = 4$\n$x = \\frac{4}{\\sqrt{3} + 1} = \\frac{4(\\sqrt{3}-1)}{(\\sqrt{3}+1)(\\sqrt{3}-1)} = \\frac{4(\\sqrt{3}-1)}{3 - 1} = 2(\\sqrt{3}-1) = -2 + 2\\sqrt{3}$\n4단계 (결론): 작은 정사각형의 한 변의 길이는 $-2 + 2\\sqrt{3}$이다.\n따라서 정답은 ③이다.",
+      "reason": "둘레합16에서 두 변의 합4를 얻고 넓이비1:3을 변의비1:√3으로 바꿔 미지길이를 유리화한다.",
+      "sourceChanges": {
+        "level": "중",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "subUnit": "근호를 포함한 식의 계산"
+      },
+      "decision": {
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "rpmRecordId": "M3-RPM-014",
+        "rpm2022RecordId": "M3-RPM-106",
+        "crossConceptKeys": [
+          "CC_SQUARE_AREA",
+          "CC_PERIMETER"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "둘레합16에서 두 변의 합4를 얻고 넓이비1:3을 변의비1:√3으로 바꿔 미지길이를 유리화한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 둘레합16에서 두 변의 합4를 얻고 넓이비1:3을 변의비1:√3으로 바꿔 미지길이를 유리화한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "둘레합16에서 두 변의 합4를 얻고 넓이비1:3을 변의비1:√3으로 바꿔 미지길이를 유리화한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 둘레합16에서 두 변의 합4를 얻고 넓이비1:3을 변의비1:√3으로 바꿔 미지길이를 유리화한다.",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [
+        {
+          "kind": "TAXONOMY_PROPOSAL",
+          "reason": {
+            "name": "둘레합과 넓이비에서 두 정사각형 변 구하기",
+            "definition": "기존해설의 실제 경로는 이차방정식이 아니라 넓이비의 제곱근과 일차 관계·유리화.",
+            "rpmPath": {
+              "majorUnit": "실수와 그 연산",
+              "midUnit": "근호를 포함한 식의 계산",
+              "l3": "혼합 계산",
+              "l4": "식의 값"
+            },
+            "supportingQuestionUids": [
+              "qid_v1_ed6027dff729a296a265f3c6f05bea0c51d96fd0c95f06e9962510e07b6c9b68"
+            ]
+          }
+        }
+      ],
+      "before": {
+        "source": {
+          "level": "상",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "subUnit": "이차방정식의 활용",
+          "difficultyBucket": 3
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-03",
+          "standardUnit": "이차방정식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "subUnit": "이차방정식의 활용",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 3
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "rpmRecordId": "M3-RPM-014",
+        "rpm2022RecordId": "M3-RPM-106",
+        "crossConceptKeys": [
+          "CC_SQUARE_AREA",
+          "CC_PERIMETER"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "둘레합16에서 두 변의 합4를 얻고 넓이비1:3을 변의비1:√3으로 바꿔 미지길이를 유리화한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 둘레합16에서 두 변의 합4를 얻고 넓이비1:3을 변의비1:√3으로 바꿔 미지길이를 유리화한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "둘레합16에서 두 변의 합4를 얻고 넓이비1:3을 변의비1:√3으로 바꿔 미지길이를 유리화한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 둘레합16에서 두 변의 합4를 얻고 넓이비1:3을 변의비1:√3으로 바꿔 미지길이를 유리화한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "실수와 그 연산",
+          "midUnit": "근호를 포함한 식의 계산",
+          "l3": "혼합 계산",
+          "l4": "식의 값"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "실수와 그 연산",
+          "L2": "근호를 포함한 식의 계산",
+          "L3": "혼합 계산",
+          "L4": "식의 값"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP",
+        "exactLeafProposal": {
+          "name": "둘레합과 넓이비에서 두 정사각형 변 구하기",
+          "definition": "기존해설의 실제 경로는 이차방정식이 아니라 넓이비의 제곱근과 일차 관계·유리화.",
+          "rpmPath": {
+            "majorUnit": "실수와 그 연산",
+            "midUnit": "근호를 포함한 식의 계산",
+            "l3": "혼합 계산",
+            "l4": "식의 값"
+          },
+          "supportingQuestionUids": [
+            "qid_v1_ed6027dff729a296a265f3c6f05bea0c51d96fd0c95f06e9962510e07b6c9b68"
+          ]
+        },
+        "parentContextRpmRecordIds": [
+          "M3-RPM-014",
+          "M3-RPM-106"
+        ]
+      },
+      "fingerprints": {
+        "QBODY": "680583514679bf15a9dc738b977c3cfc07e89dc20dd18d3d3fc3f32831b23bf1",
+        "QFULL": "d969cbb58127abc952b43cccfa5a5d5e2101f58c9047cf79b71ab3ff30566f5c"
+      },
+      "supplementalStemSha256": "01fb1da84f99af37a0ec1f6f3234a18b60b3b726e8b4e37fd2d48b6c0113c521",
+      "sourceStemField": "content",
+      "sourcePatch": {
+        "level": "중",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "subUnit": "근호를 포함한 식의 계산"
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_683587510a45d889a27ef2281b5f0c94ec8ca8dc56f6698ca9940a9c7001bcc4",
+      "verdict": "CONFIRM",
+      "primaryMethod": "인수분해; 완전제곱식",
+      "decisiveStep": "[키포인트] 이차방정식을 풀어 $a, b$를 정한 뒤 이차함수를 표준형 $y = A(x-p)^2 + q$로 변형한다.\n1단계: 이차방정식 풀기:\n$x^2 - 6x + 8 = 0 \\iff (x-2)(x-4) = 0$\n$x = 2$ 또는 $x = 4$\n$a < b$이므로 $a = 2, b = 4$\n2단계: 이차함수 식 완성 및 표준형 변형:\n$y = 2x^2 - 4x$\n$y = 2(x^2 - 2x + 1) - 2$\n$y = 2(x-1)^2 - 2$\n3단계: 꼭짓점의 좌표 구하기:\n꼭짓점의 좌표는 $(1, -2)$이다.\n4단계: 결론: 따라서 정답은 ①이다. / [키포인트] 이차방정식을 풀어 $a, b$를 정한 뒤 이차함수를 표준형 $y = A(x-p)^2 + q$로 변형한다.\n1단계: 이차방정식 풀기:\n$x^2 - 6x + 8 = 0 \\iff (x-2)(x-4) = 0$\n$x = 2$ 또는 $x = 4$\n$a < b$이므로 $a = 2, b = 4$\n2단계: 이차함수 식 완성 및 표준형 변형:\n$y = 2x^2 - 4x$\n$y = 2(x^2 - 2x + 1) - 2$\n$y = 2(x-1)^2 - 2$\n3단계: 꼭짓점의 좌표 구하기:\n꼭짓점의 좌표는 $(1, -2)$이다.\n4단계: 결론: 따라서 정답은 ①이다.",
+      "reason": "이차방정식의 두 근을 구해 a<b 순서로 배치하고 함수의 일반형을 완전제곱식으로 변형한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-051",
+        "rpm2022RecordId": "M3-RPM-139",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "이차방정식의 두 근을 구해 a<b 순서로 배치하고 함수의 일반형을 완전제곱식으로 변형한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 이차방정식의 두 근을 구해 a<b 순서로 배치하고 함수의 일반형을 완전제곱식으로 변형한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "이차방정식의 두 근을 구해 a<b 순서로 배치하고 함수의 일반형을 완전제곱식으로 변형한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 이차방정식의 두 근을 구해 a<b 순서로 배치하고 함수의 일반형을 완전제곱식으로 변형한다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "중",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "difficultyBucket": 2
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 2
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-051",
+        "rpm2022RecordId": "M3-RPM-139",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "이차방정식의 두 근을 구해 a<b 순서로 배치하고 함수의 일반형을 완전제곱식으로 변형한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 이차방정식의 두 근을 구해 a<b 순서로 배치하고 함수의 일반형을 완전제곱식으로 변형한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "이차방정식의 두 근을 구해 a<b 순서로 배치하고 함수의 일반형을 완전제곱식으로 변형한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 이차방정식의 두 근을 구해 a<b 순서로 배치하고 함수의 일반형을 완전제곱식으로 변형한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "일반형",
+          "l4": "완전제곱식 변형"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수의 그래프(2)",
+          "L3": "일반형 그래프",
+          "L4": "완전제곱식 변형"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "968c709591dc4a01f09a8d0ef4df4165465e7b195a9c03770a94821d2c2a406d",
+        "QFULL": "d94f4337394c8edb2dba3152e2e9ecd96e65d7cf9eb245a457843220f64119e3"
+      },
+      "supplementalStemSha256": "7c76ff237831d63998533ca2e41a58fca324fe54053589dacf6ee4b862e1bbeb",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_0e8806f1edae4bc07ebddc882fb655a0c3affa811d97aafa1a21a04c8286c826",
+      "verdict": "CONFIRM",
+      "primaryMethod": "계수; 부호",
+      "decisiveStep": "[키포인트] 이차함수 $y = ax^2$의 그래프는 $a > 0$일 때 아래로 볼록하고, $a < 0$일 때 위로 볼록하다.\n1단계: &lt;보기&gt;의 이차함수에서 $x^2$의 계수 $a$의 부호를 조사한다.\n- ① $y = 4x^2 \\implies a = 4 > 0$ (아래로 볼록)\n- ② $y = \\frac{1}{4}x^2 \\implies a = \\frac{1}{4} > 0$ (아래로 볼록)\n- ③ $y = -5x^2 \\implies a = -5 < 0$ (위로 볼록)\n- ④ $y = -4x^2 \\implies a = -4 < 0$ (위로 볼록)\n- ⑤ $y = -\\frac{1}{5}x^2 \\implies a = -\\frac{1}{5} < 0$ (위로 볼록)\n2단계: 결론: 아래로 볼록한 것은 ①, ②이다.\n따라서 정답은 ①, ②이다. / [키포인트] 이차함수 $y = ax^2$의 그래프는 $a > 0$일 때 아래로 볼록하고, $a < 0$일 때 위로 볼록하다.\n1단계: &lt;보기&gt;의 이차함수에서 $x^2$의 계수 $a$의 부호를 조사한다.\n- ① $y = 4x^2 \\implies a = 4 > 0$ (아래로 볼록)\n- ② $y = \\frac{1}{4}x^2 \\implies a = \\frac{1}{4} > 0$ (아래로 볼록)\n- ③ $y = -5x^2 \\implies a = -5 < 0$ (위로 볼록)\n- ④ $y = -4x^2 \\implies a = -4 < 0$ (위로 볼록)\n- ⑤ $y = -\\frac{1}{5}x^2 \\implies a = -\\frac{1}{5} < 0$ (위로 볼록)\n2단계: 결론: 아래로 볼록한 것은 ①, ②이다.\n따라서 정답은 ①, ②이다.",
+      "reason": "아래로 볼록 조건을 양수 이차항 계수에 직접 적용한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-045",
+        "rpm2022RecordId": "M3-RPM-135",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "아래로 볼록 조건을 양수 이차항 계수에 직접 적용한다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 아래로 볼록 조건을 양수 이차항 계수에 직접 적용한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "아래로 볼록 조건을 양수 이차항 계수에 직접 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 아래로 볼록 조건을 양수 이차항 계수에 직접 적용한다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "하",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "difficultyBucket": 1
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 1
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-045",
+        "rpm2022RecordId": "M3-RPM-135",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "아래로 볼록 조건을 양수 이차항 계수에 직접 적용한다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 아래로 볼록 조건을 양수 이차항 계수에 직접 적용한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "아래로 볼록 조건을 양수 이차항 계수에 직접 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 아래로 볼록 조건을 양수 이차항 계수에 직접 적용한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수와 그 그래프",
+          "l3": "y=ax²의 그래프",
+          "l4": "그래프의 모양"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수의 그래프(1)",
+          "L3": "이차함수의 기본 그래프",
+          "L4": "y=ax²"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "8d9435b060a4ac8bd96e33dbc1c352c6b057126d6e8a63477e8320409527e9f6",
+        "QFULL": "3ef40fe11c6bb29045f930fdc427dec57a073bba792987634e7785ec4e22ee05"
+      },
+      "supplementalStemSha256": "637bdcb7e308899fd8a5c2837fd022c004e63053353cd6d5761090e28c3e28e3",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_769352c2fef70eef357fe83bf2576645dbe41ac8f3db4d65a215a55add4262e3",
+      "verdict": "CONFIRM",
+      "primaryMethod": "대칭이동; 계수",
+      "decisiveStep": "[키포인트] 이차함수 $y = ax^2$의 그래프와 $x$축에 대하여 대칭인 그래프는 $y = -ax^2$이다. 즉, $x^2$의 계수의 절댓값이 같고 부호가 반대인 쌍을 찾는다.\n1단계: &lt;보기&gt;에서 $x^2$의 계수가 부호만 반대인 두 식을 찾는다.\n① $y = 4x^2$의 $x^2$의 계수는 $4$이고, ④ $y = -4x^2$의 $x^2$의 계수는 $-4$이다.\n$4$와 $-4$는 절댓값이 같고 부호가 반대이므로 두 그래프는 $x$축에 대하여 서로 대칭이다.\n2단계: 결론: 따라서 대칭인 쌍은 ①, ④이다.\n따라서 정답은 ①, ④이다. / [키포인트] 이차함수 $y = ax^2$의 그래프와 $x$축에 대하여 대칭인 그래프는 $y = -ax^2$이다. 즉, $x^2$의 계수의 절댓값이 같고 부호가 반대인 쌍을 찾는다.\n1단계: &lt;보기&gt;에서 $x^2$의 계수가 부호만 반대인 두 식을 찾는다.\n① $y = 4x^2$의 $x^2$의 계수는 $4$이고, ④ $y = -4x^2$의 $x^2$의 계수는 $-4$이다.\n$4$와 $-4$는 절댓값이 같고 부호가 반대이므로 두 그래프는 $x$축에 대하여 서로 대칭이다.\n2단계: 결론: 따라서 대칭인 쌍은 ①, ④이다.\n따라서 정답은 ①, ④이다.",
+      "reason": "x축 대칭이면 이차항 계수는 절댓값이 같고 부호가 반대인 쌍임을 적용한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-045",
+        "rpm2022RecordId": "M3-RPM-135",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "x축 대칭이면 이차항 계수는 절댓값이 같고 부호가 반대인 쌍임을 적용한다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: x축 대칭이면 이차항 계수는 절댓값이 같고 부호가 반대인 쌍임을 적용한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "x축 대칭이면 이차항 계수는 절댓값이 같고 부호가 반대인 쌍임을 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; x축 대칭이면 이차항 계수는 절댓값이 같고 부호가 반대인 쌍임을 적용한다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "하",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "difficultyBucket": 1
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 1
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-045",
+        "rpm2022RecordId": "M3-RPM-135",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "x축 대칭이면 이차항 계수는 절댓값이 같고 부호가 반대인 쌍임을 적용한다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: x축 대칭이면 이차항 계수는 절댓값이 같고 부호가 반대인 쌍임을 적용한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "x축 대칭이면 이차항 계수는 절댓값이 같고 부호가 반대인 쌍임을 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; x축 대칭이면 이차항 계수는 절댓값이 같고 부호가 반대인 쌍임을 적용한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수와 그 그래프",
+          "l3": "y=ax²의 그래프",
+          "l4": "그래프의 모양"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수의 그래프(1)",
+          "L3": "이차함수의 기본 그래프",
+          "L4": "y=ax²"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "2351529bdc51d29f2e2b782c085e178d1b0550685da4381c2c8886480a201e58",
+        "QFULL": "e02a1dce143f55f9ae64b45fd21c10f263a57e7a858ad91553b72c23135e7a65"
+      },
+      "supplementalStemSha256": "5a2c5ed02ca456c8cc5efa3231669f9567a5b67237d0107dfef4867eecfe9121",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_024616db64f905c16e279cc5e9d02d050fdf6677125236dcaeff60814ac84508",
+      "verdict": "CONFIRM",
+      "primaryMethod": "계수; 절댓값",
+      "decisiveStep": "[키포인트] 이차함수 $y = ax^2$의 그래프는 $|a|$의 값이 클수록 그래프의 폭이 좁아진다.\n1단계: 각 보기의 $x^2$의 계수의 절댓값을 구한다.\n- ① $|4| = 4$\n- ② $|\\frac{1}{4}| = 0.25$\n- ③ $|-5| = 5$\n- ④ $|-4| = 4$\n- ⑤ $|-\\frac{1}{5}| = 0.2$\n2단계: 절댓값의 크기를 비교하면\n$|-5| = 5 > 4 = |-4| = |4| > 0.25 > 0.2$\n절댓값이 가장 큰 식은 ③ $y = -5x^2$이다.\n3단계: 결론: 그래프의 폭이 가장 좁은 것은 ③이다.\n따라서 정답은 ③이다. / [키포인트] 이차함수 $y = ax^2$의 그래프는 $|a|$의 값이 클수록 그래프의 폭이 좁아진다.\n1단계: 각 보기의 $x^2$의 계수의 절댓값을 구한다.\n- ① $|4| = 4$\n- ② $|\\frac{1}{4}| = 0.25$\n- ③ $|-5| = 5$\n- ④ $|-4| = 4$\n- ⑤ $|-\\frac{1}{5}| = 0.2$\n2단계: 절댓값의 크기를 비교하면\n$|-5| = 5 > 4 = |-4| = |4| > 0.25 > 0.2$\n절댓값이 가장 큰 식은 ③ $y = -5x^2$이다.\n3단계: 결론: 그래프의 폭이 가장 좁은 것은 ③이다.\n따라서 정답은 ③이다.",
+      "reason": "이차항 계수 절댓값의 최댓값5를 골라 가장 좁은 폭과 대응한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-045",
+        "rpm2022RecordId": "M3-RPM-135",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "이차항 계수 절댓값의 최댓값5를 골라 가장 좁은 폭과 대응한다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 이차항 계수 절댓값의 최댓값5를 골라 가장 좁은 폭과 대응한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "이차항 계수 절댓값의 최댓값5를 골라 가장 좁은 폭과 대응한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 이차항 계수 절댓값의 최댓값5를 골라 가장 좁은 폭과 대응한다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "하",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "difficultyBucket": 1
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 1
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-045",
+        "rpm2022RecordId": "M3-RPM-135",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "이차항 계수 절댓값의 최댓값5를 골라 가장 좁은 폭과 대응한다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 이차항 계수 절댓값의 최댓값5를 골라 가장 좁은 폭과 대응한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "이차항 계수 절댓값의 최댓값5를 골라 가장 좁은 폭과 대응한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 이차항 계수 절댓값의 최댓값5를 골라 가장 좁은 폭과 대응한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수와 그 그래프",
+          "l3": "y=ax²의 그래프",
+          "l4": "그래프의 모양"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수의 그래프(1)",
+          "L3": "이차함수의 기본 그래프",
+          "L4": "y=ax²"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "00c9120b58a6dbc1c5fb605a762e655949a8587195cd391766c68de00b3a4c65",
+        "QFULL": "e4d69e9a3cec77672ea3268be4fee2ae64969fd113d6398b7062aa30e8ed79d0"
+      },
+      "supplementalStemSha256": "44eff512c12fdd72541411007ed05a9d005ef4e7b97999d540ea4c08b0a10539",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_77ab7237f47bb70405c92823e7a0145cbb6ad05f49beff315cba6575e9cdcdac",
+      "verdict": "CONFIRM",
+      "primaryMethod": "대입; 함숫값",
+      "decisiveStep": "[키포인트] 함수식 $f(x)$에 주어진 $x$값을 대입하여 각 함숫값을 계산한 후 더한다.\n1단계: $f(0)$ 계산:\n$f(0) = 3(0)^2 + 2(0) + 1 = 1$\n2단계: $f(-1)$ 계산:\n$f(-1) = 3(-1)^2 + 2(-1) + 1 = 3(1) - 2 + 1 = 2$\n3단계: 두 함숫값의 합 계산:\n$f(0) + f(-1) = 1 + 2 = 3$\n4단계: 결론: 따라서 정답은 ③이다. / [키포인트] 함수식 $f(x)$에 주어진 $x$값을 대입하여 각 함숫값을 계산한 후 더한다.\n1단계: $f(0)$ 계산:\n$f(0) = 3(0)^2 + 2(0) + 1 = 1$\n2단계: $f(-1)$ 계산:\n$f(-1) = 3(-1)^2 + 2(-1) + 1 = 3(1) - 2 + 1 = 2$\n3단계: 두 함숫값의 합 계산:\n$f(0) + f(-1) = 1 + 2 = 3$\n4단계: 결론: 따라서 정답은 ③이다.",
+      "reason": "주어진 함수에0과-1을 각각 대입한 함숫값을 더한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-044",
+        "rpm2022RecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "주어진 함수에0과-1을 각각 대입한 함숫값을 더한다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 주어진 함수에0과-1을 각각 대입한 함숫값을 더한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "주어진 함수에0과-1을 각각 대입한 함숫값을 더한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 주어진 함수에0과-1을 각각 대입한 함숫값을 더한다."
+      },
+      "projection": {
+        "status": "DIRECT_BINDING_GAP",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "RPM2022_LEAF_PROPOSAL",
+          "reason": "2022 현재 leaf와 정확히 대응하는 경로가 없어 의미 판단을 제안으로 보존."
+        }
+      ],
+      "before": {
+        "source": {
+          "level": "하",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "difficultyBucket": 1
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 1
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-044",
+        "rpm2022RecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "주어진 함수에0과-1을 각각 대입한 함숫값을 더한다.",
+        "level": "하",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 주어진 함수에0과-1을 각각 대입한 함숫값을 더한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "주어진 함수에0과-1을 각각 대입한 함숫값을 더한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 주어진 함수에0과-1을 각각 대입한 함숫값을 더한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수와 그 그래프",
+          "l3": "이차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpm2022EffectivePath": null
+      },
+      "fingerprints": {
+        "QBODY": "98785a63e81763a4169d72f5099850cdae0bf480934db55899b478d41092ebd6",
+        "QFULL": "10431a30ccd956e848ae2bda4343cc1bb39c9176fe3c6cc10f1ad5d0ed94dc8e"
+      },
+      "supplementalStemSha256": "98222f095e1ebc36af0faa204fc269e782ec1a636b421466d902c6878555cacf",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_3ea3245d719f215e9d2de8f71a9ea4fc5513cb9aff7d70626deae1adcfb66f6e",
+      "verdict": "CONFIRM",
+      "primaryMethod": "인수분해; 완전제곱식; 삼각형넓이공식",
+      "decisiveStep": "[키포인트] $x$축과의 교점의 좌표는 $y=0$일 때의 해이고, 꼭짓점의 좌표는 표준형 변형을 통해 구한 뒤 삼각형의 넓이 공식 $S = \\frac{1}{2} \\times \\text{밑변} \\times \\text{높이}$를 적용한다.\n1단계 ($x$축과의 교점 $\\text{A}, \\text{B}$ 구하기):\n$y = 0$을 대입하면\n$2x^2 + 4x - 6 = 0$\n$2(x^2 + 2x - 3) = 0 \\iff 2(x+3)(x-1) = 0$\n$x = -3$ 또는 $x = 1$\n따라서 두 점은 $\\text{A}(-3, 0), \\text{B}(1, 0)$이다.\n선분 $\\text{AB}$의 길이(밑변) $= 1 - (-3) = 4$\n2단계 (꼭짓점 $\\text{C}$ 구하기):\n$y = 2(x^2 + 2x + 1) - 2 - 6 = 2(x+1)^2 - 8$\n꼭짓점은 $\\text{C}(-1, -8)$이다.\n삼각형의 높이는 꼭짓점 $\\text{C}$에서 $x$축까지의 거리이므로 $|-8| = 8$이다.\n3단계 (삼각형 $\\triangle\\text{ABC}$의 넓이 계산):\n$S = \\frac{1}{2} \\times \\overline{\\text{AB}} \\times (\\text{높이}) = \\frac{1}{2} \\times 4 \\times 8 = 16$\n4단계 (결론): 따라서 넓이는 16이다.\n따라서 정답은 ③이다. / [키포인트] $x$축과의 교점의 좌표는 $y=0$일 때의 해이고, 꼭짓점의 좌표는 표준형 변형을 통해 구한 뒤 삼각형의 넓이 공식 $S = \\frac{1}{2} \\times \\text{밑변} \\times \\text{높이}$를 적용한다.\n1단계 ($x$축과의 교점 $\\text{A}, \\text{B}$ 구하기):\n$y = 0$을 대입하면\n$2x^2 + 4x - 6 = 0$\n$2(x^2 + 2x - 3) = 0 \\iff 2(x+3)(x-1) = 0$\n$x = -3$ 또는 $x = 1$\n따라서 두 점은 $\\text{A}(-3, 0), \\text{B}(1, 0)$이다.\n선분 $\\text{AB}$의 길이(밑변) $= 1 - (-3) = 4$\n2단계 (꼭짓점 $\\text{C}$ 구하기):\n$y = 2(x^2 + 2x + 1) - 2 - 6 = 2(x+1)^2 - 8$\n꼭짓점은 $\\text{C}(-1, -8)$이다.\n삼각형의 높이는 꼭짓점 $\\text{C}$에서 $x$축까지의 거리이므로 $|-8| = 8$이다.\n3단계 (삼각형 $\\triangle\\text{ABC}$의 넓이 계산):\n$S = \\frac{1}{2} \\times \\overline{\\text{AB}} \\times (\\text{높이}) = \\frac{1}{2} \\times 4 \\times 8 = 16$\n4단계 (결론): 따라서 넓이는 16이다.\n따라서 정답은 ③이다. / [키포인트] $x$축과의 교점의 좌표는 $y=0$일 때의 해이고, 꼭짓점의 좌표는 표준형 변형을 통해 구한 뒤 삼각형의 넓이 공식 $S = \\frac{1}{2} \\times \\text{밑변} \\times \\text{높이}$를 적용한다.\n1단계 ($x$축과의 교점 $\\text{A}, \\text{B}$ 구하기):\n$y = 0$을 대입하면\n$2x^2 + 4x - 6 = 0$\n$2(x^2 + 2x - 3) = 0 \\iff 2(x+3)(x-1) = 0$\n$x = -3$ 또는 $x = 1$\n따라서 두 점은 $\\text{A}(-3, 0), \\text{B}(1, 0)$이다.\n선분 $\\text{AB}$의 길이(밑변) $= 1 - (-3) = 4$\n2단계 (꼭짓점 $\\text{C}$ 구하기):\n$y = 2(x^2 + 2x + 1) - 2 - 6 = 2(x+1)^2 - 8$\n꼭짓점은 $\\text{C}(-1, -8)$이다.\n삼각형의 높이는 꼭짓점 $\\text{C}$에서 $x$축까지의 거리이므로 $|-8| = 8$이다.\n3단계 (삼각형 $\\triangle\\text{ABC}$의 넓이 계산):\n$S = \\frac{1}{2} \\times \\overline{\\text{AB}} \\times (\\text{높이}) = \\frac{1}{2} \\times 4 \\times 8 = 16$\n4단계 (결론): 따라서 넓이는 16이다.\n따라서 정답은 ③이다.",
+      "reason": "지정된 x절편 두 점과 꼭짓점을 표준 계산으로 구한 뒤 밑변·높이에 바로 대응한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-051",
+        "rpm2022RecordId": "M3-RPM-139",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "지정된 x절편 두 점과 꼭짓점을 표준 계산으로 구한 뒤 밑변·높이에 바로 대응한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 지정된 x절편 두 점과 꼭짓점을 표준 계산으로 구한 뒤 밑변·높이에 바로 대응한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "지정된 x절편 두 점과 꼭짓점을 표준 계산으로 구한 뒤 밑변·높이에 바로 대응한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 지정된 x절편 두 점과 꼭짓점을 표준 계산으로 구한 뒤 밑변·높이에 바로 대응한다.",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [
+        {
+          "kind": "TAXONOMY_PROPOSAL",
+          "reason": {
+            "name": "두 x절편과 꼭짓점 삼각형 넓이",
+            "definition": "일반형 변환을 좌표삼각형 넓이로 연결하는 목표.",
+            "rpmPath": {
+              "majorUnit": "이차함수",
+              "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+              "l3": "일반형",
+              "l4": "완전제곱식 변형"
+            },
+            "supportingQuestionUids": [
+              "qid_v1_3ea3245d719f215e9d2de8f71a9ea4fc5513cb9aff7d70626deae1adcfb66f6e"
+            ]
+          }
+        }
+      ],
+      "before": {
+        "source": {
+          "level": "중",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "difficultyBucket": 2
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 2
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-051",
+        "rpm2022RecordId": "M3-RPM-139",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "지정된 x절편 두 점과 꼭짓점을 표준 계산으로 구한 뒤 밑변·높이에 바로 대응한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 지정된 x절편 두 점과 꼭짓점을 표준 계산으로 구한 뒤 밑변·높이에 바로 대응한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "지정된 x절편 두 점과 꼭짓점을 표준 계산으로 구한 뒤 밑변·높이에 바로 대응한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 지정된 x절편 두 점과 꼭짓점을 표준 계산으로 구한 뒤 밑변·높이에 바로 대응한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "일반형",
+          "l4": "완전제곱식 변형"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수의 그래프(2)",
+          "L3": "일반형 그래프",
+          "L4": "완전제곱식 변형"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP",
+        "exactLeafProposal": {
+          "name": "두 x절편과 꼭짓점 삼각형 넓이",
+          "definition": "일반형 변환을 좌표삼각형 넓이로 연결하는 목표.",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+            "l3": "일반형",
+            "l4": "완전제곱식 변형"
+          },
+          "supportingQuestionUids": [
+            "qid_v1_3ea3245d719f215e9d2de8f71a9ea4fc5513cb9aff7d70626deae1adcfb66f6e"
+          ]
+        },
+        "parentContextRpmRecordIds": [
+          "M3-RPM-051",
+          "M3-RPM-139"
+        ]
+      },
+      "fingerprints": {
+        "QBODY": "a473908142cdeba4807480f0f3a6f25aa2692f0fce985696f6b2a5c4e43f9c5b",
+        "QFULL": "5797a291fbe32dc27284b1c8c3f0516319f149717bbd1b30144dcb97cf554dc1"
+      },
+      "supplementalStemSha256": "5e8c2e7b350ccfe70bcd8701d55686661530c8c251c26b7036525f4b23721f48",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_761e029f21e10ff1be76a1565e9f70003fdaf248c33b94378ad549f8f49dc1a0",
+      "verdict": "CONFIRM",
+      "primaryMethod": "꼭짓점; 대입; 전개",
+      "decisiveStep": "[키포인트] $x = p$에서 최솟값 $q$를 가지면 꼭짓점이 $(p, q)$이므로 $y = a(x-p)^2 + q$ ($a > 0$) 꼴로 식을 세운다.\n1단계: 식 세우기:\n$x = -1$에서 최솟값 2를 가지므로 꼭짓점은 $(-1, 2)$이다.\n$y = a(x+1)^2 + 2$ ($a > 0$)\n2단계: $y$절편 $(0, 6)$ 대입하여 $a$ 구하기:\n$6 = a(0+1)^2 + 2$\n$a + 2 = 6 \\implies a = 4$\n3단계: 식을 전개하여 $b$ 구하기:\n$y = 4(x+1)^2 + 2 = 4(x^2 + 2x + 1) + 2 = 4x^2 + 8x + 6$\n$y = ax^2 + bx + c$와 비교하면 $a = 4, b = 8, c = 6$\n4단계: 결론: 따라서 $b$의 값은 8이다.\n따라서 정답은 ⑤이다. / [키포인트] $x = p$에서 최솟값 $q$를 가지면 꼭짓점이 $(p, q)$이므로 $y = a(x-p)^2 + q$ ($a > 0$) 꼴로 식을 세운다.\n1단계: 식 세우기:\n$x = -1$에서 최솟값 2를 가지므로 꼭짓점은 $(-1, 2)$이다.\n$y = a(x+1)^2 + 2$ ($a > 0$)\n2단계: $y$절편 $(0, 6)$ 대입하여 $a$ 구하기:\n$6 = a(0+1)^2 + 2$\n$a + 2 = 6 \\implies a = 4$\n3단계: 식을 전개하여 $b$ 구하기:\n$y = 4(x+1)^2 + 2 = 4(x^2 + 2x + 1) + 2 = 4x^2 + 8x + 6$\n$y = ax^2 + bx + c$와 비교하면 $a = 4, b = 8, c = 6$\n4단계: 결론: 따라서 $b$의 값은 8이다.\n따라서 정답은 ⑤이다. / [키포인트] $x = p$에서 최솟값 $q$를 가지면 꼭짓점이 $(p, q)$이므로 $y = a(x-p)^2 + q$ ($a > 0$) 꼴로 식을 세운다.\n1단계: 식 세우기:\n$x = -1$에서 최솟값 2를 가지므로 꼭짓점은 $(-1, 2)$이다.\n$y = a(x+1)^2 + 2$ ($a > 0$)\n2단계: $y$절편 $(0, 6)$ 대입하여 $a$ 구하기:\n$6 = a(0+1)^2 + 2$\n$a + 2 = 6 \\implies a = 4$\n3단계: 식을 전개하여 $b$ 구하기:\n$y = 4(x+1)^2 + 2 = 4(x^2 + 2x + 1) + 2 = 4x^2 + 8x + 6$\n$y = ax^2 + bx + c$와 비교하면 $a = 4, b = 8, c = 6$\n4단계: 결론: 따라서 $b$의 값은 8이다.\n따라서 정답은 ⑤이다.",
+      "reason": "최솟값 조건으로 꼭짓점형을 만들고 y절편6을 대입해 계수4를 얻은 뒤 b를 읽는다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-054",
+        "rpm2022RecordId": "M3-RPM-142",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "최솟값 조건으로 꼭짓점형을 만들고 y절편6을 대입해 계수4를 얻은 뒤 b를 읽는다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 최솟값 조건으로 꼭짓점형을 만들고 y절편6을 대입해 계수4를 얻은 뒤 b를 읽는다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "최솟값 조건으로 꼭짓점형을 만들고 y절편6을 대입해 계수4를 얻은 뒤 b를 읽는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 최솟값 조건으로 꼭짓점형을 만들고 y절편6을 대입해 계수4를 얻은 뒤 b를 읽는다."
+      },
+      "projection": {
+        "status": "FAMILY_BINDING_GAP",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "중",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "difficultyBucket": 2
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 2
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-054",
+        "rpm2022RecordId": "M3-RPM-142",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "최솟값 조건으로 꼭짓점형을 만들고 y절편6을 대입해 계수4를 얻은 뒤 b를 읽는다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 최솟값 조건으로 꼭짓점형을 만들고 y절편6을 대입해 계수4를 얻은 뒤 b를 읽는다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "최솟값 조건으로 꼭짓점형을 만들고 y절편6을 대입해 계수4를 얻은 뒤 b를 읽는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 최솟값 조건으로 꼭짓점형을 만들고 y절편6을 대입해 계수4를 얻은 뒤 b를 읽는다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "그래프와 계수",
+          "l4": "조건으로 식 구하기"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수의 그래프(2)",
+          "L3": "최대·최소와 활용",
+          "L4": "조건으로 식 결정"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "cb6bb5a64ee84248e0ec9dbf1e7a982972d366e14a43cc229d97c7fb14307a45",
+        "QFULL": "45a8629c90b943e71ac2fa32d0e53d20f91d94873f58a022d7c9e4c9539c63c0"
+      },
+      "supplementalStemSha256": "413f4f5237a96d0c133f3511c1317103dc03c7f0b309103170ec2c6a08babbad",
+      "sourceStemField": "content",
+      "sourcePatch": {},
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_7295f75d4802230a98bb42507df61081a577e71e300932f9a3647a9d2de360bc",
+      "verdict": "CORRECT",
+      "primaryMethod": "꼭짓점; 절편; 부등식",
+      "decisiveStep": "[키포인트] 최댓값이 존재하므로 위로 볼록($a < 0$)이고, 꼭짓점이 제2사분면에 위치할 때 제1사분면을 지나지 않으려면 $y$절편이 0 이하이어야 한다.\n1단계 (꼭짓점과 이차함수 식 세우기):\n대칭축이 $x = -2$이고 최댓값이 3이므로 꼭짓점의 좌표는 $(-2, 3)$이다.\n최댓값을 가지므로 그래프는 위로 볼록하여 $a < 0$이다.\n이차함수의 식: $y = a(x+2)^2 + 3$\n2단계 (제1사분면을 지나지 않을 조건):\n꼭짓점 $(-2, 3)$은 제2사분면에 있다.\n위로 볼록한 포물선이 $y$축과 만나는 점($y$절편)이 원점 아래쪽 또는 원점을 지나야 제1사분면을 지나지 않는다:\n$y\\text{절편} = a(0+2)^2 + 3 = 4a + 3 \\le 0$\n$4a \\le -3 \\implies a \\le -\\frac{3}{4}$\n3단계 (범위 종합):\n$a \\le -\\frac{3}{4}$이면 $a < 0$ 조건을 자동으로 만족하므로 구하는 $a$의 범위는 $a \\le -\\frac{3}{4}$이다.\n4단계 (결론): 따라서 $a$의 범위는 $a \\le -\\frac{3}{4}$이다.\n따라서 정답은 ④이다. / [키포인트] 최댓값이 존재하므로 위로 볼록($a < 0$)이고, 꼭짓점이 제2사분면에 위치할 때 제1사분면을 지나지 않으려면 $y$절편이 0 이하이어야 한다.\n1단계 (꼭짓점과 이차함수 식 세우기):\n대칭축이 $x = -2$이고 최댓값이 3이므로 꼭짓점의 좌표는 $(-2, 3)$이다.\n최댓값을 가지므로 그래프는 위로 볼록하여 $a < 0$이다.\n이차함수의 식: $y = a(x+2)^2 + 3$\n2단계 (제1사분면을 지나지 않을 조건):\n꼭짓점 $(-2, 3)$은 제2사분면에 있다.\n위로 볼록한 포물선이 $y$축과 만나는 점($y$절편)이 원점 아래쪽 또는 원점을 지나야 제1사분면을 지나지 않는다:\n$y\\text{절편} = a(0+2)^2 + 3 = 4a + 3 \\le 0$\n$4a \\le -3 \\implies a \\le -\\frac{3}{4}$\n3단계 (범위 종합):\n$a \\le -\\frac{3}{4}$이면 $a < 0$ 조건을 자동으로 만족하므로 구하는 $a$의 범위는 $a \\le -\\frac{3}{4}$이다.\n4단계 (결론): 따라서 $a$의 범위는 $a \\le -\\frac{3}{4}$이다.\n따라서 정답은 ④이다. / [키포인트] 최댓값이 존재하므로 위로 볼록($a < 0$)이고, 꼭짓점이 제2사분면에 위치할 때 제1사분면을 지나지 않으려면 $y$절편이 0 이하이어야 한다.\n1단계 (꼭짓점과 이차함수 식 세우기):\n대칭축이 $x = -2$이고 최댓값이 3이므로 꼭짓점의 좌표는 $(-2, 3)$이다.\n최댓값을 가지므로 그래프는 위로 볼록하여 $a < 0$이다.\n이차함수의 식: $y = a(x+2)^2 + 3$\n2단계 (제1사분면을 지나지 않을 조건):\n꼭짓점 $(-2, 3)$은 제2사분면에 있다.\n위로 볼록한 포물선이 $y$축과 만나는 점($y$절편)이 원점 아래쪽 또는 원점을 지나야 제1사분면을 지나지 않는다:\n$y\\text{절편} = a(0+2)^2 + 3 = 4a + 3 \\le 0$\n$4a \\le -3 \\implies a \\le -\\frac{3}{4}$\n3단계 (범위 종합):\n$a \\le -\\frac{3}{4}$이면 $a < 0$ 조건을 자동으로 만족하므로 구하는 $a$의 범위는 $a \\le -\\frac{3}{4}$이다.\n4단계 (결론): 따라서 $a$의 범위는 $a \\le -\\frac{3}{4}$이다.\n따라서 정답은 ④이다.",
+      "reason": "최댓값과 축에서 꼭짓점을 정하고 오른쪽 구간의 부호를 y절편≤0 조건으로 해석하여 매개변수 범위를 구한다.",
+      "sourceChanges": {
+        "level": "중"
+      },
+      "decision": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-053",
+        "rpm2022RecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "최댓값과 축에서 꼭짓점을 정하고 오른쪽 구간의 부호를 y절편≤0 조건으로 해석하여 매개변수 범위를 구한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 최댓값과 축에서 꼭짓점을 정하고 오른쪽 구간의 부호를 y절편≤0 조건으로 해석하여 매개변수 범위를 구한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "최댓값과 축에서 꼭짓점을 정하고 오른쪽 구간의 부호를 y절편≤0 조건으로 해석하여 매개변수 범위를 구한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 최댓값과 축에서 꼭짓점을 정하고 오른쪽 구간의 부호를 y절편≤0 조건으로 해석하여 매개변수 범위를 구한다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+          "templateKey": "TPL_M3_FIND_PARAMETER_RANGE_AVOIDING_SPECIFIC_QUADRANT",
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [
+        {
+          "kind": "RPM2022_LEAF_PROPOSAL",
+          "reason": "2022 현재 leaf와 정확히 대응하는 경로가 없어 의미 판단을 제안으로 보존."
+        }
+      ],
+      "before": {
+        "source": {
+          "level": "상",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "difficultyBucket": 3
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "subUnit": "이차함수의 그래프",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 3
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-053",
+        "rpm2022RecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "최댓값과 축에서 꼭짓점을 정하고 오른쪽 구간의 부호를 y절편≤0 조건으로 해석하여 매개변수 범위를 구한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 최댓값과 축에서 꼭짓점을 정하고 오른쪽 구간의 부호를 y절편≤0 조건으로 해석하여 매개변수 범위를 구한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "최댓값과 축에서 꼭짓점을 정하고 오른쪽 구간의 부호를 y절편≤0 조건으로 해석하여 매개변수 범위를 구한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 최댓값과 축에서 꼭짓점을 정하고 오른쪽 구간의 부호를 y절편≤0 조건으로 해석하여 매개변수 범위를 구한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "그래프와 계수",
+          "l4": "그래프 위치"
+        },
+        "rpm2022EffectivePath": null
+      },
+      "fingerprints": {
+        "QBODY": "d2638f4c87113ad33f9c36d2b36b7d9175686e41181ad03079b00b23511e92ef",
+        "QFULL": "629cb65d0c7a89c495b482546f7080a103081a04fa4bd5a4f2f276c101f5bb04"
+      },
+      "supplementalStemSha256": "b9202b4391893ccbdba4765eec35511a4ecf10006de5af1d31e3143de15e3265",
+      "sourceStemField": "content",
+      "sourcePatch": {
+        "level": "중"
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_3c9138d6401b41ab341f19bde9fff502680d209f42f3c7f6174cb51fe27ac71e",
+      "verdict": "CORRECT",
+      "primaryMethod": "모델링; 완전제곱식; 최솟값",
+      "decisiveStep": "[키포인트] 두 수를 $x, x+6$으로 두고 두 수의 곱을 $x$에 대한 이차함수로 나타내어 최솟값을 갖는 $x$를 구한다.\n1단계: 두 수의 곱 식 세우기:\n두 수를 $x, x+6$이라 하면 두 수의 곱 $P(x)$는\n$P(x) = x(x+6) = x^2 + 6x$\n2단계: 완전제곱식으로 변형:\n$P(x) = (x^2 + 6x + 9) - 9 = (x+3)^2 - 9$\n따라서 $x = -3$일 때 곱이 최소가 된다.\n3단계: 두 수 $a, b$ 및 절댓값의 합 구하기:\n두 수는 $x = -3$과 $x + 6 = -3 + 6 = 3$이다.\n$|a| + |b| = |-3| + |3| = 3 + 3 = 6$\n4단계: 결론: 따라서 $|a|+|b| = 6$이다.\n따라서 정답은 ③이다. / [키포인트] 두 수를 $x, x+6$으로 두고 두 수의 곱을 $x$에 대한 이차함수로 나타내어 최솟값을 갖는 $x$를 구한다.\n1단계: 두 수의 곱 식 세우기:\n두 수를 $x, x+6$이라 하면 두 수의 곱 $P(x)$는\n$P(x) = x(x+6) = x^2 + 6x$\n2단계: 완전제곱식으로 변형:\n$P(x) = (x^2 + 6x + 9) - 9 = (x+3)^2 - 9$\n따라서 $x = -3$일 때 곱이 최소가 된다.\n3단계: 두 수 $a, b$ 및 절댓값의 합 구하기:\n두 수는 $x = -3$과 $x + 6 = -3 + 6 = 3$이다.\n$|a| + |b| = |-3| + |3| = 3 + 3 = 6$\n4단계: 결론: 따라서 $|a|+|b| = 6$이다.\n따라서 정답은 ③이다. / [키포인트] 두 수를 $x, x+6$으로 두고 두 수의 곱을 $x$에 대한 이차함수로 나타내어 최솟값을 갖는 $x$를 구한다.\n1단계: 두 수의 곱 식 세우기:\n두 수를 $x, x+6$이라 하면 두 수의 곱 $P(x)$는\n$P(x) = x(x+6) = x^2 + 6x$\n2단계: 완전제곱식으로 변형:\n$P(x) = (x^2 + 6x + 9) - 9 = (x+3)^2 - 9$\n따라서 $x = -3$일 때 곱이 최소가 된다.\n3단계: 두 수 $a, b$ 및 절댓값의 합 구하기:\n두 수는 $x = -3$과 $x + 6 = -3 + 6 = 3$이다.\n$|a| + |b| = |-3| + |3| = 3 + 3 = 6$\n4단계: 결론: 따라서 $|a|+|b| = 6$이다.\n따라서 정답은 ③이다.",
+      "reason": "차6인 두 수를 x,x+6으로 놓은 곱을 완전제곱식으로 바꾸고 최소시 두 수의 절댓값을 더한다.",
+      "sourceChanges": {
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프"
+      },
+      "decision": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-052",
+        "rpm2022RecordId": "M3-RPM-141",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "차6인 두 수를 x,x+6으로 놓은 곱을 완전제곱식으로 바꾸고 최소시 두 수의 절댓값을 더한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 차6인 두 수를 x,x+6으로 놓은 곱을 완전제곱식으로 바꾸고 최소시 두 수의 절댓값을 더한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "차6인 두 수를 x,x+6으로 놓은 곱을 완전제곱식으로 바꾸고 최소시 두 수의 절댓값을 더한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 차6인 두 수를 x,x+6으로 놓은 곱을 완전제곱식으로 바꾸고 최소시 두 수의 절댓값을 더한다."
+      },
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_EXTREMA",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [],
+      "before": {
+        "source": {
+          "level": "중",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+          "subUnit": "이차함수의 활용",
+          "difficultyBucket": 2
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+          "subUnit": "이차함수의 활용",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 2
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-052",
+        "rpm2022RecordId": "M3-RPM-141",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "차6인 두 수를 x,x+6으로 놓은 곱을 완전제곱식으로 바꾸고 최소시 두 수의 절댓값을 더한다.",
+        "level": "중",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 차6인 두 수를 x,x+6으로 놓은 곱을 완전제곱식으로 바꾸고 최소시 두 수의 절댓값을 더한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "차6인 두 수를 x,x+6으로 놓은 곱을 완전제곱식으로 바꾸고 최소시 두 수의 절댓값을 더한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 차6인 두 수를 x,x+6으로 놓은 곱을 완전제곱식으로 바꾸고 최소시 두 수의 절댓값을 더한다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "일반형",
+          "l4": "최대·최소"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수의 그래프(2)",
+          "L3": "최대·최소와 활용",
+          "L4": "최대·최소"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": {
+        "QBODY": "a43a16992c13e4dfd279622485fb0e7c74944a5507175eb830efd92cc07a4145",
+        "QFULL": "392d084c72f5134c083b57fc22e81a3abae859dc3c1baa36d0d038a27c90d3ba"
+      },
+      "supplementalStemSha256": "8bb1e15730e16b281beff38e7884691ff496f222887f04b92ff04b0789f25a4f",
+      "sourceStemField": "content",
+      "sourcePatch": {
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프"
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_9729f7bfe7f50e467b1dc99d238fa613ad6f073b1aa08bb1300c368ffbb87255",
+      "verdict": "CORRECT",
+      "primaryMethod": "꼭짓점; 대입; 평행이동; 등적변형",
+      "decisiveStep": "[키포인트] 그래프의 꼭짓점 $(1, -2)$와 $y$절편 $(0, 1)$로부터 이차함수 식을 완성하고, 평행이동 및 카발리에리의 원리(등적변형)를 적용하여 둘러싸인 도형의 넓이를 계산한다.\n1단계: (1) 꼭짓점의 좌표:\n주어진 그래프의 가장 아래쪽 점의 좌표는 $x = 1, y = -2$이므로 꼭짓점은 $(1, -2)$이다.\n2단계: (2) 축의 방정식:\n꼭짓점의 $x$좌표를 지나며 $y$축에 평행한 직선이므로 축의 방정식은 $x = 1$이다.\n3단계: (3) 최댓값 또는 최솟값:\n그래프가 아래로 볼록하므로 꼭짓점에서 최솟값을 가진다. 따라서 $x = 1$일 때 최솟값 $-2$를 가지며 최댓값은 없다.\n4단계: (4) $a, b, c$의 값 구하기:\n- 꼭짓점이 $(1, -2)$이므로 식을 $y = a(x-1)^2 - 2$로 둔다.\n- 그래프가 $y$절편 $(0, 1)$을 지나므로 대입하면:\n  $1 = a(0-1)^2 - 2 \\implies 1 = a - 2 \\implies a = 3$\n- 식을 전개하면:\n  $y = 3(x-1)^2 - 2 = 3(x^2 - 2x + 1) - 2 = 3x^2 - 6x + 1$\n- 따라서 $a = 3, b = -6, c = 1$이다.\n5단계: (5) 평행이동과 점 대입:\n- $y = 3(x-1)^2 - 2$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동한 식은\n  $y - 3 = 3(x - (-2) - 1)^2 - 2$\n  $y = 3(x+1)^2 + 1$\n- 이 그래프가 점 $(-3, k)$를 지나므로 대입하면:\n  $k = 3(-3+1)^2 + 1 = 3(-2)^2 + 1 = 3(4) + 1 = 13$\n  따라서 $k = 13$이다.\n6단계: (6) 둘러싸인 부분의 넓이 구하기:\n- 그래프를 $x$축 방향으로 $-3$만큼 평행이동하였으므로 모든 $y$에 대하여 두 곡선 사이의 가로 거리는 항상 $3$으로 일정하다.\n- 둘러싸인 영역의 세로 구간은 $y = -2$부터 $y = 1$까지이므로 세로 높이는 $1 - (-2) = 3$이다.\n- 곡선 영역을 잘라 붙이면 가로가 $3$, 세로가 $3$인 직사각형의 넓이와 같으므로\n  $\\text{넓이} = 3 \\times 3 = 9$이다.\n결론: 따라서 정답은 (1) $(1, -2)$, (2) $x = 1$, (3) $x = 1$일 때 최솟값 $-2$, (4) $a = 3, b = -6, c = 1$, (5) $k = 13$, (6) $9$이다. / [키포인트] 그래프의 꼭짓점 $(1, -2)$와 $y$절편 $(0, 1)$로부터 이차함수 식을 완성하고, 평행이동 및 카발리에리의 원리(등적변형)를 적용하여 둘러싸인 도형의 넓이를 계산한다.\n1단계: (1) 꼭짓점의 좌표:\n주어진 그래프의 가장 아래쪽 점의 좌표는 $x = 1, y = -2$이므로 꼭짓점은 $(1, -2)$이다.\n2단계: (2) 축의 방정식:\n꼭짓점의 $x$좌표를 지나며 $y$축에 평행한 직선이므로 축의 방정식은 $x = 1$이다.\n3단계: (3) 최댓값 또는 최솟값:\n그래프가 아래로 볼록하므로 꼭짓점에서 최솟값을 가진다. 따라서 $x = 1$일 때 최솟값 $-2$를 가지며 최댓값은 없다.\n4단계: (4) $a, b, c$의 값 구하기:\n- 꼭짓점이 $(1, -2)$이므로 식을 $y = a(x-1)^2 - 2$로 둔다.\n- 그래프가 $y$절편 $(0, 1)$을 지나므로 대입하면:\n  $1 = a(0-1)^2 - 2 \\implies 1 = a - 2 \\implies a = 3$\n- 식을 전개하면:\n  $y = 3(x-1)^2 - 2 = 3(x^2 - 2x + 1) - 2 = 3x^2 - 6x + 1$\n- 따라서 $a = 3, b = -6, c = 1$이다.\n5단계: (5) 평행이동과 점 대입:\n- $y = 3(x-1)^2 - 2$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동한 식은\n  $y - 3 = 3(x - (-2) - 1)^2 - 2$\n  $y = 3(x+1)^2 + 1$\n- 이 그래프가 점 $(-3, k)$를 지나므로 대입하면:\n  $k = 3(-3+1)^2 + 1 = 3(-2)^2 + 1 = 3(4) + 1 = 13$\n  따라서 $k = 13$이다.\n6단계: (6) 둘러싸인 부분의 넓이 구하기:\n- 그래프를 $x$축 방향으로 $-3$만큼 평행이동하였으므로 모든 $y$에 대하여 두 곡선 사이의 가로 거리는 항상 $3$으로 일정하다.\n- 둘러싸인 영역의 세로 구간은 $y = -2$부터 $y = 1$까지이므로 세로 높이는 $1 - (-2) = 3$이다.\n- 곡선 영역을 잘라 붙이면 가로가 $3$, 세로가 $3$인 직사각형의 넓이와 같으므로\n  $\\text{넓이} = 3 \\times 3 = 9$이다.\n결론: 따라서 정답은 (1) $(1, -2)$, (2) $x = 1$, (3) $x = 1$일 때 최솟값 $-2$, (4) $a = 3, b = -6, c = 1$, (5) $k = 13$, (6) $9$이다. / [키포인트] 그래프의 꼭짓점 $(1, -2)$와 $y$절편 $(0, 1)$로부터 이차함수 식을 완성하고, 평행이동 및 카발리에리의 원리(등적변형)를 적용하여 둘러싸인 도형의 넓이를 계산한다.\n1단계: (1) 꼭짓점의 좌표:\n주어진 그래프의 가장 아래쪽 점의 좌표는 $x = 1, y = -2$이므로 꼭짓점은 $(1, -2)$이다.\n2단계: (2) 축의 방정식:\n꼭짓점의 $x$좌표를 지나며 $y$축에 평행한 직선이므로 축의 방정식은 $x = 1$이다.\n3단계: (3) 최댓값 또는 최솟값:\n그래프가 아래로 볼록하므로 꼭짓점에서 최솟값을 가진다. 따라서 $x = 1$일 때 최솟값 $-2$를 가지며 최댓값은 없다.\n4단계: (4) $a, b, c$의 값 구하기:\n- 꼭짓점이 $(1, -2)$이므로 식을 $y = a(x-1)^2 - 2$로 둔다.\n- 그래프가 $y$절편 $(0, 1)$을 지나므로 대입하면:\n  $1 = a(0-1)^2 - 2 \\implies 1 = a - 2 \\implies a = 3$\n- 식을 전개하면:\n  $y = 3(x-1)^2 - 2 = 3(x^2 - 2x + 1) - 2 = 3x^2 - 6x + 1$\n- 따라서 $a = 3, b = -6, c = 1$이다.\n5단계: (5) 평행이동과 점 대입:\n- $y = 3(x-1)^2 - 2$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동한 식은\n  $y - 3 = 3(x - (-2) - 1)^2 - 2$\n  $y = 3(x+1)^2 + 1$\n- 이 그래프가 점 $(-3, k)$를 지나므로 대입하면:\n  $k = 3(-3+1)^2 + 1 = 3(-2)^2 + 1 = 3(4) + 1 = 13$\n  따라서 $k = 13$이다.\n6단계: (6) 둘러싸인 부분의 넓이 구하기:\n- 그래프를 $x$축 방향으로 $-3$만큼 평행이동하였으므로 모든 $y$에 대하여 두 곡선 사이의 가로 거리는 항상 $3$으로 일정하다.\n- 둘러싸인 영역의 세로 구간은 $y = -2$부터 $y = 1$까지이므로 세로 높이는 $1 - (-2) = 3$이다.\n- 곡선 영역을 잘라 붙이면 가로가 $3$, 세로가 $3$인 직사각형의 넓이와 같으므로\n  $\\text{넓이} = 3 \\times 3 = 9$이다.\n결론: 따라서 정답은 (1) $(1, -2)$, (2) $x = 1$, (3) $x = 1$일 때 최솟값 $-2$, (4) $a = 3, b = -6, c = 1$, (5) $k = 13$, (6) $9$이다. / [키포인트] 그래프의 꼭짓점 $(1, -2)$와 $y$절편 $(0, 1)$로부터 이차함수 식을 완성하고, 평행이동 및 카발리에리의 원리(등적변형)를 적용하여 둘러싸인 도형의 넓이를 계산한다.\n1단계: (1) 꼭짓점의 좌표:\n주어진 그래프의 가장 아래쪽 점의 좌표는 $x = 1, y = -2$이므로 꼭짓점은 $(1, -2)$이다.\n2단계: (2) 축의 방정식:\n꼭짓점의 $x$좌표를 지나며 $y$축에 평행한 직선이므로 축의 방정식은 $x = 1$이다.\n3단계: (3) 최댓값 또는 최솟값:\n그래프가 아래로 볼록하므로 꼭짓점에서 최솟값을 가진다. 따라서 $x = 1$일 때 최솟값 $-2$를 가지며 최댓값은 없다.\n4단계: (4) $a, b, c$의 값 구하기:\n- 꼭짓점이 $(1, -2)$이므로 식을 $y = a(x-1)^2 - 2$로 둔다.\n- 그래프가 $y$절편 $(0, 1)$을 지나므로 대입하면:\n  $1 = a(0-1)^2 - 2 \\implies 1 = a - 2 \\implies a = 3$\n- 식을 전개하면:\n  $y = 3(x-1)^2 - 2 = 3(x^2 - 2x + 1) - 2 = 3x^2 - 6x + 1$\n- 따라서 $a = 3, b = -6, c = 1$이다.\n5단계: (5) 평행이동과 점 대입:\n- $y = 3(x-1)^2 - 2$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동한 식은\n  $y - 3 = 3(x - (-2) - 1)^2 - 2$\n  $y = 3(x+1)^2 + 1$\n- 이 그래프가 점 $(-3, k)$를 지나므로 대입하면:\n  $k = 3(-3+1)^2 + 1 = 3(-2)^2 + 1 = 3(4) + 1 = 13$\n  따라서 $k = 13$이다.\n6단계: (6) 둘러싸인 부분의 넓이 구하기:\n- 그래프를 $x$축 방향으로 $-3$만큼 평행이동하였으므로 모든 $y$에 대하여 두 곡선 사이의 가로 거리는 항상 $3$으로 일정하다.\n- 둘러싸인 영역의 세로 구간은 $y = -2$부터 $y = 1$까지이므로 세로 높이는 $1 - (-2) = 3$이다.\n- 곡선 영역을 잘라 붙이면 가로가 $3$, 세로가 $3$인 직사각형의 넓이와 같으므로\n  $\\text{넓이} = 3 \\times 3 = 9$이다.\n결론: 따라서 정답은 (1) $(1, -2)$, (2) $x = 1$, (3) $x = 1$일 때 최솟값 $-2$, (4) $a = 3, b = -6, c = 1$, (5) $k = 13$, (6) $9$이다.",
+      "reason": "그림의 꼭짓점·y절편을 읽어 식을 정하고 평행이동값과 일정한 가로폭의 곡선사이 넓이까지 구하는 연계 소문항이다.",
+      "sourceChanges": {
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프"
+      },
+      "decision": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-054",
+        "rpm2022RecordId": "M3-RPM-142",
+        "crossConceptKeys": [
+          "CC_CURVE_TRANSLATION_CONGRUENCE"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "그림의 꼭짓점·y절편을 읽어 식을 정하고 평행이동값과 일정한 가로폭의 곡선사이 넓이까지 구하는 연계 소문항이다.",
+        "level": "상",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 그림의 꼭짓점·y절편을 읽어 식을 정하고 평행이동값과 일정한 가로폭의 곡선사이 넓이까지 구하는 연계 소문항이다.",
+        "difficultyBucket": 4,
+        "difficultyReason": "그림의 꼭짓점·y절편을 읽어 식을 정하고 평행이동값과 일정한 가로폭의 곡선사이 넓이까지 구하는 연계 소문항이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 그림의 꼭짓점·y절편을 읽어 식을 정하고 평행이동값과 일정한 가로폭의 곡선사이 넓이까지 구하는 연계 소문항이다.",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "FAMILY_BINDING_GAP",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "선택 RPM leaf와 정확한 ACTIVE projection이 없거나 해당 템플릿이 부합하지 않아 직접 등록하지 않는다.",
+        "semanticCandidate": {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+          "templateKey": null,
+          "status": "DEFINITION_MATCH_CANDIDATE"
+        }
+      },
+      "debts": [
+        {
+          "kind": "CURRICULUM_METHOD_REVIEW",
+          "reason": "기존해설의 카발리에리 명칭과 등적변형 설명은 source대로 기록; 중3 출고 설명의 그림/잘라붙이기 충분성 확인 필요."
+        },
+        {
+          "kind": "TAXONOMY_PROPOSAL",
+          "reason": {
+            "name": "그래프6소문항의 계수·이동·곡선사이 넓이",
+            "definition": "단일한 계수결정 또는 넓이 leaf로 전부를 확정하지 않고 단계별 목표를 보존.",
+            "rpmPath": {
+              "majorUnit": "이차함수",
+              "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+              "l3": "그래프와 계수",
+              "l4": "조건으로 식 구하기"
+            },
+            "supportingQuestionUids": [
+              "qid_v1_9729f7bfe7f50e467b1dc99d238fa613ad6f073b1aa08bb1300c368ffbb87255"
+            ]
+          }
+        }
+      ],
+      "before": {
+        "source": {
+          "level": "상",
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+          "subUnit": "이차함수의 활용",
+          "difficultyBucket": 4
+        },
+        "registered": {
+          "standardCourse": "중3-1",
+          "standardUnitKey": "M3-04",
+          "standardUnit": "이차함수와 그래프",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+          "subUnit": "이차함수의 활용",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "difficultyBucket": 4
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "rpmRecordId": "M3-RPM-054",
+        "rpm2022RecordId": "M3-RPM-142",
+        "crossConceptKeys": [
+          "CC_CURVE_TRANSLATION_CONGRUENCE"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "그림의 꼭짓점·y절편을 읽어 식을 정하고 평행이동값과 일정한 가로폭의 곡선사이 넓이까지 구하는 연계 소문항이다.",
+        "level": "상",
+        "levelReason": "실제 요구 절차의 독립 3단계 판단: 그림의 꼭짓점·y절편을 읽어 식을 정하고 평행이동값과 일정한 가로폭의 곡선사이 넓이까지 구하는 연계 소문항이다.",
+        "difficultyBucket": 4,
+        "difficultyReason": "그림의 꼭짓점·y절편을 읽어 식을 정하고 평행이동값과 일정한 가로폭의 곡선사이 넓이까지 구하는 연계 소문항이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "legacyComparisonReason": "기존 level은 보존하고 독립 선택한 bucket과 비교; 그림의 꼭짓점·y절편을 읽어 식을 정하고 평행이동값과 일정한 가로폭의 곡선사이 넓이까지 구하는 연계 소문항이다.",
+        "curriculum": "2015",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "그래프와 계수",
+          "l4": "조건으로 식 구하기"
+        },
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수의 그래프(2)",
+          "L3": "최대·최소와 활용",
+          "L4": "조건으로 식 결정"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP",
+        "exactLeafProposal": {
+          "name": "그래프6소문항의 계수·이동·곡선사이 넓이",
+          "definition": "단일한 계수결정 또는 넓이 leaf로 전부를 확정하지 않고 단계별 목표를 보존.",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+            "l3": "그래프와 계수",
+            "l4": "조건으로 식 구하기"
+          },
+          "supportingQuestionUids": [
+            "qid_v1_9729f7bfe7f50e467b1dc99d238fa613ad6f073b1aa08bb1300c368ffbb87255"
+          ]
+        },
+        "parentContextRpmRecordIds": [
+          "M3-RPM-054",
+          "M3-RPM-142"
+        ]
+      },
+      "fingerprints": {
+        "QBODY": "1fd657ee2caf7a241ad65afc00833bca5be6ec505939b17be15404df873028b3",
+        "QFULL": "8881a3ade434b72aab6da499dfc3e1dfe90ae1bf10b7c451124b672123b398a2"
+      },
+      "supplementalStemSha256": "361152b7cf88f5ca63caf64b3e9e45063bb1260ed2437154333aa15a8c022d1e",
+      "sourceStemField": "content",
+      "sourcePatch": {
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프"
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN",
+        "reason": "Metadata-only semantic review; mathematical VERIFIED_FINAL and shared registration are not asserted."
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "partDecisions": [
+        {
+          "part": "1",
+          "difficultyBucket": 1,
+          "reason": "그림 꼭짓점 읽기"
+        },
+        {
+          "part": "2",
+          "difficultyBucket": 1,
+          "reason": "꼭짓점x에서 축 읽기"
+        },
+        {
+          "part": "3",
+          "difficultyBucket": 1,
+          "reason": "볼록성과 꼭짓점에서 최솟값 읽기"
+        },
+        {
+          "part": "4",
+          "difficultyBucket": 2,
+          "reason": "꼭짓점형과 y절편 대입"
+        },
+        {
+          "part": "5",
+          "difficultyBucket": 2,
+          "reason": "지정 평행이동 후 점 대입"
+        },
+        {
+          "part": "6",
+          "difficultyBucket": 4,
+          "reason": "그림에 없는 곡선영역을 구성하고 평행이동 상쇄로 직사각형 넓이에 대응하는 숨은 재배치"
+        }
+      ]
+    }
+  ],
+  "contentDebt": [
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_9729f7bfe7f50e467b1dc99d238fa613ad6f073b1aa08bb1300c368ffbb87255",
+      "kind": "CURRICULUM_METHOD_REVIEW",
+      "reason": "기존해설의 카발리에리 명칭과 등적변형 설명은 source대로 기록; 중3 출고 설명의 그림/잘라붙이기 충분성 확인 필요."
+    }
+  ],
+  "typeProposals": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_08ef4e500382617195d83397017446e421f3e702729b182de9efc721bf0f4a0b",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
+      "templateKey": null,
+      "name": "이미 인수분해된 곱0에서 두 일차근을 읽어 합한다.",
+      "definition": "이미 인수분해된 곱0에서 두 일차근을 읽어 합한다.",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "인수분해를 이용한 풀이",
+        "l4": "기본 인수분해"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_08ef4e500382617195d83397017446e421f3e702729b182de9efc721bf0f4a0b"
+      ]
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_a68c31fecca678c55a2fe99c2ac7c8217f18409cc9f75ee310b91adf2a48000a",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+      "templateKey": null,
+      "name": "이항한 식 중 완전제곱식=0이 되는 보기를 직접 찾는다.",
+      "definition": "이항한 식 중 완전제곱식=0이 되는 보기를 직접 찾는다.",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "근의 공식",
+        "l4": "근의 개수·판별"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_a68c31fecca678c55a2fe99c2ac7c8217f18409cc9f75ee310b91adf2a48000a"
+      ]
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_50b79ab93074f1b0d1ee95188c18c3bda883f10db8aa1bde4706bb50adc8c655",
+      "kind": "SEMANTIC_TYPE_PROPOSAL",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "name": "양변을 전개·이항하여 이차항0과 일차항 비영 조건을 적용한 뒤 (a-1)²=4의 두 값을 선택한다.",
+      "definition": "양변을 전개·이항하여 이차항0과 일차항 비영 조건을 적용한 뒤 (a-1)²=4의 두 값을 선택한다.",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "이차방정식과 해",
+        "l4": "이차방정식 판별"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_50b79ab93074f1b0d1ee95188c18c3bda883f10db8aa1bde4706bb50adc8c655"
+      ]
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_50b79ab93074f1b0d1ee95188c18c3bda883f10db8aa1bde4706bb50adc8c655",
+      "kind": "EXACT_LEAF_GAP",
+      "name": "전개한 방정식이 일차가 되는 매개변수",
+      "definition": "이차방정식 판별 부모맥락이나 목표는 이차항 소거와 일차항 비영 조건.",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "이차방정식과 해",
+        "l4": "이차방정식 판별"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_50b79ab93074f1b0d1ee95188c18c3bda883f10db8aa1bde4706bb50adc8c655"
+      ]
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_01baf8e1ff654b04462c245f2a4bb9fe2fc2388caa5d0eb593cce09a857fd69f",
+      "kind": "SEMANTIC_TYPE_PROPOSAL",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "name": "두 근으로5(x+2)(x-3)을 구성·전개하여 두 미정계수를 비교한다.",
+      "definition": "두 근으로5(x+2)(x-3)을 구성·전개하여 두 미정계수를 비교한다.",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "이차방정식과 해",
+        "l4": "해가 주어진 이차방정식의 계수 결정"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_01baf8e1ff654b04462c245f2a4bb9fe2fc2388caa5d0eb593cce09a857fd69f"
+      ]
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_3ddad8cc24f97748389abf023fe962b008f214be0a87909d434fc623ca4509ae",
+      "kind": "SEMANTIC_TYPE_PROPOSAL",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "name": "분모3을 없애고 근의 공식 결과의 중심·근호수와 a,b를 비교한다.",
+      "definition": "분모3을 없애고 근의 공식 결과의 중심·근호수와 a,b를 비교한다.",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "근의 공식",
+        "l4": "근의 공식"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_3ddad8cc24f97748389abf023fe962b008f214be0a87909d434fc623ca4509ae"
+      ]
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_387144d460ba6dcbb69076e92b8438c4288a3b1beac4eea3d651d40f99671cb0",
+      "kind": "SEMANTIC_TYPE_PROPOSAL",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "name": "2로 나눈 뒤 지정된 완전제곱형 (x+2)²=7로 직접 고쳐 계수를 읽는다.",
+      "definition": "2로 나눈 뒤 지정된 완전제곱형 (x+2)²=7로 직접 고쳐 계수를 읽는다.",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "제곱근·완전제곱식을 이용한 풀이",
+        "l4": "완전제곱식"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_387144d460ba6dcbb69076e92b8438c4288a3b1beac4eea3d651d40f99671cb0"
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_a59441da679c606125bb5656c4368f684a693430481d7b9e19dfa393ee7d575c",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
+      "templateKey": null,
+      "name": "근의 관계에서 a(a-5)=1과 a²-1=5a를 각각 만들어 목표 두 항에 대입한다.",
+      "definition": "근의 관계에서 a(a-5)=1과 a²-1=5a를 각각 만들어 목표 두 항에 대입한다.",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 활용",
+        "l3": "수와 식",
+        "l4": "자리수·식의 값"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_a59441da679c606125bb5656c4368f684a693430481d7b9e19dfa393ee7d575c"
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_a59441da679c606125bb5656c4368f684a693430481d7b9e19dfa393ee7d575c",
+      "kind": "EXACT_LEAF_GAP",
+      "name": "근의 관계로 근호와 분수식 계산",
+      "definition": "실생활 수문제와 달리 알려진 이차관계를 목표식에 치환.",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 활용",
+        "l3": "수와 식",
+        "l4": "자리수·식의 값"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_a59441da679c606125bb5656c4368f684a693430481d7b9e19dfa393ee7d575c"
+      ]
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_d54c981cc7ef5a74e27d093a2b84d9a4b3503826bb462f8a3adfe2060e4c6717",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
+      "templateKey": null,
+      "name": "가로7+x·세로5+x와 넓이증가28이라는 표현을 제시식에 직접 대응시킨다.",
+      "definition": "가로7+x·세로5+x와 넓이증가28이라는 표현을 제시식에 직접 대응시킨다.",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 활용",
+        "l3": "도형",
+        "l4": "길이·넓이"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_d54c981cc7ef5a74e27d093a2b84d9a4b3503826bb462f8a3adfe2060e4c6717"
+      ]
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_ae3cc9d705d77e14225b06ee8d516f5727ad1caff8933589598cdbcdb81e645f",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
+      "templateKey": null,
+      "name": "잘못 구한 곱 n(n+2)=48에서 자연수6을 정하고 처음 의도한 n(n-4)를 계산한다.",
+      "definition": "잘못 구한 곱 n(n+2)=48에서 자연수6을 정하고 처음 의도한 n(n-4)를 계산한다.",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 활용",
+        "l3": "수와 식",
+        "l4": "자리수·식의 값"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_ae3cc9d705d77e14225b06ee8d516f5727ad1caff8933589598cdbcdb81e645f"
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_ed6027dff729a296a265f3c6f05bea0c51d96fd0c95f06e9962510e07b6c9b68",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+      "templateKey": null,
+      "name": "둘레합16에서 두 변의 합4를 얻고 넓이비1:3을 변의비1:√3으로 바꿔 미지길이를 유리화한다.",
+      "definition": "둘레합16에서 두 변의 합4를 얻고 넓이비1:3을 변의비1:√3으로 바꿔 미지길이를 유리화한다.",
+      "rpmPath": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "근호를 포함한 식의 계산",
+        "l3": "혼합 계산",
+        "l4": "식의 값"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_ed6027dff729a296a265f3c6f05bea0c51d96fd0c95f06e9962510e07b6c9b68"
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_ed6027dff729a296a265f3c6f05bea0c51d96fd0c95f06e9962510e07b6c9b68",
+      "kind": "EXACT_LEAF_GAP",
+      "name": "둘레합과 넓이비에서 두 정사각형 변 구하기",
+      "definition": "기존해설의 실제 경로는 이차방정식이 아니라 넓이비의 제곱근과 일차 관계·유리화.",
+      "rpmPath": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "근호를 포함한 식의 계산",
+        "l3": "혼합 계산",
+        "l4": "식의 값"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_ed6027dff729a296a265f3c6f05bea0c51d96fd0c95f06e9962510e07b6c9b68"
+      ]
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_683587510a45d889a27ef2281b5f0c94ec8ca8dc56f6698ca9940a9c7001bcc4",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": null,
+      "name": "이차방정식의 두 근을 구해 a<b 순서로 배치하고 함수의 일반형을 완전제곱식으로 변형한다.",
+      "definition": "이차방정식의 두 근을 구해 a<b 순서로 배치하고 함수의 일반형을 완전제곱식으로 변형한다.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "일반형",
+        "l4": "완전제곱식 변형"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_683587510a45d889a27ef2281b5f0c94ec8ca8dc56f6698ca9940a9c7001bcc4"
+      ]
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_0e8806f1edae4bc07ebddc882fb655a0c3affa811d97aafa1a21a04c8286c826",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": null,
+      "name": "아래로 볼록 조건을 양수 이차항 계수에 직접 적용한다.",
+      "definition": "아래로 볼록 조건을 양수 이차항 계수에 직접 적용한다.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수와 그 그래프",
+        "l3": "y=ax²의 그래프",
+        "l4": "그래프의 모양"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_0e8806f1edae4bc07ebddc882fb655a0c3affa811d97aafa1a21a04c8286c826"
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_769352c2fef70eef357fe83bf2576645dbe41ac8f3db4d65a215a55add4262e3",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": null,
+      "name": "x축 대칭이면 이차항 계수는 절댓값이 같고 부호가 반대인 쌍임을 적용한다.",
+      "definition": "x축 대칭이면 이차항 계수는 절댓값이 같고 부호가 반대인 쌍임을 적용한다.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수와 그 그래프",
+        "l3": "y=ax²의 그래프",
+        "l4": "그래프의 모양"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_769352c2fef70eef357fe83bf2576645dbe41ac8f3db4d65a215a55add4262e3"
+      ]
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_024616db64f905c16e279cc5e9d02d050fdf6677125236dcaeff60814ac84508",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": null,
+      "name": "이차항 계수 절댓값의 최댓값5를 골라 가장 좁은 폭과 대응한다.",
+      "definition": "이차항 계수 절댓값의 최댓값5를 골라 가장 좁은 폭과 대응한다.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수와 그 그래프",
+        "l3": "y=ax²의 그래프",
+        "l4": "그래프의 모양"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_024616db64f905c16e279cc5e9d02d050fdf6677125236dcaeff60814ac84508"
+      ]
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_77ab7237f47bb70405c92823e7a0145cbb6ad05f49beff315cba6575e9cdcdac",
+      "kind": "SEMANTIC_TYPE_PROPOSAL",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "name": "주어진 함수에0과-1을 각각 대입한 함숫값을 더한다.",
+      "definition": "주어진 함수에0과-1을 각각 대입한 함숫값을 더한다.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수와 그 그래프",
+        "l3": "이차함수의 뜻",
+        "l4": "함숫값"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_77ab7237f47bb70405c92823e7a0145cbb6ad05f49beff315cba6575e9cdcdac"
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_3ea3245d719f215e9d2de8f71a9ea4fc5513cb9aff7d70626deae1adcfb66f6e",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": null,
+      "name": "지정된 x절편 두 점과 꼭짓점을 표준 계산으로 구한 뒤 밑변·높이에 바로 대응한다.",
+      "definition": "지정된 x절편 두 점과 꼭짓점을 표준 계산으로 구한 뒤 밑변·높이에 바로 대응한다.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "일반형",
+        "l4": "완전제곱식 변형"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_3ea3245d719f215e9d2de8f71a9ea4fc5513cb9aff7d70626deae1adcfb66f6e"
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_3ea3245d719f215e9d2de8f71a9ea4fc5513cb9aff7d70626deae1adcfb66f6e",
+      "kind": "EXACT_LEAF_GAP",
+      "name": "두 x절편과 꼭짓점 삼각형 넓이",
+      "definition": "일반형 변환을 좌표삼각형 넓이로 연결하는 목표.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "일반형",
+        "l4": "완전제곱식 변형"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_3ea3245d719f215e9d2de8f71a9ea4fc5513cb9aff7d70626deae1adcfb66f6e"
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_761e029f21e10ff1be76a1565e9f70003fdaf248c33b94378ad549f8f49dc1a0",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+      "name": "최솟값 조건으로 꼭짓점형을 만들고 y절편6을 대입해 계수4를 얻은 뒤 b를 읽는다.",
+      "definition": "최솟값 조건으로 꼭짓점형을 만들고 y절편6을 대입해 계수4를 얻은 뒤 b를 읽는다.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "그래프와 계수",
+        "l4": "조건으로 식 구하기"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_761e029f21e10ff1be76a1565e9f70003fdaf248c33b94378ad549f8f49dc1a0"
+      ]
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7295f75d4802230a98bb42507df61081a577e71e300932f9a3647a9d2de360bc",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+      "templateKey": "TPL_M3_FIND_PARAMETER_RANGE_AVOIDING_SPECIFIC_QUADRANT",
+      "name": "최댓값과 축에서 꼭짓점을 정하고 오른쪽 구간의 부호를 y절편≤0 조건으로 해석하여 매개변수 범위를 구한다.",
+      "definition": "최댓값과 축에서 꼭짓점을 정하고 오른쪽 구간의 부호를 y절편≤0 조건으로 해석하여 매개변수 범위를 구한다.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "그래프와 계수",
+        "l4": "그래프 위치"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_7295f75d4802230a98bb42507df61081a577e71e300932f9a3647a9d2de360bc"
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_3c9138d6401b41ab341f19bde9fff502680d209f42f3c7f6174cb51fe27ac71e",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_EXTREMA",
+      "templateKey": null,
+      "name": "차6인 두 수를 x,x+6으로 놓은 곱을 완전제곱식으로 바꾸고 최소시 두 수의 절댓값을 더한다.",
+      "definition": "차6인 두 수를 x,x+6으로 놓은 곱을 완전제곱식으로 바꾸고 최소시 두 수의 절댓값을 더한다.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "일반형",
+        "l4": "최대·최소"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_3c9138d6401b41ab341f19bde9fff502680d209f42f3c7f6174cb51fe27ac71e"
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_9729f7bfe7f50e467b1dc99d238fa613ad6f073b1aa08bb1300c368ffbb87255",
+      "kind": "PROJECTION_MAPPING_PENDING",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": null,
+      "name": "그림의 꼭짓점·y절편을 읽어 식을 정하고 평행이동값과 일정한 가로폭의 곡선사이 넓이까지 구하는 연계 소문항이다.",
+      "definition": "그림의 꼭짓점·y절편을 읽어 식을 정하고 평행이동값과 일정한 가로폭의 곡선사이 넓이까지 구하는 연계 소문항이다.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "그래프와 계수",
+        "l4": "조건으로 식 구하기"
+      },
+      "reason": "실제 문제·기존해설에 근거한 의미 제안. 공식 키/등록은 출고 단계에서 resolver 및 정본 보강 확인.",
+      "supportingQuestionUids": [
+        "qid_v1_9729f7bfe7f50e467b1dc99d238fa613ad6f073b1aa08bb1300c368ffbb87255"
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_9729f7bfe7f50e467b1dc99d238fa613ad6f073b1aa08bb1300c368ffbb87255",
+      "kind": "EXACT_LEAF_GAP",
+      "name": "그래프6소문항의 계수·이동·곡선사이 넓이",
+      "definition": "단일한 계수결정 또는 넓이 leaf로 전부를 확정하지 않고 단계별 목표를 보존.",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "그래프와 계수",
+        "l4": "조건으로 식 구하기"
+      },
+      "supportingQuestionUids": [
+        "qid_v1_9729f7bfe7f50e467b1dc99d238fa613ad6f073b1aa08bb1300c368ffbb87255"
+      ]
+    }
+  ],
+  "assetReview": [
+    {
+      "ordinal": 20,
+      "field": "content",
+      "sourcePath": "archive/assets/images/19_가산중_1학기_기말_중3_수학/q20.png",
+      "localPath": "/workspace/scratch/e45ff6c78c51/workers/B/assets/E071/20-content-1.png",
+      "sha256": "b86fd34c72144b94f41a1df42088ee5264c35e1bbe0e7ba83ed9fe0faa00a1bb",
+      "status": "READ"
+    }
+  ],
+  "sourcePatches": [
+    {
+      "ordinal": 4,
+      "before": {
+        "level": "하",
+        "difficultyBucket": 1
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2
+      }
+    },
+    {
+      "ordinal": 7,
+      "before": {
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식"
+      },
+      "after": {
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "subUnit": "이차방정식의 활용"
+      }
+    },
+    {
+      "ordinal": 10,
+      "before": {
+        "level": "상",
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "subUnit": "이차방정식의 활용"
+      },
+      "after": {
+        "level": "중",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "subUnit": "근호를 포함한 식의 계산"
+      }
+    },
+    {
+      "ordinal": 18,
+      "before": {
+        "level": "상"
+      },
+      "after": {
+        "level": "중"
+      }
+    },
+    {
+      "ordinal": 19,
+      "before": {
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용"
+      },
+      "after": {
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프"
+      }
+    },
+    {
+      "ordinal": 20,
+      "before": {
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용"
+      },
+      "after": {
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프"
+      }
+    }
+  ],
+  "notes": [
+    "全문항의 실제 stem·choices·기존solution을 직접 읽고 의미판정. 수학 전면 재풀이 PASS는 주장하지 않음.",
+    "원문 내용·정답·해설·이미지·UID·문항 순서는 수정하지 않고 메타 수정 및 제안을 제출한다.",
+    "기존 완료 검토와 정본을 재사용하고 현재 분류 불일치를 조정한다."
+  ],
+  "provenance": {
+    "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
+    "semanticReviewer": "meta_b",
+    "reviewScope": "METADATA_ONLY",
+    "sharedRegistration": "NOT_PERFORMED",
+    "integratedBy": "GPT_ROOT_E45FF6C78C51",
+    "authorArtifactSha256": "b458d114033126e04560526dd09dd1fef2603b8c3370c059dd4c8da17c5de613",
+    "authorFourSlotSha256": "921c88c704682d974ae65849ed46ba16f21d7cad1f47fe99aa829e2a6587b81a",
+    "independentArtifactSha256": "0a3293fd5e10777bf45d479f03857ff9010bb1c2d83a815dd5bca22df5cd16ff",
+    "comparisonMetadataProjection": "ONLY_RELEVANT_METADATA_FIELDS_RETAINED",
+    "mathematicalVerification": "NOT_PERFORMED"
+  },
+  "sourceFinalBlob": "1d710494940a779159d93ecccfc5f729bc48671f",
+  "sourceFinalSha256": "de11be08aa8ce31e233fd135c2be5d4756ce16161f39cc0751f82698311152f8",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "examKey": "E071",
+    "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+    "author": "meta_b",
+    "reviewer": "meta_c_resume_20261115",
+    "owner": "GPT_ROOT_E45FF6C78C51/C",
+    "at": "2026-11-15T00:19:06.351495+00:00",
+    "sourceArchiveFile": "original/middle/m3/1final/19_가산중_1학기_기말_중3_수학.js",
+    "sourceBlob": "9a968bdfcf8e665d09c11b5f5b782b88d0744651",
+    "inputs": {
+      "review": {
+        "path": "/workspace/scratch/e45ff6c78c51/workers/B/E071.review.json",
+        "sha256": "b458d114033126e04560526dd09dd1fef2603b8c3370c059dd4c8da17c5de613"
+      },
+      "fourSlot": {
+        "path": "/workspace/scratch/e45ff6c78c51/workers/B/E071.4slot.json",
+        "sha256": "921c88c704682d974ae65849ed46ba16f21d7cad1f47fe99aa829e2a6587b81a"
+      }
+    },
+    "sampledOrdinals": [
+      10,
+      18,
+      20
+    ],
+    "additionalChangedOrBoundaryOrdinals": [],
+    "scope": "METADATA_ONLY: listed source stems, choices, existing solutions, author decisions and exact 4slot quotes directly compared. Other completed author judgments reused; no full-exam rereview claim.",
+    "viewedAssets": [
+      {
+        "path": "/workspace/scratch/e45ff6c78c51/workers/B/assets/E071/20-content-1.png",
+        "sha256": "b86fd34c72144b94f41a1df42088ee5264c35e1bbe0e7ba83ed9fe0faa00a1bb"
+      }
+    ],
+    "findings": [
+      {
+        "ordinal": 10,
+        "status": "PASS",
+        "note": "실제해설이둘레합·넓이비를제곱근비와유리화로푸는경로임을확인. 이차방정식으로억지분류하지않은parentcontext와exactgap·중3수용."
+      },
+      {
+        "ordinal": 18,
+        "status": "PASS",
+        "note": "최대점(-2,3)에서오른쪽부호를y절편≤0로바꿔사분면배제조건을해석한중3수용. 끝점포함보존."
+      },
+      {
+        "ordinal": 20,
+        "status": "PASS_AFTER_REVISION",
+        "note": "실물꼭짓점(1,-2)·y절편1확인. 이미지뒤6개소문항의실제목표·x≤1조건을담는정확인용보완확인. 앞문항이안내하지않는마지막곡선등적재배치4/B34와나머지부분난도보존수용."
+      }
+    ],
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sourceMutation": "NONE"
+  },
+  "sourceWriterDeferred": []
+}
