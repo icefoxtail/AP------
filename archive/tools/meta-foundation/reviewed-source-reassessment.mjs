@@ -234,13 +234,16 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     let value, origin;
     if (Object.hasOwn(accepted, field)) { value = accepted[field]; origin = "NATIVE_AFTER"; }
     else if (text(row[field])) { value = row[field]; origin = "NATIVE_ITEM_FIELD"; }
-    else if (text(committedBank[ordinal - 1][field])) { value = committedBank[ordinal - 1][field]; origin = "REVIEW_COMMIT_SOURCE_FIELD"; }
-    else if (field === "primaryMethod" && [patch.after.primaryMethod, patch.after.decisiveStep,
+    else if (field === "primaryMethod" && !equal(committedBank[ordinal - 1][field], row.decisiveStep) &&
+      [patch.after.primaryMethod, patch.after.decisiveStep,
       question.primaryMethod, question.decisiveStep].every(v => equal(v, row.decisiveStep))) {
       // This schema's reviewed decisive step may be carried verbatim as both rationale
-      // fields. It is not a separately authored method judgment or new mathematical QA.
+      // fields, including when the review commit still carries an older source method.
+      // Keep already-matching source provenance stable for issued receipts. This is
+      // not a separately authored method judgment or new mathematical QA.
       value = row.decisiveStep; origin = "NATIVE_DECISIVE_STEP_VERBATIM";
-    } else fail(`rationale has no immutable native evidence: ${field}`);
+    } else if (text(committedBank[ordinal - 1][field])) { value = committedBank[ordinal - 1][field]; origin = "REVIEW_COMMIT_SOURCE_FIELD"; }
+    else fail(`rationale has no immutable native evidence: ${field}`);
     if (!text(value) || Object.hasOwn(question, field) && !equal(question[field], value))
       fail(`current source rationale differs from native evidence: ${field}`);
     accepted[field] = value;
