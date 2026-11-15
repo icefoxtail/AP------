@@ -302,7 +302,10 @@ window.questionBank = [
     "sourceQid": 6,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q06-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원문 그래프의 두 교점 중 왼쪽은 2와 3 사이의 r, 오른쪽은 5이다. 수직선에서 r과 5 사이가 f(x)<g(x)인 구간이며, 그 안의 자연수 후보 3과 4를 표시한다.",
+    "solutionImageCaption": "0<2/3<1이므로 주어진 부등식은 f(x)<g(x)와 같다. 원문 그래프에서 교점은 r∈(2,3), 5이고 두 교점 사이에서 성립한다. 자연수 후보는 3, 4이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
