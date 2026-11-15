@@ -108,6 +108,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 이 계열의 오류 코드: `<FAMILY>_SOURCE_DOMAIN_REQUIRES_*`/`_SOURCE_DOMAIN_UNSUPPORTED`(정의역 형식이 위 표와 다르다. 표대로 고친다), `<FAMILY>_SOURCE_SCHEMA_INVALID`/`*_GRAMMAR_REQUIRED`(계수 개수·형식이 다르다), `*_NONZERO_*_REQUIRED`/`*_POSITIVE_SLOPE_REQUIRED`(0인 계수나 음의 기울기 반지름식), `*_OUTSIDE_OVERVIEW`/`*_OUTSIDE_VIEWPORT`(점근선·경계·꺾임점이 viewport 밖. viewport나 domain을 넓힌다), `*_BELOW_PROFILE_FLOOR`/`*_BELOW_DISPLAY_RESOLUTION`(특징이 너무 작아 학생 화면에서 구분되지 않는다. 범위를 좁히거나 UNSUPPORTED), `*_OVERVIEW_POLICY_REQUIRED`/`*_FEATURE_INVENTORY_MISMATCH`(plan 형식이 계약과 다르다. 계약 전문을 다시 읽는다), `*_BASE_GRAMMAR_REQUIRED`/`*_BASE_OUT_OF_RANGE`/`*_BASE_RADICAL_NOT_SQUARE_FREE`(밑 형식·범위·근호), `EXP_LOG_PAIR_PLAN_INVALID`/`EXP_LOG_PAIR_NO_SHARED_WINDOW`/`EXP_LOG_PAIR_WINDOW_TOO_WIDE`(두 곡선 plan·공통 창), `UNSUPPORTED_CAPABILITY`(위 한계를 벗어난 plan이다).
 
+지수·로그 한 쌍에서 구해야 하는 계수나 밑을 그림에 노출하지 않으려면 해당 곡선 행에 한 글자 id와 `formulaLabel:"NAME"`을 준다. 실제 식으로 곡선을 검증하고, 그림 곁에는 그 id를 쓴 `f(x)` 같은 이름만 적는다.
+
 ### 3-3. 이어진 조각 그래프(이차식 조각 최대 4개)와 직선
 
 `|x²-4x-12|`, `x²-2|x|+1`, 이차함수 두 개를 구간별로 이은 `h(x)`처럼 **끊어지지 않는** 한 함수에 수평선 또는 **기울어진 직선**을 겹쳐 교점을 보이는 풀이에 쓴다. `capability:"piecewise-polynomial-spike-v1"`, `graphPlan.family:"piecewise-polynomial"`.
@@ -299,6 +301,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 **엄격부등식의 교점.** 사인·코사인의 구간형 그림에서 기준선과 만나는 점이 해에 포함되지 않을 때 해당 `referenceLines` 행에 `"intersectionMarker":"OPEN"`을 더한다. 엔진이 같은 교점을 계산해 열린 원으로 표시한다. `intersectionCount`에는 그 교점도 센다. 옵션을 생략하면 기존처럼 채운 점을 그린다. `accessibilityDescription`은 plan 최상위에 한 줄로 써서 SVG 설명에 두 교점의 포함 여부와 곡선·기준선 관계를 전한다.
 
 일반형 삼각함수 구간(v2)에서 원본에 구간 끝 값이 적혀 있지 않으면 `graphPlan.hideIntervalEndLabels:["END"]`처럼 지정한다. `"START"`와 `"END"`를 각각 선택할 수 있다. 지정한 끝의 자동 숫자 라벨만 숨기며 열린·닫힌 점과 축 눈금, 보조 도형은 각각의 기존 조건을 따른다.
+
+사인·코사인의 각속도가 `ratePi`일 때는 같은 전체 실수 정의역을 유지하고 `displayWindowX:["-3/5","23/4"]`처럼 일반 x 단위의 표시 범위를 지정한다. `axisTickValues`에도 일반 x 값을 넣는다. `displayWindowPi`와 `axisTickPi`를 함께 쓰지 않는다. 기존 `displayGuides`와 `showOriginLabel`을 쓸 수 있다.
 
 ### 3-8. 중학교 평면도형: 각·선분·호 표식이 있는 축 없는 그림 (`PLANE_FIGURE_v1`, `planeMarks`)
 
@@ -933,8 +937,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - `LINE`: `coefficients:[c0,c1]` = `y=c0+c1*x`. `RATIONAL`: `numerator:[a0,a1]`, `denominator:[d0,d1]` = `y=(a0+a1*x)/(d0+d1*x)`(분모의 x 계수는 0이 아니고, 분자가 극점에서 0인 구멍은 `MULTI_CURVE_RATIONAL_DEGENERATE`). 극점이 `domain` 안에 있으면 두 쪽이 각각 가지(`CURVE_<id>_L`/`_R`)로 그려지고, 축 위가 아닌 점근선마다 점선 한 줄과 `x=p`·`y=q` 글자가 나온다. `SQRT`: `radicand:[c0,c1]`, `amplitude`(기본 1, 음수 가능), `offset`(기본 0) = `y=offset+amplitude*sqrt(c0+c1*x)`. 시작점에 검은 점과 좌표가 나온다.
 - **분자가 이차인 유리곡선 `numerator:[a0,a1,a2]`(2026-11-12)** = `y=(a2*x^2+a1*x+a0)/(d0+d1*x)`. 문제의 함수가 `x+16/(x+2)`처럼 일차식+반비례꼴일 때 쓴다(`numerator:["16","2","1"]`, `denominator:["2","1"]`). 세로 점근선 `x=p`는 일차 분자와 같이 점선과 글자로 나오지만 **수평 점근선은 없다**. 비스듬한 점근선 `y=qx+r`(q=a2/d1)은 엔진이 그리지 않으니 같은 그림에 `LINE` 곡선 `{"kind":"LINE","coefficients":[r,q],"style":"DASHED","label":"y=x"}`로 직접 그린다(곡선이 하나뿐이어도 이 선이 둘째 곡선이다). `a2`가 0이면 `MULTI_CURVE_COEFFICIENT_INVALID:<id>`(일차 분자로 쓴다), 분자가 극점에서 0인 구멍은 `MULTI_CURVE_RATIONAL_DEGENERATE:<id>`, `abs:true`는 `MULTI_CURVE_COEFFICIENT_INVALID:<id>`, `inverseOf`의 원본으로는 `MULTI_CURVE_INVERSE_UNSUPPORTED`이다. `x>-2`처럼 극점이 정의역 끝이면 `domain:["-2","9"]`, `domainStates:["OPEN","NONE"]`로 쓴다. 가장 낮은 점은 `overlays.points`의 `{"id":"M","x":"2","y":"6","unnamed":true}`로 표시하고 좌표(답)는 쓰지 않는다. **교육과정 밖 그래프이니 문제 자체가 그 함수일 때만 쓰고 풀이에 없는 치환·우회 그래프로 쓰지 않는다.** 예: 순천고 2학기 중간 q05(골든 `item156obliquerationalq05`).
 
-- `EXPONENTIAL`에는 정수 밑 문자열 `base` (`"2"`부터 `"1000"`까지), 유리수 계수 `[A,k,C]`, 선택 수평 이동 `shiftX`, 그리고 표시 구간 `domain`을 준다. `y=A·base^{k(x-shiftX)}+C`에서 (A)와 (k)는 0이 아니어야 한다. `viewport`도 명시하며 역함수나 절댓값 옵션은 적용하지 않는다.
-- 같은 밑과 율의 두 지수함수 사이 영역에는 `regions:[{id:"band",between:["f","g"],from:"4",to:"7",integerColumns:true}]`처럼 정수 열을 요청할 수 있다. 끝 열은 실선으로, 안쪽 열은 점선으로 나눈다. 각 열의 정수점 개수만 표시한다. 개별 점이나 합계는 그리지 않는다. 2~8개의 열을 지원하며 각 열에서 두 지수의 지수부가 정수여야 한다.
+- `EXPONENTIAL`에는 밑 문자열 `base` (`"2"`, `"107/100"`처럼 1이 아닌 양의 기약 정수·분수, 분자와 분모가 각각 1000 이하), 유리수 계수 `[A,k,C]`, 선택 수평 이동 `shiftX`, 그리고 표시 구간 `domain`을 준다. `y=A·base^{k(x-shiftX)}+C`에서 (A)와 (k)는 0이 아니어야 한다. `viewport`도 명시하며 역함수나 절댓값 옵션은 적용하지 않는다.
+- 정수 밑과 율이 각각 같은 두 지수함수 사이 영역에는 `regions:[{id:"band",between:["f","g"],from:"4",to:"7",integerColumns:true}]`처럼 정수 열을 요청할 수 있다. 끝 열은 실선으로, 안쪽 열은 점선으로 나눈다. 각 열의 정수점 개수만 표시한다. 개별 점이나 합계는 그리지 않는다. 2~8개의 열을 지원하며 각 열에서 두 지수의 지수부가 정수여야 한다.
 
 - 유리함수의 극점이 정의역 끝점이면 그 끝점은 반드시 열린 끝점(배열형 `domain`의 `domainStates` 또는 객체형 `domain`의 `fromState`·`toState`에서 해당 끝을 `OPEN`으로 지정)이어야 한다. 이때 해당 쪽의 한 가지(from이면 CURVE_<id>_R, to이면 CURVE_<id>_L)만 그리고, 극점에는 유한한 끝점 표시를 그리지 않는다. 닫힌 극점 끝점은 거부하며, 정의역 내부 극점은 기존처럼 LEFT/RIGHT 두 가지로 나눈다.
 - 이런 곡선은 모양만으로 틀이 정해지지 않으므로 **창** `graphPlan.viewport:[xmin,xmax,ymin,ymax]`를 준다(틀은 이 창에 여백을 둘러 만들고, 곡선은 틀 위·아래에서 잘린다). `domain`을 생략하면 창의 x 범위(`SQRT`는 근호가 0인 점에서 창 끝까지)를 쓴다. 창이 없으면 `MULTI_CURVE_WINDOW_REQUIRED:<id>`.
