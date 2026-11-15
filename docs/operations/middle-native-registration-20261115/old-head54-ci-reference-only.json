@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "pr2172-exact-head-ci-observation-v1",
+  "status": "SUPERSEDED_NOT_FINAL_GATE",
+  "repository": "icefoxtail/AP------",
+  "pullRequest": 2172,
+  "expectedHead": "54fd96be659636a1f44c56923f03f8d8f07245d2",
+  "expectedTreeFromRoot": "20a1a43c01489bd64ce5432194215af66171f1be",
+  "ciRun": 43754865872,
+  "testJob": 132936669592,
+  "activeStep": 11,
+  "expectedNativeProof": {
+    "requestCount": 29,
+    "uniqueUidCount": 166,
+    "outputManifestCount": 73,
+    "status": "NOT_YET_OBSERVED_IN_CI_ARTIFACT"
+  },
+  "completedRuns": [
+    {
+      "runId": 43754865834,
+      "jobs": [
+        {
+          "id": 132936624790,
+          "name": "shared-meta",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "runId": 43754865905,
+      "jobs": [
+        {
+          "id": 132936624931,
+          "name": "Archive2 50-question solution Chrome",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 132936625113,
+          "name": "Archive2 runtime contract",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "runId": 43754865836,
+      "jobs": [
+        {
+          "id": 132936624808,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 132936625773,
+          "name": "register",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    }
+  ],
+  "logSummaries": [
+    {
+      "job": 132936624790,
+      "lineCount": 500,
+      "tapSummary": [
+        "2026-11-15T19:53:44.6142141Z # tests 20",
+        "2026-11-15T19:53:44.6142336Z # suites 0",
+        "2026-11-15T19:53:44.6142565Z # pass 17",
+        "2026-11-15T19:53:44.6142763Z # fail 3",
+        "2026-11-15T19:53:44.6142954Z # cancelled 0",
+        "2026-11-15T19:53:44.6143187Z # skipped 0",
+        "2026-11-15T19:53:44.6143352Z # todo 0",
+        "2026-11-15T19:53:44.6143544Z # duration_ms 5645.785665"
+      ],
+      "specific": []
+    },
+    {
+      "job": 132936624931,
+      "lineCount": 2453,
+      "tapSummary": [
+        "2026-11-15T19:55:13.1183448Z # tests 60",
+        "2026-11-15T19:55:13.1183870Z # suites 0",
+        "2026-11-15T19:55:13.1184141Z # pass 60",
+        "2026-11-15T19:55:13.1184392Z # fail 0",
+        "2026-11-15T19:55:13.1184641Z # cancelled 0",
+        "2026-11-15T19:55:13.1184887Z # skipped 0",
+        "2026-11-15T19:55:13.1185090Z # todo 0",
+        "2026-11-15T19:55:13.1185326Z # duration_ms 192.447728"
+      ],
+      "specific": []
+    },
+    {
+      "job": 132936625113,
+      "lineCount": 3741,
+      "tapSummary": [
+        "2026-11-15T19:58:06.8688318Z # tests 264",
+        "2026-11-15T19:58:06.8688642Z # suites 0",
+        "2026-11-15T19:58:06.8688943Z # pass 264",
+        "2026-11-15T19:58:06.8689290Z # fail 0",
+        "2026-11-15T19:58:06.8689624Z # cancelled 0",
+        "2026-11-15T19:58:06.8689945Z # skipped 0",
+        "2026-11-15T19:58:06.8690153Z # todo 0",
+        "2026-11-15T19:58:06.8690373Z # duration_ms 92224.182284"
+      ],
+      "specific": [
+        "2026-11-15T19:58:19.7652660Z ARCHIVE2_FINDER_FILTER_CHROME_PASS {\"desktop\":{\"grades\":6,\"terms\":4,\"tall\":true,\"oneRow\":true,\"overflow\":false,\"similar\":true},\"fold\":{\"curriculum\":true,\"subject\":true,\"school\":true,\"from\":true,\"to\":true,\"overflow\":false},\"mobile\":{\"buttons\":[{\"label\":\"1학기 중간\",\"visible\":true},{\"label\":\"1학기 기말\",\"visible\":true},{\"label\":\"2학기 중간\",\"visible\":true},{\"label\":\"2학기 기말\",\"visible\":true}],\"overflow\":false},\"mobileTermSelection\":4,\"repeatTapClears\":true}"
+      ]
+    },
+    {
+      "job": 132936624808,
+      "lineCount": 27418,
+      "tapSummary": [],
+      "specific": [
+        "2026-11-15T19:56:23.6390068Z     \"scopeDigest\": \"ae538a00a64424c83470acd1a6f79d0f53fb7d7a3d6b2e412bbf9e98423a8240\",",
+        "2026-11-15T19:56:23.8004175Z       \"scopeDigest\": \"ae538a00a64424c83470acd1a6f79d0f53fb7d7a3d6b2e412bbf9e98423a8240\","
+      ]
+    }
+  ],
+  "sharedDiagnostics": {
+    "tapTests": 20,
+    "tapPass": 17,
+    "tapFail": 3,
+    "browserDiagnostic": "failure: image path assertion",
+    "originalAccess": "OUTPUT_TECHNICAL_PASS",
+    "warningContract": {
+      "headGitBlob": "b12c1a6d52f6015722f2a44f17491c8ad61e1667",
+      "baselineGitBlob": "b12c1a6d52f6015722f2a44f17491c8ad61e1667",
+      "bothContinueOnError": true,
+      "previousOccurrenceOfSameErrors": "NOT_RETRIEVED",
+      "priorFailureOccurrence": "UNKNOWN: baseline aa workflow bytes and quarantine map verified; baseline job logs not retrieved."
+    }
+  },
+  "existingQuarantine": {
+    "fileCount": 8,
+    "headAndAaMapIdentical": true,
+    "separateFromSharedDiagnostics": true
+  },
+  "remoteMutations": 0,
+  "localHeavyValidationRuns": 0,
+  "scopePreview": {
+    "artifactId": 14178141924,
+    "zipSha256": "4c399a43d8a5f70611a2ebb9fa88a71ab65c5844c96140cd329461a20f3bc9bd",
+    "semanticEntrySha256": "0c854681c8cd97d59123dbca53e19f2f9fdb2d151122988f8b8f0d2a66373ce6",
+    "checkoutSha": "0e7ffaaf99f68eb70ac93a4616b0d1400b6231e1",
+    "eventHead": "54fd96be659636a1f44c56923f03f8d8f07245d2",
+    "write": false,
+    "boundInputs": 29,
+    "deferredExcludedTargets": 660,
+    "applied": 0,
+    "studentFilesChanged": 0,
+    "unrelatedMetadataChanged": 0,
+    "operationalRegistrationClaim": false
+  },
+  "browser": {
+    "solutionLoading": {
+      "artifactId": 14177827540,
+      "zipSha256": "c8607260a9fdc83be568eaf0c0e67e8f0b743d0eda6018bb83232129aede6d88",
+      "entrySha256": "201a641139548e4582cc3c0308ec1e4056b5a22c0eefe9f25844d3356cbe33e3",
+      "pass": true,
+      "rows": 16,
+      "comparisons": 6,
+      "repeats": 2
+    },
+    "middleRpm": {
+      "artifactId": 14177039297,
+      "zipSha256": "2039c38a91fa6300bfad1e553647d784c10620d49cd22e2afb44d9272b49457d",
+      "entrySha256": "4e082bdcf185ae93421a3167c8fee2003dfd49ea40225a2aef34ac87e837454e",
+      "status": "PASS_WITH_REAL_DATA_GAPS",
+      "dataGaps": 13
+    }
+  },
+  "ciRegistrationProofStorage": {
+    "configuredUpload": false,
+    "source": "Exact preceding ci.yml has no proof artifact upload; proof.json is local RUNNER_TEMP and verify-local consumes it.",
+    "rawProofRecovered": false
+  },
+  "supersededBy": "ec367338e1aa40fb67919cb6cff8f96330ee6b1d",
+  "ciLastObserved": {
+    "registrationPreparation": "success",
+    "studentSearch": "success",
+    "footprint": "success",
+    "overallTestJob": "in_progress",
+    "runTests": "in_progress",
+    "finalTestTotals": "NOT_OBSERVED",
+    "verifyLocalFullNativeReplay": "NOT_OBSERVED_COMPLETE",
+    "proofRawRecovered": false
+  },
+  "currentOrProductionCompletionClaim": false,
+  "finalNativeCountVerification": "NOT_COMPLETED_FOR_THIS_OBSERVATION"
+}

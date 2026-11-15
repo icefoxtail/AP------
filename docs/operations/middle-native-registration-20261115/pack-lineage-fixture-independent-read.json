@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "pack-lineage-fixture-independent-read-v1",
+  "reviewedCommit": "7075d3ed53780e89677ff12c5be77a9c130f1352",
+  "base": "2304745e9ca00353602052cf6b25e50285822d1f",
+  "reviewer": "/root/audit_m2",
+  "status": "PASS_READ_ONLY",
+  "blockingFindings": 0,
+  "scope": [
+    "tests/archive-main-merge-meta.test.mjs: approvedBindingVersionFixture only"
+  ],
+  "checks": {
+    "singleChangedFile": true,
+    "outsideFixtureBytesEqual": true,
+    "assertionsUnchanged": true,
+    "productionCodeChanges": 0,
+    "approvalOrSourceChanges": 0,
+    "curriculumCourseValuesCopiedFromExistingBindingRows": true,
+    "activeConceptShardInventoryExplicitlyEmpty": true,
+    "loadedIndexMatchesExactCurrentFixtureIndex": true,
+    "existingSourceBindingDigestPreservedWithoutRegeneration": true,
+    "rendererRefreshContractRemainsSeparate": true
+  },
+  "authorVerification": {
+    "tests": 21,
+    "pass": 21,
+    "fail": 0,
+    "skip": 0,
+    "reportSha256": "191c7e861408ac96689e201db353ea08ef420f2104aae0a8d8a8e5d4b4a91c01",
+    "logSha256": "28d6b0a1de8b42fb83a0e80ecaf73181542ff9f1b22783adf734aa89e5e04eff",
+    "independentlyRerun": false
+  },
+  "limits": [
+    "Independent review read exact Git diff and preserved boundaries; no local test rerun.",
+    "Does not assert final integration CI or production registration completion."
+  ]
+}

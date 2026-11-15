@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "fixture-only-lineage-integration-verification-v1",
+  "base": "2304745e9ca00353602052cf6b25e50285822d1f",
+  "commit": "7075d3ed53780e89677ff12c5be77a9c130f1352",
+  "tree": "a34798344b7b873265322cbc6b971e1c3378402b",
+  "files": [
+    {
+      "path": "tests/archive-main-merge-meta.test.mjs",
+      "beforeSha256": "2f6fff944c9237b074e7bea93d880b663a46795d2bcaafb705ddf08052f89722",
+      "sha256": "ab492ac3e61e2f2a16d9a67b4da449eb393d8a2f6fefd7f4b2b57de600a641fe",
+      "gitBlobSha1": "91fc783c2a1c38f20d06e108ed281b1a1982e2d2",
+      "sizeBytes": 180201
+    }
+  ],
+  "scope": "approvedBindingVersionFixture only",
+  "outsideFixtureBytesUnchanged": true,
+  "existingAssertionsUnchanged": true,
+  "productionCodeChanges": 0,
+  "sourceOrAssetChanges": 0,
+  "productionRequestChanges": 0,
+  "productionApprovalsChanged": 0,
+  "changes": [
+    "Keep the exact existing curriculum/course scope in the generated ACTIVE pack.",
+    "Include the empty concept-shard inventory and synchronize the loaded registry index with current bytes.",
+    "Retain the existing durable source-review digest when refreshing the separate renderer binding."
+  ],
+  "verification": {
+    "command": "node --test --test-name-pattern='^(official pack binding lineage|historical issued pack lineage|issued pack lineage remains)' tests/archive-main-merge-meta.test.mjs",
+    "tests": 21,
+    "pass": 21,
+    "fail": 0,
+    "skip": 0,
+    "logPath": "/workspace/scratch/987d4bf32f40/AP-native-pack-lineage-fixture/.tmp/pack-lineage-target21-final.log",
+    "logSha256": "28d6b0a1de8b42fb83a0e80ecaf73181542ff9f1b22783adf734aa89e5e04eff",
+    "gitDiffCheck": "PASS"
+  },
+  "baselineFailureEvidence": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-native-pack-lineage-fixture/.tmp/pack-lineage-original-diagnostic.log",
+      "sha256": "aac0101cbc6bae435f8fb2fcf1442b1c110dfd23558ca9fd2ef8517bc46b5073"
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-native-pack-lineage-fixture/.tmp/pack-lineage-index-diagnostic.log",
+      "sha256": "d4fc6f5c9ebaeadaf4fa058f1cbbfdce3aa8c1d006a21e7e908eea7bff2166a0"
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-native-pack-lineage-fixture/.tmp/pack-lineage-renderer-diagnostic.log",
+      "sha256": "1fe2c2ddbb10d5036b4808b46ef65ab6090b1271f9739e4d4217e8e995c5ea74"
+    }
+  ],
+  "fullSuiteReexecution": "NOT_RUN_SCOPE_LIMITED_TO_21_PREVIOUS_FAILURES",
+  "remoteWrite": false
+}
