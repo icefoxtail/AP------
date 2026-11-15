@@ -1396,8 +1396,8 @@ window.questionBank = [
       "sourceGapEvidence": "review/SOURCE_FIDELITY_AND_REPAIR_AUDIT.json",
       "replacementAsset": {
         "path": "assets/images/21_금당중_2학기_중간_중3_수학/q19-engine-upgrade.svg",
-        "bytes": 1707,
-        "sha256": "06cbf7f119826d83c3f4649741ba220792a0302d7e709031e76b30971ac62c6b"
+        "bytes": 17565,
+        "sha256": "18e4ea153a2d53d297f2cbc74994215e42cb9bf79ea8649ffe164c00937af4f7"
       },
       "rationale": "Direct review established source non-uniqueness. This independently authored complete M3 item is a replacement, not original recovery; no missing original conditions were inferred from answer choices.",
       "originalCropPreserved": true
