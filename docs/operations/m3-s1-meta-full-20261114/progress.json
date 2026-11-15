@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 86,
-    "reviewedQuestions": 2043
+    "reviewedExams": 87,
+    "reviewedQuestions": 2066
   },
   "duplicateUids": [],
   "exams": [
@@ -8741,9 +8741,33 @@
       ],
       "solutionCount": 23,
       "existing4slot": null,
-      "status": "PENDING",
+      "status": "REVIEWED_PROPOSAL",
       "assignedTo": "meta_c",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "f3f8cd1585444251a8f10ab5955cb46e3db11176",
+      "reviewer": "meta_c",
+      "independentReviewer": "meta_a",
+      "integratedBy": "GPT_ROOT_E0C948452E80",
+      "sampledOrdinals": [
+        8,
+        16,
+        20
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E087",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 3,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 0,
+      "sourceChangedFields": 0,
+      "contentDebtCount": 0,
+      "typeProposalCount": 34,
+      "evidenceDebtOrdinals": [],
+      "undecidedDifficultyOrdinals": [],
+      "difficultyPolicyDebtOrdinals": []
     },
     {
       "key": "E088",
@@ -10626,7 +10650,7 @@
       "nextAction": "SEMANTIC_REVIEW"
     }
   ],
-  "nextAction": "CONTINUE_E087_AND_PENDING_ONLY",
+  "nextAction": "CONTINUE_E088_AND_PENDING_ONLY",
   "resumedAt": "2026-11-14T23:58:38.098191+00:00",
   "authorityMainChecked": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
   "resumeAuthority": {
@@ -10642,8 +10666,8 @@
     "predecessorRevision": 6,
     "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
   },
-  "updatedAt": "2026-11-15T06:03:32.143904+00:00",
-  "lastPublishedHeadBeforeCurrent": "bfc61191177362730d8a8d5d8130a2ca75cbba4a",
+  "updatedAt": "2026-11-15T06:03:47.611906+00:00",
+  "lastPublishedHeadBeforeCurrent": "2b2033976fcacc74fd4988f68b1ce6c84fdf7f2f",
   "resumeHistory": [
     {
       "basis": "EXPLICIT_USER_DIRECTION_TO_RESUME_DESPITE_UNCONFIRMED_STALE_RUNNING",
@@ -10670,11 +10694,11 @@
       "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
     }
   ],
-  "lastCompletedExam": "E086",
-  "nextIncompleteExam": "E087",
-  "remainingExams": 29,
-  "remainingQuestions": 707,
-  "lastVerifiedRemoteHeadBeforeCurrent": "bfc61191177362730d8a8d5d8130a2ca75cbba4a",
+  "lastCompletedExam": "E087",
+  "nextIncompleteExam": "E088",
+  "remainingExams": 28,
+  "remainingQuestions": 684,
+  "lastVerifiedRemoteHeadBeforeCurrent": "2b2033976fcacc74fd4988f68b1ce6c84fdf7f2f",
   "externalCheckpoint": {
     "revision": 11,
     "sha256": "9d9998945b6f28e9fe8769949bc7bab56df25a6c0fbbb16a3ad49f915721ed76",
@@ -10747,38 +10771,6 @@
     }
   },
   "unsavedArtifacts": [
-    {
-      "examKey": "E087",
-      "sourceBlob": "f3f8cd1585444251a8f10ab5955cb46e3db11176",
-      "questionCount": 23,
-      "artifacts": [
-        {
-          "worker": "A",
-          "kind": "independent",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E087.independent.json",
-          "bytes": 2934,
-          "sha256": "4a66346c0577bcfdc817c33e59097cab7e5202e108ce6c39f1979afb9ba819b8",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "C",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/C/E087.review.json",
-          "bytes": 192755,
-          "sha256": "30662e0fc269b9c1eb1f1c4270771a4520405d68e75fe5c16067a96769f38090",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "C",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/C/E087.4slot.json",
-          "bytes": 105963,
-          "sha256": "5f8e37a97fec7813a9c24479221bada9c5bc6cea424ab58c25a27cc5233f3375",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        }
-      ],
-      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
-    },
     {
       "examKey": "E088",
       "sourceBlob": "dc5fba4ad5ba7fe69c8c1edd88c4aacb4b961e7e",

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E087",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T06:02:47.794021+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/18_연향중_1학기_기말_중3_수학.js",
+  "sourceBlob": "f3f8cd1585444251a8f10ab5955cb46e3db11176",
+  "inputArtifacts": {
+    "workers/C/E087.review.json": {
+      "sha256": "30662e0fc269b9c1eb1f1c4270771a4520405d68e75fe5c16067a96769f38090"
+    },
+    "workers/C/E087.4slot.json": {
+      "sha256": "5f8e37a97fec7813a9c24479221bada9c5bc6cea424ab58c25a27cc5233f3375"
+    },
+    "workers/C/E087.input.json": {
+      "sha256": "31c5ad1ef3b6021fa42ab7c5a04f38ab84906ab6b9d23e748696201fd8911f60"
+    }
+  },
+  "sampledOrdinals": [
+    8,
+    16,
+    20
+  ],
+  "items": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_10536a13bc1a0602e70a47d9936c115ca59c182024c65a953be9e8d2af000d0e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제해설이(x-a)²=a²-b에서a²>b를얻은뒤주사위계수에대하여a=1,2,3~6의경우를구분해확률로연결한다. 근개수RPM036후보·확률CC·SEQUENTIAL·bucket3및완전제곱식/경우분류/확률의solution인용을수용한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_92663b1f4b305bad2e5184fec86626c45194523df898c2c616215efaa15c67fb",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제q16그림의위로열림·원점통과·축이왼쪽이라는조건과5개후보그림을직접대조했다. 해설의a>0,c=0,b<0에서 y=bx²+a로전달하는방법과그림②가일치한다. RPM053부모후보,2022leaf대기,중/bucket3보존타당."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_ce5e469f8026f18720f6cd23c65c4ce2303cdfc73fc1f110779c6636eb5d13db",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제두포물선및축평행정사각형그림에서A가왼아래,B오른아래,C오른위,D왼위임을확인했다. 실제해설의같은높이v²=4u²와정사각형상등v-u=v²-u²,인수분해후v+u=1과v=2u결합이4칸에맞는다. 양수조건·평행조건·정확leaf제안과bucket3수용."
+    }
+  ],
+  "findingsResolved": [],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E087-assets/contact-1.jpg",
+      "sha256": "89a96b3bfe674dcd97a8033e3a0dba908ace7174e3fd162bee8ab63f6bbac6c2",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}
