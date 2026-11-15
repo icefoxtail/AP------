@@ -62,3 +62,82 @@ for(const fault of ['new-approval','wrong-decision','payload','proof-uid','sourc
 });
 test('changed held solution is stale before any explicit hold is considered',t=>{const f=fixture(t);f.bank[0].solution='Changed';f.save('archive/exams/'+f.source,f.js());assert.equal(heldOnly(f).pending[0].reason,'STALE_STUDENT_PAYLOAD');});
 test('cached hold observes changes in its second immutable evidence file',t=>{const f=fixture(t);mod.run(f.root,{write:true});f.save(f.supPath,{...f.sup,changed:true});const index=heldOnly(f);assert.match(index.pending[0].reason,/HOLD_EVIDENCE_SHA_MISMATCH:supersession/);});
+
+function correctedHoldFixture(t) {
+ const f=fixture(t),sourcePath='archive/exams/'+f.source,oldQuestion=structuredClone(f.bank[0]);
+ const correctedAsset=f.asset.replace('.svg','-corrected.svg'),correctedBytes='<svg xmlns="http://www.w3.org/2000/svg"><path d="M1 1L2 3"/></svg>';
+ const afterBank=structuredClone(f.bank);afterBank[0].solutionImage=correctedAsset.slice(8);afterBank[0].solutionImageAlt='The independently reviewed corrected renderer';
+ const afterJs='window.questionBank='+JSON.stringify(afterBank)+';';
+ const sourceAfter={path:sourcePath,gitBlobSha1:mod.blob(afterJs),sha256:mod.sha(afterJs)};
+ const assetAfter={path:correctedAsset,gitBlobSha1:mod.blob(correctedBytes),sha256:mod.sha(correctedBytes)};
+ const independentPath='.archive-meta-register/evidence/fixture/corrected-renderer-review.json';
+ const independent={schemaVersion:'archive-narrow-solution-renderer-correction-independent-review-v1',decision:'APPROVE_EXACT_RENDERER_CORRECTION_AND_ALT_ONLY',questionUid:uid(1),sourceOrdinal:1,beforeSourceRef:f.proof.sourceRef,proposedSourceRef:sourceAfter,beforeQuestionStableSha256:mod.sha(stable(oldQuestion)),afterQuestionStableSha256:mod.sha(stable(afterBank[0])),changedSourceFields:['solutionImage','solutionImageAlt'],sourceQuestionCount:2,unselectedQuestionsUnchanged:1,assetBefore:{commit:f.proof.sourceRef.commit,path:f.asset,gitBlobSha1:mod.blob(fs.readFileSync(path.join(f.root,f.asset))),sha256:f.proof.incorrectRenderer.sha256},assetAfter,metadataApprovalsAdded:0,difficultyJudgmentsAdded:0,fullMathematicalQa:false,newReviewPassCount:0,sourceWrites:0,requestWrites:0};
+ const independentSha=mod.sha(JSON.stringify(independent));
+ f.sup.independentCorrectionReview={sha256:independentSha};
+ f.sup.proposedCorrection={sourcePath,sourceBlobSha1:sourceAfter.gitBlobSha1,sourceSha256:sourceAfter.sha256,assetPath:assetAfter.path,assetBlobSha1:assetAfter.gitBlobSha1,assetSha256:assetAfter.sha256,changedSourceFields:['solutionImage','solutionImageAlt']};
+ f.save(f.supPath,f.sup);const supCommit=f.commit('bind the existing independent correction in the negative decision');
+ const supRef={commit:supCommit,path:f.supPath,sha256:mod.sha(JSON.stringify(f.sup))};
+ f.proof.supersessionEvidence=supRef;f.proof.correctionOwnerEvidence={sha256:independentSha,correctedAssetSha256:assetAfter.sha256};
+ f.data.items[0].registrationHold.supersessionEvidence=supRef;f.data.evidence.nativeHoldReview.supersession=supRef;f.resign();
+ const prior=structuredClone(f.data);f.write();const priorCommit=f.commit('freeze reviewed compact and existing renderer hold');
+ const priorRaw=fs.readFileSync(path.join(f.root,f.rel));
+ f.bank.splice(0,f.bank.length,...afterBank);f.save(sourcePath,afterJs);f.save(correctedAsset,correctedBytes);f.save(independentPath,independent);
+ const sourceCommit=f.commit('publish exact independently reviewed renderer correction');
+ const independentRef={commit:sourceCommit,path:independentPath,sha256:independentSha};
+ const carrierPath='docs/operations/fixture/corrected-renderer-hold-continuity.json';
+ const carrier={schemaVersion:'m3-s2-renderer-correction-registration-hold-continuity-v1',scope:'EXACT_PUBLISHED_RENDERER_CORRECTION_PRESERVE_HOLD',reason:f.proof.reason,decision:'WITHHOLD_REGISTRATION',questionUid:uid(1),sourceOrdinal:1,sourceQuestionNo:'1',ordinal:1,sourceArchiveFile:f.source,fingerprintContract:'4slot-student-payload-v1',studentPayloadSha256:mod.payloadHash(afterBank[0]),sourceFingerprint:mod.identityHash(afterBank[0]),priorCompactRef:{commit:priorCommit,path:f.rel,gitBlobSha1:mod.blob(priorRaw),sha256:mod.sha(priorRaw)},correctiveReviewRef:independentRef,sourceRef:{commit:sourceCommit,...sourceAfter},correctedRenderer:{role:'solutionImage',commit:sourceCommit,...assetAfter},sourceQuestionCount:2,unselectedQuestionsUnchanged:1,changedSourceFields:['solutionImage','solutionImageAlt'],newSemanticApprovals:0,newDifficultyApprovals:0,newReviewPassCount:0,sourceWrites:0,slotChanges:0,registryWrites:0};
+ function signCarrier(){f.save(carrierPath,carrier);const ref={commit:f.commit('bind exact published correction while preserving hold'),path:carrierPath,sha256:mod.sha(JSON.stringify(carrier))};const h=f.data.items[0].registrationHold;f.data.sourceGitBlobSha=carrier.sourceRef.gitBlobSha1;Object.assign(h,{sourceGitBlobSha:carrier.sourceRef.gitBlobSha1,studentPayloadSha256:carrier.studentPayloadSha256,sourceFingerprint:carrier.sourceFingerprint,reviewEvidence:ref,independentEvidence:carrier.correctiveReviewRef});Object.assign(f.data.evidence.nativeHoldReview,{rendererContinuity:ref,correctiveReview:carrier.correctiveReviewRef});f.write();}
+ signCarrier();return {...f,prior,carrier,carrierPath,independent,independentPath,correctedAsset,signCarrier};
+}
+test('published exact renderer correction preserves the existing HOLD and every compact slot',t=>{
+ const f=correctedHoldFixture(t),before=f.prior.items.map(({registrationHold,...row})=>row),index=heldOnly(f);
+ assert.equal(index.pending[0].reason,'EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING');
+ assert.deepEqual(f.data.items.map(({registrationHold,...row})=>row),before);
+ assert.deepEqual(f.data.reviewedBy,f.prior.reviewedBy);
+ assert.deepEqual(f.data.items[1],f.prior.items[1]);
+ assert.equal(index.semanticApprovalMutation,0);assert.equal(index.sourceMutation,0);
+});
+for(const fault of ['missing-carrier','missing-correction-review','carrier-null','correction-ref-hidden','all-new-markers-hidden','legacy-bindings-restored','carrier-bytes','independent-bytes','current-asset-bytes','changed-solution','extra-selected-metadata','unselected-metadata','unselected-slot','held-slot','hold-removed','reviewer-changed'])test('corrected renderer HOLD refuses mutable boundary: '+fault,t=>{
+ const f=correctedHoldFixture(t),h=f.data.items[0].registrationHold;
+ if(fault==='missing-carrier')fs.unlinkSync(path.join(f.root,f.carrierPath));
+ if(fault==='missing-correction-review')fs.unlinkSync(path.join(f.root,f.independentPath));
+ if(fault==='carrier-null')h.reviewEvidence=null;
+ if(fault==='correction-ref-hidden')delete h.independentEvidence;
+ if(fault==='all-new-markers-hidden'||fault==='legacy-bindings-restored'){delete h.reviewEvidence;delete h.independentEvidence;delete f.data.evidence.nativeHoldReview.rendererContinuity;delete f.data.evidence.nativeHoldReview.correctiveReview;}
+ if(fault==='legacy-bindings-restored'){h.studentPayloadSha256=f.prior.items[0].registrationHold.studentPayloadSha256;h.sourceFingerprint=f.prior.items[0].registrationHold.sourceFingerprint;h.sourceGitBlobSha=f.prior.sourceGitBlobSha;f.data.sourceGitBlobSha=f.prior.sourceGitBlobSha;}
+ if(fault==='carrier-bytes')f.save(f.carrierPath,{...f.carrier,newSemanticApprovals:1});
+ if(fault==='independent-bytes')f.save(f.independentPath,{...f.independent,decision:'REGISTER'});
+ if(fault==='current-asset-bytes')f.save(f.correctedAsset,'<svg>unreviewed bytes</svg>');
+ if(fault==='changed-solution'){f.bank[0].solution='Different solution';f.save('archive/exams/'+f.source,f.js());}
+ if(fault==='extra-selected-metadata'){f.bank[0].tagStatus='different';f.save('archive/exams/'+f.source,f.js());}
+ if(fault==='unselected-metadata'){f.bank[1].tagStatus='different';f.save('archive/exams/'+f.source,f.js());}
+ if(fault==='unselected-slot')f.data.items[1].method=[2];
+ if(fault==='held-slot')f.data.items[0].method=[2];
+ if(fault==='hold-removed')delete f.data.items[0].registrationHold;
+ if(fault==='reviewer-changed')f.data.reviewedBy.agent='other';
+ f.write();const index=mod.build(f.root).index;
+ assert.equal(consumer.createIndex(index).get(uid(1)),null);
+ assert.ok(index.pending.some(x=>/INVALID_REGISTRATION_HOLD|STALE_STUDENT_PAYLOAD|RENDERER_HOLD_ONE_UID_REQUIRED/.test(x.reason)),JSON.stringify(index.pending));
+});
+for(const fault of ['new-approval','unknown-carrier-schema','unknown-carrier-field','scope','source-path','source-commit','wrong-ordinal','denominator','protected-field-list','renderer-role','renderer-sha','wrong-independent-authority','wrong-prior-compact','own-null-field'])test('corrected renderer HOLD refuses immutable invalid carrier: '+fault,t=>{
+ const f=correctedHoldFixture(t),p=f.carrier;
+ if(fault==='new-approval')p.newSemanticApprovals=1;
+ if(fault==='unknown-carrier-schema')p.schemaVersion='other-v1';
+ if(fault==='unknown-carrier-field')p.allowAnyChange=true;
+ if(fault==='scope')p.scope='ALL_REVIEWED_RENDERERS';
+ if(fault==='source-path')p.sourceRef.path=p.sourceRef.path.replace('renderer-fixture','other');
+ if(fault==='source-commit')p.sourceRef.commit='f'.repeat(40);
+ if(fault==='wrong-ordinal')p.sourceOrdinal=2;
+ if(fault==='denominator')p.sourceQuestionCount=1;
+ if(fault==='protected-field-list')p.changedSourceFields.push('solution');
+ if(fault==='renderer-role')p.correctedRenderer.role='problemImage';
+ if(fault==='renderer-sha')p.correctedRenderer.sha256='0'.repeat(64);
+ if(fault==='wrong-independent-authority'){f.independent.newReviewPassCount=1;f.save(f.independentPath,f.independent);p.correctiveReviewRef={...p.correctiveReviewRef,commit:f.commit('invalid independent review'),sha256:mod.sha(JSON.stringify(f.independent))};}
+ if(fault==='wrong-prior-compact')p.priorCompactRef.sha256='0'.repeat(64);
+ if(fault==='own-null-field')p.correctedRenderer.extra=null;
+ f.signCarrier();const index=heldOnly(f);assert.match(index.pending[0].reason,/INVALID_REGISTRATION_HOLD/);
+});
+for(const target of ['carrier','independent'])test('cached corrected HOLD observes deleted '+target+' evidence',t=>{
+ const f=correctedHoldFixture(t);mod.run(f.root,{write:true});fs.unlinkSync(path.join(f.root,target==='carrier'?f.carrierPath:f.independentPath));
+ const index=heldOnly(f);assert.match(index.pending[0].reason,/INVALID_REGISTRATION_HOLD/);
+});

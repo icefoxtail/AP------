@@ -33,7 +33,7 @@ const git = (root, ...args) => execFileSync('git', ['-C', root, ...args], {
   encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'], env: { ...process.env, GIT_CONFIG_NOSYSTEM: '1' },
 }).trim();
 
-function fixture(t, { inputExtra = {}, baseExtra = {}, publicEvidence = {}, mutateManifest, mutateEnvelope,
+function fixture(t, { inputExtra = {}, baseExtra = {}, publicEvidence = {}, finalizePublicEvidence, mutateManifest, mutateEnvelope,
   mutateRequest, mutatePreservation, setupRequest, withPreservation = false, withParent = false,
   extraBankRow = false, sourcePath = SOURCE, nativeSchema = 'm2-s2-meta-review-v1', mutateNativeDocument, executable } = {}) {
   const container = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-source-candidate-fixture-'));
@@ -79,7 +79,11 @@ function fixture(t, { inputExtra = {}, baseExtra = {}, publicEvidence = {}, muta
   for (const [name, bytes] of Object.entries(publicEvidence)) put(name, bytes);
   git(root, 'add', '--', '.'); git(root, 'commit', '-qm', 'public base');
   const nativeCommit = git(root, 'rev-parse', 'HEAD');
-  for (const name of Object.keys(publicEvidence)) git(root, 'rm', '--', name);
+  const finalizedEvidence = finalizePublicEvidence?.({ nativeCommit, native, nativeDocument, sourcePath, tuple }) || {};
+  for (const [name, bytes] of Object.entries(finalizedEvidence)) put(name, bytes);
+  if (Object.keys(finalizedEvidence).length) { git(root, 'add', '--', '.'); git(root, 'commit', '-qm', 'immutable finalization'); }
+  const finalizationCommit = git(root, 'rev-parse', 'HEAD');
+  for (const name of new Set([...Object.keys(publicEvidence), ...Object.keys(finalizedEvidence)])) git(root, 'rm', '--', name);
   git(root, 'commit', '--allow-empty', '-qm', 'current trusted main');
   const baseCommit = git(root, 'rev-parse', 'HEAD');
   const nativeRef = { path: NATIVE, sha256: rawHash(native) }, parentRef = { path: PARENT, sha256: rawHash(parent) };
@@ -91,7 +95,7 @@ function fixture(t, { inputExtra = {}, baseExtra = {}, publicEvidence = {}, muta
       evidenceRefs: [nativeRef, ...(withParent ? [parentRef] : [])], ...(withParent ? { basicScopeParentRef: parentRef } : {}),
       sourceReview: { schemaVersion: 'archive-reviewed-source-reassessment-v1', reviewCommit: nativeCommit, reviewPath: NATIVE_ORIGIN, reviewRef: nativeRef } }] };
   const files = { [NATIVE]: native, ...(withParent ? { [PARENT]: parent } : {}), ...inputExtra };
-  setupRequest?.({ request, files, nativeCommit, baseCommit, native, before, after, tuples, parent, parentSource });
+  setupRequest?.({ request, files, nativeCommit, finalizationCommit, finalizedEvidence, baseCommit, native, before, after, tuples, parent, parentSource });
   mutateRequest?.(request);
   const requestBytes = json(request);
   const manifest = { schemaVersion: 'archive-reviewed-source-metadata-materialization-v1', materializationId: 'fixture-candidate',
@@ -332,6 +336,110 @@ test('parent labels are newly authored only from exact current public parent rec
   assert.equal(r.files.size, 4); assert.equal(r.closure.newApprovals, 0);
 });
 
+const TARGET_MASTER = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
+const TARGET_CROSSWALK = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json';
+const CURRENT_META = 'archive/data/question_metadata.json';
+const parentValues = { curriculum: '2015', courseKey: 'M2-2', standardCourse: '중2 수학', standardUnitKey: 'M2-04',
+  subUnitKey: 'M2-04-BASIC', problemTypeKey: 'PT_FIXTURE', templateKey: 'TPL_FIXTURE', L1: 'fixture major', L2: 'fixture leaf' };
+
+function targetParentFixture(t, { crosswalk = false, mutateRef, mutateAfter, mutateRegistry, sourcePath = SOURCE } = {}) {
+  const master = { schemaVersion: 'js-archive-taxonomy-rpm-primary-v1.0', authorityStatus: 'LOCKED', records: [
+    { curriculum: '2015', scope: 'M2-2', majorUnit: parentValues.L1, midUnit: parentValues.L2 }] };
+  const taxonomy = { status: 'DERIVED_READ_ONLY', problemTypes: [{ problemTypeKey: 'PT_FIXTURE', status: 'ACTIVE' }],
+    templates: [{ templateKey: 'TPL_FIXTURE', parentProblemTypeKey: 'PT_FIXTURE', status: 'ACTIVE' }] };
+  const bindings = { status: 'DERIVED_READ_ONLY', bindings: [{ curriculum: '2015', standardCourse: '중2 수학',
+    standardUnitKey: 'M2-04', subUnitKey: 'M2-04-BASIC', problemTypeKey: 'PT_FIXTURE', status: 'ACTIVE',
+    L1: parentValues.L1, L2: crosswalk ? 'current context alias' : parentValues.L2 }] };
+  const tags = [{ key: 'M2-04', keyType: 'standardUnitKey', labelKo: parentValues.L1 },
+    { key: 'M2-04-BASIC', keyType: 'subUnitKey', labelKo: crosswalk ? 'current context alias' : parentValues.L2 }];
+  const cross = { schemaVersion: 'rpm-primary-active-crosswalk-v1', status: 'ACTIVE_REFERENCE', records: [{ id: 'RPM-M2-FIXTURE',
+    curriculum: '2015', scope: 'M2-2', problemTypeKey: 'PT_FIXTURE', templateKey: 'TPL_FIXTURE', bindingStatus: 'ACTIVE',
+    rpmPath: { majorUnit: parentValues.L1, midUnit: parentValues.L2 } }] };
+  mutateRegistry?.({ master, taxonomy, bindings, tags, cross });
+  const baseExtra = { [TARGET_MASTER]: json(master),
+    'archive/data/meta-foundation/compiled/taxonomy_registry.json': json(taxonomy),
+    'archive/data/meta-foundation/compiled/curriculum_bindings.json': json(bindings),
+    'archive/data/master_tables/js_archive_tag_master.json': json(tags), ...(crosswalk ? { [TARGET_CROSSWALK]: json(cross) } : {}) };
+  return fixture(t, { sourcePath, baseExtra,
+    mutateNativeDocument: doc => { Object.assign(doc.items[0].after, parentValues); doc.items[0].rpmRecordId = 'RPM-M2-FIXTURE'; },
+    setupRequest: ({ request, nativeCommit }) => {
+      Object.assign(request.items[0].after, parentValues); mutateAfter?.(request.items[0].after);
+      const ref = { path: TARGET_MASTER, sha256: rawHash(baseExtra[TARGET_MASTER]), curriculum: '2015', scope: 'M2-2',
+        majorUnit: parentValues.L1, midUnit: parentValues.L2,
+        ...(crosswalk ? { crosswalkRef: { path: TARGET_CROSSWALK, sha256: rawHash(baseExtra[TARGET_CROSSWALK]), recordId: 'RPM-M2-FIXTURE' } } : {}) };
+      mutateRef?.(ref, nativeCommit); request.items[0].targetParentRef = ref;
+      for (const r of [ref, ...(ref.crosswalkRef ? [ref.crosswalkRef] : [])]) {
+        const evidence = { path: r.path, sha256: r.sha256 };
+        request.approval.evidenceRefs.push(evidence); request.items[0].evidenceRefs.push(evidence);
+      }
+    } });
+}
+
+test('M2 target parent transport reads the exact current public master and active context without uploading either', async t => {
+  const f = targetParentFixture(t), result = inspectSourceMetadataCandidate(f.opts);
+  assert.equal(result.closure.newApprovals, 0); assert.equal(result.files.size, 3);
+  const built = await buildSourceMetadataCandidate(f.opts);
+  assert.equal(built.approvalEffect, 'NONE'); assert.equal(built.sourceFileCount, 1);
+});
+
+test('M2 crosswalk parent transport uses the native-selected exact ACTIVE PT/TPL row', t => {
+  const f = targetParentFixture(t, { crosswalk: true });
+  assert.equal(inspectSourceMetadataCandidate(f.opts).closure.newApprovals, 0);
+});
+
+for (const [label, options, pattern] of [
+  ['different semester', { mutateRef: r => { r.scope = 'M2-1'; } }, /TARGET_PARENT_BASE_SCOPE/],
+  ['different curriculum', { mutateAfter: a => { a.curriculum = '2022'; } }, /M2_CURRENT_PARENT_CONTEXT/],
+  ['different grade', { mutateAfter: a => { a.standardCourse = '중3 수학'; } }, /M2_CURRENT_PARENT_CONTEXT/],
+  ['changed parent label', { mutateRef: r => { r.midUnit = 'other parent'; } }, /TARGET_PARENT_BASE_SCOPE/],
+  ['historical commit override', { mutateRef: (r, commit) => { r.commit = commit; } }, /UNKNOWN_OR_MISSING_FIELD/],
+  ['wrong public hash', { mutateRef: r => { r.sha256 = '8'.repeat(64); } }, /EVIDENCE_HASH/],
+  ['inactive binding', { mutateRegistry: r => { r.bindings.bindings[0].status = 'INACTIVE'; } }, /TARGET_PARENT_CURRENT_BINDING/],
+  ['template from another parent', { mutateRegistry: r => { r.taxonomy.templates[0].parentProblemTypeKey = 'PT_OTHER'; } }, /TARGET_PARENT_CURRENT_BINDING/],
+  ['foreign native crosswalk row', { crosswalk: true, mutateRef: r => { r.crosswalkRef.recordId = 'RPM-OTHER'; } }, /TARGET_PARENT_CROSSWALK_SCOPE/],
+  ['unbound family template', { crosswalk: true, mutateRegistry: r => { delete r.cross.records[0].templateKey; } }, /TARGET_PARENT_CROSSWALK_RECORD/],
+  ['raw parent payload', { mutateRef: r => { r.question = 'not metadata'; } }, /RAW_OR_UNSAFE_METADATA_FIELD/],
+]) test(`M2 current public target parent rejects ${label}`, t => {
+  const f = targetParentFixture(t, options); assert.throws(() => inspectSourceMetadataCandidate(f.opts), pattern);
+});
+
+function metadataParentFixture(t, { mutateDoc, mutateCurrent, mutateAfter } = {}) {
+  const current = { questionUid: UID, sourceArchiveFile: SOURCE.slice('archive/exams/'.length), sourceOrdinal: 1,
+    ...parentValues, metadataStatus: 'approved_semantic_review', reviewStatus: 'review_required' };
+  mutateCurrent?.(current);
+  const md = json({ schemaVersion: 'archive-question-metadata-v1', records: [current] });
+  const snapshot = { questionUid: UID, sourceArchiveFile: current.sourceArchiveFile, sourceOrdinal: 1, curriculumKey: '2015',
+    courseKey: '중2 수학', standardUnitKey: 'M2-04', subUnitKey: 'M2-04-BASIC', L1: parentValues.L1, L2: parentValues.L2 };
+  const doc = { schemaVersion: 'archive-meta-pipeline-parent-label-evidence-v1', sourcePath: CURRENT_META,
+    sourceSha256: rawHash(md), records: [snapshot] };
+  mutateDoc?.(doc); const raw = json(doc);
+  return fixture(t, { baseExtra: { [CURRENT_META]: md }, inputExtra: { [PARENT]: raw },
+    setupRequest: ({ request }) => {
+      Object.assign(request.items[0].after, parentValues); mutateAfter?.(request.items[0].after);
+      const r = { path: PARENT, sha256: rawHash(raw) }; request.items[0].basicScopeParentRef = r;
+      request.approval.evidenceRefs.push(r); request.items[0].evidenceRefs.push(r);
+    } });
+}
+
+test('existing approved M2 metadata parent is a current-base projection for exactly the selected UID', t => {
+  const f = metadataParentFixture(t), r = inspectSourceMetadataCandidate(f.opts);
+  assert.equal(r.closure.newApprovals, 0); assert.equal(r.files.size, 4); assert(!r.files.has(CURRENT_META));
+});
+
+for (const [label, options, pattern] of [
+  ['forged snapshot row', { mutateDoc: d => { d.records[0].L2 = 'invented'; } }, /METADATA_PARENT_VALUE_DRIFT/],
+  ['another UID', { mutateDoc: d => { d.records[0].questionUid = UID2; } }, /METADATA_PARENT_SELECTED_SCOPE/],
+  ['another ordinal', { mutateDoc: d => { d.records[0].sourceOrdinal = 2; } }, /METADATA_PARENT_SELECTED_SCOPE/],
+  ['an unselected record', { mutateDoc: d => { d.records.push({ ...d.records[0], questionUid: UID2, sourceOrdinal: 2 }); } }, /METADATA_PARENT_SELECTED_SCOPE/],
+  ['an old whole-metadata hash', { mutateDoc: d => { d.sourceSha256 = '8'.repeat(64); } }, /METADATA_PARENT_SOURCE_HASH/],
+  ['unapproved current metadata', { mutateCurrent: d => { d.metadataStatus = 'registration_pending_semantic_review'; } }, /METADATA_PARENT_NOT_APPROVED/],
+  ['changed after parent', { mutateAfter: a => { a.L1 = 'different'; } }, /METADATA_PARENT_VALUE_DRIFT/],
+  ['another course', { mutateAfter: a => { a.courseKey = 'M2-1'; } }, /M2_CURRENT_PARENT_CONTEXT/],
+  ['raw student field', { mutateDoc: d => { d.records[0].solution = 'not metadata'; } }, /RAW_OR_UNSAFE_METADATA_FIELD/],
+]) test(`current approved-metadata parent rejects ${label}`, t => {
+  const f = metadataParentFixture(t, options); assert.throws(() => inspectSourceMetadataCandidate(f.opts), pattern);
+});
+
 test('historical empty before values do not authorize empty after classification', t => {
   const f = fixture(t, { mutateRequest: r => { r.items[0].before.problemTypeKey = ''; } });
   assert.equal(inspectSourceMetadataCandidate(f.opts).closure.newApprovals, 0);
@@ -446,6 +554,89 @@ for (const mutateSelection of [s => { s.proposalId = 'UNREVIEWED'; }, s => { s.p
     assert.throws(() => inspectSourceMetadataCandidate(f.opts), /NATIVE_PROPOSAL_SELECTION/);
   });
 }
+
+function conceptV1Fixture(t, { mutateProof, mutateProofCopy, mutateNative, mutateRequest } = {}) {
+  const primary = { standardCourse: '중2 수학', standardUnitKey: 'M2-07', subUnitKey: 'M2-07-BASIC',
+    problemTypeKey: 'PT_FIXTURE', templateKey: 'TPL_FIXTURE' };
+  const definition = conceptKey => ({ conceptKey, status: 'ACTIVE', definition: 'Synthetic exact concept' });
+  return fixture(t, {
+    mutateNativeDocument: native => {
+      native.examId = 'E059'; native.proposals = [
+        { id: 'CC-P1', type: 'CC', supportingQuestionUids: [UID] },
+        { id: 'CC-P2', type: 'CC', supportingQuestionUids: [UID2] }];
+      native.items[0].proposalRefs = ['CC-P1'];
+      native.items[0].after = { ...native.items[0].after, ...primary, crossConceptKeys: [] };
+      mutateNative?.(native);
+    },
+    finalizePublicEvidence: ({ nativeCommit, native, nativeDocument, sourcePath }) => {
+      const proof = { schemaVersion: 'archive-cross-concept-narrow-definition-finalization-v1',
+        status: 'DEFINITIONS_FINALIZED_OFFICIAL_REGISTRATION_PENDING', reviewer: 'Independent fixture reviewer',
+        nativeReviewCommit: nativeCommit,
+        scope: { newFullMathematicalQa: false, newReview2Claims: 0, newMetadataApprovals: 0, newDifficultyJudgments: 0 },
+        applications: [{ questionUid: UID, sourceOrdinal: 1, examId: 'E059', sourcePath,
+          nativeReviewRef: { commit: nativeCommit, path: NATIVE_ORIGIN, sha256: rawHash(native) },
+          nativeItemStableSha256: rawHash(stable(nativeDocument.items[0])), nativeProposalRefs: ['CC-P1'],
+          definitionDisposition: 'ADD_EXACT_NEW_CANONICAL_CC', newMathematicalQa: false, newMetadataApproval: false,
+          difficultyChanged: false, nativeProtectedStudentFieldsChanges: [], nativeAfterCrossConceptKeys: [],
+          addCrossConceptKey: 'CC_FIXTURE', reviewedPrimaryContext: primary }],
+        definitionDecisions: ['CC_FIXTURE', 'CC_UNSELECTED'].map(key => ({ definition: definition(key) })) };
+      mutateProof?.(proof);
+      const proofBytes = json(proof), finalRef = { path: FINALIZATION, sha256: rawHash(proofBytes) };
+      const registry = { schemaVersion: 'archive-reviewed-cross-concept-registry-change-proposal-v1',
+        status: 'PENDING_OFFICIAL_REGISTRAR', evidenceRefs: [finalRef],
+        registryChanges: ['CC_FIXTURE', 'CC_UNSELECTED'].map(key => ({
+          path: 'archive/data/meta-foundation/canonical/concept_registry.json', collection: 'concepts',
+          match: { conceptKey: key }, before: null, after: definition(key), evidenceRefs: [finalRef] })) };
+      return { [FINALIZATION]: proofBytes, [REGISTRY_PROPOSAL]: json(registry) };
+    },
+    setupRequest: ({ request, files, finalizationCommit, nativeCommit, finalizedEvidence }) => {
+      Object.assign(files, finalizedEvidence);
+      if (mutateProofCopy) { const proof = JSON.parse(files[FINALIZATION]); mutateProofCopy(proof); files[FINALIZATION] = json(proof); }
+      const finalRef = { path: FINALIZATION, sha256: rawHash(files[FINALIZATION]) };
+      const registryRef = { path: REGISTRY_PROPOSAL, sha256: rawHash(files[REGISTRY_PROPOSAL]) };
+      request.items[0].after = { ...request.items[0].after, ...primary, crossConceptKeys: ['CC_FIXTURE'] };
+      request.items[0].sourceReview.proposalFinalization = { schemaVersion: 'archive-native-proposal-finalization-v1',
+        finalizationCommit, finalizationRef: finalRef, registryChangesRef: registryRef, proposalIds: ['CC-P1'] };
+      request.approval.evidenceRefs.push(finalRef, registryRef); request.items[0].evidenceRefs.push(finalRef, registryRef);
+      const changes = JSON.parse(files[REGISTRY_PROPOSAL]).registryChanges;
+      request.registryChanges = [structuredClone(changes[0])];
+      mutateRequest?.({ request, changes, finalRef, registryRef, nativeCommit });
+    },
+  });
+}
+
+test('M2 v1 CC transport carries only the exact selected public change including its evidence refs', async t => {
+  const f = conceptV1Fixture(t), inspection = inspectSourceMetadataCandidate(f.opts);
+  assert.equal(inspection.closure.selectedUidCount, 1);
+  assert.equal(inspection.closure.newApprovals, 0);
+  const built = await buildSourceMetadataCandidate(f.opts);
+  const request = JSON.parse(git(f.root, 'show', `${built.candidateCommit}:${REQUEST}`));
+  assert.equal(request.registryChanges.length, 1);
+  assert.equal(request.registryChanges[0].after.conceptKey, 'CC_FIXTURE');
+  assert.equal(built.registrationStatus, 'NOT_REGISTERED');
+  assert.equal(built.approvalEffect, 'NONE');
+});
+
+for (const [label, options, error] of [
+  ['unselected native proposal ID', { mutateRequest: ({ request }) => { request.items[0].sourceReview.proposalFinalization.proposalIds = ['CC-P2']; } }, /M2_V1_CC_PROPOSAL_IDS/],
+  ['non-CC native proposal', { mutateNative: native => { native.proposals[0].type = 'NEW_TPL'; } }, /M2_V1_CC_NATIVE_PROPOSAL/],
+  ['unknown opt-in fields', { mutateRequest: ({ request }) => { request.items[0].sourceReview.proposalFinalization.extraAuthority = true; } }, /UNKNOWN_OR_MISSING_FIELD/],
+  ['changed public proof copy', { mutateProofCopy: proof => { proof.unreviewedField = 'new'; } }, /IMMUTABLE_EVIDENCE_MISMATCH/],
+  ['wrong selected UID', { mutateProof: proof => { proof.applications[0].questionUid = UID2; } }, /EVIDENCE_SELECTED_UID/],
+  ['wrong native item digest', { mutateProof: proof => { proof.applications[0].nativeItemStableSha256 = 'f'.repeat(64); } }, /M2_V1_CC_APPLICATION/],
+  ['different approved primary', { mutateProof: proof => { proof.applications[0].reviewedPrimaryContext = { ...proof.applications[0].reviewedPrimaryContext, templateKey: 'TPL_OTHER' }; } }, /M2_V1_CC_PRIMARY_CONTEXT/],
+  ['new-approval claim', { mutateProof: proof => { proof.scope.newMetadataApprovals = 1; } }, /M2_V1_CC_FINALIZATION_SCOPE/],
+  ['missing selected change', { mutateRequest: ({ request }) => { request.registryChanges = []; } }, /M2_V1_CC_SELECTED_REGISTRY_CHANGE/],
+  ['unselected sibling public definition', { mutateRequest: ({ request, changes }) => { request.registryChanges.push(structuredClone(changes[1])); } }, /REGISTRY_CHANGE_NOT_IMMUTABLE_PROPOSAL/],
+  ['modified definition value', { mutateRequest: ({ request }) => { request.registryChanges[0].after.definition = 'Unreviewed change'; } }, /M2_V1_CC_SELECTED_REGISTRY_CHANGE/],
+  ['different change evidence refs', { mutateRequest: ({ request, registryRef }) => { request.registryChanges[0].evidenceRefs = [registryRef]; } }, /M2_V1_CC_SELECTED_REGISTRY_CHANGE/],
+  ['wrong finalization commit', { mutateRequest: ({ request, nativeCommit }) => { request.items[0].sourceReview.proposalFinalization.finalizationCommit = nativeCommit; } }, /INPUT_FILE_MISSING/],
+  ['raw student field even in public evidence', { mutateProof: proof => { proof.answer = 'Synthetic raw payload'; } }, /RAW_OR_UNSAFE_METADATA_FIELD/],
+]) test(`M2 v1 CC transport rejects ${label}`, t => {
+  const f = conceptV1Fixture(t, options);
+  assert.throws(() => inspectSourceMetadataCandidate(f.opts), error);
+  assert.equal(fs.existsSync(f.outputRoot), false);
+});
 
 function rendererFixture(t, { observation, independentSchema, mutateWitnessCopy } = {}) {
   const renderer = '.archive-meta-register/evidence/fixture-renderer.json', witness = '.archive-meta-register/evidence/fixture-renderer-independent.json';
