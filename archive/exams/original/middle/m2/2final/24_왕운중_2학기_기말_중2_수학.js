@@ -1786,26 +1786,26 @@ window.questionBank = [
       "curriculum": "2015",
       "scope": "M2-2",
       "majorUnit": "도형의 닮음과 피타고라스 정리",
-      "midUnit": "도형의 닮음",
-      "l3": "닮음의 활용",
-      "l4": "길이"
+      "midUnit": "평행선과 선분의 길이의 비",
+      "l3": "비례 활용",
+      "l4": "선분비를 이용한 복합도형"
     },
     "rpmPath": {
       "curriculum": "2015",
       "scope": "M2-2",
       "majorUnit": "도형의 닮음과 피타고라스 정리",
-      "midUnit": "도형의 닮음",
-      "l3": "닮음의 활용",
-      "l4": "길이"
+      "midUnit": "평행선과 선분의 길이의 비",
+      "l3": "비례 활용",
+      "l4": "선분비를 이용한 복합도형"
     },
-    "rpmL3": "도형에의 활용",
-    "rpmL4": "평면도형 길이",
+    "rpmL3": "비례 활용",
+    "rpmL4": "선분비를 이용한 복합도형",
     "semanticSourceScope": "M2-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
     "primaryMethod": "평행선비에 높이 계산을 연결",
     "decisiveStep": "각 이등분선과 제곱 관계로 기초 길이·높이를 구한 뒤 평행한 선분에서 대응 높이를 줄인다.",
-    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "crossConceptKeys": [
       "CC_ANGLE_BISECTOR_THEOREM",
       "CC_PYTHAGOREAN",
@@ -1823,7 +1823,10 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 ∠B의 이등분선 BD, 수선 DE, FG와 평행선 BD, EF, GH. 작은 삼각형 CEF(파랑)와 큰 삼각형 CBD(파랑+주황)가 닮음이고 대응변의 길이는 CE=8:CB=20이다.",
     "solutionImageCaption": "△CEF∽△CBD의 닮음비 2:5로 FG=(2/5)×DE=(2/5)×6=12/5이다. 정답 ①.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryId": "M2-RPM-096",
+    "rpmL1": "도형의 닮음과 피타고라스 정리",
+    "rpmL2": "평행선과 선분의 길이의 비"
   },
   {
     "id": 21,

@@ -4,7 +4,7 @@
   "requestId": "m2s2-binding68-20261115-E012",
   "examUid": "24_왕운중_2학기_기말_중2_수학",
   "sourceArchiveFile": "original/middle/m2/2final/24_왕운중_2학기_기말_중2_수학.js",
-  "expectedSourceBlobSha1": "79d2bfaa23e3d85e7766271cde06736ba5adaf59",
+  "expectedSourceBlobSha1": "0519d84b3c820cfd4fdc72614bc4caac08c4b927",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "FINAL_QA",
@@ -26,6 +26,10 @@
       {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E012.parent-labels.json",
         "sha256": "6b631bdefec8d93570c1b83459b866f2e197f212e16fa96a2978c55a84c2271f"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E012.transport.json",
+        "sha256": "40413eea055e684ff30971d678ca6d4f208ccf44ef1876040c8c3e7ea64cabe2"
       }
     ]
   },
@@ -63,7 +67,10 @@
         "L3": null,
         "L4": null,
         "L1": null,
-        "L2": null
+        "L2": null,
+        "rpmPrimaryId": null,
+        "rpmL1": null,
+        "rpmL2": null
       },
       "after": {
         "standardCourse": "중2 수학",
@@ -82,18 +89,18 @@
           "curriculum": "2015",
           "scope": "M2-2",
           "majorUnit": "도형의 닮음과 피타고라스 정리",
-          "midUnit": "도형의 닮음",
-          "l3": "닮음의 활용",
-          "l4": "길이"
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
         },
-        "rpmL3": "도형에의 활용",
-        "rpmL4": "평면도형 길이",
+        "rpmL3": "비례 활용",
+        "rpmL4": "선분비를 이용한 복합도형",
         "semanticSourceScope": "M2-2",
         "semanticScopeRelation": "CURRENT_SCOPE",
         "primaryMethod": "평행선비에 높이 계산을 연결",
         "decisiveStep": "각 이등분선과 제곱 관계로 기초 길이·높이를 구한 뒤 평행한 선분에서 대응 높이를 줄인다.",
-        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
         "crossConceptKeys": [
           "CC_ANGLE_BISECTOR_THEOREM",
           "CC_PYTHAGOREAN",
@@ -103,10 +110,13 @@
         "integrationPattern": "SEQUENTIAL",
         "curriculumKey": "2015",
         "courseKey": "M2-2",
-        "L3": "삼각형의 닮음",
-        "L4": "삼각형 닮음의 활용",
+        "L3": "평행선과 선분의 길이의 비",
+        "L4": "일반 도형의 평행선과 선분의 비",
         "L1": "도형의 닮음과 피타고라스 정리",
-        "L2": "평행선과 선분의 길이의 비"
+        "L2": "평행선과 선분의 길이의 비",
+        "rpmPrimaryId": "M2-RPM-096",
+        "rpmL1": "도형의 닮음과 피타고라스 정리",
+        "rpmL2": "평행선과 선분의 길이의 비"
       },
       "reason": "각 이등분선과 제곱 관계로 기초 길이·높이를 구한 뒤 평행한 선분에서 대응 높이를 줄인다.",
       "evidenceRefs": [
@@ -125,6 +135,10 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E012.parent-labels.json",
           "sha256": "6b631bdefec8d93570c1b83459b866f2e197f212e16fa96a2978c55a84c2271f"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E012.transport.json",
+          "sha256": "40413eea055e684ff30971d678ca6d4f208ccf44ef1876040c8c3e7ea64cabe2"
         }
       ],
       "basicScopeParentRef": {
@@ -133,52 +147,5 @@
       }
     }
   ],
-  "registryChanges": [
-    {
-      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
-      "collection": "bindings",
-      "match": {
-        "curriculum": "2015",
-        "standardCourse": "중2 수학",
-        "standardUnitKey": "M2-06",
-        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-        "problemTypeKey": "PT_TRIANGLE_SIMILARITY"
-      },
-      "before": null,
-      "after": {
-        "curriculum": "2015",
-        "standardCourse": "중2 수학",
-        "standardUnitKey": "M2-06",
-        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-        "subUnitLabelKo": "평행선 사이의 선분의 길이의 비",
-        "L1": "도형의 닮음과 피타고라스 정리",
-        "L2": "평행선과 선분의 길이의 비",
-        "supportingItemCount": 1,
-        "supportingQuestionUids": [
-          "qid_v1_2dd5708e48fefa735a18a84b1ecdcd2a7c869f6acc170e5258ab86b1d2d833ae"
-        ],
-        "status": "ACTIVE"
-      },
-      "reason": "Exact existing ACTIVE GLOBAL PT binding for immutable native-reviewed source context; no new definition or independent mathematical QA",
-      "evidenceRefs": [
-        {
-          "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E012.review.json",
-          "sha256": "80ebcfa7563ec72bc319ddfc46b637d7ebc9fb83af4f596b26ae0bdc3f4f7108"
-        },
-        {
-          "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E012.native.json",
-          "sha256": "f53f85b2c57320196b8e155a2abbfea4feb184cda0497aa43f716c056baf56f6"
-        },
-        {
-          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
-        },
-        {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E012.parent-labels.json",
-          "sha256": "6b631bdefec8d93570c1b83459b866f2e197f212e16fa96a2978c55a84c2271f"
-        }
-      ]
-    }
-  ]
+  "registryChanges": []
 }

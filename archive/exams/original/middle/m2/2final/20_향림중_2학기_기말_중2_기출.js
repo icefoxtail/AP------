@@ -361,30 +361,40 @@ window.questionBank = [
     "rpmPath": {
       "curriculum": "2015",
       "scope": "M2-2",
-      "majorUnit": "사각형의 성질",
-      "midUnit": "평행사변형",
-      "l3": "넓이와 활용",
-      "l4": "평행선과 넓이"
+      "majorUnit": "도형의 닮음과 피타고라스 정리",
+      "midUnit": "평행선과 선분의 길이의 비",
+      "l3": "삼각형과 평행선",
+      "l4": "기본 비례"
     },
-    "rpmL3": "넓이와 활용",
-    "rpmL4": "평행선과 넓이",
+    "rpmL3": "삼각형과 평행선",
+    "rpmL4": "기본 비례",
     "semanticSourceScope": "M2-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
-    "projectionReasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "projectionStatus": "PROJECTION_REUSE",
+    "projectionReasonCode": "EXACT_ACTIVE_M2_BINDING",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
     "crossConceptKeys": [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/20_향림중_2학기_기말_중2_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 넓이가 36 cm²(그림 안의 36)인 평행사변형에서 AB의 중점 E, BC 위의 점 F, 선분 AC, EF, AF, ED, EC와 AF와 EC의 교점 P를 나타낸 문제 그림이다. 오른쪽은 삼각형 ABC에서 F가 BC의 중점(같은 길이 표시)이고 삼각형 AFC를 파랗게 칠한 그림이다.",
     "solutionImageCaption": "E가 AB의 중점이고 EF와 AC가 평행하므로 F는 BC의 중점이다. 삼각형 ABC의 넓이는 평행사변형의 절반인 18 cm²이다. 삼각형 AFC와 ABC는 높이가 같고 밑변의 비가 FC:BC=1:2이므로 넓이는 18÷2=9 cm²이다. 정답은 ③ 9 cm²이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "rpmPrimaryId": "M2-RPM-091",
+    "rpmPrimaryPath": {
+      "curriculum": "2015",
+      "scope": "M2-2",
+      "majorUnit": "도형의 닮음과 피타고라스 정리",
+      "midUnit": "평행선과 선분의 길이의 비",
+      "l3": "삼각형과 평행선",
+      "l4": "기본 비례"
+    },
+    "rpmL1": "도형의 닮음과 피타고라스 정리",
+    "rpmL2": "평행선과 선분의 길이의 비"
   },
   {
     "id": 7,

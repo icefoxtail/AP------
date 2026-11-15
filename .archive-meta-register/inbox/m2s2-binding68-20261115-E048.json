@@ -4,7 +4,7 @@
   "requestId": "m2s2-binding68-20261115-E048",
   "examUid": "20_신흥중_2학기_기말_중2_기출",
   "sourceArchiveFile": "original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js",
-  "expectedSourceBlobSha1": "fd8f9f3f0e125700f0af4d404e6c69c3b7d3dc41",
+  "expectedSourceBlobSha1": "5277162ea6a228f053f6542234bfa768d2ca5690",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "FINAL_QA",
@@ -30,6 +30,10 @@
       {
         "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/source-declaration-repairs.json",
         "sha256": "768e19ec705f4c6d7ad28e4824ce85c845f2b11e2d4ac64ba14599fa6fb52819"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E048.transport.json",
+        "sha256": "f3301b36316c9b34f180c93620bf7a494bd9bcaa1564898a78d176877c608f28"
       }
     ]
   },
@@ -120,6 +124,10 @@
         {
           "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/source-declaration-repairs.json",
           "sha256": "768e19ec705f4c6d7ad28e4824ce85c845f2b11e2d4ac64ba14599fa6fb52819"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E048.transport.json",
+          "sha256": "f3301b36316c9b34f180c93620bf7a494bd9bcaa1564898a78d176877c608f28"
         }
       ],
       "basicScopeParentRef": {
@@ -213,6 +221,10 @@
         {
           "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/source-declaration-repairs.json",
           "sha256": "768e19ec705f4c6d7ad28e4824ce85c845f2b11e2d4ac64ba14599fa6fb52819"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E048.transport.json",
+          "sha256": "f3301b36316c9b34f180c93620bf7a494bd9bcaa1564898a78d176877c608f28"
         }
       ],
       "basicScopeParentRef": {
@@ -306,6 +318,10 @@
         {
           "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/source-declaration-repairs.json",
           "sha256": "768e19ec705f4c6d7ad28e4824ce85c845f2b11e2d4ac64ba14599fa6fb52819"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E048.transport.json",
+          "sha256": "f3301b36316c9b34f180c93620bf7a494bd9bcaa1564898a78d176877c608f28"
         }
       ],
       "basicScopeParentRef": {
@@ -399,6 +415,10 @@
         {
           "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/source-declaration-repairs.json",
           "sha256": "768e19ec705f4c6d7ad28e4824ce85c845f2b11e2d4ac64ba14599fa6fb52819"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E048.transport.json",
+          "sha256": "f3301b36316c9b34f180c93620bf7a494bd9bcaa1564898a78d176877c608f28"
         }
       ],
       "basicScopeParentRef": {
@@ -495,6 +515,10 @@
         {
           "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/source-declaration-repairs.json",
           "sha256": "768e19ec705f4c6d7ad28e4824ce85c845f2b11e2d4ac64ba14599fa6fb52819"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E048.transport.json",
+          "sha256": "f3301b36316c9b34f180c93620bf7a494bd9bcaa1564898a78d176877c608f28"
         }
       ],
       "basicScopeParentRef": {
@@ -534,7 +558,11 @@
         "L3": null,
         "L4": null,
         "L1": null,
-        "L2": null
+        "L2": null,
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL1": null,
+        "rpmL2": null
       },
       "after": {
         "standardCourse": "중2 수학",
@@ -542,8 +570,8 @@
         "standardUnit": "도형의 닮음",
         "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
         "subUnit": "평행선 사이의 선분의 길이의 비",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -553,8 +581,8 @@
         "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
         "level": "하",
         "rpmSemanticStatus": "FINAL",
-        "rpmL3": "직사각형",
-        "rpmL4": "중점",
+        "rpmL3": "비례 활용",
+        "rpmL4": "선분비를 이용한 복합도형",
         "semanticSourceScope": "M2-2",
         "semanticScopeRelation": "CURRENT_SCOPE",
         "primaryMethod": "사각형의 변 중점을 이은 둘레",
@@ -562,10 +590,21 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "M2-2",
-        "L3": "사각형의 성질과 판정",
-        "L4": "평행사변형의 성질",
+        "L3": "평행선과 선분의 길이의 비",
+        "L4": "일반 도형의 평행선과 선분의 비",
         "L1": "도형의 닮음과 피타고라스 정리",
-        "L2": "평행선과 선분의 길이의 비"
+        "L2": "평행선과 선분의 길이의 비",
+        "rpmPrimaryId": "M2-RPM-096",
+        "rpmPrimaryPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "rpmL1": "도형의 닮음과 피타고라스 정리",
+        "rpmL2": "평행선과 선분의 길이의 비"
       },
       "reason": "네 삼각형 중점연결로 안쪽 변이 대각선의 절반임을 써 둘레를 구한다.",
       "evidenceRefs": [
@@ -588,6 +627,10 @@
         {
           "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/source-declaration-repairs.json",
           "sha256": "768e19ec705f4c6d7ad28e4824ce85c845f2b11e2d4ac64ba14599fa6fb52819"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E048.transport.json",
+          "sha256": "f3301b36316c9b34f180c93620bf7a494bd9bcaa1564898a78d176877c608f28"
         }
       ],
       "basicScopeParentRef": {
@@ -681,6 +724,10 @@
         {
           "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/source-declaration-repairs.json",
           "sha256": "768e19ec705f4c6d7ad28e4824ce85c845f2b11e2d4ac64ba14599fa6fb52819"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/E048.transport.json",
+          "sha256": "f3301b36316c9b34f180c93620bf7a494bd9bcaa1564898a78d176877c608f28"
         }
       ],
       "basicScopeParentRef": {
