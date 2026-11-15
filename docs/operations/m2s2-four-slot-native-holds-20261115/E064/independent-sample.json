@@ -1,0 +1,387 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E064",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "57c2e51b7dfd66365a016de3dbf0299003c9a97d",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "1bb59a1b2a4632f38556a616f3c0dc7f41f313e3a13f9e96945772a228cd2cc6",
+  "fourSlotInputSha256": "fc02af1f98b7729811a558dbfff34ac1c3e4a58325b84024dd5f6d555dd312f8",
+  "sampleOrdinals": [
+    16,
+    17,
+    21
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_be9cc27468f94662d3ca96dcfa280b43ff18b1ef239bd54f83c1b90306e65203",
+      "verdict": "PASS_WITH_EXPLICIT_SOURCE_HOLD",
+      "metadataReview": "실제 그림의 CD 수선과 AD4·CD6은 보이나 하단 x 표지가 잘려 목표선분을 확인할 수 없다. RPM089/ACTIVE PT_TRIANGLE_SIMILARITY/TPL_TRIANGLE_SIMILARITY_APPLICATION은 기존 해설의 x=AB 모형에 대한 후보로만 수용한다. 2015 binding과2022 참고207을 분리했으며 UNRESOLVED·UNKNOWN·등록차단 및 정확한 difficultyBucket/level 미결 식별자를 확인했다.",
+      "fourSlotReview": "직각삼각형·수선발 given, x값 goal, 닮음·곱비례·부분합 method의 원문 인용을 확인했다. C에서 AB로 내린 수선발 D의 전체 발문관계를 condition에 보강했고 목표·방법은 PARTIAL_SOURCE_EVIDENCE/methodCandidateOnly로 남겼다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7,
+      "imageViewed": "/workspace/scratch/87f142347508/workers/B/images/E064-16.png",
+      "visualEvidenceSha256": "d120ad9fba21dda69a70df9bb74d922b1e2381f5dd0ce0e9ae089755aaefe792",
+      "observedFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "actual그림에서x의 목표선분 표시를 확인할 수 없어 정상 난도 확정을 보류한다. 해설이 읽은x=AB 모형은 조건부 후보일 뿐이다."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_001c4c4c79c9eb18f41f339472ed5bba3d04a5da415a18a600ef605b178369c2",
+      "verdict": "PASS_WITH_EXPLICIT_SOURCE_HOLD",
+      "metadataReview": "그림에는 평행표시가 없으며 AB↔AE, AC↔AD의 엇바뀐 대응으로 공통각 SAS를 새로 판정한다. RPM087/ACTIVE PT_TRIANGLE_SIMILARITY/TPL_TRIANGLE_SIMILARITY_CRITERIA와2015 binding이 실제 결정단계에 맞고2022 참고205와 분리된다. 비례식은 주유형 내부이므로 별도 CC·canonical 수범위 조건 없이 NONE을 수용한다. alt의 평행선 표현은 SOURCE_HOLD로 분리한다.",
+      "fourSlotReview": "실제 그림의 두 일직선 배치와 AE 부분합·두 변비와 끼인각·대응변 method를 기존 해설에서 확인했다. A,C,E 및 A,B,D 일직선 배치를 condition exact 인용으로 보강했으며 잘못된 alt를 닮음 근거로 사용하지 않았다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": "/workspace/scratch/87f142347508/workers/B/images/E064-17.png",
+      "visualEvidenceSha256": "0f148884481c025c59448fb8fef39ab8e9abdb4db2752a37c9f22d9e57a1cf91",
+      "observedFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "평행 표시는 없고 겉으로 같은 방향의 대응이 아닌 AB↔AE, AC↔AD 쌍을 선택해야 한다."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_a308be0ed169c9d7deeef96bc6637483fbd73700cb589af0a006b24baae1f432",
+      "verdict": "PASS_WITH_EXPLICIT_SOURCE_HOLD",
+      "metadataReview": "직각 두 개와 AED 직각·AE=DE에서 여각을 맞추어 ABE와 ECD를 RHA로 묶는 골격이다. RPM071/ACTIVE PT_RIGHT_TRIANGLE_CONGRUENCE/TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE 및2015 binding이 정확하고2022 참고181과 분리된다. 합동을 명시적으로 요구하는 첫 소문항과 길이 전달을 함께 읽어2/B23을 수용한다.",
+      "fourSlotReview": "합동쌍·합동조건·BC길이의 두 소문항 목표를 보존했고 유효한 BAE=CED 및 BE=CD만 해설에서 인용했다. 원문 ABE≡DCE의 잘못된 대응순서는 인용하지 않고 IMPLIED justification에 ABE≡ECD를 명시한 처리를 수용한다. 같은 빗변 AE=DE는 given과 condition에 정확히 보존했다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 9,
+      "imageViewed": "/workspace/scratch/87f142347508/workers/B/images/E064-21.png",
+      "visualEvidenceSha256": "431181b34e081a553b697614a6f11b4d28b22604b1627336b9749e938db120a2",
+      "observedFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "첫 소문항이 합동을 찾도록 안내하고 한 직각의 두 여각 관계에서 표준 RHA 입력을 얻는다."
+      }
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "대상 삼각형과 증명 골격이 이미 주어져 같은 변·이등분된 끼인각·공통AD를 SAS에 맞추는2/B12이며 중후보를 수용한다."
+    },
+    {
+      "ordinal": 2,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "주어진 같은 변 두 쌍으로 두 이등변삼각형을 차례로 읽고 외각을 연결하는 정형2/B12이다. 보조선이나 별도 분기 선택은 없다."
+    },
+    {
+      "ordinal": 3,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "세 반지름의 같음을 세 밑각 관계로 옮긴 뒤 전체 내각합을 쓰므로2/B12와 중후보를 수용한다."
+    },
+    {
+      "ordinal": 4,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "주어진 꼭짓각42와 목표 중심각의 두 배 관계를 바로 적용하여1/B12와 하후보이다. 위쪽 명칭 crop은 본문 조건으로 보완된다."
+    },
+    {
+      "ordinal": 5,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "변까지의 거리와 꼭짓점까지의 거리를 구별하고 잘못 짝지은 합동 주장도 판별하므로 단일 정의 대입보다2/B12가 적절하다."
+    },
+    {
+      "ordinal": 6,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "한 점 둘레360도를 주어진11:12:13으로 배분한 뒤 내심 반각관계를 역산하는 정형2/B12이다. 원시 숫자level3과 독립인 중후보를 수용한다."
+    },
+    {
+      "ordinal": 7,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "실제 BO가 BA와BI 사이이므로 목표의 인접각 두 개를 합쳐2IBA로 읽는 한 번의 해석 뒤 이등변 밑각을 계산하는2/B23이다. 외심각을 전부 계산할 필요는 없다."
+    },
+    {
+      "ordinal": 8,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": 2,
+      "boundary": "NONE",
+      "decision": "ACCEPT",
+      "reason": "대각선 전체길이가 직접 주어져 이등분 성질을 반복하고 더하는1/NONE·하후보이다."
+    },
+    {
+      "ordinal": 9,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "같은 한 쌍의 대변에서 평행과 길이조건이 함께 성립하는지, 대각선 이등분의 대응 부분이 맞는지를 구별하므로2/B12이다."
+    },
+    {
+      "ordinal": 10,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "직사각형의 같은 대각선→절반DE→원반지름으로 두 번 반분하는 표준 변환 뒤 원넓이를 구하므로2/B12이다. 본문이 그림 crop의 필수조건을 모두 제공한다."
+    },
+    {
+      "ordinal": 11,
+      "bucket": 3,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "흩어진 두 부분넓이를 BFG와DFE의 합동으로 옮겨 한 대각선 분할영역으로 만드는 관계 선택이 필요하여3/B23을 수용한다."
+    },
+    {
+      "ordinal": 12,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "안쪽IJKL이 정사각형임을 본문이 명시하므로 새 증명 없이 주어진 대각선8의 반곱 넓이를 계산하는1/B12·하후보이다."
+    },
+    {
+      "ordinal": 13,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "특수사각형의 포함 관계와 충분조건이 실제로 어느 종류까지 보장하는지를 다섯 명제에서 구별하므로2/B12이다."
+    },
+    {
+      "ordinal": 14,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "닮음의 대응각을 옮기고 내각합으로 같은 두 각을 만들어 이등변의 역으로 변길이를 얻는 표준2/B23이다."
+    },
+    {
+      "ordinal": 15,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "높이비로 반지름을 한 번 복원한 뒤 원기둥 부피에 대입하는2/B12이다. 주어진 닮음 관계를 새로 증명할 부담은 없다."
+    },
+    {
+      "ordinal": 16,
+      "bucket": "UNKNOWN",
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "UNKNOWN",
+      "decision": "ACCEPT_UNRESOLVED_CONDITIONAL_CANDIDATE",
+      "reason": "학생용 그림 하단의 x 목표표시가 잘려 어느 선분을 묻는지 확인할 수 없다. 최종UNKNOWN을 수용하며, 기존 해설처럼 x=AB가 복원된다는 조건 아래 표준 높이AA와 부분합인 후보2/중만 보존한다."
+    },
+    {
+      "ordinal": 17,
+      "bucket": 3,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "겉모양의 같은 방향 대응을 따르지 않고 AB↔AE와 AC↔AD의 쌍을 선택해 공통각SAS를 찾아야 하므로3/B23을 수용한다. 실제 그림은 충분하며 alt 평행선 문구는 별도HOLD이다."
+    },
+    {
+      "ordinal": 18,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "명시된 세 평행선의 교차 삼각형 대응비를 읽고 OC+CE의 전체구간을 연결하는 정형2/B23이다."
+    },
+    {
+      "ordinal": 19,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "모든 수치가 인접 평행선 사이의 대응구간으로 주어져 같은 비를 직접 적용하는1/B12·하후보이다."
+    },
+    {
+      "ordinal": 20,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "두 중점쌍이 이미 주어져 DE→FG, 같은 높이 넓이비→GH, 중점선BC를 순서대로 연결하는2/B23이다. 새 보조선이나 모형 선택은 없다."
+    },
+    {
+      "ordinal": 21,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "첫 소문항이 합동을 찾도록 안내하고 두 직각의 여각 관계로 RHA 입력을 만드는 표준2/B23이다. 대응순서 오류는 소스HOLD로 분리하고 유효 예각·대응변만 근거로 읽었다."
+    },
+    {
+      "ordinal": 22,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "세 변과 직각이 모두 주어지고 반지름부터 부분넓이까지 소문항이 안내한다. 공통높이인 내접반지름을 쓰는 표준2/B12·중후보이다."
+    },
+    {
+      "ordinal": 23,
+      "bucket": 3,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "등변사다리꼴 분류 이후 밑변길이를 얻을 평행 보조선과 정삼각형 분할을 직접 선택해야 하므로3/B23이다. 둘레 소문항의 안내만으로 이 선택이 사라지지 않는다."
+    },
+    {
+      "ordinal": 24,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "여러 삼각형에서 세 대응변비가 맞는 쌍을 찾아 SSS와 불충분한 SSA 자료를 구별하는2/B12이다. 추가각과 세변의 동시실현성 모순은 SOURCE_HOLD이며 기존 해설이 사용하는 세변비 메타만 수용한다."
+    }
+  ],
+  "difficultyExceptionScope": "All24 noncanonical numeric source levels; includes every changed bucket/non-NONE boundary/UNKNOWN level. Raw numbers preserved, no normalization applied.",
+  "evidenceScope": {
+    "actualStemsAndChoicesRead": 24,
+    "answersAndSolutionsRead": 24,
+    "imagesViewed": 23,
+    "notFreshFullExamMathematicalReverification": true
+  },
+  "pinpointRepairsConfirmed": [
+    {
+      "ordinal": 16,
+      "reason": "C에서 AB에 내린 수선발 D의 전체 발문 관계를 condition exact 인용으로 보강했다."
+    },
+    {
+      "ordinal": 17,
+      "reason": "A,C,E 및 A,B,D의 일직선 배치를 기존 해설 exact 인용으로 condition에 보강했다."
+    }
+  ],
+  "sourceHoldChecks": [
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT_NONBLOCKING_CROP",
+      "reason": "잘린 A/B 명칭은 본문의 직각A·B42도·외심 명시로 보완되며 목표 중심각은 보인다."
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT_NONBLOCKING_CROP",
+      "reason": "상단 A crop과 무관하게 본문이 내심·세 각 비·목표ABC를 완결한다."
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT_NONBLOCKING_CROP",
+      "reason": "본문에 세 직각·대각선20·교점E·DE지름이 모두 있어 상단 crop은 비차단이다."
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT_BLOCKING_TARGET_CROP",
+      "reason": "실제 x 표지 불가독을 최종UNKNOWN·등록차단으로 유지하고 해설의AB 해석은 후보로만 보존했다."
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT_ALT_CONFLICT_HOLD",
+      "reason": "실제 길이관계는 엇바뀐 대응의SAS를 지지하고 평행선이라는 alt는 지지하지 않는다."
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT_CONGRUENCE_ORDER_HOLD",
+      "reason": "AE=DE·BAE=CED와 실제 대응변은 ABE≡ECD를 지지한다. 잘못된 원문 순서는 근거 인용에서 제외했다."
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT_EXTRA_ANGLE_CONFLICT_HOLD",
+      "reason": "세변비1:2의SSS 골격은 분명하지만 추가각의 동시실현성 모순을 정상내용으로 승인하지 않는다."
+    }
+  ],
+  "approvalScope": "3 independent metadata/four-slot samples plus24 difficulty/legacy exceptions; sourceHOLD, unresolved Q16, registration debt and noncanonical historical levels remain separate",
+  "sampleVerdict": "PASS_WITH_EXPLICIT_SOURCE_HOLD",
+  "unresolvedSourceSamples": [
+    16
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}
