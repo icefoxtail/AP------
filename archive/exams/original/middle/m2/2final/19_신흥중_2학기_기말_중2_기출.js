@@ -212,9 +212,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "좌표·길이",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위에 점 B, M, D, N, C가 있고 BD는 18 cm, DC는 12 cm이다. 두 삼각형의 무게중심 G, G′을 이은 파란색 선분이 AD와 만난다. 오른쪽 그림은 삼각형 AMN에서 AM과 AN을 각각 같은 길이 3칸으로 나눈 모양으로, 꼭짓점 A 쪽 2칸 지점의 점 G, G′을 이은 파란색 선분이 MN과 평행하고, MD는 9 cm, DN은 6 cm, MN은 15 cm이다.",
@@ -228,7 +228,8 @@ window.questionBank = [
       "midUnit": "삼각형의 무게중심",
       "l3": "중선과 무게중심",
       "l4": "좌표·길이"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 4,
@@ -292,9 +293,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "선분비를 이용한 복합도형",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 첫째 그림은 직사각형 A-B-C-D에서 가로 AD가 6 cm, 세로 AB가 4 cm이고 M, N이 BC, CD의 중점이며 오각형 P-Q-N-C-M이 파랗게 칠해져 있다. 둘째 그림은 AD와 BM이 평행한 닮은 삼각형 PAD와 PMB로 AD는 6 cm, BM은 3 cm이다. 셋째 그림은 AB와 DN이 평행한 닮은 삼각형 QAB와 QND로 AB는 4 cm, DN은 2 cm이다. 넷째 그림은 사각형 A-M-C-N 안에 분홍색 삼각형 APQ와 파란색 오각형이 놓인 모양이다.",
@@ -308,7 +309,8 @@ window.questionBank = [
       "midUnit": "평행선과 선분의 길이의 비",
       "l3": "비례 활용",
       "l4": "선분비를 이용한 복합도형"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 5,
@@ -520,7 +522,8 @@ window.questionBank = [
     "metaNullReason": "CREATE semantic mapping is recorded; exact ACTIVE PT/TPL projection for this structure was not established in this pass (incenter centroid parallel line).",
     "crossConceptKeys": [
       "CC_TRIANGLE_INCENTER",
-      "CC_TRIANGLE_AREA"
+      "CC_TRIANGLE_AREA",
+      "CC_TRIANGLE_AREA_INRADIUS_SEMIPERIMETER"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -529,9 +532,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "무게중심을 이용한 복합도형",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 변 AB의 길이는 18 cm, 변 AC의 길이는 12 cm이다. 파란색 선분 DE는 BC와 평행하며 무게중심 G와 내심 I를 지나고, 점선은 A에서 변 BC의 중점으로 그은 중선이다. 오른쪽 그림은 삼각형 ABC의 내접원과 A에서 BC에 내린 점선 높이 h, 내심 I에서 BC에 내린 점선 반지름 r을 나타내고 파란색 DE가 I를 지난다.",
@@ -545,7 +548,8 @@ window.questionBank = [
       "midUnit": "삼각형의 무게중심",
       "l3": "넓이와 무게중심",
       "l4": "무게중심을 이용한 복합도형"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 8,
@@ -883,7 +887,8 @@ window.questionBank = [
     "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
     "metaNullReason": "CREATE semantic mapping is recorded; exact ACTIVE PT/TPL projection for this structure was not established in this pass (cylinder shortest path).",
     "crossConceptKeys": [
-      "CC_CIRCLE_CIRCUMFERENCE"
+      "CC_CIRCLE_CIRCUMFERENCE",
+      "CC_CYLINDER_LATERAL_UNFOLDING_SHORTEST_PATH"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -892,9 +897,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "입체도형 거리",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 원기둥의 옆면을 펼친 직사각형이다. 위쪽 가로 변은 24π, 왼쪽 세로 변은 10π이고 왼쪽 위 꼭짓점 A와 오른쪽 아래 꼭짓점 B를 잇는 점선 대각선이 그려져 있다.",
@@ -908,7 +913,8 @@ window.questionBank = [
       "midUnit": "피타고라스 정리",
       "l3": "도형에의 활용",
       "l4": "입체도형 거리"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 13,
@@ -1191,9 +1197,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "확률 계산",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 가로에 갑이 낼 수 있는 가위, 바위, 보, 세로에 을이 낼 수 있는 가위, 바위, 보를 놓은 3×3 표이다. 같은 것을 내는 대각선의 세 칸이 파란색으로 칠해져 비김이라고 쓰여 있다.",
@@ -1207,7 +1213,8 @@ window.questionBank = [
       "midUnit": "확률",
       "l3": "확률의 뜻",
       "l4": "확률 계산"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 17,
@@ -1407,9 +1414,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "경우를 나누어 구하는 확률",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 가로 x, 세로 y의 6×6 표이다. y=x인 대각선의 6칸은 옅은 회색, y=x+1인 바로 위 대각선의 5칸은 진한 회색으로 칠해져 있다.",
@@ -1423,7 +1430,8 @@ window.questionBank = [
       "midUnit": "확률",
       "l3": "확률의 활용",
       "l4": "경우를 나누어 구하는 확률"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 20,
@@ -1491,9 +1499,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "확률 계산",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 0, 1, 2, 3, 4가 적힌 카드를 꼭짓점으로 하는 오각형과 모든 대각선이다. 0과 3, 1과 2, 2와 4를 잇는 세 선분은 파란색이다.",
@@ -1507,7 +1515,8 @@ window.questionBank = [
       "midUnit": "확률",
       "l3": "확률의 뜻",
       "l4": "확률 계산"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 21,
@@ -1566,9 +1575,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "sourceMode": "ORIGINAL",
-    "tagConfidence": "review_required",
-    "tagStatus": "review_required",
-    "reviewStatus": "review_required",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
+    "reviewStatus": "reviewed_pass",
     "rpmL4": "무게중심을 이용한 복합도형",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 각 A가 직각인 직각삼각형 ABC에서 AC는 18 cm이고, 빗변 BC의 중점 D와 무게중심 G가 있다. 중선 AD 위의 AG는 파란색, GD는 주황색이고 GD는 5 cm이다. 오른쪽 그림은 D를 중심으로 A, B, C를 지나는 초록색 반원과 반지름 DB, DC, DA이다.",
@@ -1582,7 +1591,8 @@ window.questionBank = [
       "midUnit": "삼각형의 무게중심",
       "l3": "넓이와 무게중심",
       "l4": "무게중심을 이용한 복합도형"
-    }
+    },
+    "courseKey": "M2-2"
   },
   {
     "id": 22,

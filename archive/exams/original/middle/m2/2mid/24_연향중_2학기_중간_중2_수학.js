@@ -54,7 +54,11 @@ window.questionBank = [
       "l4": "두 각 조건"
     },
     "primaryMethod": "같은 두 각의 대변 길이 같음",
-    "decisiveStep": "같은 밑각에서 두 변을 같게 놓아 x의 일차식을 푼다."
+    "decisiveStep": "같은 밑각에서 두 변을 같게 놓아 x의 일차식을 푼다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 2,
@@ -111,7 +115,11 @@ window.questionBank = [
       "l4": "RHS"
     },
     "primaryMethod": "RHS로 두 예각 같음을 얻고 직각삼각형 각 계산",
-    "decisiveStep": "BDE와BDC에서 공통빗변BD와 BE=BC로 RHS 합동을 얻어 ABD=DBC를 정당화한다."
+    "decisiveStep": "BDE와BDC에서 공통빗변BD와 BE=BC로 RHS 합동을 얻어 ABD=DBC를 정당화한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 3,
@@ -168,7 +176,11 @@ window.questionBank = [
       "l4": "외심의 위치·각"
     },
     "primaryMethod": "빗변 중점의 외심과 이등변 각",
-    "decisiveStep": "직각을2대3으로 나눈 뒤 같은 반지름의 밑각 두개를 뺀다."
+    "decisiveStep": "직각을2대3으로 나눈 뒤 같은 반지름의 밑각 두개를 뺀다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 4,
@@ -226,7 +238,11 @@ window.questionBank = [
       "l4": "각의 이등분선과 내심"
     },
     "primaryMethod": "내심의 이등분선과 평행선의 등변 관계",
-    "decisiveStep": "엇각으로 두 이등변삼각형을 만들고 변의 합에서 부분길이를 상쇄한다."
+    "decisiveStep": "엇각으로 두 이등변삼각형을 만들고 변의 합에서 부분길이를 상쇄한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 5,
@@ -278,7 +294,11 @@ window.questionBank = [
       "l4": "수직이등분선과 외심"
     },
     "primaryMethod": "외심의 등거리·수직이등분선 정의",
-    "decisiveStep": "각 그림의 표시가 세 꼭짓점 등거리 또는 두 수직이등분선 교점을 뜻하는지 확인한다."
+    "decisiveStep": "각 그림의 표시가 세 꼭짓점 등거리 또는 두 수직이등분선 교점을 뜻하는지 확인한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 6,
@@ -393,7 +413,11 @@ window.questionBank = [
       "l4": "외심의 위치·각"
     },
     "primaryMethod": "같은 반지름 세 쌍의 밑각",
-    "decisiveStep": "세 이등변삼각형의 밑각을 큰 삼각형의 내각합에 모은다."
+    "decisiveStep": "세 이등변삼각형의 밑각을 큰 삼각형의 내각합에 모은다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 8,
@@ -449,7 +473,11 @@ window.questionBank = [
       "l4": "변·각의 성질"
     },
     "primaryMethod": "대변 평행으로 각을 이동한 내각합",
-    "decisiveStep": "같은 각으로 y+55=135-x를 구성하여 두 미지각의 합을 구한다."
+    "decisiveStep": "같은 각으로 y+55=135-x를 구성하여 두 미지각의 합을 구한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 9,
@@ -508,7 +536,11 @@ window.questionBank = [
       "l4": "AA"
     },
     "primaryMethod": "평행선과 중점이 만드는 AA 닮음비1대1",
-    "decisiveStep": "ABE와FCE의 대응을 맞춰 같은 중점분할길이로 CF=AB를 얻는다."
+    "decisiveStep": "ABE와FCE의 대응을 맞춰 같은 중점분할길이로 CF=AB를 얻는다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 10,
@@ -569,7 +601,11 @@ window.questionBank = [
       "l4": "조건으로 사각형 판정"
     },
     "primaryMethod": "수직 대각선의 두 직각변으로 SAS 확인",
-    "decisiveStep": "평행사변형 대각선이등분과 공통변의 두 변·끼인각을 확인해 RHS 표기를 배제한다."
+    "decisiveStep": "평행사변형 대각선이등분과 공통변의 두 변·끼인각을 확인해 RHS 표기를 배제한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 11,
@@ -622,7 +658,11 @@ window.questionBank = [
       "l4": "성질 비교"
     },
     "primaryMethod": "사각형의 포함관계와 대각선 성질 비교",
-    "decisiveStep": "마름모와 직사각형을 혼동하지 않고 보편 성질을 판정한다."
+    "decisiveStep": "마름모와 직사각형을 혼동하지 않고 보편 성질을 판정한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 12,
@@ -681,7 +721,11 @@ window.questionBank = [
       "l4": "특수 사각형의 대각선 성질"
     },
     "primaryMethod": "마름모 대각선 넓이 뒤 같은 높이 비",
-    "decisiveStep": "대각선으로 전체넓이를 구한 뒤 절반 삼각형의 밑변 분할비를 적용한다."
+    "decisiveStep": "대각선으로 전체넓이를 구한 뒤 절반 삼각형의 밑변 분할비를 적용한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 13,
@@ -853,7 +897,11 @@ window.questionBank = [
       "l4": "넓이·부피 비"
     },
     "primaryMethod": "반지름비의 제곱을 넓이비로",
-    "decisiveStep": "2대5의 제곱비4대25를 큰원 넓이에 적용한다."
+    "decisiveStep": "2대5의 제곱비4대25를 큰원 넓이에 적용한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 16,
@@ -969,7 +1017,11 @@ window.questionBank = [
       "l4": "길이"
     },
     "primaryMethod": "빗변 수선의 닮음 기하평균 관계",
-    "decisiveStep": "작은 직각삼각형과 전체 삼각형의 비례식으로 x제곱을 구한다."
+    "decisiveStep": "작은 직각삼각형과 전체 삼각형의 비례식으로 x제곱을 구한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 18,
@@ -1026,7 +1078,11 @@ window.questionBank = [
       "l4": "닮음비"
     },
     "primaryMethod": "원뿔 평행단면의 닮음비",
-    "decisiveStep": "부분높이와 전체높이의 비를 반지름에 옮긴다."
+    "decisiveStep": "부분높이와 전체높이의 비를 반지름에 옮긴다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 19,
@@ -1149,7 +1205,11 @@ window.questionBank = [
       "l4": "AA"
     },
     "primaryMethod": "접기 등거리의 각 관계로 새 AA 닮음",
-    "decisiveStep": "접기 등변 두쌍에서 보조각을 정의하고60도관계로 BDE와CEF를 닮음으로 연결한다."
+    "decisiveStep": "접기 등변 두쌍에서 보조각을 정의하고60도관계로 BDE와CEF를 닮음으로 연결한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 21,
@@ -1204,7 +1264,11 @@ window.questionBank = [
       "l4": "RHS"
     },
     "primaryMethod": "RHS 대응변 뒤 45도 이등변 판정",
-    "decisiveStep": "공통 빗변과 같은 직각변으로 DE를 얻고 BDE의 두 예각45에서 DB를 구한다."
+    "decisiveStep": "공통 빗변과 같은 직각변으로 DE를 얻고 BDE의 두 예각45에서 DB를 구한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 22,
@@ -1307,6 +1371,10 @@ window.questionBank = [
       "l4": "AA"
     },
     "primaryMethod": "주어진 등각과 공통각의 AA",
-    "decisiveStep": "명시된 각과 공통각으로 ABC와ACD를 닮음으로 두고 대응변 비를 계산한다."
+    "decisiveStep": "명시된 각과 공통각으로 ABC와ACD를 닮음으로 두고 대응변 비를 계산한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   }
 ];
