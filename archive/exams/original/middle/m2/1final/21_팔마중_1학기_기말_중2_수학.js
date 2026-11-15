@@ -36,7 +36,7 @@ window.examData = {
     {
       "id": 2,
       "score": 3,
-      "level": "중",
+      "level": "하",
       "category": "연립일차방정식",
       "originalCategory": "연립일차방정식",
       "standardCourse": "중2-1",
@@ -61,7 +61,8 @@ window.examData = {
         "$9$"
       ],
       "answer": "①",
-      "solution": "[키포인트] 연립방정식 $\\begin{cases} ax+by=c \\\\ a'x+b'y=c' \\end{cases}$의 해가 없을 조건은 $\\dfrac{a}{a'} = \\dfrac{b}{b'} \\ne \\dfrac{c}{c'}$이다.\n1단계: $x$의 계수의 비는 $\\dfrac{6}{6} = 1$이고, 상수항의 비는 $\\dfrac{7}{5}$로 서로 다르다.\n2단계: 해가 없으려면 $y$의 계수의 비가 $x$의 계수의 비와 같아야 한다.\n$\\dfrac{-9}{a} = 1$\n3단계: 양변에 $a$를 곱하면 $a = -9$이다.\n따라서 정답은 ①이다."
+      "solution": "[키포인트] 연립방정식 $\\begin{cases} ax+by=c \\\\ a'x+b'y=c' \\end{cases}$의 해가 없을 조건은 $\\dfrac{a}{a'} = \\dfrac{b}{b'} \\ne \\dfrac{c}{c'}$이다.\n1단계: $x$의 계수의 비는 $\\dfrac{6}{6} = 1$이고, 상수항의 비는 $\\dfrac{7}{5}$로 서로 다르다.\n2단계: 해가 없으려면 $y$의 계수의 비가 $x$의 계수의 비와 같아야 한다.\n$\\dfrac{-9}{a} = 1$\n3단계: 양변에 $a$를 곱하면 $a = -9$이다.\n따라서 정답은 ①이다.",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "id": 3,
@@ -246,7 +247,7 @@ window.examData = {
     {
       "id": 9,
       "score": 4,
-      "level": "중",
+      "level": "하",
       "category": "일차함수와 그래프",
       "originalCategory": "일차함수",
       "standardCourse": "중2-1",
@@ -271,7 +272,8 @@ window.examData = {
         "$4$"
       ],
       "answer": "①",
-      "solution": "[키포인트] 일차함수 $y=ax+b$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동한 식은 $y = ax+b+k$이다.\n1단계: 평행이동한 일차함수의 식을 세운다.\n$y = -3x + 4 + k$\n2단계: 이 그래프가 점 $(-1, 2)$를 지나므로 $x=-1, y=2$를 대입한다.\n$2 = -3(-1) + 4 + k$\n$2 = 3 + 4 + k \\implies 2 = 7 + k$\n3단계: $k$의 값을 구한다.\n$k = 2 - 7 = -5$\n따라서 정답은 ①이다."
+      "solution": "[키포인트] 일차함수 $y=ax+b$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동한 식은 $y = ax+b+k$이다.\n1단계: 평행이동한 일차함수의 식을 세운다.\n$y = -3x + 4 + k$\n2단계: 이 그래프가 점 $(-1, 2)$를 지나므로 $x=-1, y=2$를 대입한다.\n$2 = -3(-1) + 4 + k$\n$2 = 3 + 4 + k \\implies 2 = 7 + k$\n3단계: $k$의 값을 구한다.\n$k = 2 - 7 = -5$\n따라서 정답은 ①이다.",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "id": 10,
@@ -313,8 +315,8 @@ window.examData = {
       "standardUnitKey": "M2-04",
       "standardUnit": "일차함수와 그래프",
       "standardUnitOrder": 4,
-      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-      "subUnit": "일차함수와 일차방정식의 관계",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "subUnit": "일차함수의 뜻과 그래프",
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
@@ -345,8 +347,8 @@ window.examData = {
       "standardUnitKey": "M2-04",
       "standardUnit": "일차함수와 그래프",
       "standardUnitOrder": 4,
-      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-      "subUnit": "일차함수와 일차방정식의 관계",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "subUnit": "일차함수의 뜻과 그래프",
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
@@ -400,7 +402,7 @@ window.examData = {
     {
       "id": 14,
       "score": 4,
-      "level": "중",
+      "level": "하",
       "category": "일차함수와 그래프",
       "originalCategory": "일차함수",
       "standardCourse": "중2-1",
@@ -425,12 +427,13 @@ window.examData = {
         "$12$"
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 두 일차함수의 그래프가 서로 평행하면 기울기가 같다.\n1단계: 일차함수 $y=3x-2$의 기울기는 $3$이다.\n2단계: 두 점 $(-1, 3)$과 $(2, k)$를 지나는 직선의 기울기는\n$\\dfrac{k - 3}{2 - (-1)} = \\dfrac{k - 3}{3}$\n3단계: 두 그래프가 평행하므로 기울기가 같아야 한다.\n$\\dfrac{k - 3}{3} = 3 \\implies k - 3 = 9 \\implies k = 12$\n따라서 정답은 ⑤이다."
+      "solution": "[키포인트] 두 일차함수의 그래프가 서로 평행하면 기울기가 같다.\n1단계: 일차함수 $y=3x-2$의 기울기는 $3$이다.\n2단계: 두 점 $(-1, 3)$과 $(2, k)$를 지나는 직선의 기울기는\n$\\dfrac{k - 3}{2 - (-1)} = \\dfrac{k - 3}{3}$\n3단계: 두 그래프가 평행하므로 기울기가 같아야 한다.\n$\\dfrac{k - 3}{3} = 3 \\implies k - 3 = 9 \\implies k = 12$\n따라서 정답은 ⑤이다.",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "id": 15,
       "score": 4,
-      "level": "하",
+      "level": "중",
       "category": "일차함수와 그래프",
       "originalCategory": "일차함수",
       "standardCourse": "중2-1",
@@ -457,12 +460,13 @@ window.examData = {
         "⑤"
       ],
       "answer": "①",
-      "solution": "[키포인트] 일차방정식을 $y=ax+b$ 꼴로 변형하거나 $x$절편과 $y$절편을 구하여 그래프를 찾는다.\n1단계: 일차방정식 $3x - 2y + 6 = 0$을 $y$에 대하여 푼다.\n$2y = 3x + 6 \\implies y = \\dfrac{3}{2}x + 3$\n2단계: 절편을 구한다.\n$x$절편: $y=0$일 때 $3x + 6 = 0 \\implies x = -2$\n$y$절편: $x=0$일 때 $y = 3$\n3단계: 점 $(-2, 0)$과 $(0, 3)$을 지나는 직선을 찾으면 ①번 그림이다.\n따라서 정답은 ①이다."
+      "solution": "[키포인트] 일차방정식을 $y=ax+b$ 꼴로 변형하거나 $x$절편과 $y$절편을 구하여 그래프를 찾는다.\n1단계: 일차방정식 $3x - 2y + 6 = 0$을 $y$에 대하여 푼다.\n$2y = 3x + 6 \\implies y = \\dfrac{3}{2}x + 3$\n2단계: 절편을 구한다.\n$x$절편: $y=0$일 때 $3x + 6 = 0 \\implies x = -2$\n$y$절편: $x=0$일 때 $y = 3$\n3단계: 점 $(-2, 0)$과 $(0, 3)$을 지나는 직선을 찾으면 ①번 그림이다.\n따라서 정답은 ①이다.",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "id": 16,
       "score": 4,
-      "level": "중",
+      "level": "하",
       "category": "일차함수와 그래프",
       "originalCategory": "일차함수",
       "standardCourse": "중2-1",
@@ -487,12 +491,13 @@ window.examData = {
         "$y$절편은 $6$이다."
       ],
       "answer": "⑤",
-      "solution": "[키포인트] 일차방정식을 일차함수 $y=ax+b$ 꼴로 고쳐서 기울기, $y$절편, 지나는 사분면을 파악한다.\n1단계: $2x - 3y + 6 = 0$을 $y$에 대하여 푼다.\n$3y = 2x + 6 \\implies y = \\dfrac{2}{3}x + 2$\n2단계: 보기별로 옳고 그름을 확인한다.\n① 기울기가 $\\dfrac{2}{3}>0$, $y$절편이 $2>0$이므로 제1, 2, 3사분면을 지나고 제4사분면은 지나지 않는다. (참)\n② 기울기는 $\\dfrac{y\\text{의 증가량}}{x\\text{의 증가량}} = \\dfrac{4}{6} = \\dfrac{2}{3}$이다. (참)\n③ $y = \\dfrac{2}{3}x$를 $y$축 방향으로 $2$만큼 평행이동한 것이다. (참)\n④ $x=-12$를 대입하면 $y = \\dfrac{2}{3}(-12) + 2 = -8 + 2 = -6$이므로 점 $(-12, -6)$을 지난다. (참)\n⑤ $x=0$일 때 $y=2$이므로 $y$절편은 $2$이다. 따라서 $6$이라는 설명은 옳지 않다. (거짓)\n따라서 정답은 ⑤이다."
+      "solution": "[키포인트] 일차방정식을 일차함수 $y=ax+b$ 꼴로 고쳐서 기울기, $y$절편, 지나는 사분면을 파악한다.\n1단계: $2x - 3y + 6 = 0$을 $y$에 대하여 푼다.\n$3y = 2x + 6 \\implies y = \\dfrac{2}{3}x + 2$\n2단계: 보기별로 옳고 그름을 확인한다.\n① 기울기가 $\\dfrac{2}{3}>0$, $y$절편이 $2>0$이므로 제1, 2, 3사분면을 지나고 제4사분면은 지나지 않는다. (참)\n② 기울기는 $\\dfrac{y\\text{의 증가량}}{x\\text{의 증가량}} = \\dfrac{4}{6} = \\dfrac{2}{3}$이다. (참)\n③ $y = \\dfrac{2}{3}x$를 $y$축 방향으로 $2$만큼 평행이동한 것이다. (참)\n④ $x=-12$를 대입하면 $y = \\dfrac{2}{3}(-12) + 2 = -8 + 2 = -6$이므로 점 $(-12, -6)$을 지난다. (참)\n⑤ $x=0$일 때 $y=2$이므로 $y$절편은 $2$이다. 따라서 $6$이라는 설명은 옳지 않다. (거짓)\n따라서 정답은 ⑤이다.",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "id": 17,
       "score": 4,
-      "level": "중",
+      "level": "하",
       "category": "일차함수와 그래프",
       "originalCategory": "일차함수",
       "standardCourse": "중2-1",
@@ -517,7 +522,8 @@ window.examData = {
         "$7$"
       ],
       "answer": "③",
-      "solution": "[키포인트] 그래프 위의 점의 좌표를 방정식에 대입하면 등식이 성립한다.\n1단계: 점 $(-3, 1)$을 $3x + by = -12$에 대입한다.\n$3(-3) + b(1) = -12 \\implies -9 + b = -12 \\implies b = -3$\n2단계: 완성된 일차방정식 $3x - 3y = -12$ (즉, $x - y = -4$)에 점 $(a, 8)$을 대입한다.\n$a - 8 = -4 \\implies a = 4$\n3단계: $a + b$의 값을 구한다.\n$a + b = 4 + (-3) = 1$\n따라서 정답은 ③이다."
+      "solution": "[키포인트] 그래프 위의 점의 좌표를 방정식에 대입하면 등식이 성립한다.\n1단계: 점 $(-3, 1)$을 $3x + by = -12$에 대입한다.\n$3(-3) + b(1) = -12 \\implies -9 + b = -12 \\implies b = -3$\n2단계: 완성된 일차방정식 $3x - 3y = -12$ (즉, $x - y = -4$)에 점 $(a, 8)$을 대입한다.\n$a - 8 = -4 \\implies a = 4$\n3단계: $a + b$의 값을 구한다.\n$a + b = 4 + (-3) = 1$\n따라서 정답은 ③이다.",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "id": 18,
@@ -552,7 +558,7 @@ window.examData = {
     {
       "id": 19,
       "score": 4,
-      "level": "중",
+      "level": "하",
       "category": "일차함수와 그래프",
       "originalCategory": "일차함수",
       "standardCourse": "중2-1",
@@ -577,12 +583,13 @@ window.examData = {
         "$4$"
       ],
       "answer": "④",
-      "solution": "[키포인트] 두 일차방정식의 그래프의 교점의 좌표는 두 일차방정식을 연립하여 푼 해와 같다.\n1단계: 두 일차방정식을 연립한다.\n$\\begin{cases} 4x - y = 3 & \\cdots ㉠ \\\\ -2x + 3y = 1 & \\cdots ㉡ \\end{cases}$\n2단계: ㉡식에 $2$를 곱하면 $-4x + 6y = 2$이다.\n이 식을 ㉠식과 변끼리 더하면\n$5y = 5 \\implies y = 1$\n3단계: $y = 1$을 ㉠식에 대입하면\n$4x - 1 = 3 \\implies 4x = 4 \\implies x = 1$\n교점의 좌표는 $(1, 1)$이므로 $a = 1, b = 1$이다.\n4단계: $a + b$의 값을 구한다.\n$a + b = 1 + 1 = 2$\n따라서 정답은 ④이다."
+      "solution": "[키포인트] 두 일차방정식의 그래프의 교점의 좌표는 두 일차방정식을 연립하여 푼 해와 같다.\n1단계: 두 일차방정식을 연립한다.\n$\\begin{cases} 4x - y = 3 & \\cdots ㉠ \\\\ -2x + 3y = 1 & \\cdots ㉡ \\end{cases}$\n2단계: ㉡식에 $2$를 곱하면 $-4x + 6y = 2$이다.\n이 식을 ㉠식과 변끼리 더하면\n$5y = 5 \\implies y = 1$\n3단계: $y = 1$을 ㉠식에 대입하면\n$4x - 1 = 3 \\implies 4x = 4 \\implies x = 1$\n교점의 좌표는 $(1, 1)$이므로 $a = 1, b = 1$이다.\n4단계: $a + b$의 값을 구한다.\n$a + b = 1 + 1 = 2$\n따라서 정답은 ④이다.",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "id": 20,
       "score": 5,
-      "level": "중",
+      "level": "상",
       "category": "일차함수와 그래프",
       "originalCategory": "일차함수",
       "standardCourse": "중2-1",
@@ -607,7 +614,8 @@ window.examData = {
         "$-1 < m < 0$"
       ],
       "answer": "④",
-      "solution": "[키포인트] 제2사분면 위의 점 $(x, y)$는 $x < 0, y > 0$을 만족한다.\n1단계: 두 직선의 방정식을 연립하여 교점의 좌표를 $m$으로 나타낸다.\n$\\begin{cases} 2x + y + 4 = 0 & \\cdots ㉠ \\\\ mx - y - 2 = 0 & \\cdots ㉡ \\end{cases}$\n두 식을 변끼리 더하면\n$(m + 2)x + 2 = 0 \\implies x = -\\dfrac{2}{m + 2}$\n2단계: ㉠식에서 $y = -2x - 4$이므로 $x$를 대입한다.\n$y = -2\\left(-\\dfrac{2}{m+2}\\right) - 4 = \\dfrac{4 - 4(m+2)}{m+2} = \\dfrac{-4m - 4}{m+2}$\n3단계: 교점이 제2사분면 위에 있으려면 $x < 0$이고 $y > 0$이어야 한다.\n- $x = -\\dfrac{2}{m+2} < 0 \\implies m + 2 > 0 \\implies m > -2$\n- $y = \\dfrac{-4(m+1)}{m+2} > 0$ : 분모 $m+2 > 0$이므로 분자 $-4(m+1) > 0 \\implies m+1 < 0 \\implies m < -1$\n4단계: 두 부등식의 공통 범위를 구하면\n$-2 < m < -1$\n따라서 정답은 ④이다."
+      "solution": "[키포인트] 제2사분면 위의 점 $(x, y)$는 $x < 0, y > 0$을 만족한다.\n1단계: 두 직선의 방정식을 연립하여 교점의 좌표를 $m$으로 나타낸다.\n$\\begin{cases} 2x + y + 4 = 0 & \\cdots ㉠ \\\\ mx - y - 2 = 0 & \\cdots ㉡ \\end{cases}$\n두 식을 변끼리 더하면\n$(m + 2)x + 2 = 0 \\implies x = -\\dfrac{2}{m + 2}$\n2단계: ㉠식에서 $y = -2x - 4$이므로 $x$를 대입한다.\n$y = -2\\left(-\\dfrac{2}{m+2}\\right) - 4 = \\dfrac{4 - 4(m+2)}{m+2} = \\dfrac{-4m - 4}{m+2}$\n3단계: 교점이 제2사분면 위에 있으려면 $x < 0$이고 $y > 0$이어야 한다.\n- $x = -\\dfrac{2}{m+2} < 0 \\implies m + 2 > 0 \\implies m > -2$\n- $y = \\dfrac{-4(m+1)}{m+2} > 0$ : 분모 $m+2 > 0$이므로 분자 $-4(m+1) > 0 \\implies m+1 < 0 \\implies m < -1$\n4단계: 두 부등식의 공통 범위를 구하면\n$-2 < m < -1$\n따라서 정답은 ④이다.",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "id": 21,
@@ -690,7 +698,7 @@ window.examData = {
     {
       "id": 24,
       "score": 6,
-      "level": "중",
+      "level": "상",
       "category": "일차함수와 그래프",
       "originalCategory": "일차함수",
       "standardCourse": "중2-1",
@@ -712,7 +720,8 @@ window.examData = {
       "content": "<p>[서술형 4] 다음 그림은 수직선 위를 일정한 속력으로 움직이는 두 물체 A와 B의 시간에 따른 위치를 나타낸 것이다. 두 물체 A와 B가 움직이기 시작한 지 $x$분 후의 위치를 $y$라고 할 때, 두 물체 A와 B는 움직이기 시작한 지 몇 분 후에 만나는지 구하려고 합니다. 다음 물음에 답하시오. [6점]</p><p><img src=\"assets/images/21_팔마중_1학기_기말_중2_수학/s04.png\" alt=\"두 물체 A, B의 시간에 따른 위치를 나타내는 일차함수 그래프\" class=\"question-image\" /></p><p>(1) 물체 A에 대하여 $x$와 $y$사이의 관계식을 세우시오. [2점]</p><p>(2) 물체 B에 대하여 $x$와 $y$사이의 관계식을 세우시오. [2점]</p><p>(3) 두 물체 A와 B는 움직이기 시작한 지 몇 분 후에 만나는지 구하는 풀이과정과 답을 쓰시오. [2점]</p>",
       "choices": [],
       "answer": "(1) $y = \\dfrac{2}{5}x + 3$  (2) $y = \\dfrac{3}{5}x$  (3) $15$분 후",
-      "solution": "[키포인트] 각 물체의 시간에 따른 위치 그래프에서 두 점을 찾아 일차함수의 식을 구하고, 두 식이 같아지는 $x$값을 구한다.\n(1) 물체 A의 그래프는 두 점 $(0, 3)$, $(5, 5)$를 지나는 직선이다.\n기울기는 $\\dfrac{5 - 3}{5 - 0} = \\dfrac{2}{5}$이고 $y$절편은 $3$이므로 관계식은\n$y = \\dfrac{2}{5}x + 3$이다.\n\n(2) 물체 B의 그래프는 두 점 $(0, 0)$, $(5, 3)$을 지나는 직선이다.\n기울기는 $\\dfrac{3 - 0}{5 - 0} = \\dfrac{3}{5}$이고 원점을 지나므로 관계식은\n$y = \\dfrac{3}{5}x$이다.\n\n(3) 두 물체가 만나는 것은 위치 $y$가 같을 때이므로\n$\\dfrac{2}{5}x + 3 = \\dfrac{3}{5}x$\n양변에 $5$를 곱하면\n$2x + 15 = 3x \\implies x = 15$\n따라서 두 물체는 움직이기 시작한 지 $15$분 후에 만난다."
+      "solution": "[키포인트] 각 물체의 시간에 따른 위치 그래프에서 두 점을 찾아 일차함수의 식을 구하고, 두 식이 같아지는 $x$값을 구한다.\n(1) 물체 A의 그래프는 두 점 $(0, 3)$, $(5, 5)$를 지나는 직선이다.\n기울기는 $\\dfrac{5 - 3}{5 - 0} = \\dfrac{2}{5}$이고 $y$절편은 $3$이므로 관계식은\n$y = \\dfrac{2}{5}x + 3$이다.\n\n(2) 물체 B의 그래프는 두 점 $(0, 0)$, $(5, 3)$을 지나는 직선이다.\n기울기는 $\\dfrac{3 - 0}{5 - 0} = \\dfrac{3}{5}$이고 원점을 지나므로 관계식은\n$y = \\dfrac{3}{5}x$이다.\n\n(3) 두 물체가 만나는 것은 위치 $y$가 같을 때이므로\n$\\dfrac{2}{5}x + 3 = \\dfrac{3}{5}x$\n양변에 $5$를 곱하면\n$2x + 15 = 3x \\implies x = 15$\n따라서 두 물체는 움직이기 시작한 지 $15$분 후에 만난다.",
+      "legacyLevelCompatibility": "STRONG_CONFLICT"
     }
   ]
 };

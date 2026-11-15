@@ -1,16 +1,380 @@
 {
   "capability": "construction-spike-v1",
-  "sourceQuote": "다음 그림과 같이 반지름의 길이가 $4\\,\\mathrm{cm}$인 원 $",
-  "sourceConditions": [
-    {
-      "id": "q20-c1",
-      "condition": "기하 불변량 조건 결속"
-    }
-  ],
-  "caption": "Q20 유사 문항 기하 도형",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ad",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "ad"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "cd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
   "displayPoints": [
     "O",
     "A",
-    "B"
-  ]
+    "C",
+    "D",
+    "M",
+    "N",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sMP",
+      "refs": [
+        "M",
+        "P"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMD",
+      "refs": [
+        "M",
+        "D"
+      ]
+    },
+    {
+      "id": "sCN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sND",
+      "refs": [
+        "N",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "C",
+        "N",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aMON",
+        "refs": [
+          "M",
+          "O",
+          "N"
+        ],
+        "value": 120,
+        "noLabel": true,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "colored",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A",
+              "M"
+            ]
+          },
+          {
+            "polygon": [
+              "O",
+              "C",
+              "N"
+            ]
+          },
+          {
+            "loop": {
+              "start": "O",
+              "steps": [
+                {
+                  "to": "M"
+                },
+                {
+                  "to": "P"
+                },
+                {
+                  "to": "D",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "O"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 590,
+    "height": 490
+  },
+  "caption": "두 현에 내린 수선의 발과 색칠된 두 직각삼각형, 부채꼴 POD",
+  "sourceConditions": [
+    "반지름 4 cm인 원에서 두 현 AD, CD에 내린 수선의 발이 M, N이며 OM=ON=2 cm이다.",
+    "반직선 OM이 원과 P에서 만나고 ∠MON=120°이다.",
+    "색칠한 영역은 삼각형 OAM, 삼각형 OCN과 부채꼴 POD이다."
+  ],
+  "newVisualInformation": []
 }

@@ -27,12 +27,13 @@ node tests/archive-question-identity-runtime.test.mjs > "$work/identity-runtime.
 node archive/tools/verify-archive-registration.mjs > "$work/registration-parity.json"
 git diff --check
 git diff --exit-code -- archive/exams
-# Run twice in the same transaction: an already applied input must be a no-op.
-node archive/tools/meta-foundation/auto-register-merged-source.mjs --report "$work/replay.json" > "$work/replay.log"
+# Replay exactly this bounded batch. A normal invocation selects the NEXT batch
+# after unchanged pending inputs, which is distinct work and can legitimately apply.
+node archive/tools/meta-foundation/auto-register-merged-source.mjs --replay-report "$report" --report "$work/replay.json" > "$work/replay.log"
 node --input-type=module - "$work/replay.json" <<'JS'
 import fs from 'node:fs';
 const r=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
-if((r.applied||0)!==0)throw Error('AUTO_META_REPLAY_NOT_IDEMPOTENT');
+if(r.replayVerified!==true||r.applied!==0||r.plannedPaths?.length!==0)throw Error('AUTO_META_REPLAY_NOT_IDEMPOTENT');
 console.log('AUTO_META_REPLAY_NO_DUPLICATE: PASS');
 JS
 # Reuse the native generated-output allowlist; permit only this module's derived state/receipts.

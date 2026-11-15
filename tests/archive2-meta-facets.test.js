@@ -116,7 +116,16 @@ test('the lane never changes the canonical resolution or the strict approval met
   assert.ok(advanced.length >= 195, String(advanced.length));
   assert.ok(data.records.filter(row => row.problemTypeKey).length >= 549);
   assert.ok(data.records.filter(row => row.curriculumKey).length >= 3206, 'canonical curriculumKey is untouched');
-  for (const row of advanced) assert.equal(core.basicEligibility(row, auth).ok, true, 'advanced-eligible implies strictly approved');
+  // Advanced use requires an approved canonical assignment, while the strict
+  // basic selection metric separately limits applicability to DEFAULT_SCOPE.
+  // A reviewed CORE assignment must keep its scope without losing its approval.
+  for (const row of advanced) {
+    const assignment = core.Canonical.validateBasicAssignment(row, data.canonicalAuthority);
+    assert.equal(assignment.ok, true, row.questionUid + ': ' + assignment.reasons.join(','));
+    assert.equal(row.assignmentEvidence?.questionUid, row.questionUid, 'advanced approval must bind the same UID');
+    assert.equal(row.assignmentEvidence?.approvalStatus, 'APPROVED', row.questionUid);
+    assert.equal(row.assignmentEvidence?.assignmentFingerprint, row.assignmentFingerprint, 'advanced approval must bind the current problem');
+  }
   assert.equal(new Set(data.records.map(row => row.questionUid)).size, data.records.length, 'no duplicate question uid');
   // every canonically validated type/template is also in the lane with the same value and is 승인
   for (const row of data.records.filter(candidate => core.advancedEligible(candidate, auth))) {
@@ -126,6 +135,40 @@ test('the lane never changes the canonical resolution or the strict approval met
   }
   assert.match(String(data.canonicalProjectionVersion || data.indexVersion), /./);
   assert.equal(core.Canonical.RESOLVER_VERSION, require('../archive/archive2-canonical.js').RESOLVER_VERSION);
+});
+
+test('CORE applicability stays outside the basic metric while advanced use still requires intact canonical approval', async () => {
+  const data = await catalog();
+  const authority = data.canonicalAuthority;
+  const options = { canonicalAuthority: authority };
+  const original = data.records.find(row => core.basicEligibility(row, options).ok && core.advancedEligible(row, options));
+  assert.ok(original, 'the production catalog supplies an independently approved advanced assignment');
+  const scoped = { ...original, basicScopeApplicability: 'CORE', basicScopeDefaultSelectable: true, curriculumApplicability: 'CORE' };
+  assert.deepEqual(core.basicEligibility(scoped, options), { ok: false, reasons: ['applicability'] });
+  assert.equal(core.advancedEligible(scoped, options), true, 'CORE does not revoke an approved canonical type/template');
+  assert.equal(scoped.curriculumApplicability, 'CORE', 'the historical scope is not rewritten to DEFAULT_SCOPE');
+
+  for (const change of [
+    { sourceStatus: 'HOLD' },
+    { sourceIntegrityStatus: 'HOLD' },
+    { identityStatus: 'UNVERIFIED' },
+    { assignmentFingerprint: '0'.repeat(64) },
+  ]) assert.equal(core.advancedEligible({ ...scoped, ...change }, options), false, JSON.stringify(change));
+
+  const accepted = authority.assignmentsByUid[scoped.questionUid];
+  assert.equal(accepted.length, 1);
+  for (const change of [
+    { approvalStatus: 'PENDING' },
+    { reviewEvidence: { ...accepted[0].reviewEvidence, status: 'HOLD' } },
+    { questionUid: uidFor('different-approved-question') },
+  ]) {
+    const changedAuthority = { ...authority, assignmentsByUid: {
+      ...authority.assignmentsByUid, [scoped.questionUid]: [{ ...accepted[0], ...change }],
+    } };
+    assert.equal(core.advancedEligible(scoped, { canonicalAuthority: changedAuthority }), false,
+      'an applicability distinction must not waive approval, review or UID binding: ' + JSON.stringify(change));
+  }
+  assert.equal(core.basicEligibility(original, options).ok, true, 'the approved default-scope input was not mutated');
 });
 
 test('records whose approval only lags the answer/solution bytes are usable and labelled; changed stems stay out of meta filtering', async () => {
