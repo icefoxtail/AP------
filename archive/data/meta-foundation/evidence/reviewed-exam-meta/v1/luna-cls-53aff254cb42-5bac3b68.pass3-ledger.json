@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T16:27:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/23_순천고_1학기_중간_고2_수학I.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass1",
+      "resolutionReason": "⁴√((-3)⁴)=3, ∛((-4)³)=−4, √(∛64)=2이므로 식은 3+(−4)×2=−5이며 거듭제곱근의 정의와 주값을 묻는다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "거듭제곱근",
+        "l4": "n제곱근"
+      }
+    },
+    {
+      "ordinal": 2,
+      "chosenFrom": "pass2",
+      "resolutionReason": "2^(x−3)>0이라 치역은 y>1이고 오른쪽 3, 위쪽 1 평행이동의 수평점근선은 y=1이므로 옳은 보기는 ③이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH"
+    },
+    {
+      "ordinal": 3,
+      "chosenFrom": "pass1",
+      "resolutionReason": "그림에서 y=1/2 높이에 대응하는 로그곡선의 x좌표가 a이므로 log_(1/2)a=1/2, 즉 a=1/√2이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH"
+    },
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass2",
+      "resolutionReason": "밑 √2 로그함수의 ㄱ은 x축 대칭·이동, ㄴ은 역함수로서 원그래프와 대칭이동 관계, ㄷ은 지수로그 역관계로 이동 가능하지만 ㄹ은 세로 2배 확대를 추가해야 하므로 제외된다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+      "integrationPattern": "PT_FUNCTION_GRAPH_TRANSFORM"
+    },
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "resolutionReason": "t=log x로 두면 지수부 t(4−t)−1=−(t−2)²+3이 최대 t=2에서이므로 a=100,b=1000,b/a=10이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+      "integrationPattern": "PT_FUNCTION_EXTREMUM"
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "resolutionReason": "두 로그곡선은 (2,−3)만큼 평행이동 관계이며 평행선 3x+2y=4,14 사이 거리는 10/√13이고 이동벡터 길이는 √13이라 둘러싸인 넓이는 10이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+      "integrationPattern": "PT_FUNCTION_GRAPH_GEOMETRY"
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass2",
+      "resolutionReason": "x>0에서 x>1이면 밑이 1보다 커 지수 비교 3x+2>x−2가 성립하고 0<x<1에서는 반대 부등식이 성립하지 않아 해는 x>1이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass2",
+      "resolutionReason": "u=|x|로 두고 자연수 로그값 1,2가 되려면 −u²+au+3이 2 또는 4여야 하며 근 개수가 6이 되는 자연수 a는 3,4라 합은 7이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "PT_LOG_APPLICATION"
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass2",
+      "resolutionReason": "T=0에서 log P=a+b/c=log4.8은 0.602와 0.699 사이이고 압력이 증가하려면 c>0,b<0이므로 네 보기 모두 참이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "상용로그",
+        "l4": "상용로그표·자릿수"
+      },
+      "integrationPattern": "PT_LOG_APPLICATION"
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass2",
+      "resolutionReason": "(1/2)^(t/5700)=0.3에서 log2=0.3, log3=0.5를 쓰면 t/5700=0.5/0.3=5/3이므로 지층의 나이는 9500년이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수함수의 활용"
+      },
+      "integrationPattern": "PT_EXPONENTIAL_DECAY",
+      "hold": {
+        "rpmPath": {
+          "l4": "표의 지수함수 활용 항목에 반감기·지수적 감소를 나타내는 맞는 l4 값이 없어 임의 선택하지 않음."
+        }
+      }
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass2",
+      "resolutionReason": "지름 끝점 좌표합은 (10/3,0)이고 로그의 대칭으로 두 x좌표 곱은 1이어서 좌표가 1/3,3이며 y=1일 때 log_a3=1에서 a=3이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+      "integrationPattern": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "hold": {
+        "crossConceptKeys": "문항의 원 C 방정식과 로그함수 교점을 결합하지만 H2-수학I.json의 crossConcepts 목록에 원의 방정식 키가 없음."
+      }
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "resolutionReason": "A의 높이를 h라 하면 S₂=h², S₁=½h²(3^h−1)이므로 2S₂=3S₁에서 3^h=7/3을 얻어 h=log₃(7/3), 주어진 x좌표 로그식과 대조해 a=7/3이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "hold": {
+        "crossConceptKeys": "문항에서 삼각형 넓이 S1과 지수함수 그래프를 함께 쓰지만 H2-수학I.json의 crossConcepts 목록에 삼각형 넓이 키가 없음."
+      }
+    }
+  ]
+}
