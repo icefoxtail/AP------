@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E081",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T05:56:31.078007+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/19_서울세일중_1학기_중간_중3_수학.js",
+  "sourceBlob": "7773e65e6b461cced98b387e6e65b54af8535576",
+  "inputArtifacts": {
+    "workers/C/E081.review.json": {
+      "sha256": "1c0ae199c592c30efb5d8f2ded45c1bbe803e9d31dd3f787e1d83b4d10f1d0da"
+    },
+    "workers/C/E081.4slot.json": {
+      "sha256": "96e11af7e8d2832770a254829ed5fd67a7b94f53526c245507c1b2b37dc3b715"
+    },
+    "workers/C/E081.input.json": {
+      "sha256": "2784e780c276202f48c20a9c54541077259f9e31bde6bcc74fc05c367ad131c9"
+    }
+  },
+  "sampledOrdinals": [
+    6,
+    9,
+    17
+  ],
+  "items": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_8e07a1ac622d85f84fe56a07b91488a7527b3f3ff9309e1c74d6c9a96ba3c4ba",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "선지④와⑤를 실제 발문·기존해설과 대조했다. 합차공식으로 (3+√6)(-3+√6)=-3 역시 유리수이므로 기존해설의⑤ 오답 단정은 성립하지 않는다. 유리화라는 메타 개념은 보존하되 원문 불확실성·난도UNKNOWN·source patch없음을 수용한다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_0f38a80d56ff784a05b8ae90a1e4e60347dc15641b70d812ce22fece9b9141b2",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "ab=49는 양수쌍과 음수쌍 모두 가능하다. 현재해설은 근호정의에서 양수를 잘못 추론한다. 부호조건 결여·목표값 비유일성 부채를 숨기지 않고 UNKNOWN 처리한 author판정을 수용한다. condition에 새 양수조건을 발명하지 않은 점 확인."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_19d5736bf8cee5597b02d38facc9ea3921eebdd147ba77ce65058b2afee1850b",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제 모눈그림의 기준점-2와 대각선 길이√2의 회전호 A,B를 확인했다. 좌표 a,b 이후 합차인수분해의 소문항 연결, RPM027 부모후보+exact-leaf gap, CC_PYTHAGOREAN,중/3과 방법제한 인수분해 condition이 근거에 맞는다."
+    }
+  ],
+  "findingsResolved": [],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E081-assets/17-image.png",
+      "sha256": "0e1537480edb8cbba41ee9fe12957dc9419ad6021512d462e634d9a3b57492a0",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}
