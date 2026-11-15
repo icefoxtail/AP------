@@ -1,0 +1,131 @@
+{
+  "sourcePath": "archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_수학II_유사.js",
+  "questionId": 19,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -1,
+            7
+          ],
+          "viewport": [
+            -1,
+            7,
+            -2,
+            7
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "O",
+                "x": "0",
+                "y": "0"
+              },
+              {
+                "id": "A",
+                "x": "2",
+                "y": "0"
+              },
+              {
+                "id": "B",
+                "x": "4",
+                "y": "0"
+              },
+              {
+                "id": "P",
+                "x": "6",
+                "y": "0"
+              },
+              {
+                "id": "C",
+                "x": "2",
+                "y": "4"
+              },
+              {
+                "id": "D",
+                "x": "4",
+                "y": "4"
+              }
+            ],
+            "polygons": [
+              {
+                "id": "ABDC",
+                "points": [
+                  "A",
+                  "B",
+                  "D",
+                  "C"
+                ],
+                "fill": "LIGHT"
+              }
+            ]
+          },
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "3",
+                "-1/2"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": "3",
+              "y": "9/2"
+            }
+          ],
+          "coordinateBand": {
+            "hide": [
+              "V"
+            ]
+          }
+        },
+        "caption": "포물선과 사각형",
+        "sourceQuote": "점 P는 원점 O에서 출발해 x축의 양의 방향으로 움직이며, 포물선 위의 점이다.",
+        "sourceConditions": [
+          {
+            "id": "S1",
+            "condition": "O와 P를 지나는 아래로 열린 포물선; A와 B는 OP의 삼등분점; C,D는 x축에 수직인 선과 포물선의 교점",
+            "mappedTo": [
+              "graphPlan",
+              "graphPlan.overlays"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "이동하는 점 P, OP 위의 삼등분점, 수직선과 만나는 점들의 도형 관계를 나타낸다."
+        ],
+        "pointNames": {
+          "O": "O",
+          "A": "A",
+          "B": "B",
+          "P": "P",
+          "C": "C",
+          "D": "D"
+        },
+        "assetPath": "archive/assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q19.svg",
+        "accessibilityDescription": "포물선과 사각형 그림."
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 34,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

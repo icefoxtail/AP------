@@ -219,7 +219,7 @@ window.examData = {
     {
       "number": 15,
       "score": 4,
-      "question": "다음 그림과 같이 $\\mathrm{B, P, D}$가 이 순서로 한 직선 위에 있고, 점 $\\mathrm{P}$는 선분 $\\overline{\\mathrm{BD}}$ 위를 움직인다. 점 $\\mathrm{A, C}$는 직선 $\\mathrm{BD}$의 같은 쪽에 있으며, $\\overline{\\mathrm{AB}}\\perp\\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{CD}}\\perp\\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{AB}}=5\\,\\mathrm{cm}$, $\\overline{\\mathrm{CD}}=3\\,\\mathrm{cm}$, $\\overline{\\mathrm{BD}}=15\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PC}}$의 최솟값은?(4점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q15_audited.svg\" />",
+      "question": "다음 그림과 같이 $\\mathrm{B, P, D}$가 이 순서로 한 직선 위에 있고, 점 $\\mathrm{P}$는 선분 $\\overline{\\mathrm{BD}}$ 위를 움직인다. 점 $\\mathrm{A, C}$는 직선 $\\mathrm{BD}$의 같은 쪽에 있으며, $\\overline{\\mathrm{AB}}\\perp\\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{CD}}\\perp\\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{AB}}=5\\,\\mathrm{cm}$, $\\overline{\\mathrm{CD}}=3\\,\\mathrm{cm}$, $\\overline{\\mathrm{BD}}=15\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PC}}$의 최솟값은?(4점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q15-engine-upgrade.svg\" />",
       "choices": [
         "8",
         "10",

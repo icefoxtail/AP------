@@ -1630,7 +1630,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "ALIVE_REPLACEMENT",
     "score": 4,
-    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $BD=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$, $\\angle ADB=120^\\circ$일 때, $AC$의 길이를 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q19.svg\" alt=\"C가 직각이고 D가 BC 위에 있으며 BD=8인 삼각형\" />",
+    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $BD=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$, $\\angle ADB=120^\\circ$일 때, $AC$의 길이를 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q19-engine-upgrade.svg\" alt=\"직각삼각형\" />",
     "choices": [
       "$2\\sqrt{3}$",
       "$3\\sqrt{3}$",

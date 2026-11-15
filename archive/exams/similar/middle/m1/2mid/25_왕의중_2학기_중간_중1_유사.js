@@ -489,7 +489,7 @@ window.questionBank = [
     "점과 직선 사이의 거리",
     "수선의 발"
   ],
-  "content": "다음 그림의 사다리꼴 $ABCD$에서 $\\overline{AD} \\parallel \\overline{BC}$이고 $\\angle B = 90^\\circ$이다. $\\overline{AB}=6\\,\\mathrm{cm}$, $\\overline{BC}=10\\,\\mathrm{cm}$, $\\overline{CD}=8\\,\\mathrm{cm}$, $\\overline{AD}=4\\,\\mathrm{cm}$일 때, 다음 보기 중 옳은 것만을 있는 대로 고른 것은? [4점]<br><div class=\"note-box\">ㄱ. 점 $A$와 직선 $BC$ 사이의 거리는 $6\\,\\mathrm{cm}$이다.<br>ㄴ. 점 $D$에서 변 $AB$에 내린 수선의 발은 점 $A$이다.<br>ㄷ. 점 $C$와 직선 $AB$ 사이의 거리는 $10\\,\\mathrm{cm}$이다.</div>",
+  "content": "다음 그림의 사다리꼴 $ABCD$에서 $\\overline{AD} \\parallel \\overline{BC}$이고 $\\angle B = 90^\\circ$이다. $\\overline{AB}=6\\,\\mathrm{cm}$, $\\overline{BC}=10\\,\\mathrm{cm}$, $\\overline{AD}=4\\,\\mathrm{cm}$일 때, 다음 보기 중 옳은 것만을 있는 대로 고른 것은? [4점]<br><div class=\"note-box\">ㄱ. 점 $A$와 직선 $BC$ 사이의 거리는 $6\\,\\mathrm{cm}$이다.<br>ㄴ. 점 $D$에서 변 $AB$에 내린 수선의 발은 점 $A$이다.<br>ㄷ. 점 $C$와 직선 $AB$ 사이의 거리는 $10\\,\\mathrm{cm}$이다.</div>",
   "choices": [
     "ㄱ",
     "ㄴ",
@@ -499,7 +499,8 @@ window.questionBank = [
   ],
   "answer": "⑤",
   "points": 4,
-  "image": "assets/images/25_왕의중_2학기_중간_중1_유사/q13.svg",
+  "image": "assets/images/25_왕의중_2학기_중간_중1_유사/q13-engine-upgrade.svg",
+  "imageSize": "full",
   "problemTypeKey": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
   "templateKey": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CORE",
   "solution": "[키포인트] 점과 직선 사이의 거리는 점에서 그 직선에 내린 수선의 길이이다.\n사다리꼴 $ABCD$에서 $\\overline{AD} \\parallel \\overline{BC}$이고 $\\angle B=90^\\circ$이므로 $\\angle A=90^\\circ$이다. 즉 $\\overline{AB} \\perp \\overline{AD}$이고 $\\overline{AB} \\perp \\overline{BC}$이다.\nㄱ. 점 $A$에서 직선 $BC$에 내린 수선의 발은 점 $B$이므로, 점 $A$와 직선 $BC$ 사이의 거리는 선분 $AB$의 길이인 $6\\,\\mathrm{cm}$이다. (참)\nㄴ. $\\overline{AD} \\perp \\overline{AB}$이므로 점 $D$에서 변 $AB$에 내린 수선의 발은 점 $A$이다. (참)\nㄷ. $\\overline{BC} \\perp \\overline{AB}$이므로 점 $C$에서 직선 $AB$에 내린 수선의 발은 점 $B$이다. 따라서 점 $C$와 직선 $AB$ 사이의 거리는 선분 $BC$의 길이인 $10\\,\\mathrm{cm}$이다. (참)\n따라서 옳은 것은 ㄱ, ㄴ, ㄷ 모두이므로 정답은 ⑤이다.",

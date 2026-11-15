@@ -566,7 +566,7 @@ window.questionBank = [
     "wide": false,
     "content": "다음은 원의 중심에서 현에 내린 수선은 그 현을 수직이등분함을 증명하는 과정이다. (가)~(마)에 들어갈 것으로 옳지 않은 것은?\n\n[증명]\n오른쪽 그림과 같이 원 $O$의 중심에서 현 $AB$에 내린 수선의 발을 $M$이라 하면\n$\\triangle OAM$과 $\\triangle OBM$에서\n$\\angle OMA = \\angle OMB = (가)^\\circ$\n$OA = (나)$ (반지름)\n$OM$은 (다)\n따라서 $\\triangle OAM \\equiv \\triangle OBM$ ((라) 합동)\n그러므로 $AM = (마)$ [4점]",
     "choices": [
-      "$(가) $90^\\circ$$",
+      "(가) $90^\\circ$",
       "(나) $OB$",
       "(다) $OM$",
       "(라) ASA 합동",
@@ -574,7 +574,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$\\triangle OAM$과 $\\triangle OBM$에서\n$\\angle OMA = \\angle OMB = 90^\\circ$ (가)\n$OA = OB$ (반지름) (나)\n$OM$은 공통 (다)\n\n빗변의 길이와 다른 한 변의 길이가 각각 같으므로\n$\\triangle OAM \\equiv \\triangle OBM$ (RHS 합동)\n\n따라서 (라)에 ASA 합동이라 한 것은 옳지 않다.\n정답은 ④이다.",
-    "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q14.svg",
+    "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q14-engine-upgrade.svg",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",

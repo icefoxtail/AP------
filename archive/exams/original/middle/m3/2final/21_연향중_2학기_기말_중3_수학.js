@@ -185,7 +185,7 @@ window.examData = {
       "id": "q10",
       "number": 10,
       "score": 4.5,
-      "question": "오른쪽 그림의 원 $O$에서 두 현 $AB, CD$의 연장선이 점 $P$에서 만나고, $\\overline{AD}$와 $\\overline{BC}$의 교점을 $Q$라고 한다. $P,B,A$는 이 순서로 한 직선 위에 있고 $P,D,C$도 이 순서로 한 직선 위에 있다. 원 위의 점의 순서는 $A,B,D,C$이다. $\\angle BAQ=25^\\circ, \\angle AQC=70^\\circ$이다. $\\angle P$의 크기는? (4.5점)\n<div class=\"question-image\"><img src=\"assets/images/21_연향중_2학기_기말_중3_수학/q10.svg\" /></div>",
+      "question": "오른쪽 그림의 원 $O$에서 두 현 $AB, CD$의 연장선이 점 $P$에서 만나고, $\\overline{AD}$와 $\\overline{BC}$의 교점을 $Q$라고 한다. $P,B,A$는 이 순서로 한 직선 위에 있고 $P,D,C$도 이 순서로 한 직선 위에 있다. 원 위의 점의 순서는 $A,B,D,C$이다. $\\angle BAQ=25^\\circ, \\angle AQC=70^\\circ$이다. $\\angle P$의 크기는? (4.5점)\n<div class=\"question-image\"><img src=\"assets/images/21_연향중_2학기_기말_중3_수학/q10-engine-upgrade.svg\" /></div>",
       "choices": [
         "$20^\\circ$",
         "$25^\\circ$",

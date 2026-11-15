@@ -1000,7 +1000,7 @@ window.examData = {
       "id": "s03",
       "number": 24,
       "score": 6.0,
-      "question": "[서술형 3] 오른쪽 그림과 같이 $x$절편이 $-2$이고, $x$축과 이루는 각의 크기가 $60^\\circ$인 직선의 방정식에 대하여 다음 물음에 답하여라. (6점)\n(1) 기울기를 구하여라.\n(2) $y$절편을 구하여라.\n(3) 직선의 방정식을 구하여라.\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/s03.svg\" alt=\"s03 도형\" /></div>",
+      "question": "[서술형 3] 오른쪽 그림과 같이 $x$절편이 $-2$이고, $x$축과 이루는 각의 크기가 $60^\\circ$인 직선의 방정식에 대하여 다음 물음에 답하여라. (6점)\n(1) 기울기를 구하여라.\n(2) $y$절편을 구하여라.\n(3) 직선의 방정식을 구하여라.\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/qs03-engine-upgrade-image.svg\" alt=\"s03 도형\" /></div>",
       "choices": [],
       "answer": "(1) √3; (2) 2√3; (3) y=√3x+2√3",
       "solution": "직선의 기울기 m은 x축과 이루는 각의 탄젠트이므로 $m=\\tan60^\\circ=\\sqrt3$이다.\n직선은 x절편 $(-2,0)$을 지나므로 $y=mx+b$에 대입하면 $0=-2\\sqrt3+b$, 즉 $b=2\\sqrt3$이다.\n따라서 y절편은 $2\\sqrt3$이고 직선의 방정식은 $y=\\sqrt3x+2\\sqrt3$이다.",
@@ -1028,7 +1028,7 @@ window.examData = {
         "기울기",
         "절편"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s03_question-v2.svg",
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/qs03-engine-upgrade-image.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/s03-solution.svg",
       "solutionImageAlt": "해설 그림: x축과 y축 위에 파란색 직선이 그려져 있다. 직선은 x축의 -2에서 x축과 만나고 x축과 이루는 각은 60도로 분홍색으로 표시되어 있다.",

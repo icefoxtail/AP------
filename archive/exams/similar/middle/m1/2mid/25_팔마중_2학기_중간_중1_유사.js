@@ -825,7 +825,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$58^\\circ$",
     "points": 5,
-    "image": "assets/images/25_팔마중_2학기_중간_중1_유사/q21.svg",
+    "image": "assets/images/25_팔마중_2학기_중간_중1_유사/q21-engine-upgrade.svg",
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
     "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
     "solution": "[키포인트] 한 삼각형에서 두 내각을 이용해 교점에서의 각을 구한 뒤, 맞꼭지각의 크기가 같음을 이용하여 다른 삼각형의 미지수 각을 구합니다.\n\n[풀이과정]\n1단계: $\\triangle ABO$에서 교점의 각 $\\angle AOB$ 구하기\n삼각형의 세 내각의 크기의 합은 $180^\\circ$이므로 $\\triangle ABO$에서\n$\\angle AOB = 180^\\circ - (70^\\circ + 45^\\circ) = 180^\\circ - 115^\\circ = 65^\\circ$\n\n2단계: 맞꼭지각의 성질 이용하기\n두 선분 $AD, BC$의 교점 $O$에서 서로 마주 보는 각인 $\\angle COD$와 $\\angle AOB$는 맞꼭지각이므로 크기가 같다.\n즉, $\\angle COD = \\angle AOB = 65^\\circ$\n\n3단계: $\\triangle COD$에서 $\\angle x$ 구하기\n$\\triangle COD$의 세 내각의 합도 $180^\\circ$이므로\n$\\angle x + 65^\\circ + 57^\\circ = 180^\\circ$\n$\\angle x + 122^\\circ = 180^\\circ$\n$\\angle x = 180^\\circ - 122^\\circ = 58^\\circ$\n\n따라서 $\\angle x = 58^\\circ$이다.",

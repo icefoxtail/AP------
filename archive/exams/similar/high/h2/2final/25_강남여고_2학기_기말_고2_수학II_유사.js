@@ -1040,7 +1040,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "점 $P$는 매초 $5$의 속력으로 움직이므로 $t$초 후 $P(5t,0)$이다.\n이차항의 계수가 $-\\dfrac12$이고 $x$축과 $x=0$, $x=5t$에서 만나는 이차함수는\n$y=-\\dfrac12x(x-5t)$\n$A\\left(\\dfrac{5t}{3},0\\right)$, $B\\left(\\dfrac{10t}{3},0\\right)$이므로 $\\overline{AB}=\\dfrac{5t}{3}$\n점 $C$의 $y$좌표는 $\\overline{AC}=-\\dfrac12\\cdot\\dfrac{5t}{3}\\left(\\dfrac{5t}{3}-5t\\right)=\\dfrac{25t^2}{9}$\n(대칭이므로 $\\overline{BD}=\\overline{AC}$이고 사각형 $ABDC$는 직사각형이다.)\n정사각형이 되려면 $\\overline{AB}=\\overline{AC}$이므로\n$\\dfrac{5t}{3}=\\dfrac{25t^2}{9}$\n$\\Rightarrow t=\\dfrac35$ $(t>0)$\n사각형 $ABDC$의 넓이를 $S(t)$라 하면\n$S(t)=\\dfrac{5t}{3}\\cdot\\dfrac{25t^2}{9}=\\dfrac{125}{27}t^3$\n$S'(t)=\\dfrac{125}{9}t^2$\n$t=\\dfrac35$일 때의 변화율은 $S'\\left(\\dfrac35\\right)=\\dfrac{125}{9}\\cdot\\dfrac{9}{25}=5$\n따라서 정답은 ①이다.",
     "points": 4.5,
-    "image": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q19.svg",
+    "image": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q19-engine-upgrade.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II_유사/q19-solution.svg",
     "solutionImageAlt": "t=3/5일 때 P(3, 0)이고 A(1, 0), B(2, 0), C(1, 1), D(2, 1)이어서 AB=AC=1인 정사각형 ABDC가 된다.",

@@ -799,7 +799,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 서로 같다.\n점 $A$에서 그은 두 접선에 대하여 $AF = AD = 15\\text{ cm}$이다.\n점 $B$에서 그은 두 접선에 대하여 $BE = BD$이므로\n$BE = BD = AD - AB = 15 - 10 = 5\\text{ cm}$이다.\n점 $C$에서 그은 두 접선에 대하여 $CE = CF$이므로\n$CE = CF = AF - AC = 15 - 10 = 5\\text{ cm}$이다.\n따라서 선분 $BC$의 길이는\n$BC = BE + CE = 5 + 5 = 10\\text{ cm}$이다.\n이제 삼각형 $ACB$에서 $AC = 10\\text{ cm}$, $BC = 10\\text{ cm}$이고 끼인각 $\\angle ACB = 60^\\circ$이므로 넓이는\n$[\\triangle ACB] = \\dfrac{1}{2} \\times AC \\times BC \\times \\sin 60^\\circ = \\dfrac{1}{2} \\times 10 \\times 10 \\times \\dfrac{\\sqrt{3}}{2} = 25\\sqrt{3}\\text{ cm}^2$이다.\n정답은 ②이다.",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q17-finalqa-20261104.svg",
+    "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q17-engine-upgrade.svg",
     "points": 4.0,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",

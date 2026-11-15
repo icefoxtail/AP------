@@ -458,7 +458,7 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q10_question-v2.svg",
+    "image": "assets/images/26_삼산중_2학기_중간_중3_기출/q10-engine-upgrade.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 공이 높이 2.5m의 A에서 높이 2m의 네트 끝 D까지 30°로 내려오는 AD=1m(주황)와, D에서 바닥 B까지 45°로 내려오는 DB=2√2m(파랑)를 보여 준다. A와 D의 높이 차는 0.5m이다.",
