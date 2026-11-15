@@ -671,9 +671,9 @@
       "questionCount": 24,
       "changedMetadataQuestions": 24,
       "sourceBeforeSha256": "5afa22a5c04c50a3cd40eefae6134818f7e9c6e135980b1e05c75bf6b703fcf5",
-      "sourceAfterSha256": "fefe738ce66232ccb3edefc3e28a319f466b7b87c9e985988d722873c36bd672",
+      "sourceAfterSha256": "c1991de72906533d51bb9a07baf10e3cd5f52df0df2c3297d222f2267e1c9eca",
       "sourceBeforeBlob": "92d8885e815651d4526a16d71fdc61fa68b82ada",
-      "sourceAfterBlob": "fbf6996023d963e4e6c8e9272235e469c52571b5"
+      "sourceAfterBlob": "45c81f4c1e0e1d7d42a2d8ad17bc96219e2f46a5"
     },
     {
       "examId": "E054",
@@ -978,10 +978,11 @@
   ],
   "strictFinalQaDryRun": {
     "examRequests": 35,
-    "uidCount": 465,
+    "uidCount": 464,
     "status": "PASS",
-    "actualRegistrationStatus": "NOT_RUN",
-    "consumerPublicationStatus": "NOT_RUN"
+    "registrarCodeCommit": "de2a947c7315da5b4b975fd83d29f990d1dd953d",
+    "actualRegistrationStatus": "PASS_ISOLATED_OFFICIAL_WRITER_464",
+    "consumerPublicationStatus": "PASS_ISOLATED_CONSUMER_AWAITING_REMOTE_PUBLICATION"
   },
   "curriculumInference": {
     "policy": "Archive2_Usable_Meta_Lane_CURRENT_v1 year/grade rollout",
@@ -1018,8 +1019,9 @@
     "supersededSnapshotUidCount": 465,
     "deferredCurrentFigureUid": "qid_v1_6b154792603079aabc87099a8ee36edb8179a21d8f380accd3d7049fa8219f1f",
     "status": "PASS_OFFICIAL_WRITER_PROJECTION_CONSUMER",
-    "sourceRequestCommit": "b6e19ab9f598369506195d2379ae28d7dc826ba4",
-    "verification": "docs/operations/m3-s2-release-20261115/first464-release-verification.json"
+    "sourceRequestCommit": "86b2992bd6d0d93075f4464523c8d16fd30a0b32",
+    "verification": "docs/operations/m3-s2-release-20261115/first464-release-verification.json",
+    "historicalLevelPreservationCount": 6
   },
   "latestMainFigureDelta": {
     "main": "0f985c4a242888c44a45db99b1a55c7ff32a1aa3",
@@ -1029,5 +1031,26 @@
       "content"
     ],
     "firstSubsetSelected": false
+  },
+  "historicalLevelPreservation": {
+    "path": ".archive-meta-register/evidence/m3s2-e053-historical-level-preservation-20261115.json",
+    "sha256": "8c93dee939a7a337ce2cd37465ec9e8bdda675acbd344835244bccb8440f0a4f",
+    "sourceOrdinal": [
+      6,
+      12,
+      14,
+      21,
+      22,
+      24
+    ],
+    "independentBucketJudgmentRetained": true,
+    "newLegacyLabelJudgment": false
+  },
+  "historicalStrictFinalQaDryRun": {
+    "examRequests": 35,
+    "uidCount": 465,
+    "status": "PASS",
+    "actualRegistrationStatus": "NOT_RUN",
+    "consumerPublicationStatus": "NOT_RUN"
   }
 }

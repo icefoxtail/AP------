@@ -1,12 +1,12 @@
 {
   "schemaVersion": "archive-m3s2-first464-release-verification-v1",
-  "sourceCommit": "b6e19ab9f598369506195d2379ae28d7dc826ba4",
-  "requestCommit": "b6e19ab9f598369506195d2379ae28d7dc826ba4",
-  "registrarCodeCommit": "b83d93523356ac7b60672495598205898defeb49",
+  "sourceCommit": "86b2992bd6d0d93075f4464523c8d16fd30a0b32",
+  "requestCommit": "86b2992bd6d0d93075f4464523c8d16fd30a0b32",
+  "registrarCodeCommit": "de2a947c7315da5b4b975fd83d29f990d1dd953d",
   "rawSourceHashFixCommit": "11ebefa98cfc4f734a9db93c2df37bf27a2943a4",
-  "actualMainConflictCheck": "0f985c4a242888c44a45db99b1a55c7ff32a1aa3",
+  "actualMainConflictCheck": "3406b3eac58ebb20b04e3b1bab14b5f8a36b0f3a",
   "isolatedSandbox": true,
-  "fullSourceFileCount": 7415,
+  "fullSourceFileCount": 1228,
   "generatedFilesWrittenOnlyInsideSandbox": true,
   "registeredRequests": 35,
   "projectionPassed": 35,
@@ -37,23 +37,24 @@
   "status": "PASS",
   "scope": "35 official FINAL_QA metadata requests only. Reviewed source declarations for the remaining questions and separate figure/source/type followups do not count as completed native approval.",
   "fullBuild": {
-    "command": "python archive/build_db.py",
+    "command": "GIT_NO_LAZY_FETCH=1 python archive/build_db.py",
+    "runtimeCodeCommit": "de2a947c7315da5b4b975fd83d29f990d1dd953d",
     "attempts": [
       {
         "attempt": 1,
         "exitCode": 1,
-        "logPath": "/workspace/scratch/c8f1b0bfb4fa/m3s2/.tmp/m3s2-release/first464-full-build-1.log",
-        "sha256": "63989e9e0dbc4ed78bb0fa5e091084df55bd74176c50faccf37d0fc2035b8c28"
+        "logPath": "/workspace/scratch/c8f1b0bfb4fa/m3s2/.tmp/m3s2-release/first464-legacy-full-build.log",
+        "sha256": "2ef621aa10ca73e55b5fe3f98309d6ca86025be3dd97694375f8f3a958959d24"
       },
       {
         "attempt": 2,
         "exitCode": 0,
-        "logPath": "/workspace/scratch/c8f1b0bfb4fa/m3s2/.tmp/m3s2-release/first464-full-build-2.log",
-        "sha256": "e24bc35803085cde04a61a799db35829985fb8e012b712ce699c931ca0793873"
+        "logPath": "/workspace/scratch/c8f1b0bfb4fa/m3s2/.tmp/m3s2-release/first464-legacy-full-build-2.log",
+        "sha256": "0eb31d5c4abee4353e712b81c83b44f525ddcd6f1696e6344d797492459e9959"
       }
     ],
     "finalExitCode": 0,
-    "initialFailure": "Runtime source-readiness fixed point after the fresh complete data write; the next full build and its --check gates pass."
+    "initialFailure": "First fresh run updated runtime source-readiness after the catalog; final readiness check rejected the changed middle-geometry runtime digest. Second full build reached the stable generated state and all required build checks passed."
   },
   "officialWriter": {
     "requests": 35,
@@ -65,11 +66,11 @@
   "proofRefs": [
     {
       "path": "docs/operations/m3-s2-release-20261115/first464-native-writer-auto-reuse.json",
-      "sha256": "08eaab407b50a2b5c1eaf2c58a6c9e1eb4dc39087129ddd4ae6aa5d58239c30c"
+      "sha256": "193f0145c6c8c20282d4f92bf9ce6c50839cb6762cb9676823c96551cb8b3acc"
     },
     {
       "path": "docs/operations/m3-s2-release-20261115/first464-consumer-result.json",
-      "sha256": "e2c677e5f577497f15f644f0b09572706fd0d4dc59a516df1971eb26ccc387c6"
+      "sha256": "76e9fcc8520736e2e7c2e663a7c996141d36125cfbc0bc14c512e2f5e7085925"
     },
     {
       "path": "docs/operations/m3-s2-release-20261115/first464-projection-result.json",
@@ -96,5 +97,27 @@
     "24 E042 rows preserve their declared CORE applicability: all are approved and directly selectable, while the strict basic DEFAULT_SCOPE selector excludes them. This scope distinction is retained explicitly.",
     "Seven current-figure reassessments and the separate source/type repairs remain outside this first464 registration subset."
   ],
-  "productionStatus": "AWAITING_SERIALIZED_REMOTE_CI_MERGE_WRITER_DEPLOYMENT"
+  "productionStatus": "AWAITING_SERIALIZED_REMOTE_CI_MERGE_WRITER_DEPLOYMENT",
+  "historicalLevelPreservation": {
+    "evidence": ".archive-meta-register/evidence/m3s2-e053-historical-level-preservation-20261115.json",
+    "sha256": "8c93dee939a7a337ce2cd37465ec9e8bdda675acbd344835244bccb8440f0a4f",
+    "restoredExactHistoricalLabels": 6,
+    "label": "중상",
+    "legacyCompatibility": "UNKNOWN",
+    "numericDifficultyJudgmentChanged": false,
+    "newFullMathematicalQa": false
+  },
+  "latestMainNoOverlapCheck": {
+    "commit": "f380aee0b8319c171d6cf2a9f96d2e29d31f28e7",
+    "fixtureMainBaseline": "3406b3eac58ebb20b04e3b1bab14b5f8a36b0f3a",
+    "targetSourceAndMetadataIdentityChanges": 0
+  },
+  "ciFacetRepair": {
+    "commit": "75e2a5cf222363fdbd860de92771fe57a1714f66",
+    "testsPassed": 18,
+    "productionCodeChanged": false,
+    "rootCommonPr": 2094,
+    "report": "docs/operations/m3-s2-release-20261115/first464-ci-facet-repair.json"
+  },
+  "sourceFileCountScope": "All .js files under the isolated archive/exams source tree; production source-bank counts remain those reported by the builder."
 }

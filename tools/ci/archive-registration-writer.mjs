@@ -109,6 +109,7 @@ export function nativeLanes(root) {
   return [
     {id:'reviewed',inputs:[...code,...registration,'.archive-meta-register/inbox/',
       'tools/ci/reviewed-meta-register-pass.sh','tools/ci/register-reviewed-meta-requests.mjs',
+      'tools/ci/archive-pr-native-preview.mjs',
       'tools/ci/collect-reviewed-consumer-refusals.mjs',
       'tools/ci/archive-meta-register-trigger-paths.txt','tools/ci/verify-registered-consumer-approval.sh',
       'tests/archive-reviewed-exam-registration-v2.test.mjs','tests/archive-basic-scope-rebind.test.mjs',
@@ -245,6 +246,23 @@ function writeEvidence(work,report,outputs) {
   if(outputs)fs.writeFileSync(path.join(work,'commit.paths'),[...outputs,STATE].join('\n')+'\n');
 }
 
+// Native producers retain their complete JSON/error summaries in the uploaded
+// evidence directory. Only this bounded overview reaches GitHub's 1 MiB step
+// summary, including when a main race repeats preparation in the persist step.
+export function renderRegistrationSummary(result) {
+  const cell=(value,max=96)=>String(value??'').replace(/[|\r\n]/g,' ').slice(0,max);
+  const lanes=Array.isArray(result.lanes)?result.lanes:[], shown=lanes.slice(0,24);
+  const failed=lanes.filter(r=>['FAILED','ROLLED_BACK','STALE_DEPENDENCY'].includes(r.status)).length;
+  const lines=[`### Archive registration writer: ${cell(result.status)}`,'',
+    `registration_ready=${result.registrationReady===true}; staged paths=${result.changedPaths?.length||0}; lanes=${lanes.length}; failed or rolled back=${failed}`,'',
+    '| lane | result | error code |','| --- | --- | --- |',
+    ...shown.map(r=>`| ${cell(r.id,64)} | ${cell(r.status,48)} | ${cell(r.error,100)} |`)];
+  if(shown.length<lanes.length)lines.push('',`${lanes.length-shown.length} additional lane records are in report.json.`);
+  if(result.whitespace)lines.push('',`Git whitespace: ${cell(result.whitespace.status)}; raw Git exit=${cell(result.whitespace.rawGitExitCode,12)}; inherited source lines=${Number(result.whitespace.inheritedLineCount)||0}; byte-bound assets=${result.whitespace.inheritedAssets?.length||0}.`);
+  lines.push('','Full report.json, native-step-summary.md and native command logs are retained in the archive-main-registration workflow artifact.','');
+  return lines.join('\n');
+}
+
 // Recovery checks only the checked-out snapshot. It does not fetch main, run producers or edit Git data.
 export function checkRegistration({root=ROOT,work,lanes=nativeLanes(root),env=process.env}={}) {
   root=path.resolve(root);assertClean(root);
@@ -272,6 +290,7 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   // A retry gets fresh native reports; an earlier attempt's PASS may never certify the new snapshot.
   const nativeWork=path.join(work,'native');fs.rmSync(nativeWork,{recursive:true,force:true});fs.mkdirSync(nativeWork,{recursive:true});
   const writerEnv={...env,RUNNER_TEMP:nativeWork,RELEASE_EVIDENCE_DIR:path.join(work,'shared'),
+    GITHUB_STEP_SUMMARY:path.join(work,'native-step-summary.md'),
     NODE_OPTIONS:env.NODE_OPTIONS||'--max-old-space-size=6144'};
   fs.mkdirSync(writerEnv.RELEASE_EVIDENCE_DIR,{recursive:true});
   let sharedPassed=true,finalChecked=false;
@@ -448,9 +467,7 @@ async function main() {
   console.log(json(result));
   if(process.env.GITHUB_OUTPUT)fs.appendFileSync(process.env.GITHUB_OUTPUT,
     `writer_status=${result.status}\nsafe_to_persist=${result.safeToPersist}\nregistration_ready=${result.registrationReady}\npublishable=${result.publishable}\nneeded=${result.needed}\ninput_sha=${result.inputSha}\ninput_digest=${result.inputDigest}\noutput_digest=${result.outputDigest}\n`);
-  if(process.env.GITHUB_STEP_SUMMARY&&result.whitespace)fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
-    `Git whitespace: ${result.whitespace.status}; raw Git exit=${result.whitespace.rawGitExitCode}; inherited source lines=${result.whitespace.inheritedLineCount}; byte-bound assets=${result.whitespace.inheritedAssets.length}. No source or derived SVG bytes were changed for this classification.\n\n`);
   if(process.env.GITHUB_STEP_SUMMARY)fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
-    `### Archive registration writer: ${result.status}\n\n| lane | result |\n| --- | --- |\n${result.lanes.map(r=>`| ${r.id} | ${r.status} |`).join('\n')}\n\nregistration_ready=${result.registrationReady}; staged paths=${result.changedPaths.length}\n`);
+    renderRegistrationSummary(result));
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))main().catch(e=>{console.error(e.stack||e);process.exitCode=1;});

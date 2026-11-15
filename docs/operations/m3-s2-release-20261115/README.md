@@ -2,9 +2,9 @@
 
 ## Scope of this checkpoint
 
-The 83-exam / 1,958-question review at `c17c09a24eb356e4eaf17e4f5bc43c9844cf7427` is ported onto current main source **field by field**. The current input snapshot is `0f985c4a242888c44a45db99b1a55c7ff32a1aa3`; all 83 source-before blobs are checked against that exact main tree. Newer question and solution figures, including four Dongsan figures and Geumdang Q20, are preserved. Only metadata values documented in the review and its explicit reasoning are copied. Exact-type gaps, unknown difficulty values, historical curriculum gaps, and prior review notes remain distinguishable from completed canonical registration.
+The 83-exam / 1,958-question review at `c17c09a24eb356e4eaf17e4f5bc43c9844cf7427` is ported onto current main source **field by field**. The source input snapshot is `0f985c4a242888c44a45db99b1a55c7ff32a1aa3`; all 83 source-before blobs are checked against that exact main tree. The final isolated registration uses actual main `3406b3eac58ebb20b04e3b1bab14b5f8a36b0f3a` and registrar `de2a947c7315da5b4b975fd83d29f990d1dd953d`; latest main `f380aee0b8319c171d6cf2a9f96d2e29d31f28e7` has no subsequent change to these M3-S2 sources or metadata/identity inputs. Newer question and solution figures, including four Dongsan figures and Geumdang Q20, are preserved. Only metadata values documented in the review and its explicit reasoning are copied. Exact-type gaps, unknown difficulty values, historical curriculum gaps, and prior review notes remain distinguishable from completed canonical registration.
 
-Six repaired questions also receive a current-method difficulty reassessment independently checked against the difficulty v1.3 rubric; the two geometry items on the bucket-3/4 boundary preserve `B34` and `medium` confidence. The historical level is retained.
+Six repaired questions also receive a current-method difficulty reassessment independently checked against the difficulty v1.3 rubric; the two geometry items on the bucket-3/4 boundary preserve `B34` and `medium` confidence. The historical level is retained. The final legacy audit preserves six Geumdang source labels exactly as `중상` with `legacyLevelCompatibility: UNKNOWN`, without changing their independently reviewed numeric buckets, confidence, or boundaries. The other 329 raw level changes are 306 additions where the original field was absent and 23 E056 field-type inversion repairs supported by the original evidence; no existing historical label is reclassified from a numeric bucket.
 
 Thirteen source solutions receive narrow mathematical repairs independently reviewed by the root release coordinator. Their original question text, choices, answers, images, display fields, and question order are unchanged. They address a central-angle justification, two similarity derivations, an incorrect perpendicular vertex, a median case split, and eight elementary-geometry explanations in place of unsupported shortcuts. `source-port-verification.json` binds the actual before/after source bytes and identifies each repaired solution; it is not an exam-wide mathematical quality certificate.
 
@@ -26,7 +26,7 @@ Only source JS, small requests, and review evidence are committed by this lane. 
 
 ## Next concrete steps
 
-1. Finish the partial registration and source reassessment registrar dependency, then release PR #2022 before this packet.
+1. Complete the updated PR #2075 remote CI and merge after the shared registrar repairs; PR #2021 and PR #2022 have already merged to main.
 2. Apply these requests through the writer and verify receipt/Consumer identity at the actual merged source SHA.
 3. Add the reviewed exact definitions and exact bindings for unresolved type goals, using the official `registryChanges` path; reuse existing exact definitions where available.
 4. Close the remaining current-method difficulty and source defects without substituting adjacent type goals or unsupported historical curricula.
