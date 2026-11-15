@@ -261,6 +261,15 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
   },
   {
+    label: 'tests/archive-reviewed-exam-registration-v2.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
+    timeout: 300000
+  },
+  {
+    label: 'tests/archive-reviewed-retained-scope-transport.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-retained-scope-transport.test.mjs']
+  },
+  {
     label: 'tests/archive-reviewed-native-parent.test.mjs',
     args: ['--test', 'tests/archive-reviewed-native-parent.test.mjs']
   },

@@ -15,6 +15,7 @@ export const NATIVE_REQUEST_SCHEMA = 'archive-reviewed-exam-meta-register-reques
 export const DIFFICULTY_REQUEST_SCHEMA = 'archive-difficulty5-register-request-v1';
 const DIFFICULTY_CORRECTION_SCHEMA = 'archive-difficulty5-reviewed-correction-v1';
 export const AUDIT_PRESERVATION_SCHEMA = 'archive-native-audit-preservation-v1';
+export const AUDIT_SOURCE_PRESERVATION_SCHEMA = 'archive-native-audit-source-preservation-v1';
 export const BASIC_PRESERVATION_SCHEMA = 'archive-basic-scope-current-source-preservation-v1';
 export const NATIVE_BASIC_HOLD_SCHEMA = 'archive-basic-native-source-hold-preservation-v1';
 export const NATIVE_BASIC_PARENT_SCHEMA = 'archive-reviewed-native-basic-parent-v1';
@@ -141,6 +142,33 @@ export function auditPreservationDependency(request, file) {
       || spec.requestPath !== file)) fail('AUDIT_DEPENDENCY_SCOPE');
   if (!audit && spec?.difficultyRequestRef !== undefined) fail('AUDIT_DEPENDENCY_SCOPE');
   return audit ? { schemaVersion: AUDIT_PRESERVATION_SCHEMA, difficultyRequestRef: spec.difficultyRequestRef } : undefined;
+}
+
+// This opt-in preserves a proper subset of an immutable FULL audit after only
+// disjoint source metadata changes. It has no D5 dependency or new approval.
+// The official registrar still replays the FULL authority, current selected
+// state, whole questions, renderer bytes and typed issued sidecar.
+function auditSourcePreservationDescriptor(request, file) {
+  const spec = request.approval?.sourceRebind;
+  if (spec?.schemaVersion !== AUDIT_SOURCE_PRESERVATION_SCHEMA) return undefined;
+  const ref = spec.priorReceiptRef;
+  if (request.schemaVersion !== NATIVE_REQUEST_SCHEMA || request.scope !== 'PARTIAL_UIDS'
+      || request.registrationMode !== undefined || request.approval.type !== 'META_PIPELINE_AUDIT'
+      || request.approval.metadataReviewed !== true || typeof request.approval.approvedBy !== 'string'
+      || !request.approval.approvedBy.trim() || !Array.isArray(request.registryChanges) || request.registryChanges.length
+      || !objectKeys(spec, ['schemaVersion', 'requestPath', 'priorCommit', 'priorReceiptRef'])
+      || spec.requestPath !== file || !/^[a-f0-9]{40}$/.test(spec.priorCommit || '')
+      || !objectKeys(ref, ['path', 'sha256']) || typeof ref.path !== 'string'
+      || !ref.path.startsWith(RECEIPTS) || ref.path.slice(RECEIPTS.length).includes('/')
+      || !ref.path.endsWith('.json') || !/^[a-f0-9]{64}$/.test(ref.sha256 || '')
+      || !Array.isArray(request.items) || !request.items.length || request.items.length >= request.expectedQuestionCount
+      || request.items.some(item => !emptyObject(item.before) || !emptyObject(item.after)
+        || Object.keys(item).some(key => !['questionUid', 'sourceOrdinal', 'before', 'after', 'reason', 'evidenceRefs'].includes(key))
+        || typeof item.reason !== 'string' || !item.reason.trim()
+        || !item.evidenceRefs?.some(evidence => eq(evidence, ref)))
+      || !request.approval.evidenceRefs?.some(evidence => eq(evidence, ref))) fail('AUDIT_SOURCE_PRESERVATION_SCOPE');
+  safe('/', ref.path);
+  return { schemaVersion: spec.schemaVersion, priorCommit: spec.priorCommit, priorReceiptRef: { ...ref } };
 }
 
 const REGISTRY_DEPENDENCY_SCHEMA = 'archive-native-active-binding-dependency-v1';
@@ -553,11 +581,12 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       continue;
     }
     const sourceRebind = auditPreservationDependency(request, file);
+    const auditSourcePreservation = auditSourcePreservationDescriptor(request, file);
     const registryDependency = nativeRegistryDependencyDescriptor(request);
     const preservation = request.approval?.sourceRebind !== undefined;
     if (preservation && (correction || request.registrationMode !== undefined ||
         !request.approval.sourceRebind || typeof request.approval.sourceRebind !== 'object' || Array.isArray(request.approval.sourceRebind) ||
-        !(sourceRebind || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
+        !(sourceRebind || auditSourcePreservation || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
     if (request.registrationMode !== undefined && (correction || !partial ||
@@ -605,6 +634,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(partial ? { scope: request.scope } : {}),
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
+      ...(auditSourcePreservation ? { auditSourcePreservation } : {}),
       ...(registryDependency ? { registryDependency } : {}),
       ...(authorityCorrection ? { kind: 'native-authority-withdrawal' } : basicPreservation ? { basicPreservation, kind: basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation' }
         : correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }

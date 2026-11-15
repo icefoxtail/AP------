@@ -507,6 +507,26 @@ test('pass: provisional META_PIPELINE approval keeps the request for student acc
   assert.equal(r.builds,0);
 });
 
+for (const behavior of ['fail', 'verify-fail']) test(`pass: refused source-only audit preservation is never provisional: ${behavior}`, t => {
+  const request = { behavior, approval: { type: 'META_PIPELINE_AUDIT', metadataReviewed: true,
+    approvedBy: 'existing FULL audit subset', sourceRebind: { schemaVersion: 'archive-native-audit-source-preservation-v1',
+      requestPath: '.archive-meta-register/inbox/2-preserve.json', priorCommit: 'a'.repeat(40),
+      priorReceiptRef: { path: 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/prior-full.json', sha256: 'b'.repeat(64) } } },
+    sourceArchiveFile: 'original/a.js', expectedQuestionCount: 2, scope: 'PARTIAL_UIDS', registryChanges: [],
+    items: [{ questionUid: 'kept', sourceOrdinal: 1, before: {}, after: {}, reason: 'unchanged source-only subset' }] };
+  const f = passFixture(t, { '1-good': 'ok', '2-preserve': request });
+  fs.mkdirSync(path.join(f.dir, 'archive/exams/original'), { recursive: true });
+  fs.writeFileSync(path.join(f.dir, 'archive/engine.html'), '<html>engine</html>');
+  fs.writeFileSync(path.join(f.dir, 'archive/exams/original/a.js'),
+    'window.questionBank=[{id:1,content:"Question one",solution:"Existing solution one"},{id:2,content:"Question two",solution:"Existing solution two"}];');
+  const r = f.run(); assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.deepEqual(r.copies, ['1-good.json']);
+  assert.equal(f.exists('.archive-meta-register/pending-supplement'), false);
+  assert.equal(f.exists('derived/2-preserve.out'), false);
+  assert.equal(f.readJson('.archive-meta-register/rejected/2-preserve.rejection.json').stage,
+    behavior === 'fail' ? 'registrar' : 'projection-verify');
+});
+
 test('pass: every request refused -> green, nothing built, rejections recorded', t => {
   const f = passFixture(t, { a: 'fail', b: 'fail' });
   const r = f.run();
