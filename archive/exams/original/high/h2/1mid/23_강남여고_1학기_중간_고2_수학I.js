@@ -472,7 +472,8 @@ window.questionBank = [
       "4",
       "$\\frac{13}{3}$"
     ],
-    "image": "assets/images/23_강남여고_1학기_중간_고2_수학I/q11.png",
+    "image": "assets/images/23_강남여고_1학기_중간_고2_수학I/q11-problem-replacement.svg",
+    "imageAlt": "검은 코사인 곡선과 y=3, y=−1의 회색 점선 안내선, x축 눈금 1, 3, 4를 표시한다.",
     "answer": "③",
     "solution": "그래프의 최댓값이 3, 최솟값이 $-1$이므로 진폭 $a=2$, 중심선 $c=1$이다.\n연속한 두 봉우리의 x좌표 차가 3이므로 주기는 3이고 $2\\pi/(b\\pi)=\\frac{2}{b}=3$, 따라서 $b=\\frac23$이다.\n$a+b+c=2+\\frac23+1=\\frac{11}3$이므로 정답은 ③이다.",
     "score": 4,
