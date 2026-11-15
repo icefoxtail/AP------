@@ -1073,6 +1073,7 @@ window.questionBank = [
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
+    "courseKey": "M3-2",
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
@@ -1099,7 +1100,7 @@ window.questionBank = [
     "solutionImageCaption": "∠B=130°가 보는 호 ADC는 2×130°=260°이고 나머지 호 ABC=360°−260°=100°이다. ∠D는 호 ABC를 보는 원주각이므로 ∠D=100°÷2=50°이다."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "",
+    "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",

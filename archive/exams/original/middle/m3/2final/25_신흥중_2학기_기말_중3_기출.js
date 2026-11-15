@@ -54,6 +54,7 @@ window.questionBank = [
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
+    "courseKey": "M3-2",
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
@@ -84,7 +85,7 @@ window.questionBank = [
     "solutionImageCaption": "마주 보는 두 각의 합이 180°이므로 x=118°, y=98°이고 x−y=20°이다. 정답 ③."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "",
+    "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",

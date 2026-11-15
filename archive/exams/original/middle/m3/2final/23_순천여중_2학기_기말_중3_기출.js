@@ -196,6 +196,7 @@ window.questionBank = [
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
+    "courseKey": "M3-2",
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
@@ -226,7 +227,7 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": null,
+    "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
     "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -243,6 +244,7 @@ window.questionBank = [
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
+    "courseKey": "M3-2",
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
@@ -273,7 +275,7 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": null,
+    "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
     "crossConceptKeys": ["CC_SUPPLEMENTARY_ANGLES"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
