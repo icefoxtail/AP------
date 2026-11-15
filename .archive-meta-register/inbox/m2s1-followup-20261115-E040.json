@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "producer": "/root/m2s1_release; gemini is the existing registrar envelope field name, not an authorship claim",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "m2s1-followup-20261115-E040",
+    "createdAt": "2026-11-15T00:00:00Z",
+    "sourceArchiveFile": "original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js",
+    "latestBlobSha": "145aa82df385c9e4a2b3c0588f46d984af699e03",
+    "items": [
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_670d367bd0fda423aa0897817e80a681a2c27d6bdbf29e462ad0ab82da5e44be",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "User-authorized release; accepted native review 150b22a57f1a7075cae4ea89810bacc3bb7fff15:docs/operations/m2-s1-meta-full-20261114/exams/E040/accepted-review.json; source debt closed only for the 21 exact repairs independently crosschecked by /root/registrar_repair, evidence aca19626b875a1ce20470291122e867dca9aadfb030577dbd3bc9f82f0bf6ff7",
+    "evidencePath": ".archive-meta-register/evidence/m2s1-followup-20261115/E040.json",
+    "evidenceSha256": "2583584ce46a97789269704c1206668294b7546eabadba15d2e51fdcbd5ccbfb",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js",
+        "ordinal": 17,
+        "questionUid": "qid_v1_670d367bd0fda423aa0897817e80a681a2c27d6bdbf29e462ad0ab82da5e44be",
+        "before": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "940d6df3f66d810ba0bd3a52ca126aa68fefc5c6e72baa19b5adab28fa92f863",
+          "contentFingerprint": "589a7b61230eb378060bcde19793ac75144dbb7d82a2feabe1fabfd4e4577a5a"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "aa6d046191f76a53b240c98a27ec5a8cbf64a9a7aec3e6054bb77a877aea6e9c",
+        "contentFingerprint": "637f64b0ed3fbbbcd13779fdffb9ec1816cef677e1b6078520947ba3a10735a6",
+        "staleSourceBinding": true,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "실제그림의 두 직선과 한 교점방정식은 정형 활용이라 source상3 대신 중2/low 제안. alt 충돌 부채를 보존하며 독립검토를 요청한다.\n후속 범위: Replace the incorrect answer-revealing alt text with the two pairs of coordinates actually shown by the unchanged image. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+      }
+    ]
+  }
+}

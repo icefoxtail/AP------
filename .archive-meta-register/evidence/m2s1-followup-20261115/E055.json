@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_NARROW_SOURCE_REPAIR",
+  "producer": "/root/m2s1_release",
+  "priorAcceptedReview": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E055/accepted-review.json",
+    "sha256": "068afec779ffd4ee8442c41701e543d5e36fc9b1853dc0f5468c22f268a6e26b"
+  },
+  "currentSourceBlobSha": "effa3d073447fda9bc26cc2a47b147cb57ce7712",
+  "narrowRepairEvidence": {
+    "authorProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-proposal-r2.json",
+      "sha256": "2c47a0ec73195f01abb86d4d31de45942405670bebbe71f5627766f9e4a3d935",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-followup-repair-proposals-r2.json"
+    },
+    "independentCrosscheck": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-independent-r2.json",
+      "sha256": "aca19626b875a1ce20470291122e867dca9aadfb030577dbd3bc9f82f0bf6ff7",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-narrow-independent-review-20261115-r2.json"
+    },
+    "authorPredecessor": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-proposal-r1.json",
+      "sha256": "f1ad5cae10923f8b4bcea820e52f053e36bc2887184f2dd64a7617b8aa7bef2c",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-followup-repair-proposals.json"
+    },
+    "independentPredecessor": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-independent-r1.json",
+      "sha256": "faa0a5bffe1f2c003a5ffb97c1162b0f14479cdf5690581983cf3f382be912b4",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-narrow-independent-review-20261115-r1.json"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 24,
+    "selectedQuestions": 2
+  },
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "newAdvancedMetadataApprovals": 0,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js",
+      "ordinal": 10,
+      "questionUid": "qid_v1_44165405091fab3caf36938fa61208cd8f1d3f36d4469be4606121204995b2d5",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "sourceFingerprint": "9348798264f5f889e99479930f82b9b9f9bd4e07bb9f28363e980a42ba6ee909",
+        "contentFingerprint": "2a3c7bf849a08ff55039d2375ffa3777329d1198ec6da2170b056ac1d9fcbb09"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "b2e87a4da3085e0ae1569f03dff6ee4eff186de39876ff9fa3f365ff1b2caf6c",
+      "contentFingerprint": "2a3c7bf849a08ff55039d2375ffa3777329d1198ec6da2170b056ac1d9fcbb09",
+      "staleSourceBinding": false,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "실제 입체두 부피공식과 삼각형밑넓이 뒤 높이역산; 원해설 밑면 직각삼각형 단정의 그림근거 부족으로 confidence low.\n후속 범위: The figure shows a triangle base and its internal altitude, not a right-triangular base; the area computation is unchanged. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js",
+      "ordinal": 14,
+      "questionUid": "qid_v1_8a0c31c0eb1626db802d7415fd8d7230d4aceaff785b347b85eceaad2086c7d5",
+      "before": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "sourceFingerprint": "2f95e02f395c3f9c9875c8476280d71141c0c5ce796c7ed86b2fc8b3a5fda588",
+        "contentFingerprint": "a4e48e9002e6981a199a1313db1c6bf0eaabbba189e0cfbc4260f6e5316fde1f"
+      },
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "450f56263eecb37d3f44f1fdbd8a2fa376543aa7ca8fd219e3132f0eaea9c02d",
+      "contentFingerprint": "f2396e16d57cde91102bc125eecf88afb136d7504e3a284a4e6a5280fb7d5a39",
+      "staleSourceBinding": true,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "간단부등식과 실제2닫힌점 오른쪽; 선택지③④⑤ actual그림이 alt/해설과 불일치\n후속 범위: Correct choice-alt descriptions and their solution descriptions to the actual unchanged third/fourth/fifth PNG number lines. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+    }
+  ]
+}

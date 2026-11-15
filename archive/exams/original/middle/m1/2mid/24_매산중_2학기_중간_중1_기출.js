@@ -898,7 +898,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "다각형의 외각의 합은\n$360^\\circ$\n\n$(180^\\circ-100^\\circ)$\n$+(180^\\circ-70^\\circ)$\n$+45^\\circ$\n$+(180^\\circ-x)$\n$+y$\n$=360^\\circ$\n\n$80+110+45+180-x+y=360$\n\n$x-y=55^\\circ$\n\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_매산중_2학기_중간_중1_기출/q19-source-repaired.svg",
+    "image": "assets/images/24_매산중_2학기_중간_중1_기출/q19-quality-v4.svg",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",

@@ -529,6 +529,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "일곱 원자료의 네 번째 값을 중앙값으로, 가장 많이 반복되는 값을 최빈값으로 정하여 두 값을 더한다."
+  ,
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -623,6 +625,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "값별 도수를 반영하여 평균을 정하고 편차 제곱의 가중 평균으로 분산 진술을 검토하며 중앙값·최빈값·편차평균도 대조한다."
+  ,
+    "courseKey": "M3-2"
   },
   {
     "id": 14,

@@ -433,7 +433,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "[그림 1]과 같이 가로의 길이, 세로의 길이, 높이가 각각 $x, x, y$ ($y>x$)인 정사각기둥 3개를 [그림 2]와 같이 각각의 중앙 부분이 겹치면서 서로 수직으로 만나도록 만든 입체가 있다. 이때 [그림 2]의 입체의 부피를 $x, y$로 나타내면? [4.6점]<br><img src=\"assets/images/25_강남여고_1학기_중간_고1_유사/q16-problem-v2.svg\" style=\"display:block; margin:8px auto; width:300px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"정사각기둥 한 개와, 중심에서 서로 수직으로 만나는 세 정사각기둥\">",
+    "content": "[그림 1]과 같이 가로의 길이, 세로의 길이, 높이가 각각 $x, x, y$ ($y>x$)인 정사각기둥 3개를 [그림 2]와 같이 각각의 중앙 부분이 겹치면서 서로 수직으로 만나도록 만든 입체가 있다. 이때 [그림 2]의 입체의 부피를 $x, y$로 나타내면? [4.6점]<br><img src=\"assets/images/25_강남여고_1학기_중간_고1_유사/q16-quality-v4.svg\" style=\"display:block; margin:8px auto; width:300px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"정사각기둥 한 개와, 중심에서 서로 수직으로 만나는 세 정사각기둥\">",
     "choices": [
       "$(y-x)(3y-x^{2})$",
       "$x^{2}(3y-x)$",

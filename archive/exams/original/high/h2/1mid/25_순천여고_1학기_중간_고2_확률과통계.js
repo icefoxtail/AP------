@@ -64,7 +64,7 @@ window.questionBank = [
       "원"
     ],
     "wide": false,
-    "content": "아래 그림과 같이 정삼각형 모양의 탁자에 남자 2명과 여자 4명이 둘러앉을 때, 남자 2명이 탁자의 다른 모서리에 앉는 경우의 수를 구하면? (단, 회전하여 일치하는 것은 같은 것으로 본다.) [3.8점]<br><svg width='200' height='180' viewBox='0 0 200 180' style='display:block; margin: 10px auto;'><polygon points='100,20 20,160 180,160' fill='none' stroke='black' stroke-width='2'/><circle cx='65' cy='82' r='4' fill='black'/><circle cx='48' cy='112' r='4' fill='black'/><circle cx='135' cy='82' r='4' fill='black'/><circle cx='152' cy='112' r='4' fill='black'/><circle cx='80' cy='168' r='4' fill='black'/><circle cx='120' cy='168' r='4' fill='black'/></svg>",
+    "content": "아래 그림과 같이 정삼각형 모양의 탁자에 남자 2명과 여자 4명이 둘러앉을 때, 남자 2명이 탁자의 다른 모서리에 앉는 경우의 수를 구하면? (단, 회전하여 일치하는 것은 같은 것으로 본다.) [3.8점]<br><img src=\"assets/images/25_순천여고_1학기_중간_고2_확률과통계/q02-readable-v3.svg\" alt=\"정삼각형 탁자 주변의 여섯 자리\" style=\"width:100%;max-width:520px;height:auto\">",
     "choices": [
       "48",
       "60",

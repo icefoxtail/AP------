@@ -1,0 +1,341 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",
+  "questionId": 20,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "axisAM",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "M"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "M"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sDM",
+            "refs": [
+              "D",
+              "M"
+            ]
+          },
+          {
+            "id": "sME",
+            "refs": [
+              "M",
+              "E"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          },
+          {
+            "id": "sBM",
+            "refs": [
+              "B",
+              "M"
+            ]
+          },
+          {
+            "id": "sMC",
+            "refs": [
+              "M",
+              "C"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 560
+        },
+        "caption": "삼각형과 두 수선",
+        "accessibilityDescription": "삼각형 ABC와 선분 AM, 수선의 발 D와 E",
+        "planeMarks": {
+          "dimensions": [],
+          "equalLengths": [
+            {
+              "id": "midBC",
+              "count": 1,
+              "segments": [
+                "sBM",
+                "sMC"
+              ]
+            }
+          ],
+          "callouts": [
+            {
+              "id": "am",
+              "kind": "SEGMENT",
+              "path": [
+                "A",
+                "D",
+                "M"
+              ],
+              "at": "RIGHT",
+              "scale": 1,
+              "link": "ENDS",
+              "orientation": "VERTICAL",
+              "dimensions": [
+                {
+                  "id": "dADcopy",
+                  "from": "A",
+                  "to": "D",
+                  "label": "15",
+                  "unit": "cm",
+                  "side": "RIGHT",
+                  "style": "ARROW",
+                  "offset": "AUTO",
+                  "value": 15
+                },
+                {
+                  "id": "dDMcopy",
+                  "from": "D",
+                  "to": "M",
+                  "label": "3",
+                  "unit": "cm",
+                  "side": "RIGHT",
+                  "style": "ARROW",
+                  "offset": "AUTO",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "id": "bd",
+              "kind": "SEGMENT",
+              "path": [
+                "B",
+                "D"
+              ],
+              "at": "BELOW",
+              "scale": 1,
+              "link": "ENDS",
+              "dimensions": [
+                {
+                  "id": "dBDcopy",
+                  "from": "B",
+                  "to": "D",
+                  "label": "8",
+                  "unit": "cm",
+                  "side": "BELOW",
+                  "style": "ARROW",
+                  "offset": "AUTO",
+                  "value": 8
+                }
+              ]
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rD",
+            "refs": [
+              "B",
+              "D",
+              "M"
+            ],
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "rE",
+            "refs": [
+              "C",
+              "E",
+              "M"
+            ],
+            "factRole": "GIVEN"
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 27,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

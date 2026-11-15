@@ -519,7 +519,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4.0,
-    "content": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle \\mathrm{BOC}$의 크기를 $x^\\circ$라고 할 때, 다음 설명 중 옳은 것을 모두 고르면? (정답 2개) ($0 \\le x^\\circ \\le 90^\\circ$)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q8-problem-v2.svg\" />",
+    "content": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle \\mathrm{BOC}$의 크기를 $x^\\circ$라고 할 때, 다음 설명 중 옳은 것을 모두 고르면? (정답 2개) ($0 \\le x^\\circ \\le 90^\\circ$)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q8-problem-v2-figure-only.svg\" />",
     "choices": [
       "$x^\\circ$의 크기가 커질수록 $\\overline{{\\mathrm{{OB}}}}$의 길이가 커진다.",
       "$x^\\circ$의 크기가 커질수록 $\\overline{{\\mathrm{{OC}}}}$의 길이가 커진다.",
@@ -1329,7 +1329,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ALIVE_REPLACEMENT",
     "score": 3.0,
-    "content": "다음 그림과 같이 사각형 $\\mathrm{ABCD}$는 원 $\\mathrm{O}$에 외접하고, 원과 변 $\\mathrm{AB},\\mathrm{BC},\\mathrm{CD},\\mathrm{DA}$의 접점을 각각 $\\mathrm{E},\\mathrm{F},\\mathrm{G},\\mathrm{H}$라 하자. $\\overline{\\mathrm{AB}}=5\\,\\text{cm}$, $\\overline{\\mathrm{AE}}=2\\,\\text{cm}$, $\\overline{\\mathrm{CD}}=6\\,\\text{cm}$, $\\overline{\\mathrm{CF}}=3\\,\\text{cm}$이다. $x=\\overline{\\mathrm{BF}}$, $y=\\overline{\\mathrm{DH}}$일 때, $x+y$의 값은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q19_ALIVE_PROBLEM.svg\" />",
+    "content": "다음 그림과 같이 사각형 $\\mathrm{ABCD}$는 원 $\\mathrm{O}$에 외접하고, 원과 변 $\\mathrm{AB},\\mathrm{BC},\\mathrm{CD},\\mathrm{DA}$의 접점을 각각 $\\mathrm{E},\\mathrm{F},\\mathrm{G},\\mathrm{H}$라 하자. $\\overline{\\mathrm{AB}}=5\\,\\text{cm}$, $\\overline{\\mathrm{AE}}=2\\,\\text{cm}$, $\\overline{\\mathrm{CD}}=6\\,\\text{cm}$, $\\overline{\\mathrm{CF}}=3\\,\\text{cm}$이다. $x=\\overline{\\mathrm{BF}}$, $y=\\overline{\\mathrm{DH}}$일 때, $x+y$의 값은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q19-engine-upgrade.svg\" />",
     "choices": [
       "$5\\,\\text{{cm}}$",
       "$6\\,\\text{{cm}}$",
@@ -1395,7 +1395,7 @@ window.questionBank = [
       "originalSourceState": "GENUINELY_UNRECOVERABLE_CROP",
       "sourceGapEvidence": "review/SOURCE_FIDELITY_AND_REPAIR_AUDIT.json",
       "replacementAsset": {
-        "path": "assets/images/21_금당중_2학기_중간_중3_수학/q19_ALIVE_PROBLEM.svg",
+        "path": "assets/images/21_금당중_2학기_중간_중3_수학/q19-engine-upgrade.svg",
         "bytes": 1707,
         "sha256": "06cbf7f119826d83c3f4649741ba220792a0302d7e709031e76b30971ac62c6b"
       },

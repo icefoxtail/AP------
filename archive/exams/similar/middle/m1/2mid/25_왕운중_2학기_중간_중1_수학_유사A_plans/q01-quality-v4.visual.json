@@ -1,0 +1,460 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학_유사A.js",
+  "questionId": 1,
+  "figures": [
+    {
+      "slot": "image",
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.58,
+        "fontFloorCssPx": 11
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "east",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "MR",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "east"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "20"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "mLine",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "O",
+                "MR"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "vLine",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "O",
+                "P1"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lLine",
+              "op": "PARALLEL_THROUGH",
+              "inputs": [
+                "P1",
+                "mLine"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "N",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "O",
+                "MR"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "mode": "EXTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "MF",
+              "op": "DIVISION_POINT",
+              "inputs": [
+                "O",
+                "MR"
+              ],
+              "args": {
+                "m": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "n": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "mode": "EXTERNAL"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ML",
+              "op": "POINT_REFLECTION",
+              "inputs": [
+                "MR",
+                "O"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "S",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "N",
+                "MR"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "nLine",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "N",
+                "S"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "vLine",
+                "nLine"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P1"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "vX1",
+              "op": "SOURCE_LINE",
+              "inputs": [],
+              "args": {
+                "a": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "b": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "c": {
+                  "kind": "integer",
+                  "value": "-1"
+                }
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "LR",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lLine",
+                "vX1"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "vXm1",
+              "op": "SOURCE_LINE",
+              "inputs": [],
+              "args": {
+                "a": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "b": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "c": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "LL",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lLine",
+                "vXm1"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "P1",
+          "N",
+          "MF",
+          "ML",
+          "S",
+          "Q",
+          "U",
+          "LR",
+          "LL",
+          "east",
+          "MR"
+        ],
+        "displaySegments": [
+          {
+            "id": "sL",
+            "refs": [
+              "LL",
+              "LR"
+            ]
+          },
+          {
+            "id": "sM",
+            "refs": [
+              "ML",
+              "MF"
+            ]
+          },
+          {
+            "id": "sV",
+            "refs": [
+              "O",
+              "P1"
+            ]
+          },
+          {
+            "id": "sN",
+            "refs": [
+              "N",
+              "S"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 520
+        },
+        "caption": "평행한 두 직선과 교차선",
+        "accessibilityDescription": "두 평행한 직선과 세로선, 비스듬한 교차선이 만나는 각",
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a110",
+              "refs": [
+                "P1",
+                "O",
+                "ML"
+              ],
+              "value": 110,
+              "label": "110",
+              "factRole": "GIVEN",
+              "style": "ARC"
+            },
+            {
+              "id": "a130",
+              "refs": [
+                "MF",
+                "N",
+                "S"
+              ],
+              "value": 130,
+              "label": "130",
+              "factRole": "GIVEN",
+              "style": "ARC"
+            },
+            {
+              "id": "x",
+              "refs": [
+                "P1",
+                "Q",
+                "S"
+              ],
+              "label": "x",
+              "factRole": "GIVEN",
+              "style": "ARC"
+            },
+            {
+              "id": "y",
+              "refs": [
+                "U",
+                "P1",
+                "LR"
+              ],
+              "label": "y",
+              "factRole": "GIVEN",
+              "style": "ARC"
+            }
+          ],
+          "parallels": [
+            {
+              "id": "para",
+              "count": 1,
+              "segments": [
+                "sL",
+                "sM"
+              ]
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "nameN",
+              "at": [
+                3.9,
+                0.4
+              ],
+              "text": "n",
+              "labelKind": "MATH",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "P1",
+          "N",
+          "MF",
+          "ML",
+          "S",
+          "U",
+          "LR",
+          "LL",
+          "east",
+          "MR",
+          "Q"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ]
+}

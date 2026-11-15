@@ -8,6 +8,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
+import { SOURCE_SUBSET_SCHEMA, sourceSubsetEvidencePath } from '../../archive/tools/meta-foundation/source-subset-preservation.mjs';
 
 export const NATIVE_PREVIEW_SCHEMA = 'archive-pr-native-preview/v1';
 export const NATIVE_REQUEST_SCHEMA = 'archive-reviewed-exam-meta-register-request-v2';
@@ -137,6 +138,60 @@ export function auditPreservationDependency(request, file) {
   return audit ? { schemaVersion: AUDIT_PRESERVATION_SCHEMA, difficultyRequestRef: spec.difficultyRequestRef } : undefined;
 }
 
+const REGISTRY_DEPENDENCY_SCHEMA = 'archive-native-active-binding-dependency-v1';
+const BINDING_FIELDS = ['curriculum', 'standardCourse', 'standardUnitKey', 'subUnitKey', 'problemTypeKey'];
+const BINDING_PATH = /^archive\/data\/meta-foundation\/canonical\/packs\/[a-z0-9_-]+\/bindings\.json$/;
+function bindingKey(value) {
+  if (!value || BINDING_FIELDS.some(field => typeof value[field] !== 'string' || !value[field].trim())) return null;
+  return Object.fromEntries(BINDING_FIELDS.map(field => [field, value[field]]));
+}
+
+// Ordering uses only explicit final tuples and exact add-only ACTIVE binding
+// rows in the selected requests. The registrar still validates every input,
+// existing canonical row, evidence and output before it writes.
+export function nativeRegistryDependencyDescriptor(request) {
+  if (request.schemaVersion !== NATIVE_REQUEST_SCHEMA || request.registrationMode !== undefined) return undefined;
+  const provides = (Array.isArray(request.registryChanges) ? request.registryChanges : []).flatMap(change => {
+    const key = bindingKey(change.after), match = bindingKey(change.match);
+    return change.before === null && change.collection === 'bindings' && BINDING_PATH.test(change.path)
+      && change.after?.status === 'ACTIVE' && key && match && eq(key, match)
+      && Object.keys(change.match).length === BINDING_FIELDS.length ? [{ path: change.path, key }] : [];
+  });
+  const requires = (Array.isArray(request.items) ? request.items : []).flatMap(item => {
+    const key = bindingKey(item.after);
+    return key ? [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, key }] : [];
+  });
+  return provides.length || requires.length ? { schemaVersion: REGISTRY_DEPENDENCY_SCHEMA, provides, requires } : undefined;
+}
+
+export function nativeRegistryDependencies(requests) {
+  const providers = new Map(), dependencies = new Map();
+  const keyOf = key => {
+    const normalized = bindingKey(key);
+    if (!normalized || Object.keys(key).length !== BINDING_FIELDS.length) fail('REGISTRY_DEPENDENCY_KEY');
+    return JSON.stringify(normalized);
+  };
+  for (const request of requests) {
+    const descriptor = request.registryDependency;
+    if (!descriptor) continue;
+    if (descriptor.schemaVersion !== REGISTRY_DEPENDENCY_SCHEMA || !Array.isArray(descriptor.provides)
+      || !Array.isArray(descriptor.requires)) fail('REGISTRY_DEPENDENCY_DESCRIPTOR');
+    for (const row of descriptor.provides) {
+      if (!BINDING_PATH.test(row.path)) fail('REGISTRY_DEPENDENCY_PATH');
+      const key = keyOf(row.key);
+      if (providers.has(key)) fail('REGISTRY_DEPENDENCY_AMBIGUOUS');
+      providers.set(key, request.path);
+    }
+  }
+  for (const request of requests) for (const row of request.registryDependency?.requires || []) {
+    const provider = providers.get(keyOf(row.key));
+    if (!provider || provider === request.path) continue;
+    if (!dependencies.has(request.path)) dependencies.set(request.path, new Set());
+    dependencies.get(request.path).add(provider);
+  }
+  return dependencies;
+}
+
 export function orderNativeRequests(requests) {
   const byPath = new Map(requests.map(request => [request.path, request]));
   if (byPath.size !== requests.length) fail('DUPLICATE_REQUEST_PATH');
@@ -198,11 +253,16 @@ export function orderNativeRequests(requests) {
       dependencies.get(request.path).add(owner.request.path);
     }
   }
+  const registryDependencies = nativeRegistryDependencies(requests);
+  for (const [consumer, providers] of registryDependencies) {
+    if (!dependencies.has(consumer)) dependencies.set(consumer, new Set());
+    for (const provider of providers) dependencies.get(consumer).add(provider);
+  }
   const remaining = [...requests], ordered = [], completed = new Set();
   while (remaining.length) {
     const index = remaining.findIndex(request => !dependencies.has(request.path)
       || [...dependencies.get(request.path)].every(dependency => completed.has(dependency)));
-    if (index < 0) fail('AUDIT_DEPENDENCY_CYCLE');
+    if (index < 0) fail(registryDependencies.size ? 'REGISTRY_DEPENDENCY_CYCLE' : 'AUDIT_DEPENDENCY_CYCLE');
     const [request] = remaining.splice(index, 1);
     ordered.push(request); completed.add(request.path);
   }
@@ -210,6 +270,19 @@ export function orderNativeRequests(requests) {
 }
 
 const emptyObject = value => value && typeof value === 'object' && !Array.isArray(value) && !Object.keys(value).length;
+function explicitSubsetReferences(request) {
+  const rebind = request.approval?.sourceRebind, ref = rebind?.subsetEvidenceRef;
+  const sameRef = (a, b) => a && b && eq(Object.keys(a).sort(), ['path', 'sha256'])
+    && a.path === b.path && a.sha256 === b.sha256;
+  return rebind?.schemaVersion === SOURCE_SUBSET_SCHEMA
+    && eq(Object.keys(rebind).sort(), ['priorReceiptRef', 'schemaVersion', 'subsetEvidenceRef'])
+    && /^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(request.requestId || '')
+    && ref && eq(Object.keys(ref).sort(), ['path', 'sha256'])
+    && ref.path === sourceSubsetEvidencePath(request.requestId) && /^[a-f0-9]{64}$/.test(ref.sha256 || '')
+    && Array.isArray(request.approval.evidenceRefs) && request.approval.evidenceRefs.some(item => sameRef(item, ref))
+    && request.approval.evidenceRefs.some(item => sameRef(item, rebind.priorReceiptRef))
+    && Array.isArray(request.items) && request.items.every(item => Array.isArray(item.evidenceRefs) && item.evidenceRefs.some(entry => sameRef(entry, ref)));
+}
 function partialFinalQaPreservation(request) {
   const approval = request?.approval, rebind = approval?.sourceRebind;
   return request?.schemaVersion === NATIVE_REQUEST_SCHEMA && request.scope === 'PARTIAL_UIDS'
@@ -217,7 +290,7 @@ function partialFinalQaPreservation(request) {
       Array.isArray(request.registryChanges) && request.registryChanges.length === 0)
     && approval?.type === 'FINAL_QA' && approval.metadataReviewed === true
     && typeof approval.approvedBy === 'string' && Boolean(approval.approvedBy.trim())
-    && rebind && !Array.isArray(rebind) && eq(Object.keys(rebind), ['priorReceiptRef'])
+    && rebind && !Array.isArray(rebind) && (eq(Object.keys(rebind), ['priorReceiptRef']) || explicitSubsetReferences(request))
     && typeof rebind.priorReceiptRef?.path === 'string' && /^[a-f0-9]{64}$/.test(rebind.priorReceiptRef?.sha256 || '')
     && Array.isArray(request.items) && request.items.length > 0
     && request.items.every(item => emptyObject(item.before) && emptyObject(item.after)
@@ -287,10 +360,12 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       continue;
     }
     const sourceRebind = auditPreservationDependency(request, file);
+    const registryDependency = nativeRegistryDependencyDescriptor(request);
     const preservation = request.approval?.sourceRebind !== undefined;
     if (preservation && (correction || request.registrationMode !== undefined ||
         !request.approval.sourceRebind || typeof request.approval.sourceRebind !== 'object' || Array.isArray(request.approval.sourceRebind) ||
-        !(sourceRebind || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
+        !(sourceRebind || request.approval.type === 'FINAL_QA' && (request.approval.sourceRebind.schemaVersion === undefined ||
+          request.approval.sourceRebind.schemaVersion === SOURCE_SUBSET_SCHEMA && partialFinalQaPreservation(request))))) fail('PRESERVATION_SCOPE');
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
     if (request.registrationMode !== undefined && (correction || !partial || request.registrationMode !== 'IDENTITY_FINGERPRINT_ONLY')) fail('REGISTRATION_MODE');
@@ -333,6 +408,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(partial ? { scope: request.scope } : {}),
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
+      ...(registryDependency ? { registryDependency } : {}),
       ...(basicPreservation ? { basicPreservation, kind: 'basic-approval-preservation' }
         : correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }
         : preservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },

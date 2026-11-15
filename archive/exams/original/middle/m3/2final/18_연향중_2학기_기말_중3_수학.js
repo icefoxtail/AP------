@@ -5,8 +5,9 @@ window.examData = {
 window.questionBank = [
     {
       "id": 1,
+      "layoutTag": "fullwidth",
       "score": 3,
-      "question": "오른쪽 그림과 같이 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에 대하여 다음 중 옳은 것은?(3점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q01.png\" />",
+      "question": "오른쪽 그림과 같이 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에 대하여 다음 중 옳은 것은?(3점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q1-problem-visual-v2.svg\" alt=\"오른쪽 C에서 직각인 삼각형이다. 파란 빗변 AB의 길이는 3이고 주황 세로변 AC의 길이는 1이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$\\sin A = \\dfrac{1}{3}$",
         "$\\cos B = \\dfrac{1}{3}$",
@@ -87,8 +88,9 @@ window.questionBank = [
   },
     {
       "id": 3,
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "다음 그림과 같이 꼭짓점이 A, B, C, D의 순서로 놓인 한 변의 길이가 1인 정사각형 ABCD에, 점 B를 중심으로 반지름이 1인 사분원의 호 AC가 내접한다. 점 P는 호 AC 위에 있고, 직선 BP와 선분 CD의 교점을 R이라 하자. 점 P에서 직선 BC에 내린 수선의 발을 Q라 하자. ∠PBQ=40°일 때, QC/PR의 값과 같은 것은?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q03_editorial.svg\" />",
+      "question": "다음 그림과 같이 꼭짓점이 A, B, C, D의 순서로 놓인 한 변의 길이가 1인 정사각형 ABCD에, 점 B를 중심으로 반지름이 1인 사분원의 호 AC가 내접한다. 점 P는 호 AC 위에 있고, 직선 BP와 선분 CD의 교점을 R이라 하자. 점 P에서 직선 BC에 내린 수선의 발을 Q라 하자. ∠PBQ=40°일 때, QC/PR의 값과 같은 것은?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q3-problem-label-gap.svg\" alt=\"한 변이 1인 정사각형 ABCD 안에 B를 중심으로 한 사분원이 있다. B에서 밑변과 40도를 이루는 선은 호 AC 위의 P를 지나 오른쪽 변 위의 R에 닿는다. Q는 P에서 밑변으로 내린 수선의 발이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$\\sin 50^\\circ$",
         "$\\cos 50^\\circ$",
@@ -131,8 +133,9 @@ window.questionBank = [
   },
     {
       "id": 4,
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "다음 그림에서 $\\overline{\\mathrm{AD}}:\\overline{\\mathrm{DB}}=16:9$일 때, $\\cos x$의 값을 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q04.png\" />",
+      "question": "다음 그림에서 $\\overline{\\mathrm{AD}}:\\overline{\\mathrm{DB}}=16:9$일 때, $\\cos x$의 값을 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q4-problem-visual-v2.svg\" alt=\"반원의 지름 양 끝은 A와 B이고 중점은 O이다. 호 위의 C에서 지름으로 내린 수선의 발 D가 O와 B 사이에 있다. 수선 CD와 현 CB 사이의 C의 각은 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$\\dfrac{9}{16}$",
         "$\\dfrac{1}{2}$",
@@ -147,9 +150,9 @@ window.questionBank = [
       "classificationDebt": "Historical topic label retained; canonical standard mapping unresolved.",
       "sourceUid": null,
       "sourceUidStatus": "ABSENT",
-      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q4-solution-v2.svg",
-      "solutionImageAlt": "해설 그림: 지름 AB인 원과 점 C, 점 D가 있는 문제 배치(AD는 16k, DB는 9k)와, 직각 꼭짓점을 왼쪽 아래에 두고 같은 방향으로 펼친 닮은 두 직각삼각형 ACD와 CBD이다. AD와 CD는 파란색, CD와 BD는 주황색, AC와 CB는 초록색이고 각 x는 분홍색으로 표시되어 있다.",
-      "solutionImageCaption": "AB가 지름이므로 각 ACB는 직각이고 CD⊥AB이므로 삼각형 ACD와 삼각형 CBD는 닮음이다. 대응변은 AD와 CD(파랑), CD와 BD(주황), AC와 CB(초록)이고 각 A와 각 DCB(분홍)는 같다. AD=16k, DB=9k로 두면 CD²=AD×DB에서 CD=12k이고 CB=15k이므로 cos x는 15k분의 12k이다. 정답은 ④이다.",
+      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q4-solution-visual-v2.svg",
+      "solutionImageAlt": "반원의 지름을 D에서 나눈 길이는 16k와 9k이다. 높이 CD는 12k이고 C에서 오른쪽 B까지는 15k이다. 옅은 주황 삼각형 CDB에서 x의 이웃변과 빗변을 구분했다.",
+      "solutionImageCaption": "CD²=AD×DB=16k×9k이므로 CD=12k이다. 오른쪽 삼각형에서 CB=15k이고 cos x=CD/CB=4/5이다. 정답은 ④이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -174,8 +177,9 @@ window.questionBank = [
   },
     {
       "id": 5,
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "오른쪽 그림과 같이 산 아래의 $\\mathrm{C}$지점과 $100\\text{ m}$ 떨어진 $\\mathrm{B}$지점에서 산꼭대기 위의 송신탑의 양끝을 올려다본 각의 크기가 각각 $45^\\circ, 30^\\circ$일 때, 송신탑의 높이 $\\overline{\\mathrm{AD}}$의 길이는?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q05.png\" />",
+      "question": "오른쪽 그림과 같이 산 아래의 $\\mathrm{C}$지점과 $100\\text{ m}$ 떨어진 $\\mathrm{B}$지점에서 산꼭대기 위의 송신탑의 양끝을 올려다본 각의 크기가 각각 $45^\\circ, 30^\\circ$일 때, 송신탑의 높이 $\\overline{\\mathrm{AD}}$의 길이는?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q5-problem-visual-v2.svg\" alt=\"지면 위 B와 C의 거리는 100 m이다. B에서 산꼭대기의 D를 올려다본 각은 30도이며 그 위 송신탑의 끝 A를 올려다본 각은 45도이다. A, D, C는 같은 수직선에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$50\\text{ m}$",
         "$\\dfrac{100\\sqrt{3}}{3}\\text{ m}$",
@@ -217,8 +221,9 @@ window.questionBank = [
   },
     {
       "id": 6,
+      "layoutTag": "fullwidth",
       "score": 5,
-      "question": "다음 그림과 같이 직각삼각형 ABC와 DBC에서 ∠BAC=90°, ∠BCD=90°, ∠ACB=45°, ∠BDC=60°, CD=10이다. 두 선분 AC와 BD의 교점을 E라 할 때, 삼각형 EBC의 넓이를 구하면?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q06_editorial.svg\" />",
+      "question": "다음 그림과 같이 직각삼각형 ABC와 DBC에서 ∠BAC=90°, ∠BCD=90°, ∠ACB=45°, ∠BDC=60°, CD=10이다. 두 선분 AC와 BD의 교점을 E라 할 때, 삼각형 EBC의 넓이를 구하면?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q6-problem-visual-v2.svg\" alt=\"삼각형 BAC는 A에서 직각이고 C에서 45도이다. 삼각형 BCD는 C에서 직각이며 D에서 60도이고 수직변 CD의 길이는 10이다. 사선 AC와 BD는 E에서 교차한다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$75\\sqrt{3}$",
         "$75(\\sqrt{3}-1)$",
@@ -261,8 +266,9 @@ window.questionBank = [
   },
     {
       "id": 7,
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "오른쪽 그림과 같이 길이가 $12\\text{ cm}$인 실에 추를 달아 점 $\\mathrm{O}$를 고정시키고, 추를 늘어뜨려 $\\mathrm{A}$지점에 오도록 하였다. 추를 잡아 당겨 $\\mathrm{B}$지점에 오도록 했을 때, $\\mathrm{A}$지점과 $\\mathrm{B}$지점에서의 추의 높이의 차는?(4점)<br>(단, 추의 크기는 무시한다.)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q07.png\" />",
+      "question": "오른쪽 그림과 같이 길이가 $12\\text{ cm}$인 실에 추를 달아 점 $\\mathrm{O}$를 고정시키고, 추를 늘어뜨려 $\\mathrm{A}$지점에 오도록 하였다. 추를 잡아 당겨 $\\mathrm{B}$지점에 오도록 했을 때, $\\mathrm{A}$지점과 $\\mathrm{B}$지점에서의 추의 높이의 차는?(4점)<br>(단, 추의 크기는 무시한다.)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q7-problem-visual-v2.svg\" alt=\"O에서 세로로 늘어진 실의 끝은 A이고 오른쪽으로 끌어 올린 실의 끝은 B이다. 실 길이는 12 cm이고 OA와 OB 사이의 각은 30도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$6(2-\\sqrt{3})\\text{ cm}$",
         "$6(2+\\sqrt{3})\\text{ cm}$",
@@ -304,8 +310,9 @@ window.questionBank = [
   },
     {
       "id": 8,
+      "layoutTag": "fullwidth",
       "score": 3,
-      "question": "오른쪽 그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{OM}}\\perp\\overline{\\mathrm{AB}}, \\overline{\\mathrm{ON}}\\perp\\overline{\\mathrm{CD}}$이고 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}=3$이다. 원 $\\mathrm{O}$의 반지름의 길이가 5일 때, $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{CD}}$의 값은?(3점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q08.png\" />",
+      "question": "오른쪽 그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{OM}}\\perp\\overline{\\mathrm{AB}}, \\overline{\\mathrm{ON}}\\perp\\overline{\\mathrm{CD}}$이고 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}=3$이다. 원 $\\mathrm{O}$의 반지름의 길이가 5일 때, $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{CD}}$의 값은?(3점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q8-problem-visual-v2.svg\" alt=\"원의 중심 O에서 현 AB와 CD에 각각 수선을 내렸다. 수선의 발은 M과 N이다. 두 수선 OM과 ON에 모두 길이 3을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "12",
         "13",
@@ -347,8 +354,9 @@ window.questionBank = [
   },
     {
       "id": 9,
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "오른쪽 그림과 같이 원 모양의 종이를 접어서 접혀진 부분의 호가 원의 중심 $\\mathrm{O}$를 지나도록 하였다. 이때, $\\angle x$의 크기를 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q09.png\" />",
+      "question": "오른쪽 그림과 같이 원 모양의 종이를 접어서 접혀진 부분의 호가 원의 중심 $\\mathrm{O}$를 지나도록 하였다. 이때, $\\angle x$의 크기를 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q9-problem-visual-v2.svg\" alt=\"수평인 접는 선 AB 위로 접힌 원호가 중심 O를 지난다. 원의 위쪽 점 P에서 A와 B를 이었으며 두 현이 이루는 각은 x이다. 아래쪽은 접기 전 원의 점선 윤곽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$20^\\circ$",
         "$30^\\circ$",
@@ -390,8 +398,9 @@ window.questionBank = [
   },
     {
       "id": 10,
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "오른쪽 그림에서 반지름의 길이가 6인 원 $\\mathrm{O}$의 두 현 $\\mathrm{AB, CD}$가 점 $\\mathrm{P}$에서 만나고 $\\overgroup{\\mathrm{AC}}+\\overgroup{\\mathrm{BD}}=3\\pi$일 때, $\\angle\\mathrm{BPD}$의 크기를 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q10.png\" />",
+      "question": "오른쪽 그림에서 반지름의 길이가 6인 원 $\\mathrm{O}$의 두 현 $\\mathrm{AB, CD}$가 점 $\\mathrm{P}$에서 만나고 $\\overgroup{\\mathrm{AC}}+\\overgroup{\\mathrm{BD}}=3\\pi$일 때, $\\angle\\mathrm{BPD}$의 크기를 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q10-problem-visual-v2.svg\" alt=\"원의 두 현 AB와 CD가 P에서 교차한다. B와 C를 연결한 현이 원의 위쪽에 있다. 원의 중심은 O이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$15^\\circ$",
         "$30^\\circ$",
@@ -433,8 +442,9 @@ window.questionBank = [
   },
     {
       "id": 11,
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "오른쪽 그림에서 점 $\\mathrm{M}$은 $\\overgroup{\\mathrm{AB}}$의 중점이다. $\\angle\\mathrm{ARM}=110^\\circ$일 때, $\\angle\\mathrm{MQP}$의 크기를 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q11.png\" />",
+      "question": "오른쪽 그림에서 점 $\\mathrm{M}$은 $\\overgroup{\\mathrm{AB}}$의 중점이다. $\\angle\\mathrm{ARM}=110^\\circ$일 때, $\\angle\\mathrm{MQP}$의 크기를 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q11-problem-visual-v2.svg\" alt=\"원 위의 M은 위쪽 두 호 AM과 MB의 공통 끝점이다. 현 MP와 MQ가 가로 현 AB와 각각 R, S에서 교차한다. 각 ARM은 110도이며 P와 Q를 현으로 연결했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$60^\\circ$",
         "$70^\\circ$",
@@ -476,8 +486,9 @@ window.questionBank = [
   },
     {
       "id": 12,
+      "layoutTag": "fullwidth",
       "score": 3,
-      "question": "오른쪽 그림과 같이 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접할 때, $x$의 값은?(3점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q12.png\" />",
+      "question": "오른쪽 그림과 같이 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접할 때, $x$의 값은?(3점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"원 O에 외접하는 사각형 ABCD의 A는 왼쪽 위, B는 왼쪽 아래, C는 오른쪽 아래, D는 오른쪽 위에 있다. 변 AB, BC, CD, DA의 길이는 순서대로 4, x+4, 3x+1, 5이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$\\dfrac{7}{4}$",
         "2",
@@ -492,9 +503,9 @@ window.questionBank = [
       "classificationDebt": "Historical topic label retained; canonical standard mapping unresolved.",
       "sourceUid": null,
       "sourceUidStatus": "ABSENT",
-      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q12-solution.svg",
-      "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형 A, B, C, D이다. 네 변이 원에 접하는 점이 점으로 표시되어 있고 변의 길이는 AB=4, BC=x+4, CD=3x+1, DA=5로 적혀 있다. 마주 보는 변 AB와 CD는 파란색, BC와 DA는 주황색이다.",
-      "solutionImageCaption": "한 점에서 원에 그은 두 접선의 길이는 같으므로 원에 외접하는 사각형에서 마주 보는 두 변의 길이의 합이 같다. 파란색 AB, CD의 합과 주황색 BC, DA의 합이 같으므로 4+(3x+1)=5+(x+4)이다. 이를 풀면 x=2이다. 정답은 ②이다.",
+      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q12-solution-visual-v2.svg",
+      "solutionImageAlt": "원에 외접하는 사각형에서 각 꼭짓점에 닿는 두 접선 구간이 한 쌍이다. A는 파랑 한 눈금, B는 주황 두 눈금, C는 초록 세 눈금, D는 보라 네 눈금이다. 네 변에 4, x+4, 3x+1, 5를 표시했다.",
+      "solutionImageCaption": "각 꼭짓점에서 그은 두 접선 구간은 길이가 같다. 서로 마주 보는 두 변의 길이를 더하면 두 경우 모두 네 꼭짓점의 접선 길이를 한 번씩 더한다. 따라서 4+(3x+1)=5+(x+4)이고 x=2이다. 정답은 ②이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -519,8 +530,9 @@ window.questionBank = [
   },
     {
       "id": 13,
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "다음 그림과 같이 한 원 위의 점이 A, B, D, C 순서로 놓여 있다. 원 밖의 점 P를 지나는 두 할선의 점 순서는 각각 P-A-B와 P-C-D이고, 현 AD와 CB의 교점은 Q이다. 작은 호 AC와 작은 호 BD의 길이의 비가 1:3이고, ∠APC=50°일 때, ∠BQD의 크기는?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q13_editorial.svg\" />",
+      "question": "다음 그림과 같이 한 원 위의 점이 A, B, D, C 순서로 놓여 있다. 원 밖의 점 P를 지나는 두 할선의 점 순서는 각각 P-A-B와 P-C-D이고, 현 AD와 CB의 교점은 Q이다. 작은 호 AC와 작은 호 BD의 길이의 비가 1:3이고, ∠APC=50°일 때, ∠BQD의 크기는?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q13-problem-label-gap.svg\" alt=\"외부의 P에서 각각 P-A-B와 P-C-D 순서로 두 할선이 지나간다. P에서 두 할선이 이루는 각은 50도이다. 현 AD와 CB가 Q에서 교차하며 작은 호 AC와 BD의 길이비는 1 대 3이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$80^\\circ$",
         "$85^\\circ$",
@@ -563,8 +575,9 @@ window.questionBank = [
   },
     {
       "id": 14,
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "다음 그림의 $\\square\\mathrm{ABCD}$ 중 원에 내접하는 것은?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q14.png\" />",
+      "question": "다음 그림의 $\\square\\mathrm{ABCD}$ 중 원에 내접하는 것은?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q14-problem-visual-v2.svg\" alt=\"①의 A는 대각선으로 두 35도 각으로 나뉘고 D에는 20도가 표시되어 있다. ②의 P에서 AD와 BC를 잇는 두 직선이 만난다. PA, AD, PB, BC 길이는 각각 3, 4, 2, 6이다. ③의 A는 70도이며 D와 B에서 삼각형 DBC 안쪽 각은 60도와 50도이다. ④의 교점에서 각 꼭짓점까지의 거리는 A와 B가 4와 5, C와 D가 각각 3이다. ⑤의 A와 C에 표시한 바깥각은 60도와 120도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "①",
         "②",
@@ -606,8 +619,9 @@ window.questionBank = [
   },
     {
       "id": 15,
+      "layoutTag": "fullwidth",
       "score": 3,
-      "question": "오른쪽 그림에서 직선 $\\mathrm{TC}$는 원 $\\mathrm{O}$의 접선이고, 점 $\\mathrm{C}$는 접점이다. 직선 $\\mathrm{TC}$와 현 $\\mathrm{AD}$는 평행하고 $\\angle\\mathrm{ABC}=35^\\circ$일 때, $\\angle\\mathrm{CAD}$의 크기를 구하면?(3점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q15.png\" />",
+      "question": "오른쪽 그림에서 직선 $\\mathrm{TC}$는 원 $\\mathrm{O}$의 접선이고, 점 $\\mathrm{C}$는 접점이다. 직선 $\\mathrm{TC}$와 현 $\\mathrm{AD}$는 평행하고 $\\angle\\mathrm{ABC}=35^\\circ$일 때, $\\angle\\mathrm{CAD}$의 크기를 구하면?(3점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q15-problem-visual-v2.svg\" alt=\"원의 아래쪽 C에서 접선 TC를 그었고, 가로 현 AD는 접선과 나란하다. A, B, C를 연결했으며 꼭짓점 B의 각은 35도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$35^\\circ$",
         "$40^\\circ$",
@@ -649,8 +663,9 @@ window.questionBank = [
   },
     {
       "id": 16,
+      "layoutTag": "fullwidth",
       "score": 5,
-      "question": "다음 그림과 같이 원 밖의 점 X에서 직선 X-A-Y는 원에 A에서 접하고, 선분 YB도 원에 B에서 접한다. 직선 X-D-B는 원과 D, B의 순서로 만나며, 원 위의 점은 D, C, B, A 순서로 놓여 있다(C는 A를 포함하지 않는 호 DB 위의 점이다). ∠DBA=25°, ∠BXA=35°이고 x=∠AYB, y=∠DCB일 때, x+y의 크기는?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q16_editorial.svg\" />",
+      "question": "다음 그림과 같이 원 밖의 점 X에서 직선 X-A-Y는 원에 A에서 접하고, 선분 YB도 원에 B에서 접한다. 직선 X-D-B는 원과 D, B의 순서로 만나며, 원 위의 점은 D, C, B, A 순서로 놓여 있다(C는 A를 포함하지 않는 호 DB 위의 점이다). ∠DBA=25°, ∠BXA=35°이고 x=∠AYB, y=∠DCB일 때, x+y의 크기는?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q16-problem-label-gap.svg\" alt=\"수평인 직선 XAY와 사선 YB는 원에 각각 A와 B에서 닿는다. X에서 D를 거쳐 B를 향하는 할선이 지나간다. X에서 35도, B에서 25도이며 Y와 C의 각은 x와 y이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$145^\\circ$",
         "$150^\\circ$",
@@ -693,8 +708,9 @@ window.questionBank = [
   },
     {
       "id": 17,
+      "layoutTag": "fullwidth",
       "score": 5,
-      "question": "다음 그림과 같이 $\\overline{\\mathrm{CA}}=\\overline{\\mathrm{CB}}=20$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}}$를 지름으로 하는 반원 $\\mathrm{O}$를 그렸다. $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{AC}}$가 반원 $\\mathrm{O}$와 만나는 점을 각각 $\\mathrm{D, E}$라 할 때, $\\overline{\\mathrm{AE}}$의 길이는?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q17.png\" />",
+      "question": "다음 그림과 같이 $\\overline{\\mathrm{CA}}=\\overline{\\mathrm{CB}}=20$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}}$를 지름으로 하는 반원 $\\mathrm{O}$를 그렸다. $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{AC}}$가 반원 $\\mathrm{O}$와 만나는 점을 각각 $\\mathrm{D, E}$라 할 때, $\\overline{\\mathrm{AE}}$의 길이는?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"밑변 AB의 길이는 10이다. 오른쪽 C에서 만나는 두 변 CA와 CB의 길이는 20이다. 지름 BC를 그은 반원은 AB와 D, AC와 E에서 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "2",
         "2.5",
@@ -736,8 +752,9 @@ window.questionBank = [
   },
     {
       "id": 18,
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "오른쪽 그림에서 원 $\\mathrm{O}$의 할선 $\\mathrm{AB, CD}$가 점 $\\mathrm{P}$에서 만나고 $\\overline{\\mathrm{OE}}\\perp\\overline{\\mathrm{CD}}$일 때, $\\overline{\\mathrm{DE}}$의 길이는?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q18.png\" />",
+      "question": "오른쪽 그림에서 원 $\\mathrm{O}$의 할선 $\\mathrm{AB, CD}$가 점 $\\mathrm{P}$에서 만나고 $\\overline{\\mathrm{OE}}\\perp\\overline{\\mathrm{CD}}$일 때, $\\overline{\\mathrm{DE}}$의 길이는?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q18-problem-visual-v2.svg\" alt=\"P에서 나온 위쪽 할선은 A와 B를 지나고 PA는 6 cm, AB는 8 cm이다. 가로 할선은 C와 D를 지나며 PC는 7 cm이다. 중심 O에서 가로 할선에 내린 수선의 발은 E이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$1\\text{ cm}$",
         "$1.5\\text{ cm}$",
@@ -779,8 +796,9 @@ window.questionBank = [
   },
     {
       "id": 19,
+      "layoutTag": "fullwidth",
       "score": 5,
-      "question": "오른쪽 그림에서 원 $\\mathrm{O}$의 지름의 길이는 $12\\text{ cm}$이고, $\\overline{\\mathrm{BC}}\\perp\\overline{\\mathrm{AH}}$이다. $\\overline{\\mathrm{AB}}=10\\text{ cm}, \\overline{\\mathrm{AC}}=8\\text{ cm}$일 때, $\\overline{\\mathrm{AH}}$의 길이를 구하면?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q19.png\" />",
+      "question": "오른쪽 그림에서 원 $\\mathrm{O}$의 지름의 길이는 $12\\text{ cm}$이고, $\\overline{\\mathrm{BC}}\\perp\\overline{\\mathrm{AH}}$이다. $\\overline{\\mathrm{AB}}=10\\text{ cm}, \\overline{\\mathrm{AC}}=8\\text{ cm}$일 때, $\\overline{\\mathrm{AH}}$의 길이를 구하면?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q19-problem-visual-v2.svg\" alt=\"원 위의 위쪽 A와 양쪽 B, C를 연결했다. AB는 10 cm, AC는 8 cm이다. 지름 AD는 중심 O를 지나고 수선 AH는 현 BC에 수직이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$\\dfrac{17}{5}$",
         "$\\dfrac{15}{4}$",
@@ -795,9 +813,9 @@ window.questionBank = [
       "classificationDebt": "Historical topic label retained; canonical standard mapping unresolved.",
       "sourceUid": null,
       "sourceUidStatus": "ABSENT",
-      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q19-solution-v2.svg",
-      "solutionImageAlt": "해설 그림: 지름 AD인 원 O에 삼각형 A, B, C가 내접하고 A에서 BC에 내린 수선의 발 H가 있는 문제 배치(AB는 10cm, AC는 8cm, AD는 12cm)와, 직각 꼭짓점을 왼쪽 아래에 두고 같은 방향으로 펼친 닮은 두 직각삼각형 AHC와 ABD이다. AH와 AB는 파란색, AC와 AD는 주황색, HC와 BD는 초록색이고 같은 각은 분홍색이다.",
-      "solutionImageCaption": "AD가 지름이므로 각 ABD=90°이고 AH⊥BC이므로 각 AHC=90°이다. 같은 현 AB를 보는 원주각이라 각 ACB와 각 ADB(분홍색)가 같아 삼각형 AHC와 삼각형 ABD는 닮음이다. 대응변은 AH와 AB(파랑), AC와 AD(주황), HC와 BD(초록)이므로 AH를 AB로 나눈 값은 AC를 AD로 나눈 값과 같다. 10분의 AH=12분의 8에서 구한다. 정답은 ④이다.",
+      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q19-solution-visual-v2.svg",
+      "solutionImageAlt": "원의 큰 직각삼각형 ABD와 작은 직각삼각형 AHC를 함께 그렸다. ACB와 ADB의 같은 각에 초록 호가 있고 수선 AH는 보라색이다. 빗변 AD는 12 cm, 현 AB는 10 cm, 현 AC는 8 cm이다.",
+      "solutionImageCaption": "같은 현 AB를 보는 두 각과 직각이 각각 같으므로 삼각형 AHC와 삼각형 ABD는 닮음이다. AH/10=8/12에서 AH=20/3 cm이다. 정답은 ④이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중2 수학",
@@ -822,8 +840,9 @@ window.questionBank = [
   },
     {
       "id": 20,
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "오른쪽 그림에서 $\\overline{\\mathrm{PT}}$는 원의 접선이고 $\\overline{\\mathrm{AB}}=9\\text{ cm}, \\overline{\\mathrm{BT}}=8\\text{ cm}, \\overline{\\mathrm{PT}}=6\\text{ cm}$일 때, $\\overline{\\mathrm{AT}}$의 길이를 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q20.png\" />",
+      "question": "오른쪽 그림에서 $\\overline{\\mathrm{PT}}$는 원의 접선이고 $\\overline{\\mathrm{AB}}=9\\text{ cm}, \\overline{\\mathrm{BT}}=8\\text{ cm}, \\overline{\\mathrm{PT}}=6\\text{ cm}$일 때, $\\overline{\\mathrm{AT}}$의 길이를 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"P에서 그은 가로 접선은 T에서 원에 닿는다. 사선은 P, A, B 순서로 지나며 T에서 A와 B를 각각 이었다. PT는 6 cm, AB는 9 cm, BT는 8 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$2\\text{ cm}$",
         "$3\\text{ cm}$",
@@ -838,9 +857,9 @@ window.questionBank = [
       "classificationDebt": "Historical topic label retained; canonical standard mapping unresolved.",
       "sourceUid": null,
       "sourceUidStatus": "ABSENT",
-      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q20-solution-v2.svg",
-      "solutionImageAlt": "해설 그림: 점 P에서 원의 접선 PT와 할선 PAB가 있는 문제 배치(PT는 6cm, AB는 9cm, BT는 8cm)와, 점 P를 왼쪽 아래에 두고 같은 방향으로 펼친 닮은 두 삼각형 PTA와 PBT이다. PT와 PB는 파란색, PA와 PT는 초록색, TA와 BT는 주황색이고 공통인 각 P는 분홍색이다.",
-      "solutionImageCaption": "접선과 할선에서 PA×PB=PT²이므로 PA=x로 두면 x(x+9)=36에서 PA=3, PB=12이다. 접선과 현이 이루는 각의 성질로 삼각형 PTA와 삼각형 PBT는 닮음이고 대응변은 PT와 PB(파랑), PA와 PT(초록), TA와 BT(주황)이며 각 P(분홍)는 공통이다. PA÷PT=AT÷BT이므로 6분의 3=8분의 AT이다. 정답은 ③이다.",
+      "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q20-solution-visual-v2.svg",
+      "solutionImageAlt": "P에서 T에 접선을 긋고 P, A, B가 한 직선 위에 놓인다. 작은 삼각형 PTA를 옅은 주황으로 칠했다. T와 B에서 크기가 같은 각에 초록 호가 있다. PT는 6 cm, PA는 3 cm, BT는 8 cm이고 AT에 x를 표시했다.",
+      "solutionImageCaption": "PA×PB=PT²에서 PA=3 cm이다. 접선과 현이 이루는 각의 성질과 P의 공통각으로 삼각형 PTA와 삼각형 PBT는 닮음이다. 따라서 AT/8=3/6이고 AT=4 cm이다. 정답은 ③이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -865,8 +884,9 @@ window.questionBank = [
   },
     {
       "id": 21,
+      "layoutTag": "fullwidth",
       "score": 6,
-      "question": "[서술형 1] 오른쪽 그림의 사각형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{A}=60^\\circ, \\angle\\mathrm{ABD}=90^\\circ, \\angle\\mathrm{CDB}=30^\\circ$이고 $\\overline{\\mathrm{AB}}=7\\text{ cm}, \\overline{\\mathrm{AD}}=14\\text{ cm}, \\overline{\\mathrm{CD}}=12\\text{ cm}$일 때, $\\square\\mathrm{ABCD}$의 넓이를 구하면?<br>(단, 삼각비를 이용하여 풀이하고 풀이과정을 자세히 써라.) [6점]<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/s01.png\" />",
+      "question": "[서술형 1] 오른쪽 그림의 사각형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{A}=60^\\circ, \\angle\\mathrm{ABD}=90^\\circ, \\angle\\mathrm{CDB}=30^\\circ$이고 $\\overline{\\mathrm{AB}}=7\\text{ cm}, \\overline{\\mathrm{AD}}=14\\text{ cm}, \\overline{\\mathrm{CD}}=12\\text{ cm}$일 때, $\\square\\mathrm{ABCD}$의 넓이를 구하면?<br>(단, 삼각비를 이용하여 풀이하고 풀이과정을 자세히 써라.) [6점]<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q21-problem-visual-v2.svg\" alt=\"대각선 BD 위쪽 삼각형은 B에서 직각이고 A에서 60도이다. 아래쪽 삼각형에서 각 CDB는 30도이다. AB, AD, CD의 길이는 각각 7 cm, 14 cm, 12 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [],
       "answer": "$\\dfrac{91\\sqrt3}{2}\\text{ cm}^2$",
       "solution": "대각선 $BD$를 기준으로 사각형을 두 삼각형으로 나누어 넓이를 더한다.\n직각삼각형 $ABD$에서\n$BD=AD\\sin60^\\circ$\n$BD=14\\times\\dfrac{\\sqrt3}{2}=7\\sqrt3$이다.\n그러므로\n$[ABD]=\\dfrac12\\times AB\\times BD$\n$[ABD]=\\dfrac12\\times7\\times7\\sqrt3=\\dfrac{49\\sqrt3}{2}$이다.\n\n$C$에서 직선 $BD$에 내린 수선의 발을 $H$라 하자. $\\angle CDB=30^\\circ$이므로\n$CH=CD\\sin30^\\circ$\n$CH=12\\times\\dfrac12=6$이다.\n따라서\n$[BCD]=\\dfrac12\\times BD\\times CH$\n$[BCD]=\\dfrac12\\times7\\sqrt3\\times6=21\\sqrt3$이다.\n\n두 삼각형은 대각선 $BD$의 서로 반대쪽에 있으므로\n$[ABCD]=[ABD]+[BCD]$\n$[ABCD]=\\dfrac{49\\sqrt3}{2}+21\\sqrt3$\n$[ABCD]=\\dfrac{91\\sqrt3}{2}\\text{ cm}^2$이다.",
@@ -902,8 +922,9 @@ window.questionBank = [
   },
     {
       "id": 22,
+      "layoutTag": "fullwidth",
       "score": 7,
-      "question": "[서술형 2] 오른쪽 그림과 같이 반지름의 길이가 $4\\sqrt{3}\\text{ cm}$인 원 $\\mathrm{O}$ 위의 점 $\\mathrm{P}$는 $\\overline{\\mathrm{AB}}$를 접는 선으로 하여 원을 접었을 때, 원의 중심 $\\mathrm{O}$와 겹쳐진다. $\\overline{\\mathrm{PO}}$와 $\\overline{\\mathrm{AB}}$의 교점을 $\\mathrm{M}$이라 하고, $\\overline{\\mathrm{PM}}$ 위의 점 $\\mathrm{Q}$에 대하여 $\\overline{\\mathrm{PQ}}=\\overline{\\mathrm{MQ}}$일 때, $\\triangle\\mathrm{PAQ}$의 넓이를 구하면? (단, 풀이 과정을 자세히 써라.) [7점]<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/s02.png\" />",
+      "question": "[서술형 2] 오른쪽 그림과 같이 반지름의 길이가 $4\\sqrt{3}\\text{ cm}$인 원 $\\mathrm{O}$ 위의 점 $\\mathrm{P}$는 $\\overline{\\mathrm{AB}}$를 접는 선으로 하여 원을 접었을 때, 원의 중심 $\\mathrm{O}$와 겹쳐진다. $\\overline{\\mathrm{PO}}$와 $\\overline{\\mathrm{AB}}$의 교점을 $\\mathrm{M}$이라 하고, $\\overline{\\mathrm{PM}}$ 위의 점 $\\mathrm{Q}$에 대하여 $\\overline{\\mathrm{PQ}}=\\overline{\\mathrm{MQ}}$일 때, $\\triangle\\mathrm{PAQ}$의 넓이를 구하면? (단, 풀이 과정을 자세히 써라.) [7점]<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q22-problem-visual-v2.svg\" alt=\"원의 점 P와 중심 O는 가로 접는 선 AB를 사이에 두고 있다. PO는 AB와 M에서 만나고 Q는 PM의 중점이다. A, P, Q를 이은 삼각형을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [],
       "answer": "$3\\sqrt3\\text{ cm}^2$",
       "solution": "접어서 $P$와 $O$가 겹쳐지므로 접는 선 $AB$는 $PO$의 수직이등분선이다.\n따라서 $PM=MO$이고 $PO\\perp AB$이다.\n$PO$는 반지름이므로\n$PO=4\\sqrt3$\n$PM=MO=\\dfrac{4\\sqrt3}{2}=2\\sqrt3$이다.\n또한 $Q$는 $PM$의 중점이므로\n$PQ=\\dfrac{PM}{2}=\\sqrt3$이다.\n\n직각삼각형 $OMA$에서\n$AM^2=OA^2-OM^2$\n$AM^2=(4\\sqrt3)^2-(2\\sqrt3)^2$\n$AM^2=48-12=36$\n$AM=6$이다.\n\n삼각형 $PAQ$의 밑변을 $PQ$로 보면 $A$에서 그 직선까지의 거리는 $AM$이다.\n$[PAQ]=\\dfrac12\\times PQ\\times AM$\n$[PAQ]=\\dfrac12\\times\\sqrt3\\times6$\n$[PAQ]=3\\sqrt3\\text{ cm}^2$이다.",
@@ -939,8 +960,9 @@ window.questionBank = [
   },
     {
       "id": 23,
+      "layoutTag": "fullwidth",
       "score": 7,
-      "question": "[서술형 3] 오른쪽 그림에서 직선 $\\mathrm{TT'}$은 원 $\\mathrm{O}$의 접선이고, $\\overline{\\mathrm{AC}}$는 원 $\\mathrm{O}$의 지름이다. $\\overline{\\mathrm{AD}} // \\mathrm{TT'}, \\angle\\mathrm{CBT'}=15^\\circ$일 때, $\\angle x$의 크기를 구하면? (단, 풀이 과정을 자세히 써라.) [7점]<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/s03.png\" />",
+      "question": "[서술형 3] 오른쪽 그림에서 직선 $\\mathrm{TT'}$은 원 $\\mathrm{O}$의 접선이고, $\\overline{\\mathrm{AC}}$는 원 $\\mathrm{O}$의 지름이다. $\\overline{\\mathrm{AD}} // \\mathrm{TT'}, \\angle\\mathrm{CBT'}=15^\\circ$일 때, $\\angle x$의 크기를 구하면? (단, 풀이 과정을 자세히 써라.) [7점]<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q23-problem-visual-v2.svg\" alt=\"원 O에서 AC는 지름이다. B에 닿는 가로 접선과 위쪽 현 AD는 평행하다. 오른쪽 접선과 현 BC 사이의 각은 15도이다. AC와 BD가 만나는 P에서 위쪽 각 x를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [],
       "answer": "$45^\\circ$",
       "solution": "접선과 현 $BC$가 이루는 각의 성질에 의해\n$\\angle BAC=\\angle CBT'=15^\\circ$이다.\n따라서 작은 호 $BC$에 대한 중심각은 $30^\\circ$이다.\n\n$AC$가 지름이므로 $\\angle ABC=90^\\circ$이다.\n삼각형 $ABC$에서\n$\\angle BCA=180^\\circ-90^\\circ-15^\\circ=75^\\circ$이다.\n접선과 현 $BA$의 각의 성질로 $\\angle ABT=\\angle BCA=75^\\circ$이다.\n$AD\\parallel TT'$이므로 엇각에서 $\\angle BAD=\\angle ABT=75^\\circ$이다.\n따라서\n$\\angle CAD=\\angle BAD-\\angle BAC$\n$\\angle CAD=75^\\circ-15^\\circ=60^\\circ$이다.\n\n$\\angle CAD$가 보는 호 $CD$에 대한 중심각은 $120^\\circ$이다.\n$AC$가 지름이므로 호 $ADC$는 반원이고, 호 $AD$에 대한 중심각은\n$180^\\circ-120^\\circ=60^\\circ$이다.\n\n그림에서 $P$는 $AC$와 $BD$의 교점이고 $x=\\angle APD$이다.\n원 안에서 두 현이 이루는 각의 성질을 이용하면\n$x=\\dfrac{60^\\circ+30^\\circ}{2}=45^\\circ$이다.",

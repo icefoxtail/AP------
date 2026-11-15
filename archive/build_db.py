@@ -2095,9 +2095,11 @@ def run_archive_registration_sync():
         ["node", archive_dir / "tools" / "meta-foundation" / "sync-runtime-source-path-renames.mjs"],
         repo_root,
     )
+    # Parent links bind to the runtime authority inputs, including readiness.
+    # Settle those inputs before recording their fingerprint in the links.
     run_pipeline_command(
-        "Archive 2.0 intermediate catalog/manifest 갱신",
-        ["node", archive_dir / "tools" / "build-archive2-catalog.mjs"],
+        "Archive 2.0 intermediate catalog/runtime readiness 갱신",
+        ["node", archive_dir / "tools" / "build-archive2-ready-catalog.mjs"],
         repo_root,
     )
     run_pipeline_command(

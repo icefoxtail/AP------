@@ -1,0 +1,298 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/24_매산중_2학기_중간_중1_유사.js",
+  "questionId": 14,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "종이테이프를 접은 각",
+        "accessibilityDescription": "평행한 두 변 사이의 접힌 선분과 각 x.",
+        "sourceQuote": "A folded rectangular paper tape; the printed angle is 55°",
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "parallel-edges",
+            "condition": "top and bottom tape edges are parallel",
+            "mappedTo": "two horizontal line objects"
+          },
+          {
+            "id": "given55",
+            "condition": "the angle at P is 55°",
+            "mappedTo": "55° angle arc"
+          },
+          {
+            "id": "asked-x",
+            "condition": "x is angle PQV",
+            "mappedTo": "x angle arc at Q"
+          }
+        ],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "PR",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "P",
+                "PR"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "55"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "VR",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "V"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "VQpoint",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "V",
+                "VR"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "70"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "top",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "P",
+                "PR"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bottom",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "V",
+                "VR"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineVQ",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "V",
+                "VQpoint"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "top",
+                "lineVQ"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "W",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "V"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "Q",
+          "V",
+          "W",
+          "PR",
+          "VR",
+          "VQpoint"
+        ],
+        "displaySegments": [
+          {
+            "id": "PQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "PV",
+            "refs": [
+              "P",
+              "V"
+            ]
+          },
+          {
+            "id": "VQ",
+            "refs": [
+              "V",
+              "Q"
+            ]
+          },
+          {
+            "id": "VW",
+            "refs": [
+              "V",
+              "W"
+            ]
+          },
+          {
+            "id": "QW",
+            "refs": [
+              "Q",
+              "W"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 680,
+          "height": 520
+        },
+        "displayLines": [
+          "top",
+          "bottom"
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "fold55",
+              "refs": [
+                "Q",
+                "P",
+                "V"
+              ],
+              "value": 55,
+              "label": "55",
+              "arcs": 1
+            },
+            {
+              "id": "xQ",
+              "refs": [
+                "P",
+                "Q",
+                "V"
+              ],
+              "value": 70,
+              "label": "x",
+              "labelKind": "DEGREE",
+              "arcs": 1
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "PR",
+          "VR",
+          "VQpoint"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

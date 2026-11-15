@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_CURRENT_NARROW_REPAIR",
+  "producer": "/root/m2s1_release",
+  "currentSourceBlobSha": "2a96764bcb5540c3804dddc429f6bfe4937e2549",
+  "currentSourceRawSha256": "0776f76ac38b5ddfebb6ec7643ec2b88acf258e6b1d743f9819c8d9bd76cea32",
+  "narrowEvidence": {
+    "sourceProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/source-proposal.json",
+      "sha256": "8a6339b83fe610749749ece281816b4acc4ed6783efa94342bc4a58809af7db6"
+    },
+    "sourceApplication": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/source-application.json",
+      "sha256": "b87270853a8252a0f157c3cccde227d298a55ed4114aef02adf347b6e6118ba0"
+    },
+    "independentReview": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/independent-review.json",
+      "sha256": "aeb275197932dffc28a7a53697e8f88fc4561962546fc05365915e5bd5d04ae3"
+    },
+    "currentReviewClosure": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/current-review-closure.json",
+      "sha256": "7d71187d1fc37bca64a491567ed055b93ddfbfcab0ad9c94ac8660845e3df2a5"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 24,
+    "selectedQuestions": 1
+  },
+  "newAdvancedMetadataApprovals": 0,
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+      "ordinal": 18,
+      "questionUid": "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "sourceFingerprint": "4f63d681224e4ea40d19f9cd449b851b7b3eaaad86694ab7d5bf999079fcb072",
+        "contentFingerprint": "50c2ba5b98965bd2092396fed0f2ffff26b0c7ced16783135371c56ad2eb85a1"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "39ed5d8641091feff35b6261bb34c992aba49e575a0408698819625d506d483f",
+      "contentFingerprint": "787f3bea5a1d6243448d28657a42706756041bff7af875d724ff331a2f0a68b6",
+      "staleSourceBinding": true,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "한 줄 풀이가 아닌 두 단계의 연산과 부등호 변화를 각각 확인한다.\nCurrent narrow source repair: Restore only the two step markers referenced by the stem, at the first and last transformations already described by the existing solution. Include both subtractions in the first-step explanation. Preserve all equations, choices, answer, source reviewStatus/manual_review, numeric difficulty and historical level. This is a current display repair, not a claim to recover original printed marker coordinates. Existing accepted numeric difficulty and confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+    }
+  ]
+}

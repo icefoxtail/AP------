@@ -424,3 +424,55 @@ test("wrap --normalize: a fenced Drive export is unwrapped, repairs go to stderr
   assert.deepEqual(plain.gemini, gemini);
   assert.equal(plain.repairs, undefined);
 });
+
+// ---- question id comparison (number in the exam file vs string in the identity map) ----
+function makeNumericIdFixture(t, { idrNo = n => String(1000 + n), qId = n => 1000 + n } = {}) {
+  const bank = Array.from({ length: 23 }, (_, i) => ({ id: qId(i + 1), content: "문항 " + (i + 1), choices: ["1", "2"], answer: 1, solution: "해설" }));
+  const bytes = Buffer.from("window.questionBank = " + JSON.stringify(bank) + ";\n", "utf8");
+  const blobSha = crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
+  const fp = q => sha256(Buffer.from(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null,
+    answer: q.answer ?? null, solution: q.solution ?? null, image: q.image ?? null })));
+  const x = make(t, { sourceOverride: bytes });
+  const metaPath = path.join(x.root, META), idsPath = path.join(x.root, IDENTITY);
+  const meta = JSON.parse(fs.readFileSync(metaPath, "utf8")), ids = JSON.parse(fs.readFileSync(idsPath, "utf8"));
+  for (const r of meta.records) r.sourceFingerprint = fp(bank[r.sourceOrdinal - 1]);
+  for (const r of ids.records) { r.sourceFingerprint = fp(bank[r.sourceOrdinal - 1]); r.sourceQuestionNo = idrNo(r.sourceOrdinal); }
+  fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2) + "\n");
+  fs.writeFileSync(idsPath, JSON.stringify(ids, null, 2) + "\n");
+  const g = structuredClone(gemini);
+  g.latestBlobSha = blobSha;
+  return { x, g };
+}
+
+test("projection verify: numeric exam id matches the string sourceQuestionNo of the identity map", t => {
+  const { x, g } = makeNumericIdFixture(t);
+  registerDifficulty5({ root: x.root, request: x.req(g), write: true });
+  const v = registerDifficulty5({ root: x.root, request: x.req(g), verifyProjection: true });
+  assert.equal(v.summary.VERIFIED, 23);
+});
+
+test("projection verify: a genuinely different id is still refused", t => {
+  const { x, g } = makeNumericIdFixture(t, { idrNo: n => String(n === 5 ? 9999 : 1000 + n) });
+  registerDifficulty5({ root: x.root, request: x.req(g), write: true });
+  assert.throws(() => registerDifficulty5({ root: x.root, request: x.req(g), verifyProjection: true }), /source question id mismatch #5/);
+});
+
+test("projection verify: surrounding whitespace in the identity map id is tolerated, a different id is not", t => {
+  const ok = makeNumericIdFixture(t, { idrNo: n => " " + (1000 + n) + " " });
+  registerDifficulty5({ root: ok.x.root, request: ok.x.req(ok.g), write: true });
+  assert.equal(registerDifficulty5({ root: ok.x.root, request: ok.x.req(ok.g), verifyProjection: true }).summary.VERIFIED, 23);
+});
+
+test("boundary flag UNKNOWN is registered (canonical rule v1.3), other values are still SKIP_INVALID", t => {
+  const x = make(t);
+  const g = structuredClone(gemini);
+  g.items.find(i => i.ordinal === 1).after.difficultyBoundaryFlag = "UNKNOWN";
+  g.items.find(i => i.ordinal === 2).after.difficultyBoundaryFlag = "unknown";
+  g.items.find(i => i.ordinal === 3).after.difficultyBoundaryFlag = "B56";
+  const r = registerDifficulty5({ root: x.root, request: x.req(g), write: true });
+  const d = decisions(r);
+  assert.equal(d[1], "APPLY");
+  assert.equal(x.rec(1).difficultyBoundaryFlag, "UNKNOWN");
+  assert.equal(d[2], "SKIP_INVALID");
+  assert.equal(d[3], "SKIP_INVALID");
+});

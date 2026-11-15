@@ -1,0 +1,494 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사.js",
+  "questionId": 18,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "54535713",
+                    "denominator": "5000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-139734949",
+                    "denominator": "5000000"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "293958709",
+                    "denominator": "10000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-126444761",
+                    "denominator": "10000000"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "250724801",
+                    "denominator": "10000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "68826407",
+                    "denominator": "10000000"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "89342589",
+                    "denominator": "5000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "94434643",
+                    "denominator": "5000000"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4999107",
+                    "denominator": "625000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "12809037",
+                    "denominator": "625000"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "35782113",
+                    "denominator": "2500000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-148097437",
+                    "denominator": "10000000"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t0",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T0",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "O1",
+                "t0"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k0",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "O1",
+                "T0"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "O2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "200847693",
+                    "denominator": "10000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-13911779",
+                    "denominator": "10000000"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t1",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T1",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "O2",
+                "t1"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k1",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "O2",
+                "T1"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "O3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "169161507",
+                    "denominator": "10000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "20303297",
+                    "denominator": "2000000"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t2",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "D"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T2",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "O3",
+                "t2"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k2",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "O3",
+                "T2"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "O4",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "103632801",
+                    "denominator": "10000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "40877947",
+                    "denominator": "2500000"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "t3",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "E"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T3",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "O4",
+                "t3"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k3",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "O4",
+                "T3"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "O1",
+          "O2",
+          "O3",
+          "O4"
+        ],
+        "displaySegments": [
+          {
+            "id": "raB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "raC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "raD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "raE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "raF",
+            "refs": [
+              "A",
+              "F"
+            ]
+          },
+          {
+            "id": "edgeBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "edgeCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "edgeDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "edgeEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "k0",
+          "k1",
+          "k2",
+          "k3"
+        ],
+        "coordinateCanvas": {
+          "width": 700,
+          "height": 580
+        },
+        "caption": "네 삼각형의 내접원과 공통접선",
+        "accessibilityDescription": "점 A에서 뻗은 다섯 선분과 바깥쪽 네 변이 만드는 삼각형 안에 각 내접원을 그렸다. 주어진 AB, BC, CD, DE, EF의 길이를 각 선분에 표시했다.",
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lenAB",
+              "ownerSegment": "raB",
+              "text": "30"
+            },
+            {
+              "id": "lenBC",
+              "ownerSegment": "edgeBC",
+              "text": "24"
+            },
+            {
+              "id": "lenCD",
+              "ownerSegment": "edgeCD",
+              "text": "20"
+            },
+            {
+              "id": "lenDE",
+              "ownerSegment": "edgeDE",
+              "text": "14"
+            },
+            {
+              "id": "lenEF",
+              "ownerSegment": "edgeEF",
+              "text": "10"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "O1",
+          "O2",
+          "O3",
+          "O4"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

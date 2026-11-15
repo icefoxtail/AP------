@@ -304,7 +304,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "1단계: ① $4x^2 \\times (-5x^3)$의 계수를 계산하면 $4 \\times (-5) = -20$이다.\n2단계: 지수법칙에 의해 문자를 계산하면 $x^2 \\times x^3 = x^{2+3} = x^5$이다.\n3단계: 따라서 결과는 $-20x^5$이 되어야 하므로 $20x^5$로 표기된 ①번은 옳지 않다.",
+    "solution": "1단계: ① $4x^2 \\times (-5x^3)$의 계수를 계산하면 $4 \\times (-5) = -20$이다.\n2단계: 지수법칙에 의해 문자를 계산하면 $x^2 \\times x^3 = x^{2+3} = x^5$이다.\n3단계: 따라서 결과는 $-20x^5$이 되어야 하므로 $20x^5$로 표기된 ①번은 옳지 않다.\n나머지 보기를 확인하면 다음과 같다.\n② $3x^3\\times(-xy^2)=-3x^4y^2$이다.\n③ $(3x^2)^2\\div(-27x^{11})=\\dfrac{9x^4}{-27x^{11}}=-\\dfrac{1}{3x^7}$이다.\n④ $12x^4\\div(\\frac{4}{3}x^3)=12x^4\\times\\dfrac{3}{4x^3}=9x$이다.\n⑤ $9x^2\\times4x^3\\div6x^4=6x$이다.\n따라서 옳지 않은 것은 ①뿐이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -514,7 +514,7 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "content": "점 $I$는 $\\triangle ABC$의 내심이고, $\\angle BIC = 110^\\circ$일 때, $\\angle A$의 크기는? [4점]<br><svg width='160' height='130' viewBox='0 0 160 130'><path d='M80,18.84 L45,115 L115,115 Z M45,115 L80,90.49 L115,115' fill='none' stroke='black'/><circle cx='80' cy='90.49' r='2' fill='black'/><text x='76' y='14' font-size='10'>A</text><text x='35' y='122' font-size='10'>B</text><text x='119' y='122' font-size='10'>C</text><text x='83' y='88' font-size='9'>I</text><text x='68' y='108' font-size='9'>110°</text></svg>",
+    "content": "점 $I$는 $\\triangle ABC$의 내심이고, $\\angle BIC = 110^\\circ$일 때, $\\angle A$의 크기는? [4점]<br><img src=\"assets/images/20_풍덕중_1학기_중간_중2_기출/q16-quality-v4.svg\" alt=\"문제 그림\" style=\"max-width:100%;height:auto\">",
     "choices": [
       "$37^\\circ$",
       "$40^\\circ$",
@@ -548,7 +548,9 @@ window.questionBank = [
   {
     "id": 17,
     "content": "그림에서 점 $I$는 $\\triangle ABC$의 내심이다. $\\triangle ABC$의 둘레의 길이가 $22\\text{cm}$이고 $\\overline{AD}=4\\text{cm}$, $\\overline{DB}=5\\text{cm}$일 때, $\\overline{EC}$의 길이를 구하면? [4점]",
-    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q17-repair-master.svg",
+    "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q17-audit-rework.svg",
+    "imageSize": "full",
+    "imageSize": "full",
     "choices": [
       "$1\\text{cm}$",
       "$1.2\\text{cm}$",
@@ -582,7 +584,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, $\\angle OBC$의 크기를 구하면? [4점]<br><svg width='160' height='130' viewBox='0 0 160 130'><circle cx='80' cy='65' r='50' fill='none' stroke='black'/><path d='M80,15 L36.70,90 L129.24,73.68 Z M80,65 L80,15 M80,65 L36.70,90 M80,65 L129.24,73.68' fill='none' stroke='black'/><text x='75' y='69' font-size='10'>O</text><text x='61' y='38' font-size='9'>30°</text><text x='91' y='38' font-size='9'>40°</text><text x='76' y='12' font-size='10'>A</text><text x='27' y='96' font-size='10'>B</text><text x='132' y='78' font-size='10'>C</text></svg>",
+    "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, $\\angle OBC$의 크기를 구하면? [4점]<br><img src=\"assets/images/20_풍덕중_1학기_중간_중2_기출/q18-audit-rework.svg\" style=\"width:100%;max-width:570px;height:auto\" alt=\"점 A에서 AB와 AO가 이루는 각은 30도, AO와 AC가 이루는 각은 40도로 표시되어 있다.\">",
     "choices": [
       "$18^\\circ$",
       "$20^\\circ$",

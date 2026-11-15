@@ -416,8 +416,9 @@ window.questionBank = [
       "점의 좌표"
     ],
     "wide": false,
-    "content": "다음 중 오른쪽 좌표평면 위의 점 A, B, C, D, E의 좌표를 나타낸 것으로 옳지 않은 것은? [3점]<br><img src=\"assets/images/19_연향중_1학기_기말_중1_유사/q11.svg\" alt=\"q11\">",
-    "image": "assets/images/19_연향중_1학기_기말_중1_유사/q11.svg",
+    "content": "다음 중 오른쪽 좌표평면 위의 점 A, B, C, D, E의 좌표를 나타낸 것으로 옳지 않은 것은? [3점]<br><img src=\"assets/images/19_연향중_1학기_기말_중1_유사/q11-native-readable.svg\" alt=\"q11\">",
+    "imageSize": "full",
+    "image": "assets/images/19_연향중_1학기_기말_중1_유사/q11-native-readable.svg",
     "choices": [
       "A$(0, 3)$",
       "B$(3, 2)$",
@@ -575,8 +576,9 @@ window.questionBank = [
       "좌표 구하기"
     ],
     "wide": false,
-    "content": "정비례 관계 $y = \\frac{2}{3}x$의 그래프가 오른쪽 그림과 같을 때, $a+b$의 값은? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중1_유사/q15.svg\" alt=\"q15\">",
-    "image": "assets/images/19_연향중_1학기_기말_중1_유사/q15.svg",
+    "content": "정비례 관계 $y = \\frac{2}{3}x$의 그래프가 오른쪽 그림과 같을 때, $a+b$의 값은? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중1_유사/q15-native-readable.svg\" alt=\"q15\">",
+    "imageSize": "full",
+    "image": "assets/images/19_연향중_1학기_기말_중1_유사/q15-native-readable.svg",
     "choices": [
       "$-10$",
       "$-8$",
@@ -655,8 +657,9 @@ window.questionBank = [
       "그래프 위의 점"
     ],
     "wide": false,
-    "content": "반비례 관계의 그래프가 오른쪽 그림과 같을 때, 다음 중 이 그래프 위의 점이 <u>아닌</u> 것은? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중1_유사/q17.svg\" alt=\"q17\">",
-    "image": "assets/images/19_연향중_1학기_기말_중1_유사/q17.svg",
+    "content": "반비례 관계의 그래프가 오른쪽 그림과 같을 때, 다음 중 이 그래프 위의 점이 <u>아닌</u> 것은? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중1_유사/q17-native-readable.svg\" alt=\"q17\">",
+    "imageSize": "full",
+    "image": "assets/images/19_연향중_1학기_기말_중1_유사/q17-native-readable.svg",
     "choices": [
       "$(1, -12)$",
       "$(2, -6)$",
@@ -735,8 +738,9 @@ window.questionBank = [
       "상수의 값 구하기"
     ],
     "wide": false,
-    "content": "오른쪽 그림은 반비례 관계 $y = \\frac{18}{x}$의 그래프와 정비례 관계 $y = ax$의 그래프이다. 두 그래프가 모두 점 $(3, b)$를 지날 때, $ab$의 값은? [5점]<br>(단, $a$는 수이다.)<br><img src=\"assets/images/19_연향중_1학기_기말_중1_유사/q19.svg\" alt=\"q19\">",
-    "image": "assets/images/19_연향중_1학기_기말_중1_유사/q19.svg",
+    "content": "오른쪽 그림은 반비례 관계 $y = \\frac{18}{x}$의 그래프와 정비례 관계 $y = ax$의 그래프이다. 두 그래프가 모두 점 $(3, b)$를 지날 때, $ab$의 값은? [5점]<br>(단, $a$는 수이다.)<br><img src=\"assets/images/19_연향중_1학기_기말_중1_유사/q19-native-readable.svg\" alt=\"q19\">",
+    "imageSize": "full",
+    "image": "assets/images/19_연향중_1학기_기말_중1_유사/q19-native-readable.svg",
     "choices": [
       "$8$",
       "$10$",
@@ -884,8 +888,9 @@ window.questionBank = [
       "거리-시간 관계식"
     ],
     "wide": false,
-    "content": "서술형 3. 집에서 $3\\text{ km}$ 떨어진 도서관까지 민우는 걸어가고, 수현이는 자전거를 타고 갔다. 오른쪽 그림은 두 사람이 동시에 출발하여 도서관에 가는 동안 걸린 시간과 이동한 거리 사이의 관계를 나타낸 그래프이다. 민우와 수현이의 속력이 각각 일정할 때, 수현이가 도서관에 도착한 후 몇 분을 기다려야 민우가 도착하는지 구하시오. [7점]<br>(<u>그래프에 대한 관계식을 이용하여 문제를 해결하시오.</u>)<br><img src=\"assets/images/19_연향중_1학기_기말_중1_유사/q23.svg\" alt=\"q23\">",
-    "image": "assets/images/19_연향중_1학기_기말_중1_유사/q23.svg",
+    "content": "서술형 3. 집에서 $3\\text{ km}$ 떨어진 도서관까지 민우는 걸어가고, 수현이는 자전거를 타고 갔다. 오른쪽 그림은 두 사람이 동시에 출발하여 도서관에 가는 동안 걸린 시간과 이동한 거리 사이의 관계를 나타낸 그래프이다. 민우와 수현이의 속력이 각각 일정할 때, 수현이가 도서관에 도착한 후 몇 분을 기다려야 민우가 도착하는지 구하시오. [7점]<br>(<u>그래프에 대한 관계식을 이용하여 문제를 해결하시오.</u>)<br><img src=\"assets/images/19_연향중_1학기_기말_중1_유사/q23-native-readable.svg\" alt=\"q23\">",
+    "imageSize": "full",
+    "image": "assets/images/19_연향중_1학기_기말_중1_유사/q23-native-readable.svg",
     "choices": [],
     "answer": "40분",
     "points": 7,
