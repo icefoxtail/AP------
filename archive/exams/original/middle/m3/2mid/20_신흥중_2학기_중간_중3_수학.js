@@ -80,6 +80,10 @@ window.questionBank = [
   },
 {
   "id": 2,
+  "solutionImageCaption": "원점을 제외하면 두 경계 안쪽에서 −x²/2<y<x²이다. 따라서 계수가 −1/2과 1 사이인 y=−x²/4가 지나므로 ⑤이다.",
+  "solutionImageAlt": "파란 경계 곡선과 주황 경계 곡선 사이에 보라 곡선이 지나간다. 두 경계 사이의 밝은 영역은 두 부등식을 모두 만족하는 위치이다.",
+  "solutionImageSize": "full",
+  "solutionImage": "assets/images/20_신흥중_2학기_중간_중3_수학/q2-solution.svg",
   "score": 4,
   "category": "이차함수 그래프의 모양 비교",
   "standardCourse": "중3 수학",
@@ -88,7 +92,7 @@ window.questionBank = [
   "standardUnitOrder": 4,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "grid",
+  "layoutTag": "fullwidth",
   "tags": [
     "객관식",
     "이차함수",
@@ -96,7 +100,7 @@ window.questionBank = [
     "y=ax² 그래프의 폭과 위치"
   ],
   "wide": true,
-  "content": "두 이차함수 $y=x^2$, $y=-\\frac{1}{2}x^2$의 그래프가 다음 그림과 같을 때, 다음 중 그림의 좌표평면의 어두운 부분을 지나는 것을 고르면? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q02.png\" />",
+  "content": "두 이차함수 $y=x^2$, $y=-\\frac{1}{2}x^2$의 그래프가 다음 그림과 같을 때, 다음 중 그림의 좌표평면의 어두운 부분을 지나는 것을 고르면? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q2-problem-v2.svg\" />",
   "choices": [
     "$y=-3x^2$",
     "$y=5x^2$",
@@ -234,6 +238,10 @@ window.questionBank = [
   },
 {
   "id": 4,
+  "solutionImageCaption": "포물선은 아래로 열려 a<0이다. y축과 x축보다 위에서 만나므로 q>0이다. 정답은 ④이다.",
+  "solutionImageAlt": "아래로 열린 곡선이 y축과 만나는 자리 위에 주황 점을 표시했다. 꼭짓점에서 x축까지의 높이 차가 보인다.",
+  "solutionImageSize": "full",
+  "solutionImage": "assets/images/20_신흥중_2학기_중간_중3_수학/q4-solution.svg",
   "score": 4,
   "category": "그래프에서 계수 부호 읽기",
   "standardCourse": "중3 수학",
@@ -242,7 +250,7 @@ window.questionBank = [
   "standardUnitOrder": 4,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "grid",
+  "layoutTag": "fullwidth",
   "tags": [
     "객관식",
     "이차함수",
@@ -250,7 +258,7 @@ window.questionBank = [
     "그래프의 열린 방향과 y절편"
   ],
   "wide": true,
-  "content": "이차함수 $y=ax^2+q$의 그래프가 그림과 같을 때, 다음 중 옳은 것은? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q04.png\" />",
+  "content": "이차함수 $y=ax^2+q$의 그래프가 그림과 같을 때, 다음 중 옳은 것은? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q4-problem-v2.svg\" />",
   "choices": [
     "$aq > 0$",
     "$a>0, q>0$",
@@ -771,6 +779,10 @@ window.questionBank = [
   },
 {
   "id": 11,
+  "solutionImageCaption": "아래로 열리므로 a<0이다. 꼭짓점 (−p,−q)는 y축의 왼쪽, x축 위쪽이므로 p>0이고 q<0이다. 정답은 ④이다.",
+  "solutionImageAlt": "포물선의 주황 꼭짓점에서 두 축으로 점선을 내렸다. 꼭짓점이 왼쪽이고 x축보다 높다.",
+  "solutionImageSize": "full",
+  "solutionImage": "assets/images/20_신흥중_2학기_중간_중3_수학/q11-solution.svg",
   "score": 4,
   "category": "그래프에서 계수 부호 읽기",
   "standardCourse": "중3 수학",
@@ -779,7 +791,7 @@ window.questionBank = [
   "standardUnitOrder": 4,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "grid",
+  "layoutTag": "fullwidth",
   "tags": [
     "객관식",
     "이차함수",
@@ -787,7 +799,7 @@ window.questionBank = [
     "꼭짓점 위치로 부호 판정"
   ],
   "wide": true,
-  "content": "이차함수 $y=a(x+p)^2-q$의 그래프가 다음 그림과 같을 때, $a, p, q$의 부호는? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q11.png\" />",
+  "content": "이차함수 $y=a(x+p)^2-q$의 그래프가 다음 그림과 같을 때, $a, p, q$의 부호는? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q11-problem-v2.svg\" />",
   "choices": [
     "$a>0, p>0, q>0$",
     "$a<0, p<0, q<0$",
@@ -1001,6 +1013,10 @@ window.questionBank = [
   },
 {
   "id": 14,
+  "solutionImageCaption": "두 x절편과 y절편에서 y=−(x+1)(x−3)이다. 대칭축 x=1에서 가장 높은 값은 4이다. 정답은 ⑤이다.",
+  "solutionImageAlt": "포물선의 왼쪽과 오른쪽 x절편 가운데에서 우뚝 솟은 꼭짓점까지 점선을 이었다. 주황 점은 y절편을 표시한다.",
+  "solutionImageSize": "full",
+  "solutionImage": "assets/images/20_신흥중_2학기_중간_중3_수학/q14-solution.svg",
   "score": 5,
   "category": "그래프에서 이차함수의 최댓값",
   "standardCourse": "중3 수학",
@@ -1009,7 +1025,7 @@ window.questionBank = [
   "standardUnitOrder": 4,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "grid",
+  "layoutTag": "fullwidth",
   "tags": [
     "객관식",
     "이차함수",
@@ -1017,7 +1033,7 @@ window.questionBank = [
     "x절편과 y절편으로 꼭짓점값 계산"
   ],
   "wide": true,
-  "content": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, 이 이차함수의 최댓값은? (5점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q14.png\" />",
+  "content": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, 이 이차함수의 최댓값은? (5점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q14-problem-v2.svg\" />",
   "choices": [
     "$3$",
     "$-1$",
@@ -1155,6 +1171,10 @@ window.questionBank = [
   },
 {
   "id": 16,
+  "solutionImageCaption": "x절편은 −4와 2, y절편은 8이다. 밑변은 6, 높이는 8이므로 삼각형의 넓이는 24이다.",
+  "solutionImageAlt": "주황 삼각형은 x축의 선분 AB를 밑변으로 한다. y축에 놓인 C에서 x축까지 내린 점선은 높이를 표시한다.",
+  "solutionImageSize": "full",
+  "solutionImage": "assets/images/20_신흥중_2학기_중간_중3_수학/q16-solution.svg",
   "score": 5,
   "category": "포물선과 좌표도형의 넓이",
   "standardCourse": "중3 수학",
@@ -1163,7 +1183,7 @@ window.questionBank = [
   "standardUnitOrder": 4,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "grid",
+  "layoutTag": "fullwidth",
   "tags": [
     "객관식",
     "이차함수",
@@ -1171,7 +1191,7 @@ window.questionBank = [
     "x절편·y절편으로 삼각형 넓이"
   ],
   "wide": true,
-  "content": "다음 그림에서 이차함수 $y=-x^2-2x+8$의 그래프와 $x$축과의 교점을 각각 $\\mathrm{A}$, $\\mathrm{B}$, $y$축과의 교점을 $\\mathrm{C}$라 할 때, $\\triangle \\mathrm{ABC}$의 넓이는? (5점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q16.png\" />",
+  "content": "다음 그림에서 이차함수 $y=-x^2-2x+8$의 그래프와 $x$축과의 교점을 각각 $\\mathrm{A}$, $\\mathrm{B}$, $y$축과의 교점을 $\\mathrm{C}$라 할 때, $\\triangle \\mathrm{ABC}$의 넓이는? (5점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q16-problem-v2.svg\" />",
   "choices": [
     "$8$",
     "$12$",
@@ -1232,6 +1252,10 @@ window.questionBank = [
   },
 {
   "id": 17,
+  "solutionImageCaption": "AC=√3, BC=1, AB=2이므로 sin B=√3/2이다. 2/√3이라고 한 ④가 옳지 않다.",
+  "solutionImageAlt": "C에서 만나는 파란 변 √3과 주황 변 1을 표시했다. 아래쪽 빗변 AB=2를 읽고 각각 어느 각에서 보는 변인지 비교한다.",
+  "solutionImageSize": "full",
+  "solutionImage": "assets/images/20_신흥중_2학기_중간_중3_수학/q17-solution.svg",
   "score": 4,
   "category": "특수각의 삼각비",
   "standardCourse": "중3 수학",
@@ -1240,7 +1264,7 @@ window.questionBank = [
   "standardUnitOrder": 5,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "grid",
+  "layoutTag": "fullwidth",
   "tags": [
     "객관식",
     "삼각비",
@@ -1248,7 +1272,7 @@ window.questionBank = [
     "30°·60° 삼각비"
   ],
   "wide": true,
-  "content": "다음 그림에서 삼각비의 값으로 옳지 않은 것은? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q17.png\" />",
+  "content": "다음 그림에서 삼각비의 값으로 옳지 않은 것은? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q17-problem-v2.svg\" />",
   "choices": [
     "$\\sin A = \\frac{1}{2}$",
     "$\\cos A = \\frac{\\sqrt{3}}{2}$",
@@ -1306,6 +1330,10 @@ window.questionBank = [
   },
 {
   "id": 18,
+  "solutionImageCaption": "BC=2√2이므로 BD=√2이다. AD=√3이고 AB=1이므로 cos x=1/√3이다.",
+  "solutionImageAlt": "초록 눈금은 세로 BC의 두 부분 BD와 DC가 같음을 표시한다. 파란 밑변과 주황 빗변으로 x가 들어 있는 작은 삼각형을 구분했다.",
+  "solutionImageSize": "full",
+  "solutionImage": "assets/images/20_신흥중_2학기_중간_중3_수학/q18-solution.svg",
   "score": 4,
   "category": "삼각비와 중선·직각삼각형",
   "standardCourse": "중3 수학",
@@ -1314,7 +1342,7 @@ window.questionBank = [
   "standardUnitOrder": 5,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "grid",
+  "layoutTag": "fullwidth",
   "tags": [
     "객관식",
     "삼각비",
@@ -1322,7 +1350,7 @@ window.questionBank = [
     "중점과 피타고라스 정리로 cos 계산"
   ],
   "wide": true,
-  "content": "직각삼각형 $\\triangle \\mathrm{ABC}$에서 $\\angle \\mathrm{ABC}=90^\\circ$, $\\overline{\\mathrm{AB}}=1$, $\\overline{\\mathrm{AC}}=3$이다. $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{D}$라고 하고, $\\angle \\mathrm{BAD}=x$라고 할 때, $\\cos x$의 값은? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q18_alive.png\" />",
+  "content": "직각삼각형 $\\triangle \\mathrm{ABC}$에서 $\\angle \\mathrm{ABC}=90^\\circ$, $\\overline{\\mathrm{AB}}=1$, $\\overline{\\mathrm{AC}}=3$이다. $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{D}$라고 하고, $\\angle \\mathrm{BAD}=x$라고 할 때, $\\cos x$의 값은? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q18-problem-v2.svg\" />",
   "choices": [
     "$\\frac{1}{2}$",
     "$\\frac{1}{3}$",
@@ -1454,6 +1482,10 @@ window.questionBank = [
   },
 {
   "id": 20,
+  "solutionImageCaption": "삼각형 OAB에서 AB=sin x, OB=cos x이다. D에서 직각인 삼각형 ODC에서는 CD=tan x이다. cos x=CD라고 한 ④가 옳지 않다.",
+  "solutionImageAlt": "같은 기울기에서 주황 작은 삼각형과 초록 큰 삼각형을 비교했다. C에서 아래로 그은 세로 CD는 큰 삼각형의 높이이다.",
+  "solutionImageSize": "full",
+  "solutionImage": "assets/images/20_신흥중_2학기_중간_중3_수학/q20-solution.svg",
   "score": 4,
   "category": "삼각비와 단위원·접선",
   "standardCourse": "중3 수학",
@@ -1462,7 +1494,7 @@ window.questionBank = [
   "standardUnitOrder": 5,
   "curriculum": "2015",
   "questionType": "객관식",
-  "layoutTag": "grid",
+  "layoutTag": "fullwidth",
   "tags": [
     "객관식",
     "삼각비",
@@ -1470,7 +1502,7 @@ window.questionBank = [
     "sin·cos·tan과 여각 관계"
   ],
   "wide": true,
-  "content": "다음 그림은 반지름의 길이가 $1$인 사분원과 접선 및 선분으로 이루어진 도형이다. 다음 중 옳지 않은 것은? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q20.png\" />",
+  "content": "다음 그림은 반지름의 길이가 $1$인 사분원과 접선 및 선분으로 이루어진 도형이다. 다음 중 옳지 않은 것은? (4점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q20-problem-v2.svg\" />",
   "choices": [
     "$\\sin x = \\overline{\\mathrm{AB}}$",
     "$\\cos y = \\overline{\\mathrm{AB}}$",
@@ -1528,6 +1560,10 @@ window.questionBank = [
   },
 {
   "id": 21,
+  "solutionImageCaption": "(1) BC=6이다. (2) AB=2√7이다. (3) cos A=√7/4이다. (4) tan A=3/√7이다. (5) sin C=√7/4이다.",
+  "solutionImageAlt": "A를 기준으로 오른쪽 맞은편 변은 주황, 밑변에 붙은 이웃한 변은 초록, 빗변은 파랑으로 표시했다.",
+  "solutionImageSize": "full",
+  "solutionImage": "assets/images/20_신흥중_2학기_중간_중3_수학/q21-solution.svg",
   "score": 5,
   "category": "직각삼각형의 변과 삼각비",
   "standardCourse": "중3 수학",
@@ -1536,7 +1572,7 @@ window.questionBank = [
   "standardUnitOrder": 5,
   "curriculum": "2015",
   "questionType": "서답형",
-  "layoutTag": "grid",
+  "layoutTag": "fullwidth",
   "tags": [
     "서답형",
     "삼각비",
@@ -1544,7 +1580,7 @@ window.questionBank = [
     "sin으로 변과 나머지 삼각비 구하기"
   ],
   "wide": true,
-  "content": "서답형 1. 다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=8$이고, $\\sin A = \\frac{3}{4}$일 때, 다음의 값을 구하여라. (5점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/s01.png\" /><br>(1) $\\overline{\\mathrm{BC}}$의 길이를 구하여라. (1점)<br>(2) $\\overline{\\mathrm{AB}}$의 길이를 구하여라. (1점)<br>(3) $\\cos A$의 값을 구하여라. (1점)<br>(4) $\\tan A$의 값을 구하여라. (1점)<br>(5) $\\sin C$의 값을 구하여라. (1점)",
+  "content": "서답형 1. 다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=8$이고, $\\sin A = \\frac{3}{4}$일 때, 다음의 값을 구하여라. (5점)<br><img src=\"assets/images/20_신흥중_2학기_중간_중3_수학/q21-problem-v2.svg\" /><br>(1) $\\overline{\\mathrm{BC}}$의 길이를 구하여라. (1점)<br>(2) $\\overline{\\mathrm{AB}}$의 길이를 구하여라. (1점)<br>(3) $\\cos A$의 값을 구하여라. (1점)<br>(4) $\\tan A$의 값을 구하여라. (1점)<br>(5) $\\sin C$의 값을 구하여라. (1점)",
   "choices": [],
   "answer": "(1) 6, (2) $2\\sqrt7$, (3) $\\sqrt7/4$, (4) $3/\\sqrt7$, (5) $\\sqrt7/4$",
   "solution": "그림에서 $\\angle B=90^\\circ$이고 $AC=8$은 빗변이다. $\\sin A=\\frac{BC}{AC}=\\frac34$이므로 $BC=8\\cdot\\frac34=6$이다. 피타고라스 정리를 쓰면 $AB^2=AC^2-BC^2=8^2-6^2=28$이므로 $AB=\\sqrt{28}=2\\sqrt7$이다. 이제 $\\cos A=\\frac{AB}{AC}=\\frac{2\\sqrt7}{8}=\\frac{\\sqrt7}{4}$이고, $\\tan A=\\frac{BC}{AB}=\\frac{6}{2\\sqrt7}=\\frac3{\\sqrt7}$이다. $\\angle C$의 맞은편 변은 $AB$이므로 $\\sin C=\\frac{AB}{AC}=\\frac{2\\sqrt7}{8}=\\frac{\\sqrt7}{4}$이다. 따라서 답은 (1) 6, (2) $2\\sqrt7$, (3) $\\frac{\\sqrt7}{4}$, (4) $\\frac3{\\sqrt7}$, (5) $\\frac{\\sqrt7}{4}$이다.",
