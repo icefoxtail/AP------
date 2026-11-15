@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "m3-s2-renderer-correction-registration-hold-v1",
+  "createdAt": "2026-11-15T09:22:20.252Z",
+  "reason": "SOURCE_RENDERER_CORRECTION_PENDING",
+  "decision": "WITHHOLD_REGISTRATION",
+  "heldUidCount": 1,
+  "replacesInterimMissingRow": true,
+  "reviewer": "GPT_ROOT_26FC42390A50_SUBAGENT_M3S2",
+  "examId": "E066",
+  "questionUid": "qid_v1_9d287c6ad59d90578b2325f24c150e2a0b1c91fec9fd81031ce40604ea6cfce6",
+  "sourceOrdinal": 15,
+  "sourceQuestionNo": "15",
+  "ordinal": 15,
+  "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+  "fingerprintContract": "4slot-student-payload-v1",
+  "studentPayloadSha256": "c0015b7e5c50ff2f76d87ac2ca9c76d7bf03ab3c4f7c91810b754dfa4103e918",
+  "sourceFingerprint": "d1851156155fd1b04ac17d6462157b6717b38800af6aeb3cddc7c6c44a997c4b",
+  "originalCompactRowSha256": "808d739fb15c813726affaff21a6496f0eca5b5051646585c5e43f8fd2a3a2aa",
+  "sourceRef": {
+    "commit": "74901a67ace9b0eb3e626a95be89b8da04051ead",
+    "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+    "gitBlobSha1": "b5d867ed7bd83f03b1b6793dc5802de2cdcaf3ee",
+    "sha256": "3b6bc45e707e83a850030888cd58808949c5a8bd92b2a8fae2bb22089160446b"
+  },
+  "supersessionEvidence": {
+    "commit": "74901a67ace9b0eb3e626a95be89b8da04051ead",
+    "path": "docs/operations/m3-s2-4slot-current-20261115/q15-renderer-supersession.json",
+    "sha256": "5a3a3394da9ef70dffc49539bb1e0063a534dee481e1b406312b17289912e754"
+  },
+  "revokedEvidence": {
+    "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+    "path": "archive-work/m3s2-4slot-current-20261115/scoped-figure-review12.json",
+    "sha256": "e68861df5b7749ef8ca813b0d556c931e0a7f27c4be849d21eedd3f4fa94b909",
+    "itemIndex": 10,
+    "reviewStatus": "PASS_SCOPED_RENDERER_CONTINUITY",
+    "revokedClaim": "The solution marks equal radii consistently."
+  },
+  "incorrectRenderer": {
+    "role": "solutionImage",
+    "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q15-solution.svg",
+    "sha256": "a7d936aa5160f64c9e54fcffc07929d444de783f3f4adbff90b3d68754334b40"
+  },
+  "originalSlotReview": {
+    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.4slot.json",
+    "sha256": "4f9664ee12380106d017a6cf2767e87602a20239c8ab15a83294062bf0e642ef"
+  },
+  "correctionOwnerEvidence": {
+    "sha256": "8721d586b31badec0a6ccf2f2cde73b7bc760d3c0e4aed1bac730b29a7bb07dd",
+    "correctedAssetSha256": "9976965327c27b4611c3eac25ac6ef8f23ccc54285aafe6ad0cbe9a3ebe23715",
+    "publication": "PENDING_SOURCE_OWNER"
+  },
+  "finding": "The current solution renderer uses equal marks on OM and OB although OM is a proper part of radius OC. The interim omitted compact row failed the complete-denominator data gate. Restore all existing slot values and retain this exact UID as an explicit registration supplement until its independently reviewed correction is published.",
+  "newSemanticApprovals": 0,
+  "newDifficultyApprovals": 0,
+  "sourceWrites": 0,
+  "slotChanges": 0,
+  "registryWrites": 0,
+  "mainRegistration": "NOT_RUN",
+  "pages": "NOT_RUN",
+  "nextAction": "Publish and read back the source owner correction and independent immutable evidence, then rebind E066 to the corrected current source and remove only this exact renderer hold. Preserve all other reviewed slot values and existing metadata approvals."
+}

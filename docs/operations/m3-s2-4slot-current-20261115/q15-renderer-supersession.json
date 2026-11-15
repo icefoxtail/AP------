@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "archive-m3s2-four-slot-renderer-supersession-v1",
+  "createdAt": "2026-11-15T08:55:47.181Z",
+  "reviewedBy": "GPT_ROOT_26FC42390A50_SUBAGENT_M3S2",
+  "status": "ONE_UID_WITHHELD_PENDING_EXACT_SOURCE_CORRECTION",
+  "currentSourceCommit": "dfcec53044d08fef5287332a1fa46d954875a988",
+  "examId": "E066",
+  "questionUid": "qid_v1_9d287c6ad59d90578b2325f24c150e2a0b1c91fec9fd81031ce40604ea6cfce6",
+  "sourceOrdinal": 15,
+  "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+  "revokedEvidence": {
+    "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+    "path": "archive-work/m3s2-4slot-current-20261115/scoped-figure-review12.json",
+    "sha256": "e68861df5b7749ef8ca813b0d556c931e0a7f27c4be849d21eedd3f4fa94b909",
+    "itemIndex": 10,
+    "reviewStatus": "PASS_SCOPED_RENDERER_CONTINUITY",
+    "revokedClaim": "The solution marks equal radii consistently."
+  },
+  "finding": "The old solution SVG places identical double ticks on OM and OB, but OM is a strict part of radius OC. The original problem, current problem SVG, answer, and textual solution do not assert OM=OB.",
+  "independentCorrectionReview": {
+    "localPath": "/workspace/scratch/c8f1b0bfb4fa/evidence/m3-E066-Q15-independent-renderer-correction-review.json",
+    "sha256": "8721d586b31badec0a6ccf2f2cde73b7bc760d3c0e4aed1bac730b29a7bb07dd",
+    "decision": "APPROVE_EXACT_RENDERER_CORRECTION_AND_ALT_ONLY",
+    "immutablePublication": "NOT_YET_PUBLISHED"
+  },
+  "proposedCorrection": {
+    "sourcePath": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+    "sourceBlobSha1": "5c695bf61364b38e401b7755054cb76e4ae411fd",
+    "sourceSha256": "3ae4d5db6f8abe46839848456ae5221ce5597d3cff1d0cb669bc08ad6073d061",
+    "assetPath": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q15-solution-v2.svg",
+    "assetBlobSha1": "176513b4572856889f4bb565d145451fa516ab07",
+    "assetSha256": "9976965327c27b4611c3eac25ac6ef8f23ccc54285aafe6ad0cbe9a3ebe23715",
+    "changedSourceFields": [
+      "solutionImage",
+      "solutionImageAlt"
+    ],
+    "removedIncorrectTickLineCount": 4
+  },
+  "scopedVerification": {
+    "oldAndNewContactImagesInspected": true,
+    "exactAssetDiffVerified": true,
+    "remainingSvgBytesUnchanged": true,
+    "unselectedSourceQuestionsPreserved": 20,
+    "answerAndSolutionTextUnchanged": true,
+    "otherReviewedUidsNotReReviewed": 1957,
+    "first464SelectedE066UidsPreserved": 9,
+    "first464IncludesHeldUid": false
+  },
+  "operationalHold": {
+    "mechanism": "OMIT_EXACT_COMPACT_ROW_AND_RECORD_FOUR_SLOT_ITEM_MISSING",
+    "expectedRuntimeReason": "FOUR_SLOT_ITEM_MISSING",
+    "omittedOrdinals": [
+      15
+    ],
+    "sourceDenominator": 1958,
+    "eligibleCompactRows": 1957,
+    "heldUidCount": 1
+  },
+  "nextAction": "Wait for the active source owner to publish the exact Q15 correction and independent immutable evidence, read back their hashes, then restore only E066 ordinal15 and rebind its exam compact to the current source blob. Recheck this exam only and preserve the other 82 cached exams.",
+  "sourceWrites": 0,
+  "canonicalRegistryWrites": 0,
+  "guardChanges": 0,
+  "newSemanticApprovals": 0,
+  "newDifficultyApprovals": 0,
+  "mainRegistration": "NOT_RUN",
+  "pages": "NOT_RUN"
+}
