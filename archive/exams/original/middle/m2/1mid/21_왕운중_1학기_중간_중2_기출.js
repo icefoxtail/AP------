@@ -691,7 +691,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "\\(-2\\le\\frac{x}{3}<4\\Rightarrow -6\\le x<12\\). 여기에 2를 곱하고 3을 빼면 \\(-15\\le2x-3<21\\)이다.\n ④",
+    "solution": "$-2\\le\\dfrac{x}{3}<4$의 각 변에 $3$을 곱하면 $-6\\le x<12$이다.\n각 변에 $2$를 곱하고 $3$을 빼면 $-15\\le2x-3<21$이다.\n이 범위에서 가장 큰 정수는 $20$이므로 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",

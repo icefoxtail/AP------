@@ -562,6 +562,27 @@ valid native reuse 및 stale native 거부 계약은 유지한다. 배치 회귀
 부분 승인 행의 전체 metadata를 보존하고 다른 미승인 UID만 등록되는지, 같은 배치 재실행이
 동일 선택과 pending 사유를 유지하는지 확인한다.
 
+## 부분 FINAL_QA 원본 보존 영수증의 AutoMeta 재사용
+
+`approval.sourceRebind.priorReceiptRef`로 원본 파일만 다시 결속한 `PARTIAL_UIDS` 영수증은
+기존 그림·해설 검토 근거를 없애지 않는다. AutoMeta는 SHA로 결속된 원 영수증까지 이어서 확인한다.
+각 연결에서 시험·원본 경로·전체 분모·선택 UID와 순번이 같고, 실제 Git 원본의 선택 문항 전체 객체가
+같아야 한다. metadata와 runtime은 revision 및 새 영수증 경로를 추가한 evidence 목록 외 모든 값이
+동일해야 하며, identity는 전체 객체가 동일해야 한다. 새 승인·registry 변경·fingerprint repair는 허용하지 않는다.
+
+원 영수증에 도달하면 그 영수증의 실제 Git source와 기존 승인값으로 기존 native 검증기를 다시 실행한다.
+이전 pending cursor를 그대로 대조하며, 원래 독립 그림 검토·renderer sidecar·현재 자산 바이트·원검토
+proof 검증을 생략하지 않는다. cursor가 이미 current여도 원 solution-only repair는 원 prior Git 문항으로
+다시 검증한다. 이 경로는 새로운 학생 내용 변경이나 의미 승인을 허가하지 않고 기존 영수증을 재사용한다.
+
+잘못된 prior SHA, 선택 집합·다른 선택 문항 변경, 승인 상태·값·근거 삭제, 자산 변조, 순환 또는 64단계를
+넘는 연결은 거절한다. 명시적인 부분 보존 근거가 검증에 실패하면 일반 main-merge producer로 내려가
+기존 승인을 덮지 않고 `NATIVE_SOURCE_PRESERVATION_REVALIDATION_FAILED`로 남긴다.
+최신 보존 영수증 자체가 누락되거나 정상적인 현재 등록 객체가 아니어도, metadata/runtime에 남은
+revision과 원 영수증·evidence append 관계를 확인하여 producer 우회를 차단한다. JSON 파싱 성공만으로
+정상 영수증으로 간주하지 않으며, 실제 source의 Git/raw SHA와 전체 분모까지 일치해야 한다.
+기존 FULL 보존과 typed source-review/renderer sidecar 계약은 별도로 그대로 유지한다.
+
 ## 검증
 
 `node --test tests/archive-reviewed-exam-registration-v2.test.mjs`는 격리된 임시 저장소에서

@@ -480,23 +480,26 @@ window.questionBank = [
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
     ],
     "rpmSemanticStatus": "FINAL_FAMILY",
-    "rpmPrimaryRecordId": "M2-RPM-059",
+    "rpmPrimaryRecordId": "M2-RPM-053",
     "rpmPrimaryPath": {
       "majorUnit": "일차함수",
-      "midUnit": "일차함수와 일차방정식의 관계",
-      "l3": "그래프 활용",
-      "l4": "조건에 따른 식 결정"
+      "midUnit": "일차함수와 그 그래프",
+      "l3": "식 구하기",
+      "l4": "기울기와 한 점으로 식 구하기"
     },
-    "rpmL3": "그래프 활용",
-    "rpmL4": "조건에 따른 식 결정",
+    "rpmL3": "식 구하기",
+    "rpmL4": "기울기와 한 점으로 식 구하기",
     "projectionStatus": "FAMILY_BINDING_GAP",
     "ownerPack": "GEOMETRY_EQUATIONS",
     "problemTypeKey": "PT_LINE_EQUATION",
-    "templateKey": "TPL_LINE_MULTI_CONDITION",
+    "templateKey": "TPL_LINE_PARALLEL",
     "nullReason": null,
     "projectionReason": "FAMILY_BINDING_GAP: mapped PT/TPL candidate is retained as migration-gap evidence; exact ACTIVE curriculum+L1+L2 binding is not claimed.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP"
+    "boundaryStatus": "RPM_PRIMARY_MIGRATION_GAP",
+    "rpmPrimaryId": "M2-RPM-053",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 그 그래프"
   },
   {
     "id": 8,

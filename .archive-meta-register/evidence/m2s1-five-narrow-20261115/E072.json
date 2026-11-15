@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_CURRENT_NARROW_REPAIR",
+  "producer": "/root/m2s1_release",
+  "currentSourceBlobSha": "0f43fefdc6f2c0b1cae936d7ab882a2968436880",
+  "currentSourceRawSha256": "5575dfc5b8ce973722a5f199b6a60413907b9ce61b93bcdb61a72f6b67c1afc3",
+  "narrowEvidence": {
+    "sourceProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/source-proposal.json",
+      "sha256": "8a6339b83fe610749749ece281816b4acc4ed6783efa94342bc4a58809af7db6"
+    },
+    "sourceApplication": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/source-application.json",
+      "sha256": "b87270853a8252a0f157c3cccde227d298a55ed4114aef02adf347b6e6118ba0"
+    },
+    "independentReview": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/independent-review.json",
+      "sha256": "aeb275197932dffc28a7a53697e8f88fc4561962546fc05365915e5bd5d04ae3"
+    },
+    "currentReviewClosure": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/current-review-closure.json",
+      "sha256": "7d71187d1fc37bca64a491567ed055b93ddfbfcab0ad9c94ac8660845e3df2a5"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 24,
+    "selectedQuestions": 1
+  },
+  "newAdvancedMetadataApprovals": 0,
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+      "ordinal": 24,
+      "questionUid": "qid_v1_e7ba9c9b957c620ea66e9cdd90b580cd4ab7cb3083fdd634b8fc94eb743f51f3",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "sourceFingerprint": "6768afe45ca4a026605e9db3951519810dfa531ae29c5da4e5802b8fae5509d9",
+        "contentFingerprint": "79b0a5de4756d8d4bc935f4a3b895588430c246a01252bd5f89355d4eb335407"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "d8610d1e7a41980383ddfcb28430f8c9ffa04b3643c909834ecf1b55c52c9b2e",
+      "contentFingerprint": "79b0a5de4756d8d4bc935f4a3b895588430c246a01252bd5f89355d4eb335407",
+      "staleSourceBinding": false,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "두비용함수의엄격비교경계는정형이다.기존해설81개월은월단위정수청구관례에따른결론이며발문의연속시점과구별해조건부로보존한다.\nCurrent narrow source repair: State the exact strict inequality x>80 already derived by the existing solution. Present the first integer-month bill, 81, explicitly as a conditional monthly-unit interpretation instead of silently imposing an unstated integer domain. Do not add a billing condition to the stem or alter the cost model. Existing accepted numeric difficulty and confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+    }
+  ]
+}

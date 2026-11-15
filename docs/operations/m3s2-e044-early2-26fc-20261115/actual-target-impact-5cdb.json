@@ -1,0 +1,1058 @@
+{
+  "schemaVersion": "m3s2-two-statistics-binding-target-impact-v1",
+  "status": "PASS_FOR_NONEXCLUDED_IMMUTABLE_TARGET_SCOPE_ONLY",
+  "main": "5cdb0fea82185a48cc19cf1e2945f3002fe1d9bb",
+  "registryChangesRef": {
+    "path": "/workspace/scratch/26fc42390a50/m3s2-work/.tmp/m3s2-early2-e044-5cdb/registry-changes.json",
+    "sha256": "55cca2ec8281f14184cc1b1cbaf29b37be110ed8b4143301ee30affefc817087",
+    "count": 2
+  },
+  "exactCourseBoundary": {
+    "existingAutoMetaFourTupleKeys": 2,
+    "newAutoMetaFourTupleKeys": 0,
+    "existingRuntimeKeys": [
+      {
+        "proposedProblemType": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+        "existingRows": [
+          {
+            "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+            "curriculum": "2015",
+            "standardCourse": "중3-1",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+            "subUnitLabelKo": "대푯값과 산포도",
+            "L1": "통계",
+            "L2": "대푯값과 산포도",
+            "supportingItemCount": 1,
+            "supportingQuestionUids": [
+              "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE3"
+          }
+        ]
+      },
+      {
+        "proposedProblemType": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "existingRows": [
+          {
+            "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+            "curriculum": "2015",
+            "standardCourse": "중3-1",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+            "subUnitLabelKo": "대푯값과 산포도",
+            "L1": "통계",
+            "L2": "대푯값과 산포도",
+            "supportingItemCount": 1,
+            "supportingQuestionUids": [
+              "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE3"
+          }
+        ]
+      }
+    ],
+    "note": "The reviewed registrar resolves the exact five-field tuple including standardCourse. AutoMeta uses the four-field tuple without course. Existing legacy-course rows remain unchanged; both requested exact-course rows are absent."
+  },
+  "authority": {
+    "archive/tools/meta-foundation/auto-register-merged-source.mjs": {
+      "sha256": "686000533020a011121db6fbd5b6c413694751a6574cb4d5b297901ad5683a2d"
+    },
+    "archive/tools/meta-foundation/active-registry.mjs": {
+      "sha256": "fb92f3db9c869183cf04415f9a1d678c60ba52a7ad1ec995beb57e77bdf402ed"
+    },
+    ".archive-meta-register/auto/state.json": {
+      "sha256": "aec952fd1d91f3d09f40dceb378901f88715b8246f96562abaabd4c0c71a8e23"
+    },
+    ".archive-meta-register/auto/config.json": {
+      "sha256": "876bcac7d53781533e735c61aba6b9a471957c788fd4f3dcf825e3af0ce9673c"
+    }
+  },
+  "counts": {
+    "allSelectedTargetsIncludingExcludedPending": 11335,
+    "allSources": 913,
+    "examinedSources": 823,
+    "examinedTargetCount": 10695,
+    "excludedByExactPtSources": 814,
+    "potentialRows": 11,
+    "newApply": 2,
+    "newApplyWithinSelected2": 2,
+    "newApplyOutsideSelected2": 0,
+    "knownNativeExplicitHoldNewApply": 0,
+    "excludedM3S1PendingTargets": 640,
+    "excludedM3S1PendingSources": 90,
+    "excludedMetadataMatchesAffectedTypes": 0,
+    "excludedSourceReadAttempts": 0,
+    "errors": 0
+  },
+  "rows": [
+    {
+      "questionUid": "qid_v1_b61a6612903afb95ccbbeb73f0f238c22c77c5a8c796461fbd30789cb90097c1",
+      "sourceArchiveFile": "original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 11,
+      "selected2": false,
+      "sourceProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "registration_only_pending_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "DECLARED_PT_TPL_MISSING"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "DECLARED_PT_TPL_MISSING"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E063",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "MODE_FREQUENCY_COUNT_TEMPLATE_GAP",
+            "detail": "14개원자료의 값별빈도를 세어 최다빈도5회를 갖는5를 고른다. 중앙값도 함께 구하는 현ACTIVE TPL과 실제 단일최빈값 목표를 구분한다."
+          }
+        ],
+        "afterTemplate": null
+      }
+    },
+    {
+      "questionUid": "qid_v1_14a5c06de4f04e408c9afaac581898823240ae30a3918abe469f4f41a0e8398d",
+      "sourceArchiveFile": "original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 11,
+      "selected2": true,
+      "sourceProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "registration_only_pending_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "APPLY",
+        "reasons": [],
+        "metadataApprovalType": "MAIN_MERGE",
+        "reviewStatus": "review_required",
+        "changedFields": [
+          "curriculum",
+          "curriculumKey",
+          "courseKey",
+          "problemTypeKey",
+          "templateKey",
+          "crossConceptKeys",
+          "conditionKeys",
+          "integrationPattern",
+          "difficultyConfidence",
+          "difficultyBoundaryFlag",
+          "legacyLevelCompatibility",
+          "level",
+          "primaryMethod",
+          "decisiveStep",
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ]
+      },
+      "nativeReview": {
+        "examId": "E044",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "RESOLVER_SOLUTION_PROVENANCE",
+            "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+          },
+          {
+            "type": "BINDING_OR_OWNER_CONTEXT_GAP",
+            "curriculumRole": "current2022",
+            "crosswalkRecordId": "M1-RPM-223",
+            "exactContextBindingCount": 0,
+            "canonicalOwner": "MIDDLE3",
+            "bindingOwners": [],
+            "distinction": "Definition reuse was judged; current semantic context binding/owner relation awaits release owner."
+          }
+        ],
+        "afterTemplate": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA"
+      }
+    },
+    {
+      "questionUid": "qid_v1_901a7807a76e4450c7a4068aae419a32e4abff8f6824a576ba4a07096b1fa89b",
+      "sourceArchiveFile": "original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 13,
+      "selected2": true,
+      "sourceProblemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "registration_only_pending_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "APPLY",
+        "reasons": [],
+        "metadataApprovalType": "MAIN_MERGE",
+        "reviewStatus": "review_required",
+        "changedFields": [
+          "curriculum",
+          "curriculumKey",
+          "courseKey",
+          "problemTypeKey",
+          "templateKey",
+          "crossConceptKeys",
+          "conditionKeys",
+          "integrationPattern",
+          "difficultyConfidence",
+          "difficultyBoundaryFlag",
+          "legacyLevelCompatibility",
+          "level",
+          "primaryMethod",
+          "decisiveStep",
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ]
+      },
+      "nativeReview": {
+        "examId": "E044",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "RESOLVER_SOLUTION_PROVENANCE",
+            "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+          },
+          {
+            "type": "BINDING_OR_OWNER_CONTEXT_GAP",
+            "curriculumRole": "current2022",
+            "crosswalkRecordId": "M3-RPM-171",
+            "exactContextBindingCount": 0,
+            "canonicalOwner": "MIDDLE3",
+            "bindingOwners": [],
+            "distinction": "Definition reuse was judged; current semantic context binding/owner relation awaits release owner."
+          }
+        ],
+        "afterTemplate": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE"
+      }
+    },
+    {
+      "questionUid": "qid_v1_9cd7dd179a11bcb1110b7d0b291824c92b0cfba2887950e15516865f5c81fa32",
+      "sourceArchiveFile": "original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 12,
+      "selected2": false,
+      "sourceProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "approved_direct_canonical_tagging_2H",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E035",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "NEW_TEMPLATE",
+            "detail": "E024 원자료 최빈값 직접 결정 후보 재사용; 중앙값+최빈값 동시 계산 TPL과 목표를 구분한다."
+          },
+          {
+            "type": "RESOLVER_SOLUTION_PROVENANCE",
+            "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+          }
+        ],
+        "afterTemplate": ""
+      }
+    },
+    {
+      "questionUid": "qid_v1_608cb1a65899afb60195f59564e919e88776c5d47a02c55d962b073ffbfe805c",
+      "sourceArchiveFile": "original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 10,
+      "selected2": false,
+      "sourceProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "approved_direct_canonical_tagging_2H",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E024",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": null
+      }
+    },
+    {
+      "questionUid": "qid_v1_e66df3f9df67900f96ec72d10205d1c6ac8403993d3e4e3b6e2391ad116d5bc7",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 13,
+      "selected2": false,
+      "sourceProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "currentMetadataStatus": "approved_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E015",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": null
+      }
+    },
+    {
+      "questionUid": "qid_v1_c198a84b609a9851a2b8231c24e7ed9e89bc93661acec4868472f4e6bda4d93c",
+      "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 18,
+      "selected2": false,
+      "sourceProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "currentMetadataStatus": "approved_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E015",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": null
+      }
+    },
+    {
+      "questionUid": "qid_v1_523502e8e30f18c43b9c230f1fa62b3c4dabdd27a628eaf29d32d2a8598349ec",
+      "sourceArchiveFile": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 11,
+      "selected2": false,
+      "sourceProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "approved_direct_canonical_tagging_2H",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E004",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "BINDING_OR_CROSSWALK_DEBT",
+            "recordId": "M3-RPM-081",
+            "templateKey": null,
+            "studentPayloadUnchanged": true
+          },
+          {
+            "type": "VERIFIED_SOLUTION_PROVENANCE",
+            "scope": "Official Resolver execution precondition",
+            "semanticReviewStillCompleted": true
+          },
+          {
+            "type": "REGISTRATION_PROPOSAL_PENDING",
+            "proposalType": "NEW_TPL_PROPOSAL",
+            "sourceNewStringKeyInserted": false
+          }
+        ],
+        "afterTemplate": null
+      }
+    },
+    {
+      "questionUid": "qid_v1_0bff84730bfa584139049ea52c4c76555081d3795a870f1102c100b3be0ea753",
+      "sourceArchiveFile": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 17,
+      "selected2": false,
+      "sourceProblemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "approved_direct_canonical_tagging_2H",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E004",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "BINDING_OR_CROSSWALK_DEBT",
+            "recordId": "M3-RPM-084",
+            "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+            "studentPayloadUnchanged": true
+          },
+          {
+            "type": "VERIFIED_SOLUTION_PROVENANCE",
+            "scope": "Official Resolver execution precondition",
+            "semanticReviewStillCompleted": true
+          }
+        ],
+        "afterTemplate": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE"
+      }
+    },
+    {
+      "questionUid": "qid_v1_690395490ab4839711ebc978843b846c0b97bce7959cc47d8386ccd805100e78",
+      "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 14,
+      "selected2": false,
+      "sourceProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "currentProblemTypeKey": "",
+      "currentMetadataStatus": "approved_direct_canonical_tagging_2H",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E006",
+        "decision": "CORRECT",
+        "debts": [],
+        "afterTemplate": null
+      }
+    },
+    {
+      "questionUid": "qid_v1_cc2a12e5f1bcb5aeda938edd3ffdfa7ebdadd0396bed0f332ee5fa620d316eda",
+      "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 17,
+      "selected2": false,
+      "sourceProblemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+      "currentMetadataStatus": "approved_semantic_review",
+      "currentApprovalType": null,
+      "runtimeOwner": null,
+      "before": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "bindingOnly": {
+        "status": "SUPPLEMENT_PENDING",
+        "reasons": [
+          "IDENTITY_SOURCE_FINGERPRINT_MISMATCH"
+        ],
+        "metadataApprovalType": null,
+        "reviewStatus": null,
+        "changedFields": []
+      },
+      "nativeReview": {
+        "examId": "E007",
+        "decision": "CORRECT",
+        "debts": [
+          {
+            "type": "BINDING_OR_CROSSWALK_DEBT",
+            "recordId": "M3-RPM-084",
+            "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+            "studentPayloadUnchanged": true
+          },
+          {
+            "type": "VERIFIED_SOLUTION_PROVENANCE",
+            "scope": "Official Resolver execution precondition",
+            "semanticReviewStillCompleted": true
+          }
+        ],
+        "afterTemplate": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE"
+      }
+    }
+  ],
+  "outsideCandidates": [],
+  "explicitHoldRisk": [],
+  "errors": [],
+  "excludedM3S1": [
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/16_오성중_1학기_기말_중3_수학.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/16_장흥중_1학기_기말_중3_수학.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/16_환호여중_1학기_기말_중3_수학.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_가산중_1학기_기말_중3_수학.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_동산중_1학기_기말_중3_수학.js",
+      "targetCount": 13,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_서울가산중_1학기_기말_중3_수학.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_신흥중_1학기_기말_중3_수학.js",
+      "targetCount": 12,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_연향중_1학기_기말_중3_수학.js",
+      "targetCount": 14,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_왕운중_1학기_기말_중3_수학.js",
+      "targetCount": 12,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/19_이수중_1학기_기말_중3_수학.js",
+      "targetCount": 12,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js",
+      "targetCount": 7,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/20_연향중_1학기_기말_중3_수학.js",
+      "targetCount": 10,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/20_이수중_1학기_기말_중3_수학.js",
+      "targetCount": 9,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_금당중_1학기_기말_중3_기출c.js",
+      "targetCount": 16,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_동산중_1학기_기말_중3_기출c.js",
+      "targetCount": 6,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_매산중_1학기_기말_중3_수학.js",
+      "targetCount": 13,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_신흥중_1학기_기말_중3_기출.js",
+      "targetCount": 13,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_연향중_1학기_기말_중3_기출c.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_왕운중_1학기_기말_중3_수학.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_왕의중_1학기_기말_중3_수학_기출.js",
+      "targetCount": 13,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_팔마중_1학기_기말_중3_수학.js",
+      "targetCount": 14,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/21_풍덕중_1학기_기말_중3_수학.js",
+      "targetCount": 15,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_동산중_1학기_기말_중3_기출c.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_매산중_1학기_기말_중3_기출.js",
+      "targetCount": 6,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_신흥중_1학기_기말_중3_기출c.js",
+      "targetCount": 5,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_연향중_1학기_기말_중3_기출c.js",
+      "targetCount": 7,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_이수중_1학기_기말_중3_기출c.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_풍덕중_1학기_기말_중3_기출c.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/22_향림중_1학기_기말_중3_수학.js",
+      "targetCount": 6,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/23_매산중_1학기_기말_중3_기출c.js",
+      "targetCount": 9,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/23_매산중_1학기_기말_중3_수학c.js",
+      "targetCount": 9,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/23_연향중_1학기_기말_중3_수학.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/23_풍덕중_1학기_기말_중3_기출.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/24_신흥중_1학기_기말_중3_기출c.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/24_연향중_1학기_기말_중3_기출c.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/25_연향중_1학기_기말_중3_기출c.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/25_왕운중_1학기_기말_중3_기출c.js",
+      "targetCount": 10,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/25_풍덕중_1학기_기말_중3_기출c.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/26_삼산중_1학기_기말_중3_기출.js",
+      "targetCount": 12,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/26_왕운중_1학기_기말_중3_기출.js",
+      "targetCount": 12,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1final/26_팔마중_1학기_기말_중3_기출.js",
+      "targetCount": 11,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/17_풍덕중_1학기_중간_중3_수학.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/19_풍덕중_1학기_중간_중3_기출.js",
+      "targetCount": 16,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_금당중_1학기_중간_중3_기출.js",
+      "targetCount": 5,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_금당중_1학기_중간_중3_수학.js",
+      "targetCount": 7,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_동산중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_매산중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_매산중_1학기_중간_중3_수학.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_신흥중_1학기_중간_중3_수학.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_연향중_1학기_중간_중3_기출.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_왕운중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_팔마중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/21_풍덕중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_동산중_1학기_중간_중3_기출.js",
+      "targetCount": 5,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_신흥중_1학기_중간_중3_기출.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_연향중_1학기_중간_중3_기출c.js",
+      "targetCount": 19,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_왕운중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_팔마중_1학기_중간_중3_기출.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js",
+      "targetCount": 16,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/22_향림중_1학기_중간_중3_수학.js",
+      "targetCount": 14,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_동산중_1학기_중간_중3_수학.js",
+      "targetCount": 13,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_연향중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_왕운중_1학기_중간_중3_기출.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/23_향림중_1학기_중간_중3_기출.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js",
+      "targetCount": 22,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_신흥중_1학기_중간_중3_수학.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_연향중_1학기_중간_중3_기출.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_왕운중_1학기_중간_중3_기출.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_이수중_1학기_중간_중3_기출c.js",
+      "targetCount": 10,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/25_금당중_1학기_중간_중3_기출.js",
+      "targetCount": 5,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/25_연향중_1학기_중간_중3_기출.js",
+      "targetCount": 18,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js",
+      "targetCount": 7,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js",
+      "targetCount": 8,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/26_연향중_1학기_중간_중3_수학.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/1mid/26_왕운중_1학기_중간_중3_기출c.js",
+      "targetCount": 7,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/23_왕운중_1학기_중간_중3_유사1.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/23_왕운중_1학기_중간_중3_유사2.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/23_왕운중_1학기_중간_중3_유사3.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/23_풍덕중_1학기_중간_중3_유사2.js",
+      "targetCount": 3,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/23_풍덕중_1학기_중간_중3_유사3.js",
+      "targetCount": 4,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/24_왕운중_1학기_중간_중3_유사.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/25_왕운중_1학기_중간_중3_유사1.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/25_왕운중_1학기_중간_중3_유사2.js",
+      "targetCount": 1,
+      "metadataMatchesAffectedType": 0
+    },
+    {
+      "sourceArchiveFile": "similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js",
+      "targetCount": 2,
+      "metadataMatchesAffectedType": 0
+    }
+  ],
+  "sourceWrites": 0,
+  "registryWrites": 0,
+  "metadataWrites": 0,
+  "identityWrites": 0,
+  "runtimeWrites": 0,
+  "approvalWrites": 0,
+  "wholeRegistryImpactPass": false,
+  "scope": "Compare two proposed exact binding additions using the actual immutable main official planner and all nonexcluded selected target source/metadata PT declarations. No mathematical review is repeated. M3 S1 source access is explicitly blocked; global pending path/metadata counts are boundary evidence only.",
+  "actualRegistration": "NOT_RUN",
+  "consumer": "NOT_RUN",
+  "pages": "NOT_RUN",
+  "nextAction": "Retain unpublished candidates until root verifies first464 receipts and reconciles a single source owner. Any outside-candidate APPLY must be resolved with exact native evidence or negative hold preservation before binding release."
+}

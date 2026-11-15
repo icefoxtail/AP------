@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_CURRENT_NARROW_REPAIR",
+  "producer": "/root/m2s1_release",
+  "currentSourceBlobSha": "5cd005567bde291b5073a9f045353063567d8bc3",
+  "currentSourceRawSha256": "29bf259e42d65bf24d71d8fb9216d3f1b282b3da889eabca486205845ab523cd",
+  "narrowEvidence": {
+    "sourceProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/source-proposal.json",
+      "sha256": "8a6339b83fe610749749ece281816b4acc4ed6783efa94342bc4a58809af7db6"
+    },
+    "sourceApplication": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/source-application.json",
+      "sha256": "b87270853a8252a0f157c3cccde227d298a55ed4114aef02adf347b6e6118ba0"
+    },
+    "independentReview": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/independent-review.json",
+      "sha256": "aeb275197932dffc28a7a53697e8f88fc4561962546fc05365915e5bd5d04ae3"
+    },
+    "currentReviewClosure": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/current-review-closure.json",
+      "sha256": "7d71187d1fc37bca64a491567ed055b93ddfbfcab0ad9c94ac8660845e3df2a5"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 25,
+    "selectedQuestions": 1
+  },
+  "newAdvancedMetadataApprovals": 0,
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "ordinal": 17,
+      "questionUid": "qid_v1_a56794b5a26f767353d163c1477947b4fa866c8fd79827ec740fab17ba54f37e",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "sourceFingerprint": "4a797ae47be20f646824c497841803cf351e88be0a88fbdd5b90c93f21941af0",
+        "contentFingerprint": "c4854ba4338310c63f93c80d0c919f873f208002d6150782115919c76068b9de"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "a1ea6b0465524bd493b513236e3076bef193c8b1f30f5ebb64375ca5fba4a318",
+      "contentFingerprint": "1662c3fdac84c55ac22bc6b328c473b7f253fb3a8b43a7b119ee6a626e65362b",
+      "staleSourceBinding": true,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "마름모 판정 조건을 다섯 보기에서 구별한다. 단수형 발문이나 저장 정답과 해설은 복수 ②/⑤이며 이 표현 부채를 보존한다.\nCurrent narrow source repair: The stored answer and all five option arguments already identify ② and ⑤. Clarify selection of all such options, and correct the explanation so a rectangle is not claimed to exclude a rhombus in the square case. The visible diagram identifies B, C and the diagonal intersection O; clipped upper labels are not used to invent any length or angle. Existing accepted numeric difficulty and confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+    }
+  ]
+}

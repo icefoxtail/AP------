@@ -1,0 +1,526 @@
+{
+  "schemaVersion": "archive-m2s1-current-figure-review-closure-v1",
+  "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+  "sourceBaseCommit": "2d04279b6651398487cd6a9b40f899f90a73afcc",
+  "beforeBundleSha256": "a8f41bf649748c5ea7cf013779b4cb717ba9c1bc3e4b240599bb1cfce48da86a",
+  "evidenceRefs": {
+    "spec": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/source-change-spec.json",
+      "sha256": "7b4ead8f69fbf8afff5478c26e411bde214c8d672694461b49347705a1621ea6"
+    },
+    "sourceProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/source-proposal.json",
+      "sha256": "6d5bdc711398784029f057f8870c8476d39e73f40a3d56191578a07fabe4d906"
+    },
+    "rootIndependent": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/root-independent-review.json",
+      "sha256": "069bfc84e8f9b79d81a2cd1524f33c6c10bc0f72207bdc3268094347ad2fdb4a"
+    },
+    "m3Independent": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/m3-independent-review.json",
+      "sha256": "37327bc7011ad2727a506ddaad422e20d16d747a8ef3ff11175e2aa7389a0e9f"
+    }
+  },
+  "scope": "Eleven bounded current-source repairs. Six prior numeric ratings retained; five old UNKNOWN ratings replaced by explicitly independent current-source difficulty judgments. Historical source levels and images are unchanged.",
+  "counts": {
+    "sourceRepairs": 11,
+    "preservedNumericDifficulty": 6,
+    "newCurrentDifficulty": 5,
+    "newAdvancedMetadataApprovals": 0,
+    "newFullExamQa": 0,
+    "newReview2": 0
+  },
+  "rows": [
+    {
+      "key": "E040:24",
+      "questionUid": "qid_v1_d8fdbc567096c1e56a463bba2aa8a5227e5cd198c0a0670615a59bf69678a467",
+      "decision": "PRESERVE_PRIOR_ACCEPTED_DIFFICULTY_AFTER_NARROW_REPAIR",
+      "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+      "closedHolds": [
+        "SOURCE_CONTENT"
+      ],
+      "sourcePath": "archive/exams/original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js",
+      "sourceQuestionSha256": "0d8c5e0026d31700218e0e6d434502dce17e52eb5e333392cfffb2750650b6b6",
+      "originalAcceptedReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E040/accepted-review.json",
+        "sha256": "653a8c5a2d55ca484b2ecdc1e0396f950671152fb204b90f049b7b66d52e18ba"
+      },
+      "originalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "기울기일치후사분면배제의한경계조건을얻는표준유형으로source상3 대신중3/low 제안. 실제그림과해설좌표의불일치는보존한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 24
+      },
+      "acceptedDifficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "legacyLevelPreserved": "중",
+      "assetRefs": [
+        {
+          "path": "archive/assets/images/21_매산중_1학기_기말_중2_수학/s04.png",
+          "sha256": "bea39d2aefcd846c399cfe121f6ddf77438c3f3bfa0970dcab03d1994ba6bb75"
+        }
+      ],
+      "independentRef": {
+        "path": ".archive-meta-register/evidence/m2s1-figures-20261115/m3-independent-review.json",
+        "sha256": "37327bc7011ad2727a506ddaad422e20d16d747a8ef3ff11175e2aa7389a0e9f"
+      },
+      "newAdvancedMetadataApprovals": 0,
+      "newFullExamQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E060:3",
+      "questionUid": "qid_v1_198e10b1f2bd10be39258178be7e7ba541020df41453e392332215afb3e0715b",
+      "decision": "PRESERVE_PRIOR_ACCEPTED_DIFFICULTY_AFTER_NARROW_REPAIR",
+      "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+      "closedHolds": [
+        "SOURCE_CONTENT"
+      ],
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "sourceQuestionSha256": "03f9f6311f0cc25d29f15c213fcdc60fd35e8f7bd602e545b6bf8c908a4c4ada",
+      "originalAcceptedReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E060/accepted-review.json",
+        "sha256": "987fa830c94918405908246dc01e333e9c7fda5b5a98dca7cb6f8996728f9af7"
+      },
+      "originalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제 학생별 식은 분배법칙과 다항식 나눗셈의 정형 판단이다. 다만 기존 해설의 현수/세민 이름 및 식이 실제 그림과 달라 원해설 근거부채를 조건부로 분리한다."
+      },
+      "acceptedDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "legacyLevelPreserved": "중",
+      "assetRefs": [
+        {
+          "path": "archive/assets/images/20_풍덕중_1학기_기말_중2_수학/q03.png",
+          "sha256": "e656d4ddd67ee68c9e06b53ff1342307195a8d325ecf605f966e47018a66cc03"
+        }
+      ],
+      "independentRef": {
+        "path": ".archive-meta-register/evidence/m2s1-figures-20261115/root-independent-review.json",
+        "sha256": "069bfc84e8f9b79d81a2cd1524f33c6c10bc0f72207bdc3268094347ad2fdb4a"
+      },
+      "newAdvancedMetadataApprovals": 0,
+      "newFullExamQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E060:12",
+      "questionUid": "qid_v1_938125d560630a261f20745c0a1ebc8ed2a34d6d089330cffd255cf2a71e68a6",
+      "decision": "PRESERVE_PRIOR_ACCEPTED_DIFFICULTY_AFTER_NARROW_REPAIR",
+      "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+      "closedHolds": [
+        "SOURCE_CONTENT"
+      ],
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "sourceQuestionSha256": "ca34c2a4f3e591842d20ed81ee16193abd861468248bfb68a19ca72c2bbe9082",
+      "originalAcceptedReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E060/accepted-review.json",
+        "sha256": "987fa830c94918405908246dc01e333e9c7fda5b5a98dca7cb6f8996728f9af7"
+      },
+      "originalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림의 두 쌍 대변 길이 5/5와7/7에서 도형 성질을 판단해야 한다. 기존 해설의 등변사다리꼴 명칭과 평행의 무근거 가정은 원문부채이며 조건부 난도이다."
+      },
+      "acceptedDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "legacyLevelPreserved": "중",
+      "assetRefs": [
+        {
+          "path": "archive/assets/images/20_풍덕중_1학기_기말_중2_수학/q12.png",
+          "sha256": "dee2211d2282656d6ba6f1cad5947809c9e1bb640e26d18ff26deb18dea341d7"
+        }
+      ],
+      "independentRef": {
+        "path": ".archive-meta-register/evidence/m2s1-figures-20261115/m3-independent-review.json",
+        "sha256": "37327bc7011ad2727a506ddaad422e20d16d747a8ef3ff11175e2aa7389a0e9f"
+      },
+      "newAdvancedMetadataApprovals": 0,
+      "newFullExamQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E060:13",
+      "questionUid": "qid_v1_b2cbf16acefb45c249c08aac5fdb3ced11ae805bad58253764793ef9a53a8918",
+      "decision": "NEW_CURRENT_SOURCE_DIFFICULTY_AFTER_NARROW_REPAIR",
+      "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+      "closedHolds": [
+        "NUMERIC_DIFFICULTY_UNKNOWN",
+        "SOURCE_CONTENT"
+      ],
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "sourceQuestionSha256": "c0f407c0aad5b1753f9d743272d1a9e8dd5dceb22df8ad754a7b282692d982ba",
+      "originalAcceptedReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E060/accepted-review.json",
+        "sha256": "987fa830c94918405908246dc01e333e9c7fda5b5a98dca7cb6f8996728f9af7"
+      },
+      "originalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 그림 AB=4cm와 기존 해설 AB=5cm가 달라 산출값 근거가 충돌한다. 대각선 성질의 정형 구조는 보이나 현재 수치 난도 확정은 보류한다."
+      },
+      "acceptedDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "legacyLevelPreserved": null,
+      "assetRefs": [
+        {
+          "path": "archive/assets/images/20_풍덕중_1학기_기말_중2_수학/q13.png",
+          "sha256": "eafb9f78c25c6598cea7fb14d69c856afcb1a027f3cbe1d2f6bd31b89b62aa04"
+        }
+      ],
+      "independentRef": {
+        "path": ".archive-meta-register/evidence/m2s1-figures-20261115/root-independent-review.json",
+        "sha256": "069bfc84e8f9b79d81a2cd1524f33c6c10bc0f72207bdc3268094347ad2fdb4a"
+      },
+      "newAdvancedMetadataApprovals": 0,
+      "newFullExamQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E060:21",
+      "questionUid": "qid_v1_f9e610e699699c6aff16c9f07140861b7bf115813a8a1b5b4707a2697d461486",
+      "decision": "NEW_CURRENT_SOURCE_DIFFICULTY_AFTER_NARROW_REPAIR",
+      "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+      "closedHolds": [
+        "NUMERIC_DIFFICULTY_UNKNOWN",
+        "SOURCE_CONTENT"
+      ],
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "sourceQuestionSha256": "ce35ea096578e7c8c089df251060b2e2ac5e4ad143ed18e41ef4a29a97f48e5c",
+      "originalAcceptedReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E060/accepted-review.json",
+        "sha256": "987fa830c94918405908246dc01e333e9c7fda5b5a98dca7cb6f8996728f9af7"
+      },
+      "originalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 미로의 마름모 [예] 오른쪽에는 추가 사다리꼴 명제가 있고 순천은 [아니오] 아래쪽에 있다. 해설의 순천 연결 및 대체 경로가 실제 그림과 달라 최종값 난도 보류."
+      },
+      "acceptedDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "legacyLevelPreserved": null,
+      "assetRefs": [
+        {
+          "path": "archive/assets/images/20_풍덕중_1학기_기말_중2_수학/q21.png",
+          "sha256": "14b2b6d26bcd05e1fb9c94d31626a66df330535cd4ed7e0c61b94cd91aa90aa3"
+        }
+      ],
+      "independentRef": {
+        "path": ".archive-meta-register/evidence/m2s1-figures-20261115/root-independent-review.json",
+        "sha256": "069bfc84e8f9b79d81a2cd1524f33c6c10bc0f72207bdc3268094347ad2fdb4a"
+      },
+      "newAdvancedMetadataApprovals": 0,
+      "newFullExamQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E060:24",
+      "questionUid": "qid_v1_9e55f0449db6361caac542b9f9f088a08a3b53b0d31f58335d88799d595623f0",
+      "decision": "NEW_CURRENT_SOURCE_DIFFICULTY_AFTER_NARROW_REPAIR",
+      "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+      "closedHolds": [
+        "NUMERIC_DIFFICULTY_UNKNOWN",
+        "SOURCE_CONTENT"
+      ],
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "sourceQuestionSha256": "3701b2e79f262586656f8a5da443ca420f27f1c96d890b5cf43afa0c9c39351d",
+      "originalAcceptedReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E060/accepted-review.json",
+        "sha256": "987fa830c94918405908246dc01e333e9c7fda5b5a98dca7cb6f8996728f9af7"
+      },
+      "originalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 화살표①은 사다리꼴→평행사변형,②는 평행사변형→마름모,④는 마름모→정사각형인데 기존 해설은 다른 단계에 번호를 연결했다. 대응 부채로 수치 난도 보류."
+      },
+      "acceptedDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "legacyLevelPreserved": null,
+      "assetRefs": [
+        {
+          "path": "archive/assets/images/20_풍덕중_1학기_기말_중2_수학/s03.png",
+          "sha256": "444468a684dff8b35773bd9b60827d68549660156e89548e9f9b764a2406ccf8"
+        }
+      ],
+      "independentRef": {
+        "path": ".archive-meta-register/evidence/m2s1-figures-20261115/root-independent-review.json",
+        "sha256": "069bfc84e8f9b79d81a2cd1524f33c6c10bc0f72207bdc3268094347ad2fdb4a"
+      },
+      "newAdvancedMetadataApprovals": 0,
+      "newFullExamQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E062:14",
+      "questionUid": "qid_v1_785177fab567013bf7332f21caa851a891cf095715d3679a9ee9891cb03ed750",
+      "decision": "PRESERVE_PRIOR_ACCEPTED_DIFFICULTY_AFTER_NARROW_REPAIR",
+      "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+      "closedHolds": [
+        "SOURCE_CONTENT"
+      ],
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+      "sourceQuestionSha256": "310a17216128876df06b026bbe0b004a7fc23a31c3170d7bff561ff8e324df17",
+      "originalAcceptedReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E062/amendments/unknown-legacy-compatibility-r1/accepted-review.json",
+        "sha256": "aa144dd5bc383f7cb695e4aa22572d8ae48c5d9ee82849b94a67b76152d6f566"
+      },
+      "originalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림의두절편으로기울기·식구성하는구조.실제그림과alt해설절편충돌"
+      },
+      "acceptedDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "legacyLevelPreserved": "중",
+      "assetRefs": [
+        {
+          "path": "archive/assets/images/19_금당중_1학기_기말_중2_수학/q14.png",
+          "sha256": "42fbbefda21f470e9e8b091e345c3012c55b5841ec6888463729bbe57c9b81bb"
+        }
+      ],
+      "independentRef": {
+        "path": ".archive-meta-register/evidence/m2s1-figures-20261115/m3-independent-review.json",
+        "sha256": "37327bc7011ad2727a506ddaad422e20d16d747a8ef3ff11175e2aa7389a0e9f"
+      },
+      "newAdvancedMetadataApprovals": 0,
+      "newFullExamQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E062:21",
+      "questionUid": "qid_v1_5d3ae1e4b02cf8673e544b5f07cd23773e5029b731675aa85badc2dc4d67d056",
+      "decision": "NEW_CURRENT_SOURCE_DIFFICULTY_AFTER_NARROW_REPAIR",
+      "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+      "closedHolds": [
+        "NUMERIC_DIFFICULTY_UNKNOWN",
+        "SOURCE_CONTENT"
+      ],
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+      "sourceQuestionSha256": "ea702219e13495d50a790297b22c536e6401f9963466c33b6fb9def1f351493a",
+      "originalAcceptedReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E062/amendments/unknown-legacy-compatibility-r1/accepted-review.json",
+        "sha256": "aa144dd5bc383f7cb695e4aa22572d8ae48c5d9ee82849b94a67b76152d6f566"
+      },
+      "originalDifficulty": {
+        "level": "중",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "기존해설은그림에없는10분교점을전제하고기울기·좌표를수차례바꿔확정함 기존 원문·독립판정의 UNKNOWN을 그대로 재사용한다. difficulty v1.3 §4에서 비교불가는 legacyLevelCompatibility UNKNOWN이므로 잘못 남은 STRONG_CONFLICT 상태표시만 정합화한다.",
+        "authorReason": "기존해설은그림에없는10분교점을전제하고기울기·좌표를수차례바꿔확정함"
+      },
+      "acceptedDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "legacyLevelPreserved": "중",
+      "assetRefs": [
+        {
+          "path": "archive/assets/images/19_금당중_1학기_기말_중2_수학/q21.png",
+          "sha256": "51d9f8f0bb11704c5440a6fadd7126aef0a80fd5d9585c3e1235a004807f7635"
+        }
+      ],
+      "independentRef": {
+        "path": ".archive-meta-register/evidence/m2s1-figures-20261115/root-independent-review.json",
+        "sha256": "069bfc84e8f9b79d81a2cd1524f33c6c10bc0f72207bdc3268094347ad2fdb4a"
+      },
+      "newAdvancedMetadataApprovals": 0,
+      "newFullExamQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E062:25",
+      "questionUid": "qid_v1_64b62553a4e8248d02d4c86f7dacfcb636a498b2acb39b641cac15c02455da77",
+      "decision": "PRESERVE_PRIOR_ACCEPTED_DIFFICULTY_AFTER_NARROW_REPAIR",
+      "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+      "closedHolds": [
+        "SOURCE_CONTENT"
+      ],
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+      "sourceQuestionSha256": "338258548f7acdeb8c27c4dec7a3cfa07e7d35b546bf2885b3b745541d566abf",
+      "originalAcceptedReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E062/amendments/unknown-legacy-compatibility-r1/accepted-review.json",
+        "sha256": "aa144dd5bc383f7cb695e4aa22572d8ae48c5d9ee82849b94a67b76152d6f566"
+      },
+      "originalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "직사각형대칭중심을이용한넓이이등분직선다섯개구성.실제그림좌표와해설충돌"
+      },
+      "acceptedDifficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "legacyLevelPreserved": "중",
+      "assetRefs": [
+        {
+          "path": "archive/assets/images/19_금당중_1학기_기말_중2_수학/s03.png",
+          "sha256": "eba9d429b3a7f16b7b81a8ff8c6fe452fae9e2cee33bc531e633c76f81722189"
+        }
+      ],
+      "independentRef": {
+        "path": ".archive-meta-register/evidence/m2s1-figures-20261115/root-independent-review.json",
+        "sha256": "069bfc84e8f9b79d81a2cd1524f33c6c10bc0f72207bdc3268094347ad2fdb4a"
+      },
+      "newAdvancedMetadataApprovals": 0,
+      "newFullExamQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E065:15",
+      "questionUid": "qid_v1_ec72c2b6e583c9e010a6e6aad0715c4d294c099f1e6e15914a7ec37e3b7496fb",
+      "decision": "PRESERVE_PRIOR_ACCEPTED_DIFFICULTY_AFTER_NARROW_REPAIR",
+      "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+      "closedHolds": [
+        "SOURCE_CONTENT"
+      ],
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js",
+      "sourceQuestionSha256": "6093a175f01194df624ace7656b423709a3eb61afc99d8c82d23ebe4be1ef78f",
+      "originalAcceptedReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E065/accepted-review.json",
+        "sha256": "353e7def2593bdcb8a389f2fbc0dfeb9b46c25b5d70a3c29c8e20ac1b4e66505"
+      },
+      "originalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기울기와 y절편에 맞는 실제 그림 선택; 기존해설은②이나 실제⑤와 조건이 맞는 번호 충돌"
+      },
+      "acceptedDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "legacyLevelPreserved": "중",
+      "assetRefs": [
+        {
+          "path": "archive/assets/images/19_연향중_1학기_기말_중2_수학/q15.png",
+          "sha256": "cfab6fe81e57994179c5c4f87beaf30bff462ab269f0cd1f3b6c1de8a9f7cfe5"
+        }
+      ],
+      "independentRef": {
+        "path": ".archive-meta-register/evidence/m2s1-figures-20261115/root-independent-review.json",
+        "sha256": "069bfc84e8f9b79d81a2cd1524f33c6c10bc0f72207bdc3268094347ad2fdb4a"
+      },
+      "newAdvancedMetadataApprovals": 0,
+      "newFullExamQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E065:22",
+      "questionUid": "qid_v1_95b71006923b7c86954408374061925e4e7a6921b7fdfb22fc438c30c8e4b69d",
+      "decision": "NEW_CURRENT_SOURCE_DIFFICULTY_AFTER_NARROW_REPAIR",
+      "status": "INDEPENDENT_NARROW_REVIEW_PASS",
+      "closedHolds": [
+        "NUMERIC_DIFFICULTY_UNKNOWN",
+        "SOURCE_CONTENT"
+      ],
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js",
+      "sourceQuestionSha256": "32ccf8afe399ff37bea6655bdcb1e4ccb52cae6a4060e0ac82317fed5bf5410f",
+      "originalAcceptedReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E065/accepted-review.json",
+        "sha256": "353e7def2593bdcb8a389f2fbc0dfeb9b46c25b5d70a3c29c8e20ac1b4e66505"
+      },
+      "originalDifficulty": {
+        "level": "중",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 만화의4/9kcal·95분·505kcal와 alt/해설의4/8·40분·260kcal가 서로 다른 입력"
+      },
+      "acceptedDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "legacyLevelPreserved": "중",
+      "assetRefs": [
+        {
+          "path": "archive/assets/images/19_연향중_1학기_기말_중2_수학/s02.png",
+          "sha256": "904b47796daa5acc643c88922fd5a3ecce109aa59e881b175e65f83b9a846834"
+        }
+      ],
+      "independentRef": {
+        "path": ".archive-meta-register/evidence/m2s1-figures-20261115/root-independent-review.json",
+        "sha256": "069bfc84e8f9b79d81a2cd1524f33c6c10bc0f72207bdc3268094347ad2fdb4a"
+      },
+      "newAdvancedMetadataApprovals": 0,
+      "newFullExamQa": false,
+      "newReview2": false
+    }
+  ]
+}

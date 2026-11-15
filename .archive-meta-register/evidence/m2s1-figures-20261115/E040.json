@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_CURRENT_FIGURE_REPAIR",
+  "producer": "/root/m2s1_release",
+  "currentSourceBlobSha": "145aa82df385c9e4a2b3c0588f46d984af699e03",
+  "currentSourceRawSha256": "b002b2119f4c9cfac1ee560606c0bd8d7bbcdcdf9a135ced880e2f7eada3ccc6",
+  "narrowEvidence": {
+    "spec": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/source-change-spec.json",
+      "sha256": "7b4ead8f69fbf8afff5478c26e411bde214c8d672694461b49347705a1621ea6"
+    },
+    "sourceProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/source-proposal.json",
+      "sha256": "6d5bdc711398784029f057f8870c8476d39e73f40a3d56191578a07fabe4d906"
+    },
+    "rootIndependent": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/root-independent-review.json",
+      "sha256": "069bfc84e8f9b79d81a2cd1524f33c6c10bc0f72207bdc3268094347ad2fdb4a"
+    },
+    "m3Independent": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/m3-independent-review.json",
+      "sha256": "37327bc7011ad2727a506ddaad422e20d16d747a8ef3ff11175e2aa7389a0e9f"
+    },
+    "currentReviewClosure": {
+      "path": ".archive-meta-register/evidence/m2s1-figures-20261115/current-review-closure.json",
+      "sha256": "4c3175969caffb5f15cdd8c5276ba4ce4c0babae979b26a8932b1cccba082fa4"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 24,
+    "selectedQuestions": 1
+  },
+  "newAdvancedMetadataApprovals": 0,
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js",
+      "ordinal": 24,
+      "questionUid": "qid_v1_d8fdbc567096c1e56a463bba2aa8a5227e5cd198c0a0670615a59bf69678a467",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "sourceFingerprint": "0688df50177ce5423465c5c521dcd8260e17b8c5fb7d1b77759a1b22182db862",
+        "contentFingerprint": "70c23d5b8820333eca1bc3858ff649e0f80331f6324b610703b33b2613420ff9"
+      },
+      "after": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "d6e336d885c9c4d4212b55f93bf0525466d1d8a24787cc17d872a8e9be6521ae",
+      "contentFingerprint": "7f4084e0cafecde4b57c6591474ddd72a4049ce371947a0fcf1553688fbe0615",
+      "staleSourceBinding": true,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "기울기일치후사분면배제의한경계조건을얻는표준유형으로source상3 대신중3/low 제안. 실제그림과해설좌표의불일치는보존한다.\nCurrent narrow source repair: Read the actual two plotted points; exclude the coincident line under the stated parallel condition. Preserve every part of (4-1) and the prior accepted numeric difficulty/confidence. The existing accepted numeric difficulty and low confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+    }
+  ]
+}

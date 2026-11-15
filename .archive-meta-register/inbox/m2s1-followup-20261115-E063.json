@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "producer": "/root/m2s1_release; gemini is the existing registrar envelope field name, not an authorship claim",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "m2s1-followup-20261115-E063",
+    "createdAt": "2026-11-15T00:00:00Z",
+    "sourceArchiveFile": "original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js",
+    "latestBlobSha": "86ebc367a18ff7628ddf3088e0174fccea9e1dcc",
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_c724c934eb7df3527a47681ce10177a6d5f5d6165af62384787c366b781d324c",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "User-authorized release; accepted native review 150b22a57f1a7075cae4ea89810bacc3bb7fff15:docs/operations/m2-s1-meta-full-20261114/exams/E063/accepted-review.json; source debt closed only for the 21 exact repairs independently crosschecked by /root/registrar_repair, evidence aca19626b875a1ce20470291122e867dca9aadfb030577dbd3bc9f82f0bf6ff7",
+    "evidencePath": ".archive-meta-register/evidence/m2s1-followup-20261115/E063.json",
+    "evidenceSha256": "588624d023e90810b3b6475b81225e5328d6c32341eff3a5b4468e229e99f7f2",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js",
+        "ordinal": 1,
+        "questionUid": "qid_v1_c724c934eb7df3527a47681ce10177a6d5f5d6165af62384787c366b781d324c",
+        "before": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+          "sourceFingerprint": "328297f9cdc26b5d61c3496fe3a86f452061573112dd71c9f408681e8e0ca27d",
+          "contentFingerprint": "b5dcc4497ebe2a68327241eb53203ed2ad2fec534ff4ca71fc0fc8d3c1638dc6"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "d34ec9af998d2c32b0e1106c9e496c0198ee60e0af1bbe8aad21025f85d16ed0",
+        "contentFingerprint": "b5dcc4497ebe2a68327241eb53203ed2ad2fec534ff4ca71fc0fc8d3c1638dc6",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "다섯 등식을 정리해 남는 미지수와 차수를 판정한다. ㅁ의 기존해설 상수 전개 오류는 분류에 영향 없는 부채로 보존한다.\n후속 범위: Expand 2(x+y)-3 with constant -3, giving x-6=0; distinguish one-variable from two-variable linear equations. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+      }
+    ]
+  }
+}

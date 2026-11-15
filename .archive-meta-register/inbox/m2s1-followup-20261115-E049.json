@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "producer": "/root/m2s1_release; gemini is the existing registrar envelope field name, not an authorship claim",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "m2s1-followup-20261115-E049",
+    "createdAt": "2026-11-15T00:00:00Z",
+    "sourceArchiveFile": "original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+    "latestBlobSha": "beb3c51c8b0b2200f46db99b43c718c23b1da453",
+    "items": [
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_abb6a08af167493e0bc079d8f4c3f20ca2eb59f985d307fca0498101f896b955",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_90c0f4ad9847c805767b6aa6036e42930ab78424b27c8dfc36d24bbf15d90a48",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "User-authorized release; accepted native review 150b22a57f1a7075cae4ea89810bacc3bb7fff15:docs/operations/m2-s1-meta-full-20261114/exams/E049/accepted-review.json; source debt closed only for the 21 exact repairs independently crosschecked by /root/registrar_repair, evidence aca19626b875a1ce20470291122e867dca9aadfb030577dbd3bc9f82f0bf6ff7",
+    "evidencePath": ".archive-meta-register/evidence/m2s1-followup-20261115/E049.json",
+    "evidenceSha256": "cac764832a07eebea33da91f623efdc003efde15840a58ccfce8fb5db0bce937",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+        "ordinal": 3,
+        "questionUid": "qid_v1_abb6a08af167493e0bc079d8f4c3f20ca2eb59f985d307fca0498101f896b955",
+        "before": {
+          "level": "중",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+          "sourceFingerprint": "bacc5b9878f55d41892cfb4c715ccd6831ad2db069f98bd86a8675350a5e7568",
+          "contentFingerprint": "caf343e55f9324b39472dbd5b598898b7b8bb46504783e260dfe48151055ff62"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "ad25db12b7f0b2dbf7a2e91bcbb0af13183f3ee4c56a253d5d363d2de698e20c",
+        "contentFingerprint": "caf343e55f9324b39472dbd5b598898b7b8bb46504783e260dfe48151055ff62",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "기약분모소인수로유한소수판정; 실제해설의보기번호순서가source와다르고결론번호도충돌\n후속 범위: Restore the explanation option order to the actual unchanged choices and stored answer ③. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+      },
+      {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+        "ordinal": 16,
+        "questionUid": "qid_v1_90c0f4ad9847c805767b6aa6036e42930ab78424b27c8dfc36d24bbf15d90a48",
+        "before": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL",
+          "sourceFingerprint": "ca5ccc13238835bfbf4f019bb1096232f8d2e67a2948dff6dd3f052f9eb96645",
+          "contentFingerprint": "b2c3d78dc65b153dfd72e3aff0ffe284b3f22bf3115cdb9c313dde0ada135603"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "2161e40d39db2912513efbfb25c5d3c12795922fa1056d0de959de0e2fdabed3",
+        "contentFingerprint": "b2c3d78dc65b153dfd72e3aff0ffe284b3f22bf3115cdb9c313dde0ada135603",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "괄호전개/단항식나눗셈뒤계수합; 해설이source상수4대신정의안된A를도입한판본혼입부채\n후속 범위: Expand the actual leading coefficient 4; remove an undefined A imported from another version. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+      }
+    ]
+  }
+}
