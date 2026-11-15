@@ -143,6 +143,10 @@ window.examData = {
     },
     {
       "id": 11,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "한 꼭짓점에서 8−3=5개이다. 양 끝에서 같은 대각선이 두 번 세어지므로 8×5/2=20이다. 정답은 ③이다.",
+      "solutionImageAlt": "주황 꼭짓점에서 두 이웃 꼭짓점과 자신을 뺀 다섯 꼭짓점으로 파란 대각선을 그었다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q11-solution.svg",
       "score": 4.0,
       "question": "$n$각형의 대각선의 수는 $\\frac{1}{2}n(n-3)$개이다. 대각선이 20개인 다각형은 몇 각형인가? [4.0점]",
       "choices": [
@@ -157,8 +161,13 @@ window.examData = {
     },
     {
       "id": 12,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "남은 넓이는 (18−x)(10−x)=128이다. 0<x<10에서 x=2 cm이며 정답은 ②이다.",
+      "solutionImageAlt": "왼쪽은 원래 종이와 오려낸 띠이다. 오른쪽은 남은 네 색 조각을 밀어 붙인 직사각형이며 폭과 높이가 각각 x만큼 줄었다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q12-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "가로와 세로의 길이가 각각 $18\\text{ cm}$, $10\\text{ cm}$인 직사각형 모양의 종이를 오른쪽 그림과 같이 일정한 폭으로 오려내었더니 나머지 네 조각의 넓이의 합이 $128\\text{ cm}^2$가 되었다. 오려낸 부분의 폭은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/q12.png\" style=\"max-width: 60%;\">\n</div>",
+      "question": "가로와 세로의 길이가 각각 $18\\text{ cm}$, $10\\text{ cm}$인 직사각형 모양의 종이를 오른쪽 그림과 같이 일정한 폭으로 오려내었더니 나머지 네 조각의 넓이의 합이 $128\\text{ cm}^2$가 되었다. 오려낸 부분의 폭은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/q12-problem-v3.svg\" alt=\"가로 18 cm, 세로 10 cm인 직사각형 안에 일정한 폭의 띠가 가로와 세로로 교차한다. 띠를 제거하면 서로 다른 네 조각이 남는다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [
         "$1\\text{ cm}$",
         "$2\\text{ cm}$",
@@ -171,8 +180,13 @@ window.examData = {
     },
     {
       "id": 13,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "닮음에서 1/x=x/(1−x)이다. 양수인 근은 (−1+√5)/2이며 정답은 ⑤이다.",
+      "solutionImageAlt": "오른쪽 그림에는 아래 직사각형만 각 변의 길이를 유지한 채 90도 돌려 놓았다. 큰 직사각형의 긴 변 1과 작은 직사각형의 긴 변 x가 대응한다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q13-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "직사각형은 두 변의 길이의 비가 황금비일 때 가장 아름답게 보인다고 한다. 오른쪽 그림에서와 같이 정사각형 AFED를 제외한 나머지 직사각형 BCEF가 직사각형 ABCD와 닮은꼴이 되었을 때, $\\overline{AB}:\\overline{BC}$는 황금비가 된다. $\\overline{AB}=1$일 때, $\\overline{BC}$의 길이를 구하면? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/q13.png\" style=\"max-width: 50%;\">\n</div>",
+      "question": "직사각형은 두 변의 길이의 비가 황금비일 때 가장 아름답게 보인다고 한다. 오른쪽 그림에서와 같이 정사각형 AFED를 제외한 나머지 직사각형 BCEF가 직사각형 ABCD와 닮은꼴이 되었을 때, $\\overline{AB}:\\overline{BC}$는 황금비가 된다. $\\overline{AB}=1$일 때, $\\overline{BC}$의 길이를 구하면? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/q13-problem-v3.svg\" alt=\"세로 AB가 1인 직사각형 위쪽에 정사각형 AFED가 들어 있다. 아래쪽 BCEF는 원래 직사각형과 닮은 작은 직사각형이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [
         "$x = \\frac{-1 \\pm \\sqrt{3}}{2}$",
         "$x = \\frac{-1 + \\sqrt{3}}{2}$",
@@ -199,6 +213,10 @@ window.examData = {
     },
     {
       "id": 15,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=x² 자체의 대칭축은 y축이다. x축에 대칭이라고 한 ③이 옳지 않다.",
+      "solutionImageAlt": "위로 열린 파란 포물선은 y축을 기준으로 양쪽이 같다. x축을 접는 기준으로 하면 같은 폭의 주황 포물선과 대응한다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q15-solution.svg",
       "score": 3.0,
       "question": "다음은 이차함수 $y=x^2$의 그래프에 대한 설명이다. 옳지 <u>않은</u> 것은? [3.0점]",
       "choices": [
@@ -213,6 +231,10 @@ window.examData = {
     },
     {
       "id": 16,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=2x²에 넣으면 (2,8), (−3,18)이 그래프 위에 있다. 정답은 ①, ③이다.",
+      "solutionImageAlt": "파란 포물선 위의 두 점과 오른쪽 위에 따로 놓인 주황 점들을 표시했다. 원점 부근의 작은 후보는 오른쪽 확대 그림에 따로 보인다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q16-solution.svg",
       "score": 4.0,
       "question": "다음 중 이차함수 $y=2x^2$의 그래프가 지나는 점을 모두 고르면? (정답 2개) [4.0점]",
       "choices": [
@@ -227,8 +249,13 @@ window.examData = {
     },
     {
       "id": 17,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "꼭짓점은 (1,0)이며 y절편은 −2이다. 두 조건을 모두 만족하는 것은 ③이다.",
+      "solutionImageAlt": "아래로 열린 파란 포물선의 꼭짓점을 지나는 점선이 가로축의 1을 지난다. 세로축의 −2에도 파란 점이 놓인다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q17-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 3.0,
-      "question": "함수 $y=-2(x-1)^2$의 그래프로 옳은 것은? [3.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/q17.png\" style=\"max-width: 80%;\">\n</div>",
+      "question": "함수 $y=-2(x-1)^2$의 그래프로 옳은 것은? [3.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/q17-problem-v3.svg\" alt=\"다섯 포물선에서 첫째와 둘째는 위로 열린다. 셋째와 넷째는 x축에 꼭짓점이 있고 아래로 열린다. 다섯째는 y축 위의 점이 꼭짓점이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [
         "①",
         "②",
@@ -241,6 +268,10 @@ window.examData = {
     },
     {
       "id": 18,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "−2=−2(1−p)²에서 p=0 또는 p=2이다. p≠0이므로 정답은 ④이다.",
+      "solutionImageAlt": "파랑 원래 그래프와 오른쪽으로 옮겨진 주황 점선 그래프가 점 (1,−2)를 같이 지난다. 두 꼭짓점은 x축 위에 있다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q18-solution.svg",
       "score": 4.0,
       "question": "이차함수 $y=-2x^2$의 그래프를 $x$축의 방향으로 $p$만큼 평행이동하면 점 $(1,\\, -2)$를 지난다. 이때 $p$의 값은? (단, $p \\neq 0$) [4.0점]",
       "choices": [
@@ -255,6 +286,10 @@ window.examData = {
     },
     {
       "id": 19,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=2x²+1은 아래로 볼록하며 y≥1이다. ㄱ, ㄴ, ㄷ, ㅁ 네 설명이 참이고 정답은 ④이다.",
+      "solutionImageAlt": "파랑 그래프의 꼭짓점은 x축보다 하나 위에 있다. 각 꼭짓점에서 같은 높이를 올려 파랑과 주황의 가로 길이를 비교하고, 파랑 왼쪽 가지가 오른쪽으로 갈수록 낮아짐을 읽는다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q19-solution.svg",
       "score": 4.0,
       "question": "이차함수 $y=2x^2+1$의 그래프에 대한 다음 보기의 설명 중 옳은 것의 개수는? [4.0점]\n<div class=\"box-inset\">\n<b>&lt;보기&gt;</b><br>\nㄱ. 아래로 볼록한 곡선이다.<br>\nㄴ. 이차함수 $y=3x^2$의 그래프보다 폭이 넓다.<br>\nㄷ. $x<0$일 때, $x$의 값이 증가하면 $y$의 값은 감소한다.<br>\nㄹ. $x$축과 두 점에서 만난다.<br>\nㅁ. 제 1, 2사분면을 지난다.\n</div>",
       "choices": [
@@ -269,8 +304,13 @@ window.examData = {
     },
     {
       "id": 20,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "−x²≤ax²≤3x²에서 −1≤a≤3이다. 들어가는 계수는 −1/2, 2, 1/3이고 정답은 ⑤이다.",
+      "solutionImageAlt": "위 그림에서 x가 1인 세로 점선은 파랑과 주황 경계를 잇는다. 아래 수직선에서 계수 −1과 3 사이의 초록 구간을 보고 네 후보 계수를 비교한다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q20-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "오른쪽 그림은 두 이차함수 $y=3x^2$과 $y=-x^2$의 그래프를 그린 것이다. 다음 보기의 이차함수 중에서 그 그래프가 색칠한 부분에 속하는 것을 모두 고른 것은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/q20.png\" style=\"max-width: 50%;\">\n</div>\n<div class=\"box-inset\">\n<b>&lt;보기&gt;</b><br>\nㄱ. $y=-2x^2$<br>\nㄴ. $y=-\\frac{1}{2}x^2$<br>\nㄷ. $y=2x^2$<br>\nㄹ. $y=\\frac{1}{3}x^2$\n</div>",
+      "question": "오른쪽 그림은 두 이차함수 $y=3x^2$과 $y=-x^2$의 그래프를 그린 것이다. 다음 보기의 이차함수 중에서 그 그래프가 색칠한 부분에 속하는 것을 모두 고른 것은? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/q20-problem-v3.svg\" alt=\"위로 열린 파란 포물선과 아래로 열린 주황 포물선 사이 두 쪽을 초록으로 칠했다. 두 포물선은 원점에서 만난다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>\n<div class=\"box-inset\">\n<b>&lt;보기&gt;</b><br>\nㄱ. $y=-2x^2$<br>\nㄴ. $y=-\\frac{1}{2}x^2$<br>\nㄷ. $y=2x^2$<br>\nㄹ. $y=\\frac{1}{3}x^2$\n</div>",
       "choices": [
         "ㄱ, ㄴ",
         "ㄴ, ㄷ",
@@ -283,8 +323,13 @@ window.examData = {
     },
     {
       "id": 21,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "아래로 열려 a<0이고, 꼭짓점이 y축 왼쪽이며 x축 위이므로 p<0, q>0이다. 정답은 ①이다.",
+      "solutionImageAlt": "주황 꼭짓점에서 가로축과 세로축으로 보라 점선을 연결했다. 가로 좌표 p는 원점 왼쪽이고 세로 좌표 q는 원점 위쪽이다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q21-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "이차함수 $y=a(x-p)^2+q$의 그래프가 오른쪽 그림과 같을 때, $a,\\, p,\\, q$의 부호는? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/q21.png\" style=\"max-width: 50%;\">\n</div>",
+      "question": "이차함수 $y=a(x-p)^2+q$의 그래프가 오른쪽 그림과 같을 때, $a,\\, p,\\, q$의 부호는? [4.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/q21-problem-v3.svg\" alt=\"파란 포물선의 두 가지가 아래로 열린다. 꼭짓점은 가로축 위쪽이면서 세로축 왼쪽에 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [
         "$a<0,\\, p<0,\\, q>0$",
         "$a<0,\\, p>0,\\, q>0$",
@@ -305,6 +350,10 @@ window.examData = {
     },
     {
       "id": 23,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "−5(t−4)(t+1)=0이고 발사 뒤의 시간이므로 t=4초이다.",
+      "solutionImageAlt": "물체는 높이 20 m에서 출발해 올라갔다가 주황 점에서 지면에 닿는다. 가로축은 발사 후의 시간이다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q23-solution.svg",
       "score": 4.0,
       "question": "[서술형 2] 지면으로부터 $20\\text{ m}$ 높이의 건물 꼭대기에서 초속 $15\\text{ m}$로 쏘아 올린 물체의 $t$초 후의 높이는 $(-5t^2+15t+20)\\text{ m}$라고 한다. 이 물체가 다시 땅에 떨어질 때까지 걸리는 시간을 구하여라. [4.0점]",
       "choices": [],
@@ -313,6 +362,10 @@ window.examData = {
     },
     {
       "id": 24,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "꼭짓점은 (1,−4), 축은 x=1이다. x<1에서 감소하고 아래로 볼록하다.",
+      "solutionImageAlt": "주황 왼쪽 가지를 따라 오른쪽으로 가면 낮아진다. 주황과 파랑이 만나는 아래쪽 점에서 대칭축을 점선으로 그렸다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q24-solution.svg",
       "score": 4.0,
       "question": "[서술형 3] 다음은 이차함수 $y=2(x-1)^2-4$의 그래프에 대한 설명이다. $\\square$ 안에 알맞은 것을 써넣어라. [4.0점]\n<div class=\"box-inset\">\n이차함수 $y=2(x-1)^2-4$의 그래프의 꼭짓점의 좌표는 [ (가) ]이다. 축의 방정식은 [ (나) ]이고, [ (다) ]인 범위에서 $x$의 값이 증가할 때, $y$의 값은 감소한다.<br>\n또, 이 이차함수의 그래프는 [ (라) ]로 볼록한 포물선이다.\n</div>",
       "choices": [],
@@ -321,8 +374,13 @@ window.examData = {
     },
     {
       "id": 25,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "P=(−1,2), S=(2,8)이다. 사다리꼴 넓이는 (2+8)×3/2=15이다.",
+      "solutionImageAlt": "P에서 Q와 S에서 R로 내린 선이 평행하다. 가로 QR은 3이며, 주황 길이 PQ는 2이고 초록 길이 RS는 8이다.",
+      "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q25-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 6.0,
-      "question": "[서술형 4] 오른쪽 그림과 같이 이차함수 $y=2x^2$의 그래프와 일차함수 $y=2x+4$의 그래프가 서로 두 점에서 만나고 있다. 이때, 두 점 $\\text{P, S}$의 좌표를 구하고, 사다리꼴 $\\text{PQRS}$의 넓이를 구하여라. [6.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/s04.png\" style=\"max-width: 60%;\">\n</div>",
+      "question": "[서술형 4] 오른쪽 그림과 같이 이차함수 $y=2x^2$의 그래프와 일차함수 $y=2x+4$의 그래프가 서로 두 점에서 만나고 있다. 이때, 두 점 $\\text{P, S}$의 좌표를 구하고, 사다리꼴 $\\text{PQRS}$의 넓이를 구하여라. [6.0점]\n<div class=\"text-center my-2\">\n  <img src=\"assets/images/19_동산중_1학기_기말_중3_수학/q25-problem-v3.svg\" alt=\"포물선과 직선의 왼쪽 교점은 P, 오른쪽 교점은 S이다. P와 S에서 x축에 수직으로 내리면 각각 Q와 R에 닿는다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n</div>",
       "choices": [],
       "answer": "P(-1,2), S(2,8), 15",
       "solution": "교점에서는 2x²=2x+4이므로 (x+1)(x−2)=0이다.\n따라서 x=−1 또는 2이다. y=2x+4에 대입하면 두 교점의 y좌표는 각각 2, 8이므로 그림에서 P=(−1,2), S=(2,8)이다.\nP, S에서 밑변으로 내린 수선의 발은 Q=(−1,0), R=(2,0)이다.\n따라서 평행한 변 PQ=2, RS=8이고 높이 QR=3이다.\n사다리꼴의 넓이는 (PQ+RS)·QR/2=(2+8)·3/2=15이다."
