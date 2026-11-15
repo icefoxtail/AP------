@@ -46,6 +46,9 @@ function walkJsFiles(repoRoot, sourceRoot, output = []) {
 function questionBanks(sandbox) {
   const candidates = [];
   for (const field of BANK_FIELDS) candidates.push(sandbox.window?.[field], sandbox[field]);
+  if (!Array.isArray(sandbox.window?.questionBank) && !Array.isArray(sandbox.questionBank)) {
+    candidates.push(sandbox.window?.examData?.questions, sandbox.examData?.questions);
+  }
   const banks = [];
   const seen = new Set();
   for (const candidate of candidates) {
@@ -75,7 +78,7 @@ function flattenReferenceValues(value, output = []) {
 function sourceIdentity(question) {
   return {
     sourceQid: String(question?.sourceQid ?? question?.sourceQID ?? question?.qid
-      ?? question?.questionNo ?? question?.id ?? question?.sourceQuestionNo ?? question?.source_question_no ?? '').trim(),
+      ?? question?.questionNo ?? question?.id ?? question?.number ?? question?.sourceQuestionNo ?? question?.source_question_no ?? '').trim(),
     sourceUid: String(question?.uid ?? question?.questionUid ?? question?.sourceQuestionUid
       ?? question?.source_question_uid ?? '').trim()
   };
