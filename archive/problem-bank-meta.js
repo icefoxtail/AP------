@@ -383,7 +383,7 @@
     const verificationBindingsCurrent = verification?.metaFinalSha256 === record.metaFinalSha256 &&
       verification?.sourceShardGitSha === record.sourceShardGitSha &&
       verification?.reviewEvidenceSha256 === record.metaReviewEvidenceSha256;
-    view.verifiedEligible = view.directSelectable && view.metaCompleteness === 'RECORDED_COMPLETE' &&
+    view.verifiedEligible = record.sourceIssueHold !== true && view.directSelectable && view.metaCompleteness === 'RECORDED_COMPLETE' &&
       verification?.status === 'VERIFIED_CURRENT_SOURCE' && verification?.sourceBound === true &&
       verification?.reviewBytesBound === true && verificationBindingsCurrent && !completenessFields
         .some(field => ['UNKNOWN', 'STALE', 'INVALID', 'EVIDENCE_DEBT', 'HOLD', 'PENDING'].includes(view.metaStatus[field]));
