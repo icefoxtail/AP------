@@ -1,4 +1,5 @@
-// Apply only changed, source-bound v2 and reviewed difficulty5 requests in a disposable PR checkout.
+// Apply source-bound v2 and reviewed difficulty5 requests in a disposable CI checkout.
+// PRs select only changed requests; pushes select the exact pending HEAD inbox.
 // The main writer, inbox consumption and approval policy remain unchanged.
 import fs from 'node:fs';
 import os from 'node:os';
@@ -162,10 +163,32 @@ export function orderNativeRequests(requests) {
 export function selectNativeRequests({ root, baseSha, headSha }) {
   const fields = git(root, 'diff', '--name-status', '--diff-filter=AM', '--no-renames', '-z', baseSha, headSha, '--', INBOX).split('\0').filter(Boolean);
   if (fields.length % 2) fail('DIFF_INVALID');
-  const requests = [];
+  const files = [];
   for (let i = 0; i < fields.length; i += 2) {
     const file = fields[i + 1];
-    if (!['A', 'M'].includes(fields[i]) || !file.startsWith(INBOX) || file.slice(INBOX.length).includes('/') || !file.endsWith('.json')) continue;
+    if (['A', 'M'].includes(fields[i]) && flatInboxPath(file)) files.push(file);
+  }
+  return selectFixedNativeRequests({ root, files, headSha, rejectUnsupported: false });
+}
+
+const flatInboxPath = file => file.startsWith(INBOX) && !file.slice(INBOX.length).includes('/') && file.endsWith('.json');
+
+// A main push can follow a source merge while the single registration writer is
+// still running. Its unchanged pending requests belong to this fixed main
+// snapshot. Never discover them from the mutable worktree or origin/main.
+export function pendingNativeRequestPaths({ root, headSha }) {
+  if (!/^[a-f0-9]{40}$/i.test(headSha || '')) fail('PENDING_SNAPSHOT_SHA');
+  return git(root, 'ls-tree', '-r', '--name-only', '-z', headSha, '--', INBOX)
+    .split('\0').filter(file => file && flatInboxPath(file)).sort();
+}
+
+export function selectPendingNativeRequests({ root, headSha }) {
+  return selectFixedNativeRequests({ root, headSha, files: pendingNativeRequestPaths({ root, headSha }), rejectUnsupported: true });
+}
+
+function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported }) {
+  const requests = [];
+  for (const file of files) {
     safe(root, file);
     const raw = fs.readFileSync(path.join(root, file));
     if (sha(raw) !== sha(gitBytes(root, `${headSha}:${file}`))) fail(`REQUEST_NOT_FIXED:${file}`);
@@ -175,7 +198,12 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
       continue;
     }
     const correction = request.schemaVersion === PARENT_CORRECTION_SCHEMA;
-    if (!correction && request.schemaVersion !== NATIVE_REQUEST_SCHEMA) continue;
+    if (!correction && request.schemaVersion !== NATIVE_REQUEST_SCHEMA) {
+      // An unhandled main inbox must not be reported as a coherent projection.
+      // PRs retain their existing ownership boundary for unrelated schemas.
+      if (rejectUnsupported) fail(`PENDING_SCHEMA_UNSUPPORTED:${file}`);
+      continue;
+    }
     const sourceRebind = auditPreservationDependency(request, file);
     const preservation = request.approval?.sourceRebind !== undefined;
     if (preservation && (correction || request.registrationMode !== undefined ||

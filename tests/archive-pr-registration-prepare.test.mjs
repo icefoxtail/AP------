@@ -190,3 +190,11 @@ test('unknown Archive data/tool dependencies and preparation versions require a 
     'archive/unit-past-exams-core.js',
   ]) assert.equal(registrationInputsChanged([file]), true, file);
 });
+
+
+test('clean unrelated code-only push with no fixed pending inbox retains its no-op path', t => {
+  const f = fixture(t, 'tests/unrelated.test.js');
+  const result = f.prepare({ eventName: 'push', event: { before: f.baseSha, after: f.headSha } });
+  assert.equal(result.state, 'NO_OP'); assert.deepEqual(result.pendingRequestPaths, []);
+  assert.equal(f.commands.length, 0);
+});

@@ -6,10 +6,12 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { NATIVE_REQUEST_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, selectNativeRequests, orderNativeRequests, applyNativeRequests,
-  validateNativePreview, verifyNativeRequests } from '../tools/ci/archive-pr-native-preview.mjs';
+  validateNativePreview, verifyNativeRequests, selectPendingNativeRequests, pendingNativeRequestPaths } from '../tools/ci/archive-pr-native-preview.mjs';
 import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
   producePrRegistrationProof, validateLocalRegistrationProof,
 } from '../tools/ci/archive-pr-registration-proof.mjs';
+
+import { preparePrRegistration } from '../tools/ci/archive-pr-registration-prepare.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
@@ -28,7 +30,7 @@ const PLANNED = [META, AUTHORITY, RECEIPT].sort();
 const ALLOWED = [/^archive\/db\.js$/, /^archive\/data\/question_metadata\.json$/,
   /^archive\/data\/archive2-(?:catalog|canonical-input-manifest)\.json$/];
 
-function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, mutateRequest } = {}) {
+function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, otherOwner = true, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -61,7 +63,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
   write(META, json({ records: [{ questionUid: 'fixture', before: true }] }));
   write(IDENTITY, json({ records: [{ questionUid: 'fixture', sourceFingerprint: 'old' }] }));
   write(AUTHORITY, json({ version: 'before' }));
-  write(OTHER, json({ schemaVersion: 'standalone-course-fixture', requestId: 'other-owner-course' }));
+  if (otherOwner) write(OTHER, json({ schemaVersion: 'standalone-course-fixture', requestId: 'other-owner-course' }));
   write('archive/db.js', 'old projection\n');
   write('archive/data/archive2-catalog.json', json({ projection: 'old' }));
   const manifest = target => write('archive/data/archive2-canonical-input-manifest.json', json({
@@ -623,4 +625,87 @@ test('post-state replay does not replace the initial official output plan with a
   assert.throws(() => f.native(forged), /PLAN_MANIFEST_MISMATCH/);
   assert.equal(f.validate(proof).reusable, true);
   assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+
+function laterCodePush(f) {
+  const baseSha = f.git('rev-parse', 'HEAD');
+  f.write('tests/unrelated-code.test.js', '// subsequent code push while the native writer is pending\n');
+  f.git('add', '--', 'tests/unrelated-code.test.js'); f.git('commit', '-qm', 'later code-only push');
+  const headSha = f.git('rev-parse', 'HEAD');
+  return { root: f.root, eventName: 'push', event: { before: baseSha, after: headSha }, expectedSha: headSha, run: f.run };
+}
+
+test('main code-only push applies the fixed pending inbox then checks projection and typed Consumer without consuming it', t => {
+  const f = fixture(t, { partial: true, otherOwner: false });
+  const options = laterCodePush(f), headSha = options.expectedSha;
+  assert.deepEqual(selectNativeRequests({ root: f.root, baseSha: options.event.before, headSha }), [],
+    'the same code-only PR still owns no unchanged request');
+  const requests = selectPendingNativeRequests({ root: f.root, headSha });
+  assert.deepEqual(requests.map(r => r.path), [REQUEST]);
+  assert.equal(requests[0].questionCount, 1); assert.equal(requests[0].sourceQuestionCount, 24);
+  const input = fs.readFileSync(path.join(f.root, REQUEST)), phases = [];
+  f.hook.result = (phase, result) => { phases.push(phase); return result; };
+  f.hook.projection = target => assert.equal(JSON.parse(fs.readFileSync(path.join(target, 'archive/data/archive2-catalog.json'))).projection, 'new');
+  const result = preparePrRegistration(options);
+  assert.equal(result.state, 'PREPARED');
+  assert.deepEqual(result.pendingRequestPaths, [REQUEST]);
+  assert.deepEqual(result.nativePreview.requests, requests);
+  assert.deepEqual(result.nativePreview.checks.map(c => c.id), ['native-projection', 'native-consumer']);
+  assert.deepEqual(phases, ['dry-run', 'write', 'projection']);
+  assert.ok(result.nativePreview.outputs.some(r => r.path === RECEIPT));
+  assert.deepEqual(fs.readFileSync(path.join(f.root, REQUEST)), input, 'only the production writer consumes inbox files');
+  assert.equal(f.git('rev-parse', 'HEAD'), headSha, 'temporary verification creates no commit');
+});
+
+test('main pending inventory is exact HEAD, excluding later untracked and nested inbox files', t => {
+  const f = fixture(t, { otherOwner: false });
+  f.write('.archive-meta-register/inbox/untracked.json', json({ schemaVersion: NATIVE_REQUEST_SCHEMA }));
+  f.write('.archive-meta-register/inbox/nested/child.json', '{}');
+  assert.deepEqual(pendingNativeRequestPaths({ root: f.root, headSha: f.headSha }), [REQUEST]);
+  assert.deepEqual(selectPendingNativeRequests({ root: f.root, headSha: f.headSha }).map(r => r.path), [REQUEST]);
+  assert.throws(() => pendingNativeRequestPaths({ root: f.root, headSha: 'main' }), /PENDING_SNAPSHOT_SHA/);
+  f.write(REQUEST, json({ ...f.request, requestId: 'uncommitted-replacement' }));
+  assert.throws(() => selectPendingNativeRequests({ root: f.root, headSha: f.headSha }), /REQUEST_NOT_FIXED/);
+});
+
+test('unknown pending main schemas fail before any write while unchanged other-owner PR isolation remains intact', t => {
+  const f = fixture(t), options = laterCodePush(f);
+  assert.deepEqual(selectNativeRequests({ root: f.root, baseSha: options.event.before, headSha: options.expectedSha }), []);
+  assert.throws(() => preparePrRegistration(options), /PENDING_SCHEMA_UNSUPPORTED/);
+  assert.equal(f.calls.filter(c => c.program !== 'git').length, 0);
+  assert.equal(fs.existsSync(path.join(f.root, RECEIPT)), false);
+});
+
+test('pending main requests reject missing or stale committed source and immutable evidence', t => {
+  for (const variant of ['missing-source', 'changed-source', 'changed-evidence']) {
+    const f = fixture(t, { otherOwner: false });
+    if (variant === 'missing-source') f.git('rm', '--', SOURCE);
+    else f.write(variant === 'changed-source' ? SOURCE : EVIDENCE, variant === 'changed-source' ? 'window.questions=[{id:1,changed:true}];' : '{"changed":true}');
+    f.git('add', '-u'); f.git('commit', '-qm', variant);
+    const options = laterCodePush(f);
+    assert.throws(() => preparePrRegistration(options), /MISSING_FILE|SOURCE_NOT_FIXED|EVIDENCE_DRIFT/, variant);
+    assert.equal(f.calls.filter(c => c.program !== 'git').length, 0, variant);
+  }
+});
+
+test('main temporary preview rejects actual projection and Consumer failures rather than continuing the suite', t => {
+  for (const failure of ['projection', 'consumer']) {
+    const f = fixture(t, { otherOwner: false }), options = laterCodePush(f);
+    if (failure === 'projection') f.hook.result = (phase, result) => phase === 'projection' ? { ...result, consumerSearchStatus: 'NOT_RUN' } : result;
+    else f.hook.consumerResult = { status: 'FAIL', counts: {}, failures: ['consumer defect'] };
+    assert.throws(() => preparePrRegistration(options), failure === 'projection' ? /PROJECTION_NOT_VERIFIED/ : /CONSUMER_NOT_PASS/);
+    assert.equal(f.git('rev-parse', 'HEAD'), options.expectedSha);
+    assert.equal(fs.existsSync(path.join(f.root, REQUEST)), true);
+  }
+});
+
+test('main pending audit subset keeps the full D5 dependency and its established order', t => {
+  const f = fixture(t, { partial: true, auditPreservation: true, pairedDifficulty: true, otherOwner: false });
+  const options = laterCodePush(f), selected = selectPendingNativeRequests({ root: f.root, headSha: options.expectedSha });
+  assert.deepEqual(selected.map(r => r.path), [DIFFICULTY_REQUEST, REQUEST]);
+  assert.equal(selected[0].questionCount, 24); assert.equal(selected[1].questionCount, 1);
+  const result = preparePrRegistration(options);
+  assert.equal(result.state, 'PREPARED');
+  assert.equal(result.nativePreview.checks[1].preservedNativeApprovals.newMetadataApprovals, 0);
 });
