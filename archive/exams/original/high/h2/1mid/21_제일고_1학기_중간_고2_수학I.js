@@ -305,7 +305,11 @@ window.questionBank = [
         ],
         "sourceFidelity": "AUDITED_EDITORIAL_CLARIFICATION_NOT_VERBATIM",
         "originalPNG": "q20.png preserved"
-    }
+    },
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 줄은 교점 C의 x좌표에서 2를 뺀 가로 거리가 0과 1/5 사이임을 보여 준다. 아래 줄은 교점 높이가 1/5보다 큰 쪽임을 나타낸다. 기준값 1/5는 어느 줄에도 포함되지 않는다.",
+    "solutionImageCaption": "끝점의 함수값을 비교하면 교점 C의 x좌표는 2와 11/5 사이이다. 가로 거리와 높이는 기준 1/5의 서로 다른 쪽에 놓인다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
