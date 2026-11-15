@@ -32,6 +32,142 @@ const relativePath = value => typeof value === 'string' && value.length > 0 && !
   !value.includes('\0') && !path.posix.isAbsolute(value) && path.posix.normalize(value) === value &&
   !value.split('/').some(part => part === '.' || part === '..');
 
+const overlaps = (a, b) => a.x < b.x + b.width && a.x + a.width > b.x &&
+  a.y < b.y + b.height && a.y + a.height > b.y;
+const checkedRect = rect => {
+  assert(rect && ['x', 'y', 'width', 'height'].every(key => Number.isFinite(rect[key])) && rect.width > 0 && rect.height > 0,
+    'UI_CAPTURE_RECT');
+  return rect;
+};
+
+function problemContentClip(frame) {
+  const box = checkedRect(frame.question);
+  assert(Array.isArray(frame.children) && frame.children.length >= 3, 'UI_COMPLETE_PROBLEM_CHILDREN');
+  const children = frame.children.map(checkedRect);
+  assert(children.every(child => child.x >= box.x - 1 && child.y >= box.y - 1 &&
+    child.x + child.width <= box.x + box.width + 1 && child.y + child.height <= box.y + box.height + 1),
+  'UI_PROBLEM_CHILD_CLIPPED');
+  // Keep every visible child, including the number, complete statement, image
+  // and choices. Only the empty flex tail of the page-sized q-box is excluded.
+  const top = Math.max(box.y, Math.min(...children.map(child => child.y)) - 2);
+  const bottom = Math.min(box.y + box.height, Math.max(...children.map(child => child.y + child.height)) + 2);
+  return checkedRect({ x: box.x, y: top, width: box.width, height: bottom - top });
+}
+
+function planProblemScroll(frame) {
+  const clip = problemContentClip(frame), viewport = frame.viewport;
+  assert(viewport && Number.isFinite(viewport.width) && Number.isFinite(viewport.height) && viewport.width > 0 && viewport.height > 0,
+    'UI_CAPTURE_VIEWPORT');
+  assert(clip.x >= 0 && clip.x + clip.width <= viewport.width, 'UI_PROBLEM_HORIZONTAL_CLIP');
+  assert(Array.isArray(frame.obstructions), 'UI_CAPTURE_OBSTRUCTIONS');
+  const blocked = frame.obstructions.map(checkedRect).filter(rect => rect.x < clip.x + clip.width && rect.x + rect.width > clip.x)
+    .map(rect => [Math.max(0, rect.y - 8), Math.min(viewport.height, rect.y + rect.height + 8)])
+    .filter(([start, end]) => end > start).sort((a, b) => a[0] - b[0]);
+  const free = []; let start = 8;
+  for (const [from, to] of blocked) { if (from > start) free.push([start, from]); start = Math.max(start, to); }
+  if (start < viewport.height - 8) free.push([start, viewport.height - 8]);
+  const fits = free.filter(([from, to]) => to - from >= clip.height);
+  assert(fits.length > 0, 'UI_COMPLETE_PROBLEM_DOES_NOT_FIT_VIEWPORT');
+  const alreadyClear = fits.find(([from, to]) => clip.y >= from && clip.y + clip.height <= to);
+  const selected = alreadyClear || fits.sort((a, b) => (b[1] - b[0]) - (a[1] - a[0]))[0];
+  return { scrollByY: alreadyClear ? 0 : clip.y - selected[0], safeInterval: selected, clip };
+}
+
+function assertProblemCapture(frame) {
+  const clip = problemContentClip(frame), viewport = frame.viewport;
+  assert(frame.feedbackIdle === true, 'UI_RENDER_FEEDBACK_NOT_IDLE');
+  assert(frame.readiness === 'RENDER_READY' && frame.solutionNodes === 0, 'UI_CAPTURE_RENDER_STATE');
+  assert(clip.x >= 0 && clip.y >= 0 && clip.x + clip.width <= viewport.width && clip.y + clip.height <= viewport.height,
+    'UI_COMPLETE_PROBLEM_OUTSIDE_VIEWPORT');
+  assert(frame.obstructions.every(rect => !overlaps(clip, checkedRect(rect))), 'UI_CAPTURE_OBSCURED');
+  return clip;
+}
+
+// Runs in the browser and only reads the live student DOM. No style, text,
+// viewport, source or rendering state is substituted for the screenshot.
+async function measureProblemCapture(image) {
+  const box = image.closest('.q-box');
+  const rect = element => { const r = element.getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height }; };
+  const visible = element => {
+    const css = getComputedStyle(element), r = element.getBoundingClientRect();
+    return css.display !== 'none' && css.visibility !== 'hidden' && css.visibility !== 'collapse' && Number(css.opacity) !== 0 && r.width > 0 && r.height > 0;
+  };
+  const children = [];
+  for (const child of box.childNodes) {
+    if (child.nodeType === Node.ELEMENT_NODE && visible(child)) children.push(rect(child));
+    else if (child.nodeType === Node.TEXT_NODE && child.textContent.trim()) {
+      const range = document.createRange(); range.selectNodeContents(child);
+      const r = range.getBoundingClientRect(); if (r.width > 0 && r.height > 0) children.push({ x: r.x, y: r.y, width: r.width, height: r.height });
+    }
+  }
+  const obstructions = [...document.querySelectorAll('body *')].filter(element => !box.contains(element) && !element.contains(box) &&
+    ['fixed', 'sticky'].includes(getComputedStyle(element).position) && visible(element)).map(rect)
+    .filter(r => r.x < innerWidth && r.x + r.width > 0 && r.y < innerHeight && r.y + r.height > 0);
+  const panel = document.getElementById('ap-archive-render-feedback');
+  const completeChildrenVisible = [...box.children].every(child =>
+    (!child.textContent.trim() && !child.querySelector('img,svg,math,mjx-container')) || visible(child));
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(box.outerHTML));
+  return { question: rect(box), children, image: rect(image), viewport: { width: innerWidth, height: innerHeight },
+    scroll: { x: scrollX, y: scrollY }, obstructions, feedbackIdle: !panel || panel.hidden || !visible(panel),
+    readiness: JSON.parse(document.documentElement.dataset.apPrintReadiness || '{}').state,
+    solutionNodes: document.querySelectorAll('#print-area .sol-box,#print-area .sol-meta,#print-area .sol-ans,#print-area .sol-exp,#print-area .ans-v').length,
+    questionNumber: box.querySelector('.q-num')?.textContent?.trim(),
+    mandatoryChildrenVisible: visible(box) && completeChildrenVisible && !!box.querySelector('.q-num') && visible(box.querySelector('.q-num')) &&
+      !!box.querySelector('.q-content') && visible(box.querySelector('.q-content')) && visible(image),
+    domSha256: [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('') };
+}
+
+function inspectCaptureHits(image, clip) {
+  const box = image.closest('.q-box'); let samples = 0, outsideQuestion = 0;
+  const xs = [clip.x + 1.5], ys = [clip.y + 1.5];
+  for (let x = clip.x + 17.5; x < clip.x + clip.width - 1.5; x += 16) xs.push(x);
+  for (let y = clip.y + 17.5; y < clip.y + clip.height - 1.5; y += 16) ys.push(y);
+  xs.push(clip.x + clip.width - 1.5); ys.push(clip.y + clip.height - 1.5);
+  for (const x of xs) for (const y of ys) {
+    samples++; const top = document.elementFromPoint(x, y);
+    if (!top || (top !== box && !box.contains(top))) outsideQuestion++;
+  }
+  return { samples, outsideQuestion };
+}
+
+async function captureCompleteProblem(page, target, file) {
+  // The production feedback hides itself only after its real render promise
+  // settles. A pending/failed panel must not be cropped away as a successful UI.
+  try {
+    await page.waitForFunction(() => {
+      const panel = document.getElementById('ap-archive-render-feedback');
+      return !panel || panel.hidden || getComputedStyle(panel).display === 'none';
+    }, null, { timeout: 15000 });
+  } catch { throw new Error('UI_RENDER_FEEDBACK_NOT_IDLE'); }
+  let frame = await target.evaluate(measureProblemCapture); const originalDomSha256 = frame.domSha256;
+  const scrollBefore = frame.scroll; let scrollOperations = 0;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const plan = planProblemScroll(frame);
+    if (Math.abs(plan.scrollByY) < 0.5) break;
+    await page.evaluate(delta => window.scrollBy({ top: delta, left: 0, behavior: 'instant' }), plan.scrollByY);
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    scrollOperations++; frame = await target.evaluate(measureProblemCapture);
+  }
+  assert(frame.mandatoryChildrenVisible, 'UI_REQUIRED_PROBLEM_CHILD_HIDDEN');
+  assert.equal(frame.domSha256, originalDomSha256, 'UI_PROBLEM_DOM_CHANGED_DURING_SCROLL');
+  const clip = assertProblemCapture(frame), hits = await target.evaluate(inspectCaptureHits, clip);
+  assert(hits.samples > 0 && hits.outsideQuestion === 0, 'UI_CAPTURE_FOREIGN_CONTENT');
+  // A page viewport clip does not perform the locator screenshot's implicit
+  // second scroll. It records this already verified on-screen content exactly.
+  await page.screenshot({ path: file, clip, fullPage: false, caret: 'initial', timeout: 15000 });
+  const after = await target.evaluate(measureProblemCapture);
+  assert(after.mandatoryChildrenVisible, 'UI_REQUIRED_PROBLEM_CHILD_HIDDEN');
+  assert.deepEqual(assertProblemCapture(after), clip, 'UI_CAPTURE_GEOMETRY_CHANGED');
+  assert.deepEqual(after.scroll, frame.scroll, 'UI_CAPTURE_SCROLLED');
+  assert.equal(after.domSha256, originalDomSha256, 'UI_PROBLEM_DOM_CHANGED_DURING_CAPTURE');
+  const afterHits = await target.evaluate(inspectCaptureHits, clip);
+  assert(afterHits.samples > 0 && afterHits.outsideQuestion === 0, 'UI_CAPTURE_FOREIGN_CONTENT');
+  return { method: 'UNCHANGED_VIEWPORT_COMPLETE_CHILD_ENVELOPE', clip, question: frame.question, visibleChildren: frame.children.length,
+    scrollBefore, scrollAfter: after.scroll, scrollOperations, feedbackIdle: true, obstructionsIntersectingClip: 0,
+    hitTestSamples: hits.samples + afterHits.samples, foreignContentHits: 0, domSha256: originalDomSha256,
+    cssWrites: 0, domWrites: 0, viewportChanges: 0 };
+}
+
 function isStudentFontStylesheet(value) {
   const url = new URL(value);
   return url.origin === 'https://fonts.googleapis.com' && url.pathname === '/css2' && !url.hash &&
@@ -331,7 +467,8 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           assert.equal(await target.count(), 1, 'UI_UNIQUE_PROBLEM_IMAGE');
           const box = target.locator('xpath=ancestor::div[contains(concat(" ",normalize-space(@class)," ")," q-box ")][1]');
           assert.equal(await box.count(), 1, 'UI_UNIQUE_PROBLEM_BOX');
-          await box.scrollIntoViewIfNeeded();
+          const screenshotPath = `${item.key}-${viewport.name}.png`;
+          const capture = await captureCompleteProblem(page, target, path.join(out, screenshotPath));
           const geometry = await target.evaluate(image => {
             const box = image.closest('.q-box'), a = image.getBoundingClientRect(), b = box.getBoundingClientRect();
             return { naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
@@ -341,12 +478,10 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           });
           assert(geometry.imageInsideQuestion && geometry.naturalWidth > 0 && geometry.image.width > 0, 'UI_IMAGE_CLIPPED');
           assert.equal(Number((geometry.questionNumber || '').match(/^\d+/)?.[0]), item.sourceOrdinal, 'UI_VISIBLE_ORDINAL');
-          const screenshotPath = `${item.key}-${viewport.name}.png`;
-          await box.screenshot({ path: path.join(out, screenshotPath), animations: 'disabled', timeout: 15000 });
           const screenshot = fs.readFileSync(path.join(out, screenshotPath));
           results.push({ status: 'PASS', key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, viewport,
             sourceRef: item.sourceRef, assetRef: item.assetRef, screenshot: { path: screenshotPath, sha256: sha256(screenshot), bytes: screenshot.length },
-            technical: { ...technical, fontReadiness, fontResourceIds: [...fontResources].sort() }, geometry,
+            technical: { ...technical, fontReadiness, fontResourceIds: [...fontResources].sort() }, geometry, capture,
             visualReview: 'PENDING', pageErrors, requestFailures, externalRequests });
         }
         assert.equal(pageErrors.length + requestFailures.length + externalRequests.length + failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
@@ -394,7 +529,8 @@ async function main() {
 }
 
 module.exports = { MANIFEST_PATH, CHECKER_PATH, TEST_PATH, WORKFLOW_PATH, IDENTITY_PATH, SCHEMA, stable, sha256, gitBlob, validateManifest, planRequired, createGitReader, preflight,
-  isStudentFontStylesheet, declaredStudentFonts, fontFailureDiagnostic };
+  isStudentFontStylesheet, declaredStudentFonts, fontFailureDiagnostic,
+  problemContentClip, planProblemScroll, assertProblemCapture, captureCompleteProblem };
 if (require.main === module) main().catch(error => {
   const args = process.argv.slice(2), index = args.indexOf('--output');
   if (!args.includes('--plan') && index >= 0 && args[index + 1]) {

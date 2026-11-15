@@ -101,6 +101,121 @@ test('font HTTP assertion diagnostics preserve the fixed code while excluding co
   assert(!JSON.stringify(diagnostic).includes('503 !== 200'));
 });
 
+function captureFrame() {
+  // The actual desktop artifact placed a 994px q-box near y=3 while the
+  // production fixed controls occupied y=0..114. Its real content fits below.
+  return { question: { x: 350.34375, y: 2.578125, width: 664.3125, height: 994.03125 },
+    children: [
+      { x: 350.34375, y: 12.578125, width: 664.3125, height: 19 },
+      { x: 350.34375, y: 37.578125, width: 664.3125, height: 180 },
+      { x: 350.34375, y: 225.578125, width: 664.3125, height: 256 },
+      { x: 350.34375, y: 491.578125, width: 664.3125, height: 20 }
+    ], viewport: { width: 1365, height: 1000 }, scroll: { x: 0, y: 6000 },
+    obstructions: [{ x: 0, y: 0, width: 1365, height: 56 }, { x: 0, y: 56, width: 1365, height: 58 }],
+    feedbackIdle: true, readiness: 'RENDER_READY', solutionNodes: 0, mandatoryChildrenVisible: true,
+    questionNumber: '12.', domSha256: 'c'.repeat(64) };
+}
+function scrollFrame(frame, delta) {
+  frame.question.y -= delta;
+  for (const child of frame.children) child.y -= delta;
+  frame.scroll.y += delta;
+}
+
+test('the actual desktop placement is rejected despite a complete image inside the q-box', () => {
+  assert.throws(() => checker.assertProblemCapture(captureFrame()), /UI_CAPTURE_OBSCURED/);
+});
+
+test('capture includes all visible children and excludes only the empty flex tail', () => {
+  const frame = captureFrame(), clip = checker.problemContentClip(frame);
+  assert.equal(clip.x, frame.question.x); assert.equal(clip.width, frame.question.width);
+  assert(clip.y <= frame.children[0].y);
+  assert(clip.y + clip.height >= frame.children.at(-1).y + frame.children.at(-1).height);
+  assert(clip.height < frame.question.height);
+  const newChild = { x: clip.x, y: 600, width: clip.width, height: 50 };
+  frame.children.push(newChild);
+  assert(checker.problemContentClip(frame).y + checker.problemContentClip(frame).height >= 650);
+});
+
+test('natural scrolling places complete desktop content below both fixed bars without resizing', () => {
+  const frame = captureFrame(), original = copy(frame), plan = checker.planProblemScroll(frame);
+  assert(plan.scrollByY < 0); assert.equal(plan.safeInterval[0], 122);
+  scrollFrame(frame, plan.scrollByY);
+  const clip = checker.assertProblemCapture(frame);
+  assert.equal(clip.y, 122); assert.equal(frame.question.width, original.question.width);
+  assert.equal(frame.question.height, original.question.height); assert.deepEqual(frame.viewport, original.viewport);
+  assert.deepEqual(frame.obstructions, original.obstructions);
+});
+
+test('already clear mobile content is captured with no extra scroll', () => {
+  const frame = captureFrame(); frame.viewport = { width: 390, height: 844 };
+  frame.question = { x: 28, y: 137, width: 334, height: 569 };
+  frame.children = [{ x: 28, y: 147, width: 334, height: 19 }, { x: 28, y: 172, width: 334, height: 220 },
+    { x: 28, y: 400, width: 334, height: 256 }, { x: 28, y: 666, width: 334, height: 20 }];
+  frame.obstructions = frame.obstructions.map(rect => ({ ...rect, width: 390 }));
+  assert.equal(checker.planProblemScroll(frame).scrollByY, 0);
+  assert(checker.assertProblemCapture(frame).height > 530);
+});
+
+for (const [name, mutate, error] of [
+  ['number or statement missing from the measured content', frame => frame.children.splice(0, 2), /UI_COMPLETE_PROBLEM_CHILDREN/],
+  ['content outside the q-box', frame => { frame.children.at(-1).y = 990; }, /UI_PROBLEM_CHILD_CLIPPED/],
+  ['horizontal viewport clipping', frame => { frame.viewport.width = 900; }, /UI_PROBLEM_HORIZONTAL_CLIP/],
+  ['complete content cannot fit the unchanged viewport', frame => { frame.viewport.height = 500; }, /UI_COMPLETE_PROBLEM_DOES_NOT_FIT_VIEWPORT/],
+  ['zero-size content', frame => { frame.children[0].height = 0; }, /UI_CAPTURE_RECT/]
+]) test(`capture planning refuses ${name}`, () => { const frame = captureFrame(); mutate(frame); assert.throws(() => checker.planProblemScroll(frame), error); });
+
+for (const [name, mutate, error] of [
+  ['pending status panel', frame => { frame.feedbackIdle = false; }, /UI_RENDER_FEEDBACK_NOT_IDLE/],
+  ['solution DOM appears', frame => { frame.solutionNodes = 1; }, /UI_CAPTURE_RENDER_STATE/],
+  ['readiness becomes pending', frame => { frame.readiness = 'RENDERING'; }, /UI_CAPTURE_RENDER_STATE/],
+  ['absolute viewport edge truncates the complete question', frame => { frame.viewport.height = 500; }, /UI_COMPLETE_PROBLEM_OUTSIDE_VIEWPORT/],
+  ['new fixed panel intersects the chosen content', frame => { frame.obstructions.push({ x: 600, y: 250, width: 100, height: 40 }); }, /UI_CAPTURE_OBSCURED/]
+]) test(`capture gate refuses ${name}`, () => {
+  const frame = captureFrame(); scrollFrame(frame, checker.planProblemScroll(frame).scrollByY); mutate(frame);
+  assert.throws(() => checker.assertProblemCapture(frame), error);
+});
+
+function captureDriver(mutate = {}) {
+  const frame = captureFrame(), calls = [], shots = [];
+  const target = { async evaluate(fn, argument) {
+    calls.push(fn.name);
+    if (fn.name === 'measureProblemCapture') return copy(frame);
+    if (fn.name === 'inspectCaptureHits') return { samples: 1500, outsideQuestion: mutate.foreignHits || 0 };
+    throw new Error('UNEXPECTED_BROWSER_OPERATION');
+  } };
+  const page = {
+    async waitForFunction(_fn, _arg, options) { assert.equal(options.timeout, 15000); if (mutate.pending) throw new Error('timeout'); },
+    async evaluate(_fn, delta) { if (typeof delta === 'number') { scrollFrame(frame, delta); if (mutate.afterScroll) mutate.afterScroll(frame); } },
+    async screenshot(options) { shots.push(options); if (mutate.afterScreenshot) mutate.afterScreenshot(frame); }
+  };
+  return { frame, page, target, calls, shots };
+}
+
+test('the capture path uses one verified viewport clip without locator scrolling or style overrides', async () => {
+  const driver = captureDriver(), result = await checker.captureCompleteProblem(driver.page, driver.target, '/synthetic/problem.png');
+  assert.equal(driver.shots.length, 1);
+  assert.deepEqual(Object.keys(driver.shots[0]).sort(), ['path', 'clip', 'fullPage', 'caret', 'timeout'].sort());
+  assert.equal(driver.shots[0].fullPage, false); assert.equal(driver.shots[0].caret, 'initial');
+  assert.equal(result.scrollOperations, 1); assert.equal(result.foreignContentHits, 0);
+  assert.equal(result.cssWrites + result.domWrites + result.viewportChanges, 0);
+  assert.equal(driver.calls.filter(name => name === 'inspectCaptureHits').length, 2);
+});
+
+for (const [name, mutation, error, shots] of [
+  ['render feedback never settles', { pending: true }, /UI_RENDER_FEEDBACK_NOT_IDLE/, 0],
+  ['an unrelated visible element wins a capture hit test', { foreignHits: 1 }, /UI_CAPTURE_FOREIGN_CONTENT/, 0],
+  ['a mandatory problem element is hidden', { afterScroll: frame => { frame.mandatoryChildrenVisible = false; } }, /UI_REQUIRED_PROBLEM_CHILD_HIDDEN/, 0],
+  ['the problem DOM changes during scrolling', { afterScroll: frame => { frame.domSha256 = 'd'.repeat(64); } }, /UI_PROBLEM_DOM_CHANGED_DURING_SCROLL/, 0],
+  ['the problem DOM changes during the screenshot', { afterScreenshot: frame => { frame.domSha256 = 'd'.repeat(64); } }, /UI_PROBLEM_DOM_CHANGED_DURING_CAPTURE/, 1],
+  ['capture unexpectedly scrolls the page', { afterScreenshot: frame => { frame.scroll.y += 2; } }, /UI_CAPTURE_SCROLLED/, 1],
+  ['the content moves during capture', { afterScreenshot: frame => { frame.children.at(-1).y += 2; } }, /UI_CAPTURE_GEOMETRY_CHANGED/, 1],
+  ['a fixed panel appears during capture', { afterScreenshot: frame => { frame.obstructions.push({ x: 400, y: 160, width: 100, height: 40 }); } }, /UI_CAPTURE_OBSCURED/, 1]
+]) test(`browser capture refuses ${name}`, async () => {
+  const driver = captureDriver(mutation);
+  await assert.rejects(checker.captureCompleteProblem(driver.page, driver.target, '/synthetic/problem.png'), error);
+  assert.equal(driver.shots.length, shots);
+});
+
 function fixture() {
   const manifest = copy(sourceManifest), files = new Map(), banks = new Map(), identities = [];
   for (const item of manifest.items) {
