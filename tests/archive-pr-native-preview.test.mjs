@@ -6,10 +6,12 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { NATIVE_REQUEST_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, selectNativeRequests, orderNativeRequests, applyNativeRequests,
-  validateNativePreview, verifyNativeRequests } from '../tools/ci/archive-pr-native-preview.mjs';
+  validateNativePreview, verifyNativeRequests, selectPendingNativeRequests, pendingNativeRequestPaths } from '../tools/ci/archive-pr-native-preview.mjs';
 import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
   producePrRegistrationProof, validateLocalRegistrationProof,
 } from '../tools/ci/archive-pr-registration-proof.mjs';
+
+import { preparePrRegistration } from '../tools/ci/archive-pr-registration-prepare.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
@@ -22,13 +24,14 @@ const DIFFICULTY_REQUEST = '.archive-meta-register/inbox/zz-reviewed-difficulty.
 const DIFFICULTY_EVIDENCE = '.archive-meta-register/evidence/own-difficulty.json';
 const META = 'archive/data/question_metadata.json';
 const IDENTITY = 'archive/data/question_identity_map.json';
+const BASIC_LINKS = 'archive/data/basic-scope-source-links.json';
 const AUTHORITY = 'archive/data/meta-foundation/canonical/fixture/pack.json';
 const RECEIPT = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/own-reviewed-exam.json';
 const PLANNED = [META, AUTHORITY, RECEIPT].sort();
 const ALLOWED = [/^archive\/db\.js$/, /^archive\/data\/question_metadata\.json$/,
   /^archive\/data\/archive2-(?:catalog|canonical-input-manifest)\.json$/];
 
-function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, mutateRequest } = {}) {
+function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -60,8 +63,9 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
   write(DIFFICULTY_EVIDENCE, json({ schemaVersion: 'archive-difficulty5-reviewed-correction-v1', rows: [] }));
   write(META, json({ records: [{ questionUid: 'fixture', before: true }] }));
   write(IDENTITY, json({ records: [{ questionUid: 'fixture', sourceFingerprint: 'old' }] }));
+  write(BASIC_LINKS, json({ records: [] }));
   write(AUTHORITY, json({ version: 'before' }));
-  write(OTHER, json({ schemaVersion: 'standalone-course-fixture', requestId: 'other-owner-course' }));
+  if (otherOwner) write(OTHER, json({ schemaVersion: 'standalone-course-fixture', requestId: 'other-owner-course' }));
   write('archive/db.js', 'old projection\n');
   write('archive/data/archive2-catalog.json', json({ projection: 'old' }));
   const manifest = target => write('archive/data/archive2-canonical-input-manifest.json', json({
@@ -79,6 +83,11 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
         before: { level: '중' }, after: { difficultyBucket: 2, difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL' } }] },
     reviewedCorrection: { schemaVersion: 'archive-difficulty5-reviewed-correction-v1', approvalRef: 'fixed reviewed fixture',
       evidencePath: DIFFICULTY_EVIDENCE, evidenceSha256: sha(fs.readFileSync(path.join(root, DIFFICULTY_EVIDENCE))), rows: [] } };
+  if (auditPreservation && partial) {
+    const first = difficultyRequest.gemini.items[0];
+    difficultyRequest.gemini.items = Array.from({ length: 24 }, (_, i) => ({ ...copy(first), ordinal: i + 1,
+      questionUid: i + 1 === first.ordinal ? first.questionUid : 'whole-source-' + (i + 1) }));
+  }
   const request = difficultyOnly ? difficultyRequest : { schemaVersion: NATIVE_REQUEST_SCHEMA, requestId: 'own-reviewed-exam',
     sourceArchiveFile: 'original/native.js', expectedSourceBlobSha1: git('rev-parse', `HEAD:${SOURCE}`),
     expectedQuestionCount: partial ? 24 : 1, ...(partial ? {scope:'PARTIAL_UIDS'} : {}),
@@ -92,6 +101,12 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       difficultyRequestRef: { path: DIFFICULTY_REQUEST, sha256: sha(json(difficultyRequest)) } };
   }
   if (finalQaPreservation) request.approval.sourceRebind = { priorReceiptRef: evidenceRef };
+  if (basicPreservation) {
+    request.schemaVersion = 'archive-basic-scope-rebind-request-v1'; delete request.scope; delete request.registryChanges;
+    request.approval.type = 'BASIC_SCOPE_REBIND'; request.approval.sourceReview = { schemaVersion: 'archive-basic-scope-current-source-preservation-v1' };
+    request.items[0].after = { sourceFingerprint: 'a'.repeat(64), contentFingerprint: 'b'.repeat(64) };
+    difficultyRequest.reviewedCorrection.rows = [{ questionUid: 'fixture', ordinal: partial ? 5 : 1, before: request.items[0].after }];
+  }
   mutateRequest?.(request);
   write(REQUEST, json(request));
   if (pairedDifficulty) write(DIFFICULTY_REQUEST, json(difficultyRequest));
@@ -116,20 +131,23 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       hook[phase]?.(target);
       if (phase === 'projection' && !replay) throw Error('FIXTURE_RECEIPT_REQUIRED');
       const identityRepair=req.registrationMode==='IDENTITY_FINGERPRINT_ONLY';
+      const basic=req.approval.sourceReview?.schemaVersion==='archive-basic-scope-current-source-preservation-v1';
       const result = { status: 'PASS', requestId: req.requestId, totalQuestions: req.items.length, replay,
         ...(req.scope==='PARTIAL_UIDS'?{scope:req.scope,partialUidCount:req.items.length,expectedQuestionCount:req.expectedQuestionCount}:{}),
         ...(identityRepair?{registrationMode:req.registrationMode,metadataChanged:false,newMetadataApprovals:0,
           ...(phase==='projection'?{consumerLanes:{identityBindings:req.items.length,newMetadataApprovals:0}}:{})}:{}),
         ...(req.approval.sourceRebind?{newMetadataApprovals:0,preservedMetadataApprovals:req.items.length}:{}),
-        plannedPaths: replay ? [] : identityRepair ? [IDENTITY, RECEIPT].sort() : PLANNED,
+        ...(basic?{newMetadataApprovals:0,preservedMetadataApprovals:req.items.length,advancedApprovals:0,metadataValuesChanged:false,expectedQuestionCount:req.expectedQuestionCount}:{}),
+        plannedPaths: replay ? [] : identityRepair ? [IDENTITY, RECEIPT].sort() : basic ? [META,IDENTITY,BASIC_LINKS,RECEIPT].sort() : PLANNED,
         consumerSearchStatus: phase === 'projection' ? identityRepair ? 'IDENTITY_BINDINGS_VERIFIED' : 'STATIC_VALUES_VERIFIED' : 'NOT_RUN' };
       if (phase === 'write' && !replay) {
         if(identityRepair)write(IDENTITY,json({records:[{questionUid:'fixture',sourceFingerprint:'current'}]}),target);
         else {
-          const metadata = auditPreservation ? JSON.parse(fs.readFileSync(path.join(target, META), 'utf8'))
+          const metadata = auditPreservation || basic ? JSON.parse(fs.readFileSync(path.join(target, META), 'utf8'))
             : { records: [{ questionUid: 'fixture' }] };
           Object.assign(metadata.records[0], { after: true }); write(META, json(metadata), target);
-          write(AUTHORITY, json({ version: 'after' }), target);
+          if (basic) { write(IDENTITY,json({records:[{questionUid:'fixture',sourceFingerprint:'current'}]}),target);write(BASIC_LINKS,json({records:[{questionUid:'fixture'}]}),target); }
+          else write(AUTHORITY, json({ version: 'after' }), target);
         }
         write(RECEIPT, json({ requestSha256: sha(fs.readFileSync(path.join(target, REQUEST))), source: req.expectedSourceBlobSha1 }), target);
         hook.afterWrite?.(target);
@@ -145,12 +163,12 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       const meta = JSON.parse(fs.readFileSync(path.join(target, META), 'utf8'));
       const replay = meta.records[0].difficultyBucket === 2, verify = phase === 'projection';
       if (verify && !replay) throw Error('FIXTURE_DIFFICULTY_NOT_APPLIED');
-      const changedFields = !verify && !replay ? 4 : 0;
+      const count = req.gemini.items.length, changedFields = !verify && !replay ? 4 * count : 0;
       const result = { status: 'PASS', mode: verify ? 'verify-reviewed-correction' : phase === 'write' ? 'write-reviewed-correction' : 'dry-run-reviewed-correction',
         requestId: req.gemini.requestId, sourceArchiveFile: req.gemini.sourceArchiveFile, sourceBlobSha: req.gemini.latestBlobSha,
         items: req.gemini.items.map(item => ({ questionUid: item.questionUid, ordinal: item.ordinal })),
-        summary: { total: 1, APPLY: !verify && !replay ? 1 : 0, ALREADY_REGISTERED: !verify && replay ? 1 : 0,
-          SKIP_INVALID: 0, CONFLICT: 0, VERIFIED: verify ? 1 : 0, changedFields, written: phase === 'write' && changedFields > 0 },
+        summary: { total: count, APPLY: !verify && !replay ? count : 0, ALREADY_REGISTERED: !verify && replay ? count : 0,
+          SKIP_INVALID: 0, CONFLICT: 0, VERIFIED: verify ? count : 0, changedFields, written: phase === 'write' && changedFields > 0 },
         ptTpl: 'UNTOUCHED_NOT_IN_SCOPE' };
       if (phase === 'write' && !replay) {
         Object.assign(meta.records[0], req.gemini.items[0].after); write(META, json(meta), target);
@@ -164,13 +182,17 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       const exams=files.map(file=>{const req=JSON.parse(fs.readFileSync(path.join(target,file),'utf8'));
         const identityRepair=req.registrationMode==='IDENTITY_FINGERPRINT_ONLY';
         const preservation=Boolean(req.approval?.sourceRebind);
-        return { file, kind: req.schemaVersion===DIFFICULTY_REQUEST_SCHEMA?'difficulty5-ratings':identityRepair?'identity-fingerprint-repair':preservation?'native-approval-preservation':'reviewed-exam-v2',
+        const count=(req.gemini?.items||req.items).length;
+        const basic=Boolean(req.approval?.sourceReview);
+        return { file, kind: req.schemaVersion===DIFFICULTY_REQUEST_SCHEMA?'difficulty5-ratings':identityRepair?'identity-fingerprint-repair':basic?'basic-approval-preservation':preservation?'native-approval-preservation':'reviewed-exam-v2',
           exam:req.gemini?.requestId||req.examUid||req.sourceArchiveFile,
-          sourceFile:'original/native.js',changed:1,checked:1,passed:1,skippedUnchanged:0,
+          sourceFile:'original/native.js',changed:count,checked:count,passed:count,skippedUnchanged:0,
           ...(identityRepair?{approvalCreated:false,newMetadataApprovals:0,identityBindings:1}:{}),
           ...(preservation?{approvalCreated:false,newMetadataApprovals:0,preservedMetadataApprovals:1,
-            approvalType:req.approval.type,expectedQuestionCount:req.expectedQuestionCount}:{}) };});
-      return json(hook.consumerResult || { status: 'PASS', counts: { changed: files.length, checked: files.length, passed: files.length, skippedUnchanged: 0 },
+            approvalType:req.approval.type,expectedQuestionCount:req.expectedQuestionCount}:{}),
+          ...(basic?{approvalCreated:false,newMetadataApprovals:0,advancedApprovals:0,preservedMetadataApprovals:1,expectedQuestionCount:req.expectedQuestionCount}:{}) };});
+      const total=exams.reduce((n,e)=>n+e.changed,0);
+      return json(hook.consumerResult || { status: 'PASS', counts: { changed: total, checked: total, passed: total, skippedUnchanged: 0 },
         exams,
         failures: [], unobservedFields: [], assignmentPending: hook.assignmentPending || [] });
     }
@@ -216,6 +238,44 @@ test('inbox-only PR selects its fixed v2 request and leaves unchanged course inb
   f.assertShadowsRemoved();
   const actualWrites = f.calls.filter(c => c.root === f.root && c.args.includes('--write') && c.args[0].endsWith('/register-reviewed-exam-meta-source.mjs'));
   assert.equal(actualWrites.length, 1, 'verify-local writes only its isolated shadow');
+});
+
+test('basic preservation keeps its full source denominator and requires exact rebind before paired difficulty', t => {
+  const f = fixture(t, { basicPreservation: true, partial: true, pairedDifficulty: true });
+  const selected = f.selected(), basic = selected.find(r => r.kind === 'basic-approval-preservation'), difficulty = selected.find(r => r.kind === 'difficulty5-ratings');
+  assert.equal(basic.questionCount, 1); assert.equal(basic.sourceQuestionCount, 24);
+  assert.deepEqual(orderNativeRequests([difficulty,basic]).map(r => r.path),[REQUEST,DIFFICULTY_REQUEST]);
+  const proof = f.produce();
+  const consumer = proof.nativePreview.checks.find(c => c.id === 'native-consumer');
+  assert.deepEqual(consumer.preservedBasicApprovals,{requests:1,preservedMetadataApprovals:1,newMetadataApprovals:0,advancedApprovals:0});
+  assert.equal(f.validate(proof).reusable,true);
+});
+
+test('basic preservation dependency refuses stale before fingerprints, changed source and ambiguous ownership', t => {
+  const f=fixture(t,{basicPreservation:true,pairedDifficulty:true}),selected=f.selected();
+  const basic=selected.find(r=>r.kind==='basic-approval-preservation'),difficulty=selected.find(r=>r.kind==='difficulty5-ratings');
+  const bad=copy(difficulty);bad.difficultyBeforeBindings[0].sourceFingerprint='0'.repeat(64);
+  assert.throws(()=>orderNativeRequests([bad,basic]),/BASIC_DEPENDENCY_FINGERPRINT/);
+  const missing=copy(difficulty);missing.difficultyBeforeBindings=[];
+  assert.throws(()=>orderNativeRequests([missing,basic]),/BASIC_DEPENDENCY_FINGERPRINT/);
+  const source=copy(difficulty);source.source.sha256='0'.repeat(64);
+  assert.throws(()=>orderNativeRequests([source,basic]),/BASIC_DEPENDENCY_SOURCE/);
+  const duplicate=copy(basic);duplicate.path=OTHER;
+  assert.throws(()=>orderNativeRequests([basic,duplicate,difficulty]),/BASIC_DEPENDENCY_AMBIGUOUS/);
+});
+
+test('basic preservation proof rejects new approvals, missing preserved counts, foreign outputs and informational assignment debt', t => {
+  for(const field of ['newMetadataApprovals','advancedApprovals','preservedMetadataApprovals','expectedQuestionCount']) {
+    const f=fixture(t,{basicPreservation:true});
+    f.hook.result=(phase,result)=>({...result,[field]:field==='preservedMetadataApprovals'?0:99});
+    assert.throws(()=>f.produce(),/DRY_RUN_NOT_PASS/);
+  }
+  const bad=fixture(t,{basicPreservation:true});
+  bad.hook.result=(phase,result)=>({...result,plannedPaths:phase==='dry-run'?[...result.plannedPaths,AUTHORITY]:result.plannedPaths});
+  assert.throws(()=>bad.produce(),/BASIC_PRESERVATION_OUTPUT_SCOPE/);
+  const pending=fixture(t,{basicPreservation:true,pairedDifficulty:true});
+  pending.hook.assignmentPending=[{exam:'own-reviewed-difficulty',qid:1,uid:'fixture',reason:'assignment_missing'}];
+  assert.throws(()=>pending.produce(),/CONSUMER_NOT_PASS/);
 });
 
 test('partial preview binds one selected UID separately from its 24-question fixed source',t=>{
@@ -341,6 +401,30 @@ test('audit preservation follows its exact difficulty input in apply, projection
   f.assertShadowsRemoved();
 });
 
+test('partial audit preview preserves its selected count and whole-source D5 dependency through shadow and Consumer proof', t => {
+  const f=fixture(t,{partial:true,pairedDifficulty:true,auditPreservation:true}),[difficulty,audit]=f.selected();
+  assert.equal(difficulty.questionCount,24);assert.equal(difficulty.sourceQuestionCount,24);
+  assert.equal(audit.scope,'PARTIAL_UIDS');assert.equal(audit.questionCount,1);assert.equal(audit.sourceQuestionCount,24);
+  assert.deepEqual(audit.selectedItems,[{questionUid:'fixture',sourceOrdinal:5}]);
+  const proof=f.produce();assert.equal(proof.status,'PASS');
+  assert.deepEqual(proof.nativePreview.plans.map(p=>p.requestPath),[DIFFICULTY_REQUEST,REQUEST]);
+  assert.deepEqual(proof.nativePreview.checks.find(c=>c.id==='native-consumer').preservedNativeApprovals,
+    {requests:1,preservedMetadataApprovals:1,newMetadataApprovals:0,approvalTypes:['META_PIPELINE_AUDIT']});
+  assert.equal(f.validate(proof).reusable,true);f.assertShadowsRemoved();
+});
+
+test('partial audit preview refuses a narrowed whole-source D5 dependency or substituted selected UID',t=>{
+  const f=fixture(t,{partial:true,pairedDifficulty:true,auditPreservation:true}),selected=f.selected();
+  for(const mutate of [
+    d=>{d.sourceQuestionCount=1;},d=>{d.questionCount=1;},d=>{d.selectedItems=d.selectedItems.slice(0,23);},
+    d=>{d.selectedItems[23].sourceOrdinal=23;},d=>{d.selectedItems[23].sourceOrdinal=25;},
+    d=>{d.selectedItems[23].questionUid=d.selectedItems[22].questionUid;},
+  ]){const bad=copy(selected);mutate(bad[0]);assert.throws(()=>orderNativeRequests(bad),/AUDIT_DEPENDENCY_DENOMINATOR/);}
+  const replaced=copy(selected);replaced[0].selectedItems.find(i=>i.sourceOrdinal===5).questionUid='another-UID';
+  assert.throws(()=>orderNativeRequests(replaced),/AUDIT_DEPENDENCY_UID_SCOPE/);
+  assert.equal(f.calls.length,0);
+});
+
 test('FINAL_QA partial source preservation verifies selected approval separately from the full source count', t => {
   const f=fixture(t,{partial:true,finalQaPreservation:true}),proof=f.produce();
   assert.equal(proof.status,'PASS');
@@ -405,7 +489,7 @@ for(const [name,mutation,error] of [
   ['different approval kind',r=>{r.approval.type='FINAL_QA';},/AUDIT_DEPENDENCY_SCOPE/],
   ['different subtype',r=>{r.approval.sourceRebind.schemaVersion='other-preservation';},/AUDIT_DEPENDENCY_SCOPE/],
   ['different own request path',r=>{r.approval.sourceRebind.requestPath=DIFFICULTY_REQUEST;},/AUDIT_DEPENDENCY_SCOPE/],
-  ['partial preservation',r=>{r.scope='PARTIAL_UIDS';},/AUDIT_DEPENDENCY_SCOPE/],
+  ['unsupported preservation scope',r=>{r.scope='PARTIAL_EXAM';},/AUDIT_DEPENDENCY_SCOPE/],
 ])test(`audit dependency rejects ${name}`,t=>{
   const f=fixture(t,{pairedDifficulty:true,auditPreservation:true,mutateRequest:mutation});
   assert.throws(()=>f.selected(),error);
@@ -592,4 +676,100 @@ test('post-state replay does not replace the initial official output plan with a
   assert.throws(() => f.native(forged), /PLAN_MANIFEST_MISMATCH/);
   assert.equal(f.validate(proof).reusable, true);
   assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+
+function laterCodePush(f) {
+  const baseSha = f.git('rev-parse', 'HEAD');
+  f.write('tests/unrelated-code.test.js', '// subsequent code push while the native writer is pending\n');
+  f.git('add', '--', 'tests/unrelated-code.test.js'); f.git('commit', '-qm', 'later code-only push');
+  const headSha = f.git('rev-parse', 'HEAD');
+  return { root: f.root, eventName: 'push', event: { before: baseSha, after: headSha }, expectedSha: headSha, run: f.run };
+}
+
+test('main code-only push applies the fixed pending inbox then checks projection and typed Consumer without consuming it', t => {
+  const f = fixture(t, { partial: true, otherOwner: false });
+  const options = laterCodePush(f), headSha = options.expectedSha;
+  assert.deepEqual(selectNativeRequests({ root: f.root, baseSha: options.event.before, headSha }), [],
+    'the same code-only PR still owns no unchanged request');
+  const requests = selectPendingNativeRequests({ root: f.root, headSha });
+  assert.deepEqual(requests.map(r => r.path), [REQUEST]);
+  assert.equal(requests[0].questionCount, 1); assert.equal(requests[0].sourceQuestionCount, 24);
+  const input = fs.readFileSync(path.join(f.root, REQUEST)), phases = [];
+  f.hook.result = (phase, result) => { phases.push(phase); return result; };
+  f.hook.projection = target => assert.equal(JSON.parse(fs.readFileSync(path.join(target, 'archive/data/archive2-catalog.json'))).projection, 'new');
+  const result = preparePrRegistration(options);
+  assert.equal(result.state, 'PREPARED');
+  assert.deepEqual(result.pendingRequestPaths, [REQUEST]);
+  assert.deepEqual(result.nativePreview.requests, requests);
+  assert.deepEqual(result.nativePreview.checks.map(c => c.id), ['native-projection', 'native-consumer']);
+  assert.deepEqual(phases, ['dry-run', 'write', 'projection']);
+  assert.ok(result.nativePreview.outputs.some(r => r.path === RECEIPT));
+  assert.deepEqual(fs.readFileSync(path.join(f.root, REQUEST)), input, 'only the production writer consumes inbox files');
+  assert.equal(f.git('rev-parse', 'HEAD'), headSha, 'temporary verification creates no commit');
+});
+
+test('main pending inventory is exact HEAD, excluding later untracked and nested inbox files', t => {
+  const f = fixture(t, { otherOwner: false });
+  f.write('.archive-meta-register/inbox/untracked.json', json({ schemaVersion: NATIVE_REQUEST_SCHEMA }));
+  f.write('.archive-meta-register/inbox/nested/child.json', '{}');
+  assert.deepEqual(pendingNativeRequestPaths({ root: f.root, headSha: f.headSha }), [REQUEST]);
+  assert.deepEqual(selectPendingNativeRequests({ root: f.root, headSha: f.headSha }).map(r => r.path), [REQUEST]);
+  assert.throws(() => pendingNativeRequestPaths({ root: f.root, headSha: 'main' }), /PENDING_SNAPSHOT_SHA/);
+  f.write(REQUEST, json({ ...f.request, requestId: 'uncommitted-replacement' }));
+  assert.throws(() => selectPendingNativeRequests({ root: f.root, headSha: f.headSha }), /REQUEST_NOT_FIXED/);
+});
+
+test('unknown pending main schemas fail before any write while unchanged other-owner PR isolation remains intact', t => {
+  const f = fixture(t), options = laterCodePush(f);
+  assert.deepEqual(selectNativeRequests({ root: f.root, baseSha: options.event.before, headSha: options.expectedSha }), []);
+  assert.throws(() => preparePrRegistration(options), /PENDING_SCHEMA_UNSUPPORTED/);
+  assert.equal(f.calls.filter(c => c.program !== 'git').length, 0);
+  assert.equal(fs.existsSync(path.join(f.root, RECEIPT)), false);
+});
+
+test('pending main requests reject missing or stale committed source and immutable evidence', t => {
+  for (const variant of ['missing-source', 'changed-source', 'changed-evidence']) {
+    const f = fixture(t, { otherOwner: false });
+    if (variant === 'missing-source') f.git('rm', '--', SOURCE);
+    else f.write(variant === 'changed-source' ? SOURCE : EVIDENCE, variant === 'changed-source' ? 'window.questions=[{id:1,changed:true}];' : '{"changed":true}');
+    f.git('add', '-u'); f.git('commit', '-qm', variant);
+    const options = laterCodePush(f);
+    assert.throws(() => preparePrRegistration(options), /MISSING_FILE|SOURCE_NOT_FIXED|EVIDENCE_DRIFT/, variant);
+    assert.equal(f.calls.filter(c => c.program !== 'git').length, 0, variant);
+  }
+});
+
+test('main temporary preview rejects actual projection and Consumer failures rather than continuing the suite', t => {
+  for (const failure of ['projection', 'consumer']) {
+    const f = fixture(t, { otherOwner: false }), options = laterCodePush(f);
+    if (failure === 'projection') f.hook.result = (phase, result) => phase === 'projection' ? { ...result, consumerSearchStatus: 'NOT_RUN' } : result;
+    else f.hook.consumerResult = { status: 'FAIL', counts: {}, failures: ['consumer defect'] };
+    assert.throws(() => preparePrRegistration(options), failure === 'projection' ? /PROJECTION_NOT_VERIFIED/ : /CONSUMER_NOT_PASS/);
+    assert.equal(f.git('rev-parse', 'HEAD'), options.expectedSha);
+    assert.equal(fs.existsSync(path.join(f.root, REQUEST)), true);
+  }
+});
+
+test('main pending audit subset keeps the full D5 dependency and its established order', t => {
+  const f = fixture(t, { partial: true, auditPreservation: true, pairedDifficulty: true, otherOwner: false });
+  const options = laterCodePush(f), selected = selectPendingNativeRequests({ root: f.root, headSha: options.expectedSha });
+  assert.deepEqual(selected.map(r => r.path), [DIFFICULTY_REQUEST, REQUEST]);
+  assert.equal(selected[0].questionCount, 24); assert.equal(selected[1].questionCount, 1);
+  const result = preparePrRegistration(options);
+  assert.equal(result.state, 'PREPARED');
+  assert.equal(result.nativePreview.checks[1].preservedNativeApprovals.newMetadataApprovals, 0);
+});
+
+test('main fixed pending snapshot preserves exact basic-before-D5 order and zero new approvals',t=>{
+  const f=fixture(t,{partial:true,basicPreservation:true,pairedDifficulty:true,otherOwner:false});
+  const options=laterCodePush(f),selected=selectPendingNativeRequests({root:f.root,headSha:options.expectedSha});
+  assert.deepEqual(selected.map(r=>r.path),[REQUEST,DIFFICULTY_REQUEST]);
+  assert.equal(selected[0].kind,'basic-approval-preservation');
+  assert.equal(selected[0].questionCount,1);assert.equal(selected[0].sourceQuestionCount,24);
+  const result=preparePrRegistration(options);assert.equal(result.state,'PREPARED');
+  assert.equal(result.nativePreview.checks[1].preservedBasicApprovals.newMetadataApprovals,0);
+  assert.equal(result.nativePreview.checks[1].preservedBasicApprovals.advancedApprovals,0);
+  assert.equal(f.git('rev-parse','HEAD'),options.expectedSha);
+  assert.ok(fs.existsSync(path.join(f.root,REQUEST))&&fs.existsSync(path.join(f.root,DIFFICULTY_REQUEST)));
 });

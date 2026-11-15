@@ -360,6 +360,10 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "solutionImage": "assets/images/21_연향중_1학기_중간_중3_기출/q11-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "파랑은 가로 둘레, 초록은 세로 둘레이다. 각 정사각형의 넓이는 안쪽에, 한 변의 길이는 윗변에 표시했다.",
+    "solutionImageCaption": "가로의 합은 2(3√2+4√2+7)이고 세로의 합은 2×7이다. 둘레는 (14√2+28) cm이다.",
     "level": "중",
     "category": "제곱근의 기하학적 활용",
     "originalCategory": "제곱근과 실수",
@@ -368,7 +372,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "제곱근",
@@ -380,7 +384,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "image": "assets/images/21_연향중_1학기_중간_중3_기출/q11.png",
+    "image": "assets/images/21_연향중_1학기_중간_중3_기출/q11-problem-v2.svg",
     "content": "다음 그림과 같이 넓이가 각각 $18 \\text{cm}^{2}, 32 \\text{cm}^{2}, 49 \\text{cm}^{2}$ 인 세 정사각형을 이어 붙여 새로운 도형을 만들었다. 이 도형의 둘레의 길이는?(4점)",
     "choices": [
       "① $(6\\sqrt{3}+28) \\text{cm}$",
@@ -470,6 +474,10 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "solutionImage": "assets/images/21_연향중_1학기_중간_중3_기출/q14-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "같은 색 세 종류의 직사각형이 직육면체의 마주 보는 면을 나타낸다. 각 면의 치수 두 개를 확인하고 같은 모양의 면을 두 개씩 센다.",
+    "solutionImageCaption": "각 색의 면이 두 개씩 있으므로 겉넓이는 2((3x+2)(2x+1)+(3x+2)(3x−2)+(2x+1)(3x−2))이다. 전개하면 42x²+12x−8이다.",
     "level": "중",
     "category": "다항식의 활용",
     "originalCategory": "다항식의 곱셈",
@@ -478,7 +486,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "다항식",
@@ -489,7 +497,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "image": "assets/images/21_연향중_1학기_중간_중3_기출/q14.png",
+    "image": "assets/images/21_연향중_1학기_중간_중3_기출/q14-problem-v2.svg",
     "content": "다음 그림과 같은 직육면체의 겉넓이는?(4점)",
     "choices": [
       "① $21x^{2}+6x-4$",

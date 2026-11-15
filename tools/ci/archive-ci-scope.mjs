@@ -6,6 +6,8 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadSource, questionAssetReferences, localAssetPath } from '../../archive/tools/archive-content-inputs.mjs';
+import { registrationInputsChanged } from './archive-pr-registration-prepare.mjs';
+import { pendingNativeRequestPaths } from './archive-pr-native-preview.mjs';
 
 const SHA = /^[a-f0-9]{40}$/i;
 const ORIGINAL = /^archive\/exams\/original\/.+\.js$/;
@@ -106,8 +108,10 @@ export function scopeChecks(scope) {
     // Metadata/search and direct-original Chrome retain their existing CI,
     // Shared Meta and Sync policies. The 50-solution job exercises common runtime.
     runtimeChrome: full || groups.includes('output'),
-    prepareProjection: scope.mode === 'archive-content' || groups.includes('metadata') || groups.includes('output') ||
-      (groups.includes('registration') && scope.changedFiles?.some(file => file.startsWith('archive/'))),
+    // Full fallback deliberately discards bounded groups/sources. It must not
+    // discard the need for coherent registration outputs at the same snapshot.
+    prepareProjection: registrationInputsChanged(scope.changedFiles) || Boolean(scope.pendingRequestPaths?.length) ||
+      scope.mode === 'archive-content' || groups.includes('metadata') || groups.includes('output'),
   };
 }
 
@@ -183,7 +187,8 @@ export function planCiScope({ root = process.cwd(), eventName = '', event = null
     git(root, ['merge-base', '--is-ancestor', baseSha, headSha]);
     git(root, ['merge-base', '--is-ancestor', prHead, headSha]);
   } else if (eventName === 'push') baseSha = event?.before;
-  const common = { schemaVersion: 'archive-ci-scope-v2', headSha, baseSha: baseSha || '', eventName };
+  const common = { schemaVersion: 'archive-ci-scope-v2', headSha, baseSha: baseSha || '', eventName,
+    pendingRequestPaths: pendingNativeRequestPaths({ root, headSha }) };
   const finish = result => ({ ...result, checks: scopeChecks(result) });
   if (!SHA.test(baseSha || '') || /^0+$/.test(baseSha)) {
     return finish({ ...common, changedFiles: null, scopedBrowserChanged: true, ...classifyPaths(null) });
@@ -205,7 +210,7 @@ export function readScope(file, root = process.cwd()) {
   const recorded = JSON.parse(fs.readFileSync(file, 'utf8'));
   if (recorded.schemaVersion !== 'archive-ci-scope-v2') throw new Error('unsupported CI scope plan');
   const current = planCiScope({ root, expectedSha: recorded.headSha, baseSha: recorded.baseSha });
-  for (const key of ['baseSha', 'headSha', 'changedFiles', 'mode', 'groups', 'sources', 'assets', 'scopedBrowserChanged', 'checks']) {
+  for (const key of ['baseSha', 'headSha', 'changedFiles', 'mode', 'groups', 'sources', 'assets', 'scopedBrowserChanged', 'pendingRequestPaths', 'checks']) {
     if (JSON.stringify(recorded[key]) !== JSON.stringify(current[key])) throw new Error(`CI scope no longer matches snapshot: ${key}`);
   }
   return recorded;

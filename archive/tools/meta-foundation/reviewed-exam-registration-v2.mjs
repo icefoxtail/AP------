@@ -2153,7 +2153,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (previous) {
     let preservedAudit = null;
     if (auditPreservationRequested) {
-      assertAuditPreservationReceipt(previous, req, bytes, patches.size);
+      assertAuditPreservationReceipt(previous, req, bytes, bank.length);
       const context = loadAuditPreservation({ root, request: req, bytes, bank });
       preservedAudit = context;
       registerDifficulty5({ root, request: context.difficulty, verifyProjection: true });
@@ -2162,6 +2162,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         .filter(n => n.endsWith(".json") && n !== "runtime-bridge-receipt.json")
         .flatMap(n => read("archive/data/meta-foundation/runtime/" + n).records || []);
       for (const current of rows) {
+        if (!targetUids.has(current.questionUid)) continue;
         const resolved = resolve(current, replayTables, { allowConditionDebt: current.conditionKeysEvidenceDebt?.status === "EVIDENCE_DEBT" });
         const found = allRuntime.filter(r => r.questionUid === current.questionUid);
         if (found.length !== 1 || resolved.pack.meta.packId !== current.metaFoundationPackId ||
@@ -2377,7 +2378,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     }
     const priorQuestion = patch.rebind === undefined ? null : loadPriorQuestionBank(root, patch.rebind?.priorSourceBlobSha1, priorBanks)[i];
     const sourceReview = patch.sourceReview === undefined ? null : validateReviewedSourceReassessment({
-      root, request: req, patch, metadata: current, question: q, final, supportedFields: valueFields, cache: sourceReviewCache });
+      root, request: req, patch, metadata: current, question: q, final, supportedFields: valueFields,
+      canonicalBefore: beforeTables || tables, canonicalAfter: tables, cache: sourceReviewCache });
     const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch, priorQuestion,
       requireRebind: partial && Object.hasOwn(patch.after, "sourceFingerprint") && !sourceReview });
     const fingerprint = checked.sourceFingerprint;

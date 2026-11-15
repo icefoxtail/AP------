@@ -162,7 +162,7 @@ test("native preservation rejects mixed modes, value edits and ambiguous selecte
     r => { r.approval.sourceRebind.schemaVersion = "unknown-preservation"; },
     r => { r.approval.sourceRebind = null; },
     r => { r.approval.metadataReviewed = false; },
-    r => { r.approval.type = "META_PIPELINE_AUDIT"; r.approval.sourceRebind.schemaVersion = "archive-native-audit-preservation-v1"; },
+    r => { r.approval.type = "META_PIPELINE_AUDIT"; r.approval.sourceRebind.schemaVersion = "unknown-audit-preservation"; },
     r => { r.registryChanges = [{}]; },
     r => { r.scope = "OTHER"; },
     r => { delete r.scope; },
@@ -188,6 +188,22 @@ test("native preservation rejects mixed modes, value edits and ambiguous selecte
   }
 });
 
+test("partial audit preservation is typed as existing approval preservation and still requires its native replay", t => {
+  const f = historicalConsumerFixture(t), item = f.request.items[0];
+  const request = { ...f.request, requestId: "missing-partial-audit-proof", scope: "PARTIAL_UIDS", registryChanges: [],
+    approval: { ...f.request.approval, type: "META_PIPELINE_AUDIT", sourceRebind: {
+      schemaVersion: "archive-native-audit-preservation-v1", priorReceiptRef: { path: "missing.json", sha256: "a".repeat(64) } } },
+    items: [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, before: {}, after: {} }] };
+  const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "partial-audit.json", request)] });
+  assert.equal(out.status, "FAIL");
+  assert.equal(out.exams[0].kind, "native-approval-preservation");
+  assert.equal(out.exams[0].approvalType, "META_PIPELINE_AUDIT");
+  assert.equal(out.exams[0].expectedQuestionCount, 24);
+  assert.equal(out.exams[0].newMetadataApprovals, 0); assert.equal(out.exams[0].preservedMetadataApprovals, 0);
+  assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 0, skippedUnchanged: 0 });
+  assert.equal(out.failures[0].reason, "NATIVE_PRESERVATION_MISMATCH");
+});
+
 test("preserved native summary separates old approvals from new approvals and keeps its source denominator", () => {
   const result = { status: "PASS", mainSha: "a".repeat(40), counts: { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 },
     exams: [{ kind: "native-approval-preservation", exam: "fixture", changed: 1, checked: 1, passed: 1, skippedUnchanged: 0,
@@ -197,6 +213,36 @@ test("preserved native summary separates old approvals from new approvals and ke
   assert.match(summary, /changed 1\/1 verified/);
   assert.match(summary, /Preserved FINAL_QA approvals: 1; new approvals: 0; source questions: 24/);
   assert.doesNotMatch(summary, /1\/1 approved/);
+});
+
+test("basic preservation is explicitly checked and cannot reuse an approved consumer without its official receipt", t => {
+  const f = historicalConsumerFixture(t), item = f.request.items[0];
+  const request = { schemaVersion: "archive-basic-scope-rebind-request-v1", requestId: "basic-preserve-no-receipt", examUid: "historical-fixture",
+    sourceArchiveFile: f.request.sourceArchiveFile, expectedSourceBlobSha1: f.request.expectedSourceBlobSha1, expectedQuestionCount: 24,
+    approval: { type: "BASIC_SCOPE_REBIND", sourceReview: { schemaVersion: "archive-basic-scope-current-source-preservation-v1" } },
+    items: [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
+      after: { sourceFingerprint: item.after.sourceFingerprint, contentFingerprint: item.after.contentFingerprint },
+      basicParent: { grade: "고1", curriculumKey: "2015", courseKey: "수학", L1: "fixture", L2: "fixture" } }] };
+  const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "basic-preserve.json", request)] });
+  assert.equal(out.status, "FAIL"); assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 0, skippedUnchanged: 0 });
+  assert.equal(out.exams[0].kind, "basic-approval-preservation"); assert.equal(out.exams[0].approvalCreated, false);
+  assert.equal(out.exams[0].newMetadataApprovals, 0); assert.equal(out.exams[0].advancedApprovals, 0);
+  assert.equal(out.failures[0].reason, "BASIC_PRESERVATION_MISMATCH");
+  for (const mutate of [r => { r.approval.sourceReview.schemaVersion = "other"; }, r => { r.scope = "PARTIAL_UIDS"; },
+    r => { r.registrationMode = "IDENTITY_FINGERPRINT_ONLY"; }, r => { r.items.push({ ...r.items[0] }); }, r => { r.items[0].sourceOrdinal = 25; }]) {
+    const bad = structuredClone(request); mutate(bad);
+    const result = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "bad-basic.json", bad)] });
+    assert.equal(result.status, "FAIL"); assert.equal(result.counts.skippedUnchanged, 0); assert.equal(result.failures[0].reason, "INVALID_REQUEST");
+  }
+});
+
+test("basic preservation summary reports existing approvals and zero new or advanced approvals", () => {
+  const out = renderSummary({ status: "PASS", mainSha: "a".repeat(40), counts: { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 },
+    exams: [{ kind: "basic-approval-preservation", exam: "basic", changed: 1, checked: 1, passed: 1, skippedUnchanged: 0,
+      preservedMetadataApprovals: 1, expectedQuestionCount: 25, newMetadataApprovals: 0, advancedApprovals: 0, approvalCreated: false }],
+    failures: [], unobservedFields: [], assignmentPending: [] });
+  assert.match(out, /Preserved basic approvals: 1; new approvals: 0; advanced approvals: 0; source questions: 25/);
+  assert.doesNotMatch(out, /1\/1 approved/);
 });
 
 test("identity-only Consumer verification reports one exact binding and zero new approvals", t => {
@@ -251,17 +297,34 @@ test("fixed whole-exam v2 request: later source bytes and altered approved value
   assert.deepEqual(stale.failures.map(f => f.reason), ["SOURCE_BLOB_MISMATCH"]);
 });
 
-test("META_PIPELINE L3/L4 and level are verified against the active Meta Foundation runtime", t => {
-  const uid = "qid_v1_b11a9f6c398580fa1d1aa22e6f29f05c42b35bda9a7e81ff59e6aeb1a78f238a";
-  const metadata = JSON.parse(fs.readFileSync(path.join(repo, "archive/data/question_metadata.json"), "utf8"));
+function historicalMetaPipelineConsumer(t) {
+  const manifest = JSON.parse(fs.readFileSync(path.join(repo, "tests/fixtures/archive-meta-pipeline-consumer-history.json"), "utf8"));
+  assert.equal(manifest.schemaVersion, "archive-meta-pipeline-consumer-history-v1");
+  assert.match(manifest.sourceCommit, /^[a-f0-9]{40}$/);
+  assert.equal(execFileSync("git", ["cat-file", "-t", manifest.sourceCommit], { cwd: repo, encoding: "utf8" }).trim(), "commit");
+  const root = tmp(t), seen = new Set();
+  for (const file of manifest.files) {
+    assert.ok(/^(archive|docs)\//.test(file.path) && !/[\\\r\n\0:]/.test(file.path) && file.path.split("/").every(p => p && p !== "." && p !== ".."));
+    assert.ok(!seen.has(file.path)); seen.add(file.path);
+    const bytes = execFileSync("git", ["show", `${manifest.sourceCommit}:${file.path}`], { cwd: repo, maxBuffer: 128 * 1024 * 1024 });
+    assert.equal(bytes.length, file.sizeBytes, "historical input size");
+    assert.equal(crypto.createHash("sha256").update(bytes).digest("hex"), file.sha256, "historical input raw SHA");
+    assert.equal(crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex"), file.gitBlobSha1, "historical input Git blob");
+    const target = path.join(root, file.path); fs.mkdirSync(path.dirname(target), { recursive: true }); fs.writeFileSync(target, bytes);
+  }
+  return { root, manifest };
+}
+
+test("historical META_PIPELINE L3/L4 and level retain exact runtime/version gates after pack upgrades", t => {
+  const { root, manifest: historical } = historicalMetaPipelineConsumer(t), uid = historical.targetUid;
+  const metadata = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8"));
   const record = metadata.records.find(row => row.questionUid === uid);
-  const runtime = JSON.parse(fs.readFileSync(path.join(repo, "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json"), "utf8"))
+  const runtimePath = "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json";
+  const runtime = JSON.parse(fs.readFileSync(path.join(root, runtimePath), "utf8"))
     .records.find(row => row.questionUid === uid);
   assert.ok(record && runtime, "registered source record and its runtime row exist");
   assert.equal(runtime.metadataApprovalType, "META_PIPELINE_AUDIT");
-  const sourcePath = path.join(repo, "archive/exams", record.sourceArchiveFile);
-  const expectedSourceBlobSha1 = execFileSync("git", ["hash-object", "--path", `archive/exams/${record.sourceArchiveFile}`, "--stdin"],
-    { cwd: repo, input: fs.readFileSync(sourcePath), encoding: "utf8" }).trim();
+  const expectedSourceBlobSha1 = historical.files.find(f => f.path === `archive/exams/${record.sourceArchiveFile}`).gitBlobSha1;
   const request = (l3 = runtime.L3) => ({
     schemaVersion: "archive-reviewed-exam-meta-register-request-v2",
     examUid: "24_매산여고_1학기_중간_고2_수학I",
@@ -274,15 +337,29 @@ test("META_PIPELINE L3/L4 and level are verified against the active Meta Foundat
   });
 
   const valid = write(tmp(t), "meta-pipeline-runtime.json", request());
-  const passed = verifyChangedUidConsumerApproval({ root: repo, requestPaths: [valid] });
+  const passed = verifyChangedUidConsumerApproval({ root, requestPaths: [valid] });
   assert.equal(passed.status, "PASS", JSON.stringify(passed.failures));
   assert.deepEqual(passed.counts, { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 });
 
   const altered = write(tmp(t), "meta-pipeline-runtime-altered.json", request(`${runtime.L3} (altered)`));
-  const failed = verifyChangedUidConsumerApproval({ root: repo, requestPaths: [altered] });
+  const failed = verifyChangedUidConsumerApproval({ root, requestPaths: [altered] });
   assert.equal(failed.status, "FAIL");
   assert.equal(failed.failures[0].reason, "VALUE_MISMATCH");
   assert.match(failed.failures[0].detail, /Meta Foundation runtime/);
+  // This is the actual later mismatch observed on main: the container becomes
+  // 1.0.3 while the bound approval row is still 1.0.2. Keep the production gate
+  // strict; pinning the positive historical case does not normalize that debt.
+  const pack = JSON.parse(fs.readFileSync(path.join(root, runtimePath), "utf8"));
+  assert.equal(pack.packVersion, "1.0.2"); assert.equal(runtime.metaFoundationPackVersion, "1.0.2");
+  pack.packVersion = "1.0.3";
+  const raw = JSON.stringify(pack); fs.writeFileSync(path.join(root, runtimePath), raw);
+  const manifestPath = path.join(root, "archive/data/archive2-canonical-input-manifest.json"), manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  manifest.files.find(f => f.path === runtimePath.slice("archive/".length)).sha256 = crypto.createHash("sha256").update(raw).digest("hex");
+  manifest.projectionVersion = "archive2-canonical-v1:" + crypto.createHash("sha256").update(canonical.projectionManifestPayload(manifest.files, manifest.resolverVersion)).digest("hex");
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+  const drift = verifyChangedUidConsumerApproval({ root, requestPaths: [valid] });
+  assert.equal(drift.status, "FAIL"); assert.equal(drift.counts.passed, 0);
+  assert.equal(drift.failures[0].reason, "META_PIPELINE_RUNTIME_MISSING");
 });
 
 // A row without an approved canonical assignment (a pre-existing catalog gap) only gates requests that change

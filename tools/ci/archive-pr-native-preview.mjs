@@ -1,4 +1,5 @@
-// Apply only changed, source-bound v2 and reviewed difficulty5 requests in a disposable PR checkout.
+// Apply source-bound v2 and reviewed difficulty5 requests in a disposable CI checkout.
+// PRs select only changed requests; pushes select the exact pending HEAD inbox.
 // The main writer, inbox consumption and approval policy remain unchanged.
 import fs from 'node:fs';
 import os from 'node:os';
@@ -12,6 +13,8 @@ export const NATIVE_REQUEST_SCHEMA = 'archive-reviewed-exam-meta-register-reques
 export const DIFFICULTY_REQUEST_SCHEMA = 'archive-difficulty5-register-request-v1';
 const DIFFICULTY_CORRECTION_SCHEMA = 'archive-difficulty5-reviewed-correction-v1';
 export const AUDIT_PRESERVATION_SCHEMA = 'archive-native-audit-preservation-v1';
+export const BASIC_PRESERVATION_SCHEMA = 'archive-basic-scope-current-source-preservation-v1';
+const BASIC_REBIND_SCHEMA = 'archive-basic-scope-rebind-request-v1';
 const PARENT_CORRECTION_SCHEMA = 'archive-basic-parent-correction-request-v1';
 export const NATIVE_PREVIEW_HELPER = 'tools/ci/archive-pr-native-preview.mjs';
 const INBOX = '.archive-meta-register/inbox/';
@@ -98,7 +101,26 @@ function selectReviewedDifficulty(root, file, request, headSha) {
   if (!Array.isArray(bank) || !bank.length || selectedItems.some(i => i.sourceOrdinal > bank.length)) fail('SOURCE_DENOMINATOR');
   return { ...fileRef(root, file), requestId: payload.requestId, kind: 'difficulty5-ratings',
     questionCount: selectedItems.length, sourceQuestionCount: bank.length, selectedItems,
+    difficultyBeforeBindings: difficultyBeforeBindings(request),
     source: { ...source, blobSha1 }, evidence: [evidence] };
+}
+
+export function difficultyBeforeBindings(request) {
+  return request.schemaVersion === DIFFICULTY_REQUEST_SCHEMA && Array.isArray(request.reviewedCorrection?.rows)
+    ? request.reviewedCorrection.rows.map(row => ({ questionUid: row.questionUid, sourceOrdinal: row.ordinal,
+      sourceFingerprint: row.before?.sourceFingerprint, contentFingerprint: row.before?.contentFingerprint })) : [];
+}
+export function basicPreservationDescriptor(request) {
+  if (request.schemaVersion !== BASIC_REBIND_SCHEMA || request.approval?.sourceReview === undefined) return undefined;
+  if (request.approval.sourceReview?.schemaVersion !== BASIC_PRESERVATION_SCHEMA || request.approval.type !== 'BASIC_SCOPE_REBIND'
+      || request.scope !== undefined || request.registrationMode !== undefined || !Array.isArray(request.items) || !request.items.length)
+    fail('BASIC_PRESERVATION_SCOPE');
+  const bindings = request.items.map(item => ({ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
+    sourceFingerprint: item.after?.sourceFingerprint, contentFingerprint: item.after?.contentFingerprint }));
+  if (bindings.some(row => typeof row.questionUid !== 'string' || !row.questionUid || !Number.isSafeInteger(row.sourceOrdinal) || row.sourceOrdinal < 1
+      || !/^[a-f0-9]{64}$/.test(row.sourceFingerprint || '') || !/^[a-f0-9]{64}$/.test(row.contentFingerprint || ''))
+      || new Set(bindings.map(r => r.questionUid)).size !== bindings.length) fail('BASIC_PRESERVATION_BINDINGS');
+  return { schemaVersion: BASIC_PRESERVATION_SCHEMA, bindings };
 }
 
 // Preserve the normal request order except where one exact audit-preservation
@@ -108,7 +130,7 @@ export function auditPreservationDependency(request, file) {
   const spec = request.approval?.sourceRebind;
   const audit = spec?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
   if (audit && (request.schemaVersion !== NATIVE_REQUEST_SCHEMA || request.approval.type !== 'META_PIPELINE_AUDIT'
-      || request.scope !== undefined || request.registrationMode !== undefined
+      || request.scope !== undefined && request.scope !== 'PARTIAL_UIDS' || request.registrationMode !== undefined
       || spec.requestPath !== file)) fail('AUDIT_DEPENDENCY_SCOPE');
   if (!audit && spec?.difficultyRequestRef !== undefined) fail('AUDIT_DEPENDENCY_SCOPE');
   return audit ? { schemaVersion: AUDIT_PRESERVATION_SCHEMA, difficultyRequestRef: spec.difficultyRequestRef } : undefined;
@@ -122,7 +144,7 @@ export function orderNativeRequests(requests) {
     if (!request.sourceRebind) continue;
     const spec = request.sourceRebind, ref = spec.difficultyRequestRef;
     if (spec.schemaVersion !== AUDIT_PRESERVATION_SCHEMA || request.kind !== undefined && request.kind !== 'native-approval-preservation'
-        || request.scope !== undefined || request.registrationMode !== undefined) fail('AUDIT_DEPENDENCY_SCOPE');
+        || request.scope !== undefined && request.scope !== 'PARTIAL_UIDS' || request.registrationMode !== undefined) fail('AUDIT_DEPENDENCY_SCOPE');
     if (typeof ref?.path !== 'string' || !ref.path.startsWith(INBOX)
         || ref.path.slice(INBOX.length).includes('/') || !ref.path.endsWith('.json')
         || !/^[a-f0-9]{64}$/.test(ref.sha256 || '')) fail('AUDIT_DEPENDENCY_REF');
@@ -134,12 +156,51 @@ export function orderNativeRequests(requests) {
     if (!request.source || !dependency.source || request.source.path !== dependency.source.path
         || request.source.blobSha1 !== dependency.source.blobSha1
         || request.source.sha256 !== dependency.source.sha256) fail('AUDIT_DEPENDENCY_SOURCE');
-    dependencies.set(request.path, ref.path);
+    // A selected audit subset still depends on the exact whole-source D5 input.
+    // The preview must not replace the original denominator with selectedCount.
+    const total = request.sourceQuestionCount, items = dependency.selectedItems;
+    if (!Number.isSafeInteger(total) || total < 1 || dependency.sourceQuestionCount !== total || dependency.questionCount !== total ||
+        !Array.isArray(items) || items.length !== total || new Set(items.map(i => i.questionUid)).size !== total ||
+        new Set(items.map(i => i.sourceOrdinal)).size !== total || items.some(i => !Number.isSafeInteger(i.sourceOrdinal) || i.sourceOrdinal < 1 || i.sourceOrdinal > total))
+      fail('AUDIT_DEPENDENCY_DENOMINATOR');
+    if (!Array.isArray(request.selectedItems) || request.selectedItems.length !== request.questionCount ||
+        request.selectedItems.some(i => !items.some(d => d.questionUid === i.questionUid && d.sourceOrdinal === i.sourceOrdinal)))
+      fail('AUDIT_DEPENDENCY_UID_SCOPE');
+    dependencies.set(request.path, new Set([ref.path]));
+  }
+  // Rebinding an existing basic body precedes only a difficulty request whose
+  // exact before fingerprints name that result. No filename or global kind
+  // ordering is used, and unrelated reviewed difficulty requests stay put.
+  const basic = requests.filter(r => r.basicPreservation);
+  const owners = new Map();
+  for (const request of basic) {
+    if (request.kind !== 'basic-approval-preservation' || request.basicPreservation.schemaVersion !== BASIC_PRESERVATION_SCHEMA)
+      fail('BASIC_PRESERVATION_SCOPE');
+    for (const binding of request.basicPreservation.bindings) {
+      if (owners.has(binding.questionUid)) fail('BASIC_DEPENDENCY_AMBIGUOUS');
+      owners.set(binding.questionUid, { request, binding });
+    }
+  }
+  const bound = new Set();
+  for (const request of requests.filter(r => r.kind === 'difficulty5-ratings')) {
+    for (const selected of request.selectedItems || []) if (owners.has(selected.questionUid) &&
+      (request.difficultyBeforeBindings || []).filter(b => b.questionUid === selected.questionUid && b.sourceOrdinal === selected.sourceOrdinal).length !== 1)
+      fail('BASIC_DEPENDENCY_FINGERPRINT');
+    for (const binding of request.difficultyBeforeBindings || []) {
+      const owner = owners.get(binding.questionUid);
+      if (!owner) continue;
+      if (bound.has(binding.questionUid)) fail('BASIC_DEPENDENCY_AMBIGUOUS');
+      bound.add(binding.questionUid);
+      if (!eq(binding, owner.binding)) fail('BASIC_DEPENDENCY_FINGERPRINT');
+      if (!request.source || !owner.request.source || ['path','blobSha1','sha256'].some(k => request.source[k] !== owner.request.source[k])) fail('BASIC_DEPENDENCY_SOURCE');
+      if (!dependencies.has(request.path)) dependencies.set(request.path, new Set());
+      dependencies.get(request.path).add(owner.request.path);
+    }
   }
   const remaining = [...requests], ordered = [], completed = new Set();
   while (remaining.length) {
     const index = remaining.findIndex(request => !dependencies.has(request.path)
-      || completed.has(dependencies.get(request.path)));
+      || [...dependencies.get(request.path)].every(dependency => completed.has(dependency)));
     if (index < 0) fail('AUDIT_DEPENDENCY_CYCLE');
     const [request] = remaining.splice(index, 1);
     ordered.push(request); completed.add(request.path);
@@ -152,10 +213,32 @@ export function orderNativeRequests(requests) {
 export function selectNativeRequests({ root, baseSha, headSha }) {
   const fields = git(root, 'diff', '--name-status', '--diff-filter=AM', '--no-renames', '-z', baseSha, headSha, '--', INBOX).split('\0').filter(Boolean);
   if (fields.length % 2) fail('DIFF_INVALID');
-  const requests = [];
+  const files = [];
   for (let i = 0; i < fields.length; i += 2) {
     const file = fields[i + 1];
-    if (!['A', 'M'].includes(fields[i]) || !file.startsWith(INBOX) || file.slice(INBOX.length).includes('/') || !file.endsWith('.json')) continue;
+    if (['A', 'M'].includes(fields[i]) && flatInboxPath(file)) files.push(file);
+  }
+  return selectFixedNativeRequests({ root, files, headSha, rejectUnsupported: false });
+}
+
+const flatInboxPath = file => file.startsWith(INBOX) && !file.slice(INBOX.length).includes('/') && file.endsWith('.json');
+
+// A main push can follow a source merge while the single registration writer is
+// still running. Its unchanged pending requests belong to this fixed main
+// snapshot. Never discover them from the mutable worktree or origin/main.
+export function pendingNativeRequestPaths({ root, headSha }) {
+  if (!/^[a-f0-9]{40}$/i.test(headSha || '')) fail('PENDING_SNAPSHOT_SHA');
+  return git(root, 'ls-tree', '-r', '--name-only', '-z', headSha, '--', INBOX)
+    .split('\0').filter(file => file && flatInboxPath(file)).sort();
+}
+
+export function selectPendingNativeRequests({ root, headSha }) {
+  return selectFixedNativeRequests({ root, headSha, files: pendingNativeRequestPaths({ root, headSha }), rejectUnsupported: true });
+}
+
+function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported }) {
+  const requests = [];
+  for (const file of files) {
     safe(root, file);
     const raw = fs.readFileSync(path.join(root, file));
     if (sha(raw) !== sha(gitBytes(root, `${headSha}:${file}`))) fail(`REQUEST_NOT_FIXED:${file}`);
@@ -165,7 +248,13 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
       continue;
     }
     const correction = request.schemaVersion === PARENT_CORRECTION_SCHEMA;
-    if (!correction && request.schemaVersion !== NATIVE_REQUEST_SCHEMA) continue;
+    const basicPreservation = basicPreservationDescriptor(request);
+    if (!correction && !basicPreservation && request.schemaVersion !== NATIVE_REQUEST_SCHEMA) {
+      // An unhandled main inbox must not be reported as a coherent projection.
+      // PRs retain their existing ownership boundary for unrelated schemas.
+      if (rejectUnsupported) fail(`PENDING_SCHEMA_UNSUPPORTED:${file}`);
+      continue;
+    }
     const sourceRebind = auditPreservationDependency(request, file);
     const preservation = request.approval?.sourceRebind !== undefined;
     if (preservation && (correction || request.registrationMode !== undefined ||
@@ -177,7 +266,7 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(request.requestId || '')) fail('REQUEST_ID');
     if (!Number.isSafeInteger(request.expectedQuestionCount) || request.expectedQuestionCount < 1) fail('QUESTION_COUNT');
     if (!Array.isArray(request.items) || !request.items.length || request.items.length > request.expectedQuestionCount
-        || !correction && !partial && request.items.length !== request.expectedQuestionCount) fail('QUESTION_COUNT');
+        || !correction && !basicPreservation && !partial && request.items.length !== request.expectedQuestionCount) fail('QUESTION_COUNT');
     const selectedItems = request.items.map(item => ({ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal }));
     if (selectedItems.some(item => typeof item.questionUid !== 'string' || !item.questionUid.trim()
         || !Number.isSafeInteger(item.sourceOrdinal) || item.sourceOrdinal < 1 || item.sourceOrdinal > request.expectedQuestionCount)
@@ -212,7 +301,8 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
       ...(partial ? { scope: request.scope } : {}),
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
-      ...(correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }
+      ...(basicPreservation ? { basicPreservation, kind: 'basic-approval-preservation' }
+        : correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }
         : preservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },
       evidence: [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en')),
       receiptPath: `${RECEIPTS}${request.requestId}.json` });
@@ -261,6 +351,9 @@ function resultScopeMatches(result, request) {
   } else if (result.scope !== undefined || result.partialUidCount !== undefined) return false;
   if (request.kind === 'native-approval-preservation' &&
       (result.newMetadataApprovals !== 0 || result.preservedMetadataApprovals !== request.questionCount)) return false;
+  if (request.kind === 'basic-approval-preservation' &&
+      (result.newMetadataApprovals !== 0 || result.advancedApprovals !== 0 || result.metadataValuesChanged !== false ||
+        result.preservedMetadataApprovals !== request.questionCount || result.expectedQuestionCount !== request.sourceQuestionCount)) return false;
   return request.registrationMode !== 'IDENTITY_FINGERPRINT_ONLY'
     || result.metadataChanged === false && result.newMetadataApprovals === 0;
 }
@@ -272,6 +365,9 @@ function planPaths(result, request) {
   for (const file of paths) safe('/', file);
   if (request.kind === 'difficulty5-ratings') {
     if (!eq(paths, result.replay ? [] : [METADATA])) fail('DIFFICULTY_OUTPUT_SCOPE');
+  } else if (request.kind === 'basic-approval-preservation') {
+    if (!eq(paths, result.replay ? [] : sorted([METADATA, 'archive/data/question_identity_map.json',
+      'archive/data/basic-scope-source-links.json', request.receiptPath]))) fail('BASIC_PRESERVATION_OUTPUT_SCOPE');
   } else if (!result.replay && !paths.includes(request.receiptPath)) fail('RECEIPT_NOT_PLANNED');
   if (result.replay && paths.length) fail('REPLAY_WRITES');
   return paths;
@@ -352,6 +448,9 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
           || r.kind === 'native-approval-preservation' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
             || exams[0].preservedMetadataApprovals !== r.questionCount || exams[0].approvalType !== r.preservedApprovalType
             || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
+          || r.kind === 'basic-approval-preservation' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
+            || exams[0].advancedApprovals !== 0 || exams[0].preservedMetadataApprovals !== r.questionCount
+            || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
           || `archive/exams/${exams[0].sourceFile}` !== r.source.path || !complete(exams[0], r.questionCount);
       })
       || ['changed', 'checked', 'passed', 'skippedUnchanged'].some(k => result.exams.reduce((sum, e) => sum + e[k], 0) !== result.counts[k])
@@ -362,10 +461,13 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
   const preservedNativeApprovals = preservation.length ? { requests: preservation.length,
     preservedMetadataApprovals: preservation.reduce((sum, r) => sum + r.questionCount, 0), newMetadataApprovals: 0,
     approvalTypes: sorted(preservation.map(r => r.preservedApprovalType)) } : null;
+  const basic = requests.filter(r => r.kind === 'basic-approval-preservation');
+  const preservedBasicApprovals = basic.length ? { requests: basic.length,
+    preservedMetadataApprovals: basic.reduce((sum, r) => sum + r.questionCount, 0), newMetadataApprovals: 0, advancedApprovals: 0 } : null;
   noUnexpectedMutation(root, before, new Set());
   return [{ id: 'native-projection', outcome: 'success' },
     { id: 'native-consumer', outcome: 'success', ...(difficultyOnly ? { difficultyOnly } : {}),
-      ...(preservedNativeApprovals ? { preservedNativeApprovals } : {}) }];
+      ...(preservedNativeApprovals ? { preservedNativeApprovals } : {}), ...(preservedBasicApprovals ? { preservedBasicApprovals } : {}) }];
 }
 
 export function nativeOutputManifest(root, plans) {
