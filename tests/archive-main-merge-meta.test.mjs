@@ -19,6 +19,76 @@ import {hasNativeSourcePreservationClaim} from '../archive/tools/meta-foundation
 import {assertReviewedPackVersionLineage} from '../archive/tools/meta-foundation/reviewed-pack-version-lineage.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source='original/middle/m3/1mid/fixture.js',uid='qid_v1_'+'a'.repeat(64);
+// A fresh child must execute the real CLI import cycle. Importing AutoMeta in this
+// test process first would conceal a module-evaluation deadlock in --verify.
+async function autoMetaCliFixture(t) {
+  const {default:canonical}=await import('../archive/archive2-canonical.js');
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'auto-meta-cli-'));
+  t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const sha=v=>crypto.createHash('sha256').update(v).digest('hex');
+  const put=(relative,value)=>{
+    const file=path.join(dir,relative),bytes=JSON.stringify(value,null,2)+'\n';
+    fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,bytes);
+    return {path:relative,sha256:sha(bytes)};
+  };
+  const base='archive/data/meta-foundation',compiled={
+    taxonomy_registry:{status:'DERIVED_READ_ONLY',problemTypes:[],templates:[]},
+    concept_registry:{status:'DERIVED_READ_ONLY',concepts:[]},
+    condition_registry:{status:'DERIVED_READ_ONLY',conditions:[]},
+    curriculum_bindings:{status:'DERIVED_READ_ONLY',bindings:[]},
+  };
+  const canonicalSources=[
+    put(base+'/canonical/metadata_rules.json',{status:'ACTIVE',integrationPatterns:['NONE']}),
+    put(base+'/canonical/condition_registry.json',{status:'ACTIVE',conditions:[]}),
+  ];
+  const compiledArtifacts=Object.entries(compiled).map(([name,value])=>put(`${base}/compiled/${name}.json`,value));
+  put(base+'/canonical/registry_index.json',{status:'ACTIVE',activePacks:[],canonicalSources,compiledArtifacts});
+  put('archive/data/question_metadata.json',{records:[]});
+  put('archive/data/question_identity_map.json',{records:[]});
+  const master={records:[{curriculum:'2015',scope:'M2-2',majorUnit:'Synthetic unit',midUnit:'Synthetic parent',concepts:[]}]};
+  const masterRef=put(path.normalize('archive/'+canonical.CANONICAL_MASTER_PATH),master);
+  const resources={
+    'data/archive2-catalog.json':{records:[],exams:[]},
+    [canonical.CANONICAL_MASTER_PATH]:master,
+    'data/archive2-canonical-projection-policy.json':{schemaVersion:'archive2-canonical-projection-policy-v1',status:'ACTIVE',
+      canonicalMasterSha256:masterRef.sha256,gradeCourseAllowlist:[{grade:'중2',curriculumKey:'2015',courseKey:'M2-2'}]},
+    'data/archive2-item-review-overrides.json':{schemaVersion:'archive2-item-review-override-index-v1',records:[]},
+    'data/basic-scope-parent-links.json':{schemaVersion:'archive2-basic-scope-parent-links-v1',status:'DERIVED_READ_ONLY',authority:{sha256:masterRef.sha256},records:[]},
+    ...Object.fromEntries(Object.entries(compiled).map(([name,value])=>[`data/meta-foundation/compiled/${name}.json`,value])),
+  };
+  for(const relative of canonical.runtimeInputPathsFromManifest([]))resources[relative]={
+    packId:path.basename(relative,'.json'),packVersion:'1.0.0',status:'ACTIVE',records:[],
+  };
+  const files=canonical.MANIFEST_REQUIRED_PATHS.map(relative=>{
+    const ref=put(path.normalize('archive/'+relative),resources[relative]||{records:[]});
+    return {path:relative,sha256:ref.sha256};
+  });
+  put('archive/data/archive2-canonical-input-manifest.json',{
+    schemaVersion:'archive2-canonical-input-manifest-v1',resolverVersion:canonical.RESOLVER_VERSION,files,
+    projectionVersion:'archive2-canonical-v1:'+sha(canonical.projectionManifestPayload(files,canonical.RESOLVER_VERSION)),
+  });
+  const reportPath=path.join(dir,'report.json');
+  const setReport=results=>put('report.json',{head:'a'.repeat(40),results,sourceHashes:{}});
+  setReport([]);
+  return {dir,setReport,args:[path.join(root,'archive/tools/meta-foundation/auto-register-merged-source.mjs'),'--verify','--root',dir,'--report',reportPath]};
+}
+test('CLI --verify completes the real registrar import cycle in a fresh child',async t=>{
+  const f=await autoMetaCliFixture(t);
+  const output=execFileSync(process.execPath,f.args,{encoding:'utf8',timeout:15000,stdio:['ignore','pipe','pipe']});
+  // This empty synthetic report tests lifecycle only; it does not approve any UID.
+  assert.deepEqual(JSON.parse(output),{status:'PASS',verifiedCount:0,verified:[],studentMutation:0});
+});
+test('CLI --verify reports validation errors as exit 1 after the registrar import',async t=>{
+  const f=await autoMetaCliFixture(t),missingUid='qid_v1_'+'c'.repeat(64);
+  f.setReport([{status:'APPLY',questionUid:missingUid,receiptPath:'.archive-meta-register/auto/receipts/missing.json'}]);
+  assert.throws(()=>execFileSync(process.execPath,f.args,{encoding:'utf8',timeout:15000,stdio:['ignore','pipe','pipe']}),error=>{
+    assert.equal(error.status,1);assert.equal(error.signal,null);
+    assert.match(String(error.stderr),/AUTO_META_FAILED:.*REGISTERED_UID_MISSING:/);
+    assert.ok(String(error.stderr).includes(missingUid));
+    assert.doesNotMatch(String(error.stderr),/unsettled top-level await/);
+    assert.equal(String(error.stdout),'');return true;
+  });
+});
 function fixture() {
   const q={id:1,content:'question',choices:['a','b'],answer:'a',solution:'solution',curriculum:'2015',standardCourse:'중3 수학',standardUnitKey:'M3-01',subUnitKey:'M3-01-ROOT',problemTypeKey:'PT_ROOT',templateKey:'TPL_ROOT',crossConceptKeys:[],conditionKeys:[],integrationPattern:'NONE',difficultyBucket:2,difficultyConfidence:'high',difficultyBoundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL',level:'중',primaryMethod:'definition',decisiveStep:'positive root'};
   const previous={...q,problemTypeKey:null,templateKey:null};
