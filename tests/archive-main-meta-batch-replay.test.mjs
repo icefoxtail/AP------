@@ -13,6 +13,11 @@ const statePath='.archive-meta-register/auto/state.json',configPath='.archive-me
 const canon='archive/data/meta-foundation/canonical',compiled='archive/data/meta-foundation/compiled';
 const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 function fixture(t,{count=3,max=1,pending=ordinal=>ordinal===1}={}) {
+  // The writer acts only on this disposable fixture repository. Explicitly model
+  // its main-branch execution instead of inheriting the enclosing PR job's ref.
+  const priorEnv=Object.fromEntries(['GITHUB_ACTIONS','GITHUB_REF'].map(key=>[key,process.env[key]]));
+  process.env.GITHUB_ACTIONS='true';process.env.GITHUB_REF='refs/heads/main';
+  t.after(()=>{for(const [key,value]of Object.entries(priorEnv))if(value===undefined)delete process.env[key];else process.env[key]=value;});
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'auto-meta-batch-'));
   t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
   const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
@@ -49,6 +54,15 @@ function fixture(t,{count=3,max=1,pending=ordinal=>ordinal===1}={}) {
   const replay=options=>registerMergedSource({root,replayReportPath:reportPath,...options});
   return {root,git,read,put,bytes,uid,bank,head,reportPath,first,replay,refreshRegistry};
 }
+
+test('the real writer still rejects a PR ref before mutating the fixture',async t=>{
+  const f=fixture(t),before=[f.bytes(metaPath),f.bytes(identityPath),f.bytes(statePath)];
+  process.env.GITHUB_REF='refs/pull/42/merge';
+  await assert.rejects(f.first(),/MAIN_ONLY_WRITER/);
+  assert.deepEqual([f.bytes(metaPath),f.bytes(identityPath),f.bytes(statePath)],before);
+  assert.equal(fs.existsSync(f.reportPath),false);
+  assert.equal(fs.existsSync(path.join(f.root,'.archive-meta-register/auto/receipts')),false);
+});
 
 test('a pending bounded batch replays itself while the next ready batch stays queued',async t=>{
   const f=fixture(t),first=await f.first();
