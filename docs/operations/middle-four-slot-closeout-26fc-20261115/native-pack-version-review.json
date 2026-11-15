@@ -1,0 +1,81 @@
+{
+  "acceptanceConditions": [
+    "Required PR CI at final integrated HEAD passes before merge"
+  ],
+  "affectedExistingUidCount": 81,
+  "basisMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "canonicalWrites": 0,
+  "codeSha256": "a7bd38239d1f3e11bcff764baf2120809079ae34805525d1aee1a12167122b6c",
+  "completeHelperAndTestDeltaRead": true,
+  "environment": {
+    "actualOperationalShadow": "NOT_RUN",
+    "directLocalSparseClone": "FAILED_BEFORE_HELPER",
+    "limitedExactGitCapabilityProbe": "PASS",
+    "probeSha256": "6c91df94910cc2512578a9e381e2eb7fc33791564c6adc7814532cb8d006d24a",
+    "requiredRemainingGate": "Actual PR CI under fetch-depth:0 production checkout"
+  },
+  "findings": [
+    "Derived packVersion may differ only after ACTIVE owner/version/revision equality and all other approved values/provenance stay exact.",
+    "Historical versions require immutable receipt/registry/canonical pack bytes at reachable issuance commit; future ACTIVE additions are covered.",
+    "Exact schema, altered receipt/pack/index, invalid ancestor, removed witness and approval changes fail closed.",
+    "Original source-only preservation branches and historical receipts remain unchanged."
+  ],
+  "helperPatchSha256": "7d517ff605be8540b686523452636d6020bf6a57ebf78857e47f7d75cbdb4d78",
+  "localRegression": {
+    "actual176Native": "PASS",
+    "actual176ProofSha256": "2a26d7cb03578665d86fc828cdd3d1173041a9c26e533d9a72ef26860f9f7254",
+    "existing83": "PASS",
+    "new43": "PASS"
+  },
+  "manifestSha256": "70bf32d15694804779e50e9785955bbe2fbce09af2396104fc13047c94ef789f",
+  "newApprovals": 0,
+  "oldReceiptWrites": 0,
+  "schemaVersion": "root-native81-issued-version-independent-review-v1",
+  "sourceWrites": 0,
+  "status": "ACCEPT_BOUNDED_CODE_AND_ISSUANCE_BYTES_FOR_PR",
+  "supersedesReviewSha256": "55f3853b1293e71808b5a3ce6331fbea344b44a04b76b3002efec664a9a543b8",
+  "witnesses": [
+    {
+      "currentImmutableRefsVerified": 3,
+      "packVersion": "1.0.8",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e001-current-native-preservation-20261115.pack-version-binding.json",
+      "requestId": "m3s2-e001-current-native-preservation-20261115",
+      "selectedCount": 5
+    },
+    {
+      "currentImmutableRefsVerified": 3,
+      "packVersion": "1.0.8",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e017-current695-native-preserve-20261115.pack-version-binding.json",
+      "requestId": "m3s2-e017-current695-native-preserve-20261115",
+      "selectedCount": 18
+    },
+    {
+      "currentImmutableRefsVerified": 3,
+      "packVersion": "1.0.8",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e048-current695-native-preserve-20261115.pack-version-binding.json",
+      "requestId": "m3s2-e048-current695-native-preserve-20261115",
+      "selectedCount": 14
+    },
+    {
+      "currentImmutableRefsVerified": 3,
+      "packVersion": "1.0.8",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e053-current695-native-preserve-20261115.pack-version-binding.json",
+      "requestId": "m3s2-e053-current695-native-preserve-20261115",
+      "selectedCount": 16
+    },
+    {
+      "currentImmutableRefsVerified": 3,
+      "packVersion": "1.0.8",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.pack-version-binding.json",
+      "requestId": "m3s2-e064-current11-existing8-preserve-20261115",
+      "selectedCount": 8
+    },
+    {
+      "currentImmutableRefsVerified": 3,
+      "packVersion": "1.0.8",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-wangun-visual-reassessment-20261115.pack-version-binding.json",
+      "requestId": "m3s2-wangun-visual-reassessment-20261115",
+      "selectedCount": 20
+    }
+  ]
+}

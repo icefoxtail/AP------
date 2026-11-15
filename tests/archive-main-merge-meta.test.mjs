@@ -1474,6 +1474,97 @@ function mixedApprovedRebindMemberFixture(t) {
   f.refreshBinding();f.saveReceipt();return f;
 }
 
+// The official registrar derives the active pack version and its matching
+// revision when it issues an ordinary source/renderer reassessment. No other
+// approval value or provenance may change with that derived version.
+function reassessmentWithDerivedPackVersion(f,version='1.0.1') {
+  const owner=f.current.metaFoundationPackId;
+  f.registry.activePacks.get(owner).version=version;
+  for(const rows of [f.receipt.appliedRecords,f.receipt.runtimeRecords])for(const row of rows) {
+    row.metaFoundationPackVersion=version;
+    row.metadataRevision=`meta-foundation:${owner}@${version}:exam-final_qa-v2:${f.receipt.requestId}`;
+  }
+  if(f.refreshBinding)f.refreshBinding();
+  f.saveReceipt();return f;
+}
+const versionReassessmentFixtures=[ordinaryReassessmentWithPriorFixture,ordinaryRendererReassessmentWithPriorFixture,
+  mixedRendererReassessmentFixture,mixedApprovedRebindMemberFixture];
+for(const make of versionReassessmentFixtures)test('derived active pack version preserves existing approval and exact native authority: '+make.name,t=>{
+  const f=reassessmentWithDerivedPackVersion(make(t)),before=JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.receipt]);
+  for(const previous of [f.previous,structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  }
+  assert.equal(JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.receipt]),before);
+});
+for(const [name,change]of [
+  ['wrong derived pack version',f=>{for(const rows of [f.receipt.appliedRecords,f.receipt.runtimeRecords])for(const row of rows){row.metaFoundationPackVersion='9.9.9';row.metadataRevision=`meta-foundation:${row.metaFoundationPackId}@9.9.9:exam-final_qa-v2:${f.receipt.requestId}`;}}],
+  ['metadata/runtime version mismatch',f=>{f.nativeSource.runtimeRecord.metaFoundationPackVersion='9.9.9';}],
+  ['arbitrary metadata revision',f=>{f.current.metadataRevision='arbitrary-revision';}],
+  ['arbitrary runtime revision',f=>{f.nativeSource.runtimeRecord.metadataRevision='arbitrary-revision';}],
+  ['inactive pack',f=>{f.registry.activePacks.get(f.current.metaFoundationPackId).status='DRAFT';}],
+  ['changed approved value',f=>{f.current.conditionKeys=['UNREVIEWED'];}],
+  ['changed runtime approval value',f=>{f.nativeSource.runtimeRecord.difficultyBucket=5;}],
+  ['changed author provenance',f=>{f.current.approvalEvidence.push('review/unapproved-authority.json');}],
+])for(const make of [ordinaryRendererReassessmentWithPriorFixture,mixedApprovedRebindMemberFixture])
+test('derived active pack version refuses '+name+': '+make.name,t=>{
+  const f=reassessmentWithDerivedPackVersion(make(t));change(f);f.saveReceipt();
+  for(const previous of [f.previous,structuredClone(f.question)]){
+    const result=planQuestion({...f,previous});assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+  }
+});
+
+function withIssuedPackVersionWitness(f,{advance=true}={}) {
+  const packId=f.current.metaFoundationPackId,version=f.current.metaFoundationPackVersion;
+  const indexPath='archive/data/meta-foundation/canonical/registry_index.json',packPath='archive/data/meta-foundation/canonical/packs/fixture-derived/pack.json';
+  const pack={schemaVersion:'meta-foundation-pack-v1',packId,ownerPack:packId,packVersion:version,canonicalStatus:'ACTIVE'};
+  f.put(packPath,pack);
+  const index={schemaVersion:'meta-foundation-registry-index-v1',status:'ACTIVE',compiledIsReadOnly:true,
+    activePacks:[{id:packId,version,status:'ACTIVE'}],canonicalSources:[{path:packPath,sha256:f.sha(fs.readFileSync(path.join(f.nativeSource.root,packPath)))}]};
+  f.put(indexPath,index);f.git('add',f.receiptPath,indexPath,packPath);
+  f.git('-c','user.name=Fixture','-c','user.email=fixture@example.invalid','commit','-qm','Issued exact reassessment and canonical version');
+  const registrationCommit=f.git('rev-parse','HEAD'),ref=p=>({path:p,sha256:f.sha(fs.readFileSync(path.join(f.nativeSource.root,p)))});
+  const proof={schemaVersion:'archive-native-issued-pack-version-v1',requestId:f.receipt.requestId,registrationCommit,packId,packVersion:version,
+    receiptRef:ref(f.receiptPath),registryIndexRef:ref(indexPath),canonicalPackRef:ref(packPath)};
+  const proofPath=f.receiptPath.replace(/\.json$/,'.pack-version-binding.json'),saveProof=()=>f.put(proofPath,proof);
+  saveProof();
+  if(advance){
+    pack.packVersion='1.0.2';f.put(packPath,pack);index.activePacks[0].version='1.0.2';index.canonicalSources[0].sha256=ref(packPath).sha256;f.put(indexPath,index);
+    f.git('add',indexPath,packPath,proofPath);f.git('-c','user.name=Fixture','-c','user.email=fixture@example.invalid','commit','-qm','Unrelated later active pack append');
+    f.registry.activePacks.get(packId).version='1.0.2';
+  }
+  return {...f,issuedVersionProof:proof,issuedVersionProofPath:proofPath,saveIssuedVersionProof:saveProof};
+}
+for(const make of versionReassessmentFixtures)test('historical derived pack version survives a later unrelated ACTIVE version: '+make.name,t=>{
+  const f=withIssuedPackVersionWitness(reassessmentWithDerivedPackVersion(make(t))),before=JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.receipt]);
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
+  assert.equal(JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.receipt]),before);
+});
+test('historical derived pack version follows verified parent objects across a shallow exact snapshot',t=>{
+  const f=withIssuedPackVersionWitness(reassessmentWithDerivedPackVersion(mixedApprovedRebindMemberFixture(t)));
+  const head=f.git('rev-parse','HEAD');fs.writeFileSync(path.join(f.nativeSource.root,'.git/shallow'),head+'\n');
+  assert.throws(()=>f.git('merge-base','--is-ancestor',f.issuedVersionProof.registrationCommit,head));
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+});
+for(const [name,change]of [
+  ['removed witness marker',f=>{fs.unlinkSync(path.join(f.nativeSource.root,f.issuedVersionProofPath));}],
+  ['wrong immutable receipt digest',f=>{f.issuedVersionProof.receiptRef.sha256='f'.repeat(64);f.saveIssuedVersionProof();}],
+  ['wrong immutable registry digest',f=>{f.issuedVersionProof.registryIndexRef.sha256='f'.repeat(64);f.saveIssuedVersionProof();}],
+  ['wrong immutable pack digest',f=>{f.issuedVersionProof.canonicalPackRef.sha256='f'.repeat(64);f.saveIssuedVersionProof();}],
+  ['wrong pack identity',f=>{f.issuedVersionProof.packId='OTHER';f.saveIssuedVersionProof();}],
+  ['wrong issued version',f=>{f.issuedVersionProof.packVersion='9.9.9';f.saveIssuedVersionProof();}],
+  ['unknown authorization marker',f=>{f.issuedVersionProof.allowAnyVersion=true;f.saveIssuedVersionProof();}],
+  ['unrelated exact-tree commit',f=>{const tree=f.git('rev-parse',f.issuedVersionProof.registrationCommit+'^{tree}');f.issuedVersionProof.registrationCommit=f.git('-c','user.name=Fixture','-c','user.email=fixture@example.invalid','commit-tree',tree,'-m','Unrelated exact receipt tree');f.saveIssuedVersionProof();}],
+  ['later receipt bytes changed',f=>{f.receipt.consumerSearchStatus='forged';f.saveReceipt();}],
+])for(const make of [ordinaryRendererReassessmentWithPriorFixture,mixedApprovedRebindMemberFixture])
+test('historical derived pack version refuses '+name+': '+make.name,t=>{
+  const f=withIssuedPackVersionWitness(reassessmentWithDerivedPackVersion(make(t)));
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);change(f);
+  const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+  assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+});
+
 test('mixed current renderer retains a whole-question-identical prior approval through the existing exact rebind form',t=>{
   const f=mixedApprovedRebindMemberFixture(t),before=JSON.stringify([f.receipt,f.current,f.identity,f.nativeSource.runtimeRecord]);
   for(const previous of [f.oldBank[0],structuredClone(f.question)]) {

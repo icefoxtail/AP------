@@ -156,6 +156,93 @@ function gitSource(root,sourceBlob,rawSha,expectedCount) {
 }
 const unchanged=row=>Object.fromEntries(Object.entries(row).filter(([key])=>!['metadataRevision','approvalEvidence'].includes(key)));
 const absentOrEmpty=value=>value===undefined||Array.isArray(value)&&value.length===0;
+const issuedPackVersionCache=new Set();
+const VERSION=/^\d+\.\d+\.\d+$/;
+const issuedPackVersionPath=id=>receiptPath(id).replace(/\.json$/,'.pack-version-binding.json');
+const exactKeys=(value,keys)=>value&&typeof value==='object'&&!Array.isArray(value)&&
+  same(Object.keys(value).sort(),[...keys].sort());
+const versionAtLeast=(current,issued)=>{
+  const a=current.split('.').map(BigInt),b=issued.split('.').map(BigInt);
+  for(let i=0;i<3;i++){if(a[i]>b[i])return true;if(a[i]<b[i])return false;}return true;
+};
+function verifyReachableIssuanceCommit(git,ancestor,head) {
+  const ancestorRaw=git('cat-file','commit',ancestor);
+  if(crypto.createHash('sha1').update(`commit ${ancestorRaw.length}\0`).update(ancestorRaw).digest('hex')!==ancestor)
+    fail('issued pack version registration commit digest differs');
+  try{git('merge-base','--is-ancestor',ancestor,head);return;}catch{/* A shallow graft may hide a real parent edge. */}
+  // Exact sparse snapshots can retain the commit objects but mark HEAD shallow.
+  // Follow their hash-verified raw parent edges; never treat an unrelated or
+  // unavailable commit as a valid ancestor and never infer an edge from dates.
+  const pending=[head],seen=new Set();let unavailable=false;
+  while(pending.length) {
+    const commit=pending.shift();if(commit===ancestor)return;
+    if(seen.has(commit))continue;if(seen.size>=512)fail('issued pack version ancestry exceeds the bounded snapshot');
+    seen.add(commit);let raw;try{raw=git('cat-file','commit',commit);}catch{unavailable=true;continue;}
+    const digest=crypto.createHash('sha1').update(`commit ${raw.length}\0`).update(raw).digest('hex');
+    if(digest!==commit)fail('issued pack version ancestry commit digest differs');
+    const header=raw.toString().split('\n\n',1)[0];
+    for(const line of header.split('\n'))if(line.startsWith('parent ')) {
+      const parent=line.slice(7);if(!SHA1.test(parent))fail('issued pack version ancestry parent malformed');pending.push(parent);
+    }
+  }
+  fail(unavailable?'issued pack version ancestry object unavailable':'issued pack version witness commit is not an ancestor of current HEAD');
+}
+
+// An unrelated later pack append does not rewrite existing registered rows.
+// Bind a historical derived version to the byte-exact receipt and ACTIVE
+// canonical pack at its immutable, reachable registration commit instead.
+function verifyIssuedPackVersion({root,receipt,packId,version,currentVersion}) {
+  const relative=issuedPackVersionPath(receipt.requestId),full=safePath(root,relative);
+  if(!fs.existsSync(full)) {
+    if(version===currentVersion)return;
+    fail('historical reassessment pack version requires an immutable issuance witness');
+  }
+  const raw=readBytes(root,relative),proof=JSON.parse(raw),ref=proof?.receiptRef,indexRef=proof?.registryIndexRef,packRef=proof?.canonicalPackRef;
+  if(!exactKeys(proof,['schemaVersion','requestId','registrationCommit','packId','packVersion','receiptRef','registryIndexRef','canonicalPackRef'])||
+    proof.schemaVersion!=='archive-native-issued-pack-version-v1'||proof.requestId!==receipt.requestId||
+    !SHA1.test(proof.registrationCommit||'')||proof.packId!==packId||proof.packVersion!==version||
+    ![ref,indexRef,packRef].every(r=>exactKeys(r,['path','sha256'])&&SHA256.test(r.sha256||''))||
+    ref.path!==receiptPath(receipt.requestId)||indexRef.path!=='archive/data/meta-foundation/canonical/registry_index.json'||
+    !/^archive\/data\/meta-foundation\/canonical\/packs\/[a-z0-9-]+\/pack\.json$/.test(packRef.path||''))
+    fail('issued pack version witness schema or exact binding differs');
+  const receiptBytes=readBytes(root,ref.path);
+  if(sha(receiptBytes)!==ref.sha256||!same(JSON.parse(receiptBytes),receipt))fail('issued pack version witness receipt bytes differ');
+  const git=(...args)=>execFileSync('git',args,{cwd:root,maxBuffer:16*1024*1024,stdio:['ignore','pipe','pipe']});
+  const head=git('rev-parse','HEAD').toString().trim(),key=stable([root,head,sha(raw),sha(receiptBytes),packId,version]);
+  if(issuedPackVersionCache.has(key))return;
+  const frozen=r=>{const bytes=git('show',`${proof.registrationCommit}:${r.path}`);if(sha(bytes)!==r.sha256)fail('issued pack version immutable Git bytes differ');return bytes;};
+  if(!same(JSON.parse(frozen(ref)),receipt))fail('issued pack version immutable receipt differs');
+  const index=JSON.parse(frozen(indexRef)),packBytes=frozen(packRef),pack=JSON.parse(packBytes);
+  const active=(index.activePacks||[]).filter(row=>row.id===packId),indexed=(index.canonicalSources||[]).filter(row=>row.path===packRef.path);
+  if(index.schemaVersion!=='meta-foundation-registry-index-v1'||index.status!=='ACTIVE'||index.compiledIsReadOnly!==true||
+    active.length!==1||active[0].status!=='ACTIVE'||active[0].version!==version||
+    indexed.length!==1||String(indexed[0].sha256||'').replace(/^sha256:/,'')!==sha(packBytes.toString().replaceAll('\r\n','\n'))||
+    pack.schemaVersion!=='meta-foundation-pack-v1'||pack.packId!==packId||pack.ownerPack!==packId||
+    pack.canonicalStatus!=='ACTIVE'||pack.packVersion!==version)
+    fail('issued pack version witness has no exact ACTIVE canonical derivation');
+  verifyReachableIssuanceCommit(git,proof.registrationCommit,head);
+  issuedPackVersionCache.add(key);
+}
+
+// The ordinary registrar derives packVersion and the matching revision from
+// the resolved ACTIVE pack. Reassessment may carry that exact derived version;
+// this does not make any other approved value or provenance replaceable.
+function assertDerivedReassessmentPackVersion({row,runtime,oldRow,oldRuntime,receipt,registry,root}) {
+  if(row.metaFoundationPackVersion===oldRow.metaFoundationPackVersion&&
+    runtime.metaFoundationPackVersion===oldRuntime.metaFoundationPackVersion)return;
+  const id=oldRow.metaFoundationPackId,pack=registry?.activePacks?.get(id),version=row.metaFoundationPackVersion,currentVersion=pack?.version;
+  if(registry?.status!=='ACTIVE'||pack?.status!=='ACTIVE'||pack.id!==id||!VERSION.test(currentVersion||'')||!VERSION.test(version||'')||
+    [row,runtime,oldRuntime].some(value=>value.metaFoundationPackId!==id)||
+    oldRow.metaFoundationPackVersion!==oldRuntime.metaFoundationPackVersion||
+    runtime.metaFoundationPackVersion!==version||!versionAtLeast(currentVersion,version))
+    fail('reassessment derived pack version differs from the current ACTIVE pack');
+  const revision=`meta-foundation:${id}@${version}:exam-final_qa-v2:${receipt.requestId}`;
+  if(row.metadataRevision!==revision||runtime.metadataRevision!==revision)
+    fail('reassessment revision differs from the official derived pack version');
+  verifyIssuedPackVersion({root,receipt,packId:id,version,currentVersion});
+}
+const unchangedReassessmentValues=row=>Object.fromEntries(Object.entries(unchanged(row))
+  .filter(([key])=>key!=='metaFoundationPackVersion'));
 
 // An ordinary fingerprint reassessment may cite its prior native receipt as
 // evidence. That reference remains a fail-closed claim until the actual native
@@ -191,7 +278,8 @@ function ordinaryReviewedReassessment({receipt,nativeSource,question,identity,or
     !same(repair.metadataBefore,{sourceFingerprint:old.row.sourceFingerprint,contentFingerprint:old.row.contentFingerprint})||
     repair.identityBefore.sourceFingerprint!==old.identity.sourceFingerprint)return false;
   const without=(row,keys)=>Object.fromEntries(Object.entries(row).filter(([key])=>!keys.includes(key)));
-  const metadataKeys=['sourceFingerprint','contentFingerprint','metadataRevision','approvalEvidence'];
+  assertDerivedReassessmentPackVersion({row:current,runtime:nativeSource.runtimeRecord,oldRow:old.row,oldRuntime:old.runtime,receipt,registry,root});
+  const metadataKeys=['sourceFingerprint','contentFingerprint','metadataRevision','approvalEvidence','metaFoundationPackVersion'];
   const runtimeKeys=[...metadataKeys,'approvedSourceFingerprint'];
   let rendererBinding=null;
   if(proof.rendererContinuity!==undefined) {
@@ -231,15 +319,17 @@ function ordinaryReviewedReassessment({receipt,nativeSource,question,identity,or
 // This is the existing registrar rebind form, restricted here to an unchanged
 // whole question in a complete renderer cohort. It transports no new native
 // decision, metadata value, identity value or approval kind.
-function unchangedApprovedRebindMember({patch,row,runtime,identity,oldRow,oldRuntime,oldIdentity,prior,receipt}) {
+function unchangedApprovedRebindMember({patch,row,runtime,identity,oldRow,oldRuntime,oldIdentity,prior,receipt,registry,root}) {
   const fingerprints={sourceFingerprint:oldRow.sourceFingerprint,contentFingerprint:oldRow.contentFingerprint};
   if(!same(Object.keys(patch).sort(),['after','identityBefore','metadataBefore','questionUid','rebind','sourceOrdinal'])||
     !Object.values(fingerprints).every(value=>SHA256.test(value||''))||
     !same(patch.metadataBefore,fingerprints)||!same(patch.after,fingerprints)||
     !same(patch.identityBefore,{sourceFingerprint:oldIdentity.sourceFingerprint})||
     !same(patch.rebind,{priorSourceBlobSha1:prior.sourceBlobSha1,priorContentFingerprint:oldRow.contentFingerprint})||
-    !same(unchanged(row),unchanged(oldRow))||!same(unchanged(runtime),unchanged(oldRuntime))||
     !same(identity,oldIdentity))return false;
+  assertDerivedReassessmentPackVersion({row,runtime,oldRow,oldRuntime,receipt,registry,root});
+  if(!same(unchangedReassessmentValues(row),unchangedReassessmentValues(oldRow))||
+    !same(unchangedReassessmentValues(runtime),unchangedReassessmentValues(oldRuntime)))return false;
   const appended=before=>[...new Set([...before.approvalEvidence,receiptPath(receipt.requestId)])];
   return same(row.approvalEvidence,appended(oldRow))&&same(runtime.approvalEvidence,appended(oldRuntime));
 }
@@ -287,7 +377,7 @@ function unchangedMemberOfRendererReassessment({receipt,nativeSource,question,id
     if(!renderer&&!same(q,beforeSource.bank[row.sourceOrdinal-1]))fail('changed member lacks a current renderer review');
     const retained=!renderer&&patch.sourceReview===undefined&&patch.rebind!==undefined;
     const verified=retained?unchangedApprovedRebindMember({patch,row,runtime:state.runtimes.get(uid),
-      identity:state.identities.get(uid),oldRow,oldRuntime:old.runtimes.get(uid),oldIdentity:old.identities.get(uid),prior,receipt}):
+      identity:state.identities.get(uid),oldRow,oldRuntime:old.runtimes.get(uid),oldIdentity:old.identities.get(uid),prior,receipt,registry,root}):
       ordinaryReviewedReassessment({receipt,nativeSource:{...nativeSource,runtimeRecord:state.runtimes.get(uid)},
         question:q,identity:state.identities.get(uid),ordinal:row.sourceOrdinal,current:row,registry,reviewedContainerCarry:!renderer});
     if(!verified)fail('mixed reassessment member lacks an exact approved-value continuation');
