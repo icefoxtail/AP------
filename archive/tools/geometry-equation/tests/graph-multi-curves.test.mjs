@@ -252,3 +252,30 @@ test('Maesan Q24 observes exact region columns without plotting the individual i
   const refused=await pythonWorker({action:'frame_graph',graphPlan:wrongRate});
   assert.equal(refused.result.code,'GRAPH_REGION_INTEGER_COLUMNS_INVALID:band');
 });
+
+test('Maesan Q12 uses an exact rational base for the nonnegative sampled years',async()=>{
+  const graphPlan={family:'multi-curve',viewport:[0,12,0,3],axisScale:{x:1,y:3},
+    axisTickValues:{x:['10','12'],y:['1','2']},axisTitles:{x:'n',y:'비율'},
+    curves:[{id:'ratio',kind:'EXPONENTIAL',base:'107/100',coefficients:['1','1','0'],domain:['0','12'],label:'r(n)'},
+      {id:'double',kind:'LINE',coefficients:['2','0'],domain:['0','12'],label:'y=2'}],
+  };
+  const framed=await pythonWorker({action:'frame_graph',graphPlan});
+  assert.equal(framed.status,'OK',JSON.stringify(framed.result));
+  const selected=framed.result.graphPlan;
+  assert.equal(selected.multiCurveFeatures.curves[0].base,'107/100');
+  const model=await pythonWorker({action:'graph',graphPlan:selected});
+  assert.equal(model.status,'OK',JSON.stringify(model.result));
+  const plan={capability:'multi-curve-figure-v1',graphPlan:selected,caption:'농도 비율과 두 배 기준'};
+  const spec=specFor(plan,model.result,'q12');
+  const curves=spec.objects.filter(row=>row.kind==='FUNCTION_GRAPH');
+  assert.deepEqual(curves.map(row=>row.domain),[[0,12],[0,12]]);
+  assert.ok(curves[0].expression.includes('ln(107/100)'));
+  assert.equal(spec.objects.find(row=>row.id==='curve-ratio-equation').text,'r(n)');
+  const check=await pythonWorker({action:'modelBinding',graphPlan:selected,svg:model.result.svg,transform:model.result.transform},{script:observerScript});
+  assert.equal(check.result.status,'PASS',JSON.stringify(check.result));
+  for(const base of ['1','1.07','214/200','1/1001']){
+    const curves=[{...graphPlan.curves[0],base},graphPlan.curves[1]];
+    const rejected=await pythonWorker({action:'frame_graph',graphPlan:{...graphPlan,curves}});
+    assert.equal(rejected.result.code,'MULTI_CURVE_EXPONENTIAL_BASE_INVALID:ratio');
+  }
+});

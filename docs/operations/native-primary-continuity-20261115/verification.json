@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "archive-native-unchanged-primary-verification-v1",
+  "scope": "Restore four exact unchanged native primary/empty-auxiliary values after independently finalized CC evidence; no original review edits or new classification decisions.",
+  "baseMain": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+  "sourceReassessmentSha256": "2a45819039edc7c2084935254deeb12c226fe636071a85148d433729fce16cff",
+  "proposalModuleSha256": "20ae92f875bd28eed5b3b5eddd9b5f1d739a390a32c1542a8b4e8b4b367f4d6f",
+  "regressionTests": {
+    "v2CombinedPassed": 383,
+    "targetedCasesPassed": 27,
+    "failures": 0,
+    "skipped": 0
+  },
+  "actualDryRun": {
+    "total": 10,
+    "passed": 10,
+    "officialWriterWrites": 0,
+    "consumer": "NOT_RUN",
+    "sourceWrites": 0,
+    "reportSha256": "bb9f6866a4414da6adf8762e10df2f5de07d19abacb88215af6b721137d95b09",
+    "rows": [
+      {
+        "exam": "E004",
+        "sourceOrdinal": 10,
+        "status": "PASS",
+        "requestSha256": "d31593772e11524d57f42be95a4c02e29ad4e2ea03b7198719eb16928489f2ce"
+      },
+      {
+        "exam": "E021",
+        "sourceOrdinal": 22,
+        "status": "PASS",
+        "requestSha256": "e3819594520285867bdce8fd84b9056f8e70572cb5017236d7ef2537308d9726"
+      },
+      {
+        "exam": "E023",
+        "sourceOrdinal": 3,
+        "status": "PASS",
+        "requestSha256": "8915614cab5c834a8338c4d17439500f86691d3dd61d7a607028373951c6a410"
+      },
+      {
+        "exam": "E023",
+        "sourceOrdinal": 21,
+        "status": "PASS",
+        "requestSha256": "89209cd7442d30456b4687a6d393858b5d50ddcd39c8ab8281e3768b99449eaa"
+      },
+      {
+        "exam": "E029",
+        "sourceOrdinal": 17,
+        "status": "PASS",
+        "requestSha256": "568c5d9a3a1006d86d077e2632f42eb521f4575a85388ed8d302a068f211d30f"
+      },
+      {
+        "exam": "E052",
+        "sourceOrdinal": 6,
+        "status": "PASS",
+        "requestSha256": "8c53dbe0c406a46ae4addf3c349a9c7e68afc8ea27e7a5ef84ab738747a942e7"
+      },
+      {
+        "exam": "E058",
+        "sourceOrdinal": 9,
+        "status": "PASS",
+        "requestSha256": "b565ffa2751b118b5c86d421f98213516abbd5fab73769e1a150690e8564dae9"
+      },
+      {
+        "exam": "E059",
+        "sourceOrdinal": 7,
+        "status": "PASS",
+        "requestSha256": "6e66432984eb3a547c5718a7ad7f7736095d42535e3e0f8f15f9e1f1909a9742"
+      },
+      {
+        "exam": "E059",
+        "sourceOrdinal": 12,
+        "status": "PASS",
+        "requestSha256": "b271a487cb73cba95a49e9af009741d4ea90bcbe85ec6470c135df68a7424d7d"
+      },
+      {
+        "exam": "E054",
+        "sourceOrdinal": 15,
+        "status": "PASS",
+        "requestSha256": "6b70c0e09c8f88cbac956155b8ab7c8c932d4a1de9d301a28e051320bafac19a"
+      }
+    ]
+  },
+  "independentCodeReview": {
+    "reviewer": "/root/m3s2_release",
+    "finding": "No approval bypass found within this exact unchanged-primary restoration scope; canonical binding validation remains mandatory in the registrar."
+  },
+  "evidence": [
+    {
+      "id": "m3-v2-and-unchanged-primary-regressions.log",
+      "sha256": "93560d14895b0d96a811539fcfb6dab0913f81f18f76bfadab0ad99916125e4f"
+    },
+    {
+      "id": "unchanged-primary-27-regressions.log",
+      "sha256": "fa2646236bf1802e29f8185cbca548a96418803325401104248892400fe9c9ec"
+    }
+  ],
+  "productionRegistration": "NOT_RUN",
+  "productionDeployment": "NOT_RUN"
+}

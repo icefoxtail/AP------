@@ -1389,7 +1389,25 @@ def logarithmic_base_overview_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':expected_features,'monotonicity':expected_features['monotonicity'],'curvePoints':len(points),'boundaryApproachGapCssPx':gap,'referenceMarker':marker,'mathMethod':'EXACT_POSITIVE_BASE_AND_INDEPENDENT_BASE_LOGARITHM_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'LOGARITHMIC_SOURCE_SCHEMA_INVALID']}
 
-def exp_log_pair_overview_audit(plan,svg,transform):
+def _exp_log_pair_name_errors(plan,root,model):
+    errors=[]
+    for curve in plan.get('curves',[]):
+        if 'formulaLabel' not in curve:continue
+        ident=curve.get('id','')
+        if curve['formulaLabel']!='NAME' or not re.fullmatch('[A-Za-z]',ident):
+            errors.append('EXP_LOG_PAIR_FORMULA_LABEL_INVALID:'+ident)
+            continue
+        labels=[node for node in root.iter() if node.get('id')=='formula-'+ident]
+        if model:
+            if labels:errors.append('EXP_LOG_PAIR_NAME_LABEL_IN_MODEL:'+ident)
+            continue
+        expected=_ov_label_codes(ident+'(x)')
+        glyphs=_ov_glyph_codes(labels[0]) if len(labels)==1 else []
+        if len(glyphs)!=len(expected) or any(code not in allowed for code,allowed in zip(glyphs,expected)):
+            errors.append('EXP_LOG_PAIR_NAME_LABEL_MISMATCH:'+ident)
+    return errors
+
+def exp_log_pair_overview_audit(plan,svg,transform,model=False):
     errors=[];unsupported=[]
     try:
         features=plan.get('expLogPairFeatures');policy=plan.get('expLogPairPolicy')
@@ -1465,6 +1483,7 @@ def exp_log_pair_overview_audit(plan,svg,transform):
                     if abs(a[1]-a[0])*yscale>.35 or abs(b[1]-b[0])*yscale>.35:errors.append('EXP_LOG_PAIR_IDENTITY_LINE_POSITION_MISMATCH')
                     if node.get('stroke-dasharray') not in {'4 3','4,3'}:errors.append('EXP_LOG_PAIR_IDENTITY_LINE_MUST_BE_DASHED')
         elif identity_nodes:errors.append('EXP_LOG_PAIR_UNEXPECTED_IDENTITY_LINE')
+        errors.extend(_exp_log_pair_name_errors(plan,root,model))
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
         return {'status':status,'errors':sorted(set(errors+unsupported)),'curves':[{key:value for key,value in row.items() if not key.startswith('_')} for row in expected_rows],'curveBranches':{key:len(value) for key,value in branches.items()},'identityLine':features.get('identityLine') is True,'mathMethod':'EXACT_BASES_AND_INDEPENDENT_MODEL_RECOMPUTATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'EXP_LOG_PAIR_SOURCE_SCHEMA_INVALID']}
@@ -4312,7 +4331,7 @@ def trig_axis_crossing_pair_audit(plan,svg,transform,model):
                 'axisCrossingPi':str(crossing),'curvePoints':counts}
     except (KeyError,TypeError,ValueError,ZeroDivisionError,OverflowError,ET.ParseError) as error:
         return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIG_AXIS_CROSSING_PAIR_SOURCE_INVALID']}
-def _trig_display_window_ticks(root, transform, x_values, y_values):
+def _trig_display_window_ticks(root, transform, x_values, y_values, pi_ticks=True):
     nodes=[node for node in root.iter() if node.get('data-role')=='tick']
     labels=[node for node in root.iter() if node.get('data-label-kind')=='TICK_LABEL']
     if len(nodes)!=len(x_values)+len(y_values) or len(labels)!=len(nodes):
@@ -4320,8 +4339,9 @@ def _trig_display_window_ticks(root, transform, x_values, y_values):
     errors=[]
     for axis, values in (('x',x_values),('y',y_values)):
         for value in values:
-            target=float(value)*(math.pi if axis=='x' else 1)
-            expected_text=_trig_pi_tick_text(value) if axis=='x' else str(value).replace('-','−')
+            as_pi=axis=='x' and pi_ticks
+            target=float(value)*(math.pi if as_pi else 1)
+            expected_text=_trig_pi_tick_text(value) if as_pi else str(value).replace('-','−')
             painted_text=_ov_label_codes(expected_text.replace('−','-'))
             sign=1 if axis=='x' else -1
             pos=transform['originX' if axis=='x' else 'originY']+sign*target*transform['s'+axis]
@@ -4350,25 +4370,36 @@ def trig_display_window_audit(plan, svg, transform, model):
     errors=[]
     try:
         spec=_trig_v2_spec(plan)
+        plain=plan.get('overviewPolicy')=='TRIGONOMETRIC_DISPLAY_WINDOW_X_v1'
         if (plan.get('sourceDomain')!={'kind':'ALL_REALS'} or spec['function'] not in ('SIN','COS')
-            or any(key in plan for key in ('ratePi','phase','absolute','axisTickPiStep','referenceLines','keyPoints','overlays','axisTitles'))):
+            or spec['rateHasPi']!=plain or not spec['phaseHasPi']
+            or any(key in plan for key in ('phase','absolute','axisTickPiStep','referenceLines','keyPoints','overlays','axisTitles'))
+            or (plain and 'displayWindowPi' in plan)):
             raise ValueError('TRIG_DISPLAY_WINDOW_SOURCE_INVALID')
         if 'showOriginLabel' in plan and plan['showOriginLabel'] is not True:raise ValueError('TRIG_DISPLAY_ORIGIN_LABEL_INVALID')
-        window=plan['displayWindowPi']
-        if not isinstance(window,list) or len(window)!=2:
-            raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
-        lo,hi=(_piecewise_rational(value,'TRIG_DISPLAY_WINDOW_PI_INVALID') for value in window)
+        window=plan['displayWindowX' if plain else 'displayWindowPi']
+        code='TRIG_DISPLAY_WINDOW_X_INVALID' if plain else 'TRIG_DISPLAY_WINDOW_PI_INVALID'
+        if not isinstance(window,list) or len(window)!=2:raise ValueError(code)
+        lo,hi=(_piecewise_rational(value,code) for value in window)
         if not lo<0<hi or max(abs(lo),abs(hi))>100 or not Fraction(1,4)<=(hi-lo)/_trig_v2_period(spec)<=TRIG_V2_MAX_PERIODS:
-            raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
-        if plan.get('axisTickPi') is not True:
+            raise ValueError(code)
+        if (plain and plan.get('axisTickPi') is not None and plan.get('axisTickPi') is not False) or (not plain and plan.get('axisTickPi') is not True):
             raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
-        x0,x1=float(lo)*math.pi,float(hi)*math.pi
-        x_ticks=_trig_v2_tick_multiples(plan,'INTERVAL_PI',x0,x1)
+        factor=1 if plain else math.pi
+        x0,x1=float(lo)*factor,float(hi)*factor
+        if plain:
+            values=plan.get('axisTickValues')
+            if not isinstance(values,dict) or set(values)!={'x','y'} or not all(isinstance(values[axis],list) for axis in values):
+                raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+            x_ticks=[_piecewise_rational(value,'INVALID_TRIG_AXIS_TICK_VALUES') for value in values['x']]
+            if any(not value or not lo<value<hi for value in x_ticks):raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+        else:
+            x_ticks=_trig_v2_tick_multiples(plan,'INTERVAL_PI',x0,x1)
         ys=[_piecewise_rational(value,'INVALID_TRIG_AXIS_TICK_VALUES') for value in plan['axisTickValues']['y']]
         a,c,rate,phase=(spec[key] for key in ('a','c','rate','phase'))
         low,high=min(0.0,float(c-abs(a))),max(0.0,float(c+abs(a)))
         span=max(1.,high-low)
-        ypad=.42*span
+        ypad=(.16 if plain else .42)*span
         xpad=max(.1*(x1-x0),.5)
         left=max(xpad,max(1.0,abs(x0)))
         expected_window=[x0-left,x1+xpad,low-ypad,high+ypad]
@@ -4388,13 +4419,14 @@ def trig_display_window_audit(plan, svg, transform, model):
         if abs(points[0][0]-x0)*scale_x>.35 or abs(points[-1][0]-x1)*scale_x>.35:
             errors.append('TRIG_DISPLAY_CURVE_RANGE_MISMATCH')
         f=math.sin if spec['function']=='SIN' else math.cos
+        angular_rate=float(rate)*(math.pi if plain else 1)
         def exact_curve(x):
-            return float(a)*f(float(rate)*x+float(phase)*math.pi)+float(c)
+            return float(a)*f(angular_rate*x+float(phase)*math.pi)+float(c)
         if any(abs(y-exact_curve(x))*scale_y>.35 for x,y in points):
             errors.append('TRIG_WRONG_FUNCTION_CURVE')
         for (ax,ay),(bx,by) in zip(points,points[1:]):
             step=bx-ax
-            if step<=0 or abs(float(a*rate*rate))*step**2*scale_y/8>.7:
+            if step<=0 or abs(float(a)*angular_rate**2)*step**2*scale_y/8>.7:
                 errors.append('TRIG_DISPLAY_CURVE_SAMPLING_MISMATCH')
                 break
             if abs((ay+by)/2-exact_curve((ax+bx)/2))*scale_y>.35:
@@ -4408,7 +4440,7 @@ def trig_display_window_audit(plan, svg, transform, model):
             t=(k+shift-phase)/rate
             if lo<t<hi:extrema[t]=c+a*(-1 if k%2 else 1)
         for value,y in extrema.items():
-            if not any(abs(x-float(value)*math.pi)*scale_x<=.35 and abs(h-float(y))*scale_y<=.35 for x,h in points):
+            if not any(abs(x-float(value)*factor)*scale_x<=.35 and abs(h-float(y))*scale_y<=.35 for x,h in points):
                 errors.append('TRIG_DISPLAY_EXTREMUM_NOT_SAMPLED:'+str(value))
         if any(node.get('data-role') in ('interval-endpoint','trig-key-point','point') or
                (node.get('id') or '').startswith(('interval-','period-label','formula')) for node in root.iter()):
@@ -4425,7 +4457,7 @@ def trig_display_window_audit(plan, svg, transform, model):
             for value in values:
                 level=extrema.get(value) if axis=='x' else value if value in (c-abs(a),c+abs(a)) else None
                 if value not in ticks or not level:raise ValueError('TRIG_DISPLAY_GUIDE_NOT_AT_EXTREMUM')
-                x=float(value)*math.pi;y=float(level)
+                x=float(value)*factor;y=float(level)
                 expected_guides.append(((x,0.),(x,y)) if axis=='x' else ((0.,y),(x1,y)))
         strokes=[node for node in root.iter() if (node.get('id') or '').startswith('trig-window-guide-')]
         if model:
@@ -4438,7 +4470,7 @@ def trig_display_window_audit(plan, svg, transform, model):
                 attr,position=('y',transform['originY']) if horizontal else ('x',transform['originX'])
                 if any(abs(float(axis.get(attr+i,'inf'))-position)*transform['displayScale']>.35 for i in ('1','2')):
                     errors.append('TRIG_DISPLAY_AXES_MISMATCH')
-            errors.extend(_trig_display_window_ticks(root,transform,x_ticks,ys))
+            errors.extend(_trig_display_window_ticks(root,transform,x_ticks,ys,pi_ticks=not plain))
             if len(strokes)!=len(expected_guides):errors.append('TRIG_DISPLAY_GUIDE_INVENTORY_MISMATCH')
             for i, expected in enumerate(expected_guides):
                 one=[node for node in strokes if node.get('id')=='trig-window-guide-'+str(i)]
@@ -4466,7 +4498,7 @@ def trig_display_window_audit(plan, svg, transform, model):
                 if box is None or not (0<=ox-box[0]-box[2]<=50 and 0<=box[1]-oy<=50):
                     errors.append('TRIG_DISPLAY_ORIGIN_LABEL_MOVED')
         return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),
-                'windowPi':window,'sourceDomain':'ALL_REALS','curvePoints':len(points)}
+                'windowX' if plain else 'windowPi':window,'sourceDomain':'ALL_REALS','curvePoints':len(points)}
     except (KeyError,TypeError,ValueError,ZeroDivisionError,OverflowError,ET.ParseError) as error:
         return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIG_DISPLAY_SOURCE_INVALID']}
 
@@ -4755,14 +4787,17 @@ def _mc_obs_free(entry,ident):
         pole=-curve['d'][0]/curve['d'][1]
         if sum(coefficient*pole**power for power,coefficient in enumerate(curve['n']))==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
     elif kind=='EXPONENTIAL':
-        base=entry.get('base')
-        if not isinstance(base,str) or not re.fullmatch(r'[1-9]\d{0,3}',base) or not 2<=int(base)<=1000:
+        raw_base=entry.get('base')
+        if not isinstance(raw_base,str) or not re.fullmatch(r'[1-9]\d{0,3}(?:/[1-9]\d{0,3})?',raw_base):
+            raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
+        base=Fraction(raw_base)
+        if str(base)!=raw_base or base==1 or max(base.numerator,base.denominator)>1000:
             raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
         coefficients=entry.get('coefficients')
         if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError(code)
         a,k,c=[_mc_obs_fraction(value,code) for value in coefficients]
         if not a or not k:raise ValueError(code)
-        curve.update({'base':int(base),'c':[a,k,c],'shiftX':_mc_obs_fraction(entry.get('shiftX','0'),code)})
+        curve.update({'base':base,'c':[a,k,c],'shiftX':_mc_obs_fraction(entry.get('shiftX','0'),code)})
     else:
         curve['r']=_mc_obs_pair(entry,'radicand',code)
         if curve['r'][1]==0:raise ValueError(code)
@@ -4887,7 +4922,7 @@ def _mc_region_expected(plan,entry,by_id,viewport):
 
 def _mc_obs_integer_columns(region_id,curves,left,right):
     error='GRAPH_REGION_INTEGER_COLUMNS_INVALID:'+region_id
-    if (any(not curve or curve['kind']!='EXPONENTIAL' for curve in curves)
+    if (any(not curve or curve['kind']!='EXPONENTIAL' or curve['base'].denominator!=1 for curve in curves)
         or len({(curve['base'],curve['c'][1]) for curve in curves})!=1
         or left.denominator!=1 or right.denominator!=1 or not 2<=right-left+1<=8):
         raise ValueError(error)
@@ -5639,11 +5674,12 @@ def _audit_family(plan,svg,transform,model=False):
         if plan.get('overviewPolicy')=='LOGARITHMIC_BASE_OVERVIEW_v1':return logarithmic_base_overview_audit(plan,svg,transform)
         return logarithmic_affine_overview_audit(plan,svg,transform)
     if plan.get('family')=='exp-log-pair' and plan.get('shapeIntent')=='OVERVIEW':
-        return exp_log_pair_overview_audit(plan,svg,transform)
+        return exp_log_pair_overview_audit(plan,svg,transform,model)
     if plan.get('family')=='trigonometric' and plan.get('shapeIntent')=='OVERVIEW':
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_AXIS_CROSSING_PAIR_v1':
             return trig_axis_crossing_pair_audit(plan,svg,transform,model)
-        if plan.get('overviewPolicy')=='TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1':return trig_display_window_audit(plan,svg,transform,model)
+        if plan.get('overviewPolicy') in ('TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1','TRIGONOMETRIC_DISPLAY_WINDOW_X_v1'):
+            return trig_display_window_audit(plan,svg,transform,model)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v1':return trigonometric_interval_audit(plan,svg,transform)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':return trigonometric_interval_v2_audit(plan,svg,transform)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_PERIODIC_OVERVIEW_v2':return trigonometric_period_v2_audit(plan,svg,transform)
