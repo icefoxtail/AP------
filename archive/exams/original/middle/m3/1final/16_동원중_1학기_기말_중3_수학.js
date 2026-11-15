@@ -608,10 +608,10 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [],
       "wide": false,
-      "content": "<p>20. $a>0$, $p>0$, $q<0$일 때, 이차함수 $y=a(x-p)^2+q$의 그래프는? [4점]</p><p><img src=\"assets/images/16_동원중_1학기_기말_중3_수학/q20.png\" alt=\"a가 양수, p가 양수, q가 음수일 때 제4사분면에 꼭짓점을 갖고 아래로 볼록한 이차함수 그래프 선택지\" class=\"question-image\"></p>",
+      "content": "<p>20. $a>0$, $p>0$, $q<0$일 때, 이차함수 $y=a(x-p)^2+q$의 그래프는? [4점]</p><p><img src=\"assets/images/16_동원중_1학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"①은 왼쪽 위쪽, ②는 오른쪽 위쪽 꼭짓점에서 위로 열린다. ③은 오른쪽 위에 꼭짓점이 있고 아래로, ④는 오른쪽 아래에서 아래로 열린다. ③과 ④는 x축 아래에서 y축을 지난다. ⑤는 오른쪽 아래에서 위로 열리고 y축의 양의 부분을 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "①",
         "②",
@@ -621,7 +621,7 @@ window.examData = {
       ],
       "answer": "⑤",
       "solution": "[키포인트] 표준형 $y = a(x-p)^2 + q$에서 최고차항 계수 $a$의 부호로 포물선의 볼록 방향을, 꼭짓점 $(p, q)$의 부호로 사분면 위치를 확정하여 그래프를 선별한다.\n1단계: [볼록 방향 판정]\n조건에서 $a > 0$이므로 포물선의 모양은 아래로 볼록(opens upwards)하다.\n(따라서 위로 볼록한 선택지 ③, ④는 제외된다.)\n2단계: [꼭짓점의 사분면 판정]\n꼭짓점의 좌표는 $(p, q)$이다.\n조건에서 $p > 0$ ($x$좌표 양수)이고 $q < 0$ ($y$좌표 음수)이므로, 꼭짓점은 제4사분면에 위치한다.\n3단계: [선택지 대조]\n- ①: 아래로 볼록하나 꼭짓점이 제2사분면에 위치한다.\n- ②: 아래로 볼록하나 꼭짓점이 제1사분면에 위치한다.\n- ⑤: 아래로 볼록하고 꼭짓점이 제4사분면에 위치한다.\n4단계: 결론: 알맞은 그래프는 ⑤이다.\n따라서 정답은 ⑤이다.",
-      "question": "<p>20. $a>0$, $p>0$, $q<0$일 때, 이차함수 $y=a(x-p)^2+q$의 그래프는? [4점]</p><p><img src=\"assets/images/16_동원중_1학기_기말_중3_수학/q20.png\" alt=\"a가 양수, p가 양수, q가 음수일 때 제4사분면에 꼭짓점을 갖고 아래로 볼록한 이차함수 그래프 선택지\" class=\"question-image\"></p>"
+      "question": "<p>20. $a>0$, $p>0$, $q<0$일 때, 이차함수 $y=a(x-p)^2+q$의 그래프는? [4점]</p><p><img src=\"assets/images/16_동원중_1학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"①은 왼쪽 위쪽, ②는 오른쪽 위쪽 꼭짓점에서 위로 열린다. ③은 오른쪽 위에 꼭짓점이 있고 아래로, ④는 오른쪽 아래에서 아래로 열린다. ③과 ④는 x축 아래에서 y축을 지난다. ⑤는 오른쪽 아래에서 위로 열리고 y축의 양의 부분을 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>"
     },
     {
       "id": 21,

@@ -302,11 +302,14 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "위로 열린 포물선의 꼭짓점은 (−1, −3)이다. 포물선은 세로축의 −1을 지나며 꼭짓점에 점선을 맞췄다.",
     "questionNumber": 16,
     "number": 16,
     "questionType": "객관식",
-    "question": "16. 이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $abc$의 값은? (단, $a, b, c$는 상수)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q16.png\"> [4.0점]",
-    "content": "16. 이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $abc$의 값은? (단, $a, b, c$는 상수)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q16.png\"> [4.0점]",
+    "question": "16. 이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $abc$의 값은? (단, $a, b, c$는 상수)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"위로 열린 포물선의 꼭짓점은 (−1, −3)이다. 포물선은 세로축의 −1을 지나며 꼭짓점에 점선을 맞췄다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [4.0점]",
+    "content": "16. 이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $abc$의 값은? (단, $a, b, c$는 상수)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"위로 열린 포물선의 꼭짓점은 (−1, −3)이다. 포물선은 세로축의 −1을 지나며 꼭짓점에 점선을 맞췄다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [4.0점]",
     "choices": [
       "① $-12$",
       "② $-8$",
@@ -314,21 +317,22 @@ window.questionBank = [
       "④ 4",
       "⑤ 10"
     ],
-    "images": [
-      "assets/images/17_대구동도중_1학기_기말_중3_수학/q16.png"
-    ],
+    "images": ["assets/images/17_대구동도중_1학기_기말_중3_수학/q16-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q16.png"
+    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q16-problem-visual-v2.svg"
   },
   {
     "id": 17,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "아래로 열린 파란 포물선의 꼭짓점은 A, x절편은 B와 D이다. C는 y축 위의 절편이고 E는 C와 같은 높이에 있다. 세 점 A, C, E를 이었다.",
     "questionNumber": 17,
     "number": 17,
     "questionType": "객관식",
-    "question": "17. 그림과 같이 이차함수 $y = -2x^2 + 8x - 7$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{C}$, $x$축과의 교점을 $\\text{B, D}$라 하고 이차함수 그래프 위의 점 $\\text{E}$에 대하여 선분 $\\text{CE}$는 $x$축과 평행할 때, 옳은 것은?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q17.png\"> [4.0점]",
-    "content": "17. 그림과 같이 이차함수 $y = -2x^2 + 8x - 7$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{C}$, $x$축과의 교점을 $\\text{B, D}$라 하고 이차함수 그래프 위의 점 $\\text{E}$에 대하여 선분 $\\text{CE}$는 $x$축과 평행할 때, 옳은 것은?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q17.png\"> [4.0점]",
+    "question": "17. 그림과 같이 이차함수 $y = -2x^2 + 8x - 7$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{C}$, $x$축과의 교점을 $\\text{B, D}$라 하고 이차함수 그래프 위의 점 $\\text{E}$에 대하여 선분 $\\text{CE}$는 $x$축과 평행할 때, 옳은 것은?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선의 꼭짓점은 A, x절편은 B와 D이다. C는 y축 위의 절편이고 E는 C와 같은 높이에 있다. 세 점 A, C, E를 이었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [4.0점]",
+    "content": "17. 그림과 같이 이차함수 $y = -2x^2 + 8x - 7$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{C}$, $x$축과의 교점을 $\\text{B, D}$라 하고 이차함수 그래프 위의 점 $\\text{E}$에 대하여 선분 $\\text{CE}$는 $x$축과 평행할 때, 옳은 것은?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선의 꼭짓점은 A, x절편은 B와 D이다. C는 y축 위의 절편이고 E는 C와 같은 높이에 있다. 세 점 A, C, E를 이었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [4.0점]",
     "choices": [
       "① 함수의 최댓값은 2이다.",
       "② $\\overline{\\text{BD}}$의 길이는 $2\\sqrt{2}$이다.",
@@ -336,13 +340,11 @@ window.questionBank = [
       "④ 축의 방정식은 $x = 1$이다.",
       "⑤ 점 $\\text{A}$의 좌표는 $(2, 2)$이다."
     ],
-    "images": [
-      "assets/images/17_대구동도중_1학기_기말_중3_수학/q17.png"
-    ],
+    "images": ["assets/images/17_대구동도중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q17.png"
+    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"
   },
   {
     "id": 18,
@@ -386,11 +388,14 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "위로 열린 파란 y=ax² 위에 A와 B가 있고, 아래로 열린 주황 y=−x² 위에 C와 D가 있다. 두 그래프의 꼭짓점은 원점이다. 오른쪽 변 AD가 가로축과 만나는 점은 E이다.",
     "questionNumber": 20,
     "number": 20,
     "questionType": "객관식",
-    "question": "20. 그림과 같이 점 $\\text{A, B}$는 이차함수 $y = ax^2$의 그래프 위의 점이고, 점 $\\text{C, D}$는 이차함수 $y = -x^2$의 그래프 위의 점이다. $\\overline{\\text{BC}}, \\overline{\\text{AD}}$는 $y$축에 평행하고 $\\overline{\\text{AB}}, \\overline{\\text{CD}}$는 $x$축에 평행하며 $\\square\\text{ABCD}$는 정사각형이다. $\\overline{\\text{AD}}$가 $x$축과 만나는 점을 $\\text{E}$라고 하고 $\\overline{\\text{AE}} : \\overline{\\text{ED}} = 1 : 3$일 때, $\\square\\text{ABCD}$의 넓이는? (단, $a > 0$)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q20.png\"> [5.0점]",
-    "content": "20. 그림과 같이 점 $\\text{A, B}$는 이차함수 $y = ax^2$의 그래프 위의 점이고, 점 $\\text{C, D}$는 이차함수 $y = -x^2$의 그래프 위의 점이다. $\\overline{\\text{BC}}, \\overline{\\text{AD}}$는 $y$축에 평행하고 $\\overline{\\text{AB}}, \\overline{\\text{CD}}$는 $x$축에 평행하며 $\\square\\text{ABCD}$는 정사각형이다. $\\overline{\\text{AD}}$가 $x$축과 만나는 점을 $\\text{E}$라고 하고 $\\overline{\\text{AE}} : \\overline{\\text{ED}} = 1 : 3$일 때, $\\square\\text{ABCD}$의 넓이는? (단, $a > 0$)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q20.png\"> [5.0점]",
+    "question": "20. 그림과 같이 점 $\\text{A, B}$는 이차함수 $y = ax^2$의 그래프 위의 점이고, 점 $\\text{C, D}$는 이차함수 $y = -x^2$의 그래프 위의 점이다. $\\overline{\\text{BC}}, \\overline{\\text{AD}}$는 $y$축에 평행하고 $\\overline{\\text{AB}}, \\overline{\\text{CD}}$는 $x$축에 평행하며 $\\square\\text{ABCD}$는 정사각형이다. $\\overline{\\text{AD}}$가 $x$축과 만나는 점을 $\\text{E}$라고 하고 $\\overline{\\text{AE}} : \\overline{\\text{ED}} = 1 : 3$일 때, $\\square\\text{ABCD}$의 넓이는? (단, $a > 0$)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"위로 열린 파란 y=ax² 위에 A와 B가 있고, 아래로 열린 주황 y=−x² 위에 C와 D가 있다. 두 그래프의 꼭짓점은 원점이다. 오른쪽 변 AD가 가로축과 만나는 점은 E이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [5.0점]",
+    "content": "20. 그림과 같이 점 $\\text{A, B}$는 이차함수 $y = ax^2$의 그래프 위의 점이고, 점 $\\text{C, D}$는 이차함수 $y = -x^2$의 그래프 위의 점이다. $\\overline{\\text{BC}}, \\overline{\\text{AD}}$는 $y$축에 평행하고 $\\overline{\\text{AB}}, \\overline{\\text{CD}}$는 $x$축에 평행하며 $\\square\\text{ABCD}$는 정사각형이다. $\\overline{\\text{AD}}$가 $x$축과 만나는 점을 $\\text{E}$라고 하고 $\\overline{\\text{AE}} : \\overline{\\text{ED}} = 1 : 3$일 때, $\\square\\text{ABCD}$의 넓이는? (단, $a > 0$)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"위로 열린 파란 y=ax² 위에 A와 B가 있고, 아래로 열린 주황 y=−x² 위에 C와 D가 있다. 두 그래프의 꼭짓점은 원점이다. 오른쪽 변 AD가 가로축과 만나는 점은 E이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [5.0점]",
     "choices": [
       "① 1",
       "② $\\frac{9}{4}$",
@@ -398,13 +403,11 @@ window.questionBank = [
       "④ 4",
       "⑤ 9"
     ],
-    "images": [
-      "assets/images/17_대구동도중_1학기_기말_중3_수학/q20.png"
-    ],
+    "images": ["assets/images/17_대구동도중_1학기_기말_중3_수학/q20-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 5,
-    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q20.png"
+    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q20-problem-visual-v2.svg"
   },
   {
     "id": 21,
@@ -428,11 +431,14 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "위로 열린 파란 포물선에서 A는 음의 x절편, B는 아래쪽 꼭짓점, C는 y절편이다. 세 점과 원점 O를 이은 연두색 사각형을 칠했다.",
     "questionNumber": 22,
     "number": 22,
     "questionType": "객관식",
-    "question": "22. 그림과 같이 이차함수 $y = x^2 + 2x - 3$의 그래프가 $x$축의 음의 부분과 만나는 점을 $\\text{A}$, 꼭짓점을 $\\text{B}$, $y$축과 만나는 점을 $\\text{C}$라고 할 때, 사각형 $\\text{OABC}$의 넓이는?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q22.png\"> [4.0점]",
-    "content": "22. 그림과 같이 이차함수 $y = x^2 + 2x - 3$의 그래프가 $x$축의 음의 부분과 만나는 점을 $\\text{A}$, 꼭짓점을 $\\text{B}$, $y$축과 만나는 점을 $\\text{C}$라고 할 때, 사각형 $\\text{OABC}$의 넓이는?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q22.png\"> [4.0점]",
+    "question": "22. 그림과 같이 이차함수 $y = x^2 + 2x - 3$의 그래프가 $x$축의 음의 부분과 만나는 점을 $\\text{A}$, 꼭짓점을 $\\text{B}$, $y$축과 만나는 점을 $\\text{C}$라고 할 때, 사각형 $\\text{OABC}$의 넓이는?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q22-problem-visual-v2.svg\" alt=\"위로 열린 파란 포물선에서 A는 음의 x절편, B는 아래쪽 꼭짓점, C는 y절편이다. 세 점과 원점 O를 이은 연두색 사각형을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [4.0점]",
+    "content": "22. 그림과 같이 이차함수 $y = x^2 + 2x - 3$의 그래프가 $x$축의 음의 부분과 만나는 점을 $\\text{A}$, 꼭짓점을 $\\text{B}$, $y$축과 만나는 점을 $\\text{C}$라고 할 때, 사각형 $\\text{OABC}$의 넓이는?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q22-problem-visual-v2.svg\" alt=\"위로 열린 파란 포물선에서 A는 음의 x절편, B는 아래쪽 꼭짓점, C는 y절편이다. 세 점과 원점 O를 이은 연두색 사각형을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [4.0점]",
     "choices": [
       "① $\\frac{7}{2}$",
       "② $\\frac{13}{4}$",
@@ -440,13 +446,11 @@ window.questionBank = [
       "④ $\\frac{15}{2}$",
       "⑤ $\\frac{17}{2}$"
     ],
-    "images": [
-      "assets/images/17_대구동도중_1학기_기말_중3_수학/q22.png"
-    ],
+    "images": ["assets/images/17_대구동도중_1학기_기말_중3_수학/q22-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q22.png"
+    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q22-problem-visual-v2.svg"
   },
   {
     "id": 23,
@@ -470,11 +474,14 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "직사각형 ABCD는 가로 14 cm와 세로 8 cm이다. P는 왼쪽 변에서 A에서 B 쪽으로 내리고, Q는 밑변의 점 E에서 C 쪽으로 움직인다. BE는 4 cm이며 삼각형 PBQ를 색칠했다.",
     "questionNumber": 24,
     "number": 24,
     "questionType": "객관식",
-    "question": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24.png\"> [5.0점]",
-    "content": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24.png\"> [5.0점]",
+    "question": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"직사각형 ABCD는 가로 14 cm와 세로 8 cm이다. P는 왼쪽 변에서 A에서 B 쪽으로 내리고, Q는 밑변의 점 E에서 C 쪽으로 움직인다. BE는 4 cm이며 삼각형 PBQ를 색칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [5.0점]",
+    "content": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"직사각형 ABCD는 가로 14 cm와 세로 8 cm이다. P는 왼쪽 변에서 A에서 B 쪽으로 내리고, Q는 밑변의 점 E에서 C 쪽으로 움직인다. BE는 4 cm이며 삼각형 PBQ를 색칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"> [5.0점]",
     "choices": [
       "① 18",
       "② 25",
@@ -482,12 +489,10 @@ window.questionBank = [
       "④ 40",
       "⑤ 50"
     ],
-    "images": [
-      "assets/images/17_대구동도중_1학기_기말_중3_수학/q24.png"
-    ],
+    "images": ["assets/images/17_대구동도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 5,
-    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q24.png"
+    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg"
   }
 ];

@@ -362,13 +362,13 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형",
         "그래프"
       ],
       "wide": false,
-      "content": "<p>12. 두 점 $A, B$는 이차함수 $y=x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $A$에서 $y$축에 평행한 선을 그어 이차함수 $y=-\\frac{1}{3}x^2$의 그래프와 만나는 점을 $C$라고 하자. $\\overline{AB}:\\overline{AC}=3:1$일 때, 점 $A$의 좌표를 구하면? (단, 점 $A$는 제1사분면 위에 있다.) (4점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q12.png\" alt=\"y=x^2과 y=-1/3x^2 그래프 위의 점 A, B, C와 선분 비 문제\" class=\"question-image\" /></p>",
+      "content": "<p>12. 두 점 $A, B$는 이차함수 $y=x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $A$에서 $y$축에 평행한 선을 그어 이차함수 $y=-\\frac{1}{3}x^2$의 그래프와 만나는 점을 $C$라고 하자. $\\overline{AB}:\\overline{AC}=3:1$일 때, 점 $A$의 좌표를 구하면? (단, 점 $A$는 제1사분면 위에 있다.) (4점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"위로 열린 파란 그래프 y=x² 위의 A와 B는 y축에 대해 서로 대칭이다. A의 아래 C는 주황 점선 y=−x²/3 위에 있다. 가로 AB와 세로 AC를 이었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$A(\\frac{1}{2}, \\frac{1}{4})$",
         "$A(\\frac{1}{3}, \\frac{1}{9})$",
@@ -378,7 +378,7 @@ window.examData = {
       ],
       "answer": "①",
       "solution": "[원문 조건 및 구할 대상]\n제1사분면 위의 점 $A$와 $y$축 대칭점 $B$는 $y=x^2$ 위에 있고, $A$와 $x$좌표가 같은 점 $C$는 $y=-\\dfrac{1}{3}x^2$ 위에 있을 때, $\\overline{AB}:\\overline{AC}=3:1$을 만족하는 점 $A$의 좌표를 구한다.\n\n[핵심 발상/공식]\n점 $A$의 $x$좌표를 미지수 $t$ ($t > 0$)로 두고, 선분 $\\overline{AB}$와 $\\overline{AC}$의 길이를 $t$에 관한 식으로 나타낸 후 비례식을 푼다.\n\n[연속 등식 및 중간 계산]\n1단계: 점들의 좌표 표현 ($t > 0$)\n- 점 $A(t, t^2)$\n- 점 $B(-t, t^2)$ ($y$축 대칭)\n- 점 $C\\left(t, -\\dfrac{1}{3}t^2\\right)$\n2단계: 선분의 길이 계산\n- $\\overline{AB} = t - (-t) = 2t$\n- $\\overline{AC} = t^2 - \\left(-\\dfrac{1}{3}t^2\\right) = t^2 + \\dfrac{1}{3}t^2 = \\dfrac{4}{3}t^2$\n3단계: 비례식 $\\overline{AB} : \\overline{AC} = 3 : 1$ 풀이\n$\\overline{AB} = 3 \\overline{AC}$\n$2t = 3 \\times \\dfrac{4}{3}t^2$\n$2t = 4t^2$\n4단계: $t > 0$이므로 양변을 $2t$로 나눈다.\n$1 = 2t \\implies t = \\dfrac{1}{2}$\n5단계: 점 $A$의 좌표 계산\n$x = \\dfrac{1}{2}$\n$y = t^2 = \\left(\\dfrac{1}{2}\\right)^2 = \\dfrac{1}{4}$\n따라서 점 $A$의 좌표는 $A\\left(\\dfrac{1}{2}, \\dfrac{1}{4}\\right)$이다.\n\n[경우 나눔 및 선택지 검토]\n점 $A$의 좌표는 $A\\left(\\dfrac{1}{2}, \\dfrac{1}{4}\\right)$이며 선택지 ①번과 정확히 일치한다.\n\n[결론]\n따라서 정답은 ①이다.",
-      "question": "<p>12. 두 점 $A, B$는 이차함수 $y=x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $A$에서 $y$축에 평행한 선을 그어 이차함수 $y=-\\frac{1}{3}x^2$의 그래프와 만나는 점을 $C$라고 하자. $\\overline{AB}:\\overline{AC}=3:1$일 때, 점 $A$의 좌표를 구하면? (단, 점 $A$는 제1사분면 위에 있다.) (4점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q12.png\" alt=\"y=x^2과 y=-1/3x^2 그래프 위의 점 A, B, C와 선분 비 문제\" class=\"question-image\" /></p>"
+      "question": "<p>12. 두 점 $A, B$는 이차함수 $y=x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $A$에서 $y$축에 평행한 선을 그어 이차함수 $y=-\\frac{1}{3}x^2$의 그래프와 만나는 점을 $C$라고 하자. $\\overline{AB}:\\overline{AC}=3:1$일 때, 점 $A$의 좌표를 구하면? (단, 점 $A$는 제1사분면 위에 있다.) (4점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"위로 열린 파란 그래프 y=x² 위의 A와 B는 y축에 대해 서로 대칭이다. A의 아래 C는 주황 점선 y=−x²/3 위에 있다. 가로 AB와 세로 AC를 이었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>"
     },
     {
       "id": 13,
@@ -396,13 +396,13 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형",
         "그래프"
       ],
       "wide": false,
-      "content": "<p>13. 다음 그림은 이차함수 $y=x^2-4x-5$의 그래프이다. 이 그래프의 꼭짓점을 $C$, 포물선이 $x$축과 만나는 점을 $A$라 하고 $y$축과 만나는 점을 $B$라 할 때 $\\triangle ABC$의 넓이를 구하면? (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q13.png\" alt=\"y=x^2-4x-5의 꼭짓점 C, x절편 A(5, 0), y절편 B(0, -5)로 이루어진 삼각형 넓이 문제\" class=\"question-image\" /></p>",
+      "content": "<p>13. 다음 그림은 이차함수 $y=x^2-4x-5$의 그래프이다. 이 그래프의 꼭짓점을 $C$, 포물선이 $x$축과 만나는 점을 $A$라 하고 $y$축과 만나는 점을 $B$라 할 때 $\\triangle ABC$의 넓이를 구하면? (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"파란 포물선 y=x²−4x−5가 오른쪽 가로축에서 A, 세로축에서 B를 만난다. 가로축 아래쪽 꼭짓점 C를 이은 삼각형을 연두색으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$15$",
         "$20$",
@@ -412,7 +412,7 @@ window.examData = {
       ],
       "answer": "①",
       "solution": "[원문 조건 및 구할 대상]\n이차함수 $y=x^2-4x-5$의 꼭짓점 $C$, 양의 $x$절편 $A$, $y$절편 $B$로 이루어진 $\\triangle ABC$의 넓이를 구한다.\n\n[핵심 발상/공식]\n세 점의 좌표를 정확히 구한 후, 세 점을 포함하는 직사각형에서 바깥쪽 세 직각삼각형의 넓이를 빼거나(박스법), 한 점을 원점으로 평행이동하여 사선 공식(신발끈 공식)을 적용한다.\n\n[연속 등식 및 중간 계산]\n1단계: 세 점의 좌표 구하기\n- $x$절편: $x^2-4x-5 = (x-5)(x+1) = 0 \\implies$ 그림의 점 $A$는 양수 쪽에 있으므로 $A(5, 0)$이다.\n- $y$절편: $x=0 \\implies y=-5$, 즉 $B(0, -5)$이다.\n- 꼭짓점 $C$: $y = (x-2)^2 - 4 - 5 = (x-2)^2 - 9 \\implies C(2, -9)$이다.\n2단계: 삼각형 $\\triangle ABC$의 넓이 계산\n[방법 1: 직사각형 둘러싸기 (박스법)]\n세 점 $A(5, 0), B(0, -5), C(2, -9)$를 둘러싸는 직사각형은 $0 \\le x \\le 5, -9 \\le y \\le 0$ 범위로, 가로 5, 세로 9인 직사각형이다 (넓이 $5 \\times 9 = 45$).\n이 직사각형에서 $\\triangle ABC$ 바깥쪽의 세 직각삼각형의 넓이를 뺀다.\n- 위쪽 직각삼각형 (원점 $O, A(5, 0), B(0, -5)$):\n  $\\dfrac{1}{2} \\times 5 \\times 5 = \\dfrac{25}{2} = 12.5$\n- 왼쪽 아래 직각삼각형 (점 $(0, -9), B(0, -5), C(2, -9)$):\n  가로 2, 세로 $(-5 - (-9)) = 4$이므로 $\\dfrac{1}{2} \\times 2 \\times 4 = 4$\n- 오른쪽 직각삼각형 (점 $(5, -9), A(5, 0), C(2, -9)$):\n  가로 $(5 - 2) = 3$, 세로 9이므로 $\\dfrac{1}{2} \\times 3 \\times 9 = \\dfrac{27}{2} = 13.5$\n- 세 직각삼각형의 넓이의 합:\n  $12.5 + 4 + 13.5 = 30$\n따라서 $\\triangle ABC$의 넓이는\n$45 - 30 = 15$이다.\n\n[방법 2: 평행이동 및 사선 공식(신발끈 공식)]\n점 $B(0, -5)$를 원점으로 평행이동하면:\n- $A'(5 - 0, 0 - (-5)) = (5, 5)$\n- $C'(2 - 0, -9 - (-5)) = (2, -4)$\n$\\text{넓이} = \\dfrac{1}{2} |5 \\times (-4) - 5 \\times 2| = \\dfrac{1}{2} |-20 - 10| = \\dfrac{1}{2} |-30| = 15$\n\n[경우 나눔 및 선택지 검토]\n두 방법 모두 넓이가 15로 정확히 일치하며, 선택지 ①번과 일치한다.\n\n[결론]\n따라서 정답은 ①이다.",
-      "question": "<p>13. 다음 그림은 이차함수 $y=x^2-4x-5$의 그래프이다. 이 그래프의 꼭짓점을 $C$, 포물선이 $x$축과 만나는 점을 $A$라 하고 $y$축과 만나는 점을 $B$라 할 때 $\\triangle ABC$의 넓이를 구하면? (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q13.png\" alt=\"y=x^2-4x-5의 꼭짓점 C, x절편 A(5, 0), y절편 B(0, -5)로 이루어진 삼각형 넓이 문제\" class=\"question-image\" /></p>"
+      "question": "<p>13. 다음 그림은 이차함수 $y=x^2-4x-5$의 그래프이다. 이 그래프의 꼭짓점을 $C$, 포물선이 $x$축과 만나는 점을 $A$라 하고 $y$축과 만나는 점을 $B$라 할 때 $\\triangle ABC$의 넓이를 구하면? (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"파란 포물선 y=x²−4x−5가 오른쪽 가로축에서 A, 세로축에서 B를 만난다. 가로축 아래쪽 꼭짓점 C를 이은 삼각형을 연두색으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>"
     },
     {
       "id": 14,
@@ -430,13 +430,13 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형",
         "그래프"
       ],
       "wide": false,
-      "content": "<p>14. 다음 그림과 같이 점 $P$는 일차함수 $y=-2x+4$의 그래프 위의 점이고, $P$와 $Q$의 $x$좌표는 같고 $Q$는 $x$축 위의 점이며 $P$와 $R$의 $y$좌표는 같고 $R$은 $y$축 위의 점이다. 직사각형 $PQOR$의 넓이가 최대일 때 직사각형 $PQOR$의 둘레의 길이를 구하면? (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q14.png\" alt=\"일차함수 y=-2x+4 위의 점 P와 내접 직사각형 PQOR 문제\" class=\"question-image\" /></p>",
+      "content": "<p>14. 다음 그림과 같이 점 $P$는 일차함수 $y=-2x+4$의 그래프 위의 점이고, $P$와 $Q$의 $x$좌표는 같고 $Q$는 $x$축 위의 점이며 $P$와 $R$의 $y$좌표는 같고 $R$은 $y$축 위의 점이다. 직사각형 $PQOR$의 넓이가 최대일 때 직사각형 $PQOR$의 둘레의 길이를 구하면? (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q14-problem-visual-v2.svg\" alt=\"주황색 직선에서 P를 잡아 같은 x에 가로축의 Q, 같은 y에 세로축의 R을 놓았다. P, Q, 원점 O, R을 연결한 직사각형을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$3$",
         "$4$",
@@ -446,7 +446,7 @@ window.examData = {
       ],
       "answer": "④",
       "solution": "[원문 조건 및 구할 대상]\n일차함수 $y=-2x+4$ 위의 제1사분면 점 $P$와 축 위의 점들로 만든 직사각형 $PQOR$의 넓이가 최대일 때, 이 직사각형의 둘레의 길이를 구한다.\n\n[핵심 발상/공식]\n점 $P$의 $x$좌표를 $t$ ($0 < t < 2$)로 두고, 직사각형의 가로와 세로를 $t$에 관한 식으로 표현하여 넓이의 이차함수 최댓값 조건을 찾은 뒤 둘레의 길이를 계산한다.\n\n[연속 등식 및 중간 계산]\n1단계: 점들의 좌표 및 변의 길이 표현\n- 점 $P(t, -2t + 4)$ ($0 < t < 2$)\n- 가로의 길이 $\\overline{OQ} = t$\n- 세로의 길이 $\\overline{OR} = -2t + 4$\n2단계: 직사각형의 넓이 $S(t)$ 분석\n$S(t) = t(-2t + 4) = -2t^2 + 4t$\n$= -2(t^2 - 2t + 1 - 1) = -2(t - 1)^2 + 2$\n따라서 넓이는 $t = 1$일 때 최댓값 2를 갖는다.\n3단계: 넓이가 최대일 때($t=1$) 둘레의 길이 계산\n- 가로의 길이: $t = 1$\n- 세로의 길이: $-2(1) + 4 = 2$\n- 둘레의 길이 $= 2 \\times ((\\text{가로}) + (\\text{세로})) = 2 \\times (1 + 2) = 2 \\times 3 = 6$\n\n[경우 나눔 및 선택지 검토]\n넓이가 최대일 때 둘레의 길이는 6이며 선택지 ④번과 일치한다.\n\n[결론]\n따라서 정답은 ④이다.",
-      "question": "<p>14. 다음 그림과 같이 점 $P$는 일차함수 $y=-2x+4$의 그래프 위의 점이고, $P$와 $Q$의 $x$좌표는 같고 $Q$는 $x$축 위의 점이며 $P$와 $R$의 $y$좌표는 같고 $R$은 $y$축 위의 점이다. 직사각형 $PQOR$의 넓이가 최대일 때 직사각형 $PQOR$의 둘레의 길이를 구하면? (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q14.png\" alt=\"일차함수 y=-2x+4 위의 점 P와 내접 직사각형 PQOR 문제\" class=\"question-image\" /></p>"
+      "question": "<p>14. 다음 그림과 같이 점 $P$는 일차함수 $y=-2x+4$의 그래프 위의 점이고, $P$와 $Q$의 $x$좌표는 같고 $Q$는 $x$축 위의 점이며 $P$와 $R$의 $y$좌표는 같고 $R$은 $y$축 위의 점이다. 직사각형 $PQOR$의 넓이가 최대일 때 직사각형 $PQOR$의 둘레의 길이를 구하면? (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q14-problem-visual-v2.svg\" alt=\"주황색 직선에서 P를 잡아 같은 x에 가로축의 Q, 같은 y에 세로축의 R을 놓았다. P, Q, 원점 O, R을 연결한 직사각형을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>"
     },
     {
       "id": 15,
@@ -731,17 +731,17 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "서술형",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형",
         "그래프"
       ],
       "wide": false,
-      "content": "<p>서술형 3. 다음 그림은 이차함수 $y=-2(x-p)^2+p+3$의 그래프이다. 이 그래프의 꼭짓점을 $A$라 하고, 점 $A$에서 $x$축에 내린 수선의 발을 $H$라고 하자. $\\triangle OHA$의 넓이가 $9$일 때, 다음 물음에 답하시오. (단, 점 $A$는 제 1사분면 위의 점이다.) (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/s03.png\" alt=\"이차함수 y=-2(x-p)^2+p+3의 꼭짓점 A와 수선의 발 H, 직각삼각형 OHA 넓이 9 문제\" class=\"question-image\" /><br>(1) $p$를 사용하여 $\\overline{OH}$와 $\\overline{AH}$의 길이를 각각 나타내시오. (2점)<br>(2) $\\triangle OHA$의 넓이를 이용하여 꼭짓점의 $A$좌표를 구하시오. (3점)</p>",
+      "content": "<p>서술형 3. 다음 그림은 이차함수 $y=-2(x-p)^2+p+3$의 그래프이다. 이 그래프의 꼭짓점을 $A$라 하고, 점 $A$에서 $x$축에 내린 수선의 발을 $H$라고 하자. $\\triangle OHA$의 넓이가 $9$일 때, 다음 물음에 답하시오. (단, 점 $A$는 제 1사분면 위의 점이다.) (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선의 꼭짓점은 A이다. A의 바로 아래 가로축에 H를 둔다. A, H, 원점 O를 이은 직각삼각형을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br>(1) $p$를 사용하여 $\\overline{OH}$와 $\\overline{AH}$의 길이를 각각 나타내시오. (2점)<br>(2) $\\triangle OHA$의 넓이를 이용하여 꼭짓점의 $A$좌표를 구하시오. (3점)</p>",
       "choices": [],
       "answer": "(1) \\overline{OH} = p, \\overline{AH} = p + 3 / (2) (3, 6)",
       "solution": "[원문 조건 및 구할 대상]\n이차함수 $y=-2(x-p)^2+p+3$의 꼭짓점 $A$가 제1사분면에 있고 수선의 발 $H$에 대해 $\\triangle OHA$의 넓이가 9일 때, 선분의 길이를 $p$로 나타내고 점 $A$의 좌표를 구한다.\n\n[핵심 발상/공식]\n꼭짓점 $A(p, p+3)$에 대하여 직각삼각형 $\\triangle OHA$의 밑변 $\\overline{OH} = p$, 높이 $\\overline{AH} = p+3$을 직각삼각형 넓이 공식 $\\dfrac{1}{2} \\times \\overline{OH} \\times \\overline{AH} = 9$에 대입하여 $p$의 이차방정식을 푼다.\n\n[연속 등식 및 중간 계산]\n1단계: (1) $\\overline{OH}$와 $\\overline{AH}$의 길이 표현 (2.0점)\n꼭짓점 $A$의 좌표는 $(p, p+3)$이고 제1사분면 위의 점이므로 $p > 0, p+3 > 0$이다.\n점 $H$의 좌표는 $(p, 0)$이다.\n따라서 $\\overline{OH} = p$, $\\overline{AH} = p+3$이다.\n2단계: (2) $\\triangle OHA$ 넓이로 꼭짓점 $A$의 좌표 구하기 (3.0점)\n$\\text{넓이} = \\dfrac{1}{2} \\times \\overline{OH} \\times \\overline{AH} = \\dfrac{1}{2}p(p+3) = 9$\n양변에 2를 곱하면\n$p(p+3) = 18 \\implies p^2 + 3p - 18 = 0$\n$(p + 6)(p - 3) = 0$\n$p > 0$이므로 $p = 3$이다.\n따라서 점 $A$의 $x$좌표는 3, $y$좌표는 $3 + 3 = 6$이다.\n꼭짓점 $A$의 좌표는 $(3, 6)$이다.\n\n[경우 나눔 및 선택지 검토]\n$p=3$일 때 밑변 3, 높이 6인 직각삼각형 넓이는 $\\dfrac{1}{2} \\times 3 \\times 6 = 9$로 조건과 완벽히 일치한다.\n\n[결론]\n따라서 (1) $\\overline{OH} = p, \\overline{AH} = p + 3$, (2) $(3, 6)$이다.",
-      "question": "<p>서술형 3. 다음 그림은 이차함수 $y=-2(x-p)^2+p+3$의 그래프이다. 이 그래프의 꼭짓점을 $A$라 하고, 점 $A$에서 $x$축에 내린 수선의 발을 $H$라고 하자. $\\triangle OHA$의 넓이가 $9$일 때, 다음 물음에 답하시오. (단, 점 $A$는 제 1사분면 위의 점이다.) (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/s03.png\" alt=\"이차함수 y=-2(x-p)^2+p+3의 꼭짓점 A와 수선의 발 H, 직각삼각형 OHA 넓이 9 문제\" class=\"question-image\" /><br>(1) $p$를 사용하여 $\\overline{OH}$와 $\\overline{AH}$의 길이를 각각 나타내시오. (2점)<br>(2) $\\triangle OHA$의 넓이를 이용하여 꼭짓점의 $A$좌표를 구하시오. (3점)</p>"
+      "question": "<p>서술형 3. 다음 그림은 이차함수 $y=-2(x-p)^2+p+3$의 그래프이다. 이 그래프의 꼭짓점을 $A$라 하고, 점 $A$에서 $x$축에 내린 수선의 발을 $H$라고 하자. $\\triangle OHA$의 넓이가 $9$일 때, 다음 물음에 답하시오. (단, 점 $A$는 제 1사분면 위의 점이다.) (5점)</p><p><img src=\"assets/images/16_창포중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선의 꼭짓점은 A이다. A의 바로 아래 가로축에 H를 둔다. A, H, 원점 O를 이은 직각삼각형을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br>(1) $p$를 사용하여 $\\overline{OH}$와 $\\overline{AH}$의 길이를 각각 나타내시오. (2점)<br>(2) $\\triangle OHA$의 넓이를 이용하여 꼭짓점의 $A$좌표를 구하시오. (3점)</p>"
     },
     {
       "id": 25,

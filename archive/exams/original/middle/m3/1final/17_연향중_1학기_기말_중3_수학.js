@@ -13,6 +13,7 @@ window.examData = {
   "questions": [
     {
       "number": 1,
+      "content": "다음 중 $x$에 대한 이차방정식인 것은? [3점]",
       "score": 3,
       "type": "choice",
       "stem": "다음 중 $x$에 대한 이차방정식인 것은? [3점]",
@@ -28,6 +29,7 @@ window.examData = {
     },
     {
       "number": 2,
+      "content": "다음 중 $x=-3$을 근으로 갖는 이차방정식은? [3점]",
       "score": 3,
       "type": "choice",
       "stem": "다음 중 $x=-3$을 근으로 갖는 이차방정식은? [3점]",
@@ -43,6 +45,7 @@ window.examData = {
     },
     {
       "number": 3,
+      "content": "이차방정식 $x^2-6x+k=0$의 한 근이 $x=3-\\sqrt{2}$일 때, 상수 $k$의 값은? [4점]",
       "score": 4,
       "type": "choice",
       "stem": "이차방정식 $x^2-6x+k=0$의 한 근이 $x=3-\\sqrt{2}$일 때, 상수 $k$의 값은? [4점]",
@@ -58,6 +61,7 @@ window.examData = {
     },
     {
       "number": 4,
+      "content": "다음 <보기>의 이차방정식 중 중근을 갖는 것을 모두 고른 것은? [4점]<br><br><table style=\"border:1px solid #000; width:100%; padding:10px;\"><tr><td><보기><br>ㄱ. $x^2+10x=-25$<br>ㄴ. $x^2-8x+64=0$<br>ㄷ. $x(x-6)=-9$<br>ㄹ. $x^2-x+2=-6x-16$<br>ㅁ. $x^2-2x-1=0$</td></tr></table>",
       "score": 4,
       "type": "choice",
       "stem": "다음 <보기>의 이차방정식 중 중근을 갖는 것을 모두 고른 것은? [4점]<br><br><table style=\"border:1px solid #000; width:100%; padding:10px;\"><tr><td><보기><br>ㄱ. $x^2+10x=-25$<br>ㄴ. $x^2-8x+64=0$<br>ㄷ. $x(x-6)=-9$<br>ㄹ. $x^2-x+2=-6x-16$<br>ㅁ. $x^2-2x-1=0$</td></tr></table>",
@@ -73,6 +77,7 @@ window.examData = {
     },
     {
       "number": 5,
+      "content": "이차방정식 $\\frac{1}{3}(x-1)^2-\\frac{7}{9}(x-1)-\\frac{2}{3}=0$의 해는? [4점]",
       "score": 4,
       "type": "choice",
       "stem": "이차방정식 $\\frac{1}{3}(x-1)^2-\\frac{7}{9}(x-1)-\\frac{2}{3}=0$의 해는? [4점]",
@@ -88,6 +93,7 @@ window.examData = {
     },
     {
       "number": 6,
+      "content": "지면으로부터의 높이가 $2500\\text{ m}$인 어느 화산이 폭발하여 초속 $150\\text{ m}$로 용암이 분출되었다. 분출물의 $t$초 후의 높이가 $(-5t^2+150t+2500)\\text{ m}$일 때, 분출물의 높이가 $3500\\text{ m}$ 이상인 것은 몇 초 동안인가? [4점]",
       "score": 4,
       "type": "choice",
       "stem": "지면으로부터의 높이가 $2500\\text{ m}$인 어느 화산이 폭발하여 초속 $150\\text{ m}$로 용암이 분출되었다. 분출물의 $t$초 후의 높이가 $(-5t^2+150t+2500)\\text{ m}$일 때, 분출물의 높이가 $3500\\text{ m}$ 이상인 것은 몇 초 동안인가? [4점]",
@@ -103,6 +109,7 @@ window.examData = {
     },
     {
       "number": 7,
+      "content": "이차방정식 $2x^2-3x+a-5=0$의 해가 모두 유리수가 되도록 하는 자연수 $a$의 값은 모두 몇 개인가? [5점]",
       "score": 5,
       "type": "choice",
       "stem": "이차방정식 $2x^2-3x+a-5=0$의 해가 모두 유리수가 되도록 하는 자연수 $a$의 값은 모두 몇 개인가? [5점]",
@@ -118,6 +125,7 @@ window.examData = {
     },
     {
       "number": 8,
+      "content": "다음 중 $y$가 $x$에 관한 이차함수가 아닌 것은? [3점]",
       "score": 3,
       "type": "choice",
       "stem": "다음 중 $y$가 $x$에 관한 이차함수가 아닌 것은? [3점]",
@@ -133,6 +141,7 @@ window.examData = {
     },
     {
       "number": 9,
+      "content": "다음 중 함수 $y=3x^2-2x-ax(4-x)$가 이차함수가 되기 위한 상수 $a$의 값이 될 수 없는 것은? [3점]",
       "score": 3,
       "type": "choice",
       "stem": "다음 중 함수 $y=3x^2-2x-ax(4-x)$가 이차함수가 되기 위한 상수 $a$의 값이 될 수 없는 것은? [3점]",
@@ -148,6 +157,7 @@ window.examData = {
     },
     {
       "number": 10,
+      "content": "이차함수 $f(x)=2x^2-5x+3$에서 $f(-1)+f(1)$의 값은? [3점]",
       "score": 3,
       "type": "choice",
       "stem": "이차함수 $f(x)=2x^2-5x+3$에서 $f(-1)+f(1)$의 값은? [3점]",
@@ -163,9 +173,15 @@ window.examData = {
     },
     {
       "number": 11,
+      "content": "다음 그림은 <보기>에 주어진 이차함수의 그래프를 각각 그린 것이다. 기호가 바르게 연결된 것은? [3점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q11-problem-visual-v2.svg\" alt=\"원점에서 시작해 위로 열린 세 포물선은 가장 넓은 a, 가운데 폭인 b, 가장 좁은 c로 표시했다. 아래로 열린 두 포물선은 더 넓은 d와 그 안쪽 e이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br><br><table style=\"border:1px solid #000; width:100%; padding:10px;\"><tr><td><보기><br>ㄱ. $y=-x^2$<br>ㄴ. $y=2x^2$<br>ㄷ. $y=5x^2$<br>ㄹ. $y=-\\frac{2}{3}x^2$<br>ㅁ. $y=\\frac{1}{2}x^2$</td></tr></table>",
+      "solutionImageSize": "full",
+      "solutionImageCaption": "위로 열린 세 그래프의 폭은 a, b, c 순서로 좁다. 아래로 열린 두 그래프에서는 d의 계수 절댓값이 더 작아 y=−2x²/3에 해당한다. 바르게 연결된 것은 ④이다.",
+      "solutionImageAlt": "원점에서 시작해 위로 열린 세 포물선은 가장 넓은 a, 가운데 폭인 b, 가장 좁은 c로 표시했다. 아래로 열린 두 포물선은 더 넓은 d와 그 안쪽 e이다.",
+      "solutionImage": "assets/images/17_연향중_1학기_기말_중3_수학/q11-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 3,
       "type": "choice",
-      "stem": "다음 그림은 <보기>에 주어진 이차함수의 그래프를 각각 그린 것이다. 기호가 바르게 연결된 것은? [3점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q11.png\"><br><br><table style=\"border:1px solid #000; width:100%; padding:10px;\"><tr><td><보기><br>ㄱ. $y=-x^2$<br>ㄴ. $y=2x^2$<br>ㄷ. $y=5x^2$<br>ㄹ. $y=-\\frac{2}{3}x^2$<br>ㅁ. $y=\\frac{1}{2}x^2$</td></tr></table>",
+      "stem": "다음 그림은 <보기>에 주어진 이차함수의 그래프를 각각 그린 것이다. 기호가 바르게 연결된 것은? [3점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q11-problem-visual-v2.svg\" alt=\"원점에서 시작해 위로 열린 세 포물선은 가장 넓은 a, 가운데 폭인 b, 가장 좁은 c로 표시했다. 아래로 열린 두 포물선은 더 넓은 d와 그 안쪽 e이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br><br><table style=\"border:1px solid #000; width:100%; padding:10px;\"><tr><td><보기><br>ㄱ. $y=-x^2$<br>ㄴ. $y=2x^2$<br>ㄷ. $y=5x^2$<br>ㄹ. $y=-\\frac{2}{3}x^2$<br>ㅁ. $y=\\frac{1}{2}x^2$</td></tr></table>",
       "choices": [
         "a - ㄷ",
         "b - ㄱ",
@@ -178,6 +194,7 @@ window.examData = {
     },
     {
       "number": 12,
+      "content": "이차함수 $y=-4x^2$의 그래프와 $x$축에 서로 대칭인 그래프가 점 $(p, p+3)$을 지날 때, 양수 $p$의 값은? [4점]",
       "score": 4,
       "type": "choice",
       "stem": "이차함수 $y=-4x^2$의 그래프와 $x$축에 서로 대칭인 그래프가 점 $(p, p+3)$을 지날 때, 양수 $p$의 값은? [4점]",
@@ -193,9 +210,15 @@ window.examData = {
     },
     {
       "number": 13,
+      "content": "다음 그림과 같이 이차함수 $y=2x^2$의 그래프 위에 점 $\\text{A}$가 있다. 점 $\\text{B}$의 좌표가 $(-5, 0)$이고 $\\triangle\\text{ABO}$의 넓이가 $20$일 때, 점 $\\text{A}$의 좌표는? (단, 점 $\\text{A}$는 제1사분면 위의 점이다.) [5점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"위로 열린 포물선 y=2x²의 오른쪽 가지에 A가 있다. 가로축의 왼쪽 점 B는 x=−5이다. 점 B와 원점 O, 포물선의 A를 이었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "solutionImageSize": "full",
+      "solutionImageCaption": "밑변 BO=5이고 넓이가 20이므로 A의 y좌표는 8이다. 2x²=8에서 A가 제1사분면 위에 있으므로 x=2이다. 따라서 A=(2,8)이고 정답은 ③이다.",
+      "solutionImageAlt": "위로 열린 포물선 y=2x²의 오른쪽 가지에 A가 있다. 가로축의 왼쪽 점 B는 x=−5이다. 점 B와 원점 O, 포물선의 A를 이었다.",
+      "solutionImage": "assets/images/17_연향중_1학기_기말_중3_수학/q13-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 5,
       "type": "choice",
-      "stem": "다음 그림과 같이 이차함수 $y=2x^2$의 그래프 위에 점 $\\text{A}$가 있다. 점 $\\text{B}$의 좌표가 $(-5, 0)$이고 $\\triangle\\text{ABO}$의 넓이가 $20$일 때, 점 $\\text{A}$의 좌표는? (단, 점 $\\text{A}$는 제1사분면 위의 점이다.) [5점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q13.png\">",
+      "stem": "다음 그림과 같이 이차함수 $y=2x^2$의 그래프 위에 점 $\\text{A}$가 있다. 점 $\\text{B}$의 좌표가 $(-5, 0)$이고 $\\triangle\\text{ABO}$의 넓이가 $20$일 때, 점 $\\text{A}$의 좌표는? (단, 점 $\\text{A}$는 제1사분면 위의 점이다.) [5점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"위로 열린 포물선 y=2x²의 오른쪽 가지에 A가 있다. 가로축의 왼쪽 점 B는 x=−5이다. 점 B와 원점 O, 포물선의 A를 이었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$\\text{A}(1, 2)$",
         "$\\text{A}(1, 8)$",
@@ -208,6 +231,7 @@ window.examData = {
     },
     {
       "number": 14,
+      "content": "이차함수 $y=5x^2$의 그래프를 $y$축의 방향으로 $3$만큼 평행이동한 그래프가 나타내는 이차함수의 식은? [3점]",
       "score": 3,
       "type": "choice",
       "stem": "이차함수 $y=5x^2$의 그래프를 $y$축의 방향으로 $3$만큼 평행이동한 그래프가 나타내는 이차함수의 식은? [3점]",
@@ -223,6 +247,7 @@ window.examData = {
     },
     {
       "number": 15,
+      "content": "이차함수 $y=-\\frac{1}{3}(x-3)^2+4$의 그래프는 이차함수 $y=-\\frac{1}{3}x^2$의 그래프를 $x$축의 방향으로 $p$만큼, $y$축의 방향으로 $q$만큼 평행이동한 것이다. 이때, $p+q$의 값은? [3점]",
       "score": 3,
       "type": "choice",
       "stem": "이차함수 $y=-\\frac{1}{3}(x-3)^2+4$의 그래프는 이차함수 $y=-\\frac{1}{3}x^2$의 그래프를 $x$축의 방향으로 $p$만큼, $y$축의 방향으로 $q$만큼 평행이동한 것이다. 이때, $p+q$의 값은? [3점]",
@@ -238,6 +263,7 @@ window.examData = {
     },
     {
       "number": 16,
+      "content": "이차함수 $y=-2x^2+12x-2$의 그래프의 꼭짓점의 좌표와 축의 방정식을 바르게 나열한 것은? [4점]",
       "score": 4,
       "type": "choice",
       "stem": "이차함수 $y=-2x^2+12x-2$의 그래프의 꼭짓점의 좌표와 축의 방정식을 바르게 나열한 것은? [4점]",
@@ -253,6 +279,7 @@ window.examData = {
     },
     {
       "number": 17,
+      "content": "이차함수 $y=-x^2$의 그래프와 모양과 폭이 같고, $x$축과 두 점 $(-2, 0)$, $(4, 0)$에서 만나는 포물선을 그래프로 하는 이차함수의 식은? [5점]",
       "score": 5,
       "type": "choice",
       "stem": "이차함수 $y=-x^2$의 그래프와 모양과 폭이 같고, $x$축과 두 점 $(-2, 0)$, $(4, 0)$에서 만나는 포물선을 그래프로 하는 이차함수의 식은? [5점]",
@@ -268,6 +295,7 @@ window.examData = {
     },
     {
       "number": 18,
+      "content": "이차함수 $y=-3(x+5)^2-4$의 그래프에서 $x$의 값이 증가할 때 $y$의 값은 감소하는 $x$의 값의 범위는? [3점]",
       "score": 3,
       "type": "choice",
       "stem": "이차함수 $y=-3(x+5)^2-4$의 그래프에서 $x$의 값이 증가할 때 $y$의 값은 감소하는 $x$의 값의 범위는? [3점]",
@@ -283,6 +311,7 @@ window.examData = {
     },
     {
       "number": 19,
+      "content": "꼭짓점의 좌표가 $(2, 3)$이고, 점 $(4, -5)$를 지나는 포물선을 그래프로 하는 이차함수의 식은? [4점]",
       "score": 4,
       "type": "choice",
       "stem": "꼭짓점의 좌표가 $(2, 3)$이고, 점 $(4, -5)$를 지나는 포물선을 그래프로 하는 이차함수의 식은? [4점]",
@@ -298,9 +327,15 @@ window.examData = {
     },
     {
       "number": 20,
+      "content": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, 상수 $a$, $b$, $c$의 부호는? [5점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"파란 포물선은 위로 열린다. 꼭짓점은 세로축 오른쪽과 가로축 아래에 있고, 세로축과 만나는 곳은 가로축보다 위에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "solutionImageSize": "full",
+      "solutionImageCaption": "위로 열리므로 a>0, 세로절편이 양수라 c>0이다. 축 −b/(2a)가 y축 오른쪽에 놓여 b<0이다. 정답은 ③이다.",
+      "solutionImageAlt": "파란 포물선은 위로 열린다. 꼭짓점은 세로축 오른쪽과 가로축 아래에 있고, 세로축과 만나는 곳은 가로축보다 위에 있다.",
+      "solutionImage": "assets/images/17_연향중_1학기_기말_중3_수학/q20-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 5,
       "type": "choice",
-      "stem": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, 상수 $a$, $b$, $c$의 부호는? [5점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q20.png\">",
+      "stem": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, 상수 $a$, $b$, $c$의 부호는? [5점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"파란 포물선은 위로 열린다. 꼭짓점은 세로축 오른쪽과 가로축 아래에 있고, 세로축과 만나는 곳은 가로축보다 위에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$a < 0$, $b < 0$, $c > 0$",
         "$a < 0$, $b > 0$, $c < 0$",
@@ -313,6 +348,7 @@ window.examData = {
     },
     {
       "number": 21,
+      "content": "이차함수 $y=kx^2-12kx+36k+9$의 그래프가 모든 사분면을 지날 때, 상수 $k$의 값의 범위는? [5점]",
       "score": 5,
       "type": "choice",
       "stem": "이차함수 $y=kx^2-12kx+36k+9$의 그래프가 모든 사분면을 지날 때, 상수 $k$의 값의 범위는? [5점]",
@@ -328,6 +364,7 @@ window.examData = {
     },
     {
       "number": 22,
+      "content": "<서술형> 답안지에 풀이과정과 답을 모두 쓰세요.<br><br>서술형1. $x$에 대한 이차방정식 $(a+1)x^2+a^2x-(2a+3)=0$의 한 근이 $1$일 때, 다른 한 근을 구하시오. [5점]",
       "score": 5,
       "type": "short",
       "stem": "<서술형> 답안지에 풀이과정과 답을 모두 쓰세요.<br><br>서술형1. $x$에 대한 이차방정식 $(a+1)x^2+a^2x-(2a+3)=0$의 한 근이 $1$일 때, 다른 한 근을 구하시오. [5점]",
@@ -337,27 +374,45 @@ window.examData = {
     },
     {
       "number": 23,
+      "content": "※ 다음은 롤러 보드를 타는 장소의 단면도를 좌표평면에 단순화하여 그려 놓은 것이다. 포물선 $\\text{A}$는 롤러 보드 쇼를 할 수 있도록 만든 무대이고, 포물선 $\\text{B}$는 스누피가 보드를 타고 움직이는 보드 판의 곡선이다. 물음에 답하시오. (단, 두 포물선 $\\text{A}$, $\\text{B}$의 폭은 같다.) (서술형2 ~ 서술형3)<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q23-problem-visual-v2.svg\" alt=\"같은 폭의 포물선 두 개가 위로 열린다. 아래쪽 A는 무대이고 위쪽 B는 보드의 곡선이다. 왼쪽 세로 경계의 x좌표는 −1이고 위쪽 높이는 3이다. 오른쪽 경계는 x=2이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br><br>서술형2. 곡선 $\\text{A}$, $\\text{B}$에 해당하는 그래프의 식을 각각 구하시오. [6점]",
+      "solutionImageSize": "full",
+      "solutionImageCaption": "B는 (0,0), (2,0), (−1,3)을 지나므로 y=x²−2x이다. A는 B를 아래로 3만큼 옮겼으므로 y=x²−2x−3이다.",
+      "solutionImageAlt": "같은 폭의 포물선 두 개가 위로 열린다. 아래쪽 A는 무대이고 위쪽 B는 보드의 곡선이다. 왼쪽 세로 경계의 x좌표는 −1이고 위쪽 높이는 3이다. 오른쪽 경계는 x=2이다.",
+      "solutionImage": "assets/images/17_연향중_1학기_기말_중3_수학/q23-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 6,
       "type": "short",
-      "stem": "※ 다음은 롤러 보드를 타는 장소의 단면도를 좌표평면에 단순화하여 그려 놓은 것이다. 포물선 $\\text{A}$는 롤러 보드 쇼를 할 수 있도록 만든 무대이고, 포물선 $\\text{B}$는 스누피가 보드를 타고 움직이는 보드 판의 곡선이다. 물음에 답하시오. (단, 두 포물선 $\\text{A}$, $\\text{B}$의 폭은 같다.) (서술형2 ~ 서술형3)<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/s02.png\"><br><br>서술형2. 곡선 $\\text{A}$, $\\text{B}$에 해당하는 그래프의 식을 각각 구하시오. [6점]",
+      "stem": "※ 다음은 롤러 보드를 타는 장소의 단면도를 좌표평면에 단순화하여 그려 놓은 것이다. 포물선 $\\text{A}$는 롤러 보드 쇼를 할 수 있도록 만든 무대이고, 포물선 $\\text{B}$는 스누피가 보드를 타고 움직이는 보드 판의 곡선이다. 물음에 답하시오. (단, 두 포물선 $\\text{A}$, $\\text{B}$의 폭은 같다.) (서술형2 ~ 서술형3)<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q23-problem-visual-v2.svg\" alt=\"같은 폭의 포물선 두 개가 위로 열린다. 아래쪽 A는 무대이고 위쪽 B는 보드의 곡선이다. 왼쪽 세로 경계의 x좌표는 −1이고 위쪽 높이는 3이다. 오른쪽 경계는 x=2이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br><br>서술형2. 곡선 $\\text{A}$, $\\text{B}$에 해당하는 그래프의 식을 각각 구하시오. [6점]",
       "choices": [],
       "answer": "A: y=x^2-2x-3, B: y=x^2-2x",
       "solution": "그림에서 $B$는 $(0,0)$, $(2,0)$을 지나므로 $y=ax(x-2)$로 놓는다.\n$B$가 $(-1,3)$을 지나므로 $3a=3$이고 $a=1$이다.\n따라서 $B:y=x^2-2x$이다.\n두 포물선의 폭이 같고 둘 다 위로 열리므로 $A$의 $x^2$의 계수도 $1$이다.\n그림에서 $A$는 $(0,-3)$과 $(-1,0)$을 지나므로 $A:y=x^2+bx-3$으로 놓는다.\n$(-1,0)$을 대입하면 $1-b-3=0$이므로 $b=-2$이다.\n따라서 $A:y=x^2-2x-3$이다."
     },
     {
       "number": 24,
+      "content": "서술형3. 무대와 보드 사이에 해당하는 색칠한 부분의 넓이를 구하시오. [4점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"같은 폭의 포물선 두 개가 위로 열린다. 아래쪽 A는 무대이고 위쪽 B는 보드의 곡선이다. 왼쪽 세로 경계의 x좌표는 −1이고 위쪽 높이는 3이다. 오른쪽 경계는 x=2이다. 두 세로선과 두 곡선 사이의 녹색 면이 색칠한 부분이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "solutionImageSize": "full",
+      "solutionImageCaption": "두 곡선이 세로로 3만큼 평행이동한 관계이므로 표시한 두 조각의 넓이는 같다. 남은 평행사변형의 가로 간격은 3, 세로 높이 차도 3이다. 넓이는 9이다.",
+      "solutionImageAlt": "같은 폭의 포물선 두 개가 위로 열린다. 아래쪽 A는 무대이고 위쪽 B는 보드의 곡선이다. 왼쪽 세로 경계의 x좌표는 −1이고 위쪽 높이는 3이다. 오른쪽 경계는 x=2이다. 두 세로선과 두 곡선 사이의 녹색 면이 색칠한 부분이다. 아래 그림의 두 빗금 친 조각은 평행이동으로 서로 겹친다.",
+      "solutionImage": "assets/images/17_연향중_1학기_기말_중3_수학/q24-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 4,
       "type": "short",
-      "stem": "서술형3. 무대와 보드 사이에 해당하는 색칠한 부분의 넓이를 구하시오. [4점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/s02.png\">",
+      "stem": "서술형3. 무대와 보드 사이에 해당하는 색칠한 부분의 넓이를 구하시오. [4점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"같은 폭의 포물선 두 개가 위로 열린다. 아래쪽 A는 무대이고 위쪽 B는 보드의 곡선이다. 왼쪽 세로 경계의 x좌표는 −1이고 위쪽 높이는 3이다. 오른쪽 경계는 x=2이다. 두 세로선과 두 곡선 사이의 녹색 면이 색칠한 부분이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [],
       "answer": "9",
       "solution": "위쪽 곡선 B의 양 끝점을 $P(-1,3)$, $Q(2,0)$, 아래쪽 곡선 A의 양 끝점을 $R(-1,0)$, $S(2,-3)$이라 하자.\n두 식의 차는 $(x^2-2x)-(x^2-2x-3)=3$이다.\n따라서 B를 아래로 3만큼 평행이동하면 A가 되고, 선분 PQ도 선분 RS로 옮겨진다.\n그러므로 선분 PQ와 곡선 B 사이의 부분, 선분 RS와 곡선 A 사이의 부분은 합동이어서 넓이가 같다.\n색칠한 부분은 평행사변형 PQSR에서 위의 곡선 부분을 빼고 같은 넓이의 아래 곡선 부분을 더한 것이므로, 평행사변형 PQSR과 넓이가 같다.\n$PR=3$이고, 평행한 두 수직변 PR, QS 사이의 거리는 $2-(-1)=3$이다.\n따라서 넓이는 $3\\times3=9$이다."
     },
     {
       "number": 25,
+      "content": "서술형4. 다음 그림과 같이 한 변의 길이가 $24\\text{ cm}$인 정사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 점 $\\text{A}$를 출발하여 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 매초 $4\\text{ cm}$의 속력으로, 점 $\\text{Q}$는 점 $\\text{B}$를 출발하여 점 $\\text{C}$까지 $\\overline{\\text{BC}}$ 위를 매초 $2\\text{ cm}$의 속력으로 움직인다. 두 점 $\\text{P}$, $\\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 넓이의 최댓값을 구하시오. [5점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q25-problem-visual-v2.svg\" alt=\"가로와 세로 길이가 모두 24 cm인 정사각형이다. P는 왼쪽 변 위, Q는 아래 변 위를 움직인다. 왼쪽 아래 B와 두 점 P, Q를 이은 삼각형을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "solutionImageSize": "full",
+      "solutionImageCaption": "시간이 t초일 때 PB=24−4t, BQ=2t이다. 넓이 S=(24−4t)×2t÷2=36−4(t−3)²이다. t=3에서 최대 넓이는 36 cm²이다.",
+      "solutionImageAlt": "가로와 세로 길이가 모두 24 cm인 정사각형이다. P는 왼쪽 변 위, Q는 아래 변 위를 움직인다. 왼쪽 아래 B와 두 점 P, Q를 이은 삼각형을 칠했다.",
+      "solutionImage": "assets/images/17_연향중_1학기_기말_중3_수학/q25-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 5,
       "type": "short",
-      "stem": "서술형4. 다음 그림과 같이 한 변의 길이가 $24\\text{ cm}$인 정사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 점 $\\text{A}$를 출발하여 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 매초 $4\\text{ cm}$의 속력으로, 점 $\\text{Q}$는 점 $\\text{B}$를 출발하여 점 $\\text{C}$까지 $\\overline{\\text{BC}}$ 위를 매초 $2\\text{ cm}$의 속력으로 움직인다. 두 점 $\\text{P}$, $\\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 넓이의 최댓값을 구하시오. [5점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/s04.png\">",
+      "stem": "서술형4. 다음 그림과 같이 한 변의 길이가 $24\\text{ cm}$인 정사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 점 $\\text{A}$를 출발하여 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 매초 $4\\text{ cm}$의 속력으로, 점 $\\text{Q}$는 점 $\\text{B}$를 출발하여 점 $\\text{C}$까지 $\\overline{\\text{BC}}$ 위를 매초 $2\\text{ cm}$의 속력으로 움직인다. 두 점 $\\text{P}$, $\\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 넓이의 최댓값을 구하시오. [5점]<br><br><img src=\"assets/images/17_연향중_1학기_기말_중3_수학/q25-problem-visual-v2.svg\" alt=\"가로와 세로 길이가 모두 24 cm인 정사각형이다. P는 왼쪽 변 위, Q는 아래 변 위를 움직인다. 왼쪽 아래 B와 두 점 P, Q를 이은 삼각형을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [],
       "answer": "36cm^2",
       "solution": "출발 후 $t$초일 때 $PB=24-4t$, $BQ=2t$이다.\n점 $P$가 $B$에 도착할 때까지 $0\\le t\\le6$이다.\n$S=\\frac12\\times PB\\times BQ$\n$S=\\frac12(24-4t)(2t)=24t-4t^2$\n$S=-4(t^2-6t)$\n$S=-4\\{(t-3)^2-9\\}=-4(t-3)^2+36$\n$(t-3)^2\\ge0$이므로 $S\\le36$이다.\n$t=3$일 때 최대 넓이는 $36\\text{ cm}^2$이다."
