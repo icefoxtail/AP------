@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-basic-parent-correction-request-v1",
+  "requestId": "m1s2-palma-q7-parent-20261115",
+  "examUid": "25_팔마중_2학기_중간_중1_기출",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+  "expectedQuestionCount": 24,
+  "expectedSourceBlobSha1": "79f3a1866d0375e3496d81a13ab86e5670a99742",
+  "previousSourceCommit": "0441bbe1de62a62b4d26f82fa3c0271d65884dce",
+  "previousSourceBlobSha1": "f95091cb0f83eb295c9cece8c0be19e338d37cad",
+  "difficultyRequestRef": {
+    "path": ".archive-meta-register/evidence/m1s2-palma-q7-parent-20261115.difficulty-request.json",
+    "sha256": "12e93e9f9649c76460808bb8fd989489b674fafab7140582225fe451de4480b5"
+  },
+  "approval": {
+    "type": "BASIC_PARENT_CORRECTION",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_M1_RELEASE_26FC42390A50",
+    "evidenceRefs": [
+      {
+        "path": "docs/operations/m1-s2-meta-b01-b-20261114/04-palma-mid-review.json",
+        "sha256": "16df42fb08e6a18102be10a3d429d84e7c39eb46449ca13aab63965ef422c85e"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m1s2-palma-q7-parent-20261115.difficulty-request.json",
+        "sha256": "12e93e9f9649c76460808bb8fd989489b674fafab7140582225fe451de4480b5"
+      }
+    ],
+    "nativeParentReview": {
+      "schemaVersion": "archive-reviewed-parent-correction-v1",
+      "reviewCommit": "8b839bd17607448100f9790e84deb05af49e3017",
+      "reviewPath": "docs/operations/m1-s2-meta-b01-b-20261114/04-palma-mid-review.json",
+      "reviewRef": {
+        "path": "docs/operations/m1-s2-meta-b01-b-20261114/04-palma-mid-review.json",
+        "sha256": "16df42fb08e6a18102be10a3d429d84e7c39eb46449ca13aab63965ef422c85e"
+      }
+    }
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_cd96dcd0b7b1450dd2db46caf9242c4ed05987a83196f962012ba3365ed302b8",
+      "sourceOrdinal": 7,
+      "reason": "Publish the completed review’s exact basic parent and preserve its explicit RPM leaf/type disposition.",
+      "before": {
+        "sourceFingerprint": "a5240e422f968e5d78469029720eb332536f2d6b4dc1c040685ae860ee147202",
+        "contentFingerprint": "dcc806b59e4e930d834219c0f1f4138c5d6aa39752d15086f5b095d7b95cec04"
+      },
+      "after": {
+        "sourceFingerprint": "62858d8006f8b5ca912148b12d7352e558ad39efc4a6824a4373bed3cab4bef0",
+        "contentFingerprint": "dcc806b59e4e930d834219c0f1f4138c5d6aa39752d15086f5b095d7b95cec04"
+      },
+      "parentBefore": {
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정"
+      },
+      "parentAfter": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계"
+      },
+      "basicParent": {
+        "grade": "중1",
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "위치 관계"
+      },
+      "typeDisposition": "KEEP_UNREGISTERED_TYPE",
+      "expectedBefore": {
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "conceptClusterKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "sourceFingerprint": "a5240e422f968e5d78469029720eb332536f2d6b4dc1c040685ae860ee147202",
+        "contentFingerprint": "dcc806b59e4e930d834219c0f1f4138c5d6aa39752d15086f5b095d7b95cec04",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "linkBefore": null,
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-s2-meta-b01-b-20261114/04-palma-mid-review.json",
+          "sha256": "16df42fb08e6a18102be10a3d429d84e7c39eb46449ca13aab63965ef422c85e"
+        }
+      ]
+    }
+  ]
+}

@@ -141,11 +141,13 @@ window.questionBank = [
     "problemTypeKey": "PT_DIVISOR_COUNT",
     "templateKey": "TPL_DIVISOR_COUNT_CORE",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B34",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
