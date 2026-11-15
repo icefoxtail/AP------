@@ -4755,14 +4755,17 @@ def _mc_obs_free(entry,ident):
         pole=-curve['d'][0]/curve['d'][1]
         if sum(coefficient*pole**power for power,coefficient in enumerate(curve['n']))==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
     elif kind=='EXPONENTIAL':
-        base=entry.get('base')
-        if not isinstance(base,str) or not re.fullmatch(r'[1-9]\d{0,3}',base) or not 2<=int(base)<=1000:
+        raw_base=entry.get('base')
+        if not isinstance(raw_base,str) or not re.fullmatch(r'[1-9]\d{0,3}(?:/[1-9]\d{0,3})?',raw_base):
+            raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
+        base=Fraction(raw_base)
+        if str(base)!=raw_base or base==1 or max(base.numerator,base.denominator)>1000:
             raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
         coefficients=entry.get('coefficients')
         if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError(code)
         a,k,c=[_mc_obs_fraction(value,code) for value in coefficients]
         if not a or not k:raise ValueError(code)
-        curve.update({'base':int(base),'c':[a,k,c],'shiftX':_mc_obs_fraction(entry.get('shiftX','0'),code)})
+        curve.update({'base':base,'c':[a,k,c],'shiftX':_mc_obs_fraction(entry.get('shiftX','0'),code)})
     else:
         curve['r']=_mc_obs_pair(entry,'radicand',code)
         if curve['r'][1]==0:raise ValueError(code)
@@ -4887,7 +4890,7 @@ def _mc_region_expected(plan,entry,by_id,viewport):
 
 def _mc_obs_integer_columns(region_id,curves,left,right):
     error='GRAPH_REGION_INTEGER_COLUMNS_INVALID:'+region_id
-    if (any(not curve or curve['kind']!='EXPONENTIAL' for curve in curves)
+    if (any(not curve or curve['kind']!='EXPONENTIAL' or curve['base'].denominator!=1 for curve in curves)
         or len({(curve['base'],curve['c'][1]) for curve in curves})!=1
         or left.denominator!=1 or right.denominator!=1 or not 2<=right-left+1<=8):
         raise ValueError(error)

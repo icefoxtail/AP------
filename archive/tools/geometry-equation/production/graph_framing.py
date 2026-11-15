@@ -4459,9 +4459,15 @@ def mc_value(curve,x_value):
     return abs(value) if curve.get('abs') else value
 
 def _mc_exponential_curve(entry,ident):
-    base=entry.get('base')
-    if not isinstance(base,str) or not re.fullmatch(r'[1-9]\d{0,3}',base) or not 2<=int(base)<=1000:
-        raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
+    value=entry.get('base')
+    try:
+        if not isinstance(value,str) or not re.fullmatch(r'[1-9]\d{0,3}(?:/[1-9]\d{0,3})?',value):raise ValueError()
+        base=exp_log_base(value,'MULTI_CURVE_EXPONENTIAL')
+        if base is None or base['kind'] not in ('INTEGER','RATIONAL'):raise ValueError()
+        base=Fraction(base['text'])
+        if str(base)!=value or max(base.numerator,base.denominator)>1000:raise ValueError()
+    except ValueError:
+        raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident) from None
     raw=entry.get('coefficients')
     code='MULTI_CURVE_COEFFICIENT_INVALID:'+ident
     if not isinstance(raw,list) or len(raw)!=3:raise ValueError(code)
@@ -4470,7 +4476,7 @@ def _mc_exponential_curve(entry,ident):
     if 'domain' not in entry:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
     interval=_mc_interval_fractions(entry['domain'],'MULTI_CURVE_DOMAIN_INVALID:'+ident)
     shift=_mc_fraction(entry.get('shiftX','0'),code)
-    curve={'kind':'EXPONENTIAL','base':int(base),'coefficients':coefficients,'shiftX':shift,'interval':interval}
+    curve={'kind':'EXPONENTIAL','base':base,'coefficients':coefficients,'shiftX':shift,'interval':interval}
     if any(abs(x)>10**6 or abs(coefficients[1]*(x-shift))>64 for x in interval):
         raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
     if any(abs(mc_value(curve,x))>10**8 for x in interval):
@@ -4784,7 +4790,7 @@ def _mc_integer_columns(region_id, curves, start, end):
     # Same base and rate make the difference a constant plus one monotone exponential.
     # Exact positivity at both walls therefore proves the upper/lower order throughout.
     code='GRAPH_REGION_INTEGER_COLUMNS_INVALID:'+region_id
-    if (any(curve=='axis' or curve['kind']!='EXPONENTIAL' for curve in curves)
+    if (any(curve=='axis' or curve['kind']!='EXPONENTIAL' or curve['base'].denominator!=1 for curve in curves)
         or len({(curve['base'],curve['coefficients'][1]) for curve in curves})!=1
         or start.denominator!=1 or end.denominator!=1 or not 2<=end-start+1<=8):
         raise ValueError(code)

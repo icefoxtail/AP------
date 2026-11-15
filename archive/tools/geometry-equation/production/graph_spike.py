@@ -575,7 +575,7 @@ def _mc_row_y(row,x_value):
         value=sum(coefficient*x_value**power for power,coefficient in enumerate(n))/(d[0]+d[1]*x_value)
     elif kind=='EXPONENTIAL':
         amplitude,rate,offset=map(pp_exact_float,row['coefficients'])
-        value=offset+amplitude*int(row['base'])**(rate*(x_value-pp_exact_float(row['shiftX'])))
+        value=offset+amplitude*float(Fraction(row['base']))**(rate*(x_value-pp_exact_float(row['shiftX'])))
     elif kind=='SQRT':
         r=[pp_exact_float(value) for value in row['radicand']]
         value=pp_exact_float(row.get('offset','0'))+pp_exact_float(row.get('amplitude','1'))*math.sqrt(max(0.0,r[0]+r[1]*x_value))
