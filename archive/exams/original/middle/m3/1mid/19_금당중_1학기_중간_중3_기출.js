@@ -323,6 +323,10 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "낙하 시간은 √(98/4.9)=√20=2√5초이고 정답은 ④이다.",
+    "solutionImageAlt": "가로축은 낙하 시간이며 세로축은 낙하 거리이다. 주어진 높이 98 m에서 파란 곡선을 만나 아래로 점선을 내렸다.",
+    "solutionImage": "assets/images/19_금당중_1학기_중간_중3_기출/q10-solution.svg",
     "content": "지면으로부터 $h\\,m$의 높이에 떠 있는 헬리콥터에서 먹이를 떨어뜨렸을 때, 먹이가 땅에 닿을 때까지 걸리는 시간은 $\\sqrt{\\frac{h}{4.9}}$초라고 한다. $98\\,m$의 높이에서 먹이를 떨어뜨렸을 때, 먹이가 땅에 닿을 때까지 걸리는 시간을 구하면? (4점)",
     "choices": [
       "$\\sqrt{10}$초",
@@ -429,6 +433,10 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "8<5+√12<9이다. 소수 부분은 (5+√12)−8=√12−3이며 정답은 ③이다.",
+    "solutionImageAlt": "5+√12는 수직선의 8과 9 사이에 놓인다. 왼쪽 정수 8에서 주황 점까지의 거리가 소수 부분이다.",
+    "solutionImage": "assets/images/19_금당중_1학기_중간_중3_기출/q13-solution.svg",
     "content": "$5+\\sqrt{12}$의 소수 부분을 구하면? (4점)",
     "choices": [
       "$\\sqrt{12}-8$",
@@ -465,6 +473,11 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "바깥 정사각형의 한 변은 2+2√2이며 삼각형 네 개의 넓이 합은 4이다. 정팔각형 넓이는 8+8√2이고 정답은 ②이다.",
+    "solutionImageAlt": "파란 정팔각형 바깥의 네 모서리에 같은 주황 직각이등변삼각형이 있다. 오른쪽 위 변의 양옆에서 길이와 직각을 읽는다.",
+    "solutionImage": "assets/images/19_금당중_1학기_중간_중3_기출/q14-solution.svg",
+    "imageSize": "large",
     "content": "오른쪽 그림과 같이 한 변의 길이가 $2$인 정팔각형의 넓이를 구하면? (5점)",
     "choices": [
       "$8+4\\sqrt{2}$",
@@ -481,7 +494,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "제곱근",
       "도형",
@@ -498,7 +511,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q14.png",
+    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q14-problem-v3.svg",
     "imageAlt": "한 변의 길이가 2인 정팔각형"
   },
   {
@@ -609,6 +622,11 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "넓이는 265²−135²=(265+135)(265−135)=52,000 cm²이다. 정답은 ③이다.",
+    "solutionImageAlt": "왼쪽 ㄱ자 도형은 파랑과 주황 직사각형으로 나뉜다. 파란 부분을 돌려 오른쪽에 놓으면 가로 265+135, 세로 265−135인 직사각형이 된다.",
+    "solutionImage": "assets/images/19_금당중_1학기_중간_중3_기출/q18-solution.svg",
+    "imageSize": "large",
     "content": "다음 도형에서 색칠한 부분의 넓이를 구하면? (4점)\\n<div class='box'>가로 $265\\,cm$, 세로 $265\\,cm$인 정사각형에서 가로 $135\\,cm$, 세로 $135\\,cm$인 정사각형을 잘라낸 모양</div>",
     "choices": [
       "$16900\\,cm^2$",
@@ -625,7 +643,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "다항식곱셈",
       "곱셈공식",
@@ -642,7 +660,7 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented",
-    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q18.png",
+    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q18-problem-v3.svg",
     "imageAlt": "한 변의 길이가 265cm인 정사각형에서 한 변 135cm인 정사각형을 잘라낸 도형"
   },
   {
@@ -756,6 +774,11 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "a=1−√2, b=3+√2이다. 분모를 유리화하면 a/b=(5−4√2)/7이다.",
+    "solutionImageAlt": "대각선은 모두 √2이다. 수직선에서 P가 있는 1로부터 왼쪽으로, R이 있는 3에서 오른쪽으로 같은 길이만큼 옮긴다.",
+    "solutionImage": "assets/images/19_금당중_1학기_중간_중3_기출/q22-solution.svg",
+    "imageSize": "large",
     "content": "(서술형 1) 다음 그림은 한 변의 길이가 1인 두 정사각형을 수직선 위에 그린 것이다. $\\overline{PA}=\\overline{PQ}$, $\\overline{RB}=\\overline{RS}$이고, 수직선에서 두 점 A, B의 좌표를 각각 $a, b$라 할 때, $a, b$의 값과 $\\frac{a}{b}$의 값을 구하여라. (6점)",
     "choices": [],
     "answer": "(1) $a=1-\\sqrt2$, (2) $b=3+\\sqrt2$, (3) $\\frac{a}{b}=\\frac{5-4\\sqrt2}{7}$",
@@ -766,7 +789,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "제곱근",
       "수직선",
@@ -783,7 +806,7 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q22.png",
+    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q22-problem-v3.svg",
     "imageAlt": "수직선 위에 놓인 두 한 변의 길이가 1인 정사각형과 점 A, B"
   },
   {
@@ -824,6 +847,11 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "AB=2√3, AD=2√5이다. 직사각형의 둘레는 4√3+4√5, 넓이는 4√15이며 정답은 ①이다.",
+    "solutionImageAlt": "넓이 12의 정사각형에서 초록 한 눈금의 길이를 찾고, 넓이 20의 정사각형에서는 파란 두 눈금의 길이를 찾는다.",
+    "solutionImage": "assets/images/19_금당중_1학기_중간_중3_기출/q24-solution.svg",
+    "imageSize": "large",
     "content": "(서술형 3) 넓이가 각각 12, 20인 두 정사각형을 붙여 만든 직사각형 $ABCD$의 둘레와 넓이를 구하여라. (6점)",
     "choices": [
       "$4\\sqrt{3}+4\\sqrt{5}, 4\\sqrt{15}$",
@@ -840,7 +868,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "제곱근",
       "도형",
@@ -858,7 +886,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q24.png",
+    "image": "assets/images/19_금당중_1학기_중간_중3_기출/q24-problem-v3.svg",
     "imageAlt": "넓이가 12와 20인 정사각형 두 개가 꼭짓점 A에서 이어진 도형"
   },
   {
