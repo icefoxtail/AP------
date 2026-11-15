@@ -1,0 +1,97 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:48:16.789+00:00",
+ "sourceArchiveFile": "original/high/h1/2final/24_강남여고_2학기_기말_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 1,
+   "chosenFrom": "new",
+   "resolutionReason": "2x²-x-1, (x-1)/x, (y²-y+2)/3, √(2x-1/3) 중 문자가 근호 안에 있는 마지막 식이 두 다항식의 비가 아니라 유리식이 아님을 가리는 유리식의 뜻 문제이다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "majorUnit": "함수",
+    "midUnit": "유리함수",
+    "l3": "",
+    "l4": ""
+   },
+   "hold": "신규 제안: 유리식의 뜻(다항식의 비 판별) 항목이 표에 없음(l3 유리식의 계산 재사용).",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "유리식의 계산",
+     "label": "유리식의 사칙연산",
+     "parent": "함수 > 유리함수",
+     "why": "가장 가까운 '유리함수의 그래프'는 그래프를 다루고, 이 문항은 식이 유리식인지 가리는 식의 개념 문제다."
+    },
+    "rpmPath.l4": {
+     "value": "유리식의 뜻",
+     "label": "유리식의 뜻",
+     "parent": "함수 > 유리함수 > 유리식의 계산",
+     "why": "가장 가까운 '기본 그래프'는 y=k/x 그래프를 다루고, 이 문항은 식이 다항식의 비 꼴인지 가리는 정의 문제다."
+    }
+   }
+  },
+  {
+   "ordinal": 10,
+   "chosenFrom": "new",
+   "resolutionReason": "x=(√3+1)/(√3-1)=2+√3을 유리화한 뒤 t=√x로 두고 (t-1)/(t+1)+(t+1)/(t-1)=2(x+1)/(x-1)=2√3을 구하는 근호 식의 값 계산이며 분모의 유리화와 통분이 이어진다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "majorUnit": "",
+    "midUnit": "",
+    "l3": "",
+    "l4": ""
+   },
+   "crossConceptKeys": [
+    "CC_RADICAL_EVALUATION",
+    "CC_RATIONALIZATION_OF_DENOMINATOR"
+   ],
+   "conditionKeys": [],
+   "integrationPattern": "SEQUENTIAL",
+   "hold": "신규 제안: 수학(하) 표에 근호가 포함된 식의 값 계산 경로가 없음(앞서 제안한 실수와 그 연산 계열 재사용).",
+   "proposedNew": {
+    "rpmPath.majorUnit": {
+     "value": "실수와 그 연산",
+     "label": "실수와 그 연산",
+     "parent": "(최상위)",
+     "why": "가장 가까운 '함수'는 함수와 그래프 단원이라 분모 유리화 후 근호 식의 값을 구하는 계산과 맞지 않는다."
+    },
+    "rpmPath.midUnit": {
+     "value": "제곱근과 실수",
+     "label": "제곱근과 실수",
+     "parent": "실수와 그 연산",
+     "why": "가장 가까운 '유리함수'는 문자식 함수라 수 √3의 근호 계산과 맞지 않는다."
+    },
+    "rpmPath.l3": {
+     "value": "무리수와 실수",
+     "label": "무리수와 실수",
+     "parent": "실수와 그 연산 > 제곱근과 실수",
+     "why": "가장 가까운 '무리함수의 그래프'는 그래프 단원이라 수의 유리화와 맞지 않는다."
+    },
+    "rpmPath.l4": {
+     "value": "근호를 포함한 식의 값",
+     "label": "근호를 포함한 식의 계산",
+     "parent": "실수와 그 연산 > 제곱근과 실수 > 무리수와 실수",
+     "why": "가장 가까운 '정의역 조건'은 근호가 정의되는 범위를 다루고, 이 문항은 분모 유리화로 √x의 값을 구해 식의 값을 계산한다."
+    }
+   }
+  },
+  {
+   "ordinal": 16,
+   "chosenFrom": "new",
+   "resolutionReason": "y=√(x+5), y=√x와 x축, y=2로 둘러싸인 부분을 y에 대해 보면 가로 폭 5가 일정해 넓이 5×2=10인 등적변형이며 무리함수 평행이동 관계를 다시 읽는다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "majorUnit": "함수",
+    "midUnit": "무리함수",
+    "l3": "무리함수의 그래프",
+    "l4": "평행이동"
+   },
+   "crossConceptKeys": [
+    "CC_GEOMETRIC_AREA_TRANSFORM"
+   ],
+   "conditionKeys": [],
+   "integrationPattern": "REINTERPRETATION"
+  }
+ ]
+}

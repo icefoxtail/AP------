@@ -1,0 +1,361 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "tera-pass3",
+  "createdAt": "2026-11-13T11:19:41+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/22_매산고_1학기_중간_고2_기하와벡터_기출.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass2",
+      "resolutionReason": "4p=8이므로 p=2이고 초점은 (2,0)이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-01",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선",
+        "l3": "포물선",
+        "l4": "초점·준선"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-01-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass2",
+      "resolutionReason": "판별식 조건으로 허용되는 k의 범위를 얻고 그 안의 가장 큰 정수를 택한다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-04",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선과 직선",
+        "l3": "이차곡선과 직선의 위치 관계",
+        "l4": "판별식과 위치 관계"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "subUnitKey": "H22-GE-01-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "resolutionReason": "표준형의 a²,b²로 c²=a²+b²를 계산하고 초점 간 거리는 2c이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-03",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선",
+        "l3": "쌍곡선",
+        "l4": "정의와 방정식"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-01-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "resolutionReason": "양의 기울기인 접선의 m을 골라 y=0을 넣은 x절편을 계산한다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-04",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선과 직선",
+        "l3": "이차곡선의 접선",
+        "l4": "기울기·조건이 주어진 접선"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "subUnitKey": "H22-GE-02-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass2",
+      "resolutionReason": "넓이 조건은 bc=2√5, a=3과 c²+b²=9을 준다. 두 가능한 b,c는 2와 √5로 바뀔 뿐이어서 합의 제곱은 9+4√5이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-02",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선",
+        "l3": "타원",
+        "l4": "초점·장축·단축"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-01-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "resolutionReason": "밑변 차의 절반은 2이고 |AP|=2√5에서 높이는 4이다. BD의 수평·수직 성분은 6,4여서 길이는 2√13이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-05",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "벡터의 연산",
+        "l3": "벡터의 덧셈과 뺄셈",
+        "l4": "위치벡터"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-08-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass2",
+      "resolutionReason": "두 성분의 비가 같다는 일직선 조건을 풀어 k를 정한다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-05",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "벡터의 연산",
+        "l3": "벡터의 실수배",
+        "l4": "평행 조건"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NONZERO",
+        "COND_PAIRWISE_DISTINCT_POINTS"
+      ],
+      "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass2",
+      "resolutionReason": "접선 식은 3x-2y=1이므로 x=0에서 y절편은 -1/2이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-04",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선과 직선",
+        "l3": "이차곡선의 접선",
+        "l4": "접점이 주어진 접선"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-02-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass2",
+      "resolutionReason": "AB=4가 30도 대변이므로 BC=4√3이고 중점에서 PA²=AB²+(BC/2)²=28이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-05",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "벡터의 연산",
+        "l3": "벡터의 덧셈과 뺄셈",
+        "l4": "위치벡터"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass2",
+      "resolutionReason": "두 초점까지 거리의 합은 8이고 PQ=2OP이므로 8+2OP=13에서 OP=2.5이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-02",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선",
+        "l3": "타원",
+        "l4": "정의와 방정식"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-01-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass2",
+      "resolutionReason": "두 초점벡터의 합은 2PO이므로 k=2이고 AO 거리 대신 장반경 6을 써 최댓값 12를 얻는다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-05",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "벡터의 연산",
+        "l3": "벡터의 덧셈과 뺄셈",
+        "l4": "위치벡터"
+      },
+      "crossConceptKeys": [
+        "CC_ELLIPSE"
+      ],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 2,
+      "chosenFrom": "pass2",
+      "resolutionReason": "c²=16-7=9이므로 두 초점 사이 거리는 2c=6이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-02",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선",
+        "l3": "타원",
+        "l4": "초점·장축·단축"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-01-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass2",
+      "resolutionReason": "|a|=2√481/5, max|b|=2√13+4이고 |a+b|의 최대는 원 중심까지 52/5에 반지름 4를 더한 72/5이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-06",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "평면벡터의 성분과 내적",
+        "l3": "도형에의 활용",
+        "l4": "거리·넓이"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 3,
+      "chosenFrom": "pass2",
+      "resolutionReason": "a 계수는 -1, b 계수는 4이므로 결과는 -a+4b이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-05",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "벡터의 연산",
+        "l3": "벡터의 덧셈과 뺄셈",
+        "l4": "삼각형법"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "resolutionReason": "6x+2yy′=0에서 y′=-3x/y이므로 기울기는 3/√6=√6/2이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-04",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선과 직선",
+        "l3": "이차곡선의 접선",
+        "l4": "접점이 주어진 접선"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-02-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass2",
+      "resolutionReason": "포물선의 정의에서 초점까지 거리와 준선까지 거리가 같으므로 PF=PH=5이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-01",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선",
+        "l3": "포물선",
+        "l4": "초점·준선"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NEGATIVE"
+      ],
+      "subUnitKey": "H22-GE-01-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass2",
+      "resolutionReason": "u=-p로 두면 HI=4에서 u|t|=2, PH=5에서 u+4/u=5이다. t²>1을 만족하는 u=1만 남아 초점의 x좌표는 -1이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-01",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선",
+        "l3": "포물선",
+        "l4": "정의와 방정식"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NEGATIVE"
+      ],
+      "subUnitKey": "H22-GE-01-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "resolutionReason": "a²=25-4=21이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-03",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선",
+        "l3": "쌍곡선",
+        "l4": "정의와 방정식"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-01-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass2",
+      "resolutionReason": "점근선은 y=±(b/a)x이므로 y=±2x이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-03",
+      "rpmPath": {
+        "majorUnit": "이차곡선",
+        "midUnit": "이차곡선",
+        "l3": "쌍곡선",
+        "l4": "점근선"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-01-CORE",
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass2",
+      "resolutionReason": "벡터식은 3a+b가 되어 크기는 √(9·4+4)=2√10이다.",
+      "choiceTableUsed": "H2-기하.json",
+      "standardUnitKey": "H15-GV-06",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "평면벡터의 성분과 내적",
+        "l3": "도형에의 활용",
+        "l4": "거리·넓이"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "subUnitKey": "H22-GE-07-VECTOR_DOT",
+      "integrationPattern": "NONE"
+    }
+  ]
+}

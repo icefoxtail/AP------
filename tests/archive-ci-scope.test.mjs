@@ -140,7 +140,8 @@ test('the production test registry retains its P2/P3 additions and supplies the 
   const boundary = text.indexOf('\nif (args.length) {\n  const { runScopedTests }');
   assert.ok(boundary > text.indexOf('const requiredCommands = ['), 'scope selection follows the authoritative registry');
   assert.equal((text.match(/if \(runScopedTests\(/g) || []).length, 1);
-  assert.ok(boundary < text.indexOf('const canonicalProjectionBuild'), 'scoped execution does not first run the full catalog builder');
+  const fullProjection = text.indexOf('prepareArchiveTestProjection({ root })');
+  assert.ok(fullProjection > boundary, 'scoped execution returns before the full catalog/readiness preparation');
   // Evaluate only the real registry declarations. No test, builder or browser is
   // launched; the child_process stub makes accidental execution fail this test.
   const registry = await vm.runInNewContext(text.slice(0, boundary) +

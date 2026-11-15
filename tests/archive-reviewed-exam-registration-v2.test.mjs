@@ -3134,6 +3134,82 @@ test("native explicit rationale and committed source rationale retain their dist
   assert.deepEqual(proof.rationaleBindings.primaryMethod, { origin: "REVIEW_COMMIT_SOURCE_FIELD", valueSha256: hash(values.primaryMethod) });
 });
 
+function reviewedRpmFixture(t) {
+  const f=reviewedSourceFixture(t),rpmPath={majorUnit:"정본 RPM 대단원",midUnit:"정본 RPM 중단원",l3:"정본 RPM 개념",l4:"정본 RPM 유형"};
+  const fields={rpmPrimaryId:"FIXTURE-RPM-1",rpmPrimaryPath:rpmPath,
+    rpmL1:rpmPath.majorUnit,rpmL2:rpmPath.midUnit,rpmL3:rpmPath.l3,rpmL4:rpmPath.l4};
+  const masterPath="docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
+  const crosswalkPath="archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json";
+  f.put(masterPath,{schemaVersion:"js-archive-taxonomy-rpm-primary-v1.0",authorityStatus:"LOCKED",records:[{
+    curriculum:f.item.after.curriculum,scope:f.item.after.courseKey,majorUnit:rpmPath.majorUnit,midUnit:rpmPath.midUnit,
+    concepts:[{concept:rpmPath.l3,problemTypes:[{problemType:rpmPath.l4}]}]}]});
+  f.put(crosswalkPath,{schemaVersion:"rpm-primary-active-crosswalk-v1",status:"ACTIVE_REFERENCE",rpmAuthority:{source:masterPath},
+    records:[{id:fields.rpmPrimaryId,curriculum:f.item.after.curriculum,scope:f.item.after.courseKey,rpmPath,
+      mappingStatus:"DIRECT_ACTIVE",problemTypeKey:"PT_NEW",templateKey:"TPL_CROSSWALK_OLD_SINGLE_MAPPING"}]});
+  Object.assign(f.current,fields);f.writeBank(f.current);
+  for(const [key,value] of Object.entries(fields)) {
+    f.item.before[key]=f.read(META).records[0][key]??null;f.item.after[key]=value;
+    delete f.review.items[0].after[key];
+  }
+  f.review.sourceAfterBlob=f.git("hash-object","-w",f.sourcePath);
+  f.review.sourceAfterSha256=hash(fs.readFileSync(path.join(f.root,f.sourcePath)));
+  f.updateReview();return {...f,fields,masterPath,crosswalkPath};
+}
+
+test("reviewed RPM source fields retain immutable provenance and independent ACTIVE PT/TPL decisions",t=>{
+  const f=reviewedRpmFixture(t),source=fs.readFileSync(path.join(f.root,f.sourcePath));
+  registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const receipt=f.read(f.receiptPath),proof=receipt.fingerprintRepairs[0].sourceReview;
+  for(const [key,value] of Object.entries(f.fields)) {
+    assert.equal(proof.rpmBindings[key].origin,"REVIEW_COMMIT_SOURCE_FIELD");
+    assert.match(proof.rpmBindings[key].valueSha256,/^[a-f0-9]{64}$/);
+    for(const row of [receipt.appliedRecords[0],receipt.runtimeRecords[0]])assert.deepEqual(row[key],value);
+  }
+  assert.equal(receipt.appliedRecords[0].templateKey,"TPL_NEW","crosswalk RPM provenance is not a single-TPL override");
+  assert.equal(receipt.rpmPrimaryBindings[0].selectsPtTpl,false);
+  assert.equal(receipt.rpmPrimaryBindings[0].authorityUse,"RPM_PATH_PROVENANCE_ONLY");
+  assert.equal(receipt.rpmPrimaryBindings[0].crosswalkRef.sha256,hash(fs.readFileSync(path.join(f.root,f.crosswalkPath))));
+  assert.deepEqual(fs.readFileSync(path.join(f.root,f.sourcePath)),source);
+  assert.deepEqual(f.read(META).records[1],f.hold);
+  assert.equal(registerReviewedExamV2({root:f.root,request:f.request}).replay,true);
+});
+
+test("RPM provenance rejects fabricated, ambiguous, contradictory or out-of-scope IDs and paths",async t=>{
+  const cases=[
+    ["unknown ID",f=>{f.current.rpmPrimaryId="UNKNOWN";f.item.after.rpmPrimaryId="UNKNOWN";f.writeBank(f.current);},/record ID missing/],
+    ["undeclared ID",f=>{delete f.current.rpmPrimaryId;f.writeBank(f.current);},/exact declared source value/],
+    ["different declared ID",f=>{f.item.after.rpmPrimaryId="OTHER";},/exact declared source value/],
+    ["duplicate ID",f=>{const d=f.read(f.crosswalkPath);d.records.push(structuredClone(d.records[0]));f.put(f.crosswalkPath,d);},/record ID.*ambiguous/],
+    ["inactive authority",f=>{const d=f.read(f.crosswalkPath);d.status="INACTIVE";f.put(f.crosswalkPath,d);},/crosswalk authority/],
+    ["other curriculum",f=>{const d=f.read(f.crosswalkPath);d.records[0].curriculum="2015";f.put(f.crosswalkPath,d);},/curriculum\/scope/],
+    ["other scope",f=>{const d=f.read(f.crosswalkPath);d.records[0].scope="OTHER";f.put(f.crosswalkPath,d);},/curriculum\/scope/],
+    ["other ID path",f=>{const d=f.read(f.crosswalkPath);d.records[0].rpmPath.l4="다른 유형";f.put(f.crosswalkPath,d);},/ID and RPM path/],
+    ["contradictory flat value",f=>{f.current.rpmL4="다른 유형";f.item.after.rpmL4="다른 유형";f.writeBank(f.current);},/flat RPM field/],
+    ["omitted source path",f=>{delete f.item.after.rpmPrimaryPath;delete f.item.before.rpmPrimaryPath;},/source\/final value mismatch/],
+    ["path aliases conflict",f=>{f.current.rpmPrimaryPath={...f.fields.rpmPrimaryPath,L4:"다른 유형"};f.item.after.rpmPrimaryPath=f.current.rpmPrimaryPath;f.writeBank(f.current);},/aliases.*conflicting/],
+    ["missing master leaf",f=>{const d=f.read(f.masterPath);d.records[0].concepts[0].problemTypes=[];f.put(f.masterPath,d);},/path missing or ambiguous/],
+    ["unlocked master",f=>{const d=f.read(f.masterPath);d.authorityStatus="DRAFT";f.put(f.masterPath,d);},/master authority/],
+  ];
+  for(const [name,mutate,error]of cases)await t.test(name,t=>{
+    const f=reviewedRpmFixture(t),before=fs.readFileSync(path.join(f.root,META));mutate(f);
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request,write:true}),error);
+    assert.deepEqual(fs.readFileSync(path.join(f.root,META)),before);
+  });
+});
+
+test("source RPM transport cannot contradict immutable native decisions or resurrect an omitted value",t=>{
+  const f=reviewedRpmFixture(t);
+  f.review.items[0].after.rpmPrimaryId="NATIVE_DIFFERENT_ID";f.updateReview();
+  assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request}),/current source RPM differs from native evidence/);
+  const omitted=reviewedRpmFixture(t);
+  delete omitted.item.before.rpmPrimaryId;delete omitted.item.after.rpmPrimaryId;
+  assert.throws(()=>registerReviewedExamV2({root:omitted.root,request:omitted.request}),/reviewed after value mismatch.*rpmPrimaryId/);
+  const changed=reviewedRpmFixture(t);
+  changed.current.rpmPrimaryPath=["정본 RPM 대단원","정본 RPM 중단원","정본 RPM 개념","정본 RPM 유형"].join("/");
+  changed.item.after.rpmPrimaryPath=changed.current.rpmPrimaryPath;changed.writeBank(changed.current);
+  assert.throws(()=>registerReviewedExamV2({root:changed.root,request:changed.request}),/current source RPM differs from native evidence/);
+});
+
 test("source reassessment ignores native annotations outside the official value contract", t => {
   const f = reviewedSourceFixture(t);
   Object.assign(f.review.items[0].after, { standardUnitOrder: 7, category: "native-source-category",

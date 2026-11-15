@@ -46,6 +46,7 @@ node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --requ
 - 등록기는 과거 blob의 같은 순번 문항에서 원본·내용 지문을 다시 계산한다. 보관된 원본 지문은 과거 또는 현재 판본과 맞아야 하며, 발문·보기·그림 참조의 내용 지문이 달라지면 거부한다. 기존 `before`·`after` 지문과 `identityBefore` 검사도 유지한다. 전체 요청은 기존 방식 그대로 처리하며 `rebind`를 명시하면 같은 추가 검사를 받는다.
 - 부분 영수증의 `totalQuestions`와 `appliedRecords`는 요청 UID만 센다. `scope`, `partialUidCount`, 원시험 분모인 `expectedQuestionCount`가 추가되며, 재실행과 소비자 검사도 이 UID 범위를 사용한다.
 - AutoMeta는 부분 영수증의 원시험 분모·선택 UID 집합·각 순번과 지문을 실제 source/identity에 대조하고 UID로 현재 행을 찾는다. 원본 바이트, 승인 근거, 현재 metadata/runtime까지 모두 일치할 때만 기존 native 승인을 유지하며, 생략한 UID에 이 승인을 확대하지 않는다. 전체 등록 영수증은 기존 형식을 유지한다.
+- AutoMeta cursor 이후 해설만 수리한 경우에는 `PARTIAL_UIDS` `FINAL_QA` 영수증의 해당 UID `fingerprintRepairs`가 이전 metadata/identity 지문, 현재 두 지문, `rebind`의 실제 과거 Git blob과 정확히 연결되어야 한다. 과거 blob의 같은 순번이 cursor의 학생 payload와 같고 `solution` 외 학생 필드가 모두 그대로인 경우만 이미 발급된 승인을 재사용한다. 변경된 발문·보기·정답·그림·표시번호나 빠진/다른 UID의 수리 증거는 이 경로로 승인하지 않는다.
 - 원본 `questionUid`에 남은 `파일 basename|양의 원번호` 형식은 별도 좁은 어댑터로만 읽는다. 실제 bank의 번호·alias가 유일하고 identity records 및 canonical UID/파일+순번/파일+원번호/legacyQKey lookup이 모두 같은 UID를 가리켜야 한다. 상충하는 표시번호나 임의의 unknown/canonical UID는 계속 거부한다. 원본 alias는 수정하지 않고, 등록·영수증·Runtime에는 canonical UID를 사용한다.
 
 ### 현재 원본을 실제로 검토한 부분 지문 수리 `item.sourceReview`
@@ -84,6 +85,14 @@ M2의 `REGISTRATION_PENDING` 표기만으로 확정 필드를 버리지는 않�
 없으면 원검토 `decisiveStep` 문자열을 source와 요청의 두 필드에 그대로 실은 경우만 허용하며, 영수증에는
 `NATIVE_DECISIVE_STEP_VERBATIM`으로 기록한다. 별도 주풀이 판정이나 새 독립 검수로 기록하지 않는다. `rationaleBindings`는
 각 값의 출처와 SHA를 보존하며, 요청에서 필드를 빼서 상충하는 기존 rationale를 유지하는 경우는 거절한다.
+
+`rpmPrimaryId`/`rpmPrimaryPath`/`rpmL1~rpmL4`도 native `after`의 확정값 또는 검토 commit의 source에 이미 있고 현재 source와
+완전히 같은 값만 운반한다. `rpmBindings`에는 출처와 정렬 JSON 값의 SHA를 기록한다. 새 `rpmPrimaryId` 입력은 source의
+명시값과 같아야 하고, 현행 crosswalk의 유일한 record ID·교육과정/과목·RPM 경로 및 LOCKED master의 실제 경로와 일치해야 한다.
+다른 별칭 경로·flat 필드와의 충돌도 거절한다. 영수증 `rpmPrimaryBindings`는 두 정본 파일의 SHA와
+`authorityUse: RPM_PATH_PROVENANCE_ONLY`, `selectsPtTpl: false`를 보존한다. 이 ID는 RPM 경로의 출처이며,
+단일 crosswalk TPL을 새 의미 판정으로 강제하지 않는다. 원검토가 확정한 PT/TPL과 현재 ACTIVE 정의·TPL 부모·정확한 과정 바인딩의
+기존 검증은 별도로 유지한다. RPM 경로 운반은 신규 키·binding 또는 수학 검토를 생성하지 않는다.
 
 발문 별칭·원번호·보기·정답·해설·그림/SVG 참조·레이아웃 등 학생 payload를 실제 검토 source와 현재 source에서 직접 대조한다.
 검토 이후의 해설 수리나 그림 변경을 과거 검토로 승인하지 않는다. 현재 blob, `before`/`after` 두 지문 및 `identityBefore`의
