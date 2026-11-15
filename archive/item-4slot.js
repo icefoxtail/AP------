@@ -8,7 +8,15 @@
     for(const value of data.records){
       const r=JSON.parse(JSON.stringify(value));
       if(!/^qid_v1_[a-f0-9]{64}$/.test(r.questionUid)||byUid.has(r.questionUid)||r.registrationStatus!=='REGISTERED')throw Error('FOUR_SLOT_RECORD_INVALID');
-      if(!['EXACT_BLOB','UNCHANGED_STUDENT_PAYLOAD'].includes(r.sourceBinding))throw Error('FOUR_SLOT_SOURCE_BINDING_INVALID');
+      if(r.sourceBinding==='SCOPED_REVIEWED_RENDERER'){
+        const e=r.rendererReceipt;
+        if(!/^original\/middle\/m3\/2(?:mid|final)\//.test(r.sourceArchiveFile||'')||
+           !e||Object.keys(e).sort().join(',')!=='path,schemaVersion,sha256'||
+           e.schemaVersion!=='archive-4slot-existing-typed-v2-renderer-receipt-v1'||
+           !/^archive\/data\/item-4slot-renderer-receipts\/v1\/[A-Za-z0-9_-]+\.json$/.test(e.path||'')||
+           !/^[a-f0-9]{64}$/.test(e.sha256||''))throw Error('FOUR_SLOT_RENDERER_RECEIPT_INVALID');
+        Object.freeze(e);
+      }else if(!['EXACT_BLOB','UNCHANGED_STUDENT_PAYLOAD'].includes(r.sourceBinding)||Object.hasOwn(r,'rendererReceipt'))throw Error('FOUR_SLOT_SOURCE_BINDING_INVALID');
       for(const s of SLOTS){if(!Array.isArray(r[s])||r[s].some(id=>!Number.isInteger(id))||new Set(r[s]).size!==r[s].length)throw Error('FOUR_SLOT_ARRAY_REQUIRED');Object.freeze(r[s]);for(const id of r[s]){const key=JSON.stringify([r.dictionaryVersion,s,id]);if(!postings.has(key))postings.set(key,new Set());postings.get(key).add(r.questionUid);}}
       if(Array.isArray(r.candidates))Object.freeze(r.candidates);
       byUid.set(r.questionUid,Object.freeze(r));

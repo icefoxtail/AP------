@@ -1,4 +1,4 @@
-// Apply source-bound v2 and reviewed difficulty5 requests in a disposable CI checkout.
+// Apply source-bound v2 and official difficulty5 requests in a disposable CI checkout.
 // PRs select changed requests, their exact pending ACTIVE binding providers,
 // and proven existing FINAL_QA source continuities.
 // Pushes select the exact pending HEAD inbox.
@@ -34,6 +34,7 @@ const fail = reason => { throw Error(`PR_NATIVE_PREVIEW:${reason}`); };
 const sorted = values => [...new Set(values)].sort();
 
 import { AUTHORITY_CORRECTION_MODE, isNativeAuthorityCorrection, authorityHoldSealPath } from '../../archive/tools/meta-foundation/native-authority-correction.mjs';
+import { bindDifficulty5Source } from '../../archive/tools/meta-foundation/register-difficulty5.mjs';
 
 export function nativeCommand(program, args, root) {
   const r = spawnSync(program, args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
@@ -79,26 +80,38 @@ function parsed(result) {
   try { return JSON.parse(result); } catch { fail('REGISTRAR_RESULT_INVALID'); }
 }
 
-function selectReviewedDifficulty(root, file, request, headSha) {
+function selectDifficulty(root, file, request, headSha) {
   const payload = request.gemini, correction = request.reviewedCorrection;
-  if (payload?.schemaVersion !== 'v1' || correction?.schemaVersion !== DIFFICULTY_CORRECTION_SCHEMA
-      || typeof correction.approvalRef !== 'string' || !correction.approvalRef.trim()) fail('DIFFICULTY_APPROVAL');
-  if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(payload.requestId || '')) fail('REQUEST_ID');
+  const ordinary = correction === undefined;
+  if (payload?.schemaVersion !== 'v1' || !ordinary && (correction?.schemaVersion !== DIFFICULTY_CORRECTION_SCHEMA
+      || typeof correction.approvalRef !== 'string' || !correction.approvalRef.trim())) fail('DIFFICULTY_APPROVAL');
+  // Ordinary requests use the existing registrar's payload ID, including Korean.
+  // It identifies ratings only; it never becomes a native approval receipt path.
+  if (ordinary ? typeof payload.requestId !== 'string' || !payload.requestId.trim() || /[\r\n\0]/.test(payload.requestId)
+      : !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(payload.requestId || '')) fail('REQUEST_ID');
   if (!Array.isArray(payload.items) || !payload.items.length) fail('QUESTION_COUNT');
-  const selectedItems = payload.items.map(item => ({ questionUid: item.questionUid, sourceOrdinal: item.ordinal }));
+  const selectedItems = payload.items.map(item => ({ questionUid: item?.questionUid, sourceOrdinal: item?.ordinal }));
   if (selectedItems.some(item => typeof item.questionUid !== 'string' || !item.questionUid.trim()
       || !Number.isSafeInteger(item.sourceOrdinal) || item.sourceOrdinal < 1)
       || new Set(selectedItems.map(i => i.questionUid)).size !== selectedItems.length
       || new Set(selectedItems.map(i => i.sourceOrdinal)).size !== selectedItems.length) fail('SELECTED_UID_SCOPE');
   selectedItems.sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
-  if (!String(correction.evidencePath || '').startsWith('.archive-meta-register/evidence/')
-      || !/^[a-f0-9]{64}$/.test(correction.evidenceSha256 || '')) fail('EVIDENCE_REQUIRED');
-  const evidence = fileRef(root, correction.evidencePath);
-  if (evidence.sha256 !== correction.evidenceSha256) fail(`EVIDENCE_DRIFT:${evidence.path}`);
-  if (sha(gitBytes(root, `${headSha}:${evidence.path}`)) !== evidence.sha256) fail(`EVIDENCE_NOT_FIXED:${evidence.path}`);
+  const evidence = [];
+  if (!ordinary) {
+    if (!String(correction.evidencePath || '').startsWith('.archive-meta-register/evidence/')
+        || !/^[a-f0-9]{64}$/.test(correction.evidenceSha256 || '')) fail('EVIDENCE_REQUIRED');
+    const ref = fileRef(root, correction.evidencePath);
+    if (ref.sha256 !== correction.evidenceSha256) fail(`EVIDENCE_DRIFT:${ref.path}`);
+    if (sha(gitBytes(root, `${headSha}:${ref.path}`)) !== ref.sha256) fail(`EVIDENCE_NOT_FIXED:${ref.path}`);
+    evidence.push(ref);
+  }
   const sourcePath = `archive/exams/${payload.sourceArchiveFile}`, source = fileRef(root, sourcePath);
   const blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
-  if (blobSha1 !== payload.latestBlobSha || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
+  // The raw worktree must still equal the fixed Git snapshot. Ordinary D5 also
+  // permits only the registrar's existing CRLF-to-LF source binding convention.
+  const difficultySourceBlobSha1 = ordinary
+    ? bindDifficulty5Source(fs.readFileSync(safe(root, sourcePath)), payload.latestBlobSha).sha : blobSha1;
+  if (difficultySourceBlobSha1 !== payload.latestBlobSha || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
   let bank;
   try {
     const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
@@ -107,9 +120,10 @@ function selectReviewedDifficulty(root, file, request, headSha) {
   } catch { fail('SOURCE_BANK_INVALID'); }
   if (!Array.isArray(bank) || !bank.length || selectedItems.some(i => i.sourceOrdinal > bank.length)) fail('SOURCE_DENOMINATOR');
   return { ...fileRef(root, file), requestId: payload.requestId, kind: 'difficulty5-ratings',
+    ...(ordinary ? { difficultyRegistrationMode: 'ordinary-ratings', difficultySourceBlobSha1 } : {}),
     questionCount: selectedItems.length, sourceQuestionCount: bank.length, selectedItems,
     difficultyBeforeBindings: difficultyBeforeBindings(request),
-    source: { ...source, blobSha1 }, evidence: [evidence] };
+    source: { ...source, blobSha1 }, evidence };
 }
 
 export function difficultyBeforeBindings(request) {
@@ -604,8 +618,8 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     const raw = fs.readFileSync(path.join(root, file));
     if (sha(raw) !== sha(gitBytes(root, `${headSha}:${file}`))) fail(`REQUEST_NOT_FIXED:${file}`);
     let request; try { request = JSON.parse(raw); } catch { fail(`REQUEST_JSON:${file}`); }
-    if (request.schemaVersion === DIFFICULTY_REQUEST_SCHEMA && request.reviewedCorrection !== undefined) {
-      requests.push(selectReviewedDifficulty(root, file, request, headSha));
+    if (request.schemaVersion === DIFFICULTY_REQUEST_SCHEMA) {
+      requests.push(selectDifficulty(root, file, request, headSha));
       continue;
     }
     const correction = request.schemaVersion === PARENT_CORRECTION_SCHEMA;
@@ -676,16 +690,21 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
 
 function difficultyResult(result, request, flags) {
   const summary = result.summary, verify = flags.includes('--verify-projection'), write = flags.includes('--write');
+  const ordinary = request.difficultyRegistrationMode === 'ordinary-ratings';
+  if (request.difficultyRegistrationMode !== undefined && !ordinary) fail('DIFFICULTY_REGISTRATION_MODE');
+  const expectedMode = ordinary ? verify ? 'verify-projection' : write ? 'write' : 'dry-run'
+    : verify ? 'verify-reviewed-correction' : write ? 'write-reviewed-correction' : 'dry-run-reviewed-correction';
   const countKeys = ['APPLY', 'ALREADY_REGISTERED', 'SKIP_INVALID', 'CONFLICT', 'VERIFIED'];
   if (result.status !== 'PASS' || result.requestId !== request.requestId
-      || `archive/exams/${result.sourceArchiveFile}` !== request.source.path || result.sourceBlobSha !== request.source.blobSha1
+      || `archive/exams/${result.sourceArchiveFile}` !== request.source.path
+      || result.sourceBlobSha !== (ordinary ? request.difficultySourceBlobSha1 : request.source.blobSha1)
       || result.ptTpl !== 'UNTOUCHED_NOT_IN_SCOPE' || !summary || summary.total !== request.questionCount
       || countKeys.some(k => !Number.isSafeInteger(summary[k]) || summary[k] < 0)
       || countKeys.reduce((n, k) => n + summary[k], 0) !== request.questionCount
       || summary.SKIP_INVALID || summary.CONFLICT
       || !Number.isSafeInteger(summary.changedFields) || summary.changedFields < 0 || summary.changedFields > 4 * request.questionCount
       || typeof summary.written !== 'boolean' || summary.written !== Boolean(write && summary.changedFields)
-      || result.mode !== (verify ? 'verify-reviewed-correction' : write ? 'write-reviewed-correction' : 'dry-run-reviewed-correction')
+      || result.mode !== expectedMode
       || verify && (summary.VERIFIED !== request.questionCount || summary.changedFields !== 0)
       || !verify && summary.VERIFIED !== 0
       || !Array.isArray(result.items) || result.items.length !== request.questionCount) fail('DIFFICULTY_RESULT_NOT_PASS');
