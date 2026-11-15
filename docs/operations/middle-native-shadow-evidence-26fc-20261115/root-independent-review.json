@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "root-native-evidence-closure-final-independent-review-v1",
+  "status": "ACCEPT_FOR_REQUIRED_PR_CI",
+  "reviewer": "GPT_ROOT_26FC42390A50",
+  "author": "ci_m2s2",
+  "basePrHead": "b2b87e9916b1569e9d134112771e616e606eaa17",
+  "inputs": [
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "sha256": "189051a25ecccd48a90cf99d10f29ca5bd514bbec7782fd1ee1c04ea8614fa9f",
+      "gitBlobSha1": "52213066933412e1720318c683afbd62b45f94f2"
+    },
+    {
+      "path": "tests/archive-pr-native-preview.test.mjs",
+      "sha256": "9de10c41e335dc81dfa9e1f849faed388d62b4bc29cdd9913fdfbe11ed8a2b1b",
+      "gitBlobSha1": "3cd9070f75aff9427c67a0726d28669f0dc6c56b"
+    }
+  ],
+  "findings": [
+    "The failure occurs in a read-only re-derivation shadow after successful official preparation; the original full-workspace approval checks remain valid.",
+    "Only flat canonical native-v2 receipt approval.evidenceRefs are followed recursively. Each file must match its declared raw SHA and the fixed Git head, use a safe path, and pass existing file/symlink guards.",
+    "Active traversal rejects cycles; repeated exact refs are deduplicated, conflicting hashes fail. Missing, malformed, changed or uncommitted dependencies fail before registration.",
+    "The collector only extends the existing input/evidence fingerprint and shadow copy list. It does not select other requests, rewrite metadata, skip registrar validation, widen semantic authority or change run-tests.",
+    "Regression coverage includes the original missing nested file, exact deduplication, no unrelated file adoption, missing/drift/hash/path/cycle/symlink/fixed-Git failures, and a separate official ancestor rejection remaining fatal."
+  ],
+  "testExecutionByReviewer": 0,
+  "reuse": "The final published two code/test files are byte-identical to the independently read candidate; final scoped execution evidence is reused without duplicate execution.",
+  "prCi": "NOT_RUN_WITH_CLOSURE_FIX",
+  "actualMainRegistration": "NOT_RUN",
+  "finalExecution": {
+    "previewTestFile": {
+      "passed": 97,
+      "failed": 0
+    },
+    "actualRequests": 11,
+    "actualSelectedUids": 120,
+    "fixedGitEvidenceFiles": 52,
+    "transitiveAdditionalReferences": 48,
+    "officialShadowDryWriteUids": 19,
+    "actualEvidenceSha256": "12370560dab157b4ad2a042f4714b33be8857c28e4c8cc2027f2550c018eeb91",
+    "publicationManifestSha256": "8318471d505084c4b29b188f409bfbb28abbb4c2d57c6ead8f15cd29300ddff1",
+    "actualFixedInputsCommit": "cca53fa8b113c5990507f5de0ca5c5c8fd169591",
+    "newApprovals": 0,
+    "originalFixtureChanges": 0
+  }
+}

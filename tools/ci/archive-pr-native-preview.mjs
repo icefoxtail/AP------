@@ -378,6 +378,43 @@ export function selectPendingNativeRequests({ root, headSha }) {
   return selectFixedNativeRequests({ root, headSha, files: pendingNativeRequestPaths({ root, headSha }), rejectUnsupported: true });
 }
 
+// A source-preservation registrar replays the complete prior native receipt,
+// whose own approval can refer to older receipts and external native evidence.
+// Bind that exact input closure before either preparation or shadow re-planning.
+// This only stages SHA-bound files; the official registrar still decides whether
+// any receipt, scope, source, or approval is valid.
+function fixedNativeEvidence(root, headSha, lists) {
+  const refs = new Map(), active = new Set();
+  const visit = item => {
+    if (!/^[a-f0-9]{64}$/.test(item?.sha256 || '')) fail('EVIDENCE_SHA');
+    safe(root, item.path);
+    if (active.has(item.path)) fail(`EVIDENCE_CYCLE:${item.path}`);
+    const known = refs.get(item.path);
+    if (known) {
+      if (known.sha256 !== item.sha256) fail(`EVIDENCE_DRIFT:${item.path}`);
+      return;
+    }
+    const ref = fileRef(root, item.path);
+    if (ref.sha256 !== item.sha256) fail(`EVIDENCE_DRIFT:${ref.path}`);
+    if (sha(gitBytes(root, `${headSha}:${ref.path}`)) !== ref.sha256) fail(`EVIDENCE_NOT_FIXED:${ref.path}`);
+    refs.set(ref.path, ref);
+    if (!ref.path.startsWith(RECEIPTS) || ref.path.slice(RECEIPTS.length).includes('/') || !ref.path.endsWith('.json')) return;
+    let receipt;
+    try { receipt = JSON.parse(fs.readFileSync(safe(root, ref.path), 'utf8')); }
+    catch { fail(`EVIDENCE_JSON:${ref.path}`); }
+    if (receipt?.schemaVersion !== 'archive-reviewed-exam-meta-registration-v2') return;
+    if (!Array.isArray(receipt.approval?.evidenceRefs) || !receipt.approval.evidenceRefs.length) fail('EVIDENCE_REQUIRED');
+    active.add(ref.path);
+    for (const nested of receipt.approval.evidenceRefs) visit(nested);
+    active.delete(ref.path);
+  };
+  for (const list of lists) {
+    if (!Array.isArray(list) || !list.length) fail('EVIDENCE_REQUIRED');
+    for (const item of list) visit(item);
+  }
+  return [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en'));
+}
+
 function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, inherited = new Map(), inheritedBindingProviders = new Map() }) {
   const requests = [];
   for (const file of files) {
@@ -416,19 +453,9 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
         || new Set(selectedItems.map(i => i.questionUid)).size !== selectedItems.length
         || new Set(selectedItems.map(i => i.sourceOrdinal)).size !== selectedItems.length) fail('SELECTED_UID_SCOPE');
     selectedItems.sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
-    const refs = new Map();
-    for (const list of [request.approval?.evidenceRefs, ...(request.items || []).map(i => i.evidenceRefs),
+    const evidence = fixedNativeEvidence(root, headSha, [request.approval?.evidenceRefs, ...(request.items || []).map(i => i.evidenceRefs),
       ...(request.registryChanges || []).map(i => i.evidenceRefs),
-      ...(correction ? [[request.difficultyEvidence]] : [])]) {
-      if (!Array.isArray(list) || !list.length) fail('EVIDENCE_REQUIRED');
-      for (const item of list) {
-        if (!/^[a-f0-9]{64}$/.test(item.sha256 || '')) fail('EVIDENCE_SHA');
-        const ref = fileRef(root, item.path);
-        if (ref.sha256 !== item.sha256 || refs.has(ref.path) && !eq(refs.get(ref.path), ref)) fail(`EVIDENCE_DRIFT:${ref.path}`);
-        if (sha(gitBytes(root, `${headSha}:${ref.path}`)) !== ref.sha256) fail(`EVIDENCE_NOT_FIXED:${ref.path}`);
-        refs.set(ref.path, ref);
-      }
-    }
+      ...(correction ? [[request.difficultyEvidence]] : [])]);
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
     if (blobSha1 !== request.expectedSourceBlobSha1 || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
@@ -450,7 +477,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(basicPreservation ? { basicPreservation, kind: 'basic-approval-preservation' }
         : correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }
         : preservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },
-      evidence: [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en')),
+      evidence,
       receiptPath: `${RECEIPTS}${request.requestId}.json` });
   }
   if (new Set(requests.map(r => r.requestId)).size !== requests.length) fail('DUPLICATE_REQUEST_ID');

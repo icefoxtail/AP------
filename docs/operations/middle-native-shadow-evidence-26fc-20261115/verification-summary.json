@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "pr-native-transitive-evidence-closure-verification-v1",
+  "status": "PASS_LOCAL_CI_REPLAY_REPAIR",
+  "fixedPublicInputCommit": "cca53fa8b113c5990507f5de0ca5c5c8fd169591",
+  "failingPrHead": "b2b87e9916b1569e9d134112771e616e606eaa17",
+  "failure": {
+    "run": 43732182148,
+    "job": 132866869557,
+    "prepareRegistration": "SUCCESS",
+    "failureStage": "Run tests / validateLocalRegistrationProof / shadow rederiveNativePlans",
+    "missingPath": ".archive-meta-register/evidence/m3s2-e001-review-20261115.json",
+    "cause": "The isolated re-plan copied direct request evidence but omitted SHA-bound evidence referenced by prior native receipts."
+  },
+  "change": {
+    "paths": [
+      "tools/ci/archive-pr-native-preview.mjs",
+      "tests/archive-pr-native-preview.test.mjs"
+    ],
+    "behavior": "Collect the fixed Git/SHA-bound approval evidence closure of canonical native-v2 receipts into the existing input manifest; preserve all official registrar and projection checks.",
+    "sourceChanges": 0,
+    "canonicalEdits": 0,
+    "approvalChanges": 0,
+    "registrarChanges": 0,
+    "requestSelectionChanges": 0
+  },
+  "regression": {
+    "before": {
+      "tests": 1,
+      "failed": 1,
+      "reason": "transitive evidence leaf missing from shadow"
+    },
+    "after": {
+      "tests": 97,
+      "passed": 97,
+      "failed": 0,
+      "skipped": 0
+    },
+    "negativeBoundaries": [
+      "missing evidence",
+      "incorrect/malformed SHA",
+      "unsafe path",
+      "cycle",
+      "worktree drift",
+      "symlink",
+      "worktree-only Git drift",
+      "official ancestor approval refusal"
+    ],
+    "positiveBoundaries": [
+      "identical repeated evidence is fingerprinted and staged once",
+      "unrelated evidence files and requests are not selected"
+    ]
+  },
+  "actualInputClosure": {
+    "requests": 11,
+    "uids": 120,
+    "uniqueEvidencePaths": 52,
+    "perRequestAdditionalTransitiveReferences": 48,
+    "publicGitCAS": "PASS"
+  },
+  "actualOfficialShadow": {
+    "requests": 2,
+    "uids": 19,
+    "dryRuns": 2,
+    "writes": 2,
+    "newMetadataApprovals": 0,
+    "preservedMetadataApprovals": 19,
+    "rootInputUnchanged": true,
+    "fullCatalogBuild": "NOT_RUN"
+  },
+  "proofs": {
+    "preview-tests-final.tap": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-evidence-closure/preview-tests-final.tap",
+      "sha256": "9f55cdb87215886f815b763bbfc265c2eac534b2ec4393057c41390e98c90a37",
+      "bytes": 10048
+    },
+    "regression-before.tap": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-evidence-closure/regression-before.tap",
+      "sha256": "ffaad17ae539bfdadfafc9c768e6ab9e756b1a303a066f43903e9aade5da095d",
+      "bytes": 2075
+    },
+    "actual-inputs-manifest.json": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-evidence-closure/actual-inputs-manifest.json",
+      "sha256": "b1443e157aefc4182e40bc300572ac2f2c48acd6d40bc266b3c59e88bfd34bf6",
+      "bytes": 225522
+    },
+    "actual-closure-and-shadow19.json": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-evidence-closure/actual-closure-and-shadow19.json",
+      "sha256": "12370560dab157b4ad2a042f4714b33be8857c28e4c8cc2027f2550c018eeb91",
+      "bytes": 12957
+    }
+  },
+  "independentRead": {
+    "path": "/workspace/scratch/26fc42390a50/ci-contract-repair/shadow-closure-independent/independent-code-review.json",
+    "sha256": "4b0276fcb2bbff5c37eee0565406cc7fd4ba4a79f037b6d7cd68815f5680300e"
+  },
+  "production": {
+    "prCiAfterPatch": "NOT_RUN",
+    "mainRegistration": "NOT_RUN",
+    "pages": "NOT_RUN"
+  },
+  "originalMathReviewsRepeated": 0,
+  "reusedApprovalScopes": "Existing PARTIAL104 and independently accepted FULL16 validations; no new content/semantic acceptance."
+}

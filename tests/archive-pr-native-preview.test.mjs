@@ -225,6 +225,114 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     assertShadowsRemoved, calls, hook, run };
 }
 
+function ancestralEvidenceFixture(t, { mutateLeafRef, missingLeaf = false, cycle = false } = {}) {
+  const f = fixture(t, { partial: true, finalQaPreservation: true, otherOwner: false });
+  const leafPath = '.archive-meta-register/evidence/ancestor-native-review.json';
+  const priorPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/prior.json';
+  const ancestorPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ancestor.json';
+  const unrelatedPath = '.archive-meta-register/evidence/unrelated-owner.json';
+  const leafBytes = json({ reviewed: 'immutable fixture evidence' });
+  const leafRef = { path: leafPath, sha256: sha(leafBytes) };
+  mutateLeafRef?.(leafRef);
+  if (!missingLeaf) f.write(leafPath, leafBytes);
+  f.write(unrelatedPath, json({ unrelated: true }));
+  const ancestorBytes = json({ schemaVersion: 'archive-reviewed-exam-meta-registration-v2',
+    approval: { evidenceRefs: cycle ? [{ path: priorPath, sha256: '0'.repeat(64) }] : [leafRef] } });
+  const ancestorRef = { path: ancestorPath, sha256: sha(ancestorBytes) };
+  f.write(ancestorPath, ancestorBytes);
+  const priorBytes = json({ schemaVersion: 'archive-reviewed-exam-meta-registration-v2',
+    approval: { evidenceRefs: [ancestorRef, leafRef] } });
+  const priorRef = { path: priorPath, sha256: sha(priorBytes) };
+  f.write(priorPath, priorBytes);
+  f.request.approval.evidenceRefs = [priorRef];
+  f.request.approval.sourceRebind.priorReceiptRef = priorRef;
+  f.request.items[0].evidenceRefs = [priorRef];
+  f.write(REQUEST, json(f.request));
+  f.git('add', '.'); f.git('commit', '-qm', 'fixed transitive native receipt evidence');
+  const headSha = f.git('rev-parse', 'HEAD'), repo = 'owner/repository';
+  const event = { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
+    number: 17, base: { sha: f.baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } },
+  } };
+  const options = { root: f.root, repo, event, expectedSha: headSha, runId: 41, runAttempt: 1, run: f.run };
+  return { ...f, headSha, leafPath, leafBytes, leafRef, priorPath, ancestorPath, unrelatedPath,
+    refs: [priorRef, ancestorRef, leafRef],
+    selected: () => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha }),
+    produce: () => producePrRegistrationProof(options),
+    validate: proof => validateLocalRegistrationProof({ ...options, proof }) };
+}
+
+test('shadow re-plan includes fixed transitive native receipt evidence without adopting unrelated files', t => {
+  const f = ancestralEvidenceFixture(t);
+  f.hook['dry-run'] = target => {
+    for (const ref of f.refs) assert.equal(sha(fs.readFileSync(path.join(target, ref.path))), ref.sha256);
+    if (target !== f.root) assert.equal(fs.existsSync(path.join(target, f.unrelatedPath)), false);
+  };
+  const proof = f.produce(), before = f.snapshot();
+  assert.equal(f.validate(proof).reusable, true);
+  assert.deepEqual(f.snapshot(), before);
+  assert.deepEqual(proof.nativePreview.requests[0].evidence.map(ref => ref.path).sort(),
+    f.refs.map(ref => ref.path).sort(), 'a repeated leaf is copied and fingerprinted exactly once');
+  assert.equal(proof.nativePreview.requests.length, 1, 'evidence closure never selects another request');
+  f.assertShadowsRemoved();
+});
+
+for (const [name, options, error] of [
+  ['missing leaf', { missingLeaf: true }, /MISSING_FILE/],
+  ['wrong leaf hash', { mutateLeafRef: ref => { ref.sha256 = '0'.repeat(64); } }, /EVIDENCE_DRIFT/],
+  ['malformed leaf hash', { mutateLeafRef: ref => { ref.sha256 = 'not-a-digest'; } }, /EVIDENCE_SHA/],
+  ['unsafe leaf path', { mutateLeafRef: ref => { ref.path = '../outside.json'; } }, /UNSAFE_PATH/],
+  ['cyclic receipt reference', { cycle: true }, /EVIDENCE_CYCLE/],
+]) test(`transitive native evidence rejects ${name} before official registration`, t => {
+  const f = ancestralEvidenceFixture(t, options), before = f.snapshot();
+  assert.throws(() => f.produce(), error);
+  assert.deepEqual(f.snapshot(), before);
+  assert.equal(f.calls.some(call => call.args[0]?.endsWith('/register-reviewed-exam-meta-source.mjs')), false);
+});
+
+test('transitive native evidence rejects worktree drift and symlinks on proof reuse', t => {
+  for (const symlink of [false, true]) {
+    const f = ancestralEvidenceFixture(t), proof = f.produce();
+    if (symlink) {
+      fs.rmSync(path.join(f.root, f.leafPath));
+      fs.symlinkSync(path.join(f.root, EVIDENCE), path.join(f.root, f.leafPath));
+    } else fs.appendFileSync(path.join(f.root, f.leafPath), '\n');
+    const before = f.snapshot();
+    assert.throws(() => f.validate(proof), symlink ? /SYMLINK/ : /EVIDENCE_DRIFT/);
+    assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+  }
+});
+
+test('transitive evidence must match fixed Git even when its worktree hash matches every reference', t => {
+  const f = ancestralEvidenceFixture(t), changedBytes = f.leafBytes + '\n';
+  const leafRef = { path: f.leafPath, sha256: sha(changedBytes) };
+  f.write(f.leafPath, changedBytes);
+  const ancestor = JSON.parse(fs.readFileSync(path.join(f.root, f.ancestorPath), 'utf8'));
+  ancestor.approval.evidenceRefs = [leafRef]; f.write(f.ancestorPath, json(ancestor));
+  const prior = JSON.parse(fs.readFileSync(path.join(f.root, f.priorPath), 'utf8'));
+  prior.approval.evidenceRefs = [{ path: f.ancestorPath, sha256: sha(json(ancestor)) }, leafRef];
+  f.write(f.priorPath, json(prior));
+  const priorRef = { path: f.priorPath, sha256: sha(json(prior)) };
+  f.request.approval.evidenceRefs = [priorRef]; f.request.items[0].evidenceRefs = [priorRef];
+  f.request.approval.sourceRebind.priorReceiptRef = priorRef; f.write(REQUEST, json(f.request));
+  f.git('add', '--', f.ancestorPath, f.priorPath, REQUEST);
+  f.git('commit', '-qm', 'references cannot authorize an uncommitted evidence leaf');
+  const before = f.snapshot();
+  assert.throws(() => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha: f.git('rev-parse', 'HEAD') }), /EVIDENCE_NOT_FIXED/);
+  assert.deepEqual(f.snapshot(), before);
+});
+
+test('complete transitive input staging cannot turn an official ancestor rejection into a reusable proof', t => {
+  const f = ancestralEvidenceFixture(t), proof = f.produce(), before = f.snapshot();
+  f.hook['dry-run'] = target => {
+    if (target !== f.root) {
+      assert.equal(sha(fs.readFileSync(path.join(target, f.leafPath))), f.leafRef.sha256);
+      throw Error('OFFICIAL_ANCESTOR_APPROVAL_REJECTED');
+    }
+  };
+  assert.throws(() => f.validate(proof), /OFFICIAL_ANCESTOR_APPROVAL_REJECTED/);
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
 const BINDING_KEY = { curriculum: '2015', standardCourse: '중2 수학', standardUnitKey: 'M2-06',
   subUnitKey: 'M2-06-PARALLEL_LENGTH_RATIO', problemTypeKey: 'PT_QUADRILATERAL_PROPERTIES' };
 const BINDING_PROVIDER = '.archive-meta-register/inbox/zz-binding-provider.json';
