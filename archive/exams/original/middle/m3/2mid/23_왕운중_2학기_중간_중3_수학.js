@@ -32,6 +32,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "직각C에서 AB가 빗변이고 BC가 A의 맞은편 변이므로 주어진9와15의 비를 사인 정의로 바로 읽는다.",
+    "decisiveStep": "직각C에서 AB가 빗변이고 BC가 A의 맞은편 변이므로 주어진9와15의 비를 사인 정의로 바로 읽는다."
   },
   {
     "id": 2,
@@ -62,6 +74,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "sin60과tan60의 알려진 특수각 값을 대입하여 곱을 계산한다.",
+    "decisiveStep": "sin60과tan60의 알려진 특수각 값을 대입하여 곱을 계산한다."
   },
   {
     "id": 3,
@@ -96,6 +120,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 포물선의 대칭축 x=2와 꼭짓점 (2,−5)를 표시한다.",
     "solutionImageCaption": "꼭짓점은 (2,−5)이므로 p+q=−3이다. 정답은 ②이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+    "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "일반형을3으로 묶어 완전제곱식으로 고친 뒤 꼭짓점의 두 좌표를 읽고 합을 계산한다.",
+    "decisiveStep": "일반형을3으로 묶어 완전제곱식으로 고친 뒤 꼭짓점의 두 좌표를 읽고 합을 계산한다."
   },
   {
     "id": 4,
@@ -126,6 +162,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "sin제곱과cos제곱의 합1에 주어진cos값을 넣고 예각에서 사인이 양수임을 사용해 다른 삼각비를 구한다.",
+    "decisiveStep": "sin제곱과cos제곱의 합1에 주어진cos값을 넣고 예각에서 사인이 양수임을 사용해 다른 삼각비를 구한다."
   },
   {
     "id": 5,
@@ -160,6 +208,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 파랑 포물선의 꼭짓점은 x축에 닿고, x=1 점선이 이 꼭짓점을 지난다.",
     "solutionImageCaption": "꼭짓점의 y좌표가 a+1이므로 a+1=0이다. 따라서 a=−1이며 정답은 ⑤이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "꼭짓점이 x축 위라는 조건을 꼭짓점의 y좌표0으로 읽고 완전제곱식에서 a+1=0을 세운다.",
+    "decisiveStep": "꼭짓점이 x축 위라는 조건을 꼭짓점의 y좌표0으로 읽고 완전제곱식에서 a+1=0을 세운다."
   },
   {
     "id": 6,
@@ -194,6 +254,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 포물선의 꼭짓점 (2,3)과 y절편 (0,1), 두 점 사이의 곡선이 보인다.",
     "solutionImageCaption": "1=4a+3에서 a=−1/2이고, 전개하면 b=2, c=1이다. 따라서 abc=−1이며 정답은 ②이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+    "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "주어진 꼭짓점으로 꼭짓점형을 세우고 y절편을 대입하여a를 정한 뒤 일반형으로 전개해b,c와곱을 구한다.",
+    "decisiveStep": "주어진 꼭짓점으로 꼭짓점형을 세우고 y절편을 대입하여a를 정한 뒤 일반형으로 전개해b,c와곱을 구한다."
   },
   {
     "id": 7,
@@ -225,6 +297,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 두 포물선의 열림 방향, 대칭축과 y절편의 위치를 비교한다.",
     "solutionImageCaption": "새 그래프는 위로 열리고 대칭축은 y축 왼쪽, y절편은 x축 아래에 있다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "기존 그래프의 볼록 방향·축·y절편에서a,b,c부호를 얻은 뒤 계수가 순환한 새 함수의 방향·축·절편을 다시 구성해 그래프를 고른다.",
+    "decisiveStep": "기존 그래프의 볼록 방향·축·y절편에서a,b,c부호를 얻은 뒤 계수가 순환한 새 함수의 방향·축·절편을 다시 구성해 그래프를 고른다."
   },
   {
     "id": 8,
@@ -256,6 +340,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "특수각의0과1을 기준으로 예각 범위에서 sin과tan이 증가하는 성질을 사용하여 다섯 삼각비를 정렬하고 세 번째를 고른다.",
+    "decisiveStep": "특수각의0과1을 기준으로 예각 범위에서 sin과tan이 증가하는 성질을 사용하여 다섯 삼각비를 정렬하고 세 번째를 고른다."
   },
   {
     "id": 9,
@@ -288,6 +384,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "주어진 삼각비표의24도 행과cos열이 만나는0.9135를 읽는다.",
+    "decisiveStep": "주어진 삼각비표의24도 행과cos열이 만나는0.9135를 읽는다."
   },
   {
     "id": 10,
@@ -318,10 +426,22 @@ window.questionBank = [
     "answer": "③",
     "solution": "빗변과 한 예각이 주어졌으므로 코사인을 이용하고, 표에 있는 여각의 사인값으로 바꾼다.\n표에서 $\\sin25^\\circ=0.4226$이다.\n따라서\n$BC=20\\cos65^\\circ=20\\sin25^\\circ=20\\times0.4226=8.452$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_왕운중_2학기_중간_중3_수학/q10.png",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": ["CC_COMPLEMENTARY_ANGLE_TRIG"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "빗변20과65도에서 BC=20cos65로 나타내고 표에 있는여각25도의sin값을 사용해 목표 길이를 계산한다.",
+    "decisiveStep": "빗변20과65도에서 BC=20cos65로 나타내고 표에 있는여각25도의sin값을 사용해 목표 길이를 계산한다."
   },
   {
     "id": 11,
@@ -358,6 +478,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 대각선 AC와 높이 AH가 표시된 사각형 ABCD. △ABC는 파랑, △ADC는 주황이며 AD와 DC에는 같은 눈금이 있다.",
     "solutionImageCaption": "AH=4sin60°=2√3cm이므로 △ABC의 넓이는 8√3cm²이다. AC²=AH²+CH²=48이고 AD=DC, ∠D=90°이므로 △ADC의 넓이는 12cm²이다. 합은 12+8√3cm²이다. 답: ②.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "수선을 내려sin60으로 높이를,cos60으로 밑변 조각을 얻고 AC제곱을 구해 직각이등변인ADC의넓이와ABC넓이를 합한다.",
+    "decisiveStep": "수선을 내려sin60으로 높이를,cos60으로 밑변 조각을 얻고 AC제곱을 구해 직각이등변인ADC의넓이와ABC넓이를 합한다."
   },
   {
     "id": 12,
@@ -395,6 +527,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 반지름 1인 사분원에서 중심각 x와 직각삼각형 OAB의 이웃변 OB를 파랑으로 강조한다.",
     "solutionImageCaption": "OA=1이므로 cos x=OB/OA=OB이다. 따라서 길이가 같은 선분은 OB이다. 답: ④.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "반지름1인 OAB 직각삼각형에서 cosx=OB/OA=OB이므로 해당 선분을 직접 읽는다.",
+    "decisiveStep": "반지름1인 OAB 직각삼각형에서 cosx=OB/OA=OB이므로 해당 선분을 직접 읽는다."
   },
   {
     "id": 13,
@@ -432,6 +576,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 위 패널은 단위원에서 cos x와 OB를 대응하고, 아래 패널은 직각삼각형에서 x와 z의 합이 90°임을 보인다.",
     "solutionImageCaption": "OA=1이므로 OB=cos x이고, x+z=90°에서 sin z=cos x이다. 따라서 sin z=OB이다. 답: ④.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "그림의x와z가 여각임을 읽어 sinz=cosx로 바꾼 뒤 반지름1 삼각형의OB길이에 대응한다.",
+    "decisiveStep": "그림의x와z가 여각임을 읽어 sinz=cosx로 바꾼 뒤 반지름1 삼각형의OB길이에 대응한다."
   },
   {
     "id": 14,
@@ -468,6 +624,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AB=20cm, ∠A=30°, C 직각, D는 AC의 중점이다. AD=DC이고 x=∠BDC이다.",
     "solutionImageCaption": "BC=10cm, CD=5√3cm이므로 tan∠BDC=10/(5√3)=2√3/3이다. 답: ④.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "큰 직각삼각형의sin30·cos30으로 두 변을 구하고 중점조건으로CD를 반으로 나눈 뒤 작은 삼각형의tan값을 구한다.",
+    "decisiveStep": "큰 직각삼각형의sin30·cos30으로 두 변을 구하고 중점조건으로CD를 반으로 나눈 뒤 작은 삼각형의tan값을 구한다."
   },
   {
     "id": 15,
@@ -504,6 +672,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 두 포물선 사이의 영역과 세로 길이가 같은 삼각형을 같은 파랑으로 표시한다.",
     "solutionImageCaption": "같은 x에서의 세로 길이가 12−4x로 같으므로 넓이도 같다. 삼각형의 밑변이 2, 높이가 8이어서 넓이는 8이다. 정답은 ②이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 포물선의 같은x에서의 세로 길이 차가 일차식12−4x임을 이용해 동일 단면 길이의 삼각형으로 넓이를 옮긴다.",
+    "decisiveStep": "두 포물선의 같은x에서의 세로 길이 차가 일차식12−4x임을 이용해 동일 단면 길이의 삼각형으로 넓이를 옮긴다."
   },
   {
     "id": 16,
@@ -540,6 +720,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 축 x=1/2에 대칭인 두 근과 x=0, 1, 1/3에서 그래프가 x축의 위아래 어느 쪽에 있는지 표시한다.",
     "solutionImageCaption": "x=1/3에서 함수값은 양수이므로 a+3b+9c>0이다. 옳지 않은 것은 ⑤.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "축과한근의 대칭으로 다른근을 복원하고 계수식들을f(0),f(1),9f(1/3)으로 해석해 근 사이와 밖의 그래프 부호로 진술을 판정한다.",
+    "decisiveStep": "축과한근의 대칭으로 다른근을 복원하고 계수식들을f(0),f(1),9f(1/3)으로 해석해 근 사이와 밖의 그래프 부호로 진술을 판정한다."
   },
   {
     "id": 17,
@@ -576,6 +768,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 눈 점 A는 지면에서 1.6 m, 수평 AB는 10 m이다. B 위 깃대 부분은 h, 시선 AT와 수평의 각은 32°다.",
     "solutionImageCaption": "tan32°=h/10이므로 h=10×0.63=6.3 m이다. 전체 높이는 6.3+1.6=7.9 m이다. 정답은 ④이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "수평거리10과 주어진tan32 근삿값으로 눈높이 위쪽6.3을 구한 뒤 눈높이1.6을 더한다.",
+    "decisiveStep": "수평거리10과 주어진tan32 근삿값으로 눈높이 위쪽6.3을 구한 뒤 눈높이1.6을 더한다."
   },
   {
     "id": 18,
@@ -612,6 +816,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 같은 길이 AD와 AE는 파랑 한 눈금, FD와 FE는 주황 두 눈금으로 구별한다.",
     "solutionImageCaption": "AD=AE이므로 BE=12 cm, EC=3 cm이다. FC=t라 하면 FD=FE에서 (9−t)²=t²+9이다. 따라서 FC=4 cm이고 정답은 ③이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+    "crossConceptKeys": ["CC_PAPER_FOLDING_SIMILARITY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "curriculum": "2015",
+    "primaryMethod": "접기 등거리로AE=AD를 얻어BE를 피타고라스로 복원하고,FC=t로 둔 두 길이FD=9−t와FE를 같은 값으로 놓아 다시 피타고라스 식을 푼다.",
+    "decisiveStep": "접기 등거리로AE=AD를 얻어BE를 피타고라스로 복원하고,FC=t로 둔 두 길이FD=9−t와FE를 같은 값으로 놓아 다시 피타고라스 식을 푼다."
   },
   {
     "id": 19,
@@ -642,6 +859,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_FUNCTION_VALUE",
+    "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "현재 해설은 네 입력값을 각각 함수식에 대입하고 그 결과의 분자·분모를 계산한다. 축의 대칭을 새 풀이로 추정하지 않는다.",
+    "decisiveStep": "현재 해설은 네 입력값을 각각 함수식에 대입하고 그 결과의 분자·분모를 계산한다. 축의 대칭을 새 풀이로 추정하지 않는다."
   },
   {
     "id": 20,
@@ -676,6 +905,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 정삼각형의 중심 O와 아래쪽 변의 중점 M을 이었다. 파란 OB는 외접원 반지름 R, 주황 OM은 내접원 반지름 r이다. 직각삼각형 OBM은 각 B가 30도이다.",
     "solutionImageCaption": "sin 30°=OM/OB=r/R=1/2이므로 R=2r이다. 두 원의 넓이 차에서 r=2 cm, R=4 cm를 얻고, 정삼각형의 넓이는 12√3 cm²이다. 정답은 ④이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_EQUILATERAL_TRIANGLE","CC_CIRCLE_CIRCUMFERENCE","CC_TRIANGLE_AREA","CC_INSCRIBED_CIRCLE","CC_CIRCUMCIRCLE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "정삼각형 중심의30도 직각삼각형에서sin으로R=2r을 만들고 원넓이 차로 두 반지름을 정한 뒤cos로 변 길이를 구해 삼각형 넓이를 계산한다.",
+    "decisiveStep": "정삼각형 중심의30도 직각삼각형에서sin으로R=2r을 만들고 원넓이 차로 두 반지름을 정한 뒤cos로 변 길이를 구해 삼각형 넓이를 계산한다."
   },
   {
     "id": 21,
@@ -706,6 +947,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 파란 삼각형 ABC의 외부 수선 H와 주황 보조 직각삼각형 AHC. ∠CAB=120°, ∠CAH=60°, CH=2√3 cm.",
     "solutionImageCaption": "CH=4sin60°=2√3 cm이다. [△ABC]=½×8×2√3=8√3 cm²이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+    "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "두 변4,8과끼인각120을 실제 S=1/2ab sinC에 대입하고 sin120=sin60으로 바꾸어 넓이를 구한다.",
+    "decisiveStep": "두 변4,8과끼인각120을 실제 S=1/2ab sinC에 대입하고 sin120=sin60으로 바꾸어 넓이를 구한다."
   },
   {
     "id": 22,
@@ -734,6 +987,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 좌표 (0,2), (1,5), (2,6)을 포물선 위의 주황 점으로 표시한다.",
     "solutionImageCaption": "세 좌표를 대입하면 c=2, a+b=3, 2a+b=2이다. 따라서 y=−x²+4x+2이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
+    "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "y절편으로c를 먼저 구하고 나머지 두 점을 대입한 두 일차방정식을 가감하여a,b를 복원한다.",
+    "decisiveStep": "y절편으로c를 먼저 구하고 나머지 두 점을 대입한 두 일차방정식을 가감하여a,b를 복원한다."
   },
   {
     "id": 23,
@@ -764,6 +1029,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 나무 꼭대기 A에서 밑동 D로 수직 높이 h를 내린다. B의 45° 삼각형에서 BD=x와 AD=h는 파란색 같은 눈금이고, C의 30° 삼각형은 DC=40−x이다.",
     "solutionImageCaption": "tan45°=h/x에서 h=x이고 tan30°=h/(40−x)에서 40−x=√3h이다. 따라서 h=20(√3−1) m이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+    "crossConceptKeys": ["CC_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "양쪽 관측점 사이 나무의 높이를 공통미지수로 두고 양쪽 수평거리의 합40과tan45·tan30을 결합하여 높이를 정한다.",
+    "decisiveStep": "양쪽 관측점 사이 나무의 높이를 공통미지수로 두고 양쪽 수평거리의 합40과tan45·tan30을 결합하여 높이를 정한다."
   },
   {
     "id": 24,
@@ -794,5 +1071,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 왼쪽 정육면체의 AD 중점 M과 주황 선분 FM·GM이 푸른 단면을 이룬다. 오른쪽 이등변삼각형 FMG의 밑변은 2 cm이며, 중점 N에서 MN과 FG가 수직이다.",
     "solutionImageCaption": "정육면체에서 FM=GM=3 cm이다. △FMG의 밑변 FG=2 cm, 중점 N에서 MN=√(3²−1²)=2√2 cm이다. 두 넓이를 같게 두면 2√2=(1/2)·3·3·sin x이므로 sin x=4√2/9이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_TRIANGLE_AREA","CC_TRIANGLE_AREA_TRIG"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "입체 면대각선과 수직인 모서리로FM=GM을 복원하고, 이등변삼각형의 높이를 구한 넓이와1/2FM·GM·sinx를 같게 놓아 최종sin값을 유도한다.",
+    "decisiveStep": "입체 면대각선과 수직인 모서리로FM=GM을 복원하고, 이등변삼각형의 높이를 구한 넓이와1/2FM·GM·sinx를 같게 놓아 최종sin값을 유도한다."
   }
 ];

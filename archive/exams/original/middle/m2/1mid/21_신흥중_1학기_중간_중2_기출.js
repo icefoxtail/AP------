@@ -448,8 +448,8 @@ window.questionBank = [
     "wide": false,
     "solution": "⑤ $(-2xy)^2 \\times (-2x^2y)^3 = 4x^2y^2 \\times (-8x^6y^3) = -32x^8y^5$\n$\\therefore$ 계수의 부호가 양수로 표기된 ⑤번이 옳지 않음.",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -519,8 +519,8 @@ window.questionBank = [
     "wide": false,
     "solution": "$A = \\frac{2a^3}{6ab^2} = \\frac{a^2}{3b^2}$\n$A \\div B = \\frac{a^2}{3b^2} \\times \\frac{2}{3ab^2} = \\frac{2a^2}{9ab^4} = \\frac{2a}{9b^4}$\n$\\therefore \\frac{2a}{9b^4}$",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -622,8 +622,8 @@ window.questionBank = [
     "wide": false,
     "solution": "문장의 수량 관계를 부등식 기호와 괄호에 맞게 옮긴다.\n① $3x-7<9$, ② $3x+5\\ge7$, ③ $600x\\le5000$, ④ $2x+4y>55$는 각각 문장을 바르게 나타낸다. ⑤에서 ‘$x$에서 4를 뺀 수의 2배’는 $2(x-4)$이고 ‘17보다 작지 않다’는 $\\ge17$이므로 $2(x-4)\\ge17$이어야 한다. 보기의 $2(x-4)>17$은 옳지 않다.\n⑤",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
-    "subUnit": "일차부등식",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -693,8 +693,8 @@ window.questionBank = [
     "wide": false,
     "solution": "양변에 $6$을 곱함: $42 - 3(x+1) > 10(4x-9)$\n$42 - 3x - 3 > 40x - 90 \\implies 39 - 3x > 40x - 90$\n$129 > 43x \\implies x < 3$\n자연수 $x$는 $1, 2$임.\n$\\therefore$ 2개",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

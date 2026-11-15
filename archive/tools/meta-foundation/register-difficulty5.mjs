@@ -3,6 +3,7 @@ import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { verifyPreservedAuditDifficulty } from "./native-audit-preservation.mjs";
 
 // Registers Gemini's already-decided 5-level difficulty (req_diff5_*.json) into the canonical
 // question metadata. No re-judging: Gemini's `after` value is written as-is, subject only to
@@ -144,9 +145,15 @@ function registerReviewedCorrection({ root, request, source, sha, bank, doc, ids
     const afterDifficulty = isBucketOnlyKeep ? beforeDifficulty : Object.fromEntries(difficultyKeys.map(field => [field, next[field] ?? null]));
     const isBefore = difficultyKeys.every(field => equal(current[field], beforeDifficulty[field])) &&
       equal(currentFp, beforeFp) && currentIdFp === beforeFp.sourceFingerprint;
-    const isAfter = difficultyKeys.every(field => equal(current[field], afterDifficulty[field])) &&
-      equal(currentFp, expectedNext) && currentIdFp === expectedNext.sourceFingerprint;
-    const result = { ordinal: n, questionUid: item.questionUid, decision: "", before: { ...current, ...currentFp }, after: { ...afterDifficulty, ...expectedNext },
+    const hasAfterDifficulty = difficultyKeys.every(field => equal(current[field], afterDifficulty[field]));
+    const preservedBinding = hasAfterDifficulty && !equal(currentFp, expectedNext) &&
+      currentFp.sourceFingerprint === currentFingerprint && currentFp.contentFingerprint === currentContentFingerprint &&
+      currentIdFp === currentFingerprint && verifyPreservedAuditDifficulty({ root, difficulty: request, current: rec, identity: idr, bank });
+    const isAfter = hasAfterDifficulty &&
+      (preservedBinding ||
+      equal(currentFp, expectedNext) && currentIdFp === expectedNext.sourceFingerprint);
+    const result = { ordinal: n, questionUid: item.questionUid, decision: "", before: { ...current, ...currentFp }, after: { ...afterDifficulty, ...(preservedBinding ? currentFp : expectedNext) },
+      ...(preservedBinding ? { bindingPreservedByNativeAudit: true } : {}),
       reason: review.reason, consumerBinding: currentFp.contentFingerprint !== currentContentFingerprint || currentIdFp !== currentFp.sourceFingerprint ? "stale"
         : currentFp.sourceFingerprint === currentFingerprint ? "exact" : "content" };
     if (verifyProjection) {

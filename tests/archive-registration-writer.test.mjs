@@ -6,7 +6,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,STATE} from '../tools/ci/archive-registration-writer.mjs';
+import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,STATE} from '../tools/ci/archive-registration-writer.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -93,6 +93,39 @@ test('new source fixture: one staged transaction joins source, UID, consumer, cu
   const checked=checkRegistration(f.options);
   assert.equal(checked.status,'REGISTERED');assert.equal(checked.publishable,true);assert.equal(checked.needed,false);
   assert.equal(checked.inputDigest,result.inputDigest);assert.equal(checked.outputDigest,result.outputDigest);
+});
+
+test('multi-megabyte native summaries stay complete in artifacts without reaching the GitHub step summary',async t=>{
+  const f=fixture(t),step=path.join(f.dir,'github-step-summary.md'),payload='원시 검증 결과\n'.repeat(100000);
+  fs.writeFileSync(step,'existing workflow summary\n');
+  const result=await prepareRegistration({...f.options,env:{GITHUB_STEP_SUMMARY:step},execute:async ctx=>{
+    assert.equal(ctx.env.GITHUB_STEP_SUMMARY,path.join(f.work,'native-step-summary.md'));
+    if(ctx.lane.id==='semantic')await executeCommands({...ctx,lane:{...ctx.lane,logId:'summary-fixture',commands:[{
+      program:process.execPath,args:['-e',`require('node:fs').appendFileSync(process.env.GITHUB_STEP_SUMMARY,${JSON.stringify('원시 검증 결과\n')}.repeat(100000))`]
+    }]}});
+    return f.execute(ctx);
+  }});
+  assert.equal(result.status,'PREPARED');assert.equal(result.publishable,true);
+  assert.equal(fs.readFileSync(step,'utf8'),'existing workflow summary\n');
+  assert.equal(fs.readFileSync(path.join(f.work,'native-step-summary.md'),'utf8'),payload);
+  assert.ok(Buffer.byteLength(payload)>1024*1024);
+  const report=fs.readFileSync(path.join(f.work,'report.json'),'utf8');
+  assert.deepEqual(JSON.parse(report),result);
+  for(let attempt=0;attempt<3;attempt++)fs.appendFileSync(step,renderRegistrationSummary(result));
+  assert.ok(fs.statSync(step).size<16*1024);
+  assert.equal(hash(fs.readFileSync(path.join(f.work,'report.json'))),hash(report));
+});
+
+test('compact summary bounds large lane/error payloads and preserves failed status without mutating evidence',()=>{
+  const result={status:'PREPARED_WITH_FAILURES',registrationReady:false,changedPaths:Array(20000).fill('unchanged proof path'),
+    lanes:Array.from({length:1000},(_,i)=>({id:'lane'+i+'한'.repeat(10000),status:i?'VERIFIED':'FAILED',
+      error:'NATIVE_COMMAND_FAILED '+ '다'.repeat(20000),detail:{fullError:'FULL_RAW_DETAIL'+ '값'.repeat(20000)}}))};
+  const before=hash(JSON.stringify(result)),summary=renderRegistrationSummary(result);
+  assert.ok(Buffer.byteLength(summary)<32*1024);
+  assert.match(summary,/PREPARED_WITH_FAILURES/);assert.match(summary,/registration_ready=false/);
+  assert.match(summary,/lanes=1000; failed or rolled back=1/);assert.match(summary,/976 additional lane records/);
+  assert.match(summary,/NATIVE_COMMAND_FAILED/);assert.doesNotMatch(summary,/FULL_RAW_DETAIL/);
+  assert.match(summary,/native-step-summary\.md/);assert.equal(hash(JSON.stringify(result)),before);
 });
 
 test('same event and unrelated main commits reuse exact input/tool/output bytes without new work',async t=>{
@@ -309,6 +342,8 @@ test('native proof includes external canonical authority, consumer policy and co
     'archive/data/basic-scope-parent-links.json','archive/data/archive2-canonical-projection-policy.json',
     'archive/mixer-selector.js','archive/data/textbook-source-manifest-v1.json'
   ])assert.equal(matches(input,shared.inputs),true,'direct shared dependency: '+input);
+  assert.equal(matches('tools/ci/archive-pr-native-preview.mjs',lanes.find(l=>l.id==='reviewed').inputs),true,
+    'main request ordering changes invalidate the reviewed lane cached proof');
   assert.equal(lanes.find(l=>l.id==='fourSlot').required,false,'existing independent failure policy is preserved');
   const student=lanes.find(l=>l.id==='studentIndexes');
   assert.match(student.parameters.accessibilityBase,/^[a-f0-9]{40}$/);

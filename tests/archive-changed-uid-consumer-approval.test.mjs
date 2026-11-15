@@ -132,6 +132,73 @@ test("fixed whole-exam v2 request: all 24 reviewed L1..L4 and PT/TPL values reac
   assert.deepEqual(out.counts, { changed: 24, checked: 24, passed: 24, skippedUnchanged: 0 });
 });
 
+test("empty native preservation patches require the official existing receipt; ordinary KEEP remains skipped", t => {
+  const f = historicalConsumerFixture(t), item = f.request.items[0];
+  const request = { ...f.request, requestId: "missing-preservation-receipt", scope: "PARTIAL_UIDS", registryChanges: [],
+    items: [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, before: {}, after: {} }] };
+  const keep = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "keep.json", request)] });
+  assert.equal(keep.status, "PASS");
+  assert.deepEqual(keep.counts, { changed: 0, checked: 0, passed: 0, skippedUnchanged: 1 });
+  const prior = Object.keys(JSON.parse(fs.readFileSync(path.join(repo, "tests/fixtures/archive-gangnam-v2-consumer.json"), "utf8")).resources)
+    .find(file => file.startsWith("data/meta-foundation/evidence/reviewed-exam-meta/"));
+  request.approval = { ...request.approval, sourceRebind: { priorReceiptRef: {
+    path: "archive/" + prior, sha256: crypto.createHash("sha256").update(fs.readFileSync(path.join(f.root, "archive", prior))).digest("hex") } } };
+  const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "preserve.json", request)] });
+  assert.equal(out.status, "FAIL", "already approved canonical rows are not sufficient without native replay");
+  assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 0, skippedUnchanged: 0 });
+  assert.equal(out.exams[0].kind, "native-approval-preservation");
+  assert.equal(out.exams[0].approvalCreated, false); assert.equal(out.exams[0].newMetadataApprovals, 0);
+  assert.equal(out.exams[0].preservedMetadataApprovals, 0);
+  assert.equal(out.failures[0].reason, "NATIVE_PRESERVATION_MISMATCH");
+});
+
+test("native preservation rejects mixed modes, value edits and ambiguous selected scope before consuming rows", t => {
+  const f = historicalConsumerFixture(t), item = f.request.items[0];
+  const request = { ...f.request, requestId: "preserved-scope", scope: "PARTIAL_UIDS", registryChanges: [],
+    approval: { ...f.request.approval, sourceRebind: { priorReceiptRef: { path: "prior.json", sha256: "a".repeat(64) } } },
+    items: [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, before: {}, after: {} }] };
+  const cases = [
+    r => { r.approval.type = "REVIEW2"; },
+    r => { r.approval.sourceRebind.schemaVersion = "unknown-preservation"; },
+    r => { r.approval.sourceRebind = null; },
+    r => { r.approval.metadataReviewed = false; },
+    r => { r.approval.type = "META_PIPELINE_AUDIT"; r.approval.sourceRebind.schemaVersion = "archive-native-audit-preservation-v1"; },
+    r => { r.registryChanges = [{}]; },
+    r => { r.scope = "OTHER"; },
+    r => { delete r.scope; },
+    r => { r.registrationMode = "IDENTITY_FINGERPRINT_ONLY"; },
+    r => { r.items[0].after.difficultyBucket = 2; },
+    r => { r.items[0].before.difficultyBucket = 2; },
+    r => { r.items[0].identityBefore = {}; },
+    r => { r.items[0].sourceReview = {}; },
+    r => { r.items[0].rebind = {}; },
+    r => { r.items[0].typeHold = true; },
+    r => { r.items[0].sourceOrdinal = 25; },
+    r => { r.items.push({ ...r.items[0] }); },
+    r => { r.items.push({ ...r.items[0], questionUid: "another" }); },
+    r => { r.expectedQuestionCount = 0; },
+    r => { r.items = []; },
+    r => { r.requestId = "../../outside"; },
+  ];
+  for (const mutate of cases) {
+    const bad = structuredClone(request); mutate(bad);
+    const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "bad-preserve.json", bad)] });
+    assert.equal(out.status, "FAIL"); assert.equal(out.counts.passed, 0); assert.equal(out.counts.skippedUnchanged, 0);
+    assert.equal(out.failures[0].reason, "INVALID_REQUEST", out.failures[0].detail);
+  }
+});
+
+test("preserved native summary separates old approvals from new approvals and keeps its source denominator", () => {
+  const result = { status: "PASS", mainSha: "a".repeat(40), counts: { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 },
+    exams: [{ kind: "native-approval-preservation", exam: "fixture", changed: 1, checked: 1, passed: 1, skippedUnchanged: 0,
+      approvalType: "FINAL_QA", approvalCreated: false, newMetadataApprovals: 0, preservedMetadataApprovals: 1, expectedQuestionCount: 24 }],
+    failures: [], unobservedFields: [], assignmentPending: [] };
+  const summary = renderSummary(result);
+  assert.match(summary, /changed 1\/1 verified/);
+  assert.match(summary, /Preserved FINAL_QA approvals: 1; new approvals: 0; source questions: 24/);
+  assert.doesNotMatch(summary, /1\/1 approved/);
+});
+
 test("identity-only Consumer verification reports one exact binding and zero new approvals", t => {
   const f = historicalConsumerFixture(t), item = f.request.items[0];
   const fingerprints = { sourceFingerprint: item.after.sourceFingerprint, contentFingerprint: item.after.contentFingerprint };

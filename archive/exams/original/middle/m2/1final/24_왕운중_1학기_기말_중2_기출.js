@@ -391,8 +391,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$4x+y-3=0$을 정리하면 $y=-4x+3$이므로 기울기는 $-4$이다.\n평행한 직선은 기울기가 같으므로 $y=-4x+5$가 알맞다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -424,8 +424,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "두 그래프가 일치하려면 기울기와 $y$절편이 각각 같아야 한다.\n$\\dfrac a2=2$에서 $a=4$, $3=-b$에서 $b=-3$이다.\n따라서 $a+b=1$이고 정답은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -752,7 +752,7 @@ window.questionBank = [
   },
   {
     "id": 24,
-    "level": "상",
+    "level": "중",
     "category": "일차부등식의 활용",
     "originalCategory": "일차부등식의 활용",
     "standardCourse": "중2 수학",
