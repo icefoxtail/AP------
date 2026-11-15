@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "issued-source-binding-recovery-independent-review-v1",
+  "status": "PASS_INDEPENDENT_REVIEW",
+  "reviewer": "/root/audit_m1",
+  "firstCodeCommit": "fc6541a4cdfaa70c3cdc6e240c064aa0ac6e4bfe",
+  "reviewedCommit": "b47525eda9c571d2c38e9f4f1913d594ee182e87",
+  "currentCodeBytesRechecked": true,
+  "blockingFindings": [],
+  "ownedCodeFiles": [
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "gitBlobSha1": "b542f3f7d75fcef720e59d4c0f54e8e27fef5e7a",
+      "sha256": "fde2f1540eb05046b42be0e2fdb3fd3cbd5182ba81ecac696000675e6df4409e"
+    },
+    {
+      "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+      "gitBlobSha1": "50ed64a891e6314742f4a813e749e1b145e6c9a5",
+      "sha256": "665c4ef18387618943be1cff3ab34b0fa081eb92ace83d64ec270e76740fc126"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+      "gitBlobSha1": "9381fa10628bf58b8f91ff6d662da21d800971ac",
+      "sha256": "18398d50c2f360a27947a3b7711a5381bc169bae860e798c6c1028fa38466b97"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+      "gitBlobSha1": "da689f27a01e51139843c53a84c7134503c1347c",
+      "sha256": "54c2adc6d7eb1dff4193ff6a50c1855935d184ce5ce4af7f12f15ad3b68e6d87"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "gitBlobSha1": "c6f4ffbaa29008fd5e0ce9faca6914ef3a9af10e",
+      "sha256": "33e8345ffb56ffaed9eadda4f249ca78814e7cf7c33896bb246dd0c0d06fb363"
+    },
+    {
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "gitBlobSha1": "e34fe5d0d040ee98adbd8858550b9a6d5fe6c51e",
+      "sha256": "3603b3dce76af3dc3caedfd09cec12e196ed721ae0fee967e82075ceed256280"
+    },
+    {
+      "path": "docs/architecture/Reviewed_Exam_Meta_Registration_v2.md",
+      "gitBlobSha1": "0c01c0c4552165dc3550e7ba8ad3e0b76179d710",
+      "sha256": "66fe70e460726e8f82da5164f378f4a5d603563e1f8c0bdc121e18f00d666d31"
+    },
+    {
+      "path": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "gitBlobSha1": "07fb29222c403366797247d54ada0d4a382cf591",
+      "sha256": "08a892b8ac7f4568579eb21b9126574e18e4265be40be8d0f252a6a72a8169eb"
+    },
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "gitBlobSha1": "78b48741bb38ca0f002eceeb83c0d014bf5677fb",
+      "sha256": "7bf2dd85303fb2e53f64165f3f3ff2fb6f2df8aeb8c15d2c10a18453761f5712"
+    }
+  ],
+  "followupDelta": "Only runtime generatedFrom records the exact recovery receipt and native live-cohort validation requires that exact mapping. Other eight owned files equal the first code commit.",
+  "authorityBoundary": {
+    "typedEnvelope": "Exact partial FINAL_QA whole issued cohort, empty before/after, registry additions zero; original approval retained exactly.",
+    "originalAuthority": "SHA-pinned original 034 inbox and actual aa issued receipt; private immutable pre-state through official registrar, disjoint original additive binding providers independently replayed against their issued receipts; original native leaf and each reviewed/unchanged peer actually revalidated.",
+    "allowedOutput": "Only metadataRevision and approvalEvidence of the approved cohort, plus the new proof/receipt and runtime generatedFrom mapping. Original receipts, source, identity, semantic fields and row versions remain unchanged.",
+    "currentAuthority": "Current whole cohort is reread, selected PT/TPL/CC/Condition definitions and exact course bindings must match immutable replay; current ACTIVE pack/container may advance for unrelated additive definitions while preserving issued row versions.",
+    "cache": "Immutable official replay result cached by exact references; live metadata/identity/runtime bytes and all current authority refs are reread and hashed. No positive live permission reused from stale mutable state.",
+    "descendants": "Only an exact whole-cohort source-only descendant with complete UID inventory and untouched selected whole questions/approved values/identities can reach the exact verified recovery; no generic missing-leaf exemption.",
+    "dispatch": "Registrar, native reuse, preservation ancestry, preview and changed-UID Consumer recognize the exact typed schema and delegate to the actual replay; selection markers do not grant approval."
+  },
+  "independentExecution": {
+    "suiteGroups": 3,
+    "passedGroups": 3,
+    "failedGroups": 0,
+    "skippedGroups": 0,
+    "adversarialVariants": 11,
+    "refusedNativeAutoMetaRows": 18,
+    "positiveRecoveryAndDescendantControls": true,
+    "caseResults": [
+      {
+        "name": "requested all proof/schema/digest markers",
+        "mode": {},
+        "rows": [
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          },
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          }
+        ]
+      },
+      {
+        "name": "also remove preservation counts",
+        "mode": {
+          "counts": true
+        },
+        "rows": [
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          },
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          }
+        ]
+      },
+      {
+        "name": "also remove typed prior refs from approval",
+        "mode": {
+          "counts": true,
+          "priorRefs": true
+        },
+        "rows": [
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          },
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          }
+        ]
+      },
+      {
+        "name": "also remove immediate issued receipt row ref",
+        "mode": {
+          "counts": true,
+          "priorRefs": true,
+          "priorRows": true
+        },
+        "rows": [
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          },
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          }
+        ]
+      },
+      {
+        "name": "also delete latest receipt",
+        "mode": {
+          "counts": true,
+          "missingReceipt": true
+        },
+        "rows": [
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          },
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          }
+        ]
+      },
+      {
+        "name": "narrower child receipt",
+        "rows": [
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          }
+        ]
+      },
+      {
+        "name": "peer semantic drift matched in receipt and live",
+        "rows": [
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          }
+        ]
+      },
+      {
+        "name": "descendant ancestor ref missing",
+        "rows": [
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          }
+        ]
+      },
+      {
+        "name": "descendant incomplete evidence",
+        "rows": [
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          }
+        ]
+      },
+      {
+        "name": "missing generatedFrom",
+        "rows": [
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          },
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          }
+        ]
+      },
+      {
+        "name": "wrong generatedFrom",
+        "rows": [
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          },
+          {
+            "native": null,
+            "auto": "SUPPLEMENT_PENDING"
+          }
+        ]
+      }
+    ],
+    "testSource": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e029-current/.tmp/recovery-independent-probes.test.mjs",
+      "sha256": "6bc3c1c4a1e7669a98dba60b75431034e54ace8675d5e71e740cc9b9d3e10c47"
+    },
+    "testLog": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e029-current/.tmp/recovery-independent-probes-final.log",
+      "sha256": "f23042ebd540fa501620ff52bd6b0cae7bcb777730bcfd53532bc5515808783d"
+    },
+    "results": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e029-current/.tmp/recovery-independent-probe-results.json",
+      "sha256": "c8cb199ca5c8085d2f1eef30516fcd5ec27f2b7d08f4d18c1f300dbdd88084a9"
+    },
+    "versionAttribution": "The final 3-group run is attributed to the frozen b47525ed tree, and its nine owned file bytes were checked again after execution. It supersedes the earlier provisional working-tree probe."
+  },
+  "actualInputIndependentReview": {
+    "status": "PASS",
+    "counts": {
+      "requests": 6,
+      "cohort": 81,
+      "sourceReviewMembers": 38,
+      "unchangedMembers": 43,
+      "wholeStudentQuestions": 137,
+      "unselectedWholeQuestions": 56,
+      "durableRefs": 192
+    },
+    "report": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e029-current/.tmp/recovery-six-input-independent-review.json",
+      "sha256": "9930ce0ad4329f93c0424ebeecad94105d8dcc023bbf76bbedc8d770f8e47b56"
+    },
+    "originalPreWriteCommit": "03489bb554bbc68777ef6772ed4bed6b9dcabd3f",
+    "actualIssuedCommit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+    "originalActualAaRecordsChecked": 81,
+    "currentSourceWholeBytesUnchanged": 137,
+    "liveConsumedInboxAuthorityRefs": 0,
+    "newMetadataApprovals": 0,
+    "sourceChanges": 0
+  },
+  "notRerunByReviewer": [
+    "Author 32 regression tests",
+    "Six actual immutable registrar replays",
+    "Whole union 29 requests / 166 UIDs",
+    "Full catalog / Consumer",
+    "Immutable combined shadow"
+  ],
+  "authorEvidenceBoundary": "Author reports official immutable replays 81/81 and 32/32 targeted regressions. This review adds independent exact-Git/input inspection and the stated fixture probes; it does not assert production registration or complete union execution.",
+  "immutableShadow": "PENDING_ROOT_COMBINED",
+  "productionRegistration": "NOT_APPLIED",
+  "sourceOrInputMutationsByReviewer": 0,
+  "authorWorktreeMutationsByReviewer": 0
+}

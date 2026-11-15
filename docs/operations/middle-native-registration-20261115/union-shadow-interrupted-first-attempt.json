@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "root-complete-native-union-shadow-v1",
+  "status": "INTERRUPTED_RESOURCE_CONCURRENCY",
+  "inputCommit": "a64bcb9c4533fefaa5717b8f1ed1903630f8e2eb",
+  "baseMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "requestCount": 29,
+  "selectedUidEntries": 166,
+  "unfiltered": true,
+  "attempts": [
+    {
+      "request": ".archive-meta-register/inbox/issued-binding-recovery-e001-current-native-preservation-20261115.json",
+      "program": "node",
+      "write": false,
+      "status": "PASS",
+      "replay": false,
+      "plannedPathCount": 4,
+      "elapsedMs": 81212
+    },
+    {
+      "request": ".archive-meta-register/inbox/issued-binding-recovery-e001-current-native-preservation-20261115.json",
+      "program": "node",
+      "write": true,
+      "status": "PASS",
+      "replay": false,
+      "plannedPathCount": 4,
+      "elapsedMs": 76610
+    }
+  ],
+  "actualOutputComparison": "PENDING_AGENT_COMPLETE_APPLY",
+  "interruption": {
+    "exitCode": 130,
+    "rootAction": "SIGINT after separate actual apply reported SIGKILL; sequential execution required",
+    "completedCalls": 2,
+    "completedE001DryAndWrite": true,
+    "interruptedRequest": "issued-binding-recovery-e017-current695-native-preserve-20261115",
+    "noRootProductionDataWrites": true,
+    "verificationComplete": false
+  },
+  "requestsManifestSha256": "9c2ce953e39622e9256796466c189a7dbf0e45eab421d9dd25bd2d533e232ddc"
+}
