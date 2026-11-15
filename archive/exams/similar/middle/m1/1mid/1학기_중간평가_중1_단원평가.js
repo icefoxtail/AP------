@@ -326,7 +326,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "ㄱ~ㅁ에 대응하는 수로 옳지 않은 것을 고르시오. [4점]<br><img src=\"assets/images/1학기_중간평가_중1_단원평가/q12-readable.svg\" style=\"display:block; width:100%; max-width:512px; height:auto; margin:4px auto 6px;\" alt=\"-5부터 5까지의 수직선에 점 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ이 표시되어 있다.\">",
+    "content": "ㄱ~ㅁ에 대응하는 수로 옳지 않은 것을 고르시오. [4점]<br><img src=\"assets/images/1학기_중간평가_중1_단원평가/q12-display-v2.svg\" style=\"display:block; width:100%; max-width:512px; height:auto; margin:4px auto 6px;\" alt=\"-5부터 5까지의 수직선에 점 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ이 표시되어 있다.\">",
     "choices": [
       "ㄱ : $-\\frac{13}{4}$",
       "ㄴ : $-\\frac{5}{3}$",

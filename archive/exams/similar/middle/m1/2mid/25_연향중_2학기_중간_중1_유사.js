@@ -145,7 +145,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q04-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q04-solution.plan.json",
-    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q04.svg"
+    "imageSize": "full",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q04-readable-v2.svg"
   },
   {
     "id": 5,

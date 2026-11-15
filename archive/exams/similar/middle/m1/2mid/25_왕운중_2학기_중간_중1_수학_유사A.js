@@ -177,7 +177,7 @@ $q$와 $n$이 만나는 점에서 오른쪽 아래 각은 $93^\\circ$이다.
 그림의 ㉠~㉤ 작도 순서도 ⑤의 순서와 일치하지 않는다.
 
 따라서 옳은 것은 ①, ④이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q04-display-v2.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q04-display-v3.svg"
   },
   {
     "id": 5,
@@ -1100,8 +1100,8 @@ $B$가 $y=\\dfrac{b}{x}$ 위에 있으므로
 따라서 $-10=\\dfrac{b}{-9}$에서 $b=90$이다.
 
 따라서 $ab=\\dfrac49\\times90=40$이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q22-display-v2.svg",
-    "imageSize": "large"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q22-problem-readable-v3.svg",
+    "imageSize": "full"
   },
   {
     "id": 23,
