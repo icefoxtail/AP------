@@ -19,6 +19,108 @@ const FIGURE_FIELDS = new Set(['content', 'image', 'solutionImage', 'solutionIma
 const changed = (a, b) => [...new Set([...Object.keys(a), ...Object.keys(b)])].filter(k => !equal(a[k], b[k]));
 const imagePathsOnly = value => typeof value === 'string' ? value.replace(
   /(<img\b[^>]*?\bsrc\s*=\s*)(["'])([^"']*)\2/gi, '$1$2FIGURE_PATH$2') : value;
+const RENDERER_REVIEW_V2 = 'archive-independent-current-renderer-review-v2';
+const RENDERER_REVIEW_V3 = 'archive-independent-current-renderer-review-v3';
+const V3_FIGURE_FIELDS = new Set(['question', 'content', 'aliveReplacement']);
+const V2_FIGURE_FIELDS = new Set([...FIGURE_FIELDS, 'imageAlt', 'imageSize']);
+const fieldDigest = (question, field) => sha(stable({ present: Object.hasOwn(question, field), value: question[field] ?? null }));
+
+// V2 adds only an independently inspected image description/size and the
+// exact two image containers inserted into an otherwise byte-identical stem.
+// It is not a general HTML normalizer or a new mathematical review lane.
+function verifyV2ContentTransition(ctx, transition, before, current) {
+  if (typeof before !== 'string' || typeof current !== 'string' ||
+      !ownKeys(transition, ['kind', 'beforeSha256', 'afterSha256', 'insertions']) ||
+      transition.beforeSha256 !== sha(before) || transition.afterSha256 !== sha(current))
+    fail('v2 exact content transition hashes required');
+  if (transition.kind === 'UNCHANGED') {
+    if (before !== current || transition.insertions !== undefined) fail('v2 unchanged content differs');
+    return { kind: transition.kind, mathematicalStemSha256: sha(before) };
+  }
+  if (transition.kind === 'IMG_SRC_REPLACEMENT_ONLY') {
+    if (before === current || transition.insertions !== undefined || imagePathsOnly(before) !== imagePathsOnly(current))
+      fail('v2 image path replacement changed the stem');
+    return { kind: transition.kind, mathematicalStemSha256: sha(imagePathsOnly(before)) };
+  }
+  if (transition.kind !== 'TWO_EXACT_IMAGE_CONTAINERS_INSERTED' || !Array.isArray(transition.insertions) ||
+      transition.insertions.length !== 2) fail('v2 content change is outside the closed insertion contract');
+  const bytes = Buffer.from(current), chunks = [], paths = new Set(); let cursor = 0;
+  for (const row of transition.insertions) {
+    if (!ownKeys(row, ['startByte', 'byteLength', 'sha256', 'assetPath']) ||
+        !Number.isInteger(row.startByte) || row.startByte < cursor || !Number.isInteger(row.byteLength) ||
+        row.byteLength < 1 || row.startByte + row.byteLength > bytes.length || !SHA256.test(row.sha256 || ''))
+      fail('v2 exact image container range required');
+    const slice = bytes.subarray(row.startByte, row.startByte + row.byteLength), raw = slice.toString('utf8');
+    if (!Buffer.from(raw).equals(slice) || sha(slice) !== row.sha256) fail('v2 image container bytes changed');
+    const match = raw.match(/^<div class="question-image"><img src="(assets\/[^"<>%&?#:\x00-\x20]+\.(?:svg|png))" alt="[^"<>\x00-\x1f]*" style="width:[1-9][0-9]{0,3}px;max-width:100%;height:auto"><\/div>$/);
+    if (!match || row.assetPath !== `archive/${match[1]}` || paths.has(row.assetPath))
+      fail('v2 container must contain only the exact local image and display attributes');
+    safePath(ctx.root, row.assetPath); paths.add(row.assetPath);
+    chunks.push(bytes.subarray(cursor, row.startByte)); cursor = row.startByte + row.byteLength;
+  }
+  chunks.push(bytes.subarray(cursor));
+  if (!Buffer.concat(chunks).equals(Buffer.from(before))) fail('v2 non-image stem bytes changed');
+  return { kind: transition.kind, mathematicalStemSha256: sha(before),
+    insertedContainers: transition.insertions.map(row => ({ ...row })) };
+}
+
+// V3 preserves every UTF-8 byte except one local <img src> value. The
+// question alias is valid only when content has no renderer precedence.
+function verifyV3Transition(ctx, transition, prefigure, current) {
+  if (!ownKeys(transition, ['kind', 'field', 'beforeSha256', 'afterSha256', 'beforeAssetPath', 'currentAssetPath']))
+    fail('v3 exact renderer transition required');
+  const alias = transition.kind === 'QUESTION_FALLBACK_SINGLE_IMG_SRC_REPLACEMENT';
+  if (!alias && transition.kind !== 'CONTENT_SINGLE_IMG_SRC_AND_ASSET_PROVENANCE')
+    fail('v3 unsupported renderer transition kind');
+  const field = alias ? 'question' : 'content', before = prefigure.question[field], after = current.question[field];
+  if (transition.field !== field || typeof before !== 'string' || typeof after !== 'string' || before === after ||
+      transition.beforeSha256 !== sha(before) || transition.afterSha256 !== sha(after))
+    fail('v3 exact rendered stem hashes required');
+  if (alias && (Object.hasOwn(prefigure.question, 'content') !== Object.hasOwn(current.question, 'content') ||
+      (Object.hasOwn(prefigure.question, 'content') && (prefigure.question.content !== '' || current.question.content !== ''))))
+    fail('v3 question fallback requires absent or identically empty content');
+  const imageSources = value => [...value.matchAll(/<img\b[^<>]*>/gi)].map(tag => {
+    const sources = [...tag[0].matchAll(/(\s+src\s*=\s*)(["'])([^"']*)\2/gi)];
+    if (sources.length !== 1) fail('v3 exact single image source attribute required');
+    const m = sources[0], start = tag.index + m.index + m[1].length + m[2].length;
+    const relative = m[3].startsWith('archive/') ? m[3] : `archive/${m[3]}`;
+    if (!/^(?:archive\/)?assets\/[^"<>%&?#:\x00-\x20]+\.(?:svg|png)$/i.test(m[3]))
+      fail('v3 exact local image source required');
+    safePath(ctx.root, relative);
+    return { path: relative, value: m[3], start, end: start + m[3].length };
+  });
+  const oldImages = imageSources(before), newImages = imageSources(after);
+  if (!oldImages.length || oldImages.length !== newImages.length) fail('v3 image inventory changed');
+  const differing = oldImages.map((r, i) => r.value === newImages[i].value ? -1 : i).filter(i => i >= 0);
+  if (differing.length !== 1) fail('v3 requires exactly one image source replacement');
+  const old = oldImages[differing[0]], next = newImages[differing[0]];
+  if (transition.beforeAssetPath !== old.path || transition.currentAssetPath !== next.path || old.path === next.path ||
+      before.slice(0, old.start) !== after.slice(0, next.start) || before.slice(old.end) !== after.slice(next.end))
+    fail('v3 non-image stem or renderer attribute bytes changed');
+  const delta = changed(prefigure.question, current.question).sort();
+  if (!equal(delta, alias ? ['question'] : ['aliveReplacement', 'content']))
+    fail('v3 change exceeds the named renderer properties');
+  let assetProvenance;
+  if (!alias) {
+    const pair = [[prefigure, old.path], [current, next.path]], records = [];
+    for (const [snapshot, assetPath] of pair) {
+      const value = snapshot.question.aliveReplacement, asset = value?.replacementAsset;
+      if (!value || typeof value !== 'object' || Array.isArray(value) ||
+          !ownKeys(asset, ['path', 'bytes', 'sha256']) || asset.path !== assetPath.slice('archive/'.length) ||
+          !Number.isInteger(asset.bytes) || asset.bytes < 1 || !SHA256.test(asset.sha256 || ''))
+        fail('v3 exact replacement asset provenance required');
+      const file = gitFile(ctx, snapshot.ref.commit, assetPath);
+      if (asset.bytes !== file.bytes.length || asset.sha256 !== file.sha256)
+        fail('v3 replacement asset provenance is stale');
+      records.push({ path: assetPath, gitBlobSha1: file.gitBlobSha1, bytes: asset.bytes, sha256: file.sha256 });
+    }
+    const rest = q => Object.fromEntries(Object.entries(q.aliveReplacement).filter(([k]) => k !== 'replacementAsset'));
+    if (!equal(rest(prefigure.question), rest(current.question))) fail('v3 other replacement provenance changed');
+    assetProvenance = { before: records[0], current: records[1] };
+  }
+  return { ...transition, mathematicalStemSha256: sha(before.slice(0, old.start) + 'FIGURE_PATH' + before.slice(old.end)),
+    ...(assetProvenance ? { assetProvenance } : {}) };
+}
 
 export function reviewedRendererBindingPath(requestId) {
   if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(requestId || '')) fail('valid renderer binding requestId required');
@@ -169,14 +271,157 @@ function verifyAssets(ctx, rows, snapshot, { live = false, alsoCommit } = {}) {
   });
 }
 
+// A prior FINAL_QA receipt is not a visual-review witness. V3 can bridge an
+// earlier solution illustration only through this separate immutable review.
+function verifyV3PriorSolutionWitness(ctx, ref, prefigure, current, nativeSource) {
+  const doc = boundDocument(ctx, ref), fields = ['solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize'];
+  if (!ownKeys(doc, ['schemaVersion', 'scope', 'decision', 'reviewer', 'questionUid', 'sourceOrdinal',
+      'nativeReviewRef', 'nativeItemSha256', 'nativeSourceRef', 'prefigureSourceRef', 'currentSourceRef',
+      'addedFields', 'fieldDeltaHashes', 'nativeAssets', 'prefigureAssets', 'visualEvidence', 'observed',
+      'newFullMathematicalQa', 'newMetadataApprovals', 'newDifficultyJudgments', 'newReviewPassCount']) ||
+      doc.schemaVersion !== 'archive-independent-prior-solution-renderer-review-v1' ||
+      doc.scope !== 'EXACT_PREEXISTING_SOLUTION_RENDERER_ADDITION' ||
+      doc.decision !== 'PASS_NARROW_PRIOR_SOLUTION_RENDERER_CONTINUITY' ||
+      !text(doc.reviewer) || doc.reviewer === ctx.native.reviewer || !text(doc.observed) ||
+      doc.questionUid !== ctx.patch.questionUid || doc.sourceOrdinal !== ctx.patch.sourceOrdinal ||
+      !nativeRefMatches(ctx, doc.nativeReviewRef) || doc.nativeItemSha256 !== sha(stable(ctx.row)) ||
+      !sameSource(doc.nativeSourceRef, nativeSource, true) || !sameSource(doc.prefigureSourceRef, prefigure, true) ||
+      !sameSource(doc.currentSourceRef, current, true) || !equal(doc.addedFields, fields) ||
+      doc.newFullMathematicalQa !== false || doc.newMetadataApprovals !== 0 ||
+      doc.newDifficultyJudgments !== 0 || doc.newReviewPassCount !== 0 ||
+      !equal(changed(nativeSource.question, prefigure.question).sort(), fields) ||
+      !equal(doc.fieldDeltaHashes, fields.map(field => ({ field, beforeSha256: fieldDigest(nativeSource.question, field),
+        afterSha256: fieldDigest(prefigure.question, field) }))) ||
+      fields.some(field => Object.hasOwn(nativeSource.question, field) || !Object.hasOwn(prefigure.question, field) ||
+        !Object.hasOwn(current.question, field) || !equal(prefigure.question[field], current.question[field])))
+    fail('v3 prior solution renderer witness mismatch');
+  const q = prefigure.question;
+  if (typeof q.solutionImage !== 'string' || !/^assets\/[^"<>%&?#:\x00-\x20]+\.(?:svg|png)$/i.test(q.solutionImage) ||
+      ['solutionImageAlt', 'solutionImageCaption'].some(field => !text(q[field]) || /[<>\x00-\x1f]/.test(q[field])) ||
+      typeof q.solutionImageSize !== 'string' || !/^[a-z0-9_-]{1,32}$/.test(q.solutionImageSize) ||
+      ![...(doc.nativeAssets || []), ...(doc.prefigureAssets || [])].every(a => a.visuallyInspected === true) ||
+      !ownKeys(doc.visualEvidence, ['contactSha256', 'renderedAssetCount']) ||
+      !SHA256.test(doc.visualEvidence.contactSha256 || '') || !Number.isInteger(doc.visualEvidence.renderedAssetCount) ||
+      doc.visualEvidence.renderedAssetCount < 1 ||
+      doc.visualEvidence.renderedAssetCount !== new Set([...doc.nativeAssets, ...doc.prefigureAssets].map(a => a.sha256)).size)
+    fail('v3 exact prior solution renderer inspection required');
+  const nativeAssets = verifyAssets(ctx, doc.nativeAssets, nativeSource);
+  const prefigureAssets = verifyAssets(ctx, doc.prefigureAssets, prefigure);
+  const addedPath = `archive/${q.solutionImage}`;
+  if (nativeAssets.some(a => a.path === addedPath) || prefigureAssets.length !== nativeAssets.length + 1 ||
+      nativeAssets.some(a => !prefigureAssets.some(b => equal(a, b))))
+    fail('v3 prior solution renderer changed an existing native asset');
+  const added = prefigureAssets.find(a => a.path === addedPath);
+  if (!added || gitFile(ctx, current.ref.commit, addedPath).sha256 !== added.sha256)
+    fail('v3 prior solution renderer differs in the current snapshot');
+  return { schemaVersion: doc.schemaVersion, scope: doc.scope, independentReviewRef: ref, reviewer: doc.reviewer,
+    nativeSourceRef: nativeSource.ref, prefigureSourceRef: prefigure.ref, currentSourceRef: current.ref,
+    addedFields: fields, fieldDeltaHashes: doc.fieldDeltaHashes, nativeAssets, prefigureAssets,
+    studentPayloadSha256: sha(stable(ctx.studentPayload(prefigure.question))),
+    findingSha256: sha(doc.observed), newFullMathematicalQa: false, newMetadataApprovals: 0,
+    newDifficultyJudgments: 0, newReviewPassCount: 0 };
+}
+
 // Read the actual independently authored document, not a caller's normalized PASS flag.
-function independentWitness(ctx, ref, prefigure, current, nativeSource) {
-  const doc = boundDocument(ctx, ref), uid = ctx.patch.questionUid, ordinal = ctx.patch.sourceOrdinal;
+function independentWitness(ctx, ref, prefigure, current, nativeSource, document) {
+  const doc = document || boundDocument(ctx, ref), uid = ctx.patch.questionUid, ordinal = ctx.patch.sourceOrdinal;
   if (!text(doc.reviewer) || doc.reviewer === ctx.native.reviewer) fail('independent reviewer required');
   const nativeQuestion = nativeSource.question, selectedFields = ['content', 'choices', 'answer', 'solution', 'id',
     'level', 'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility'];
-  let beforeAssets, currentAssets, finding, correctionInput, baseline = nativeSource;
-  if (doc.schemaVersion === 'archive-independent-narrow-renderer-review-v1') {
+  let beforeAssets, currentAssets, finding, correctionInput, transitionContract, baseline = nativeSource;
+  if (doc.schemaVersion === RENDERER_REVIEW_V3) {
+    const row = uniqueRow(doc.rows, uid, ordinal); baseline = prefigure;
+    const delta = changed(prefigure.question, current.question).sort();
+    if (!ownKeys(doc, ['schemaVersion', 'scope', 'reviewer', 'decision', 'nativeReviewCommit', 'prefigureCommit',
+        'currentCommit', 'counts', 'rows']) || doc.scope !== 'EXACT_FALLBACK_IMAGE_SOURCE_AND_ASSET_PROVENANCE' ||
+        doc.decision !== 'PASS_NARROW_RENDERER_SEMANTIC_PRESERVATION' ||
+        doc.nativeReviewCommit !== ctx.native.spec.reviewCommit || doc.prefigureCommit !== prefigure.ref.commit ||
+        doc.currentCommit !== current.ref.commit || !ownKeys(doc.counts, ['selected', 'newFullMathApprovals',
+          'newMetadataApprovals', 'newDifficultyApprovals', 'newReviewPassCount']) ||
+        doc.counts.selected !== doc.rows.length || new Set(doc.rows.map(r => r.questionUid)).size !== doc.rows.length ||
+        doc.counts.newFullMathApprovals !== 0 || doc.counts.newMetadataApprovals !== 0 ||
+        doc.counts.newDifficultyApprovals !== 0 || doc.counts.newReviewPassCount !== 0 ||
+        !ownKeys(row, ['questionUid', 'sourceOrdinal', 'decision', 'visualInspectionPerformed', 'nativeReviewRef',
+          'nativeItemSha256', 'nativeSourceRef', 'prefigureSourceRef', 'currentSourceRef', 'changedRendererFields',
+          'fieldDeltaHashes', 'rendererTransition', 'nonRendererFieldChanges', 'mathematicalStemBytesUnchanged',
+          'choicesAnswerSolutionDifficultyUnchanged', 'assets', 'visualEvidence', 'observed', 'prefigureRendererReviewRef']) ||
+        row.decision !== 'PASS_NARROW_RENDERER_SEMANTIC_PRESERVATION' || row.visualInspectionPerformed !== true ||
+        !nativeRefMatches(ctx, row.nativeReviewRef) || row.nativeItemSha256 !== sha(stable(ctx.row)) ||
+        !sameSource(row.nativeSourceRef, nativeSource, true) || !sameSource(row.prefigureSourceRef, prefigure, true) ||
+        !sameSource(row.currentSourceRef, current, true) || !equal(row.changedRendererFields, delta) ||
+        !equal(row.nonRendererFieldChanges, []) || row.mathematicalStemBytesUnchanged !== true ||
+        row.choicesAnswerSolutionDifficultyUnchanged !== true ||
+        !equal(row.fieldDeltaHashes, delta.map(field => ({ field, beforeSha256: fieldDigest(prefigure.question, field),
+          afterSha256: fieldDigest(current.question, field) }))))
+      fail('v3 independent renderer review binding mismatch');
+    // Bind provenance and display properties with their own-property presence;
+    // the legacy payload omits imageAlt and normalizes missing values to null.
+    // V3 does not authorize a change to either image display property.
+    for (const field of [...V3_FIGURE_FIELDS, 'imageAlt', 'imageSize']) {
+      if (fieldDigest(prefigure.question, field) !== fieldDigest(nativeQuestion, field) ||
+          fieldDigest(ctx.question, field) !== fieldDigest(current.question, field))
+        fail('v3 live or prefigure renderer properties differ from their snapshots');
+    }
+    const transition = verifyV3Transition(ctx, row.rendererTransition, prefigure, current);
+    if (!ownKeys(row.assets, ['before', 'current']) ||
+        ![...(row.assets.before || []), ...(row.assets.current || [])].every(a => a.visuallyInspected === true) ||
+        !ownKeys(row.visualEvidence, ['contactSha256', 'renderedAssetCount']) ||
+        !SHA256.test(row.visualEvidence.contactSha256 || '') ||
+        !Number.isInteger(row.visualEvidence.renderedAssetCount) || row.visualEvidence.renderedAssetCount < 1 ||
+        row.visualEvidence.renderedAssetCount !== new Set([...row.assets.before, ...row.assets.current].map(a => a.sha256)).size)
+      fail('v3 complete direct visual inspection inventory required');
+    beforeAssets = row.assets.before; currentAssets = row.assets.current; finding = row.observed;
+    transitionContract = { schemaVersion: RENDERER_REVIEW_V3, scope: doc.scope,
+      independentRowSha256: sha(stable(row)), rendererTransition: transition };
+  } else if (doc.schemaVersion === RENDERER_REVIEW_V2) {
+    const row = uniqueRow(doc.rows, uid, ordinal); baseline = prefigure;
+    const delta = changed(prefigure.question, current.question).sort();
+    if (!ownKeys(doc, ['schemaVersion', 'scope', 'reviewer', 'decision', 'nativeReviewCommit', 'prefigureCommit',
+        'currentCommit', 'counts', 'rows']) || doc.scope !== 'EXACT_RENDERER_METADATA_AND_TWO_IMAGE_CONTAINERS' ||
+        doc.decision !== 'PASS_NARROW_RENDERER_SEMANTIC_PRESERVATION' ||
+        doc.nativeReviewCommit !== ctx.native.spec.reviewCommit || doc.prefigureCommit !== prefigure.ref.commit ||
+        doc.currentCommit !== current.ref.commit || !ownKeys(doc.counts, ['selected', 'newFullMathApprovals',
+          'newMetadataApprovals', 'newDifficultyApprovals', 'newReviewPassCount']) ||
+        doc.counts.selected !== doc.rows.length || new Set(doc.rows.map(r => r.questionUid)).size !== doc.rows.length ||
+        doc.counts.newFullMathApprovals !== 0 || doc.counts.newMetadataApprovals !== 0 ||
+        doc.counts.newDifficultyApprovals !== 0 || doc.counts.newReviewPassCount !== 0 ||
+        !ownKeys(row, ['questionUid', 'sourceOrdinal', 'decision', 'visualInspectionPerformed', 'nativeReviewRef',
+          'nativeItemSha256', 'nativeSourceRef', 'prefigureSourceRef', 'currentSourceRef', 'changedRendererFields',
+          'fieldDeltaHashes', 'contentTransition', 'nonRendererFieldChanges', 'mathematicalStemBytesUnchanged',
+          'choicesAnswerSolutionDifficultyUnchanged', 'assets', 'visualEvidence', 'observed']) ||
+        row.decision !== 'PASS_NARROW_RENDERER_SEMANTIC_PRESERVATION' || row.visualInspectionPerformed !== true ||
+        !nativeRefMatches(ctx, row.nativeReviewRef) || row.nativeItemSha256 !== sha(stable(ctx.row)) ||
+        !sameSource(row.nativeSourceRef, nativeSource, true) || !sameSource(row.prefigureSourceRef, prefigure, true) ||
+        !sameSource(row.currentSourceRef, current, true) || !equal(row.changedRendererFields, delta) ||
+        delta.some(k => !V2_FIGURE_FIELDS.has(k)) || !equal(row.nonRendererFieldChanges, []) ||
+        row.mathematicalStemBytesUnchanged !== true || row.choicesAnswerSolutionDifficultyUnchanged !== true ||
+        !equal(row.fieldDeltaHashes, delta.map(field => ({ field, beforeSha256: fieldDigest(prefigure.question, field),
+          afterSha256: fieldDigest(current.question, field) }))) ||
+        selectedFields.filter(k => k !== 'content').some(k => !equal(prefigure.question[k], current.question[k])))
+      fail('v2 independent renderer review binding mismatch');
+    // These two new fields were outside the older student-payload projection.
+    // Bind their actual source properties explicitly at every replay as well.
+    for (const field of ['imageAlt', 'imageSize']) {
+      if (fieldDigest(prefigure.question, field) !== fieldDigest(nativeQuestion, field) ||
+          fieldDigest(ctx.question, field) !== fieldDigest(current.question, field))
+        fail('v2 live or prefigure image metadata differs from its inspected snapshot');
+    }
+    if (delta.includes('imageAlt') && (typeof current.question.imageAlt !== 'string' || /[<>\x00-\x1f]/.test(current.question.imageAlt)))
+      fail('v2 inspected image alternative must be plain text');
+    if (delta.includes('imageSize') && (typeof current.question.imageSize !== 'string' || !/^[a-z0-9_-]{1,32}$/.test(current.question.imageSize)))
+      fail('v2 inspected image size must be a display token');
+    const content = verifyV2ContentTransition(ctx, row.contentTransition, prefigure.question.content, current.question.content);
+    if (!ownKeys(row.assets, ['before', 'current']) ||
+        ![...(row.assets.before || []), ...(row.assets.current || [])].every(a => a.visuallyInspected === true) ||
+        !ownKeys(row.visualEvidence, ['contactSha256', 'renderedAssetCount']) ||
+        !SHA256.test(row.visualEvidence.contactSha256 || '') ||
+        !Number.isInteger(row.visualEvidence.renderedAssetCount) || row.visualEvidence.renderedAssetCount < 1 ||
+        row.visualEvidence.renderedAssetCount !== new Set([...row.assets.before, ...row.assets.current].map(a => a.sha256)).size)
+      fail('v2 complete direct visual inspection inventory required');
+    beforeAssets = row.assets.before; currentAssets = row.assets.current; finding = row.observed;
+    transitionContract = { schemaVersion: RENDERER_REVIEW_V2, scope: doc.scope,
+      independentRowSha256: sha(stable(row)), contentTransition: content };
+  } else if (doc.schemaVersion === 'archive-independent-narrow-renderer-review-v1') {
     const row = uniqueRow(doc.rows, uid, ordinal);
     if (doc.status !== 'PASS_NARROW_CURRENT_RENDERER_REVIEW' || doc.currentSourceCommit !== current.ref.commit ||
         doc.nativeReviewCommit !== ctx.native.spec.reviewCommit || doc.counts?.newFullMathApprovals !== 0 ||
@@ -268,8 +513,10 @@ function independentWitness(ctx, ref, prefigure, current, nativeSource) {
   } else fail('unsupported independently authored renderer review schema');
   if (!text(finding)) fail('independent visual finding missing');
   return { reviewer: doc.reviewer, independentReviewRef: ref, findingSha256: sha(finding),
-    beforeAssets: verifyAssets(ctx, beforeAssets, baseline, { alsoCommit: ctx.native.spec.reviewCommit }),
+    beforeAssets: verifyAssets(ctx, beforeAssets, baseline, {
+      alsoCommit: ctx.prefigureRendererWitness ? undefined : ctx.native.spec.reviewCommit }),
     currentAssets: verifyAssets(ctx, currentAssets, current, { live: true }),
+    ...(transitionContract ? { transitionContract } : {}),
     ...(correctionInput ? { independentlyReviewedCorrectionInput: correctionInput } : {}) };
 }
 
@@ -302,16 +549,27 @@ export function validateReviewedCurrentRendererContinuity(args) {
   const nativeSource = { ref: { commit: ctx.native.spec.reviewCommit, path: current.ref.path,
     gitBlobSha1: nativeFile.gitBlobSha1, sha256: nativeFile.sha256, questionSha256: sha(stable(nativeQuestion)) },
     file: nativeFile, question: nativeQuestion, bank: ctx.native.committedBank };
-  if (!equal(ctx.studentPayload(prefigure.question), ctx.studentPayload(nativeQuestion)) ||
+  const independentDocument = boundDocument(ctx, item.independentReviewRef);
+  const v2 = independentDocument.schemaVersion === RENDERER_REVIEW_V2;
+  const v3 = independentDocument.schemaVersion === RENDERER_REVIEW_V3;
+  if (v3) {
+    const ref = uniqueRow(independentDocument.rows, ctx.patch.questionUid, ctx.patch.sourceOrdinal).prefigureRendererReviewRef;
+    if (ref !== undefined) ctx.prefigureRendererWitness = verifyV3PriorSolutionWitness(ctx, ref, prefigure, current, nativeSource);
+  }
+  if (ctx.prefigureRendererWitness ?
+      !equal(ctx.studentPayload(nativeQuestion), ctx.studentPayload(ctx.native.reviewedBank[ctx.patch.sourceOrdinal - 1])) :
+      !equal(ctx.studentPayload(prefigure.question), ctx.studentPayload(nativeQuestion)) ||
       !equal(ctx.studentPayload(prefigure.question), ctx.studentPayload(ctx.native.reviewedBank[ctx.patch.sourceOrdinal - 1])))
     fail('prefigure source differs from the immutable native student payload');
   const delta = changed(prefigure.question, current.question);
-  if (!delta.length || delta.some(k => !FIGURE_FIELDS.has(k)) ||
-      !equal(imagePathsOnly(prefigure.question.content), imagePathsOnly(current.question.content)))
+  if (!delta.length || delta.some(k => !(v3 ? V3_FIGURE_FIELDS : v2 ? V2_FIGURE_FIELDS : FIGURE_FIELDS).has(k)) ||
+      (!v2 && !v3 && !equal(imagePathsOnly(prefigure.question.content), imagePathsOnly(current.question.content))))
     fail('prefigure/current change is outside the inspected renderer fields');
   if (!equal(ctx.studentPayload(ctx.question), ctx.studentPayload(current.question))) fail('live student payload differs from independently reviewed current source');
-  const independent = independentWitness(ctx, item.independentReviewRef, prefigure, current, nativeSource);
-  // All native renderer bytes must also remain identical up to the prefigure snapshot.
+  const independent = independentWitness(ctx, item.independentReviewRef, prefigure, current, nativeSource, independentDocument);
+  if (ctx.prefigureRendererWitness && !equal(independent.beforeAssets, ctx.prefigureRendererWitness.prefigureAssets))
+    fail('v3 independent witnesses disagree on the prefigure renderer inventory');
+  // Every inspected prefigure asset remains bound to its exact immutable bytes.
   for (const asset of independent.beforeAssets) {
     const file = gitFile(ctx, prefigure.ref.commit, asset.path);
     if (file.sha256 !== asset.sha256) fail('prefigure asset bytes differ from immutable native review');
@@ -322,5 +580,6 @@ export function validateReviewedCurrentRendererContinuity(args) {
     prefigureSourceRef: prefigure.ref, currentSourceRef: current.ref, changedRendererFields: delta.sort(),
     nativeStudentPayloadSha256: sha(stable(ctx.studentPayload(nativeQuestion))),
     currentStudentPayloadSha256: sha(stable(ctx.studentPayload(ctx.question))), ...independent,
+    ...(ctx.prefigureRendererWitness ? { prefigureRendererWitness: ctx.prefigureRendererWitness } : {}),
     newMathematicalQa: false, newMetadataApprovals: 0, newDifficultyJudgments: 0 };
 }

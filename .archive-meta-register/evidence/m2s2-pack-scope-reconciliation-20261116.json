@@ -1,0 +1,1472 @@
+{
+  "schemaVersion": "archive-existing-active-binding-pack-scope-reconciliation-v1",
+  "status": "PROPOSED_FOR_INDEPENDENT_REVIEW_NOT_REGISTERED",
+  "currentCommit": "695f36bf272de5c42323a1329732efccfa542263",
+  "packRef": {
+    "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/pack.json",
+    "blobSha1": "05da3e5f047afd21fe923dd2e6eef7174d14db2e",
+    "sha256": "52be86bc7ee036677c6a2359fa991c0a95362cb0730814be1230b6aa647a3c99"
+  },
+  "bindingsRef": {
+    "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
+    "blobSha1": "f2dff82d1079c18cbb37ed2c49d49e88b373f52f",
+    "sha256": "ca1523d9fc65cd2b37c7b4cd99203e1785b231b4c09bc30a9cd7d9b3e86bf685"
+  },
+  "currentPack": {
+    "packId": "PROBABILITY_STATISTICS",
+    "packVersion": "1.0.4",
+    "curricula": [
+      "2015",
+      "2022"
+    ],
+    "standardCourses": [
+      "확률과 통계",
+      "확률과통계"
+    ],
+    "ownedStandardUnitDomains": [
+      "H15-PS-01",
+      "H15-PS-02",
+      "H15-PS-03",
+      "H15-PS-04",
+      "H15-PS-05",
+      "H15-PS-06",
+      "H22-PS-01",
+      "H22-PS-02",
+      "H22-PS-03",
+      "H22-PS-04"
+    ]
+  },
+  "proposedChange": {
+    "field": "standardCourses",
+    "before": [
+      "확률과 통계",
+      "확률과통계"
+    ],
+    "after": [
+      "확률과 통계",
+      "확률과통계",
+      "중2 수학",
+      "M2-2"
+    ],
+    "appendOnly": [
+      "중2 수학",
+      "M2-2"
+    ],
+    "curriculaUnchanged": true
+  },
+  "currentExactActiveM2Bindings": [
+    {
+      "key": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_COUNTING",
+        "PT_M2_BASIC_COUNTING_CASE_SPLIT"
+      ],
+      "row": {
+        "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnitLabelKo": "경우의 수",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_ab6c2b1acd0cb470d9dbfbdf7b3cd4bfd25aeb5c8c98499ff940334cf427f043"
+        ],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      },
+      "rowSha256": "13065b7262b74bf154060c788adc73711ef38ddd24a4003c72807295d7abdf10",
+      "origin": {
+        "commit": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+        "parentCommit": "fbe08da9b4cc6737e854c1ed2365c58c62c27f50",
+        "publicUrl": "https://github.com/icefoxtail/AP------/commit/30d11e05a53fe5fe29833f7f767ef16d870ae068",
+        "currentFileBlobSha1": "f2dff82d1079c18cbb37ed2c49d49e88b373f52f",
+        "priorFileBlobSha1": "7ed8b3e748d8c767fbbf314a408b1eb896d7b2b8",
+        "beforeExactRow": null,
+        "addedBeforeNull": true
+      }
+    },
+    {
+      "key": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_COUNTING",
+        "PT_COUNTING_ARRANGEMENT"
+      ],
+      "row": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnitLabelKo": "경우의 수",
+        "supportingItemCount": 2,
+        "supportingQuestionUids": [
+          "qid_v1_ac85c67f9b8a9f484632f1f8a72bad2ff884697489f3be3a300fdf5926dbbaf7",
+          "qid_v1_5d201e1800fc0802fca9d44e1134670fd20cef1dfaf40d72741545cc0ba0a971"
+        ],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      },
+      "rowSha256": "dbdcc3ec4745bfb0ed2a4f61ec9fea90e9a4c9db57732f05ae4634fc0f732ff7",
+      "origin": {
+        "commit": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+        "parentCommit": "fbe08da9b4cc6737e854c1ed2365c58c62c27f50",
+        "publicUrl": "https://github.com/icefoxtail/AP------/commit/30d11e05a53fe5fe29833f7f767ef16d870ae068",
+        "currentFileBlobSha1": "f2dff82d1079c18cbb37ed2c49d49e88b373f52f",
+        "priorFileBlobSha1": "7ed8b3e748d8c767fbbf314a408b1eb896d7b2b8",
+        "beforeExactRow": null,
+        "addedBeforeNull": true
+      }
+    },
+    {
+      "key": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "row": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnitLabelKo": "확률의 뜻과 성질",
+        "supportingItemCount": 4,
+        "supportingQuestionUids": [
+          "qid_v1_6e5ca1b2d2464fd70e6b9bee8a4f31b771924a33cc1c97da10d553268469ebb0",
+          "qid_v1_3ddf4d29e8c10bfdb7142ca23f915f6e6b801d3df855a5186c6739b6af36b339",
+          "qid_v1_6caf6836bb948d317dc66f4b2485f462f3e5739b1369c480af1aa608298980e9",
+          "qid_v1_b6d82eefaf0eb7e4dd2625fd1c747d69aacba880eb30f166e5268df04d72ad27"
+        ],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      },
+      "rowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "origin": {
+        "commit": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+        "parentCommit": "fbe08da9b4cc6737e854c1ed2365c58c62c27f50",
+        "publicUrl": "https://github.com/icefoxtail/AP------/commit/30d11e05a53fe5fe29833f7f767ef16d870ae068",
+        "currentFileBlobSha1": "f2dff82d1079c18cbb37ed2c49d49e88b373f52f",
+        "priorFileBlobSha1": "7ed8b3e748d8c767fbbf314a408b1eb896d7b2b8",
+        "beforeExactRow": null,
+        "addedBeforeNull": true
+      }
+    },
+    {
+      "key": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_REPEATED_TRIALS"
+      ],
+      "row": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "subUnitLabelKo": "확률의 뜻과 성질",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_39624764cd09cc2364146a62046e64fb2a6196772e985a349d5e53bf187434c0"
+        ],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "PROBABILITY_STATISTICS"
+      },
+      "rowSha256": "a3726914ede7665729aee3b6f6a3032d46b5f6b2210c07cbfc9097641ed7608a",
+      "origin": {
+        "commit": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+        "parentCommit": "fbe08da9b4cc6737e854c1ed2365c58c62c27f50",
+        "publicUrl": "https://github.com/icefoxtail/AP------/commit/30d11e05a53fe5fe29833f7f767ef16d870ae068",
+        "currentFileBlobSha1": "f2dff82d1079c18cbb37ed2c49d49e88b373f52f",
+        "priorFileBlobSha1": "7ed8b3e748d8c767fbbf314a408b1eb896d7b2b8",
+        "beforeExactRow": null,
+        "addedBeforeNull": true
+      }
+    }
+  ],
+  "applications": [
+    {
+      "exam": "E012",
+      "sourceOrdinal": 1,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_b38de340bf295c8eb238d3fc5dd06a05af6cbbe42dc123b6618286cf586f49dc",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E012/review.json",
+        "blobSha1": "d6e55aaafff06a15ebd862aa6a4e4e8295b9d40c",
+        "sha256": "f53f85b2c57320196b8e155a2abbfea4feb184cda0497aa43f716c056baf56f6",
+        "sizeBytes": 94150,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "1ec276eeae390abff8680925c7242c1ddc463ff86114ad973a251f736bf7538b",
+      "nativeDecision": "KEEP",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "NATIVE_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-114",
+        "recordSha256": "10fbfe76323c2f97d34fffc8c297352bbcdb7fcf2b9b5d9227a559ce1e622056",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "e1b320cf79c5561b6d7e9335a55c663863eeb2ad413fe2c826e5aff7e1860c8e",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E012",
+      "sourceOrdinal": 3,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_9ff4b8cec7a1639ecefb815b726397f553fa66ce48a9ed9504c36958928e1c12",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E012/review.json",
+        "blobSha1": "d6e55aaafff06a15ebd862aa6a4e4e8295b9d40c",
+        "sha256": "f53f85b2c57320196b8e155a2abbfea4feb184cda0497aa43f716c056baf56f6",
+        "sizeBytes": 94150,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "83a55a73dd9462e50d1d29bb901dd9f1d61d412affdfe9a651bffbfd18335a62",
+      "nativeDecision": "KEEP",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "NATIVE_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-113",
+        "recordSha256": "5df61ffd7b11ea8cdea49a6683dd96169c369e41c5de562908f9b4b72d695021",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "5fce60cf8d3b829cd5687489d143c4cc5413c22e434ca927d511c8f97155b41b",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E012",
+      "sourceOrdinal": 4,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_4e68672dcb92a68a3fb34f23cf6b8ea3d2c43ed68a19296b279c789ad9e225d1",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E012/review.json",
+        "blobSha1": "d6e55aaafff06a15ebd862aa6a4e4e8295b9d40c",
+        "sha256": "f53f85b2c57320196b8e155a2abbfea4feb184cda0497aa43f716c056baf56f6",
+        "sizeBytes": 94150,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "4d5458637fc45c24b804431e0f2d266a7b48e0f0ec80bd08f0bf65943bbe9b47",
+      "nativeDecision": "KEEP",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "NATIVE_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-115",
+        "recordSha256": "61d13bdc3266d6da086a51ba6e3e68bd30a3fce9741218e10aa9081421c6f46a",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "2cd5411ba3123cf969ba78e1b1f7f113e2e6c45e1f542546ffe886fbba755ec0",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E012",
+      "sourceOrdinal": 11,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_234c402065e06824cd9f409c51daa7fe56997f3c3e010b620c11cb193fdc836a",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E012/review.json",
+        "blobSha1": "d6e55aaafff06a15ebd862aa6a4e4e8295b9d40c",
+        "sha256": "f53f85b2c57320196b8e155a2abbfea4feb184cda0497aa43f716c056baf56f6",
+        "sizeBytes": 94150,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "aa42c593a00d3d5dc3c4457e56fabf493833ac000f1ff82afdc2ae4a2fe3bcd5",
+      "nativeDecision": "KEEP",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "NATIVE_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-116",
+        "recordSha256": "a0cefea0259a93c258827aa091afbb9dde0c41ae74ea5e593d5849d3b6d70651",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "727ec4b36b2d3989ef25d04ed8233daa56a1708b1df2bc89e1672e2a24bcb686",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E012",
+      "sourceOrdinal": 13,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_0d5497cc5fa40b0ba2cc34debe73c5d2d9d5eb7979013c8db64e88360258aa8b",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E012/review.json",
+        "blobSha1": "d6e55aaafff06a15ebd862aa6a4e4e8295b9d40c",
+        "sha256": "f53f85b2c57320196b8e155a2abbfea4feb184cda0497aa43f716c056baf56f6",
+        "sizeBytes": 94150,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "78b1ac1d01fef5ccf101e32979bb18644a5207c6f8c15cad2d130c5a7d250d38",
+      "nativeDecision": "KEEP",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "NATIVE_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-109",
+        "recordSha256": "0343e9425c6440db60e75160a7149c46cd0cf7d379dda3ff1232cbd91a83cb9d",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_COUNTING",
+        "PT_COUNTING_ARRANGEMENT"
+      ],
+      "bindingRowSha256": "dbdcc3ec4745bfb0ed2a4f61ec9fea90e9a4c9db57732f05ae4634fc0f732ff7",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "9d8f316cbce5b2362019dd408c3d3c6b7293ecc205b2c31473f4d2b7686a87fe",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E012",
+      "sourceOrdinal": 14,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_a44f856b62fd0b7737271d4dd4dec8dfe20af5cfecc61ddc41a1a4a86bcb3b64",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E012/review.json",
+        "blobSha1": "d6e55aaafff06a15ebd862aa6a4e4e8295b9d40c",
+        "sha256": "f53f85b2c57320196b8e155a2abbfea4feb184cda0497aa43f716c056baf56f6",
+        "sizeBytes": 94150,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "5750ac2bcd1ddf717f1ed4f540bf7be7911e3175816a25d160293fc1895eee0f",
+      "nativeDecision": "KEEP",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "NATIVE_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-115",
+        "recordSha256": "61d13bdc3266d6da086a51ba6e3e68bd30a3fce9741218e10aa9081421c6f46a",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "1a97080203fb91854fba6853055cc4cf661af0510849c04f0d07934562fd36ea",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E012",
+      "sourceOrdinal": 16,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_db16a9ff05f86bb39ed909465d15d45b25d40ccccde8484d1616a0529109aebd",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E012/review.json",
+        "blobSha1": "d6e55aaafff06a15ebd862aa6a4e4e8295b9d40c",
+        "sha256": "f53f85b2c57320196b8e155a2abbfea4feb184cda0497aa43f716c056baf56f6",
+        "sizeBytes": 94150,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "f5ba1e58622027a0de1a832f141bed0a817f8e9a7981a518406057cf9512fd5f",
+      "nativeDecision": "KEEP",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "NATIVE_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-117",
+        "recordSha256": "b1f8df237ce26a33e22d41cef78270445f0bef15fa6dd11cf0dea82a9c611a13",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "9ad30f7e0a913e74898a15028c51615082892cc386858d4f7cc7a1a761c60af6",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E012",
+      "sourceOrdinal": 17,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_5172d1fd4e4e4c00b808d7c7bb41bfbe17b1c0634ebf9c0a5c8dd081b49f53fc",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E012/review.json",
+        "blobSha1": "d6e55aaafff06a15ebd862aa6a4e4e8295b9d40c",
+        "sha256": "f53f85b2c57320196b8e155a2abbfea4feb184cda0497aa43f716c056baf56f6",
+        "sizeBytes": 94150,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "c6ee5c3de79c26404f3a039c3f9f9f9d455988aedfc834078f8d6f35a4628fdb",
+      "nativeDecision": "KEEP",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "NATIVE_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-117",
+        "recordSha256": "b1f8df237ce26a33e22d41cef78270445f0bef15fa6dd11cf0dea82a9c611a13",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "a85948b087e990d0ae41fa4413e92737421fdd2ae288cf5030cfb8a887e9eab8",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E012",
+      "sourceOrdinal": 19,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_6b70295abd9e6160a7d5a1550397f110801d5d15c4d2ac9e2b4ef0823c54e7ef",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E012/review.json",
+        "blobSha1": "d6e55aaafff06a15ebd862aa6a4e4e8295b9d40c",
+        "sha256": "f53f85b2c57320196b8e155a2abbfea4feb184cda0497aa43f716c056baf56f6",
+        "sizeBytes": 94150,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "837a4ab07bbae6e65a1fecc8e2793d5448df96fc7dd2303032debc1217bd7110",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "NATIVE_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-117",
+        "recordSha256": "b1f8df237ce26a33e22d41cef78270445f0bef15fa6dd11cf0dea82a9c611a13",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "f99228e73ee480508fe985994f76c558717e07086b736a697111518ff416e768",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E012",
+      "sourceOrdinal": 23,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_865bade51128577fd4430ab3fa1c94d90e699447dbcb58f02addfc65b4b8e030",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E012/review.json",
+        "blobSha1": "d6e55aaafff06a15ebd862aa6a4e4e8295b9d40c",
+        "sha256": "f53f85b2c57320196b8e155a2abbfea4feb184cda0497aa43f716c056baf56f6",
+        "sizeBytes": 94150,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "7008f4b19ab61e221ef2fe2b6f528dff775118b43c9a76acf70365324774cfd4",
+      "nativeDecision": "KEEP",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "NATIVE_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-117",
+        "recordSha256": "b1f8df237ce26a33e22d41cef78270445f0bef15fa6dd11cf0dea82a9c611a13",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "61aee42c3b7a0c5adf19f859d0ed40191aa35631df64a2308f55eb3f15426d7d",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E023",
+      "sourceOrdinal": 13,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_f46d734753b0f9a9c2e017c55543177241f29f955a0a778654fe2c90bf2fc576",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+        "blobSha1": "eb54e18c3146e611f20018859e48bdb3e74cf970",
+        "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+        "sizeBytes": 118816,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "479da65007779d352ed1308f4a96b7946e32031b8e3f326bf2898349b16df05f",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-107",
+        "recordSha256": "459a683fe398cddf25c71ef9702a6ace9b64c1429c754b25bc98311513cdd156",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_COUNTING",
+        "PT_M2_BASIC_COUNTING_CASE_SPLIT"
+      ],
+      "bindingRowSha256": "13065b7262b74bf154060c788adc73711ef38ddd24a4003c72807295d7abdf10",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "f2b4933823a5279c7c695a76ff7cf7fa0e53a85a9740491f992e9d3fe6312650",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E023",
+      "sourceOrdinal": 14,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_a4bead18b05ce69ce8d03e971fa2bcaa18686525ee8f9c84fe6aa67c53552017",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+        "blobSha1": "eb54e18c3146e611f20018859e48bdb3e74cf970",
+        "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+        "sizeBytes": 118816,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "a0693b5f13e2120d186e8dc7ae88d263e34ba975c253b45832f0b61ce939868a",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-109",
+        "recordSha256": "0343e9425c6440db60e75160a7149c46cd0cf7d379dda3ff1232cbd91a83cb9d",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_COUNTING",
+        "PT_COUNTING_ARRANGEMENT"
+      ],
+      "bindingRowSha256": "dbdcc3ec4745bfb0ed2a4f61ec9fea90e9a4c9db57732f05ae4634fc0f732ff7",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "35d758c6d1ac667bcd1c75b9b34602b6f369ffc76c16c15637a6dfb6c188f599",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E023",
+      "sourceOrdinal": 16,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_59177784417c7be382cea32b42833405475479ec24e34cc45af9b525dd0b70ea",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+        "blobSha1": "eb54e18c3146e611f20018859e48bdb3e74cf970",
+        "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+        "sizeBytes": 118816,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "8f38db52a1a7da8aaafb94e99b90a5a7dce790161fbb50091d09b5dcfd6118f4",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-114",
+        "recordSha256": "10fbfe76323c2f97d34fffc8c297352bbcdb7fcf2b9b5d9227a559ce1e622056",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "f935ade96530de1eee9bb5b49dec296905be2f78c85e4328c70f5afc3c8c2bf3",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E023",
+      "sourceOrdinal": 17,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_3cef2a8a94e3a83ddc4cf4ac86ba7bb8193e41d8a64fa91e74cbab5ce43e8ebe",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+        "blobSha1": "eb54e18c3146e611f20018859e48bdb3e74cf970",
+        "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+        "sizeBytes": 118816,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "fef26cf7184b3fcbac2a7ed7fb3fd019d88ffbfd2af1f644f20d84ed0587fc14",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-114",
+        "recordSha256": "10fbfe76323c2f97d34fffc8c297352bbcdb7fcf2b9b5d9227a559ce1e622056",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "5a8a69eac2735835448c8e818ea7076bec7a25bbbca031ed2c3732e19c1cfab2",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E023",
+      "sourceOrdinal": 18,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_e7389635249d2605891477ecbb2f9bb059714e9dde5a307bd7d1ed52699b50c0",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+        "blobSha1": "eb54e18c3146e611f20018859e48bdb3e74cf970",
+        "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+        "sizeBytes": 118816,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "931484ff1655302457725f781d81f15ba9b3b45cfd177a03c4662549a4bfa156",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-116",
+        "recordSha256": "a0cefea0259a93c258827aa091afbb9dde0c41ae74ea5e593d5849d3b6d70651",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "eb3a552a1284938b2d96b58f0ff6db3da90c1f81264689bc1330dd7a358176cc",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E023",
+      "sourceOrdinal": 19,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_3cd4b66acdc9f4b61132f18d6577c7cc9166137ad5135988bb892f15d3b94643",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+        "blobSha1": "eb54e18c3146e611f20018859e48bdb3e74cf970",
+        "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+        "sizeBytes": 118816,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "c4823d53747eb05d1c491b113d313a5d09118d8403f25f509c0a9030f4cb869d",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-117",
+        "recordSha256": "b1f8df237ce26a33e22d41cef78270445f0bef15fa6dd11cf0dea82a9c611a13",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "3de29cd2696ec9200caad3f4d68c4841fc5b11171336f66f98af66d815fee593",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E023",
+      "sourceOrdinal": 20,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_1e5b664653926fd6a8b98f5355663c3a4dc54614eca7cf3e6e356e814d9408db",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+        "blobSha1": "eb54e18c3146e611f20018859e48bdb3e74cf970",
+        "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+        "sizeBytes": 118816,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "11c1fa4f0d09c1e5e61e87a7eeac0e0b72c197b116afdfedcd39ba9eaf17f58e",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-115",
+        "recordSha256": "61d13bdc3266d6da086a51ba6e3e68bd30a3fce9741218e10aa9081421c6f46a",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "efdde6e89a57884c06c1644511aed08d28d0fffc3c14f8eec9d89a730b20245d",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E023",
+      "sourceOrdinal": 23,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_fc37cc9cd5210541df5f2cb206b1062eb1f175cc424e1b5f70e7df58fb0749ff",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+        "blobSha1": "eb54e18c3146e611f20018859e48bdb3e74cf970",
+        "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+        "sizeBytes": 118816,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "cb8851f9e0b973d2ea123586305a3aebe48e275998b7f6573558b88a57532162",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-109",
+        "recordSha256": "0343e9425c6440db60e75160a7149c46cd0cf7d379dda3ff1232cbd91a83cb9d",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_COUNTING",
+        "PT_COUNTING_ARRANGEMENT"
+      ],
+      "bindingRowSha256": "dbdcc3ec4745bfb0ed2a4f61ec9fea90e9a4c9db57732f05ae4634fc0f732ff7",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "b56377741fdc06a5b4cd0b1eb3d4e8b1028e22ceb6262e7fc389b597792cdc00",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E047",
+      "sourceOrdinal": 15,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_aa4f9313fe79a0e227fdbcbf16055a12700f76e4fd822ae345cb899f6438de26",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E047/review.json",
+        "blobSha1": "2651d7774c19b62f00066e745a8b290b33224684",
+        "sha256": "c7ec654bc0e7203e8681ba61a5c4392425a5dbefa4fa9da19d17b6e6ba1158ef",
+        "sizeBytes": 140647,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "352b1ac7f8e377f595b4655eb572f87c45b8b4766b5a4436e50f01447eb242f7",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-108",
+        "recordSha256": "8ed297a11f08c0e366d396a900757be95a25d5936f3ee7673a2dc751ee24d5a2",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_COUNTING",
+        "PT_M2_BASIC_COUNTING_CASE_SPLIT"
+      ],
+      "bindingRowSha256": "13065b7262b74bf154060c788adc73711ef38ddd24a4003c72807295d7abdf10",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "503eca417d8182ae547a2f96c9bc4bc112e4a7b8c6ae4e30ffb95a3ca040e073",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E047",
+      "sourceOrdinal": 17,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_28424154a6d8725d275649b3fb7c9fa5052983e2ea703ad3b8b739677c123dbd",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E047/review.json",
+        "blobSha1": "2651d7774c19b62f00066e745a8b290b33224684",
+        "sha256": "c7ec654bc0e7203e8681ba61a5c4392425a5dbefa4fa9da19d17b6e6ba1158ef",
+        "sizeBytes": 140647,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "8a36331ffa457625be80af54957060d4bfbd4ec91200067edf96b127c5126f5d",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-114",
+        "recordSha256": "10fbfe76323c2f97d34fffc8c297352bbcdb7fcf2b9b5d9227a559ce1e622056",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "75b03b400c674c565ee55bb4304e9e4f8992adb3afbd09c704e1a3efc13d3043",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E047",
+      "sourceOrdinal": 18,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_45ca817d1b0ef1ae8e2087dbb0c03fb5e864a4d7c9ea27cb1ff4ffb260238e05",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E047/review.json",
+        "blobSha1": "2651d7774c19b62f00066e745a8b290b33224684",
+        "sha256": "c7ec654bc0e7203e8681ba61a5c4392425a5dbefa4fa9da19d17b6e6ba1158ef",
+        "sizeBytes": 140647,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "cf29a2efb8f408f14e5cacd81c0257206168d0314fcc7dc21c600bbd0ca1d0e2",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-116",
+        "recordSha256": "a0cefea0259a93c258827aa091afbb9dde0c41ae74ea5e593d5849d3b6d70651",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "baf3d314c51b86ce26cd75605b41189995dd494ef8d81bf70f6a74f6faf2f8b0",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E047",
+      "sourceOrdinal": 19,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_3f6c50694777e8118b31cb1cf61da3c391b293c0169654fd3049f5755942cb88",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E047/review.json",
+        "blobSha1": "2651d7774c19b62f00066e745a8b290b33224684",
+        "sha256": "c7ec654bc0e7203e8681ba61a5c4392425a5dbefa4fa9da19d17b6e6ba1158ef",
+        "sizeBytes": 140647,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "27e5730981421a49e0685fe79a3ba53edc06212c42045cd87dbd18778a40ca53",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-118",
+        "recordSha256": "9bae1a67a781ebe83af5014db5c9ed7800d05c5d07ab7ad1ac6fe484642458b4",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_REPEATED_TRIALS"
+      ],
+      "bindingRowSha256": "a3726914ede7665729aee3b6f6a3032d46b5f6b2210c07cbfc9097641ed7608a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "54abdb3f0559bbb27a51012585ab76ffbd758ddd268b38f7bac3f2dad34066d9",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E047",
+      "sourceOrdinal": 20,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_966d7adbbd53c763e45373fb0f8248a0277f0087caf975cbe7b23ed1216cf1e8",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E047/review.json",
+        "blobSha1": "2651d7774c19b62f00066e745a8b290b33224684",
+        "sha256": "c7ec654bc0e7203e8681ba61a5c4392425a5dbefa4fa9da19d17b6e6ba1158ef",
+        "sizeBytes": 140647,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "73d80fbee2ff48618a35eadc5d0a5c2a6729ce02671155e7ee2283913d7c884c",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-114",
+        "recordSha256": "10fbfe76323c2f97d34fffc8c297352bbcdb7fcf2b9b5d9227a559ce1e622056",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "3fc78e0476d9f8571ab5795c176218e0045d70fe02890d2efd836ba39a1d35b7",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E059",
+      "sourceOrdinal": 16,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_152ada1d35d8617b86e1bd69db36179c5aad2e918d7e7f44fd230cdd0c62a89f",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+        "blobSha1": "3749b68a5a8313e18012a5780448f5648037af95",
+        "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544",
+        "sizeBytes": 148025,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "e4cf9aeca256ecde11f8568cb3c8c45674d340e1f518be8ddb73dac5e0790a1d",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-114",
+        "recordSha256": "10fbfe76323c2f97d34fffc8c297352bbcdb7fcf2b9b5d9227a559ce1e622056",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "93754bbbaadba453a4dd0e09d3f29a92748f0aba519854c8f4bae0ef9e01680c",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E059",
+      "sourceOrdinal": 19,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_4dac6bd8ad8f2fb5631522244f8322a053a9869c59719b179527093bb3c1eb97",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+        "blobSha1": "3749b68a5a8313e18012a5780448f5648037af95",
+        "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544",
+        "sizeBytes": 148025,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "9ae37d8daa3c2d4b8b12ecfd1318a0f7cbf9c57055031592ad29dfd5ecd9cba7",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-117",
+        "recordSha256": "b1f8df237ce26a33e22d41cef78270445f0bef15fa6dd11cf0dea82a9c611a13",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "17c7041a79790ff1a6c7b8128d62bc6ee2cf1b3179736b91dbfc6c95a9cfd25a",
+      "sourceStudentUnchanged": true
+    },
+    {
+      "exam": "E059",
+      "sourceOrdinal": 20,
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "questionUid": "qid_v1_a6160e5ec9e0f7daf565b37a6171a93400c6d4b98c1d76a53a650f6f622ed16d",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+        "blobSha1": "3749b68a5a8313e18012a5780448f5648037af95",
+        "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544",
+        "sizeBytes": 148025,
+        "schemaVersion": "m2-s2-meta-review-v1"
+      },
+      "nativeItemSha256": "ae3cdc5c9cefebe03dff99fc7e166ab2ed3a4153b5fa5a9385e6a182b74660c3",
+      "nativeDecision": "CORRECT",
+      "explicitCurriculumEvidence": [
+        {
+          "type": "NATIVE_AFTER",
+          "field": "curriculum",
+          "value": "2015"
+        },
+        {
+          "type": "CURRENT_SOURCE",
+          "field": "curriculum",
+          "value": "2015"
+        }
+      ],
+      "nativeRpmRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+        "recordId": "M2-RPM-114",
+        "recordSha256": "10fbfe76323c2f97d34fffc8c297352bbcdb7fcf2b9b5d9227a559ce1e622056",
+        "curriculum": "2015",
+        "scope": "M2-2"
+      },
+      "bindingKey": [
+        "2015",
+        "중2 수학",
+        "M2-08",
+        "M2-08-PROBABILITY_BASIC",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "bindingRowSha256": "a98dfb4355201f8ba9d72bf4742a78bcfab9c086a2e7d3b2d8fd9d1217193e6a",
+      "bindingPublicOrigin": "30d11e05a53fe5fe29833f7f767ef16d870ae068",
+      "sourceProtectedSha256": "8333e1df3a05f6f2813549ca998ecebc4588b110cb652b3a358de58d96a43340",
+      "sourceStudentUnchanged": true
+    }
+  ],
+  "scopeBoundary": {
+    "newCurricula": [],
+    "newProblemTypes": 0,
+    "newTemplates": 0,
+    "newBindings": 0,
+    "newQuestionApprovals": 0,
+    "newMathematicalQa": false,
+    "semesterScopeAdded": [
+      "M2-2"
+    ],
+    "otherSemesterAdded": false,
+    "otherGradesAdded": false,
+    "guardChanges": 0
+  },
+  "limits": {
+    "officialDry": "PENDING",
+    "canonicalWrites": 0,
+    "remoteWrites": 0
+  }
+}

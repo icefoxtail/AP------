@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "archive-native-binding-provider-reconciliation-v1",
+  "status": "RECONCILED_INPUT_PENDING_OFFICIAL_REGISTRATION",
+  "immutableBase": "e7bbf45ec55cff6722a9c4ec1caa06fd4745a25b",
+  "consumerRequestBefore": {
+    "commit": "e7bbf45ec55cff6722a9c4ec1caa06fd4745a25b",
+    "path": ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json",
+    "sha256": "823fa96d3ea6781d6d0b60126aa5ef4ef3472d3c882b2bd634052c5fdb338dfc",
+    "blobSha1": "9ff9f617f144d14e2425767a6da24837303afcd8"
+  },
+  "providerRequest": {
+    "commit": "e7bbf45ec55cff6722a9c4ec1caa06fd4745a25b",
+    "path": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+    "sha256": "941b67269dada8d3377997ec0c343cc10cea3d8b8479e0ca7e896ff58d76f355",
+    "blobSha1": "67a6a089f430169771084acf8a8b9c024a4f9fd2"
+  },
+  "consumerQuestionUid": "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+  "consumerSourceOrdinal": 7,
+  "sourceArchiveFile": "original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+  "expectedSourceBlobSha1": "e755a22282e3413ddc628488b476ca0cf3f60793",
+  "exactBinding": {
+    "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+    "collection": "bindings",
+    "match": {
+      "curriculum": "2015",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_LINE_EQUATION"
+    },
+    "providerAfter": {
+      "curriculum": "2015",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "ownerPack": "MIDDLE2",
+      "subUnitLabelKo": "일차함수의 뜻과 그래프",
+      "L1": "일차함수",
+      "L2": "일차함수와 그 그래프",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_1ea93c8f6e39dec082dec838c07cd44187b0fe2e169005b68a65e6d29fba82a8",
+        "qid_v1_77dcd4204b00bb39c6f468ed99adef321ba119dcd686cc0af797f758391d6030",
+        "qid_v1_4031c846e87d88b28687218a6863b73a2e8e061ef3bdf9c123e8d7f9e8308762"
+      ],
+      "status": "ACTIVE"
+    },
+    "providerAfterCanonicalSha256": "caf412478c97a014adb496d623bb6d0ca130221a56914848c6b02d456352c60c"
+  },
+  "canonicalBefore": {
+    "commit": "e7bbf45ec55cff6722a9c4ec1caa06fd4745a25b",
+    "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+    "sha256": "6a70842eea515775860fdfc627817cc1ca79f6930b0e474cb807bbc5fe2d0367",
+    "blobSha1": "8f2167c118cadb452ef744ccd90ab483a232805a",
+    "exactMatchCount": 0
+  },
+  "masterSubUnit": {
+    "commit": "e7bbf45ec55cff6722a9c4ec1caa06fd4745a25b",
+    "path": "archive/data/master_tables/js_archive_tag_master.json",
+    "sha256": "e8db23593ff878de968ced04c011bd1f4de79279d7bab5c733c9ed98899d8551",
+    "blobSha1": "c9adf854560c9e7c3a1730a8e7339f5a13f24af9",
+    "key": "M2-04-LINEAR_FUNCTION_BASIC",
+    "labelKo": "일차함수의 뜻과 그래프"
+  },
+  "disposition": "Remove only the duplicate add-only proposal from E029 Q7; after E020 official registration, use the same existing ACTIVE context through the unchanged exact-key resolver.",
+  "originalEvidenceRefs": [
+    {
+      "path": ".archive-meta-register/evidence/m2s1-binding-20261115/E029-Q7-current-closure.json",
+      "sha256": "390394a464c74ecba2749d698040b1c4895def70621bbb9bedb77ccb5efb9f30"
+    },
+    {
+      "path": ".archive-meta-register/evidence/m2s1-binding-20261115/E029-Q7-native-item.json",
+      "sha256": "21b7d565c65b34e172dbbe4a6294d8b8d75958967e070e488549407842df6779"
+    },
+    {
+      "path": ".archive-meta-register/evidence/m2s1-binding-20261115/E029-Q7-independent.json",
+      "sha256": "8f97ffd141f31b58879a706b4d2d6c97a3bac3824a561b95dde555a9e4e58053"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s1-binding-20261115-E029.parent-labels.json",
+      "sha256": "3743cd2e54234281721585df78e51a38d57dacab9f1b942c083e4ea72e7f4690"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+      "sha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+    }
+  ],
+  "unchanged": {
+    "studentSourceBytes": true,
+    "questionUid": true,
+    "sourceOrdinal": true,
+    "metadataBeforeAfter": true,
+    "identityBefore": true,
+    "fingerprintRepair": true,
+    "approvalType": true,
+    "difficulty": true,
+    "originalReviewEvidenceBytes": true,
+    "providerRequestBytes": true
+  },
+  "newDefinitions": 0,
+  "newApprovals": 0,
+  "validation": "Official sequential writer, replay, projection and Consumer remain required; this reconciliation is not an approval receipt."
+}

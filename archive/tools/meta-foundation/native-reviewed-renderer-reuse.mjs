@@ -109,11 +109,15 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
   // registered current values; no stale fingerprint is treated as a new review.
   const canonical = registry ? {pt:registry.problemTypes, tpl:registry.templates} : undefined;
   const replayAfter = { ...repair.after };
+  const registeredRationale = proof.rationaleBindings?.primaryMethod?.origin === 'REGISTERED_NATIVE_DECISIVE_STEP_UNCHANGED';
   for (const [bindings, allowed] of [[proof.rationaleBindings, ['primaryMethod', 'decisiveStep']],
     [proof.rpmBindings, REVIEWED_RPM_FIELDS]]) {
     for (const field of Object.keys(bindings || {})) {
       if (!allowed.includes(field) || !Object.hasOwn(current, field)) fail('unsupported native value binding');
-      replayAfter[field] = current[field];
+      // This issued provenance comes from a fingerprint-only request. Reinjecting
+      // unchanged values would change that request's meaning and its exact proof.
+      // The official reassessment below still verifies every source-carried value.
+      if (!registeredRationale) replayAfter[field] = current[field];
     }
   }
   const reproduced = validateReviewedSourceReassessment({root,
@@ -134,6 +138,14 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
         correctionInput.scope !== 'CORRECTION_INPUT_ONLY' || !SHA256.test(correctionInput.studentPayloadSha256 || ''))
       fail('unsupported independently inspected correction input');
     allowedPrevious.push(correctionInput.studentPayloadSha256);
+  }
+  const priorRenderer = reproduced.rendererContinuity.prefigureRendererWitness;
+  if (priorRenderer !== undefined) {
+    if (priorRenderer.schemaVersion !== 'archive-independent-prior-solution-renderer-review-v1' ||
+        priorRenderer.scope !== 'EXACT_PREEXISTING_SOLUTION_RENDERER_ADDITION' ||
+        !equal(priorRenderer.prefigureSourceRef, renderer.prefigureSourceRef) ||
+        !SHA256.test(priorRenderer.studentPayloadSha256 || '')) fail('unsupported independently inspected prior renderer');
+    allowedPrevious.push(priorRenderer.studentPayloadSha256);
   }
   if (!allowedPrevious.includes(priorPayloadSha))
     fail('previous student payload is not an immutable native, current or independently inspected correction input');
