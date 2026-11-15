@@ -12,6 +12,16 @@ const metaPath='archive/data/question_metadata.json',identityPath='archive/data/
 const statePath='.archive-meta-register/auto/state.json',configPath='.archive-meta-register/auto/config.json';
 const canon='archive/data/meta-foundation/canonical',compiled='archive/data/meta-foundation/compiled';
 const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+async function withGitHubEnvironment(values, action) {
+  const previous=Object.fromEntries(Object.keys(values).map(key=>[key,process.env[key]]));
+  Object.assign(process.env,values);
+  try { return await action(); }
+  finally {
+    for(const [key,value]of Object.entries(previous)) {
+      if(value===undefined)delete process.env[key];else process.env[key]=value;
+    }
+  }
+}
 function fixture(t,{count=3,max=1,pending=ordinal=>ordinal===1}={}) {
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'auto-meta-batch-'));
   t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
@@ -45,10 +55,29 @@ function fixture(t,{count=3,max=1,pending=ordinal=>ordinal===1}={}) {
   put(configPath,{enabled:true,bootstrapBase:head,maxQuestionsPerRun:max,pilotTargets:[]});
   put(statePath,{schemaVersion:'archive-main-merge-meta-v1',lastProcessedCommit:head,completedPilots:[],latestReceipts:{},pending:Object.fromEntries(bank.map((_,i)=>[source+'#'+(i+1),{sourceArchiveFile:source,sourceOrdinal:i+1,baseCommit:head}]))});
   const reportPath=path.join(root,'first-report.json');
-  const first=()=>registerMergedSource({root,write:true,reportPath});
+  // This isolated temporary repository exercises the main writer. Never inherit
+  // the enclosing PR runner's ref, and restore it after each fixture operation.
+  const first=()=>withGitHubEnvironment({GITHUB_ACTIONS:'true',GITHUB_REF:'refs/heads/main'},
+    ()=>registerMergedSource({root,write:true,reportPath}));
   const replay=options=>registerMergedSource({root,replayReportPath:reportPath,...options});
   return {root,git,read,put,bytes,uid,bank,head,reportPath,first,replay,refreshRegistry};
 }
+
+test('the production writer rejects an explicit PR ref before changing any fixture data',async t=>{
+  const f=fixture(t,{count:1,pending:()=>false});
+  const guarded=[metaPath,identityPath,statePath,'archive/exams/'+source,
+    'archive/data/meta-foundation/runtime/middle3-v1.json'];
+  const before=guarded.map(file=>[file,f.bytes(file)]);
+  const environment={GITHUB_ACTIONS:process.env.GITHUB_ACTIONS,GITHUB_REF:process.env.GITHUB_REF};
+  await withGitHubEnvironment({GITHUB_ACTIONS:'true',GITHUB_REF:'refs/pull/2112/merge'},async()=>{
+    await assert.rejects(registerMergedSource({root:f.root,write:true,reportPath:f.reportPath}),/MAIN_ONLY_WRITER/);
+  });
+  assert.deepEqual({GITHUB_ACTIONS:process.env.GITHUB_ACTIONS,GITHUB_REF:process.env.GITHUB_REF},environment);
+  for(const [file,bytes]of before)assert.deepEqual(f.bytes(file),bytes,file);
+  assert.equal(fs.existsSync(f.reportPath),false);
+  assert.equal((await f.first()).applied,1,'the same isolated fixture runs under explicit main authority');
+  assert.deepEqual({GITHUB_ACTIONS:process.env.GITHUB_ACTIONS,GITHUB_REF:process.env.GITHUB_REF},environment);
+});
 
 test('a pending bounded batch replays itself while the next ready batch stays queued',async t=>{
   const f=fixture(t),first=await f.first();
