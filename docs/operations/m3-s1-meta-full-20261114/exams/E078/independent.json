@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E078",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T05:51:57.633593+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/19_금당중_1학기_중간_중3_기출.js",
+  "sourceBlob": "f18ee8a4646e71831b3d54b122f28dbeb59d27a1",
+  "inputArtifacts": {
+    "workers/C/E078.review.json": {
+      "sha256": "fab5a0057018e7806fe485fd54487d0b7a618ba62fa72a73bdb04dcf27d2d8d0"
+    },
+    "workers/C/E078.4slot.json": {
+      "sha256": "743aa5d3ba18b3f8aadc0cbc1ccc5e4e827a7615dfe3130c820c079bd3a5c73f"
+    },
+    "workers/C/E078.input.json": {
+      "sha256": "b66e2640f4207bfaea9fe72e3f325faede071c0d15c3e4b3fc11784b376c42dd"
+    }
+  },
+  "sampledOrdinals": [
+    14,
+    18,
+    22
+  ],
+  "items": [
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_a6785ce308de7d8bc353d2509e651f00d751645133960a2f4d7b74e1f123a399",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "정팔각형 실제 그림과 변2를 확인. 외접 정사각형에서 네 직각이등변삼각형을 빼는 기존 해설에 피타고라스·보조선·넓이차 method와 bucket4가 부합. 정확 leaf 부재를 제안으로 유지한 판단 수용."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_7aa17b1b502dd455ad4bc7b9959cbb7e65c502c4ce308afbfee40771be294076",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제 L형 그림은 외곽265 정사각형에서135 정사각형을 뺀 형태. 기존 해설265²-135²→(265+135)(265-135)의 방향은 수치 인수분해이며 RPM026 재분류·CC_SQUARE_AREA·bucket2가 타당. sparse term warning은 추가 불필요개념을 요구하지 않는다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_15a268cd8cfec0a71782544f87f3b68b0931a772fb79303a30ebf588f254acc4",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "P=1,R=3,각 대각선√2의 실제 그림을 확인. 좌표와 a/b가 목표이고 method 피타고라스·좌표이동·유리화가 연결된다. goal 다항식의나눗셈은 실수몫에 맞지 않아 비(id289)로 수정한 exact quote를 재확인했다. bucket3와 제안leaf 부채는 유지."
+    }
+  ],
+  "findingsResolved": [
+    {
+      "ordinal": 22,
+      "finding": "numeric ratio a/b goal was mislabeled polynomial division",
+      "resolution": "author changed goal to 비 termId289, exact a/b source quote"
+    }
+  ],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/A/independent_assets/E078-14.png",
+      "sha256": "bc466ea84883de88e95cc7499ea02cba1e553932a3dfdb8b8f6070fc5579e578",
+      "status": "VIEWED"
+    },
+    {
+      "path": "workers/A/independent_assets/E078-18.png",
+      "sha256": "a3e2bd26b9447937dc58efcf2dfa06289d3b46254e45a523f14859bebcfdfb4e",
+      "status": "VIEWED"
+    },
+    {
+      "path": "workers/A/independent_assets/E078-22.png",
+      "sha256": "b4bd37c4690960eb9ffbbcb780dc223e61247f47dc3c409bbaf769818d2edf7e",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}
