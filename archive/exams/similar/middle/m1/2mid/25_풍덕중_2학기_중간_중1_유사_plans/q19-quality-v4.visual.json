@@ -1,0 +1,256 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사.js",
+  "questionId": 19,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "원에서의 중심각",
+        "accessibilityDescription": "원 O 위의 점 A, B, C, D와 두 중심각.",
+        "sourceQuote": "∠AOB=80°, ∠COD=40°",
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "circle",
+            "condition": "A,B,C,D lie on circle O",
+            "mappedTo": "four radii and circle"
+          },
+          {
+            "id": "central",
+            "condition": "∠AOB=80° and ∠COD=40°",
+            "mappedTo": "two angle arcs"
+          }
+        ],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "30"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "110"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "160"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "200"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circle",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D",
+          "R"
+        ],
+        "displaySegments": [
+          {
+            "id": "OA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "OB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "OC",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "OD",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 680,
+          "height": 520
+        },
+        "displayCircles": [
+          "circle"
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "AOB80",
+              "refs": [
+                "A",
+                "O",
+                "B"
+              ],
+              "value": 80,
+              "label": "80",
+              "arcs": 1
+            },
+            {
+              "id": "COD40",
+              "refs": [
+                "C",
+                "O",
+                "D"
+              ],
+              "value": 40,
+              "label": "40",
+              "arcs": 1
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "R"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

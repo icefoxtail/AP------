@@ -683,7 +683,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "전개도를 접었을 때 겹쳐지는 꼭짓점을 먼저 찾은 뒤 위치 관계를 판단한다.\n전개도를 접으면 가운데 가로줄의 네 정사각형이 옆면이 되고, 위쪽 정사각형과 아래쪽 정사각형이 각각 윗면과 아랫면이 된다.\n이때 겹쳐지는 꼭짓점은 $A$와 $I$와 $M$, $B$와 $H$, $J$와 $L$, $C$와 $G$, $D$와 $F$이다.\n모서리 $KJ$와 평행한 모서리는 $\\overline{AN}$, $\\overline{BC}$, $\\overline{DE}$의 세 개이다.\n한편 모서리 $IH$는 $A$와 $I$, $B$와 $H$가 겹쳐지므로 모서리 $AB$와 같은 모서리이다.\n$\\overline{AN}$은 점 $A$에서, $\\overline{BC}$는 점 $B$에서 모서리 $IH$와 만나므로 꼬인 위치가 아니다.\n$\\overline{DE}$는 모서리 $IH$와 만나지도 않고 평행하지도 않으므로 꼬인 위치에 있다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q14-source-repaired.svg",
+    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q14-quality-v4.svg",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "candidate_evidence",

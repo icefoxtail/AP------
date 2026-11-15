@@ -1,0 +1,413 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사.js",
+  "questionId": 20,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "cA",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "cB",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "cD",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "D"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "M",
+          "N"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 660,
+          "height": 530
+        },
+        "caption": "창고의 꼭짓점 A에 길이 6 m인 줄을 묶었을 때의 이동 범위",
+        "hiddenPointNames": [
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "M",
+          "N"
+        ],
+        "hiddenPointStyle": "NONE",
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "areaA",
+              "circle": "cA",
+              "center": "A",
+              "from": "E",
+              "to": "F",
+              "side": "MAJOR",
+              "highlight": false
+            },
+            {
+              "id": "areaB",
+              "circle": "cB",
+              "center": "B",
+              "from": "E",
+              "to": "G",
+              "side": "MINOR",
+              "highlight": false
+            },
+            {
+              "id": "areaD",
+              "circle": "cD",
+              "center": "D",
+              "from": "F",
+              "to": "H",
+              "side": "MINOR",
+              "highlight": false
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "shed",
+              "at": [
+                2.5,
+                -1.5
+              ],
+              "text": "창고",
+              "labelKind": "TEXT",
+              "labelWeight": "MATH"
+            },
+            {
+              "id": "rope",
+              "at": [
+                -2.5,
+                2.3
+              ],
+              "text": "줄 길이 6 m",
+              "labelKind": "TEXT",
+              "labelWeight": "MATH"
+            },
+            {
+              "id": "width",
+              "at": [
+                2.5,
+                0.55
+              ],
+              "text": "5 m",
+              "labelKind": "TEXT",
+              "labelWeight": "MATH"
+            },
+            {
+              "id": "height",
+              "at": [
+                5.65,
+                -2
+              ],
+              "text": "3 m",
+              "labelKind": "TEXT",
+              "labelWeight": "MATH"
+            }
+          ],
+          "regions": [
+            {
+              "id": "shedFill",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "C",
+                    "D"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 33,
+        "displayScale": 0.48,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

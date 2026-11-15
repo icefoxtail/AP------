@@ -1,0 +1,472 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사.js",
+  "questionId": 9,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "평행선과 횡단선",
+        "accessibilityDescription": "두 평행선과 두 횡단선이 만나는 그림.",
+        "sourceQuote": "m∥n; marked angles 125° and 85°",
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "parallel",
+            "condition": "m is parallel to n",
+            "mappedTo": "parallel arrow marks on m,n"
+          },
+          {
+            "id": "given125",
+            "condition": "The marked m transversal angle is 125°",
+            "mappedTo": "125° angle arc"
+          },
+          {
+            "id": "given85",
+            "condition": "The marked n transversal angle is 85°",
+            "mappedTo": "85° angle arc"
+          }
+        ],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "L1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P1r",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P1"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Pdown",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "P1",
+                "P1r"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "55"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Pup",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "P1",
+                "P1r"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "125"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q1r",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "Q1"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Qup",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q1",
+                "Q1r"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "85"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Qdown",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q1",
+                "Q1r"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "95"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineM",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "L1",
+                "L2"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineN",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "N1",
+                "N2"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineBlue",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "P1",
+                "Pdown"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineRed",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "Q1",
+                "Qup"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "L1",
+          "L2",
+          "N1",
+          "N2",
+          "P1",
+          "P1r",
+          "Pdown",
+          "Pup",
+          "Q1",
+          "Q1r",
+          "Qup",
+          "Qdown"
+        ],
+        "displaySegments": [
+          {
+            "id": "mseg",
+            "refs": [
+              "L1",
+              "L2"
+            ]
+          },
+          {
+            "id": "nseg",
+            "refs": [
+              "N1",
+              "N2"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 680,
+          "height": 520
+        },
+        "displayLines": [
+          "lineM",
+          "lineN",
+          "lineBlue",
+          "lineRed"
+        ],
+        "planeMarks": {
+          "parallels": [
+            {
+              "id": "mn",
+              "count": 1,
+              "segments": [
+                "mseg",
+                "nseg"
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "given125",
+              "refs": [
+                "L2",
+                "P1",
+                "Pup"
+              ],
+              "value": 125,
+              "label": "125",
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "angleA",
+              "refs": [
+                "L2",
+                "P1",
+                "Pdown"
+              ],
+              "value": 55,
+              "label": "a",
+              "labelKind": "MATH",
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "given85",
+              "refs": [
+                "N2",
+                "Q1",
+                "Qup"
+              ],
+              "value": 85,
+              "label": "85",
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "angleB",
+              "refs": [
+                "Qdown",
+                "Q1",
+                "N1"
+              ],
+              "value": 85,
+              "label": "b",
+              "labelKind": "MATH",
+              "arcs": 1,
+              "style": "ARC"
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "label-m",
+              "text": "m",
+              "at": [
+                -5.5,
+                3.3
+              ],
+              "labelKind": "MATH",
+              "anchor": "CENTER",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "label-n",
+              "text": "n",
+              "at": [
+                -5.5,
+                -0.7
+              ],
+              "labelKind": "MATH",
+              "anchor": "CENTER",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "L1",
+          "L2",
+          "N1",
+          "N2",
+          "P1",
+          "P1r",
+          "Pdown",
+          "Pup",
+          "Q1",
+          "Q1r",
+          "Qup",
+          "Qdown"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

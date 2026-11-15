@@ -1,0 +1,199 @@
+{
+  "sourcePath": "archive/exams/original/high/h1/1final/21_팔마고_1학기_기말_고1_기출.js",
+  "questionId": 21,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "SOURCE_COORDINATE_AXES_v1",
+            "unit": "source-coordinate",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "NORMALIZATION_ORIGIN",
+              "inputs": [],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U0",
+              "op": "NORMALIZATION_AXIS",
+              "inputs": [],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "24"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "S",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "18"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "road",
+              "op": "SOURCE_LINE",
+              "inputs": [],
+              "args": {
+                "a": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "b": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "c": {
+                  "kind": "integer",
+                  "value": "-36"
+                }
+              },
+              "outputType": "LINE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "H",
+          "P",
+          "R",
+          "S"
+        ],
+        "coordinateLabels": [
+          "H",
+          "P",
+          "R",
+          "S"
+        ],
+        "displayLines": [
+          "road"
+        ],
+        "displaySegments": [
+          {
+            "id": "HP",
+            "refs": [
+              "H",
+              "P"
+            ]
+          }
+        ],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 640,
+          "height": 520
+        },
+        "caption": "좌표축의 점과 사선",
+        "accessibilityDescription": "가로축과 세로축 가까이에 네 점이 표시되어 있고 사선 하나가 그려져 있다.",
+        "sourceQuote": "도로는 두 점 R(0,12), S(18,0)을 지나는 직선 전체이며",
+        "sourceConditions": [
+          {
+            "id": "S1",
+            "condition": "H(0,0), P(24,0), R(0,12), S(18,0)",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displayPoints"
+            ]
+          },
+          {
+            "id": "S2",
+            "condition": "도로는 R과 S를 지나는 직선",
+            "mappedTo": "displayLines"
+          }
+        ],
+        "newVisualInformation": [
+          "source coordinates are attached to H, P, R, and S"
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 40,
+        "displayScale": 0.4,
+        "fontFloorCssPx": 12
+      }
+    }
+  ]
+}

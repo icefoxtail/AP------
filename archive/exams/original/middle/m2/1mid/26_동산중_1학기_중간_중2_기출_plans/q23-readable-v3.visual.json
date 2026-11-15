@@ -1,0 +1,55 @@
+{
+  "sourcePath": "archive/exams/original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+  "questionId": 23,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "solid-figure-v1",
+        "caption": "원기둥과 원뿔 모양 그릇",
+        "accessibilityDescription": "두 그릇을 나란히 두고 반지름과 치수의 위치를 나타낸 그림.",
+        "solids": [
+          {
+            "id": "pipe",
+            "kind": "CYLINDER",
+            "radius": 2,
+            "height": 3
+          },
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 4,
+            "height": 2.25,
+            "orientation": "APEX_DOWN"
+          }
+        ],
+        "dims": [
+          {
+            "solid": "pipe",
+            "radius": "top",
+            "label": "a"
+          },
+          {
+            "solid": "pipe",
+            "height": true,
+            "side": "LEFT",
+            "label": "2a-4b"
+          },
+          {
+            "solid": "cone",
+            "radius": "top",
+            "label": "2a"
+          }
+        ],
+        "sourceConditions": [],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

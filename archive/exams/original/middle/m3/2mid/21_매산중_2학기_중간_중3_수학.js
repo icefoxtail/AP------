@@ -416,8 +416,8 @@ window.examData = {
   },
     {
       "id": 9,
-      "image": "assets/images/21_매산중_2학기_중간_중3_수학/q9-problem-v2.svg",
-      "imageSize": "tall",
+      "image": "assets/images/21_매산중_2학기_중간_중3_수학/q09-quality-v4.svg",
+      "imageSize": "full",
       "score": 5.0,
       "question": "다음 그림과 같이 한 변의 길이가 $4$인 정사면체 $\\mathrm{A-BCD}$에서 $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{E}$라 한다. $\\angle \\mathrm{EDA} = x^\\circ$일 때, $\\sin x^\\circ$의 값은?<br>",
       "choices": [
@@ -1039,7 +1039,7 @@ window.examData = {
     {
       "id": 21,
       "score": 5.0,
-      "question": "【서답형 1】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 1-①】</b> (4점)<br>【대체 문항】삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\,\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\text{cm}$, $\\angle \\mathrm{BAC}=30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.<br><br><b>【수준별 1-②】</b> (5점)<br>다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{AC}} = 10$이고 $\\cos B = \\frac14$일 때, $\\sin C$의 값을 구하시오.<br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q21-problem-v2.svg\" /><br>",
+      "question": "【서답형 1】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 1-①】</b> (4점)<br>【대체 문항】삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\,\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\text{cm}$, $\\angle \\mathrm{BAC}=30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.<br><br><b>【수준별 1-②】</b> (5점)<br>다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{AC}} = 10$이고 $\\cos B = \\frac14$일 때, $\\sin C$의 값을 구하시오.<br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q21-audit-rework.svg\" /><br>",
       "choices": [],
       "answer": "수준별 1-①: $20\\,\\text{cm}^2$; 수준별 1-②: $\\frac{\\sqrt{15}}5$",
       "solution": "【수준별 1-①】<br>$C$에서 직선 $AB$에 내린 수선의 발을 $H$라 하자. 직각삼각형 $ACH$에서 $CH=AC\\sin30^\\circ=10\\times\\frac12=5\\,\\text{cm}$이다. $CH$는 밑변 $AB$가 놓인 직선까지의 높이이므로 $[ABC]=\\frac12\\times AB\\times CH=\\frac12\\times8\\times5=20\\,\\text{cm}^2$이다.<br><br>【수준별 1-②】<br>$\\cos B=\\frac14$이고 $B$는 예각이므로 $\\sin B=\\sqrt{1-\\frac1{16}}=\\frac{\\sqrt{15}}4$이다. $A$에서 직선 $BC$에 내린 수선의 길이 $h$는 $h=AB\\sin B=8\\cdot\\frac{\\sqrt{15}}4=2\\sqrt{15}$이다. 삼각형의 넓이를 밑변 $BC$에 대한 높이로 나타내면 $\\frac12 BC\\cdot h=\\frac12 BC\\cdot AC\\sin C$이므로 $h=AC\\sin C$이다. 따라서 $\\sin C=\\frac{2\\sqrt{15}}{10}=\\frac{\\sqrt{15}}5$이다.",
@@ -1067,7 +1067,7 @@ window.examData = {
       "difficultyBoundaryFlag": "UNKNOWN",
       "legacyLevelCompatibility": "UNKNOWN",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 1】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 1-①】</b> (4점)<br>【대체 문항】삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\,\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\text{cm}$, $\\angle \\mathrm{BAC}=30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.<br><br><b>【수준별 1-②】</b> (5점)<br>다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{AC}} = 10$이고 $\\cos B = \\frac14$일 때, $\\sin C$의 값을 구하시오.<br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q21-problem-v2.svg\" /><br>",
+      "content": "【서답형 1】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 1-①】</b> (4점)<br>【대체 문항】삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\,\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\text{cm}$, $\\angle \\mathrm{BAC}=30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.<br><br><b>【수준별 1-②】</b> (5점)<br>다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{AC}} = 10$이고 $\\cos B = \\frac14$일 때, $\\sin C$의 값을 구하시오.<br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q21-audit-rework.svg\" /><br>",
       "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q21-solution.svg",
       "solutionImageAlt": "해설 그림: 첫 삼각형은 AB의 연장선에 내린 높이 CH를 표시한다. 두 번째 삼각형은 변 BC에 내린 높이 AH를 표시한다.",
       "solutionImageCaption": "1-①: CH=10sin30°=5 cm이므로 넓이는 ½·8·5=20 cm²이다. 1-②: AH=AB·sinB=2√15이고 AH=AC·sinC이므로 sinC=√15/5이다.",

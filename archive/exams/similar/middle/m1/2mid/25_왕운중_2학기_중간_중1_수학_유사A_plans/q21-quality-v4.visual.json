@@ -1,0 +1,248 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학_유사A.js",
+  "questionId": 21,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "두 직선의 교점과 각의 식",
+        "accessibilityDescription": "교점 O 주위에 식으로 나타낸 세 각.",
+        "sourceQuote": "Three adjacent angles carry (2x+15)°, (4x−9)°, (5y+6)°",
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "cross",
+            "condition": "AB and CD cross at O",
+            "mappedTo": "two line objects"
+          },
+          {
+            "id": "expressions",
+            "condition": "the two vertical and one adjacent angle carry the printed expressions",
+            "mappedTo": "three angle arcs"
+          }
+        ],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "39"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "219"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lineAB",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineCD",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O",
+          "R"
+        ],
+        "displaySegments": [],
+        "coordinateCanvas": {
+          "width": 680,
+          "height": 520
+        },
+        "displayLines": [
+          "lineAB",
+          "lineCD"
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "leftExpr",
+              "refs": [
+                "A",
+                "O",
+                "D"
+              ],
+              "value": 39,
+              "label": "(2x+15)",
+              "labelKind": "MATH",
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "rightExpr",
+              "refs": [
+                "C",
+                "O",
+                "B"
+              ],
+              "value": 39,
+              "label": "(4x-9)",
+              "labelKind": "MATH",
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "lowerExpr",
+              "refs": [
+                "D",
+                "O",
+                "B"
+              ],
+              "value": 141,
+              "label": "(5y+6)",
+              "labelKind": "MATH",
+              "arcs": 1,
+              "style": "ARC"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "R"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

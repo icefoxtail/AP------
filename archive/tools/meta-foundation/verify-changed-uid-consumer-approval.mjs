@@ -39,7 +39,7 @@ import { createRequire } from "node:module";
 import { isDeepStrictEqual } from "node:util";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
+import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
@@ -351,9 +351,10 @@ function checkRow(consumer, unit, row) {
   if (row.bodyFingerprint !== undefined && row.bodyFingerprint !== resolved.assignmentFingerprint)
     return { ...out, reason: "BODY_FINGERPRINT_MISMATCH", detail: `request ${row.bodyFingerprint} != consumer assignmentFingerprint ${resolved.assignmentFingerprint}` };
   if (row.fullFingerprint !== undefined && row.fullFingerprint !== resolved.sourceFingerprint) out.solverOnlyRevision = true;
+  // REVIEW2 may also register a judged tag/difficulty value over the exam file's inline value; the registrar records the source value in receipt.sourceValueOverrides.
   // REVIEW2 (two independent judgments): the exam file's own review annotation (e.g. SELF_CHECKED) differs from the registrar-forced
   // reviewed_pass by design; it is kept in the exam file and is not a metadata conflict. Every other conflicting field still refuses.
-  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && f === "reviewStatus"));
+  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && (f === "reviewStatus" || REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(f))));
   if (blockingConflicts.length)
     return { ...out, reason: "METADATA_CONFLICT", detail: blockingConflicts.join(",") };
   const evidence = resolved.assignmentEvidence;

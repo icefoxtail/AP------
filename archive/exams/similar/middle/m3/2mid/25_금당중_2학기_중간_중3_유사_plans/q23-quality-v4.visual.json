@@ -1,0 +1,285 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/25_금당중_2학기_중간_중3_유사.js",
+  "questionId": 23,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "사각형 안의 두 삼각형",
+        "accessibilityDescription": "직각삼각형 ABC와 삼각형 ACD.",
+        "sourceQuote": "∠B=90°, ∠BAC=30°, AB=6√3 cm, ∠CAD=45°, AD=8 cm",
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "angles",
+            "condition": "BAC=30°, CAD=45°, ABC right",
+            "mappedTo": "two angle arcs and right angle"
+          },
+          {
+            "id": "lengths",
+            "condition": "AB=6√3 cm, AD=8 cm",
+            "mappedTo": "two segment dimensions"
+          }
+        ],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "75"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "R"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "AD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "DC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 680,
+          "height": 520
+        },
+        "displayLines": [],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "A30",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 30,
+              "label": "30",
+              "arcs": 1
+            },
+            {
+              "id": "CAD45",
+              "refs": [
+                "C",
+                "A",
+                "D"
+              ],
+              "value": 45,
+              "label": "45",
+              "arcs": 1
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dimAD",
+              "from": "A",
+              "to": "D",
+              "label": "8",
+              "unit": "cm",
+              "value": 8,
+              "side": "LEFT",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "labelAB",
+              "ownerSegment": "AB",
+              "text": "6√3 cm",
+              "labelKind": "TEXT",
+              "labelAt": "MID",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rightB",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "R"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

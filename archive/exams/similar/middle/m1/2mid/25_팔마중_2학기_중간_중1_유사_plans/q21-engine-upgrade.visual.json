@@ -1,0 +1,305 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사.js",
+  "questionId": 21,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "교차하는 두 선분",
+        "accessibilityDescription": "두 선분이 만나는 교점과 양쪽의 각을 나타낸 그림.",
+        "sourceQuote": "∠A=70°, ∠B=45°, ∠C=57°; AD와 BC는 O에서 교차",
+        "sourceConditions": [
+          {
+            "id": "cross",
+            "condition": "AD and BC intersect at O",
+            "mappedTo": "lineAD and lineBC"
+          },
+          {
+            "id": "given-angles",
+            "condition": "∠A=70°, ∠B=45°, ∠C=57°",
+            "mappedTo": "angle marks at A,B,C"
+          },
+          {
+            "id": "x",
+            "condition": "x is the angle at D",
+            "mappedTo": "angle mark at D"
+          }
+        ],
+        "newVisualInformation": [],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "140"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "rational",
+                  "numerator": "1329",
+                  "denominator": "250"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "205"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "25"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "rational",
+                  "numerator": "79",
+                  "denominator": "20"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "320"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineAD",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineBC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D",
+          "R"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "AO",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "BO",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "CO",
+            "refs": [
+              "C",
+              "O"
+            ]
+          },
+          {
+            "id": "DO",
+            "refs": [
+              "D",
+              "O"
+            ]
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 440
+        },
+        "displayLines": [],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "A70",
+              "refs": [
+                "B",
+                "A",
+                "O"
+              ],
+              "value": 70,
+              "label": "70",
+              "arcs": 1
+            },
+            {
+              "id": "B45",
+              "refs": [
+                "A",
+                "B",
+                "O"
+              ],
+              "value": 45,
+              "label": "45",
+              "arcs": 1
+            },
+            {
+              "id": "C57",
+              "refs": [
+                "O",
+                "C",
+                "D"
+              ],
+              "value": 57,
+              "label": "57",
+              "arcs": 1
+            },
+            {
+              "id": "Dx",
+              "refs": [
+                "C",
+                "D",
+                "O"
+              ],
+              "value": 58,
+              "label": "x",
+              "arcs": 1,
+              "labelKind": "MATH"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "R"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

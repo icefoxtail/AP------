@@ -1,0 +1,126 @@
+{
+  "sourcePath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사.js",
+  "questionId": 12,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "3",
+                "3/2"
+              ]
+            },
+            {
+              "coefficients": [
+                "3",
+                "-3/4"
+              ]
+            }
+          ],
+          "breakpoints": [
+            {
+              "x": "0",
+              "y": "3"
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-2",
+              "4"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "functionName": "f",
+          "domain": [
+            -2,
+            4
+          ],
+          "viewport": [
+            -3,
+            5,
+            -1,
+            4.5
+          ],
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": -2,
+              "y": 0
+            },
+            {
+              "id": "B",
+              "x": 0,
+              "y": 3
+            },
+            {
+              "id": "C",
+              "x": 4,
+              "y": 0
+            }
+          ],
+          "exactCoordinates": {
+            "A": [
+              "-2",
+              "0"
+            ],
+            "B": [
+              "0",
+              "3"
+            ],
+            "C": [
+              "4",
+              "0"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        },
+        "caption": "함수 f(x)의 그래프",
+        "sourceConditions": [
+          {
+            "id": "S1",
+            "condition": "−2≤x<0: f(x)=3x/2+3; 0≤x<4: f(x)=−3x/4+3",
+            "mappedTo": [
+              "graphPlan.pieces",
+              "graphPlan.breakpoints",
+              "graphPlan.sourceDomain"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "The listed point coordinates are attached to their graph locations."
+        ],
+        "sourceQuote": "$y=f(x)$의 그래프는 그림과 같다",
+        "assetPath": "assets/images/25_제일고_2학기_기말_고2_수학II_유사/q12.svg",
+        "engineEvidence": {
+          "resultPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-problem-result.json",
+          "statePath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-problem-state.json",
+          "svgPath": "archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q12-problem.svg"
+        },
+        "accessibilityDescription": "한 구간에서 꺾이는 함수 f(x)의 그래프.",
+        "coordinateLeader": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 36,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

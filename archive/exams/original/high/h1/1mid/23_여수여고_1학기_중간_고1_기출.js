@@ -725,7 +725,7 @@ window.questionBank = [
       "모델링"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 폭이 $4$m이고 높이가 $4$m인 포물선 모양의 조형물이 있다. 조형물이 지면과 만나는 두 지점을 각각 $A, B$라 하고 $B$로부터 $0.5$m 떨어진 지면 $C$에서 조형물에 레이저를 그림과 같이 접하게 쏘아 올릴 때, 레이저와 조형물이 만나는 지점의 지면으로부터의 높이 $h$의 길이는? [5.6점]\n<img src=\"assets/images/23_여수여고_1학기_중간_고1_기출/q17-problem-v2.svg\" style=\"display:block; margin:8px auto; width:280px; max-width:100%; height:auto; max-height:215px; object-fit:contain\" alt=\"폭과 높이가 각각 4m인 포물선 조형물과 C에서 쏜 레이저, 접점 높이 h\">",
+    "content": "다음 그림과 같이 폭이 $4$m이고 높이가 $4$m인 포물선 모양의 조형물이 있다. 조형물이 지면과 만나는 두 지점을 각각 $A, B$라 하고 $B$로부터 $0.5$m 떨어진 지면 $C$에서 조형물에 레이저를 그림과 같이 접하게 쏘아 올릴 때, 레이저와 조형물이 만나는 지점의 지면으로부터의 높이 $h$의 길이는? [5.6점]\n<img src=\"assets/images/23_여수여고_1학기_중간_고1_기출/q17-audit-rework.svg\" style=\"display:block; margin:8px auto; width:280px; max-width:100%; height:auto; max-height:215px; object-fit:contain\" alt=\"폭과 높이가 각각 4m인 포물선 조형물과 C에서 쏜 레이저, 접점 높이 h\">",
     "choices": [
       "$\\frac{7}{3}$",
       "$\\frac{5}{2}$",

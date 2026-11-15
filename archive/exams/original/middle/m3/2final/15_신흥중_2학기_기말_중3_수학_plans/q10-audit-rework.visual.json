@@ -1,0 +1,300 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2final/15_신흥중_2학기_기말_중3_수학.js",
+  "questionId": 10,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "11"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "S",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "19",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "3",
+                        "denominator": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "Q"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "P",
+          "S",
+          "Q",
+          "U",
+          "T"
+        ],
+        "displaySegments": [
+          {
+            "id": "sBoard",
+            "refs": [
+              "B",
+              "P"
+            ]
+          },
+          {
+            "id": "sGround",
+            "refs": [
+              "B",
+              "S"
+            ]
+          },
+          {
+            "id": "sIncline",
+            "refs": [
+              "S",
+              "Q"
+            ]
+          },
+          {
+            "id": "sSun",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dGround",
+              "from": "B",
+              "to": "S",
+              "label": "5",
+              "unit": "m",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "value": 5
+            },
+            {
+              "id": "dSlope",
+              "from": "S",
+              "to": "Q",
+              "label": "3sqrt(3)",
+              "unit": "m",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "value": 5.196152422706632
+            }
+          ],
+          "angles": [
+            {
+              "id": "aWall",
+              "refs": [
+                "U",
+                "S",
+                "Q"
+              ],
+              "value": 30,
+              "label": "30",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aSun",
+              "refs": [
+                "P",
+                "Q",
+                "T"
+              ],
+              "value": 60,
+              "label": "60",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 620,
+          "height": 460
+        },
+        "caption": "광고판과 기울어진 지면",
+        "accessibilityDescription": "광고판의 꼭대기에서 경사면으로 이어지는 사선과 바닥의 치수선 및 각호가 보인다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "지면 그림자 5 m, 경사면 위 그림자 3√3 m, 경사면과 지면 30°, 태양 광선과 지면 60°.",
+            "mappedTo": [
+              "B",
+              "P",
+              "S",
+              "Q",
+              "U",
+              "T"
+            ]
+          }
+        ],
+        "newVisualInformation": [],
+        "hiddenPointNames": [
+          "B",
+          "P",
+          "S",
+          "Q",
+          "U",
+          "T"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 24,
+        "displayScale": 0.58,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

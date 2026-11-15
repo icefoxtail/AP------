@@ -1,0 +1,186 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사.js",
+  "questionId": 1,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "삼각형 ABC",
+        "accessibilityDescription": "삼각형의 점과 선분, 그 양 끝의 각을 나타낸 그림.",
+        "sourceQuote": "선분 BC, ∠B, ∠C가 주어짐",
+        "sourceConditions": [
+          {
+            "id": "sideBC",
+            "condition": "Side BC is given",
+            "mappedTo": "segment BC"
+          },
+          {
+            "id": "endpoint-angles",
+            "condition": "Angles B and C are given",
+            "mappedTo": "angle marks at B and C"
+          }
+        ],
+        "newVisualInformation": [],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ref",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "ref"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "ref"
+        ],
+        "displaySegments": [
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ],
+            "dashed": true
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 440
+        },
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "angleB",
+              "refs": [
+                "C",
+                "B",
+                "A"
+              ],
+              "noLabel": true,
+              "arcs": 1
+            },
+            {
+              "id": "angleC",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "noLabel": true,
+              "arcs": 1
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "ref"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displayLines": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

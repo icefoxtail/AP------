@@ -1,0 +1,104 @@
+{
+  "sourcePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사.js",
+  "questionId": 7,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "sourceQuote": "사차함수 y=f(x)의 도함수 y=f′(x)의 그래프",
+        "caption": "도함수의 그래프",
+        "graphPlan": {
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -2.6,
+            2.6
+          ],
+          "viewport": [
+            -3.2,
+            3.2,
+            -6,
+            10
+          ],
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": -2,
+              "y": 0
+            },
+            {
+              "id": "O",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "B",
+              "x": 2,
+              "y": 0
+            },
+            {
+              "id": "C",
+              "x": "-2*sqrt(3)/3",
+              "y": "16*sqrt(3)/9"
+            },
+            {
+              "id": "D",
+              "x": "2*sqrt(3)/3",
+              "y": "-16*sqrt(3)/9"
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "-4",
+                "0",
+                "1"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "coordinateBand": {
+            "hide": [
+              "C",
+              "D"
+            ]
+          }
+        },
+        "assetPath": "archive/assets/images/25_순천고_2학기_기말_고2_수학II_유사/q07.svg",
+        "engineEvidence": {
+          "resultPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q07-problem-result.json",
+          "statePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q07-problem-state.json",
+          "svgPath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사_plans/engine_evidence/q07-problem.svg"
+        },
+        "newVisualInformation": [
+          "도함수의 그래프와 x축의 교점 및 부호를 읽을 수 있다."
+        ],
+        "sourceConditions": [
+          {
+            "id": "S1",
+            "condition": "f′(−2)=f′(0)=f′(2)=0이고 그래프가 세 근을 가로지른다.",
+            "mappedTo": [
+              "graphPlan.coefficients",
+              "graphPlan.requiredPoints"
+            ]
+          }
+        ],
+        "accessibilityDescription": "도함수의 그래프 그림."
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 34,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

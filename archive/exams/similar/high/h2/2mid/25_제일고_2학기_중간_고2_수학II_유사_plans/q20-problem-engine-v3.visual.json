@@ -1,0 +1,195 @@
+{
+  "sourcePath": "archive/exams/similar/high/h2/2mid/25_제일고_2학기_중간_고2_수학II_유사.js",
+  "questionId": 20,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "SOURCE_COORDINATE_AXES_v1",
+            "unit": "source-coordinate",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "NORMALIZATION_ORIGIN",
+              "inputs": [],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "NORMALIZATION_AXIS",
+              "inputs": [],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "tangent",
+              "op": "SOURCE_LINE",
+              "inputs": [],
+              "args": {
+                "a": {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                "b": {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                "c": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "LINE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "P",
+                "tangent"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "4",
+                      "denominator": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [
+          "tangent"
+        ],
+        "displayCircles": [
+          "k"
+        ],
+        "displayPoints": [
+          "O",
+          "P",
+          "T"
+        ],
+        "displaySegments": [
+          {
+            "id": "sPT",
+            "refs": [
+              "P",
+              "T"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "contact",
+            "refs": [
+              "O",
+              "T",
+              "P"
+            ]
+          }
+        ],
+        "lineLabels": [
+          {
+            "nodeId": "tangent",
+            "form": "SLOPE_INTERCEPT",
+            "labelAt": 0.37
+          }
+        ],
+        "planeMarks": {
+          "facts": [
+            {
+              "kind": "TANGENT_PERPENDICULAR",
+              "center": "P",
+              "contact": "T",
+              "tangent": "tangent"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "radius",
+              "ownerSegment": "sPT",
+              "text": "r"
+            }
+          ]
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 440
+        },
+        "caption": "직선 y=2x에 접하는 원과 중심 P를 나타낸 그림"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.48,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

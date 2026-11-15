@@ -1,0 +1,285 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사.js",
+  "questionId": 15,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "원호, 현, 수선의 발",
+        "accessibilityDescription": "원호 AB와 현 AB, 수선 CM, 주어진 두 길이.",
+        "sourceQuote": "호 AB는 어떤 원의 일부분; CM⊥AB; AB=8 cm; CM=2 cm",
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "cap",
+            "condition": "A, C, B lie on an arc of a circle",
+            "mappedTo": "circular arcs A-C and C-B"
+          },
+          {
+            "id": "chord",
+            "condition": "AB=8 cm",
+            "mappedTo": "dimension on segment AB"
+          },
+          {
+            "id": "sagitta",
+            "condition": "CM=2 cm and CM⊥AB",
+            "mappedTo": "CM label and right-angle marker at M"
+          }
+        ],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineAB",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineAC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "N",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "perpAB",
+              "op": "PERPENDICULAR_THROUGH",
+              "inputs": [
+                "M",
+                "lineAB"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "perpAC",
+              "op": "PERPENDICULAR_THROUGH",
+              "inputs": [
+                "N",
+                "lineAC"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "O",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "perpAB",
+                "perpAC"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circle",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "M",
+          "O"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "CM",
+            "refs": [
+              "C",
+              "M"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "hiddenPointNames": [
+          "O"
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 460
+        },
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "arcAC",
+              "circle": "circle",
+              "center": "O",
+              "from": "A",
+              "to": "C",
+              "side": "CW",
+              "highlight": true,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "arcCB",
+              "circle": "circle",
+              "center": "O",
+              "from": "C",
+              "to": "B",
+              "side": "CW",
+              "highlight": true,
+              "factRole": "GIVEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "chordAB8",
+              "from": "A",
+              "to": "B",
+              "label": "8",
+              "unit": "cm",
+              "value": 8,
+              "side": "BELOW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "heightCM2",
+              "ownerSegment": "CM",
+              "text": "2",
+              "unit": "cm",
+              "labelKind": "MATH",
+              "side": "RIGHT",
+              "labelAt": "MID",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rightM",
+            "refs": [
+              "C",
+              "M",
+              "B"
+            ]
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

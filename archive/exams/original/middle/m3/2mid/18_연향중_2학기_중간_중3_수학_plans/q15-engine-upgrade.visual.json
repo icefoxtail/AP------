@@ -1,0 +1,237 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2mid/18_연향중_2학기_중간_중3_수학.js",
+  "questionId": 15,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "7",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "P"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "AP",
+            "refs": [
+              "A",
+              "P"
+            ]
+          },
+          {
+            "id": "PC",
+            "refs": [
+              "P",
+              "C"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 620,
+          "height": 440
+        },
+        "caption": "선분으로 연결한 네 점과 점 P",
+        "accessibilityDescription": "선분으로 연결한 네 점과 점 P 그림.",
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "label": "5",
+              "unit": "cm",
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "value": 5
+            },
+            {
+              "id": "dCD",
+              "from": "C",
+              "to": "D",
+              "label": "3",
+              "unit": "cm",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "value": 3
+            },
+            {
+              "id": "dBD",
+              "from": "B",
+              "to": "D",
+              "label": "15",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "value": 15
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rB",
+            "refs": [
+              "A",
+              "B",
+              "D"
+            ],
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "rD",
+            "refs": [
+              "B",
+              "D",
+              "C"
+            ],
+            "factRole": "GIVEN"
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}
