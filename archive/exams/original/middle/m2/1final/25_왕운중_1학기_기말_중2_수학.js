@@ -548,7 +548,7 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "questionUid": "25_왕운중_1학기_기말_중2_수학|8",
+    "questionUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
     "sourceExamId": "25_왕운중_1학기_기말_중2_수학",
     "sourceOrdinal": 8,
     "sourceQuestionNo": 8,
@@ -627,7 +627,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "questionUid": "25_왕운중_1학기_기말_중2_수학|9",
+    "questionUid": "qid_v1_b20b8e96af6712af0ab2ac191b1a1db3ec482b94cdb53833a157e33e2d54d24e",
     "sourceExamId": "25_왕운중_1학기_기말_중2_수학",
     "sourceOrdinal": 9,
     "sourceQuestionNo": 9,

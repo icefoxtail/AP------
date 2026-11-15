@@ -2,6 +2,7 @@ import {fileURLToPath} from 'node:url';
 import {objectSha,bytesSha} from '../../pipeline-core/canonical.mjs';
 import {pythonWorker} from './worker.mjs';
 import {pointNameModel} from './point-names.mjs';
+import {PALETTE,isPaletteName} from './palette.mjs';
 import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
@@ -415,7 +416,7 @@ function solveConstructions(raw,pointInfo){
 
 // --- solving the figure -----------------------------------------------------------------------------------------------------------------------
 /**
- * numberLine = {variable?, parameter?:{name,value}, rows:[row...]}; a row is {kind:'SET',pieces:[{lo,hi}...],integerPoints?} (one or two disjoint
+ * numberLine = {variable?, parameter?:{name,value}, rows:[row...]}; a row is {kind:'SET',pieces:[{lo,hi}...],integerPoints?,color?} (one or two disjoint
  * pieces, an end null for a ray; an end {value,state} or {param:{mul,add},state}), {kind:'RESULT',integerPoints?} (the exact intersection of
  * every SET row above it, last SET/RESULT row) or {kind:'POINTS',points:[{id,value}|{id,divides:{from,to,ratio:[m,n]}}],band?,subdivisions?}.
  * A point id is a capital letter or one Hangul consonant letter; a point may also carry name (null or one Hangul letter), hideName and showValue:false.
@@ -440,11 +441,12 @@ export function solveNumberLineFigure(numberLine){
     if(!isPlain(row))bad('NUMBER_LINE_ROWS_INVALID');
     if(row.kind!=='POINTS'&&row.subdivisions!==undefined)bad('NUMBER_LINE_SUBDIVISIONS_INVALID');
     if(row.kind==='SET'){
-      onlyKeys(row,['kind','pieces','integerPoints','label','hideSetLabel'],'NUMBER_LINE_ROWS_INVALID');
+      onlyKeys(row,['kind','pieces','integerPoints','label','hideSetLabel','color'],'NUMBER_LINE_ROWS_INVALID');
+      if(row.color!==undefined&&!isPaletteName(row.color))bad('NUMBER_LINE_SET_COLOR_INVALID');
       if(!Array.isArray(row.pieces)||row.pieces.length<1||row.pieces.length>2)bad('NUMBER_LINE_PIECE_INVALID');
       const pieces=piecesOrdered(row.pieces.map(piece=>{onlyKeys(piece,['lo','hi'],'NUMBER_LINE_PIECE_INVALID');if(!Object.hasOwn(piece,'lo')||!Object.hasOwn(piece,'hi'))bad('NUMBER_LINE_PIECE_INVALID');return checkPiece({lo:endOf(piece.lo,parameter,used),hi:endOf(piece.hi,parameter,used)});}));
       checkDisjoint(pieces);sets.push(pieces);
-      solved.push({kind:'SET',pieces,request:row.integerPoints,...rowLabelOf(row),...hideSetLabelOf(row)});
+      solved.push({kind:'SET',pieces,request:row.integerPoints,...rowLabelOf(row),...hideSetLabelOf(row),...(row.color?{color:row.color}:{})});
     }else if(row.kind==='RESULT'){
       onlyKeys(row,['kind','integerPoints','label','hideSetLabel'],'NUMBER_LINE_ROWS_INVALID');
       if(index!==rows.length-1&&rows.slice(index+1).some(next=>next?.kind==='SET'||next?.kind==='RESULT'))bad('NUMBER_LINE_RESULT_NOT_LAST');
@@ -522,7 +524,7 @@ export function solveNumberLineFigure(numberLine){
     }
   }
   return {schemaVersion:FIGURE_MODEL_VERSION,variable,...(numberLine.axisVariable===false?{axisVariable:false}:{}),parameter:parameter&&{name:parameter.name,value:ratText(parameter.v),...(parameter.hideNote?{hideNote:true}:{})},
-    rows:solved.map(row=>row.kind==='POINTS'?row:{kind:row.kind,pieces:row.pieces.map(piece=>({lower:sideModel(piece.lo),upper:sideModel(piece.hi)})),integers:row.request===undefined?null:integersOf(row.pieces,row.request),...(row.label?{label:row.label}:{}),...(row.hideSetLabel?{hideSetLabel:true}:{})})};
+    rows:solved.map(row=>row.kind==='POINTS'?row:{kind:row.kind,pieces:row.pieces.map(piece=>({lower:sideModel(piece.lo),upper:sideModel(piece.hi)})),integers:row.request===undefined?null:integersOf(row.pieces,row.request),...(row.label?{label:row.label}:{}),...(row.hideSetLabel?{hideSetLabel:true}:{}),...(row.color?{color:row.color}:{})})};
 }
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
@@ -627,7 +629,7 @@ export function numberLineFigureSpec(plan,model){
   }
   for(const [r,row] of model.rows.entries()){
     const n=r+1,{axisY,head,top,belowRow}=layout.rows[r],dots=[],ticks=[],bands=[];
-    const spec={n,kind:row.kind,axis:{x1:AXL,x2:ARROW_TIP,y:axisY},bands,dots,ticks};
+    const spec={n,kind:row.kind,axis:{x1:AXL,x2:ARROW_TIP,y:axisY},bands,dots,ticks,...(row.color?{color:row.color}:{})};
     if(row.label)labels.push({id:`r${n}-row-label`,role:'row-label',owner:`r${n}-axis`,kind:'TEXT',text:row.label,plain:row.label,anchor:{x:AXL-ROW_LABEL_GAP,y:axisY,align:'left'},rowHeight:ROW_LABEL_ROW_HEIGHT,row:n});
     if(row.kind==='POINTS'){
       const placed=row.points.map(point=>({...point,x:px(point.approx)}));
@@ -833,7 +835,7 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
     const {width,height}=spec.size,{map}=spec;
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`;
     for(const row of spec.rows){
-      const {axis,n}=row;
+      const {axis,n}=row,bandStroke=row.color?PALETTE[row.color].line:'#111';
       body+=`<g data-layer="30"><line id="r${n}-axis" data-role="axis" data-axis="x" data-row="${n}" stroke="#111" stroke-width="1.2" fill="none" x1="${axis.x1}" y1="${axis.y}" x2="${axis.x2-6}" y2="${axis.y}"/>`;
       body+=`<polygon id="r${n}-axis-arrow" data-role="arrow" data-row="${n}" fill="#111" stroke="none" points="${axis.x2},${axis.y} ${axis.x2-9},${r6(axis.y-4)} ${axis.x2-9},${r6(axis.y+4)}"/></g>`;
       for(const tick of row.ticks){const minor=tick.role==='minor';body+=`<g data-layer="30"><line id="${tick.id}" data-role="${minor?'subtick':'tick'}" data-axis="x" data-row="${n}" data-value="${tick.value}"${tick.role?` data-scale="${tick.role}"`:''}${minor?` data-parts="${tick.parts}"`:''} stroke="#111" stroke-width="${minor?1:1.2}" fill="none" x1="${tick.x}" y1="${tick.y1}" x2="${tick.x}" y2="${tick.y2}"/></g>`;}
@@ -846,7 +848,7 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
           body+='</g>';
         }
       }
-      for(const band of row.bands)body+=`<g data-layer="40"><line id="${band.id}" data-role="solution-band" data-row="${n}" data-piece="${band.piece}" data-from="${esc(band.from)}" data-to="${esc(band.to)}" stroke="#111" stroke-width="${band.result?4.8:3.2}" stroke-linecap="butt" fill="none" x1="${band.x1}" y1="${band.y}" x2="${band.x2}" y2="${band.y}"/></g>`;
+      for(const band of row.bands)body+=`<g data-layer="40"><line id="${band.id}" data-role="solution-band" data-row="${n}" data-piece="${band.piece}" data-from="${esc(band.from)}" data-to="${esc(band.to)}" stroke="${bandStroke}" stroke-width="${band.result?4.8:3.2}" stroke-linecap="butt" fill="none" x1="${band.x1}" y1="${band.y}" x2="${band.x2}" y2="${band.y}"/></g>`;
       for(const src of row.sources??[]){
         const head=`data-row="${n}" data-construction="${src.construction}"`;
         if(src.kind==='PERPENDICULAR'){
@@ -860,8 +862,9 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
       for(const arc of row.constructions??[])body+=`<g data-layer="50"><path id="${arc.id}" data-role="construction-arc" data-row="${n}" data-construction="${arc.construction}" data-center="${arc.center}" data-hit="${arc.hit}" data-branch="${arc.branch}" data-radius="${esc(arc.radius)}" stroke="#111" stroke-width="${ARC_STROKE}" fill="none" d="${arc.d}"/></g>`;
       for(const dot of row.dots){
         const open=dot.state==='OPEN',cross=dot.style==='CROSS',tickMark=dot.style==='TICK',mark=cross||tickMark;
+        const dotStroke=dot.role==='endpoint'?bandStroke:'#111';
         if(dot.ring)body+=`<g data-layer="68"><circle id="${dot.id}-ring" data-role="point-ring" data-row="${n}" data-dot="ring" data-of="${dot.id}" stroke="#111" stroke-width="1.2" fill="none" cx="${dot.x}" cy="${dot.y}" r="${RING_RADIUS}"/></g>`;
-        body+=`<g data-layer="70"><circle id="${dot.id}" data-role="point" data-row="${n}" data-dot="${dot.role}"${dot.symbol?` data-symbol="${esc(dot.symbol)}"`:` data-value="${esc(dot.value)}"`} data-state="${dot.state}"${dot.piece?` data-piece="${dot.piece}" data-end="${dot.side}"`:''}${dot.pointId?` data-point-id="${dot.pointId}"`:''}${dot.valueHidden?' data-value-shown="false"':''}${dot.style?` data-point-style="${dot.style}"`:''} stroke="${mark?'none':'#111'}" stroke-width="${open?1.6:.8}" fill="${mark?'none':open?'#fff':'#111'}" cx="${dot.x}" cy="${dot.y}" r="${dot.r}"/></g>`;
+        body+=`<g data-layer="70"><circle id="${dot.id}" data-role="point" data-row="${n}" data-dot="${dot.role}"${dot.symbol?` data-symbol="${esc(dot.symbol)}"`:` data-value="${esc(dot.value)}"`} data-state="${dot.state}"${dot.piece?` data-piece="${dot.piece}" data-end="${dot.side}"`:''}${dot.pointId?` data-point-id="${dot.pointId}"`:''}${dot.valueHidden?' data-value-shown="false"':''}${dot.style?` data-point-style="${dot.style}"`:''} stroke="${mark?'none':dotStroke}" stroke-width="${open?1.6:.8}" fill="${mark?'none':open?'#fff':dotStroke}" cx="${dot.x}" cy="${dot.y}" r="${dot.r}"/></g>`;
         if(tickMark)body+=`<g data-layer="71"><line id="${dot.id}-mark" data-role="tick-mark" data-row="${n}" data-of="${dot.id}" stroke="#111" stroke-width="2.2" stroke-linecap="round" fill="none" x1="${dot.x}" y1="${r6(dot.y-TICK_MARK_HALF)}" x2="${dot.x}" y2="${r6(dot.y+TICK_MARK_HALF)}"/></g>`;
         if(cross)for(const [k,[sx,sy]] of [[1,1],[1,-1]].entries())body+=`<g data-layer="71"><line id="${dot.id}-cross-${k+1}" data-role="cross" data-row="${n}" data-of="${dot.id}" stroke="#111" stroke-width="1.8" stroke-linecap="round" fill="none" x1="${r6(dot.x-sx*CROSS_HALF)}" y1="${r6(dot.y-sy*CROSS_HALF)}" x2="${r6(dot.x+sx*CROSS_HALF)}" y2="${r6(dot.y+sy*CROSS_HALF)}"/></g>`;
       }
