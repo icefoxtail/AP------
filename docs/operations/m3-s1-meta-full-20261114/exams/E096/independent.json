@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E096",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T06:14:44.580078+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/17_연향중_1학기_기말_중3_수학.js",
+  "sourceBlob": "fb3d90690a85c2ff4b3db8f182d2f4d7a10193bb",
+  "inputArtifacts": {
+    "workers/C/E096.review.json": {
+      "sha256": "33209f6132b9250e426411416400daa79f0e204d2dc16dccbfbe936149ce412c"
+    },
+    "workers/C/E096.4slot.json": {
+      "sha256": "34248b7c3e7f81a19faa55966d403213ae2fa0942d660314a9e1bc4db4c1df66"
+    },
+    "workers/C/E096.input.json": {
+      "sha256": "6ed5cb76e5f04769df2f04682c0436c7bce7b96283cecc3e9fe73f4158eac4f2"
+    }
+  },
+  "sampledOrdinals": [
+    7,
+    23,
+    24
+  ],
+  "items": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_ce4d5141bfdc6ec717f380360540f9743f73bd66e82edaf58917dccfc8f45efe",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "원본stem필드를직접읽고해설의(4x-3)²=49-8a→유리수제곱근은정수→자연수범위열거경로를확인했다. 판별식을실제method로대체하지않은RPM036부모후보·제곱수CC·중/bucket3수용. 공식extractor의stem미지원rawFAIL은소멸시키지않는다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_c4e1e46564aec504a5d0e1d671a9db113d1fbb7f1f008d3102db7b0a375499f3",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제공통그림에B의0,2근과(-1,3),A의-1근및x0/x2동일높이점선이있다. A의y절편-3은직접표시되지않으므로도출생략부채를명시한현판정을수용한다. 같은폭조건은4칸상등으로보존되었다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_0cf902ba4c09bfcd452aac5f1aa7313c237a06719895a5a89234831eb0a24084",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제해설은단순넓이공식대입에앞서두현PQ/RS를도입하고곡선조각의합동으로등적변형한다. 이발상은발문안내없으므로저자와재검토해상/bucket4/medium/B34로교정하였다. 실제그림·평행이동/합동/등적변형의해설인용및CC정의에부합한다."
+    }
+  ],
+  "findingsResolved": [
+    {
+      "ordinal": 24,
+      "finding": "발문에안내되지않은현도입·곡선등적변형의핵심발상을bucket3에서4로경계상향요청.",
+      "resolution": "AUTHOR_CHANGED_TO_HIGH_4_MEDIUM_B34",
+      "note": "표준형식대입의단순결합과구별한독립난도판정."
+    }
+  ],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E096-assets/contact-1.jpg",
+      "sha256": "2ed8312db21e9219a8a94c16cac67d0efd434a2cb5e224c6a9c72c1d66e927f4",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다.",
+  "supplementalEvidence": {
+    "workers/C/E096.legacy-stem-evidence.json": {
+      "sha256": "a1bb6f86d5f719e9fcf80afe695974e292269663cfce8f5506e82f3fb8b862fb",
+      "scope": "공식stem미지원raw실패와원본stem직접인용검사의분리증거"
+    }
+  }
+}
