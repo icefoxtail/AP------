@@ -10,6 +10,7 @@ import { loadCanonical, buildCompiled, compiledOutputs, buildRegistryIndex } fro
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 import { computeLegacyCompat } from "./register-difficulty5.mjs";
 import { validateReviewedSourceReassessment } from "./reviewed-source-reassessment.mjs";
+import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
@@ -1949,7 +1950,9 @@ function registerIdentityFingerprintOnly({ root, req, metadata, identity, rows, 
       fail(`identity-only repair accepts fingerprint fields only: ${patch.questionUid}`);
     requireText(patch.reason, "identity-only repair reason");
     if (!current || id?.sourceArchiveFile !== req.sourceArchiveFile || id.sourceOrdinal !== patch.sourceOrdinal ||
-        q.questionUid && q.questionUid !== current.questionUid) fail(`identity-only UID/source mismatch: ${patch.questionUid}`);
+        q.questionUid && q.questionUid !== current.questionUid && !isUnambiguousLegacySourceUidAlias({
+          question: q, sourceArchiveFile: req.sourceArchiveFile, sourceOrdinal: patch.sourceOrdinal,
+          identityRecord: id, identityMap: identity, bank })) fail(`identity-only UID/source mismatch: ${patch.questionUid}`);
     if (!approved(current)) fail(`identity-only metadata approval missing: ${patch.questionUid}`);
     const actual = sourceFingerprints(q);
     for (const [field, value] of Object.entries(actual))
@@ -2173,7 +2176,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     const q = JSON.parse(JSON.stringify(bank[i]));
     const id = ids.get(current.questionUid);
     if (!patch || patch.sourceOrdinal !== i + 1 || current.sourceOrdinal !== i + 1 || id?.sourceArchiveFile !== source || id.sourceOrdinal !== i + 1) fail(`UID/source ordinal mismatch #${i + 1}`);
-    if (q.questionUid && q.questionUid !== current.questionUid) fail(`source UID mismatch #${i + 1}`);
+    if (q.questionUid && q.questionUid !== current.questionUid && !isUnambiguousLegacySourceUidAlias({
+      question: q, sourceArchiveFile: source, sourceOrdinal: i + 1, identityRecord: id, identityMap: identity, bank }))
+      fail(`source UID mismatch #${i + 1}`);
     evidenceRefs(patch.evidenceRefs);
     requireText(patch.reason, `UID ${current.questionUid} semantic reason`);
     if (!patch.after || typeof patch.after !== "object" || Array.isArray(patch.after) || !patch.before || typeof patch.before !== "object" || Array.isArray(patch.before)) fail(`before/after required: ${current.questionUid}`);

@@ -46,6 +46,7 @@ node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --requ
 - 등록기는 과거 blob의 같은 순번 문항에서 원본·내용 지문을 다시 계산한다. 보관된 원본 지문은 과거 또는 현재 판본과 맞아야 하며, 발문·보기·그림 참조의 내용 지문이 달라지면 거부한다. 기존 `before`·`after` 지문과 `identityBefore` 검사도 유지한다. 전체 요청은 기존 방식 그대로 처리하며 `rebind`를 명시하면 같은 추가 검사를 받는다.
 - 부분 영수증의 `totalQuestions`와 `appliedRecords`는 요청 UID만 센다. `scope`, `partialUidCount`, 원시험 분모인 `expectedQuestionCount`가 추가되며, 재실행과 소비자 검사도 이 UID 범위를 사용한다.
 - AutoMeta는 부분 영수증의 원시험 분모·선택 UID 집합·각 순번과 지문을 실제 source/identity에 대조하고 UID로 현재 행을 찾는다. 원본 바이트, 승인 근거, 현재 metadata/runtime까지 모두 일치할 때만 기존 native 승인을 유지하며, 생략한 UID에 이 승인을 확대하지 않는다. 전체 등록 영수증은 기존 형식을 유지한다.
+- 원본 `questionUid`에 남은 `파일 basename|양의 원번호` 형식은 별도 좁은 어댑터로만 읽는다. 실제 bank의 번호·alias가 유일하고 identity records 및 canonical UID/파일+순번/파일+원번호/legacyQKey lookup이 모두 같은 UID를 가리켜야 한다. 상충하는 표시번호나 임의의 unknown/canonical UID는 계속 거부한다. 원본 alias는 수정하지 않고, 등록·영수증·Runtime에는 canonical UID를 사용한다.
 
 ### 현재 원본을 실제로 검토한 부분 지문 수리 `item.sourceReview`
 
@@ -77,6 +78,12 @@ M2의 `REGISTRATION_PENDING` 표기만으로 확정 필드를 버리지는 않�
 원검토가 확정한 등록기 지원 의미·난도 필드가 `final`에서 모두 일치해야 한다. 검토된 PT/TPL 교정을 `after`에서 생략하여 옛값을
 재승인할 수 없다. L1~L4 표시명은 기존 정본 검증을 계속 받으며, 등록기 계약 밖의 native 보조 필드는 임의로 생성하지 않는다.
 교육과정·과목 식별자는 현재 원본이나 기존 메타의 명시값을 유지하며 원검토가 명시한 값과도 일치해야 한다.
+
+`primaryMethod`/`decisiveStep`을 운반할 때는 native `after`, native 항목의 같은 필드, 검토 commit source의 같은 필드 순으로
+실제 값을 찾는다. 요청 `after`와 source에 선언된 값, 최종 metadata는 그 값과 완전히 같아야 한다. native에 별도 `primaryMethod`가
+없으면 원검토 `decisiveStep` 문자열을 source와 요청의 두 필드에 그대로 실은 경우만 허용하며, 영수증에는
+`NATIVE_DECISIVE_STEP_VERBATIM`으로 기록한다. 별도 주풀이 판정이나 새 독립 검수로 기록하지 않는다. `rationaleBindings`는
+각 값의 출처와 SHA를 보존하며, 요청에서 필드를 빼서 상충하는 기존 rationale를 유지하는 경우는 거절한다.
 
 발문 별칭·원번호·보기·정답·해설·그림/SVG 참조·레이아웃 등 학생 payload를 실제 검토 source와 현재 source에서 직접 대조한다.
 검토 이후의 해설 수리나 그림 변경을 과거 검토로 승인하지 않는다. 현재 blob, `before`/`after` 두 지문 및 `identityBefore`의

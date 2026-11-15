@@ -150,6 +150,32 @@ test('partial native reuse finds a noncontiguous selected UID without rewriting 
   assert.equal(JSON.stringify({current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,
     receipt:f.receipt,question:f.question}),before);
 });
+test('AutoMeta retains a partial canonical approval when the source carries its uniquely bound legacy alias',t=>{
+  const f=partialNativeReviewFixture(t),identityMap={schemaVersion:'question-identity-map-v1',records:[],lookup:{
+    byQuestionUid:{},bySourceFileAndOrdinal:{[source]:{}},bySourceFileAndQuestionNo:{[source]:{}},byLegacyQKey:{}}};
+  for(const row of f.nativeSource.identityByJoin.values()) {
+    row.legacyQKey=`${source}_${row.sourceQuestionNo}`;identityMap.records.push(row);
+    identityMap.lookup.byQuestionUid[row.questionUid]={sourceArchiveFile:source,sourceOrdinal:row.sourceOrdinal,sourceQuestionNo:row.sourceQuestionNo};
+    identityMap.lookup.bySourceFileAndOrdinal[source][row.sourceOrdinal]=row.questionUid;
+    identityMap.lookup.bySourceFileAndQuestionNo[source][row.sourceQuestionNo]=[row.questionUid];
+    identityMap.lookup.byLegacyQKey[row.legacyQKey]=[row.questionUid];
+  }
+  f.nativeSource.identityMap=identityMap;
+  f.identity.legacyQKey=`${source}_3`;
+  for(const row of f.receipt.appliedIdentityRecords)row.legacyQKey=`${source}_${row.sourceQuestionNo}`;
+  f.question.questionUid='fixture|3';f.previous.questionUid='fixture|3';
+  f.nativeSource.bank[2].questionUid='fixture|3';
+  const bytes=Buffer.from('window.questionBank='+JSON.stringify(f.nativeSource.bank)+';\n');
+  f.nativeSource.bytes=bytes;
+  f.nativeSource.blobSha1=crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+  f.receipt.sourceBlobSha1=f.nativeSource.blobSha1;
+  f.receipt.sourceRawSha256=crypto.createHash('sha256').update(bytes).digest('hex');
+  f.saveReceipt();const before=JSON.stringify({current:f.current,identity:f.identity,question:f.question});
+  const r=planQuestion(f);assert.equal(r.status,'ALREADY_REGISTERED',JSON.stringify(r));assert.equal(r.final,undefined);
+  assert.equal(JSON.stringify({current:f.current,identity:f.identity,question:f.question}),before);
+  identityMap.lookup.bySourceFileAndQuestionNo[source]['3'].push(f.receipt.appliedRecords[1].questionUid);
+  assert.deepEqual(planQuestion(f).reasons,['SOURCE_UID_CONFLICT']);
+});
 test('a partial receipt cannot lend native approval to a UID outside its selected set',t=>{
   const f=partialNativeReviewFixture(t);
   f.ordinal=2;f.question=structuredClone(f.nativeSource.bank[1]);

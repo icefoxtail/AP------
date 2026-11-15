@@ -19,13 +19,14 @@ const OTHER = '.archive-meta-register/inbox/other-owner-course.json';
 const SOURCE = 'archive/exams/original/native.js';
 const EVIDENCE = 'docs/operations/own-native-proof.json';
 const META = 'archive/data/question_metadata.json';
+const IDENTITY = 'archive/data/question_identity_map.json';
 const AUTHORITY = 'archive/data/meta-foundation/canonical/fixture/pack.json';
 const RECEIPT = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/own-reviewed-exam.json';
 const PLANNED = [META, AUTHORITY, RECEIPT].sort();
 const ALLOWED = [/^archive\/db\.js$/, /^archive\/data\/question_metadata\.json$/,
   /^archive\/data\/archive2-(?:catalog|canonical-input-manifest)\.json$/];
 
-function fixture(t) {
+function fixture(t, { partial = false, identityOnly = false, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -51,9 +52,10 @@ function fixture(t) {
     'archive/db.js', META, 'archive/data/archive2-catalog.json',
     'archive/data/archive2-canonical-input-manifest.json',
   ].join('\n') + '\n');
-  write(SOURCE, 'window.questions = [{ id: 1 }];\n');
+  write(SOURCE, 'window.questions = '+JSON.stringify(Array.from({length:partial?24:1},(_,i)=>({id:i+1})))+';\n');
   write(EVIDENCE, json({ reviewed: 'fixture approval evidence, without student content' }));
   write(META, json({ records: [{ questionUid: 'fixture', before: true }] }));
+  write(IDENTITY, json({ records: [{ questionUid: 'fixture', sourceFingerprint: 'old' }] }));
   write(AUTHORITY, json({ version: 'before' }));
   write(OTHER, json({ schemaVersion: 'standalone-course-fixture', requestId: 'other-owner-course' }));
   write('archive/db.js', 'old projection\n');
@@ -69,9 +71,12 @@ function fixture(t) {
   const evidenceRef = { path: EVIDENCE, sha256: sha(fs.readFileSync(path.join(root, EVIDENCE))) };
   const request = { schemaVersion: NATIVE_REQUEST_SCHEMA, requestId: 'own-reviewed-exam',
     sourceArchiveFile: 'original/native.js', expectedSourceBlobSha1: git('rev-parse', `HEAD:${SOURCE}`),
-    expectedQuestionCount: 1, approval: { type: 'FINAL_QA', evidenceRefs: [evidenceRef] },
-    registryChanges: [], items: [{ questionUid: 'fixture', evidenceRefs: [evidenceRef] }],
+    expectedQuestionCount: partial ? 24 : 1, ...(partial ? {scope:'PARTIAL_UIDS'} : {}),
+    ...(identityOnly ? {registrationMode:'IDENTITY_FINGERPRINT_ONLY'} : {}),
+    approval: { type: 'FINAL_QA', evidenceRefs: [evidenceRef] },
+    registryChanges: [], items: [{ questionUid: 'fixture', sourceOrdinal: partial ? 5 : 1, evidenceRefs: [evidenceRef] }],
   };
+  mutateRequest?.(request);
   write(REQUEST, json(request)); git('add', '--', REQUEST); git('commit', '-qm', 'own request only');
   const headSha = git('rev-parse', 'HEAD'), repo = 'owner/repository';
   const event = { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
@@ -92,12 +97,19 @@ function fixture(t) {
       const phase = args.includes('--verify-projection') ? 'projection' : args.includes('--write') ? 'write' : 'dry-run';
       hook[phase]?.(target);
       if (phase === 'projection' && !replay) throw Error('FIXTURE_RECEIPT_REQUIRED');
-      const result = { status: 'PASS', requestId: req.requestId, totalQuestions: 1, replay,
-        plannedPaths: replay ? [] : PLANNED,
-        consumerSearchStatus: phase === 'projection' ? 'STATIC_VALUES_VERIFIED' : 'NOT_RUN' };
+      const identityRepair=req.registrationMode==='IDENTITY_FINGERPRINT_ONLY';
+      const result = { status: 'PASS', requestId: req.requestId, totalQuestions: req.items.length, replay,
+        ...(req.scope==='PARTIAL_UIDS'?{scope:req.scope,partialUidCount:req.items.length,expectedQuestionCount:req.expectedQuestionCount}:{}),
+        ...(identityRepair?{registrationMode:req.registrationMode,metadataChanged:false,newMetadataApprovals:0,
+          ...(phase==='projection'?{consumerLanes:{identityBindings:req.items.length,newMetadataApprovals:0}}:{})}:{}),
+        plannedPaths: replay ? [] : identityRepair ? [IDENTITY, RECEIPT].sort() : PLANNED,
+        consumerSearchStatus: phase === 'projection' ? identityRepair ? 'IDENTITY_BINDINGS_VERIFIED' : 'STATIC_VALUES_VERIFIED' : 'NOT_RUN' };
       if (phase === 'write' && !replay) {
-        write(META, json({ records: [{ questionUid: 'fixture', after: true }] }), target);
-        write(AUTHORITY, json({ version: 'after' }), target);
+        if(identityRepair)write(IDENTITY,json({records:[{questionUid:'fixture',sourceFingerprint:'current'}]}),target);
+        else {
+          write(META, json({ records: [{ questionUid: 'fixture', after: true }] }), target);
+          write(AUTHORITY, json({ version: 'after' }), target);
+        }
         write(RECEIPT, json({ requestSha256: sha(fs.readFileSync(path.join(target, REQUEST))), source: req.expectedSourceBlobSha1 }), target);
         hook.afterWrite?.(target);
       }
@@ -105,8 +117,11 @@ function fixture(t) {
     }
     if (args[0].endsWith('/verify-changed-uid-consumer-approval.mjs')) {
       hook.consumer?.(target);
+      const req=JSON.parse(fs.readFileSync(path.join(target,REQUEST),'utf8'));
+      const identityRepair=req.registrationMode==='IDENTITY_FINGERPRINT_ONLY';
       return json(hook.consumerResult || { status: 'PASS', counts: { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 },
-        exams: [{ file: REQUEST, kind: 'reviewed-exam-v2', sourceFile: 'original/native.js', changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 }],
+        exams: [{ file: REQUEST, kind: identityRepair?'identity-fingerprint-repair':'reviewed-exam-v2', sourceFile: 'original/native.js', changed: 1, checked: 1, passed: 1, skippedUnchanged: 0,
+          ...(identityRepair?{approvalCreated:false,newMetadataApprovals:0,identityBindings:1}:{}) }],
         failures: [], unobservedFields: [], assignmentPending: [] });
     }
     if (program === 'python3') {
@@ -151,6 +166,78 @@ test('inbox-only PR selects its fixed v2 request and leaves unchanged course inb
   f.assertShadowsRemoved();
   const actualWrites = f.calls.filter(c => c.root === f.root && c.args.includes('--write') && c.args[0].endsWith('/register-reviewed-exam-meta-source.mjs'));
   assert.equal(actualWrites.length, 1, 'verify-local writes only its isolated shadow');
+});
+
+test('partial preview binds one selected UID separately from its 24-question fixed source',t=>{
+  const f=fixture(t,{partial:true}),selected=f.selected();
+  assert.equal(selected[0].questionCount,1);assert.equal(selected[0].sourceQuestionCount,24);
+  assert.equal(selected[0].scope,'PARTIAL_UIDS');
+  assert.deepEqual(selected[0].selectedItems,[{questionUid:'fixture',sourceOrdinal:5}]);
+  const proof=f.produce(),before=f.snapshot();
+  assert.equal(proof.status,'PASS');assert.equal(f.validate(proof).reusable,true);
+  assert.deepEqual(f.snapshot(),before);f.assertShadowsRemoved();
+  const forged=copy(proof.nativePreview);forged.requests[0].selectedItems[0].questionUid='foreign';
+  assert.throws(()=>f.native(forged),/INPUT_MANIFEST_MISMATCH/);
+});
+
+test('partial selection rejects malformed scope, duplicate UIDs/ordinals and a false source denominator',t=>{
+  const cases=[
+    [r=>{delete r.scope;},/QUESTION_COUNT/],
+    [r=>{r.scope='OTHER';},/REQUEST_SCOPE/],
+    [r=>{r.expectedQuestionCount=23;},/SOURCE_DENOMINATOR/],
+    [r=>{r.items=[];},/QUESTION_COUNT/],
+    [r=>{r.items[0].sourceOrdinal=25;},/SELECTED_UID_SCOPE/],
+    [r=>{r.items[0].sourceOrdinal=1.5;},/SELECTED_UID_SCOPE/],
+    [r=>{r.items.push({...r.items[0],sourceOrdinal:6});},/SELECTED_UID_SCOPE/],
+    [r=>{r.items.push({...r.items[0],questionUid:'other'});},/SELECTED_UID_SCOPE/],
+    [r=>{r.registrationMode='UNKNOWN';},/REGISTRATION_MODE/],
+  ];
+  for(const [mutateRequest,error] of cases) {
+    const f=fixture(t,{partial:true,mutateRequest});assert.throws(()=>f.selected(),error);
+  }
+});
+
+test('partial dry-run, write and projection each bind both denominators and the explicit scope',t=>{
+  for(const phase of ['dry-run','write','projection'])for(const mutation of [
+    r=>({...r,totalQuestions:24}),r=>({...r,partialUidCount:2}),r=>({...r,expectedQuestionCount:1}),r=>({...r,scope:undefined}),
+  ]) {
+    const f=fixture(t,{partial:true});f.hook.result=(p,result)=>p===phase?mutation(result):result;
+    assert.throws(()=>f.produce(),phase==='dry-run'?/DRY_RUN_NOT_PASS/:phase==='write'?/WRITE_PLAN_MISMATCH/:/PROJECTION_NOT_VERIFIED/);
+  }
+});
+
+test('partial Consumer counts cannot substitute the whole exam or omit the selected UID',t=>{
+  for(const count of [0,24]) {
+    const f=fixture(t,{partial:true}),counts={changed:count,checked:count,passed:count,skippedUnchanged:0};
+    f.hook.consumerResult={status:'PASS',counts,exams:[{file:REQUEST,kind:'reviewed-exam-v2',sourceFile:'original/native.js',...counts}],
+      failures:[],unobservedFields:[],assignmentPending:[]};
+    assert.throws(()=>f.produce(),/CONSUMER_NOT_PASS/);
+  }
+});
+
+test('identity-only preview verifies exact bindings while preserving metadata and creating no approval',t=>{
+  const f=fixture(t,{partial:true,identityOnly:true}),beforeMeta=fs.readFileSync(path.join(f.root,META));
+  const proof=f.produce();assert.equal(proof.status,'PASS');
+  assert.equal(proof.nativePreview.requests[0].kind,'identity-fingerprint-repair');
+  assert.deepEqual(fs.readFileSync(path.join(f.root,META)),beforeMeta);
+  assert.equal(f.validate(proof).reusable,true);f.assertShadowsRemoved();
+});
+
+test('identity-only preview rejects a semantic approval result, missing bindings or a mislabeled Consumer result',t=>{
+  for(const mutate of [
+    r=>({...r,consumerSearchStatus:'STATIC_VALUES_VERIFIED'}),r=>({...r,newMetadataApprovals:1}),
+    r=>({...r,metadataChanged:true}),r=>({...r,consumerLanes:{identityBindings:24,newMetadataApprovals:0}}),
+  ]) {
+    const f=fixture(t,{partial:true,identityOnly:true});f.hook.result=(p,r)=>p==='projection'?mutate(r):r;
+    assert.throws(()=>f.produce(),/PROJECTION_NOT_VERIFIED/);
+  }
+  for(const change of [{kind:'reviewed-exam-v2'},{newMetadataApprovals:1},{approvalCreated:true},{identityBindings:24}]) {
+    const f=fixture(t,{partial:true,identityOnly:true});
+    f.hook.consumerResult={status:'PASS',counts:{changed:1,checked:1,passed:1,skippedUnchanged:0},exams:[{
+      file:REQUEST,kind:'identity-fingerprint-repair',sourceFile:'original/native.js',changed:1,checked:1,passed:1,skippedUnchanged:0,
+      newMetadataApprovals:0,approvalCreated:false,identityBindings:1,...change}],failures:[],unobservedFields:[],assignmentPending:[]};
+    assert.throws(()=>f.produce(),/CONSUMER_NOT_PASS/);
+  }
 });
 
 for (const [label, file, message] of [

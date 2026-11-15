@@ -102,3 +102,52 @@ export function createQuestionIdentityResolver(identityMap) {
         }
     };
 }
+
+// Some original JS banks retained a display alias in questionUid before canonical
+// UIDs existed. Only the historical "source basename|positive question number"
+// form is eligible for this adapter. The resolver above deliberately continues
+// to reject an unknown explicit UID; callers must opt into this narrower proof.
+export function isUnambiguousLegacySourceUidAlias({ question, sourceArchiveFile, sourceOrdinal, identityRecord, identityMap, bank }) {
+    if (identityMap?.schemaVersion !== 'question-identity-map-v1' || !Array.isArray(identityMap.records) ||
+        !Array.isArray(bank) || !Number.isInteger(sourceOrdinal) || sourceOrdinal < 1 || sourceOrdinal > bank.length ||
+        typeof sourceArchiveFile !== 'string' || !sourceArchiveFile.endsWith('.js') ||
+        typeof question?.questionUid !== 'string' || !identityRecord?.questionUid ||
+        identityRecord.sourceArchiveFile !== sourceArchiveFile || identityRecord.sourceOrdinal !== sourceOrdinal) return false;
+    const number = String(question.sourceQuestionNo ?? question.sourceQid ?? question.id ?? '');
+    if (!/^[1-9]\d*$/.test(number) || !Number.isSafeInteger(Number(number)) ||
+        String(identityRecord.sourceQuestionNo) !== number ||
+        question.questionUid !== sourceArchiveFile.split('/').at(-1).slice(0, -3) + '|' + number) return false;
+    const boundQuestion = bank[sourceOrdinal - 1];
+    if (boundQuestion?.questionUid !== question.questionUid) return false;
+    for (const candidate of [question, boundQuestion]) {
+        if (Object.hasOwn(candidate, 'sourceOrdinal') && candidate.sourceOrdinal !== sourceOrdinal) return false;
+        for (const key of ['id', 'number', 'sourceQuestionNo', 'sourceQid'])
+            if (Object.hasOwn(candidate, key) && String(candidate[key]) !== number) return false;
+    }
+    if (bank.filter(q => String(q.sourceQuestionNo ?? q.sourceQid ?? q.id ?? '') === number).length !== 1 ||
+        bank.filter(q => q.questionUid === question.questionUid).length !== 1) return false;
+    const sourceRows = identityMap.records.filter(r => r.sourceArchiveFile === sourceArchiveFile);
+    if (identityMap.records.filter(r => r.questionUid === identityRecord.questionUid).length !== 1 ||
+        sourceRows.filter(r => r.sourceOrdinal === sourceOrdinal).length !== 1 ||
+        sourceRows.filter(r => String(r.sourceQuestionNo) === number).length !== 1) return false;
+    const record = sourceRows.find(r => r.sourceOrdinal === sourceOrdinal);
+    const legacyKey = sourceArchiveFile + '_' + number;
+    const legacyUids = identityMap.lookup?.byLegacyQKey?.[legacyKey];
+    if (record.questionUid !== identityRecord.questionUid || String(record.sourceQuestionNo) !== number ||
+        record.legacyQKey !== legacyKey || identityRecord.legacyQKey !== legacyKey ||
+        !Array.isArray(legacyUids) || legacyUids.length !== 1 || legacyUids[0] !== record.questionUid) return false;
+    try {
+        const resolver = createQuestionIdentityResolver(identityMap);
+        const references = [
+            [{ questionUid: record.questionUid }, 'RESOLVED_CANONICAL_UID'],
+            [{ sourceArchiveFile, sourceOrdinal }, 'RESOLVED_SOURCE_ORDINAL'],
+            [{ sourceArchiveFile, sourceQuestionNo: number }, 'RESOLVED_LEGACY_UNAMBIGUOUS'],
+        ];
+        return references.every(([reference, status]) => {
+            const result = resolver.resolve(reference);
+            return result.status === status && result.questionUid === record.questionUid &&
+                result.sourceArchiveFile === sourceArchiveFile && result.sourceOrdinal === sourceOrdinal &&
+                String(result.sourceQuestionNo) === number;
+        });
+    } catch { return false; }
+}

@@ -144,6 +144,25 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     if (Object.hasOwn(accepted, key) && !equal(accepted[key], row.finalDifficulty[key])) fail(`native difficulty disagreement: ${key}`);
     accepted[key] = row.finalDifficulty[key];
   }
+  const identityOnly = request.registrationMode === "IDENTITY_FINGERPRINT_ONLY";
+  const rationaleBindings = {};
+  if (!identityOnly) for (const field of ["primaryMethod", "decisiveStep"]) {
+    if (!Object.hasOwn(patch.after, field) && !Object.hasOwn(question, field)) continue;
+    let value, origin;
+    if (Object.hasOwn(accepted, field)) { value = accepted[field]; origin = "NATIVE_AFTER"; }
+    else if (text(row[field])) { value = row[field]; origin = "NATIVE_ITEM_FIELD"; }
+    else if (text(committedBank[ordinal - 1][field])) { value = committedBank[ordinal - 1][field]; origin = "REVIEW_COMMIT_SOURCE_FIELD"; }
+    else if (field === "primaryMethod" && [patch.after.primaryMethod, patch.after.decisiveStep,
+      question.primaryMethod, question.decisiveStep].every(v => equal(v, row.decisiveStep))) {
+      // This schema's reviewed decisive step may be carried verbatim as both rationale
+      // fields. It is not a separately authored method judgment or new mathematical QA.
+      value = row.decisiveStep; origin = "NATIVE_DECISIVE_STEP_VERBATIM";
+    } else fail(`rationale has no immutable native evidence: ${field}`);
+    if (!text(value) || Object.hasOwn(question, field) && !equal(question[field], value))
+      fail(`current source rationale differs from native evidence: ${field}`);
+    accepted[field] = value;
+    rationaleBindings[field] = { origin, valueSha256: sha256(value) };
+  }
   for (const [key, value] of Object.entries(patch.after)) {
     if (DERIVED_FIELDS.has(key) || equal(value, metadata[key] ?? null)) continue;
     // Source curriculum identifiers may be carried verbatim; they are never guessed from the reviewed grade.
@@ -151,7 +170,6 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
         (equal(value, question[key]) || ["curriculum", "curriculumKey"].includes(key) && equal(value, question.curriculum))) continue;
     if (!Object.hasOwn(accepted, key) || !equal(accepted[key], value)) fail(`changed value not approved by native review: ${key}`);
   }
-  const identityOnly = request.registrationMode === "IDENTITY_FINGERPRINT_ONLY";
   if (identityOnly && Object.entries(patch.after).some(([key, value]) =>
     !["sourceFingerprint", "contentFingerprint"].includes(key) || !equal(value, metadata[key])))
     fail("identity-only proof cannot change metadata");
@@ -167,5 +185,6 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     reviewedSourceBlobSha1: loaded.sourceBlob, reviewedSourceSha256: loaded.sourceSha256,
     reviewCommitSourceBlobSha1: loaded.committedBlob, questionUid: patch.questionUid, sourceOrdinal: ordinal,
     reviewer: loaded.reviewer, decision, studentPayloadSha256: sha256(stable(payload)),
+    ...(Object.keys(rationaleBindings).length ? { rationaleBindings } : {}),
     scope: identityOnly ? "IDENTITY_BINDING_ONLY" : "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false };
 }

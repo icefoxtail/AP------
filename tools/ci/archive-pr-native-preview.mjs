@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 
 export const NATIVE_PREVIEW_SCHEMA = 'archive-pr-native-preview/v1';
@@ -78,9 +79,19 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     let request; try { request = JSON.parse(raw); } catch { fail(`REQUEST_JSON:${file}`); }
     const correction = request.schemaVersion === PARENT_CORRECTION_SCHEMA;
     if (!correction && request.schemaVersion !== NATIVE_REQUEST_SCHEMA) continue;
-    if (correction && (!Array.isArray(request.items) || !request.items.length)) fail('QUESTION_COUNT');
+    const partial = !correction && request.scope === 'PARTIAL_UIDS';
+    if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
+    if (request.registrationMode !== undefined && (correction || !partial || request.registrationMode !== 'IDENTITY_FINGERPRINT_ONLY')) fail('REGISTRATION_MODE');
     if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(request.requestId || '')) fail('REQUEST_ID');
     if (!Number.isSafeInteger(request.expectedQuestionCount) || request.expectedQuestionCount < 1) fail('QUESTION_COUNT');
+    if (!Array.isArray(request.items) || !request.items.length || request.items.length > request.expectedQuestionCount
+        || !correction && !partial && request.items.length !== request.expectedQuestionCount) fail('QUESTION_COUNT');
+    const selectedItems = request.items.map(item => ({ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal }));
+    if (selectedItems.some(item => typeof item.questionUid !== 'string' || !item.questionUid.trim()
+        || !Number.isSafeInteger(item.sourceOrdinal) || item.sourceOrdinal < 1 || item.sourceOrdinal > request.expectedQuestionCount)
+        || new Set(selectedItems.map(i => i.questionUid)).size !== selectedItems.length
+        || new Set(selectedItems.map(i => i.sourceOrdinal)).size !== selectedItems.length) fail('SELECTED_UID_SCOPE');
+    selectedItems.sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
     const refs = new Map();
     for (const list of [request.approval?.evidenceRefs, ...(request.items || []).map(i => i.evidenceRefs),
       ...(request.registryChanges || []).map(i => i.evidenceRefs),
@@ -97,8 +108,18 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
     if (blobSha1 !== request.expectedSourceBlobSha1 || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
-    requests.push({ ...fileRef(root, file), requestId: request.requestId, questionCount: correction ? request.items.length : request.expectedQuestionCount,
-      ...(correction ? { kind: 'basic-parent-correction' } : {}), source: { ...source, blobSha1 },
+    let bank;
+    try {
+      const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
+      vm.runInNewContext(fs.readFileSync(safe(root, sourcePath), 'utf8'), ctx, { timeout: 5000 });
+      bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
+    } catch { fail('SOURCE_BANK_INVALID'); }
+    if (!Array.isArray(bank) || bank.length !== request.expectedQuestionCount) fail('SOURCE_DENOMINATOR');
+    requests.push({ ...fileRef(root, file), requestId: request.requestId, questionCount: selectedItems.length,
+      sourceQuestionCount: request.expectedQuestionCount, selectedItems,
+      ...(partial ? { scope: request.scope } : {}),
+      ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
+      ...(correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' } : {}), source: { ...source, blobSha1 },
       evidence: [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en')),
       receiptPath: `${RECEIPTS}${request.requestId}.json` });
   }
@@ -109,8 +130,18 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
 function registrar(root, request, run, flags = [], scriptRoot = root) {
   return parsed(run(process.execPath, [path.join(scriptRoot, REGISTRAR), '--repo-root', root, '--request', request.path, ...flags], root));
 }
+function resultScopeMatches(result, request) {
+  if (result.status !== 'PASS' || result.requestId !== request.requestId || result.totalQuestions !== request.questionCount
+      || result.registrationMode !== request.registrationMode) return false;
+  if (request.scope === 'PARTIAL_UIDS') {
+    if (result.scope !== request.scope || result.partialUidCount !== request.questionCount
+        || result.expectedQuestionCount !== request.sourceQuestionCount) return false;
+  } else if (result.scope !== undefined || result.partialUidCount !== undefined) return false;
+  return request.registrationMode !== 'IDENTITY_FINGERPRINT_ONLY'
+    || result.metadataChanged === false && result.newMetadataApprovals === 0;
+}
 function planPaths(result, request) {
-  if (result.status !== 'PASS' || result.requestId !== request.requestId || result.totalQuestions !== request.questionCount || !Array.isArray(result.plannedPaths)
+  if (!resultScopeMatches(result, request) || !Array.isArray(result.plannedPaths)
       || typeof result.replay !== 'boolean' || result.plannedPaths.some(file => typeof file !== 'string')) fail('DRY_RUN_NOT_PASS');
   const paths = sorted(result.plannedPaths);
   if (paths.length !== result.plannedPaths.length || paths.some(file => !file.startsWith('archive/data/'))) fail('OUTPUT_SCOPE');
@@ -127,7 +158,7 @@ export function applyNativeRequests({ root, requests, run = nativeCommand, scrip
     const dryRun = registrar(root, request, run, [], scriptRoot), paths = planPaths(dryRun, request);
     if (guard) noUnexpectedMutation(root, before, new Set());
     const applied = registrar(root, request, run, ['--write'], scriptRoot);
-    if (applied.status !== 'PASS' || applied.requestId !== request.requestId || applied.replay !== dryRun.replay
+    if (!resultScopeMatches(applied, request) || applied.replay !== dryRun.replay
         || !eq(sorted(applied.plannedPaths || []), paths)) fail('WRITE_PLAN_MISMATCH');
     if (guard) noUnexpectedMutation(root, before, new Set(paths));
     plans.push({ requestPath: request.path, replay: dryRun.replay, plannedPaths: paths });
@@ -140,8 +171,11 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
   const before = dirtySnapshot(root);
   for (const request of requests) {
     const result = registrar(root, request, run, ['--verify-projection']);
-    if (result.status !== 'PASS' || result.requestId !== request.requestId || result.totalQuestions !== request.questionCount
-        || result.replay !== true || result.consumerSearchStatus !== 'STATIC_VALUES_VERIFIED') fail('PROJECTION_NOT_VERIFIED');
+    const identityOnly = request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY';
+    if (!resultScopeMatches(result, request) || result.replay !== true
+        || result.consumerSearchStatus !== (identityOnly ? 'IDENTITY_BINDINGS_VERIFIED' : 'STATIC_VALUES_VERIFIED')
+        || identityOnly && (result.consumerLanes?.identityBindings !== request.questionCount
+          || result.consumerLanes?.newMetadataApprovals !== 0)) fail('PROJECTION_NOT_VERIFIED');
   }
   const result = parsed(run(process.execPath, [CONSUMER, ...requests.flatMap(r => ['--request', r.path]), '--root', root], root));
   const count = requests.reduce((sum, r) => sum + r.questionCount, 0);
@@ -149,12 +183,15 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
     .every(k => Number.isSafeInteger(counts[k]) && counts[k] >= 0)
     && counts.changed + counts.skippedUnchanged === total && counts.checked === counts.changed && counts.passed === counts.changed;
   // The official Consumer checks changed rows and counts legitimate KEEP rows
-  // as skipped. The preceding projection check still verifies every source row.
+  // as skipped. The preceding projection check still verifies every selected row;
+  // the fixed source bank independently retains its original full denominator.
   if (result.status !== 'PASS' || !complete(result.counts, count)
       || !Array.isArray(result.exams) || result.exams.length !== requests.length
       || requests.some(r => {
         const exams = result.exams.filter(e => e.file === r.path);
         return exams.length !== 1 || exams[0].kind !== (r.kind || 'reviewed-exam-v2')
+          || r.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' && (exams[0].newMetadataApprovals !== 0
+            || exams[0].approvalCreated !== false || exams[0].identityBindings !== r.questionCount)
           || `archive/exams/${exams[0].sourceFile}` !== r.source.path || !complete(exams[0], r.questionCount);
       })
       || ['changed', 'checked', 'passed', 'skippedUnchanged'].some(k => result.exams.reduce((sum, e) => sum + e[k], 0) !== result.counts[k])

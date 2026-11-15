@@ -2773,6 +2773,61 @@ function itemRebindFixture(t) {
   return { ...f, item, current, sourceSha, bodySha };
 }
 
+function addLegacyAlias(f, first = f.q) {
+  const source = f.request.sourceArchiveFile, identity = f.read("archive/data/question_identity_map.json");
+  identity.schemaVersion = "question-identity-map-v1";
+  identity.lookup = { byQuestionUid: {}, bySourceFileAndOrdinal: { [source]: {} },
+    bySourceFileAndQuestionNo: { [source]: {} }, byLegacyQKey: {} };
+  for (const row of identity.records) {
+    row.sourceQuestionNo = row.sourceOrdinal; row.legacyQKey = `${source}_${row.sourceQuestionNo}`;
+    identity.lookup.byQuestionUid[row.questionUid] = { sourceArchiveFile: source, sourceOrdinal: row.sourceOrdinal, sourceQuestionNo: row.sourceQuestionNo };
+    identity.lookup.bySourceFileAndOrdinal[source][row.sourceOrdinal] = row.questionUid;
+    identity.lookup.bySourceFileAndQuestionNo[source][row.sourceQuestionNo] = [row.questionUid];
+    identity.lookup.byLegacyQKey[row.legacyQKey] = [row.questionUid];
+  }
+  f.put("archive/data/question_identity_map.json", identity);
+  const meta = f.read(META); for (const row of meta.records) row.sourceQuestionNo = row.sourceOrdinal; f.put(META, meta);
+  const question = { ...first, questionUid: "exam|1", sourceQuestionNo: 1, sourceQid: 1, sourceOrdinal: 1 };
+  f.writeBank(question);
+  return question;
+}
+
+test("partial registrar preserves a uniquely mapped legacy source alias while registering the canonical UID", t => {
+  const f = partialFixture(t); addLegacyAlias(f);
+  const before = fs.readFileSync(path.join(f.root, f.sourcePath));
+  const omitted = f.read(META).records[1];
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).totalQuestions, 1);
+  const receipt = f.read(f.receiptPath);
+  assert.equal(receipt.appliedRecords[0].questionUid, "uid1");
+  assert.equal(receipt.runtimeRecords[0].questionUid, "uid1");
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.sourcePath)), before);
+  assert.deepEqual(f.read(META).records[1], omitted);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+});
+
+test("partial registrar refuses unknown aliases and a conflicting or ambiguous identity lookup", t => {
+  for (const mutate of [
+    (q, id) => { q.questionUid = "other|1"; },
+    (q, id) => { q.questionUid = "qid_v1_" + "a".repeat(64); },
+    (q, id) => { q.sourceQid = 2; },
+    (q, id) => { id.lookup.bySourceFileAndOrdinal["fixture/exam.js"][1] = "uid2"; },
+    (q, id) => { id.lookup.bySourceFileAndQuestionNo["fixture/exam.js"][1].push("uid2"); },
+  ]) {
+    const f = partialFixture(t), q = addLegacyAlias(f), id = f.read("archive/data/question_identity_map.json");
+    mutate(q, id); f.put("archive/data/question_identity_map.json", id); f.writeBank(q);
+    const before = fs.readFileSync(path.join(f.root, META));
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /source UID mismatch/);
+    assert.deepEqual(fs.readFileSync(path.join(f.root, META)), before);
+  }
+});
+
+test("a valid source alias never excuses identity fingerprint drift", t => {
+  const f = partialFixture(t); addLegacyAlias(f);
+  const id = f.read("archive/data/question_identity_map.json");
+  id.records[0].sourceFingerprint = "a".repeat(64); f.put("archive/data/question_identity_map.json", id);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /identity fingerprint before required/);
+});
+
 test("partial UID dry-run and write preserve the omitted HOLD and source bytes", t => {
   const f = partialFixture(t);
   const raw = p => fs.readFileSync(path.join(f.root, p), "utf8");
@@ -3042,6 +3097,77 @@ test("FINAL_QA source reassessment refuses a reviewed PT/TPL correction omitted 
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /reviewed after value mismatch \(including omitted field\): problemTypeKey/);
 });
 
+function carryReviewedRationale(f, primaryMethod = f.review.items[0].primaryMethod || f.review.items[0].decisiveStep) {
+  const decisiveStep = f.review.items[0].decisiveStep;
+  f.writeBank({ ...f.current, primaryMethod, decisiveStep });
+  const current = f.read(META).records[0];
+  for (const field of ["primaryMethod", "decisiveStep"]) f.item.before[field] = current[field] ?? null;
+  Object.assign(f.item.after, { primaryMethod, decisiveStep });
+  return { primaryMethod, decisiveStep };
+}
+
+test("native decisive step can be carried verbatim with explicit provenance without inventing a separate method review", t => {
+  const f = reviewedSourceFixture(t), values = carryReviewedRationale(f);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read(f.receiptPath), proof = receipt.fingerprintRepairs[0].sourceReview;
+  assert.deepEqual(proof.rationaleBindings, {
+    primaryMethod: { origin: "NATIVE_DECISIVE_STEP_VERBATIM", valueSha256: hash(values.primaryMethod) },
+    decisiveStep: { origin: "NATIVE_ITEM_FIELD", valueSha256: hash(values.decisiveStep) },
+  });
+  assert.equal(proof.newMathematicalQa, false);
+  for (const row of [receipt.appliedRecords[0], receipt.runtimeRecords[0]])
+    for (const [field, value] of Object.entries(values)) assert.equal(row[field], value);
+});
+
+test("native explicit rationale and committed source rationale retain their distinct provenance", t => {
+  const native = reviewedSourceFixture(t, "m2-s2-meta-review-v1");
+  native.review.items[0].primaryMethod = "원검토에 명시된 주풀이"; native.updateReview(); carryReviewedRationale(native);
+  registerReviewedExamV2({ root: native.root, request: native.request, write: true });
+  assert.equal(native.read(native.receiptPath).fingerprintRepairs[0].sourceReview.rationaleBindings.primaryMethod.origin, "NATIVE_ITEM_FIELD");
+
+  const source = reviewedSourceFixture(t), values = carryReviewedRationale(source, "검토 commit 원본에 실린 주풀이");
+  source.review.sourceAfterBlob = source.git("hash-object", "-w", source.sourcePath);
+  source.review.sourceAfterSha256 = hash(fs.readFileSync(path.join(source.root, source.sourcePath)));
+  source.updateReview();
+  registerReviewedExamV2({ root: source.root, request: source.request, write: true });
+  const proof = source.read(source.receiptPath).fingerprintRepairs[0].sourceReview;
+  assert.deepEqual(proof.rationaleBindings.primaryMethod, { origin: "REVIEW_COMMIT_SOURCE_FIELD", valueSha256: hash(values.primaryMethod) });
+});
+
+test("source reassessment ignores native annotations outside the official value contract", t => {
+  const f = reviewedSourceFixture(t);
+  Object.assign(f.review.items[0].after, { standardUnitOrder: 7, category: "native-source-category",
+    meaningMeta: { reviewed: true }, metaStatus: "NATIVE_DONE", metaDebtFields: [] });
+  f.updateReview();
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+});
+
+test("native rationale transport refuses invented text, source drift, omitted corrections and evidence substitution", t => {
+  const commitCurrentReview = f => {
+    f.review.sourceAfterBlob = f.git("hash-object", "-w", f.sourcePath);
+    f.review.sourceAfterSha256 = hash(fs.readFileSync(path.join(f.root, f.sourcePath)));
+    f.updateReview();
+  };
+  for (const mutate of [
+    f => { f.item.after.primaryMethod += " 다른 판단"; },
+    f => { f.writeBank({ ...f.current, ...f.item.after, primaryMethod: "검토하지 않은 주풀이" }); },
+    f => { delete f.item.after.primaryMethod; delete f.item.before.primaryMethod; },
+    f => { delete f.item.after.decisiveStep; delete f.item.before.decisiveStep; },
+    f => { f.item.after.decisiveStep = "다른 문항의 결정 단계"; },
+    f => { f.item.after.primaryMethod = f.review.items[1].decisiveStep; },
+    f => { f.review.items[0].primaryMethod = "native의 실제 별도 주풀이"; commitCurrentReview(f); },
+    f => { f.review.items[0].after.primaryMethod = "native after에 확정된 별도 주풀이"; commitCurrentReview(f); },
+  ]) {
+    const f = reviewedSourceFixture(t); carryReviewedRationale(f); mutate(f);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source reassessment: .*rationale|changed value not approved by native review|reviewed after value mismatch/);
+  }
+  const f = reviewedSourceFixture(t);
+  f.review.items[0].primaryMethod = "원검토가 확정한 주풀이"; f.updateReview(); carryReviewedRationale(f);
+  const meta = f.read(META); meta.records[0].primaryMethod = "예전 메타 주풀이"; f.put(META, meta);
+  delete f.item.after.primaryMethod; delete f.item.before.primaryMethod;
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /reviewed after value mismatch \(including omitted field\): primaryMethod/);
+});
+
 test("reassessment keeps exact before/identity checks and does not replace the older rebind guard", t => {
   for (const [mutate, error] of [
     [f => { f.item.before.sourceFingerprint = "a".repeat(64); }, /before mismatch/],
@@ -3072,6 +3198,22 @@ function identityOnlyFixture(t) {
   f.put("archive/data/generated-lite-consumer/v1/index.json", { records: [] });
   return { ...f, fingerprints, runtimePath };
 }
+
+test("identity-only legacy alias repair still binds the immutable reviewed student payload", t => {
+  const f = identityOnlyFixture(t), q = addLegacyAlias(f, f.current);
+  f.review.sourceGitBlobSha = f.git("hash-object", "-w", f.sourcePath);
+  f.review.items[0].sourceEvidence.sourceGitBlobSha = f.review.sourceGitBlobSha;
+  f.updateReview(); f.review.baseSha = f.git("rev-parse", "HEAD"); f.updateReview();
+  const beforeMeta = fs.readFileSync(path.join(f.root, META)), beforeSource = fs.readFileSync(path.join(f.root, f.sourcePath));
+  const out = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(out.newMetadataApprovals, 0);
+  assert.equal(f.read("archive/data/question_identity_map.json").records[0].sourceFingerprint, f.fingerprints.sourceFingerprint);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, META)), beforeMeta);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.sourcePath)), beforeSource);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+  q.questionUid = "unknown"; f.writeBank(q); f.request.requestId = "unknown-alias-refused";
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /identity-only UID\/source mismatch/);
+});
 
 test("identity-only repair changes one identity binding and preserves metadata, holds, runtime and source bytes", t => {
   const f = identityOnlyFixture(t), raw = p => fs.readFileSync(path.join(f.root, p));

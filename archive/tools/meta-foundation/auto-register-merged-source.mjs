@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { isUnambiguousLegacySourceUidAlias } from '../intelligence/question-identity-contract.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -56,7 +57,7 @@ const semantic = q => pick(q,FIELDS);
 // A partial receipt keeps the original source denominator but owns only its selected
 // UID set. Bind every selected row to the actual identity map and source ordinal;
 // an array offset cannot identify a row in a noncontiguous registration.
-function nativeReceiptRecords(receipt,{bank,identityByJoin},source) {
+function nativeReceiptRecords(receipt,{bank,identityByJoin,identityMap},source) {
   if(!Array.isArray(receipt.appliedRecords))return null;
   if(receipt.scope===undefined) {
     if(receipt.totalQuestions!==bank.length||receipt.appliedRecords.length!==bank.length
@@ -83,6 +84,8 @@ function nativeReceiptRecords(receipt,{bank,identityByJoin},source) {
       ||!equal(record.sourceQuestionNo,identity.sourceQuestionNo)
       ||record.sourceFingerprint!==sourceFingerprint(q)||record.contentFingerprint!==contentFingerprint(q)
       ||identity.sourceFingerprint!==record.sourceFingerprint)return null;
+    if(q.questionUid&&q.questionUid!==uid&&!isUnambiguousLegacySourceUidAlias({question:q,
+      sourceArchiveFile:source,sourceOrdinal:ordinal,identityRecord:identity,identityMap,bank}))return null;
     const runtime=runtimes.get(uid);
     // REVIEW2 may retain an explicit type hold without a runtime row. It cannot
     // supply another UID's runtime, and the reused target must have its own row.
@@ -172,7 +175,9 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
 export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
-  if (q.questionUid && q.questionUid!==identity.questionUid) return reject('SOURCE_UID_CONFLICT');
+  if (q.questionUid && q.questionUid!==identity.questionUid && !isUnambiguousLegacySourceUidAlias({question:q,
+    sourceArchiveFile:source,sourceOrdinal:ordinal,identityRecord:identity,
+    identityMap:nativeSource?.identityMap,bank:nativeSource?.bank})) return reject('SOURCE_UID_CONFLICT');
   if (identity.status && identity.status!=='VERIFIED') return reject('UID_NOT_VERIFIED');
   const questionNo=String(q.sourceQuestionNo??q.id??'');
   if(previous&&String(previous.sourceQuestionNo??previous.id??'')!==questionNo)return reject('SOURCE_ORDINAL_CHANGED');
@@ -273,7 +278,7 @@ async function context(root) {
     runtimes.set(data.packId,{rel,data});
     for(const r of data.records){if(owners.has(r.questionUid))throw Error('DUPLICATE_RUNTIME_UID');owners.set(r.questionUid,data.packId);}
   }
-  return {registry,validate:validateActiveMetaFields,refreshRuntime,metadata,metaByUid,identityByJoin,runtimes,owners};
+  return {registry,validate:validateActiveMetaFields,refreshRuntime,metadata,metaByUid,identityMap:identity,identityByJoin,runtimes,owners};
 }
 
 export function selectTargets(root, state, config, head) {
@@ -340,7 +345,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       if(['FINAL_QA','REVIEW2'].includes(current?.metadataApprovalType)&&!nativeSource.blobSha1)
         nativeSource.blobSha1=execFileSync('git',['hash-object','--path',rel,'--stdin'],{cwd:root,input:nativeSource.bytes,encoding:'utf8',stdio:['pipe','pipe','pipe']}).trim();
       result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,
-        nativeSource:{...nativeSource,identityByJoin:c.identityByJoin,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
+        nativeSource:{...nativeSource,identityMap:c.identityMap,identityByJoin:c.identityByJoin,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
           runtimeStatus:c.runtimes.get(runtimeOwner)?.data.status}});
       if(result.status==='APPLY') {
         const rt=c.runtimes.get(result.ownerPack);if(!rt||rt.data.status!=='ACTIVE')throw Error('OWNER_RUNTIME_MISSING');
