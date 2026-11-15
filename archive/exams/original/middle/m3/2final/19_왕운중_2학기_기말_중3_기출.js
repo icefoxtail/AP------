@@ -2,6 +2,10 @@ window.examTitle = "19_왕운중_2학기_기말_중3_기출";
 window.questionBank = [
   {
     "id": 1,
+    "solutionImageCaption": "sin A=√5/3, tan A=√5/2이므로 곱은 5/6이다. 정답은 ④이다.",
+    "solutionImageAlt": "각 A의 맞은편은 주황, 이웃한 변은 초록, 빗변은 파랑으로 표시했다.",
+    "solutionImageSize": "full",
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q1-solution.svg",
     "content": "직각삼각형 $ABC$에서 $\\cos A=\\dfrac{2}{3}$일 때, $\\sin A\\times\\tan A$의 값은? (단, $0^\\circ<A<90^\\circ$) (3점)",
     "choices": [
       "$\\dfrac{\\sqrt5}{3}$",
@@ -60,6 +64,7 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "imageSize": "large",
     "content": "오른쪽 그림과 같이 반지름 길이가 $1$인 사분원에서 여러 가지 삼각비의 값을 찾은 것으로 옳지 않은 것은? (3점)",
     "choices": [
       "$\\sin38^\\circ=0.62$",
@@ -74,7 +79,7 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q02.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q2-problem-v2.svg",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -83,7 +88,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "하",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -114,16 +119,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|2",
     "decisiveStep": "단위 사분원 좌표와 38°·52° 여각 관계로 sin·cos를 읽고 tan38°은 두 변의 비임을 확인한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q02.png",
-    "solutionImageAlt": "원문 2번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "단위원의 교점에서 초록 가로·파랑 세로 안내 값을 읽는다. 주황 안쪽 삼각형의 두 예각은 서로 여각이다.",
+    "solutionImageCaption": "sin 52°≈0.79, cos 52°≈0.62이며 tan 38°≈0.62/0.79≈0.78이다. ⑤가 옳지 않다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "단위 사분원 좌표와 38°·52° 여각 관계로 sin·cos를 읽고 tan38°은 두 변의 비임을 확인한다."
   },
   {
     "id": 3,
+    "imageSize": "large",
     "content": "아래 그림에서 $\\angle ABC=15^\\circ$, $\\angle D=90^\\circ$일 때 $\\tan15^\\circ$의 값은? (4점)",
     "choices": [
       "$2+\\sqrt3$",
@@ -138,7 +144,7 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q03.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q3-problem-v2.svg",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -147,7 +153,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "중",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -178,16 +184,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|3",
     "decisiveStep": "30°직각삼각형의변1,√3,2에서 이등변삼각형을만들어15°를 확보하고 직각변비1/(2+√3)를 유리화하여tan15°=2−√3을 구한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q03.png",
-    "solutionImageAlt": "원문 3번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "주황 작은 직각삼각형과 파랑 큰 삼각형의 높이는 동일하다. BC와 CA의 같은 길이에는 보라 눈금을 넣었다.",
+    "solutionImageCaption": "AD=1로 두면 CD=√3, CA=BC=2이므로 tan 15°=1/(2+√3)=2−√3이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "30°직각삼각형의변1,√3,2에서 이등변삼각형을만들어15°를 확보하고 직각변비1/(2+√3)를 유리화하여tan15°=2−√3을 구한다."
   },
   {
     "id": 4,
+    "imageSize": "large",
     "content": "오른쪽 그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AB}=12$, $\\overline{AC}=5$, $\\overline{AH}\\perp\\overline{BC}$일 때, $\\sin x+\\sin y$의 값은? (4점)",
     "choices": [
       "$\\dfrac{5}{13}$",
@@ -202,7 +209,7 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q04.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q4-problem-v2.svg",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -211,7 +218,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "중",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -242,16 +249,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|4",
     "decisiveStep": "빗변13과 직각삼각형 닮음에서 BH=AB²/BC, HC=AC²/BC를 구하고 작은 삼각형의 sin 값을 합한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q04.png",
-    "solutionImageAlt": "원문 4번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q4-solution-v2.svg",
+    "solutionImageAlt": "두 작은 직각삼각형을 주황과 파랑으로 나누었다. 삼각형의 빗변 13과 두 주어진 변을 비교한다.",
+    "solutionImageCaption": "닮음으로 sin x=12/13, sin y=5/13이므로 합은 17/13이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "빗변13과 직각삼각형 닮음에서 BH=AB²/BC, HC=AC²/BC를 구하고 작은 삼각형의 sin 값을 합한다."
   },
   {
     "id": 5,
+    "imageSize": "large",
     "content": "오른쪽 그림에서 $\\angle B=\\angle E=90^\\circ$, $\\overline{BD}=\\overline{DC}=12\\rm\\,cm$이고 $\\sin x=\\dfrac{3}{4}$일 때, $\\tan y$의 값은? (5점)",
     "choices": [
       "$\\dfrac{\\sqrt5}{13}$",
@@ -266,7 +274,7 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q05.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q5-problem-v2.svg",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -275,7 +283,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "상",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -306,16 +314,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|5",
     "decisiveStep": "sin x로 AD를 복원하고 AB·AC를 계산한 뒤 D에서 AC에 내린 수선K의 두 피타고라스 식을 빼 AK,DK를 정하여 tan y를 얻는다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q05.png",
-    "solutionImageAlt": "원문 5번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "초록 눈금의 BD와 DC는 같다. D에서 파랑 AC에 보라 수선을 내리면 y에 대응하는 또 하나의 작은 직각삼각형을 얻는다.",
+    "solutionImageCaption": "AD=16, AC=4√43이다. D에서 AC에 내린 수선의 발이 K이면 AK=100/√43, DK=12√7/√43이다. tan y=3√7/25, 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "sin x로 AD를 복원하고 AB·AC를 계산한 뒤 D에서 AC에 내린 수선K의 두 피타고라스 식을 빼 AK,DK를 정하여 tan y를 얻는다."
   },
   {
     "id": 6,
+    "imageSize": "large",
     "content": "오른쪽 그림과 같이 배가 등대를 향하여 다가가고 있다. $50\\rm\\,m$ 떨어진 두 지점 $A,B$에서 등대의 불빛을 올려다보았을 때 올려본 각의 크기가 각각 $30^\\circ$, $45^\\circ$일 때, 등대의 높이는? (4점)",
     "choices": [
       "$25(\\sqrt3-1)\\rm\\,m$",
@@ -330,7 +339,7 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q06.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q6-problem-v2.svg",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -339,7 +348,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "중",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
@@ -370,16 +379,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|6",
     "decisiveStep": "가까운 관측점 거리=h와 먼 거리=h+50을 공통 높이로 나타내어 tan30° 식을 푼다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q06.png",
-    "solutionImageAlt": "원문 6번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "등대의 높이 CH와 가까운 지점 거리 BH는 같은 초록 눈금이다. 두 관측 삼각형은 높이를 공유한다.",
+    "solutionImageCaption": "h/(h+50)=tan 30°=1/√3이다. 따라서 h=25(√3+1) m이고 정답은 ②이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "primaryMethod": "가까운 관측점 거리=h와 먼 거리=h+50을 공통 높이로 나타내어 tan30° 식을 푼다."
   },
   {
     "id": 7,
+    "imageSize": "large",
     "content": "오른쪽 그림과 같이 정사면체의 꼭짓점 $A$에서 밑면에 내린 수선의 발을 $H$라 하자. $\\angle ADH=x$라고 할 때, $\\sin x$의 값은? (4점)",
     "choices": [
       "$\\dfrac{\\sqrt3}{3}$",
@@ -394,7 +404,7 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q07.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q7-problem-v2.svg",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -403,7 +413,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "상",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -434,16 +444,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|7",
     "decisiveStep": "정사면체 밑면 정삼각형의 중심거리 DH=a/√3를 구하고 단면 ADH의 높이로 sin x를 계산한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q7-solution-v2.svg",
-    "solutionImageAlt": "정사면체 A-BCD에서 꼭짓점 A에서 밑면 BCD에 내린 수선의 발 H를 점으로 나타내고, 점선 AH와 DH, H에서의 직각 표시와 각 x(∠ADH)를 보인 그림",
-    "solutionImageCaption": "H는 밑면 BCD의 무게중심이므로 삼각형 ADH는 H에서 직각인 직각삼각형이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q7-solution-v3.svg",
+    "solutionImageAlt": "파랑 옆모서리 AD, 주황 수선 AH, 초록 밑면 선분 HD가 한 직각삼각형을 이룬다.",
+    "solutionImageCaption": "밑면 한 변이 a이면 DH=a/√3, AH=a√6/3이다. 따라서 sin x=√6/3이고 정답은 ③이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "정사면체 밑면 정삼각형의 중심거리 DH=a/√3를 구하고 단면 ADH의 높이로 sin x를 계산한다."
   },
   {
     "id": 8,
+    "imageSize": "large",
     "content": "오른쪽 그림과 같은 등변사다리꼴 $ABCD$에서 두 대각선이 이루는 각의 크기가 $120^\\circ$이고, $\\square ABCD$의 넓이가 $2\\sqrt3\\rm\\,cm^2$일 때, $\\overline{AC}$의 길이는? (3점)",
     "choices": [
       "$2\\rm\\,cm$",
@@ -458,7 +469,7 @@ window.questionBank = [
       "도형",
       "사각형"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q08.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q8-problem-v2.svg",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -467,7 +478,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "중",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
@@ -498,16 +509,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|8",
     "decisiveStep": "등변사다리꼴의두대각선길이가같음을활용하고 두직선의예각60°로B,D의수선높이를구해 넓이를d²√3/4로나타낸다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q08.png",
-    "solutionImageAlt": "원문 8번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "파랑 두 대각선은 같은 길이이다. AC 위와 아래로 주황 높이를 각각 내려 두 삼각형의 넓이를 비교한다.",
+    "solutionImageCaption": "대각선 길이를 d라 하면 넓이가 d² sin 60°/2이다. 2√3=d²√3/4에서 d=2√2 cm이고 정답은 ②이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "primaryMethod": "등변사다리꼴의두대각선길이가같음을활용하고 두직선의예각60°로B,D의수선높이를구해 넓이를d²√3/4로나타낸다."
   },
   {
     "id": 9,
+    "imageSize": "large",
     "content": "오른쪽 그림의 정사각형 $ABCD$에서 $\\overline{AD}$, $\\overline{DC}$의 중점을 각각 $M,N$이라 하고 $\\angle MBN=x$라 할 때, $\\sin x$의 값은? (5점)",
     "choices": [
       "$\\dfrac{3}{5}$",
@@ -522,7 +534,7 @@ window.questionBank = [
       "도형",
       "사각형"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q09.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q9-problem-v2.svg",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -531,7 +543,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "상",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -562,16 +574,20 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|9",
     "decisiveStep": "정사각형에서 세 바깥 삼각형 넓이를 빼 BMN 넓이를 구하고 피타고라스로 얻은 BM,BN과 삼각형 넓이의 사인 관계에서 sin x를 역산한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q09.png",
-    "solutionImageAlt": "원문 9번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "보라 삼각형 BMN과 둘레에 남는 세 직각삼각형을 다른 면으로 표시했다. 두 긴 보라 변은 같은 길이이다.",
+    "solutionImageCaption": "[BMN]=3s²/8이고 BM²=BN²=5s²/4이다. 넓이를 끼인각으로 계산하면 sin x=3/5이고 정답은 ①이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "정사각형에서 세 바깥 삼각형 넓이를 빼 BMN 넓이를 구하고 피타고라스로 얻은 BM,BN과 삼각형 넓이의 사인 관계에서 sin x를 역산한다."
   },
   {
     "id": 10,
+    "solutionImageCaption": "큰 삼각형 넓이는 36 cm², 왼쪽 절반은 18 cm²이다. AD/AB=2/3이므로 [ADM]=12 cm²이고 정답은 ③이다.",
+    "solutionImageAlt": "초록 두 눈금의 BM과 MC는 같은 길이이다. 왼쪽 절반 중 D까지의 영역을 주황으로 표시했다.",
+    "solutionImageSize": "full",
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q10-solution.svg",
     "content": "삼각형 $ABC$에서 $\\overline{AB}=\\overline{AC}=12\\rm\\,cm$, $\\angle BAC=30^\\circ$이다. 점 $M$은 $\\overline{BC}$의 중점이고, 점 $D$는 $\\overline{AB}$ 위의 점으로 $\\overline{AD}:\\overline{DB}=2:1$이다.\n$\\triangle ADM$의 넓이는? (5점)",
     "choices": [
       "$6\\rm\\,cm^2$",
@@ -632,6 +648,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "imageSize": "large",
     "content": "오른쪽 그림과 같이 $200\\rm\\,m$ 떨어져 있는 지면 위의 두 지점 $A,B$에서 기구를 올려본 각의 크기가 각각 $45^\\circ$, $30^\\circ$일 때, 지면으로부터 기구까지의 높이는? (5점)",
     "choices": [
       "$100(\\sqrt3-1)\\rm\\,m$",
@@ -646,7 +663,7 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q11.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q11-problem-v2.svg",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -655,7 +672,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "상",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
@@ -686,16 +703,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|11",
     "decisiveStep": "기구의 수선발이 두 관측점 사이에 있어 수평거리를 h와200-h로 두고 tan30° 식을 세운다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q11.png",
-    "solutionImageAlt": "원문 11번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q11-solution-v2.svg",
+    "solutionImageAlt": "C 바로 아래에 H를 표시한다. 왼쪽 45도 삼각형의 두 직각변 AH와 HC를 같은 초록 눈금으로 표시했다.",
+    "solutionImageCaption": "AH=CH=h이고 BH=200−h이다. tan 30°=h/(200−h)에서 h=100(√3−1) m이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "primaryMethod": "기구의 수선발이 두 관측점 사이에 있어 수평거리를 h와200-h로 두고 tan30° 식을 세운다."
   },
   {
     "id": 12,
+    "imageSize": "large",
     "content": "오른쪽 그림과 같은 원 $O$에서 $\\angle AOB=\\angle BOC=\\angle DOE$일 때, 다음 중 옳지 않은 것은? (3점)",
     "choices": [
       "$\\overset{\\frown}{BC}=\\overset{\\frown}{DE}$",
@@ -710,7 +728,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q12.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q12-problem-v2.svg",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -719,7 +737,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "하",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -750,16 +768,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|12",
     "decisiveStep": "동일 중심각의 호·현·SAS합동은 성립하지만 중심각 두 배가 현 길이 두 배를 뜻하지 않음을 구별한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q12.png",
-    "solutionImageAlt": "원문 12번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "같은 길이인 세 호와 그에 대응하는 현을 초록으로 표시했다. 큰 현 AC는 보라색이다.",
+    "solutionImageCaption": "같은 중심각에 대한 호와 현은 각각 같다. AC는 두 호가 합친 범위에 대한 현이므로 현이 두 배 길이라는 ④는 옳지 않다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "primaryMethod": "동일 중심각의 호·현·SAS합동은 성립하지만 중심각 두 배가 현 길이 두 배를 뜻하지 않음을 구별한다."
   },
   {
     "id": 13,
+    "imageSize": "large",
     "content": "오른쪽 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\overset{\\frown}{AC}=\\overset{\\frown}{CD}$이다. $\\angle ABC=25^\\circ$일 때, $\\angle x$의 크기는? (4점)",
     "choices": [
       "$40^\\circ$",
@@ -774,7 +793,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q13.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q13-problem-v2.svg",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -783,7 +802,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "중",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -814,16 +833,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|13",
     "decisiveStep": "원주각25°에서 호AC50°를 정하고 동일호CD와 반원180°에서 남은호DB80°의 원주각을 구한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q13.png",
-    "solutionImageAlt": "원문 13번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "지름 AB 아래쪽에서 호 AC와 CD는 같은 초록 선이다. C의 각 x에서 뻗은 두 현은 주황 호 DB 양 끝에 닿는다.",
+    "solutionImageCaption": "각각 50°인 두 호를 반원에서 빼면 호 DB는 80°이다. 따라서 x=40°이고 정답은 ①이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "primaryMethod": "원주각25°에서 호AC50°를 정하고 동일호CD와 반원180°에서 남은호DB80°의 원주각을 구한다."
   },
   {
     "id": 14,
+    "imageSize": "large",
     "content": "오른쪽 그림은 원 모양의 접시의 일부분이다. $\\overline{AB}\\perp\\overline{CM}$이고, $\\overline{AM}=\\overline{BM}=3$, $\\overline{CM}=1$일 때, 원래 접시의 넓이는? (4점)",
     "choices": [
       "$9\\pi$",
@@ -838,7 +858,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q14.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q14-problem-v2.svg",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -847,7 +867,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "중",
     "subUnitKey": "M3-06-CIRCLE_LINE",
@@ -878,16 +898,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|14",
     "decisiveStep": "활꼴 높이1과 반현3에서 중심거리 r-1을 두어 피타고라스 방정식으로 r를 구한 뒤 원넓이를 계산한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q14.png",
-    "solutionImageAlt": "원문 14번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "파랑 원의 중심 O에서 원호 C로 이어진 수직선이 현의 가운데 M을 지난다. OM은 반지름보다 1 작고 AM은 반쪽 현이다.",
+    "solutionImageCaption": "r²=3²+(r−1)²이므로 r=5이다. 원래 접시의 넓이는 25π이고 정답은 ④이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "활꼴 높이1과 반현3에서 중심거리 r-1을 두어 피타고라스 방정식으로 r를 구한 뒤 원넓이를 계산한다."
   },
   {
     "id": 15,
+    "imageSize": "large",
     "content": "오른쪽 그림과 같이 $\\overline{AB}$는 원 $O$의 지름이고, $\\angle BPC=50^\\circ$, $\\overset{\\frown}{BC}=10\\pi\\rm\\,cm$일 때, $x$의 길이는? (3점)",
     "choices": [
       "$8\\pi\\rm\\,cm$",
@@ -902,7 +923,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q15.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q15-problem-v2.svg",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -911,7 +932,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "중",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -942,16 +963,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|15",
     "decisiveStep": "원주각50°에 대응하는 호의 중심각100°를 이용해 반원호 길이를 구하고 주어진 호를 빼 남은 호길이를 구한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q15.png",
-    "solutionImageAlt": "원문 15번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "반원의 두 호를 초록 AC와 주황 BC로 나누었다. 50도 원주각과 같은 호를 보는 중심각이 두 배이다.",
+    "solutionImageCaption": "호 BC에 해당하는 중심각은 100°이므로 원둘레는 36π cm이다. 반원 길이에서 BC를 빼면 x=8π cm이며 정답은 ①이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "primaryMethod": "원주각50°에 대응하는 호의 중심각100°를 이용해 반원호 길이를 구하고 주어진 호를 빼 남은 호길이를 구한다."
   },
   {
     "id": 16,
+    "imageSize": "large",
     "content": "오른쪽 그림에서 $\\overline{PA}$, $\\overline{PB}$, $\\overline{CD}$는 원 $O$의 접선이고 세 점 $A,B,E$는 원 $O$의 접점이다. $\\overline{PC}=7\\rm\\,cm$, $\\overline{PD}=8\\rm\\,cm$, $\\overline{CD}=5\\rm\\,cm$일 때, $\\overline{PB}$의 길이는? (4점)",
     "choices": [
       "$12\\rm\\,cm$",
@@ -966,7 +988,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q16.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q16-problem-v2.svg",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -975,7 +997,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "상",
     "subUnitKey": "M3-06-CIRCLE_LINE",
@@ -1006,16 +1028,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|16",
     "decisiveStep": "C,D에서 동일 접선 조각을 두고 PA=PB와 CD합을 연립하여 PB를 구한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q16.png",
-    "solutionImageAlt": "원문 16번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "C가 공유하는 두 접선은 주황 한 눈금, D가 공유하는 두 접선은 초록 두 눈금이다. 같은 꼭짓점 P에서 나가는 긴 두 접선도 같은 길이이다.",
+    "solutionImageCaption": "CE+DE=5이고 7+CE=8+DE이다. DE=2 cm이므로 PB=8+2=10 cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "C,D에서 동일 접선 조각을 두고 PA=PB와 CD합을 연립하여 PB를 구한다."
   },
   {
     "id": 17,
+    "imageSize": "large",
     "content": "오른쪽 그림에서 사각형 $ABCD$가 원에 내접하고, $\\angle CPD=30^\\circ$, $\\angle DQA=40^\\circ$일 때, $\\angle x$의 크기는? (5점)",
     "choices": [
       "$40^\\circ$",
@@ -1030,7 +1053,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q17.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q17-problem-v2.svg",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -1039,7 +1062,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "상",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -1070,16 +1093,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|17",
     "decisiveStep": "두 외부할선 각으로 마주 보는 두 호의 차를 구하고 네 호의 합360°를 연립하여 목표 원주각의 대응호 합을 정한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q17.png",
-    "solutionImageAlt": "원문 17번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q17-solution-v2.svg",
+    "solutionImageAlt": "원 위 네 점 사이의 네 호를 서로 다른 색으로 나누었다. 원 밖 점 P의 두 할선은 가까운 호 AB와 먼 호 CD의 양 끝에 닿으며, Q에서는 BC와 DA를 비교한다.",
+    "solutionImageCaption": "호 AB, BC, CD, DA를 u,v,w,z라 하면 w−u=60°, z−v=80°이다. 네 호의 합이 360°이므로 u+v=110°이고 x=55°이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "primaryMethod": "두 외부할선 각으로 마주 보는 두 호의 차를 구하고 네 호의 합360°를 연립하여 목표 원주각의 대응호 합을 정한다."
   },
   {
     "id": 18,
+    "imageSize": "large",
     "content": "오른쪽 그림과 같이 반원의 호 $AB$ 위의 한 점 $T$를 지나는 접선이 지름 $AB$의 양 끝점에서 그은 접선과 만나는 점을 각각 $D,C$라 할 때, 색칠한 부분의 넓이는? (5점)",
     "choices": [
       "$40+16\\pi\\rm\\,cm^2$",
@@ -1094,7 +1118,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q18.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q18-problem-v2.svg",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -1103,7 +1127,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "상",
     "subUnitKey": "M3-06-CIRCLE_LINE",
@@ -1134,16 +1158,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|18",
     "decisiveStep": "접선 조각의 합10과 양끝 높이차6으로 지름8을 구한 뒤 사다리꼴에서 반원 넓이를 뺀다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q18.png",
-    "solutionImageAlt": "원문 18번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q18-solution-v2.svg",
+    "solutionImageAlt": "D가 공유하는 두 접선은 주황 한 눈금, C가 공유하는 두 접선은 초록 두 눈금이다. 수평 보조선으로 두 높이의 차를 구한다.",
+    "solutionImageCaption": "DC=8+2=10 cm이고 높이 차는 6 cm이므로 AB=8 cm이다. 색칠한 넓이는 40−8π cm²이고 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "접선 조각의 합10과 양끝 높이차6으로 지름8을 구한 뒤 사다리꼴에서 반원 넓이를 뺀다."
   },
   {
     "id": 19,
+    "imageSize": "large",
     "content": "오른쪽 그림에서 $\\overset{\\frown}{AC}+\\overset{\\frown}{BD}=2\\pi$이고, 원의 반지름의 길이가 $4$일 때, 두 현 $\\overline{AB},\\overline{CD}$가 이루는 $\\angle APC$의 크기는? (4점)",
     "choices": [
       "$40^\\circ$",
@@ -1158,7 +1183,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q19.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q19-problem-v2.svg",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -1167,7 +1192,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "중",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -1198,16 +1223,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|19",
     "decisiveStep": "두호길이합이원둘레의1/4임으로중심각합90°를 얻고, 보조선BC와외각정리로교차현각을두원주각합으로 표현하여45°를 구한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q19.png",
-    "solutionImageAlt": "원문 19번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "서로 마주 보는 초록 호 AC와 주황 호 BD로 색을 나눴다. 삼각형 BPC의 변 BC가 두 원주각의 읽기를 돕는다.",
+    "solutionImageCaption": "두 호 길이의 합은 원둘레 8π의 1/4이다. 두 중심각의 합은 90°이므로 ∠APC는 45°이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "primaryMethod": "두호길이합이원둘레의1/4임으로중심각합90°를 얻고, 보조선BC와외각정리로교차현각을두원주각합으로 표현하여45°를 구한다."
   },
   {
     "id": 20,
+    "imageSize": "large",
     "content": "오른쪽 그림처럼 두 현 $\\overline{AB},\\overline{CD}$는 점 $P$에서 만난다. $\\overline{AP}=5\\rm\\,cm$, $\\overline{BP}=8\\rm\\,cm$이고 $\\overline{CP}:\\overline{DP}=2:5$일 때, $\\overline{DP}$의 길이는? (4점)",
     "choices": [
       "$4\\rm\\,cm$",
@@ -1222,7 +1248,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q20.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q20-problem-v2.svg",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -1231,7 +1257,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "중",
     "subUnitKey": "M3-06-CIRCLE_LINE",
@@ -1262,16 +1288,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|20",
     "decisiveStep": "교차하는 두 현의 부분길이 곱AP·PB=CP·DP와2:5의 비로 비례상수의 제곱을 구하고 양의 길이를 택한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q20.png",
-    "solutionImageAlt": "원문 20번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q20-solution-v2.svg",
+    "solutionImageAlt": "P 양쪽 파랑 구간을 곱한 값은 주황 구간의 곱과 같다. 주황 현의 두 부분 비는 2 대 5이다.",
+    "solutionImageCaption": "CP=2k, DP=5k라 두면 10k²=5×8, k=2이다. DP=10 cm이며 정답은 ③이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "교차하는 두 현의 부분길이 곱AP·PB=CP·DP와2:5의 비로 비례상수의 제곱을 구하고 양의 길이를 택한다."
   },
   {
     "id": 21,
+    "imageSize": "large",
     "content": "[서술형 1] 오른쪽 그림과 같이 모서리의 길이가 모두 $a$인 정사각뿔 $V$-$ABCD$에서 점 $M,N$은 각각 모서리 $AB,CD$의 중점일 때, $(\\sin x+\\cos x)\\times\\tan x$의 값을 구하시오. [7점]",
     "choices": [],
     "answer": "$\\dfrac{2+\\sqrt2}{\\sqrt3}$",
@@ -1280,7 +1307,7 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q21.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q21-problem-v2.svg",
     "category": "삼각비",
     "originalCategory": "삼각비",
     "standardCourse": "중3 수학",
@@ -1289,7 +1316,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "상",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -1320,10 +1347,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|21",
     "decisiveStep": "정사각뿔의 정삼각형 옆면에서 VM,VN을 구하고 중점 단면VMN의 높이를 복원해 x의 세 삼각비를 식에 대입한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q21-solution-v2.svg",
-    "solutionImageAlt": "모서리의 길이가 모두 같은 정사각뿔 V-ABCD에서 AB, CD의 중점 M, N, 꼭짓점 V에서 MN에 내린 수선의 발 H를 점으로 나타내고, 점선 VH와 직각삼각형 VMH의 직각 표시, 각 x(∠VMH)를 보인 그림",
-    "solutionImageCaption": "V에서 MN에 내린 수선의 발 H를 잡으면 삼각형 VMH는 H에서 직각인 직각삼각형이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q21-solution-v3.svg",
+    "solutionImageAlt": "같은 초록 눈금의 MH와 HN은 밑변의 절반이다. V에서 H로 내린 주황 수선이 단면을 두 직각삼각형으로 나눈다.",
+    "solutionImageCaption": "VM=VN=a√3/2, MH=a/2, VH=a/√2이다. 따라서 (sin x+cos x)tan x=(2+√2)/√3이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "정사각뿔의 정삼각형 옆면에서 VM,VN을 구하고 중점 단면VMN의 높이를 복원해 x의 세 삼각비를 식에 대입한다."
@@ -1378,16 +1405,17 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|22",
     "decisiveStep": "이등변삼각형 높이를 좌표로 놓고 외부점Q의 두 할선 길이곱과AP:PQ의 비를 이차방정식으로 연결하여 Q의 위치에 맞는 해를 고른다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q22.svg",
-    "solutionImageAlt": "원문 22번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "A에서 P까지와 P부터 Q까지의 길이비를 위쪽 할선에서 비교한다. 아래쪽 할선의 B, C, Q는 한 직선이다.",
+    "solutionImageCaption": "BQ=q라 두고 할선 정리 QA·QP=QB·QC를 적용하면 q²−8q−75=0이다. q>8이므로 BQ=4+√91이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "이등변삼각형 높이를 좌표로 놓고 외부점Q의 두 할선 길이곱과AP:PQ의 비를 이차방정식으로 연결하여 Q의 위치에 맞는 해를 고른다."
   },
   {
     "id": 23,
+    "imageSize": "large",
     "content": "[서술형 3] 오른쪽 그림과 같이 직사각형 $ABCD$의 세 변에 접하는 원 $O$가 있다. 네 점 $E,F,G,H$는 원 $O$의 접점이고 $\\overline{AB}=8\\rm\\,cm$, $\\overline{BC}=12\\rm\\,cm$일 때, $\\triangle ABM$의 넓이를 구하시오. [7점]",
     "choices": [],
     "answer": "24",
@@ -1396,7 +1424,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q23.png",
+    "image": "assets/images/19_왕운중_2학기_기말_중3_기출/q23-problem-v2.svg",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -1405,7 +1433,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "상",
     "subUnitKey": "M3-06-CIRCLE_LINE",
@@ -1436,10 +1464,10 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0",
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|23",
     "decisiveStep": "원반지름4와같은점의접선길이로AM=x,BM=16−x를 만들고 직각삼각형ABM의피타고라스식으로x=6을 구해 넓이24를 정한다.",
-    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q23.png",
-    "solutionImageAlt": "원문 23번 문항의 도형 자료. 풀이에서 사용하는 표시와 대상은 실제 그림을 함께 확인한다.",
-    "solutionImageCaption": "원문 도형에서 풀이에 필요한 조건을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "B의 두 접선 BF와 BG는 초록 한 줄, M의 두 접선 MF와 ME는 주황 두 줄이다. A에서 두 변은 직각이다.",
+    "solutionImageCaption": "반지름은 4이고 BG=BF=8이다. AM=x라 두면 BM=16−x이며 피타고라스 정리에서 x=6이다. 삼각형 ABM의 넓이는 24 cm²이다.",
+    "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "원반지름4와같은점의접선길이로AM=x,BM=16−x를 만들고 직각삼각형ABM의피타고라스식으로x=6을 구해 넓이24를 정한다."
