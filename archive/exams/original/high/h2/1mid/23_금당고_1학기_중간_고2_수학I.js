@@ -567,7 +567,11 @@ window.questionBank = [
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
     "reviewStatus": "manual_review",
-    "decisiveStep": "로그 차이를 전하량 비율로 바꿔 같은 3초 간격의 곱셈비를 적용한다."
+    "decisiveStep": "로그 차이를 전하량 비율로 바꿔 같은 3초 간격의 곱셈비를 적용한다.",
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 시간축의 점 0, 3, 6, 9, 12 사이를 네 구간으로 나누어 각 길이를 3초로 표시한다.",
+    "solutionImageCaption": "로그 전하량은 시간에 대해 선형으로 변하므로 같은 3초 간격마다 전하량 비율이 같다. t=3에서 주어진 비율을 t=9 이후 한 간격에 적용한다. 정답은 a=⅓이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 12,
