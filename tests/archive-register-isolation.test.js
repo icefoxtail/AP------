@@ -345,8 +345,22 @@ function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
   git(dir, 'init', '-q', '--initial-branch=main');
   for (const [k, v] of [['user.name', 'test'], ['user.email', 'test@example.invalid'], ['core.autocrlf', 'false']]) git(dir, 'config', k, v);
   const put = (rel, text) => { fs.mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true }); fs.writeFileSync(path.join(dir, rel), text); };
+  // The real preview imports typed preservation contracts. Copy their actual
+  // local module closure before installing the intentional heavy-step stubs.
+  const copiedModules = new Set();
+  const copyModule = rel => {
+    if (copiedModules.has(rel)) return;
+    assert.ok(!path.posix.isAbsolute(rel) && !rel.startsWith('../'), 'fixture module stays in the repository');
+    copiedModules.add(rel);
+    const source = read(rel);
+    put(rel, source);
+    const localImports = /(?:^|[;\n])\s*(?:import|export)\s+(?:[^;'\"]*?\sfrom\s*)?['\"](\.{1,2}\/[^'\"]+)['\"]/g;
+    for (const match of source.matchAll(localImports))
+      copyModule(path.posix.normalize(path.posix.join(path.posix.dirname(rel), match[1])));
+  };
   for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/archive-pr-native-preview.mjs', 'tools/ci/collect-reviewed-consumer-refusals.mjs', 'tools/ci/archive-meta-register-commit.paths', 'archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs'])
-    put(rel, read(rel));
+    if (rel === 'tools/ci/archive-pr-native-preview.mjs') copyModule(rel);
+    else put(rel, read(rel));
   // The real registration paths plus `derived/`, where the stub registrar writes its output.
   put('tools/ci/archive-meta-register-commit.paths', read('tools/ci/archive-meta-register-commit.paths') + 'derived/\n');
   put('derived/.keep', '');
