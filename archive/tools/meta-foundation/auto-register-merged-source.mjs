@@ -10,7 +10,7 @@ import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
-import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
+import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind, nativeReassessedPriorSourceRebind } from './native-preserved-source-reuse.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 
@@ -209,7 +209,10 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
       const preservedSource=nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,
         revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});
-      if(preservedSource!==true&&reviewedFigure!==true&&reviewedRenderer!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      const reviewedPriorSource=!studentUnchanged&&preservedSource!==true&&reviewedFigure!==true&&reviewedRenderer!==true&&
+        nativeReassessedPriorSourceRebind({receipt,nativeSource,previous,question,identity,ordinal,current,
+          revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});
+      if(preservedSource!==true&&reviewedFigure!==true&&reviewedRenderer!==true&&reviewedPriorSource!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "wangun-native-reuse-independent-code-review-v1",
+  "status": "ACCEPT_SCOPED_READ_ONLY_CODE_REVIEW",
+  "reviewer": "/root/m1_release",
+  "producer": "/root/ci_m2s2",
+  "currentMain": "846581e0c741e2ee031674c117af76be06d7f398",
+  "inputManifest": {
+    "path": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/release-manifest.json",
+    "sha256": "06271efc284e8fd742e5c91ea3229fae25e458d06f4f14960b274abea2269416"
+  },
+  "exactThreeFiles": [
+    {
+      "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+      "candidatePath": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/files/archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+      "bytes": 23440,
+      "beforeGitBlob": "0a8c0a5ce273f26694feb050bdabe155435ea4c6",
+      "beforeSha256": "3566a0341a7c48b0fa4b6c8d97fe2a2f813964e513591c7693581d48cec8138b",
+      "afterGitBlob": "a3430a95d41e1d74e97dd5a0ccc9dc4255ba219a",
+      "afterSha256": "01ecf8d9a5e4fb7b984ebd0b25ecb3b5667c796e5284f37aeec51ff4dd9b7af6",
+      "verifiedCandidateRawAndGitHashes": true,
+      "actual846BeforeBlobMatches": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "candidatePath": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/files/archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "bytes": 52032,
+      "beforeGitBlob": "b643f4c85ca20b5940291758d5233d5e9f727016",
+      "beforeSha256": "66748e6b1ca621a0b11262ba0d9f069153ae06ffbcaf98927cbd506e2a27da13",
+      "afterGitBlob": "c60427e0d07badbec249bb59d49957432efa0446",
+      "afterSha256": "83412ab8332441922de4c44ba27247d0d25fd494a6a3654d8bf88bc03746e0a1",
+      "verifiedCandidateRawAndGitHashes": true,
+      "actual846BeforeBlobMatches": true
+    },
+    {
+      "path": "tests/archive-main-merge-meta.test.mjs",
+      "candidatePath": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/files/tests/archive-main-merge-meta.test.mjs",
+      "bytes": 121103,
+      "beforeGitBlob": "5c44964e76e722deff3a8620896a5867d184ce7a",
+      "beforeSha256": "ac8cf8a60d422177c4467898b9b2e562a222b0ea49f8e15c9c8af5c24d6b3501",
+      "afterGitBlob": "d055048b7d9b97b3dd82a2fe55fe73d08a3b5c21",
+      "afterSha256": "46e817bfc249aed5f3e4527d5a4896233caf3e3e25fd6a08246ed0217dbed52c",
+      "verifiedCandidateRawAndGitHashes": true,
+      "actual846BeforeBlobMatches": true
+    }
+  ],
+  "patchSha256": "e0fdd737fbbb80cfd982bb8495f5f412075fe68a512782df6c06f1b4cac5a6c6",
+  "independentRemoteCas": {
+    "path": "independent-remote-current-cas.json",
+    "sha256": "d02c1c56beac054e66afacc66a3279505a45367f359e2f103ec9dde6dea70c97"
+  },
+  "checks": [
+    {
+      "contract": "Explicit source-only preservation remains strict",
+      "decision": "ACCEPT",
+      "evidence": "isPartialNativeSourcePreservation tests own approval.sourceRebind and zero-new/positive-preserved count before the new plain classification. Those cases still enter nativePreservedSourceRebind, whose exact sourceRebind/priorRef, counts, inventories, whole selected question, original native replay and anti-stripping checks are unchanged."
+    },
+    {
+      "contract": "Plain reassessment is proved rather than inferred from a prior filename",
+      "decision": "ACCEPT",
+      "evidence": "verifiedPlainReassessment requires nonempty unique repairs exactly covering the selected metadata/identity/runtime inventory, no registry or parent operations, actual current Git+raw source binding, exact denominator, and all approval evidence SHA bindings. A malformed, partial, duplicate, unavailable or altered proof returns false and therefore retains the stricter preservation classification when a native evidence ref is present."
+    },
+    {
+      "contract": "Exact official source proof is replayed for every selected UID",
+      "decision": "ACCEPT",
+      "evidence": "The helper reconstructs only the plain sourceReview request and invokes existing validateReviewedSourceReassessment for every selected row, then requires deep equality with the emitted proof. That validator binds immutable review commit/path/SHA and both reviewed source banks, rejects explicit source/content/difficulty holds, checks current REASSESSED_STUDENT_FIELDS and accepted native values. Optional renderer/proposal/parent/retained-field routes are not fabricated by this helper."
+    },
+    {
+      "contract": "Prior source acceptance requires an explicit immutable prior receipt",
+      "decision": "ACCEPT",
+      "evidence": "nativeReassessedPriorSourceRebind requires the same exact {path,sha256} priorMetadataReceipt in all immutable reviews and approval.evidenceRefs. The prior receipt must differ in ID and source blob, retain exam/source/denominator and exact selected UID inventory, and be present with the exact raw digest. Missing/unknown/changed prior links cannot grant this transition."
+    },
+    {
+      "contract": "Prior and current approval/identity values are conserved",
+      "decision": "ACCEPT",
+      "evidence": "All selected metadata/runtime approval values are compared after excluding only metadataRevision, approvalEvidence and the three fingerprint fields. Each metadataBefore and identityBefore must bind the actual prior fingerprints. Identity comparison permits only sourceFingerprint to differ. The old native approval is then replayed through the original nativeReviewReceipt, using copied old identity maps and the exact old Git question/runtime."
+    },
+    {
+      "contract": "Previous cursor cannot supply an unknown old answer/image/shared object",
+      "decision": "ACCEPT",
+      "evidence": "previous must be deep-equal to the entire actual prior Git question or entire current question. The new route is called only after existing figure/renderer/source-preservation paths have not succeeded and the legacy student comparison says the cursor changed. Existing approval/current metadata/runtime/source matching still precedes this route."
+    },
+    {
+      "contract": "Current selected renderer drift is not waived as container-only drift",
+      "decision": "ACCEPT_WITH_OFFICIAL_PAYLOAD_CONTRACT",
+      "evidence": "Every selected current payload is compared to immutable native source banks by the existing official validator. Unselected source-container differences may coexist with those same selected proofs; selected solutionImage alteration is explicitly rejected in the new regression. The contract is the official REASSESSED_STUDENT_FIELDS and accepted-value contract; this change is not a new visual QA or universal future-field audit."
+    },
+    {
+      "contract": "No writes or fresh approval are introduced",
+      "decision": "ACCEPT",
+      "evidence": "The added helper reads and validates state, builds copied identity maps for prior replay, and returns true/null or throws. auto-register only adds a guarded reuse condition and continues returning the same receipt. It does not write source/metadata/registry, synthesize final metadata or create a new mathematical judgment."
+    }
+  ],
+  "blockingFindings": [],
+  "testEvidence": {
+    "execution": "NOT_RERUN; exact frozen92 TAP reused after raw hash check",
+    "tests": 92,
+    "pass": 92,
+    "fail": 0,
+    "focusedTapSha256": "54af246dbfb75a585accf69e32ec127897fd3e8239f45d6ee76e4141731848ce",
+    "counterexamples": "Producer pre-fix classifier/container failures preserved in same manifest; their raw hashes verified."
+  },
+  "limitations": {
+    "actualLatestSource46Verification": "Owned by M3; not claimed by this code review",
+    "newFullMathOrSourceQA": 0,
+    "productionRegistrationOrPages": "NOT_RUN_BY_THIS_REVIEW",
+    "futureSchemaExtensions": "Must continue through their own official validators; no generic trust from evidence filenames"
+  },
+  "mutations": {
+    "source": 0,
+    "sharedFiles": 0,
+    "remote": 0,
+    "testsExecuted": 0,
+    "existingEvidenceOverwritten": 0
+  },
+  "nextAction": "Root combines exact accepted code bytes with separately verified current-source request fixes, then exact-head CI and real writer/Consumer. M3 current46 result remains a separate required operational proof."
+}

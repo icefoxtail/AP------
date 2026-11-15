@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "archive-exact-binding-selector-technical-acceptance-v1",
+  "verdict": "ACCEPT_SCOPED_TECHNICAL_ATOMIC_INTEGRATION",
+  "testedMain": "6a46ba70fc619d27262972594142557242810c9f",
+  "rootPublicationBase": "318be2389960aac0810039f6d9ab3dba2fedab6b",
+  "externalPr": 2168,
+  "externalHead": "918f912626afd878666d30c556de25468be3008e",
+  "m1CandidateSha256": "a5e17a7c3a57c71bf501d17e7655909c04ad82565e34234830f20678aa14ab38",
+  "localIntegratedTree": "af496393b22080385a3ab7bc5ac90257965622e0",
+  "ownedPaths": 15,
+  "technicalFindings": {
+    "exactFourExternalPathsCAS": true,
+    "originalE029ItemValuesApprovalAndEvidencePreserved": true,
+    "e029OnlyChanges": [
+      "Remove the one conflicting add-only registryChanges row",
+      "Append the exact reconciliation evidence ref to existing approval and item"
+    ],
+    "registryGuardBlocks": [
+      {
+        "block": "descriptor",
+        "sha256": "b36b95dff7f2421762ff0978d6aaf4d720efb7f291f2b41508d7326dba657986",
+        "byteIdentical": true
+      },
+      {
+        "block": "dependencyGuard",
+        "sha256": "b9c06fa1ea126d4dd2a599d6b7e9e4c03457dea5a11eefb8087cd64986325240",
+        "byteIdentical": true
+      },
+      {
+        "block": "ordering",
+        "sha256": "69922c215261e1b092d1a433e9155a002851d86befaee3852ac5e07370855821",
+        "byteIdentical": true
+      },
+      {
+        "block": "registrarApplyReplayConsumer",
+        "sha256": "3add4ffe1cd8b08a9c95c6993bcf073711999403cfe01d63030c91dd9a83bb09",
+        "byteIdentical": true
+      },
+      {
+        "block": "fixedInputValidation",
+        "byteIdenticalAfterRemovingOnlyNewAnnotationAndParameter": true,
+        "sha256": "4fd7f6de3b719bf5ae29dddd2dd3c6dca6f2e2d7618f20d5f63d88c73c92fcd4"
+      }
+    ],
+    "changed2OldSelectionMissingBindingItems": 5,
+    "retained7BindingCoverageItems": 57,
+    "retained7Missing": 0,
+    "combinedWholeQueueAmbiguousKeys": 0,
+    "officialSelector": {
+      "requests": 9,
+      "items": 62,
+      "changedM2AndE029Requests": 5,
+      "changedM2AndE029Items": 25,
+      "inheritedPreservationRequests": 4,
+      "inheritedPreservationItems": 37,
+      "inheritedBindingProviderRequests": 2,
+      "m2RetainedSelectedItems": 24,
+      "withheld11Selected": 0
+    },
+    "sourceEvidenceRequestByteChangesDuringSelection": 0,
+    "existingFocusedTests": {
+      "passed": 23,
+      "failed": 0,
+      "reusedInputModules": 5,
+      "scope": "Existing code regression fixtures; not production Consumer or new math review"
+    }
+  },
+  "evidence": {
+    "four-path-cas.json": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2168-selector-review/four-path-cas.json",
+      "sha256": "164ed8ad69c8c598feef3bdbd01ea658b0e8bd7acc4d21f55125eea983defe34"
+    },
+    "current-inbox-inputs.json": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2168-selector-review/current-inbox-inputs.json",
+      "sha256": "7afa6216a2e65baa2fd0916892fbd9433ebf5dc69b96bc4aac90b5c33dc1cd7a"
+    },
+    "test-inputs.json": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2168-selector-review/test-inputs.json",
+      "sha256": "a1b0b4b0487aca1bdefbd8efe068e9f40526461447831883531f8795bbe0721b"
+    },
+    "selector-focused.tap": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2168-selector-review/selector-focused.tap",
+      "sha256": "35cedebaff9003c29964ad34581369138f8d93c2cdf0418063dda9426e217367"
+    },
+    "combined-closure-graph.json": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2168-selector-review/combined-closure-graph.json",
+      "sha256": "2dc37a34345ac09f620f27075902ac059afdf6ed6647afdf0b5cfd7a5d6f5853"
+    },
+    "exact-selector-fixture.json": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2168-selector-review/exact-selector-fixture.json",
+      "sha256": "80f9e5a3e8736e853278bbe6bfc1189e4920e3b77d0c1fbf9309cbd6252c982e"
+    },
+    "official-selector-result.json": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2168-selector-review/official-selector-result.json",
+      "sha256": "620a5e6f26f791a388ade5ccda3b8ed5141adfd11c5a2e02016b318b2589c2bc"
+    },
+    "prior-ci-failure-excerpts.json": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2168-selector-review/prior-ci-failure-excerpts.json",
+      "sha256": "cc6bd2044af87141a19309b59ee05a10ffc7de5a8ac97edf2b7b465c1e530f17"
+    },
+    "root-base-continuity.json": {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2168-selector-review/root-base-continuity.json",
+      "sha256": "32bf4be0085fd94fb1a08439e3da067158c93db9f00557299a817f6563fa15b1"
+    }
+  },
+  "conditions": [
+    "Integrate the exact withhold11 request-data candidate atomically with selector/data reconciliation. Do not expose the selector repair before the withheld inputs are excluded.",
+    "Root must preserve external author ancestry and serial main ownership, and recheck before blobs if publication base moves.",
+    "M1 full7/57 official dry/write/replay/Consumer evidence is a separate required gate. This report does not replace it.",
+    "Remote PR CI, actual individual native receipts, target Consumer, and Pages remain required before production PASS.",
+    "If adding unchanged Wangun20 to the PR selection, record its exact parsed-input continuity and official request validation separately. The current exact selector result is 9 requests/62 items."
+  ],
+  "nonClaims": {
+    "newMathReview": false,
+    "newSemanticAuthority": false,
+    "productionNativeRegistration": "NOT_RUN_HERE",
+    "stageAFallback": "PREPARED_ONLY_UNUSED",
+    "stageBOfficialRegistration": "NOT_RUN_HERE",
+    "externalRuntimeE070ReceiptDrift": "Separate M3-owned investigation; no guard change here"
+  },
+  "writes": {
+    "source": 0,
+    "canonical": 0,
+    "otherAgentFiles": 0,
+    "remote": 0
+  }
+}

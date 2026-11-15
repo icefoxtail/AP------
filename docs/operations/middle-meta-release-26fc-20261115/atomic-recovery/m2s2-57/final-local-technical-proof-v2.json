@@ -1,0 +1,814 @@
+{
+  "schemaVersion": "m2s2-withhold11-retained57-final-local-technical-proof-v2",
+  "status": "PASS_LOCAL_TECHNICAL_NOT_ACTUAL_REGISTERED",
+  "actualDataMain": "028d28c728302b74cecc418dc242d6c8792f7a5a",
+  "codeMain": "6a46ba70fc619d27262972594142557242810c9f",
+  "candidateManifest": {
+    "path": "../candidate-manifest.json",
+    "sha256": "a5e17a7c3a57c71bf501d17e7655909c04ad82565e34234830f20678aa14ab38"
+  },
+  "operationalPatch": {
+    "path": "../withhold-eleven-request-only.patch",
+    "sha256": "565565b71c4e9d2bfb6a3ec8a77eb2987b18cee1f81b742b80ea04bc1ab576a3"
+  },
+  "rootAcceptedProviderRelocation": {
+    "path": "../binding-provider-relocation-proposal.json",
+    "sha256": "e6b7cefbf44052d2be99d79a02af6f591bd8c0fd8e3b6b504501723029ea1671"
+  },
+  "scope": {
+    "originalRequests": 10,
+    "originalSelectedUids": 68,
+    "retainedRequests": 7,
+    "retainedSelectedUids": 57,
+    "withheldSelectedUids": 11,
+    "originalBindingProposals": 23,
+    "retainedBindingProposals": 18,
+    "removedUnusedBindingProposals": 5,
+    "relocatedBindingProposals": 1
+  },
+  "operationalChangedPaths": 11,
+  "sourceScope": {
+    "exactWholeSources": 7,
+    "sourceQuestions": 168,
+    "targetUids": 57,
+    "excludedM3S1SourceReads": 0
+  },
+  "validation": {
+    "officialDryRequests": 7,
+    "officialDryUids": 57,
+    "officialLocalWriteRequests": 7,
+    "officialLocalWriteUids": 57,
+    "officialBindings": 18,
+    "officialConsumer": {
+      "changed": 57,
+      "checked": 57,
+      "passed": 57,
+      "skippedUnchanged": 0
+    },
+    "officialConsumerStatus": "PASS",
+    "officialReadOnlyReplays": 7,
+    "replayUids": 57,
+    "nativeReviewReceiptExactReuse": 57,
+    "autoMetaAlreadyRegistered": 57,
+    "newAutoMetaApply": 0
+  },
+  "approvalCountBoundary": {
+    "selected57Before": {
+      "null": 57
+    },
+    "selected57AfterLocal": {
+      "FINAL_QA": 57
+    },
+    "localNewFinalQa": 57,
+    "actualNewFinalQa": "NOT_RUN",
+    "entireM2S2Before": {
+      "null": 1579,
+      "META_PIPELINE_AUDIT": 24,
+      "FINAL_QA": 1
+    },
+    "entireM2S2AfterLocal": {
+      "null": 1522,
+      "META_PIPELINE_AUDIT": 24,
+      "FINAL_QA": 58
+    },
+    "prior395": "canonicalAssignment APPROVED in local derived proof; not395 native FINAL_QA or actual-main approvals",
+    "prior395ExactUidIntersection": 4,
+    "prior395IntersectionBeforeFinalQa": 0,
+    "nullGroupInterpretation": "metadataApprovalType absent for all these baseline null-group rows; counts do not imply pending review completion"
+  },
+  "invariants": {
+    "outsideMetadataRecordsUnchanged": 28833,
+    "outsideAffectedRuntimeRecordsUnchanged": 1445,
+    "runtimePreservation": [
+      {
+        "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+        "before": 36,
+        "after": 60,
+        "outsideSelectedUnchanged": 36
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "before": 1409,
+        "after": 1442,
+        "outsideSelectedUnchanged": 1409
+      }
+    ],
+    "identityRawUnchanged": true,
+    "existingDifficultyFieldsUnchanged": 28890,
+    "difficultyDifferences": [],
+    "preservedHyangrimQ5": true,
+    "withheld11OutsideSelectedUnchanged": true,
+    "explicit36SourceHoldsOutsideSelectedUnchanged": "COVERED_BY_GLOBAL_OUTSIDE57_RECORD_EQUALITY; existing same-version hold list not rejudged",
+    "fourSlotIndexRawUnchanged": true,
+    "rpmMasterRawUnchanged": true,
+    "sourceWrites": 0,
+    "sourceReads": [
+      "archive/exams/original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "archive/exams/original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+      "archive/exams/original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "archive/exams/original/middle/m2/2final/23_금당중_2학기_기말_중2_기출.js",
+      "archive/exams/original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
+      "archive/exams/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+      "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js"
+    ],
+    "excludedM3S1SourceReads": 0,
+    "changedLocalPaths": [
+      "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+      "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+      "archive/data/meta-foundation/canonical/registry_index.json",
+      "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E020.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E032.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E053.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E061.json",
+      "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "archive/data/meta-foundation/runtime/middle2-v1.json",
+      "archive/data/question_metadata.json"
+    ]
+  },
+  "readOnlyVerificationMutations": 0,
+  "fiveSemesterBaseline": {
+    "path": "../bounded57-validation/actual028-five-semester-approval-type-scopes.json",
+    "sha256": "8d9b4f95ce7af9101352a71358725789380b268fb41f3de0a0aa744b8e6b8516",
+    "measurement": "COUNTS_ONLY_METADATA_APPROVAL_TYPE; NOT_CONSUMER_APPROVAL_OR_NEW_QA"
+  },
+  "v1Qualification": {
+    "status": "SUPERSEDED_FOR_FINAL_TECHNICAL_ACCEPTANCE",
+    "reason": "v1 omitted the existing MIDDLE_GEOMETRY runtime before registering33 of57; v2 restores exact actual028 state for both affected packs before any apply. v1 output is preserved and superseded for final technical acceptance.",
+    "originalFilesOverwritten": false,
+    "v1Consumer57StillExactSame": true
+  },
+  "artifacts": [
+    {
+      "path": "official-registration57.json",
+      "sha256": "9c4caa22b0e73e97b182a7d76d7da0084f0984567aa8a053f7dc1c44999b4e1f",
+      "bytes": 31339
+    },
+    {
+      "path": "official-consumer57.json",
+      "sha256": "263f0dfa9147b75512fb85ddcf921ab88f53bc622a48f8c22c231025e4b43dc2",
+      "bytes": 3133
+    },
+    {
+      "path": "official-consumer57-summary.md",
+      "sha256": "30ed1984f0d5977a33f989fde09ee46a03e717250a74cad71b3b4831d3b995e2",
+      "bytes": 931
+    },
+    {
+      "path": "official-replay57.json",
+      "sha256": "f35d2187b97dad838d017bd3b43842d7a94564cccf84be34e29a3b2e49d137d1",
+      "bytes": 5835
+    },
+    {
+      "path": "native-receipt-reuse57.json",
+      "sha256": "c7f57bdb24769ddebe0c806fa5e1c96b3da93f88297ff6d7d925479d17f5ff5a",
+      "bytes": 51611
+    },
+    {
+      "path": "actual028-typed-approval-baseline.json",
+      "sha256": "c476bf711572095e0c50f5df05b9b839cc028c2fc453f2111dba6b35d1c41097",
+      "bytes": 554274
+    },
+    {
+      "path": "pre-apply-baseline-restoration.json",
+      "sha256": "3d76017873cccdb2a20553fe7e0f377ce62723df19f59d1ce5716b978ac90be8",
+      "bytes": 4288
+    },
+    {
+      "path": "scoped-db-proof.json",
+      "sha256": "7ca96441348535436cbcbbd49ef7da0d244c3c3c8b5dc42ce29e9f71e62c2867",
+      "bytes": 847
+    },
+    {
+      "path": "official-catalog-build.json",
+      "sha256": "cdd34b3c5c5cfd80fc52bd4b3679f71b870815078f5b9318a924b09d2f2170b1",
+      "bytes": 444
+    },
+    {
+      "path": "official-catalog-build.log",
+      "sha256": "b66bc5ab293368495a46450ef786ba7e64edce1ae282b1206c5abf40322e416d",
+      "bytes": 880
+    },
+    {
+      "path": "consumer-proof-input-discovery-v2.json",
+      "sha256": "bab7595f7c22a84d42dfa09bcfba423a39a2cb9bdbe7a5109b5cae3b1393b6fc",
+      "bytes": 5438
+    },
+    {
+      "path": "consumer-proof-restoration-v2.json",
+      "sha256": "cb35739a129e00d915239b7897803d7280c3f2bfbb564e8b22496d2c04f2bd02",
+      "bytes": 13982
+    },
+    {
+      "path": "consumer-required-restoration.json",
+      "sha256": "1a3074c4f69644f0099cc76e9b6186f0b605d6dd7fcd8a21da103b77b2b57fb5",
+      "bytes": 4626
+    },
+    {
+      "path": "consumer-proof-restoration.json",
+      "sha256": "086faf712120af6b38ffabb2d513ff88f09d7a8bfc90eea2fdcab78da00fa30d",
+      "bytes": 25550
+    },
+    {
+      "path": "consumer-extra-dependency-restoration.json",
+      "sha256": "eca59f50d03d30b4f5392bec38706c1f9771cd635d4f623170168d35eedb9d60",
+      "bytes": 2363
+    },
+    {
+      "path": "code-current-diff-paths.json",
+      "sha256": "ef5a753511ac4fa8e9a084941aaf887f9e78612f3904b6d8f4dd9edc837a40d2",
+      "bytes": 28040
+    },
+    {
+      "path": "remote-inputs-readback.json",
+      "sha256": "a388357f35a267ae66aed5e5029849ef001b8f60147a582bff2f29741044376a",
+      "bytes": 7393
+    },
+    {
+      "path": "run-registration57.mjs",
+      "sha256": "dbcf4e28c13d791aa26ff6ad9c7065a75ee9ee8f9b9a58bc8f98c6c83ff942a1",
+      "bytes": 12155
+    },
+    {
+      "path": "verify-consumer57.mjs",
+      "sha256": "827fe9f4ec6c22f506c299cdb26142ce0c9f92ea42bc5ce548351c9cd1c21665",
+      "bytes": 3493
+    },
+    {
+      "path": "verify-native-reuse57.mjs",
+      "sha256": "a05f2415d5c7f7e277a5b8998a396290454e4e2e64c7235638aaea507bcd17e4",
+      "bytes": 6759
+    }
+  ],
+  "localReceiptFiles": [
+    {
+      "requestId": "m2s2-binding68-20261115-E001",
+      "questionCount": 13,
+      "actualMainReceiptStatus": "NOT_REGISTERED_IN_BASE_028",
+      "localReceiptPath": "frozen-local-receipts/m2s2-binding68-20261115-E001.json",
+      "productionReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "sha256": "ac04c94c1530fe5cf29388a862bf7d740b23be0b4ba2a171cec679b2933bd443"
+    },
+    {
+      "requestId": "m2s2-binding68-20261115-E002",
+      "questionCount": 10,
+      "actualMainReceiptStatus": "NOT_REGISTERED_IN_BASE_028",
+      "localReceiptPath": "frozen-local-receipts/m2s2-binding68-20261115-E002.json",
+      "productionReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "sha256": "e6a4ee9033a67c7f58239f390c0cb37fb6451f15e2d99d7338748baab3ad3ffe"
+    },
+    {
+      "requestId": "m2s2-binding68-20261115-E004",
+      "questionCount": 10,
+      "actualMainReceiptStatus": "NOT_REGISTERED_IN_BASE_028",
+      "localReceiptPath": "frozen-local-receipts/m2s2-binding68-20261115-E004.json",
+      "productionReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "sha256": "e43f9e990f208b15da7f3b870f8b825cce0eef39811a218270bbd8a831a9fa22"
+    },
+    {
+      "requestId": "m2s2-binding68-20261115-E020",
+      "questionCount": 6,
+      "actualMainReceiptStatus": "NOT_REGISTERED_IN_BASE_028",
+      "localReceiptPath": "frozen-local-receipts/m2s2-binding68-20261115-E020.json",
+      "productionReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E020.json",
+      "sha256": "a337887a6a5ad5a46a2fc0de4db8737008254e1ee78ebd4a320788de20700084"
+    },
+    {
+      "requestId": "m2s2-binding68-20261115-E032",
+      "questionCount": 7,
+      "actualMainReceiptStatus": "NOT_REGISTERED_IN_BASE_028",
+      "localReceiptPath": "frozen-local-receipts/m2s2-binding68-20261115-E032.json",
+      "productionReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E032.json",
+      "sha256": "b7c1cb3a8423ef55d764cc7c0c041a5fa01937bd71683d06bca25766acc90ff0"
+    },
+    {
+      "requestId": "m2s2-binding68-20261115-E053",
+      "questionCount": 8,
+      "actualMainReceiptStatus": "NOT_REGISTERED_IN_BASE_028",
+      "localReceiptPath": "frozen-local-receipts/m2s2-binding68-20261115-E053.json",
+      "productionReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E053.json",
+      "sha256": "845ef288852aedde4e6c0acc268e258216d6c8c67433328b53cd85a7031fbdc8"
+    },
+    {
+      "requestId": "m2s2-binding68-20261115-E061",
+      "questionCount": 3,
+      "actualMainReceiptStatus": "NOT_REGISTERED_IN_BASE_028",
+      "localReceiptPath": "frozen-local-receipts/m2s2-binding68-20261115-E061.json",
+      "productionReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E061.json",
+      "sha256": "8d600554f723562b0c835932768b7b35b6aab6db24212b4c148cd246955d584c"
+    }
+  ],
+  "targetScope": [
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_baa7c0df8ec5671debf3399171bea57aea5afc6ee16457af7f19321464f7f477",
+      "sourceOrdinal": 1,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_7b2a8059a0e6423fb17922b894356160ab8fc355c33b37cda1af906f293377ce",
+      "sourceOrdinal": 2,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_df59639eb25fce171fc278dab6e3b9c4d0164911dfdbe09cf1a720f5d3976a0f",
+      "sourceOrdinal": 5,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_ba41c772a216e5829d9405876838b03b7580fbd10dde514bed1dc7c0e154952c",
+      "sourceOrdinal": 6,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_b8ae9b1bfdf21005d513257355ae6055d4f2ee64093f0ad07ab5eab6e8395f54",
+      "sourceOrdinal": 7,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_e7c98995a1e9b0978afac9b256a22b1c3a15c0cae2676cab82fc1d55b7acdfda",
+      "sourceOrdinal": 10,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_e16f274a3d8274b01084d8e10a75172b4bc04fe8fd85dab315f05d44fa978702",
+      "sourceOrdinal": 11,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_481a5b1c4883ddaeb3ca29073c6d4a7722276f76578ff5f0ec0590875a1389a4",
+      "sourceOrdinal": 12,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_524a8a5b0f1a43d848c9300639744b2580195e9e53c3d68df06b9e07d71a9d34",
+      "sourceOrdinal": 17,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_dc08c153ba21f5e159892074886112a76e86abada5e7b2d97dc067998ab13fc3",
+      "sourceOrdinal": 18,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_ceb8b9def9b97d91e4c9cf075f2c4a058436803a972e0de7824c1cda6667dbbf",
+      "sourceOrdinal": 19,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_6f25a0dbdc503c31ffeb4eda9fa9b154ce42e66033122acce9ca9489594282b8",
+      "sourceOrdinal": 20,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E001",
+      "questionUid": "qid_v1_901eef0e0ae2457038afcb10af0d3480b099587a4c0888bdedcf675f67cc41cf",
+      "sourceOrdinal": 23,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E002",
+      "questionUid": "qid_v1_9f7461a54c31a540a755649e583dcd0a7d7713697bfbce556293067e850e5117",
+      "sourceOrdinal": 1,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E002",
+      "questionUid": "qid_v1_26f488702195a2c595d11737ccaf965606e24a97cfaa3a7ba54f4ad4e68642d2",
+      "sourceOrdinal": 2,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E002",
+      "questionUid": "qid_v1_25fe097323a6a80cf63624ebbb0a10a4b617882031ac800b18e45ec6ac0a0b31",
+      "sourceOrdinal": 3,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E002",
+      "questionUid": "qid_v1_c32da9ac829d6a224ef8fe613a3170fba405e9d0d57379e6b9cb4e6c141593bf",
+      "sourceOrdinal": 5,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E002",
+      "questionUid": "qid_v1_b7d86c9229307a12886ae00caddf69fd9f897de7650b1e3fba9ff6c7053325d8",
+      "sourceOrdinal": 6,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E002",
+      "questionUid": "qid_v1_b2e1c466a4ef4a095ac430049d562557e10726eed8b951a69cfb001cd98dac7b",
+      "sourceOrdinal": 7,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E002",
+      "questionUid": "qid_v1_4d185df459ee544c6105fa2386439930974029bcbb676b8b0561db476e451cde",
+      "sourceOrdinal": 10,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E002",
+      "questionUid": "qid_v1_17c60ebbb6430ede6d016e728e2aaa738c7a3ee0aa7ae39e24ffc4f28a63c1c6",
+      "sourceOrdinal": 19,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E002",
+      "questionUid": "qid_v1_a623d41ef207a4d3e099e1b600d7cfcaafd977bd152febe1f92655f7c701a60b",
+      "sourceOrdinal": 20,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E002",
+      "questionUid": "qid_v1_3583e434442f9a996975a0a188ce969409c6fd8804bba6c0768378b443975a0e",
+      "sourceOrdinal": 21,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E002.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E004",
+      "questionUid": "qid_v1_1a8ec1b864d1131556f5fa2f894824ed1dae0cab164c5caeeca76f0eadfc39c2",
+      "sourceOrdinal": 11,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E004",
+      "questionUid": "qid_v1_b7af638d46df7d67148898afcbc38f2e027bf8b553feeb77470402199dce2b65",
+      "sourceOrdinal": 14,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E004",
+      "questionUid": "qid_v1_1f32a49f975c1531a9614a2d653c0073572cf10c42f19d74ad0483a5ae25d74b",
+      "sourceOrdinal": 15,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E004",
+      "questionUid": "qid_v1_2f0ba312c52ca50142f3cc2ee229e025746fb19d87bc5da94ee3a82401b1cdb6",
+      "sourceOrdinal": 16,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E004",
+      "questionUid": "qid_v1_9eeb5a417b5cdd693660a54075fec02f0fb81af070b2fe2220a10ba2086cedad",
+      "sourceOrdinal": 17,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E004",
+      "questionUid": "qid_v1_ef57fb008902f90036c78058ab67d85be4d5ba1ee70cf47afd29cdf2d6db76a9",
+      "sourceOrdinal": 18,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E004",
+      "questionUid": "qid_v1_f86984ab80fc796fc7dd004b6df0542033939352ff8702099ff7deaddd634a2c",
+      "sourceOrdinal": 20,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E004",
+      "questionUid": "qid_v1_a30434db189c2256d5a5cea2f8f358b1743ce68f2d33ac5059106c33b3c2d0fa",
+      "sourceOrdinal": 21,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E004",
+      "questionUid": "qid_v1_f356d5785592a178a18e294edf78033fbe4b3bba0124ad8a4846b8d44d909788",
+      "sourceOrdinal": 22,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E004",
+      "questionUid": "qid_v1_de1eccfef8c0d1a7fc2cd0e39f09d74b88203cf571fc0708d83c2067ffe8a132",
+      "sourceOrdinal": 24,
+      "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E004.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E020",
+      "questionUid": "qid_v1_1ea93c8f6e39dec082dec838c07cd44187b0fe2e169005b68a65e6d29fba82a8",
+      "sourceOrdinal": 2,
+      "sourceArchiveFile": "original/middle/m2/2final/23_금당중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E020.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E020",
+      "questionUid": "qid_v1_77dcd4204b00bb39c6f468ed99adef321ba119dcd686cc0af797f758391d6030",
+      "sourceOrdinal": 3,
+      "sourceArchiveFile": "original/middle/m2/2final/23_금당중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E020.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E020",
+      "questionUid": "qid_v1_4031c846e87d88b28687218a6863b73a2e8e061ef3bdf9c123e8d7f9e8308762",
+      "sourceOrdinal": 4,
+      "sourceArchiveFile": "original/middle/m2/2final/23_금당중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E020.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E020",
+      "questionUid": "qid_v1_5068a742bcc99fb3c7a7aa746d0182bd19789f8afce1a5abf3e8c1e465d61d2d",
+      "sourceOrdinal": 7,
+      "sourceArchiveFile": "original/middle/m2/2final/23_금당중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E020.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E020",
+      "questionUid": "qid_v1_2e14f66890fc529b29c3a59a2fb00dcac5c8dfcc1fe0616cd22221853cc056b3",
+      "sourceOrdinal": 10,
+      "sourceArchiveFile": "original/middle/m2/2final/23_금당중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E020.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E020",
+      "questionUid": "qid_v1_03dd1ce799192dac3bee69105a0142916d0cf63c2f60761a0aa0990781837034",
+      "sourceOrdinal": 23,
+      "sourceArchiveFile": "original/middle/m2/2final/23_금당중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E020.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E032",
+      "questionUid": "qid_v1_f288a19bf33c38b84c2c2436478bfba2bafd4b275fa60568af686eeab5732363",
+      "sourceOrdinal": 2,
+      "sourceArchiveFile": "original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E032.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E032",
+      "questionUid": "qid_v1_9172cf1ec90c0cc3af91cab63dcfa4b68fa61065882343e82812a4d86d780f85",
+      "sourceOrdinal": 3,
+      "sourceArchiveFile": "original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E032.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E032",
+      "questionUid": "qid_v1_bed808c0cecc90e30621de4a5b961290d1ce0b95e943d07155962ed483cc39c8",
+      "sourceOrdinal": 4,
+      "sourceArchiveFile": "original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E032.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E032",
+      "questionUid": "qid_v1_df579118439a5d43dc8408f65e435810dd1ef11b29053720e135ca1120ec50f0",
+      "sourceOrdinal": 5,
+      "sourceArchiveFile": "original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E032.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E032",
+      "questionUid": "qid_v1_45204c832c0632b1cad11ec4c9e766abfddf38680628e9af0beb70538e68ece7",
+      "sourceOrdinal": 6,
+      "sourceArchiveFile": "original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E032.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E032",
+      "questionUid": "qid_v1_9ec4baa4cded9d949b8ca60ced0a095a03b5d438f48f1a57fde1cc7dfeb956d6",
+      "sourceOrdinal": 7,
+      "sourceArchiveFile": "original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E032.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E032",
+      "questionUid": "qid_v1_7a44e50d6c7fb8fddcd4b1791abe9bd4987c5e1dc4d6e6aafca725c7c62a7f6a",
+      "sourceOrdinal": 9,
+      "sourceArchiveFile": "original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E032.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_ceefff868164d9db3b3d09ba9a72988b9aaaef34bd8f110a1be626c12157c69e",
+      "sourceOrdinal": 3,
+      "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E053.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_f96313b59175ab99118b4dbb4bf054cfabf5e231d8c2a5ea85d56fa4a58977c5",
+      "sourceOrdinal": 5,
+      "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E053.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_d7122eb981684caf430c54bdcb1d6bd77650f24babcb2a864fa24c4b2d4ff740",
+      "sourceOrdinal": 6,
+      "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E053.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_4c5e1baa8d1c9a3719e9850e78fb57d0d8df2a76ee5e32cb063499bfbeb782ae",
+      "sourceOrdinal": 7,
+      "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E053.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_4590e2a67002547c3215c175c640a22ae1b95a38d3f2d9dfe78cbfc10ece3729",
+      "sourceOrdinal": 8,
+      "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E053.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_0e97fe2ef575b0afa7abd8f8b860e21db58d16604927fe2a7b7ed52def5eb3b2",
+      "sourceOrdinal": 9,
+      "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E053.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_afdc347ed91092a9bb0b9f04b84b6431e8286ae1a330dc9d8143576f52226577",
+      "sourceOrdinal": 10,
+      "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E053.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E053",
+      "questionUid": "qid_v1_e6dd0dc9bd4a656b94076000c4a31ac7e583ed0a7d2b87e59163292f9e3ef8bb",
+      "sourceOrdinal": 23,
+      "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E053.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E061",
+      "questionUid": "qid_v1_92fd3e1e5938e2f0ebe45473c23476a0b2a66b28a37d0d03e20c50786d769367",
+      "sourceOrdinal": 4,
+      "sourceArchiveFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E061.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E061",
+      "questionUid": "qid_v1_fd76918f3911c90d3736a3a59078702e752b1ca62a3506f0a81fb5a82357d7c1",
+      "sourceOrdinal": 6,
+      "sourceArchiveFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E061.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    },
+    {
+      "examId": "E061",
+      "questionUid": "qid_v1_7a61006ceeef0168041b3718ebb3eb910d1eb0fcee0cabfeb295e7815e23b80c",
+      "sourceOrdinal": 8,
+      "sourceArchiveFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+      "expectedNativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E061.json",
+      "plannerStatus": "ALREADY_REGISTERED"
+    }
+  ],
+  "codeProof": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "gitBlobSha1": "dd3258156ee336fe5d654fff4e88d5deb23b010b",
+      "sha256": "d356c200abb98fae827428831ca123df204cee7934781dfd2e27bd99478780cb"
+    },
+    {
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "gitBlobSha1": "c78d8d777b92c759d31b3ac481bd23483721b5ef",
+      "sha256": "147f525199dc03f7b7c08cbdc8cd7dae1abcd2c2f9b3d8a09d67119d5380503a"
+    },
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "gitBlobSha1": "6fc2e227beb9519df4fbfd2db96b62a9d99021fc",
+      "sha256": "def4d0dc47631da6a0aed19c80bef181141c133d85e5258222cedd24a2425f84"
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "sha256": "66748e6b1ca621a0b11262ba0d9f069153ae06ffbcaf98927cbd506e2a27da13",
+      "gitBlobSha1": "b643f4c85ca20b5940291758d5233d5e9f727016"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+      "sha256": "cec4028328e02731868ddaa75990304a11eefec3995598079f4a06a8222e8ee3",
+      "gitBlobSha1": "6a8b16d9d97a63cb18997b1572236cee29d1bc86"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+      "sha256": "3566a0341a7c48b0fa4b6c8d97fe2a2f813964e513591c7693581d48cec8138b",
+      "gitBlobSha1": "0a8c0a5ce273f26694feb050bdabe155435ea4c6"
+    },
+    {
+      "path": "archive/tools/meta-foundation/active-registry.mjs",
+      "sha256": "fb92f3db9c869183cf04415f9a1d678c60ba52a7ad1ec995beb57e77bdf402ed",
+      "gitBlobSha1": "93ed7214a5e4dc0b0cdd9853d388bca26e64a172"
+    }
+  ],
+  "publication": {
+    "remoteWrites": 0,
+    "sharedFileWrites": 0,
+    "sourceEdits": 0,
+    "newMathReview": false,
+    "prCi": "ROOT_PENDING",
+    "mainMerge": "ROOT_PENDING",
+    "actualRegistration": "NOT_RUN",
+    "pages": "NOT_RUN",
+    "nextAction": "ROOT integrates exact11 operational paths atomically with accepted2168 selector/provider repair; after main writer succeeds verify actual7 receipts +57 target Consumer/native reuse and metadata type counts. Do not publish local fixture canonical/metadata/runtime outputs."
+  }
+}

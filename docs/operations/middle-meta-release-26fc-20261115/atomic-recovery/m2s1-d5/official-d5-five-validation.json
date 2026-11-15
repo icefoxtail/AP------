@@ -1,0 +1,814 @@
+{
+  "schemaVersion": "m2s1-five-d5-retarget-official-local-validation-v1",
+  "status": "PASS_LOCAL_OFFICIAL_REGISTRATION_PROJECTION_NOT_YET_CONSUMER",
+  "currentMain": "846581e0c741e2ee031674c117af76be06d7f398",
+  "baselineMetadataBlob": "6c461e22e37e532c5c226be6a1a4b3e1182a4d6c",
+  "baselineMetadataSha256": "0dbbd6244fdd5b48fbb5920880e7f66ddba6ee23fdc00fb54022b263c2532a6f",
+  "afterLocalMetadataSha256": "07c9f2510379c0a25be595ca6a15006bf87ba4090c20b03bf2bda9df41b4407e",
+  "requestCount": 4,
+  "uidCount": 5,
+  "negative": [
+    {
+      "requestId": "m2s1-five-narrow-20261115-E006",
+      "status": "EXPECTED_REJECTION",
+      "reason": "DIFFICULTY5: source Git blob drift (expected 2a96764bcb5540c3804dddc429f6bfe4937e2549, actual 402e1381763ee29253ce609f92e8d43d07f95758)"
+    },
+    {
+      "requestId": "m2s1-followup-20261115-E050",
+      "status": "EXPECTED_REJECTION",
+      "reason": "DIFFICULTY5: source Git blob drift (expected 7c93afdb305606fd2260a0c919088a18a988b5ee, actual 7a91302f47df3aa5d2bb085f36ca1cfdece3b7d7)"
+    },
+    {
+      "requestId": "m2s1-followup-20261115-E061",
+      "status": "EXPECTED_REJECTION",
+      "reason": "DIFFICULTY5: source Git blob drift (expected 94a6036abff5dd49c68f1dda04c4370b43dfc058, actual a120745e2bbc0fa17d17aff533bb9d7ffda1b82b)"
+    },
+    {
+      "requestId": "m2s1-remaining-20261115-E006",
+      "status": "EXPECTED_REJECTION",
+      "reason": "DIFFICULTY5: source Git blob drift (expected 2a96764bcb5540c3804dddc429f6bfe4937e2549, actual 402e1381763ee29253ce609f92e8d43d07f95758)"
+    },
+    {
+      "requestId": "m2s1-followup-20261115-E050",
+      "case": "UNREVIEWED_CURRENT_Q7_ONLY_HEADER_RETARGET",
+      "status": "EXPECTED_REJECTION",
+      "reason": "DIFFICULTY5: reviewed correction source fingerprint mismatch #7"
+    }
+  ],
+  "results": [
+    {
+      "path": ".archive-meta-register/inbox/m2s1-five-narrow-20261115-E006.json",
+      "requestId": "m2s1-five-narrow-20261115-E006",
+      "requestSha256": "be386bdd503d63e6bb66eabcfb578a93af7f75b2ca77508ecde41e0d725350e9",
+      "dry": {
+        "status": "PASS",
+        "mode": "dry-run-reviewed-correction",
+        "requestId": "m2s1-five-narrow-20261115-E006",
+        "driveFileId": null,
+        "driveSha256": null,
+        "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "402e1381763ee29253ce609f92e8d43d07f95758",
+        "items": [
+          {
+            "ordinal": 18,
+            "questionUid": "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f",
+            "decision": "APPLY",
+            "before": {
+              "difficultyBucket": 3,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "4f63d681224e4ea40d19f9cd449b851b7b3eaaad86694ab7d5bf999079fcb072",
+              "contentFingerprint": "50c2ba5b98965bd2092396fed0f2ffff26b0c7ced16783135371c56ad2eb85a1"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B23",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "4f63d681224e4ea40d19f9cd449b851b7b3eaaad86694ab7d5bf999079fcb072",
+              "contentFingerprint": "50c2ba5b98965bd2092396fed0f2ffff26b0c7ced16783135371c56ad2eb85a1"
+            },
+            "reason": "한 줄 풀이가 아닌 두 단계의 연산과 부등호 변화를 각각 확인한다.\nCurrent narrow source repair: Restore only the two step markers referenced by the stem, at the first and last transformations already described by the existing solution. Include both subtractions in the first-step explanation. Preserve all equations, choices, answer, source reviewStatus/manual_review, numeric difficulty and historical level. This is a current display repair, not a claim to recover original printed marker coordinates. Existing accepted numeric difficulty and confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created.",
+            "consumerBinding": "stale"
+          }
+        ],
+        "summary": {
+          "total": 1,
+          "APPLY": 1,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 2,
+          "written": false,
+          "staleSourceBinding": 1
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      },
+      "applied": {
+        "status": "PASS",
+        "mode": "write-reviewed-correction",
+        "requestId": "m2s1-five-narrow-20261115-E006",
+        "driveFileId": null,
+        "driveSha256": null,
+        "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "402e1381763ee29253ce609f92e8d43d07f95758",
+        "items": [
+          {
+            "ordinal": 18,
+            "questionUid": "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f",
+            "decision": "APPLY",
+            "before": {
+              "difficultyBucket": 3,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "4f63d681224e4ea40d19f9cd449b851b7b3eaaad86694ab7d5bf999079fcb072",
+              "contentFingerprint": "50c2ba5b98965bd2092396fed0f2ffff26b0c7ced16783135371c56ad2eb85a1"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B23",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "4f63d681224e4ea40d19f9cd449b851b7b3eaaad86694ab7d5bf999079fcb072",
+              "contentFingerprint": "50c2ba5b98965bd2092396fed0f2ffff26b0c7ced16783135371c56ad2eb85a1"
+            },
+            "reason": "한 줄 풀이가 아닌 두 단계의 연산과 부등호 변화를 각각 확인한다.\nCurrent narrow source repair: Restore only the two step markers referenced by the stem, at the first and last transformations already described by the existing solution. Include both subtractions in the first-step explanation. Preserve all equations, choices, answer, source reviewStatus/manual_review, numeric difficulty and historical level. This is a current display repair, not a claim to recover original printed marker coordinates. Existing accepted numeric difficulty and confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created.",
+            "consumerBinding": "stale"
+          }
+        ],
+        "summary": {
+          "total": 1,
+          "APPLY": 1,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 2,
+          "written": true,
+          "staleSourceBinding": 1
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      },
+      "verified": {
+        "status": "PASS",
+        "mode": "verify-reviewed-correction",
+        "requestId": "m2s1-five-narrow-20261115-E006",
+        "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "402e1381763ee29253ce609f92e8d43d07f95758",
+        "items": [
+          {
+            "ordinal": 18,
+            "questionUid": "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f",
+            "decision": "VERIFIED",
+            "before": {
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "B23",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "4f63d681224e4ea40d19f9cd449b851b7b3eaaad86694ab7d5bf999079fcb072",
+              "contentFingerprint": "50c2ba5b98965bd2092396fed0f2ffff26b0c7ced16783135371c56ad2eb85a1"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B23",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "4f63d681224e4ea40d19f9cd449b851b7b3eaaad86694ab7d5bf999079fcb072",
+              "contentFingerprint": "50c2ba5b98965bd2092396fed0f2ffff26b0c7ced16783135371c56ad2eb85a1"
+            },
+            "reason": "한 줄 풀이가 아닌 두 단계의 연산과 부등호 변화를 각각 확인한다.\nCurrent narrow source repair: Restore only the two step markers referenced by the stem, at the first and last transformations already described by the existing solution. Include both subtractions in the first-step explanation. Preserve all equations, choices, answer, source reviewStatus/manual_review, numeric difficulty and historical level. This is a current display repair, not a claim to recover original printed marker coordinates. Existing accepted numeric difficulty and confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created.",
+            "consumerBinding": "stale"
+          }
+        ],
+        "summary": {
+          "total": 1,
+          "APPLY": 0,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 1,
+          "changedFields": 0,
+          "written": false,
+          "consumerBinding": {
+            "stale": 1
+          },
+          "staleSourceBinding": 1
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      }
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-followup-20261115-E050.json",
+      "requestId": "m2s1-followup-20261115-E050",
+      "requestSha256": "f2b1cb566269859fdf14a3eb9b89b5374b0d67d01ff9460aa43e003756f02770",
+      "dry": {
+        "status": "PASS",
+        "mode": "dry-run-reviewed-correction",
+        "requestId": "m2s1-followup-20261115-E050",
+        "driveFileId": null,
+        "driveSha256": null,
+        "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "7a91302f47df3aa5d2bb085f36ca1cfdece3b7d7",
+        "items": [
+          {
+            "ordinal": 11,
+            "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+            "decision": "APPLY",
+            "before": {
+              "difficultyBucket": 2,
+              "difficultyConfidence": "high",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "297bfe405ea27f6d20086374bb5881c018d667de6df009a033f4a2b23ac678e7",
+              "contentFingerprint": "074d285bd8d7df37b8f9938371b47c767d3deddd0dcfd0d8fbf8b74616abff7e"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B23",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "297bfe405ea27f6d20086374bb5881c018d667de6df009a033f4a2b23ac678e7",
+              "contentFingerprint": "074d285bd8d7df37b8f9938371b47c767d3deddd0dcfd0d8fbf8b74616abff7e"
+            },
+            "reason": "거듭제곱의 곱과 몫을 한 밑으로 정리한 뒤 지수를 같게 둔다.\n후속 범위: Use positive exponent multiplication after clearing the denominator, avoiding a high-school negative exponent step. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다.",
+            "consumerBinding": "content"
+          }
+        ],
+        "summary": {
+          "total": 1,
+          "APPLY": 1,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 2,
+          "written": false,
+          "staleSourceBinding": 0
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      },
+      "applied": {
+        "status": "PASS",
+        "mode": "write-reviewed-correction",
+        "requestId": "m2s1-followup-20261115-E050",
+        "driveFileId": null,
+        "driveSha256": null,
+        "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "7a91302f47df3aa5d2bb085f36ca1cfdece3b7d7",
+        "items": [
+          {
+            "ordinal": 11,
+            "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+            "decision": "APPLY",
+            "before": {
+              "difficultyBucket": 2,
+              "difficultyConfidence": "high",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "297bfe405ea27f6d20086374bb5881c018d667de6df009a033f4a2b23ac678e7",
+              "contentFingerprint": "074d285bd8d7df37b8f9938371b47c767d3deddd0dcfd0d8fbf8b74616abff7e"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B23",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "297bfe405ea27f6d20086374bb5881c018d667de6df009a033f4a2b23ac678e7",
+              "contentFingerprint": "074d285bd8d7df37b8f9938371b47c767d3deddd0dcfd0d8fbf8b74616abff7e"
+            },
+            "reason": "거듭제곱의 곱과 몫을 한 밑으로 정리한 뒤 지수를 같게 둔다.\n후속 범위: Use positive exponent multiplication after clearing the denominator, avoiding a high-school negative exponent step. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다.",
+            "consumerBinding": "content"
+          }
+        ],
+        "summary": {
+          "total": 1,
+          "APPLY": 1,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 2,
+          "written": true,
+          "staleSourceBinding": 0
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      },
+      "verified": {
+        "status": "PASS",
+        "mode": "verify-reviewed-correction",
+        "requestId": "m2s1-followup-20261115-E050",
+        "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "7a91302f47df3aa5d2bb085f36ca1cfdece3b7d7",
+        "items": [
+          {
+            "ordinal": 11,
+            "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+            "decision": "VERIFIED",
+            "before": {
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "B23",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "297bfe405ea27f6d20086374bb5881c018d667de6df009a033f4a2b23ac678e7",
+              "contentFingerprint": "074d285bd8d7df37b8f9938371b47c767d3deddd0dcfd0d8fbf8b74616abff7e"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B23",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "297bfe405ea27f6d20086374bb5881c018d667de6df009a033f4a2b23ac678e7",
+              "contentFingerprint": "074d285bd8d7df37b8f9938371b47c767d3deddd0dcfd0d8fbf8b74616abff7e"
+            },
+            "reason": "거듭제곱의 곱과 몫을 한 밑으로 정리한 뒤 지수를 같게 둔다.\n후속 범위: Use positive exponent multiplication after clearing the denominator, avoiding a high-school negative exponent step. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다.",
+            "consumerBinding": "content"
+          }
+        ],
+        "summary": {
+          "total": 1,
+          "APPLY": 0,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 1,
+          "changedFields": 0,
+          "written": false,
+          "consumerBinding": {
+            "content": 1
+          },
+          "staleSourceBinding": 0
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      }
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-followup-20261115-E061.json",
+      "requestId": "m2s1-followup-20261115-E061",
+      "requestSha256": "f7cc7552a4deb9299a971b3f731d7b60dfd157eb9b5aefbc7ff528e4ddef68e0",
+      "dry": {
+        "status": "PASS",
+        "mode": "dry-run-reviewed-correction",
+        "requestId": "m2s1-followup-20261115-E061",
+        "driveFileId": null,
+        "driveSha256": null,
+        "sourceArchiveFile": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "a120745e2bbc0fa17d17aff533bb9d7ffda1b82b",
+        "items": [
+          {
+            "ordinal": 9,
+            "questionUid": "qid_v1_33c7f08ded5c8fa96043e841201466361777bed299e6fdf148ce294537401f11",
+            "decision": "APPLY",
+            "before": {
+              "difficultyBucket": 1,
+              "difficultyConfidence": "high",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+              "sourceFingerprint": "6e3470a4998c54e90bb728e30b77c047d6e29b304529550d6240c9347db3a649",
+              "contentFingerprint": "d2c5d55b4927e1344f21393f708388b7d528899dc866620bbfe687ec852cd4ff"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B12",
+              "difficultyBucket": 1,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+              "sourceFingerprint": "6e3470a4998c54e90bb728e30b77c047d6e29b304529550d6240c9347db3a649",
+              "contentFingerprint": "d2c5d55b4927e1344f21393f708388b7d528899dc866620bbfe687ec852cd4ff"
+            },
+            "reason": "기존해설의 잘못된 첫보기 계수부호 판정은 직접 곱셈. 다른 보기 검증은 별도 축약이다.\n후속 범위: Supply the remaining four direct checks; the first choice remains the sole wrong calculation. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다.",
+            "consumerBinding": "content"
+          }
+        ],
+        "summary": {
+          "total": 1,
+          "APPLY": 1,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 3,
+          "written": false,
+          "staleSourceBinding": 0
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      },
+      "applied": {
+        "status": "PASS",
+        "mode": "write-reviewed-correction",
+        "requestId": "m2s1-followup-20261115-E061",
+        "driveFileId": null,
+        "driveSha256": null,
+        "sourceArchiveFile": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "a120745e2bbc0fa17d17aff533bb9d7ffda1b82b",
+        "items": [
+          {
+            "ordinal": 9,
+            "questionUid": "qid_v1_33c7f08ded5c8fa96043e841201466361777bed299e6fdf148ce294537401f11",
+            "decision": "APPLY",
+            "before": {
+              "difficultyBucket": 1,
+              "difficultyConfidence": "high",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+              "sourceFingerprint": "6e3470a4998c54e90bb728e30b77c047d6e29b304529550d6240c9347db3a649",
+              "contentFingerprint": "d2c5d55b4927e1344f21393f708388b7d528899dc866620bbfe687ec852cd4ff"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B12",
+              "difficultyBucket": 1,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+              "sourceFingerprint": "6e3470a4998c54e90bb728e30b77c047d6e29b304529550d6240c9347db3a649",
+              "contentFingerprint": "d2c5d55b4927e1344f21393f708388b7d528899dc866620bbfe687ec852cd4ff"
+            },
+            "reason": "기존해설의 잘못된 첫보기 계수부호 판정은 직접 곱셈. 다른 보기 검증은 별도 축약이다.\n후속 범위: Supply the remaining four direct checks; the first choice remains the sole wrong calculation. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다.",
+            "consumerBinding": "content"
+          }
+        ],
+        "summary": {
+          "total": 1,
+          "APPLY": 1,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 3,
+          "written": true,
+          "staleSourceBinding": 0
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      },
+      "verified": {
+        "status": "PASS",
+        "mode": "verify-reviewed-correction",
+        "requestId": "m2s1-followup-20261115-E061",
+        "sourceArchiveFile": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "a120745e2bbc0fa17d17aff533bb9d7ffda1b82b",
+        "items": [
+          {
+            "ordinal": 9,
+            "questionUid": "qid_v1_33c7f08ded5c8fa96043e841201466361777bed299e6fdf148ce294537401f11",
+            "decision": "VERIFIED",
+            "before": {
+              "difficultyBucket": 1,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "B12",
+              "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+              "sourceFingerprint": "6e3470a4998c54e90bb728e30b77c047d6e29b304529550d6240c9347db3a649",
+              "contentFingerprint": "d2c5d55b4927e1344f21393f708388b7d528899dc866620bbfe687ec852cd4ff"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B12",
+              "difficultyBucket": 1,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+              "sourceFingerprint": "6e3470a4998c54e90bb728e30b77c047d6e29b304529550d6240c9347db3a649",
+              "contentFingerprint": "d2c5d55b4927e1344f21393f708388b7d528899dc866620bbfe687ec852cd4ff"
+            },
+            "reason": "기존해설의 잘못된 첫보기 계수부호 판정은 직접 곱셈. 다른 보기 검증은 별도 축약이다.\n후속 범위: Supply the remaining four direct checks; the first choice remains the sole wrong calculation. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다.",
+            "consumerBinding": "content"
+          }
+        ],
+        "summary": {
+          "total": 1,
+          "APPLY": 0,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 1,
+          "changedFields": 0,
+          "written": false,
+          "consumerBinding": {
+            "content": 1
+          },
+          "staleSourceBinding": 0
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      }
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-remaining-20261115-E006.json",
+      "requestId": "m2s1-remaining-20261115-E006",
+      "requestSha256": "ca24ac91e5c15f5eb53c591331741ffb98265d5d8788d2d20b3b86d925e7cbc1",
+      "dry": {
+        "status": "PASS",
+        "mode": "dry-run-reviewed-correction",
+        "requestId": "m2s1-remaining-20261115-E006",
+        "driveFileId": null,
+        "driveSha256": null,
+        "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "402e1381763ee29253ce609f92e8d43d07f95758",
+        "items": [
+          {
+            "ordinal": 4,
+            "questionUid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+            "decision": "APPLY",
+            "before": {
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "577e3ee147becb1a6acbfc7822d0faa5e333ab3f0954cadadc967f9f271ae96c",
+              "contentFingerprint": "a05a2be5466687d36bb6b6922e30841f14b6e68e5804a796dbca4e67b7058ac4"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B12",
+              "difficultyBucket": 1,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "577e3ee147becb1a6acbfc7822d0faa5e333ab3f0954cadadc967f9f271ae96c",
+              "contentFingerprint": "a05a2be5466687d36bb6b6922e30841f14b6e68e5804a796dbca4e67b7058ac4"
+            },
+            "reason": "비순환 한 자리와 순환 한 자리를 구분하는 직접 적용이다.\nCurrent bounded closure: The current stem already requires a concise repeating-block representation; the existing second choice is its minimal form. Equal numeric values in nonminimal forms do not invalidate this prompt. Existing numeric difficulty/confidence are preserved; no advanced metadata or REVIEW2 approval is created.",
+            "consumerBinding": "exact"
+          },
+          {
+            "ordinal": 7,
+            "questionUid": "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c",
+            "decision": "APPLY",
+            "before": {
+              "difficultyBucket": 3,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "0bd46a7b32d4aad3cd530aee15f8b9027e740230b128a145604ed636fd05dfee",
+              "contentFingerprint": "f5de9dc136a21b60e00bdc8eb2d4f03aa40115902982d460ac724561e148eb0b"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B23",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "0bd46a7b32d4aad3cd530aee15f8b9027e740230b128a145604ed636fd05dfee",
+              "contentFingerprint": "f5de9dc136a21b60e00bdc8eb2d4f03aa40115902982d460ac724561e148eb0b"
+            },
+            "reason": "비순환1자리와 주기2자리에 따른 두 배수를 선택하고 약분하는 익숙한 다단계이다.\nCurrent bounded closure: Restore only the three labels referenced by the existing ordered equations; retain every expression, number and answer. Existing numeric difficulty/confidence are preserved; no advanced metadata or REVIEW2 approval is created.",
+            "consumerBinding": "exact"
+          }
+        ],
+        "summary": {
+          "total": 2,
+          "APPLY": 2,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 4,
+          "written": false,
+          "staleSourceBinding": 0
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      },
+      "applied": {
+        "status": "PASS",
+        "mode": "write-reviewed-correction",
+        "requestId": "m2s1-remaining-20261115-E006",
+        "driveFileId": null,
+        "driveSha256": null,
+        "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "402e1381763ee29253ce609f92e8d43d07f95758",
+        "items": [
+          {
+            "ordinal": 4,
+            "questionUid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+            "decision": "APPLY",
+            "before": {
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "577e3ee147becb1a6acbfc7822d0faa5e333ab3f0954cadadc967f9f271ae96c",
+              "contentFingerprint": "a05a2be5466687d36bb6b6922e30841f14b6e68e5804a796dbca4e67b7058ac4"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B12",
+              "difficultyBucket": 1,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "577e3ee147becb1a6acbfc7822d0faa5e333ab3f0954cadadc967f9f271ae96c",
+              "contentFingerprint": "a05a2be5466687d36bb6b6922e30841f14b6e68e5804a796dbca4e67b7058ac4"
+            },
+            "reason": "비순환 한 자리와 순환 한 자리를 구분하는 직접 적용이다.\nCurrent bounded closure: The current stem already requires a concise repeating-block representation; the existing second choice is its minimal form. Equal numeric values in nonminimal forms do not invalidate this prompt. Existing numeric difficulty/confidence are preserved; no advanced metadata or REVIEW2 approval is created.",
+            "consumerBinding": "exact"
+          },
+          {
+            "ordinal": 7,
+            "questionUid": "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c",
+            "decision": "APPLY",
+            "before": {
+              "difficultyBucket": 3,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "0bd46a7b32d4aad3cd530aee15f8b9027e740230b128a145604ed636fd05dfee",
+              "contentFingerprint": "f5de9dc136a21b60e00bdc8eb2d4f03aa40115902982d460ac724561e148eb0b"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B23",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "0bd46a7b32d4aad3cd530aee15f8b9027e740230b128a145604ed636fd05dfee",
+              "contentFingerprint": "f5de9dc136a21b60e00bdc8eb2d4f03aa40115902982d460ac724561e148eb0b"
+            },
+            "reason": "비순환1자리와 주기2자리에 따른 두 배수를 선택하고 약분하는 익숙한 다단계이다.\nCurrent bounded closure: Restore only the three labels referenced by the existing ordered equations; retain every expression, number and answer. Existing numeric difficulty/confidence are preserved; no advanced metadata or REVIEW2 approval is created.",
+            "consumerBinding": "exact"
+          }
+        ],
+        "summary": {
+          "total": 2,
+          "APPLY": 2,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 0,
+          "changedFields": 4,
+          "written": true,
+          "staleSourceBinding": 0
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      },
+      "verified": {
+        "status": "PASS",
+        "mode": "verify-reviewed-correction",
+        "requestId": "m2s1-remaining-20261115-E006",
+        "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+        "sourceBlobSha": "402e1381763ee29253ce609f92e8d43d07f95758",
+        "items": [
+          {
+            "ordinal": 4,
+            "questionUid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+            "decision": "VERIFIED",
+            "before": {
+              "difficultyBucket": 1,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "B12",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "577e3ee147becb1a6acbfc7822d0faa5e333ab3f0954cadadc967f9f271ae96c",
+              "contentFingerprint": "a05a2be5466687d36bb6b6922e30841f14b6e68e5804a796dbca4e67b7058ac4"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B12",
+              "difficultyBucket": 1,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "577e3ee147becb1a6acbfc7822d0faa5e333ab3f0954cadadc967f9f271ae96c",
+              "contentFingerprint": "a05a2be5466687d36bb6b6922e30841f14b6e68e5804a796dbca4e67b7058ac4"
+            },
+            "reason": "비순환 한 자리와 순환 한 자리를 구분하는 직접 적용이다.\nCurrent bounded closure: The current stem already requires a concise repeating-block representation; the existing second choice is its minimal form. Equal numeric values in nonminimal forms do not invalidate this prompt. Existing numeric difficulty/confidence are preserved; no advanced metadata or REVIEW2 approval is created.",
+            "consumerBinding": "exact"
+          },
+          {
+            "ordinal": 7,
+            "questionUid": "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c",
+            "decision": "VERIFIED",
+            "before": {
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "difficultyBoundaryFlag": "B23",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "0bd46a7b32d4aad3cd530aee15f8b9027e740230b128a145604ed636fd05dfee",
+              "contentFingerprint": "f5de9dc136a21b60e00bdc8eb2d4f03aa40115902982d460ac724561e148eb0b"
+            },
+            "after": {
+              "difficultyBoundaryFlag": "B23",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "medium",
+              "legacyLevelCompatibility": "NORMAL",
+              "sourceFingerprint": "0bd46a7b32d4aad3cd530aee15f8b9027e740230b128a145604ed636fd05dfee",
+              "contentFingerprint": "f5de9dc136a21b60e00bdc8eb2d4f03aa40115902982d460ac724561e148eb0b"
+            },
+            "reason": "비순환1자리와 주기2자리에 따른 두 배수를 선택하고 약분하는 익숙한 다단계이다.\nCurrent bounded closure: Restore only the three labels referenced by the existing ordered equations; retain every expression, number and answer. Existing numeric difficulty/confidence are preserved; no advanced metadata or REVIEW2 approval is created.",
+            "consumerBinding": "exact"
+          }
+        ],
+        "summary": {
+          "total": 2,
+          "APPLY": 0,
+          "ALREADY_REGISTERED": 0,
+          "SKIP_INVALID": 0,
+          "CONFLICT": 0,
+          "VERIFIED": 2,
+          "changedFields": 0,
+          "written": false,
+          "consumerBinding": {
+            "exact": 2
+          },
+          "staleSourceBinding": 0
+        },
+        "ptTpl": "UNTOUCHED_NOT_IN_SCOPE"
+      }
+    }
+  ],
+  "changes": [
+    {
+      "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+      "changedFields": [
+        "difficultyConfidence",
+        "difficultyBoundaryFlag"
+      ],
+      "beforeDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "afterDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "approvalTypeBefore": null,
+      "approvalTypeAfter": null
+    },
+    {
+      "questionUid": "qid_v1_33c7f08ded5c8fa96043e841201466361777bed299e6fdf148ce294537401f11",
+      "changedFields": [
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility"
+      ],
+      "beforeDifficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "afterDifficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "approvalTypeBefore": null,
+      "approvalTypeAfter": null
+    },
+    {
+      "questionUid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+      "changedFields": [
+        "difficultyBucket",
+        "difficultyBoundaryFlag"
+      ],
+      "beforeDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "afterDifficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "approvalTypeBefore": null,
+      "approvalTypeAfter": null
+    },
+    {
+      "questionUid": "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f",
+      "changedFields": [
+        "difficultyBucket",
+        "difficultyBoundaryFlag"
+      ],
+      "beforeDifficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "afterDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "approvalTypeBefore": null,
+      "approvalTypeAfter": null
+    },
+    {
+      "questionUid": "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c",
+      "changedFields": [
+        "difficultyBucket",
+        "difficultyBoundaryFlag"
+      ],
+      "beforeDifficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "afterDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "approvalTypeBefore": null,
+      "approvalTypeAfter": null
+    }
+  ],
+  "invariants": {
+    "outsideMetadataRowsUnchanged": 28885,
+    "heldQ7MetadataUnchanged": true,
+    "sourceIdentityEvidenceRawUnchanged": {
+      "archive/data/question_identity_map.json": "3aae22a29741ebcf3feb84356d990c0efb3d1a683a7d4df5641d87cc228a4ce1",
+      "archive/exams/original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js": "f45db9169659f6939d1179da1100908ced3b89d3f63509cda813da4c52abb1b2",
+      "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js": "a4b1350b2cbd58e772c7580533f61589d8a5fa38355f5ba7f234e9b8f62b905c",
+      "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js": "29e2259b9d23fc662f2d317c4f33d24436ff1d6a382ea785c8b9f203b970dab6",
+      ".archive-meta-register/evidence/m2s1-five-narrow-20261115/E006.json": "5c44f46510305d02d8c11eb290b2043021b56bb64926205737873f5375bab565",
+      ".archive-meta-register/evidence/m2s1-followup-20261115/E050.json": "20a2218561b305f57415863ea45c3949b143b6f5064b865e3601decc4814a64e",
+      ".archive-meta-register/evidence/m2s1-followup-20261115/E061.json": "4b151f9b4996abbcd817d450b3449c3634721abde514be841ef54d6108b97636",
+      ".archive-meta-register/evidence/m2s1-remaining-20261115/E006.json": "7a4f35f33a8fcf7527897452af70066441d9365ceb518ff9e4b478d2850d6cdc"
+    },
+    "sourceWrites": 0,
+    "sourceFingerprintEdits": 0,
+    "semanticApprovalsAdded": 0,
+    "newMathReview": false,
+    "remoteWrites": 0
+  },
+  "publication": "NOT_RUN",
+  "consumer": "NOT_RUN"
+}

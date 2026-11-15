@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-native-reviewed-transition-code-release-v1",
+  "status": "FROZEN_CODE_SCOPED_TESTS_PASS; LATEST_SOURCE_PENDING46_AND_INDEPENDENT_REVIEW_IN_PROGRESS",
+  "owner": "ci_m2s2",
+  "localOnlyCommit": "bf4dc01e8ab65e2d6f65ae7034daf50ed13339e6",
+  "localBase": "318be2389960aac0810039f6d9ab3dba2fedab6b",
+  "verifiedRemoteMain": "846581e0c741e2ee031674c117af76be06d7f398",
+  "remoteWrites": 0,
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+      "candidatePath": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/files/archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+      "bytes": 23440,
+      "beforeGitBlob": "0a8c0a5ce273f26694feb050bdabe155435ea4c6",
+      "beforeSha256": "3566a0341a7c48b0fa4b6c8d97fe2a2f813964e513591c7693581d48cec8138b",
+      "afterGitBlob": "a3430a95d41e1d74e97dd5a0ccc9dc4255ba219a",
+      "afterSha256": "01ecf8d9a5e4fb7b984ebd0b25ecb3b5667c796e5284f37aeec51ff4dd9b7af6"
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "candidatePath": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/files/archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "bytes": 52032,
+      "beforeGitBlob": "b643f4c85ca20b5940291758d5233d5e9f727016",
+      "beforeSha256": "66748e6b1ca621a0b11262ba0d9f069153ae06ffbcaf98927cbd506e2a27da13",
+      "afterGitBlob": "c60427e0d07badbec249bb59d49957432efa0446",
+      "afterSha256": "83412ab8332441922de4c44ba27247d0d25fd494a6a3654d8bf88bc03746e0a1"
+    },
+    {
+      "path": "tests/archive-main-merge-meta.test.mjs",
+      "candidatePath": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/files/tests/archive-main-merge-meta.test.mjs",
+      "bytes": 121103,
+      "beforeGitBlob": "5c44964e76e722deff3a8620896a5867d184ce7a",
+      "beforeSha256": "ac8cf8a60d422177c4467898b9b2e562a222b0ea49f8e15c9c8af5c24d6b3501",
+      "afterGitBlob": "d055048b7d9b97b3dd82a2fe55fe73d08a3b5c21",
+      "afterSha256": "46e817bfc249aed5f3e4527d5a4896233caf3e3e25fd6a08246ed0217dbed52c"
+    }
+  ],
+  "patch": {
+    "path": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/native-reuse.patch",
+    "sha256": "e0fdd737fbbb80cfd982bb8495f5f412075fe68a512782df6c06f1b4cac5a6c6"
+  },
+  "proofs": [
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/classification-before.tap",
+      "sha256": "557a0018e9313f37ac82d0ad6108cca0c26ab31da260bbcd37b0c395729c131e",
+      "bytes": 1129
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/container-before.tap",
+      "sha256": "732fb3d06309ed30a6011900ffd1742128c53f3cc1d6e5b3075eae7953756228",
+      "bytes": 1355
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/focused92.tap",
+      "sha256": "54af246dbfb75a585accf69e32ec127897fd3e8239f45d6ee76e4141731848ce",
+      "bytes": 23757
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/wangun-native-reuse-final/current-main-code-cas.json",
+      "sha256": "452c8eb045470c21f21af208bb98b18224612be267f11300b4e711896f2ca41e",
+      "bytes": 1792
+    }
+  ],
+  "verification": {
+    "focusedTests": 92,
+    "passed": 92,
+    "failed": 0,
+    "existingBoundaryTests": 62,
+    "newRegressionTests": 30,
+    "originalClassifierCounterexample": {
+      "pass": 0,
+      "fail": 1
+    },
+    "overstrictUnselectedContainerCounterexample": {
+      "pass": 1,
+      "fail": 1
+    },
+    "gitDiffCheck": "PASS",
+    "worktreeClean": true
+  },
+  "behavior": {
+    "ordinaryReviewedEvidence": "An exact plain reassessment can cite prior native receipts; every selected issued sourceReview is reproduced with the existing official validator.",
+    "sourceOnlyPreservation": "Explicit sourceRebind/count markers and malformed proof claims retain the existing strict ancestor contract.",
+    "oldCursorTransition": "Only an immutable review explicitly naming its exact SHA-bound prior native receipt can replay that old source. The complete selected inventory, old fingerprints, unchanged approval values and identity fields except sourceFingerprint are required. The previous whole question must equal the actual old or current Git question, and original native approval is revalidated with a read-only identity snapshot.",
+    "containerBinding": "The receipt binds current source bytes/Git blob/denominator. Immutable review source banks remain authoritative for every selected student payload and accepted value, allowing changes only outside that selected review.",
+    "noAddedAuthority": [
+      "No new semantic or math judgment",
+      "No source/canonical/request edits",
+      "No namespace-inferred approval",
+      "No unrestricted changed-answer cursor fallback"
+    ]
+  },
+  "actualProofProgress": {
+    "old978Postwrite46": {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/e070-pending-registration/post-registration-planner46.json",
+      "sha256": "f724d33ede82a66e83c4058991799604df4ae726db13dd0ecc237f47a73c01c9",
+      "result": "current20ALREADY+3SUPPLEMENT; actualPending20ALREADY+3SUPPLEMENT"
+    },
+    "latest6baOfficial20": {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/e070-current846/official-native20-verification.json",
+      "sha256": "d19115edfe8142be2e05643a080e03fe262a2ebd62cf27bff33fd14ebef54e5c",
+      "qualification": "reported by fixture owner; final exact-code46 validation separately pending"
+    }
+  },
+  "nextAction": [
+    "M3 validates latest6ba current/pending46 on exact final helper, then targeted Consumer20",
+    "M1 independent read-only review of these exact code/test bytes",
+    "Root rechecks fresh main three-file CAS, integrates and runs PR CI, actual writer, target Consumer and Pages"
+  ]
+}

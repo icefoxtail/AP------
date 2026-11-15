@@ -1,0 +1,25 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {selectNativeRequests} from './archive-pr-native-preview.mjs';
+const own=path.dirname(new URL(import.meta.url).pathname),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const manifestPath=own+'/exact-selector-fixture.json',m=JSON.parse(fs.readFileSync(manifestPath));
+const snapshot=()=>m.materializedInputs.map(r=>({path:r.path,sha256:sha(fs.readFileSync(path.join(m.fixture,r.path)))}));
+const before=snapshot();for(const [i,r]of before.entries())assert.equal(r.sha256,m.materializedInputs[i].sha256);
+const selected=selectNativeRequests({root:m.fixture,baseSha:m.baseMain,headSha:m.localCommit});
+assert.deepEqual(selected.map(r=>r.path).sort(),m.expectedSelectedPaths);
+assert.deepEqual(snapshot(),before,'selector may not mutate source/evidence/request bytes');
+// The candidate manifest's exact retained scope is the authority boundary here.
+const m1=JSON.parse(fs.readFileSync('/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/withhold-eleven-current-main-028d28c/candidate-manifest.json'));
+const retained=new Set(m1.retainedRequestScopes.flatMap(r=>r.selectedQuestionUids));
+const originalInputs=JSON.parse(fs.readFileSync(own+'/current-inbox-inputs.json'));
+const original68=originalInputs.files.filter(r=>r.path.includes('/m2s2-binding68-')).flatMap(r=>JSON.parse(fs.readFileSync(r.local)).items.map(i=>i.questionUid));
+assert.equal(new Set(original68).size,68);
+const withheld11=original68.filter(uid=>!retained.has(uid));assert.equal(withheld11.length,11);
+const m2selected=selected.filter(r=>r.path.includes('/m2s2-binding68-')).flatMap(r=>r.selectedItems);
+assert(m2selected.every(r=>retained.has(r.questionUid)));
+assert.equal(m2selected.filter(r=>withheld11.includes(r.questionUid)).length,0);
+const result={schemaVersion:'official-combined-native-selector-result-v1',status:'PASS_TECHNICAL_SELECTION_ONLY',baseMain:m.baseMain,externalHead:m.externalHead,localTree:m.localTree,localCommit:m.localCommit,fixtureManifest:{path:manifestPath,sha256:sha(fs.readFileSync(manifestPath))},helper:{path:'tools/ci/archive-pr-native-preview.mjs',gitBlobSha1:'7492983b8f02d77404efd0cba2460bc10ac174c5',sha256:sha(fs.readFileSync(own+'/archive-pr-native-preview.mjs'))},selected,counts:{requests:selected.length,items:selected.reduce((n,r)=>n+r.questionCount,0),changedM2AndE029Requests:selected.filter(r=>r.path.includes('/m2s')).length,changedM2AndE029Items:selected.filter(r=>r.path.includes('/m2s')).reduce((n,r)=>n+r.questionCount,0),inheritedPreservationRequests:selected.filter(r=>r.inheritedPreservation).length,inheritedPreservationItems:selected.filter(r=>r.inheritedPreservation).reduce((n,r)=>n+r.questionCount,0),inheritedBindingProviderRequests:selected.filter(r=>r.inheritedBindingProvider).length,m2RetainedSelectedItems:m2selected.length,withheld11Selected:0},sourceAndEvidenceAndRequestHashesUnchanged:true,limitations:{scope:'Official selector and exact input binding only; registration/write/Consumer are separate gates',officialRegistration:'NOT_RUN_HERE',productionRegistration:'NOT_RUN_HERE',newSemanticApproval:false,sourceWrites:0,canonicalWrites:0,remoteWrites:0}};
+const raw=JSON.stringify(result,null,2)+'\n',out=own+'/official-selector-result.json';fs.writeFileSync(out,raw);assert.equal(fs.readFileSync(out,'utf8'),raw);
+console.log(JSON.stringify({path:out,sha256:sha(raw),status:result.status,counts:result.counts,orderedRequests:selected.map(r=>r.requestId)}));

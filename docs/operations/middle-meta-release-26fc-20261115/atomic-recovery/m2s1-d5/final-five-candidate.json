@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "m2s1-five-d5-retarget-final-candidate-v1",
+  "status": "OFFICIAL_LOCAL_REGISTRAR_PROJECTION_PASS_CONSUMER_PENDING",
+  "main": "846581e0c741e2ee031674c117af76be06d7f398",
+  "initialCandidateManifestSha256": "9d16fa6ac864480fa65a007d16bfd889e5d33d4fe20fa82bb632ebc2151086cc",
+  "officialValidationSha256": "3696954ac9b1a8e7fea3b407d05232de5f4fb6b77589054b9e7a6d6b07a4c46d",
+  "scope": {
+    "schemaVersion": "m2s1-current-graphics-retarget-release-scope-v1",
+    "baseMain": "846581e0c741e2ee031674c117af76be06d7f398",
+    "requestCount": 4,
+    "retainedUidCount": 5,
+    "withheldUidCount": 1,
+    "changes": "Retarget only whole-source latestBlobSha for identical selected question objects and referenced assets; preserve old per-UID source/content fingerprints and accepted D5 evidence. Remove E050Q7 from the generic D5 request until exact current choice SVG evidence is accepted.",
+    "sourceEdits": 0,
+    "semanticApprovals": 0,
+    "difficultyJudgmentChanges": 0,
+    "originalD5ValuesPreserved": true,
+    "originalEvidenceUnchanged": true,
+    "held": [
+      {
+        "requestId": "m2s1-followup-20261115-E050",
+        "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_48e2cccdd167683e98ba18543f6c2a376b25ec632f52bb969fd9e940f513a488",
+        "reason": "CURRENT_STUDENT_CHOICES_CHANGED_REQUIRES_EXACT_CURRENT_VISUAL_SOURCE_EVIDENCE",
+        "changedFields": [
+          "choices"
+        ],
+        "previousSourceBlob": "7c93afdb305606fd2260a0c919088a18a988b5ee",
+        "currentSourceBlob": "7a91302f47df3aa5d2bb085f36ca1cfdece3b7d7",
+        "nextAction": "Obtain or reuse exact current five choice-SVG/source review and confirm applicability of the already accepted D5; no new approval is asserted by header retarget. Keep original native/D5 values and original evidence unchanged."
+      }
+    ],
+    "retainedRequests": [
+      {
+        "path": ".archive-meta-register/inbox/m2s1-five-narrow-20261115-E006.json",
+        "uids": [
+          "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f"
+        ],
+        "count": 1,
+        "evidencePath": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/E006.json",
+        "evidenceSha256": "5c44f46510305d02d8c11eb290b2043021b56bb64926205737873f5375bab565"
+      },
+      {
+        "path": ".archive-meta-register/inbox/m2s1-followup-20261115-E050.json",
+        "uids": [
+          "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d"
+        ],
+        "count": 1,
+        "evidencePath": ".archive-meta-register/evidence/m2s1-followup-20261115/E050.json",
+        "evidenceSha256": "20a2218561b305f57415863ea45c3949b143b6f5064b865e3601decc4814a64e"
+      },
+      {
+        "path": ".archive-meta-register/inbox/m2s1-followup-20261115-E061.json",
+        "uids": [
+          "qid_v1_33c7f08ded5c8fa96043e841201466361777bed299e6fdf148ce294537401f11"
+        ],
+        "count": 1,
+        "evidencePath": ".archive-meta-register/evidence/m2s1-followup-20261115/E061.json",
+        "evidenceSha256": "4b151f9b4996abbcd817d450b3449c3634721abde514be841ef54d6108b97636"
+      },
+      {
+        "path": ".archive-meta-register/inbox/m2s1-remaining-20261115-E006.json",
+        "uids": [
+          "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+          "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c"
+        ],
+        "count": 2,
+        "evidencePath": ".archive-meta-register/evidence/m2s1-remaining-20261115/E006.json",
+        "evidenceSha256": "7a4f35f33a8fcf7527897452af70066441d9365ceb518ff9e4b478d2850d6cdc"
+      }
+    ],
+    "validation": {
+      "officialDry": 5,
+      "officialLocalWrite": 5,
+      "officialReadOnlyProjectionVerified": 5,
+      "consumerBindingReport": {
+        "stale": 1,
+        "content": 2,
+        "exact": 2
+      },
+      "currentChangedUidConsumer": "NOT_RUN",
+      "actualMainRegistration": "NOT_RUN",
+      "newMathReview": false
+    },
+    "negativeBoundary": {
+      "originalFourStaleHeaders": "REJECTED_SOURCE_BLOB_DRIFT",
+      "blindCurrentHeaderRetargetKeepingQ7": "REJECTED_SOURCE_FINGERPRINT_MISMATCH_7"
+    },
+    "invariants": {
+      "outsideMetadataRowsUnchanged": 28885,
+      "heldQ7MetadataUnchanged": true,
+      "sourceFingerprintEdits": 0,
+      "identityEdits": 0
+    },
+    "nextAction": "Root publishes exact4 request changes plus this scope/original request preservation. Run changed-request CI and actual writer/target Consumer. Q7 requires exact current visual/source proof; preserve old difficulty and approval records until then.",
+    "qualifications": [
+      "The existing stale source binding on E006Q18 is retained and explicitly reported; projection verification is not a claim that its metadata source binding was repaired.",
+      "No four-slot compact source header is promoted by this request-only patch."
+    ]
+  },
+  "files": [
+    {
+      "path": ".archive-meta-register/inbox/m2s1-five-narrow-20261115-E006.json",
+      "beforeBlob": "e3ec23e1ace53e0c68bf9ffc685c048fb6fef8b9",
+      "beforeSha256": "9eea25ca2376c8fa91e1a2bf2568ed9a4211216c1e578afffb8f1e90bd9c9b5c",
+      "afterBlob": "706e0828db8072aed4915fb25e98e1781f54313b",
+      "afterSha256": "be386bdd503d63e6bb66eabcfb578a93af7f75b2ca77508ecde41e0d725350e9",
+      "candidatePath": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/current846581-publication-cas/d5-retarget-five/candidate/.archive-meta-register/inbox/m2s1-five-narrow-20261115-E006.json",
+      "beforeCount": 1,
+      "afterCount": 1,
+      "remainingUids": [
+        "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f"
+      ],
+      "evidencePath": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/E006.json",
+      "evidenceSha256": "5c44f46510305d02d8c11eb290b2043021b56bb64926205737873f5375bab565"
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-followup-20261115-E050.json",
+      "beforeBlob": "608055ad0d472fd2eadd0006f5940fa5ddb8b9ad",
+      "beforeSha256": "f15805576313b4149a30cacea14ddd6f609f94ec32d85f0c02521c9b74984ff0",
+      "afterBlob": "e4ea42be0d87b4dd47383cafd957cfc04e73d466",
+      "afterSha256": "f2b1cb566269859fdf14a3eb9b89b5374b0d67d01ff9460aa43e003756f02770",
+      "candidatePath": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/current846581-publication-cas/d5-retarget-five/candidate/.archive-meta-register/inbox/m2s1-followup-20261115-E050.json",
+      "beforeCount": 2,
+      "afterCount": 1,
+      "remainingUids": [
+        "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d"
+      ],
+      "evidencePath": ".archive-meta-register/evidence/m2s1-followup-20261115/E050.json",
+      "evidenceSha256": "20a2218561b305f57415863ea45c3949b143b6f5064b865e3601decc4814a64e"
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-followup-20261115-E061.json",
+      "beforeBlob": "7a4af48d9fdf7ac85dcca0e5a0ec3341ff5ec4bf",
+      "beforeSha256": "ed9c8be9f9f1a5c45aa9a958881e13aaf41657c0849cf75f435baacd4ff88bcf",
+      "afterBlob": "ab2e9b19da27c3ee61401830d6fcc8acc8f9b7fb",
+      "afterSha256": "f7cc7552a4deb9299a971b3f731d7b60dfd157eb9b5aefbc7ff528e4ddef68e0",
+      "candidatePath": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/current846581-publication-cas/d5-retarget-five/candidate/.archive-meta-register/inbox/m2s1-followup-20261115-E061.json",
+      "beforeCount": 1,
+      "afterCount": 1,
+      "remainingUids": [
+        "qid_v1_33c7f08ded5c8fa96043e841201466361777bed299e6fdf148ce294537401f11"
+      ],
+      "evidencePath": ".archive-meta-register/evidence/m2s1-followup-20261115/E061.json",
+      "evidenceSha256": "4b151f9b4996abbcd817d450b3449c3634721abde514be841ef54d6108b97636"
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-remaining-20261115-E006.json",
+      "beforeBlob": "540678f9a4c216491f0b2b9b5fec50130404922c",
+      "beforeSha256": "4c4bdd49084f2fe94d2d484987caf1c916de4e669075790ccf64b9a987adab54",
+      "afterBlob": "4b233304f7207731671e5e1a02534b6ec990ff50",
+      "afterSha256": "ca24ac91e5c15f5eb53c591331741ffb98265d5d8788d2d20b3b86d925e7cbc1",
+      "candidatePath": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/current846581-publication-cas/d5-retarget-five/candidate/.archive-meta-register/inbox/m2s1-remaining-20261115-E006.json",
+      "beforeCount": 2,
+      "afterCount": 2,
+      "remainingUids": [
+        "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+        "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c"
+      ],
+      "evidencePath": ".archive-meta-register/evidence/m2s1-remaining-20261115/E006.json",
+      "evidenceSha256": "7a4f35f33a8fcf7527897452af70066441d9365ceb518ff9e4b478d2850d6cdc"
+    },
+    {
+      "path": ".archive-meta-register/evidence/m2s1-current-graphics-overlap-26fc-20261115/E050.original-request.json",
+      "action": "add",
+      "afterBlob": "608055ad0d472fd2eadd0006f5940fa5ddb8b9ad",
+      "afterSha256": "f15805576313b4149a30cacea14ddd6f609f94ec32d85f0c02521c9b74984ff0",
+      "candidatePath": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/current846581-publication-cas/d5-retarget-five/candidate/.archive-meta-register/evidence/m2s1-current-graphics-overlap-26fc-20261115/E050.original-request.json"
+    },
+    {
+      "path": "docs/operations/m2s1-current-graphics-overlap-26fc-20261115/release-scope.json",
+      "action": "add",
+      "afterBlob": "baff60e5267316e77bceafdd324f5087aa5e16d2",
+      "afterSha256": "05e8f91f8d005b6b43d756df0ace30525c6deff490264affaaf141040d2f7ccd",
+      "candidatePath": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/current846581-publication-cas/d5-retarget-five/candidate/docs/operations/m2s1-current-graphics-overlap-26fc-20261115/release-scope.json"
+    }
+  ],
+  "patch": {
+    "path": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/current846581-publication-cas/d5-retarget-five/d5-five-request-retarget.patch",
+    "sha256": "d5c2d7de65817690fa7997720f70daca5ddcee2ecac62768514f0352a0d7c431"
+  },
+  "remoteWrites": 0,
+  "sourceWrites": 0,
+  "newMathReview": false
+}

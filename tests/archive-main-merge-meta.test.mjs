@@ -15,7 +15,7 @@ import {REVIEWED_META_VALUE_FIELDS} from '../archive/tools/meta-foundation/revie
 import {reviewedRendererBindingPath,buildReviewedRendererBinding} from '../archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs';
 import {reviewedSourceBindingPath,buildReviewedSourceBinding} from '../archive/tools/meta-foundation/reviewed-source-binding.mjs';
 import {hasNativeReviewedSourceClaim,validateNativeReviewedSourceReuse} from '../archive/tools/meta-foundation/native-reviewed-source-reuse.mjs';
-import {hasNativeSourcePreservationClaim} from '../archive/tools/meta-foundation/native-preserved-source-reuse.mjs';
+import {hasNativeSourcePreservationClaim,isPartialNativeSourcePreservation} from '../archive/tools/meta-foundation/native-preserved-source-reuse.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source='original/middle/m3/1mid/fixture.js',uid='qid_v1_'+'a'.repeat(64);
 function fixture() {
@@ -1021,6 +1021,152 @@ test('an explicit receipt ancestry with no typed source review preserves the pla
 
 // A new source container can change an unselected question after a native
 // solution/figure approval. Its selected approval and original proof stay exact.
+function plainReassessmentWithNativeReference(t) {
+  const f=reviewedFigureNativeFixture(t,{genericReview:true,form:'solution'});
+  for(const key of ['appliedRecords','appliedIdentityRecords','runtimeRecords'])
+    f.receipt[key]=f.receipt[key].filter(row=>row.questionUid===uid);
+  f.receipt.partialUidCount=1;f.receipt.totalQuestions=1;
+  // A previous receipt is review evidence, without a source-only preservation
+  // claim. Keep the current proof, source denominator, and approval unchanged.
+  const prior=structuredClone(f.receipt),priorId='earlier-reviewed-source',
+    priorPath=`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${priorId}.json`;
+  prior.requestId=priorId;
+  for(const row of [...prior.appliedRecords,...prior.runtimeRecords]) {
+    row.metadataRevision=`meta-foundation:MIDDLE3@1.0.0:exam-final_qa-v2:${priorId}`;
+    row.approvalEvidence=row.approvalEvidence.map(value=>value===f.receiptPath?priorPath:value);
+  }
+  f.put(priorPath,prior);
+  const ref={path:priorPath,sha256:f.sha(fs.readFileSync(path.join(f.nativeSource.root,priorPath)))};
+  f.receipt.approval.evidenceRefs.push(ref);f.saveReceipt();
+  f.previous=structuredClone(f.question);
+  return {...f,priorPath,priorRef:ref};
+}
+test('verified plain reassessment may cite a native receipt without claiming source-only preservation',t=>{
+  const f=plainReassessmentWithNativeReference(t),before=JSON.stringify({question:f.question,current:f.current,
+    identity:f.identity,runtime:f.nativeSource.runtimeRecord,receipt:f.receipt});
+  assert.equal(isPartialNativeSourcePreservation(f.receipt,f.nativeSource.root),false);
+  const result=planQuestion(f);
+  assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));
+  assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  assert.equal(JSON.stringify({question:f.question,current:f.current,identity:f.identity,
+    runtime:f.nativeSource.runtimeRecord,receipt:f.receipt}),before);
+  assert.equal(f.receipt.expectedQuestionCount,3);assert.equal(f.receipt.partialUidCount,1);
+});
+for(const [name,change]of [
+  ['explicit sourceRebind',f=>{f.receipt.approval.sourceRebind={priorReceiptRef:f.priorRef};}],
+  ['explicit preserved count',f=>{f.receipt.newMetadataApprovals=0;f.receipt.preservedMetadataApprovals=1;}],
+  ['missing proof',f=>{delete f.receipt.fingerprintRepairs[0].sourceReview;}],
+  ['unverified review ref',f=>{f.receipt.fingerprintRepairs[0].sourceReview.reviewRef.sha256='e'.repeat(64);}],
+  ['wrong current source binding',f=>{f.receipt.fingerprintRepairs[0].sourceReview.reviewedSourceBlobSha1='e'.repeat(40);}],
+  ['wrong student payload proof',f=>{f.receipt.fingerprintRepairs[0].sourceReview.studentPayloadSha256='e'.repeat(64);}],
+  ['unknown issued proof field',f=>{f.receipt.fingerprintRepairs[0].sourceReview.allowChangedAnswers=true;}],
+  ['incomplete selected proof set',f=>{f.receipt.fingerprintRepairs=[];}],
+  ['duplicate selected proof',f=>{f.receipt.fingerprintRepairs.push(structuredClone(f.receipt.fingerprintRepairs[0]));}],
+  ['new registry operation',f=>{f.receipt.registryChanges=[{collection:'bindings'}];}],
+  ['unverified parent operation',f=>{f.receipt.nativeParentBindings=[{questionUid:uid}];}],
+  ['review file changed after a warm check',f=>fs.appendFileSync(path.join(f.nativeSource.root,f.reviewPath),' ')],
+  ['native evidence missing after a warm check',f=>fs.unlinkSync(path.join(f.nativeSource.root,f.priorPath))],
+])test('native evidence does not excuse a reassessment with '+name,t=>{
+  const f=plainReassessmentWithNativeReference(t);
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  change(f);f.saveReceipt();
+  assert.equal(isPartialNativeSourcePreservation(f.receipt,f.nativeSource.root),true);
+  const result=planQuestion(f);
+  assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+  assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+});
+test('plain reassessment classification does not waive the ordinary changed-student cursor gate',t=>{
+  const f=plainReassessmentWithNativeReference(t);
+  assert.equal(isPartialNativeSourcePreservation(f.receipt,f.nativeSource.root),false);
+  f.previous.answer='unreviewed previous answer';
+  const result=planQuestion(f);
+  assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+  assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+});
+
+function explicitlyLinkedReassessment(t,{mutatePrior,omitPriorRef=false}={}) {
+  const f=plainReassessmentWithNativeReference(t),sourcePath='archive/exams/'+source;
+  const bytes=Buffer.from(f.git('show',f.review.previousSourceCommit+':'+sourcePath)+'\n');
+  const bank=loadBank(bytes.toString()),prior=JSON.parse(fs.readFileSync(path.join(f.nativeSource.root,f.priorPath)));
+  prior.sourceBlobSha1=f.git('rev-parse',f.review.previousSourceCommit+':'+sourcePath);prior.sourceRawSha256=f.sha(bytes);
+  prior.approval.evidenceRefs=prior.approval.evidenceRefs.filter(ref=>ref.path==='review/metadata.json');
+  prior.fingerprintRepairs=[];
+  for(const key of ['appliedRecords','appliedIdentityRecords','runtimeRecords'])for(const row of prior[key]) {
+    const old=bank[row.sourceOrdinal-1];row.sourceFingerprint=sourceFingerprint(old);
+    if(key!=='appliedIdentityRecords')row.contentFingerprint=contentFingerprint(old);
+    if(key==='runtimeRecords')row.approvedSourceFingerprint=sourceFingerprint(old);
+  }
+  mutatePrior?.(prior,f);f.put(f.priorPath,prior);
+  f.priorRef.sha256=f.sha(fs.readFileSync(path.join(f.nativeSource.root,f.priorPath)));
+  if(!omitPriorRef)f.review.priorMetadataReceipt=structuredClone(f.priorRef);
+  f.put(f.reviewPath,f.review);f.git('add','.');f.git('-c','user.name=Fixture reviewer','-c','user.email=fixture@example.invalid','commit','-qm','Explicit immutable prior review link');
+  const reviewCommit=f.git('rev-parse','HEAD'),reviewRef=f.receipt.approval.evidenceRefs.find(ref=>ref.path===f.reviewPath);
+  reviewRef.sha256=f.sha(fs.readFileSync(path.join(f.nativeSource.root,f.reviewPath)));
+  const repair=f.receipt.fingerprintRepairs[0];
+  repair.sourceReview=validateReviewedSourceReassessment({root:f.nativeSource.root,
+    request:{scope:f.receipt.scope,approval:f.receipt.approval,sourceArchiveFile:source,expectedQuestionCount:3},
+    patch:{questionUid:uid,sourceOrdinal:3,after:repair.after,before:repair.metadataBefore,identityBefore:repair.identityBefore,
+      sourceReview:{schemaVersion:'archive-reviewed-source-reassessment-v1',reviewCommit,reviewPath:f.reviewPath,reviewRef},
+      evidenceRefs:f.receipt.approval.evidenceRefs},metadata:{...f.current,...repair.metadataBefore},question:f.question,final:f.current,
+    supportedFields:new Set(REVIEWED_META_VALUE_FIELDS)});
+  f.saveReceipt();f.previous=structuredClone(bank[f.ordinal-1]);return {...f,prior};
+}
+test('an explicitly reviewed prior native source survives its exact old and current cursor without a new approval',t=>{
+  const f=explicitlyLinkedReassessment(t),before=JSON.stringify({current:f.current,identity:f.identity,
+    identities:[...f.nativeSource.identityByJoin],runtime:f.nativeSource.runtimeRecord,receipt:f.receipt});
+  for(const previous of [f.previous,structuredClone(f.question)]){
+    const result=planQuestion({...f,previous});
+    assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  }
+  assert.equal(JSON.stringify({current:f.current,identity:f.identity,identities:[...f.nativeSource.identityByJoin],
+    runtime:f.nativeSource.runtimeRecord,receipt:f.receipt}),before);
+});
+function refreshReassessmentContainer(f,change) {
+  const bank=structuredClone(f.nativeSource.bank);change(bank);
+  const bytes=Buffer.from('window.questionBank='+JSON.stringify(bank)+';\n');
+  f.put('archive/exams/'+source,bytes);
+  const blobSha1=execFileSync('git',['hash-object','-w','--stdin'],{cwd:f.nativeSource.root,input:bytes,encoding:'utf8'}).trim();
+  Object.assign(f.nativeSource,{bank,bytes,blobSha1});f.question=bank[f.ordinal-1];
+  Object.assign(f.receipt,{sourceBlobSha1:blobSha1,sourceRawSha256:f.sha(bytes)});f.saveReceipt();
+}
+test('plain reassessment replays the same selected proof after an unselected container change',t=>{
+  const f=explicitlyLinkedReassessment(t),proof=JSON.stringify(f.receipt.fingerprintRepairs);
+  refreshReassessmentContainer(f,bank=>{bank[1].solutionImage='assets/unselected-change.svg';});
+  assert.equal(isPartialNativeSourcePreservation(f.receipt,f.nativeSource.root),false);
+  for(const previous of [f.previous,structuredClone(f.question)]){
+    const result=planQuestion({...f,previous});assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  }
+  assert.equal(JSON.stringify(f.receipt.fingerprintRepairs),proof);assert.equal(f.receipt.expectedQuestionCount,3);
+});
+test('plain reassessment never treats a selected renderer change as unselected container drift',t=>{
+  const f=explicitlyLinkedReassessment(t);
+  refreshReassessmentContainer(f,bank=>{bank[f.ordinal-1].solutionImage='assets/unreviewed-selected.svg';});
+  assert.equal(isPartialNativeSourcePreservation(f.receipt,f.nativeSource.root),true);
+  for(const previous of [f.previous,structuredClone(f.question)]){
+    const result=planQuestion({...f,previous});assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+  }
+});
+for(const [name,options,change]of [
+  ['no immutable prior link',{omitPriorRef:true},()=>{}],
+  ['wrong prior selected UID',{mutatePrior:p=>{p.appliedRecords[0].questionUid='other';}},()=>{}],
+  ['wrong prior approval value',{mutatePrior:p=>{p.appliedRecords[0].primaryMethod='unapproved prior method';}},()=>{}],
+  ['wrong prior fingerprint',{mutatePrior:p=>{p.appliedRecords[0].sourceFingerprint='e'.repeat(64);}},()=>{}],
+  ['wrong prior identity',{mutatePrior:p=>{p.appliedIdentityRecords[0].sourceQuestionNo=99;}},()=>{}],
+  ['additional prior identity provenance',{mutatePrior:p=>{p.appliedIdentityRecords[0].approvalEvidence=['unissued-identity-change'];}},()=>{}],
+  ['unavailable prior source',{mutatePrior:p=>{p.sourceBlobSha1='e'.repeat(40);}},()=>{}],
+  ['unknown old answer',{},f=>{f.previous.answer='unreviewed previous answer';}],
+  ['unknown old image',{},f=>{f.previous.image='assets/unreviewed.svg';}],
+  ['unknown old shared material',{},f=>{f.previous.sharedMaterial='unreviewed shared stem';}],
+  ['prior evidence bytes changed',{},f=>{fs.appendFileSync(path.join(f.nativeSource.root,f.priorPath),' ');}],
+  ['prior reference omitted from approval',{},f=>{f.receipt.approval.evidenceRefs=f.receipt.approval.evidenceRefs.filter(ref=>ref.path!==f.priorPath);}],
+])test('reviewed prior-source reuse refuses '+name,t=>{
+  const f=explicitlyLinkedReassessment(t,options);change(f);f.saveReceipt();
+  const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+  assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+});
+
 function preserveNativeSubset(f,id='plain-source-preservation') {
   const dir=f.nativeSource.root,sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
   const put=(relative,value)=>{const file=path.join(dir,relative);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,typeof value==='string'||Buffer.isBuffer(value)?value:JSON.stringify(value));};

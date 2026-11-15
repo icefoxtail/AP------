@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "m2s1-current-graphics-retarget-release-scope-v1",
+  "baseMain": "846581e0c741e2ee031674c117af76be06d7f398",
+  "requestCount": 4,
+  "retainedUidCount": 5,
+  "withheldUidCount": 1,
+  "changes": "Retarget only whole-source latestBlobSha for identical selected question objects and referenced assets; preserve old per-UID source/content fingerprints and accepted D5 evidence. Remove E050Q7 from the generic D5 request until exact current choice SVG evidence is accepted.",
+  "sourceEdits": 0,
+  "semanticApprovals": 0,
+  "difficultyJudgmentChanges": 0,
+  "originalD5ValuesPreserved": true,
+  "originalEvidenceUnchanged": true,
+  "held": [
+    {
+      "requestId": "m2s1-followup-20261115-E050",
+      "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_48e2cccdd167683e98ba18543f6c2a376b25ec632f52bb969fd9e940f513a488",
+      "reason": "CURRENT_STUDENT_CHOICES_CHANGED_REQUIRES_EXACT_CURRENT_VISUAL_SOURCE_EVIDENCE",
+      "changedFields": [
+        "choices"
+      ],
+      "previousSourceBlob": "7c93afdb305606fd2260a0c919088a18a988b5ee",
+      "currentSourceBlob": "7a91302f47df3aa5d2bb085f36ca1cfdece3b7d7",
+      "nextAction": "Obtain or reuse exact current five choice-SVG/source review and confirm applicability of the already accepted D5; no new approval is asserted by header retarget. Keep original native/D5 values and original evidence unchanged."
+    }
+  ],
+  "retainedRequests": [
+    {
+      "path": ".archive-meta-register/inbox/m2s1-five-narrow-20261115-E006.json",
+      "uids": [
+        "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f"
+      ],
+      "count": 1,
+      "evidencePath": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/E006.json",
+      "evidenceSha256": "5c44f46510305d02d8c11eb290b2043021b56bb64926205737873f5375bab565"
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-followup-20261115-E050.json",
+      "uids": [
+        "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d"
+      ],
+      "count": 1,
+      "evidencePath": ".archive-meta-register/evidence/m2s1-followup-20261115/E050.json",
+      "evidenceSha256": "20a2218561b305f57415863ea45c3949b143b6f5064b865e3601decc4814a64e"
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-followup-20261115-E061.json",
+      "uids": [
+        "qid_v1_33c7f08ded5c8fa96043e841201466361777bed299e6fdf148ce294537401f11"
+      ],
+      "count": 1,
+      "evidencePath": ".archive-meta-register/evidence/m2s1-followup-20261115/E061.json",
+      "evidenceSha256": "4b151f9b4996abbcd817d450b3449c3634721abde514be841ef54d6108b97636"
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-remaining-20261115-E006.json",
+      "uids": [
+        "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+        "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c"
+      ],
+      "count": 2,
+      "evidencePath": ".archive-meta-register/evidence/m2s1-remaining-20261115/E006.json",
+      "evidenceSha256": "7a4f35f33a8fcf7527897452af70066441d9365ceb518ff9e4b478d2850d6cdc"
+    }
+  ],
+  "validation": {
+    "officialDry": 5,
+    "officialLocalWrite": 5,
+    "officialReadOnlyProjectionVerified": 5,
+    "consumerBindingReport": {
+      "stale": 1,
+      "content": 2,
+      "exact": 2
+    },
+    "currentChangedUidConsumer": "NOT_RUN",
+    "actualMainRegistration": "NOT_RUN",
+    "newMathReview": false
+  },
+  "negativeBoundary": {
+    "originalFourStaleHeaders": "REJECTED_SOURCE_BLOB_DRIFT",
+    "blindCurrentHeaderRetargetKeepingQ7": "REJECTED_SOURCE_FINGERPRINT_MISMATCH_7"
+  },
+  "invariants": {
+    "outsideMetadataRowsUnchanged": 28885,
+    "heldQ7MetadataUnchanged": true,
+    "sourceFingerprintEdits": 0,
+    "identityEdits": 0
+  },
+  "nextAction": "Root publishes exact4 request changes plus this scope/original request preservation. Run changed-request CI and actual writer/target Consumer. Q7 requires exact current visual/source proof; preserve old difficulty and approval records until then.",
+  "qualifications": [
+    "The existing stale source binding on E006Q18 is retained and explicitly reported; projection verification is not a claim that its metadata source binding was repaired.",
+    "No four-slot compact source header is promoted by this request-only patch."
+  ]
+}

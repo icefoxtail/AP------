@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "middle-meta-atomic-operational-recovery-v1",
+  "owner": "GPT_ROOT_26FC42390A50",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "baseMain": "d6f4b10a1a1442932913cdfe5cd87c10e2516608",
+  "excludedScope": "M3 S1 source, branch and packet",
+  "newSourceOrAssetEdits": 0,
+  "why": "Reviewed registration is blocked by two competing providers for one binding; valid typed source reassessment is misclassified as preservation, and recent graphics changes left some pending request container headers stale.",
+  "included": [
+    {
+      "component": "M2 S2 binding packet",
+      "originalRequests": 10,
+      "originalUID": 68,
+      "retainedRequests": 7,
+      "retainedUID": 57,
+      "withheldUID": 11,
+      "localRegistrarConsumerNativeReplay": "PASS",
+      "actualMainRegistration": "NOT_RUN"
+    },
+    {
+      "component": "Common provider closure",
+      "adoptedPR": 2168,
+      "adoptedExactHead": "918f912626afd878666d30c556de25468be3008e",
+      "changedFiles": 4,
+      "competingE029ProviderRemoved": true,
+      "unchangedE020ProviderSelected": true,
+      "focusedTests": 23
+    },
+    {
+      "component": "Native receipt reuse",
+      "changedFiles": 3,
+      "focusedTests": 92,
+      "independentReview": "ACCEPT",
+      "currentWangun20Consumer": "PASS",
+      "currentAndActualPendingPlannerChecks": 46,
+      "newSemanticAuthority": 0
+    },
+    {
+      "component": "M3 S2 Wangun",
+      "priorPublishedRequeuePR": 2172,
+      "selectedExistingApprovals": 20,
+      "requestDeltaFromPublishedRequeue": [
+        "expectedSourceBlobSha1"
+      ],
+      "unselectedSourceChange": 22,
+      "existingSameExamPending": 3,
+      "newSemanticApproval": 0
+    },
+    {
+      "component": "M3 S2 E054",
+      "headerOnlyRequests": 2,
+      "selectedExistingApprovals": 5,
+      "pendingPreviouslyReviewedApproval": 1,
+      "selectedWholeObjectsAndAssetsUnchanged": 6,
+      "dependency": "E037 existing approved provider request2, no new definition or approval",
+      "officialCurrentConsumer": "PENDING_BOUNDED_FINAL_CHECK"
+    },
+    {
+      "component": "M3 S2 four-slot",
+      "integratedRootPR": 2167,
+      "files": 4,
+      "items": 94,
+      "currentEligible": 23,
+      "currentPending": 71,
+      "slotValueChanges": 0,
+      "meaning": "Restore old reviewed baseline; preserve current source and assets. E074 latest selected gate reuses unchanged pending set."
+    },
+    {
+      "component": "M2 S1 four-slot",
+      "integratedRootPR": 2169,
+      "files": 19,
+      "items": 454,
+      "currentEligible": 449,
+      "currentPending": 5,
+      "slotValues": "Exactly the previously reviewed candidate; no current-header promotion",
+      "held": [
+        "E061 Q16",
+        "E061 Q17",
+        "E061 Q18",
+        "E050 Q7",
+        "E006 Q23"
+      ]
+    },
+    {
+      "component": "M2 S1 D5",
+      "requests": 4,
+      "retainedUID": 5,
+      "heldUID": 1,
+      "held": "E050 Q7 current choices changed",
+      "localProjection": "PASS",
+      "currentConsumer": "PENDING",
+      "knownBindingDebt": "E006 Q18 prior stale binding retained and reported; not repaired by whole-source header retarget"
+    }
+  ],
+  "protected": [
+    "Hyangrim M2 S2 Q5",
+    "M2 S2 explicit36 source holds",
+    "Existing D5 records",
+    "Unselected canonical metadata",
+    "M3 S1 sources and packets"
+  ],
+  "countBoundary": "D5, FINAL_QA, audit, BASIC parent and four-slot remain distinct. Prior M2S2 derived APPROVED395 is not nativeFINAL_QA395; actual baselineFINAL_QA1 and audit24.",
+  "downstream": [
+    "Exact PR CI",
+    "Serial main merge",
+    "Actual auto registration receipts",
+    "Target UID Consumers",
+    "Pages release and public byte verification"
+  ],
+  "qualification": "Local evidence is not actual main writer or deployment completion.",
+  "evidenceRoot": "docs/operations/middle-meta-release-26fc-20261115/atomic-recovery/",
+  "providerEvidenceRoot": "docs/operations/middle-meta-release-26fc-20261115/provider-selection/",
+  "latestInheritedMainDelta": {
+    "previous": "6e3d066923ccd4399578b20e205048f172177e2c",
+    "pr": 2178,
+    "path": "archive/build_db.py",
+    "change": "Build runtime readiness before sealing basic scope links; no overlap with owned source/request/code changes.",
+    "validation": "Covered by combined PR CI; earlier bounded selected-object evidence reused only where exact."
+  }
+}

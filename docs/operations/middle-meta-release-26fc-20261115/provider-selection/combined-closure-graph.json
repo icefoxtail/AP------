@@ -1,0 +1,1917 @@
+{
+  "schemaVersion": "native-request-binding-closure-technical-review-v1",
+  "main": "6a46ba70fc619d27262972594142557242810c9f",
+  "externalHead": "918f912626afd878666d30c556de25468be3008e",
+  "m1Candidate": {
+    "path": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/withhold-eleven-current-main-028d28c/candidate-manifest.json",
+    "sha256": "a5e17a7c3a57c71bf501d17e7655909c04ad82565e34234830f20678aa14ab38"
+  },
+  "inputs": {
+    "path": "current-inbox-inputs.json",
+    "sha256": "7afa6216a2e65baa2fd0916892fbd9433ebf5dc69b96bc4aac90b5c33dc1cd7a"
+  },
+  "oldMainWholeQueue": {
+    "status": "FAIL",
+    "error": "PR_NATIVE_PREVIEW:REGISTRY_DEPENDENCY_AMBIGUOUS"
+  },
+  "withhold57AloneWholeQueue": {
+    "status": "FAIL",
+    "error": "PR_NATIVE_PREVIEW:REGISTRY_DEPENDENCY_AMBIGUOUS"
+  },
+  "withhold57PlusUnusedStageAFallback": {
+    "status": "PASS_TECHNICAL_ORDER_ONLY",
+    "paths": [
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+      ".archive-meta-register/inbox/m3s2-e037-quadratic-context-26fc-20261115.json",
+      ".archive-meta-register/inbox/m3s2-e044-early2-26fc-20261115.json",
+      ".archive-meta-register/inbox/m3s2-e054-quadratic-context-26fc-20261115.json",
+      ".archive-meta-register/inbox/m3s2-e061-quadratic-context-26fc-20261115.json"
+    ]
+  },
+  "withhold57PlusExternalDataFixWholeQueue": {
+    "status": "PASS_TECHNICAL_ORDER_ONLY",
+    "paths": [
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+      ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+      ".archive-meta-register/inbox/m3s2-e037-quadratic-context-26fc-20261115.json",
+      ".archive-meta-register/inbox/m3s2-e044-early2-26fc-20261115.json",
+      ".archive-meta-register/inbox/m3s2-e054-quadratic-context-26fc-20261115.json",
+      ".archive-meta-register/inbox/m3s2-e061-quadratic-context-26fc-20261115.json"
+    ]
+  },
+  "changed2WithoutNewClosure": {
+    "requestCount": 2,
+    "selectedUids": 11,
+    "requiredItems": 11,
+    "missing": [
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_4c5e1baa8d1c9a3719e9850e78fb57d0d8df2a76ee5e32cb063499bfbeb782ae",
+        "sourceOrdinal": 7,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json",
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "satisfied": false
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_4590e2a67002547c3215c175c640a22ae1b95a38d3f2d9dfe78cbfc10ece3729",
+        "sourceOrdinal": 8,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "satisfied": false
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_0e97fe2ef575b0afa7abd8f8b860e21db58d16604927fe2a7b7ed52def5eb3b2",
+        "sourceOrdinal": 9,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "satisfied": false
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_afdc347ed91092a9bb0b9f04b84b6431e8286ae1a330dc9d8143576f52226577",
+        "sourceOrdinal": 10,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "satisfied": false
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+        "questionUid": "qid_v1_7a61006ceeef0168041b3718ebb3eb910d1eb0fcee0cabfeb295e7815e23b80c",
+        "sourceOrdinal": 8,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json",
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "satisfied": false
+      }
+    ],
+    "details": [
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_ceefff868164d9db3b3d09ba9a72988b9aaaef34bd8f110a1be626c12157c69e",
+        "sourceOrdinal": 3,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_f96313b59175ab99118b4dbb4bf054cfabf5e231d8c2a5ea85d56fa4a58977c5",
+        "sourceOrdinal": 5,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_RELATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_d7122eb981684caf430c54bdcb1d6bd77650f24babcb2a864fa24c4b2d4ff740",
+        "sourceOrdinal": 6,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_4c5e1baa8d1c9a3719e9850e78fb57d0d8df2a76ee5e32cb063499bfbeb782ae",
+        "sourceOrdinal": 7,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json",
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "satisfied": false
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_4590e2a67002547c3215c175c640a22ae1b95a38d3f2d9dfe78cbfc10ece3729",
+        "sourceOrdinal": 8,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "satisfied": false
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_0e97fe2ef575b0afa7abd8f8b860e21db58d16604927fe2a7b7ed52def5eb3b2",
+        "sourceOrdinal": 9,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "satisfied": false
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_afdc347ed91092a9bb0b9f04b84b6431e8286ae1a330dc9d8143576f52226577",
+        "sourceOrdinal": 10,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "satisfied": false
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_e6dd0dc9bd4a656b94076000c4a31ac7e583ed0a7d2b87e59163292f9e3ef8bb",
+        "sourceOrdinal": 23,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+        "questionUid": "qid_v1_92fd3e1e5938e2f0ebe45473c23476a0b2a66b28a37d0d03e20c50786d769367",
+        "sourceOrdinal": 4,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+        "questionUid": "qid_v1_fd76918f3911c90d3736a3a59078702e752b1ca62a3506f0a81fb5a82357d7c1",
+        "sourceOrdinal": 6,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+        "questionUid": "qid_v1_7a61006ceeef0168041b3718ebb3eb910d1eb0fcee0cabfeb295e7815e23b80c",
+        "sourceOrdinal": 8,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json",
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "satisfied": false
+      }
+    ]
+  },
+  "retainedFull7WithoutNewClosure": {
+    "requestCount": 7,
+    "selectedUids": 57,
+    "requiredItems": 57,
+    "missing": [],
+    "details": [
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_baa7c0df8ec5671debf3399171bea57aea5afc6ee16457af7f19321464f7f477",
+        "sourceOrdinal": 1,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_ISOSCELES_TRIANGLE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_7b2a8059a0e6423fb17922b894356160ab8fc355c33b37cda1af906f293377ce",
+        "sourceOrdinal": 2,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "problemTypeKey": "PT_SIMILAR_FIGURES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_df59639eb25fce171fc278dab6e3b9c4d0164911dfdbe09cf1a720f5d3976a0f",
+        "sourceOrdinal": 5,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_ISOSCELES_TRIANGLE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_ba41c772a216e5829d9405876838b03b7580fbd10dde514bed1dc7c0e154952c",
+        "sourceOrdinal": 6,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_b8ae9b1bfdf21005d513257355ae6055d4f2ee64093f0ad07ab5eab6e8395f54",
+        "sourceOrdinal": 7,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_e7c98995a1e9b0978afac9b256a22b1c3a15c0cae2676cab82fc1d55b7acdfda",
+        "sourceOrdinal": 10,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "problemTypeKey": "PT_TRIANGLE_SIMILARITY"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_e16f274a3d8274b01084d8e10a75172b4bc04fe8fd85dab315f05d44fa978702",
+        "sourceOrdinal": 11,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "problemTypeKey": "PT_SIMILAR_FIGURES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_481a5b1c4883ddaeb3ca29073c6d4a7722276f76578ff5f0ec0590875a1389a4",
+        "sourceOrdinal": 12,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_ISOSCELES_TRIANGLE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_524a8a5b0f1a43d848c9300639744b2580195e9e53c3d68df06b9e07d71a9d34",
+        "sourceOrdinal": 17,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_dc08c153ba21f5e159892074886112a76e86abada5e7b2d97dc067998ab13fc3",
+        "sourceOrdinal": 18,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_ceb8b9def9b97d91e4c9cf075f2c4a058436803a972e0de7824c1cda6667dbbf",
+        "sourceOrdinal": 19,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "problemTypeKey": "PT_SIMILAR_FIGURES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_6f25a0dbdc503c31ffeb4eda9fa9b154ce42e66033122acce9ca9489594282b8",
+        "sourceOrdinal": 20,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+        "questionUid": "qid_v1_901eef0e0ae2457038afcb10af0d3480b099587a4c0888bdedcf675f67cc41cf",
+        "sourceOrdinal": 23,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+        "questionUid": "qid_v1_9f7461a54c31a540a755649e583dcd0a7d7713697bfbce556293067e850e5117",
+        "sourceOrdinal": 1,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_ISOSCELES_TRIANGLE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+        "questionUid": "qid_v1_26f488702195a2c595d11737ccaf965606e24a97cfaa3a7ba54f4ad4e68642d2",
+        "sourceOrdinal": 2,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+        "questionUid": "qid_v1_25fe097323a6a80cf63624ebbb0a10a4b617882031ac800b18e45ec6ac0a0b31",
+        "sourceOrdinal": 3,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+        "questionUid": "qid_v1_c32da9ac829d6a224ef8fe613a3170fba405e9d0d57379e6b9cb4e6c141593bf",
+        "sourceOrdinal": 5,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+        "questionUid": "qid_v1_b7d86c9229307a12886ae00caddf69fd9f897de7650b1e3fba9ff6c7053325d8",
+        "sourceOrdinal": 6,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_ISOSCELES_TRIANGLE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+        "questionUid": "qid_v1_b2e1c466a4ef4a095ac430049d562557e10726eed8b951a69cfb001cd98dac7b",
+        "sourceOrdinal": 7,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+        "questionUid": "qid_v1_4d185df459ee544c6105fa2386439930974029bcbb676b8b0561db476e451cde",
+        "sourceOrdinal": 10,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+        "questionUid": "qid_v1_17c60ebbb6430ede6d016e728e2aaa738c7a3ee0aa7ae39e24ffc4f28a63c1c6",
+        "sourceOrdinal": 19,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "problemTypeKey": "PT_SIMILAR_FIGURES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+        "questionUid": "qid_v1_a623d41ef207a4d3e099e1b600d7cfcaafd977bd152febe1f92655f7c701a60b",
+        "sourceOrdinal": 20,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "problemTypeKey": "PT_SIMILAR_FIGURES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E002.json",
+        "questionUid": "qid_v1_3583e434442f9a996975a0a188ce969409c6fd8804bba6c0768378b443975a0e",
+        "sourceOrdinal": 21,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+        "questionUid": "qid_v1_1a8ec1b864d1131556f5fa2f894824ed1dae0cab164c5caeeca76f0eadfc39c2",
+        "sourceOrdinal": 11,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_ISOSCELES_TRIANGLE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+        "questionUid": "qid_v1_b7af638d46df7d67148898afcbc38f2e027bf8b553feeb77470402199dce2b65",
+        "sourceOrdinal": 14,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+        "questionUid": "qid_v1_1f32a49f975c1531a9614a2d653c0073572cf10c42f19d74ad0483a5ae25d74b",
+        "sourceOrdinal": 15,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+        "questionUid": "qid_v1_2f0ba312c52ca50142f3cc2ee229e025746fb19d87bc5da94ee3a82401b1cdb6",
+        "sourceOrdinal": 16,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+        "questionUid": "qid_v1_9eeb5a417b5cdd693660a54075fec02f0fb81af070b2fe2220a10ba2086cedad",
+        "sourceOrdinal": 17,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+        "questionUid": "qid_v1_ef57fb008902f90036c78058ab67d85be4d5ba1ee70cf47afd29cdf2d6db76a9",
+        "sourceOrdinal": 18,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+        "questionUid": "qid_v1_f86984ab80fc796fc7dd004b6df0542033939352ff8702099ff7deaddd634a2c",
+        "sourceOrdinal": 20,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "problemTypeKey": "PT_SIMILAR_FIGURES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+        "questionUid": "qid_v1_a30434db189c2256d5a5cea2f8f358b1743ce68f2d33ac5059106c33b3c2d0fa",
+        "sourceOrdinal": 21,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+        "questionUid": "qid_v1_f356d5785592a178a18e294edf78033fbe4b3bba0124ad8a4846b8d44d909788",
+        "sourceOrdinal": 22,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E004.json",
+        "questionUid": "qid_v1_de1eccfef8c0d1a7fc2cd0e39f09d74b88203cf571fc0708d83c2067ffe8a132",
+        "sourceOrdinal": 24,
+        "key": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "problemTypeKey": "PT_SIMILAR_FIGURES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+        "questionUid": "qid_v1_1ea93c8f6e39dec082dec838c07cd44187b0fe2e169005b68a65e6d29fba82a8",
+        "sourceOrdinal": 2,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json"
+        ],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+        "questionUid": "qid_v1_77dcd4204b00bb39c6f468ed99adef321ba119dcd686cc0af797f758391d6030",
+        "sourceOrdinal": 3,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json"
+        ],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+        "questionUid": "qid_v1_4031c846e87d88b28687218a6863b73a2e8e061ef3bdf9c123e8d7f9e8308762",
+        "sourceOrdinal": 4,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json"
+        ],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+        "questionUid": "qid_v1_5068a742bcc99fb3c7a7aa746d0182bd19789f8afce1a5abf3e8c1e465d61d2d",
+        "sourceOrdinal": 7,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_LINE_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+        "questionUid": "qid_v1_2e14f66890fc529b29c3a59a2fb00dcac5c8dfcc1fe0616cd22221853cc056b3",
+        "sourceOrdinal": 10,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+        "questionUid": "qid_v1_03dd1ce799192dac3bee69105a0142916d0cf63c2f60761a0aa0990781837034",
+        "sourceOrdinal": 23,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+        "questionUid": "qid_v1_f288a19bf33c38b84c2c2436478bfba2bafd4b275fa60568af686eeab5732363",
+        "sourceOrdinal": 2,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+        "questionUid": "qid_v1_9172cf1ec90c0cc3af91cab63dcfa4b68fa61065882343e82812a4d86d780f85",
+        "sourceOrdinal": 3,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+        "questionUid": "qid_v1_bed808c0cecc90e30621de4a5b961290d1ce0b95e943d07155962ed483cc39c8",
+        "sourceOrdinal": 4,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+        "questionUid": "qid_v1_df579118439a5d43dc8408f65e435810dd1ef11b29053720e135ca1120ec50f0",
+        "sourceOrdinal": 5,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+        "questionUid": "qid_v1_45204c832c0632b1cad11ec4c9e766abfddf38680628e9af0beb70538e68ece7",
+        "sourceOrdinal": 6,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+        "questionUid": "qid_v1_9ec4baa4cded9d949b8ca60ced0a095a03b5d438f48f1a57fde1cc7dfeb956d6",
+        "sourceOrdinal": 7,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+        "questionUid": "qid_v1_7a44e50d6c7fb8fddcd4b1791abe9bd4987c5e1dc4d6e6aafca725c7c62a7f6a",
+        "sourceOrdinal": 9,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_ceefff868164d9db3b3d09ba9a72988b9aaaef34bd8f110a1be626c12157c69e",
+        "sourceOrdinal": 3,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_f96313b59175ab99118b4dbb4bf054cfabf5e231d8c2a5ea85d56fa4a58977c5",
+        "sourceOrdinal": 5,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_RELATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_d7122eb981684caf430c54bdcb1d6bd77650f24babcb2a864fa24c4b2d4ff740",
+        "sourceOrdinal": 6,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_4c5e1baa8d1c9a3719e9850e78fb57d0d8df2a76ee5e32cb063499bfbeb782ae",
+        "sourceOrdinal": 7,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json"
+        ],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_4590e2a67002547c3215c175c640a22ae1b95a38d3f2d9dfe78cbfc10ece3729",
+        "sourceOrdinal": 8,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_0e97fe2ef575b0afa7abd8f8b860e21db58d16604927fe2a7b7ed52def5eb3b2",
+        "sourceOrdinal": 9,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_afdc347ed91092a9bb0b9f04b84b6431e8286ae1a330dc9d8143576f52226577",
+        "sourceOrdinal": 10,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_e6dd0dc9bd4a656b94076000c4a31ac7e583ed0a7d2b87e59163292f9e3ef8bb",
+        "sourceOrdinal": 23,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+        "questionUid": "qid_v1_92fd3e1e5938e2f0ebe45473c23476a0b2a66b28a37d0d03e20c50786d769367",
+        "sourceOrdinal": 4,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+        "questionUid": "qid_v1_fd76918f3911c90d3736a3a59078702e752b1ca62a3506f0a81fb5a82357d7c1",
+        "sourceOrdinal": 6,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json"
+        ],
+        "unselectedProviderPaths": [],
+        "satisfied": true
+      },
+      {
+        "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+        "questionUid": "qid_v1_7a61006ceeef0168041b3718ebb3eb910d1eb0fcee0cabfeb295e7815e23b80c",
+        "sourceOrdinal": 8,
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_EQUATION"
+        },
+        "canonicalActiveMatches": 0,
+        "selectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+        ],
+        "unselectedProviderPaths": [
+          ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json"
+        ],
+        "satisfied": true
+      }
+    ]
+  },
+  "changed2NewClosureBeforeE029Fix": {
+    "status": "FAIL",
+    "error": "PR_NATIVE_PREVIEW:REGISTRY_DEPENDENCY_AMBIGUOUS",
+    "consumer": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+    "key": {
+      "curriculum": "2015",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_LINE_EQUATION"
+    },
+    "providers": [
+      ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+    ]
+  },
+  "changed2PlusE029NewClosureAfterDataFix": {
+    "status": "PASS_TECHNICAL_ORDER_ONLY",
+    "paths": [
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+      ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+      ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json"
+    ],
+    "added": [
+      {
+        "provider": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+        "requiredBy": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_4c5e1baa8d1c9a3719e9850e78fb57d0d8df2a76ee5e32cb063499bfbeb782ae",
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_EQUATION"
+        }
+      },
+      {
+        "provider": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+        "requiredBy": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+        "questionUid": "qid_v1_4590e2a67002547c3215c175c640a22ae1b95a38d3f2d9dfe78cbfc10ece3729",
+        "key": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM"
+        }
+      }
+    ],
+    "coverage": {
+      "requestCount": 5,
+      "selectedUids": 25,
+      "requiredItems": 25,
+      "missing": [],
+      "details": [
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+          "questionUid": "qid_v1_ceefff868164d9db3b3d09ba9a72988b9aaaef34bd8f110a1be626c12157c69e",
+          "sourceOrdinal": 3,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+            "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+          "questionUid": "qid_v1_f96313b59175ab99118b4dbb4bf054cfabf5e231d8c2a5ea85d56fa4a58977c5",
+          "sourceOrdinal": 5,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+            "problemTypeKey": "PT_LINE_RELATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+          "questionUid": "qid_v1_d7122eb981684caf430c54bdcb1d6bd77650f24babcb2a864fa24c4b2d4ff740",
+          "sourceOrdinal": 6,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+            "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+          "questionUid": "qid_v1_4c5e1baa8d1c9a3719e9850e78fb57d0d8df2a76ee5e32cb063499bfbeb782ae",
+          "sourceOrdinal": 7,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+            "problemTypeKey": "PT_LINE_EQUATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+          "questionUid": "qid_v1_4590e2a67002547c3215c175c640a22ae1b95a38d3f2d9dfe78cbfc10ece3729",
+          "sourceOrdinal": 8,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+            "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+          "questionUid": "qid_v1_0e97fe2ef575b0afa7abd8f8b860e21db58d16604927fe2a7b7ed52def5eb3b2",
+          "sourceOrdinal": 9,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+            "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+          "questionUid": "qid_v1_afdc347ed91092a9bb0b9f04b84b6431e8286ae1a330dc9d8143576f52226577",
+          "sourceOrdinal": 10,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+            "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json",
+          "questionUid": "qid_v1_e6dd0dc9bd4a656b94076000c4a31ac7e583ed0a7d2b87e59163292f9e3ef8bb",
+          "sourceOrdinal": 23,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+            "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+          "questionUid": "qid_v1_92fd3e1e5938e2f0ebe45473c23476a0b2a66b28a37d0d03e20c50786d769367",
+          "sourceOrdinal": 4,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+            "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E053.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+          "questionUid": "qid_v1_fd76918f3911c90d3736a3a59078702e752b1ca62a3506f0a81fb5a82357d7c1",
+          "sourceOrdinal": 6,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+            "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E061.json",
+          "questionUid": "qid_v1_7a61006ceeef0168041b3718ebb3eb910d1eb0fcee0cabfeb295e7815e23b80c",
+          "sourceOrdinal": 8,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+            "problemTypeKey": "PT_LINE_EQUATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json",
+          "questionUid": "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+          "sourceOrdinal": 7,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+            "problemTypeKey": "PT_LINE_EQUATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+          "questionUid": "qid_v1_1ea93c8f6e39dec082dec838c07cd44187b0fe2e169005b68a65e6d29fba82a8",
+          "sourceOrdinal": 2,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+            "problemTypeKey": "PT_LINE_EQUATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+          "questionUid": "qid_v1_77dcd4204b00bb39c6f468ed99adef321ba119dcd686cc0af797f758391d6030",
+          "sourceOrdinal": 3,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+            "problemTypeKey": "PT_LINE_EQUATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+          "questionUid": "qid_v1_4031c846e87d88b28687218a6863b73a2e8e061ef3bdf9c123e8d7f9e8308762",
+          "sourceOrdinal": 4,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+            "problemTypeKey": "PT_LINE_EQUATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+          "questionUid": "qid_v1_5068a742bcc99fb3c7a7aa746d0182bd19789f8afce1a5abf3e8c1e465d61d2d",
+          "sourceOrdinal": 7,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+            "problemTypeKey": "PT_LINE_EQUATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+          "questionUid": "qid_v1_2e14f66890fc529b29c3a59a2fb00dcac5c8dfcc1fe0616cd22221853cc056b3",
+          "sourceOrdinal": 10,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+            "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json",
+          "questionUid": "qid_v1_03dd1ce799192dac3bee69105a0142916d0cf63c2f60761a0aa0990781837034",
+          "sourceOrdinal": 23,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+            "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E020.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+          "questionUid": "qid_v1_f288a19bf33c38b84c2c2436478bfba2bafd4b275fa60568af686eeab5732363",
+          "sourceOrdinal": 2,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+            "problemTypeKey": "PT_H1_SYSTEM_EQUATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+          "questionUid": "qid_v1_9172cf1ec90c0cc3af91cab63dcfa4b68fa61065882343e82812a4d86d780f85",
+          "sourceOrdinal": 3,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+            "problemTypeKey": "PT_H1_SYSTEM_EQUATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+          "questionUid": "qid_v1_bed808c0cecc90e30621de4a5b961290d1ce0b95e943d07155962ed483cc39c8",
+          "sourceOrdinal": 4,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+            "problemTypeKey": "PT_H1_SYSTEM_EQUATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+          "questionUid": "qid_v1_df579118439a5d43dc8408f65e435810dd1ef11b29053720e135ca1120ec50f0",
+          "sourceOrdinal": 5,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+            "problemTypeKey": "PT_H1_SYSTEM_EQUATION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+          "questionUid": "qid_v1_45204c832c0632b1cad11ec4c9e766abfddf38680628e9af0beb70538e68ece7",
+          "sourceOrdinal": 6,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+            "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+          "questionUid": "qid_v1_9ec4baa4cded9d949b8ca60ced0a095a03b5d438f48f1a57fde1cc7dfeb956d6",
+          "sourceOrdinal": 7,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+            "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        },
+        {
+          "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json",
+          "questionUid": "qid_v1_7a44e50d6c7fb8fddcd4b1791abe9bd4987c5e1dc4d6e6aafca725c7c62a7f6a",
+          "sourceOrdinal": 9,
+          "key": {
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+            "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION"
+          },
+          "canonicalActiveMatches": 0,
+          "selectedProviderPaths": [
+            ".archive-meta-register/inbox/m2s2-binding68-20261115-E032.json"
+          ],
+          "unselectedProviderPaths": [],
+          "satisfied": true
+        }
+      ]
+    }
+  },
+  "limits": {
+    "scope": "Exact binding provider graph only; no new semantic authority judgment, source review, registrar application or actual registration",
+    "officialRequestDryWriteReplayConsumer": "M1 agent owns 57; no duplicate execution here",
+    "sourceContentReads": 0,
+    "sourceWrites": 0,
+    "canonicalWrites": 0,
+    "remoteWrites": 0
+  }
+}

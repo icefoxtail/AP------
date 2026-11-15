@@ -1,0 +1,562 @@
+TAP version 13
+# Subtest: exact current figure native receipt survives an old cursor without new approval: image
+ok 1 - exact current figure native receipt survives an old cursor without new approval: image
+  ---
+  duration_ms: 387.817248
+  type: 'test'
+  ...
+# Subtest: exact current figure native receipt survives an old cursor without new approval: html
+ok 2 - exact current figure native receipt survives an old cursor without new approval: html
+  ---
+  duration_ms: 375.601209
+  type: 'test'
+  ...
+# Subtest: exact current figure native receipt survives an old cursor without new approval: solution
+ok 3 - exact current figure native receipt survives an old cursor without new approval: solution
+  ---
+  duration_ms: 303.747886
+  type: 'test'
+  ...
+# Subtest: source-only rebind retains its original typed source-review witness obligations
+ok 4 - source-only rebind retains its original typed source-review witness obligations
+  ---
+  duration_ms: 211.651186
+  type: 'test'
+  ...
+# Subtest: typed source-review ancestor refuses wrong prior receipt SHA
+ok 5 - typed source-review ancestor refuses wrong prior receipt SHA
+  ---
+  duration_ms: 118.427394
+  type: 'test'
+  ...
+# Subtest: typed source-review ancestor refuses unregistered new approval
+ok 6 - typed source-review ancestor refuses unregistered new approval
+  ---
+  duration_ms: 127.807569
+  type: 'test'
+  ...
+# Subtest: typed source-review ancestor refuses missing original sidecar
+ok 7 - typed source-review ancestor refuses missing original sidecar
+  ---
+  duration_ms: 121.44732
+  type: 'test'
+  ...
+# Subtest: an explicit receipt ancestry with no typed source review preserves the plain native path
+ok 8 - an explicit receipt ancestry with no typed source review preserves the plain native path
+  ---
+  duration_ms: 164.385622
+  type: 'test'
+  ...
+# Subtest: verified plain reassessment may cite a native receipt without claiming source-only preservation
+ok 9 - verified plain reassessment may cite a native receipt without claiming source-only preservation
+  ---
+  duration_ms: 567.612797
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with explicit sourceRebind
+ok 10 - native evidence does not excuse a reassessment with explicit sourceRebind
+  ---
+  duration_ms: 146.905769
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with explicit preserved count
+ok 11 - native evidence does not excuse a reassessment with explicit preserved count
+  ---
+  duration_ms: 150.507875
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with missing proof
+ok 12 - native evidence does not excuse a reassessment with missing proof
+  ---
+  duration_ms: 189.467008
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with unverified review ref
+ok 13 - native evidence does not excuse a reassessment with unverified review ref
+  ---
+  duration_ms: 140.756655
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with wrong current source binding
+ok 14 - native evidence does not excuse a reassessment with wrong current source binding
+  ---
+  duration_ms: 274.356891
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with wrong student payload proof
+ok 15 - native evidence does not excuse a reassessment with wrong student payload proof
+  ---
+  duration_ms: 290.886472
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with unknown issued proof field
+ok 16 - native evidence does not excuse a reassessment with unknown issued proof field
+  ---
+  duration_ms: 275.324838
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with incomplete selected proof set
+ok 17 - native evidence does not excuse a reassessment with incomplete selected proof set
+  ---
+  duration_ms: 129.666007
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with duplicate selected proof
+ok 18 - native evidence does not excuse a reassessment with duplicate selected proof
+  ---
+  duration_ms: 146.622424
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with new registry operation
+ok 19 - native evidence does not excuse a reassessment with new registry operation
+  ---
+  duration_ms: 185.193964
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with unverified parent operation
+ok 20 - native evidence does not excuse a reassessment with unverified parent operation
+  ---
+  duration_ms: 521.532771
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with review file changed after a warm check
+ok 21 - native evidence does not excuse a reassessment with review file changed after a warm check
+  ---
+  duration_ms: 169.547946
+  type: 'test'
+  ...
+# Subtest: native evidence does not excuse a reassessment with native evidence missing after a warm check
+ok 22 - native evidence does not excuse a reassessment with native evidence missing after a warm check
+  ---
+  duration_ms: 199.030644
+  type: 'test'
+  ...
+# Subtest: plain reassessment classification does not waive the ordinary changed-student cursor gate
+ok 23 - plain reassessment classification does not waive the ordinary changed-student cursor gate
+  ---
+  duration_ms: 314.724831
+  type: 'test'
+  ...
+# Subtest: an explicitly reviewed prior native source survives its exact old and current cursor without a new approval
+ok 24 - an explicitly reviewed prior native source survives its exact old and current cursor without a new approval
+  ---
+  duration_ms: 299.799905
+  type: 'test'
+  ...
+# Subtest: plain reassessment replays the same selected proof after an unselected container change
+ok 25 - plain reassessment replays the same selected proof after an unselected container change
+  ---
+  duration_ms: 501.102412
+  type: 'test'
+  ...
+# Subtest: plain reassessment never treats a selected renderer change as unselected container drift
+ok 26 - plain reassessment never treats a selected renderer change as unselected container drift
+  ---
+  duration_ms: 1036.009902
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses no immutable prior link
+ok 27 - reviewed prior-source reuse refuses no immutable prior link
+  ---
+  duration_ms: 421.736819
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses wrong prior selected UID
+ok 28 - reviewed prior-source reuse refuses wrong prior selected UID
+  ---
+  duration_ms: 326.677649
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses wrong prior approval value
+ok 29 - reviewed prior-source reuse refuses wrong prior approval value
+  ---
+  duration_ms: 322.44822
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses wrong prior fingerprint
+ok 30 - reviewed prior-source reuse refuses wrong prior fingerprint
+  ---
+  duration_ms: 301.998519
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses wrong prior identity
+ok 31 - reviewed prior-source reuse refuses wrong prior identity
+  ---
+  duration_ms: 318.812405
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses additional prior identity provenance
+ok 32 - reviewed prior-source reuse refuses additional prior identity provenance
+  ---
+  duration_ms: 315.564468
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses unavailable prior source
+ok 33 - reviewed prior-source reuse refuses unavailable prior source
+  ---
+  duration_ms: 579.98852
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses unknown old answer
+ok 34 - reviewed prior-source reuse refuses unknown old answer
+  ---
+  duration_ms: 353.849118
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses unknown old image
+ok 35 - reviewed prior-source reuse refuses unknown old image
+  ---
+  duration_ms: 342.7952
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses unknown old shared material
+ok 36 - reviewed prior-source reuse refuses unknown old shared material
+  ---
+  duration_ms: 339.176752
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses prior evidence bytes changed
+ok 37 - reviewed prior-source reuse refuses prior evidence bytes changed
+  ---
+  duration_ms: 179.049264
+  type: 'test'
+  ...
+# Subtest: reviewed prior-source reuse refuses prior reference omitted from approval
+ok 38 - reviewed prior-source reuse refuses prior reference omitted from approval
+  ---
+  duration_ms: 252.570989
+  type: 'test'
+  ...
+# Subtest: source-only preservation reuses the original plain unchanged source approval across old and caught-up cursors
+ok 39 - source-only preservation reuses the original plain unchanged source approval across old and caught-up cursors
+  ---
+  duration_ms: 43.537389
+  type: 'test'
+  ...
+# Subtest: source-only preservation reuses the original solution correction approval across old and caught-up cursors
+ok 40 - source-only preservation reuses the original solution correction approval across old and caught-up cursors
+  ---
+  duration_ms: 111.698203
+  type: 'test'
+  ...
+# Subtest: source-only preservation reuses the original independent figure approval across old and caught-up cursors
+ok 41 - source-only preservation reuses the original independent figure approval across old and caught-up cursors
+  ---
+  duration_ms: 688.852916
+  type: 'test'
+  ...
+# Subtest: source-only preservation reuses the original compound renderer approval across old and caught-up cursors
+ok 42 - source-only preservation reuses the original compound renderer approval across old and caught-up cursors
+  ---
+  duration_ms: 675.810303
+  type: 'test'
+  ...
+# Subtest: two exact source-only preserves replay the original solution proof without approval or identity changes
+ok 43 - two exact source-only preserves replay the original solution proof without approval or identity changes
+  ---
+  duration_ms: 151.709405
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses prior SHA changed without producer fallback
+ok 44 - source-only native ancestry refuses prior SHA changed without producer fallback
+  ---
+  duration_ms: 32.685621
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses prior receipt missing without producer fallback
+ok 45 - source-only native ancestry refuses prior receipt missing without producer fallback
+  ---
+  duration_ms: 37.685454
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses prior receipt symlink without producer fallback
+ok 46 - source-only native ancestry refuses prior receipt symlink without producer fallback
+  ---
+  duration_ms: 27.218244
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses sourceRebind removed without producer fallback
+ok 47 - source-only native ancestry refuses sourceRebind removed without producer fallback
+  ---
+  duration_ms: 35.323831
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses sourceRebind and count markers removed without producer fallback
+ok 48 - source-only native ancestry refuses sourceRebind and count markers removed without producer fallback
+  ---
+  duration_ms: 26.651858
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses sourceRebind, count markers and prior-ref all removed without producer fallback
+ok 49 - source-only native ancestry refuses sourceRebind, count markers and prior-ref all removed without producer fallback
+  ---
+  duration_ms: 33.80693
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses all receipt markers and predecessor file removed without producer fallback
+ok 50 - source-only native ancestry refuses all receipt markers and predecessor file removed without producer fallback
+  ---
+  duration_ms: 36.585049
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses all receipt markers removed and predecessor JSON malformed without producer fallback
+ok 51 - source-only native ancestry refuses all receipt markers removed and predecessor JSON malformed without producer fallback
+  ---
+  duration_ms: 36.426328
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses unregistered new approval without producer fallback
+ok 52 - source-only native ancestry refuses unregistered new approval without producer fallback
+  ---
+  duration_ms: 27.968356
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses wrong preserved count without producer fallback
+ok 53 - source-only native ancestry refuses wrong preserved count without producer fallback
+  ---
+  duration_ms: 31.979084
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses unknown scope without producer fallback
+ok 54 - source-only native ancestry refuses unknown scope without producer fallback
+  ---
+  duration_ms: 26.414485
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses new registry change without producer fallback
+ok 55 - source-only native ancestry refuses new registry change without producer fallback
+  ---
+  duration_ms: 29.815356
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses malformed registry change object without producer fallback
+ok 56 - source-only native ancestry refuses malformed registry change object without producer fallback
+  ---
+  duration_ms: 27.847771
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses new fingerprint repair without producer fallback
+ok 57 - source-only native ancestry refuses new fingerprint repair without producer fallback
+  ---
+  duration_ms: 33.15671
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses unknown sourceRebind option without producer fallback
+ok 58 - source-only native ancestry refuses unknown sourceRebind option without producer fallback
+  ---
+  duration_ms: 27.369704
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses parent scope change without producer fallback
+ok 59 - source-only native ancestry refuses parent scope change without producer fallback
+  ---
+  duration_ms: 47.499311
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses parent denominator change without producer fallback
+ok 60 - source-only native ancestry refuses parent denominator change without producer fallback
+  ---
+  duration_ms: 26.000057
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses parent selected UID change without producer fallback
+ok 61 - source-only native ancestry refuses parent selected UID change without producer fallback
+  ---
+  duration_ms: 27.224932
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses parent ordinal change without producer fallback
+ok 62 - source-only native ancestry refuses parent ordinal change without producer fallback
+  ---
+  duration_ms: 25.103586
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses parent approval downgraded without producer fallback
+ok 63 - source-only native ancestry refuses parent approval downgraded without producer fallback
+  ---
+  duration_ms: 28.413579
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses parent approval evidence changed without producer fallback
+ok 64 - source-only native ancestry refuses parent approval evidence changed without producer fallback
+  ---
+  duration_ms: 41.796993
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses current approved field changed without producer fallback
+ok 65 - source-only native ancestry refuses current approved field changed without producer fallback
+  ---
+  duration_ms: 51.254876
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses current runtime field changed without producer fallback
+ok 66 - source-only native ancestry refuses current runtime field changed without producer fallback
+  ---
+  duration_ms: 63.990939
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses parent selected whole question changed without producer fallback
+ok 67 - source-only native ancestry refuses parent selected whole question changed without producer fallback
+  ---
+  duration_ms: 50.746927
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses another selected question changed outside legacy fingerprint fields without producer fallback
+ok 68 - source-only native ancestry refuses another selected question changed outside legacy fingerprint fields without producer fallback
+  ---
+  duration_ms: 45.381667
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses original repair before fingerprint changed without producer fallback
+ok 69 - source-only native ancestry refuses original repair before fingerprint changed without producer fallback
+  ---
+  duration_ms: 56.897442
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses original old source blob changed without producer fallback
+ok 70 - source-only native ancestry refuses original old source blob changed without producer fallback
+  ---
+  duration_ms: 213.301492
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses preserved metadata evidence removed without producer fallback
+ok 71 - source-only native ancestry refuses preserved metadata evidence removed without producer fallback
+  ---
+  duration_ms: 43.621316
+  type: 'test'
+  ...
+# Subtest: source-only native ancestry refuses preserved runtime evidence removed without producer fallback
+ok 72 - source-only native ancestry refuses preserved runtime evidence removed without producer fallback
+  ---
+  duration_ms: 53.0542
+  type: 'test'
+  ...
+# Subtest: preserved renderer ancestry rechecks actual assets after a warm cache and caught-up cursor: reviewedFigureNativeFixture
+ok 73 - preserved renderer ancestry rechecks actual assets after a warm cache and caught-up cursor: reviewedFigureNativeFixture
+  ---
+  duration_ms: 388.030423
+  type: 'test'
+  ...
+# Subtest: preserved renderer ancestry rechecks actual assets after a warm cache and caught-up cursor: compoundRendererNativeFixture
+ok 74 - preserved renderer ancestry rechecks actual assets after a warm cache and caught-up cursor: compoundRendererNativeFixture
+  ---
+  duration_ms: 414.390273
+  type: 'test'
+  ...
+# Subtest: partial source preservation cannot replace an unknown old student payload with an existing approved one
+ok 75 - partial source preservation cannot replace an unknown old student payload with an existing approved one
+  ---
+  duration_ms: 31.263937
+  type: 'test'
+  ...
+# Subtest: partial source preservation bounds the receipt ancestry depth
+ok 76 - partial source preservation bounds the receipt ancestry depth
+  ---
+  duration_ms: 1542.003003
+  type: 'test'
+  ...
+# Subtest: missing latest preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+ok 77 - missing latest preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+  ---
+  duration_ms: 57.264929
+  type: 'test'
+  ...
+# Subtest: missing latest preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+ok 78 - missing latest preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+  ---
+  duration_ms: 373.012235
+  type: 'test'
+  ...
+# Subtest: missing latest and original preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+ok 79 - missing latest and original preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+  ---
+  duration_ms: 50.477535
+  type: 'test'
+  ...
+# Subtest: missing latest and original preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+ok 80 - missing latest and original preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+  ---
+  duration_ms: 353.967865
+  type: 'test'
+  ...
+# Subtest: empty latest object preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+ok 81 - empty latest object preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+  ---
+  duration_ms: 67.259371
+  type: 'test'
+  ...
+# Subtest: empty latest object preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+ok 82 - empty latest object preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+  ---
+  duration_ms: 390.604463
+  type: 'test'
+  ...
+# Subtest: latest approval removed preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+ok 83 - latest approval removed preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+  ---
+  duration_ms: 61.981406
+  type: 'test'
+  ...
+# Subtest: latest approval removed preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+ok 84 - latest approval removed preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+  ---
+  duration_ms: 331.938438
+  type: 'test'
+  ...
+# Subtest: latest approval type removed preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+ok 85 - latest approval type removed preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+  ---
+  duration_ms: 55.632825
+  type: 'test'
+  ...
+# Subtest: latest approval type removed preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+ok 86 - latest approval type removed preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+  ---
+  duration_ms: 561.871614
+  type: 'test'
+  ...
+# Subtest: latest scope removed preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+ok 87 - latest scope removed preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+  ---
+  duration_ms: 106.035442
+  type: 'test'
+  ...
+# Subtest: latest scope removed preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+ok 88 - latest scope removed preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+  ---
+  duration_ms: 341.764712
+  type: 'test'
+  ...
+# Subtest: latest selected metadata removed preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+ok 89 - latest selected metadata removed preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+  ---
+  duration_ms: 58.228771
+  type: 'test'
+  ...
+# Subtest: latest selected metadata removed preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+ok 90 - latest selected metadata removed preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+  ---
+  duration_ms: 418.097447
+  type: 'test'
+  ...
+# Subtest: latest preservation markers removed and source tuple rolled back preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+ok 91 - latest preservation markers removed and source tuple rolled back preservation receipt cannot invoke the otherwise eligible producer: solutionRebindNativeFixture
+  ---
+  duration_ms: 51.827939
+  type: 'test'
+  ...
+# Subtest: latest preservation markers removed and source tuple rolled back preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+ok 92 - latest preservation markers removed and source tuple rolled back preservation receipt cannot invoke the otherwise eligible producer: reviewedFigureNativeFixture
+  ---
+  duration_ms: 416.696789
+  type: 'test'
+  ...
+1..92
+# tests 92
+# suites 0
+# pass 92
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 20882.325963
