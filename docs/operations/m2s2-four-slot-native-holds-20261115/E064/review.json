@@ -1,0 +1,3251 @@
+{
+  "schemaVersion": "m2-s2-meta-review-v1",
+  "examId": "E064",
+  "owner": "A",
+  "sourceArchiveFile": "original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "57c2e51b7dfd66365a016de3dbf0299003c9a97d",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewedQuestionCount": 24,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_d65cf23f05d8ce08128c0dba9f90da2d25ac791801a06d49acd3c350a21d36c3",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-061",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "꼭지각 이등분선과 공통변으로 SAS 증명 빈칸",
+      "decisiveStep": "같은 두 변과 이등분한 끼인각·공통AD를 SAS로 묶고 대응하는 두 밑각이 같음을 확인한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 이등변삼각형의 성질 > 꼭짓각의 이등분선: 꼭지각 이등분선과 공통변으로 SAS 증명 빈칸",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "증명 박스에 대상 삼각형과 대응 요소가 이미 제시되어 빈칸의 변·각·합동조건만 맞춘다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "현행 TPL_ISOSCELES_VERTEX_BISECTOR 자체가 꼭지각 이등분선의 공통변·각으로 두 부분삼각형의 합동관계를 확정하는 정의이다. 이 증명빈칸은 그 정확한 골격이므로 단순정리적용TPL이나 불필요한 신규증명TPL로 바꾸지 않는다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "주어진 증명 골격에서 대응변과 SAS의 의미를 읽어 오류 빈칸을 찾아야 한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "증명 박스에 대상 삼각형과 대응 요소가 이미 제시되어 빈칸의 변·각·합동조건만 맞춘다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "주어진 증명 골격에서 대응변과 SAS의 의미를 읽어 오류 빈칸을 찾아야 한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-061",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "이등변삼각형의 성질",
+          "l4": "꼭짓각의 이등분선"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "꼭짓각의 이등분선"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-178",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/1.png",
+            "sha256": "69e1759cbc494023caa6fa8946a5e80c6c2ce3ecba1f6f6263ea3d5c6b6b400a"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_6d8197c750a9569c2c4a6775c41372c1711f943f11a93af73d5966f3324de1a6",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-060",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 이등변삼각형의 밑각과 외각 연결",
+      "decisiveStep": "BD=CD의 밑각35를 외각70으로 바꾸고 AC=CD의 같은 밑각과 내각합으로 목표합을 정한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 이등변삼각형의 성질 > 밑각: 두 이등변삼각형의 밑각과 외각 연결",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "같은 변 두 쌍이 지정한 이등변삼각형을 차례로 적용하는 정형 각도 추적이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "BD=CD의 밑각35를 외각70으로 바꾸고 AC=CD의 같은 밑각과 내각합으로 목표합을 정한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "두 이등변삼각형과 외각을 차례로 연결하는 표준 각도 추론이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "같은 변 두 쌍이 지정한 이등변삼각형을 차례로 적용하는 정형 각도 추적이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "두 이등변삼각형과 외각을 차례로 연결하는 표준 각도 추론이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-060",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-178",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/2.png",
+            "sha256": "fed7867de23c243ddbe4dc2f7b495e1dd84e0271f3635200750cfe1209544050"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_f4b142a01ef59435a010c62a905a551bdbef849de5ce2fe9f44a6b34060b159b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-065",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "외심의 같은 반지름에서 세 밑각 관계",
+      "decisiveStep": "OA=OB=OC를 이용해 나뉜 꼭짓각들을 같은 값으로 옮기고 전체 내각합을 쓴다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 외심 > 외심의 위치·각: 외심의 같은 반지름에서 세 밑각 관계",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "외심이 만드는 세 이등변삼각형의 밑각을 한 번 전체 삼각형 각합으로 연결한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "OA=OB=OC를 이용해 나뉜 꼭짓각들을 같은 값으로 옮기고 전체 내각합을 쓴다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "외심의 같은 반지름에서 세 밑각을 읽고 전체 각합으로 연결한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "외심이 만드는 세 이등변삼각형의 밑각을 한 번 전체 삼각형 각합으로 연결한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "외심의 같은 반지름에서 세 밑각을 읽고 전체 각합으로 연결한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-065",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-185",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/3.png",
+            "sha256": "79f698e2f3ea5debe49360993408c14276f2a610fb91e29046ee9023e086dd27"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_b98276d57e40d8c7e78ac5b097116774f6ae98ecc4e1fe39d9a2f8596fcce147",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-065",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "주어진 삼각형 각을 외심 중심각의 두 배로 전이",
+      "decisiveStep": "각B42에 대응하는 중심각AOC를 두 배로 계산한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 외심 > 외심의 위치·각: 주어진 삼각형 각을 외심 중심각의 두 배로 전이",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "목표 중심각과 대응 꼭짓각이 주어져 외심의 기본 각관계에 직접 대입한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "각B42에 대응하는 중심각AOC를 두 배로 계산한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "주어진 꼭짓각에 대응하는 중심각의 두 배 관계를 바로 적용한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "목표 중심각과 대응 꼭짓각이 주어져 외심의 기본 각관계에 직접 대입한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "하",
+        "reason": "주어진 꼭짓각에 대응하는 중심각의 두 배 관계를 바로 적용한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-065",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-185",
+        "projectionApplied": false
+      },
+      "sourceHold": "그림 위쪽 A와 왼쪽 B의 명칭이 부분적으로 잘렸으나 본문이 A직각/B42도와 외심을 명시하고 actual그림은 O의 목표각을 분명히 보여 준다. 필수 메타 근거는 충분하며 비필수 스캔 잘림만 별도 기록한다.",
+      "sourceContentStatus": "SOURCE_HOLD",
+      "conditionalMetadataJudgment": "COMPLETE_FOR_EXISTING_SOLUTION_ASSUMPTIONS",
+      "beforeSource": {
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/4.png",
+            "sha256": "00401d7c298e156d037ab4f1a332baf10895c947d8a0e18bd62946158969cc56"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_0a4400f6dd3fcd891031d398e635b1644629d85abeb3a4a926556bc5eaef06c3",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "내심의 등거리와 반각 성질을 보기와 대조",
+      "decisiveStep": "변까지 같은 거리와 각이등분은 확인하고 꼭짓점 등거리·잘못된 합동쌍과 구별한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 내심의 성질 판정 > None: 내심의 등거리와 반각 성질을 보기와 대조",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "내심의 서로 다른 거리 대상과 합동쌍을 구별하는 표준 성질 판정이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "변까지 같은 거리와 각이등분은 확인하고 꼭짓점 등거리·잘못된 합동쌍과 구별한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "내심의 거리 대상과 각이등분 및 합동쌍을 구별하는 개념 판정이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "변까지 같은 거리와 각이등분은 확인하고 꼭짓점 등거리·잘못된 합동쌍과 구별한다."
+        }
+      ],
+      "proposalRefs": [
+        "A-E064-INCENTER-PROPERTY-AUDIT"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "내심의 서로 다른 거리 대상과 합동쌍을 구별하는 표준 성질 판정이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "내심의 거리 대상과 각이등분 및 합동쌍을 구별하는 개념 판정이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심의 성질 판정",
+          "l4": null,
+          "scope": "M2-2"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심의 성질 판정",
+          "l4": null,
+          "scope": "M2-2"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/5.png",
+            "sha256": "ec8c7bada0fb707d8fc00fec148d6f52c7cebffe91d882376ebe0c0233340aac"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_379b4a9e0a0ac9a5dca48fd1d7f65fed1025d63e6505e3f9e8d24448183b1ca7",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-066",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "내심 둘레360도 비례배분 후 원래 꼭짓각",
+      "decisiveStep": "세 중심쪽 각의 합360을 주어진11:12:13으로 나누고 AIC=90+B/2를 역산한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [
+          "CC_RATIO_AND_PROPORTION"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 내심 > 각의 이등분선과 내심: 내심 둘레360도 비례배분 후 원래 꼭짓각",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "Primary 내심각 공식에 넣을 각을 한 바퀴360도의 비례배분으로 먼저 구성한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "세 중심쪽 각의 합360을 주어진11:12:13으로 나누고 AIC=90+B/2를 역산한다.",
+        "difficulty": "각의 비를 실제 각도로 바꾼 뒤 내심의 표준 반각관계에 넣는 전처리이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "세 중심쪽 각의 합360을 주어진11:12:13으로 나누고 AIC=90+B/2를 역산한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "360도 비례배분 뒤 내심 반각공식을 적용하는 표준 계산이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "각의 비를 실제 각도로 바꾼 뒤 내심의 표준 반각관계에 넣는 전처리이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "360도 비례배분 뒤 내심 반각공식을 적용하는 표준 계산이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 3,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-066",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "각의 이등분선과 내심"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "각의 이등분선과 내심"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-186",
+        "projectionApplied": false
+      },
+      "sourceHold": "actual그림의 위쪽 A가 잘렸으나 본문에 삼각형·내심·세 각 비와 목표ABC가 모두 주어져 그림의 추가 수치를 요구하지 않는다. 메타는 완결 가능하다.",
+      "sourceContentStatus": "SOURCE_HOLD",
+      "conditionalMetadataJudgment": "COMPLETE_FOR_EXISTING_SOLUTION_ASSUMPTIONS",
+      "beforeSource": {
+        "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/6.png",
+            "sha256": "7fe134dd7eeeca2ccef1ef822f7c276b5f7b97f982f51b049d0f2b1fb844ffdb"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_2cc6e4f7725550e11974f58df20235ecbb906a2b48d127857c1366ec53056d09",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-066",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "인접한 두 각의 합을 내심 반각으로 정리",
+      "decisiveStep": "실제 BO가 BA와BI 사이에 있어 OBA+OBI=IBA임을 읽고 전체합을2IBA=B로 바꾼다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 내심 > 각의 이등분선과 내심: 인접한 두 각의 합을 내심 반각으로 정리",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "내심의 반각을 전체B각으로 환산한 뒤 이등변삼각형의40도 꼭지각에서 밑각을 계산한다. 외심의 별도 각계산은 이 목표합에 필수적이지 않다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "실제 BO가 BA와BI 사이에 있어 OBA+OBI=IBA임을 읽고 전체합을2IBA=B로 바꾼다.",
+        "difficulty": "목표식의 두 인접각을 합치는 한 번의 도형 해석 뒤 이등변 밑각과 내심 반각을 직접 적용한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "해설의 마지막 검증식과 actual 각 순서를 읽으면 OBA+OBI=IBA이므로 외심각을 따로 계산할 필요가 없다. 필수 Primary는 내심 반각이며 이등변 밑각을 보조로 쓰는 메타로 좁혔다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "목표의 인접한 두 각을 합쳐 내심 반각 두 배로 읽는 도형 해석이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "목표식의 두 인접각을 합치는 한 번의 도형 해석 뒤 이등변 밑각과 내심 반각을 직접 적용한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "목표의 인접한 두 각을 합쳐 내심 반각 두 배로 읽는 도형 해석이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 3,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-066",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "각의 이등분선과 내심"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "각의 이등분선과 내심"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-186",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/7.png",
+            "sha256": "134e14a4282cfc6cf559ea5d2938d971aa6dbf90aa8cc5b8e6c6f055846890d7"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_c0065690c62063783160f07f59106d3b7dbabac6539128b8d23bee090eeb4d92",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-073",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행사변형 두 대각선의 이등분 직접 계산",
+      "decisiveStep": "각 대각선의 전체길이를 반으로 나누어 세 요구 부분길이를 더한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "사각형의 성질 > 평행사변형 > 평행사변형의 성질 > 평행사변형의 대각선 성질: 평행사변형 두 대각선의 이등분 직접 계산",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "이미 주어진 평행사변형과 대각선 전체길이에 이등분 성질을 바로 적용한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "각 대각선의 전체길이를 반으로 나누어 세 요구 부분길이를 더한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "평행사변형 대각선 전체길이에 이등분을 직접 적용한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "이미 주어진 평행사변형과 대각선 전체길이에 이등분 성질을 바로 적용한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "하",
+        "reason": "평행사변형 대각선 전체길이에 이등분을 직접 적용한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-073",
+        "effectivePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "평행사변형의 대각선 성질"
+        },
+        "basePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "평행사변형의 대각선 성질"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-191",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyConfidence": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/8.png",
+            "sha256": "7cfcbaf165a06a88f769082fedc9f5876311cd6ed14ad1f9567f02819ea5d5e8"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_a77e52bd98df71bfc0683d8dedfedc4e1a0212dc96b4a320c1920ba244971186",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-074",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행사변형 충분조건의 대상 쌍 판별",
+      "decisiveStep": "대각·같은 대변쌍·대각선 반구간의 조건을 구별하고 서로 다른 쌍의 조건을 합치는 오류를 제외한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "사각형의 성질 > 평행사변형 > 평행사변형의 판정 > 변·각 조건: 평행사변형 충분조건의 대상 쌍 판별",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "한 쌍의 같은 길이와 평행이 같은 대변쌍인지, 대각선의 같은 부분이 어느 것인지 해석한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "대각·같은 대변쌍·대각선 반구간의 조건을 구별하고 서로 다른 쌍의 조건을 합치는 오류를 제외한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "평행사변형 충분조건의 같은 대변쌍·대각선 부분을 구별해야 한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "한 쌍의 같은 길이와 평행이 같은 대변쌍인지, 대각선의 같은 부분이 어느 것인지 해석한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "평행사변형 충분조건의 같은 대변쌍·대각선 부분을 구별해야 한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-074",
+        "effectivePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건"
+        },
+        "basePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-192",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/9.png",
+            "sha256": "2f383e43cc44e5d65d75edb473571be8027b3cb3f275f5800292aadcb64931c0"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_8241e7bf0a2ec3b4baa5cd47057ec337f00e2a081631b7f75531fd11be8fdfa5",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-079",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "직사각형 대각선의 반길이를 원의 지름으로 연결",
+      "decisiveStep": "세 직각에서 직사각형을 확인하고 같은 대각선의 절반DE를 다시 반으로 나누어 원의 반지름을 구한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "사각형의 성질 > 여러 가지 사각형 > 직사각형·마름모·정사각형 > 특수 사각형의 대각선 성질: 직사각형 대각선의 반길이를 원의 지름으로 연결",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "특수사각형 대각선에서 얻은 DE를 원의 지름으로 바꾸어 원넓이 공식을 적용한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "세 직각에서 직사각형을 확인하고 같은 대각선의 절반DE를 다시 반으로 나누어 원의 반지름을 구한다.",
+        "difficulty": "대각선 전체→반대각선→지름의 반이라는 표준 길이 변환 뒤 원넓이를 계산한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "세 직각에서 직사각형을 확인하고 같은 대각선의 절반DE를 다시 반으로 나누어 원의 반지름을 구한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "직사각형 대각선과 원의 지름·반지름을 순차 변환한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "대각선 전체→반대각선→지름의 반이라는 표준 길이 변환 뒤 원넓이를 계산한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "직사각형 대각선과 원의 지름·반지름을 순차 변환한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-079",
+        "effectivePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        },
+        "basePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-197",
+        "projectionApplied": false
+      },
+      "sourceHold": "actual그림의 위쪽 A,D와 원 일부가 잘려 있지만 본문이 세 직각·AC20·대각선교점E·DE를 지름으로 하는 원을 모두 정의한다. 필수 입력은 본문으로 확정되므로 메타 판정은 가능하다.",
+      "sourceContentStatus": "SOURCE_HOLD",
+      "conditionalMetadataJudgment": "COMPLETE_FOR_EXISTING_SOLUTION_ASSUMPTIONS",
+      "beforeSource": {
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/10.png",
+            "sha256": "5b44dcf223082266d0aa3be7c1a3b1d2702d90dc1b2e46ac3464c2d44d8d6a60"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_268f3d06d0cf08ef47a042ac3ceab4c1165de0c59c66ff22279fdee0180899ee",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-077",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "대각선 사등분 넓이에 합동 삼각형을 이동",
+      "decisiveStep": "BFG와DFE가 ASA로 같은 크기임을 써 흩어진 두 넓이를 ABF 하나로 모으고 전체의 네 배로 복원한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_CONGRUENCE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "사각형의 성질 > 평행사변형 > 넓이와 활용 > 분할도형: 대각선 사등분 넓이에 합동 삼각형을 이동",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "대각선의 네 부분넓이를 적용하기 전에 별도 두 삼각형의 합동으로 흩어진 넓이 두 부분을 한 영역으로 옮겨야 한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "BFG와DFE가 ASA로 같은 크기임을 써 흩어진 두 넓이를 ABF 하나로 모으고 전체의 네 배로 복원한다.",
+        "difficulty": "주어진 두 비인접 부분넓이를 합동으로 옮겨 한 대각선 분할 영역에 맞추는 관계 선택이 필요하다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "BFG와DFE가 ASA로 같은 크기임을 써 흩어진 두 넓이를 ABF 하나로 모으고 전체의 네 배로 복원한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "합동으로 부분넓이를 옮겨 한 대각선 분할영역으로 보는 표준 응용이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "주어진 두 비인접 부분넓이를 합동으로 옮겨 한 대각선 분할 영역에 맞추는 관계 선택이 필요하다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "합동으로 부분넓이를 옮겨 한 대각선 분할영역으로 보는 표준 응용이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 3,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-077",
+        "effectivePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "분할도형"
+        },
+        "basePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "분할도형"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-195",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/11.png",
+            "sha256": "8fd6592b5f17b970833a87705e39dd41b971e3f2ea793669b857d0ef58b0b547"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_0d542338555606ab32112deb6db82a58f95c034b5a170b898c0f5f32b1c77f7c",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-079",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "주어진 정사각형의 두 대각선으로 넓이 직접 계산",
+      "decisiveStep": "안쪽IJKL이 정사각형이라는 명시 조건에서 두 대각선을8로 맞추고 반곱 넓이를 계산한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "사각형의 성질 > 여러 가지 사각형 > 직사각형·마름모·정사각형 > 특수 사각형의 대각선 성질: 주어진 정사각형의 두 대각선으로 넓이 직접 계산",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "정사각형 대각선의 같음·수직 성질을 대각선 기준 삼각형 넓이의 합으로 옮긴다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "안쪽IJKL이 정사각형이라는 명시 조건에서 두 대각선을8로 맞추고 반곱 넓이를 계산한다.",
+        "difficulty": "안쪽 도형이 정사각형임을 증명할 필요 없이 대각선 길이가 주어져 기본 넓이식을 바로 적용한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "안쪽IJKL이 정사각형이라는 명시 조건에서 두 대각선을8로 맞추고 반곱 넓이를 계산한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "안쪽 정사각형이 명시되어 대각선 반곱 넓이공식을 바로 쓴다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "안쪽 도형이 정사각형임을 증명할 필요 없이 대각선 길이가 주어져 기본 넓이식을 바로 적용한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "하",
+        "reason": "안쪽 정사각형이 명시되어 대각선 반곱 넓이공식을 바로 쓴다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-079",
+        "effectivePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        },
+        "basePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-197",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "crossConceptKeys": [
+          "CC_SQUARE_AREA"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/12.png",
+            "sha256": "e6ac0812cce16e03a324e9da17907c58f1da24849e6ab19f4e3a763d4fadef38"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_6a75ff1e91e1b51fae282daca4c049de7622c6678b40459719b814b9e89580c7",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-083",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "사각형 성질과 포함 관계의 충분성 비교",
+      "decisiveStep": "각 특수사각형의 추가조건과 평행사변형 충분조건을 비교하여 등변사다리꼴을 항상 보장하지 않는 주장을 고른다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "사각형의 성질 > 여러 가지 사각형 > 사각형의 포함 관계 > 성질 비교: 사각형 성질과 포함 관계의 충분성 비교",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "조건이 보장하는 사각형의 범위와 주장한 특수사각형의 범위를 구별한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "각 특수사각형의 추가조건과 평행사변형 충분조건을 비교하여 등변사다리꼴을 항상 보장하지 않는 주장을 고른다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "사각형 조건이 보장하는 종류와 포함 관계를 비교한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "조건이 보장하는 사각형의 범위와 주장한 특수사각형의 범위를 구별한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "사각형 조건이 보장하는 종류와 포함 관계를 비교한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-083",
+        "effectivePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "성질 비교"
+        },
+        "basePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "성질 비교"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-201",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": []
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_2c970591160f679919cc407189615ce033bddf3d0f2f241ffc0c2af03dfb6ac4",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-085",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "닮은 삼각형 대응각에서 등변 성질과 길이 전이",
+      "decisiveStep": "주어진 대응변으로 비를 정하고 대응각과 내각합으로 같은 두 각을 만들어 같은 대변 길이를 얻는다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-09",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "standardCourse": "중2 수학",
+        "subUnit": "도형의 닮음",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_CONVERSE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮은 도형 > 대응변·대응각: 닮은 삼각형 대응각에서 등변 성질과 길이 전이",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "닮음으로 전달한 각을 내각합에 넣은 뒤 같은 두 각의 대변이 같다는 역성질로 미지길이y를 정한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "주어진 대응변으로 비를 정하고 대응각과 내각합으로 같은 두 각을 만들어 같은 대변 길이를 얻는다.",
+        "difficulty": "대응각 하나를 옮긴 뒤 내각합과 같은 각의 대변을 연결하는 표준 해석이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "주어진 대응변으로 비를 정하고 대응각과 내각합으로 같은 두 각을 만들어 같은 대변 길이를 얻는다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "닮음의 대응각을 같은 각의 대변길이로 연결하는 표준 응용이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "대응각 하나를 옮긴 뒤 내각합과 같은 각의 대변을 연결하는 표준 해석이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "닮음의 대응각을 같은 각의 대변길이로 연결하는 표준 응용이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-085",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "대응변·대응각"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "대응변·대응각"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-203",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "standardCourse": "중2 수학",
+        "subUnit": "도형의 닮음",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-09",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/14.png",
+            "sha256": "2d5e33349fd0f9b11535c392428f727331764102efd1eedb519233896b73bc72"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_28aa821c0244d696e3bbb5cd21adf3deec7234732aaaee50de5acde54ac47202",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-084",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "높이 닮음비로 반지름을 얻어 원기둥 부피",
+      "decisiveStep": "높이4:6을 반지름2:r의 비로 사용하여 r=3을 얻고 주어진 높이6과 부피공식에 넣는다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-09",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "standardCourse": "중2 수학",
+        "subUnit": "도형의 닮음",
+        "crossConceptKeys": [
+          "CC_CYLINDER_VOLUME"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮은 도형 > 닮음비: 높이 닮음비로 반지름을 얻어 원기둥 부피",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "기존 해설은 닮음비의 세제곱으로 주어진 부피를 환산하지 않고 대응 반지름을 먼저 복원하여 원기둥 부피공식에 넣는다. Primary 길이비와 별도 부피 CC로 구분한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "높이4:6을 반지름2:r의 비로 사용하여 r=3을 얻고 주어진 높이6과 부피공식에 넣는다.",
+        "difficulty": "서로 다른 종류의 대응길이를 닮음비로 옮긴 뒤 원기둥 부피를 구하는 정형 절차이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "높이4:6을 반지름2:r의 비로 사용하여 r=3을 얻고 주어진 높이6과 부피공식에 넣는다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "높이비로 반지름을 복원한 뒤 부피공식을 계산한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "서로 다른 종류의 대응길이를 닮음비로 옮긴 뒤 원기둥 부피를 구하는 정형 절차이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "높이비로 반지름을 복원한 뒤 부피공식을 계산한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-084",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "닮음비"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "닮음비"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-202",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURES",
+        "standardCourse": "중2 수학",
+        "subUnit": "닮은 도형의 성질과 겉넓이·부피의 비",
+        "crossConceptKeys": [
+          "CC_CYLINDER_VOLUME"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-09",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/15.png",
+            "sha256": "7aa677e1785862a8b8231cd6453c346f094a0dd6a6fd9b1928e5aa1e513de370"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_be9cc27468f94662d3ca96dcfa280b43ff18b1ef239bd54f83c1b90306e65203",
+      "verdict": "UNRESOLVED",
+      "rpmRecordId": "M2-RPM-089",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "직각삼각형 높이의 AA 비례로 빗변 복원",
+      "decisiveStep": "CD²=AD·DB로 나머지 빗변 부분을 얻고 AD를 더하는 기존해설의 목표AB 모형이다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-09",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "standardCourse": "중2 수학",
+        "subUnit": "도형의 닮음",
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 길이: 직각삼각형 높이의 AA 비례로 빗변 복원",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "x가 전체AB라는 추가 확인 아래 표준 높이 닮음 관계를 한 번 적용하고 부분합을 구하는 후보이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "CD²=AD·DB로 나머지 빗변 부분을 얻고 AD를 더하는 기존해설의 목표AB 모형이다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "x가AB라고 확인되면 직각삼각형 높이의 표준AA 비례와 부분합을 쓰는 조건부 학습후보이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "actual그림에서x의 목표선분 표시를 확인할 수 없어 정상 난도 확정을 보류한다. 해설이 읽은x=AB 모형은 조건부 후보일 뿐이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "x가AB라고 확인되면 직각삼각형 높이의 표준AA 비례와 부분합을 쓰는 조건부 학습후보이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-089",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-207",
+        "projectionApplied": false
+      },
+      "sourceHold": "actual q16 그림 하단이 전체AB 호선 부근에서 잘려 x 표지가 보이지 않는다. 발문은 x의 값만 묻고 alt도 x가 어느 선분인지 제공하지 않는다. x=AB는 기존 해설에만 명시되어 있어 학생이 받은 목표 위치를 확정할 수 없으므로 완전 메타와 최종 난도는 미결이다.",
+      "sourceContentStatus": "SOURCE_HOLD",
+      "conditionalMetadataJudgment": "CANDIDATE_ONLY_SOURCE_TARGET_MISSING",
+      "unresolvedFields": [
+        "sourceVisual",
+        "goal",
+        "method",
+        "difficultyBucket",
+        "level"
+      ],
+      "beforeSource": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+        "standardCourse": "중2 수학",
+        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-09",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/16.png",
+            "sha256": "d120ad9fba21dda69a70df9bb74d922b1e2381f5dd0ce0e9ae089755aaefe792"
+          }
+        ]
+      },
+      "candidateDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "x가 전체AB라는 추가 확인 아래 표준 높이 닮음 관계를 한 번 적용하고 부분합을 구하는 후보이다."
+      },
+      "sourceLegacyDifficulty": {
+        "level": 2,
+        "difficultyBucket": 2,
+        "unchangedInSource": true
+      },
+      "candidateAfter": {
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "metadataRegistrationStatus": "BLOCKED_SOURCE_EVIDENCE"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_001c4c4c79c9eb18f41f339472ed5bba3d04a5da415a18a600ef605b178369c2",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-087",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "대응 방향을 바꾼 두 변비와 공통각의 SAS 발견",
+      "decisiveStep": "AE를4+6으로 합치고 AB:AE=AC:AD=1:2와 공통A각으로 ABC와AED의 SAS를 확인한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-10",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 닮음",
+        "subUnit": "도형의 닮음",
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 삼각형의 닮음 > SAS: 대응 방향을 바꾼 두 변비와 공통각의 SAS 발견",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "평행 표시는 없고 겉으로 같은 방향의 대응이 아닌 AB↔AE, AC↔AD 쌍을 선택해야 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "AE를4+6으로 합치고 AB:AE=AC:AD=1:2와 공통A각으로 ABC와AED의 SAS를 확인한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "반대로 대응하는 두 변비를 발견하여 공통각SAS로 연결하는 표준 응용이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "평행 표시는 없고 겉으로 같은 방향의 대응이 아닌 AB↔AE, AC↔AD 쌍을 선택해야 한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "반대로 대응하는 두 변비를 발견하여 공통각SAS로 연결하는 표준 응용이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-087",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "SAS"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "SAS"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-205",
+        "projectionApplied": false
+      },
+      "sourceHold": "본문 img alt는 “삼각형과 평행선”이라고 하지만 actual그림은 평행 표시가 없고 주어진 비도 BC∥DE를 만들지 않는다. 실제 해설의 공통각·엇바뀐 대응변 SAS가 유효한 골격이며 alt의 평행선 표현만 원문 보류로 분리한다.",
+      "sourceContentStatus": "SOURCE_HOLD",
+      "conditionalMetadataJudgment": "COMPLETE_FOR_EXISTING_SOLUTION_ASSUMPTIONS",
+      "beforeSource": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 닮음",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-10",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/17.png",
+            "sha256": "0f148884481c025c59448fb8fef39ab8e9abdb4db2752a37c9f22d9e57a1cf91"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_5fe417174bb7089e162c286a5197de0e0d6a5139592406ec23a8e10aed48f15a",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-093",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "교차 평행 삼각형의 비와 부분·전체 길이",
+      "decisiveStep": "AO:OC로 위쪽 평행변을 정하고 OC+CE를 합쳐 아래쪽 평행변까지 같은 비를 확장한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-10",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 닮음",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 평행선 사이 선분비 > 여러 평행선: 교차 평행 삼각형의 비와 부분·전체 길이",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "명시된 세 평행선에서 대응구간과 전체구간을 맞추는 표준 비례 전처리이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "AO:OC로 위쪽 평행변을 정하고 OC+CE를 합쳐 아래쪽 평행변까지 같은 비를 확장한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "교차 삼각형과 아래쪽 전체구간의 비를 차례로 연결한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "명시된 세 평행선에서 대응구간과 전체구간을 맞추는 표준 비례 전처리이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "교차 삼각형과 아래쪽 전체구간의 비를 차례로 연결한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-093",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선 사이의 선분의 길이의 비",
+          "l3": "평행선 사이 선분비",
+          "l4": "여러 평행선"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "평행선 사이 선분비",
+          "l4": "여러 평행선"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-211",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 닮음",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-10",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/18.png",
+            "sha256": "4369cb192ccc1a05c951e105a30cf6c4760d5029a2ff05a469dfe66cf5d139c7"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_8d83c28910a9b83c24e960f06425b6b56c0ead345f1f68dde8724009802e6b00",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-093",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행선 사이 대응 구간의 같은 비 직접 적용",
+      "decisiveStep": "마지막 두 대응구간4:6을 기준으로 다른 두 인접구간에 같은 비를 적용한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-10",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 닮음",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 평행선 사이 선분비 > 여러 평행선: 평행선 사이 대응 구간의 같은 비 직접 적용",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "모든 길이가 인접 평행선 사이 구간으로 주어져 대응비에 직접 대입한다. 합치거나 새 도형을 찾을 필요가 없다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "마지막 두 대응구간4:6을 기준으로 다른 두 인접구간에 같은 비를 적용한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "인접 평행선 사이에 제시된 대응길이비를 직접 반복한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "모든 길이가 인접 평행선 사이 구간으로 주어져 대응비에 직접 대입한다. 합치거나 새 도형을 찾을 필요가 없다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "하",
+        "reason": "인접 평행선 사이에 제시된 대응길이비를 직접 반복한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 2,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-093",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선 사이의 선분의 길이의 비",
+          "l3": "평행선 사이 선분비",
+          "l4": "여러 평행선"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "평행선 사이 선분비",
+          "l4": "여러 평행선"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-211",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 닮음",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-10",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/19.png",
+            "sha256": "679872ae7f25f9075a48d92023be2a17868a0b456d59fd90d2b71ab02ae17400"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ff39433b1b11e9b1fd0f7c434576538a4d2480258efa540e9c26f51db6d1f3d2",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-091",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 중점연결선과 같은 높이의 넓이비 전달",
+      "decisiveStep": "DE에서FG를 두 배로 복원하고 B,C의 같은높이로 넓이비를 FG:GH에 옮긴 뒤 BC를 GH의 절반으로 정한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-10",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 닮음",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 삼각형과 평행선 > 기본 비례: 두 중점연결선과 같은 높이의 넓이비 전달",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "중점연결정리로 보장된 같은 높이를 이용하여 주어진 두 삼각형의 넓이비를 밑변 길이비로 옮기는 단계가 추가된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "DE에서FG를 두 배로 복원하고 B,C의 같은높이로 넓이비를 FG:GH에 옮긴 뒤 BC를 GH의 절반으로 정한다.",
+        "difficulty": "두 중점연결 조건이 모두 주어져 길이와 넓이의 표준 비를 차례로 전달한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "DE에서FG를 두 배로 복원하고 B,C의 같은높이로 넓이비를 FG:GH에 옮긴 뒤 BC를 GH의 절반으로 정한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "두 중점선과 같은높이 넓이비를 순차 전달하는 표준 구조이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두 중점연결 조건이 모두 주어져 길이와 넓이의 표준 비를 차례로 전달한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "두 중점선과 같은높이 넓이비를 순차 전달하는 표준 구조이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 3,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-091",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선 사이의 선분의 길이의 비",
+          "l3": "삼각형과 평행선",
+          "l4": "기본 비례"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "삼각형과 평행선",
+          "l4": "기본 비례"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-209",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 닮음",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "crossConceptKeys": [
+          "CC_AREA_RATIO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-10",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "평행선 사이의 선분의 길이의 비",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/20.png",
+            "sha256": "72a65b2ff169ad50d110dcc63e2d12c884f0edeb1875ad87fcac2022b71e861e"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_a308be0ed169c9d7deeef96bc6637483fbd73700cb589af0a006b24baae1f432",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-071",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "같은 여각과 빗변으로 RHA 합동 후 길이 전달",
+      "decisiveStep": "B,E,C 일직선과 AED직각에서 두 예각의 여각 관계를 맞추어 ABE와ECD를 RHA 합동으로 묶고 BC를 합한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 직각삼각형의 합동 > RHA: 같은 여각과 빗변으로 RHA 합동 후 길이 전달",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "첫 소문항이 합동을 찾도록 안내하고 한 직각의 두 여각 관계에서 표준 RHA 입력을 얻는다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "B,E,C 일직선과 AED직각에서 두 예각의 여각 관계를 맞추어 ABE와ECD를 RHA 합동으로 묶고 BC를 합한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "합동을 요구하는 안내에 맞춰 여각과 같은 빗변으로RHA를 구성한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "첫 소문항이 합동을 찾도록 안내하고 한 직각의 두 여각 관계에서 표준 RHA 입력을 얻는다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "합동을 요구하는 안내에 맞춰 여각과 같은 빗변으로RHA를 구성한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 3,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-071",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-181",
+        "projectionApplied": false
+      },
+      "sourceHold": "정답·해설은 △ABE≡△DCE라고 쓰지만 실제 같은 예각 BAE=CED와 대응변 BE=CD, EC=AB에 맞는 순서는 △ABE≡△ECD이다. RHA와 BC=BE+EC의 골격은 유효하다. 4칸은 유효 각·대응변만 인용하고 올바른 대응순서를 IMPLIED 근거로 보강하며 source 자체는 변경하지 않는다.",
+      "sourceContentStatus": "SOURCE_CONGRUENCE_CORRESPONDENCE_ORDER_ERROR",
+      "conditionalMetadataJudgment": "COMPLETE_FOR_EXISTING_SOLUTION_ASSUMPTIONS",
+      "beforeSource": {
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/21.png",
+            "sha256": "431181b34e081a553b697614a6f11b4d28b22604b1627336b9749e938db120a2"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_aa75b9f3ac77977fed48b8302f423ce346296885926286f560a7264bdea94700",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-068",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "내접반지름을 공통 높이로 하는 세 넓이의 합",
+      "decisiveStep": "전체 삼각형 넓이24를 반지름r과 세 변의 길이 합으로 다시 표현해r을 구한 뒤 IBC의 높이로 쓴다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 외접원·내접원 활용 > 반지름·각 계산: 내접반지름을 공통 높이로 하는 세 넓이의 합",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "내심의 세 변 등거리r을 삼각형 넓이 공식에 반복 적용하여 전체넓이의 두 표현과 최종 부분넓이를 계산한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "전체 삼각형 넓이24를 반지름r과 세 변의 길이 합으로 다시 표현해r을 구한 뒤 IBC의 높이로 쓴다.",
+        "difficulty": "세 변과 직각이 모두 주어지고 소문항이 반지름→부분넓이의 순서를 안내하는 표준 내접원 넓이계산이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "전체 삼각형 넓이24를 반지름r과 세 변의 길이 합으로 다시 표현해r을 구한 뒤 IBC의 높이로 쓴다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "내접반지름을 공통높이로 보는 넓이식 뒤 부분넓이를 계산한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "세 변과 직각이 모두 주어지고 소문항이 반지름→부분넓이의 순서를 안내하는 표준 내접원 넓이계산이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "내접반지름을 공통높이로 보는 넓이식 뒤 부분넓이를 계산한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 3,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-068",
+        "effectivePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "반지름·각 계산"
+        },
+        "basePath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "반지름·각 계산"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-188",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "삼각형의 성질",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "삼각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/22.png",
+            "sha256": "2188af3b1f100e2c5d2b3738027920fdee4270bc789817ea98a4e02315b80864"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_2a6d94eb9c997352d5867bdb59f07f8b403f401b67933661628b2223812abb05",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-080",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "보조 평행선으로 등변사다리꼴을 분할",
+      "decisiveStep": "D에서AB에 평행한 선을 그어 평행사변형과60도 정삼각형을 만들고 두 밑변 구간을 더해 둘레를 계산한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "crossConceptKeys": [
+          "CC_EQUILATERAL_TRIANGLE",
+          "CC_PERIMETER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "사각형의 성질 > 여러 가지 사각형 > 사다리꼴 > 등변사다리꼴: 보조 평행선으로 등변사다리꼴을 분할",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "보조 평행선으로 얻은60도 세 각의 정삼각형에서 변길이를 전달하고 사각형의 경계 길이를 더한다. CC_AUXILIARY_PARALLEL_LINE의 현 정의는 꺾인선 각 분할 전용이므로 이 길이구조에 강제하지 않는다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "D에서AB에 평행한 선을 그어 평행사변형과60도 정삼각형을 만들고 두 밑변 구간을 더해 둘레를 계산한다.",
+        "difficulty": "종류→밑변→둘레 소문항은 있으나 밑변을 얻을 보조선과 분할 방법은 직접 선택해야 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "D에서AB에 평행한 선을 그어 평행사변형과60도 정삼각형을 만들고 두 밑변 구간을 더해 둘레를 계산한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "등변사다리꼴에서 평행 보조선을 선택해 정삼각형으로 길이를 전달하는 표준 응용이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "종류→밑변→둘레 소문항은 있으나 밑변을 얻을 보조선과 분할 방법은 직접 선택해야 한다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "등변사다리꼴에서 평행 보조선을 선택해 정삼각형으로 길이를 전달하는 표준 응용이다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 3,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-080",
+        "effectivePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사다리꼴",
+          "l4": "등변사다리꼴"
+        },
+        "basePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사다리꼴",
+          "l4": "등변사다리꼴"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-198",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "standardCourse": "중2 수학",
+        "standardUnit": "도형의 성질",
+        "subUnit": "사각형의 성질",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRAPEZOID"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "standardUnit": "사각형의 성질",
+        "subUnit": "",
+        "crossConceptKeys": [],
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/23.png",
+            "sha256": "7f2c3cfa86571381117e198db013e930ba3431ab61d3d196357e7f472366a1d7"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_a73d84f67b94c72975118a2cf36a090403c32a1fed2eff3766d0760bcca1fc73",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-088",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "세 대응변 비로 닮음 쌍과 SSS 조건 판정",
+      "decisiveStep": "ABC의5·6·3과 JKL의10·12·6을 대응시켜 세 비가1:2인 쌍을 고른다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-09",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "standardCourse": "중2 수학",
+        "subUnit": "도형의 닮음",
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 삼각형의 닮음 > SSS: 세 대응변 비로 닮음 쌍과 SSS 조건 판정",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "여러 그림에서 세 변 정보를 같은 대응 순서로 맞추고 SAS가 아닌 SSA 자료와 구별하는 표준 조건 비교이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "ABC의5·6·3과 JKL의10·12·6을 대응시켜 세 비가1:2인 쌍을 고른다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "LEGACY_LEVEL_NORMALIZATION_PENDING",
+          "reason": "여러 삼각형의 대응변비와 조건을 비교하여SSS 쌍을 정한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "여러 그림에서 세 변 정보를 같은 대응 순서로 맞추고 SAS가 아닌 SSA 자료와 구별하는 표준 조건 비교이다."
+      },
+      "legacyLevelReview": {
+        "proposedLevel": "중",
+        "reason": "여러 삼각형의 대응변비와 조건을 비교하여SSS 쌍을 정한다. 원본 숫자level을 자동 치환하지 않고 실제 요구 학습 부담에서 별도 제안한다.",
+        "status": "NONCANONICAL_HISTORICAL_LEVEL",
+        "rawSourceLevel": 3,
+        "rawMetadataLevel": null
+      },
+      "canonicalReviewStatus": "BLOCKED_PENDING_LEGACY_LEVEL_ASSIGNMENT_OR_NORMALIZATION_AND_REQUIRED_REGISTRATION",
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-088",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "SSS"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "SSS"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-206",
+        "projectionApplied": false
+      },
+      "sourceHold": "actual ABC의 AB5,AC6,BC3은 A각 약29.926도를 정하므로 함께 적힌33도와 양립하지 않는다. GHI도 GH/GI=6/10과 각I40/H107이 정하는 비 약0.672가 맞지 않는다. 기존해설이 사용한 ABC-JKL 세 변의1:2와 SSS 골격은 명확하므로 그 유효 길이부분의 메타를 판정하되 추가 각표시의 동시실현성은 SOURCE_HOLD로 분리한다. 원문 수치·정답·해설을 수정하거나 전체 수학검수를 새로 수행하지 않는다.",
+      "sourceContentStatus": "SOURCE_SIDE_ANGLE_NUMERIC_CONFLICT",
+      "conditionalMetadataJudgment": "COMPLETE_FOR_VALID_SSS_LENGTH_SUBSET_WITH_SOURCE_HOLD",
+      "beforeSource": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+        "standardCourse": "중2 수학",
+        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "standardUnitKey": "M2-09",
+        "subUnitKey": "",
+        "standardCourse": "중2",
+        "subUnit": "",
+        "integrationPattern": "",
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "evidenceScope": {
+        "sourceRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "freshMathematicalReverification": false,
+        "visualEvidence": [
+          {
+            "path": "workers/A/tmp/E064/24.png",
+            "sha256": "46aac752886bf422b3a6793ec985031bce515fbbdf0626e99429eadf4d87d3ac"
+          }
+        ]
+      }
+    }
+  ],
+  "topicSummary": [
+    {
+      "rpmL1": "삼각형의 성질",
+      "rpmL2": "삼각형의 성질",
+      "ordinals": [
+        1,
+        2,
+        21
+      ]
+    },
+    {
+      "rpmL1": "삼각형의 성질",
+      "rpmL2": "삼각형의 외심과 내심",
+      "ordinals": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        22
+      ]
+    },
+    {
+      "rpmL1": "사각형의 성질",
+      "rpmL2": "평행사변형",
+      "ordinals": [
+        8,
+        9,
+        11
+      ]
+    },
+    {
+      "rpmL1": "사각형의 성질",
+      "rpmL2": "여러 가지 사각형",
+      "ordinals": [
+        10,
+        12,
+        13,
+        23
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "도형의 닮음",
+      "ordinals": [
+        14,
+        15,
+        16,
+        17,
+        24
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "평행선 사이의 선분의 길이의 비",
+      "ordinals": [
+        18,
+        19,
+        20
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "A-E064-INCENTER-PROPERTY-AUDIT",
+      "type": "RPM_LEAF_GAP",
+      "name": "내심의 거리·각·합동 명제 종합 판정",
+      "definition": "내심의 세 변 등거리와 내각 이등분을 확인하고 꼭짓점 등거리 또는 다른 꼭짓점 부분삼각형 합동을 잘못 일반화한 주장을 구별한다.",
+      "parent": "삼각형의 외심과 내심 / PT_TRIANGLE_CENTERS",
+      "distinguishingCriteria": "현행66은 각이등분선,67은 거리,68은 반지름·각 계산,69는 복합도형으로 한 내심의 여러 성질 명제 판정 전체를 직접 표시하는 leaf가 없다. ACTIVE TPL_TRIANGLE_CENTERS_SEMANTIC은 적용 가능한 정확한 골격이다.",
+      "existingCandidatesReviewed": [
+        "M2-RPM-066",
+        "M2-RPM-067",
+        "M2-RPM-068",
+        "M2-RPM-069",
+        "TPL_TRIANGLE_CENTERS_SEMANTIC"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_0a4400f6dd3fcd891031d398e635b1644629d85abeb3a4a926556bc5eaef06c3"
+      ]
+    }
+  ],
+  "notes": [
+    "24문항의 발문(legacy question)·보기·답·해설과23개 실제 그림을 전부 읽었다. canonical content=null 지문 fingerprint와 legacyQuestionFingerprint를 함께 보존한다.",
+    "전24항 원본level이 숫자2/3이고 metadata level은없다. 숫자를하/중/상으로 자동변환하지 않고 최종level=null/compatUNKNOWN과 rawSourceLevel·rawMetadataLevel 및 개별 학습수준후보를 분리했다.",
+    "Q16은 x의 목표표시가 실제그림 하단에서잘려 최종UNRESOLVED/UNKNOWN이다. 기존해설 x=AB 모형의2/중은 후보로만 남겼다.",
+    "Q17 alt의 평행선표현은 실제SAS와 다르고 Q21 합동기호는 대응순서가 틀리며 Q24 세변·각수치의 동시실현성이 깨진다. 유효 메타 골격과 이 sourceHold를 별도 기록했다. Q4·6·10의 부분잘림은 본문이 필수정보를 모두 제공하여 메타판정 가능하다.",
+    "Q7은 목표각합의 인접각 결합으로 외심의 불필요한 세부각 계산을 제거했다. Q15는 높이비→반지름→원기둥부피이므로 길이비 Primary와 원기둥부피CC를 사용했다. Q17은 평행선비가 아니라 대응방향이 바뀐SAS이다.",
+    "공식 Resolver 승인·원문 정답/해설·공통registry 변경은 수행하지 않았다."
+  ],
+  "sourceEvidenceSummary": {
+    "essentialVisualUnresolvedOrdinals": [
+      16
+    ],
+    "nonblockingVisualIssueOrdinals": [
+      4,
+      6,
+      10
+    ],
+    "sourceAltMismatchOrdinals": [
+      17
+    ],
+    "sourceCorrespondenceErrorOrdinals": [
+      21
+    ],
+    "sourceNumericConflictOrdinals": [
+      24
+    ],
+    "sourceUnchanged": true
+  }
+}

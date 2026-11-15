@@ -1158,6 +1158,7 @@ window.questionBank = [
     "image": "assets/images/25_금당고_1학기_중간_고2_수학I/q18-problem-replacement.svg",
     "imageAlt": "지수함수와 로그함수의 그래프 위의 A=(0,0), D=(1,1), B=(3,7), C=(3,2)와 두 삼각형 ADC, DBC",
     "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학I/q18-problem-replacement.svg",
+    "solutionImageAlt": "두 곡선 f(x)=2^x−1, g(x)=log₂(x+1), 점 A=(0,0), D=(1,1), B=(3,7), C=(3,2), 삼각형 ADC와 DBC 및 각각의 넓이 S₁, S₂를 나타낸다.",
     "choices": [
       "$\\dfrac{9}{2}$",
       "$\\dfrac{11}{2}$",

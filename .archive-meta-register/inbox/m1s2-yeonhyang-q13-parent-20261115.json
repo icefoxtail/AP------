@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "archive-basic-parent-correction-request-v1",
+  "requestId": "m1s2-yeonhyang-q13-parent-20261115",
+  "examUid": "25_연향중_2학기_중간_중1_기출",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+  "expectedQuestionCount": 24,
+  "expectedSourceBlobSha1": "99cd522479988a1a968228e3d86cd26bfd1d5f3e",
+  "previousSourceCommit": "5ed1e46fb802df6c18d2e1b4ff3fdeed5b2c63da",
+  "previousSourceBlobSha1": "e11d2f1b93f8c41def9c21386b81d986751a2b4e",
+  "difficultyRequestRef": {
+    "path": ".archive-meta-register/evidence/m1s2-yeonhyang-q13-parent-20261115.difficulty-request.json",
+    "sha256": "15361bee10ca64708e6c6af2874560af0a1717203d0e9d48df659fa5da2d69e6"
+  },
+  "approval": {
+    "type": "BASIC_PARENT_CORRECTION",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_M1_RELEASE_26FC42390A50",
+    "evidenceRefs": [
+      {
+        "path": "docs/operations/m1-s2-meta-b01-a-20261114/a2-exam3.review.json",
+        "sha256": "b78210028cdfc9cbfa519bae9c00821ba0c077f4af9412ad06b8e475bbfbad27"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m1s2-yeonhyang-q13-parent-20261115.difficulty-request.json",
+        "sha256": "15361bee10ca64708e6c6af2874560af0a1717203d0e9d48df659fa5da2d69e6"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m1s2-yeonhyang-q13-parent-20261115.difficulty.json",
+        "sha256": "2077df7213187a8be35dfa7acc94dbd931954eb4b7876779677fb5db70d431bb"
+      }
+    ],
+    "nativeParentReview": {
+      "schemaVersion": "archive-reviewed-parent-correction-v1",
+      "reviewCommit": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+      "reviewPath": "docs/operations/m1-s2-meta-b01-a-20261114/a2-exam3.review.json",
+      "reviewRef": {
+        "path": "docs/operations/m1-s2-meta-b01-a-20261114/a2-exam3.review.json",
+        "sha256": "b78210028cdfc9cbfa519bae9c00821ba0c077f4af9412ad06b8e475bbfbad27"
+      }
+    }
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+      "sourceOrdinal": 13,
+      "reason": "Publish the completed review’s exact basic parent and preserve its explicit RPM leaf/type disposition.",
+      "before": {
+        "sourceFingerprint": "29930a5dd53e3f66a9073eabaedd2a073cd499d922e31d73294c80ad83b2da09",
+        "contentFingerprint": "3e2cd0a5e8954d60d5474db126afb7d619e71cac4b2b0d705d1840d8e3acabf9"
+      },
+      "after": {
+        "sourceFingerprint": "c63aa7ce8096ae25542432a35c8598cb8a3ca3411187d7672a01e056f163096e",
+        "contentFingerprint": "3e2cd0a5e8954d60d5474db126afb7d619e71cac4b2b0d705d1840d8e3acabf9"
+      },
+      "parentBefore": {
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "subUnit": "입체도형"
+      },
+      "parentAfter": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계"
+      },
+      "basicParent": {
+        "grade": "중1",
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "기본 도형",
+        "L2": "위치 관계"
+      },
+      "typeDisposition": "PRESERVE_APPROVED_TYPE",
+      "expectedBefore": {
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "subUnit": "입체도형",
+        "conceptClusterKey": "M1-07-SOLID_FIGURE",
+        "sourceFingerprint": "29930a5dd53e3f66a9073eabaedd2a073cd499d922e31d73294c80ad83b2da09",
+        "contentFingerprint": "3e2cd0a5e8954d60d5474db126afb7d619e71cac4b2b0d705d1840d8e3acabf9",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "linkBefore": null,
+      "evidenceRefs": [
+        {
+          "path": "docs/operations/m1-s2-meta-b01-a-20261114/a2-exam3.review.json",
+          "sha256": "b78210028cdfc9cbfa519bae9c00821ba0c077f4af9412ad06b8e475bbfbad27"
+        }
+      ]
+    }
+  ],
+  "difficultyEvidence": {
+    "path": ".archive-meta-register/evidence/m1s2-yeonhyang-q13-parent-20261115.difficulty.json",
+    "sha256": "2077df7213187a8be35dfa7acc94dbd931954eb4b7876779677fb5db70d431bb"
+  }
+}

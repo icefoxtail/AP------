@@ -243,7 +243,10 @@ window.questionBank = [
     "sourceQid": 5,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q05-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직 이동 전 h 곡선의 기준점과 x=0에서 y=5 점선에 만나는 모습이며, x<0에서 곡선이 기준선보다 위에 있다.",
+    "solutionImageCaption": "수직 이동 전 h(x)=(1/5)^(x−1)은 x<0에서 높이 5보다 크다. 이 경계 높이로 제3사분면을 피하는 가장 작은 수직 이동을 정한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -592,7 +595,11 @@ window.questionBank = [
     "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
     "sourceQid": 12,
     "answerStatus": "generated_pending",
-    "solutionStatus": "generated_pending"
+    "solutionStatus": "generated_pending",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축은 연수 n, 세로축은 현재 농도 대비 비율이다. 파란 증가곡선이 주황 점선 두 배 기준을 지나며, 10과 12의 정수 눈금이 보인다.",
+    "solutionImageCaption": "현재 농도로 나누면 n년 뒤 비율은 (1.07)^n이다. 주어진 로그 근삿값은 n≥10.033…을 주므로 처음으로 조건을 만족하는 정수 연도를 고른다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -694,7 +701,10 @@ window.questionBank = [
     "sourceQid": 14,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q14-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t에서 1과 2 사이에 파란 2ᵗ 곡선이 주황 점선 t²보다 위에 있고, 두 곡선은 경계점 (2,4)에서 만난다.",
+    "solutionImageCaption": "t=logₐ x로 두면 1<t<2에서 0<logₐt<1<t<t²이다. 그림에서 2ᵗ>t²이고 a>2이므로 x=aᵗ>2ᵗ이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -792,7 +802,10 @@ window.questionBank = [
     "sourceQid": 16,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q16-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 0≤x<π에서 y=sin(2x−π/6)와 높이 −√3/2인 수평선은 x=3π/4와 x=11π/12에서 만난다.",
+    "solutionImageCaption": "u=2x−π/6로 치환하면 허용되는 각은 4π/3와 5π/3이다. 이를 x로 바꾸어 두 근의 위치를 확인하고 더한다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -1180,6 +1193,9 @@ window.questionBank = [
     "sourceQid": 24,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q24-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 푸른 증가곡선 f(x)와 주황 점선 감소곡선 g(x) 사이의 옅은 띠가 x=4,5,6,7 네 정수 열로 나뉘며, 각 열 위에 정수점 수가 표시된다.",
+    "solutionImageCaption": "수평선 조건에서 네 정수 n을 찾아 a=3, b=4, c=7을 정한다. x=4,5,6,7마다 두 곡선 사이의 정수 y를 센다. 네 열의 개수를 더한다. 정답은 344이다.",
+    "solutionImageSize": "full"
   }
 ];

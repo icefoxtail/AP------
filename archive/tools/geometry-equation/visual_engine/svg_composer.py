@@ -4,7 +4,7 @@ import math
 import re
 import xml.etree.ElementTree as ET
 from .style_tokens import load
-from .label_layout import tick_callout_offsets
+from .label_layout import Box,measured_tick_ink,tick_callout_offsets,tick_leader_endpoint
 
 def esc(value):return html.escape(str(value),quote=True)
 def num(value):return f'{value:.9f}'.rstrip('0').rstrip('.') or '0'
@@ -132,7 +132,8 @@ def compose(prepared,layout,viewport,fragments=None):
         box=owner['box']
         expected_box={'x':center[0]-box['width']/2,'y':center[1]-box['height']/2,'width':box['width'],'height':box['height']}
         if any(abs(expected_box[key]-box[key])>1e-6 for key in ('x','y','width','height')):raise ValueError('TICK_LABEL_OWNER_LEADER_LABEL_CENTER_INVALID')
-        expected_end=callout_leader_end(box,leader['from'],center)
+        ink=measured_tick_ink((fragments or {}).get(owner['id'])) if owner.get('tickLeaderUsesInk') else None
+        expected_end=tick_leader_endpoint(Box(**box),leader['from'],ink) if ink is not None else callout_leader_end(box,leader['from'],center)
         if math.hypot(expected_end[0]-x2,expected_end[1]-y2)>1e-6:raise ValueError('TICK_LABEL_OWNER_LEADER_ENDPOINT_INVALID')
         oid=element_id(leader['id'])
         svg=(f'<line id="{oid}" data-role="leader" data-owner-label="{esc(leader["ownerLabelId"])}" '
