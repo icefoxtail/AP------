@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "archive-narrow-independent-source-repair-review-v1",
+  "reviewer": "GPT_M3S2_RELEASE",
+  "scope": "Bind three previously independently inspected source repairs to the exact fixed spec and applied current source fields.",
+  "specRef": {
+    "path": "/workspace/scratch/c8f1b0bfb4fa/m2s1-figure-change-spec.json",
+    "sha256": "7b4ead8f69fbf8afff5478c26e411bde214c8d672694461b49347705a1621ea6"
+  },
+  "proposalRef": {
+    "path": "/workspace/scratch/c8f1b0bfb4fa/m2s1-figure-source-proposal.json",
+    "sha256": "6d5bdc711398784029f057f8870c8476d39e73f40a3d56191578a07fabe4d906"
+  },
+  "beforeRef": {
+    "path": "/workspace/scratch/c8f1b0bfb4fa/m2s1-remaining-current-sources.json",
+    "sha256": "a8f41bf649748c5ea7cf013779b4cb717ba9c1bc3e4b240599bb1cfce48da86a"
+  },
+  "reviewedRowCount": 3,
+  "newFullExamQa": false,
+  "newReview2": false,
+  "metadataApprovalGranted": false,
+  "sourceWrites": false,
+  "rows": [
+    {
+      "key": "E040:24",
+      "questionUid": "qid_v1_d8fdbc567096c1e56a463bba2aa8a5227e5cd198c0a0670615a59bf69678a467",
+      "sourcePath": "archive/exams/original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js",
+      "currentSourceBlobSha1": "145aa82df385c9e4a2b3c0588f46d984af699e03",
+      "currentSourceSha256": "b002b2119f4c9cfac1ee560606c0bd8d7bbcdcdf9a135ced880e2f7eada3ccc6",
+      "beforeQuestionSha256": "c2243fcceea6f298b39924ab46ae37af3a20e328049d0f23952b3c077689f3d6",
+      "afterQuestionSha256": "0d8c5e0026d31700218e0e6d434502dce17e52eb5e333392cfffb2750650b6b6",
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E040/accepted-review.json",
+        "sha256": "653a8c5a2d55ca484b2ecdc1e0396f950671152fb204b90f049b7b66d52e18ba"
+      },
+      "fields": [
+        {
+          "field": "content",
+          "beforeSha256": "536c8302c1e2cb5a0782911aae5516c994ae9abfe235a9b898a43ba1de9c307c",
+          "afterSha256": "0eacf5f9dfb2822a1ebe9dfcbe9e9816a117e95dc284eb59d5c027d8ddabd34e",
+          "specAndAppliedSourceExact": true
+        },
+        {
+          "field": "answer",
+          "beforeSha256": "31a88b83c55131f0a11dde750ea59a70dee1bcc55b2244d845c451c56b0af70c",
+          "afterSha256": "a9b10ba49d4837bdd7007ab98738c809a6aadb993ed7b1c367fb9186915cde49",
+          "specAndAppliedSourceExact": true
+        },
+        {
+          "field": "solution",
+          "beforeSha256": "7e8f7f88623b579db657707c6b26df952a5b98ee1586547a62f62cf900a2016e",
+          "afterSha256": "7874719c0b730abc650707f34763f4b78a08c21d5c44f28f37c3159705ff7643",
+          "specAndAppliedSourceExact": true
+        }
+      ],
+      "difficultyPreserved": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "asset": {
+        "path": "/workspace/scratch/c8f1b0bfb4fa/m2s1-validation/archive/assets/images/21_매산중_1학기_기말_중2_수학/s04.png",
+        "sha256": "bea39d2aefcd846c399cfe121f6ddf77438c3f3bfa0970dcab03d1994ba6bb75",
+        "directVisualInspection": "COMPLETED_EARLIER_IN_THIS_TASK",
+        "imageEdited": false
+      },
+      "decision": "PASS_NARROW_SOURCE_REPAIR",
+      "reason": "Previously directly inspected s04.png shows (0,-2) and (4,4), hence slope 3/2. In ax+y-a+b=0, a=-3/2; avoiding quadrant II gives b>=-3/2. Parallel distinct lines exclude coincident y=(3/2)x-2, so b!=1/2. The proposal preserves every statement and answer of part (4-1).",
+      "newFullMathematicalQa": false,
+      "newReview2": false,
+      "newDifficultyApproval": false
+    },
+    {
+      "key": "E060:12",
+      "questionUid": "qid_v1_938125d560630a261f20745c0a1ebc8ed2a34d6d089330cffd255cf2a71e68a6",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "currentSourceBlobSha1": "7ca00d0ad887419ea8d69fdf98e37886a5d237bf",
+      "currentSourceSha256": "374a5ce9ace84a04048db9dac77e595bc8d641bb7dfbe1d9cee4eefad45206a8",
+      "beforeQuestionSha256": "fe1f29133959e3b92e2560438abf4473ebe6c88cb4c21edc898c1f436474b1ec",
+      "afterQuestionSha256": "ca34c2a4f3e591842d20ed81ee16193abd861468248bfb68a19ca72c2bbe9082",
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E060/accepted-review.json",
+        "sha256": "987fa830c94918405908246dc01e333e9c7fda5b5a98dca7cb6f8996728f9af7"
+      },
+      "fields": [
+        {
+          "field": "content",
+          "beforeSha256": "999371a01ac1a7b8005b6a78ec298b2e0bf1399c78f5147649a752641574d300",
+          "afterSha256": "4bb03b4da1efbe5af882471b5a0423676499f1457e812000bed631c9a25d2bc1",
+          "specAndAppliedSourceExact": true
+        },
+        {
+          "field": "solution",
+          "beforeSha256": "bf2e2aae4d8f238003afde970d8ea1343ce897319d35938fa193f6c6ed7e2cfc",
+          "afterSha256": "6ab3f1384a6ef60b790c561dd715611dec7676226dfbd1951037050e44ac4ced",
+          "specAndAppliedSourceExact": true
+        },
+        {
+          "field": "question",
+          "beforeSha256": "999371a01ac1a7b8005b6a78ec298b2e0bf1399c78f5147649a752641574d300",
+          "afterSha256": "4bb03b4da1efbe5af882471b5a0423676499f1457e812000bed631c9a25d2bc1",
+          "specAndAppliedSourceExact": true
+        }
+      ],
+      "difficultyPreserved": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "asset": {
+        "path": "/workspace/scratch/c8f1b0bfb4fa/m2s1-validation/archive/assets/images/20_풍덕중_1학기_기말_중2_수학/q12.png",
+        "sha256": "dee2211d2282656d6ba6f1cad5947809c9e1bb640e26d18ff26deb18dea341d7",
+        "directVisualInspection": "COMPLETED_EARLIER_IN_THIS_TASK",
+        "imageEdited": false
+      },
+      "decision": "PASS_NARROW_SOURCE_REPAIR",
+      "reason": "Previously directly inspected q12.png shows both opposite-side pairs equal, AB=CD=5 and AD=BC=7, so the parallelogram criterion is justified. Adjacent angles sum to 180 degrees, giving x=50 degrees and preserving answer ②. The proposed alt describes only given data.",
+      "newFullMathematicalQa": false,
+      "newReview2": false,
+      "newDifficultyApproval": false
+    },
+    {
+      "key": "E062:14",
+      "questionUid": "qid_v1_785177fab567013bf7332f21caa851a891cf095715d3679a9ee9891cb03ed750",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+      "currentSourceBlobSha1": "ab2227092fd4579e3022e5664394db1f2848ac34",
+      "currentSourceSha256": "8dc2b7ceffea4e39894a036cbb6c70f768bba90d637b3f79e3095671d925649f",
+      "beforeQuestionSha256": "6d7694d0b295805900fe83505bc6d58f978690775cc79481196d4142e8a5a94c",
+      "afterQuestionSha256": "310a17216128876df06b026bbe0b004a7fc23a31c3170d7bff561ff8e324df17",
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E062/amendments/unknown-legacy-compatibility-r1/accepted-review.json",
+        "sha256": "aa144dd5bc383f7cb695e4aa22572d8ae48c5d9ee82849b94a67b76152d6f566"
+      },
+      "fields": [
+        {
+          "field": "content",
+          "beforeSha256": "d5747f7d3e4373db4b221385eed7c7feaa35a3246de8356a25793f9acba3ab99",
+          "afterSha256": "d449e7426e2d61530ea6ee8d9555d96e9bd70f9eb018ed9d6aa3df2e1ac13ef9",
+          "specAndAppliedSourceExact": true
+        },
+        {
+          "field": "answer",
+          "beforeSha256": "014f0126ebdfbef8a498a88ec11802b8050e5d66b95820dbea2bb203baf07d73",
+          "afterSha256": "a98f5725275ce0d0843e3fbd411c1b3488b0951a80cb5bc5812db8963a86268c",
+          "specAndAppliedSourceExact": true
+        },
+        {
+          "field": "solution",
+          "beforeSha256": "162e65a057e0882b5a78f70c3774bffb2888115368708085e9eb245c1b626f54",
+          "afterSha256": "afb49640227b0151acf70b7692f63211197b42f0477d10ffb7446504acc38a82",
+          "specAndAppliedSourceExact": true
+        },
+        {
+          "field": "question",
+          "beforeSha256": "d5747f7d3e4373db4b221385eed7c7feaa35a3246de8356a25793f9acba3ab99",
+          "afterSha256": "d449e7426e2d61530ea6ee8d9555d96e9bd70f9eb018ed9d6aa3df2e1ac13ef9",
+          "specAndAppliedSourceExact": true
+        }
+      ],
+      "difficultyPreserved": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "asset": {
+        "path": "/workspace/scratch/c8f1b0bfb4fa/m2s1-validation/archive/assets/images/19_금당중_1학기_기말_중2_수학/q14.png",
+        "sha256": "42fbbefda21f470e9e8b091e345c3012c55b5841ec6888463729bbe57c9b81bb",
+        "directVisualInspection": "COMPLETED_EARLIER_IN_THIS_TASK",
+        "imageEdited": false
+      },
+      "decision": "PASS_NARROW_SOURCE_REPAIR",
+      "reason": "Previously directly inspected q14.png shows x-intercept 2 and y-intercept -3. The line is y=(3/2)x-3; both substitutions in the proposed explanation are correct. The alt, answer and solution now describe that same original graph.",
+      "newFullMathematicalQa": false,
+      "newReview2": false,
+      "newDifficultyApproval": false
+    }
+  ],
+  "status": "PASS"
+}

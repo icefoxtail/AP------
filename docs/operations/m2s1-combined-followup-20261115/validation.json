@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "archive-m2s1-combined-followup-validation-v2",
+  "status": "ACTUAL_BASELINE_LOCAL_CHAIN_PASS",
+  "codeCommit": "c31bc1036a0350e8f720d0573209091fd0455c94",
+  "build": {
+    "status": "PASS",
+    "exitCode": 0,
+    "command": [
+      "python",
+      "archive/build_db.py"
+    ],
+    "logRef": {
+      "path": "evidence/m2s1-follow49-main5100-full-build-r3.log",
+      "sha256": "715631cb0ebaca38b9a84e6ceec7a943069e4a2275d634ed6792e76df8f451a9"
+    },
+    "earlierThinFixtureFailures": [
+      "Missing exact main mixed-verification-policy input",
+      "Missing exact main textbook-source-manifest input",
+      "Missing exact main probability parent-links and its four referenced basic correction receipts"
+    ],
+    "dependencyResolution": "Only missing exact main Git blobs were hydrated; source and approval guards were not changed."
+  },
+  "projection": {
+    "status": "PASS",
+    "requests": 31,
+    "consumedOriginalInbox": true
+  },
+  "consumer": {
+    "status": "PASS",
+    "counts": {
+      "changed": 49,
+      "checked": 49,
+      "passed": 49,
+      "skippedUnchanged": 0
+    },
+    "failures": 0,
+    "unobservedFields": 0,
+    "informationalAssignmentPending": 42,
+    "newAssignmentPending": 0,
+    "newAdvancedMetadataApprovals": 1,
+    "preservedBasicApprovals": 2,
+    "newBasicApprovals": 0
+  },
+  "continuity": {
+    "sourceBanks": 19,
+    "sourceRows": 454,
+    "priorApproved": 54,
+    "retainedApprovals": 54,
+    "approvalLosses": 0,
+    "unexpectedCanonicalValueChanges": 0,
+    "autoMetaApplyPlans": 0,
+    "autoMetaProtectedChanges": 0
+  },
+  "codeTests": {
+    "suites": [
+      "archive-basic-scope-rebind",
+      "archive-pr-native-preview",
+      "archive-register-isolation",
+      "archive-changed-uid-consumer-approval"
+    ],
+    "tests": 106,
+    "passed": 106,
+    "failed": 0,
+    "skipped": 0,
+    "logSha256": "654285ddc8820352a652be962dbc4696f8a3e86c0d5300115cbd4b8bfa6a75b8"
+  },
+  "refs": {
+    "inputTransport": {
+      "path": "docs/operations/m2s1-combined-followup-20261115/inputTransport.json",
+      "sha256": "bf6d83bd28809c1e4a158027d6c4bf8ee2ce131daa525e1b0d28ab8061804bd8"
+    },
+    "projection": {
+      "path": "docs/operations/m2s1-combined-followup-20261115/projection.json",
+      "sha256": "36a3291dd5e545148946611bad9c21a04411d1be31bd9c24e01fd0d66173af2e"
+    },
+    "consumer": {
+      "path": "docs/operations/m2s1-combined-followup-20261115/consumer.json",
+      "sha256": "70bf982c4d690d40e53e192bb3fe81811124563f679e140ac0c5354b3d7c677b"
+    },
+    "approvalContinuity": {
+      "path": "docs/operations/m2s1-combined-followup-20261115/approvalContinuity.json",
+      "sha256": "65f9fa8b8d3bd44cbddc5141237a71b705e15149a76bb92105f9e942550992a8"
+    },
+    "basicApply": {
+      "path": "docs/operations/m2s1-combined-followup-20261115/basicApply.json",
+      "sha256": "cde041a071a550ae07881c149779254dd1dde4ee8f76fb1108f79ed0186c7cf8"
+    },
+    "postBuildIsolation": {
+      "path": "docs/operations/m2s1-combined-followup-20261115/postBuildIsolation.json",
+      "sha256": "622b71ef27c4f84e167ac601bca45ec628af1bd982da2cbfd7df25ddbfdfbe13"
+    },
+    "unrelatedRuntimeBaseline": {
+      "path": "docs/operations/m2s1-combined-followup-20261115/unrelatedRuntimeBaseline.json",
+      "sha256": "4afb901cacb539260feed1041603b0e646dba071e6a0cf338e3c74794bec73f6"
+    },
+    "actualMainCloseout": {
+      "path": "docs/operations/m2s1-combined-followup-20261115/actual-main-closeout.json",
+      "sha256": "b53bac27eaec5bf4c37771552d97a7c28d11a83509d7c1d32e9f30837cfb0a18"
+    },
+    "studentChangeCoverage": {
+      "path": "docs/operations/m2s1-combined-followup-20261115/student-change-review-coverage.json",
+      "sha256": "0f259dfbe573a90a4bbedbd3af97dc6fcbbf7590a5e70da80caac09da589ea18"
+    }
+  },
+  "limitations": [
+    "Followup31 main merge, actual registration and deployment remain pending; only the first61 are confirmed on actual main.",
+    "The historical Maesanyeo 1.0.3-container/1.0.2-row version debt remains rejected and is outside this M2S1 packet.",
+    "394 absent explanations and 41 separate unresolved holds are neither newly authored nor approved by this packet."
+  ],
+  "priorLocalProof": {
+    "commit": "1e600bf5af2da249b8ef15d98270f4da518115f6",
+    "path": "docs/operations/m2s1-combined-followup-20261115/validation.json"
+  },
+  "actualFirstRegistration": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+  "baselineMain": "5100e62269aecd81e2772d3ee87fdd8aa98fa4e5",
+  "latestCompatibleMain": "b8f382ac103d4b4c25fbae9569950aaa23ef6031",
+  "writer": {
+    "status": "PASS",
+    "requests": 31,
+    "dry": 31,
+    "write": 31,
+    "replay": 31,
+    "proofRef": {
+      "path": "evidence/m2s1-follow49-main5100-official-writer.json",
+      "sha256": "2de2750dde1e449f38a34bb67536ec5a557ca86fbfe5b1a373b84e2a8dcd264f"
+    }
+  },
+  "studentChangeCoverage": {
+    "requestChecks": 49,
+    "uniqueSelectedQuestions": 47,
+    "studentChangedQuestions": 43,
+    "studentChangedAndSelected": 43,
+    "studentChangedOutsideSelected": 0,
+    "selectedStudentUnchanged": 4,
+    "unselectedQuestionCount": 407,
+    "unselectedStudentChanges": 0,
+    "exactIndependentlyReviewedQuestions": 43,
+    "unmappedQuestions": 0,
+    "answerFields": 10,
+    "solutionFields": 35
+  },
+  "currentCodeTests": {
+    "passed": 1083,
+    "failed": 0,
+    "skipped": 0,
+    "proofRef": {
+      "path": "evidence/final-native-source-revalidation-validation.json",
+      "sha256": "d71a2cdafa110dafb0f009479aad8eed7246dd090ebd9d6af6d8f52aa8429b7d"
+    }
+  }
+}

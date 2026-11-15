@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_BOUNDED_REPAIR_OR_DEBT_RECHECK",
+  "producer": "/root/m2s1_release",
+  "priorAcceptedReview": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E049/accepted-review.json",
+    "sha256": "d6af5095a6c738c89f010ab23075e80f23bf022d8bac4f457c91faa58a5464f9"
+  },
+  "currentSourceBlobSha": "beb3c51c8b0b2200f46db99b43c718c23b1da453",
+  "narrowEvidence": {
+    "firstEightProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-remaining-20261115/first8-proposal.json",
+      "sha256": "ccc53758c54ba407f991529db5a14b3211a9a936d17c2d562c92a449b699cc25"
+    },
+    "firstEightIndependent": {
+      "path": ".archive-meta-register/evidence/m2s1-remaining-20261115/first8-independent.json",
+      "sha256": "427337f3bcfc71c66baea43bee65a735389f2eb12bda3b6b9ed8ae436e465827"
+    },
+    "benchIndependent": {
+      "path": ".archive-meta-register/evidence/m2s1-remaining-20261115/E075-Q20-independent.json",
+      "sha256": "de50cde321ddfd79520204c7675fdd2b523495080b401f94a232b9785ba29d79"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 24,
+    "selectedQuestions": 1
+  },
+  "newAdvancedMetadataApprovals": 0,
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+      "ordinal": 2,
+      "questionUid": "qid_v1_51ce3cdbc3bdb4b878e8a78f5781f951a40b140fa09c212407a27932b63f15ac",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "sourceFingerprint": "54c91ed6abc3514a90bfa2e3e99cc175688d4f71c700c7291cf73e0d29dbace8",
+        "contentFingerprint": "a168a48c1aeb8071a5cae134eb583c60619c9692619e06a3cb23e2c19f631c5f"
+      },
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "sourceFingerprint": "9cee3c00d5a2d6a78db2c89d531feb452c81536d1b57dfc09723c5e6703296f1",
+      "contentFingerprint": "a168a48c1aeb8071a5cae134eb583c60619c9692619e06a3cb23e2c19f631c5f",
+      "staleSourceBinding": false,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "순환표현을앞자리로풀어처음다른자리에서비교\nCurrent bounded closure: The solution explicitly compares only the first four decimal digits. Every shown prefix and the third-digit comparison selecting the second choice are correct; later digits of smaller options cannot change the maximum. Existing numeric difficulty/confidence are preserved; no advanced metadata or REVIEW2 approval is created."
+    }
+  ]
+}

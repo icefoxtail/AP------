@@ -115,6 +115,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 지수·로그 쌍의 참조점에 이미 같은 정확 좌표를 표시하는 이름 있는 overlay 점이 있으면 해당 곡선에 `referenceLabelPoint:"A"`를 준다. overlay 점은 정확한 유리수 x·y를 직접 주고 `coordinates:true`로 표시한다. 참조점과 좌표가 다르거나 실제 라벨이 없으면 거부한다. 기존 참조점과 곡선은 그대로 그리며 중복 숫자 글자만 생략한다.
 
+참조점의 수치 자체가 답이면 곡선 행에 `formulaLabel:"NAME"`, `referenceLabelPoint:"A"`, `referenceLabelMode:"NAME"`을 주고, 이름 있는 A overlay 점의 정확한 x·y와 `coordinates:false`를 적는다. 참조점 표식은 유지하고 A의 이름만 쓴다. 관측기는 정확한 참조점과 이름의 소유·위치, 자동 참조 좌표와 점 좌표 라벨이 모두 생략됐는지 확인한다. 모드 없이 `referenceLabelPoint`만 쓰는 경우에는 기존처럼 `coordinates:true`가 필요하다.
+
 **평행이동한 로그곡선 띠**. 두 증가 로그곡선과 두 하강 평행선이 닫힌 영역을 만들면 `graphPlan.translatedLogBand:{id:"band",curves:["upper","lower"],lines:["l4","l14"],fill:"LIGHT"}`를 쓴다. 같은 양의 유리수 밑(1보다 큼)과 같은 양의 스케일을 가진 로그 두 개를 왼쪽/위, 오른쪽/아래 순으로 쓴다. `overlays.lines`는 유리 기울기·절편을 가진 실선 두 개를 낮은 절편부터 쓰고 그 어떤 다른 overlay도 두지 않는다. 곡선의 정확한 평행이동은 두 직선에 평행해야 한다. 엔진이 네 교점과 창 및 닫힌 영역을 유도하고, 두 곡선·두 직선 식은 각각 해당 선 곁에 쓴다. 축 눈금이나 참조점 좌표, 이동량과 넓이 수치는 추가하지 않는다. `fill`은 LIGHT(기본) 또는 MEDIUM. 규격이나 가시 범위를 벗어나면 TRANSLATED_LOG_BAND_* 오류로 거절한다.
 
 ### 3-3. 이어진 조각 그래프(이차식 조각 최대 4개)와 직선

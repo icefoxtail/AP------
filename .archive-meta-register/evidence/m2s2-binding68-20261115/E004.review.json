@@ -1,0 +1,1044 @@
+{
+  "schemaVersion": "archive-native-metadata-closeout-evidence-v1",
+  "scope": "METADATA_FINALIZATION_ONLY",
+  "newMathematicalQa": false,
+  "review2PassClaimed": false,
+  "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+  "sourceBlobSha1": "6ff9c3e9c5ec9457caa6a811a6a850c0c39b5e45",
+  "sourceSha256": "81fac2ddc3701087eaa217be90d2698ac81446faf13f7e4b079530a8faf6bc81",
+  "expectedQuestionCount": 24,
+  "nativeReview": {
+    "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "path": "archive/data/meta-review/m2-s2-20261114/exams/E004/review.json",
+    "sha256": "f7b2960edd58c9eb782fb5c2b5538f1f58e906e2f6dcfd9864d449352c53a0f4",
+    "schemaVersion": "m2-s2-meta-review-v1",
+    "reviewer": "A",
+    "sourceGitBlobSha": "b4a8cc6a1bda1ab1e647b40316c3c41e9c0a97e9",
+    "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_1a8ec1b864d1131556f5fa2f894824ed1dae0cab164c5caeeca76f0eadfc39c2",
+      "sourceOrdinal": 11,
+      "decision": "CORRECT",
+      "primaryMethod": "세 이등변삼각형의 밑각 연쇄",
+      "decisiveStep": "같은 각을 ABC→BCD→CDE 순서로 옮긴 뒤 마지막 꼭지각을 구한다.",
+      "after": {
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "세 등변 관계를 점의 소속에 맞춰 순서대로 연결해야 한다."
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 이등변삼각형 > 밑각과 꼭짓각: 세 이등변삼각형의 밑각 연쇄",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "세 등변 관계를 점의 소속에 맞춰 순서대로 연결해야 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "definition": "이등변삼각형의 변·각 관계를 핵심 전략으로 구하거나 판정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "0f8e4e64b5ff0959602b1f09ffca7ce56663775d55fdd7a5391dde88cfbcb20a",
+      "currentMetadataSourceFingerprint": "55884b71e2003c998e31aada08837e7bdfd6938ae966e9ba377cde5df8b142ff",
+      "currentSourceFingerprint": "55884b71e2003c998e31aada08837e7bdfd6938ae966e9ba377cde5df8b142ff",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "407bb6414a6bbe7aa6d41513d17be50936906c8dfa4a47c10138c7ba86b99cba",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q11-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "f36a3934b0950ee5d6079afaf98619c4b8f1064b",
+          "currentBlob": "f36a3934b0950ee5d6079afaf98619c4b8f1064b",
+          "rawSha256": "2ddaed7df2687467c641d3a752f6c6305c37ffb54c33dcfd19c48f0c25870866",
+          "bytes": 38444,
+          "identical": true
+        },
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q11.png",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "63028eee8654142c1e4e85c2a4caa89a541d69b3",
+          "currentBlob": "63028eee8654142c1e4e85c2a4caa89a541d69b3",
+          "rawSha256": "a62bbc3f7ecc89bc805abe4739bcc6f1c653a634b601a8a1a3a9973eb359ae73",
+          "bytes": 412185,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b7af638d46df7d67148898afcbc38f2e027bf8b553feeb77470402199dce2b65",
+      "sourceOrdinal": 14,
+      "decision": "CORRECT",
+      "primaryMethod": "RHA 대응변으로 변의 합을 만들고 피타고라스에 연결",
+      "decisiveStep": "RHA 합동에서 두 직각변의 합을 얻고 제곱합과 합의 제곱 항등식으로 곱을 구해 넓이로 옮긴다.",
+      "after": {
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TWO_VARIABLE_SQUARE_SUM_IDENTITY",
+          "CC_TRIANGLE_AREA"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "합동으로 다른 삼각형 조건을 옮긴 뒤 피타고라스와 대칭식이 함께 필요한 구조다."
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 직각삼각형의 합동 > RHA: RHA 대응변으로 변의 합을 만들고 피타고라스에 연결",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "RHA 자체 밖에서 피타고라스 제곱관계, 두 변수 제곱합 항등식, 삼각형 넓이 공식이 순차 필요하다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "RHA 합동에서 두 직각변의 합을 얻고 제곱합과 합의 제곱 항등식으로 곱을 구해 넓이로 옮긴다.",
+        "difficulty": "합동으로 다른 삼각형 조건을 옮긴 뒤 피타고라스와 대칭식이 함께 필요한 구조다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "definition": "RHS·RHA 등 직각삼각형 합동 조건을 핵심 전략으로 이용하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "96915dae3b5f2caf403f987327e673b37f6d9edd549ebe103353d1ab68a67f10",
+      "currentMetadataSourceFingerprint": "b07a3f365de5c2349d5914f0d77737707a9a8d9063545553644c55fb14122af2",
+      "currentSourceFingerprint": "b07a3f365de5c2349d5914f0d77737707a9a8d9063545553644c55fb14122af2",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "25a0130d6bed1f3ccc1b0954a5171cd0ec2be52f196330167bb146d1834c9eed",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q14-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "22de76d72b6aecc5d3ae10c49e912c699737e1e9",
+          "currentBlob": "22de76d72b6aecc5d3ae10c49e912c699737e1e9",
+          "rawSha256": "82b188cddd40229c213eec097bcfea3376b12ccd200a8c4def794c09ff0a1069",
+          "bytes": 33569,
+          "identical": true
+        },
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q14.png",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "2c265e4046826efca7d3914f3a862cde358d1a7a",
+          "currentBlob": "2c265e4046826efca7d3914f3a862cde358d1a7a",
+          "rawSha256": "f26ad765e3e82f4f7b59b8cbc0c6fff6280b2ae80af410a45a55ca43f0bd1fb8",
+          "bytes": 323767,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1f32a49f975c1531a9614a2d653c0073572cf10c42f19d74ad0483a5ae25d74b",
+      "sourceOrdinal": 15,
+      "decision": "CORRECT",
+      "primaryMethod": "외심각과 등반지름 삼각형 밑각",
+      "decisiveStep": "기존 해설은 원주각의 두 배를 중심각으로 놓고 등반지름 삼각형의 밑각을 구한다.",
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "crossConceptKeys": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 외심과 각에서 익숙한 한 관계를 적용한다. 해설에 사용된 원주각은 별도 보조개념으로 기록한다."
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 외심 > 외심의 위치·각: 외심각과 등반지름 삼각형 밑각",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "실제 제공 해설이 원주각-중심각 관계를 직접 사용하므로 이 보조 개념을 숨기지 않는다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "기존 해설은 원주각의 두 배를 중심각으로 놓고 등반지름 삼각형의 밑각을 구한다.",
+        "difficulty": "주어진 외심과 각에서 익숙한 한 관계를 적용한다. 해설에 사용된 원주각은 별도 보조개념으로 기록한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "definition": "삼각형의 외심·내심 및 중심과 관련된 성질을 핵심 전략으로 이용하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "344c0122c4d8024f82b21025eb592f00b039435e081d4fd98ae56d66572cdf86",
+      "currentMetadataSourceFingerprint": "f99dc3e21ee75a1b1f36fc056e7c6beb0f64ca626bbe741511d8278c729e480b",
+      "currentSourceFingerprint": "f99dc3e21ee75a1b1f36fc056e7c6beb0f64ca626bbe741511d8278c729e480b",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "e5e3ac1bd62bca11f25a317fe08d824127c690f8d8ac50977940de6cd5f25b99",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q15-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "d2e718ef153df311a54296c3c33f651e99b197ab",
+          "currentBlob": "d2e718ef153df311a54296c3c33f651e99b197ab",
+          "rawSha256": "4a3c99be8f94011b5c77139c4fe569b4a3eee38d6e18b37251293c71638ea580",
+          "bytes": 29340,
+          "identical": true
+        },
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q15.png",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "455bc2322e55007bb1f93c8bf60ac352d5ac3bc9",
+          "currentBlob": "455bc2322e55007bb1f93c8bf60ac352d5ac3bc9",
+          "rawSha256": "a8850df4a6a7d15c20d132660acef1d9067b1f9694c8945a9ab73660be1e0b61",
+          "bytes": 259409,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2f0ba312c52ca50142f3cc2ee229e025746fb19d87bc5da94ee3a82401b1cdb6",
+      "sourceOrdinal": 16,
+      "decision": "CORRECT",
+      "primaryMethod": "이등변 꼭지각과 내심각",
+      "decisiveStep": "내심의 반각에서 A를 복원하고 이등변의 밑각 C를 구해 AIB에 연결한다.",
+      "after": {
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "반각 복원과 이등변 밑각 계산의 결합이 직접적이다."
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 내심 > 각의 이등분선과 내심: 이등변 꼭지각과 내심각",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "일반 내심각 외에 원래 삼각형이 이등변이라는 별도 변-각 성질로 C를 정해야 한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "내심의 반각에서 A를 복원하고 이등변의 밑각 C를 구해 AIB에 연결한다.",
+        "difficulty": "반각 복원과 이등변 밑각 계산의 결합이 직접적이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "definition": "삼각형의 외심·내심 및 중심과 관련된 성질을 핵심 전략으로 이용하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "0b276417ed73699324cf69b9a184577da17a67fc6670a4916830a8935a6c3a23",
+      "currentMetadataSourceFingerprint": "25f767a078423e30211d285d59637fde4749f0ec0e2d937723a86d4c19b6cf5c",
+      "currentSourceFingerprint": "25f767a078423e30211d285d59637fde4749f0ec0e2d937723a86d4c19b6cf5c",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "2b81ca4911d708f075b13401dea3a5a80a9c7d2b54305f70174753e6ec77f58e",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q16-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "049c9ae0c3c643fc2ac5dab107966aa30a102e80",
+          "currentBlob": "049c9ae0c3c643fc2ac5dab107966aa30a102e80",
+          "rawSha256": "a26c94b87c7ad20c63d360d555c060e309852a09df937a33fbed82c67510c78f",
+          "bytes": 32245,
+          "identical": true
+        },
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q16.png",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "7320482c504644e628db71f5312d53bc56140e98",
+          "currentBlob": "7320482c504644e628db71f5312d53bc56140e98",
+          "rawSha256": "3a14e898e6c2d0c5262d16a24bab218526eb302fbeba0cdcee29c842c8bc62f3",
+          "bytes": 216858,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9eeb5a417b5cdd693660a54075fec02f0fb81af070b2fe2220a10ba2086cedad",
+      "sourceOrdinal": 17,
+      "decision": "CORRECT",
+      "primaryMethod": "큰 삼각형 외심각에서 작은 삼각형 내심각으로 전달",
+      "decisiveStep": "외심에서 BOC를 정한 뒤 같은 BOC를 작은 삼각형의 꼭지각으로 읽어 BIC에 반영한다.",
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "crossConceptKeys": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "큰 삼각형에서 작은 삼각형으로 중심 역할을 바꾸어야 한다."
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 외접원·내접원 활용 > 외심·내심을 이용한 복합도형: 큰 삼각형 외심각에서 작은 삼각형 내심각으로 전달",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "외심과 내심 결합은 primary지만 기존 해설은 중심각을 원주각의 두 배로 얻으므로 그 보조관계만 CC에 기록한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "외심에서 BOC를 정한 뒤 같은 BOC를 작은 삼각형의 꼭지각으로 읽어 BIC에 반영한다.",
+        "difficulty": "큰 삼각형에서 작은 삼각형으로 중심 역할을 바꾸어야 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "definition": "삼각형의 외심·내심 및 중심과 관련된 성질을 핵심 전략으로 이용하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "74e10b200120e25401d87498e3d1b6ad31c8f0d09d862419fc3d64f65e5cbd39",
+      "currentMetadataSourceFingerprint": "d3e6f84ecbc42e90d409da665a780c9be3028d960441d2dc54d5c39c5729da1c",
+      "currentSourceFingerprint": "d3e6f84ecbc42e90d409da665a780c9be3028d960441d2dc54d5c39c5729da1c",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "ba432835a8fb011516ba21df40246aa0da118aa249b6da13ad5bd68b4d1c1da1",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q17-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "e4060aaebe4afc696e44d95f12e36edf048c3fd9",
+          "currentBlob": "e4060aaebe4afc696e44d95f12e36edf048c3fd9",
+          "rawSha256": "71e8d34e59e069f762c8c53ef7249acac524840811f862f461fdee9c6729db52",
+          "bytes": 26085,
+          "identical": true
+        },
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q17.png",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "160f0d32e0f3ed2edc2a230211982ca2e341dd88",
+          "currentBlob": "160f0d32e0f3ed2edc2a230211982ca2e341dd88",
+          "rawSha256": "b9195925c184c3490f824eae301cde4d6d09f80081673f28d3d7dedceabbef26",
+          "bytes": 476950,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ef57fb008902f90036c78058ab67d85be4d5ba1ee70cf47afd29cdf2d6db76a9",
+      "sourceOrdinal": 18,
+      "decision": "CORRECT",
+      "primaryMethod": "중첩된 두 외심과 둔각삼각형의 외부 중심각",
+      "decisiveStep": "직각삼각형 외심을 빗변 중점으로 읽고 작은 둔각삼각형의 외심각을 반사각과 구별한다.",
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "crossConceptKeys": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "두 외심의 소속을 바꾸고 둔각에 대응하는 작은 중심각을 선택해야 한다."
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 외접원·내접원 활용 > 외심·내심을 이용한 복합도형: 중첩된 두 외심과 둔각삼각형의 외부 중심각",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "중첩 외심 관계는 primary 안이나 실제 해설의 360°-2×둔각 단계가 원주각-중심각 정리를 추가 사용한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "직각삼각형 외심을 빗변 중점으로 읽고 작은 둔각삼각형의 외심각을 반사각과 구별한다.",
+        "difficulty": "두 외심의 소속을 바꾸고 둔각에 대응하는 작은 중심각을 선택해야 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "definition": "삼각형의 외심·내심 및 중심과 관련된 성질을 핵심 전략으로 이용하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "c9202766a2fb60e50e35ebe1110f0ab869aad540fa4fcbc3dd46c8fe04e2394a",
+      "currentMetadataSourceFingerprint": "a67230ba81316d86b14cfd2298e3bdc1587c64efcb0badd3955b1fcebaa6d31d",
+      "currentSourceFingerprint": "a67230ba81316d86b14cfd2298e3bdc1587c64efcb0badd3955b1fcebaa6d31d",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "3e8d2b6ff61a8c6a2a942d2f225545876708276df9be86c0664e88e8e765461c",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q18-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "391d66ae2360d308ae8b20b6bcb6159d839f659c",
+          "currentBlob": "391d66ae2360d308ae8b20b6bcb6159d839f659c",
+          "rawSha256": "92e71a9f4ae1fc88d381a0e2d5825efe5f74398866ec821bb9f8fc7b2f021e90",
+          "bytes": 35418,
+          "identical": true
+        },
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q18.png",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "3e732e2b0b69ea936b513ba5889391984d75eff2",
+          "currentBlob": "3e732e2b0b69ea936b513ba5889391984d75eff2",
+          "rawSha256": "4b4181c0a0147d9a1a826e4dd022304f17a72bb5235ddd8f6d0d9a60e6bc5584",
+          "bytes": 338481,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f86984ab80fc796fc7dd004b6df0542033939352ff8702099ff7deaddd634a2c",
+      "sourceOrdinal": 20,
+      "decision": "CORRECT",
+      "primaryMethod": "닮은 원뿔 부피비와 전체-부분",
+      "decisiveStep": "모선비를 세제곱한 빈 부분:전체에서 물 부분의 비를 차로 바꾸어 구한다.",
+      "after": {
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "부분과 전체를 물과 빈 부분의 두 항으로 다시 읽어야 한다."
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 넓이·부피 비: 닮은 원뿔 부피비와 전체-부분",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "부분과 전체를 물과 빈 부분의 두 항으로 다시 읽어야 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_SIMILAR_FIGURES",
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "definition": "닮음비·대응변·각·넓이비·축척 등의 닮은 도형 관계를 이용하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "801d28bd778518345124850d24a8b154fb2f830643a4334bbdebf8ffdd341b84",
+      "currentMetadataSourceFingerprint": "652429b7f8f709b64b22e2d1e2b5bac7540851fe8c2305a008c1b1217aec27cc",
+      "currentSourceFingerprint": "652429b7f8f709b64b22e2d1e2b5bac7540851fe8c2305a008c1b1217aec27cc",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "conceptClusterKey": "SIMILAR_FIGURE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "6176b7756580305d52c57179563b223c916cf7fa8c4ac74506b0ce85b6d95c71",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q20-solution-v2.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "bd22f229221e1cf737772041b350aa7381515457",
+          "currentBlob": "bd22f229221e1cf737772041b350aa7381515457",
+          "rawSha256": "33f750345cb66106d2539fdbc2b34249fca2f693ac35dfebb5d3e46bb911b3ec",
+          "bytes": 35330,
+          "identical": true
+        },
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q20.png",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "e8cb34f12de588de85e5506bc72811d1704dff54",
+          "currentBlob": "e8cb34f12de588de85e5506bc72811d1704dff54",
+          "rawSha256": "529712b154f3caeb9a49119cce55da77805c7c1850e275ed13effe646d510a16",
+          "bytes": 436408,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a30434db189c2256d5a5cea2f8f358b1743ce68f2d33ac5059106c33b3c2d0fa",
+      "sourceOrdinal": 21,
+      "decision": "CORRECT",
+      "primaryMethod": "주어진 직각삼각형 중 RHA 합동 쌍 선택",
+      "decisiveStep": "두 예각의 합으로 각 표현을 맞춘 뒤 같은 빗변과 한 예각을 가진 대응 순서로 합동을 쓴다.",
+      "after": {
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "여러 그림의 빗변과 예각을 구분하는 한 번의 조건 비교가 필요하다."
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 성질 > 직각삼각형의 합동 > RHA: 주어진 직각삼각형 중 RHA 합동 쌍 선택",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "여러 그림의 빗변과 예각을 구분하는 한 번의 조건 비교가 필요하다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "definition": "RHS·RHA 등 직각삼각형 합동 조건을 핵심 전략으로 이용하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "e42582dcf90e1816d888e8381fd23f8a0d9a0d689c32e63be89b135be1613883",
+      "currentMetadataSourceFingerprint": "39027dbd9515c6c6372b60ae40f8dd9deb448ac8a17b9652f0290b7c522efaa0",
+      "currentSourceFingerprint": "39027dbd9515c6c6372b60ae40f8dd9deb448ac8a17b9652f0290b7c522efaa0",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "29e634cd154db082443296fed4e69767696116358ef08d12d8379d41f9c7f7ec",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q21-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "a23f333a5c3e47dbde514a9b598c588b43988c1e",
+          "currentBlob": "a23f333a5c3e47dbde514a9b598c588b43988c1e",
+          "rawSha256": "1e4583c17c58bed81bffc2ab2005159e6d9ae6859b66fab1aaf0505a150a7424",
+          "bytes": 35303,
+          "identical": true
+        },
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q21.png",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "03cff6dbafab3ac132056006057956e745c092ff",
+          "currentBlob": "03cff6dbafab3ac132056006057956e745c092ff",
+          "rawSha256": "eaaaf1e4ed1968141d7501ee9abb119c625164a128b9b3da6bfb5528d8cfb798",
+          "bytes": 615359,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f356d5785592a178a18e294edf78033fbe4b3bba0124ad8a4846b8d44d909788",
+      "sourceOrdinal": 22,
+      "decision": "CORRECT",
+      "primaryMethod": "외심과 내심의 일치에서 세 각 동등",
+      "decisiveStep": "같은 반지름이 만드는 밑각과 내심 반각을 동시에 비교하여 세 꼭지각이 같음을 보인다.",
+      "after": {
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 중심 정의를 직접 대응시키면 세 각의 같음이 드러나는 표준 결합이다."
+      },
+      "fieldReview": {
+        "classification": "삼각형의 성질 > 삼각형의 외심과 내심 > 외접원·내접원 활용 > 외심·내심을 이용한 복합도형: 외심과 내심의 일치에서 세 각 동등",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "두 중심 정의를 직접 대응시키면 세 각의 같음이 드러나는 표준 결합이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "definition": "삼각형의 외심·내심 및 중심과 관련된 성질을 핵심 전략으로 이용하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "16b3c5ee25cfce69e108d04a1db55ea3aad4a570b6e6de74717e5ea19221cb1a",
+      "currentMetadataSourceFingerprint": "89fe69e87a2f481ceef2730c3199ab9c5cc65deca121e360b98051405134b728",
+      "currentSourceFingerprint": "89fe69e87a2f481ceef2730c3199ab9c5cc65deca121e360b98051405134b728",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "685413a4304359e21355fe1555b19ff26a8dbbd61ce5fb950889983cdc6f23bd",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q22-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "6d336b6c889a6bfd2a1700e5740b2cb16326e59d",
+          "currentBlob": "6d336b6c889a6bfd2a1700e5740b2cb16326e59d",
+          "rawSha256": "20a7ad39f7fc0ba0b83314e312e8d56fef0ffc972a88b279a089a1870b6334fe",
+          "bytes": 27411,
+          "identical": true
+        },
+        {
+          "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q22.png",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "a21dfb3613d3f2ffcaabab8a73e054264ef4485d",
+          "currentBlob": "a21dfb3613d3f2ffcaabab8a73e054264ef4485d",
+          "rawSha256": "9d519970218f7885e2a8f2a904e6ec99da812ab68d9e1f72191efe35395d837d",
+          "bytes": 253100,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_de1eccfef8c0d1a7fc2cd0e39f09d74b88203cf571fc0708d83c2067ffe8a132",
+      "sourceOrdinal": 24,
+      "decision": "CORRECT",
+      "primaryMethod": "닮음비에서 정사각형 넓이·정육면체 부피",
+      "decisiveStep": "길이비로 새 변을 구해 각각 제곱과 세제곱으로 목표량을 계산한다.",
+      "after": {
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "길이비를 넓이·부피의 차원에 맞춰 처리하는 직접 두 소문항이다."
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 넓이·부피 비: 닮음비에서 정사각형 넓이·정육면체 부피",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "길이비를 넓이·부피의 차원에 맞춰 처리하는 직접 두 소문항이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_SIMILAR_FIGURES",
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "definition": "닮음비·대응변·각·넓이비·축척 등의 닮은 도형 관계를 이용하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "d004054f721d82783a3f9e5dfef5eac3d05ac64dd7dbc97b3f8883da356b1f92",
+      "currentMetadataSourceFingerprint": "acfcd20be740e0c25cbd8ec78cbca777627a7b3d1738ec9df3f5b5760562799f",
+      "currentSourceFingerprint": "acfcd20be740e0c25cbd8ec78cbca777627a7b3d1738ec9df3f5b5760562799f",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "conceptClusterKey": "SIMILAR_FIGURE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "8048756927e0733caa94c5e6580e14fb7e64c5edb8726510688b4285dd66ca55",
+      "rendererInputs": []
+    }
+  ],
+  "currentSourceBinding": {
+    "kind": "EXACT_REQUEST_SOURCE_BLOB_WITH_SCOPED_DECLARATION_AMENDMENT",
+    "baseCommit": "42686af77e264aece5c9683f3e1f77baa55da4a1",
+    "baseBlobSha1": "8195c45850574529c3f27418f93ceccac4f72afd",
+    "currentBlobSha1": "6ff9c3e9c5ec9457caa6a811a6a850c0c39b5e45",
+    "amendmentRef": {
+      "path": ".archive-meta-register/evidence/m2s2-binding68-20261115/source-declaration-repairs.json",
+      "sha256": "768e19ec705f4c6d7ad28e4824ce85c845f2b11e2d4ac64ba14599fa6fb52819"
+    }
+  },
+  "first69Baseline": {
+    "kind": "LOCAL_VERIFIED_DERIVED_SNAPSHOT_NOT_ACTUAL_MAIN",
+    "inputCommit": "3c52fd7c23d937f81e0220ae3244c861416a6c3d",
+    "proofSha256": "e200b7cf8745209417f5507ffb9ef702eed75adda60709fad2a8e3910d547d4d",
+    "metadataSha256": "03a882a75028c2227195eeee63f356e2fc8f6c5dcd79a56dba703d1abf5c7a9d",
+    "identitySha256": "5e1823b3bc7b6cc20338b667330c29acd779bbe3bfb4af8002cbcdfd74211e88"
+  },
+  "priorCandidateRequest": {
+    "path": ".archive-meta-register/inbox/m2s2-binding-20261115-E004.json",
+    "sha256": "c41ea26b51ec2f88f488541f8295db1047e50845ace7a3d2033c7132e01c89af"
+  },
+  "selectedQuestionCount": 10,
+  "excludedQuestionUids": [
+    "qid_v1_8dfe8c3aa1929d687c8f83e0bc6b7b340304cc77c6bee69eed915d421e4a7920"
+  ],
+  "semanticDebtAudit": {
+    "sha256": "fac37f5559c4318213bdcf546a9780c13db627207e7624729e09a0c2a9b37648",
+    "newDefinitionPendingSelected": 0
+  }
+}

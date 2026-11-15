@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "producer": "/root/m2s1_release; gemini is the existing envelope name, not an author claim",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "m2s1-remaining-20261115-E075",
+    "createdAt": "2026-11-15T00:00:00Z",
+    "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+    "latestBlobSha": "0b274e50f77fd082ba0980337a099c72d8df2fff",
+    "items": [
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_4e4b33fd1c1101081e209f62e0a1c2d0706a1baf85b90b0ac26d98de5be6f556",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "User-authorized release; native accepted difficulty plus narrowly bound independent source/debt recheck by /root/m3s2_release; advanced metadata and unrelated holds are outside this request",
+    "evidencePath": ".archive-meta-register/evidence/m2s1-remaining-20261115/E075.json",
+    "evidenceSha256": "ff49f7e551a84102a94ab321c155a06fb8f3fa150f429ec6b273adc695310206",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+        "ordinal": 20,
+        "questionUid": "qid_v1_4e4b33fd1c1101081e209f62e0a1c2d0706a1baf85b90b0ac26d98de5be6f556",
+        "before": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "d0b5e41cc0c131b5f83514552aba29c7dc09f088cc1bbe8b298907a63fc8e0d9",
+          "contentFingerprint": "f6fa09283da15779ac6a417f083a387ef505460d32db73e5be3edc373c20efb7"
+        },
+        "after": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "d0b5e41cc0c131b5f83514552aba29c7dc09f088cc1bbe8b298907a63fc8e0d9",
+        "contentFingerprint": "f6fa09283da15779ac6a417f083a387ef505460d32db73e5be3edc373c20efb7",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "의자3개가완전히비고마지막사용의자1~5명이라는기존해설관례로이중부등식을모델링한다.발문에는마지막의자관례미명시라조건부.\nCurrent bounded closure: The current grouping meaning and minimum/maximum target imply exactly x−3 used benches and ceil(N/5)=x−3. The last used bench has a nonzero remainder of one through five students, not an invented numeric condition. Retain the independent caveat and existing low confidence. Existing numeric difficulty/confidence are preserved; no advanced metadata or REVIEW2 approval is created."
+      }
+    ]
+  }
+}

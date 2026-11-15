@@ -1187,7 +1187,7 @@ def _fit_logarithmic_base_overview(plan):
 
 def _exp_log_curve_spec(row,index,code):
     if not isinstance(row,dict):raise ValueError(code)
-    allowed={'id','family','base','coefficients','sourceDomain','shiftX','formulaLabel','referenceLabelPoint'}
+    allowed={'id','family','base','coefficients','sourceDomain','shiftX','formulaLabel','referenceLabelPoint','referenceLabelMode'}
     if set(row)-allowed:raise ValueError(code)
     curve_id=row.get('id')
     if not isinstance(curve_id,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',curve_id):raise ValueError(code+'_ID_INVALID')
@@ -1197,6 +1197,8 @@ def _exp_log_curve_spec(row,index,code):
         point=row['referenceLabelPoint']
         if not isinstance(point,str) or not re.fullmatch('[A-Z]',point):
             raise ValueError('EXP_LOG_PAIR_REFERENCE_LABEL_POINT_INVALID:'+curve_id)
+    if 'referenceLabelMode' in row and (row['referenceLabelMode']!='NAME' or row.get('formulaLabel')!='NAME' or 'referenceLabelPoint' not in row):
+        raise ValueError('EXP_LOG_PAIR_REFERENCE_LABEL_MODE_INVALID:'+curve_id)
     family=row.get('family')
     if family not in {'exponential-affine','logarithmic-affine'}:raise ValueError(code+'_FAMILY_UNSUPPORTED')
     base=exp_log_base(row.get('base'),'EXP_LOG_PAIR') or natural_exp_log_base()
@@ -1375,7 +1377,8 @@ def _fit_exp_log_pair_overview(plan):
         overlays=plan.get('overlays')
         points=overlays.get('points',[]) if isinstance(overlays,dict) else []
         owners=[point for point in points if isinstance(point,dict) and point.get('id')==source['referenceLabelPoint']] if isinstance(points,list) else []
-        if (len(owners)!=1 or owners[0].get('coordinates') is not True or owners[0].get('unnamed',False) is not False
+        show_coordinates=source.get('referenceLabelMode')!='NAME'
+        if (len(owners)!=1 or owners[0].get('coordinates') is not show_coordinates or owners[0].get('unnamed',False) is not False
             or owners[0].get('marker','FILLED')!='FILLED'
             or not all(_piecewise_fraction(owners[0].get(axis),code)==Fraction(curve['referencePoint'][axis]) for axis in ('x','y'))):
             raise ValueError(code)
