@@ -20,6 +20,7 @@ const metadataConsumers = [
   /^tests\/(?:problem-bank-meta|apms-result-clinic-uid-bridge\.|apmath-omr-result-identity\.|apms-clinic-uid-refresh\.)/,
 ];
 const registrationContracts = [
+  /^tests\/archive-reviewed-parent-correction\.test\.mjs$/,
   /^tests\/archive-(?:registration-|register-|single-writer-|main-merge-meta\.|pr-registration-|pages-|package-only\.|reviewed-apply-bridge\.|meta-backlog-)/,
   /^tests\/archive2-registration-contracts\.test\.mjs$/,
   /^tests\/(?:git-push-derived-with-retry\.|ci-signal-hygiene\.|run-tests-output-guard\.|apms-worker-deploy\.)/,

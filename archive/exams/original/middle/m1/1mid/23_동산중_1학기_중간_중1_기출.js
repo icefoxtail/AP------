@@ -74,10 +74,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 3,
@@ -269,10 +269,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 8,
