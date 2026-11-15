@@ -6,6 +6,7 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { isUnambiguousLegacySourceUidAlias } from '../intelligence/question-identity-contract.mjs';
+import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -53,6 +54,27 @@ const archived = (root,commit,file) => {
 };
 const mapUnique = (rows, key, label) => { const m=new Map(); for(const r of rows||[]){const k=key(r);if(m.has(k))throw Error(`DUPLICATE_${label}:${k}`);m.set(k,r);}return m; };
 const semantic = q => pick(q,FIELDS);
+const SOLUTION_REBIND_FIXED_FIELDS=REASSESSED_STUDENT_FIELDS.filter(field=>field!=='solution');
+
+// A later native FINAL_QA may explicitly rebind a repaired solution while the
+// AutoMeta cursor still names its previous source. This is not a new review:
+// require the selected receipt's exact before/after repair and its actual old
+// Git source, and keep every other student field unchanged.
+function nativeSolutionRebind(receipt,{root,bank},previous,question,identity,ordinal) {
+  if(receipt.scope!=='PARTIAL_UIDS'||receipt.approval?.type!=='FINAL_QA'
+    ||typeof previous.solution!=='string'||typeof question.solution!=='string'||previous.solution===question.solution
+    ||!equal(pick(previous,SOLUTION_REBIND_FIXED_FIELDS),pick(question,SOLUTION_REBIND_FIXED_FIELDS)))return false;
+  const repairs=receipt.fingerprintRepairs?.filter(r=>r.questionUid===identity.questionUid);
+  if(repairs?.length!==1)return false;
+  const r=repairs[0],fp=sourceFingerprint(previous),cf=contentFingerprint(previous);
+  if(r.sourceOrdinal!==ordinal||r.sourceReview||!/^[a-f0-9]{40}$/.test(r.rebind?.priorSourceBlobSha1||'')
+    ||r.rebind.priorContentFingerprint!==cf||r.metadataBefore?.sourceFingerprint!==fp
+    ||!Object.hasOwn(r.metadataBefore,'contentFingerprint')||![null,cf].includes(r.metadataBefore.contentFingerprint)
+    ||r.identityBefore?.sourceFingerprint!==fp||r.after?.sourceFingerprint!==sourceFingerprint(question)
+    ||r.after?.contentFingerprint!==cf||contentFingerprint(question)!==cf)return false;
+  const prior=loadBank(git(root,'cat-file','blob',r.rebind.priorSourceBlobSha1));
+  return prior.length===bank.length&&equal(pick(prior[ordinal-1],REASSESSED_STUDENT_FIELDS),pick(previous,REASSESSED_STUDENT_FIELDS));
+}
 
 // A partial receipt keeps the original source denominator but owns only its selected
 // UID set. Bind every selected row to the actual identity map and source ordinal;
@@ -101,7 +123,8 @@ function nativeReceiptRecords(receipt,{bank,identityByJoin,identityMap},source) 
 // pending cursor. Reuse its byte-bound native receipt, never the approval flags alone. Returning
 // ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
 export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,ownerPack=pt?.ownerPack}) {
-  if(!nativeSource||!previous||!equal(pick(previous,STUDENT),pick(question,STUDENT)))return null;
+  if(!nativeSource||!previous)return null;
+  const studentUnchanged=equal(pick(previous,STUDENT),pick(question,STUDENT));
   const {root,bytes,blobSha1,bank,runtimeRecord,runtimeStatus}=nativeSource;
   if(!Buffer.isBuffer(bytes)||!Array.isArray(bank)||!equal(bank[ordinal-1],question)
     ||!/^[a-f0-9]{40}$/.test(blobSha1||'')||!runtimeRecord||runtimeStatus!=='ACTIVE'
@@ -143,6 +166,7 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||registeredIdentity[0].sourceOrdinal!==ordinal||registeredIdentity[0].sourceFingerprint!==identity.sourceFingerprint
         ||!equal(registeredIdentity[0].sourceQuestionNo,identity.sourceQuestionNo)
         ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
+      if(!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }

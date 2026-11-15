@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T17:39:41+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/23_팔마고_1학기_중간_고2_수학I.js",
+  "items": [
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass2",
+      "resolutionReason": "θ=π/4+kπ/2 중 가장 작은 제3사분면 각은 5π/4여서 sinθ cosθ=1/2이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "l3": "일반각과 호도법",
+        "l4": "일반각"
+      }
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass2",
+      "resolutionReason": "세 조건의 교집합은 4<u≤6이므로 12<x≤18의 정수 6개가 된다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [],
+      "integrationPattern": "PT_LOG_INEQUALITY_DOMAIN",
+      "rpmPath": {
+        "l3": "로그부등식",
+        "l4": "정의역·밑 조건"
+      }
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass2",
+      "resolutionReason": "두 교점 조건은 4<t<9이므로 정수 t는 5,6,7,8이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "rpmPath": {
+        "l3": "지수함수의 그래프",
+        "l4": "증가·감소"
+      }
+    },
+    {
+      "ordinal": 2,
+      "chosenFrom": "pass2",
+      "resolutionReason": "(t²−1)/(t²+1)=4/6=2/3이므로 p+q=5이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "integrationPattern": "PT_EXPONENT_LAW_APPLICATION",
+      "rpmPath": {
+        "midUnit": "지수",
+        "l3": "지수법칙",
+        "l4": "조건식"
+      }
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass2",
+      "resolutionReason": "0<a<5에서 밑 조건으로 a=1,2를 빼면 a=3,4만 남아 합이 7이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [
+        "COND_INTEGER"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "resolutionReason": "네 쌍은 각각 1이고 가운데 항은 1/2, 끝 항은 1이어서 2k=11이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "integrationPattern": "PT_TRIG_IDENTITY_RELATIONS"
+    },
+    {
+      "ordinal": 22,
+      "chosenFrom": "pass2",
+      "resolutionReason": "5≤a≤20, b≥1이며 (a,b)=(5,1)이 등호를 이루어 최솟값은 6이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "rpmPath": {
+        "l4": "정의역·밑 조건"
+      }
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "resolutionReason": "주어진 식이 n/3이므로 50 이하의 3의 배수 16개를 센다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "PT_LOG_APPLICATION"
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass2",
+      "resolutionReason": "k=1.1/2.2=0.5이고 log 16=1.2이므로 감각의 세기는 0.6이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "integrationPattern": "PT_LOG_APPLICATION",
+      "rpmPath": {
+        "l4": "소수점 위치"
+      }
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass2",
+      "resolutionReason": "세 값은 −1/2, 1/2, 1이어서 합은 1이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "l3": "삼각함수의 성질",
+        "l4": "주기·대칭"
+      }
+    }
+  ]
+}
