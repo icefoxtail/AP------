@@ -699,9 +699,9 @@ function specForFamily(plan,model,id){
     if(!policy||policy.schemaVersion!=='TRIGONOMETRIC_INTERVAL_POLICY_v2'||!p.intervalFeatures||!Array.isArray(features.lines))throw Error('TRIG_FEATURE_INVENTORY_REQUIRED');
     const factor=features.axisUnit==='PI'?Math.PI:1,expression=trigExpression(p);
     const poleXs=features.poles.map(row=>exactFraction(row.x)*factor);
-    const hasBoundaryPole=features.poles.some(row=>row.boundary);
-    const criticalX=[...features.lines.flatMap(row=>row.intersections.map(point=>point.x)),...features.keyPoints.map(row=>exactFraction(row.x)*factor),...(hasBoundaryPole?[]:poleXs),...(features.cusps??[]).map(row=>exactFraction(row.x)*factor)];
-    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX,...(hasBoundaryPole?{breaks:poleXs,clipRefine:true}:{})}];
+    // A tangent pole is a cut, including when it is strictly inside the interval.
+    const criticalX=[...features.lines.flatMap(row=>row.intersections.map(point=>point.x)),...features.keyPoints.map(row=>exactFraction(row.x)*factor),...(features.cusps??[]).map(row=>exactFraction(row.x)*factor)];
+    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX,...(poleXs.length?{breaks:poleXs,clipRefine:true}:{})}];
     const lineText=row=>{if(row.kind==='VERTICAL'){if(features.axisUnit!=='PI')return 'x='+row.x;const neg=row.x.startsWith('-'),[n,d]=row.x.replace('-','').split('/');return 'x='+(neg?'-':'')+(n==='1'?'':n+'*')+'pi'+(d?'/'+d:'');}const h=row.kind==='HORIZONTAL';const perPiSlope=()=>{const neg=row.slope.startsWith('-'),[n,d]=row.slope.replace('-','').split('/');return (neg?'-':'')+(n==='1'?'x':n+'*x')+'/'+(d?'('+d+'*pi)':'pi');};return 'y='+(h?row.intercept:(row.perPi===true?perPiSlope():row.slope==='1'?'x':row.slope==='-1'?'-x':row.slope+'*x')+(row.intercept==='0'?'':row.intercept.startsWith('-')?row.intercept:'+'+row.intercept));};
     // a line that carries one of the additive looks (colour, per-pi slope, vertical, surd level, folded curve) names itself beside its own drawn line at its visible end, so a student reads which equation belongs to which line
     const ownedLabel=row=>(row.color||row.perPi===true||row.kind==='VERTICAL'||features.absolute===true||/sqrt/.test(row.intercept??''))?{target:'line-'+row.id,lineOwned:true,alternateAt:[],gaps:[8,6,10,20,32,48],collinearOwners:true,lineAt:'END'}:{};

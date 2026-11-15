@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {specFor} from '../production/phase2.mjs';
+import {assetIdentity} from '../production/contracts.mjs';
+import {typesetter} from '../production/typography.mjs';
 
 const OBSERVER=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
 const TIMEOUT_MS=120000;
@@ -53,6 +55,53 @@ test('the composed tangent interval samples around open poles and keeps a dashed
   assert.equal(primitives.filter(row=>row.role==='curve').length,2);
 });
 
+test('Maesan Q04 tangent builds three finite branches between exact interior poles',async()=>{
+  const graphPlan={
+    family:'trigonometric',function:'TAN',coefficients:['1','1','0'],phasePi:'0',
+    sourceDomain:{kind:'INTERVAL_PI',rangePi:['0','2'],states:['CLOSED','OPEN']},
+    axisTickPi:true,axisTickValues:{x:['1/4'],y:[]},hideIntervalEndLabels:['END']
+  };
+  const {fitted,model,audit}=await observe(graphPlan);
+  assert.equal(audit.status,'PASS',JSON.stringify(audit.errors));
+  const identity=assetIdentity('23_매산고_1학기_중간_고2_수학I|4','PROBLEM_VISUAL','choice-plot-c');
+  const plan={capability:'trigonometric-spike-v1',graphPlan:fitted,caption:'보기의 좌표평면 위 그래프'};
+  const spec=specFor(plan,model,identity.assetId);
+  spec.displayFacts.preferTickSide=true;
+  const curve=spec.objects.find(object=>object.kind==='FUNCTION_GRAPH');
+  const poles=[Math.PI/2,3*Math.PI/2];
+  assert.deepEqual(curve.breaks,poles);
+  assert.ok(poles.every(pole=>!curve.criticalX.includes(pole)));
+  assert.equal(curve.clipRefine,true);
+
+  const prepared=await worker({action:'prepare',spec});
+  assert.equal(prepared.status,'OK',JSON.stringify(prepared.result));
+  const type=typesetter();
+  const fragments=Object.fromEntries(prepared.result.labels.map(label=>[label.id,type({
+    id:label.id,owner:label.target||label.id,factRole:'DERIVED_INTERMEDIATE',fontPx:24,
+    ...(label.math?{kind:'MATH',tex:label.tex||label.text}:{kind:'TEXT',text:label.text})
+  },identity)]));
+  const measurements=Object.fromEntries(Object.entries(fragments).map(([id,fragment])=>
+    [id,[fragment.intrinsic.width,fragment.intrinsic.height]]));
+  const built=await worker({action:'build',spec,measurements,fragments});
+  assert.equal(built.status,'OK',JSON.stringify(built.result));
+  const sampling=built.result.witness.sampling[0];
+  assert.deepEqual(sampling.domainCuts,[0,...poles,2*Math.PI]);
+  assert.equal(sampling.branchCount,3);
+  assert.deepEqual(sampling.warnings,[]);
+  assert.deepEqual(built.result.witness.layout.unresolved,[]);
+  const svg=built.result.svg;
+  assert.match(svg,/id="interval-endpoint-start"[^>]*data-state="CLOSED"/);
+  assert.match(svg,/id="interval-endpoint-end"[^>]*data-state="OPEN"/);
+  assert.equal((svg.match(/data-role="trig-pole"/g)??[]).length,2);
+  assert.doesNotMatch(svg,/id="period-label"|id="interval-end-label"/);
+  const {aspectPolicy,...transform}=built.result.witness.coordinateModel;
+  const inspect=final=>worker({action:'graphAudit',graphPlan:fitted,svg:final,transform:{...transform,displayScale:.49}},{script:OBSERVER});
+  const observed=await inspect(svg);
+  assert.equal(observed.result.status,'PASS',JSON.stringify(observed.result.errors));
+  const altered=await inspect(svg.replace('id="trig-pole-1"','id="removed-pole"'));
+  assert.equal(altered.result.status,'FAIL');
+});
+
 test('a pi rate keeps the single-period form exact',async()=>{
   const {fitted,audit}=await observe({family:'trigonometric',function:'SIN',coefficients:['1','0'],ratePi:'1/6',phasePi:'0',sourceDomain:{kind:'ALL_REALS'},domain:[-6,6],viewport:[-7,7,-4,4],axisTickValues:{x:[],y:[]}});
   assert.equal(fitted.overviewPolicy,'TRIGONOMETRIC_PERIODIC_OVERVIEW_v2');
@@ -73,6 +122,14 @@ test('the old one-period and INTERVAL_PI plans keep their v1 policy',async()=>{
   assert.equal(one.result.graphPlan.overviewPolicy,'TRIGONOMETRIC_PERIODIC_OVERVIEW_v1');
   const many=await frame({family:'trigonometric',function:'SIN',coefficients:['1','1','0'],phasePi:'0',sourceDomain:{kind:'INTERVAL_PI',rangePi:['0','6'],states:['OPEN','OPEN']},domain:[0,19],viewport:[-1,20,-2,2],referenceLines:[{id:'k',y:'1/2',intersectionCount:6}],axisTickValues:{x:[],y:[]}});
   assert.equal(many.result.graphPlan.overviewPolicy,'TRIGONOMETRIC_INTERVAL_OVERVIEW_v1');
+  const tangent=await frame({family:'trigonometric',function:'TAN',coefficients:['1','1','0'],phasePi:'0',
+    sourceDomain:{kind:'ALL_REALS_WITH_TAN_POLES'},domain:[-1,1],viewport:[-2,2,-3,3],axisTickValues:{x:[],y:[]}});
+  assert.equal(tangent.status,'OK',JSON.stringify(tangent.result));
+  assert.equal(tangent.result.graphPlan.overviewPolicy,'TRIGONOMETRIC_PERIODIC_OVERVIEW_v1');
+  const curve=specFor({capability:'trigonometric-spike-v1',graphPlan:tangent.result.graphPlan,caption:'탄젠트 한 가지'},null,'old-tan')
+    .objects.find(object=>object.kind==='FUNCTION_GRAPH');
+  assert.equal(curve.breaks,undefined);
+  assert.equal(curve.clipRefine,undefined);
 });
 
 test('bad grammar and unsupported units are refused with codes',async()=>{
