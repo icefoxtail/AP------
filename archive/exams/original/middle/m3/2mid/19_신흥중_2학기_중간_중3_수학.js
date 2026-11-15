@@ -116,6 +116,10 @@ window.examData = {
   },
     {
       "number": 2,
+      "solutionImageCaption": "240은 4번, 260은 3번이며 나머지는 그보다 적다. 최빈값은 240이므로 정답은 ②이다.",
+      "solutionImageAlt": "신발 사이즈가 한 번 나온 것부터 여러 번 나온 것까지 도수를 막대 높이로 비교했다. 240에 해당하는 초록 막대가 가장 높다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q2-solution.svg",
       "score": 3.0,
       "question": "다음 자료는 어느 신발가게에서 하루 동안 팔린 신발사이즈를 조사하여 나타낸 것이다. 신발 사이즈의 최빈값을 구하면? (3점)<br><div style=\"border:1px solid #ccc; padding:8px; margin:6px 0;\">240, 235, 250, 275, 230, 215, 240, 280, 275, 260, 255, 250, 240, 235, 260, 240, 230, 260</div>",
       "choices": [
@@ -682,6 +686,10 @@ window.examData = {
   },
     {
       "number": 7,
+      "solutionImageCaption": "편차의 합은 0이다. D의 편차는 −2점이므로 점수는 72−2=70점이고 정답은 ⑤이다.",
+      "solutionImageAlt": "가로 기준선이 편차 0을 나타낸다. 학생 A와 E의 파란 막대는 양수이고 B, C, D의 주황 막대는 음수 방향으로 내려간다. D의 높이는 위와 아래 길이 합을 맞춘다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q7-solution.svg",
       "score": 4.0,
       "question": "다음은 학생 5명의 수학성적에 대한 편차를 나타낸 표이다. 5명의 평균이 72점일 때, $D$의 수학점수는? (4점)<br><table border=\"1\" style=\"border-collapse:collapse; text-align:center; margin:8px auto;\"><tr><th>학생</th><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td></tr><tr><th>편차</th><td>4</td><td>-1</td><td>-3</td><td></td><td>2</td></tr></table>",
       "choices": [
@@ -1022,6 +1030,10 @@ window.examData = {
   },
     {
       "number": 10,
+      "solutionImageCaption": "평균은 M+5가 된다. 평균과 점수의 차이가 그대로여서 표준편차 S도 그대로이다. 정답은 ③이다.",
+      "solutionImageAlt": "같은 모양으로 퍼진 네 점을 위아래 두 줄에 놓았다. 모든 점과 평균이 오른쪽으로 같은 거리만큼 이동했다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q10-solution.svg",
       "score": 4.0,
       "question": "3학년 어느 반 학생들의 국어 성적의 평균이 $M$, 분산은 $S^2$, 표준편차가 $S$이다. 이 때, 이 반 모든 학생들의 국어성적에 5점이 더해졌을 때, 다음 설명 중 옳은 것은? (4점)",
       "choices": [
@@ -1137,8 +1149,12 @@ window.examData = {
   },
     {
       "number": 11,
+      "solutionImageCaption": "네 반원의 넓이를 더한 값과 큰 원 넓이는 각각 45π/4이다. 공통 영역을 빼면 네 주황 영역의 합이 직사각형 넓이 18과 같다. 정답은 ②이다.",
+      "solutionImageAlt": "파란 원에 들어가는 공통 부분을 연한 초록, 원 바깥의 네 영역을 주황으로 표시했다. 원 안쪽에는 직사각형이 있다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q11-solution.svg",
       "score": 4.0,
-      "question": "다음 그림은 가로, 세로의 길이가 각각 $3, 6$인 직사각형 $\\mathrm{ABCD}$의 각 변을 지름으로 하는 반원을 그린 후, 네 점 $\\mathrm{A, B, C, D}$를 지나는 원을 그린 것이다. 이때, 색칠한 부분의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q11.png\" />",
+      "question": "다음 그림은 가로, 세로의 길이가 각각 $3, 6$인 직사각형 $\\mathrm{ABCD}$의 각 변을 지름으로 하는 반원을 그린 후, 네 점 $\\mathrm{A, B, C, D}$를 지나는 원을 그린 것이다. 이때, 색칠한 부분의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q11-problem-v3.svg\" alt=\"가로 3, 세로 6인 직사각형의 모든 변 바깥에 반원을 그렸다. 큰 파란 원 밖이면서 각 반원 안에 있는 네 영역을 주황으로 칠했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$9$",
         "$18$",
@@ -1198,7 +1214,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "직사각형에 붙은 반원과 외접원의 넓이",
       "questionType": "객관식",
-      "layoutTag": "source_figure",
+      "layoutTag": "fullwidth",
       "tags": [
         "기하",
         "직사각형에 붙은 반원과 외접원의 넓이"
@@ -1255,8 +1271,12 @@ window.examData = {
   },
     {
       "number": 12,
+      "solutionImageCaption": "EA=√(10²−8²)=6이다. 닮음에서 EA²=AF·AD이므로 AF=18/5이고 정답은 ③이다.",
+      "solutionImageAlt": "위쪽 EAD 직각삼각형을 강조하고 빗변 AD를 지나는 수선 EF를 주황으로 표시했다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q12-solution.svg",
       "score": 4.0,
-      "question": "다음 그림에서 $\\square\\mathrm{ABCD}$는 정사각형이고 $\\angle \\mathrm{AED} = 90^\\circ$, $\\overline{\\mathrm{EG}} \\perp \\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{AB}} = 10$, $\\overline{\\mathrm{ED}} = 8$일 때, $\\overline{\\mathrm{AF}}$의 길이를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q12.png\" />",
+      "question": "다음 그림에서 $\\square\\mathrm{ABCD}$는 정사각형이고 $\\angle \\mathrm{AED} = 90^\\circ$, $\\overline{\\mathrm{EG}} \\perp \\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{AB}} = 10$, $\\overline{\\mathrm{ED}} = 8$일 때, $\\overline{\\mathrm{AF}}$의 길이를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q12-problem-v3.svg\" alt=\"정사각형 ABCD의 윗변 AD 위에 F, 아랫변 BC 위에 G가 놓인다. 세로 EFG와 E의 직각, ED=8, AB=10을 나타냈다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$\\frac{24}{5}$",
         "$3$",
@@ -1316,7 +1336,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "직각삼각형의 빗변과 높이",
       "questionType": "객관식",
-      "layoutTag": "source_figure",
+      "layoutTag": "fullwidth",
       "tags": [
         "기하",
         "직각삼각형의 빗변과 높이"
@@ -1372,8 +1392,12 @@ window.examData = {
   },
     {
       "number": 13,
+      "solutionImageCaption": "정육각형 한 변과 외접원의 반지름은 1 cm이다. AD는 지름이므로 2 cm이다. 정답은 ④이다.",
+      "solutionImageAlt": "중심에서 꼭짓점까지 같은 파란 반지름을 표시했다. 세 변이 같은 삼각형 하나를 옅은 주황으로 칠했다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q13-solution.svg",
       "score": 4.0,
-      "question": "다음 그림은 정육각형의 두 대각선을 그린 것이다. 대각선 $\\overline{\\mathrm{AD}}$의 길이를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q13.png\" />",
+      "question": "다음 그림은 정육각형의 두 대각선을 그린 것이다. 대각선 $\\overline{\\mathrm{AD}}$의 길이를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q13-problem-v3.svg\" alt=\"정육각형에서 위의 A와 아래의 D를 파랑 대각선으로 이었다. 옆 변의 길이는 1 cm이고 A에서 C까지 다른 대각선이 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$\\sqrt{5}\\,\\mathrm{cm}$",
         "$3\\,\\mathrm{cm}$",
@@ -1432,7 +1456,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "정육각형의 대각선",
       "questionType": "객관식",
-      "layoutTag": "source_figure",
+      "layoutTag": "fullwidth",
       "tags": [
         "기하",
         "정육각형의 대각선"
@@ -1489,8 +1513,12 @@ window.examData = {
   },
     {
       "number": 14,
+      "solutionImageCaption": "AC=x=3, BC=3√3이다. 45도 직각삼각형에서 CD=y=BC/√2=3√6/2이다. 정답은 ③이다.",
+      "solutionImageAlt": "아래쪽과 위쪽 영역을 다른 색으로 구분했다. 위쪽 직각삼각형의 두 짧은 변이 같은 초록 눈금이다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q14-solution.svg",
       "score": 4.0,
-      "question": "다음 그림에서 $x$와 $y$의 값을 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q14.png\" />",
+      "question": "다음 그림에서 $x$와 $y$의 값을 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q14-problem-v3.svg\" alt=\"두 직각삼각형은 BC를 같이 쓴다. A의 각은 60도, 위쪽 C의 각은 45도이고 파란 빗변 AB 길이는 6이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$x = 3, y = \\sqrt{6}$",
         "$x = 2, y = 3\\sqrt{6}$",
@@ -1550,7 +1578,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "특수각을 포함한 두 직각삼각형",
       "questionType": "객관식",
-      "layoutTag": "source_figure",
+      "layoutTag": "fullwidth",
       "tags": [
         "기하",
         "특수각을 포함한 두 직각삼각형"
@@ -1605,8 +1633,12 @@ window.examData = {
   },
     {
       "number": 15,
+      "solutionImageCaption": "AF=x라 두면 BF=FD=10−x이다. x²+6²=(10−x)²에서 FD=34/5 cm이며 삼각형 넓이는 102/5 cm²이다. 정답은 ⑤이다.",
+      "solutionImageAlt": "주황 삼각형 FBD에서 BF와 FD를 같은 초록 눈금으로 짝지었다. 파란 선 BD는 접는 축이다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q15-solution.svg",
       "score": 4.0,
-      "question": "다음 그림과 같은 직사각형 $\\mathrm{ABCD}$에서 대각선 $\\mathrm{BD}$를 접는 선으로 하여 접어서 점 $\\mathrm{C}$가 옮겨진 점을 $\\mathrm{E}$, $\\overline{\\mathrm{BE}}$와 $\\overline{\\mathrm{AD}}$의 교점을 $\\mathrm{F}$라 할 때, 삼각형 $\\mathrm{FBD}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q15.png\" />",
+      "question": "다음 그림과 같은 직사각형 $\\mathrm{ABCD}$에서 대각선 $\\mathrm{BD}$를 접는 선으로 하여 접어서 점 $\\mathrm{C}$가 옮겨진 점을 $\\mathrm{E}$, $\\overline{\\mathrm{BE}}$와 $\\overline{\\mathrm{AD}}$의 교점을 $\\mathrm{F}$라 할 때, 삼각형 $\\mathrm{FBD}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q15-problem-v3.svg\" alt=\"가로 10 cm, 세로 6 cm인 직사각형 종이를 BD를 따라 접었다. C가 E로 옮겨가고 BE는 윗변 AD에 F에서 닿는다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$\\frac{41}{5}\\,\\mathrm{cm}^2$",
         "$\\frac{51}{2}\\,\\mathrm{cm}^2$",
@@ -1666,7 +1698,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "직사각형 접기와 반사",
       "questionType": "객관식",
-      "layoutTag": "source_figure",
+      "layoutTag": "fullwidth",
       "tags": [
         "기하",
         "직사각형 접기와 반사"
@@ -1723,8 +1755,12 @@ window.examData = {
   },
     {
       "number": 16,
+      "solutionImageCaption": "삼각형 ABC의 넓이는 15/2 cm²이다. 밑변이 모두 5 cm인 두 삼각형의 넓이 합과 같으므로 DP+EP=3 cm이다. 정답은 ④이다.",
+      "solutionImageAlt": "같은 파랑 옆변을 각 삼각형의 밑변으로 삼는다. 두 삼각형의 주황·보라 수선과 서로 다른 색 영역이 보인다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q16-solution.svg",
       "score": 4.0,
-      "question": "다음 이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}} = 5\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}} = \\sqrt{10}\\,\\mathrm{cm}$이다. 변 $\\mathrm{BC}$ 위의 한 점 $\\mathrm{P}$에서 변 $\\mathrm{AB, AC}$에 내린 수선의 발을 각각 $\\mathrm{D, E}$라 할 때, $\\overline{\\mathrm{DP}}$와 $\\overline{\\mathrm{EP}}$의 길이의 합을 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q16.png\" />",
+      "question": "다음 이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}} = 5\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}} = \\sqrt{10}\\,\\mathrm{cm}$이다. 변 $\\mathrm{BC}$ 위의 한 점 $\\mathrm{P}$에서 변 $\\mathrm{AB, AC}$에 내린 수선의 발을 각각 $\\mathrm{D, E}$라 할 때, $\\overline{\\mathrm{DP}}$와 $\\overline{\\mathrm{EP}}$의 길이의 합을 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q16-problem-v3.svg\" alt=\"이등변삼각형의 두 옆변 AB와 AC는 5 cm이고 밑변은 √10 cm이다. P에서 두 옆변에 각각 D, E까지 수선을 내렸다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$4\\,\\mathrm{cm}$",
         "$2\\,\\mathrm{cm}$",
@@ -1785,7 +1821,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "이등변삼각형과 수선 거리의 합",
       "questionType": "객관식",
-      "layoutTag": "source_figure",
+      "layoutTag": "fullwidth",
       "tags": [
         "기하",
         "이등변삼각형과 수선 거리의 합"
@@ -1841,6 +1877,10 @@ window.examData = {
   },
     {
       "number": 17,
+      "solutionImageCaption": "PQ=√(3²+2²)=√13이므로 정답은 ①이다.",
+      "solutionImageAlt": "초록 가로 3, 주황 세로 2, 파란 PQ가 직각삼각형의 세 변이다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q17-solution.svg",
       "score": 4.0,
       "question": "좌표평면 위의 두 점 $\\mathrm{P}(-1, 3)$, $\\mathrm{Q}(2, 1)$ 사이의 거리를 구하면? (4점)",
       "choices": [
@@ -1957,8 +1997,12 @@ window.examData = {
   },
     {
       "number": 18,
+      "solutionImageCaption": "사면체 부피는 32/3이고 AFH의 넓이는 8√3이다. 두 표현을 같게 두면 높이는 4√3/3 cm이다. 정답은 ②이다.",
+      "solutionImageAlt": "주황색 삼각형 AFH의 세 변은 같은 파란 눈금이다. E에서 단면까지 내린 초록 수선과 정육면체 모서리를 나누어 본다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q18-solution.svg",
       "score": 5.0,
-      "question": "다음 그림과 같이 한 변의 길이가 $4\\,\\mathrm{cm}$인 정육면체를 잘랐을 때, 꼭짓점 $\\mathrm{E}$에서 밑면 $\\triangle\\mathrm{AFH}$까지의 높이는? (5점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q18.png\" />",
+      "question": "다음 그림과 같이 한 변의 길이가 $4\\,\\mathrm{cm}$인 정육면체를 잘랐을 때, 꼭짓점 $\\mathrm{E}$에서 밑면 $\\triangle\\mathrm{AFH}$까지의 높이는? (5점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q18-problem-v3.svg\" alt=\"한 모서리가 4 cm인 정육면체에는 A, F, H를 이은 주황 삼각형 단면이 있다. 꼭짓점 E에서 안쪽의 단면에 이르는 초록 점선의 끝에 수선의 발 J를 표시했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$3\\,\\mathrm{cm}$",
         "$\\frac{4\\sqrt{3}}{3}\\,\\mathrm{cm}$",
@@ -2017,7 +2061,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "정육면체 꼭짓점과 평면 사이 거리",
       "questionType": "객관식",
-      "layoutTag": "source_figure",
+      "layoutTag": "fullwidth",
       "tags": [
         "입체도형",
         "정육면체 꼭짓점과 평면 사이 거리"
@@ -2073,8 +2117,12 @@ window.examData = {
   },
     {
       "number": 19,
+      "solutionImageCaption": "두 높이의 합은 3√3/2, 수선의 발 사이 간격은 1/2이다. P가 AC 위에 있으므로 최단거리는 √7 cm이다. 정답은 ④이다.",
+      "solutionImageAlt": "정삼각형 ABC와 ACD를 공통 모서리 AC에서 펼쳤다. E에서 D로 향하는 주황 선분이 공통 변 AC 위의 점 P를 지난다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q19-solution.svg",
       "score": 4.0,
-      "question": "다음 그림과 같이 한 모서리의 길이가 $2\\,\\mathrm{cm}$인 정사면체 $\\mathrm{A-BCD}$가 있다. 꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 그은 수선을 $\\overline{\\mathrm{AE}}$라 하고, $\\overline{\\mathrm{AC}}$ 위에 점 $\\mathrm{P}$를 잡을 때, $\\overline{\\mathrm{EP}} + \\overline{\\mathrm{PD}}$의 최단 거리를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q19.png\" />",
+      "question": "다음 그림과 같이 한 모서리의 길이가 $2\\,\\mathrm{cm}$인 정사면체 $\\mathrm{A-BCD}$가 있다. 꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 그은 수선을 $\\overline{\\mathrm{AE}}$라 하고, $\\overline{\\mathrm{AC}}$ 위에 점 $\\mathrm{P}$를 잡을 때, $\\overline{\\mathrm{EP}} + \\overline{\\mathrm{PD}}$의 최단 거리를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q19-problem-v3.svg\" alt=\"정사면체의 모서리는 2 cm이다. BC의 E에서 AC 위의 P를 지나 D로 가는 두 주황 선분이 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$3\\,\\mathrm{cm}$",
         "$2\\sqrt{2}\\,\\mathrm{cm}$",
@@ -2134,7 +2182,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "정사면체 표면의 최단거리",
       "questionType": "객관식",
-      "layoutTag": "source_figure",
+      "layoutTag": "fullwidth",
       "tags": [
         "입체도형",
         "정사면체 표면의 최단거리"
@@ -2189,8 +2237,12 @@ window.examData = {
   },
     {
       "number": 20,
+      "solutionImageCaption": "BE=BF=4√7, EF=8이고 높이는 4√6이다. 넓이는 16√6 cm²이고 정답은 ⑤이다.",
+      "solutionImageAlt": "BE와 BF가 같은 파란 눈금인 이등변삼각형이다. 초록 밑변 EF의 가운데까지 보라 수선을 내렸다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q20-solution.svg",
       "score": 4.0,
-      "question": "다음 그림은 한 모서리의 길이가 $12\\,\\mathrm{cm}$인 정사면체이다. 점 $\\mathrm{E, F}$는 각각 $\\overline{\\mathrm{AC}}, \\overline{\\mathrm{AD}}$를 점 $\\mathrm{A}$로부터 $2:1$로 내분하는 점일 때, $\\triangle\\mathrm{BEF}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q20.png\" />",
+      "question": "다음 그림은 한 모서리의 길이가 $12\\,\\mathrm{cm}$인 정사면체이다. 점 $\\mathrm{E, F}$는 각각 $\\overline{\\mathrm{AC}}, \\overline{\\mathrm{AD}}$를 점 $\\mathrm{A}$로부터 $2:1$로 내분하는 점일 때, $\\triangle\\mathrm{BEF}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q20-problem-v3.svg\" alt=\"정사면체의 높이 방향 꼭짓점 A에서 두 변 AC와 AD의 각각 2대1 위치에 E와 F를 두었다. B와 E와 F를 이은 주황 단면이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$15\\,\\mathrm{cm}^2$",
         "$24\\,\\mathrm{cm}^2$",
@@ -2251,7 +2303,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "정사면체의 내부분할 삼각형 넓이",
       "questionType": "객관식",
-      "layoutTag": "source_figure",
+      "layoutTag": "fullwidth",
       "tags": [
         "입체도형",
         "정사면체의 내부분할 삼각형 넓이"
@@ -2307,6 +2359,10 @@ window.examData = {
   },
     {
       "number": 21,
+      "solutionImageCaption": "두 선수의 평균은 각각 71점이다. 분산은 A가 5점², B가 8점²이므로 A 선수의 기록이 더 고르다.",
+      "solutionImageAlt": "두 선수의 점수를 평균 71 기준으로 표시했다. A의 파란 편차 점과 B의 주황 편차 점이 같은 눈금을 쓴다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q21-solution.svg",
       "score": 9.0,
       "question": "[서술형 1] 다음 표는 어느 골프 대회에 참가한 두 선수 $\\mathrm{A, B}$의 기록을 조사하여 나타낸 것이다. 다음 물음에 답하여라. (정답만 쓰시오.) (9점)<br><table border=\"1\" style=\"border-collapse:collapse; text-align:center; margin:8px auto;\"><tr><th rowspan=\"2\">선수</th><th colspan=\"4\">라운드</th></tr><tr><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><th>A</th><td>68</td><td>74</td><td>72</td><td>70</td></tr><tr><th>B</th><td>71</td><td>75</td><td>67</td><td>71</td></tr></table><br>(1) 선수 $\\mathrm{A}$의 기록의 평균과 분산을 각각 구하여라. (각 2점)<br>(2) 선수 $\\mathrm{B}$의 기록의 평균과 분산을 각각 구하여라. (각 2점)<br>(3) 두 선수 중 어느 선수의 기록이 더 고른지 말하여라. (1점)",
       "choices": [],
@@ -2415,8 +2471,12 @@ window.examData = {
   },
     {
       "number": 22,
+      "solutionImageCaption": "각 뿔의 밑면 넓이는 36, 높이는 3√2이다. 두 부피의 합은 72√2 cm³이다.",
+      "solutionImageAlt": "공통 밑면은 가운데 파란 정사각형이다. 위쪽과 아래쪽 뿔을 다른 면 색으로 표시했다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q22-solution.svg",
       "score": 6.0,
-      "question": "[서술형 2] 다음 그림은 한 모서리의 길이가 $6\\,\\mathrm{cm}$인 정팔면체의 부피를 구하여라. (풀이 과정을 쓰시오.) (6점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/s02.png\" />",
+      "question": "[서술형 2] 다음 그림은 한 모서리의 길이가 $6\\,\\mathrm{cm}$인 정팔면체의 부피를 구하여라. (풀이 과정을 쓰시오.) (6점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q22-problem-v3.svg\" alt=\"A와 F 사이에 정사각형 BCDE를 둔 정팔면체이다. 모서리 하나의 길이는 6 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [],
       "answer": "72\\sqrt{2}\\,\\mathrm{cm}^3",
       "solution": "정팔면체를 가운데 정사각형 밑면을 공유하는 두 정사각뿔로 나눈다. 밑면 넓이는 $6^2=36$. 정사각뿔의 높이 $h$는 정사각형 중심에서 꼭짓점까지의 거리 $3\\sqrt2$와 모서리 $6$을 이용해 $h^2=6^2-(3\\sqrt2)^2=18$, 즉 $h=3\\sqrt2$. 전체 부피는 $2\\cdot\\frac13\\cdot36\\cdot3\\sqrt2=72\\sqrt2\\,\\mathrm{cm}^3$.",
@@ -2469,7 +2529,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "정팔면체의 부피",
       "questionType": "서술형",
-      "layoutTag": "source_figure",
+      "layoutTag": "fullwidth",
       "tags": [
         "입체도형",
         "정팔면체의 부피"
@@ -2525,8 +2585,12 @@ window.examData = {
   },
     {
       "number": 23,
+      "solutionImageCaption": "전개도에서 가로는 12+12=24 cm이고 세로는 7 cm이다. 길이는 √(24²+7²)=25 cm이다.",
+      "solutionImageAlt": "두 면을 F와 B의 모서리에서 펼쳤다. 주황 세로 접합선 위로 파란 직선 경로가 지나 E에서 C를 잇는다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/19_신흥중_2학기_중간_중3_수학/q23-solution.svg",
       "score": 5.0,
-      "question": "[서술형 3] 다음 그림은 직육면체의 표면에 줄을 이은 모양이다. 점 $\\mathrm{E}$에서 출발하여 $\\overline{\\mathrm{FB}}$를 지나 점 $\\mathrm{C}$에 이르는 최단 거리를 구하여라. (풀이 과정을 쓰시오.) (5점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/s03.png\" />",
+      "question": "[서술형 3] 다음 그림은 직육면체의 표면에 줄을 이은 모양이다. 점 $\\mathrm{E}$에서 출발하여 $\\overline{\\mathrm{FB}}$를 지나 점 $\\mathrm{C}$에 이르는 최단 거리를 구하여라. (풀이 과정을 쓰시오.) (5점)<br><img src=\"assets/images/19_신흥중_2학기_중간_중3_수학/q23-problem-v3.svg\" alt=\"직육면체에서 E를 출발하여 F와 B 사이 모서리를 지나 C까지 가는 두 주황 선분이 있다. 두 가로 길이는 12 cm, 높이는 7 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [],
       "answer": "25\\,\\mathrm{cm}",
       "solution": "직육면체의 앞면 $EABF$와 오른쪽 면 $FBCG$를 공통 모서리 $FB$를 따라 펼친다. 전개도에서 $FB$를 세로 변으로 놓으면 $E$는 $F$에서 왼쪽으로 $12\\,\\mathrm{cm}$, $C$는 $B$에서 오른쪽으로 $12\\,\\mathrm{cm}$ 떨어져 있다. 따라서 $E$와 $C$의 가로 차는 $12+12=24\\,\\mathrm{cm}$이고, 세로 차는 직육면체의 높이 $7\\,\\mathrm{cm}$이다. 선분 $EC$는 가로 방향으로 정확히 중간인 $FB$를 지나며, 교점의 높이는 $\\frac{7}{2}=3.5\\,\\mathrm{cm}$로 $0$과 $7$ 사이여서 모서리 $FB$ 위에 있다. 따라서 요구한 표면 경로가 가능하고, 최단거리는 $\\sqrt{24^2+7^2}=25\\,\\mathrm{cm}$이다.",
@@ -2581,7 +2645,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "직육면체 표면을 지나는 최단거리",
       "questionType": "서술형",
-      "layoutTag": "source_figure",
+      "layoutTag": "fullwidth",
       "tags": [
         "입체도형",
         "직육면체 표면을 지나는 최단거리"
