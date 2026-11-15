@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 79,
-    "reviewedQuestions": 1874
+    "reviewedExams": 80,
+    "reviewedQuestions": 1898
   },
   "duplicateUids": [],
   "exams": [
@@ -8037,9 +8037,37 @@
       ],
       "solutionCount": 24,
       "existing4slot": null,
-      "status": "PENDING",
+      "status": "REVIEWED_WITH_EVIDENCE_DEBT",
       "assignedTo": "meta_b",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "b2ba7df1b600da58ca11291138f9ce88e0a09c53",
+      "reviewer": "meta_b",
+      "independentReviewer": "meta_c_resume_20261115",
+      "integratedBy": "GPT_ROOT_E0C948452E80",
+      "sampledOrdinals": [
+        1,
+        22,
+        24
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E080",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 13,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 23,
+      "sourceChangedFields": 52,
+      "contentDebtCount": 2,
+      "typeProposalCount": 23,
+      "evidenceDebtOrdinals": [
+        24
+      ],
+      "undecidedDifficultyOrdinals": [
+        24
+      ],
+      "difficultyPolicyDebtOrdinals": []
     },
     {
       "key": "E081",
@@ -10377,7 +10405,7 @@
       "nextAction": "SEMANTIC_REVIEW"
     }
   ],
-  "nextAction": "CONTINUE_E080_AND_PENDING_ONLY",
+  "nextAction": "CONTINUE_E081_AND_PENDING_ONLY",
   "resumedAt": "2026-11-14T23:58:38.098191+00:00",
   "authorityMainChecked": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
   "resumeAuthority": {
@@ -10393,8 +10421,8 @@
     "predecessorRevision": 6,
     "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
   },
-  "updatedAt": "2026-11-15T05:58:09.438377+00:00",
-  "lastPublishedHeadBeforeCurrent": "b65b2546b1713cff78ea34ecff1009294453a9b3",
+  "updatedAt": "2026-11-15T05:58:56.578694+00:00",
+  "lastPublishedHeadBeforeCurrent": "c39fee0908f49aefbcc23218bfaa4e4ce6aa5569",
   "resumeHistory": [
     {
       "basis": "EXPLICIT_USER_DIRECTION_TO_RESUME_DESPITE_UNCONFIRMED_STALE_RUNNING",
@@ -10421,15 +10449,15 @@
       "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
     }
   ],
-  "lastCompletedExam": "E079",
-  "nextIncompleteExam": "E080",
-  "remainingExams": 36,
-  "remainingQuestions": 876,
-  "lastVerifiedRemoteHeadBeforeCurrent": "b65b2546b1713cff78ea34ecff1009294453a9b3",
+  "lastCompletedExam": "E080",
+  "nextIncompleteExam": "E081",
+  "remainingExams": 35,
+  "remainingQuestions": 852,
+  "lastVerifiedRemoteHeadBeforeCurrent": "c39fee0908f49aefbcc23218bfaa4e4ce6aa5569",
   "externalCheckpoint": {
-    "revision": 8,
-    "sha256": "c91b32950386c48c4b7c7d86b988ac777ed01a446c49f6fa9c9016a119af64f6",
-    "fileId": "1-omL4Do6lkh-JYvVUoMw2jQhQVGMlBBA",
+    "revision": 9,
+    "sha256": "4c9b303c9692835d00533fbb692b75ede5e4b827a8c99e9f8e065c0888ca4a0e",
+    "fileId": "11aA6174L9mVeqQsDKyJuNYGb2mn0A3Z_",
     "state": "VERIFIED_PREVIOUS_CHECKPOINT_CURRENT_SYNC_PENDING"
   },
   "workers": {

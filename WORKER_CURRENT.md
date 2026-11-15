@@ -8,10 +8,10 @@ Status: `RUNNING` / `RUNNING`
 Progress: [progress.json](docs/operations/m3-s1-meta-full-20261114/progress.json)  
 Handoff: [HANDOFF.md](docs/operations/m3-s1-meta-full-20261114/HANDOFF.md)
 
-Preserved packet snapshot: 79/115 exams, 1874/2750 questions. Last: E079. Next pending: E080.
+Preserved packet snapshot: 80/115 exams, 1898/2750 questions. Last: E080. Next pending: E081.
 
 Root alone serializes branch writes. A/B/C write disjoint local artifacts. Every exam updates progress, handoff and this pointer before one atomic branch commit. A transaction counts remotely only after HEAD/tree/blob readback. AWCR+Notion sync every three saved exams or20 minutes.
 
 Previous writer termination: NOT_INDEPENDENTLY_VERIFIED. No formal prior-owner offer was observed. Current exact-task resume is user-directed; isolated worktree, expected-HEAD fast-forward only, halt on ref conflict. This does not assert prior worker closure.
 
-AWCR last verified revision r8, raw SHA `c91b32950386c48c4b7c7d86b988ac777ed01a446c49f6fa9c9016a119af64f6`; current-transaction external sync is pending until readback. Final remote SHA is recorded outside its own commit.
+AWCR last verified revision r9, raw SHA `4c9b303c9692835d00533fbb692b75ede5e4b827a8c99e9f8e065c0888ca4a0e`; current-transaction external sync is pending until readback. Final remote SHA is recorded outside its own commit.
