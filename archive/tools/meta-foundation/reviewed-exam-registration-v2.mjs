@@ -1772,7 +1772,9 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredRep
     const matches = (read(masterPath).records || []).filter(r => r.curriculum === ref.curriculum && r.scope === ref.scope && r.majorUnit === ref.majorUnit && r.midUnit === ref.midUnit);
     // Same two legacy scope aliases used by archive2-canonical's master-path projection.
     const masterCourse = ({ 수학_상: "수학(상)", 수학_하: "수학(하)" })[ref.scope] || ref.scope;
-    const canonicalMidLabels = [resolved.binding.L2, resolved.sub?.labelKo, resolved.unit.labelKo].filter(Boolean);
+    // resolve() already selected the exact ACTIVE curriculum/course/unit/subunit/PT binding.
+    // Its canonical subunit display label is a context-bound alias, not a new parent rule.
+    const canonicalMidLabels = [resolved.binding.L2, resolved.binding.subUnitLabelKo, resolved.sub?.labelKo, resolved.unit.labelKo].filter(Boolean);
     let exactTypeParent = false;
     if (ref.crosswalkRef) {
       const cross = ref.crosswalkRef;

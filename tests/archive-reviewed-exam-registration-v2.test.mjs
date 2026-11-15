@@ -1096,6 +1096,26 @@ test("canonical parent accepts the existing master scope alias 수학_상 for �
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
 });
 
+test("canonical parent uses the selected exact ACTIVE binding subunit label", t => {
+  const midUnit = "삼각형의 무게중심", f = parentOnlyWhitespaceFixture(t, midUnit);
+  const binding = f.request.registryChanges.find(change => change.path.endsWith("/bindings.json")).after.bindings[0];
+  binding.subUnitLabelKo = midUnit;
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.totalQuestions, 1);
+  assert.equal(f.read(META).records[0].L2, midUnit);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+});
+
+test("canonical parent refuses a subunit label from another binding context", t => {
+  const midUnit = "삼각형의 무게중심", f = parentOnlyWhitespaceFixture(t, midUnit);
+  const bindings = f.request.registryChanges.find(change => change.path.endsWith("/bindings.json")).after.bindings;
+  bindings[0].subUnitLabelKo = "다른 세부단원";
+  bindings.push({ ...bindings[0], subUnitKey: "SUB_OTHER", subUnitLabelKo: midUnit });
+  f.request.registryChanges.push({ path: "archive/data/master_tables/js_archive_tag_master.json", collection: "$", match: { key: "SUB_OTHER" }, before: null,
+    after: { key: "SUB_OTHER", keyType: "subUnitKey", parentKey: "UNIT_NEW", standardUnitKey: "UNIT_NEW", labelKo: midUnit, status: "active" }, evidenceRefs: f.evidenceRefs });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /canonical target parent mismatch/);
+});
+
 test("canonical parent scope aliases do not cross the upper and lower math courses", t => {
   const f = fixture(t, "수학(하)", "2015");
   attachMetaPipelineAudit(f, { targetCanonicalParent: true, targetCanonicalScope: "수학_상" });
