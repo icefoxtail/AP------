@@ -622,13 +622,16 @@ function specForFamily(plan,model,id){
     if(!features||features.schemaVersion!=='EXP_LOG_PAIR_FEATURES_v1'||!policy||policy.schemaVersion!=='EXP_LOG_PAIR_POLICY_v1')throw Error('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED');
     const number=value=>{const parts=String(value).split('/');return Number(parts[0])/(parts.length===2?Number(parts[1]):1);},showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0,objects=[];
     for(const [index,row] of features.curves.entries()){
-      const nameOnly=(p.curves??[]).find(curve=>curve.id===row.id)?.formulaLabel==='NAME';
+      const source=(p.curves??[]).find(curve=>curve.id===row.id);
+      const nameOnly=source?.formulaLabel==='NAME';
       objects.push({id:(nameOnly?'f-':'curve-')+row.id,kind:'FUNCTION_GRAPH',expression:expLogExpression(row),domain:row.domain,criticalX:[number(row.referencePoint.x)],branch:'REF_'+row.id});
       const formulaX=index===0?v[0]+(v[1]-v[0])*.12:v[0]+(v[1]-v[0])*.62;
       objects.push({id:'formula-'+row.id,kind:'EQUATION_LABEL',text:nameOnly?row.id+'(x)':expLogFormulaText(row),at:[formulaX,v[3]-(v[3]-v[2])*.12],math:true,priority:0,
         ...(nameOnly?{nearCurve:row.id}:{})});
-      const referenceX=number(row.referencePoint.x),referenceY=number(row.referencePoint.y),referenceAt=row.family==='exponential-affine'?[referenceX-(v[1]-v[0])*.18,referenceY+(v[3]-v[2])*.12]:[referenceX+(v[1]-v[0])*.18,referenceY-(v[3]-v[2])*.10];
-      objects.push({id:'reference-'+row.id+'-value',kind:'EQUATION_LABEL',text:'('+row.referencePoint.x+','+row.referencePoint.y+')',at:referenceAt,math:true,priority:0});
+      if(source?.referenceLabelPoint===undefined){
+        const referenceX=number(row.referencePoint.x),referenceY=number(row.referencePoint.y),referenceAt=row.family==='exponential-affine'?[referenceX-(v[1]-v[0])*.18,referenceY+(v[3]-v[2])*.12]:[referenceX+(v[1]-v[0])*.18,referenceY-(v[3]-v[2])*.10];
+        objects.push({id:'reference-'+row.id+'-value',kind:'EQUATION_LABEL',text:'('+row.referencePoint.x+','+row.referencePoint.y+')',at:referenceAt,math:true,priority:0});
+      }
     }
     if(features.identityLine===true){objects.push({id:'identity-line',kind:'AUXILIARY_LINE',coefficients:[1,-1,0]});objects.push({id:'identity-label',kind:'EQUATION_LABEL',text:'y=x',at:[v[1]-(v[1]-v[0])*.12,v[3]-(v[3]-v[2])*.18],math:true,priority:0});}
     return {id,visualType:'function_graph',viewport:{...graphViewport(v,{width:480,height:420,panel:140}),equalUnits:true},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({...p,axisTickValues:p.axisTickValues??{x:[],y:[]}}),expLogPairFeatures:features,expLogPairPolicy:policy},objects};
@@ -1835,6 +1838,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     extendedContract+=LOGARITHMIC_AFFINE_CONTRACT;
     extendedContract+=' LINKED INVERSE-CURVE DETAIL (solution composite only): linkedExpLogDetail:{midpoint,segment,bisector} opts into exactly two stacked panels, exp-log-pair-spike-v1 followed by a multi-curve-figure-v1 of just the identity and perpendicular bisector lines. Both have the same exact explicit endpoints, midpoint and marked segment. Use NAME on both inverse curves, matching distinctive midpoint and segment colors across panels, and show the midpoint coordinate and segment length only in the detail (leaders stay with their respective owners). The association and displayed marks are checked separately before publication.';
     extendedContract+=' EXP-LOG PAIR CURVE NAMES: set formulaLabel:"NAME" on an exponential or logarithmic row with a one-letter id to write f(x) or g(x) beside its own curve instead of its evaluated equation. Exact bases, coefficients and reference geometry remain required. Default omits the option and prints the full evaluated equations.';
+    extendedContract+=' EXP-LOG PAIR REFERENCE LABEL OWNER: referenceLabelPoint on a pair curve names a visible, named overlay point with explicit exact rational x and y and coordinates:true. Both coordinates must equal that curve reference point. The overlay carries the same coordinate label, and the engine omits the redundant standalone reference text and keeps the reference dot and its math checks. A missing, hidden or different overlay is rejected.';
     extendedContract+=TRIG_AXIS_CROSSING_PAIR_CONTRACT;
     extendedContract+=TRIGONOMETRIC_CONTRACT;
     extendedContract+=' ORDINARY X-UNIT DISPLAY CROP: on ALL_REALS SIN/COS with ratePi and phasePi use displayWindowX:[lo,hi] with exact ordinary rational x values straddling 0, and axisTickValues:{x:[ordinary rational values],y:[rational levels]}. Do not combine with displayWindowPi or axisTickPi. The engine uses the same optional displayGuides and showOriginLabel as the pi crop, with ordinary x units, and draws no period label or interval endpoints.';

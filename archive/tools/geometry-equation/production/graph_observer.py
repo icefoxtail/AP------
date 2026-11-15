@@ -1407,6 +1407,40 @@ def _exp_log_pair_name_errors(plan,root,model):
             errors.append('EXP_LOG_PAIR_NAME_LABEL_MISMATCH:'+ident)
     return errors
 
+def _exp_log_pair_reference_label_errors(plan,root,model,expected_rows):
+    errors=[]
+    for curve in plan.get('curves',[]):
+        if 'referenceLabelPoint' not in curve:continue
+        ident,owner=curve.get('id',''),curve['referenceLabelPoint']
+        code='EXP_LOG_PAIR_REFERENCE_LABEL_POINT_MISMATCH:'+ident
+        if not isinstance(owner,str) or not re.fullmatch('[A-Z]',owner):
+            errors.append('EXP_LOG_PAIR_REFERENCE_LABEL_POINT_INVALID:'+ident)
+            continue
+        points=(plan.get('overlays') or {}).get('points',[])
+        owners=[point for point in points if point.get('id')==owner]
+        if (len(owners)!=1 or owners[0].get('coordinates') is not True or owners[0].get('unnamed',False) is not False
+            or owners[0].get('marker','FILLED')!='FILLED'):
+            errors.append(code)
+            continue
+        k=_piecewise_rational(curve['coefficients'][1],code)
+        if curve['family']=='exponential-affine':
+            x=_piecewise_rational(curve.get('shiftX','0'),code)
+            y=sum(_piecewise_rational(curve['coefficients'][index],code) for index in (0,2))
+        else:
+            x=(1-_piecewise_rational(curve['coefficients'][2],code))/k
+            y=_piecewise_rational(curve['coefficients'][3],code)
+        row=next((row for row in expected_rows if row['id']==ident),None)
+        if (row is None or row['referencePoint']['x']!=str(x) or row['referencePoint']['y']!=str(y)
+            or _piecewise_rational(owners[0].get('x'),code)!=x or _piecewise_rational(owners[0].get('y'),code)!=y):
+            errors.append(code)
+        if any(node.get('id')=='reference-'+ident+'-value' for node in root.iter()):
+            errors.append('EXP_LOG_PAIR_REFERENCE_LABEL_NOT_SUPPRESSED:'+ident)
+        if not model:
+            labels=[node for node in root.iter() if node.get('id')==owner+'-coordinates']
+            if len(labels)!=1 or labels[0].get('data-owner')!=owner or labels[0].get('data-label-kind') not in ('COORDINATE_LABEL','EQUATION_LABEL'):
+                errors.append('EXP_LOG_PAIR_REFERENCE_OVERLAY_LABEL_MISSING:'+owner)
+    return errors
+
 def exp_log_pair_overview_audit(plan,svg,transform,model=False):
     errors=[];unsupported=[]
     try:
@@ -1484,6 +1518,7 @@ def exp_log_pair_overview_audit(plan,svg,transform,model=False):
                     if node.get('stroke-dasharray') not in {'4 3','4,3'}:errors.append('EXP_LOG_PAIR_IDENTITY_LINE_MUST_BE_DASHED')
         elif identity_nodes:errors.append('EXP_LOG_PAIR_UNEXPECTED_IDENTITY_LINE')
         errors.extend(_exp_log_pair_name_errors(plan,root,model))
+        errors.extend(_exp_log_pair_reference_label_errors(plan,root,model,expected_rows))
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
         return {'status':status,'errors':sorted(set(errors+unsupported)),'curves':[{key:value for key,value in row.items() if not key.startswith('_')} for row in expected_rows],'curveBranches':{key:len(value) for key,value in branches.items()},'identityLine':features.get('identityLine') is True,'mathMethod':'EXACT_BASES_AND_INDEPENDENT_MODEL_RECOMPUTATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'EXP_LOG_PAIR_SOURCE_SCHEMA_INVALID']}

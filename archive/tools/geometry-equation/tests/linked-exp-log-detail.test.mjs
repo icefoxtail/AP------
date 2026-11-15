@@ -1,5 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import {pythonWorker} from '../production/worker.mjs';
+import {specFor} from '../production/phase2.mjs';
 import {checkLinkedExpLogDetail,composeCompositeCandidate,compositePanels} from '../production/composite-candidate-svg-v1.mjs';
 
 const pairFixture=()=>{
@@ -70,5 +73,46 @@ test('the detail readback rejects a changed mark, measured length or leader owne
     ['data-owner="M" x1="40"','data-owner="A" x1="40"','SVG_LEADER_OWNER:M-coordinates'],
   ]){
     await assert.rejects(inspect((geometry+labels).replace(before,after)),e=>e.detail?.code==='LINKED_EXP_LOG_DETAIL_'+code);
+  }
+});
+
+test('the actual Q18 pair can transfer only exact reference labels to its named coordinate points',async()=>{
+  const stock=pairFixture().panels[0].plan;
+  const fresh=structuredClone(stock);
+  fresh.graphPlan.curves[0].referenceLabelPoint='B';
+  fresh.graphPlan.curves[1].referenceLabelPoint='A';
+  const invoke=async(payload,options)=>{
+    const reply=await pythonWorker(payload,options);
+    assert.equal(reply.status,'OK',JSON.stringify(reply.result));
+    return reply.result;
+  };
+  const frame=async graphPlan=>(await invoke({action:'frame_graph',graphPlan})).graphPlan;
+  const original=await frame(stock.graphPlan);
+  const selected=await frame(fresh.graphPlan);
+  const oldModel=await invoke({action:'graph',graphPlan:original});
+  const newModel=await invoke({action:'graph',graphPlan:selected});
+  assert.deepEqual(newModel,oldModel);
+  assert.match(newModel.svg,/id="reference-f"/);
+  assert.match(newModel.svg,/id="reference-g"/);
+  const before=specFor({...stock,graphPlan:original,caption:'역함수와 두 점'},oldModel,'q18');
+  const after=specFor({...fresh,graphPlan:selected,caption:'역함수와 두 점'},newModel,'q18');
+  assert.deepEqual(after,{...before,objects:before.objects.filter(row=>!/^reference-[fg]-value$/.test(row.id))});
+  const observer=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
+  const inspect=async(svg,action)=>invoke({action,graphPlan:selected,svg,transform:newModel.transform},{script:observer});
+  assert.equal((await inspect(newModel.svg,'modelBinding')).status,'PASS');
+  const duplicate=newModel.svg.replace('</svg>','<g id="reference-f-value"/></svg>');
+  assert.ok((await inspect(duplicate,'graphAudit')).errors.includes('EXP_LOG_PAIR_REFERENCE_LABEL_NOT_SUPPRESSED:f'));
+  assert.ok((await inspect(newModel.svg,'graphAudit')).errors.includes('EXP_LOG_PAIR_REFERENCE_OVERLAY_LABEL_MISSING:B'));
+
+  for(const edit of [
+    p=>p.curves[0].referenceLabelPoint='A',
+    p=>p.overlays.points[2].coordinates=false,
+    p=>p.overlays.points[2].x='3/2',
+    p=>p.overlays.points[2].unnamed=true,
+  ]){
+    const invalid=structuredClone(fresh.graphPlan);
+    edit(invalid);
+    const refusal=await pythonWorker({action:'frame_graph',graphPlan:invalid});
+    assert.equal(refusal.result.code,'EXP_LOG_PAIR_REFERENCE_LABEL_POINT_MISMATCH:f');
   }
 });

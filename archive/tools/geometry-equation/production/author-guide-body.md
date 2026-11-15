@@ -112,6 +112,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 지수·로그 한 쌍에서 구해야 하는 계수나 밑을 그림에 노출하지 않으려면 해당 곡선 행에 한 글자 id와 `formulaLabel:"NAME"`을 준다. 실제 식으로 곡선을 검증하고, 그림 곁에는 그 id를 쓴 `f(x)` 같은 이름만 적는다.
 
+지수·로그 쌍의 참조점에 이미 같은 정확 좌표를 표시하는 이름 있는 overlay 점이 있으면 해당 곡선에 `referenceLabelPoint:"A"`를 준다. overlay 점은 정확한 유리수 x·y를 직접 주고 `coordinates:true`로 표시한다. 참조점과 좌표가 다르거나 실제 라벨이 없으면 거부한다. 기존 참조점과 곡선은 그대로 그리며 중복 숫자 글자만 생략한다.
+
 ### 3-3. 이어진 조각 그래프(이차식 조각 최대 4개)와 직선
 
 `|x²-4x-12|`, `x²-2|x|+1`, 이차함수 두 개를 구간별로 이은 `h(x)`처럼 **끊어지지 않는** 한 함수에 수평선 또는 **기울어진 직선**을 겹쳐 교점을 보이는 풀이에 쓴다. `capability:"piecewise-polynomial-spike-v1"`, `graphPlan.family:"piecewise-polynomial"`.
