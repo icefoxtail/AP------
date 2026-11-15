@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "m2-ready7-current-closeout-v1",
+  "status": "PASS_LOCAL_REGISTRATION_NATIVE_FULL_CATALOG_CONSUMER_AND_INHERITED_SHADOW",
+  "inputCommit": "e5f057ee2d70180a59aa1ba6c59c6524c5473f4f",
+  "inputTree": "eb3a2d57ad52bc900381f8864c0c4de5f1b09277",
+  "baseCommit": "877abc4bc9da2d7073ed01e7eb533cfc05922127",
+  "mainCommit": "c1d9dda6fd6be0dd63b10c8b52157546c108714f",
+  "validatedCore": "8fe365590974525e4a8cb6f9f7e7b1b3ea27463e",
+  "latestCoreCompatibility": {
+    "commit": "c805aab95640376c5232d853ec68cdc6ed6852a0",
+    "changedPaths": [
+      "tests/archive-register-isolation.test.js"
+    ],
+    "registrationRuntimeCodeAndInputsUnchanged": true,
+    "newFixtureTestRunByThisTask": false
+  },
+  "selected": {
+    "requests": 4,
+    "uniqueUids": 7,
+    "sourceFiles": 4,
+    "sourceRows": 7,
+    "sourceExamQuestionCount": 94,
+    "outsideWholeSourceObjectsPreserved": 87
+  },
+  "sourceTransport": {
+    "existingFrozenApprovedTransport": true,
+    "additionalSourcePatchAuthoring": 0,
+    "newStudentPayloadChanges": 0,
+    "newSemanticReviewDecisions": 0,
+    "newDifficultyJudgments": 0,
+    "currentSourceDriftBeforeTransport": 0,
+    "currentOutsideNativeApprovalsNeedingPreservation": 0,
+    "currentCoreSameFilePredecessors": 0
+  },
+  "registration": {
+    "six": {
+      "path": ".tmp/ready6-registration-verification.json",
+      "sha256": "a9d0e93e9c71dffed036b4b2ab7cbf19011cf48458fc5ab3d49654e475f588d8",
+      "dry": 6,
+      "write": 6,
+      "replay": 6
+    },
+    "E028": {
+      "path": ".tmp/e028-current-registration-verification.json",
+      "sha256": "0b3334d81bf72379003f8e9ca8c641f2f8b93e256a2d55a963c369ef0830cc93",
+      "dry": 1,
+      "write": 1,
+      "replay": 1,
+      "priorSixPostWriteReplay": 6
+    }
+  },
+  "gates": [
+    {
+      "name": "centroid2",
+      "requestPath": ".archive-meta-register/inbox/m2s2-centroid2-20261115-E023.json",
+      "selected": 2,
+      "runtime": {
+        "path": ".tmp/centroid2-final-runtime.json",
+        "sha256": "f4946c1c649e2c9cd9fe99fd889fd0960726ff61d77474bbf69c639f8db2ac8f",
+        "native": 2,
+        "autoMeta": 2
+      },
+      "projection": {
+        "path": ".tmp/centroid2-final-projection.json",
+        "sha256": "6bc144fc545e1387763adc8dc5995f6c59e599317d2716404e085eaa0beb4c0c",
+        "canonical": 2,
+        "usableMetaLane": 0,
+        "browserStatus": "NOT_RUN"
+      }
+    },
+    {
+      "name": "E006retained2",
+      "requestPath": ".archive-meta-register/inbox/m2s2-retained2-20261115-E006.json",
+      "selected": 2,
+      "runtime": {
+        "path": ".tmp/E006retained2-final-runtime.json",
+        "sha256": "18141605354085d5cdf926889e8f2e9a595e294377da9e0f45a838c623bc1a5e",
+        "native": 2,
+        "autoMeta": 2
+      },
+      "projection": {
+        "path": ".tmp/E006retained2-final-projection.json",
+        "sha256": "14c2d31635e1858c0e270d52c72c05e168f67e21e1bf961cbe9b183e95386562",
+        "canonical": 2,
+        "usableMetaLane": 0,
+        "browserStatus": "NOT_RUN"
+      }
+    },
+    {
+      "name": "E059CC2",
+      "requestPath": ".archive-meta-register/inbox/m2s2-e059-cc2-20261115.json",
+      "selected": 2,
+      "runtime": {
+        "path": ".tmp/E059CC2-final-runtime.json",
+        "sha256": "172e630ebe758d5180e2598b82c0607fef82f73fe85c535bb93affb503acf8e9",
+        "native": 2,
+        "autoMeta": 2
+      },
+      "projection": {
+        "path": ".tmp/E059CC2-final-projection.json",
+        "sha256": "10e5f85bd65c2737e6672241554684bd229c951a980354e967c78db344d40c9d",
+        "canonical": 2,
+        "usableMetaLane": 0,
+        "browserStatus": "NOT_RUN"
+      }
+    },
+    {
+      "name": "E028",
+      "requestPath": ".archive-meta-register/inbox/m2s2-follow9-20261115-E028.json",
+      "selected": 1,
+      "runtime": {
+        "path": ".tmp/E028-final-runtime.json",
+        "sha256": "f87e0cc2edae44a6e881b9d04ff38d0d3366c53983f42f13ece6ac06c2851a75",
+        "native": 1,
+        "autoMeta": 1
+      },
+      "projection": {
+        "path": ".tmp/E028-final-projection.json",
+        "sha256": "b0a4dd9668679b792e8664aee8f832e5feea35ad75fe284becc56d69d51cc60d",
+        "canonical": 1,
+        "usableMetaLane": 0,
+        "browserStatus": "NOT_RUN"
+      }
+    }
+  ],
+  "fullCatalog": {
+    "officialBuilder": "archive/tools/build-archive2-catalog.mjs",
+    "exams": 1211,
+    "questions": 28882,
+    "indexVersion": "4d276d08ed84bd5a40116b213c93ea7598a181e3c3bca90d31346ed1cec36d4a",
+    "projectionVersion": "archive2-canonical-v1:34c88fc7dd644d3fa388f43f9e8d036861c9ba3c6fc689141fa2db3645ed6dbe",
+    "logSha256": "acae1cc4c56f5e1da69e8bbce300f720ac7bb11993753c6ca8520536ecca920a"
+  },
+  "changedUidConsumer": {
+    "path": ".tmp/ready7-changed-consumer.json",
+    "sha256": "69819d690273420dd295b08d148df88659909d256ff8353d02760ea126f1755e",
+    "status": "PASS",
+    "counts": {
+      "changed": 7,
+      "checked": 7,
+      "passed": 7,
+      "skippedUnchanged": 0
+    },
+    "failures": 0
+  },
+  "shadow": {
+    "path": ".tmp/ready7-shadow.json",
+    "sha256": "1adeb56655e439c1c2081b297d0a85c2a72737311bbc488997ff8b8cf7f8598c",
+    "status": "PASS",
+    "ownRequests": 4,
+    "ownUids": 7,
+    "inheritedRequests": 13,
+    "inheritedUids": 138,
+    "totalRequests": 17,
+    "totalUidOccurrences": 145,
+    "planCount": 17,
+    "outputCount": 32,
+    "whole145Consumer": "NOT_RUN_BY_SHADOW"
+  },
+  "boundaries": {
+    "metadata": {
+      "beforeRecords": 28890,
+      "afterRecords": 28890,
+      "changedSelected": 7,
+      "outsideChanges": 0,
+      "outsideSha256": "4e9c494d149c5a4db56fa96bb3f060cd99ccd647ef1bacf0e10801f31276ce9f"
+    },
+    "identity": {
+      "beforeRecords": 28890,
+      "afterRecords": 28890,
+      "changedSelected": 3,
+      "outsideChanges": 0,
+      "outsideSha256": "662d6795c603ccf3e44553a70ef3abf369ccb858cba79e3ef360bd47a3bdcc22"
+    },
+    "runtime": {
+      "beforeRecords": 1409,
+      "afterRecords": 1412,
+      "changedSelected": 7,
+      "outsideChanges": 0,
+      "outsideSha256": "0905ccfca8e657c6ad1dccfc51d48d7146c721015cfd6553b882f770de38fa1b"
+    },
+    "sourceFilesUnchangedByRegistrarAndConsumer": 1228,
+    "sourceAssetChanges": 0,
+    "sourceAssetAuthorship": 0,
+    "existingReceiptChanges": 0,
+    "productionInputChangesDuringValidation": 0,
+    "generatedDataCommitted": 0,
+    "codeChangesCommitted": 0,
+    "M3S1SelectedOrMutated": 0,
+    "heldCurriculumCasesSubmitted": 0
+  },
+  "approvedRegistryObjects": [
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "collection": "concepts",
+      "key": {
+        "conceptKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
+      },
+      "approvedAfterStableSha256": "81a3ba8b43ed4e487df88ec14479ee746ae1694d8819f8ff4874f627da37ec11",
+      "currentObjectExact": true
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "collection": "concepts",
+      "key": {
+        "conceptKey": "CC_TRIANGLE_AREA_INRADIUS_SEMIPERIMETER"
+      },
+      "approvedAfterStableSha256": "405fe3af3aee774b77c44c9c2d84b4fa09a749a8634e15b91b60a55fc588ebb4",
+      "currentObjectExact": true
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "collection": "concepts",
+      "key": {
+        "conceptKey": "CC_CYLINDER_LATERAL_UNFOLDING_SHORTEST_PATH"
+      },
+      "approvedAfterStableSha256": "f05244108976b063b3b348d34e25c63d4440b3d474098a4a446c600c1bbff717",
+      "currentObjectExact": true
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "collection": "templates",
+      "key": {
+        "templateKey": "TPL_ISOSCELES_PROPERTY_STATEMENT_JUDGMENT"
+      },
+      "approvedAfterStableSha256": "a46af6f0ec0332bde16abaff0ae22a0f30207ccf3c92c3e5474f2e5baee59558",
+      "currentObjectExact": true
+    }
+  ],
+  "actualMainRegistration": "NOT_APPLIED",
+  "remotePublication": "ROOT_OWNED_NOT_RUN",
+  "requiredExactHeadRemoteCi": "PENDING",
+  "deployedSnapshot": "NOT_RUN",
+  "browser": "NOT_RUN"
+}
