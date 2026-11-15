@@ -562,7 +562,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고2_수학I/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 밑변 BC 위 점 D와 선분 AD를 표시한다. AD의 길이는 x이며, D에서 이웃한 각 θ와 180°−θ를 구분한다.",
+    "solutionImageCaption": "두 삼각형에 코사인법칙을 적용해 6x cosθ=x²−55, 12x cosθ=13−x²를 얻는다. 따라서 x²=41이고 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -815,9 +819,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_매산여고_1학기_기말_고2_수학I/q19-solution.svg",
-    "solutionImageAlt": "정육각형 중점 M과 MD, ME의 길이 관계",
-    "solutionImageCaption": "정확한 선분 길이와 각의 위치를 확인한다.",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고2_수학I/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정육각형의 변 BC 중점 M과 삼각형 DME를 표시한다. MD=7, ME=√91, DE=2√7과 각 θ를 보여 준다.",
+    "solutionImageCaption": "삼각형 DME에 코사인법칙을 적용하면 cosθ=8/√91=8√91/91이다. 정답은 8√91/91이다.",
     "solutionImageSize": "full"
   },
   {

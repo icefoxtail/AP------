@@ -131,18 +131,16 @@ window.questionBank = [
     "id": 4,
     "questionType": "객관식",
     "question": "다음 중 $\\{x \\mid 0 \\le x < 2\\pi\\}$에서 정의된 그래프를 $y = \\sin x$, $y = \\cos x$, $y = \\tan x$ 순서대로 나열하였을 때 옳은 것은? [4.0점]",
-    "content": "다음 중 $\\{x \\mid 0 \\le x < 2\\pi\\}$에서 정의된 그래프를 $y = \\sin x$, $y = \\cos x$, $y = \\tan x$ 순서대로 나열하였을 때 옳은 것은? [4.0점]",
-    "image": "assets/images/23_매산고_1학기_중간_고2_수학I/q04.png",
-    "imageAlt": "①–⑤ 행에 세 그래프씩 제시되어 있다. 왼쪽→가운데→오른쪽 그래프 유형은 ① 사인형·코사인형·탄젠트형, ② 코사인형·사인형·탄젠트형, ③ 코사인형·탄젠트형·사인형, ④ 사인형·탄젠트형·코사인형, ⑤ 탄젠트형·코사인형·사인형이다. 사인형은 0에서 시작하고, 코사인형은 1에서 시작하며, 탄젠트형은 π/2와 3π/2에 점근선이 있다.",
+    "content": "다음 중 $\\{x \\mid 0 \\le x < 2\\pi\\}$에서 정의된 그래프를 $y = \\sin x$, $y = \\cos x$, $y = \\tan x$ 순서대로 나열하였을 때 옳은 것은? [4.0점]<br>다음 세 그림에 붙인 기호로 각 보기의 순서를 나타냈다.<div class=\"q04-plot\"><b>가</b><br><img src=\"assets/images/23_매산고_1학기_중간_고2_수학I/q04-plot-b.svg\" alt=\"좌표평면에서 양의 높이부터 내려가는 물결곡선을 나타낸다. 가운데에서 가장 낮고 오른쪽으로 다시 높아진다.\" style=\"display:block;width:296px;max-width:100%;height:auto\"></div><div class=\"q04-plot\"><b>나</b><br><img src=\"assets/images/23_매산고_1학기_중간_고2_수학I/q04-plot-c.svg\" alt=\"좌표평면에서 세 증가 가지를 나타낸다. 두 수직 점근선이 가지를 가르고 첫 가지는 원점에서 시작한다.\" style=\"display:block;width:296px;max-width:100%;height:auto\"></div><div class=\"q04-plot\"><b>다</b><br><img src=\"assets/images/23_매산고_1학기_중간_고2_수학I/q04-plot-a.svg\" alt=\"좌표평면에서 원점부터 올라가는 물결곡선을 나타낸다. 가운데에서 x축을 지나며 오른쪽 끝까지 이어진다.\" style=\"display:block;width:296px;max-width:100%;height:auto\"></div>",
     "choices": [
-      "①",
-      "②",
-      "③",
-      "④",
-      "⑤"
+      "다 · 가 · 나",
+      "가 · 다 · 나",
+      "가 · 나 · 다",
+      "다 · 나 · 가",
+      "나 · 가 · 다"
     ],
     "answer": "①",
-    "solution": "먼저 $y=\\sin x$는 $x=0$에서 $0$으로 시작해 증가한다. $y=\\cos x$는 $x=0$에서 $1$로 시작해 감소한다.\n$y=\\tan x$는 $x=0$에서 $0$이고, $\\dfrac{\\pi}{2}$와 $\\dfrac{3\\pi}{2}$에서 점근선을 갖는다. 이 세 특징을 q04의 그림에서 차례로 찾으면 첫째 줄이 모두 맞는 보기는 ①이다.\n따라서 정답은 ①이다.",
+    "solution": "먼저 $y=\\sin x$는 $x=0$에서 $0$으로 시작해 증가한다. $y=\\cos x$는 $x=0$에서 $1$로 시작해 감소한다.\n$y=\\tan x$는 $x=0$에서 $0$이고, $\\dfrac{\\pi}{2}$와 $\\dfrac{3\\pi}{2}$에서 점근선을 갖는다. 같은 특징을 가진 그림은 사인, 코사인, 탄젠트의 순서로 다, 가, 나이다.\n따라서 정답은 ①이다.",
     "score": 4,
     "level": "중",
     "category": "삼각함수의 그래프",
@@ -156,11 +154,11 @@ window.questionBank = [
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "그래프"
     ],
-    "wide": false,
+    "wide": true,
     "decisiveStep": "각 그래프의 시작값과 주기, 탄젠트의 점근선을 원본 그림의 보기별 순서와 대조한다.",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
@@ -170,7 +168,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "choiceColumns": 1
   },
   {
     "number": 5,
@@ -568,9 +567,9 @@ window.questionBank = [
     "id": 14,
     "questionType": "객관식",
     "question": "함수 $f(x) = \\sin\\pi x\\,(x \\ge 0)$의 그래프와 직선 $y = \\frac{4}{5}$이 만나는 점의 $x$좌표를 작은 것부터 차례로 $x_1, x_2, x_3, x_4, x_5$ 라 할 때, $f(x_1 + 2x_2 + 3x_3 + 4x_4 + 3x_5)$ 의 값은? [4.9점]",
-    "content": "함수 $f(x) = \\sin\\pi x\\,(x \\ge 0)$의 그래프와 직선 $y = \\frac{4}{5}$이 만나는 점의 $x$좌표를 작은 것부터 차례로 $x_1, x_2, x_3, x_4, x_5$ 라 할 때, $f(x_1 + 2x_2 + 3x_3 + 4x_4 + 3x_5)$ 의 값은? [4.9점]",
-    "image": "assets/images/23_매산고_1학기_중간_고2_수학I/q14.png",
-    "imageAlt": "x≥0에서 y=sin(πx) 곡선과 수평선 y=4/5의 첫 다섯 교점을 왼쪽부터 x₁, x₂, x₃, x₄, x₅로 표시한 그림이다.",
+    "content": "함수 $f(x) = \\sin\\pi x\\,(x \\ge 0)$의 그래프와 직선 $y = \\frac{4}{5}$이 만나는 점의 $x$좌표를 작은 것부터 차례로 $x_1, x_2, x_3, x_4, x_5$ 라 할 때, $f(x_1 + 2x_2 + 3x_3 + 4x_4 + 3x_5)$ 의 값은? [4.9점]<br>그림은 오른쪽으로 이어지는 그래프의 앞부분을 나타낸다.",
+    "image": "assets/images/23_매산고_1학기_중간_고2_수학I/q14-problem-v2.svg",
+    "imageAlt": "사인곡선과 가로선 y=4/5가 만나는 처음 다섯 점을 왼쪽부터 표시한다. 각 교점의 x좌표는 x₁, x₂, x₃, x₄, x₅ 순서이다. 그림은 앞쪽 일부 구간을 보여 준다.",
     "choices": [
       "-1",
       "-\\frac{4}{5}",
@@ -593,11 +592,11 @@ window.questionBank = [
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "그래프"
     ],
-    "wide": false,
+    "wide": true,
     "decisiveStep": "주기 2의 교점 다섯 개의 위치를 $α,1-α,2+α,3-α,4+α$로 나타내 가중합의 $α$ 계수를 정리한다.",
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
     "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
@@ -607,7 +606,8 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "imageSize": "full"
   },
   {
     "number": 15,
@@ -768,7 +768,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_매산고_1학기_중간_고2_수학I/q18-solution.svg"
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고2_수학I/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위에 A, B, C와 BC의 중점 M을 표시한다. AB와 AC는 같은 길이 4이고 BM과 MC는 같은 길이이며 AM=2이고 BC에 수직이다. C는 y=log_a x 그래프 위에 있다.",
+    "solutionImageCaption": "AB=AC=4이고 M은 BC의 중점이다. AM=2 및 AM⊥BC에서 BM=2√3을 얻어 C=(1+2√3,6)이다. C가 y=log_a x 위에 있고 a>1이므로 a^6=1+2√3, 따라서 a^12=13+4√3이다. 정답은 13+4√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 19,
@@ -849,6 +852,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_매산고_1학기_중간_고2_수학I/q20-solution.svg"
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고2_수학I/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 시작해 x=8에서 최댓값 4에 이르는 y=4sin(πx/16) 곡선과 y=2√2 수평선, x=4와 x=12 수직선을 표시한다. 세 선과 x축이 직사각형을 이룬다.",
+    "solutionImageCaption": "넓이 16√2를 폭 8로 나누면 직사각형 높이는 2√2이다. 최소를 주는 매개변수는 a=4, b=π/16, c=3π/2이므로 abc의 최솟값은 3π²/8이다.",
+    "solutionImageSize": "full"
   }
 ];

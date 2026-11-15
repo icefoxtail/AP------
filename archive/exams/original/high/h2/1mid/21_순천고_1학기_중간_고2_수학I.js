@@ -146,7 +146,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
-    "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT"
+    "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원의 양의 x축에서 30°와 330° 방향으로 뻗는 두 동경을 나타낸다. 두 동경은 서로 다른 사분면의 원 위 점에서 끝난다.",
+    "solutionImageCaption": "단위원에서 양의 x축을 기준으로 한 30°와 330°의 두 동경은 서로 다른 원 위의 점에 닿는다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -167,7 +171,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
     "subUnit": "삼각함수의 관계",
     "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
-    "templateKey": "TPL_TRIG_IDENTITY_ROOT_FEASIBILITY"
+    "templateKey": "TPL_TRIG_IDENTITY_ROOT_FEASIBILITY",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: x축을 cosθ, y축을 sinθ로 읽는 단위원과 주황색 직선 x+y=1/2를 나타낸다. 제4사분면의 교점 P 옆에 s<0<c를 표시한다.",
+    "solutionImageCaption": "주황색 직선 x+y=1/2와 단위원의 제4사분면 교점이 조건을 만족하고 s−c<0이다. x축은 cosθ, y축은 sinθ로 해석한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -293,7 +301,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
     "subUnit": "지수함수의 활용",
     "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
-    "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE"
+    "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=2^x−3이 x축과 만나는 곳부터 수직 경계 x=3까지의 닫힌 영역을 보인다. x=2와 x=3의 정수 격자점 위치가 표시되어 있다.",
+    "solutionImageCaption": "수직점근선 x=3까지의 경계와 영역 안 정수점의 위치를 비교한다. 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 15,
@@ -381,7 +393,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
-    "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO"
+    "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 2인 원 위의 제4사분면 점 A와 x축에 내린 수선을 그린다. 직각삼각형의 빗변은 2이고 두 변은 6/5와 8/5로 3:4:5에 같은 비율을 곱한 길이다.",
+    "solutionImageCaption": "제4사분면에서 반지름 2와 3:4:5 비례로 정해지는 직각삼각형을 나타낸다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -411,7 +427,7 @@ window.questionBank = [
     "choices": [],
     "answer": "주기 $4\\pi$, 오른쪽 $2\\pi$ 평행이동·위로 $1$ 평행이동, 치역 $\\{y\\mid-1\\le y\\le3\\}$",
     "solution": "주어진 함수는 $y=2\\cos(\\tfrac12x-\\pi)+1=2\\cos\\bigl(\\tfrac12(x-2\\pi)\\bigr)+1$입니다.\n(1) 코사인 함수 $y=\\cos t$의 주기는 $2\\pi$이고, $x$의 계수가 $\\tfrac12$이므로 주기는 $T=\\tfrac{2\\pi}{1/2}=4\\pi$입니다.\n(2) $y=2\\cos(\\tfrac12x)$의 그래프를 $x$축 방향으로 $2\\pi$만큼 오른쪽으로, $y$축 방향으로 $1$만큼 위로 평행이동한 그래프입니다.\n(3) $-1\\le\\cos t\\le1$이므로 $-2\\le2\\cos t\\le2$, 양변에 $1$을 더해 $-1\\le y\\le3$입니다. 따라서 치역은 $\\{y\\mid-1\\le y\\le3\\}$입니다.\n(4) $y=-2\\cos(\\tfrac x2)+1$로도 쓸 수 있으므로 $x=0,\\pi,2\\pi,3\\pi,4\\pi$에서 $y=-1,1,3,1,-1$입니다. 이 다섯 점을 매끄러운 코사인 곡선으로 잇고 $4\\pi$마다 반복합니다.",
-    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I/q20-solution-v2.svg",
     "level": "중",
     "category": "삼각함수의 그래프",
     "originalCategory": "삼각함수의 그래프",
@@ -429,10 +445,11 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "solutionImageAlt": "함수 y=2cos(x/2-π)+1의 실제 x축(y=0), 최댓값 3, 최솟값 -1과 주기 4π를 나타낸 그래프",
-    "solutionImageCaption": "x축은 y=0이며 x=0,π,2π,3π,4π에서의 함숫값은 차례로 -1,1,3,1,-1이다.",
+    "solutionImageAlt": "해설 그림: 코사인 곡선에서 0과 4π 눈금의 높이가 같고 2π 눈금에서 위쪽 꼭짓점에 닿는다. 수평 실선은 y=0인 실제 x축이다.",
+    "solutionImageCaption": "정답은 주기 4π, 오른쪽으로 2π와 위로 1만큼의 평행이동, 치역 −1≤y≤3이며 그래프는 그림과 같다.",
     "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
-    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION"
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

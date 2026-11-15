@@ -90,7 +90,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "level": "하"
+    "level": "하",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_수학I/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원과 좌표축, 제3사분면의 점 및 반지름이 만드는 직각삼각형이 표시되어 있다. 반지름 길이는 1, 세로 변의 크기는 2/3이며 sinθ=−2/3이 주어져 있다.",
+    "solutionImageCaption": "단위원의 제3사분면에서 sinθ가 세로 좌표이며, 반지름과 직각삼각형의 변 길이 관계가 보인다. 그림은 cos의 부호·크기를 구하는 관계를 설명한다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 3,
@@ -107,6 +111,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "부채꼴의 호의 길이는 $l=r\\theta$이다. 중심각을 라디안으로 두면\n$l=12\\cdot\\frac{2\\pi}{3}=8\\pi$.\n따라서 정답은 ④이다.",
+    "image": "assets/images/23_강남여고_1학기_중간_고2_수학I/q03-problem.svg",
+    "imageAlt": "반지름 12센티미터, 중심각 2π/3인 부채꼴의 호와 두 반지름을 나타낸다.",
+    "imageSize": "large",
     "score": 3,
     "decisiveStep": "호의 길이 공식 l=rθ를 적용한다.",
     "standardCourse": "수학I",
@@ -273,7 +280,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "level": "하"
+    "level": "하",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 증가하는 로그곡선 위에 x=3/2인 점 A가 표시되고, A에서 x축까지 수직 안내선이 이어진다. 왼쪽에는 자연 정의역 경계 x=3/4와 곡선 위 기준점 f(1)=2가 표시되어 있다.",
+    "solutionImageCaption": "첫 로그함수의 수직 점근선 x=3/2를 둘째 로그곡선의 입력으로 사용하는 위치 관계를 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 7,
@@ -457,7 +468,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: u=x/π를 기준으로 tan x가 양수인 두 구간, 사인 조건의 구간, 두 조건의 공통 구간을 세 행의 수직선에 나타낸다. 열린 끝점과 분수 눈금이 표시되어 있다.",
+    "solutionImageCaption": "u=x/π로 바꾼 수직선에서 tan x>0, √2 sin x+1<0의 해 범위와 공통 구간을 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 11,
@@ -551,7 +566,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "level": "하"
+    "level": "하",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 0≤x<π에서 세 번 반복되는 y=sin 6x 곡선과 y=−1/2 수평선이 표시되어 있다. x=0은 닫힌 끝점이고 x=π는 열린 끝점이다.",
+    "solutionImageCaption": "0≤x<π에서 y=sin 6x의 세 주기와 y=−1/2 수평선을 함께 나타낸다. 수평선과 곡선의 교점 구조로 서로 다른 실근을 센다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 13,
@@ -797,6 +816,7 @@ window.questionBank = [
       "3"
     ],
     "image": "assets/images/23_강남여고_1학기_중간_고2_수학I/q18.png",
+    "imageAlt": "좌표평면에 직선 y=−x+a와 지수곡선 y=2^(x+1)+b, 로그곡선 y=log₂(x−b)−1을 그리고, 교점 A·B와 각 축의 절편 C·D·E를 표시했다.",
     "answer": "②",
     "solution": "$s=\\overline{y_A}=a-x_A$라 두면 $s>0$이다. B가 AC를 $4:1$로 내분하므로\n$B=(a-\\frac{s}{5},\\frac{s}{5})$이다. 넓이 조건에서\n$[AOB]=\\frac45[AOC]=\\frac45\\cdot\\frac{as}{2}=12$,\n따라서 $as=30$이다.\nA가 지수곡선 위에 있으므로 $b=s-2^{a-s+1}$이고, B가 로그곡선 위에 있으므로\n$a-\\frac{s}{5}-b=2^{1+\\frac{s}{5}}$이다. $a=\\frac{30}{s}$를 대입하면\n$F(s)=\\frac{30}{s}-\\frac{6s}{5}+2^{\\frac{30}{s}-s+1}-2^{1+\\frac{s}{5}}=0$.\n각 항을 미분하면 $F'(s)<0$ ($s>0$)이므로 해는 하나뿐이다. $s=5$가 식을 만족하므로 $a=6$, $b=1$이다.\n$D=(0,3)$, $E=(3,0)$이어서 $[DOE]=\\frac12\\cdot3\\cdot3=\\frac92$.\n정답은 ②이다.",
     "score": 4.5,
@@ -921,7 +941,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 수평선 y=m 위에 A, B, C, D가 왼쪽부터 놓이고, 이웃한 세 간격 AB, BC, CD에 같은 괄호와 등호가 표시되어 있다. B와 C는 두 수직 점근선과 만나는 점이다. 실제 x좌표는 나타내지 않는다.",
+    "solutionImageCaption": "A, B, C, D는 y=m 위에서 왼쪽부터 이 순서이고 AB=BC=CD이다. 그림은 간격 관계만 정규화해 보이고 실제 x좌표는 표시하지 않는다. 해설에서 AB=2^{m-1}, BC=3k/2, CD=2·4^m을 같게 두어 m=−2, k=1/12를 얻는다. 따라서 k−m=25/12이며 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 21,
@@ -937,6 +961,7 @@ window.questionBank = [
       "$\\frac{3}{2}$"
     ],
     "image": "assets/images/23_강남여고_1학기_중간_고2_수학I/q21.png",
+    "imageAlt": "지름 AB인 반원에서 중심 O와 호 위의 P, ∠PAB=30°, O에서 AP에 내린 수선의 발 Q, P에서 AB에 내린 수선의 발 R을 표시했다.",
     "answer": "④",
     "solution": "반지름을 $r$이라 하자. $\\angle PAB=30^\\circ$이므로 중심각 $\\angle POB=60^\\circ$이다.\n좌표를 $A=(0,0)$, $O=(r,0)$로 잡으면 $P=(\\frac{3r}{2},\\frac{\\sqrt3r}{2})$이다.\n직선 AP 방향 단위벡터는 $(\\frac{\\sqrt3}{2},\\frac12)$이므로\n$AQ=\\frac{\\sqrt3r}{2}$, $OQ=\\frac r2$.\n$[QAO]=\\frac12\\cdot\\frac{\\sqrt3r}{2}\\cdot\\frac r2=\\frac{\\sqrt3r^2}{8}=\\frac{\\sqrt[4]{27}}2$에서\n$r^2=4\\sqrt[4]3$이다.\n또 $AR=\\frac{3r}{2}$, $BR=\\frac r2$이므로\n$AR\\cdot BR=\\frac{3r^2}{4}=3^{\\frac{5}{4}}$.\n따라서 로그값은 $\\frac54$이고 정답은 ④이다.",
     "score": 4.5,

@@ -344,7 +344,11 @@ var examData = window.examData = {
       "solution": "평행사변형에서 이웃한 두 각의 합은 $180^\\circ$이므로 두 각의 이등분선은 서로 수직이다.\n마주 보는 각의 이등분선은 서로 평행하므로 $PQRS$는 직사각형이다.\n\n$\\triangle ABP$와 $\\triangle ADQ$는 모두 직각삼각형이고 $\\angle BAP=\\angle DAQ$이므로 닮음이다.\n$AB:AD=5:7$이므로\n$\\dfrac{AQ}{AP}=\\dfrac75$이다.\n$P,Q$는 $A$의 같은 각의 이등분선 위에 있으므로\n$PQ=AQ-AP=(\\dfrac75-1)AP=\\dfrac25AP$이다.\n\n마찬가지로 $\\triangle ABP\\sim\\triangle BCS$이고 $AB:BC=5:7$이므로\n$\\dfrac{BS}{BP}=\\dfrac75$이다.\n따라서\n$PS=BS-BP=(\\dfrac75-1)BP=\\dfrac25BP$이다.\n\n이제 $AP\\cdot BP$를 구한다.\n$A$에서 그은 각의 이등분선과 $BC$의 교점을 $E$라 하자.\n$AD\\parallel BE$이므로\n$\\angle DAE=\\angle AEB$ (엇각)이다.\n$AE$가 $\\angle DAB$의 이등분선이므로\n$\\angle BAE=\\angle DAE=\\angle AEB$이다.\n따라서 $\\triangle ABE$에서 $BA=BE=5$이다.\n\n평행사변형의 높이는\n$\\dfrac{28}{BC}=\\dfrac{28}{7}=4$이므로\n$[ABE]=\\dfrac12\\times BE\\times4=\\dfrac12\\times5\\times4=10$이다.\n점 $P$는 $\\angle ABE$의 이등분선 $BP$ 위에 있다.\n이등변삼각형 $ABE$에서 꼭짓각의 이등분선은 밑변 $AE$를 이등분하므로\n$AP=PE$이다.\n따라서\n$[ABP]=\\dfrac12[ABE]=5$이다.\n\n$AP\\perp BP$이므로\n$\\dfrac12 AP\\cdot BP=5$,\n$AP\\cdot BP=10$이다.\n\n따라서 직사각형의 넓이는\n$[PQRS]=PQ\\cdot PS$\n$=\\dfrac25AP\\cdot\\dfrac25BP$\n$=\\dfrac4{25}\\cdot10=\\dfrac85$이다.\n$q=8,\\ p=5$이므로 $p+q=13$이다.\n따라서 정답은 ⑤이다.",
       "images": [
         "assets/images/21_금당고_1학기_기말_고2_수학I/q20.png"
-      ]
+      ],
+      "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 평행사변형 ABCD와 직사각형 PQRS를 표시했다. 높이 AH=4 치수는 왼쪽 callout에 연결되고 P에서 직각이다. AB=BE=5, BC=7이다.",
+      "solutionImageCaption": "E는 A의 각 이등분선과 BC의 교점이다. △ABE에서 AB=BE=5이고 높이는 4이며 P는 AE의 중점이다. 닮음으로 직사각형 PQRS의 넓이를 구한다. 정답은 13이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 21,
@@ -362,7 +366,11 @@ var examData = window.examData = {
       "content": "좌표평면에서 함수 $$f(x)=\\begin{cases} x^2 & (x < 0) \\\\ \\sqrt{x} & (x \\ge 0) \\end{cases}$$와 자연수 $n$에 대하여 세 점 $P_n(n, 0), Q_n(0, n), R_n(-n, 0)$을 꼭짓점으로 하는 삼각형 $P_n Q_n R_n$이 있다. 삼각형 $P_n Q_n R_n$의 둘레 및 내부에 있는 $x$좌표와 $y$좌표가 모두 정수인 점 중에서 $y \\ge f(x)$를 만족시키는 점의 개수를 $A_n$이라 할 때, $\\sum_{n=1}^{10} A_n$의 값을 구하는 과정을 서술하고 답을 구하시오. [10점]",
       "choices": [],
       "answer": "244",
-      "solution": "삼각형 $P_nQ_nR_n$의 내부와 경계에 있는 정수점은\n$-n\\le x\\le n$, $0\\le y\\le n-|x|$를 만족한다.\n여기에 $y\\ge f(x)$를 더하여 $x<0$, $x=0$, $x>0$의 세 부분으로 나누어 센다. ($1\\le n\\le10$)\n\n[1] $x<0$일 때\n$f(x)=x^2$이므로 $x^2\\le y\\le n+x$이다.\n$x=-1$이면 $1\\le y\\le n-1$이므로 $n\\ge2$에서 $n-1$개,\n$x=-2$이면 $4\\le y\\le n-2$이므로 $n\\ge6$에서 $n-5$개이다.\n$x\\le-3$이면 $x^2\\ge9$인데 $n+x\\le10-3=7$이므로 점이 없다.\n따라서 점의 수 $N_-$는\n$n=1$이면 $0$,\n$2\\le n\\le5$이면 $n-1$,\n$6\\le n\\le10$이면 $(n-1)+(n-5)=2n-6$이다.\n\n[2] $x=0$일 때\n$f(0)=0$이고 $0\\le y\\le n$이므로\n$N_0=n+1$개이다.\n\n[3] $x>0$일 때\n$f(x)=\\sqrt{x}$이므로 $\\sqrt{x}\\le y\\le n-x$이다.\n정수 $y$의 최솟값은\n$x=1$이면 $1$,\n$x=2,3,4$이면 $2$,\n$x=5,6,7,8,9$이면 $3$이다.\n따라서 각 $x$에서 가능한 점의 수는\n$x=1$: $1\\le y\\le n-1$이므로 $n-1$개,\n$x=2,3,4$: $2\\le y\\le n-x$이므로 $n-x-1$개,\n$x=5,\\ldots,9$: $3\\le y\\le n-x$이므로 $n-x-2$개이다.\n단, 윗끝이 아랫끝보다 작으면 $0$개로 센다.\n$x\\ge10$에서는 $n-x\\le0$이므로 가능한 점이 없다.\n\n이제 각 $n$에 대해 $A_n=N_-+N_0+N_+$를 계산한다.\n$n=1$: $0+2+0=2$\n$n=2$: $1+3+1=5$\n$n=3$: $2+4+2=8$\n$n=4$: $3+5+4=12$\n$n=5$: $4+6+7=17$\n$n=6$: $6+7+11=24$\n$n=7$: $8+8+15=31$\n$n=8$: $10+9+20=39$\n$n=9$: $12+10+26=48$\n$n=10$: $14+11+33=58$\n\n그러므로\n$\\displaystyle\\sum_{n=1}^{10}A_n$\n$=2+5+8+12+17+24+31+39+48+58$\n$=244$이다.\n따라서 답은 $244$이다."
+      "solution": "삼각형 $P_nQ_nR_n$의 내부와 경계에 있는 정수점은\n$-n\\le x\\le n$, $0\\le y\\le n-|x|$를 만족한다.\n여기에 $y\\ge f(x)$를 더하여 $x<0$, $x=0$, $x>0$의 세 부분으로 나누어 센다. ($1\\le n\\le10$)\n\n[1] $x<0$일 때\n$f(x)=x^2$이므로 $x^2\\le y\\le n+x$이다.\n$x=-1$이면 $1\\le y\\le n-1$이므로 $n\\ge2$에서 $n-1$개,\n$x=-2$이면 $4\\le y\\le n-2$이므로 $n\\ge6$에서 $n-5$개이다.\n$x\\le-3$이면 $x^2\\ge9$인데 $n+x\\le10-3=7$이므로 점이 없다.\n따라서 점의 수 $N_-$는\n$n=1$이면 $0$,\n$2\\le n\\le5$이면 $n-1$,\n$6\\le n\\le10$이면 $(n-1)+(n-5)=2n-6$이다.\n\n[2] $x=0$일 때\n$f(0)=0$이고 $0\\le y\\le n$이므로\n$N_0=n+1$개이다.\n\n[3] $x>0$일 때\n$f(x)=\\sqrt{x}$이므로 $\\sqrt{x}\\le y\\le n-x$이다.\n정수 $y$의 최솟값은\n$x=1$이면 $1$,\n$x=2,3,4$이면 $2$,\n$x=5,6,7,8,9$이면 $3$이다.\n따라서 각 $x$에서 가능한 점의 수는\n$x=1$: $1\\le y\\le n-1$이므로 $n-1$개,\n$x=2,3,4$: $2\\le y\\le n-x$이므로 $n-x-1$개,\n$x=5,\\ldots,9$: $3\\le y\\le n-x$이므로 $n-x-2$개이다.\n단, 윗끝이 아랫끝보다 작으면 $0$개로 센다.\n$x\\ge10$에서는 $n-x\\le0$이므로 가능한 점이 없다.\n\n이제 각 $n$에 대해 $A_n=N_-+N_0+N_+$를 계산한다.\n$n=1$: $0+2+0=2$\n$n=2$: $1+3+1=5$\n$n=3$: $2+4+2=8$\n$n=4$: $3+5+4=12$\n$n=5$: $4+6+7=17$\n$n=6$: $6+7+11=24$\n$n=7$: $8+8+15=31$\n$n=8$: $10+9+20=39$\n$n=9$: $12+10+26=48$\n$n=10$: $14+11+33=58$\n\n그러므로\n$\\displaystyle\\sum_{n=1}^{10}A_n$\n$=2+5+8+12+17+24+31+39+48+58$\n$=244$이다.\n따라서 답은 $244$이다.",
+      "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: 예: n=6인 삼각형의 경계와 y=x², y=√x의 두 곡선, y=x+6과 y=6−x 경계를 그리고 음수·양수 x쪽의 가능한 영역을 각각 색칠했다.",
+      "solutionImageCaption": "예: n=6에서 음수 x쪽은 y=x²과 y=x+6 사이, 양수 x쪽은 y=√x와 y=6−x 사이가 가능한 영역이다. 실제 풀이에서는 x<0, x=0, x>0으로 나누어 n=1부터 10까지의 정수점 수를 합한다. 정답은 244이다.",
+      "solutionImageSize": "full"
     }
   ]
 };

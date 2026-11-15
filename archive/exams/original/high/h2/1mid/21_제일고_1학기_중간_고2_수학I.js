@@ -125,7 +125,11 @@ window.questionBank = [
       "8"
     ],
     "answer": "④",
-    "solution": "원래 함수는 $y=a^x+1$입니다. $x$축 방향으로 $-3$만큼 이동하면 $y=a^{x+3}+1$입니다.<br>이를 $y$축에 대하여 대칭이동하면 $x$ 대신 $-x$를 대입하여 $y=a^{3-x}+1$입니다.<br>밑 $a$와 관계없이 지수가 $0$인 $x=3$에서 $y=a^0+1=2$이므로 항상 $(m,n)=(3,2)$를 지납니다.<br>$mn=3\\times2=6$이므로 정답은 ④입니다."
+    "solution": "원래 함수는 $y=a^x+1$입니다. $x$축 방향으로 $-3$만큼 이동하면 $y=a^{x+3}+1$입니다.<br>이를 $y$축에 대하여 대칭이동하면 $x$ 대신 $-x$를 대입하여 $y=a^{3-x}+1$입니다.<br>밑 $a$와 관계없이 지수가 $0$인 $x=3$에서 $y=a^0+1=2$이므로 항상 $(m,n)=(3,2)$를 지납니다.<br>$mn=3\\times2=6$이므로 정답은 ④입니다.",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 변환 뒤 밑 2인 감소 곡선과 밑 1/2인 증가 곡선을 예로 들어, 지수가 0이 되는 공통점을 P로 표시했다.",
+    "solutionImageCaption": "옮긴 그래프를 y축에 대칭하면 지수가 3−x가 된다. 지수가 0일 때의 공통점에서 두 좌표의 곱은 6이다. 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -153,7 +157,11 @@ window.questionBank = [
       "5"
     ],
     "answer": "⑤",
-    "solution": "함수 $f(x)=\\log_a x+m$과 역함수의 교점은 직선 $y=x$에 대해 대칭입니다. 먼저 밑 $a$에 따라 함수가 증가하는지 감소하는지 나누어 생각합니다.<br>\n<strong>① $a>1$인 경우</strong><br>$f$는 증가함수입니다. 교점 $(u,v)$가 직선 $y=x$ 밖에 있다면 $(v,u)$도 교점인데, $u<v$라고 놓으면 $f(u)=v>u=f(v)$가 되어 증가함수라는 사실과 모순됩니다. 따라서 이 경우 모든 교점은 $y=x$ 위에 있습니다.<br>\n교점의 $x$좌표가 $1,4$이므로 $f(1)=1$, $f(4)=4$입니다.<br>$f(1)=\\log_a1+m=0+m=1\\Rightarrow m=1$.<br>$f(4)=\\log_a4+1=4\\Rightarrow\\log_a4=3\\Rightarrow a^3=4$.<br>따라서 $a^3+m^3=4+1=5$입니다.<br>\n<strong>② $0<a<1$인 경우는 왜 제외할까요?</strong><br>$f$는 감소함수입니다. 감소함수는 서로 다른 두 고정점 $f(x)=x$를 가질 수 없습니다. 따라서 교점이 두 개이고 그 $x$좌표가 $1,4$라면, 두 교점은 대칭인 $(1,4)$와 $(4,1)$이어야 합니다.<br>그런데 $f(1)=4>1$, $f(4)=1<4$이므로 연속함수 $f(x)-x$는 $1$과 $4$ 사이에서 $0$이 됩니다. 즉 직선 $y=x$ 위에도 교점이 하나 더 생겨 '두 점에서 만난다'는 조건에 어긋납니다.<br>\n그러므로 가능한 경우는 ①뿐이며 정답은 ⑤입니다."
+    "solution": "함수 $f(x)=\\log_a x+m$과 역함수의 교점은 직선 $y=x$에 대해 대칭입니다. 먼저 밑 $a$에 따라 함수가 증가하는지 감소하는지 나누어 생각합니다.<br>\n<strong>① $a>1$인 경우</strong><br>$f$는 증가함수입니다. 교점 $(u,v)$가 직선 $y=x$ 밖에 있다면 $(v,u)$도 교점인데, $u<v$라고 놓으면 $f(u)=v>u=f(v)$가 되어 증가함수라는 사실과 모순됩니다. 따라서 이 경우 모든 교점은 $y=x$ 위에 있습니다.<br>\n교점의 $x$좌표가 $1,4$이므로 $f(1)=1$, $f(4)=4$입니다.<br>$f(1)=\\log_a1+m=0+m=1\\Rightarrow m=1$.<br>$f(4)=\\log_a4+1=4\\Rightarrow\\log_a4=3\\Rightarrow a^3=4$.<br>따라서 $a^3+m^3=4+1=5$입니다.<br>\n<strong>② $0<a<1$인 경우는 왜 제외할까요?</strong><br>$f$는 감소함수입니다. 감소함수는 서로 다른 두 고정점 $f(x)=x$를 가질 수 없습니다. 따라서 교점이 두 개이고 그 $x$좌표가 $1,4$라면, 두 교점은 대칭인 $(1,4)$와 $(4,1)$이어야 합니다.<br>그런데 $f(1)=4>1$, $f(4)=1<4$이므로 연속함수 $f(x)-x$는 $1$과 $4$ 사이에서 $0$이 됩니다. 즉 직선 $y=x$ 위에도 교점이 하나 더 생겨 '두 점에서 만난다'는 조건에 어긋납니다.<br>\n그러므로 가능한 경우는 ①뿐이며 정답은 ⑤입니다.",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 패널은 y=x를 기준선으로 둔다. 증가 경우에는 정확한 교점 (1,1),(4,4)가 선 위에 있고, 감소 경우에는 대칭 교점 (1,4),(4,1)과 추가 고정점의 존재 구간 1<x<4를 나타낸다. 함수 곡선이나 추가 교점의 좌표는 표시하지 않는다.",
+    "solutionImageCaption": "역함수 대칭에서 증가함수는 주어진 두 교점이 고정점이고, 감소함수는 대칭쌍과 추가 고정점이 생겨 두 점 조건에 모순임을 보이는 개념도이다. 정답은 ⑤입니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -238,10 +246,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "직사각형의 넓이는 <strong>밑변 $BC$의 길이 × 높이 $AB$</strong>입니다. 밑변은 $2$로 주어졌으므로 그래프에서 윗변의 높이를 구합니다.<br>\n$y=\\sin\\frac\\pi3x$는 $0\\le x\\le3$에서<br>$\\sin\\frac\\pi3(3-x)=\\sin\\left(\\pi-\\frac\\pi3x\\right)=\\sin\\frac\\pi3x$이므로 $x=\\frac32$를 기준으로 좌우대칭입니다.<br>직사각형의 두 윗꼭짓점 $A,D$는 높이가 같으므로 그 $x$좌표도 $\\frac32$를 기준으로 대칭입니다. 두 좌표의 차이는 $BC=2$이므로 각각 중심에서 $1$만큼 떨어져 있습니다.<br>$x_A=\\frac32-1=\\frac12$, $x_D=\\frac32+1=\\frac52$입니다.<br>\n높이는 $AB=y_A=\\sin\\left(\\frac\\pi3\\cdot\\frac12\\right)=\\sin\\frac\\pi6=\\frac12$입니다. 실제로 $D$에서도 $\\sin\\frac{5\\pi}6=\\frac12$로 높이가 같습니다.<br>\n따라서 넓이는 $BC\\times AB=2\\times\\frac12=1$이고 정답은 ①입니다.",
-    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I/q17-solution.svg",
-    "solutionImageAlt": "사인함수의 대칭축 x=3/2와 직사각형 ABCD의 밑변 2, 높이 1/2를 표시한 해설 그래프",
-    "solutionImageCaption": "두 윗꼭짓점의 x좌표는 1/2, 5/2이므로 높이는 sin(π/6)=1/2입니다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 사인곡선 위의 A와 D 및 x축 위의 B와 C가 직사각형을 이룬다. 점선 x=3/2 양옆의 윗꼭짓점 높이는 y=1/2이다.",
+    "solutionImageCaption": "두 윗꼭짓점은 x=3/2에서 같은 거리만큼 떨어져 있다. 높이 1/2와 밑변 2를 곱한 넓이는 1이다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -305,7 +313,11 @@ window.questionBank = [
         ],
         "sourceFidelity": "AUDITED_EDITORIAL_CLARIFICATION_NOT_VERBATIM",
         "originalPNG": "q20.png preserved"
-    }
+    },
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 줄은 교점 C의 x좌표에서 2를 뺀 가로 거리가 0과 1/5 사이임을 보여 준다. 아래 줄은 교점 높이가 1/5보다 큰 쪽임을 나타낸다. 기준값 1/5는 어느 줄에도 포함되지 않는다.",
+    "solutionImageCaption": "끝점의 함수값을 비교하면 교점 C의 x좌표는 2와 11/5 사이이다. 가로 거리와 높이는 기준 1/5의 서로 다른 쪽에 놓인다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

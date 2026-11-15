@@ -514,7 +514,11 @@ window.questionBank = [
       "l4": "증가·감소"
     },
     "primaryMethod": "최솟값에서 접하는 한 경우와 그보다 큰 수평선의 좌우 두 교점을 나눈다.",
-    "projectionStatus": "DIRECT_BINDING_GAP"
+    "projectionStatus": "DIRECT_BINDING_GAP",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 지수 가지 y=2^(1−x)+4 (x≤1), y=2^(x−1)+4 (x>1)가 (1,5)에서 만난다. k=4는 그래프 아래, k=5는 최소점에서 만나며, 표본선 k=8은 두 점에서 만난다.",
+    "solutionImageCaption": "두 정확한 지수 가지가 x=1에서 최솟값 5로 만난다. k=4,5,8 표본선에서는 교점 수가 각각 0,1,2개다. 따라서 정답은 k>5 (⑤)이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 10,
@@ -747,7 +751,11 @@ window.questionBank = [
       "l4": "삼각함수 관계"
     },
     "primaryMethod": "A의 구간·고립각과 B의 구간을 합친 뒤 끝점과 단일 원소를 더한다.",
-    "projectionStatus": "RPM_ONLY"
+    "projectionStatus": "RPM_ONLY",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: u=θ/π로 정규화한 수직선이다. 첫째 행 “연속 구간”의 닫힌 구간은 [0,5/6]이다. 둘째 행 “끝점·고립”은 구간 끝값 β/π=5/6과 합집합에 따로 포함되는 고립점 γ/π=5/4를 표시한다. α/π=0은 첫째 행 왼쪽 닫힌 끝점이다. 두 행의 내용을 합쳐 A∪B를 읽는다.",
+    "solutionImageCaption": "u=θ/π 축에서 A∪B는 닫힌 구간 [0,5/6]과 고립점 5/4로 이루어진다. α/π=0, β/π=5/6, γ/π=5/4이므로 α+β+γ=25π/12이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 14,
@@ -994,7 +1002,11 @@ window.questionBank = [
       "l4": "그래프 교점"
     },
     "primaryMethod": "점 좌표를 t로 나타내 AB=AD로 t를 구하고, BD와 높이로 삼각형 넓이를 계산한다.",
-    "projectionStatus": "DIRECT_BINDING_GAP"
+    "projectionStatus": "DIRECT_BINDING_GAP",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 감소 지수곡선 위에 점 A, B, D가 있다. 직선 AC 위에 A와 B, 수평선 BD 위에 B와 D가 있고, A에서 수평선에 내린 높이가 점선으로 표시되어 있다.",
+    "solutionImageCaption": "수평인 BD를 밑변으로 잡으면 A에서 BD까지의 거리가 높이다. 밑변 길이는 1이고 높이는 18이므로 삼각형의 넓이는 9이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 18,
@@ -1155,7 +1167,11 @@ window.questionBank = [
       "l4": "최대·최소"
     },
     "primaryMethod": "u=cos t의 범위 [-1,1]에서 완전제곱식의 양 끝 범위를 구해 최댓값으로 k, 최솟값 m을 얻는다.",
-    "projectionStatus": "DIRECT_BINDING_GAP"
+    "projectionStatus": "DIRECT_BINDING_GAP",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: u의 닫힌 구간 [−1,1], 꼭짓점 u=−1/2와 두 끝점이 표시되어 있다. 꼭짓점에서 왼쪽 끝까지는 1/2, 오른쪽 끝까지는 3/2로 오른쪽 끝이 더 멀다.",
+    "solutionImageCaption": "t=x−π/4, u=cos t∈[−1,1]로 두면 f=k+5/4−(u+1/2)^2이다. 꼭짓점은 구간 안에 있고, 더 먼 오른쪽 끝 u=1에서 최솟값이 생긴다. 최댓값 4를 이용하면 최솟값은 7/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 21,
@@ -1213,7 +1229,11 @@ window.questionBank = [
       "l4": "그래프 교점"
     },
     "primaryMethod": "사각형 넓이 조건으로 p를 구한 다음 A,a와 AB 길이를 차례로 계산한다.",
-    "projectionStatus": "DIRECT_BINDING_GAP"
+    "projectionStatus": "DIRECT_BINDING_GAP",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 곡선은 직선 y=x를 기준으로 대칭이다. 주어진 직선 위의 A와 B, 두 축 위의 C와 D를 연결한 사각형 ACDB가 표시되어 있다.",
+    "solutionImageCaption": "직선 y=x에 대해 A와 B, C와 D는 각각 서로 대칭이다. A=(p,5−p)로 놓고 사각형의 넓이를 구하면 제1사분면에서 p=1이 된다. 따라서 (1) 3√2, (2) A=(1,4), a=4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 22,
