@@ -319,6 +319,11 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - paths는 xAxis, yAxis, secant(각 두 점), exponential, logarithm(각 6~64점)이다. 점쌍은 수학 좌표가 아니라 **원본 픽셀의 정수 좌표**다. 전체 선을 따라 잉크를 대조하고, A/B의 두 교차와 C/O를 다시 계산한다. 가로축·세로축은 수평/수직으로 정리한다.
 - labelOrigins에 O, A, B, C, x, y, exp, log, line, schematic의 위쪽 왼쪽 위치를 준다. 함수식은 원문에서만 읽고 그림에 개형을 표시한다. 밑 수치, 점의 수치 좌표, 눈금, 사용자 입력 SVG나 새 식은 지원하지 않는다. 기존 글꼴·충돌·잘림 검사는 같은 경로에서 실행한다.
 
+같은 문자 밑의 두 로그곡선이 하나의 내림 직선과 만나는 문제에는 'source-log-translate-schematic-v1'을 쓸 수 있다. 발문에 두 로그식과 유리 기울기인 내림 직선이 있고, 둘째 로그가 첫 로그를 오른쪽 아래로 옮긴 것이며 그 이동이 직선을 보존해야 한다. 원본 PNG 검증과 브라우저 글꼴·겹침 기준은 동일하다.
+
+- paths에는 xAxis, yAxis, secant, logOriginal, logShifted의 원본 픽셀 좌표를 준다. 두 로그곡선 모두 증가하고 오목해야 한다. A와 B는 직선과 두 축이 만나는 점, P와 Q는 각 로그곡선과 직선이 만나는 점이며 O는 두 축의 교차다. 원본과 같이 직선 위에 A, P, Q, B 순서로 있어야 한다.
+- labelOrigins에는 O, A, B, P, Q, x, y, logOriginal, logShifted, line, schematic을 준다. 그림 파일에서 잘린 식도 발문을 근거로 조판한다. 개형 위에는 풀이 수치, 점 좌표, 눈금을 표시하지 않는다.
+
 ### 3-8. 중학교 평면도형: 각·선분·호 표식이 있는 축 없는 그림 (`PLANE_FIGURE_v1`, `planeMarks`)
 
 - **plan 최상위 `caption`은 필수다.** 평면도형·좌표 도형(`construction-spike-v1`)도 `caption`(한 문장, 정답·숨긴 점 이름 없이)이 있어야 하고, 없으면 `SPEC_ERROR`/`PLAN_CAPTION_REQUIRED`(path `caption`)로 거절된다. 숨긴 점(`hiddenPointNames`)의 이름을 caption에 쓰면 `HIDDEN_POINT_NAMED_IN_TEXT:<id>`이다. publish.json의 caption(풀이 요약+정답)과는 별개다. 이유: 금당고 14개 그림이 caption 없이 `NON_JSON_VALUE`(spec.title 미정의)로 거절됐다.
