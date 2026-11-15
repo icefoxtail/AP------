@@ -39,6 +39,13 @@ node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --requ
 각 `evidenceRefs`는 `{ "path": "저장소 상대 경로", "sha256": "실바이트 SHA-256" }` 배열이다.
 실제 파일이 없거나 hash가 다르면 쓰기 전에 실패한다. URL이나 검토했다는 문장만으로 대체하지 않는다.
 
+### 부분 UID 요청과 내용 지문 재결속
+
+- 일부 문항을 등록하려면 최상위에 `"scope": "PARTIAL_UIDS"`를 넣고 `items`에 대상 UID만 적는다. `expectedQuestionCount`는 실제 시험지 전체 문항 수다. 빈 요청, 시험지 밖 UID, 중복 UID·순번, UID와 순번의 불일치는 거부한다.
+- `expectedSourceBlobSha1`에는 현재 원본 blob을 적는다. 부분 요청에서 `after.sourceFingerprint`를 제출할 때는 항목에 `"rebind": { "priorSourceBlobSha1": "...", "priorContentFingerprint": "..." }`가 필요하다. 해당 과거 blob이 실행 환경의 Git에 있어야 한다.
+- 등록기는 과거 blob의 같은 순번 문항에서 원본·내용 지문을 다시 계산한다. 보관된 원본 지문은 과거 또는 현재 판본과 맞아야 하며, 발문·보기·그림 참조의 내용 지문이 달라지면 거부한다. 기존 `before`·`after` 지문과 `identityBefore` 검사도 유지한다. 전체 요청은 기존 방식 그대로 처리하며 `rebind`를 명시하면 같은 추가 검사를 받는다.
+- 부분 영수증의 `totalQuestions`와 `appliedRecords`는 요청 UID만 센다. `scope`와 `partialUidCount`가 추가되며, 재실행과 소비자 검사도 이 UID 범위를 사용한다.
+
 ### Generated 확장 키(EXT-*) — 사용은 허용, 정본 승격 없음 (2026-11-02)
 
 유사시험지 등 Generated 문항은 정본에 없는 개념·조건을 `EXT-CROSS-*`/`EXT-COND-*` 확장 키로 쓴다

@@ -431,7 +431,11 @@ window.questionBank = [
       "subConcept": "삼각형의 높이·넓이",
       "conditionsUsed": "AC=20, BC=24, sinC=3/5, cosC=4/5.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 H는 A에서 BC에 내린 수선의 발이다. AC=20, BC 전체 길이 24와 높이 AH=12를 표시한다. CH와 BH는 주황과 보라로 구분한다.",
+    "solutionImageCaption": "AH=20·(3/5)=12, CH=20·(4/5)=16이다. 따라서 BH=24−16=8이고 직각삼각형 ABH에서 AB=√(12²+8²)=4√13이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -539,7 +543,11 @@ window.questionBank = [
       "subConcept": "삼각형의 높이·넓이",
       "conditionsUsed": "AB=12, AC=18, ∠BAC=60°, AD는 각의 이등분선.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB=12, AC=18, 각 A=60°이며 AD는 각의 이등분선이다. 직선 AD에 내린 B와 C의 수선 높이는 각각 6과 9이고, 두 삼각형 부분을 파랑과 주황으로 표시했다.",
+    "solutionImageCaption": "각의 이등분선이므로 ∠BAD=∠DAC=30°이다. 두 높이는 12sin30°=6, 18sin30°=9이다. △ABC의 넓이는 ½·12·18·sin60°=54√3이므로 ½·AD·(6+9)=54√3이다. 따라서 AD=36√3/5, 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -593,7 +601,11 @@ window.questionBank = [
       "subConcept": "다각형의 길이·넓이",
       "conditionsUsed": "합동 마름모 6개, 한 변 12cm.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 점을 둘러싸는 여섯 마름모를 표시한다. 파랗게 칠한 한 마름모의 중심 쪽 각은 60°이고 한 변은 12 cm이다. 모든 변에는 같은 파란 눈금이 있다.",
+    "solutionImageCaption": "여섯 중심각은 같고 합이 360°이므로 각각 60°이다. 한 마름모의 넓이는 12·12·sin60°=72√3cm²이다. 여섯 개의 넓이를 더하면 432√3cm²이므로 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -647,7 +659,11 @@ window.questionBank = [
       "subConcept": "삼각형의 높이·넓이",
       "conditionsUsed": "테이프 폭 8cm, AC는 접는 선, ∠ABC=45°.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 폭 8cm인 평행한 테이프 가장자리 중 위쪽 가장자리의 일부가 AC를 축으로 접혀 AB가 된다. 삼각형 ABC에서 ∠B=45°, AB와 BC는 같은 눈금이고 A에서 BC에 내린 높이는 8cm이다.",
+    "solutionImageCaption": "AC에 대한 접기와 AU∥BC에서 ∠BAC=∠ACB이므로 AB=BC이다. ∠B=45°이고 높이 AH=8cm이므로 BC=8/sin45°=8√2cm이다. 따라서 △ABC의 넓이는 ½·8·8√2=32√2cm², 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -707,7 +723,11 @@ window.questionBank = [
       "subConcept": "중심거리와 현의 길이",
       "conditionsUsed": "AB⊥OM, AB=8cm, MC=2cm.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB=8cm와 중심 수선 OM을 나타낸다. M은 AB의 중점이며 C는 OM 위에서 MC=2cm 떨어져 있다.",
+    "solutionImageCaption": "M은 AB의 중점이므로 MB=4cm이다. 반지름을 r이라 두면 OM=r−2이고 직각삼각형 OMB에서 r²=(r−2)²+4²이므로 r=5cm이다. 따라서 원의 넓이는 25πcm², 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -761,7 +781,11 @@ window.questionBank = [
       "subConcept": "같은 호에 대한 원주각",
       "conditionsUsed": "∠BAC=65°, OM=ON=2.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 A가 65도인 원의 내접삼각형이다. 두 길이 2인 수선 OM과 ON은 파란 한 눈금이고, 두 현 AC와 BC는 주황 두 눈금이다. 각 C에 x가 표시된다.",
+    "solutionImageCaption": "OM=ON=2이고 두 현에 수직이므로 AC=BC이다. 같은 원에서 이에 대응하는 원주각도 같아 ∠ABC=∠BAC=65°이다. 따라서 x=180°−65°−65°=50°, 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -821,7 +845,11 @@ window.questionBank = [
       "subConcept": "중심거리와 현의 길이",
       "conditionsUsed": "반지름 4cm, AB는 접는 선, 접은 뒤 짧은 호 AB가 O를 지난다.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 4cm인 원 O에서 접는 선 AB를 기준으로 접기 전 파란 짧은 호와 접은 뒤 주황 짧은 호를 나타낸다. 접힌 호는 O를 지난다.",
+    "solutionImageCaption": "접힌 호가 O를 지나므로 반사된 중심 Q와 O의 거리는 반지름 4cm이다. 접는 선은 OQ의 수직이등분선이므로 O에서 AB까지 거리는 2cm이다. 직각삼각형에서 현의 반은 √(4²−2²)=2√3cm이므로 AB=4√3cm, 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -881,7 +909,11 @@ window.questionBank = [
       "subConcept": "중심거리와 현의 길이",
       "conditionsUsed": "AB⊥OD, BC⊥OE, AC⊥OF, OD=OE=OF, AB=6cm.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 내접한 삼각형 ABC에서 OD, OE, OF는 세 현에 각각 수직이며 같은 길이로 표시된다. 세 현은 다른 색의 같은 길이 표식을 갖는다.",
+    "solutionImageCaption": "세 현은 원 O의 중심에서 같은 거리이므로 서로 길이가 같다. AB=6cm에서 삼각형 ABC는 한 변이 6cm인 정삼각형이다. 외접반지름은 6/√3=2√3cm이므로 원의 넓이는 12πcm², 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1001,7 +1033,11 @@ window.questionBank = [
       "subConcept": "접선 조건으로 길이 구하기",
       "conditionsUsed": "AD·CD·BC는 반원의 접선, AD=3, CD=10.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 반원 O의 지름 AB와 접선 AD, BC, CD를 나타낸다. AD에는 3, CD 전체에는 10이 표시되어 있다. 접점 E를 기준으로 길이가 같은 접선끼리 두 색으로 묶는다.",
+    "solutionImageCaption": "AD=DE=3이고 CD=10이므로 CE=CB=7이다. 평행한 AD와 BC의 길이 차는 7−3=4이다. 직각삼각형에서 AB²+4²=10²이므로 AB=2√21이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1061,7 +1097,11 @@ window.questionBank = [
       "subConcept": "한 점에서 그은 두 접선",
       "conditionsUsed": "PA·PB·CE는 접선, AC=3, CE=8, PC=11.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 닿는 두 접선 PA와 PB가 점 P에서 만난다. C의 두 접선은 주황색 두 눈금이고, E의 두 접선은 초록색 세 눈금이다.",
+    "solutionImageCaption": "PA=PB=PC+CA=11+3=14이다. C에서 CA=CD=3이고 CE=8이므로 DE=5이다. E에서 DE=EB=5이므로 PE=PB−EB=14−5=9. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1217,7 +1257,11 @@ window.questionBank = [
       "subConcept": "삼각형의 높이·넓이",
       "conditionsUsed": "정사각형 한 변 4, M/N은 AD/CD 중점, x=∠MBN.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형의 두 중점 M과 N, B에서 그은 같은 길이의 BM과 BN, 두 선 사이의 각 x가 표시된다.",
+    "solutionImageCaption": "정사각형에서 [BMN]=16−4−4−2=6이다. BM=BN=2√5이므로 6=½·BM·BN·sin x=10 sin x. 따라서 sin x=3/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1271,6 +1315,10 @@ window.questionBank = [
       "subConcept": "접선 조건으로 길이 구하기",
       "conditionsUsed": "∠A=90°, 내접원 O와 접점, AC=8cm, BC=10cm.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 내접원과 접점 D,E,F를 나타낸다. AC=8cm, BC=10cm이고 중심 O에서 C까지의 선분 OC를 보인다.",
+    "solutionImageCaption": "AB=√(10²−8²)=6cm이다. 넓이 24cm²와 반둘레 12cm에서 내접원 반지름은 2cm이다. CE=8−AE=6cm이고 OE=2cm, ∠OEC=90°이므로 OC=√(6²+2²)=2√10cm이다.",
+    "solutionImageSize": "full"
   }
 ];
