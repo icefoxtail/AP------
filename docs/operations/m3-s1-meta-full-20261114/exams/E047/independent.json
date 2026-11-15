@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E047",
+  "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "at": "2026-11-14T14:25:47.295452+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/22_향림중_1학기_중간_중3_수학.js",
+  "sourceBlob": "07d0f60051d0f8c400936f3bace2eb4a2af85a4e",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E047.review.json",
+      "sha256": "4e9c3b1feedc39ede197076b76e7fa377dde3c4ff91faad73709b93d7cc1d606"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E047.4slot.json",
+      "sha256": "de54a86f4c406c45ca502d1538a0494901dac84543dc7289a004eb71d1042e40"
+    }
+  },
+  "sampledOrdinals": [
+    3,
+    7,
+    23
+  ],
+  "additionalChangedOrBoundaryOrdinals": [
+    1,
+    4,
+    6,
+    9,
+    17,
+    18,
+    22
+  ],
+  "scope": "METADATA_ONLY; 10 necessary sample/change/uncertainty question stems, choices, existing solutions and 4slot sets directly compared. q3 shaded-number-set and q7 grid PNGs viewed.",
+  "findings": [
+    {
+      "ordinal": 3,
+      "status": "PASS",
+      "note": "원그림의실수전체에서유리수원을제외한음영을직접확인.보기근호단순화와무리수분류2/B23수용."
+    },
+    {
+      "ordinal": 7,
+      "status": "PASS_AFTER_REVISION",
+      "note": "모눈의A=(2,0),D=(-1,1),B=(3,3)과좌우원호를직접확인.두길이√10·좌표이동의3/B34및상등조건추가수용."
+    },
+    {
+      "ordinal": 23,
+      "status": "HOLD_CONFIRMED",
+      "note": "발문a+b√5표현에a,b유리수조건이없어일의적계수결정을강제하지않는UNKNOWN/sourcehold수용."
+    },
+    {
+      "ordinal": 9,
+      "status": "PASS",
+      "note": "근호몫의역수곱·단일근호정리·유리화는표준2이므로상→중교정수용."
+    },
+    {
+      "ordinal": 17,
+      "status": "PASS",
+      "note": "켤레두분모의정형유리화와무리수항소거는2이므로상→중교정수용."
+    },
+    {
+      "ordinal": 18,
+      "status": "PASS_AFTER_REVISION",
+      "note": "소인수지수조건에서n=3k²의일반형을생성하고두자리범위를결합한다. root E021q5중재와동일한구조로4/B34상향수용.002부모+exact조건개수gap보존."
+    },
+    {
+      "ordinal": 6,
+      "status": "PASS",
+      "note": "2≤√(x+3)<3의양끝포함여부를보존하여자연수합을구하는2.004부모+exactgap확인."
+    },
+    {
+      "ordinal": 22,
+      "status": "PASS",
+      "note": "양수인계수를근호안으로옮겨공통ab를대입하는표준2/B23과명시양수조건을확인."
+    }
+  ],
+  "additionalCheck": "q1기호가나타내는한수와두제곱근구별1/B12,q4중첩제곱근·음의분수제곱근의2및소단원교정을source와대조. 위험없는나머지문항은저자전수검토재사용하며독립재독을주장하지않음.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}
