@@ -4,7 +4,7 @@ window.questionBank = [
     "id": 1,
     "questionNumber": 1,
     "questionType": "객관식",
-    "content": "오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=4, \\overline{\\mathrm{BC}}=5, \\angle\\mathrm{B}=120^\\circ$일 때, 사각형 $\\mathrm{ABCD}$의 넓이는? [3.6점]<br><br><img src=\"assets/images/21_순천여고_1학기_기말_고2_수학I/q01.png\" class=\"question-img\">",
+    "content": "오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=4, \\overline{\\mathrm{BC}}=5, \\angle\\mathrm{B}=120^\\circ$일 때, 사각형 $\\mathrm{ABCD}$의 넓이는? [3.6점]<br><br><img src=\"assets/images/21_순천여고_1학기_기말_고2_수학I/q01-problem-full-c-v1.svg\" alt=\"변 AB가 4, 변 BC가 5이고 각 B가 120°인 평행사변형 ABCD.\" class=\"question-img\">",
     "choices": [
       "10",
       "10\\sqrt{2}",

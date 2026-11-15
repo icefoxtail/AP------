@@ -961,7 +961,11 @@ window.questionBank = [
       "examUid": "21_제일고_1학기_기말_고2_수학I",
       "sourceQid": 19,
       "sourceJsSha256": "b73ae437b1071dabdd25504d3159962cebccb953f4fedcf961f4821d98926e97"
-    }
+    },
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_수학I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC 안의 점 P와 두 수선의 발 Q, R을 표시하고, A와 P를 지름의 양 끝으로 하는 원과 두 직각을 나타냈다.",
+    "solutionImageCaption": "예시 위치의 수선의 발 Q, R은 모두 지름 AP인 원 위에 있다. 따라서 QR은 원주각과 ∠BAC를 이용해 구할 수 있고, AC=10에서 사인값을 얻는다. 정답은 28/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

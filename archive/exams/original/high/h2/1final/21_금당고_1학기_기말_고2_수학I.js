@@ -344,7 +344,11 @@ var examData = window.examData = {
       "solution": "평행사변형에서 이웃한 두 각의 합은 $180^\\circ$이므로 두 각의 이등분선은 서로 수직이다.\n마주 보는 각의 이등분선은 서로 평행하므로 $PQRS$는 직사각형이다.\n\n$\\triangle ABP$와 $\\triangle ADQ$는 모두 직각삼각형이고 $\\angle BAP=\\angle DAQ$이므로 닮음이다.\n$AB:AD=5:7$이므로\n$\\dfrac{AQ}{AP}=\\dfrac75$이다.\n$P,Q$는 $A$의 같은 각의 이등분선 위에 있으므로\n$PQ=AQ-AP=(\\dfrac75-1)AP=\\dfrac25AP$이다.\n\n마찬가지로 $\\triangle ABP\\sim\\triangle BCS$이고 $AB:BC=5:7$이므로\n$\\dfrac{BS}{BP}=\\dfrac75$이다.\n따라서\n$PS=BS-BP=(\\dfrac75-1)BP=\\dfrac25BP$이다.\n\n이제 $AP\\cdot BP$를 구한다.\n$A$에서 그은 각의 이등분선과 $BC$의 교점을 $E$라 하자.\n$AD\\parallel BE$이므로\n$\\angle DAE=\\angle AEB$ (엇각)이다.\n$AE$가 $\\angle DAB$의 이등분선이므로\n$\\angle BAE=\\angle DAE=\\angle AEB$이다.\n따라서 $\\triangle ABE$에서 $BA=BE=5$이다.\n\n평행사변형의 높이는\n$\\dfrac{28}{BC}=\\dfrac{28}{7}=4$이므로\n$[ABE]=\\dfrac12\\times BE\\times4=\\dfrac12\\times5\\times4=10$이다.\n점 $P$는 $\\angle ABE$의 이등분선 $BP$ 위에 있다.\n이등변삼각형 $ABE$에서 꼭짓각의 이등분선은 밑변 $AE$를 이등분하므로\n$AP=PE$이다.\n따라서\n$[ABP]=\\dfrac12[ABE]=5$이다.\n\n$AP\\perp BP$이므로\n$\\dfrac12 AP\\cdot BP=5$,\n$AP\\cdot BP=10$이다.\n\n따라서 직사각형의 넓이는\n$[PQRS]=PQ\\cdot PS$\n$=\\dfrac25AP\\cdot\\dfrac25BP$\n$=\\dfrac4{25}\\cdot10=\\dfrac85$이다.\n$q=8,\\ p=5$이므로 $p+q=13$이다.\n따라서 정답은 ⑤이다.",
       "images": [
         "assets/images/21_금당고_1학기_기말_고2_수학I/q20.png"
-      ]
+      ],
+      "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 평행사변형 ABCD와 직사각형 PQRS를 표시했다. 높이 AH=4 치수는 왼쪽 callout에 연결되고 P에서 직각이다. AB=BE=5, BC=7이다.",
+      "solutionImageCaption": "E는 A의 각 이등분선과 BC의 교점이다. △ABE에서 AB=BE=5이고 높이는 4이며 P는 AE의 중점이다. 닮음으로 직사각형 PQRS의 넓이를 구한다. 정답은 13이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 21,
