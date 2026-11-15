@@ -111,6 +111,43 @@ test("fixed whole-exam v2 request: all 24 reviewed L1..L4 and PT/TPL values reac
   assert.deepEqual(out.counts, { changed: 24, checked: 24, passed: 24, skippedUnchanged: 0 });
 });
 
+test("identity-only Consumer verification reports one exact binding and zero new approvals", t => {
+  const f = historicalConsumerFixture(t), item = f.request.items[0];
+  const fingerprints = { sourceFingerprint: item.after.sourceFingerprint, contentFingerprint: item.after.contentFingerprint };
+  const request = { ...f.request, registrationMode: "IDENTITY_FINGERPRINT_ONLY", scope: "PARTIAL_UIDS", registryChanges: [],
+    approval: { ...f.request.approval, type: "FINAL_QA", metadataReviewed: true },
+    items: [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, before: fingerprints, after: fingerprints,
+      identityBefore: { sourceFingerprint: "a".repeat(64) } }] };
+  const identityPath = path.join(f.root, "archive/data/question_identity_map.json");
+  const identity = { records: [{ questionUid: item.questionUid, sourceArchiveFile: request.sourceArchiveFile,
+    sourceOrdinal: item.sourceOrdinal, sourceFingerprint: fingerprints.sourceFingerprint }] };
+  fs.writeFileSync(identityPath, JSON.stringify(identity));
+  const file = write(f.root, "identity-repair.json", request);
+  const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [file] });
+  assert.deepEqual(out.failures, []);
+  assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 });
+  assert.equal(out.exams[0].kind, "identity-fingerprint-repair");
+  assert.equal(out.exams[0].identityBindings, 1); assert.equal(out.exams[0].newMetadataApprovals, 0);
+  assert.equal(out.exams[0].approvalCreated, false);
+  assert.match(renderSummary(out), /changed 1\/1 verified/); assert.match(renderSummary(out), /new approvals: 0/);
+  assert.doesNotMatch(renderSummary(out), /1\/1 approved/);
+
+  identity.records[0].sourceFingerprint = "b".repeat(64); fs.writeFileSync(identityPath, JSON.stringify(identity));
+  const stale = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [file] });
+  assert.equal(stale.status, "FAIL"); assert.equal(stale.failures[0].reason, "IDENTITY_BINDING_MISMATCH");
+  identity.records[0].sourceFingerprint = fingerprints.sourceFingerprint; fs.writeFileSync(identityPath, JSON.stringify(identity));
+  for (const invalid of [
+    { ...request, scope: undefined },
+    { ...request, expectedQuestionCount: 23 },
+    { ...request, items: [{ ...request.items[0], after: { ...fingerprints, problemTypeKey: "NEW" } }] },
+    { ...request, items: [{ ...request.items[0], before: { ...fingerprints, sourceFingerprint: "c".repeat(64) } }] },
+    { ...request, items: [request.items[0], request.items[0]] },
+  ]) {
+    const failed = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "invalid-identity.json", invalid)] });
+    assert.equal(failed.status, "FAIL"); assert.equal(failed.counts.passed, 0);
+  }
+});
+
 test("fixed whole-exam v2 request: later source bytes and altered approved values are refused", t => {
   const { root, source, file, request } = historicalConsumerFixture(t);
   const changed = structuredClone(request);
