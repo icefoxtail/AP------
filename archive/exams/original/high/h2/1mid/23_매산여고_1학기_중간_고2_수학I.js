@@ -1217,7 +1217,11 @@ window.questionBank = [
       "l4": "그래프 교점"
     },
     "primaryMethod": "사각형 넓이 조건으로 p를 구한 다음 A,a와 AB 길이를 차례로 계산한다.",
-    "projectionStatus": "DIRECT_BINDING_GAP"
+    "projectionStatus": "DIRECT_BINDING_GAP",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 곡선은 직선 y=x를 기준으로 대칭이다. 주어진 직선 위의 A와 B, 두 축 위의 C와 D를 연결한 사각형 ACDB가 표시되어 있다.",
+    "solutionImageCaption": "직선 y=x에 대해 A와 B, C와 D는 각각 서로 대칭이다. A=(p,5−p)로 놓고 사각형의 넓이를 구하면 제1사분면에서 p=1이 된다. 따라서 (1) 3√2, (2) A=(1,4), a=4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 22,
