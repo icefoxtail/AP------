@@ -59,7 +59,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q02",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 (3, 2)를 지나는 증가 지수곡선이 왼쪽에서 수평 점근선 y=1을 나타내는 점선에 위쪽으로 다가가는 그림.",
+    "solutionImageCaption": "기본 지수함수를 오른쪽으로 3, 위쪽으로 1만큼 옮기면 점근선은 y=1이고 치역은 y>1이다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,

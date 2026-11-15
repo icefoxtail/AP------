@@ -1,6 +1,6 @@
 {
   "schemaVersion": "exam-figure-ledger-v1",
-  "updated": "2026-11-15",
+  "updated": "2026-11-16",
   "rule": "시험지는 시험지 단위 점검 후 모든 문항이 PUBLISHED이거나 최종 사유가 있는 EXEMPT일 때만 CLOSED로 닫는다(OPEN_UNSUPPORTED/OPEN_LAYOUT/OPEN_OTHER가 하나라도 있으면 OPEN). CLOSED 시험지는 다시 작업하지 않는다.",
   "exams": [
     {
@@ -118684,6 +118684,180 @@
       "status": "OPEN",
       "closedBy": null,
       "note": "1개 게시; 독립 검수: 독립 B · Q17 native actual 및 caption delta; 해설 페이지와 실제 표시 글자 크기 검증; 공통 CREATE 게이트 회귀 8개 통과."
+    },
+    {
+      "exam": "23_순천고_1학기_중간_고2_수학I",
+      "src": "archive/exams/original/high/h2/1mid/23_순천고_1학기_중간_고2_수학I.js",
+      "items": [
+        {
+          "ord": 1,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q1",
+          "reason": "주값과 중첩 근호를 순서대로 대입하는 짧은 계산이다."
+        },
+        {
+          "ord": 2,
+          "state": "PUBLISHED",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q2",
+          "fam": null,
+          "figures": [
+            "assets/images/23_순천고_1학기_중간_고2_수학I/q2-solution.svg"
+          ]
+        },
+        {
+          "ord": 3,
+          "state": "OPEN_LAYOUT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q3",
+          "fam": null,
+          "reason": "plan 대기"
+        },
+        {
+          "ord": 4,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q4",
+          "reason": "정의역·짝함수·로그 법칙으로 판정되어 그림이 새 관계를 보이지 않는다."
+        },
+        {
+          "ord": 5,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q5",
+          "reason": "−530°에 720°를 더해 190°로 정규화하는 단일 계산이다."
+        },
+        {
+          "ord": 6,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q6",
+          "reason": "180°=π 대입으로 직접 확인한다."
+        },
+        {
+          "ord": 7,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q7",
+          "reason": "주값, 실근 개수, 짝·홀수 지수 정의로 판정한다."
+        },
+        {
+          "ord": 8,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q8",
+          "reason": "부호별 실근 정의를 적용하는 논리 점검이다."
+        },
+        {
+          "ord": 9,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q9",
+          "reason": "t와 t⁻¹ 치환 후 근호 부호를 정하는 대수 항등식이다."
+        },
+        {
+          "ord": 10,
+          "state": "OPEN_LAYOUT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q10",
+          "fam": null,
+          "reason": "plan 대기"
+        },
+        {
+          "ord": 11,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q11",
+          "reason": "log 치환 뒤 완전제곱으로 극값을 확인해 그림이 추가 단계를 주지 않는다."
+        },
+        {
+          "ord": 12,
+          "state": "OPEN_LAYOUT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q12",
+          "fam": null,
+          "reason": "plan 대기"
+        },
+        {
+          "ord": 13,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q13",
+          "reason": "밑 0<x<1에서 지수 부등호가 반전됨을 두 구간으로 확인하면 충분하다."
+        },
+        {
+          "ord": 14,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q14",
+          "reason": "제곱 전개와 sin²+cos²=1 대수 계산이다."
+        },
+        {
+          "ord": 15,
+          "state": "OPEN_LAYOUT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q15",
+          "fam": null,
+          "reason": "plan 대기"
+        },
+        {
+          "ord": 16,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q16",
+          "reason": "표의 단조성과 1/(c+T)의 감소를 대수적으로 비교한다."
+        },
+        {
+          "ord": 17,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q17",
+          "reason": "지수식에 로그를 취하는 직접 계산이다."
+        },
+        {
+          "ord": 18,
+          "state": "OPEN_LAYOUT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q18",
+          "fam": null,
+          "reason": "plan 대기"
+        },
+        {
+          "ord": 19,
+          "state": "OPEN_LAYOUT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q19",
+          "fam": null,
+          "reason": "plan 대기"
+        },
+        {
+          "ord": 20,
+          "state": "EXEMPT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q20",
+          "reason": "지수 비교와 선형 방정식으로 끝난다."
+        },
+        {
+          "ord": 21,
+          "state": "OPEN_LAYOUT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q21",
+          "fam": null,
+          "reason": "plan 대기"
+        },
+        {
+          "ord": 22,
+          "state": "OPEN_LAYOUT",
+          "camp": "h2-math1-student-next-aggregate",
+          "key": "h2-math1-student-next-aggregate-q22",
+          "fam": null,
+          "reason": "plan 대기"
+        }
+      ],
+      "status": "OPEN",
+      "closedBy": null,
+      "note": "1개 게시; 독립 검수: 독립 B · 공식 PNG와 원문; 해설 페이지와 실제 표시 글자 크기 검증; 공통 CREATE 게이트 회귀 8개 통과."
     }
   ]
 }
