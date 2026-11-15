@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "M1S1_PR2133_FINAL_CI_RECEIPT_V1",
+  "task": "M1-S1-META-FULL",
+  "observer": "/root/operational_receipts",
+  "writtenAtUtc": "2026-11-15T10:36:29Z",
+  "observationStartedAtUtc": "2026-11-15T10:33:24Z",
+  "repository": "icefoxtail/AP------",
+  "pullRequest": 2133,
+  "pullRequestUrl": "https://github.com/icefoxtail/AP------/pull/2133",
+  "inputHeadSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+  "testedBaseSha": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+  "actualCiCheckoutSha": "065c187aa6264855a9d81b764e142d33b6249fac",
+  "primaryChecksResult": {
+    "total": 7,
+    "success": 6,
+    "expectedSkipped": 1,
+    "failure": 0,
+    "allRequiredPrimaryJobsComplete": true,
+    "skipReason": "The register writer job is skipped on a pull_request event; the read-only preview test is successful."
+  },
+  "primaryChecks": [
+    {
+      "id": 132779708943,
+      "name": "plan",
+      "status": "completed",
+      "conclusion": "success",
+      "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562711/job/132779708943",
+      "startedAt": "2026-11-15T10:20:09Z",
+      "completedAt": "2026-11-15T10:20:17Z"
+    },
+    {
+      "id": 132779756308,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success",
+      "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562711/job/132779756308",
+      "startedAt": "2026-11-15T10:20:19Z",
+      "completedAt": "2026-11-15T10:31:47Z"
+    },
+    {
+      "id": 132779709041,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success",
+      "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562777/job/132779709041",
+      "startedAt": "2026-11-15T10:20:19Z",
+      "completedAt": "2026-11-15T10:22:56Z"
+    },
+    {
+      "id": 132779710722,
+      "name": "register",
+      "status": "completed",
+      "conclusion": "skipped",
+      "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562777/job/132779710722",
+      "startedAt": "2026-11-15T10:20:07Z",
+      "completedAt": "2026-11-15T10:20:06Z"
+    },
+    {
+      "id": 132779709073,
+      "name": "Archive2 runtime contract",
+      "status": "completed",
+      "conclusion": "success",
+      "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562751/job/132779709073",
+      "startedAt": "2026-11-15T10:20:15Z",
+      "completedAt": "2026-11-15T10:26:23Z"
+    },
+    {
+      "id": 132779708834,
+      "name": "Archive2 50-question solution Chrome",
+      "status": "completed",
+      "conclusion": "success",
+      "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562751/job/132779708834",
+      "startedAt": "2026-11-15T10:20:08Z",
+      "completedAt": "2026-11-15T10:25:39Z"
+    },
+    {
+      "id": 132779708642,
+      "name": "shared-meta",
+      "status": "completed",
+      "conclusion": "success",
+      "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562735/job/132779708642",
+      "startedAt": "2026-11-15T10:20:08Z",
+      "completedAt": "2026-11-15T10:21:32Z"
+    }
+  ],
+  "workflowRuns": [
+    {
+      "id": 43703562711,
+      "name": "CI",
+      "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-11-15T10:20:06Z",
+      "updatedAt": "2026-11-15T10:31:48Z",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562711"
+    },
+    {
+      "id": 43703562751,
+      "name": "Archive2 Runtime Guard",
+      "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-11-15T10:20:06Z",
+      "updatedAt": "2026-11-15T10:26:23Z",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562751"
+    },
+    {
+      "id": 43703562735,
+      "name": "Problem Bank Shared Meta",
+      "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-11-15T10:20:06Z",
+      "updatedAt": "2026-11-15T10:21:33Z",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562735"
+    },
+    {
+      "id": 43703562777,
+      "name": "Archive Main Auto Metadata",
+      "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-11-15T10:20:06Z",
+      "updatedAt": "2026-11-15T10:22:57Z",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562777"
+    }
+  ],
+  "suite": {
+    "pass": 343,
+    "fail": 0,
+    "knownFail": 0,
+    "total": 343,
+    "preexistingQuarantinedFilesSkipped": 8,
+    "logUrl": "https://github.com/icefoxtail/AP------/actions/runs/43703562711/job/132779756308",
+    "passLine": "2026-11-15T10:31:43.7200487Z PASS 343 / FAIL 0 / KNOWN-FAIL 0 (total 343)",
+    "exactLogExcerpt": "pr2133-final-ci-excerpt.txt"
+  },
+  "previousFailure": {
+    "preserved": true,
+    "headSha": "956a5add3fd9a6cdc4eb7d542fe05741169f66ac",
+    "runId": 43701763207,
+    "jobId": 132774800444,
+    "pass": 342,
+    "fail": 1,
+    "knownFail": 0,
+    "receipt": "pr2133-first-ci-failure.json",
+    "receiptSha256": "dd1419b67f4ecd82da64cd8d63c09557d1d7c2419bdfce69f281e288ab8ef975",
+    "excerpt": "pr2133-first-ci-failure-excerpt.txt",
+    "excerptSha256": "c7da4f03ad9bb89cb986e96ebf1263ad7c07080d785d40b6b423f81e4c2b7107",
+    "failureScope": "M1S2 Yeonhyang Q13 unified classification parity; outside the three changed content files",
+    "recovery": "The existing single writer registered main 5f8. Parent forward-merged that main into this same PR. The new CI passed the previously failing parity assertion.",
+    "recoveredAssertionLine": "2026-11-15T10:28:12.2208021Z ok 3 - unified classification agrees with every 단원별 기출 classification (shared maps, legacy fields)",
+    "globalCodeWorkflowOrTestFixByThisObserver": false
+  },
+  "browserCoverage": {
+    "jobId": 132779708834,
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43703562751/job/132779708834",
+    "relevantSteps": [
+      {
+        "name": "Compare 50 real solutions and verify asset failures in actual Chrome",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Load and print the changed original sources in actual Chrome",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ],
+    "fixtureQuestionCount": 50,
+    "fixtureScope": "Three M1 semester 2 originals (Wangun, Palma, Pungdeok), not the changed M1 semester 1 sources.",
+    "targetedQ7Q20RenderedByThis50Fixture": false,
+    "targetedQ7Q20SeparateUiStatus": "BLOCKED; parent recorded Chromium socket EPERM and CUA loopback connection refusal. No retry or additional test requested.",
+    "claimLimit": "The successful 50-question check establishes its fixture coverage only. The changed-original-source Chrome step was skipped."
+  },
+  "readOnlyFourSlotPreview": {
+    "runId": 43703562777,
+    "artifactId": 14157431833,
+    "artifactZipSha256": "c6ed7869609bf25f41f74e8af92a7585c5598b19648da90c8e757d64c8d8f87b",
+    "summary": "pr2133-four-slot-preview-136b1.json",
+    "summarySha256": "7e674a9dfb3abc908c40d43d2fbc5adec3a36e252f7b37a3d98ad17f0b6c01ad",
+    "rawVerification": "pr2133-4slot-verification-136b1-raw.json.gz",
+    "rawVerificationGzipSha256": "de1844c37c5e10cc36d17f316904fe94d781769551d8b611a677ac3b79e96a48",
+    "uncompressedRawSha256": "491311ac91a358670502e7467af38577f400e89f663c45919cd8c61e89016eda",
+    "examCount": 4,
+    "itemCount": 93,
+    "previewRegistered": 93,
+    "targetHolds": 0,
+    "write": false,
+    "sourceMutationCount": 0,
+    "semanticApprovalMutationCount": 0,
+    "isActualMainPersistence": false
+  },
+  "merge": {
+    "merged": true,
+    "mergedAt": "2026-11-15T10:32:37Z",
+    "mergeCommitSha": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+    "actualFirstParent": "4337ea4c70eff7b5ceb6b3c553b6af6c7bc76a4b",
+    "actualSecondParent": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+    "treeSha": "2be85f0a5007f70bb8e379e63ec5be26d20b6c0c",
+    "testedBaseEqualsActualFirstParent": false,
+    "explanation": "The bot advanced main from 5f8 to 4337 before merge. Parent verified the intervening commit changes only two auto-registration state JSON files. Parent verified the actual first-parent-to-merge diff is exactly the three approved content files (+6/-6).",
+    "parentMainReadbackReceipt": "root-main-merge-readback.json",
+    "parentMainReadbackReceiptSha256": "3ca371bcaaaf56a302832a274011e31ef7171c804c5a1c6713ab96a89c0a0f6b"
+  },
+  "extraObserverCheck": {
+    "excludedFromSevenPrimaryJobs": true,
+    "observationAtUtc": "2026-11-15T10:32:51Z",
+    "checks": [
+      {
+        "id": 132782815630,
+        "name": "observe",
+        "status": "in_progress",
+        "conclusion": null,
+        "headSha": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/43704584539/job/132782815630",
+        "startedAt": "2026-11-15T10:32:42Z",
+        "completedAt": null
+      }
+    ]
+  },
+  "observerActivity": {
+    "remoteMutationCount": 0,
+    "workflowDispatches": 0,
+    "workflowReruns": 0,
+    "workflowCancellations": 0,
+    "newTestExecutions": 0,
+    "status": "CLOSED"
+  }
+}

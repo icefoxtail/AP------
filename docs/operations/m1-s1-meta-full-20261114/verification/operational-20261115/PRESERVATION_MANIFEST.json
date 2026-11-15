@@ -6,7 +6,7 @@
   "initialHead": "956a5add3fd9a6cdc4eb7d542fe05741169f66ac",
   "currentHead": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
   "officialMainMergedIntoPr": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
-  "currentState": "REQUIRED_CI_IN_PROGRESS",
+  "currentState": "SCOPED_MAIN_MERGE_COMPLETE_WITH_REMAINING",
   "files": [
     {
       "path": "handoff-acceptance.json",
@@ -19,9 +19,19 @@
       "sha256": "264a31720efcc8842ad2d2168b85ad9c6feba873a3f931796109b17824491283"
     },
     {
+      "path": "live-pages-receipt-after-pr2133.json",
+      "bytes": 538,
+      "sha256": "5e0d67c66d920377d13a0e6142d85923066be3db2749339971729255c0876527"
+    },
+    {
       "path": "m1s2-q13-readback-5f8f.json",
       "bytes": 1346,
       "sha256": "247927a0e1e52c6b93c0d2ab21407f7fa7b95c890d9212f867086e7455ccc032"
+    },
+    {
+      "path": "pr2133-4slot-verification-136b1-raw.json.gz",
+      "bytes": 35788,
+      "sha256": "de1844c37c5e10cc36d17f316904fe94d781769551d8b611a677ac3b79e96a48"
     },
     {
       "path": "pr2133-4slot-verification-raw.json.gz",
@@ -34,9 +44,44 @@
       "sha256": "00f0ad5ae87f3bcc288f8a9fe8dc0d60d750e360323d04d3a735d78481da7caa"
     },
     {
+      "path": "pr2133-final-ci-excerpt.txt",
+      "bytes": 1583,
+      "sha256": "049805220a8ca105082963f4a8d5408777b05e8588ce4d44bac078a6e8366410"
+    },
+    {
+      "path": "pr2133-final-ci-head136b1.json",
+      "bytes": 9888,
+      "sha256": "41a154ae5a5031d36c2495398a46cd7ff499d0f33cf67d9ed642e57cfef25ce8"
+    },
+    {
+      "path": "pr2133-first-ci-failure-excerpt.txt",
+      "bytes": 2523,
+      "sha256": "c7da4f03ad9bb89cb986e96ebf1263ad7c07080d785d40b6b423f81e4c2b7107"
+    },
+    {
+      "path": "pr2133-first-ci-failure.json",
+      "bytes": 1884,
+      "sha256": "dd1419b67f4ecd82da64cd8d63c09557d1d7c2419bdfce69f281e288ab8ef975"
+    },
+    {
+      "path": "pr2133-four-slot-preview-136b1.json",
+      "bytes": 4858,
+      "sha256": "7e674a9dfb3abc908c40d43d2fbc5adec3a36e252f7b37a3d98ad17f0b6c01ad"
+    },
+    {
       "path": "pr2133-four-slot-preview.json",
       "bytes": 4240,
       "sha256": "8137ab45bca41b49e3605073e5687f8d3956e21bb1e4f0c7b633487a0176974c"
+    },
+    {
+      "path": "pr2133-pages-noop-excerpt.txt",
+      "bytes": 367,
+      "sha256": "e7de6f8b92ceefcf911ffd28aad53e3620db8206d4c37f96f22c52bf8b5177ff"
+    },
+    {
+      "path": "pr2133-post-merge-observation.json",
+      "bytes": 20664,
+      "sha256": "8abdf141d8bee62dbad04097ca84cd47701324e8667a5ad372eb1b5aa289ad27"
     },
     {
       "path": "pr2133-solution-loading-raw.json.gz",
@@ -59,9 +104,19 @@
       "sha256": "b28f295ecfc388ce87d0bc4aa1c474025e12371d2e29922797dea65b29bf546f"
     },
     {
+      "path": "root-main-merge-readback.json",
+      "bytes": 6864,
+      "sha256": "3ca371bcaaaf56a302832a274011e31ef7171c804c5a1c6713ab96a89c0a0f6b"
+    },
+    {
       "path": "root-ui-fallback-receipt.json",
       "bytes": 2141,
       "sha256": "90e26e3d54f54689601555363dee48616f0d9efdf88e7a4a3cda6086d91fc33b"
+    },
+    {
+      "path": "scoped-main-merge-closeout.json",
+      "bytes": 8199,
+      "sha256": "d666956233b25287dbca800914a32648efe896d60cf1bf60c06f8f9d6cfc20b5"
     },
     {
       "path": "two-item-render-observation.json",
@@ -82,5 +137,7 @@
   "rawEvidenceBytePreservation": true,
   "noGlobalTestOrWorkflowChanges": true,
   "noSourceOnlyMethodApprovals": true,
-  "noOverallQualityPassClaimed": true
+  "noOverallQualityPassClaimed": true,
+  "mergeSha": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+  "mainReadbackCommit": "fc58d6737e5178268c511a5d9c24c4651e103b05"
 }

@@ -1,20 +1,34 @@
 # M1-S1 메타 — Codex가 이어받을 미완료
 
-## 현재 운영 재개 상태 — 2026-11-15
+## 현재 운영 마감 — 2026-11-15
 
-- 작업 `M1-S1-META-FULL`, taskId `ef319e48-5efb-4d99-a4ac-5ded7ac1d74d`, owner `GPT_ROOT_33CD7F492CC2`. 원래 CODEX_LOCAL의 인수는 r8까지 확인되지 않았다. 현재 root의 사용자 직접 재개는 AWCR r9에서 CHATGPT_RESUME 인수로 명시했다.
-- 보존·재사용: 기존 12시험지 286문항 검토, 독립표본36, 기존93 해설 판본 계보. 이 작업에서 전체 검토를 반복하지 않았다.
-- 새 근거: `residual/evidence-trace-20261115/README.md`와 manifest. 원격 checkpoint `b37b3a0db449a3517d9489d3b4449fa29f01bc37`의24파일을 다시 읽어 내용·blob SHA 일치를 확인했다.
-- 최신 판단은 기존 `residual/merged-item-decisions.json`에 `residual/current-judgment-overlay-20261115.json`의3개 판정 보완을 함께 적용한다. 기존 합본286개와 원시 검토 기록은 그대로다.
-- 연향19중간Q7: 최소성·기약성 해설과 method 보강을 문항 단위로 승인했다. source/선지/정답 중 변경은 solution뿐이고 나머지22문항은 같다. 근거 commit `45c17f1b31dd6898b7b4af108729b3bb9eb5472f`; 새 method `[53,1,19,12]`. 정식 native FINAL_QA 승격은 하지 않았다.
-- 금당19기말Q20: 두 원본 PDF에 일치하는 계수로 question 필드 한 글자를 정정했다. 답·해설 공란, 다른23문항, 직접 유사문항은 보존했다. 구형 question alias가 legacy fingerprint에서 빠지는 한계를 발견했으므로 raw source와 실제 question 문자열 SHA로 결속했다.
-- 매산17중간Q19: 새 원본 확대 근거에 따라 과거의 점 삭제 제안을 채택하지 않았다. source는 그대로이며 과거 판정을 새 근거로 보완했다.
-- 운영 PR: [#2133](https://github.com/icefoxtail/AP------/pull/2133), head `136b1d66603062ddfdeda6a0b3ac14f29265aaaa`. 운영 diff는 source2+compact1, 세 파일뿐이다. 현재 적용 CI 확인 중이며 아직 main 병합하지 않았다.
-- 최초 PR CI는343개 테스트 파일 중342 PASS/1 FAIL이었다. 실패는 작업 밖 M1S2 연향Q13의07/05 분류 불일치였다. 공용 검사나 다른 문항을 고치지 않았다. 기존 공식 writer가 main `5f8f509108cfc4bfac3ce47813839aaa3c558274`를 저장해 양쪽 분류를05로 맞춘 것을 readback한 뒤, 그 main을 같은 PR에 정방향 merge했다. 새 head의 실제 CI 결과를 확인한다.
-- 기존 PR2113/2119의 M1S1 난도4개와4칸92개는 main `5f8f509…`에서 실제metadata/Consumer 반영을 확인했다. Q7은 이 관측 snapshot에서 아직 기존 hold이고, 이번 PR이 바꿀 대상이다.93개 native 해설승인은 여전히 hold/미승격 상태다.
-- 원격 Chrome CI의 고정50문항 회귀검사는 성공했으나 이번Q7/Q20을 포함하지 않는다. 별도 두문항 로컬·지원브라우저 검사는 환경 차단으로 실제 화면을 관찰하지 못했다. 관련 영수증은 `verification/operational-20261115/`에 보존한다.
-- SOURCE_ONLY193의 새 method 승인0, `method=[]` 유지. 기존93 중 Q7의 한정 보강 근거1개가 추가됐고 다른92의 현재해설 승인 근거는 미확보다. 선택 묶음의 전체UID 난도 미정3개·단일PT/TPL 보류2개, 원문 판본/조건 문제와 정본 정의·binding 부채도 유지한다.
-- 다음 실행: 새 PR head의 필수 CI → 정상일 때 운영병합 → 실제 main SHA와 세 파일 blob readback. 등록/Pages는 실제 관측과 따로 기록한다. 근거 부채를 해소했다고 추정하거나 전체 품질PASS를 선언하지 않는다.
+- 작업 `M1-S1-META-FULL`, taskId `ef319e48-5efb-4d99-a4ac-5ded7ac1d74d`, owner `GPT_ROOT_33CD7F492CC2`. 현재 root와 보조 작업자 모두 쓰기 종료(`CLOSED`), `RESUME_READY`다.
+- 원래 `CODEX_LOCAL` 인수는 AWCR r8까지 확인되지 않았다. 현재 root는 사용자 직접 지시에 따라 r9에서 `CHATGPT_RESUME` 인수를 기록했다. 다른 운영 PR의 병합을 이 task의 Codex 인수 증거로 간주하지 않았다.
+- 기존 12시험지·286문항 전수 검토, 독립표본36, 기존93 판본 계보를 재사용했다. 재전수검토0. 원래 합본286개·원시 검토 기록은 바꾸지 않았으며 최신 판단은 `residual/current-judgment-overlay-20261115.json`의3개 명시 보완과 함께 읽는다.
+- [운영 PR #2133](https://github.com/icefoxtail/AP------/pull/2133)은 head `136b1d66603062ddfdeda6a0b3ac14f29265aaaa`의 적용 검사6개 성공·등록 job 정상 skip 확인 후 병합됐다. main 병합 commit `fc58d6737e5178268c511a5d9c24c4651e103b05`, 원격 main 재조회 commit `fc58d6737e5178268c511a5d9c24c4651e103b05`에서 실제3파일의 내용과 Git blob을 검증했다.
+- 연향19중간Q7: 빠진 최소성·기약성 해설을 보강하고 method `[53,1,19,12]`를 문항 단위로 승인했다. source는 solution만 수정하고 다른22문항·선지·정답을 보존했다. compact의 해당 hold를 제거했다. 독립 근거 commit `45c17f1b31dd6898b7b4af108729b3bb9eb5472f`와 raw SHA를 고정했다. 정식 native FINAL_QA 승인으로 일괄 승격하지 않았다.
+- 금당19기말Q20: 독립 대조한 두 원본 PDF와 일치하도록 계수6→8을 question 필드에서 한 글자 정정했다. 답·해설 공란, 다른23문항, 직접 유사문항은 보존했다. legacy fingerprint가 question alias를 제외하는 한계 때문에 실제 원문 문자열 SHA·raw source·Git blob으로 결속했다.
+- 매산17중간Q19: 원본 확대에서 점 형태의 인쇄 흔적을 다시 확인했으므로 기존 점 삭제 제안을 기각했다. source는 보존했고, 과거의 단정적 no-dot 판정만 새 근거로 보완했다.
+- 최초 head `956a5add…`의 CI 결과342 PASS/1 FAIL은 보존했다. 범위 밖 M1S2 Q13의 canonical 분류07/05 불일치였으며, 기존 공식 등록 완료 main `5f8f509108cfc4bfac3ce47813839aaa3c558274`를 정방향 병합하여 새 head에서 검사를 통과했다. 다른 source·공용 테스트·workflow를 수정하지 않았다.
+- 기존 난도4건과4칸92건의 실제metadata/Consumer 반영은 main `5f8f509…`에서 확인했다. 이번 변경의 실제 자동등록 상태: `NEW_REPAIR_REGISTRATION_IN_PROGRESS_AS_OF_20261115T103324Z`. Pages 상태: `LIVE_5F8_PRIOR_RELEASE_NEW_REPAIR_PENDING`. PR의93개 등록 preview 성공은 main 저장 또는 배포 완료와 구분한다.
+- 원격 Chrome 회귀검사는 성공했으나 고정50문항에 이번Q7/Q20은 포함되지 않았다. 별도 두문항 화면검사는 로컬 브라우저 기동 제한·지원브라우저 연결 불가로 `BLOCKED`이며 실제 화면 PASS를 주장하지 않는다.
+- 운영 병합과 원격 재조회는 완료했다. SOURCE_ONLY193 method 근거 및 다른92 현재해설 승인 증거, 정식 native 승인·선택 묶음·원문/정본 부채는 아래와 같이 남는다. 전체 품질 또는 전체 출고 PASS를 선언하지 않는다.
+- 최신 병합·검사·원격내용 증거: `verification/operational-20261115/scoped-main-merge-closeout.json`. 의미 있는 각 단위는 immutable AWCR에 저장했고 마지막 commit 이후 생성하는 최종 revision과 raw SHA는 Notion/AWCR에서 외부 참조한다.
+
+## 남은 범위와 다음 실행
+
+| 범위 | 현재 판정 | 다음에 필요한 근거 또는 조치 |
+| --- | --- | --- |
+| SOURCE_ONLY193 | 조사한 현재 Git·기존 검토·허용 Drive 자료에서 승인 가능한 풀이 방법 근거 미확보. method=[] 유지 | 실제 승인된 해설 판본 또는 새로 명시 승인한 풀이·방법 근거를 UID/판본에 결속한다. 이미 수행한 전수검토를 반복하지 않는다. |
+| 기존 해설93 | Q7은 새 해설·method 보강의 한정 승인1개. 다른92 현재 해설 승인 근거 미확보 | 판본 계보와 별개인 현재 판본 승인 기록을 확인한다. 현재 native FINAL_QA93개를 일괄 승인하지 않았다. |
+| 매산22~24 선택 묶음 | 전체UID 난도 bucket 미정3개, 단일PT/TPL 투영 보류2개 유지 | 선택 묶음의 평가단위와 단일 투영 규칙을 정본에 확정한 뒤 해당 UID만 처리한다. |
+| 금당19Q15 | 실제 판본의 연산자 충돌 미해결 | 판본 선택의 근거가 필요하다. |
+| 매산17Q4·삼산17Q15 | 원본 조건/정의역·소수 전제 문제 | 원본 자체 결함과 전사 오류를 구분한 현재 판정을 보존하고 필요한 정정 승인만 처리한다. |
+| 삼산17Q17·금당17Q15 | 원본의 중복 선택지 | 전사 오류처럼 임의 수정하지 않는다. |
+| 연향16Q11 | 의도한 규칙의 유일성 근거 부족 | 의도 판정 근거가 필요하다. |
+| 삼산17Q23 | 단일주기 계수 문제의 route/leaf 정본 보완 대기 | 기존 LCM 제외 판정을 보존하고 정확한 정의·binding을 처리한다. |
+| PT/TPL/COND·binding 제안 |45 PT·114 TPL·2 COND 등은 통합 제안이며 ACTIVE 등록 완료 아님 | 승인된 정본 정의와 exact binding을 확인한 항목만 별도로 등록한다. |
+| 이번 Q7 자동등록·Pages | 최신 실제 상태는 운영 마감 영수증 참조 | 완료로 추정하지 않고 실제 main 생성물·live 영수증을 대조한다. 자동화 수정 없는 일반 콘텐츠 작업의 운영 main 병합은 완료했다. |
 
 ## 보존된 이전 Pro 마감 기록
 

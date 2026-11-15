@@ -1,0 +1,600 @@
+{
+  "schemaVersion": "M1S1_PR2133_POST_MERGE_OBSERVATION_V1",
+  "task": "M1-S1-META-FULL",
+  "observer": "/root/operational_receipts",
+  "status": "CLOSED",
+  "observationStartedAtUtc": "2026-11-15T10:33:24Z",
+  "assembledAtUtc": "2026-11-15T10:36:29Z",
+  "observationPolicy": "One post-merge observation; no wait for automation completion, no rerun, no cancellation, no dispatch, no new tests. Status fields describe the observation and are not predictions.",
+  "repository": "icefoxtail/AP------",
+  "pullRequest": 2133,
+  "mergeCommitSha": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+  "remoteMainAtObservation": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+  "mergedAt": "2026-11-15T10:32:37Z",
+  "actualMergeParents": [
+    "4337ea4c70eff7b5ceb6b3c553b6af6c7bc76a4b",
+    "136b1d66603062ddfdeda6a0b3ac14f29265aaaa"
+  ],
+  "mergeTreeSha": "2be85f0a5007f70bb8e379e63ec5be26d20b6c0c",
+  "contentClosure": {
+    "mainMerged": true,
+    "remoteThreeFileReadbackConfirmedByParent": true,
+    "receipt": "root-main-merge-readback.json",
+    "sha256": "3ca371bcaaaf56a302832a274011e31ef7171c804c5a1c6713ab96a89c0a0f6b"
+  },
+  "newMainAutomaticRegistration": {
+    "runId": 43704584210,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43704584210",
+    "headSha": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+    "event": "push",
+    "status": "in_progress",
+    "conclusion": null,
+    "jobs": [
+      {
+        "id": 132782814637,
+        "name": "register",
+        "status": "in_progress",
+        "conclusion": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize runner evidence paths",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "in_progress",
+            "conclusion": null
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Prepare only changed native registration lanes in one transaction",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Persist verified lanes, native cursors and receipts once with race-safe regeneration",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Bind the persisted snapshot before any publication handoff",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Dispatch the exact registered snapshot through the single Pages entrypoint",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Report incomplete required registration without publishing",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Upload registration evidence including isolated failures and no-op decisions",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "pending",
+            "conclusion": null
+          }
+        ]
+      },
+      {
+        "id": 132782815447,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ],
+    "exactFc58PersistenceConfirmed": false,
+    "exactFc58PagesHandoffConfirmed": false
+  },
+  "earlierWriter": {
+    "runId": 43701564001,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43701564001",
+    "inputHeadSha": "40f16f8a7f4488991cc58589f49c3817676891c9",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 132773619452,
+        "name": "register",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize runner evidence paths",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Prepare only changed native registration lanes in one transaction",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Persist verified lanes, native cursors and receipts once with race-safe regeneration",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Bind the persisted snapshot before any publication handoff",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Dispatch the exact registered snapshot through the single Pages entrypoint",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Report incomplete required registration without publishing",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Upload registration evidence including isolated failures and no-op decisions",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 132773620201,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ]
+  },
+  "previousActualPublication": {
+    "runId": 43703211144,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43703211144",
+    "registeredMainSha": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+    "status": "completed",
+    "conclusion": "success",
+    "actualDeployConclusion": "success",
+    "jobs": [
+      {
+        "id": 132778632488,
+        "name": "Build and verify the student release",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize runner evidence paths",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Bind release evidence to the exact main snapshot",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check registered inputs, outputs and validator versions without writes",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Materialize only untracked package shards from the registered catalog",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Compare effective package and external dependency content with the live receipt",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Record the content no-op or superseded snapshot",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Verify the explicit Pages package manifest and safeguards",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify student source visuals and exam selection contracts",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run browser-actions/setup-chrome@v1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify actual generated-bank lookup, preview, and print",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify main-resident Geumdang source output",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify imported QID9 student lookup selection exam answer and solution in actual Chrome",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify complete generated mock selection, preview, print, answer, and solution flow",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify Archive 2.0 runtime contract",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build the explicit student Pages file set",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify the staged Pages frontend and archive output in real Chrome",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Wait for the APMS Worker deploy when this release changes Worker-bundled files",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Wait for the exact R2 image bytes in this registered release",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Guard the unchanged registered tree after all checks",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Pages release gate",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Seal the exact registered and verified package receipt",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Upload release diagnostics, including failed and deferred runs",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Upload the verified student site",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 132780058360,
+        "name": "Deploy the verified student release",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Deploy Pages artifact",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  },
+  "newerCompletedPagesNoOp": {
+    "runId": 43703784229,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43703784229",
+    "requestedRegisteredMainSha": "4337ea4c70eff7b5ceb6b3c553b6af6c7bc76a4b",
+    "status": "completed",
+    "conclusion": "success",
+    "actualDeployConclusion": "skipped",
+    "statusMeaning": "NO_OP: package, external dependencies and checker versions match live registered 5f8. This is not a new deployment.",
+    "exactLogLines": [
+      "2026-11-15T10:25:08.5750719Z needed=false archive_needed=false status=NO_OP (NO_OP: package, external dependencies and checker versions match live registered 5f8f509108cfc4bfac3ce47813839aaa3c558274)",
+      "2026-11-15T10:25:08.6657723Z   NO_OP_REASON: NO_OP: package, external dependencies and checker versions match live registered 5f8f509108cfc4bfac3ce47813839aaa3c558274"
+    ],
+    "jobs": [
+      {
+        "id": 132780379524,
+        "name": "Build and verify the student release",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Initialize runner evidence paths",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Bind release evidence to the exact main snapshot",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check registered inputs, outputs and validator versions without writes",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Materialize only untracked package shards from the registered catalog",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Compare effective package and external dependency content with the live receipt",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Record the content no-op or superseded snapshot",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify the explicit Pages package manifest and safeguards",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Verify student source visuals and exam selection contracts",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run browser-actions/setup-chrome@v1",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Verify actual generated-bank lookup, preview, and print",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Verify main-resident Geumdang source output",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Verify imported QID9 student lookup selection exam answer and solution in actual Chrome",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Verify complete generated mock selection, preview, print, answer, and solution flow",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Verify Archive 2.0 runtime contract",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Build the explicit student Pages file set",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Verify the staged Pages frontend and archive output in real Chrome",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Wait for the APMS Worker deploy when this release changes Worker-bundled files",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Wait for the exact R2 image bytes in this registered release",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Guard the unchanged registered tree after all checks",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Pages release gate",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Seal the exact registered and verified package receipt",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Upload release diagnostics, including failed and deferred runs",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Upload the verified student site",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 132780992203,
+        "name": "Deploy the verified student release",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ]
+  },
+  "livePages": {
+    "url": "https://icefoxtail.github.io/AP------/_archive-release.json",
+    "rawFile": "live-pages-receipt-after-pr2133.json",
+    "rawSha256": "5e0d67c66d920377d13a0e6142d85923066be3db2749339971729255c0876527",
+    "rawBytes": 538,
+    "registeredMainSHA": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+    "releaseGate": "RELEASE_GATE_PASS",
+    "packageDigest": "0bb00179a6e3aaa2f6c8c1a0c54eec9de66a0a0a6dd251775bdaa1e1fbea7c56",
+    "externalDependencyDigest": "6a0a3ae9ebfbbaa62b2e6a6bd67e317d38fb5064b6592a561332e32f12a58ff3",
+    "validatorDigest": "f6ac5fe0432ad0325ce709e493a59079580a92c39ff1191ce38bc75040c393ec",
+    "archiveValidationDigest": "5911c0f048313883ba579f6d66bc10424ac1ec8d3db4261f612ccecebed82cfd",
+    "fileCount": 15181,
+    "totalBytes": 553966748
+  },
+  "interpretation": {
+    "priorFourDifficultyAnd92SlotPacket": "REGISTERED at immutable main 5f8, and that registered snapshot is the observed live Pages receipt.",
+    "priorPacketProof": "prior-packet-registration-receipt-5f8f.json",
+    "priorPacketProofSha256": "5163b9fff014c52ca0f69429704779214704beca657aa8bed927aa652e0467f5",
+    "newQ7AndQ20Content": "MERGED and parent remote-readback verified at fc58.",
+    "newQ7RuntimeAndNewSourcePublication": "PENDING at observation; fc58 writer has not yet reached persistence. Live receipt remains 5f8.",
+    "nativeSemanticApprovals": "The earlier 93 native reviewed_hold states were not converted into new semantic approvals by the four-slot registration.",
+    "sourceOnly193": "No fabricated method evidence; no runtime four-slot registrations claimed."
+  },
+  "observerActivity": {
+    "remoteMutationCount": 0,
+    "workflowDispatches": 0,
+    "workflowReruns": 0,
+    "workflowCancellations": 0,
+    "newTestExecutions": 0,
+    "automationWaitingAfterObservation": false
+  }
+}

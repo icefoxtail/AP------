@@ -5,8 +5,8 @@
   "owner": "GPT_ROOT_33CD7F492CC2",
   "branch": "review/m1-s1-meta-full-20261114",
   "baselineMain": "8c3b8fe05348d7235546d7d2d9ec063029d19e4d",
-  "stage": "RUNNING_PR_REQUIRED_CHECKS_AFTER_MAIN_REFRESH",
-  "resumeState": "ACTIVE_OWNER",
+  "stage": "SCOPED_MAIN_MERGE_COMPLETE_WITH_REMAINING",
+  "resumeState": "RESUME_READY",
   "mainMergeAuthorized": true,
   "registrationAuthorized": true,
   "deploymentAuthorized": false,
@@ -943,7 +943,7 @@
       "originalReviewOwner": "META_A"
     }
   ],
-  "nextAction": "VERIFY_PR_2133_HEAD_136B1D_CHECKS_THEN_MERGE_AND_REMOTE_READBACK",
+  "nextAction": "RESOLVE_ONLY_NAMED_EVIDENCE_AND_DEFINITION_REMAINDERS_FROM_VERIFIED_CLOSEOUT",
   "authorityRefs": [
     {
       "path": "AGENTS.md",
@@ -982,9 +982,9 @@
     "revision": 4,
     "fileId": "1TkZmWOaOc8TQ6ZN3IMjCAlOvN88fMDj5",
     "rawSha256": "483710a553e80847e7b925605dd8efd348c622feac88d87ce68cc45c8ae606ee",
-    "latestSharedRevision": 10,
-    "latestSharedCheckpointFileId": "10LQjyoFSdI_aQxx5CRSTTMpnIYnv3NOn",
-    "latestSharedCheckpointSha256": "3fa5ac4ef13b9223559b5cc8da50b1e2e9e70b39aee5b7ac918d3846a1a2f931",
+    "latestSharedRevision": 11,
+    "latestSharedCheckpointFileId": "1VKMiYe_yM-Yso6IHCZG3dXFO53ay6-e4",
+    "latestSharedCheckpointSha256": "068a9d26f18234c0a27158d3814cd911afff01d953ebcd35ded609d816546b56",
     "latestSharedRawReadbackVerified": true,
     "finalOfferReceipt": "Next immutable revision written after final Git readback; exact receipt external in Notion/AWCR."
   },
@@ -993,7 +993,7 @@
     "uniqueUids": 286,
     "sourceOnlyMethodPolicy": "PROPOSE_SEPARATELY_DO_NOT_INVENT_SOLUTION_EVIDENCE"
   },
-  "updatedAt": "2026-11-15T10:24:04.884160+00:00",
+  "updatedAt": "2026-11-15T10:38:26Z",
   "reviewedExamCount": 12,
   "reviewedQuestionCount": 286,
   "remoteReceipts": [
@@ -1106,14 +1106,14 @@
       "method": "GitHub create_tree/create_commit + compare-and-swap fast-forward update_ref; git fetch/ls-remote readback and tree equality"
     }
   ],
-  "writerState": "ACTIVE",
+  "writerState": "CLOSED",
   "unstartedExamCount": 0,
   "unreadQuestionCount": 0,
   "latestMainObservation": {
-    "latestMainObserved": "a54075b0d292de57841c64a9b70ff02acab90695",
-    "evidencePath": "docs/operations/m1-s1-meta-full-20261114/verification/resume-latest-main-observation.json",
-    "sha256": "c860b36c2a95df5e2e59204164496973a2b3f8291ae8c8aadc675e11622d222c",
-    "targetSourceAndCanonicalDrift": 0
+    "latestMainObserved": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+    "productionMergeSha": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+    "evidencePath": "docs/operations/m1-s1-meta-full-20261114/verification/operational-20261115/scoped-main-merge-closeout.json",
+    "targetFileContentsVerified": true
   },
   "workers": [
     {
@@ -1141,9 +1141,9 @@
       "additional": "Cross-agent definition review and integrated item/registry proposal artifacts"
     }
   ],
-  "registrationStatus": "PRIOR_INPUTS_PARTIALLY_REGISTERED_NEW_REPAIR_PENDING",
-  "deploymentStatus": "NEW_REPAIR_NOT_MERGED",
-  "mainMergeStatus": "PR_OPEN_REQUIRED_CHECKS",
+  "registrationStatus": "NEW_REPAIR_REGISTRATION_IN_PROGRESS_AS_OF_20261115T103324Z",
+  "deploymentStatus": "LIVE_5F8_PRIOR_RELEASE_NEW_REPAIR_PENDING",
+  "mainMergeStatus": "MERGED_REMOTE_THREE_FILES_VERIFIED",
   "counts": {
     "totalExams": 12,
     "totalQuestionUids": 286,
@@ -1175,9 +1175,9 @@
   "gapIndexRef": "docs/operations/m1-s1-meta-full-20261114/gap-index.json",
   "topicReportRef": "docs/operations/m1-s1-meta-full-20261114/TOPICS-RESUME.md",
   "finalVerification": {
-    "path": "docs/operations/m1-s1-meta-full-20261114/verification/resume-closeout-verification.json",
-    "sha256": "b7ecfe2dc9ebe492867eb79cbc20cf05e8575bc189f8c26b6b54b8a0bf8a06cf",
-    "status": "PRO_RESUME_SCOPE_CLOSED_WITH_EXPLICIT_RELEASE_REMAINDERS",
+    "path": "docs/operations/m1-s1-meta-full-20261114/verification/operational-20261115/scoped-main-merge-closeout.json",
+    "sha256": "d666956233b25287dbca800914a32648efe896d60cf1bf60c06f8f9d6cfc20b5",
+    "status": "SCOPED_MAIN_MERGE_AND_REMOTE_READBACK_COMPLETE",
     "qualityStatus": "NOT_A_FULL_SEMANTIC_OR_RELEASE_PASS"
   },
   "handoff": {
@@ -1191,7 +1191,9 @@
     "acceptanceType": "USER_DIRECTED_CHATGPT_RESUME",
     "originalCodexAcceptance": "NOT_OBSERVED",
     "proScopeClosed": true,
-    "overallQualityPassClaimed": false
+    "overallQualityPassClaimed": false,
+    "currentWriterState": "CLOSED",
+    "currentScopeResult": "SCOPED_MAIN_MERGE_COMPLETE_WITH_REMAINING"
   },
   "externalReceiptPolicy": "The final commit cannot contain its own SHA. The final remote HEAD and next immutable AWCR revision are recorded in Notion/AWCR after push/readback. The embedded AWCR revision is the last pre-final verified checkpoint.",
   "remaining": [
@@ -1331,12 +1333,14 @@
     "TOPICS-RESUME.md": "84f36fe9d3421a05e94b345ef56945551e463ea4c8147d2715f56c444d5330b2",
     "topics-resume.json": "16230f388493a22320a5f356160bcfe759bc3213a6bc1b8541afb6d29fdff5dc",
     "current-source-metadata-only.json": "c3e1c78fc7409514330575352cb26c9957ea73bf8e357465e33a91aa11d482f6",
-    "HANDOFF.md": "f41ad6de317a2b46a530fcda3c3b3937bbf5bd830d28f6182779538e7a27938d",
-    "REMAINING.md": "b6ca85a158896464f462be1f275afc06fe7ce5f0099a44f14638eb9f86abdd17",
+    "HANDOFF.md": "80baa50bc594616aa097539df2c91e64cd250ba394ac253e7e5921d2c030f4e9",
+    "REMAINING.md": "02f8727354e7569f0e2ff9038d53cb092648540254df16386b1a3dce8d9076e1",
     "residual/merged-registry-proposals.json": "5b350c3be057457d7d24a36380e00122ef992c2eef2d90bb3ec17addcc326f76",
     "residual/merged-item-decisions.json": "1f5a689d74bb6ed95f2a8e327f4edf4c1df15560e8b10308db87356d016fb26b",
     "residual/artifact-path-map.json": "fda6c36f202b64c40d9fd3e0129d1ffcac60c2d5170aea93dcc9274a3d2bc78c",
-    "residual/current-judgment-overlay-20261115.json": "b05026ec005017116652ae65fb46c1e8bd2e6fcd1c61fe632a4c9acbbc7e3c5f"
+    "residual/current-judgment-overlay-20261115.json": "03a1e31444987ab9e78a438b94554850bedf95209571c79a2bf826a42a3b132d",
+    "verification/operational-20261115/scoped-main-merge-closeout.json": "d666956233b25287dbca800914a32648efe896d60cf1bf60c06f8f9d6cfc20b5",
+    "verification/operational-20261115/PRESERVATION_MANIFEST.json": "a1a9134c940cefebf3c561f64df3e4279634da47e1e4d2baa2b7ba261ce1bd2c"
   },
   "previousOwner": "GPT_ROOT_75DAEF2BA0F3",
   "resumeWorkers": [
@@ -1661,6 +1665,21 @@
     {
       "id": "R06_GOAL",
       "status": "GOAL_ONLY_PROPOSAL_VALIDATED; ROUTE_AND_METHOD_STILL_PENDING"
+    },
+    {
+      "id": "R05_METHOD_COVERAGE_MINIMALITY",
+      "status": "SCOPED_SOLUTION_METHOD_REPAIR_MAIN_MERGED",
+      "scope": "19 Yeonhyang mid q7"
+    },
+    {
+      "id": "R07_GEUMDANG20_TRANSCRIPTION",
+      "status": "TWO_ORIGINAL_PDFS_VERIFIED_QUESTION_CORRECTION_MAIN_MERGED",
+      "scope": "19 Geumdang final q20"
+    },
+    {
+      "id": "R07_MAESAN19_PROPOSAL",
+      "status": "PRIOR_DOT_DELETION_PROPOSAL_REJECTED_SOURCE_PRESERVED",
+      "scope": "17 Maesan mid q19"
     }
   ],
   "operationalResume": {
@@ -1682,10 +1701,10 @@
     "acceptanceBasis": "USER_DIRECTED_CHATGPT_RESUME_EXACT_TASK_AND_RAW_PREDECESSOR_VERIFIED",
     "originalCodexAcceptance": "NOT_OBSERVED_THROUGH_R8",
     "owner": "GPT_ROOT_33CD7F492CC2",
-    "awcrRevision": 10,
-    "awcrFileId": "10LQjyoFSdI_aQxx5CRSTTMpnIYnv3NOn",
-    "awcrRawSha256": "3fa5ac4ef13b9223559b5cc8da50b1e2e9e70b39aee5b7ac918d3846a1a2f931",
-    "observedMain": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+    "awcrRevision": 11,
+    "awcrFileId": "1VKMiYe_yM-Yso6IHCZG3dXFO53ay6-e4",
+    "awcrRawSha256": "068a9d26f18234c0a27158d3814cd911afff01d953ebcd35ded609d816546b56",
+    "observedMain": "fc58d6737e5178268c511a5d9c24c4651e103b05",
     "alreadyMergedPrs": [
       2113,
       2119
@@ -1697,9 +1716,9 @@
     "sourceOnlyMethodEvidencePending": 193,
     "newScopedSolutionApprovalCount": 1,
     "approvedCorrectionRef": "residual/pinpoint-20261115/yeonhyang19-q7-pinpoint-review.json",
-    "newScopedSolutionApprovalNotPublished": true,
-    "actualMainRegistration": "PRIOR_INPUTS_REGISTERED_NEW_REPAIR_PENDING",
-    "actualDeployment": "NEW_REPAIR_NOT_MERGED",
+    "newScopedSolutionApprovalNotPublished": false,
+    "actualMainRegistration": "NEW_REPAIR_REGISTRATION_IN_PROGRESS_AS_OF_20261115T103324Z",
+    "actualDeployment": "LIVE_5F8_PRIOR_RELEASE_NEW_REPAIR_PENDING",
     "deploymentVerificationAuthorized": true,
     "workers": [
       {
@@ -1715,7 +1734,7 @@
       {
         "agent": "/root/operational_receipts",
         "scope": "read-only actual registration and deployment evidence",
-        "state": "ACTIVE_READONLY"
+        "state": "CLOSED"
       }
     ],
     "proofSha256": "00f4de482ccb96fddd2757a77270328c7c79a6aac1f5c8a385cb66758514d0f8",
@@ -1732,7 +1751,12 @@
     "officialRegisteredMainMergedIntoPr": true,
     "scopeOutsideSourceOrWorkflowEdits": 0,
     "localTargetRender": "BLOCKED_NO_VISUAL_PASS",
-    "newHeadCi": "RUNNING"
+    "newHeadCi": "ALL_APPLICABLE_CHECKS_SUCCESS_REGISTER_NORMAL_SKIP",
+    "productionMergeSha": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+    "newScopedSolutionApprovalPublicationScope": "SOURCE_AND_COMPACT_MAIN_MERGED_NATIVE_FINAL_QA_NOT_GRANTED",
+    "rootWriterState": "CLOSED",
+    "mainMergeRemoteReadbackVerified": true,
+    "closeoutReceipt": "verification/operational-20261115/scoped-main-merge-closeout.json"
   },
   "historicalReportHashesBeforeOperationalResume": {
     "gap-index.json": "fc9d67203265cb8de31f43e0807aca4e180c79408ca971876fced0cc3ed8c0bf",
@@ -1748,5 +1772,17 @@
     "residual/artifact-path-map.json": "fda6c36f202b64c40d9fd3e0129d1ffcac60c2d5170aea93dcc9274a3d2bc78c"
   },
   "countsArePreservedProSnapshot": true,
-  "currentDecisionOverlayRef": "docs/operations/m1-s1-meta-full-20261114/residual/current-judgment-overlay-20261115.json"
+  "currentDecisionOverlayRef": "docs/operations/m1-s1-meta-full-20261114/residual/current-judgment-overlay-20261115.json",
+  "historicalProResumeLatestMainObservation": {
+    "latestMainObserved": "a54075b0d292de57841c64a9b70ff02acab90695",
+    "evidencePath": "docs/operations/m1-s1-meta-full-20261114/verification/resume-latest-main-observation.json",
+    "sha256": "c860b36c2a95df5e2e59204164496973a2b3f8291ae8c8aadc675e11622d222c",
+    "targetSourceAndCanonicalDrift": 0
+  },
+  "historicalProResumeFinalVerification": {
+    "path": "docs/operations/m1-s1-meta-full-20261114/verification/resume-closeout-verification.json",
+    "sha256": "b7ecfe2dc9ebe492867eb79cbc20cf05e8575bc189f8c26b6b54b8a0bf8a06cf",
+    "status": "PRO_RESUME_SCOPE_CLOSED_WITH_EXPLICIT_RELEASE_REMAINDERS",
+    "qualityStatus": "NOT_A_FULL_SEMANTIC_OR_RELEASE_PASS"
+  }
 }

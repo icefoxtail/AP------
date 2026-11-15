@@ -15,10 +15,10 @@
   "production": {
     "pr": 2133,
     "head": "136b1d66603062ddfdeda6a0b3ac14f29265aaaa",
-    "status": "PR_REQUIRED_CHECKS_AFTER_OFFICIAL_MAIN_REFRESH",
-    "mergeSha": null,
-    "registration": "PENDING_ACTUAL_RECEIPT",
-    "deployment": "PENDING_ACTUAL_RECEIPT",
+    "status": "SCOPED_MAIN_MERGE_COMPLETE_WITH_REMAINING",
+    "mergeSha": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+    "registration": "NEW_REPAIR_REGISTRATION_IN_PROGRESS_AS_OF_20261115T103324Z",
+    "deployment": "LIVE_5F8_PRIOR_RELEASE_NEW_REPAIR_PENDING",
     "baseMain": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
     "initialFailedHead": "956a5add3fd9a6cdc4eb7d542fe05741169f66ac",
     "initialCiFailure": "M1S2_Q13_CLASSIFICATION_INPUT_MISMATCH",
@@ -27,7 +27,11 @@
       "difficultyUids": 4,
       "fourSlotUids": 92,
       "ref": "5f8f509108cfc4bfac3ce47813839aaa3c558274"
-    }
+    },
+    "mainReadbackCommit": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+    "allApplicableChecksGreen": true,
+    "remoteThreeFileContentsVerified": true,
+    "closeoutReceipt": "verification/operational-20261115/scoped-main-merge-closeout.json"
   },
   "decisions": [
     {
@@ -103,5 +107,5 @@
     "optionalSinglePtTplProjectionWithheld": 2
   },
   "overallQualityPassClaimed": false,
-  "nextAction": "Observe required PR checks and scoped production merge. Preserve pending evidence without manufacturing method or blanket current-solution approval."
+  "nextAction": "Resolve only named residual evidence or definition/binding debts when suitable source or approval evidence is available. Reuse the completed286 reviews,36 independent samples and93 lineage findings. Read actual registration/Pages receipts without assuming preview or main merge proves deployment."
 }
