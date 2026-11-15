@@ -961,6 +961,173 @@ function laterCodePr(f) {
     expectedSha:headSha,runId:41,runAttempt:1,run:f.run};
 }
 
+const PRIOR_NATIVE = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/previous-native.json';
+const NATIVE_RUNTIME = 'archive/data/meta-foundation/runtime/middle-geometry-v1.json';
+function fingerprintReassessmentFixture(t, { mutateRequest, mutateBaseline } = {}) {
+  const f = fixture(t, { partial: true, otherOwner: false });
+  const record = { questionUid: 'fixture', sourceArchiveFile: 'original/native.js', sourceOrdinal: 5,
+    sourceFingerprint: 'a'.repeat(64), contentFingerprint: 'b'.repeat(64),
+    metadataApprovalType: 'FINAL_QA', metadataStatus: 'approved_semantic_review', metaFoundationStatus: 'ACTIVE',
+    defaultSelectable: true, standardUnitKey: 'M2-06', subUnitKey: 'M2-06-PARALLEL_LENGTH_RATIO',
+    problemTypeKey: 'PT_QUADRILATERAL_PROPERTIES', templateKey: 'TPL_FIXED', level: '중',
+    fieldStatus: { problemType: 'approved_final_qa', template: 'approved_final_qa' },
+    metadataRevision: 'previous-native', approvalEvidence: [PRIOR_NATIVE] };
+  const identity = { questionUid: 'fixture', sourceArchiveFile: record.sourceArchiveFile, sourceOrdinal: 5,
+    sourceFingerprint: record.sourceFingerprint };
+  const runtimeRecord = { ...copy(record), approvedSourceFingerprint: record.sourceFingerprint, runtimeSelectable: true };
+  const metadata = { records: [copy(record)] }, identities = { records: [copy(identity)] };
+  const runtime = { status: 'ACTIVE', records: [copy(runtimeRecord)], generatedFrom: { 'reviewedExam_previous-native': PRIOR_NATIVE } };
+  const prior = { schemaVersion: 'archive-reviewed-exam-meta-registration-v2', requestId: 'previous-native',
+    sourceArchiveFile: record.sourceArchiveFile, approval: { type: 'FINAL_QA', metadataReviewed: true },
+    metadataRegistrationStatus: 'REGISTERED', totalQuestions: 1, expectedQuestionCount: 24, scope: 'PARTIAL_UIDS', partialUidCount: 1,
+    appliedRecords: [copy(record)], appliedIdentityRecords: [copy(identity)], runtimeRecords: [copy(runtimeRecord)],
+    outputDigests: [{ path: NATIVE_RUNTIME, sha256: sha(json(runtime)) }] };
+  mutateBaseline?.({ metadata, identities, runtime, prior });
+  f.write(META, json(metadata)); f.write(IDENTITY, json(identities)); f.write(NATIVE_RUNTIME, json(runtime));
+  f.write(PRIOR_NATIVE, json(prior));
+  const priorRef = { path: PRIOR_NATIVE, sha256: sha(json(prior)) };
+  Object.assign(f.request.approval, { metadataReviewed: true, approvedBy: 'current source reviewer',
+    evidenceRefs: [...f.request.approval.evidenceRefs, priorRef] });
+  Object.assign(f.request.items[0], { before: { sourceFingerprint: record.sourceFingerprint, contentFingerprint: record.contentFingerprint },
+    after: { sourceFingerprint: 'c'.repeat(64), contentFingerprint: 'd'.repeat(64) },
+    identityBefore: { sourceFingerprint: record.sourceFingerprint },
+    sourceReview: { schemaVersion: 'archive-reviewed-source-reassessment-v1', reviewCommit: f.headSha,
+      reviewPath: EVIDENCE, reviewRef: copy(f.request.approval.evidenceRefs[0]) },
+    evidenceRefs: copy(f.request.approval.evidenceRefs) });
+  mutateRequest?.(f.request);
+  f.write(REQUEST, json(f.request)); f.git('add', '.'); f.git('commit', '-qm', 'existing approval and pending fingerprint-only source review');
+  const options = laterCodePr(f);
+  const select = () => selectNativeRequests({ root: f.root, baseSha: options.event.pull_request.base.sha, headSha: options.expectedSha });
+  return { ...f, options, select, prior };
+}
+
+test('an inherited fingerprint-only current source review is limited to exact existing native approval rows', t => {
+  const f = fingerprintReassessmentFixture(t), selected = f.select();
+  assert.equal(selected.length, 1);
+  assert.equal(selected[0].questionCount, 1); assert.equal(selected[0].sourceQuestionCount, 24);
+  assert.deepEqual(selected[0].inheritedFingerprintReassessment.priorReceiptRef,
+    { path: PRIOR_NATIVE, sha256: sha(json(f.prior)) });
+  assert.equal(selected[0].inheritedFingerprintReassessment.headSha, f.options.expectedSha);
+  assert.equal(selected[0].inheritedFingerprintReassessment.runtimePath, NATIVE_RUNTIME);
+  assert.equal(f.calls.length, 0, 'selection alone cannot approve or register current source');
+});
+
+for (const [name, mutateRequest] of [
+  ['a semantic after value', r => { r.items[0].after.templateKey = 'TPL_NEW'; }],
+  ['a semantic before value', r => { r.items[0].before.level = '중'; }],
+  ['a registry addition', r => { r.registryChanges = [{ before: null }]; }],
+  ['missing current sourceReview', r => { delete r.items[0].sourceReview; }],
+  ['an additional review opt-in', r => { r.items[0].sourceReview.retainedFields = ['templateKey']; }],
+  ['a separate fingerprint rebind', r => { r.items[0].rebind = {}; }],
+  ['another approval type', r => { r.approval.type = 'REVIEW2'; }],
+  ['no prior native approval evidence', r => { r.approval.evidenceRefs = r.approval.evidenceRefs.slice(0, 1); }],
+]) test(`inherited reassessment cannot adopt ${name}`, t => {
+  const f = fingerprintReassessmentFixture(t, { mutateRequest });
+  assert.deepEqual(f.select(), []); assert.equal(f.calls.length, 0);
+});
+
+for (const [name, mutateBaseline] of [
+  ['metadata value drift', x => { x.metadata.records[0].templateKey = 'TPL_OTHER'; }],
+  ['identity drift', x => { x.identities.records[0].sourceFingerprint = 'f'.repeat(64); }],
+  ['runtime value drift', x => { x.runtime.records[0].level = '상'; }],
+  ['a newly unapproved UID', x => { x.prior.appliedRecords[0].questionUid = 'other-uid'; }],
+  ['an incorrect source ordinal', x => { x.prior.appliedRecords[0].sourceOrdinal = 6; }],
+]) test(`inherited reassessment rejects ${name} before any writer runs`, t => {
+  const f = fingerprintReassessmentFixture(t, { mutateBaseline });
+  assert.throws(f.select, /INHERITED_REASSESSMENT_EXISTING_APPROVAL/);
+  assert.equal(f.calls.length, 0);
+});
+
+test('inherited reassessment rejects the wrong runtime receipt, denominator and prior receipt digest', t => {
+  const runtime = fingerprintReassessmentFixture(t, { mutateBaseline: x => { x.runtime.generatedFrom = {}; } });
+  assert.throws(runtime.select, /INHERITED_REASSESSMENT_RUNTIME_BINDING/);
+  const denominator = fingerprintReassessmentFixture(t, { mutateBaseline: x => { x.prior.expectedQuestionCount = 23; } });
+  assert.throws(denominator.select, /INHERITED_REASSESSMENT_PRIOR_SCOPE/);
+  const digest = fingerprintReassessmentFixture(t, { mutateRequest: r => { r.approval.evidenceRefs[1].sha256 = 'f'.repeat(64); } });
+  assert.throws(digest.select, /INHERITED_REASSESSMENT_RECEIPT_DRIFT/);
+});
+
+function reassessmentRunner(f, { mutateApproved, mutateIdentity, mutateRuntime, refuseReview = false } = {}) {
+  const read = (target, file) => JSON.parse(fs.readFileSync(path.join(target, file), 'utf8'));
+  return (program, args, target = f.root) => {
+    if (args[0]?.endsWith('/register-reviewed-exam-meta-source.mjs')) {
+      assert.equal(args[args.indexOf('--request') + 1], REQUEST);
+      if (refuseReview) throw Error('OFFICIAL_CURRENT_SOURCE_REVIEW_REFUSED');
+      const request = read(target, REQUEST), replay = fs.existsSync(path.join(target, RECEIPT));
+      const projection = args.includes('--verify-projection');
+      if (projection) assert.equal(replay, true);
+      const plannedPaths = replay ? [] : [META, IDENTITY, NATIVE_RUNTIME, RECEIPT].sort();
+      if (args.includes('--write') && !replay) {
+        const metadata = read(target, META), row = metadata.records[0];
+        Object.assign(row, request.items[0].after, { metadataRevision: 'current-reviewed-source', approvalEvidence: [PRIOR_NATIVE, RECEIPT] });
+        mutateApproved?.(row);
+        const identity = read(target, IDENTITY); identity.records[0].sourceFingerprint = row.sourceFingerprint;
+        const runtime = read(target, NATIVE_RUNTIME); Object.assign(runtime.records[0], row, { approvedSourceFingerprint: row.sourceFingerprint });
+        mutateIdentity?.(identity.records[0]); mutateRuntime?.(runtime.records[0]);
+        f.write(META, json(metadata), target); f.write(IDENTITY, json(identity), target); f.write(NATIVE_RUNTIME, json(runtime), target);
+        f.write(RECEIPT, json({ schemaVersion: 'archive-reviewed-exam-meta-registration-v2', requestId: request.requestId,
+          approval: { type: 'FINAL_QA' }, sourceArchiveFile: request.sourceArchiveFile,
+          sourceBlobSha1: request.expectedSourceBlobSha1, sourceRawSha256: sha(fs.readFileSync(path.join(target, SOURCE))),
+          scope: 'PARTIAL_UIDS', totalQuestions: 1, partialUidCount: 1, expectedQuestionCount: 24,
+          appliedRecords: copy(metadata.records), appliedIdentityRecords: copy(identity.records), runtimeRecords: copy(runtime.records) }), target);
+      }
+      return json({ status: 'PASS', requestId: request.requestId, totalQuestions: 1, replay,
+        scope: 'PARTIAL_UIDS', partialUidCount: 1, expectedQuestionCount: 24, plannedPaths,
+        consumerSearchStatus: projection ? 'STATIC_VALUES_VERIFIED' : 'NOT_RUN' });
+    }
+    return f.run(program, args, target);
+  };
+}
+
+test('fingerprint-only inherited preview still requires official source review, projection, Consumer and immutable replay', t => {
+  const f = fingerprintReassessmentFixture(t), options = { ...f.options, run: reassessmentRunner(f) };
+  const proof = producePrRegistrationProof(options);
+  assert.equal(proof.status, 'PASS');
+  assert.ok(proof.nativePreview.requests[0].inheritedFingerprintReassessment);
+  const current = JSON.parse(fs.readFileSync(path.join(f.root, META), 'utf8')).records[0];
+  assert.equal(current.templateKey, f.prior.appliedRecords[0].templateKey);
+  assert.equal(current.metadataApprovalType, 'FINAL_QA');
+  assert.equal(current.sourceFingerprint, 'c'.repeat(64));
+  const before = f.snapshot(); assert.equal(validateLocalRegistrationProof({ ...options, proof }).reusable, true);
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+  const refused = fingerprintReassessmentFixture(t);
+  assert.throws(() => producePrRegistrationProof({ ...refused.options, run: reassessmentRunner(refused, { refuseReview: true }) }),
+    /OFFICIAL_CURRENT_SOURCE_REVIEW_REFUSED/);
+  assert.equal(fs.existsSync(path.join(refused.root, RECEIPT)), false);
+});
+
+for (const [name, mutateApproved] of [
+  ['classification', row => { row.templateKey = 'TPL_UNREVIEWED'; }],
+  ['difficulty', row => { row.level = '상'; }],
+  ['approval type', row => { row.metadataApprovalType = 'REVIEW2'; }],
+  ['old approval evidence', row => { row.approvalEvidence = [RECEIPT]; }],
+]) test(`fingerprint-only inherited preview rejects a writer changing ${name}`, t => {
+  const f = fingerprintReassessmentFixture(t);
+  assert.throws(() => producePrRegistrationProof({ ...f.options, run: reassessmentRunner(f, { mutateApproved }) }),
+    /INHERITED_REASSESSMENT_CHANGED_APPROVAL_VALUES/);
+});
+
+for (const [name, options, expected] of [
+  ['a foreign identity field', { mutateIdentity: row => { row.foreignBinding = 'unreviewed'; } }, /CHANGED_IDENTITY_VALUES/],
+  ['runtime classification', { mutateRuntime: row => { row.templateKey = 'TPL_UNREVIEWED'; } }, /CHANGED_RUNTIME_VALUES/],
+  ['runtime difficulty', { mutateRuntime: row => { row.level = '상'; } }, /CHANGED_RUNTIME_VALUES/],
+  ['runtime readiness', { mutateRuntime: row => { row.runtimeSelectable = false; } }, /CHANGED_RUNTIME_VALUES/],
+]) test(`fingerprint-only inherited preview also rejects ${name}`, t => {
+  const f = fingerprintReassessmentFixture(t);
+  assert.throws(() => producePrRegistrationProof({ ...f.options, run: reassessmentRunner(f, options) }), expected);
+});
+
+test('fingerprint-only preservation is rechecked after projection and Consumer, not only after writing', t => {
+  const f = fingerprintReassessmentFixture(t);
+  f.hook.consumer = target => {
+    const metadata = JSON.parse(fs.readFileSync(path.join(target, META), 'utf8'));
+    const issued = JSON.parse(fs.readFileSync(path.join(target, RECEIPT), 'utf8'));
+    metadata.records[0].templateKey = 'TPL_LATE_CHANGE'; issued.appliedRecords[0].templateKey = 'TPL_LATE_CHANGE';
+    f.write(META, json(metadata), target); f.write(RECEIPT, json(issued), target);
+  };
+  assert.throws(() => producePrRegistrationProof({ ...f.options, run: reassessmentRunner(f) }), /CHANGED_APPROVAL_VALUES/);
+});
+
 test('code-only PR preserves an exact inherited partial FINAL_QA approval through the official projection and Consumer',t=>{
   const f=fixture(t,{partial:true,finalQaPreservation:true}),options=laterCodePr(f);
   const baseSha=options.event.pull_request.base.sha,headSha=options.expectedSha;
