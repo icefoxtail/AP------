@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "m2-ready3-current-final-local-verification-v1",
+  "status": "PASS_LOCAL_OFFICIAL_REGISTRATION_CONSUMER_AND_REPLAY",
+  "baselineMain": "61830b6cd7ef773f6d9c963142a7e95af4c48e82",
+  "registrationRef": {
+    "path": "/workspace/scratch/3e3a7e007c36/m2-agent/ready3-packet/official-scoped-local.json",
+    "sha256": "55a9c683b087354241c7348e2de60d5f4a7b8cb64ffdc69b07ff402dc4502a57"
+  },
+  "consumerRef": {
+    "path": "/workspace/scratch/3e3a7e007c36/m2-agent/ready3-packet/official-changed-uid-consumer.json",
+    "sha256": "2e787dd2ee66dbec0a7b82b730cf90fb701260a6a2a5084c1d90688ea2ef78f9"
+  },
+  "fourSlotRef": {
+    "path": "/workspace/scratch/3e3a7e007c36/m2-agent/ready3-packet/four-slot-preservation.json",
+    "sha256": "01d4dfda52befee71b2676e9e18844f076f6e37e7c26a2e14cbd78f079a7c691"
+  },
+  "replay": [
+    {
+      "requestId": "m2s2-e059-cc2-20261115",
+      "result": {
+        "status": "PASS",
+        "requestId": "m2s2-e059-cc2-20261115",
+        "totalQuestions": 2,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 2,
+        "expectedQuestionCount": 23,
+        "replay": true,
+        "plannedPaths": [],
+        "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+        "browserStatus": "NOT_RUN",
+        "consumerLanes": {
+          "canonical": 2,
+          "usableMetaLane": 0
+        }
+      }
+    },
+    {
+      "requestId": "m2s2-follow9-20261115-E028",
+      "result": {
+        "status": "PASS",
+        "requestId": "m2s2-follow9-20261115-E028",
+        "totalQuestions": 1,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 1,
+        "expectedQuestionCount": 24,
+        "replay": true,
+        "plannedPaths": [],
+        "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+        "browserStatus": "NOT_RUN",
+        "consumerLanes": {
+          "canonical": 1,
+          "usableMetaLane": 0
+        }
+      }
+    }
+  ],
+  "protectedInputCount": 20,
+  "protectedInputsExact": true,
+  "newMathematicalReview": 0,
+  "newDifficultyJudgments": 0,
+  "actualMainRegistration": "NOT_RUN",
+  "Pages": "NOT_RUN"
+}
