@@ -31,7 +31,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "외각에서 밑각을 복원한 이등변 꼭짓각",
+    "decisiveStep": "한 직선의180도에서 밑각을 구하고 같은 두 밑각을 내각합에서 뺀다."
   },
   {
     "id": 2,
@@ -65,7 +76,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_ISOSCELES_CONVERSE",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "같은 두 각에서 등변을 얻는 증명 감사",
+    "decisiveStep": "공통변AD와 두 각의 대응을 확인하여 ASA 합동과 등변 대응을 맞춘다."
   },
   {
     "id": 3,
@@ -97,7 +119,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "이등변삼각형 대칭축의 두 합동쌍",
+    "decisiveStep": "꼭지각 이등분선의 양쪽 합동을 얻고 축 위 점P에서도 두 삼각형의 대응을 확인한다."
   },
   {
     "id": 4,
@@ -129,7 +162,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "밑각 계산 후 밑각의 반각",
+    "decisiveStep": "같은 두 밑각62도를 얻고 C의 반각31도를 작은 삼각형 내각합에 적용한다."
   },
   {
     "id": 5,
@@ -162,7 +206,18 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q5-solution.svg"
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q5-solution.svg",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B34",
+    "primaryMethod": "연쇄 등변의 밑각과 일직선각",
+    "decisiveStep": "세 번의 같은 변으로 생기는 이등변삼각형의 밑각을 인접한 삼각형으로 전달한다."
   },
   {
     "id": 6,
@@ -195,7 +250,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+    "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "그림의 빗변과 직각변으로 RHS 짝 선택",
+    "decisiveStep": "표시된 길이가 빗변인지 직각변인지 구별하고 두 종류가 각각 같은 쌍을 고른다."
   },
   {
     "id": 7,
@@ -228,7 +294,18 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q7-solution.svg"
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q7-solution.svg",
+    "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+    "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "중점이 공급하는 빗변과 같은 수선거리",
+    "decisiveStep": "중점에서 MB=MC를 읽고 MD=ME와 함께 두 직각삼각형의 RHS를 판정한다."
   },
   {
     "id": 8,
@@ -259,7 +336,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "외심과 내심의 등거리 대상 구별",
+    "decisiveStep": "꼭짓점까지의 등거리와 변까지의 등거리를 구별하여 중심의 위치·활용 명제를 판정한다."
   },
   {
     "id": 9,
@@ -291,7 +379,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "외심의 같은 반지름과 수직이등분",
+    "decisiveStep": "꼭짓점 등거리와 현의 수직이등분을 적용하고 서로 다른 현까지의 거리 동등은 배제한다."
   },
   {
     "id": 10,
@@ -324,7 +423,18 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q10-solution.svg"
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q10-solution.svg",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B34",
+    "primaryMethod": "외부 외심의 등거리각 연결",
+    "decisiveStep": "외부점O를 잇는 이등변삼각형의 각을 c로 표현하고 ABC의 내각합으로 목표각을 정한다."
   },
   {
     "id": 11,
@@ -356,7 +466,20 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_TRIANGLE_INCENTER",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "이등변 밑각을 내심 이등분선으로 반분",
+    "decisiveStep": "같은 두 변에서 밑각70도를 구한 뒤 BI가 그 각을 반으로 나눈다는 성질을 적용한다."
   },
   {
     "id": 12,
@@ -387,7 +510,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "사각형 정의와 성립조건의 구분",
+    "decisiveStep": "\\angle 도형의 뜻에 필요한 평행·변·각 조건이 모두 있는지 비교한다."
   },
   {
     "id": 13,
@@ -420,7 +554,20 @@ window.questionBank=[
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q13-solution.svg"
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q13-solution.svg",
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_CONVERSE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "대각선의 절반 길이 동등에서 전체 길이",
+    "decisiveStep": "같은 밑각으로 OA=OB를 얻고 평행사변형의 두 대각선 이등분으로 전체AC=BD를 잇는다."
   },
   {
     "id": 14,
@@ -452,7 +599,20 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "crossConceptKeys": [
+      "CC_PERIMETER"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "대각선 교점의 반 길이와 둘레",
+    "decisiveStep": "두 대각선 길이를 반으로 하여 삼각형의 나머지 두 변을 얻고 세 변을 합한다."
   },
   {
     "id": 15,
@@ -485,7 +645,18 @@ window.questionBank=[
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q15-solution.svg"
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q15-solution.svg",
+    "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+    "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 내각 이등분선이 만드는 겹친 선분",
+    "decisiveStep": "평행각과 반각으로 두 이등변삼각형을 얻고 전체 변에서 CF와 겹친EF를 차례로 구한다."
   },
   {
     "id": 16,
@@ -518,7 +689,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "한 쌍 대변의 평행·상등으로 성립 증명 감사",
+    "decisiveStep": "대각선 공통과 엇각으로 SAS를 만들고 대응각을 다른 대변의 평행 조건에 맞춘다."
   },
   {
     "id": 17,
@@ -549,7 +731,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "primaryMethod": "평행사변형 충분조건의 여러 표현 비교",
+    "decisiveStep": "한 쌍 대변의 평행·동등과 두 쌍 대각의 동등을 확인하고 이웃변·다른 대각선 조각과 구별한다."
   },
   {
     "id": 18,
@@ -576,7 +769,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "꼭지각 이등분선의 SAS로 밑각 동등 설명",
+    "decisiveStep": "공통 이등분선과 같은 두 변 및 반각으로 합동을 만들고 대응 밑각의 같음을 결론짓는다."
   },
   {
     "id": 19,
@@ -604,7 +808,18 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q19-solution.svg"
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q19-solution.svg",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "외심의 이등변각과 중심 주위 각 합",
+    "decisiveStep": "반지름 두 쌍의 같은 각을 문자로 나타낸 뒤 중심 주위360도에서 소거한다."
   },
   {
     "id": 20,
@@ -632,7 +847,20 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q20-solution.svg"
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q20-solution.svg",
+    "templateKey": "TPL_TRIANGLE_INCENTER",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "crossConceptKeys": [
+      "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B34",
+    "primaryMethod": "내심 반각으로 세운 두 각 방정식",
+    "decisiveStep": "두 삼각형에서 a와b의 계수가 바뀌는 내각합 식을 세워 두 반각을 결정한다."
   },
   {
     "id": 21,
@@ -660,6 +888,17 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "semanticSourceScope": "M1-2",
+    "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "대각선 양쪽 ASA로 대변 동등 증명",
+    "decisiveStep": "평행 대변의 두 엇각과 공통 대각선으로 합동을 보이고 대응변 동등을 결론짓는다."
   }
 ];

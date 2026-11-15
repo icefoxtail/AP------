@@ -35,15 +35,17 @@ window.questionBank = [
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 1,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 세 평행선에 두 직선을 그어 왼쪽 길이를 위 2cm, 아래 4cm, 전체 6cm로 표시하고 오른쪽 위 구간 3cm를 나타낸다.",
     "solutionImageCaption": "왼쪽 아래 길이는 6−2=4cm이고 대응변의 비는 2:4=3:x이다. 답: ③ 6cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "세 평행선 사이 선분의 비",
+    "decisiveStep": "표시된 전체6에서 위2를 빼 아래4를 얻고 대응비를 세운다."
   },
   {
     "id": 2,
@@ -77,7 +79,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
     "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_MIDPOINT"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
@@ -87,7 +91,9 @@ window.questionBank = [
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 세 변의 중점 D, E, F를 연결한 삼각형에서 각 변의 두 반을 같은 색의 눈금으로 묶고 가운데 삼각형을 나타낸다.",
     "solutionImageCaption": "중점 연결 정리에 따라 작은 삼각형과 전체 삼각형의 닮음비는 1:2이고 넓이비는 1:4이다. 답: ⑤",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "중점삼각형 닮음과 넓이비 판정",
+    "decisiveStep": "중점 연결로 대응 길이와 닮음비를 확인하고 넓이비는 제곱임을 구별한다."
   },
   {
     "id": 3,
@@ -116,14 +122,14 @@ window.questionBank = [
     "solution": "[키포인트] 무게중심은 중선을 꼭짓점에서 $2:1$로 나눈다.\n$G$는 $\\triangle ABC$의 무게중심이므로 $AG:GM=2:1$이다. 따라서 $GM=36\\times\\dfrac13=12\\,\\mathrm{cm}$이고 $AG=24\\,\\mathrm{cm}$이다.\n$G'$은 $\\triangle GBC$의 무게중심이고 $M$은 $\\overline{BC}$의 중점이므로 $GG':G'M=2:1$이다. 따라서 $GG'=12\\times\\dfrac23=8\\,\\mathrm{cm}$이다.\n그러므로 $AG'=AG+GG'=24+8=32\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q3.png",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
-    "subUnit": "삼각형의 무게중심",
+    "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_COORD_CENTROID",
-    "templateKey": "TPL_CENTROID_REVERSE",
+    "templateKey": "",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -131,7 +137,9 @@ window.questionBank = [
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형의 중선 AM 위에 두 무게중심 G와 G′를 나타내고 AM 36cm, AG 24cm, GG′ 8cm를 표시한다.",
     "solutionImageCaption": "두 무게중심은 각 중선을 꼭짓점에서 2:1로 나누므로 AG는 24cm, GG′은 8cm이다. 답: ④ 32cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "중첩된 무게중심 중선비",
+    "decisiveStep": "같은 밑변의 중선에서2:1을 두 번 써 목표 선분 합을 계산한다."
   },
   {
     "id": 4,
@@ -167,11 +175,13 @@ window.questionBank = [
     "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "부피비에서 겉넓이비로 환산",
+    "decisiveStep": "주어진 부피비에서 닮음비를 되찾은 뒤 제곱한다."
   },
   {
     "id": 5,
@@ -207,15 +217,17 @@ window.questionBank = [
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형의 세 등분점 E와 G, 중점 D, 연장선 위 F를 표시하고 중점 연결로 생긴 평행선을 강조한 그림.",
     "solutionImageCaption": "중점 연결 정리로 GC=4cm, DF=6cm이다. 답: ① 3/2",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "중점 연결 정리의 연속 적용",
+    "decisiveStep": "서로 다른 두 삼각형에서 같은 중간선분을 통해 두 배 관계를 연속해서 얻는다."
   },
   {
     "id": 6,
@@ -249,7 +261,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_AREA_RATIO"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
@@ -259,7 +273,9 @@ window.questionBank = [
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에 중점 연결선 DF를 추가하고 삼각형 ABE와 BPE를 서로 다른 색으로 나타낸 그림.",
     "solutionImageCaption": "DF는 BE에 평행하고 BP:PF=2:1이므로 색칠한 두 삼각형 넓이는 각각 12cm²와 8cm²이다. 답: ⑤ 20cm²",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "중점연결과 교차 닮음의 부분 넓이",
+    "decisiveStep": "중점연결의 평행선으로 교차 닮음비를 얻고 같은 높이의 넓이비를 필요한 두 영역에 쓴다."
   },
   {
     "id": 7,
@@ -293,9 +309,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
     "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_RATE_OF_CHANGE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "REINTERPRETATION",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -303,7 +321,9 @@ window.questionBank = [
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 꼭짓점이 아래인 원뿔 모양 그릇의 전체 높이 3분의 1까지 차 있는 물을 색으로 강조한다.",
     "solutionImageCaption": "전체 높이를 h라 하면 물의 높이는 h/3이다. 높이비가 1:3이므로 부피비는 1:27이다. 답: ④ 78초",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "원뿔 부피비와 남은 채움 시간",
+    "decisiveStep": "작은 원뿔과 전체의 부피비를 전체 시간 비로 바꾸고 이미 흐른 시간을 뺀다."
   },
   {
     "id": 8,
@@ -338,11 +358,13 @@ window.questionBank = [
     "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "피타고라스 정리의 역 판정",
+    "decisiveStep": "가장 큰 변의 제곱을 나머지 두 제곱의 합과 직접 비교한다."
   },
   {
     "id": 9,
@@ -376,17 +398,22 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
     "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
-    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE"],
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_TRIANGLE_AREA"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 1,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 이등변삼각형의 꼭짓점에서 밑변에 내린 수선과 밑변의 반 6cm, 높이 8cm를 나타낸 그림.",
     "solutionImageCaption": "밑변을 반으로 나누면 6cm이고 피타고라스 정리로 높이는 8cm이다. 답: ① 48cm²",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "이등변삼각형 높이의 피타고라스",
+    "decisiveStep": "밑변 절반에서 높이를 구한 뒤 삼각형 넓이를 계산한다."
   },
   {
     "id": 10,
@@ -422,7 +449,7 @@ window.questionBank = [
     "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -430,7 +457,9 @@ window.questionBank = [
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 세 변을 지름으로 하는 세 반원을 나타낸 그림.",
     "solutionImageCaption": "두 작은 반원의 넓이 합은 큰 반원의 넓이와 같고 큰 반원의 넓이는 18πcm²이다. 답: ② 36πcm²",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "피타고라스 제곱합의 반원 넓이 전환",
+    "decisiveStep": "세 지름 제곱의 합을 빗변 제곱 두 개로 바꾸어 반원 넓이 합을 구한다."
   },
   {
     "id": 11,
@@ -464,7 +493,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
     "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
-    "crossConceptKeys": ["CC_TRIANGLE_CONGRUENCE"],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_CONGRUENCE"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -474,7 +505,9 @@ window.questionBank = [
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 정사각형 ABCD 안에 서로 합동인 네 직각삼각형을 같은 색으로 나타내고 가운데 정사각형 EFGH를 남긴 그림.",
     "solutionImageCaption": "직각삼각형의 나머지 변은 8이고 네 삼각형의 넓이를 빼면 가운데 정사각형 넓이는 49이다. 답: ① 28",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "피타고라스와 합동 조각의 중앙 정사각형",
+    "decisiveStep": "직각변을 구해 같은 네 삼각형의 넓이를 제거하고 중앙 정사각형의 변으로 환산한다."
   },
   {
     "id": 12,
@@ -510,15 +543,17 @@ window.questionBank = [
     "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형을 바탕으로 아래 한 개, 가운데 두 개, 위 네 개 정사각형을 다른 색으로 묶은 피타고라스 나무.",
     "solutionImageCaption": "피타고라스 정리에 의해 각 단계 정사각형의 넓이 합은 225이다. 답: ③ 675",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "피타고라스 나무의 단계별 넓이합",
+    "decisiveStep": "각 가지의 정사각형 제곱합이 앞 단계와 같다는 관계를 반복한다."
   },
   {
     "id": 13,
@@ -547,7 +582,7 @@ window.questionBank = [
     "solution": "[키포인트] 먼저 두 정사각형의 한 변의 길이를 구하고 닮음을 이용한다.\n정사각형 $ABCD$의 한 변은 $6\\,\\mathrm{cm}$, 정사각형 $GCEF$의 한 변은 $2\\,\\mathrm{cm}$이다. 따라서 $AB=6$, $BE=BC+CE=8$이다.\n직각삼각형 $ABE$에서 $6^2+8^2=10^2$이므로 피타고라스 정리에 따라 $AE=10\\,\\mathrm{cm}$이다.\n$CH\\parallel AB$이고 $\\angle CEH=\\angle BEA$이므로 $\\triangle ECH\\sim\\triangle EBA$이다.\n닮음비는 $EC:EB=2:8=1:4$이므로 $EH:EA=1:4$, 따라서 $EH=\\dfrac{10}{4}=\\dfrac52\\,\\mathrm{cm}$이다.\n그러므로 $AH=AE-EH=10-\\dfrac52=\\dfrac{15}{2}\\,\\mathrm{cm}$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q13.png",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "닮은 도형",
+    "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
@@ -564,7 +599,9 @@ window.questionBank = [
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 서로 붙은 두 정사각형에서 대각선 AE와 경계 CD의 교점 H를 표시하고 닮은 두 직각삼각형의 대응변을 강조한다.",
     "solutionImageCaption": "큰 정사각형 변은 6cm, 작은 정사각형 변은 2cm이며 AE는 10cm이다. 두 직각삼각형의 닮음비는 1:4이다. 답: ⑤ 15/2cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "피타고라스 길이에서 닮음 부분 길이",
+    "decisiveStep": "큰 직각삼각형 빗변을 구한 뒤 평행한 변의 닮음으로 빗변 일부를 떼어 낸다."
   },
   {
     "id": 14,
@@ -598,17 +635,22 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
     "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_GEOMETRIC_FOLDING",
+      "CC_TRIANGLE_AREA"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형을 접어 D가 P에 포개질 때 같은 길이 QD와 QP를 표시하고 삼각형 PCQ를 색칠한 그림.",
     "solutionImageCaption": "접는 선 위의 Q에서 QD=QP이다. 피타고라스 정리로 PC=4cm, CQ=3cm를 얻는다. 답: ① 6cm²",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "접기 등거리와 피타고라스 연쇄",
+    "decisiveStep": "접는 선 위의 두 점에서 같은 거리를 사용하여 두 직각삼각형의 길이식을 연결한다."
   },
   {
     "id": 15,
@@ -641,11 +683,13 @@ window.questionBank = [
     "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "서로 겹치지 않는 두 눈의 합 경우",
+    "decisiveStep": "주어진 두 합의 순서쌍을 각각 직접 세어 더한다."
   },
   {
     "id": 16,
@@ -680,12 +724,19 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": [
+      "COND_DISTINCT_DIGITS",
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE",
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "0이 맨 앞에 올 수 없는 세 자리 배열",
+    "decisiveStep": "첫 자리의0을 제외하고 남은 서로 다른 숫자를 순서대로 고른다."
   },
   {
     "id": 17,
@@ -718,11 +769,13 @@ window.questionBank = [
     "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "확률 정의와 기본 성질의 진위 판정",
+    "decisiveStep": "확률의 범위가0과1을 포함함을 확인해 틀린 문장을 찾는다."
   },
   {
     "id": 18,
@@ -755,11 +808,13 @@ window.questionBank = [
     "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 1,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "적어도 한 번의 여사건",
+    "decisiveStep": "두 눈 모두3미만인 반대 사건을 세어1에서 뺀다."
   },
   {
     "id": 19,
@@ -790,13 +845,17 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
     "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_LINEAR_EQUATION_SOLUTION"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "REINTERPRETATION",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "방정식의 해 조건을 눈의 순서쌍으로 변환",
+    "decisiveStep": "주어진 두 해를 각각 b=a 또는 b=2a로 바꾸어 배타적인 순서쌍을 센다."
   },
   {
     "id": 20,
@@ -832,11 +891,13 @@ window.questionBank = [
     "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 주머니의 독립 추출과 색 경우 분리",
+    "decisiveStep": "서로 다른 색이 나오는 두 배타적 방향의 확률곱을 더한다."
   },
   {
     "id": 21,
@@ -860,13 +921,15 @@ window.questionBank = [
     "solution": "[키포인트] ① 무게중심이 만드는 작은 삼각형들의 넓이 관계, ② 각 선분의 중점과 무게중심의 $2:1$ 성질을 이용한다.\n① 세 중선은 삼각형을 넓이가 같은 $6$개의 작은 삼각형으로 나눈다. $\\triangle GDC$의 넓이가 $3\\,\\mathrm{cm}^2$이므로 $\\triangle ABC$의 넓이는 $3\\times6=18\\,\\mathrm{cm}^2$이다.\n② 그림에서 $AB=15$, $AC=20$, $BC=25$이므로 $15^2+20^2=25^2$이다. 따라서 $\\angle A=90^\\circ$이고 $[\\triangle ABC]=\\dfrac12\\times15\\times20=150$이다.\n$M$, $N$을 각각 $\\overline{BD}$, $\\overline{DC}$의 중점이라 하자.\n$MN=MD+DN=\\dfrac12BD+\\dfrac12DC=\\dfrac12BC=\\dfrac{25}{2}$이다.\n$M$, $N$은 $\\overline{BC}$ 위에 있으므로 $[\\triangle AMN]=\\dfrac{MN}{BC}[\\triangle ABC]=\\dfrac12\\times150=75$이다.\n$G$, $G'$은 각각 $\\triangle ABD$, $\\triangle ADC$의 무게중심이므로 $AG:AM=AG':AN=2:3$이다. 따라서 $\\triangle AGG'\\sim\\triangle AMN$이고 닮음비는 $2:3$이다.\n그러므로 $[\\triangle AGG']=75\\times\\left(\\dfrac23\\right)^2=\\dfrac{100}{3}\\,\\mathrm{cm}^2$이다.\n따라서 구하는 값은 ① $18\\,\\mathrm{cm}^2$, ② $\\dfrac{100}{3}\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q21.png",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
-    "subUnit": "삼각형의 무게중심",
+    "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_COORD_CENTROID",
     "templateKey": "TPL_CENTROID_APPLICATION",
     "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
+      "CC_PYTHAGOREAN",
+      "CC_TRIANGLE_SIMILARITY",
+      "CC_AREA_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -877,7 +940,9 @@ window.questionBank = [
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 무게중심이 세 중선을 나누어 만든 여섯 삼각형과 두 무게중심을 이용한 닮은 삼각형을 각각 표시한다.",
     "solutionImageCaption": "① 3cm²인 삼각형을 포함하여 여섯 삼각형의 넓이는 같다. ② 두 중점과 무게중심을 연결하면 닮음비는 2:3이다. 답: ① 18cm², ② 100/3cm²",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "무게중심의 중선비와 넓이 활용",
+    "decisiveStep": "넓이 분할과 두 중선의2:3을 닮음의 넓이비에 연결한다."
   },
   {
     "id": 22,
@@ -906,17 +971,21 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
     "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_CONE_VOLUME"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_매산중_2학기_기말_중2_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 원뿔의 축을 지나는 단면에서 꼭짓점 O와 밑면 둘레의 점 A, B, 이름 없는 중심을 그리고 반지름 6cm, 높이 8cm, 모선 10cm를 나타낸다.",
     "solutionImageCaption": "원뿔의 축을 지나는 단면에서 부피로 높이 8cm를 구하고 직각삼각형에서 모선 10cm를 얻는다. 답: ① 4cm, ② 60πcm²",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "primaryMethod": "원뿔 부피에서 높이·모선·옆넓이",
+    "decisiveStep": "원뿔 부피식으로 높이를 구하고 피타고라스로 모선을 얻은 뒤 옆넓이를 계산한다."
   },
   {
     "id": 23,
@@ -944,12 +1013,16 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": [
+      "COND_SPECIFIED_ITEMS_AT_BOTH_ENDPOINTS"
+    ],
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "역할이 다른 선출과 양끝 고정 배열",
+    "decisiveStep": "회장·부회장의 순서를 구별하고 교사를 양끝, 학생을 가운데에 배열한다."
   },
   {
     "id": 24,
@@ -978,13 +1051,17 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-    "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
-    "crossConceptKeys": [],
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CIRCUMFERENCE"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "표의 도수비와 표적의 넓이비 확률",
+    "decisiveStep": "첫 소문항은 인원 비, 두 번째는 원 고리 넓이와 전체 넓이의 비를 계산한다."
   }
 ];
