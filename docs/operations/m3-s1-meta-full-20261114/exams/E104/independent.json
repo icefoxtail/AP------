@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "independent-meta-sample-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
+  "examKey": "E104",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "reviewerOwner": "GPT_ROOT_D03144C8CA75/C",
+  "reviewedAt": "2026-11-15",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "scope": "METADATA_ONLY_LOCAL_PREPARATION",
+  "sourceBlob": "14a617f5265f3a0950ef41afa3ecb3e69536bef3",
+  "sourceSha256": "9a968ec6be412581f0a412fa0f84848762df046489f45daa5654a8964d54003c",
+  "reviewPath": "/workspace/scratch/d03144c8ca75/workers/B/E104.review.json",
+  "reviewSha256": "4ba0c41a894eb3e2efdc4b735525e763ecfb25a50f2fcde68859e8658281cafd",
+  "fourSlotPath": "/workspace/scratch/d03144c8ca75/workers/B/E104.4slot.json",
+  "fourSlotSha256": "99ac9c8ecff64a7835c164b7714b44e3891333d4bd8329b4793ea827fcb24605",
+  "amendmentPath": "/workspace/scratch/d03144c8ca75/workers/B/E104.metadata-amendment.json",
+  "amendmentSha256": "fa7e8973c36a832602911b032e139473ad3374a5217ecdd9d3b6e1b46cbf8abb",
+  "sampleOrdinals": [
+    9,
+    15,
+    24
+  ],
+  "samples": [
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_32e5d041677547f6d7db878c6cec86c281840b990e837b614f68a504c4730817",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt"
+      ],
+      "quotesVerified": 7,
+      "rationale": "실제 해설에서 t=2x-y 치환 후 t<0으로 -3을 선별하고 두 일차방정식을 연립하여 원변수 합을 복원함을 확인. 표본 지적에 따라 ACTIVE CC_LINEAR_SYSTEM 및 SEQUENTIAL을 보완한 파생본을 다시 읽음. leaf032는 상위 맥락 후보이며 정확 leaf gap과 기존 상/bucket3 B34를 그대로 유지.",
+      "sourceFingerprints": {
+        "QBODY": "0444864bbf83273cf26f5ad288c44716167df3fa68c3437b340086eb41c2991e",
+        "QFULL": "921551591753cc8971c23e13c449653e81ec9898f1ae4a1b16c3c11a52a9f0af"
+      },
+      "debtKindsPreserved": [
+        "TAXONOMY_PROPOSAL"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_5f5af14559740dfe9d08a921b11ca3bc45bb7c3dce8f1fc340b1be9956ef1cbc",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt"
+      ],
+      "quotesVerified": 9,
+      "rationale": "직선 절편으로 삼각형 넓이식을 구성하고 a>3 및 두 절편 대소관계로 두 매개변수해를 선별하는 연결을 확인. CC_GEOMETRIC_AREA_VOLUME_FORMULA와 RANGE/INEQUALITY 조건, leaf039 상위맥락/정확 leaf 제안, bucket4 경계 B34는 근거에 부합.",
+      "sourceFingerprints": {
+        "QBODY": "bfa118f5cecb331549dec23f5c279e607a07d92aa22b8f10a4fcb70e869a8c7f",
+        "QFULL": "f2fe02c7c20944f1d44ed459b3af15ae13ed4175f56c7cd5e039943bb59c5aaa"
+      },
+      "debtKindsPreserved": [
+        "TAXONOMY_PROPOSAL"
+      ]
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_8845ec3b9298c5ee6e68d9d62cf8033c9c0720233fa75a208abfe661d6751c50",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt"
+      ],
+      "quotesVerified": 6,
+      "rationale": "포물선 영역을 둘러싼 6×3 직사각형에서 주어진 넓이를 빼는 기존 해설 주경로를 확인. 기존 위아래 영역 명명 오류와 합동/대칭 설명 미비 부채를 보존. 방법 넓이를 직사각형넓이공식 후보로 특정한 정확 인용을 다시 확인하였으며 공용 등재/내용 품질 PASS로 처리하지 않음.",
+      "sourceFingerprints": {
+        "QBODY": "804531f5025e4cb9ce4b3cc3023585d5a06344acc6dfbebb3e4f454396a04550",
+        "QFULL": "a610d905ae4fda1021b1843318f287ec86cb702048245df068c07423f8ff0b4b"
+      },
+      "debtKindsPreserved": [
+        "CONTENT_SOLUTION_EXPLANATION_DEBT",
+        "TAXONOMY_PROPOSAL"
+      ]
+    }
+  ],
+  "independentReviewerNotAuthor": true,
+  "contentQualityPass": false,
+  "remoteCompletionClaim": false,
+  "remaining": [
+    "root ownership handoff confirmation",
+    "root integration and protected-field checks",
+    "remote checkpoint",
+    "Codex exact-leaf/projection and declared content debt processing"
+  ]
+}
