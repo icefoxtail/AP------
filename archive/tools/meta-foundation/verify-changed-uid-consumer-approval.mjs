@@ -39,11 +39,13 @@ import { createRequire } from "node:module";
 import { isDeepStrictEqual } from "node:util";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
+import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
+import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REASON } from "./native-basic-hold-preservation.mjs";
+import { NATIVE_BASIC_PARENT_SCHEMA } from "./reviewed-native-basic-parent.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 const require = createRequire(import.meta.url);
@@ -207,8 +209,9 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
   if (schema === SCHEMA.BASIC_REBIND || schema === SCHEMA.BASIC_PARENT_CORRECTION) {
     const correction = schema === SCHEMA.BASIC_PARENT_CORRECTION;
     const preservation = doc.approval?.sourceReview !== undefined;
+    const nativeParent = doc.approval?.sourceReview?.schemaVersion === NATIVE_BASIC_PARENT_SCHEMA;
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "rebind request needs sourceArchiveFile and items[]");
-    if (preservation && (correction || doc.approval.sourceReview?.schemaVersion !== BASIC_PRESERVATION_SCHEMA ||
+    if (preservation && (correction || ![BASIC_PRESERVATION_SCHEMA, NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_PARENT_SCHEMA].includes(doc.approval.sourceReview?.schemaVersion) ||
         doc.approval.type !== "BASIC_SCOPE_REBIND" || doc.scope !== undefined || doc.registrationMode !== undefined ||
         !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length ||
         doc.items.length > doc.expectedQuestionCount || new Set(doc.items.map(i => i.questionUid)).size !== doc.items.length ||
@@ -225,7 +228,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       } : {}, fingerprint: item.after.sourceFingerprint,
         bodyFingerprint: item.after.contentFingerprint, unchanged: false, gated: true };
     });
-    return { kind: preservation ? "basic-approval-preservation" : correction ? "basic-parent-correction" : "basic-scope-rebind",
+    return { kind: nativeParent ? "basic-parent-registration" : preservation ? "basic-approval-preservation" : correction ? "basic-parent-correction" : "basic-scope-rebind",
       approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
       ...(preservation ? { request: doc, expectedQuestionCount: doc.expectedQuestionCount } : {}),
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
@@ -350,9 +353,10 @@ function checkRow(consumer, unit, row) {
   if (row.bodyFingerprint !== undefined && row.bodyFingerprint !== resolved.assignmentFingerprint)
     return { ...out, reason: "BODY_FINGERPRINT_MISMATCH", detail: `request ${row.bodyFingerprint} != consumer assignmentFingerprint ${resolved.assignmentFingerprint}` };
   if (row.fullFingerprint !== undefined && row.fullFingerprint !== resolved.sourceFingerprint) out.solverOnlyRevision = true;
+  // REVIEW2 may also register a judged tag/difficulty value over the exam file's inline value; the registrar records the source value in receipt.sourceValueOverrides.
   // REVIEW2 (two independent judgments): the exam file's own review annotation (e.g. SELF_CHECKED) differs from the registrar-forced
   // reviewed_pass by design; it is kept in the exam file and is not a metadata conflict. Every other conflicting field still refuses.
-  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && f === "reviewStatus"));
+  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && (f === "reviewStatus" || REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(f))));
   if (blockingConflicts.length)
     return { ...out, reason: "METADATA_CONFLICT", detail: blockingConflicts.join(",") };
   const evidence = resolved.assignmentEvidence;
@@ -456,16 +460,27 @@ function preservedNativeRows(root, unit, consumer) {
 
 function preservedBasicRows(root, unit, consumer) {
   const request = unit.request, count = unit.rows.length;
+  const nativeParent = unit.kind === "basic-parent-registration";
   const proof = registerBasicScopeRebind({ root, request, verifyProjection: true });
   if (proof.status !== "PASS" || proof.requestId !== request.requestId || proof.replay !== true ||
       proof.consumerSearchStatus !== "STATIC_VALUES_VERIFIED" || proof.totalQuestions !== count ||
-      proof.expectedQuestionCount !== unit.expectedQuestionCount || proof.newMetadataApprovals !== 0 || proof.advancedApprovals !== 0 ||
-      proof.metadataValuesChanged !== false || proof.preservedMetadataApprovals !== count || !same(proof.plannedPaths, []))
+      proof.expectedQuestionCount !== unit.expectedQuestionCount || proof.newMetadataApprovals !== (nativeParent ? count : 0) || proof.advancedApprovals !== 0 ||
+      proof.metadataValuesChanged !== false || proof.preservedMetadataApprovals !== (nativeParent ? 0 : count) ||
+      nativeParent && (proof.newBasicParentApprovals !== count || proof.newDifficultyJudgments !== 0 || proof.newBlindReviews !== 0 || proof.newReview2 !== 0) || !same(proof.plannedPaths, []))
     throw Error("basic preservation official replay/scope mismatch");
   const metadata = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8"));
   return unit.rows.map(row => {
     const matches = metadata.records.filter(r => r.questionUid === row.uid);
-    if (matches.length !== 1 || consumer.runtimeByUid.has(row.uid)) throw Error("basic preservation current metadata/runtime scope mismatch");
+    if (matches.length !== 1) throw Error("basic preservation current metadata scope mismatch");
+    const runtime = consumer.runtimeByUid.get(row.uid) || [];
+    if (request.approval.sourceReview.schemaVersion === NATIVE_BASIC_HOLD_SCHEMA) {
+      const bindings = (proof.heldRuntimeBindings || []).filter(record => record.questionUid === row.uid);
+      const stableHash = value => crypto.createHash("sha256").update(JSON.stringify(value, (_, v) => v && typeof v === "object" && !Array.isArray(v)
+        ? Object.fromEntries(Object.keys(v).sort().map(key => [key, v[key]])) : v)).digest("hex");
+      if (bindings.length !== runtime.length || bindings.length > 1 || runtime.some(record => !bindings.some(binding => binding.recordSha256 === stableHash(record))) ||
+          !same((proof.metaOnlyHoldReasons || []).filter(record => record.questionUid === row.uid), [{ questionUid: row.uid, reason: NATIVE_BASIC_HOLD_REASON }]))
+        throw Error("basic preservation explicit held runtime drift");
+    } else if (runtime.length) throw Error("basic preservation current metadata/runtime scope mismatch");
     const item = request.items.find(i => i.questionUid === row.uid), record = matches[0];
     // The official replay above checks the entire protected metadata/identity
     // row. The current canonical resolver and actual page query below must
@@ -539,8 +554,10 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
         continue;
       }
     }
-    if (unit.kind === "basic-approval-preservation") {
+    if (["basic-approval-preservation", "basic-parent-registration"].includes(unit.kind)) {
+      const nativeParent = unit.kind === "basic-parent-registration";
       summary.approvalCreated = false; summary.newMetadataApprovals = 0; summary.advancedApprovals = 0;
+      if (nativeParent) { summary.newBasicParentApprovals = 0; summary.newDifficultyJudgments = 0; summary.newBlindReviews = 0; summary.newReview2 = 0; }
       summary.preservedMetadataApprovals = 0; summary.expectedQuestionCount = unit.expectedQuestionCount;
       try { rows = preservedBasicRows(root, unit, consumer); }
       catch (error) {
@@ -598,6 +615,11 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       if (checked.unobserved?.length) result.unobservedFields.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid, fields: checked.unobserved });
     }
     if (["native-approval-preservation", "basic-approval-preservation"].includes(unit.kind)) summary.preservedMetadataApprovals = summary.passed;
+    if (unit.kind === "basic-parent-registration") {
+      summary.newBasicParentApprovals = summary.passed;
+      summary.newMetadataApprovals = summary.passed;
+      summary.approvalCreated = summary.passed > 0;
+    }
   }
   if (result.failures.length || result.counts.checked !== result.counts.changed) result.status = "FAIL";
   return result;
@@ -624,6 +646,8 @@ export function renderSummary(result) {
     lines.push(`  Preserved ${e.approvalType} approvals: ${e.preservedMetadataApprovals ?? 0}; new approvals: 0; source questions: ${e.expectedQuestionCount}.`);
   for (const e of result.exams.filter(e => e.kind === "basic-approval-preservation"))
     lines.push(`  Preserved basic approvals: ${e.preservedMetadataApprovals ?? 0}; new approvals: 0; advanced approvals: 0; source questions: ${e.expectedQuestionCount}.`);
+  for (const e of result.exams.filter(e => e.kind === "basic-parent-registration"))
+    lines.push(`  New basic parent approvals: ${e.newBasicParentApprovals ?? 0}; preserved prior parents: 0; advanced approvals: 0; source questions: ${e.expectedQuestionCount}.`);
   if (result.assignmentPending?.length) {
     const byExam = new Map();
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);

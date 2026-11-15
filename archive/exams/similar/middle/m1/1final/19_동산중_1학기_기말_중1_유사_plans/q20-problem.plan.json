@@ -1,35 +1,268 @@
 {
-  "capability": "construction-spike-v1",
-  "sourceQuote": "어느 도시의 하루 동안의 기온 변화를 나타낸 그래프이다.",
-  "caption": "시간에 따른 하루 동안의 기온 변화를 나타낸 꺾은선 그래프",
-  "mathPlan": {
-    "schemaVersion": "construction-spike-v1",
-    "nodes": [
+  "schemaVersion": "APMATH_NATIVE_SIMPLE_FUNCTION_GRAPH_PLAN_v1",
+  "status": "CANDIDATE_AWAITING_ROOT_CAPTURE",
+  "sourceExam": "archive/exams/similar/middle/m1/1final/19_동산중_1학기_기말_중1_유사.js",
+  "sourceQuestionId": 20,
+  "sourceQuote": "다음 그림은 어느 도시의 하루 동안의 기온 변화를 나타낸 그래프이다. $x$시일 때의 기온을 $y\\ ^\\circ\\text{C}$라 할 때, 하루 중 기온이 상승한 시간대는 몇 시부터 몇 시까지인가? (4점)",
+  "sourceAsset": "archive/assets/images/19_동산중_1학기_기말_중1_유사/q20.svg",
+  "assetPath": "assets/images/19_동산중_1학기_기말_중1_유사/q20-native-graph.svg",
+  "sourceAssetSha256": "8a1fe57be9b6f67b28def45c5616ef8455e25c65175bfea5872cdebeed7ba2d7",
+  "candidateAssetSha256": "f37505a68d3cd114a578a1381f56a706270691c2224e4bfda3bab0395989be4c",
+  "renderer": "alive.engine.visual_renderer.render_visual_spec",
+  "rendererVersion": "0.5.3-student-language-accessibility",
+  "typography": "archive/tools/geometry-equation/production/typography.mjs",
+  "studentAnswerExposed": false,
+  "visualSpec": {
+    "version": "0.1",
+    "type": "simple_function_graph",
+    "width": 600,
+    "height": 350,
+    "xRange": [
+      0,
+      27
+    ],
+    "yRange": [
+      0,
+      28
+    ],
+    "title": "하루 기온 변화",
+    "description": "하루 동안 온도가 오르내리는 모습을 나타낸 꺾은선 그래프.",
+    "curves": [
       {
-        "id": "O",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "0"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
+        "points": [
+          {
+            "x": 0,
+            "y": 12
+          },
+          {
+            "x": 6,
+            "y": 10
+          },
+          {
+            "x": 14,
+            "y": 24
+          },
+          {
+            "x": 24,
+            "y": 15
+          }
+        ]
       }
-    ]
+    ],
+    "points": [
+      {
+        "x": 6,
+        "y": 10
+      },
+      {
+        "x": 14,
+        "y": 24
+      }
+    ],
+    "segments": [
+      {
+        "from": {
+          "x": 27,
+          "y": 0
+        },
+        "to": {
+          "x": 26.78,
+          "y": 0.14
+        }
+      },
+      {
+        "from": {
+          "x": 27,
+          "y": 0
+        },
+        "to": {
+          "x": 26.78,
+          "y": -0.14
+        }
+      },
+      {
+        "from": {
+          "x": 0,
+          "y": 28
+        },
+        "to": {
+          "x": 0.14,
+          "y": 27.78
+        }
+      },
+      {
+        "from": {
+          "x": 0,
+          "y": 28
+        },
+        "to": {
+          "x": -0.14,
+          "y": 27.78
+        }
+      },
+      {
+        "from": {
+          "x": 6,
+          "y": 0
+        },
+        "to": {
+          "x": 6,
+          "y": -0.36
+        }
+      },
+      {
+        "from": {
+          "x": 14,
+          "y": 0
+        },
+        "to": {
+          "x": 14,
+          "y": -0.36
+        }
+      },
+      {
+        "from": {
+          "x": 24,
+          "y": 0
+        },
+        "to": {
+          "x": 24,
+          "y": -0.36
+        }
+      },
+      {
+        "from": {
+          "x": 0,
+          "y": 10
+        },
+        "to": {
+          "x": 0.36,
+          "y": 10
+        }
+      },
+      {
+        "from": {
+          "x": 0,
+          "y": 24
+        },
+        "to": {
+          "x": 0.36,
+          "y": 24
+        }
+      }
+    ],
+    "annotations": []
   },
-  "assetPath": "assets/images/19_동산중_1학기_기말_중1_유사/q20.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/middle/m1/1final/19_동산중_1학기_기말_중1_유사_plans/engine_evidence/q20-problem-result.json",
-    "statePath": "archive/exams/similar/middle/m1/1final/19_동산중_1학기_기말_중1_유사_plans/engine_evidence/q20-problem-state.json",
-    "svgPath": "archive/exams/similar/middle/m1/1final/19_동산중_1학기_기말_중1_유사_plans/engine_evidence/q20-problem.svg"
-  }
+  "typographyPlan": [
+    {
+      "text": "x(시)",
+      "kind": "MIXED",
+      "fontPx": 25,
+      "anchor": "start",
+      "parts": [
+        {
+          "kind": "MATH",
+          "tex": "x"
+        },
+        {
+          "kind": "TEXT",
+          "text": "(시)"
+        }
+      ],
+      "x": 530,
+      "y": 278
+    },
+    {
+      "text": "y(°C)",
+      "kind": "MIXED",
+      "fontPx": 25,
+      "anchor": "start",
+      "parts": [
+        {
+          "kind": "MATH",
+          "tex": "y"
+        },
+        {
+          "kind": "TEXT",
+          "text": "(°C)"
+        }
+      ],
+      "x": 40,
+      "y": 16
+    },
+    {
+      "text": "O",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "start",
+      "x": 7,
+      "y": 295
+    },
+    {
+      "text": "6",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "middle",
+      "at": {
+        "x": 6,
+        "y": 0,
+        "dx": 0,
+        "dy": 5
+      }
+    },
+    {
+      "text": "14",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "middle",
+      "at": {
+        "x": 14,
+        "y": 0,
+        "dx": 0,
+        "dy": 5
+      }
+    },
+    {
+      "text": "24",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "middle",
+      "at": {
+        "x": 24,
+        "y": 0,
+        "dx": 0,
+        "dy": 5
+      }
+    },
+    {
+      "text": "10",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "end",
+      "at": {
+        "x": 0,
+        "y": 10,
+        "dx": 1,
+        "dy": -13
+      },
+      "dx": -8,
+      "dy": -13
+    },
+    {
+      "text": "24",
+      "kind": "MATH",
+      "fontPx": 25,
+      "anchor": "end",
+      "at": {
+        "x": 0,
+        "y": 24,
+        "dx": 1,
+        "dy": -13
+      },
+      "dx": -8,
+      "dy": -13
+    }
+  ],
+  "canvasWidth": 640,
+  "translateX": 40
 }

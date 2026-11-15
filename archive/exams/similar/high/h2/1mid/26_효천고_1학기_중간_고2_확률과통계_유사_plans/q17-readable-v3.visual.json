@@ -1,0 +1,152 @@
+{
+  "sourcePath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js",
+  "questionId": 17,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "sourceQuote": "수직선 위에 두 점 $A(-3)$, $B(3)$이 있고",
+        "sourceConditions": [
+          {
+            "id": "q17-c1",
+            "condition": "수직선 위에 두 점 A(-3), B(3)이 있고 점 P가 원점에 놓여 있다.",
+            "mappedTo": "A,P,B"
+          }
+        ],
+        "newVisualInformation": [
+          "The three stated coordinates are easier to read at full width."
+        ],
+        "caption": "수직선 위의 점 A, P, B",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displaySegments": [
+          {
+            "id": "seg-AP",
+            "refs": [
+              "A",
+              "P"
+            ]
+          },
+          {
+            "id": "seg-PB",
+            "refs": [
+              "P",
+              "B"
+            ]
+          }
+        ],
+        "displayPoints": [
+          "A",
+          "P",
+          "B"
+        ],
+        "displayCircles": [],
+        "planeMarks": {
+          "textLabels": [
+            {
+              "id": "tA",
+              "at": "A",
+              "text": "-3",
+              "anchor": "S"
+            },
+            {
+              "id": "tP",
+              "at": "P",
+              "text": "0",
+              "anchor": "S"
+            },
+            {
+              "id": "tB",
+              "at": "B",
+              "text": "3",
+              "anchor": "S"
+            }
+          ]
+        },
+        "assetPath": "assets/images/26_효천고_1학기_중간_고2_확률과통계_유사/q17.svg",
+        "engineEvidence": {
+          "resultPath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/engine_evidence/q17-problem-result.json",
+          "statePath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/engine_evidence/q17-problem-state.json",
+          "svgPath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/engine_evidence/q17-problem.svg"
+        },
+        "accessibilityDescription": "수직선 위의 세 점과 좌표.",
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 420
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 32,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

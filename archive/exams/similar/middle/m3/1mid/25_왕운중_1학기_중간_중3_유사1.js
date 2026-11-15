@@ -238,13 +238,13 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "수직선 위의 점 $A(-1)$을 중심으로 하고 밑변이 2, 높이가 1인 직각삼각형의 빗변을 반지름으로 하는 원을 그려 수직선의 오른쪽과 만나는 점을 $P$라 하자. 또한 점 $B(4)$를 중심으로 하고 한 변의 길이가 1인 정사각형의 대각선을 반지름으로 하는 원을 그려 수직선의 왼쪽과 만나는 점을 $Q$라 할 때, 점 $P$와 $Q$에 대응하는 수를 바르게 짝지은 것은?\n<br><svg width=\"280\" height=\"160\" viewBox=\"0 0 280 160\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"10\" y1=\"130\" x2=\"270\" y2=\"130\" stroke=\"black\" stroke-width=\"1\" />\n  <polygon points=\"110,130 110,110 70,110\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\n  <polygon points=\"210,130 210,110 190,110 190,130\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\n  <text x=\"110\" y=\"145\" font-size=\"10px\" text-anchor=\"middle\">-1</text>\n  <text x=\"210\" y=\"145\" font-size=\"10px\" text-anchor=\"middle\">4</text>\n  <text x=\"110\" y=\"105\" font-size=\"10px\" text-anchor=\"middle\">A</text>\n  <text x=\"210\" y=\"105\" font-size=\"10px\" text-anchor=\"middle\">B</text>\n</svg>",
+    "content": "수직선 위의 점 $A(-1)$을 중심으로 하고 밑변이 2, 높이가 1인 직각삼각형의 빗변을 반지름으로 하는 원을 그려 수직선의 오른쪽과 만나는 점을 $P$라 하자. 또한 점 $B(4)$를 중심으로 하고 한 변의 길이가 1인 정사각형의 대각선을 반지름으로 하는 원을 그려 수직선의 왼쪽과 만나는 점을 $Q$라 할 때, 점 $P$와 $Q$에 대응하는 수를 바르게 짝지은 것은?\n<br><img src=\"assets/images/25_왕운중_1학기_중간_중3_유사1/q09-problem-readable-v2.svg\" alt=\"수직선 위의 중심 A와 B에서 두 호를 그어 교점 P와 Q를 표시한 그림\" style=\"width:420px;max-width:100%;height:auto;\">",
     "choices": [
-      "$P: -1+\\\\sqrt{5},\\ Q: 4-\\\\sqrt{2}$",
-      "$P: -1+\\\\sqrt{5},\\ Q: 4+\\\\sqrt{2}$",
-      "$P: -1-\\\\sqrt{5},\\ Q: 4-\\\\sqrt{2}$",
-      "$P: 1+\\\\sqrt{5},\\ Q: -4-\\\\sqrt{2}$",
-      "$P: 1-\\\\sqrt{5},\\ Q: -4+\\\\sqrt{2}$"
+      "$P: -1+\\sqrt{5},\\ Q: 4-\\sqrt{2}$",
+      "$P: -1+\\sqrt{5},\\ Q: 4+\\sqrt{2}$",
+      "$P: -1-\\sqrt{5},\\ Q: 4-\\sqrt{2}$",
+      "$P: 1+\\sqrt{5},\\ Q: -4-\\sqrt{2}$",
+      "$P: 1-\\sqrt{5},\\ Q: -4+\\sqrt{2}$"
     ],
     "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",

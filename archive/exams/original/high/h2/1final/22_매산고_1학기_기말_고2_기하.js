@@ -557,7 +557,7 @@ window.questionBank = [
   {
     "id": 14,
     "questionType": "객관식",
-    "content": "다음 그림과 같이 두 점 $\\mathrm{A, B}$는 각각 서로 수직인 두 평면 $\\alpha, \\beta$ 위에 있고, 점 $\\mathrm{P}$는 두 평면 $\\alpha, \\beta$의 교선 $l$ 위에 있다. 직선 $l$과 두 직선 $\\mathrm{PA, PB}$가 이루는 각의 크기가 각각 $60^\\circ, 45^\\circ$일 때, 평면 $\\mathrm{PBA}$와 평면 $\\beta$가 이루는 각의 크기를 $\\theta$라고 하자. 이때 $\\cos^2\\theta$의 값을 구하면? [4.6점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_기말_고2_기하/q14-problem-v2.svg\" style=\"display:block; margin:8px auto; width:290px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"교선 l에서 만나는 두 평면과 점 P, A, B\"></div>",
+    "content": "다음 그림과 같이 두 점 $\\mathrm{A, B}$는 각각 서로 수직인 두 평면 $\\alpha, \\beta$ 위에 있고, 점 $\\mathrm{P}$는 두 평면 $\\alpha, \\beta$의 교선 $l$ 위에 있다. 직선 $l$과 두 직선 $\\mathrm{PA, PB}$가 이루는 각의 크기가 각각 $60^\\circ, 45^\\circ$일 때, 평면 $\\mathrm{PBA}$와 평면 $\\beta$가 이루는 각의 크기를 $\\theta$라고 하자. 이때 $\\cos^2\\theta$의 값을 구하면? [4.6점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_기말_고2_기하/q14-audit-rework.svg\" style=\"display:block; margin:8px auto; width:290px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"교선 l에서 만나는 두 평면과 점 P, A, B\"></div>",
     "choices": [
       "$\\frac{1}{8}$",
       "$\\frac{1}{7}$",

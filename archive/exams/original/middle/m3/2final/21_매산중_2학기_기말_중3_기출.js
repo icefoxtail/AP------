@@ -1233,13 +1233,15 @@ window.questionBank = [
     "id": 21,
     "content": "[서답형 1] [서술형]\n[수준별 1-(1)] 다음은 점 $O$는 원의 중심이다. $\\angle x$의 크기를 구하시오. (4점)\n[수준별 1-(2)] 다음 그림과 같이 큰 반원의 지름의 양 끝 점을 $A$, $B$라 하고 작은 두 반원의 교점을 $C$라 하자. 또 점 $C$를 지나고 지름 $AB$에 수직인 직선이 호 $AB$와 만나는 점을 $G$라 하자. 선분 $CG=2r$를 지름으로 하는 원 $O$를 그릴 때, 색칠한 부분의 넓이를 $r$로 나타내시오. (6점)",
     "choices": [],
-    "answer": "(1) $45^\\circ$ (2) $\\pi r^2$",
-    "solution": "(1) $AB$는 지름이므로\n$\\angle ACB=90^\\circ$이다.\n삼각형 $ABC$에서\n$x=180^\\circ-90^\\circ-45^\\circ=45^\\circ$이다.\n\n(2) $AC=m$, $CB=n$이라 하자.\n삼각형 $AGB$는 $AB$를 지름으로 하므로\n$\\angle AGB=90^\\circ$이다.\n$CG$는 빗변 $AB$에 내린 높이이므로\n$CG^2=AC\\cdot CB$이다.\n$CG=2r$를 대입하면\n$mn=(2r)^2=4r^2$이다.\n\n큰 반원의 반지름은 $\\dfrac{m+n}{2}$,\n작은 두 반원의 반지름은 각각 $\\dfrac m2$, $\\dfrac n2$이다.\n따라서 색칠한 부분의 넓이는\n$\\dfrac12\\pi\\left(\\dfrac{m+n}{2}\\right)^2-\\dfrac12\\pi\\left(\\dfrac m2\\right)^2-\\dfrac12\\pi\\left(\\dfrac n2\\right)^2$\n$=\\dfrac\\pi8\\{(m+n)^2-m^2-n^2\\}$\n$=\\dfrac\\pi4mn$\n$=\\dfrac\\pi4CG^2$\n$=\\dfrac\\pi4(2r)^2=\\pi r^2$이다.\n그러므로 구하는 넓이는 $\\pi r^2$이다.",
+    "answer": "(1) $50^\\circ$ (2) $\\pi r^2$",
+    "solution": "(1) $AB$는 지름이므로\n$\\angle ACB=90^\\circ$이다.\n삼각형 $ABC$에서\n$x=180^\\circ-90^\\circ-40^\\circ=50^\\circ$이다.\n\n(2) $AC=m$, $CB=n$이라 하자.\n삼각형 $AGB$는 $AB$를 지름으로 하므로\n$\\angle AGB=90^\\circ$이다.\n$CG$는 빗변 $AB$에 내린 높이이므로\n$CG^2=AC\\cdot CB$이다.\n$CG=2r$를 대입하면\n$mn=(2r)^2=4r^2$이다.\n\n큰 반원의 반지름은 $\\dfrac{m+n}{2}$,\n작은 두 반원의 반지름은 각각 $\\dfrac m2$, $\\dfrac n2$이다.\n따라서 색칠한 부분의 넓이는\n$\\dfrac12\\pi\\left(\\dfrac{m+n}{2}\\right)^2-\\dfrac12\\pi\\left(\\dfrac m2\\right)^2-\\dfrac12\\pi\\left(\\dfrac n2\\right)^2$\n$=\\dfrac\\pi8\\{(m+n)^2-m^2-n^2\\}$\n$=\\dfrac\\pi4mn$\n$=\\dfrac\\pi4CG^2$\n$=\\dfrac\\pi4(2r)^2=\\pi r^2$이다.\n그러므로 구하는 넓이는 $\\pi r^2$이다.",
     "tags": [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q21-r1.svg",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q21-audit-rework.svg",
+    "imageAlt": "왼쪽 그림에서 AB는 원의 지름이며, A의 각도 표시는 40도이고 x는 B의 각이다. 오른쪽 그림은 큰 반원 안에서 작은 두 반원의 바깥쪽을 칠한 모습이다.",
+    "imageSize": "tall",
     "level": "상",
     "category": "원의 성질",
     "originalCategory": "원의 성질",

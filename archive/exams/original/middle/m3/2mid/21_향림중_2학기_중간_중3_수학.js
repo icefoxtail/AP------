@@ -315,6 +315,8 @@ window.examData = {
     "curriculum": "2015",
     "primaryMethod": "꼭짓점(−2,4)로p,q를 읽고 y절편2를 꼭짓점식에 넣어a를 복원한 뒤 세값을 더한다.",
     "decisiveStep": "꼭짓점(−2,4)로p,q를 읽고 y절편2를 꼭짓점식에 넣어a를 복원한 뒤 세값을 더한다."
+  ,
+    "courseKey": "M3-1"
   },
     {
       "id": 10,
@@ -791,6 +793,8 @@ window.examData = {
     "curriculum": "2015",
     "primaryMethod": "그래프의 꼭짓점(3,−2),y절편1로 a1/3을 구하고 일반형의 세계수를 더한다.",
     "decisiveStep": "그래프의 꼭짓점(3,−2),y절편1로 a1/3을 구하고 일반형의 세계수를 더한다."
+  ,
+    "courseKey": "M3-1"
   },
     {
       "id": 24,

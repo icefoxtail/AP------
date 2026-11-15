@@ -184,7 +184,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "직각을 낀 두 변의 길이가 $30\\text{cm}$와 $60\\text{cm}$인 직각삼각형 모양의 천에서, 세로의 길이가 $a\\text{cm}$인 직사각형을 잘라낼 때, 직사각형의 넓이가 최대가 되도록 하는 $a$의 값은?<br><img src=\"assets/images/25_효천고_1학기_기말_고1_유사1/q07-problem-v1.svg\" alt=\"30cm와 60cm인 직각변이 있는 직각삼각형 안의 직사각형, 세로 변의 길이는 a cm\">",
+    "content": "직각을 낀 두 변의 길이가 $30\\text{cm}$와 $60\\text{cm}$인 직각삼각형 모양의 천에서, 세로의 길이가 $a\\text{cm}$인 직사각형을 잘라낼 때, 직사각형의 넓이가 최대가 되도록 하는 $a$의 값은?<br><img src=\"assets/images/25_효천고_1학기_기말_고1_유사1/q07-audit-rework.svg\" alt=\"30cm와 60cm인 직각변이 있는 직각삼각형 안의 직사각형, 세로 변의 길이는 a cm\">",
     "choices": [
       "$5$",
       "$10$",
