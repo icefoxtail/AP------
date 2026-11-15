@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E090",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T06:05:15.096196+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/17_경북대도중_1학기_기말_중3_수학.js",
+  "sourceBlob": "60aa7dc0b83ad27ec87efbdf45f0530fbcba6992",
+  "inputArtifacts": {
+    "workers/C/E090.review.json": {
+      "sha256": "64e8013a36baf4b256f8b10aad41695a35dae2a7ad9fc44fa5cf0723037eaf6c"
+    },
+    "workers/C/E090.4slot.json": {
+      "sha256": "92eb17dbe060b343f601c154f43457c2aaf98795d221778124bd78255674583e"
+    },
+    "workers/C/E090.input.json": {
+      "sha256": "422635d8467475a7e895abe75ce0a028dbcf39edda2ebbf5b3a332d133637582"
+    }
+  },
+  "sampledOrdinals": [
+    3,
+    7,
+    21
+  ],
+  "items": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_23d858bc0857ef0521d1fd6e5179aad47c076309c86222ecbbe7370f8e70f37e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제그림에서꼭짓점은원점,표시된두점은(±3,4),위로열림을확인했다. 기존해설은(3,-4)와음계수를사용하므로IMAGE_SOLUTION_CONFLICT및UNKNOWN보류가필요하다. 현재패킷의대입method증거보존과무패치를수용한다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_46e5b047eacab91915c0d9b45be592d4ba477089ece163f8c8ac77a8aa40aa03",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제q07그림의축x=-1,최고높이6,y절편3을확인했다. 해설의꼭짓점(2,-1)은그림과다른함수이므로UNKNOWN보류와식복원RPM후보만보존하는판정을수용한다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제막대에서A=2,2,2,2,2/B=3,1,2,1,3/C=1,2,4,2,1을확인했다. 따라서B가A보다중앙에서더퍼져있으며해설의A/B역전설명및ㅁ참뒤결론제외는충돌이다. UNKNOWN및명시부채수용. 통계RPM086/M3-07과2022 M3-2 분리보존도타당."
+    }
+  ],
+  "findingsResolved": [],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E090-assets/contact-1.jpg",
+      "sha256": "b1e11368735e9536d81102e263ffba8f77541ea5ff66a3a8b212b4eb9502aa59",
+      "status": "VIEWED"
+    },
+    {
+      "path": "workers/C/E090-assets/contact-2.jpg",
+      "sha256": "d0a38199881579e8b1e4922ffb22b29709181d40afbec5c26253a8b910fc8ba9",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}
