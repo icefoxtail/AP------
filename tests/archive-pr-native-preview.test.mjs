@@ -135,7 +135,8 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       hook[phase]?.(target);
       if (phase === 'projection' && !replay) throw Error('FIXTURE_RECEIPT_REQUIRED');
       const identityRepair=req.registrationMode==='IDENTITY_FINGERPRINT_ONLY';
-      const basic=req.approval.sourceReview?.schemaVersion==='archive-basic-scope-current-source-preservation-v1';
+      const basic=['archive-basic-scope-current-source-preservation-v1','archive-basic-native-source-hold-preservation-v1']
+        .includes(req.approval.sourceReview?.schemaVersion);
       const result = { status: 'PASS', requestId: req.requestId, totalQuestions: req.items.length, replay,
         ...(req.scope==='PARTIAL_UIDS'?{scope:req.scope,partialUidCount:req.items.length,expectedQuestionCount:req.expectedQuestionCount}:{}),
         ...(identityRepair?{registrationMode:req.registrationMode,metadataChanged:false,newMetadataApprovals:0,
@@ -355,6 +356,45 @@ test('basic preservation proof rejects new approvals, missing preserved counts, 
   bad.hook.result=(phase,result)=>({...result,plannedPaths:phase==='dry-run'?[...result.plannedPaths,AUTHORITY]:result.plannedPaths});
   assert.throws(()=>bad.produce(),/BASIC_PRESERVATION_OUTPUT_SCOPE/);
   const pending=fixture(t,{basicPreservation:true,pairedDifficulty:true});
+  pending.hook.assignmentPending=[{exam:'own-reviewed-difficulty',qid:1,uid:'fixture',reason:'assignment_missing'}];
+  assert.throws(()=>pending.produce(),/CONSUMER_NOT_PASS/);
+});
+
+const nativeBasicHold = request => {
+  request.approval.sourceReview.schemaVersion = 'archive-basic-native-source-hold-preservation-v1';
+};
+
+test('native basic hold retains its named schema and actual selected/full counts through the complete preview', t => {
+  const f=fixture(t,{basicPreservation:true,partial:true,pairedDifficulty:true,mutateRequest:nativeBasicHold});
+  const selected=f.selected(),basic=selected.find(r=>r.kind==='basic-approval-preservation');
+  assert.equal(basic.basicPreservation.schemaVersion,'archive-basic-native-source-hold-preservation-v1');
+  assert.equal(basic.questionCount,1);assert.equal(basic.sourceQuestionCount,24);
+  assert.deepEqual(selected.map(r=>r.path),[REQUEST,DIFFICULTY_REQUEST]);
+  const proof=f.produce();assert.equal(proof.status,'PASS');
+  const consumer=proof.nativePreview.checks.find(c=>c.id==='native-consumer');
+  assert.deepEqual(consumer.preservedBasicApprovals,{requests:1,preservedMetadataApprovals:1,newMetadataApprovals:0,advancedApprovals:0});
+  assert.equal(f.validate(proof).reusable,true);f.assertShadowsRemoved();
+});
+
+test('native basic hold preview rejects unknown schemas, wrong approval type and scope mixing', t => {
+  for(const mutate of [
+    r=>{r.approval.sourceReview.schemaVersion+='-unknown';},
+    r=>{r.approval.type='FINAL_QA';},
+    r=>{r.scope='PARTIAL_UIDS';},
+    r=>{r.registrationMode='IDENTITY_FINGERPRINT_ONLY';},
+  ]) {
+    const f=fixture(t,{basicPreservation:true,mutateRequest:r=>{nativeBasicHold(r);mutate(r);}});
+    assert.throws(()=>f.selected(),/BASIC_PRESERVATION_SCOPE/);
+  }
+});
+
+test('native basic hold preview still requires official preserved counts, zero new approval and strict Consumer evidence', t => {
+  for(const field of ['newMetadataApprovals','advancedApprovals','preservedMetadataApprovals','expectedQuestionCount']) {
+    const f=fixture(t,{basicPreservation:true,mutateRequest:nativeBasicHold});
+    f.hook.result=(phase,result)=>({...result,[field]:field==='preservedMetadataApprovals'?0:99});
+    assert.throws(()=>f.produce(),/DRY_RUN_NOT_PASS/);
+  }
+  const pending=fixture(t,{basicPreservation:true,pairedDifficulty:true,mutateRequest:nativeBasicHold});
   pending.hook.assignmentPending=[{exam:'own-reviewed-difficulty',qid:1,uid:'fixture',reason:'assignment_missing'}];
   assert.throws(()=>pending.produce(),/CONSUMER_NOT_PASS/);
 });

@@ -15,6 +15,7 @@ export const DIFFICULTY_REQUEST_SCHEMA = 'archive-difficulty5-register-request-v
 const DIFFICULTY_CORRECTION_SCHEMA = 'archive-difficulty5-reviewed-correction-v1';
 export const AUDIT_PRESERVATION_SCHEMA = 'archive-native-audit-preservation-v1';
 export const BASIC_PRESERVATION_SCHEMA = 'archive-basic-scope-current-source-preservation-v1';
+export const NATIVE_BASIC_HOLD_SCHEMA = 'archive-basic-native-source-hold-preservation-v1';
 const BASIC_REBIND_SCHEMA = 'archive-basic-scope-rebind-request-v1';
 const PARENT_CORRECTION_SCHEMA = 'archive-basic-parent-correction-request-v1';
 export const NATIVE_PREVIEW_HELPER = 'tools/ci/archive-pr-native-preview.mjs';
@@ -113,7 +114,8 @@ export function difficultyBeforeBindings(request) {
 }
 export function basicPreservationDescriptor(request) {
   if (request.schemaVersion !== BASIC_REBIND_SCHEMA || request.approval?.sourceReview === undefined) return undefined;
-  if (request.approval.sourceReview?.schemaVersion !== BASIC_PRESERVATION_SCHEMA || request.approval.type !== 'BASIC_SCOPE_REBIND'
+  const schemaVersion = request.approval.sourceReview?.schemaVersion;
+  if (![BASIC_PRESERVATION_SCHEMA, NATIVE_BASIC_HOLD_SCHEMA].includes(schemaVersion) || request.approval.type !== 'BASIC_SCOPE_REBIND'
       || request.scope !== undefined || request.registrationMode !== undefined || !Array.isArray(request.items) || !request.items.length)
     fail('BASIC_PRESERVATION_SCOPE');
   const bindings = request.items.map(item => ({ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
@@ -121,7 +123,7 @@ export function basicPreservationDescriptor(request) {
   if (bindings.some(row => typeof row.questionUid !== 'string' || !row.questionUid || !Number.isSafeInteger(row.sourceOrdinal) || row.sourceOrdinal < 1
       || !/^[a-f0-9]{64}$/.test(row.sourceFingerprint || '') || !/^[a-f0-9]{64}$/.test(row.contentFingerprint || ''))
       || new Set(bindings.map(r => r.questionUid)).size !== bindings.length) fail('BASIC_PRESERVATION_BINDINGS');
-  return { schemaVersion: BASIC_PRESERVATION_SCHEMA, bindings };
+  return { schemaVersion, bindings };
 }
 
 // Preserve the normal request order except where one exact audit-preservation
@@ -229,7 +231,8 @@ export function orderNativeRequests(requests) {
   const basic = requests.filter(r => r.basicPreservation);
   const owners = new Map();
   for (const request of basic) {
-    if (request.kind !== 'basic-approval-preservation' || request.basicPreservation.schemaVersion !== BASIC_PRESERVATION_SCHEMA)
+    if (request.kind !== 'basic-approval-preservation' ||
+        ![BASIC_PRESERVATION_SCHEMA, NATIVE_BASIC_HOLD_SCHEMA].includes(request.basicPreservation.schemaVersion))
       fail('BASIC_PRESERVATION_SCOPE');
     for (const binding of request.basicPreservation.bindings) {
       if (owners.has(binding.questionUid)) fail('BASIC_DEPENDENCY_AMBIGUOUS');
