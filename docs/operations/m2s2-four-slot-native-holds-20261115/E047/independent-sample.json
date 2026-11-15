@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E047",
+  "examiner": "C",
+  "author": "B",
+  "createdAt": "2026-11-14T05:20:59.540722+00:00",
+  "sourceArchiveFile": "original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "31f4c6901c956812124f81f489e5e15c4d080af3",
+  "reviewSha256": "c5cbe9ca96b5581d535e537a103a31c65b877c7e8d3b6c248381e359ba2d73aa",
+  "fourSlotSha256": "fa2f13f79a239615609717fcf8f15b4e7f9d5bcbdcb169e07bc5062867e7e09c",
+  "ordinals": [
+    8,
+    16,
+    22
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_e508d239885fcbaa6aea9aca83486cb7411ce21d4c25c947e3b9005528237d39",
+      "verdict": "PASS",
+      "reason": "두 무게중심의 높이1/3 반복과BD의 절반밑변을 실제 그림에서 확인했다. pure 넓이 분할을 TPL gap으로 분리하고 넓이비 후보/상위 비를 함께 보존한 판단이 정확하다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_880bee3aea9af07c72bd83d5431d2a724b4677c14baa054754f4926b2e7fe7e2",
+      "verdict": "PASS",
+      "reason": "첫번째와두번째 눈의 순서를 구분하고1..6 범위에서 y=x+1을 만족하는 순서쌍을 세므로 유한범위 순서쌍 NEW_PT와 자연수/범위 condition이 정확하다.",
+      "quotesExact": true,
+      "quoteCount": 9,
+      "imageViewed": false,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_8fb0de21223e7284ef8460e0341640d7302874e33a97fee32e6e5bc207f786a4",
+      "verdict": "PASS",
+      "reason": "E와F는 서로 다른 두 삼각형의 중선 끝점으로 BD,DC의 중점이며 EF는 두 절반길이의 합이다. 잘못된 중점연결정리를 중점 길이합으로 고친4칸, 중선2:1→SAS→길이비의메타를 수용한다.",
+      "quotesExact": true,
+      "quoteCount": 7,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_b9efb354b7ad06e277ca011db6d949b53bb845761c3cb92ced1ec8f113f13aba",
+      "difficultyBucket": 2,
+      "level": "중",
+      "decision": "ACCEPT_AFTER_PINPOINT",
+      "reason": "AA 두 각을 명시했고 전체AC→비례식→부분BE의 정형 해석이다. 회전대응 하나로bucket2/B23을 권고한다. 작성자의2/B23 보정 최종본을 재확인했다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_00cf896406a0e6c00ebf391bc7fd24dc3c56103c673c4fee847994ba20fba5c0",
+      "difficultyBucket": 3,
+      "level": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "여러 분할삼각형의 대응비를 비교해 공통끼인각이 있는 SAS쌍을 선택하는 단계로3/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_8de9cb0748edf18969af54bdff060c95d18955b2c222b49c67d3ff6a33c7b716",
+      "difficultyBucket": 3,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "높이 비례중항으로DC를 복원하고 대응각·변비·넓이비 진술을 함께 비교하는3/B23이다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_90eb9983a0cce23d3a1be45d1e563849cd506295c968f72a7a484e14a93e1663",
+      "difficultyBucket": 3,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "무게중심의 중점과2:3을 새 평행 닮음의 두 목표길이에 전달하는 결합으로3/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_e508d239885fcbaa6aea9aca83486cb7411ce21d4c25c947e3b9005528237d39",
+      "difficultyBucket": 3,
+      "level": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "중첩 높이비1/9와 별도 밑변1/2을 결합하는 구조여서3/B23, 기존상과경계표시가맞다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_004d1eb22fad0b7fb92d787a4579f21cec4c84c51da6951aa71cecfc0de0850f",
+      "difficultyBucket": 3,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "MN에는 중점연결,BE에는 교차삼각형 닮음을 각각 선택해 서로 다른 두 구조를 합하므로3/B23."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_d5a7d623d9a356650d37df03955161e82aea38b1ad8303c41e6c4c0921c93d3b",
+      "difficultyBucket": "UNKNOWN",
+      "level": null,
+      "decision": "ACCEPT_SOURCE_HOLD",
+      "reason": "실제 원본그림에서 위쪽 가로5cm가 잘려 있고 본문은 x+y만 묻는다. 해설의5cm에 의존한후보2와완전판정을분리해야한다. 작성자가UNRESOLVED/UNKNOWN과candidate2를분리한최종본을재확인했다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_94eb31ec50ba96a7f420e5f0c984071f304dcc76c5b42ad97985f8a257a24af1",
+      "difficultyBucket": 2,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "밑변차7을 얻는 직각삼각형이 드러나며 피타고라스 높이→사다리꼴공식의 정형 연결이므로2."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_b76ab2efdd74c5eb7b69786754c8d631699a9a0c88a7df62da7ba60ae7cced09",
+      "difficultyBucket": 3,
+      "level": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "대각선10→절반5를 확보하고 회전된AA대응을 골라 둘레를 구성하므로3/B34이다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_880bee3aea9af07c72bd83d5431d2a724b4677c14baa054754f4926b2e7fe7e2",
+      "difficultyBucket": 2,
+      "level": "하",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "y=x+1 변환과 눈의 상한6을 한 번 적용하므로2, 기존하와BORDERLINE_REVIEW수용."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e384a4d310ce0eb3484b0a0ea791dbd848e6c18aa03c046f1527863934ce6bec",
+      "difficultyBucket": 2,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "소문항이AA닮음과 비례식순서를 제시하고 그림자길이비를 직접 적용하므로2."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_8fb0de21223e7284ef8460e0341640d7302874e33a97fee32e6e5bc207f786a4",
+      "difficultyBucket": 3,
+      "level": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "두 다른 삼각형의 중선2:1을 공통끼인각의SAS쌍으로 묶는 선택이 있어3/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_f25f0903341857fdfee45f1c3e5b0a0e2d1d3e335098a90bb7be676940701111",
+      "difficultyBucket": 2,
+      "level": "중",
+      "decision": "ACCEPT_CONDITIONAL_MODEL",
+      "reason": "독립확률곱이라는 기존해설모델하에서 다섯 소문항이 여사건·두배반경로를 모두안내하므로2. 독립 가정 원문누락은sourcehold를유지한다."
+    }
+  ],
+  "overallStatus": "PASS_WITH_EXPLICIT_SOURCE_HOLD",
+  "independent": true,
+  "selfApproval": false,
+  "notes": [
+    "4칸3문항22인용과 변경·경계난도13문항을 검토했다. 정상전체를다시검토하지않았다.",
+    "Q2 2/B23 보정과Q10 원본5cm결손에대한UNKNOWN/후보분리를최종readback으로확인했다. sourcehold는완전메타판정승인이아니다."
+  ]
+}

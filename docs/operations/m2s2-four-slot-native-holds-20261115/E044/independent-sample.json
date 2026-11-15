@@ -1,0 +1,291 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E044",
+  "examiner": "C",
+  "author": "B",
+  "createdAt": "2026-11-14T05:11:23.559671+00:00",
+  "sourceArchiveFile": "original/middle/m2/2mid/21_팔마중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "361266b5d8612ea8a28d58dc6aa7dd7f5f5f781a",
+  "reviewSha256": "db279d6f28d6fa1520fd4070ab45bfa4342b1aee11f82a438e8fbad90b2eb04a",
+  "fourSlotSha256": "14b172946f7496543588446ab980691357f987430724bfc2ea78b0ed3011b752",
+  "ordinals": [
+    3,
+    18,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_981709e2eb38bd7aedf038b2613d9dff491ab1b772f6b62e89670add08288332",
+      "verdict": "PASS",
+      "reason": "실제 두직각 표시와선지변/각을확인했다. RHS·SAS·RHA조건을비교하고각만같음은닮음만보장한다는4칸방법과신규TPL/leaf gap분리를수용한다.",
+      "quotesExact": true,
+      "quoteCount": 5,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": [],
+      "difficultyIndependentRecheck": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_981709e2eb38bd7aedf038b2613d9dff491ab1b772f6b62e89670add08288332",
+        "difficultyBucket": 2,
+        "proposedLevel": "중",
+        "decision": "ACCEPT_CANDIDATE",
+        "reason": "RHS,SAS,RHA와 각만같은조건을 실제직각표시와 대조하므로2/중."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_6c59e9e4406e0d62ed5464d02180957b75ca763b877e459ba2076249cb7e9711",
+      "verdict": "HOLD_HANDLING_ACCEPTED",
+      "reason": "실제이미지의AB6,AD4,DC5와하단잘림을확인했다. 보이는SAS핵심만조건부기록하고최종난도UNKNOWN과UNRESOLVED로남긴판정을수용한다. 완전메타PASS가아니다.",
+      "quotesExact": true,
+      "quoteCount": 4,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": [],
+      "difficultyIndependentRecheck": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_6c59e9e4406e0d62ed5464d02180957b75ca763b877e459ba2076249cb7e9711",
+        "difficultyBucket": "UNKNOWN",
+        "proposedLevel": null,
+        "decision": "ACCEPT_HOLD",
+        "reason": "원본이미지에아래변BC와꼭짓점이잘려전체보기의사실성및최종난도를확정못함. UNKNOWN과low유지."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_c1b9d5b32e3890365b9c25f90e2e09aeb155d4d36fa802db8acdd5138be88d48",
+      "verdict": "PASS_AFTER_PINPOINT",
+      "reason": "실제M중점,AD5,AM연장선과BC연장선의P교점을확인했다. ASA증명과길이전달의주방법은타당하며4칸method도핵심을담는다. 다만condition에서P의교점/연장배치를보강해야하고PT parent의각전달한정정의와길이목표의차이를등록debt로명시해야한다. 저자가 exact source에서교점·공선을 condition에추가하고,좁은ACTIVE parent PT를after에서제거하여새PT등록debt로분리한최종본을재확인했다.",
+      "quotesExact": true,
+      "quoteCount": 10,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_c1b9d5b32e3890365b9c25f90e2e09aeb155d4d36fa802db8acdd5138be88d48",
+        "difficultyBucket": 2,
+        "proposedLevel": "중",
+        "decision": "ACCEPT_CANDIDATE",
+        "reason": "소문항에합동쌍이지정되어중점·엇각·맞꼭지각으로ASA를보이고길이를옮기는2/중."
+      },
+      "resolvedRepairs": [
+        {
+          "path": "items[22].slots.condition",
+          "reason": "P의교점/연장선배치를exactstem인용으로보강"
+        },
+        {
+          "path": "review.items[22].fieldReview.binding / proposals",
+          "reason": "PT_M1_CONGRUENCE_DATA_TRANSFER의현재정의가목표각전달로제한되는parent-definition conflict를명시하고공식등록대기분리"
+        }
+      ],
+      "repairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_20f0c9aa8a8fb2839cae18970ea0bbf69a15cd2811e676b93cb5b80a22bc5572",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "같은밑각을 같은대변으로 옮겨x+6=2x-4를 세우는 한 번의 해석이므로2/중."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_b507f9eda28ee9391473f738520695dcd3d76a0d82e1a0f955c909abe62348dc",
+      "difficultyBucket": 3,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "BD=DC=CA와BA=BC의 겹친이등변 구조를 골라 각관계를 전달하므로3/중,B23."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_981709e2eb38bd7aedf038b2613d9dff491ab1b772f6b62e89670add08288332",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "RHS,SAS,RHA와 각만같은조건을 실제직각표시와 대조하므로2/중."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_d1f9357cfeea9e8a1b661ff89e7dd760677fd997fa565b99cae2a388590299b7",
+      "difficultyBucket": 3,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "회전된두삼각형의RHA 대응과사다리꼴 높이를연결하는3/중,B23."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_7aed881f78859f805326cdaff107529225c4cd5fdeebcb440e0a1ab27798fdf8",
+      "difficultyBucket": 1,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_CORRECTED_CANDIDATE",
+      "reason": "외심은세꼭짓점 등거리라는정의를 틀린 ‘세변’과 직접대조하면되어1/하,B12."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_a2b9d707d636d0b9566e74bc143aadcaab5fcee273901e79e852bd6773a36c33",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "두작은 직각삼각형RHS에서밑각같음을얻은뒤내각합에연결하므로2/중."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_9d2f80e8545313963c15284177891fc469e9001e6a59a5cc451c133cd90e38d4",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "외심등거리로꼭지각을복원하고중심각을합하는정형2/중."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_a002cd87cf21fb16a0ca40b2c0c5a431010ce8a2cd7922593693443d43d5b060",
+      "difficultyBucket": 3,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "두 각이등분선이만든 두 반각식의 합이나연립을선택하므로3/중,B23."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f0d8526432076086228e88593758274a6ebaa2f34653c6e709671df3630f2380",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CORRECTED_CANDIDATE",
+      "reason": "그림의외접원에서내접원을빼는목표가명시되고R=빗변/2와r=(두직각변합-빗변)/2를직접연결한다. 비정형선택없어2/중,B23."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_f35bdfe8dc25965d7d5a75845fb72b27029b4b554f2f88532362f132baed2d43",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "이웃내각합180도를3:2로배분하는전처리뒤대각을옮기므로2/중."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_9b64465258e8b810a42302aea917f862e809f30a57b1b51f6d8df8654129b8c3",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "대각선이등분·대변·대각·합동쌍의대응을구분해야하므로2/중."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_89496478856111065fdfd033f4ad4867f9d793864094c5bdc0c84a22531f0019",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "증명줄에대응과합동방향이제시되어잘못된맞꼭지각기호를찾는정형2/중."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_da41f2ab5ac9314f549354b082fce746cf46bb3041e0b5b59ce5221ecfdffdeb",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "평행사변형내부점의마주보는삼각형넓이합관계를적용하는정형2/중."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_6af304be1c0e4db56e67274e331ee0e0c006dd7eff8b4b83da98909d14d1dd3d",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "반대각선등길이를전체대각선등길이로해석하여특수사각형을판정하는2/중."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_508719ead043e036c811b660adc698c5e3b1e27278385270b36e0920afe4e5b0",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "일반사각형과평행사변형등추가가정의차이를확인하는조건판정2/중."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_bd7e166b033086d77be45b696e03070c5d76c064dd559f7539c55bd3816f6b18",
+      "difficultyBucket": 1,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "닮음대응이주어지고6과8:12를한비례식에넣는직접1/하."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_76e3e16219ca7516a685cd1a578daf37ea70d03972a0cadf047fc7049c6d4cb7",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CORRECTED_CANDIDATE",
+      "reason": "작은높이12에닮음비5:4를적용하고주어진밑넓이로부피,세제곱비로작은부피를구하는전형직접연결이므로2/중,B23."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_6c59e9e4406e0d62ed5464d02180957b75ca763b877e459ba2076249cb7e9711",
+      "difficultyBucket": "UNKNOWN",
+      "proposedLevel": null,
+      "decision": "ACCEPT_HOLD",
+      "reason": "원본이미지에아래변BC와꼭짓점이잘려전체보기의사실성및최종난도를확정못함. UNKNOWN과low유지."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_d9df325e5079a8ea49c6ae8e9233026ca3231e7454121183a60af56ea1787692",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "직각삼각형사상정리에서전체빗변을구한뒤알려진부분을빼는표준2/중."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_9af370cf5d4ec97f2c3a1eca092ec8ef3a726a00b7bdc3cda4d4a4fd8239dffc",
+      "difficultyBucket": 3,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "회전된수직삼각형과큰직각삼각형의AA대응을선택하고반대각선길이를반영하므로3/중,B23."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_8d7f27761fe8f4942b692cb216aa8a8f569efc21690aea8ded93e7bc46e234f1",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "소문항이밑각→내심반각→외심등거리각→차를순서대로안내하므로2/중."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_ff342aa5f7bae3dde6583c626312a077c8cc7b744133fb75cbdcf4e1bd36ad55",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "한점주위360도를5:6:7로배분후내심각을거꾸로쓰는정형2/중."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_c1b9d5b32e3890365b9c25f90e2e09aeb155d4d36fa802db8acdd5138be88d48",
+      "difficultyBucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "소문항에합동쌍이지정되어중점·엇각·맞꼭지각으로ASA를보이고길이를옮기는2/중."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_13d2632faa2336e9422ff47a9f584a0213e9796ceafc808cd26da346452b1c0e",
+      "difficultyBucket": 3,
+      "proposedLevel": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "접기→이등변판정→수선중점→AA를소문항순서로연결하는3/B34이며학습level상도경계상합리적."
+    }
+  ],
+  "overallStatus": "PASS_WITH_EXPLICIT_SOURCE_HOLD",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "4칸독립표본은3문항이다. 난도예외는sourcelevel전24항부재이므로24항의발문·보기·필요그림만읽어후보를검토했고정상메타전수재검을추가하지않았다.",
+    "원본answer/solution빈문자열을확인했다. 학생정답·해설작성이나새수학품질승인은하지않았다.",
+    "Q18완전판정HOLD와등록기술debt를구분한다. Q23현재parent PT정의와실제목표차이는공통registry직접수정없이제안에남긴다.",
+    "저자수정본을다시읽어Q23의조건추가·PT정의gap분리및Q5/9/17난도보정raw SHA에최종결속했다. Q18은여전히UNRESOLVED이며이표본PASS가그문항완전판정을대신하지않는다."
+  ],
+  "initialReviewSha256": "ed190b88c29deaca3615d70728b02791645105c53fd82c05f3a1cd5df1cdc1b2",
+  "initialFourSlotSha256": "a2599a5b9e0363582a7de4367adda1abf5b43a16b758a11a9c3572831fd31c63"
+}

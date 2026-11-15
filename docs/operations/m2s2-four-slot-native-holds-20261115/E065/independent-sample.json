@@ -1,0 +1,352 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E065",
+  "owner": "M2_CLOSEOUT_INDEPENDENT",
+  "author": "B",
+  "independent": true,
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "eda9ac1a03af4bb27ebeb5c606dcbed39fe13b7e",
+  "reviewedAt": "2026-11-14T08:34:21.554704+00:00",
+  "reviewInputSha256": "9314fa39f0b262e9e521849b5983359cba9b72c15878f7005b267181843e962b",
+  "fourSlotInputSha256": "aa94587e568b791688d0b53646807da2479e7f71701a81002b7ea6be8d7241e7",
+  "sampleOrdinals": [
+    4,
+    14,
+    22
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_2165283c2491985e91b8b93b25973a1d93499155439d48cbd1dc938e6e0e2f97",
+      "verdict": "PASS_METADATA_SAMPLE_REGISTRATION_PENDING",
+      "metadataReview": "각이등분선 위 D에서 AB·AC까지 등거리라는 주방법과 넓이 보조개념의 SEQUENTIAL 결합을 확인했다. 2015 RPM leaf 공백을 2022 참고183으로 임의 등록하지 않았고 PT_TRIANGLE_ANGLE_BISECTOR/TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE 후보와 CC_TRIANGLE_AREA의 등록 경계를 보존했다.",
+      "fourSlotReview": "실제 그림의 DC3·AB10·AC6과 본문의 이등분선/교점을 확인했다. given 이등분선, goal 넓이, IMPLIED 등거리→두 부분넓이 합의 주석은 원문에서 도출된다. 정답·해설이 없는 원본에 명시해설을 꾸미지 않았다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": false,
+      "reviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentFromAuthor": "B",
+      "quotesChecked": 6,
+      "observedFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "명시된 각이등분선의 등거리 성질을 두 삼각형의 공통높이로 옮기는 표준2이다."
+      },
+      "imageViewed": "/workspace/scratch/87f142347508/workers/B/images/E065-04.png",
+      "visualEvidenceSha256": "56fb65daf4f08282506e0a60c89b5ec8ccdb21d889d57f746b27f90b0021c5a5"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_9e97e29e22c5ef6dfa1fe87a9145ec59a2cf6e8bee436ae79d194590ed8daa2b",
+      "verdict": "PASS_WITH_EXPLICIT_SOURCE_HOLD",
+      "metadataReview": "문짝 대각선이 같다는 관찰만으로 일반 사각형의 직사각형성을 결론낼 수 없다. RPM082/PT_QUADRILATERAL_PROPERTIES/TPL_SPECIAL_QUADRILATERALS는 평행사변형 전제를 복구할 경우의 후보이며 finalDifficulty UNKNOWN·BLOCKED_SOURCE_EVIDENCE를 유지한다.",
+      "fourSlotReview": "given 대각선, goal 검사 목적, condition 상등의 exact 인용을 확인했다. method의 직사각형은 명시적 조건부 IMPLIED이며 PARTIAL_SOURCE_EVIDENCE와 methodCandidateOnly로 격리되어 있다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": false,
+      "reviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentFromAuthor": "B",
+      "quotesChecked": 4,
+      "observedFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "발문은 문짝 대각선의 길이가 같은지 검사하는 목적을 묻지만 문틀의 대변이 같거나 평행하다는 기초 전제를 명시하지 않는다. 같은 대각선만으로 일반 사각형의 네 직각은 보장되지 않는다."
+      },
+      "imageViewed": "/workspace/scratch/87f142347508/workers/B/images/E065-14.png",
+      "visualEvidenceSha256": "2e8e937e9fd94de59161f16eb3678676721c1c6e4d1641ab21498882fdda56df"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_ea1410530df2cbb93cd978d4760bb47ba30ee01bceaad9ce2a7606beef240a15",
+      "verdict": "PASS_METADATA_SAMPLE_REGISTRATION_PENDING",
+      "metadataReview": "EC=CD=DF와 AD=2AB, 평행사변형 대변 같음을 AD=DE 및 BC=CF로 재구성하는 방법이 결정적이다. RPM060/등변밑각 PT/TPL과 CC_QUADRILATERAL_PROPERTIES·REINTERPRETATION은 실제 방법에 맞으며 3/B23을 수용한다.",
+      "fourSlotReview": "given 평행사변형·교점, goal x+y, method 두 큰 이등변삼각형 및 보각, condition 세 길이 같음/연장선의 인용을 확인했다. 직접 해설 없는 문항이므로 도형추론은 IMPLIED justification에만 적혀 있다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": false,
+      "reviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentFromAuthor": "B",
+      "quotesChecked": 7,
+      "observedFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "선분배수와 연장배치를 두 다른 이등변삼각형으로 재구성하고 두 각을 결합해야 한다."
+      },
+      "imageViewed": "/workspace/scratch/87f142347508/workers/B/images/E065-22.png",
+      "visualEvidenceSha256": "ed50770c75a2a92a40df40b3f6ffa13610c315f8fd2213a4ca7aa9a1c6609a92"
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "증명 골격과 이등분된 두 각이 제시되어 공통변을 ASA 조건에 대응하는 2/B23이다. 학습수준 중 후보를 수용한다."
+    },
+    {
+      "ordinal": 2,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "AD=BD=BC를 두 이등변삼각형으로 읽고 외각78을 두 밑각 관계와 연결하여 x를 정하는 표준 연쇄 2/B23이다."
+    },
+    {
+      "ordinal": 3,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "직각 두 개와 공통 빗변으로 RHS를 찾은 뒤 대응각을 전체 삼각형에 옮기는 2/B23이다. 새로운 보조선 선택은 없다."
+    },
+    {
+      "ordinal": 4,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "D에서 AB까지의 수선거리를 각이등분선의 등거리로 DC=3에 연결하고 AB·AC를 밑변으로 두 넓이를 합하는 2/B23이다."
+    },
+    {
+      "ordinal": 5,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "내심이 만든 40도·30도의 두 반각을 원래 내각으로 바꿔 나머지 반각을 구하는 2/B12이다."
+    },
+    {
+      "ordinal": 6,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "OB=OC의 밑각에서 중심각을 얻고 원래 꼭지각으로 옮기는 표준 외심각 연쇄이므로 2/B12이다."
+    },
+    {
+      "ordinal": 7,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": null,
+      "boundary": "NONE",
+      "decision": "ACCEPT",
+      "reason": "외심의 세 반지름 같음을 보기와 직접 대조하므로 1/NONE이다. 그림의 중선 같은 위상은 별도 소스 보류이며 내심의 수선발을 임의로 만들지 않는다."
+    },
+    {
+      "ordinal": 8,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": null,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "주어진 직각변6·8과 빗변10에서 r=(6+8-10)/2의 직접 적용이므로 1/B12이다. 공식 도입 과정 자체를 새 전략으로 세지 않는다."
+    },
+    {
+      "ordinal": 9,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "내심각130에서 A를 얻고 외심각으로 옮기는 표준 두 중심각 연결로 2/B12이다."
+    },
+    {
+      "ordinal": 10,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "평행사변형의 평행·등변과 두 수선의 실제 위치를 읽어 합동/각관계를 판단하는 2/B23이다. 발문 E·F 순서 충돌은 소스 보류로 유지한다."
+    },
+    {
+      "ordinal": 11,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "평행사변형 이웃각의 합180과 2B=A+30을 연립하는 2/B12이다."
+    },
+    {
+      "ordinal": 12,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "대각선 이등분으로 두 쌍의 마주보는 작은 삼각형을 대응시켜 부분각을 합하는 2/B23이다."
+    },
+    {
+      "ordinal": 13,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "평행한 대변의 길이에서 표시된 부분3·4를 빼고 필요한 두 조각을 합하는 2/B12이다. 그림cm와 선택지m의 불일치는 별도 소스 보류다."
+    },
+    {
+      "ordinal": 14,
+      "bucket": "UNKNOWN",
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": null,
+      "boundary": "UNKNOWN",
+      "decision": "ACCEPT_UNRESOLVED_CONDITIONAL_CANDIDATE",
+      "reason": "대각선 같음만으로 일반 사각형의 직사각형성이 보장되지 않는다. 문틀의 대변 평행/등량 전제가 없으므로 UNKNOWN을 유지하고 전제 복구 후 1/하 후보만 보존한다."
+    },
+    {
+      "ordinal": 15,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "마름모의 대각선 수직과 각이등분 성질을 서로 다른 표시각에 적용해 더하는 2/B12이다."
+    },
+    {
+      "ordinal": 16,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "여러 사각형의 충분조건과 중점 연결 사각형의 유형을 구별해야 하므로 2/B23이다. 반복 보기 수만으로 상향하지 않는다."
+    },
+    {
+      "ordinal": 17,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": null,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "평행사변형이 마름모가 되는 인접변 같음 또는 대각선 수직의 표준 충분조건을 바로 찾는 1/B12이다."
+    },
+    {
+      "ordinal": 18,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "두 각이등분선과 AB6·BC12로 중점 위치를 확인하고 동일 높이/합동의 넓이를 연결하는 표준 2/B23이다."
+    },
+    {
+      "ordinal": 19,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": null,
+      "boundary": "NONE",
+      "decision": "ACCEPT",
+      "reason": "닮음관계와 대응이 주어져 대응변 비를 직접 대입하는 1/NONE이다."
+    },
+    {
+      "ordinal": 20,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "공통 A와 같은 각으로 엇바뀐 작은/큰 삼각형 대응을 정하고 전체 AC에서 AD를 빼는 2/B23이다."
+    },
+    {
+      "ordinal": 21,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "직각삼각형 높이의 닮음에서 AB제곱=BH·BC를 적용한 후 HC를 부분차로 구하는 2/B23이다."
+    },
+    {
+      "ordinal": 22,
+      "bucket": 3,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "AD=2AB와 EC=CD=DF를 AD=DE 및 BC=CF인 두 큰 이등변삼각형으로 재구성해야 한다. 평행사변형 보각과 두 밑각을 결합하므로 3/B23·중 후보가 적절하다."
+    },
+    {
+      "ordinal": 23,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "닮은 직육면체의 면과 길이 대응을 소문항 안내에 따라 잡아 공통비로 두 길이를 구하는 2/B23이다."
+    },
+    {
+      "ordinal": 24,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "AB평행CD와 AE평행BC에서 교차 삼각형의 대응비와 BE+ED의 전체를 연결하는 2/B23이다."
+    },
+    {
+      "ordinal": 25,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": null,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "밑면 넓이비9:16을 길이비3:4로 바꿔 부피비27:64를 적용하는 표준 변환 2/B23이다."
+    }
+  ],
+  "difficultyExceptionScope": "Every question has absent/noncanonical historical learning level; all proposed learning levels, numeric bucket changes, boundaries and UNKNOWN cases were checked. Raw source unchanged.",
+  "evidenceScope": {
+    "actualStemsAndChoicesRead": 25,
+    "answersAndSolutionsRead": 0,
+    "sourceAnswersAndSolutionsAbsent": true,
+    "imagesViewed": 24,
+    "notFreshFullExamMathematicalReverification": true
+  },
+  "sampleVerdict": "PASS_WITH_EXPLICIT_SOURCE_HOLD",
+  "unresolvedSourceSamples": [
+    14
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "approvalScope": "Author-independent three-question metadata/four-slot sample plus all difficulty/legacy-level exceptions. Unresolved/source holds and official registration remain explicit; not a full mathematical source PASS."
+}
