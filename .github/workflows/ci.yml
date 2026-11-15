@@ -49,9 +49,10 @@ jobs:
     runs-on: ubuntu-latest
     # Source PRs generate and verify their temporary projection, including one
     # bounded builder recovery, before running the unchanged full test scope.
-    # The reviewed multi-exam preview and complete test scope must both finish;
-    # the verified Wangun preview exhausted the former 30-minute job budget.
-    timeout-minutes: 60
+    # Immutable issued-approval recovery takes about 90 seconds per native call.
+    # Allow the full projection, independent shadow, Consumer and test scope to
+    # finish; no registration proof or required check is skipped.
+    timeout-minutes: 120
     permissions:
       contents: read
     steps:
