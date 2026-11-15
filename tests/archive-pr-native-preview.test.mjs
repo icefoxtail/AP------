@@ -225,6 +225,83 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     assertShadowsRemoved, calls, hook, run };
 }
 
+const BINDING_KEY = { curriculum: '2015', standardCourse: '중2 수학', standardUnitKey: 'M2-06',
+  subUnitKey: 'M2-06-PARALLEL_LENGTH_RATIO', problemTypeKey: 'PT_QUADRILATERAL_PROPERTIES' };
+const BINDING_PROVIDER = '.archive-meta-register/inbox/zz-binding-provider.json';
+function bindingDependencyFixture(t, { mutateProvider, unchangedProvider = false } = {}) {
+  const f = fixture(t, { partial: true, otherOwner: false,
+    mutateRequest: r => { r.items[0].after = copy(BINDING_KEY); } });
+  const provider = copy(f.request);
+  provider.requestId = 'zz-binding-provider';
+  provider.items[0].questionUid = 'provider-uid'; provider.items[0].sourceOrdinal = 6;
+  provider.registryChanges = [{ path: 'archive/data/meta-foundation/canonical/packs/middle2/bindings.json',
+    collection: 'bindings', match: copy(BINDING_KEY), before: null,
+    after: { ...copy(BINDING_KEY), status: 'ACTIVE', ownerPack: 'MIDDLE2' },
+    evidenceRefs: copy(provider.approval.evidenceRefs) }];
+  mutateProvider?.(provider);
+  f.write(BINDING_PROVIDER, json(provider));
+  f.git('add', BINDING_PROVIDER); f.git('commit', '-qm', 'selected add-only binding provider');
+  const baseSha = unchangedProvider ? f.git('rev-parse', 'HEAD') : f.baseSha;
+  if (unchangedProvider) {
+    f.request.items[0].after.level = '중'; f.write(REQUEST, json(f.request));
+    f.git('add', REQUEST); f.git('commit', '-qm', 'consumer only');
+  }
+  return { ...f, provider, baseSha, headSha: f.git('rev-parse', 'HEAD'),
+    select: () => selectNativeRequests({ root: f.root, baseSha, headSha: f.git('rev-parse', 'HEAD') }) };
+}
+
+test('selected add-only binding provider precedes its exact consumer in PR and main previews', t => {
+  const f = bindingDependencyFixture(t), pr = f.select();
+  assert.deepEqual(pr.map(r => r.path), [BINDING_PROVIDER, REQUEST]);
+  assert.deepEqual(selectPendingNativeRequests({ root: f.root, headSha: f.headSha }).map(r => r.path),
+    [BINDING_PROVIDER, REQUEST]);
+  assert.deepEqual(orderNativeRequests([...pr].reverse()).map(r => r.path), [BINDING_PROVIDER, REQUEST]);
+  assert.equal(pr[0].registryDependency.provides.length, 1);
+  assert.deepEqual(pr[1].registryDependency.requires[0].key, BINDING_KEY);
+});
+
+for (const field of Object.keys(BINDING_KEY)) test(`binding dependency does not cross a different ${field}`, t => {
+  const f = bindingDependencyFixture(t, { mutateProvider: r => {
+    r.registryChanges[0].match[field] += '-other'; r.registryChanges[0].after[field] += '-other';
+  } });
+  assert.deepEqual(f.select().map(r => r.path), [REQUEST, BINDING_PROVIDER]);
+});
+
+for (const [name, mutateProvider] of [
+  ['replacement', r => { r.registryChanges[0].before = { previous: true }; }],
+  ['inactive row', r => { r.registryChanges[0].after.status = 'REVIEW_REQUIRED'; }],
+  ['another collection', r => { r.registryChanges[0].collection = 'problemTypes'; }],
+  ['noncanonical path', r => { r.registryChanges[0].path = 'archive/data/meta-foundation/compiled/bindings.json'; }],
+  ['mismatched exact match', r => { r.registryChanges[0].match.subUnitKey += '-other'; }],
+]) test(`binding dependency leaves ${name} to the unchanged registrar guards`, t => {
+  const f = bindingDependencyFixture(t, { mutateProvider });
+  assert.deepEqual(f.select().map(r => r.path), [REQUEST, BINDING_PROVIDER]);
+});
+
+test('binding dependency never pulls an unchanged provider from another inbox scope', t => {
+  const f = bindingDependencyFixture(t, { unchangedProvider: true });
+  assert.deepEqual(f.select().map(r => r.path), [REQUEST]);
+});
+
+test('binding dependency does not infer missing after keys from before or source', t => {
+  const f = bindingDependencyFixture(t); f.request.items[0].before = copy(BINDING_KEY);
+  delete f.request.items[0].after.subUnitKey; f.write(REQUEST, json(f.request));
+  f.git('add', REQUEST); f.git('commit', '-qm', 'incomplete consumer stays registrar-owned');
+  assert.deepEqual(f.select().map(r => r.path), [REQUEST, BINDING_PROVIDER]);
+});
+
+test('binding dependency rejects duplicate providers and cycles while allowing self-provided keys', t => {
+  const f = bindingDependencyFixture(t), selected = f.select(), provider = selected.find(r => r.path === BINDING_PROVIDER);
+  assert.deepEqual(orderNativeRequests([provider]).map(r => r.path), [BINDING_PROVIDER]);
+  const duplicate = copy(provider); duplicate.path = '.archive-meta-register/inbox/duplicate-provider.json';
+  assert.throws(() => orderNativeRequests([...selected, duplicate]), /REGISTRY_DEPENDENCY_AMBIGUOUS/);
+  const consumer = selected.find(r => r.path === REQUEST), cyclicProvider = copy(provider), cyclicConsumer = copy(consumer);
+  const secondKey = { ...BINDING_KEY, problemTypeKey: 'PT_SECOND' };
+  cyclicConsumer.registryDependency.provides = [{ path: provider.registryDependency.provides[0].path, key: secondKey }];
+  cyclicProvider.registryDependency.requires.push({ questionUid: 'provider-uid', sourceOrdinal: 6, key: secondKey });
+  assert.throws(() => orderNativeRequests([cyclicConsumer, cyclicProvider]), /REGISTRY_DEPENDENCY_CYCLE/);
+});
+
 test('inbox-only PR selects its fixed v2 request and leaves unchanged course inbox untouched', t => {
   const f = fixture(t), beforeHead = f.git('rev-parse', 'HEAD');
   assert.equal(prRegistrationProofNeeded([REQUEST]), true);
