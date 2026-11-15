@@ -152,6 +152,8 @@ PT/TPL에는 확장 키를 받지 않는다. 확장 키는 정본 registry·comp
 - 기존 Runtime 행은 `metadataRevision`/`approvalEvidence`만 다르게 재사용한다. 갱신되는 것은 메타 행의 `metadataRevision`·`approvalEvidence`와 새 영수증·Runtime 행뿐이며,
   `metadataApprovalType`, `fieldStatus`, `tagConfidence`, EVIDENCE_DEBT는 등록 당시 그대로 둔다(새 의미 검수를 했다고 기록하지 않는다).
 - 요청 근거로 승인 시점 바이트와 현재 바이트를 문항별로 비교한 `*.review.json`을 둔다(바뀐 필드 목록, 문항별 fingerprint 일치).
+- `PARTIAL_UIDS` 재결속은 이전 영수증도 `PARTIAL_UIDS`/`FINAL_QA`이고 전체 시험 분모와 선택 UID·ordinal 집합이 정확히 같을 때만 허용한다. 이전 Git source blob이 실제 존재하며 선택 문항 전체 객체(표시 번호·렌더러 필드·명시 메타 포함)가 현재와 같아야 한다. 같은 파일의 다른 문항 변경으로 깨진 파일 해시만 다시 결속한다.
+  이전 영수증의 선택 identity/runtime는 현재와 완전히 같아야 하고, 비선택 UID·HOLD는 변경하지 않는다. 기존 `metaFoundationPackVersion`·승인 종류·fieldStatus를 유지하며 결과·영수증·replay에 `newMetadataApprovals: 0`, `preservedMetadataApprovals: 선택 수`를 구분해 기록한다. 이전 FULL 또는 다른 승인 종류를 PARTIAL 재결속으로 변환하지 않는다.
 
 ### `META_PIPELINE_AUDIT` 승인 유형
 
