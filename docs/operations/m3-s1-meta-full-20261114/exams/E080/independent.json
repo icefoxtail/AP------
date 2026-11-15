@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E080",
+  "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+  "author": "meta_b",
+  "reviewer": "meta_c_resume_20261115",
+  "owner": "GPT_META_C_E0C948452E80",
+  "at": "2026-11-15T05:53:51.999077+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/19_서울봉원중_1학기_중간_중3_수학.js",
+  "sourceBlob": "433868f860d99b3bb548459572794f988d80453d",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E080.review.json",
+      "sha256": "a06ee62094eddec01fb22ae745f770d30e0c3f212442c10e5885ab2d67f5be2d"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E080.4slot.json",
+      "sha256": "73acc46ee137ec1e4998917bf02f144f16a1ae7e4c8f8dcb825d63c19a832685"
+    },
+    "sourceInput": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E080.input.json",
+      "sha256": "2199619603c857ed4f73dd21b4ba06e5705dc2bd0bc36b63835b4a26c7028a19"
+    }
+  },
+  "sampledOrdinals": [
+    1,
+    22,
+    24
+  ],
+  "additionalChangedOrBoundaryOrdinals": [],
+  "scope": "METADATA_ONLY: sampled source stems, choices, existing solutions, author decisions and exact 4slot quotes directly compared. Other author judgments reused; no full-exam rereview claim.",
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/assets/E080/01-content-1.png",
+      "sha256": "252778467484e8dd2170dd892353496d684e8107bc3698a9a96d1d84e50415a5"
+    }
+  ],
+  "findings": [
+    {
+      "ordinal": 1,
+      "status": "PASS_WITH_CONTENT_OBSERVATION",
+      "note": "실제 모눈 그림에서 AB의 가로·세로 이동량이 2,1이고 길이는 sqrt(5)임을 확인했다. 해설은 이를 가로 1, 세로 2로 바꿔 서술하지만 제곱합과 분류·난도에는 영향이 없다. 피타고라스 보조개념, 정확 leaf 공백과 bucket 1/B12를 수용하며 원문 축방향 서술 차이는 수정하지 않고 관찰 부채로 남긴다."
+    },
+    {
+      "ordinal": 22,
+      "status": "PASS",
+      "note": "분모를 유리화해 5+2sqrt(6)을 만든 다음 제곱하는 실제 해설에 따라 유리화·합차공식·곱셈공식 method를 확인했다. native RPM 012 및 2022 104의 유효 부모 다항식의 곱셈, bucket 2가 타당하다."
+    },
+    {
+      "ordinal": 24,
+      "status": "HOLD_CONFIRMED",
+      "note": "A,B,C를 유리수로만 제한한 원문은 B와 C의 표현을 유일하게 정하지 못한다. 해설이 추가한 C의 제곱인수 없는 자연수 조건은 원문에 없다. author의 contentDebt 및 level/difficulty UNKNOWN, 무패치 보류를 확인했다. 근의 공식 035/127 및 2022 유효 부모 판정과 조건 유리수는 유지한다."
+    }
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE",
+  "additionalContentObservation": {
+    "ordinal": 1,
+    "status": "SOURCE_DESCRIPTION_AXIS_SWAP",
+    "note": "Image AB horizontal 2 / vertical 1; existing solution describes horizontal 1 / vertical 2. Squared sum and metadata unaffected; source untouched."
+  }
+}

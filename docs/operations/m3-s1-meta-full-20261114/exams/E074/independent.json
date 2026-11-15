@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E074",
+  "status": "PASS_WITH_PROPOSALS",
+  "author": "meta_b",
+  "reviewer": "meta_c_resume_20261115",
+  "owner": "GPT_META_C_E0C948452E80",
+  "at": "2026-11-15T05:53:51.993063+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/19_신흥중_1학기_기말_중3_수학.js",
+  "sourceBlob": "ea577dd8268d9c7245965a974e514f05da99772c",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E074.review.json",
+      "sha256": "bb7efb31b28fc3ee9b5d92914e9b89c2fd5feb299ffaa6a80f39020e7a7f04f5"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E074.4slot.json",
+      "sha256": "e65667977b38de64224add41b570fb2685c14634bb682e97a5038ae24e1dc5c4"
+    },
+    "sourceInput": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E074.input.json",
+      "sha256": "31f4a5ca7f2e4e4c0908c136de002e66c749743f69051f02fa8341db701d8c63"
+    }
+  },
+  "sampledOrdinals": [
+    2,
+    14,
+    24
+  ],
+  "additionalChangedOrBoundaryOrdinals": [],
+  "scope": "METADATA_ONLY: sampled source stems, choices, existing solutions, author decisions and exact 4slot quotes directly compared. Other author judgments reused; no full-exam rereview claim.",
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/assets/E074/24-question-1.png",
+      "sha256": "c08b71ab2bc98b9ce9a14fa7af2979089b361fb8da81d1e6141906ddaee46ece"
+    }
+  ],
+  "findings": [
+    {
+      "ordinal": 2,
+      "status": "PASS",
+      "note": "주어진 근 2를 이차방정식에 대입해 계수를 구하는 1단계 판단이다. RPM 031/123, bucket 1과 대입 method의 실제 해설 근거를 확인했다. 단일 method 경고만으로 불필요한 용어를 추가하지 않았다."
+    },
+    {
+      "ordinal": 14,
+      "status": "PASS",
+      "note": "첫 함수의 x축 접촉으로 꼭짓점 y좌표를 0으로 두고 둘째 함수의 꼭짓점을 구한다. 완전제곱식·대입, 접점 조건, native 051/2022 139의 판정과 2단계 난도를 수용한다. PT/TPL의 후보와 공식 resolver 인증을 구별했다."
+    },
+    {
+      "ordinal": 24,
+      "status": "PASS_WITH_PROPOSAL",
+      "note": "실제 그림의 A 꼭짓점, B y절편, C 오른쪽 x절편 및 삼각형 연결을 확인했다. 좌표 계산 뒤 둘러싼 직사각형에서 삼각형 넓이를 빼는 해설을 읽었다. 그래프와 넓이의 순차 통합, 정확한 leaf 공백과 삼각형넓이공식 후보를 유지한 판단이 타당하다."
+    }
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

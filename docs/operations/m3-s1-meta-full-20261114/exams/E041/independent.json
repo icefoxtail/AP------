@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E041",
+  "status": "PASS_WITH_PROPOSALS",
+  "author": "meta_b",
+  "reviewer": "meta_c_resume_20261115",
+  "owner": "GPT_ROOT_E45FF6C78C51/C",
+  "at": "2026-11-15T00:04:22.750281+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/22_동산중_1학기_중간_중3_기출.js",
+  "sourceBlob": "fcb49abe51097691bb2ee44ef12d45b7bfa94c0d",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E041.review.json",
+      "sha256": "736feafe1c71a1b8a7c4f6344d151a8e071e58ffabedbc14e5aeabda9c1c798c"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E041.4slot.json",
+      "sha256": "f8246501a697c27f0e013df41e813b55763332a1cddca7975dd6a6305bcc45b7"
+    }
+  },
+  "sampledOrdinals": [
+    4,
+    6,
+    25
+  ],
+  "additionalChangedOrBoundaryOrdinals": [],
+  "scope": "METADATA_ONLY: listed source stems, choices, existing solutions, author decisions and exact 4slot quotes directly compared. Other completed author judgments reused; no full-exam rereview claim.",
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E041-q06.png",
+      "sha256": "d41e6a43d9ec5499dca3a512dcab0776c3fcb18e1954445eb86b6109034932e5"
+    }
+  ],
+  "findings": [
+    {
+      "ordinal": 4,
+      "status": "PASS_AFTER_REVISION",
+      "note": "근삿값아닌정확한제곱수배율변환임을확인하여RPM007/099부모+exactleafgap과문자식목표로수정한최종결과수용. 문자곱전용TPL은related만표시."
+    },
+    {
+      "ordinal": 6,
+      "status": "PASS_AFTER_REVISION",
+      "note": "모눈의가로세로2,1과1,2를이미지에서확인하고명시CD=PD·AD=QD의상등조건추가확인. 피타고라스보조와길이·위치연결메타수용."
+    },
+    {
+      "ordinal": 25,
+      "status": "PASS",
+      "note": "분수등식에서비영조건을보존하며x(x-3)과(x-1)(x-2)관계를만들어곱으로연결하는3단계판단과식의값목표확인."
+    }
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

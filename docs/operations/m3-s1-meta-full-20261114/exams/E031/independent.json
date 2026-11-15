@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E031",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-14",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "177b62d75fa530de8632126e2824ceab059f6ba4",
+  "inputHashes": {
+    "reviewSha256": "d138179e400f62323ae2e1cdb57bf247b6f93020059575fc7057e40bf8e7093b",
+    "fourSlotSha256": "15aac42c76d82809fd7d381bc751811f50f0dece3bb98a88d2537fc29f5e60b4"
+  },
+  "sampledOrdinals": [
+    7,
+    18,
+    22
+  ],
+  "additionalReviewedOrdinals": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    8,
+    10,
+    11,
+    12,
+    14,
+    17,
+    19,
+    20,
+    21,
+    23,
+    24
+  ],
+  "basis": "WARN/IMPLIED 또는 난도 경계 우선 표본과 source 변경·불확실·예외의 실제 stem/choices/기존solution 및4칸을 직접 읽음. 아래 문항별 의미판정과 명시된 그림만 독립확인.",
+  "findings": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_1de44b712c2a26bc9c6ca7970daf28c0b5f9b6f61cef182ea668eb87d543beb2",
+      "status": "PASS",
+      "note": "양수·0·음수에서 제곱근 존재와 합을 정의에 대조. 제곱근 성질 부단원 교정 수용."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_78e206919f48246684527220358f5454866cf7250ad6d1e4abe7c81fc263a71e",
+      "status": "PASS",
+      "note": "유리무리수 분류와 제곱근 정의를 함께 판정. 단일분류로 강제하지 않은 gap 적합."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_72fd7442a5ef09614cb028bd06a657fc2dec7ed82f36e68aca01c629b06b9bc5",
+      "status": "PASS",
+      "note": "각 근호연산을 독립 비교하는 계산 감사. exact 비교leafgap 수용."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_0a53a0bd2a97692230cc06b7747cf76417cfce7816caa5fb3e8129d18ee31d23",
+      "status": "PASS",
+      "note": "두 일차식 직접전개이며1/2도 분배법칙 부담을 바꾸지 않음. bucket1 수용."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_d18d2372669ffbf74523f6a320555f4c99c720a65ff0961dcb38d48aeec108ab",
+      "status": "PASS",
+      "note": "인수분해 후0이 인수일 수 없다는 정의 확인. 인수판정gap 수용."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_c0d9579fa65213ab7aedb3cf10f5cc1e3c8e61260666fbd7644406181737fc73",
+      "status": "PASS",
+      "note": "26−x의0포함 완전제곱수를 직접열거. 저자 수정bucket2/medium/B23 확인."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_fc50b43b634856c59323c578afac96d89faba1d44a0ceb951b890d85406bcbac",
+      "status": "PASS",
+      "note": "근삿값을 대입해 최댓값·최솟값 비교. 실수대소 부단원 교정 적합."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_f98392f7b97764ac0feb4126e0277092379cdfaadac8a5f83441bfca9986c3c2",
+      "status": "PASS_WITH_DEBT",
+      "note": "유리수 조건이a,b각각이 아닌a−b에만 걸려 계수비교의 고유성을 보장하지 않음. UNKNOWN 및sourcepatch 보류 수용."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_b0104d6a6841f31458c196de30544d3382fb9eaa203d783504936dbe18336212",
+      "status": "PASS",
+      "note": "두 식에 공통인수 추출·정형인수분해 후공통항확인. 저자 수정bucket2/medium/B23 수용."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5b1aa20c3a312ca284844847446b2324e83e14de7bd37892d778129ca5ee2153",
+      "status": "PASS",
+      "note": "같은 지수 곱을 하나로 묶어 켤레의 합차공식 계산. 근호계산 부단원 교정 타당."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_d0e3e7e799f8576eed5624f787d3aa5bde7c7705cf22894bfb3c18cf139c69f4",
+      "status": "PASS",
+      "note": "완전제곱식의 중간항 계수 대조. 인수분해 부단원 교정 타당."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_af939737b2a6cbb0cc6a62c87b598941a10614128e8287135f31f18beabee8fe",
+      "status": "PASS",
+      "note": "값1인2−1을 넣어 연속 합차곱으로 소거한 뒤 약분. 구조선택bucket3 수용."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_fc8494d2d3c8f6f9fed3f82a292bda3ea760c49e021b13f8aec8b7f677581b4b",
+      "status": "PASS",
+      "note": "명시된2<x<3에서 네 절댓값 부호를 적용. 저자 수정2/medium/B23 및goal 식의값 확인."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_25d4fa4fadb09b3036feb54fc1904e706c86c7b1a737f5d94cb1407ea797eef8",
+      "status": "PASS",
+      "note": "유리화로 켤레형을 만들고 목표식을 합제곱·곱으로 재구성. 근호계산 부단원·bucket3 수용."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_b32eb975b0d3b2b00d2dd4abff3035322846bc099ffb54a86d007bb254e5b513",
+      "status": "PASS",
+      "note": "일차계수가 같아지는 곱쌍을 선택하고 공통 이차식 치환 후 재인수분해. bucket4 수용."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_46938d04b36c281a5b473551181822e3a0d6912637e1e634126f33fcb7fc8a2f",
+      "status": "PASS",
+      "note": "근삿값·음수순서로 세 수를 비교. 실수대소 부단원 타당."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_7eb978759754da9695a73db5a92fd86fb0d12aef7bfbfd3c29f28ba0c9ad30ef",
+      "status": "PASS",
+      "note": "x의 이차식으로 재배열해 문자계수의 합·곱인 두 일차식을 찾음. 비정형 구조선택4 수용."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_fc8122ae79a7d35f1daf9a03e7f969728cc2527b00dadb02a823cb75650afd47",
+      "status": "PASS",
+      "note": "완전제곱식→절댓값으로 바꾸고−3+2√2 부호결정. 제곱근성질 primary와 보조제곱식 수용."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_85ef0abe4e398a0d4bc7ae51419945778bfca82de39d1d4a6cfdc2269c432ca8",
+      "status": "PASS",
+      "note": "자연수 근호조건을x=5n²의 허용값 전체로 일반화하고 첫째·열째 선택. 정확한 순번값 gap·bucket3 수용."
+    }
+  ],
+  "assetReview": [],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}

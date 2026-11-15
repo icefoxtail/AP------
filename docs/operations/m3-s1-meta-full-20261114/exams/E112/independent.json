@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "independent-meta-sample-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
+  "examKey": "E112",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewerOwner": "GPT_ROOT_D03144C8CA75/B",
+  "reviewedAt": "2026-11-15",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "scope": "METADATA_ONLY_LOCAL_PREPARATION",
+  "sourceBlob": "22d9aece7106ac2e2f647a7bb90de5b49cc015ad",
+  "sourceSha256": "bea70407b51e65a75a9d7e92f5ab3dafa2d6e6a1e73d07044cb8678228fbbc81",
+  "reviewPath": "/workspace/scratch/d03144c8ca75/workers/C/E112.review.json",
+  "reviewSha256": "d9a9bd3f67df9dca1556f2609c46226198c05e1ba1f6e26b64e4de4121f63c86",
+  "fourSlotPath": "/workspace/scratch/d03144c8ca75/workers/C/E112.4slot.json",
+  "fourSlotSha256": "3f41705b0639621c39d4601d40cbc5049b326e585da22f845e7674a9f448f42e",
+  "sampleOrdinals": [
+    18,
+    19,
+    26
+  ],
+  "samples": [
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_4c2e1dd3fb03e4d7eb3d3d88434b606b343e51651c98d95da338d8a5474243ad",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt",
+        "actual image"
+      ],
+      "quotesVerified": 5,
+      "rationale": "실제 q18 PNG는203cm 정사각형에서103cm 정사각형을 뺀L자이고 alt/기존해설은 동심원 원환을 다룸을 독립 확인. 두 대상이 모두 제곱차 구조여도 이미지-해설 일치로 인정하지 않고 내용 부채와 UNKNOWN을 유지하는 결론 수용. leaf024/116의 합차공식은 맥락 후보로 보존.",
+      "sourceFingerprints": {
+        "QBODY": "e7318f122b4ab1ff3f4278386a55e4931df14e70d97ecbe860331954fa6fc334",
+        "QFULL": "37ba6fa0998a5a9648af64e04121e4003b66ae9cb5cf5506dbb26d96de9ed15c"
+      },
+      "debtKindsPreserved": [
+        "PROJECTION_COMPATIBILITY_PENDING",
+        "RPM_EXACT_LEAF_GAP",
+        "CONTENT_AMBIGUITY_EVIDENCE_DEBT"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_5f00544dcb10e368570ed2d2a395cf0b7964f698466389e952871e284fcc7a5b",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt"
+      ],
+      "quotesVerified": 5,
+      "rationale": "보기②의16은(a+8)²를 실제로 만들지만 해설은 가능한 계수 전체±16이 아니라는 이유로 배제함을 원문에서 확인. 값 하나의 성립과 답집합 완전성 요구의 혼재 부채 및 UNKNOWN 유지 수용. 완전제곱식·계수비교 방법은 기존해설에 직접 결속.",
+      "sourceFingerprints": {
+        "QBODY": "5745b1a8e12c3e0e2cd4618eb180a54151623dae8ac855881b6486fe2d7c5766",
+        "QFULL": "7d578041cf6311380923e11de613766a88006ded48aa92ee024f504686dcea86"
+      },
+      "debtKindsPreserved": [
+        "PROJECTION_COMPATIBILITY_PENDING",
+        "RPM_EXACT_LEAF_GAP",
+        "CONTENT_AMBIGUITY_EVIDENCE_DEBT"
+      ]
+    },
+    {
+      "ordinal": 26,
+      "questionUid": "qid_v1_b4677912a799e695d446cfdea78804260afe5514ae5ecf69cbcf27f820f2a81f",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt",
+        "actual image"
+      ],
+      "quotesVerified": 8,
+      "rationale": "실제 접기그림의 BF=b,EG=a-b와 남은 세로2b-a에서 FJ=2a-3b를 추적하는 해설을 확인. 세 번의 접기·길이차를 제곱차에 연결하는 bucket4 및 CC_GEOMETRIC_FOLDING/SEQUENTIAL 수용. 표본 지적 후 goal을 다항식의 곱으로, condition을 두 변수 부등식 관계로 최소 정정한 파생본을 다시 읽음.",
+      "sourceFingerprints": {
+        "QBODY": "053edab8968a90877644aa4620aaf59f92e0d71370361821bda609d7f2b4341e",
+        "QFULL": "a2979fbd425868000a060a22219e74f8b7a05e6b9d14fbdc22c1e31396cd8f53"
+      },
+      "debtKindsPreserved": [
+        "PROJECTION_COMPATIBILITY_PENDING",
+        "RPM_EXACT_LEAF_GAP"
+      ]
+    }
+  ],
+  "assetReadback": [
+    {
+      "ordinal": 18,
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E112/18-content-1.png",
+      "sha256": "caee5559596ddad5e4ca4a2b25b79578f02abc272fe6a58ca16d2b1130cd84a5",
+      "gitBlob": "7097edc267dada815e0254aacfec812d082e369e",
+      "status": "VISUALLY_READ"
+    },
+    {
+      "ordinal": 26,
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E112/26-content-1.png",
+      "sha256": "875cbc104ceee5b2b1b390344b93fb08454ab30e82de000a70905c8ed5853f28",
+      "gitBlob": "488d8cb24a65788a9d2fbfdfee861f0ad3a3a73c",
+      "status": "VISUALLY_READ"
+    }
+  ],
+  "independentReviewerNotAuthor": true,
+  "contentQualityPass": false,
+  "remoteCompletionClaim": false,
+  "remaining": [
+    "root ownership handoff confirmation",
+    "root protected-field integration checks",
+    "remote checkpoint",
+    "Codex exact-leaf/projection and declared content debt processing"
+  ],
+  "amendmentPath": "/workspace/scratch/d03144c8ca75/workers/C/E112.metadata-amendment.json",
+  "amendmentSha256": "7616cdef809d6146ad72948aa151d604d66aac68a851d515bc73745471efd60d"
+}

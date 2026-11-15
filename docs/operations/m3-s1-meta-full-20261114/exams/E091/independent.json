@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E091",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E0C948452E80/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "c94bab7233b222854cb80e6e641b027c210b13e0",
+  "inputHashes": {
+    "reviewSha256": "06ab0ef0b74fe1aa9ebed7855a00c202169e55307fee113686821ebf4dae77ae",
+    "fourSlotSha256": "935c53af9e30fdf9ad7790fcc4cde6e1cfe5606903b1cafafd69b83b6eca7409"
+  },
+  "sampledOrdinals": [
+    9,
+    14,
+    18
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_8cbd8eaea6c47d03c8fc8ca64162e0df9fe60022d45748e1427d7f9c2d75d649",
+      "status": "PASS",
+      "note": "xy>0에서 y≠0을 이용해 비 x/y의 이차방정식을 만들고 양의 근을 고르는 기존해설 확인. 비 목표·치환/근의공식/부호 method·양수 restriction 및 난도3/B23 수용."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_16cf956cc18dd3f6bed4d4266c7f5a63d21c2c2530dcacf987bced0c97b90ed4",
+      "status": "PASS",
+      "note": "실제 그림은 꼭짓점(2,8)과 x절편-2,6을 제공하며 (1,15/2)는 표시하지 않는다. 함수복원 단계가 필요한 RPM054/142·난도2 후보와 달리 기존해설은 값을 곧바로 읽으므로 METHOD_STEP_EVIDENCE_DEBT를 유지한 판단 수용. 없는 복원 근거를 method에 넣지 않음."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_228c488ff4698afd507211a1daab90b0556bfde242c9ae9cdf08d241e1f288c0",
+      "status": "PASS",
+      "note": "실제 포물선 꼭짓점 A(1,0), 수평선 위 B,C(y=8)를 확인. 넓이→밑변8→축대칭→C좌표→계수 대입 흐름과 난도3 수용. 독립검토 요청 후 B,C y좌표 모두8인 명시적 상등조건이 4칸에 추가된 최신본 확인."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/A/assets/E091/14-content-1.png",
+      "sha256": "04ec312a943a48e9ff7a591139cee5a7dcd5f5fb801287c2bad5e7261380ce39",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/A/assets/E091/18-content-1.png",
+      "sha256": "d159766b6e8ce3d007fdeb5b2078ea6793f08e5bfd3532933ede6564bea2e9e2",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}

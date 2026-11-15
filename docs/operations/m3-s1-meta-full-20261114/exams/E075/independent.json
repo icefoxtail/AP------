@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E075",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T05:51:57.631093+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/19_연향중_1학기_기말_중3_수학.js",
+  "sourceBlob": "53862b447b8d4b3e9560acf5fef555ee40950c6a",
+  "inputArtifacts": {
+    "workers/C/E075.review.json": {
+      "sha256": "5d5215cef4be70e1411701478764339cffd7c57d00c25562f185bc8c70039085"
+    },
+    "workers/C/E075.4slot.json": {
+      "sha256": "7ae6a0885e68b7c226a4f578cad98ee7c1948f1fdff0422b2f14ff1e68a6d342"
+    },
+    "workers/C/E075.input.json": {
+      "sha256": "5e834f25dc5b61119cc12ad1289420a70a5ed9188fee405c23b428709d72525a"
+    }
+  },
+  "sampledOrdinals": [
+    2,
+    9,
+    23
+  ],
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_3730c9916f0303c41c9e6a9bd6d813aaa1ca4d81883bad3a380f438d1d1abedd",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "인수분해 (3x-1)(x+2)=0 후 각 인수0으로 두는 기존 해설을 대조했다. 넓은 등식을 영인자성질 후보로 고친 author amendment 확인. RPM032·bucket2·goal 해가 적절하며 sparse warning은 간단한 원문 구조에 의한 것이다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_0befd3c02c66a713088eb99ca625f24bdce5bd575d61e36329a4ed38eb9a723b",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "높이≥3500 조건을 두 근 사이 시간 구간으로 판정한 해설과 goal 구간·차를 대조. 단일 시점방정식과 다른 exact-leaf gap 제안 및 bucket3를 수용. 추가 정답검수 PASS는 아님."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_5b42af6546418cacabe5c4247ce00913745c51686617a707d650de9263da0268",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제 s03 그림의 제1사분면 점P와 축에 내린 발Q,R를 봤다. 넓이 x(4-2x)의 꼭짓점을 통해 좌표를 정하는 method·RPM052·bucket3가 맞으며 제1사분면/수선조건을 근거로 사용한다."
+    }
+  ],
+  "findingsResolved": [
+    {
+      "ordinal": 2,
+      "finding": "method 등식은 zero-product step을 명확히 나타내지 못함",
+      "resolution": "author replaced with 영인자성질 CANDIDATE, exact quote 곱이 0이므로"
+    }
+  ],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/A/independent_assets/E075-23.png",
+      "sha256": "8cb38697be49f0c7b88b8b2139c9d6ed1bb63748dd83deeb0d0cbafe113c0db1",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}

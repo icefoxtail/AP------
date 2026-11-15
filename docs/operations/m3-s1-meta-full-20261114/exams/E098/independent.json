@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "independent-meta-sample-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
+  "examKey": "E098",
+  "author": "meta_b",
+  "amendmentAuthor": "meta_c",
+  "reviewer": "GPT_ROOT_D03144C8CA75",
+  "reviewedAt": "2026-11-15T10:54:32.193Z",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "scope": "METADATA_ONLY_LOCAL_PREPARATION",
+  "sourceBaseBlob": "cfe0f4ed00a2ec80687b1044292c48d18af5076c",
+  "sourceSha256": "9dd41a806945912977a38f9417746ede6de8a18ac4bb3b7c966c7eb53dd7a4f2",
+  "inputHashes": {
+    "reviewSha256": "a6f90e6d11d1ed0be086dc8cf277d76422b62c14c830eaf1073a2f2831afb7f8",
+    "fourSlotSha256": "487dc3e31c6f83e70afd9360b605e74190eb52eef3c1c18601f97a91a3f3be57",
+    "amendmentSha256": "bb80a2f90c616d064781d200973657f0147b828e22f789af27abb58adcb8dff9"
+  },
+  "sampledOrdinals": [
+    11,
+    14,
+    19
+  ],
+  "samples": [
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_09fb43fe10993532323b91c936e7e430a0d1fd549b4905e7dbe8d6190f1d4530",
+      "status": "ACCEPTED_WITH_SOURCE_ONLY_DEBT",
+      "rationale": "실제 타일 그림의 x×x 두 정사각형, x×1 세 직사각형, 단위정사각형을 열람했다. 넓이합의 인수분해와 둘레 연결은 표준단원/중·bucket2의 발문기반 후보를 뒷받침한다. method는 원해설 공백 때문에 비워 두고 공식 실패를 유지한다. RPM025의 FAMILY_ACTIVE는 실제 선택 TPL을 뜻하지 않으므로 파생본의 family 후보/정확 binding 보류를 수용한다.",
+      "exactQuotes": 5,
+      "fingerprints": {
+        "QBODY": "98af4c12e336400a27b671f5cf1d88a07bbebccb2f82171cada9aef5c98cfaed",
+        "QFULL": "f1d2154f0e83792fd7b56b6b33cf97c5b8f3cffa57b5d6e38a5ca101ff6aea7b"
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_8669a6721cd50d561346e968b0f9312ff28d1c6c630cc8821b1ed3bd045d25a8",
+      "status": "ACCEPTED_WITH_SOURCE_ONLY_DEBT",
+      "rationale": "실제 이차식과 두 일차인수에서 미정계수의 곱을 요구하는 발문과 보기를 읽었다. coefficient 관계를 읽는 분류 및 중·bucket2는 발문기반 후보이며 원해설이 없으므로 방법을 확정하지 않는다. actual TPL이 null인 상태에서 정확 ACTIVE를 철회한 파생본을 수용한다.",
+      "exactQuotes": 4,
+      "fingerprints": {
+        "QBODY": "acb7e875f22a1aa38ccae978b7b46c631f00b4a47dcbb9c8c144a4df2d895975",
+        "QFULL": "9ede5df8670cb898f5b6da2651bdea0344dd89ce0fbb4ece629c25f559b6b77f"
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_791e75d0d61f433bfe1cfee332b79a7ddbffce779db18ecc04691af6c9c21dc7",
+      "status": "ACCEPTED_WITH_SOURCE_ONLY_DEBT",
+      "rationale": "실제 계단형 세 정사각형이 같은 밑변에 붙은 그림을 열람했다. 넓이비로 제곱근 변 길이를 얻고 외곽 경계를 구별하는 목표와 CC_SQUARE_AREA/SEQUENTIAL/중·bucket3 B23을 발문기반 후보로 수용한다. 기존 그림 근거는 유효하고 exact leaf gap 및 해설공백 부채를 보존한다. geometric perimeter TPL은 관련 의미후보이며 실제 exact binding으로 확정하지 않는다.",
+      "exactQuotes": 4,
+      "fingerprints": {
+        "QBODY": "7f4b041c6c2de5c3e2295f06164abc49851f543733c8be784fac5a1af72d7d45",
+        "QFULL": "5b5dd0b9bec887956d44cbd8b4abe06ed16969450970d16ef7e2c0f1751dd884"
+      }
+    }
+  ],
+  "assets": [
+    {
+      "repositoryPath": "archive/assets/images/17_대구교동중_1학기_중간_중3_수학/q11.png",
+      "blobSha": "d1c98ab7fc3bb8ae15f951462978580d98d4604a",
+      "sha256": "663f5ccb3ca37004bdb9311311d6182f37488ee14712f1797769b12da942b685",
+      "mainRef": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+      "actualImageRead": "ROOT_VISUALLY_INSPECTED",
+      "mainParity": "VERIFIED"
+    },
+    {
+      "repositoryPath": "archive/assets/images/17_대구교동중_1학기_중간_중3_수학/q19.png",
+      "blobSha": "bae708e937f5f93759fc2de4b7611de7219ae466",
+      "sha256": "cb337f6dd05b6c6cf6daa638bd2a2c2a812a4e5d79ccdcb58280e4bf64ac00a9",
+      "mainRef": "fc58d6737e5178268c511a5d9c24c4651e103b05",
+      "actualImageRead": "ROOT_VISUALLY_INSPECTED",
+      "mainParity": "VERIFIED"
+    }
+  ],
+  "authorAmendmentOnlyOrdinals": [
+    11,
+    14
+  ],
+  "officialMethodGate": "SOURCE_ONLY_MISSING_METHOD_NOT_WAIVED",
+  "contentQualityPass": false,
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_RUN",
+  "remoteCompletionClaim": false,
+  "nextAction": "SAFE_OWNERSHIP_HANDOFF_THEN_ROOT_SOURCE_INTEGRATION_AND_PER_EXAM_REMOTE_CHECKPOINT"
+}

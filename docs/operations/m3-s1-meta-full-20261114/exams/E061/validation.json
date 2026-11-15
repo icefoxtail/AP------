@@ -1,0 +1,652 @@
+{
+  "examKey": "E061",
+  "questions": 24,
+  "errors": [],
+  "sourceChangedItems": 21,
+  "sourceChangedFields": 29,
+  "sourceEdits": [
+    {
+      "ordinal": 1,
+      "field": "subUnitKey",
+      "before": "M3-01-SQRT_DEF",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "제곱근 정의와 중첩된 근호값 판정; √((-7)²)=7의 음의 제곱근을 읽고0의 예외를 확인한다."
+    },
+    {
+      "ordinal": 2,
+      "field": "subUnitKey",
+      "before": "M3-01-SQRT_PROP",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "제곱과 근호의 절댓값 성질; √((-6)²)=6으로 부호 오류를 찾는다."
+    },
+    {
+      "ordinal": 3,
+      "field": "subUnitKey",
+      "before": "M3-01-IRRATIONAL",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "표현을 간단히 하여 무리수 분류; 유한·순환소수와 제곱수 근호를 제외하고√(1/1000)을 고른다."
+    },
+    {
+      "ordinal": 3,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "표현을 간단히 하여 무리수 분류; 유한·순환소수와 제곱수 근호를 제외하고√(1/1000)을 고른다."
+    },
+    {
+      "ordinal": 4,
+      "field": "subUnitKey",
+      "before": "M3-01-SQRT_TABLE",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "제곱근표의 순방향과 역방향 읽기; 4.43칸에서a를 읽고2.076칸의 행열로b를 구한다."
+    },
+    {
+      "ordinal": 5,
+      "field": "subUnitKey",
+      "before": "M3-01-COMPARE",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "동일항 이동과 근호 부호로 대소 판정; 공통항을 제거하고√((-4)²)=4와6-√2를 비교한다."
+    },
+    {
+      "ordinal": 6,
+      "field": "subUnitKey",
+      "before": "M3-01-COMPARE",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "근호 사이 구간에 수 대입; 양수 후보를 제곱해5와24사이에 있는지 비교한다."
+    },
+    {
+      "ordinal": 7,
+      "field": "subUnitKey",
+      "before": "M3-01-SQUARE_MAKE",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "제곱수 몫을 만드는 최소 자연수 분모; 320=2⁶×5에서 홀수 지수인5를 제거한다."
+    },
+    {
+      "ordinal": 8,
+      "field": "subUnitKey",
+      "before": "M3-01-ROOT_CALC",
+      "after": "M3-01-REAL_NUMBER_OPERATIONS",
+      "reason": "역수 곱셈과 유리화 후 근호 정리; 나눗셈을√10곱셈으로 바꾸고 분배하여 동류항을 합한다."
+    },
+    {
+      "ordinal": 9,
+      "field": "subUnitKey",
+      "before": "M3-01-REAL_NUM_LINE",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "두 다른 중심에서 옮긴 대각선 좌표 판정; A=1에서는오른쪽,B=2에서는왼쪽으로√2를 옮긴다."
+    },
+    {
+      "ordinal": 10,
+      "field": "subUnitKey",
+      "before": "M3-01-SQRT_PROP",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "근호 안 식의 부호로 절댓값 제거; 2<√5<3에서 두 밑의 부호를 달리 적용한다."
+    },
+    {
+      "ordinal": 11,
+      "field": "subUnitKey",
+      "before": "M3-02-EXPAND_FORMULA",
+      "after": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "reason": "두 일차식의 분배와 동류항 정리; 네 항을 곱하고ab항2ab-6ab를 합한다."
+    },
+    {
+      "ordinal": 12,
+      "field": "subUnitKey",
+      "before": "M3-02-EXPAND_FORMULA",
+      "after": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "reason": "여러 곱셈공식에서 전개 오류 확인; 반대부호의 두 인수를 -(2x-y)²로 해석하거나 직접 전개하여 중간항을 확인한다."
+    },
+    {
+      "ordinal": 12,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "여러 곱셈공식에서 전개 오류 확인; 반대부호의 두 인수를 -(2x-y)²로 해석하거나 직접 전개하여 중간항을 확인한다."
+    },
+    {
+      "ordinal": 13,
+      "field": "subUnitKey",
+      "before": "M3-02-EXPAND_COEFF",
+      "after": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "reason": "전개식 계수에서 목표 묶음을 직접 읽기; a-b=1,ab=2를 계수비교하여 더한다."
+    },
+    {
+      "ordinal": 13,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "전개식 계수에서 목표 묶음을 직접 읽기; a-b=1,ab=2를 계수비교하여 더한다."
+    },
+    {
+      "ordinal": 14,
+      "field": "subUnitKey",
+      "before": "M3-02-EXPAND_COEFF",
+      "after": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "reason": "전개식의 지정된 교차항 계수 합산; 첫 곱의xy계수23과 제곱식의-12를 합한다."
+    },
+    {
+      "ordinal": 15,
+      "field": "subUnitKey",
+      "before": "M3-02-FACTOR_APPLY",
+      "after": "M3-02-FACTORIZATION",
+      "reason": "수의 공통인수와 제곱차로 약분; 분자1002×1000과 분모1000×1002를 만들어 약분한다."
+    },
+    {
+      "ordinal": 15,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "수의 공통인수와 제곱차로 약분; 분자1002×1000과 분모1000×1002를 만들어 약분한다."
+    },
+    {
+      "ordinal": 16,
+      "field": "subUnitKey",
+      "before": "M3-02-FACTOR_CROSS",
+      "after": "M3-02-FACTORIZATION",
+      "reason": "기본 이차삼항식 인수분해 후 한 인수 선택; (2x-5)(3x+1)을 만들어 보기와 대조한다."
+    },
+    {
+      "ordinal": 17,
+      "field": "subUnitKey",
+      "before": "M3-02-FACTOR_CROSS",
+      "after": "M3-02-FACTORIZATION",
+      "reason": "인수분해 결과를 역전개하여 오류 판정; 각 우변을 전개해 일차항 부호가 다른 것을 찾는다."
+    },
+    {
+      "ordinal": 17,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "인수분해 결과를 역전개하여 오류 판정; 각 우변을 전개해 일차항 부호가 다른 것을 찾는다."
+    },
+    {
+      "ordinal": 18,
+      "field": "subUnitKey",
+      "before": "M3-02-PERFECT_SQUARE",
+      "after": "M3-02-FACTORIZATION",
+      "reason": "완전제곱식의 두 중간항 부호 읽기; (3a±b)²의 중간계수±6을 모두 읽는다."
+    },
+    {
+      "ordinal": 18,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "완전제곱식의 두 중간항 부호 읽기; (3a±b)²의 중간계수±6을 모두 읽는다."
+    },
+    {
+      "ordinal": 19,
+      "field": "subUnitKey",
+      "before": "M3-02-PERFECT_SQUARE",
+      "after": "M3-02-FACTORIZATION",
+      "reason": "전개 후 완전제곱식으로 인수분해; 괄호를 풀어x²-4x+4를 만든 뒤(x-2)²로 묶는다."
+    },
+    {
+      "ordinal": 19,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "전개 후 완전제곱식으로 인수분해; 괄호를 풀어x²-4x+4를 만든 뒤(x-2)²로 묶는다."
+    },
+    {
+      "ordinal": 20,
+      "field": "subUnitKey",
+      "before": "M3-02-FACTOR_MISTAKE",
+      "after": "M3-02-FACTORIZATION",
+      "reason": "두 잘못된 인수분해의 보존 계수로 복원; 상수항-18과 일차항계수-7을 골라 원식을 구성한다."
+    },
+    {
+      "ordinal": 20,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 3,
+      "reason": "두 잘못된 인수분해의 보존 계수로 복원; 상수항-18과 일차항계수-7을 골라 원식을 구성한다."
+    },
+    {
+      "ordinal": 21,
+      "field": "subUnitKey",
+      "before": "M3-01-SQRT_PROP",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "수준별 수치 제곱근과 문자 부호 간단화; ①은수치 제곱근 직접계산,②는a<0에서두절댓값 부호적용이다."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "fourSlot": {
+    "fail": [],
+    "warn": [
+      "#1 only 3 distinct terms",
+      "#2 only 4 distinct terms",
+      "#3 only 4 distinct terms",
+      "#4 only 4 distinct terms",
+      "#11 only 3 distinct terms",
+      "#12 only 4 distinct terms",
+      "#13 only 4 distinct terms",
+      "#16 only 4 distinct terms",
+      "#17 only 4 distinct terms",
+      "#18 only 4 distinct terms",
+      "#19 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 24,
+      "examItems": 24,
+      "quotes": 122
+    }
+  },
+  "registrySha": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+  "missingNativeLeaves": [
+    7,
+    9,
+    14,
+    17,
+    20,
+    22,
+    23,
+    24
+  ],
+  "missing2022Leaves": [
+    7,
+    9,
+    12,
+    14,
+    17,
+    20,
+    22,
+    23,
+    24
+  ],
+  "projectionBindingGaps": [],
+  "protectedFields": {
+    "status": "PASS",
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_6464b8e0ecf1a337a679d044e36a5714334e3b01bfc3e7524bf28cdffcdb6f8a",
+        "sha256": "4e536713ac42b7c4e3538a8545fc92328a11fb3472f687163eed11b2b2c4ac81",
+        "unchanged": true
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_9132c68f9dc6a4ec07383b707ebfa4b625ed3909062ab9bea09f335d2123bd5b",
+        "sha256": "c3d5aa133b1ab13decdb02221cf453609c36df884a30db663cf8a958239ff9fe",
+        "unchanged": true
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_877dd2d354d1276f36bcfed3372feafd8c5f1ebc32ca29065de7555f45f6199d",
+        "sha256": "5de316d1e4dd2b63b6ee4a272ab25fe1b4acd2b819c971db20e57f984756b4f6",
+        "unchanged": true
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_70a70bf259010c433e38b2bbfc5acbecb437da0d76c80fdaa2e81d47eb052a95",
+        "sha256": "699d9d569fd3a15eb334691d41d226006938a10f3012b3dee7bf23ae2fb17ad3",
+        "unchanged": true
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_819c601eb9c896dbe6f1f7ebd8dd58fcee1ca4a5bdfa000ee6f439355d856390",
+        "sha256": "5686c8406251bce5cd5001890916c28816d5eb6fdec310428e2c5c39ff4b9f66",
+        "unchanged": true
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_635575b4d21e603a408ad4c588e43c7ef063fc0372d4a4edff5915034a258e66",
+        "sha256": "d5e4dc4e0a75e48c10a94d2a5dc3a514b15eaa61f34dea376bacedae45729d53",
+        "unchanged": true
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_a93ed184fa7119e432166c15d546de2be6e99b77511c05d0c8122d44e64b6632",
+        "sha256": "6bdf83cbd8dd01664b3ef96829867668a91623311b30f53ca34d0a7cf0d65ef1",
+        "unchanged": true
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_be2d604fe02cb1d4d2640f894c2983e452b5a43a73898800e74a952197060163",
+        "sha256": "17c50e3edd7022ff55e86bdb01cd14c61f10fb28e83dd85c9469dd51981b21f6",
+        "unchanged": true
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_2f9336442c911a54016db3bde665b340af912240d7a045ce032ff228a79193fa",
+        "sha256": "6b62e1b2fa8e0f691d102e6bc1b9b5074d09cc625145a6929d2cc8972ea35f7d",
+        "unchanged": true
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_77a38e13e3efc54d4b7bcf50413b2c1aadd78a46212b9e0246f92a27ef5e279e",
+        "sha256": "eeea1ccc6475bac8e720a27e7a8048bfe6e946feda6066fb478e160a66897ad4",
+        "unchanged": true
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_69641e8e649f44e99e37cb73777dab88eebb0a0c87c2f10307de9aef00eb21ae",
+        "sha256": "d896327be44dd6286e903a8697c1c76a7468644f18de6d1a69c4526ad45043e4",
+        "unchanged": true
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_a3d5e90eef507cc67a8bd11cda47f0c297e92690777cab4222e934afbc8e7fd9",
+        "sha256": "756f39e53eb757d4307186806d61711c681db74562c1571f06e77aefed8981b8",
+        "unchanged": true
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_3e608ef0dfebc24df1ee78f40f529502881d0f349fcc5c0cf48b3b40dcc8f037",
+        "sha256": "7c07e7571ff958ccebbc52f9d8173e137f1afeb3457bd07a25047dc0ec7a72a9",
+        "unchanged": true
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_f9399ce8af3a9382f82ac141ea7254079d318ef06f8669f9dd85c20f2bc7a016",
+        "sha256": "ec857b3b638ee9b72bb1f07a2b4a0f652c9e1b65acc740df2517b1dec93b360a",
+        "unchanged": true
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_b7be75ad25b7cd08622680cc6ccba04dbf91c182eb1dff40b0d2072b84c0d1cc",
+        "sha256": "b885a27829b675bcf2df2d3e7b1f6e651da00a91b647211cefb6e8675baf5b15",
+        "unchanged": true
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_408f9b10ff99675275f00233d54353ec9c057e442a9545f43218b441715995bb",
+        "sha256": "761fa0d525aef79419095c301967a8d729ce33e09502fd2d6226b1523bb2ea8c",
+        "unchanged": true
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_2fb1b5981712852ad46fc87747cdef89de554d37324b7e544baaa1fcaf454318",
+        "sha256": "9a521a1135d6d95ab584799e9204787aaadfdb4ec342f3428732908bca2678c7",
+        "unchanged": true
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_fa94e81765ec9a4ccce98a2ed2c640ff50f08d4557d5732e24d67c6c706fd200",
+        "sha256": "7213d42d8784c035f23d1e5f7cec8dd2aebceadd9b54439c0c93cdd923c9adb5",
+        "unchanged": true
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_ec414016c244a7f661d14b0ec0ea490d935788a2135bedb786c91e98c62c63fd",
+        "sha256": "3c91cdd0276755950f4f4dcce4389ee35695b8dd8699eedc9d9854b58ab41eca",
+        "unchanged": true
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_a04faf5e02a4617794c7e11f4ee439cccb25dd23da52bc83f00f13b3ab00bb8f",
+        "sha256": "0565661c0e4dd6b6db596d82a1946f90d5117a026b23bfbaef0cfaad0a7cb9ec",
+        "unchanged": true
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_b986537900256eef24d3e2c743d153175f1b858c92db0f6bd06c3bcaae35dc42",
+        "sha256": "85967bd3c0d9b63da492cdbbdddba30705ecfa5217c1d45b33589b10c41f5ab1",
+        "unchanged": true
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_b6de6a4580285f43126ed3a7c300fc5d6aa8cc62f7ca0f94030dfa6692f80e1e",
+        "sha256": "04902a727c97cce141655cd13fad1c8caf922473029a49d4ca28f03a3bdb315e",
+        "unchanged": true
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_3fce78b6ec64edc1a946e5fda1a32a6a6878580d4cc8711982a92ef0ccb610db",
+        "sha256": "7475325a5da72b31ea0d67d81be96fb6d9bf50073ab2fab9a0dc87a21f3e28c2",
+        "unchanged": true
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_2961af98999ec325a6efddc6ae503439248116edbec56f34f42809d9b240420e",
+        "sha256": "b6fc92fe2992a89bc3fe7a3affab2d99aa1ccf43c0cdfe2dc239265755b485cc",
+        "unchanged": true
+      }
+    ]
+  },
+  "fingerprints": {
+    "status": "PASS",
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_6464b8e0ecf1a337a679d044e36a5714334e3b01bfc3e7524bf28cdffcdb6f8a",
+        "QBODY": "9d31e11f0efcd610526efc0f11d15b69322fecb379c638eae358acc2ba6790c6",
+        "QFULL": "dfed980cccf08d863f1c1fe946378602b713ff903751bc060fcfe69d1738da4b",
+        "stemEvidenceSha256": "d2129785b277b5a8d9524fe44e12c141801364824c14926dbd158ab706dfa3f9"
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_9132c68f9dc6a4ec07383b707ebfa4b625ed3909062ab9bea09f335d2123bd5b",
+        "QBODY": "a8ecccc035082c99c74aa3405796f623c686e6e6e3c06ff927e514cf56c8224d",
+        "QFULL": "e52f0c14729cf4e65c8c237633cbe398c6de34080b9fb068e2aa4d1100532f1a",
+        "stemEvidenceSha256": "d4816aa3a032bacb124690e947c8c93c3976eff6116841e39119c6181fa110fb"
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_877dd2d354d1276f36bcfed3372feafd8c5f1ebc32ca29065de7555f45f6199d",
+        "QBODY": "a74b941c4f058469f9f50781e9b52d5ca915d551552177635cc95228407a7403",
+        "QFULL": "4208481a5027652a33b2dcad3797c0f2a6ddcfb51cf4fefa715001e74bb305a4",
+        "stemEvidenceSha256": "59839c1dc624bdc8d6a72d5b0dcfb5c9f9ee1aab489dc6783a68ba6b5910abbf"
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_70a70bf259010c433e38b2bbfc5acbecb437da0d76c80fdaa2e81d47eb052a95",
+        "QBODY": "bbb6fc5fd991485d8c068480d7a837bb7e4fc59fc2f022f96e6281280d2e0720",
+        "QFULL": "1cea68de7fb494b23ee56edc3fdb87abf1b721279806500ad737e9015709b250",
+        "stemEvidenceSha256": "68dd380d87c478f534ec8878831d5754cb59858f5d799f80eda25d31a684e733"
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_819c601eb9c896dbe6f1f7ebd8dd58fcee1ca4a5bdfa000ee6f439355d856390",
+        "QBODY": "c4fc1c4d8bc5d203ff1f41526cc6334ae3fb4afef40da24c4cde7cb26d9b6563",
+        "QFULL": "075b6424cadcc8c55be0837e80fcf3279ba6fe2750e62c709bce1b99050355f2",
+        "stemEvidenceSha256": "38f40ffb7b4fae38ab47aa5c1e0cd64d2d9e8ab682ddd5c721fc5444ae36a80e"
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_635575b4d21e603a408ad4c588e43c7ef063fc0372d4a4edff5915034a258e66",
+        "QBODY": "581afdeb26d7bccfcaaa3bb9feca26c8a1f5735f7b02feac3fc9ed381fc80c1e",
+        "QFULL": "f390904f4563f94f013affad480b1707fe1d1d559d5a364695779a29b5d4e52e",
+        "stemEvidenceSha256": "c589e87e3604a4aa1ee20f6aad4877d9cde86e68456d920a8bd58dbdcd08e7c1"
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_a93ed184fa7119e432166c15d546de2be6e99b77511c05d0c8122d44e64b6632",
+        "QBODY": "6eaa9b09ba5b621395b30e90f75d5ae9384484d2d1c028176dd0db97f8c49084",
+        "QFULL": "e0e8b036aa46b2c4660ecdb98d51d406691b2a3da597ee03629b574a78c40868",
+        "stemEvidenceSha256": "3b240a4f446906824e92973289bf795e76562b1236533dbd0a6aebb3afc026fe"
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_be2d604fe02cb1d4d2640f894c2983e452b5a43a73898800e74a952197060163",
+        "QBODY": "5f5ea64949ebaf318a99b2cd60d23f5bd02f802c392d1a765096792a2fdb6ec9",
+        "QFULL": "c14c0692b74605f024de981a7f14026f803644e4abb285f0079f9ac51d0060eb",
+        "stemEvidenceSha256": "133198b43e65ae7c4f70b6d5e988fef425fdc50b07912ecae1db250bed140a79"
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_2f9336442c911a54016db3bde665b340af912240d7a045ce032ff228a79193fa",
+        "QBODY": "ba89c66e94563a79da78334d4aebc1007f6a0ebf5e21c3aa9b9be63adc539495",
+        "QFULL": "2ede2fb2bfa73757080a1905d037e98162f20b66518851a8005bd4d98fca6992",
+        "stemEvidenceSha256": "b884fb631c804a86ef8746f857b130a68cc5802debb6afefdfa66d460e06c8df"
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_77a38e13e3efc54d4b7bcf50413b2c1aadd78a46212b9e0246f92a27ef5e279e",
+        "QBODY": "ee44e91a7d0122c49d1f4c1e83170bcb95ee5d6895a94e27afabfe5c400ce9f5",
+        "QFULL": "be037f5a01780072238950137b30c8aa4d8625fe1c4ef1fde036b3f985e55c0d",
+        "stemEvidenceSha256": "2d064eb9735d82dfea0764e898e8ae8e65adb5635f2f7692ad64ee5e4ee66ec7"
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_69641e8e649f44e99e37cb73777dab88eebb0a0c87c2f10307de9aef00eb21ae",
+        "QBODY": "acd109abd977271f0fdfbcdee24d28bab2108ed81ef7937489629b127b3dc0c8",
+        "QFULL": "d7dfc86dcbe2089d8c76cde2c349a4c6d958708201c126d8ba795a5a202a061e",
+        "stemEvidenceSha256": "38bde03a85f45a3e5cf5b696330954e8303c2654c572760f9fffd053ed0264d0"
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_a3d5e90eef507cc67a8bd11cda47f0c297e92690777cab4222e934afbc8e7fd9",
+        "QBODY": "49435541e64a5a0ef0fcab6423641453b8e713d6823733198514a6be653b07c5",
+        "QFULL": "42e72d15505f38d7df5a4e1a642afda3c89ecb5fac8d4bfe4c1b4df6d83740b1",
+        "stemEvidenceSha256": "b30b4e1804c036b8f8f4b02a32975a2678f6032c023b53fd44241c7f2da9fa09"
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_3e608ef0dfebc24df1ee78f40f529502881d0f349fcc5c0cf48b3b40dcc8f037",
+        "QBODY": "2915b8bd26323330d0cb946775701cc9b93d9cd9bdd7f18e13cb5b60dd39d82e",
+        "QFULL": "6e777062f0601f1bc62f008b8258468c3fdd382532f0d49385c687ed03fc4873",
+        "stemEvidenceSha256": "ac0e6a5dc94018314397060f3daded58ad5a6f314b2915a9f9cb518cd222bf8f"
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_f9399ce8af3a9382f82ac141ea7254079d318ef06f8669f9dd85c20f2bc7a016",
+        "QBODY": "1061366ae67443d06096c2c328cd6af48cfd41cb59e9cead10ba33363abf8b60",
+        "QFULL": "283916ff7002c4ed8b51d878b819e60cbd4ac7e37846b7f162d38ed27cebae5c",
+        "stemEvidenceSha256": "2feb93ba1dc146406fc556970f2292ef623f6a472aa007bd6ae11713da065a5a"
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_b7be75ad25b7cd08622680cc6ccba04dbf91c182eb1dff40b0d2072b84c0d1cc",
+        "QBODY": "6ee654b84961aa34631984859740e8435d18e5c3e09094f4c07606305dff3ddc",
+        "QFULL": "f9cd79c1c64a29ffeb6e8a83585b69c3519fa021c95d57e386ea5cc5edf3f112",
+        "stemEvidenceSha256": "f3c6f8a9d26af8cb40e127b033489bb0fb590ab8e979b203617f7ad80b8dd5d3"
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_408f9b10ff99675275f00233d54353ec9c057e442a9545f43218b441715995bb",
+        "QBODY": "32b8674e24377b38c387f70cab74644dd6974ab15ba6611c59748749e26aa3bf",
+        "QFULL": "3965a82637105daab6bf08575f91e68fc2f5ebe3547f14eaca31f149380649f4",
+        "stemEvidenceSha256": "e601d7b89b89a6db9bd8002acd7993da8b6b7068256f7dab7ad60601ee55af20"
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_2fb1b5981712852ad46fc87747cdef89de554d37324b7e544baaa1fcaf454318",
+        "QBODY": "3068eac37eab2cb4caf6ff6482bb5d86260b06d084281a9aa850cc8c1aa95d6d",
+        "QFULL": "50b9557af8596fb5d2120f0e63442c512350ab20a9cf726916f25cd89ba4148c",
+        "stemEvidenceSha256": "a02c8ea1e486599d29cb4b222e32c95cbeb7cccdc4df6a02fe637ddedf0c1a74"
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_fa94e81765ec9a4ccce98a2ed2c640ff50f08d4557d5732e24d67c6c706fd200",
+        "QBODY": "60950abe4c8ae841f9394c3de81bf0904d4cc143435e5222aa7b279399407199",
+        "QFULL": "b0179af27fc400cc91812c710cb98cf9cf3e4a206b04edc699bd5386ff4fc2b8",
+        "stemEvidenceSha256": "d7696d8dd4b2fb629488fda509c338a76a5fb0ef268a3047ef756eaa943c4ac9"
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_ec414016c244a7f661d14b0ec0ea490d935788a2135bedb786c91e98c62c63fd",
+        "QBODY": "453ff6c97f7cc537aacd5790fa9761d04274c0f590f18f11a3b140f97dbf7abb",
+        "QFULL": "95127f314f11458b449136ea54624ce05106e4968a9d9efa0382a999ca7af4bb",
+        "stemEvidenceSha256": "185984270327e48b8dfbd6501f6aeece391c05168cf93582532dcdc241b8824b"
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_a04faf5e02a4617794c7e11f4ee439cccb25dd23da52bc83f00f13b3ab00bb8f",
+        "QBODY": "879a2b7346712131d223b8bdfbc5486ab81ea5057537db800d97eda87421ff1d",
+        "QFULL": "bbd0ef718084a326a7de2e2cde4aa1cde6bc777fb97f41a06e62db4ea2b088b4",
+        "stemEvidenceSha256": "dd65ed03e47ae9eb6b34db4e360d1228d4a212ae7e03ea0dbb1ff74e36a786c7"
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_b986537900256eef24d3e2c743d153175f1b858c92db0f6bd06c3bcaae35dc42",
+        "QBODY": "d74802d92f60941703622cbb3105d77098e9766532056b7226f8f25f5e209ef5",
+        "QFULL": "b55c094c03a2de3632dd35f49b8f103e16dfe2c593faeb7d1f73bf839a7214c3",
+        "stemEvidenceSha256": "bafc3dbc1c600cde5e7da1952f137983eb28d08f10c432688def3448e049a6c5"
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_b6de6a4580285f43126ed3a7c300fc5d6aa8cc62f7ca0f94030dfa6692f80e1e",
+        "QBODY": "e4da3cafec4bc02dabfc96193df321a6bcecb3d88279423ad0bb3f6251e5a459",
+        "QFULL": "25e7fb8708aabdade5b740406ee8cd6cbd3ac8d9899038ef2e4936eee7b5395b",
+        "stemEvidenceSha256": "bf0ee16cfad59e584e0e0c43d8ecbed65b30280ed66aa53e1a6cef92e7942171"
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_3fce78b6ec64edc1a946e5fda1a32a6a6878580d4cc8711982a92ef0ccb610db",
+        "QBODY": "0ba22328482389bb0cb2422a117de9443fb5490f0e6ff1da545262212a27e437",
+        "QFULL": "3e6c02ee13d35e7415a3df77b523b29b2a49214819bb2d6c27d8487bf1b77819",
+        "stemEvidenceSha256": "472e68ebe4cf14f1c1fed65fca5a4ee2fa6ec62c2fe7ba5b634815ffed4db9ad"
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_2961af98999ec325a6efddc6ae503439248116edbec56f34f42809d9b240420e",
+        "QBODY": "df12fce84e84aeca23fe9cd26493639da3bd2485f3a29919c051901d90e00960",
+        "QFULL": "0dc832ed977a225c131877790099108415924999ec54f5329dd3f963ce915ec9",
+        "stemEvidenceSha256": "8f2b3c2440fd3fb3e6b6b20f851c81b1eb43ce63521efe80f25a5e5e63578744"
+      }
+    ]
+  },
+  "sourceFinalBlob": "295122a65d8fd493d918606b18acf2feac5c7aeb",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E061",
+    "author": "meta_a",
+    "reviewer": "meta_b",
+    "reviewedAt": "2026-11-15",
+    "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+    "status": "PASS_WITH_EXPLICIT_DEBTS",
+    "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+    "sourceBaseBlob": "693dfa0bd3822b0cd92cbdfe6773a2d5e0167942",
+    "inputHashes": {
+      "reviewSha256": "c44a14d4b63d9fd2085922e5ae8af77c0af91b146ce345a44a0c304aa62a7b0a",
+      "fourSlotSha256": "dbb9d7d9a7f5fb3eaa960a98a77450ea9468161547668665e9a7728737b5e5fd"
+    },
+    "sampledOrdinals": [
+      7,
+      20,
+      22
+    ],
+    "additionalReviewedOrdinals": [],
+    "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+    "findings": [
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_a93ed184fa7119e432166c15d546de2be6e99b77511c05d0c8122d44e64b6632",
+        "status": "PASS_WITH_DEBT",
+        "note": "320=2⁶×5의 최소 나눗수5를 찾는 정형 소인수 보정2 및 자연수조건 수용. 기존해설 일반형5k²에는 나눗셈 결과 자연수 제한이 추가로 필요하다는 content debt 보존 확인."
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_a04faf5e02a4617794c7e11f4ee439cccb25dd23da52bc83f00f13b3ab00bb8f",
+        "status": "PASS",
+        "note": "두 오류풀이 중 각각 유효한 계수만 결합해 원식 복원. 전개·계수비교·인수분해 method와3 수용."
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_b6de6a4580285f43126ed3a7c300fc5d6aa8cc62f7ca0f94030dfa6692f80e1e",
+        "status": "PASS_WITH_DEBT",
+        "note": "①은 직접 유리화,②는 xy(x-y)(x+y) 목표식 분해를 추가하는 서로 다른 수준. 선택 방식 없는 같은UID의 종합난도 UNKNOWN 보류와 부분판단·exact gap 수용."
+      }
+    ],
+    "assetReview": [],
+    "decisiveMethodOrGoalErrorsInSample": 0,
+    "inventedQuotesInSample": 0,
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED",
+    "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION",
+    "reviewedArtifactHashCheck": {
+      "E061.review.json": "c44a14d4b63d9fd2085922e5ae8af77c0af91b146ce345a44a0c304aa62a7b0a",
+      "E061.4slot.json": "dbb9d7d9a7f5fb3eaa960a98a77450ea9468161547668665e9a7728737b5e5fd"
+    }
+  },
+  "resolverExecution": "NOT_RUN",
+  "registration": "NOT_RUN",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "difficultyPolicyDebtOrdinals": [
+    21,
+    22,
+    23,
+    24
+  ],
+  "primaryEvidenceDebtOrdinals": [],
+  "evidenceDebtOrdinals": [
+    23
+  ],
+  "undecidedDifficultyOrdinals": [
+    21,
+    22,
+    23,
+    24
+  ]
+}

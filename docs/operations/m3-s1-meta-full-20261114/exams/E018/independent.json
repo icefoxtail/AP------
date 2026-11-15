@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E018",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-14T13:52:25.559025+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js",
+  "sourceBlob": "aef12d331e9ae8275a5fc4c14b26d53468d331cb",
+  "inputArtifacts": {
+    "workers/C/E018.review.json": {
+      "sha256": "c8f80f7e6ff1aed4d86ea704be09253a98a3bd6c35a07345861c6b89df8932a3"
+    },
+    "workers/C/E018.4slot.json": {
+      "sha256": "85e6db59f5025aeb4960da72e9e4d3ac00f28dfa7874e16a7d9fe7189f56a7b1"
+    },
+    "workers/C/E018.input.json": {
+      "sha256": "05cf575af8e9046b5d75a88b802f86f2ae368bb113d1ab5f354a977270b74584"
+    }
+  },
+  "sampledOrdinals": [
+    2,
+    3,
+    4,
+    6,
+    9,
+    10,
+    11,
+    12,
+    14,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_31b7095588743b9f50b80b2138f8e1e0cd44c1e6734ffe64142d2346ccf2f876",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "근삿값의 제곱과 반올림 자리 비교로 bucket2 수용. 정확한 반올림 자리 조건을 후보와 부모어로 보완했다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_d7e365629546312853e9af1276941ecf2efb17713383066f07970aa28d2cac6e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "정본2015 M3-RPM-182의 여러 곱셈공식 비교·판별과 일치. 동일2022 leaf가 없다는 debt를 수용한다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_e891e40874d1b94c17f818c6e5d3d0f6027edd03e2715a3e8e3afca8311e6dd6",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "완전제곱식을 즉시 읽고 주어진 합을 대입하는 직접 적용으로 bucket1 수용."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_6e9c4dce0258f130b5ac5e48ef2b929d46610f40dd71cdf37f847c620137a371",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "유리수의 조밀성과 실수·수직선 대응은 개별 수 판별과 달라 exact leafgap을 유지한다. 중점 반복 method가 실제 해설에 있다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_2893bd9a28e88bc404d26b6087925c6013fefe12b9b8aa65b00bb0a608e2d53a",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "무리수항 계수0 조건이 기존 해설에 명시되어 있다. 유리수 조건·분배법칙·계수·일차방정식이 실제 단계와 일치한다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_3aaa308bc578debfe76b79fe394f68ef98ec8b8e80747c6f44f088f36429890b",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "삼각형 넓이와 같은 직사각형 넓이에서 길이를 구하므로 기하 활용이 주구조이다. RPM014를 부모맥락으로 분리하고 exact gap으로 보완한 판정 수용. 두 면적 CC가 순차 기여한다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_d4edfeb32dcee91da0a0e0348b3ff3d2dfd8e2518a9264371d56cb87442b7864",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "여러 인수분해 결과를 전개해 독립 비교하는 문항으로 bucket2 및 혼합 판별 leafgap 수용."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_9ba619edc3f58117f583e53e9be2bf3b6c828cb67af20854e3adf019e256c42e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "두 분모 각각에 켤레식을 곱해 유리화하는 표준 절차이다. bucket2로의 교정을 수용한다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_8de274494cce2237ef87112d5fa7351b3bdc555f79b9b7998aef884db0962138",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "전개 후 계수 비교는 primary의 직접 절차이다. 중복 CC 제거와 integration NONE 보완을 수용한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_dd141181ecbb4faa05cef59cade4dc6d8c6d8ef23667887315119227f5750abc",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "공통인수로 두 제곱합의 곱을 만든 뒤 합곱 공식을 적용한다. 인수분해 소단원 및 곱셈공식 보조 결합이 실제 단계와 일치한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_adcafe8300fb66a63ae51461a2f00469608c585968289dc428997a604ea3cfab",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "정수부분 정의에서8≤√x<9를 해석하고 자연수 구간을 세는 표준 절차이다. 기존상→중 및 bucket2 수용."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_1982a555cbf2f9664d49db4d42b9296e39b060ece4603d39f2d962d2f294f006",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "독립된 세 정사각형의 넓이에서 변 길이를 구해 동류근호를 합한다. 그림 직접 확인. 기존상→중 및 bucket2 수용."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_bc2d77093ec7b8fd3bb66166c07e51eb5e839cd12bfba0bc816c0779c3b8f023",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "직사각형에서 두 정사각형 넓이를 뺀 이차식을 인수분해한다. 그림 직접 확인. 기존상→중 및 bucket2 수용. 비중첩 조건을 후보와 배치 부모어로 보완했다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_1e5dd486057b44aed4357b4f6c4d2ef37fe3406879126a105b4741f4e4b50173",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "근호 안 식을 두 완전제곱식으로 바꾸고0<a<1로 부호를 결정한다. 실수연산 소단원 교정과 절댓값 보조 기여가 타당하다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_c1f22d90d66de1a07cf629eebf09f3b6e924111948b1641956f668392d546799",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "넓이→이동거리→두 좌표→합차분모 유리화가 연결된다. 중/bucket3/B34와 두 CC의 순차 기여를 수용한다. 그림 직접 확인."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_1c5b3aa490ac7655fe8bfaf97e56aa6824ed5a79f6aa25afd2a267ecd669acb5",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "직육면체의 부피·겉넓이 공식에 근호 길이를 넣는 소문항이다. 기하 primary exact gap 보존 및4칸 method에 두 공식 적용을 추가한 수정 수용. 그림 직접 확인."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_ede1fd5a49729ccdc010368a088fb93e1ede9bb186ec5b8c7c31e169e5be5e43",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "합차 항등식의 대수 증명과 도형 재배열 증명을 비교한다. a>b>0은 기하 소문항에 국소 적용하며 전체 항등식의 실수 범위를 제한하지 않는 주석 수용."
+    }
+  ],
+  "findingsResolved": [
+    {
+      "ordinal": 2,
+      "resolution": "반올림 자리 조건 보완"
+    },
+    {
+      "ordinal": 19,
+      "resolution": "비중첩 조건 보완"
+    },
+    {
+      "ordinal": 10,
+      "resolution": "기하 exact leafgap과 RPM014 부모맥락 분리"
+    },
+    {
+      "ordinal": 22,
+      "resolution": "기하 exact leafgap과 방법의 부피·겉넓이 공식 보완"
+    },
+    {
+      "ordinal": 14,
+      "resolution": "primary 중복 CC 제거"
+    },
+    {
+      "ordinal": 23,
+      "resolution": "기하 증명 국소 조건 주석"
+    }
+  ],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E018-assets/contact-1.jpg",
+      "sha256": "54a4b2f405c846ffce77664610cb58b71a34ce29474e0dbc9aadf6482458efd6",
+      "status": "VIEWED"
+    },
+    {
+      "path": "workers/C/E018-assets/contact-2.jpg",
+      "sha256": "4c975cc4813a3ad237aca1c783a85e8d02e7bade35f6e2c9bdb89446b5ff8a81",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E058",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "4c8aec5dc79553156b511261a05c30b7bd559a46",
+  "inputHashes": {
+    "reviewSha256": "131571da79ac22af9d2716fcbfed5ee55b4e7d6ced7d8030a47b428315cac52b",
+    "fourSlotSha256": "9e32501be48c839520e6d83f7306c8dfb0283d1453f0428202ce0b751be4cbfb"
+  },
+  "sampledOrdinals": [
+    3,
+    13,
+    21
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_3cf9baa0f0701c0d0268c177eedfa1d4fc345aaab96d3a5b796426c91d0af794",
+      "status": "PASS",
+      "note": "50x·45y를 각각 제곱수로 만드는 최소 자연수의 합. 소인수 지수 보정의 정형2 및 자연수조건 수용."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_bca1baa5841fcf7dc01e115f86f9e89d5b6bde104aee4c57906fe5d32974c94a",
+      "status": "PASS",
+      "note": "그림에서 같은 밑선의 네 계단 정사각형을 실제 확인. 공유변을 제외한 둘레 구조를 세우므로3과 SQUARE_AREA 보조 수용. 저자 보완한 넓이비 condition 확인."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_5e8976f51103029af55c043e618f7c31891ec5e72ddd1699d7790f5ceef68f83",
+      "status": "PASS",
+      "note": "모눈 그림 A=-5,C=1 및 오른쪽 두 호 확인. 소문항 안내가 길이→좌표→거리로 분해하므로2. 저자 보완한 두 길이 상등조건 확인."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E058/13-content-1.png",
+      "sha256": "5fef9077246c610afce1772318062d502c43d097cbdf2ab914961cc9b9661a91",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E058/21-content-1.png",
+      "sha256": "6d8dbfce57b963a6954754e55cab2fc9b86d4c988945c213ecf800063db19c45",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}

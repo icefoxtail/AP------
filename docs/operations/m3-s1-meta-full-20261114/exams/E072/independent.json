@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E072",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T00:15:34.562030+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/19_동산중_1학기_기말_중3_수학.js",
+  "sourceBlob": "5151e37c095c46973bcf0dcd3e782ef7722f4cf8",
+  "inputArtifacts": {
+    "workers/C/E072.review.json": {
+      "sha256": "deea92159c5bc412e2ffde14af15e76255f9241e3d44b9884c50dbeb963ebfc7"
+    },
+    "workers/C/E072.4slot.json": {
+      "sha256": "f64cf01accd053eac8e3b20583cdcf2265cc845888dda33271d519dec8c195de"
+    },
+    "workers/C/E072.input.json": {
+      "sha256": "76e072fc445417074b7a8378cb317564251df31e1313f24f366012734ef3747a"
+    }
+  },
+  "sampledOrdinals": [
+    10,
+    13,
+    25
+  ],
+  "items": [
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_e791d55d48dda1a6266100e7fa2fdeed690e060fca2d69c0ce8fa41f04ef7914",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "둘째방정식의근a와3을첫째에각각대입한다. a=1/2,-1,-2의세후보가나오며곱1. 공통근경우분류와목표상수곱·bucket3을확인한다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_8d9f4abdddb4ac2a9440dd3848f50b2ec6ec2701c89d52a8581e2606b1276b1e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "그림은AB=1,BC=x의직사각형에서x정사각형을제외한직사각형이회전닮음이다. 1/x=x/(1-x)의비례식과양의근선택을직접확인. 닮음보조개념·길이목표·bucket3수용."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_b24dc2a674805180bea2537dac1fdcad32b39f4a148d03da38788acca9df9bc3",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "원그림P왼쪽,S오른쪽교점에서Q,R가x축수선발이다. 연립2x²=2x+4로(-1,2),(2,8)를얻고평행변길이2·8,간격3으로사다리꼴넓이15. 좌표·넓이복합목표와실제해설method및bucket3을수용."
+    }
+  ],
+  "findingsResolved": [],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E072-assets/13-question-img1.png",
+      "sha256": "f4765b8d91b7b92cd2a09ad952d6e0e9ce7db3cefdaabfa4ee4dbd6c1c9783f6",
+      "status": "VIEWED"
+    },
+    {
+      "path": "workers/C/E072-assets/25-question-img1.png",
+      "sha256": "52f08f5ab883e33788ccc43c64e199c11822eb58a7bfed6e686585668f8a14b3",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}

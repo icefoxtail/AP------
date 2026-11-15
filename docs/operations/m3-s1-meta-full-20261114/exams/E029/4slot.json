@@ -1,0 +1,1575 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1mid/23_연향중_1학기_중간_중3_기출.js",
+  "sourceGitBlobSha": "f5a07c9c7e08900b22944b47bd985d6950950d61",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT-6 Astra Pro / meta_b",
+    "run": "M3-S1-META-FULL-B-E029-resume",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_f1b29782c95f9ac91a2a61851e0cc7adfa58e2a8e023adacfcf6671b816c1ee4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "debea3c2b7b638fb3ff6a69b4dafe7432c2962e969abc44152db4c66a3d7c320"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8cfa1713e079ef21c0f09ea53e6e64805e5520833dc5e612321cb142661684df"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "다음 중 $x$가 $a$의 제곱근임을 나타내는 식은? (단, $a>0$) [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "다음 중 $x$가 $a$의 제곱근임을 나타내는 식은? (단, $a>0$) [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "제곱근의 뜻을 식으로 나타낸다.<br>$x$가 $a$의 제곱근이라는 것은 $x^2=a$라는 뜻이다.<br>$a>0$에서 $x=\\sqrt a$ 또는 $x=-\\sqrt a$이므로, ⑤는 두 경우 중 하나만 나타낸다.<br>따라서 옳은 식은 <b>① $x^2=a$</b>이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근 정의를 x²=a라는 식으로 직접 표현한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "제곱근의 뜻을 식으로 나타낸다.<br>$x$가 $a$의 제곱근이라는 것은 $x^2=a$라는 뜻이다.<br>$a>0$에서 $x=\\sqrt a$ 또는 $x=-\\sqrt a$이므로, ⑤는 두 경우 중 하나만 나타낸다.<br>따라서 옳은 식은 <b>① $x^2=a$</b>이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근 정의를 x²=a라는 식으로 직접 표현한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "다음 중 $x$가 $a$의 제곱근임을 나타내는 식은? (단, $a>0$) [3점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "제곱근 정의를 x²=a라는 식으로 직접 표현한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_ae6e14f5dd4f6739a53dc25ae5dc9895169b1e0369710047d6959d1da8665417",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0577a44304706ea88ceeb3226c0bcc5e7e02358bb74d08b7f889caaa9b561455"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4ae0191dd31502a40c4b530d2c5330f41682619725049844342f8d7fc1d822c8"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "$6$의 제곱근은 $\\sqrt{6}$ 하나뿐이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중에서 옳은 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "제곱근의 뜻과 근호 기호를 구별한다.<br>① $6$의 제곱근은 $\\pm\\sqrt6$이므로, $\\sqrt6$ 하나뿐이라는 진술은 거짓이다.<br>② $2^2=4$와 $(-2)^2=4$이므로 $4$의 제곱근은 $\\pm2$이며, 진술은 거짓이다.<br>③ $\\sqrt{25}=5$이고 $5$의 제곱근은 $\\pm\\sqrt5$이므로, $\\pm5$라는 진술은 거짓이다.<br>④ $(\\sqrt5)^2=5$이므로 참이다.<br>⑤ $23$의 음의 제곱근은 $-\\sqrt{23}$이며 $\\sqrt{-23}$은 실수가 아니므로 거짓이다.<br>따라서 정답은 <b>④</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호가 나타내는 수를 먼저 읽고 그 수의 두 제곱근과 구별한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "제곱근의 뜻과 근호 기호를 구별한다.<br>① $6$의 제곱근은 $\\pm\\sqrt6$이므로, $\\sqrt6$ 하나뿐이라는 진술은 거짓이다.<br>② $2^2=4$와 $(-2)^2=4$이므로 $4$의 제곱근은 $\\pm2$이며, 진술은 거짓이다.<br>③ $\\sqrt{25}=5$이고 $5$의 제곱근은 $\\pm\\sqrt5$이므로, $\\pm5$라는 진술은 거짓이다.<br>④ $(\\sqrt5)^2=5$이므로 참이다.<br>⑤ $23$의 음의 제곱근은 $-\\sqrt{23}$이며 $\\sqrt{-23}$은 실수가 아니므로 거짓이다.<br>따라서 정답은 <b>④</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호가 나타내는 수를 먼저 읽고 그 수의 두 제곱근과 구별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호가 나타내는 수를 먼저 읽고 그 수의 두 제곱근과 구별한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_51b606da9329c423bf6c8623d6a9a754ffde8590818df14af35938afa51e8aa0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c089e03554953d046e8dd4312ba6a0c4d38f2430032df267d2eb67f06181e4dd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1a7836570ec27ff1144d23019de9b5182b9e4f6e1bd8dc34a64370408c46befe"
+        }
+      ],
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "choices",
+            "quote": "$\\sqrt{64}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "다음 수 중 무리수를 모두 고르면? (정답 2개) [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "각 보기를 따로 간단히 한 뒤 유리수인지 판정한다.<br>① $\\sqrt{64}=8$이므로 유리수다.<br>② $\\sqrt{36}=6$이므로 $\\dfrac1{\\sqrt{36}}-1=\\dfrac16-1=-\\dfrac56$은 유리수다.<br>③ $4$는 0이 아닌 유리수이고 $\\pi$는 무리수이므로 $4\\pi$는 무리수다.<br>④ $\\dfrac{\\sqrt{80}}{\\sqrt5}=\\sqrt{16}=4$이므로 유리수다.<br>⑤ $\\sqrt{0.9}=\\sqrt{\\dfrac9{10}}=\\dfrac{3\\sqrt{10}}{10}$이므로 무리수다.<br>따라서 무리수는 <b>③, ⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 표현을 간단히 한 뒤 유리수와 무리수로 분류한다."
+          },
+          {
+            "term": "분류",
+            "src": "solution",
+            "quote": "각 보기를 따로 간단히 한 뒤 유리수인지 판정한다.<br>① $\\sqrt{64}=8$이므로 유리수다.<br>② $\\sqrt{36}=6$이므로 $\\dfrac1{\\sqrt{36}}-1=\\dfrac16-1=-\\dfrac56$은 유리수다.<br>③ $4$는 0이 아닌 유리수이고 $\\pi$는 무리수이므로 $4\\pi$는 무리수다.<br>④ $\\dfrac{\\sqrt{80}}{\\sqrt5}=\\sqrt{16}=4$이므로 유리수다.<br>⑤ $\\sqrt{0.9}=\\sqrt{\\dfrac9{10}}=\\dfrac{3\\sqrt{10}}{10}$이므로 무리수다.<br>따라서 무리수는 <b>③, ⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 표현을 간단히 한 뒤 유리수와 무리수로 분류한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 표현을 간단히 한 뒤 유리수와 무리수로 분류한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_186a6014b46213681909aa0169d42ff52c3554494eb05bb763332a0564d8b3ea",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "94fce1474f4e21af743f5419c2366e7246d7220f4b6c3e211fc82f85ad58c0c2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f529a8f7e1b10e9cd5e1bf7ce1643340c1389103e19dbc0a8bca6ab86fa6f0b4"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "$(x-10)^2 = x^2-100$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 전개한 것이 옳지 않은 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "각 보기를 곱셈공식으로 전개해 비교한다.<br>① $(x-10)^2=x^2-20x+100$이므로 $x^2-100$과 다르다.<br>② $(x-\\frac12)^2=x^2-x+\\frac14$이므로 옳다.<br>③ $(x-3)(x+5)=x^2+5x-3x-15=x^2+2x-15$이므로 옳다.<br>④ $(2x+1)(x-2)=2x^2-4x+x-2=2x^2-3x-2$이므로 옳다.<br>⑤ $(2a-b)(2a+5b)=4a^2+10ab-2ab-5b^2=4a^2+8ab-5b^2$이므로 옳다.<br>따라서 옳지 않은 것은 <b>①</b>이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "여러 표준 곱셈공식의 전개와 계수를 독립 비교한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "각 보기를 곱셈공식으로 전개해 비교한다.<br>① $(x-10)^2=x^2-20x+100$이므로 $x^2-100$과 다르다.<br>② $(x-\\frac12)^2=x^2-x+\\frac14$이므로 옳다.<br>③ $(x-3)(x+5)=x^2+5x-3x-15=x^2+2x-15$이므로 옳다.<br>④ $(2x+1)(x-2)=2x^2-4x+x-2=2x^2-3x-2$이므로 옳다.<br>⑤ $(2a-b)(2a+5b)=4a^2+10ab-2ab-5b^2=4a^2+8ab-5b^2$이므로 옳다.<br>따라서 옳지 않은 것은 <b>①</b>이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "여러 표준 곱셈공식의 전개와 계수를 독립 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "여러 표준 곱셈공식의 전개와 계수를 독립 비교한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_825ebf413398419b410204ef7a4eb05a6e83a9e51ececfc3cb90a17f583d1ab8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9a3d16917b4de260ae116b146902bd127a92cc9a4ef9d81cd900943e5e032832"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "91263555cd1ae4b22120a013f07794212ebb6222db111bddb6b7ebe64d6bd199"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "$\\sqrt{81}$의 값은 $\\pm 9$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "각 보기를 제곱근의 정의와 성질로 따로 확인한다.<br>① $\\sqrt{81}=9$는 양의 제곱근이므로 $\\pm9$라는 진술은 거짓이다.<br>② $(-\\sqrt6)^2=6$이므로 참이다.<br>③ 음수 $-36$은 실수의 제곱이 될 수 없어 실수 범위의 제곱근이 없다.<br>④ $\\sqrt{\\frac9{16}}=\\frac34$이고 그 제곱근은 $\\pm\\sqrt{\\frac34}=\\pm\\frac{\\sqrt3}{2}$이므로, $\\pm\\frac34$라는 진술은 거짓이다.<br>⑤ 양수는 제곱근이 두 개, $0$은 하나, 음수는 실수 제곱근이 없으므로 항상 두 개라는 진술은 거짓이다.<br>따라서 옳은 것은 <b>②</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중첩 제곱근과 음수·0의 제곱근 존재를 정의에 대조한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "각 보기를 제곱근의 정의와 성질로 따로 확인한다.<br>① $\\sqrt{81}=9$는 양의 제곱근이므로 $\\pm9$라는 진술은 거짓이다.<br>② $(-\\sqrt6)^2=6$이므로 참이다.<br>③ 음수 $-36$은 실수의 제곱이 될 수 없어 실수 범위의 제곱근이 없다.<br>④ $\\sqrt{\\frac9{16}}=\\frac34$이고 그 제곱근은 $\\pm\\sqrt{\\frac34}=\\pm\\frac{\\sqrt3}{2}$이므로, $\\pm\\frac34$라는 진술은 거짓이다.<br>⑤ 양수는 제곱근이 두 개, $0$은 하나, 음수는 실수 제곱근이 없으므로 항상 두 개라는 진술은 거짓이다.<br>따라서 옳은 것은 <b>②</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중첩 제곱근과 음수·0의 제곱근 존재를 정의에 대조한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "중첩 제곱근과 음수·0의 제곱근 존재를 정의에 대조한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_c688a2d4233e6ada4d2100cff150a762710be21f069c0fbd168ee392a2673daf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cf02b5b7259dc27e9f2e613aa5f42457f07611ce11b6735dc949ac9e930dd944"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b7985f575aca3d7a85740d4a423597f01508210b12413d980ee02fbb88dad39b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$x^2+Ax-18 = (x+a)(x+b)$일 때, 다음 중 $A$의 값이 될 수 없는 것은? (단, $a, b$는 정수) [4점]"
+          },
+          {
+            "term": "항등식",
+            "src": "stem",
+            "quote": "$x^2+Ax-18 = (x+a)(x+b)$일 때, 다음 중 $A$의 값이 될 수 없는 것은? (단, $a, b$는 정수) [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x^2+Ax-18 = (x+a)(x+b)$일 때, 다음 중 $A$의 값이 될 수 없는 것은? (단, $a, b$는 정수) [4점]"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "$x^2+Ax-18 = (x+a)(x+b)$일 때, 다음 중 $A$의 값이 될 수 없는 것은? (단, $a, b$는 정수) [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$(x+a)(x+b)=x^2+(a+b)x+ab$를 비교한다.<br>$ab=-18$, $a+b=A$이므로 $a,b$는 서로 부호가 다른 정수다.<br>가능한 절댓값 인수쌍은 $(1,18),(2,9),(3,6)$이고, 합은 각각 $\\pm17,\\pm7,\\pm3$이다.<br>$-17,-3,3,7$은 가능하지만 $9$는 불가능하다.<br>정답은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "인수형의 계수 관계를 정수의 곱−18인 세 인수쌍과 부호 조합으로 제한한다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$(x+a)(x+b)=x^2+(a+b)x+ab$를 비교한다.<br>$ab=-18$, $a+b=A$이므로 $a,b$는 서로 부호가 다른 정수다.<br>가능한 절댓값 인수쌍은 $(1,18),(2,9),(3,6)$이고, 합은 각각 $\\pm17,\\pm7,\\pm3$이다.<br>$-17,-3,3,7$은 가능하지만 $9$는 불가능하다.<br>정답은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "인수형의 계수 관계를 정수의 곱−18인 세 인수쌍과 부호 조합으로 제한한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$(x+a)(x+b)=x^2+(a+b)x+ab$를 비교한다.<br>$ab=-18$, $a+b=A$이므로 $a,b$는 서로 부호가 다른 정수다.<br>가능한 절댓값 인수쌍은 $(1,18),(2,9),(3,6)$이고, 합은 각각 $\\pm17,\\pm7,\\pm3$이다.<br>$-17,-3,3,7$은 가능하지만 $9$는 불가능하다.<br>정답은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "인수형의 계수 관계를 정수의 곱−18인 세 인수쌍과 부호 조합으로 제한한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "$x^2+Ax-18 = (x+a)(x+b)$일 때, 다음 중 $A$의 값이 될 수 없는 것은? (단, $a, b$는 정수) [4점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "인수형의 계수 관계를 정수의 곱−18인 세 인수쌍과 부호 조합으로 제한한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_7999792c52cef6a4f64b6c62a2243e31393699ec30120ef1c1004e56ffe1a0ee",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8019f30d5b929aeb326f63087c039f546a0cae654bcca414b14dc5eb7f7f7e3d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3ad2ad5606b483c26b266155df596bea54083a8b9aa6cf57971c98b656340a71"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}}$에 평행한 직선을 그어 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{AC}}$와 교점을 $\\mathrm{D}$, $\\mathrm{E}$라 할 때, $\\triangle\\mathrm{ADE} : \\square\\mathrm{DBCE} = 1:4$가 되었다. 이 때 $\\overline{\\mathrm{DE}} : \\overline{\\mathrm{BC}}$은? [4점]<br>"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}}$에 평행한 직선을 그어 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{AC}}$와 교점을 $\\mathrm{D}$, $\\mathrm{E}$라 할 때, $\\triangle\\mathrm{ADE} : \\square\\mathrm{DBCE} = 1:4$가 되었다. 이 때 $\\overline{\\mathrm{DE}} : \\overline{\\mathrm{BC}}$은? [4점]<br>"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "다음 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}}$에 평행한 직선을 그어 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{AC}}$와 교점을 $\\mathrm{D}$, $\\mathrm{E}$라 할 때, $\\triangle\\mathrm{ADE} : \\square\\mathrm{DBCE} = 1:4$가 되었다. 이 때 $\\overline{\\mathrm{DE}} : \\overline{\\mathrm{BC}}$은? [4점]<br>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음비",
+            "src": "stem",
+            "quote": "다음 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}}$에 평행한 직선을 그어 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{AC}}$와 교점을 $\\mathrm{D}$, $\\mathrm{E}$라 할 때, $\\triangle\\mathrm{ADE} : \\square\\mathrm{DBCE} = 1:4$가 되었다. 이 때 $\\overline{\\mathrm{DE}} : \\overline{\\mathrm{BC}}$은? [4점]<br>"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이다.<br>작은 삼각형과 나머지 사다리꼴의 넓이비가 $1:4$이므로, 작은 삼각형과 전체 삼각형의 넓이비는 $1:(1+4)=1:5$다.<br>닮은 삼각형의 넓이비는 대응변 길이비의 제곱이다.<br>$\\left(\\dfrac{DE}{BC}\\right)^2=\\dfrac15$에서 $DE:BC=1:\\sqrt5$다.<br>정답은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "부분 넓이비1:4를 전체와의1:5로 바꾼 뒤 닮음비의 제곱을 적용한다."
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이다.<br>작은 삼각형과 나머지 사다리꼴의 넓이비가 $1:4$이므로, 작은 삼각형과 전체 삼각형의 넓이비는 $1:(1+4)=1:5$다.<br>닮은 삼각형의 넓이비는 대응변 길이비의 제곱이다.<br>$\\left(\\dfrac{DE}{BC}\\right)^2=\\dfrac15$에서 $DE:BC=1:\\sqrt5$다.<br>정답은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "부분 넓이비1:4를 전체와의1:5로 바꾼 뒤 닮음비의 제곱을 적용한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이다.<br>작은 삼각형과 나머지 사다리꼴의 넓이비가 $1:4$이므로, 작은 삼각형과 전체 삼각형의 넓이비는 $1:(1+4)=1:5$다.<br>닮은 삼각형의 넓이비는 대응변 길이비의 제곱이다.<br>$\\left(\\dfrac{DE}{BC}\\right)^2=\\dfrac15$에서 $DE:BC=1:\\sqrt5$다.<br>정답은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "부분 넓이비1:4를 전체와의1:5로 바꾼 뒤 닮음비의 제곱을 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "부분 넓이비1:4를 전체와의1:5로 바꾼 뒤 닮음비의 제곱을 적용한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3d3f54f6d4180f93e0a29eb3a0dd531ba899b576d2273f177418ce6d4b397ebb",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "38ea69753bd1d24dadafcba98427a15f34009caa82c5b96c99c7a1a452f151f2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8e1824d819f4ca210c0238a003114afeb12e1b5c5329739af9159b13ae884203"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "다음 그림은 한 칸의 가로, 세로의 길이가 $1$인 모눈종이 위에 정사각형 $\\mathrm{ABCD}$를 그린 것이다. 점 $\\mathrm{A}$를 중심으로 반지름이 $\\overline{\\mathrm{AB}}$인 원을 그려 수직선과 만나는 점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$라 할 때, 다음 설명으로 옳지 않은 것은? [4점]<br>"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림은 한 칸의 가로, 세로의 길이가 $1$인 모눈종이 위에 정사각형 $\\mathrm{ABCD}$를 그린 것이다. 점 $\\mathrm{A}$를 중심으로 반지름이 $\\overline{\\mathrm{AB}}$인 원을 그려 수직선과 만나는 점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$라 할 때, 다음 설명으로 옳지 않은 것은? [4점]<br>"
+          },
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "다음 그림은 한 칸의 가로, 세로의 길이가 $1$인 모눈종이 위에 정사각형 $\\mathrm{ABCD}$를 그린 것이다. 점 $\\mathrm{A}$를 중심으로 반지름이 $\\overline{\\mathrm{AB}}$인 원을 그려 수직선과 만나는 점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$라 할 때, 다음 설명으로 옳지 않은 것은? [4점]<br>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 그림은 한 칸의 가로, 세로의 길이가 $1$인 모눈종이 위에 정사각형 $\\mathrm{ABCD}$를 그린 것이다. 점 $\\mathrm{A}$를 중심으로 반지름이 $\\overline{\\mathrm{AB}}$인 원을 그려 수직선과 만나는 점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$라 할 때, 다음 설명으로 옳지 않은 것은? [4점]<br>"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "모눈에서 $A=(2,0)$, $B=(3,2)$이므로 가로 차이는 $1$, 세로 차이는 $2$다.<br>$AB=\\sqrt{1^2+2^2}=\\sqrt5$이므로 반지름은 $\\sqrt5$다.<br>따라서 두 교점의 좌표는 $P=2+\\sqrt5$, $Q=2-\\sqrt5$다.<br>① $P=2+\\sqrt5$이므로 옳다.<br>② $Q=2-\\sqrt5$는 유리수와 무리수의 차이이므로 무리수다.<br>③ $\\sqrt5>2$이므로 $2+\\sqrt5<\\sqrt5+\\sqrt5=2\\sqrt5=\\sqrt{20}$이다. 따라서 옳다.<br>④ 원의 넓이는 $\\pi(\\sqrt5)^2=5\\pi$이므로 옳다.<br>⑤ 두 수의 곱은 $(2+\\sqrt5)(2-\\sqrt5)=4-5=-1$이므로 $1$이라는 진술은 틀리다.<br>따라서 옳지 않은 것은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "모눈에서 반지름을 구해 두 교점 좌표를 정하고 대소·원넓이·곱을 각 진술에 적용한다."
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "모눈에서 $A=(2,0)$, $B=(3,2)$이므로 가로 차이는 $1$, 세로 차이는 $2$다.<br>$AB=\\sqrt{1^2+2^2}=\\sqrt5$이므로 반지름은 $\\sqrt5$다.<br>따라서 두 교점의 좌표는 $P=2+\\sqrt5$, $Q=2-\\sqrt5$다.<br>① $P=2+\\sqrt5$이므로 옳다.<br>② $Q=2-\\sqrt5$는 유리수와 무리수의 차이이므로 무리수다.<br>③ $\\sqrt5>2$이므로 $2+\\sqrt5<\\sqrt5+\\sqrt5=2\\sqrt5=\\sqrt{20}$이다. 따라서 옳다.<br>④ 원의 넓이는 $\\pi(\\sqrt5)^2=5\\pi$이므로 옳다.<br>⑤ 두 수의 곱은 $(2+\\sqrt5)(2-\\sqrt5)=4-5=-1$이므로 $1$이라는 진술은 틀리다.<br>따라서 옳지 않은 것은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "모눈에서 반지름을 구해 두 교점 좌표를 정하고 대소·원넓이·곱을 각 진술에 적용한다."
+          },
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "모눈에서 $A=(2,0)$, $B=(3,2)$이므로 가로 차이는 $1$, 세로 차이는 $2$다.<br>$AB=\\sqrt{1^2+2^2}=\\sqrt5$이므로 반지름은 $\\sqrt5$다.<br>따라서 두 교점의 좌표는 $P=2+\\sqrt5$, $Q=2-\\sqrt5$다.<br>① $P=2+\\sqrt5$이므로 옳다.<br>② $Q=2-\\sqrt5$는 유리수와 무리수의 차이이므로 무리수다.<br>③ $\\sqrt5>2$이므로 $2+\\sqrt5<\\sqrt5+\\sqrt5=2\\sqrt5=\\sqrt{20}$이다. 따라서 옳다.<br>④ 원의 넓이는 $\\pi(\\sqrt5)^2=5\\pi$이므로 옳다.<br>⑤ 두 수의 곱은 $(2+\\sqrt5)(2-\\sqrt5)=4-5=-1$이므로 $1$이라는 진술은 틀리다.<br>따라서 옳지 않은 것은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "모눈에서 반지름을 구해 두 교점 좌표를 정하고 대소·원넓이·곱을 각 진술에 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "모눈에서 반지름을 구해 두 교점 좌표를 정하고 대소·원넓이·곱을 각 진술에 적용한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_285ea55098498b6d5dcdb0980cddbe47ce8efe725f51c1bb27ab70fea5c07459",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bb5b445da3a59b408fdb7e1627e5e36ebb4432db255018aa84c5c1a10d1b7039"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "15d690815ffb8fbee58f4f44e485bc24a1a3d974e8168a3cedfda00c2a079aea"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "$a^2+8a+16$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 완전제곱식으로 나타낼 수 없는 식은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식은 $(A+B)^2=A^2+2AB+B^2$ 꼴인지 확인한다.<br>① $(a+4)^2$, ② $(\\frac x2-1)^2$, ③ $(y+2)^2$다.<br>⑤ $3x^2+12xy+12y^2=(\\sqrt3x+2\\sqrt3y)^2$다.<br>④ $9a^2-30ab+16b^2$에서 앞의 두 항은 $(3a-5b)^2$의 일부지만 끝항은 $25b^2$가 아니라 $16b^2$다.<br>따라서 완전제곱식이 아닌 것은 <b>④</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 항의 제곱근으로 완전제곱식의 중간항을 대조하며 마지막보기의√3계수도 동일공식이다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "완전제곱식은 $(A+B)^2=A^2+2AB+B^2$ 꼴인지 확인한다.<br>① $(a+4)^2$, ② $(\\frac x2-1)^2$, ③ $(y+2)^2$다.<br>⑤ $3x^2+12xy+12y^2=(\\sqrt3x+2\\sqrt3y)^2$다.<br>④ $9a^2-30ab+16b^2$에서 앞의 두 항은 $(3a-5b)^2$의 일부지만 끝항은 $25b^2$가 아니라 $16b^2$다.<br>따라서 완전제곱식이 아닌 것은 <b>④</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 항의 제곱근으로 완전제곱식의 중간항을 대조하며 마지막보기의√3계수도 동일공식이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 항의 제곱근으로 완전제곱식의 중간항을 대조하며 마지막보기의√3계수도 동일공식이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_c9b9c7f4c4c7699f75c9aacf4b6c41599e3cf9aa6244bafa49435b93055d8847",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "191611937d721b3912c55e6857aa56757014d46c5ff45f1c5f8df0be434120a4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b3648b8be62dd7641fac19296c03b2822d6b586f1696de88870c34c4f5e34db7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{64}$의 양의 제곱근을 $a$, $\\sqrt{(-16)^2}$의 음의 제곱근을 $b$라고 할 때, $a+b$의 값은? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\sqrt{64}$의 양의 제곱근을 $a$, $\\sqrt{(-16)^2}$의 음의 제곱근을 $b$라고 할 때, $a+b$의 값은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "'양의 제곱근'과 '음의 제곱근'을 순서대로 구한다.<br>$\\sqrt{64}=8$이므로 $a=\\sqrt8=2\\sqrt2$다.<br>$\\sqrt{(-16)^2}=16$이므로 $b=-\\sqrt{16}=-4$다.<br>$a+b=2\\sqrt2-4$이므로 <b>③</b>이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 근호의 값을 먼저 구한 후 양·음의 제곱근을 구하여 합한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "'양의 제곱근'과 '음의 제곱근'을 순서대로 구한다.<br>$\\sqrt{64}=8$이므로 $a=\\sqrt8=2\\sqrt2$다.<br>$\\sqrt{(-16)^2}=16$이므로 $b=-\\sqrt{16}=-4$다.<br>$a+b=2\\sqrt2-4$이므로 <b>③</b>이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 근호의 값을 먼저 구한 후 양·음의 제곱근을 구하여 합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "주어진 근호의 값을 먼저 구한 후 양·음의 제곱근을 구하여 합한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_a665a9b22d342db5e67e3b09be1341ed623ae22c9298b325649229819388821f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d56d1ef7a3bb804cab864759000da30181604d4125d3f4efd0683af261600524"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "19b69bba63bb7f0559031d0e43a7016fa491897e1c17d540bce5c3ce13e8628c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "choices",
+            "quote": "$\\sqrt{3} > 2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 대소 관계가 옳은 것은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "먼저 $3<4<5$에서 $\\sqrt3<2<\\sqrt5$임을 확인한다.<br>① $\\sqrt3<2$이므로 $\\sqrt3>2$는 거짓이다.<br>② $\\sqrt3<2$의 양변에 $\\sqrt2$를 더하면 $\\sqrt3+\\sqrt2<2+\\sqrt2$이므로 거짓이다.<br>③ $\\sqrt3<\\sqrt5$의 양변에서 $2$를 빼면 $\\sqrt3-2<\\sqrt5-2$이므로 거짓이다.<br>④ $\\sqrt3<2$의 양변에 $-1$을 곱하면 $-\\sqrt3>-2$이고, 여기에 $\\sqrt5$를 더하면 $\\sqrt5-\\sqrt3>\\sqrt5-2$이므로 참이다.<br>⑤ $\\sqrt2<2$의 양변에 $\\sqrt3$을 더하면 $\\sqrt3+\\sqrt2<\\sqrt3+2$이므로 거짓이다.<br>따라서 정답은 <b>④</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통항 제거와 음수를 곱할 때 부등호 방향 전환으로 대소를 판단한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "먼저 $3<4<5$에서 $\\sqrt3<2<\\sqrt5$임을 확인한다.<br>① $\\sqrt3<2$이므로 $\\sqrt3>2$는 거짓이다.<br>② $\\sqrt3<2$의 양변에 $\\sqrt2$를 더하면 $\\sqrt3+\\sqrt2<2+\\sqrt2$이므로 거짓이다.<br>③ $\\sqrt3<\\sqrt5$의 양변에서 $2$를 빼면 $\\sqrt3-2<\\sqrt5-2$이므로 거짓이다.<br>④ $\\sqrt3<2$의 양변에 $-1$을 곱하면 $-\\sqrt3>-2$이고, 여기에 $\\sqrt5$를 더하면 $\\sqrt5-\\sqrt3>\\sqrt5-2$이므로 참이다.<br>⑤ $\\sqrt2<2$의 양변에 $\\sqrt3$을 더하면 $\\sqrt3+\\sqrt2<\\sqrt3+2$이므로 거짓이다.<br>따라서 정답은 <b>④</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통항 제거와 음수를 곱할 때 부등호 방향 전환으로 대소를 판단한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "공통항 제거와 음수를 곱할 때 부등호 방향 전환으로 대소를 판단한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_51c68369eb3ad5121ccd42c900b46d9ae29377cc22578a4008d26cfefd88d778",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d4f11bbd7ceb1b782cb21cf96a133b76fd8a81ba9b9f8a0fa8d1320ac4c16002"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "31e46a738cfc9635f679d02536066aaf876135ef20cc5c444a7b59ea007aa346"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "$2\\sqrt{2}\\times 3\\sqrt{6}$을 간단히 하면? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$2\\sqrt{2}\\times 3\\sqrt{6}$을 간단히 하면? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "계수와 근호를 각각 곱한다.<br>$2\\sqrt2\\times3\\sqrt6=(2\\times3)\\sqrt{2\\times6}=6\\sqrt{12}$.<br>$\\sqrt{12}=2\\sqrt3$이므로 $6\\sqrt{12}=12\\sqrt3$다.<br>따라서 <b>④</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "계수와 근호를 곱하고 제곱인수를 꺼내는 직접 계산이다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "계수와 근호를 각각 곱한다.<br>$2\\sqrt2\\times3\\sqrt6=(2\\times3)\\sqrt{2\\times6}=6\\sqrt{12}$.<br>$\\sqrt{12}=2\\sqrt3$이므로 $6\\sqrt{12}=12\\sqrt3$다.<br>따라서 <b>④</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "계수와 근호를 곱하고 제곱인수를 꺼내는 직접 계산이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "계수와 근호를 곱하고 제곱인수를 꺼내는 직접 계산이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_a7cf5faedcebbc8b12b190d3f62abfcae36dec62377a2387aa6089638c035adf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "47d215a60a7df78890865d26cf37782cd65f818001a10d24ba0d8149a8f76ba4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "67e40f2649bd47be73fc33f41f5d19440b17a010e8de0a0f4ada4b222878d8ff"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "$\\frac{8}{5\\sqrt{2}}$의 분모를 유리화한 것은? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\frac{8}{5\\sqrt{2}}$의 분모를 유리화한 것은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "분모 $5\\sqrt2$를 유리화하려면 분자와 분모에 모두 $\\sqrt2$를 곱한다.<br>$\\dfrac8{5\\sqrt2}=\\dfrac{8\\sqrt2}{5\\sqrt2\\cdot\\sqrt2}=\\dfrac{8\\sqrt2}{10}=\\dfrac{4\\sqrt2}5$.<br>정답은 <b>①</b>이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 항 근호분모에 같은 근호를 곱하고 약분한다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "분모 $5\\sqrt2$를 유리화하려면 분자와 분모에 모두 $\\sqrt2$를 곱한다.<br>$\\dfrac8{5\\sqrt2}=\\dfrac{8\\sqrt2}{5\\sqrt2\\cdot\\sqrt2}=\\dfrac{8\\sqrt2}{10}=\\dfrac{4\\sqrt2}5$.<br>정답은 <b>①</b>이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 항 근호분모에 같은 근호를 곱하고 약분한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "한 항 근호분모에 같은 근호를 곱하고 약분한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_d33766b3871b157be9998e0b52b9fcc592d66ba426bb1c62b44fab474ad116f2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5701f1c8da16b4c0c3ddc76a6c822ac0310b7b917ecfe18958bc787d462bc499"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9d228f4ec18c753d1051303683bd591213c6443121529842d4d68012f83ae56c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "$\\sqrt{48}-\\frac{4}{\\sqrt{3}}+\\sqrt{27}$을 간단히 하면? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\sqrt{48}-\\frac{4}{\\sqrt{3}}+\\sqrt{27}$을 간단히 하면? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "각 근호를 가장 간단한 꼴로 바꾼 뒤 동류근호를 계산한다.<br>$\\sqrt{48}=4\\sqrt3$, $\\sqrt{27}=3\\sqrt3$, $\\dfrac4{\\sqrt3}=\\dfrac{4\\sqrt3}3$다.<br>$4\\sqrt3-\\dfrac{4\\sqrt3}3+3\\sqrt3=(7-\\dfrac43)\\sqrt3=\\dfrac{17\\sqrt3}3$.<br>따라서 <b>③</b>이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 단순화와 분모 유리화를 한 뒤 동류근호의 계수를 계산한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "각 근호를 가장 간단한 꼴로 바꾼 뒤 동류근호를 계산한다.<br>$\\sqrt{48}=4\\sqrt3$, $\\sqrt{27}=3\\sqrt3$, $\\dfrac4{\\sqrt3}=\\dfrac{4\\sqrt3}3$다.<br>$4\\sqrt3-\\dfrac{4\\sqrt3}3+3\\sqrt3=(7-\\dfrac43)\\sqrt3=\\dfrac{17\\sqrt3}3$.<br>따라서 <b>③</b>이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 단순화와 분모 유리화를 한 뒤 동류근호의 계수를 계산한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "각 근호를 가장 간단한 꼴로 바꾼 뒤 동류근호를 계산한다.<br>$\\sqrt{48}=4\\sqrt3$, $\\sqrt{27}=3\\sqrt3$, $\\dfrac4{\\sqrt3}=\\dfrac{4\\sqrt3}3$다.<br>$4\\sqrt3-\\dfrac{4\\sqrt3}3+3\\sqrt3=(7-\\dfrac43)\\sqrt3=\\dfrac{17\\sqrt3}3$.<br>따라서 <b>③</b>이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 단순화와 분모 유리화를 한 뒤 동류근호의 계수를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호 단순화와 분모 유리화를 한 뒤 동류근호의 계수를 계산한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_16973438232b52305376767460cf5b5df0ad152fc51b9bb348d8ab1756ed3671",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ab0395099fb3781b4590862167be5dcec9f162c136ac756451c5bc55fad1103d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "43383cf943f1532b1f647088ee5b860e4648fb62cae8a6d4d48f12cc90925bbf"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다음 중 $-10x^2y+5xy$의 인수가 아닌 것은? [6점]"
+          },
+          {
+            "term": "인수",
+            "src": "stem",
+            "quote": "다음 중 $-10x^2y+5xy$의 인수가 아닌 것은? [6점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 $-10x^2y+5xy$의 인수가 아닌 것은? [6점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "먼저 다항식을 공통인수로 묶는다.<br>$-10x^2y+5xy=-5xy(2x-1)$이다.<br>따라서 $-5x$, $-5y$, $xy$, $2x-1$은 각각 원래 다항식의 인수다.<br>$x+5$가 인수라면 $x=-5$를 대입한 값은 영다항식이어야 한다. 그러나 $-10(-5)^2y+5(-5)y=-275y$는 영다항식이 아니므로 $x+5$는 인수가 아니다.<br>정답은 <b>④</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통인수를 꺼낸 결과로 보기의 인수 여부를 비교한다."
+          },
+          {
+            "term": "인수",
+            "src": "solution",
+            "quote": "먼저 다항식을 공통인수로 묶는다.<br>$-10x^2y+5xy=-5xy(2x-1)$이다.<br>따라서 $-5x$, $-5y$, $xy$, $2x-1$은 각각 원래 다항식의 인수다.<br>$x+5$가 인수라면 $x=-5$를 대입한 값은 영다항식이어야 한다. 그러나 $-10(-5)^2y+5(-5)y=-275y$는 영다항식이 아니므로 $x+5$는 인수가 아니다.<br>정답은 <b>④</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통인수를 꺼낸 결과로 보기의 인수 여부를 비교한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "먼저 다항식을 공통인수로 묶는다.<br>$-10x^2y+5xy=-5xy(2x-1)$이다.<br>따라서 $-5x$, $-5y$, $xy$, $2x-1$은 각각 원래 다항식의 인수다.<br>$x+5$가 인수라면 $x=-5$를 대입한 값은 영다항식이어야 한다. 그러나 $-10(-5)^2y+5(-5)y=-275y$는 영다항식이 아니므로 $x+5$는 인수가 아니다.<br>정답은 <b>④</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통인수를 꺼낸 결과로 보기의 인수 여부를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "공통인수를 꺼낸 결과로 보기의 인수 여부를 비교한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_512258792dcc9573964d0b297d4a838d317d6b9cba2e410ec6c2f85a9f2d3118",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f016cdcd78d7b6e044caf03804277c8e85c7a0e6bf8412123fab894f682f39ba"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "700b69e8b0cc6bc26cd072590a471e19fd6b70cd2672cff2272832b461f0ac48"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "도형",
+            "src": "stem",
+            "quote": "다음 그림의 도형과 넓이가 같은 정사각형의 한 변의 길이는? [6점]<br>"
+          },
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "다음 그림의 도형과 넓이가 같은 정사각형의 한 변의 길이는? [6점]<br>"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 그림의 도형과 넓이가 같은 정사각형의 한 변의 길이는? [6점]<br>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림의 도형과 넓이가 같은 정사각형의 한 변의 길이는? [6점]<br>"
+          }
+        ],
+        "method": [
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "원본 그림에서 바깥 직사각형의 가로는 $\\sqrt3+\\sqrt{15}$, 세로는 $\\sqrt{15}$다.<br>바깥 직사각형의 넓이는 $(\\sqrt3+\\sqrt{15})\\sqrt{15}=15+3\\sqrt5$다.<br>원본 치수에 따라 빠진 계단 부분은 가로 $3$, 세로 $\\sqrt5$인 직사각형에서 한 변이 $\\sqrt2$인 정사각형을 뺀 모양이다.<br>따라서 빠진 부분의 넓이는 $3\\sqrt5-(\\sqrt2)^2=3\\sqrt5-2$다.<br>실제 도형의 넓이는 $(15+3\\sqrt5)-(3\\sqrt5-2)=17$이다.<br>같은 넓이인 정사각형의 한 변을 $s>0$이라 하면 $s^2=17$이므로 $s=\\sqrt{17}$이다.<br>정답은 <b>②</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "바깥 직사각형에서 계단 결손을 빼 넓이를 구성하고 같은 넓이 정사각형의 양의 제곱근을 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "원본 그림에서 바깥 직사각형의 가로는 $\\sqrt3+\\sqrt{15}$, 세로는 $\\sqrt{15}$다.<br>바깥 직사각형의 넓이는 $(\\sqrt3+\\sqrt{15})\\sqrt{15}=15+3\\sqrt5$다.<br>원본 치수에 따라 빠진 계단 부분은 가로 $3$, 세로 $\\sqrt5$인 직사각형에서 한 변이 $\\sqrt2$인 정사각형을 뺀 모양이다.<br>따라서 빠진 부분의 넓이는 $3\\sqrt5-(\\sqrt2)^2=3\\sqrt5-2$다.<br>실제 도형의 넓이는 $(15+3\\sqrt5)-(3\\sqrt5-2)=17$이다.<br>같은 넓이인 정사각형의 한 변을 $s>0$이라 하면 $s^2=17$이므로 $s=\\sqrt{17}$이다.<br>정답은 <b>②</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "바깥 직사각형에서 계단 결손을 빼 넓이를 구성하고 같은 넓이 정사각형의 양의 제곱근을 구한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "원본 그림에서 바깥 직사각형의 가로는 $\\sqrt3+\\sqrt{15}$, 세로는 $\\sqrt{15}$다.<br>바깥 직사각형의 넓이는 $(\\sqrt3+\\sqrt{15})\\sqrt{15}=15+3\\sqrt5$다.<br>원본 치수에 따라 빠진 계단 부분은 가로 $3$, 세로 $\\sqrt5$인 직사각형에서 한 변이 $\\sqrt2$인 정사각형을 뺀 모양이다.<br>따라서 빠진 부분의 넓이는 $3\\sqrt5-(\\sqrt2)^2=3\\sqrt5-2$다.<br>실제 도형의 넓이는 $(15+3\\sqrt5)-(3\\sqrt5-2)=17$이다.<br>같은 넓이인 정사각형의 한 변을 $s>0$이라 하면 $s^2=17$이므로 $s=\\sqrt{17}$이다.<br>정답은 <b>②</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "바깥 직사각형에서 계단 결손을 빼 넓이를 구성하고 같은 넓이 정사각형의 양의 제곱근을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "원본 그림에서 바깥 직사각형의 가로는 $\\sqrt3+\\sqrt{15}$, 세로는 $\\sqrt{15}$다.<br>바깥 직사각형의 넓이는 $(\\sqrt3+\\sqrt{15})\\sqrt{15}=15+3\\sqrt5$다.<br>원본 치수에 따라 빠진 계단 부분은 가로 $3$, 세로 $\\sqrt5$인 직사각형에서 한 변이 $\\sqrt2$인 정사각형을 뺀 모양이다.<br>따라서 빠진 부분의 넓이는 $3\\sqrt5-(\\sqrt2)^2=3\\sqrt5-2$다.<br>실제 도형의 넓이는 $(15+3\\sqrt5)-(3\\sqrt5-2)=17$이다.<br>같은 넓이인 정사각형의 한 변을 $s>0$이라 하면 $s^2=17$이므로 $s=\\sqrt{17}$이다.<br>정답은 <b>②</b>다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "바깥 직사각형에서 계단 결손을 빼 넓이를 구성하고 같은 넓이 정사각형의 양의 제곱근을 구한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_343324a67b635969b801018bc388bedcb2546b86327ffe404faf07b744048fe0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "280b7630a3c24a0841f28f954edf01a45c8f1ae941bbe7265ca4ca099654c15c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "29925417d2327469811c4a1b6b5245504e795a2d72350092326ff7130b443283"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x^2-5x+1=0$일 때, $x^2+x+\\frac{1}{x}+\\frac{1}{x^2}$의 값은? [6점]"
+          },
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "$x^2-5x+1=0$일 때, $x^2+x+\\frac{1}{x}+\\frac{1}{x^2}$의 값은? [6점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$x^2-5x+1=0$일 때, $x^2+x+\\frac{1}{x}+\\frac{1}{x^2}$의 값은? [6점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "나눗셈",
+            "src": "solution",
+            "quote": "$x^2-5x+1=0$에서 $x\\ne0$이고 양변을 $x$로 나누면 $x+\\dfrac1x=5$다.<br>양변을 제곱하면 $x^2+2+\\dfrac1{x^2}=25$이므로 $x^2+\\dfrac1{x^2}=23$이다.<br>원래 식은 $(x^2+\\dfrac1{x^2})+(x+\\dfrac1x)=23+5=28$.<br>정답은 <b>③</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "방정식을 x로 나누어 x+1/x를 얻은 뒤 제곱합 항등식으로 목표식을 구성한다."
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "$x^2-5x+1=0$에서 $x\\ne0$이고 양변을 $x$로 나누면 $x+\\dfrac1x=5$다.<br>양변을 제곱하면 $x^2+2+\\dfrac1{x^2}=25$이므로 $x^2+\\dfrac1{x^2}=23$이다.<br>원래 식은 $(x^2+\\dfrac1{x^2})+(x+\\dfrac1x)=23+5=28$.<br>정답은 <b>③</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "방정식을 x로 나누어 x+1/x를 얻은 뒤 제곱합 항등식으로 목표식을 구성한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x^2-5x+1=0$에서 $x\\ne0$이고 양변을 $x$로 나누면 $x+\\dfrac1x=5$다.<br>양변을 제곱하면 $x^2+2+\\dfrac1{x^2}=25$이므로 $x^2+\\dfrac1{x^2}=23$이다.<br>원래 식은 $(x^2+\\dfrac1{x^2})+(x+\\dfrac1x)=23+5=28$.<br>정답은 <b>③</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "방정식을 x로 나누어 x+1/x를 얻은 뒤 제곱합 항등식으로 목표식을 구성한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "방정식을 x로 나누어 x+1/x를 얻은 뒤 제곱합 항등식으로 목표식을 구성한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_b5d7f3a678b3ad53a3d877535c7f6274086994abdc7b6f45e2a2c5513f2e7fe1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7ff00ae45fe0a2130ce40b7580204f5128c00805975770fd2ff2da76fd37fe2d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "011de8d829ef5f91fd67e3e5f8574e062f211e6086bedf7ac3e971a85fe27661"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "다음을 간단히 계산한 것은? [6점]<br>$\\left(1-\\frac{1}{2^2}\\right)\\times\\left(1-\\frac{1}{3^2}\\right)\\times\\dots\\times\\left(1-\\frac{1}{9^2}\\right)\\times\\left(1-\\frac{1}{10^2}\\right)$"
+          },
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "다음을 간단히 계산한 것은? [6점]<br>$\\left(1-\\frac{1}{2^2}\\right)\\times\\left(1-\\frac{1}{3^2}\\right)\\times\\dots\\times\\left(1-\\frac{1}{9^2}\\right)\\times\\left(1-\\frac{1}{10^2}\\right)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "다음을 간단히 계산한 것은? [6점]<br>$\\left(1-\\frac{1}{2^2}\\right)\\times\\left(1-\\frac{1}{3^2}\\right)\\times\\dots\\times\\left(1-\\frac{1}{9^2}\\right)\\times\\left(1-\\frac{1}{10^2}\\right)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$1-\\dfrac1{n^2}=\\dfrac{(n-1)(n+1)}{n^2}=\\dfrac{n-1}n\\cdot\\dfrac{n+1}n$을 이용한다.<br>$n=2,3,\\ldots,10$에 대해 차례대로 곱하면 $(\\frac12\\cdot\\frac23\\cdots\\frac9{10})\\cdot(\\frac32\\cdot\\frac43\\cdots\\frac{11}{10})$이다.<br>중간 항들이 약분되어 $\\dfrac1{10}\\cdot\\dfrac{11}2=\\dfrac{11}{20}$이다.<br>정답은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 인수를 두 비의 곱으로 분해하고 전체곱을 두 소거 사슬로 재배열하는 구조 선택이 핵심이다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "$1-\\dfrac1{n^2}=\\dfrac{(n-1)(n+1)}{n^2}=\\dfrac{n-1}n\\cdot\\dfrac{n+1}n$을 이용한다.<br>$n=2,3,\\ldots,10$에 대해 차례대로 곱하면 $(\\frac12\\cdot\\frac23\\cdots\\frac9{10})\\cdot(\\frac32\\cdot\\frac43\\cdots\\frac{11}{10})$이다.<br>중간 항들이 약분되어 $\\dfrac1{10}\\cdot\\dfrac{11}2=\\dfrac{11}{20}$이다.<br>정답은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 인수를 두 비의 곱으로 분해하고 전체곱을 두 소거 사슬로 재배열하는 구조 선택이 핵심이다."
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "$1-\\dfrac1{n^2}=\\dfrac{(n-1)(n+1)}{n^2}=\\dfrac{n-1}n\\cdot\\dfrac{n+1}n$을 이용한다.<br>$n=2,3,\\ldots,10$에 대해 차례대로 곱하면 $(\\frac12\\cdot\\frac23\\cdots\\frac9{10})\\cdot(\\frac32\\cdot\\frac43\\cdots\\frac{11}{10})$이다.<br>중간 항들이 약분되어 $\\dfrac1{10}\\cdot\\dfrac{11}2=\\dfrac{11}{20}$이다.<br>정답은 <b>⑤</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 인수를 두 비의 곱으로 분해하고 전체곱을 두 소거 사슬로 재배열하는 구조 선택이 핵심이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 인수를 두 비의 곱으로 분해하고 전체곱을 두 소거 사슬로 재배열하는 구조 선택이 핵심이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_3b296d7d902d02d48c8d328ce540a777467aee3d2e8cf063093f94cfe55ed63f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f6f0d5feb072d352437d2bc4009d8308c0028acb163cb03368ca9be71d63346f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2af42179e0f81bb0c045e30688e72dbb463c151c07246acbdb223d9edb821ecd"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "[서술형 1]<br>양의 실수 $a$, $b$에 대하여 $a+b=4\\sqrt{2}$, $ab=6$이다. $\\sqrt{\\frac{3b}{a}}+\\sqrt{\\frac{3a}{b}}$의 값을 구하고 그 과정을 서술하시오. [6점]"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "[서술형 1]<br>양의 실수 $a$, $b$에 대하여 $a+b=4\\sqrt{2}$, $ab=6$이다. $\\sqrt{\\frac{3b}{a}}+\\sqrt{\\frac{3a}{b}}$의 값을 구하고 그 과정을 서술하시오. [6점]"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "[서술형 1]<br>양의 실수 $a$, $b$에 대하여 $a+b=4\\sqrt{2}$, $ab=6$이다. $\\sqrt{\\frac{3b}{a}}+\\sqrt{\\frac{3a}{b}}$의 값을 구하고 그 과정을 서술하시오. [6점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "[서술형 1]<br>양의 실수 $a$, $b$에 대하여 $a+b=4\\sqrt{2}$, $ab=6$이다. $\\sqrt{\\frac{3b}{a}}+\\sqrt{\\frac{3a}{b}}$의 값을 구하고 그 과정을 서술하시오. [6점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "$a,b$는 양수이므로 분모로 나누어 근호를 정리할 수 있다.<br>$\\sqrt{\\frac{3b}a}=\\frac{\\sqrt{3ab}}a$, $\\sqrt{\\frac{3a}b}=\\frac{\\sqrt{3ab}}b$다.<br>두 식을 더하면 $\\sqrt{3ab}(\\frac1a+\\frac1b)=\\frac{\\sqrt{3ab}(a+b)}{ab}$다.<br>$ab=6$, $a+b=4\\sqrt2$를 대입하여 $\\frac{\\sqrt{18}\\cdot4\\sqrt2}{6}=\\frac{3\\sqrt2\\cdot4\\sqrt2}6=4$다.<br>실제 $a=\\sqrt2,b=3\\sqrt2$는 조건을 만족하므로 답은 <b>$4$</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호의 분모를 이용해 공통√(3ab)를 만들고 통분하여 주어진 합과 곱에 연결한다."
+          },
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "$a,b$는 양수이므로 분모로 나누어 근호를 정리할 수 있다.<br>$\\sqrt{\\frac{3b}a}=\\frac{\\sqrt{3ab}}a$, $\\sqrt{\\frac{3a}b}=\\frac{\\sqrt{3ab}}b$다.<br>두 식을 더하면 $\\sqrt{3ab}(\\frac1a+\\frac1b)=\\frac{\\sqrt{3ab}(a+b)}{ab}$다.<br>$ab=6$, $a+b=4\\sqrt2$를 대입하여 $\\frac{\\sqrt{18}\\cdot4\\sqrt2}{6}=\\frac{3\\sqrt2\\cdot4\\sqrt2}6=4$다.<br>실제 $a=\\sqrt2,b=3\\sqrt2$는 조건을 만족하므로 답은 <b>$4$</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호의 분모를 이용해 공통√(3ab)를 만들고 통분하여 주어진 합과 곱에 연결한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$a,b$는 양수이므로 분모로 나누어 근호를 정리할 수 있다.<br>$\\sqrt{\\frac{3b}a}=\\frac{\\sqrt{3ab}}a$, $\\sqrt{\\frac{3a}b}=\\frac{\\sqrt{3ab}}b$다.<br>두 식을 더하면 $\\sqrt{3ab}(\\frac1a+\\frac1b)=\\frac{\\sqrt{3ab}(a+b)}{ab}$다.<br>$ab=6$, $a+b=4\\sqrt2$를 대입하여 $\\frac{\\sqrt{18}\\cdot4\\sqrt2}{6}=\\frac{3\\sqrt2\\cdot4\\sqrt2}6=4$다.<br>실제 $a=\\sqrt2,b=3\\sqrt2$는 조건을 만족하므로 답은 <b>$4$</b>다.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호의 분모를 이용해 공통√(3ab)를 만들고 통분하여 주어진 합과 곱에 연결한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "[서술형 1]<br>양의 실수 $a$, $b$에 대하여 $a+b=4\\sqrt{2}$, $ab=6$이다. $\\sqrt{\\frac{3b}{a}}+\\sqrt{\\frac{3a}{b}}$의 값을 구하고 그 과정을 서술하시오. [6점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근호의 분모를 이용해 공통√(3ab)를 만들고 통분하여 주어진 합과 곱에 연결한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d8e89247635f0fd3fc5342d3d315eef4b88700cbf34a1a02cf4237bde35adc72",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6282c2abc90758f26ee394511ff88652e15347dbfacb483a01a019c515fd1587"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a91d040684910f072f4066fefdac4add6c6587924a648b765b148565b669dc2e"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "[서술형 2]<br>$\\sqrt{x}=a+1$이고 $-2 < a < 3$일 때, $\\sqrt{x+2a+3} - \\sqrt{x-8a+8}$를 간단히 하고 그 과정을 서술하시오. [7점]"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "[서술형 2]<br>$\\sqrt{x}=a+1$이고 $-2 < a < 3$일 때, $\\sqrt{x+2a+3} - \\sqrt{x-8a+8}$를 간단히 하고 그 과정을 서술하시오. [7점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "[서술형 2]<br>$\\sqrt{x}=a+1$이고 $-2 < a < 3$일 때, $\\sqrt{x+2a+3} - \\sqrt{x-8a+8}$를 간단히 하고 그 과정을 서술하시오. [7점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$\\sqrt{x}=a+1$이므로 $a+1\\ge0$, 즉 $a\\ge-1$이고 $x=(a+1)^2$다.<br>이를 주어진 $-2<a<3$과 합치면 $-1\\le a<3$이다.<br>$x+2a+3=(a+1)^2+2a+3=(a+2)^2$다.<br>$x-8a+8=(a+1)^2-8a+8=(a-3)^2$다.<br>$-1\\le a<3$이면 $a+2>0$, $a-3<0$이므로 $\\sqrt{(a+2)^2}=a+2$, $\\sqrt{(a-3)^2}=3-a$다.<br>따라서 $(a+2)-(3-a)=\\boxed{2a-1}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "x를(a+1)²로 치환하여 두 완전제곱식을 만들고 주어진 구간에서 절댓값의 부호를 정한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$\\sqrt{x}=a+1$이므로 $a+1\\ge0$, 즉 $a\\ge-1$이고 $x=(a+1)^2$다.<br>이를 주어진 $-2<a<3$과 합치면 $-1\\le a<3$이다.<br>$x+2a+3=(a+1)^2+2a+3=(a+2)^2$다.<br>$x-8a+8=(a+1)^2-8a+8=(a-3)^2$다.<br>$-1\\le a<3$이면 $a+2>0$, $a-3<0$이므로 $\\sqrt{(a+2)^2}=a+2$, $\\sqrt{(a-3)^2}=3-a$다.<br>따라서 $(a+2)-(3-a)=\\boxed{2a-1}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "x를(a+1)²로 치환하여 두 완전제곱식을 만들고 주어진 구간에서 절댓값의 부호를 정한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$\\sqrt{x}=a+1$이므로 $a+1\\ge0$, 즉 $a\\ge-1$이고 $x=(a+1)^2$다.<br>이를 주어진 $-2<a<3$과 합치면 $-1\\le a<3$이다.<br>$x+2a+3=(a+1)^2+2a+3=(a+2)^2$다.<br>$x-8a+8=(a+1)^2-8a+8=(a-3)^2$다.<br>$-1\\le a<3$이면 $a+2>0$, $a-3<0$이므로 $\\sqrt{(a+2)^2}=a+2$, $\\sqrt{(a-3)^2}=3-a$다.<br>따라서 $(a+2)-(3-a)=\\boxed{2a-1}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "x를(a+1)²로 치환하여 두 완전제곱식을 만들고 주어진 구간에서 절댓값의 부호를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "[서술형 2]<br>$\\sqrt{x}=a+1$이고 $-2 < a < 3$일 때, $\\sqrt{x+2a+3} - \\sqrt{x-8a+8}$를 간단히 하고 그 과정을 서술하시오. [7점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x를(a+1)²로 치환하여 두 완전제곱식을 만들고 주어진 구간에서 절댓값의 부호를 정한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_a50bb160ecff988b2c549ac3cbd32b32f0dcc8f0bdee269127e8b4c051801be8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "02901a5622a991e1a05cad0badc43aaf43d69f159ff45c0673e43832c4fea925"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1db408a5fd07b67a453439d9e8349d59de9fb94b825a11518da43c9c1466281e"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "[서술형 3]<br>다음 식을 인수분해를 이용하여 계산하고, 그 과정을 서술하시오. [7점]<br>$$\\frac{2023^2 - 23^2}{\\sqrt{2023^2 - 46\\times 2023 + 23^2}}$$"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "[서술형 3]<br>다음 식을 인수분해를 이용하여 계산하고, 그 과정을 서술하시오. [7점]<br>$$\\frac{2023^2 - 23^2}{\\sqrt{2023^2 - 46\\times 2023 + 23^2}}$$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "[서술형 3]<br>다음 식을 인수분해를 이용하여 계산하고, 그 과정을 서술하시오. [7점]<br>$$\\frac{2023^2 - 23^2}{\\sqrt{2023^2 - 46\\times 2023 + 23^2}}$$"
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "분자는 합차공식 $A^2-B^2=(A-B)(A+B)$을 쓴다.<br>$2023^2-23^2=(2023-23)(2023+23)=2000\\times2046$.<br>분모의 피제곱수는 $2023^2-46\\times2023+23^2=(2023-23)^2=2000^2$이다.<br>따라서 분모는 $\\sqrt{2000^2}=2000$이고, 전체 값은 $\\frac{2000\\times2046}{2000}=\\boxed{2046}$다.",
+            "evidenceType": "IMPLIED",
+            "justification": "발문에서 지정한 인수분해로 분자의 제곱차와 분모 완전제곱식을 정리해 약분한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "분자는 합차공식 $A^2-B^2=(A-B)(A+B)$을 쓴다.<br>$2023^2-23^2=(2023-23)(2023+23)=2000\\times2046$.<br>분모의 피제곱수는 $2023^2-46\\times2023+23^2=(2023-23)^2=2000^2$이다.<br>따라서 분모는 $\\sqrt{2000^2}=2000$이고, 전체 값은 $\\frac{2000\\times2046}{2000}=\\boxed{2046}$다.",
+            "evidenceType": "IMPLIED",
+            "justification": "발문에서 지정한 인수분해로 분자의 제곱차와 분모 완전제곱식을 정리해 약분한다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "분자는 합차공식 $A^2-B^2=(A-B)(A+B)$을 쓴다.<br>$2023^2-23^2=(2023-23)(2023+23)=2000\\times2046$.<br>분모의 피제곱수는 $2023^2-46\\times2023+23^2=(2023-23)^2=2000^2$이다.<br>따라서 분모는 $\\sqrt{2000^2}=2000$이고, 전체 값은 $\\frac{2000\\times2046}{2000}=\\boxed{2046}$다.",
+            "evidenceType": "IMPLIED",
+            "justification": "발문에서 지정한 인수분해로 분자의 제곱차와 분모 완전제곱식을 정리해 약분한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "발문에서 지정한 인수분해로 분자의 제곱차와 분모 완전제곱식을 정리해 약분한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E029-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 21,
+    "quotesChecked": 115,
+    "quotesNotFound": 0,
+    "notes": "Actual question and existing solution read; author self-check only. Independent root sample pending."
+  },
+  "reviewedSourceBaseBlob": "d0485a88f135af46b29485ed9174cc159e7a83ba",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "examKey": "E029",
+    "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+    "author": "meta_b",
+    "reviewer": "meta_c",
+    "at": "2026-11-14T14:07:14.673203+00:00",
+    "sourceArchiveFile": "original/middle/m3/1mid/23_연향중_1학기_중간_중3_기출.js",
+    "sourceBlob": "d0485a88f135af46b29485ed9174cc159e7a83ba",
+    "inputs": {
+      "review": {
+        "path": "/workspace/scratch/0b1af1898334/workers/B/E029.review.json",
+        "sha256": "1e223cbabd7cf490c7b306ecac296384c6ecb98c2dbcdf62b7daec04730772bf"
+      },
+      "fourSlot": {
+        "path": "/workspace/scratch/0b1af1898334/workers/B/E029.4slot.json",
+        "sha256": "a52de927c9e33b44062b1edc22ff05581c3065ced4f3b497966dd1d893d43afe"
+      }
+    },
+    "sampledOrdinals": [
+      7,
+      8,
+      16
+    ],
+    "additionalChangedOrBoundaryOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "scope": "METADATA_ONLY; actual 21 question stems, choices and existing solutions read and compared with decisions/4slot; q7/8/16 original PNG directly viewed.",
+    "findings": [
+      {
+        "ordinal": 7,
+        "status": "PASS",
+        "note": "평행선과 닮음의 원본 배치 확인. 부분넓이비1:4를 전체1:5로 바꾸고 대응변비의 양의제곱근을 구하는2/B23 수용."
+      },
+      {
+        "ordinal": 8,
+        "status": "PASS_AFTER_REVISION",
+        "note": "원본 모눈의 A=(2,0),B=(3,2),두 수직선 교점 확인. 반지름→좌표 이후 여러 성질감사는005부모맥락+exact 복합감사gap이 적합. CC_CIRCLE_CIRCUMFERENCE 정본정의가둘레와넓이 모두를 포함함 확인."
+      },
+      {
+        "ordinal": 16,
+        "status": "PASS",
+        "note": "원본 계단 결손 도형의 치수를 읽고 바깥직사각형-결손직사각형+작은정사각형 구성과 양의 제곱근 target을 확인. 표준 면적합차와길이 연결3/B34 수용."
+      },
+      {
+        "ordinal": 17,
+        "status": "PASS_AFTER_REVISION",
+        "note": "해를 구하거나 존재 판정하지 않고 주어진 관계를x로나누어 x+1/x=5로 만든다. CC_QUADRATIC_EQUATION의 정확정의와 불일치하므로 제거/NONE 수용."
+      },
+      {
+        "ordinal": 6,
+        "status": "PASS_AFTER_REVISION",
+        "note": "정수인수쌍 열거로 가능한 계수값을 제한하는3/B34.028은부모맥락이며 exact조건열거gap 추가 확인."
+      },
+      {
+        "ordinal": 18,
+        "status": "PASS_AFTER_REVISION",
+        "note": "각1-1/n²를 두 연속 비로 분해하여 두 약분사슬로 전체곱을 재배열하는 구조선택으로4/B34 수용.026 부모맥락+정확연쇄곱gap 확인."
+      },
+      {
+        "ordinal": 20,
+        "status": "PASS",
+        "note": "√x=a+1에서 파생된 a≥-1과 명시범위를 반영한 완전제곱식 절댓값 제거를 기존해설에서 확인.3/B34 및 보조인수분해 수용."
+      },
+      {
+        "ordinal": 21,
+        "status": "PASS",
+        "note": "인수분해가 발문에서 지정되며 분자제곱차와 분모완전제곱식의 직접약분2/B23 적합."
+      }
+    ],
+    "additionalCheck": "q9 완전제곱식에는 무리수계수도 포함되어2/B23, q19 양수조건에서 공통√(3ab)를 만드는 표준연결3/B34 확인. 기본정의·근호연산 및 진술감사 q1~5,10~15의 sparse 슬롯과 난도는 실제 source와 일치. q15 기존해설의 인수정리식 대입 설명 교육과정 debt 보존.",
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sourceMutation": "NONE"
+  }
+}

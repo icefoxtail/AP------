@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E024",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-14T13:59:56.000100+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/23_매산중_1학기_기말_중3_기출c.js",
+  "sourceBlob": "8ce545345959ba442679bf63197279434420d84e",
+  "inputArtifacts": {
+    "workers/C/E024.review.json": {
+      "sha256": "8d38a1f7734ef908c25c656598ecb57ae97e092730b90c3c9a04b569e0176b1d"
+    },
+    "workers/C/E024.4slot.json": {
+      "sha256": "69080d0c4205cb897e98b6ac109095fc645c0e44ae0333d8ffeb233ab89252cb"
+    },
+    "workers/C/E024.input.json": {
+      "sha256": "8e55de725be2240742d0517cc9054e0a79a2d386ee103cfb7d9f23c4e0bd90a1"
+    }
+  },
+  "sampledOrdinals": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    10,
+    14,
+    15,
+    16,
+    17,
+    19,
+    21,
+    22,
+    24,
+    25,
+    27
+  ],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_3759c2280d3f5c2148e7c3ce6efffa0e4b18bc65aacfb6536f15c32c2b290055",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "이미 곱으로 주어진 다항식에서 인수 정의를 읽는 직접 적용이다. 정의 leafgap과 bucket1 수용."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_9c0fb3c16db33b6d35ec5f587f84118a1ca890531d426212037fa2474861e488",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "별도 전처리 없이 합곱 인수분해를 적용한다. 인수분해 소단원 교정과 bucket1 수용."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_cd5c62dc353480e449091a4beca74a413a85b48049172767b5d5904c98b74570",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "중간항2ab에2x와5y를 직접 넣고 양수를 고른다. bucket1/B12 및 인수분해 소단원 교정 수용."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_2e46645b362b50062ffa5852120ec2e6dc029cf135674342cada10c745082b50",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "제곱차 형태가 바로 드러나 합차공식을 선택한다. bucket1 및 인수분해 소단원 교정 수용."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_3a067530a8848322599a41469aaf07c7b288306703d2534c125957b4153390b2",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제 그림이 직사각형 조각이 아닌19번 포물선임을 직접 확인했다. 조각별 개수를 선택지로 추론한 기존 해설은 조건 증거가 되지 않는다. 난도UNKNOWN/EVIDENCE_DEBT 및 source patch 보류 수용."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_adb304713d634ad7254c84d2ce38224ffbd0c5058e0341067d682543db679a41",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "제곱식이0인 형태에 중근 정의를 직접 적용한다. bucket1/B12 경계 수용."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_e55aaf9dc29e5cdc060d642a1dc46a91a0c949b0f78ea5fc7b2cd966ed07c04d",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "나이 차와 곱에 대한 익숙한 이차방정식 활용 틀이다. 양의 나이 조건과 정확 leafgap 및 bucket2 수용."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_246b00706aee6648d1e3ca450de398a74c739171b1dd4395bffa780d49663fb2",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "이차함수 정의에 최고차항과 분모의 문자를 직접 대조한다. bucket1 및2022 exact gap 수용."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_7bec32b5890abf1f04994c686a1b5b9617c4dc477bef1fa0c1b49ccead55c6f3",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "함수식에 숫자를 직접 대입하는 함숫값 확인이다. bucket1 및2022 gap 수용."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_a88a6d5324a4263adeb270dd9bac3b9b0bb4ca58e2f81f6a84f6ad02081f28d2",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "a의 부호와 절댓값으로 그래프의 기본 성질을 바로 판단한다. bucket1 및 primary 중복 CC 정리 수용."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_71b29e77e596af2eb52bfa3cc27c57aa52043266add055f1e5c8099079ee46f0",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실제 포물선 그림의 위로 열린 모양과3사분면 꼭짓점을 확인했다. 계수·꼭짓점 부호 판정과 bucket2 수용. E025의 그림 누락 문항과 증거 상태가 다르다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_55df27e6bc5b678d50eb9fd03ba049970d805cdfa9c2bd1a97243add73bd23d1",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "넓이와 밑변이 주어져 표준 인수분해와 약분으로 높이를 역산한다. bucket2 수용. 기하 목표의 exact gap과025 부모맥락 분리 확인."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_8a79912bad46a5f8c9c8bb36d735ee9c3725aa652435f182e6179cfa15351ebf",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "둘레합을x+y로, 넓이차를(x+y)(x-y)로 바로 연결한다. 상→중/bucket2 교정 수용. 기하 목표의 exact gap과027 부모맥락 분리 확인."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_30fc7e289afd912324acc58f0bd55342462e0ebef58418df8e221c0e03704c84",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "연속 홀수 조건으로 두 근을 구하고 그 근의 인수형을 전개한다. 여러 조건 관계를 구성하므로 bucket3/B34 및 기존상 경계 유지 수용."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_7ad4efbe4e1afcee781bf2f8a142c0d7c08fb9b81e854118d8f4e7706462272c",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "볼록 방향·축대칭·폭이라는 세 기본 그래프 성질을 독립적으로 계수에 대조한다. bucket2와 중복 CC 정리 수용."
+    },
+    {
+      "ordinal": 27,
+      "questionUid": "qid_v1_9722fdade4d0484f5c82030c3a2cb38978336087e7d98709e734b9bb3e84c2e8",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "대칭축은p, 공통y절편은q를 직접 결정한다. 표준 조건식 두 개의 순차 적용으로 상→중/bucket2 수용."
+    }
+  ],
+  "findingsResolved": [
+    {
+      "ordinal": 6,
+      "resolution": "틀린 그림으로 인한 의미·난도 확정 보류, sourcepatch 보류"
+    },
+    {
+      "ordinal": 21,
+      "resolution": "기하 target exactgap과 인수분해 부모맥락 분리"
+    },
+    {
+      "ordinal": 22,
+      "resolution": "기하 target exactgap과 식의값 부모맥락 분리"
+    }
+  ],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E024-assets/contact-1.jpg",
+      "sha256": "2fbd2cc0a66b14fccb14aff462e74525102ab0ff64b3e103d9db54c857f05bc7",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}

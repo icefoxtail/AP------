@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E040",
+  "status": "PASS_WITH_PROPOSALS",
+  "author": "meta_a",
+  "reviewer": "GPT_ROOT_0B1AF1898334",
+  "at": "2026-11-14T14:16:39.477804+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/22_향림중_1학기_기말_중3_수학.js",
+  "sourceBlob": "e0a7735ea8820669f2952f489cc5f1b056ee8e56",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/0b1af1898334/workers/A/E040.review.json",
+      "sha256": "4b102563dabce99fe47cbf79280ccf5dae7716ae10291360606394a12a5e13b4"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/0b1af1898334/workers/A/E040.4slot.json",
+      "sha256": "dbacd389a202c0ab08e8c3e5511eae7e6e61d2c1e7141ffa1c8c5e21ff9e0c29"
+    }
+  },
+  "sampledOrdinals": [
+    11,
+    18,
+    20,
+    24
+  ],
+  "additionalChangedOrBoundaryOrdinals": [
+    9,
+    10,
+    12,
+    13,
+    14,
+    17,
+    19,
+    21,
+    22,
+    23
+  ],
+  "scope": "Actual stem, choices, existing solution read for listed14questions; four slots directly compared for11/18/20/24; originalPNG19/20/24 viewed. Metadata independent review only.",
+  "findings": [
+    {
+      "ordinal": 9,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "완전제곱식에서 벗어난 음의 최고차항을 직접 식별하므로 bucket1/B12 수용."
+    },
+    {
+      "ordinal": 10,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "잘못 본 일차항·상수항을 두 전개식에서 복원한 뒤 인수분해하는 구조. bucket3 및 정확 leafgap 수용."
+    },
+    {
+      "ordinal": 11,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "직사각형 넓이를 인수분해하여 주어진 가로로 약분하고 둘레를 구한다. 익숙한 역산 bucket2, CC_RECTANGLE_AREA/SEQUENTIAL 수용. 양수조건은 별도 해선택분기가 없어 삭제 수용."
+    },
+    {
+      "ordinal": 12,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "주어진 한 근 대입으로 a를 얻은 뒤 인수분해해 다른 근을 찾는 표준 연결. bucket2 수용."
+    },
+    {
+      "ordinal": 13,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "완전제곱식의 우변이0일 때 중근이라는 실제 해설 경로를 보존한다. bucket2 수용."
+    },
+    {
+      "ordinal": 14,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "정해진 완전제곱 꼴로 이항·보정하는 직접 절차 bucket2/B12 수용."
+    },
+    {
+      "ordinal": 17,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "주어진 범위에서 두 완전제곱근의 절댓값 부호를 결정한다. 보조 완전제곱식과 SEQUENTIAL/bucket3 수용."
+    },
+    {
+      "ordinal": 18,
+      "status": "PASS_AFTER_REVISION",
+      "note": "인수분해식이 양의 완전제곱수가 되는 주사위 순서쌍을 세어 확률을 구한다. 주사위1..6 범위가 결정적이므로 COND_RANGE 삭제취소와4칸 범위 인용 보완 확인. 자연수·유한표본공간·분기열거의 결합으로 상4/B34 수용."
+    },
+    {
+      "ordinal": 19,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "원본 두 정사각형과 AP+BP8을 확인. 넓이합34로 방정식을 세우고 AP>BP로 큰해를 고른다. bucket2와CC_SQUARE_AREA/부등식 조건 수용."
+    },
+    {
+      "ordinal": 20,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "원본 정사각형 변12와 P/Q 경로 확인. 속력으로 OP2t/OQ12−t를 구성하여 삼각형넓이20에 대입하고 0≤t≤6으로 해를선택. bucket3/B34의 상 경계를 독립수용, CC_TRIANGLE_AREA/COND_RANGE/SEQUENTIAL 적합."
+    },
+    {
+      "ordinal": 21,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "ab=−8인 정수쌍에서 합m을 열거하는 계수비교 유형. bucket3·정수조건·정확leafgap 수용."
+    },
+    {
+      "ordinal": 22,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "주어진 합과차를 유리화하고 합차공식·인수분해로 목표식을 계산한다. 인수분해 소단원과 유리화보조/bucket2 수용."
+    },
+    {
+      "ordinal": 23,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "근의공식으로 얻은 표현에서 미지계수를 비교하는 직접 역산. bucket2·출력표현 exactleafgap 수용."
+    },
+    {
+      "ordinal": 24,
+      "status": "PASS_AFTER_REVISION",
+      "note": "원본 네모서리3cm 절단전개도 확인. 3(L−6)²=300의해 중 L>6으로 선택한다. COND_INEQUALITY_CONSTRAINT 및4칸 부등식 실제해설근거 보완 확인. bucket3·직육면체부피 정확 보조개념gap 및 native exactgap 보존."
+    }
+  ],
+  "correctionRequests": [
+    {
+      "ordinal": 18,
+      "severity": "REQUIRED",
+      "field": "conditionKeys/4slot.condition",
+      "status": "RESOLVED",
+      "reason": "유한 주사위 범위1..6을 결정적 조건으로 복원."
+    },
+    {
+      "ordinal": 24,
+      "severity": "REQUIRED",
+      "field": "conditionKeys/4slot.condition",
+      "status": "RESOLVED",
+      "reason": "L>6이 실제 해 선택을 결정하므로 부등식 조건 복원."
+    }
+  ],
+  "assetReview": [
+    {
+      "ordinal": 19,
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/19-content-1.png",
+      "sha256": "90174573fcd172bec7a6f0646310b81635a8478a8b423506ad9bb2d3fdf8a715",
+      "status": "VIEWED"
+    },
+    {
+      "ordinal": 20,
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/20-content-1.png",
+      "sha256": "642a84345e711ef6effda1fd1ef83ed36db1e2ad649667ab8cd94f7bffa0506f",
+      "status": "VIEWED"
+    },
+    {
+      "ordinal": 24,
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/24-content-1.png",
+      "sha256": "569a91cd8c9506536c84d4770b1e031ee99713d5279bd2e4e48a0b0bd80d8a52",
+      "status": "VIEWED"
+    }
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

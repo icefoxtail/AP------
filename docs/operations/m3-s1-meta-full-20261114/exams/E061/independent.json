@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E061",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "693dfa0bd3822b0cd92cbdfe6773a2d5e0167942",
+  "inputHashes": {
+    "reviewSha256": "c44a14d4b63d9fd2085922e5ae8af77c0af91b146ce345a44a0c304aa62a7b0a",
+    "fourSlotSha256": "dbb9d7d9a7f5fb3eaa960a98a77450ea9468161547668665e9a7728737b5e5fd"
+  },
+  "sampledOrdinals": [
+    7,
+    20,
+    22
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_a93ed184fa7119e432166c15d546de2be6e99b77511c05d0c8122d44e64b6632",
+      "status": "PASS_WITH_DEBT",
+      "note": "320=2⁶×5의 최소 나눗수5를 찾는 정형 소인수 보정2 및 자연수조건 수용. 기존해설 일반형5k²에는 나눗셈 결과 자연수 제한이 추가로 필요하다는 content debt 보존 확인."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_a04faf5e02a4617794c7e11f4ee439cccb25dd23da52bc83f00f13b3ab00bb8f",
+      "status": "PASS",
+      "note": "두 오류풀이 중 각각 유효한 계수만 결합해 원식 복원. 전개·계수비교·인수분해 method와3 수용."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_b6de6a4580285f43126ed3a7c300fc5d6aa8cc62f7ca0f94030dfa6692f80e1e",
+      "status": "PASS_WITH_DEBT",
+      "note": "①은 직접 유리화,②는 xy(x-y)(x+y) 목표식 분해를 추가하는 서로 다른 수준. 선택 방식 없는 같은UID의 종합난도 UNKNOWN 보류와 부분판단·exact gap 수용."
+    }
+  ],
+  "assetReview": [],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}

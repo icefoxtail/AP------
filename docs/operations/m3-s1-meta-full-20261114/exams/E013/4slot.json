@@ -1,0 +1,1807 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js",
+  "sourceGitBlobSha": "cd5224ea2040ddf9c2c5e51865dfeb88369c3cb8",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "meta_a",
+    "owner": "GPT_ROOT_D71839569CD9/A",
+    "assignmentId": "M3-S1-META-FULL",
+    "at": "2026-11-14T08:58:15.593891+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "제곱근에 대한 설명 중"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "제곱근의 뜻을 각 보기와 대조한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근의 정의와 근호의 뜻을 구분한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "(-4)²=16과 √81=9를 정의에 따라 대조한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_350d27ccb5b7ed95cdd8d0517474a2bd1cf3264d87437fc097c36230c5556ec4",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "72423d8995c5fbab38e54588aefb1cd6a980a8f344e564cffc2e339b3c40a82c",
+        "QFULL": "6d596519ff101e924601e36da257493f8ce858f3df16999223f7aa5c0ba51268"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "의 음의 제곱근을 $a$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$ab$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "먼저 $\\sqrt{(-16)^2}=16$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "음수의 제곱의 양의 제곱근을 정한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "의 음의 제곱근은 $-4$",
+            "evidenceType": "IMPLIED",
+            "justification": "계산한 두 수의 음의 제곱근을 각각 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "의 음의 제곱근을 $a$",
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "√((-16)²)=16의 음의 근 -4, √81=9의 음의 근 -3을 구해 곱한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_6740beddc63fb6912f274bbe3a34cb11a6c99179ee7ee2471446e5553990bc63",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "15e1ae6f0e2fab25e266c63210f7a4cf08f043b951261881d74c064d57d8f77d",
+        "QFULL": "01eb6692e4e6ecc2871e83765802168bb10f2d962f700cb1c3e960bc4cfb0c24"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "src": "stem",
+            "quote": "$\\frac{\\sqrt{15}}{3} \\times \\frac{7}{\\sqrt{5}} \\div \\frac{7}{\\sqrt{12}}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "을 간단히 하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "나눗셈을 역수의 곱으로 바꾸면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "$7$을 약분하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "=\\dfrac{\\sqrt{180}}{3\\sqrt5}",
+            "evidenceType": "IMPLIED",
+            "justification": "근호의 곱과 몫을 정리한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "7/√12로 나누는 것을 √12/7의 곱으로 바꾸어 공통 7을 약분한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_d81054434babdf17a71cab16a62299e56d88e62ac6327eefb810fbe4ce487377",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "b1624bb7be388c76ebdd271aace4804dfb375784500d65aedbd950c3397e9215",
+        "QFULL": "2605a4e5e1703541c880dc0d786468dbe988bdc7f457820370aecc66b7052eee"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "다음 수 중에서 순환소수가 아닌"
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "순환소수가 아닌 무한소수로"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "의 개수는 몇 개인지"
+          }
+        ],
+        "method": [
+          {
+            "term": "무리수",
+            "src": "solution",
+            "quote": "순환소수가 아닌 무한소수는 무리수이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "무리수의 소수 표현을 이용해 각 수를 분류한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "$\\sqrt{25}=5$",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱수의 제곱근을 계산하여 유리수임을 판별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "완전제곱근은 유리수로 정리하고 π²,√3.7,√8.1을 무리수로 분류한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_f4ac76d1a00b3a2738e5dc1332fa5ed52f5c321fd5e3d5de800382ac529799a4",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "5ec58d1ab2eb30ea5b084b6ae60358672d0709ce8f6cffc8cc2b99325382dc31",
+        "QFULL": "f6f00b0b494ee8adfad962a3a65f5a37bed96ba5e821d08a664580f14210b600"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근표",
+            "src": "stem",
+            "quote": "아래의 제곱근표를 이용하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "근삿값",
+            "src": "stem",
+            "quote": "의 어림한 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근표",
+            "src": "solution",
+            "quote": "행과 $5$열이 만나는 값을 읽으면 된다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "3.2행과 5열의 교차값 1.803을 읽는다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9273aea912ea70d506e9675bed95193788c276593ffd07fd7a3105660b5395ec",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "0a35dd4f437ea0a8d7462f0d7174a2ca16b760bb095d853c09610562006af8ee",
+        "QFULL": "c03e176963495ea8a7c9984c1294b89b3cf1a23fa1ff80a7766ab92fc10485a7"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근표",
+            "src": "solution",
+            "quote": "제곱근표에서"
+          },
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{0.334}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "근삿값",
+            "src": "stem",
+            "quote": "의 어림한 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근표",
+            "src": "solution",
+            "quote": "제곱근표에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "$0.334=\\dfrac{33.4}{100}$",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안을 100분의 1로 바꾸고 제곱근의 배율을 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "0.334=33.4/100에서 √33.4의 표 값을 10으로 나눈다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_3a1a0a0e8e708ea7b7b56a0e6d4162698de5d34a0380dcadd8f588bbfb0f6a58",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "70c28a4005d854e39367f9513f99c16aac5ff2369c6f9b663c9ae1a67c7be7f3",
+        "QFULL": "1fc9badb25d32f849d2315e7610bf2234863e7ea3e6200d68508dec7399bf686"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "src": "stem",
+            "quote": "$a=\\sqrt{3}-2, b=\\sqrt{3}+2$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a^8b^6+4a+1$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "$ab=(\\sqrt3-2)(\\sqrt3+2)=3-4=-1$",
+            "evidenceType": "IMPLIED",
+            "justification": "켤레식 곱에 합차공식을 적용한다."
+          },
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$a^8b^6=a^2(ab)^6=a^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 지수의 곱으로 묶어 ab=-1을 이용한다."
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "$a^2=(\\sqrt3-2)^2=7-4\\sqrt3$",
+            "evidenceType": "IMPLIED",
+            "justification": "차의 제곱을 전개한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "ab=-1을 구하고 a⁸b⁶=a²(ab)⁶=a²로 바꾸어 제곱 전개 후 상쇄한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_b965f6c81a6f0c37b99e4b90a9bdfce66f80a3ef667c8ad4525c54cec41875d2",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "a9eee6ca029edca633246ced52eae27691e22fb401b1ec30130d08080d2b09fe",
+        "QFULL": "4b5ddf29f0c672bbf48f6a8abec2d55f2db7e94e26e6928467d23642d377457a"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$3+\\sqrt{8} < x < 5+\\sqrt{17}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 설명 중 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "근삿값",
+            "src": "solution",
+            "quote": "두 경계값을 비교하기 쉽게 어림하면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근호 경계와 보기의 수를 소수로 어림한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "$4+2\\sqrt2\\approx6.828$",
+            "evidenceType": "IMPLIED",
+            "justification": "보기의 수를 앞에서 정한 두 경계 사이에 대조한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "을 만족시키는 실수 $x$"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$3+\\sqrt{8} < x < 5+\\sqrt{17}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 경계를 5.828…,9.123…으로 읽고 보기의 수와 원소 개수를 판단한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9a2cf47af880a8119ddee32ca5f435854a07e7801c17563e30081be641cc7188",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "552186a631f9a931e588b5dffacfd65ab26f56e2b60c95bc47a5f115f7e315b9",
+        "QFULL": "0ab2a5fd54b51f755773d362f75345a932af9b2d05852ec81f7275be56656893"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "두 정사각형 $ABCD$, $EFGH$"
+          },
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "와 수직선을 그린 것이다."
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "로 하는 원을 그려",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "에 대응하는 수를 바르게 구한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리에 따라",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수직선",
+            "src": "solution",
+            "quote": "오른쪽 교점이 $P$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "중심의 수에 반지름을 더해 오른쪽 교점의 수를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "AB=√10, EF=2√2를 각 중심 -3,2에 더한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_e208194405c835c58c5edc5d9a1caf75fe850ffc0c7695fb8bf73aaa24ec1302",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "c6cdae8d241fbd792b4e288bb7f42f1d2ad4498628a252fe0efd793c5d31b884",
+        "QFULL": "93d4bc76051bf61a8b2f7b2b0becab6fb072b125d2f264e7ae6f6242cafe4448"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{x}$ 이하",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "짝수의 개수를 $f(x)$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$36\\le x\\le40$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근 이하의 짝수 개수가 바뀌는 제곱수를 경계로 구간을 나눈다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "$5\\cdot2+11\\cdot2+5\\cdot3",
+            "evidenceType": "IMPLIED",
+            "justification": "각 구간의 항 수와 함수값을 곱해 더한다."
+          },
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "$36\\le x\\le40$",
+            "evidenceType": "IMPLIED",
+            "justification": "짝수6이 포함되는 경계 x=6²=36을 찾아 함수값 구간을 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $x$에 대하여"
+          },
+          {
+            "term": "짝수",
+            "src": "stem",
+            "quote": "이하의 자연수 중 짝수의 개수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$f(20)+f(21)+f(22)+\\dots+f(40)$",
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "36에서 짝수6이 포함되므로 20..35의 16항과36..40의5항으로 합을 묶는다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_ac6d1f523f0fe9f579fc7afe65ceedea8f69aad9a2d8bd4a4c9f4729ac2aa01d",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "10295e0f6ffc3e41ae802a5ef9b72c276ff945c83a4b3709a5441aa747e9aac8",
+        "QFULL": "d4566d3f1c793183260b2a7148aa82771738fdac904f3618e6c6e2231b997cb9"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "src": "stem",
+            "quote": "$\\sqrt{(ab)^{2}} + 4\\sqrt{(-ab)^{2}}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$ab$는 음수이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "곱의 부호를 주어진 조건에서 정한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$\\sqrt{(ab)^2}=|ab|=-ab$",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근을 절댓값으로 바꾸고 음수인 ab의 부호를 반영한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "ab < 0$ 일 때"
+          },
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$ab^{2} > 0, ab < 0$"
+          },
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "$a, b \\neq 0$",
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "ab<0으로 |ab|=|-ab|=-ab를 정한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_996fbbfb03058cbb949546097ab540740f5b6ef1dab3ca8e9372cebbac1349ad",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "e9a897f10c16abb82a81bcc2555f491ac998cef164d79cf9b885450b785dcce4",
+        "QFULL": "5ea8d144c67ff22a36b2dcf564dd9c5fef330cc16570da25eb9afd23b097b45d"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식을 인수분해한 것이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "인수분해한 것이 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "각 인수분해식을 다시 전개해 확인한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "$(x-5)^2=x^2-10x+25$",
+            "evidenceType": "IMPLIED",
+            "justification": "차의 제곱을 전개하여 원식과 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "(x-5)²=x²-10x+25를 원식 x²-25x+10과 대조한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_2ee2220d1936c21c23f2bc2ff80482b29e5c28d41b9293d99cd5e5d24e23cd8f",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "6c180ab5500be436a974c3c31024b818303274620923ade4d2d4d5391c6cc5a0",
+        "QFULL": "abbd1e417c5ca88fa115aea0ae8b01e79244ca006a2ebaf4c2b1559e999bd00c"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "이차식 $(x+5)(x-A)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $A$의 값과"
+          },
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x$의 계수를 차례로 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "를 전개하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "상수항이 $15$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "전개식의 상수항을 비교해 A를 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "-5A=15로 A를 구하고 x의 계수 5-A에 대입한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_32b4c1a04cfa85b08753b4bd5162a3097fc5ce5e24f647fbc9723062bb93a9a0",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "7c6a7f4a19ed6717a072a77fde36dd96a6798f5e638e2e7f8088d9201684e423",
+        "QFULL": "3c63539fe12046225dc6d95f25376958b98940a7067250827c12a2c908c0f527"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리식",
+            "src": "stem",
+            "quote": "$\\left(\\frac{1}{2^{2}}-1\\right)\\left(\\frac{1}{3^{2}}-1\\right)\\dots\\left(\\frac{1}{10^{2}}-1\\right)$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "을 간단히 하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$\\dfrac1{n^2}-1=-\\dfrac{(n-1)(n+1)}{n^2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 분자의 제곱의 차를 두 일차인수로 분해하여 연속 약분을 준비한다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "\\dfrac1{10}\\cdot\\dfrac{11}{2}",
+            "evidenceType": "IMPLIED",
+            "justification": "연속된 분자와 분모가 소거되는 곱을 계산한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "모두 $9$개의 음수가 곱해지므로",
+            "evidenceType": "IMPLIED",
+            "justification": "음수 인수가 홀수 개여서 전체 부호가 음수이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "1/n²-1=-(n-1)(n+1)/n²로 바꾸어 두 연속 분수 곱의 중간항을 약분한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_673408a5ea6c34663083d6caf59728747270c06e65b8232786e075689030ff7c",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "8ae29d9eec6fa191a65b73c030c8f2a3de54166452808beaedf64fd82de24e86",
+        "QFULL": "2fb5d109f18c5fbc8b2dedd76b677aee236cba1e4a72189d8b94f9ddeb280a42"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "이차식 $(x+5)(x-3)-k$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $k$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "x^2+2x-15-k",
+            "evidenceType": "IMPLIED",
+            "justification": "일차식의 곱을 전개한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "따라서 $-15-k=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식의 상수항과 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "완전제곱식이 되도록 하는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x²+2x-15-k를 (x+1)²와 비교해 -15-k=1을 얻는다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_b90c6321d98c10ee17129a2ee30faabb4c2393544c14054b05207ad0a317093e",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "31154cf615718f3ec1f19d4c045bd4e963cfc4127a31255a9dd15aeef17ac0f3",
+        "QFULL": "0da3bc9b981cb3941b428c05dbfd22e837bfef21ee5bcdcaab4984f886c8a85f"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "$a^{2}+8a+\\square=(a+4)^{2}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "들어갈 수 중 가장 큰 것을"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "$(a+4)^2=a^2+8a+16$",
+            "evidenceType": "IMPLIED",
+            "justification": "곱셈공식으로 전개하고 각 빈칸의 계수를 대응한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "가장 큰 수는 $16$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 빈칸 값을 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱과 두 일차식의 곱을 전개하여 16,2,2,3,7을 얻고 최댓값을 고른다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_14a3fc8d7c895c7f6d6f8178c4c229189286cfb650002acdb5b9eb3a17ec499c",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "0e68fee3aa0295cd38523201e181f47c99a1aa8e72f7572a41587f26b6b13106",
+        "QFULL": "fc29b73b26b9e2a8ba9cea1f857d0010a88f6f796f70ac99bf7be094946c9c65"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "다항식 $x^2-ax+21$"
+          },
+          {
+            "term": "인수",
+            "src": "stem",
+            "quote": "인수가 $x-3, x+b$ 이었다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "두 상수 $a, b$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "주어진 두 인수를 곱하면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 일차인수의 곱을 전개한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "상수항을 비교하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "(x-3)(x+b)의 상수항 -3b=21을 먼저 사용하고 b-3=-a를 적용한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_99c549e6716b1ba59cd9e7a19db01278e002cf4c63bc078604cc0fb061929120",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "f5f00333693a0c131cfd0b807036491612bd10ec6cdcd169fd4df9e7120f665b",
+        "QFULL": "6c713c43e53c44ade8451592f41281c36a8d474a893786724b4d9b11094d3945"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "src": "stem",
+            "quote": "$\\sqrt{9a^{2}+54a+81} - 7\\sqrt{\\frac{16}{49}-\\frac{16}{49}a+\\frac{4}{49}a^2}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차식",
+            "src": "solution",
+            "quote": "5a+5$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$9a^2+54a+81=9(a+3)^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근호 안을 완전제곱식으로 묶는다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$a<2$이므로 $|a-2|=2-a$",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 범위의 부호에 따라 제곱근을 절댓값으로 풀어낸다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$-3 < a < 2$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "3|a+3|-2|a-2|에서 -3<a<2를 이용해 서로 다른 두 부호를 적용한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_225c8c210c91b82bf8725d82b40c03a945228428ea7f5b33e3ae6f937d51817d",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "08d4429f302e6bca7986093a9a7a703bb31f5192dfbf802ee508cc2a8bf0b55a",
+        "QFULL": "960583dcda90ac97928fc2eb8ff6202e89ac86eccaa11e5010030947979a27d4"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "큰 직사각형을 네 개의 사각형으로"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "나눈 넓이가 각각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "큰 직사각형의 둘레의 길이를"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "가로를 각각 $2x$, $7$로 둘 수 있다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설이 부분 넓이의 공통인수를 변으로 택한 실제 단계를 기록한다. 그 선택을 유일하게 정할 조건이 누락되어 내용 부채로 남기며 정당성을 승인하지 않는다."
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "$2\\{(2x+7)+(x+4)\\}=6x+22$",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설이 정한 두 전체 변의 합을 두 배 하는 단계를 기록한다. 변의 유일성 부채는 별도이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "기존 해설은 넓이2x²,7x에서 가로2x,7·높이x를 선택하고 아래 높이를4로 놓는다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "면적 모형",
+      "questionUid": "qid_v1_c0f87ea3dc3dd0fc12b765442cd9d964fd6592e0ab75799950c749b384cdae05",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "d1b9aab6f0a1f26c68d96a0c7a3bdc963dc2eb3c4e7bbac386c390d199a8d2e1",
+        "QFULL": "956af5a3cdeef6241460b00912bc2ac1991ef2529f6732123dfc947b4e3fb382"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$(x+a)(x+b)$를 전개했을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "중 소수의 개수를 구하면?"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "중 소수의 개수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "소인수 지수의 홀짝이 서로 같아야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "곱이 제곱수인 자연수의 제곱인수 구조를 분류한다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "가능한 소수 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "각 묶음에서 합이 소수인 경우를 열거한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1이상 10이하인 자연수 $a, b$"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "1이상 10이하인 자연수 $a, b$"
+          },
+          {
+            "term": "완전제곱수",
+            "src": "stem",
+            "quote": "어떤 자연수의 제곱이 될 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "ab가 제곱수인 묶음에서 a+b가2,5,13이 되는 경우를 모은다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_12e555a6e37a452fea5b64578f7514fc0ce81e8e1e9f1eb4111d73cd9020c93d",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "64d536be1cc11e549f5947cfc2b2475884f8bdb19eb951e6bd73c50015806145",
+        "QFULL": "7978860585a256a0295eb3dac74a0b62d09837b7fdc10045bec3415f023648d1"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "의 양의 제곱근을 $A$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$A, B$를 각각 구하시오."
+          },
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "의 값을 유리화하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "그 양의 제곱근은 $3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 주어진 수의 지정된 부호의 제곱근을 구한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "분모와 분자에 $3+\\sqrt7$을 곱하면",
+            "evidenceType": "IMPLIED",
+            "justification": "켤레식을 곱해 분모의 근호를 없앤다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "의 양의 제곱근을 $A$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "의 음의 제곱근을 $B$",
+            "evidenceType": "NAMED"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "A=3,B=-√7을 구한 뒤 1/(3-√7)에3+√7을 곱한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_ecd9231ab02cbbf1585f4e5f6059bcd4e119befb7715d35efee3fc46e109126a",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "eec5cfc71cab564e5494868ad494ac0854bd59fa5521377f693ecd7796e69a5c",
+        "QFULL": "48bbb42c5b431fa72b213f6cf239de65475001210da3f0e60b0fc8e4fbcabba5"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$a^2-9a+14$의 값을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "의 값을 구하는 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "식을 먼저 인수분해하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$a=7+\\sqrt3$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 a를 인수분해한 식에 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "a²-9a+14=(a-7)(a-2)에7+√3을 넣어 계산한다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [
+        "인수분해",
+        "대입"
+      ],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9005d14efc208b7ec927445a728a315dc3e691ccfb7cab1150d3d343b66ce7a7",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "2c42556409c012735a9d0aadcf438b78867308d3df8b99fe7cc7e69809684a05",
+        "QFULL": "5c5b0fafcd328f989788c27bf1991611321b2c24dd57fbe2ffb32368ae8e29c8"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$x^2-10mx+n$에 $2mx-5n$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "$n-m$의 최댓값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "이 식이 완전제곱식이면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "즉 $n=6m^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식의 상수항과 비교해 m,n 관계를 구한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "에서 커지므로 $m=4$일 때 최대이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "허용된 네 자연수에 대해 n-m을 비교한다."
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$6m^2\\le100$에서 $m\\le4$",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식 관계를 자연수 상한에 대입하여 후보를 네 개로 제한한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$m, n \\le 100$ 자연수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$m, n \\le 100$ 자연수"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "뺀 후 완전제곱식이 될 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "6n=36m²에서 n=6m², m≤4를 얻고 n-m을 최대로 만드는 m을 고른다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_c7777b15d923aa278b99688be7fdc7dfd939b9ffd963b68ec76adca37e336576",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "8f3d05f849bdd973379d3c8acf33a13835e51f00c4fa0807ab610d5b1d666895",
+        "QFULL": "70fc7f29d076b212e8697bfdfc5cdfcdb472e64b8d1d30c98e2a9353ce427f37"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "두 직각삼각형의 빗변을 반지름으로"
+          },
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "수직선 위의 두 직각삼각형의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "에 대응하는 점을 각각 구하고"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "의 길이의 차를 구하는 과정"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "두 직각변 길이는 $2,1$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "두 직각변의 제곱합으로 빗변 길이를 구한다."
+          },
+          {
+            "term": "수직선",
+            "src": "solution",
+            "quote": "중심이 수직선의 $-4$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "각 중심에서 반지름만큼 좌우로 옮겨 교점을 구한다."
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$AD=6+\\sqrt{10}+\\sqrt5$",
+            "evidenceType": "IMPLIED",
+            "justification": "수직선에서 오른쪽 좌표에서 왼쪽 좌표를 빼어 두 선분의 길이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 중심 -4,2에 √5,√10을 더하고 빼서 AD와BC를 좌표 차로 나타낸다.",
+        "reuse": "현재 본문·기존 해설에 의미와 인용을 대조했으며 약한 인용만 보완했다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_5936fdece78a5d33a13ffc5f5e8e2cb799ed69466b6af1fa77fbc0f9d2761fd7",
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "GPT_ROOT_D71839569CD9/A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T08:58:15.593891+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author evidence check only; independent root sample pending."
+      },
+      "fingerprints": {
+        "QBODY": "69840d99090416d82d001c1a47c120470d415804e49df5c5d48ce156fcd578d5",
+        "QFULL": "536f6a08d04df81529367edd9a9988cc3272bf4eaf05ba5df21b8adcfc5beaa6"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_CHECKED",
+    "independentReview": "PENDING_ROOT_SAMPLE",
+    "note": "직접 정의·표 읽기에서 생기는 적은 용어 수 경고는 억지로 채우지 않는다. q19 내용 조건 부채와 q20 RPM leaf gap을 별도 보존한다."
+  },
+  "reuseProvenance": {
+    "compact": {
+      "branch": "work/4slot-annotate-v1",
+      "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+      "path": "archive-work/4slot-annotate-v1/out/original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.4slot.json",
+      "originalSha256": "444c71e93e6865f3a8ee9954c7b769dd02f17ce1100c552e42b957bc3800ec3f",
+      "importDelta": {
+        "baseSourceGitBlobSha": "ff243bc8b3912a62364d991d9ba69286f5418e4b",
+        "authoringSnapshot": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "reviewRecord": {
+          "branch": "ops/4slot-bulk-publish-20261105",
+          "commit": "ee358bec56c10d828747edfa9db315b19a9e5f5c",
+          "path": "tools/4slot/bulk-delta-overrides.json",
+          "sha256": "0ea424264025971d832e610700f94acf029701ebe20d8530e5d1af3e42d5551d"
+        }
+      }
+    },
+    "detailedEvidenceSha256": "444c71e93e6865f3a8ee9954c7b769dd02f17ce1100c552e42b957bc3800ec3f",
+    "priorSourceGitBlobSha": "ff243bc8b3912a62364d991d9ba69286f5418e4b",
+    "verification": "24문항을 실제 읽고 현재 인용과 대조했다. 기존 독립 PASS를 새 판본의 PASS로 옮기지 않는다."
+  },
+  "reviewedSourceBaseBlob": "0326345c91e864fd826dd67eb56514cf3f2c708c",
+  "independentReview": {
+    "status": "PASS",
+    "author": "meta_a",
+    "reviewer": "meta_b",
+    "examKey": "E013",
+    "sampledOrdinals": [
+      4,
+      6,
+      19
+    ],
+    "basis": "세 표본 모두 validator WARN 문항. 현재 stem/choices/solution과 4칸을 실제 읽고 q6 공유 제곱근표는 q5의 table 본문까지 확인했다. q19 학생 inline SVG 및 해설 SVG를 실제 렌더로 대조했다. 기술검사 24문항/133인용/FAIL0/WARN11.",
+    "fourSlotSampleStatus": "PASS",
+    "findings": [
+      {
+        "ordinal": 4,
+        "status": "PASS",
+        "note": "무리수와 개수라는 목표가 모두 있고 정의에 따른 분류와 제곱근 계산이 실제 해설의 방법이다. 현재 source 인용이 존재하며 distinct4 WARN은 의미 누락이 아니다."
+      },
+      {
+        "ordinal": 6,
+        "status": "PASS",
+        "note": "q5의 [5-6] 공유표에 33행4열5.779가 있다. 0.334=33.4/100의 배율 변환과 표 읽기가 분리되어 실제 두 결정 단계를 포괄한다. 근삿값 목표도 적합하다."
+      },
+      {
+        "ordinal": 19,
+        "status": "PASS_WITH_CONTENT_DEBT",
+        "note": "학생 그림에는 네 부분 넓이만 있어 변의 유일성이 없다. 4칸은 기존 해설이 실제로 택한 인수분해/둘레 단계를 기록하면서 그 정당성은 승인하지 않는다고 명시한다. 누락 조건을 임의로 보충하지 않았고 EVIDENCE_DEBT를 유지한다."
+      }
+    ],
+    "additionalSemanticReview": [
+      {
+        "ordinal": 8,
+        "status": "ACCEPT",
+        "note": "근호 경계의 범위를 구해 수 종류의 유한/무한 및 후보 포함을 판정한다. 대소비교 leaf와 범위 조건은 적합하다."
+      },
+      {
+        "ordinal": 9,
+        "status": "ACCEPT_VISUAL",
+        "note": "실제 모눈 그림의 A=-3, 가로1·세로3과 E=2, 가로2·세로2를 확인했다. 두 오른쪽 교점 구하는 동일 절차를 반복하므로 bucket2가 타당하다."
+      },
+      {
+        "ordinal": 10,
+        "status": "ACCEPT",
+        "note": "새 개수 함수에 짝수 제한을 함께 적용하여 x=36 경계에서 항수를 나누어 합산하는 구조로 bucket4를 수용한다. 일반 짝수값 조건을 자리수 parity enum에 강제하지 않은 gap 처리는 적합하다."
+      },
+      {
+        "ordinal": 14,
+        "status": "ACCEPT",
+        "note": "반복 항을 인수분해하여 두 연속 분수 곱으로 재구성하고 아홉 음수 부호를 처리한다. 곱의 약분을 망원합 CC에 강제하지 않은 부채 처리와 bucket4에 동의한다."
+      },
+      {
+        "ordinal": 19,
+        "status": "EVIDENCE_DEBT_CONFIRMED",
+        "note": "부분 넓이를 유지하는 가로 배율/세로 역배율 변형이 가능하여 둘레가 정해지지 않는다. 해설 그림의 x,4,2x,7은 학생 자료의 추가 조건이 될 수 없다."
+      },
+      {
+        "ordinal": 20,
+        "status": "ACCEPT_LEAF_GAP",
+        "note": "a+b가 이미 제시되어 전개보다 제곱인수 구조의 자연수 쌍 분류와 소수 합이 핵심이다. 임의의 곱셈 leaf로 확정하지 않은 판단과 bucket4는 적합하다."
+      },
+      {
+        "ordinal": 21,
+        "status": "ACCEPT",
+        "note": "양·음의 제곱근으로 A,B를 정하고 합차 분모를 유리화하는 두 소문항의 직접 연결은 bucket2이다."
+      },
+      {
+        "ordinal": 22,
+        "status": "ACCEPT",
+        "note": "인수분해 방법이 발문에 명시되어 있고 이후 두 일차인수 대입과 근호 분배계산이 직접 이어져 bucket2가 적합하다."
+      },
+      {
+        "ordinal": 23,
+        "status": "ACCEPT_DIFFICULTY_WITH_SCOPE_NOTE",
+        "note": "원식의 차에서 완전제곱 관계 n=6m²를 만들고 두 자연수 범위와 n−m 최댓값을 결합한다. 이 조건 구조를 중심으로 bucket4/B34를 수용한다. CC_DIOPHANTINE_NATURAL_BOUND의 현재 정의에 특정 b=3/2 a²가 기재되어 있어 계수6 구조에도 일반화 가능한지 root의 정적 의미판정에서 범위를 확인할 필요가 있다."
+      },
+      {
+        "ordinal": 24,
+        "status": "ACCEPT_VISUAL",
+        "note": "현재 학생 모눈 그림에서 중심−4와2, 직각변2·1 및1·3을 확인했다. 네 교점 좌표를 구한 후 두 선분 길이 차로 연결하므로 bucket3가 적합하다."
+      }
+    ],
+    "compatibilityAdjudication": [
+      {
+        "ordinal": 2,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "음의 제곱근을 근호 계산 결과에 다시 적용하는 중첩 뜻 해석 때문에 bucket2이나 각 단계가 기본 정의이므로 기존하 경계 수용."
+      },
+      {
+        "ordinal": 3,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "역수 곱 전환과 약분 뒤 근호를 계산하는 정형 연결이다. bucket2와 기본 계산하의 인접경계 수용."
+      },
+      {
+        "ordinal": 4,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "각 수를 정의와 완전제곱수 계산으로 직접 분류해 bucket1. 여러 표현과 무리수 소수 표현 구분 부담으로 기존중 경계 수용."
+      },
+      {
+        "ordinal": 7,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "ab=−1 구조를 골라 고차 거듭제곱을 낮추는 표준 식 변형이 bucket3. 표현 선택 부담은 기존상과의 경계로 수용."
+      },
+      {
+        "ordinal": 13,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "상수항 비교로 A를 얻고 x의 계수로 연결하는 직접 전개 절차이다. bucket2와 기존하 경계 수용."
+      },
+      {
+        "ordinal": 15,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "전개 후 가운데항이 주는 완전제곱식의 상수항을 맞춘다. 친숙한 변형의 bucket2와 기존하 경계 수용."
+      },
+      {
+        "ordinal": 16,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "여러 기본 항등식에 공식을 직접 적용한 뒤 빈칸 숫자를 비교한다. 패턴 전환을 반영한 bucket2와 기본 공식하 경계 수용."
+      },
+      {
+        "ordinal": 17,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "두 인수를 전개하여 상수항과 일차항을 차례로 비교한다. 정해진 기본 절차이므로 bucket2와 기존하 경계 수용."
+      },
+      {
+        "ordinal": 18,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "두 완전제곱 인수분해와 지정된 구간에서 절댓값의 서로 다른 부호를 결합한다. 표준 복합형bucket3과 기존상 인접경계 수용."
+      }
+    ],
+    "correctionRequests": [
+      {
+        "ordinal": 16,
+        "severity": "REQUIRED",
+        "field": "decision.rpmRecordId/rpm2022RecordId",
+        "reason": "여러 곱셈공식의 빈칸 숫자를 비교하는 실제 목표는 현재 native2015 M3-RPM-182 여러 곱셈공식 비교·판별과 일치한다. 019 식의값보다182가 정확하다. 현재2022 counterpart는 없음.",
+        "proposed": {
+          "rpmRecordId": "M3-RPM-182",
+          "rpm2022RecordId": null
+        },
+        "authorRecheckRequired": true,
+        "status": "RESOLVED"
+      }
+    ],
+    "mathematicalVerification": "NOT_PERFORMED",
+    "reviewVersion": "M3-S1-META-FULL-v1",
+    "sourceBlob": "0326345c91e864fd826dd67eb56514cf3f2c708c",
+    "reviewedArtifacts": {
+      "E013.review.json": "81ee09e5b4745f62bcb9935f12546f60fd8164c14a5bfbadb74ae16a93e38f2e",
+      "E013.4slot.json": "bbbe148d24c2dfe3d4efe8eb64a9f58620a344fc02f183502372d5b4f05213da"
+    },
+    "correctionResolution": {
+      "status": "VERIFIED",
+      "note": "q16 native182와2022null, q23 좁은CC 제거·scope clarification debt를 실제 수정본에서 확인."
+    },
+    "reviewedArtifactsFinal": {
+      "E013.review.json": "add3ea570badd83e5b25e95c0ad8a1db2640ed2740e6701471c40bef5992589d",
+      "E013.4slot.json": "bbbe148d24c2dfe3d4efe8eb64a9f58620a344fc02f183502372d5b4f05213da"
+    }
+  }
+}

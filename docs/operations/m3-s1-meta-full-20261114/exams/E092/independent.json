@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E092",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "owner": "GPT_ROOT_E0C948452E80/C",
+  "at": "2026-11-15T06:05:47.493597+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/17_경북창포중_1학기_기말_중3_수학.js",
+  "sourceBlob": "488f0686db5e445ed984ae926ca66fb3477c3b90",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E092.review.json",
+      "sha256": "fefd0c1cb8d246424154e532365877777ca1ed3ceba2c50db126c413dcb5103a"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E092.4slot.json",
+      "sha256": "20ec58bb5f289fbabd4616b6539c16122dac1c5faf5d7e9513e6abf4d81eb5e0"
+    },
+    "sourceInput": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E092.input.json",
+      "sha256": "7c257424724a2dd01e793b2afd0604ad70d88c256f49e8a0251f6fc10339ce55"
+    }
+  },
+  "sampledOrdinals": [
+    8,
+    16,
+    25
+  ],
+  "findings": [
+    {
+      "ordinal": 8,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 그림의 B,D가 정사각형 대각점이며 같은포물선 위에 있음을 확인했다. x좌표비3과 가로세로상등을 연결하여둘레를구하는 후보는 bucket3/B23, RPM047 부모맥락 및2022정확leaf공백과맞는다. method는 실제해설공백으로비워두었다."
+    },
+    {
+      "ordinal": 16,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 원본PNG를 직접 보았지만 두포물선과꼭짓점연결선만 뚜렷하며 요청된색칠영역을 특정할 수 없다. 내용에맞는면적관계나난도를강제로완성하지않은 UNKNOWN과필수시각근거부채가타당하다."
+    },
+    {
+      "ordinal": 25,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제그림의축x6과좌우대칭내접직사각형, A,D의함수상위치 및B,C의x축위치를확인했다. 계수→변길이→둘레최대라는소문항안내가있으므로bucket3후보와기하공식순차통합을수용한다. 방법은실제해설없음으로공백이고정확leaf제안은등록대기다."
+    }
+  ],
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E092/08-image-1.png",
+      "sha256": "fbcce6b24b2f8c964ca2d6671f0537362062ddd1558021a4bb5f655e6464fc61"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E092/16-image-1.png",
+      "sha256": "acb19ecbabd102102cc27f6b93d151eb473802935e15f7a8a529316fe55435bd"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E092/25-image-1.png",
+      "sha256": "51da6628b144f226a3bec3657a8073b06a8e297763d8fd65e38c9d5e13a1bd38"
+    }
+  ],
+  "additionalContentObservations": [],
+  "scope": "METADATA_ONLY: sampled source stems, choices, existing solutions/actual blanks, author judgments and exact 4slot quotes directly compared. No full-exam rereview or mathematical PASS asserted. Source-only missing-method failures remain open.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

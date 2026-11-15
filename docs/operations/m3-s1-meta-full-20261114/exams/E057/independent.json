@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E057",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T00:02:33.322109+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/21_금당중_1학기_중간_중3_기출.js",
+  "sourceBlob": "f9b8b825fb102aecafb4382853303f5732810c6e",
+  "inputArtifacts": {
+    "workers/C/E057.review.json": {
+      "sha256": "586e8bcf7f83908852d234710e219f7f68174d0a62401738f83131259ea7eb9b"
+    },
+    "workers/C/E057.4slot.json": {
+      "sha256": "a0d8c95c0ebcfdc08be6c35463da53dfba3994692fc067bf05f6208178ca5f10"
+    },
+    "workers/C/E057.input.json": {
+      "sha256": "0811affc0c02193cceaa11fff4e214e59fb9cda23e4604fc55230812384fedfc"
+    }
+  },
+  "sampledOrdinals": [
+    2,
+    12,
+    23
+  ],
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_2dbe727dec40ae09051531b4165ed0e2805102af1859cf14a33d09ef0aa01cc7",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "√16=4의 제곱근이 ±2임을 두 단계 정의로 확인. 제곱근 given·goal·method 반복은 뜻을 구분하는 문항으로 소수 term WARN가 의미누락을 뜻하지 않는다. bucket1/B12 수용."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_123c0dbf3ea5dd7458f9e14f056b554bb526961127f86837e7ace58ccfa1d9ff",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "다섯 근호식을 유리화·간단히 하기 후 근삿값으로 비교하는 기존 해설을 대조. ⑤≈3.878이 ②≈3.924보다 작다. 보기 수 자체가 전략 부담을 만들지 않아 저자가 bucket2/B23로 보완한 판단을 수용."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_18aa99a40ae1b89a3b458fae16157dbd7f4c00d077f8c77b6189abb0b5d73d03",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "표에서 √5.53≈2.352 및 √55.3≈7.436을 읽어 √0.553≈0.7436으로 소수점을 옮긴다. 제곱근표·근삿값·소수점 이동의 표준 경로와 bucket2를 확인."
+    }
+  ],
+  "findingsResolved": [
+    {
+      "ordinal": 12,
+      "issue": "보기 길이에 비해 bucket3 전략근거 부족",
+      "resolution": "유리화·근삿값비교 표준절차 bucket2/B23로 저자 수정 확인"
+    }
+  ],
+  "rootAdjudications": [],
+  "visualEvidence": [],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}

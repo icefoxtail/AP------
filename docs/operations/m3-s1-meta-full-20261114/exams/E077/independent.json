@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E077",
+  "status": "PASS_WITH_PROPOSALS",
+  "author": "meta_b",
+  "reviewer": "meta_c_resume_20261115",
+  "owner": "GPT_META_C_E0C948452E80",
+  "at": "2026-11-15T05:53:51.996212+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/19_이수중_1학기_기말_중3_수학.js",
+  "sourceBlob": "575fc0a478918329e1f0342594aaea116f3316bc",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E077.review.json",
+      "sha256": "f11506a1f9ed6195cf348df1ccb32ddcf7bc8641db36e1d12463fff36fe4143c"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E077.4slot.json",
+      "sha256": "cf6c2685ab5792217c80dcdb177c8e5d4190e9bca975d33f26373e54089cf74d"
+    },
+    "sourceInput": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E077.input.json",
+      "sha256": "d84766064f733890c89763e5ed76059c9b497c03feb3ff13deeaeee20b5bea8c"
+    }
+  },
+  "sampledOrdinals": [
+    5,
+    15,
+    22
+  ],
+  "additionalChangedOrBoundaryOrdinals": [],
+  "scope": "METADATA_ONLY: sampled source stems, choices, existing solutions, author decisions and exact 4slot quotes directly compared. Other author judgments reused; no full-exam rereview claim.",
+  "viewedAssets": [],
+  "findings": [
+    {
+      "ordinal": 5,
+      "status": "PASS_WITH_PROPOSAL",
+      "note": "완전제곱식으로 정수근 조건을 16-m의 완전제곱수 여부에 연결한다. 자연수 m와 정수근 조건을 보존했고, 근의 개수 leaf를 정확 일치라고 단정하지 않은 parent/exact-leaf-gap 처리를 확인했다."
+    },
+    {
+      "ordinal": 15,
+      "status": "PASS",
+      "note": "완전제곱식으로 원래 꼭짓점을 읽고 x축 대칭 목표 꼭짓점까지의 평행이동량을 비교한다. RPM 049/136, 대칭 보조개념과 순차 통합을 확인했고 경계 B23의 보수적 bucket 2를 수용했다."
+    },
+    {
+      "ordinal": 22,
+      "status": "PASS_WITH_PROPOSAL",
+      "note": "소문항이 완전제곱식→꼭짓점→직선 위 조건의 대입을 직접 안내한다. 정수 k 조건을 보존했으며 해설의 인수분해도 실제 근거가 있다. 꼭짓점/직선 소속 조합의 exact-leaf-gap과 안내된 풀이에 따른 bucket 2를 확인했다."
+    }
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "independent-meta-sample-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
+  "examKey": "E099",
+  "author": "meta_a_resume_d03144c8ca75",
+  "reviewer": "meta_c",
+  "reviewerOwner": "GPT_ROOT_D03144C8CA75/C",
+  "reviewedAt": "2026-11-15",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "scope": "METADATA_ONLY_LOCAL_PREPARATION",
+  "sourceBlob": "201a3606b4d9cf4aa0cfbef20b84f7634eac915a",
+  "sourceSha256": "f4fb2afdbab446d43a0ce21c54fba62d2fb2157b56d74cd116fb539c4872340b",
+  "reviewPath": "/workspace/scratch/d03144c8ca75/workers/A/E099.review.json",
+  "reviewSha256": "f9fd149e756fb36789a5a49d9f7cdf12c1c437de22821bb9fd6dc61819c11510",
+  "fourSlotPath": "/workspace/scratch/d03144c8ca75/workers/A/E099.4slot.json",
+  "fourSlotSha256": "d9c2fc1de05af1ffd37c2e6c18bfd4deade378262cb7bce86d2e6a0cd50249b0",
+  "inputSha256": "aa962ee94bea67627b37331e7188f84a55323871445dc1ff3b91c6ff9d4d0eed",
+  "sampleOrdinals": [
+    6,
+    16,
+    21
+  ],
+  "samples": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_ab926f4736517de7825c15d139ddc6cf8717f0230ba2606d614170d2f7e3bb82",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot exact quote",
+        "projection and debt"
+      ],
+      "quotesVerified": 9,
+      "sourceFingerprints": {
+        "QBODY": "5703c251319a58352ab976801491cddb9da805a4bb570212c080b5f9e5d434e5",
+        "QFULL": "410e13bba14c7602507e528adfb0a20c94b188948eee57f476858ad5a8da4b42"
+      },
+      "rationale": "실제 그림에서 A의 수직선 좌표4, B까지 가로1·세로3 및 AB=AQ의 오른쪽 원호를 확인했다. 기존 해설의 피타고라스→실수위치→보기판정 경로 및 bucket3이 합당하다. 독립 지적으로 결정적인 오답선지⑤의 (a-4)^2=10에 대응하는 완전제곱식 method가 추가된 최종 패킷을 다시 확인했다.",
+      "debtKindsPreserved": []
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_eaecac9ee80706f30eebfdc54b69bc7becc72945f9b2e9dc99b278714e39949a",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot exact quote",
+        "projection and debt"
+      ],
+      "quotesVerified": 8,
+      "sourceFingerprints": {
+        "QBODY": "bfe9d2814a8ff046ceb81f633e7b80fc5ff719475f06c0fc11972cf378b1de58",
+        "QFULL": "2f053007999cce449a1c6fbabc647a676cb08a9a921ad98bb7339cd2f522ff82"
+      },
+      "rationale": "발문의 a=-sqrt((-a)^2)는 a≤0이므로 해설의 근거 없는 a<0 전환 부채를 보존한 것이 적절하다. a=0에서도 절댓값 정리와 최종식은 성립하며, b의 방정식 관계를 대입해 근호식을 단순화하는 실제 경로와 두 보조개념·bucket3은 부합한다. source 분류 alias 부채도 남아 있다.",
+      "debtKindsPreserved": [
+        "CONTENT_INVALID_STRICT_SIGN",
+        "CLASSIFICATION_ALIAS_DEBT"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_f1d725201ecbe9a52d071d9321c7e19da65b387c191a00b89badb84dad70d379",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot exact quote",
+        "projection and debt"
+      ],
+      "quotesVerified": 9,
+      "sourceFingerprints": {
+        "QBODY": "7dd6f74e7cfe4f07bbf50d4e8398c13b9a14b6eccfb00f3ef319a02d59477665",
+        "QFULL": "b079e5797688bbde2d8f422bcf9dc5f85b490b084807cfe540e974732805546f"
+      },
+      "rationale": "소수라는 한글의 두 의미를 실제 기존 해설의 decimal 문맥으로 구분한 뒤 소수표현 후보를 써서 prime-number 사전항목과 혼동을 피했다. 유한/무한·순환/비순환 분류와 기본 난도1은 부합하며, 비순환을 무규칙으로 설명한 원문 부채와 정확 leaf gap을 보존했다.",
+      "debtKindsPreserved": [
+        "CONTENT_DEFINITION_IMPRECISION",
+        "TAXONOMY_PROPOSAL"
+      ]
+    }
+  ],
+  "assetEvidence": [
+    {
+      "ordinal": 6,
+      "path": "/workspace/scratch/e0c948452e80/workers/C/E099-assets/6-image.png",
+      "sha256": "9c1ba01ba99b90ef1ab39af255423e4e18624825876926fd6ea869f059b770c0",
+      "blobSha": "d81da777fe938fe5034e9647ec7f208b4e9058b2",
+      "status": "INDEPENDENTLY_VIEWED"
+    }
+  ],
+  "independentReviewerNotAuthor": true,
+  "contentQualityPass": false,
+  "remoteCompletionClaim": false,
+  "remaining": [
+    "root ownership handoff confirmation",
+    "root integration and protected-field checks",
+    "remote checkpoint",
+    "Codex exact mapping and declared content debt processing"
+  ]
+}

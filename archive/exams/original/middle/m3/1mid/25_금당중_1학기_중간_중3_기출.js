@@ -267,10 +267,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "각 값을 간단히 하면 ① $\\sqrt{10}$, ② $\\sqrt6$, ③ $2\\sqrt2$, ④ $\\sqrt6$, ⑤ $3$이다.<br>$\\sqrt{10}>3>2\\sqrt2>\\sqrt6$이므로 가장 큰 것은 ①이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "fresh_v2",
-    "subUnitClassificationDepth": "complete_canonical"
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -539,10 +539,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "상수항이 $9$인 완전제곱식이므로 $(x+3)^2$ 또는 $(x-3)^2$ 꼴이다.<br>$2p+1=6$ 또는 $2p+1=-6$이므로 $p=\\frac52,-\\frac72$이다.<br>두 값을 곱하면 $-\\frac{35}{4}$이므로 정답은 ①이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "fresh_v2",
-    "subUnitClassificationDepth": "complete_canonical"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -558,8 +558,7 @@ window.questionBank = [
     "tags": [
       "객관식",
       "곱셈공식",
-      "전개",
-      "계수비교"
+      "전개"
     ],
     "wide": false,
     "content": "$(3x-y)^2-(2x+y)(2x-y)$를 계산할 때, $x^2$의 계수를 $a$, $y^2$의 계수를 $b$라고 하자. 이때 $a+b$의 값을 구하면?",
@@ -592,7 +591,6 @@ window.questionBank = [
       "객관식",
       "인수분해",
       "인수",
-      "대입",
       "오류판별"
     ],
     "wide": false,

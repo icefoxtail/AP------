@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E071",
+  "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+  "author": "meta_b",
+  "reviewer": "meta_c_resume_20261115",
+  "owner": "GPT_ROOT_E45FF6C78C51/C",
+  "at": "2026-11-15T00:19:06.351495+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/19_가산중_1학기_기말_중3_수학.js",
+  "sourceBlob": "9a968bdfcf8e665d09c11b5f5b782b88d0744651",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E071.review.json",
+      "sha256": "b458d114033126e04560526dd09dd1fef2603b8c3370c059dd4c8da17c5de613"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E071.4slot.json",
+      "sha256": "921c88c704682d974ae65849ed46ba16f21d7cad1f47fe99aa829e2a6587b81a"
+    }
+  },
+  "sampledOrdinals": [
+    10,
+    18,
+    20
+  ],
+  "additionalChangedOrBoundaryOrdinals": [],
+  "scope": "METADATA_ONLY: listed source stems, choices, existing solutions, author decisions and exact 4slot quotes directly compared. Other completed author judgments reused; no full-exam rereview claim.",
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/assets/E071/20-content-1.png",
+      "sha256": "b86fd34c72144b94f41a1df42088ee5264c35e1bbe0e7ba83ed9fe0faa00a1bb"
+    }
+  ],
+  "findings": [
+    {
+      "ordinal": 10,
+      "status": "PASS",
+      "note": "실제해설이둘레합·넓이비를제곱근비와유리화로푸는경로임을확인. 이차방정식으로억지분류하지않은parentcontext와exactgap·중3수용."
+    },
+    {
+      "ordinal": 18,
+      "status": "PASS",
+      "note": "최대점(-2,3)에서오른쪽부호를y절편≤0로바꿔사분면배제조건을해석한중3수용. 끝점포함보존."
+    },
+    {
+      "ordinal": 20,
+      "status": "PASS_AFTER_REVISION",
+      "note": "실물꼭짓점(1,-2)·y절편1확인. 이미지뒤6개소문항의실제목표·x≤1조건을담는정확인용보완확인. 앞문항이안내하지않는마지막곡선등적재배치4/B34와나머지부분난도보존수용."
+    }
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

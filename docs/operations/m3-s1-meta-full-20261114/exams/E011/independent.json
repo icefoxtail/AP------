@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E011",
+  "status": "PASS_WITH_CONTENT_DEBT",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "at": "2026-11-14T13:45:12.082839+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js",
+  "sourceBlob": "4419624f59739ee12a62d7d538d4c105651e23d0",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E011.review.json",
+      "sha256": "99d24870c4693029fdac2ae1b87b95701558b21840c72ffd8eb549e400856e3b"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E011.4slot.json",
+      "sha256": "11e455c1afbe19e2d1d9cba222ebddb1a36dc02ced844a957cc8c8f3b013ea72"
+    }
+  },
+  "sampledOrdinals": [
+    6,
+    11,
+    15
+  ],
+  "additionalChangedOrBoundaryOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    10,
+    18,
+    21,
+    23,
+    24
+  ],
+  "scope": "METADATA_ONLY; actual source stem/choices/existing solution and visual sample read; not mathematical whole-exam verification",
+  "findings": [
+    {
+      "ordinal": 6,
+      "status": "PASS_WITH_CONTENT_DEBT",
+      "note": "합·차의 성질과 반례에 따른 항상 무리수 판정, bucket3 적합. √a 정의역 누락은 contentDebt 분리. CASE_BRANCH를 NONE으로 수정한 최종본 확인."
+    },
+    {
+      "ordinal": 11,
+      "status": "PASS_WITH_TAXONOMY_PROPOSAL",
+      "note": "실제 재배열 SVG와 source를 읽고 a=2√3, 외곽 2a+4b 결합 확인. 단순 근호 곱셈으로 강제배치하지 않고 도형 둘레 leaf 제안 보존. 도형 해석 부담에 따른 bucket4 B34 경계수용."
+    },
+    {
+      "ordinal": 15,
+      "status": "PASS",
+      "note": "48=50-2,52=50+2로 합차공식을 선택한다. 여기서 goal 곱셈공식은 문제의 실제 요구 산출물이므로 goal-method WARN를 의미오류로 보지 않음."
+    },
+    {
+      "ordinal": 18,
+      "status": "PASS",
+      "note": "완전제곱 계수 관계 b=3a²/2와 자연수·100상한을 함께 적용하는 제한조건 구조화. 상/bucket4 B34 수용."
+    },
+    {
+      "ordinal": 21,
+      "status": "PASS",
+      "note": "√(108/x)의 자연수 조건을 완전제곱 약수로 환원한다. CC_PRIME_FACTORIZATION_SQUARE와 COND_NATURAL_NUMBER가 실제 기여."
+    },
+    {
+      "ordinal": 23,
+      "status": "PASS",
+      "note": "첫 힌트 전개계수비교·둘째 힌트 인수분해로 네 자리를 독립 결정함을 수정 auxiliaryReason에 명시. 학생 서사로 새로운 유형을 만들지 않음."
+    },
+    {
+      "ordinal": 24,
+      "status": "PASS_AFTER_REVISION",
+      "note": "ac=4,bd=5의 표준 약수쌍 열거와 중복제거는 bucket3/B34가 적절. author가 4에서3으로 수정한 최종본 확인; 기존 source상은 인접경계 보존 가능."
+    }
+  ],
+  "additionalCheck": "q1–5,7,10의 제곱근 정의·성질/실수 분류·대소·근삿값 subUnit 정정은 actual source에 부합.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

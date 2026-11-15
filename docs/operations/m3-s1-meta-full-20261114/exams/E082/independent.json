@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E082",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E0C948452E80/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "000283c29eb1573af526fd32f14e1d37cbfc94b4",
+  "inputHashes": {
+    "reviewSha256": "6e2b8abe6343d41acfaf7ef71dee647dd73720c27d4beb61b8e5e2b2ca68b93d",
+    "fourSlotSha256": "e1a4f84949e5fedcfc6a7697f2c7feaa2dcf62cad8eca02e49eb734cedcb2fda"
+  },
+  "sampledOrdinals": [
+    17,
+    19,
+    21
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_8a0a349cfd88ec2f622ba120bf0f01b8f1d37d4c9e61c487f3afb1ddad524a4c",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제 표의 x²+ax 값에서 x=-1과3의 값3을 읽는 해확인 목표를 확인. 해설 공백이므로 method=[] 및 SOURCE_ONLY debt 보존이 정확하며 해설을 추정하여 채우지 않음. 부모맥락RPM030/122와 exact-leaf gap·난도2 후보 수용."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_ef8ccc4d406257f730536f056af13d6c1afc0a6f1d19f367b815bcb1151a0d4d",
+      "status": "PASS_WITH_DEBT",
+      "note": "√6·√7 근삿값과 두 수 사이 무리수5개 구성 요청을 직접 확인. 단순 비교보다 표현 선택이 필요한 난도3/B23 후보와 범위·개수 조건 수용. 해설공백 method SOURCE_ONLY debt 유지."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_609b1b8f71bf142132cdda4b034769d52202bc025811833492b915f7e9f65861",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제 원·반원 배치에서 색칠영역은 큰원의 아래반원과 왼쪽 위반원을 합하고 오른쪽 아래반원을 빼는 구조임을 확인. 인수분해는 요구된 최종 표현형이며 넓이 보조개념·난도3/B23 후보 수용. 그림을 읽었어도 source 해설공백의 method debt를 대신 해소하지 않음."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/A/assets/E082/21-content-1.png",
+      "sha256": "39a408dcf97b4424c5bbfcd0b659145cc9df98cdd5e528f99f6f1037ee6301db",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}

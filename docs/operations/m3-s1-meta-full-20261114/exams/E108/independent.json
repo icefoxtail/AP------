@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "independent-meta-sample-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
+  "examKey": "E108",
+  "author": "meta_c",
+  "reviewer": "meta_b",
+  "reviewerOwner": "GPT_ROOT_D03144C8CA75/B",
+  "reviewedAt": "2026-11-15",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "scope": "METADATA_ONLY_LOCAL_PREPARATION",
+  "sourceBlob": "80fa072576784bd00681e6c9f675e78784995a10",
+  "sourceSha256": "2eb34b0bde54bd112add86b260bf116ae29645901a7a2c4f0161daf3fdfb54b7",
+  "reviewPath": "/workspace/scratch/d03144c8ca75/workers/C/E108.review.json",
+  "reviewSha256": "9721e9d5b5801108c8e04892edd16a0537093c9cfba8450793c18b8284fedb46",
+  "fourSlotPath": "/workspace/scratch/d03144c8ca75/workers/C/E108.4slot.json",
+  "fourSlotSha256": "69f33caec3431a43e9684029271f8362a23b3b1ca549eeff515d9a0d6b4a7cbb",
+  "sampleOrdinals": [
+    11,
+    12,
+    17
+  ],
+  "samples": [
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_3438a52249efe0eb4b96f3c4a8ea5b137c2295a74bc49966c5293295dc4f5b8d",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt",
+        "actual image"
+      ],
+      "quotesVerified": 4,
+      "rationale": "실제 q11 PNG에서 y축과6 일부 아래 그래프가 완전히 잘려 꼭짓점과 x절편을 확인할 수 없음을 독립 확인. alt/기존해설의(0,6),(3,0)을 실제 그림 증거로 대체하지 않고 level/bucket UNKNOWN 및 의미판정HOLD를 유지한 결론 수용. goal을 실제 반환객체 함수식으로 특정한최종본 재조회. 수학품질PASS 또는 메타확정으로 처리하지 않는다.",
+      "sourceFingerprints": {
+        "QBODY": "6b3441803b8a31b836aced1580af6309639c12bc94ffc6c239404259b59e7914",
+        "QFULL": "b34b9b2c751cc8dba4e8f81e713d3ad6bd6a91ab1099937832eff6bed4ac839f"
+      },
+      "debtKindsPreserved": [
+        "ASSET_CRITICAL_CROP",
+        "SEMANTIC_CONCLUSION_HOLD"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_2a11255f6f89afa3c49000bf5a7a02333b58af6fa45c9aa12db593d2d8d359d5",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt",
+        "actual image"
+      ],
+      "quotesVerified": 11,
+      "rationale": "실제 q12 PNG는 아래 음의 포물선과C가 잘렸으나 두 함수·y축대칭·수직선·AB:AC·제1사분면 조건이 발문에 모두 존재함을 확인. 기존해설의2t 대(4/3)t² 비례식 및 양수해 선택 경로와 bucket3/B34 수용. 넓이·둘레에 한정된GRAPH_GEOMETRY PT후보를 철회하고 선분비subtype 제안만 유지한최종본 확인.",
+      "sourceFingerprints": {
+        "QBODY": "de3b1cfade09293d995b3616583e437323de7ede7394f88b2d9c68077db35274",
+        "QFULL": "9fd0d8ecbaece86e6989dfa3cbc0ab70412c54fcc34be2a80dd57adf3f2751ce"
+      },
+      "debtKindsPreserved": [
+        "RPM2022_LEAF_PROPOSAL",
+        "ASSET_PARTIAL_CROP_TEXT_SUFFICIENT",
+        "TAXONOMY_PROPOSAL"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_8da6656b4c381cabb1a91a68af67918976c3f9c49e9541be09ef3709fc6905f0",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt"
+      ],
+      "quotesVerified": 11,
+      "rationale": "평균1에서a+b=6, 최빈값2와 자연수a<b에서a=2,b=4를 확정한 뒤 편차제곱평균으로 분산을 구하는 기존해설을 확인. 조건부자료추론 leaf087, 조건자연수/변수부등식, 목표분산, bucket3 및2022대응부채가 실제 문항에 부합.",
+      "sourceFingerprints": {
+        "QBODY": "02887becb36b347a638d50c537b7dce3a5d8f8be5b5d80606b11f2adb88e129f",
+        "QFULL": "6e7a529180b7ac2aa115c85ea9368979cd316a8c58aeea7ba422129e1ae264f4"
+      },
+      "debtKindsPreserved": [
+        "RPM2022_LEAF_PROPOSAL"
+      ]
+    }
+  ],
+  "assetReadback": [
+    {
+      "ordinal": 11,
+      "path": "/workspace/scratch/d03144c8ca75/workers/C/E108-assets/q11.png",
+      "sha256": "e0deee3deb378ec68b6e26f481129129cf46dec56a2cd89ac59e71a3cdb34e11",
+      "gitBlob": "f3d4061d5b82f3dbddb86b6bb185888a387d2a3b",
+      "status": "VISUALLY_READ"
+    },
+    {
+      "ordinal": 12,
+      "path": "/workspace/scratch/d03144c8ca75/workers/C/E108-assets/q12.png",
+      "sha256": "a796fb663f7e3742317543668cc7796cbf0c3bafac5cf861ad40158ae314d400",
+      "gitBlob": "e442c0c4559b8ba930ff88b87cd2f6d038e7e22b",
+      "status": "VISUALLY_READ"
+    }
+  ],
+  "independentReviewerNotAuthor": true,
+  "contentQualityPass": false,
+  "remoteCompletionClaim": false,
+  "remaining": [
+    "root ownership handoff confirmation",
+    "root protected-field integration checks",
+    "remote checkpoint",
+    "Codex exact-leaf/projection and declared content debt processing"
+  ],
+  "heldSampleOrdinals": [
+    11
+  ],
+  "heldSampleConclusion": "HOLD_PRESERVED_NOT_PASS"
+}

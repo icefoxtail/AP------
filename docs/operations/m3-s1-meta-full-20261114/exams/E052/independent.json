@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E052",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-14",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "ad223c067d34c499f8f687521a90658fe40edeee",
+  "inputHashes": {
+    "reviewSha256": "a8f347c60c6c807d2cbb3ac1b1da68dc3094ff2342910291b3235e3151da97ed",
+    "fourSlotSha256": "e50a91b17a8bb600ddaab3e774edab9787a68baf8fa13e4fc46a2226955361b1"
+  },
+  "sampledOrdinals": [
+    1,
+    2,
+    16
+  ],
+  "additionalReviewedOrdinals": [
+    3,
+    7,
+    10,
+    13,
+    18,
+    22
+  ],
+  "basis": "WARN/IMPLIED 또는 난도 경계 우선 표본과 source 변경·불확실·예외의 실제 stem/choices/기존solution 및4칸을 직접 읽음. 아래 문항별 의미판정과 명시된 그림만 독립확인.",
+  "findings": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_e738642d479c460e8314008c9215f15fbe7d75bbd8da5a026c7680fb273547c8",
+      "status": "PASS",
+      "note": "등호없는식과전개후일차/삼차식을구별한복수정답2 판정.2 및포맷수용."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_fc415173c16b6f39b3b3c9f91aa8609d6ccf02466db963345d8a3e205f0c9c9c",
+      "status": "PASS",
+      "note": "제곱근법뒤2x−3의일차방정식을풀음.2/B12 하경계수용."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_b97895733e904f2c9a8d25698f09e9547fc3f4818eaea90838dd047fad97822b",
+      "status": "PASS",
+      "note": "전개·상쇄후이차함수정의판정.2/B12 수용."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_b459ac2ae2f1bb25899b09507ddcf7f3d4162df97c84a358df6d8146a01edbe0",
+      "status": "PASS",
+      "note": "정확히주어진−1/2를두식에독립대입.1/B12 수용."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_52fc16517cc3ffd719c72203cc95048179c19ff2fb0878b6ad67671b04a107b5",
+      "status": "PASS",
+      "note": "주어진교점(2,1)을두식에직접대입해m의공통값결정.상→중2/B23·CC일차함수·exactgap수용."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_2891a5e3e9b9ad09cd18b56b53a0879c43866c21f7d37b46e9e0648607a0112f",
+      "status": "PASS",
+      "note": "원점꼭짓점에서y=ax²로두고두번대입.2/B12 수용."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_bcc4c2ea9a28bb22717f2f471a4e8c9e773cdc01c903888548ce05bc6dc9ad42",
+      "status": "PASS",
+      "note": "원본정오각형의대각선교점F와변x 위치확인.등각으로DF=x,AF=BF=1−x를구성하고AA닮음대응선택필요.4 유지·독립보조3개타당."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_16ea9c8e10fdb2291140036822d81d9795b6aa438714f4baf8693048ce9e285e",
+      "status": "PASS",
+      "note": "원본BO가x축밑변, A제1사분면확인.주어진넓이에서높이8→8=2x²의양근선택정형2/B23수용."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_25968d1c4819d6a0b0514df6e39724ec719edc3d6bc70b21efec1833b1873bd3",
+      "status": "PASS",
+      "note": "문제에서꼭짓점과x절편을삼각형꼭짓점으로직접지정.표준형높이16·두근거리8의넓이공식2/B23 상→중수용."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E052/16-content-1.png",
+      "sha256": "4442439ccc79b87a516763fbaef17209e70dfae82d55576cd1867a7e3b52361b",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E052/18-content-1.png",
+      "sha256": "dc8295ba6260d26207ddfb2c5dabbf4eb64b8459ed34d4f5fcbdc56827a97c9d",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}

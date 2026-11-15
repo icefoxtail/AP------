@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E022",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-14",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "25062b13b272aaf4119307ad0d2f7696ee14a5da",
+  "inputHashes": {
+    "reviewSha256": "c0e8f471329a481456e2df783561bd12d2f4c01f841f2ebf082b3f7b7834be1b",
+    "fourSlotSha256": "0178621473c2c53a818e39eb330602f1691cae39630c4e729ef3ef595337595e"
+  },
+  "sampledOrdinals": [
+    3,
+    17,
+    20
+  ],
+  "additionalReviewedOrdinals": [
+    4,
+    5,
+    12,
+    19,
+    21,
+    24
+  ],
+  "basis": "WARN/난도변경 우선3표본, 관련 변경·예외6문항을 current source로 별도 추출하여 stem/choices/solution 실제 읽음. q12 원본PNG 확인.",
+  "findings": [
+    {
+      "ordinal": 3,
+      "status": "PASS",
+      "note": "중첩 제곱근과 원래 수를 구별하는 전처리 때문에 bucket2 수용. method 제곱근·제곱수와 goal 판정이 실제 풀이에 근거함."
+    },
+    {
+      "ordinal": 17,
+      "status": "PASS",
+      "note": "둘째 식을5xy로 묶은 뒤 이미 인수꼴인 첫 식과 공통인수를 대조. bucket2 및 exact 세부leaf gap 수용."
+    },
+    {
+      "ordinal": 20,
+      "status": "PASS",
+      "note": "인수형을 직접 전개하는 표준 검산. bucket2 및 여러 인수분해결과 판정의 exact leaf gap 타당."
+    },
+    {
+      "ordinal": 12,
+      "status": "PASS_AFTER_CORRECTION",
+      "note": "q12원본PNG의 세 정사각형 계단배치 확인. 넓이→변→계단 둘레를 재구성하므로 bucket3/B34. 저자 교정 후009/101은 단순계산 부모후보로만 표시, 정확한 연결도형둘레 gap 보존 확인."
+    },
+    {
+      "ordinal": 21,
+      "status": "PASS",
+      "note": "0.14 공통인수 추출 후 합차 인수분해. 소단원 다항식곱셈→인수분해 교정과 native026·bucket2 정확."
+    },
+    {
+      "ordinal": 4,
+      "status": "PASS",
+      "note": "실수와 수직선 대응·조밀성의 판단. 무리수판별 또는 대소leaf로 강제하지 않은 gap 처리 수용."
+    },
+    {
+      "ordinal": 5,
+      "status": "PASS",
+      "note": "1<√2<2에서 정수부분1과 소수부분√2−1을 구성. 4칸·bucket2·정수소수부분 exact leaf 제안 적합."
+    },
+    {
+      "ordinal": 24,
+      "status": "PASS",
+      "note": "공통인수의 영점을 대입해 두 일차방정식으로 계수 결정. 실제 기존해설의 인수-영점 연결을 명시하고 교육과정 내용검토는 별도 debt로 둔 점 수용."
+    },
+    {
+      "ordinal": 19,
+      "status": "PASS",
+      "note": "곱−72·합−1의 두 수로 항을 나눠 묶고 양·음 정수조건에 맞는 인수 순서를 선택한다. condition정수·양수·음수가 모두 실제 source에 존재. bucket3 타당."
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}

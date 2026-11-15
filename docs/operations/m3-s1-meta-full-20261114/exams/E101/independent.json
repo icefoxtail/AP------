@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E101",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "owner": "GPT_ROOT_E0C948452E80/C",
+  "at": "2026-11-15T06:14:15.675317+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/17_풍덕중_1학기_중간_중3_수학.js",
+  "sourceBlob": "0ba6e708e5999831eb3db86d16e135aac4c5eea6",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E101.review.json",
+      "sha256": "ea6b1cc3708283c61b07c2f448c754b60285cfe05879475ccec8eec35ad8e50d"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E101.4slot.json",
+      "sha256": "6ff6c56642b174ead0c0cb2d1329007e95f79060cba4d8d20042db7b38ba9c72"
+    },
+    "sourceInput": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E101.input.json",
+      "sha256": "3d63e26838f0cc303777e1f4a96b0a082ba5983553de71d12278155d3fb3fa33"
+    }
+  },
+  "sampledOrdinals": [
+    6,
+    12,
+    23
+  ],
+  "findings": [
+    {
+      "ordinal": 6,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 발문에 a,b의 유리수 또는 정수 범위가 없고 기존 해설은 동류근호의 정규형 계수를 비교한다. 정규형 계수 관례가 정본에서 확인되지 않은 상태에서 그 전제를 숨기지 않은 COEFFICIENT_DOMAIN_EVIDENCE_DEBT 및 UNKNOWN을 수용한다. 실제 제곱근·동류항·계수비교 해설 인용은 유효하다."
+    },
+    {
+      "ordinal": 12,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 해설은 3ab가 제곱수인 조건에서 가능한 곱과 주사위 순서쌍을 분류하여 36가지 중 해당 경우 비율로 바꾼다. 제곱근 정수조건을 기본 분류로 두고 CC_PROBABILITY_DEFINITION을 결합한 bucket3 및 조건 자연수, 목표 확률이 적절하다."
+    },
+    {
+      "ordinal": 23,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 그림은 넓이12,27,48의 밑변이 맞춰진 세 정사각형이다. 소문항(1)이 먼저 변 길이를 구하도록 안내하므로 구조 추론 부담이 낮아 bucket2/B23인 판단을 수용한다. 기존 풀이의 제곱근 변환과 외곽 둘레 합산이 해당 슬롯에 정확히 대응한다."
+    }
+  ],
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E101/23-question-1.png",
+      "sha256": "780b0427cefa307e7b102cb07e3421be561e33689f6f5e00356edb7c465d2212"
+    }
+  ],
+  "additionalContentObservations": [],
+  "scope": "METADATA_ONLY: sampled source stems, choices, existing solutions/actual blanks, author judgments and exact 4slot quotes directly compared. No full-exam rereview or mathematical PASS asserted. Source-only missing-method failures remain open.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

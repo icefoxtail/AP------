@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E076",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "4f9eae1cfe25aa48f6b4d9166182516384dc4b8a",
+  "inputHashes": {
+    "reviewSha256": "a2707f2ff59391e870f730f46bc6f58d878e8e1f801d8d89cb72d9cfe6c718e8",
+    "fourSlotSha256": "ed26a030700e6b07a3b7a23b2c85c5d30a531b1f33c39bb15825201198d3d99b"
+  },
+  "sampledOrdinals": [
+    7,
+    13,
+    18
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_55a895886ba08ae7d60552fc304d1df5dd372c6d9d78f8755e3aff88c948ddd8",
+      "status": "PASS",
+      "note": "실제 기존해설은 소수제거→계수1→완전제곱→제곱근으로 이어짐을 확인. 근의공식으로 바꾸지 않은RPM034와중2 수용."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_c34c9667c950a4d3a54f9eae6eec6b0b388979136cf38f65c8a2c64e580fb268",
+      "status": "PASS",
+      "note": "꼭짓점(-3,-4)과a>0을 이용해 양의x에서 함수부호를 판단하고 y절편≥0의 경계포함을 해석하는3 수용."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_231b62358932249839a162a9c7dc0d7343d51bef6986cd7d27de276baa690ef5",
+      "status": "PASS",
+      "note": "실물일차그래프 양의기울기·양의절편과 다섯개선지확인. a>0,b>0에서 축<0,y절편>0인⑤를 선택하는2. 보완된 ACTIVE CC_SLOPE_AND_INTERCEPT·SEQUENTIAL은 실제독립선행단계에 부합."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/A/assets/E076/18-question-1.png",
+      "sha256": "e0c4cbd2b0b257d663e38964799e1a4a76f51e254b7a45593d2609464a2116c4",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}

@@ -1,0 +1,1689 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1mid/21_매산중_1학기_중간_중3_기출.js",
+  "sourceGitBlobSha": "714f95ac1d5260c8b0243ee4be23706b8ababaa4",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "meta_c_resume_20261115",
+    "owner": "GPT_ROOT_E45FF6C78C51/C",
+    "assignmentId": "M3-S1-META-FULL",
+    "at": "2026-11-15T00:03:52.952Z"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_76b4f16b48ae8071d13ca18eb989c200bc5b6373d32af94a8f199ff7a37070b1",
+      "fingerprints": {
+        "QBODY": "3c25c384f9c95010a6cff8065df4fa9244e5584e3431317692a2428c05c51cd7",
+        "QFULL": "8a8e6df04a7a1c00426d64723c0cd99eab74a8b5fd34b271488cf419b50ad1b3"
+      },
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "$\\sqrt{5}$는 25의 제곱근이다.",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은? (4점)",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "① $\\sqrt5$를 제곱하면 $5$이므로 $25$의 제곱근이 아니다.\n② $\\sqrt9=3$이고, $3$의 제곱근은 $\\pm\\sqrt3$이다.\n③ $\\sqrt{(-7)^2}=7$이고, $7$의 음의 제곱근은 $-\\sqrt7$이다.\n④ $(-2)^2=4$의 제곱근은 $\\pm2$이다.\n⑤ $0$의 제곱근은 $0$ 하나뿐이다.\n따라서 옳은 것은 ③이다.",
+            "termId": 22,
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근의 제곱과 주제곱근의 제곱근을 구별하고 0의 한 근을 확인한다."
+          },
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "① $\\sqrt5$를 제곱하면 $5$이므로 $25$의 제곱근이 아니다.\n② $\\sqrt9=3$이고, $3$의 제곱근은 $\\pm\\sqrt3$이다.\n③ $\\sqrt{(-7)^2}=7$이고, $7$의 음의 제곱근은 $-\\sqrt7$이다.\n④ $(-2)^2=4$의 제곱근은 $\\pm2$이다.\n⑤ $0$의 제곱근은 $0$ 하나뿐이다.\n따라서 옳은 것은 ③이다.",
+            "termId": 369,
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근의 제곱과 주제곱근의 제곱근을 구별하고 0의 한 근을 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근의 제곱과 주제곱근의 제곱근을 구별하고 0의 한 근을 확인한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_752a9d92a1d69315f6a842dd9f668ee61fe0e0fe8ad6d97942503450fd5f4822",
+      "fingerprints": {
+        "QBODY": "6fb933ce5ef9f3e0620103ee78a7e2f3b66fd8c2f75f608a95f59c3161b0950f",
+        "QFULL": "651700f95492f48f36d77f1934145e757e1476bdba6524eaad1b31316b13cfcd"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "$\\sqrt{3^2}=3$",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳지 않은 것은? (3점)",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "각 보기를 계산한다.\n① $\\sqrt{3^2}=3$\n② $-\\sqrt{5^2}=-5$\n③ $\\sqrt{(-6)^2}=|-6|=6$이므로 $-6$이 아니다.\n④ $-\\sqrt{48}=-4\\sqrt3$\n⑤ $\\sqrt{50}=5\\sqrt2$\n따라서 옳지 않은 것은 ③이다.",
+            "termId": 24,
+            "evidenceType": "IMPLIED",
+            "justification": "√((-6)²)=6을 확인하고 나머지 근호의 제곱인수를 밖으로 꺼낸다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "각 보기를 계산한다.\n① $\\sqrt{3^2}=3$\n② $-\\sqrt{5^2}=-5$\n③ $\\sqrt{(-6)^2}=|-6|=6$이므로 $-6$이 아니다.\n④ $-\\sqrt{48}=-4\\sqrt3$\n⑤ $\\sqrt{50}=5\\sqrt2$\n따라서 옳지 않은 것은 ③이다.",
+            "termId": 22,
+            "evidenceType": "IMPLIED",
+            "justification": "√((-6)²)=6을 확인하고 나머지 근호의 제곱인수를 밖으로 꺼낸다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "√((-6)²)=6을 확인하고 나머지 근호의 제곱인수를 밖으로 꺼낸다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_2e6545dfef048e540a09a49f866a452ee33b944f09e751082a0fc6a6e9ba26db",
+      "fingerprints": {
+        "QBODY": "02a1760ae7c464f1a9849aa7bbed3d4019deae85c4bda6b167e5f1d8d36dc532",
+        "QFULL": "2e8205b5590d15b019c2b5ef937193080b9747198d5eb208c7415fcd3a2ec380"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "choices",
+            "quote": "2.111222",
+            "termId": 5
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 무리수인 것은? (4점)",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "무리수",
+            "src": "solution",
+            "quote": "① $2.111222$는 유한소수이므로 유리수이다.\n② $-\\sqrt{49}=-7$, ④ $\\sqrt{25}-9=5-9=-4$는 정수이다.\n⑤ $0.2\\dot{9}=0.3$이므로 유리수이다.\n③ $\\sqrt{\\frac{1}{1000}}$에서 $1000$은 완전제곱수가 아니므로 무리수이다.\n따라서 정답은 ③이다.",
+            "termId": 4,
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱수 근호·유한소수·순환소수와 1/1000의 비제곱근호를 구별한다."
+          },
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "① $2.111222$는 유한소수이므로 유리수이다.\n② $-\\sqrt{49}=-7$, ④ $\\sqrt{25}-9=5-9=-4$는 정수이다.\n⑤ $0.2\\dot{9}=0.3$이므로 유리수이다.\n③ $\\sqrt{\\frac{1}{1000}}$에서 $1000$은 완전제곱수가 아니므로 무리수이다.\n따라서 정답은 ③이다.",
+            "termId": 700,
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱수 근호·유한소수·순환소수와 1/1000의 비제곱근호를 구별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "완전제곱수 근호·유한소수·순환소수와 1/1000의 비제곱근호를 구별한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_b1b850978904410a4ee3ca7b693db8f5694de31ed8f3a508b9f2a6dd8f48c9ed",
+      "fingerprints": {
+        "QBODY": "6e774e82f320f1396d43e9d31e07ebf1795f637a5fb688e8da3eb66a8fa9b7ef",
+        "QFULL": "1f302a3b403e835c905f5995630d8d91a32e01bf1d5c119d07453148609dc91a"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근표",
+            "src": "stem",
+            "quote": "다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)",
+            "termId": 561
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근표",
+            "src": "solution",
+            "quote": "표에서 $a = 2.105$, $b = 4.31$ 확인. $2105 - 431 = 1674$.",
+            "termId": 561,
+            "evidenceType": "IMPLIED",
+            "justification": "a=2.105와 b=4.31을 행·열에서 읽어 요구식에 대입한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "표에서 $a = 2.105$, $b = 4.31$ 확인. $2105 - 431 = 1674$.",
+            "termId": 53,
+            "evidenceType": "IMPLIED",
+            "justification": "a=2.105와 b=4.31을 행·열에서 읽어 요구식에 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "a=2.105와 b=4.31을 행·열에서 읽어 요구식에 대입한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_a68a4bdad92c0fd807955951ba104ab6550045656ebeff7152613a313568cbe1",
+      "fingerprints": {
+        "QBODY": "fb9732d39970a5ca170ae4d94c6bb680ac03bc7289dae8c9117a403d3743d910",
+        "QFULL": "9463c7116a3fba65d1986e4cba06ca3ef754af9ba94dd99528f8c5b815f8c4f4"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "$\\sqrt{2}-3<\\sqrt{3}-3$",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음에서 두 수의 대소 관계가 옳지 않은 것은? (4점)",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "각 대소 관계를 확인한다.\n① $\\sqrt2<\\sqrt3$이므로 참이다.\n② $\\sqrt{10}>3$이므로 $\\sqrt{10}-2>1$이다.\n③ $12<13$이므로 $\\sqrt{12}+1<\\sqrt{13}+1$이다.\n④ $\\sqrt{(-4)^2}=4$이고 $6-\\sqrt2>4$이므로 거짓이다.\n⑤ $\\sqrt{15}<4$이므로 $\\sqrt{15}-\\sqrt{10}<4-\\sqrt{10}$이다.\n따라서 옳지 않은 것은 ④이다.",
+            "termId": 28,
+            "evidenceType": "IMPLIED",
+            "justification": "양수의 제곱비교로 근호 크기를 정한 뒤 뺄셈의 부호를 확인한다."
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "각 대소 관계를 확인한다.\n① $\\sqrt2<\\sqrt3$이므로 참이다.\n② $\\sqrt{10}>3$이므로 $\\sqrt{10}-2>1$이다.\n③ $12<13$이므로 $\\sqrt{12}+1<\\sqrt{13}+1$이다.\n④ $\\sqrt{(-4)^2}=4$이고 $6-\\sqrt2>4$이므로 거짓이다.\n⑤ $\\sqrt{15}<4$이므로 $\\sqrt{15}-\\sqrt{10}<4-\\sqrt{10}$이다.\n따라서 옳지 않은 것은 ④이다.",
+            "termId": 20,
+            "evidenceType": "IMPLIED",
+            "justification": "양수의 제곱비교로 근호 크기를 정한 뒤 뺄셈의 부호를 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "양수의 제곱비교로 근호 크기를 정한 뒤 뺄셈의 부호를 확인한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_6f0f2d8d7e83b44305410b4df2df191043461a3cc50b1905da2fe95f7f32ef84",
+      "fingerprints": {
+        "QBODY": "aee6982abfe94f0748dabffa8060137a27c4d1315ae1e540af71d223ccdd5843",
+        "QFULL": "3ee9d328dc413c63458ab666f87a81369be99340b5def28155a0d648e94d075e"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "다음 중 두 수 $\\sqrt{5}$와 $\\sqrt{24}$ 사이에 있는 수가 아닌 것은? (4점)",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 두 수 $\\sqrt{5}$와 $\\sqrt{24}$ 사이에 있는 수가 아닌 것은? (4점)",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "$\\sqrt5\\approx2.24$, $\\sqrt{24}\\approx4.90$이므로 두 수 사이의 값인지 확인한다.\n$3,\\sqrt{18},\\sqrt{10},\\sqrt{15}$는 모두 $\\sqrt5$보다 크고 $\\sqrt{24}$보다 작다.\n하지만 $\\sqrt{25}=5>\\sqrt{24}$이다.\n따라서 두 수 사이에 있지 않은 것은 ④이다.",
+            "termId": 28,
+            "evidenceType": "IMPLIED",
+            "justification": "3을 √9로 보고 각 피제곱수의 5와24 사이 여부를 비교한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "$\\sqrt5\\approx2.24$, $\\sqrt{24}\\approx4.90$이므로 두 수 사이의 값인지 확인한다.\n$3,\\sqrt{18},\\sqrt{10},\\sqrt{15}$는 모두 $\\sqrt5$보다 크고 $\\sqrt{24}$보다 작다.\n하지만 $\\sqrt{25}=5>\\sqrt{24}$이다.\n따라서 두 수 사이에 있지 않은 것은 ④이다.",
+            "termId": 22,
+            "evidenceType": "IMPLIED",
+            "justification": "3을 √9로 보고 각 피제곱수의 5와24 사이 여부를 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "다음 중 두 수 $\\sqrt{5}$와 $\\sqrt{24}$ 사이에 있는 수가 아닌 것은? (4점)",
+            "termId": 296
+          }
+        ]
+      },
+      "reasons": {
+        "method": "3을 √9로 보고 각 피제곱수의 5와24 사이 여부를 비교한다.",
+        "condition": "원문의 명시 조건이 값의 선택·범위 또는 대상 결정에 기여한다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_61fb9f5db35d4b67310bf96f943dcae30db29f44a79ef23ca2644e956edcb085",
+      "fingerprints": {
+        "QBODY": "eb57ee0c1deda1475b328b0ddf661bcd988cb1b0b769fd3e1944d7ad5b7310fa",
+        "QFULL": "a34c40baed34c7cb5e0d0c0e133d4bd92673789b53f27483ed4e91991e1e64c2"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{\\frac{320}{x}}$가 자연수가 되도록 하는 가장 작은 자연수 $x$의 값은? (4점)",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$\\sqrt{\\frac{320}{x}}$가 자연수가 되도록 하는 가장 작은 자연수 $x$의 값은? (4점)",
+            "termId": 308
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$\\sqrt{\\frac{320}{x}}$가 자연수가 되도록 하는 가장 작은 자연수 $x$의 값은? (4점)",
+            "termId": 128
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$\\sqrt{\\dfrac{320}{x}}$가 자연수이려면 $\\dfrac{320}{x}$가 완전제곱수여야 한다.\n$320=2^6\\times5$이므로 가장 작은 $x$는 홀수 지수인 $5$를 없애는 $x=5$이다.\n이때 $\\dfrac{320}{5}=64$이고 $\\sqrt{64}=8$이다.\n따라서 정답은 ①이다.",
+            "termId": 14,
+            "evidenceType": "IMPLIED",
+            "justification": "320=2⁶×5에서 몫이 제곱수가 되도록 홀수 지수의5를 제거한다."
+          },
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "$\\sqrt{\\dfrac{320}{x}}$가 자연수이려면 $\\dfrac{320}{x}$가 완전제곱수여야 한다.\n$320=2^6\\times5$이므로 가장 작은 $x$는 홀수 지수인 $5$를 없애는 $x=5$이다.\n이때 $\\dfrac{320}{5}=64$이고 $\\sqrt{64}=8$이다.\n따라서 정답은 ①이다.",
+            "termId": 700,
+            "evidenceType": "IMPLIED",
+            "justification": "320=2⁶×5에서 몫이 제곱수가 되도록 홀수 지수의5를 제거한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$\\sqrt{\\frac{320}{x}}$가 자연수가 되도록 하는 가장 작은 자연수 $x$의 값은? (4점)",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "320=2⁶×5에서 몫이 제곱수가 되도록 홀수 지수의5를 제거한다.",
+        "condition": "원문의 명시 조건이 값의 선택·범위 또는 대상 결정에 기여한다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_d23eb34a3bb45aa965e13d0b1ccf950dac74565ec8112ddc26d4c29c3358c108",
+      "fingerprints": {
+        "QBODY": "f66de942efda637cadcc94461e12cad28c5ff53dc21752a900de8d9faa7bd8eb",
+        "QFULL": "0fff87233ba9bd7bab181bddd21f39b2c4bba577e7d80560965757feb4bde401"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\frac{4}{\\sqrt{2}}-(\\sqrt{5}-2\\sqrt{2}) \\div \\frac{1}{\\sqrt{10}}$을 계산하면? (4점)",
+            "termId": 22
+          },
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "$\\frac{4}{\\sqrt{2}}-(\\sqrt{5}-2\\sqrt{2}) \\div \\frac{1}{\\sqrt{10}}$을 계산하면? (4점)",
+            "termId": 651
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\frac{4}{\\sqrt{2}}-(\\sqrt{5}-2\\sqrt{2}) \\div \\frac{1}{\\sqrt{10}}$을 계산하면? (4점)",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "$\\dfrac4{\\sqrt2}=2\\sqrt2$이고,\n$(\\sqrt5-2\\sqrt2)\\div\\dfrac1{\\sqrt{10}}\n=(\\sqrt5-2\\sqrt2)\\sqrt{10}\n=5\\sqrt2-4\\sqrt5$이다.\n따라서\n$2\\sqrt2-(5\\sqrt2-4\\sqrt5)\n=-3\\sqrt2+4\\sqrt5$이다.\n따라서 정답은 ⑤이다.",
+            "termId": 57,
+            "evidenceType": "IMPLIED",
+            "justification": "분모 유리화와 역수곱을 수행한 뒤 √2와√5의 동류근호를 모은다."
+          },
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "$\\dfrac4{\\sqrt2}=2\\sqrt2$이고,\n$(\\sqrt5-2\\sqrt2)\\div\\dfrac1{\\sqrt{10}}\n=(\\sqrt5-2\\sqrt2)\\sqrt{10}\n=5\\sqrt2-4\\sqrt5$이다.\n따라서\n$2\\sqrt2-(5\\sqrt2-4\\sqrt5)\n=-3\\sqrt2+4\\sqrt5$이다.\n따라서 정답은 ⑤이다.",
+            "termId": 454,
+            "evidenceType": "IMPLIED",
+            "justification": "분모 유리화와 역수곱을 수행한 뒤 √2와√5의 동류근호를 모은다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "$\\dfrac4{\\sqrt2}=2\\sqrt2$이고,\n$(\\sqrt5-2\\sqrt2)\\div\\dfrac1{\\sqrt{10}}\n=(\\sqrt5-2\\sqrt2)\\sqrt{10}\n=5\\sqrt2-4\\sqrt5$이다.\n따라서\n$2\\sqrt2-(5\\sqrt2-4\\sqrt5)\n=-3\\sqrt2+4\\sqrt5$이다.\n따라서 정답은 ⑤이다.",
+            "termId": 698,
+            "evidenceType": "IMPLIED",
+            "justification": "분모 유리화와 역수곱을 수행한 뒤 √2와√5의 동류근호를 모은다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "분모 유리화와 역수곱을 수행한 뒤 √2와√5의 동류근호를 모은다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_9734dc7225dc278a08788d4b84aeafd4ed175578973005e558a51ecdf9ad2e4f",
+      "fingerprints": {
+        "QBODY": "5f63852566edd633e7c313de832ef64581bbcedb4a2c95126820fabc80a0b12e",
+        "QFULL": "2bad1d7034e5c7e687449de38f735f6488a22383aa4fba69164a0805c556be13"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$가 있다. $\\overline{AC}=\\overline{AQ}, \\overline{BD}=\\overline{BP}$일 때, 다음 중 옳지 않은 것은? (5점)",
+            "termId": 166
+          },
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$가 있다. $\\overline{AC}=\\overline{AQ}, \\overline{BD}=\\overline{BP}$일 때, 다음 중 옳지 않은 것은? (5점)",
+            "termId": 295
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$가 있다. $\\overline{AC}=\\overline{AQ}, \\overline{BD}=\\overline{BP}$일 때, 다음 중 옳지 않은 것은? (5점)",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "A(1), B(2) 확인. $P = B-\\sqrt{2} = 2-\\sqrt{2}, Q = A+\\sqrt{2} = 1+\\sqrt{2}$이므로 1번이 옳지 않음.",
+            "termId": 195,
+            "evidenceType": "IMPLIED",
+            "justification": "대각선√2를 B에서 왼쪽,A에서 오른쪽으로 옮겨 P,Q 좌표와 거리를 판정한다."
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "A(1), B(2) 확인. $P = B-\\sqrt{2} = 2-\\sqrt{2}, Q = A+\\sqrt{2} = 1+\\sqrt{2}$이므로 1번이 옳지 않음.",
+            "termId": 148,
+            "evidenceType": "IMPLIED",
+            "justification": "대각선√2를 B에서 왼쪽,A에서 오른쪽으로 옮겨 P,Q 좌표와 거리를 판정한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "A(1), B(2) 확인. $P = B-\\sqrt{2} = 2-\\sqrt{2}, Q = A+\\sqrt{2} = 1+\\sqrt{2}$이므로 1번이 옳지 않음.",
+            "termId": 288,
+            "evidenceType": "IMPLIED",
+            "justification": "대각선√2를 B에서 왼쪽,A에서 오른쪽으로 옮겨 P,Q 좌표와 거리를 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "수직선 위에 한 변의 길이가 1인 정사각형 $ABCD$가 있다. $\\overline{AC}=\\overline{AQ}, \\overline{BD}=\\overline{BP}$일 때, 다음 중 옳지 않은 것은? (5점)",
+            "termId": 346
+          }
+        ]
+      },
+      "reasons": {
+        "method": "대각선√2를 B에서 왼쪽,A에서 오른쪽으로 옮겨 P,Q 좌표와 거리를 판정한다.",
+        "condition": "원문의 명시 조건이 값의 선택·범위 또는 대상 결정에 기여한다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_01554030e8774f47b6aa70f5ca53a8e5cf2ec4ebc80cd82d7fe69d8a7caa4521",
+      "fingerprints": {
+        "QBODY": "054912365287fba46f22c2ef268813c2d8aafd30de7f842e9689e4a32a0c6f6d",
+        "QFULL": "6cebf8d6988bdbe44d212aadfcb231219476b2e1cc3ec0c53220abb3d55174ac"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{(2-\\sqrt{5})^2} + \\sqrt{(3-\\sqrt{5})^2}$을 간단히 하면? (5점)",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\sqrt{(2-\\sqrt{5})^2} + \\sqrt{(3-\\sqrt{5})^2}$을 간단히 하면? (5점)",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$\\sqrt{A^2}=|A|$를 이용한다.\n$\\sqrt5>2$이므로 $|2-\\sqrt5|=\\sqrt5-2$이고,\n$3>\\sqrt5$이므로 $|3-\\sqrt5|=3-\\sqrt5$이다.\n따라서\n$(\\sqrt5-2)+(3-\\sqrt5)=1$이다.\n정답은 ①이다.",
+            "termId": 24,
+            "evidenceType": "IMPLIED",
+            "justification": "2<√5<3에서 두 괄호의 서로 다른 부호를 정해 절댓값을 푼다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "$\\sqrt{A^2}=|A|$를 이용한다.\n$\\sqrt5>2$이므로 $|2-\\sqrt5|=\\sqrt5-2$이고,\n$3>\\sqrt5$이므로 $|3-\\sqrt5|=3-\\sqrt5$이다.\n따라서\n$(\\sqrt5-2)+(3-\\sqrt5)=1$이다.\n정답은 ①이다.",
+            "termId": 28,
+            "evidenceType": "IMPLIED",
+            "justification": "2<√5<3에서 두 괄호의 서로 다른 부호를 정해 절댓값을 푼다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "$\\sqrt{A^2}=|A|$를 이용한다.\n$\\sqrt5>2$이므로 $|2-\\sqrt5|=\\sqrt5-2$이고,\n$3>\\sqrt5$이므로 $|3-\\sqrt5|=3-\\sqrt5$이다.\n따라서\n$(\\sqrt5-2)+(3-\\sqrt5)=1$이다.\n정답은 ①이다.",
+            "termId": 698,
+            "evidenceType": "IMPLIED",
+            "justification": "2<√5<3에서 두 괄호의 서로 다른 부호를 정해 절댓값을 푼다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "2<√5<3에서 두 괄호의 서로 다른 부호를 정해 절댓값을 푼다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_d4877f79d60f92b4660a0d34ed6351683ae7073f8f833b934d2692fc48f02b93",
+      "fingerprints": {
+        "QBODY": "89ba0643ffcbe81fd19b6489958b2b994b2a7546429c13cf2a2f5f9f07d937b7",
+        "QFULL": "27fd9e25b7c46958c05227abda17c5b8e69a44b80ca9186cba5d3532b0569e68"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(a-2b)(3a+2 b)$를 전개하면? (3점)",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(a-2b)(3a+2 b)$를 전개하면? (3점)",
+            "termId": 35
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "전개하면\n$(a-2b)(3a+2b)=3a^2+2ab-6ab-4b^2$\n$=3a^2-4ab-4b^2$이다.\n따라서 정답은 ④이다.",
+            "termId": 454,
+            "evidenceType": "IMPLIED",
+            "justification": "네 항의 곱을 분배하고 ab의 동류항을 합친다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "전개하면\n$(a-2b)(3a+2b)=3a^2+2ab-6ab-4b^2$\n$=3a^2-4ab-4b^2$이다.\n따라서 정답은 ④이다.",
+            "termId": 698,
+            "evidenceType": "IMPLIED",
+            "justification": "네 항의 곱을 분배하고 ab의 동류항을 합친다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "네 항의 곱을 분배하고 ab의 동류항을 합친다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_4d9d00984f706569324ace9f8e15a4844d14804031f1fabd247f63187fb8cbd3",
+      "fingerprints": {
+        "QBODY": "f8b716679c0610cc29eac2a003ac92532f4fd47db76d6a5189a49dd94a498cec",
+        "QFULL": "6e83286f7cfe2986483dcd8e60dc36d02e6044a9e072b55ceb22cf051556feae"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "$(-5+b)^2 = b^2-10b+25$",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음에서 옳지 않은 것은? (4점)",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "각 식을 확인한다.\n① $(-5+b)^2=b^2-10b+25$\n② $(3x-4y)^2=9x^2-24xy+16y^2$\n③ $(2x-y)(-2x+y)=-(2x-y)^2=-4x^2+4xy-y^2$\n④ $(a+2b)(a-5b)=a^2-3ab-10b^2$\n⑤ $(2y+5)(3y-3)=6y^2+9y-15$\n따라서 옳지 않은 것은 ③이다.",
+            "termId": 40,
+            "evidenceType": "IMPLIED",
+            "justification": "제곱공식과 두 일차식 곱의 중간항·부호를 각각 대조한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "각 식을 확인한다.\n① $(-5+b)^2=b^2-10b+25$\n② $(3x-4y)^2=9x^2-24xy+16y^2$\n③ $(2x-y)(-2x+y)=-(2x-y)^2=-4x^2+4xy-y^2$\n④ $(a+2b)(a-5b)=a^2-3ab-10b^2$\n⑤ $(2y+5)(3y-3)=6y^2+9y-15$\n따라서 옳지 않은 것은 ③이다.",
+            "termId": 41,
+            "evidenceType": "IMPLIED",
+            "justification": "제곱공식과 두 일차식 곱의 중간항·부호를 각각 대조한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱공식과 두 일차식 곱의 중간항·부호를 각각 대조한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_c9cfb0d38f78e38e48e7f3aa65b4c79ff6d2d6173c7e3ae61954453ef65aa3ac",
+      "fingerprints": {
+        "QBODY": "b144433944ac2b42bf9ad99e75e4b3a90553ec65a22eb62ce7c3cd20d5cc67e4",
+        "QFULL": "61ea1e2ab3d87b570ef139255c7cfa3e06e80a297bedcb15eed9f6a475eb22cd"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(x+a)(x-b)=x^{2}+x-2$일 때, $a-b+ab$의 값은? (단, $a, b$는 상수) (4점)",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$(x+a)(x-b)=x^{2}+x-2$일 때, $a-b+ab$의 값은? (단, $a, b$는 상수) (4점)",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "좌변을 전개하면\n$(x+a)(x-b)=x^2+(a-b)x-ab$이다.\n$x^2+x-2$와 계수를 비교하면\n$a-b=1$, $-ab=-2$이므로 $ab=2$이다.\n따라서\n$a-b+ab=1+2=3$이다.\n정답은 ②이다.",
+            "termId": 41,
+            "evidenceType": "IMPLIED",
+            "justification": "x의 계수와 상수항에서 a-b=1,ab=2를 바로 얻어 합한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "좌변을 전개하면\n$(x+a)(x-b)=x^2+(a-b)x-ab$이다.\n$x^2+x-2$와 계수를 비교하면\n$a-b=1$, $-ab=-2$이므로 $ab=2$이다.\n따라서\n$a-b+ab=1+2=3$이다.\n정답은 ②이다.",
+            "termId": 696,
+            "evidenceType": "IMPLIED",
+            "justification": "x의 계수와 상수항에서 a-b=1,ab=2를 바로 얻어 합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "x의 계수와 상수항에서 a-b=1,ab=2를 바로 얻어 합한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_105d0cf205807eb32d1e1ef7c2c531ac09cbcc03e7b19d780fc9256ebb560f9f",
+      "fingerprints": {
+        "QBODY": "b11fc086ddbe2e82005d36643079794f36d928bce2d189fbb6ac2a2b564515e2",
+        "QFULL": "693ddc50eb4f04d774a5b936b14efb732b8195e2d4722570b6e789c4bb310bd5"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(2x-3y)(-3x+7y)+(-2x+3y)^{2}$ 전개한 식에서 $xy$의 계수를 구하면? (4점)",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$(2x-3y)(-3x+7y)+(-2x+3y)^{2}$ 전개한 식에서 $xy$의 계수를 구하면? (4점)",
+            "termId": 50
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "첫째 식에서 $xy$항만 계산하면\n$(2x)(7y)+(-3y)(-3x)=14xy+9xy=23xy$이다.\n둘째 식 $(-2x+3y)^2$의 $xy$항은 $-12xy$이다.\n따라서 전체 식에서 $xy$의 계수는\n$23-12=11$이다.\n정답은 ⑤이다.",
+            "termId": 454,
+            "evidenceType": "IMPLIED",
+            "justification": "첫 곱의 xy계수23과 제곱의 xy계수-12를 더한다."
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "첫째 식에서 $xy$항만 계산하면\n$(2x)(7y)+(-3y)(-3x)=14xy+9xy=23xy$이다.\n둘째 식 $(-2x+3y)^2$의 $xy$항은 $-12xy$이다.\n따라서 전체 식에서 $xy$의 계수는\n$23-12=11$이다.\n정답은 ⑤이다.",
+            "termId": 40,
+            "evidenceType": "IMPLIED",
+            "justification": "첫 곱의 xy계수23과 제곱의 xy계수-12를 더한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "첫째 식에서 $xy$항만 계산하면\n$(2x)(7y)+(-3y)(-3x)=14xy+9xy=23xy$이다.\n둘째 식 $(-2x+3y)^2$의 $xy$항은 $-12xy$이다.\n따라서 전체 식에서 $xy$의 계수는\n$23-12=11$이다.\n정답은 ⑤이다.",
+            "termId": 698,
+            "evidenceType": "IMPLIED",
+            "justification": "첫 곱의 xy계수23과 제곱의 xy계수-12를 더한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "첫 곱의 xy계수23과 제곱의 xy계수-12를 더한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a2e21ec9ceefd2f6835f2523af6df96995efb0599205f902c56ca1ced8e2b213",
+      "fingerprints": {
+        "QBODY": "bc769a6763ff2b9b2da8c7ff6fb2cd1cdbb6bb86625122c778593e3683af7ab0",
+        "QFULL": "e8f67c8ebd8fe970a779b96ab16aa5cc148a5dbef047853b2e5ed048709af4f3"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "인수분해 공식을 이용하여 $\\frac{1001\\times 1002-1002}{1001^{2}-1}$를 계산하면? (4점)",
+            "termId": 651
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "인수분해 공식을 이용하여 $\\frac{1001\\times 1002-1002}{1001^{2}-1}$를 계산하면? (4점)",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "분자를 묶으면\n$1001\\times1002-1002=1002(1001-1)$이다.\n분모는\n$1001^2-1=(1001-1)(1001+1)=(1001-1)1002$이다.\n따라서 약분하면 값은 $1$이다.\n정답은 ①이다.",
+            "termId": 695,
+            "evidenceType": "IMPLIED",
+            "justification": "분자1002(1001-1)과 분모(1001-1)(1001+1)의 같은 인수를 약분한다."
+          },
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "분자를 묶으면\n$1001\\times1002-1002=1002(1001-1)$이다.\n분모는\n$1001^2-1=(1001-1)(1001+1)=(1001-1)1002$이다.\n따라서 약분하면 값은 $1$이다.\n정답은 ①이다.",
+            "termId": 694,
+            "evidenceType": "IMPLIED",
+            "justification": "분자1002(1001-1)과 분모(1001-1)(1001+1)의 같은 인수를 약분한다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "분자를 묶으면\n$1001\\times1002-1002=1002(1001-1)$이다.\n분모는\n$1001^2-1=(1001-1)(1001+1)=(1001-1)1002$이다.\n따라서 약분하면 값은 $1$이다.\n정답은 ①이다.",
+            "termId": 58,
+            "evidenceType": "IMPLIED",
+            "justification": "분자1002(1001-1)과 분모(1001-1)(1001+1)의 같은 인수를 약분한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "분자1002(1001-1)과 분모(1001-1)(1001+1)의 같은 인수를 약분한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_f1dfa1580a2f69c51e597b0bd9bb2fb40e0b7cc2c3825ef9d248d81b9bd722da",
+      "fingerprints": {
+        "QBODY": "98c814d79e9cd2c1ef91300b87fb10a201984909ae299eec1a690f115a33dbca",
+        "QFULL": "96842fe072b52bb0b959ca76438f55e7da713cbf6cf7cc0faeca5caced7c3ca2"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "이차식 $6x^{2}-13x-5$를 인수분해 하였을 때, 인수를 고르면? (4점)",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수",
+            "src": "stem",
+            "quote": "이차식 $6x^{2}-13x-5$를 인수분해 하였을 때, 인수를 고르면? (4점)",
+            "termId": 43
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$6x^2-13x-5$에서 곱이 $-30$, 합이 $-13$인 두 수는 $-15,2$이다.\n따라서\n$6x^2-13x-5\n=6x^2-15x+2x-5\n=3x(2x-5)+(2x-5)\n=(3x+1)(2x-5)$이다.\n보기 중 인수는 $3x+1$이므로 정답은 ⑤이다.",
+            "termId": 42,
+            "evidenceType": "IMPLIED",
+            "justification": "곱-30,합-13인 -15와2로 중간항을 나눠 (3x+1)(2x-5)로 묶는다."
+          },
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "$6x^2-13x-5$에서 곱이 $-30$, 합이 $-13$인 두 수는 $-15,2$이다.\n따라서\n$6x^2-13x-5\n=6x^2-15x+2x-5\n=3x(2x-5)+(2x-5)\n=(3x+1)(2x-5)$이다.\n보기 중 인수는 $3x+1$이므로 정답은 ⑤이다.",
+            "termId": 695,
+            "evidenceType": "IMPLIED",
+            "justification": "곱-30,합-13인 -15와2로 중간항을 나눠 (3x+1)(2x-5)로 묶는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "곱-30,합-13인 -15와2로 중간항을 나눠 (3x+1)(2x-5)로 묶는다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_bf020ae4b16ef205a8f265f7a08819484ce05818807ef896ee1a1f78b52fcaad",
+      "fingerprints": {
+        "QBODY": "656088b1efab2d75b2d2a1ad4f2d489a17b8457deadda5f4d938790c9a05a867",
+        "QFULL": "74a11eae2efec36c2559da35b683e215b17f7e80ca103a9b3f888c25ce189985"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "$x^{2}-4xy+4y^{2}=(x-2y)^{2}$",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 인수분해 한 것이 옳지 않은 것은? (4점)",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "① $(x-2y)^2=x^2-4xy+4y^2$\n② $(x-\\frac13)^2=x^2-\\frac23x+\\frac19$\n③ $(5x+3y)(5x-3y)=25x^2-9y^2$\n④ $(x+1)(x-4)=x^2-3x-4$\n⑤ $(2x+1)(x-3)=2x^2-5x-3$으로 $2x^2+5x-3$과 다르다.\n따라서 옳지 않은 것은 ⑤이다.",
+            "termId": 41,
+            "evidenceType": "IMPLIED",
+            "justification": "각 곱을 전개하여 원래 이차식의 부호와 계수를 비교한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "① $(x-2y)^2=x^2-4xy+4y^2$\n② $(x-\\frac13)^2=x^2-\\frac23x+\\frac19$\n③ $(5x+3y)(5x-3y)=25x^2-9y^2$\n④ $(x+1)(x-4)=x^2-3x-4$\n⑤ $(2x+1)(x-3)=2x^2-5x-3$으로 $2x^2+5x-3$과 다르다.\n따라서 옳지 않은 것은 ⑤이다.",
+            "termId": 696,
+            "evidenceType": "IMPLIED",
+            "justification": "각 곱을 전개하여 원래 이차식의 부호와 계수를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 곱을 전개하여 원래 이차식의 부호와 계수를 비교한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_260d4102cbe8d3dafef208bbf3566e9c67423893e21356f898be882bbcb919e4",
+      "fingerprints": {
+        "QBODY": "654346a3ba36fc6824c5a32a30b5b1969cdfabf229e77a922ca4a7069af09788",
+        "QFULL": "9c27bbfbe9691db94231684686fe3e3641461c4be0fd853b6846dc8e97e444ab"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "다음 식 $9a^{2}+\\Box ab+b^{2}$이 완전제곱식이 될 때, $\\Box$ 안에 들어갈 것을 고르면? (4점)",
+            "termId": 37
+          },
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "다음 식 $9a^{2}+\\Box ab+b^{2}$이 완전제곱식이 될 때, $\\Box$ 안에 들어갈 것을 고르면? (4점)",
+            "termId": 59
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "다음 식 $9a^{2}+\\Box ab+b^{2}$이 완전제곱식이 될 때, $\\Box$ 안에 들어갈 것을 고르면? (4점)",
+            "termId": 50
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식은\n$(3a+b)^2=9a^2+6ab+b^2$,\n$(3a-b)^2=9a^2-6ab+b^2$이다.\n따라서 $\\Box$에는 $\\pm6$이 들어갈 수 있다.\n정답은 ②이다.",
+            "termId": 59,
+            "evidenceType": "IMPLIED",
+            "justification": "(3a±b)²의 중간항±6ab를 읽는다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "완전제곱식은\n$(3a+b)^2=9a^2+6ab+b^2$,\n$(3a-b)^2=9a^2-6ab+b^2$이다.\n따라서 $\\Box$에는 $\\pm6$이 들어갈 수 있다.\n정답은 ②이다.",
+            "termId": 696,
+            "evidenceType": "IMPLIED",
+            "justification": "(3a±b)²의 중간항±6ab를 읽는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "다음 식 $9a^{2}+\\Box ab+b^{2}$이 완전제곱식이 될 때, $\\Box$ 안에 들어갈 것을 고르면? (4점)",
+            "termId": 59
+          }
+        ]
+      },
+      "reasons": {
+        "method": "(3a±b)²의 중간항±6ab를 읽는다.",
+        "condition": "원문의 명시 조건이 값의 선택·범위 또는 대상 결정에 기여한다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_23133018ced82b8608b90f89e5d4d8ed0aaceff2b986b9c22ae03ce431257691",
+      "fingerprints": {
+        "QBODY": "c9b0485eb352fa90e09f59aa3d6b49f121249be3e3f37fec025d4ddf022f6def",
+        "QFULL": "da0083ad3dbf1a5441d7092467474bede7ddc491827f7a5b7de8441b43de7bb0"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$(x-1)^{2}-(2x-3)$을 인수분해하면? (4점)",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수",
+            "src": "stem",
+            "quote": "$(x-1)^{2}-(2x-3)$을 인수분해하면? (4점)",
+            "termId": 43
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "식을 정리하면\n$(x-1)^2-(2x-3)\n=x^2-2x+1-2x+3\n=x^2-4x+4\n=(x-2)^2$이다.\n따라서 정답은 ②이다.",
+            "termId": 41,
+            "evidenceType": "IMPLIED",
+            "justification": "괄호를 전개해 x²-4x+4로 정리한 뒤 (x-2)²로 묶는다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "식을 정리하면\n$(x-1)^2-(2x-3)\n=x^2-2x+1-2x+3\n=x^2-4x+4\n=(x-2)^2$이다.\n따라서 정답은 ②이다.",
+            "termId": 698,
+            "evidenceType": "IMPLIED",
+            "justification": "괄호를 전개해 x²-4x+4로 정리한 뒤 (x-2)²로 묶는다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "식을 정리하면\n$(x-1)^2-(2x-3)\n=x^2-2x+1-2x+3\n=x^2-4x+4\n=(x-2)^2$이다.\n따라서 정답은 ②이다.",
+            "termId": 59,
+            "evidenceType": "IMPLIED",
+            "justification": "괄호를 전개해 x²-4x+4로 정리한 뒤 (x-2)²로 묶는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "괄호를 전개해 x²-4x+4로 정리한 뒤 (x-2)²로 묶는다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_26eec82dc1c33c720b18f499684728d6d55dddce9679dbbefe28e67a639dfbad",
+      "fingerprints": {
+        "QBODY": "ad4cadd2e9c3d2dff3a33b69cbe03963717db03a874b8a5b7ee8348690298858",
+        "QFULL": "81f9e5f7dc2b2ac20ebb40e9e196904b5f0cc2004ad71daddada28cec1e27e3c"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$x^2$의 계수가 1인 이차식을 한승이는 $x$의 계수를 잘못 보고 $(x-3)(x+6)$으로, 수정이는 상수항을 잘못 보고 $(x-4)(x-3)$으로 인수분해 하였다. 처음 이차식을 바르게 인수분해 하면? (4점)",
+            "termId": 37
+          },
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "$x^2$의 계수가 1인 이차식을 한승이는 $x$의 계수를 잘못 보고 $(x-3)(x+6)$으로, 수정이는 상수항을 잘못 보고 $(x-4)(x-3)$으로 인수분해 하였다. 처음 이차식을 바르게 인수분해 하면? (4점)",
+            "termId": 42
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수",
+            "src": "stem",
+            "quote": "$x^2$의 계수가 1인 이차식을 한승이는 $x$의 계수를 잘못 보고 $(x-3)(x+6)$으로, 수정이는 상수항을 잘못 보고 $(x-4)(x-3)$으로 인수분해 하였다. 처음 이차식을 바르게 인수분해 하면? (4점)",
+            "termId": 43
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "한승이는 $x$의 계수만 잘못 보았으므로\n$(x-3)(x+6)=x^2+3x-18$에서 원래 식의 상수항은 $-18$이다.\n수정이는 상수항만 잘못 보았으므로\n$(x-4)(x-3)=x^2-7x+12$에서 원래 식의 $x$의 계수는 $-7$이다.\n따라서 원래 식은\n$x^2-7x-18=(x+2)(x-9)$이다.\n정답은 ①이다.",
+            "termId": 41,
+            "evidenceType": "IMPLIED",
+            "justification": "한승이의 상수항-18과 수정이의 일차항계수-7을 결합해 인수분해한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "한승이는 $x$의 계수만 잘못 보았으므로\n$(x-3)(x+6)=x^2+3x-18$에서 원래 식의 상수항은 $-18$이다.\n수정이는 상수항만 잘못 보았으므로\n$(x-4)(x-3)=x^2-7x+12$에서 원래 식의 $x$의 계수는 $-7$이다.\n따라서 원래 식은\n$x^2-7x-18=(x+2)(x-9)$이다.\n정답은 ①이다.",
+            "termId": 696,
+            "evidenceType": "IMPLIED",
+            "justification": "한승이의 상수항-18과 수정이의 일차항계수-7을 결합해 인수분해한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "한승이는 $x$의 계수만 잘못 보았으므로\n$(x-3)(x+6)=x^2+3x-18$에서 원래 식의 상수항은 $-18$이다.\n수정이는 상수항만 잘못 보았으므로\n$(x-4)(x-3)=x^2-7x+12$에서 원래 식의 $x$의 계수는 $-7$이다.\n따라서 원래 식은\n$x^2-7x-18=(x+2)(x-9)$이다.\n정답은 ①이다.",
+            "termId": 42,
+            "evidenceType": "IMPLIED",
+            "justification": "한승이의 상수항-18과 수정이의 일차항계수-7을 결합해 인수분해한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "한승이의 상수항-18과 수정이의 일차항계수-7을 결합해 인수분해한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_c65b2a33a0fc4e1bd4a53cbe3f92e3a2f00a4f9d5e8d96a8c4665b4956e6d1b7",
+      "fingerprints": {
+        "QBODY": "e09f8a61ea800f0a44c315a37edd94e81d8c5459815999cc83e18c6e8ee61df5",
+        "QFULL": "23b48e1737341c7ec574a07e1441086cf1e8a746aef2a33d2103976f4f8183d7"
+      },
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "[서답형 1-1] $\\sqrt{169}-(-\\sqrt{12})^{2}+\\sqrt{(-5)^{2}}$을 계산하시오. (4점)",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "[서답형 1-1] $\\sqrt{169}-(-\\sqrt{12})^{2}+\\sqrt{(-5)^{2}}$을 계산하시오. (4점)",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "$\\sqrt{169}=13$,\n$(-\\sqrt{12})^2=12$,\n$\\sqrt{(-5)^2}=5$이다.\n따라서\n$13-12+5=6$이다.",
+            "termId": 22,
+            "evidenceType": "IMPLIED",
+            "justification": "각 항을 13,12,5로 정리한다."
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$\\sqrt{169}=13$,\n$(-\\sqrt{12})^2=12$,\n$\\sqrt{(-5)^2}=5$이다.\n따라서\n$13-12+5=6$이다.",
+            "termId": 20,
+            "evidenceType": "IMPLIED",
+            "justification": "각 항을 13,12,5로 정리한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 항을 13,12,5로 정리한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_3825f3f991a9d9ce7a9f40d66c0142c3bf609e8f0784b646b9a37b16c089d57f",
+      "fingerprints": {
+        "QBODY": "663d7b012f213ea057125015be4a45d681c3ff8faeffccf915a73a6ea071eebd",
+        "QFULL": "d0021051997323bf11bf3570d26c9b8ebf19d527bac146f48184c367b66496bc"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^{2}}-\\sqrt{(-\\frac{1}{2}a)^{2}}$을 간단히 하시오. (5점)",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^{2}}-\\sqrt{(-\\frac{1}{2}a)^{2}}$을 간단히 하시오. (5점)",
+            "termId": 35
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$\\sqrt{(3a)^2}=|3a|$, $\\sqrt{(-\\frac12a)^2}=|-\\frac12a|$이다.\n$a<0$이므로 $3a<0$, $-\\frac12a>0$이다.\n따라서\n$|3a|-|-\\frac12a|\n=-3a-(-\\frac12a)\n=-\\frac52a$이다.",
+            "termId": 24,
+            "evidenceType": "IMPLIED",
+            "justification": "a<0에서 3a는 음수,-a/2는 양수이므로 두 절댓값을 각각 푼다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$\\sqrt{(3a)^2}=|3a|$, $\\sqrt{(-\\frac12a)^2}=|-\\frac12a|$이다.\n$a<0$이므로 $3a<0$, $-\\frac12a>0$이다.\n따라서\n$|3a|-|-\\frac12a|\n=-3a-(-\\frac12a)\n=-\\frac52a$이다.",
+            "termId": 25,
+            "evidenceType": "IMPLIED",
+            "justification": "a<0에서 3a는 음수,-a/2는 양수이므로 두 절댓값을 각각 푼다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "$\\sqrt{(3a)^2}=|3a|$, $\\sqrt{(-\\frac12a)^2}=|-\\frac12a|$이다.\n$a<0$이므로 $3a<0$, $-\\frac12a>0$이다.\n따라서\n$|3a|-|-\\frac12a|\n=-3a-(-\\frac12a)\n=-\\frac52a$이다.",
+            "termId": 698,
+            "evidenceType": "IMPLIED",
+            "justification": "a<0에서 3a는 음수,-a/2는 양수이므로 두 절댓값을 각각 푼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^{2}}-\\sqrt{(-\\frac{1}{2}a)^{2}}$을 간단히 하시오. (5점)",
+            "termId": 397
+          }
+        ]
+      },
+      "reasons": {
+        "method": "a<0에서 3a는 음수,-a/2는 양수이므로 두 절댓값을 각각 푼다.",
+        "condition": "원문의 명시 조건이 값의 선택·범위 또는 대상 결정에 기여한다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_4e1bdf1314b1e99a2ca58f1529e34b5eaa5bb3dfd9f07176ab0b88d360797e8e",
+      "fingerprints": {
+        "QBODY": "b42134f684d317320c20e169bc50b1c2ac65dd7a66b297defdc3fcf1423f49d6",
+        "QFULL": "63ed8b489ba50dca468d64e528782f81346b4be2610d70d91de68aa3fab7c8d1"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "[서답형 2-2] $x = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\frac{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
+            "termId": 651
+          },
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "[서답형 2-2] $x = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\frac{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "[서답형 2-2] $x = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\frac{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "두 식을 곱하면\n$xy=1$이다.\n또 유리화하면\n$x=5-2\\sqrt6$, $y=5+2\\sqrt6$이므로\n$x+y=10$, $x-y=-4\\sqrt6$이다.\n따라서\n$x^3y-xy^3\n=xy(x^2-y^2)\n=xy(x+y)(x-y)\n=1\\cdot10\\cdot(-4\\sqrt6)\n=-40\\sqrt6$이다.",
+            "termId": 695,
+            "evidenceType": "IMPLIED",
+            "justification": "xy=1과 x+y=10,x-y=-4√6을 구해 xy(x+y)(x-y)에 연결한다."
+          },
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "두 식을 곱하면\n$xy=1$이다.\n또 유리화하면\n$x=5-2\\sqrt6$, $y=5+2\\sqrt6$이므로\n$x+y=10$, $x-y=-4\\sqrt6$이다.\n따라서\n$x^3y-xy^3\n=xy(x^2-y^2)\n=xy(x+y)(x-y)\n=1\\cdot10\\cdot(-4\\sqrt6)\n=-40\\sqrt6$이다.",
+            "termId": 694,
+            "evidenceType": "IMPLIED",
+            "justification": "xy=1과 x+y=10,x-y=-4√6을 구해 xy(x+y)(x-y)에 연결한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "두 식을 곱하면\n$xy=1$이다.\n또 유리화하면\n$x=5-2\\sqrt6$, $y=5+2\\sqrt6$이므로\n$x+y=10$, $x-y=-4\\sqrt6$이다.\n따라서\n$x^3y-xy^3\n=xy(x^2-y^2)\n=xy(x+y)(x-y)\n=1\\cdot10\\cdot(-4\\sqrt6)\n=-40\\sqrt6$이다.",
+            "termId": 57,
+            "evidenceType": "IMPLIED",
+            "justification": "xy=1과 x+y=10,x-y=-4√6을 구해 xy(x+y)(x-y)에 연결한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "xy=1과 x+y=10,x-y=-4√6을 구해 xy(x+y)(x-y)에 연결한다.",
+        "condition": "원문에서 독립적인 추가 범위 제한을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_0df2b010de190600e45013c55192b285f208426eaff72efbea2b5638caeca538",
+      "fingerprints": {
+        "QBODY": "fe0424bdadfe182f3076f599756cd8600c2edf992a24e7876e86ab2f7d1a89a1",
+        "QFULL": "e97d6555c18efee601206252a6c6ecb105b6d3074df96c04515bdd9ec4455dbd"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "[서답형 4-2] 이차식 $2x^2-ax-3$의 계수와 상수항이 모두 정수인 두 일차식의 곱으로 인수분해 될 때, 정수 $a$가 될 수 있는 모든 수의 합을 구하시오. (5점)",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "[서답형 4-2] 이차식 $2x^2-ax-3$의 계수와 상수항이 모두 정수인 두 일차식의 곱으로 인수분해 될 때, 정수 $a$가 될 수 있는 모든 수의 합을 구하시오. (5점)",
+            "termId": 308
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "[서답형 4-2] 이차식 $2x^2-ax-3$의 계수와 상수항이 모두 정수인 두 일차식의 곱으로 인수분해 될 때, 정수 $a$가 될 수 있는 모든 수의 합을 구하시오. (5점)",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "정수 계수의 두 일차식의 곱으로\n$2x^2-ax-3=(2x+m)(x+n)$이라 둘 수 있다.\n이때 $mn=-3$이므로\n$(m,n)=(1,-3),(-1,3),(3,-1),(-3,1)$을 확인한다.\n$x$의 계수 $2n+m=-a$이므로 가능한 $a$는\n$5,-5,-1,1$이다.\n따라서 모든 $a$의 합은\n$5+(-5)+(-1)+1=0$이다.",
+            "termId": 42,
+            "evidenceType": "IMPLIED",
+            "justification": "mn=-3인 네 정수쌍에서 -a=2n+m을 계산해 가능한a들을 합한다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "정수 계수의 두 일차식의 곱으로\n$2x^2-ax-3=(2x+m)(x+n)$이라 둘 수 있다.\n이때 $mn=-3$이므로\n$(m,n)=(1,-3),(-1,3),(3,-1),(-3,1)$을 확인한다.\n$x$의 계수 $2n+m=-a$이므로 가능한 $a$는\n$5,-5,-1,1$이다.\n따라서 모든 $a$의 합은\n$5+(-5)+(-1)+1=0$이다.",
+            "termId": 293,
+            "evidenceType": "IMPLIED",
+            "justification": "mn=-3인 네 정수쌍에서 -a=2n+m을 계산해 가능한a들을 합한다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "정수 계수의 두 일차식의 곱으로\n$2x^2-ax-3=(2x+m)(x+n)$이라 둘 수 있다.\n이때 $mn=-3$이므로\n$(m,n)=(1,-3),(-1,3),(3,-1),(-3,1)$을 확인한다.\n$x$의 계수 $2n+m=-a$이므로 가능한 $a$는\n$5,-5,-1,1$이다.\n따라서 모든 $a$의 합은\n$5+(-5)+(-1)+1=0$이다.",
+            "termId": 696,
+            "evidenceType": "IMPLIED",
+            "justification": "mn=-3인 네 정수쌍에서 -a=2n+m을 계산해 가능한a들을 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "[서답형 4-2] 이차식 $2x^2-ax-3$의 계수와 상수항이 모두 정수인 두 일차식의 곱으로 인수분해 될 때, 정수 $a$가 될 수 있는 모든 수의 합을 구하시오. (5점)",
+            "termId": 2
+          }
+        ]
+      },
+      "reasons": {
+        "method": "mn=-3인 네 정수쌍에서 -a=2n+m을 계산해 가능한a들을 합한다.",
+        "condition": "원문의 명시 조건이 값의 선택·범위 또는 대상 결정에 기여한다."
+      },
+      "judgedBy": {
+        "agent": "meta_c_resume_20261115",
+        "owner": "GPT_ROOT_E45FF6C78C51/C",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:52.952Z"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "Author review only. Independent root sample pending."
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_CHECKED",
+    "independentReview": "PENDING_ROOT_SAMPLE"
+  },
+  "reviewedSourceBaseBlob": "6291c5d8a6fdc3cad7f1440392cb075c53e8e483",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E060",
+    "reviewer": "meta_a",
+    "author": "meta_c",
+    "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+    "at": "2026-11-15T00:05:07.886233+00:00",
+    "sourceArchiveFile": "original/middle/m3/1mid/21_매산중_1학기_중간_중3_기출.js",
+    "sourceBlob": "6291c5d8a6fdc3cad7f1440392cb075c53e8e483",
+    "inputArtifacts": {
+      "workers/C/E060.review.json": {
+        "sha256": "0b13e57632f143fccd0c549689c78c4d33b918ee83ec59b2cdd55f2fda303ac6"
+      },
+      "workers/C/E060.4slot.json": {
+        "sha256": "1bc7aa871f55c62728b3065ee3f76cdd30717a7ce9d1e4afff22a72f442ff7cb"
+      },
+      "workers/C/E060.input.json": {
+        "sha256": "8dd58e35e956336ead5ad358c9d50eaf7c77ce6d5d00d9ec8ba21868fd494a47"
+      }
+    },
+    "sampledOrdinals": [
+      3,
+      9,
+      20,
+      24
+    ],
+    "items": [
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_2e6545dfef048e540a09a49f866a452ee33b944f09e751082a0fc6a6e9ba26db",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "발문⑤ 0.2929…와 기존해설 0.2999…=0.3의 전사·수값 불일치가 CONTENT_REVIEW_REQUIRED에 정확히 남아 있다. 유리수라는 판정은 양쪽 모두 같아 primary 무리수 판별과 난도1 판단의 근거는 보존된다."
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_9734dc7225dc278a08788d4b84aeafd4ed175578973005e558a51ecdf9ad2e4f",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "실물 그림 A=1 B=2, 대각선 길이√2 및 P왼쪽/Q오른쪽을 확인. P=2-√2이므로 ①의1-√2를 배제하는 기존해설과 좌표·피타고라스 method 및 상등조건을 확인."
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_26eec82dc1c33c720b18f499684728d6d55dddce9679dbbefe28e67a639dfbad",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "잘못 보지 않은 두 항 -18,-7을 각각 회수해 (x+2)(x-9)로 인수분해한다. 현재저자 level중/2 B23로 보완한 근거는 전략이 정형적이라는 source 의미와 부합한다."
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_0df2b010de190600e45013c55192b285f208426eaff72efbea2b5638caeca538",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "mn=-3의 네 부호 있는 정수인수쌍을 열거하여 a=±5,±1을 얻는 해설을 확인. 정수조건과 경우분류·계수비교 method가 결정적이며 bucket3/B23·level중은 유한경우를 직접 구조화하는 부담에 부합한다."
+      }
+    ],
+    "findingsResolved": [],
+    "rootAdjudications": [],
+    "visualEvidence": [
+      {
+        "path": "workers/A/independent_assets/E060-q09.png",
+        "sha256": "37d1b16254fa306236f4d947097f29b3c2456ea61b5d10616ad60d033ab282f7",
+        "status": "VIEWED"
+      }
+    ],
+    "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+    "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+  }
+}

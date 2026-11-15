@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E020",
+  "status": "PASS_WITH_PROPOSALS",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "at": "2026-11-14T13:59:22.052623+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/24_연향중_1학기_중간_중3_기출.js",
+  "sourceBlob": "238aba47e56a4407a812c467265f9d55425c2409",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E020.review.json",
+      "sha256": "396b6fc3ff42f81e598b52b2c7184cd9a2e0346d3a30cd4545e7813b69a8827f"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E020.4slot.json",
+      "sha256": "69afae266ed4f27a6795da41d95c0b14805897a946e34c5b28c127312cc20853"
+    }
+  },
+  "sampledOrdinals": [
+    6,
+    18,
+    22
+  ],
+  "additionalChangedOrBoundaryOrdinals": [
+    1,
+    3,
+    5,
+    11,
+    12,
+    15,
+    16,
+    17,
+    19,
+    20,
+    21,
+    23
+  ],
+  "scope": "METADATA_ONLY; actual source, selected slots, q22/q23 source PNG directly viewed",
+  "findings": [
+    {
+      "ordinal": 6,
+      "status": "PASS_AFTER_REVISION",
+      "note": "평균의 사이 위치와 제곱·귀류에 의한 무리수성을 연결하므로 bucket3 및 보조분류 기여가 타당. √5와√6 열린범위 condition 추가 확인."
+    },
+    {
+      "ordinal": 18,
+      "status": "PASS_WITH_TAXONOMY_PROPOSAL",
+      "note": "여러 인수분해 공식의 결과를 독립 전개 비교하는 기본 감사. 정답 단일 이차식으로 강제배치하지 않은 제안 수용."
+    },
+    {
+      "ordinal": 22,
+      "status": "PASS_AFTER_REVISION",
+      "note": "원본PNG에서 중앙배치·두방향끈·사선 확인. 수평차10과높이10의 피타고라스 길이 후 전체경로 합산. 중앙배치 condition 추가와 미등록CONDITION 제안 확인. 기존 medium/B34 경계 보존 타당."
+    },
+    {
+      "ordinal": 21,
+      "status": "PASS_AFTER_REVISION",
+      "note": "근호식 결과가 유리수라는 조건은 무리수항계수 a+2=0을 강제한다.014는 parent-context로만 표시하고 exact 계수소거 leafgap을 추가한 버전 확인."
+    },
+    {
+      "ordinal": 17,
+      "status": "PASS",
+      "note": "완전제곱식 인수분해→범위에 따른 절댓값 제거를 실제 source에서 확인. 보조 CC를 정확한 제곱인수분해로 바꾼 것은 타당하며 B23 경계는 유지."
+    },
+    {
+      "ordinal": 23,
+      "status": "PASS",
+      "note": "원본두정사각형과source를 읽고4(x+y)=80,x²+y²=200에서 합제곱식으로xy를 정해 둘레곱16xy를 구하는 도형 활용 분류를 확인."
+    }
+  ],
+  "additionalCheck": "q1/3/5/15는 실제 짧은 기본성질·공식 비교로1↔2경계가 남으므로 기존 medium/B12를 보존하도록 요청하여 최종본에 반영. q11/12 rational 조건, q16 완전제곱 조건, q19치환 인수분해, q20반복 합차공식의 NONE을 source와 대조.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

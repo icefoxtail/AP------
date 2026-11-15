@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E023",
+  "status": "PASS_WITH_PROPOSALS",
+  "author": "meta_b",
+  "reviewer": "GPT_ROOT_0B1AF1898334",
+  "at": "2026-11-14T13:56:50.683486+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js",
+  "sourceBlob": "e3b31d162533ca7c4f650763bd373ada8a573499",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E023.review.json",
+      "sha256": "d2e1a9edbb451a573e84119c4ec8463647f1cc6d9ee859626019448f29dc3d4a"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E023.4slot.json",
+      "sha256": "8be25c35997623362a45e3d962244688fe3f2dafaae951bb5fe0aa5abfcc9574"
+    }
+  },
+  "sampledOrdinals": [
+    15,
+    22,
+    24
+  ],
+  "scope": "Actual legacy question stem/choices/existing solution read for three exact-leaf-gap/IMPLIED samples. q22 original PNG viewed. Metadata-only independent sample, no new whole-exam mathematics PASS.",
+  "findings": [
+    {
+      "ordinal": 15,
+      "status": "PASS_AFTER_REVISION",
+      "note": "f(x)는 sqrt(x)보다 엄격히 작은 자연수 개수로 이미 정의되었다. 작은 입력의 제곱수 경계와 보기를 확인하는 직접 표준절차라 중/bucket2/medium/B23로 좁은 재판정; 작성자 반영본 확인. 조건 자연수·엄격부등식 및 method정의·열거가 실제 인용과 일치. 새 정의 count target은 native leafgap 보존."
+    },
+    {
+      "ordinal": 22,
+      "status": "PASS_WITH_PROPOSALS",
+      "note": "원본PNG의 원기둥 반지름2√6·높이√5 및 원뿔높이√20 직접 확인. 두 부피 등식으로 r²를 얻고 반지름 양수조건을 사용하는 연결이다. 두 부피CC/SEQUENTIAL과 중/bucket3 수용. 단순근호곱셈으로 강제하지 않고 입체부피·반지름 활용 exact leafgap 보존."
+    },
+    {
+      "ordinal": 24,
+      "status": "PASS_AFTER_REVISION",
+      "note": "목표는 대소관계 판정이 아니라 새 기호 sqrt(x²)의 절댓값 성질로 식의값을 계산하는 것이다. PT_M3_SQUARE_ROOT_PROPERTY 후보를 primary, CC_INTEGER_DECIMAL_PART를 선행 소수부분 계산으로 두는 SEQUENTIAL 수정 수용. 1<√3<2로 소수부분·음수부호를 결정하는 실제 solution과4칸 일치. 중/bucket3 및 exact nativegap 보존."
+    }
+  ],
+  "correctionRequests": [
+    {
+      "ordinal": 15,
+      "field": "decision.difficultyBucket/confidence/boundary",
+      "severity": "REQUIRED",
+      "status": "RESOLVED",
+      "reason": "정의가 주어진 작은 입력의 직접 평가이므로 3→2/B23/medium."
+    },
+    {
+      "ordinal": 24,
+      "field": "projection.semanticCandidate/auxiliary",
+      "severity": "REQUIRED",
+      "status": "RESOLVED",
+      "reason": "대소판정PT 대신 실제 절댓값 식의값 PT와 소수부분 보조개념 결합."
+    }
+  ],
+  "assetReview": [
+    {
+      "ordinal": 22,
+      "path": "archive/assets/images/24_향림중_1학기_중간_중3_수학/q22.png",
+      "sha256": "abc653a77473b93ae18d22d77918eda968cd8072111bb8b424914fefafd8648b",
+      "status": "VIEWED"
+    }
+  ],
+  "legacySchemaNote": "Source uses window.examData.questions and question field. Official QBODY/QFULL null-content rule is retained; raw question is additionally protected by full-field and stem evidence hashes. Unsupported new metadata fields are proposal-only.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

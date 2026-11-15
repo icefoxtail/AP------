@@ -1,0 +1,1972 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1final/19_왕운중_1학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "4f9eae1cfe25aa48f6b4d9166182516384dc4b8a",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "meta_a",
+    "owner": "M3_S1_RESUME_20261115_A",
+    "assignmentId": "M3-S1-META-FULL",
+    "at": "2026-11-15T00:08:14.494940+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_0794aa49bcf02bf0cda59e0146371b1c3e69880df3bb5c47b3b0693fd9cccf1f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ea46bd8a95287e805aa948034c17feef953e86b6eca8d44fec31f381755684bc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "06f1ba9ce4bbaa14cfb87d43421e29b6b9d83c75d4a17e82e9a9921372d8dcb7"
+        }
+      ],
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "quote": "다음 중 $x$에 대한 이차방정식을 모두 고른 것은? [3.5점]<br><br>ㄱ. $x^2-6=0$<br>ㄴ. $2x^2+3x-7=x^2$<br>ㄷ. $(x+1)(x-5)-4=x^2$<br>ㄹ. $x^2+4x-3$<br>ㅁ. $\\dfrac{1}{3}x^2-9x-x=3x^2$",
+            "src": "stem",
+            "termId": 62
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차방정식",
+            "quote": "다음 중 $x$에 대한 이차방정식을 모두 고른 것은? [3.5점]<br><br>ㄱ. $x^2-6=0$<br>ㄴ. $2x^2+3x-7=x^2$<br>ㄷ. $(x+1)(x-5)-4=x^2$<br>ㄹ. $x^2+4x-3$<br>ㅁ. $\\dfrac{1}{3}x^2-9x-x=3x^2$",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "판정",
+            "quote": "다음 중 $x$에 대한 이차방정식을 모두 고른 것은? [3.5점]<br><br>ㄱ. $x^2-6=0$<br>ㄴ. $2x^2+3x-7=x^2$<br>ㄷ. $(x+1)(x-5)-4=x^2$<br>ㄹ. $x^2+4x-3$<br>ㅁ. $\\dfrac{1}{3}x^2-9x-x=3x^2$",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "이차방정식은 한쪽으로 이항해 $0$과 비교했을 때 최고차항이 $x^2$인 방정식이다.\nㄱ은 이미 $x^2-6=0$이다.\nㄴ은 $x^2+3x-7=0$으로 정리된다.\nㄷ은 $(x^2-4x-5)-4=x^2$에서 $-4x-9=0$이 되어 일차방정식이다.\nㄹ은 등호가 없어 방정식이 아니다.\nㅁ은 이항하면 $\\left(\\dfrac13-3\\right)x^2-10x=0$, 즉 $-\\dfrac83x^2-10x=0$으로 이차방정식이다.\n따라서 ㄱ, ㄴ, ㅁ이므로 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "등호 유무와 이항 후 x²항 잔존 여부를 판정한다.",
+            "termId": 41
+          },
+          {
+            "term": "차수",
+            "quote": "이차방정식은 한쪽으로 이항해 $0$과 비교했을 때 최고차항이 $x^2$인 방정식이다.\nㄱ은 이미 $x^2-6=0$이다.\nㄴ은 $x^2+3x-7=0$으로 정리된다.\nㄷ은 $(x^2-4x-5)-4=x^2$에서 $-4x-9=0$이 되어 일차방정식이다.\nㄹ은 등호가 없어 방정식이 아니다.\nㅁ은 이항하면 $\\left(\\dfrac13-3\\right)x^2-10x=0$, 즉 $-\\dfrac83x^2-10x=0$으로 이차방정식이다.\n따라서 ㄱ, ㄴ, ㅁ이므로 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "등호 유무와 이항 후 x²항 잔존 여부를 판정한다.",
+            "termId": 431
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "이항 후 방정식 차수",
+        "condition": "등호 유무와 이항 후 x²항 잔존 여부를 판정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_2f3619ee0d1ab0095f5f2e7d0cc5af15e512a0f402bfa615e6475bde70c9a2a0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "661866c204f62755fed689a61c9f064da524e9b92c66322d46751aad6cd9067c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d14841f13bc5ec5582be441b6ab000845cecbd3e13d248f5e4f4b008ee69eace"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "$x$가 $-2, -1, 0, 1, 2$일 때, 이차방정식 $x^2-5x+6=0$의 해를 구한 것은? (4점)",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "quote": "$x$가 $-2, -1, 0, 1, 2$일 때, 이차방정식 $x^2-5x+6=0$의 해를 구한 것은? (4점)",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "먼저 인수분해하면 $x^2-5x+6=(x-2)(x-3)=0$이다.\n따라서 방정식의 근은 $x=2,3$이다.\n문제에서 허용한 값 $-2,-1,0,1,2$를 차례로 대입한 식의 값은 $20,12,6,2,0$이다. 이 중 방정식을 만족하는 값은 $2$뿐이며, $3$은 허용된 값에 들어 있지 않다.\n따라서 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해해 근2,3을 얻되 제시된 값 집합에서는2만 허용된다.",
+            "termId": 42
+          },
+          {
+            "term": "대입",
+            "quote": "먼저 인수분해하면 $x^2-5x+6=(x-2)(x-3)=0$이다.\n따라서 방정식의 근은 $x=2,3$이다.\n문제에서 허용한 값 $-2,-1,0,1,2$를 차례로 대입한 식의 값은 $20,12,6,2,0$이다. 이 중 방정식을 만족하는 값은 $2$뿐이며, $3$은 허용된 값에 들어 있지 않다.\n따라서 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해해 근2,3을 얻되 제시된 값 집합에서는2만 허용된다.",
+            "termId": 53
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "quote": "$x$가 $-2, -1, 0, 1, 2$일 때, 이차방정식 $x^2-5x+6=0$의 해를 구한 것은? (4점)",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "허용 값 중 근 확인",
+        "condition": "인수분해해 근2,3을 얻되 제시된 값 집합에서는2만 허용된다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_bf0339fa0bf598cfec27578fddb974487d4f7838cf68da83da002521c2f5394a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bbb39e84cbfcd8ef038a9fcf131de10e56dce2c1e4be00f919ff07fb40685768"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bb55eb01c78e23ee56628524cd98575148b7255d710cf32c1be6e7367c8f53af"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "$4x^2+4x+1=0$",
+            "src": "choices",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "중근",
+            "quote": "다음 이차방정식 중 중근을 갖는 것은? (4점)",
+            "src": "stem",
+            "termId": 444
+          },
+          {
+            "term": "판정",
+            "quote": "다음 이차방정식 중 중근을 갖는 것은? (4점)",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "중근은 좌변이 완전제곱식이 되어 한 근만 생기는 경우이다.\n②는 $4x^2+4x+1=(2x+1)^2$이므로 $(2x+1)^2=0$이다.\n따라서 $x=-\\dfrac12$ 한 개만 해로 가지므로 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "4x²+4x+1=(2x+1)²가 되어 중근을 갖는다.",
+            "termId": 59
+          }
+        ],
+        "condition": [
+          {
+            "term": "중근",
+            "quote": "다음 이차방정식 중 중근을 갖는 것은? (4점)",
+            "src": "stem",
+            "termId": 444
+          }
+        ]
+      },
+      "reasons": {
+        "method": "중근 조건",
+        "condition": "4x²+4x+1=(2x+1)²가 되어 중근을 갖는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_1dee83fcb22663bd973c76f459b714dc7f9eca1317c5b595eb93b9b4027b9cee",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c9f640f7121f7fc9263a77b4fcf8c451a3269e1df75a1e638ce9e7e726857768"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "998988ddc56c01225015f086348205de34dfb2189a776b6f183bfeef82fa1b35"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "다음은 제곱근을 이용하여 $2(x-1)^2-14=0$의 해를 구하는 과정이다. 처음으로 <u>잘못된</u> 부분에 해당하는 것은? (4점)<br><br>$2(x-1)^2-14=0$<br>① $2(x-1)^2=14$<br>② $(x-1)^2=7$<br>③ $x-1=\\pm 7$<br>④ $x=1\\pm 7$<br>⑤ $x=8$ 또는 $-6$",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음은 제곱근을 이용하여 $2(x-1)^2-14=0$의 해를 구하는 과정이다. 처음으로 <u>잘못된</u> 부분에 해당하는 것은? (4점)<br><br>$2(x-1)^2-14=0$<br>① $2(x-1)^2=14$<br>② $(x-1)^2=7$<br>③ $x-1=\\pm 7$<br>④ $x=1\\pm 7$<br>⑤ $x=8$ 또는 $-6$",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "①과 ②에서 $(x-1)^2=7$까지는 맞다.\n제곱근을 풀면 $x-1=\\pm\\sqrt7$이어야 하는데, ③에는 $\\pm7$로 적혀 있다.\n따라서 처음 잘못된 부분은 ③이고 정답은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(x-1)²=7 다음에는 x-1=±√7이어야 한다.",
+            "termId": 22
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근 풀이 오류 판정",
+        "condition": "(x-1)²=7 다음에는 x-1=±√7이어야 한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_f1e4f92bb1d091c7fc0dca00b63c7888aec55eb49ca843ef52e8a2ef5e8fcc29",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cca7df19e28047f5e1b987961a8e467e32cda4c297bc8d610b6a91147c6073a5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4cfcdaf7c8c0c2e6e9a78785b0d1744b352cfc4728169dbe39d98f26a8704576"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "다음은 이차방정식의 근의 공식을 유도하는 과정이다. (가) ~ (마) 에 들어갈 식으로 옳은 것은? (4점)<br><br>$ax^2+bx+c=0(a \\ne 0)$의 양변을 $a$로 나누면<br>$x^2+\\dfrac{b}{a}x+\\dfrac{c}{a}=0$<br>$x^2+\\dfrac{b}{a}x=(\\text{가})$<br>$x^2+\\dfrac{b}{a}x+(\\text{나})=(\\text{가})+(\\text{나})$<br>$(x+(\\text{다}))^2=(\\text{라})$<br>$x+\\dfrac{b}{2a}=\\pm \\sqrt{(\\text{라})}$<br>$\\therefore x=(\\text{마})$",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "문자식",
+            "quote": "다음은 이차방정식의 근의 공식을 유도하는 과정이다. (가) ~ (마) 에 들어갈 식으로 옳은 것은? (4점)<br><br>$ax^2+bx+c=0(a \\ne 0)$의 양변을 $a$로 나누면<br>$x^2+\\dfrac{b}{a}x+\\dfrac{c}{a}=0$<br>$x^2+\\dfrac{b}{a}x=(\\text{가})$<br>$x^2+\\dfrac{b}{a}x+(\\text{나})=(\\text{가})+(\\text{나})$<br>$(x+(\\text{다}))^2=(\\text{라})$<br>$x+\\dfrac{b}{2a}=\\pm \\sqrt{(\\text{라})}$<br>$\\therefore x=(\\text{마})$",
+            "src": "stem",
+            "termId": 34
+          },
+          {
+            "term": "판정",
+            "quote": "다음은 이차방정식의 근의 공식을 유도하는 과정이다. (가) ~ (마) 에 들어갈 식으로 옳은 것은? (4점)<br><br>$ax^2+bx+c=0(a \\ne 0)$의 양변을 $a$로 나누면<br>$x^2+\\dfrac{b}{a}x+\\dfrac{c}{a}=0$<br>$x^2+\\dfrac{b}{a}x=(\\text{가})$<br>$x^2+\\dfrac{b}{a}x+(\\text{나})=(\\text{가})+(\\text{나})$<br>$(x+(\\text{다}))^2=(\\text{라})$<br>$x+\\dfrac{b}{2a}=\\pm \\sqrt{(\\text{라})}$<br>$\\therefore x=(\\text{마})$",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "$ax^2+bx+c=0$의 양변을 $a$로 나누고 이항하면 $x^2+\\dfrac ba x=-\\dfrac ca$이므로 (가)는 $-\\dfrac ca$이다.\n왼쪽을 완전제곱식으로 만들기 위해 $\\left(\\dfrac b{2a}\\right)^2$을 양변에 더한다. 따라서 (나)는 $\\left(\\dfrac b{2a}\\right)^2$이다.\n정리하면 $\\left(x+\\dfrac b{2a}\\right)^2=\\dfrac{b^2-4ac}{4a^2}$이므로 (다)는 $\\dfrac b{2a}$, (라)는 $\\dfrac{b^2-4ac}{4a^2}$이다.\n이제 $\\left(x+\\dfrac b{2a}\\right)^2=(\\text{라})$에서 양변의 제곱근을 취하면 $x+\\dfrac b{2a}=\\pm\\sqrt{(\\text{라})}$이다. 이를 풀어 쓰면 $x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a}$가 된다.\n그러므로 옳게 적힌 것은 (나)뿐이며 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "이항 후 (b/2a)²를 더해 완전제곱식을 만들므로 (나)가 옳다.",
+            "termId": 59
+          },
+          {
+            "term": "등식의성질",
+            "quote": "$ax^2+bx+c=0$의 양변을 $a$로 나누고 이항하면 $x^2+\\dfrac ba x=-\\dfrac ca$이므로 (가)는 $-\\dfrac ca$이다.\n왼쪽을 완전제곱식으로 만들기 위해 $\\left(\\dfrac b{2a}\\right)^2$을 양변에 더한다. 따라서 (나)는 $\\left(\\dfrac b{2a}\\right)^2$이다.\n정리하면 $\\left(x+\\dfrac b{2a}\\right)^2=\\dfrac{b^2-4ac}{4a^2}$이므로 (다)는 $\\dfrac b{2a}$, (라)는 $\\dfrac{b^2-4ac}{4a^2}$이다.\n이제 $\\left(x+\\dfrac b{2a}\\right)^2=(\\text{라})$에서 양변의 제곱근을 취하면 $x+\\dfrac b{2a}=\\pm\\sqrt{(\\text{라})}$이다. 이를 풀어 쓰면 $x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a}$가 된다.\n그러므로 옳게 적힌 것은 (나)뿐이며 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "이항 후 (b/2a)²를 더해 완전제곱식을 만들므로 (나)가 옳다.",
+            "termId": 433
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "quote": "다음은 이차방정식의 근의 공식을 유도하는 과정이다. (가) ~ (마) 에 들어갈 식으로 옳은 것은? (4점)<br><br>$ax^2+bx+c=0(a \\ne 0)$의 양변을 $a$로 나누면<br>$x^2+\\dfrac{b}{a}x+\\dfrac{c}{a}=0$<br>$x^2+\\dfrac{b}{a}x=(\\text{가})$<br>$x^2+\\dfrac{b}{a}x+(\\text{나})=(\\text{가})+(\\text{나})$<br>$(x+(\\text{다}))^2=(\\text{라})$<br>$x+\\dfrac{b}{2a}=\\pm \\sqrt{(\\text{라})}$<br>$\\therefore x=(\\text{마})$",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근의공식 유도 빈칸",
+        "condition": "이항 후 (b/2a)²를 더해 완전제곱식을 만들므로 (나)가 옳다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_243cd18290f55fb1794e0b2b934447c363e5d9aa5e776b445773d83928638f95",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a5050576bbff6f3830b76b345a8df37fc38b00e3f5decd67c2e47e1f7b9e80ea"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "069e166e2ab6ff87dab84fa6699aaec8d0b5e465cab9f09de05f0756d81122f0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "$\\dfrac{1}{2}x^2-\\dfrac{5}{2}x-7=0$의 두 근 중 작은 근을 $p$라 하고, $3x^2-10x+7=0$의 한 근을 $q$라 할 때, $p(3q^2-10q+1)$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "$\\dfrac{1}{2}x^2-\\dfrac{5}{2}x-7=0$의 두 근 중 작은 근을 $p$라 하고, $3x^2-10x+7=0$의 한 근을 $q$라 할 때, $p(3q^2-10q+1)$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "먼저 $p$를 구한다.\n$\\dfrac12x^2-\\dfrac52x-7=0$의 양변에 $2$를 곱하면\n$x^2-5x-14=(x-7)(x+2)=0$이므로 작은 근은 $p=-2$이다.\n주어진 방정식에서 $3q^2-10q+7=(3q-7)(q-1)=0$이므로 $q$는 $1$ 또는 $\\dfrac73$이다.\n따라서 $3q^2-10q+1=(3q^2-10q+7)-6=-6$이고,\n$p(3q^2-10q+1)=(-2)(-6)=12$이다.\n정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 방정식에서 작은 근p=-2를 구하고 둘째 근관계로 괄호=-6을 얻는다.",
+            "termId": 42
+          },
+          {
+            "term": "대입",
+            "quote": "먼저 $p$를 구한다.\n$\\dfrac12x^2-\\dfrac52x-7=0$의 양변에 $2$를 곱하면\n$x^2-5x-14=(x-7)(x+2)=0$이므로 작은 근은 $p=-2$이다.\n주어진 방정식에서 $3q^2-10q+7=(3q-7)(q-1)=0$이므로 $q$는 $1$ 또는 $\\dfrac73$이다.\n따라서 $3q^2-10q+1=(3q^2-10q+7)-6=-6$이고,\n$p(3q^2-10q+1)=(-2)(-6)=12$이다.\n정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 방정식에서 작은 근p=-2를 구하고 둘째 근관계로 괄호=-6을 얻는다.",
+            "termId": 53
+          },
+          {
+            "term": "등식의성질",
+            "quote": "먼저 $p$를 구한다.\n$\\dfrac12x^2-\\dfrac52x-7=0$의 양변에 $2$를 곱하면\n$x^2-5x-14=(x-7)(x+2)=0$이므로 작은 근은 $p=-2$이다.\n주어진 방정식에서 $3q^2-10q+7=(3q-7)(q-1)=0$이므로 $q$는 $1$ 또는 $\\dfrac73$이다.\n따라서 $3q^2-10q+1=(3q^2-10q+7)-6=-6$이고,\n$p(3q^2-10q+1)=(-2)(-6)=12$이다.\n정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 방정식에서 작은 근p=-2를 구하고 둘째 근관계로 괄호=-6을 얻는다.",
+            "termId": 433
+          }
+        ],
+        "condition": [
+          {
+            "term": "대소비교",
+            "quote": "$\\dfrac{1}{2}x^2-\\dfrac{5}{2}x-7=0$의 두 근 중 작은 근을 $p$라 하고, $3x^2-10x+7=0$의 한 근을 $q$라 할 때, $p(3q^2-10q+1)$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 28
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 방정식의 근 관계",
+        "condition": "첫 방정식에서 작은 근p=-2를 구하고 둘째 근관계로 괄호=-6을 얻는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_55a895886ba08ae7d60552fc304d1df5dd372c6d9d78f8755e3aff88c948ddd8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "59f359fcef0a0c2845b3ed43f36ed2ee7f3f70062826df843a0e53ccd6b7c6e3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3432f86ee02bf7d0b6c7348e6aa0e7aa78bc597f94cc7ecc9680dd2c052283d8"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $0.3x^2-0.2x-1=0$의 해를 구하면? (4점)",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "quote": "이차방정식 $0.3x^2-0.2x-1=0$의 해를 구하면? (4점)",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "method": [
+          {
+            "term": "등식의성질",
+            "quote": "양변에 $10$을 곱해 소수를 없앤다.\n$3x^2-2x-10=0$\n양변을 $3$으로 나누어 최고차항의 계수를 $1$로 만든다.\n$x^2-\\dfrac23x-\\dfrac{10}{3}=0$\n양변에 $\\dfrac{10}{3}$을 더해 정리한다.\n$x^2-\\dfrac23x=\\dfrac{10}{3}$\n완전제곱식이 되도록 양변에 $\\dfrac19$을 더한다.\n$x^2-\\dfrac23x+\\dfrac19=\\dfrac{10}{3}+\\dfrac19$\n왼쪽을 완전제곱식으로 쓴다.\n$\\left(x-\\dfrac13\\right)^2=\\dfrac{10}{3}+\\dfrac19$\n오른쪽을 통분하여 계산한다.\n$\\left(x-\\dfrac13\\right)^2=\\dfrac{31}{9}$\n따라서 $x-\\dfrac13=\\pm\\dfrac{\\sqrt{31}}3$이고\n$x=\\dfrac{1\\pm\\sqrt{31}}3$이다.\n정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "소수를 없애고 (x-1/3)²=31/9를 만들어 두 해를 얻는다.",
+            "termId": 433
+          },
+          {
+            "term": "완전제곱식",
+            "quote": "양변에 $10$을 곱해 소수를 없앤다.\n$3x^2-2x-10=0$\n양변을 $3$으로 나누어 최고차항의 계수를 $1$로 만든다.\n$x^2-\\dfrac23x-\\dfrac{10}{3}=0$\n양변에 $\\dfrac{10}{3}$을 더해 정리한다.\n$x^2-\\dfrac23x=\\dfrac{10}{3}$\n완전제곱식이 되도록 양변에 $\\dfrac19$을 더한다.\n$x^2-\\dfrac23x+\\dfrac19=\\dfrac{10}{3}+\\dfrac19$\n왼쪽을 완전제곱식으로 쓴다.\n$\\left(x-\\dfrac13\\right)^2=\\dfrac{10}{3}+\\dfrac19$\n오른쪽을 통분하여 계산한다.\n$\\left(x-\\dfrac13\\right)^2=\\dfrac{31}{9}$\n따라서 $x-\\dfrac13=\\pm\\dfrac{\\sqrt{31}}3$이고\n$x=\\dfrac{1\\pm\\sqrt{31}}3$이다.\n정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "소수를 없애고 (x-1/3)²=31/9를 만들어 두 해를 얻는다.",
+            "termId": 59
+          },
+          {
+            "term": "제곱근",
+            "quote": "양변에 $10$을 곱해 소수를 없앤다.\n$3x^2-2x-10=0$\n양변을 $3$으로 나누어 최고차항의 계수를 $1$로 만든다.\n$x^2-\\dfrac23x-\\dfrac{10}{3}=0$\n양변에 $\\dfrac{10}{3}$을 더해 정리한다.\n$x^2-\\dfrac23x=\\dfrac{10}{3}$\n완전제곱식이 되도록 양변에 $\\dfrac19$을 더한다.\n$x^2-\\dfrac23x+\\dfrac19=\\dfrac{10}{3}+\\dfrac19$\n왼쪽을 완전제곱식으로 쓴다.\n$\\left(x-\\dfrac13\\right)^2=\\dfrac{10}{3}+\\dfrac19$\n오른쪽을 통분하여 계산한다.\n$\\left(x-\\dfrac13\\right)^2=\\dfrac{31}{9}$\n따라서 $x-\\dfrac13=\\pm\\dfrac{\\sqrt{31}}3$이고\n$x=\\dfrac{1\\pm\\sqrt{31}}3$이다.\n정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "소수를 없애고 (x-1/3)²=31/9를 만들어 두 해를 얻는다.",
+            "termId": 22
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "완전제곱 후 제곱근",
+        "condition": "소수를 없애고 (x-1/3)²=31/9를 만들어 두 해를 얻는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_a479aff9838a98ff8b71d03f0fdc232ed1fe6ce892928931587ea5e89eccd1dc",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aaa1b9f37c9bd0bade032cbd6d9b5e76f69e579fcaec6e1cb7e3e4c0368f58b0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "070f828015403aa105f08b05163b13fcb0832fe8792b5a481ba6a905175bc4b9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $ax^2+bx-c=0$은 최고차항의 계수가 $2$이고, 두 근이 $-1, 5$인 이차방정식이다. 이 때, $a+b-c$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "이차방정식 $ax^2+bx-c=0$은 최고차항의 계수가 $2$이고, 두 근이 $-1, 5$인 이차방정식이다. 이 때, $a+b-c$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "식의값",
+            "quote": "이차방정식 $ax^2+bx-c=0$은 최고차항의 계수가 $2$이고, 두 근이 $-1, 5$인 이차방정식이다. 이 때, $a+b-c$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "두 근이 $-1,5$이고 최고차항의 계수가 $2$이므로 식은\n$2(x+1)(x-5)=0$, 즉 $2x^2-8x-10=0$이다.\n이를 $ax^2+bx-c=0$과 비교하면 $a=2,\\ b=-8,\\ c=10$이다.\n따라서 $a+b-c=2-8-10=-16$이고 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2(x+1)(x-5)를 전개해 -c=-10임을 구별한다.",
+            "termId": 42
+          },
+          {
+            "term": "전개",
+            "quote": "두 근이 $-1,5$이고 최고차항의 계수가 $2$이므로 식은\n$2(x+1)(x-5)=0$, 즉 $2x^2-8x-10=0$이다.\n이를 $ax^2+bx-c=0$과 비교하면 $a=2,\\ b=-8,\\ c=10$이다.\n따라서 $a+b-c=2-8-10=-16$이고 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2(x+1)(x-5)를 전개해 -c=-10임을 구별한다.",
+            "termId": 41
+          },
+          {
+            "term": "계수비교",
+            "quote": "두 근이 $-1,5$이고 최고차항의 계수가 $2$이므로 식은\n$2(x+1)(x-5)=0$, 즉 $2x^2-8x-10=0$이다.\n이를 $ax^2+bx-c=0$과 비교하면 $a=2,\\ b=-8,\\ c=10$이다.\n따라서 $a+b-c=2-8-10=-16$이고 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2(x+1)(x-5)를 전개해 -c=-10임을 구별한다.",
+            "termId": 696
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근으로 계수 복원",
+        "condition": "2(x+1)(x-5)를 전개해 -c=-10임을 구별한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_7d81ebf3b5676f7b786a2adcd03b9cb2c29c78eb9a66f232ee0c0c73edb95306",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9ec809734f16154dbcd4c7adbe97d5cf19fce971b61ee580278cc4ab7e3840e9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ed53e7ab8eeb0b8607352c6fc017d3c1d009e961e9093cf980520402a4edf65a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $ax^2+bx+c=0$의 두 근의 비가 $1:3$일 때, $a, b, c$ 사이의 관계식으로 옳은 것은? [4.5점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "quote": "이차방정식 $ax^2+bx+c=0$의 두 근의 비가 $1:3$일 때, $a, b, c$ 사이의 관계식으로 옳은 것은? [4.5점]",
+            "src": "stem",
+            "termId": 50
+          },
+          {
+            "term": "관계",
+            "quote": "이차방정식 $ax^2+bx+c=0$의 두 근의 비가 $1:3$일 때, $a, b, c$ 사이의 관계식으로 옳은 것은? [4.5점]",
+            "src": "stem",
+            "termId": 306
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "두 근의 비가 $1:3$이므로 두 근을 $t,3t$라 두자. 근을 이용해 인수분해한다.\n$ax^2+bx+c=a(x-t)(x-3t)$\n곱을 전개하면 $a(x-t)(x-3t)=a(x^2-4tx+3t^2)$이다.\n같은 차수의 계수를 비교하면 $b=-4at,\\ c=3at^2$이다.\n$3b^2=3(-4at)^2=48a^2t^2$,\n$16ac=16a(3at^2)=48a^2t^2$이다.\n따라서 $3b^2=16ac$이고 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근을 t,3t라 두고 b=-4at,c=3at²에서 t를 소거한다.",
+            "termId": 42
+          },
+          {
+            "term": "전개",
+            "quote": "두 근의 비가 $1:3$이므로 두 근을 $t,3t$라 두자. 근을 이용해 인수분해한다.\n$ax^2+bx+c=a(x-t)(x-3t)$\n곱을 전개하면 $a(x-t)(x-3t)=a(x^2-4tx+3t^2)$이다.\n같은 차수의 계수를 비교하면 $b=-4at,\\ c=3at^2$이다.\n$3b^2=3(-4at)^2=48a^2t^2$,\n$16ac=16a(3at^2)=48a^2t^2$이다.\n따라서 $3b^2=16ac$이고 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근을 t,3t라 두고 b=-4at,c=3at²에서 t를 소거한다.",
+            "termId": 41
+          },
+          {
+            "term": "계수비교",
+            "quote": "두 근의 비가 $1:3$이므로 두 근을 $t,3t$라 두자. 근을 이용해 인수분해한다.\n$ax^2+bx+c=a(x-t)(x-3t)$\n곱을 전개하면 $a(x-t)(x-3t)=a(x^2-4tx+3t^2)$이다.\n같은 차수의 계수를 비교하면 $b=-4at,\\ c=3at^2$이다.\n$3b^2=3(-4at)^2=48a^2t^2$,\n$16ac=16a(3at^2)=48a^2t^2$이다.\n따라서 $3b^2=16ac$이고 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근을 t,3t라 두고 b=-4at,c=3at²에서 t를 소거한다.",
+            "termId": 696
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "quote": "이차방정식 $ax^2+bx+c=0$의 두 근의 비가 $1:3$일 때, $a, b, c$ 사이의 관계식으로 옳은 것은? [4.5점]",
+            "src": "stem",
+            "termId": 289
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근의 비로 계수관계",
+        "condition": "두 근을 t,3t라 두고 b=-4at,c=3at²에서 t를 소거한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_72e7d03ffb5e4d0f46ed050a8e4c547d85195b86f80f604e72310a804a4797d2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "057e48f238cd126d73e58b654eb3f49f7d333db80d2449499640061886a5a3b2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b5721b486d9710c0c883d7fc114add4c7a06731ff05418919f32d743b350600d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "quote": "오른쪽 그림과 같이 반지름의 길이가 $8\\,\\text{cm}$인 원에서 반지름의 길이를 $x\\,\\text{cm}$만큼 늘였더니 넓이가 $57\\pi\\,\\text{cm}^2$만큼 더 늘었다. 이때 $x$의 값을 구하면? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q10.png\" style=\"max-width: 260px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 152
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "quote": "오른쪽 그림과 같이 반지름의 길이가 $8\\,\\text{cm}$인 원에서 반지름의 길이를 $x\\,\\text{cm}$만큼 늘였더니 넓이가 $57\\pi\\,\\text{cm}^2$만큼 더 늘었다. 이때 $x$의 값을 구하면? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q10.png\" style=\"max-width: 260px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "quote": "반지름이 $8$에서 $8+x$로 늘어난다.\n넓이의 증가량은 $\\pi(8+x)^2-64\\pi=57\\pi$이다.\n양변을 $\\pi$로 나누면 $x^2+16x-57=0$이고 $(x+19)(x-3)=0$이다.\n증가한 길이이므로 $x>0$이고, 따라서 $x=3$이다.\n정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "π(8+x)²-64π=57π를 세워 양의 해3을 고른다.",
+            "termId": 299
+          },
+          {
+            "term": "넓이",
+            "quote": "반지름이 $8$에서 $8+x$로 늘어난다.\n넓이의 증가량은 $\\pi(8+x)^2-64\\pi=57\\pi$이다.\n양변을 $\\pi$로 나누면 $x^2+16x-57=0$이고 $(x+19)(x-3)=0$이다.\n증가한 길이이므로 $x>0$이고, 따라서 $x=3$이다.\n정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "π(8+x)²-64π=57π를 세워 양의 해3을 고른다.",
+            "termId": 213
+          },
+          {
+            "term": "인수분해",
+            "quote": "반지름이 $8$에서 $8+x$로 늘어난다.\n넓이의 증가량은 $\\pi(8+x)^2-64\\pi=57\\pi$이다.\n양변을 $\\pi$로 나누면 $x^2+16x-57=0$이고 $(x+19)(x-3)=0$이다.\n증가한 길이이므로 $x>0$이고, 따라서 $x=3$이다.\n정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "π(8+x)²-64π=57π를 세워 양의 해3을 고른다.",
+            "termId": 42
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원의 넓이 증가 방정식",
+        "condition": "π(8+x)²-64π=57π를 세워 양의 해3을 고른다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_e1253088f638c137c8fa3f70ad015f0fa972276a554fb7253d78d37192fbfbcf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "184fa618a625174e915a661f33bc105e21b69868318c42a4de0c135a5e4a9e0f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ab5edee9eaf8ed64943ca4ee0849f579ef2e4effcd447bb67a42b379d74f0792"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "$y=3x^2-11$",
+            "src": "choices",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "quote": "다음 이차함수 중 아래로 볼록한 그래프는? [3.5점]",
+            "src": "stem",
+            "termId": 107
+          },
+          {
+            "term": "판정",
+            "quote": "다음 이차함수 중 아래로 볼록한 그래프는? [3.5점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "quote": "이차함수 $y=ax^2+c$는 $a>0$이면 아래로 볼록한 모양으로 열린다.\n①부터 ④까지는 $x^2$의 계수가 음수이므로 아래로 볼록하지 않다.\n⑤는 $x^2$의 계수가 $3>0$이므로 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²의 계수가 양수인 ⑤를 고른다.",
+            "termId": 25
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "볼록성과 계수부호",
+        "condition": "x²의 계수가 양수인 ⑤를 고른다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_e46f5b6905f44772454c21741be6f745a618bd63619185de95c42d81de999f22",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ab0c7c0c9cfd2a8a3dca3cec28fd6bee662a4f80a6f10aca84714645cdb87e6e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "70ebfe23047e2b676293b753b2eeb99fb3266b153edee496f7c6624491b400e8"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "quote": "$y=x^2-(1-x)^2$",
+            "src": "choices",
+            "termId": 84
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "quote": "다음 중 이차함수가 아닌 것은? (4점)",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "판정",
+            "quote": "다음 중 이차함수가 아닌 것은? (4점)",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "각 식을 정리해 $x^2$의 계수를 확인한다.\n③은 $x^2-(1-x)^2=x^2-(1-2x+x^2)=2x-1$로 일차식이다.\n나머지 식들은 정리한 뒤에도 $x^2$의 계수가 0이 아니다.\n따라서 이차함수가 아닌 것은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²-(1-x)²=2x-1로 이차항이 상쇄된다.",
+            "termId": 41
+          },
+          {
+            "term": "차수",
+            "quote": "각 식을 정리해 $x^2$의 계수를 확인한다.\n③은 $x^2-(1-x)^2=x^2-(1-2x+x^2)=2x-1$로 일차식이다.\n나머지 식들은 정리한 뒤에도 $x^2$의 계수가 0이 아니다.\n따라서 이차함수가 아닌 것은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²-(1-x)²=2x-1로 이차항이 상쇄된다.",
+            "termId": 431
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "정리 후 이차함수 판정",
+        "condition": "x²-(1-x)²=2x-1로 이차항이 상쇄된다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_c34c9667c950a4d3a54f9eae6eec6b0b388979136cf38f65c8a2c64e580fb268",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f9f890f6db8e4069545d1652daa8545dcbf1d2f50b0d5bbf21180161312d15ed"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "faadb3de32ea61b19aa6c6d81012de8f2e9a169132fe235ab553b7b3a8dd2215"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "이차함수 $y=ax^2+bx+c$는 $x=-3$일 때, 최솟값이 $-4$이다. 이 함수의 그래프가 제 $4$ 사분면을 지나지 않을 때, 상수 $a$값의 범위는? (4점)",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "이차함수 $y=ax^2+bx+c$는 $x=-3$일 때, 최솟값이 $-4$이다. 이 함수의 그래프가 제 $4$ 사분면을 지나지 않을 때, 상수 $a$값의 범위는? (4점)",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "범위",
+            "quote": "이차함수 $y=ax^2+bx+c$는 $x=-3$일 때, 최솟값이 $-4$이다. 이 함수의 그래프가 제 $4$ 사분면을 지나지 않을 때, 상수 $a$값의 범위는? (4점)",
+            "src": "stem",
+            "termId": 297
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "꼭짓점이 $(-3,-4)$이고 최솟값이 $-4$이므로 $y=a(x+3)^2-4$이며 $a>0$이다.\n$x>0$에서는 $(x+3)^2>9$이므로 $y>9a-4$이다.\n따라서 $9a-4\\ge0$이면 모든 $x>0$에서 $y\\ge0$이어서 제4사분면을 지나지 않는다.\n반대로 $9a-4<0$이면 $x=0$에 가까운 양수에서 $y<0$이므로 제4사분면을 지난다.\n그러므로 $a\\ge\\dfrac49$이고 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형 a(x+3)²-4에서 x>0의 음수값 배제 경계9a-4≥0을 정한다.",
+            "termId": 59
+          },
+          {
+            "term": "부등식",
+            "quote": "꼭짓점이 $(-3,-4)$이고 최솟값이 $-4$이므로 $y=a(x+3)^2-4$이며 $a>0$이다.\n$x>0$에서는 $(x+3)^2>9$이므로 $y>9a-4$이다.\n따라서 $9a-4\\ge0$이면 모든 $x>0$에서 $y\\ge0$이어서 제4사분면을 지나지 않는다.\n반대로 $9a-4<0$이면 $x=0$에 가까운 양수에서 $y<0$이므로 제4사분면을 지난다.\n그러므로 $a\\ge\\dfrac49$이고 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점형 a(x+3)²-4에서 x>0의 음수값 배제 경계9a-4≥0을 정한다.",
+            "termId": 63
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "quote": "이차함수 $y=ax^2+bx+c$는 $x=-3$일 때, 최솟값이 $-4$이다. 이 함수의 그래프가 제 $4$ 사분면을 지나지 않을 때, 상수 $a$값의 범위는? (4점)",
+            "src": "stem",
+            "termId": 149
+          },
+          {
+            "term": "최솟값",
+            "quote": "이차함수 $y=ax^2+bx+c$는 $x=-3$일 때, 최솟값이 $-4$이다. 이 함수의 그래프가 제 $4$ 사분면을 지나지 않을 때, 상수 $a$값의 범위는? (4점)",
+            "src": "stem",
+            "termId": 128
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사분면 제한으로 계수범위",
+        "condition": "꼭짓점형 a(x+3)²-4에서 x>0의 음수값 배제 경계9a-4≥0을 정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_04bbec60a1550478362536e531675e9351bc90c1a79c701c2a73ea8c57566e18",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2932d3750aaf73a0229b4e9ccedeffd9bcf60575c34c75457713bbc32354a835"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "62c40e53be240eac16087352680df13ba4fbfd1f7ab8cbddbab8e14107dc02ce"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "이차함수 $y=-x^2+2x+k$의 최댓값이 $6$일 때, 상수 $k$의 값은? [4.5점]",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "quote": "이차함수 $y=-x^2+2x+k$의 최댓값이 $6$일 때, 상수 $k$의 값은? [4.5점]",
+            "src": "stem",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "완전제곱식으로 고친다.\n$y=-x^2+2x+k=-(x-1)^2+k+1$\n꼭짓점의 $y$좌표인 최댓값이 $6$이므로 $k+1=6$이다.\n따라서 $k=5$이고 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "-(x-1)²+k+1의 최댓값이6이므로 k=5이다.",
+            "termId": 59
+          },
+          {
+            "term": "최댓값",
+            "quote": "완전제곱식으로 고친다.\n$y=-x^2+2x+k=-(x-1)^2+k+1$\n꼭짓점의 $y$좌표인 최댓값이 $6$이므로 $k+1=6$이다.\n따라서 $k=5$이고 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "-(x-1)²+k+1의 최댓값이6이므로 k=5이다.",
+            "termId": 127
+          }
+        ],
+        "condition": [
+          {
+            "term": "최댓값",
+            "quote": "이차함수 $y=-x^2+2x+k$의 최댓값이 $6$일 때, 상수 $k$의 값은? [4.5점]",
+            "src": "stem",
+            "termId": 127
+          }
+        ]
+      },
+      "reasons": {
+        "method": "최댓값으로 상수 결정",
+        "condition": "-(x-1)²+k+1의 최댓값이6이므로 k=5이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_623bbbc0c432810846284b0e34cda36f69bed6248d7b9775149119c90d1207ea",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "69149126907dc6267f30c0dd84bdfe3c127bba4b415b71e25a0704aeb4e5988b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0d1c9ce3a55c37846a5b0f627f6e3652f927b556d30f060d299e9a914f7cfc33"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "다음 그림과 같이 이차함수 $y=x^2$의 그래프와 일차함수 $y=2x+3$의 그래프가 두 점 $\\mathrm{A, B}$에서 만날 때, $\\triangle\\mathrm{AOB}$의 넓이는? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q15.png\" style=\"max-width: 300px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "일차함수",
+            "quote": "다음 그림과 같이 이차함수 $y=x^2$의 그래프와 일차함수 $y=2x+3$의 그래프가 두 점 $\\mathrm{A, B}$에서 만날 때, $\\triangle\\mathrm{AOB}$의 넓이는? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q15.png\" style=\"max-width: 300px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 90
+          },
+          {
+            "term": "삼각형",
+            "quote": "다음 그림과 같이 이차함수 $y=x^2$의 그래프와 일차함수 $y=2x+3$의 그래프가 두 점 $\\mathrm{A, B}$에서 만날 때, $\\triangle\\mathrm{AOB}$의 넓이는? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q15.png\" style=\"max-width: 300px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 158
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "quote": "다음 그림과 같이 이차함수 $y=x^2$의 그래프와 일차함수 $y=2x+3$의 그래프가 두 점 $\\mathrm{A, B}$에서 만날 때, $\\triangle\\mathrm{AOB}$의 넓이는? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q15.png\" style=\"max-width: 300px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 213
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "quote": "두 그래프의 교점에서는 $x^2=2x+3$이다.\n$x^2-2x-3=(x-3)(x+1)=0$이므로 $A=(-1,1),\\ B=(3,9)$이다.\n직선 $y=2x+3$이 $y$축과 만나는 점을 $P=(0,3)$이라 하면, $A,P,B$는 한 직선 위에 있다.\n세로인 $OP$를 밑변으로 보면, $A$와 $B$에서 $y$축까지의 가로 거리는 각각 $1,3$이다.\n따라서 삼각형의 넓이는 $\\dfrac12\\cdot3\\cdot1+\\dfrac12\\cdot3\\cdot3=6$이다.\n정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²=2x+3으로 교점을 정하고 y절편(0,3)을 이용해 두 삼각형 넓이를 더한다.",
+            "termId": 67
+          },
+          {
+            "term": "인수분해",
+            "quote": "두 그래프의 교점에서는 $x^2=2x+3$이다.\n$x^2-2x-3=(x-3)(x+1)=0$이므로 $A=(-1,1),\\ B=(3,9)$이다.\n직선 $y=2x+3$이 $y$축과 만나는 점을 $P=(0,3)$이라 하면, $A,P,B$는 한 직선 위에 있다.\n세로인 $OP$를 밑변으로 보면, $A$와 $B$에서 $y$축까지의 가로 거리는 각각 $1,3$이다.\n따라서 삼각형의 넓이는 $\\dfrac12\\cdot3\\cdot1+\\dfrac12\\cdot3\\cdot3=6$이다.\n정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²=2x+3으로 교점을 정하고 y절편(0,3)을 이용해 두 삼각형 넓이를 더한다.",
+            "termId": 42
+          },
+          {
+            "term": "삼각형",
+            "quote": "두 그래프의 교점에서는 $x^2=2x+3$이다.\n$x^2-2x-3=(x-3)(x+1)=0$이므로 $A=(-1,1),\\ B=(3,9)$이다.\n직선 $y=2x+3$이 $y$축과 만나는 점을 $P=(0,3)$이라 하면, $A,P,B$는 한 직선 위에 있다.\n세로인 $OP$를 밑변으로 보면, $A$와 $B$에서 $y$축까지의 가로 거리는 각각 $1,3$이다.\n따라서 삼각형의 넓이는 $\\dfrac12\\cdot3\\cdot1+\\dfrac12\\cdot3\\cdot3=6$이다.\n정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²=2x+3으로 교점을 정하고 y절편(0,3)을 이용해 두 삼각형 넓이를 더한다.",
+            "termId": 158
+          },
+          {
+            "term": "넓이",
+            "quote": "두 그래프의 교점에서는 $x^2=2x+3$이다.\n$x^2-2x-3=(x-3)(x+1)=0$이므로 $A=(-1,1),\\ B=(3,9)$이다.\n직선 $y=2x+3$이 $y$축과 만나는 점을 $P=(0,3)$이라 하면, $A,P,B$는 한 직선 위에 있다.\n세로인 $OP$를 밑변으로 보면, $A$와 $B$에서 $y$축까지의 가로 거리는 각각 $1,3$이다.\n따라서 삼각형의 넓이는 $\\dfrac12\\cdot3\\cdot1+\\dfrac12\\cdot3\\cdot3=6$이다.\n정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²=2x+3으로 교점을 정하고 y절편(0,3)을 이용해 두 삼각형 넓이를 더한다.",
+            "termId": 213
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "직선·포물선 교점과 넓이",
+        "condition": "x²=2x+3으로 교점을 정하고 y절편(0,3)을 이용해 두 삼각형 넓이를 더한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_18bec8d8d3272bb16fd663a072a0ed40b676e3b1a69d8bebddb6694e08a9a908",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d5152a277ebfb4042f75c02fd6733820aac292bcfd44129b4fca4d1e142115d3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e100cf91fb73093d76e4978a420cb93eb3878fc78c33cefc1319c0663f5e1471"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "다음 이차함수들의 그래프에 대한 설명으로 옳지 않은 것은? (4점)<br><br>ㄱ. $y=\\dfrac{1}{3}x^2$ \\quad ㄴ. $y=-\\dfrac{2}{3}x^2$ \\quad ㄷ. $y=2x^2$<br>ㄹ. $y=-2x^2$ \\quad ㅁ. $y=\\dfrac{3}{2}x^2$ \\quad ㅂ. $y=-3x^2$",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "quote": "다음 이차함수들의 그래프에 대한 설명으로 옳지 않은 것은? (4점)<br><br>ㄱ. $y=\\dfrac{1}{3}x^2$ \\quad ㄴ. $y=-\\dfrac{2}{3}x^2$ \\quad ㄷ. $y=2x^2$<br>ㄹ. $y=-2x^2$ \\quad ㅁ. $y=\\dfrac{3}{2}x^2$ \\quad ㅂ. $y=-3x^2$",
+            "src": "stem",
+            "termId": 107
+          },
+          {
+            "term": "판정",
+            "quote": "다음 이차함수들의 그래프에 대한 설명으로 옳지 않은 것은? (4점)<br><br>ㄱ. $y=\\dfrac{1}{3}x^2$ \\quad ㄴ. $y=-\\dfrac{2}{3}x^2$ \\quad ㄷ. $y=2x^2$<br>ㄹ. $y=-2x^2$ \\quad ㅁ. $y=\\dfrac{3}{2}x^2$ \\quad ㅂ. $y=-3x^2$",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "quote": "각 그래프는 $y=ax^2$ 꼴이므로 모두 원점을 지나고 대칭축은 $y$축이다.\n⑤는 대칭축이 모두 $x$축이라고 설명하므로 옳지 않다.\n따라서 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "y=ax²의 공통 대칭축은 y축이므로 x축이라는 설명이 틀리다.",
+            "termId": 110
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "기본 포물선 성질",
+        "condition": "y=ax²의 공통 대칭축은 y축이므로 x축이라는 설명이 틀리다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_25944c6215a39e9c34488b699dda03df58f9cda3f60688b655201df2cc427a9b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e02ce95790b0f8158a9422858bf7bce7348cbc5f061c96a78d3d6527a2febc3a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "38f5415e5f11927aaf6036eacfed5fa241f46209b719a520801e2b441abcf8db"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "이차함수 $y=ax^2+bx+c(a \\ne 0)$의 그래프에 대한 설명 중 옳은 것은? (4점)",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "quote": "이차함수 $y=ax^2+bx+c(a \\ne 0)$의 그래프에 대한 설명 중 옳은 것은? (4점)",
+            "src": "stem",
+            "termId": 107
+          },
+          {
+            "term": "판정",
+            "quote": "이차함수 $y=ax^2+bx+c(a \\ne 0)$의 그래프에 대한 설명 중 옳은 것은? (4점)",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "quote": "$x=0$을 대입하면 $y=c$이다.\n따라서 그래프는 항상 점 $(0,c)$를 지나므로 정답은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x=0에서 y=c이므로 (0,c)를 반드시 지난다.",
+            "termId": 53
+          }
+        ],
+        "condition": [
+          {
+            "term": "부호",
+            "quote": "이차함수 $y=ax^2+bx+c(a \\ne 0)$의 그래프에 대한 설명 중 옳은 것은? (4점)",
+            "src": "stem",
+            "termId": 25
+          },
+          {
+            "term": "범위",
+            "quote": "$x > -\\dfrac{b}{2a}$인 범위에서 $x$의 값이 증가할 때, $y$의 값도 증가한다.",
+            "src": "choices",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "y절편의 의미",
+        "condition": "x=0에서 y=c이므로 (0,c)를 반드시 지난다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_231b62358932249839a162a9c7dc0d7343d51bef6986cd7d27de276baa690ef5",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d157842be62242712b4bd48c9df6c02e88875704316f2b2410286b7398434160"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "157c6c16105cfed6c441683085c744cd212cee2701039e51eaa1279e7014954d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "quote": "일차함수 $y=ax+b$의 그래프가 아래 그림과 같을 때, $y=ax^2+bx+ab$의 그래프로 가능한 것은? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q18.png\" style=\"max-width: 420px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 90
+          },
+          {
+            "term": "이차함수",
+            "quote": "일차함수 $y=ax+b$의 그래프가 아래 그림과 같을 때, $y=ax^2+bx+ab$의 그래프로 가능한 것은? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q18.png\" style=\"max-width: 420px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "quote": "일차함수 $y=ax+b$의 그래프가 아래 그림과 같을 때, $y=ax^2+bx+ab$의 그래프로 가능한 것은? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q18.png\" style=\"max-width: 420px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 107
+          },
+          {
+            "term": "판정",
+            "quote": "일차함수 $y=ax+b$의 그래프가 아래 그림과 같을 때, $y=ax^2+bx+ab$의 그래프로 가능한 것은? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q18.png\" style=\"max-width: 420px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "quote": "그림의 일차함수는 오른쪽으로 올라가고 $y$축과 양의 위치에서 만나므로 $a>0, b>0$이다.\n$y=ax^2+bx+ab$에서 $a>0$이므로 포물선은 위로 열린다. 대칭축은 $x=-\\dfrac b{2a}<0$이고, $y$절편은 $x=0$을 대입해 $y=ab>0$이다.\n예를 들어 $a=b=1$이면 $y=x^2+x+1=(x+\\dfrac12)^2+\\dfrac34$이므로 꼭짓점은 $(-\\dfrac12,\\dfrac34)$이다. 따라서 위 조건을 만족하면서 꼭짓점이 $x$축 위에 있는 그래프도 가능하다.\n주어진 그래프들 중 위로 열리고 대칭축이 $y$축의 왼쪽에 있으며 $y$절편이 양수인 것은 ⑤이다. 따라서 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "a,b>0에서 위로열림·축왼쪽·양의y절편을 만족하는⑤를 고른다.",
+            "termId": 25
+          },
+          {
+            "term": "축",
+            "quote": "그림의 일차함수는 오른쪽으로 올라가고 $y$축과 양의 위치에서 만나므로 $a>0, b>0$이다.\n$y=ax^2+bx+ab$에서 $a>0$이므로 포물선은 위로 열린다. 대칭축은 $x=-\\dfrac b{2a}<0$이고, $y$절편은 $x=0$을 대입해 $y=ab>0$이다.\n예를 들어 $a=b=1$이면 $y=x^2+x+1=(x+\\dfrac12)^2+\\dfrac34$이므로 꼭짓점은 $(-\\dfrac12,\\dfrac34)$이다. 따라서 위 조건을 만족하면서 꼭짓점이 $x$축 위에 있는 그래프도 가능하다.\n주어진 그래프들 중 위로 열리고 대칭축이 $y$축의 왼쪽에 있으며 $y$절편이 양수인 것은 ⑤이다. 따라서 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "a,b>0에서 위로열림·축왼쪽·양의y절편을 만족하는⑤를 고른다.",
+            "termId": 340
+          },
+          {
+            "term": "절편",
+            "quote": "그림의 일차함수는 오른쪽으로 올라가고 $y$축과 양의 위치에서 만나므로 $a>0, b>0$이다.\n$y=ax^2+bx+ab$에서 $a>0$이므로 포물선은 위로 열린다. 대칭축은 $x=-\\dfrac b{2a}<0$이고, $y$절편은 $x=0$을 대입해 $y=ab>0$이다.\n예를 들어 $a=b=1$이면 $y=x^2+x+1=(x+\\dfrac12)^2+\\dfrac34$이므로 꼭짓점은 $(-\\dfrac12,\\dfrac34)$이다. 따라서 위 조건을 만족하면서 꼭짓점이 $x$축 위에 있는 그래프도 가능하다.\n주어진 그래프들 중 위로 열리고 대칭축이 $y$축의 왼쪽에 있으며 $y$절편이 양수인 것은 ⑤이다. 따라서 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "a,b>0에서 위로열림·축왼쪽·양의y절편을 만족하는⑤를 고른다.",
+            "termId": 151
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "일차그래프 부호를 이차그래프로",
+        "condition": "a,b>0에서 위로열림·축왼쪽·양의y절편을 만족하는⑤를 고른다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ebc947993a21685557e0051499812b10391271838a8e5122f92f8ef94cb46616",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d993bc1b64d625bd21b1760ce3a65f0f85afa1de98929002955cd03ab9f3eaf3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0370c9b3fcb93dcc0f5a3e1cde332df1808d9a8c81ee47d504afd195a8ead185"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "이차함수 $y=ax^2(a \\ne 0)$의 그래프를 $x$축에 대하여 대칭시킨 후 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $q$만큼 평행이동한 포물선의 식이 $y=-x^2+px+3$이다. 이때, $a+p+q$의 값은? (4점)",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "이차함수 $y=ax^2(a \\ne 0)$의 그래프를 $x$축에 대하여 대칭시킨 후 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $q$만큼 평행이동한 포물선의 식이 $y=-x^2+px+3$이다. 이때, $a+p+q$의 값은? (4점)",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "이차함수 $y=ax^2(a \\ne 0)$의 그래프를 $x$축에 대하여 대칭시킨 후 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $q$만큼 평행이동한 포물선의 식이 $y=-x^2+px+3$이다. 이때, $a+p+q$의 값은? (4점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "quote": "$y=ax^2$을 $x$축에 대하여 대칭시키면 $y=-ax^2$이다.\n이를 $x$방향으로 $-2$만큼, 즉 왼쪽으로 $2$만큼 평행이동하고 $y$방향으로 $q$만큼 옮기면 $y=-a(x+2)^2+q$이다.\n전개하면 $y=-ax^2-4ax-4a+q$이다.\n$y=-x^2+px+3$과 계수를 비교하여 $a=1,\\ p=-4,\\ q=7$을 얻는다.\n따라서 $a+p+q=1-4+7=4$이고 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "이동한 식 -a(x+2)²+q를 전개해 a=1,p=-4,q=7을 비교한다.",
+            "termId": 209
+          },
+          {
+            "term": "평행이동",
+            "quote": "$y=ax^2$을 $x$축에 대하여 대칭시키면 $y=-ax^2$이다.\n이를 $x$방향으로 $-2$만큼, 즉 왼쪽으로 $2$만큼 평행이동하고 $y$방향으로 $q$만큼 옮기면 $y=-a(x+2)^2+q$이다.\n전개하면 $y=-ax^2-4ax-4a+q$이다.\n$y=-x^2+px+3$과 계수를 비교하여 $a=1,\\ p=-4,\\ q=7$을 얻는다.\n따라서 $a+p+q=1-4+7=4$이고 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "이동한 식 -a(x+2)²+q를 전개해 a=1,p=-4,q=7을 비교한다.",
+            "termId": 210
+          },
+          {
+            "term": "계수비교",
+            "quote": "$y=ax^2$을 $x$축에 대하여 대칭시키면 $y=-ax^2$이다.\n이를 $x$방향으로 $-2$만큼, 즉 왼쪽으로 $2$만큼 평행이동하고 $y$방향으로 $q$만큼 옮기면 $y=-a(x+2)^2+q$이다.\n전개하면 $y=-ax^2-4ax-4a+q$이다.\n$y=-x^2+px+3$과 계수를 비교하여 $a=1,\\ p=-4,\\ q=7$을 얻는다.\n따라서 $a+p+q=1-4+7=4$이고 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "이동한 식 -a(x+2)²+q를 전개해 a=1,p=-4,q=7을 비교한다.",
+            "termId": 696
+          }
+        ],
+        "condition": [
+          {
+            "term": "축대칭",
+            "quote": "이차함수 $y=ax^2(a \\ne 0)$의 그래프를 $x$축에 대하여 대칭시킨 후 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $q$만큼 평행이동한 포물선의 식이 $y=-x^2+px+3$이다. 이때, $a+p+q$의 값은? (4점)",
+            "src": "stem",
+            "termId": 629
+          },
+          {
+            "term": "범위",
+            "quote": "이차함수 $y=ax^2(a \\ne 0)$의 그래프를 $x$축에 대하여 대칭시킨 후 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $q$만큼 평행이동한 포물선의 식이 $y=-x^2+px+3$이다. 이때, $a+p+q$의 값은? (4점)",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "대칭·평행이동 후 계수",
+        "condition": "이동한 식 -a(x+2)²+q를 전개해 a=1,p=-4,q=7을 비교한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_2f095eb9732f24303eabdb6daf821ebecef600276326fefdb8cf21edc43396fb",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "987a61ca04ab46e90a0e49622de5d035d7f862d807e9d3853a3a14c6824b63de"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fb3d3cef315a2d9ffdc5dcfe60fdddcccd31940958089aaf6aa2ab752efe5439"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "다음 이차함수 그래프의 식은? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q20.png\" style=\"max-width: 320px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "그래프",
+            "quote": "다음 이차함수 그래프의 식은? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q20.png\" style=\"max-width: 320px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 107
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수식",
+            "quote": "다음 이차함수 그래프의 식은? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q20.png\" style=\"max-width: 320px; display: block; margin: 10px 0;\">",
+            "src": "stem",
+            "termId": 332
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "quote": "그림에서 포물선은 $(3,5)$를 지난다.\n$y=ax^2$에 대입하면 $5=9a$이므로 $a=\\dfrac59$이다.\n따라서 식은 $y=\\dfrac59x^2$이고 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의(3,5)를 y=ax²에 대입해 a=5/9를 얻는다.",
+            "termId": 53
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "한 점으로 이차항계수",
+        "condition": "그림의(3,5)를 y=ax²에 대입해 a=5/9를 얻는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e1ba9bcb9ad3179025204de06705a1b7ce38c0115c103ca62fd33c272db38b12",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4a1b66793c3e9793d7e1e1aed97e85ccd66fa8de4ed2b5b147f2a14fa59bbe4d"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "[서술형 1] 이차방정식 $x^2+ax-3a+4=0$의 한 근이 $2$일 때, $a$의 값과 다른 한 근을 구하고 그 과정을 서술하시오. [총 4점]<br><br>(1) $a$의 값을 구하는 과정을 서술하시오. [2점]<br><br>(2) 다른 한 근을 구하는 과정을 서술하시오. [2점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "[서술형 1] 이차방정식 $x^2+ax-3a+4=0$의 한 근이 $2$일 때, $a$의 값과 다른 한 근을 구하고 그 과정을 서술하시오. [총 4점]<br><br>(1) $a$의 값을 구하는 과정을 서술하시오. [2점]<br><br>(2) 다른 한 근을 구하는 과정을 서술하시오. [2점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "해",
+            "quote": "[서술형 1] 이차방정식 $x^2+ax-3a+4=0$의 한 근이 $2$일 때, $a$의 값과 다른 한 근을 구하고 그 과정을 서술하시오. [총 4점]<br><br>(1) $a$의 값을 구하는 과정을 서술하시오. [2점]<br><br>(2) 다른 한 근을 구하는 과정을 서술하시오. [2점]",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "quote": "한 근이 $2$이므로 원래 식에 $x=2$를 대입한다.\n$4+2a-3a+4=0$에서 $8-a=0$, 따라서 $a=8$이다.\n식을 정리하면 $x^2+8x-20=(x-2)(x+10)=0$이다.\n이미 한 근이 $2$이므로 다른 한 근은 $-10$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x=2를 대입해 a=8을 구한 뒤 (x-2)(x+10)으로 분해한다.",
+            "termId": 53
+          },
+          {
+            "term": "인수분해",
+            "quote": "한 근이 $2$이므로 원래 식에 $x=2$를 대입한다.\n$4+2a-3a+4=0$에서 $8-a=0$, 따라서 $a=8$이다.\n식을 정리하면 $x^2+8x-20=(x-2)(x+10)=0$이다.\n이미 한 근이 $2$이므로 다른 한 근은 $-10$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x=2를 대입해 a=8을 구한 뒤 (x-2)(x+10)으로 분해한다.",
+            "termId": 42
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "한 근으로 계수와 다른근",
+        "condition": "x=2를 대입해 a=8을 구한 뒤 (x-2)(x+10)으로 분해한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_5d9d1a41caa03c89313eba8d4b53f3f04a598073766bcb87997f5e8421a0477e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cf8479cad44d2d070f9234b88d21e66daabd4f4493ad73f94e957634e0fed631"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "quote": "[서술형 2] 오른쪽 그림과 같이 일차함수 $y=3x$의 그래프 위에 두 점 $\\mathrm{A, P}$가 있다. 두 점 $\\mathrm{A, P}$에서 $x$축 위에 내린 수선의 발을 각각 $\\mathrm{C, Q}$라 하고, 점 $\\mathrm{P}$에서 $\\overline{\\mathrm{AC}}$에 내린 수선의 발을 $\\mathrm{R}$라고 하자. 점 $\\mathrm{A}$의 좌표가 $(10, 30)$일 때, 다음 물음에 답하여라. [총 6점]<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/s02.png\" style=\"max-width: 260px; display: block; margin: 10px 0;\"><br><br>(1) $\\triangle\\mathrm{APR}$의 넓이가 $24$일 때, 점 $\\mathrm{P}$의 좌표를 구하는 과정을 서술하시오. [4점]<br><br>(2) $\\triangle\\mathrm{POQ}$의 넓이는 $\\triangle\\mathrm{APR}$의 넓이의 몇 배인지 그 과정을 서술하시오. [2점]",
+            "src": "stem",
+            "termId": 90
+          },
+          {
+            "term": "삼각형",
+            "quote": "[서술형 2] 오른쪽 그림과 같이 일차함수 $y=3x$의 그래프 위에 두 점 $\\mathrm{A, P}$가 있다. 두 점 $\\mathrm{A, P}$에서 $x$축 위에 내린 수선의 발을 각각 $\\mathrm{C, Q}$라 하고, 점 $\\mathrm{P}$에서 $\\overline{\\mathrm{AC}}$에 내린 수선의 발을 $\\mathrm{R}$라고 하자. 점 $\\mathrm{A}$의 좌표가 $(10, 30)$일 때, 다음 물음에 답하여라. [총 6점]<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/s02.png\" style=\"max-width: 260px; display: block; margin: 10px 0;\"><br><br>(1) $\\triangle\\mathrm{APR}$의 넓이가 $24$일 때, 점 $\\mathrm{P}$의 좌표를 구하는 과정을 서술하시오. [4점]<br><br>(2) $\\triangle\\mathrm{POQ}$의 넓이는 $\\triangle\\mathrm{APR}$의 넓이의 몇 배인지 그 과정을 서술하시오. [2점]",
+            "src": "stem",
+            "termId": 158
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "quote": "[서술형 2] 오른쪽 그림과 같이 일차함수 $y=3x$의 그래프 위에 두 점 $\\mathrm{A, P}$가 있다. 두 점 $\\mathrm{A, P}$에서 $x$축 위에 내린 수선의 발을 각각 $\\mathrm{C, Q}$라 하고, 점 $\\mathrm{P}$에서 $\\overline{\\mathrm{AC}}$에 내린 수선의 발을 $\\mathrm{R}$라고 하자. 점 $\\mathrm{A}$의 좌표가 $(10, 30)$일 때, 다음 물음에 답하여라. [총 6점]<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/s02.png\" style=\"max-width: 260px; display: block; margin: 10px 0;\"><br><br>(1) $\\triangle\\mathrm{APR}$의 넓이가 $24$일 때, 점 $\\mathrm{P}$의 좌표를 구하는 과정을 서술하시오. [4점]<br><br>(2) $\\triangle\\mathrm{POQ}$의 넓이는 $\\triangle\\mathrm{APR}$의 넓이의 몇 배인지 그 과정을 서술하시오. [2점]",
+            "src": "stem",
+            "termId": 148
+          },
+          {
+            "term": "넓이",
+            "quote": "[서술형 2] 오른쪽 그림과 같이 일차함수 $y=3x$의 그래프 위에 두 점 $\\mathrm{A, P}$가 있다. 두 점 $\\mathrm{A, P}$에서 $x$축 위에 내린 수선의 발을 각각 $\\mathrm{C, Q}$라 하고, 점 $\\mathrm{P}$에서 $\\overline{\\mathrm{AC}}$에 내린 수선의 발을 $\\mathrm{R}$라고 하자. 점 $\\mathrm{A}$의 좌표가 $(10, 30)$일 때, 다음 물음에 답하여라. [총 6점]<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/s02.png\" style=\"max-width: 260px; display: block; margin: 10px 0;\"><br><br>(1) $\\triangle\\mathrm{APR}$의 넓이가 $24$일 때, 점 $\\mathrm{P}$의 좌표를 구하는 과정을 서술하시오. [4점]<br><br>(2) $\\triangle\\mathrm{POQ}$의 넓이는 $\\triangle\\mathrm{APR}$의 넓이의 몇 배인지 그 과정을 서술하시오. [2점]",
+            "src": "stem",
+            "termId": 213
+          },
+          {
+            "term": "비",
+            "quote": "[서술형 2] 오른쪽 그림과 같이 일차함수 $y=3x$의 그래프 위에 두 점 $\\mathrm{A, P}$가 있다. 두 점 $\\mathrm{A, P}$에서 $x$축 위에 내린 수선의 발을 각각 $\\mathrm{C, Q}$라 하고, 점 $\\mathrm{P}$에서 $\\overline{\\mathrm{AC}}$에 내린 수선의 발을 $\\mathrm{R}$라고 하자. 점 $\\mathrm{A}$의 좌표가 $(10, 30)$일 때, 다음 물음에 답하여라. [총 6점]<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/s02.png\" style=\"max-width: 260px; display: block; margin: 10px 0;\"><br><br>(1) $\\triangle\\mathrm{APR}$의 넓이가 $24$일 때, 점 $\\mathrm{P}$의 좌표를 구하는 과정을 서술하시오. [4점]<br><br>(2) $\\triangle\\mathrm{POQ}$의 넓이는 $\\triangle\\mathrm{APR}$의 넓이의 몇 배인지 그 과정을 서술하시오. [2점]",
+            "src": "stem",
+            "termId": 289
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "quote": "$P$가 $y=3x$ 위에 있으므로 $P=(t,3t)$라 두자. 그림에서 $0<t<10$이다.\n$R$은 $x=10$인 선분 $AC$ 위의 수선의 발이므로 $R=(10,3t)$이다.\n따라서 $AR=30-3t=3(10-t)$, $PR=10-t$이다.\n$\\triangle APR$의 넓이가 $24$이므로 $\\dfrac12\\cdot3(10-t)(10-t)=24$,\n$(10-t)^2=16$이다.\n$0<t<10$이므로 $10-t=4$, 따라서 $t=6$이고 $P=(6,18)$이다.\n또 $Q=(6,0)$이므로 $\\triangle POQ$의 넓이는 $\\dfrac12\\cdot6\\cdot18=54$이다.\n$\\dfrac{54}{24}=\\dfrac94$이므로 $\\triangle POQ$의 넓이는 $\\triangle APR$ 넓이의 $\\dfrac94$배이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "P=(t,3t)로 두고 삼각형 넓이3(10-t)²/2=24에서 허용 t=6을 고른다.",
+            "termId": 299
+          },
+          {
+            "term": "제곱근",
+            "quote": "$P$가 $y=3x$ 위에 있으므로 $P=(t,3t)$라 두자. 그림에서 $0<t<10$이다.\n$R$은 $x=10$인 선분 $AC$ 위의 수선의 발이므로 $R=(10,3t)$이다.\n따라서 $AR=30-3t=3(10-t)$, $PR=10-t$이다.\n$\\triangle APR$의 넓이가 $24$이므로 $\\dfrac12\\cdot3(10-t)(10-t)=24$,\n$(10-t)^2=16$이다.\n$0<t<10$이므로 $10-t=4$, 따라서 $t=6$이고 $P=(6,18)$이다.\n또 $Q=(6,0)$이므로 $\\triangle POQ$의 넓이는 $\\dfrac12\\cdot6\\cdot18=54$이다.\n$\\dfrac{54}{24}=\\dfrac94$이므로 $\\triangle POQ$의 넓이는 $\\triangle APR$ 넓이의 $\\dfrac94$배이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "P=(t,3t)로 두고 삼각형 넓이3(10-t)²/2=24에서 허용 t=6을 고른다.",
+            "termId": 22
+          },
+          {
+            "term": "넓이",
+            "quote": "$P$가 $y=3x$ 위에 있으므로 $P=(t,3t)$라 두자. 그림에서 $0<t<10$이다.\n$R$은 $x=10$인 선분 $AC$ 위의 수선의 발이므로 $R=(10,3t)$이다.\n따라서 $AR=30-3t=3(10-t)$, $PR=10-t$이다.\n$\\triangle APR$의 넓이가 $24$이므로 $\\dfrac12\\cdot3(10-t)(10-t)=24$,\n$(10-t)^2=16$이다.\n$0<t<10$이므로 $10-t=4$, 따라서 $t=6$이고 $P=(6,18)$이다.\n또 $Q=(6,0)$이므로 $\\triangle POQ$의 넓이는 $\\dfrac12\\cdot6\\cdot18=54$이다.\n$\\dfrac{54}{24}=\\dfrac94$이므로 $\\triangle POQ$의 넓이는 $\\triangle APR$ 넓이의 $\\dfrac94$배이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "P=(t,3t)로 두고 삼각형 넓이3(10-t)²/2=24에서 허용 t=6을 고른다.",
+            "termId": 213
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "직선 위 점의 넓이 조건",
+        "condition": "P=(t,3t)로 두고 삼각형 넓이3(10-t)²/2=24에서 허용 t=6을 고른다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_25263e38d2b18d29560614b3ac2a73ba2df2b65c802cb41726e8a3dc7d46e552",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "13503928dfd8a0aeefa2d1362c314aad008b7ed2173b7529aa17c5904d5b0fcd"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "[서술형 3] 이차함수 $y=2x^2-8x+k$의 그래프의 꼭지점이 직선 $y=-3x-5$ 위에 있을 때, 상수 $k$의 값과 이 이차함수의 최솟값을 구하는 과정을 서술하시오. [총 5점]",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "직선",
+            "quote": "[서술형 3] 이차함수 $y=2x^2-8x+k$의 그래프의 꼭지점이 직선 $y=-3x-5$ 위에 있을 때, 상수 $k$의 값과 이 이차함수의 최솟값을 구하는 과정을 서술하시오. [총 5점]",
+            "src": "stem",
+            "termId": 143
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "[서술형 3] 이차함수 $y=2x^2-8x+k$의 그래프의 꼭지점이 직선 $y=-3x-5$ 위에 있을 때, 상수 $k$의 값과 이 이차함수의 최솟값을 구하는 과정을 서술하시오. [총 5점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "최솟값",
+            "quote": "[서술형 3] 이차함수 $y=2x^2-8x+k$의 그래프의 꼭지점이 직선 $y=-3x-5$ 위에 있을 때, 상수 $k$의 값과 이 이차함수의 최솟값을 구하는 과정을 서술하시오. [총 5점]",
+            "src": "stem",
+            "termId": 128
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "완전제곱식으로 고치면 $y=2x^2-8x+k=2(x-2)^2+k-8$이다.\n꼭짓점의 $x$좌표는 $2$이다. 직선 $y=-3x-5$에서 $x=2$일 때 $y=-11$이므로 꼭짓점은 $(2,-11)$이다.\n따라서 $k-8=-11$, 즉 $k=-3$이다.\n$2(x-2)^2\\ge0$이므로 최솟값은 꼭짓점의 $y$좌표인 $-11$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점 x=2를 직선에 대입해 y=-11로 정하고 k=-3을 얻는다.",
+            "termId": 59
+          },
+          {
+            "term": "대입",
+            "quote": "완전제곱식으로 고치면 $y=2x^2-8x+k=2(x-2)^2+k-8$이다.\n꼭짓점의 $x$좌표는 $2$이다. 직선 $y=-3x-5$에서 $x=2$일 때 $y=-11$이므로 꼭짓점은 $(2,-11)$이다.\n따라서 $k-8=-11$, 즉 $k=-3$이다.\n$2(x-2)^2\\ge0$이므로 최솟값은 꼭짓점의 $y$좌표인 $-11$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점 x=2를 직선에 대입해 y=-11로 정하고 k=-3을 얻는다.",
+            "termId": 53
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "직선 위 꼭짓점으로 최소",
+        "condition": "꼭짓점 x=2를 직선에 대입해 y=-11로 정하고 k=-3을 얻는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_b145d063d070c370c8a3d15e5884e058a17e3f2d4fb1e9da3ff05ea478444d41",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d3c6a2536301f70658cfb1c9a964f331232e702195c69d46a255f52be0d4bb7b"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "[서술형 4] 다음 이차함수 $y=-3x^2-6x$에 대하여 다음 물음의 과정을 서술하고 답하시오. [총 5점]<br><br>1) 꼭지점 [2점]<br><br>2) 축의 방정식 [1점]<br><br>3) $y$축과 만나는 점을 이용하여 그래프를 그리세요. [2점]",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼭짓점",
+            "quote": "[서술형 4] 다음 이차함수 $y=-3x^2-6x$에 대하여 다음 물음의 과정을 서술하고 답하시오. [총 5점]<br><br>1) 꼭지점 [2점]<br><br>2) 축의 방정식 [1점]<br><br>3) $y$축과 만나는 점을 이용하여 그래프를 그리세요. [2점]",
+            "src": "stem",
+            "termId": 311
+          },
+          {
+            "term": "축",
+            "quote": "[서술형 4] 다음 이차함수 $y=-3x^2-6x$에 대하여 다음 물음의 과정을 서술하고 답하시오. [총 5점]<br><br>1) 꼭지점 [2점]<br><br>2) 축의 방정식 [1점]<br><br>3) $y$축과 만나는 점을 이용하여 그래프를 그리세요. [2점]",
+            "src": "stem",
+            "termId": 340
+          },
+          {
+            "term": "그래프",
+            "quote": "[서술형 4] 다음 이차함수 $y=-3x^2-6x$에 대하여 다음 물음의 과정을 서술하고 답하시오. [총 5점]<br><br>1) 꼭지점 [2점]<br><br>2) 축의 방정식 [1점]<br><br>3) $y$축과 만나는 점을 이용하여 그래프를 그리세요. [2점]",
+            "src": "stem",
+            "termId": 107
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "완전제곱식으로 바꾸면 $y=-3x^2-6x=-3(x+1)^2+3$이다. 따라서 꼭짓점은 $(-1,3)$이고 축은 $x=-1$이다.\n그래프는 계수 $-3<0$이므로 아래로 열린다. $y$축과 만나는 점은 $x=0$을 대입해 $y=0$이므로 $(0,0)$이다. 이 점은 축 $x=-1$에 대칭인 점 $(-2,0)$과 짝을 이룬다.\n꼭짓점과 두 점을 좌표평면에 표시하고 대칭축을 기준으로 아래로 열린 포물선을 그린다.\n<img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q24_solution_graph.svg\" alt=\"아래로 열린 y=-3x²-6x의 포물선. 꼭짓점은 (-1,3), 축은 x=-1, 그래프가 x축과 만나는 점은 (-2,0), (0,0)이고 y축과 만나는 점은 (0,0)이다.\" style=\"max-width: 480px; display: block; margin: 10px 0;\">",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "-3(x+1)²+3에서 꼭짓점·축을 읽고 절편과 대칭점을 표시한다.",
+            "termId": 59
+          },
+          {
+            "term": "대입",
+            "quote": "완전제곱식으로 바꾸면 $y=-3x^2-6x=-3(x+1)^2+3$이다. 따라서 꼭짓점은 $(-1,3)$이고 축은 $x=-1$이다.\n그래프는 계수 $-3<0$이므로 아래로 열린다. $y$축과 만나는 점은 $x=0$을 대입해 $y=0$이므로 $(0,0)$이다. 이 점은 축 $x=-1$에 대칭인 점 $(-2,0)$과 짝을 이룬다.\n꼭짓점과 두 점을 좌표평면에 표시하고 대칭축을 기준으로 아래로 열린 포물선을 그린다.\n<img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q24_solution_graph.svg\" alt=\"아래로 열린 y=-3x²-6x의 포물선. 꼭짓점은 (-1,3), 축은 x=-1, 그래프가 x축과 만나는 점은 (-2,0), (0,0)이고 y축과 만나는 점은 (0,0)이다.\" style=\"max-width: 480px; display: block; margin: 10px 0;\">",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "-3(x+1)²+3에서 꼭짓점·축을 읽고 절편과 대칭점을 표시한다.",
+            "termId": 53
+          },
+          {
+            "term": "대칭성",
+            "quote": "완전제곱식으로 바꾸면 $y=-3x^2-6x=-3(x+1)^2+3$이다. 따라서 꼭짓점은 $(-1,3)$이고 축은 $x=-1$이다.\n그래프는 계수 $-3<0$이므로 아래로 열린다. $y$축과 만나는 점은 $x=0$을 대입해 $y=0$이므로 $(0,0)$이다. 이 점은 축 $x=-1$에 대칭인 점 $(-2,0)$과 짝을 이룬다.\n꼭짓점과 두 점을 좌표평면에 표시하고 대칭축을 기준으로 아래로 열린 포물선을 그린다.\n<img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q24_solution_graph.svg\" alt=\"아래로 열린 y=-3x²-6x의 포물선. 꼭짓점은 (-1,3), 축은 x=-1, 그래프가 x축과 만나는 점은 (-2,0), (0,0)이고 y축과 만나는 점은 (0,0)이다.\" style=\"max-width: 480px; display: block; margin: 10px 0;\">",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "-3(x+1)²+3에서 꼭짓점·축을 읽고 절편과 대칭점을 표시한다.",
+            "termId": 110
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "일반형의 그래프 그리기",
+        "condition": "-3(x+1)²+3에서 꼭짓점·축을 읽고 절편과 대칭점을 표시한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.494940+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_CHECKED",
+    "independentReview": "PENDING_ROOT_SAMPLE"
+  },
+  "reviewedSourceBaseBlob": "4f9eae1cfe25aa48f6b4d9166182516384dc4b8a",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E076",
+    "author": "meta_a",
+    "reviewer": "meta_b",
+    "reviewedAt": "2026-11-15",
+    "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+    "status": "PASS_WITH_EXPLICIT_DEBTS",
+    "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+    "sourceBaseBlob": "4f9eae1cfe25aa48f6b4d9166182516384dc4b8a",
+    "inputHashes": {
+      "reviewSha256": "a2707f2ff59391e870f730f46bc6f58d878e8e1f801d8d89cb72d9cfe6c718e8",
+      "fourSlotSha256": "ed26a030700e6b07a3b7a23b2c85c5d30a531b1f33c39bb15825201198d3d99b"
+    },
+    "sampledOrdinals": [
+      7,
+      13,
+      18
+    ],
+    "additionalReviewedOrdinals": [],
+    "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+    "findings": [
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_55a895886ba08ae7d60552fc304d1df5dd372c6d9d78f8755e3aff88c948ddd8",
+        "status": "PASS",
+        "note": "실제 기존해설은 소수제거→계수1→완전제곱→제곱근으로 이어짐을 확인. 근의공식으로 바꾸지 않은RPM034와중2 수용."
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_c34c9667c950a4d3a54f9eae6eec6b0b388979136cf38f65c8a2c64e580fb268",
+        "status": "PASS",
+        "note": "꼭짓점(-3,-4)과a>0을 이용해 양의x에서 함수부호를 판단하고 y절편≥0의 경계포함을 해석하는3 수용."
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_231b62358932249839a162a9c7dc0d7343d51bef6986cd7d27de276baa690ef5",
+        "status": "PASS",
+        "note": "실물일차그래프 양의기울기·양의절편과 다섯개선지확인. a>0,b>0에서 축<0,y절편>0인⑤를 선택하는2. 보완된 ACTIVE CC_SLOPE_AND_INTERCEPT·SEQUENTIAL은 실제독립선행단계에 부합."
+      }
+    ],
+    "assetReview": [
+      {
+        "path": "/workspace/scratch/e45ff6c78c51/workers/A/assets/E076/18-question-1.png",
+        "sha256": "e0c4cbd2b0b257d663e38964799e1a4a76f51e254b7a45593d2609464a2116c4",
+        "status": "READ"
+      }
+    ],
+    "decisiveMethodOrGoalErrorsInSample": 0,
+    "inventedQuotesInSample": 0,
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED",
+    "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+  }
+}

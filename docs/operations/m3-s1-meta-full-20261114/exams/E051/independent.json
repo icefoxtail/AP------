@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E051",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T00:02:33.317843+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/21_신흥중_1학기_기말_중3_기출.js",
+  "sourceBlob": "2a0852c35bbae940241f79a387b757620845114d",
+  "inputArtifacts": {
+    "workers/C/E051.review.json": {
+      "sha256": "535c070cc18d7b3db054228dc90bdd772dbad3a897900f249fe33ebad20fd022"
+    },
+    "workers/C/E051.4slot.json": {
+      "sha256": "750754946c409bd107c360d1ba6b95aa848e7d1af0d92c41505a7e04968c118a"
+    },
+    "workers/C/E051.input.json": {
+      "sha256": "1e3b31853ccb4b19d9677aa1cfe96ef3119679b067baa973a53a615fc5427b22"
+    }
+  },
+  "sampledOrdinals": [
+    2,
+    3,
+    5,
+    11
+  ],
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_b7f1d5d89af65ff6377391aa1cef474ab977a42cda60a92045e2f1d3ee9725c1",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "5x²-39x-54=(5x+6)(x-9)이라는 기존 해설의 인수분해 경로와 두 해 목표를 확인. 저자 RPM32와 bucket2/B12는 계수 처리 전처리를 보수적으로 반영하며 소수 용어 WARN는 단순 문항의 정당한 작은 집합이다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_ac24b374c4f6b01af53ed6843a10fe790b487d8952cf5b722b9c178f0287b2d4",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "중근6 조건을 (x-6)²로 쓰고 계수 m=-12,n=36을 비교한다. goal을 계수·차로 보정하여 목표 객체 누락을 해소했음을 확인. 직접 완전제곱 계수비교 bucket1/B12 수용."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_27bf54d939d01f593a766825196b3ae609fd3122ff9a4142b76ca5fa312939f6",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "소수계수를 제거하여 (x+2)²=20으로 변형하는 기존 풀이와 미정계수 a,b의 합 목표를 확인. 수정된 goal 미정계수·합 및 완전제곱식 method 근거 수용."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_3f8af1019c7864d1399af0d2a9e521ed5724fc8e42053f73ecec20bf0f9460eb",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "f(2)=4·4-3·2+2=12이므로 8이라 한 보기를 판정한다. 단순 대입 목표와 함수값 primary44, bucket1 및 최소 용어 WARN를 원문으로 확인."
+    }
+  ],
+  "findingsResolved": [
+    {
+      "ordinal": 3,
+      "issue": "goal의 핵심 계수 대상 누락",
+      "resolution": "계수·차로 원저자 수정 확인"
+    },
+    {
+      "ordinal": 5,
+      "issue": "goal이 합만 표기",
+      "resolution": "미정계수·합으로 원저자 수정 확인"
+    }
+  ],
+  "rootAdjudications": [],
+  "visualEvidence": [],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}

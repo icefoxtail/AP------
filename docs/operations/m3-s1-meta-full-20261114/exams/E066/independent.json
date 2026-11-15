@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E066",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T00:12:40.663460+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/21_팔마중_1학기_중간_중3_기출.js",
+  "sourceBlob": "52b0890598665cc44a5621f69502162dfb522a89",
+  "inputArtifacts": {
+    "workers/C/E066.review.json": {
+      "sha256": "f6b5e57486eb2e6b43765ce98fd57d24dab457078a1e15f17fb180f4815c413a"
+    },
+    "workers/C/E066.4slot.json": {
+      "sha256": "7964721ff3273dde766d1c947963666d41f2f43f4366cfcde11bfdc6b612cd46"
+    },
+    "workers/C/E066.input.json": {
+      "sha256": "bc15a1d4019c1595341bc22fa9c26066faca8dbb3b8ecd0ebd511de5daeb0f40"
+    }
+  },
+  "sampledOrdinals": [
+    4,
+    20,
+    25
+  ],
+  "items": [
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_2dfff04387e3f00baabed9ac09a5ed1a771c10b294de31bf00d1234cdbda31c5",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "ab<0이고 a<b에서 a<0<b이므로①의-절댓값(2a)=2a와⑤의-(b-a)=a-b가 참이다. 실제해설·조건을 확인했고 보완된CC_VARIABLE_SIGN·COND_INEQUALITY_CONSTRAINT 및4칸부호·절댓값이 적합하다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_b767846a7da7c7b3878f34f3dc448fa1c85daa1e1625ed7d512187bcc09c52ee",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "치환 A=x-3,B=x+2 후(A-3B)(A-4B)로 인수분해하는 해설 경로를 확인. 그러나(2x+9)(3x+11)과(2x+22/3)(3x+27/2)의 곱은 같고 계수합은 다르므로 상수범위누락 CONTENT_DEBT와최종난도UNKNOWN이 정직한 보류다."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_c8daf9cc45b7cdc0a8c99203984c4991ad531ba9cdaa84d231acb1aea5dc0d9d",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실물의전체가로3a-7·세로4a+1,세로길폭1·가로길폭2를 대조. 해설은겹침2를뺀합집합10a-15와남은넓이(3a-8)(4a-1)를사용한다. (2)의단순넓이합10a-13과합집합해석차이가콘텐츠검토부채로추가됨을확인. 전체메타의모델링·인수분해경로와3/B23은유지수용."
+    }
+  ],
+  "findingsResolved": [
+    {
+      "ordinal": 4,
+      "issue": "명시부등식조건과별도부호추론키누락",
+      "resolution": "원저자ACTIVE조건·CC보완확인"
+    },
+    {
+      "ordinal": 25,
+      "issue": "두길넓이의합과합집합넓이문구차이",
+      "resolution": "콘텐츠검토부채기록;원문보호"
+    }
+  ],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E066-assets/25-image.png",
+      "sha256": "ca99d75fde85a6f62d2bc0aeeb48e965d481e5a02b97d622ecde27e5815d1bc9",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "m3-s1-scoped-correspondence-amendment-v1",
+  "examKey": "E014",
+  "reviewer": "GPT_ROOT_0B1AF1898334",
+  "at": "2026-11-14T14:08:14.697274+00:00",
+  "author": "meta_a",
+  "additionalCanonicalConcurrence": "meta_b independently confirmed the same canonical records and effective-parent authority in current collaboration. Root also read both actual path sets.",
+  "authorReceiptSha256": "6e06db0a6e3ab4595a185d166d233861977914129b7b5ea65a1de9b5ed5da9dc",
+  "authorReceiptPath": "docs/operations/m3-s1-meta-full-20261114/amendments/2022-function-correspondence.author.json",
+  "previousReviewSha256": "571677f0f9e11d67ee75b4d9f2cec8a198c0edf05c59e35c28d9741530bb1b50",
+  "unchangedFourSlotSha256": "f6cc5c65b06db5bb725a527364c7edb33aaa2ff057d4c4eee40d94145e9295c2",
+  "unchangedSourceSha256": "b8ec48600e04857fa4ab30c59a8ae38a44a81c07d998472ba612d913fd821c35",
+  "changes": [
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_b39f580ec764c48123c092c3cc6c6fdecfc6e668a5959b0d1dbe1670d0d969b5",
+      "nativeRpmRecordId": "M3-RPM-051",
+      "before": {
+        "rpm2022RecordId": null,
+        "rpm2022EffectivePath": null,
+        "debts": [
+          {
+            "kind": "RPM2022_LEAF_PROPOSAL",
+            "reason": "2022 현재 leaf와 정확히 대응하는 경로가 없어 의미 판단을 제안으로 보존."
+          }
+        ]
+      },
+      "after": {
+        "rpm2022RecordId": "M3-RPM-139",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수의 그래프(2)",
+          "L3": "일반형 그래프",
+          "L4": "완전제곱식 변형"
+        }
+      },
+      "reason": "기존 native 의미판정은 재사용.2015/2022 명칭개편의 수기확인 대응과 현재 유효 부모만 보완."
+    }
+  ],
+  "validation": {
+    "canonicalRecords": "EXIST_AND_CURRICULUM_2022",
+    "effectiveParent": "EXACT_BASE_PATH_JOIN",
+    "sourceAndFourSlot": "UNCHANGED",
+    "existingIndependentSamples": "REUSED_UNCHANGED",
+    "newMathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED"
+  }
+}

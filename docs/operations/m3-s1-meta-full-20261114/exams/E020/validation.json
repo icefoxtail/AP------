@@ -1,0 +1,647 @@
+{
+  "examKey": "E020",
+  "questions": 23,
+  "errors": [],
+  "sourceChangedItems": 10,
+  "sourceChangedFields": 20,
+  "sourceEdits": [
+    {
+      "ordinal": 6,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 3,
+      "reason": "두 실수의 평균이 사이에 있음을 이용하고 제곱을 통해 무리수임을 모순으로 확인한다."
+    },
+    {
+      "ordinal": 6,
+      "field": "crossConceptKeys",
+      "before": [],
+      "after": [
+        "CC_IRRATIONAL_NUMBER_CLASSIFICATION"
+      ],
+      "reason": "두 실수의 평균이 사이에 있음을 이용하고 제곱을 통해 무리수임을 모순으로 확인한다."
+    },
+    {
+      "ordinal": 6,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_RANGE"
+      ],
+      "reason": "두 실수의 평균이 사이에 있음을 이용하고 제곱을 통해 무리수임을 모순으로 확인한다."
+    },
+    {
+      "ordinal": 11,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_RATIONAL"
+      ],
+      "reason": "분자를 나누고 한 항 분모를 유리화한 후 유리수항과 근호항 계수를 읽는다."
+    },
+    {
+      "ordinal": 11,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "분자를 나누고 한 항 분모를 유리화한 후 유리수항과 근호항 계수를 읽는다."
+    },
+    {
+      "ordinal": 12,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_RATIONAL"
+      ],
+      "reason": "근호를 정리하고 분배법칙으로 괄호를 풀어 두 근호의 계수를 비교한다."
+    },
+    {
+      "ordinal": 12,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "근호를 정리하고 분배법칙으로 괄호를 풀어 두 근호의 계수를 비교한다."
+    },
+    {
+      "ordinal": 16,
+      "field": "integrationPattern",
+      "before": "CASE_BRANCH",
+      "after": "NONE",
+      "reason": "상수항25로 두 완전제곱식의 부호를 모두 고려하여 일차항 계수를 비교한다."
+    },
+    {
+      "ordinal": 16,
+      "field": "subUnitKey",
+      "before": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "after": "M3-02-FACTORIZATION",
+      "reason": "상수항25로 두 완전제곱식의 부호를 모두 고려하여 일차항 계수를 비교한다."
+    },
+    {
+      "ordinal": 16,
+      "field": "subUnit",
+      "before": "다항식의 곱셈",
+      "after": "인수분해",
+      "reason": "상수항25로 두 완전제곱식의 부호를 모두 고려하여 일차항 계수를 비교한다."
+    },
+    {
+      "ordinal": 17,
+      "field": "crossConceptKeys",
+      "before": [
+        "CC_COMPLETE_SQUARE"
+      ],
+      "after": [
+        "CC_PERFECT_SQUARE_FACTORIZATION"
+      ],
+      "reason": "완전제곱식 인수분해 후 범위에서 정해진 두 절댓값의 부호를 적용한다."
+    },
+    {
+      "ordinal": 19,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "반복되는 x+3y를 치환해 일반 이차식을 인수분해하고 되돌려 계수를 읽는다."
+    },
+    {
+      "ordinal": 20,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "합차공식을 같은 순서로 반복 적용해 마지막 지수와 상수를 읽는다."
+    },
+    {
+      "ordinal": 21,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_RATIONAL"
+      ],
+      "reason": "복합 근호식을 정리한 뒤 유리수 조건을 무리수항의 계수가0인 식으로 바꾼다."
+    },
+    {
+      "ordinal": 21,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "복합 근호식을 정리한 뒤 유리수 조건을 무리수항의 계수가0인 식으로 바꾼다."
+    },
+    {
+      "ordinal": 22,
+      "field": "crossConceptKeys",
+      "before": [
+        "CC_RADICAL_EXPRESSION"
+      ],
+      "after": [
+        "CC_PYTHAGOREAN"
+      ],
+      "reason": "중앙배치의 수평 간격과 높이로 사선 길이를 구하고 두 방향 끈과 매듭 길이를 합친다."
+    },
+    {
+      "ordinal": 22,
+      "field": "subUnitKey",
+      "before": "M3-01-REAL_NUMBER_OPERATIONS",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "중앙배치의 수평 간격과 높이로 사선 길이를 구하고 두 방향 끈과 매듭 길이를 합친다."
+    },
+    {
+      "ordinal": 22,
+      "field": "subUnit",
+      "before": "근호를 포함한 식의 계산",
+      "after": "제곱근과 실수",
+      "reason": "중앙배치의 수평 간격과 높이로 사선 길이를 구하고 두 방향 끈과 매듭 길이를 합친다."
+    },
+    {
+      "ordinal": 23,
+      "field": "crossConceptKeys",
+      "before": [
+        "CC_SQUARE",
+        "CC_AREA"
+      ],
+      "after": [
+        "CC_SQUARE_AREA"
+      ],
+      "reason": "두 정사각형의 둘레와 넓이를 합·제곱합 관계로 바꾸고 곱셈공식으로 xy를 얻는다."
+    },
+    {
+      "ordinal": 23,
+      "field": "integrationPattern",
+      "before": "INTERDEPENDENT",
+      "after": "SEQUENTIAL",
+      "reason": "두 정사각형의 둘레와 넓이를 합·제곱합 관계로 바꾸고 곱셈공식으로 xy를 얻는다."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "fourSlot": {
+    "fail": [],
+    "warn": [
+      "#1 only 3 distinct terms",
+      "#2 only 3 distinct terms",
+      "#4 only 4 distinct terms",
+      "#5 only 4 distinct terms",
+      "#8 only 4 distinct terms",
+      "#9 only 4 distinct terms",
+      "#10 only 4 distinct terms",
+      "#13 only 4 distinct terms",
+      "#14 only 4 distinct terms",
+      "#15 only 4 distinct terms",
+      "#16 only 3 distinct terms",
+      "#18 only 4 distinct terms",
+      "#20 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 23,
+      "examItems": 23,
+      "quotes": 110
+    }
+  },
+  "registrySha": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+  "missingNativeLeaves": [
+    18,
+    22
+  ],
+  "missing2022Leaves": [
+    15,
+    18,
+    22
+  ],
+  "projectionBindingGaps": [
+    {
+      "ordinal": 4,
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "status": "MISSING_EXACT_BINDING"
+    },
+    {
+      "ordinal": 5,
+      "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+      "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "status": "MISSING_EXACT_BINDING"
+    },
+    {
+      "ordinal": 6,
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": null,
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "status": "MISSING_EXACT_BINDING"
+    },
+    {
+      "ordinal": 8,
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "status": "MISSING_EXACT_BINDING"
+    },
+    {
+      "ordinal": 22,
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+      "templateKey": null,
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "status": "MISSING_EXACT_BINDING"
+    }
+  ],
+  "protectedFields": {
+    "status": "PASS",
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_fbc495eaf1cb7d171f44249c9e1448792d9e70bf847047a84ef0963bda4091b3",
+        "sha256": "040b017f0d9121aaa033f154a37e27d23640a3c005cafebf7f2842654e61ea53",
+        "unchanged": true
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_3d3dfd3ba03c1ace4a8167142ebc4cb6062789ef39ce633b48fda23a8063e810",
+        "sha256": "21e27b6b4c60552eeaa6f2da2eaadaad725a93d73a4f301f5f55c74f6dcc03b4",
+        "unchanged": true
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_18987ce0bc4d44047328d29e6ab7e631cca168594f6434be872b1488b83cc3b8",
+        "sha256": "174a658fba1554e10ed968a3e2e79d5d96e866115af7a6047952e27856dc4592",
+        "unchanged": true
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_254b42bea6e744f5a2d8f3e7023b2d3bc5e275a0e8504e6bc491f76092b5faa8",
+        "sha256": "68f4fd629a687cfcaac63f942124481628a593a8b63f24f28c8226d201f491d1",
+        "unchanged": true
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_83577b8f941452392550ed54a0f390c8d2508eaacd08bc65d3000151fa3ea35d",
+        "sha256": "1212bb159de2e545ce6c42e3cd30ae984fccd943d09d55c0f9c158014021ba8c",
+        "unchanged": true
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_46e7b6efd2fad7341529262da2c51119510f676af69feb5e25aceb89e4a2985c",
+        "sha256": "b9504a6c56943392842da896a3c60a65997d89b72aec9c40f13367d467de5c32",
+        "unchanged": true
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_28d90ec37aa5b5b372ce9cbbd4970c9e4c2c7025bd23e18eb18b4d663a4f2c51",
+        "sha256": "26b0305fbfdec5273b0eb1cf043514c65df4fec384f0b1910201874015089ded",
+        "unchanged": true
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_deac773531bb25c844ce150b3b033b21d90e67f05d50c426f4a4d2dce482f4dd",
+        "sha256": "70152f5fa749c23b207ceef85d4ae36d80e7b3f459f7a7fd0de7f57d37ca9cfd",
+        "unchanged": true
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_8d3f5feaadbc830b75f70e55383c704680095feeff3ab5fbe2351a84bb6547fe",
+        "sha256": "271e3304aca437ebf173491a68d83bcd0aad095f0353a69d2c0b28cdcdbfaf2e",
+        "unchanged": true
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_1b44ef554055d3537ea5f4a3c104cc42f72a455a0b972f84657e2d26eae16cd4",
+        "sha256": "75bee7439696025a19dc4e18fb885cba8efedf7a7cb2bdd8af242379389acb10",
+        "unchanged": true
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_f96a9a1f46c4f4b4a91736c009021f0d3d0b906ec7952f8116140943ae1a7267",
+        "sha256": "7ca451cb352d6f740555d8d39b4a4eeaf641055dcc25c88a0470185a95157471",
+        "unchanged": true
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_f0f5c59d7f7d0748c6c58bca9b8e91ad7e81e5cecbd4cc486f2cd629cb42030d",
+        "sha256": "74067bc22bb2e298715bb64e5b5c35d12bf5f7e7176a8a1bf238ae93f50bd982",
+        "unchanged": true
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_b04dd26f4cfeeba6a5aa4d392866a274c66ac5e70bdf80f179e08eaffb43b756",
+        "sha256": "d8f15e610efa2a9d7ef08a49ecdc998f2bf0e1a7a7cb1baf29752f883bf1ce8e",
+        "unchanged": true
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_cce6294385ae80c389680dd70a2a6aabd2a1052315b806fadc0040d11576a648",
+        "sha256": "d35e48f52f391dcb79726bce2ab1bbb74c7c8075d0996b3efbccd288d04daa78",
+        "unchanged": true
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_1afced6a28548443986f4daa57055922d8fd3775563f16101ee3899f9872dbc1",
+        "sha256": "e3a986722631951b796151476a0ece5d3de943be65664745246db54160b8960d",
+        "unchanged": true
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_6266be55fe2a2bb433245de4effce8f8f229d54fad774ece14c225fe5d45a477",
+        "sha256": "b22f9a1bb8768005178e86fe7176f7d7ee5ac1018962a504e8f1593f1dd9398e",
+        "unchanged": true
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_417d0063ca406043c9c6e7b71a2f768beeb01c7eb536eb3919b27e0daae8d446",
+        "sha256": "d64e5c26e9735edd28118bae6d11f84960cef7c9e8dba543a2b991b03de1feaa",
+        "unchanged": true
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_d39361211d95fbe64a0745adf607c18cd38b0a73213954eef23392e4863db9ae",
+        "sha256": "12197fa773c3719b47eeaae6fc4e681d070842fbfdd40a961f4be1cf7f8c7d28",
+        "unchanged": true
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_653a87918ede1d364de899b63f59802c6dd11d5c5380d381103448572db656bb",
+        "sha256": "002cb4d935dc8866c0935ad1ac2cb382149e04facfda24e692b02282fd1186df",
+        "unchanged": true
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_ed6b469b2c3b0ab5bce808e465e41ccde54f5a4115a4d4b82d3efa4e028a2be7",
+        "sha256": "8a4a849d070dff0a3ea38bef8b25da0d07456724de086a90aace78aae90971e9",
+        "unchanged": true
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_e69e6a45e50cf0f7fe7603a6896b21006b44cedf36aeffd51d34eede229cb214",
+        "sha256": "3f433fe567e4d15ff326914cf5812b23dcb01c0a5b5066858cbe15f0669efa00",
+        "unchanged": true
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_afcdd72b463fdaf81bf052c711f2d437dd63a70942dbed4c37906fdcdf5acd9a",
+        "sha256": "f4cf74124cf27ad5500defc3421b29c0329b07c763237c910b4d826242ebc4bd",
+        "unchanged": true
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_b628d839e5ab6bf9c94f3276a634e0ac567aa38470c140ddbb83758c50c575ca",
+        "sha256": "e2ce77f3d3ff586652c11425fe18f260009ed12a9dec835c17f90d4c65bc2ee1",
+        "unchanged": true
+      }
+    ]
+  },
+  "fingerprints": {
+    "status": "PASS",
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_fbc495eaf1cb7d171f44249c9e1448792d9e70bf847047a84ef0963bda4091b3",
+        "QBODY": "f9e47386414ab46072832fb2c99b67eb5257578f6dd891485c31d50d628fe66a",
+        "QFULL": "2b942d7bbd31b5e16b2f3b5e243ee869d6c621fb806d57b55615cbc8c30e4624",
+        "stemEvidenceSha256": "e85f8e4a069c8b76ca55887333f68e2bf9d050d20ccb5a96307ee982d3c8a8fa"
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_3d3dfd3ba03c1ace4a8167142ebc4cb6062789ef39ce633b48fda23a8063e810",
+        "QBODY": "9c8a793ffc42b0efbf9ee697745487b1b7e0f3c2a810a5904daf3976d76ac06d",
+        "QFULL": "a1445c3ab4cc48b282787284991201b7c947de7a3d64efde861f56b563253cd1",
+        "stemEvidenceSha256": "9a60feac3bda5fa4919f259172af17481312e7fcc340aa5ce4d53fb9cd972de4"
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_18987ce0bc4d44047328d29e6ab7e631cca168594f6434be872b1488b83cc3b8",
+        "QBODY": "cf881b479063b20569b17f9883c02d2c3f701baeb386c747d025d5e365e5f560",
+        "QFULL": "46f910590bec9a88468968ab72e77424c26256303828d4d521e2993d911de48b",
+        "stemEvidenceSha256": "a5a85f85c84c83f8f6fff970d45019ab80a579813f5ce841a8b8f92fda1e8dbe"
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_254b42bea6e744f5a2d8f3e7023b2d3bc5e275a0e8504e6bc491f76092b5faa8",
+        "QBODY": "2213522813f26b4c3ebeaa8e278e549d10e6dd0f16b19754b92ed71a4f17daa0",
+        "QFULL": "d5e853f250e95e18a155bae1f306b2e9bed147c5da03deb059cf0cfef999ccbd",
+        "stemEvidenceSha256": "2c992fa84c6a77f1d6940a1d0db8a702c512fe5c95dca44121d512298f4694c0"
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_83577b8f941452392550ed54a0f390c8d2508eaacd08bc65d3000151fa3ea35d",
+        "QBODY": "f0a63f85fe3d0da4602a061530130e70651642e3b3e0d84f9a084635a9f411e9",
+        "QFULL": "02ff7996f1b0af64e129470094edecd6d2f217b17d042972e6bf0e461c00099e",
+        "stemEvidenceSha256": "9d3804f28c681588781cb970fe990cc53f838ecaed9fd7f191f12c070d86aa36"
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_46e7b6efd2fad7341529262da2c51119510f676af69feb5e25aceb89e4a2985c",
+        "QBODY": "53c526300292c30ecb5b830fa0b9db31a28c2e21f4e5600f2e19745b84451a2c",
+        "QFULL": "6026657a455ad4b8d6349fd6258bf816fa257b1ddbdc74a174537551c621fa52",
+        "stemEvidenceSha256": "dc0a273423534f2d2015c264c8be9f1e82fffe1e83c2f3d8f37360d96beb1221"
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_28d90ec37aa5b5b372ce9cbbd4970c9e4c2c7025bd23e18eb18b4d663a4f2c51",
+        "QBODY": "1468ffa334397d1f3d9efc29bec38d7bac293e565ab00399b022f3eead13f8d3",
+        "QFULL": "abe09b1b280bab2361e2ef338d26c740476d48d94f55ba6101d6feeceebed022",
+        "stemEvidenceSha256": "96f2169cdaef6e9c9c310e2d85bd58982b719d71a9a135316b53fca52eff62a6"
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_deac773531bb25c844ce150b3b033b21d90e67f05d50c426f4a4d2dce482f4dd",
+        "QBODY": "4e9e4ceadc27736c1a19faa32540a324144d4e2d32ccb55f84b26568d2998657",
+        "QFULL": "0cdaddbbfb26273b28d90cab51d9faab380dfa5d7d9159244be9d7148f3f2fa6",
+        "stemEvidenceSha256": "ba70ea10ef451bf128eab711646bb0f340f6e3bfd15c0cc676c3723626216dec"
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_8d3f5feaadbc830b75f70e55383c704680095feeff3ab5fbe2351a84bb6547fe",
+        "QBODY": "8771ed957a842155cee15d100e2eb2425ec12ddebdfcb6f2204708e3de748337",
+        "QFULL": "f156b478b7e7414c379ae8a7cd951b8f65e35afc5adfdc75db1b2f572448d167",
+        "stemEvidenceSha256": "fd34f6e01ae4e7947cec884c5e407c9222cb5c41845c4a3a2c3742d53fb4a657"
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_1b44ef554055d3537ea5f4a3c104cc42f72a455a0b972f84657e2d26eae16cd4",
+        "QBODY": "eae17f8441e1138783c9621fc2061b29be9bf9ed5ae2ac79ae46399b210afc09",
+        "QFULL": "e952dc655178c3ba6e306f5b0a6dae16ac191a7a4f45bc51ab6d85bf5bf74242",
+        "stemEvidenceSha256": "798ed14266c878585627ccd767b59f60734a5fca1aa6d4491562d65ef8e6500e"
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_f96a9a1f46c4f4b4a91736c009021f0d3d0b906ec7952f8116140943ae1a7267",
+        "QBODY": "1a761a16765f2d0f8325635f5fd4dbf8700828674c3cfa71d2da8f378e595c4b",
+        "QFULL": "026cb0143a862f214ad839eb3913f4ef03b3f4fc6d109cedb5b9478a001ccb2d",
+        "stemEvidenceSha256": "d36c7e7cd8c376c05508d3fd690bb29498defba14417c1d3dad975c01538d947"
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_f0f5c59d7f7d0748c6c58bca9b8e91ad7e81e5cecbd4cc486f2cd629cb42030d",
+        "QBODY": "b9ba205d46566ba7a6dfd1aff7ad151f275a69325ded72f191f5d77d17315155",
+        "QFULL": "44502f8a10166b3c0b73a6c3e2eca5d71f952690acc8bafc4fdcc7029ca78bb7",
+        "stemEvidenceSha256": "fbc1e863c6b6394fed55c985c9dd69b62abd72fc7d701552cf80ff5667d8bc3b"
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_b04dd26f4cfeeba6a5aa4d392866a274c66ac5e70bdf80f179e08eaffb43b756",
+        "QBODY": "1d84ac0c7f4e8a9bfd7f9874c3f381c7e324fd3b9080389a05ac6d90d8843075",
+        "QFULL": "1fd308750e26232be4048d6df5557ca4b5238cfc4ebc2c66c7b87f8d838969c8",
+        "stemEvidenceSha256": "f39dbcc62e23dd249bc7fd0df1620d42770fa8be537ae7380495bfc60eca6628"
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_cce6294385ae80c389680dd70a2a6aabd2a1052315b806fadc0040d11576a648",
+        "QBODY": "d2aa48feaa116c4b1045b9cae54aea7836ef7f3abeb3a032cb514f51e802d1cf",
+        "QFULL": "7b406fa17e1b6fdacfdee398698eb7810a3a083f46ae877711677f12839e5098",
+        "stemEvidenceSha256": "4b11eae304e913a630b6990aa100d8159fed7d2229337eeae943211163ea9ec7"
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_1afced6a28548443986f4daa57055922d8fd3775563f16101ee3899f9872dbc1",
+        "QBODY": "08b128b235248fdbf70ec7dd5b9776489da684f21344edb359cf56b5a4caffdb",
+        "QFULL": "5d7e592cdf1f227acbcb2feea020ae6cc3c99703c2e1551cda72df8d0297b399",
+        "stemEvidenceSha256": "4a050d7e4d3aee23c4fced8eb1c37d02ead403279471ea21cca88ad15bb0d2b3"
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_6266be55fe2a2bb433245de4effce8f8f229d54fad774ece14c225fe5d45a477",
+        "QBODY": "d2d97f114e9e0fb9c033e5aff758ac5e6d76cb51eb63821e2eb4f1d5755c1916",
+        "QFULL": "bb417273ea9b567035c33c6de7d12c23d6442d2f61dc57abd026a2d8d24a3b75",
+        "stemEvidenceSha256": "9dae309b5286ee68b557d4f0976a52412888daf763eb6b0ca48964605536a7e8"
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_417d0063ca406043c9c6e7b71a2f768beeb01c7eb536eb3919b27e0daae8d446",
+        "QBODY": "f3e214349affb8d3d95c7dbf65791be15036e3848e48ee2496872acbb0dc76a2",
+        "QFULL": "1561da45eeaafb49fa7d9e6dbad3d02688406e87f4f33188026437aa1d7c313e",
+        "stemEvidenceSha256": "166b139743043980a1d28d9bee966c65d987cb67faf3765b3b5094e4f7ba6adb"
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_d39361211d95fbe64a0745adf607c18cd38b0a73213954eef23392e4863db9ae",
+        "QBODY": "99ced6c59f34184f2eecb2235f468ea6d5c941bceb213ab5a9773eba5fa7a724",
+        "QFULL": "ffec3aece97ed0f445143dfbd54062b52372b64c7a9c09a31238afb607b87443",
+        "stemEvidenceSha256": "4e1110ce6e836f3df3718ee3f3fce8f24eaa634475dcae2f723c5f16c245949b"
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_653a87918ede1d364de899b63f59802c6dd11d5c5380d381103448572db656bb",
+        "QBODY": "88ef4b76d11d6018818fead53c1fcd35316207b2efb4a793a26d4de51af49f81",
+        "QFULL": "02c0db829032c9ed09d119b05521bb5ba968e1b6ddfbedee0a85539a4b4e45c7",
+        "stemEvidenceSha256": "bffa29ecf36f8a65f40a43575d801f6ecaf87a27bbc36779418223c34736961b"
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_ed6b469b2c3b0ab5bce808e465e41ccde54f5a4115a4d4b82d3efa4e028a2be7",
+        "QBODY": "40cd321f053d2000a92c924936e9fdf69af5e6951d2e8f983ccd63e5d85923c4",
+        "QFULL": "64eeb5ac4306915f30ee93aa0d5c24f45a08eca884225d1ef6e735dc06d9fd9f",
+        "stemEvidenceSha256": "e1e496c7e04cc576b596679caba8d4b58061667d1f65f41bd07806e4addf9969"
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_e69e6a45e50cf0f7fe7603a6896b21006b44cedf36aeffd51d34eede229cb214",
+        "QBODY": "c2bea6bbe0507bcdcd5993b91f5be4b8d84714e88dc94756efc82b155769b63f",
+        "QFULL": "23a657d098cdfc5e1d37c580b46353abdd347a626a6e3fc9d29b0080407fe1bc",
+        "stemEvidenceSha256": "35634497dd3a1adbeeb2a156606131142d32b00c9cb3713a8d16e93e1ba08a92"
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_afcdd72b463fdaf81bf052c711f2d437dd63a70942dbed4c37906fdcdf5acd9a",
+        "QBODY": "2e35e694d931baeb75a4c57784da8d8ffa7c4bc6acc1d2be9038d3a59db16bc5",
+        "QFULL": "fa1a1ffb994401e051962247af65a52eceffdf76f675fdce152f00d701b1fd89",
+        "stemEvidenceSha256": "132f8bc133621e062ff11b369f88a926979eab4eb409d8bb924f6da90a131268"
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_b628d839e5ab6bf9c94f3276a634e0ac567aa38470c140ddbb83758c50c575ca",
+        "QBODY": "c6909fa6ff8052b8026d8c1a376c469f06205bd5c3a04ab3ac591de61d85043f",
+        "QFULL": "3a0e6729d61262d46639cd0dfef24483b82c203ccea04afe920780b2bb7b6dba",
+        "stemEvidenceSha256": "a8388796c9fc071afecf8f9db910d09bd145c057d1c07317ede86e176213ec12"
+      }
+    ]
+  },
+  "sourceFinalBlob": "b47ffd567ea0e8d21964ea8ebbd9ba794eee89eb",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "examKey": "E020",
+    "status": "PASS_WITH_PROPOSALS",
+    "author": "meta_b",
+    "reviewer": "meta_c",
+    "at": "2026-11-14T13:59:22.052623+00:00",
+    "sourceArchiveFile": "original/middle/m3/1mid/24_연향중_1학기_중간_중3_기출.js",
+    "sourceBlob": "238aba47e56a4407a812c467265f9d55425c2409",
+    "inputs": {
+      "review": {
+        "path": "/workspace/scratch/0b1af1898334/workers/B/E020.review.json",
+        "sha256": "396b6fc3ff42f81e598b52b2c7184cd9a2e0346d3a30cd4545e7813b69a8827f"
+      },
+      "fourSlot": {
+        "path": "/workspace/scratch/0b1af1898334/workers/B/E020.4slot.json",
+        "sha256": "69afae266ed4f27a6795da41d95c0b14805897a946e34c5b28c127312cc20853"
+      }
+    },
+    "sampledOrdinals": [
+      6,
+      18,
+      22
+    ],
+    "additionalChangedOrBoundaryOrdinals": [
+      1,
+      3,
+      5,
+      11,
+      12,
+      15,
+      16,
+      17,
+      19,
+      20,
+      21,
+      23
+    ],
+    "scope": "METADATA_ONLY; actual source, selected slots, q22/q23 source PNG directly viewed",
+    "findings": [
+      {
+        "ordinal": 6,
+        "status": "PASS_AFTER_REVISION",
+        "note": "평균의 사이 위치와 제곱·귀류에 의한 무리수성을 연결하므로 bucket3 및 보조분류 기여가 타당. √5와√6 열린범위 condition 추가 확인."
+      },
+      {
+        "ordinal": 18,
+        "status": "PASS_WITH_TAXONOMY_PROPOSAL",
+        "note": "여러 인수분해 공식의 결과를 독립 전개 비교하는 기본 감사. 정답 단일 이차식으로 강제배치하지 않은 제안 수용."
+      },
+      {
+        "ordinal": 22,
+        "status": "PASS_AFTER_REVISION",
+        "note": "원본PNG에서 중앙배치·두방향끈·사선 확인. 수평차10과높이10의 피타고라스 길이 후 전체경로 합산. 중앙배치 condition 추가와 미등록CONDITION 제안 확인. 기존 medium/B34 경계 보존 타당."
+      },
+      {
+        "ordinal": 21,
+        "status": "PASS_AFTER_REVISION",
+        "note": "근호식 결과가 유리수라는 조건은 무리수항계수 a+2=0을 강제한다.014는 parent-context로만 표시하고 exact 계수소거 leafgap을 추가한 버전 확인."
+      },
+      {
+        "ordinal": 17,
+        "status": "PASS",
+        "note": "완전제곱식 인수분해→범위에 따른 절댓값 제거를 실제 source에서 확인. 보조 CC를 정확한 제곱인수분해로 바꾼 것은 타당하며 B23 경계는 유지."
+      },
+      {
+        "ordinal": 23,
+        "status": "PASS",
+        "note": "원본두정사각형과source를 읽고4(x+y)=80,x²+y²=200에서 합제곱식으로xy를 정해 둘레곱16xy를 구하는 도형 활용 분류를 확인."
+      }
+    ],
+    "additionalCheck": "q1/3/5/15는 실제 짧은 기본성질·공식 비교로1↔2경계가 남으므로 기존 medium/B12를 보존하도록 요청하여 최종본에 반영. q11/12 rational 조건, q16 완전제곱 조건, q19치환 인수분해, q20반복 합차공식의 NONE을 source와 대조.",
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sourceMutation": "NONE",
+    "reviewedArtifactHashCheck": {
+      "E020.review.json": "396b6fc3ff42f81e598b52b2c7184cd9a2e0346d3a30cd4545e7813b69a8827f",
+      "E020.4slot.json": "69afae266ed4f27a6795da41d95c0b14805897a946e34c5b28c127312cc20853"
+    }
+  },
+  "resolverExecution": "NOT_RUN",
+  "registration": "NOT_RUN",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "evidenceDebtOrdinals": [],
+  "undecidedDifficultyOrdinals": []
+}

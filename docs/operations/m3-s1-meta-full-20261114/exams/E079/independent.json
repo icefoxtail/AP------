@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E079",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "1c3d7f973a54d7c368a35428da37717d031a67b8",
+  "inputHashes": {
+    "reviewSha256": "0138eaba81b754a099b10e5fd8a301c78a2ae3caa9420a16dca413eb0ade67b1",
+    "fourSlotSha256": "e5bc49d74d240f2e7e388537fef7b66ae608cff0083d7bf9bc126223581d9052"
+  },
+  "sampledOrdinals": [
+    23,
+    24,
+    25
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_ca766d4c74de6c43b8e0609738deb6e04d671c152930db8d3d2a4b0b7994a57f",
+      "status": "PASS",
+      "note": "a와1/a의 합차제곱에서 ±4를 이용한 숨은 완전제곱을 골라0<a<1의 부호를 적용. 중3·곱셈공식 보조·범위조건 수용."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_a4d2d2f3b8063360733f7d97777c6eb4216c0ff8620aaa20ab66edcbe2ec7a0a",
+      "status": "PASS",
+      "note": "네 독립식은 공통인수·제곱식·합차·단순 이차식 공식이 직접드러남. 문항수4나서술형배점8만으로 올리지 않은 하1과부분/leafgap 기록 수용."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_5b1cb99c949dab2641c2e984d4a749f475bcbab3996759334b53a7889d459cc3",
+      "status": "PASS",
+      "note": "실제 도형 A-B-C가 작은 쪽 한 변 전체를 공유함 확인. 넓이비로 변√5,2√5,3√5를 구하고 공유변을 두 번 제외하는 구조3. 4칸 비조건·둘레목표 수용."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/A/assets/E079/25-image-1.png",
+      "sha256": "633be45563b277f47f68b5a89235f54a0b84542c7df058305d441f31c27502c9",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}

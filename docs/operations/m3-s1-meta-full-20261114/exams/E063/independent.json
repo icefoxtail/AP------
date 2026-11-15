@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E063",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T00:05:07.888482+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/21_신흥중_1학기_중간_중3_수학.js",
+  "sourceBlob": "59f33e9c451dcf0441432efb15d9e33bb017423a",
+  "inputArtifacts": {
+    "workers/C/E063.review.json": {
+      "sha256": "fd675edbb3b015c1e6bd66e221819af8d2ed56b3714ca8bd868a01855297c515"
+    },
+    "workers/C/E063.4slot.json": {
+      "sha256": "d620d20b6b6130c01272f2115d4958aeff4704529f5c759692419d6ad20d41a4"
+    },
+    "workers/C/E063.input.json": {
+      "sha256": "c45ff90dc1b07cd2683ea4775d687306f7f486806e98f2c639c690ce884eeeeb"
+    }
+  },
+  "sampledOrdinals": [
+    7,
+    18,
+    22
+  ],
+  "items": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_3a26ae26cfe2b109e1d69091cf39b300f1f4f577f440d0f79b53164096bedbd1",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "nx가 자연수이고 √nx의 정수부분3이라는 조건을 9≤nx<16으로 바꿔 nx=9…15를 열거한다. x의합84/n=28로 n=3을 정하는 원문 경로와 exact leaf gap·bucket3/B23·level중을 수용한다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_df4b56ed9a8e29a90e7ed140ca977bfbe9aefa62fc05d1c6560cb9a659a39952",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "첫 잘못 본 식의 상수항 -24와 둘째 식의 x계수 -2가 보존됨을 확인하여 (x-6)(x+4)를 복원한다. primary 조건식28·전개/계수비교/인수분해 method 및 level중/2 B23 수용."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_0ae0c4a6a4e5fa0c911fdf4692c7c8012c982facc7885a59355a8461952a580a",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "둘레합40→x+y=10,넓이합52→x²+y²=52에서 xy=24와 둘레곱16xy=384를 얻는다. 목표 둘레·곱과 별도기하공식 auxiliary가 정확하다. 두기하관계를 같은 공식에 직접 대입하는 정형부담이므로 역사적 최상을 현행 중/2 B23로 수정한 근거를 수용한다."
+    }
+  ],
+  "findingsResolved": [],
+  "rootAdjudications": [],
+  "visualEvidence": [],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}

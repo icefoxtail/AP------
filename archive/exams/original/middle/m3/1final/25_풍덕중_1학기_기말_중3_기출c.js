@@ -31,10 +31,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "주어진 다항식은\n$2x(x+1)(3x-1)$이다.\n따라서 $x$, $x+1$, $3x-1$은 각각 인수이고,\n$x(3x-1)$도 인수이다.\n반면 $x-1$은 곱을 이루는 인수가 아니다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -68,10 +68,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$x^2-2xy+y^2=(x-y)^2$이다.\n$x-y=(\\sqrt5+2)-(\\sqrt5-2)=4$이므로\n$(x-y)^2=4^2=16$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -103,10 +103,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "완전제곱식이 되려면\n$9x^2+3(k+5)x+49=(3x\\pm7)^2$의 꼴이어야 한다.\n가운데 항의 계수를 비교하면\n$3(k+5)=42$ 또는 $3(k+5)=-42$이다.\n따라서 $k=9$ 또는 $k=-19$이고,\n가장 작은 값은 $-19$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 4,
@@ -138,10 +138,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "첫 번째 식을\n$3x^2+5x+p=(x+2)(3x+r)$라 두자.\n전개하면 $3x^2+(r+6)x+2r$이므로\n$r+6=5$에서 $r=-1$, 따라서 $p=-2$이다.\n\n두 번째 식을\n$5x^2+qx+6=(x+2)(5x+s)$라 두자.\n상수항에서 $2s=6$이므로 $s=3$이고,\n$x$의 계수는 $q=s+10=13$이다.\n따라서 $p+q=-2+13=11$이다.\n정답은 ①이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -175,10 +175,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$(2x+a)(x+b)$를 전개하면\n$2x^2+(2b+a)x+ab$이다.\n따라서\n$2b+a=11$, $k=ab$이다.\n\n$a,b$가 자연수이므로\n$b=1,2,3,4,5$일 때\n$a=9,7,5,3,1$이다.\n이에 따른 $k$는\n$9,14,15,12,5$이다.\n가장 큰 값은 $15$, 가장 작은 값은 $5$이므로\n그 합은 $20$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 6,
@@ -229,7 +229,6 @@ window.questionBank = [
       "객관식",
       "인수분해",
       "이차방정식",
-      "표해석",
       "조건해석",
       "계산"
     ],
@@ -300,7 +299,6 @@ window.questionBank = [
     "tags": [
       "객관식",
       "인수분해",
-      "계수비교",
       "이차방정식",
       "대입",
       "조건해석",
@@ -335,8 +333,6 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "제곱근",
-      "근호",
       "이차방정식",
       "대입",
       "조건해석",
@@ -373,7 +369,6 @@ window.questionBank = [
       "객관식",
       "제곱근",
       "근호",
-      "나머지정리",
       "전개",
       "이차방정식",
       "삼각형"
@@ -389,10 +384,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$x>1$이므로 세 변 중 가장 긴 변은 $2x+3$이다.\n직각삼각형이므로 피타고라스 정리에 의해\n$(2x)^2+(2x+1)^2=(2x+3)^2$이다.\n\n전개하여 정리하면\n$4x^2-8x-8=0$,\n즉\n$x^2-2x-2=0$이다.\n\n근의 공식을 이용하면\n$x=1\\pm\\sqrt3$이다.\n조건 $x>1$을 만족하는 것은\n$x=1+\\sqrt3$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+    "subUnit": "이차방정식의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_풍덕중_1학기_기말_중3_기출c/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 변의 길이가 2x, 2x+1, 2x+3인 직각삼각형과 빗변 표시.",
     "solutionImageCaption": "x=1+√3이다. 정답: ③",
@@ -411,7 +406,6 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "계수비교",
       "이차함수",
       "함수",
       "조건해석",
@@ -446,7 +440,6 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "복소수",
       "이차함수",
       "일차함수",
       "함수",
@@ -464,8 +457,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "각 관계를 식으로 나타내어 차수를 확인한다.\n\nㄱ. $x$각형의 대각선 수는\n$y=\\dfrac{x(x-3)}2$이므로 이차함수이다.\n\nㄴ. 내각의 크기의 합은\n$y=180(x-2)$이므로 일차함수이다.\n\nㄷ. 반지름이 $(x-2)$cm인 원의 둘레는\n$y=2\\pi(x-2)$이므로 일차함수이다.\n\nㄹ. 시속 $x$km로 3시간 간 거리는\n$y=3x$이므로 일차함수이다.\n\nㅁ. 직사각형의 넓이는\n$y=x(2x+1)=2x^2+x$이므로 이차함수이다.\n\n따라서 ㄱ, ㅁ이고 정답은 ②이다.",
-    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "이차함수의 활용",
+    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -587,10 +580,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "절댓값",
-      "계수비교",
       "이차함수",
       "함수",
-      "표해석",
       "좌표"
     ],
     "wide": false,
@@ -627,7 +618,6 @@ window.questionBank = [
     "tags": [
       "객관식",
       "절댓값",
-      "계수비교",
       "이차함수",
       "함수",
       "조건해석",
@@ -705,7 +695,6 @@ window.questionBank = [
       "이차함수",
       "일차함수",
       "함수",
-      "표해석",
       "좌표",
       "대입"
     ],
@@ -732,12 +721,12 @@ window.questionBank = [
   {
     "id": 21,
     "level": "중",
-    "category": "다항식의 곱셈과 인수분해",
+    "category": "실수와 그 계산",
     "originalCategory": "다항식의 곱셈과 인수분해",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-02",
-    "standardUnit": "다항식의 곱셈과 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M3-01",
+    "standardUnit": "실수와 그 계산",
+    "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -748,10 +737,10 @@ window.questionBank = [
     "choices": [],
     "answer": "1",
     "solution": "근호 안을 완전제곱식으로 바꾸면\n$\\sqrt{(x+2)^2}+\\sqrt{(x+1)^2}\n=|x+2|+|x+1|$이다.\n\n$-2<x<-1$이므로\n$x+2>0$, $x+1<0$이다.\n따라서\n$|x+2|+|x+1|\n=(x+2)-(x+1)=1$이다.\n\n따라서 답은 $1$이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_풍덕중_1학기_기말_중3_기출c/q21-solution.svg",
     "solutionImageAlt": "해설 그림: −2와 −1 사이의 열린 구간에서 x+2는 양수, x+1은 음수인 수직선.",
     "solutionImageCaption": "두 절댓값을 풀면 합은 1이다. 정답: 서술형 답 1",
@@ -800,20 +789,20 @@ window.questionBank = [
     "choices": [],
     "answer": "28명",
     "solution": "전체 학생 수를 $x$명이라 하자.\n한 학생이 받은 사탕의 개수는\n학생 수보다 24만큼 작으므로 $(x-24)$개이다.\n\n사탕이 모두 112개이므로\n$x(x-24)=112$이다.\n정리하면\n$x^2-24x-112=0$,\n$(x-28)(x+4)=0$이다.\n\n따라서\n$x=28$ 또는 $x=-4$이다.\n학생 수는 자연수이므로\n$x=28$이다.\n\n따라서 전체 학생 수는 $28$명이다.",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+    "subUnit": "이차방정식의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 24,
     "level": "하",
-    "category": "이차방정식",
+    "category": "이차함수와 그래프",
     "originalCategory": "이차방정식",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-03",
-    "standardUnit": "이차방정식",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "M3-04",
+    "standardUnit": "이차함수와 그래프",
+    "standardUnitOrder": 4,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -824,10 +813,10 @@ window.questionBank = [
     "choices": [],
     "answer": "15.8\\text{m}",
     "solution": "3초 후의 높이를 구하므로\n$h=-5t^2+20t+0.8$에\n$t=3$을 대입한다.\n\n$h=-5(3)^2+20(3)+0.8$\n$=-45+60+0.8$\n$=15.8$이다.\n\n따라서 3초 후의 높이는\n$15.8\\text{m}$이다.",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "이차함수의 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 25,

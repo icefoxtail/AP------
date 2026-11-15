@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E039",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-14T14:14:57.462350+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/22_풍덕중_1학기_기말_중3_기출c.js",
+  "sourceBlob": "7ab3a9b89d422de468e85fe443a5cbe07616e546",
+  "inputArtifacts": {
+    "workers/C/E039.review.json": {
+      "sha256": "44dd6385cdb45d559e3248a2e53c281af4ac38741f0b40a30ed08af6e6af1f69"
+    },
+    "workers/C/E039.4slot.json": {
+      "sha256": "301286fd4eb930357b15df1688f8fdbe14ab94a0725147c37366a229ff9a3d60"
+    },
+    "workers/C/E039.input.json": {
+      "sha256": "b516edb7049cfaacf1ace941841f8dca64de8bf83a83e5e3220b3a2b349d926c"
+    }
+  },
+  "sampledOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_c3e2e2248f17b4deaefcc9d74364ab86df5596c882489f8c2ac649008f343e47",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "함수관계와 이차다항식 조건을 직접 확인하는 bucket1 수용."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_bfb0b09f2fd0bf335e05d98259746b3237298de5ed378123770e17cb2c19496e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "x(x-5)=0의 두 근을 그대로 읽는 bucket1 수용."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_deebd27ed42b00429d4a982f94f827417789771ab6c323a341445419b8d8643e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "주어진 근1을 직접 대입해 계수를 정하는 bucket1 수용."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_491ef4f483b5fcfb76f95f2b7aa93c54f47de3ca3f0b738096d8b28b1676804e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "f(1)을 직접 대입하고 두 배 하는 bucket1 수용."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_ac6b23b299381035809f3925ad49b6aa3bbd87445b25c17362046c84a8f4eb7f",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "계수의 음수 여부를 바로 읽는1/B12와 source 중 경계 보존 수용."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_5d0af9186a3532498ab222b9e9bb18a3148e2d7c03ec04781dcf16961742ffc3",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "x축 반사로 계수 부호를 바꾸고 점을 대입하는2/B12. 반복적인 보조분류보다 실제 반사 연결 보존이 적합."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_692d45caa77a5c104a9a59e95f98e17255bbfa36e5b3a9791fdbfa71d81d33ed",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "계수 절댓값이 가장 큰 포물선의 폭이 가장 좁은 직접 성질1 수용."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_476395d3fcaf8398c88b8d96cb8cf42e7c2f21754bcad0a821cca56c62377c2e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "각 식을 완전제곱 또는 기본 인수분해로 비교하여 중근을 판별하는2 수용."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_9ed0d3da4cd01771438cdd55ded633cb5b0551b8fde2de3f41cf060ea6b10a8c",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "근의 공식 표현의 분자·근호를 직접 대응하는2.031 부모와 역방향 표현비교 exact gap 분리 보완 확인."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_15d848666f50cf46fb84567e68d22fc794b9da09c7dddd22de565067409cb8f3",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "원본의 바깥 정사각형12와 안쪽 변10, AE=BF=CG=DH 및 길이 대소 조건을 확인했다. t²+(12-t)²=100과 t>6으로 선택하는3/B34. 피타고라스가 primary인040에서 중복 보조 제거 수용."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_c8c28a68be3aa24f3810ae2b87d2edf151966f63f671788bf737cebd8ff64bbd",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "두 근을 통해 이차항 묶음을 수치로 바꾸는 표준2. 이차방정식 소단원 및 불필요한 integration 교정 수용."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_4437075a390b56ecb0ac720b0c952ea0bc03e8bc192664f73cf678f1bc7dbc9e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "원본 두 직사각형의 닮음 대응을 확인, 2:x=(2+x):2로 세워 양의 근을 고르는3/B34. 닮음 보조·기하 target gap 수용."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_6ae579b61879fb143a8f202dbd3913256d560f5c9f270a6669d54ddc3b1adcb5",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "원본 직선의 음의 기울기와 양의 절편에서 새 포물선의 계수·꼭짓점 부호를 해석하는3. 선택지 원본 PNG 오른쪽이 잘린 것을 직접 확인하여 content debt 유지 수용; 새 정답 PASS로 확대하지 않음."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_4b0203fbf6ebd930fc44490a01d9cc90bccfeba52684391e809837a6d2c6ad8b",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "주어진 꼭짓점형에 점(2,5)을 넣어 계수를 정하는2. primary 안의 표준절차에 불필요한 보조 제거 수용."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_0baceaceddd641c2870e231a7d0e7eb53446bf2c726b107b4d990790f3857d64",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "꼭짓점·축을 읽고 y절편을 대입하여 틀린 진술을 가리는2 수용."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_ed3843d4b7ae86319b6091197c55abc4fc6f660513cc4847ad9ef879032e5b3f",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "이동 전후 꼭짓점 좌표 차를 직접 계산하는2 및 중복 integration 제거 수용."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_7301c517249a9df6be55a7e6458de337395b4ac2314f5bc7c9cb43eaeddbd817",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "두 식의 꼭짓점을 각각 완전제곱으로 구해 같게 놓는 표준2. 상→중 교정에 동의."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_d5941e4f69a53a49f2ca77dd609691482594327b38fdea3bb24b6acbffeed954",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "원본 최저점6m와4m마다의 지면거리 및8m 높이, 해설의 원점 선택을 확인. 식의 계수를 정해 x=8을 대입하는 표준2여서 상→중 교정 수용."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_4c310928b49e1bd5ba6f4cb516ee4f56d9ebc3b762936e01c8d4df3023772238",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "원본에서 두 포물선·수직 및 수평 선분과1사분면 위치를 확인. 양수 t로 PA=PB를 구성하는3/B34, 기하 보조와 양수 조건 수용."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_31f2c765c36802609ebec0508c760c5758a93a6343cbd5e9d118f38988e78426",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "완전제곱식 우변0의 중근 조건을 직접 적용하는2 수용."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_d2715e236d38b26a5cf945331f51873e1e005f7351efb6ad9298d7f1b7f1219a",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "원본·해설의 꼭짓점 및 두 절편 확인. 삼각형과 사다리꼴의 합차로 넓이를 구성하는3/B34와 도형 넓이 보조·geometry gap 수용."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_50cd6de44dfdb8c4eda91b59e7ca4d7b5d646049adee308e5a2a63527b89c08f",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "각 소문항에서 지정된 제곱근법과 인수분해법을 직접 수행하는2 수용."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_a62520c6466bd12cf204fdcc030cc7fc21afd5eb3b874681b811609620c4da50",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "그림의 반지름3 증가와 넓이9배를 방정식으로 세우고 양의 길이를 고르는 표준2. 넓이 활용 primary 안의 중복 보조 제거 수용."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_bbd03935e6d024451a05f358b6ecad2390271849d359b4af0e95bb73a75fb2e0",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "해설 그림의 축 -1, 꼭짓점(-1,2), y절편3/2 및 아래로 열리는 개형을 확인. 여러 기본 출력의 묶음2와 compound target gap 수용."
+    }
+  ],
+  "findingsResolved": [
+    {
+      "ordinal": 9,
+      "resolution": "근의 표현 비교 exact gap과031 부모맥락 분리"
+    }
+  ],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E039-assets/contact-1.jpg",
+      "sha256": "15145249556d6f6c413242f2d10560ead170d28a3e4194460979cf9c95f809dc",
+      "status": "VIEWED"
+    },
+    {
+      "path": "workers/C/E039-assets/contact-2.jpg",
+      "sha256": "73648dca3070de751c1ba9301d83033d8bff68c6eebacab3d4af374a6f2fe98e",
+      "status": "VIEWED"
+    },
+    {
+      "path": "workers/C/E039-assets/contact-3.jpg",
+      "sha256": "96d53879c33e5b487bf917028a5d7035ec490179130f2588f398271854a77535",
+      "status": "VIEWED"
+    },
+    {
+      "path": "workers/C/E039-assets/contact-4.jpg",
+      "sha256": "de35d3048d8cb39bec39ee6b780f514e7f622282a14add8e45a468a8e525c987",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}

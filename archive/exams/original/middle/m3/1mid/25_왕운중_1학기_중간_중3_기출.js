@@ -94,7 +94,6 @@ window.questionBank = [
       "객관식",
       "제곱근",
       "근호",
-      "인수분해",
       "계산"
     ],
     "wide": false,
@@ -130,7 +129,6 @@ window.questionBank = [
       "근호",
       "무리수",
       "유리수",
-      "복소수",
       "순환소수",
       "개수세기"
     ],
@@ -232,7 +230,6 @@ window.questionBank = [
       "제곱근",
       "근호",
       "다항식",
-      "인수분해",
       "조건해석",
       "계산",
       "응용"
@@ -270,7 +267,6 @@ window.questionBank = [
       "근호",
       "무리수",
       "최대최소",
-      "자연수조건",
       "범위",
       "개수세기"
     ],
@@ -352,10 +348,10 @@ window.questionBank = [
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 자연수 20~35에서 f(x)=2, 36~40에서 f(x)=3인 두 구간과 정수점.",
     "solutionImageCaption": "20부터 35까지 16개 입력은 각각 2개, 36부터 40까지 5개 입력은 각각 3개를 더해 합은 47이다. 정답은 ④이다.",
@@ -455,7 +451,6 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "인수분해",
       "전개",
       "계수비교",
       "조건해석",
@@ -498,10 +493,10 @@ window.questionBank = [
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -533,10 +528,10 @@ window.questionBank = [
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -674,10 +669,10 @@ window.questionBank = [
     "wide": false,
     "layoutTag": "grid",
     "questionType": "객관식",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q19-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 네 칸의 넓이 2x², 7x, 8x, 28과 공통 폭 2x·7, 높이 x·4.",
     "solutionImageCaption": "가로가 2x+7, 세로가 x+4이므로 둘레는 2((2x+7)+(x+4))=6x+22이다. 정답은 ①이다.",
@@ -705,9 +700,7 @@ window.questionBank = [
     "tags": [
       "객관식",
       "다항식",
-      "인수분해",
       "전개",
-      "계수비교",
       "자연수조건",
       "범위",
       "개수세기"
@@ -787,10 +780,10 @@ window.questionBank = [
     "wide": false,
     "layoutTag": "subjective-2up",
     "questionType": "서술형",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 24,

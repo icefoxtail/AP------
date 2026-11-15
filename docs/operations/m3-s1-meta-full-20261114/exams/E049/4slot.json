@@ -1,0 +1,2207 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1final/21_동산중_1학기_기말_중3_기출c.js",
+  "sourceGitBlobSha": "ff54bd647ee22666bf27fcf272350efda45ba759",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "meta_a",
+    "owner": "M3_S1_RESUME_A",
+    "assignmentId": "M3-S1-META-FULL",
+    "at": "2026-11-14T14:15:22.697657+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_bf0d4a4c2b35ff4c5d4ad3e9004d3274557afd37196382c460872615f47075ff",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f716e3d23e43fbc6a9232661ea568186a368b513deb7c22763ae88eb87885f23"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "720bb96260f36fc9029c4a5c1d3d87f224521e74762f8e18190b8c763b668b59"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "$(x+2)(x-4)-7=(x+a)(x+b)$일 때, $a+b$의 값을 구하면? (3점)",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "quote": "$(x+2)(x-4)-7=(x+a)(x+b)$일 때, $a+b$의 값을 구하면? (3점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "[키포인트] 좌변을 전개하고 인수분해하여 일차항 계수를 비교합니다.\n정석 풀이:\n$(x+2)(x-4)-7=x^2-2x-8-7=x^2-2x-15=(x+3)(x-5)$입니다.\n따라서 $a,b$는 $3,-5$이므로 $a+b=-2$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "좌변의 일차항 계수-2를 a+b와 비교한다.",
+            "termId": 41
+          },
+          {
+            "term": "계수비교",
+            "quote": "[키포인트] 좌변을 전개하고 인수분해하여 일차항 계수를 비교합니다.\n정석 풀이:\n$(x+2)(x-4)-7=x^2-2x-8-7=x^2-2x-15=(x+3)(x-5)$입니다.\n따라서 $a,b$는 $3,-5$이므로 $a+b=-2$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "좌변의 일차항 계수-2를 a+b와 비교한다.",
+            "termId": 696
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "전개식의 일차항 계수 비교",
+        "condition": "좌변의 일차항 계수-2를 a+b와 비교한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_e8667d79d44bffa4d11527b97459fcd945c8d375a82e1d3fdc7c4c3a2e60eb50",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca1e0ff2ea487c7928da0a108e9b30caf9992cac0de36009b59c214bc3c9ccc2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fa4123db1a5a477f4210c64a687f4cd418b926513f922ae5e4def8a1f7fefaf3"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "quote": "식 $2x^2-5x-3$을 인수분해하면 $(ax+b)(cx+d)$가 될 때 (단, $a,b,c,d$는 정수이고 $a>0, c>0$), $a+b+c+d$의 값을 구하면? (3점)",
+            "src": "stem",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "quote": "식 $2x^2-5x-3$을 인수분해하면 $(ax+b)(cx+d)$가 될 때 (단, $a,b,c,d$는 정수이고 $a>0, c>0$), $a+b+c+d$의 값을 구하면? (3점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] 두 일차식의 계수가 모두 양수가 되도록 정규화하여 인수분해합니다.\n정석 풀이:\n$2x^2-5x-3=(2x+1)(x-3)$이므로 $(a,b,c,d)=(2,1,1,-3)$ 또는 두 인수의 순서만 바뀐 경우입니다.\n$a+b+c+d=2+1+1-3=1$입니다.\n[원본 보정] 원문에서 $(2x+1)(x-3)$과 $(-2x-1)(-x+3)$은 같은 이차식을 나타내지만 계수의 합은 각각 $1,-1$입니다. $(a,c>0)$ 조건을 명시하여 부호 모호성을 제거했습니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "양의 x계수 조건을 적용한(2x+1)(x-3)에서 네 계수의 합을 구한다.",
+            "termId": 42
+          },
+          {
+            "term": "계수비교",
+            "quote": "[키포인트] 두 일차식의 계수가 모두 양수가 되도록 정규화하여 인수분해합니다.\n정석 풀이:\n$2x^2-5x-3=(2x+1)(x-3)$이므로 $(a,b,c,d)=(2,1,1,-3)$ 또는 두 인수의 순서만 바뀐 경우입니다.\n$a+b+c+d=2+1+1-3=1$입니다.\n[원본 보정] 원문에서 $(2x+1)(x-3)$과 $(-2x-1)(-x+3)$은 같은 이차식을 나타내지만 계수의 합은 각각 $1,-1$입니다. $(a,c>0)$ 조건을 명시하여 부호 모호성을 제거했습니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "양의 x계수 조건을 적용한(2x+1)(x-3)에서 네 계수의 합을 구한다.",
+            "termId": 696
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "quote": "식 $2x^2-5x-3$을 인수분해하면 $(ax+b)(cx+d)$가 될 때 (단, $a,b,c,d$는 정수이고 $a>0, c>0$), $a+b+c+d$의 값을 구하면? (3점)",
+            "src": "stem",
+            "termId": 2
+          },
+          {
+            "term": "양수",
+            "quote": "식 $2x^2-5x-3$을 인수분해하면 $(ax+b)(cx+d)$가 될 때 (단, $a,b,c,d$는 정수이고 $a>0, c>0$), $a+b+c+d$의 값을 구하면? (3점)",
+            "src": "stem",
+            "termId": 396
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정규화된 정수 인수분해의 계수 합",
+        "condition": "양의 x계수 조건을 적용한(2x+1)(x-3)에서 네 계수의 합을 구한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_ecc7b2513a712b6e792e7cf54c4843b209414e4326e90dfe0c2eaea272e04d8c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "83cf434561a8c1dd98c48ec1dbd2490051a78393279f9d7888bb75867f056e17"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "389788ae60eb5dc131ed0af4a4d9f8c366fff024564d09655d42ea70695aa404"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "quote": "두 일차식의 계수가 모두 정수이고, 각 일차식의 $x$의 계수가 양수일 때, 그 곱이 $3x^2+7x-6$이라면 두 일차식의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차식",
+            "quote": "두 일차식의 계수가 모두 정수이고, 각 일차식의 $x$의 계수가 양수일 때, 그 곱이 $3x^2+7x-6$이라면 두 일차식의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 36
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] 두 일차식의 계수가 정수이고 $x$의 계수가 양수라는 조건으로 인수분해를 정규화합니다.\n$3x^2+7x-6=(3x-2)(x+3)$입니다. 전개하면 $3x^2+9x-2x-6=3x^2+7x-6$이므로 맞습니다. 양의 정수 $x$계수의 곱이 3이고 상수항의 곱이 -6이면서 교차항의 합이 7인 인수는 이 쌍뿐입니다(순서 교환 제외).\n두 식의 합은 $(3x-2)+(x+3)=4x+1$이므로 ①입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "정수계수와 양의 x계수를 만족하는 두 일차인수의 합을 구한다.",
+            "termId": 42
+          },
+          {
+            "term": "합",
+            "quote": "[키포인트] 두 일차식의 계수가 정수이고 $x$의 계수가 양수라는 조건으로 인수분해를 정규화합니다.\n$3x^2+7x-6=(3x-2)(x+3)$입니다. 전개하면 $3x^2+9x-2x-6=3x^2+7x-6$이므로 맞습니다. 양의 정수 $x$계수의 곱이 3이고 상수항의 곱이 -6이면서 교차항의 합이 7인 인수는 이 쌍뿐입니다(순서 교환 제외).\n두 식의 합은 $(3x-2)+(x+3)=4x+1$이므로 ①입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "정수계수와 양의 x계수를 만족하는 두 일차인수의 합을 구한다.",
+            "termId": 286
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "quote": "두 일차식의 계수가 모두 정수이고, 각 일차식의 $x$의 계수가 양수일 때, 그 곱이 $3x^2+7x-6$이라면 두 일차식의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 2
+          },
+          {
+            "term": "양수",
+            "quote": "두 일차식의 계수가 모두 정수이고, 각 일차식의 $x$의 계수가 양수일 때, 그 곱이 $3x^2+7x-6$이라면 두 일차식의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 396
+          }
+        ]
+      },
+      "reasons": {
+        "method": "양의 정수 일차항계수로 인수형 정규화",
+        "condition": "정수계수와 양의 x계수를 만족하는 두 일차인수의 합을 구한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_83a71031da447218255417d0d0b9f498c1207e98da084ca1018d8eb797c85598",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bce265a4739172d71c56359db621c57e84f738d6172c0bada9ab512554d81bdd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dd4674887f985e2bcf1cf4d74bfd3b77dd59e4815b7a7ceec68c1df10fa5885f"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "quote": "두 정수 $a, b$에 대하여 $x^2+kx-12=(x+a)(x+b)$일 때, 정수 $k$의 값이 될 수 <u>없는</u> 것은? (4점)",
+            "src": "stem",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "두 정수 $a, b$에 대하여 $x^2+kx-12=(x+a)(x+b)$일 때, 정수 $k$의 값이 될 수 <u>없는</u> 것은? (4점)",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "계수비교",
+            "quote": "[키포인트] $(x+a)(x+b)$의 상수항은 $ab=-12$이고 $k=a+b$입니다.\n정수 인수쌍 $(a,b)=(1,-12),(2,-6),(3,-4),(-1,12),(-2,6),(-3,4)$ 및 순서교환을 고려합니다.\n합 $k$는 $-11,-4,-1,11,4,1$만 가능합니다. 보기 $8$은 불가능하므로 ⑤입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "ab=-12의 양·음 약수쌍에서 가능한 k를 모두 구한다.",
+            "termId": 696
+          },
+          {
+            "term": "약수",
+            "quote": "[키포인트] $(x+a)(x+b)$의 상수항은 $ab=-12$이고 $k=a+b$입니다.\n정수 인수쌍 $(a,b)=(1,-12),(2,-6),(3,-4),(-1,12),(-2,6),(-3,4)$ 및 순서교환을 고려합니다.\n합 $k$는 $-11,-4,-1,11,4,1$만 가능합니다. 보기 $8$은 불가능하므로 ⑤입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "ab=-12의 양·음 약수쌍에서 가능한 k를 모두 구한다.",
+            "termId": 11
+          },
+          {
+            "term": "열거",
+            "quote": "[키포인트] $(x+a)(x+b)$의 상수항은 $ab=-12$이고 $k=a+b$입니다.\n정수 인수쌍 $(a,b)=(1,-12),(2,-6),(3,-4),(-1,12),(-2,6),(-3,4)$ 및 순서교환을 고려합니다.\n합 $k$는 $-11,-4,-1,11,4,1$만 가능합니다. 보기 $8$은 불가능하므로 ⑤입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "ab=-12의 양·음 약수쌍에서 가능한 k를 모두 구한다.",
+            "termId": 294
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "quote": "두 정수 $a, b$에 대하여 $x^2+kx-12=(x+a)(x+b)$일 때, 정수 $k$의 값이 될 수 <u>없는</u> 것은? (4점)",
+            "src": "stem",
+            "termId": 2
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정수 인수쌍의 합 후보 열거",
+        "condition": "ab=-12의 양·음 약수쌍에서 가능한 k를 모두 구한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_a091e2221b72f1a80eca7c50eac84669db7518dec0aa6bd1648e94902f45180d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5c9a718cf5fd4b4219b29a355faade31bec78e97b039e89d902864ee107f6da7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d04c22e9dea08d896d84a2214e28c969701f02d1dad38bd47a2da3cfdaecd4f9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "quote": "넓이가 $6a^2+a-2$인 직사각형의 가로의 길이가 $3a+2$일 때, 이 직사각형의 세로의 길이를 구하면? (4점)<br><br><img src=\"assets/images/21_동산중_1학기_기말_중3_수학/q05.png\">",
+            "src": "stem",
+            "termId": 165
+          },
+          {
+            "term": "넓이",
+            "quote": "넓이가 $6a^2+a-2$인 직사각형의 가로의 길이가 $3a+2$일 때, 이 직사각형의 세로의 길이를 구하면? (4점)<br><br><img src=\"assets/images/21_동산중_1학기_기말_중3_수학/q05.png\">",
+            "src": "stem",
+            "termId": 213
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "quote": "넓이가 $6a^2+a-2$인 직사각형의 가로의 길이가 $3a+2$일 때, 이 직사각형의 세로의 길이를 구하면? (4점)<br><br><img src=\"assets/images/21_동산중_1학기_기말_중3_수학/q05.png\">",
+            "src": "stem",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] 넓이=가로×세로이므로 넓이식을 인수분해합니다.\n$6a^2+a-2=(3a+2)(2a-1)$입니다. 가로가 $3a+2$이므로, 가로의 길이가 0이 아닌 상황에서 세로는 $2a-1$입니다. 직사각형의 두 길이가 양수인 실제 상황에서는 $3a+2>0$이며 $2a-1>0$도 함께 성립합니다. 따라서 구하는 식은 ②입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(3a+2)(2a-1)을 주어진 가로로 나누어 세로를 읽는다.",
+            "termId": 42
+          },
+          {
+            "term": "약분",
+            "quote": "[키포인트] 넓이=가로×세로이므로 넓이식을 인수분해합니다.\n$6a^2+a-2=(3a+2)(2a-1)$입니다. 가로가 $3a+2$이므로, 가로의 길이가 0이 아닌 상황에서 세로는 $2a-1$입니다. 직사각형의 두 길이가 양수인 실제 상황에서는 $3a+2>0$이며 $2a-1>0$도 함께 성립합니다. 따라서 구하는 식은 ②입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(3a+2)(2a-1)을 주어진 가로로 나누어 세로를 읽는다.",
+            "termId": 58
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "넓이식을 인수분해해 다른 변 역산",
+        "condition": "(3a+2)(2a-1)을 주어진 가로로 나누어 세로를 읽는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_d3e4dc4d5ecc9875763b3d7e9323f21d01f1cce0252e9bc78c5a2b04f23a3aeb",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "08722cbca5e0bc9e7e46e5b201c9a186c86c9d6df266ab532cbf306e42e41cf8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0a3ef6147b301e0b92601eb3bcba7787a008bdc315a504cfdf15b671df44c6f5"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "quote": "$ax^2-4x+3=2x(x+2)$가 $x$에 관한 이차방정식이 되기 위한 $a$의 조건은? (3점)",
+            "src": "stem",
+            "termId": 62
+          }
+        ],
+        "goal": [
+          {
+            "term": "성립조건",
+            "quote": "$ax^2-4x+3=2x(x+2)$가 $x$에 관한 이차방정식이 되기 위한 $a$의 조건은? (3점)",
+            "src": "stem",
+            "termId": 141
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "[키포인트] 양변을 이항한 뒤 $x^2$의 계수가 0이 아니어야 합니다.\n$ax^2-4x+3=2x^2+4x$이므로 $(a-2)x^2-8x+3=0$.\n이차방정식의 조건은 $a-2\\ne0$, 즉 $a\\ne2$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "우변을 전개하여 a-2가0이 아니어야 함을 적용한다.",
+            "termId": 41
+          },
+          {
+            "term": "차수",
+            "quote": "[키포인트] 양변을 이항한 뒤 $x^2$의 계수가 0이 아니어야 합니다.\n$ax^2-4x+3=2x^2+4x$이므로 $(a-2)x^2-8x+3=0$.\n이차방정식의 조건은 $a-2\\ne0$, 즉 $a\\ne2$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "우변을 전개하여 a-2가0이 아니어야 함을 적용한다.",
+            "termId": 431
+          }
+        ],
+        "condition": [
+          {
+            "term": "성립조건",
+            "quote": "$ax^2-4x+3=2x(x+2)$가 $x$에 관한 이차방정식이 되기 위한 $a$의 조건은? (3점)",
+            "src": "stem",
+            "termId": 141
+          }
+        ]
+      },
+      "reasons": {
+        "method": "양변 정리 후 이차계수 조건",
+        "condition": "우변을 전개하여 a-2가0이 아니어야 함을 적용한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_e4f4798364f4d94a1efa9dae769be05678a34ce0f8c3b1ce1892f10f528e3007",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "99aa7cb233d9cec28098d85f77c02768adfe1ce3715b3824ff02fbfd293cc7f7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c7ac16270819519e9431e9860a762631e0975b3ffe7849caff8e2a7caa204b70"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $2x^2+(a+2)x+3=0$의 한 근이 $x=-3$일 때, 상수 $a$의 값을 구하면? (3점)",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "해",
+            "quote": "이차방정식 $2x^2+(a+2)x+3=0$의 한 근이 $x=-3$일 때, 상수 $a$의 값을 구하면? (3점)",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "quote": "이차방정식 $2x^2+(a+2)x+3=0$의 한 근이 $x=-3$일 때, 상수 $a$의 값을 구하면? (3점)",
+            "src": "stem",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "quote": "[키포인트] 알려진 근을 식에 대입합니다.\n$x=-3$을 대입하면 $2\\cdot9+(a+2)(-3)+3=0$.\n$18-3a-6+3=0$이므로 $15-3a=0$, $a=5$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x=-3을 대입하여 a의 일차식을 푼다.",
+            "termId": 53
+          },
+          {
+            "term": "일차방정식",
+            "quote": "[키포인트] 알려진 근을 식에 대입합니다.\n$x=-3$을 대입하면 $2\\cdot9+(a+2)(-3)+3=0$.\n$18-3a-6+3=0$이므로 $15-3a=0$, $a=5$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x=-3을 대입하여 a의 일차식을 푼다.",
+            "termId": 64
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "알려진 근의 직접 대입",
+        "condition": "x=-3을 대입하여 a의 일차식을 푼다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_43e5da75778c2ba918f1e41407a27e0b161422db1b6d9dc7d189e14d382502b8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "abbb778f9f7bb5030b9206fbd50dc21f6e0dbc91ba2dbf3cdcd3fba6509df266"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "482fefbd1e3f5ed801e41fef45d1616885c9faea70dfbb26222f2d6f69ad3af7"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "quote": "$A=x^2-3x-4, B=x^2-x-6$일 때, $AB=0$를 만족하는 $x$의 값이 <u>아닌</u> 것은? (4점)",
+            "src": "stem",
+            "termId": 62
+          },
+          {
+            "term": "다항식",
+            "quote": "$A=x^2-3x-4, B=x^2-x-6$일 때, $AB=0$를 만족하는 $x$의 값이 <u>아닌</u> 것은? (4점)",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "quote": "$A=x^2-3x-4, B=x^2-x-6$일 때, $AB=0$를 만족하는 $x$의 값이 <u>아닌</u> 것은? (4점)",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] 두 식의 곱이 0이면 둘 중 적어도 하나가 0입니다.\n$A=x^2-3x-4=(x-4)(x+1)$에서 $x=4,-1$.\n$B=x^2-x-6=(x-3)(x+2)$에서 $x=3,-2$.\n해의 집합은 $\\{-2,-1,3,4\\}$입니다. $6$은 해당하지 않습니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "A=0 또는B=0을 각각 표준 인수분해하여 해를 합친다.",
+            "termId": 42
+          },
+          {
+            "term": "등식",
+            "quote": "[키포인트] 두 식의 곱이 0이면 둘 중 적어도 하나가 0입니다.\n$A=x^2-3x-4=(x-4)(x+1)$에서 $x=4,-1$.\n$B=x^2-x-6=(x-3)(x+2)$에서 $x=3,-2$.\n해의 집합은 $\\{-2,-1,3,4\\}$입니다. $6$은 해당하지 않습니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "A=0 또는B=0을 각각 표준 인수분해하여 해를 합친다.",
+            "termId": 349
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 이차인수의 영인자 성질",
+        "condition": "A=0 또는B=0을 각각 표준 인수분해하여 해를 합친다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f7d7fa9b009cb742c8caab15d7eab047b179bf3a60bfcabe4497996a3aa7fc67",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "154e000ac596b6ff8856aab1ae69699d19554745c4eab9358efcec1f799aa521"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a3aae1b3757a8bf5de818fbcffe8fb69659c368cccac9fb23abf102b028e248f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $x^2+3x-9=0$의 한 근이 $x=\\alpha$일 때, $\\alpha^2+4\\alpha-\\frac{9}{\\alpha}$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "해",
+            "quote": "이차방정식 $x^2+3x-9=0$의 한 근이 $x=\\alpha$일 때, $\\alpha^2+4\\alpha-\\frac{9}{\\alpha}$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "이차방정식 $x^2+3x-9=0$의 한 근이 $x=\\alpha$일 때, $\\alpha^2+4\\alpha-\\frac{9}{\\alpha}$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "quote": "[키포인트] 근 조건 $\\alpha^2+3\\alpha-9=0$을 재활용합니다.\n$\\alpha\\ne0$이고 $\\alpha^2=9-3\\alpha$입니다.\n근의 식을 $\\alpha$로 나누면 $\\alpha+3=\\dfrac9\\alpha$입니다.\n$\\alpha^2+4\\alpha-\\dfrac9\\alpha=(9-3\\alpha)+4\\alpha-(\\alpha+3)=6$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "α²=9-3α와9/α=α+3을 만들어 목표식에 넣는다.",
+            "termId": 53
+          },
+          {
+            "term": "등식",
+            "quote": "[키포인트] 근 조건 $\\alpha^2+3\\alpha-9=0$을 재활용합니다.\n$\\alpha\\ne0$이고 $\\alpha^2=9-3\\alpha$입니다.\n근의 식을 $\\alpha$로 나누면 $\\alpha+3=\\dfrac9\\alpha$입니다.\n$\\alpha^2+4\\alpha-\\dfrac9\\alpha=(9-3\\alpha)+4\\alpha-(\\alpha+3)=6$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "α²=9-3α와9/α=α+3을 만들어 목표식에 넣는다.",
+            "termId": 349
+          },
+          {
+            "term": "약분",
+            "quote": "[키포인트] 근 조건 $\\alpha^2+3\\alpha-9=0$을 재활용합니다.\n$\\alpha\\ne0$이고 $\\alpha^2=9-3\\alpha$입니다.\n근의 식을 $\\alpha$로 나누면 $\\alpha+3=\\dfrac9\\alpha$입니다.\n$\\alpha^2+4\\alpha-\\dfrac9\\alpha=(9-3\\alpha)+4\\alpha-(\\alpha+3)=6$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "α²=9-3α와9/α=α+3을 만들어 목표식에 넣는다.",
+            "termId": 58
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역",
+            "quote": "[키포인트] 근 조건 $\\alpha^2+3\\alpha-9=0$을 재활용합니다.\n$\\alpha\\ne0$이고 $\\alpha^2=9-3\\alpha$입니다.\n근의 식을 $\\alpha$로 나누면 $\\alpha+3=\\dfrac9\\alpha$입니다.\n$\\alpha^2+4\\alpha-\\dfrac9\\alpha=(9-3\\alpha)+4\\alpha-(\\alpha+3)=6$입니다.",
+            "src": "solution",
+            "termId": 101
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근의 등식을 변형하여 목표식의 문자 소거",
+        "condition": "α²=9-3α와9/α=α+3을 만들어 목표식에 넣는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_0c24e50d016cc48352eec5d78752339261fda5572f8e187333a9ba693d0cef89",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "632b8e6980d2b254c0ed57e4c7a59050c2fc3448dc579ea52db579adc3aff329"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "18547b8a64967b3c2566a7b735fa2e8da473a7e8e1d476915efb6548d7c95465"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $3x^2+px+q=0$의 두 근이 $x=\\frac{2}{3}, x=-4$일 때, $p+q$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "해",
+            "quote": "이차방정식 $3x^2+px+q=0$의 두 근이 $x=\\frac{2}{3}, x=-4$일 때, $p+q$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "quote": "이차방정식 $3x^2+px+q=0$의 두 근이 $x=\\frac{2}{3}, x=-4$일 때, $p+q$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] 근으로부터 인수분해된 이차방정식의 식을 복원합니다.\n$3(x-\\frac23)(x+4)=3x^2+10x-8=0$.\n주어진 $3x^2+px+q=0$과 계수를 비교하면 $p=10$, $q=-8$, $p+q=2$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "이차항 계수3을 유지하여3(x-2/3)(x+4)를 전개한다.",
+            "termId": 42
+          },
+          {
+            "term": "전개",
+            "quote": "[키포인트] 근으로부터 인수분해된 이차방정식의 식을 복원합니다.\n$3(x-\\frac23)(x+4)=3x^2+10x-8=0$.\n주어진 $3x^2+px+q=0$과 계수를 비교하면 $p=10$, $q=-8$, $p+q=2$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "이차항 계수3을 유지하여3(x-2/3)(x+4)를 전개한다.",
+            "termId": 41
+          },
+          {
+            "term": "계수비교",
+            "quote": "[키포인트] 근으로부터 인수분해된 이차방정식의 식을 복원합니다.\n$3(x-\\frac23)(x+4)=3x^2+10x-8=0$.\n주어진 $3x^2+px+q=0$과 계수를 비교하면 $p=10$, $q=-8$, $p+q=2$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "이차항 계수3을 유지하여3(x-2/3)(x+4)를 전개한다.",
+            "termId": 696
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 근의 인수형으로 계수 복원",
+        "condition": "이차항 계수3을 유지하여3(x-2/3)(x+4)를 전개한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_917582187073a23b0a048cc84b58406b983c9c001054ed6d67a61021024f531b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "96d2d9d2c8f1f45a12845c67618710afebb18523457d3a07e659c293c7307dcb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fe24c0d3b1480fdfa3fa88d86782770f9d30d2547b1ad8bd58044e44d093382a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $3x^2-5x+2=0$의 큰 근을 $\\alpha$, 작은 근을 $\\beta$라고 할 때, $\\alpha+3\\beta$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "이차방정식 $3x^2-5x+2=0$의 큰 근을 $\\alpha$, 작은 근을 $\\beta$라고 할 때, $\\alpha+3\\beta$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] 인수분해하여 큰 근과 작은 근을 구별합니다.\n$3x^2-5x+2=(3x-2)(x-1)=0$.\n근은 $\\frac23,1$이므로 $\\alpha=1$, $\\beta=\\frac23$.\n$\\alpha+3\\beta=1+3\\cdot\\frac23=3$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해한1과2/3을 크기 순서대로 α,β에 대응한다.",
+            "termId": 42
+          },
+          {
+            "term": "대소비교",
+            "quote": "[키포인트] 인수분해하여 큰 근과 작은 근을 구별합니다.\n$3x^2-5x+2=(3x-2)(x-1)=0$.\n근은 $\\frac23,1$이므로 $\\alpha=1$, $\\beta=\\frac23$.\n$\\alpha+3\\beta=1+3\\cdot\\frac23=3$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해한1과2/3을 크기 순서대로 α,β에 대응한다.",
+            "termId": 28
+          },
+          {
+            "term": "대입",
+            "quote": "[키포인트] 인수분해하여 큰 근과 작은 근을 구별합니다.\n$3x^2-5x+2=(3x-2)(x-1)=0$.\n근은 $\\frac23,1$이므로 $\\alpha=1$, $\\beta=\\frac23$.\n$\\alpha+3\\beta=1+3\\cdot\\frac23=3$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "인수분해한1과2/3을 크기 순서대로 α,β에 대응한다.",
+            "termId": 53
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 근을 구해 순서별 식의값 계산",
+        "condition": "인수분해한1과2/3을 크기 순서대로 α,β에 대응한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_400a2c57e4dc10ed921eec61f70d1b18d37bdd7d619e745544d4cc888a7e0fd0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aeeaced06b6502f7d1955350ce37c9f6eb64340c9cdd893999fdde241eefad1c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5496bbf7c4734cd2039a7aba47d699d1d72f811881fbc6f1665ad49dcc5268ef"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $x^2-10x+k=0$의 두 근의 비가 $2:3$일 때, $k$값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "quote": "이차방정식 $x^2-10x+k=0$의 두 근의 비가 $2:3$일 때, $k$값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "quote": "[키포인트] 두 근의 비가 2:3이면 근을 $2t,3t$라고 둡니다.\n근의 합은 계수 관계로 $2t+3t=10$입니다. 따라서 $t=2$, 근은 $4,6$.\n근의 곱은 $k=4\\cdot6=24$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근을2t,3t로 나타내어 합10 조건과 곱 k를 연결한다.",
+            "termId": 299
+          },
+          {
+            "term": "계수비교",
+            "quote": "[키포인트] 두 근의 비가 2:3이면 근을 $2t,3t$라고 둡니다.\n근의 합은 계수 관계로 $2t+3t=10$입니다. 따라서 $t=2$, 근은 $4,6$.\n근의 곱은 $k=4\\cdot6=24$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근을2t,3t로 나타내어 합10 조건과 곱 k를 연결한다.",
+            "termId": 696
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "quote": "이차방정식 $x^2-10x+k=0$의 두 근의 비가 $2:3$일 때, $k$값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 289
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근의 비를 매개변수로 표현해 계수 결정",
+        "condition": "두 근을2t,3t로 나타내어 합10 조건과 곱 k를 연결한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_8540e90d1f76e60f25262aae16ebec9036e7291c5510b637a510e09f6f146b12",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "05ef0d7170e982244c1ce73f88044e1ffe4734644f981cec07b5501559acbe98"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d86a54990d2ff6861ce909f46d7f3d4facab2c9e0b658e1271683bad17ba3b35"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $x^2-4x+4=4(x-k)$가 중근을 가질 때, $k$값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "quote": "이차방정식 $x^2-4x+4=4(x-k)$가 중근을 가질 때, $k$값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "quote": "[키포인트] 이차방정식의 판별식 또는 제곱완성으로 중근 조건을 확인합니다.\n$x^2-4x+4=4x-4k$에서 $x^2-8x+4+4k=0$, 따라서 $(x-4)^2=12-4k$입니다. 실수해가 하나의 중근이 되려면 우변이 0이어야 하므로 $12-4k=0$, $k=3$입니다. 그러므로 ①입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "정리한(x-4)²=12-4k에서 오른쪽0 조건을 적용한다.",
+            "termId": 432
+          },
+          {
+            "term": "완전제곱식",
+            "quote": "[키포인트] 이차방정식의 판별식 또는 제곱완성으로 중근 조건을 확인합니다.\n$x^2-4x+4=4x-4k$에서 $x^2-8x+4+4k=0$, 따라서 $(x-4)^2=12-4k$입니다. 실수해가 하나의 중근이 되려면 우변이 0이어야 하므로 $12-4k=0$, $k=3$입니다. 그러므로 ①입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "정리한(x-4)²=12-4k에서 오른쪽0 조건을 적용한다.",
+            "termId": 59
+          },
+          {
+            "term": "중근",
+            "quote": "[키포인트] 이차방정식의 판별식 또는 제곱완성으로 중근 조건을 확인합니다.\n$x^2-4x+4=4x-4k$에서 $x^2-8x+4+4k=0$, 따라서 $(x-4)^2=12-4k$입니다. 실수해가 하나의 중근이 되려면 우변이 0이어야 하므로 $12-4k=0$, $k=3$입니다. 그러므로 ①입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "정리한(x-4)²=12-4k에서 오른쪽0 조건을 적용한다.",
+            "termId": 444
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "이항 후 완전제곱식의 중근 조건",
+        "condition": "정리한(x-4)²=12-4k에서 오른쪽0 조건을 적용한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_37095e6bd0bc687fc91415ea925d33a02bdd7f226db95e2a8d9de6e1efd1fd25",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "44628fb81ec03a29b7b2f5f1c5ec904a08a1f56b5a63c883c5ce253d3c2c3023"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a0358d1f443e851214ea0f65d8f287f96ec0ce9ed1344edac82ec07c992af51c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $(x-p)^2=q$ (단, $p, q$는 상수)가 서로 다른 두 개의 근을 갖기 위한 조건을 찾으면? (3점)",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "성립조건",
+            "quote": "이차방정식 $(x-p)^2=q$ (단, $p, q$는 상수)가 서로 다른 두 개의 근을 갖기 위한 조건을 찾으면? (3점)",
+            "src": "stem",
+            "termId": 141
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "[키포인트] $(x-p)^2=q$에서 좌변은 음수가 될 수 없습니다.\n$q>0$이면 $x=p+\\sqrt q$와 $x=p-\\sqrt q$ 두 근이 서로 다릅니다.\n$q=0$은 중근 하나, $q<0$은 실근이 없으므로 조건은 $q>0$입니다. $p$의 부호는 관계없습니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "q>0일 때만±√q가 서로 다른 두 값임을 읽는다.",
+            "termId": 22
+          },
+          {
+            "term": "중근",
+            "quote": "[키포인트] $(x-p)^2=q$에서 좌변은 음수가 될 수 없습니다.\n$q>0$이면 $x=p+\\sqrt q$와 $x=p-\\sqrt q$ 두 근이 서로 다릅니다.\n$q=0$은 중근 하나, $q<0$은 실근이 없으므로 조건은 $q>0$입니다. $p$의 부호는 관계없습니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "q>0일 때만±√q가 서로 다른 두 값임을 읽는다.",
+            "termId": 444
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "서로 다른 두 실근의 제곱식 조건",
+        "condition": "q>0일 때만±√q가 서로 다른 두 값임을 읽는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_382c2b46b06c2adfcac1ed5345a7425e34b127b4932986db8d6da18c10114d11",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "993361764c81963e6563ebdb7f7362cbc414136511ee200e4b6b08903cb009c4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a85315e269157de1d71ba969549fa6986df09ab674f7c9eec97af15c15bd2be5"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $x^2+6x-1=0$의 근이 $x=p \\pm \\sqrt{q}$일 때, $p+q$의 값을 구하면? (3점)",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "quote": "이차방정식 $x^2+6x-1=0$의 근이 $x=p \\pm \\sqrt{q}$일 때, $p+q$의 값을 구하면? (3점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "[키포인트] 완전제곱식으로 바꿉니다.\n$x^2+6x-1=0\\iff(x+3)^2=10$.\n$x=-3\\pm\\sqrt{10}$이므로 $p=-3,q=10$입니다.\n$p+q=-3+10=7$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(x+3)²=10에서 p=-3,q=10을 읽는다.",
+            "termId": 59
+          },
+          {
+            "term": "제곱근",
+            "quote": "[키포인트] 완전제곱식으로 바꿉니다.\n$x^2+6x-1=0\\iff(x+3)^2=10$.\n$x=-3\\pm\\sqrt{10}$이므로 $p=-3,q=10$입니다.\n$p+q=-3+10=7$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(x+3)²=10에서 p=-3,q=10을 읽는다.",
+            "termId": 22
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "완전제곱식 풀이 후 해 표현 비교",
+        "condition": "(x+3)²=10에서 p=-3,q=10을 읽는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_1fc384c6a6d8c0467b6506a3a2ac4b2db0332251bbbc6724fea393715a8137e4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "43ab689e9ebf61ad6366af7d4e7d537bff96d3ca90d61961611a6bf43b00ac99"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4a5265f747de93884723e664a6f7acc8eae40e12d340590bfa226508ba5f026c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "이차방정식 $2x^2-2x-k=0$의 근이 $x=\\frac{A \\pm \\sqrt{11}}{2}$일 때, $k+A$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "해",
+            "quote": "이차방정식 $2x^2-2x-k=0$의 근이 $x=\\frac{A \\pm \\sqrt{11}}{2}$일 때, $k+A$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "quote": "이차방정식 $2x^2-2x-k=0$의 근이 $x=\\frac{A \\pm \\sqrt{11}}{2}$일 때, $k+A$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "근의공식",
+            "quote": "[키포인트] 근의 공식을 써서 두 근의 형태를 비교합니다.\n$2x^2-2x-k=0$의 근은 $x=\\dfrac{2\\pm\\sqrt{4+8k}}4=\\dfrac{1\\pm\\sqrt{1+2k}}2$입니다.\n주어진 $\\dfrac{A\\pm\\sqrt{11}}2$와 비교하여 $A=1$, $1+2k=11$, $k=5$입니다.\n따라서 $k+A=6$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "짝수계수형으로 정리한1±√(1+2k)의 각 부분을 대조한다.",
+            "termId": 443
+          },
+          {
+            "term": "계수비교",
+            "quote": "[키포인트] 근의 공식을 써서 두 근의 형태를 비교합니다.\n$2x^2-2x-k=0$의 근은 $x=\\dfrac{2\\pm\\sqrt{4+8k}}4=\\dfrac{1\\pm\\sqrt{1+2k}}2$입니다.\n주어진 $\\dfrac{A\\pm\\sqrt{11}}2$와 비교하여 $A=1$, $1+2k=11$, $k=5$입니다.\n따라서 $k+A=6$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "짝수계수형으로 정리한1±√(1+2k)의 각 부분을 대조한다.",
+            "termId": 696
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근의 공식 결과와 주어진 근 비교",
+        "condition": "짝수계수형으로 정리한1±√(1+2k)의 각 부분을 대조한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_d3388bbf1a01cf6c43fa19eb29ac92ea0ffc55bae8e781eb2990dc6d7b8f6cf9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "594c9bd4e58973ae314ff7f7b4623ff51c2330747fabf5c482076caac2fa0762"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a20668e83d415d0973773781822ea57efb4f840e469ee04821b581d9a9d63cff"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "$x$에 대한 이차방정식 $x^2-2ax+a^2-9=0$의 두 근이 이차방정식 $x^2-4x-12=0$의 두 근 사이에 있을 때, $a$값의 범위를 구하면? (4점)",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "quote": "$x$에 대한 이차방정식 $x^2-2ax+a^2-9=0$의 두 근이 이차방정식 $x^2-4x-12=0$의 두 근 사이에 있을 때, $a$값의 범위를 구하면? (4점)",
+            "src": "stem",
+            "termId": 297
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] 첫 방정식의 근과 비교되는 두 경계근을 각각 구합니다.\n$x^2-4x-12=(x-6)(x+2)=0$에서 경계근은 $-2,6$.\n$x^2-2ax+a^2-9=(x-a)^2-9=0$의 근은 $a-3,a+3$.\n두 근이 모두 $-2$와 $6$ 사이이면 $-2<a-3$ 및 $a+3<6$.\n따라서 $1<a<3$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "경계근-2,6과 이동근a±3을 구해 두 끝 부등식을 결합한다.",
+            "termId": 42
+          },
+          {
+            "term": "제곱근",
+            "quote": "[키포인트] 첫 방정식의 근과 비교되는 두 경계근을 각각 구합니다.\n$x^2-4x-12=(x-6)(x+2)=0$에서 경계근은 $-2,6$.\n$x^2-2ax+a^2-9=(x-a)^2-9=0$의 근은 $a-3,a+3$.\n두 근이 모두 $-2$와 $6$ 사이이면 $-2<a-3$ 및 $a+3<6$.\n따라서 $1<a<3$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "경계근-2,6과 이동근a±3을 구해 두 끝 부등식을 결합한다.",
+            "termId": 22
+          },
+          {
+            "term": "부등식",
+            "quote": "[키포인트] 첫 방정식의 근과 비교되는 두 경계근을 각각 구합니다.\n$x^2-4x-12=(x-6)(x+2)=0$에서 경계근은 $-2,6$.\n$x^2-2ax+a^2-9=(x-a)^2-9=0$의 근은 $a-3,a+3$.\n두 근이 모두 $-2$와 $6$ 사이이면 $-2<a-3$ 및 $a+3<6$.\n따라서 $1<a<3$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "경계근-2,6과 이동근a±3을 구해 두 끝 부등식을 결합한다.",
+            "termId": 63
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "quote": "$x$에 대한 이차방정식 $x^2-2ax+a^2-9=0$의 두 근이 이차방정식 $x^2-4x-12=0$의 두 근 사이에 있을 때, $a$값의 범위를 구하면? (4점)",
+            "src": "stem",
+            "termId": 296
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 해집합의 순서로 계수 범위 결정",
+        "condition": "경계근-2,6과 이동근a±3을 구해 두 끝 부등식을 결합한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_67f4f9455236c83769f22f2002970a62bacda4d42d3ce9ada8c2342cdddd0bb7",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "66b54a58e8b1997059c4d2e5d7be0310791bf7eda476aeef669440c9deb0d4e8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f1ace3bf5435d7537d6e355db85fcafbb49a7def36a19aa28f4c6245752c90a7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "quote": "어느 모임의 학생들에게 사탕 130개를 똑같이 나누어 주었더니 학생들에게 돌아가는 사탕의 개수는 모임의 학생 수 보다 3만큼 크다고 한다. 이때, 학생 수를 구하면? (4점)",
+            "src": "stem",
+            "termId": 129
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "quote": "어느 모임의 학생들에게 사탕 130개를 똑같이 나누어 주었더니 학생들에게 돌아가는 사탕의 개수는 모임의 학생 수 보다 3만큼 크다고 한다. 이때, 학생 수를 구하면? (4점)",
+            "src": "stem",
+            "termId": 129
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "quote": "[키포인트] 학생 수를 자연수 $n$이라 놓고 일인당 사탕 수를 표현합니다.\n학생 수가 $n$이면 한 명이 받는 사탕은 $n+3$개이므로 $n(n+3)=130$.\n$n^2+3n-130=(n+13)(n-10)=0$이므로 $n=10$ 또는 $n=-13$.\n학생 수는 자연수여야 하므로 $10$명입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "학생 수n과1인당n+3을 곱해130으로 두고 자연수 해를 택한다.",
+            "termId": 299
+          },
+          {
+            "term": "이차방정식",
+            "quote": "[키포인트] 학생 수를 자연수 $n$이라 놓고 일인당 사탕 수를 표현합니다.\n학생 수가 $n$이면 한 명이 받는 사탕은 $n+3$개이므로 $n(n+3)=130$.\n$n^2+3n-130=(n+13)(n-10)=0$이므로 $n=10$ 또는 $n=-13$.\n학생 수는 자연수여야 하므로 $10$명입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "학생 수n과1인당n+3을 곱해130으로 두고 자연수 해를 택한다.",
+            "termId": 65
+          },
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] 학생 수를 자연수 $n$이라 놓고 일인당 사탕 수를 표현합니다.\n학생 수가 $n$이면 한 명이 받는 사탕은 $n+3$개이므로 $n(n+3)=130$.\n$n^2+3n-130=(n+13)(n-10)=0$이므로 $n=10$ 또는 $n=-13$.\n학생 수는 자연수여야 하므로 $10$명입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "학생 수n과1인당n+3을 곱해130으로 두고 자연수 해를 택한다.",
+            "termId": 42
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "quote": "어느 모임의 학생들에게 사탕 130개를 똑같이 나누어 주었더니 학생들에게 돌아가는 사탕의 개수는 모임의 학생 수 보다 3만큼 크다고 한다. 이때, 학생 수를 구하면? (4점)",
+            "src": "stem",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "분배 총량과 학생 수로 방정식 모델링",
+        "condition": "학생 수n과1인당n+3을 곱해130으로 두고 자연수 해를 택한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_5d3d546c62f38a26e360ffc859242050b30b464ca258c78d2cc677fde037cebf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "61b5c9e5dee1f8ed6ff7743e73e81289db6167bc08a8932dcab0b4becaad99e6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "30df98b7278d00d4d825756a54548b16760b4fefe6fa87121d3ce35ede8c6c33"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "야구 경기에서 어느 타자가 친 야구공의 $t$초 후의 높이를 $(-5t^2+25t+1)\\text{m}$라고 한다. 이 야구공이 <u>처음으로</u> 지상으로부터 높이가 $21\\text{m}$인 지점을 지날 때는 야구공을 친 지 몇 초 후인가? (4점)",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "높이",
+            "quote": "야구 경기에서 어느 타자가 친 야구공의 $t$초 후의 높이를 $(-5t^2+25t+1)\\text{m}$라고 한다. 이 야구공이 <u>처음으로</u> 지상으로부터 높이가 $21\\text{m}$인 지점을 지날 때는 야구공을 친 지 몇 초 후인가? (4점)",
+            "src": "stem",
+            "termId": 218
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "quote": "야구 경기에서 어느 타자가 친 야구공의 $t$초 후의 높이를 $(-5t^2+25t+1)\\text{m}$라고 한다. 이 야구공이 <u>처음으로</u> 지상으로부터 높이가 $21\\text{m}$인 지점을 지날 때는 야구공을 친 지 몇 초 후인가? (4점)",
+            "src": "stem",
+            "termId": 131
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "quote": "[키포인트] 처음으로 높이 21 m를 지나는 시점을 선택합니다.\n$-5t^2+25t+1=21$에서 $t^2-5t+4=0$.\n$(t-1)(t-4)=0$이므로 $t=1,4$초입니다.\n처음으로 통과하는 시점은 더 작은 양수 $t=1$초입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "높이21을 대입해 나온1초·4초 중 작은 양수를 고른다.",
+            "termId": 53
+          },
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] 처음으로 높이 21 m를 지나는 시점을 선택합니다.\n$-5t^2+25t+1=21$에서 $t^2-5t+4=0$.\n$(t-1)(t-4)=0$이므로 $t=1,4$초입니다.\n처음으로 통과하는 시점은 더 작은 양수 $t=1$초입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "높이21을 대입해 나온1초·4초 중 작은 양수를 고른다.",
+            "termId": 42
+          },
+          {
+            "term": "대소비교",
+            "quote": "[키포인트] 처음으로 높이 21 m를 지나는 시점을 선택합니다.\n$-5t^2+25t+1=21$에서 $t^2-5t+4=0$.\n$(t-1)(t-4)=0$이므로 $t=1,4$초입니다.\n처음으로 통과하는 시점은 더 작은 양수 $t=1$초입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "높이21을 대입해 나온1초·4초 중 작은 양수를 고른다.",
+            "termId": 28
+          }
+        ],
+        "condition": [
+          {
+            "term": "최솟값",
+            "quote": "야구 경기에서 어느 타자가 친 야구공의 $t$초 후의 높이를 $(-5t^2+25t+1)\\text{m}$라고 한다. 이 야구공이 <u>처음으로</u> 지상으로부터 높이가 $21\\text{m}$인 지점을 지날 때는 야구공을 친 지 몇 초 후인가? (4점)",
+            "src": "stem",
+            "termId": 128
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 높이식의 최초 시각 선택",
+        "condition": "처음으로라는 조건은 양의 두 시각 중 작은 값을 선택하게 한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_482eff9cd61f9821a78d58e7ffc939a7de075fb730e9719db920a930db1c1d44",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9f338648058b0e34b72edbed8ab75182366760375e1073abad3aaaf063832199"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5e2ce1e1436cd0009494fadb93b8eb10646e70210ce29c5cf56287269e72ecbf"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "가로의 길이가 $x+4$이고 세로의 길이가 $3x-1$인 직사각형의 넓이는 $y$이다.",
+            "src": "choices",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음 중 $y$가 $x$에 관한 이차함수인 것을 찾으면? (3점)",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "quote": "[키포인트] 이차함수는 정리한 식이 $y=ax^2+bx+c\\ (a\\ne0)$이어야 합니다.\n① $2x^2+3x-2x(x-1)+4=5x+4$로 일차함수입니다.\n② $1/x^2$ 항이 있으므로 이차함수가 아닙니다.\n③ $y=60x$로 일차함수입니다.\n④ $y=(x+4)(3x-1)=3x^2+11x-4$로 이차함수입니다.\n⑤ 직각이등변삼각형의 빗변 길이 $y=\\sqrt2x$로 일차함수입니다.\n따라서 ④입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형 넓이와 운동·빗변 길이를 식으로 옮겨 차수를 비교한다.",
+            "termId": 299
+          },
+          {
+            "term": "차수",
+            "quote": "[키포인트] 이차함수는 정리한 식이 $y=ax^2+bx+c\\ (a\\ne0)$이어야 합니다.\n① $2x^2+3x-2x(x-1)+4=5x+4$로 일차함수입니다.\n② $1/x^2$ 항이 있으므로 이차함수가 아닙니다.\n③ $y=60x$로 일차함수입니다.\n④ $y=(x+4)(3x-1)=3x^2+11x-4$로 이차함수입니다.\n⑤ 직각이등변삼각형의 빗변 길이 $y=\\sqrt2x$로 일차함수입니다.\n따라서 ④입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형 넓이와 운동·빗변 길이를 식으로 옮겨 차수를 비교한다.",
+            "termId": 431
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "다양한 상황의 함수식 구성 후 차수 판정",
+        "condition": "직사각형 넓이와 운동·빗변 길이를 식으로 옮겨 차수를 비교한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_42c7af4436410b33a954cb3799a37e65dcd3c7c8b8c55aa8ba5d1e4aa1c0baad",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "249fef3408288198a6eecd6238bba9646deb38507a7f2e595c714ed40d2e950e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bf35f074aee45f1f6f51b4b77481b5d2e619cdb59b6d14fa7b6a1c73652c4f80"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "다음은 $y=-\\frac{1}{3}x^2$의 그래프에 대한 설명이다. <u>틀린</u> 것을 찾으면? (3점)",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "그래프",
+            "quote": "다음은 $y=-\\frac{1}{3}x^2$의 그래프에 대한 설명이다. <u>틀린</u> 것을 찾으면? (3점)",
+            "src": "stem",
+            "termId": 107
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음은 $y=-\\frac{1}{3}x^2$의 그래프에 대한 설명이다. <u>틀린</u> 것을 찾으면? (3점)",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "quote": "[키포인트] $y=ax^2$의 폭은 $|a|$가 클수록 좁습니다.\n① $x=2$를 대입하면 $y=-\\frac{4}{3}$이므로 맞습니다.\n② 꼭짓점은 $(0,0)$, ③ 대칭축은 $y$축으로 모두 맞습니다.\n④ $|-\\frac{1}{3}|<|-2|$이므로 $y=-x^2/3$의 그래프가 오히려 더 넓습니다. 따라서 틀렸습니다.\n⑤ 부호만 바뀌므로 $y=x^2/3$과 $x$축에 대하여 대칭입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "대입과 대칭·축·계수 절댓값의 폭을 각각 확인한다.",
+            "termId": 53
+          },
+          {
+            "term": "대칭성",
+            "quote": "[키포인트] $y=ax^2$의 폭은 $|a|$가 클수록 좁습니다.\n① $x=2$를 대입하면 $y=-\\frac{4}{3}$이므로 맞습니다.\n② 꼭짓점은 $(0,0)$, ③ 대칭축은 $y$축으로 모두 맞습니다.\n④ $|-\\frac{1}{3}|<|-2|$이므로 $y=-x^2/3$의 그래프가 오히려 더 넓습니다. 따라서 틀렸습니다.\n⑤ 부호만 바뀌므로 $y=x^2/3$과 $x$축에 대하여 대칭입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "대입과 대칭·축·계수 절댓값의 폭을 각각 확인한다.",
+            "termId": 110
+          },
+          {
+            "term": "절댓값",
+            "quote": "[키포인트] $y=ax^2$의 폭은 $|a|$가 클수록 좁습니다.\n① $x=2$를 대입하면 $y=-\\frac{4}{3}$이므로 맞습니다.\n② 꼭짓점은 $(0,0)$, ③ 대칭축은 $y$축으로 모두 맞습니다.\n④ $|-\\frac{1}{3}|<|-2|$이므로 $y=-x^2/3$의 그래프가 오히려 더 넓습니다. 따라서 틀렸습니다.\n⑤ 부호만 바뀌므로 $y=x^2/3$과 $x$축에 대하여 대칭입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "대입과 대칭·축·계수 절댓값의 폭을 각각 확인한다.",
+            "termId": 24
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "기본 포물선의 여러 성질 판정",
+        "condition": "대입과 대칭·축·계수 절댓값의 폭을 각각 확인한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_64c3950f38efe77960cc4f1d864b9fb5be6152ffee30471dece24eb65ffd5bfa",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "88c583dda04262deabf5f2cc3ecd304232418986fcc8861cf82215d08cdc988a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c1939cfaa65b17f260c23f359b5bf9eb3b7beb2c92ab879b39a19b8cce9fdb52"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "이차함수 $y=ax^2$의 그래프가 두 점 $(2, 6), (4, b)$를 지날 때, $ab$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "좌표",
+            "quote": "이차함수 $y=ax^2$의 그래프가 두 점 $(2, 6), (4, b)$를 지날 때, $ab$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 148
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "quote": "이차함수 $y=ax^2$의 그래프가 두 점 $(2, 6), (4, b)$를 지날 때, $ab$의 값을 구하면? (4점)",
+            "src": "stem",
+            "termId": 287
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "quote": "[키포인트] 한 점의 좌표를 먼저 대입하여 $a$를 결정합니다.\n$(2,6)$을 대입하면 $6=4a$이므로 $a=\\frac{3}{2}$.\n$(4,b)$를 대입하면 $b=(\\frac{3}{2})\\cdot16=24$.\n따라서 $ab=(\\frac{3}{2})\\cdot24=36$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 점에서 a를 구하고 둘째 x값으로 b를 구해 곱한다.",
+            "termId": 53
+          },
+          {
+            "term": "함숫값",
+            "quote": "[키포인트] 한 점의 좌표를 먼저 대입하여 $a$를 결정합니다.\n$(2,6)$을 대입하면 $6=4a$이므로 $a=\\frac{3}{2}$.\n$(4,b)$를 대입하면 $b=(\\frac{3}{2})\\cdot16=24$.\n따라서 $ab=(\\frac{3}{2})\\cdot24=36$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 점에서 a를 구하고 둘째 x값으로 b를 구해 곱한다.",
+            "termId": 100
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "통과점으로 계수와 다른 좌표 계산",
+        "condition": "첫 점에서 a를 구하고 둘째 x값으로 b를 구해 곱한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_f223797fc900671e96c43a324540da175eb09648202bd5613f34ef34e5a5ac08",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ab4d77adcb304e22517ffd9dc5d6bc21bff96c8e91db7190d42b74c530da08ad"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aa3dfb44fd56c54fda9ba4fcfb7a960930b5506a3c3273a024ef3e24bd40d5b6"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "quote": "[서답형 1] 어떤 이차식을 철수는 $x$의 계수를 잘못 보고 $(x+3)(x-8)$로 인수분해 하였고, 영수는 상수항을 잘못 보고 $(x+4)(x-2)$로 인수분해 하였다. 어떤 이차식을 구하고 바르게 인수분해 하여라. (8점)",
+            "src": "stem",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차식",
+            "quote": "[서답형 1] 어떤 이차식을 철수는 $x$의 계수를 잘못 보고 $(x+3)(x-8)$로 인수분해 하였고, 영수는 상수항을 잘못 보고 $(x+4)(x-2)$로 인수분해 하였다. 어떤 이차식을 구하고 바르게 인수분해 하여라. (8점)",
+            "src": "stem",
+            "termId": 37
+          },
+          {
+            "term": "인수",
+            "quote": "[서답형 1] 어떤 이차식을 철수는 $x$의 계수를 잘못 보고 $(x+3)(x-8)$로 인수분해 하였고, 영수는 상수항을 잘못 보고 $(x+4)(x-2)$로 인수분해 하였다. 어떤 이차식을 구하고 바르게 인수분해 하여라. (8점)",
+            "src": "stem",
+            "termId": 43
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "[키포인트] 잘못 보지 않은 계수만 남겨 실제 이차식을 복원합니다.\n철수는 $x$의 계수만 잘못 봤으므로 $(x+3)(x-8)=x^2-5x-24$에서 상수항 $-24$는 맞습니다.\n영수는 상수항만 잘못 봤으므로 $(x+4)(x-2)=x^2+2x-8$에서 $x$의 계수 $2$는 맞습니다.\n따라서 본래 이차식은 $x^2+2x-24$이고, 올바른 인수분해는 $(x+6)(x-4)$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 오답의 상수-24와 둘째의 일차항2를 결합해 인수분해한다.",
+            "termId": 41
+          },
+          {
+            "term": "계수비교",
+            "quote": "[키포인트] 잘못 보지 않은 계수만 남겨 실제 이차식을 복원합니다.\n철수는 $x$의 계수만 잘못 봤으므로 $(x+3)(x-8)=x^2-5x-24$에서 상수항 $-24$는 맞습니다.\n영수는 상수항만 잘못 봤으므로 $(x+4)(x-2)=x^2+2x-8$에서 $x$의 계수 $2$는 맞습니다.\n따라서 본래 이차식은 $x^2+2x-24$이고, 올바른 인수분해는 $(x+6)(x-4)$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 오답의 상수-24와 둘째의 일차항2를 결합해 인수분해한다.",
+            "termId": 696
+          },
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] 잘못 보지 않은 계수만 남겨 실제 이차식을 복원합니다.\n철수는 $x$의 계수만 잘못 봤으므로 $(x+3)(x-8)=x^2-5x-24$에서 상수항 $-24$는 맞습니다.\n영수는 상수항만 잘못 봤으므로 $(x+4)(x-2)=x^2+2x-8$에서 $x$의 계수 $2$는 맞습니다.\n따라서 본래 이차식은 $x^2+2x-24$이고, 올바른 인수분해는 $(x+6)(x-4)$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 오답의 상수-24와 둘째의 일차항2를 결합해 인수분해한다.",
+            "termId": 42
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 오답의 보존 계수로 원식 복원",
+        "condition": "첫 오답의 상수-24와 둘째의 일차항2를 결합해 인수분해한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_4d5187b35841fd4dfe85c0a5e39288d03a9ea27955a4e96699da25f7f185c04c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "91afd8774313d368436648468e89014aa9f16424b1f191b1d094e262dc105c27"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "39b3a5e948ed4008ed796d224f75972b759b686484365a3e1f41cf148e43879b"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "quote": "[서답형 2] 다음은 고대 그리스의 수학자 디오판토스의 “산학(Arithmetica)”이라는 책에 실려 있는 문제이다. 두 자연수를 구하여라. (6점)<br><br><table style=\"border: 1px solid #000; width: 100%; text-align: center; padding: 12px;\"><tr><td>두 자연수의 차는 3이고,<br>두 수의 제곱의 합은 149이다.</td></tr></table>",
+            "src": "stem",
+            "termId": 1
+          },
+          {
+            "term": "제곱합",
+            "quote": "[서답형 2] 다음은 고대 그리스의 수학자 디오판토스의 “산학(Arithmetica)”이라는 책에 실려 있는 문제이다. 두 자연수를 구하여라. (6점)<br><br><table style=\"border: 1px solid #000; width: 100%; text-align: center; padding: 12px;\"><tr><td>두 자연수의 차는 3이고,<br>두 수의 제곱의 합은 149이다.</td></tr></table>",
+            "src": "stem",
+            "termId": 336
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "quote": "[서답형 2] 다음은 고대 그리스의 수학자 디오판토스의 “산학(Arithmetica)”이라는 책에 실려 있는 문제이다. 두 자연수를 구하여라. (6점)<br><br><table style=\"border: 1px solid #000; width: 100%; text-align: center; padding: 12px;\"><tr><td>두 자연수의 차는 3이고,<br>두 수의 제곱의 합은 149이다.</td></tr></table>",
+            "src": "stem",
+            "termId": 131
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "quote": "[키포인트] 작은 자연수를 $n$, 큰 자연수를 $n+3$이라 둡니다.\n두 수의 제곱의 합이 149이므로 $n^2+(n+3)^2=149$.\n정리하면 $2n^2+6n-140=0$, 즉 $n^2+3n-70=(n+10)(n-7)=0$.\n$n$은 자연수이므로 $n=7$, 큰 수는 $10$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "작은 수n과큰 수n+3의 제곱합을149로 두고 양의 해를 택한다.",
+            "termId": 299
+          },
+          {
+            "term": "이차방정식",
+            "quote": "[키포인트] 작은 자연수를 $n$, 큰 자연수를 $n+3$이라 둡니다.\n두 수의 제곱의 합이 149이므로 $n^2+(n+3)^2=149$.\n정리하면 $2n^2+6n-140=0$, 즉 $n^2+3n-70=(n+10)(n-7)=0$.\n$n$은 자연수이므로 $n=7$, 큰 수는 $10$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "작은 수n과큰 수n+3의 제곱합을149로 두고 양의 해를 택한다.",
+            "termId": 65
+          },
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] 작은 자연수를 $n$, 큰 자연수를 $n+3$이라 둡니다.\n두 수의 제곱의 합이 149이므로 $n^2+(n+3)^2=149$.\n정리하면 $2n^2+6n-140=0$, 즉 $n^2+3n-70=(n+10)(n-7)=0$.\n$n$은 자연수이므로 $n=7$, 큰 수는 $10$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "작은 수n과큰 수n+3의 제곱합을149로 두고 양의 해를 택한다.",
+            "termId": 42
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "quote": "[서답형 2] 다음은 고대 그리스의 수학자 디오판토스의 “산학(Arithmetica)”이라는 책에 실려 있는 문제이다. 두 자연수를 구하여라. (6점)<br><br><table style=\"border: 1px solid #000; width: 100%; text-align: center; padding: 12px;\"><tr><td>두 자연수의 차는 3이고,<br>두 수의 제곱의 합은 149이다.</td></tr></table>",
+            "src": "stem",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 자연수의 차와 제곱합 모델링",
+        "condition": "작은 수n과큰 수n+3의 제곱합을149로 두고 양의 해를 택한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_e1ad5cffdd26fe9cf2e9ebd26bf451e80c903e0b48b8ebd40f2f02cb78e4dd0e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ed573060408d96c0eeacfe8fa04aa5f14257be2c3d0da2d608a787aba075e8aa"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "397e0f4038bda90828a98d8afb932f9378bdb1171aa02aa45373e3ba3cfdcc94"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "quote": "[서답형 3] 그림과 같이 점 $Q$는 점 $A$를 출발하여 점 $B$까지 일차함수 $y=-x+12$의 그래프를 따라 움직이고 있다. 점 $Q$에서 $x$축, $y$축에 내린 수선의 발을 각각 $P, R$라고 할 때, $\\square OPQR$의 넓이가 32가 되게 하는 점 $P(a, 0)$의 좌표를 모두 구하여라. (6점)<br><br><img src=\"assets/images/21_동산중_1학기_기말_중3_수학/q25.png\">",
+            "src": "stem",
+            "termId": 165
+          },
+          {
+            "term": "좌표",
+            "quote": "[서답형 3] 그림과 같이 점 $Q$는 점 $A$를 출발하여 점 $B$까지 일차함수 $y=-x+12$의 그래프를 따라 움직이고 있다. 점 $Q$에서 $x$축, $y$축에 내린 수선의 발을 각각 $P, R$라고 할 때, $\\square OPQR$의 넓이가 32가 되게 하는 점 $P(a, 0)$의 좌표를 모두 구하여라. (6점)<br><br><img src=\"assets/images/21_동산중_1학기_기말_중3_수학/q25.png\">",
+            "src": "stem",
+            "termId": 148
+          },
+          {
+            "term": "넓이",
+            "quote": "[서답형 3] 그림과 같이 점 $Q$는 점 $A$를 출발하여 점 $B$까지 일차함수 $y=-x+12$의 그래프를 따라 움직이고 있다. 점 $Q$에서 $x$축, $y$축에 내린 수선의 발을 각각 $P, R$라고 할 때, $\\square OPQR$의 넓이가 32가 되게 하는 점 $P(a, 0)$의 좌표를 모두 구하여라. (6점)<br><br><img src=\"assets/images/21_동산중_1학기_기말_중3_수학/q25.png\">",
+            "src": "stem",
+            "termId": 213
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "quote": "[서답형 3] 그림과 같이 점 $Q$는 점 $A$를 출발하여 점 $B$까지 일차함수 $y=-x+12$의 그래프를 따라 움직이고 있다. 점 $Q$에서 $x$축, $y$축에 내린 수선의 발을 각각 $P, R$라고 할 때, $\\square OPQR$의 넓이가 32가 되게 하는 점 $P(a, 0)$의 좌표를 모두 구하여라. (6점)<br><br><img src=\"assets/images/21_동산중_1학기_기말_중3_수학/q25.png\">",
+            "src": "stem",
+            "termId": 148
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "quote": "[키포인트] $Q$는 직선 $y=-x+12$ 위에 있고 $P=(a,0)$입니다.\n수선의 발로 만든 직사각형 $OPQR$에서 $OP=a$이고 $OR=12-a$입니다.\n넓이가 32이므로 $a(12-a)=32$.\n$a^2-12a+32=(a-4)(a-8)=0$이므로 $a=4$ 또는 $a=8$입니다.\n두 값 모두 $0<a<12$을 만족합니다. 따라서 점 $P$의 좌표는 $(4,0)$, $(8,0)$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "Q의 좌표(a,12-a)를 두 변으로 해석하여 넓이32의 두 유효해를 구한다.",
+            "termId": 299
+          },
+          {
+            "term": "이차방정식",
+            "quote": "[키포인트] $Q$는 직선 $y=-x+12$ 위에 있고 $P=(a,0)$입니다.\n수선의 발로 만든 직사각형 $OPQR$에서 $OP=a$이고 $OR=12-a$입니다.\n넓이가 32이므로 $a(12-a)=32$.\n$a^2-12a+32=(a-4)(a-8)=0$이므로 $a=4$ 또는 $a=8$입니다.\n두 값 모두 $0<a<12$을 만족합니다. 따라서 점 $P$의 좌표는 $(4,0)$, $(8,0)$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "Q의 좌표(a,12-a)를 두 변으로 해석하여 넓이32의 두 유효해를 구한다.",
+            "termId": 65
+          },
+          {
+            "term": "인수분해",
+            "quote": "[키포인트] $Q$는 직선 $y=-x+12$ 위에 있고 $P=(a,0)$입니다.\n수선의 발로 만든 직사각형 $OPQR$에서 $OP=a$이고 $OR=12-a$입니다.\n넓이가 32이므로 $a(12-a)=32$.\n$a^2-12a+32=(a-4)(a-8)=0$이므로 $a=4$ 또는 $a=8$입니다.\n두 값 모두 $0<a<12$을 만족합니다. 따라서 점 $P$의 좌표는 $(4,0)$, $(8,0)$입니다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "Q의 좌표(a,12-a)를 두 변으로 해석하여 넓이32의 두 유효해를 구한다.",
+            "termId": 42
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "quote": "[키포인트] $Q$는 직선 $y=-x+12$ 위에 있고 $P=(a,0)$입니다.\n수선의 발로 만든 직사각형 $OPQR$에서 $OP=a$이고 $OR=12-a$입니다.\n넓이가 32이므로 $a(12-a)=32$.\n$a^2-12a+32=(a-4)(a-8)=0$이므로 $a=4$ 또는 $a=8$입니다.\n두 값 모두 $0<a<12$을 만족합니다. 따라서 점 $P$의 좌표는 $(4,0)$, $(8,0)$입니다.",
+            "src": "solution",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "일차함수 좌표와 직사각형 넓이의 결합",
+        "condition": "Q의 좌표(a,12-a)를 두 변으로 해석하여 넓이32의 두 유효해를 구한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.697657+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_CHECKED",
+    "independentReview": "PENDING_ROOT_SAMPLE"
+  },
+  "reviewedSourceBaseBlob": "064a208da4fba7f1447be10b3f5a8e45dea05186",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E049",
+    "author": "meta_a",
+    "reviewer": "meta_b",
+    "reviewedAt": "2026-11-14",
+    "status": "PASS_WITH_EXPLICIT_DEBTS",
+    "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+    "sourceBaseBlob": "064a208da4fba7f1447be10b3f5a8e45dea05186",
+    "inputHashes": {
+      "reviewSha256": "7d72a69d24d41611f1f45ed86462560f94b19eace0e941bdf778dfc9c5f67b7d",
+      "fourSlotSha256": "61057a84660815fb06e3641f9a76355df0d7f3748c76bf2d4087a0435578fe92"
+    },
+    "sampledOrdinals": [
+      6,
+      11,
+      21
+    ],
+    "additionalReviewedOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25
+    ],
+    "basis": "WARN/IMPLIED 또는 난도 경계 우선 표본과 source 변경·불확실·예외의 실제 stem/choices/기존solution 및4칸을 직접 읽음. 아래 문항별 의미판정과 명시된 그림만 독립확인.",
+    "findings": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_bf0d4a4c2b35ff4c5d4ad3e9004d3274557afd37196382c460872615f47075ff",
+        "status": "PASS",
+        "note": "전개 일차항의계수로 a+b를 읽을수있음.곱셈부단원 교정 및1 수용."
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_e8667d79d44bffa4d11527b97459fcd945c8d375a82e1d3fdc7c4c3a2e60eb50",
+        "status": "PASS",
+        "note": "정수·양의x계수 조건이현원문에실재하여 인수분해정규화됨.2 수용."
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_ecc7b2513a712b6e792e7cf54c4843b209414e4326e90dfe0c2eaea272e04d8c",
+        "status": "PASS",
+        "note": "정수·양의x계수 조건으로 두인수 합을결정.2 수용."
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_83a71031da447218255417d0d0b9f498c1207e98da084ca1018d8eb797c85598",
+        "status": "PASS",
+        "note": "상수곱−12의정수쌍 합후보 열거.최종028/120부모+gap·FACTORIZATION유지 확인."
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_a091e2221b72f1a80eca7c50eac84669db7518dec0aa6bd1648e94902f45180d",
+        "status": "PASS",
+        "note": "그림6a²+a−2넓이,가로3a+2를직접확인. factor약분과CC직사각형넓이2 수용."
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_d3e4dc4d5ecc9875763b3d7e9323f21d01f1cce0252e9bc78c5a2b04f23a3aeb",
+        "status": "PASS",
+        "note": "양변정리 후이차항a−2비영 조건.2/B12 경계교정 수용."
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_e4f4798364f4d94a1efa9dae769be05678a34ce0f8c3b1ce1892f10f528e3007",
+        "status": "PASS",
+        "note": "주어진근−3의직접대입1 수용."
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_43e5da75778c2ba918f1e41407a27e0b161422db1b6d9dc7d189e14d382502b8",
+        "status": "PASS",
+        "note": "AB=0 두인수 각각정형분해.2 교정과사차형교육과정debt·부모맥락gap 수용."
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_f7d7fa9b009cb742c8caab15d7eab047b179bf3a60bfcabe4497996a3aa7fc67",
+        "status": "PASS",
+        "note": "근등식을나누어역수항소거.3 수용; 최종 α≠0 condition정의역/COND_NONZERO 확인."
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_0c24e50d016cc48352eec5d78752339261fda5572f8e187333a9ba693d0cef89",
+        "status": "PASS",
+        "note": "이차항계수3을유지해두근인수형전개.2 수용."
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_917582187073a23b0a048cc84b58406b983c9c001054ed6d67a61021024f531b",
+        "status": "PASS",
+        "note": "두근1,2/3의크기순서로선형식에대입.2/B12 및정확목표gap 수용."
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_400a2c57e4dc10ed921eec61f70d1b18d37bdd7d619e745544d4cc888a7e0fd0",
+        "status": "PASS",
+        "note": "근비2:3을2t,3t로두어합·곱조건연결.3, 근계수직접표현교육과정debt 수용."
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_8540e90d1f76e60f25262aae16ebec9036e7291c5510b637a510e09f6f146b12",
+        "status": "PASS",
+        "note": "완전제곱식 우변0 조건.2 및NONE 수용."
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_37095e6bd0bc687fc91415ea925d33a02bdd7f226db95e2a8d9de6e1efd1fd25",
+        "status": "PASS",
+        "note": "제곱식양의우변에서서로다른두근 직접정의1. q양수는요구조건이므로불필요보조제거 수용."
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_382c2b46b06c2adfcac1ed5345a7425e34b127b4932986db8d6da18c10114d11",
+        "status": "PASS",
+        "note": "제곱완성으로−3±√10을구해p,q읽음.두근쌍이므로표현고유,2 수용."
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_1fc384c6a6d8c0467b6506a3a2ac4b2db0332251bbbc6724fea393715a8137e4",
+        "status": "PASS",
+        "note": "근의공식과제시된두근쌍비교.정형2로조정 수용."
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_d3388bbf1a01cf6c43fa19eb29ac92ea0ffc55bae8e781eb2990dc6d7b8f6cf9",
+        "status": "PASS",
+        "note": "고정경계−2,6과이동근a±3의사이조건.3/B34 및구간제약 수용."
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_67f4f9455236c83769f22f2002970a62bacda4d42d3ce9ada8c2342cdddd0bb7",
+        "status": "PASS",
+        "note": "학생n과1인당n+3의명시관계로단일모델.2 및자연수기각 수용."
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_5d3d546c62f38a26e360ffc859242050b30b464ca258c78d2cc677fde037cebf",
+        "status": "PASS",
+        "note": "주어진높이식에21대입,두시간중처음선택.2 수용."
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_482eff9cd61f9821a78d58e7ffc939a7de075fb730e9719db920a930db1c1d44",
+        "status": "PASS",
+        "note": "다양한식/상황을 함수식으로나타내차수판정.2/B12 수용."
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_42c7af4436410b33a954cb3799a37e65dcd3c7c8b8c55aa8ba5d1e4aa1c0baad",
+        "status": "PASS",
+        "note": "기본포물선의대입·축·폭·대칭독립확인.2/B12 및2022의미대응135 수용."
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_64c3950f38efe77960cc4f1d864b9fb5be6152ffee30471dece24eb65ffd5bfa",
+        "status": "PASS",
+        "note": "첫점에서a,둘째점에서b대입.2/B12 수용."
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_f223797fc900671e96c43a324540da175eb09648202bd5613f34ef34e5a5ac08",
+        "status": "PASS",
+        "note": "두오독사례의정확한계수를조합하여복원.3/B34 수용."
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_4d5187b35841fd4dfe85c0a5e39288d03a9ea27955a4e96699da25f7f185c04c",
+        "status": "PASS",
+        "note": "차3·제곱합149의명시관계로단일방정식.2 및연속수와다른exactgap 수용."
+      },
+      {
+        "ordinal": 25,
+        "questionUid": "qid_v1_e1ad5cffdd26fe9cf2e9ebd26bf451e80c903e0b48b8ebd40f2f02cb78e4dd0e",
+        "status": "PASS",
+        "note": "원본선분AB·수선직사각형 및해설그림확인.좌표→면적모델3/B34, 최종범위4칸·COND_RANGE 보강 확인."
+      }
+    ],
+    "assetReview": [
+      {
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E049/05-content-1.png",
+        "sha256": "5fec460e630231c6b424a9c11e67bf954a52029100df936d106837da3c487b8c",
+        "status": "READ"
+      },
+      {
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E049/05-solutionImage-2.svg",
+        "sha256": "4b405d6a19f94fb2e3dd49761c3fb2c03aee9bad04c82e587d93523cf9ebb158",
+        "status": "READ"
+      },
+      {
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E049/25-content-1.png",
+        "sha256": "a4df7f332cdc418b160e4f85537d3e4b98fccbee8c141dbbe7f099e8b80ae23f",
+        "status": "READ"
+      },
+      {
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E049/25-solutionImage-2.svg",
+        "sha256": "9edff8805ba70392e7971a91c034fd20b50821509c02ee021ae1ceb5dc9bb895",
+        "status": "READ"
+      }
+    ],
+    "decisiveMethodOrGoalErrorsInSample": 0,
+    "inventedQuotesInSample": 0,
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED",
+    "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+  }
+}

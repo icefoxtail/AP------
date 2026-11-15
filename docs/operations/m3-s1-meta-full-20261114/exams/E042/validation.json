@@ -1,0 +1,929 @@
+{
+  "examKey": "E042",
+  "questions": 25,
+  "errors": [],
+  "sourceChangedItems": 19,
+  "sourceChangedFields": 42,
+  "sourceEdits": [
+    {
+      "ordinal": 1,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "앞의 네 표현은 ±√5 두 수이고 제곱근5는 양의√5 하나를 뜻함을 비교한다."
+    },
+    {
+      "ordinal": 3,
+      "field": "conditionKeys",
+      "before": [
+        "COND_POSITIVE",
+        "COND_NEGATIVE"
+      ],
+      "after": [],
+      "reason": "(-7)²=49의 양의근7과√81=9의 음의근-3을 곱한다."
+    },
+    {
+      "ordinal": 3,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "(-7)²=49의 양의근7과√81=9의 음의근-3을 곱한다."
+    },
+    {
+      "ordinal": 4,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "제곱 범위와 근호의 비음수성을 각 등식에 적용한다."
+    },
+    {
+      "ordinal": 4,
+      "field": "difficultyConfidence",
+      "before": "UNKNOWN",
+      "after": "medium",
+      "reason": "제곱 범위와 근호의 비음수성을 각 등식에 적용한다."
+    },
+    {
+      "ordinal": 4,
+      "field": "difficultyBoundaryFlag",
+      "before": "UNKNOWN",
+      "after": "B12",
+      "reason": "제곱 범위와 근호의 비음수성을 각 등식에 적용한다."
+    },
+    {
+      "ordinal": 5,
+      "field": "difficultyConfidence",
+      "before": "UNKNOWN",
+      "after": "medium",
+      "reason": "n²=8a/15에서 8|n²이므로4|n을 얻고 최소n=4를 대입한다."
+    },
+    {
+      "ordinal": 5,
+      "field": "difficultyBoundaryFlag",
+      "before": "UNKNOWN",
+      "after": "B34",
+      "reason": "n²=8a/15에서 8|n²이므로4|n을 얻고 최소n=4를 대입한다."
+    },
+    {
+      "ordinal": 5,
+      "field": "crossConceptKeys",
+      "before": [
+        "CC_SQUARE",
+        "CC_NUMBER_DIVISOR_MULTIPLE"
+      ],
+      "after": [
+        "CC_PRIME_FACTORIZATION_SQUARE",
+        "CC_SQUARE_AREA"
+      ],
+      "reason": "n²=8a/15에서 8|n²이므로4|n을 얻고 최소n=4를 대입한다."
+    },
+    {
+      "ordinal": 6,
+      "field": "conditionKeys",
+      "before": [
+        "COND_RANGE"
+      ],
+      "after": [
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "reason": "a>b에서 a-b>0,b-a<0을 적용해 두 양의제곱근을 a-b로 바꾼다."
+    },
+    {
+      "ordinal": 6,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "a>b에서 a-b>0,b-a<0을 적용해 두 양의제곱근을 a-b로 바꾼다."
+    },
+    {
+      "ordinal": 8,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "음수 두 수를 먼저 비교하고 양수 세 수는1/6<1/5<1/4로 정렬한다."
+    },
+    {
+      "ordinal": 8,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "음수 두 수를 먼저 비교하고 양수 세 수는1/6<1/5<1/4로 정렬한다."
+    },
+    {
+      "ordinal": 9,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "양수 곱셈·제곱근·나눗셈으로 a²<a<√a<1<1/a를 연결한다."
+    },
+    {
+      "ordinal": 9,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "양수 곱셈·제곱근·나눗셈으로 a²<a<√a<1<1/a를 연결한다."
+    },
+    {
+      "ordinal": 11,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "0·순환소수·근호의 반례와 서로 다른 두 실수 사이 무리수의 무한성을 대조한다."
+    },
+    {
+      "ordinal": 11,
+      "field": "difficultyConfidence",
+      "before": "UNKNOWN",
+      "after": "medium",
+      "reason": "0·순환소수·근호의 반례와 서로 다른 두 실수 사이 무리수의 무한성을 대조한다."
+    },
+    {
+      "ordinal": 11,
+      "field": "difficultyBoundaryFlag",
+      "before": "UNKNOWN",
+      "after": "B12",
+      "reason": "0·순환소수·근호의 반례와 서로 다른 두 실수 사이 무리수의 무한성을 대조한다."
+    },
+    {
+      "ordinal": 12,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "대각선√2와 등거리조건으로 두 좌표1±√2를 구해 합한다."
+    },
+    {
+      "ordinal": 13,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "A-C=3-√8>0,C-B=3√2+√3-4>0을 확인한다."
+    },
+    {
+      "ordinal": 13,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "A-C=3-√8>0,C-B=3√2+√3-4>0을 확인한다."
+    },
+    {
+      "ordinal": 14,
+      "field": "conditionKeys",
+      "before": [
+        "COND_RANGE",
+        "COND_INTEGER"
+      ],
+      "after": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "reason": "3<√13<4,2<√5<3에서 양 끝점의 정수 구간을 얻어 보기-3을 제외한다."
+    },
+    {
+      "ordinal": 14,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "3<√13<4,2<√5<3에서 양 끝점의 정수 구간을 얻어 보기-3을 제외한다."
+    },
+    {
+      "ordinal": 15,
+      "field": "subUnitKey",
+      "before": "M3-01-REAL_NUMBER_OPERATIONS",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "√48=4√3와3√5=√45에서 두 수를 읽어 더한다."
+    },
+    {
+      "ordinal": 15,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "√48=4√3와3√5=√45에서 두 수를 읽어 더한다."
+    },
+    {
+      "ordinal": 15,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "√48=4√3와3√5=√45에서 두 수를 읽어 더한다."
+    },
+    {
+      "ordinal": 15,
+      "field": "subUnit",
+      "before": "근호를 포함한 식의 계산",
+      "after": "제곱근과 실수",
+      "reason": "√48=4√3와3√5=√45에서 두 수를 읽어 더한다."
+    },
+    {
+      "ordinal": 17,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "√15/√5=√3을 구한 뒤√3/√(3/10)=√10을 계산한다."
+    },
+    {
+      "ordinal": 17,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "√15/√5=√3을 구한 뒤√3/√(3/10)=√10을 계산한다."
+    },
+    {
+      "ordinal": 18,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "첫 괄호√2-12와 둘째4-√2를 각각 계산하여 합한다."
+    },
+    {
+      "ordinal": 18,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "첫 괄호√2-12와 둘째4-√2를 각각 계산하여 합한다."
+    },
+    {
+      "ordinal": 19,
+      "field": "crossConceptKeys",
+      "before": [
+        "CC_SQUARE"
+      ],
+      "after": [
+        "CC_SQUARE_AREA",
+        "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
+      ],
+      "reason": "변√5,3√5,5√5의 둘레합에서 공유변합4√5를 두 번 뺀다."
+    },
+    {
+      "ordinal": 19,
+      "field": "integrationPattern",
+      "before": "INTERDEPENDENT",
+      "after": "SEQUENTIAL",
+      "reason": "변√5,3√5,5√5의 둘레합에서 공유변합4√5를 두 번 뺀다."
+    },
+    {
+      "ordinal": 21,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "보기의 값을 각각 넣어 좌우가 같은②를 고른다."
+    },
+    {
+      "ordinal": 23,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "reason": "xy<0과x<y를 결합하여 x<0<y를 얻고 세 근호 항의 부호를 정리한다."
+    },
+    {
+      "ordinal": 23,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "xy<0과x<y를 결합하여 x<0<y를 얻고 세 근호 항의 부호를 정리한다."
+    },
+    {
+      "ordinal": 23,
+      "field": "conditionKeys",
+      "before": [
+        "COND_POSITIVE",
+        "COND_NEGATIVE"
+      ],
+      "after": [
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "reason": "xy<0과x<y를 결합하여 x<0<y를 얻고 세 근호 항의 부호를 정리한다."
+    },
+    {
+      "ordinal": 23,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "xy<0과x<y를 결합하여 x<0<y를 얻고 세 근호 항의 부호를 정리한다."
+    },
+    {
+      "ordinal": 24,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "두 분수를 유리화하여2√3,√3/9의 계수 차를 구한다."
+    },
+    {
+      "ordinal": 24,
+      "field": "conditionKeys",
+      "before": [],
+      "after": [
+        "COND_RATIONAL"
+      ],
+      "reason": "두 분수를 유리화하여2√3,√3/9의 계수 차를 구한다."
+    },
+    {
+      "ordinal": 24,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "두 분수를 유리화하여2√3,√3/9의 계수 차를 구한다."
+    },
+    {
+      "ordinal": 25,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "각 식에서 제곱항을 고립하고 양·음 두 제곱근을 모두 써서 x를 구한다."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "fourSlot": {
+    "fail": [],
+    "warn": [],
+    "stats": {
+      "items": 25,
+      "examItems": 25,
+      "quotes": 163
+    }
+  },
+  "registrySha": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+  "missingNativeLeaves": [
+    5,
+    11,
+    14,
+    19
+  ],
+  "missing2022Leaves": [
+    5,
+    11,
+    14,
+    19
+  ],
+  "projectionBindingGaps": [],
+  "protectedFields": {
+    "status": "PASS",
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_29855d85a9c813067ca220cbf26b3b3b5fc1ca482dd087415c4eda2b84e725aa",
+        "sha256": "ba5c6a3b7e6f7565a053a88708e9120ea0cd0dbe969f9fcfa332044114f75f8b",
+        "unchanged": true
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_16474604777c8b5fbcd95071ef299cf5671b7ed7b7cd45eac9bbdcff3a4460dc",
+        "sha256": "9d1ab01c36c231fd44804d5ef2a37c9827cdfcecf6e2176340391bc6f142b4ba",
+        "unchanged": true
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_b94562b5dce7aa2cbde8c5fa85c230845bcfee215fc62283e2bbfa0a74d66316",
+        "sha256": "dd3e09efb35827178e2cc919c25e2633f8deb20a0f30a8e9af70421b999ca557",
+        "unchanged": true
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_66030f6dc4aa26c117da8ae7f6fa80df3a246863c9643b06c00ec9c26eefd5a6",
+        "sha256": "a2d0db28133272c27a68642b4e7fe87006320f4954656321ac880366faff6415",
+        "unchanged": true
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_fd0f3d95013b8f3d7ee052c60dcac3045243a625d098208be0cf4cd7e2707f77",
+        "sha256": "d06035b58d72815db35f84019cc5189c7fd91c061c040012a7250469d06739cb",
+        "unchanged": true
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_fbd1816f1a231531776ea565d2aeec689a931de182a37abbfaf9c334b6ec9eba",
+        "sha256": "b51f1262315f4d7de41d3a38860e91773a3b7156637f592eb1f320db670cdf68",
+        "unchanged": true
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_1c6513ed2da74ced1200c7e832e270864c0d9eb43b80f882fba2021bdb6b0937",
+        "sha256": "764016c6db15f02689a712830ae647d93d0c8024085791f9b0003930fb63bd42",
+        "unchanged": true
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_fbf5e17580ee8567063a11d515b3d6d13f2200f6ee0b6d9668cd32a7789adae4",
+        "sha256": "df4c5185d1a56894b85858ad6822e59824c291b8f3c980761dc86c2732dbdc24",
+        "unchanged": true
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_18c8e346352f3e98a4da23195b3e64ef4722e3d32f52156603a843878abcd7a5",
+        "sha256": "452780c4ec579d28379946a35985d59270182d0139912a71edd430ce8346cc0d",
+        "unchanged": true
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_eaa5804ce2d3ce5b11dbaa84178c5117fa483236f7592155930ff95a776941b5",
+        "sha256": "fce0f9215299a5d53b8cd68c90e1fe1ea41d2ea02f33958032864a60696e44b6",
+        "unchanged": true
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_e2559612b966319310a543591e7ac8f0c663155fca2abb695b227e76777a909f",
+        "sha256": "93e85e6540edd3ce77c26cd59b5ea098528ef51001c5daf5b30c04fce7cf55e3",
+        "unchanged": true
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_7f2b322073db7328bcd6a6068c92a4c9a4279fc6192e89ffce83abf537ed9366",
+        "sha256": "a326c5558b54b07ca64cb95ac0a37d5bbf8146b5518b007ebe1b73c819a22c7d",
+        "unchanged": true
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_821e1043824a0dc329c3729c17b70a66e9403073442a8984a04d0f54810e0c13",
+        "sha256": "71f2df0be50f0af180d5cc9fadf92fbecbab15035ade6f77e41942db90dd01d2",
+        "unchanged": true
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_32fd49064eb6d9a97a25dfc2020ccd5a56ea05903a384441d9b9a3bcc71b24a4",
+        "sha256": "90084abc2a095e1c7dfba5a8bc9697a6c5b8ad72af40eb9f8a2bd6c2a953101d",
+        "unchanged": true
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_ea771b094e23db94a85edacc77b00869a284fbe81bc41ff7abc6898bfa819f77",
+        "sha256": "3e05a72d09718f62bbe8d255a3ba2b2e2e464618e56b3eeb1fad46e099bf0882",
+        "unchanged": true
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_1896d6dde350ff92b9def92e0d65606a0e08120e88a0cd7da8774f4670f92a6b",
+        "sha256": "c81c90c0e1f488973e9683f0d8b53e11389f005c5f09bd0248b046819f5ef1e8",
+        "unchanged": true
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_a04785512a728bf4c236d3d7cca9e7a7684808be900ba33a3d6d4774cc2e007c",
+        "sha256": "201cffe12fc7a1a1cbbe7367ed18c1df3f64121913c51e028b92f8cf138f6a9a",
+        "unchanged": true
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_d20c87c8c3a3a15332d55f207de01aef7504a6fb15d6671e9f8090155e404bd9",
+        "sha256": "069eaef5b74eaa1e98adaf38e73b425462025e9b048fe4abf97cefeadadade1c",
+        "unchanged": true
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_f720ff13c01a00deb0644110bd78dbf8e479d5c73a9ed7b0c991ae10f756d015",
+        "sha256": "64184b77d2b2f7fdcadc25d48463266fa9cb4419a266fe8d639050c03a554917",
+        "unchanged": true
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_46f56a869b7e399b53faa58db9f0c60043c51bf06e26092871b6a5435cd26e03",
+        "sha256": "6bf4e0b80b79a7f3a3ff58d8ab7b02fe25f993826ae212d512c86e89dfd771ee",
+        "unchanged": true
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_b8352b4cdc6ae24ea93e05050116ec1de0d88e956020084e442dae4b1296339e",
+        "sha256": "690247c9b725ad208718a91bb14da5364a806cb53e69a4cd038af42e5908345a",
+        "unchanged": true
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_2a259b3faf4bba227561aea1624ae6e427ed496d19708f045bc028a04a50a6cd",
+        "sha256": "ca8b1eeaf56ebc184589fd12e433ad18e343b162fd8abcefe3f92fc99606079f",
+        "unchanged": true
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_dae04f8424c560a158f446039f881948bf5af470576d016743dc84f97dcba42e",
+        "sha256": "4795d47af48454e61d2a4ce357fb4a3d4e11582c1979588ffc68a5c2d735f108",
+        "unchanged": true
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_2665ade37b7a79a7b196b688ed1876987311a9603ac5dbdb8724d4c65eff2f2e",
+        "sha256": "c15391f0eec8c7a60ae3b43180ba926b0df7e0a3f0e40a7cd62f7fe13c663d9f",
+        "unchanged": true
+      },
+      {
+        "ordinal": 25,
+        "questionUid": "qid_v1_2e1a5a2477dec4e8a9d1afa84828570ce43696d256a1dc5ba8513f9c43aff9f0",
+        "sha256": "c82321e3a504a2084842eb1888a5e09d22b54b3602b6df0793173a37dd209403",
+        "unchanged": true
+      }
+    ]
+  },
+  "fingerprints": {
+    "status": "PASS",
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_29855d85a9c813067ca220cbf26b3b3b5fc1ca482dd087415c4eda2b84e725aa",
+        "QBODY": "86975468d8109a6e470bbad5ede7e4669cb370e5493c5b000032532a6353eac2",
+        "QFULL": "3bcdf1055d01a0d6a54660933b67768021519d18798f0e9f807f882cfe6e2abe",
+        "stemEvidenceSha256": "1758c973c4e97443cdac71bb11a0c97705789a209df7e61b20e4b35ef4bbef38"
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_16474604777c8b5fbcd95071ef299cf5671b7ed7b7cd45eac9bbdcff3a4460dc",
+        "QBODY": "81af8ecfa4cbfb8600b53e7eea074bfec319697a11c4f0b7765c47eaaf01a946",
+        "QFULL": "2d0c461e732b16a26e8dfeeb1c89b52e5574c04fda10f8d648ab38b4b48d9d48",
+        "stemEvidenceSha256": "3933cbc935299696ba52e05462c479c28c6f2dfaef10fa3992687cebb1cccedc"
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_b94562b5dce7aa2cbde8c5fa85c230845bcfee215fc62283e2bbfa0a74d66316",
+        "QBODY": "b31700356f5e7d8f0a03e713ca1248391c1c929cb4a1dedc6b0816c4acb62a5f",
+        "QFULL": "6f01b3884d8141904856224811b894d4986f80a2c625e0b9fc00dfb46ba2a4b6",
+        "stemEvidenceSha256": "7a056404b4363cea36a5700bcb7c9c0076dc29279674411806eb786f0b9b8c27"
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_66030f6dc4aa26c117da8ae7f6fa80df3a246863c9643b06c00ec9c26eefd5a6",
+        "QBODY": "453888042d9889d6fb39f0df01479284bf541293a68b55d46ca6ffa5cdb35097",
+        "QFULL": "892240479f76cffe96d7b797f96b41d258e579db2c2d797871f948957caf78ac",
+        "stemEvidenceSha256": "e85f8e4a069c8b76ca55887333f68e2bf9d050d20ccb5a96307ee982d3c8a8fa"
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_fd0f3d95013b8f3d7ee052c60dcac3045243a625d098208be0cf4cd7e2707f77",
+        "QBODY": "82f8dc243d0574d2367c0c4a5495f4ee035957318ab4ecafd0b5221411624b9a",
+        "QFULL": "3b8a9de74ad9c32022173876f6adf56f9eaf9c40cc074dbe65bcd1eb0b177941",
+        "stemEvidenceSha256": "cb3c3289845093783bb4a67d54c71606c047f2117b04a0e1545073d8517be1cc"
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_fbd1816f1a231531776ea565d2aeec689a931de182a37abbfaf9c334b6ec9eba",
+        "QBODY": "6db0eea695f0d4c829e8f2e3b7e213ace0458abfd5b2e437533f46ca27e80eaa",
+        "QFULL": "fe5472b95b1448a8c559ac8076258277bc2129702b4aebb1d30c8771b6286588",
+        "stemEvidenceSha256": "ca97e5cafcf7fc2541dc41fcdd0a123fce173120e7380c0fc1dfc8531414231c"
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_1c6513ed2da74ced1200c7e832e270864c0d9eb43b80f882fba2021bdb6b0937",
+        "QBODY": "21cf8b8951d62eb71a50ddf7625851220d7c2d9fdf89ed4a3c17c5966063f4c1",
+        "QFULL": "6054a0bfce3a8f3718962384e643f2ebf85fd164533fe3e4cafd8414ce57da0e",
+        "stemEvidenceSha256": "803665e7cc7a974e291a76e4567a809b6dd464e8e955a12b6b1c394c8283b1e2"
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_fbf5e17580ee8567063a11d515b3d6d13f2200f6ee0b6d9668cd32a7789adae4",
+        "QBODY": "8a69cd727df31d5a0ccbcf5a9b83e4c751380636711dfff71dc18f2fbf4b8138",
+        "QFULL": "ca407e6502c908113457c9427bc5d05fdee2b61575f5acfc0d77eaa301c5fb48",
+        "stemEvidenceSha256": "12e378d6cfa8dfed9ccfbdc36bf52ab1afe0a8eb7c880552a5d11e16bf874c26"
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_18c8e346352f3e98a4da23195b3e64ef4722e3d32f52156603a843878abcd7a5",
+        "QBODY": "dfab4ea926f82438d87b749a44f0d8eae9bce6cc1982670cd5c7f39cdf398148",
+        "QFULL": "6a0e97c15cdc56c3fb4f5ee466e9d7dc32e738fa4645e6188e1bb1def6d88b78",
+        "stemEvidenceSha256": "b27f7e9d11ce7975a195430cbf45b449ecc3293f8c70ee3aa6bb625cb7546a1b"
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_eaa5804ce2d3ce5b11dbaa84178c5117fa483236f7592155930ff95a776941b5",
+        "QBODY": "d14e8f76f7df9ab416915b5069091783c594981bf0c059c7bf8fff63e9445456",
+        "QFULL": "41cae7cde70bff7cbe1dfe38de3e40964a63dc7a37497d890b7ed3e93102c424",
+        "stemEvidenceSha256": "b0950ddd9c2b27cd349effddcac4841f6f6f795a7a108a68c45dadfa3576bcbf"
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_e2559612b966319310a543591e7ac8f0c663155fca2abb695b227e76777a909f",
+        "QBODY": "072c9f96619f6858a3586f8a22ef6f80c96f112fc370ebbabbd1d225f8f3e189",
+        "QFULL": "cb91a6357ed9ba622b9837caf1e6569e0082da5f287c43a8451504cc8ea6dd68",
+        "stemEvidenceSha256": "1ad292cc55e4dcd06c0295dc106cc158a7cc37df1d858ac1af61b9c0931d63c7"
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_7f2b322073db7328bcd6a6068c92a4c9a4279fc6192e89ffce83abf537ed9366",
+        "QBODY": "a212facfeec0926e43429300443dcfe77f086381cc46c4fda39803b7587bf866",
+        "QFULL": "e71684f137387700311e6e6a0d3f9d756557726337286f3acf107ec5ca60addd",
+        "stemEvidenceSha256": "14e5d2747b97b104904ef549ab06c89dd48370ec04a136ac1312f3f9faf53027"
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_821e1043824a0dc329c3729c17b70a66e9403073442a8984a04d0f54810e0c13",
+        "QBODY": "b5ac365a34f4aa82889faefa85e6a80bc164b52ae34768245f9a18e5297b76d7",
+        "QFULL": "acd3f94d7dc8efa062247c10ad05b031763edea462c35942d57fda9871a12623",
+        "stemEvidenceSha256": "b443cdac6b930965e6ad4a9f8a8fa7f1ed9810eaf1346a83c83136bb524f30f6"
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_32fd49064eb6d9a97a25dfc2020ccd5a56ea05903a384441d9b9a3bcc71b24a4",
+        "QBODY": "7f87fba13331a3f8ecb7c5e7fc111031eaf67ea5f38122eb6ea69454b4b50c4d",
+        "QFULL": "b50cb53b916f9973446519824736d1bd2021860112dbc7e536323d3049dcf3f6",
+        "stemEvidenceSha256": "c8dd3ceabf4d2c791c8b7e58ffc1d709a3ec8960ad2c4abb17104ce690323f6c"
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_ea771b094e23db94a85edacc77b00869a284fbe81bc41ff7abc6898bfa819f77",
+        "QBODY": "17bb6ba62d92094551c4fcd08491a8568c2da243f7135be29486f3505189008d",
+        "QFULL": "e9657f189fedc52b4be0c08d89c6907fa11f8e5b6b99602cab879b6cb19cd717",
+        "stemEvidenceSha256": "35269aaa491c129a11c32948d6b12d339fd6274a7ad8fcd370ba1d53d783fd64"
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_1896d6dde350ff92b9def92e0d65606a0e08120e88a0cd7da8774f4670f92a6b",
+        "QBODY": "3bea5a362f11305e6936609d8c42b990c98d237fbed462820c32a0cdf29be9c1",
+        "QFULL": "c20c22a92befd22c8d3a49b54582a85dcd37e435e756766345a57f72d695cb6f",
+        "stemEvidenceSha256": "e0fbb0cc9cf1636941ad7146e44e480754d226db54d0c462eb0b9961f68facd8"
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_a04785512a728bf4c236d3d7cca9e7a7684808be900ba33a3d6d4774cc2e007c",
+        "QBODY": "23d39e46063718c17121d324efe4c44c871557427ea191dec686e35503cfdbb7",
+        "QFULL": "83ea5f21f2c5ea7000e3629647bfb92e0cbc50cd6dfb8f1a6ad6613ce57b8a21",
+        "stemEvidenceSha256": "a4723c196bb90d2b78a6291a7087990c93c83ce1809369a8ae3ea82265f6ae32"
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_d20c87c8c3a3a15332d55f207de01aef7504a6fb15d6671e9f8090155e404bd9",
+        "QBODY": "2d9c1a11fd94cc0a1ac31b5d4878a35b7b41d3eacff333a28dd52566d206fc99",
+        "QFULL": "24893340cd0e5db7fe0f7ce1ae05bc1dc76a403ed31dd90463e1690068a4b04f",
+        "stemEvidenceSha256": "6c77d78f365b806bf1460c69d49533a8cf0b2ed7b017257ddf4ba798c58fbff3"
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_f720ff13c01a00deb0644110bd78dbf8e479d5c73a9ed7b0c991ae10f756d015",
+        "QBODY": "f181eb1dbaa8bd579533687974e36077c0977d866cc02381648c8a9ef753b5e8",
+        "QFULL": "4a2b3ba51776a87feb04a5a0ed664eb80568bf9ec6e45e36d3afbeda4094e5b0",
+        "stemEvidenceSha256": "bb8042021001462105ad626472421a57739a1859a6f630dc019ad861e732dfc4"
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_46f56a869b7e399b53faa58db9f0c60043c51bf06e26092871b6a5435cd26e03",
+        "QBODY": "ff3dce209e0603926e9c1e3ab9679d27dc79737495d1c8b16dba101fd0a2bc09",
+        "QFULL": "ca61dfb83164d572379a25c17c92144f2a3386ed4de6255bccd275070c19b382",
+        "stemEvidenceSha256": "e74e1e56741a8ed8433b28dd3a360d125bc7391389405d90df5baaa29458b54d"
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_b8352b4cdc6ae24ea93e05050116ec1de0d88e956020084e442dae4b1296339e",
+        "QBODY": "28fb3b2d8f57bb131b384f404b8573c4e2901136dc0190303751c8719ee50247",
+        "QFULL": "0ad1271e50ebb8d101a85f2e87418685f45d0dcd6fa60ff24e367a2e145431f0",
+        "stemEvidenceSha256": "6cfe3e129f7237afdbfd5816aaf42fd6ba9ac3352d8dfb61fa819006830509a4"
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_2a259b3faf4bba227561aea1624ae6e427ed496d19708f045bc028a04a50a6cd",
+        "QBODY": "deab7dd0c1407aeed604b5be05dc8ba8fbf04cfabd3c013aaa3aa5fa43388d28",
+        "QFULL": "76f0297ef523585d68131df9682a63005bc67e71b9c51ea1b003d400fd63ef1c",
+        "stemEvidenceSha256": "0207f4a33531e736f108225f5eeeea17766a24a8ea9598551a08eec8aa0e16f0"
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_dae04f8424c560a158f446039f881948bf5af470576d016743dc84f97dcba42e",
+        "QBODY": "a89aba65e15b40055266eb119efce5d12311b8157a8794e625e0eb4c61ac0fb0",
+        "QFULL": "309629454e74626cfbab6a28b2710f10e711e2d6c8acee86392a7dea787ed35a",
+        "stemEvidenceSha256": "33048e6ddccb24c6edcc2aa41a1a06802b0e33ce66a4b558498976aaf5b804ce"
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_2665ade37b7a79a7b196b688ed1876987311a9603ac5dbdb8724d4c65eff2f2e",
+        "QBODY": "baae071642a2bb7e3492ce4e611b7b4837ff6de2042ba8e530a6055af2fcfd81",
+        "QFULL": "8f65bb0c9b744978eb81df2c1e85a6fbecc6d1a3daa9398c9371a430fc518a22",
+        "stemEvidenceSha256": "6a4a607cddea4b1842563526d6119c0efe4583f6557f3d915fb32d9e8f10b47f"
+      },
+      {
+        "ordinal": 25,
+        "questionUid": "qid_v1_2e1a5a2477dec4e8a9d1afa84828570ce43696d256a1dc5ba8513f9c43aff9f0",
+        "QBODY": "00bf0031effe8ba16b5bf2dd2b119401ff97d67488095fa8fed7e69b8255c436",
+        "QFULL": "b18788443b03a9174e840aa17973d82f9f90e9996575b493be317aeecac050ea",
+        "stemEvidenceSha256": "087fd5022c158255afab76f8d95fde9558d109cd08e7c58435a9691c03835ff1"
+      }
+    ]
+  },
+  "sourceFinalBlob": "286ed519c4f033df993850fab52418f666ee33df",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E042",
+    "reviewer": "meta_a",
+    "author": "meta_c",
+    "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+    "at": "2026-11-14T14:14:57.492156+00:00",
+    "sourceArchiveFile": "original/middle/m3/1mid/22_신흥중_1학기_중간_중3_기출.js",
+    "sourceBlob": "4d368914ab8f4551b2cfc00677534f0007b7824e",
+    "inputArtifacts": {
+      "workers/C/E042.review.json": {
+        "sha256": "958fefb6e7acdf57f4ccf00dd54fad9ef5708e32b437c648f9064e4ce910f0a3"
+      },
+      "workers/C/E042.4slot.json": {
+        "sha256": "477348d99823854932a4bf8df1e7eb7a8392b68cd421b1636438e93d359c0f05"
+      },
+      "workers/C/E042.input.json": {
+        "sha256": "31b1c7b7a6600cbcb457b661184b59ac9905cc262c0dae9f519a8355539a3cb7"
+      }
+    },
+    "sampledOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_29855d85a9c813067ca220cbf26b3b3b5fc1ca482dd087415c4eda2b84e725aa",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "같은 양의 제곱근 표현을 고르는 직접 정의1 수용."
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_16474604777c8b5fbcd95071ef299cf5671b7ed7b7cd45eac9bbdcff3a4460dc",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "양수·0·음수에서 제곱근 진술을 비교하는2와 명시 정답2개 cardinality 보완 수용."
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_b94562b5dce7aa2cbde8c5fa85c230845bcfee215fc62283e2bbfa0a74d66316",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "양·음의 제곱근과 중첩된 제곱을 표준 성질로 정리하는2 수용."
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_66030f6dc4aa26c117da8ae7f6fa80df3a246863c9643b06c00ec9c26eefd5a6",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "음수의 제곱과 제곱근 부호를 직접 적용하는2/B12 및 원래 하 경계 보존 수용."
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_fd0f3d95013b8f3d7ee052c60dcac3045243a625d098208be0cf4cd7e2707f77",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "자연수 변 n에 8a=15n²를 연결하고 최소 제곱배수를 찾는3/B34 수용. 넓이·소인수 제곱 보조 및 exact target gap 적합."
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_fbd1816f1a231531776ea565d2aeec689a931de182a37abbfaf9c334b6ec9eba",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "a>b에서 두 절댓값 내부의 부호를 정해 계산하는2 및 부등식 조건 수용."
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_1c6513ed2da74ced1200c7e832e270864c0d9eb43b80f882fba2021bdb6b0937",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "제곱수 인수를 근호 밖으로 꺼내 수치를 읽는 제곱근 계산 판정 수용."
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_fbf5e17580ee8567063a11d515b3d6d13f2200f6ee0b6d9668cd32a7789adae4",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "부호와 근호 크기를 함께 고려해 정렬하는2 수용."
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_18c8e346352f3e98a4da23195b3e64ef4722e3d32f52156603a843878abcd7a5",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "0<a<1에서 역수·제곱근·원수·제곱 순서를 비교하는2와 열린구간 조건 수용."
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_eaa5804ce2d3ce5b11dbaa84178c5117fa483236f7592155930ff95a776941b5",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "여러 수의 유리/무리성을 판정하고 개수를 세는2 수용. 1-√2의 무리성 설명을 실제 해설에서 확인."
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_e2559612b966319310a543591e7ac8f0c663155fca2abb695b227e76777a909f",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "수직선에서 실수의 조밀한 성질에 관한2/B12 및 정확한 성질 target gap 수용."
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_7f2b322073db7328bcd6a6068c92a4c9a4279fc6192e89ffce83abf537ed9366",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "원본·해설 SVG에서 A=1,B=2인 정사각형과 AP=AQ=AC를 확인. 대각선√2를 양쪽으로 옮긴 두 수의 합2, bucket2 및 기하 보조 수용."
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_821e1043824a0dc329c3729c17b70a66e9403073442a8984a04d0f54810e0c13",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "근호를 간단히 하고 두 식의 차로 크기를 비교하는2 수용."
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_32fd49064eb6d9a97a25dfc2020ccd5a56ea05903a384441d9b9a3bcc71b24a4",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "두 무리수 사이 정수들을 열린경계에 맞춰 고르는2와 정수·범위 조건 수용."
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_ea771b094e23db94a85edacc77b00869a284fbe81bc41ff7abc6898bfa819f77",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "계수를 근호 밖/안으로 옮기는 직접 성질1, 제곱근 성질 소단원 교정 수용."
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_1896d6dde350ff92b9def92e0d65606a0e08120e88a0cd7da8774f4670f92a6b",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "근호가 포함된 표준 곱셈 계산에 대한 분류와 난도 수용."
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_a04785512a728bf4c236d3d7cca9e7a7684808be900ba33a3d6d4774cc2e007c",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "나눗셈을 왼쪽부터 곱셈으로 바꾸고 근호를 약분하는 직접1. 원문에 없는 다항식 나눗셈 term 제거 확인."
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_d20c87c8c3a3a15332d55f207de01aef7504a6fb15d6671e9f8090155e404bd9",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "표준 근호 계산을 순차 수행하는2 수용."
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_f720ff13c01a00deb0644110bd78dbf8e479d5c73a9ed7b0c991ae10f756d015",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "원본·해설 SVG에서 아랫변이 나란한 세 정사각형의 배치와 공유변을 확인. 넓이→변, 둘레합−공유변2배의3/B34와 geometry gap 수용."
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_46f56a869b7e399b53faa58db9f0c60043c51bf06e26092871b6a5435cd26e03",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "전개·이항 후 차수를 판별하는2 및 원문 정답2개 cardinality 보완 수용."
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_b8352b4cdc6ae24ea93e05050116ec1de0d88e956020084e442dae4b1296339e",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "각 값을 식에 직접 대입하여 근인지 확인하는1 수용."
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_2a259b3faf4bba227561aea1624ae6e427ed496d19708f045bc028a04a50a6cd",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "동류근호의 계수합과 분배법칙으로 이유를 쓰는 직접1 및 서술 형식 수용."
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_dae04f8424c560a158f446039f881948bf5af470576d016743dc84f97dcba42e",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "xy<0,x<y에서 x<0<y를 정해 절댓값을 푸는 표준2. 상→중 교정 수용."
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_2665ade37b7a79a7b196b688ed1876987311a9603ac5dbdb8724d4c65eff2f2e",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "분모를 유리화하여 유리수 계수를 읽는2와 a,b가 유리수라는 원문 조건 수용."
+      },
+      {
+        "ordinal": 25,
+        "questionUid": "qid_v1_2e1a5a2477dec4e8a9d1afa84828570ce43696d256a1dc5ba8513f9c43aff9f0",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "reason": "선택(1)은 제곱항 고립과 분수근호 정리2/B12, 선택(2)는 고립·제곱근·상수이동2. 두 부분을 각각 판단한 기록을 확인했으며 양쪽 동일2의 통합 난도 수용. 최대5점 안내를 난도 근거로 사용하지 않음."
+      }
+    ],
+    "findingsResolved": [
+      {
+        "ordinal": 2,
+        "resolution": "복수정답 cardinality2 명시"
+      },
+      {
+        "ordinal": 20,
+        "resolution": "복수정답 cardinality2 명시"
+      },
+      {
+        "ordinal": 25,
+        "resolution": "두 선택 소문항 각각bucket2 및(1)B12 경계 분리"
+      }
+    ],
+    "rootAdjudications": [],
+    "visualEvidence": [
+      {
+        "path": "workers/C/E042-assets/contact-1.jpg",
+        "sha256": "1ecd2e74f99a4b9f9ca93719ad1cade03a5c58d0c8e12c82b6659d6f44c65641",
+        "status": "VIEWED"
+      }
+    ],
+    "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+    "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다.",
+    "reviewedArtifactHashCheck": {
+      "E042.review.json": "958fefb6e7acdf57f4ccf00dd54fad9ef5708e32b437c648f9064e4ce910f0a3",
+      "E042.4slot.json": "477348d99823854932a4bf8df1e7eb7a8392b68cd421b1636438e93d359c0f05"
+    }
+  },
+  "resolverExecution": "NOT_RUN",
+  "registration": "NOT_RUN",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "difficultyPolicyDebtOrdinals": [],
+  "evidenceDebtOrdinals": [],
+  "undecidedDifficultyOrdinals": []
+}

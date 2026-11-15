@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E026",
+  "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "at": "2026-11-14T14:04:13.370049+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/23_연향중_1학기_기말_중3_수학.js",
+  "sourceBlob": "491764ea12075ea4fea130453d6baebb10118ab3",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E026.review.json",
+      "sha256": "34189bd9731c156b135f5e098684bcb6a3cbcbbcd85c2bce60a4b0eab4f445e7"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E026.4slot.json",
+      "sha256": "0fbd32d16f3fdf117a2f08cd7e716291d393af0936c3ce532ee84bdb9af54df3"
+    }
+  },
+  "sampledOrdinals": [
+    5,
+    20,
+    22
+  ],
+  "additionalChangedOrBoundaryOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    21,
+    23,
+    24
+  ],
+  "scope": "METADATA_ONLY; 24 actual source questions, choices, existing solutions, decisions and slot selections read; q17/18/20/22 original PNG directly viewed.",
+  "findings": [
+    {
+      "ordinal": 5,
+      "status": "PASS_AFTER_REVISION",
+      "note": "중근 b=a²/4 조건 뒤 a=1..6의 유한 후보 분류와 확률2/36을 결합하는 표준 절차로3/B34 수용. 기존 판별식 용어의 교육과정표현 debt 보존."
+    },
+    {
+      "ordinal": 22,
+      "status": "PASS_AFTER_REVISION",
+      "note": "원본그림의 양쪽 접기와 50cm 너비를 직접 확인. 가로50−2x·세로x의 표준 넓이식과 명시된 가로>세로 조건으로 두 해 중 하나 선택하므로3/B34 수용."
+    },
+    {
+      "ordinal": 20,
+      "status": "PASS_AFTER_REVISION",
+      "note": "두 포물선과 평행사변형 ABCD를 원본 확인. 공통 y절편으로 이동량 두 후보를 정한 뒤 서로 다른 그래프에 해당하는 후보와 D의 위치를 구성하는 추가 조건 재구성으로4/B34 수용.049는 부모맥락, exact 도형넓이 구조 gap 분리 확인."
+    },
+    {
+      "ordinal": 7,
+      "status": "PASS_AFTER_REVISION",
+      "note": "근의 공식 이후 큰근 선택·목표식 대입을035 부모맥락과 exact 근활용 제안으로 구별."
+    },
+    {
+      "ordinal": 15,
+      "status": "PASS_AFTER_REVISION",
+      "note": "축·꼭짓점·폭·방향·평행이동 종합 감사로050 단일 꼭짓점 target 강제를 해소함."
+    },
+    {
+      "ordinal": 8,
+      "status": "PASS_AFTER_REVISION",
+      "note": "두 근의 계수 복원 기본형으로 하↔중 경계 b2/B12/medium 및 기존 하 유지 타당."
+    },
+    {
+      "ordinal": 13,
+      "status": "PASS_AFTER_REVISION",
+      "note": "축대칭 후 대입의 두 표준단계로 b2/B12/medium 및 기존 하 유지 타당."
+    },
+    {
+      "ordinal": 18,
+      "status": "PASS",
+      "note": "원본은 아래쪽으로 열린 포물선·왼쪽 축·음의 y절편이며 a,b,c 부호관계의 연결 판정3 수용."
+    },
+    {
+      "ordinal": 24,
+      "status": "PASS_WITH_TAXONOMY_PROPOSAL",
+      "note": "꼭짓점(1,3),y절편(0,4),원점으로 구성한 삼각형 넓이이며 정확 geometry gap 및 삼각형넓이 보조 기여 적절."
+    }
+  ],
+  "additionalCheck": "나머지 sourcepatch는 실제 짧은 대입·전개·정의·완전제곱식/그래프 읽기와 일치한다. q19 대칭축 숨은조건→계수결정3/B34, q23 지정된 변환·좌표 읽기·그리기2/B23 수용. q6/8 근과계수 교육과정표현 debt 및 q20 평행사변형 넓이 auxiliary gap 보존. q9 상황식 판별에는 약수함수의 반례검토가 있어3 유지.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

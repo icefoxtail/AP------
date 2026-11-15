@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E059",
+  "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+  "author": "meta_b",
+  "reviewer": "meta_c_resume_20261115",
+  "owner": "GPT_ROOT_E45FF6C78C51/C",
+  "at": "2026-11-15T00:08:03.444643+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/21_동산중_1학기_중간_중3_기출.js",
+  "sourceBlob": "4a22c1054c128794db517d34b3149051d5b7db78",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E059.review.json",
+      "sha256": "2b7c4c4c81e2808108961e38e3596fa118b5f69b188b8ad7c99e05b0adeca445"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E059.4slot.json",
+      "sha256": "963621771bb9806f8195478b714d1cd0e89ded5d207e810abe6a05d798dc0727"
+    }
+  },
+  "sampledOrdinals": [
+    8,
+    9,
+    24
+  ],
+  "additionalChangedOrBoundaryOrdinals": [],
+  "scope": "METADATA_ONLY: listed source stems, choices, existing solutions, author decisions and exact 4slot quotes directly compared. Other completed author judgments reused; no full-exam rereview claim.",
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E059-q24.png",
+      "sha256": "fc2f1c8cdd0519cc5b8e9f87e9a45376d20065e00c6a3cf17a1ea2211a43cc6d"
+    }
+  ],
+  "findings": [
+    {
+      "ordinal": 8,
+      "status": "HOLD_CONFIRMED",
+      "note": "선택지5의좌변이실제로누락되어전체선지감사및최종난도UNKNOWN보류수용."
+    },
+    {
+      "ordinal": 9,
+      "status": "PASS_AFTER_REVISION",
+      "note": "표준일차식곱전개는하1로보완확인. 발문·기존해설의이차항계수2가모든보기에서누락되어CONTENT_DEBT를보존."
+    },
+    {
+      "ordinal": 24,
+      "status": "HOLD_CONFIRMED",
+      "note": "원그림수직선기준B=-2,C=4를직접읽음. 기존해설의양의기준2,5와충돌및그림상단일부잘림에따라UNKNOWN/sourcehold수용. 좌표·길이복수목표와명시상등조건보존."
+    }
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

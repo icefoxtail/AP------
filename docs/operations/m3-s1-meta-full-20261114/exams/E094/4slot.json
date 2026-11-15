@@ -1,0 +1,1811 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1final/17_대구동도중_1학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "ad48d7189a35806290a82a38cf16a6f06c8ab12b",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "meta_a",
+    "owner": "M3_S1_RESUME_20261115_A",
+    "assignmentId": "M3-S1-META-FULL",
+    "at": "2026-11-15T06:11:18.072782+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_6930c2c989bd62f1df2cb326dddeacd2cc28ab7f6d26b358ac671f4ff222af58",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "79597df0596c43581c1ef1d99c43c75287f336317cb361e542deff2a850793b2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2a153bbb0bc117cf1b1e2d1533f4e43572a9ab81cca8bfa00004bf6098374f3f"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "1. $2x^2y - 2xy^2$의 인수가 아닌 것은? [4.0점]",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수",
+            "quote": "1. $2x^2y - 2xy^2$의 인수가 아닌 것은? [4.0점]",
+            "src": "stem",
+            "termId": 43
+          },
+          {
+            "term": "판정",
+            "quote": "1. $2x^2y - 2xy^2$의 인수가 아닌 것은? [4.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "공통인수의 판별 후보",
+        "condition": "2xy를 묶은 곱구조로 인수 여부를 판정하는 발문이다. 해설은 공백이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_5d325214506af96027e28326f558886db608f44e991f8493e3c42c6faf97b651",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eaef364a1ba56e62d6b5a16712b3d017382bd2e50e7e8a10d6c0c1474e7b044b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eab33267e7a8e67f97d5b7869e746ec1b04eac8171a33ff26f1adc54d16227db"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "2. 옳은 것만을 <보기>에서 있는 대로 고른 것은?\n<div class=\"exam-box\">\nㄱ. $x^2 - x + \\frac{1}{4} = (x - \\frac{1}{2})^2$\nㄴ. $x^2 + 4x - 21 = (x + 7)(x - 3)$\nㄷ. $-4x^2 + 8x - 3 = (2x - 3)(2x - 1)$\nㄹ. $\\frac{4}{9}a^2 - \\frac{16}{25}b^2 = 2(\\frac{1}{3}a - \\frac{2}{5}b)(\\frac{1}{3}a + \\frac{2}{5}b)$\n</div> [4.0점]",
+            "src": "stem",
+            "termId": 35
+          },
+          {
+            "term": "인수분해",
+            "quote": "2. 옳은 것만을 <보기>에서 있는 대로 고른 것은?\n<div class=\"exam-box\">\nㄱ. $x^2 - x + \\frac{1}{4} = (x - \\frac{1}{2})^2$\nㄴ. $x^2 + 4x - 21 = (x + 7)(x - 3)$\nㄷ. $-4x^2 + 8x - 3 = (2x - 3)(2x - 1)$\nㄹ. $\\frac{4}{9}a^2 - \\frac{16}{25}b^2 = 2(\\frac{1}{3}a - \\frac{2}{5}b)(\\frac{1}{3}a + \\frac{2}{5}b)$\n</div> [4.0점]",
+            "src": "stem",
+            "termId": 42
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "2. 옳은 것만을 <보기>에서 있는 대로 고른 것은?\n<div class=\"exam-box\">\nㄱ. $x^2 - x + \\frac{1}{4} = (x - \\frac{1}{2})^2$\nㄴ. $x^2 + 4x - 21 = (x + 7)(x - 3)$\nㄷ. $-4x^2 + 8x - 3 = (2x - 3)(2x - 1)$\nㄹ. $\\frac{4}{9}a^2 - \\frac{16}{25}b^2 = 2(\\frac{1}{3}a - \\frac{2}{5}b)(\\frac{1}{3}a + \\frac{2}{5}b)$\n</div> [4.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "인수분해 공식 비교 후보",
+        "condition": "제곱식·이차식·합차 꼴 네 진술의 옳고 그름을 비교한다. 해설은 공백이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_4abdc1cac44d176ed55a500c0fcf1b49d3f7eb33ac1673fd92973fd9217b616c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8dbb10adb5d335bc721c8b5762eea7dc5088b831228c0c8e0d46e409d0192412"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "967b6c3a1f64e25fc6f94f5a93cfb697f8f6acb53e09999ab2b1cf2fa5d9fcc0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "quote": "3. $a = \\frac{1 - \\sqrt{3}}{1 + \\sqrt{3}}$, $b = \\frac{1 + \\sqrt{3}}{1 - \\sqrt{3}}$일 때, $a^2 - b^2 + 4b - 4$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 23
+          },
+          {
+            "term": "유리식",
+            "quote": "3. $a = \\frac{1 - \\sqrt{3}}{1 + \\sqrt{3}}$, $b = \\frac{1 + \\sqrt{3}}{1 - \\sqrt{3}}$일 때, $a^2 - b^2 + 4b - 4$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 38
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "3. $a = \\frac{1 - \\sqrt{3}}{1 + \\sqrt{3}}$, $b = \\frac{1 + \\sqrt{3}}{1 - \\sqrt{3}}$일 때, $a^2 - b^2 + 4b - 4$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호값을 가진 문자의 이차식값 후보",
+        "condition": "a,b가 켤레형 분수로 주어지고 a²-b²+4b-4를 요구한다. 풀이경로는 미확정이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_5b9c2fd6514f3fba8ccaef6e0251cb2317b4f3649ed0f8365283e42ec427be5b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "41d8b8e5ecec36ff2dd739bf152d13bfbfeedcc2e0dd84e6fa53d27e0ba9a25e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c9e928eeb495c1d96ace567cd43df083aa341d27a3fb6987d62f2f4ff6db6af5"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "④ $x^2 - 3x - 28 = 0 \\quad [-4]$",
+            "src": "choices",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "quote": "4. 다음 중 [ ] 안의 수가 주어진 이차방정식의 해인 것은? [4.0점]",
+            "src": "stem",
+            "termId": 78
+          },
+          {
+            "term": "판정",
+            "quote": "4. 다음 중 [ ] 안의 수가 주어진 이차방정식의 해인 것은? [4.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "지정수의 해 여부 확인 후보",
+        "condition": "보기마다 주어진 수가 해당 이차방정식을 만족하는지 판정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_17b61471a3982083ae384b335dfdb8c34f5e0b72d9674c35d9e324884c99ba70",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "86fc514a1df4833d375dc009b87fb85490b06eb98d74108eeb464e92a6554d47"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5b555a7c04a00461619c9fbd4729d51cd480549a020d1dad6f226d130b72440e"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "5. 이차방정식 $2x^2 - 5x + 1 = 0$의 근이 $x = \\frac{A \\pm \\sqrt{B}}{4}$일 때, $A + B$의 값은? (단, $A, B$는 유리수) [4.0점]",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "해",
+            "quote": "5. 이차방정식 $2x^2 - 5x + 1 = 0$의 근이 $x = \\frac{A \\pm \\sqrt{B}}{4}$일 때, $A + B$의 값은? (단, $A, B$는 유리수) [4.0점]",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "5. 이차방정식 $2x^2 - 5x + 1 = 0$의 근이 $x = \\frac{A \\pm \\sqrt{B}}{4}$일 때, $A + B$의 값은? (단, $A, B$는 유리수) [4.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "5. 이차방정식 $2x^2 - 5x + 1 = 0$의 근이 $x = \\frac{A \\pm \\sqrt{B}}{4}$일 때, $A + B$의 값은? (단, $A, B$는 유리수) [4.0점]",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "유리수",
+            "quote": "5. 이차방정식 $2x^2 - 5x + 1 = 0$의 근이 $x = \\frac{A \\pm \\sqrt{B}}{4}$일 때, $A + B$의 값은? (단, $A, B$는 유리수) [4.0점]",
+            "src": "stem",
+            "termId": 3
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근의 공식 결과의 문자값 후보",
+        "condition": "이차방정식의 두 근을 주어진 근호형과 대조해 A+B를 정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_76b4c125c42c9d43bfd7d62bbfcd4f2f179f0873480d58bfb3531c0a1a2630fa",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5b191a521717f6cfa0078105d60289c13c91f659eab9b6a7a23a1b81767f8b31"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c9cd1c17a5ea1d442899a20f286e3ab3afbdc409005a1ca61ce0eedff58a8c1c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "6. 이차방정식 $x^2 + 3ax - 2a + 1 = 0$의 한 해가 $x = 2$일 때, 상수 $a$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "해",
+            "quote": "6. 이차방정식 $x^2 + 3ax - 2a + 1 = 0$의 한 해가 $x = 2$일 때, 상수 $a$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "6. 이차방정식 $x^2 + 3ax - 2a + 1 = 0$의 한 해가 $x = 2$일 때, 상수 $a$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "한 해로 계수 결정 후보",
+        "condition": "해2를 이차방정식에 넣어 계수a를 정하는 조건이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_01a3503963d006092b0f726983c1022a465c9b534ae99903cf77798a29b5e902",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0c5e7ed6d5bea40d106eb873e69244042639f2a7ae9e20ec98b368eb9dc3b195"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6a09150ad524e986739468ebe5d9ac777df2e5461ee0a5cb340f9aa037b5a374"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "7. 이차방정식 $x^2 + mx + n = 0$의 두 근의 차가 2이고, 큰 근이 작은 근의 $\\frac{5}{3}$배일 때, 상수 $m, n$에 대하여 $2m + n$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "해",
+            "quote": "7. 이차방정식 $x^2 + mx + n = 0$의 두 근의 차가 2이고, 큰 근이 작은 근의 $\\frac{5}{3}$배일 때, 상수 $m, n$에 대하여 $2m + n$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "7. 이차방정식 $x^2 + mx + n = 0$의 두 근의 차가 2이고, 큰 근이 작은 근의 $\\frac{5}{3}$배일 때, 상수 $m, n$에 대하여 $2m + n$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "식의값",
+            "quote": "7. 이차방정식 $x^2 + mx + n = 0$의 두 근의 차가 2이고, 큰 근이 작은 근의 $\\frac{5}{3}$배일 때, 상수 $m, n$에 대하여 $2m + n$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "차",
+            "quote": "7. 이차방정식 $x^2 + mx + n = 0$의 두 근의 차가 2이고, 큰 근이 작은 근의 $\\frac{5}{3}$배일 때, 상수 $m, n$에 대하여 $2m + n$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 288
+          },
+          {
+            "term": "비",
+            "quote": "7. 이차방정식 $x^2 + mx + n = 0$의 두 근의 차가 2이고, 큰 근이 작은 근의 $\\frac{5}{3}$배일 때, 상수 $m, n$에 대하여 $2m + n$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 289
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근의 차와 비에서 계수 복원 후보",
+        "condition": "두 근의 차2와 비5/3으로 근을 정한 뒤 계수식2m+n을 요구한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_7f8556f18a5941025d265df1e9a9b972a4f51e2c5707bab19504414b1e4e6c14",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2e4c4e2dc07ef951879a5ff1279dda4c02867e4c11a78a6d8926b91de3e9f534"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "44f3feca108511b1d5a54633a13db7e64aea57fb8e04520ca89543d71835dfaf"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "8. 이차방정식 $x^2 + 3x + 1 = 0$을 $(x + a)^2 = b$의 꼴로 나타내어 해를 구하면 $x = \\frac{c \\pm \\sqrt{d}}{2}$이다. 이 때 이차방정식 $ax^2 + 2bx + c - 1 = 2d$의 음수인 해는? (단, $a, b, c, d$는 유리수) [4.0점]",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "완전제곱식",
+            "quote": "8. 이차방정식 $x^2 + 3x + 1 = 0$을 $(x + a)^2 = b$의 꼴로 나타내어 해를 구하면 $x = \\frac{c \\pm \\sqrt{d}}{2}$이다. 이 때 이차방정식 $ax^2 + 2bx + c - 1 = 2d$의 음수인 해는? (단, $a, b, c, d$는 유리수) [4.0점]",
+            "src": "stem",
+            "termId": 59
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "quote": "8. 이차방정식 $x^2 + 3x + 1 = 0$을 $(x + a)^2 = b$의 꼴로 나타내어 해를 구하면 $x = \\frac{c \\pm \\sqrt{d}}{2}$이다. 이 때 이차방정식 $ax^2 + 2bx + c - 1 = 2d$의 음수인 해는? (단, $a, b, c, d$는 유리수) [4.0점]",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "유리수",
+            "quote": "8. 이차방정식 $x^2 + 3x + 1 = 0$을 $(x + a)^2 = b$의 꼴로 나타내어 해를 구하면 $x = \\frac{c \\pm \\sqrt{d}}{2}$이다. 이 때 이차방정식 $ax^2 + 2bx + c - 1 = 2d$의 음수인 해는? (단, $a, b, c, d$는 유리수) [4.0점]",
+            "src": "stem",
+            "termId": 3
+          },
+          {
+            "term": "음수",
+            "quote": "8. 이차방정식 $x^2 + 3x + 1 = 0$을 $(x + a)^2 = b$의 꼴로 나타내어 해를 구하면 $x = \\frac{c \\pm \\sqrt{d}}{2}$이다. 이 때 이차방정식 $ax^2 + 2bx + c - 1 = 2d$의 음수인 해는? (단, $a, b, c, d$는 유리수) [4.0점]",
+            "src": "stem",
+            "termId": 397
+          }
+        ]
+      },
+      "reasons": {
+        "method": "완전제곱 변형 결과의 재사용 후보",
+        "condition": "첫 방정식의 완전제곱·근호 표현으로 네 문자를 정해 다른 방정식의 음수해를 묻는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_ca8ec48ea18a510334e9065cdc1ba6a64e80752035949a79417f8f4be05630da",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1fc9e932d2ee5733c9a172d77bef656b2495c6a02e5c0d5c604473793f21fea5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aca4c63f3228df3777e8d2c068aec9472a2964f4e3d2e16d22bcaee9093bb75b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "9. 이차방정식 $x^2 - 6x - 2k^2 + 3k = 0$의 한 근이 $3 + 3\\sqrt{2}$일 때, 양의 유리수 $k$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "해",
+            "quote": "9. 이차방정식 $x^2 - 6x - 2k^2 + 3k = 0$의 한 근이 $3 + 3\\sqrt{2}$일 때, 양의 유리수 $k$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 78
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "9. 이차방정식 $x^2 - 6x - 2k^2 + 3k = 0$의 한 근이 $3 + 3\\sqrt{2}$일 때, 양의 유리수 $k$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "유리수",
+            "quote": "9. 이차방정식 $x^2 - 6x - 2k^2 + 3k = 0$의 한 근이 $3 + 3\\sqrt{2}$일 때, 양의 유리수 $k$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 3
+          },
+          {
+            "term": "양수",
+            "quote": "9. 이차방정식 $x^2 - 6x - 2k^2 + 3k = 0$의 한 근이 $3 + 3\\sqrt{2}$일 때, 양의 유리수 $k$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 396
+          }
+        ]
+      },
+      "reasons": {
+        "method": "무리수근을 이용한 양의 계수 결정 후보",
+        "condition": "한 근3+3√2를 조건으로 k의 식을 세운 뒤 양의 유리수 조건을 적용한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_947b7b62e3b3e7f29012fa4ffb119c0f1eee144f992c6dd46cfe43b05465b4e2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "33e8f80dd080a681ccfbaad1c7457b3c6e446d6cd8c46ad881ed69f65d75cebc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2691135689698205555bcbb0cce3ec8086b92762441a2b8601de6de846817148"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "10. 이차방정식 $(\\frac{x}{2} - 3)^2 - 4(\\frac{x}{2} - 3) = 16 - 2(3 - \\frac{x}{2})$의 두 근을 $\\alpha, \\beta$라 할 때, 이차방정식 $x^2 - (\\alpha - 10\\beta)x - 8 = 0$의 두 근의 차는? (단, $\\alpha > \\beta$) [5.0점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "quote": "10. 이차방정식 $(\\frac{x}{2} - 3)^2 - 4(\\frac{x}{2} - 3) = 16 - 2(3 - \\frac{x}{2})$의 두 근을 $\\alpha, \\beta$라 할 때, 이차방정식 $x^2 - (\\alpha - 10\\beta)x - 8 = 0$의 두 근의 차는? (단, $\\alpha > \\beta$) [5.0점]",
+            "src": "stem",
+            "termId": 78
+          },
+          {
+            "term": "차",
+            "quote": "10. 이차방정식 $(\\frac{x}{2} - 3)^2 - 4(\\frac{x}{2} - 3) = 16 - 2(3 - \\frac{x}{2})$의 두 근을 $\\alpha, \\beta$라 할 때, 이차방정식 $x^2 - (\\alpha - 10\\beta)x - 8 = 0$의 두 근의 차는? (단, $\\alpha > \\beta$) [5.0점]",
+            "src": "stem",
+            "termId": 288
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "대소비교",
+            "quote": "10. 이차방정식 $(\\frac{x}{2} - 3)^2 - 4(\\frac{x}{2} - 3) = 16 - 2(3 - \\frac{x}{2})$의 두 근을 $\\alpha, \\beta$라 할 때, 이차방정식 $x^2 - (\\alpha - 10\\beta)x - 8 = 0$의 두 근의 차는? (단, $\\alpha > \\beta$) [5.0점]",
+            "src": "stem",
+            "termId": 28
+          }
+        ]
+      },
+      "reasons": {
+        "method": "치환 방정식의 근을 전달하는 후보",
+        "condition": "반복 일차식의 방정식 두 근을 구해 새 이차방정식 두 근의 차를 요구한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_f41ba12303a61659deeccaad65121a14996147b4ed6fb0d2019b3079be8d919b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f2bbf65122533be85cab6d7267e14b2d6a65b4dcab22a97f1c57c335e1ecc9a7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4a45488724f0c0c1f539607a2e78f8f49b51b0be4388d8740f693eb39bcdd885"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "11. 이차방정식 $x^2 + 2x + a - 5 = 0$의 근이 모두 유리수가 되도록 하는 모든 자연수 $a$의 값의 합은? [5.0점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "11. 이차방정식 $x^2 + 2x + a - 5 = 0$의 근이 모두 유리수가 되도록 하는 모든 자연수 $a$의 값의 합은? [5.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "11. 이차방정식 $x^2 + 2x + a - 5 = 0$의 근이 모두 유리수가 되도록 하는 모든 자연수 $a$의 값의 합은? [5.0점]",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "유리수",
+            "quote": "11. 이차방정식 $x^2 + 2x + a - 5 = 0$의 근이 모두 유리수가 되도록 하는 모든 자연수 $a$의 값의 합은? [5.0점]",
+            "src": "stem",
+            "termId": 3
+          },
+          {
+            "term": "자연수",
+            "quote": "11. 이차방정식 $x^2 + 2x + a - 5 = 0$의 근이 모두 유리수가 되도록 하는 모든 자연수 $a$의 값의 합은? [5.0점]",
+            "src": "stem",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "유리수근이 되는 자연수 계수 후보",
+        "condition": "모든 근이 유리수라는 조건 아래 가능한 자연수a를 모아 합을 구한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_154b5c0586cccb45653487937c2870e91d76dc4d6e92f8ca1236266751a57f59",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a078d36194b395d8032494eb3738d2e5686b7b23e3757b4a63c09e73a1e17220"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a7804a0184c5e1e3bca68c3cacda9822b42f0b19959a03c797c61461e8bc4a9e"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "홀수",
+            "quote": "12. 연속하는 세 홀수가 있다. 가장 큰 수의 제곱이 나머지 두 수의 제곱의 합보다 65만큼 작을 때, 가장 큰 홀수는? [4.0점]",
+            "src": "stem",
+            "termId": 680
+          },
+          {
+            "term": "연속정수",
+            "quote": "12. 연속하는 세 홀수가 있다. 가장 큰 수의 제곱이 나머지 두 수의 제곱의 합보다 65만큼 작을 때, 가장 큰 홀수는? [4.0점]",
+            "src": "stem",
+            "termId": 303
+          }
+        ],
+        "goal": [
+          {
+            "term": "홀수",
+            "quote": "12. 연속하는 세 홀수가 있다. 가장 큰 수의 제곱이 나머지 두 수의 제곱의 합보다 65만큼 작을 때, 가장 큰 홀수는? [4.0점]",
+            "src": "stem",
+            "termId": 680
+          },
+          {
+            "term": "최댓값",
+            "quote": "12. 연속하는 세 홀수가 있다. 가장 큰 수의 제곱이 나머지 두 수의 제곱의 합보다 65만큼 작을 때, 가장 큰 홀수는? [4.0점]",
+            "src": "stem",
+            "termId": 127
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "홀수",
+            "quote": "12. 연속하는 세 홀수가 있다. 가장 큰 수의 제곱이 나머지 두 수의 제곱의 합보다 65만큼 작을 때, 가장 큰 홀수는? [4.0점]",
+            "src": "stem",
+            "termId": 680
+          }
+        ]
+      },
+      "reasons": {
+        "method": "연속 홀수의 제곱관계 모델 후보",
+        "condition": "가장 큰 홀수의 제곱과 두 제곱합의 차65를 방정식화하는 유형이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_b574976e325c53ed2d227c65ccd210b7641de74b1a3aebf514e9a551e606dbfb",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "34d83a0fa0fa8453797bc097793ea2033425aa8715b5b022b96222ab4eb92323"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9f6bcbcb067d9dbd78e91aa250aa1d4865b2e588b97a1db83f07f6a448fc04d1"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "13. 다음 이차함수의 그래프에 대한 설명 중 옳지 않은 것은?\n<div class=\"exam-box\">\n㉠ $y = 2x^2$ \\quad ㉡ $y = -\\frac{1}{2}x^2$ \\quad ㉢ $y = 3x^2$ <br>\n㉣ $y = -\\frac{1}{3}x^2$ \\quad ㉤ $y = -5x^2$ \\quad ㉥ $y = \\frac{1}{3}x^2$\n</div> [4.0점]",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "그래프",
+            "quote": "13. 다음 이차함수의 그래프에 대한 설명 중 옳지 않은 것은?\n<div class=\"exam-box\">\n㉠ $y = 2x^2$ \\quad ㉡ $y = -\\frac{1}{2}x^2$ \\quad ㉢ $y = 3x^2$ <br>\n㉣ $y = -\\frac{1}{3}x^2$ \\quad ㉤ $y = -5x^2$ \\quad ㉥ $y = \\frac{1}{3}x^2$\n</div> [4.0점]",
+            "src": "stem",
+            "termId": 107
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "13. 다음 이차함수의 그래프에 대한 설명 중 옳지 않은 것은?\n<div class=\"exam-box\">\n㉠ $y = 2x^2$ \\quad ㉡ $y = -\\frac{1}{2}x^2$ \\quad ㉢ $y = 3x^2$ <br>\n㉣ $y = -\\frac{1}{3}x^2$ \\quad ㉤ $y = -5x^2$ \\quad ㉥ $y = \\frac{1}{3}x^2$\n</div> [4.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "기본 포물선의 모양 비교 후보",
+        "condition": "양·음 이차항 계수의 여섯 그래프에 대해 폭·대칭·꼭짓점을 비교한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_429562edf962b73a4c10981a1cd2639631a7921ef36dab49d0a5387271bf70b4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "64a27757ba846e7e5f6344f42014436e2e74fbbcfa91c98f6fd77b4071ad94f0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a512be005e788151f293d698bc3fb51a47e74ef4b47523bb55aad49617e81ea3"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "14. 이차함수 $y = (x + 3)^2 - 2$의 그래프에 대한 설명 중 옳지 않은 것은? [4.0점]",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "14. 이차함수 $y = (x + 3)^2 - 2$의 그래프에 대한 설명 중 옳지 않은 것은? [4.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "꼭짓점형 포물선 성질 판별 후보",
+        "condition": "주어진 꼭짓점형에서 축·꼭짓점·절편·증감 진술을 판정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_3ff13d6873475b291b0ddbf253ffa678a199d5bb40fd803fb0d92e02386d1430",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "576dc1bbe6807ddafc56bce5987ca6ac218339003ae18bd080174537d4828feb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e90f2c0baec463c52bfb17f88c243fd87b70c539aac926fd1de548f7f4b93fb2"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "15. 이차함수 $y = a(x - 2)^2 + 4$의 그래프는 $y = -2(x - b)^2 + c$의 그래프를 $x$축 방향으로 3만큼, $y$축 방향으로 $-2$만큼 평행이동한 것이다. 이 때 상수 $a, b, c$에 대하여 $a + b + c$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "평행이동",
+            "quote": "15. 이차함수 $y = a(x - 2)^2 + 4$의 그래프는 $y = -2(x - b)^2 + c$의 그래프를 $x$축 방향으로 3만큼, $y$축 방향으로 $-2$만큼 평행이동한 것이다. 이 때 상수 $a, b, c$에 대하여 $a + b + c$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 210
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "15. 이차함수 $y = a(x - 2)^2 + 4$의 그래프는 $y = -2(x - b)^2 + c$의 그래프를 $x$축 방향으로 3만큼, $y$축 방향으로 $-2$만큼 평행이동한 것이다. 이 때 상수 $a, b, c$에 대하여 $a + b + c$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "15. 이차함수 $y = a(x - 2)^2 + 4$의 그래프는 $y = -2(x - b)^2 + c$의 그래프를 $x$축 방향으로 3만큼, $y$축 방향으로 $-2$만큼 평행이동한 것이다. 이 때 상수 $a, b, c$에 대하여 $a + b + c$의 값은? [4.0점]",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "평행이동 전후 계수 결정 후보",
+        "condition": "두 그래프의 가로3·세로-2 이동관계를 통해 a,b,c를 결정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_61a6da7437f642d55f01a57616c95b79ddb8816010bded349c1204754b862305",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "97237f28bf5709bc454c1fbfab07edde90fd7103abcaade591f1998dcdddd887"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9865f0d08fe5a65477812a6a3bb747ab331f072b98ffbb85c2117269c6a70c95"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "16. 이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $abc$의 값은? (단, $a, b, c$는 상수)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q16.png\"> [4.0점]",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "그래프",
+            "quote": "16. 이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $abc$의 값은? (단, $a, b, c$는 상수)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q16.png\"> [4.0점]",
+            "src": "stem",
+            "termId": 107
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "quote": "16. 이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $abc$의 값은? (단, $a, b, c$는 상수)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q16.png\"> [4.0점]",
+            "src": "stem",
+            "termId": 50
+          },
+          {
+            "term": "곱",
+            "quote": "16. 이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $abc$의 값은? (단, $a, b, c$는 상수)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q16.png\"> [4.0점]",
+            "src": "stem",
+            "termId": 287
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "꼭짓점과 절편으로 함수 복원 후보",
+        "condition": "실제 그림의 꼭짓점(-1,-3)과 y절편-1로 계수a,b,c를 정해 곱을 묻는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_c60040c39ac6fc60413f9fabfd73746a5da9360f02d1689afdcbdb4aea7e78e2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "62737162e5445f140a2d70f88add3c76ba9bed26d525df593ad029ac1786fd41"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "34ae00a8f89f211a85198ba38a1cd70b1453f3815d76295d1c5629067db7ca86"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "17. 그림과 같이 이차함수 $y = -2x^2 + 8x - 7$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{C}$, $x$축과의 교점을 $\\text{B, D}$라 하고 이차함수 그래프 위의 점 $\\text{E}$에 대하여 선분 $\\text{CE}$는 $x$축과 평행할 때, 옳은 것은?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q17.png\"> [4.0점]",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "그래프",
+            "quote": "17. 그림과 같이 이차함수 $y = -2x^2 + 8x - 7$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{C}$, $x$축과의 교점을 $\\text{B, D}$라 하고 이차함수 그래프 위의 점 $\\text{E}$에 대하여 선분 $\\text{CE}$는 $x$축과 평행할 때, 옳은 것은?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q17.png\"> [4.0점]",
+            "src": "stem",
+            "termId": 107
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "17. 그림과 같이 이차함수 $y = -2x^2 + 8x - 7$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{C}$, $x$축과의 교점을 $\\text{B, D}$라 하고 이차함수 그래프 위의 점 $\\text{E}$에 대하여 선분 $\\text{CE}$는 $x$축과 평행할 때, 옳은 것은?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q17.png\"> [4.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "평행",
+            "quote": "17. 그림과 같이 이차함수 $y = -2x^2 + 8x - 7$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{C}$, $x$축과의 교점을 $\\text{B, D}$라 하고 이차함수 그래프 위의 점 $\\text{E}$에 대하여 선분 $\\text{CE}$는 $x$축과 평행할 때, 옳은 것은?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q17.png\"> [4.0점]",
+            "src": "stem",
+            "termId": 180
+          }
+        ]
+      },
+      "reasons": {
+        "method": "포물선과 절편 삼각형의 성질 후보",
+        "condition": "꼭짓점A·x절편B,D·y절편C·같은 높이E의 성질을 비교한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_26f4ff3e9f115c9a72106826e8b81d90a1e10fd5a32cc4359ebb39b66f1bf355",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7e397cbd301105fd3ddcc7535cb23106193eb1bd1e416525960be5d9b429a810"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9db694cfb82edcb17a77c10ce761fe2a41c6fb2496a453b3635e2824f63b94f2"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "18. 이차함수 $y = 3x^2 - 12x + 5$의 그래프와 $y = x^2 - 2px + q$의 그래프의 꼭짓점이 일치할 때, $p - q$의 값은? (단, $p, q$는 상수) [4.0점]",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "18. 이차함수 $y = 3x^2 - 12x + 5$의 그래프와 $y = x^2 - 2px + q$의 그래프의 꼭짓점이 일치할 때, $p - q$의 값은? (단, $p, q$는 상수) [4.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "차",
+            "quote": "18. 이차함수 $y = 3x^2 - 12x + 5$의 그래프와 $y = x^2 - 2px + q$의 그래프의 꼭짓점이 일치할 때, $p - q$의 값은? (단, $p, q$는 상수) [4.0점]",
+            "src": "stem",
+            "termId": 288
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "상등",
+            "quote": "18. 이차함수 $y = 3x^2 - 12x + 5$의 그래프와 $y = x^2 - 2px + q$의 그래프의 꼭짓점이 일치할 때, $p - q$의 값은? (단, $p, q$는 상수) [4.0점]",
+            "src": "stem",
+            "termId": 346
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 포물선의 꼭짓점 일치 후보",
+        "condition": "일반형 두 함수의 꼭짓점이 같다는 조건에서 p,q를 정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_1cb0191fe1ab7c578c682b15d50ea1f0d3c587e33770d6a52288e82283fd6a91",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "19bfdf1304b8e0f7f18dbe05a00267083e3c478c5ec46be40d62d67d3ad288c8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b19bd4e07a25fa8fb9d471eb29d86ddc6dc8db4630419e317902bb31237abcea"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "19. 이차함수 $y = \\frac{1}{2}(x - p)^2 - 3p^2$의 그래프의 꼭짓점이 직선 $y = 2x - 5$ 위에 있을 때, 상수 $p$의 값은? (단, $p < 0$) [4.0점]",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "직선",
+            "quote": "19. 이차함수 $y = \\frac{1}{2}(x - p)^2 - 3p^2$의 그래프의 꼭짓점이 직선 $y = 2x - 5$ 위에 있을 때, 상수 $p$의 값은? (단, $p < 0$) [4.0점]",
+            "src": "stem",
+            "termId": 143
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "19. 이차함수 $y = \\frac{1}{2}(x - p)^2 - 3p^2$의 그래프의 꼭짓점이 직선 $y = 2x - 5$ 위에 있을 때, 상수 $p$의 값은? (단, $p < 0$) [4.0점]",
+            "src": "stem",
+            "termId": 49
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "음수",
+            "quote": "19. 이차함수 $y = \\frac{1}{2}(x - p)^2 - 3p^2$의 그래프의 꼭짓점이 직선 $y = 2x - 5$ 위에 있을 때, 상수 $p$의 값은? (단, $p < 0$) [4.0점]",
+            "src": "stem",
+            "termId": 397
+          },
+          {
+            "term": "통과",
+            "quote": "19. 이차함수 $y = \\frac{1}{2}(x - p)^2 - 3p^2$의 그래프의 꼭짓점이 직선 $y = 2x - 5$ 위에 있을 때, 상수 $p$의 값은? (단, $p < 0$) [4.0점]",
+            "src": "stem",
+            "termId": 356
+          }
+        ]
+      },
+      "reasons": {
+        "method": "꼭짓점의 직선 통과 조건 후보",
+        "condition": "꼭짓점(p,-3p²)이 주어진 직선 위에 있고 p<0이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_91d3ef963e4a60de817a021e2e295a5c7ef85653a0f4a27f2eb21d13e5844ff6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c5c10b0122d508a89b3f2b3d1d4df47bdbda4b4dea6119bc598d75fd05fb554b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "17d7183282a7180b570b6773dfad2f55eda77595efcf1855613326c068d2c3cb"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "20. 그림과 같이 점 $\\text{A, B}$는 이차함수 $y = ax^2$의 그래프 위의 점이고, 점 $\\text{C, D}$는 이차함수 $y = -x^2$의 그래프 위의 점이다. $\\overline{\\text{BC}}, \\overline{\\text{AD}}$는 $y$축에 평행하고 $\\overline{\\text{AB}}, \\overline{\\text{CD}}$는 $x$축에 평행하며 $\\square\\text{ABCD}$는 정사각형이다. $\\overline{\\text{AD}}$가 $x$축과 만나는 점을 $\\text{E}$라고 하고 $\\overline{\\text{AE}} : \\overline{\\text{ED}} = 1 : 3$일 때, $\\square\\text{ABCD}$의 넓이는? (단, $a > 0$)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q20.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "정사각형",
+            "quote": "20. 그림과 같이 점 $\\text{A, B}$는 이차함수 $y = ax^2$의 그래프 위의 점이고, 점 $\\text{C, D}$는 이차함수 $y = -x^2$의 그래프 위의 점이다. $\\overline{\\text{BC}}, \\overline{\\text{AD}}$는 $y$축에 평행하고 $\\overline{\\text{AB}}, \\overline{\\text{CD}}$는 $x$축에 평행하며 $\\square\\text{ABCD}$는 정사각형이다. $\\overline{\\text{AD}}$가 $x$축과 만나는 점을 $\\text{E}$라고 하고 $\\overline{\\text{AE}} : \\overline{\\text{ED}} = 1 : 3$일 때, $\\square\\text{ABCD}$의 넓이는? (단, $a > 0$)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q20.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 166
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "quote": "20. 그림과 같이 점 $\\text{A, B}$는 이차함수 $y = ax^2$의 그래프 위의 점이고, 점 $\\text{C, D}$는 이차함수 $y = -x^2$의 그래프 위의 점이다. $\\overline{\\text{BC}}, \\overline{\\text{AD}}$는 $y$축에 평행하고 $\\overline{\\text{AB}}, \\overline{\\text{CD}}$는 $x$축에 평행하며 $\\square\\text{ABCD}$는 정사각형이다. $\\overline{\\text{AD}}$가 $x$축과 만나는 점을 $\\text{E}$라고 하고 $\\overline{\\text{AE}} : \\overline{\\text{ED}} = 1 : 3$일 때, $\\square\\text{ABCD}$의 넓이는? (단, $a > 0$)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q20.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 213
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "평행",
+            "quote": "20. 그림과 같이 점 $\\text{A, B}$는 이차함수 $y = ax^2$의 그래프 위의 점이고, 점 $\\text{C, D}$는 이차함수 $y = -x^2$의 그래프 위의 점이다. $\\overline{\\text{BC}}, \\overline{\\text{AD}}$는 $y$축에 평행하고 $\\overline{\\text{AB}}, \\overline{\\text{CD}}$는 $x$축에 평행하며 $\\square\\text{ABCD}$는 정사각형이다. $\\overline{\\text{AD}}$가 $x$축과 만나는 점을 $\\text{E}$라고 하고 $\\overline{\\text{AE}} : \\overline{\\text{ED}} = 1 : 3$일 때, $\\square\\text{ABCD}$의 넓이는? (단, $a > 0$)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q20.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 180
+          },
+          {
+            "term": "비",
+            "quote": "20. 그림과 같이 점 $\\text{A, B}$는 이차함수 $y = ax^2$의 그래프 위의 점이고, 점 $\\text{C, D}$는 이차함수 $y = -x^2$의 그래프 위의 점이다. $\\overline{\\text{BC}}, \\overline{\\text{AD}}$는 $y$축에 평행하고 $\\overline{\\text{AB}}, \\overline{\\text{CD}}$는 $x$축에 평행하며 $\\square\\text{ABCD}$는 정사각형이다. $\\overline{\\text{AD}}$가 $x$축과 만나는 점을 $\\text{E}$라고 하고 $\\overline{\\text{AE}} : \\overline{\\text{ED}} = 1 : 3$일 때, $\\square\\text{ABCD}$의 넓이는? (단, $a > 0$)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q20.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 289
+          },
+          {
+            "term": "양수",
+            "quote": "20. 그림과 같이 점 $\\text{A, B}$는 이차함수 $y = ax^2$의 그래프 위의 점이고, 점 $\\text{C, D}$는 이차함수 $y = -x^2$의 그래프 위의 점이다. $\\overline{\\text{BC}}, \\overline{\\text{AD}}$는 $y$축에 평행하고 $\\overline{\\text{AB}}, \\overline{\\text{CD}}$는 $x$축에 평행하며 $\\square\\text{ABCD}$는 정사각형이다. $\\overline{\\text{AD}}$가 $x$축과 만나는 점을 $\\text{E}$라고 하고 $\\overline{\\text{AE}} : \\overline{\\text{ED}} = 1 : 3$일 때, $\\square\\text{ABCD}$의 넓이는? (단, $a > 0$)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q20.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 396
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 포물선 내접정사각형 후보",
+        "condition": "세로선분을 이루는 위아래 높이의 비1:3과 정사각형 조건으로 넓이를 정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2bc8bf0df20486757cf99d2078b55ebbc15ddc135c3b8a6a3063a8ba36b22e8d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "07dda95ffe437a868848848c03dabc088c8b70527cb97c8849bd7400c3ee5016"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dd0090ec999a443101adab1a415f72c9f267dfe6c6de46f75db94d92f90d0531"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "21. 이차함수 $y = ax^2 + bx + c$는 $x = 2$일 때 최댓값이 4이고 그 그래프가 모든 사분면을 지난다. 이 때 상수 $a$의 값의 범위는? [4.0점]",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "quote": "21. 이차함수 $y = ax^2 + bx + c$는 $x = 2$일 때 최댓값이 4이고 그 그래프가 모든 사분면을 지난다. 이 때 상수 $a$의 값의 범위는? [4.0점]",
+            "src": "stem",
+            "termId": 50
+          },
+          {
+            "term": "범위",
+            "quote": "21. 이차함수 $y = ax^2 + bx + c$는 $x = 2$일 때 최댓값이 4이고 그 그래프가 모든 사분면을 지난다. 이 때 상수 $a$의 값의 범위는? [4.0점]",
+            "src": "stem",
+            "termId": 297
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "사분면",
+            "quote": "21. 이차함수 $y = ax^2 + bx + c$는 $x = 2$일 때 최댓값이 4이고 그 그래프가 모든 사분면을 지난다. 이 때 상수 $a$의 값의 범위는? [4.0점]",
+            "src": "stem",
+            "termId": 149
+          },
+          {
+            "term": "최댓값",
+            "quote": "21. 이차함수 $y = ax^2 + bx + c$는 $x = 2$일 때 최댓값이 4이고 그 그래프가 모든 사분면을 지난다. 이 때 상수 $a$의 값의 범위는? [4.0점]",
+            "src": "stem",
+            "termId": 127
+          }
+        ]
+      },
+      "reasons": {
+        "method": "모든 사분면 통과하는 계수범위 후보",
+        "condition": "최대점(2,4)을 가지며 네 사분면을 지나는 포물선의 a범위를 묻는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_411a0d6ef79c56a2a346f623ed95c9458337a191418723b5613bff0ab51436c2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0e716f3c953c7bedf45258c58abb227316f9cd599af437e4d22d07677398312d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2e8d467fa2008342be2769d4838b203ee6a901ba0aca20acf764c84c4f9010e4"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "22. 그림과 같이 이차함수 $y = x^2 + 2x - 3$의 그래프가 $x$축의 음의 부분과 만나는 점을 $\\text{A}$, 꼭짓점을 $\\text{B}$, $y$축과 만나는 점을 $\\text{C}$라고 할 때, 사각형 $\\text{OABC}$의 넓이는?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q22.png\"> [4.0점]",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "사각형",
+            "quote": "22. 그림과 같이 이차함수 $y = x^2 + 2x - 3$의 그래프가 $x$축의 음의 부분과 만나는 점을 $\\text{A}$, 꼭짓점을 $\\text{B}$, $y$축과 만나는 점을 $\\text{C}$라고 할 때, 사각형 $\\text{OABC}$의 넓이는?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q22.png\"> [4.0점]",
+            "src": "stem",
+            "termId": 162
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "quote": "22. 그림과 같이 이차함수 $y = x^2 + 2x - 3$의 그래프가 $x$축의 음의 부분과 만나는 점을 $\\text{A}$, 꼭짓점을 $\\text{B}$, $y$축과 만나는 점을 $\\text{C}$라고 할 때, 사각형 $\\text{OABC}$의 넓이는?<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q22.png\"> [4.0점]",
+            "src": "stem",
+            "termId": 213
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "절편과 꼭짓점 사각형 넓이 후보",
+        "condition": "실제 그림의 O,A,B,C 좌표가 정하는 사각형 넓이를 요구한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_cfa27f2f1a2a24deb6a00e0bb7de2297f819ef1d4b0ae063116ed362338978da",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "19a2254c53858b53d8671322a45f95fb54c5f3db482aef36491579c71c25c291"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b0be0e79b37a281298bedfa2fc94c5fc7612ade9daac9b36958ebefd90da7a61"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "23. 지면으로부터 $30\\text{m}$ 높이의 건물 꼭대기에서 똑바로 위로 쏘아 올린 물 로켓이 $x$초 후에 지면으로부터 $y\\text{m}$의 높이에 도달한다고 할 때, $y = -5x^2 + 50x + 30$인 관계가 있다고 한다. 이 물로켓이 가장 높이 올라갈 때까지 걸린 시간은 몇 초인가? [4.0점]",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "높이",
+            "quote": "23. 지면으로부터 $30\\text{m}$ 높이의 건물 꼭대기에서 똑바로 위로 쏘아 올린 물 로켓이 $x$초 후에 지면으로부터 $y\\text{m}$의 높이에 도달한다고 할 때, $y = -5x^2 + 50x + 30$인 관계가 있다고 한다. 이 물로켓이 가장 높이 올라갈 때까지 걸린 시간은 몇 초인가? [4.0점]",
+            "src": "stem",
+            "termId": 218
+          },
+          {
+            "term": "운동",
+            "quote": "23. 지면으로부터 $30\\text{m}$ 높이의 건물 꼭대기에서 똑바로 위로 쏘아 올린 물 로켓이 $x$초 후에 지면으로부터 $y\\text{m}$의 높이에 도달한다고 할 때, $y = -5x^2 + 50x + 30$인 관계가 있다고 한다. 이 물로켓이 가장 높이 올라갈 때까지 걸린 시간은 몇 초인가? [4.0점]",
+            "src": "stem",
+            "termId": 339
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "quote": "23. 지면으로부터 $30\\text{m}$ 높이의 건물 꼭대기에서 똑바로 위로 쏘아 올린 물 로켓이 $x$초 후에 지면으로부터 $y\\text{m}$의 높이에 도달한다고 할 때, $y = -5x^2 + 50x + 30$인 관계가 있다고 한다. 이 물로켓이 가장 높이 올라갈 때까지 걸린 시간은 몇 초인가? [4.0점]",
+            "src": "stem",
+            "termId": 127
+          },
+          {
+            "term": "경과시간",
+            "quote": "23. 지면으로부터 $30\\text{m}$ 높이의 건물 꼭대기에서 똑바로 위로 쏘아 올린 물 로켓이 $x$초 후에 지면으로부터 $y\\text{m}$의 높이에 도달한다고 할 때, $y = -5x^2 + 50x + 30$인 관계가 있다고 한다. 이 물로켓이 가장 높이 올라갈 때까지 걸린 시간은 몇 초인가? [4.0점]",
+            "src": "stem",
+            "status": "CANDIDATE",
+            "termId": null
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "이차함수 운동의 최고점 시각 후보",
+        "condition": "높이 관계식의 최댓값이 나오는 x를 시간으로 해석한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_349bfc36b22ad0598ca47bd9f40aee126662b15bdb7aaf7838cda0a729b5d8f2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a07bf2cdbd25de1e81b18178390a1ff326ea533a001d59f06c2ea509ab57a189"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b9fdbeb60ab87ef18914c273b29fcdbae40f348a6346fe4e4665e0aa66ce9553"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "quote": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 165
+          },
+          {
+            "term": "삼각형",
+            "quote": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 158
+          },
+          {
+            "term": "운동",
+            "quote": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 339
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "quote": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 213
+          },
+          {
+            "term": "최댓값",
+            "quote": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 127
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "속력",
+            "quote": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 704
+          },
+          {
+            "term": "범위",
+            "quote": "24. 그림과 같이 $\\overline{\\text{AB}} = 8\\text{cm}, \\overline{\\text{AD}} = 14\\text{cm}$인 직사각형 $\\text{ABCD}$에서 점 $\\text{P}$는 매초 $1\\text{cm}$의 속력으로 점 $\\text{A}$에서 점 $\\text{B}$까지 $\\overline{\\text{AB}}$ 위를 움직이고, 점 $\\text{Q}$는 매초 $2\\text{cm}$의 속력으로 $\\overline{\\text{BE}} = 4\\text{cm}$인 $\\overline{\\text{BC}}$ 위의 점 $\\text{E}$에서 점 $\\text{C}$까지 $\\overline{\\text{EC}}$ 위를 움직인다. 두 점 $\\text{P}, \\text{Q}$가 동시에 출발할 때, $\\triangle\\text{PBQ}$의 최대 넓이는? (단, 단위는 $\\text{cm}^2$이다.)<br><img src=\"assets/images/17_대구동도중_1학기_기말_중3_수학/q24.png\"> [5.0점]",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 점의 운동으로 삼각형 넓이 최적화 후보",
+        "condition": "PB와 BQ를 공통 시간의 식으로 나타내어 넓이 최대값을 구하는 구조다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T06:11:18.072782+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "경과시간",
+      "en": [
+        "ELAPSED_TIME"
+      ],
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "운동",
+      "note": "어떤 사건이 시작된 뒤 목표사건까지 흐른 시간의 길이. 시간의단위를갖는량이며벡터의시점(id686)과구별한다.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 23,
+          "slot": "goal"
+        }
+      ]
+    }
+  ],
+  "selfCheck": {
+    "status": "AUTHOR_CHECKED",
+    "independentReview": "PENDING_ROOT_SAMPLE"
+  },
+  "reviewedSourceBaseBlob": "ad48d7189a35806290a82a38cf16a6f06c8ab12b",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E094",
+    "author": "meta_a",
+    "reviewer": "meta_b",
+    "reviewedAt": "2026-11-15",
+    "reviewRun": "GPT_ROOT_E0C948452E80/B",
+    "status": "PASS_WITH_EXPLICIT_DEBTS",
+    "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+    "sourceBaseBlob": "ad48d7189a35806290a82a38cf16a6f06c8ab12b",
+    "inputHashes": {
+      "reviewSha256": "68ef46c6f48dbf70c11b03793eb809afa091eefe9e769f61e2adc14df28bfa96",
+      "fourSlotSha256": "26b35474b3f006b698eedee566d851d07621eae43c03e54ef51cef2bd23ec028"
+    },
+    "sampledOrdinals": [
+      12,
+      20,
+      24
+    ],
+    "additionalReviewedOrdinals": [
+      23
+    ],
+    "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+    "findings": [
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_154b5c0586cccb45653487937c2870e91d76dc4d6e92f8ca1236266751a57f59",
+        "status": "PASS_WITH_DEBT",
+        "note": "연속 홀수의 양수조건이 없어 가장 큰 수15뿐 아니라-3도 원문의 제곱합 관계에 부합한다. 독립검토 요청 뒤 CONTENT_AMBIGUITY_EVIDENCE_DEBT 및 level/bucket UNKNOWN 보류가 명시된 최신본 확인. 빈 해설의 method SOURCE_ONLY debt도 유지."
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_91d3ef963e4a60de817a021e2e295a5c7ef85653a0f4a27f2eb21d13e5844ff6",
+        "status": "PASS_WITH_DEBT",
+        "note": "실제 그림의 y축 대칭 정사각형·상하 두 포물선·오른변 위 E를 확인. 변의비와 정사각형 가로세로일치를 연결하는 구조4 후보, 평행/비/양수 조건과 넓이 목표 수용. source 해설 공백을 이유로 method를 채우지 않은 debt 유지."
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_349bfc36b22ad0598ca47bd9f40aee126662b15bdb7aaf7838cda0a729b5d8f2",
+        "status": "PASS_WITH_DEBT",
+        "note": "실제 도형의 AB8,AD14,BE4 및 A→B,E→C 운동방향 확인. 두 일차거리의 곱으로 삼각형 넓이를 모델링하고 제한된 운동구간 내 최대를 찾는 구조4 후보 수용. 독립요청 후 이동구간 범위조건 추가 확인; method SOURCE_ONLY debt 유지."
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_cfa27f2f1a2a24deb6a00e0bb7de2297f819ef1d4b0ae063116ed362338978da",
+        "status": "PASS_WITH_DEBT",
+        "note": "실제 발문은 높이의 최댓값을 얻을 때까지 걸린 초 단위 시간을 묻는다. 시간의 길이를 뜻하는 경과시간 CANDIDATE(parent 운동, ELAPSED_TIME)의 정의와 정확한 발문 인용을 확인했다. 벡터의 시점 id686 의미 오류가 제거되었고 SOURCE_ONLY·공용 등록 대기 debt는 보존된다."
+      }
+    ],
+    "assetReview": [
+      {
+        "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E094/20-content-1.png",
+        "sha256": "c8128b5303a6891ee69e55848d67a73f31b02330aa8050a8f08abee156fa0fed",
+        "status": "READ"
+      },
+      {
+        "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E094/24-content-1.png",
+        "sha256": "6976ee119e9e63341e0bf17800ba1a58bcba2a01420ded2930bd961ecad9a6b0",
+        "status": "READ"
+      }
+    ],
+    "decisiveMethodOrGoalErrorsInSample": 0,
+    "inventedQuotesInSample": 0,
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED",
+    "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+  }
+}

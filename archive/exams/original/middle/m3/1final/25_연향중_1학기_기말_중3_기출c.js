@@ -54,7 +54,6 @@ window.questionBank = [
       "인수분해",
       "완전제곱식",
       "이차방정식",
-      "판별식",
       "조건해석",
       "계산"
     ],
@@ -90,8 +89,6 @@ window.questionBank = [
       "객관식",
       "인수분해",
       "이차방정식",
-      "지수",
-      "오류판별",
       "대입",
       "조건해석",
       "계산"
@@ -200,7 +197,6 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "인수분해",
       "이차방정식",
       "수직선",
       "정수조건",
@@ -258,10 +254,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$n$각형의 대각선 수는\n$\\dfrac{n(n-3)}2$개이다.\n따라서\n$\\dfrac{n(n-3)}2=90$,\n$n^2-3n-180=0$이다.\n인수분해하면\n$(n-15)(n+12)=0$이다.\n다각형의 변의 수는 양수이므로 $n=15$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+    "subUnit": "이차방정식의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -316,7 +312,6 @@ window.questionBank = [
       "이차함수",
       "함수",
       "도형",
-      "원",
       "그래프",
       "대입",
       "조건해석"
@@ -358,7 +353,6 @@ window.questionBank = [
       "이차함수",
       "함수",
       "그래프",
-      "표해석",
       "좌표",
       "범위"
     ],
@@ -379,7 +373,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
     "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
-    "crossConceptKeys": ["CC_FUNCTION_MONOTONICITY", "CC_FUNCTION_SYMMETRY"],
+    "crossConceptKeys": [
+      "CC_FUNCTION_MONOTONICITY",
+      "CC_FUNCTION_SYMMETRY"
+    ],
     "solutionImage": "assets/images/25_연향중_1학기_기말_중3_기출c/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 같은 폭의 위로 열린 포물선 두 개와 서로 다른 높이의 꼭짓점.",
     "solutionImageCaption": "y=3x²−1은 y=3x²를 아래로 1만큼 옮긴 그래프이다. 정답: ⑤",
@@ -472,7 +469,6 @@ window.questionBank = [
       "이차함수",
       "함수",
       "그래프",
-      "표해석",
       "좌표",
       "계산"
     ],
@@ -611,7 +607,6 @@ window.questionBank = [
       "일차함수",
       "함수",
       "그래프",
-      "표해석",
       "좌표",
       "대입"
     ],
@@ -690,7 +685,6 @@ window.questionBank = [
       "이차함수",
       "함수",
       "그래프",
-      "표해석",
       "좌표",
       "계산"
     ],

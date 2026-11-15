@@ -1,0 +1,1766 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1mid/23_향림중_1학기_중간_중3_기출.js",
+  "sourceGitBlobSha": "0d05935f7ae6032dc86e72bf97a693be253bd276",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT-6 Astra Pro / meta_b",
+    "run": "M3-S1-META-FULL-B-E032-resume",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_e82f819717bb7e8e2e5f48348ea19cd166d6df6f21f1d7b50feab1289eb97eb1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "27a0637fced90d0d7cb8a232701995bfade14585e6dbe1eb116c71928a96a753"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2d7e5aeb3872b7e632c9cf6808c54b597c847335c51f87dd6c4e6c70e720321b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "① $9$의 제곱근은 $3$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "9의 제곱근은 3과 -3이므로 ①은 틀리다.\n0의 제곱근은 0 한 개이므로 ②는 틀리다.\n음수에는 실수 제곱근이 없고 0에는 하나뿐이므로 ③도 틀리다.\n√25=5이므로 ④가 참이다.\n√16=4이고 4의 제곱근은 ±2이므로 ⑤도 틀리다. 따라서 ④.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근 정의와 근호가 나타내는 값을 직접 구별한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "9의 제곱근은 3과 -3이므로 ①은 틀리다.\n0의 제곱근은 0 한 개이므로 ②는 틀리다.\n음수에는 실수 제곱근이 없고 0에는 하나뿐이므로 ③도 틀리다.\n√25=5이므로 ④가 참이다.\n√16=4이고 4의 제곱근은 ±2이므로 ⑤도 틀리다. 따라서 ④.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근 정의와 근호가 나타내는 값을 직접 구별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근 정의와 근호가 나타내는 값을 직접 구별한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_46a29589680be35356277756a750b265e82d07f077bbbb45ef04947d164feb0d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dcbc64a3849ae65969834db5ea9b05cc9cd0367a5c44d94147e0ac8cddaf462e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "afaa87aa849946ca6b0f7f49b3b3e514e6bd460e7248ea003fb91b1679888010"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "choices",
+            "quote": "① $\\sqrt{12}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "다음 중 무리수가 아닌 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "각 보기가 유리수인지 무리수인지 판별한다.\n① √12=2√3은 무리수이다. ② 1+√4=1+2=3은 유리수이다.\n③ √0.4=√$\\frac{10}{5}$이고 √10은 무리수이므로 −√0.4도 무리수이다. ④ π는 무리수이다.\n⑤ √3>√2이므로 r=√3−√2>0이다. r이 유리수라고 가정하면 (√3−√2)(√3+√2)=1에서 √3+√2=1/r도 유리수이다. 두 식을 더하면 2√3이 유리수가 되어 모순이다. 따라서 ⑤도 무리수이다.\n무리수가 아닌 것은 ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 근호를 정리하여 분류하며 두 무리수의 차는 기존해설의 모순 논증으로 확인한다."
+          },
+          {
+            "term": "귀류법",
+            "src": "solution",
+            "quote": "각 보기가 유리수인지 무리수인지 판별한다.\n① √12=2√3은 무리수이다. ② 1+√4=1+2=3은 유리수이다.\n③ √0.4=√$\\frac{10}{5}$이고 √10은 무리수이므로 −√0.4도 무리수이다. ④ π는 무리수이다.\n⑤ √3>√2이므로 r=√3−√2>0이다. r이 유리수라고 가정하면 (√3−√2)(√3+√2)=1에서 √3+√2=1/r도 유리수이다. 두 식을 더하면 2√3이 유리수가 되어 모순이다. 따라서 ⑤도 무리수이다.\n무리수가 아닌 것은 ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 근호를 정리하여 분류하며 두 무리수의 차는 기존해설의 모순 논증으로 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 근호를 정리하여 분류하며 두 무리수의 차는 기존해설의 모순 논증으로 확인한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_aa94a84946f731c8e762b3eea13e866c0da74058b0da3bd9ea322c0222274be2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e6e0d9db5dd335a8b4394f97ed5c9a1bbd7acd0274303b30d46ff9bc89f7397e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3cbb037bfcddedd74c0e6cd58d3f0c68d8f6e38a70ff7a0bb92f5371a67f0670"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "① $\\sqrt{9}-\\sqrt{(-2)^2}=5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 계산이 옳지 않은 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "√9=3, √((-2)²)=√4=2이므로 ①의 왼쪽은 3−2=1이다. 5가 아니다.\n② √((-10/3)²)=|-10/3|=10/3이다.\n③ √64÷(-√(4²))=8÷(-4)=-2이다.\n④ √(2²)×√((-5/2)²)=2×(5/2)=5이다.\n⑤ (√6)²×√25=6×5=30이다. 따라서 틀린 식은 ①.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근의 절댓값과 바깥부호를 처리하여 각 계산을 확인한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "√9=3, √((-2)²)=√4=2이므로 ①의 왼쪽은 3−2=1이다. 5가 아니다.\n② √((-10/3)²)=|-10/3|=10/3이다.\n③ √64÷(-√(4²))=8÷(-4)=-2이다.\n④ √(2²)×√((-5/2)²)=2×(5/2)=5이다.\n⑤ (√6)²×√25=6×5=30이다. 따라서 틀린 식은 ①.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근의 절댓값과 바깥부호를 처리하여 각 계산을 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근의 절댓값과 바깥부호를 처리하여 각 계산을 확인한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_2950c4000571d5d0a87a8c840d5d29dc1d1f527462bf3ab9faa30a2fa7a02738",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "31479883979806ba4de4286141a2c3256929a9f701cd2d71883c89d2128ae807"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0919acb48fc244f2a783bf11ed706258df9954fcdd4923f06e28152ee1a09072"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{16}$의 양의 제곱근을 $a$, $\\sqrt{(-5)^2}$의 음의 제곱근을 $b$라고 할 때, $ab$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$\\sqrt{16}$의 양의 제곱근을 $a$, $\\sqrt{(-5)^2}$의 음의 제곱근을 $b$라고 할 때, $ab$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "√16=4이므로 4의 양의 제곱근은 a=2이다.\n√((-5)²)=√25=5이므로 5의 음의 제곱근은 b=-√5이다.\nab=2×(-√5)=-2√5. ③.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호값을 먼저 계산하고 그 양·음 제곱근의 곱을 구한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "√16=4이므로 4의 양의 제곱근은 a=2이다.\n√((-5)²)=√25=5이므로 5의 음의 제곱근은 b=-√5이다.\nab=2×(-√5)=-2√5. ③.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호값을 먼저 계산하고 그 양·음 제곱근의 곱을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호값을 먼저 계산하고 그 양·음 제곱근의 곱을 구한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_0331ab59ddc87d591658d767c8022a66292f81b7520b0cb121a21845f1c9e8f2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cd6de957622aa831e254d869b046655144288bff2ea77e304b21ba7df7f1e6ff"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1738933ed9637ad5d832401ca603fd541ca39f8725a6bd5f01a4c9f8b3633e3c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{\\frac{48}{x}}$이 자연수가 되게 하는 가장 작은 자연수 $x$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$\\sqrt{\\frac{48}{x}}$이 자연수가 되게 하는 가장 작은 자연수 $x$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "√(48/x)가 자연수 n이려면 48/x=n², 곧 x=48/n²가 자연수여야 한다.\nx를 1부터 확인하면 x=1에서는 √48=4√3, x=2에서는 √24=2√6으로 자연수가 아니다.\nx=3에서는 √(48/3)=√16=4이므로 가능하다. 가장 작은 x는 3, ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "자연수x를1부터 확인하여 근호 안이 완전제곱수가 되는 첫 값을 고른다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "√(48/x)가 자연수 n이려면 48/x=n², 곧 x=48/n²가 자연수여야 한다.\nx를 1부터 확인하면 x=1에서는 √48=4√3, x=2에서는 √24=2√6으로 자연수가 아니다.\nx=3에서는 √(48/3)=√16=4이므로 가능하다. 가장 작은 x는 3, ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "자연수x를1부터 확인하여 근호 안이 완전제곱수가 되는 첫 값을 고른다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$\\sqrt{\\frac{48}{x}}$이 자연수가 되게 하는 가장 작은 자연수 $x$의 값은? [4점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "자연수x를1부터 확인하여 근호 안이 완전제곱수가 되는 첫 값을 고른다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_84fddc557cc816d01dc5581e8bd737b18f80b3436ded3d6e3c799db99ea81056",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fc840d1bc9c82498318353bda84a054c9f5c28fd4de972cf8adeb4db77b7d43b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "75d03e08c83c5cf41e4be1ef1ce14f656b9a7062ac548b75ae6394305e14d466"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$3 < \\sqrt{2x+1} < 4$를 만족시키는 자연수 $x$의 값들의 합은? [4점]"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$3 < \\sqrt{2x+1} < 4$를 만족시키는 자연수 $x$의 값들의 합은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$3 < \\sqrt{2x+1} < 4$를 만족시키는 자연수 $x$의 값들의 합은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "3<√(2x+1)<4이므로 제곱하여 9<2x+1<16이다.\n각 변에서 1을 빼면 8<2x<15, 4<x<7.5이다.\n가능한 자연수는 x=5,6,7이고 합은 5+6+7=18. ⑤.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 범위를 제곱하여 일차부등식으로 바꾼 뒤 자연수 세 값을 더한다."
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "3<√(2x+1)<4이므로 제곱하여 9<2x+1<16이다.\n각 변에서 1을 빼면 8<2x<15, 4<x<7.5이다.\n가능한 자연수는 x=5,6,7이고 합은 5+6+7=18. ⑤.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 범위를 제곱하여 일차부등식으로 바꾼 뒤 자연수 세 값을 더한다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "3<√(2x+1)<4이므로 제곱하여 9<2x+1<16이다.\n각 변에서 1을 빼면 8<2x<15, 4<x<7.5이다.\n가능한 자연수는 x=5,6,7이고 합은 5+6+7=18. ⑤.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 범위를 제곱하여 일차부등식으로 바꾼 뒤 자연수 세 값을 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$3 < \\sqrt{2x+1} < 4$를 만족시키는 자연수 $x$의 값들의 합은? [4점]"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$3 < \\sqrt{2x+1} < 4$를 만족시키는 자연수 $x$의 값들의 합은? [4점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근호 범위를 제곱하여 일차부등식으로 바꾼 뒤 자연수 세 값을 더한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_2552aa6b3ac9581100d1ff29cc2368790f3e8579274500e1404baaa30644ba1b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8a80f3967d74d65b8702bbb2e0921fb979b640a62835bf4e833d0d144347b577"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a273fcfce8e2acbecee8a1102ed81eb8a12f4a45679f192a9a775baec9a13ccf"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근표",
+            "src": "stem",
+            "quote": "제곱근표에서 $\\sqrt{5}$의 값이 $2.236$, $\\sqrt{50}$의 값이 $7.071$일 때, 다음 수의 값이 옳지 않은 것은? [4점]"
+          },
+          {
+            "term": "근삿값",
+            "src": "stem",
+            "quote": "제곱근표에서 $\\sqrt{5}$의 값이 $2.236$, $\\sqrt{50}$의 값이 $7.071$일 때, 다음 수의 값이 옳지 않은 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "제곱근표에서 $\\sqrt{5}$의 값이 $2.236$, $\\sqrt{50}$의 값이 $7.071$일 때, 다음 수의 값이 옳지 않은 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "주어진 근삿값을 10의 거듭제곱으로 이동할 때 제곱근의 크기 변화를 본다.\n√0.5=√50/10≈0.7071, √0.05=√5/10≈0.2236, √0.005=√50/100≈0.07071이다.\n√500=10√5≈22.36이다. 그러나 √5000=100√0.5≈70.71로, 707.1이 아니다.\n따라서 옳지 않은 것은 ⑤.",
+            "evidenceType": "IMPLIED",
+            "justification": "10의 거듭제곱배와 제곱근 근삿값의 자릿수 이동을 대조한다."
+          },
+          {
+            "term": "근삿값",
+            "src": "solution",
+            "quote": "주어진 근삿값을 10의 거듭제곱으로 이동할 때 제곱근의 크기 변화를 본다.\n√0.5=√50/10≈0.7071, √0.05=√5/10≈0.2236, √0.005=√50/100≈0.07071이다.\n√500=10√5≈22.36이다. 그러나 √5000=100√0.5≈70.71로, 707.1이 아니다.\n따라서 옳지 않은 것은 ⑤.",
+            "evidenceType": "IMPLIED",
+            "justification": "10의 거듭제곱배와 제곱근 근삿값의 자릿수 이동을 대조한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "10의 거듭제곱배와 제곱근 근삿값의 자릿수 이동을 대조한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_548909e92d21d04f2141601d55a1c132328a1255568e321bc02f2ea35b2ea2f6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "03262043c6f4341c072cf4f672d886e17ea7e33c5adc99ead96bafb37c979f2b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f5fca0df65a6aff70b2f71815e5621fd13a680069fd140aa3c7aea51d4a791db"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "$\\frac{\\sqrt{80}}{2\\sqrt{2}} = \\frac{a\\sqrt{5}}{2\\sqrt{2}} = \\sqrt{b}$일 때, $a+b$의 값은? [4점]"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$\\frac{\\sqrt{80}}{2\\sqrt{2}} = \\frac{a\\sqrt{5}}{2\\sqrt{2}} = \\sqrt{b}$일 때, $a+b$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\frac{\\sqrt{80}}{2\\sqrt{2}} = \\frac{a\\sqrt{5}}{2\\sqrt{2}} = \\sqrt{b}$일 때, $a+b$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "√80=4√5이므로 a=4이다.\n√80/(2√2)=√(80/8)=√10이므로 b=10이다.\na+b=4+10=14. ④.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱인수를 꺼내고 분모의 제곱을 근호 안에 넣어 두 상수를 읽는다."
+          },
+          {
+            "term": "나눗셈",
+            "src": "solution",
+            "quote": "√80=4√5이므로 a=4이다.\n√80/(2√2)=√(80/8)=√10이므로 b=10이다.\na+b=4+10=14. ④.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱인수를 꺼내고 분모의 제곱을 근호 안에 넣어 두 상수를 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱인수를 꺼내고 분모의 제곱을 근호 안에 넣어 두 상수를 읽는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_743ee0c14255c8f93022e0444cc18e28139b2ff452e952d6b089b93585b000b9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b0c1e92cce4d4363bffabaac3df247bbc258c0360eb55a9913813e69c8b2caff"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4d5f85702d67cc8496775ffcfd5562066b3f03fe50a621d8c760da4ac76fe2dc"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "choices",
+            "quote": "① $\\frac{9}{\\sqrt{3}}=3\\sqrt{a}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "다음 중 $a$의 값이 가장 작은 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "① 9/√3=3√3이므로 a=3.\n② √3/√2=√6/2이므로 a=6.\n③ √30×√5=√150=5√6이므로 a=5.\n④ √52=2√13이므로 a=13.\n⑤ 2√15÷(-√3)=-2√5이므로 a=5.\n가장 작은 값 a=3에 해당하는 보기는 ①.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 근호식을 정리하여 계수를 읽고 다섯 값을 비교하는 정형 과정이다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "① 9/√3=3√3이므로 a=3.\n② √3/√2=√6/2이므로 a=6.\n③ √30×√5=√150=5√6이므로 a=5.\n④ √52=2√13이므로 a=13.\n⑤ 2√15÷(-√3)=-2√5이므로 a=5.\n가장 작은 값 a=3에 해당하는 보기는 ①.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 근호식을 정리하여 계수를 읽고 다섯 값을 비교하는 정형 과정이다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "① 9/√3=3√3이므로 a=3.\n② √3/√2=√6/2이므로 a=6.\n③ √30×√5=√150=5√6이므로 a=5.\n④ √52=2√13이므로 a=13.\n⑤ 2√15÷(-√3)=-2√5이므로 a=5.\n가장 작은 값 a=3에 해당하는 보기는 ①.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 근호식을 정리하여 계수를 읽고 다섯 값을 비교하는 정형 과정이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 근호식을 정리하여 계수를 읽고 다섯 값을 비교하는 정형 과정이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e9660b811a499225d4bd1f5664b288cbe0d7a491f6ae84b9e65c7de987b9b501",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "165ea8f222eb7a2c0716f956e14a0cc98a78f07e6804680556c1feec774bb9c7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5b300b883d50deb9833a13b0e97ecbc7ef3fa6635276eb283140df616ecdc7d2"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "choices",
+            "quote": "① $-1 < -\\sqrt{3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 대소 관계가 옳은 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "① √3>1이므로 −√3<−1이다. 따라서 −1<−√3은 거짓이다.\n② 양수 0.3과 √0.3을 비교하면 0.3²=0.09<0.3이므로 0.3<√0.3이다. 제시된 부등식은 거짓이다.\n③ 2<√7이므로 √3+2<√3+√7이다.\n④ 2<√5이므로 2+√6<√5+√6이다. 참이다.\n⑤ √2<√3이므로 양변을 5에서 빼면 5−√2>5−√3이다.\n따라서 옳은 것은 ④.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통항 소거와 음수·역수 및 제곱 비교의 표준 대소 성질을 적용한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "① √3>1이므로 −√3<−1이다. 따라서 −1<−√3은 거짓이다.\n② 양수 0.3과 √0.3을 비교하면 0.3²=0.09<0.3이므로 0.3<√0.3이다. 제시된 부등식은 거짓이다.\n③ 2<√7이므로 √3+2<√3+√7이다.\n④ 2<√5이므로 2+√6<√5+√6이다. 참이다.\n⑤ √2<√3이므로 양변을 5에서 빼면 5−√2>5−√3이다.\n따라서 옳은 것은 ④.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통항 소거와 음수·역수 및 제곱 비교의 표준 대소 성질을 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "공통항 소거와 음수·역수 및 제곱 비교의 표준 대소 성질을 적용한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_32a2a811b4fe7336b5d25b0e340ccbc35220f3bcaae391969d1624fcdee6ca36",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a3d7046a34b4b5e4d64c621c2863d422b1d4b54f5d2834756cc251375e797db6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "46f6e1b5c3a8c5bc5cf6bebd3db2220a920509a431bc7e126be458378e211ce1"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "$\\frac{3}{4\\sqrt{3}} + \\sqrt{15}\\div\\frac{2\\sqrt{5}}{3} - \\frac{\\sqrt{27}}{4}$를 간단히 하면? [4점]"
+          },
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "$\\frac{3}{4\\sqrt{3}} + \\sqrt{15}\\div\\frac{2\\sqrt{5}}{3} - \\frac{\\sqrt{27}}{4}$를 간단히 하면? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\frac{3}{4\\sqrt{3}} + \\sqrt{15}\\div\\frac{2\\sqrt{5}}{3} - \\frac{\\sqrt{27}}{4}$를 간단히 하면? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "3/(4√3)=√3/4이다.\n√15÷(2√5/3)=√15×3/(2√5)=3√3/2이다.\n√27/4=3√3/4이다.\n따라서 √3/4+3√3/2-3√3/4=(1+6-3)√3/4=√3. ③.",
+            "evidenceType": "IMPLIED",
+            "justification": "분모 유리화·분수 나눗셈을 순서대로 정리하고 동류근호를 합한다."
+          },
+          {
+            "term": "나눗셈",
+            "src": "solution",
+            "quote": "3/(4√3)=√3/4이다.\n√15÷(2√5/3)=√15×3/(2√5)=3√3/2이다.\n√27/4=3√3/4이다.\n따라서 √3/4+3√3/2-3√3/4=(1+6-3)√3/4=√3. ③.",
+            "evidenceType": "IMPLIED",
+            "justification": "분모 유리화·분수 나눗셈을 순서대로 정리하고 동류근호를 합한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "3/(4√3)=√3/4이다.\n√15÷(2√5/3)=√15×3/(2√5)=3√3/2이다.\n√27/4=3√3/4이다.\n따라서 √3/4+3√3/2-3√3/4=(1+6-3)√3/4=√3. ③.",
+            "evidenceType": "IMPLIED",
+            "justification": "분모 유리화·분수 나눗셈을 순서대로 정리하고 동류근호를 합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "분모 유리화·분수 나눗셈을 순서대로 정리하고 동류근호를 합한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_5aa2d1d958d16e0554aa828cfc50b5abdb0823076c8b28087df5c92fccfb0765",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ac7271e0f43373bb363dfd8775a79b8463fab4061ded00841ec9f14cc825e4af"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dec182a0193f47647f048d7c845b460235c97b91eb7e5b07f084fd8547522bed"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "다음 <보기>의 수 중 세 번째로 큰 수는? [4점]<br><보기><br>$-1$, $\\sqrt{7}-\\sqrt{3}$, $3-\\sqrt{10}$, $2$, $-1+\\sqrt{7}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "다음 <보기>의 수 중 세 번째로 큰 수는? [4점]<br><보기><br>$-1$, $\\sqrt{7}-\\sqrt{3}$, $3-\\sqrt{10}$, $2$, $-1+\\sqrt{7}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "근삿값",
+            "src": "solution",
+            "quote": "각 수의 크기를 비교한다.\n√7−√3≈0.914, 3−√10≈-0.162, -1+√7≈1.646이다.\n큰 순서는 2, -1+√7, √7−√3, 3−√10, -1이다.\n세 번째로 큰 수는 √7−√3으로, ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "근삿값으로 다섯 수의 순서를 정해 세 번째 수를 읽는다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "각 수의 크기를 비교한다.\n√7−√3≈0.914, 3−√10≈-0.162, -1+√7≈1.646이다.\n큰 순서는 2, -1+√7, √7−√3, 3−√10, -1이다.\n세 번째로 큰 수는 √7−√3으로, ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "근삿값으로 다섯 수의 순서를 정해 세 번째 수를 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근삿값으로 다섯 수의 순서를 정해 세 번째 수를 읽는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_b12e3ca30f71cb467eabdec11ab6d7ebaf7d800f6f4a17533a66d4335a330ec2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3a6d2f8c2646e604aa715596ea5406478fd8dce9867b30aaa856fadd02c2e678"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5cbd25fbe5754c47ee83f7d000faa161a665f824da3bbb86414404e09f81784a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$a<0<b$일 때, $\\sqrt{(a-b)^2}-\\sqrt{a^2}+\\sqrt{b^2}$을 간단히 하면? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a<0<b$일 때, $\\sqrt{(a-b)^2}-\\sqrt{a^2}+\\sqrt{b^2}$을 간단히 하면? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "a<0<b이므로 a-b<0이다.\n√((a-b)²)=|a-b|=b-a이다.\n√(a²)=|a|=-a, √(b²)=b이다.\n(b-a)-(-a)+b=2b. ③.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 부호로 a−b의 부호를 정해 세 절댓값을 직접 푼다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "a<0<b이므로 a-b<0이다.\n√((a-b)²)=|a-b|=b-a이다.\n√(a²)=|a|=-a, √(b²)=b이다.\n(b-a)-(-a)+b=2b. ③.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 부호로 a−b의 부호를 정해 세 절댓값을 직접 푼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "$a<0<b$일 때, $\\sqrt{(a-b)^2}-\\sqrt{a^2}+\\sqrt{b^2}$을 간단히 하면? [5점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 부호로 a−b의 부호를 정해 세 절댓값을 직접 푼다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_af1f0c0ff9fc52a9ad075133083879e499385b20cfcb6de5d90f23bac8357edf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ba8ac0d9ec5b57c4486e63e3f26fb5fc23984469e10a9fcce00c6c5c6e68816c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "286d3a96fc1d1240328dc13c0077eb8ba218b92007ccf7c04bc9cfb0d42684ff"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "$-1 < a < b < 0$일 때, 다음 중 옳은 것은? [5점]"
+          },
+          {
+            "term": "실수",
+            "src": "choices",
+            "quote": "① $-\\frac{1}{a} > -\\frac{1}{b}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "$-1 < a < b < 0$일 때, 다음 중 옳은 것은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "-1<a<b<0에서 0<-b<1이다.\n②의 1/√(b²)=1/|b|=1/(-b)>1이므로 참이다.\n① 음수의 역수 크기 관계를 적용하면 실제로 -1/a<-1/b이다.\n③ -|a|=a<b=-|b|이므로 거짓이다.\n④ |a|>0이므로 |a|<-1은 불가능하다.\n⑤ |a|>|b|이므로 a²>b²이다. 따라서 ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 음수가−1과0사이에 있다는 조건으로 절댓값·역수·제곱의 대소를 직접 비교한다."
+          },
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "-1<a<b<0에서 0<-b<1이다.\n②의 1/√(b²)=1/|b|=1/(-b)>1이므로 참이다.\n① 음수의 역수 크기 관계를 적용하면 실제로 -1/a<-1/b이다.\n③ -|a|=a<b=-|b|이므로 거짓이다.\n④ |a|>0이므로 |a|<-1은 불가능하다.\n⑤ |a|>|b|이므로 a²>b²이다. 따라서 ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 음수가−1과0사이에 있다는 조건으로 절댓값·역수·제곱의 대소를 직접 비교한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "-1<a<b<0에서 0<-b<1이다.\n②의 1/√(b²)=1/|b|=1/(-b)>1이므로 참이다.\n① 음수의 역수 크기 관계를 적용하면 실제로 -1/a<-1/b이다.\n③ -|a|=a<b=-|b|이므로 거짓이다.\n④ |a|>0이므로 |a|<-1은 불가능하다.\n⑤ |a|>|b|이므로 a²>b²이다. 따라서 ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 음수가−1과0사이에 있다는 조건으로 절댓값·역수·제곱의 대소를 직접 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$-1 < a < b < 0$일 때, 다음 중 옳은 것은? [5점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 음수가−1과0사이에 있다는 조건으로 절댓값·역수·제곱의 대소를 직접 비교한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_9e8302b918bea17a26771613489c1c483047c8d96620d97cccb06f418a4fbd3f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0fc76709ea45c5901454f463d44b4089199cdde48a570987d5cfcf29149bbc7a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dd6bcca4b12bea45ada284ff37b281294fa2b7873e6ed69db41843ca56a3cf7a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "다음 그림에서 색칠한 직사각형의 넓이는? [3점]<br>"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 그림에서 색칠한 직사각형의 넓이는? [3점]<br>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 그림에서 색칠한 직사각형의 넓이는? [3점]<br>"
+          }
+        ],
+        "method": [
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "원본 q15 그림에서 전체 가로는 5x+4이고 전체 세로는 4x이다.\n색칠되지 않은 아래쪽 띠의 높이는 3이므로 색칠한 세로 길이는 4x-3이다.\n색칠한 넓이=(5x+4)(4x-3)\n=20x²-15x+16x-12\n=20x²+x-12이다. ④.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 세로에서 띠높이3을 빼고 직사각형 넓이의 두 일차식을 전개한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "원본 q15 그림에서 전체 가로는 5x+4이고 전체 세로는 4x이다.\n색칠되지 않은 아래쪽 띠의 높이는 3이므로 색칠한 세로 길이는 4x-3이다.\n색칠한 넓이=(5x+4)(4x-3)\n=20x²-15x+16x-12\n=20x²+x-12이다. ④.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 세로에서 띠높이3을 빼고 직사각형 넓이의 두 일차식을 전개한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "원본 q15 그림에서 전체 가로는 5x+4이고 전체 세로는 4x이다.\n색칠되지 않은 아래쪽 띠의 높이는 3이므로 색칠한 세로 길이는 4x-3이다.\n색칠한 넓이=(5x+4)(4x-3)\n=20x²-15x+16x-12\n=20x²+x-12이다. ④.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 세로에서 띠높이3을 빼고 직사각형 넓이의 두 일차식을 전개한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "전체 세로에서 띠높이3을 빼고 직사각형 넓이의 두 일차식을 전개한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_c4ecfbc2adf608027fa56df240b4887b1aaf2cb39558cbde90d27fe38f3c8d8a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5f61b891f879748d3af4166fa77714e610cadf7fada3a9733fdbbf3ec8d30baa"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "336dad06444f8b50f8def825c68d043b2bcf89b4148b784e537502cadfe089b2"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$97^2$을 계산하는데, 이용한 곱셈 공식과 값이 바른 것은? [3점]"
+          },
+          {
+            "term": "곱셈공식",
+            "src": "stem",
+            "quote": "$97^2$을 계산하는데, 이용한 곱셈 공식과 값이 바른 것은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$97^2$을 계산하는데, 이용한 곱셈 공식과 값이 바른 것은? [3점]"
+          },
+          {
+            "term": "공식",
+            "src": "stem",
+            "quote": "$97^2$을 계산하는데, 이용한 곱셈 공식과 값이 바른 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "97=100-3이므로 차의 제곱 공식을 사용한다.\n97²=(100-3)²=100²-2×100×3+3²\n=10000-600+9=9409이다.\n공식도 값도 맞는 보기는 ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "97=100−3을 차의 제곱공식에 직접 대입한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "97=100-3이므로 차의 제곱 공식을 사용한다.\n97²=(100-3)²=100²-2×100×3+3²\n=10000-600+9=9409이다.\n공식도 값도 맞는 보기는 ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "97=100−3을 차의 제곱공식에 직접 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "97=100−3을 차의 제곱공식에 직접 대입한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_5daa273da1e02b1362569cf4c33c30cef05f9e95bc61c76d0dae931616c29da8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f1517ca78a7ee50e811c1f56ecd945b1dd02c95c62645448cb6424ddd37ae7f6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "90e0138834987a954a6752783d164f82c6fc4eeae627d7595ec8739e418f0ac6"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "① $(2a+b)(3c-d) = 6ac-2ad+3bc-bd$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳지 않은 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "① (2a+b)(3c-d)=6ac-2ad+3bc-bd로 맞다.\n② (3x+2y)²=9x²+12xy+4y²로 맞다.\n③ (x/2-4)²=x²/4-4x+16으로 맞다.\n④ (-2x+y)(2x+y)=y²-(2x)²=y²-4x²로, 보기의 4x²-y²와 다르다.\n⑤ (-5x-y)(-5x+y)=(-5x)²-y²=25x²-y²다. 따라서 ④.",
+            "evidenceType": "IMPLIED",
+            "justification": "분배법칙과 표준곱셈공식을 각 보기의 부호에 맞춰 대조한다."
+          },
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "① (2a+b)(3c-d)=6ac-2ad+3bc-bd로 맞다.\n② (3x+2y)²=9x²+12xy+4y²로 맞다.\n③ (x/2-4)²=x²/4-4x+16으로 맞다.\n④ (-2x+y)(2x+y)=y²-(2x)²=y²-4x²로, 보기의 4x²-y²와 다르다.\n⑤ (-5x-y)(-5x+y)=(-5x)²-y²=25x²-y²다. 따라서 ④.",
+            "evidenceType": "IMPLIED",
+            "justification": "분배법칙과 표준곱셈공식을 각 보기의 부호에 맞춰 대조한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "분배법칙과 표준곱셈공식을 각 보기의 부호에 맞춰 대조한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_47db98f0f33637d992e13ba2bcd7caeeddd52f4884dbdc133766ce200cdb0496",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "266a6933e9d630d4bc4b2311dc5f32a5934d489705af5b2e6a16b554a2ca53cc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bb610ddc6d0e1b4b163df43397fc284346680de94a66ae6827f1eed2ac9b7f22"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "$\\frac{\\sqrt{3}-1}{\\sqrt{3}+1} - \\frac{\\sqrt{3}+1}{\\sqrt{3}-1}$의 값을 구하면? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\frac{\\sqrt{3}-1}{\\sqrt{3}+1} - \\frac{\\sqrt{3}+1}{\\sqrt{3}-1}$의 값을 구하면? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "두 분수의 분모를 통분한다.\n[(√3−1)²−(√3+1)²]/[(√3+1)(√3−1)]\n=[(4−2√3)−(4+2√3)]/(3−1)\n=(-4√3)/2=-2√3. ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "켤레분모를 통분하여 분자의 제곱식 차를 계산한다."
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "두 분수의 분모를 통분한다.\n[(√3−1)²−(√3+1)²]/[(√3+1)(√3−1)]\n=[(4−2√3)−(4+2√3)]/(3−1)\n=(-4√3)/2=-2√3. ②.",
+            "evidenceType": "IMPLIED",
+            "justification": "켤레분모를 통분하여 분자의 제곱식 차를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "켤레분모를 통분하여 분자의 제곱식 차를 계산한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_3bff836aac0e0d9e08dc4b63b00bdde9b08fd14648a52bef55d921f343e1bd9f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "42b3e20286d3cd06dfaebbcd779255f7b51aa116fb4a692f1133d3d55930ef88"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cf60f590918d51168b5523a175928666d4c4a5b5ebe3f042e51b2a2e99b3454c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "항등식",
+            "src": "stem",
+            "quote": "$(x+a)^2=x^2+4x+b$일 때, 다음 그림과 같이 $4b-2a$, $a+b$를 각각 빗변의 길이와 밑변의 길이로 하는 직각삼각형의 넓이를 구하면? (단, $a$와 $b$는 상수) [5점]<br>"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "$(x+a)^2=x^2+4x+b$일 때, 다음 그림과 같이 $4b-2a$, $a+b$를 각각 빗변의 길이와 밑변의 길이로 하는 직각삼각형의 넓이를 구하면? (단, $a$와 $b$는 상수) [5점]<br>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$(x+a)^2=x^2+4x+b$일 때, 다음 그림과 같이 $4b-2a$, $a+b$를 각각 빗변의 길이와 밑변의 길이로 하는 직각삼각형의 넓이를 구하면? (단, $a$와 $b$는 상수) [5점]<br>"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "(x+a)²=x²+2ax+a²=x²+4x+b를 비교한다.\n2a=4에서 a=2, b=a²=4이다.\n빗변은 4b−2a=16−4=12, 밑변은 a+b=6이다.\n피타고라스 정리로 높이 h는 h²=12²−6²=144−36=108, h=6√3이다.\n넓이=(1/2)×6×6√3=18√3. ①.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱식의 계수비교로 두 변을 정한 후 피타고라스 높이와 삼각형 넓이로 연결한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "(x+a)²=x²+2ax+a²=x²+4x+b를 비교한다.\n2a=4에서 a=2, b=a²=4이다.\n빗변은 4b−2a=16−4=12, 밑변은 a+b=6이다.\n피타고라스 정리로 높이 h는 h²=12²−6²=144−36=108, h=6√3이다.\n넓이=(1/2)×6×6√3=18√3. ①.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱식의 계수비교로 두 변을 정한 후 피타고라스 높이와 삼각형 넓이로 연결한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "(x+a)²=x²+2ax+a²=x²+4x+b를 비교한다.\n2a=4에서 a=2, b=a²=4이다.\n빗변은 4b−2a=16−4=12, 밑변은 a+b=6이다.\n피타고라스 정리로 높이 h는 h²=12²−6²=144−36=108, h=6√3이다.\n넓이=(1/2)×6×6√3=18√3. ①.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱식의 계수비교로 두 변을 정한 후 피타고라스 높이와 삼각형 넓이로 연결한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱식의 계수비교로 두 변을 정한 후 피타고라스 높이와 삼각형 넓이로 연결한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_5f3cf2e6221a3c75d1b711d266237e95402df592aa30b5c4041db492374d924c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "af0fdaf3956819ebe00af6344ead9882ed7a64bf941ddf81bfa3cef3bd444e92"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c2ef2757caff6aa6213fc19b74642dd73da8b9d9c72ce65bd13cd9794234ba95"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$xy=-6$일 때, $x(x-4y)-(x-y)^2+y^2$의 값을 구하면? [5점]"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$xy=-6$일 때, $x(x-4y)-(x-y)^2+y^2$의 값을 구하면? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$xy=-6$일 때, $x(x-4y)-(x-y)^2+y^2$의 값을 구하면? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "x(x−4y)−(x−y)²+y²\n=x²−4xy−(x²−2xy+y²)+y²\n=x²−4xy−x²+2xy−y²+y²\n=−2xy이다.\nxy=−6이므로 −2xy=−2×(−6)=12. ③.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 다항식을 전개·소거해−2xy로 만들고 곱의 값을 대입한다."
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "x(x−4y)−(x−y)²+y²\n=x²−4xy−(x²−2xy+y²)+y²\n=x²−4xy−x²+2xy−y²+y²\n=−2xy이다.\nxy=−6이므로 −2xy=−2×(−6)=12. ③.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 다항식을 전개·소거해−2xy로 만들고 곱의 값을 대입한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "x(x−4y)−(x−y)²+y²\n=x²−4xy−(x²−2xy+y²)+y²\n=x²−4xy−x²+2xy−y²+y²\n=−2xy이다.\nxy=−6이므로 −2xy=−2×(−6)=12. ③.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 다항식을 전개·소거해−2xy로 만들고 곱의 값을 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "주어진 다항식을 전개·소거해−2xy로 만들고 곱의 값을 대입한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_3359abd63c8023d0b6b4f52ac2fd81b77e2791d9c7ce0bf18507ead84c2e52ec",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "227d67b303ef7b1aaa71f9ba05c2bb721fbead72f2e49ac0b833939457e4b083"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "768922193f75c1f192df3cbb3a3d5a1a966bf0ff2a7ea6a0d8031dff58ca74b3"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "[서술형 1]<br>$4\\sqrt{5} - \\sqrt{125} + \\frac{15}{\\sqrt{5}}$를 가장 간단히 나타내시오. [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "[서술형 1]<br>$4\\sqrt{5} - \\sqrt{125} + \\frac{15}{\\sqrt{5}}$를 가장 간단히 나타내시오. [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "√125=√(25×5)=5√5이다.\n15/√5=(15√5)/5=3√5이다.\n4√5−√125+15/√5=4√5−5√5+3√5=2√5.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 단순화와 분모유리화 후 같은 근호의 계수를 합한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "√125=√(25×5)=5√5이다.\n15/√5=(15√5)/5=3√5이다.\n4√5−√125+15/√5=4√5−5√5+3√5=2√5.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 단순화와 분모유리화 후 같은 근호의 계수를 합한다."
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "√125=√(25×5)=5√5이다.\n15/√5=(15√5)/5=3√5이다.\n4√5−√125+15/√5=4√5−5√5+3√5=2√5.",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 단순화와 분모유리화 후 같은 근호의 계수를 합한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호 단순화와 분모유리화 후 같은 근호의 계수를 합한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_fac66850c7039c311224dcbc5f0fe91b64dca0d63c0575edb04b89a7b65af41b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1fe90ec2243a9cc2e07bf29d6730de22712b17d209e29f71c54f9c9e86cce63f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "779d09cf219176f563965ec481ddf1cf0ee3f473874a9b7a2c547bf3d97756ca"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "[서술형 2]<br>다음 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}$이다. 두 점 $\\mathrm{P}$, $\\mathrm{Q}$에 대응하는 수를 각각 구하고, $\\overline{\\mathrm{PQ}}$의 길이를 구하시오. [5점]<br>"
+          },
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "[서술형 2]<br>다음 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}$이다. 두 점 $\\mathrm{P}$, $\\mathrm{Q}$에 대응하는 수를 각각 구하고, $\\overline{\\mathrm{PQ}}$의 길이를 구하시오. [5점]<br>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "[서술형 2]<br>다음 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}$이다. 두 점 $\\mathrm{P}$, $\\mathrm{Q}$에 대응하는 수를 각각 구하고, $\\overline{\\mathrm{PQ}}$의 길이를 구하시오. [5점]<br>"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "[서술형 2]<br>다음 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}$이다. 두 점 $\\mathrm{P}$, $\\mathrm{Q}$에 대응하는 수를 각각 구하고, $\\overline{\\mathrm{PQ}}$의 길이를 구하시오. [5점]<br>"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "① 원본 학생용 q22 PNG의 수직선에서 A=1, B=2이며, P는 0과 1 사이, Q는 2와 3 사이에 있다. 모눈 한 칸의 가로·세로가 각각 1이다.\n② 원본 도형에서 A에서 D까지 가로 1, 세로 1인 직각삼각형을 확인한다. 따라서 AD²=1²+1²=2, AD=√2이다. 마찬가지로 BC=√2이다.\n③ AD=AQ이므로 AQ=√2. Q가 A의 오른쪽에 있으므로 Q=1+√2이다.\n④ BC=BP이므로 BP=√2. P가 B의 왼쪽에 있으므로 P=2−√2이다.\n⑤ P<Q이므로 PQ=Q−P=(1+√2)−(2−√2)=2√2−1이다.\n⑥ √2≈1.414이므로 P≈0.586(0<P<1), Q≈2.414(2<Q<3)로 원본 PNG에 찍힌 P,Q 위치와 일치한다.\n이 근거는 Source-Only Git 원본 q22 PNG SHA 49bfffc55f56416b9f3f18b6d49fdd37ec87e6ac을 base64 실제 획득·육안 대조한 것이다. 별도 인쇄 PDF 원본 전체를 검증했다는 뜻은 아니다.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "모눈 두 대각선의 길이를 구해 서로 다른 중심에서 교점 위치를 정하고 차를 계산한다."
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "① 원본 학생용 q22 PNG의 수직선에서 A=1, B=2이며, P는 0과 1 사이, Q는 2와 3 사이에 있다. 모눈 한 칸의 가로·세로가 각각 1이다.\n② 원본 도형에서 A에서 D까지 가로 1, 세로 1인 직각삼각형을 확인한다. 따라서 AD²=1²+1²=2, AD=√2이다. 마찬가지로 BC=√2이다.\n③ AD=AQ이므로 AQ=√2. Q가 A의 오른쪽에 있으므로 Q=1+√2이다.\n④ BC=BP이므로 BP=√2. P가 B의 왼쪽에 있으므로 P=2−√2이다.\n⑤ P<Q이므로 PQ=Q−P=(1+√2)−(2−√2)=2√2−1이다.\n⑥ √2≈1.414이므로 P≈0.586(0<P<1), Q≈2.414(2<Q<3)로 원본 PNG에 찍힌 P,Q 위치와 일치한다.\n이 근거는 Source-Only Git 원본 q22 PNG SHA 49bfffc55f56416b9f3f18b6d49fdd37ec87e6ac을 base64 실제 획득·육안 대조한 것이다. 별도 인쇄 PDF 원본 전체를 검증했다는 뜻은 아니다.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "모눈 두 대각선의 길이를 구해 서로 다른 중심에서 교점 위치를 정하고 차를 계산한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "① 원본 학생용 q22 PNG의 수직선에서 A=1, B=2이며, P는 0과 1 사이, Q는 2와 3 사이에 있다. 모눈 한 칸의 가로·세로가 각각 1이다.\n② 원본 도형에서 A에서 D까지 가로 1, 세로 1인 직각삼각형을 확인한다. 따라서 AD²=1²+1²=2, AD=√2이다. 마찬가지로 BC=√2이다.\n③ AD=AQ이므로 AQ=√2. Q가 A의 오른쪽에 있으므로 Q=1+√2이다.\n④ BC=BP이므로 BP=√2. P가 B의 왼쪽에 있으므로 P=2−√2이다.\n⑤ P<Q이므로 PQ=Q−P=(1+√2)−(2−√2)=2√2−1이다.\n⑥ √2≈1.414이므로 P≈0.586(0<P<1), Q≈2.414(2<Q<3)로 원본 PNG에 찍힌 P,Q 위치와 일치한다.\n이 근거는 Source-Only Git 원본 q22 PNG SHA 49bfffc55f56416b9f3f18b6d49fdd37ec87e6ac을 base64 실제 획득·육안 대조한 것이다. 별도 인쇄 PDF 원본 전체를 검증했다는 뜻은 아니다.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "모눈 두 대각선의 길이를 구해 서로 다른 중심에서 교점 위치를 정하고 차를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "모눈 두 대각선의 길이를 구해 서로 다른 중심에서 교점 위치를 정하고 차를 계산한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_1f53cdcf94701dcc982c017607d5ae8c514fb5557726d1b033dfd95310e25d16",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dfdaff27cb127edc5b7f8d36e24b7b030753145922b8a73945a47779e0c15246"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bb175d87704b3c5605185d89ec427a8cc8a1bb5598b520906578e90cda12ee4a"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "[서술형 3]<br>$\\sqrt{20}$의 정수 부분을 $a$, $\\sqrt{5}+1$의 소수 부분을 $b$라 할 때, $a$, $b$의 값을 각각 구하고, $a+\\frac{1}{b}$의 값을 구하시오. (단, $0 \\le b < 1$) [6점]"
+          },
+          {
+            "term": "정수부분",
+            "src": "stem",
+            "quote": "[서술형 3]<br>$\\sqrt{20}$의 정수 부분을 $a$, $\\sqrt{5}+1$의 소수 부분을 $b$라 할 때, $a$, $b$의 값을 각각 구하고, $a+\\frac{1}{b}$의 값을 구하시오. (단, $0 \\le b < 1$) [6점]"
+          },
+          {
+            "term": "소수부분",
+            "src": "stem",
+            "quote": "[서술형 3]<br>$\\sqrt{20}$의 정수 부분을 $a$, $\\sqrt{5}+1$의 소수 부분을 $b$라 할 때, $a$, $b$의 값을 각각 구하고, $a+\\frac{1}{b}$의 값을 구하시오. (단, $0 \\le b < 1$) [6점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "[서술형 3]<br>$\\sqrt{20}$의 정수 부분을 $a$, $\\sqrt{5}+1$의 소수 부분을 $b$라 할 때, $a$, $b$의 값을 각각 구하고, $a+\\frac{1}{b}$의 값을 구하시오. (단, $0 \\le b < 1$) [6점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "4²=16<20<25=5²이므로 4<√20<5이다. 정수 부분 a=4이다.\n2²=4<5<9=3²이므로 3<√5+1<4이다.\n따라서 √5+1의 소수 부분은 b=(√5+1)−3=√5−2이다.\n1/b=1/(√5−2)=(√5+2)/(5−4)=√5+2이다.\na+1/b=4+(√5+2)=6+√5이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정수·소수부분을 인접제곱수로 바로 정하고 지정된 역수분모를 유리화한다."
+          },
+          {
+            "term": "소수부분",
+            "src": "solution",
+            "quote": "4²=16<20<25=5²이므로 4<√20<5이다. 정수 부분 a=4이다.\n2²=4<5<9=3²이므로 3<√5+1<4이다.\n따라서 √5+1의 소수 부분은 b=(√5+1)−3=√5−2이다.\n1/b=1/(√5−2)=(√5+2)/(5−4)=√5+2이다.\na+1/b=4+(√5+2)=6+√5이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정수·소수부분을 인접제곱수로 바로 정하고 지정된 역수분모를 유리화한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "4²=16<20<25=5²이므로 4<√20<5이다. 정수 부분 a=4이다.\n2²=4<5<9=3²이므로 3<√5+1<4이다.\n따라서 √5+1의 소수 부분은 b=(√5+1)−3=√5−2이다.\n1/b=1/(√5−2)=(√5+2)/(5−4)=√5+2이다.\na+1/b=4+(√5+2)=6+√5이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정수·소수부분을 인접제곱수로 바로 정하고 지정된 역수분모를 유리화한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "[서술형 3]<br>$\\sqrt{20}$의 정수 부분을 $a$, $\\sqrt{5}+1$의 소수 부분을 $b$라 할 때, $a$, $b$의 값을 각각 구하고, $a+\\frac{1}{b}$의 값을 구하시오. (단, $0 \\le b < 1$) [6점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정수·소수부분을 인접제곱수로 바로 정하고 지정된 역수분모를 유리화한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_375196b86fa048273b2d5a3378014e888e88c300a13736dd4f4ab04d52873246",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9325bd77300a46d25f9ec24ecf97b014a641f1ee81c06bc9526da53b78ba5640"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "caa16e5e7bfd84d92fc6184005253d73f20328dd7adb2b2b1a082003cc41c2d6"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "항등식",
+            "src": "stem",
+            "quote": "[서술형 4]<br>$\\left(x+\\frac{1}{2}y\\right)\\left(x-\\frac{1}{2}y\\right)+4\\left(x+\\frac{3}{4}y\\right)^2 = Ax^2+Bxy+Cy^2$일 때, 상수 $A$, $B$, $C$의 값을 구하시오. [5점]"
+          },
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "[서술형 4]<br>$\\left(x+\\frac{1}{2}y\\right)\\left(x-\\frac{1}{2}y\\right)+4\\left(x+\\frac{3}{4}y\\right)^2 = Ax^2+Bxy+Cy^2$일 때, 상수 $A$, $B$, $C$의 값을 구하시오. [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "[서술형 4]<br>$\\left(x+\\frac{1}{2}y\\right)\\left(x-\\frac{1}{2}y\\right)+4\\left(x+\\frac{3}{4}y\\right)^2 = Ax^2+Bxy+Cy^2$일 때, 상수 $A$, $B$, $C$의 값을 구하시오. [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "먼저 합과 차의 곱을 계산한다.\n(x+y/2)(x−y/2)=x²−y²/4이다.\n다음으로 제곱식을 전개한다.\n4(x+3y/4)²=4[x²+(3/2)xy+(9/16)y²]\n=4x²+6xy+(9/4)y²이다.\n둘을 더하면 5x²+6xy+[−1/4+9/4]y²=5x²+6xy+2y²이다.\n따라서 A=5,B=6,C=2이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "합차공식과 제곱공식 두 결과를 더해 세 계수를 직접 읽는다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "먼저 합과 차의 곱을 계산한다.\n(x+y/2)(x−y/2)=x²−y²/4이다.\n다음으로 제곱식을 전개한다.\n4(x+3y/4)²=4[x²+(3/2)xy+(9/16)y²]\n=4x²+6xy+(9/4)y²이다.\n둘을 더하면 5x²+6xy+[−1/4+9/4]y²=5x²+6xy+2y²이다.\n따라서 A=5,B=6,C=2이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "합차공식과 제곱공식 두 결과를 더해 세 계수를 직접 읽는다."
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "먼저 합과 차의 곱을 계산한다.\n(x+y/2)(x−y/2)=x²−y²/4이다.\n다음으로 제곱식을 전개한다.\n4(x+3y/4)²=4[x²+(3/2)xy+(9/16)y²]\n=4x²+6xy+(9/4)y²이다.\n둘을 더하면 5x²+6xy+[−1/4+9/4]y²=5x²+6xy+2y²이다.\n따라서 A=5,B=6,C=2이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "합차공식과 제곱공식 두 결과를 더해 세 계수를 직접 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "합차공식과 제곱공식 두 결과를 더해 세 계수를 직접 읽는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E032-resume",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 24,
+    "quotesChecked": 128,
+    "quotesNotFound": 0,
+    "notes": "Actual question and existing solution read; author self-check only. Independent root sample pending."
+  },
+  "reviewedSourceBaseBlob": "cb7ab3e17cc49a8ccfba790c32d130cef92c4dd4",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "examKey": "E032",
+    "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+    "author": "meta_b",
+    "reviewer": "meta_c",
+    "at": "2026-11-14T14:13:23.288381+00:00",
+    "sourceArchiveFile": "original/middle/m3/1mid/23_향림중_1학기_중간_중3_기출.js",
+    "sourceBlob": "cb7ab3e17cc49a8ccfba790c32d130cef92c4dd4",
+    "inputs": {
+      "review": {
+        "path": "/workspace/scratch/0b1af1898334/workers/B/E032.review.json",
+        "sha256": "878da187e57123fed4b5b5b0359dcf383b87beee2def158c60d57e27882300b3"
+      },
+      "fourSlot": {
+        "path": "/workspace/scratch/0b1af1898334/workers/B/E032.4slot.json",
+        "sha256": "8a6d972441a4b82c72a5d9a887a0137bb3c1ac56fe4f23b8a093eb702265aa7c"
+      }
+    },
+    "sampledOrdinals": [
+      15,
+      19,
+      22
+    ],
+    "additionalChangedOrBoundaryOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      16,
+      17,
+      18,
+      20,
+      21,
+      23,
+      24
+    ],
+    "scope": "METADATA_ONLY; all 24 actual stems, choices, existing solutions and reviewed slot selections read; q15/19/22 original PNG and solution SVG directly viewed.",
+    "findings": [
+      {
+        "ordinal": 15,
+        "status": "PASS",
+        "note": "도형 전체너비5x+4, 색칠높이4x-3을 원본에서 확인. 표준 직사각형 면적식 전개2/B23과020 기하곱셈을 수용."
+      },
+      {
+        "ordinal": 19,
+        "status": "PASS",
+        "note": "항등식 계수대응으로 a,b를 결정한 후 원그림 직각삼각형의 높이·넓이를 구하는3/B34. 피타고라스·삼각형넓이의 독립 보조기여를 확인."
+      },
+      {
+        "ordinal": 22,
+        "status": "PASS_AFTER_REVISION",
+        "note": "원본에서 A=1,B=2와 대각선 등거리 P,Q 배치를 확인. 좌표구성 후 거리계산3/B34 수용. 해설SVG의 눈금·점 배치 불일치는 계산좌표와 구별해 contentDebt 보존됨."
+      },
+      {
+        "ordinal": 2,
+        "status": "PASS_AFTER_REVISION",
+        "note": "근호 정리·분류의2를 기존하와1/2경계로 수용하는 B12/medium 근거가 보강됨. 기존해설 근호범위 오기는 contentDebt에 별도 보존."
+      },
+      {
+        "ordinal": 21,
+        "status": "PASS_AFTER_REVISION",
+        "note": "근호 단순화·분모유리화·동류항의 익숙한 순차계산으로2와 기존하 사이의B12/medium 수용."
+      },
+      {
+        "ordinal": 5,
+        "status": "PASS_AFTER_REVISION",
+        "note": "자연수 매개변수 최소값 target이002성질의 부모맥락과 정확leaf제안으로 분리됨. 직접 작은 자연수 후보를 대입하는2/B23 적합."
+      },
+      {
+        "ordinal": 6,
+        "status": "PASS_AFTER_REVISION",
+        "note": "양의 근호 범위를 제곱하여 자연수 후보를 합하는 target을004부모와 exactgap으로 분리함. 표준 부등식 변환2/B23 수용."
+      },
+      {
+        "ordinal": 23,
+        "status": "PASS_AFTER_REVISION",
+        "note": "정수·소수부분은 primary자체이므로 중복CC가 제거되었다. 정수부분 판정→정해진 역수 유리화는 표준2/B23로 기존상→중 교정을 수용."
+      }
+    ],
+    "additionalCheck": "q4/9/11/12/13/14/17/18/24의 근호연산·부호·계수비교와 소단원교정 실제내용 확인. 일반정의1, 기본연산2, 기하연결3의 단계 구분 및 변경 범위를 검토했다. 별도의 전수 풀이 검증은 수행하지 않았다.",
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sourceMutation": "NONE"
+  }
+}
