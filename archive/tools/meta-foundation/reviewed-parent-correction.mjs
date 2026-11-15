@@ -157,6 +157,9 @@ export function registerReviewedParentCorrection({ root, request: req, write = f
   if (previous && previous.requestSha256 !== requestSha256) fail("requestId reused with different content");
   if (verifyProjection && !previous) fail("registration receipt required");
   const difficulty = bound(root, req.difficultyRequestRef, req.approval.evidenceRefs, ".archive-meta-register/evidence/").data;
+  const difficultyEvidence = { path: difficulty.reviewedCorrection?.evidencePath, sha256: difficulty.reviewedCorrection?.evidenceSha256 };
+  if (!same(req.difficultyEvidence, difficultyEvidence)) fail("reviewed difficulty evidence binding mismatch");
+  bound(root, req.difficultyEvidence, req.approval.evidenceRefs, ".archive-meta-register/evidence/");
   if (difficulty.schemaVersion !== "archive-difficulty5-register-request-v1" || difficulty.gemini?.sourceArchiveFile !== req.sourceArchiveFile ||
       difficulty.gemini.latestBlobSha !== req.expectedSourceBlobSha1 || difficulty.gemini.items?.length !== req.items.length ||
       !same(difficulty.gemini.items.map(r => r.questionUid).sort(), req.items.map(r => r.questionUid).sort())) fail("reviewed difficulty scope mismatch");

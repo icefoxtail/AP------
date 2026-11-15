@@ -73,9 +73,10 @@ function fixture(mode = "WITHDRAW_UNSUPPORTED_TYPE") {
     reviewedCorrection: { schemaVersion: difficultyEvidence.schemaVersion, approvalRef: reviewPath, evidencePath: D + "difficulty.json", evidenceSha256: sha(json(difficultyEvidence)), rows: [dr] } };
   write(root, D + "difficulty-request.json", difficulty);
   const difficultyRequestRef = { path: D + "difficulty-request.json", sha256: sha(json(difficulty)) };
+  const difficultyEvidenceRef = { path: difficulty.reviewedCorrection.evidencePath, sha256: difficulty.reviewedCorrection.evidenceSha256 };
   const request = { schemaVersion: "archive-basic-parent-correction-request-v1", requestId: "parent-fixture", examUid: path.basename(SRC, ".js"), sourceArchiveFile: SRC,
-    expectedQuestionCount: 2, expectedSourceBlobSha1, previousSourceCommit, previousSourceBlobSha1, difficultyRequestRef,
-    approval: { type: "BASIC_PARENT_CORRECTION", metadataReviewed: true, approvedBy: "publisher", evidenceRefs: [reviewRef, difficultyRequestRef],
+    expectedQuestionCount: 2, expectedSourceBlobSha1, previousSourceCommit, previousSourceBlobSha1, difficultyRequestRef, difficultyEvidence: difficultyEvidenceRef,
+    approval: { type: "BASIC_PARENT_CORRECTION", metadataReviewed: true, approvedBy: "publisher", evidenceRefs: [reviewRef, difficultyRequestRef, difficultyEvidenceRef],
       nativeParentReview: { schemaVersion: "archive-reviewed-parent-correction-v1", reviewCommit, reviewPath, reviewRef } },
     items: [{ questionUid: uid, sourceOrdinal: 1, reason: "Reuse confirmed parent correction", before: fp(old), after: fp(current),
       parentBefore: beforeParent, parentAfter: afterParent, basicParent, typeDisposition: mode, linkBefore: null,
@@ -109,6 +110,8 @@ test("rejects missing or changed native review, scope, before snapshot and D5 ev
     f => { f.request.items[0].parentAfter.subUnitKey = "M1-05-OTHER"; },
     f => { f.request.items[0].basicParent.L2 = "기본 도형"; },
     f => { delete f.request.difficultyRequestRef; },
+    f => { delete f.request.difficultyEvidence; },
+    f => { f.request.difficultyEvidence.sha256 = "0".repeat(64); },
     f => { write(f.root, D + "difficulty.json", { ...read(f.root, D + "difficulty.json"), rows: [] }); },
     f => { f.request.registryChanges = []; },
   ]) {
