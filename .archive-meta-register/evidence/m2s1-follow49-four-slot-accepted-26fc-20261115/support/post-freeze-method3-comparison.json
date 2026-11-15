@@ -1,0 +1,605 @@
+{
+  "schemaVersion": "archive-post-blind-method3-comparison-v1",
+  "reviewer": "/root/m1_release",
+  "createdAt": "2026-11-15T10:02:34.293380+00:00",
+  "status": "ALL_THREE_MINIMAL_METHOD_DELTAS_SUPPORTED_INTEGRATION_PENDING",
+  "originalBlindVerdict": {
+    "path": "/workspace/scratch/26fc42390a50/m1-work/.tmp/independent-m2s1-method3-20261115/independent-method3-review.json",
+    "sha256": "33789c8905d7dc077a83759509cf41b1508d6afbcb47bf15360c51399e80e16a",
+    "preservedUnchanged": true,
+    "comparisonOpenedOnlyAfterFrozenShaSentToRoot": true
+  },
+  "producerProposal": {
+    "path": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-follow49-binding/minimal-compact-delta.proposal.json",
+    "sha256": "2f97e75e1cc4df156497399c436028e2201c2b278004cbe947e792bcb83f03f7",
+    "readScope": "Only E060 Q12, E062 Q25, E040 Q24; no other proposed rows reviewed."
+  },
+  "dictionary": {
+    "commit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+    "archivePath": "docs/architecture/4slot/term-dictionary-v1.6.json",
+    "copyPath": "term-dictionary-v1.6.json",
+    "gitBlobSha": "07920194882d3924ac50e8bbffc5b723c3fc5e89",
+    "sha256": "9d55b5f1172b13c3d05802b65963a18368d50b1659b31fa36aa52a27605e579d",
+    "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+    "termCount": 756,
+    "completeDictionary": true
+  },
+  "inputManifestSha256": "6692bc36b457dcd7f20f0673a47b90ef70ed791c44bb88bba5879a32ce2eb3e9",
+  "reviewScope": "Compare method tags and decisive step coverage only, with exact corresponding prior compact/native evidence and other slots. No repeated full mathematical or semantic QA.",
+  "rows": [
+    {
+      "examId": "E062",
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_64b62553a4e8248d02d4c86f7dacfcb636a498b2acb39b641cac15c02455da77",
+      "decision": "ACCEPT_SUPPORTED_MINIMAL_DELTA",
+      "blindMethodTermIds": [
+        188,
+        381,
+        150,
+        53
+      ],
+      "previousMethodTermIds": [
+        188,
+        436
+      ],
+      "producerMethodTermIds": [
+        188,
+        436,
+        381
+      ],
+      "finalMethodTermIds": [
+        188,
+        436,
+        381
+      ],
+      "materialDelta": {
+        "remove": [],
+        "add": [
+          381
+        ],
+        "preserve": [
+          188,
+          436
+        ]
+      },
+      "comparisonWithBlind": "독립 판정은 직선 구성의 하위 조작을 기울기150·대입53으로 분해했다. 기존 436은 goal과 method에 동시에 있지만, method에서는 중심을 통과하는 여러 직선의 식을 실제로 구성하는 역할이다. 목표와 같은 용어라는 이유만으로 이 별도 역할을 무효화할 수 없다. 150·53 추가는 세분화 선택이며 출고 필수 수정이 아니다.",
+      "coverage": "대각선 중점으로 중심 결정 → 180° 회전으로 이등분 근거 확보 → 그 중심을 통과하는 서로 다른 직선의 방정식 구성. 기존 188·436을 유지하고 현재 명시된 결정 근거381만 추가한다.",
+      "evidence": [
+        {
+          "termId": 188,
+          "term": "중점",
+          "supportType": "IMPLIED",
+          "rationale": "마주 보는 꼭짓점의 좌표 평균이 대각선 중점 계산이라는 역할은 유지된다. 이전 수치 인용 대신 현재 좌표의 정확한 식에 결속한다.",
+          "quotes": [
+            {
+              "field": "solution",
+              "text": "$\\left(\\dfrac{-1+3}{2},\\dfrac{1+3}{2}\\right)=(1,2)$이다.",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "ebee25388bd2932fad3b74c93f94c84842797575c43d09417adccfef8e87c157"
+            }
+          ]
+        },
+        {
+          "termId": 436,
+          "term": "직선의방정식",
+          "supportType": "EXPLICIT_CONSTRUCTION",
+          "rationale": "중심/두 점을 통과하는 직선의 식을 실제로 결정하고 나열하는 방법 역할이다. 세로 직선 x=1도 포함하므로 y=ax+b 꼴의 일차함수로 역할을 제한하지 않는다.",
+          "quotes": [
+            {
+              "field": "solution",
+              "text": "중심을 지나는 서로 다른 다섯 직선의 예는 다음과 같다.",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "ebee25388bd2932fad3b74c93f94c84842797575c43d09417adccfef8e87c157"
+            },
+            {
+              "field": "solution",
+              "text": "두 꼭짓점 $(-1,1),(3,3)$을 지나는 대각선: 기울기가 $\\dfrac{3-1}{3-(-1)}=\\dfrac{1}{2}$이므로 $y=\\dfrac{1}{2}x+\\dfrac{3}{2}$",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "ebee25388bd2932fad3b74c93f94c84842797575c43d09417adccfef8e87c157"
+            },
+            {
+              "field": "solution",
+              "text": "세로 대칭축: $x=1$",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "ebee25388bd2932fad3b74c93f94c84842797575c43d09417adccfef8e87c157"
+            }
+          ]
+        },
+        {
+          "termId": 381,
+          "term": "회전이동",
+          "supportType": "EXPLICIT_OPERATION",
+          "rationale": "중심 (1,2)에 대한 평면 180° 회전으로 양쪽 부분의 넓이 대응을 설명한다. 원점대칭이나 회전체 생성으로 읽지 않는다.",
+          "quotes": [
+            {
+              "field": "solution",
+              "text": "직사각형을 중심 $(1,2)$ 둘레로 $180^\\circ$ 회전하면 원래 도형과 겹친다.",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "ebee25388bd2932fad3b74c93f94c84842797575c43d09417adccfef8e87c157"
+            },
+            {
+              "field": "solution",
+              "text": "따라서 중심을 지나는 직선은 양쪽 부분을 서로 겹치게 하므로 넓이를 이등분한다.",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "ebee25388bd2932fad3b74c93f94c84842797575c43d09417adccfef8e87c157"
+            }
+          ]
+        }
+      ],
+      "optionalGranularity": [
+        {
+          "termId": 150,
+          "classification": "SUPPORTED_BUT_NOT_REQUIRED_AS_ADDITIONAL_TAG",
+          "reason": "436의 구체적인 직선 구성에 이미 포함된 기울기 계산을 더 잘게 표시하는 선택이다."
+        },
+        {
+          "termId": 53,
+          "classification": "SUPPORTED_IMPLIED_BUT_NOT_REQUIRED_AS_ADDITIONAL_TAG",
+          "reason": "통과점으로 상수항을 정하는 하위 조작을 별도 표시할 필요는 없다."
+        }
+      ],
+      "quotePackagingNote": "436은 결론의 방정식을 쓰면 된다는 문장만 인용하는 것보다, 본 비교문에 결속한 실제 두 점→직선식 구성 구절을 함께 쓰면 method 역할이 명확하다.",
+      "finalMethodTermNames": [
+        "중점",
+        "직선의방정식",
+        "회전이동"
+      ],
+      "otherSlotsUnchanged": {
+        "given": [
+          165
+        ],
+        "goal": [
+          436,
+          177
+        ],
+        "condition": [
+          213
+        ]
+      },
+      "sourceBinding": {
+        "sourceArchiveFile": "original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+        "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+        "currentMainBlob": "d4ef3b06eef401e568096a14ab7ba815cfcf4856",
+        "candidateGitBlobSha": "ff2f28b1abe9f01594afe8295b0c49c7eec5b124",
+        "candidateRawSha256": "666e29ccb8929dca0751e2492b7f21cb6cf98fbf23e4fec18821b54f32272cf1",
+        "candidateManifestSha256": "409ce6f0e244a40e55c42be20db5ffd65a03649a0be9b59c5aef6c0336d5f782",
+        "candidateLocalManifestHead": "1e600bf5af2da249b8ef15d98270f4da518115f6",
+        "questionIdentityMapCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1"
+      },
+      "studentQuestion": {
+        "path": "questions/E062-Q25.json",
+        "sha256": "ebee25388bd2932fad3b74c93f94c84842797575c43d09417adccfef8e87c157",
+        "sizeBytes": 1979,
+        "fieldNames": [
+          "id",
+          "score",
+          "questionType",
+          "layoutTag",
+          "wide",
+          "content",
+          "question",
+          "choices",
+          "answer",
+          "solution"
+        ]
+      },
+      "assets": [
+        {
+          "archivePath": "archive/assets/images/19_금당중_1학기_기말_중2_수학/s03.png",
+          "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+          "gitBlobSha": "0a4976b1da70587e45d4ce5b4963351b1077b715",
+          "sha256": "eba9d429b3a7f16b7b81a8ff8c6fe452fae9e2cee33bc531e633c76f81722189",
+          "sizeBytes": 137401,
+          "copyPath": "assets/E062-Q25-1.png",
+          "approvedSourceAssetSha256": "eba9d429b3a7f16b7b81a8ff8c6fe452fae9e2cee33bc531e633c76f81722189"
+        }
+      ],
+      "previousCompact": {
+        "commit": "09744b6cc806314e963dc85f5cae5513b21ff63d",
+        "path": "archive/data/item-4slot/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.4slot.json",
+        "sha256": "8f6fe0f5959f54a8e558e983d3dc9f8e85839eb4e63b8d6f2a8580dea2f39e7c",
+        "selectedRowCanonicalSha256": "a476efb149ec31d9747eb82b6e51b3292e3eaaf3b37b61080c3fc04e74707b15"
+      },
+      "previousNativeFourSlot": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E062/amendments/unknown-legacy-compatibility-r1/four-slot.json",
+        "sha256": "4c53ea221921428c17a95b8b9a6b3e7722b7d097e9302d04f54b4ea7fecf3b3f",
+        "selectedRowCanonicalSha256": "41de93a88716c8b98d33bc64b62a6fc80a5ccf177459541b45b4b1612016c990"
+      },
+      "producerNativeDraft": {
+        "path": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-follow49-binding/native-drafts/E062.four-slot.proposal.json",
+        "sha256": "e98c89c1e71f5c69068a4066bb57fa9e33d20e3ba8c15f8126c7de1646ad8013",
+        "selectedRowCanonicalSha256": "2254bf8c9eff221ee67e345ec992acd9c5da99bc1d3bc0c47b568712884f347a"
+      },
+      "unsupportedMethodTerms": [],
+      "missingDecisiveSteps": [],
+      "remainingMethodDisagreements": [],
+      "registrationApplied": false,
+      "fullSemanticApprovalGranted": false
+    },
+    {
+      "examId": "E060",
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_938125d560630a261f20745c0a1ebc8ed2a34d6d089330cffd255cf2a71e68a6",
+      "decision": "ACCEPT_SUPPORTED_MINIMAL_DELTA",
+      "blindMethodTermIds": [
+        163,
+        64
+      ],
+      "previousMethodTermIds": [
+        180,
+        714,
+        64
+      ],
+      "producerMethodTermIds": [
+        163,
+        714,
+        64
+      ],
+      "finalMethodTermIds": [
+        163,
+        714,
+        64
+      ],
+      "materialDelta": {
+        "remove": [
+          180
+        ],
+        "add": [
+          163
+        ],
+        "preserve": [
+          714,
+          64
+        ]
+      },
+      "comparisonWithBlind": "独립 판정에서 714를 별도로 고르지 않은 것은 최소 태그 수에 관한 선택이었다. 실제 기존 given은 사각형, goal은 각이고, method의 714는 이웃한 내각 합 성질을 적용하는 역할이다. 현재 풀이가 그 성질을 명시하므로 기존 태그를 삭제할 근거가 없다.",
+      "coverage": "대변 길이 같음 → 평행사변형 판정 → 이웃한 내각 합 → 일차 각도 관계식의 해. 기존 180만으로 판정 단계를 생략하는 것을 163으로 교체하여 보완한다.",
+      "evidence": [
+        {
+          "termId": 163,
+          "term": "평행사변형",
+          "supportType": "EXPLICIT",
+          "rationale": "대변 길이 조건으로 평행사변형임을 도출하는 새 현재 풀이의 판정 단계다.",
+          "quotes": [
+            {
+              "field": "solution",
+              "text": "두 쌍의 대변의 길이가 각각 같으므로 사각형 $ABCD$는 평행사변형이다.",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "1ba6b48d6713ae8036faeb290f2d7b05c52b2b0cadfa69ec00fa6b7d3e03e753"
+            }
+          ]
+        },
+        {
+          "termId": 714,
+          "term": "내각",
+          "supportType": "EXPLICIT",
+          "rationale": "내각이 단순 출현하는 데 그치지 않고, 이웃한 두 내각 합 180°를 사용하는 성질 적용이다. 기존 method 역할이 실질적으로 유지된다.",
+          "quotes": [
+            {
+              "field": "solution",
+              "text": "평행사변형의 이웃하는 두 내각의 합은 $180^\\circ$이다.",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "1ba6b48d6713ae8036faeb290f2d7b05c52b2b0cadfa69ec00fa6b7d3e03e753"
+            }
+          ]
+        },
+        {
+          "termId": 64,
+          "term": "일차방정식",
+          "supportType": "IMPLIED",
+          "rationale": "용어명은 쓰이지 않지만 x가 일차인 관계식을 실제로 세우고 푼다. formula 근거를 보존하며 일반 사칙연산 태그를 추가하지 않는다.",
+          "quotes": [
+            {
+              "field": "solution",
+              "text": "$130^\\circ+x=180^\\circ$",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "1ba6b48d6713ae8036faeb290f2d7b05c52b2b0cadfa69ec00fa6b7d3e03e753"
+            },
+            {
+              "field": "solution",
+              "text": "$x=50^\\circ$",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "1ba6b48d6713ae8036faeb290f2d7b05c52b2b0cadfa69ec00fa6b7d3e03e753"
+            }
+          ]
+        }
+      ],
+      "optionalGranularity": [],
+      "quotePackagingNote": "64의 공식 인용은 유효하다. 용어명 자체가 등장한다는 의미로 NAMED를 해석한다면 IMPLIED와 설명으로 명확히 하는 것이 적절하며 method ID 변경은 필요 없다.",
+      "finalMethodTermNames": [
+        "평행사변형",
+        "내각",
+        "일차방정식"
+      ],
+      "otherSlotsUnchanged": {
+        "given": [
+          162
+        ],
+        "goal": [
+          174
+        ],
+        "condition": []
+      },
+      "sourceBinding": {
+        "sourceArchiveFile": "original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+        "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+        "currentMainBlob": "fcd2b409ae032f3c7486667629e227050ca12ba5",
+        "candidateGitBlobSha": "5cd005567bde291b5073a9f045353063567d8bc3",
+        "candidateRawSha256": "29bf259e42d65bf24d71d8fb9216d3f1b282b3da889eabca486205845ab523cd",
+        "candidateManifestSha256": "409ce6f0e244a40e55c42be20db5ffd65a03649a0be9b59c5aef6c0336d5f782",
+        "candidateLocalManifestHead": "1e600bf5af2da249b8ef15d98270f4da518115f6",
+        "questionIdentityMapCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1"
+      },
+      "studentQuestion": {
+        "path": "questions/E060-Q12.json",
+        "sha256": "1ba6b48d6713ae8036faeb290f2d7b05c52b2b0cadfa69ec00fa6b7d3e03e753",
+        "sizeBytes": 1137,
+        "fieldNames": [
+          "id",
+          "score",
+          "questionType",
+          "layoutTag",
+          "wide",
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "question"
+        ]
+      },
+      "assets": [
+        {
+          "archivePath": "archive/assets/images/20_풍덕중_1학기_기말_중2_수학/q12.png",
+          "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+          "gitBlobSha": "843b688f3d7f70a0770c54e9259bee80b9e88c64",
+          "sha256": "dee2211d2282656d6ba6f1cad5947809c9e1bb640e26d18ff26deb18dea341d7",
+          "sizeBytes": 32112,
+          "copyPath": "assets/E060-Q12-1.png",
+          "approvedSourceAssetSha256": "dee2211d2282656d6ba6f1cad5947809c9e1bb640e26d18ff26deb18dea341d7"
+        }
+      ],
+      "previousCompact": {
+        "commit": "09744b6cc806314e963dc85f5cae5513b21ff63d",
+        "path": "archive/data/item-4slot/original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.4slot.json",
+        "sha256": "4a3a41ae2aeb4978b347126c5c833f03bda67290e675e9845447b04db40a4182",
+        "selectedRowCanonicalSha256": "123e479639f8c0ac891aa663cb5d834c9a546bfd877e7ffe02b41a2c7cf4cfe8"
+      },
+      "previousNativeFourSlot": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E060/four-slot.json",
+        "sha256": "69ad19e73c379a120a507df24e648653f875037bdb793435bfc4ca415c7515c8",
+        "selectedRowCanonicalSha256": "89f921d258d7e2c8a74b1be3646e8fdfcb85add7a9a2c11480374533295f49e7"
+      },
+      "producerNativeDraft": {
+        "path": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-follow49-binding/native-drafts/E060.four-slot.proposal.json",
+        "sha256": "d40a9d47a5cb4a4c59ac596327c02c733cdd4e944f2efd236e0fb85da4f8b3e8",
+        "selectedRowCanonicalSha256": "78789fea7dca41bf4dcb6c9f04463ef53750753b74f87828b320f7344472a302"
+      },
+      "unsupportedMethodTerms": [],
+      "missingDecisiveSteps": [],
+      "remainingMethodDisagreements": [],
+      "registrationApplied": false,
+      "fullSemanticApprovalGranted": false
+    },
+    {
+      "examId": "E040",
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d8fdbc567096c1e56a463bba2aa8a5227e5cd198c0a0670615a59bf69678a467",
+      "decision": "ACCEPT_SUPPORTED_MINIMAL_DELTA",
+      "blindMethodTermIds": [
+        53,
+        150,
+        180,
+        649,
+        654
+      ],
+      "previousMethodTermIds": [
+        150,
+        25
+      ],
+      "producerMethodTermIds": [
+        150,
+        25,
+        649
+      ],
+      "finalMethodTermIds": [
+        150,
+        25,
+        649
+      ],
+      "materialDelta": {
+        "remove": [],
+        "add": [
+          649
+        ],
+        "preserve": [
+          150,
+          25
+        ]
+      },
+      "comparisonWithBlind": "독립 벡터의 대입53·부등식의성질654는 실제 연산을 세분화한 것이다. 기존 25 부호는 양의 기울기와 절편의 비양수 조건으로 사분면 회피를 판정하는 핵심 추론이어서 제거할 이유가 없다. 평행180은 condition에 이미 보존되고 기울기150 및 y절편649의 근거에 실제 조건 적용을 명시하므로 method에 중복 추가하지 않아도 결정 단계가 빠지지 않는다.",
+      "coverage": "기울기 계산과 평행 조건으로 계수 결정 → 양의 기울기에서 y절편의 부호로 제2사분면 배제 → y절편 비교로 일치하는 직선 제외. 현재 근거에서 0을 허용하는 경계 및 서로 다른 평행선 조건을 모두 보존한다.",
+      "evidence": [
+        {
+          "termId": 150,
+          "term": "기울기",
+          "supportType": "EXPLICIT",
+          "rationale": "현재 PNG의 두 점으로 기울기를 산출하고 조건의 평행을 기울기 일치로 적용한다.",
+          "quotes": [
+            {
+              "field": "solution",
+              "text": "$\\text{기울기} = \\frac{4 - (-2)}{4 - 0} = \\frac{6}{4} = \\frac{3}{2}$",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "17e81c0be7ce47de8177df39558aa2049f4304045e241da71be5dd4c66dc6d93"
+            },
+            {
+              "field": "solution",
+              "text": "평행해야 하므로 기울기가 같아야 한다:",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "17e81c0be7ce47de8177df39558aa2049f4304045e241da71be5dd4c66dc6d93"
+            }
+          ]
+        },
+        {
+          "termId": 25,
+          "term": "부호",
+          "supportType": "IMPLIED",
+          "rationale": "부호라는 낱말은 없지만 양의 기울기와 y절편≤0의 부호 판정으로 제2사분면 통과 여부를 제한한다. 0 이하를 음수만으로 바꾸지 않으며, 기존 부호 method는 실질적으로 지지된다.",
+          "quotes": [
+            {
+              "field": "solution",
+              "text": "기울기가 $\\frac{3}{2} > 0$ (오른쪽 위로 향함)인 직선이 제2사분면(좌상단)을 지나지 않으려면 $y$절편이 0 이하이어야 한다:",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "17e81c0be7ce47de8177df39558aa2049f4304045e241da71be5dd4c66dc6d93"
+            },
+            {
+              "field": "solution",
+              "text": "$a - b \\le 0 \\implies b \\ge a$",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "17e81c0be7ce47de8177df39558aa2049f4304045e241da71be5dd4c66dc6d93"
+            }
+          ]
+        },
+        {
+          "termId": 649,
+          "term": "y절편",
+          "supportType": "EXPLICIT",
+          "rationale": "y절편은 사분면 회피의 중간량이며, 주어진 직선과 일치하는 경우를 제외하는 데도 실제 비교되는 양이다. 따라서 이 추가는 단순 답 항목 중복이 아니다.",
+          "quotes": [
+            {
+              "field": "solution",
+              "text": "주어진 직선의 식은 $y=\\frac{3}{2}x-2$이고, 구하는 직선의 $y$절편은 $-\\frac{3}{2}-b$이다.",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "17e81c0be7ce47de8177df39558aa2049f4304045e241da71be5dd4c66dc6d93"
+            },
+            {
+              "field": "solution",
+              "text": "$-\\frac{3}{2}-b=-2$이면 $b=\\frac{1}{2}$이므로 $b\\ne\\frac{1}{2}$이다.",
+              "exactSubstringVerified": true,
+              "studentQuestionSha256": "17e81c0be7ce47de8177df39558aa2049f4304045e241da71be5dd4c66dc6d93"
+            }
+          ]
+        }
+      ],
+      "optionalGranularity": [
+        {
+          "termId": 53,
+          "classification": "SUPPORTED_BUT_NOT_REQUIRED_AS_ADDITIONAL_TAG",
+          "reason": "절편 계산과 매개변수 대입의 기본 조작이며 기존 핵심 method를 늘릴 필수 사유가 아니다."
+        },
+        {
+          "termId": 180,
+          "classification": "VALID_CONDITION_ALREADY_PRESERVED",
+          "reason": "condition의 평행 태그가 유지되고 150·649의 source 근거가 실제 적용을 포함한다."
+        },
+        {
+          "termId": 654,
+          "classification": "SUPPORTED_IMPLIED_BUT_NOT_REQUIRED_AS_ADDITIONAL_TAG",
+          "reason": "부호 제한을 식으로 옮긴 뒤 정리하는 하위 대수 조작이다."
+        }
+      ],
+      "quotePackagingNote": "649 근거에는 절편의 표현뿐 아니라 일치 직선 제외 구절도 묶어 현재 추가된 조건을 빠뜨리지 않는 것이 적절하다.",
+      "finalMethodTermNames": [
+        "기울기",
+        "부호",
+        "y절편"
+      ],
+      "otherSlotsUnchanged": {
+        "given": [
+          90,
+          64
+        ],
+        "goal": [
+          150,
+          151,
+          308,
+          297
+        ],
+        "condition": [
+          180,
+          149
+        ]
+      },
+      "sourceBinding": {
+        "sourceArchiveFile": "original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js",
+        "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+        "currentMainBlob": "20a34625713e72946bf17aade5135fc66724ca31",
+        "candidateGitBlobSha": "145aa82df385c9e4a2b3c0588f46d984af699e03",
+        "candidateRawSha256": "b002b2119f4c9cfac1ee560606c0bd8d7bbcdcdf9a135ced880e2f7eada3ccc6",
+        "candidateManifestSha256": "409ce6f0e244a40e55c42be20db5ffd65a03649a0be9b59c5aef6c0336d5f782",
+        "candidateLocalManifestHead": "1e600bf5af2da249b8ef15d98270f4da518115f6",
+        "questionIdentityMapCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1"
+      },
+      "studentQuestion": {
+        "path": "questions/E040-Q24.json",
+        "sha256": "17e81c0be7ce47de8177df39558aa2049f4304045e241da71be5dd4c66dc6d93",
+        "sizeBytes": 2690,
+        "fieldNames": [
+          "id",
+          "score",
+          "questionType",
+          "layoutTag",
+          "wide",
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ]
+      },
+      "assets": [
+        {
+          "archivePath": "archive/assets/images/21_매산중_1학기_기말_중2_수학/s04.png",
+          "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+          "gitBlobSha": "ff06d07a6cb0c2a2514d6037949154f6c8243f59",
+          "sha256": "bea39d2aefcd846c399cfe121f6ddf77438c3f3bfa0970dcab03d1994ba6bb75",
+          "sizeBytes": 62535,
+          "copyPath": "assets/E040-Q24-1.png",
+          "approvedSourceAssetSha256": "bea39d2aefcd846c399cfe121f6ddf77438c3f3bfa0970dcab03d1994ba6bb75"
+        }
+      ],
+      "previousCompact": {
+        "commit": "09744b6cc806314e963dc85f5cae5513b21ff63d",
+        "path": "archive/data/item-4slot/original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.4slot.json",
+        "sha256": "609bfe7bfcc9b47f873d0683e9f06730fb6b7f617a88a6e974f64485ced4f4cd",
+        "selectedRowCanonicalSha256": "26d04c8853e8231cb4f485700138b3c912243e0a2b4520316bf2f774bf996c57"
+      },
+      "previousNativeFourSlot": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E040/four-slot.json",
+        "sha256": "40d84f261836d0f98416dcf38a97d4d1477491ca378cc7ce02ecefc560012089",
+        "selectedRowCanonicalSha256": "fc65db5e46af2a020d313c9f5728baaea83b368bc9c1e714ce884244733753f0"
+      },
+      "producerNativeDraft": {
+        "path": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-follow49-binding/native-drafts/E040.four-slot.proposal.json",
+        "sha256": "d0df0ab775a9b6a6b157fbfe5532f75d7bcd503e85cd67016392301e89d097ab",
+        "selectedRowCanonicalSha256": "6d9cb2dd68b2d138aa1e79fea4e445596521dca6bf13c723bb7785e837045e6a"
+      },
+      "unsupportedMethodTerms": [],
+      "missingDecisiveSteps": [],
+      "remainingMethodDisagreements": [],
+      "registrationApplied": false,
+      "fullSemanticApprovalGranted": false
+    }
+  ],
+  "conclusion": "714 interior-angle property, 436 constructing line equations, and 25 sign-based quadrant inference all retain substantively supported method roles in the current source. Blind-versus-producer differences are granularity preferences, not unsupported tags or missing decisive steps. Preserve the valid old tags and apply only the three proposed minimal deltas.",
+  "methodBlockers": [],
+  "remainingMethodDisagreements": [],
+  "counts": {
+    "questions": 3,
+    "supportedMinimalVectors": 3,
+    "newDictionaryTerms": 0,
+    "newFullMathematicalReviews": 0,
+    "newSemanticApprovals": 0,
+    "newDifficultyApprovals": 0,
+    "sourceWrites": 0,
+    "registryWrites": 0,
+    "remoteWrites": 0
+  },
+  "integrationStillRequired": [
+    "The proposal still has null evidenceRefUpdate commit/path. Publish a real immutable evidence commit and bind the final native amendment/compact refs before operational apply; this comparison creates no commit and grants no registration.",
+    "Preserve historical review debt text in its old immutable artifact. In a new current-bound amendment, label inherited E060 shape-mismatch, E062 coordinate-mismatch and E040 omitted-coincidence notes as historical context or explicitly superseded under the existing source repair proof; do not present those old-source sentences as fresh findings on the corrected input.",
+    "Apply against exact candidate source blob/raw hashes and preserve all nonmethod slots and other rows. Root owns original pending first61 receipt dependency, actual Consumer and Pages."
+  ],
+  "nextAction": "Root compares this post-freeze adjudication with the unchanged blind verdict, writes the immutable amendment references, and continues the existing release dependency chain. M1 real-registration verification remains queued for the actual writer SHA."
+}

@@ -1,0 +1,747 @@
+{
+  "schemaVersion": "archive-independent-narrow-four-slot-method-review-v1",
+  "reviewer": "/root/m1_release",
+  "frozenAt": "2026-11-15T09:57:31.845023+00:00",
+  "status": "INDEPENDENT_METHOD_VERDICT_FROZEN_BEFORE_COMPARISON",
+  "scope": "Exactly three current candidate question method slots. No source repair, full semantic approval, difficulty judgment, registry write or publication.",
+  "inputDirectory": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-follow49-binding/blind-method3",
+  "inputManifestSha256": "6692bc36b457dcd7f20f0673a47b90ef70ed791c44bb88bba5879a32ce2eb3e9",
+  "inputSha256SumsSha256": "ff5b5c293843ed6fa481630dc83804503a4d38ef6be20339d47963869affc12b",
+  "officialDictionary": {
+    "commit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+    "archivePath": "docs/architecture/4slot/term-dictionary-v1.6.json",
+    "copyPath": "term-dictionary-v1.6.json",
+    "gitBlobSha": "07920194882d3924ac50e8bbffc5b723c3fc5e89",
+    "sha256": "9d55b5f1172b13c3d05802b65963a18368d50b1659b31fa36aa52a27605e579d",
+    "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+    "termCount": 756,
+    "completeDictionary": true
+  },
+  "questionAndImagePayloadsVerified": 6,
+  "dictionaryPayloadVerified": true,
+  "actualPngsViewed": 3,
+  "blindness": {
+    "usedOnlyFrozenTaskInputs": true,
+    "readSiblingProposal": false,
+    "readInspection": false,
+    "readReadme": false,
+    "readUpstreamVerdict": false,
+    "sawOldOrProposedMethodVectorsBeforeFreeze": false,
+    "existingSourceApprovalReferences": "Only opaque provenance fields from the allowed manifest were seen; referenced verdict files were not opened."
+  },
+  "bindingLimit": "Extracted student object, dictionary and image bytes were independently SHA-verified. Full candidate source-file bytes were not read because this task permits only the frozen input directory; their declared source provenance is retained and must match at integration.",
+  "selectionPolicy": "Choose sparse terms for actual decisive operations and concepts in the supplied current solution. Use exact source substrings for every term; mark unstated terminology IMPLIED and explain the derivation. Generic arithmetic and purely goal/condition labels are not automatically added. No restriction that every method-slot term must have dictionary kind=방법 is inferred from the dictionary.",
+  "rows": [
+    {
+      "examId": "E060",
+      "sourceOrdinal": 12,
+      "decision": "METHOD_SUPPORTED_ON_EXACT_FROZEN_CANDIDATE",
+      "methodTermIds": [
+        163,
+        64
+      ],
+      "methodEvidence": [
+        {
+          "termId": 163,
+          "ko": "평행사변형",
+          "dictionaryKind": "대상",
+          "supportType": "EXPLICIT",
+          "rationale": "두 쌍의 대변 길이의 같음으로 평행사변형임을 판정하고, 그 이웃한 내각의 합을 이용하는 두 결정 단계가 풀이에 직접 쓰인다. 사전의 평행사변형 용어를 이 판정·성질 적용 역할에 결속한다.",
+          "quotes": [
+            {
+              "studentQuestionPath": "questions/E060-Q12.json",
+              "field": "solution",
+              "text": "두 쌍의 대변의 길이가 각각 같으므로 사각형 $ABCD$는 평행사변형이다.",
+              "exactSubstringVerified": true
+            },
+            {
+              "studentQuestionPath": "questions/E060-Q12.json",
+              "field": "solution",
+              "text": "평행사변형의 이웃하는 두 내각의 합은 $180^\\circ$이다.",
+              "exactSubstringVerified": true
+            }
+          ],
+          "dictionaryTerm": {
+            "id": 163,
+            "ko": "평행사변형",
+            "en": [
+              "PARALLELOGRAM"
+            ],
+            "synonyms": [],
+            "kind": "대상",
+            "kindDetail": null,
+            "sourceKeys": [
+              "TPL_FIGURE_PARALLELOGRAM",
+              "TPL_QUADRILATERAL_CRITERIA",
+              "TPL_QUADRILATERAL_PROPERTIES"
+            ],
+            "usageInKeys": 3,
+            "usageInItems": 0,
+            "addedDuringItems": false
+          },
+          "dictionaryTermCanonicalSha256": "e025e8e39fa7434f32f7fbc37362db15899a7e620a8b4092bc2161c2f506fad7"
+        },
+        {
+          "termId": 64,
+          "ko": "일차방정식",
+          "dictionaryKind": "대상",
+          "supportType": "IMPLIED",
+          "rationale": "일차방정식이라는 낱말은 없지만, 미지수 x가 일차인 각도 관계식 130+x=180을 세우고 x를 정한다. 출처에 실제 표시된 관계식과 해 구하기 단계만 지칭하며 별도의 풀이를 새로 도입하지 않는다.",
+          "quotes": [
+            {
+              "studentQuestionPath": "questions/E060-Q12.json",
+              "field": "solution",
+              "text": "$130^\\circ+x=180^\\circ$",
+              "exactSubstringVerified": true
+            },
+            {
+              "studentQuestionPath": "questions/E060-Q12.json",
+              "field": "solution",
+              "text": "$x=50^\\circ$",
+              "exactSubstringVerified": true
+            }
+          ],
+          "dictionaryTerm": {
+            "id": 64,
+            "ko": "일차방정식",
+            "en": [
+              "LINEAR_EQUATION"
+            ],
+            "synonyms": [],
+            "kind": "대상",
+            "kindDetail": null,
+            "sourceKeys": [
+              "PT_M1_LINEAR_EQUATION_SOLVING",
+              "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+              "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+              "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
+              "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION"
+            ],
+            "usageInKeys": 5,
+            "usageInItems": 0,
+            "addedDuringItems": false
+          },
+          "dictionaryTermCanonicalSha256": "a63086be2767f21daf7d95848139f4f4dbf32a1bdb88841b9dd2967146a8f7fb"
+        }
+      ],
+      "visualObservation": "실제 PNG에서 AB와 CD의 표시는 각각 5 cm, AD와 BC는 각각 7 cm이고, A의 내각 130°와 이웃한 B의 내각 x가 보인다. 현재 풀이가 참조한 변·각의 대응을 확인했다.",
+      "notSelected": [
+        {
+          "termId": 32,
+          "reason": "사전에서 method 일반 사용을 금지한 사칙연산을 덧붙이지 않는다."
+        },
+        {
+          "termId": 193,
+          "reason": "합동으로 평행사변형 조건을 증명하는 새 경로는 현재 풀이에 없다."
+        },
+        {
+          "termId": 714,
+          "reason": "내각은 대상 설명이다. 이 검토의 최소 method 벡터에서는 평행사변형 성질 적용 근거 안에 포함하고 별도 중복 태그로 늘리지 않았다."
+        }
+      ],
+      "questionUid": "qid_v1_938125d560630a261f20745c0a1ebc8ed2a34d6d089330cffd255cf2a71e68a6",
+      "sourceQuestionNo": "12",
+      "sourceProvenance": {
+        "sourceArchiveFile": "original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+        "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+        "currentMainBlob": "fcd2b409ae032f3c7486667629e227050ca12ba5",
+        "candidateGitBlobSha": "5cd005567bde291b5073a9f045353063567d8bc3",
+        "candidateRawSha256": "29bf259e42d65bf24d71d8fb9216d3f1b282b3da889eabca486205845ab523cd",
+        "candidateManifestSha256": "409ce6f0e244a40e55c42be20db5ffd65a03649a0be9b59c5aef6c0336d5f782",
+        "candidateLocalManifestHead": "1e600bf5af2da249b8ef15d98270f4da518115f6",
+        "questionIdentityMapCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1"
+      },
+      "studentQuestion": {
+        "path": "questions/E060-Q12.json",
+        "sha256": "1ba6b48d6713ae8036faeb290f2d7b05c52b2b0cadfa69ec00fa6b7d3e03e753",
+        "sizeBytes": 1137,
+        "fieldNames": [
+          "id",
+          "score",
+          "questionType",
+          "layoutTag",
+          "wide",
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "question"
+        ]
+      },
+      "assets": [
+        {
+          "archivePath": "archive/assets/images/20_풍덕중_1학기_기말_중2_수학/q12.png",
+          "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+          "gitBlobSha": "843b688f3d7f70a0770c54e9259bee80b9e88c64",
+          "sha256": "dee2211d2282656d6ba6f1cad5947809c9e1bb640e26d18ff26deb18dea341d7",
+          "sizeBytes": 32112,
+          "copyPath": "assets/E060-Q12-1.png",
+          "approvedSourceAssetSha256": "dee2211d2282656d6ba6f1cad5947809c9e1bb640e26d18ff26deb18dea341d7",
+          "actuallyViewed": true,
+          "rawSha256Rechecked": true
+        }
+      ],
+      "methodTermNames": [
+        "평행사변형",
+        "일차방정식"
+      ],
+      "newDictionaryTerms": [],
+      "registrationPerformed": false,
+      "fullSemanticApprovalGranted": false,
+      "newFullMathematicalReview": false
+    },
+    {
+      "examId": "E062",
+      "sourceOrdinal": 25,
+      "decision": "METHOD_SUPPORTED_ON_EXACT_FROZEN_CANDIDATE",
+      "methodTermIds": [
+        188,
+        381,
+        150,
+        53
+      ],
+      "methodEvidence": [
+        {
+          "termId": 188,
+          "ko": "중점",
+          "dictionaryKind": "대상",
+          "supportType": "IMPLIED",
+          "rationale": "서로 마주 보는 꼭짓점의 x좌표와 y좌표를 각각 평균하여 중심을 구한 실제 식은 대각선 중점의 좌표 계산이다. 중점이라는 낱말 자체는 없어 IMPLIED로 표시한다. 삼각형 중점연결정리를 뜻하지 않는다.",
+          "quotes": [
+            {
+              "studentQuestionPath": "questions/E062-Q25.json",
+              "field": "solution",
+              "text": "$\\left(\\dfrac{-1+3}{2},\\dfrac{1+3}{2}\\right)=(1,2)$이다.",
+              "exactSubstringVerified": true
+            }
+          ],
+          "dictionaryTerm": {
+            "id": 188,
+            "ko": "중점",
+            "en": [
+              "MIDPOINT"
+            ],
+            "synonyms": [],
+            "kind": "대상",
+            "kindDetail": null,
+            "sourceKeys": [
+              "PT_COORD_MIDPOINT",
+              "TPL_MIDPOINT_DIRECT",
+              "PT_M1_SEGMENT_LENGTH_RELATIONS",
+              "TPL_MIDPOINT_DISTANCE_RELATION",
+              "PT_M1_MIDPOINT_PROJECTION_TRIANGLE_AREA"
+            ],
+            "usageInKeys": 8,
+            "usageInItems": 0,
+            "addedDuringItems": false
+          },
+          "dictionaryTermCanonicalSha256": "97c1b8f98701406377d9438a1edf1443336951ec7ab2426436bdf9fa33d3eabb"
+        },
+        {
+          "termId": 381,
+          "ko": "회전이동",
+          "dictionaryKind": "방법",
+          "supportType": "EXPLICIT_OPERATION",
+          "rationale": "중심 둘레의 180° 평면 회전으로 직선 양쪽 부분을 대응시키는 것이 넓이 이등분의 결정 근거다. 회전이동은 회전체 생성이나 원점대칭과 구별하여 사용한다.",
+          "quotes": [
+            {
+              "studentQuestionPath": "questions/E062-Q25.json",
+              "field": "solution",
+              "text": "직사각형을 중심 $(1,2)$ 둘레로 $180^\\circ$ 회전하면 원래 도형과 겹친다.",
+              "exactSubstringVerified": true
+            },
+            {
+              "studentQuestionPath": "questions/E062-Q25.json",
+              "field": "solution",
+              "text": "따라서 중심을 지나는 직선은 양쪽 부분을 서로 겹치게 하므로 넓이를 이등분한다.",
+              "exactSubstringVerified": true
+            }
+          ],
+          "dictionaryTerm": {
+            "id": 381,
+            "ko": "회전이동",
+            "en": [
+              "ROTATION_MOVE"
+            ],
+            "synonyms": [
+              "90도회전"
+            ],
+            "kind": "방법",
+            "kindDetail": null,
+            "sourceKeys": [],
+            "usageInKeys": 0,
+            "usageInItems": 1,
+            "addedDuringItems": true
+          },
+          "dictionaryTermCanonicalSha256": "da5ee1306ade9ec5db92e9e10de5d42cd3d5e8981e2eda645ef3f85f8ab871e3"
+        },
+        {
+          "termId": 150,
+          "ko": "기울기",
+          "dictionaryKind": "대상",
+          "supportType": "EXPLICIT",
+          "rationale": "두 꼭짓점 좌표에서 변화량의 비로 대각선의 기울기를 정하여 중심을 지나는 직선의 예를 구성한다.",
+          "quotes": [
+            {
+              "studentQuestionPath": "questions/E062-Q25.json",
+              "field": "solution",
+              "text": "기울기가 $\\dfrac{3-1}{3-(-1)}=\\dfrac{1}{2}$이므로 $y=\\dfrac{1}{2}x+\\dfrac{3}{2}$",
+              "exactSubstringVerified": true
+            }
+          ],
+          "dictionaryTerm": {
+            "id": 150,
+            "ko": "기울기",
+            "en": [
+              "SLOPE"
+            ],
+            "synonyms": [],
+            "kind": "대상",
+            "kindDetail": null,
+            "sourceKeys": [
+              "TPL_LINE_POINT_SLOPE",
+              "TM_TANGENT_TWO_SLOPES",
+              "TM_TANGENT_GIVEN_SLOPE"
+            ],
+            "usageInKeys": 3,
+            "usageInItems": 1,
+            "addedDuringItems": false
+          },
+          "dictionaryTermCanonicalSha256": "2e216df52b6047a2cd9f25731d83a0da48895e0729441695cb313c588aea3666"
+        },
+        {
+          "termId": 53,
+          "ko": "대입",
+          "dictionaryKind": "방법",
+          "supportType": "IMPLIED",
+          "rationale": "대입이라는 단어는 생략되어 있다. 구한 기울기와 직선 위의 알려진 점을 함께 사용하여 상수항을 정하는 연결 단계(또는 동치인 점기울기식 사용)를 대입으로 결속한다. 중심 좌표를 통과 조건에 넣는 방식이며 원점을 대칭중심으로 가정하지 않는다.",
+          "quotes": [
+            {
+              "studentQuestionPath": "questions/E062-Q25.json",
+              "field": "solution",
+              "text": "두 꼭짓점 $(-1,1),(3,3)$을 지나는 대각선: 기울기가 $\\dfrac{3-1}{3-(-1)}=\\dfrac{1}{2}$이므로 $y=\\dfrac{1}{2}x+\\dfrac{3}{2}$",
+              "exactSubstringVerified": true
+            },
+            {
+              "studentQuestionPath": "questions/E062-Q25.json",
+              "field": "solution",
+              "text": "이 다섯 식은 모두 $(1,2)$를 지나므로 직사각형의 넓이를 이등분한다.",
+              "exactSubstringVerified": true
+            }
+          ],
+          "dictionaryTerm": {
+            "id": 53,
+            "ko": "대입",
+            "en": [
+              "SUBSTITUTE"
+            ],
+            "synonyms": [],
+            "kind": "방법",
+            "kindDetail": null,
+            "sourceKeys": [
+              "TPL_H1_IDENTITY_SPECIAL_VALUE",
+              "TPL_LIMIT_DIRECT_SUBSTITUTION",
+              "TPL_FUNCTIONAL_EQUATION_SYMMETRY",
+              "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+              "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION"
+            ],
+            "usageInKeys": 11,
+            "usageInItems": 6,
+            "addedDuringItems": false
+          },
+          "dictionaryTermCanonicalSha256": "0718b96d08bb21a65cd6789cc7094833681cfcd59468e1f50decb5f4e4834d44"
+        }
+      ],
+      "visualObservation": "실제 PNG의 격자에서 직사각형의 양 끝 x좌표 -1과 3, 아래·위 y좌표 1과 3, 그 중심 (1,2)을 확인했다. 보이는 여러 직선은 그 중심에서 만난다. 이 그림은 원점 중심 도형이 아니다.",
+      "notSelected": [
+        {
+          "termId": 628,
+          "reason": "원점대칭은 정의상 원점이 중심이다. 이 문항의 회전 중심은 (1,2)이다."
+        },
+        {
+          "termId": 209,
+          "reason": "현재 결정 근거는 임의 직선에 대한 반사가 아니라 명시된 180° 회전이다."
+        },
+        {
+          "termId": 441,
+          "reason": "대각선의 중점 계산이며 삼각형의 중점연결정리를 사용하지 않는다."
+        },
+        {
+          "termId": 436,
+          "reason": "직선의방정식은 구하는 대상이다. 최소 method 벡터에서는 기울기와 통과점 대입이라는 구성 방법으로 나타낸다."
+        },
+        {
+          "termId": 110,
+          "reason": "일반 대칭성으로도 표현할 수 있으나 실제 수행 동작이 회전이동으로 명시되어 더 구체적인 381만 선택했다."
+        }
+      ],
+      "questionUid": "qid_v1_64b62553a4e8248d02d4c86f7dacfcb636a498b2acb39b641cac15c02455da77",
+      "sourceQuestionNo": "25",
+      "sourceProvenance": {
+        "sourceArchiveFile": "original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+        "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+        "currentMainBlob": "d4ef3b06eef401e568096a14ab7ba815cfcf4856",
+        "candidateGitBlobSha": "ff2f28b1abe9f01594afe8295b0c49c7eec5b124",
+        "candidateRawSha256": "666e29ccb8929dca0751e2492b7f21cb6cf98fbf23e4fec18821b54f32272cf1",
+        "candidateManifestSha256": "409ce6f0e244a40e55c42be20db5ffd65a03649a0be9b59c5aef6c0336d5f782",
+        "candidateLocalManifestHead": "1e600bf5af2da249b8ef15d98270f4da518115f6",
+        "questionIdentityMapCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1"
+      },
+      "studentQuestion": {
+        "path": "questions/E062-Q25.json",
+        "sha256": "ebee25388bd2932fad3b74c93f94c84842797575c43d09417adccfef8e87c157",
+        "sizeBytes": 1979,
+        "fieldNames": [
+          "id",
+          "score",
+          "questionType",
+          "layoutTag",
+          "wide",
+          "content",
+          "question",
+          "choices",
+          "answer",
+          "solution"
+        ]
+      },
+      "assets": [
+        {
+          "archivePath": "archive/assets/images/19_금당중_1학기_기말_중2_수학/s03.png",
+          "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+          "gitBlobSha": "0a4976b1da70587e45d4ce5b4963351b1077b715",
+          "sha256": "eba9d429b3a7f16b7b81a8ff8c6fe452fae9e2cee33bc531e633c76f81722189",
+          "sizeBytes": 137401,
+          "copyPath": "assets/E062-Q25-1.png",
+          "approvedSourceAssetSha256": "eba9d429b3a7f16b7b81a8ff8c6fe452fae9e2cee33bc531e633c76f81722189",
+          "actuallyViewed": true,
+          "rawSha256Rechecked": true
+        }
+      ],
+      "methodTermNames": [
+        "중점",
+        "회전이동",
+        "기울기",
+        "대입"
+      ],
+      "newDictionaryTerms": [],
+      "registrationPerformed": false,
+      "fullSemanticApprovalGranted": false,
+      "newFullMathematicalReview": false
+    },
+    {
+      "examId": "E040",
+      "sourceOrdinal": 24,
+      "decision": "METHOD_SUPPORTED_ON_EXACT_FROZEN_CANDIDATE",
+      "methodTermIds": [
+        53,
+        150,
+        180,
+        649,
+        654
+      ],
+      "methodEvidence": [
+        {
+          "termId": 53,
+          "ko": "대입",
+          "dictionaryKind": "방법",
+          "supportType": "IMPLIED",
+          "rationale": "대입이라는 낱말은 없지만 y=0 또는 x=0을 주어진 식에 넣어 두 절편을 계산하는 실제 단계가 명시되어 있다. 또한 결정된 a값을 b의 부등식에 넣는다.",
+          "quotes": [
+            {
+              "studentQuestionPath": "questions/E040-Q24.json",
+              "field": "solution",
+              "text": "$y = 0$일 때 $2x + 8 = 0 \\implies x = -4$이므로 $x$절편은 $-4$이다.",
+              "exactSubstringVerified": true
+            },
+            {
+              "studentQuestionPath": "questions/E040-Q24.json",
+              "field": "solution",
+              "text": "$x = 0$일 때 $y = 8$이므로 $y$절편은 $8$이다.",
+              "exactSubstringVerified": true
+            }
+          ],
+          "dictionaryTerm": {
+            "id": 53,
+            "ko": "대입",
+            "en": [
+              "SUBSTITUTE"
+            ],
+            "synonyms": [],
+            "kind": "방법",
+            "kindDetail": null,
+            "sourceKeys": [
+              "TPL_H1_IDENTITY_SPECIAL_VALUE",
+              "TPL_LIMIT_DIRECT_SUBSTITUTION",
+              "TPL_FUNCTIONAL_EQUATION_SYMMETRY",
+              "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+              "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION"
+            ],
+            "usageInKeys": 11,
+            "usageInItems": 6,
+            "addedDuringItems": false
+          },
+          "dictionaryTermCanonicalSha256": "0718b96d08bb21a65cd6789cc7094833681cfcd59468e1f50decb5f4e4834d44"
+        },
+        {
+          "termId": 150,
+          "ko": "기울기",
+          "dictionaryKind": "대상",
+          "supportType": "EXPLICIT",
+          "rationale": "4-1의 계수 읽기와 4-2의 두 점을 이용한 변화량 비 계산 모두 기울기 결정에 해당한다. 아래 그래프의 기울기는 a를 결정하는 중간값으로 실제 쓰인다.",
+          "quotes": [
+            {
+              "studentQuestionPath": "questions/E040-Q24.json",
+              "field": "solution",
+              "text": "기울기는 $x$의 계수이므로 $2$이다.",
+              "exactSubstringVerified": true
+            },
+            {
+              "studentQuestionPath": "questions/E040-Q24.json",
+              "field": "solution",
+              "text": "$\\text{기울기} = \\frac{4 - (-2)}{4 - 0} = \\frac{6}{4} = \\frac{3}{2}$",
+              "exactSubstringVerified": true
+            }
+          ],
+          "dictionaryTerm": {
+            "id": 150,
+            "ko": "기울기",
+            "en": [
+              "SLOPE"
+            ],
+            "synonyms": [],
+            "kind": "대상",
+            "kindDetail": null,
+            "sourceKeys": [
+              "TPL_LINE_POINT_SLOPE",
+              "TM_TANGENT_TWO_SLOPES",
+              "TM_TANGENT_GIVEN_SLOPE"
+            ],
+            "usageInKeys": 3,
+            "usageInItems": 1,
+            "addedDuringItems": false
+          },
+          "dictionaryTermCanonicalSha256": "2e216df52b6047a2cd9f25731d83a0da48895e0729441695cb313c588aea3666"
+        },
+        {
+          "termId": 180,
+          "ko": "평행",
+          "dictionaryKind": "조건",
+          "supportType": "EXPLICIT",
+          "rationale": "평행 조건을 기울기 일치로 바꾸고, 주어진 직선과 일치하는 경우를 따로 제외하는 결정 단계다. 기울기만 같으면 항상 서로 다른 평행선이라는 단순화는 하지 않는다.",
+          "quotes": [
+            {
+              "studentQuestionPath": "questions/E040-Q24.json",
+              "field": "solution",
+              "text": "평행해야 하므로 기울기가 같아야 한다:",
+              "exactSubstringVerified": true
+            },
+            {
+              "studentQuestionPath": "questions/E040-Q24.json",
+              "field": "solution",
+              "text": "서로 다른 두 직선이 평행해야 하므로 주어진 직선과 일치하는 경우는 제외한다:",
+              "exactSubstringVerified": true
+            }
+          ],
+          "dictionaryTerm": {
+            "id": 180,
+            "ko": "평행",
+            "en": [
+              "PARALLEL"
+            ],
+            "synonyms": [
+              "평행선"
+            ],
+            "kind": "조건",
+            "kindDetail": null,
+            "sourceKeys": [
+              "TPL_LINE_PARALLEL",
+              "PT_PARALLEL_SEGMENT_RATIO",
+              "PT_M1_PARALLELISM_CONVERSE",
+              "TPL_DISTANCE_PARALLEL_LINES",
+              "TT_LINE_TRANSLATION_RELATION"
+            ],
+            "usageInKeys": 17,
+            "usageInItems": 0,
+            "addedDuringItems": false
+          },
+          "dictionaryTermCanonicalSha256": "710d0255ebd045f57cd50805820ac86ec089830c70c4bc7fdeb6ec1685609424"
+        },
+        {
+          "termId": 649,
+          "ko": "y절편",
+          "dictionaryKind": "대상",
+          "supportType": "EXPLICIT",
+          "rationale": "y절편은 이 문항에서 단지 답의 항목이 아니라, 양의 기울기와 결합해 제2사분면 회피를 y절편≤0으로 바꾸고 직선 일치 여부를 가르는 핵심 중간량이다.",
+          "quotes": [
+            {
+              "studentQuestionPath": "questions/E040-Q24.json",
+              "field": "solution",
+              "text": "기울기가 $\\frac{3}{2} > 0$ (오른쪽 위로 향함)인 직선이 제2사분면(좌상단)을 지나지 않으려면 $y$절편이 0 이하이어야 한다:",
+              "exactSubstringVerified": true
+            },
+            {
+              "studentQuestionPath": "questions/E040-Q24.json",
+              "field": "solution",
+              "text": "주어진 직선의 식은 $y=\\frac{3}{2}x-2$이고, 구하는 직선의 $y$절편은 $-\\frac{3}{2}-b$이다.",
+              "exactSubstringVerified": true
+            }
+          ],
+          "dictionaryTerm": {
+            "id": 649,
+            "ko": "y절편",
+            "en": [
+              "Y_INTERCEPT"
+            ],
+            "synonyms": [],
+            "kind": "대상",
+            "kindDetail": null,
+            "parent": "절편",
+            "status": "ACTIVE",
+            "sourceKeys": [],
+            "usageInKeys": 0,
+            "usageInItems": 0,
+            "addedDuringItems": false,
+            "note": "절편의 다른 표기",
+            "sources": [
+              "concept-registry"
+            ]
+          },
+          "dictionaryTermCanonicalSha256": "c6d21630596f03341349c8076eafba620b0ee71762b5a58324ee1bb4a6b7f624"
+        },
+        {
+          "termId": 654,
+          "ko": "부등식의성질",
+          "dictionaryKind": "방법",
+          "supportType": "IMPLIED",
+          "rationale": "부등식의성질이라는 낱말은 없다. a-b≤0을 b≥a로 바꾸는 단계는 양변에 같은 식을 더하거나 음수를 곱할 때 부등호를 바꾸는 성질의 사용이다. 실제 출처의 부등식 변환만 결속한다.",
+          "quotes": [
+            {
+              "studentQuestionPath": "questions/E040-Q24.json",
+              "field": "solution",
+              "text": "$a - b \\le 0 \\implies b \\ge a$",
+              "exactSubstringVerified": true
+            },
+            {
+              "studentQuestionPath": "questions/E040-Q24.json",
+              "field": "solution",
+              "text": "$a = -\\frac{3}{2}$이므로 $b \\ge -\\frac{3}{2}$",
+              "exactSubstringVerified": true
+            }
+          ],
+          "dictionaryTerm": {
+            "id": 654,
+            "ko": "부등식의성질",
+            "en": [
+              "INEQUALITY_PROPERTY"
+            ],
+            "synonyms": [
+              "부등호방향",
+              "양변에음수"
+            ],
+            "kind": "방법",
+            "kindDetail": null,
+            "parent": "부등식",
+            "status": "ACTIVE",
+            "sourceKeys": [],
+            "usageInKeys": 0,
+            "usageInItems": 0,
+            "addedDuringItems": false,
+            "note": "양변에 같은 수를 더하거나 곱할 때 부등호 방향이 바뀌는 규칙",
+            "sources": [
+              "item-sample"
+            ]
+          },
+          "dictionaryTermCanonicalSha256": "27e035cf3a18abb61b9973462b8be6dbc4cc24ab52c83d177a74c7c9450b6069"
+        }
+      ],
+      "visualObservation": "실제 PNG에서 직선의 y축 교점 -2와 격자점 (4,4), 오른쪽 위로 향하는 양의 기울기를 확인했다. 두 점 좌표를 이용하는 현재 풀이의 그래프 읽기 단계와 대응한다.",
+      "notSelected": [
+        {
+          "termId": 32,
+          "reason": "일반 사칙연산은 method 태그로 추가하지 않는다."
+        },
+        {
+          "termId": 432,
+          "reason": "y에 관해 정리하는 이항은 명시된 기울기·절편 추출을 위한 준비 조작이다. 최소 벡터에서는 따로 늘리지 않는다."
+        },
+        {
+          "termId": 648,
+          "reason": "x절편은 4-1에서 구하는 대상이며, 그 계산 방법은 53의 y=0 대입으로 이미 결속한다."
+        },
+        {
+          "termId": 149,
+          "reason": "제2사분면은 주어진 제외 조건이다. 최소 method 벡터에는 그 조건을 실제로 식으로 바꾸는 y절편과 부등식 성질을 선택했다."
+        },
+        {
+          "termId": 355,
+          "reason": "일차부등식이라는 대상명보다 명시된 부등식 변환의 수행 방법인 654를 선택했다."
+        }
+      ],
+      "decisiveConditionRetained": "현재 풀이의 서로 다른 평행선 조건 및 일치하는 경우 제외를 method 근거에 포함한다. 이를 새로운 답 승인으로 확대하지 않는다.",
+      "questionUid": "qid_v1_d8fdbc567096c1e56a463bba2aa8a5227e5cd198c0a0670615a59bf69678a467",
+      "sourceQuestionNo": "24",
+      "sourceProvenance": {
+        "sourceArchiveFile": "original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js",
+        "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+        "currentMainBlob": "20a34625713e72946bf17aade5135fc66724ca31",
+        "candidateGitBlobSha": "145aa82df385c9e4a2b3c0588f46d984af699e03",
+        "candidateRawSha256": "b002b2119f4c9cfac1ee560606c0bd8d7bbcdcdf9a135ced880e2f7eada3ccc6",
+        "candidateManifestSha256": "409ce6f0e244a40e55c42be20db5ffd65a03649a0be9b59c5aef6c0336d5f782",
+        "candidateLocalManifestHead": "1e600bf5af2da249b8ef15d98270f4da518115f6",
+        "questionIdentityMapCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1"
+      },
+      "studentQuestion": {
+        "path": "questions/E040-Q24.json",
+        "sha256": "17e81c0be7ce47de8177df39558aa2049f4304045e241da71be5dd4c66dc6d93",
+        "sizeBytes": 2690,
+        "fieldNames": [
+          "id",
+          "score",
+          "questionType",
+          "layoutTag",
+          "wide",
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ]
+      },
+      "assets": [
+        {
+          "archivePath": "archive/assets/images/21_매산중_1학기_기말_중2_수학/s04.png",
+          "currentMainCommit": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+          "gitBlobSha": "ff06d07a6cb0c2a2514d6037949154f6c8243f59",
+          "sha256": "bea39d2aefcd846c399cfe121f6ddf77438c3f3bfa0970dcab03d1994ba6bb75",
+          "sizeBytes": 62535,
+          "copyPath": "assets/E040-Q24-1.png",
+          "approvedSourceAssetSha256": "bea39d2aefcd846c399cfe121f6ddf77438c3f3bfa0970dcab03d1994ba6bb75",
+          "actuallyViewed": true,
+          "rawSha256Rechecked": true
+        }
+      ],
+      "methodTermNames": [
+        "대입",
+        "기울기",
+        "평행",
+        "y절편",
+        "부등식의성질"
+      ],
+      "newDictionaryTerms": [],
+      "registrationPerformed": false,
+      "fullSemanticApprovalGranted": false,
+      "newFullMathematicalReview": false
+    }
+  ],
+  "counts": {
+    "questions": 3,
+    "supportedMethodSlots": 3,
+    "methodSlotsOnHold": 0,
+    "newDictionaryTerms": 0,
+    "newFullSemanticApprovals": 0,
+    "newDifficultyApprovals": 0,
+    "sourceWrites": 0,
+    "registryWrites": 0,
+    "remoteWrites": 0
+  },
+  "nextAction": "Send this immutable verdict SHA to root before any producer-vector disclosure. Root compares and adjudicates method vectors separately and verifies final source bindings; existing M1 actual-registration verification remains queued."
+}
