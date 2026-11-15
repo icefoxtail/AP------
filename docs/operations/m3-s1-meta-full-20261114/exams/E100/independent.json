@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E100",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E0C948452E80/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "6446ed32f8a757d1fd37ab6e16a5ab42b25e58db",
+  "inputHashes": {
+    "reviewSha256": "8da2f4176c16ece29b37a38c283043f35a00dc111d8ff1b2df000c95c43763a3",
+    "fourSlotSha256": "48b0822ae7962be57076cc8858c6c4e789314d3f95593b38ca6793ea5a96fa9f"
+  },
+  "sampledOrdinals": [
+    10,
+    22,
+    23
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_ab8dd3b8fbc2ac53c3309807b3b4a9f01386890a61051b53c90ac8f95a57eccc",
+      "status": "PASS_WITH_DEBT",
+      "note": "x만 자연수라고 하고n의정수성을명시하지않는 발문을확인. CONTENT_AMBIGUITY_EVIDENCE_DEBT 및level/bucketUNKNOWN 보류와 method SOURCE_ONLY debt를분리보존한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_b62bd3328e0f1aa05dddbee94b6a8b83e88790980d99a14569d1c5d608729627",
+      "status": "PASS_WITH_DEBT",
+      "note": "source.images 배열이동일시험지q22.png를실제로참조함을다시확인하고실물의밑변이같은계단형A/B/C정사각형을직접관측. 초기이미지누락판단을철회한다. 넓이비→변길이비→공유변을뺀둘레→넓이의표준결합bucket3 후보수용. 해설공백의SOURCE_ONLY debt는계속유지."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_8eec3d0ae976aacfbafb5881a8830031f6d67a8ca8fbca74c79c6aec65b70f0e",
+      "status": "PASS_WITH_DEBT",
+      "note": "f(x)의분자묶음인수분해와분모약분뒤연속함수값의곱에서소거구조를찾아야한다. RPM027/119부모맥락·exact-leaf gap·구조4후보수용, 실제method근거는SOURCE_ONLY debt로보존."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/independent_assets/E100-orphan-q22.png",
+      "sha256": "f3c65b7435871e438d3502c3cf6d86fced62ffc8e18e29e0bb45495ed2aaab4d",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
