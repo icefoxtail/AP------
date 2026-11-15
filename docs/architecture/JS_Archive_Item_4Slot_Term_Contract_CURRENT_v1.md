@@ -7,7 +7,7 @@
 이 문서 하나로 다른 라인(GPT·Gemini·Claude)이 문항의 4칸을 채우고 검사할 수 있게 쓴다. 규칙마다 "이유"를 한 줄 붙였다. 저장소 `main` 기준 근거는 24년·25년 시범이며, 수치는 시범 당시 값을 그대로 옮겼다.
 
 관련 문서:
-- 용어 사전 본체: [term-dictionary-v1.5.json](4slot/term-dictionary-v1.5.json) (749용어, 현행). 이전 판 [v1.4](4slot/term-dictionary-v1.4.json)(690)·[v1.3](4slot/term-dictionary-v1.3.json)(682)·[v1.2](4slot/term-dictionary-v1.2.json)(401)·[v1.1](4slot/term-dictionary-v1.1.json)(394)은 그대로 둔다(그 판으로 쓴 기록 재현용).
+- 용어 사전 본체: [term-dictionary-v1.6.json](4slot/term-dictionary-v1.6.json) (756용어, 현행). v1.6은 기존 v1.5의 749개 정의·번호·동의어를 보존하고 독립 검토한 방법 후보 7개만 추가한다. 이전 판 [v1.5](4slot/term-dictionary-v1.5.json)(749)·[v1.4](4slot/term-dictionary-v1.4.json)(690)·[v1.3](4slot/term-dictionary-v1.3.json)(682)·[v1.2](4slot/term-dictionary-v1.2.json)(401)·[v1.1](4slot/term-dictionary-v1.1.json)(394)은 그대로 둔다(그 판으로 쓴 기록 재현용).
 - 평가 고정본: [term-dictionary-v1-frozen.json](4slot/term-dictionary-v1-frozen.json) (393용어, 시범 재현용)
 - 기존 메타 입구: [JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md](JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md), 작업 안내 [docs/agents/metadata.md](../agents/metadata.md)
 - 지문 식의 기준 코드: `archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs`, 설명 [Reviewed_Exam_Meta_Registration_v2.md](Reviewed_Exam_Meta_Registration_v2.md)
@@ -186,11 +186,11 @@ method 항목의 예(IMPLIED):
 
 ### 11-1. 용어 사전
 
-현행 파일 [term-dictionary-v1.5.json](4slot/term-dictionary-v1.5.json)의 모양(아래 예시는 v1.1 때 만든 `조건`):
+현행 파일 [term-dictionary-v1.6.json](4slot/term-dictionary-v1.6.json)의 모양(아래 예시는 v1.1 때 만든 `조건`):
 
 ```json
 {
-  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
   "scorer": "flat-leaf-jaccard-v1",
   "scorerDef": "...",
   "terms": [

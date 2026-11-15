@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "m1s2-scoped-four-slot-source-rebind-v1",
+  "sourceArchiveFile": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+  "baseCommit": "bd4ab14f37d8dd9c4c86f244cba3451e32c56a5a",
+  "previousCompactSha256": "52babee33fad074be3acb6a36829ca1969ba87de13e2aebe16c3defb106a1fd1",
+  "previousSourceGitBlobSha": "78149d953d4b2678d763e76dfd21e96d31ee0c9a",
+  "currentSourceGitBlobSha": "cbbf0818a46ba808e2370bcc7716ebe25835aa9c",
+  "fullDenominator": 24,
+  "unchangedStudentPayloads": 22,
+  "changedOrdinals": [
+    14,
+    21
+  ],
+  "slotValuesChanged": 0,
+  "newFullSemanticApprovals": 0,
+  "sourceMutation": 0,
+  "reviewer": "GPT_M1_RELEASE_26FC42390A50",
+  "reviewedAt": "2026-11-15T07:39:32.279Z",
+  "scope": "Only the two repaired SVG presentations and their existing four-slot descriptors were rechecked. Existing reviews of the other 22 identical student payloads are reused. The old and repaired SVGs are not asserted to be visually identical.",
+  "review": [
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_cc8e33060ea2f9df16d5daabaeea73def88be9dcf00a86032d1d3f63fec25f9d",
+      "changedFields": [
+        "content"
+      ],
+      "existingSlots": {
+        "ordinal": 14,
+        "format": "단일 정답",
+        "given": [
+          173,
+          410,
+          220
+        ],
+        "goal": [
+          218
+        ],
+        "method": [
+          653,
+          220,
+          64
+        ],
+        "condition": [
+          289
+        ],
+        "candidates": []
+      },
+      "observations": [
+        "Rendered both current diagrams: triangular-prism net with 6/8/10 edges and rectangular face areas; trapezoidal-prism diagram with the stated base measurements and height h.",
+        "Question demand and existing solution are unchanged. Existing given net/prism/surface-area, goal height, method base-area/surface-area/linear-equation, and condition ratio remain aligned with the current presentation."
+      ],
+      "decision": "REUSE_EXISTING_SLOT_DECISIONS_AFTER_SCOPED_FIGURE_BINDING_REVIEW"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_46fefef1a967ad179d1883d34940807a2cca39be4a7bb642ddce0af5fd5a2550",
+      "changedFields": [
+        "content"
+      ],
+      "existingSlots": {
+        "ordinal": 21,
+        "format": "서술",
+        "given": [
+          158
+        ],
+        "goal": [
+          174
+        ],
+        "method": [
+          715,
+          64
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "observations": [
+        "Rendered current triangle figure. The x and x+2 labels designate exterior angles, and 58 degrees labels the opposite interior angle. The old diagram placed the upper arc differently; no old/new visual-equivalence claim is made.",
+        "Existing goal angle and method exterior-angle/linear-equation match the current prompt, figure and unchanged solution."
+      ],
+      "decision": "REUSE_EXISTING_SLOT_DECISIONS_AFTER_SCOPED_FIGURE_BINDING_REVIEW"
+    }
+  ],
+  "assets": [
+    {
+      "path": "archive/assets/images/24_왕운중_2학기_기말_중1_수학/q14-net-problem-v2.svg",
+      "ordinal": 14,
+      "sha256": "88f6969117bd4d4eed31dca63a8d55c28012fc9db80913e683070d04c57af77b"
+    },
+    {
+      "path": "archive/assets/images/24_왕운중_2학기_기말_중1_수학/q14-prism-problem-v2.svg",
+      "ordinal": 14,
+      "sha256": "58d8c5a019cf532a3c135ae255ccd046e7b78ea71a1668a27eac5b655d7e2d47"
+    },
+    {
+      "path": "archive/assets/images/24_왕운중_2학기_기말_중1_수학/q21-problem-v2.svg",
+      "ordinal": 21,
+      "sha256": "990f8b7f10261f3b84da643fc6107a61c5fdf6692b5c263a48579ddef1107d44"
+    }
+  ],
+  "mathematicalReview": "No new comprehensive mathematical or final-solver approval is claimed."
+}

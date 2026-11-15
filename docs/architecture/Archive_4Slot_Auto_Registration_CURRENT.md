@@ -29,3 +29,11 @@ UID의 권위는 기존 identity 계약의 고유 UID + source 경로 + 배열 �
 등록된 인덱스는 배포 명세에서 허용된 경우 읽기 전용 Consumer로 게시한다. 원시 증거·작성 브랜치 전체를 학생 패키지에 넣지 않는다. UI 연결은 별도 확인 범위다.
 
 중단은 `.archive-meta-register/auto/config.json`의 `fourSlotEnabled:false`다. 기존 작성물·등록 결과를 삭제하지 않는다. 수정은 원래 compact의 해당 문항만 고쳐 main에 병합하면 다시 자동 처리한다.
+
+## 명시된 원검토 보류의 운반 (2026-11-15)
+
+완전한 시험지 compact의 한 문항이 원검토에서 명시적으로 보류되었으면 해당 item에 `registrationHold`를 보존한다. 스키마는 `4slot-native-review-hold-v1`이며 UID·배열 순번·원표기 문항번호·compact ordinal, 원검토의 정확한 경로/commit/raw SHA, 보류 사유와 nextAction을 묶는다. 이 필드는 등록 승인을 만들지 않으며 검증된 경우에도 해당 UID를 `EXPLICIT_REVIEW_HOLD` pending으로 남긴다. 전체 시험지 분모와 일반 goal/method·용어 유효성 검사는 그대로 적용한다. 빈칸 허용이나 모호한 `hold: true` 규칙은 없다.
+
+현재 지원되는 원검토는 중1 1학기 `m1-s1-independent-exam-review-v1`의 `PARTIAL_METHOD_EVIDENCE_DEBT` 표본 결정과, 중2 2학기 root-acceptance·review·independent-sample·four-slot 네 문서가 결속한 `SOURCE_EVIDENCE_UNRESOLVED` 결정이다. 중2 보류는 root acceptance에 등록된 unresolved UID/ordinal/fields, review의 `BLOCKED_SOURCE_EVIDENCE`, 독립 검토자 분리와 네 원문 해시를 모두 확인한다. 근거가 누락되거나 달라지면 `INVALID_REGISTRATION_HOLD`로 남기며 등록하지 않는다. 근거 바이트는 캐시 입력과 실행 중 변경 감시에 포함된다.
+
+보류 문항을 제외한 기존 검토 문항은 계속 등록한다. 이 운반 형식은 난도 등록, 전체 의미 메타 승인, 원본 또는 풀이의 수학 검수와 별개다.
