@@ -1314,3 +1314,64 @@ for(const [name,removeLatest]of [
     assert.deepEqual(result.reasons,['NATIVE_SOURCE_PRESERVATION_REVALIDATION_FAILED']);assert.equal(result.final,undefined);
   }
 });
+
+function strictSubsetNativeFixture(t) {
+  const f=preserveNativeSubset(partialNativeReviewFixture(t)),keep=f.identity.questionUid;
+  const removed=f.ancestor.appliedRecords.filter(row=>row.questionUid!==keep);
+  const bank=structuredClone(f.nativeSource.bank);
+  for(const row of removed)bank[row.sourceOrdinal-1].content+=' unreviewed current renderer input';
+  const bytes=Buffer.from('window.questionBank='+JSON.stringify(bank)+';\n');
+  f.put('archive/exams/'+source,bytes);
+  f.nativeSource={...f.nativeSource,bytes,bank,blobSha1:crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex')};
+  Object.assign(f.receipt,{sourceBlobSha1:f.nativeSource.blobSha1,sourceRawSha256:f.sha(bytes),partialUidCount:1,totalQuestions:1,preservedMetadataApprovals:1});
+  for(const key of ['appliedRecords','appliedIdentityRecords','runtimeRecords'])f.receipt[key]=f.receipt[key].filter(row=>row.questionUid===keep);
+  f.receipt.approval.sourceRebind.selectedSubset={schemaVersion:'archive-native-source-preservation-subset-v1',
+    excludedItems:removed.map(row=>({questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal,reason:'CURRENT_SOURCE_REVIEW_REQUIRED'}))};
+  f.saveReceipt();return f;
+}
+test('strict subset source preservation retains only the exact unchanged selection and complete original receipt',t=>{
+  const f=strictSubsetNativeFixture(t),old=fs.readFileSync(path.join(f.nativeSource.root,f.ancestorPath));
+  assert.equal(f.ancestor.partialUidCount,2);assert.equal(f.receipt.partialUidCount,1);
+  for(const previous of [f.previous,structuredClone(f.question)]){
+    const result=planQuestion({...f,previous});assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  }
+  assert.deepEqual(fs.readFileSync(path.join(f.nativeSource.root,f.ancestorPath)),old);
+  assert.deepEqual(f.receipt.appliedRecords.map(row=>row.questionUid),[f.identity.questionUid]);
+});
+test('strict subset source preservation remains independent of a later excluded identity update',t=>{
+  const f=strictSubsetNativeFixture(t);
+  const excluded=f.receipt.approval.sourceRebind.selectedSubset.excludedItems[0];
+  const prior=f.ancestor.appliedIdentityRecords.find(row=>row.questionUid===excluded.questionUid);
+  const later={...prior,sourceFingerprint:sourceFingerprint(f.nativeSource.bank[excluded.sourceOrdinal-1])};
+  assert.notEqual(later.sourceFingerprint,prior.sourceFingerprint);
+  f.nativeSource.identityByJoin=new Map(f.nativeSource.identityByJoin).set(source+'#'+excluded.sourceOrdinal,later);
+  f.nativeSource.identityMap={...f.nativeSource.identityMap,
+    records:[...f.nativeSource.identityByJoin.values()].map(row=>structuredClone(row))};
+  const before=structuredClone(f.nativeSource.identityMap);
+  for(const previous of [f.previous,structuredClone(f.question)]){
+    const result=planQuestion({...f,previous});assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  }
+  assert.deepEqual(f.nativeSource.identityMap,before);
+  assert.equal(f.receipt.appliedRecords.some(row=>row.questionUid===excluded.questionUid),false);
+});
+for(const [name,mutate]of [
+  ['missing exclusions',f=>{delete f.receipt.approval.sourceRebind.selectedSubset;}],
+  ['empty exclusions',f=>{f.receipt.approval.sourceRebind.selectedSubset.excludedItems=[];}],
+  ['duplicate exclusions',f=>{f.receipt.approval.sourceRebind.selectedSubset.excludedItems.push({...f.receipt.approval.sourceRebind.selectedSubset.excludedItems[0]});}],
+  ['wrong exclusion UID',f=>{f.receipt.approval.sourceRebind.selectedSubset.excludedItems[0].questionUid='not-prior';}],
+  ['wrong exclusion ordinal',f=>{f.receipt.approval.sourceRebind.selectedSubset.excludedItems[0].sourceOrdinal=2;}],
+  ['excluded selected UID',f=>{Object.assign(f.receipt.approval.sourceRebind.selectedSubset.excludedItems[0],{questionUid:f.identity.questionUid,sourceOrdinal:f.ordinal});}],
+  ['unproved exclusion reason',f=>{f.receipt.approval.sourceRebind.selectedSubset.excludedItems[0].reason='APPROVED_ANYWAY';}],
+  ['scope promotion',f=>{f.receipt.approval.sourceRebind.selectedSubset.allowNewApprovals=true;}],
+  ['wrong original raw SHA',f=>{f.ancestor.sourceRawSha256='a'.repeat(64);updatePreservedPrior(f);}],
+  ['original excluded runtime missing',f=>{f.ancestor.runtimeRecords=f.ancestor.runtimeRecords.filter(row=>row.questionUid===f.identity.questionUid);updatePreservedPrior(f);}],
+  ['selected approval value changed',f=>{f.current.primaryMethod='unreviewed override';}],
+  ['removed every preservation marker',f=>{delete f.receipt.approval.sourceRebind;delete f.receipt.newMetadataApprovals;delete f.receipt.preservedMetadataApprovals;f.receipt.approval.evidenceRefs=structuredClone(f.ancestor.approval.evidenceRefs);}],
+])test('strict subset source preservation refuses '+name+' without new approval',t=>{
+  const f=strictSubsetNativeFixture(t);mutate(f);f.saveReceipt();
+  assert.equal(hasNativeSourcePreservationClaim({root:f.nativeSource.root,current:f.current,runtimeRecord:f.nativeSource.runtimeRecord}),true);
+  const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+  assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+});

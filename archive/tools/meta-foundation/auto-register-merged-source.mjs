@@ -208,7 +208,13 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
       const preservedSource=nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,
-        revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});
+        revalidateLeaf:ancestor=>{
+          const prior=ancestor.current||current,priorIdentity=ancestor.identity||identity;
+          const context=priorIdentity.questionUid===identity.questionUid?{pt,tpl,ownerPack}:
+            activeBindingContext({candidate:prior,check:{curriculum:prior.curriculum||prior.curriculumKey},registry,runtimeOwner:prior.metaFoundationPackId});
+          if(context.reason)return null;
+          return nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,registry,...ancestor,...context});
+        }});
       const reviewedPriorSource=!studentUnchanged&&preservedSource!==true&&reviewedFigure!==true&&reviewedRenderer!==true&&
         nativeReassessedPriorSourceRebind({receipt,nativeSource,previous,question,identity,ordinal,current,
           revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});

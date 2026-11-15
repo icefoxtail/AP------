@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "registration-readiness-order-contract-repair-v1",
+  "status": "PASS_FOCUSED_STATIC_CONTRACT_NOT_FULL_CI",
+  "basePr": 2179,
+  "head": "741baef4e25a33087c623093d8520f6443b4fc69",
+  "inheritedMainChange": 2178,
+  "productionChanges": 0,
+  "path": "tests/archive2-registration-contracts.test.mjs",
+  "beforeGitBlob": "8a35b1ca3a7eda7a99960d0792f855b58b5be3b8",
+  "afterGitBlob": "1176271e2bb9528932fdb9ce94a6e68ac849e2c2",
+  "afterSha256": "9122dc6527bab0887c5f07ca59ce442ef36e8e69b70aca2191bb38b80216fa11",
+  "candidatePath": "/workspace/scratch/26fc42390a50/ci-contract-repair/candidate/tests/archive2-registration-contracts.test.mjs",
+  "validation": [
+    {
+      "case": "before",
+      "exitCode": 1,
+      "sha256": "aad58415d0a576438ea3b59bd732f7d42720bb346a8ca0d66763caab3c062121",
+      "tail": [
+        "      at Test.start (node:internal/test_runner/test:1262:17)",
+        "      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {",
+        "    generatedMessage: false,",
+        "    code: 'ERR_ASSERTION',",
+        "    actual: false,",
+        "    expected: true,",
+        "    operator: '==',",
+        "    diff: 'simple'",
+        "  }"
+      ]
+    },
+    {
+      "case": "candidate",
+      "exitCode": 0,
+      "sha256": "45c6c9f621be8d8c9fc77745274d74bee130ef91f814e7acca60346430d26e22",
+      "tail": [
+        "\u2714 normal registration sync settles readiness before parent links and rebuilds the bound catalog (2.275066ms)",
+        "\u2139 tests 1",
+        "\u2139 suites 0",
+        "\u2139 pass 1",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 9.741535"
+      ]
+    },
+    {
+      "case": "prior_plain_catalog_counterexample",
+      "exitCode": 1,
+      "sha256": "7ac6e952c608345fb0dcc5d21c8237f19c15fdaeb2faf74e89b13234038791d7"
+    }
+  ],
+  "boundary": "Exact existing static test body is isolated with its actual read inputs; unrelated runtime catalog imports are not executed locally. Full original test file and CI remain downstream mandatory checks. The intermediate and final ready projections, rename and parent-link order, final catalog/readiness stale checks remain mandatory."
+}

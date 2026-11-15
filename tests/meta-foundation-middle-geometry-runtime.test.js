@@ -11,6 +11,7 @@ async function main() {
 const { loadBank, nativeReviewReceipt, activeBindingContext, sourceFingerprint, sourcePath } = await import("../archive/tools/meta-foundation/auto-register-merged-source.mjs");
 const { loadActiveMetaRegistry, validateActiveMetaFields } = await import("../archive/tools/meta-foundation/active-registry.mjs");
 const { isUnambiguousLegacySourceUidAlias } = await import("../archive/tools/intelligence/question-identity-contract.mjs");
+const { loadConsumer } = await import("../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs");
 const root = path.resolve(__dirname, "..");
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
 const sourceKey = (file, ordinal) => Archive2Core.normalizeFile(file) + "#" + Number(ordinal);
@@ -107,6 +108,9 @@ assert.strictEqual(registry.status, "ACTIVE", registry.errors.join("|"));
 const nativeSources = new Map();
 const nativeApprovals = new Map();
 const nativeInputs = [];
+const historicalHeldApprovals = new Map();
+const historicalHeldInputs = [];
+let currentConsumer;
 function nativeInput(metadata, row, owner = runtime) {
   const source = sourcePath(metadata.sourceArchiveFile);
   if (!nativeSources.has(source)) {
@@ -174,8 +178,162 @@ function assertNativeApproval(input, label) {
   return receiptPath;
 }
 
+function activeNativeContext(input, label) {
+  const classification = Object.fromEntries([
+    "problemTypeKey", "templateKey", "curriculum", "curriculumKey", "standardCourse",
+    "standardUnitKey", "subUnitKey", "sourceArchiveFile"
+  ].map(key => [key, input.current[key]]));
+  const check = validateActiveMetaFields(classification, input.registry, { requireFields: false });
+  assert.strictEqual(check.status, "VALIDATED", label + ": " + check.errors.join("|"));
+  assert.strictEqual(check.activeBinding, true, label);
+  const context = activeBindingContext({ candidate: input.current, check, registry: input.registry, runtimeOwner: input.runtimeOwner });
+  assert(!context.reason, label + ": " + context.reason);
+  return context;
+}
+
+// A changed source does not erase its byte-bound historical approval. It must
+// also never inherit that approval as current verified metadata. This fallback
+// proves both facts; an unreadable, changed or unproved old receipt still fails.
+function assertHistoricalNativeHeld(input, label, consumer = currentConsumer || (currentConsumer = loadConsumer(root))) {
+  const { current, identity, source, ordinal, question, nativeSource } = input;
+  const context = activeNativeContext(input, label);
+  assert.strictEqual(nativeReviewReceipt({ ...input, ...context }), null, label + ": current native approval must be rejected");
+  assert.strictEqual(nativeSource.root, root, label);
+  assert.strictEqual(nativeSource.runtimeStatus, "ACTIVE", label);
+  assert(Buffer.isBuffer(nativeSource.bytes), label);
+  const relative = "archive/exams/" + source;
+  assert.deepStrictEqual(fs.readFileSync(path.join(root, relative)), nativeSource.bytes, label + ": current source bytes");
+  assert.strictEqual(execFileSync("git", ["hash-object", "--path", relative, "--stdin"],
+    { cwd: root, input: nativeSource.bytes, encoding: "utf8" }).trim(), nativeSource.blobSha1, label);
+  const currentBank = loadBank(nativeSource.bytes.toString("utf8"), relative);
+  assert.deepStrictEqual(currentBank, nativeSource.bank, label);
+  assert.deepStrictEqual(currentBank[ordinal - 1], question, label);
+  assert.deepStrictEqual(input.previous, question, label + ": current-only cursor required");
+  assert(["FINAL_QA", "REVIEW2"].includes(current.metadataApprovalType), label);
+  const requestId = String(current.metadataRevision || "").match(/:exam-(?:final_qa|review2)-v2:([A-Za-z0-9][A-Za-z0-9_-]{0,100})$/)?.[1];
+  assert(requestId, label);
+  const receiptPath = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/" + requestId + ".json";
+  assert(current.approvalEvidence.includes(receiptPath), label);
+  const receipt = readJson(receiptPath);
+  assert.strictEqual(receipt.requestId, requestId, label);
+  assert.strictEqual(receipt.sourceArchiveFile, source, label);
+  assert.strictEqual(receipt.approval.type, current.metadataApprovalType, label);
+  for (const [rows, actual, field] of [
+    [receipt.appliedRecords, current, "metadata"],
+    [receipt.runtimeRecords, nativeSource.runtimeRecord, "runtime"],
+    [receipt.appliedIdentityRecords, identity, "identity"]
+  ]) {
+    const selected = rows.filter(row => row.questionUid === current.questionUid);
+    assert.strictEqual(selected.length, 1, label + ": exact historical " + field);
+    assert.deepStrictEqual(selected[0], actual, label + ": exact historical " + field);
+  }
+  assert(/^[a-f0-9]{40}$/.test(receipt.sourceBlobSha1), label);
+  assert.notStrictEqual(receipt.sourceBlobSha1, nativeSource.blobSha1, label);
+  const oldBytes = execFileSync("git", ["cat-file", "blob", receipt.sourceBlobSha1], { cwd: root, maxBuffer: 16 * 1024 * 1024 });
+  assert.strictEqual(sha256(oldBytes), receipt.sourceRawSha256, label);
+  assert.strictEqual(execFileSync("git", ["hash-object", "--path", relative, "--stdin"],
+    { cwd: root, input: oldBytes, encoding: "utf8" }).trim(), receipt.sourceBlobSha1, label);
+  const oldBank = loadBank(oldBytes.toString("utf8"), relative);
+  assert.strictEqual(oldBank.length, receipt.expectedQuestionCount ?? receipt.totalQuestions, label);
+  assert.strictEqual(oldBank.length, currentBank.length, label);
+  const oldQuestion = oldBank[ordinal - 1];
+  assert(oldQuestion, label);
+  assert.notDeepStrictEqual(question, oldQuestion, label + ": unchanged selections require an actual preservation receipt");
+  const oldIdentities = new Map(receipt.appliedIdentityRecords.map(row => [row.questionUid, row]));
+  const oldIdentityMap = { ...nativeSource.identityMap,
+    records: nativeSource.identityMap.records.map(row => oldIdentities.get(row.questionUid) || row) };
+  const oldIdentityByJoin = new Map(nativeSource.identityByJoin);
+  for (const row of oldIdentities.values()) oldIdentityByJoin.set(sourceKey(row.sourceArchiveFile, row.sourceOrdinal), row);
+  const historicalInput = { ...input, question: oldQuestion, previous: oldQuestion,
+    nativeSource: { ...nativeSource, bytes: oldBytes, blobSha1: receipt.sourceBlobSha1, bank: oldBank,
+      identityMap: oldIdentityMap, identityByJoin: oldIdentityByJoin } };
+  assert.strictEqual(assertNativeApproval(historicalInput, label + ": immutable historical approval"), receiptPath, label);
+
+  const resolved = consumer.resolvedBySource.get(sourceKey(source, ordinal));
+  const page = consumer.pageByUid.get(current.questionUid);
+  assert(resolved && page, label + ": current Consumer row required");
+  assert.strictEqual(resolved.questionUid, current.questionUid, label);
+  assert.strictEqual(page.uid, current.questionUid, label);
+  assert.strictEqual(resolved.sourceFingerprint, sourceFingerprint(question), label);
+  assert.strictEqual(page.verifiedEligible, false, label);
+  assert.strictEqual(page.automatic, false, label);
+  for (const field of ["problemTypeKey", "templateKey", "rpmPrimaryRecordId", "L1", "L2", "L3", "L4",
+    "rpmL1", "rpmL2", "rpmL3", "rpmL4"]) assert.strictEqual(page[field], null, label + ": " + field);
+  const gate = Archive2Core.eligibility(resolved, { catalog: consumer.catalog });
+  assert.strictEqual(gate.ok, false, label);
+  if (page.metaProjectionFailureReason === "DISPLAY_PROJECTION_FINGERPRINT_MISMATCH") {
+    assert.notStrictEqual(sourceFingerprint(question), current.sourceFingerprint, label);
+    assert.strictEqual(resolved.sourceStatus, "HOLD", label);
+    assert(gate.reasons.includes("source_release"), label);
+  } else {
+    // The legacy fingerprint omits the alternate question field. A whole
+    // question delta is already proved above. This second observed policy must
+    // independently block its current metadata; a generic null is insufficient.
+    assert.strictEqual(page.metaProjectionFailureReason, "DISPLAY_PROJECTION_COURSE_NOT_ALLOWED", label);
+    assert.strictEqual(sourceFingerprint(question), current.sourceFingerprint, label);
+    assert.strictEqual(resolved.sourceStatus, "VERIFIED", label);
+    assert(gate.reasons.includes("taxonomy"), label);
+    assert(gate.reasons.includes("course_namespace_invalid"), label);
+  }
+  assert.strictEqual(consumer.ProblemBankMeta.query([page], {}, { profile: "VERIFIED" }).length, 0, label);
+  // Original raw-source manual/general selection is a separate user policy.
+  // directSelectable/defaultSelectable are deliberately not approval indicators.
+  return receiptPath;
+}
+
+function assertCurrentOrHistoricalNative(input, label, remember) {
+  const uid = input.current.questionUid;
+  if (nativeReviewReceipt({ ...input, ...activeNativeContext(input, label) })) {
+    const receiptPath = assertNativeApproval(input, label);
+    if (remember) {
+      nativeApprovals.set(uid, receiptPath);
+      if (!nativeInputs.some(existing => existing.current.questionUid === uid)) nativeInputs.push(input);
+    }
+    return { current: true, receiptPath };
+  }
+  const receiptPath = assertHistoricalNativeHeld(input, label);
+  if (remember) {
+    historicalHeldApprovals.set(uid, receiptPath);
+    if (!historicalHeldInputs.some(existing => existing.current.questionUid === uid)) historicalHeldInputs.push(input);
+  }
+  return { current: false, receiptPath };
+}
+
+function assertHeldRejectionCases(input, consumer) {
+  const cases = [
+    ["changed historical metadata", { current: { ...input.current, tagStatus: "review_required" } }],
+    ["changed historical runtime", { nativeSource: { ...input.nativeSource,
+      runtimeRecord: { ...input.nativeSource.runtimeRecord, tagStatus: "review_required" } } }],
+    ["changed historical identity", { identity: { ...input.identity, sourceFingerprint: "unproved" } }],
+    ["changed current question", { question: { ...input.question, content: "unproved current payload" } }],
+    ["changed current bytes", { nativeSource: { ...input.nativeSource,
+      bytes: Buffer.concat([input.nativeSource.bytes, Buffer.from("\n")]) } }],
+    ["changed current Git blob", { nativeSource: { ...input.nativeSource, blobSha1: "0".repeat(40) } }],
+    ["missing historical approval evidence", { current: { ...input.current, approvalEvidence: [] } }],
+    ["unproved cursor", { previous: { ...input.previous, answer: "unproved cursor" } }]
+  ];
+  for (const [label, change] of cases) assert.throws(() => assertHistoricalNativeHeld({ ...input, ...change }, label, consumer),
+    { name: "AssertionError" }, label);
+  const uid = input.current.questionUid, page = consumer.pageByUid.get(uid);
+  const changedPage = fields => ({ ...consumer, pageByUid: new Map(consumer.pageByUid).set(uid, { ...page, ...fields }) });
+  const exposed = [
+    ["current verified approval exposure", changedPage({ verifiedEligible: true })],
+    ["current automatic selection exposure", changedPage({ automatic: true })],
+    ["current classification exposure", changedPage({ problemTypeKey: input.current.problemTypeKey })],
+    ["current RPM exposure", changedPage({ rpmPrimaryRecordId: "unproved-rpm" })],
+    ["current RPM group exposure", changedPage({ rpmL4: "unproved-rpm-label" })],
+    ["unproved projection rejection", changedPage({ metaProjectionFailureReason: "unproved-null" })],
+    ["inconsistent current source release", { ...consumer, resolvedBySource: new Map(consumer.resolvedBySource)
+      .set(sourceKey(input.source, input.ordinal), { ...consumer.resolvedBySource.get(sourceKey(input.source, input.ordinal)),
+        sourceStatus: consumer.resolvedBySource.get(sourceKey(input.source, input.ordinal)).sourceStatus === "VERIFIED" ? "HOLD" : "VERIFIED" }) }]
+  ];
+  for (const [label, candidate] of exposed) assert.throws(() => assertHistoricalNativeHeld(input, label, candidate),
+    { name: "AssertionError" }, label);
+  return cases.length + exposed.length;
+}
+
 function verifyHistoricalCohorts(index, remember = false) {
-  let unchanged = 0, reviewedTransitions = 0;
+  let unchanged = 0, reviewedTransitions = 0, currentHeldTransitions = 0;
   for (const [uid, baseline] of historicalByUid) {
     const entries = index.get(uid) || [];
     assert.strictEqual(entries.length, 1, "historical runtime UID missing/duplicated: " + uid);
@@ -186,24 +344,21 @@ function verifyHistoricalCohorts(index, remember = false) {
       unchanged += 1;
       continue;
     }
-    // A flag or version string is insufficient. Use the production verifier
-    // against the current source bytes, UID map, exact ACTIVE binding, metadata,
-    // runtime owner and applied receipt, including any legitimate pack move.
+    // A flag or version string is insufficient. Prove a current native approval,
+    // or the exact immutable historical approval plus its rejected current
+    // Consumer use. The latter never enters the current nativeApprovals map.
     const metadata = currentQuestionMetadata.get(uid);
     // The production verifier also supports exact preservation of an existing
     // META_PIPELINE_AUDIT. It replays the immutable prior audit and reviewed D5
     // receipt; the approval kind alone never authorizes a historical transition.
     assert(metadata && ["FINAL_QA", "REVIEW2", "META_PIPELINE_AUDIT"].includes(metadata.metadataApprovalType), uid);
     const input = nativeInput(metadata, row, entry);
-    const receiptPath = assertNativeApproval(input, "historical reviewed transition: " + uid);
-    if (remember) {
-      nativeApprovals.set(uid, receiptPath);
-      nativeInputs.push(input);
-    }
+    const verified = assertCurrentOrHistoricalNative(input, "historical reviewed transition: " + uid, remember);
+    if (!verified.current) currentHeldTransitions += 1;
     reviewedTransitions += 1;
   }
   assert.strictEqual(unchanged + reviewedTransitions, historicalByUid.size);
-  return { unchanged, reviewedTransitions };
+  return { unchanged, reviewedTransitions, currentHeldTransitions };
 }
 const preservedCohorts = verifyHistoricalCohorts(activeRuntimeByUid, true);
 const currentReviewedRows = historical.cohorts["1.0.3"].map(([uid]) => activeRuntimeByUid.get(uid)[0]);
@@ -215,8 +370,7 @@ for (const entry of [...currentReviewedRows, ...additionalReviewedRows]) {
   assert(metadata, row.questionUid);
   if (["FINAL_QA", "REVIEW2"].includes(metadata.metadataApprovalType) || nativeApprovals.has(row.questionUid)) {
     const input = nativeInput(metadata, row, entry);
-    nativeApprovals.set(row.questionUid, assertNativeApproval(input, row.questionUid));
-    if (!nativeInputs.some(existing => existing.current.questionUid === row.questionUid)) nativeInputs.push(input);
+    assertCurrentOrHistoricalNative(input, row.questionUid, true);
   } else {
     assert.strictEqual(metadata.metadataApprovalType, "META_PIPELINE_AUDIT", row.questionUid);
     assert(metadata.approvalEvidence.some((file) => file.endsWith(".source-parity.json")), row.questionUid);
@@ -248,7 +402,18 @@ for (const [label, entries] of invalidCohortCases) {
   const invalid = new Map(activeRuntimeByUid).set(historicalUid, entries);
   assert.throws(() => verifyHistoricalCohorts(invalid), { name: "AssertionError" }, label);
 }
-console.log(`PASS historical cohorts 904/47/24: ${preservedCohorts.unchanged} unchanged, ${preservedCohorts.reviewedTransitions} byte-bound reviewed transitions; ${invalidCohortCases.length} rejected corruptions`);
+console.log(`PASS historical cohorts 904/47/24: ${preservedCohorts.unchanged} unchanged, ${preservedCohorts.reviewedTransitions} byte-bound historical transitions (${preservedCohorts.currentHeldTransitions} currently unavailable for verified metadata); ${invalidCohortCases.length} rejected corruptions`);
+
+if (historicalHeldInputs.length) {
+  const representatives = new Map();
+  for (const input of historicalHeldInputs) {
+    const reason = currentConsumer.pageByUid.get(input.current.questionUid).metaProjectionFailureReason;
+    if (!representatives.has(reason)) representatives.set(reason, input);
+  }
+  let rejected = 0;
+  for (const input of representatives.values()) rejected += assertHeldRejectionCases(input, currentConsumer);
+  console.log(`PASS ${historicalHeldInputs.length} immutable historical approvals with current native/verified/automatic use rejected; ${rejected} rejected corruptions across ${representatives.size} observed denial policies`);
+}
 
 const reviewedInput = nativeInputs.find(input => ["FINAL_QA", "REVIEW2"].includes(input.current.metadataApprovalType));
 if (reviewedInput) {
@@ -343,7 +508,7 @@ for (const row of runtime.records) {
   } else {
     assert(["1.0.2", "1.0.3"].includes(row.metaFoundationPackVersion) ||
       currentQuestionMetadata.get(row.questionUid)?.metadataApprovalType === "META_PIPELINE_AUDIT" ||
-      nativeApprovals.has(row.questionUid), row.questionUid);
+      nativeApprovals.has(row.questionUid) || historicalHeldApprovals.has(row.questionUid), row.questionUid);
     assert.strictEqual(row.l4Disposition, "ASSIGNED", row.questionUid);
     assert(activeTemplates.has(row.templateKey), row.templateKey);
     }

@@ -85,25 +85,24 @@ test("reviewed path-and-ordinal scope links materialize verified UID assignments
   }
 });
 
-test("normal registration sync refreshes parent links and then rebuilds the bound catalog", () => {
+test("normal registration sync settles readiness before parent links and rebuilds the bound catalog", () => {
   const source = read("archive/build_db.py");
   const start = source.indexOf("def run_archive_registration_sync():");
   assert.ok(start >= 0, "registration sync entrypoint exists");
   const sync = source.slice(start);
   const runtimeRename = sync.indexOf("sync-runtime-source-path-renames.mjs");
   const parentLinks = sync.indexOf("build-basic-scope-parent-links.mjs");
-  const catalogWrites = [...sync.matchAll(/build-archive2-catalog\.mjs/g)]
-    .map((match) => match.index)
-    .filter((index) => !sync.slice(index, index + 80).includes("--check"));
+  const readyProjections = [...sync.matchAll(/build-archive2-ready-catalog\.mjs/g)]
+    .map((match) => match.index);
   const catalogCheck = sync.indexOf('build-archive2-catalog.mjs", "--check"');
-  const finalProjection = sync.indexOf('build-archive2-ready-catalog.mjs');
+  const [intermediateProjection, finalProjection] = readyProjections;
 
-  assert.ok(runtimeRename >= 0 && runtimeRename < parentLinks,
-    "runtime input renames must finish before parent links are regenerated");
-  assert.ok(catalogWrites.length > 0 && runtimeRename < catalogWrites[0],
-    "an intermediate catalog/manifest must include any runtime rename before parent-link generation");
-  assert.ok(catalogWrites.some((index) => index < parentLinks),
-    "a current intermediate catalog/manifest must be materialized before the parent-link generator consumes it");
+  assert.equal(readyProjections.length, 2,
+    "registration must settle catalog/readiness both before and after parent-link generation");
+  assert.ok(runtimeRename >= 0 && runtimeRename < intermediateProjection,
+    "the intermediate catalog/readiness must include any runtime rename");
+  assert.ok(intermediateProjection < parentLinks,
+    "runtime readiness must be settled before parent links bind their authority inputs");
   assert.ok(finalProjection > parentLinks,
     "the final catalog/readiness fixed point must be rebuilt after parent links change");
   assert.ok(catalogCheck > finalProjection,

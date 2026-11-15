@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "native-source-preservation-release-verification-v1",
+  "status": "PASS_LOCAL_BOUNDED_PENDING_ROOT_PR_CI",
+  "basePr": 2179,
+  "basePrHead": "741baef4e25a33087c623093d8520f6443b4fc69",
+  "latestMainObservedByRoot": "3656527970d596d88ea984733058f0ba5bcccfef",
+  "scope": {
+    "ownSources": 2,
+    "ownSourceQuestionCount": 47,
+    "ownSelectedPreservations": 16,
+    "ownExcludedCurrentChanged": 2,
+    "newApprovals": 0,
+    "sourceEdits": 0,
+    "canonicalRegistryEdits": 0,
+    "metadataOrRuntimeCommittedDirectly": 0
+  },
+  "sourceBindings": [
+    {
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "currentSourceBlob": "e4bd31bf6103609c12d2f6c3a77adbc5b6281aa9",
+      "selected": 3,
+      "priorReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e001-release-20261115.json",
+        "sha256": "17dc2a38fc776f213e24b6452652b8d2e8fef9e17dfd6718385a4651100082e9"
+      },
+      "excludedItems": [
+        {
+          "questionUid": "qid_v1_0db703b21a0a6fb130d81f94cc4091088d55267e1e70ba29de11299b9e7668e5",
+          "sourceOrdinal": 5,
+          "reason": "CURRENT_SOURCE_REVIEW_REQUIRED"
+        },
+        {
+          "questionUid": "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+          "sourceOrdinal": 24,
+          "reason": "CURRENT_SOURCE_REVIEW_REQUIRED"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m3/2mid/26_왕운중_2학기_중간_중3_기출.js",
+      "currentSourceBlob": "9c747d25a877dc2fe6e28ee1d885ffd1c160ae5d",
+      "selected": 13,
+      "priorReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e002-release-20261115.json",
+        "sha256": "897786b827a9a42025fd935b7f30ed70b23bca8ff9c7c0b23a7dc53754f23725"
+      },
+      "excludedItems": []
+    }
+  ],
+  "validated": {
+    "officialDryWritePreserved": 16,
+    "canonicalConsumer": 16,
+    "nativeReuse": 16,
+    "readOnlyReplay": 16,
+    "replayWrites": 0,
+    "difficultyRowsUnchanged": 28890,
+    "outsideMetadataUnchanged": 28874,
+    "runtimeBaseline": {
+      "MIDDLE_GEOMETRY": 1409,
+      "MIDDLE2": 36,
+      "aggregate": 1445,
+      "outsideSelectedGeometryUnchanged": 1393,
+      "otherMiddle2Unchanged": 36
+    },
+    "registrarFocusedTests": {
+      "pass": 17,
+      "fail": 0
+    },
+    "nativePreservationFocusedTests": {
+      "pass": 68,
+      "fail": 0
+    },
+    "historyCurrentContract": {
+      "currentNativeApprovals": 16,
+      "immutableHistoricalApprovalOnly": 8,
+      "currentSourceHold": 7,
+      "currentCourseDisplayBlocked": 1,
+      "currentNativeRejected": 8,
+      "negativeChecksOwnFpPolicy": 15,
+      "negativeChecksM3TwoPolicyRepresentatives": 30
+    },
+    "finalHelperNativeRead": {
+      "own": 16,
+      "m3ParallelFrozenFixture": 88,
+      "total": 104,
+      "registrationRerun": 0,
+      "consumerRebuild": 0
+    }
+  },
+  "contract": {
+    "strictSubset": "Exact selected/excluded partition of the complete original PARTIAL_UIDS receipt; whole old native approval replay; unchanged selected source/approval/identity; no new values.",
+    "futureExcludedIdentity": "Verified old identity context persists through the final ancestor; later excluded identity changes cannot revoke or promote the selected approval.",
+    "currentConsumer": "Immutable history and current native reuse are separate. Current native is null for excluded changes; verified/automatic/query and PT/TPL/RPM group exposure remain denied by the observed source-FP or course-namespace policy.",
+    "manualOriginalSelection": "Existing direct/general raw-source selection is unchanged; direct/default flags are not metadata approval indicators."
+  },
+  "proofs": [
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-e001-native-drift/official-preservation16-registration.json",
+      "sha256": "eae3141046dc446d459d5d190b8e59b68c331e5d57c1ca478757c5ce34a988f3",
+      "bytes": 4614
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-e001-native-drift/official-preservation16-consumer-native-replay.json",
+      "sha256": "4b953dd6dc04f8668fbf9def40176e1280ec4f51a9e653fdb0b58f4911bfea3a",
+      "bytes": 10656
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-e001-native-drift/runtime-baseline-cas.json",
+      "sha256": "0984577d0ec8ca497e94b63f6eae215bd83ace8bf8daf632350cbbd2516871a7",
+      "bytes": 1335
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-e001-native-drift/historical-current-contract18-v2.json",
+      "sha256": "2dc99aaa05bec1d7552f69aef56daad8f580448e85d6c6addbd677b4adc05b5f",
+      "bytes": 13400
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-e001-native-drift/historical-current-contract-excluded6.json",
+      "sha256": "b484d70c140be45e9982869bb9261d46c5db737b57d8d13a6e93750277af22a2",
+      "bytes": 6086
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-e001-native-drift/final-native-read104.json",
+      "sha256": "d0f5afc421ca4db168f4a0716b5112d1bbc81b56affa0dd04be13ae8a7a47544",
+      "bytes": 35711
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-e001-native-drift/subset-registrar-focused-v3.tap",
+      "sha256": "f21dd8ec870e43d78581db8c176400b876ead5e78a47f1430dc930fa0bb1ba47",
+      "bytes": 3916
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-e001-native-drift/subset-native-focused-final.tap",
+      "sha256": "01e945247fc562fe1799c20898322273a4d9e8784d5e1693e0c44386aaa10919",
+      "bytes": 18632
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/pr2179-e001-native-drift/subset-future-excluded-before-v3.tap",
+      "sha256": "a732a6aafd447d93991abe8bcffb3a846b113dbb7724bbd5057536e3e72b6071",
+      "bytes": 1476
+    }
+  ],
+  "independentPolicyReference": {
+    "path": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/e001-selection-policy-read/independent-read-review.json",
+    "sha256": "c43b3e3518e1c39004bece8f830242606711781860f27c5ac56ad667f3834250"
+  },
+  "deferred": {
+    "E001Changed2RendererProof": {
+      "commit": "43746ff47e39cdfb93d2cadfd871dd3afa864e70",
+      "independentReviewSha256": "07ba1892c814643d3d769892d48c0fc07818db8ea69ddc2e349fd29842b17df2",
+      "rendererContinuitySha256": "269ac0d2625d85b381b9fa9e6061dc9d3bef7f1279dec51253a7e1f494c5008a",
+      "officialTypedValidation": "NOT_RUN",
+      "currentApprovalOrHoldResolutionClaim": false
+    }
+  },
+  "limits": {
+    "newMathOrSemanticReview": 0,
+    "excludedM3S1ActualSourceReads": 0,
+    "remoteWrites": 0,
+    "actualMainRegistration": "NOT_RUN",
+    "pages": "NOT_RUN",
+    "fullRepositoryCI": "REQUIRED_ON_ROOT_PR",
+    "preliminaryUnfilteredNativeTest": "376 passed; 1 pinned excluded-M3S1 fixture object unavailable. No excluded source was hydrated or read. Final 68 scoped tests cover this change; this preliminary run is not a full PASS."
+  }
+}

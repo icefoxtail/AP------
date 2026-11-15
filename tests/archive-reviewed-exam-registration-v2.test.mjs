@@ -5362,3 +5362,63 @@ test("REVIEW2 overrides: consumer verification passes only for recorded REVIEW2 
   // registered value that no longer matches the record -> refused
   assert.throws(() => verifyConsumerValues(f.root, review2, runtime, catalog, { sourceValueOverrides: [{ ...overrides[0], registeredValue: "other" }] }), /Consumer metadata conflict/);
 });
+
+function strictSubsetRegistrarFixture(t) {
+  const f=fixture(t),sourcePath='archive/exams/'+f.request.sourceArchiveFile;
+  // This fixture must be a complete production-native approval, not only a
+  // minimal registrar fixture with unindexed rules or an ownerless template.
+  const rulesPath=CANON+'/metadata_rules.json';f.put(rulesPath,{status:'ACTIVE'});
+  const index=f.read(CANON+'/registry_index.json');index.status='ACTIVE';index.canonicalSources.push({path:rulesPath});f.put(CANON+'/registry_index.json',index);
+  const conditions=f.read(CANON+'/condition_registry.json');conditions.status='ACTIVE';f.put(CANON+'/condition_registry.json',conditions);
+  f.request.registryChanges.find(row=>row.path.endsWith('/taxonomy.json')).after.templates[0].ownerPack='NEW_COURSE';
+  const metadata=f.read(META),identity=f.read('archive/data/question_identity_map.json');
+  for(const doc of [metadata,identity]){doc.records[0].contentFingerprint=auditContentFingerprint(f.q);doc.records.push({...structuredClone(doc.records[0]),questionUid:'uid2',sourceOrdinal:2});}
+  f.put(META,metadata);f.put('archive/data/question_identity_map.json',identity);
+  const oldBank=[f.q,{...f.q,id:2}],bytes='window.questions='+JSON.stringify(oldBank)+';\n';f.put(sourcePath,bytes);
+  f.request.expectedSourceBlobSha1=blob(bytes);f.request.expectedQuestionCount=2;f.request.scope='PARTIAL_UIDS';
+  f.request.items.push({...structuredClone(f.request.items[0]),questionUid:'uid2',sourceOrdinal:2});
+  execFileSync('git',['init','-q'],{cwd:f.root});execFileSync('git',['hash-object','-w',sourcePath],{cwd:f.root});
+  registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const priorPath='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/'+f.request.requestId+'.json';
+  const priorRef={path:priorPath,sha256:hash(fs.readFileSync(path.join(f.root,priorPath)))};
+  const currentBank=[f.q,{...f.q,id:2,content:'unreviewed current second item'}];
+  const currentBytes='window.questions='+JSON.stringify(currentBank)+';\n';f.put(sourcePath,currentBytes);
+  const request={schemaVersion:f.request.schemaVersion,requestId:'strict-subset-preserve',scope:'PARTIAL_UIDS',
+    examUid:f.request.examUid,sourceArchiveFile:f.request.sourceArchiveFile,expectedSourceBlobSha1:blob(currentBytes),expectedQuestionCount:2,
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'preserve existing native subset',evidenceRefs:[...f.evidenceRefs,priorRef],
+      sourceRebind:{priorReceiptRef:priorRef,selectedSubset:{schemaVersion:'archive-native-source-preservation-subset-v1',
+        excludedItems:[{questionUid:'uid2',sourceOrdinal:2,reason:'CURRENT_SOURCE_REVIEW_REQUIRED'}]}}},
+    items:[{questionUid:'uid1',sourceOrdinal:1,before:{},after:{},reason:'Preserve the unchanged selection only',evidenceRefs:f.evidenceRefs}]};
+  return {...f,request,priorPath,priorRef,sourcePath,currentBank};
+}
+test('strict subset registrar keeps the complete prior approval and leaves the changed excluded state untouched',t=>{
+  const f=strictSubsetRegistrarFixture(t),prior=fs.readFileSync(path.join(f.root,f.priorPath)),metadata=f.read(META),
+    identity=fs.readFileSync(path.join(f.root,'archive/data/question_identity_map.json')),
+    runtime=f.read('archive/data/meta-foundation/runtime/new-course-v1.json'),source=fs.readFileSync(path.join(f.root,f.sourcePath));
+  const dry=registerReviewedExamV2({root:f.root,request:f.request});assert.equal(dry.totalQuestions,1);assert.equal(dry.newMetadataApprovals,0);
+  const write=registerReviewedExamV2({root:f.root,request:f.request,write:true});assert.equal(write.preservedMetadataApprovals,1);
+  assert.deepEqual(f.read(META).records.find(r=>r.questionUid==='uid2'),metadata.records.find(r=>r.questionUid==='uid2'));
+  assert.deepEqual(f.read('archive/data/meta-foundation/runtime/new-course-v1.json').records.find(r=>r.questionUid==='uid2'),runtime.records.find(r=>r.questionUid==='uid2'));
+  assert.deepEqual(fs.readFileSync(path.join(f.root,'archive/data/question_identity_map.json')),identity);
+  assert.deepEqual(fs.readFileSync(path.join(f.root,f.sourcePath)),source);assert.deepEqual(fs.readFileSync(path.join(f.root,f.priorPath)),prior);
+  assert.equal(registerReviewedExamV2({root:f.root,request:f.request}).replay,true);
+});
+for(const [name,change]of [
+  ['missing exclusion',f=>{delete f.request.approval.sourceRebind.selectedSubset;}],
+  ['empty exclusion',f=>{f.request.approval.sourceRebind.selectedSubset.excludedItems=[];}],
+  ['duplicate exclusion',f=>{f.request.approval.sourceRebind.selectedSubset.excludedItems.push({...f.request.approval.sourceRebind.selectedSubset.excludedItems[0]});}],
+  ['non-prior selection',f=>{f.request.items[0].questionUid='uid2';}],
+  ['duplicate selection',f=>{f.request.items.push({...f.request.items[0]});}],
+  ['superset without exclusion',f=>{f.request.items.push({...f.request.items[0],questionUid:'uid2',sourceOrdinal:2});}],
+  ['wrong original source',f=>{const r=f.read(f.priorPath);r.sourceBlobSha1='0'.repeat(40);f.put(f.priorPath,r);f.priorRef.sha256=hash(fs.readFileSync(path.join(f.root,f.priorPath)));}],
+  ['excluded approval drift',f=>{const d=f.read(META);d.records.find(r=>r.questionUid==='uid2').fieldStatus.problemType='approved_forged';f.put(META,d);}],
+  ['excluded identity drift',f=>{const p='archive/data/question_identity_map.json',d=f.read(p);d.records.find(r=>r.questionUid==='uid2').sourceFingerprint='0'.repeat(64);f.put(p,d);}],
+  ['excluded runtime drift',f=>{const p='archive/data/meta-foundation/runtime/new-course-v1.json',d=f.read(p);d.records.find(r=>r.questionUid==='uid2').templateKey='UNAPPROVED';f.put(p,d);}],
+  ['changed selected question',f=>{f.currentBank[0].solutionImage='assets/unreviewed.svg';const b='window.questions='+JSON.stringify(f.currentBank)+';\n';f.put(f.sourcePath,b);f.request.expectedSourceBlobSha1=blob(b);}],
+  ['selected new approval value',f=>{f.request.items[0].before={level:'중'};f.request.items[0].after={level:'상'};}],
+])test('strict subset registrar refuses '+name+' before writing',t=>{
+  const f=strictSubsetRegistrarFixture(t);change(f);const before=fs.readFileSync(path.join(f.root,META));
+  assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request,write:true}));
+  assert.deepEqual(fs.readFileSync(path.join(f.root,META)),before);
+  assert.equal(fs.existsSync(path.join(f.root,'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/strict-subset-preserve.json')),false);
+});

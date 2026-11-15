@@ -566,7 +566,7 @@ valid native reuse 및 stale native 거부 계약은 유지한다. 배치 회귀
 
 `approval.sourceRebind.priorReceiptRef`로 원본 파일만 다시 결속한 `PARTIAL_UIDS` 영수증은
 기존 그림·해설 검토 근거를 없애지 않는다. AutoMeta는 SHA로 결속된 원 영수증까지 이어서 확인한다.
-각 연결에서 시험·원본 경로·전체 분모·선택 UID와 순번이 같고, 실제 Git 원본의 선택 문항 전체 객체가
+기본 연결에서는 시험·원본 경로·전체 분모·선택 UID와 순번이 같고, 실제 Git 원본의 선택 문항 전체 객체가
 같아야 한다. metadata와 runtime은 revision 및 새 영수증 경로를 추가한 evidence 목록 외 모든 값이
 동일해야 하며, identity는 전체 객체가 동일해야 한다. 새 승인·registry 변경·fingerprint repair는 허용하지 않는다.
 
@@ -582,6 +582,31 @@ proof 검증을 생략하지 않는다. cursor가 이미 current여도 원 solut
 revision과 원 영수증·evidence append 관계를 확인하여 producer 우회를 차단한다. JSON 파싱 성공만으로
 정상 영수증으로 간주하지 않으며, 실제 source의 Git/raw SHA와 전체 분모까지 일치해야 한다.
 기존 FULL 보존과 typed source-review/renderer sidecar 계약은 별도로 그대로 유지한다.
+
+### 변경 문항을 제외하는 엄격한 부분 보존
+
+원 부분 영수증의 일부 문항만 현재 원본과 달라졌다면, 기존 영수증을 절단하거나 새 승인으로 바꾸지 않고
+`approval.sourceRebind.selectedSubset`을 명시할 수 있다. `schemaVersion`은
+`archive-native-source-preservation-subset-v1`이며 `excludedItems`에는 제외하는 모든
+`questionUid`, `sourceOrdinal`, `reason: "CURRENT_SOURCE_REVIEW_REQUIRED"`를 기록한다.
+선택 items와 제외 items는 중복 없이 원 영수증의 전체 UID·순번 집합을 정확히 나누어야 한다.
+원래 선택 집합을 전부 보존할 때에는 이 옵션 없이 기존 계약을 사용한다.
+
+등록기는 원 영수증의 전체 metadata·runtime·identity가 현재 저장 상태와 일치하는지 확인하고,
+그 원본 Git blob/raw SHA에서 원 영수증 전체의 기존 native 승인을 다시 검증한다. 현재 ACTIVE 정본과
+정확한 binding도 필요하다. 선택 문항 전체 객체는 원본과 동일해야 하며 제외 문항은 실제로 바뀐 객체여야 한다.
+선택 밖 metadata·runtime·identity는 쓰지 않는다. before/after는 빈 객체이며 새 의미값, 정본 변경,
+새 승인은 허용하지 않는다. 영수증의 `newMetadataApprovals`는 0이고 `preservedMetadataApprovals`는
+정확히 선택 수다. 자산의 같은 판본 확인과 현재 Consumer 검증도 해당 출고 증거에 별도로 남긴다.
+
+AutoMeta는 원 영수증 전체를 유지한 채 선택 subset의 승인값·현재 문항과 전체 원 native 근거를 재검증한다.
+제외 문항이 이후 별도의 정식 검토로 등록되더라도, 선택 문항의 과거 근거는 원 identity snapshot으로
+검증하므로 그 별도 등록을 철회하거나 덮지 않는다. 누락·중복 exclusion, superset, 잘못된 원본·분모,
+변경된 선택 문항, 승인값 변조는 거부한다. 이 기록은 제외 문항의 현재 승인이나 보류 해소를 뜻하지 않는다.
+
+과거 승인과 현재 사용 가능성도 구분한다. 현재 native 영수증이 원본에 결속되지 않는 문항은 원 승인 시점의
+Git source와 정확한 metadata·runtime·identity로 역사 근거만 검증한다. 현재 검증 메타 표시·자동 선택·VERIFIED
+조회는 실제 Consumer 정책에 따라 별도로 거부되어야 한다. 원문을 직접 선택하는 경로는 그 승인 판정과 별개다.
 
 ## 검증
 

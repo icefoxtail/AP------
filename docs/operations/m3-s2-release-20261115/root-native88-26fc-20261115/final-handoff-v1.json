@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "m3s2-native88-preservation-final-handoff-v1",
+  "status": "READY_FOR_ROOT_INTEGRATION_AND_REQUIRED_CI",
+  "candidateManifest": {
+    "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/historical-native94/candidate-manifest.json",
+    "sha256": "66a67e9498192b37eed571378016fc0a7f09f4e8b8b0b7f3fb77fb9bafb49bec"
+  },
+  "currentMainCAS": "3656527970d596d88ea984733058f0ba5bcccfef",
+  "codeBase": "741baef4e25a33087c623093d8520f6443b4fc69",
+  "codeFiles": [
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "beforeBlob": "c60427e0d07badbec249bb59d49957432efa0446",
+      "candidateBlob": "4826b8d6bd89fb46c6e3d2c14537a352f6994f57",
+      "sha256": "fce2b47c76175d01d1d75586635778403d1175e238f36000e7f07507bc1c796d",
+      "size": 52440
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+      "beforeBlob": "a3430a95d41e1d74e97dd5a0ccc9dc4255ba219a",
+      "candidateBlob": "53c23cdca3953ce4ae2d2b15731bdf385b4738a2",
+      "sha256": "0d79eec8bc752d937aa3d8275383f2f6e0fefffb1db431cfca31469c18907d43",
+      "size": 24673
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-source-preservation-scope.mjs",
+      "beforeBlob": null,
+      "candidateBlob": "bb052a757da5e4439984834ed066d6a052e0c0ba",
+      "sha256": "0f7126f9d5332d29f64d3296e66477493d88195d9a6779a3929fa28e19b9b9af",
+      "size": 2471
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "beforeBlob": "dd3258156ee336fe5d654fff4e88d5deb23b010b",
+      "candidateBlob": "e3db93fc146ffc703b78064590e257271d3e51f0",
+      "sha256": "49351254b5056b569fcb061a8ac6f1e359522962fa72522f5d923ba732381f41",
+      "size": 251194,
+      "v1Sha256": "07064c062a1fa1166af0d986e39ee4d9e55a0ff08db926793331ca083f3f6734"
+    }
+  ],
+  "scope": {
+    "requests": 8,
+    "sources": 7,
+    "originalReceiptUids": 94,
+    "preservedUidCount": 88,
+    "explicitlyExcludedChangedUids": 6,
+    "newMetadataApprovals": 0,
+    "newMathReviews": 0,
+    "newDifficultyJudgments": 0,
+    "fourSlotChanges": 0
+  },
+  "officialLocalValidation": {
+    "dryRequests": 8,
+    "writeRequests": 8,
+    "nativeReceiptsValid": 88,
+    "canonicalConsumer": 88,
+    "usableMetaLaneConsumer": 0,
+    "replayRequests": 8,
+    "originalReceiptsWholeAndUnchanged": 8,
+    "allIdentitiesExact": 28890,
+    "outsideSelectedMetadataExact": 28802,
+    "outsideSelectedRuntimeExact": 7174,
+    "selectedApprovalAndSemanticValuesExact": 88,
+    "selectedTechnicalTransportFieldsOnly": [
+      "metadataRevision",
+      "approvalEvidence"
+    ],
+    "canonicalRegistryChanges": 0,
+    "sourceAssetChanges": 0
+  },
+  "explicitExcludedBoundary": {
+    "currentNativeRejected": 6,
+    "verifiedQueryResults": 0,
+    "verifiedEligibleOrAutomatic": 0,
+    "sourceStatusHOLD": 5,
+    "sourceStatusVERIFIEDButCourseBlocked": 1,
+    "courseBlockedQuestionUid": "qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974",
+    "courseBlockedReason": "DISPLAY_PROJECTION_COURSE_NOT_ALLOWED",
+    "manualDirectSelectionAndPersistedPriorApprovals": "PRESERVED; not reported as new current approval",
+    "sixSourceHoldsClaimed": false
+  },
+  "proofs": [
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/historical-native94/official-dry88.json",
+      "sha256": "dbdb65bc648287cc006ddccf17cb3fb5fc32ae27609228bd23137947b3f3f926",
+      "bytes": 10142
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/historical-native94/official-write-native88.json",
+      "sha256": "0a63c2ba480c5a63cbb64fdbe63eb93c2bdde1254549e0cf3f4c25a7a15e7f39",
+      "bytes": 66040
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/historical-native94/official-consumer88.json",
+      "sha256": "d6d3669d8c925f5ebab3fac1d6f81d87c1f96a715162a68ab3edba3d4e9d1b75",
+      "bytes": 72867
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/historical-native94/excluded-six-live-consumer.json",
+      "sha256": "9ddd5256226d32bef7a8bfeda0533bec7f8c71ddf5591a2e73636f9e104cd770",
+      "bytes": 11265
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/historical-native94/code-validation-manifest.json",
+      "sha256": "db4bf679ca374d02c83a9057bf1f1d80ee7920247abf79d1b3aefb45fc789596",
+      "bytes": 2056
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/historical-native94/current365-input-cas.json",
+      "sha256": "ecc8a3dae4b84e680653f272ca1dc6cf0edd73045abd4336c34543b46f8cf5d9",
+      "bytes": 5338
+    }
+  ],
+  "laterE017Renderer3": {
+    "publicCommit": "10bfe276b578da8fe841595e305182b1f813d6b6",
+    "exactBindingProof": "/workspace/scratch/26fc42390a50/m3s2-recovery/historical-native94/e017-public-renderer3-binding.json",
+    "sha256": "db2f739bc134188d68d3e5a2abc193867f49d9a5935bfe9b72b70d158a4ec310",
+    "includedIn88": false,
+    "registration": "NOT_RUN"
+  },
+  "actualMainRegistration": "NOT_RUN",
+  "requiredPrCI": "NOT_RUN_ON_NEW_COMBINED_HEAD",
+  "pages": "NOT_RUN",
+  "remaining": [
+    "Root independently reviews the one course-blocked excluded UID boundary; do not label it a sourceStatus HOLD.",
+    "Root publishes exact operations and final strict-subset code, then runs required PR CI.",
+    "After merge and actual writer persistence, verify committed8/88 receipts and target Consumer; check6 unchanged excluded rows again."
+  ],
+  "remoteWrites": 0,
+  "excludedM3S1SourceOrOriginalReviewPacketReads": 0,
+  "globalRegisteredMetadataDependencyNote": "The official Consumer input manifest hashes existing compiled runtime and registered receipt metadata. No excluded-semester source, branch, original review packet, or new assessment was opened or modified."
+}

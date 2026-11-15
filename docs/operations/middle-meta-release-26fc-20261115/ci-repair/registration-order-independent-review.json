@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "independent-static-readiness-contract-review-v1",
+  "reviewedAt": "2026-11-15T14:59:36.570519+00:00",
+  "reviewer": "root/m3s2_release",
+  "decision": "ACCEPT_EXACT_TEST_CONTRACT_REPAIR",
+  "scope": "One existing static contract test; no production changes and no repeat test execution.",
+  "basePr": 2179,
+  "baseHead": "741baef4e25a33087c623093d8520f6443b4fc69",
+  "manifest": {
+    "path": "/workspace/scratch/26fc42390a50/ci-contract-repair/final-handoff.json",
+    "sha256": "b9a88289e941b6730978c57c980152204b89c9782fb83005acf0b73e6da45f6c"
+  },
+  "candidate": {
+    "path": "tests/archive2-registration-contracts.test.mjs",
+    "beforeGitBlobSha1": "8a35b1ca3a7eda7a99960d0792f855b58b5be3b8",
+    "beforeSha256": "1e280c560353e610a9b62ccb0f1a320205cc4eb08a2ef5892485d86db0909c74",
+    "afterGitBlobSha1": "1176271e2bb9528932fdb9ce94a6e68ac849e2c2",
+    "afterSha256": "9122dc6527bab0887c5f07ca59ce442ef36e8e69b70aca2191bb38b80216fa11",
+    "outsideSingleChangedTestByteEqual": true
+  },
+  "productionReadOnly": {
+    "path": "archive/build_db.py",
+    "commit": "741baef4e25a33087c623093d8520f6443b4fc69",
+    "gitBlobSha1": "3542dbb29e7a2ed85c5c25e9845710769e11a48d",
+    "sha256": "5d3248d866b3978edfa002201d3ebfc57d2d72cf905420249368cd5ff7f2f869",
+    "observedOrderedPositions": {
+      "runtimeRename": 1321,
+      "parentLinks": 1830,
+      "readyProjections": [
+        1672,
+        2023
+      ],
+      "catalogCheck": 2708,
+      "readinessCheck": 2914,
+      "lateReadinessWrite": -1
+    }
+  },
+  "checks": {
+    "exactlyTwoReadyProjectionCallsRequired": true,
+    "renameThenIntermediateThenParentThenFinalThenCatalogCheckThenReadinessCheckRequired": true,
+    "oldPlainCatalogOnlyCounterexampleRejectedByNewCountAndOrdering": true,
+    "missingParentGeneratorCannotSatisfyIntermediateOrdering": true,
+    "lateDirectReadinessWriteStillForbidden": true,
+    "existingReadyBuilderDelegationAssertionsUnchanged": true,
+    "allOtherTestBodiesByteUnchanged": true,
+    "productionCodeWritten": false,
+    "newTestsExecuted": 0
+  },
+  "reusedRootFocusedEvidence": [
+    {
+      "case": "before",
+      "exitCode": 1,
+      "sha256": "aad58415d0a576438ea3b59bd732f7d42720bb346a8ca0d66763caab3c062121",
+      "tail": [
+        "      at Test.start (node:internal/test_runner/test:1262:17)",
+        "      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {",
+        "    generatedMessage: false,",
+        "    code: 'ERR_ASSERTION',",
+        "    actual: false,",
+        "    expected: true,",
+        "    operator: '==',",
+        "    diff: 'simple'",
+        "  }"
+      ]
+    },
+    {
+      "case": "candidate",
+      "exitCode": 0,
+      "sha256": "45c6c9f621be8d8c9fc77745274d74bee130ef91f814e7acca60346430d26e22",
+      "tail": [
+        "✔ normal registration sync settles readiness before parent links and rebuilds the bound catalog (2.275066ms)",
+        "ℹ tests 1",
+        "ℹ suites 0",
+        "ℹ pass 1",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 9.741535"
+      ]
+    },
+    {
+      "case": "prior_plain_catalog_counterexample",
+      "exitCode": 1,
+      "sha256": "7ac6e952c608345fb0dcc5d21c8237f19c15fdaeb2faf74e89b13234038791d7"
+    }
+  ],
+  "limits": [
+    "Static independent acceptance only; original whole test file and required PR CI still need to pass.",
+    "Does not resolve the separate E001 historical native receipt drift.",
+    "No registration, Consumer, or Pages PASS claim."
+  ]
+}
