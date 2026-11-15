@@ -224,11 +224,18 @@ window.examData = {
     },
     {
       "id": 12,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "아래로 열리므로 a<0이며 왼쪽 위 꼭짓점에서 p<0, q>0이다. 따라서 q<0이라고 한 ③이 옳지 않다.",
+      "solutionImageAlt": "파란 포물선은 아래로 열리며 꼭짓점은 가로축 위, 세로축 왼쪽에 있다. 곡선의 두 가지가 가로축을 한 번씩 지난다.",
+      "solutionImage": "assets/images/17_경북영신중_1학기_기말_중3_수학/q12-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
+      "imageSize": "large",
+      "imageAlt": "파란 포물선은 아래로 열리며 꼭짓점은 가로축 위, 세로축 왼쪽에 있다. 곡선의 두 가지가 가로축을 한 번씩 지난다.",
       "questionNumber": 12,
       "number": 12,
       "questionType": "객관식",
-      "question": "12. 다음 그림은 이차함수 $y=a(x-p)^2+q$의 그래프이다. 다음 설명 중 옳지 않은 것은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q12.png\" alt=\"꼭짓점이 제2사분면에 있고 위로 볼록하며 x축과 두 점에서 만나는 포물선 그래프\"></div>",
-      "content": "12. 다음 그림은 이차함수 $y=a(x-p)^2+q$의 그래프이다. 다음 설명 중 옳지 않은 것은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q12.png\" alt=\"꼭짓점이 제2사분면에 있고 위로 볼록하며 x축과 두 점에서 만나는 포물선 그래프\"></div>",
+      "question": "12. 다음 그림은 이차함수 $y=a(x-p)^2+q$의 그래프이다. 다음 설명 중 옳지 않은 것은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"파란 포물선은 아래로 열리며 꼭짓점은 가로축 위, 세로축 왼쪽에 있다. 곡선의 두 가지가 가로축을 한 번씩 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+      "content": "12. 다음 그림은 이차함수 $y=a(x-p)^2+q$의 그래프이다. 다음 설명 중 옳지 않은 것은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"파란 포물선은 아래로 열리며 꼭짓점은 가로축 위, 세로축 왼쪽에 있다. 곡선의 두 가지가 가로축을 한 번씩 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [
         "① $a<0$",
         "② $p<0$",
@@ -236,21 +243,26 @@ window.examData = {
         "④ $y=ax^2$의 그래프를 평행이동하면 얻을 수 있다.",
         "⑤ 이차방정식 $a(x-p)^2+q=0$의 해는 2개이다."
       ],
-      "images": [
-        "assets/images/17_경북영신중_1학기_기말_중3_수학/q12.png"
-      ],
+      "images": ["assets/images/17_경북영신중_1학기_기말_중3_수학/q12-problem-visual-v2.svg"],
       "answer": "③",
       "solution": "[원문 조건 및 구할 대상]\n- 조건: 주어진 포물선의 개형 (위로 볼록, 꼭짓점이 제2사분면에 위치)\n- 구할 대상: 설명 중 옳지 않은 것\n\n[핵심 발상 및 공식]\n- $y=a(x-p)^2+q$에서:\n  - 위로 볼록이면 $a<0$\n  - 꼭짓점 $(p, q)$가 제2사분면이면 $p<0, q>0$입니다.\n\n[연속 등식과 세부 계산]\n- 그래프가 위로 볼록하므로 $a < 0$입니다 (① 참).\n- 꼭짓점 $(p, q)$가 제2사분면에 있으므로 $x$좌표인 $p < 0$, $y$좌표인 $q > 0$입니다.\n  따라서 $q < 0$이라는 설명은 옳지 않습니다 (③ 거짓).\n- $y=a(x-p)^2+q$는 $y=ax^2$을 $x$축으로 $p$, $y$축으로 $q$ 평행이동한 것입니다 (④ 참).\n- 위로 볼록하고 꼭짓점의 $y$좌표가 양수($q>0$)이므로 그래프는 $x$축과 서로 다른 두 점에서 만납니다. 따라서 방정식 $a(x-p)^2+q=0$의 해는 서로 다른 2개입니다 (⑤ 참).\n\n[선지 검토]\n- 옳지 않은 것은 ③입니다.\n\n[최종 결론]\n따라서 정답은 ③입니다.",
       "score": 3.0,
-      "image": "assets/images/17_경북영신중_1학기_기말_중3_수학/q12.png"
+      "image": "assets/images/17_경북영신중_1학기_기말_중3_수학/q12-problem-visual-v2.svg"
     },
     {
       "id": 13,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "A와 B의 x좌표가 t이면 y좌표의 차는 (t²+3)−t²=3이다. 정답은 ③이다.",
+      "solutionImageAlt": "파란 포물선은 y=x²이고, 주황색 점선은 y=x²+3이다. 각 곡선의 왼쪽 가지에 점 A와 B가 있어 같은 세로선 위에 놓인다.",
+      "solutionImage": "assets/images/17_경북영신중_1학기_기말_중3_수학/q13-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
+      "imageSize": "large",
+      "imageAlt": "파란 포물선은 y=x²이고, 주황색 점선은 y=x²+3이다. 각 곡선의 왼쪽 가지에 점 A와 B가 있어 같은 세로선 위에 놓인다.",
       "questionNumber": 13,
       "number": 13,
       "questionType": "객관식",
-      "question": "13. 오른쪽 그림은 두 이차함수 $y=x^2$, $y=x^2+3$의 그래프를 나타낸 것이다. 이때, $y$축에 평행한 선분 $\\text{AB}$의 길이는? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q13.png\" alt=\"동일한 폭의 두 포물선 y=x^2과 y=x^2+3 사이의 y축에 평행한 선분 AB\"></div>",
-      "content": "13. 오른쪽 그림은 두 이차함수 $y=x^2$, $y=x^2+3$의 그래프를 나타낸 것이다. 이때, $y$축에 평행한 선분 $\\text{AB}$의 길이는? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q13.png\" alt=\"동일한 폭의 두 포물선 y=x^2과 y=x^2+3 사이의 y축에 평행한 선분 AB\"></div>",
+      "question": "13. 오른쪽 그림은 두 이차함수 $y=x^2$, $y=x^2+3$의 그래프를 나타낸 것이다. 이때, $y$축에 평행한 선분 $\\text{AB}$의 길이는? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"파란 포물선은 y=x²이고, 주황색 점선은 y=x²+3이다. 각 곡선의 왼쪽 가지에 점 A와 B가 있어 같은 세로선 위에 놓인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+      "content": "13. 오른쪽 그림은 두 이차함수 $y=x^2$, $y=x^2+3$의 그래프를 나타낸 것이다. 이때, $y$축에 평행한 선분 $\\text{AB}$의 길이는? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"파란 포물선은 y=x²이고, 주황색 점선은 y=x²+3이다. 각 곡선의 왼쪽 가지에 점 A와 B가 있어 같은 세로선 위에 놓인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [
         "① 1",
         "② 2",
@@ -258,21 +270,26 @@ window.examData = {
         "④ 4",
         "⑤ 5"
       ],
-      "images": [
-        "assets/images/17_경북영신중_1학기_기말_중3_수학/q13.png"
-      ],
+      "images": ["assets/images/17_경북영신중_1학기_기말_중3_수학/q13-problem-visual-v2.svg"],
       "answer": "③",
       "solution": "[원문 조건 및 구할 대상]\n- 조건: 두 이차함수 $y=x^2$과 $y=x^2+3$의 그래프, 선분 $\\text{AB}$는 $y$축에 평행함\n- 구할 대상: 선분 $\\text{AB}$의 길이\n\n[핵심 발상 및 공식]\n- 함수 $y=x^2+3$의 그래프는 $y=x^2$의 그래프를 $y$축의 방향으로 $3$만큼 평행이동한 것입니다.\n- 선분 $\\text{AB}$가 $y$축에 평행하므로 두 점 $\\text{A}$와 $\\text{B}$의 $x$좌표는 동일합니다.\n\n[연속 등식과 세부 계산]\n- 점 $\\text{A}$와 점 $\\text{B}$의 $x$좌표를 $t$라 두면:\n  - 점 $\\text{A}$는 $y=x^2+3$ 위의 점이므로 $\\text{A}(t, t^2+3)$\n  - 점 $\\text{B}$는 $y=x^2$ 위의 점이므로 $\\text{B}(t, t^2)$\n- 선분 $\\text{AB}$의 길이는 두 점의 $y$좌표의 차입니다:\n  $$\\overline{\\text{AB}} = (t^2+3) - t^2 = 3$$\n- 이는 $t$의 값에 관계없이 항상 일정합니다.\n\n[선지 검토]\n- 선분의 길이는 $3$이므로 선지 ③과 일치합니다.\n\n[최종 결론]\n따라서 정답은 ③입니다.",
       "score": 3.0,
-      "image": "assets/images/17_경북영신중_1학기_기말_중3_수학/q13.png"
+      "image": "assets/images/17_경북영신중_1학기_기말_중3_수학/q13-problem-visual-v2.svg"
     },
     {
       "id": 14,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "최고점 (2,8)과 x절편 −2, 6에서 y=−(x−2)²/2+8이다. a+b+c=f(1)=15/2이고 정답은 ⑤이다.",
+      "solutionImageAlt": "아래로 열린 포물선은 x축의 −2와 6을 지난다. 최고점에서 x축의 2와 y축의 8로 점선을 그었다.",
+      "solutionImage": "assets/images/17_경북영신중_1학기_기말_중3_수학/q14-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
+      "imageSize": "large",
+      "imageAlt": "아래로 열린 포물선은 x축의 −2와 6을 지난다. 최고점에서 x축의 2와 y축의 8로 점선을 그었다.",
       "questionNumber": 14,
       "number": 14,
       "questionType": "객관식",
-      "question": "14. 이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, $a+b+c$의 값은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q14.png\" alt=\"꼭짓점이 제1사분면에 있고 위로 볼록하며 점 (1, 15/2)를 지나는 포물선 그래프\"></div>",
-      "content": "14. 이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, $a+b+c$의 값은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q14.png\" alt=\"꼭짓점이 제1사분면에 있고 위로 볼록하며 점 (1, 15/2)를 지나는 포물선 그래프\"></div>",
+      "question": "14. 이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, $a+b+c$의 값은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q14-problem-visual-v2.svg\" alt=\"아래로 열린 포물선은 x축의 −2와 6을 지난다. 최고점에서 x축의 2와 y축의 8로 점선을 그었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+      "content": "14. 이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, $a+b+c$의 값은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q14-problem-visual-v2.svg\" alt=\"아래로 열린 포물선은 x축의 −2와 6을 지난다. 최고점에서 x축의 2와 y축의 8로 점선을 그었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [
         "① $\\dfrac{7}{2}$",
         "② $\\dfrac{9}{2}$",
@@ -280,13 +297,11 @@ window.examData = {
         "④ $\\dfrac{13}{2}$",
         "⑤ $\\dfrac{15}{2}$"
       ],
-      "images": [
-        "assets/images/17_경북영신중_1학기_기말_중3_수학/q14.png"
-      ],
+      "images": ["assets/images/17_경북영신중_1학기_기말_중3_수학/q14-problem-visual-v2.svg"],
       "answer": "⑤",
       "solution": "[원문 조건 및 구할 대상]\n- 조건: 주어진 이차함수 $y=ax^2+bx+c$의 그래프\n- 구할 대상: $a+b+c$의 값\n\n[핵심 발상 및 공식]\n- 다항식 $f(x) = ax^2+bx+c$에서 계수의 합 $a+b+c$는 $x=1$을 대입한 함숫값 $f(1)$과 정확히 일치합니다.\n\n[연속 등식과 세부 계산]\n- 그래프의 식 $y = ax^2+bx+c$에 $x=1$을 대입합니다:\n  $$f(1) = a(1)^2 + b(1) + c = a+b+c$$\n- 그래프에서 $x=1$에 대응하는 점의 $y$좌표는 $\\dfrac{15}{2}$입니다.\n- 따라서 구하는 값은 다음과 같습니다:\n  $$a+b+c = \\dfrac{15}{2}$$\n\n[선지 검토]\n- 계산 결과 $\\dfrac{15}{2}$이므로 선지 ⑤와 일치합니다.\n\n[최종 결론]\n따라서 정답은 ⑤입니다.",
       "score": 4.0,
-      "image": "assets/images/17_경북영신중_1학기_기말_중3_수학/q14.png"
+      "image": "assets/images/17_경북영신중_1학기_기말_중3_수학/q14-problem-visual-v2.svg"
     },
     {
       "id": 15,
@@ -350,11 +365,18 @@ window.examData = {
     },
     {
       "id": 18,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "높이 8이고 넓이가 32이므로 BC=8이다. 꼭짓점의 x좌표가 1이어서 B, C는 x=−3,5에 있다. 식으로부터 a=1/2, p=1이므로 ap=1/2이고 정답은 ①이다.",
+      "solutionImageAlt": "위로 열린 포물선의 꼭짓점은 A이다. 수평선 y=8과 만나는 왼쪽 점 B와 오른쪽 점 C를 A와 이었다. 세 점이 이루는 연두색 삼각형이 보인다.",
+      "solutionImage": "assets/images/17_경북영신중_1학기_기말_중3_수학/q18-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
+      "imageSize": "large",
+      "imageAlt": "위로 열린 포물선의 꼭짓점은 A이다. 수평선 y=8과 만나는 왼쪽 점 B와 오른쪽 점 C를 A와 이었다. 세 점이 이루는 연두색 삼각형이 보인다.",
       "questionNumber": 18,
       "number": 18,
       "questionType": "객관식",
-      "question": "18. 이차함수 $y=a(x-p)^2$의 그래프가 다음 그림과 같고 점 $\\text{A}(1, 0)$은 이 그래프의 꼭짓점이다. 이차함수 그래프 위에 있는 두 점 $\\text{B, C}$의 $y$좌표는 모두 8이고 $\\triangle\\text{ABC}$의 넓이는 32일 때, $ap$의 값을 구하면? (단 $a, p$는 상수) [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q18.png\" alt=\"꼭짓점이 A(1, 0)이고 y좌표가 8인 두 점 B, C로 이루어진 삼각형 ABC와 포물선 그래프\"></div>",
-      "content": "18. 이차함수 $y=a(x-p)^2$의 그래프가 다음 그림과 같고 점 $\\text{A}(1, 0)$은 이 그래프의 꼭짓점이다. 이차함수 그래프 위에 있는 두 점 $\\text{B, C}$의 $y$좌표는 모두 8이고 $\\triangle\\text{ABC}$의 넓이는 32일 때, $ap$의 값을 구하면? (단 $a, p$는 상수) [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q18.png\" alt=\"꼭짓점이 A(1, 0)이고 y좌표가 8인 두 점 B, C로 이루어진 삼각형 ABC와 포물선 그래프\"></div>",
+      "question": "18. 이차함수 $y=a(x-p)^2$의 그래프가 다음 그림과 같고 점 $\\text{A}(1, 0)$은 이 그래프의 꼭짓점이다. 이차함수 그래프 위에 있는 두 점 $\\text{B, C}$의 $y$좌표는 모두 8이고 $\\triangle\\text{ABC}$의 넓이는 32일 때, $ap$의 값을 구하면? (단 $a, p$는 상수) [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q18-problem-visual-v2.svg\" alt=\"위로 열린 포물선의 꼭짓점은 A이다. 수평선 y=8과 만나는 왼쪽 점 B와 오른쪽 점 C를 A와 이었다. 세 점이 이루는 연두색 삼각형이 보인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+      "content": "18. 이차함수 $y=a(x-p)^2$의 그래프가 다음 그림과 같고 점 $\\text{A}(1, 0)$은 이 그래프의 꼭짓점이다. 이차함수 그래프 위에 있는 두 점 $\\text{B, C}$의 $y$좌표는 모두 8이고 $\\triangle\\text{ABC}$의 넓이는 32일 때, $ap$의 값을 구하면? (단 $a, p$는 상수) [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q18-problem-visual-v2.svg\" alt=\"위로 열린 포물선의 꼭짓점은 A이다. 수평선 y=8과 만나는 왼쪽 점 B와 오른쪽 점 C를 A와 이었다. 세 점이 이루는 연두색 삼각형이 보인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [
         "① $\\dfrac{1}{2}$",
         "② 1",
@@ -362,13 +384,11 @@ window.examData = {
         "④ 4",
         "⑤ 8"
       ],
-      "images": [
-        "assets/images/17_경북영신중_1학기_기말_중3_수학/q18.png"
-      ],
+      "images": ["assets/images/17_경북영신중_1학기_기말_중3_수학/q18-problem-visual-v2.svg"],
       "answer": "①",
       "solution": "[원문 조건 및 구할 대상]\n- 조건: 포물선 $y=a(x-p)^2$의 꼭짓점 $\\text{A}(1, 0)$, 점 $\\text{B, C}$의 $y$좌표는 $8$, $\\triangle\\text{ABC}$의 넓이는 $32$\n- 구할 대상: 상수 $ap$의 값\n\n[핵심 발상 및 공식]\n- 꼭짓점이 $(1, 0)$이므로 $p=1$이며 식은 $y=a(x-1)^2$입니다.\n- 점 $\\text{B, C}$의 $y$좌표가 같으므로 선분 $\\text{BC}$는 $x$축에 평행하며, 높이는 $8$입니다.\n- 삼각형 넓이 공식으로부터 밑변 $\\overline{\\text{BC}}$의 길이를 구하고 대칭축 $x=1$을 이용해 좌표를 구합니다.\n\n[연속 등식과 세부 계산]\n- 꼭짓점이 $\\text{A}(1, 0)$이므로 $p = 1$입니다.\n- 삼각형 $\\triangle\\text{ABC}$의 높이는 두 점 $\\text{B, C}$의 $y$좌표와 점 $\\text{A}$의 $y$좌표의 차인 $8 - 0 = 8$입니다.\n- 삼각형의 넓이 식:\n  $$\\dfrac{1}{2} \\times \\overline{\\text{BC}} \\times 8 = 32 \\implies 4 \\times \\overline{\\text{BC}} = 32 \\implies \\overline{\\text{BC}} = 8$$\n- 포물선은 축 $x=1$에 대하여 대칭이므로 점 $\\text{C}$의 $x$좌표는 축의 오른쪽으로 $\\dfrac{8}{2} = 4$만큼 떨어져 있습니다:\n  $$x = 1 + 4 = 5$$\n- 따라서 점 $\\text{C}(5, 8)$은 포물선 위의 점입니다.\n- $y=a(x-1)^2$에 $x=5, y=8$을 대입합니다:\n  $$8 = a(5-1)^2 = a \\times 16 \\implies 16a = 8 \\implies a = \\dfrac{1}{2}$$\n- $ap$의 값을 계산합니다:\n  $$ap = \\dfrac{1}{2} \\times 1 = \\dfrac{1}{2}$$\n\n[선지 검토]\n- $ap = \\dfrac{1}{2}$이므로 선지 ①과 일치합니다.\n\n[최종 결론]\n따라서 정답은 ①입니다.",
       "score": 4.0,
-      "image": "assets/images/17_경북영신중_1학기_기말_중3_수학/q18.png"
+      "image": "assets/images/17_경북영신중_1학기_기말_중3_수학/q18-problem-visual-v2.svg"
     },
     {
       "id": 19,
@@ -454,19 +474,24 @@ window.examData = {
     },
     {
       "id": 24,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "첫째와 둘째 바닥점 사이의 식을 y=a(x−60)(x−100)으로 놓고 (70,60)을 대입하면 a=−1/5이다. 꼭짓점 x=80에서 높이 80 cm이므로 답은 0.8 m이다.",
+      "solutionImageAlt": "공이 처음 지나가는 파란 궤적은 세로축의 높이 120 cm에서 시작한다. 공은 가로축의 60 cm와 100 cm에서 바닥에 닿고, 그 사이 주황색 궤적 위에서 x=70 cm일 때 높이는 60 cm이다. 마지막의 초록 궤적은 원본의 개략적인 모양이다.",
+      "solutionImage": "assets/images/17_경북영신중_1학기_기말_중3_수학/q24-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
+      "imageSize": "large",
+      "imageAlt": "공이 처음 지나가는 파란 궤적은 세로축의 높이 120 cm에서 시작한다. 공은 가로축의 60 cm와 100 cm에서 바닥에 닿고, 그 사이 주황색 궤적 위에서 x=70 cm일 때 높이는 60 cm이다. 마지막의 초록 궤적은 원본의 개략적인 모양이다.",
       "questionNumber": 24,
       "number": 24,
       "questionType": "서술형",
-      "question": "서술형 4) 다음 그림은 $120\\text{ cm}$의 높이에서 공을 던졌을 때, 공이 그리는 포물선이다. 공은 던진 위치에서 각각 $60\\text{ cm}, 100\\text{ cm}$ 떨어진 곳에서 튀어 올랐다. 던진 위치에서 $70\\text{ cm}$ 떨어진 곳에서의 공의 높이가 $60\\text{ cm}$일 때, 튀어 오른 공의 최고 높이는 몇 $\\text{m}$인지 구하여라. [5.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q24.png\" alt=\"120cm 높이에서 던진 공이 x=60cm, 100cm에서 바닥에 튀어 오르는 포물선 궤적\"></div>",
-      "content": "서술형 4) 다음 그림은 $120\\text{ cm}$의 높이에서 공을 던졌을 때, 공이 그리는 포물선이다. 공은 던진 위치에서 각각 $60\\text{ cm}, 100\\text{ cm}$ 떨어진 곳에서 튀어 올랐다. 던진 위치에서 $70\\text{ cm}$ 떨어진 곳에서의 공의 높이가 $60\\text{ cm}$일 때, 튀어 오른 공의 최고 높이는 몇 $\\text{m}$인지 구하여라. [5.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q24.png\" alt=\"120cm 높이에서 던진 공이 x=60cm, 100cm에서 바닥에 튀어 오르는 포물선 궤적\"></div>",
+      "question": "서술형 4) 다음 그림은 $120\\text{ cm}$의 높이에서 공을 던졌을 때, 공이 그리는 포물선이다. 공은 던진 위치에서 각각 $60\\text{ cm}, 100\\text{ cm}$ 떨어진 곳에서 튀어 올랐다. 던진 위치에서 $70\\text{ cm}$ 떨어진 곳에서의 공의 높이가 $60\\text{ cm}$일 때, 튀어 오른 공의 최고 높이는 몇 $\\text{m}$인지 구하여라. [5.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"공이 처음 지나가는 파란 궤적은 세로축의 높이 120 cm에서 시작한다. 공은 가로축의 60 cm와 100 cm에서 바닥에 닿고, 그 사이 주황색 궤적 위에서 x=70 cm일 때 높이는 60 cm이다. 마지막의 초록 궤적은 원본의 개략적인 모양이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+      "content": "서술형 4) 다음 그림은 $120\\text{ cm}$의 높이에서 공을 던졌을 때, 공이 그리는 포물선이다. 공은 던진 위치에서 각각 $60\\text{ cm}, 100\\text{ cm}$ 떨어진 곳에서 튀어 올랐다. 던진 위치에서 $70\\text{ cm}$ 떨어진 곳에서의 공의 높이가 $60\\text{ cm}$일 때, 튀어 오른 공의 최고 높이는 몇 $\\text{m}$인지 구하여라. [5.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북영신중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"공이 처음 지나가는 파란 궤적은 세로축의 높이 120 cm에서 시작한다. 공은 가로축의 60 cm와 100 cm에서 바닥에 닿고, 그 사이 주황색 궤적 위에서 x=70 cm일 때 높이는 60 cm이다. 마지막의 초록 궤적은 원본의 개략적인 모양이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [],
-      "images": [
-        "assets/images/17_경북영신중_1학기_기말_중3_수학/q24.png"
-      ],
+      "images": ["assets/images/17_경북영신중_1학기_기말_중3_수학/q24-problem-visual-v2.svg"],
       "answer": "$0.8\\text{ m}$ (또는 $80\\text{ cm}$)",
       "solution": "[원문 조건 및 구할 대상]\n- 조건: 던진 위치에서 각각 $60\\text{ cm}, 100\\text{ cm}$ 떨어진 지면($y=0$)에서 튀어 오른 공의 궤적, $x=70\\text{ cm}$일 때 높이 $y=60\\text{ cm}$\n- 구할 대상: 튀어 오른 공의 최고 높이 (단위: $\\text{m}$)\n\n[핵심 발상 및 공식]\n- 지면과의 교점이 $(60, 0)$과 $(100, 0)$이므로 튀어 오른 포물선의 식을 $y = a(x-60)(x-100)$으로 설정할 수 있습니다.\n- 점 $(70, 60)$을 대입하여 $a$를 구하고, 두 절편의 중점인 대칭축 $x = \\dfrac{60+100}{2} = 80$에서의 최댓값을 구합니다.\n\n[연속 등식과 세부 계산]\n1. 포물선의 식 설정:\n  $$y = a(x-60)(x-100) \\quad (a < 0)$$\n2. 점 $(70, 60)$ 대입하여 $a$ 구하기:\n  $$60 = a(70-60)(70-100)$$\n  $$60 = a(10)(-30) = -300a$$\n  $$a = -\\dfrac{60}{300} = -\\dfrac{1}{5}$$\n  따라서 포물선의 식은 $y = -\\dfrac{1}{5}(x-60)(x-100)$입니다.\n3. 최고 높이 계산:\n  포물선은 $x = \\dfrac{60+100}{2} = 80$에서 꼭짓점을 가지며 최고 높이에 도달합니다.\n  $$y = -\\dfrac{1}{5}(80-60)(80-100) = -\\dfrac{1}{5}(20)(-20) = -\\dfrac{1}{5}(-400) = 80\\text{ cm}$$\n4. 단위 변환 ($\\text{cm} \\to \\text{m}$):\n  $$80\\text{ cm} = 0.8\\text{ m}$$\n\n[조건 적합성 검토]\n- $a = -0.2 < 0$으로 위로 볼록하며, $x=70$일 때 $y = -0.2(10)(-30) = 60$으로 조건과 일치하고, 꼭짓점 높이는 $80\\text{ cm} = 0.8\\text{ m}$로 타당합니다.\n\n[최종 결론]\n따라서 구하는 최고 높이는 $0.8\\text{ m}$ (또는 $80\\text{ cm}$)입니다.",
       "score": 5.0,
-      "image": "assets/images/17_경북영신중_1학기_기말_중3_수학/q24.png"
+      "image": "assets/images/17_경북영신중_1학기_기말_중3_수학/q24-problem-visual-v2.svg"
     },
     {
       "id": 25,

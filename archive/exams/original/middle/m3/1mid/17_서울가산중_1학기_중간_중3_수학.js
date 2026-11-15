@@ -186,6 +186,12 @@ window.examData = {
     },
     {
       "id": 6,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "AB=√(1²+3²)=√10이므로 수직선에서 a=4+√10이다. 이 위치와 다른 설명은 ⑤이다.",
+      "solutionImageAlt": "수직선의 A는 0에서 오른쪽으로 네 칸, 정사각형의 이웃한 B는 A에서 왼쪽으로 한 칸과 위쪽으로 세 칸이다. A를 중심으로 B를 지나가는 원호가 오른쪽 수직선에서 Q와 만난다. 모눈의 가로 칸과 세로 칸으로 반지름을 구하는 두 직각변을 표시했다.",
+      "solutionImage": "assets/images/17_서울가산중_1학기_중간_중3_수학/q6-solution-visual-v2.svg",
+      "imageSize": "large",
+      "imageAlt": "수직선의 A는 0에서 오른쪽으로 네 칸, 정사각형의 이웃한 B는 A에서 왼쪽으로 한 칸과 위쪽으로 세 칸이다. A를 중심으로 B를 지나가는 원호가 오른쪽 수직선에서 Q와 만난다.",
       "score": 4,
       "level": 3,
       "category": "실수와 수직선",
@@ -195,14 +201,14 @@ window.examData = {
       "standardUnit": "제곱근과 실수",
       "standardUnitOrder": 1,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "image": "assets/images/17_서울가산중_1학기_중간_중3_수학/q06.png",
-      "question": "<p>※ [6~7] 아래 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이고, $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AQ}}$ 이다. 다음 물음에 답하여라.</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q06.png\" alt=\"모눈종이 위 직각삼각형과 수직선 위의 점 Q\" /></p><p>6. 점 $\\mathrm{Q}$에 대응하는 수를 $a$라고 할 때, $a$에 대한 설명으로 옳지 않은 것은? [4점]</p>",
-      "content": "<p>※ [6~7] 아래 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이고, $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AQ}}$ 이다. 다음 물음에 답하여라.</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q06.png\" alt=\"모눈종이 위 직각삼각형과 수직선 위의 점 Q\" /></p><p>6. 점 $\\mathrm{Q}$에 대응하는 수를 $a$라고 할 때, $a$에 대한 설명으로 옳지 않은 것은? [4점]</p>",
+      "image": "assets/images/17_서울가산중_1학기_중간_중3_수학/q6-problem-visual-v2.svg",
+      "question": "<p>※ [6~7] 아래 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이고, $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AQ}}$ 이다. 다음 물음에 답하여라.</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q6-problem-visual-v2.svg\" alt=\"수직선의 A는 0에서 오른쪽으로 네 칸, 정사각형의 이웃한 B는 A에서 왼쪽으로 한 칸과 위쪽으로 세 칸이다. A를 중심으로 B를 지나가는 원호가 오른쪽 수직선에서 Q와 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>6. 점 $\\mathrm{Q}$에 대응하는 수를 $a$라고 할 때, $a$에 대한 설명으로 옳지 않은 것은? [4점]</p>",
+      "content": "<p>※ [6~7] 아래 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이고, $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AQ}}$ 이다. 다음 물음에 답하여라.</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q6-problem-visual-v2.svg\" alt=\"수직선의 A는 0에서 오른쪽으로 네 칸, 정사각형의 이웃한 B는 A에서 왼쪽으로 한 칸과 위쪽으로 세 칸이다. A를 중심으로 B를 지나가는 원호가 오른쪽 수직선에서 Q와 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>6. 점 $\\mathrm{Q}$에 대응하는 수를 $a$라고 할 때, $a$에 대한 설명으로 옳지 않은 것은? [4점]</p>",
       "choices": [
         "무리수이다.",
         "소수로 나타내면 순환하지 않는 무한소수가 된다.",
@@ -211,7 +217,7 @@ window.examData = {
         "$a^2 - 8a + 16$ 의 값은 $11$이다."
       ],
       "answer": "5",
-      "solution": "<p><b>[1단계: 원문 조건 및 구할 대상]</b><br>모눈 한 칸의 길이가 $1$인 모눈종이에서 점 $\\mathrm{A}$는 수직선 위의 $4$에 대응합니다.<br>직각삼각형의 밑변의 길이는 $3$, 높이는 $1$이므로 점 $\\mathrm{B}$는 빗변의 끝점입니다.<br>컴퍼스로 점 $\\mathrm{A}$를 중심으로 선분 $\\overline{\\mathrm{AB}}$를 반지름으로 하는 원호를 그려 수직선의 오른쪽과 만나는 점이 $\\mathrm{Q}$입니다.<br>점 $\\mathrm{Q}$에 대응하는 수 $a$에 대한 설명 중 옳지 않은 선지를 찾습니다.</p><p><b>[2단계: 핵심 발상 및 공식]</b><br>1. 피타고라스 정리에 의하여 빗변 $\\overline{\\mathrm{AB}}$의 길이는 다음과 같습니다:<br>$$\\overline{\\mathrm{AB}} = \\sqrt{3^2 + 1^2} = \\sqrt{9 + 1} = \\sqrt{10}$$<br>2. 점 $\\mathrm{Q}$는 점 $\\mathrm{A}(4)$에서 오른쪽으로 $\\sqrt{10}$만큼 떨어진 점이므로 점 $\\mathrm{Q}$에 대응하는 수는 다음과 같습니다:<br>$$a = 4 + \\sqrt{10}$$</p><p><b>[3단계: 연속 등식 및 선지별 정밀 검증]</b><br>각 선지의 진위를 판정합니다:<br>① $a = 4 + \\sqrt{10}$은 유리수와 무리수의 합이므로 무리수입니다. (참)<br>② 무리수는 소수로 나타내면 순환하지 않는 무한소수입니다. (참)<br>③ $9 < 10 < 16$이므로 $3 < \\sqrt{10} < 4$입니다. 각 변에 $4$를 더하면 다음과 같습니다:<br>$$7 < 4 + \\sqrt{10} < 8$$<br>따라서 $7 < a < 8$은 참입니다. (참)<br>④ $7 < a < 8$이므로 $a$의 정수 부분은 $x = 7$입니다.<br>소수 부분 $y$는 $y = a - x = (4 + \\sqrt{10}) - 7 = \\sqrt{10} - 3$입니다.<br>$$x^2 + y^2 = 7^2 + (\\sqrt{10} - 3)^2 = 49 + (10 - 6\\sqrt{10} + 9) = 49 + (19 - 6\\sqrt{10})$$<br>$3.16 < \\sqrt{10} < 3.17$이므로 $18.96 < 6\\sqrt{10} < 19.02$이고, $19 - 6\\sqrt{10} > 0$이며 $1$보다 훨씬 작습니다.<br>따라서 $49 < x^2 + y^2 < 50$이 성립합니다. (참)<br>⑤ 식 $a^2 - 8a + 16$을 완전제곱식으로 인수분해하면 다음과 같습니다:<br>$$a^2 - 8a + 16 = (a - 4)^2$$<br>$a = 4 + \\sqrt{10}$이므로 $a - 4 = \\sqrt{10}$입니다.<br>따라서 식의 값은 다음과 같습니다:<br>$$(a - 4)^2 = (\\sqrt{10})^2 = 10$$<br>선지 ⑤에서는 $11$이라고 주장하였으므로 거짓입니다.</p><p><b>[4단계: 선지 검토]</b><br>① 무리수 판정 참<br>② 순환하지 않는 무한소수 판정 참<br>③ 범위 $7 < a < 8$ 참<br>④ $49 < x^2+y^2 < 50$ 참<br>⑤ 식의 값은 $10$인데 $11$이라 서술하여 옳지 않습니다. (정답)</p><p><b>[5단계: 결론]</b><br>따라서 정답은 ⑤입니다.</p>",
+      "solution": "<p><b>[1단계: 원문 조건 및 구할 대상]</b><br>모눈 한 칸의 길이가 $1$인 모눈종이에서 점 $\\mathrm{A}$는 수직선 위의 $4$에 대응합니다.<br>직각삼각형의 밑변의 길이는 $1$, 높이는 $3$이므로 점 $\\mathrm{B}$는 빗변의 끝점입니다.<br>컴퍼스로 점 $\\mathrm{A}$를 중심으로 선분 $\\overline{\\mathrm{AB}}$를 반지름으로 하는 원호를 그려 수직선의 오른쪽과 만나는 점이 $\\mathrm{Q}$입니다.<br>점 $\\mathrm{Q}$에 대응하는 수 $a$에 대한 설명 중 옳지 않은 선지를 찾습니다.</p><p><b>[2단계: 핵심 발상 및 공식]</b><br>1. 피타고라스 정리에 의하여 빗변 $\\overline{\\mathrm{AB}}$의 길이는 다음과 같습니다:<br>$$\\overline{\\mathrm{AB}} = \\sqrt{3^2 + 1^2} = \\sqrt{9 + 1} = \\sqrt{10}$$<br>2. 점 $\\mathrm{Q}$는 점 $\\mathrm{A}(4)$에서 오른쪽으로 $\\sqrt{10}$만큼 떨어진 점이므로 점 $\\mathrm{Q}$에 대응하는 수는 다음과 같습니다:<br>$$a = 4 + \\sqrt{10}$$</p><p><b>[3단계: 연속 등식 및 선지별 정밀 검증]</b><br>각 선지의 진위를 판정합니다:<br>① $a = 4 + \\sqrt{10}$은 유리수와 무리수의 합이므로 무리수입니다. (참)<br>② 무리수는 소수로 나타내면 순환하지 않는 무한소수입니다. (참)<br>③ $9 < 10 < 16$이므로 $3 < \\sqrt{10} < 4$입니다. 각 변에 $4$를 더하면 다음과 같습니다:<br>$$7 < 4 + \\sqrt{10} < 8$$<br>따라서 $7 < a < 8$은 참입니다. (참)<br>④ $7 < a < 8$이므로 $a$의 정수 부분은 $x = 7$입니다.<br>소수 부분 $y$는 $y = a - x = (4 + \\sqrt{10}) - 7 = \\sqrt{10} - 3$입니다.<br>$$x^2 + y^2 = 7^2 + (\\sqrt{10} - 3)^2 = 49 + (10 - 6\\sqrt{10} + 9) = 49 + (19 - 6\\sqrt{10})$$<br>$3.16 < \\sqrt{10} < 3.17$이므로 $18.96 < 6\\sqrt{10} < 19.02$이고, $19 - 6\\sqrt{10} > 0$이며 $1$보다 훨씬 작습니다.<br>따라서 $49 < x^2 + y^2 < 50$이 성립합니다. (참)<br>⑤ 식 $a^2 - 8a + 16$을 완전제곱식으로 인수분해하면 다음과 같습니다:<br>$$a^2 - 8a + 16 = (a - 4)^2$$<br>$a = 4 + \\sqrt{10}$이므로 $a - 4 = \\sqrt{10}$입니다.<br>따라서 식의 값은 다음과 같습니다:<br>$$(a - 4)^2 = (\\sqrt{10})^2 = 10$$<br>선지 ⑤에서는 $11$이라고 주장하였으므로 거짓입니다.</p><p><b>[4단계: 선지 검토]</b><br>① 무리수 판정 참<br>② 순환하지 않는 무한소수 판정 참<br>③ 범위 $7 < a < 8$ 참<br>④ $49 < x^2+y^2 < 50$ 참<br>⑤ 식의 값은 $10$인데 $11$이라 서술하여 옳지 않습니다. (정답)</p><p><b>[5단계: 결론]</b><br>따라서 정답은 ⑤입니다.</p>",
       "number": 6,
       "questionNumber": 6,
       "type": "MULTIPLE_CHOICE",
@@ -219,13 +225,17 @@ window.examData = {
       "difficultyBucket": 3,
       "sourceParity": "EXACT",
       "hasVisual": true,
-      "images": [
-        "assets/images/17_서울가산중_1학기_중간_중3_수학/q06.png"
-      ],
+      "images": ["assets/images/17_서울가산중_1학기_중간_중3_수학/q6-problem-visual-v2.svg"],
       "accessibility": "모눈종이 위 직각삼각형과 수직선 위의 점 Q"
     },
     {
       "id": 7,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "a=4+√10이다. (4+√10)(4−√10)=6이므로 6/a=4−√10이다. 따라서 a+6/a=8이고 정답은 ⑤이다.",
+      "solutionImageAlt": "수직선의 A는 0에서 오른쪽으로 네 칸, 정사각형의 이웃한 B는 A에서 왼쪽으로 한 칸과 위쪽으로 세 칸이다. A를 중심으로 B를 지나가는 원호가 오른쪽 수직선에서 Q와 만난다. 모눈의 가로 칸과 세로 칸으로 반지름을 구하는 두 직각변을 표시했다.",
+      "solutionImage": "assets/images/17_서울가산중_1학기_중간_중3_수학/q7-solution-visual-v2.svg",
+      "imageSize": "large",
+      "imageAlt": "수직선의 A는 0에서 오른쪽으로 네 칸, 정사각형의 이웃한 B는 A에서 왼쪽으로 한 칸과 위쪽으로 세 칸이다. A를 중심으로 B를 지나가는 원호가 오른쪽 수직선에서 Q와 만난다.",
       "score": 4,
       "level": 3,
       "category": "분모의 유리화와 식의 값",
@@ -235,14 +245,14 @@ window.examData = {
       "standardUnit": "제곱근과 실수",
       "standardUnitOrder": 1,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "image": "assets/images/17_서울가산중_1학기_중간_중3_수학/q07.png",
-      "question": "<p>7. 점 $\\mathrm{Q}$에 대응하는 수를 $a$라고 할 때, $a + \\dfrac{6}{a}$ 의 값을 구하면? [4점]</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q07.png\" alt=\"수직선 위의 점 Q에 대응하는 수 a\" /></p>",
-      "content": "<p>7. 점 $\\mathrm{Q}$에 대응하는 수를 $a$라고 할 때, $a + \\dfrac{6}{a}$ 의 값을 구하면? [4점]</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q07.png\" alt=\"수직선 위의 점 Q에 대응하는 수 a\" /></p>",
+      "image": "assets/images/17_서울가산중_1학기_중간_중3_수학/q7-problem-visual-v2.svg",
+      "question": "<p>7. 점 $\\mathrm{Q}$에 대응하는 수를 $a$라고 할 때, $a + \\dfrac{6}{a}$ 의 값을 구하면? [4점]</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q7-problem-visual-v2.svg\" alt=\"수직선의 A는 0에서 오른쪽으로 네 칸, 정사각형의 이웃한 B는 A에서 왼쪽으로 한 칸과 위쪽으로 세 칸이다. A를 중심으로 B를 지나가는 원호가 오른쪽 수직선에서 Q와 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "content": "<p>7. 점 $\\mathrm{Q}$에 대응하는 수를 $a$라고 할 때, $a + \\dfrac{6}{a}$ 의 값을 구하면? [4점]</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q7-problem-visual-v2.svg\" alt=\"수직선의 A는 0에서 오른쪽으로 네 칸, 정사각형의 이웃한 B는 A에서 왼쪽으로 한 칸과 위쪽으로 세 칸이다. A를 중심으로 B를 지나가는 원호가 오른쪽 수직선에서 Q와 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$-8$",
         "$4 - \\sqrt{10}$",
@@ -259,9 +269,7 @@ window.examData = {
       "difficultyBucket": 3,
       "sourceParity": "EXACT",
       "hasVisual": true,
-      "images": [
-        "assets/images/17_서울가산중_1학기_중간_중3_수학/q07.png"
-      ],
+      "images": ["assets/images/17_서울가산중_1학기_중간_중3_수학/q7-problem-visual-v2.svg"],
       "accessibility": "수직선 위의 점 Q에 대응하는 수 a"
     },
     {
@@ -338,6 +346,12 @@ window.examData = {
     },
     {
       "id": 10,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "밑면 넓이는 (2√2)×√6=4√3 cm²이다. 4√3·x=12이므로 x=√3 cm이다. 정답은 ①이다.",
+      "solutionImageAlt": "직육면체의 밑면 두 변의 길이는 2√2 cm와 √6 cm이다. 수직 모서리의 길이는 x cm이다. 앞면과 옆면은 다른 색이다.",
+      "solutionImage": "assets/images/17_서울가산중_1학기_중간_중3_수학/q10-solution-visual-v2.svg",
+      "imageSize": "large",
+      "imageAlt": "직육면체의 밑면 두 변의 길이는 2√2 cm와 √6 cm이다. 수직 모서리의 길이는 x cm이다. 앞면과 옆면은 다른 색이다.",
       "score": 4,
       "level": 2,
       "category": "근호를 포함한 식의 응용 (입체도형 부피)",
@@ -347,14 +361,14 @@ window.examData = {
       "standardUnit": "제곱근과 실수",
       "standardUnitOrder": 1,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "image": "assets/images/17_서울가산중_1학기_중간_중3_수학/q10.png",
-      "question": "<p>10. 오른쪽 그림과 같은 직육면체의 부피가 $12\\,\\text{cm}^3$라 할 때, $x$의 값을 구하면? [4점]</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q10.png\" alt=\"밑면의 가로가 루트8, 세로가 루트6, 높이가 x인 직육면체\" /></p>",
-      "content": "<p>10. 오른쪽 그림과 같은 직육면체의 부피가 $12\\,\\text{cm}^3$라 할 때, $x$의 값을 구하면? [4점]</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q10.png\" alt=\"밑면의 가로가 루트8, 세로가 루트6, 높이가 x인 직육면체\" /></p>",
+      "image": "assets/images/17_서울가산중_1학기_중간_중3_수학/q10-problem-visual-v2.svg",
+      "question": "<p>10. 오른쪽 그림과 같은 직육면체의 부피가 $12\\,\\text{cm}^3$라 할 때, $x$의 값을 구하면? [4점]</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q10-problem-visual-v2.svg\" alt=\"직육면체의 밑면 두 변의 길이는 2√2 cm와 √6 cm이다. 수직 모서리의 길이는 x cm이다. 앞면과 옆면은 다른 색이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "content": "<p>10. 오른쪽 그림과 같은 직육면체의 부피가 $12\\,\\text{cm}^3$라 할 때, $x$의 값을 구하면? [4점]</p><p><img src=\"assets/images/17_서울가산중_1학기_중간_중3_수학/q10-problem-visual-v2.svg\" alt=\"직육면체의 밑면 두 변의 길이는 2√2 cm와 √6 cm이다. 수직 모서리의 길이는 x cm이다. 앞면과 옆면은 다른 색이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\sqrt{3}$",
         "$2\\sqrt{3}$",
@@ -371,9 +385,7 @@ window.examData = {
       "difficultyBucket": 2,
       "sourceParity": "EXACT",
       "hasVisual": true,
-      "images": [
-        "assets/images/17_서울가산중_1학기_중간_중3_수학/q10.png"
-      ],
+      "images": ["assets/images/17_서울가산중_1학기_중간_중3_수학/q10-problem-visual-v2.svg"],
       "accessibility": "밑면의 가로가 루트8, 세로가 루트6, 높이가 x인 직육면체"
     },
     {
