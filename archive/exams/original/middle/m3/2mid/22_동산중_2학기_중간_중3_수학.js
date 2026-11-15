@@ -180,8 +180,8 @@ window.questionBank =[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "완전제곱식 변형 후 계수 세 개를 합산.",
-    "primaryMethod": "일반형에서−2를 묶고 완전제곱식으로 바꿔 a=−2,p=2,q=5를 읽어 합을 계산한다.",
-    "decisiveStep": "일반형에서−2를 묶고 완전제곱식으로 바꿔 a=−2,p=2,q=5를 읽어 합을 계산한다.",
+    "primaryMethod": "완전제곱식으로 꼭짓점형 변환",
+    "decisiveStep": "a=-2,p=2,q=5.",
     "curriculum": "2015",
     "grade": "M3",
     "semanticSourceScope": "M3-1",
@@ -215,6 +215,8 @@ window.questionBank =[
     "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-051","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"일반형","l4":"완전제곱식 변형"},"rpmL3":"일반형","rpmL4":"완전제곱식 변형","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM","templateKey":"TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","crossConceptKeys":[],"integrationPattern":"NONE"}
+  ,
+    "courseKey": "M3-1"
   },
   {
     "id": 4,
@@ -467,8 +469,8 @@ window.questionBank =[
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "그래프에서 꼭짓점과 절편을 읽어 계수를 복원한 뒤 함숫값 계산.",
-    "primaryMethod": "그림의 꼭짓점(−2,−4)으로 꼭짓점형을 세우고 y절편4를 대입해 이차항 계수를 정한 후 a+b+c=f(1)을 읽는다.",
-    "decisiveStep": "그림의 꼭짓점(−2,−4)으로 꼭짓점형을 세우고 y절편4를 대입해 이차항 계수를 정한 후 a+b+c=f(1)을 읽는다.",
+    "primaryMethod": "그래프에서 이차함수 계수 복원",
+    "decisiveStep": "f(0)=4로 a=2를 구하고 f(1)=14.",
     "curriculum": "2015",
     "grade": "M3",
     "semanticSourceScope": "M3-1",
@@ -501,6 +503,8 @@ window.questionBank =[
     "nullReason": "OFFICIAL_RESOLVER_PROVENANCE_OR_CROSSWALK_PENDING",
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-054","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"조건으로 식 구하기"},"rpmL3":"그래프와 계수","rpmL4":"조건으로 식 구하기","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM","templateKey":"TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","crossConceptKeys":[],"integrationPattern":"NONE"}
+  ,
+    "courseKey": "M3-1"
   },
   {
     "id": 8,

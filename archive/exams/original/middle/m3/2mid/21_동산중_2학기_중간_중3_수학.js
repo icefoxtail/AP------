@@ -501,6 +501,8 @@ window.questionBank = [
     "nullReason": null,
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-051","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"일반형","l4":"완전제곱식 변형"},"rpmL3":"일반형","rpmL4":"완전제곱식 변형","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM","templateKey":"TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE","projectionStatus":"PROJECTION_REUSE","projectionReason":"일반형에서 음수 계수를 먼저 묶고 완전제곱식과 상수 조정으로 −(x−3)²+8을 만든 뒤 세 계수 합을 계산한다. ACTIVE 일반형→표준형 변형의 같은 골격을 재사용한다."}
+  ,
+    "courseKey": "M3-1"
   },
   {
     "id": 8,
