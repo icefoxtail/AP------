@@ -152,6 +152,8 @@ window.questionBank = [
     "solutionImageCaption": "CF:CA=1:4이고 CD:CB=1:2이므로 색칠한 삼각형은 전체의 1/8이다. 답: ⑤ 64cm²",
     "solutionImageSize": "full",
     "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M2-2",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "crossConceptKeys": [
@@ -1113,6 +1115,8 @@ window.questionBank = [
     "solutionImageCaption": "GD=10cm이므로 AD=30cm이고 빗변의 중점 D에서 세 꼭짓점까지의 거리는 모두 30cm이다. 답: 48cm",
     "solutionImageSize": "full",
     "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M2-2",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "crossConceptKeys": [
