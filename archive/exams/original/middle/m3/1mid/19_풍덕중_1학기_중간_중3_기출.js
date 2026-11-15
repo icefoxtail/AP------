@@ -45,6 +45,10 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "6≤√x<7이어서 36≤x<49이다. 자연수는 36부터 48까지 13개이며 정답은 ③이다.",
+    "solutionImageAlt": "36부터 48까지를 같은 간격의 파란 점으로 표시했다. 오른쪽 49의 점은 속을 비워 범위에 포함하지 않았다.",
+    "solutionImage": "assets/images/19_풍덕중_1학기_중간_중3_기출/q2-solution.svg",
     "content": "$\\sqrt{x}-3$의 정수부분이 $3$일 때, $x$가 될 수 있는 자연수의 개수를 구하면?",
     "choices": [
       "$11$개",
@@ -124,6 +128,10 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "√45=3√5=6+3a이며 6<√45<7이므로 소수 부분은 3a이다. 정답은 ③이다.",
+    "solutionImageAlt": "윗쪽 수직선에서 2부터 √5까지 거리는 a이다. 아래쪽 6부터 √45까지는 같은 길이의 세 보라 구간이다.",
+    "solutionImage": "assets/images/19_풍덕중_1학기_중간_중3_기출/q4-solution.svg",
     "content": "$\\sqrt{5}$의 소수부분을 $a$라고 할 때, $\\sqrt{45}$의 소수부분을 $a$를 사용하여 나타내면?",
     "choices": [
       "$3a+6$",
@@ -290,6 +298,10 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "4√2>5에서 A>B이고 C−A=√2>0이다. 따라서 B<A<C이고 정답은 ④이다.",
+    "solutionImageAlt": "4에 있는 초록 B 오른쪽으로 파랑 A, 더 오른쪽으로 주황 C가 있다. 세 점의 위치를 같은 간격의 눈금에 놓았다.",
+    "solutionImage": "assets/images/19_풍덕중_1학기_중간_중3_기출/q8-solution.svg",
     "content": "$A=4\\sqrt{2}-1, B=4, C=5\\sqrt{2}-1$일 때 대소 관계가 옳은 것은?",
     "choices": [
       "$A < B < C$",
@@ -527,6 +539,10 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "사다리꼴의 넓이는 (4x−3)h이다. 인수분해한 넓이 (4x−3)(2x+3)와 비교하면 h=2x+3이며 정답은 ③이다.",
+    "solutionImageAlt": "왼쪽은 윗변 3x−2와 아랫변 5x−4가 있는 사다리꼴이다. 오른쪽에서 같은 사다리꼴 한 장을 돌려 붙이면 높이 h는 같고 두 밑변이 이어진다.",
+    "solutionImage": "assets/images/19_풍덕중_1학기_중간_중3_기출/q14-solution.svg",
     "content": "윗변 $3x-2$, 아랫변 $5x-4$인 사다리꼴 넓이가 $8x^2 + 6x - 9$일 때 높이는?",
     "choices": [
       "$4x+3$",
@@ -684,6 +700,10 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 인수에서 a+b=13이고 k=ab이다. 6×7=42가 최댓값이고 정답은 ④이다.",
+    "solutionImageAlt": "합이 13인 여섯 수 쌍 옆에서 가로 막대 길이로 곱을 비교한다. 첫 줄은 1과 12이고 아래에서 두 수가 가까워질수록 막대가 길어진다.",
+    "solutionImage": "assets/images/19_풍덕중_1학기_중간_중3_기출/q18-solution.svg",
     "content": "$x^2 + 13x + k$가 $(x+a)(x+b)$로 인수분해될 때 $k$의 최댓값은? (단, $a, b$는 자연수)",
     "choices": [
       "$36$",
@@ -885,6 +905,10 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "39−n이 될 수 있는 양의 제곱은 1,4,9,16,25,36이다. 따라서 n은 3,14,23,30,35,38이다.",
+    "solutionImageAlt": "수직선에 1부터 36까지 여섯 양의 제곱수를 표시했다. 7의 제곱 49는 39의 주황 기준선을 지나 포함하지 않는다.",
+    "solutionImage": "assets/images/19_풍덕중_1학기_중간_중3_기출/q23-solution.svg",
     "content": "[서술형1] $\\sqrt{39-n}$이 자연수가 되게 하는 자연수 $n$을 모두 구하여라.",
     "choices": [],
     "answer": "$3, 14, 23, 30, 35, 38$",
@@ -959,6 +983,10 @@ window.questionBank = [
   },
   {
     "id": 25,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "주어진 식은 (a+b+1)²이다. a+b+1=√3이므로 값은 3이다.",
+    "solutionImageAlt": "큰 정사각형의 네 부분은 파랑 정사각형, 초록 띠 두 개, 주황 단위 정사각형이다. 둘레의 한 변은 a+b와 1을 합친 길이다.",
+    "solutionImage": "assets/images/19_풍덕중_1학기_중간_중3_기출/q25-solution.svg",
     "content": "[서술형3] $a+b = \\sqrt{3}-1$일 때 $a^2 + b^2 + 2ab + 2a + 2b + 1$의 값을 구하여라.",
     "choices": [],
     "answer": "$3$",
