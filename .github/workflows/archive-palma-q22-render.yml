@@ -22,25 +22,22 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Bind the exact source and official calibration
+      - name: Bind the restored exact source and official calibration
         run: |
           git rev-parse HEAD > source-commit.txt
           node archive/tools/solution-calibration-gate.mjs --exam archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js --evidence docs/operations/m2s1-palma-q22-render-20261115/calibration-r2.json --stage VISUAL_REPAIR --preflight --json
           test -x "$GEOMETRY_BROWSER_EXECUTABLE"
       - name: Install the locked official renderer dependencies
         run: node archive/tools/geometry-equation/production/setup-spikes.mjs
-      - name: Render only the missing Q22 solution figure in actual Archive
-        run: |
-          node archive/tools/geometry-equation/production/render-plan.mjs --item docs/operations/m2s1-palma-q22-render-20261115/item.json --plan docs/operations/m2s1-palma-q22-render-20261115/plan.json --out visual-evidence
-          node -e 'const r=require("./visual-evidence/figure-result.json");if(r.status!=="ARCHIVE_BOUND")throw Error(JSON.stringify(r));'
+      - name: Capture the restored source and frozen SVG in actual Archive
+        run: node docs/operations/m2s1-palma-q22-render-20261115/final-render-ci.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: palma-q22-visual-evidence
+          name: palma-q22-final-source-evidence
           include-hidden-files: true
           path: |
             source-commit.txt
-            visual-evidence/
             .tmp/archive/
             docs/operations/m2s1-palma-q22-render-20261115/
           retention-days: 30
