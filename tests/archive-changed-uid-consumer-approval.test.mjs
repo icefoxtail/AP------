@@ -4,7 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import crypto from "node:crypto";
-import { execFileSync, spawnSync } from "node:child_process";
+import { execFileSync, spawn, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { verifyChangedUidConsumerApproval, renderSummary } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
 import { loadResolvedConsumerCatalog, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
@@ -19,6 +19,27 @@ const uidAt = (file, ordinal) => identity.find(r => r.sourceArchiveFile === file
 const tmp = t => { const d = fs.mkdtempSync(path.join(os.tmpdir(), "changed-uid-")); t.after(() => fs.rmSync(d, { recursive: true, force: true })); return d; };
 const write = (dir, name, value) => { const f = path.join(dir, name); fs.writeFileSync(f, JSON.stringify(value, null, 2)); return f; };
 const cli = (args) => spawnSync(process.execPath, [checker, ...args], { cwd: repo, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
+
+test("CLI drains a large JSON result to a slow pipe before returning its failure exit code", async t => {
+  const dir = tmp(t);
+  const missing = Array.from({ length: 2048 }, (_, i) => path.join(dir, `missing-request-${i}.json`));
+  const child = spawn(process.execPath, [checker, ...missing.flatMap(file => ["--request", file])],
+    { cwd: repo, stdio: ["ignore", "pipe", "pipe"] });
+  const stdout = [], stderr = [];
+  child.stdout.on("data", chunk => stdout.push(chunk)); child.stdout.pause();
+  child.stderr.on("data", chunk => stderr.push(chunk));
+  const closed = new Promise((resolve, reject) => { child.once("error", reject); child.once("close", resolve); });
+  await new Promise(resolve => setTimeout(resolve, 750));
+  child.stdout.resume();
+  assert.equal(await closed, 1, Buffer.concat(stderr).toString("utf8"));
+  const text = Buffer.concat(stdout).toString("utf8");
+  assert.ok(Buffer.byteLength(text) > 256 * 1024, "exercise output larger than a pipe buffer");
+  const out = JSON.parse(text);
+  assert.equal(out.status, "FAIL");
+  assert.equal(out.failures.length, missing.length);
+  assert.equal(out.failures.at(-1).exam, missing.at(-1));
+  assert.ok(out.failures.every(row => row.reason === "REQUEST_UNREADABLE"));
+});
 
 test("current Geumdang scoped parent links: all 12 UIDs are effectively approved in the student consumer path", t => {
   const dir = tmp(t), summary = path.join(dir, "summary.md");

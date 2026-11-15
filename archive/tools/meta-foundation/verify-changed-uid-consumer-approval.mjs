@@ -510,7 +510,9 @@ function main() {
   }
   console.log(JSON.stringify(result, null, 2));
   if (opt.summary) fs.appendFileSync(opt.summary, renderSummary(result), "utf8");
-  process.exit(result.status === "PASS" ? 0 : 1);
+  // stdout can be a pipe (the PR proof parses this JSON). Allow its queued
+  // writes to drain before exiting; process.exit() can truncate large batches.
+  process.exitCode = result.status === "PASS" ? 0 : 1;
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();

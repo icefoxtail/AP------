@@ -3,6 +3,7 @@ import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { REVIEWED_RPM_FIELDS } from "./reviewed-rpm-provenance.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -163,6 +164,18 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     accepted[field] = value;
     rationaleBindings[field] = { origin, valueSha256: sha256(value) };
   }
+  const rpmBindings = {};
+  if (!identityOnly) for (const field of REVIEWED_RPM_FIELDS) {
+    if (!Object.hasOwn(patch.after, field) && !Object.hasOwn(question, field)) continue;
+    let value, origin;
+    if (Object.hasOwn(accepted, field)) { value = accepted[field]; origin = "NATIVE_AFTER"; }
+    else if (Object.hasOwn(question, field) && Object.hasOwn(committedBank[ordinal - 1], field)) {
+      value = committedBank[ordinal - 1][field]; origin = "REVIEW_COMMIT_SOURCE_FIELD";
+    } else fail(`RPM value has no immutable native evidence: ${field}`);
+    if (Object.hasOwn(question, field) && !equal(question[field], value)) fail(`current source RPM differs from native evidence: ${field}`);
+    accepted[field] = value;
+    rpmBindings[field] = { origin, valueSha256: sha256(stable(value)) };
+  }
   for (const [key, value] of Object.entries(patch.after)) {
     if (DERIVED_FIELDS.has(key) || equal(value, metadata[key] ?? null)) continue;
     // Source curriculum identifiers may be carried verbatim; they are never guessed from the reviewed grade.
@@ -186,5 +199,6 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     reviewCommitSourceBlobSha1: loaded.committedBlob, questionUid: patch.questionUid, sourceOrdinal: ordinal,
     reviewer: loaded.reviewer, decision, studentPayloadSha256: sha256(stable(payload)),
     ...(Object.keys(rationaleBindings).length ? { rationaleBindings } : {}),
+    ...(Object.keys(rpmBindings).length ? { rpmBindings } : {}),
     scope: identityOnly ? "IDENTITY_BINDING_ONLY" : "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false };
 }
