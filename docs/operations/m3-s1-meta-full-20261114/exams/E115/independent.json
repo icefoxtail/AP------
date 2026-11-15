@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "independent-meta-sample-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
+  "examKey": "E115",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewerOwner": "GPT_ROOT_D03144C8CA75/B",
+  "reviewedAt": "2026-11-15",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "scope": "METADATA_ONLY_LOCAL_PREPARATION",
+  "sourceBlob": "14abf906edb417567a756e3fbca76163f16128af",
+  "sourceSha256": "9d22d23539e30c0e006e705fcb4a3a2ad1d347eac3ffb7b65b1f64d726d711fd",
+  "reviewPath": "/workspace/scratch/d03144c8ca75/workers/C/E115.review.json",
+  "reviewSha256": "e8f6c0be6bdee6caa87b22365ab3aeece833c336b1185ebb4c936e76f71547e6",
+  "fourSlotPath": "/workspace/scratch/d03144c8ca75/workers/C/E115.4slot.json",
+  "fourSlotSha256": "616331db282157d4a400fd5ec11d9936a3d8d24723f036b69c86139bec858012",
+  "sampleOrdinals": [
+    14,
+    15,
+    24
+  ],
+  "samples": [
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_8e8fe246ce18b0949f97a4265d9f613b6d7fa0d143a4b23be06e3a55f51b6b77",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt"
+      ],
+      "quotesVerified": 5,
+      "rationale": "실제 해설 스스로 3x²+6xy=-3x(-x-2y)를 인정하면서 근거 없는 표준 인수 목록으로 -3x를 배제함을 확인. 다섯 보기 모두 인수가 되는 내용 부채와 level/bucket UNKNOWN을 보존하는 결론을 수용. 공통인수 leaf021/2022 leaf113은 맥락 후보이며 내용 품질 PASS로 해석하지 않는다.",
+      "sourceFingerprints": {
+        "QBODY": "037f23d1f9a5b5a9b892eb8eb2590a73b41659e2ecfb7db7a0029cc2fa7aae9d",
+        "QFULL": "487beb475779628feca60b8a4bc20035bd3d8fa2f830a3f6a0443a72c16351b0"
+      },
+      "debtKindsPreserved": [
+        "PROJECTION_COMPATIBILITY_PENDING",
+        "RPM_EXACT_LEAF_GAP",
+        "CONTENT_AMBIGUITY_EVIDENCE_DEBT"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_99aed299c924c394ee8c6a97ff16299a811ad0a8f52aa816373e5bd7abfaf355",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt"
+      ],
+      "quotesVerified": 5,
+      "rationale": "완전제곱식의 가능한 계수 전체는±28이나 보기28도 식을 완전제곱으로 만든다는 원래 부채를 재확인. 원패킷의 답집합 범위 검토 대기와 UNKNOWN을 그대로 수용. 4칸 given 이차식, goal 미정계수, method 완전제곱식·계수비교, condition 완전제곱식이 실제 원문에 결속됨.",
+      "sourceFingerprints": {
+        "QBODY": "27d1082003ee193bbab340530da4aa7de7fe687676726e0d0845bac0546e7818",
+        "QFULL": "75a8ea5d8828d63dc8e70688f849250989c758ccbeca91d76f3f5aeb4594ee02"
+      },
+      "debtKindsPreserved": [
+        "PROJECTION_COMPATIBILITY_PENDING",
+        "RPM_EXACT_LEAF_GAP",
+        "CONTENT_AMBIGUITY_EVIDENCE_DEBT"
+      ]
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_d53c7763ea2daa4f53aa8e31f31baef2631f3a3f4d4d88abd56bd55d6b8d8954",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot evidence",
+        "declared debt"
+      ],
+      "quotesVerified": 7,
+      "rationale": "기존 해설의 두 차례 합차공식으로5·11·73을 얻고1<n<50의 약수를5와11로 선별한 경로를 확인. 합이 목표, 자연수/범위가 조건이며 두 차례 구조 변형과 약수선별의 bucket3을 수용. leaf026/118과 세부 유형 제안 부채를 유지.",
+      "sourceFingerprints": {
+        "QBODY": "34daf57c2997c978d24ba7f9348937a500208c0d3b6b1d4735988d82e12006b2",
+        "QFULL": "e5a16e2da08a51673ad3d6828a1c4b473d57fd59ca65b1d71521e74292748ccb"
+      },
+      "debtKindsPreserved": [
+        "PROJECTION_COMPATIBILITY_PENDING",
+        "RPM_EXACT_LEAF_GAP"
+      ]
+    }
+  ],
+  "assetReadback": [],
+  "independentReviewerNotAuthor": true,
+  "contentQualityPass": false,
+  "remoteCompletionClaim": false,
+  "remaining": [
+    "root ownership handoff confirmation",
+    "root protected-field integration checks",
+    "remote checkpoint",
+    "Codex exact-leaf/projection and declared content debt processing"
+  ]
+}

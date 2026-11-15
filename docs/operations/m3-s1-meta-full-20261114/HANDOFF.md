@@ -1,16 +1,16 @@
 # M3-S1-META-FULL — 마지막 3시험지 복구 및 운영병합
 
-상태: **RUNNING / USER_DIRECTED_RESUME_AND_MAIN_RELEASE**
+상태: **REVIEW_PACKET_COMPLETE_RELEASE_IN_PROGRESS / USER_DIRECTED_RESUME_AND_MAIN_RELEASE**
 
 - taskId: `675e8b6b-b864-4891-b6c2-e822f550853e`
 - owner: `GPT_ROOT_E92D0E19E75F`
 - branch: `review/m3-s1-meta-full-20261114`
 - 재개 기준 원격 HEAD: `12fbe408db7a2d74c9170e445a94c2492220f929`
 - 확인한 main: `855c7a441a53690d242c93e10d710471fb215690`
-- 저장 snapshot: 114/115시험지, 2725/2750문항
-- 이번 보존: 2시험지·50문항
-- 남은 저장: 1시험지·25문항
-- 다음: `SERIAL_SAVE_E115`
+- 저장 snapshot: 115/115시험지, 2750/2750문항
+- 이번 보존: 3시험지·75문항
+- 남은 저장: 0시험지·0문항
+- 다음: `SCOPED_MAIN_RELEASE_WITH_CURRENT_SOURCE_PRESERVATION`
 
 ## 직접 인수와 증거 재사용
 

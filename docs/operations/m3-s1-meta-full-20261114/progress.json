@@ -5,14 +5,14 @@
   "owner": "GPT_ROOT_E92D0E19E75F",
   "branch": "review/m3-s1-meta-full-20261114",
   "baseMain": "0ba1e7de048de3af0771da6c0972409fd46baa75",
-  "status": "RUNNING",
+  "status": "REVIEW_PACKET_COMPLETE_RELEASE_IN_PROGRESS",
   "resumeState": "USER_DIRECTED_RESUME_AND_MAIN_RELEASE",
   "totals": {
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 114,
-    "reviewedQuestions": 2725
+    "reviewedExams": 115,
+    "reviewedQuestions": 2750
   },
   "duplicateUids": [],
   "exams": [
@@ -11599,12 +11599,44 @@
           "path": "archive-work/4slot-annotate-v1/out/original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.4slot.json"
         }
       },
-      "status": "PENDING",
+      "status": "REVIEWED_WITH_EVIDENCE_DEBT",
       "assignedTo": "meta_a",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CURRENT_ROOT_SCOPED_MAIN_RELEASE",
+      "reviewVersion": "M3-S1-META-FULL-recovery-v1",
+      "sourceFinalBlob": "2b420d3b1968bef83326a97331691d78639e3364",
+      "reviewer": "meta_a",
+      "independentReviewer": "meta_b",
+      "integratedBy": "GPT_ROOT_E92D0E19E75F",
+      "sampledOrdinals": [
+        14,
+        15,
+        24
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E115",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 9,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "REUSED_EXACT_PREPARED",
+        "fingerprints": "PASS"
+      },
+      "sourceChangedItems": 23,
+      "sourceChangedFields": 46,
+      "contentDebtCount": 5,
+      "typeProposalCount": 0,
+      "evidenceDebtOrdinals": [
+        14,
+        15
+      ],
+      "undecidedDifficultyOrdinals": [
+        14,
+        15
+      ],
+      "difficultyPolicyDebtOrdinals": [],
+      "validatorCompatibilityOrdinals": []
     }
   ],
-  "nextAction": "SERIAL_SAVE_E115",
+  "nextAction": "SCOPED_MAIN_RELEASE_WITH_CURRENT_SOURCE_PRESERVATION",
   "resumedAt": "2026-11-15T22:48:29.680546+00:00",
   "authorityMainChecked": "855c7a441a53690d242c93e10d710471fb215690",
   "resumeAuthority": {
@@ -11617,7 +11649,7 @@
     "predecessorRevision": 24,
     "predecessorRawSha256": "481843eacddc4739e849a575b92455df296bfceaf9469b8cba8fb5f3ef8a1b9f"
   },
-  "updatedAt": "2026-11-15T22:56:56.381811+00:00",
+  "updatedAt": "2026-11-15T22:58:19.373152+00:00",
   "lastPublishedHeadBeforeCurrent": "75d036d6260af0d1762ea814862676a032fc6881",
   "resumeHistory": [
     {
@@ -11667,11 +11699,11 @@
       "predecessorRawSha256": "481843eacddc4739e849a575b92455df296bfceaf9469b8cba8fb5f3ef8a1b9f"
     }
   ],
-  "lastCompletedExam": "E114",
-  "nextIncompleteExam": "E115",
-  "remainingExams": 1,
-  "remainingQuestions": 25,
-  "lastVerifiedRemoteHeadBeforeCurrent": "f0c5ad545a8cdf6759a2f5fce04e61404b2c836d",
+  "lastCompletedExam": "E115",
+  "nextIncompleteExam": null,
+  "remainingExams": 0,
+  "remainingQuestions": 0,
+  "lastVerifiedRemoteHeadBeforeCurrent": "db7114eb2d094bd763aa39214cbe8e58c76d4a70",
   "externalCheckpoint": {
     "revision": 25,
     "sha256": "c361a0354e135ac820814746bf66f25b29d3a083b22c73736ad711424bdd8eba",
@@ -11695,15 +11727,7 @@
       "status": "ACTIVE"
     }
   },
-  "unsavedArtifacts": [
-    {
-      "examKey": "E115",
-      "questionCount": 25,
-      "sourceBlob": "14abf906edb417567a756e3fbca76163f16128af",
-      "recoveryUnit": "exams/E115/af24f00601e99454",
-      "state": "PREPARED_PENDING_REMOTE_SAVE"
-    }
-  ],
+  "unsavedArtifacts": [],
   "priorWorkersAtResume": {
     "A": {
       "agent": "/root/git_owner_evidence",
@@ -11729,8 +11753,8 @@
     "reusedPreparedQuestions": 75,
     "newSemanticReviewQuestions": 0,
     "originalRecoverySha256": "03e92628d9c816a1d23eb6c6f5389ad9b980f9c35d8373372d50c876cc016992",
-    "newlyPreservedExams": 2,
-    "newlyPreservedQuestions": 50
+    "newlyPreservedExams": 3,
+    "newlyPreservedQuestions": 75
   },
   "previousRun": {
     "baselineHead": "e997036d76b60a9391ea18b914775681ce21664d",
