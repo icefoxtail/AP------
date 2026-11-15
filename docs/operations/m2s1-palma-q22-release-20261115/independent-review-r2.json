@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "palma-q22-independent-r2",
+  "reviewStatus": "A_PASS_WITH_SEPARATE_ARCHIVE_TEXT_RENDER_NOTE",
+  "reviewer": {
+    "taskInstance": "/root/palma_q22_independent",
+    "assignedRole": "independent Luna xhigh reviewer",
+    "reviewedAt": "2026-11-15T09:14:56Z"
+  },
+  "scope": {
+    "exam": "21_팔마중_1학기_중간_중2_기출",
+    "ordinal": 22,
+    "assetType": "new solution SVG; A-only review",
+    "bComparison": "NOT_APPLICABLE",
+    "betterComparison": "NOT_APPLICABLE"
+  },
+  "frozenExpected": {
+    "path": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/expected.json",
+    "sha256": "1549568aa04d7f299f69ffa2d8178ab4390bd83155a72ab61140bf7e9635b765",
+    "sourcePath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+    "sourceSha256": "73e7dca45980a7e405e540a14afd9d8394bb71a351129c9f1826a5abcb5fd3d3",
+    "expectedFrozenBeforeCandidateAndPlanReview": true
+  },
+  "calibrationReused": {
+    "independentReviewPath": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/independent-review.json",
+    "calibrationStatus": "SOURCE_AND_NEGATIVE_BYTES_VERIFIED",
+    "goldens": [
+      {
+        "path": "archive/exams/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+        "sha256": "f659ef6e33bad3385c06ddc5b524b0ad57d8f3dda699daeda65654cb0d3b6fcb",
+        "gitBlobSha": "4d69b7bb178452d58e4daa9b9dd3b1d5340da654",
+        "reviewedItems": [12, 13]
+      },
+      {
+        "path": "archive/exams/original/middle/m1/2final/23_왕운중_2학기_기말_중1_기출.js",
+        "sha256": "a77673bf922858760c76ae38f441219a73cb4bcedc1ea19825745c01318c724f",
+        "gitBlobSha": "5a882f85179ced5eff8e6389f4ee2fd6287b1152",
+        "reviewedItems": [19, 20]
+      }
+    ],
+    "negativeSamples": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/05_24_향림중_2학기_기말_중2_기출_q12_LABEL_OWNER_BINDING_FAIL.svg",
+        "sha256": "6e41ac3f63f49df4cda7344c1f89b5c8f1250c37781d81d618540f1aeee2b43f",
+        "gitBlobSha": "eb167f54b698bdb66f926f740432db0e36d26019"
+      }
+    ],
+    "regressionApplied": "Check geometry from actual primitives and bind every visible length label to its owner; do not accept text or plan claims alone."
+  },
+  "candidateEvidence": {
+    "initialRender": {
+      "runId": "43696158072",
+      "artifactId": "14154970439",
+      "reportedHead": "766308c35534252f83557b5c1d7defcc21684948",
+      "artifactZipPath": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/ci-43696158072/artifact.zip",
+      "artifactZipSha256": "aa39d292d801d8aa36aaa2fda09e1ffdf99fadf550cdb3be422437aac84cfe76",
+      "svgPath": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/ci-43696158072/visual-evidence/figure-solution.svg",
+      "svgSha256": "9f07d3bd115489e64cb2f63ddb0b1e8a6617794145ce9b30580e6a3f652df01d",
+      "captureMode": "Archive mode=sol, desktop, Playwright Chromium 157.0.8103.50, synthetic=false"
+    },
+    "finalSourceCapture": {
+      "runId": "43697378320",
+      "artifactId": "14155475391",
+      "artifactZipPath": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/ci-43697378320/artifact.zip",
+      "artifactZipSha256": "6ddd978ad5f50dc42def6fb0d984c9db35a6d356952b066bed5c47b579101cff",
+      "rowStatus": "PASS",
+      "rowCaptureStatus": "MEASURED",
+      "rowMode": "sol",
+      "rowViewport": "desktop",
+      "synthetic": false,
+      "sourceSha256": "73e7dca45980a7e405e540a14afd9d8394bb71a351129c9f1826a5abcb5fd3d3",
+      "candidateSha256": "73e7dca45980a7e405e540a14afd9d8394bb71a351129c9f1826a5abcb5fd3d3",
+      "currentSourceGitBlobSha": "d07e680fe49b577f06eb4ae522b6ce477c912e67",
+      "questions": 24,
+      "svgResponse": {
+        "status": 200,
+        "sha256": "9f07d3bd115489e64cb2f63ddb0b1e8a6617794145ce9b30580e6a3f652df01d",
+        "bytes": 29603
+      },
+      "sourceFieldsRestoredByteExact": true,
+      "inputParityArtifactScope": "The input-parity-r2.json in the ZIP is the earlier draft-only removal record; final-source proof comes from the raw Archive row with equal source/candidate SHA and the original source bytes."
+    },
+    "screenshots": {
+      "initialImagePng": {
+        "path": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/review-r2/inspection/image.png",
+        "sha256": "07d4263681a114c033da4f0242f2de3bfc6af3f9fe040c9ae53ae87e6d978e23"
+      },
+      "finalSourceContextPng": {
+        "path": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/review-r2/inspection-final/context.png",
+        "sha256": "0e5aeb9c1b2964d3f50251ac4b4e9aa5a54e32bd1487a6c05b487fd090263ebd"
+      },
+      "finalSourceFullPagePng": {
+        "path": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/review-r2/inspection-final/page.png",
+        "sha256": "8538c914771280cdbee2dc4214f3db0ae9e2c236f16a44d32b05aef13e45c612"
+      },
+      "finalSourceImagePng": {
+        "path": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/review-r2/inspection-final/image.png",
+        "sha256": "07d4263681a114c033da4f0242f2de3bfc6af3f9fe040c9ae53ae87e6d978e23"
+      },
+      "allListedPngsWereDirectlyViewed": true
+    }
+  },
+  "aOnlyVerdict": {
+    "status": "PASS",
+    "visualDefect": "NONE_FOUND",
+    "svgRepairNeeded": false,
+    "bOrBetterVerdict": "NOT_APPLICABLE",
+    "mathAndGeometry": {
+      "status": "PASS",
+      "expectedRelation": "V_cylinder = πa²·3a = 3πa³; V_cone = (1/3)π(2a)²h = (4/3)πa²h; equal water volumes imply h=9a/4.",
+      "actualModel": {
+        "cylinder": { "radiusUnits": 1, "heightUnits": 3 },
+        "cone": { "radiusUnits": 2, "heightUnits": 2.25 }
+      },
+      "independentVolumeCheck": "π·1²·3 = 3π; (1/3)π·2²·2.25 = 3π.",
+      "observedSvgPrimitives": [
+        "The cylinder radius line runs from the lower base center to its circular rim; the 3a height line runs axially between base centers.",
+        "The cone radius line runs from base center to rim; the h height line runs from base center to apex.",
+        "Hidden geometry is dashed; visible silhouettes and dimension lines are distinct."
+      ]
+    },
+    "labelOwnerBindings": [
+      { "label": "a", "owner": "cylinder base radius", "result": "PASS" },
+      { "label": "3a", "owner": "cylinder axial height", "result": "PASS" },
+      { "label": "2a", "owner": "cone base radius", "result": "PASS" },
+      { "label": "h", "owner": "cone axial height", "result": "PASS" }
+    ],
+    "answerLeakage": {
+      "diagram": "PASS; h=9a/4 is not printed in the SVG.",
+      "alt": "PASS; describes the equal-volume solids and dimensions, no answer value.",
+      "caption": "PASS; '물의 부피 보존: 3πa³ = (4/3)πa²h' states the relation but not the requested height."
+    },
+    "readabilityAndLayout": {
+      "visualObservation": "Both solids and all four labels are legible at the captured Archive display size. Labels do not collide with each other, axes, or silhouette lines; the image has clear margins and no visible clipping.",
+      "actualArchiveTargetRectCssPx": { "width": 288, "height": 220.1875 },
+      "svgNaturalSizePx": { "width": 480, "height": 367 },
+      "actualDisplayScale": 0.5999659400544959,
+      "browserCaptureCounts": { "labelCollisionCount": 0, "criticalCollisionCount": 0, "clippedTextCount": 0, "overflowCount": 0, "missingGlyphCount": 0, "loadedSvgCount": 1, "failedSvgCount": 0 },
+      "cssFontFloor": {
+        "status": "PASS_BY_EFFECTIVE_VECTOR_SIZE",
+        "floorCssPx": 11,
+        "outlinedLabelDataFontPx": 20,
+        "effectiveNominalCssPx": 11.999318801089918,
+        "basis": "Actual Archive image rect width 288 / natural SVG width 480, multiplied by the final SVG label groups' data-font-px=20; the same scale is present in the final-source capture.",
+        "measurementCaveat": "The labels and panel heading are outlined paths, not DOM text. The browser row reports finalViewportCssFontPx=0 for the FROZEN_OUTLINE panel caption and does not enumerate the four nested panel labels as DOM font measurements. The vector-scale calculation is bound to the actual rendered asset/rect, but it is not a direct CSS font property sample."
+      }
+    }
+  },
+  "finalSourceContextCheck": {
+    "status": "BYTE_AND_ASSET_BINDING_PASS_WITH_PAGE_FONT_OBSERVATION",
+    "originalFourFieldsRestoredExactly": {
+      "solutionImage": "assets/images/21_팔마중_1학기_중간_중2_기출/q22-solution.svg",
+      "solutionImageAlt": "반지름 a, 높이 3a인 원기둥과 반지름 2a인 원뿔의 부피가 같음을 나타낸 해설 도형",
+      "solutionImageCaption": "물의 부피 보존: 3πa³ = (4/3)πa²h",
+      "solutionImageSize": "full"
+    },
+    "contextScreenshotObservation": "The restored caption is present below the SVG and its equality formula is visible. The Korean words in the q22 stem, solution prose, and caption are not visibly rendered in the captured page; the same pattern appears elsewhere on the page while mathematical fragments and the vector-outlined Korean SVG heading remain visible.",
+    "renderTelemetryConflict": "Raw Archive capture reports missingGlyphCount=0, but direct PNG viewing shows the broader Korean-text rendering issue. Do not treat that count alone as proof that the HTML Korean text is readable.",
+    "scope": "This is separate from the SVG A verdict; it appears to be a page/font rendering issue and is not evidence of incorrect q22 source bytes or SVG geometry. Root should resolve or separately qualify before claiming full-page Korean-text readability."
+  },
+  "releaseScope": {
+    "svgAssetVerdict": "PASS",
+    "publication": "NOT_REVIEWED_OR_AUTHORIZED_BY_THIS_AGENT",
+    "fullArchivePageTextReadability": "NOT_PASSED_DUE_TO_DIRECTLY_OBSERVED_KOREAN_TEXT_RENDERING_ISSUE",
+    "nextAction": "No SVG repair is needed. Root can decide the separate Archive Korean font/text rendering issue and publication gate."
+  }
+}
