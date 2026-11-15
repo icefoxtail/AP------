@@ -312,6 +312,8 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "imageSize": "full",
+    "imageAlt": "왼쪽부터 정사각형 한 개, 두 개, 세 개를 가로로 붙이는 장면이다. 가로로 이웃한 정사각형은 한 세로 성냥개비를 공유한다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -320,7 +322,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -338,7 +340,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "첫째 도형에는 성냥개비가 $4$개 있고, 한 단계 늘 때마다 $3$개씩 늘어난다.\n\n따라서\n$y=4+3(x-1)$\n$=3x+1$이다.\n\n성냥개비가 $16$개일 때\n$16=3x+1$\n$3x=15$\n$x=5$이다.\n\n따라서 정답은 ②이다.",
-    "image": "assets/images/26_팔마중_1학기_기말_중2_기출/q09.png",
+    "image": "assets/images/26_팔마중_1학기_기말_중2_기출/q9-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -398,7 +400,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -406,7 +408,7 @@ window.questionBank = [
       "평행이동"
     ],
     "wide": false,
-    "content": "다음 중 $y=2x-2$의 그래프를 $y$축의 방향으로 4만큼 평행이동한 그래프를 고르면? [4점]",
+    "content": "다음 중 $y=2x-2$의 그래프를 $y$축의 방향으로 4만큼 평행이동한 그래프를 고르면? [4점]<br><img src=\"assets/images/26_팔마중_1학기_기말_중2_기출/q11-problem-visual-v2.svg\" alt=\"①과 ②는 같은 정도로 가파르게 올라가며 각각 세로축 2, −2를 지난다. ③과 ④는 기울기가 완만하며 각각 세로축 2, −2를 지난다. ⑤는 오른쪽으로 갈수록 내려가고 세로축 2를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "첫 번째 그래프",
       "두 번째 그래프",
@@ -416,7 +418,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$y=2x-2$의 그래프를 $y$축의 양의 방향으로 $4$만큼 평행이동하면\n\n$y=(2x-2)+4$\n$=2x+2$이다.\n\n기울기는 $2$, $y$절편은 $2$이다.\n\n이 조건을 만족하는 것은 첫 번째 그래프이다.\n\n따라서 정답은 ①이다.",
-    "image": "assets/images/26_팔마중_1학기_기말_중2_기출/q11.png",
+    "image": "",
     "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
@@ -470,6 +472,7 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "imageAlt": "모눈 위의 두 점은 (−2, 4)와 (2, 1)이다. 두 점을 잇는 주황 직선은 오른쪽으로 갈수록 내려간다.",
     "level": "하",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -478,7 +481,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -496,8 +499,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "일차함수의 그래프에서 기울기는\n$\\dfrac{y\\text{의 변화량}}{x\\text{의 변화량}}$으로 구한다.\n\n그래프 위의 두 점 $(-2,4)$, $(2,1)$을 이용하면\n$x$의 변화량은 $2-(-2)=4$이고\n$y$의 변화량은 $1-4=-3$이다.\n\n따라서 기울기는\n$\\dfrac{1-4}{2-(-2)}=\\dfrac{-3}{4}=-\\dfrac34$이다.\n\n따라서 정답은 ③이다.",
-    "image": "assets/images/26_팔마중_1학기_기말_중2_기출/q13.png",
-    "imageSize": "full",
+    "image": "assets/images/26_팔마중_1학기_기말_중2_기출/q13-problem-visual-v2.svg",
+    "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -594,6 +597,8 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "imageSize": "full",
+    "imageAlt": "가로 15 cm, 세로 8 cm인 직사각형 ABCD이다. P는 밑변을 따라 B에서 C로 움직이는 점이다. DP를 경계로 왼쪽 사다리꼴 ABPD를 옅은 청록으로 표시했다.",
     "level": "상",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -602,7 +607,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -621,7 +626,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$x$초 후\n$BP=3x$이므로\n\n$PC=15-3x$이다.\n\n직사각형 $ABCD$의 넓이는\n$15\\times8=120$이다.\n\n삼각형 $DPC$의 넓이는\n$\\dfrac12(15-3x)\\times8$\n$=60-12x$이다.\n\n따라서 사각형 $ABPD$의 넓이는\n$120-(60-12x)$\n$=60+12x$이다.\n\n넓이가 $96\\text{ cm}^2$이므로\n$60+12x=96$\n$12x=36$\n$x=3$이다.\n\n따라서 정답은 ③이다.",
-    "image": "assets/images/26_팔마중_1학기_기말_중2_기출/q16.png",
+    "image": "assets/images/26_팔마중_1학기_기말_중2_기출/q16-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
