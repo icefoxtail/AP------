@@ -31,7 +31,8 @@ import { fileURLToPath } from "node:url";
 import { verifyStudentAccess } from '../../archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs';
 import { AUDIT_PRESERVATION_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, auditPreservationDependency,
   basicPreservationDescriptor, difficultyBeforeBindings, nativeRegistryDependencyDescriptor,
-  nativeRegistryDependencies, orderNativeRequests } from './archive-pr-native-preview.mjs';
+  nativeRegistryDependencies, nativeDefinitionDependencyDescriptor, nativeDefinitionDependencies,
+  orderNativeRequests } from './archive-pr-native-preview.mjs';
 
 export function acceptPendingSupplement(opt, requestAbs, error) {
   const bytes=fs.readFileSync(requestAbs),doc=JSON.parse(bytes.toString('utf8'));
@@ -122,8 +123,10 @@ export function orderedRequestPaths(opt, { onDependencyError } = {}) {
     const sourceRebind=doc?auditPreservationDependency(doc,rel):undefined;
     const basicPreservation=doc?basicPreservationDescriptor(doc):undefined;
     const registryDependency=doc?nativeRegistryDependencyDescriptor(doc):undefined;
+    const definitionDependency=doc?nativeDefinitionDependencyDescriptor(doc):undefined;
     return {path:rel,requestArg,sha256:bytes?sha256(bytes):undefined,doc,sourceRebind,
       ...(registryDependency?{registryDependency}:{}),
+      ...(definitionDependency?{definitionDependency}:{}),
       ...(sourceRebind?{kind:'native-approval-preservation'}:{}),
       ...(basicPreservation?{basicPreservation,kind:'basic-approval-preservation'}:{}),
       ...(doc?.schemaVersion===DIFFICULTY_REQUEST_SCHEMA&&doc.gemini?.schemaVersion==='v1'
@@ -133,7 +136,7 @@ export function orderedRequestPaths(opt, { onDependencyError } = {}) {
       ...(doc?.scope!==undefined?{scope:doc.scope}:{}),
       ...(doc?.registrationMode!==undefined?{registrationMode:doc.registrationMode}:{} )};
   });
-  if(!descriptors.some(r=>r.sourceRebind||r.basicPreservation||r.registryDependency))return [...opt.requests];
+  if(!descriptors.some(r=>r.sourceRebind||r.basicPreservation||r.registryDependency||r.definitionDependency))return [...opt.requests];
   const bound=new Set(descriptors.filter(r=>r.sourceRebind).flatMap(r=>[r.path,r.sourceRebind.difficultyRequestRef?.path]));
   const basicUids=new Set(descriptors.flatMap(r=>(r.basicPreservation?.bindings||[]).map(b=>b.questionUid)));
   for(const row of descriptors)if(row.basicPreservation||(row.difficultyBeforeBindings||[]).some(b=>basicUids.has(b.questionUid)))bound.add(row.path);
@@ -237,23 +240,27 @@ export function registerRequests(opt, { log = console.log } = {}) {
   let dirtied = null;
   const dependencyErrors=new Map();
   const requestOrder=orderedRequestPaths(opt,{onDependencyError:(rel,error)=>dependencyErrors.set(rel,error.message)});
-  // Keep the selected basic owners before a failed request is moved away.
-  // A dependent D5 request must not execute after its rebind was refused.
-  const basicOwners=new Map(),registryRequests=[];
+  // Snapshot selected owners and both provider graphs before any failed request
+  // is moved away. Refusal must still block its exact dependent requests.
+  const basicOwners=new Map(),dependencyRequests=[];
   for(const arg of requestOrder){
     const absolute=path.resolve(root,arg);if(!fs.existsSync(absolute))continue;
     try{const doc=JSON.parse(fs.readFileSync(absolute,'utf8'));
-      registryRequests.push({path:posix(path.relative(root,absolute)),registryDependency:nativeRegistryDependencyDescriptor(doc)});
+      dependencyRequests.push({path:posix(path.relative(root,absolute)),
+        registryDependency:nativeRegistryDependencyDescriptor(doc),definitionDependency:nativeDefinitionDependencyDescriptor(doc)});
       if(doc.schemaVersion==='archive-basic-scope-rebind-request-v1'&&doc.approval?.sourceReview!==undefined)
         for(const item of doc.items||[])basicOwners.set(item.questionUid,posix(path.relative(root,absolute)));
     }catch(error){if(!(error instanceof SyntaxError))throw error;}
   }
-  const registryDependencies=nativeRegistryDependencies(registryRequests);
+  const providerDependencies=[
+    ['REGISTRY_DEPENDENCY_NOT_APPLIED',nativeRegistryDependencies(dependencyRequests)],
+    ['DEFINITION_DEPENDENCY_NOT_APPLIED',nativeDefinitionDependencies(dependencyRequests)],
+  ];
   for (const requestArg of requestOrder) {
     const requestAbs = path.resolve(root, requestArg), rel = posix(path.relative(root, requestAbs)), name = path.basename(requestAbs);
     if (!fs.existsSync(requestAbs)) { rejected.push({ request: rel, name, error: "request file not found", exitCode: null }); continue; }
     const before = fingerprint();
-    let conflicts=[],dependencyError=dependencyErrors.has(rel)?'Error: '+dependencyErrors.get(rel):'';
+    let conflicts=[],dependencyError=dependencyErrors.has(rel)?'Error: '+dependencyErrors.get(rel):'',providerNotApplied=false;
     const metadataFile=path.join(root,'archive/data/question_metadata.json');
     try {
       const doc=JSON.parse(fs.readFileSync(requestAbs,'utf8'));
@@ -265,9 +272,10 @@ export function registerRequests(opt, { log = console.log } = {}) {
         const missing=(doc.gemini?.items||[]).map(item=>basicOwners.get(item.questionUid)).find(owner=>owner&&!applied.some(row=>row.request===owner));
         if(missing)dependencyError='Error: BASIC_DEPENDENCY_NOT_APPLIED: '+missing;
       }
-      if(!dependencyError){
-        const missing=[...(registryDependencies.get(rel)||[])].find(provider=>!applied.some(row=>row.request===provider));
-        if(missing)dependencyError='Error: REGISTRY_DEPENDENCY_NOT_APPLIED: '+missing;
+      for(const [code,dependencies] of providerDependencies){
+        if(dependencyError)break;
+        const missing=[...(dependencies.get(rel)||[])].find(provider=>!applied.some(row=>row.request===provider));
+        if(missing){dependencyError=`Error: ${code}: ${missing}`;providerNotApplied=true;}
       }
     } catch(error){if(!(error instanceof SyntaxError))throw error;}
     const run = dependencyError ? {status:1,stderr:dependencyError,stdout:''}
@@ -283,7 +291,7 @@ export function registerRequests(opt, { log = console.log } = {}) {
     const error = summarizeFailure(run.stderr || "", run.stdout || "");
     if (fingerprint() !== before) { dirtied = { request: rel, error }; rejected.push({ request: rel, name, error, exitCode: run.status, treeChanged: true }); break; }
     let pending=null;
-    try { if(!dependencyError.includes('REGISTRY_DEPENDENCY_NOT_APPLIED:'))pending=acceptPendingSupplement(opt,requestAbs,error); } catch(e) {
+    try { if(!providerNotApplied)pending=acceptPendingSupplement(opt,requestAbs,error); } catch(e) {
       if(!(e instanceof SyntaxError))throw e;
     }
     if(pending){pendingSupplement.push(pending);log(`[register] USER_APPROVED_PENDING_SUPPLEMENT ${name}: ${error}`);continue;}
