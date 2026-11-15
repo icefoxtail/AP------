@@ -135,13 +135,16 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       hook[phase]?.(target);
       if (phase === 'projection' && !replay) throw Error('FIXTURE_RECEIPT_REQUIRED');
       const identityRepair=req.registrationMode==='IDENTITY_FINGERPRINT_ONLY';
-      const basic=req.approval.sourceReview?.schemaVersion==='archive-basic-scope-current-source-preservation-v1';
+      const basic=['archive-basic-scope-current-source-preservation-v1','archive-basic-native-source-hold-preservation-v1','archive-reviewed-native-basic-parent-v1']
+        .includes(req.approval.sourceReview?.schemaVersion);
+      const newBasic=req.approval.sourceReview?.schemaVersion==='archive-reviewed-native-basic-parent-v1';
       const result = { status: 'PASS', requestId: req.requestId, totalQuestions: req.items.length, replay,
         ...(req.scope==='PARTIAL_UIDS'?{scope:req.scope,partialUidCount:req.items.length,expectedQuestionCount:req.expectedQuestionCount}:{}),
         ...(identityRepair?{registrationMode:req.registrationMode,metadataChanged:false,newMetadataApprovals:0,
           ...(phase==='projection'?{consumerLanes:{identityBindings:req.items.length,newMetadataApprovals:0}}:{})}:{}),
         ...(req.approval.sourceRebind?{newMetadataApprovals:0,preservedMetadataApprovals:req.items.length}:{}),
-        ...(basic?{newMetadataApprovals:0,preservedMetadataApprovals:req.items.length,advancedApprovals:0,metadataValuesChanged:false,expectedQuestionCount:req.expectedQuestionCount}:{}),
+        ...(basic?{newMetadataApprovals:newBasic?req.items.length:0,preservedMetadataApprovals:newBasic?0:req.items.length,advancedApprovals:0,metadataValuesChanged:false,expectedQuestionCount:req.expectedQuestionCount,
+          ...(newBasic?{newBasicParentApprovals:req.items.length,newDifficultyJudgments:0,newBlindReviews:0,newReview2:0}:{})}:{}),
         plannedPaths: replay ? [] : identityRepair ? [IDENTITY, RECEIPT].sort() : basic ? [META,IDENTITY,BASIC_LINKS,RECEIPT].sort() : PLANNED,
         consumerSearchStatus: phase === 'projection' ? identityRepair ? 'IDENTITY_BINDINGS_VERIFIED' : 'STATIC_VALUES_VERIFIED' : 'NOT_RUN' };
       if (phase === 'write' && !replay) {
@@ -188,13 +191,15 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
         const preservation=Boolean(req.approval?.sourceRebind);
         const count=(req.gemini?.items||req.items).length;
         const basic=Boolean(req.approval?.sourceReview);
-        return { file, kind: req.schemaVersion===DIFFICULTY_REQUEST_SCHEMA?'difficulty5-ratings':identityRepair?'identity-fingerprint-repair':basic?'basic-approval-preservation':preservation?'native-approval-preservation':'reviewed-exam-v2',
+        const newBasic=req.approval?.sourceReview?.schemaVersion==='archive-reviewed-native-basic-parent-v1';
+        return { file, kind: req.schemaVersion===DIFFICULTY_REQUEST_SCHEMA?'difficulty5-ratings':identityRepair?'identity-fingerprint-repair':newBasic?'basic-parent-registration':basic?'basic-approval-preservation':preservation?'native-approval-preservation':'reviewed-exam-v2',
           exam:req.gemini?.requestId||req.examUid||req.sourceArchiveFile,
           sourceFile:'original/native.js',changed:count,checked:count,passed:count,skippedUnchanged:0,
           ...(identityRepair?{approvalCreated:false,newMetadataApprovals:0,identityBindings:1}:{}),
           ...(preservation?{approvalCreated:false,newMetadataApprovals:0,preservedMetadataApprovals:1,
             approvalType:req.approval.type,expectedQuestionCount:req.expectedQuestionCount}:{}),
-          ...(basic?{approvalCreated:false,newMetadataApprovals:0,advancedApprovals:0,preservedMetadataApprovals:1,expectedQuestionCount:req.expectedQuestionCount}:{}) };});
+          ...(basic?{approvalCreated:newBasic,newMetadataApprovals:newBasic?count:0,advancedApprovals:0,preservedMetadataApprovals:newBasic?0:1,expectedQuestionCount:req.expectedQuestionCount,
+            ...(newBasic?{newBasicParentApprovals:count,newDifficultyJudgments:0,newBlindReviews:0,newReview2:0}:{})}:{}) };});
       const total=exams.reduce((n,e)=>n+e.changed,0);
       return json(hook.consumerResult || { status: 'PASS', counts: { changed: total, checked: total, passed: total, skippedUnchanged: 0 },
         exams,
@@ -536,6 +541,45 @@ test('basic preservation proof rejects new approvals, missing preserved counts, 
   bad.hook.result=(phase,result)=>({...result,plannedPaths:phase==='dry-run'?[...result.plannedPaths,AUTHORITY]:result.plannedPaths});
   assert.throws(()=>bad.produce(),/BASIC_PRESERVATION_OUTPUT_SCOPE/);
   const pending=fixture(t,{basicPreservation:true,pairedDifficulty:true});
+  pending.hook.assignmentPending=[{exam:'own-reviewed-difficulty',qid:1,uid:'fixture',reason:'assignment_missing'}];
+  assert.throws(()=>pending.produce(),/CONSUMER_NOT_PASS/);
+});
+
+const nativeBasicHold = request => {
+  request.approval.sourceReview.schemaVersion = 'archive-basic-native-source-hold-preservation-v1';
+};
+
+test('native basic hold retains its named schema and actual selected/full counts through the complete preview', t => {
+  const f=fixture(t,{basicPreservation:true,partial:true,pairedDifficulty:true,mutateRequest:nativeBasicHold});
+  const selected=f.selected(),basic=selected.find(r=>r.kind==='basic-approval-preservation');
+  assert.equal(basic.basicPreservation.schemaVersion,'archive-basic-native-source-hold-preservation-v1');
+  assert.equal(basic.questionCount,1);assert.equal(basic.sourceQuestionCount,24);
+  assert.deepEqual(selected.map(r=>r.path),[REQUEST,DIFFICULTY_REQUEST]);
+  const proof=f.produce();assert.equal(proof.status,'PASS');
+  const consumer=proof.nativePreview.checks.find(c=>c.id==='native-consumer');
+  assert.deepEqual(consumer.preservedBasicApprovals,{requests:1,preservedMetadataApprovals:1,newMetadataApprovals:0,advancedApprovals:0});
+  assert.equal(f.validate(proof).reusable,true);f.assertShadowsRemoved();
+});
+
+test('native basic hold preview rejects unknown schemas, wrong approval type and scope mixing', t => {
+  for(const mutate of [
+    r=>{r.approval.sourceReview.schemaVersion+='-unknown';},
+    r=>{r.approval.type='FINAL_QA';},
+    r=>{r.scope='PARTIAL_UIDS';},
+    r=>{r.registrationMode='IDENTITY_FINGERPRINT_ONLY';},
+  ]) {
+    const f=fixture(t,{basicPreservation:true,mutateRequest:r=>{nativeBasicHold(r);mutate(r);}});
+    assert.throws(()=>f.selected(),/BASIC_PRESERVATION_SCOPE/);
+  }
+});
+
+test('native basic hold preview still requires official preserved counts, zero new approval and strict Consumer evidence', t => {
+  for(const field of ['newMetadataApprovals','advancedApprovals','preservedMetadataApprovals','expectedQuestionCount']) {
+    const f=fixture(t,{basicPreservation:true,mutateRequest:nativeBasicHold});
+    f.hook.result=(phase,result)=>({...result,[field]:field==='preservedMetadataApprovals'?0:99});
+    assert.throws(()=>f.produce(),/DRY_RUN_NOT_PASS/);
+  }
+  const pending=fixture(t,{basicPreservation:true,pairedDifficulty:true,mutateRequest:nativeBasicHold});
   pending.hook.assignmentPending=[{exam:'own-reviewed-difficulty',qid:1,uid:'fixture',reason:'assignment_missing'}];
   assert.throws(()=>pending.produce(),/CONSUMER_NOT_PASS/);
 });
@@ -927,6 +971,71 @@ test('shadow registration failure cleans independent files and never writes the 
   assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
 });
 
+function rendererAssetProofFixture(t) {
+  const f = fixture(t, { otherOwner: false });
+  const assets = ['archive/assets/renderer/그림 one.svg', 'archive/assets/renderer/nested/solution.png'];
+  for (const file of assets) f.write(file, `prior reviewed bytes: ${file}\n`);
+  f.git('add', '--', 'archive/assets'); f.git('commit', '-qm', 'prior renderer snapshot');
+  const baseSha = f.git('rev-parse', 'HEAD');
+  const refs = assets.map(file => {
+    f.write(file, `current independently reviewed bytes: ${file}\n`);
+    return { path: file, sha256: sha(fs.readFileSync(path.join(f.root, file))) };
+  });
+  f.write(EVIDENCE, json({ schemaVersion: 'fixture-exact-renderer-review-v1', assets: refs }));
+  const evidenceRef = { path: EVIDENCE, sha256: sha(fs.readFileSync(path.join(f.root, EVIDENCE))) };
+  f.request.approval.evidenceRefs = [evidenceRef]; f.request.items[0].evidenceRefs = [evidenceRef];
+  f.write(REQUEST, json(f.request));
+  f.git('add', '--', 'archive/assets', EVIDENCE, REQUEST); f.git('commit', '-qm', 'current renderer-bound request');
+  const headSha = f.git('rev-parse', 'HEAD'), repo = 'owner/repository', observations = [];
+  for (const phase of ['dry-run', 'write', 'projection']) f.hook[phase] = target => {
+    const review = JSON.parse(fs.readFileSync(path.join(target, EVIDENCE), 'utf8'));
+    for (const ref of review.assets) {
+      const full = path.join(target, ref.path);
+      if (!fs.existsSync(full) || sha(fs.readFileSync(full)) !== ref.sha256)
+        throw Error('LIVE_RENDERER_BYTES_CHANGED');
+      if (target !== f.root && fs.existsSync(path.join(f.root, ref.path)))
+        assert.notEqual(fs.statSync(full).ino, fs.statSync(path.join(f.root, ref.path)).ino,
+          'shadow assets must not share mutable inodes with the original checkout');
+    }
+    observations.push({ phase, target });
+  };
+  const options = { root: f.root, repo, expectedSha: headSha, runId: 41, runAttempt: 1, run: f.run,
+    event: { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
+      base: { sha: baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } } } } };
+  return { ...f, assets, refs, observations, options, baseSha, headSha,
+    produce: () => producePrRegistrationProof(options),
+    validate: proof => validateLocalRegistrationProof({ ...options, proof }),
+    native: preview => validateNativePreview({ root: f.root, baseSha, headSha, preview, run: f.run, allowedGenerated: ALLOWED }) };
+}
+
+test('verify-local replays renderer-bound registration with exact HEAD assets in an independent shadow', t => {
+  const f = rendererAssetProofFixture(t), proof = f.produce(), before = f.snapshot();
+  assert.equal(proof.status, 'PASS');
+  assert.equal(f.validate(proof).reusable, true);
+  assert.ok(f.observations.some(row => row.target !== f.root && row.phase === 'dry-run'));
+  assert.ok(f.observations.some(row => row.target !== f.root && row.phase === 'write'));
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+test('shadow restores immutable HEAD assets but never makes changed live renderer bytes acceptable', t => {
+  const f = rendererAssetProofFixture(t), proof = f.produce();
+  f.write(f.assets[0], 'unreviewed same-path mutation\n');
+  const before = f.snapshot();
+  assert.throws(() => f.native(proof.nativePreview), /LIVE_RENDERER_BYTES_CHANGED/);
+  assert.ok(f.observations.some(row => row.target !== f.root && row.phase === 'write'),
+    'the immutable shadow succeeds before live projection refuses the changed asset');
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+test('missing live renderer bytes still reject proof reuse after successful immutable shadow replay', t => {
+  const f = rendererAssetProofFixture(t), proof = f.produce();
+  fs.unlinkSync(path.join(f.root, f.assets[1]));
+  const before = f.snapshot();
+  assert.throws(() => f.native(proof.nativePreview), /LIVE_RENDERER_BYTES_CHANGED/);
+  assert.ok(f.observations.some(row => row.target !== f.root && row.phase === 'write'));
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
 test('post-state replay does not replace the initial official output plan with an empty list', t => {
   const f = fixture(t), proof = f.produce(), requests = f.selected();
   assert.deepEqual(applyNativeRequests({ root: f.root, requests, run: f.run }), [
@@ -1293,4 +1402,34 @@ test('main fixed pending snapshot preserves exact basic-before-D5 order and zero
   assert.equal(result.nativePreview.checks[1].preservedBasicApprovals.advancedApprovals,0);
   assert.equal(f.git('rev-parse','HEAD'),options.expectedSha);
   assert.ok(fs.existsSync(path.join(f.root,REQUEST))&&fs.existsSync(path.join(f.root,DIFFICULTY_REQUEST)));
+});
+
+const newBasicPreviewFixture = t => fixture(t, { partial: true, basicPreservation: true, pairedDifficulty: true,
+  mutateRequest: r => { r.approval.sourceReview.schemaVersion = 'archive-reviewed-native-basic-parent-v1'; } });
+test('new BASIC parent is explicitly counted and ordered before its exact separate difficulty input', t => {
+  const f = newBasicPreviewFixture(t), selected = f.selected(), basic = selected.find(r => r.kind === 'basic-parent-registration');
+  assert.equal(basic.questionCount, 1); assert.equal(basic.sourceQuestionCount, 24); assert.equal(basic.basicPreservation.newBasicParent, true);
+  assert.deepEqual(orderNativeRequests([...selected].reverse()).map(r => r.path), [REQUEST, DIFFICULTY_REQUEST]);
+  const proof = f.produce();
+  const stage = proof.nativePreview.checks.find(s => s.id === 'native-consumer');
+  assert.deepEqual(stage.newBasicParentApprovals, { requests: 1, newBasicParentApprovals: 1, preservedMetadataApprovals: 0, advancedApprovals: 0 });
+  assert.equal(stage.preservedBasicApprovals, undefined);
+});
+test('new BASIC preview refuses a preservation label, unknown subtype, or unbound D5 predecessor', t => {
+  const f = newBasicPreviewFixture(t), selected = f.selected(), basic = selected.find(r => r.kind === 'basic-parent-registration');
+  basic.kind = 'basic-approval-preservation'; assert.throws(() => orderNativeRequests(selected), /BASIC_PRESERVATION_SCOPE/);
+  const g = newBasicPreviewFixture(t), requests = g.selected(), d5 = requests.find(r => r.kind === 'difficulty5-ratings');
+  d5.difficultyBeforeBindings[0].contentFingerprint = 'f'.repeat(64); assert.throws(() => orderNativeRequests(requests), /BASIC_DEPENDENCY_FINGERPRINT/);
+  const h = fixture(t, { basicPreservation: true, mutateRequest: r => { r.approval.sourceReview.schemaVersion = 'archive-reviewed-native-basic-parent-v2'; } });
+  assert.throws(h.selected, /BASIC_PRESERVATION_SCOPE/);
+});
+test('new BASIC proof rejects false preserved counts, advanced approval, and unchecked parent in Consumer', t => {
+  for (const change of [r => { r.newBasicParentApprovals = 0; }, r => { r.preservedMetadataApprovals = 1; }, r => { r.advancedApprovals = 1; }]) {
+    const f = newBasicPreviewFixture(t); f.hook.result = (phase, result) => { change(result); return result; };
+    assert.throws(() => applyNativeRequests({ root: f.root, requests: f.selected(), run: f.run }), /DRY_RUN_NOT_PASS/);
+  }
+  const f = newBasicPreviewFixture(t), requests = f.selected(); applyNativeRequests({ root: f.root, requests, run: f.run });
+  const output = JSON.parse(f.run(process.execPath, ['archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs']));
+  output.exams[0].approvalCreated = false; f.hook.consumerResult = output;
+  assert.throws(() => verifyNativeRequests({ root: f.root, requests, run: f.run }), /CONSUMER_NOT_PASS/);
 });

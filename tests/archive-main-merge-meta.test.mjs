@@ -1465,3 +1465,84 @@ test('source-only ancestry cannot hide a changed renderer peer behind its unchan
     assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
   }
 });
+
+function mixedApprovedRebindMemberFixture(t) {
+  const f=mixedRendererReassessmentFixture(t),repair=f.receipt.fingerprintRepairs.find(r=>r.questionUid===f.unchangedUid);
+  delete repair.sourceReview;
+  repair.rebind={priorSourceBlobSha1:f.priorNativeReceipt.sourceBlobSha1,priorContentFingerprint:repair.metadataBefore.contentFingerprint};
+  f.receipt.approval.evidenceRefs=f.receipt.approval.evidenceRefs.filter(ref=>ref.path!==f.nativeMemberPath);
+  f.refreshBinding();f.saveReceipt();return f;
+}
+
+test('mixed current renderer retains a whole-question-identical prior approval through the existing exact rebind form',t=>{
+  const f=mixedApprovedRebindMemberFixture(t),before=JSON.stringify([f.receipt,f.current,f.identity,f.nativeSource.runtimeRecord]);
+  for(const previous of [f.oldBank[0],structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  }
+  assert.equal(JSON.stringify([f.receipt,f.current,f.identity,f.nativeSource.runtimeRecord]),before);
+});
+
+for(const [name,change]of [
+  ['foreign prior source',f=>{f.receipt.fingerprintRepairs.find(r=>r.questionUid===f.unchangedUid).rebind.priorSourceBlobSha1='e'.repeat(40);}],
+  ['foreign prior content',f=>{f.receipt.fingerprintRepairs.find(r=>r.questionUid===f.unchangedUid).rebind.priorContentFingerprint='e'.repeat(64);}],
+  ['unknown rebind property',f=>{f.receipt.fingerprintRepairs.find(r=>r.questionUid===f.unchangedUid).rebind.allowRenderer=true;}],
+  ['new source review alongside rebind',f=>{f.receipt.fingerprintRepairs.find(r=>r.questionUid===f.unchangedUid).sourceReview={schemaVersion:'invented'};}],
+  ['new after value',f=>{f.receipt.fingerprintRepairs.find(r=>r.questionUid===f.unchangedUid).after.difficultyBucket=5;}],
+  ['changed before fingerprint',f=>{f.receipt.fingerprintRepairs.find(r=>r.questionUid===f.unchangedUid).metadataBefore.sourceFingerprint='e'.repeat(64);}],
+  ['changed identity before',f=>{f.receipt.fingerprintRepairs.find(r=>r.questionUid===f.unchangedUid).identityBefore.sourceFingerprint='e'.repeat(64);}],
+  ['new repair property',f=>{f.receipt.fingerprintRepairs.find(r=>r.questionUid===f.unchangedUid).allowNativeReuse=true;}],
+  ['metadata value change',f=>{f.current.conditionKeys=['UNREVIEWED'];}],
+  ['runtime value change',f=>{f.nativeSource.runtimeRecord.difficultyBucket=5;}],
+  ['identity value change',f=>{f.identity.foreign='new';}],
+  ['extra provenance',f=>{f.current.approvalEvidence.push('review/foreign.json');f.nativeSource.runtimeRecord.approvalEvidence.push('review/foreign.json');}],
+  ['source-only marker',f=>{f.receipt.approval.sourceRebind={};}],
+  ['subset',f=>{for(const key of ['appliedRecords','appliedIdentityRecords','runtimeRecords'])f.receipt[key]=f.receipt[key].filter(r=>r.questionUid===f.unchangedUid);
+    f.receipt.fingerprintRepairs=f.receipt.fingerprintRepairs.filter(r=>r.questionUid===f.unchangedUid);f.receipt.partialUidCount=1;f.receipt.totalQuestions=1;}],
+  ['missing renderer peer proof and markers',f=>{delete f.receipt.fingerprintRepairs.find(r=>r.questionUid===f.rendererUid).sourceReview.rendererContinuity;
+    for(const rows of [f.receipt.appliedRecords,f.receipt.runtimeRecords])for(const row of rows)row.approvalEvidence=row.approvalEvidence.filter(p=>p!==f.bindingPath);
+    f.receipt.outputDigests=[];fs.unlinkSync(path.join(f.nativeSource.root,f.bindingPath));}],
+  ['changed renderer peer asset',f=>{fs.appendFileSync(path.join(f.nativeSource.root,f.solutionAsset),'<!-- unreviewed -->');}],
+  ['missing prior receipt',f=>{fs.unlinkSync(path.join(f.nativeSource.root,f.priorNativePath));}],
+  ['prior evidence drift',f=>{f.put('review/metadata.json','changed prior witness');}],
+])test('mixed existing rebind cannot permit '+name,t=>{
+  const f=mixedApprovedRebindMemberFixture(t);assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  change(f);f.saveReceipt();
+  for(const previous of [f.oldBank[0],structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+  }
+});
+
+test('mixed existing rebind retains the original actual previous-payload guard',t=>{
+  const f=mixedApprovedRebindMemberFixture(t);f.previous.answer='not approved before';
+  assert.equal(planQuestion(f).status,'SUPPLEMENT_PENDING');
+});
+
+test('source-only descendant replays the existing rebind members and current renderer proof',t=>{
+  const f=preserveNativeSubset(mixedApprovedRebindMemberFixture(t),'preserve-existing-rebind-cohort');
+  for(const previous of [f.oldBank[0],structuredClone(f.question)])
+    assert.equal(planQuestion({...f,previous}).nativeReviewReceipt,f.receiptPath);
+  fs.appendFileSync(path.join(f.nativeSource.root,f.solutionAsset),'<!-- changed ancestor renderer -->');
+  for(const previous of [f.oldBank[0],structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'SUPPLEMENT_PENDING');assert.equal(result.final,undefined);
+  }
+});
+
+test('mixed existing rebind also replays an earlier solution-only repair instead of replacing its authority',t=>{
+  const f=mixedApprovedRebindMemberFixture(t),old=f.priorNativeReceipt,ordinal=f.ordinal;
+  const oldBank=structuredClone(f.oldBank);oldBank[ordinal-1].solution='original solution-only repair input';
+  const bytes=Buffer.from('window.questionBank='+JSON.stringify(oldBank)+';\n');
+  const originalBlob=execFileSync('git',['hash-object','-w','--stdin'],{cwd:f.nativeSource.root,input:bytes,encoding:'utf8'}).trim();
+  const originalFp=sourceFingerprint(oldBank[ordinal-1]),originalContent=contentFingerprint(oldBank[ordinal-1]);
+  const row=old.appliedRecords.find(r=>r.questionUid===f.unchangedUid);
+  old.fingerprintRepairs=[{questionUid:f.unchangedUid,sourceOrdinal:ordinal,
+    metadataBefore:{sourceFingerprint:originalFp,contentFingerprint:originalContent},identityBefore:{sourceFingerprint:originalFp},
+    after:{sourceFingerprint:row.sourceFingerprint,contentFingerprint:row.contentFingerprint},
+    rebind:{priorSourceBlobSha1:originalBlob,priorContentFingerprint:originalContent}}];
+  f.put(f.priorNativePath,old);f.receipt.approval.evidenceRefs.find(r=>r.path===f.priorNativePath).sha256=f.sha(fs.readFileSync(path.join(f.nativeSource.root,f.priorNativePath)));f.saveReceipt();
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  old.fingerprintRepairs[0].rebind.priorContentFingerprint='e'.repeat(64);
+  f.put(f.priorNativePath,old);f.receipt.approval.evidenceRefs.find(r=>r.path===f.priorNativePath).sha256=f.sha(fs.readFileSync(path.join(f.nativeSource.root,f.priorNativePath)));f.saveReceipt();
+  const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING');assert.equal(result.final,undefined);
+});

@@ -228,6 +228,22 @@ function ordinaryReviewedReassessment({receipt,nativeSource,question,identity,or
   return true;
 }
 
+// This is the existing registrar rebind form, restricted here to an unchanged
+// whole question in a complete renderer cohort. It transports no new native
+// decision, metadata value, identity value or approval kind.
+function unchangedApprovedRebindMember({patch,row,runtime,identity,oldRow,oldRuntime,oldIdentity,prior,receipt}) {
+  const fingerprints={sourceFingerprint:oldRow.sourceFingerprint,contentFingerprint:oldRow.contentFingerprint};
+  if(!same(Object.keys(patch).sort(),['after','identityBefore','metadataBefore','questionUid','rebind','sourceOrdinal'])||
+    !Object.values(fingerprints).every(value=>SHA256.test(value||''))||
+    !same(patch.metadataBefore,fingerprints)||!same(patch.after,fingerprints)||
+    !same(patch.identityBefore,{sourceFingerprint:oldIdentity.sourceFingerprint})||
+    !same(patch.rebind,{priorSourceBlobSha1:prior.sourceBlobSha1,priorContentFingerprint:oldRow.contentFingerprint})||
+    !same(unchanged(row),unchanged(oldRow))||!same(unchanged(runtime),unchanged(oldRuntime))||
+    !same(identity,oldIdentity))return false;
+  const appended=before=>[...new Set([...before.approvalEvidence,receiptPath(receipt.requestId)])];
+  return same(row.approvalEvidence,appended(oldRow))&&same(runtime.approvalEvidence,appended(oldRuntime));
+}
+
 // A mixed current-renderer reassessment retains the exact prior selected cohort.
 // Its unchanged members still use their original native verifier and actual old
 // Git question; only the changed members receive the current renderer witness.
@@ -269,9 +285,12 @@ function unchangedMemberOfRendererReassessment({receipt,nativeSource,question,id
       fail('mixed reassessment ordinal changed');
     const renderer=patch.sourceReview?.rendererContinuity!==undefined;
     if(!renderer&&!same(q,beforeSource.bank[row.sourceOrdinal-1]))fail('changed member lacks a current renderer review');
-    if(!ordinaryReviewedReassessment({receipt,nativeSource:{...nativeSource,runtimeRecord:state.runtimes.get(uid)},
-      question:q,identity:state.identities.get(uid),ordinal:row.sourceOrdinal,current:row,registry,reviewedContainerCarry:!renderer}))
-      fail('mixed reassessment member lacks an exact approved-value continuation');
+    const retained=!renderer&&patch.sourceReview===undefined&&patch.rebind!==undefined;
+    const verified=retained?unchangedApprovedRebindMember({patch,row,runtime:state.runtimes.get(uid),
+      identity:state.identities.get(uid),oldRow,oldRuntime:old.runtimes.get(uid),oldIdentity:old.identities.get(uid),prior,receipt}):
+      ordinaryReviewedReassessment({receipt,nativeSource:{...nativeSource,runtimeRecord:state.runtimes.get(uid)},
+        question:q,identity:state.identities.get(uid),ordinal:row.sourceOrdinal,current:row,registry,reviewedContainerCarry:!renderer});
+    if(!verified)fail('mixed reassessment member lacks an exact approved-value continuation');
     if(renderer)currentRendererCount++;
   }
   if(!currentRendererCount)fail('mixed reassessment has no current renderer witness');
@@ -287,6 +306,13 @@ function unchangedMemberOfRendererReassessment({receipt,nativeSource,question,id
       ...(identityMap?{identityMap}:{})},
     question:beforeSource.bank[ordinal-1],current:old.row,identity:old.identity};
   if(revalidateLeaf(previousContext)!==refs[0].path)fail('unchanged mixed member original native approval cannot replay');
+  const priorRepairs=(prior.fingerprintRepairs||[]).filter(row=>row.questionUid===identity.questionUid);
+  if(priorRepairs.length>1)fail('ambiguous unchanged member original repair');
+  if(priorRepairs[0]?.rebind!==undefined) {
+    const original=gitSource(root,priorRepairs[0].rebind.priorSourceBlobSha1,undefined,prior.expectedQuestionCount);
+    if(revalidateLeaf({...previousContext,previous:original.bank[ordinal-1]})!==refs[0].path)
+      fail('unchanged member original solution repair cannot replay');
+  }
   return true;
 }
 

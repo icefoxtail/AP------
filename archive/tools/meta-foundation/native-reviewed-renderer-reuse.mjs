@@ -139,6 +139,14 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
       fail('unsupported independently inspected correction input');
     allowedPrevious.push(correctionInput.studentPayloadSha256);
   }
+  const priorRenderer = reproduced.rendererContinuity.prefigureRendererWitness;
+  if (priorRenderer !== undefined) {
+    if (priorRenderer.schemaVersion !== 'archive-independent-prior-solution-renderer-review-v1' ||
+        priorRenderer.scope !== 'EXACT_PREEXISTING_SOLUTION_RENDERER_ADDITION' ||
+        !equal(priorRenderer.prefigureSourceRef, renderer.prefigureSourceRef) ||
+        !SHA256.test(priorRenderer.studentPayloadSha256 || '')) fail('unsupported independently inspected prior renderer');
+    allowedPrevious.push(priorRenderer.studentPayloadSha256);
+  }
   if (!allowedPrevious.includes(priorPayloadSha))
     fail('previous student payload is not an immutable native, current or independently inspected correction input');
   return true;

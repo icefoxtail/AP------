@@ -16,6 +16,8 @@ export const DIFFICULTY_REQUEST_SCHEMA = 'archive-difficulty5-register-request-v
 const DIFFICULTY_CORRECTION_SCHEMA = 'archive-difficulty5-reviewed-correction-v1';
 export const AUDIT_PRESERVATION_SCHEMA = 'archive-native-audit-preservation-v1';
 export const BASIC_PRESERVATION_SCHEMA = 'archive-basic-scope-current-source-preservation-v1';
+export const NATIVE_BASIC_HOLD_SCHEMA = 'archive-basic-native-source-hold-preservation-v1';
+export const NATIVE_BASIC_PARENT_SCHEMA = 'archive-reviewed-native-basic-parent-v1';
 const BASIC_REBIND_SCHEMA = 'archive-basic-scope-rebind-request-v1';
 const PARENT_CORRECTION_SCHEMA = 'archive-basic-parent-correction-request-v1';
 export const NATIVE_PREVIEW_HELPER = 'tools/ci/archive-pr-native-preview.mjs';
@@ -114,7 +116,8 @@ export function difficultyBeforeBindings(request) {
 }
 export function basicPreservationDescriptor(request) {
   if (request.schemaVersion !== BASIC_REBIND_SCHEMA || request.approval?.sourceReview === undefined) return undefined;
-  if (request.approval.sourceReview?.schemaVersion !== BASIC_PRESERVATION_SCHEMA || request.approval.type !== 'BASIC_SCOPE_REBIND'
+  const schemaVersion = request.approval.sourceReview?.schemaVersion;
+  if (![BASIC_PRESERVATION_SCHEMA, NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_PARENT_SCHEMA].includes(schemaVersion) || request.approval.type !== 'BASIC_SCOPE_REBIND'
       || request.scope !== undefined || request.registrationMode !== undefined || !Array.isArray(request.items) || !request.items.length)
     fail('BASIC_PRESERVATION_SCOPE');
   const bindings = request.items.map(item => ({ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
@@ -122,7 +125,7 @@ export function basicPreservationDescriptor(request) {
   if (bindings.some(row => typeof row.questionUid !== 'string' || !row.questionUid || !Number.isSafeInteger(row.sourceOrdinal) || row.sourceOrdinal < 1
       || !/^[a-f0-9]{64}$/.test(row.sourceFingerprint || '') || !/^[a-f0-9]{64}$/.test(row.contentFingerprint || ''))
       || new Set(bindings.map(r => r.questionUid)).size !== bindings.length) fail('BASIC_PRESERVATION_BINDINGS');
-  return { schemaVersion: BASIC_PRESERVATION_SCHEMA, bindings };
+  return { schemaVersion, bindings, ...(schemaVersion === NATIVE_BASIC_PARENT_SCHEMA ? { newBasicParent: true } : {}) };
 }
 
 // Preserve the normal request order except where one exact audit-preservation
@@ -230,7 +233,9 @@ export function orderNativeRequests(requests) {
   const basic = requests.filter(r => r.basicPreservation);
   const owners = new Map();
   for (const request of basic) {
-    if (request.kind !== 'basic-approval-preservation' || request.basicPreservation.schemaVersion !== BASIC_PRESERVATION_SCHEMA)
+    if (request.kind !== (request.basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation') ||
+        ![BASIC_PRESERVATION_SCHEMA, NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_PARENT_SCHEMA].includes(request.basicPreservation.schemaVersion) ||
+        Boolean(request.basicPreservation.newBasicParent) !== (request.basicPreservation.schemaVersion === NATIVE_BASIC_PARENT_SCHEMA))
       fail('BASIC_PRESERVATION_SCOPE');
     for (const binding of request.basicPreservation.bindings) {
       if (owners.has(binding.questionUid)) fail('BASIC_DEPENDENCY_AMBIGUOUS');
@@ -595,7 +600,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
       ...(registryDependency ? { registryDependency } : {}),
-      ...(basicPreservation ? { basicPreservation, kind: 'basic-approval-preservation' }
+      ...(basicPreservation ? { basicPreservation, kind: basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation' }
         : correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }
         : preservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },
       evidence: [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en')),
@@ -648,6 +653,10 @@ function resultScopeMatches(result, request) {
   if (request.kind === 'basic-approval-preservation' &&
       (result.newMetadataApprovals !== 0 || result.advancedApprovals !== 0 || result.metadataValuesChanged !== false ||
         result.preservedMetadataApprovals !== request.questionCount || result.expectedQuestionCount !== request.sourceQuestionCount)) return false;
+  if (request.kind === 'basic-parent-registration' &&
+      (result.newMetadataApprovals !== request.questionCount || result.newBasicParentApprovals !== request.questionCount || result.preservedMetadataApprovals !== 0 ||
+        result.advancedApprovals !== 0 || result.metadataValuesChanged !== false || result.newDifficultyJudgments !== 0 || result.newBlindReviews !== 0 || result.newReview2 !== 0 ||
+        result.expectedQuestionCount !== request.sourceQuestionCount)) return false;
   return request.registrationMode !== 'IDENTITY_FINGERPRINT_ONLY'
     || result.metadataChanged === false && result.newMetadataApprovals === 0;
 }
@@ -659,7 +668,7 @@ function planPaths(result, request) {
   for (const file of paths) safe('/', file);
   if (request.kind === 'difficulty5-ratings') {
     if (!eq(paths, result.replay ? [] : [METADATA])) fail('DIFFICULTY_OUTPUT_SCOPE');
-  } else if (request.kind === 'basic-approval-preservation') {
+  } else if (['basic-approval-preservation', 'basic-parent-registration'].includes(request.kind)) {
     if (!eq(paths, result.replay ? [] : sorted([METADATA, 'archive/data/question_identity_map.json',
       'archive/data/basic-scope-source-links.json', request.receiptPath]))) fail('BASIC_PRESERVATION_OUTPUT_SCOPE');
   } else if (!result.replay && !paths.includes(request.receiptPath)) fail('RECEIPT_NOT_PLANNED');
@@ -746,6 +755,9 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
           || r.kind === 'basic-approval-preservation' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
             || exams[0].advancedApprovals !== 0 || exams[0].preservedMetadataApprovals !== r.questionCount
             || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
+          || r.kind === 'basic-parent-registration' && (exams[0].newMetadataApprovals !== r.questionCount || exams[0].newBasicParentApprovals !== r.questionCount || exams[0].approvalCreated !== true
+            || exams[0].advancedApprovals !== 0 || exams[0].preservedMetadataApprovals !== 0 || exams[0].newDifficultyJudgments !== 0 || exams[0].newBlindReviews !== 0 || exams[0].newReview2 !== 0
+            || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
           || `archive/exams/${exams[0].sourceFile}` !== r.source.path || !complete(exams[0], r.questionCount);
       })
       || ['changed', 'checked', 'passed', 'skippedUnchanged'].some(k => result.exams.reduce((sum, e) => sum + e[k], 0) !== result.counts[k])
@@ -760,10 +772,14 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
   const basic = requests.filter(r => r.kind === 'basic-approval-preservation');
   const preservedBasicApprovals = basic.length ? { requests: basic.length,
     preservedMetadataApprovals: basic.reduce((sum, r) => sum + r.questionCount, 0), newMetadataApprovals: 0, advancedApprovals: 0 } : null;
+  const newBasic = requests.filter(r => r.kind === 'basic-parent-registration');
+  const newBasicParentApprovals = newBasic.length ? { requests: newBasic.length,
+    newBasicParentApprovals: newBasic.reduce((sum, r) => sum + r.questionCount, 0), preservedMetadataApprovals: 0, advancedApprovals: 0 } : null;
   noUnexpectedMutation(root, before, new Set());
   return [{ id: 'native-projection', outcome: 'success' },
     { id: 'native-consumer', outcome: 'success', ...(difficultyOnly ? { difficultyOnly } : {}),
-      ...(preservedNativeApprovals ? { preservedNativeApprovals } : {}), ...(preservedBasicApprovals ? { preservedBasicApprovals } : {}) }];
+      ...(preservedNativeApprovals ? { preservedNativeApprovals } : {}), ...(preservedBasicApprovals ? { preservedBasicApprovals } : {}),
+      ...(newBasicParentApprovals ? { newBasicParentApprovals } : {}) }];
 }
 
 export function nativeOutputManifest(root, plans) {
@@ -779,11 +795,24 @@ export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
   const shadow = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-pr-native-plan-'));
   try {
     nativeCommand('git', ['clone', '--quiet', '--shared', '--no-checkout', '--local', root, shadow], root);
-    const restore = ['archive/data', 'docs/rules/01_CANONICAL/taxonomy'].filter(file => git(root, 'ls-tree', 'HEAD', '--', file).trim());
-    const tar = spawnSync('git', ['archive', '--format=tar', 'HEAD', '--', ...restore], { cwd: root, maxBuffer: 1024 * 1024 * 1024 });
+    // Renderer/source reviews revalidate the live asset bytes, including assets
+    // reached through an older receipt. Recreate that immutable input tree too;
+    // never copy current worktree bytes or share mutable asset inodes.
+    const restore = ['archive/data', 'archive/assets', 'docs/rules/01_CANONICAL/taxonomy']
+      .filter(file => git(root, 'ls-tree', 'HEAD', '--', file).trim());
+    // Data plus assets can exceed the child-process memory buffer. Stream Git's
+    // exact archive into a private temporary file, removed with this shadow.
+    const snapshotPath = path.join(shadow, '.native-input-snapshot.tar');
+    const snapshotFd = fs.openSync(snapshotPath, 'wx', 0o600);
+    let tar;
+    try {
+      tar = spawnSync('git', ['archive', '--format=tar', 'HEAD', '--', ...restore],
+        { cwd: root, stdio: ['ignore', snapshotFd, 'pipe'], maxBuffer: 1024 * 1024 });
+    } finally { fs.closeSync(snapshotFd); }
     if (tar.error || tar.status !== 0) fail('SHADOW_GIT_SNAPSHOT_FAILED');
-    const extracted = spawnSync('tar', ['-xf', '-', '-C', shadow], { input: tar.stdout, maxBuffer: 1024 * 1024 });
+    const extracted = spawnSync('tar', ['-xf', snapshotPath, '-C', shadow], { maxBuffer: 1024 * 1024 });
     if (extracted.error || extracted.status !== 0) fail('SHADOW_EXTRACT_FAILED');
+    fs.unlinkSync(snapshotPath);
     const inputs = sorted(requests.flatMap(r => [r.path, r.source.path, ...r.evidence.map(e => e.path)]));
     const attrs = git(root, 'ls-tree', '-r', '--name-only', 'HEAD').split('\n').filter(p => path.posix.basename(p) === '.gitattributes');
     for (const file of sorted([...inputs, ...attrs])) {
