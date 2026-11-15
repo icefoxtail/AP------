@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "current-source-header-provider-final-handoff-v1",
+  "status": "PASS_E0546_PLUS_EXACT_E037_PROVIDER16_CONSUMER22",
+  "lastVerifiedMain": "6e3d066923ccd4399578b20e205048f172177e2c",
+  "computedFixtureCodeAndDataBase": "846581e0c741e2ee031674c117af76be06d7f398",
+  "latestMainExactInputCAS": {
+    "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/latest6e3d-input-cas.json",
+    "sha256": "21a49b962673cbe9558149ab0a2333826a6be1c338e7ef329e63fb8e36b0caaf",
+    "checkedPaths": 852,
+    "changed": 0
+  },
+  "requests": [
+    {
+      "path": ".archive-meta-register/inbox/m3s2-e037-preserve-quadratic5-26fc-20261115.json",
+      "requestId": "m3s2-e037-preserve-quadratic5-26fc-20261115",
+      "selected": 14,
+      "mode": "UNCHANGED_EXISTING_MAIN_INPUT",
+      "gitBlobSha1": "af750d1278673e548c7a0438a77916e64f554080",
+      "sha256": "eb14658d991f807538131047380e66ab782d5abee99c956df28ec8a7a752ce28"
+    },
+    {
+      "path": ".archive-meta-register/inbox/m3s2-e037-quadratic-context-26fc-20261115.json",
+      "requestId": "m3s2-e037-quadratic-context-26fc-20261115",
+      "selected": 2,
+      "mode": "UNCHANGED_EXISTING_MAIN_INPUT",
+      "gitBlobSha1": "d53e4db1e658192c422d96aed7fcd6182b17a915",
+      "sha256": "006b0f01de937c079b60627a9bee57b7c2fb3ba498972593f0f3bb2dbc33c7ba"
+    },
+    {
+      "path": ".archive-meta-register/inbox/m3s2-e054-preserve-quadratic5-26fc-20261115.json",
+      "requestId": "m3s2-e054-preserve-quadratic5-26fc-20261115",
+      "selected": 5,
+      "mode": "SOURCE_HEADER_ONLY_REBIND",
+      "beforeGitBlobSha1": "6b2439444fafb9407edc44f2c88b4e7552903dda",
+      "afterGitBlobSha1": "956055c22c312a82e85097dcff9548d7095abf18",
+      "sha256": "3025aa9771b5dc477e574e4d840f34a9823332b9b539c7ed6731eae2862c7479",
+      "localPath": "/workspace/scratch/26fc42390a50/m3s2-recovery/e054-current846/candidates/.archive-meta-register/inbox/m3s2-e054-preserve-quadratic5-26fc-20261115.json"
+    },
+    {
+      "path": ".archive-meta-register/inbox/m3s2-e054-quadratic-context-26fc-20261115.json",
+      "requestId": "m3s2-e054-quadratic-context-26fc-20261115",
+      "selected": 1,
+      "mode": "SOURCE_HEADER_ONLY_REBIND",
+      "beforeGitBlobSha1": "7ddc627d2508cb85a22430990aa585f891ab9b75",
+      "afterGitBlobSha1": "f2d03f916c30ab1bdaed6ce4828af40c11ab8fa2",
+      "sha256": "122c224a4ac431fc67725531d5031f5a5660eab8ab7daf98c529565798b194eb",
+      "localPath": "/workspace/scratch/26fc42390a50/m3s2-recovery/e054-current846/candidates/.archive-meta-register/inbox/m3s2-e054-quadratic-context-26fc-20261115.json"
+    }
+  ],
+  "counts": {
+    "sources": 2,
+    "sourceQuestions": 50,
+    "selectedUIDs": 22,
+    "existingApprovalsPreserved": 19,
+    "newRegistrationsReusingExistingNativeJudgments": 3,
+    "nativeVerification": 22,
+    "consumerCanonical": 22,
+    "consumerUsable": 0,
+    "plannerCalls": 100,
+    "pendingUnselectedUIDs": 28,
+    "newSemanticJudgments": 0,
+    "newMathematicalReviews": 0,
+    "newDifficultyJudgments": 0
+  },
+  "planner": {
+    "currentSource": {
+      "SUPPLEMENT_PENDING": 28,
+      "ALREADY_REGISTERED": 22
+    },
+    "actualPendingBase": {
+      "SUPPLEMENT_PENDING": 28,
+      "ALREADY_REGISTERED": 22
+    }
+  },
+  "changedOperationalPaths": [
+    ".archive-meta-register/inbox/m3s2-e054-preserve-quadratic5-26fc-20261115.json",
+    ".archive-meta-register/inbox/m3s2-e054-quadratic-context-26fc-20261115.json"
+  ],
+  "changedJsonPaths": [
+    "expectedSourceBlobSha1"
+  ],
+  "sourceOrAssetProductionEdits": 0,
+  "existingPrior19": {
+    "allApprovalSemanticDifficultyFieldsExact": true,
+    "identityRecordsExact": true,
+    "onlyMetadataAndRuntimeTechnicalChanges": [
+      "metadataRevision",
+      "approvalEvidence"
+    ],
+    "purpose": "Append exact official source-binding receipt; previous evidence retained."
+  },
+  "globalPreservation": {
+    "metadataOutside22Exact": 28868,
+    "runtimeOutside22Exact": 7243,
+    "runtimeCreatedFromPreviouslyReviewedNative": 3,
+    "allIdentityRowsPreserved": true
+  },
+  "sourceBindings": [
+    {
+      "examId": "E037",
+      "sourceGitBlobSha1": "0b2873d6a44bf2317202f40ffd4faf31ec85f8a1"
+    },
+    {
+      "examId": "E054",
+      "sourceGitBlobSha1": "222074d2571498511f25a8ca849c3271a97501ce"
+    }
+  ],
+  "existingNativeSolutionProvenanceDebtPreserved": true,
+  "canonicalRegistryChanges": "One exact binding installed only by the existing E037 official request; no manual injection.",
+  "proofs": [
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/e054-current846/header-rebind-manifest.json",
+      "sha256": "1e083a623bd5c7b5c80677dc9db37333e4ba309eb5c58a347339a8f1413407d4"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/e054-current846/official-native6-consumer6.json",
+      "sha256": "0bf00e33dfd27c1f356dabaeeef7e2f432ef8addfd8a7dfdc79879c58047649f"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/e054-current846/official-e037-provider-prerequisite.json",
+      "sha256": "6199fd58be4c2095e1e5c1a7fcead546ad08bbae4a1e2be18edd7ec6bcc3d1a8"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/e054-current846/official-post-registration-planner100.json",
+      "sha256": "dd60626b043a542febf557ca7dac48f8e7a2462c42f81034985ab3ee757a254f"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/e054-current846/main6e-preservation22.json",
+      "sha256": "3b6882b99a3a3a57c3e4aabfffde4d4fb4648175ad5afe67826b7759aae25e35"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/e054-current846/prior-native-proof-hydration.json",
+      "sha256": "67570337feb23960fa32b455d68a775d09c56fda7637b00114bc3d0987cd8aed"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/e054-current846/catalog-db-scope.json",
+      "sha256": "98ceb08caee67afbd4fb8af8001ec9853343d76270ffc5cb67b541b7580b525e"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/m3-e054-provider-closure/result.json",
+      "sha256": "e0b708a60a719b52eacdb3e8e71e5873d11f8141e95930fd5c26dac458439d4d"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/m3s2-recovery/latest6e3d-input-cas.json",
+      "sha256": "21a49b962673cbe9558149ab0a2333826a6be1c338e7ef329e63fb8e36b0caaf"
+    }
+  ],
+  "sourceReviewScope": "Previously reviewed native rows only; latest E054 selected6 whole question objects and assets unchanged. Other source changes remain unselected/pending.",
+  "actualMainRegistration": false,
+  "actualPages": "WAIT_FOR_REGISTERED_MAIN",
+  "excludedM3S1SourceReads": 0,
+  "remoteWrites": 0,
+  "rootIntegrationPR": 2179,
+  "rootIntegrationHead": "741baef4e25a33087c623093d8520f6443b4fc69",
+  "nextAction": "Reuse these bounded proofs in PR2179, then verify actual writer receipts/Consumer for the exact new7+prior37+Wangun20 union and four-slot restoration scope."
+}
